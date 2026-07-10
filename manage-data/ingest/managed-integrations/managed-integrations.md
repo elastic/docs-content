@@ -38,7 +38,7 @@ To enable an {{managed-integration}} in {{kib}}, refer to [Enable an {{managed-i
 
 ## Use cases [managed-integrations-use-cases]
 
-{{managed-integrations}} are a good fit whenever you need to pull data from a cloud service through an API at moderate volumes, without setting up and running your own collectors. Some examples include:
+{{managed-integrations}} are a good fit whenever you need to pull data from a cloud service through an API at lower volumes, without setting up and running your own collectors. Some examples include:
 
 * **Identity and access logs**: Collect audit and system logs from identity and access management providers to monitor authentication and access activity.
 * **Security and vulnerability findings**: Ingest findings from security and vulnerability management tools to track risks alongside the rest of your data.
@@ -64,7 +64,7 @@ A shared, stateless *Controller* orchestrates the lifecycle of these collectors.
 
 The following limits apply to {{managed-integrations}}:
 
-* **Maximum {{managed-integrations}} per project**: 50.
+* **Maximum {{managed-integrations}} per {{serverless-short}} project or {{ech}} deployment**: 50.
 * **No horizontal scaling**: Deploying multiple {{managed-integrations}} for the same source doesn't increase ingest throughput. For higher throughput, consider the [{{edot}} Cloud Forwarder](opentelemetry://reference/edot-cloud-forwarder/index.md).
 * **Rate limiting**: Integrations whose underlying input type is `httpjson` or `cel` (two common pull-based input mechanisms in {{agent}}) are rate-limited on {{serverless-short}} to preserve quality of service. Rate limiting uses back-pressure rather than dropping events, so collection slows down until the source catches up.
 
@@ -78,7 +78,7 @@ Each collector is dedicated to a single {{managed-integration}}: no other worklo
 
 ## Manage and monitor {{managed-integrations}} [managed-integrations-management]
 
-Because Elastic operates the collectors on your behalf, they aren't visible in {{fleet}} by default, and Elastic resolves service-level issues for you. You still keep visibility into the parts that matter to you — each integration's status is available in the {{integrations}} app, and the ingested data lands in your cluster so you can query it, view it in dashboards, and set [alerting rules](/explore-analyze/alerting.md) on it as you would for any other integration.
+Because Elastic operates the collectors on your behalf, they aren't visible in {{fleet}} by default, and Elastic resolves service-level issues for you. You still keep visibility into the parts that matter to you — each integration's status is available in the **{{integrations}}** app, and the ingested data lands in your cluster so you can query it, view it in dashboards, and set [alerting rules](/explore-analyze/alerting.md) on it as you would for any other integration.
 
 For how {{managed-integrations}} behave during a service issue, refer to [What happens to my data if there's a service issue?](/manage-data/ingest/managed-integrations/managed-integrations-faq.md#managed-integrations-faq-service-issue) in the FAQ.
 

@@ -22,7 +22,7 @@ Frequently asked questions about {{managed-integrations}}.
 
 ### What types of integrations are supported? [managed-integrations-faq-supported]
 
-{{managed-integrations}} are best suited for integrations that pull data from a cloud source through an API at moderate volumes. For a complete list, refer to [{{managed-integrations}} quick reference](integration-docs://reference/managed_integrations.md). Elastic continually adds more integrations to this list.
+{{managed-integrations}} are best suited for integrations that pull data from a cloud source through an API at lower volumes. For a complete list, refer to [{{managed-integrations}} quick reference](integration-docs://reference/managed_integrations.md). Elastic continually adds more integrations to this list.
 
 ### Why aren't some integrations available as {{managed-integrations}}? [managed-integrations-faq-missing]
 
@@ -30,7 +30,7 @@ Not every integration in Elastic's catalog can run as an {{managed-integration}}
 
 ### How many {{managed-integrations}} can I deploy? [managed-integrations-faq-limit]
 
-You can deploy up to 50 {{managed-integrations}} per project. Adding multiple {{managed-integrations}} for the same source doesn't increase ingest throughput. For higher throughput, consider the [{{edot}} Cloud Forwarder](opentelemetry://reference/edot-cloud-forwarder/index.md).
+You can deploy up to 50 {{managed-integrations}} per {{serverless-short}} project or {{ech}} deployment. Adding multiple {{managed-integrations}} for the same source doesn't increase ingest throughput. For higher throughput, consider the [{{edot}} Cloud Forwarder](opentelemetry://reference/edot-cloud-forwarder/index.md).
 
 ### Can I create alerts on data ingested by {{managed-integrations}}? [managed-integrations-faq-alerting]
 
@@ -117,9 +117,9 @@ For an isolated issue with a single collector, Elastic restarts it and ingestion
 
 After you create a new {{managed-integration}}, the integration policy might show an **Add agent** button for several minutes while Elastic provisions the collector. The button disappears automatically once provisioning is complete. Refresh the page if you want to view the updated status sooner — no other action is needed.
 
-### Why aren't my {{managed-integrations}} collectors shown in {{fleet}}? [managed-integrations-faq-fleet-visibility]
+### Why aren't my {{managed-integration}} collectors shown in {{fleet}}? [managed-integrations-faq-fleet-visibility]
 
-{{managed-integrations}} are a fully managed service, so the underlying collectors aren't shown in **{{fleet}}** — Elastic operates the infrastructure on your behalf. You can still view each integration's status in the **{{integrations}}** app and observe the ingested data itself in your cluster.
+{{managed-integrations}} are a fully managed service, so the underlying collectors aren't shown in {{fleet}} — Elastic operates the infrastructure on your behalf. You can still view each integration's status in the **{{integrations}}** app and observe the ingested data itself in your cluster.
 
 ### How do I make the underlying collectors visible in {{fleet}}? [managed-integrations-faq-fleet-show]
 
@@ -128,23 +128,14 @@ stack: preview 9.1-9.4
 serverless: unavailable
 ```
 
-On {{stack}} 9.1 through 9.4, you can override the default and expose the underlying collectors in **{{fleet}}**:
+On {{stack}} 9.1 through 9.4, you can override the default and expose the underlying collectors in {{fleet}}:
 
-::::{applies-switch}
-
-:::{applies-item} stack: preview 9.2-9.4
-Go to the **Settings** tab of the **{{fleet}}** page. In the **Advanced Settings** section, enable **Show agentless resources**.
-:::
-
-:::{applies-item} stack: preview =9.1
-Add the query parameter `?showAgentless=true` to the end of the **{{fleet}}** page's URL.
-:::
-
-::::
+:::::{include} /manage-data/ingest/managed-integrations/_snippets/show-agentless-resources.md
+:::::
 
 ### How do I get support and collect diagnostics? [managed-integrations-faq-support]
 
-{{managed-integrations}} are a fully managed service, so you usually don't need to collect diagnostics yourself. If you suspect a problem with the service or your deployment, contact [Elastic Support](https://support.elastic.co) — they'll collect diagnostics on your behalf and investigate.
+{{managed-integrations}} are a fully managed service, so you usually don't need to collect diagnostics yourself. Errors that are relevant to you are surfaced for each integration in the **{{integrations}}** app. If you suspect a problem with the service or your deployment, contact [Elastic Support](https://support.elastic.co) — they'll collect diagnostics on your behalf and investigate.
 
 ### How do I troubleshoot an Offline agent? [managed-integrations-troubleshoot-offline]
 
@@ -178,28 +169,19 @@ On the **Fleet** → **Agents** page, agents associated with {{managed-integrati
 1. **Check the integration configuration.** Most `Unhealthy` states are caused by expired or invalid credentials, or by source-side permission issues. Confirm that the credentials and configuration you provided for the integration are still valid.
 2. **Contact [Elastic Support](https://support.elastic.co).** If the configuration looks correct but the agent remains unhealthy, support will collect diagnostics and investigate on your behalf.
 
-:::::{dropdown} Collect diagnostics yourself
+::::::{dropdown} Collect diagnostics yourself
 
 If you want to collect a diagnostics bundle before contacting support:
 
-1. Make agentless agents visible in **{{fleet}}**:
+1. Make agentless agents visible in {{fleet}}:
 
-   ::::{applies-switch}
-
-   :::{applies-item} stack: preview 9.2-9.4
-   Go to the **Settings** tab of the **{{fleet}}** page. In the **Advanced Settings** section, enable **Show agentless resources**.
-   :::
-
-   :::{applies-item} stack: preview =9.1
-   Add the query parameter `?showAgentless=true` to the end of the **{{fleet}}** page's URL.
-   :::
-
-   ::::
+   :::::{include} /manage-data/ingest/managed-integrations/_snippets/show-agentless-resources.md
+   :::::
 
 2. In **{{fleet}}**, select the unhealthy agent.
 3. From the actions menu {icon}`ellipsis`, select **Maintenance and diagnostics** → **Request diagnostics .zip**.
 4. Download and unzip the [diagnostics bundle](/troubleshoot/ingest/fleet/diagnostics.md). For more information, refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md).
-:::::
+::::::
 
 ### Why can't I upgrade my {{managed-integration}} to a later version? [managed-integrations-faq-upgrade]
 
