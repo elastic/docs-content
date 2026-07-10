@@ -932,14 +932,14 @@ redirects:
     to: 'manage-data/ingest/managed-integrations/managed-integrations-faq.md'
     anchors:
       'agentless-integration-troubleshooting': null
-      '_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page': 'agentless-faq-add-agent-button'
-      'why-isnt-my-agentless-agent-appearing-in-fleet': 'agentless-faq-fleet-visibility'
-      '_how_do_i_troubleshoot_an_offline_agent': 'agentless-troubleshoot-offline'
-      'why-cant-i-upgrade-my-agentless-integration-to-a-newer-version': 'agentless-faq-upgrade'
-      '_how_do_i_troubleshoot_an_unhealthy_agent': 'agentless-troubleshoot-unhealthy'
-      '_how_do_i_delete_an_agentless_integration': 'agentless-faq-delete'
-      'can-agentless-integrations-use-a-specific-range-of-static-ip-addresses-for-configuring-allow-and-deny-rules-for-traffic': 'agentless-faq-static-ip'
-      'do-agentless-integrations-work-if-im-using-traffic-filtering': 'agentless-faq-traffic-filtering'
+      '_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page': 'managed-integrations-faq-add-agent-button'
+      'why-isnt-my-agentless-agent-appearing-in-fleet': 'managed-integrations-faq-fleet-visibility'
+      '_how_do_i_troubleshoot_an_offline_agent': 'managed-integrations-troubleshoot-offline'
+      'why-cant-i-upgrade-my-agentless-integration-to-a-newer-version': 'managed-integrations-faq-upgrade'
+      '_how_do_i_troubleshoot_an_unhealthy_agent': 'managed-integrations-troubleshoot-unhealthy'
+      '_how_do_i_delete_an_agentless_integration': 'managed-integrations-faq-delete'
+      'can-agentless-integrations-use-a-specific-range-of-static-ip-addresses-for-configuring-allow-and-deny-rules-for-traffic': 'managed-integrations-faq-static-ip'
+      'do-agentless-integrations-work-if-im-using-traffic-filtering': 'managed-integrations-faq-traffic-filtering'
 
   # troubleshoot/security/agentless-integrations.md existed on main and
   # included the FAQ snippet, so its H1 anchor plus the FAQ section
@@ -948,14 +948,14 @@ redirects:
     to: 'manage-data/ingest/managed-integrations/managed-integrations-faq.md'
     anchors:
       'agentless-integration-troubleshoot': null
-      '_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page': 'agentless-faq-add-agent-button'
-      'why-isnt-my-agentless-agent-appearing-in-fleet': 'agentless-faq-fleet-visibility'
-      '_how_do_i_troubleshoot_an_offline_agent': 'agentless-troubleshoot-offline'
-      'why-cant-i-upgrade-my-agentless-integration-to-a-newer-version': 'agentless-faq-upgrade'
-      '_how_do_i_troubleshoot_an_unhealthy_agent': 'agentless-troubleshoot-unhealthy'
-      '_how_do_i_delete_an_agentless_integration': 'agentless-faq-delete'
-      'can-agentless-integrations-use-a-specific-range-of-static-ip-addresses-for-configuring-allow-and-deny-rules-for-traffic': 'agentless-faq-static-ip'
-      'do-agentless-integrations-work-if-im-using-traffic-filtering': 'agentless-faq-traffic-filtering'
+      '_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page': 'managed-integrations-faq-add-agent-button'
+      'why-isnt-my-agentless-agent-appearing-in-fleet': 'managed-integrations-faq-fleet-visibility'
+      '_how_do_i_troubleshoot_an_offline_agent': 'managed-integrations-troubleshoot-offline'
+      'why-cant-i-upgrade-my-agentless-integration-to-a-newer-version': 'managed-integrations-faq-upgrade'
+      '_how_do_i_troubleshoot_an_unhealthy_agent': 'managed-integrations-troubleshoot-unhealthy'
+      '_how_do_i_delete_an_agentless_integration': 'managed-integrations-faq-delete'
+      'can-agentless-integrations-use-a-specific-range-of-static-ip-addresses-for-configuring-allow-and-deny-rules-for-traffic': 'managed-integrations-faq-static-ip'
+      'do-agentless-integrations-work-if-im-using-traffic-filtering': 'managed-integrations-faq-traffic-filtering'
   # Rehome CCS and CCR privileges from remote-clusters-cert.md
   'deploy-manage/remote-clusters/remote-clusters-cert.md':
     to: 'deploy-manage/remote-clusters/remote-clusters-cert.md'
