@@ -214,7 +214,7 @@ The symlink must be created on all data and master eligible nodes and be readabl
 ::::
 
 
-The symlink and the repointed value must be in place before the node starts. Once configured, the token file is used by default by all S3 repositories that don't have explicit `client` credentials, and it is re-read automatically when EKS rotates it.
+The symlink and the file to which it links must be in place before the node starts. Once configured, the token file is used by default by all S3 repositories that don't have explicit `client` credentials, and it is re-read automatically when EKS rotates it.
 
 
 ## AWS VPC bandwidth settings [repository-s3-aws-vpc]
