@@ -51,7 +51,7 @@ On {{serverless-full}}, {{managed-integrations}} follow the [{{serverless-full}}
 
 Documents ingested through {{managed-integrations}} are stored in your project or {{ech}} deployment, the same as data ingested by agent-based integrations.
 
-### Does my data travel over the public internet? [agentless-faq-internet]
+### Does my data travel over the public internet? [managed-integrations-faq-public-internet]
 
 Usually not. Data flows from Elastic-managed infrastructure to your cluster over Elastic's internal network. However, if your {{ech}} deployment is in a region that isn't served by {{serverless-full}}, data might traverse the public internet to reach your cluster.
 
@@ -82,7 +82,7 @@ Yes. To preserve quality of service across all {{managed-integrations}}, through
 
 No. Deploying multiple {{managed-integrations}} for the same source doesn't increase ingest throughput. For higher throughput, consider the [{{edot}} Cloud Forwarder](opentelemetry://reference/edot-cloud-forwarder/index.md).
 
-### What happens to my data if there's a service issue? [agentless-faq-disaster]
+### What happens to my data if there's a service issue? [managed-integrations-faq-service-issue]
 
 For an isolated issue with a single collector, Elastic restarts it and ingestion resumes. Any events in the collector's in-memory queue might be lost. For a service-wide outage, no data is collected until the infrastructure recovers, and some in-flight events might be lost.
 

@@ -921,10 +921,10 @@ redirects:
     many:
       - to: 'manage-data/ingest/managed-integrations/enable-managed-integration.md'
         anchors:
-          'requirements': 'enable-agentless-before-you-begin'
-          'find-agentless-integrations': 'enable-agentless-find'
-          'generally-available-ga-agentless-integrations': 'enable-agentless-find'
-          'beta-agentless-integrations': 'enable-agentless-find'
+          'requirements': 'enable-managed-integration-before-you-begin'
+          'find-agentless-integrations': 'enable-managed-integration-find'
+          'generally-available-ga-agentless-integrations': 'enable-managed-integration-find'
+          'beta-agentless-integrations': 'enable-managed-integration-find'
 
   'manage-data/ingest/agentless/cloud-connector-deployment.md': 'manage-data/ingest/managed-integrations/cloud-connector-deployment.md'
 

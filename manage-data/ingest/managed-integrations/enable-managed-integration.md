@@ -8,24 +8,27 @@ products:
   - id: fleet
   - id: cloud-serverless
   - id: cloud-hosted
+  - id: elasticsearch
   - id: observability
   - id: security
 type: how-to
 ---
 
-# Enable an {{managed-integration}} [enable-agentless-integration]
+# Enable an {{managed-integration}} [enable-managed-integration]
 
 Enable an {{managed-integration}} in {{kib}} to start collecting data from a cloud source. Elastic provisions and operates the collector for you on Elastic-managed infrastructure, so there's nothing to install or maintain. For details on the architecture, refer to [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md).
 
-## Before you begin [enable-agentless-before-you-begin]
+## Before you begin [enable-managed-integration-before-you-begin]
 
 To enable an {{managed-integration}}, you need:
 
-* An {{ech}} deployment or an {{serverless-full}} Observability or Security project
+* One of these deployment types:
+  * An {{serverless-full}} project
+  * An {{ech}} deployment on version 9.5 or later, or on version 9.0 to 9.4 to use the technical preview
 * The `Fleet: All` and `Integrations: All` [{{kib}} privileges](/reference/fleet/fleet-roles-privileges.md) to create or edit an {{managed-integration}}. These are the same privileges required for any {{fleet}} integration.
 * On {{ech}}, a working default [{{fleet-server}}](/reference/fleet/fleet-server.md)
 
-## Find {{managed-integrations}} [enable-agentless-find]
+## Find {{managed-integrations}} [enable-managed-integration-find]
 
 ```{applies_to}
 stack: ga 9.5+, preview 9.2-9.4
@@ -52,9 +55,9 @@ To find which {{product.integrations}} can run as {{managed-integrations}} in {{
 
 ::::
 
-For a complete list of integrations that can run as {{managed-integrations}}, refer to [Managed integrations quick reference](integration-docs://reference/agentless_integrations.md).
+For a complete list of integrations that can run as {{managed-integrations}}, refer to [Managed integrations quick reference](integration-docs://reference/managed_integrations.md).
 
-## Enable the integration [enable-agentless-steps]
+## Enable the integration [enable-managed-integration-steps]
 
 1. In {{kib}}, go to **{{integrations}}** and select an integration that can be deployed as an {{managed-integration}}.
 2. Select **Add `<integration>`**.
@@ -70,7 +73,7 @@ Within a few minutes, data from the source appears in the integration's data str
 For integrations that authenticate to a cloud provider, you can use [cloud connector authentication](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md) to avoid managing API keys directly.
 :::
 
-## Next steps [enable-agentless-next-steps]
+## Next steps [enable-managed-integration-next-steps]
 
-* Learn more about [how {{managed-integrations}} work](/manage-data/ingest/managed-integrations/managed-integrations.md#agentless-architecture).
+* Learn more about [how {{managed-integrations}} work](/manage-data/ingest/managed-integrations/managed-integrations.md#managed-integrations-architecture).
 * Review common questions in the [{{managed-integrations}} FAQ](/manage-data/ingest/managed-integrations/managed-integrations-faq.md).
