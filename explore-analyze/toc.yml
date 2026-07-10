@@ -69,6 +69,7 @@ toc:
               - file: machine-learning/anomaly-detection/ml-anomaly-detection-job-types.md
               - file: machine-learning/anomaly-detection/anomaly-detection-scale.md
               - file: machine-learning/anomaly-detection/ml-delayed-data-detection.md
+              - file: machine-learning/anomaly-detection/ml-ad-dst-calendars.md
           - file: machine-learning/anomaly-detection/ml-api-quickref.md
           - file: machine-learning/anomaly-detection/anomaly-how-tos.md
             children:
@@ -297,8 +298,6 @@ toc:
           - file: dashboards/create-dashboard-of-panels-with-ecommerce-data.md
   - file: visualize.md
     children:
-      - file: visualize/visualize-library.md
-      - file: visualize/manage-panels.md
       - file: visualize/lens.md
         children:
           - file: visualize/charts/area-charts.md
@@ -367,6 +366,8 @@ toc:
           - file: visualize/legacy-editors/aggregation-based.md
           - file: visualize/legacy-editors/tsvb.md
           - file: visualize/legacy-editors/timelion.md
+      - file: visualize/visualize-library.md
+      - file: visualize/manage-panels.md
   - file: find-and-organize.md
     children:
       - file: find-and-organize/data-views.md
@@ -384,6 +385,14 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
+      - hidden: alerting/compare-alerting-systems.md
+      - hidden: alerting/system-overview.md
+      - hidden: alerting/experimental-alerting-system/how-it-works.md
+      - hidden: alerting/experimental-alerting-system/glossary.md
+      - hidden: alerting/experimental-alerting-system/get-started.md
+      - hidden: alerting/experimental-alerting-system/get-started/setup.md
+      - hidden: alerting/experimental-alerting-system/get-started/configure-access.md
+      - hidden: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
@@ -487,6 +496,7 @@ toc:
               - file: workflows/use-cases/ai-augmented-workflows/classify-and-route-alerts.md
       - file: workflows/concepts.md
         children:
+          - file: workflows/authorization.md
           - file: workflows/triggers.md
             children:
               - file: workflows/triggers/manual-triggers.md
