@@ -197,7 +197,8 @@ If the symlink exists, it will be used by default by all S3 repositories that do
 
 #### Using EKS Pod Identity for authentication [eks-pod-identity]
 ```{applies_to}
-stack: ga 9.6
+deployment:
+  self: ga 9.6
 ```
 
 If you want to use [EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) for authentication, EKS injects a token file into the pod and sets the `AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE` environment variable to point at it. However, {{es}} is forbidden from reading files at this location for security reasons. To use EKS Pod Identity, add a symlink at `${ES_PATH_CONF}/repository-s3/eks-pod-identity-token` which links to the token file, then set the `AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE` environment variable to the location of this symlink. For example:
