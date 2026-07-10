@@ -24,11 +24,9 @@ When an agent runs, {{agent-builder}} records the run as OpenTelemetry (OTel) tr
 
 {{agent-builder}} ingests this data into managed data streams in your own {{es}}. It uses two OpenTelemetry data streams, `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*`. They are OTel-compatible and use the standard OTel index templates, so they inherit the mappings, settings, and data lifecycle that {{es}} maintains for OTel data.
 
-These are regular data streams, not system or hidden indices. You can explore and analyze the data with the same tools you use for any other data in {{es}}, including Discover, Dashboards, Lens, and ES|QL.
+These are regular data streams, not system or hidden indices. You can explore and analyze the data with the same tools you use for any other data in {{es}}, including [Discover](/explore-analyze/discover.md), [Dashboards](/explore-analyze/dashboards.md), [Lens](/explore-analyze/visualize/lens.md), and [ES|QL](elasticsearch://reference/query-languages/esql.md).
 
 <!-- Both `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*` are named in the Kibana Gen AI Settings source. Confirm what each stream carries (spans vs. log records) before publishing. -->
-
-<!-- TODO (step 9, cross-links): link Discover, Dashboards, Lens, and ES|QL. -->
 
 Trace collection is space-aware. Each {{kib}} space collects its own traces, and turning on collection installs an overview dashboard in that space.
 
@@ -44,7 +42,7 @@ Spans in a trace mirror how the agent ran. Common span types include:
 
 Spans carry standard OTel generative AI attributes, such as the model (`gen_ai.request.model`), the model provider (`gen_ai.system`), and token cost (`gen_ai.usage.cost`). Use these to break down usage and latency by model, agent, or tool.
 
-By default, traces record structural metadata only. Conversation content such as prompts and responses is excluded unless an administrator opts in. For details, see the trace privacy settings later on this page.
+By default, traces record structural metadata only. Conversation content such as prompts and responses is excluded unless an administrator opts in. For details, see [Trace privacy settings](#trace-privacy-settings).
 
 <!-- Span types and attributes are from #7170 research (search-team#14180). Verify exact span names against the shipped feature before publishing, and keep the full attribute list on the dashboards page (#7170). -->
 
@@ -91,22 +89,45 @@ For the full privilege model, including {{kib}} feature and cluster privileges, 
 
 ## Export traces to a remote OTLP endpoint
 
-You can send traces to a remote OTLP endpoint, such as a separate {{es}} cluster, instead of the local data stream.
+By default, {{agent-builder}} exports traces to the local data streams in your {{es}}. You can also forward traces to one or more remote OpenTelemetry Protocol (OTLP) endpoints, such as a dedicated observability cluster.
 
-<!-- TODO: document `xpack.agentBuilder.tracing.url` (and `headers`) in `kibana.yml`. Local and remote export are mutually exclusive per config. Source: search-team#14190. Confirm remote export is also GA/un-gated in 9.5 (open question 2). -->
+Configure remote endpoints with `xpack.agentBuilder.tracing.exporters` in `kibana.yml`. Each entry takes a `url` and optional `headers` for authentication:
+
+```yaml
+xpack.agentBuilder.tracing:
+  exporters:
+    - url: "https://remote-cluster:9200/_otlp/v1/traces"
+      headers:
+        Authorization: "ApiKey <encoded-key>"
+```
+
+Remote export is additive. Traces still go to the local `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*` data streams, and a copy is sent to each configured endpoint. The [trace privacy settings](#trace-privacy-settings) apply to every destination, so content that is excluded locally is also excluded from remote export.
+
+:::{note}
+These are `kibana.yml` settings, so remote export is available on deployments where you can edit the {{kib}} configuration.
+:::
+
+<!-- Source: kibana `main` config.ts + register_tracing.ts (2026-07-10). The local ES exporter is always registered and `exporters` entries are added on top, so local and remote export are additive, not mutually exclusive. This supersedes search-team#14190, which described a single `tracing.url` that replaced local export. Not gated by the experimental flag. `scheduledDelay` (batch flush) and `opik_distributed_tracing` also exist under `tracing` but are tuning/internal options, omitted here. Confirm whether serverless permits these kibana.yml settings. -->
 
 ## Build dashboards on trace data
 
-Turning on trace collection installs an overview dashboard for monitoring agent activity and token usage.
+When trace collection is on, {{agent-builder}} provides a prebuilt overview dashboard for agent activity and token usage. You install or reinstall it per space from the **Agent Builder Traces** settings section.
 
-<!-- TODO: keep this brief; the overview dashboard is owned by #7170. Note the known bug where the dashboard is not auto-installed on new space creation (search-team#15105). Do not confuse this with agent-builder-dashboards-and-visualizations.md, which is about agents building dashboards inside chat. -->
+Because traces are stored in regular data streams, you can also build your own visualizations with [Dashboards](/explore-analyze/dashboards.md) and [Lens](/explore-analyze/visualize/lens.md), or query the data with [ES|QL](elasticsearch://reference/query-languages/esql.md). To explore traces in natural language, use the built-in traces skill described in the [built-in skills reference](builtin-skills-reference.md).
+
+<!-- The out-of-the-box overview dashboard is owned by #7170. Link its page once published and keep this section brief. Known bug: dashboard not auto-installed on new space creation (search-team#15105). Confirm status (open question 5) before documenting a workaround. Do not confuse with agent-builder-dashboards-and-visualizations.md (agents building dashboards in chat). Tighten the skills link to the traces-skill anchor once PR #7255 merges. -->
 
 ## View traces for a conversation round
 
-In chat, you can open the trace waterfall for a single conversation round.
+In [Agent Chat](chat.md), you can open the trace waterfall for a single conversation round. The button appears only when the trace data stream exists, you have access to it, and traces exist for that round.
 
-<!-- TODO: cross-link chat.md. The button appears only when the trace index exists, the user has access, and traces exist for that round. Source: search-team#14619. Confirm the exact button label (open question 6). -->
+<!-- Step 8 adds the detailed button subsection to chat.md, coordinated with PR #7290. Confirm the exact button label (open question 6). Source: search-team#14619. -->
 
 ## Related pages
 
-<!-- TODO: link permissions.md, monitor-usage.md, chat.md, and the sibling trace pages (#7170 dashboards, #7172 traces skill, #7173 alerting) once published. -->
+- [](permissions.md)
+- [](monitor-usage.md)
+- [](chat.md)
+- [](builtin-skills-reference.md)
+
+<!-- Add the dashboards page (#7170) and alerting page (#7173) here once published. -->
