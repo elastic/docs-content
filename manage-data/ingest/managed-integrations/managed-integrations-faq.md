@@ -38,9 +38,23 @@ Yes. Data ingested through {{managed-integrations}} lands in your cluster like a
 
 ## Pricing and SLAs [managed-integrations-faq-pricing-slas]
 
-### How am I charged for {{managed-integrations}}? [managed-integrations-faq-pricing]
+### How much do {{managed-integrations}} cost? [managed-integrations-faq-pricing]
 
-On {{serverless-short}} projects, the cost of {{managed-integrations}} is included in your subscription. During technical preview, there are no additional costs on {{ech}} either. For current pricing details, refer to the [Elastic pricing page](https://www.elastic.co/pricing).
+On {{serverless-short}} projects, you can deploy {{managed-integrations}} at no additional cost.
+
+On {{ech}}, {{managed-integrations}} are free during technical preview. When they reach general availability (GA), each deployed {{managed-integration}} is charged per hour. On the Elastic price list, the unit appears as `[csp].managed-integration`, where `[csp]` is `aws`, `azure`, or `gcp`.
+
+Most {{managed-integrations}} are metered at one unit per integration, per hour. The following integrations are exceptions:
+
+| Integration | Unit cost (per integration, per hour) |
+| --- | :---: |
+| Microsoft Defender XDR Logs | 4 |
+| Microsoft Defender for Endpoint | 4 |
+| Rapid7 InsightVM logs | 4 |
+| CrowdStrike Falcon Intelligence logs | 4 |
+| abuse.ch API | 2 |
+
+For current pricing details, refer to the [Elastic pricing page](https://www.elastic.co/pricing).
 
 ### What SLAs apply to {{managed-integrations}}? [managed-integrations-faq-slas]
 
@@ -77,7 +91,7 @@ Yes. {{managed-integrations}} support traffic filtering, and no additional confi
 
 ### Is there a maximum throughput? [managed-integrations-faq-throughput]
 
-Yes. To preserve quality of service across all {{managed-integrations}}, throughput is rate-limited on {{serverless-short}} for integrations whose underlying input type is `httpjson` or `cel` (two common pull-based input mechanisms in {{agent}}). Rate limiting uses back-pressure rather than dropping events, so collection slows down until the source catches up.
+Yes. To ensure a consistent level of service and avoid issues caused by under-resourced clusters, each {{managed-integration}} is limited to 300 events per second (EPS). If throughput spikes above this limit, the service is throttled, and the UI shows when this happens. Continuously hitting this limit delays ingestion of your cloud data source. If you need higher throughput, consider the [{{edot}} Cloud Forwarder](opentelemetry://reference/edot-cloud-forwarder/index.md).
 
 ### Does the service scale horizontally? [managed-integrations-faq-horizontal-scaling]
 
