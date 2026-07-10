@@ -50,11 +50,11 @@ For the full list of integrations that can run as {{managed-integrations}}, refe
 
 ## How {{managed-integrations}} work [managed-integrations-architecture]
 
-When you enable an {{managed-integration}}, Elastic provisions a dedicated *collector* for it on Elastic-managed infrastructure. Each collector runs the same {{agent}} and integration package you'd deploy yourself for the equivalent agent-based integration, but Elastic provisions, updates, and operates it for you.
+When you enable an {{managed-integration}}, Elastic provisions a dedicated collector for it on Elastic-managed infrastructure. Each collector runs the same {{agent}} and integration package you'd deploy yourself for the equivalent agent-based integration, but Elastic provisions, updates, and operates it for you.
 
 The collector pulls data from the source API and writes documents to your {{es}} cluster through the standard `_bulk` API. For most integrations, data flows through the integration's ingest pipelines and lands in the same data streams as it would for a self-managed integration. {{managed-integrations}} built on OpenTelemetry are an exception: their data bypasses ingest pipelines and lands in the integration's dedicated data streams (typically in `.otel-*` data streams).
 
-A shared, stateless *Controller* orchestrates the lifecycle of these collectors. When you enable an integration in {{kib}}, the Controller creates and updates the collector, and it removes the collector when you delete the integration. The Controller doesn't store customer data.
+A shared, stateless Controller orchestrates the lifecycle of these collectors. When you enable an integration in {{kib}}, the Controller creates and updates the collector, and it removes the collector when you delete the integration. The Controller doesn't store customer data.
 
 :::{image} /manage-data/images/managed-integrations-architecture.png
 :alt: Architecture diagram for {{managed-integrations}}. A request in {{kib}} triggers the Controller to create per-integration collectors on Elastic-managed infrastructure. Each collector pulls data from a cloud source through a cloud proxy, writes documents to {{es}} over the `_bulk` API, and receives its configuration from {{es}}.
