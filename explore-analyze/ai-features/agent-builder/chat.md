@@ -164,6 +164,22 @@ Select **Inspect response** to view detailed information about individual tool c
 
 Select **View JSON** to view the full raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
+### View traces for a conversation round
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Each conversation round can record OpenTelemetry traces of how the agent ran. To inspect them, select the **View Trace** icon ({icon}`apmTrace`) on the round. A **Trace** flyout opens with a waterfall of the round's spans, including model calls, tool calls, and workflows.
+
+The button appears only when all of these are true:
+
+- The trace data stream exists.
+- You have read access to it.
+- Traces exist for that round.
+
+To learn how traces are collected, configured, and secured, refer to [Collect agent traces](collect-traces.md).
+
 ### Review and confirm agent changes
 ```{applies_to}
 stack: ga 9.4+
