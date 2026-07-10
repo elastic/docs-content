@@ -1,5 +1,5 @@
 ---
-navigation_title: Managed integrations content
+navigation_title: Managed content
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/managed-integrations-content.html
 applies_to:
@@ -10,7 +10,7 @@ products:
   - id: elastic-agent
 ---
 
-# Managed integrations content [managed-integrations-content]
+# Managed content [managed-content]
 
 
 Most integration content installed by {{fleet}} isn't editable. This content is tagged with a **Managed** badge in the {{kib}} UI. Managed content itself cannot be edited or deleted, however managed visualizations, dashboards, and saved searches can be cloned.
