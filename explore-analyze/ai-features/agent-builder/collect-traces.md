@@ -81,9 +81,13 @@ Built-in tools and agents always appear under their real names. When a value is 
 
 ## Grant access to trace data
 
-To read traces, a user needs `read` and `view_index_metadata` privileges on `traces-agent_builder.otel-*`.
+Trace data is stored in the `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*` data streams. To read it, a role needs `read` and `view_index_metadata` on both patterns.
 
-<!-- TODO: cross-link permissions.md (ES index privileges section). RBAC on the local trace index is still open (search-team#14100, decision TBD), including whether users can see other users' traces. Keep this precise and hedged (open questions 3 and 4). -->
+Access is granted at the index level. Any user who can read these data streams can read all collected traces, so trace access is not scoped per user. To control who can read traces, configure index privileges through roles in **Stack Management > Roles**.
+
+For the full privilege model, including {{kib}} feature and cluster privileges, see [Permissions and access control](permissions.md#read-trace-data).
+
+<!-- RBAC on the local trace index is still settling (search-team#14100). Keep this hedged until the decision lands. -->
 
 ## Export traces to a remote OTLP endpoint
 
