@@ -20,9 +20,31 @@ products:
 
 ## How trace collection works
 
-Agent Builder writes traces to an OpenTelemetry-compatible managed data stream in your own {{es}}.
+When an agent runs, {{agent-builder}} records the run as OpenTelemetry (OTel) traces. Each trace covers one conversation round. A trace is made up of spans that map to the work the agent did, such as model calls, tool calls, and any workflows it triggered.
 
-<!-- TODO: describe the `traces-agent_builder.otel-*` data stream. It is a regular data stream, not a system index, so it works in Dashboards, Discover, Lens, and ES|QL. Traces are space-aware. Sources: search-team#14684, #14620. -->
+{{agent-builder}} ingests these traces into a managed data stream in your own {{es}}, named `traces-agent_builder.otel-*`. The data stream is OTel-compatible and uses the standard OTel index template, so it inherits the mappings, settings, and data lifecycle that {{es}} maintains for OTel data.
+
+The trace data stream is a regular data stream, not a system or hidden index. You can explore and analyze traces with the same tools you use for any other data in {{es}}, including Discover, Dashboards, Lens, and ES|QL.
+
+<!-- TODO (step 9, cross-links): link Discover, Dashboards, Lens, and ES|QL. -->
+
+Trace collection is space-aware. Each {{kib}} space collects its own traces, and turning on collection installs an overview dashboard in that space.
+
+### What a trace contains
+
+Spans in a trace mirror how the agent ran. Common span types include:
+
+- `Converse`: the full conversation round.
+- `ExecuteAgent`: a single agent execution, identified by `elastic.agent.id`.
+- `Tool: <name>`: an individual tool call, identified by `gen_ai.tool.name`.
+- `Workflow: <name>`: a workflow the agent triggered.
+- `ChatComplete`: a single model call.
+
+Spans carry standard OTel generative AI attributes, such as the model (`gen_ai.request.model`), the model provider (`gen_ai.system`), and token cost (`gen_ai.usage.cost`). Use these to break down usage and latency by model, agent, or tool.
+
+By default, traces record structural metadata only. Conversation content such as prompts and responses is excluded unless an administrator opts in. For details, see the trace privacy settings later on this page.
+
+<!-- Span types and attributes are from #7170 research (search-team#14180). Verify exact span names against the shipped feature before publishing, and keep the full attribute list on the dashboards page (#7170). -->
 
 ## Enable and configure trace collection
 
