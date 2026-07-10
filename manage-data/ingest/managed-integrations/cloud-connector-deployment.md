@@ -27,7 +27,7 @@ Cloud connector authentication currently supports deployments of Elastic's Cloud
 
 ::::{important}
 :applies_to: stack: preview =9.2
-In this version, to use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup. This is no longer required in later versions.
+In this version, to use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must choose AWS hosting during {{kib}} setup. This is no longer required in later versions.
 ::::
 
 ## Cloud connector names
