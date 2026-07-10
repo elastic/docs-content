@@ -23,11 +23,11 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
-:::{dropdown} Endpoints do not appear on the Assets → Endpoints page
+:::{dropdown} Response actions fail and endpoints do not appear for agents on version-specific policies
 **Applies to: {{stack}} 9.4.0, 9.4.1, 9.4.2, 9.4.3**
 
 **Impact**<br>
-Certain {{agent}} integration packages and inputs can trigger the creation of a version-specific {{agent}} policy. When a version-specific policy includes the {{elastic-defend}} integration, the corresponding endpoints are not visible on the **Assets** → **Endpoints** and **Assets** → **Endpoints** > **Policies** pages.
+Certain {{agent}} integration packages and inputs can trigger the creation of a version-specific {{agent}} policy in {{fleet}}. When a version-specific policy includes the {{elastic-defend}} integration, response actions against the affected endpoints fail. In addition, the corresponding endpoints are not visible on the **Assets** → **Endpoints** and **Assets** → **Endpoints** → **Policies** pages.
 
 For more information, refer to [#276295](https://github.com/elastic/kibana/issues/276295).
 
