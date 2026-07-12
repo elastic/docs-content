@@ -51,6 +51,18 @@ Wired streams:
 
 For more information, refer to [Wired streams](./wired-streams.md).
 
+### Query streams [streams-query-streams]
+```{applies_to}
+stack: preview 9.4+
+serverless: preview
+```
+
+Query streams are virtual, read-only streams defined by an ES|QL query. They resolve at query-time — no data is stored, and no ingestion pipeline or routing rules are affected. Use them to create persistent, named views of your data that you can attach dashboards, alerts, and SLOs to, or monitor for [significant events](./management/significant-events.md).
+
+Query streams can be root-level (standalone) or nested under a parent stream to organize related views hierarchically without changing how data is ingested.
+
+For more information, refer to [Query streams](./query-streams.md).
+
 ## Managed components [streams-managed-components]
 When you configure classic or wired streams through the Streams UI or [Streams API](#streams-api), {{es}}-level components like templates and pipelines are created for the stream. These components are considered *managed* and shouldn't be modified using {{es}} APIs. When managing a stream through the Streams UI or API, continue doing so whenever possible.
 
