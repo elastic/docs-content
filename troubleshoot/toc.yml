@@ -198,7 +198,6 @@ toc:
       - file: ingest/elastic-serverless-forwarder.md      
   - file: deployments/elastic-cloud.md
     children:
-      - file: deployments/serverless.md
       - file: deployments/elastic-cloud/sso.md
       - file: monitoring/unavailable-nodes.md
       - file: monitoring/unavailable-shards.md
