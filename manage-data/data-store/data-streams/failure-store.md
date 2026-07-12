@@ -812,9 +812,12 @@ GET _data_stream/my-datastream
 3. An effective retention period of thirty days (30d) is present by default.
 4. The retention is currently determined by the default.  
 
-:::{note}
-The default retention respects any maximum retention values. If [maximum retention](../../lifecycle/data-stream/tutorial-data-stream-retention.md#what-is-retention) is configured lower than thirty days then the maximum retention will be used as the default value.
-:::
+::::{note}
+[`frozen_after`](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md) is valid only on the main data stream lifecycle, not on the failure store lifecycle.
+::::
+
+The default retention respects any maximum retention values.
+If [maximum retention](../../lifecycle/data-stream/tutorial-data-stream-retention.md#what-is-retention) is configured lower than thirty days, the maximum retention will be used as the default value.
 
 You can update the default retention period for failure stores in your deployment by updating the `data_streams.lifecycle.retention.failures_default` cluster setting. New and existing data streams that have no retention configured on their failure stores will use this value to determine their retention period.
 

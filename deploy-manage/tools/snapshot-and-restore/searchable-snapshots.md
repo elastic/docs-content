@@ -31,6 +31,12 @@ If a node fails and {{search-snap}} shards need to be recovered elsewhere, there
 
 You typically manage {{search-snaps}} through {{ilm-init}}. The [searchable snapshots](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) action automatically converts a regular index into a {{search-snap}} index when it reaches the `cold` or `frozen` phase. You can also make indices in existing snapshots searchable by manually mounting them using the [mount snapshot]({{es-apis}}operation/operation-searchable-snapshots-mount) API.
 
+::::{note}
+:applies_to: {"stack": "ga 9.5"}
+
+For data streams, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) can automate partially mounted {{search-snaps}} using `frozen_after` on older backing indices. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
+::::
+
 To mount an index from a snapshot that contains multiple indices, we recommend creating a [clone]({{es-apis}}operation/operation-snapshot-clone) of the snapshot that contains only the index you want to search, and mounting the clone. You should not delete a snapshot if it has any mounted indices, so creating a clone enables you to manage the lifecycle of the backup snapshot independently of any {{search-snaps}}. If you use {{ilm-init}} to manage your {{search-snaps}} then it will automatically look after cloning the snapshot as needed.
 
 You can control the allocation of the shards of {{search-snap}} indices using the same mechanisms as for regular indices. For example, you could use [Index-level shard allocation filtering](../../distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) to restrict {{search-snap}} shards to a subset of your nodes.

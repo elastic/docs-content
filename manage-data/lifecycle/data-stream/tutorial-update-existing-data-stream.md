@@ -12,16 +12,16 @@ products:
 
 Follow these steps to configure or remove data stream lifecycle settings for an existing, individual data stream.
 
-- [Set a data stream’s lifecycle](#set-lifecycle)
+- [Set a data stream's lifecycle](#set-lifecycle)
+- [Configure frozen searchable snapshots](#configure-dlm-searchable-snapshots)
 - [Remove the lifecycle for a data stream](#delete-lifecycle)
 - [Manage data retention on the Streams page](#data-retention-streams)
 
 These steps are for data stream lifecycle only. For the steps to configure {{ilm}}, refer to the [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md). For a comparison between the two, refer to [](/manage-data/lifecycle.md).
 
-## Set a data stream’s lifecycle [set-lifecycle]
+## Set a data stream's lifecycle [set-lifecycle]
 
-To add or to change the retention period of your data stream you can use the **Index Management** tools in {{kib}} or the {{es}} [lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle).
-
+To add or modify the retention period of your data stream you can use the **{{index-manage-app}}** tools in {{kib}} or the {{es}} [lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle).
 
 :::::{tab-set}
 :group: kibana-api
@@ -30,7 +30,7 @@ To add or to change the retention period of your data stream you can use the **I
 
 To change the data retention settings for a data stream:
 
-1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to the **{{index-manage-app}}** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Open the **Data Streams** tab.
 1. Use the search tool to find the data stream you're looking for.
 1. Select the data stream to view its details.
@@ -41,10 +41,7 @@ To change the data retention settings for a data stream:
     - Disable **Enable data retention** to turn off data stream lifecycle management for your data stream.
 
     If the data stream is already managed by [{{ilm-init}}](/manage-data/lifecycle/index-lifecycle-management.md), to edit the data retention settings you must edit the associated {{ilm-init}} policy.
-
-
 :::
-
 :::{tab-item} API
 :sync: api
 
@@ -91,7 +88,7 @@ To check the data retention settings for a data stream:
   :alt: Index lifecycle status page
   :width: 500px
   :::
-
+:::
 :::{tab-item} API
 :sync: api
 
@@ -141,16 +138,50 @@ The response will look like:
 6. This index is managed by the built-in data stream lifecycle.
 7. The time that has passed since this index has been created.
 8. The time that has passed since this index was [rolled over](../index-lifecycle-management/rollover.md).
-9. The time that will be used to determine when it’s safe to delete this index and all its data.
+9. The time that will be used to determine when it's safe to delete this index and all its data.
 10. The data retention for this index as well is at least 30 days, as it was recently updated.
 
 :::
 :::::
 
+## Configure frozen {{search-snaps}} [configure-dlm-searchable-snapshots]
+
+```{applies_to}
+stack: ga 9.5
+serverless: unavailable
+```
+
+You can add `frozen_after` to the lifecycle so older backing indices become partially mounted {{search-snaps}} on the frozen tier. For how conversion works, operational behavior, and troubleshooting blocked conversions, refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
+
+1. Confirm that a default snapshot repository is registered. Refer to [Manage snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md).
+
+2. Set `frozen_after` (and optionally `data_retention`) on the data stream lifecycle using the [PUT data stream lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle):
+
+    ```console
+    PUT _data_stream/my-data-stream/_lifecycle
+    {
+      "data_retention": "365d",
+      "frozen_after": "30d"
+    }
+    ```
+
+    In this example, backing indices older than 30 days are converted to frozen {{search-snaps}}. {{es}} can still delete indices when their `generation_time` exceeds the effective retention period, even after they have been frozen.
+
+3. Verify the lifecycle configuration and conversion status using the [explain data lifecycle API]({{es-apis}}operation/operation-indices-explain-data-lifecycle):
+
+    ```console
+    GET .ds-my-data-stream-*/_lifecycle/explain
+    ```
+
+    If conversions are blocked, refer to [Troubleshooting](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md#dlm-frozen-transition-troubleshooting).
+
+::::{note}
+The **{{index-manage-app}}** data stream details flow is focused on retention. When you need `frozen_after`, configure it with the API or in the index template lifecycle.
+::::
+
 ## Remove the lifecycle for a data stream [delete-lifecycle]
 
-To remove the lifecycle of a data stream you can use the **Index Management** tools in {{kib}} or the {{es}} [delete lifecycle API]({{es-apis}}operation/operation-indices-delete-data-lifecycle).
-
+To remove the lifecycle of a data stream you can use the **{{index-manage-app}}** tools in {{kib}} or the {{es}} [delete lifecycle API]({{es-apis}}operation/operation-indices-delete-data-lifecycle).
 
 :::::{tab-set}
 :group: kibana-api
@@ -159,7 +190,7 @@ To remove the lifecycle of a data stream you can use the **Index Management** to
 
 To remove a data stream's lifecycle:
 
-1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to the **{{index-manage-app}}** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Open the **Data Streams** tab.
 1. Use the search tool to find the data stream you're looking for.
 1. Select the data stream to view its details.
@@ -172,10 +203,7 @@ To remove a data stream's lifecycle:
   :alt: Index lifecycle status is disabled
   :width: 500px
   ::::
-
-
 :::
-
 :::{tab-item} API
 :sync: api
 
@@ -229,4 +257,3 @@ Starting with {{stack}} version 9.2, the **Streams** page provides a centralized
 1. Select **Edit data retention** and choose to retain your data indefinitely, for a custom period, or by following an existing ILM policy. You can also use the data retention configuration that's set in the index template by enabling the  **Inherit from index template** option. If you use this option, you don't need to specify a custom retention period or policy.
 
 For more information about the retention configuration options, refer to [](/solutions/observability/streams/management/retention.md).
-
