@@ -40,12 +40,19 @@ When the {{ece}} license expires, and consequently the cluster license that’s 
 
 ## Download a license [ece_download_a_license]
 
-To download a license from Elastic:
+You can download an ECE license either from the license email sent by Elastic, or from the license page of your subscription in the support portal.
+
+**License Email:**
 
 1. Locate the email sent to you from Elastic that includes the link to the license.
 2. Open the link, accept the licensing agreement, and select **Send**.
-3. Download the ECE license.
+3. Download the **Orchestration** license for ECE.
 
+**Support Portal:**
+
+1. Navigate to the [license page](https://support.elastic.co/licenses) on the support portal.
+2. Click the download button on your active license(s).
+3. Download the **Orchestration** license for ECE.
 
 ## Add a license [ece_add_a_license]
 
