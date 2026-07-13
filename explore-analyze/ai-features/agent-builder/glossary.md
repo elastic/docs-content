@@ -188,6 +188,12 @@ $$$genai-settings$$$
 GenAI Settings {applies_to}`stack: ga 9.4+`
 :   The {{kib}} settings page where you configure the default model and other generative-AI options that affect {{agent-builder}}. See [](models.md#change-the-default-model).
 
+## H
+
+$$$human-in-the-loop$$$
+Human-in-the-loop (HITL)
+:   A pattern where an agent pauses during a conversation and waits for you to respond before it continues. {{agent-builder}} uses human-in-the-loop prompts to confirm write operations, authorize access to external connectors, and ask clarifying questions. See [](chat.md#human-in-the-loop-prompts).
+
 ## I
 
 $$$index-search-tool$$$

@@ -23,6 +23,28 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Response actions fail and endpoints do not appear for agents on version-specific policies
+**Applies to: {{stack}} 9.4.0, 9.4.1, 9.4.2, 9.4.3**
+
+**Impact**<br>
+Certain {{agent}} integration packages and inputs can trigger the creation of a version-specific {{agent}} policy in {{fleet}}. When a version-specific policy includes the {{elastic-defend}} integration, response actions against the affected endpoints fail. In addition, the corresponding endpoints are not visible on the **Assets** → **Endpoints** and **Assets** → **Endpoints** → **Policies** pages.
+
+For more information, refer to [#276295](https://github.com/elastic/kibana/issues/276295).
+
+**Workaround**<br>
+There is currently no workaround available. A fix will be included in a future 9.4.x release.
+:::
+
+:::{dropdown} Osquery cannot target agents on version-specific policies
+**Applies to: {{stack}} 9.4.0, 9.4.1, 9.4.2, 9.4.3**
+
+**Impact**<br>
+Certain {{agent}} integration packages and inputs can trigger the creation of a version-specific {{agent}} policy. When a version-specific policy includes the Osquery integration, the corresponding agents do not appear in the Osquery agent or policy selector, so they cannot be targeted. Live queries against an affected policy fail with a `No agents found for selection` error, and agent grouping and counts in the selector are inaccurate.
+
+**Workaround**<br>
+There is currently no workaround available. A fix will be included in a future 9.4.x release.
+:::
+
 :::{dropdown} Problem Child and DGA integrations fail to install
 **Applies to: {{stack}} 9.3.6**
 
@@ -293,6 +315,37 @@ Ensure you give any users who will need access to the new space the appropriate 
 Resolved in {{stack}} 9.1.4
 
 ::::
+
+:::{dropdown} "Write role required to generate data" error when Data View Management is turned off for a space
+
+Applies to: 9.0
+
+**Impact**
+
+When the **Data View Management** feature is turned off for a {{kib}} space, users with write access to that space can encounter the following error in some {{elastic-sec}} apps, even when they have all the required [detections privileges](/solutions/security/detect-and-alert/detections-privileges.md):
+
+```txt
+Write role required to generate data: Users with write permission need to access the Elastic Security App to initialize the app source data
+```
+
+The error typically appears once per session until {{kib}} is fully reloaded.
+
+For more information, check [#4493](https://github.com/elastic/security-docs/issues/4493).
+
+**Workaround**
+
+Turn on the **Data View Management** feature for the affected space:
+
+1. Go to **Stack Management** → **Kibana** → **Spaces**.
+2. Edit the affected space.
+3. In the **Features** section, under **Management**, select the **Data View Management** checkbox.
+4. Save the space.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.1.0.
+
+:::
 
 :::{dropdown} The {{agent}} Docker image is not available at `docker.elastic.co/beats/elastic-agent:9.0.0`
 

@@ -43,9 +43,10 @@ Follow these steps to invoke an `ai.agent` as a step within a workflow.
 
 1.  Open the **Workflows** editor and create or edit a workflow.
 2.  Add a new step with the type `ai.agent`.
-3.  Configure the **`agent_id`** parameter with the unique identifier of the target agent.
-4.  Configure the **`message`** parameter with your natural language prompt.
-5.  Optionally, configure the **`schema`** parameter with a JSON Schema object to receive structured output from the agent instead of free-text.
+3.  Set the **`agent-id`** parameter at the top level of the step to the unique identifier of the target agent. If you omit it, the step uses the built-in Elastic AI Agent.
+4.  In the **`with`** block, set the **`message`** parameter to your natural language prompt.
+5.  Optionally, in the **`with`** block, set the **`schema`** parameter to a JSON Schema object to receive structured output from the agent instead of free-text.
+6.  Optionally, route the step to a specific model by setting **`connector-id`** or **`inference-id`** at the top level of the step. These parameters are mutually exclusive.
 
 ### Example: Analyze flight delays
 The following example demonstrates a workflow that searches for flight delays and uses the **Elastic AI Agent** to summarize the impact. To follow along with this example ensure that the [{{kib}} sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) is installed.
@@ -72,8 +73,8 @@ steps:
   # Step 2: Ask the agent to reason over the data
   - name: summarize_delays
     type: ai.agent
+    agent-id: "elastic-ai-agent" <1>
     with:
-      agent_id: "elastic-ai-agent" <1>
       message: | <2>
         Review the following flight delay records and summarize which airlines are most affected and the average delay time:
         {{ steps.get_delayed_flights.output }}
@@ -84,18 +85,25 @@ steps:
     with:
       message: "{{ steps.summarize_delays.output }}"
 ```
-1. **agent_id**: The ID of the agent you want to call (must exist in Agent Builder).
+1. **agent-id**: The ID of the agent you want to call (must exist in Agent Builder). Set it at the top level of the step, not in the `with` block.
 2. **message**: The prompt sent to the agent. You can use template variables (like `{{ steps.step_name.output }}`) to inject data dynamically.
 
 ### Parameters
 
-Use the following parameters in the `with` block to configure the step:
+Set `agent-id` and other configuration keys at the top level of the step. Set inputs like `message` in the `with` block.
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `agent_id` | string | Yes | The unique identifier of the target agent (must exist in {{agent-builder}}). |
-| `message` | string | Yes | The natural language prompt to send to the agent. Can include template variables to reference data from previous steps. |
-| `schema` | object | No | A JSON Schema object that defines the structure of the expected response. When provided, the agent returns structured data matching the schema instead of free-text. |
+| Parameter | Location | Type | Required | Description |
+|-----------|----------|------|----------|-------------|
+| `agent-id` | Top level | string | No | The unique identifier of the target agent (must exist in {{agent-builder}}). Defaults to the built-in Elastic AI Agent. |
+| `connector-id` | Top level | string | No | The GenAI connector to use for model routing. Mutually exclusive with `inference-id`. |
+| `inference-id` | Top level | string | No | The {{infer}} endpoint ID to use for model routing. Mutually exclusive with `connector-id`. |
+| `create-conversation` | Top level | boolean | No | When `true`, persists the conversation so that follow-up steps or later requests can continue it. |
+| `message` | `with` | string | Yes | The natural language prompt to send to the agent. Can include template variables to reference data from previous steps. |
+| `schema` | `with` | object | No | A JSON Schema object that defines the structure of the expected response. When provided, the agent returns structured data matching the schema instead of free-text. |
+| `conversation_id` | `with` | string | No | Continue an existing conversation by ID. |
+| `attachments` | `with` | array | No | Attachments to provide to the agent. |
+
+For the complete step reference, refer to [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent).
 
 
 ## Use `kibana.request` step [use-kibana-request-workflow-step]
