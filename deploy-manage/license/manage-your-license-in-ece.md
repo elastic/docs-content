@@ -50,9 +50,10 @@ You can download an ECE license either from the license email sent by Elastic, o
 
 **Support Portal:**
 
-1. Navigate to the [license page](https://support.elastic.co/licenses) on the support portal.
-2. Click the download button on your active license(s).
-3. Download the **Orchestration** license for ECE.
+1. Navigate to the [Subscriptions page](https://support.elastic.co/subscriptions) on the [support portal](https://support.elastic.co/).
+2. Select your subscription.
+3. Click the download button on your active license(s).
+4. On the new page, download the **Orchestration** license for ECE.
 
 ## Add a license [ece_add_a_license]
 
