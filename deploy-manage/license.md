@@ -24,6 +24,10 @@ Depending on your deployment type, licenses and subscriptions are applied at dif
 * **{{ecloud}}, {{ece}}, and {{eck}}:** Licenses and subscriptions are controlled at the orchestrator or organization level, and apply to all related deployments.
 * **Self-managed {{es}}:** Licenses are controlled at the cluster level, and apply only to a single cluster.
 
+:::{note}
+In {{serverless-full}}, your organization's {{ecloud}} subscription level controls only the support level you receive. Project features are controlled by each project's [feature tier and add-ons](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons).
+:::
+
 For a comprehensive comparison of the available subscription levels, see [Elastic subscriptions](https://www.elastic.co/subscriptions).
 
 Use the topics in this section to manage your license or start a trial:  

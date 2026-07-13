@@ -32,10 +32,6 @@ In version 9.4+, [index search tools](tools/index-search-tools.md) support [cros
 
 In previous versions, only [{{esql}} tools](tools/esql-tools.md) support CCS. To search remote clusters, use a custom {{esql}} tool and instruct your agent to query `remote_cluster:index_name`.
 
-### Cross-project search not supported
-
-{{agent-builder}} does not support [cross-project search](/explore-analyze/cross-project-search.md). Agents can only search data within the current project.
-
 ### A2A streaming not supported
 
 The [A2A server](a2a-server.md) does not currently support streaming operations. All agent interactions use the synchronous `message/send` method, which returns a complete response only after task execution completes.
