@@ -1079,7 +1079,7 @@ By default, an agent uses its configured model. To override the model for a sing
 * `inference_id` takes an [{{infer}} endpoint](models.md#add-an-inference-endpoint) ID.
 * `connector_id` takes a [connector](models.md#configure-a-connector) ID.
 
-Both parameters select the model the agent uses to reason, and they resolve to the same underlying model routing. They are mutually exclusive. If you send both, the request fails with a `400` error. If you omit both, the agent uses its default model.
+Both parameters route the request to the same underlying model and are mutually exclusive. If you send both, the request fails with a `400` error. If you omit both, the agent uses its default model.
 
 ::::{tab-set}
 :group: api-examples
