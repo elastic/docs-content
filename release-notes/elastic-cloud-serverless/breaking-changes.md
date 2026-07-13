@@ -10,6 +10,9 @@ products:
 :type: breaking-change
 ::: -->
 
+:::{include} _snippets/2026-07-13/breaking-changes.md
+:::
+
 :::{include} _snippets/2026-06-30/breaking-changes.md
 :::
 
