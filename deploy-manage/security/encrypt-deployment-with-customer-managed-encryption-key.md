@@ -231,7 +231,11 @@ Provide your key identifier without the key version identifier so {{ecloud}} can
 
 ## Encrypt a deployment with your key
 
+You can encrypt a deployment with your customer-managed key when you create a new deployment, or add a key to an existing deployment (**Tech Preview**). Choose the workflow that matches your use case.
+
 ### Create a deployment encrypted with your key [ec_create_a_deployment_encrypted_with_your_key]
+
+Select your cloud provider to follow the steps for AWS, Azure, or Google Cloud.
 
 :::::::{tab-set}
 :group: csps
@@ -451,13 +455,12 @@ The deployment is now created and encrypted using the specified key. Future snap
 :::::::
 
 ### Encrypt an existing deployment with your key [ec_encrypt_an_existing_deployment_with_a_customer_managed_key]
-
 ```{applies_to}
 deployment:
   ess: preview
 ```
 
-In addition to encrypting a deployment at creation time, you can add a customer-managed key to a deployment that's already running.
+To encrypt an existing deployment, add a customer-managed key to a running deployment.
 
 1. [Create your encryption key](#create-encryption-key) following the same prerequisites and steps as for a new deployment.
 2. Go to your deployment's **Security** page.
@@ -470,11 +473,13 @@ In addition to encrypting a deployment at creation time, you can add a customer-
 A customer-managed key can only be set once on a deployment. Once encryption with your key has started, it cannot be undone or edited to use a different key. The ability to change or remove a customer-managed key will be supported at a later date.
 ::::
 
-#### Know before you go
+#### Considerations for existing deployments
+
+Keep these considerations in mind when adding a customer-managed key to an existing deployment:
 
 * **Let the process finish.** Once encryption with a customer-managed key has started, we recommend letting it run to completion rather than interrupting it partway through.
 * **Large deployments take longer.** For deployments with more than 1 TB of data, encrypting existing data can take a significant amount of time to complete.
-* **Data transfer costs may apply.** Encrypting an existing deployment can incur data transfer (DTS) costs in your cloud provider account. These costs are expected to be low for {{es}} 8.x and later deployments. Refer to [Reduce data transfer and storage (DTS) costs in {{ecloud}}](https://www.elastic.co/blog/reduce-data-transfer-and-storage-dts-costs-in-elastic-cloud) for more detail.
+* **Data transfer costs can apply.** Encrypting an existing deployment can incur data transfer (DTS) costs in your cloud provider account. These costs are expected to be low for {{es}} 8.x and later deployments. Refer to [Reduce data transfer and storage (DTS) costs in {{ecloud}}](https://www.elastic.co/blog/reduce-data-transfer-and-storage-dts-costs-in-elastic-cloud) for more detail.
 * **Snapshots without {{search-snaps}} aren't carried over.** If your deployment doesn't use {{search-snaps}} (that is, it has no frozen or cold data tier), existing snapshots in the original repository are marked for deletion rather than transferred to the new, encrypted repository.
 * **Test on a smaller deployment first.** Before encrypting a large or business-critical deployment, we recommend trying the process on a smaller deployment and confirming your cluster is healthy beforehand — this reduces the chance of the process failing partway through.
 
