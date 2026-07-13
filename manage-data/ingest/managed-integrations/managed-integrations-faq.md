@@ -58,7 +58,7 @@ For current pricing details, refer to the [Elastic pricing page](https://www.ela
 
 :::{note}
 :applies_to: stack: preview 9.0-9.4
-In these versions, {{managed-integrations}} are in technical preview and are free on {{ech}}. The per-hour charge takes effect when they reach general availability (GA).
+In these versions, {{managed-integrations}} are in technical preview and are free on {{ech}}.
 :::
 
 ### What SLAs apply to {{managed-integrations}}? [managed-integrations-faq-slas]
@@ -67,7 +67,7 @@ In these versions, {{managed-integrations}} are in technical preview and are fre
 
 :::{note}
 :applies_to: stack: preview 9.0-9.4
-In these versions, {{managed-integrations}} are in technical preview and are provided as-is, so no SLA applies. The {{serverless-full}} SLA takes effect when they reach general availability (GA).
+In these versions, {{managed-integrations}} are in technical preview and are provided as-is, so no SLA applies.
 :::
 
 ## Data and security [managed-integrations-faq-data-security]
