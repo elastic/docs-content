@@ -84,6 +84,14 @@ Retrieve the latest monitored health stats of a {{kib}} instance Task Manager:
 $ curl -X GET api/task_manager/_health
 ```
 
+For deployments with split {{kib}} instances (for example, Elastic Cloud Hosted or Elastic Cloud Enterprise deployments with instances sized at 8 GB or more), `GET api/task_manager/_health` from the UI node might not include complete Task Manager health data.
+
+In these deployments, use {{kib}} logs from the background task node instead:
+
+1. Go to your deployment's {{kib}} logs.
+2. Filter by the `task-manager-background-node-health` tag.
+3. Review the hourly log entries that contain full Task Manager health data. Refer to this [sample log entry](https://support.elastic.co/knowledge/3ca8385e).
+
 The API returns the following:
 
 ```json
