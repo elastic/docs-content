@@ -97,7 +97,7 @@ This table compares Elasticsearch capabilities between {{ech}} deployments and S
 | [**Elasticsearch for Apache Hadoop**](https://www.elastic.co/elasticsearch/hadoop) | ✅ | ❌ | Not available in Serverless |
 | **Enterprise Search (App Search & Workplace Search)** | ❌ (discontinued in 9.0) | ❌ | Not available in Serverless |
 | [**Kibana Alerts**](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) | ✅ | ✅ | |
-| [**Reindexing from remote**](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md#reindex-from-remote) | ✅ | **Tech Preview** | |
+| [**Reindexing from remote**](/manage-data/migrate/migrate-data-using-reindex-api.md) | ✅ | ✅ | |
 | **Repository management** | ✅ | Managed | Automatically managed by Elastic |
 | [**Scripted metric aggregations**](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) | ✅ | ❌ | Not available in Serverless<br>The alternative for this in Serverless is [ES|QL](elasticsearch://reference/query-languages/esql.md) |
 | [**`join` fields**](elasticsearch://reference/elasticsearch/mapping-reference/parent-join.md) | ✅ | ❌ | Not available in Serverless<br>The alternative for this in Serverless is the ES\|QL [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/lookup-join.md) command |
@@ -158,21 +158,14 @@ This table compares Security capabilities between {{ech}} deployments and Server
 | **[LogsDB](/manage-data/data-store/data-streams/logs-data-stream.md)** | Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
 
-## Elasticsearch index sizing guidelines [elasticsearch-differences-serverless-index-size]
 
-To ensure optimal performance in Serverless Elasticsearch projects, follow these sizing recommendations:
+## Serverless index sizing and resource limits [elasticsearch-differences-serverless-index-size]
+{{es}} uses sharding to distribute the data in your index across the cluster, which helps support growing data volumes and load. In {{serverless-full}}, sharding is fully managed for you and automatically adjusts to suit your needs. 
 
-| **Use case** | Maximum index size | Project configuration |
-| --- | --- | --- |
-| **Vector search** | 150GB | Vector optimized |
-| **General search (non data-stream)** | 300GB | General purpose |
-| **Other uses (non data-stream)** | 600GB | General purpose |
-
-If you expect that you will have large datasets that exceed the recommended maximum size, consider creating multiple smaller indices that you can query using an [alias](/manage-data/data-store/aliases.md), or configuring [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to prevent data streams from growing larger than the maximum size. You should design your indexing and data lifecycle strategy with the size and growth of your data in mind.
-
-These recommendations do not apply to indices using better binary quantization (BBQ). Refer to [vector quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for more information.
-
-### Index and resource limits [index-and-resource-limits]
+These best practices help you build an indexing and data lifecycle strategy that scales with your data over time:
+ * Avoid large numbers of very small or empty indices where possible. Each index has a resource cost within your project and the service must scale its capacity to accommodate. If your design follows this pattern, consider organizing your data into fewer indices.
+ * Avoid designs where each index grows to many terabytes, which can result in performance trade-offs. Consider creating multiple smaller indices that you can query using an [alias](/manage-data/data-store/aliases.md) or naming pattern.
+ * Use a data stream instead of a single index when [appropriate](/manage-data/data-store/data-streams.md#should-you-use-a-data-stream), and take advantage of the [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to manage data retention. Avoid date-based naming patterns with data streams, and let the lifecycle age out data automatically.
 
 {{serverless-full}} applies the following project-level limit to ensure reliable performance and stability.
 
@@ -180,7 +173,7 @@ These recommendations do not apply to indices using better binary quantization (
 | :--- | :--- | :--- |
 | Number of indices per project | 15,000 | Yes |
 
-The index limit is adjustable and can be increased by request, while others are fixed. To request a limit increase, open a support case, and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
+The index limit is adjustable and can be increased by request. To request a limit increase, open a support case, and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
 
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 

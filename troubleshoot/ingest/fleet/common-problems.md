@@ -1028,7 +1028,7 @@ In {{ecloud}}, after [upgrading](/reference/fleet/upgrade-integration.md) {{flee
       --url <kibana_url>/internal/fleet/reset_preconfigured_agent_policies/policy-elastic-agent-on-cloud \
       --header 'content-type: application/json' \
       --header 'kbn-xsrf: xyz' \
-      --header 'elastic-api-version: 1'
+      --header 'elastic-api-version: 2023-10-31'
     ```
 
 2. Force unenroll the agent stuck in `Updating`:
