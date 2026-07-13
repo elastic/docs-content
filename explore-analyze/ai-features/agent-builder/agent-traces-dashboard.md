@@ -14,10 +14,8 @@ products:
 
 # {{agent-builder}} traces overview dashboard
 
-<!-- STATUS: Phase 4 done (overview + install how-to + span/attribute reference drafted). Draft body complete. Remaining: cross-links (Phase 5, after #7322), badges/screenshots/build (Phase 6). Items needing a live check are marked VERIFY(cluster).
-     Lifecycle: GA 9.5 (Stack + Serverless), confirmed. Badge matches collect-traces.md.
-     Placeholder links: collect-traces.md (#7171) and permissions.md#read-trace-data are NOT on main yet
-     (they land with PR #7322). Keep those links as plain text + TODO until #7322 merges, then wire them live. -->
+<!-- STATUS: Draft body complete (Phases 1-4). Independently fact-checked 2026-07-13 against Kibana main: the span/attribute reference and the UI labels are verified verbatim. Prose corrected after that check: removed a nonexistent "slowest tools" panel and an unverified "updates automatically" claim, and made the token/request breakdown precise. Remaining: cross-links (Phase 5, after #7322 merges, still open as of 2026-07-13) and badges/build (Phase 6). Items needing a live check are marked VERIFY(cluster).
+     Placeholder links: collect-traces.md (#7171) and permissions.md#read-trace-data are NOT on main yet (they land with PR #7322). Keep them as plain text + TODO until #7322 merges. -->
 
 {{agent-builder}} ships a prebuilt overview dashboard that turns your agent trace data into ready-made operational and usage metrics. Instead of building visualizations yourself, you install one managed dashboard and see how your agents behave, including how many tokens they use, how long conversations take, which agents run most often, and where tool calls fail.
 
@@ -33,28 +31,28 @@ The dashboard reads the traces that {{agent-builder}} collects into your own {{e
 
 ## What the dashboard shows
 
-The overview dashboard is a single prebuilt dashboard named **[Elastic] Agent Builder Overview**. It is a managed dashboard, which means it is read-only and updates automatically when Elastic improves it. To change or extend it, duplicate it and edit the copy, as described in Customize the dashboard.
+The overview dashboard is a single prebuilt dashboard named **[Elastic] Agent Builder Overview**. It is a managed dashboard, so it is read-only. To change or extend it, duplicate it and edit the copy, as described in Customize the dashboard.
 
-Every {{kib}} space has its own copy of the dashboard, built from the trace data collected in that space.
+You install the dashboard separately in each {{kib}} space, and each copy shows only that space's trace data.
 
 The dashboard groups its panels into four areas:
 
-- **Token usage and LLM requests**: Input and output tokens, and the number of LLM requests, broken down by model and provider.
+- **Token usage and LLM requests**: Input and output tokens by model, and LLM request counts by model and provider.
 - **Conversation volume and latency**: How many conversation rounds ran and how long they took, including average, 95th percentile, and maximum duration.
 - **Agent execution**: How often each agent ran and how long it took, broken down by agent.
-- **Tool calls and errors**: How often tools were called, their success and error rates, and the most-used and slowest tools.
+- **Tool calls and errors**: How often tools were called, their success and error rates, average tool duration, and the most-used tools.
 
-<!-- Phase 2 notes (verified vs Kibana main; see reference_ab_overview_dashboard_fields memory):
+<!-- Notes (verified vs Kibana main; see reference_ab_overview_dashboard_fields memory):
      - On-screen section names: "Token Usage & Cost", "Conversation Volume & Latency", "Agent Execution", "Tool Call Frequency & Errors" (last one collapsed by default; the UI prefixes each with an emoji).
-     - OPEN QUESTION: section 1 is labeled "...& Cost" but no cost metric ships, and there is no cached-tokens or workflow panel. Body intentionally omits cost, cached tokens, and workflow. Do not add them until @meghanmurphy1 confirms cut vs deferred.
-     - Anchor link to Customize the dashboard can be added in Phase 6 once anchors are finalized.
+     - Precision (from fact-check): tokens over time are broken down by model; LLM request counts are broken down by model and by provider. The tool section has an overall average duration KPI and a Top 15 by call count, but no per-tool "slowest tools" ranking.
+     - OPEN QUESTION: the dashboard's own header markdown says "token usage & cost" and "workflow performance", but no cost, cached-token, or workflow panels actually ship. The body omits them. Confirm cut vs deferred with @meghanmurphy1.
      - Field-level detail is in the Span and attribute reference section below. -->
 
 ## Before you begin
 
 Before you install the dashboard:
 
-- Turn on trace collection for the space and save the change. The **Install Dashboard** button appears only after trace collection is enabled and saved. For details, refer to Collect agent traces.
+- Make sure trace collection is on for the space and the setting is saved. It is on by default. The **Install Dashboard** button appears only after trace collection is enabled and saved. For details, refer to Collect agent traces.
 - Make sure you can read the trace data streams, otherwise the panels have no data to show. For the required privileges, refer to Read trace data.
 - Install the dashboard in each {{kib}} space where you want it. It is not shared across spaces.
 
@@ -93,19 +91,11 @@ Because the original is managed, Elastic can ship improvements to it without ove
 
 <!-- VERIFY(cluster): confirm the exact control to duplicate a managed, read-only dashboard (for example a "Duplicate" action in the Dashboards list, or "Save as" from the open dashboard). Not determinable from source. -->
 
-<!-- ============================================================
-     VERIFY ON A TEST CLUSTER before publishing (Phase 6).
-     Charlotte to check on a 9.5 test cluster and capture screenshots.
-     1. Nav path and casing: Management > Gen AI Settings, section titled "Agent Builder Traces".
-     2. The "Install Dashboard" button appears only after "Collect conversation traces" is enabled AND saved.
-     3. Exact labels: "Install Dashboard"; when installed, "View Dashboard" split button + "Uninstall dashboard" (via the arrow / More dashboard options).
-     4. After install, the dashboard shows in Dashboards as "[Elastic] Agent Builder Overview" (id agent-builder-overview-<spaceId>).
-     5. New-space and post-uninstall behavior: the dashboard is absent until reinstalled from the section.
-     6. Customize: the exact control to duplicate the managed dashboard.
-     7. Privilege required to open Gen AI Settings and to install/uninstall the dashboard.
-     8. The four sections render, and "Tool Call Frequency & Errors" is collapsed by default.
-     Screenshots to capture: (a) Agent Builder Traces section with the Install Dashboard button; (b) the section after install (View Dashboard split button); (c) the installed dashboard.
-     ============================================================ -->
+<!-- VERIFY ON A TEST CLUSTER before publishing (Phase 6). The source-verifiable facts (labels, install model, four sections, span/attribute strings, ES|QL validity) were double-checked against Kibana main on 2026-07-13 and are confirmed. Still needs eyes on a live 9.5 cluster:
+     - The exact management app label and casing ("Gen AI Settings").
+     - That "Tool Call Frequency & Errors" is collapsed by default.
+     - Screenshots: (a) Agent Builder Traces section with the Install Dashboard button; (b) the section after install (View Dashboard split button); (c) the installed dashboard.
+     See also the inline VERIFY(cluster) notes for the install privilege, the duplicate control, and running the ES|QL examples. -->
 
 ## Span and attribute reference
 
@@ -145,7 +135,7 @@ These fields carry the details the dashboard aggregates. Generative AI attribute
 
 ### Example queries
 
-Use these as starting points. Adjust the data stream if needed, and test them on your own data.
+Use these as starting points, and test them on your own data. They query all spaces. To scope a query to one space, replace the wildcard with that space's data stream, for example `traces-agent_builder.otel-default`.
 
 Total input and output tokens by model and provider:
 
