@@ -128,6 +128,7 @@ toc:
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/upgrade.md
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/customization.md
               - folder: observability/get-started/opentelemetry/use-cases/llms
+              - file: observability/get-started/opentelemetry/use-cases/upstream-collector/index.md
           - file: observability/get-started/other-tutorials/index.md
             children:
               - file: observability/get-started/other-tutorials/tutorial-monitor-java-application.md
@@ -785,29 +786,34 @@ toc:
           - file: security/dashboards/endpoint-detection-response-dashboard.md
       - file: security/advanced-entity-analytics.md
         children:
-          - file: security/advanced-entity-analytics/overview.md
+          - file: security/advanced-entity-analytics/entity-analytics-requirements.md
+          - file: security/advanced-entity-analytics/entity-store.md
+            children:
+              - file: security/advanced-entity-analytics/entity-relationships.md
           - file: security/advanced-entity-analytics/entity-risk-scoring.md
             children:
-              - file: security/advanced-entity-analytics/entity-risk-scoring-requirements.md
               - file: security/advanced-entity-analytics/turn-on-risk-scoring-engine.md
-              - file: security/advanced-entity-analytics/view-entity-details.md
               - file: security/advanced-entity-analytics/asset-criticality.md
-              - file: security/advanced-entity-analytics/entity-store.md
               - file: security/advanced-entity-analytics/view-analyze-risk-score-data.md
+          - file: security/advanced-entity-analytics/manage-entities.md
+            children:
+              - file: security/advanced-entity-analytics/watchlists.md
+              - file: security/advanced-entity-analytics/entity-resolution.md
+              - file: security/advanced-entity-analytics/privileged-user-monitoring.md
+                children:
+                  - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
+                  - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
+                  - file: security/advanced-entity-analytics/monitor-privileged-user-activities.md
           - file: security/advanced-entity-analytics/advanced-behavioral-detections.md
             children:
               - file: security/advanced-entity-analytics/machine-learning-job-rule-requirements.md
               - file: security/advanced-entity-analytics/anomaly-detection.md
               - file: security/advanced-entity-analytics/optimizing-anomaly-results.md
               - file: security/advanced-entity-analytics/behavioral-detection-use-cases.md
-          - file: security/advanced-entity-analytics/watchlists.md
-          - file: security/advanced-entity-analytics/entity-resolution.md
-          - file: security/advanced-entity-analytics/entity-relationships.md
-          - file: security/advanced-entity-analytics/privileged-user-monitoring.md
+          - file: security/advanced-entity-analytics/investigate-entities.md
             children:
-              - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
-              - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
-              - file: security/advanced-entity-analytics/monitor-privileged-user-activitites.md
+              - file: security/advanced-entity-analytics/monitor-entity-risk.md
+              - file: security/advanced-entity-analytics/view-entity-details.md
           - file: security/advanced-entity-analytics/explore.md
             children:
               - file: security/advanced-entity-analytics/hosts-page.md

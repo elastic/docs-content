@@ -302,7 +302,7 @@ serverless: ga
 3. Set it to **Browser** to use your browser's timezone, or choose a specific timezone such as **UTC** or **America/New_York**.
 
 :::{warning}
-Avoid using the {{esql}} [`SET time_zone`](elasticsearch://reference/query-languages/esql/commands/set.md) directive in {{kib}} apps. `SET time_zone` changes how dates are computed by {{es}}, but {{kib}} still displays timestamps following the timezone defined in its `dateFormat:tz` advanced setting, which can produce confusing results.
+Avoid using the {{esql}} [`SET time_zone`](elasticsearch://reference/query-languages/esql/directives/set.md) directive in {{kib}} apps. `SET time_zone` changes how dates are computed by {{es}}, but {{kib}} still displays timestamps following the timezone defined in its `dateFormat:tz` advanced setting, which can produce confusing results.
 :::
 
 
@@ -369,7 +369,7 @@ stack: ga 9.4
 serverless: ga
 ```
 
-The [`SET`](elasticsearch://reference/query-languages/esql/commands/set.md) directive lets you configure how {{es}} runs your {{esql}} query. Place one or more `SET` statements at the start of your query, separated by semicolons:
+The [`SET`](elasticsearch://reference/query-languages/esql/directives/set.md) directive lets you configure how {{es}} runs your {{esql}} query. Place one or more `SET` statements at the start of your query, separated by semicolons:
 
 ```esql
 SET setting_name = setting_value[, ..., settingN = valueN];
@@ -378,44 +378,13 @@ SET setting_name = setting_value[, ..., settingN = valueN];
 
 The {{esql}} editor autocompletes supported settings and validates their values. Settings particularly useful from {{kib}} include:
 
-- [`approximation`](#esql-kibana-approximation): Trade exact results for speed on large `STATS` queries using random sampling.
+- [`approximation`](#approximation-fast-mode): Trade exact results for speed on large `STATS` queries using random sampling. Several {{kib}} apps expose this functionality with a [Fast mode](#approximation-fast-mode) UI option.
 - [`project_routing`](#esql-kibana-cps): Limit a [cross-project search](/explore-analyze/cross-project-search.md) to specific projects.
 - [`unmapped_fields`](#esql-kibana-unmapped-fields): Choose how to handle fields that are not present in the index mapping.
 
 The `SET` directive also supports a `time_zone` setting. However, to change the timezone used by your {{esql}} queries in {{kib}}, update the `dateFormat:tz` advanced setting rather than using `SET time_zone`. Refer to [Timezone handling](#esql-kibana-timezone) for more information.
 
-For the full list of supported settings and their parameters, refer to the [`SET` directive reference](elasticsearch://reference/query-languages/esql/commands/set.md).
-
-
-### Approximate `STATS` results with `SET approximation` [esql-kibana-approximation]
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
-
-When exact results are not strictly necessary, you can enable [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries. {{es}} rewrites the query to use random sampling and returns estimates together with confidence intervals. The performance benefit grows with the size of the source data.
-
-To approximate a `STATS` query with default settings, prepend `SET approximation=true;` to your query:
-
-```esql
-SET approximation=true;
-FROM kibana_sample_data_logs
-| WHERE @timestamp >= NOW()-30d
-| STATS total_hits = COUNT(),
-        avg_bytes = AVG(bytes)
-  BY geo.dest
-| SORT total_hits DESC
-| LIMIT 5
-```
-
-To tune the sample size or disable confidence intervals, pass a map. For example:
-
-- `SET approximation={"rows":5000000};` increases the sample size from the default.
-- `SET approximation={"confidence_level":null};` skips confidence interval computation for additional speedup.
-
-The editor autocompletes these map parameters as you type.
-
-For supported aggregation functions, output columns, tuning options, and limitations, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
+For the full list of supported settings and their parameters, refer to the [`SET` directive reference](elasticsearch://reference/query-languages/esql/directives/set.md).
 
 
 ### Search across projects with `SET project_routing` [esql-kibana-cps]
@@ -424,7 +393,7 @@ serverless: preview
 stack: unavailable
 ```
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), you can add [`SET project_routing`](elasticsearch://reference/query-languages/esql/commands/set.md) at the beginning of your {{esql}} query to [override the {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) and target specific projects:
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), you can add [`SET project_routing`](elasticsearch://reference/query-languages/esql/directives/set.md) at the beginning of your {{esql}} query to [override the {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) and target specific projects:
 
 ```esql
 SET project_routing = "_alias:my_other_project";
@@ -447,7 +416,7 @@ stack: preview 9.4
 serverless: preview
 ```
 
-By default, an {{esql}} query fails if it references a field that is not present in the mapping of any searched index. Use [`SET unmapped_fields`](elasticsearch://reference/query-languages/esql/commands/set.md#esql-unmapped_fields) at the start of your query to instead treat unmapped fields as `null` (`NULLIFY`) or load them from `_source` as `keyword` (`LOAD`). For example:
+By default, an {{esql}} query fails if it references a field that is not present in the mapping of any searched index. Use [`SET unmapped_fields`](elasticsearch://reference/query-languages/esql/directives/set.md#esql-unmapped_fields) at the start of your query to instead treat unmapped fields as `null` (`NULLIFY`) or load them from `_source` as `keyword` (`LOAD`). For example:
 
 ```esql
 SET unmapped_fields="NULLIFY";
@@ -467,6 +436,85 @@ The first time a query references an unmapped field, the editor shows a warning 
 
 {applies_to}`stack: preview 9.5` When querying a [wired stream](/solutions/observability/streams/wired-streams.md) and the editor detects an unknown column error, a **Load unmapped fields** quick fix is available. Select it to apply `SET unmapped_fields = "LOAD";` automatically. Refer to [Query unmapped fields](/solutions/observability/streams/wired-streams.md#streams-wired-streams-discover-unmapped) for wired stream–specific details.
 
+For a conceptual overview and use cases, refer to [Unmapped fields](elasticsearch://reference/query-languages/esql/esql-unmapped-fields.md).
+
+
+## Get faster results with approximate `STATS` [approximation-fast-mode]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+On large datasets, you can trade exact results for speed by enabling [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries. Approximation runs your `STATS` aggregations on a sample of the data and extrapolates to estimate results for the full dataset, so the numbers come out close to the exact ones. You can enable approximation in two ways:
+
+- {applies_to}`{stack: "preview 9.5", serverless: "preview"}` From the {{kib}} UI, with [Fast mode](#esql-kibana-fast-mode-toggle).
+- From within a query, with the [`SET approximation`](#esql-kibana-approximation) directive.
+
+However you enable it, {{es}} applies approximation only when it actually speeds up the query. When your data is smaller than the sample size (by default around 1 million rows for `STATS ... BY` queries and 100,000 rows for other `STATS` queries), or a filter has already narrowed the results, {{es}} returns exact results instead. Approximation only works with certain aggregations, so functions such as `COUNT_DISTINCT`, `MIN`, `MAX`, and `LAST` always run exactly. Because approximate results are estimates, they can vary between runs and might drop low-frequency groups. For the full conditions and supported functions, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
+
+### Use Fast mode [esql-kibana-fast-mode-toggle]
+```{applies_to}
+stack: preview 9.5
+serverless: preview
+```
+
+Fast mode is the {{kib}} UI control for {{esql}} approximation. Select the {icon}`bolt` **Fast mode** option to turn it on.
+
+:::{image} /explore-analyze/images/kibana-esql-fast-mode.png
+:alt: The Fast mode option turned on in the query bar
+:screenshot:
+:::
+
+Where it applies depends on the context:
+
+- In [**Discover**](/explore-analyze/discover/try-esql.md), in {{esql}} mode, the button is always available, but **Fast mode** applies only to queries that use exactly one `STATS` command.
+- In [**Dashboards**](/explore-analyze/visualize/esorql.md), **Fast mode** applies to the dashboard's {{esql}} visualizations that use one `STATS` command. The option is disabled when the dashboard has no {{esql}} visualizations.
+
+**Fast mode** is preserved when you save or share a dashboard.
+
+To override the toggle for a single query, use the [`SET approximation`](#esql-kibana-approximation) directive.
+
+### Use the `SET approximation` directive [esql-kibana-approximation]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+The [`SET approximation`](elasticsearch://reference/query-languages/esql/commands/set.md) directive enables approximation from within a query. It takes precedence over the [Fast mode](#esql-kibana-fast-mode-toggle) toggle, so you can force approximate or exact results for a specific query.
+
+To approximate a `STATS` query with default settings, prepend `SET approximation=true;` to your query:
+
+```esql
+SET approximation=true;
+FROM kibana_sample_data_logs
+| WHERE @timestamp >= NOW()-30d
+| STATS total_hits = COUNT(),
+        avg_bytes = AVG(bytes)
+  BY geo.dest
+| SORT total_hits DESC
+| LIMIT 5
+```
+
+To tune the sample size or turn off confidence intervals, pass a map. For example:
+
+- `SET approximation={"rows":5000000};` increases the sample size from the default.
+- `SET approximation={"confidence_level":null};` skips confidence interval computation for additional speedup.
+
+The editor suggests these map parameters as you type.
+
+For supported aggregation functions, output columns, tuning options, and limitations, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
+
+### Interpret approximate results [esql-kibana-approximation-columns]
+
+An approximate query returns your usual `STATS` columns, plus two extra columns for each approximated value, where `<column>` is the name of the approximated column (for example, `_approximation_confidence_interval(count)`):
+
+- `_approximation_confidence_interval(<column>)`: The range that the exact value is very likely to fall within (with a 90% confidence level). For example, an estimated count of `769` shown with `[759, 779]` means the exact count is very likely between 759 and 779. A narrower range means a more precise estimate. It's empty when no range can be computed, and zero-width (such as `[769, 769]`) when the result is actually exact.
+- `_approximation_certified(<column>)`: Whether the estimate passed the statistical checks behind the confidence interval. `true` means the interval is reliable. `false` means the estimate might still be accurate, but the interval couldn't be fully validated.
+
+{applies_to}`{stack: "preview 9.5", serverless: "preview"}` In [**Discover**](/explore-analyze/discover/try-esql.md), these appear as additional columns in the results table. 
+
+For more details, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
+
 
 ## Related pages
 
@@ -476,3 +524,4 @@ The first time a query references an unmapped field, the editor shows a warning 
 - [{{esql}} visualizations](/explore-analyze/visualize/esorql.md): Create and edit {{esql}}-based visualizations in dashboards.
 - [Dashboard controls](/explore-analyze/dashboards/add-controls.md): Add {{esql}}-powered controls to dashboards.
 - {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` [Custom Vega visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries): Use {{esql}} queries as a data source in Vega and Vega-Lite visualizations.
+- [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md): Techniques for writing fast queries and identifying slow ones.
