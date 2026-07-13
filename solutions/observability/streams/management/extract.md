@@ -38,16 +38,22 @@ Streams supports the following processors:
 - [**Enrich**](./extract/enrich.md): Adds data from an enrich policy to incoming documents, such as geographic coordinates from an IP address or account details from a user ID.
 - [**Grok**](./extract/grok.md): Extracts fields from unstructured log messages using predefined or custom patterns, supports multiple match attempts in sequence, and can automatically generate patterns with an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 - [**Join**](./extract/join.md): Concatenates the values of multiple fields with a delimiter.
+- [**JSON extract**](./extract/json-extract.md): Extracts values from a JSON-encoded string field using JSONPath-like selectors.
 - [**Lowercase**](./extract/lowercase.md): Converts a string field to lowercase.
 - [**Math**](./extract/math.md): Evaluates arithmetic or logical expressions.
 - [**Network direction**](./extract/network-direction.md): Determines network traffic direction based on source and destination IP addresses.
 - [**Redact**](./extract/redact.md): Redacts sensitive data in a string field by matching grok patterns.
+- [**Registered domain**](./extract/registered-domain.md): Extracts the domain, registered domain, top-level domain, and subdomain from a fully qualified domain name.
 - [**Remove**](./extract/remove.md): Removes existing fields or removes fields by prefix.
 - [**Rename**](./extract/rename.md): Changes the name of a field, moving its value to a new field name and removing the original.
 - [**Replace**](./extract/replace.md): Replaces parts of a string field according to a regular expression pattern with a replacement string.
 - [**Set**](./extract/set.md): Assigns a specific value to a field, creating the field if it doesn't exist or overwriting its value if it does.
+- [**Sort**](./extract/sort.md): Sorts the elements of an array field in ascending or descending order.
+- [**Split**](./extract/split.md): Splits a field value into an array using a separator.
 - [**Trim**](./extract/trim.md): Removes leading and trailing whitespace from a string field.
 - [**Uppercase**](./extract/uppercase.md): Converts a string field to uppercase.
+- [**URI parts**](./extract/uri-parts.md): Parses a URI string into its components, such as scheme, domain, path, and query.
+- [**User agent**](./extract/user-agent.md): Extracts browser, operating system, and device details from a user agent string.
 
 ### Processor limitations and inconsistencies [streams-processor-inconsistencies]
 
