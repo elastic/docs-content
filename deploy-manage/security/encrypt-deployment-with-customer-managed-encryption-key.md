@@ -17,7 +17,7 @@ By default, Elastic already encrypts your deployment data and snapshots at rest.
 ::::{note}
 Encryption at rest using customer-managed keys is only available for the Enterprise subscription level.
 
-You can add a customer-managed key when you create a new deployment, or add one to an existing deployment (**Tech Preview**). Once a customer-managed key is set on a deployment, it cannot be edited or removed. The ability to change or remove a customer-managed key will be supported at a later date.
+You can add a customer-managed key when you create a new deployment, or add one to an existing deployment. Once a customer-managed key is set on a deployment, it cannot be edited or removed. The ability to change or remove a customer-managed key will be supported at a later date.
 ::::
 
 
@@ -231,11 +231,9 @@ Provide your key identifier without the key version identifier so {{ecloud}} can
 
 ## Encrypt a deployment with your key
 
-You can encrypt a deployment with your customer-managed key when you create a new deployment, or add a key to an existing deployment (**Tech Preview**). Choose the workflow that matches your use case.
+You can encrypt a deployment with your customer-managed key when you [create a new deployment](#ec_create_a_deployment_encrypted_with_your_key), or [add a key to an existing deployment](#ec_encrypt_an_existing_deployment_with_a_customer_managed_key). Choose the workflow that matches your use case.
 
 ### Create a deployment encrypted with your key [ec_create_a_deployment_encrypted_with_your_key]
-
-Select your cloud provider to follow the steps for AWS, Azure, or Google Cloud.
 
 :::::::{tab-set}
 :group: csps
@@ -460,12 +458,9 @@ deployment:
   ess: preview
 ```
 
-To encrypt an existing deployment, add a customer-managed key to a running deployment.
-
-1. [Create your encryption key](#create-encryption-key) following the same prerequisites and steps as for a new deployment.
-2. Go to your deployment's **Security** page.
-3. Under **Encryption at rest**, select **Manage encryption key**.
-4. Enter your key identifier (the ARN for {{aws}}, the key identifier for Azure, or the resource ID for Google Cloud) and save your changes.
+1. Go to your deployment's **Security** page.
+2. Under **Encryption at rest**, select **Manage encryption key**.
+3. Enter your key identifier (the ARN for {{aws}}, the key identifier for Azure, or the resource ID for Google Cloud) and save your changes.
 
 {{ecloud}} then applies a plan change to encrypt your deployment's data and snapshots with your key. This plan change happens **without downtime**.
 
