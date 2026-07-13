@@ -13,7 +13,7 @@
 ::::{dropdown} Dashboard API search endpoint uses a new response schema and enforces a page size limit
   For more information, check [#268951]({{kib-pull}}268951).
 
-  The Dashboard API search endpoint now returns the generally available response schema. The response envelope changed from `{ dashboards, page, total }` to `{ data, meta }`, where the pagination fields move under `meta` (`page`, `per_page`, and `total`). The endpoint also enforces a maximum `per_page` of 1000.
+  The response envelope for the Dashboard API search endpoint changed from `{ dashboards, page, total }` to `{ data, meta }`, where the pagination fields (`page`, `per_page`, and `total`) move under `meta`. The endpoint also enforces a maximum `per_page` of 1000.
 
   **Impact:** Requests that set `per_page` above 1000 are rejected. Clients that read `dashboards`, `page`, or `total` from the top level of the response no longer receive those fields.
 
