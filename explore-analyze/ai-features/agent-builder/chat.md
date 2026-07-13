@@ -173,7 +173,7 @@ For example, the following chat history panel shows one conversation in progress
 :width: 450px
 :::
 
-Conversations run independently, so you can work in several at the same time: start an agent in one conversation, switch to another while the first keeps working, and come back later without interrupting either one. New conversations appear in the panel as soon as you start them, before the agent finishes responding.
+Conversations run independently, so you can work in several at the same time: start an agent in one conversation, switch to another while the first keeps working, and come back later without interrupting either one. New conversations appear in the panel as soon as you start them, before the agent finishes its first response.
 
 ### Inspect tool calls and reasoning
 
@@ -232,7 +232,7 @@ serverless: preview
 
 When your request is ambiguous, an agent can pause and ask you up to five multiple-choice questions instead of guessing. For each question, select one of the options, or choose the custom option and type your own answer. Some questions let you select more than one option. To move on without answering, select **Skip question**.
 
-When there's more than one question, use **Back** and **Continue** to move between them, then select **Submit** on the last question. After you respond, the agent resumes. Your questions and answers stay in the conversation, so you can revisit what was asked and how you responded.
+When there's more than one question, use **Back** and **Continue** to move between them, then select **Submit** on the last question. After you respond, the agent resumes. The agent's questions and your answers stay in the conversation, so you can revisit what was asked and how you responded.
 
 For example, before creating a dashboard the agent might ask which sample data set to use:
 
