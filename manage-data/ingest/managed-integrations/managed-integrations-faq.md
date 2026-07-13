@@ -220,7 +220,7 @@ On {{stack}} versions before 9.2, {{managed-integrations}} can't be upgraded to 
 
 ### How do I delete an {{managed-integration}}? [managed-integrations-faq-delete]
 
-::::{note}
+::::{important}
 Deleting an {{managed-integration}} removes all associated resources and stops data ingestion.
 ::::
 

@@ -82,7 +82,7 @@ The diagnostics are sent to {{fleet-server}} which in turn sends it to {{es}}. T
 
 :::{note}
 :applies_to: { serverless: unavailable, stack: preview 9.1-9.4 }
-If you want to pull diagnostics related to an {{managed-integration}}, you first need to display the Managed integration resources in {{fleet}}. Refer to [Show {{managed-integration}} resources](/reference/fleet/fleet-settings.md#show-agentless-resources-setting) for details.
+To pull diagnostics related to an {{managed-integration}}, you first need to display the related resources in {{fleet}}. Refer to [Show {{managed-integration}} resources](/reference/fleet/fleet-settings.md#show-agentless-resources-setting) for details.
 :::
 
 To download the diagnostics bundle for local viewing:
