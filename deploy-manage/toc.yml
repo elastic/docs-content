@@ -197,6 +197,7 @@ toc:
               - file: deploy/cloud-on-k8s/configure.md
                 children:
                   - file: deploy/cloud-on-k8s/configure-eck.md
+                  - file: deploy/cloud-on-k8s/dynamic-namespace-handling.md
                   - file: deploy/cloud-on-k8s/configure-validating-webhook.md
                   - file: deploy/cloud-on-k8s/restrict-cross-namespace-resource-associations.md
                   - file: deploy/cloud-on-k8s/service-meshes.md

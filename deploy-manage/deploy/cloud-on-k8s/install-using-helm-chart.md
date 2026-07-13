@@ -74,6 +74,10 @@ You can find the profile files in the Helm cache directory or in the [ECK source
 
 The previous example disabled the validation webhook along with all other cluster-wide resources. If you need to enable the validation webhook in a restricted environment, see [](./webhook-namespace-selectors.md). To understand what the validation webhook does, refer to [](./configure-validating-webhook.md).
 
+::::{tip}
+{applies_to}`eck: ga 3.5` Instead of a static list of namespaces, the operator can also select the namespaces to manage dynamically, based on their labels. Refer to [](./dynamic-namespace-handling.md) for details. Note that this feature requires cluster-wide permissions and is therefore not compatible with the restricted installation mode.
+::::
+
 ## View available configuration options [k8s-install-helm-show-values]
 
 You can view all configurable values of the operator Helm chart by running the following:

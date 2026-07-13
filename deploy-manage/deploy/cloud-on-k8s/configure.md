@@ -21,6 +21,8 @@ The following guides cover common ECK configuration tasks:
 
 * [](./configure-eck.md): Apply configuration changes, such the CA certificate validity period, the namespaces where the operator is allowed to work, or the log verbosity level for ECK.
 
+* [](./dynamic-namespace-handling.md): Use a label selector to dynamically control which namespaces the operator manages, without restarting the operator. Requires an Enterprise license or Enterprise trial license.
+
 * [Configure the validating webhook](configure-validating-webhook.md): Enable or disable the webhook, and configure multiple SSL certificate generation options.
 
 * [Restrict cross-namespace resource associations](restrict-cross-namespace-resource-associations.md): Configure access control rules for cross-namespace associations. This functionality is disabled by default.
