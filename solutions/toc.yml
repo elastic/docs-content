@@ -582,6 +582,7 @@ toc:
               - file: security/ai/usecase-knowledge-base-walkthrough.md
           - file: security/ai/attack-discovery.md
             children:
+              - file: security/ai/attack-discovery-automation.md
               - file: security/ai/attacks-page.md
               - file: security/ai/triage-attack-discovery-findings.md
           - file: security/ai/large-language-model-performance-matrix.md

@@ -45,9 +45,49 @@ At the top of the **Attacks** page, you can find overview visualizations and tab
 You can schedule Attack Discovery runs directly from the Attacks page. The scheduling flow is the same as on the Attack Discovery page, and schedules you create on either page appear on both. For step-by-step instructions, refer to [Schedule discoveries](/solutions/security/ai/attack-discovery.md#schedule-discoveries).
 
 
+## Generate an attack on demand [attacks-generate-on-demand]
+
+```{applies_to}
+stack: preview 9.5
+serverless: preview
+```
+
+You can also generate a new attack discovery directly from the Attacks page, without navigating to the Attack Discovery page:
+
+- Click **Run** to start an on-demand attack discovery analysis using your current connector and alert settings. A notification appears in the bottom-right corner of the page to confirm that the run has started.
+- Click **Settings** to open the Attack Discovery settings flyout and configure the LLM connector, alert filters, and other options, without leaving the Attacks page.
+
+Refer to [Generate discoveries manually](/solutions/security/ai/attack-discovery.md#attack-discovery-generate-discoveries) for more about how manual analysis works.
+
+
 ## Triage attacks [attacks-triage]
 
 The Attacks table appears under the summary section and lists individual attacks. You can expand an attack to view details including which entities were involved and which steps of the attack chain were performed.
+
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` Attacks can be generated on a schedule or manually, on demand. Manually generated attacks appear in the same table alongside scheduled ones—there's no separate view for them. To generate one, click **Run** (refer to [Generate an attack on demand](#attacks-generate-on-demand)).
+
+### Visual indicators for attack type [attacks-visual-indicators]
+
+```{applies_to}
+stack: preview 9.5
+serverless: preview
+```
+
+The Attacks table shows an indicator that tells you how each attack was generated:
+
+- **Scheduled attacks** show a **{icon}`calendar`** icon in the attack title column and in the attack flyout's header. Point to the icon to see a **Scheduled Attack discovery** tooltip, or click it to open the schedule details flyout, which shows the schedule's configuration and execution logs.
+- **Manually generated attacks** show the avatar of the user who triggered the run in the attack group's subtitle beneath its title, in the format `Detected on [timestamp] | Run by: [avatar] | [attack summary]`. The same author information also appears in the attack flyout's summary section.
+
+### Alerts tab within attack details [attacks-alerts-tab]
+
+```{applies_to}
+stack: preview 9.5
+serverless: preview
+```
+
+When you expand an attack, the **Alerts** tab shows all alerts associated with it by default, regardless of which page-level filters are active. Alerts that don't match your current filters appear with a greyed-out background instead of being hidden, and a callout above the table explains this behavior and provides a **Show matching alerts only** toggle if you want to switch back to the filtered view. Your toggle preference is remembered across all attacks.
+
+Attack group statistics, such as the total alert count shown in the Attacks table, always reflect the true total number of alerts for that attack—not just the ones matching your current filters.
 
 
 ## Filter and search attacks [attacks-filter-search]
@@ -60,7 +100,10 @@ Use the controls at the top of the Attacks table to narrow results:
 | Date/time picker | Set a specific time range. |
 | Status filter | Filter by **Open**, **Acknowledged**, or **Closed**. |
 | Assignees filter | Click **Filter by assignees** to show only attacks or alerts assigned to specific users. |
+| {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` Type filter | Filter by **Scheduled** or **Manually generated** attacks. |
 | Sort | Use the **Sort by** menu to sort by **Most recent**, **Least recent**, **Most alerts**, or **Least alerts**. |
+
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` The **Type**, **Connector**, and **Assignee** filter states persist across page reloads, so you don't lose your filter context when navigating away and back. The **Attacks volume over time** KPI graph at the top of the page also updates to reflect your active filters.
 
 ### View options [attacks-view-options]
 

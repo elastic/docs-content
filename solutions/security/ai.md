@@ -38,6 +38,8 @@ The following tools provide interactive, LLM-driven capabilities for security an
 
 [Attack Discovery](/solutions/security/ai/attack-discovery.md) uses LLMs to automatically analyze alerts in your environment and surface potential attacks. Rather than requiring you to review alerts individually, Attack Discovery identifies relationships among multiple alerts, maps activity to the MITRE ATT&CK matrix, and suggests which threat actors might be responsible. You can schedule Attack Discovery to run automatically and send notifications through connectors such as Slack, Microsoft Teams, PagerDuty, or email.
 
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Every run is enriched by a skill that cross-references additional context and validates results before they're persisted, and you can trigger a run manually, on a schedule, from an [Elastic Workflow](/explore-analyze/workflows.md), or from an {{agent-builder}} chat. Refer to [Automate Attack Discovery](/solutions/security/ai/attack-discovery-automation.md).
+
 ### AI chat [ai-chat-overview]
 
 {{elastic-sec}} offers two AI chat experiences: [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) and [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md). Both provide an LLM-powered chat interface that helps you with alert investigation, incident response, and {{esql}} query generation throughout {{elastic-sec}}, and both provide contextual insights that explain errors and suggest remediation steps.
