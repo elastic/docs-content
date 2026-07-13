@@ -8,5 +8,5 @@ If your organization restricts outbound browser traffic with a firewall, proxy, 
 :::
 
 :::{note}
-{{ecloud}} organizations are limited to 500 {{serverless-short}} projects. If you reach this limit, you'll get an error when trying to create additional projects. These limits are adjustable and can be increased by request. If you need more projects, [contact Elastic Support](/troubleshoot/index.md#contact-us) to request an increase.
+{{ecloud}} organizations have an adjustable limit of 500 {{serverless-short}} projects. If you reach this limit, you'll get an error when trying to create additional projects. To request an increase, [contact Elastic Support](/troubleshoot/index.md#contact-us).
 :::
