@@ -43,8 +43,51 @@ Use this skill to find risky entities or profile specific hosts, users, services
 | Which users have the highest risk scores? | Return top N users sorted by normalized risk score, with risk level and asset criticality. |
 | Has `host-12`'s risk score changed significantly in the last 90 days? | Compare current and historical risk scores, flag changes greater than 20 points as significant, and summarize what drove the change. |
 | What are the riskiest hosts that are high-impact assets? | Filter for entities with criticality `high_impact` or `extreme_impact` and sort by risk score. |
+| Set `host-12`'s asset criticality to high impact {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`|  Update the entity's asset criticality and recalculate its risk score. |
 
 ![Entity Analytics skill in Agent Builder](/solutions/images/security-ab-skill-ea.png)
+
+## Watchlist management
+
+```{applies_to}
+stack: ga 9.5+
+serverless:
+  security: ga
+```
+
+**Enable:** `manage-watchlists`
+
+Use this skill to manage [entity watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) — groups of important entities, such as executives or critical infrastructure hosts, whose membership factors into entity risk scoring — directly from chat. The agent can list, create, update, and delete watchlists, and add or remove entities.
+
+| Example prompt | What the agent can do |
+|----------------|----------------------|
+| List all watchlists | Return existing watchlists, and search by name when you specify one. |
+| Create a watchlist called Executives for high-profile users | Create a new watchlist, then use it in risk scoring. |
+| Add `user-42` and `user-99` to the Executives watchlist | Resolve the watchlist by name and add the entities. |
+| Remove `host-9` from the Critical Infrastructure watchlist | Remove the entity from the named watchlist. |
+| Delete the Contractors watchlist | Delete the named watchlist. |
+
+:::{tip}
+The `manage-watchlists` skill only covers watchlist changes. To also profile entities or filter them by watchlist, combine it with [`entity-analytics`](#entity-risk-investigation).
+:::
+
+## Threat hunting leads
+
+```{applies_to}
+stack: ga 9.5+
+serverless:
+  security: ga
+```
+
+**Enable:** `entity-analytics-leads`
+
+Use this skill to work with AI-generated [threat hunting leads](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md#entity-threat-hunting-leads). The agent can list current leads, generate new leads, and dismiss leads that aren't relevant.
+
+| Example prompt | What the agent can do |
+|----------------|----------------------|
+| Show me the current threat hunting leads | List AI-generated leads so you can review them. |
+| Generate new threat hunting leads | Generate new leads. |
+| Dismiss this lead, it's a false positive | Dismiss the specified lead. |
 
 ## Threat hunting
 

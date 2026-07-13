@@ -230,6 +230,36 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 `security.search_entities` {applies_to}`stack: ga 9.4+`
 :   Searches the Entity store for security entities (host, user, service, or generic), with filtering by risk score, asset criticality, entity attributes, and lifecycle timestamps. Use when the entity ID (EUID) is not known, use `security.get_entity` when it is.
 
+`security.list_watchlists` {applies_to}`stack: ga 9.5+`
+:   Lists existing [entity watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) and supports searching by name.
+
+`security.create_watchlist` {applies_to}`stack: ga 9.5+`
+:   Creates a new watchlist.
+
+`security.update_watchlist` {applies_to}`stack: ga 9.5+`
+:   Updates an existing watchlist's properties, such as name, description, or risk modifier.
+
+`security.delete_watchlist` {applies_to}`stack: ga 9.5+`
+:   Deletes a watchlist.
+
+`security.add_entities_to_watchlist` {applies_to}`stack: ga 9.5+`
+:   Adds one or more entities to a watchlist.
+
+`security.remove_entities_from_watchlist` {applies_to}`stack: ga 9.5+`
+:   Removes one or more entities from a watchlist.
+
+`security.list_leads` {applies_to}`stack: ga 9.5+`
+:   Lists AI-generated [threat hunting leads](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md#entity-threat-hunting-leads).
+
+`security.generate_leads` {applies_to}`stack: ga 9.5+`
+:   Generates new threat hunting leads.
+
+`security.dismiss_lead` {applies_to}`stack: ga 9.5+`
+:   Dismisses an existing threat hunting lead.
+
+`security.set_asset_criticality` {applies_to}`stack: ga 9.5+`
+:   Updates an entity's [asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) and recalculates its risk score.
+
 ## Inline tools
 
 Some [built-in skills](../builtin-skills-reference.md), such as the [`dashboard-management`](../builtin-skills-reference.md#agent-builder-dashboard-management-skill) skill, include inline tools that are only available while that skill is active.

@@ -90,11 +90,27 @@ $$$agent-builder-alert-analysis-skill$$$ `alert-analysis` {applies_to}`stack: ga
 $$$agent-builder-entity-analytics-skill$$$ `entity-analytics` {applies_to}`stack: ga 9.4+`
 :   Finds and investigates security entities including hosts, users, services, and generic entities. Analyzes entity risk scores, asset criticality, and historical behavior, including signals from Security {{ml-app}} anomaly detection jobs. Use to discover risky entities or profile a specific entity by ID.
 
-    **Assigned tools:** `security.get_entity`, `security.search_entities`
+    {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` It can also look up watchlists by name and update an entity's asset criticality, which recalculates the entity's risk score.
+
+    **Assigned tools:** `security.get_entity`, `security.search_entities`, `security.list_watchlists`, `security.set_asset_criticality` 
 
     **Prerequisites:** [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) enabled and the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) populated.
 
-    **Related skills:** [`find-security-ml-jobs`](#agent-builder-find-security-ml-jobs-skill) for deeper investigation of anomalies surfaced during entity analysis.
+    **Related skills:** [`find-security-ml-jobs`](#agent-builder-find-security-ml-jobs-skill) for deeper investigation of anomalies surfaced during entity analysis. [`manage-watchlists`](#agent-builder-manage-watchlists-skill) to create and modify watchlists, and [`entity-analytics-leads`](#agent-builder-entity-analytics-leads-skill) to work with AI-generated threat hunting leads.
+
+$$$agent-builder-manage-watchlists-skill$$$ `manage-watchlists` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+:   Manages [entity watchlists](/solutions/security/advanced-entity-analytics/watchlists.md): groups of important entities, such as executives or critical infrastructure hosts, whose watchlist membership factors into entity risk scoring. Use to list, create, update, or delete watchlists, or to add and remove entities.
+
+    **Assigned tools:** `security.list_watchlists`, `security.create_watchlist`, `security.update_watchlist`, `security.delete_watchlist`, `security.add_entities_to_watchlist`, `security.remove_entities_from_watchlist`
+
+    **Prerequisites:** [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) enabled and the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) populated.
+
+$$$agent-builder-entity-analytics-leads-skill$$$ `entity-analytics-leads` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+:   Works with AI-generated [threat hunting leads](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md#entity-threat-hunting-leads) for entity analytics. Use to list current leads, generate new leads, or dismiss leads that aren't relevant.
+
+    **Assigned tools:** `security.list_leads`, `security.generate_leads`, `security.dismiss_lead`
+
+    **Prerequisites:** [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) enabled and the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) populated.
 
 $$$agent-builder-find-security-ml-jobs-skill$$$ `find-security-ml-jobs` {applies_to}`stack: ga 9.4+`
 :   Investigates atypical behavior detected by {{ml-app}} jobs, including unusual access patterns, lateral movement, unexpected logins, suspicious domain activity, and large data transfers.
