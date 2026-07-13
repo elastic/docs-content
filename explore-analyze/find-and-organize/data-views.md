@@ -206,7 +206,7 @@ Runtime fields can impact {{kib}} performance. When you run a query, {{es}} uses
 ::::
 
 
-For detailed information on how to use runtime fields with {{es}}, refer to [Runtime fields](../../manage-data/data-store/mapping/runtime-fields.md).
+For detailed information on how to use runtime fields with {{es}}, refer to [Runtime fields](../../manage-data/data-store/mapping/runtime-fields.md). Runtime fields are different from unmapped fields, which can be present in documents but not defined in the index mapping. To query unmapped fields in {{esql}}, refer to [Unmapped fields](elasticsearch://reference/query-languages/esql/esql-unmapped-fields.md).
 
 
 #### Add runtime fields [create-runtime-fields]
