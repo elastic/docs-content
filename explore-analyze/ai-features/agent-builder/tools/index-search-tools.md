@@ -55,13 +55,19 @@ Index search tools support the following configuration parameters:
 When an agent calls an index search tool:
 
 1. The agent provides a natural language query (for example, "find recent errors related to authentication")
-2. The tool analyzes the query intent and available indices
+2. The tool selects a single index from the configured pattern based on the query intent and available index metadata
 3. It automatically orchestrates built-in tools to:
-   - Explore the index structure and mappings
+   - Explore the selected index's structure and mappings
    - Generate appropriate queries ({{esql}} or query DSL)
    - Execute semantic search if relevant
    - Rank and format results
 4. Returns results in a format the agent can interpret and present
+
+:::{important}
+Even when the configured pattern matches multiple indices, the tool selects only one index per query. It does not search across all matching indices simultaneously.
+
+If your use case requires searching across multiple indices in a single query, use the built-in [search tool](builtin-tools-reference.md#agent-builder-builtin-search-tool) instead, which supports multi-index {{esql}} queries across index patterns. {applies_to}`stack: ga 9.4+`
+:::
 
 To help agents make better decisions during the source selection phase, you can optimize your index metadata and tool configurations.
 

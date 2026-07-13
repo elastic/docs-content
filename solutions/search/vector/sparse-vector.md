@@ -1,4 +1,5 @@
 ---
+description: Use the Elastic Learned Sparse Encoder (ELSER) model to expand documents and queries into weighted terms for semantic search with sparse vectors in Elasticsearch.
 applies_to:
   stack:
   serverless:

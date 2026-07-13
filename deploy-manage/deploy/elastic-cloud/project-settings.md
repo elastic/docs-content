@@ -3,12 +3,13 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/project-and-management-settings.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-manage-project.html
 applies_to:
-  serverless:
+  serverless: ga
 products:
   - id: cloud-serverless
+navigation_title: Project settings
 ---
 
-# Project settings
+# {{serverless-short}} project settings
 
 Project settings are configurations that apply to your entire project, managed from the {{ecloud}} console. While Elastic [manages many things for you](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md), you can customize the following aspects of your project:
 
@@ -40,8 +41,8 @@ The total volume of search-ready data is the sum of the following:
 1. The volume of non-time series project data
 2. The volume of time series project data included in the Search Boost Window
 
-::::{note}
-Time series data refers to any document in standard indices or data streams that includes the `@timestamp` field. This field must be present for data to be subject to the Search Boost Window setting.
+::::{important}
+Time series data refers to any document in standard indices or data streams that includes a concrete `@timestamp` field. The `@timestamp` field must be an actual mapped field for data to be subject to the Search Boost Window setting. A [field alias](elasticsearch://reference/elasticsearch/mapping-reference/field-alias.md) named `@timestamp` that points to another field does not qualify the data as time series data. Such data is always treated as search-ready and is not governed by the Search Boost Window.
 ::::
 
 Each project type offers different settings that let you adjust the performance and volume of search-ready data, as well as the features available in your projects.
@@ -66,6 +67,10 @@ Project features and add-ons control which capabilities are available in your se
 
 There are no additional project features or add-ons for {{es-serverless}} projects.
 
+:::{note}
+In {{serverless-full}}, your organization's {{ecloud}} subscription level controls only the support level you receive, and is not related to the features that you use or have access to. [Learn more about subscriptions](/deploy-manage/license.md).
+:::
+
 ### {{sec-serverless}} project features [elastic-sec-project-features]
 
 For {{sec-serverless}} projects, edit the **Project features** to select a feature tier and enable add-on options for specific use cases.
@@ -76,39 +81,8 @@ For {{sec-serverless}} projects, edit the **Project features** to select a featu
 | **Security Analytics Essentials** | A suite of security analytics, detections, investigations, and collaboration tools. Does not include AI-powered tools. Allows these add-ons:<br>• **Endpoint Protection Essentials**: endpoint protections with {{elastic-defend}}.<br>• **Cloud Protection Essentials**: Cloud native security features.|
 | **Security Analytics Complete** | Everything in **Security Analytics Essentials** and **EASE**, plus advanced features such as entity analytics, threat intelligence, and more. Allows these add-ons:<br><br>• **Endpoint Protection Complete**: Everything in **Endpoint Protection Essentials** plus advanced endpoint detection and response features.<br>• **Cloud Protection Complete**: Everything in **Cloud Protection Essentials** plus advanced cloud security features.|
 
-#### Downgrading the feature tier [elasticsearch-manage-project-downgrading-the-feature-tier]
-
-:::{note}
-You cannot downgrade to EASE from any other feature tier. You can upgrade from EASE to other tiers.
-:::
-
-When you downgrade your Security project features selection from **Security Analytics Complete** to **Security Analytics Essentials**, the following features become unavailable:
-
-* All Entity Analytics features
-* The ability to use certain entity analytics-related integration packages, such as:
-  * Data Exfiltration detection
-  * Lateral Movement detection
-  * Living off the Land Attack detection
-* Intelligence Indicators page
-* External rule action connectors
-* Case connectors
-* Endpoint response actions history
-* Endpoint host isolation exceptions
-* Trusted devices
-* AI Assistant
-* Attack discovery
-
-And, the following data may be permanently deleted:
-
-* AI Assistant conversation history
-* AI Assistant settings
-* Entity Analytics user and host risk scores
-* Entity Analytics asset criticality information
-* Detection rule external connector settings
-* Detection rule response action settings
-
 :::{tip}
-For a full feature comparison, upgrading instructions, and more, refer to [{{product.serverless-security}} feature tiers](/solutions/security/security-serverless-feature-tiers.md).
+For a full feature comparison, upgrading instructions, downgrading information, and more, refer to [{{product.serverless-security}} feature tiers](/solutions/security/security-serverless-feature-tiers.md).
 :::
 
 ### {{obs-serverless}} project features
@@ -150,6 +124,8 @@ You can add custom tags for any piece of metadata that might help you to categor
 
 * The team or department that uses the project: `dept:finance`, `dept:marketing`, `dept:engineering`
 * The environment type: `env:dev`, `env:staging`, or `env:prod`
+
+Project tags must start with a letter, and can contain only lowercase letters, numbers, hyphens, and underscores.
 
 #### Create custom tags
 

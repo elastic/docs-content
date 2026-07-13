@@ -183,7 +183,7 @@ These common scheduled tasks benefit from using `event.ingested`:
 * [{{kib}} alerting](/explore-analyze/alerting/alerts.md)
 * [Watchers](/explore-analyze/alerting/watcher.md)
 
-The `event.ingested` approach is recommended for [{{elastic-sec}} data sources](/solutions/security/detect-and-alert/set-rule-data-sources.md#best-practices) and is automatically used in [{{observability}} rules](/solutions/observability/incident-management/create-manage-rules.md#observability-create-manage-rules-observability-rules).
+The `event.ingested` approach is recommended for [{{elastic-sec}} data sources](/solutions/security/detect-and-alert/set-rule-data-sources.md#best-practices) and is commonly used in [{{observability}} rules](/solutions/observability/incident-management/create-manage-rules.md#observability-create-manage-rules-observability-rules).
 
 For {{elastic-sec}} [detection rules](/solutions/security/detect-and-alert.md), also consider enabling the advanced setting that ensures `@timestamp` is not used as a [fallback for timestamp overrides](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params).
 
