@@ -12,9 +12,9 @@ products:
   - id: cloud-serverless
 ---
 
-# Monitor {{agent-builder}} agents with the traces overview dashboard
+# {{agent-builder}} traces overview dashboard
 
-<!-- STATUS: Phase 2 done (intro + What the dashboard shows drafted). Phases 3-4 still skeleton.
+<!-- STATUS: Phase 3 done (overview + install how-to drafted). Phase 4 reference still skeleton. Items needing a live check are marked VERIFY(cluster) and collected in the checklist near the end.
      Lifecycle: GA 9.5 (Stack + Serverless), confirmed. Badge matches collect-traces.md.
      Placeholder links: collect-traces.md (#7171) and permissions.md#read-trace-data are NOT on main yet
      (they land with PR #7322). Keep those links as plain text + TODO until #7322 merges, then wire them live. -->
@@ -52,25 +52,60 @@ The dashboard groups its panels into four areas:
 
 ## Before you begin
 
-<!-- Phase 3 (how-to prerequisites).
-     - Trace collection must be on. (Plain text now; TODO(#7322) link -> collect-traces.md.)
-     - You need read access to the trace data streams. (TODO(#7322) link -> permissions.md#read-trace-data.)
-     - Be in the Kibana space where you want the dashboard (install is per space). -->
+Before you install the dashboard:
+
+- Turn on trace collection for the space and save the change. The **Install Dashboard** button appears only after trace collection is enabled and saved. For details, refer to Collect agent traces.
+- Make sure you can read the trace data streams, otherwise the panels have no data to show. For the required privileges, refer to Read trace data.
+- Install the dashboard in each {{kib}} space where you want it. It is not shared across spaces.
+
+<!-- TODO(#7322): make "Collect agent traces" a link to collect-traces.md and "Read trace data" a link to permissions.md#read-trace-data once #7322 is on main. -->
+<!-- VERIFY(cluster): which privilege lets a user open Management > Gen AI Settings and install or uninstall the dashboard (for example advanced settings save, or a management privilege). Not determinable from source. -->
 
 ## Install the dashboard
 
-<!-- Phase 3 (how-to). Manual, per space, off by default. Source: kibana#276643 (+9.5 backport #277384).
-     Steps (use a stepper if it reads better):
-       1. Go to Management > Gen AI Settings, and open the Agent Builder Traces section.
-       2. Select Install to install the overview dashboard for the current space.
-       3. Open it with View, or find it in Dashboards as `agent-builder-overview-<spaceId>`.
-     Notes: repeat per space; the dashboard is not auto-installed; when installed the section shows View + Delete;
-     you can reinstall it after deleting. Success checkpoint: the dashboard appears in the space's Dashboards list. -->
+The overview dashboard is not installed automatically. Install it once per {{kib}} space.
+
+1. Go to **Management > Gen AI Settings**.
+2. In the **Agent Builder Traces** section, confirm that **Collect conversation traces** is on and saved.
+3. Select **Install Dashboard**.
+
+To open the dashboard, select **View Dashboard**, or open **Dashboards** and select **[Elastic] Agent Builder Overview**.
+
+Repeat these steps in each space where you want the dashboard.
+
+### Reinstall or remove the dashboard
+
+The dashboard is not restored automatically, including in a new space or after you remove it. If it is missing, open the **Agent Builder Traces** section and select **Install Dashboard** again.
+
+To remove it, select the arrow next to **View Dashboard**, then select **Uninstall dashboard**.
+
+<!-- Source-verified labels (Kibana main, agent_builder_tracing_section.tsx): section "Agent Builder Traces"; "Install Dashboard" when not installed; "View Dashboard" split button with an "Uninstall dashboard" menu item when installed. The button renders only after tracing is enabled and saved. View opens dashboards at #/view/agent-builder-overview-<spaceId>; the saved-object title is "[Elastic] Agent Builder Overview". Install and remove call POST /internal/gen_ai_settings/agent_builder/tracing_dashboard with {enabled}. -->
 
 ## Customize the dashboard
 
-<!-- Phase 3. The prebuilt dashboard is managed (read-only). To change it, duplicate it and edit the copy.
-     New visualizations ship by overwriting the managed definition, so edits to a copy are safe across upgrades. -->
+The overview dashboard is managed, so you cannot edit it directly. To build your own version:
+
+1. Open the dashboard.
+2. Duplicate it.
+3. Edit and save the copy.
+
+Because the original is managed, Elastic can ship improvements to it without overwriting your copy.
+
+<!-- VERIFY(cluster): confirm the exact control to duplicate a managed, read-only dashboard (for example a "Duplicate" action in the Dashboards list, or "Save as" from the open dashboard). Not determinable from source. -->
+
+<!-- ============================================================
+     VERIFY ON A TEST CLUSTER before publishing (Phase 6).
+     Charlotte to check on a 9.5 test cluster and capture screenshots.
+     1. Nav path and casing: Management > Gen AI Settings, section titled "Agent Builder Traces".
+     2. The "Install Dashboard" button appears only after "Collect conversation traces" is enabled AND saved.
+     3. Exact labels: "Install Dashboard"; when installed, "View Dashboard" split button + "Uninstall dashboard" (via the arrow / More dashboard options).
+     4. After install, the dashboard shows in Dashboards as "[Elastic] Agent Builder Overview" (id agent-builder-overview-<spaceId>).
+     5. New-space and post-uninstall behavior: the dashboard is absent until reinstalled from the section.
+     6. Customize: the exact control to duplicate the managed dashboard.
+     7. Privilege required to open Gen AI Settings and to install/uninstall the dashboard.
+     8. The four sections render, and "Tool Call Frequency & Errors" is collapsed by default.
+     Screenshots to capture: (a) Agent Builder Traces section with the Install Dashboard button; (b) the section after install (View Dashboard split button); (c) the installed dashboard.
+     ============================================================ -->
 
 ## Span and attribute reference
 
