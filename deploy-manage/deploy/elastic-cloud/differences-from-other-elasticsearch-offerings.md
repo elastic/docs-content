@@ -158,8 +158,8 @@ This table compares Security capabilities between {{ech}} deployments and Server
 | **[LogsDB](/manage-data/data-store/data-streams/logs-data-stream.md)** | Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
 
+## Serverless index sizing and resource limits [elasticsearch-differences-serverless-index-size]
 
-## Serverless project and index limits [elasticsearch-differences-serverless-index-size]
 {{es}} uses sharding to distribute the data in your index across the cluster, which helps support growing data volumes and load. In {{serverless-full}}, sharding is fully managed for you and automatically adjusts to suit your needs. 
 
 These best practices help you build an indexing and data lifecycle strategy that scales with your data over time:
@@ -167,7 +167,9 @@ These best practices help you build an indexing and data lifecycle strategy that
  * Avoid designs where each index grows to many terabytes, which can result in performance trade-offs. Consider creating multiple smaller indices that you can query using an [alias](/manage-data/data-store/aliases.md) or naming pattern.
  * Use a data stream instead of a single index when [appropriate](/manage-data/data-store/data-streams.md#should-you-use-a-data-stream), and take advantage of the [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to manage data retention. Avoid date-based naming patterns with data streams, and let the lifecycle age out data automatically.
 
-{{serverless-full}} applies the following project-level limit to ensure reliable performance and stability.
+### Project limits
+
+The following limits apply to {{serverless-full}} projects and organizations:
 
 | Limit | Value | Adjustable |
 | :--- | :--- | :--- |
