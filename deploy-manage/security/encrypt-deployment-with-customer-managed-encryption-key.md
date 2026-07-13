@@ -201,8 +201,8 @@ At this time, the following features are not supported:
 1. Create an RSA key in your Key Vault. The key must be available in each region in which you have deployments to encrypt. You can use the same key to encrypt multiple deployments.
 2. After the key is created, view the key and note the key identifier. It should look similar to the following:
 
-    * `https://example-byok-key-vault.vault.azure.net/keys/test-key` (without version identifier)
-    * `https://example-byok-key-vault.vault.azure.net/keys/test-key/1234` (with version identifier)
+    * `https://<key-vault-name>.vault.azure.net/keys/<key-name>` (without version identifier)
+    * `https://<key-vault-name>.vault.azure.net/keys/<key-name>/<version-id>` (with version identifier)
 
         Later, you will need to provide this identifier to {{ecloud}}.
 
