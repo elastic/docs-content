@@ -442,7 +442,7 @@ PCI compliance tools support PCI DSS v4.0.1 compliance assessments.
 
 ## Inline tools
 
-Some [built-in skills](../builtin-skills-reference.md) include inline tools that are only available while that skill is active. Because they are scoped to a skill rather than assignable on their own, they are not listed as standalone tools above. For example:
+Some [built-in skills](../builtin-skills-reference.md) include inline tools that are only available while that skill is active. Because they are scoped to a skill rather than assignable on their own, they are not listed among the namespaced tools in this reference. For example:
 
 - The [`dashboard-management`](../builtin-skills-reference.md#agent-builder-dashboard-management-skill) skill includes an inline tool for generating and updating dashboards.
 - The `rule-management` skill includes the `platform.alerting.manage_rule` tool for composing and modifying alerting rules.
