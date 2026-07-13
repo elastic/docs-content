@@ -159,7 +159,7 @@ This table compares Security capabilities between {{ech}} deployments and Server
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
 
 
-## Serverless index sizing and resource limits [elasticsearch-differences-serverless-index-size]
+## Serverless project and index limits [elasticsearch-differences-serverless-index-size]
 {{es}} uses sharding to distribute the data in your index across the cluster, which helps support growing data volumes and load. In {{serverless-full}}, sharding is fully managed for you and automatically adjusts to suit your needs. 
 
 These best practices help you build an indexing and data lifecycle strategy that scales with your data over time:
@@ -172,8 +172,9 @@ These best practices help you build an indexing and data lifecycle strategy that
 | Limit | Value | Adjustable |
 | :--- | :--- | :--- |
 | Number of indices per project | 15,000 | Yes |
+| Number of projects per organization | 500 | Yes |
 
-The index limit is adjustable and can be increased by request. To request a limit increase, open a support case, and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
+These limits are adjustable and can be increased by request. To request a limit increase, [open a support case](/troubleshoot/index.md#contact-us), and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
 
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 
