@@ -31,7 +31,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.4.3-fixes]
 
-* Fixes an issue where only the first assignee was displayed in the alert details flyout instead of all assigned users [#273801]({{kib-pull}}273801).
 * Fixes a scroll-position jump in the alert details flyout **Table** tab [#273521]({{kib-pull}}273521).
 * Fixes an issue where the {{agent-builder}} announcement modal could reappear during page navigation after being dismissed, particularly in high-latency or proxy environments [#272276]({{kib-pull}}272276).
 * Fixes the entities table on the **Entity Analytics** page to sort by risk score by default, showing the highest-risk entities first and placing entities without a risk score at the bottom [#272234]({{kib-pull}}272234).
@@ -1133,4 +1132,3 @@ All features introduced in 8.18.0 are also available in 9.0.0.
 * Limits the length of `transformID` to 36 characters [#213405]({{kib-pull}}213405)
 * Ensures that table actions use standard colors [#207743]({{kib-pull}}207743)
 * Fixes a bug with the **Save and continue** button on a {{fleet}} form [#211563]({{kib-pull}}211563)
-
