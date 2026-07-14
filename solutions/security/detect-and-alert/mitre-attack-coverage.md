@@ -55,6 +55,7 @@ The coverage page maps detections to [MITRE ATT&CK versions](https://attack.mitr
 | 9.5.0 | [v19](https://attack.mitre.org/resources/updates/updates-april-2026/) |
 
 ::::{note}
+:applies_to: stack: ga 9.5, serverless: ga
 MITRE ATT\&CK v19 retires the Defense Evasion tactic and replaces it with Stealth and Defense Impairment. If you have custom rules mapped to MITRE ATT\&CK, check [](/solutions/security/detect-and-alert/remap-mitre-attack.md) to find and update mappings that changed in v19.
 ::::
 
