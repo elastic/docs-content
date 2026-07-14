@@ -81,8 +81,6 @@ The response should show `errors: false` for all documents.
 
 :::{note}
 The timestamps are fixed to `2026-07-02`, which is in the past. Before running this request, open it in a text editor and replace `2026-07-02` with today's date in `YYYY-MM-DD` format, keeping the time values unchanged. Once you load the data, complete the tutorial within 2 hours to see the full episode lifecycle.
-
-Because the times of day are fixed (`21:57`–`22:37` UTC), the data only looks "recent" once the current UTC time has passed `22:37`. If you load the data before then, the documents are technically timestamped in the future. This doesn't affect the query sandbox in the next section, which uses an absolute time range, but it does affect the rule's lookback window (which is always relative to now) once the rule is running. See the note in **Observe the episode lifecycle** for what this means for the rest of the tutorial.
 :::
 
 ::::{dropdown} Bulk request: 82 synthetic latency events (healthy → degraded → recovered)
@@ -314,11 +312,7 @@ The query you applied from the sandbox auto-fills **Mode**, **Time field**, and 
 
 - Set **Alert delay** to **Breaches: 2**. The breach must persist across 2 consecutive evaluations before the episode moves to `active`.
 - Set **Schedule** to every `5` minutes.
-- Set **Lookback Window** to the last `2` hours. This ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial.
-
-   :::{note}
-   Unlike the sandbox, the rule's **Lookback Window** is always a relative range (the last 2 hours as of each evaluation). It can't use an absolute range like **Today**. If the current UTC time hasn't yet passed the start of the degraded window (`22:13`, after you substitute today's date), the rule won't see the degraded data until real time catches up. This doesn't block you from continuing the tutorial. You can go ahead and finish configuring and saving the rule. Refer to the note in **Observe the episode lifecycle** for when the episode will actually appear.
-   :::
+- Set **Lookback Window** to the last `2` hours. This ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial. Unlike the sandbox, this is always a relative range, it can't use an absolute range like **Today**. Go ahead and finish configuring and saving the rule; see **Observe the episode lifecycle** for when the episode will actually appear.
 
 Select **Next**.
 
