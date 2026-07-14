@@ -34,7 +34,7 @@ Watch [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthroug
 ::::
 
 
-## Performance and safety
+## Performance and safety [diagnostic-performance-safety]
 
 The Support Diagnostic tool can be run from any directory on the machine. It does not require installation to a specific location, and the only requirement is that the user has read access to the Elasticsearch artifacts, write access to the chosen output directory, and sufficient disk space for the generated archive.
 
