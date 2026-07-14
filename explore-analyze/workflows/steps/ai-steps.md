@@ -24,14 +24,11 @@ AI steps let workflows call a large language model (LLM) for reasoning, classifi
 - [`ai.summarize`](#ai-summarize): Generate a summary of the provided content. {applies_to}`stack: ga 9.4+`
 - [`ai.agent`](#ai-agent): Invoke an {{agent-builder}} agent as a workflow step. {applies_to}`stack: preview 9.3, ga 9.4+`
 
-::::{tab-set}
-:::{tab-item} Field casing
+::::{applies-switch}
+:::{applies-item} { stack: ga 9.5, serverless: ga }
 `connector-id`, `agent-id`, and `inference-id` are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`), written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most AI parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`).
 :::
-:::{tab-item} Templating limitation
-```{applies_to}
-stack: ga 9.3-9.4
-```
+:::{applies-item} stack: ga 9.3-9.4
 Liquid expressions in these top-level fields aren't evaluated, so use a literal value (for example, `agent-id: elastic-ai-agent`) instead of `"{{ consts.agent_id }}"`.
 :::
 ::::
