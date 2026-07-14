@@ -293,7 +293,7 @@ Go to **Alerting v2 preview** using the navigation menu or the [global search fi
 2. Set the sandbox date range to the **Today** preset (from the **Commonly used** list) and run the query.
 
    :::{note}
-   Use **Today** rather than a relative preset like **Last 1 hour**. Because the sample data uses fixed times of day, a relative range only covers it once the current time has passed the data's last timestamp (`22:37` UTC, after you substitute today's date). **Today** covers the full calendar day, so it finds the data regardless of what time it is right now.
+   Use **Today** rather than a relative preset like **Last 1 hour**. Because the sample data uses fixed times of day, a relative range only includes data once the current time has passed the data's last timestamp (`22:37` UTC, after you substitute today's date). **Today** covers the full calendar day, so it finds the data regardless of what time it is right now.
    :::
 
 3. Confirm the query results. You should see one row for `service.name: checkout` with `p95_latency_ms` above 2000 and `severity: high` or `critical`.
