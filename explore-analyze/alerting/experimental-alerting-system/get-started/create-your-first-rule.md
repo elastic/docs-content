@@ -80,7 +80,7 @@ Expand the drop-down below to copy the full bulk request, then run it in Dev Too
 The response should show `errors: false` for all documents.
 
 :::{note}
-The timestamps are fixed to `2026-07-02`, which is in the past. Before running this request, open it in a text editor and replace `2026-07-02` with today's date in `YYYY-MM-DD` format, keeping the time values unchanged. Once you load the data, complete the tutorial within 2 hours to see the full episode lifecycle.
+The timestamps are fixed to `2026-07-02`, which is in the past. Before running this request, open it in a text editor and replace `2026-07-02` with today's date in `YYYY-MM-DD` format, keeping the time values unchanged. If you want to see the episode recover on its own, without forcing it, complete the tutorial within 2 hours of loading the data.
 :::
 
 ::::{dropdown} Bulk request: 82 synthetic latency events (healthy → degraded → recovered)
@@ -350,13 +350,33 @@ Select **Next**.
 
 The sandbox showed that your query *can* find a breach. This step confirms the rule is actually running on schedule. The **Execution history** page gives you a real-time log of every rule run and its outcome.
 
-1. Open **Execution history** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+:::::{stepper}
 
-2. On the **Rules** tab, select **Checkout Service Latency**.
+::::{step} Open Execution history
 
-3. Wait one schedule interval (5 minutes) after saving the rule, then check the table for a recent entry.
+Open **Execution history** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-4. Confirm the **Response** shows `success` and the **Timestamp** matches a recent time. If no entries appear, confirm at least one 5-minute interval has elapsed since you saved the rule.
+::::
+
+::::{step} Select the rule
+
+On the **Rules** tab, select **Checkout Service Latency**.
+
+::::
+
+::::{step} Wait for an execution
+
+Wait one schedule interval (5 minutes) after saving the rule, then check the table for a recent entry.
+
+::::
+
+::::{step} Confirm success
+
+Confirm the **Response** shows `success` and the **Timestamp** matches a recent time. If no entries appear, confirm at least one 5-minute interval has elapsed since you saved the rule.
+
+::::
+
+:::::
 
 ## Observe the episode lifecycle [observe-episode-lifecycle]
 
@@ -366,15 +386,56 @@ Because you set **Alert delay** to 2 consecutive breaches, the episode starts as
 
 :::{note}
 If your current UTC time hadn't yet passed `22:13` (the start of the degraded window, after you substitute today's date) when you loaded the sample data, no episode will appear here until real time reaches that point. The rule's lookback window only looks backward, so it needs the degraded window to be in the past before it can flag a breach. Once real time passes `22:13`, expect the episode to appear within about 10–15 minutes, after two consecutive evaluations confirm the breach.
+
+Note that you don't have to wait out the full lifecycle in real time. Once the episode is `active`, you can force it into recovery immediately instead of waiting for the lookback window to age out the degraded data naturally.  Refer to step 5 in the following section.
 :::
 
-1. Open **Alerting v2 preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Alerts** page.
+:::::{stepper}
 
-2. If you have other rules in this cluster, filter by **Rule** to show only episodes for **Checkout Service Latency**. After the first two evaluations (about 10 minutes), you'll see an episode appear and move from `pending` to `active`.
+::::{step} Open the Alerts page
 
-3. Select the episode to open its details page. Use the metric trend to see how P95 latency compared to the threshold over the episode's lifetime, and confirm the grouping value (`checkout`) that triggered it.
+Open **Alerting v2 preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Alerts** page.
 
-4. Wait for the rule's lookback window to advance past the degraded data. Once no breaching rows fall within the 2-hour window, the episode status changes to `inactive` automatically. No manual action is required. This is default recovery in action.
+::::
+
+::::{step} Find the episode
+
+If you have other rules in this cluster, filter by **Rule** to show only episodes for **Checkout Service Latency**. After the first two evaluations (about 10 minutes), you'll see an episode appear and move from `pending` to `active`.
+
+::::
+
+::::{step} Inspect the episode details
+
+Select the episode to open its details page. Use the metric trend to see how P95 latency compared to the threshold over the episode's lifetime, and confirm the grouping value (`checkout`) that triggered it.
+
+::::
+
+::::{step} Wait for automatic recovery
+
+Wait for the rule's lookback window to advance past the degraded data. Once no breaching rows fall within the 2-hour window, the episode status changes to `inactive` automatically. No manual action is required. This is default recovery in action.
+
+Because the lookback window is 2 hours, this can take a while. The degraded data doesn't age out until roughly 2 hours after you loaded it. If you don't want to wait, follow the instructions in the next step to force the same outcome immediately.
+
+::::
+
+::::{step} (Optional) Force recovery immediately
+
+Run the following in **Dev Tools** to delete the degraded documents:
+
+```json
+POST checkout-service-logs/_delete_by_query
+{
+  "query": {
+    "range": { "latency_ms": { "gt": 2000 } }
+  }
+}
+```
+
+With the breaching documents gone, the next scheduled run (within 5 minutes) finds no rows over the threshold. The rule writes a new rule event, and the episode moves to `inactive`, the same recovery path you'd otherwise wait up to 2 hours to see.
+
+::::
+
+:::::
 
 ## Key concepts demonstrated [create-rule-key-concepts]
 
@@ -383,4 +444,4 @@ This tutorial put four core concepts into practice:
 - **Rules** - The query you wrote runs every 5 minutes and computes P95 latency over a 2-hour lookback window. Each run checks whether the result exceeds 2000 ms. The schedule and lookback you configured determined how often the rule checked and how much history it analyzed each time.
 - **Severity tiers** - The `CASE()` expression you wrote classified each breach as `high` or `critical` based on the P95 value. Those labels are stored in `.rule-events` and visible in the episode detail view.
 - **Episode lifecycle** - Setting **Alert delay** to **Breaches: 2** meant the episode didn't open on the first breach. You watched it start as `pending` on the Alerts page, then move to `active` after a second consecutive breaching evaluation confirmed the condition wasn't transient.
-- **Automatic recovery** - Because you kept the default recovery settings, the episode closed on its own once the degraded data aged out of the lookback window. The rule detected the absence of a breach and moved the episode to `inactive`. 
+- **Automatic recovery** - Because you kept the default recovery settings, the episode closed once a scheduled run found no breaching rows, whether that happened naturally as the degraded data aged out of the lookback window, or immediately after you deleted the degraded documents. Either way, the rule detected the absence of a breach and moved the episode to `inactive`.
