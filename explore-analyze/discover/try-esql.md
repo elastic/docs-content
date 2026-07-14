@@ -19,9 +19,13 @@ Elasticsearch Query Language ({{esql}}) helps you explore and analyze your {{pro
 - You must have data in {{product.elasticsearch}}.
   The examples on this page use the {{product.kibana}} sample web logs to explore data and create visualizations. You can install sample data by following [Add sample data](../index.md#gs-get-data-into-kibana).
 
-::::{tip}
-For the complete {{esql}} documentation, including all supported commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md). For a more detailed overview of {{esql}} in {{product.kibana}}, refer to [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md).
-::::
+## Resources
+
+This tutorial covers the basics of querying data with {{esql}} in Discover. For more information, refer to:
+
+* [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Complete list of commands, functions, and operators
+* [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md): Detailed overview of {{esql}} features in {{product.kibana}}
+* [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md): Techniques for writing fast queries
 
 
 ## Get started with {{esql}} in Discover [tutorial-try-esql]
@@ -29,7 +33,7 @@ For the complete {{esql}} documentation, including all supported commands, funct
 1. Go to **Discover**.
 2. Switch to {{esql}} mode. You can do this from:
 
-   - **Try {{esql}}** or {icon}`code` **{{esql}}** in the application menu.
+   - {icon}`code` **Query in ES|QL** (**ES|QL** or **Try ES|QL** in earlier versions) in the application menu.
    - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
 
    Things to know:
@@ -228,6 +232,11 @@ To create lookup indices, you need the [`create_index`](elasticsearch://referenc
 
 5. Check your index and its data. You can explore your index using the search field, or open it in a new Discover session by selecting **Open in Discover**. If you choose to open it in Discover, a new browser tab opens with a prefilled {{esql}} query on the index.
 
+   :::{tip}
+   :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+   The search field supports free text and [KQL](/explore-analyze/query-filter/languages/kql.md) syntax, with autocomplete for field names and values. Newly added columns appear as autocomplete suggestions only after you save the index, and the filter doesn't match unsaved values.
+   :::
+
 6. **Save** any unsaved changes, then **Close** the index editor to return to your query.
 
 Your new index is automatically added to your query. You can then specify the field to join using `ON <field_to_join>`.
@@ -325,6 +334,8 @@ The following limitations apply to the lookup index editor in {{kib}}. For gener
 Row display limit
 :   The lookup index editor displays up to 1,000 rows. To find a specific row when the index contains more than 1,000 entries, use the search field: it searches the full index. The `LIMIT` command in your {{esql}} query has no effect on the data shown here.
 
+    {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` The search field accepts KQL syntax for precise filtering. Unsaved rows and values aren't matched until you save the index.
+
 ## Add variable controls to your Discover queries [add-variable-control]
 ```{applies_to}
 stack: preview 9.2
@@ -373,6 +384,11 @@ serverless: preview
 ```
 
 When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-languages/esql/commands/stats-by.md) clause with a single grouping field, **Discover** displays the results as expandable groups instead of a flat table. Each row represents one unique value of the grouping field, and you can expand it to inspect the underlying documents without leaving the query. The results count above the table reports the number of groups instead of the number of documents.
+
+:::{note}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+When searching large datasets, you can get faster, estimated results by using {icon}`bolt` **Fast mode**. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
+:::
 
 :::{image} /explore-analyze/images/discover-esql-cascade-overview.png
 :alt: Grouped results layout in Discover, with one row expanded to show underlying documents
@@ -442,8 +458,8 @@ The grouping field is preselected from your `STATS BY` clause. Open the **Group 
 
 Certain interactions with the results table of your {{esql}} query in Discover apply additional filters to your query. When hovering over a value cell, contextual options appear: 
 
-- Selecting {icon}`plus_in_circle` **Filter for this...** adds or completes the `WHERE` command of the query to specifically look for the selected value. For example, `WHERE host.keyword == "www.elastic.co"`.
-- Selecting {icon}`minus_in_circle` **Filter out this...** adds or completes the `WHERE` command of the query to specifically exclude the selected value. For example, `WHERE host.keyword != "www.elastic.co"`.
+- Selecting {icon}`plus_circle` **Filter for this...** adds or completes the `WHERE` command of the query to specifically look for the selected value. For example, `WHERE host.keyword == "www.elastic.co"`.
+- Selecting {icon}`minus_circle` **Filter out this...** adds or completes the `WHERE` command of the query to specifically exclude the selected value. For example, `WHERE host.keyword != "www.elastic.co"`.
 
 :::{note}
 :applies_to: { serverless:, stack: ga 9.3+ }
@@ -451,6 +467,11 @@ Up to and including version 9.2, filtering for multi-value fields isn't supporte
 :::
 
 Other interactions with the results table do not update the query, such as dragging fields onto the table or sorting the table in a specific order.
+
+:::{tip}
+:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+You can also have an AI agent analyze your {{esql}} results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
+:::
 
 ## Revert to Discover's classic mode [revert-to-classic-mode]
 
@@ -461,10 +482,15 @@ You can go back to the classic data view and KQL mode in Discover at any time. W
 ::::{applies-item} {serverless:, stack: ga 9.4+ }
 1. Open the Discover tab that you want to switch to classic mode.
 
-2. From your tab's contextual menu, select **Switch to classic**. This affects only the selected Discover tab.
+2. Switch the active tab from either location:
+
+   - From the tab's contextual menu ({icon}`boxes_vertical`), select **Switch to classic**.
+   - From the application menu, select **Switch to Classic**.
+
+   This affects only the active Discover tab.
 
 :::{tip}
-The **Switch to classic** option only appears for the currently active tab. To see it for another tab, you must load that tab first.
+The contextual menu **Switch to classic** option only appears for the currently active tab. To see it for another tab, you must load that tab first.
 :::
 ::::
 

@@ -12,9 +12,14 @@ on:
         default: false
         type: boolean
 
+permissions: {}
+
 jobs:
   update-kube-stack-version:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     
     steps:
     - name: Checkout repository

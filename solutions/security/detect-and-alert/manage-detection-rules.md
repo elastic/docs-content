@@ -189,6 +189,10 @@ Before manually running rules, make sure you properly understand and plan for ru
 
 The rule runs over the time range that you selected. All [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) are also activated, except for **Summary of alerts** actions that run at a custom frequency.
 
+:::{tip}
+To run multiple rules on demand from a script, scheduled task, or other automation, use [Elastic Workflows](/explore-analyze/workflows.md). The [Run detection rules on demand](/explore-analyze/workflows/use-cases/security/manage-detection-rules/run-rules-on-demand.md) workflow shows how to iterate over a list of rule IDs and trigger a manual run for each over a configurable lookback window.
+:::
+
 ::::{note}
 Be mindful of the following:
 

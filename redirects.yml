@@ -834,6 +834,11 @@ redirects:
   'solutions/security/explore/users-page.md': 'solutions/security/advanced-entity-analytics/users-page.md'
   'solutions/security/explore/configure-network-map-data.md': 'solutions/security/advanced-entity-analytics/configure-network-map-data.md'
   'solutions/security/explore/configure-dns-histogram.md': 'solutions/security/advanced-entity-analytics/configure-dns-histogram.md'
+
+# Entity analytics IA restructure: renamed pages
+  'solutions/security/advanced-entity-analytics/overview.md': 'solutions/security/advanced-entity-analytics/monitor-entity-risk.md'
+  'solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md': 'solutions/security/advanced-entity-analytics/entity-analytics-requirements.md'
+  'solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md': 'solutions/security/advanced-entity-analytics/monitor-privileged-user-activities.md'
   
 # Related to https://github.com/elastic/docs-content/pull/5222
   'troubleshoot/deployments/cloud-enterprise/node-bootlooping.md': 'troubleshoot/monitoring/node-bootlooping.md'
@@ -874,6 +879,19 @@ redirects:
       - to: 'explore-analyze/elastic-inference/eis-supported-models.md'
         anchors:
           'supported-models': 
+  'explore-analyze/elastic-inference/eis-supported-models.md':
+    to: 'explore-analyze/elastic-inference/eis-supported-models.md'
+    many:
+      - to: 'explore-analyze/elastic-inference/eis-region-and-hosting.md'
+        anchors:
+          'eis-regions': 'eis-regions'
+      - to: 'explore-analyze/elastic-inference/eis-rate-limits.md'
+        anchors:
+          'rate-limits': 'eis-rate-limits'
+      - to: 'explore-analyze/elastic-inference/eis.md'
+        anchors:
+          'pricing': 'pricing'
+          'monitor-your-token-usage': 'monitor-your-token-usage'
 # Split off links to inference UI pages
   'explore-analyze/elastic-inference/inference-api.md':
     to: 'explore-analyze/elastic-inference/inference-api.md'
@@ -891,3 +909,52 @@ redirects:
       - to: 'explore-analyze/ai-features/agent-builder/agent-builder-agents.md'
         anchors:
           'enable-elastic-capabilities': 'elastic-capabilities'
+
+  # Rehome CCS and CCR privileges from remote-clusters-cert.md
+  'deploy-manage/remote-clusters/remote-clusters-cert.md':
+    to: 'deploy-manage/remote-clusters/remote-clusters-cert.md'
+    many:
+      - to: 'deploy-manage/tools/cross-cluster-replication/_configure_privileges_for_cross_cluster_replication_2.md'
+        anchors:
+          'remote-clusters-privileges-ccr': 'configure-privileges-for-ccr-cert'
+          '_remote_cluster': '_remote_cluster_4'
+          '_local_cluster': '_local_cluster_4'
+      - to: 'explore-analyze/cross-cluster-search.md'
+        anchors:
+          'remote-clusters-privileges-ccs': 'configure-privileges-for-ccs-cert'
+          'clusters-privileges-ccs-kibana-cert': 'configure-privileges-for-ccs-cert-local'
+          '_remote_cluster_2': 'configure-privileges-for-ccs-cert-remote'
+          '_local_cluster_2': 'configure-privileges-for-ccs-cert-local'
+          '_local_cluster_3': 'configure-privileges-for-ccs-cert-local'
+          '_remote_cluster_3': 'configure-privileges-for-ccs-cert-remote'
+
+  # Rehome CCS and CCR API key privileges from remote-clusters-api-key.md
+  'deploy-manage/remote-clusters/remote-clusters-api-key.md':
+    to: 'deploy-manage/remote-clusters/remote-clusters-api-key.md'
+    many:
+      - to: 'deploy-manage/tools/cross-cluster-replication/_configure_privileges_for_cross_cluster_replication_2.md'
+        anchors:
+          '_configure_privileges_for_ccr': 'configure-privileges-for-ccr-api-key'
+      - to: 'explore-analyze/cross-cluster-search.md'
+        anchors:
+          '_configure_privileges_for_ccs': 'configure-privileges-for-ccs-api-key'
+
+  # Redirect removed CCS privileges child page
+  'explore-analyze/cross-cluster-search/configure-privileges-for-cross-cluster-search.md':
+    to: 'explore-analyze/cross-cluster-search.md'
+    anchors:
+      '': 'configure-privileges-for-ccs'
+
+  # Related to https://github.com/elastic/docs-content/pull/7151
+  'deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md':
+    to: 'deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md'
+    anchors:
+      'index-and-resource-limits': 'elasticsearch-differences-serverless-index-size'
+      'elasticsearch-differences-custom-plugins-and-bundles': 'elasticsearch-differences-custom-plugins-and-bundles'
+      'elasticsearch-differences-serverless-settings-availability': 'elasticsearch-differences-serverless-settings-availability'
+
+  # Fleet: renamed "Managed integrations content" to "Managed content" and moved the page
+  'reference/fleet/managed-integrations-content.md':
+    to: 'reference/fleet/managed-content.md'
+    anchors:
+      'managed-integrations-content':

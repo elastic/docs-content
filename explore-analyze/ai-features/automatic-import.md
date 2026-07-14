@@ -106,7 +106,13 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
    - UDP
 
 8. Under **Logs**, either upload a sample of your data or select an existing index. Only indexes that include the `event.original` field are supported. Make sure your sample includes all the types of events that you want the integration to handle.
-9. Click **Analyze logs** and wait for processing to complete. This can take several minutes. The data stream(s) continue to process as shown by the status on the **Manage my integrations** menu, so you can navigate away and come back later. Only integrations created after using versions 9.4+ appear here.
+9. Click **Analyze logs** and wait for processing to complete. This can take several minutes. The data stream(s) continue to process as shown by the status on the **Manage my integrations** menu, so you can navigate away and come back later.
+
+   :::{note}
+   The **Manage my integrations** menu lists only integrations created with Automatic Import on versions 9.4+. 
+   
+   Manually created custom integration `.zip`s  get installed from the **Installed integrations** tab and aren't tracked on the **Manage my integrations** menu. For more information about user-created custom integrations, refer to [Upload a new integration](https://www.elastic.co/docs/extend/integrations/upload-new-integration).
+   :::
 
    :::{image} /solutions/images/security-auto-import-data-streams-status.png
    :alt: The New Integration page showing multiple data streams with Analyzing and Success statuses

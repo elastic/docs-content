@@ -170,6 +170,10 @@ This configuration disables the default indexers and matchers, and then enables 
 
     **Default**: `true`
 
+::::{note}
+Creating a field with a name that is dynamically determined at runtime (for example, using the value of a label as a field name) is not supported by this processor or by `add_fields`. To react to label values, use [conditions-based autodiscover templates](/reference/fleet/conditions-based-autodiscover.md) instead.
+::::
+
 
 ## Indexers and matchers [kubernetes-indexers-and-matchers]
 

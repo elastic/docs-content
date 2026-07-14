@@ -157,6 +157,8 @@ You can identify zero or more scheduled events in a calendar. {{anomaly-jobs-cap
 
 If you want to add multiple scheduled events at once, you can import an iCalendar (`.ics`) file in {{kib}} or a JSON file in the [add events to calendar API]({{es-apis}}operation/operation-ml-post-calendar-events).
 
+If you need to handle recurring seasonal clock changes instead of one-off events, see [Daylight saving time calendars](ml-ad-dst-calendars.md), which automatically generate the scheduled events for a given time zone's DST transitions.
+
 ::::{note}
 
 * You must identify scheduled events before your {{anomaly-job}} analyzes the data for that time period. Machine learning results are not updated retroactively.

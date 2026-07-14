@@ -37,7 +37,7 @@ If you've enabled grouping on the Alerts page, expand a group and select an indi
 | Icon | Name | Action |
 |------|------|--------|
 | {icon}`arrow_down` | Expand details | Open the [left panel](#left-panel) for deeper investigation of each section. |
-| {icon}`clockCounter` | History | View up to 10 recently visited flyouts (alerts, users, etc.) and click to navigate back. |
+| {icon}`clock_counter` | History | View up to 10 recently visited flyouts (alerts, users, etc.) and click to navigate back. |
 | {icon}`new_chat` | Chat | Open [AI Assistant](/solutions/security/ai/ai-assistant.md). |
 | {icon}`share` | Share alert | Get a shareable URL. Don't copy from the browser address bar. It might include filters or relative time ranges that produce inconsistent results. |
 | {icon}`gear` | Flyout settings | Choose **Overlay** (flyout over table) or **Push** (flyout beside table). You can resize panels and click **Reset size** to restore defaults. |
@@ -54,8 +54,8 @@ The header displays key alert information:
 * **Rule**: The rule that generated the alert
 * **Status**: Current alert status and creation time
 * **Severity and risk score**: Inherited from the rule
-* **Assignees**: Users assigned to the alert (click the **Add** icon {icon}`plus_in_circle` to add more)
-* **Notes**: Attached notes (click the **Add** icon {icon}`plus_in_circle` to add a note)
+* **Assignees**: Users assigned to the alert (click the **Add** icon {icon}`plus_circle` to add more)
+* **Notes**: Attached notes (click the **Add** icon {icon}`plus_circle` to add a note)
 
 #### View formats
 
