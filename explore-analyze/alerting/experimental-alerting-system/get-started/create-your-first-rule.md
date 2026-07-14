@@ -19,7 +19,7 @@ Here's what you'll do:
 2. **Write a detection query** - Use the query sandbox to build and preview an {{esql}} query that computes P95 latency and flags breaches. The sandbox lets you verify the logic before the rule ever runs.
 3. **Configure the rule** - Set the alert condition, schedule, lookback window, and recovery behavior. You'll see how each setting shapes the alert lifecycle.
 4. **Confirm the rule is running** - Check the **Execution history** page to see that the rule is evaluating on schedule and its runs are succeeding.
-5. **Watch the episode open and recover** - Open the alert episode's details page to watch the episode move from `pending` to `active` as the breach persists, then close automatically when the degraded data ages out of the lookback window.
+5. **Watch the episode open and recover** - Open the alert episode's details page to watch the episode move from `pending` to `active` as the breach persists, then close automatically when the degraded data ages out of the lookback window, or immediately if you force recovery.
 
 ## Requirements [create-rule-requirements]
 
