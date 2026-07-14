@@ -316,9 +316,9 @@ The query you applied from the sandbox auto-fills **Mode**, **Time field**, and 
 - Set **Schedule** to every `5` minutes.
 - Set **Lookback Window** to the last `2` hours. This ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial.
 
-:::{note}
-Unlike the sandbox, the rule's **Lookback Window** is always a relative range (the last 2 hours as of each evaluation). It can't use an absolute range like **Today**. If the current UTC time hasn't yet passed the sample data's last timestamp (`22:37`, after you substitute today's date), the rule won't see the degraded data until real time catches up. This doesn't block you from continuing the tutorial. You can go ahead and finish configuring and saving the rule. Refer to the note in **Observe the episode lifecycle** for when the episode will actually appear.
-:::
+   :::{note}
+   Unlike the sandbox, the rule's **Lookback Window** is always a relative range (the last 2 hours as of each evaluation). It can't use an absolute range like **Today**. If the current UTC time hasn't yet passed the sample data's last timestamp (`22:37`, after you substitute today's date), the rule won't see the degraded data until real time catches up. This doesn't block you from continuing the tutorial. You can go ahead and finish configuring and saving the rule. Refer to the note in **Observe the episode lifecycle** for when the episode will actually appear.
+   :::
 
 Select **Next**.
 
@@ -342,7 +342,7 @@ Select **Next**.
 1. On the **Details & Artifacts** step, enter the following:
 
    - **Name**: Checkout Service Latency
-   - **Description**: `Detects when P95 latency for the checkout service exceeds 2 seconds. Groups by service name and assigns severity: critical at 4 seconds, high at 2 seconds.`
+   - **Description**: Detects when P95 latency for the checkout service exceeds 2 seconds. Groups by service name and assigns severity: critical at 4 seconds, high at 2 seconds.
 
    Select **Next**.
 
@@ -358,7 +358,7 @@ The sandbox showed that your query *can* find a breach. This step confirms the r
 
 1. Open **Execution history** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-2. Select the **Rules** tab and use the **Rule** filter to select **Checkout Service Latency**.
+2. On the **Rules** tab, select **Checkout Service Latency**.
 
 3. Wait one schedule interval (5 minutes) after saving the rule, then check the table for a recent entry.
 
@@ -366,7 +366,7 @@ The sandbox showed that your query *can* find a breach. This step confirms the r
 
 ## Observe the episode lifecycle [observe-episode-lifecycle]
 
-With the rule running, you can watch the full alert lifecycle play out on the Alerts page and in the episode detail view. The episode opens once the breach persists across consecutive evaluations, stays active while the degraded data is in the lookback window, and closes automatically when no breaching data remains.
+With the rule running, you can watch the full alert lifecycle play out on the **Alerts** page and in the episode detail view. The episode opens once the breach persists across consecutive evaluations, stays active while the degraded data is in the lookback window, and closes automatically when no breaching data remains.
 
 Because you set **Alert delay** to 2 consecutive breaches, the episode starts as `pending` and only moves to `active` once the breach persists across a second evaluation. This prevents transient spikes from opening an episode right away.
 
