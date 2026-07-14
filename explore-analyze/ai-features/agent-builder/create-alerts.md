@@ -15,11 +15,9 @@ products:
 # Create alerts on {{agent-builder}} trace data
 
 <!--
-How-to (docs-content#7173). Last page in the trace cluster.
-Depends on #7171 (trace collection, PR #7322) and reuses the field reference from #7170 (dashboard, PR #7337).
-Lifecycle drafted GA 9.5 (Stack and Serverless), matching the trace cluster.
-RESOLVED (#4): The Elasticsearch query rule and index threshold rule are both serverless: ga Stack rules, and Agent Builder runs on the Elasticsearch (Search) serverless project type, so serverless: ga is supportable for the steps. Spot-check on a 9.5 Elasticsearch serverless project that both rule types appear in Create rule (Stack Management > Rules).
-Do not publish any ES|QL query that has not been run on a 9.5 cluster. Mark examples "test on your own data".
+How-to (docs-content#7173). Last page in the trace cluster; merge order #7171 -> #7170 -> #7173.
+Depends on #7171 (collect-traces.md, PR #7322) and reuses the field reference from #7170 (agent-traces-dashboard.md, PR #7337).
+Do not publish any ES|QL query that has not been run on a 9.5 cluster.
 -->
 
 {{agent-builder}} collects execution traces into a data stream in your own {{es}} cluster. These traces record token usage, errors, latency, and tool calls, so you can create {{kib}} alerting rules that notify you when something needs your attention. For example, you can alert on a conversation that uses too many tokens, token costs that exceed a budget, an agent error rate that spikes, or a tool that fails repeatedly.
@@ -36,7 +34,7 @@ Before you create a rule, make sure that:
 
 ## Create a rule
 
-Alert on the trace data with an [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md) that runs an ES|QL query on a schedule and runs an action when the query returns matches. For a simple numeric threshold, you can use an [index threshold rule](/explore-analyze/alerting/alerts/rule-type-index-threshold.md) instead.
+Alert on the trace data with an [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md) that runs an ES|QL query on a schedule and runs an action when the query returns matches. For a simple count-based threshold, you can use an [index threshold rule](/explore-analyze/alerting/alerts/rule-type-index-threshold.md) instead. The index threshold rule cannot sum the token fields, because they are stored as strings, so use the {{es}} query rule with ES|QL for token-based alerts.
 
 With ES|QL, the query targets the data stream directly in its `FROM` command, so you do not need a data view. The alert condition lives in the query, usually in a `WHERE` clause that compares a value to a threshold. Query one space at a time and avoid wildcards, so you do not mix data from different spaces.
 
@@ -93,7 +91,7 @@ Rule settings:
 * **Alert group**: Create an alert for each row, so you get one alert per conversation over the threshold.
 * **Time window**: the period to evaluate, for example the last 24 hours.
 
-256,000 is an example cost threshold, not a hard limit. {{agent-builder}} compacts long conversations, so a conversation can pass this value without failing. By default, `attributes.gen_ai.conversation.id` is a stable hash, which is enough to group and count conversations. To show the real conversation ID in alerts, turn on `agentBuilder:tracing:includeRealIds`.
+256,000 is an example cost threshold, not a hard limit. {{agent-builder}} compacts long conversations, so a conversation can pass this value without failing. By default, `attributes.gen_ai.conversation.id` is a stable hash, which is enough to group and count conversations. To include the real conversation ID in alerts, turn on the **Include real conversation and workflow IDs** privacy setting (`agentBuilder:tracing:includeRealIds`).
 
 ### Token consumption over a period exceeds a budget
 
@@ -133,18 +131,18 @@ Rule settings:
 * **Alert group**: Create an alert for each row, so you get one alert per agent.
 * **Time window**: the period to evaluate, for example the last hour.
 
-The `executions >= 20` guard avoids noisy alerts when an agent has run only a few times. `error_rate > 0.1` alerts when more than 10 percent of executions fail.
+The `executions >= 20` guard avoids noisy alerts when an agent has run only a few times. `error_rate > 0.1` alerts when more than 10 percent of executions fail. Like conversation IDs, `attributes.gen_ai.agent.id` is a stable hash by default, so custom agents group by hash unless you turn on `agentBuilder:tracing:includeRealIds`.
 
 <!-- TODO(cluster): confirm that invoke_agent AGENT spans carry status.code == "Error" when an agent execution fails, and that this is the right span for an agent error rate. If agent errors are not recorded here, measure errors on a different span (for example chat spans) and update this query. -->
 
 ### A specific tool fails repeatedly
 
-Alert when a tool records more than a set number of errors. Count `execute_tool` spans with an error status and group by tool name.
+Alert when a tool records more than a set number of errors. Count `execute_tool` spans that have an error status and group by the tool's span name.
 
 ```esql
 FROM traces-agent_builder.otel-default
 | WHERE `span.name` LIKE "execute_tool *" AND status.code == "Error"
-| STATS failures = COUNT(*) BY name
+| STATS failures = COUNT(*) BY `span.name`
 | WHERE failures > 5
 ```
 
@@ -153,9 +151,13 @@ Rule settings:
 * **Alert group**: Create an alert for each row, so you get one alert per tool.
 * **Time window**: the period to evaluate, for example the last hour.
 
+Each alert identifies the tool by its span name, for example `execute_tool <toolId>`.
+
 :::{note}
-In 9.5, `status.code == "Error"` on `execute_tool` spans captures thrown and validation errors, such as invalid parameters. It might not capture an error that a tool returns as a normal result, so this alert can miss some tool failures.
+In 9.5, `status.code == "Error"` on `execute_tool` spans is set only for parameter and schema validation errors, such as invalid arguments. Errors that a tool catches and returns as a result do not set this status, so this alert can miss some tool failures.
 :::
+
+<!-- TODO(cluster): confirm which field holds the tool identifier. `name` and `span.name` hold the full span name, for example `execute_tool <toolId>`. `attributes.gen_ai.tool.name` may hold the bare tool id. To show a bare tool name in alerts, group BY attributes.gen_ai.tool.name instead and confirm it is populated. Custom tools may anonymize to `execute_tool custom` or `custom` and collapse into one group. -->
 
 <!-- TODO(author): when kibana#277689 (search-team#15284) merges and backports to 9.5, returned tool errors also set status.code == "Error" and add attributes.error.type = "tool_error". Revisit the note above and consider using attributes.error.type. -->
 
