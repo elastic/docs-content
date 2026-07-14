@@ -66,41 +66,98 @@ After you save the rule, it appears on the **{{rules-ui}}** page, where you can 
 
 ## Example alerts
 
-<!--
-Write each example as a condition plus the specific fields it uses. Pull only the fields each alert needs and link to the dashboard page (#7170) for the full reference. Do not duplicate the reference.
-Field reference (verified 2026-07-13 vs Kibana source and the shipped traces skill):
-- Tokens: attributes.gen_ai.usage.input_tokens, attributes.gen_ai.usage.output_tokens, on `chat *` spans only. Wrap in TO_LONG(...) before SUM.
-- Conversation id: attributes.gen_ai.conversation.id (present on every span in the trace, including chat spans). NOT labels.conversation_id.
-- Errors: status.code == "Error".
-- Tools: span.name LIKE "execute_tool *", tool name = bare `name`.
-- Agent executions: span.name LIKE "invoke_agent *" + attributes.elastic.inference.span.kind == "AGENT", grouped by attributes.gen_ai.agent.id.
-OTel schema upgrade (search-team#15270 / kibana#277640, v9.5.0) does NOT rename any of these trace fields; only the value casing of gen_ai.provider.name normalizes to lowercase, and message content moves to new attributes in the logs stream (not used here). Re-verify lightly before publish.
-Mark every query "test on your own data". Do not publish an untested query.
--->
+Each example gives an ES|QL query and the rule settings to use with it. Adjust the fields, thresholds, and time windows to your environment.
+
+:::{note}
+These queries are starting points, not tested rules. Run each one with **Test query** on your own data before you rely on it. Replace `default` in `traces-agent_builder.otel-default` with your space id. The rule applies its own time window through the **Time field** you select, so the queries do not include a `@timestamp` filter.
+:::
+
+<!-- TODO(cluster): validate every query below on 9.5 trace data. Confirm the field names (attributes.gen_ai.usage.input_tokens / output_tokens, attributes.gen_ai.conversation.id, attributes.gen_ai.agent.id, attributes.elastic.inference.span.kind, span.name, status.code, name), that TO_LONG is needed before SUM, and that the rule applies the time window via the Time field so no @timestamp filter is needed in the query. If a manual filter IS required, add `| WHERE @timestamp >= NOW() - <window>` to each query. -->
 
 ### A conversation exceeds a token limit
 
-<!--
-Sum input_tokens + output_tokens on `chat *` spans (wrap each in TO_LONG before SUM), grouped by attributes.gen_ai.conversation.id.
-RESOLVED (#2): the grouping field is attributes.gen_ai.conversation.id, NOT labels.conversation_id (the blog is wrong). Conversation IDs are hashed by default, but the hash is stable, so per-conversation grouping still works. The setting agentBuilder:tracing:includeRealIds (default false) exposes the real UUID. Add a short privacy note; this alert does not need the real IDs.
-RESOLVED (#3): keep 256,000 as the example. There is no hard token cap that rejects a conversation (Agent Builder auto-compacts long conversations), so frame the alert as cost and length monitoring, not crash prevention. The Chat team chose 256,000 as a cost breakpoint.
-TODO: add tested ES|QL.
--->
+Alert when a single conversation uses more than a set number of tokens. Sum the input and output tokens on the conversation's `chat` spans and group by conversation.
+
+```esql
+FROM traces-agent_builder.otel-default
+| WHERE `span.name` LIKE "chat *"
+| STATS input_tokens = SUM(TO_LONG(attributes.gen_ai.usage.input_tokens)),
+        output_tokens = SUM(TO_LONG(attributes.gen_ai.usage.output_tokens))
+    BY attributes.gen_ai.conversation.id
+| EVAL total_tokens = input_tokens + output_tokens
+| WHERE total_tokens > 256000
+```
+
+Rule settings:
+
+* **Alert group**: Create an alert for each row, so you get one alert per conversation over the threshold.
+* **Time window**: the period to evaluate, for example the last 24 hours.
+
+256,000 is an example cost threshold, not a hard limit. {{agent-builder}} compacts long conversations, so a conversation can pass this value without failing. By default, `attributes.gen_ai.conversation.id` is a stable hash, which is enough to group and count conversations. To show the real conversation ID in alerts, turn on `agentBuilder:tracing:includeRealIds`.
 
 ### Token consumption over a period exceeds a budget
 
-<!-- Sum tokens on `chat *` spans over a time window and compare to a budget. TODO: add tested ES|QL. -->
+Alert when total token usage across all conversations goes over a budget for the period. This is the same sum without grouping by conversation.
+
+```esql
+FROM traces-agent_builder.otel-default
+| WHERE `span.name` LIKE "chat *"
+| STATS input_tokens = SUM(TO_LONG(attributes.gen_ai.usage.input_tokens)),
+        output_tokens = SUM(TO_LONG(attributes.gen_ai.usage.output_tokens))
+| EVAL total_tokens = input_tokens + output_tokens
+| WHERE total_tokens > 5000000
+```
+
+Rule settings:
+
+* **Alert group**: Create an alert if matches are found, so you get a single alert for the period.
+* **Time window**: the budget period, for example the last 30 days.
+
+Set the threshold to your budget. 5,000,000 is a placeholder.
 
 ### An agent's error rate spikes
 
-<!-- Ratio of status.code == "Error" on invoke_agent AGENT spans, grouped by attributes.gen_ai.agent.id, over a window. TODO: add tested ES|QL. -->
+Alert when an agent's error rate goes above a threshold. Count each agent's executions and its errors, then compare the ratio.
+
+```esql
+FROM traces-agent_builder.otel-default
+| WHERE `span.name` LIKE "invoke_agent *" AND attributes.elastic.inference.span.kind == "AGENT"
+| EVAL is_error = CASE(status.code == "Error", 1, 0)
+| STATS executions = COUNT(*), errors = SUM(is_error) BY attributes.gen_ai.agent.id
+| EVAL error_rate = TO_DOUBLE(errors) / executions
+| WHERE executions >= 20 AND error_rate > 0.1
+```
+
+Rule settings:
+
+* **Alert group**: Create an alert for each row, so you get one alert per agent.
+* **Time window**: the period to evaluate, for example the last hour.
+
+The `executions >= 20` guard avoids noisy alerts when an agent has run only a few times. `error_rate > 0.1` alerts when more than 10 percent of executions fail.
+
+<!-- TODO(cluster): confirm that invoke_agent AGENT spans carry status.code == "Error" when an agent execution fails, and that this is the right span for an agent error rate. If agent errors are not recorded here, measure errors on a different span (for example chat spans) and update this query. -->
 
 ### A specific tool fails repeatedly
 
-<!--
-Count execute_tool * spans with status.code == "Error", grouped by the bare `name` field, over a window.
-RESOLVED (#1): in 9.5, status.code == "Error" on execute_tool * captures thrown or validation errors only (for example invalid parameters), and may NOT catch errors a tool returns as a normal result. The fix (search-team#15284 / kibana#277689) is still a draft with no 9.5 or backport label as of 2026-07-13, so document the limitation for 9.5. Do NOT reference attributes.error.type yet; it only exists once that PR merges. Add a clear limitation note next to this example. TODO: add tested ES|QL.
--->
+Alert when a tool records more than a set number of errors. Count `execute_tool` spans with an error status and group by tool name.
+
+```esql
+FROM traces-agent_builder.otel-default
+| WHERE `span.name` LIKE "execute_tool *" AND status.code == "Error"
+| STATS failures = COUNT(*) BY name
+| WHERE failures > 5
+```
+
+Rule settings:
+
+* **Alert group**: Create an alert for each row, so you get one alert per tool.
+* **Time window**: the period to evaluate, for example the last hour.
+
+:::{note}
+In 9.5, `status.code == "Error"` on `execute_tool` spans captures thrown and validation errors, such as invalid parameters. It might not capture an error that a tool returns as a normal result, so this alert can miss some tool failures.
+:::
+
+<!-- TODO(author): when kibana#277689 (search-team#15284) merges and backports to 9.5, returned tool errors also set status.code == "Error" and add attributes.error.type = "tool_error". Revisit the note above and consider using attributes.error.type. -->
 
 ## Related
 
