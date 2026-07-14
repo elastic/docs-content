@@ -103,7 +103,7 @@ You can also optionally specify the `xpack.ml.max_model_memory_limit` setting. B
 If you set the `model_memory_limit` too high, the job can't open because it can't be allocated to a node with insufficient memory to run it.
 ::::
 
-{applies_to}`stack: ga 9.5`{applies_to}`serverless: ga` When you edit an existing {{anomaly-job}} on the **Anomaly Detection Jobs** page, the edit job flyout shows a memory estimate under the **Model memory limit** field. Select **Apply** to update `model_memory_limit` without recreating the job.
+{applies_to}`stack: ga 9.5`{applies_to}`serverless: ga` When you edit an existing {{anomaly-job}} on the **Anomaly Detection Jobs** page, the edit job flyout shows a memory estimate under the **Model memory limit** field when the current value differs from the estimate. Select **Apply** to update `model_memory_limit` to the estimated value without recreating the job.
 
 If the estimated model memory limit for an {{anomaly-job}} is greater than the model memory limit for the job or the maximum model memory limit for the cluster, the job creation wizards in {{kib}} generate a warning. If the estimated memory requirement is only a little higher than the `model_memory_limit`, the job will probably produce useful results. Otherwise, the actions you take to address these warnings vary depending on the resources available in your cluster:
 
