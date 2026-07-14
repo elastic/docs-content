@@ -81,9 +81,11 @@ The response should show `errors: false` for all documents.
 
 :::{note}
 The timestamps are fixed to `2026-07-02`, which is in the past. Before running this request, open it in a text editor and replace `2026-07-02` with today's date in `YYYY-MM-DD` format, keeping the time values unchanged. Once you load the data, complete the tutorial within 2 hours to see the full episode lifecycle.
+
+Because the times of day are fixed (`21:57`–`22:37` UTC), the data only looks "recent" once the current UTC time has passed `22:37`. If you load the data before then, the documents are technically timestamped in the future. This doesn't affect the query sandbox in the next section, which uses an absolute time range, but it does affect the rule's lookback window (which is always relative to now) once the rule is running. See the note in **Observe the episode lifecycle** for what this means for the rest of the tutorial.
 :::
 
-::::{dropdown} Bulk request: 80 synthetic latency events (healthy → degraded → recovered)
+::::{dropdown} Bulk request: 82 synthetic latency events (healthy → degraded → recovered)
 ```json
 POST checkout-service-logs/_bulk
 {"index":{"_index":"checkout-service-logs"}}
@@ -265,7 +267,7 @@ You'll build a rule that detects when P95 latency for a service exceeds 2 second
 
 ::::{step} Open the rule editor
 
-Go to **Alerting V2 Preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the rules list, select the option to create a new rule. When the rule creation panel opens, select **Create ES|QL rule** to open the rule authoring flyout.
+Go to **Alerting v2 preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the **Rules** page, select the option to create an {{esql}} rule.
 
 ::::
 
@@ -288,7 +290,11 @@ Go to **Alerting V2 Preview** using the navigation menu or the [global search fi
    You don't need to add a `WHERE @timestamp` clause to this query. Both the query sandbox and the rule executor automatically inject the time-window filter based on the date range you select in the sandbox or the rule's schedule and lookback once it's running.
    :::
 
-2. Set the sandbox date range to **Last 1 hour** and run the query. This preset gives comfortable coverage of the full dataset without pulling in data from a previous run.
+2. Set the sandbox date range to the **Today** preset (from the **Commonly used** list) and run the query.
+
+   :::{note}
+   Use **Today** rather than a relative preset like **Last 1 hour**. Because the sample data uses fixed times of day, a relative range only covers it once the current time has passed the data's last timestamp (`22:37` UTC, after you substitute today's date). **Today** covers the full calendar day, so it finds the data regardless of what time it is right now.
+   :::
 
 3. Confirm the query results. You should see one row for `service.name: checkout` with `p95_latency_ms` above 2000 and `severity: high` or `critical`.
 
@@ -309,6 +315,10 @@ The query you applied from the sandbox auto-fills **Mode**, **Time field**, and 
 - Set **Alert delay** to **Breaches: 2**. The breach must persist across 2 consecutive evaluations before the episode moves to `active`.
 - Set **Schedule** to every `5` minutes.
 - Set **Lookback Window** to the last `2` hours. This ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial.
+
+:::{note}
+Unlike the sandbox, the rule's **Lookback Window** is always a relative range (the last 2 hours as of each evaluation); it can't use an absolute range like **Today**. If the current UTC time hasn't yet passed the sample data's last timestamp (`22:37`, after you substitute today's date), the rule won't see the degraded data until real time catches up. This doesn't block you from continuing the tutorial. See the note in **Observe the episode lifecycle** for what to expect.
+:::
 
 Select **Next**.
 
@@ -362,7 +372,11 @@ With the rule running, you can watch the full alert lifecycle play out on the Al
 Because you set **Alert delay** to 2 consecutive breaches, the episode starts as `pending` and only moves to `active` once the breach persists across a second evaluation. This prevents transient spikes from opening an episode right away.
 :::
 
-1. Open **Alerting V2 Preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Alerts** page.
+:::{note}
+If your current UTC time hadn't yet passed `22:37` when you loaded the sample data, no episode will appear here until real time catches up to that point. The rule's lookback window only looks backward, so it needs the degraded window to be in the past before it can flag a breach.
+:::
+
+1. Open **Alerting v2 preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Alerts** page.
 
 2. Filter by **Rule** to show only episodes for **Checkout Service Latency**. After the first two evaluations (about 10 minutes), you'll see an episode appear and move from `pending` to `active`.
 
