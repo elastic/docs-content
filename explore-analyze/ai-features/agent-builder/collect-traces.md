@@ -24,7 +24,7 @@ When an agent runs, {{agent-builder}} records the run as OpenTelemetry (OTel) tr
 
 These are regular data streams, not system or hidden indices. You can explore and analyze the data with the same tools you use for any other data in {{es}}, including [Discover](/explore-analyze/discover.md), [Dashboards](/explore-analyze/dashboards.md), [Lens](/explore-analyze/visualize/lens.md), and [ES|QL](elasticsearch://reference/query-languages/esql.md).
 
-<!-- Both `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*` are named in the Kibana Gen AI Settings source. Confirm what each stream carries (spans vs. log records) before publishing. -->
+<!-- Both `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*` are named in the Kibana GenAI Settings source. Confirm what each stream carries (spans vs. log records) before publishing. -->
 
 Trace collection is space-aware. Each {{kib}} space collects its own traces.
 
@@ -45,7 +45,7 @@ By default, traces record structural metadata only. Conversation content such as
 
 ## Enable and configure trace collection
 
-Trace collection is on by default. To manage it, go to **Management > Gen AI Settings** and open the **Agent Builder Traces** section.
+Trace collection is on by default. To manage it, go to **Management > GenAI Settings** and open the **Agent Builder Traces** section.
 
 The **Collect conversation traces** setting turns collection on and off. When it is on, {{agent-builder}} collects OpenTelemetry traces for agent conversations and ingests them into {{es}}. From the same section, you can install a prebuilt overview dashboard for the current {{kib}} space.
 
@@ -112,7 +112,7 @@ When trace collection is on, {{agent-builder}} provides a prebuilt overview dash
 
 Because traces are stored in regular data streams, you can also build your own visualizations with [Dashboards](/explore-analyze/dashboards.md) and [Lens](/explore-analyze/visualize/lens.md), or query the data with [ES|QL](elasticsearch://reference/query-languages/esql.md). To explore traces in natural language, use the built-in traces skill described in the [built-in skills reference](builtin-skills-reference.md).
 
-<!-- Overview dashboard is owned by #7170; link its page once published. New-space auto-install bug: search-team#15105 (open question 5). Tighten the skills link to the traces-skill anchor once PR #7255 merges. -->
+<!-- Overview dashboard is owned by #7170; link its page once published. Manual per-space install confirmed (kibana#276643); no auto-install and no known-issue note needed. Tighten the skills link to the traces-skill anchor once PR #7255 merges. -->
 
 ## View traces for a conversation round
 
