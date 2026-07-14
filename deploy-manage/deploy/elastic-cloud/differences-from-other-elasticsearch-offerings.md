@@ -158,7 +158,7 @@ This table compares Security capabilities between {{ech}} deployments and Server
 | **[LogsDB](/manage-data/data-store/data-streams/logs-data-stream.md)** | Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
 
-## Serverless index sizing and resource limits [elasticsearch-differences-serverless-index-size]
+## Serverless index sizing and project limits [elasticsearch-differences-serverless-index-size]
 
 {{es}} uses sharding to distribute the data in your index across the cluster, which helps support growing data volumes and load. In {{serverless-full}}, sharding is fully managed for you and automatically adjusts to suit your needs. 
 
