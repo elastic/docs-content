@@ -42,7 +42,7 @@ The calls issued by the Support Diagnostic tool are read-only. It issues only GE
 
 On a healthy cluster, the overhead is negligible. On clusters with many indices, a small number of calls such as `/_cluster/state` and `/_stats` may take longer to respond, but they remain read-only and do not trigger any cluster operations such as shard movements or merges.
 
-You can safely run the diagnostic on a production cluster. If your cluster is already critically degraded (for example, returning HTTP 429), some API calls may return incomplete results or time out, but the tool will not worsen the cluster state.
+You can safely run the diagnostic on a production cluster.
 
 
 ## Access the tool [diagnostic-tool-access]
