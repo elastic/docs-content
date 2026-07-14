@@ -317,7 +317,7 @@ The query you applied from the sandbox auto-fills **Mode**, **Time field**, and 
 - Set **Lookback Window** to the last `2` hours. This ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial.
 
    :::{note}
-   Unlike the sandbox, the rule's **Lookback Window** is always a relative range (the last 2 hours as of each evaluation). It can't use an absolute range like **Today**. If the current UTC time hasn't yet passed the sample data's last timestamp (`22:37`, after you substitute today's date), the rule won't see the degraded data until real time catches up. This doesn't block you from continuing the tutorial. You can go ahead and finish configuring and saving the rule. Refer to the note in **Observe the episode lifecycle** for when the episode will actually appear.
+   Unlike the sandbox, the rule's **Lookback Window** is always a relative range (the last 2 hours as of each evaluation). It can't use an absolute range like **Today**. If the current UTC time hasn't yet passed the start of the degraded window (`22:13`, after you substitute today's date), the rule won't see the degraded data until real time catches up. This doesn't block you from continuing the tutorial. You can go ahead and finish configuring and saving the rule. Refer to the note in **Observe the episode lifecycle** for when the episode will actually appear.
    :::
 
 Select **Next**.
@@ -371,12 +371,12 @@ With the rule running, you can watch the full alert lifecycle play out on the **
 Because you set **Alert delay** to 2 consecutive breaches, the episode starts as `pending` and only moves to `active` once the breach persists across a second evaluation. This prevents transient spikes from opening an episode right away.
 
 :::{note}
-If your current UTC time hadn't yet passed `22:37` when you loaded the sample data, no episode will appear here until real time catches up to that point. The rule's lookback window only looks backward, so it needs the degraded window to be in the past before it can flag a breach.
+If your current UTC time hadn't yet passed `22:13` (the start of the degraded window, after you substitute today's date) when you loaded the sample data, no episode will appear here until real time reaches that point. The rule's lookback window only looks backward, so it needs the degraded window to be in the past before it can flag a breach. Once real time passes `22:13`, expect the episode to appear within about 10–15 minutes, after two consecutive evaluations confirm the breach.
 :::
 
 1. Open **Alerting v2 preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Alerts** page.
 
-2. Filter by **Rule** to show only episodes for **Checkout Service Latency**. After the first two evaluations (about 10 minutes), you'll see an episode appear and move from `pending` to `active`.
+2. If you have other rules in this cluster, filter by **Rule** to show only episodes for **Checkout Service Latency**. After the first two evaluations (about 10 minutes), you'll see an episode appear and move from `pending` to `active`.
 
 3. Select the episode to open its details page. Use the metric trend to see how P95 latency compared to the threshold over the episode's lifetime, and confirm the grouping value (`checkout`) that triggered it.
 
