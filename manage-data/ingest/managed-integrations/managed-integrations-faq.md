@@ -30,7 +30,7 @@ Not every integration in Elastic's catalog can run as an {{managed-integration}}
 
 ### How many {{managed-integrations}} can I deploy? [managed-integrations-faq-limit]
 
-You can deploy up to 50 {{managed-integrations}} per {{serverless-short}} project or {{ech}} deployment. Adding multiple {{managed-integrations}} for the same source doesn't increase ingest throughput. For higher throughput, consider the [{{edot}} Cloud Forwarder](opentelemetry://reference/edot-cloud-forwarder/index.md).
+You can deploy up to 50 {{managed-integrations}} per {{serverless-short}} project or {{ech}} deployment.
 
 ### Can I create alerts on data ingested by {{managed-integrations}}? [managed-integrations-faq-alerting]
 
@@ -147,18 +147,20 @@ A healthy status means the integration is connected and ready, but it doesn't ne
 ::::
 
 ::::{applies-item} stack: preview 9.1-9.4
-On the **{{fleet}}** → **Agents** page, agents associated with {{managed-integrations}} have names that begin with `agentless`. When an agentless agent is `Unhealthy`:
+
+In these versions, the underlying collectors are hidden in {{fleet}} by default, so first [make them visible](#managed-integrations-faq-fleet-show).
+
+On the **{{fleet}}** → **Agents** page, collectors associated with {{managed-integrations}} have names that begin with `agentless`. When a collector is `Unhealthy`:
 
 1. **Check the integration configuration.** Most `Unhealthy` states are caused by expired or invalid credentials, or by source-side permission issues. Confirm that the credentials and configuration you provided for the integration are still valid.
-2. **Contact [Elastic Support](https://support.elastic.co).** If the configuration looks correct but the agent remains unhealthy, support will collect diagnostics and investigate on your behalf.
+2. **Contact [Elastic Support](https://support.elastic.co).** If the configuration looks correct but the collector remains unhealthy, support will collect diagnostics and investigate on your behalf.
 
 :::{dropdown} Collect diagnostics yourself
 If you want to collect a diagnostics bundle before contacting support:
 
-1. Make the underlying collectors visible in {{fleet}}, as described in [How do I make the underlying collectors visible in {{fleet}}?](#managed-integrations-faq-fleet-show).
-2. In **{{fleet}}**, select the unhealthy agent.
-3. From the actions menu {icon}`ellipsis`, select **Maintenance and diagnostics** → **Request diagnostics .zip**.
-4. Download and unzip the [diagnostics bundle](/troubleshoot/ingest/fleet/diagnostics.md). For more information, refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md).
+1. After [making the underlying collectors visible in {{fleet}}](#managed-integrations-faq-fleet-show), select the unhealthy collector on the **Agents** page.
+2. From the actions menu {icon}`ellipsis`, select **Maintenance and diagnostics** → **Request diagnostics .zip**.
+3. Download and unzip the [diagnostics bundle](/troubleshoot/ingest/fleet/diagnostics.md). For more information, refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md).
 :::
 ::::
 
@@ -192,13 +194,13 @@ On {{stack}} 9.1 through 9.4, you can override the default and expose the underl
 
 ::::
 
-### How do I troubleshoot an Offline agent? [managed-integrations-troubleshoot-offline]
+### How do I troubleshoot an Offline collector? [managed-integrations-troubleshoot-offline]
 
 ```{applies_to}
 stack: preview 9.0-9.4
 ```
 
-For {{managed-integrations}} to connect to your cluster, the {{fleet-server}} host value must be the default. Otherwise, the agent shows as `Offline` on the **{{fleet}}** page, and logs include the error `[elastic_agent][error] Cannot checkin in with fleet-server, retrying`.
+For {{managed-integrations}} to connect to your cluster, the {{fleet-server}} host value must be the default. Otherwise, the collector shows as `Offline` on the **{{fleet}}** page, and logs include the error `[elastic_agent][error] Cannot checkin in with fleet-server, retrying`.
 
 To troubleshoot:
 
@@ -226,7 +228,6 @@ On {{stack}} versions before 9.2, {{managed-integrations}} can't be upgraded to 
 ::::{important}
 Deleting an {{managed-integration}} removes all associated resources and stops data ingestion.
 ::::
-
 
 1. In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then search for your integration.
 2. Go to the integration's **Integration policies** tab.
