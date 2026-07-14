@@ -39,46 +39,10 @@ Refer to [](/explore-analyze/workflows/authoring-techniques/pass-data-handle-err
 :::
 
 
-The location of `inputs` in the YAML depends on your version. On stack 9.4 and earlier, `inputs` sits at the top level of the workflow. On stack 9.5+ and on serverless, `inputs` sits inside the `manual` trigger. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for the full reference.
+:::{include} /explore-analyze/workflows/_snippets/inputs-location-by-version.md
+:::
 
 ::::{applies-switch}
-
-:::{applies-item} stack: preview 9.3, ga 9.4
-```yaml
-name: Manual Processing Workflow
-inputs:
-  - name: environment
-    type: string
-    required: true
-    default: "staging"
-    description: "Target environment for processing"
-
-  - name: batchSize
-    type: number
-    required: false
-    default: 100
-    description: "Number of records to process"
-
-  - name: dryRun
-    type: boolean
-    required: false
-    default: true
-    description: "Run in test mode without making changes"
-
-triggers:
-  - type: manual
-
-steps:
-  - name: validateInputs
-    type: console
-    with:
-      message: |
-        Starting workflow with:
-        - Environment: {{ inputs.environment }}
-        - Batch Size: {{ inputs.batchSize }}
-        - Dry Run: {{ inputs.dryRun }}
-```
-:::
 
 :::{applies-item} { stack: ga 9.5+, serverless: ga }
 ```yaml
@@ -104,6 +68,43 @@ triggers:
         required: false
         default: true
         description: "Run in test mode without making changes"
+
+steps:
+  - name: validateInputs
+    type: console
+    with:
+      message: |
+        Starting workflow with:
+        - Environment: {{ inputs.environment }}
+        - Batch Size: {{ inputs.batchSize }}
+        - Dry Run: {{ inputs.dryRun }}
+```
+:::
+
+:::{applies-item} stack: preview 9.3, ga =9.4
+```yaml
+name: Manual Processing Workflow
+inputs:
+  - name: environment
+    type: string
+    required: true
+    default: "staging"
+    description: "Target environment for processing"
+
+  - name: batchSize
+    type: number
+    required: false
+    default: 100
+    description: "Number of records to process"
+
+  - name: dryRun
+    type: boolean
+    required: false
+    default: true
+    description: "Run in test mode without making changes"
+
+triggers:
+  - type: manual
 
 steps:
   - name: validateInputs

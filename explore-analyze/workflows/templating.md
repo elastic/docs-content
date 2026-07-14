@@ -112,34 +112,10 @@ This section covers common patterns for accessing and transforming data in your 
 
 Reference input parameters defined in the workflow using `{{inputs.<input_name>}}`. Inputs are values provided when the workflow is triggered manually.
 
-The location of `inputs` in the YAML depends on your version. On stack 9.4 and earlier, `inputs` sits at the top level of the workflow. On stack 9.5+ and on serverless, `inputs` sits inside the `manual` trigger. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for the full reference.
+:::{include} /explore-analyze/workflows/_snippets/inputs-location-by-version.md
+:::
 
 ::::{applies-switch}
-
-:::{applies-item} stack: preview 9.3, ga 9.4
-```yaml
-inputs:
-  - name: environment
-    type: string
-    required: true
-    default: "staging"
-  - name: batchSize
-    type: number
-    default: 100
-
-triggers:
-  - type: manual
-
-steps:
-  - name: log_config
-    type: console
-    with:
-      message: |
-        Running with:
-        - Environment: {{inputs.environment}}
-        - Batch Size: {{inputs.batchSize}}
-```
-:::
 
 :::{applies-item} { stack: ga 9.5+, serverless: ga }
 ```yaml
@@ -153,6 +129,31 @@ triggers:
       - name: batchSize
         type: number
         default: 100
+
+steps:
+  - name: log_config
+    type: console
+    with:
+      message: |
+        Running with:
+        - Environment: {{inputs.environment}}
+        - Batch Size: {{inputs.batchSize}}
+```
+:::
+
+:::{applies-item} stack: preview 9.3, ga =9.4
+```yaml
+inputs:
+  - name: environment
+    type: string
+    required: true
+    default: "staging"
+  - name: batchSize
+    type: number
+    default: 100
+
+triggers:
+  - type: manual
 
 steps:
   - name: log_config

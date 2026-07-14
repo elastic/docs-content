@@ -19,6 +19,9 @@ One-page reference. Bookmark this.
 
 ## Workflow anatomy [workflows-cheat-anatomy]
 
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
 ```yaml
 name: my-workflow
 description: ...
@@ -26,14 +29,34 @@ enabled: true
 tags: [team, domain]
 version: "1"
 
-triggers: [ ... ]        # required; inputs nest under manual triggers on 9.5+
+triggers: [ ... ]        # required; inputs nest under the manual trigger
 consts: { ... }          # optional
 outputs: [ ... ]         # required only for composed workflows
 settings: { ... }        # optional
 steps: [ ... ]           # required
 ```
+:::
 
-On stack 9.4 and earlier, `inputs:` also sits at the workflow root. For the full anatomy reference covering every top-level field, the execution lifecycle, and [both `inputs` placements](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs), refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
+:::{applies-item} stack: preview 9.3, ga =9.4
+```yaml
+name: my-workflow
+description: ...
+enabled: true
+tags: [team, domain]
+version: "1"
+
+triggers: [ ... ]        # required
+inputs: [ ... ]          # optional
+consts: { ... }          # optional
+outputs: [ ... ]         # required only for composed workflows
+settings: { ... }        # optional
+steps: [ ... ]           # required
+```
+:::
+
+::::
+
+For the full anatomy reference covering every top-level field, the execution lifecycle, and both `inputs` placements, refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs).
 
 ## Triggers [workflows-cheat-triggers]
 

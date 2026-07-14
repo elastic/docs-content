@@ -44,7 +44,7 @@ The workflow runs on demand, takes the indicator you want to enrich as an `input
 
 Inputs let you run the workflow against any indicator without editing YAML. Constants hold the API key and base URL.
 
-This example uses the stack 9.5+ and serverless structure, where `inputs` nests under the `manual` trigger. On stack 9.4 and earlier, `inputs` sits at the workflow root. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for both forms.
+This example uses the latest version of Workflows, where `inputs` nests under the `manual` trigger. If you're not running {{serverless-short}} or the latest version of the {{stack}}, refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for the earlier form.
 
 ```yaml
 consts:

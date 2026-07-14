@@ -41,9 +41,14 @@ Some key concepts to understand while working with workflows:
 
 ## Workflow structure [workflow-structure]
 
-Workflows are defined in YAML. In the YAML editor, describe _what_ the workflow should do, and the platform handles execution. The example below uses the stack 9.5+ and serverless structure, where `inputs` is defined under the `manual` trigger. On stack 9.4 and earlier, `inputs` sits at the workflow root.
+Workflows are defined in YAML. In the YAML editor, describe _what_ the workflow should do, and the platform handles execution. The `inputs` field location depends on your version:
 
-For the full reference on every top-level field and the execution lifecycle (including [both `inputs` placements](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs)), refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
+- {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` `inputs` is defined under the `manual` trigger, as shown in [the following example](#workflow-structure-example).
+- {applies_to}`stack: preview 9.3, ga 9.4` `inputs` sits at the workflow root instead.
+
+For the full reference, including [both `inputs` placements](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs), refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
+
+### Example workflow [workflow-structure-example]
 
 ```yaml
 # ═══════════════════════════════════════════════════════════════
