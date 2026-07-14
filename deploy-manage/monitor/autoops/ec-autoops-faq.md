@@ -36,6 +36,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [Can I use AutoOps if my environment is air-gapped?](#autoops-air-gapped)
 * [Do I have to do any maintenance when using AutoOps for ECE, ECK, or self-managed clusters?](#maintenance)
 * [I connected my ECE, ECK, or self-managed cluster to AutoOps during a free trial of {{ecloud}}. What happens after my trial ends?](#trial-ending)
+* [Who has access to AutoOps in my cluster?](#access-autoops)
 * [What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?](#support)
 
 **Setting up AutoOps for ECE, ECK, or self-managed clusters**
@@ -117,6 +118,10 @@ $$$trial-ending$$$ **I connected my ECE, ECK, or self-managed cluster to AutoOps
 :   After your free trial ends, your cluster remains connected and AutoOps continues to process your {{es}} metrics as long as: 
 * You have an [active {{ecloud}} account](../../cloud-organization/billing/add-billing-details.md).
 * {{agent}} is running and shipping metrics to {{ecloud}}.
+
+$$$access-autoops$$$**Who has access to AutoOps in my cluster?**
+:   :::{include} ../_snippets/access-cloud-connect-autoops.md
+    :::
 
 $$$support$$$ **What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?**
 :   Support eligibility is determined by the license of your connected cluster:

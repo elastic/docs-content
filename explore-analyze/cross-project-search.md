@@ -145,6 +145,7 @@ The following APIs support {{cps}}:
 * [Search a vector tile]({{es-apis}}v9/operation/operation-search-mvt)
 * Search scroll [clear]({{es-apis}}v9/operation/operation-clear-scroll), [run]({{es-apis}}v9/operation/operation-scroll)
 * [Search template](/solutions/search/search-templates.md)
+* [Terms]({{es-apis}}v9/operation/operation-terms-enum)
 
 ### {{product.painless}} scripting [cps-painless-scripting]
 
