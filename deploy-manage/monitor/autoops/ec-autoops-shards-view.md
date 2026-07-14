@@ -14,7 +14,7 @@ products:
 
 The **Shards** view allows you to monitor the shards allocated to each node in your cluster. With this granular view into your cluster's health, you can get to the root cause of issues and resolve them to ensure optimal performance and reliability of your search and indexing operations.
 
-Use the **Deployment** or **Cluster** dropdown at the top of the screen to select which deployment or cluster you want to view, and use the date and time picker on the right side of the screen to select a time period for the data shown.
+Use the **Deployment** or **Cluster** dropdown at the top of the screen to select which deployment or cluster you want to view, and use the date and time picker to select a time period for the data shown.
 
 :::{image} /deploy-manage/images/cloud-autoops-shard-view.png
 :screenshot:

@@ -31,9 +31,9 @@ The following table describes the information presented in this flyout:
 
 | Section | Description |
 | --- | --- |
-| Event severity | Categorizes the event into one of three severity levels based on its potential impact on the cluster: <br><br> **High**: Event can immediately cause significant usability, performance, and stability problems.<br> **Medium**: Event may lead to significant problems if not addressed.<br> **Low**: Event has minimal impact and is not urgent. |
-| Notification status | Indicates whether or not a notification was sent for the event. Click on the badge to view active connectors or edit notification settings.|
-| Event timestamps | Show when the event was opened (when AutoOps detected the issue), and if applicable, when the event was closed (when AutoOps identified that the issue no longer exists). A closed event doesn't necessarily mean that the issue is resolved, just that AutoOps no longer detects it. |
+| Event severity | Categorizes the event into one of four severity levels based on its potential impact on the cluster: <br><br> **Critical**: Immediate threat to cluster functionality. Urgent intervention is required to restore or maintain core operations.<br> **High**: Immediate, significant degradation to usability, performance, or stability.<br> **Medium**: Potential risk to the cluster. Won't cause immediate disruption but can escalate into severe problems if left unaddressed.<br> **Low**: Minor anomalies with minimal operational impact and no threat to cluster stability. |
+| Notification status | Indicates whether a notification was sent for the event. Click on the badge to view active connectors or edit notification settings.|
+| Event timestamps | Show when the event was opened (when AutoOps detected the issue), and if applicable, when the event was closed (when AutoOps identified that the issue no longer exists). A closed event doesn't necessarily mean that the issue is resolved, rather that AutoOps no longer detects it. |
 | What was detected | Describes why the event was created and provides links to drill down into the detected issue. |
 | Event timeline | Visually presents metrics related to the issue in the last 15 minutes. This chart appears only for events with dynamic metrics. For example, load issues will have this section, but settings-related issues will not. |
 | Recommendations | Lists recommendations to address the issue and improve your cluster's overall performance. The recommendations are organized according to the suggested order of execution. |
@@ -49,9 +49,9 @@ AutoOps events are opened and closed based on triggering mechanisms that have de
 
 Refer to [](ec-autoops-event-settings.md) for more details.
 
-### Edit notification settings [ec-autoops-notifications]
+### Set up notifications [ec-autoops-notifications]
 
-AutoOps can send event notifications to operation management tools like PagerDuty, Opsgenie, Slack, Teams, custom webhooks, and more. Select **Edit notification settings** from the actions menu to configure these settings. 
+AutoOps can send event notifications to operation management tools like PagerDuty, Opsgenie, Slack, Teams, custom webhooks, and more. Select **Set up notifications** from the actions menu to configure these settings. 
 
 Refer to [](ec-autoops-notifications-settings.md) for more details.
 
@@ -68,4 +68,3 @@ You can share event information with other users by sending them a link to the e
 :::{note}
 Users can only view the event from the shared link if they have access to the AutoOps deployment or cluster from which the link was copied.
 :::
-

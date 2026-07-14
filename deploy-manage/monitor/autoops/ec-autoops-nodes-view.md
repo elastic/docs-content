@@ -14,9 +14,9 @@ products:
 
 The **Nodes** view provides a thorough look into essential metrics for all monitored nodes. With this view, you can gain deeper insight into your cluster's health on a per-node basis and observe each metric over extended periods of time.
 
-Use the dropdowns at the top of the screen to select the deployment or cluster and nodes you want to view. For nodes, you can select all, select a group, or choose tier-based grouping.
+Use the dropdowns to select the deployment or cluster and nodes you want to view. For nodes, you can select all, select a group, or choose tier-based grouping.
 
-Use the date picker on the right side of the screen to select a time period for the data shown. 
+Use the date and time picker to select a time period for the data shown.
 
 :::{image} /deploy-manage/images/cloud-autoops-node-view.png
 :screenshot:

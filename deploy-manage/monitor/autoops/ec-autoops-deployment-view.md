@@ -16,7 +16,7 @@ The **Deployment** view (for {{ECH}} deployments) or **Cluster** view (for ECE, 
 
 To get to this view, go to AutoOps in your deployment or cluster and select **Deployment** or **Cluster** from the side navigation.
 
-Use the **Deployment** or **Cluster** dropdown at the top of the screen to select which deployment or cluster you want to view, and use the date and time picker on the right side of the screen to select a time period for the data shown.
+Use the **Deployment** or **Cluster** dropdown at the top of the screen to select which deployment or cluster you want to view, and use the date and time picker to select a time period for the data shown.
 
 ## Sections in the Deployment or Cluster view
 
