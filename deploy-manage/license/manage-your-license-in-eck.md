@@ -98,7 +98,7 @@ The {{es}} `_license` API for versions before 8.0.0 reports a Platinum license l
 ::::
 
 ::::{note}
-{applies_to}`eck: ga 3.5` When [dynamic namespace handling](../deploy/cloud-on-k8s/dynamic-namespace-handling.md) is enabled, the license secret can reside in any namespace managed by the operator, but keeping it in the operator's namespace is strongly recommended: that namespace is always in scope, whereas a license stored in a namespace matched by the selector stops being visible to the operator if the namespace is off-boarded. Refer to [License handling](../deploy/cloud-on-k8s/dynamic-namespace-handling.md#k8s-dynamic-namespace-handling-license) for details.
+{applies_to}`eck: ga 3.5` Keeping the license secret in the operator's namespace is especially important when [dynamic namespace handling](../deploy/cloud-on-k8s/dynamic-namespace-handling.md) is enabled: the operator's namespace is always in scope, so the license can never be off-boarded together with a managed namespace. Refer to [License handling](../deploy/cloud-on-k8s/dynamic-namespace-handling.md#k8s-dynamic-namespace-handling-license) for details.
 ::::
 
 
