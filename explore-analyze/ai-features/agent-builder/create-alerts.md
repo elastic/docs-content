@@ -161,7 +161,10 @@ In 9.5, `status.code == "Error"` on `execute_tool` spans captures thrown and val
 
 ## Related
 
-<!-- TODO(#7322): Collect traces (collect-traces.md) -->
-<!-- TODO(#7337): Agent Builder traces dashboard (agent-traces-dashboard.md), full span and attribute reference -->
-* [Create and manage rules](/explore-analyze/alerting/alerts/create-manage-rules.md)
-* [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md)
+* [Collect traces](collect-traces.md): turn on trace collection and learn about the data streams, privacy settings, and access model.
+* [Agent Builder traces dashboard](agent-traces-dashboard.md): the prebuilt overview dashboard and the full span and attribute reference.
+* [Monitor usage and costs](monitor-usage.md): how {{agent-builder}} counts tokens and how usage maps to cost.
+* [Create and manage rules](/explore-analyze/alerting/alerts/create-manage-rules.md): manage, snooze, and troubleshoot {{kib}} alerting rules.
+* [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md): full reference for the rule type used on this page.
+
+<!-- DUMMY LINKS: collect-traces.md (#7322) and agent-traces-dashboard.md (#7337) are not on this branch yet, so those two links are placeholders. They resolve once those PRs merge to main; until then a local build flags them as broken links. Confirm on rebase. Merge order: #7171 -> #7170 -> #7173. -->
