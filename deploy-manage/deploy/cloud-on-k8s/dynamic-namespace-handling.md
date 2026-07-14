@@ -112,7 +112,7 @@ Dynamic namespace handling is an Enterprise feature. While no valid Enterprise l
 ::::{warning}
 When the Enterprise license expires, ECK normally reverts the managed {{es}} clusters to a Basic license. With dynamic namespace handling enabled, reconciliation stops entirely instead: the `status` of ECK-managed resources becomes stale, and the clusters keep their now-expired Enterprise or Platinum license. In this state, {{es}} blocks the `_cluster/health`, `_cluster/stats`, and `_stats` APIs with a `403` security exception, while data operations (read and write) continue to work.
 
-To recover, install a valid [Enterprise license](../../license/manage-your-license-in-eck.md), or remove the namespace selector so that the operator reverts the clusters to Basic.
+To recover, install a valid [Enterprise license](../../license/manage-your-license-in-eck.md) (or Enterprise Trial License), or remove the namespace selector so that the operator reverts the clusters to Basic.
 ::::
 
 When using dynamic namespace handling, it is recommended, although not enforced, to create the license secret in the operator's namespace. The operator's namespace is always in scope regardless of its labels, so a license stored there cannot accidentally be off-boarded. If the license secret is instead stored in a namespace that is managed through the selector, off-boarding that namespace makes the license invisible to the operator and turns off Enterprise features (including dynamic namespace handling itself) across all managed namespaces.
