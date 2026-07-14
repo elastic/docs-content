@@ -97,6 +97,10 @@ After you install a license into ECK, the Enterprise features of the operator ar
 The {{es}} `_license` API for versions before 8.0.0 reports a Platinum license level for backwards compatibility even if an Enterprise license is installed.
 ::::
 
+::::{note}
+{applies_to}`eck: ga 3.5` Keeping the license secret in the operator's namespace is especially important when [dynamic namespace handling](../deploy/cloud-on-k8s/dynamic-namespace-handling.md) is enabled: the operator's namespace is always in scope, so the license can never be off-boarded together with a managed namespace. Refer to [License handling](../deploy/cloud-on-k8s/dynamic-namespace-handling.md#k8s-dynamic-namespace-handling-license) for details.
+::::
+
 
 
 ## Update your license [k8s-update-license]
