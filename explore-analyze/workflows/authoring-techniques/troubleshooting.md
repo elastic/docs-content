@@ -296,7 +296,7 @@ stack: ga 9.3-9.4
 
 **Symptom.** An AI step fails because a referenced resource (for example, an agent or connector) isn't found, even though the value is correctly defined in `consts:`.
 
-**Cause.** Liquid expressions are evaluated only inside the step's `with:` block. On fields outside `with:`, including `agent-id`, `connector-id`, `inference-id`, and `conversation-id`, the engine sends the text to the runtime as-is. So `agent-id: "{{ consts.agent_id }}"` arrives at the API as the literal text `{{ consts.agent_id }}`, instead of being substituted with the value of `consts.agent_id`. Workflows 9.5 adds top-level field templating, so this limitation applies to 9.3 and 9.4 only.
+**Cause.** Liquid expressions are evaluated only inside the step's `with:` block. On fields outside `with:` (including `agent-id`, `connector-id`, and `inference-id`) the engine sends the text to the runtime as-is. So `agent-id: "{{ consts.agent_id }}"` arrives at the API as the literal text `{{ consts.agent_id }}`, instead of being substituted with the value of `consts.agent_id`. Workflows 9.5 adds top-level field templating, so this limitation applies to 9.3 and 9.4 only.
 
 **Resolution.** Use literal values in top-level fields. For `ai.agent`, drop `connector-id` entirely (the agent encodes its connector). For fields that need templating, place them inside `with:` in snake-case (for example, `conversation_id`). On 9.5 and later, top-level templating resolves, but a literal value keeps an example portable across all versions.
 
