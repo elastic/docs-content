@@ -130,12 +130,12 @@ Each integration policy shows the integration's status, so you can check its hea
 
 ### What should I do if an {{managed-integration}} is unhealthy? [managed-integrations-faq-health]
 
-```{applies_to}
-stack: ga 9.5+
-serverless: preview
-```
+{{managed-integrations}} are a managed service, so you monitor their health at the integration level rather than by managing the underlying infrastructure yourself. The exact steps to check and resolve an unhealthy integration depend on your version:
 
-{{managed-integrations}} are a managed service, so you monitor them at the integration level rather than by inspecting the underlying collector. Each integration's status appears on its **Integration policies** tab in the **{{integrations}}** app.
+:::::{applies-switch}
+
+::::{applies-item} {serverless: preview, stack: ga 9.5+}
+Each integration's status appears on its **Integration policies** tab in the **{{integrations}}** app.
 
 If an {{managed-integration}} is unhealthy:
 
@@ -144,6 +144,25 @@ If an {{managed-integration}} is unhealthy:
 3. **Contact [Elastic Support](https://support.elastic.co)** if the problem persists. You don't need to inspect or debug the collector yourself — Elastic operates it for you, monitors the service, and can collect diagnostics on your behalf.
 
 A healthy status means the integration is connected and ready, but it doesn't necessarily mean data is currently flowing. If an integration is healthy but you don't see data, confirm that the source has data available and check the integration's throughput. If data still doesn't appear, contact [Elastic Support](https://support.elastic.co).
+::::
+
+::::{applies-item} stack: preview 9.1-9.4
+On the **{{fleet}}** → **Agents** page, agents associated with {{managed-integrations}} have names that begin with `agentless`. When an agentless agent is `Unhealthy`:
+
+1. **Check the integration configuration.** Most `Unhealthy` states are caused by expired or invalid credentials, or by source-side permission issues. Confirm that the credentials and configuration you provided for the integration are still valid.
+2. **Contact [Elastic Support](https://support.elastic.co).** If the configuration looks correct but the agent remains unhealthy, support will collect diagnostics and investigate on your behalf.
+
+:::{dropdown} Collect diagnostics yourself
+If you want to collect a diagnostics bundle before contacting support:
+
+1. Make the underlying collectors visible in {{fleet}}, as described in [How do I make the underlying collectors visible in {{fleet}}?](#managed-integrations-faq-fleet-show).
+2. In **{{fleet}}**, select the unhealthy agent.
+3. From the actions menu {icon}`ellipsis`, select **Maintenance and diagnostics** → **Request diagnostics .zip**.
+4. Download and unzip the [diagnostics bundle](/troubleshoot/ingest/fleet/diagnostics.md). For more information, refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md).
+:::
+::::
+
+:::::
 
 ### How do I get support and collect diagnostics? [managed-integrations-faq-support]
 
@@ -158,8 +177,20 @@ serverless: unavailable
 
 On {{stack}} 9.1 through 9.4, you can override the default and expose the underlying collectors in {{fleet}}:
 
-:::::{include} /manage-data/ingest/managed-integrations/_snippets/show-agentless-resources.md
-:::::
+::::{applies-switch}
+
+:::{applies-item} stack: preview 9.2-9.4
+1. In {{kib}}, find **{{fleet}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Go to the **Settings** tab.
+3. In the **Advanced Settings** section, enable **Show agentless resources**.
+:::
+
+:::{applies-item} stack: preview =9.1
+1. In {{kib}}, find **{{fleet}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Add the query parameter `?showAgentless=true` to the end of the page's URL.
+:::
+
+::::
 
 ### How do I troubleshoot an Offline agent? [managed-integrations-troubleshoot-offline]
 
@@ -181,31 +212,6 @@ On {{ech}} deployments with {{stack}} versions before 9.1.6, the connection betw
 
 This issue is resolved in {{stack}} 9.1.6 and later. In those versions, {{managed-integration}} policies are assigned to a default managed {{fleet-server}} host that can't be modified.
 ::::
-
-### How do I troubleshoot an Unhealthy agent? [managed-integrations-troubleshoot-unhealthy]
-
-```{applies_to}
-stack: preview 9.1-9.4
-```
-
-On the **Fleet** → **Agents** page, agents associated with {{managed-integrations}} have names that begin with `agentless`. When an agentless agent is `Unhealthy`:
-
-1. **Check the integration configuration.** Most `Unhealthy` states are caused by expired or invalid credentials, or by source-side permission issues. Confirm that the credentials and configuration you provided for the integration are still valid.
-2. **Contact [Elastic Support](https://support.elastic.co).** If the configuration looks correct but the agent remains unhealthy, support will collect diagnostics and investigate on your behalf.
-
-::::::{dropdown} Collect diagnostics yourself
-
-If you want to collect a diagnostics bundle before contacting support:
-
-1. Make agentless agents visible in {{fleet}}:
-
-   :::::{include} /manage-data/ingest/managed-integrations/_snippets/show-agentless-resources.md
-   :::::
-
-2. In **{{fleet}}**, select the unhealthy agent.
-3. From the actions menu {icon}`ellipsis`, select **Maintenance and diagnostics** → **Request diagnostics .zip**.
-4. Download and unzip the [diagnostics bundle](/troubleshoot/ingest/fleet/diagnostics.md). For more information, refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md).
-::::::
 
 ### Why can't I upgrade my {{managed-integration}} to a later version? [managed-integrations-faq-upgrade]
 
