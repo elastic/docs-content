@@ -22,9 +22,9 @@ RESOLVED (#4): The Elasticsearch query rule and index threshold rule are both se
 Do not publish any ES|QL query that has not been run on a 9.5 cluster. Mark examples "test on your own data".
 -->
 
-{{agent-builder}} records what each agent does as OpenTelemetry traces in your own {{es}} cluster. Because these traces capture token usage, error status, span durations, and tool calls, you can use {{kib}} alerting rules to be notified when something needs attention, such as a cost spike or a failing tool. There is no separate alerting interface. You create standard {{kib}} rules against the trace data stream.
+{{agent-builder}} collects execution traces into a data stream in your own {{es}} cluster. These traces record token usage, errors, latency, and tool calls, so you can create {{kib}} alerting rules that notify you when something needs your attention. For example, you can alert on a conversation that uses too many tokens, token costs that exceed a budget, an agent error rate that spikes, or a tool that fails repeatedly.
 
-<!-- TODO intro: keep it short. Name the four things you can alert on: per-conversation token spikes, token cost or budget over time, agent error-rate spikes, and repeated tool failures. -->
+{{agent-builder}} has no dedicated alerting interface. You create standard {{kib}} rules against the trace data stream, so the rule types, check schedules, and connectors are the same ones you use elsewhere in {{kib}}.
 
 ## Prerequisites
 
