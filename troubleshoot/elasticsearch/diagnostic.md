@@ -36,7 +36,7 @@ Watch [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthroug
 
 ## Performance and safety [diagnostic-performance-safety]
 
-The Support Diagnostic tool can be run from any directory on the machine. It does not require installation to a specific location, and the only requirement is that the user has read access to the Elasticsearch artifacts, write access to the chosen output directory, and sufficient disk space for the generated archive.
+The Support Diagnostic tool can be run from any directory on the machine. It does not require installation to a specific location, and the only requirement is that the user has read access to the {{es}} artifacts, write access to the chosen output directory, and sufficient disk space for the generated archive.
 
 The calls issued by the Support Diagnostic tool are read-only. It issues only GET requests to Elasticsearch APIs — primarily `_cat` APIs (such as `/_cat/nodes`, `/_cat/shards`, `/_cat/indices`), cluster and node stats endpoints, and settings endpoints. It does not modify any cluster state, indices, or data. In `local` mode, it also retrieves log files and operating system information directly from disk, which has no impact on the cluster.
 
