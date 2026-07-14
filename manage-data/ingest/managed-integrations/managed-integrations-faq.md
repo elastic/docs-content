@@ -113,10 +113,6 @@ For an isolated issue with a single collector, Elastic restarts it and ingestion
 
 ## Setup and operation [managed-integrations-faq-operations]
 
-### Why does my integration policy show "Add agent" instead of an agent? [managed-integrations-faq-add-agent-button]
-
-After you create a new {{managed-integration}}, the integration policy might show an **Add agent** button for several minutes while Elastic provisions the collector. The button disappears automatically once provisioning is complete. Refresh the page if you want to view the updated status sooner — no other action is needed.
-
 ### Why aren't my {{managed-integration}} collectors shown in {{fleet}}? [managed-integrations-faq-fleet-visibility]
 
 {{managed-integrations}} are a fully managed service, so the underlying collectors aren't shown in {{fleet}} — Elastic operates the infrastructure on your behalf. You can still view each integration's status in the **{{integrations}}** app and observe the ingested data itself in your cluster.
@@ -139,12 +135,13 @@ stack: ga 9.5+
 serverless: preview
 ```
 
-{{managed-integrations}} are a managed service, so you monitor them at the integration level rather than by inspecting the underlying collector. Each integration's status appears on its **Integration policies** tab in the **{{integrations}}** app. Hover over the status to see more detail about why an integration is unhealthy.
+{{managed-integrations}} are a managed service, so you monitor them at the integration level rather than by inspecting the underlying collector. Each integration's status appears on its **Integration policies** tab in the **{{integrations}}** app.
 
 If an {{managed-integration}} is unhealthy:
 
-1. **Check your credentials and configuration.** Most issues are caused by expired or invalid credentials, or by missing permissions at the source. Edit the integration to update its credentials or configuration.
-2. **Contact [Elastic Support](https://support.elastic.co)** if the problem persists. You don't need to inspect or debug the collector yourself — Elastic operates it for you, monitors the service, and can collect diagnostics on your behalf.
+1. **Check why it's unhealthy.** Hover over the integration's status on its **Integration policies** tab to see a full breakdown of why the integration is unhealthy.
+2. **Check your credentials and configuration.** Most issues are caused by expired or invalid credentials, or by missing permissions at the source. Edit the integration to update its credentials or configuration.
+3. **Contact [Elastic Support](https://support.elastic.co)** if the problem persists. You don't need to inspect or debug the collector yourself — Elastic operates it for you, monitors the service, and can collect diagnostics on your behalf.
 
 A healthy status means the integration is connected and ready, but it doesn't necessarily mean data is currently flowing. If an integration is healthy but you don't see data, confirm that the source has data available and check the integration's throughput. If data still doesn't appear, contact [Elastic Support](https://support.elastic.co).
 

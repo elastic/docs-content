@@ -26,7 +26,6 @@ To enable an {{managed-integration}}, you need:
   * An {{serverless-full}} project
   * An {{ech}} deployment on version 9.5 or later, or on version 9.0 to 9.4 to use the technical preview
 * The `Fleet: All` and `Integrations: All` [{{kib}} privileges](/reference/fleet/fleet-roles-privileges.md) to create or edit an {{managed-integration}}. These are the same privileges required for any {{fleet}} integration.
-* On {{ech}}, a working default [{{fleet-server}}](/reference/fleet/fleet-server.md)
 
 ## Find {{managed-integrations}} [enable-managed-integration-find]
 

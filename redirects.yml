@@ -932,7 +932,7 @@ redirects:
     to: 'manage-data/ingest/managed-integrations/managed-integrations-faq.md'
     anchors:
       'agentless-integration-troubleshooting': null
-      '_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page': 'managed-integrations-faq-add-agent-button'
+      '_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page': null
       'why-isnt-my-agentless-agent-appearing-in-fleet': 'managed-integrations-faq-fleet-visibility'
       '_how_do_i_troubleshoot_an_offline_agent': 'managed-integrations-troubleshoot-offline'
       'why-cant-i-upgrade-my-agentless-integration-to-a-newer-version': 'managed-integrations-faq-upgrade'
@@ -948,7 +948,7 @@ redirects:
     to: 'manage-data/ingest/managed-integrations/managed-integrations-faq.md'
     anchors:
       'agentless-integration-troubleshoot': null
-      '_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page': 'managed-integrations-faq-add-agent-button'
+      '_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page': null
       'why-isnt-my-agentless-agent-appearing-in-fleet': 'managed-integrations-faq-fleet-visibility'
       '_how_do_i_troubleshoot_an_offline_agent': 'managed-integrations-troubleshoot-offline'
       'why-cant-i-upgrade-my-agentless-integration-to-a-newer-version': 'managed-integrations-faq-upgrade'
