@@ -28,11 +28,11 @@ Do not publish any ES|QL query that has not been run on a 9.5 cluster. Mark exam
 
 ## Prerequisites
 
-* Trace collection is turned on. <!-- TODO(#7322): link to Collect traces (collect-traces.md) once it is on main. -->
-* Read access to the trace data streams. See [Permissions](permissions.md). <!-- TODO(#7322): point to the #read-trace-data anchor once #7322 adds it. -->
-* {{kib}} alerting access and a connector for notifications, such as Slack, email, or PagerDuty. See [Set up alerting](/explore-analyze/alerting/alerts/alerting-setup.md).
+Before you create a rule, make sure that:
 
-<!-- Do not re-explain the data streams, privacy settings, or the access model. Link to collect-traces.md and permissions.md instead. -->
+* **Trace collection is on.** {{agent-builder}} must be writing traces to the `traces-agent_builder.otel-<space-id>` data stream in the space where you create the rule. Collection is on by default. <!-- TODO(#7322): link to Collect traces (collect-traces.md) once it is on main. -->
+* **You can read the trace data.** The rule queries `traces-agent_builder.otel-*`, so you need read access to those data streams. See [Permissions](permissions.md). <!-- TODO(#7322): update to the #read-trace-data anchor once #7322 adds it. -->
+* **You can use {{kib}} alerting.** You need privileges to create and manage rules, plus a connector to send notifications such as Slack, email, or PagerDuty. See [Set up alerting](/explore-analyze/alerting/alerts/alerting-setup.md).
 
 ## Create a rule
 
