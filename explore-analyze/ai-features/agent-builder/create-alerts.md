@@ -36,16 +36,33 @@ Before you create a rule, make sure that:
 
 ## Create a rule
 
-Use an [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md) with ES|QL to alert on the trace data stream. For a simple numeric threshold, an [index threshold rule](/explore-analyze/alerting/alerts/rule-type-index-threshold.md) is an alternative.
+Alert on the trace data with an [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md) that runs an ES|QL query on a schedule and runs an action when the query returns matches. For a simple numeric threshold, you can use an [index threshold rule](/explore-analyze/alerting/alerts/rule-type-index-threshold.md) instead.
 
-<!-- RESOLVED (#4): Elasticsearch query rule (ES|QL) and index threshold rule are both serverless: ga. On serverless, create rules from Stack Management > Rules. Spot-check availability on a 9.5 Elasticsearch serverless project before publishing. -->
+With ES|QL, the query targets the data stream directly in its `FROM` command, so you do not need a data view. The alert condition lives in the query, usually in a `WHERE` clause that compares a value to a threshold. Query one space at a time and avoid wildcards, so you do not mix data from different spaces.
 
-1. Create a rule. <!-- TODO: exact navigation path. See /explore-analyze/alerting/alerts/create-manage-rules.md -->
-2. Select the {{es}} query rule type and use ES|QL.
-3. Target the trace data stream for your space: `traces-agent_builder.otel-<space-id>`. <!-- Avoid wildcards. Scope one space per rule. -->
-4. Define the condition. <!-- See the examples below. -->
-5. Set the check schedule. <!-- The blog example checks every 15 minutes. -->
-6. Add an action and a connector.
+1. In {{kib}}, go to **{{stack-manage-app}}** > **{{rules-ui}}** and click **Create rule**.
+2. Select the **{{es}} query** rule type, then enter a name and optional tags.
+3. For the query language, select **ES|QL**.
+4. Enter your ES|QL query against the trace data stream for your space, for example `FROM traces-agent_builder.otel-<space-id>`. The query defines the condition, including the threshold. See [Example alerts](#example-alerts).
+5. Set the alert grouping:
+
+    * **Time field**: the field used to filter results by the rule's time window, for example `@timestamp`.
+    * **Alert group**: select **Create an alert for each row** to raise one alert per matching row, for example per conversation over the threshold. Select **Create an alert if matches are found** to raise a single alert when the query returns any rows.
+6. Set the **time window** to define how far back the query searches, for example the last hour.
+7. Set the **check interval** to define how often the rule runs. Keep it smaller than the time window to avoid gaps in detection.
+8. Click **Test query** to confirm the query is valid. For an ES|QL query, the matching rows appear in a table.
+9. Add an action, select a connector, then set the action frequency. See [Add actions](/explore-analyze/alerting/alerts/rule-type-es-query.md#_add_actions).
+10. Click **Save**.
+
+:::{note}
+ES|QL rules do not offer the **Exclude matches from previous run** option. If the check interval is smaller than the time window, a row that keeps matching can alert more than once. Choose the time window, check interval, and query so that a condition alerts as often as you want.
+:::
+
+After you save the rule, it appears on the **{{rules-ui}}** page, where you can confirm that it runs on schedule and check its status.
+
+<!-- TODO(cluster): confirm the navigation path to the Rules page on BOTH a 9.5 Stack deployment and an Elasticsearch Serverless project. If it differs, use an applies-switch. Confirm the ES|QL query language option and the "Create an alert for each row" / "Create an alert if matches are found" labels appear as written in 9.5. -->
+<!-- TODO(cluster): run Test query against real trace data and confirm it returns the expected rows. Confirm the healthy rule status label shown on the Rules page (for example "Succeeded" or "Active") and update the last sentence to match. -->
+<!-- TODO(screenshot, optional): decide whether to add one screenshot of the rule form with a trace ES|QL query and its Test query results. Screenshots are optional in how-tos and add maintenance cost. -->
 
 ## Example alerts
 
