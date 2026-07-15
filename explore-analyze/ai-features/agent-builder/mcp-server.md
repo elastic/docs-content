@@ -60,7 +60,7 @@ The following table compares the two paths.
 | Best for | Automation, unattended access, and shared machine-to-machine use | Interactive MCP hosts acting on behalf of a person (Claude Desktop, Cursor), including teams that share one client |
 | Multi-user access | One shared key means one shared identity; all callers act with the same permissions | One client registration serves many users. Each person consents separately and gets their own connection, acting with their own permissions and revocable individually |
 | Identity | The key's snapshotted permissions | The consenting user; permissions are the user's live permissions in the project |
-| Credential lifetime | Long-lived until the key expires or is revoked | Short-lived tokens, refreshed automatically |
+| Credential lifetime | Long-lived until the key expires or is revoked | Short-lived tokens, refreshed automatically unless revoked. Require a new connection if unused for 30+ days. |
 | Setup | Generate a key and add it to the host configuration | Register an MCP client, then consent in the browser |
 | {{agent-builder}} tools through MCP | Full tool catalog, including [Elastic Workflows](/explore-analyze/workflows.md) | Full tool catalog, limited by the [authorizing user's](/deploy-manage/app-connections/connect-mcp-host.md#authorize-connection) permissions |
 

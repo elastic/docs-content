@@ -15,7 +15,7 @@ products:
 
 Register a new MCP client in {{agent-builder}} to generate the credentials that an MCP host, such as Claude Desktop, needs to connect over OAuth 2.1. This is a one-time pre-registration step: OAuth requires each client to be registered with the MCP server before any host can connect or any user can authenticate and consent.
 
-Each MCP client is scoped to a single {{serverless-short}} project. Creating a client gives you a client ID and the MCP server URL for that project. For confidential clients, you also get a client secret that is shown only once and can't be retrieved later.
+Each OAuth client is scoped to a single {{serverless-short}} project. Creating a client gives you a client ID and the MCP server URL for that project. For confidential clients, you also get a client secret that is shown only once and can't be retrieved later.
 
 ## Before you begin [create-oauth-client-before-you-begin]
 
