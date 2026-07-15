@@ -16,7 +16,7 @@ This page covers when to use each silencing mechanism and how the scope of an al
 
 ## Silencing mechanisms [silencing-mechanisms]
 
-Three mechanisms let you silence notifications, each at a different scope:
+The following mechanisms let you silence notifications, each at a different scope:
 
 | Mechanism | Scope | When to use |
 |---|---|---|
