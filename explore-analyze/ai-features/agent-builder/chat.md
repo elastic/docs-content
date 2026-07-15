@@ -173,11 +173,11 @@ Conversations run independently, so you can work in several at the same time: st
 
 ### Inspect tool calls and reasoning
 
-```{applies_to}
-stack: ga 9.5+
-```
+::::{note}
+:applies_to: stack: ga 9.5+
 
 In 9.5 and later, inline reasoning events replace the [Reasoning panel](glossary.md#reasoning-panel).
+::::
 
 Agent responses show reasoning, tool calls, tool results, and the final response inline as a single sequence. Events appear in the order they happen, so you can follow how the agent handles your request in context. The agent runs tools in a loop until it achieves its goal or [exceeds the maximum conversation length](limitations-known-issues.md#conversation-length-exceeded).
 
