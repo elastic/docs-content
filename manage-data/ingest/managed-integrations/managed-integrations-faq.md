@@ -168,7 +168,7 @@ If you want to collect a diagnostics bundle before contacting support:
 
 ### How do I get support and collect diagnostics? [managed-integrations-faq-support]
 
-{{managed-integrations}} are a fully managed service, so you usually don't need to collect diagnostics yourself. Errors that are relevant to you are surfaced for each integration in the **{{integrations}}** app. If you suspect a problem with the service or your deployment, contact [Elastic Support](https://support.elastic.co) — they'll collect diagnostics on your behalf and investigate.
+{{managed-integrations}} are a fully managed service, so Elastic handles diagnostics for you. Errors that are relevant to you are surfaced for each integration in the **{{integrations}}** app. If you suspect a problem with the service or your deployment, contact [Elastic Support](https://support.elastic.co) — they'll collect diagnostics on your behalf and investigate.
 
 ### How do I make the underlying collectors visible in {{fleet}}? [managed-integrations-faq-fleet-show]
 
