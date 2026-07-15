@@ -150,6 +150,31 @@ Use the chat history panel to access previous conversations.
 :width: 450px
 :::
 
+### Track conversation status
+
+```{applies_to}
+stack: ga 9.5+
+```
+
+The chat history panel shows the status of each conversation at a glance, so you can keep track of what your agents are doing across conversations:
+
+| Icon | Status | Meaning |
+|------|--------|---------|
+| ![In progress spinner](images/agent-builder-status-in-progress.svg "=20x20") | **In progress** | The agent is generating a response. |
+| ![Awaiting your input icon](images/agent-builder-status-awaiting.svg "=20x20") | **Awaiting your input** | The agent paused and needs you to respond before it can continue, for example to answer a [human-in-the-loop prompt](#human-in-the-loop-prompts). |
+| ![Unread icon](images/agent-builder-status-unread.svg "=20x20") | **Unread** | The agent finished responding in a conversation you weren't viewing. |
+| ![Error icon](images/agent-builder-status-error.svg "=20x20") | **Error** | The agent stopped because of an error. |
+
+For example, the following chat history panel shows one conversation in progress and another with unread activity:
+
+:::{image} images/agent-builder-conversation-status.png
+:screenshot:
+:alt: Chat history panel showing conversation status indicators, including In progress and Unread
+:width: 450px
+:::
+
+Conversations run independently, so you can work in several at the same time: start an agent in one conversation, switch to another while the first keeps working, and come back later without interrupting either one. New conversations appear in the panel as soon as you start them, before the agent finishes its first response.
+
 ### Inspect tool calls and reasoning
 
 Expand the **Reasoning** section to see how the agent handles your request. This provides a detailed breakdown of the agent's reasoning steps, the tool calls it makes, and the responses it receives. The agent runs tools in a loop until it achieves its goal or [exceeds the maximum conversation length](limitations-known-issues.md#conversation-length-exceeded).
@@ -164,19 +189,57 @@ Select **Inspect response** to view detailed information about individual tool c
 
 Select **View JSON** to view the full raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
-### Review and confirm agent changes
+### Human-in-the-loop prompts
 ```{applies_to}
 stack: ga 9.4+
 ```
 
-You control every write operation an agent performs. Whenever an agent proposes to create, update, or delete a resource, the chat pauses and presents a preview before anything takes effect. The preview format and available actions depend on the skill the agent is using.
+At certain points an agent pauses and hands control back to you before it continues. This pattern is known as human-in-the-loop (HITL). While a conversation is paused this way, it shows an **Awaiting your input** status in the [chat history panel](#track-conversation-status).
 
-No changes are applied until you explicitly confirm or dismiss.
+#### Confirm a change
+
+You control every write operation an agent performs. Whenever an agent proposes to create, update, or delete a resource, the chat pauses and presents a preview before anything takes effect. The preview format and available actions depend on the skill the agent is using. Review the preview, then confirm it to apply the change or dismiss it to discard it. Nothing is applied until you respond.
+
+For example, when an agent updates a workflow, it shows the proposed change as a diff and waits for you to review it before applying:
 
 :::{image} images/agent-builder-preview-changes.png
 :screenshot:
 :alt: Preview panel showing proposed changes from an agent action before they are applied.
 :width: 700px
+:::
+
+#### Authorize a connector
+```{applies_to}
+stack: preview 9.5+
+serverless: preview
+```
+
+When an agent uses a [connector](connectors.md) to reach an external service that requires authorization, the chat pauses so you can grant access. Select **Authorize** to complete the sign-in flow for the connector, or **Deny** to decline. After you authorize, the agent retries the tool call and continues.
+
+For example, an agent that needs to read your Notion workspace pauses until you authorize the connector:
+
+:::{image} images/agent-builder-authorization-prompt.png
+:screenshot:
+:alt: Authorization prompt with Authorize and Deny buttons
+:width: 650px
+:::
+
+#### Answer a clarifying question
+```{applies_to}
+stack: preview 9.5+
+serverless: preview
+```
+
+When your request is ambiguous, an agent can pause and ask you up to five multiple-choice questions instead of guessing. For each question, select one of the options, or choose the custom option and type your own answer. Some questions let you select more than one option. To move on without answering, select **Skip question**.
+
+When there's more than one question, use **Back** and **Continue** to move between them, then select **Submit** on the last question. After you respond, the agent resumes. The agent's questions and your answers stay in the conversation, so you can revisit what was asked and how you responded.
+
+For example, before creating a dashboard the agent might ask which sample data set to use:
+
+:::{image} images/agent-builder-clarifying-question.png
+:screenshot:
+:alt: Clarifying question prompt showing multiple-choice options, a custom answer field, and a Skip question button
+:width: 650px
 :::
 
 ## Customize your agent [customize-your-agent]
