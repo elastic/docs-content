@@ -119,12 +119,12 @@ The agent:
 - runs the workflow
 - returns the workflow's final output to the chat
 
-Expand the **Completed reasoning** section to trace the execution steps and inspect the raw workflow output.
+Review the inline reasoning events to trace the execution steps and inspect the raw workflow output.
 
 :::{image} ../images/agent-builder-workflow-tool.png
 :screenshot:
 :width: 500px
-:alt: Screenshot of reasoning steps of agent builder.
+:alt: Inline reasoning events showing an Agent Builder workflow tool execution.
 :::
 
 ## Examples
