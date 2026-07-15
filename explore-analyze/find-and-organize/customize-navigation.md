@@ -44,5 +44,7 @@ To discard all of your customizations and return to the space's default layout, 
 
 ## Related pages
 
-* [Find apps and objects](/explore-analyze/find-and-organize/find-apps-and-objects.md)
-* [Manage spaces](/deploy-manage/manage-spaces.md)
+Adjust other Kibana settings to your own preferences:
+
+* [Use dark mode in Kibana](/cloud-account/dark-mode.md)
+* [Use high-contrast mode in Kibana](/cloud-account/high-contrast.md)
