@@ -57,6 +57,22 @@ To learn more, refer to [select a different model](/explore-analyze/ai-features/
 :screenshot:
 :::
 
+## Select a model for a single request
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+When you call an agent through the [Converse API](kibana-api.md#chat-and-conversations), you can override the agent's configured model for that request. Pass one of the following in the request body:
+
+* `inference_id`: the ID of an [{{infer}} endpoint](#add-an-inference-endpoint).
+* `connector_id`: the ID of a [connector](#configure-a-connector).
+
+Both parameters route the request to the same underlying model and are mutually exclusive. If you send both, the request fails with a `400` error. If you omit both, the agent uses its default model.
+
+For an example request, refer to [Route a request to a specific model](kibana-api.md#chat-and-conversations).
+
 ## Change the default model
 
 ::::{applies-switch}
