@@ -549,7 +549,7 @@ When creating or editing a visualization, you can customize several appearance o
 :   Configure the icon and layout:
     - **Icon decoration**: Add an icon to the metric chart.
     - **Icon position**: Select **Left** or **Right**.
-    - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` **Density**: Select **Compact** to use the previous layout, or **Default** to increase padding and spacing and use a larger font. New metric charts use **Default**. Charts saved before this option was introduced use **Compact** until you change the setting.
+    - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` **Density**: Select **Compact** for tighter spacing, less padding, and smaller text, or **Default** for more spacing, more padding, and larger text. New metric charts use **Default**. Charts saved before this option was introduced use **Compact** until you change the setting.
 
 
 ## Metric chart examples
