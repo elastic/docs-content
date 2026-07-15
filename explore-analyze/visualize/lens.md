@@ -410,27 +410,11 @@ In the legend, click the field, then choose one of the following options:
 
 ## Customize the visualization display [configure-the-visualization-components]
 
-Each chart type has its own data and appearance settings. Use the chart-specific pages to find all available options.
+Appearance controls vary by chart type. For all available settings, open the dedicated page for your chart from the [visualization type table](#lens).
 
 ### Visualization appearance and style options [customize-visualization-appearance]
 
-Use the {icon}`brush` **Style** control, **Labels** control, or axis menus to customize a visualization. The available controls depend on the chart type:
-
-| Chart type | Settings |
-| --- | --- |
-| **Area** | [Area chart settings](charts/area-charts.md#area-chart-settings) |
-| **Bar** | [Bar chart settings](charts/bar-charts.md#settings) |
-| **Line** | [Line chart settings](charts/line-charts.md#settings) |
-| **Metric** | [Metric chart settings](charts/metric-charts.md#settings) |
-| **Gauge** | [Gauge chart settings](charts/gauge-charts.md#gauge-chart-settings) |
-| **Table** | [Table settings](charts/tables.md#settings) |
-| **Pie and donut** | [Pie chart settings](charts/pie-charts.md#pie-chart-settings) |
-| **Treemap** | [Treemap chart settings](charts/treemap-charts.md#treemap-chart-settings) |
-| **Waffle** | [Waffle chart settings](charts/waffle-charts.md#waffle-chart-settings) |
-| **Mosaic** | [Mosaic chart settings](charts/mosaic-charts.md#mosaic-chart-settings) |
-| **Heat map** | [Heat map chart settings](charts/heat-map-charts.md#heat-map-chart-settings) |
-| **Tag cloud** | [Tag cloud chart settings](charts/tag-cloud-charts.md#tag-cloud-chart-settings) |
-| **Region map** | [Region map chart settings](charts/region-map-charts.md#region-map-chart-settings) |
+Use the {icon}`brush` **Style** control, **Labels** control, or axis menus to customize a visualization.
 
 
 ### Customize the visualization legend [customize-visualization-legend]
@@ -442,7 +426,7 @@ To customize the legend of your visualization, select the **Legend** icon ![Lege
 :alt: Menu with options to customize the legend of a visualization
 :::
 
-Legend options vary by chart type. Open the chart settings page in the [appearance and style table](#customize-visualization-appearance) to find the available options. For time-series charts, the **Area**, **Bar**, and **Line** chart pages include all available legend statistics.
+The available legend controls depend on the chart type and its configuration.
 
 ## Explore the data in Discover [explore-lens-data-in-discover]
 
