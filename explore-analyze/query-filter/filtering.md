@@ -21,25 +21,48 @@ Some apps provide more options, such as [Dashboards](../dashboards.md).
 
 Display data within a specified time range when your index contains time-based events, and a time-field is configured for the selected [{{data-source}}](../find-and-organize/data-views.md). The default time range is 15 minutes, but you can customize it in [Advanced Settings](kibana://reference/advanced-settings.md).
 
-1. Click ![calendar icon](/explore-analyze/images/kibana-time-filter-icon.png "calendar icon =7%x7%").
-2. Choose one of the following:
+:::::{applies-switch}
+::::{applies-item} { stack: preview 9.5+, serverless: preview }
+1. Select the time range control.
+2. Set the time range in one of the following ways:
+
+    * Enter a range directly, such as `last 5 minutes` or `-12d to now`, then press **Enter**.
+    * Select a range from **Presets** or **Recent**.
+    * Select **Calendar**, select the start and end dates, then select **Apply**.
+    * Select **Custom range**, configure the **Start date** and **End date** as **Relative**, **Absolute**, or **Now**, then select **Apply**.
+
+3. To configure automatic refresh, select the {icon}`gear` **Settings** icon, then set **Refresh every**.
+
+:::{note}
+The new picker doesn't support auto-refresh-only views. In those views, the time control and auto-refresh aren't available.
+:::
+::::
+
+::::{applies-item} { stack: ga 9.0-9.4 }
+1. Select the calendar icon:
+
+    ![Calendar icon](/explore-analyze/images/kibana-time-filter-icon.png "calendar icon =7%x7%")
+
+2. Select one of the following:
 
     * **Quick select**. Set a time based on the last or next number of seconds, minutes, hours, or other time unit.
     * **Commonly used**. Select a time range from options such as **Last 15 minutes**, **Today**, and **Week to date**.
-    * **Recently used date ranges**. Use a previously selected data range.
+    * **Recently used date ranges**. Use a previously selected date range.
     * **Refresh every**. Specify an automatic refresh rate.
 
-:::{image} /explore-analyze/images/kibana-time-filter.png
-:alt: Time filter menu
-:width: 300px
-:::
+    :::{image} /explore-analyze/images/kibana-time-filter.png
+    :alt: Time filter menu
+    :width: 300px
+    :::
 
-3. To set start and end times, click the bar next to the time filter. In the popup, select **Absolute**, **Relative** or **Now**, then specify the required options.
+3. To set start and end times, select the bar next to the time filter. In the popup, select **Absolute**, **Relative**, or **Now**, then specify the required options.
 
-:::{image} /explore-analyze/images/kibana-time-relative.png
-:alt: Time filter showing relative time
-:width: 350px
-:::
+    :::{image} /explore-analyze/images/kibana-time-relative.png
+    :alt: Time filter showing relative time
+    :width: 350px
+    :::
+::::
+:::::
 
 The global time filter limits the time range of data displayed. In most cases, the time filter applies to the time field in the data view, but some apps allow you to use a different time field.
 
