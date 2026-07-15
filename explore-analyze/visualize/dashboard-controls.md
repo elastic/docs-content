@@ -29,10 +29,10 @@ You can add three kinds of controls:
     :::
 
   * **Range slider**: A slider that filters data within a specified range of values. Only compatible with numeric fields.
-    For example, in the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add a range slider for the `hour_of_day` field to display only the log data from 9:00 AM to 5:00 PM.
+    For example, in the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add a range slider for the `bytes` field to display only the log data for responses between 6,000 and 20,000 bytes.
 
     :::{image} /explore-analyze/images/kibana-dashboard-controls-range-slider.png
-    :alt: Range slider control for the hour_of_day field with a range of 9 to 17 selected
+    :alt: Range slider control for the bytes field with a range of 6,000 to 20,000 selected
     :width: 50%
     :screenshot:
     :::

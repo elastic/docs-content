@@ -11,7 +11,7 @@ products:
 
 # Dashboard control settings [dashboard-control-settings]
 
-The settings available depend on the [control type](dashboard-controls.md#control-types).
+This page describes the settings you can configure for dashboard controls. The settings available depend on the [control type](dashboard-controls.md#control-types).
 
 ## Options list and range slider settings [options-list-range-slider-settings]
 
@@ -50,8 +50,8 @@ Set these in the control's editor: when you add the control, or later by hoverin
 
 Display settings apply to pinned controls: hover over the control and select {icon}`gear` **Display settings**. Resize an unpinned control by dragging it, like any other panel.
 
-**Width**
-:   Set a minimum width, and whether the control expands to fill the available horizontal space.
+**Minimum width**
+:   Set the control's minimum width. To let the control grow beyond it and fill the available space, turn on **Expand width to fit available space**.
 
     {applies_to}`stack: ga 9.0-9.3` In these versions, set the minimum width and expand option in the control's own settings.
 
@@ -79,17 +79,15 @@ Set these in the control's editor: when you add the control, or later by hoverin
 **Label**
 :   Overwrite the default variable name with a clearer label.
 
-**Selections**
-:   Let viewers select a single value.
-
-    {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3` You can also allow multiple values.
+**Selections** {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3`
+:   Let viewers select a single value (default) or multiple values.
 
 ### Display settings [variable-display-settings]
 
 Display settings apply to pinned controls: hover over the control and select {icon}`gear` **Display settings**. Resize an unpinned control by dragging it, like any other panel.
 
-**Width**
-:   Set a minimum width, and whether the control expands to fill the available horizontal space.
+**Minimum width**
+:   Set the control's minimum width. To let the control grow beyond it and fill the available space, turn on **Expand width to fit available space**.
 
     {applies_to}`stack: preview 9.0-9.3` In these versions, set the minimum width and expand option in the control's own settings.
 
