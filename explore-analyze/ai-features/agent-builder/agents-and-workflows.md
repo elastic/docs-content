@@ -58,7 +58,7 @@ To configure pre-execution workflows:
 4. Select one or more workflows to run after each user message and before the agent makes any LLM calls in response.
 5. Save the agent.
 
-The following example shows the **Pre-execution workflow** setting in the agent **Settings** view.
+The following screenshot shows the **Pre-execution workflow** setting in the agent **Settings** view.
 
 :::{image} images/pre-execution-workflows.png
 :screenshot:
