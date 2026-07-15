@@ -42,6 +42,10 @@ Before you begin:
 
 Pre-execution workflows run after each user message, before the agent makes any LLM calls in response. They let you use Elastic Workflows for deterministic preparation or control before the agent begins its reasoning loop.
 
+:::{note}
+Only administrators can configure pre-execution workflows.
+:::
+
 A pre-execution workflow runs once for each user message. It does not run before every LLM call or tool call within the agent's response.
 
 Pre-execution workflows can:
@@ -66,7 +70,6 @@ The following screenshot shows the **Pre-execution workflow** setting in the age
 :alt: Edit agent settings flyout showing the Pre-execution workflow section with a workflow selector
 :::
 
-Only administrators can configure pre-execution workflows. The Workflows feature must also be enabled in **Advanced settings**.
 
 ## Use the `ai.agent` step [use-ai-agent-workflow-step]
 
