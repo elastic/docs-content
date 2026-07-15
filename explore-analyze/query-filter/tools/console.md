@@ -1,5 +1,6 @@
 ---
 navigation_title: Console
+description: Use Console to send Elasticsearch and Kibana API requests, inspect responses, manage request history, and configure editor settings.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/console-kibana.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-api-console.html
@@ -216,6 +217,23 @@ The result of the request execution is displayed in the response panel, where yo
 You can select multiple requests and submit them together. **Console** executes the requests one by one. Submitting multiple requests is helpful when you’re debugging an issue or trying query combinations in multiple scenarios.
 ::::
 
+
+
+## Filter response output [console-filter-response]
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+A single successful response is required to use response filtering. To filter or transform a response:
+
+1. Run one request, then select **Filter response** in the response panel.
+2. Select a filter mode:
+   * **JQ expression**: Extract or transform values in a JSON response. Console supports a subset of JQ. Select {icon}`question` **Filter expression help** for supported operations and examples.
+   * **Regular expression**: Match the response line by line. Select **Include** to keep matching lines or **Exclude** to remove them.
+3. Enter an expression, then select **Apply**.
+
+The response panel shows the filtered output. Clear the expression to restore the complete response.
 
 
 ## Import and export requests [import-export-console-requests]
