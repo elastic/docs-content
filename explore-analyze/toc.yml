@@ -283,23 +283,20 @@ toc:
           - file: dashboards/create-dashboards-programmatically.md
           - file: dashboards/create-dashboards-using-ai.md
           - file: dashboards/open-dashboard.md
-          - file: dashboards/add-controls.md
           - file: dashboards/drilldowns.md
           - file: dashboards/arrange-panels.md
           - file: dashboards/duplicate-dashboards.md
-          - file: dashboards/import-dashboards.md
       - file: dashboards/managing.md
         children:
+          - file: dashboards/sharing.md
+          - file: dashboards/import-dashboards.md
           - file: dashboards/manage-dashboards-as-code.md
-      - file: dashboards/sharing.md
       - file: dashboards/tutorials.md
         children:
           - file: dashboards/create-dashboard-of-panels-with-web-server-data.md
           - file: dashboards/create-dashboard-of-panels-with-ecommerce-data.md
   - file: visualize.md
     children:
-      - file: visualize/visualize-library.md
-      - file: visualize/manage-panels.md
       - file: visualize/lens.md
         children:
           - file: visualize/charts/area-charts.md
@@ -321,6 +318,12 @@ toc:
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
       - file: visualize/alert-panels.md
+      - file: visualize/dashboard-controls.md
+        children:
+          - file: visualize/add-controls.md
+          - file: visualize/add-time-slider-controls.md
+          - file: visualize/add-variable-controls.md
+          - file: visualize/dashboard-control-settings.md
       - file: visualize/canvas.md
         children:
           - file: visualize/canvas/edit-workpads.md
@@ -368,6 +371,8 @@ toc:
           - file: visualize/legacy-editors/aggregation-based.md
           - file: visualize/legacy-editors/tsvb.md
           - file: visualize/legacy-editors/timelion.md
+      - file: visualize/visualize-library.md
+      - file: visualize/manage-panels.md
   - file: find-and-organize.md
     children:
       - file: find-and-organize/data-views.md
@@ -386,6 +391,16 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
+      - file: alerting/compare-alerting-systems.md
+      - file: alerting/system-overview.md
+        children:
+          - file: alerting/experimental-alerting-system/how-it-works.md
+          - file: alerting/experimental-alerting-system/glossary.md
+          - file: alerting/experimental-alerting-system/get-started.md
+            children:
+              - file: alerting/experimental-alerting-system/get-started/setup.md
+              - file: alerting/experimental-alerting-system/get-started/configure-access.md
+              - file: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
