@@ -462,7 +462,7 @@ deployment:
 2. Under **Encryption at rest**, select **Manage encryption key**.
 3. Enter your key identifier (the ARN for {{aws}}, the key identifier for Azure, or the resource ID for Google Cloud) and save your changes.
 
-{{ecloud}} then applies a plan change to encrypt your deployment's data and snapshots with your key. This plan change happens **without downtime**.
+{{ecloud}} then applies a plan change to encrypt your deployment's data and snapshots with your key. This plan change happens without downtime.
 
 ::::{note}
 Once you set a customer-managed key on a deployment, you cannot edit or remove it. Once encryption begins, you cannot undo it or switch to a different key. The ability to change or remove a customer-managed key will be supported on {{ech}} in the future.
