@@ -45,6 +45,11 @@ By default, traces record structural metadata only. Conversation content such as
 
 Trace collection is on by default. To manage it, go to **Management > GenAI Settings** and open the **Agent Builder Traces** section.
 
+:::{image} images/agent-builder-traces-settings.png
+:screenshot:
+:alt: The Agent Builder Traces section in GenAI Settings, with trace collection enabled and the Install Dashboard button
+:::
+
 The **Collect conversation traces** setting turns collection on and off. When it is on, {{agent-builder}} collects OpenTelemetry traces for agent conversations and ingests them into {{es}}. From the same section, you can install a prebuilt overview dashboard for the current {{kib}} space.
 
 :::{note}
@@ -57,20 +62,23 @@ By default, traces record structural metadata only, such as token counts, latenc
 
 To change what is captured, expand **Advanced privacy settings** in the **Agent Builder Traces** section. Each option is off by default.
 
+:::{image} images/agent-builder-traces-privacy-settings.png
+:screenshot:
+:alt: The expanded Advanced privacy settings, showing six toggles for including sensitive content in traces, all turned off
+:::
+
 | Setting | Effect when enabled |
 |---|---|
 | **Include user prompts in traces** | Captures user messages. |
-| **Include system prompt in traces** | Captures agent instructions. |
 | **Include LLM responses in traces** | Captures agent responses. |
 | **Include tool call details in traces** | Captures tool call arguments and results. |
+| **Include system prompt in traces** | Captures agent instructions. |
 | **Include real tool and agent names in traces** | Records real tool and agent names instead of anonymized values. |
 | **Include real conversation and workflow IDs in traces** | Records real conversation and workflow IDs instead of anonymized values. |
 
 :::{note}
 Built-in tools and agents always appear under their real names. When a value is anonymized, {{agent-builder}} uses a stable identifier, so you can still group and correlate traces without exposing names or IDs.
 :::
-
-<!-- Screenshots still needed for the Agent Builder Traces settings section. -->
 
 ## Grant access to trace data
 
