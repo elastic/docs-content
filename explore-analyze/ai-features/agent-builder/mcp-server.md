@@ -61,7 +61,7 @@ Most MCP clients (such as Claude Desktop, Cursor, VS Code, etc.) have similar co
 }
 ```
 
-1. Refer to [](#api-key-application-privileges)
+1. Refer to [Create a read-only client key](api-keys.md#create-a-read-only-client-key).
 
 :::{note}
 Set the following environment variables:
@@ -71,85 +71,9 @@ export KIBANA_URL="your-kibana-url"
 export API_KEY="your-api-key"
 ```
 
-For information on generating API keys, refer to [](/deploy-manage/api-keys.md).
+For a complete API key example, refer to [Create a read-only client key](api-keys.md#create-a-read-only-client-key).
 
-Tools execute with the scope assigned to the API key. Make sure your API key has the appropriate permissions to only access the indices and data that you want to expose through the MCP server. To learn more, refer to [](#api-key-application-privileges).
+Tools execute with the scope assigned to the API key. Restrict the key to only the spaces, indices, and data that you want to expose through the MCP server.
 :::
 
-## API key application privileges
-
-To access the MCP server endpoint, your API key must include {{kib}} application privileges for {{agent-builder}}.
-
-```json
-POST /_security/api_key
-{
-  "name": "my-mcp-api-key",
-  "expiration": "30d",
-  "role_descriptors": {
-    "mcp-access": {
-      "cluster": ["monitor_inference"], <1>
-      "indices": [
-        {
-          "names": ["*"],
-          "privileges": ["read", "view_index_metadata"]
-        }
-      ],
-      "applications": [
-        {
-          "application": "kibana-.kibana", <2>
-          "privileges": ["feature_agentBuilder.read", "feature_actions.read"],
-          "resources": ["space:default"]
-        }
-      ]
-    }
-  }
-}
-```
-
-1. Required to use {{es}} inference endpoints. You can also use `"cluster": ["all"]` for broader access during development.
-2. Must be exactly `kibana-.kibana`. This is how {{kib}} registers its application privileges with {{es}}. Without the `feature_agentBuilder.read` privilege, you'll receive a `403 Forbidden` error.
-
-:::{note}
-Without the `feature_agentBuilder.read` application privilege, you'll receive a `403 Forbidden` error when attempting to connect to the MCP endpoint.
-:::
-
-## Best practices
-
-### Set API key expiration dates
-
-Always set an expiration date on API keys for security. Use shorter durations (1-7 days) for development and longer durations (30-90 days) for production, rotating keys regularly.
-
-### Limit Agent Builder to specific indices
-
-For production environments, restrict API keys to only the indices your tools need to access. This follows the principle of least privilege and prevents agents from querying sensitive data.
-
-```json
-POST /_security/api_key
-{
-  "name": "my-mcp-api-key",
-  "expiration": "30d",
-  "role_descriptors": {
-    "mcp-access": {
-      "cluster": ["monitor_inference"], <1>
-      "indices": [
-        {
-          "names": ["logs-*", "metrics-*"], <2>
-          "privileges": ["read", "view_index_metadata"] <3>
-        }
-      ],
-      "applications": [
-        {
-          "application": "kibana-.kibana", <4>
-          "privileges": ["feature_agentBuilder.read", "feature_actions.read"],
-          "resources": ["space:default"]
-        }
-      ]
-    }
-  }
-}
-```
-
-1. Required to use {{es}} inference endpoints. You can also use `"cluster": ["all"]` for broader access during development.
-2. Restrict index access to only the indices your tools need to query. Adjust the index patterns based on your security requirements.
-3. Read-only privileges prevent the agent from modifying data.
-4. Must be exactly `kibana-.kibana` - this is how {{kib}} registers its application privileges with {{es}}.
+The key must include `feature_agentBuilder.read` for the space in the MCP endpoint URL. Without this application privilege, the MCP endpoint returns `403 Forbidden`.

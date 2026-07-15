@@ -70,7 +70,7 @@ AI Agent button
 
 $$$api-key$$$
 API key
-:   A credential used for programmatic access to {{agent-builder}} APIs, including the MCP server and A2A server endpoints. The API key inherits the privileges of the user who created it. See [](permissions.md#grant-access-with-api-keys).
+:   A credential used for programmatic access to {{agent-builder}} APIs, including the MCP server and A2A server endpoints. The API key inherits the privileges of the user who created it. See [](permissions.md#api-keys-for-clients).
 
 $$$attachment$$$
 Attachment
@@ -250,7 +250,7 @@ Model selector
 
 $$$monitor-inference$$$
 `monitor_inference`
-:   The {{es}} cluster privilege required when an agent uses an AI connector that calls the {{es}} Inference API. Built-in tools such as `search` and `generate_esql`, and all index search tools, depend on this privilege. See [](permissions.md#es-cluster-privileges).
+:   The {{es}} cluster privilege required when an agent uses an AI connector that calls the {{es}} Inference API. Built-in tools such as `search` and `generate_esql`, and all index search tools, depend on this privilege. See [](permissions.md#es-privileges).
 
 ## O
 
@@ -310,7 +310,7 @@ Solution view
 
 $$$space$$$
 Space
-:   A {{kib}} space. Custom agents and custom tools are _space-aware_: they exist only in the space where they were created. The Elastic AI Agent is also space-aware. See [](/deploy-manage/manage-spaces.md) and [](permissions.md#working-with-spaces).
+:   A {{kib}} space. Custom agents and custom tools are _space-aware_: they exist only in the space where they were created. The Elastic AI Agent is also space-aware. See [](/deploy-manage/manage-spaces.md) and [](permissions.md#space-scope).
 
 $$$standalone-mode$$$
 Standalone mode

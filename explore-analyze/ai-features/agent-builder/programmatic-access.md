@@ -29,3 +29,4 @@ Most users will probably want to integrate with Agent Builder using MCP or A2A, 
 - **[A2A server](a2a-server.md)**: Agent-to-agent communication endpoints that follow the A2A protocol specification, enabling external A2A clients to interact with {{agent-builder}} agents.
 - **[Kibana API](kibana-api.md)**: RESTful APIs for working with {{agent-builder}} programmatically. Try the [API tutorial](agent-builder-api-tutorial.md) for a hands-on introduction.
 
+To authenticate any of these clients, refer to [Create API keys for {{agent-builder}} APIs](api-keys.md).

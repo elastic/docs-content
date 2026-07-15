@@ -1,6 +1,6 @@
 ---
 navigation_title: "Permissions"
-description: "Learn how to configure security roles, API keys, and privileges for Agent Builder."
+description: "Understand how Kibana feature privileges, Elasticsearch privileges, and spaces control access to Agent Builder."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -14,162 +14,80 @@ products:
 
 # Permissions and access control in {{agent-builder}}
 
-Use this page to learn how to configure security roles and API keys for {{agent-builder}}. Understanding these privileges helps you control who can use agents, which tools they can access, and what data they can query.
+Use this page to understand the {{agent-builder}} permission model and choose least-privilege access for users and programmatic clients. After choosing the required privileges, assign them to users with roles or to clients with API keys.
 
 ::::{admonition}
 This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
-## Required privileges
+## How permissions work
 
-{{agent-builder}} requires privileges at three levels:
+An {{agent-builder}} request is allowed only when the user or client has access at every relevant layer:
 
-- [{{kib}} feature access](#kib-privileges)
-- [{{es}} cluster access](#es-cluster-privileges)
-- [{{es}} index access](#es-index-privileges)
+- **{{kib}} feature privileges** control which {{agent-builder}}, connector, and workflow operations the user or client can perform.
+- **{{es}} cluster and index privileges** control whether agents and tools can use inference endpoints, query data, and inspect mappings.
+- **{{kib}} space scope** controls which space-specific {{agent-builder}} resources the user or client can access.
 
-### {{kib}} privileges
+Not every operation requires every privilege. For example, a tool that queries an index requires index privileges, while `monitor_inference` is required only when an agent or tool calls the {{es}} Inference API.
 
-{{agent-builder}} access control is managed by the `agentBuilder` {{kib}} feature. Assign either `Read` or `All` based on what users need to do.
+## Privilege reference [#privilege-reference]
 
-::::{applies-switch}
+Use the following tables to identify the {{kib}} feature privileges and {{es}} privileges required for each {{agent-builder}} use case.
 
-:::{applies-item} { stack: ga 9.4+, serverless: ga }
-#### `Read`
+### {{kib}} feature privileges [#kib-privileges]
 
-Grants access to:
+In the role management UI, {{kib}} displays human-readable privilege names. Role descriptors and API keys use the corresponding application privilege identifiers. For these privileges, use `kibana-.kibana` as the application name and scope the application resource to the required space.
 
-- Use agents
-- Send chat messages
-- View tools
-- View skills {applies_to}`stack: ga 9.4+`
-- Access conversations
-
-Instead of `All`, you can pair `Read` with individual sub-features for more granular control over what users can manage:
-
-- `Manage agents`: Create, update, or delete custom agents.
-- `Manage tools`: Create, update, or delete custom tools.
-- `Manage skills` {applies_to}`stack: ga 9.4+`: Create, update, or delete custom skills.
-
-#### `All`
-
-The broadest access level. Grants everything in `Read`, plus the ability to:
-
-- Create, update, or delete custom agents
-- Create, update, or delete custom tools
-- Create, update, or delete custom skills {applies_to}`stack: ga 9.4+`
-
-Includes all management sub-features by default.
-:::
-
-:::{applies-item} { stack: ga 9.2-9.3 }
-#### `Read`
-
-Required to use agents, send chat messages, view tools, and access conversations.
-
-#### `All`
-
-The broadest access level. Grants everything in `Read`, plus the ability to create, update, or delete custom agents and tools.
-:::
-
-::::
-
-:::{note}
-If the agent uses AI connectors, also grant `Read` access to the {{connectors-feature}} feature.
-:::
+| Feature and UI privilege | Role and API key privilege | Grants |
+| --- | --- | --- |
+| **Agent Builder: Read** | `feature_agentBuilder.read` | Use agents, send chat messages, and view agents, tools, skills, and conversations. |
+| **Agent Builder: All** | `feature_agentBuilder.all` | Everything granted by **Read**, plus all {{agent-builder}} management privileges. |
+| **Agent Builder > Management: Create and edit agents** | `feature_agentBuilder.manage_agents` | Pair with **Read** to create, update, and delete custom agents without granting other management privileges. |
+| **Agent Builder > Management: Create and edit custom tools** | `feature_agentBuilder.manage_tools` | Pair with **Read** to create, update, and delete custom tools without granting other management privileges. |
+| **Agent Builder > Management: Create and edit skills** | `feature_agentBuilder.manage_skills` | Pair with **Read** to create, update, and delete custom skills without granting other management privileges. |
+| **Actions and Connectors: Read** | `feature_actions.read` | Use agents that access {{kib}} connectors. |
+| **Workflows: Read** | `feature_workflowsManagement.read` | Read workflows and workflow execution information. |
+| **Workflows > Workflows Actions: Execute** | `feature_workflowsManagement.workflow_execute` | Run workflows. Also include **Workflows: Read** when the user or client must inspect workflows. |
+| **Workflows: All** | `feature_workflowsManagement.all` | Create, update, delete, run, and read workflows and their executions. |
 
 Learn more about [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
-### {{es}} cluster privileges
+### {{es}} privileges [#es-privileges]
 
-{{agent-builder}} requires cluster-level privileges for AI-powered query generation:
+Tools execute {{es}} requests with the privileges of the current user or API key. Assign only the cluster and index privileges required by the tools the principal can access.
 
-- `monitor_inference`: Required when the agent uses an AI connector that calls the {{es}} Inference API (such as the Elastic default LLM or other AI connectors configured to use the Inference API). The built-in tools `search` and `generate_esql`, as well as [index search tools](tools/index-search-tools.md), use this API to generate queries from natural language. This privilege is not required when the agent uses other {{kib}} GenAI connectors.
+| Scope | Privilege | When to use it |
+| --- | --- | --- |
+| Cluster | `monitor_inference` | Required when an agent uses an AI connector that calls the {{es}} Inference API, including the Elastic default LLM, or when a tool uses the Inference API to generate queries from natural language. The built-in `search` and `generate_esql` tools and [index search tools](tools/index-search-tools.md) use this API. This privilege is not required for other {{kib}} GenAI connectors. |
+| Indices | `read` | Required for tools that query index data. Limit the assigned index patterns to the data the user or client needs. |
+| Indices | `view_index_metadata` | Required for tools that inspect index mappings. The built-in `search` tool and index search tools might use this capability internally. |
 
-Learn more about [cluster privileges](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html#privileges-list-cluster).
+Learn more about [cluster privileges](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html#privileges-list-cluster) and [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 
-### {{es}} index privileges
+### {{kib}} space scope [#space-scope]
 
-Tools execute queries against {{es}} indices as the current user. Required privileges depend on which indices the tools access:
+Conversations, custom agents, and custom tools are scoped to the current {{kib}} space. Built-in agents are available in all spaces. The default Elastic AI Agent is an exception {applies_to}`stack: ga 9.4+`: it is a persisted, space-aware agent that is automatically created in each space.
 
-- `read`: Required for tools that query data.
-- `view_index_metadata`: Required for tools that inspect index structure. Also required for the built-in `search` tool and [index search tools](tools/index-search-tools.md), which might use index exploration capabilities internally.
+In a role or API key descriptor, specify the space in the application privilege resource. For example, use `"resources": ["space:production"]` for the `production` space. Users and API keys cannot access resources in spaces outside their assigned resources.
 
-Learn more about [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
+When calling the {{agent-builder}} APIs or MCP server in a custom space, include `/s/<space-name>` before the API path. The default space does not use this prefix.
 
-## Grant access
+Learn more about [{{kib}} Spaces](/deploy-manage/manage-spaces.md).
 
-You can grant users access to {{agent-builder}} using these methods:
+## Configure access
 
-- [Roles](#grant-access-with-roles) to bundle privileges for users.
-- [API keys](#grant-access-with-api-keys) for programmatic access.
-- [Spaces](#working-with-spaces) to scope access to specific environments.
+After choosing privileges and space scope, assign them based on who or what needs access.
 
-### Grant access with roles
+### Roles for users [#roles-for-users]
 
-[Roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) are {{es}} security constructs that bundle together {{kib}} feature privileges and {{es}} privileges. To grant users access to {{agent-builder}}, create a role that includes the required privileges.
+Use [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) to bundle the required {{kib}} feature privileges and {{es}} privileges, then assign the roles to users. In the role management UI, choose the required space and feature privileges under **Kibana privileges**, and limit index privileges to the data the users need.
 
 :::{note}
 When configuring roles in the {{kib}} UI, {{agent-builder}} privileges are currently located under the **Analytics** section, not the {{es}} section.
 :::
 
-Example role for users who need full {{agent-builder}} access:
+### API keys for programmatic clients [#api-keys-for-clients]
 
-```json
-POST /_security/role/agent-builder-full
-{
-  "cluster": ["monitor_inference"],
-  "indices": [
-    {
-      "names": ["logs-*", "metrics-*"],
-      "privileges": ["read", "view_index_metadata"]
-    }
-  ],
-  "applications": [
-    {
-      "application": "kibana-.kibana",
-      "privileges": [
-        "feature_agentBuilder.all", <1>
-        "feature_actions.read"
-      ],
-      "resources": ["space:default"]
-    }
-  ]
-}
-```
+Use API keys for custom clients, scripts, MCP clients, and A2A clients. API key role descriptors combine the same {{kib}} application privileges, {{es}} privileges, and space scope described on this page. An API key cannot grant privileges that its owner does not have.
 
-1. For read-only access, use `feature_agentBuilder.read` instead of `feature_agentBuilder.all`. [Learn more](#kib-privileges).
-
-:::{note}
-:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
-
-For granular access, pair `feature_agentBuilder.read` with only the sub-feature privileges needed. To learn more, refer to [Kibana privileges](#kib-privileges).
-:::
-
-### Grant access with API keys
-
-When using the {{agent-builder}} APIs programmatically, authenticate with an API key that includes the required privileges.
-
-Unlike roles, which use UI-friendly feature privilege names like `feature_agentBuilder.all`, API keys use the underlying API privilege names (`read_onechat`, `manage_onechat`). This is because API keys interact directly with the {{kib}} API layer rather than through the UI.
-
-Refer to these pages for API key configuration examples:
-- [MCP server](mcp-server.md#api-key-application-privileges)
-- [{{kib}} API](kibana-api.md)
-
-Learn more about [API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
-
-### Working with spaces
-
-{{agent-builder}} respects {{kib}} spaces when enabled. Conversations, custom agents, and custom tools are scoped to the current space. Built-in agents are space-agnostic and are available in all spaces. The default Elastic AI Agent is an exception {applies_to}`stack: ga 9.4+`: it is a standard persisted agent that is space-aware and automatically created per space.
-
-When configuring roles or API keys, specify the space in the application privileges resources (for example, `"resources": ["space:production"]`). Users and API keys cannot access resources in other spaces.
-
-Learn how to [Copy your MCP server URL](tools.md#mcp-server-access).
-
-:::{important}
-When accessing {{agent-builder}} APIs or the MCP server from a custom space, include the space name in the URL path: `https://<deployment>/s/<space-name>/api/agent_builder/...`
-
-The default space uses the standard URL format without `/s/<space-name>`.
-:::
-
-Learn more about [{{kib}} Spaces](/deploy-manage/manage-spaces.md).
+Refer to [Create API keys for {{agent-builder}} APIs](api-keys.md) for complete examples for read-only clients, management clients, and unrestricted development keys. To learn more about API key behavior and management, refer to [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
