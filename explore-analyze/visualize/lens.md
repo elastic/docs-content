@@ -494,7 +494,10 @@ When creating or editing a visualization, you can customize several appearance o
 :   Define the **Alignment**.
 
 **Other**
-:   Choose the **Icon** position.
+:   Configure the icon and layout:
+    - **Icon decoration**: Add an icon to the metric chart.
+    - **Icon position**: Select **Left** or **Right**.
+    - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` **Density**: Select **Compact** or **Default** to adjust padding, spacing, and font size. Refer to [General layout settings](charts/metric-charts.md#appearance-options) for preset behavior and defaults.
 
 #### Tables
 
