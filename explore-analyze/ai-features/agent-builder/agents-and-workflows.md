@@ -58,6 +58,12 @@ To configure pre-execution workflows:
 4. Select one or more workflows to run after each user message and before the agent makes any LLM calls in response.
 5. Save the agent.
 
+:::{image} images/pre-execution-workflows.png
+:screenshot:
+:width: 900px
+:alt: Edit agent settings flyout showing the Pre-execution workflow section with a workflow selector
+:::
+
 Only administrators can configure pre-execution workflows. The Workflows feature must also be enabled in **Advanced settings**.
 
 ## Use the `ai.agent` step [use-ai-agent-workflow-step]
