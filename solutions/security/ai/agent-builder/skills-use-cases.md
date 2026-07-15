@@ -74,9 +74,9 @@ The `manage-watchlists` skill only covers watchlist changes. To also profile ent
 ## Threat hunting leads
 
 ```{applies_to}
-stack: ga 9.5+
+stack: preview 9.5+
 serverless:
-  security: ga
+  security: preview
 ```
 
 **Enable:** `entity-analytics-leads`
