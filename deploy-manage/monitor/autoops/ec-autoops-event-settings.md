@@ -27,16 +27,16 @@ Depending on the event, settings can include:
 
 :::{image} /deploy-manage/images/cloud-autoops-event-settings.png
 :screenshot:
-:alt: Screenshot showing the Event settings dialogue in AutoOps
+:alt: Screenshot showing the Event settings dialog in AutoOps
 :::
 
-## Event settings report [ec-event-settings-report]
+## Events settings report [ec-event-settings-report]
 
-The **Event settings** report provides a list of all the events for which settings have been customized.
+The **Events settings** report provides a list of all the events for which settings have been customized.
 
 :::{image} /deploy-manage/images/cloud-autoops-events-settings-report.png
 :screenshot:
-:alt: Screenshot showing the Event settings page with the Add event settings button
+:alt: Screenshot showing the Events settings page with the Add event settings button
 :::
 
 On the **Events settings** page, click **Add event settings** to add new settings, or select the edit icon to modify existing settings.

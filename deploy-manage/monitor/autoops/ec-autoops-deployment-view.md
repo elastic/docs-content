@@ -41,7 +41,7 @@ The **Event history** tab shows events in the selected deployment or cluster tha
 Let's say your cluster experiences a peak in search rate, triggering a "Too many tasks on queue" event. When your cluster comes down from that peak, your search rate relaxes and the event is no longer an issue, but it will appear in the **Event history** tab for your record.
 
 :::{note}
-A closed event does not necessarily mean that the issue has been resolved. It just means that AutoOps does not currently detect it.
+A closed event doesn't necessarily mean that the issue has been resolved. It means that AutoOps does not currently detect it.
 :::
 
 ### Resources [ec-deployment-resources]
