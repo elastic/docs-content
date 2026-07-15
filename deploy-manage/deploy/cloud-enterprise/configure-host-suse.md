@@ -29,7 +29,7 @@ Before you begin:
 
 - Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) for a list of ports that need to be open. The technical configuration depends on the underlying infrastructure.
 
-- Review the [Users and permissions prerequisites](ece-users-permissions.md) for ECE. The commands in this guide assume that you are logged in as the non-root user that will install and run ECE. We recommend using a dedicated `elastic` user account. If it does not already exist, you can create it in the next section.
+- Review the [Users and permissions prerequisites](ece-users-permissions.md) for ECE. The commands in this guide assume that you are logged in as the non-root user that will install and run ECE, referred to throughout this guide as the **ECE user**. We recommend using a dedicated `elastic` user account. If it does not already exist, you can create it in the next section.
 
 - If you use one user to prepare the host and another to install ECE, replace `$USER` with the name of the ECE user in the applicable commands throughout this guide.
 
@@ -46,27 +46,27 @@ Follow these steps to configure the user account according to the [Users and per
         sudo groupadd docker
         ```
 
-    1. (Optional) Create a dedicated user for ECE.
+    1. Add the user that will install and run ECE to both groups. Use one of the following options:
 
-        If the user you are currently logged in as is not the user that will install and run ECE, create a dedicated user. The following example creates the recommended `elastic` user:
+        * **Create a dedicated user (recommended).** If the user you are currently logged in as is not the user that will install and run ECE, create a dedicated user. The following example creates the recommended `elastic` user and adds it to both groups:
 
-        ```sh
-        sudo useradd -m -g elastic -G docker elastic
-        ```
+            ```sh
+            sudo useradd -m -g elastic -G docker elastic
+            ```
 
-        ::::{note}
-        If you create a dedicated user, we recommend granting it `sudo` privileges and then logging in or switching to that user before continuing. This allows `$USER` to automatically resolve to the user that will install and run ECE.
+            ::::{note}
+            If you create a dedicated ECE user, we recommend granting it `sudo` privileges and then logging in or switching to that user before continuing. This allows `$USER` to automatically resolve to the ECE user in the remaining commands.
 
-        Alternatively, you can continue using a different account with `sudo` privileges, and replace `$USER` with the name of the user that will install and run ECE in the remaining commands in this guide.
-        ::::
+            Alternatively, you can continue using a different account with `sudo` privileges and replace `$USER` with the name of the ECE user in commands throughout the rest of this guide.
+            ::::
 
-    1. Add the user to both groups:
+        * **Use the current user.** If your current user will be the ECE user, add it to both groups:
 
-        ```sh
-        sudo usermod -aG elastic,docker $USER
-        ```
+            ```sh
+            sudo usermod -aG elastic,docker $USER
+            ```
 
-1. Verify that the user that will run ECE has a UID and GID of at least 1000:
+1. Verify that the ECE user has a UID and GID of at least 1000:
 
     ```sh
     id $USER
@@ -167,7 +167,7 @@ In the following example, XFS is set up on a single, pre-partitioned block devic
 
 Prepare the data directories used by {{ece}} and Docker. These steps create the `/mnt/data` and `/mnt/data/docker` directories, mount an XFS file system if applicable, and apply the required ownership and permissions.
 
-1. Create the `/mnt/data` directory if it doesn't already exist:
+1. Create the `/mnt/data` directory if it doesn't already exist. It must be owned by the ECE user and the `elastic` group, and use `700` permissions:
 
     ```sh
     sudo install -o $USER -g elastic -d -m 700 /mnt/data
