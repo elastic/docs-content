@@ -57,8 +57,8 @@ If you collected data using one of the {{kib}} [ingest options](../../manage-dat
 
 6. Click **Show advanced settings** to:
 
-    * Display hidden and system indices.
-    * Specify your own {{data-source}} name. For example, enter your {{es}} index alias name.
+    * Allow hidden and system indices.
+    * Set a **Custom data view ID**. By default, {{kib}} assigns a randomly generated ID to the {{data-source}} saved object. Setting a custom, human-readable ID (for example, `logs-prod`) makes the {{data-source}} easier to recreate with the same ID across spaces, deployments, or environments, so that dashboards and visualizations that reference it keep working. Refer to [Manage dashboards as code](../dashboards/manage-dashboards-as-code.md) for how stable IDs keep dashboards portable.
 
 7. $$$reload-fields$$$ Click **Save {{data-source}} to {{kib}}**.
 
@@ -206,7 +206,7 @@ Runtime fields can impact {{kib}} performance. When you run a query, {{es}} uses
 ::::
 
 
-For detailed information on how to use runtime fields with {{es}}, refer to [Runtime fields](../../manage-data/data-store/mapping/runtime-fields.md).
+For detailed information on how to use runtime fields with {{es}}, refer to [Runtime fields](../../manage-data/data-store/mapping/runtime-fields.md). Runtime fields are different from unmapped fields, which can be present in documents but not defined in the index mapping. To query unmapped fields in {{esql}}, refer to [Unmapped fields](elasticsearch://reference/query-languages/esql/esql-unmapped-fields.md).
 
 
 #### Add runtime fields [create-runtime-fields]
