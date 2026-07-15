@@ -333,10 +333,6 @@ Security tools provide specialized capabilities for security monitoring, threat 
 `security.alerts` {applies_to}`stack: ga 9.3+`
 :   Searches and analyzes [security alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md) using full-text or structured queries for finding, counting, aggregating, or summarizing alerts.
 
-$$$agent-builder-security-entity-risk-score-tool$$$
-`security.entity_risk_score`
-:   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users, hosts, and services) to identify high-risk entities in the environment. This tool is only available when the risk score index exists in the current space. {applies_to}`stack: ga 9.4+`
-
 $$$agent-builder-security-attack-discovery-search-tool$$$
 `security.attack_discovery_search`
 :   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs. Requires attack discovery to have been run at least once. {applies_to}`stack: ga 9.4+`
@@ -347,19 +343,58 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 `security.create_detection_rule` {applies_to}`stack: ga 9.4+`
 :   Creates a security detection [rule](/solutions/security/detect-and-alert/rule-types.md) from a natural language description, including ES|QL query generation, metadata, tags, and scheduling. Currently supports [ES|QL rules](/solutions/security/detect-and-alert/esql.md) only. Form changes suggested in chat must be applied manually.
 
+`security.run_rule_preview` {applies_to}`stack: preview 9.5`
+:   Runs a security detection rule preview over a time range without saving the rule, then stores the result as a rule preview attachment so you can inspect the alerts the rule would have generated.
+
+    **Prerequisites:** The `rulePreviewAttachmentEnabled` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
+
+### Entity Analytics tools
+
+[Entity Analytics](/solutions/security/advanced-entity-analytics.md) tools work with security entities and their risk scores, asset criticality, watchlists, and threat hunting leads.
+
+$$$agent-builder-security-entity-risk-score-tool$$$
+`security.entity_risk_score`
+:   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users, hosts, and services) to identify high-risk entities in the environment. This tool is only available when the risk score index exists in the current space. {applies_to}`stack: ga 9.4+`
+
 `security.get_entity` {applies_to}`stack: ga 9.4+`
 :   Retrieves an entity profile (user, host, service, or generic) from the Entity store by entity ID (EUID), including any alerts that contributed to its risk score. Requires the entity risk engine and entity store to be enabled.
 
 `security.search_entities` {applies_to}`stack: ga 9.4+`
 :   Searches the Entity store for security entities (host, user, service, or generic), with filtering by risk score, asset criticality, entity attributes, and lifecycle timestamps. Use when the entity ID (EUID) is not known, use `security.get_entity` when it is.
 
-`security.set_asset_criticality` {applies_to}`stack: preview 9.5`
-:   Sets or removes the [asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) level for a security entity, which influences its risk scoring.
+`security.set_asset_criticality` {applies_to}`stack: ga 9.5+`
+:   Sets or removes the [asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) level for a security entity and recalculates the entity's risk score.
 
-`security.run_rule_preview` {applies_to}`stack: preview 9.5`
-:   Runs a security detection rule preview over a time range without saving the rule, then stores the result as a rule preview attachment so you can inspect the alerts the rule would have generated.
+**Watchlist tools** manage [entity watchlists](/solutions/security/advanced-entity-analytics/watchlists.md). Mutating actions require user confirmation before running. A [Platinum or higher license](https://www.elastic.co/subscriptions) is required, and adding or removing entities also requires the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) to be enabled and populated.
 
-    **Prerequisites:** The `rulePreviewAttachmentEnabled` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
+`security.list_watchlists` {applies_to}`stack: ga 9.5+`
+:   Lists the entity watchlists in the current space, including name, description, risk modifier, and member sources.
+
+`security.create_watchlist` {applies_to}`stack: ga 9.5+`
+:   Creates a new watchlist in the current space.
+
+`security.update_watchlist` {applies_to}`stack: ga 9.5+`
+:   Updates an existing watchlist, such as renaming it or changing its description or risk modifier.
+
+`security.delete_watchlist` {applies_to}`stack: ga 9.5+`
+:   Permanently deletes a watchlist. This action cannot be undone.
+
+`security.add_entities_to_watchlist` {applies_to}`stack: ga 9.5+`
+:   Adds one or more entities to a watchlist by entity ID (EUID).
+
+`security.remove_entities_from_watchlist` {applies_to}`stack: ga 9.5+`
+:   Removes one or more entities from a watchlist by entity ID (EUID).
+
+**Lead generation tools** surface AI-generated [threat hunting leads](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md#entity-threat-hunting-leads) for security entities. An [Enterprise license](https://www.elastic.co/subscriptions) is required.
+
+`security.list_leads` {applies_to}`stack: preview 9.5`
+:   Lists AI-generated threat hunting leads for security entities, sorted by priority.
+
+`security.generate_leads` {applies_to}`stack: preview 9.5`
+:   Generates new threat hunting leads. The job runs asynchronously and returns immediately.
+
+`security.dismiss_lead` {applies_to}`stack: preview 9.5`
+:   Dismisses an AI-generated threat hunting lead by ID, marking it as triaged.
 
 ### SIEM readiness tools
 
@@ -376,51 +411,6 @@ SIEM readiness tools assess [SIEM readiness](/solutions/security/get-started/sie
 
 `security.siem_readiness.get_retention` {applies_to}`stack: preview 9.5`
 :   Retrieves SIEM data retention health, including data streams and indices with retention configuration, retention days, and compliance status.
-
-### Watchlist tools
-```{applies_to}
-stack: preview 9.5
-```
-
-Watchlist tools manage [Entity Analytics](/solutions/security/advanced-entity-analytics.md) watchlists. Mutating actions require user confirmation before running.
-
-**Prerequisites:** The `entityAnalyticsWatchlistEnabled` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled, and a [Platinum or higher license](https://www.elastic.co/subscriptions) is required. Adding and removing entities also requires Entity Store V2 (`entityAnalyticsEntityStoreV2`).
-
-`security.list_watchlists` {applies_to}`stack: preview 9.5`
-:   Lists the Entity Analytics watchlists in the current space, including name, description, risk modifier, and member sources.
-
-`security.create_watchlist` {applies_to}`stack: preview 9.5`
-:   Creates a new Entity Analytics watchlist in the current space.
-
-`security.update_watchlist` {applies_to}`stack: preview 9.5`
-:   Updates an existing watchlist, such as renaming it or changing its description or risk modifier.
-
-`security.delete_watchlist` {applies_to}`stack: preview 9.5`
-:   Permanently deletes an Entity Analytics watchlist. This action cannot be undone.
-
-`security.add_entities_to_watchlist` {applies_to}`stack: preview 9.5`
-:   Adds one or more entities to a watchlist by entity ID (EUID).
-
-`security.remove_entities_from_watchlist` {applies_to}`stack: preview 9.5`
-:   Removes one or more entities from a watchlist by entity ID (EUID).
-
-### Lead generation tools
-```{applies_to}
-stack: preview 9.5
-```
-
-Lead generation tools surface AI-generated investigation leads for security entities.
-
-**Prerequisites:** The `leadGenerationEnabled` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled, and an [Enterprise license](https://www.elastic.co/subscriptions) is required.
-
-`security.list_leads` {applies_to}`stack: preview 9.5`
-:   Lists AI-generated investigation leads for security entities, sorted by priority.
-
-`security.generate_leads` {applies_to}`stack: preview 9.5`
-:   Triggers AI-powered investigation lead generation. The job runs asynchronously and returns immediately.
-
-`security.dismiss_lead` {applies_to}`stack: preview 9.5`
-:   Dismisses an AI-generated investigation lead by ID, marking it as triaged.
 
 ### PCI compliance tools
 ```{applies_to}
@@ -445,7 +435,7 @@ PCI compliance tools support PCI DSS v4.0.1 compliance assessments.
 Some [built-in skills](../builtin-skills-reference.md) include inline tools that are only available while that skill is active. Because they are scoped to a skill rather than assignable on their own, they are not listed among the namespaced tools in this reference. For example:
 
 - The [`dashboard-management`](../builtin-skills-reference.md#agent-builder-dashboard-management-skill) skill includes an inline tool for generating and updating dashboards.
-- The `rule-management` skill includes the `platform.alerting.manage_rule` tool for composing and modifying alerting rules.
+- The `rule-management` skill includes the `platform.alerting.manage_rule` and `platform.alerting.manage_action_policy` tools for composing and modifying alerting rules and their action policies.
 - The `alert-triage` skill includes the `security.alert-triage` tool for prioritizing the alert queue.
 
 :::{tip}
