@@ -67,7 +67,7 @@ Select a client to open its details panel. The panel shows the connection detail
 * **MCP server URL**: The redirect URIs configured for this client. These are the callback URLs used during the OAuth consent flow.
 * If a client secret configured, an indicator that a client secret is required for this client.
 
-<!-- Do NOT hardcode the MCP server URL / AS URL in examples — format is changing per cp-iam #2957. -->
+<!-- Do NOT hardcode the MCP server URL / AS URL in examples — format is changing per cp-iam-team #2957. -->
 
 To create or edit a client, click **Manage MCP client** to open the project's [MCP clients page](oauth-clients.md) in {{kib}}.
 

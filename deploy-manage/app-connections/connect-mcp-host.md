@@ -20,8 +20,6 @@ This page covers two common MCP hosts:
 
 Other OAuth 2.1 hosts follow the same general pattern, so consult your host's documentation for the specific configuration format.
 
-<!-- TODO: confirm Cursor is supported in tech preview — cp-iam-team#2974 still open as of 2026-07-03. -->
-
 ## Before you begin [connect-mcp-host-before-you-begin]
 
 Confirm the following before you configure your MCP host:
@@ -38,7 +36,7 @@ Choose the instructions for your host.
 
 **Option 1: Native HTTP transport (recommended)**
 
-The Claude Code CLI supports OAuth natively — no additional adapter is required. When you created the client, the redirect URI `http://localhost:3000/callback` should be in your redirect URI list.
+The Claude Code CLI supports OAuth natively — no additional adapter is required. When you created the client, the redirect URI `http://localhost/callback` should be in your redirect URI list.
 
 Run the following command, replacing `{CLIENT_ID}` and `{MCP_SERVER_URL}` with the values from your client's details page in {{kib}}:
 
@@ -56,7 +54,7 @@ claude mcp add --transport http --client-id {CLIENT_ID} --client-secret kibana-m
 
 **Option 2: mcp-remote adapter**
 
-Use this option if your version of Claude Code doesn't support native HTTP OAuth transport. When you created the client, the redirect URI `http://localhost:3000/oauth/callback` should be in your redirect URI list.
+Use this option if your version of Claude Code doesn't support native HTTP OAuth transport. When you created the client, the redirect URI `http://localhost/oauth/callback` should be in your redirect URI list.
 
 ```bash
 claude mcp add --transport stdio kibana-mcp -- \
@@ -76,7 +74,7 @@ The server is now configured. Start a Claude Code session. The OAuth consent flo
 
 ### Claude Desktop
 
-Claude Desktop uses the [mcp-remote](https://www.npmjs.com/package/mcp-remote) adapter to handle OAuth connections. When you created the client, the redirect URI `http://localhost:3000/oauth/callback` should be in your client's redirect URI list.
+Claude Desktop uses the [mcp-remote](https://www.npmjs.com/package/mcp-remote) adapter to handle OAuth connections. When you created the client, the redirect URI `http://localhost/oauth/callback` should be in your client's redirect URI list.
 
 To configure Claude Desktop:
 
@@ -111,7 +109,7 @@ To configure Claude Desktop:
 
 Most hosts that support OAuth 2.1 accept a similar configuration. Provide the `{MCP_SERVER_URL}` and `{CLIENT_ID}` in the format your host requires.
 
-## Step 2: Authorize the connection
+## Step 2: Authorize the connection [authorize-connection]
 
 The first time your MCP host tries to use the configured server, it opens a browser window and starts the OAuth consent flow.
 
@@ -122,6 +120,11 @@ The first time your MCP host tries to use the configured server, it opens a brow
 A new app connection is created in {{kib}}, scoped to your account and the project the MCP client was registered for. The connection name is auto-generated in the format `<client-name>#<word-pair>`.
 
 If you click **Deny**, no connection is created. The host retries the flow the next time you use a tool, or you can restart the host to trigger a fresh attempt.
+
+:::: {admonition} Application permissions
+:::{include} _snippets/app-connection-permissions.md
+:::
+::::
 
 ## Optional: Verify the connection
 

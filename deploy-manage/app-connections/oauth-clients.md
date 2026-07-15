@@ -17,8 +17,7 @@ The [](/explore-analyze/ai-features/agent-builder/mcp-server.md) supports OAuth 
 OAuth is best for interactive, agentic use cases: instead of configuring a static, long-lived API key, a user connects an MCP host such as Claude Desktop and consents in the browser. The MCP client then acts with that user's permissions, using short-lived tokens that the user, a project administrator, or an organization owner can revoke at any time.
 
 :::{note}
-<!-- TODO: confirm tool scope for tech preview — PRD said "read-only, ES|QL-based tools only", but QA testing (June 23 2026) shows 22 tools including write operations (delete_stream, create_partition, update_stream, cases, etc.). Remove or correct this sentence once confirmed with Jake Landis / Elena Shostak. -->
-During technical preview, OAuth for the MCP server is available on {{serverless-short}} projects only. Clients are registered within a specific {{serverless-short}} project, so each client is scoped to one project.
+OAuth for the MCP server is available on {{serverless-short}} projects only. Clients are registered within a specific {{serverless-short}} project, so each client is scoped to one project.
 :::
 
 ## OAuth or API keys?
@@ -34,7 +33,7 @@ Understanding these terms makes the setup and management pages easier to follow.
 | Term | Definition |
 | --- | --- |
 | MCP host | The application a user runs that contains MCP clients, such as Claude Desktop or Cursor. Users connect hosts; hosts use clients. |
-| MCP client | The OAuth client registration that holds the credentials (a client ID, and a client secret for confidential clients) your MCP host uses to authenticate to the MCP server. You create one in {{kib}} before connecting a host. |
+| OAuth client | The OAuth client registration that holds the credentials (a client ID, and a client secret for confidential clients) your MCP host uses to authenticate to the MCP server. You create one in {{kib}} before connecting a host. |
 | MCP server | The interface that exposes {{agent-builder}} tools to MCP hosts. The MCP server is the only resource the OAuth tokens grant access to. This is separate from the [](/explore-analyze/ai-features/agent-builder/tools/mcp-tools.md), which let your agents call external MCP servers. |
 | App connection | The record created when a user consents, linking that user, the MCP client, and the {{serverless-short}} project. A connection is the unit of access and revocation. If two people use the same client ID, each consent creates a separate connection. |
 
@@ -42,9 +41,9 @@ Understanding these terms makes the setup and management pages easier to follow.
 
 The OAuth flow follows these steps:
 
-1. A user [creates an MCP client](create-oauth-client.md) in {{kib}}, scoped to one {{serverless-short}} project, and receives a client ID and an MCP server URL. These values can be used to [configure MCP hosts](connect-mcp-host.md).
+1. A user [creates an OAuth client](create-oauth-client.md) in {{kib}}, scoped to one {{serverless-short}} project, and receives a client ID and an MCP server URL. These values can be used to [configure MCP hosts](connect-mcp-host.md).
 2. The first time the host needs access, it opens a browser for the user to authenticate and consent. Authentication is always required for consent, even if the user already has an active {{ecloud}} session.
-3. On consent, an app connection is created and the client receives tokens. The MCP client presents these to the MCP server, which exchanges them internally to access {{es}} with the user's current permissions.
+3. On consent, an app connection is created and the client receives tokens. The OAuth client presents these to the MCP server, which exchanges them internally to access {{es}} with the user's current permissions.
 4. The user, a project administrator, or an organization owner can revoke the connection or the whole client at any time, at the [project](revoke-oauth-client.md) or [organization](manage-app-connections.md) level.
 
 OAuth tokens are accepted only by the {{agent-builder}} MCP server. They don't grant direct access to {{kib}} or {{es}} APIs.
@@ -59,9 +58,8 @@ Access tokens are short-lived and refreshed automatically in the background, so 
 
 ### Permissions
 
-<!-- TODO: confirm tool scope — same as above. If write tools are available in tech preview, remove "read-only, {{esql}}-based" qualifier and update the "can't modify data" statement. -->
-
-A connected client inherits the consenting user's permissions in the project. When a user's permissions change, the change applies on the next token refresh; changes to a custom role apply immediately.
+:::{include} _snippets/app-connection-permissions.md
+:::
 
 ## Set up and manage OAuth for MCP clients [oauth-clients-tasks]
 

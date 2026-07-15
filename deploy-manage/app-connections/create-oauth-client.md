@@ -53,10 +53,10 @@ Selecting a logo is cosmetic, and does not pre-configure any settings.
 ::::{step} Set the redirect URI
 The redirect URI tells the authorization server where to return the user after they grant consent. Select the redirect URI type:
 
-- **Local** — For applications running on your local machine. The field is pre-populated with `http://localhost:3000/callback`. Replace or supplement this value to match your host's expected path. The authorization server accepts any localhost port, but the path must match exactly. Common values:
-  - Claude Desktop (mcp-remote): `http://localhost:3000/oauth/callback`
-  - Claude Code CLI (native HTTP): `http://localhost:3000/callback`
-- **Remote** — For hosted or cloud-based applications. Enter a single `https://` URI. Plain HTTP is not accepted.
+- **Local** — For applications running on your local machine. The redirect URIs are pre-populated with `http://localhost:3000/callback` and `http://localhost/oauth/callback`. Replace or supplement these values to match your Agent's expected callback URL. The authorization server accepts any localhost port, but the path must match exactly. Common values:
+  - Claude Desktop (mcp-remote): `http://localhost/oauth/callback`
+  - Claude Code CLI (native HTTP): `http://localhost/callback`
+- **Remote** — For hosted or cloud-based applications. Enter a single `https://` URL. Plain HTTP is not accepted.
 
 For local clients that need more than one redirect URI, click **Add local URL** to add additional URLs.
 ::::
@@ -68,10 +68,10 @@ The client secret is displayed after you create the client. The secret is only d
 ::::
 
 ::::{step} Save the client
-Click **Create client**. The **Copy server details for [client name]** dialog displays the values your MCP host needs to authenticate:
+Click **Create client**. The **Copy server details for [client name]** dialog displays the values your MCP host (AI agent) needs to authenticate:
 
 - **Client ID**: The identifier for this client.
-- **MCP server URL**: The endpoint your MCP host uses to reach this project's {{agent-builder}} tools.
+- **MCP server URL**: The endpoint your MCP host (AI agent) uses to reach this project's {{agent-builder}} tools.
 - **Client secret**: Appears for confidential clients only. This value is displayed only once and can't be retrieved later, so copy or download it before you close the dialog.
 
 You'll use these values to [connect an MCP host](connect-mcp-host.md).
@@ -81,17 +81,15 @@ The client ID and MCP server URL can be retrieved at any time from the **MCP cli
 
 :::::
 
-<!-- 
 % todo: endpoint link
 :::{note}
 
-MCP clients can also be created through the {{kib}} API. To create a client through the API, you must use an {{ecloud}} API key with [Cloud, {{es}}, and {{kib}} API access](/deploy-manage/api-keys/elastic-cloud-api-keys.md#project-access). Creating a client with a Serverless project API key is not supported. 
+MCP clients can also be created through the {{kib}} API. To create a client through the API, you must use an {{ecloud}} API key with [Cloud, {{es}}, and {{kib}} API access](/deploy-manage/api-keys/elastic-cloud-api-keys.md#project-access). Creating a client with an API key created directly in {{es}} is not supported. 
 
 Clients created through the API are not visible in the Agent Builder client list in {{kib}}, because they are not owned by a specific user. They appear only in the organization-level [Application connections](manage-app-connections.md) view in the {{ecloud}} Console.
 
 % source: https://elastic.slack.com/archives/C0AH1CA7S3Y/p1780340150585789
 :::
--->
 
 ## Next steps
 

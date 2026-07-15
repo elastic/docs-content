@@ -147,6 +147,12 @@ POST /_security/role/agent-builder-full
 For granular access, pair `feature_agentBuilder.read` with only the sub-feature privileges needed. To learn more, refer to [Kibana privileges](#kib-privileges).
 :::
 
+:::{admonition} Permissions for MCP clients
+:applies_to: {"serverless": "preview"}
+
+Roles also determine what an MCP client can do when it connects to the {{agent-builder}} MCP server through OAuth. The MCP client inherits the permissions of the user who authorizes the connection. To learn more, refer to [OAuth for MCP clients](/deploy-manage/app-connections/oauth-clients.md).
+:::
+
 ### Grant access with API keys
 
 When using the {{agent-builder}} APIs programmatically, authenticate with an API key that includes the required privileges.

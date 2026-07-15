@@ -62,7 +62,7 @@ The following table compares the two paths.
 | Identity | The key's snapshotted permissions | The consenting user; permissions are the user's live permissions in the project |
 | Credential lifetime | Long-lived until the key expires or is revoked | Short-lived tokens, refreshed automatically |
 | Setup | Generate a key and add it to the host configuration | Register an MCP client, then consent in the browser |
-| {{agent-builder}} tools through MCP | Full tool catalog, including [Elastic Workflows](/explore-analyze/workflows.md) | Read-only, {{esql}}-based tools |
+| {{agent-builder}} tools through MCP | Full tool catalog, including [Elastic Workflows](/explore-analyze/workflows.md) | Full tool catalog, limited by the [authorizing user's](/deploy-manage/app-connections/connect-mcp-host.md#authorize-connection) permissions |
 
 ## Related pages
 
