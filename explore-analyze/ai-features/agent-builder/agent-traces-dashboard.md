@@ -42,6 +42,13 @@ The dashboard groups its panels into four areas:
 - **Agent execution**: How often each agent ran and how long it took, broken down by agent.
 - **Tool calls and errors**: How often tools were called, their success and error rates, average tool duration, and the most-used tools.
 
+When trace data is flowing, the dashboard looks like this:
+
+:::{image} images/agent-builder-overview-dashboard.png
+:screenshot:
+:alt: The Agent Builder Overview dashboard showing the Token Usage and Cost section with total input and output tokens, LLM request count, and token usage over time by model
+:::
+
 <!-- Notes (verified vs Kibana main; see reference_ab_overview_dashboard_fields memory):
      - On-screen section names: "Token Usage & Cost", "Conversation Volume & Latency", "Agent Execution", "Tool Call Frequency & Errors" (last one collapsed by default; the UI prefixes each with an emoji).
      - Precision (from fact-check): tokens over time are broken down by model; LLM request counts are broken down by model and by provider. The tool section has an overall average duration KPI and a Top 15 by call count, but no per-tool "slowest tools" ranking.
@@ -63,7 +70,7 @@ Before you install the dashboard:
 
 The overview dashboard is not installed automatically. Install it once per {{kib}} space.
 
-1. Go to **Management > Gen AI Settings**.
+1. Go to **Management > GenAI Settings**.
 2. In the **Agent Builder Traces** section, confirm that **Collect conversation traces** is on and saved.
 3. Select **Install Dashboard**.
 
