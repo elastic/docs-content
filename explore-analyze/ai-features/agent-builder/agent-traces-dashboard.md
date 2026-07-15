@@ -135,7 +135,7 @@ These fields carry the details the dashboard aggregates. Generative AI attribute
 | `attributes.gen_ai.provider.name` | Model provider |
 | `attributes.gen_ai.agent.id` | Agent identifier |
 | `attributes.elastic.inference.span.kind` | On `invoke_agent` spans, separates conversation rounds (`CHAIN`) from agent executions (`AGENT`) |
-| `name` | Tool name, on `execute_tool` spans (root field, no prefix) |
+| `name` | Span name. On `execute_tool` spans it is `execute_tool <tool-id>`, for example `execute_tool platform.core.list_indices`. For the bare tool id, use `attributes.gen_ai.tool.name` |
 | `duration` | Span duration in nanoseconds (root field). Divide by 1,000,000,000 for seconds |
 | `status.code` | Span status, for example `Error` (root field) |
 | `@timestamp` | When the span started |
