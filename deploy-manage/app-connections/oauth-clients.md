@@ -35,7 +35,7 @@ Understanding these terms makes the setup and management pages easier to follow.
 | MCP host | The application a user runs that contains MCP clients, such as Claude Desktop or Cursor. Users connect hosts; hosts use clients. |
 | OAuth client | The OAuth client registration that holds the credentials (a client ID, and a client secret for confidential clients) your MCP host uses to authenticate to the MCP server. You create one in {{kib}} before connecting a host. |
 | MCP server | The interface that exposes {{agent-builder}} tools to MCP hosts. The MCP server is the only resource the OAuth tokens grant access to. This is separate from the [](/explore-analyze/ai-features/agent-builder/tools/mcp-tools.md), which let your agents call external MCP servers. |
-| App connection | The record created when a user consents, linking that user, the MCP client, and the {{serverless-short}} project. A connection is the unit of access and revocation. If two people use the same client ID, each consent creates a separate connection. |
+| App connection | The record created when a user consents, linking that user, the MCP client, and the {{serverless-short}} project. A connection is established on top of an OAuth client, and is the unit of access and revocation. If two people use the same client ID, each consent creates a separate connection. |
 
 ## How it works
 
