@@ -92,6 +92,9 @@ Access is granted at the index level. Any user who can read these data streams c
 For the full privilege model, including {{kib}} feature and cluster privileges, refer to [Permissions and access control](permissions.md#read-trace-data).
 
 ## Export traces to a remote OTLP endpoint
+```{applies_to}
+stack: ga 9.5+
+```
 
 By default, {{agent-builder}} exports traces to the local data streams in your {{es}}. You can also forward traces to one or more remote OpenTelemetry Protocol (OTLP) endpoints, such as a dedicated observability cluster.
 
@@ -108,14 +111,13 @@ xpack.agentBuilder.tracing:
 Remote export is additive. Traces still go to the local `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*` data streams, and a copy is sent to each configured endpoint. The [trace privacy settings](#trace-privacy-settings) apply to every destination, so content that is excluded locally is also excluded from remote export.
 
 :::{note}
-These are `kibana.yml` settings, so remote export is available on deployments where you can edit the {{kib}} configuration.
+Remote export is set in `kibana.yml`, so it is available only on deployments where you can edit the {{kib}} configuration, such as self-managed clusters. It is not available on serverless projects, which do not expose `kibana.yml`.
 :::
-
-<!-- Additive local+remote behavior confirmed from kibana config.ts + register_tracing.ts. Confirm whether serverless permits these kibana.yml settings. -->
 
 ## Build dashboards on trace data
 
-When trace collection is on, {{agent-builder}} provides a prebuilt overview dashboard for agent activity and token usage. You install or reinstall it per space from the **Agent Builder Traces** settings section. For what each panel shows and the full span and attribute reference, refer to [Agent Builder traces overview dashboard](TODO).
+When trace collection is on, {{agent-builder}} provides a prebuilt overview dashboard for agent activity and token usage. You install or reinstall it per space from the **Agent Builder Traces** settings section. For what each panel shows and the full span and attribute reference, refer to Agent Builder traces overview dashboard.
+% TODO add link: [Agent Builder traces overview dashboard](TODO).
 
 Because traces are stored in regular data streams, you can also build your own visualizations with [Dashboards](/explore-analyze/dashboards.md) and [Lens](/explore-analyze/visualize/lens.md), or query the data with [ES|QL](elasticsearch://reference/query-languages/esql.md). To explore traces in natural language, use the [built-in traces skill](builtin-skills-reference.md).
 
@@ -129,5 +131,5 @@ In [Agent Chat](chat.md), you can open the trace waterfall for a single conversa
 - [](monitor-usage.md)
 - [](chat.md)
 - [](builtin-skills-reference.md)
-- [Agent Builder traces overview dashboard](TODO)
-- [Create alerts on Agent Builder trace data](TODO)
+% [Agent Builder traces overview dashboard](TODO)
+% [Create alerts on Agent Builder trace data](TODO)
