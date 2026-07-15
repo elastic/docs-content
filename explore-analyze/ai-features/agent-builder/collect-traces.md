@@ -41,8 +41,6 @@ Spans follow OpenTelemetry semantic conventions and carry generative AI attribut
 
 By default, traces record structural metadata only. Conversation content such as prompts and responses is excluded unless an administrator opts in. For details, refer to [Trace privacy settings](#trace-privacy-settings).
 
-<!-- Detailed span and field names are deferred to the dashboards page (#7170). Exact span-name strings are intentionally not asserted here; they were not confirmed from primary source. -->
-
 ## Enable and configure trace collection
 
 Trace collection is on by default. To manage it, go to **Management > GenAI Settings** and open the **Agent Builder Traces** section.
@@ -82,8 +80,6 @@ Access is granted at the index level. Any user who can read these data streams c
 
 For the full privilege model, including {{kib}} feature and cluster privileges, refer to [Permissions and access control](permissions.md#read-trace-data).
 
-<!-- RBAC on the local trace index is still settling (search-team#14100). Keep this hedged until the decision lands. -->
-
 ## Export traces to a remote OTLP endpoint
 
 By default, {{agent-builder}} exports traces to the local data streams in your {{es}}. You can also forward traces to one or more remote OpenTelemetry Protocol (OTLP) endpoints, such as a dedicated observability cluster.
@@ -108,11 +104,9 @@ These are `kibana.yml` settings, so remote export is available on deployments wh
 
 ## Build dashboards on trace data
 
-When trace collection is on, {{agent-builder}} provides a prebuilt overview dashboard for agent activity and token usage. You install or reinstall it per space from the **Agent Builder Traces** settings section.
+When trace collection is on, {{agent-builder}} provides a prebuilt overview dashboard for agent activity and token usage. You install or reinstall it per space from the **Agent Builder Traces** settings section. For what each panel shows and the full span and attribute reference, refer to [Agent Builder traces overview dashboard](TODO).
 
-Because traces are stored in regular data streams, you can also build your own visualizations with [Dashboards](/explore-analyze/dashboards.md) and [Lens](/explore-analyze/visualize/lens.md), or query the data with [ES|QL](elasticsearch://reference/query-languages/esql.md). To explore traces in natural language, use the built-in traces skill described in the [built-in skills reference](builtin-skills-reference.md).
-
-<!-- Overview dashboard is owned by #7170; link its page once published. Manual per-space install confirmed (kibana#276643); no auto-install and no known-issue note needed. Tighten the skills link to the traces-skill anchor once PR #7255 merges. -->
+Because traces are stored in regular data streams, you can also build your own visualizations with [Dashboards](/explore-analyze/dashboards.md) and [Lens](/explore-analyze/visualize/lens.md), or query the data with [ES|QL](elasticsearch://reference/query-languages/esql.md). To explore traces in natural language, use the [built-in traces skill](builtin-skills-reference.md).
 
 ## View traces for a conversation round
 
@@ -124,5 +118,5 @@ In [Agent Chat](chat.md), you can open the trace waterfall for a single conversa
 - [](monitor-usage.md)
 - [](chat.md)
 - [](builtin-skills-reference.md)
-
-<!-- Add the dashboards page (#7170) and alerting page (#7173) here once published. -->
+- [Agent Builder traces overview dashboard](TODO)
+- [Create alerts on Agent Builder trace data](TODO)
