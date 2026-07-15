@@ -17,7 +17,7 @@ products:
 :::{note}
 :applies_to: stack: preview 9.4+, serverless: preview
 
-The plugins library is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}}.
+The plugins library is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
 Plugins are installable packages that bundle agent capabilities such as skills, and are compatible with the [Claude agent plugin specification](https://docs.claude.com/en/docs/claude-code/plugins). Use a plugin to add a set of related capabilities to an agent in a single install.

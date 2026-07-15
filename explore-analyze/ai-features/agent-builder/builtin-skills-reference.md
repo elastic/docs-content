@@ -54,7 +54,7 @@ $$$agent-builder-workflow-authoring-skill$$$ `workflow-authoring` {applies_to}`s
 
     Edit: `platform.workflows.workflow_set_yaml`, `platform.workflows.workflow_insert_step`, `platform.workflows.workflow_modify_step`, `platform.workflows.workflow_modify_step_property`, `platform.workflows.workflow_modify_property`, `platform.workflows.workflow_delete_step`
 
-    **Prerequisites:** [Elastic Workflows](/explore-analyze/workflows.md) enabled in the deployment, with the privileges required to create and run workflows. The `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) must be turned on for the skill to appear.
+    **Prerequisites:** [Elastic Workflows](/explore-analyze/workflows.md) enabled in the deployment, with the privileges required to create and run workflows. The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear.
 
     :::{note}
     Without this skill, the agent can still check the status of a workflow execution and resume a paused workflow that is waiting for human input, using the [`platform.core.get_workflow_execution_status`](tools/builtin-tools-reference.md) and [`platform.core.resume_workflow_execution`](tools/builtin-tools-reference.md) tools. To trigger a specific workflow from a conversation, configure a [workflow tool](tools/workflow-tools.md) and assign it to the agent.

@@ -260,7 +260,7 @@ The **Customize** accordion in the left sidebar provides agent-scoped configurat
 :   Lists the plugins assigned to the current agent. Each plugin bundles a set of related skills that install together. To assign a plugin, click **Add plugins**. To view and manage all plugins, click **Manage all plugins**. 
 
 :::{note}
-The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}}.
+The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
 **Tools**
@@ -289,14 +289,14 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
 :   View and install plugins across the deployment. Install a plugin from a URL or by uploading a ZIP file. Each plugin bundles related skills that you can assign to agents.
 
 :::{note}
-The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}}.
+The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
 **Connectors** {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
 :   View and manage the agent builder connectors library, which gives agents access to external data sources and systems. 
 
 :::{note}
-The **Connectors** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}}.
+The **Connectors** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
 **Tools**
