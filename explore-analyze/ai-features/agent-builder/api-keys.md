@@ -32,6 +32,7 @@ Before creating an API key:
 - Identify the {{kib}} [space](/deploy-manage/manage-spaces.md) that the client will access. The examples use the default space.
 - Identify the index patterns that agents and tools need to query. Replace `customer-*` in the examples with your own patterns.
 - Determine whether agents use {{es}} inference endpoints, {{kib}} connectors, or workflows. These features require additional privileges.
+- Refer to the [privilege reference](permissions.md#privilege-reference) for the exact privilege names to use in a role descriptor.
 - If you're using `curl`, set the {{es}} URL, {{kib}} URL, and username:
 
   ```bash
@@ -43,8 +44,6 @@ Before creating an API key:
   1. Use `ELASTICSEARCH_URL` to create API keys with the {{es}} `/_security/api_key` API. To locate it, refer to [Find your {{es}} endpoint](/solutions/elasticsearch-solution-project/search-connection-details.md).
   2. Use `KIBANA_URL` to call the {{agent-builder}} APIs under `/api/agent_builder`.
   3. `ELASTIC_USERNAME` is the username of the user creating the key. The `curl` examples prompt you for this user's password.
-
-Refer to the [privilege reference](permissions.md#privilege-reference) for the exact privilege names to use in a role descriptor.
 
 ## Create a read-only client key
 
