@@ -385,6 +385,11 @@ serverless: preview
 
 When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-languages/esql/commands/stats-by.md) clause with a single grouping field, **Discover** displays the results as expandable groups instead of a flat table. Each row represents one unique value of the grouping field, and you can expand it to inspect the underlying documents without leaving the query. The results count above the table reports the number of groups instead of the number of documents.
 
+:::{note}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+When searching large datasets, you can get faster, estimated results by using {icon}`bolt` **Fast mode**. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
+:::
+
 :::{image} /explore-analyze/images/discover-esql-cascade-overview.png
 :alt: Grouped results layout in Discover, with one row expanded to show underlying documents
 :screenshot:
