@@ -20,7 +20,7 @@ When a data stream's failure store is enabled, these failures are instead captur
 Note that a failure is attached to a single data stream, if a reroute processor changes the target data stream of an indexing request then subsequent failures will also be redirected to the new target's failure store if enabled.
 
 :::{important}
-Failure stores do not capture failures caused by backpressure or document version conflicts. These failures are always returned as-is since they warrant specific action by the client.
+Failure stores do not capture failures caused by backpressure, security issues or document version conflicts. These failures are always returned as-is since they warrant specific action by the client.
 :::
 
 On this page, you'll learn how to set up, use, and manage a failure store, as well as the structure of failure store documents.
