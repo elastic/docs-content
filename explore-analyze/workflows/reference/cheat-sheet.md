@@ -262,6 +262,10 @@ Full reference: [Pass data and handle errors](/explore-analyze/workflows/authori
          alerts: "${{ event.alerts }}"
    ```
 
+   :::{tip}
+   The `shared--` prefix in the workflow ID is an optional [naming convention](/explore-analyze/workflows/authoring-techniques/compose-workflows.md) for shared workflows, not required syntax.
+   :::
+
 8. **`data.*` steps (except `data.set`) put source data at the top level:** `items:`, `arrays:`, or `source:`. The transformation configuration goes in `with`.
 
    ```yaml
