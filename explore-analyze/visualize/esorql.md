@@ -21,6 +21,11 @@ For less advanced aggregations on a known index, [the point-and-click mode](lens
 
 You can add {{esql}} visualizations to a dashboard directly from queries in Discover, or you can start from a dashboard.
 
+:::{note}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+If your visualization's query uses exactly one `STATS` command, dashboard users can turn on {icon}`bolt` **Fast mode** to get faster, estimated results for it. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
+:::
+
 ## Edit and add from Discover [_edit_and_add_from_discover]
 
 In Discover, [typing ES|QL queries](../query-filter/languages/esql-kibana.md) automatically shows a visualization. The visualization type depends on the content of the query: histogram, bar charts, etc. You can manually make changes to that visualization and edit its type and display options using the pencil button ![pencil button](/explore-analyze/images/kibana-esql-icon-edit-visualization.svg "").
@@ -54,7 +59,7 @@ You can then **Save** and add it to an existing or a new dashboard using the sav
     When you edit the query and run it again, the visualization configuration persists as long as it is compatible with the query changes. Refer to [](#chart-config-persist) for more details.
     :::
 
-4. You can bind controls to your ES|QL visualizations in dashboards by creating [ES|QL controls](../dashboards/add-controls.md#add-variable-control).
+4. You can bind controls to your ES|QL visualizations in dashboards by creating [ES|QL controls](add-variable-controls.md).
 5. Select **Apply and close** to save the visualization to the dashboard.
 
 ### Customize the appearance of your {{esql}} visualization
