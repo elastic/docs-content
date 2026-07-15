@@ -5,7 +5,10 @@ mapped_pages:
 applies_to:
   stack: all
 products:
+  - id: elasticsearch
+  - id: cloud-enterprise
   - id: cloud-hosted
+  - id: cloud-kubernetes
 ---
 # Set up SAML with Microsoft Entra ID [ec-securing-clusters-saml-azure]
 
@@ -41,21 +44,21 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
 
         * `Identifier (Entity ID)` - a string that uniquely identifies a SAML service provider. We recommend using your {{kib}} URL, but you can use any identifier.
 
-            For example, `https://saml-azure.kb.northeurope.azure.elastic-cloud.com:443`.
+            For example, `https://kibana.example.com`.
 
         * `Reply URL` - This is the {{kib}} URL with `/api/security/saml/callback` appended.
 
-            For example, `https://saml-azure.kb.northeurope.azure.elastic-cloud.com:443/api/security/saml/callback`.
+            For example, `https://kibana.example.com/api/security/saml/callback`.
 
         * `Logout URL` - This is the {{kib}} URL with `/logout` appended.
 
-            For example, `https://saml-azure.kb.northeurope.azure.elastic-cloud.com:443/logout`.
+            For example, `https://kibana.example.com/logout`.
 
             :::{image} /deploy-manage/images/cloud-ec-saml-azuread-kibana-config.png
             :alt: The Entra SAML configuration page with {{kib}} settings
             :::
 
-    6. Navigate to **SAML-based Single sign-on**, open the **User Attributes & Claims** configuration, and update the fields to suit your needs. These settings control what information from  will be made available to the {{stack}} during SSO. This information can be used to identify a user in the {{stack}} and/or to assign different roles to users in the {{stack}}. We suggest that you configure a proper value for the `Unique User Identifier (Name ID)` claim that identifies the user uniquely and is not prone to changes.
+    6. Navigate to **SAML-based Single sign-on**, open the **User Attributes & Claims** configuration, and update the fields to suit your needs. These settings control what information from Microsoft Entra ID will be made available to the {{stack}} during SSO. This information can be used to identify a user in the {{stack}} and/or to assign different roles to users in the {{stack}}. We suggest that you configure a proper value for the `Unique User Identifier (Name ID)` claim that identifies the user uniquely and is not prone to changes.
 
         :::{image} /deploy-manage/images/cloud-ec-saml-azuread-user-attributes.png
         :alt: The Entra ID User Attributes & Claims page
@@ -65,7 +68,7 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
 
 2. Configure {{es}} and {{kib}} for SAML:
 
-    1. [Update your {{es}} user settings](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
+    1. [Update your {{es}} settings](/deploy-manage/stack-settings.md) with the following configuration:
 
         ```sh
         xpack.security.authc.realms.saml.kibana-realm:
@@ -83,7 +86,7 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
 
         * `<Application_ID>` is your Application ID, available in the application details in Azure.
         * `<Tenant_ID>` is your Tenant ID, available in the tenant overview page in Azure.
-        * `<Kibana_Endpoint_URL>` is your {{kib}} endpoint. Ensure this is the same value that you set for `Identifier (Entity ID)` in the earlier Microsoft Entra ID configuration step.
+        * `<Kibana_Endpoint_URL>` is the base URL for your {{kib}} instance. Ensure this is the same value that you set for `Identifier (Entity ID)` in the earlier Microsoft Entra ID configuration step.
 
         * For `idp.metadata.path`, we’ve shown the format to construct the URL. This value should be identical to the `App Federation Metadata URL` setting that you made a note of in the previous step.
 
@@ -98,7 +101,7 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
         :::
 
     2. Next, configure {{kib}} to enable SAML authentication:
-        1. [Update your {{kib}} user settings](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
+        1. [Update your {{kib}} settings](/deploy-manage/stack-settings.md) with the following configuration:
 
             ```yaml
             xpack.security.authc.providers:
