@@ -17,7 +17,7 @@ By default, Elastic already encrypts your deployment data and snapshots at rest.
 ::::{note}
 Encryption at rest using customer-managed keys is only available for the Enterprise subscription level.
 
-You can add a customer-managed key when you create a new deployment, or add one to an existing deployment. Once a customer-managed key is set on a deployment, it cannot be edited or removed. The ability to change or remove a customer-managed key will be supported on {{ech}} in the future.
+You can add a customer-managed key when you create a new deployment, or add one to an existing deployment. Once you set a customer-managed key on a deployment, you cannot edit or remove it. The ability to change or remove a customer-managed key will be supported on {{ech}} in the future.
 ::::
 
 
