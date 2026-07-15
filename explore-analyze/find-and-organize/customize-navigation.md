@@ -48,3 +48,5 @@ Adjust other Kibana settings to your own preferences:
 
 * [Use dark mode in Kibana](/cloud-account/dark-mode.md)
 * [Use high-contrast mode in Kibana](/cloud-account/high-contrast.md)
+
+To control which features are visible to all users of a space, refer to [Manage spaces](/deploy-manage/manage-spaces.md).
