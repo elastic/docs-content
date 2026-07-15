@@ -49,6 +49,7 @@ Features are usually available on {{serverless-full}} before stack-versioned dep
 | [TOP_SNIPPETS function](#top_snippets-function) | Extract the best snippets for a given query string from a text field | 9.3 |
 | [MMR command](#result-diversification-with-mmr) | Reduce redundancy in results using Maximum Marginal Relevance diversification | 9.4 (preview) |
 | [EMBEDDING function](#embedding-function) | Generate dense vector embeddings from multimodal input using inference endpoints | 9.5 (preview) |
+| [MATCH on expressions](#match-on-expressions) | Search computed columns and other non-indexed values with `MATCH` | 9.5 (preview) |
 
 ## How search works in {{esql}}
 
@@ -94,6 +95,31 @@ The following functions provide text-based search capabilities in {{esql}} with 
 - Use the [MATCH function syntax](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/match.md) for more control over the query, such as specifying analyzers, fuzziness, and other parameters.
 
 Refer to the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md#step-3-basic-search-operations) for examples of both syntaxes.
+
+#### MATCH on expressions [match-on-expressions]
+
+```{applies_to}
+stack: preview 9.5
+serverless: preview
+```
+
+`MATCH` can also search expressions that are not backed by an index, such as
+computed columns produced by `EVAL`, `STATS`, or other commands.
+When the target is not an indexed field, `MATCH` evaluates by scanning values
+row by row instead of using the inverted index.
+This is useful for searching derived or transformed data, but may be slower
+on large datasets.
+
+The placement restrictions that apply to index-backed `MATCH` (the function
+must appear in a `WHERE` close to the `FROM` source) do not apply when
+searching expressions.
+
+When searching expressions:
+
+* [Function named parameters](elasticsearch://reference/query-languages/esql/esql-syntax.md#esql-function-named-params)
+  (match query options) are not supported.
+* `MATCH` on an expression does not contribute to the relevance score when
+  using `METADATA _score`.
 
 ### `MATCH_PHRASE` function
 
