@@ -14,9 +14,6 @@ products:
 
 # {{agent-builder}} traces overview dashboard
 
-<!-- STATUS: Draft body complete (Phases 1-4). Independently fact-checked 2026-07-13 against Kibana main: the span/attribute reference and the UI labels are verified verbatim. Prose corrected after that check: removed a nonexistent "slowest tools" panel and an unverified "updates automatically" claim, and made the token/request breakdown precise. Remaining: cross-links (Phase 5, after #7322 merges, still open as of 2026-07-13) and badges/build (Phase 6). Items needing a live check are marked VERIFY(cluster).
-     Placeholder links: collect-traces.md (#7171) and permissions.md#read-trace-data are NOT on main yet (they land with PR #7322). Keep them as plain text + TODO until #7322 merges. -->
-
 {{agent-builder}} ships a prebuilt overview dashboard that turns your agent trace data into ready-made operational and usage metrics. Instead of building visualizations yourself, you install one managed dashboard and see how your agents behave, including how many tokens they use, how long conversations take, which agents run most often, and where tool calls fail.
 
 Use the dashboard to:
@@ -49,12 +46,6 @@ When trace data is flowing, the dashboard looks like this:
 :alt: The Agent Builder Overview dashboard showing the Token Usage and Cost section with total input and output tokens, LLM request count, and token usage over time by model
 :::
 
-<!-- Notes (verified vs Kibana main; see reference_ab_overview_dashboard_fields memory):
-     - On-screen section names: "Token Usage & Cost", "Conversation Volume & Latency", "Agent Execution", "Tool Call Frequency & Errors" (last one collapsed by default; the UI prefixes each with an emoji).
-     - Precision (from fact-check): tokens over time are broken down by model; LLM request counts are broken down by model and by provider. The tool section has an overall average duration KPI and a Top 15 by call count, but no per-tool "slowest tools" ranking.
-     - OPEN QUESTION: the dashboard's own header markdown says "token usage & cost" and "workflow performance", but no cost, cached-token, or workflow panels actually ship. The body omits them. Confirm cut vs deferred with @meghanmurphy1.
-     - Field-level detail is in the Span and attribute reference section below. -->
-
 ## Before you begin
 
 Before you install the dashboard:
@@ -84,8 +75,6 @@ The dashboard is not restored automatically, including in a new space or after y
 
 To remove it, select the arrow next to **View Dashboard**, then select **Uninstall dashboard**.
 
-<!-- Source-verified labels (Kibana main, agent_builder_tracing_section.tsx): section "Agent Builder Traces"; "Install Dashboard" when not installed; "View Dashboard" split button with an "Uninstall dashboard" menu item when installed. The button renders only after tracing is enabled and saved. View opens dashboards at #/view/agent-builder-overview-<spaceId>; the saved-object title is "[Elastic] Agent Builder Overview". Install and remove call POST /internal/gen_ai_settings/agent_builder/tracing_dashboard with {enabled}. -->
-
 ## Customize the dashboard
 
 The overview dashboard is managed, so you cannot edit it directly. To build your own version:
@@ -96,21 +85,11 @@ The overview dashboard is managed, so you cannot edit it directly. To build your
 
 Because the original is managed, Elastic can ship improvements to it without overwriting your copy.
 
-<!-- VERIFY(cluster): confirm the exact control to duplicate a managed, read-only dashboard (for example a "Duplicate" action in the Dashboards list, or "Save as" from the open dashboard). Not determinable from source. -->
-
-<!-- VERIFY ON A TEST CLUSTER before publishing (Phase 6). The source-verifiable facts (labels, install model, four sections, span/attribute strings, ES|QL validity) were double-checked against Kibana main on 2026-07-13 and are confirmed. Still needs eyes on a live 9.5 cluster:
-     - The exact management app label and casing ("Gen AI Settings").
-     - That "Tool Call Frequency & Errors" is collapsed by default.
-     - Screenshots: (a) Agent Builder Traces section with the Install Dashboard button; (b) the section after install (View Dashboard split button); (c) the installed dashboard.
-     See also the inline VERIFY(cluster) notes for the install privilege, the duplicate control, and running the ES|QL examples. -->
-
 ## Span and attribute reference
 
 The dashboard panels are [ES|QL](elasticsearch://reference/query-languages/esql.md) queries over your trace data. To build your own visualizations in [Dashboards](/explore-analyze/dashboards.md), [Lens](/explore-analyze/visualize/lens.md), or [Discover](/explore-analyze/discover.md), query the trace data stream and filter by span type and attribute.
 
 Traces are stored in the `traces-agent_builder.otel-*` data stream, where each document is a span. The dashboard identifies the kind of work a span represents from its `span.name`, and reads generative AI details from the span attributes.
-
-<!-- VERIFY(cluster): the span-name filters and attribute names below are read from the shipped dashboard definition (Kibana main). Confirm them against a live 9.5 dashboard, and re-check after the OTel schema upgrade (search-team#15270, kibana#277640). -->
 
 ### Span types
 
@@ -168,8 +147,6 @@ FROM traces-agent_builder.otel-*
   BY tool = name
 | SORT calls DESC
 ```
-
-<!-- VERIFY(cluster): run both ES|QL examples on a 9.5 cluster with real trace data before publishing. Confirm the SUM(TO_LONG(...)) token pattern, the per-aggregation COUNT(*) WHERE ... syntax, and that the span-name filters return rows. These mirror the dashboard's own query patterns but were composed by hand. -->
 
 ## Related pages
 
