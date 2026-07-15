@@ -32,7 +32,7 @@ The fix requires re-creating the index with the correct ELSER inference endpoint
 
 - ELSER ML model must be available on the cluster.
 - You must have index admin privileges.
-- Expect downtime or degraded search on this index during the reindex process.
+- Make sure no automatic migrations are running. If a migration is running, stop it before starting the reindex process.
 
 ---
 
