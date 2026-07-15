@@ -103,23 +103,10 @@ stack: preview 9.5
 serverless: preview
 ```
 
-`MATCH` can also search expressions that are not backed by an index, such as
-computed columns produced by `EVAL`, `STATS`, or other commands.
-When the target is not an indexed field, `MATCH` evaluates by scanning values
-row by row instead of using the inverted index.
-This is useful for searching derived or transformed data, but may be slower
-on large datasets.
+[`MATCH`](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/match.md) can search expressions that are not backed by an index, such as columns produced by `EVAL` or `STATS`.
+Values are scanned row by row instead of using the inverted index, and the usual placement restrictions do not apply.
 
-The placement restrictions that apply to index-backed `MATCH` (the function
-must appear in a `WHERE` close to the `FROM` source) do not apply when
-searching expressions.
-
-When searching expressions:
-
-* [Function named parameters](elasticsearch://reference/query-languages/esql/esql-syntax.md#esql-function-named-params)
-  (match query options) are not supported.
-* `MATCH` on an expression does not contribute to the relevance score when
-  using `METADATA _score`.
+When searching expressions, function named parameters are not supported and `MATCH` does not contribute to `_score`.
 
 ### `MATCH_PHRASE` function
 
