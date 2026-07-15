@@ -57,7 +57,7 @@ serverless:
 
 **Enable:** `manage-watchlists`
 
-Use this skill to manage [entity watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) — groups of important entities, such as executives or critical infrastructure hosts, whose membership factors into entity risk scoring — directly from chat. The agent can list, create, update, and delete watchlists, and add or remove entities.
+Use this skill to manage [entity watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) — groups of important entities — directly from chat. The agent can list, create, update, and delete watchlists, and add or remove entities.
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
