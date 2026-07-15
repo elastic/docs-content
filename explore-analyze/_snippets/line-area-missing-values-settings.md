@@ -1,4 +1,4 @@
-:::{dropdown} Missing values
+::::{dropdown} Missing values
 Use **Missing values** to control how gaps appear in area and line charts. Missing values include empty buckets and metrics that return `null` because of their operation or data.
 
 :::{note}
@@ -36,4 +36,4 @@ This setting isn't available for percentage area charts or charts created from E
 
 **Show as dotted line**
 :   Show the lines used to fill gaps as dotted lines.
-:::
+::::
