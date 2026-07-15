@@ -334,8 +334,8 @@ Security tools provide specialized capabilities for security monitoring, threat 
 :   Searches and analyzes [security alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md) using full-text or structured queries for finding, counting, aggregating, or summarizing alerts.
 
 $$$agent-builder-security-attack-discovery-search-tool$$$
-`security.attack_discovery_search`
-:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs. Requires attack discovery to have been run at least once. {applies_to}`stack: ga 9.4+`
+`security.attack_discovery_search` {applies_to}`stack: ga 9.4+`
+:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs. Requires attack discovery to have been run at least once.
 
 $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 :   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.
@@ -353,8 +353,8 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 [Entity Analytics](/solutions/security/advanced-entity-analytics.md) tools work with security entities and their risk scores, asset criticality, watchlists, and threat hunting leads.
 
 $$$agent-builder-security-entity-risk-score-tool$$$
-`security.entity_risk_score`
-:   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users, hosts, and services) to identify high-risk entities in the environment. This tool is only available when the risk score index exists in the current space. {applies_to}`stack: ga 9.4+`
+`security.entity_risk_score` {applies_to}`stack: ga 9.4+`
+:   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users, hosts, and services) to identify high-risk entities in the environment. This tool is only available when the risk score index exists in the current space.
 
 `security.get_entity` {applies_to}`stack: ga 9.4+`
 :   Retrieves an entity profile (user, host, service, or generic) from the Entity store by entity ID (EUID), including any alerts that contributed to its risk score. Requires the entity risk engine and entity store to be enabled.
