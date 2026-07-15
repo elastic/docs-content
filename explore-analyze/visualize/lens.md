@@ -81,7 +81,7 @@ As you drag fields to the layer pane, Lens automatically selects an aggregation 
 
 ::::{step}  Customize the appearance of your visualization
 
-In the Lens editor, you can customize the appearance of your visualization by clicking the **Style** icon {icon}`brush` and the **Legend** icon ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") in the layer pane.
+In the Lens editor, use the {icon}`brush` **Style** and ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") **Legend** controls in the layer pane to customize your visualization. The available controls vary by chart type. For all settings, open the dedicated page for your chart from the [visualization type table](#lens).
 
 ::::
 
@@ -407,26 +407,6 @@ In the legend, click the field, then choose one of the following options:
 :::{include} ../_snippets/global-filters.md
 :::
 
-
-## Customize the visualization display [configure-the-visualization-components]
-
-Appearance controls vary by chart type. For all available settings, open the dedicated page for your chart from the [visualization type table](#lens).
-
-### Visualization appearance and style options [customize-visualization-appearance]
-
-Use the {icon}`brush` **Style** control, **Labels** control, or axis menus to customize a visualization.
-
-
-### Customize the visualization legend [customize-visualization-legend]
-
-To customize the legend of your visualization, select the **Legend** icon ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") in the layer pane.
-
-:::{image} /explore-analyze/images/kibana-lens-legend.png
-:screenshot:
-:alt: Menu with options to customize the legend of a visualization
-:::
-
-The available legend controls depend on the chart type and its configuration.
 
 ## Explore the data in Discover [explore-lens-data-in-discover]
 
