@@ -34,6 +34,17 @@ Watch [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthroug
 ::::
 
 
+## Performance and safety [diagnostic-performance-safety]
+
+The Support Diagnostic tool can be run from any directory on the machine. It does not require installation to a specific location, and the only requirement is that the user has read access to the {{es}} artifacts, write access to the chosen output directory, and sufficient disk space for the generated archive.
+
+The calls issued by the Support Diagnostic tool are read-only. It issues only GET requests to {{es}} APIs — primarily `_cat` APIs (such as `/_cat/nodes`, `/_cat/shards`, `/_cat/indices`), cluster and node stats endpoints, and settings endpoints. It does not modify any cluster state, indices, or data. In `local` mode, it also retrieves log files and operating system information directly from disk, which has no impact on the cluster.
+
+On a healthy cluster, the overhead is negligible. On clusters with many indices, a small number of calls such as `/_cluster/state` and `/_stats` may take longer to respond, but they remain read-only and do not trigger any cluster operations such as shard movements or merges.
+
+You can safely run the diagnostic on a production cluster.
+
+
 ## Access the tool [diagnostic-tool-access]
 
 The Support Diagnostic tool is included as a sub-library in some Elastic deployments:
