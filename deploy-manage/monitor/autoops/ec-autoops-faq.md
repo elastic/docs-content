@@ -36,6 +36,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [Can I use AutoOps if my environment is air-gapped?](#autoops-air-gapped)
 * [Do I have to do any maintenance when using AutoOps for ECE, ECK, or self-managed clusters?](#maintenance)
 * [I connected my ECE, ECK, or self-managed cluster to AutoOps during a free trial of {{ecloud}}. What happens after my trial ends?](#trial-ending)
+* [Who has access to AutoOps in my cluster?](#access-autoops)
 * [What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?](#support)
 
 **Setting up AutoOps for ECE, ECK, or self-managed clusters**
@@ -94,7 +95,7 @@ $$$additional-payment$$$ **Does AutoOps for ECE, ECK, or self-managed clusters i
 $$$autoops-metrics-cost$$$ **Does shipping metrics data to {{ecloud}} incur additional costs?**
 :   Elastic does not charge extra for this service, but your cloud service provider (CSP) might. When sending metrics data from your cluster in a CSP region to {{ecloud}}, shipping costs are determined by your agreement with that CSP. 
 
-    You can [choose the CSP region where your data is stored](#sm-autoops-metrics-storage).
+    When you connect your cluster, you [choose the CSP and region where your data is stored](/deploy-manage/monitor/autoops/cc-autoops-metrics-storage-locations.md).
 
 $$$deployment-types$$$ **Which deployment types can be connected to AutoOps through Cloud Connect?**
 :   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment, both on-premise and in private cloud environments.
@@ -117,6 +118,10 @@ $$$trial-ending$$$ **I connected my ECE, ECK, or self-managed cluster to AutoOps
 :   After your free trial ends, your cluster remains connected and AutoOps continues to process your {{es}} metrics as long as: 
 * You have an [active {{ecloud}} account](../../cloud-organization/billing/add-billing-details.md).
 * {{agent}} is running and shipping metrics to {{ecloud}}.
+
+$$$access-autoops$$$**Who has access to AutoOps in my cluster?**
+:   :::{include} ../_snippets/access-cloud-connect-autoops.md
+    :::
 
 $$$support$$$ **What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?**
 :   Support eligibility is determined by the license of your connected cluster:
@@ -144,10 +149,9 @@ $$$connect-more-clusters$$$**Do I have to re-run the installation wizard to conn
 ### Collected metrics and data in AutoOps for ECE, ECK, or self-managed clusters
 
 $$$sm-autoops-metrics-storage$$$ **Where are metrics stored in AutoOps for ECE, ECK, or self-managed clusters?**
-:   You can choose where to store your metrics from the following AWS regions:
+:   When you connect your cluster, you choose the cloud service provider and region where your metrics are stored.
 
-    :::{include} ../_snippets/autoops-cc-regions.md
-    :::
+    For the full list of supported storage locations, refer to [Metrics storage locations](/deploy-manage/monitor/autoops/cc-autoops-metrics-storage-locations.md).
 
 $$$extracted-info$$$ **What information does {{agent}} gather from my cluster?**
 :   {{agent}} only extracts and sends cluster metrics to {{ecloud}}, not the underlying data within your cluster. The following metrics are collected:

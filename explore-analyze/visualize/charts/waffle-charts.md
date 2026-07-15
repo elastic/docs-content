@@ -5,7 +5,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Instructions and best practices for building waffle charts with Kibana Lens in Elastic.
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+description: Create waffle charts to show percentages as discrete units, visualize survey results, and compare similarly-sized proportions.
 ---
 
 # Build waffle charts with {{kib}}
@@ -28,9 +33,8 @@ To build a waffle chart:
 ::::::{stepper}
 
 :::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a waffle chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 :::::
 
 :::::{step} Set the visualization to Waffle
@@ -68,8 +72,8 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 :::::
 
 :::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and reuse it later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 :::::
 
 ::::::
@@ -85,8 +89,8 @@ You can use **Multiple metrics** to show progress toward a goal, with filled squ
 This example uses the **Kibana Sample Data eCommerce** data set. If you haven't installed it yet, refer to [Sample data](/manage-data/ingest/sample-data.md) for instructions.
 
 1. Create a **Waffle** chart using the **Kibana Sample Data eCommerce** {{data-source}}.
-2. Open **Layer settings**:
-   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` Select {icon}`app_management` **Layer settings**.
+2. Open the layer settings:
+   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` Select {icon}`gear` **Settings**/**Layer settings**.
    * {applies_to}`stack: ga 9.0-9.2` Select {icon}`boxes_horizontal`, then select **Layer settings**.
 3. Select **Multiple metrics**, then close the layer settings.
 4. Add two metrics:
@@ -213,27 +217,23 @@ The **Group by** dimension defines how the waffle is divided into colored sectio
 **Data**
 :   The **Group by** dimension supports the following functions:
 
-    - **Top values**: Create sections for the most common values in a field.
-      - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term sections. When multiple fields are selected, each section represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many top values to display. The default number of values depends on your environment:
-        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-        - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
+    :::{include} ../../_snippets/lens-bucket-top-values.md
+    :::
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
-    - **Date histogram**: Group data into time-based buckets.
-      - **Field**: Select the date field to use for the time-based grouping.
+    :::{include} ../../_snippets/lens-bucket-date-histogram.md
+    :::
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
-    - **Intervals**: Create numeric ranges for continuous data.
-      - **Field**: Select the numeric field to create intervals from.
-      - **Include empty rows**: Include intervals with no matching documents.
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
-    - **Filters**: Define custom KQL filters to create specific sections.
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
+    :::{include} ../../_snippets/lens-bucket-intervals.md
+    :::
+    :::{include} ../../_snippets/lens-bucket-filters.md
+    :::
+
+    :::{include} ../../_snippets/lens-collapse-by.md
+    :::
 
 **Appearance**
 :   - **Name**: Customize the legend label.
