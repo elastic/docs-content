@@ -169,6 +169,8 @@ subs:
   fleet-server:   "Fleet Server"
   integrations-server:   "Integrations Server"
   integrations:   "Integrations"
+  managed-integration:   "Elastic Managed integration"
+  managed-integrations:   "Elastic Managed integrations"
   package-registry:   "Elastic Package Registry"
   artifact-registry:   "Elastic Artifact Registry"
   aws:   "AWS"

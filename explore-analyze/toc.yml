@@ -283,7 +283,6 @@ toc:
           - file: dashboards/create-dashboards-programmatically.md
           - file: dashboards/create-dashboards-using-ai.md
           - file: dashboards/open-dashboard.md
-          - file: dashboards/add-controls.md
           - file: dashboards/drilldowns.md
           - file: dashboards/arrange-panels.md
           - file: dashboards/duplicate-dashboards.md
@@ -319,6 +318,12 @@ toc:
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
       - file: visualize/alert-panels.md
+      - file: visualize/dashboard-controls.md
+        children:
+          - file: visualize/add-controls.md
+          - file: visualize/add-time-slider-controls.md
+          - file: visualize/add-variable-controls.md
+          - file: visualize/dashboard-control-settings.md
       - file: visualize/canvas.md
         children:
           - file: visualize/canvas/edit-workpads.md
@@ -376,6 +381,7 @@ toc:
       - file: find-and-organize/reports.md
       - file: find-and-organize/tags.md
       - file: find-and-organize/find-apps-and-objects.md
+      - file: find-and-organize/customize-navigation.md
   - file: report-and-share.md
     children:
       - file: report-and-share/automating-report-generation.md
