@@ -20,11 +20,14 @@ products:
 
 When an agent runs, {{agent-builder}} records the run as OpenTelemetry (OTel) traces. Each trace covers one conversation round. A trace is made up of spans that map to the work the agent did, such as model calls, tool calls, and any workflows it triggered.
 
-{{agent-builder}} ingests this data into managed data streams in your own {{es}}. It uses two OpenTelemetry data streams, `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*`. They are OTel-compatible and use the standard OTel index templates, so they inherit the mappings, settings, and data lifecycle that {{es}} maintains for OTel data.
+{{agent-builder}} ingests this data into managed data streams in your own {{es}}. It uses two OpenTelemetry data streams:
+
+- `traces-agent_builder.otel-*` holds the execution spans, such as model calls and tool calls, with their timings, token usage, model, and status.
+- `logs-agent_builder.otel-*` holds the conversation content you opt into capturing, such as user prompts, agent responses, system prompts, and tool call details, recorded as OpenTelemetry log records. Content is captured only when you enable it in [Trace privacy settings](#trace-privacy-settings).
+
+Both are OTel-compatible and use the standard OTel index templates, so they inherit the mappings, settings, and data lifecycle that {{es}} maintains for OTel data.
 
 These are regular data streams, not system or hidden indices. You can explore and analyze the data with the same tools you use for any other data in {{es}}, including [Discover](/explore-analyze/discover.md), [Dashboards](/explore-analyze/dashboards.md), [Lens](/explore-analyze/visualize/lens.md), and [ES|QL](elasticsearch://reference/query-languages/esql.md).
-
-<!-- Both `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*` are named in the Kibana GenAI Settings source. Confirm what each stream carries (spans vs. log records) before publishing. -->
 
 Trace collection is space-aware. Each {{kib}} space collects its own traces.
 
