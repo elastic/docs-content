@@ -61,7 +61,7 @@ Use this skill to manage [entity watchlists](/solutions/security/advanced-entity
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
-| List all watchlists | Return existing watchlists, and search by name when you specify one. |
+| List all watchlists | Return existing watchlists, and search them by name when you specify one. |
 | Create a watchlist called Executives for high-profile users | Create a new watchlist, then use it in risk scoring. |
 | Add `user-42` and `user-99` to the Executives watchlist | Resolve the watchlist by name and add the entities. |
 | Remove `host-9` from the Critical Infrastructure watchlist | Remove the entity from the named watchlist. |
@@ -81,7 +81,7 @@ serverless:
 
 **Enable:** `entity-analytics-leads`
 
-Use this skill to work with AI-generated [threat hunting leads](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md#entity-threat-hunting-leads). The agent can list current leads, generate new leads, and dismiss leads that aren't relevant.
+Use this skill to work with AI-generated [threat hunting leads](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md#entity-threat-hunting-leads). The agent can list current leads, generate new ones, and dismiss those that aren't relevant.
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
