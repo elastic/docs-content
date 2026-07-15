@@ -1,7 +1,7 @@
 :::{dropdown} Legend
 You can customize the way the legend is displayed and the data it shows. Select ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") to open the **Legend** panel.
 
-With the **Visibility**, **Position**, and **Width** options, you can adjust the way the legend appears in or next to the visualization.
+Use **Visibility** and **Position** to control where the legend appears. For legends positioned outside the chart on the left or right, use **Width** to set the legend size.
 
 **Layout** {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
 :   For legends positioned outside the chart at the top or bottom, choose how series labels are arranged:
@@ -12,7 +12,7 @@ With the **Visibility**, **Position**, and **Width** options, you can adjust the
     Existing visualizations retain their layout until you change it.
 
 **Statistics**
-:   Select one or more statistics to show for each series:
+:   When every chart layer uses a non-categorical horizontal axis, such as a date, time, or numeric axis, select one or more statistics to show for each series:
 
     - **Average**: Average of all values.
     - **Median**: Median value.
@@ -32,7 +32,7 @@ With the **Visibility**, **Position**, and **Width** options, you can adjust the
     - **Std deviation**: Standard deviation of all values.
     - **Current or last value**: Value of the data point under the pointer, or the last value when the pointer isn't over a data point.
 
-    All statistics use the aggregated data points shown for the selected time range, not the original documents from {{es}}. You can also add a **Series header** above the legend entries.
+    All statistics use the aggregated data points shown for the selected time range, not the original documents from {{es}}. After you select a statistic that uses the **Grid** layout, you can add a **Series header** above the legend entries.
 
 
 **Label truncation**

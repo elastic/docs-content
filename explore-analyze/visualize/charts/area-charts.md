@@ -197,6 +197,9 @@ When creating or editing a visualization, you can adjust the following settings.
 :::{include} ../../_snippets/area-chart-style-settings.md
 :::
 
+:::{include} ../../_snippets/line-area-missing-values-settings.md
+:::
+
 :::{include} ../../_snippets/xy-chart-legend-settings.md
 :::
 
