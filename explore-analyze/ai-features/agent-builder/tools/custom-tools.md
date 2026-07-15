@@ -133,8 +133,10 @@ The set of protected prefixes has expanded across {{stack}} versions. The versio
 - `attachments.*` {applies_to}`stack: ga 9.4+`
 - `filestore.*` {applies_to}`stack: ga 9.4+`
 - `observability.*` {applies_to}`stack: ga 9.3+`
+- `platform.alerting.*` {applies_to}`stack: ga 9.5+`
 - `platform.core.*` {applies_to}`stack: ga 9.2+`
 - `platform.dashboard.*` {applies_to}`stack: ga 9.3+`
+- `platform.sig_events.*` {applies_to}`stack: ga 9.5+`
 - `platform.streams.*` {applies_to}`stack: ga 9.4+`
 - `platform.workflows.*` {applies_to}`stack: ga 9.4+`
 - `search.*` {applies_to}`stack: ga 9.4+`
