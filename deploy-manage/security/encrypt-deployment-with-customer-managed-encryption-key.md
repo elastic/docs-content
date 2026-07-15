@@ -465,18 +465,18 @@ deployment:
 {{ecloud}} then applies a plan change to encrypt your deployment's data and snapshots with your key. This plan change happens **without downtime**.
 
 ::::{note}
-A customer-managed key can only be set once on a deployment. Once encryption with your key has started, it cannot be undone or edited to use a different key. The ability to change or remove a customer-managed key will be supported on {{ech}} in the future.
+Once you set a customer-managed key on a deployment, you cannot edit or remove it. Once encryption begins, you cannot undo it or switch to a different key. The ability to change or remove a customer-managed key will be supported on {{ech}} in the future.
 ::::
 
 #### Considerations for existing deployments
 
 Keep these considerations in mind when adding a customer-managed key to an existing deployment:
 
-* **Let the process finish.** Once encryption with a customer-managed key has started, we recommend letting it run to completion rather than interrupting it partway through.
+* **Let the process finish.** Once you start encryption with a customer-managed key, let encryption run to completion rather than interrupting it.
 * **Large deployments take longer.** For deployments with more than 1 TB of data, encrypting existing data can take a significant amount of time to complete.
 * **Data transfer costs can apply.** Encrypting an existing deployment can incur data transfer (DTS) costs in your cloud provider account. These costs are expected to be low for {{es}} 8.x and later deployments. Refer to [Reduce data transfer and storage (DTS) costs in {{ecloud}}](https://www.elastic.co/blog/reduce-data-transfer-and-storage-dts-costs-in-elastic-cloud) for more detail.
 * **Snapshots without {{search-snaps}} aren't carried over.** If your deployment doesn't use {{search-snaps}} (that is, it has no frozen or cold data tier), existing snapshots in the original repository are marked for deletion rather than transferred to the new, encrypted repository.
-* **Test on a smaller deployment first.** Before encrypting a large or business-critical deployment, we recommend trying the process on a smaller deployment and confirming your cluster is healthy beforehand — this reduces the chance of the process failing partway through.
+* **Test on a smaller deployment first.** Before encrypting a large or business-critical deployment, try the process on a smaller deployment first and confirm your cluster is healthy. This reduces the risk of the process failing partway through.
 
 ## Verify your deployment encryption
 
