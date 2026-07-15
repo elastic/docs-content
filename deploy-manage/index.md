@@ -61,7 +61,7 @@ Learn how to secure your Elastic environment to restrict access to only authoriz
 * [](/deploy-manage/users-roles.md): Manage user authentication and authorization at the level of your Cloud organization, your orchestrator, or your deployment or cluster.
 * [](/deploy-manage/manage-spaces.md): Learn how to organize content in {{kib}}, and restrict access to this content to specific users.
 * [](/deploy-manage/api-keys.md): Authenticate and authorize programmatic access to your deployments and {{es}} resources.
-* [](/deploy-manage/app-connections.md): Register OAuth clients and manage application connections for external access to {{serverless-short}} projects. During technical preview, only MCP clients for the {{agent-builder}} MCP server are supported. {applies_to}`serverless: preview`
+* [](/deploy-manage/app-connections.md): Register OAuth clients and manage application connections for external access to {{serverless-short}} projects. Currently, only MCP clients for the {{agent-builder}} MCP server are supported. {applies_to}`serverless: preview`
 * [](/deploy-manage/manage-connectors.md): Manage {{kib}} connectors for alerting rules and external service integrations.
 * [](/deploy-manage/remote-clusters.md): Enable communication between {{es}} clusters to support [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) and [cross-cluster search](/explore-analyze/cross-cluster-search.md).
 * [Cross-project search](/deploy-manage/cross-project-search-config.md): Link multiple {{serverless-full}} projects to broaden the dataset users can query and visualize. {applies_to}`serverless: preview` 

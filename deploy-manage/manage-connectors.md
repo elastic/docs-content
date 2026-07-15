@@ -19,7 +19,7 @@ Connectors serve as a central place to store connection information for both Ela
 You can find the **{{connectors-ui}}** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{note}
-{{connectors-ui}} are not the same as [application connections](/deploy-manage/app-connections.md) or [search connectors](elasticsearch://reference/search-connectors/index.md). Application connections manage OAuth client registration and external access to {{serverless-short}} projects. During technical preview, only MCP clients for the {{agent-builder}} MCP server are supported. Search connectors sync data from third-party sources into {{es}}.
+{{connectors-ui}} are not the same as [application connections](/deploy-manage/app-connections.md) or [search connectors](elasticsearch://reference/search-connectors/index.md). Application connections manage OAuth client registration and external access to {{serverless-short}} projects. Search connectors sync data from third-party sources into {{es}}.
 :::
 
 :::{agent-skill}

@@ -15,7 +15,7 @@ products:
 
 Application connections let users authorize external applications to act on their behalf in {{serverless-short}} projects using OAuth 2.1.
 
-Only MCP clients for the [](/explore-analyze/ai-features/agent-builder/mcp-server.md) are supported. For that use case, OAuth 2.1 replaces static API keys when you need multi-user, delegated access. OAuth tokens are accepted only by the MCP server endpoint.
+Currently, only MCP clients for the [](/explore-analyze/ai-features/agent-builder/mcp-server.md) are supported. For that use case, OAuth 2.1 replaces static API keys when you need multi-user, delegated access. OAuth tokens are accepted only by the MCP server endpoint.
 
 The sections below describe tasks for registering MCP clients, connecting hosts, revoking access, and managing connections at the project or organization level.
 

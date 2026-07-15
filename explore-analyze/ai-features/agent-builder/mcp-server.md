@@ -52,11 +52,9 @@ Use one of the following authentication paths:
 
 The following table compares the two paths.
 
-<!-- TODO: confirm tool scope for tech preview. PRD said "read-only, ES|QL-based tools only", but QA testing (June 23 2026) shows 22 tools including write operations (delete_stream, create_partition, update_stream, cases, etc.). Remove or correct this row once confirmed with Jake Landis / Elena Shostak. -->
-
 | Consideration | API key | OAuth |
 | --- | --- | --- |
-| Supported platforms | {{stack}} deployments and {{serverless-short}} projects | {{serverless-short}} projects only (technical preview) |
+| Supported platforms | {{stack}} deployments and {{serverless-short}} projects | {{serverless-short}} projects only {applies_to}`serverless: preview` |
 | Best for | Automation, unattended access, and shared machine-to-machine use | Interactive MCP hosts acting on behalf of a person (Claude Desktop, Cursor), including teams that share one client |
 | Multi-user access | One shared key means one shared identity; all callers act with the same permissions | One client registration serves many users. Each person consents separately and gets their own connection, acting with their own permissions and revocable individually |
 | Identity | The key's snapshotted permissions | The consenting user; permissions are the user's live permissions in the project |
