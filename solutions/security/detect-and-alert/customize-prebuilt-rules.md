@@ -48,6 +48,7 @@ After saving changes to a prebuilt rule, modified fields are marked with the **M
 
 * **Updates might cause conflicts**: When Elastic releases an update that changes the same fields you modified, you need to resolve the conflict. Refer to [Resolve update conflicts](/solutions/security/detect-and-alert/update-prebuilt-rules.md#resolve-reduce-rule-conflicts).
 * **Revert if needed**: You can restore the original Elastic version if it's still available in your system. The revert option is hidden when the original version is missing. Keep your prebuilt rules updated to ensure this option remains available. Refer to [Revert to Elastic version](#revert-prebuilt-rules).
+* **Track your changes**: {applies_to}`stack: ga 9.5` You can view a chronological history of the changes you've made to an installed or modified prebuilt rule, and restore it to a previous revision if needed. Refer to [View rule changes history](/solutions/security/detect-and-alert/view-rule-changes-history.md).
 
 
 ## Duplicate and modify prebuilt rules [duplicate-prebuilt-rules]
