@@ -19,6 +19,8 @@ description: Learn the fundamentals of Elastic. Discover what Elastic offers, ex
 
 # Elastic fundamentals
 
+test
+
 Elastic fundamentals is your starting point for understanding the Elastic platform. This section covers the core concepts of the Elastic Stack, explains the available deployment options, and links to training and glossary resources so you can get productive quickly.
 
 :::{tip}
