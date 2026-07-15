@@ -44,15 +44,15 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
 
         * `Identifier (Entity ID)` - a string that uniquely identifies a SAML service provider. We recommend using your {{kib}} URL, but you can use any identifier.
 
-            For example, `https://kibana.example.com`.
+            For example, `https://saml-azure.kb.northeurope.azure.elastic-cloud.com:443`.
 
         * `Reply URL` - This is the {{kib}} URL with `/api/security/saml/callback` appended.
 
-            For example, `https://kibana.example.com/api/security/saml/callback`.
+            For example, `https://saml-azure.kb.northeurope.azure.elastic-cloud.com:443/api/security/saml/callback`.
 
         * `Logout URL` - This is the {{kib}} URL with `/logout` appended.
 
-            For example, `https://kibana.example.com/logout`.
+            For example, `https://saml-azure.kb.northeurope.azure.elastic-cloud.com:443/logout`.
 
             :::{image} /deploy-manage/images/cloud-ec-saml-azuread-kibana-config.png
             :alt: The Entra SAML configuration page with {{kib}} settings
