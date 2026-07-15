@@ -20,6 +20,8 @@ products:
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
 :::
 
+$$$lens-visualization-types$$$
+
 With Lens, you can create the following visualization types:
 
 | **Chart type** | **Use when you want to...** |
@@ -85,7 +87,7 @@ $$$configure-the-visualization-components$$$
 $$$customize-visualization-appearance$$$
 $$$customize-visualization-legend$$$
 
-In the Lens editor, use the {icon}`brush` **Style** and ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") **Legend** controls in the layer pane to customize your visualization. The available controls vary by chart type. For all settings, open the dedicated page for your chart from the [visualization type table](#lens).
+In the Lens editor, use the {icon}`brush` **Style** and ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") **Legend** controls in the layer pane to customize your visualization. The available controls vary by chart type. For all settings, open the dedicated page for your chart from the [visualization type table](#lens-visualization-types).
 
 ::::
 
