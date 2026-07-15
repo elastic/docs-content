@@ -102,6 +102,8 @@ $$$agent-builder-streams-management-skill$$$ `streams-management` {applies_to}`s
 $$$agent-builder-streams-exploration-skill$$$ `streams-exploration` {applies_to}`stack: ga 9.4, removed 9.5`
 :   Discovers, inspects, and queries {{es}} streams. Use when a user wants to list available streams, understand a stream's schema, check data quality or retention, or sample documents from a stream. This is a read-only skill: it cannot create, update, or delete streams or modify stream configuration. In 9.5, this skill is replaced by [`streams-management`](#agent-builder-streams-management-skill), which adds stream modification capabilities.
 
+<!-- TODO(agent-builder): The following significant events and Knowledge Indicators skills are gated by the `streams.significantEventsAvailable` feature flag, which defaults to off and is controlled by Elastic, not a user-facing advanced setting. The investigation skill also needs `streams.investigationEnabled`. Commented out until the flag is generally available, at which point restore them with the correct applies_to lifecycle. streams-management above is not gated and stays live. -->
+<!--
 $$$agent-builder-significant-events-management-skill$$$ `significant-events-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Searches, creates, and updates significant events for Streams, with guidance to avoid duplicates and keep event lifecycle state accurate.
 
@@ -153,6 +155,7 @@ $$$agent-builder-streams-gap-detection-skill$$$ `streams-gap-detection` {applies
     :::
 
     **Prerequisites:** Significant events memory must be enabled in the deployment.
+-->
 
 ### Workflows
 
