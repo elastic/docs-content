@@ -82,10 +82,10 @@ $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack
     :::
 
 $$$agent-builder-rule-management-skill$$$ `rule-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
-:   Composes, discovers, and modifies alerting rules and action policies (notification policies) from within a conversation.
+:   Composes, discovers, and modifies alerting rules and action policies from within a conversation.
 
     :::{dropdown} Assigned tools
-    `platform.alerting.manage_rule`, plus a skill-scoped inline tool for composing and modifying action policies (notification policies).
+    `platform.alerting.manage_rule`, `platform.alerting.manage_action_policy`
 
     :::
 
@@ -176,11 +176,11 @@ $$$agent-builder-workflow-authoring-skill$$$ `workflow-authoring` {applies_to}`s
 
 ### Agent and skill authoring
 
-$$$agent-builder-skill-authoring-skill$$$ `skill-authoring` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
-:   Authors a new {{agent-builder}} skill from a chat description. Use when a user asks to create, build, generate, or design a skill, capability, or expertise area for an agent.
+$$$agent-builder-skill-management-skill$$$ `skill-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
+:   Authors and edits {{agent-builder}} skills from a chat description. Use when a user asks to create, build, generate, design, or modify a skill, capability, or expertise area for an agent.
 
     :::{dropdown} Assigned tools
-    Internal tools to list available tools and to propose or patch a skill definition.
+    Internal tools to list available tools and existing skills, and to propose, load, and patch a skill definition.
 
     :::
 
@@ -255,24 +255,20 @@ $$$agent-builder-entity-analytics-skill$$$ `entity-analytics` {applies_to}`stack
     **Related skills:** [`find-security-ml-jobs`](#agent-builder-find-security-ml-jobs-skill) for deeper investigation of anomalies surfaced during entity analysis. [`manage-watchlists`](#agent-builder-manage-watchlists-skill) to create and modify watchlists.
 
 $$$agent-builder-entity-analytics-leads-skill$$$ `entity-analytics-leads` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
-:   Surfaces AI-generated investigation leads for security entities. Use when a user asks to review, list, show, triage, dismiss, or generate investigation leads, or wants to find proactive threat hunting opportunities surfaced from entity data.
+:   Surfaces AI-generated threat hunting leads for security entities. Use when a user asks to review, list, show, triage, dismiss, or generate threat hunting leads, or wants to find proactive threat hunting opportunities surfaced from entity data.
 
     :::{dropdown} Assigned tools
     `security.list_leads`, `security.generate_leads`, `security.dismiss_lead`
 
     :::
 
-    **Prerequisites:** The `leadGenerationEnabled` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
-
-$$$agent-builder-manage-watchlists-skill$$$ `manage-watchlists` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
+$$$agent-builder-manage-watchlists-skill$$$ `manage-watchlists` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
 :   Manages Entity Analytics watchlists. Creates, updates, and deletes watchlists and adds or removes entity membership. Resolves watchlist names to IDs by discovering existing watchlists. All mutating actions require explicit user confirmation before running. For read-only questions about which watchlists exist, the [`entity-analytics`](#agent-builder-entity-analytics-skill) skill also applies.
 
     :::{dropdown} Assigned tools
     `security.list_watchlists`, `security.create_watchlist`, `security.update_watchlist`, `security.delete_watchlist`, `security.add_entities_to_watchlist`, `security.remove_entities_from_watchlist`
 
     :::
-
-    **Prerequisites:** The `entityAnalyticsWatchlistEnabled` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
 
 $$$agent-builder-find-security-ml-jobs-skill$$$ `find-security-ml-jobs` {applies_to}`stack: ga 9.4+`
 :   Investigates atypical behavior detected by {{ml-app}} jobs, including unusual or first-time access patterns, access outside working hours, privileged accounts with unusual command patterns, logins from unexpected geographic locations, lateral movement, and large or unusual data transfers.
@@ -363,7 +359,7 @@ serverless:
 $$$agent-builder-search-elasticsearch-onboarding-skill$$$ `search.elasticsearch-onboarding` {applies_to}`stack: ga 9.4+`
 :   Guides developers through building a complete search experience on {{es}}, from understanding requirements and designing an index mapping to generating and testing API snippets in Dev Tools. Use for end-to-end onboarding rather than a single narrow API answer.
 
-$$$agent-builder-search-elasticsearch-tutorial-skill$$$ `search.elasticsearch-tutorial` {applies_to}`stack: preview 9.5`
+$$$agent-builder-search-elasticsearch-tutorial-skill$$$ `search.elasticsearch-tutorial` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Runs a topic-driven, hands-on {{es}} tutorial in the {{kib}} Dev Console. Use when a user asks you to walk them through, teach, or give a tutorial on an {{es}} or {{kib}} search concept such as mappings, analyzers, bool queries, `semantic_text`, kNN, reciprocal rank fusion (RRF), aggregations, ingest pipelines, or {{esql}}. Tutorials use sample data on isolated resources, present each step as a snippet to run in Dev Tools, and end with cleanup and pointers to documentation.
 
 $$$agent-builder-search-keyword-search-skill$$$ `search.keyword-search` {applies_to}`stack: ga 9.4+`
