@@ -113,16 +113,18 @@ Most hosts that support OAuth 2.1 accept a similar configuration. Provide the `{
 
 The first time your MCP host tries to use the configured server, it opens a browser window and starts the OAuth consent flow.
 
-1. Your browser opens to an {{ecloud}} sign-in page. Sign in with your {{ecloud}} credentials, even if you already have an active session — authentication is always required before you can grant consent.
+Some tools might require additional manual steps. For example, Claude Code CLI requires that you type `/mcp` or run `claude mcp login <mcp-host-name>` before the browser window opens.
+
+1. Your browser opens to an {{ecloud}} sign-in page. Sign in with your {{ecloud}} credentials. If you have an active session, you are not prompted to log in again.
 2. The **Connect and authorize** page opens, showing which project the MCP client is requesting access to. Click **Authorize** to grant access.
 3. The browser confirms the authorization is complete. Close the tab and return to your MCP host.
 
-A new app connection is created in {{kib}}, scoped to your account and the project the MCP client was registered for. The connection name is auto-generated in the format `<client-name>#<word-pair>`.
+A new app connection is created scoped to your account and the project the MCP client was registered for. The connection name is auto-generated in the format `<client-name>#<word-pair>`. This connection is visible in both {{kib}} and the {{ecloud}} Console.
 
 If you click **Deny**, no connection is created. The host retries the flow the next time you use a tool, or you can restart the host to trigger a fresh attempt.
 
 :::: {admonition} Application permissions
-:::{include} _snippets/app-connection-permissions.md
+:::{include} /deploy-manage/_snippets/app-connection-permissions.md
 :::
 ::::
 

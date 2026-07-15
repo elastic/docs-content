@@ -58,7 +58,7 @@ Access tokens are short-lived and refreshed automatically in the background, so 
 
 ### Permissions
 
-:::{include} _snippets/app-connection-permissions.md
+:::{include} /deploy-manage/_snippets/app-connection-permissions.md
 :::
 
 ## Set up and manage OAuth for MCP clients [oauth-clients-tasks]
