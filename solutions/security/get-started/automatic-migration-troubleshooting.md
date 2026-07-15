@@ -149,32 +149,16 @@ PUT kibana-siem-rule-migrations-integrations-backup
 POST _reindex?wait_for_completion=false
 {
   "source": {
-    "index": ".kibana-siem-rule-migrations-integrations",
-    "_source": {
-      "excludes": ["elser_embedding"]
-    }
+    "index": ".kibana-siem-rule-migrations-integrations"
   },
   "dest": {
     "index": "kibana-siem-rule-migrations-integrations-backup"
-  },
-  "script": {
-    "source": """
-      def embedding = ctx._source.remove('elser_embedding');
-      if (embedding != null) {
-        if (embedding instanceof Map && embedding.containsKey('text')) {
-          ctx._source['elser_embedding'] = embedding['text'];
-        } else if (embedding instanceof String) {
-          ctx._source['elser_embedding'] = embedding;
-        }
-      }
-    """,
-    "lang": "painless"
   }
 }
 ```
 
 ::::{note}
-**Why `excludes: ["elser_embedding"]`:** The source documents contain vector data stored inside the `elser_embedding` field structure. Excluding it from `_source` prevents the raw vector payload from being copied. The Painless script then re-injects only the plain text back into `elser_embedding`, which triggers the new ELSER inference endpoint to generate fresh sparse embeddings on ingest.
+**Why reindex into the backup index first:** The backup index uses the corrected `elser_embedding` mapping. Reindexing the original documents into this index applies the new ELSER inference endpoint before the original index is deleted and recreated.
 
 **`wait_for_completion=false`:** Returns a task ID immediately so the reindex runs in the background. Use the task ID in Step 5 to monitor progress.
 ::::
@@ -270,7 +254,7 @@ POST _reindex?wait_for_completion=false
 }
 ```
 
-The backup index already contains correct ELSER embeddings, so no script or exclusions are needed — this is a straight document copy.
+The backup index already uses the corrected ELSER mapping, so this is a straight document copy back into the original index name.
 
 ---
 
