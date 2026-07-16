@@ -35,6 +35,11 @@ Models that do not appear in these resources may still work, but Elastic hasn't 
 
 ## Connect to a third-party or self-managed LLM
 
+::::{important}
+:applies_to: {"stack": "deprecated 9.5, removed 9.6", "serverless": "removed"}
+The OpenAI, Amazon Bedrock, Google Gemini, and Elastic {{infer-cap}} connector types can no longer be created from the {{kib}} UI. Existing connectors of these types continue to work and can still be edited from **{{connectors-ui}}**. To connect to one of these providers, use [External {{infer}}](/explore-analyze/elastic-inference/external.md), or create the connector with the [Connectors API]({{kib-apis}}group/endpoint-connectors).
+::::
+
 Follow these guides to connect to one or more third-party LLM providers:
 
 * [Azure OpenAI](/explore-analyze/ai-features/llm-guides/connect-to-azure-openai.md)

@@ -45,6 +45,11 @@ The following video demonstrates these steps (click to watch).
 
 ## Configure the OpenAI connector [_configure_the_openai_connector]
 
+::::{important}
+:applies_to: {"stack": "deprecated 9.5, removed 9.6", "serverless": "removed"}
+You can no longer create a new OpenAI connector from the {{kib}} UI. Existing OpenAI connectors continue to work and can still be edited from **{{connectors-ui}}**. To connect to OpenAI, use [External {{infer}}](/explore-analyze/elastic-inference/external.md), or create the connector with the [Connectors API]({{kib-apis}}group/endpoint-connectors).
+::::
+
 To integrate with {{kib}}:
 
 1. Log in to {{kib}}.

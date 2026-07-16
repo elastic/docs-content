@@ -128,6 +128,11 @@ To enable other devices on the same network to access the server, go to **Settin
 
 ## Configure the connector in your Elastic deployment [configure-the-connector-in-your-elastic-deployment]
 
+::::{important}
+:applies_to: {"stack": "deprecated 9.5, removed 9.6", "serverless": "removed"}
+You can no longer create a new OpenAI connector from the {{kib}} UI, so the steps below no longer work as described. Existing OpenAI connectors continue to work and can still be edited from **{{connectors-ui}}**. To connect a new local LLM, create the connector with the [Connectors API]({{kib-apis}}group/endpoint-connectors).
+::::
+
 Finally, configure the connector:
 
 1. Log in to your Elastic deployment.

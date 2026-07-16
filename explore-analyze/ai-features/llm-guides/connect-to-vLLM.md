@@ -140,6 +140,11 @@ For quick testing, you can use [ngrok](https://ngrok.com/) as an alternative to 
 
 ::::{step} Configure the connector in your Elastic deployment
 
+:::{important}
+:applies_to: {"stack": "deprecated 9.5, removed 9.6", "serverless": "removed"}
+You can no longer create a new OpenAI connector from the {{kib}} UI, so the steps below no longer work as described. Existing OpenAI connectors continue to work and can still be edited from **{{connectors-ui}}**. To connect a new local LLM, create the connector with the [Connectors API]({{kib-apis}}group/endpoint-connectors).
+:::
+
 Create the connector within your Elastic deployment to link it to your vLLM instance.
 
 1. In {{kib}}, navigate to the **Connectors** page, click **Create Connector**, and select **OpenAI**.

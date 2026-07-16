@@ -72,6 +72,11 @@ The following video demonstrates these steps (click to watch).
 
 ## Configure Elastic AI Assistant [_configure_elastic_ai_assistant]
 
+::::{important}
+:applies_to: {"stack": "deprecated 9.5, removed 9.6", "serverless": "removed"}
+You can no longer create a new Azure OpenAI connector from the {{kib}} UI. Existing Azure OpenAI connectors continue to work and can still be edited from **{{connectors-ui}}**. To connect to Azure OpenAI, use [External {{infer}}](/explore-analyze/elastic-inference/external.md), or create the connector with the [Connectors API]({{kib-apis}}group/endpoint-connectors).
+::::
+
 Finally, configure the connector in {{kib}}:
 
 1. Log in to {{kib}}.
