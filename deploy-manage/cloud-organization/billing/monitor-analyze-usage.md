@@ -16,7 +16,7 @@ products:
 Information about your current {{ecloud}} subscription usage is available directly from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and includes:
 
 * Monitor usage for the current month, including month-to-date usage
-* For customers with annual prepaid credits, the total value of credits to be applied in the current billing cycle
+* For customers with annual prepaid credits, the total value of credits to be applied in the current billing cycle (visible only to users with the **Organization owner** or **Billing admin** role)
 * Check the usage breakdown for a selected time range
 * View usage totals by product
 
