@@ -16,7 +16,7 @@ products:
 
 This page covers how to monitor token usage in {{agent-builder}} and understand how usage translates to costs across different deployment types.
 
-For observability beyond token counts, {{agent-builder}} can also collect detailed execution traces into your own {{es}}. To turn on trace collection and explore or alert on the data, refer to [Collect agent traces](collect-traces.md).
+For observability beyond token counts, {{agent-builder}} can also collect detailed execution traces into your {{es}} deployment. To turn on trace collection and explore or alert on the data, refer to [Collect agent traces](collect-traces.md).
 
 ## Token usage
 

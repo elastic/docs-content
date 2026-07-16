@@ -104,7 +104,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-{{agent-builder}} can [collect agent traces](collect-traces.md) into your own {{es}}. Trace data is stored in two data streams, `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*`. To read it, a role needs `read` and `view_index_metadata` on both patterns.
+{{agent-builder}} can [collect agent traces](collect-traces.md) into your {{es}} deployment. Trace data is stored in two data streams, `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*`. To read it, a role needs `read` and `view_index_metadata` on both patterns.
 
 Access is granted at the index level. Any user who can read these data streams can read all collected traces, so trace access is not scoped per user. To control who can read traces, configure index privileges through roles in **Stack Management → Roles**.
 
