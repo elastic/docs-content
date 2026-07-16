@@ -7,7 +7,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Manage application connections [manage-application-connections]
+# Manage application connections
 
 The **Application connections** page in the {{ecloud}} Console gives organization administrators a single place to audit and revoke [OAuth client](oauth-clients.md) connections that members of your organization have authorized across their {{serverless-short}} projects.
 

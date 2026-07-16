@@ -10,9 +10,9 @@ products:
   - id: cloud-serverless
 ---
 
-# Connect an MCP host to an MCP client [connect-mcp-host]
+# Connect an MCP host to an MCP client
 
-After [creating an MCP client](create-oauth-client.md), configure your MCP host with the client ID and MCP server URL, then complete the OAuth consent flow to establish the connection.
+After [creating an MCP client](create-oauth-client.md), configure your MCP host, usually your AI agent, with the client ID and MCP server URL, then complete the OAuth consent flow to establish the connection. After completing the setup, your MCP host has an authorized OAuth connection to {{agent-builder}} and can run its tools with your permissions.
 
 This page covers two common MCP hosts:
 * Claude Code CLI, which has native OAuth support
@@ -26,17 +26,25 @@ Confirm the following before you configure your MCP host:
 
 - You have an MCP host that supports OAuth 2.1, such as the Claude Code CLI or Claude Desktop.
 - You have a client ID and MCP server URL from [creating an MCP client](create-oauth-client.md).
-- You have access to the {{serverless-short}} project that the MCP client is scoped to, not just organization-level access. The connection acts with your own permissions in that project, so you also need the privileges required for the tools you'll run through the MCP server, such as {{agent-builder}} access and read access to any data those tools query. To learn more, refer to [Permissions](/explore-analyze/ai-features/agent-builder/permissions.md).
+- You have access to the {{serverless-short}} project that the MCP client is scoped to, not just organization-level access. The connection acts with your own permissions in that project, so you also need the privileges required for the tools you'll run through the MCP server, such as {{agent-builder}} access and **Read** access to any data those tools query. To learn more, refer to [Permissions](/explore-analyze/ai-features/agent-builder/permissions.md).
 
-## Step 1: Configure your MCP host
+## Connect your MCP host to an MCP client [connect-mcp-host]
+
+Complete the following steps to start using your MCP client in your MCP host.
+
+:::::::{stepper}
+
+::::::{step} Configure your MCP host
 
 Choose the instructions for your host.
 
-### Claude Code CLI
+:::::{tab-set}
+
+::::{tab-item} Claude Code CLI
 
 **Option 1: Native HTTP transport (recommended)**
 
-The Claude Code CLI supports OAuth natively — no additional adapter is required. When you created the client, the redirect URI `http://localhost/callback` should be in your redirect URI list.
+The Claude Code CLI supports OAuth natively, so no additional adapter is required.
 
 Run the following command, replacing `{CLIENT_ID}` and `{MCP_SERVER_URL}` with the values from your client's details page in {{kib}}:
 
@@ -52,9 +60,11 @@ claude mcp add --transport http --client-id {CLIENT_ID} --client-secret kibana-m
 ```
 :::
 
+When Claude Code starts the OAuth flow, it listens for the authorization response at `http://localhost/callback`. This is one of the default redirect URIs populated in the [MCP client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
+
 **Option 2: mcp-remote adapter**
 
-Use this option if your version of Claude Code doesn't support native HTTP OAuth transport. When you created the client, the redirect URI `http://localhost/oauth/callback` should be in your redirect URI list.
+Use this option if your version of Claude Code doesn't support native HTTP OAuth transport.
 
 ```bash
 claude mcp add --transport stdio kibana-mcp -- \
@@ -70,11 +80,15 @@ Replace `{MCP_SERVER_URL}` and `{CLIENT_ID}` with the values from your client's 
 Confidential clients must include the client secret in the `--static-oauth-client-info` JSON: `{"client_id":"{CLIENT_ID}","client_secret":"{CLIENT_SECRET}"}`.
 :::
 
+When the `mcp-remote` adapter starts the OAuth flow, it listens for the authorization response at `http://localhost/oauth/callback`. This is one of the default redirect URIs populated in the [MCP client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
+
 The server is now configured. Start a Claude Code session. The OAuth consent flow triggers automatically on the first use of the server.
 
-### Claude Desktop
+::::
 
-Claude Desktop uses the [mcp-remote](https://www.npmjs.com/package/mcp-remote) adapter to handle OAuth connections. When you created the client, the redirect URI `http://localhost/oauth/callback` should be in your client's redirect URI list.
+::::{tab-item} Claude Desktop
+
+Claude Desktop uses the [mcp-remote](https://www.npmjs.com/package/mcp-remote) adapter to handle OAuth connections.
 
 To configure Claude Desktop:
 
@@ -100,20 +114,33 @@ To configure Claude Desktop:
    Replace `{MCP_SERVER_URL}` and `{CLIENT_ID}` with the values from your client's details page in {{kib}}.
 
    :::{note}
-   Confidential clients also require a `client_secret` in the `--static-oauth-client-info` JSON. Include it as `"client_secret":"{CLIENT_SECRET}"` alongside the `client_id`.
+   Confidential clients also require a `client_secret` in the `--static-oauth-client-info` JSON: `{"client_id":"{CLIENT_ID}","client_secret":"{CLIENT_SECRET}"}`.
    :::
 
 3. Save the file and restart Claude Desktop to load the new configuration.
 
-### Other MCP hosts
+When the `mcp-remote` adapter starts the OAuth flow, it listens for the authorization response at `http://localhost/oauth/callback`. This is one of the default redirect URIs populated in the [MCP client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
 
-Most hosts that support OAuth 2.1 accept a similar configuration. Provide the `{MCP_SERVER_URL}` and `{CLIENT_ID}` in the format your host requires.
+::::
 
-## Step 2: Authorize the connection [authorize-connection]
+::::{tab-item} Other
+
+Most hosts that support OAuth 2.1 accept a similar configuration to Claude. Provide the `{MCP_SERVER_URL}` and `{CLIENT_ID}` in the format your host requires.
+
+::::
+
+:::::
+
+::::::
+
+::::::{step} Authorize the connection
+:anchor: authorize-connection
 
 The first time your MCP host tries to use the configured server, it opens a browser window and starts the OAuth consent flow.
 
-Some tools might require additional manual steps. For example, Claude Code CLI requires that you type `/mcp` or run `claude mcp login <mcp-host-name>` before the browser window opens.
+:::{note} 
+Some tools might require additional manual steps. For example, Claude Code CLI requires that you type `/mcp` or run `claude mcp login <mcp-server-name>` before the browser window opens.
+:::
 
 1. Your browser opens to an {{ecloud}} sign-in page. Sign in with your {{ecloud}} credentials. If you have an active session, you are not prompted to log in again.
 2. The **Connect and authorize** page opens, showing which project the MCP client is requesting access to. Click **Authorize** to grant access.
@@ -121,20 +148,26 @@ Some tools might require additional manual steps. For example, Claude Code CLI r
 
 A new app connection is created scoped to your account and the project the MCP client was registered for. The connection name is auto-generated in the format `<client-name>#<word-pair>`. This connection is visible in both {{kib}} and the {{ecloud}} Console.
 
-If you click **Deny**, no connection is created. The host retries the flow the next time you use a tool, or you can restart the host to trigger a fresh attempt.
+If you click **Deny** on the **Connect and authorize** page, then no connection is created. The host retries the flow the next time you use a tool, or you can restart the host to trigger a fresh attempt.
 
 :::: {admonition} Application permissions
 :::{include} /deploy-manage/_snippets/app-connection-permissions.md
 :::
 ::::
 
-## Optional: Verify the connection
+::::::
 
-To ensure that the connection is registered in {{kib}}, you can check the number of currently active connections for your client.
+::::::{step} Verify the connection
+
+This step is optional. To ensure that the connection is registered in {{kib}}, you can check the number of currently active connections for your client.
 
 In {{kib}}, go to **Agent Builder** → **Tools library**, click **Manage MCP**, and select **Manage MCP clients (OAuth)** to confirm the connection count for your client has increased. If you don't see it within a minute of authorizing, refresh the page.
 
 You can also check your connection in the {{ecloud}} Console at **Organization** → **Security settings** → **Application connections**.
+
+::::::
+
+:::::::
 
 ## Troubleshoot
 

@@ -11,7 +11,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Create an MCP client in Agent Builder [create-oauth-client]
+# Create an MCP client in Agent Builder
 
 Register a new MCP client in {{agent-builder}} to generate the credentials that an MCP host, such as Claude Desktop, needs to connect over OAuth 2.1. This is a one-time pre-registration step: OAuth requires each client to be registered with the OAuth server before any host can connect or any user can authenticate and consent.
 

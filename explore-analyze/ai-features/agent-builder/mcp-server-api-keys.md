@@ -15,7 +15,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Authenticate MCP clients with API keys [mcp-server-api-keys]
+# Authenticate MCP clients with API keys
 
 The [{{agent-builder}} MCP server](mcp-server.md) supports API key authentication for MCP clients. For example, you can let a scheduled script or automated service query your data through {{agent-builder}} tools without a person signing in.
 

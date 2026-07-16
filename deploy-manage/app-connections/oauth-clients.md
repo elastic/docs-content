@@ -10,7 +10,7 @@ products:
   - id: cloud-serverless
 ---
 
-# OAuth for MCP clients [oauth-clients]
+# OAuth for MCP clients
 
 The [](/explore-analyze/ai-features/agent-builder/mcp-server.md) supports OAuth 2.1 as a way for MCP clients to authenticate on behalf of a user, alongside [API keys](/explore-analyze/ai-features/agent-builder/mcp-server-api-keys.md).
 

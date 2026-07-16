@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Revoke an MCP client or connection [revoke-oauth-client]
+# Revoke an MCP client or connection
 
 Revoking OAuth access in {{agent-builder}} immediately cuts off an MCP host's ability to use the Agent Builder tools. You can revoke access at two levels:
 
