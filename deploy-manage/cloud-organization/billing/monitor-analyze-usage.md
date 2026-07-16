@@ -27,7 +27,7 @@ What you can see on the **Usage** page depends on your {{ecloud}} roles:
 * Users with the **Organization owner** or **Billing admin** role can view usage and costs for the entire organization.
 * Members with a cloud resource access role or a connected cluster access role can view usage and costs for the {{ech}} deployments, {{serverless-short}} projects, and connected clusters they have access to.
 
-For any resource you have access to, you can view its complete cost history, including costs from before you were granted access.
+For any resource you have access to, you can view its full available cost history, including costs from before you were granted access.
 
 To access your account usage:
 
