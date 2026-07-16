@@ -19,7 +19,7 @@ Here's what you'll do:
 2. **Write a detection query** - Use the query sandbox to build and preview an {{esql}} query that computes P95 latency and flags breaches. The sandbox lets you verify the logic before the rule ever runs.
 3. **Configure the rule** - Set the alert condition, schedule, lookback window, and recovery behavior. You'll see how each setting shapes the alert lifecycle.
 4. **Confirm the rule is running** - Check the **Execution history** page to see that the rule is evaluating on schedule and its runs are succeeding.
-5. **Watch the episode open and recover** - Open the alert episode's details page to watch the episode move from `pending` to `active` as the breach persists, then close automatically when the degraded data ages out of the lookback window, or immediately if you force recovery.
+5. **Watch the episode open and recover** - Open the alert episode's details page to watch the episode move from `pending` to `active` as the breach persists, then trigger the recovery condition directly to see it close.
 
 ## Requirements [create-rule-requirements]
 
@@ -317,7 +317,7 @@ Confirm the default settings:
 - **Recovery**: `Default recovery`
 - **Recovery delay**: `Immediate` (no delay, recovers on first non-breach)
 
-These default settings will produce the automatic recovery behavior this tutorial demonstrates. As soon as a scheduled run returns no breaching rows, the episode will close.
+These default settings will produce the automatic recovery behavior this tutorial demonstrates. As soon as a scheduled run's query returns no rows (because no service's P95 latency clears the `WHERE p95_latency_ms > 2000` threshold), the episode will close.
 
 Select **Next**.
 
@@ -394,9 +394,9 @@ Select the episode to open its details. Use the metric trend to see how P95 late
 
 ::::
 
-::::{step} (Optional) Force recovery immediately
+::::{step} Force recovery
 
-Rather than waiting about 45 minutes for the degraded data to age out of the lookback window naturally, run the following in **Dev Tools** to rewrite the degraded documents' `latency_ms` values to a healthy level:
+Run the following in **Dev Tools** to rewrite the degraded documents' `latency_ms` values to a healthy level. This triggers the rule's recovery condition directly, so you see the episode close because the condition resolved.
 
 ```json
 POST checkout-service-logs/_update_by_query
@@ -423,4 +423,4 @@ By completing this tutorial, you learned:
 - **Rules** - A rule's schedule and lookback window control how often it evaluates and how much history each evaluation considers.
 - **Severity tiers** - An {{esql}} `CASE()` expression can classify each breach by severity, and those labels are recorded in `.rule-events` and shown on the episode's details page.
 - **Episode lifecycle** - **Alert delay** requires a breach to persist across consecutive evaluations before an episode opens, so transient spikes don't trigger it.
-- **Automatic recovery** - Default recovery closes an episode as soon as a scheduled run finds no breaching rows, whether the underlying data ages out of the lookback window or the condition itself resolves.
+- **Automatic recovery** - Default recovery closes an episode as soon as a scheduled run finds no breaching rows, which is what happens once the underlying condition resolves.
