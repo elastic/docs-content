@@ -35,7 +35,7 @@ To access your account usage:
 2. From the navigation menu, select **Billing > Usage**.
 
 ::::{important}
-The usage breakdown information visible on the **Usage** page is an estimate, and does not include prepaid credits, free allowances or any discounts. To get the exact amount you owe for a given month, check your invoices in the [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md).
+The usage breakdown information visible on the **Usage** page is an estimate, and does not include prepaid credits, free allowances or any discounts. If you're an **Organization owner** or **Billing admin**, check your invoices in the [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md) to find the exact amount you owe for a given month.
 ::::
 
 :::{note}
