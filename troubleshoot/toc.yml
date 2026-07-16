@@ -87,6 +87,19 @@ toc:
           - file: elasticsearch/discovery-troubleshooting.md
           - file: elasticsearch/monitoring-troubleshooting.md
           - file: elasticsearch/transform-troubleshooting.md
+          - file: elasticsearch/machine-learning.md
+            children:
+              - file: elasticsearch/machine-learning/cps-datafeed-linked-project-skipped.md
+              - file: elasticsearch/machine-learning/cps-datafeed-search-scope-changed.md
+              - file: elasticsearch/machine-learning/cps-datafeed-routing-no-match.md
+              - file: elasticsearch/machine-learning/cps-datafeed-stale-project-reference.md
+              - file: elasticsearch/machine-learning/cps-datafeed-cloud-token-mint-failure.md
+              - file: elasticsearch/machine-learning/cps-datafeed-cloud-token-runtime-failure.md
+              - file: elasticsearch/machine-learning/cps-datafeed-field-mapping-mismatch.md
+              - file: elasticsearch/machine-learning/cps-datafeed-schema-drift.md
+              - file: elasticsearch/machine-learning/cps-datafeed-scope-too-broad.md
+              - file: elasticsearch/machine-learning/cps-datafeed-bulk-migration-partial.md
+              - file: elasticsearch/machine-learning/cps-datafeed-clone-project-routing.md
           - file: elasticsearch/watcher-troubleshooting.md
           - file: elasticsearch/elasticsearch-hadoop/elasticsearch-for-apache-hadoop.md
   - file: kibana.md
