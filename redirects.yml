@@ -959,11 +959,11 @@ redirects:
     anchors:
       'managed-integrations-content':
 
-  # Jina on-prem deployment moved to a child page
-  'explore-analyze/machine-learning/nlp/ml-nlp-jina.md':
-    to: 'explore-analyze/machine-learning/nlp/ml-nlp-jina-on-prem.md'
+  # Jina on-prem deployment content moved back to ml-nlp-jina.md
+  'explore-analyze/machine-learning/nlp/ml-nlp-jina-on-prem.md':
+    to: 'explore-analyze/machine-learning/nlp/ml-nlp-jina.md'
     anchors:
-      'jina-on-prem': 'ml-nlp-jina-on-prem'
-      'jina-on-prem-prerequisites': 'jina-on-prem-prerequisites'
-      'jina-on-prem-getting-started': 'jina-on-prem-getting-started'
-      'jina-on-prem-elasticsearch-integration': 'jina-on-prem-elasticsearch-integration'
+      'ml-nlp-jina-on-prem': 'jina-on-prem'
+      'jina-on-prem-prerequisites': 'jina-on-prem'
+      'jina-on-prem-getting-started': 'jina-on-prem'
+      'jina-on-prem-elasticsearch-integration': 'jina-on-prem'

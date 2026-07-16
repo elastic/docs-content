@@ -130,8 +130,6 @@ toc:
             children:
               - file: machine-learning/nlp/ml-nlp-elser.md
               - file: machine-learning/nlp/ml-nlp-jina.md
-                children:
-                  - file: machine-learning/nlp/ml-nlp-jina-on-prem.md
               - file: machine-learning/nlp/ml-nlp-rerank.md
               - file: machine-learning/nlp/ml-nlp-e5.md
               - file: machine-learning/nlp/ml-nlp-lang-ident.md
