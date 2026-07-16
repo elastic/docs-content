@@ -1,6 +1,6 @@
 ---
 navigation_title: "Connect an MCP host"
-description: "Configure an MCP host to use an OAuth MCP client and complete the user consent flow to establish a connection to Agent Builder."
+description: "Configure an MCP host to use an OAuth client and complete the authorization flow to establish a connection to Agent Builder."
 type: how-to
 applies_to:
   serverless: preview
@@ -10,9 +10,9 @@ products:
   - id: cloud-serverless
 ---
 
-# Connect an MCP host to an MCP client
+# Connect an MCP host to {{agent-builder}}
 
-After [creating an MCP client](create-oauth-client.md), configure your MCP host, usually your AI agent, with the client ID and MCP server URL, then complete the OAuth consent flow to establish the connection. After completing the setup, your MCP host has an authorized OAuth connection to {{agent-builder}} and can run its tools with your permissions.
+After [creating an OAuth client](create-oauth-client.md), configure your MCP host, usually your AI agent, with the client ID and MCP server URL, then complete the OAuth authorization flow to establish the connection. After completing the setup, your MCP host has an authorized OAuth connection to {{agent-builder}} and can run its tools with your permissions.
 
 This page covers two common MCP hosts:
 * Claude Code CLI, which has native OAuth support
@@ -25,12 +25,12 @@ Other OAuth 2.1 hosts follow the same general pattern, so consult your host's do
 Confirm the following before you configure your MCP host:
 
 - You have an MCP host that supports OAuth 2.1, such as the Claude Code CLI or Claude Desktop.
-- You have a client ID and MCP server URL from [creating an MCP client](create-oauth-client.md).
-- You have access to the {{serverless-short}} project that the MCP client is scoped to, not just organization-level access. The connection acts with your own permissions in that project, so you also need the privileges required for the tools you'll run through the MCP server, such as {{agent-builder}} access and **Read** access to any data those tools query. To learn more, refer to [Permissions](/explore-analyze/ai-features/agent-builder/permissions.md).
+- You have a client ID and MCP server URL from [creating an OAuth client](create-oauth-client.md).
+- You have access to the {{serverless-short}} project that the OAuth client is scoped to, not just organization-level access. The connection acts with your own permissions in that project, so you also need the privileges required for the tools you'll run through the MCP server, such as {{agent-builder}} access and **Read** access to any data those tools query. To learn more, refer to [Permissions](/explore-analyze/ai-features/agent-builder/permissions.md).
 
-## Connect your MCP host to an MCP client [connect-mcp-host]
+## Connect your MCP host to an OAuth client [connect-mcp-host]
 
-Complete the following steps to start using your MCP client in your MCP host.
+Complete the following steps to start using your OAuth client in your MCP host.
 
 :::::::{stepper}
 
@@ -60,7 +60,7 @@ claude mcp add --transport http --client-id {CLIENT_ID} --client-secret kibana-m
 ```
 :::
 
-When Claude Code starts the OAuth flow, it listens for the authorization response at `http://localhost/callback`. This is one of the default redirect URIs populated in the [MCP client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
+When Claude Code starts the OAuth flow, it listens for the authorization response at `http://localhost/callback`. This is one of the default redirect URIs populated in the [OAuth client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
 
 **Option 2: mcp-remote adapter**
 
@@ -82,7 +82,7 @@ Confidential clients must include the client secret in the `--static-oauth-clien
 
 When the `mcp-remote` adapter starts the OAuth flow, it listens for the authorization response at `http://localhost/oauth/callback`. This is one of the default redirect URIs populated in the [MCP client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
 
-The server is now configured. Start a Claude Code session. The OAuth consent flow triggers automatically on the first use of the server.
+The server is now configured. Start a Claude Code session. The OAuth authorization flow triggers automatically on the first use of the server.
 
 ::::
 
@@ -119,7 +119,7 @@ To configure Claude Desktop:
 
 3. Save the file and restart Claude Desktop to load the new configuration.
 
-When the `mcp-remote` adapter starts the OAuth flow, it listens for the authorization response at `http://localhost/oauth/callback`. This is one of the default redirect URIs populated in the [MCP client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
+When the `mcp-remote` adapter starts the OAuth flow, it listens for the authorization response at `http://localhost/oauth/callback`. This is one of the default redirect URIs populated in the [OAuth client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
 
 ::::
 
@@ -136,17 +136,17 @@ Most hosts that support OAuth 2.1 accept a similar configuration to Claude. Prov
 ::::::{step} Authorize the connection
 :anchor: authorize-connection
 
-The first time your MCP host tries to use the configured server, it opens a browser window and starts the OAuth consent flow.
+The first time your MCP host tries to use the configured server, it opens a browser window and starts the OAuth authorization flow.
 
 :::{note} 
 Some tools might require additional manual steps. For example, Claude Code CLI requires that you type `/mcp` or run `claude mcp login <mcp-server-name>` before the browser window opens.
 :::
 
 1. Your browser opens to an {{ecloud}} sign-in page. Sign in with your {{ecloud}} credentials. If you have an active session, you are not prompted to log in again.
-2. The **Connect and authorize** page opens, showing which project the MCP client is requesting access to. Click **Authorize** to grant access.
+2. The **Connect and authorize** page opens, showing which project the OAuth client is requesting access to. Click **Authorize** to grant access.
 3. The browser confirms the authorization is complete. Close the tab and return to your MCP host.
 
-A new app connection is created scoped to your account and the project the MCP client was registered for. The connection name is auto-generated in the format `<client-name>#<word-pair>`. This connection is visible in both {{kib}} and the {{ecloud}} Console.
+A new app connection is created scoped to your account and the project associated with the OAuth client. The connection name is auto-generated in the format `<client-name>#<word-pair>`. This connection is visible in both {{kib}} and the {{ecloud}} Console.
 
 If you click **Deny** on the **Connect and authorize** page, then no connection is created. The host retries the flow the next time you use a tool, or you can restart the host to trigger a fresh attempt.
 
@@ -177,15 +177,15 @@ Confirm the `{MCP_SERVER_URL}` in your config matches exactly what {{kib}} displ
 
 **Authorization completed but no connection appears in {{kib}}.**
 
-Confirm you have access to the {{serverless-short}} project the client was registered for. If your account doesn't have project access, the consent step fails silently.
+Confirm you have access to the {{serverless-short}} project associated with the OAuth client. If your account doesn't have project access, the authorization step fails silently.
 
 **The host shows a new sign-in prompt after a period of inactivity.**
 
 Connections expire after 30 days without use. Complete the authorization flow again to re-establish the connection.
 
-**The authorization flow fails after you wait on the consent page.**
+**The authorization flow fails after you wait on the authorization page.**
 
-The MCP host's local callback server times out if the **Connect and authorize** page is left open too long before you click **Authorize**. Start the flow again and click **Authorize** promptly without leaving the consent page open.
+The MCP host's local callback server times out if the **Connect and authorize** page is left open too long before you click **Authorize**. Start the flow again and click **Authorize** promptly without leaving the page open.
 
 **You need to start fresh with a new connection.**
 

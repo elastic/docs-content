@@ -1,6 +1,6 @@
 ---
-navigation_title: "Revoke an MCP client or connection"
-description: "Remove an individual connection or an entire MCP client from Agent Builder to cut off OAuth access for a user or application."
+navigation_title: "Revoke an OAuth client or connection"
+description: "Remove an individual connection or an entire OAuth client from Agent Builder to cut off OAuth access for a user or application."
 type: how-to
 applies_to:
   serverless: preview
@@ -12,12 +12,12 @@ products:
   - id: cloud-serverless
 ---
 
-# Revoke an MCP client or connection
+# Revoke an OAuth client or connection
 
 Revoking OAuth access in {{agent-builder}} immediately cuts off an MCP host's ability to use the Agent Builder tools. You can revoke access at two levels:
 
-- **Revoke a connection**: Removes one user's authorized session for an MCP client, while leaving the client registered. The user can reconnect by going through the consent flow again.
-- **Revoke an MCP client**: Revokes the entire client and all its connections. Users whose connections are removed can no longer connect until a new client is created.
+- **Revoke a connection**: Removes one user's authorized session for an OAuth client, while leaving the client registered. The user can reconnect by going through the authorization flow again.
+- **Revoke an OAuth client**: Revokes the entire client and all its connections. Users whose connections are removed can no longer connect until a new client is created.
 
 Organization owners and project administrators can revoke connections for projects they administer from the {{ecloud}} Console. Users can also revoke connections they created themselves from the {{ecloud}} Console. Refer to [](manage-app-connections.md).
   
@@ -40,22 +40,22 @@ To revoke a single connection:
 3. Click **Revoke** in the connection's row. Alternatively, select the checkbox next to each connection you want to revoke and click **Revoke *N* connections**.
 4. Review the details in the confirmation dialog, then click **Revoke**.
 
-The connection is revoked immediately. The MCP client stays registered and can accept new connections. Applications can be reconnected at any time by going through the consent flow again.
+The connection is revoked immediately. The OAuth client stays registered and can accept new connections. Applications can be reconnected at any time by going through the authorization flow again.
 
-## Revoke an MCP client
+## Revoke an OAuth client
 
 Revoking a client immediately terminates all its connections. The client is no longer listed in Agent Builder, and existing OAuth tokens for those connections stop working at the next validation.
 
-To revoke an MCP client:
+To revoke an OAuth client:
 
 1. In {{kib}}, go to **Agent Builder** → **Tools library**, click **Manage MCP**, and select **Manage MCP clients (OAuth)**.
 2. Find the client and click **Revoke** in its row.
 3. In the **Revoke [client name]?** dialog, review the number of active connections that will be affected.
 4. In the **MCP client name** field, type the client name exactly as shown to confirm, then click **Revoke**.
 
-After revocation, users can no longer connect with that client until a new MCP client is created.
+After revocation, users can no longer connect with that client until a new OAuth client is created.
 
-To restore access after revoking a client, you can [create a new MCP client](create-oauth-client.md) and distribute the new credentials to users.
+To restore access after revoking a client, you can [create a new OAuth client](create-oauth-client.md) and distribute the new credentials to users.
 
 ## Related pages
 

@@ -1,6 +1,6 @@
 ---
-navigation_title: "Create an MCP client"
-description: "Register an MCP client in Agent Builder to get the credentials and server URL needed to connect an MCP host over OAuth."
+navigation_title: "Create an OAuth client"
+description: "Register an OAuth client in Agent Builder to get the credentials and server URL needed to connect an MCP host over OAuth."
 applies_to:
   serverless: preview
 products:
@@ -11,15 +11,19 @@ products:
   - id: cloud-serverless
 ---
 
-# Create an MCP client in Agent Builder
+# Create an OAuth client in {{agent-builder}}
 
-Register a new MCP client in {{agent-builder}} to generate the credentials that an MCP host, such as Claude Desktop, needs to connect over OAuth 2.1. This is a one-time pre-registration step: OAuth requires each client to be registered with the OAuth server before any host can connect or any user can authenticate and consent.
+Register a new OAuth client in {{agent-builder}} to generate the credentials that an MCP host, such as Claude Desktop, needs to connect over OAuth 2.1. This is a one-time pre-registration step: OAuth requires each client to be registered with the authorization server before any host can connect or any user can authenticate and authorize access.
 
 Each OAuth client is scoped to a single {{serverless-short}} project. Creating a client gives you a client ID and the MCP server URL for that project. For confidential clients, you also get a client secret that is shown only once and can't be retrieved later.
 
+:::{note}
+In the {{kib}} UI, OAuth clients are labeled **MCP clients**. The button and menu labels in these steps, such as **Add MCP client**, refer to the OAuth client you're creating.
+:::
+
 ## Before you begin [create-oauth-client-before-you-begin]
 
-Before you create an MCP client:
+Before you create an OAuth client:
 
 - Familiarize yourself with the following concepts:
   - [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md), which provides the tools and agents you'll access.
@@ -41,7 +45,7 @@ You can also get to this page from **Admin and settings** → **Application conn
 ::::
 
 ::::{step} Name the client
-Enter a **Client name**. The name is visible to users during the authorization consent flow, so use something that clearly identifies the application (for example, `Claude Desktop — Engineering`).
+Enter a **Client name**. The name is visible to users during the authorization flow, so use something that clearly identifies the application (for example, `Claude Desktop — Engineering`).
 ::::
 
 ::::{step} Select a client logo
@@ -51,7 +55,7 @@ Selecting a logo is cosmetic, and does not pre-configure any settings.
 ::::
 
 ::::{step} Set the redirect URI
-The redirect URI tells the authorization server where to return the user after they grant consent. Select the redirect URI type:
+The redirect URI tells the authorization server where to return the user after they authorize the connection. Select the redirect URI type:
 
 - **Local** — For applications running on your local machine. The redirect URIs are pre-populated with `http://localhost/callback` and `http://localhost/oauth/callback`. Replace or supplement these values to match your Agent's expected callback URL. The authorization server accepts any localhost port, but the path must match exactly. Common values:
   - Claude Desktop (mcp-remote): `http://localhost/oauth/callback`
@@ -84,7 +88,7 @@ The client ID and MCP server URL can be retrieved at any time from the **MCP cli
 % todo: endpoint link
 :::{note}
 
-MCP clients can also be created through the {{kib}} API. To create a client through the API, you must use an {{ecloud}} API key with [Cloud, {{es}}, and {{kib}} API access](/deploy-manage/api-keys/elastic-cloud-api-keys.md#project-access). Creating a client with an API key created directly in {{es}} is not supported. 
+OAuth clients can also be created through the {{kib}} API. To create a client through the API, you must use an {{ecloud}} API key with [Cloud, {{es}}, and {{kib}} API access](/deploy-manage/api-keys/elastic-cloud-api-keys.md#project-access). Creating a client with an API key created directly in {{es}} is not supported. 
 
 Clients created through the API are not visible in the Agent Builder client list in {{kib}}, because they are not owned by a specific user. They appear only in the organization-level [Application connections](manage-app-connections.md) view in the {{ecloud}} Console.
 
@@ -93,7 +97,7 @@ Clients created through the API are not visible in the Agent Builder client list
 
 ## Next steps
 
-Now that you have the connection information for your MCP client, [configure your MCP host to use it](connect-mcp-host.md).
+Now that you have the connection information for your OAuth client, [configure your MCP host to use it](connect-mcp-host.md).
 
 ## Related pages
 
