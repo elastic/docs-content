@@ -15,7 +15,9 @@ The following information applies to your {{ech}} deployments.
 By default, Elastic already encrypts your deployment data and snapshots at rest. You can reinforce this mechanism by providing your own encryption key, also known as Bring Your Own Key (BYOK). To do that, you need a customer-managed key that you set up and manage in your cloud provider’s Key Management Service (KMS).
 
 ::::{note}
-Encryption at rest using customer-managed keys is only available for the Enterprise subscription level, when creating new deployments. The ability to edit encryption settings for existing deployments will be supported at a later date.
+Encryption at rest using customer-managed keys is only available for the Enterprise subscription level.
+
+You can add a customer-managed key when you create a new deployment, or add one to an existing deployment. Once you set a customer-managed key on a deployment, you cannot edit or remove it. The ability to change or remove a customer-managed key will be supported on {{ech}} in the future.
 ::::
 
 
@@ -92,7 +94,6 @@ When a deployment encrypted with a customer-managed key is deleted or terminated
 
 At this time, the following features are not supported:
 
-* Encrypting existing deployments with a customer-managed key
 * Disabling encryption on a deployment
 * Azure: Encrypting deployments using Azure EC or symmetric keys
 
@@ -201,8 +202,8 @@ At this time, the following features are not supported:
 1. Create an RSA key in your Key Vault. The key must be available in each region in which you have deployments to encrypt. You can use the same key to encrypt multiple deployments.
 2. After the key is created, view the key and note the key identifier. It should look similar to the following:
 
-    * `https://example-byok-key-vault.vault.azure.net/keys/test-key` (without version identifier)
-    * `https://example-byok-key-vault.vault.azure.net/keys/test-key/1234` (with version identifier)
+    * `https://<key-vault-name>.vault.azure.net/keys/<key-name>` (without version identifier)
+    * `https://<key-vault-name>.vault.azure.net/keys/<key-name>/<version-id>` (with version identifier)
 
         Later, you will need to provide this identifier to {{ecloud}}.
 
@@ -228,7 +229,11 @@ Provide your key identifier without the key version identifier so {{ecloud}} can
 
 :::::::
 
-## Create a deployment encrypted with your key [ec_create_a_deployment_encrypted_with_your_key]
+## Encrypt a deployment with your key
+
+You can encrypt a deployment with your customer-managed key when you [create a new deployment](#ec_create_a_deployment_encrypted_with_your_key), or [add a key to an existing deployment](#ec_encrypt_an_existing_deployment_with_a_customer_managed_key). Choose the workflow that matches your use case.
+
+### Create a deployment encrypted with your key [ec_create_a_deployment_encrypted_with_your_key]
 
 :::::::{tab-set}
 :group: csps
@@ -446,8 +451,36 @@ The deployment is now created and encrypted using the specified key. Future snap
 ::::::
 
 :::::::
-You can check that your hosted deployment is correctly encrypted with the key you specified. To do that, go to the deployment’s **Security** page and select **Manage encryption key** in **Encryption at rest**.
 
+### Encrypt an existing deployment with your key [ec_encrypt_an_existing_deployment_with_a_customer_managed_key]
+```{applies_to}
+deployment:
+  ess: preview
+```
+
+1. Go to your deployment's **Security** page.
+2. Under **Encryption at rest**, select **Manage encryption key**.
+3. Enter your key identifier (the ARN for {{aws}}, the key identifier for Azure, or the resource ID for Google Cloud) and save your changes.
+
+{{ecloud}} then applies a plan change to encrypt your deployment's data and snapshots with your key. This plan change happens without downtime.
+
+::::{note}
+Once you set a customer-managed key on a deployment, you cannot edit or remove it. Once encryption begins, you cannot undo it or switch to a different key. The ability to change or remove a customer-managed key will be supported on {{ech}} in the future.
+::::
+
+#### Considerations for existing deployments
+
+Keep these considerations in mind when adding a customer-managed key to an existing deployment:
+
+* **Let the process finish.** Once you start encryption with a customer-managed key, let encryption run to completion rather than interrupting it.
+* **Large deployments take longer.** For deployments with more than 1 TB of data, encrypting existing data can take a significant amount of time to complete.
+* **Data transfer costs can apply.** Encrypting an existing deployment can incur data transfer (DTS) costs in your cloud provider account. These costs are expected to be low for {{es}} 8.x and later deployments. Refer to [Reduce data transfer and storage (DTS) costs in {{ecloud}}](https://www.elastic.co/blog/reduce-data-transfer-and-storage-dts-costs-in-elastic-cloud) for more detail.
+* **Snapshots without {{search-snaps}} aren't carried over.** If your deployment doesn't use {{search-snaps}} (that is, it has no frozen or cold data tier), existing snapshots in the original repository are marked for deletion rather than transferred to the new, encrypted repository.
+* **Test on a smaller deployment first.** Before encrypting a large or business-critical deployment, try the process on a smaller deployment first and confirm your cluster is healthy. This reduces the risk of the process failing partway through.
+
+## Verify your deployment encryption
+
+You can check that your hosted deployment is correctly encrypted with the key you specified. To do that, go to the deployment’s **Security** page and select **Manage encryption key** in **Encryption at rest**.
 
 ## Rotate a customer-managed key [rotate-a-customer-managed-key]
 
@@ -491,14 +524,6 @@ When a customer-managed key is permanently revoked and isn’t restored, the dat
 In a future release of {{ecloud}}, you will be able to:
 
 * Remove a customer-managed key and revert your deployment to using an Elastic-managed encryption.
-* Edit the customer-managed key in use in a deployment to re-encrypt it with a different key.
-
-
-## Encrypt an existing deployment using a new customer-managed key [ec_encrypt_an_existing_deployment_using_a_new_customer_managed_key]
-
-Encrypting deployments with a customer-managed key is currently only possible for new deployments. In a future release of {{ecloud}}, you will be able to:
-
-* Encrypt an existing {{ecloud}} deployment with a customer-managed key.
 * Edit the customer-managed key in use in a deployment to re-encrypt it with a different key.
 
 
