@@ -1,5 +1,5 @@
 ---
-navigation_title: Organize your data
+navigation_title: Organize data
 applies_to:
   serverless: preview
   stack: preview 9.2+
