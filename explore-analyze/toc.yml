@@ -237,7 +237,8 @@ toc:
                - file: ai-features/agent-builder/a2a-server.md
                - file: ai-features/agent-builder/mcp-server.md
           - file: ai-features/agent-builder/monitor-usage.md
-          - file: ai-features/agent-builder/agent-traces-dashboard.md
+            children:
+              - file: ai-features/agent-builder/agent-traces-dashboard.md
           - file: ai-features/agent-builder/permissions.md
           - file: ai-features/agent-builder/troubleshooting.md
             children:

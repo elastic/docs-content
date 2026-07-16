@@ -55,13 +55,13 @@ Before you install the dashboard:
 - Install the dashboard in each {{kib}} space where you want it. It is not shared across spaces.
 
 <!-- TODO(#7322): make "Collect agent traces" a link to collect-traces.md and "Read trace data" a link to permissions.md#read-trace-data once #7322 is on main. -->
-<!-- VERIFY(cluster): which privilege lets a user open Management > Gen AI Settings and install or uninstall the dashboard (for example advanced settings save, or a management privilege). Not determinable from source. -->
+<!-- VERIFY(cluster): which privilege lets a user open the GenAI Settings page and install or uninstall the dashboard (for example advanced settings save, or a management privilege). Not determinable from source. -->
 
 ## Install the dashboard
 
 The overview dashboard is not installed automatically. Install it once per {{kib}} space.
 
-1. Go to **Management > GenAI Settings**.
+1. Go to **Management → GenAI Settings**.
 2. In the **Agent Builder Traces** section, confirm that **Collect conversation traces** is on and saved.
 3. Select **Install Dashboard**.
 
