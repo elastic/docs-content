@@ -1,6 +1,6 @@
 ---
 navigation_title: "Collect agent traces"
-description: "Learn how Agent Builder collects agent execution traces into OpenTelemetry data streams in your Elasticsearch deployment, how to configure collection and privacy, and how to grant access."
+description: "Learn how Agent Builder collects agent execution traces into an OpenTelemetry data stream in your Elasticsearch deployment, how to configure collection and privacy, and how to grant access."
 applies_to:
   stack: ga 9.5+
   serverless: ga
@@ -20,14 +20,13 @@ products:
 
 When an agent runs, {{agent-builder}} records the run as OpenTelemetry (OTel) traces. Each trace covers one conversation round. A trace is made up of spans that map to the work the agent did, such as model calls and tool calls.
 
-{{agent-builder}} ingests this data into managed data streams in your {{es}} deployment. It uses two OpenTelemetry data streams:
+{{agent-builder}} ingests this data into a managed data stream in your {{es}} deployment, `traces-agent_builder.otel-*`. It holds the execution spans, such as model calls and tool calls, with their timings, token usage, model, and status.
 
-- `traces-agent_builder.otel-*` holds the execution spans, such as model calls and tool calls, with their timings, token usage, model, and status.
-- `logs-agent_builder.otel-*` holds the conversation content you opt into capturing, such as user prompts, agent responses, system prompts, and tool call details, recorded as OpenTelemetry log records. Content is captured only when you enable it in [Trace privacy settings](#trace-privacy-settings).
+When you opt in to capturing conversation content, that content is added to the spans as attributes, such as user prompts, agent responses, system prompts, and tool call details. Content is captured only when you enable it in [Trace privacy settings](#trace-privacy-settings).
 
-Both are OTel-compatible and use the standard OTel index templates, so they inherit the mappings, settings, and data lifecycle that {{es}} maintains for OTel data.
+The data stream is OTel-compatible and uses the standard OTel index template, so it inherits the mappings, settings, and data lifecycle that {{es}} maintains for OTel data.
 
-These are regular data streams, not system or hidden indices. You can explore and analyze the data with the same tools you use for any other data in {{es}}, including [Discover](/explore-analyze/discover.md), [Dashboards](/explore-analyze/dashboards.md), [Lens](/explore-analyze/visualize/lens.md), and [ES|QL](elasticsearch://reference/query-languages/esql.md).
+This is a regular data stream, not a system or hidden index. You can explore and analyze the data with the same tools you use for any other data in {{es}}, including [Discover](/explore-analyze/discover.md), [Dashboards](/explore-analyze/dashboards.md), [Lens](/explore-analyze/visualize/lens.md), and [ES|QL](elasticsearch://reference/query-languages/esql.md).
 
 Trace collection is space-aware. Each {{kib}} space collects its own traces.
 
@@ -84,9 +83,9 @@ Built-in tools and agents always appear under their real names. When a value is 
 
 ## Grant access to trace data
 
-Trace data is stored in the `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*` data streams. To read it, a role needs `read` and `view_index_metadata` on both patterns.
+Trace data is stored in the `traces-agent_builder.otel-*` data stream. To read it, a role needs `read` and `view_index_metadata` on that pattern.
 
-Access is granted at the index level. Any user who can read these data streams can read all collected traces, so trace access is not scoped per user. To control who can read traces, configure index privileges through roles in **Stack Management → Roles**.
+Access is granted at the index level. Any user who can read this data stream can read all collected traces, so trace access is not scoped per user. To control who can read traces, configure index privileges through roles in **Stack Management → Roles**.
 
 For the full privilege model, including {{kib}} feature and cluster privileges, refer to [Permissions and access control](permissions.md#read-trace-data).
 
@@ -95,7 +94,7 @@ For the full privilege model, including {{kib}} feature and cluster privileges, 
 stack: ga 9.5+
 ```
 
-By default, {{agent-builder}} exports traces to the local data streams in your {{es}}. You can also forward traces to one or more remote OpenTelemetry Protocol (OTLP) endpoints, such as a dedicated observability cluster.
+By default, {{agent-builder}} exports traces to the local data stream in your {{es}} deployment. You can also forward traces to one or more remote OpenTelemetry Protocol (OTLP) endpoints, such as a dedicated observability cluster.
 
 Configure remote endpoints with `xpack.agentBuilder.tracing.exporters` in `kibana.yml`. Each entry takes a `url` and optional `headers` for authentication:
 
@@ -107,7 +106,7 @@ xpack.agentBuilder.tracing:
         Authorization: "ApiKey <encoded-key>"
 ```
 
-Remote export is additive. Traces still go to the local `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*` data streams, and a copy is sent to each configured endpoint. The [trace privacy settings](#trace-privacy-settings) apply to every destination, so content that is excluded locally is also excluded from remote export.
+Remote export is additive. Traces still go to the local `traces-agent_builder.otel-*` data stream, and a copy is sent to each configured endpoint. The [trace privacy settings](#trace-privacy-settings) apply to every destination, so content that is excluded locally is also excluded from remote export.
 
 :::{note}
 Remote export is set in `kibana.yml`, so it is available only on deployments where you can edit the {{kib}} configuration, such as self-managed clusters. It is not available on serverless projects, which do not expose `kibana.yml`.
