@@ -53,7 +53,7 @@ Selecting a logo is cosmetic, and does not pre-configure any settings.
 ::::{step} Set the redirect URI
 The redirect URI tells the authorization server where to return the user after they grant consent. Select the redirect URI type:
 
-- **Local** — For applications running on your local machine. The redirect URIs are pre-populated with `http://localhost:3000/callback` and `http://localhost/oauth/callback`. Replace or supplement these values to match your Agent's expected callback URL. The authorization server accepts any localhost port, but the path must match exactly. Common values:
+- **Local** — For applications running on your local machine. The redirect URIs are pre-populated with `http://localhost/callback` and `http://localhost/oauth/callback`. Replace or supplement these values to match your Agent's expected callback URL. The authorization server accepts any localhost port, but the path must match exactly. Common values:
   - Claude Desktop (mcp-remote): `http://localhost/oauth/callback`
   - Claude Code CLI (native HTTP): `http://localhost/callback`
 - **Remote** — For hosted or cloud-based applications. Enter a single `https://` URL. Plain HTTP is not accepted.
