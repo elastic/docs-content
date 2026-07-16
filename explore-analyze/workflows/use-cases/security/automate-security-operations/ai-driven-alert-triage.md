@@ -25,7 +25,7 @@ If you're new to workflows, complete [Build your first workflow](/explore-analyz
 
 - **Permissions.** `All` on **Analytics > Workflows**, **Security > Cases**, and whatever Agent Builder privilege is required to invoke agents in your space. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 - **Attack Discovery enabled.** Attack Discovery must be running in your {{elastic-sec}} deployment and producing findings. Refer to [Attack Discovery](/solutions/security/ai/attack-discovery.md).
-- **Agent Builder agent.** A configured agent in {{agent-builder}} that can reason over security context. Use one of the built-in agents (for example, the Elastic AI Agent) or a [custom agent](/explore-analyze/ai-features/agent-builder/custom-agents.md). Note the agent ID.
+- **Agent Builder agent.** A configured agent in {{agent-builder}} that can reason over security context. Use one of the built-in agents (for example, the Elastic AI Agent) or a [custom agent](/explore-analyze/ai-features/agent-builder/custom-agents.md). The examples use `elastic-ai-agent` as a default. Substitute your agent ID.
 - **Slack connector.** A Slack [connector](/deploy-manage/manage-connectors.md) or webhook URL for notifications.
 - **Attach the workflow to a rule.** After saving the workflow, attach it to the Attack Discovery detection rule or the rule group you want to triage. Refer to [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md).
 
@@ -129,11 +129,10 @@ Call the agent with the discovery context and a specific prompt. The agent retur
 ```yaml
 - name: triage
   type: ai.agent
-  agent-id: "{{ consts.agent_id }}"
-  connector-id: "{{ consts.connector_id }}"
+  agent-id: elastic-ai-agent
   create-conversation: false
   with:
-    prompt: |
+    message: |
       How should we remediate this attack?
 
       - Use your knowledge of Elastic Defend to generate remediation commands.
@@ -164,11 +163,10 @@ Reuse the agent with a different prompt to get a one-to-two-sentence summary sui
 ```yaml
 - name: ai_summary
   type: ai.agent
-  agent-id: "{{ consts.agent_id }}"
-  connector-id: "{{ consts.connector_id }}"
+  agent-id: elastic-ai-agent
   create-conversation: false
   with:
-    prompt: |
+    message: |
       Produce a one-to-two-sentence summary of the attack below for a Slack
       notification. Wrap entity names like hostnames in backticks.
       Output only the summary, no preamble.
@@ -251,8 +249,6 @@ triggers:
     enabled: true
 
 consts:
-  agent_id: "your-agent-id"
-  connector_id: "your-connector-id"
   slack_webhook: "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
 
 steps:
@@ -299,11 +295,10 @@ steps:
 
       - name: triage
         type: ai.agent
-        agent-id: "{{ consts.agent_id }}"
-        connector-id: "{{ consts.connector_id }}"
+        agent-id: elastic-ai-agent
         create-conversation: false
         with:
-          prompt: |
+          message: |
             How should we remediate this attack? Reference Elastic Defend
             remediation commands, include a confidence score, and do not
             include citations or media.
@@ -320,11 +315,10 @@ steps:
 
       - name: ai_summary
         type: ai.agent
-        agent-id: "{{ consts.agent_id }}"
-        connector-id: "{{ consts.connector_id }}"
+        agent-id: elastic-ai-agent
         create-conversation: false
         with:
-          prompt: |
+          message: |
             Produce a one-to-two-sentence summary of the attack below for a
             Slack notification. Wrap hostnames in backticks. Output only the
             summary.
