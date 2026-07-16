@@ -17,13 +17,14 @@ products:
 
 # Configure data retention with Streams [streams-configure-retention]
 
-Managing data retention across multiple indexes typically requires configuring {{ilm}} ({{ilm-init}}), data stream lifecycle, index templates, and index settings, each in a different place. Streams replaces this with a single UI so you can control storage costs and meet regulatory or compliance requirements.
+Managing data retention across multiple indexes typically requires configuring {{ilm}} ({{ilm-init}}), data stream lifecycle, index templates, and index settings, each in a different place. Streams replaces this with a single UI so you can control storage and meet regulatory or compliance requirements.
 
 The **Retention** tab provides a single place to manage lifecycle policies for your streams:
 
 - **Set retention periods per stream**: Configure how long each stream retains data without touching {{ilm-init}} policies, index templates, or index settings directly.
 - **Parent retention cascades to child streams**: For wired streams, parent stream retention policies automatically apply to child streams. Override at the child level when a specific child stream needs different retention settings.
 - **Monitor storage in one view**: See storage size, ingestion averages, and tier distribution so you can align retention periods with storage costs and compliance requirements.
+- **Reduce storage with downsampling**: For time series data, replace high-resolution metrics with statistical summaries as data ages. This reduces storage costs and lets you retain data longer, with some loss of temporal precision.
 
 ## Before you get started [streams-configure-retention-permissions]
 
@@ -43,7 +44,7 @@ Follow these steps to review your stream's storage footprint, choose a retention
 ::::::{step} Open the Retention tab
 1. Open **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select your stream from the list.
-1. Go to the **Retention** tab.
+1. Go to the **Data lifecycle** tab.
 ::::::
 
 ::::::{step} Review storage and ingestion data
@@ -67,8 +68,8 @@ Select **Edit retention method** to open the configuration options, then choose 
 - **Inherit retention**: Use retention settings from the stream's index template (classic streams) or parent stream (wired streams).
     - **Classic streams**: This preserves existing data streams' behavior while still benefiting from Streams' other features.
     - **Wired streams**: Child streams automatically inherit lifecycle settings and updates from their parent stream.
-- **Set a retention period**: Define a minimum number of days before data is deleted. Data stays in the hot phase for best performance.
-- **Follow an {{ilm-init}} policy**: Apply an existing {{ilm-init}} policy to automate how data moves through lifecycle phases as it ages.
+- **Set a retention period**: Define a minimum number of days before data is deleted. Data stays in the hot phase for best performance. Recommended when retention is specific to a single stream.
+- **Follow an {{ilm-init}} policy**: Apply an existing {{ilm-init}} policy to automate how data moves through lifecycle phases as it ages. Recommended when you want to share a policy across multiple streams.
 
 :::::{tab-set}
 
@@ -149,6 +150,14 @@ This opens the **Edit data phases** window where you can configure or update you
 
 For more information, refer to [{{ilm}} phases and actions](../../../manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md).
 
+### {{search-snaps-cap}} [streams-configure-retention-searchable-snapshots]
+
+{{search-snaps-cap}} let you search infrequently accessed, read-only data directly from a snapshot repository without needing replica shards, significantly reducing storage costs. A local data cache is kept to allow fast repeat access. They are best suited for historical data that requires infrequent access or archival.
+
+{{search-snaps-cap}} are available in the Cold and Frozen phases.
+
+For more information, refer to [{{search-snaps-cap}}](../../../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md).
+
 ### Downsampling [streams-configure-retention-downsampling]
 
 Downsampling reduces storage for time series data by replacing original metrics with statistical summaries at a higher sampling interval. For example, metrics sampled every 10 seconds can be consolidated into hourly data points as the data ages, significantly reducing storage while keeping the data queryable.
@@ -157,16 +166,10 @@ Downsampling is available in the Hot, Warm, and Cold phases and only applies to 
 
 For more information, refer to [Downsampling concepts](../../../manage-data/data-store/data-streams/downsampling-concepts.md).
 
-### {{search-snaps-cap}} [streams-configure-retention-searchable-snapshots]
-
-{{search-snaps-cap}} let you search infrequently accessed, read-only data directly from a snapshot repository without needing replica shards, significantly reducing storage costs. They are best suited for archival or historical data that requires infrequent access.
-
-{{search-snaps-cap}} are available in the Cold and Frozen phases.
-
-For more information, refer to [{{search-snaps-cap}}](../../../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md).
-
 ## Set failure store retention [streams-configure-failure-store-retention]
 
-A [failure store](../../../manage-data/data-store/data-streams/failure-store.md) is a secondary set of indices inside a data stream, dedicated to storing failed documents.
+When a document fails to ingest because of a processor error or a mapping conflict, it is written to the [failure store](../../../manage-data/data-store/data-streams/failure-store.md) instead of being dropped. This lets you inspect what went wrong and fix issues using the actual failing documents, rather than losing data silently.
 
 You can enable and configure failure store retention directly from the **Retention** tab. Select **Enable failure store** to turn it on and set the retention period for failed documents.
+
+To review and resolve ingestion failures, refer to [Manage data quality](./manage-data-quality.md).

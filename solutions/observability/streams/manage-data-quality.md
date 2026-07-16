@@ -24,7 +24,7 @@ The Streams **Data quality** tab provides a single place to monitor and resolve 
 - **Failed documents are preserved, not dropped**: When a processing error occurs, data lands in a [failure store](#streams-data-quality-failure) instead of being lost, so nothing is silently discarded.
 - **No separate infrastructure needed**.
 - **See exactly what is failing and why**: The **Data quality** tab shows failure counts, error types, and sample messages, so you can identify problems immediately rather than searching for them.
-- **Fix issues against the actual failing documents**: Instead of re-ingesting data from the source, you iterate on the processor using the exact documents that failed, with real-time validation before deploying the fix.
+- **Fix issues against the actual failing documents**: Instead of re-ingesting data from the source, you iterate on the processor in the **Processing** tab using the exact documents that failed, with real-time validation before deploying the fix.
 
 ## Find and fix data quality issues [streams-data-quality-workflow]
 
@@ -40,7 +40,7 @@ Use Streams to identify failing documents, trace the source of failure, and depl
 
 ::::::{step} Check the quality score
 
-The **Data quality** column on the main **Streams** page shows the health of each stream at a glance: **Good**, **Degraded**, or **Poor**. Filter by quality status to see streams that need attention.
+A stream's data quality (**Good**, **Degraded**, or **Poor**) is displayed at the top of each stream's page so you can assess health at a glance.
 
 :::{dropdown} How is the quality score calculated?
 
@@ -89,7 +89,7 @@ Refer to [Process your documents](./parse-and-process.md) for detailed guidance 
 
 A [failure store](../../../manage-data/data-store/data-streams/failure-store.md) is a secondary set of indices inside a data stream, dedicated to storing failed documents. Instead of losing documents that are rejected during ingestion, a failure store retains them in a `::failures` index, so you can review failed documents to understand what went wrong and how to fix it.
 
-For example, for a stream called `my-stream`, Streams fetches all documents from the `my-stream::failures` index from within the specified time range in the date picker.
+For example, for a stream called `my-stream`, the failure store would be accessible by querying `my-stream::failures`.
 
 For more information on data quality, refer to the [data set quality](../data-set-quality-monitoring.md) documentation.
 

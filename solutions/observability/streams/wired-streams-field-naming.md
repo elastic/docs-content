@@ -32,7 +32,7 @@ Data ingested into the `logs.ecs` endpoint is stored in the original ECS field n
 
 ### `logs.otel` endpoint
 
-Data ingested into the `logs.otel` endpoint is stored and processed in a normalized OpenTelemetry (OTel)–compatible format. This format aligns ECS fields with OTel semantic conventions so all data is consistently structured and OTTL-expressible.
+Data ingested into the `logs.otel` endpoint is stored in OTel format. ECS fields are translated to their OTel semantic convention equivalents, so data is consistently structured and OTTL-expressible.
 
 When data is ingested into a wired stream, it's automatically translated into this normalized format:
 

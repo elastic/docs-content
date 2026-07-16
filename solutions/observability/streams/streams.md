@@ -14,59 +14,46 @@ products:
   - id: elastic-stack
 ---
 
-# Streams-old
+# Streams
 
-Streams provides a single, centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data, so you don't need to use multiple applications or manually configure underlying {{es}} components.
+Streams lets you parse, structure, and organize your log data so you can query it immediately, without writing Grok expressions or maintaining custom pipelines.
 
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/streams
-:::
+When an incident occurs, Streams gets you to answers faster. AI-powered detection continuously scans your logs for critical signals and surfaces what matters. Instead of manually scanning thousands of log lines, you get a prioritized list of what matters.
 
-## Classic versus wired streams [streams-classic-vs-wired]
+## What you can do with Streams
 
-Streams can operate in two modes: wired and classic. Both manage data streams in {{es}}, but differ in configuration, inheritance, and field mapping.
+**Organize logs automatically**
+:   Streams uses AI to partition your log data by source and component, without manual regex rules or pipeline configuration. As new log formats arrive, Streams continues to learn and extend its partitioning automatically.
 
-### Classic streams [streams-classic-streams]
+**Get meaning from logs**
+:   The AI-powered processing pipeline detects log formats and generates parsing rules that extract structured fields from unstructured text. You get clean, queryable data without writing a single Grok expression.
 
-Classic streams work with existing {{es}} data streams. Use classic streams when you want the ease of extracting fields and configuring data retention while working with data that's already being ingested into {{es}}.
+**Reduce time spent on managing pipelines**
+:   Streams uses AI to simplify parsing, enrichment, partitioning, and schema updates. You can start investigating issues within minutes, rather than spending weeks on pipeline setup and data engineering.
 
-Classic streams:
+**Control storage costs**
+:   By surfacing the most critical logs and automatically structuring data for efficient storage, Streams lets you retain high-value data without discarding important information, reducing overall storage costs.
 
-- Are based on existing data streams, index templates, and component templates.
-- Can follow the data retention policy set in the existing index template.
-- Do not support hierarchical inheritance or cascading configuration updates.
+## Before you get started
 
-### Wired streams [streams-wired-streams]
-```{applies_to}
-stack: preview 9.2
-serverless: preview
-```
+To use Streams, you need the following prerequisites:
 
-Wired streams send data directly to an endpoint, from which you can route data into child streams based on [partitioning](./management/partitioning.md) set up manually or with the help of AI suggestions.
+- {{ech}} ({{stack}} 9.2+) or {{serverless-short}}
+- A [generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md) to use AI features like pipeline suggestion, partition suggestions, and significant events. Any generative AI connector works, including [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md), which requires no external account or API key.
 
-Wired streams:
-- Allow you to organize streams in a parent-child hierarchy.
-- Let child streams automatically inherit mappings, lifecycle settings, and processors.
-- Send configuration changes through the hierarchy to keep streams consistent.
+    :::{note}
+    A {{ml}} node is not required. Streams' AI features use the generative AI connector and do not depend on {{ml}} infrastructure.
+    :::
 
-For more information, refer to [Wired streams](./wired-streams.md).
-
-## Managed components [streams-managed-components]
-When you configure classic or wired streams through the Streams UI or [Streams API](#streams-api), {{es}}-level components like templates and pipelines are created for the stream. These components are considered *managed* and shouldn't be modified using {{es}} APIs. When managing a stream through the Streams UI or API, continue doing so whenever possible.
-
-You can still edit non-managed ingest pipelines, templates, and other components, but avoid those marked as managed or any per-data-stream mappings and settings. This behavior is similar to how Elasticsearch handles components managed by integrations. Refer to the [**Advanced** tab](./management/advanced.md) to review managed components.
-
-## Required permissions [streams-required-permissions]
-
-Streams requires the following permissions:
+You also need {{kib}} access with the following permissions:
 
 ::::{applies-switch}
 
 :::{applies-item} serverless:
-Streams requires these {{serverless-full}} roles:
+Streams requires one of the following {{serverless-full}} roles:
 
-- Admin: Ability to manage all Streams
-- Editor/Viewer: Limited access, cannot perform all actions
+- Admin: Able to manage all Streams
+- Editor/Viewer: Has limited access to Streams, cannot perform all actions
 
 :::
 
@@ -79,50 +66,65 @@ To manage all streams, you need the following permissions:
 To view streams, you need the following permissions:
 - **Data stream level**: `read`, `view_index_metadata`, `monitor`
 
-For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md)
+For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md).
 
 :::
 
 ::::
 
-## Manage Streams visibility [streams-space-privileges]
-```{applies_to}
-stack: ga 9.3+
-serverless: ga
-```
 
-You can set Streams visibility on a space-by-space basis by defining users' access to specific spaces. Refer to [Define access to a space](../../../deploy-manage/manage-spaces.md#spaces-control-user-access) for more information.
+## Get started with Streams
 
-Space settings only affect visibility. Set permissions to manage and edit Streams at the {{es}} level. Refer to [Required permissions](#streams-required-permissions) for more information.
+Follow these main steps to get started with Streams in {{kib}}. You can find links to send data to Streams, organize your data, parse and enrich your logs, set retention policies, and monitor data quality.
 
-% :::{note}
-% Creating [significant events](./management/significant-events.md) requires access to the `default` space.
-% :::
+This overview helps you familiarize yourself with the Streams UI and its core workflows. You can follow along directly in your {{ech}} or {{serverless-short}} environment.
 
-## Access Streams [streams-access]
+Open **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-Open Streams from the following places in {{kib}}:
+:::::{stepper}
 
-- Select **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+::::{step} Get data in
+Streams supports two ingestion paths:
 
-- Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document that's stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams then opens filtered to the selected data stream.
+- **[Ingest new data](./get-data-in.md#get-data-in-wired)**: Send logs to a managed endpoint for new ingestion. Data lands in a managed hierarchy with inheritance, partitioning, and cascading configuration. Best for new deployments, custom logs, and mixed-format sources.
+- **[Work with existing data](./get-data-in.md#get-data-in-classic)**: Work with data already flowing into {{es}}. No migration or configuration changes required.
+::::
 
-### Streams API [streams-api]
-``` yaml {applies_to}
-stack: preview 9.1
-serverless: preview
-```
+::::{step} Organize your data
 
-You can also access Streams features using the Streams API. Refer to the [Streams API documentation]({{kib-apis}}group/endpoint-streams) for more information.
+:::{note}
+Organizing your data using partitions is only available when sending data to the `logs.otel` or `logs.ecs` managed endpoints. If you're using data that is already flowing to {{es}}, skip this step.
+:::
 
-## Manage individual streams [streams-management-tab]
+Use the [**Partitioning**](./organize-your-data.md) tab to route subsets of your stream data into dedicated child streams. Each child stream inherits the parent's configuration but can be managed independently with its own retention policy, processing rules, and field mappings.
 
-Interact with and configure your streams in the following ways:
+Create partitions manually using field-based conditions, or let AI analyze your data and suggest groupings.
 
-- [**Retention**](./management/retention.md): Manage how your stream retains data and get insight into data ingestion and storage size.
-- [**Partitioning**](./management/partitioning.md): {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Route data into child streams.
-- [**Processing**](./management/extract.md): Parse and extract information from documents into dedicated fields.
-- [**Schema**](./management/schema.md): Manage field mappings.
-- [**Data quality**](./management/data-quality.md): Get information about failed and degraded documents in your stream.
-- [**Advanced**](./management/advanced.md): Review and manually modify underlying {{es}} components of your stream.
-- [**Knowledge Indicators**](./management/knowledge-indicators.md): Automatically extract structured facts about your environment from raw log data.
+::::
+
+::::{step} Parse and process
+Use the [**Processing**](./parse-and-process.md) tab to build a document processing pipeline that extracts structured fields from raw log messages:
+
+- **Suggest a pipeline**: Let AI analyze sample documents and generate a complete processor pipeline.
+- **Manually add processors**: Select and configure individual processors when you know which transformations you need.
+- **Add conditions**: Attach Boolean expressions to run processors only when certain criteria are met.
+
+After adding processors, the **Data preview** simulates results, so you can verify field extraction before saving.
+::::
+
+::::{step} Configure retention
+Use the [**Retention**](./configure-retention.md) tab to control how long each stream stores data and manage storage costs. Review storage size, ingestion averages, and tier distribution before choosing a retention method:
+
+- **[Inherit retention](./configure-retention.md#streams-configure-retention-steps)**: Use settings from the stream's index template or parent stream.
+- **[Set a retention period](./configure-retention.md#streams-configure-retention-steps)**: Define a minimum number of days before data is deleted.
+- **[Follow an {{ilm}} ({{ilm-init}}) policy](./configure-retention.md#streams-configure-retention-steps)**: Apply an existing {{ilm-init}} policy to automate data movement through lifecycle phases.
+::::
+
+::::{step} Manage data quality
+The **Data quality** column on the **Streams** main page shows each stream's health (**Good**, **Degraded**, or **Poor**) at a glance, and lets you filter by health status. Select a stream or open the [**Data quality**](./manage-data-quality.md) tab to examine more closely and resolve issues.
+
+When documents fail during ingestion, Streams preserves them in a [failure store](./manage-data-quality.md#streams-data-quality-failure) rather than dropping them, so you can inspect what went wrong and fix the processor using the actual failing documents.
+::::
+
+:::::
+
