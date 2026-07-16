@@ -37,7 +37,7 @@ Replace `[project]` with the linked project alias from your message.
 
 **Check annotations**
 
-{{es}} also writes `SEARCH_SCOPE_CHANGED` annotations to `.ml-annotations-*` for the job id. Search that index for the job id and annotation type `search_scope_changed` to see when scope stabilized and which projects changed.
+{{es}} also writes scope-change annotations to `.ml-annotations-*` for the job id. Search that index for the job id and annotation type `search_scope_changed` to see when scope stabilized and which projects changed.
 
 **Check datafeed statistics**
 
