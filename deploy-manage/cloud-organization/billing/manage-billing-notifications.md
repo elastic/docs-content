@@ -16,7 +16,7 @@ To help you understand costs and manage spending on {{ecloud}}, you can create b
 Who can create, view, and manage a budget depends on its scope:
 
 * **Organization** budgets, which track your entire {{ecloud}} organization, can be created, viewed, and managed only by **Organization owners** and **Billing admins**.
-* **Cloud resource** budgets can be managed by members with access to the resources in the budget's scope. To view a cloud-resource budget, you need view access to every resource in its scope. To create, edit, or delete one, you need a role that can manage every resource in its scope, such as **Admin** or **Editor**. Members with only **Viewer** access can view these budgets but can't change them.
+* **Cloud resource** budgets track specific resources, which can include {{ech}} deployments, {{serverless-short}} projects, and connected clusters. To view one, you need view access to every resource in its scope. To create, edit, or delete one, you need access to manage every resource in its scope.
 
 You can associate each budget with specific [user roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) in your organization. Users with those roles receive email notifications when budget alerts are triggered. You select the roles as part of the budget creation workflow described in the following section.
 
