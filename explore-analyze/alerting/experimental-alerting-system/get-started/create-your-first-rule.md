@@ -317,7 +317,7 @@ Confirm the default settings:
 - **Recovery**: `Default recovery`
 - **Recovery delay**: `Immediate` (no delay, recovers on first non-breach)
 
-These default settings will produce the automatic recovery behavior this tutorial demonstrates. As soon as a scheduled run's query returns no rows (because no service's P95 latency clears the `WHERE p95_latency_ms > 2000` threshold), the episode will close.
+These default settings will produce the automatic recovery behavior this tutorial demonstrates. As soon as a scheduled run finds that the service's P95 latency is back under the 2-second threshold, the episode will close.
 
 Select **Next**.
 
@@ -410,7 +410,7 @@ POST checkout-service-logs/_update_by_query
 }
 ```
 
-This rewrites the degraded documents to a healthy latency value, so the next scheduled run (within 5 minutes) finds no breaching rows and moves the episode to `inactive`. Go to the **Alerts** page and open the episode's details again to confirm.
+This rewrites the degraded documents to a healthy latency value, so the next scheduled run (within 5 minutes) finds the service's P95 latency back under the threshold and moves the episode to `inactive`. Go to the **Alerts** page and open the episode's details again to confirm.
 
 ::::
 
@@ -423,4 +423,4 @@ By completing this tutorial, you learned:
 - **Rules** - A rule's schedule and lookback window control how often it evaluates and how much history each evaluation considers.
 - **Severity tiers** - An {{esql}} `CASE()` expression can classify each breach by severity, and those labels are recorded in `.rule-events` and shown on the episode's details page.
 - **Episode lifecycle** - **Alert delay** requires a breach to persist across consecutive evaluations before an episode opens, so transient spikes don't trigger it.
-- **Automatic recovery** - Default recovery closes an episode as soon as a scheduled run finds no breaching rows, which is what happens once the underlying condition resolves.
+- **Automatic recovery** - With default recovery, an episode closes as soon as a scheduled run finds the alert condition is no longer met, which is exactly what happened right after rewriting the latency values.
