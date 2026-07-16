@@ -20,7 +20,7 @@ Before you manage application connections:
 * You have access to the {{ecloud}} Console for your organization. To open the page, go to **Organization** → **Security settings** → **Application connections**.
 * Your role determines what you can see and revoke:
   * **Organization owners** see every application connection in the organization.
-  * **Other users** see connections for the projects they administer, plus any connections they authorized themselves.
+  * Other users see connections for the projects they administer, plus any connections they authorized themselves.
 
 ## View application connections
 
@@ -28,7 +28,7 @@ The **Application connections** page shows each MCP client and its connections.
 
 The page offers two views, toggled by the **Group by client** and **List view** buttons:
 
-* **Group by client**: Lists each MCP client with a count of its connections. Expand a client row to see individual connections.
+* **Group by client**: Lists each MCP client with a count of its connections.
 * **List view**: Shows all connections in a flat, sortable table.
 
 In grouped view, expand a client to see its individual connections. Each connection row shows the following details:
@@ -65,7 +65,7 @@ Select a client to open its details panel. The panel shows the connection detail
 
 * **Client ID**: The unique identifier for the MCP client.
 * **MCP server URL**: The redirect URIs configured for this client. These are the callback URLs used during the OAuth consent flow.
-* If a client secret configured, an indicator that a client secret is required for this client.
+* If a client secret is configured, an indicator that a client secret is required for this client.
 
 <!-- Do NOT hardcode the MCP server URL / AS URL in examples — format is changing per cp-iam-team #2957. -->
 
@@ -96,8 +96,6 @@ To revoke an entire MCP client and all its connections, the client's creator rem
 To restore access after revoking a client, [create a new MCP client](create-oauth-client.md) and distribute the credentials to users.
 
 ## Related pages
-
-See also:
 
 * [](create-oauth-client.md)
 * [](connect-mcp-host.md)

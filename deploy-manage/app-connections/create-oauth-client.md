@@ -71,7 +71,7 @@ The client secret is displayed after you create the client. The secret is only d
 Click **Create client**. The **Copy server details for [client name]** dialog displays the values your MCP host (AI agent) needs to authenticate:
 
 - **Client ID**: The identifier for this client.
-- **MCP server URL**: The endpoint your MCP host (AI agent) uses to reach this project's {{agent-builder}} tools.
+- **MCP server URL**: The endpoint your MCP host uses to reach this project's {{agent-builder}} tools.
 - **Client secret**: Appears for confidential clients only. This value is displayed only once and can't be retrieved later, so copy or download it before you close the dialog.
 
 You'll use these values to [connect an MCP host](connect-mcp-host.md).

@@ -164,8 +164,6 @@ When access is no longer needed, [revoke the connection](revoke-oauth-client.md)
 
 ## Related pages
 
-See also:
-
 - [](oauth-clients.md)
 - [](create-oauth-client.md)
 - [](manage-app-connections.md)

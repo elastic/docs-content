@@ -64,7 +64,5 @@ The following table compares the two paths.
 
 ## Related pages
 
-See also:
-
 - [](programmatic-access.md)
 - [](/deploy-manage/app-connections/oauth-clients.md)

@@ -44,7 +44,7 @@ The OAuth flow follows these steps:
 1. A user [creates an OAuth client](create-oauth-client.md) in {{kib}}, scoped to one {{serverless-short}} project, and receives a client ID and an MCP server URL. These values can be used to [configure MCP hosts](connect-mcp-host.md).
 2. The first time the MCP host (AI agent) needs access, it opens a browser for the user to authenticate and consent. Authentication is always required for consent, but might not require an explicit login if the user already has an active {{ecloud}} session.
 3. On consent, an app connection is created and the client receives tokens. The OAuth client presents these to the MCP server, which exchanges them internally to access {{es}} with the user's current permissions.
-4. The user, a project administrator, or an organization owner can revoke the connection or the whole client at any time, at the [project](revoke-oauth-client.md) or [organization](manage-app-connections.md) level.
+4. The user, a project administrator, or an organization owner can revoke the connection or the whole client at any time, at the [project](revoke-oauth-client.md) or [organization](manage-app-connections.md#revoke-connections) level.
 
 OAuth tokens are accepted only by the {{agent-builder}} MCP server. They don't grant direct access to {{kib}} or {{es}} APIs.
 
@@ -52,7 +52,7 @@ OAuth tokens are accepted only by the {{agent-builder}} MCP server. They don't g
 
 A single OAuth client registration can be reused by any number of people. After you create a client, you can share its connection details so that others configure the same client in their own MCP hosts (AI agents). Each person authenticates and consents separately, which creates a distinct app connection scoped to that person's own permissions. Revoking one person's connection leaves the others active, while revoking the client ends access for everyone.
 
-### About tokens
+### Access tokens
 
 Access tokens are short-lived and refreshed automatically in the background, so an active connection keeps working without user action. Refresh is inactivity-based: after 30 days without use, a connection expires and the user must consent again. Because expiry is detected only when a connection is next used, a connection that shows as connected might be idle and not yet revalidated.
 

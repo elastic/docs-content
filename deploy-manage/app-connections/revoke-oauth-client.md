@@ -37,21 +37,10 @@ To revoke a single connection:
 
    You can also reach this page from **Agent Builder** → **Tools library** → **Manage MCP** → **Manage MCP clients (OAuth)** by clicking **Manage application connections**.
 2. Find the connection. In **Group by client** view, expand a client row to see its connections. Switch to **List view** to see all connections in a flat list.
-3. Click **Revoke** in the connection's row.
+3. Click **Revoke** in the connection's row. Alternatively, select the checkbox next to each connection you want to revoke and click **Revoke *N* connections**.
 4. Review the details in the confirmation dialog, then click **Revoke**.
 
 The connection is revoked immediately. The MCP client stays registered and can accept new connections. Applications can be reconnected at any time by going through the consent flow again.
-
-## Revoke multiple connections
-
-To revoke several connections at once:
-
-1. In {{kib}}, go to **Admin and settings** → **Application connections**.
-
-   You can also reach this page from **Agent Builder** → **Tools library** → **Manage MCP** → **Manage MCP clients (OAuth)** by clicking **Manage application connections**.
-2. Select the checkbox next to each connection you want to revoke. To select all connections for a client, select the checkbox in the client's row.
-3. Click **Revoke *N* connections**.
-4. Review the list in the confirmation dialog, then click **Revoke**.
 
 ## Revoke an MCP client
 
@@ -69,8 +58,6 @@ After revocation, users can no longer connect with that client until a new MCP c
 To restore access after revoking a client, you can [create a new MCP client](create-oauth-client.md) and distribute the new credentials to users.
 
 ## Related pages
-
-See also:
 
 - [](oauth-clients.md)
 - [](create-oauth-client.md)
