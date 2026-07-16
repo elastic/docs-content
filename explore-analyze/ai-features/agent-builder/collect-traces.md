@@ -89,29 +89,6 @@ Access is granted at the index level. Any user who can read this data stream can
 
 For the full privilege model, including {{kib}} feature and cluster privileges, refer to [Permissions and access control](permissions.md#read-trace-data).
 
-## Export traces to a remote OTLP endpoint
-```{applies_to}
-stack: ga 9.5+
-```
-
-By default, {{agent-builder}} exports traces to the local data stream in your {{es}} deployment. You can also forward traces to one or more remote OpenTelemetry Protocol (OTLP) endpoints, such as a dedicated observability cluster.
-
-Configure remote endpoints with `xpack.agentBuilder.tracing.exporters` in `kibana.yml`. Each entry takes a `url` and optional `headers` for authentication:
-
-```yaml
-xpack.agentBuilder.tracing:
-  exporters:
-    - url: "https://remote-cluster:9200/_otlp/v1/traces"
-      headers:
-        Authorization: "ApiKey <encoded-key>"
-```
-
-Remote export is additive. Traces still go to the local `traces-agent_builder.otel-*` data stream, and a copy is sent to each configured endpoint. The [trace privacy settings](#trace-privacy-settings) apply to every destination, so content that is excluded locally is also excluded from remote export.
-
-:::{note}
-Remote export is set in `kibana.yml`, so it is available only on deployments where you can edit the {{kib}} configuration, such as self-managed clusters. It is not available on serverless projects, which do not expose `kibana.yml`.
-:::
-
 ## Build dashboards on trace data
 
 When trace collection is on, {{agent-builder}} provides a prebuilt overview dashboard for agent activity and token usage. You install or reinstall it per space from the **Agent Builder Traces** settings section. For what each panel shows and the full span and attribute reference, refer to Agent Builder traces overview dashboard.
