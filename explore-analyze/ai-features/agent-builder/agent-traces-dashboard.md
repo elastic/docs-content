@@ -1,5 +1,5 @@
 ---
-navigation_title: "Agent traces dashboard"
+navigation_title: "Overview dashboard"
 description: "Install and use the prebuilt Agent Builder overview dashboard to monitor agent activity, token usage, latency, and tool calls from trace data."
 applies_to:
   stack: ga 9.5+
