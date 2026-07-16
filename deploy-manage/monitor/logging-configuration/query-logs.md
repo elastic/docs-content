@@ -20,7 +20,7 @@ The following query types are supported:
 - `esql`: [{{esql}}](elasticsearch://reference/query-languages/esql.md) queries
 - `eql`: [EQL](elasticsearch://reference/query-languages/eql/eql-syntax.md) queries
 - `sql`: [SQL](elasticsearch://reference/query-languages/sql.md) queries
-- `promql`: [PromQL API](elasticsearch://reference/query-languages/promql/promql-http-api.md) queries
+- `promql`: [PromQL API](elasticsearch://reference/query-languages/promql/promql-http-api.md) queries {applies_to}`stack: ga 9.6`
 
 ## When to use query logging
 
@@ -318,7 +318,7 @@ Using parent task and node IDs, you can correlate the log entries of queries ini
 
 These fields are specific to query logging and common for all query languages.
 
-- `elasticsearch.querylog.type`: The type of operation (`dsl`, `esql`, `sql`, `eql`).
+- `elasticsearch.querylog.type`: The type of operation (`dsl`, `esql`, `sql`, `eql`, `promql`).
 - `elasticsearch.querylog.took`: How long the request took to complete, in nanoseconds. This is the same value as `event.duration`.
 - `elasticsearch.querylog.took_millis`: How long (in milliseconds) the request took to complete.
 - `elasticsearch.querylog.timed_out`: Boolean specifying whether the query timed out.
