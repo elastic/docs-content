@@ -267,6 +267,23 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where {{elastic-defend}} on Windows could log a warning about "Quarantine directory failed validation due to ACL or file attribute change" for empty removable media drives such as optical drives.
 * Fixes an issue in {{elastic-defend}} that could cause the system to lock up for up to several minutes during {{elastic-defend}} uninstallation or upgrade.
 
+## 9.3.8 [elastic-security-9.3.8-release-notes]
+
+### Features and enhancements [elastic-security-9.3.8-features-enhancements]
+
+* Adds the LXC container name to event telemetry for {{elastic-defend}} on Linux.
+
+### Fixes [elastic-security-9.3.8-fixes]
+
+* Fixes an issue where opening the rule details flyout for a deleted rule crashed the {{security-app}} when the rule was missing `severity_mapping` or `risk_score_mapping` values [#278545]({{kib-pull}}278545).
+* Fixes an issue where {{kib}} assets from an installed integration package (such as dashboards used by prebuilt detection rules) could remain stale across a {{kib}} upgrade because {{fleet}} never overwrote existing assets on reinstall [#277953]({{kib-pull}}277953).
+* Fixes a crash in index fields formatting when a field or index was named using a reserved JavaScript object property (such as `constructor` or `__proto__`) [#277851]({{kib-pull}}277851).
+* Fixes an issue where the **Source event** link in an alert's **Highlighted fields** section failed to open the document when its source index had been restored (for example, from a cold or frozen tier) and renamed [#277703]({{kib-pull}}277703).
+* Preserves the prebuilt rule `revision` (incremented by 1) when upgrading a rule to a different rule type, matching the behavior of same-type upgrades [#275627]({{kib-pull}}275627).
+* Updates the bundled `curl` library to 8.20.0 in {{elastic-defend}}, improving the stability of network operations on Linux.
+* Fixes an issue where {{elastic-defend}} on macOS did not attempt to recover a failed subscription to network events, which previously remained stuck.
+* Fixes a crash in {{elastic-defend}} when the Kafka broker rejected a document that was too large.
+* Fixes an issue in {{elastic-defend}} that could result in incomplete addresses in network event tracking.
 
 ## 9.3.7 [elastic-security-9.3.7-release-notes]
 
