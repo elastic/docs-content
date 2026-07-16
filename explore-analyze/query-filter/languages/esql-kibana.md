@@ -434,7 +434,7 @@ The first time a query references an unmapped field, the editor shows a warning 
 `LOAD` doesn't work in queries that use `FORK`, `LOOKUP JOIN`, subqueries, views, or full-text search functions. Subfields of `flattened` fields aren't loaded. When querying multiple indices, fields that have a non-keyword type in some indices but are unmapped in others need an explicit cast (for example, `my_field::integer` or `TO_INTEGER(my_field)`) unless referenced in a `KEEP` or `DROP` command.
 :::
 
-{applies_to}`stack: preview 9.5` When querying a [wired stream](/solutions/observability/streams/wired-streams.md) and the editor detects an unknown column error, a **Load unmapped fields** quick fix is available. Select it to apply `SET unmapped_fields = "LOAD";` automatically. Refer to [Query unmapped fields](/solutions/observability/streams/wired-streams.md#streams-wired-streams-discover-unmapped) for wired stream–specific details.
+{applies_to}`stack: preview 9.5` When querying a [wired stream](/solutions/observability/streams/get-data-in.md#get-data-in-wired) and the editor detects an unknown column error, a **Load unmapped fields** quick fix is available. Select it to apply `SET unmapped_fields = "LOAD";` automatically. Refer to [Query unmapped fields](/solutions/observability/streams/get-data-in.md#streams-wired-streams-discover-unmapped) for wired stream–specific details.
 
 For a conceptual overview and use cases, refer to [Unmapped fields](elasticsearch://reference/query-languages/esql/esql-unmapped-fields.md).
 

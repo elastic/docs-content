@@ -183,6 +183,26 @@ For wired streams, you first need to make the index pattern available:
 
 Once data appears in Discover, you're ready to start organizing, parsing, and configuring retention for your streams.
 
+#### Query unmapped fields [streams-wired-streams-discover-unmapped]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+Wired streams can contain fields stored in `_source` that are not explicitly mapped. By default, ES|QL returns an error when a query references an unmapped field. To make unmapped fields queryable, add `SET unmapped_fields = "LOAD";` at the start of your ES|QL query:
+
+```esql
+SET unmapped_fields = "LOAD";
+FROM logs.otel
+| WHERE my_custom_field == "value"
+```
+
+When `LOAD` is set, unmapped fields are loaded from `_source` as `keyword` fields, or treated as null if absent from `_source`.
+
+{applies_to}`stack: preview 9.5` When you query a wired stream and the ES|QL editor detects an unknown column error, a **Load unmapped fields** quick fix action is available. Select it to apply this setting automatically.
+
+For a conceptual overview and use cases, refer to [Unmapped fields](elasticsearch://reference/query-languages/esql/esql-unmapped-fields.md). For {{kib}} editor behavior, refer to [Handle unmapped fields with `SET unmapped_fields`](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-unmapped-fields).
+
 ## Work with existing data [get-data-in-classic]
 
 Classic streams let you use the Streams UI to extract fields and configure data retention for data that's already being ingested into {{es}} without additional configuration.
