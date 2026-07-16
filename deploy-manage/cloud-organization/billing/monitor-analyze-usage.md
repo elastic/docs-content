@@ -39,5 +39,5 @@ The usage breakdown information visible on the **Usage** page is an estimate, an
 ::::
 
 :::{note}
-Organization-wide financial details — such as your credit balance, [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md), and invoices — remain available only to organization owners and billing admins.
+Organization-wide financial details — such as your credit balance, [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md), and invoices — remain available only to **Organization owners** and **Billing admins**.
 :::
