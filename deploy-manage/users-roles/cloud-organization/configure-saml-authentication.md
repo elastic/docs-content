@@ -55,6 +55,7 @@ For detailed examples of implementing SAML SSO using common identity providers, 
 
 Before you configure SAML SSO, familiarize yourself with the following risks and considerations:
 
+* Elastic Cloud SAML SSO organization-level configuration only supports one IdP at a time. If you need mutiple IdPs, consider using separate organizations. Review [](/deploy-manage/cloud-organization/manage-multiple-organizations.md) for more guidance.
 * You can claim up to 10 domains. Claiming a domain also enables SSO for all of its subdomains.
 * Actions taken on the IdP are not automatically reflected in {{ecloud}}. For example, if you remove a user from your IdP, they are not removed from the {{ecloud}} organization and their active sessions are not invalidated.
 
