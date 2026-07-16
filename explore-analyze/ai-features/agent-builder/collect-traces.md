@@ -1,6 +1,6 @@
 ---
 navigation_title: "Collect agent traces"
-description: "Learn how Agent Builder collects agent execution traces into OpenTelemetry data streams in your own Elasticsearch, how to configure collection and privacy, and how to grant access."
+description: "Learn how Agent Builder collects agent execution traces into OpenTelemetry data streams in your Elasticsearch deployment, how to configure collection and privacy, and how to grant access."
 applies_to:
   stack: ga 9.5+
   serverless: ga
@@ -14,13 +14,13 @@ products:
 
 # Collect {{agent-builder}} traces
 
-{{agent-builder}} can collect agent execution traces into your own {{es}}. Traces record how each agent round runs, including model calls, tool calls, latency, and token usage, so you can monitor agent activity, debug behavior, and build dashboards on the data.
+{{agent-builder}} can collect agent execution traces into your {{es}} deployment. Traces record how each agent round runs, including model calls, tool calls, latency, and token usage, so you can monitor agent activity, debug behavior, and build dashboards on the data.
 
 ## How trace collection works
 
 When an agent runs, {{agent-builder}} records the run as OpenTelemetry (OTel) traces. Each trace covers one conversation round. A trace is made up of spans that map to the work the agent did, such as model calls, tool calls, and any workflows it triggered.
 
-{{agent-builder}} ingests this data into managed data streams in your own {{es}}. It uses two OpenTelemetry data streams:
+{{agent-builder}} ingests this data into managed data streams in your {{es}} deployment. It uses two OpenTelemetry data streams:
 
 - `traces-agent_builder.otel-*` holds the execution spans, such as model calls and tool calls, with their timings, token usage, model, and status.
 - `logs-agent_builder.otel-*` holds the conversation content you opt into capturing, such as user prompts, agent responses, system prompts, and tool call details, recorded as OpenTelemetry log records. Content is captured only when you enable it in [Trace privacy settings](#trace-privacy-settings).
