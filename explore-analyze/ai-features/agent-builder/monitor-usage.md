@@ -16,6 +16,8 @@ products:
 
 This page covers how to monitor token usage in {{agent-builder}} and understand how usage translates to costs across different deployment types.
 
+For observability beyond token counts, {{agent-builder}} can also collect detailed execution traces into your own {{es}}. To turn on trace collection and explore or alert on the data, refer to [Collect agent traces](collect-traces.md).
+
 ## Token usage
 
 When working with {{agent-builder}}, total token usage typically exceeds the visible conversation text. Because {{agent-builder}} uses an agentic framework, a single user request often triggers multiple model calls to process reasoning steps, run tools, and interpret results.

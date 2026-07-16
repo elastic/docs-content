@@ -46,7 +46,7 @@ By default, traces record structural metadata only. Conversation content such as
 
 ## Enable and configure trace collection
 
-Trace collection is on by default. To manage it, go to **Management > GenAI Settings** and open the **Agent Builder Traces** section.
+Trace collection is on by default. To manage it, go to **Management → GenAI Settings** and open the **Agent Builder Traces** section.
 
 :::{image} images/agent-builder-traces-settings.png
 :screenshot:
@@ -56,7 +56,7 @@ Trace collection is on by default. To manage it, go to **Management > GenAI Sett
 The **Collect conversation traces** setting turns collection on and off. When it is on, {{agent-builder}} collects OpenTelemetry traces for agent conversations and ingests them into {{es}}. From the same section, you can install a prebuilt overview dashboard for the current {{kib}} space.
 
 :::{note}
-Any user with index access can read trace data. To restrict access, configure index-level privileges in **Stack Management > Roles**. For details, refer to [Grant access to trace data](#grant-access-to-trace-data).
+Any user with index access can read trace data. To restrict access, configure index-level privileges in **Stack Management → Roles**. For details, refer to [Grant access to trace data](#grant-access-to-trace-data).
 :::
 
 ### Trace privacy settings
@@ -87,7 +87,7 @@ Built-in tools and agents always appear under their real names. When a value is 
 
 Trace data is stored in the `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*` data streams. To read it, a role needs `read` and `view_index_metadata` on both patterns.
 
-Access is granted at the index level. Any user who can read these data streams can read all collected traces, so trace access is not scoped per user. To control who can read traces, configure index privileges through roles in **Stack Management > Roles**.
+Access is granted at the index level. Any user who can read these data streams can read all collected traces, so trace access is not scoped per user. To control who can read traces, configure index privileges through roles in **Stack Management → Roles**.
 
 For the full privilege model, including {{kib}} feature and cluster privileges, refer to [Permissions and access control](permissions.md#read-trace-data).
 

@@ -197,7 +197,7 @@ serverless: ga
 
 Each conversation round can record OpenTelemetry traces of how the agent ran. To inspect them, select the **View Trace** icon ({icon}`apm_trace`) on the round. A **Trace** flyout opens with a waterfall of the round's spans, including model calls, tool calls, and workflows.
 
-The button appears only when all of these are true:
+The button appears only when these are true:
 
 - The trace data stream exists.
 - You have read access to it.
