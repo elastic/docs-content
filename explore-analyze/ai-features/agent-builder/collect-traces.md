@@ -18,7 +18,7 @@ products:
 
 ## How trace collection works
 
-When an agent runs, {{agent-builder}} records the run as OpenTelemetry (OTel) traces. Each trace covers one conversation round. A trace is made up of spans that map to the work the agent did, such as model calls, tool calls, and any workflows it triggered.
+When an agent runs, {{agent-builder}} records the run as OpenTelemetry (OTel) traces. Each trace covers one conversation round. A trace is made up of spans that map to the work the agent did, such as model calls and tool calls.
 
 {{agent-builder}} ingests this data into managed data streams in your {{es}} deployment. It uses two OpenTelemetry data streams:
 
@@ -38,9 +38,8 @@ Each trace is a set of spans that follow a run from the overall conversation rou
 - Each agent execution.
 - Each model call.
 - Each tool call.
-- Each workflow the agent runs.
 
-Spans follow OpenTelemetry semantic conventions and carry generative AI attributes for the model, the provider, and token usage. Use them to break down usage and latency by model, agent, or tool. For the exact fields and the prebuilt visualizations that use them, refer to [Build dashboards on trace data](#build-dashboards-on-trace-data).
+Spans follow [OpenTelemetry semantic conventions for generative AI](https://github.com/open-telemetry/semantic-conventions-genai) (currently experimental) and carry generative AI attributes for the model, the provider, and token usage. Use them to break down usage and latency by model, agent, or tool. For the exact fields and the prebuilt visualizations that use them, refer to [Build dashboards on trace data](#build-dashboards-on-trace-data).
 
 By default, traces record structural metadata only. Conversation content such as prompts and responses is excluded unless an administrator opts in. For details, refer to [Trace privacy settings](#trace-privacy-settings).
 
@@ -123,7 +122,7 @@ Because traces are stored in regular data streams, you can also build your own v
 
 ## View traces for a conversation round
 
-In [Agent Chat](chat.md), you can open the trace waterfall for a single conversation round. The button appears only when the trace data stream exists, you have access to it, and traces exist for that round.
+In [Agent Chat](chat.md), you can open the trace waterfall for a single conversation round. The button appears only when trace collection is enabled and the round has a trace.
 
 ## Related pages
 
