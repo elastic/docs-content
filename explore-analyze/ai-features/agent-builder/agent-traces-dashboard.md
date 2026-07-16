@@ -22,7 +22,7 @@ Use the dashboard to:
 - Spot slow conversations and long-running agent executions.
 - Find tools that fail or run slowly.
 
-The dashboard reads the traces that {{agent-builder}} collects into your own {{es}}, so it reflects your real agent activity. You collect that trace data first, then install the dashboard in each {{kib}} space where you want it. The following sections walk through both.
+The dashboard visualizes the trace data that {{agent-builder}} sends to your {{es}} deployment, giving you a view of real agent activity. First, you must configure trace collection. Then install the dashboard in each {{kib}} space where you want to view the data.
 
 <!-- TODO(#7322): link "agent trace data" and "trace data" -> collect-traces.md once it is on main. -->
 
