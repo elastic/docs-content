@@ -95,13 +95,7 @@ This feature requires a [Generative AI connector](kibana://reference/connectors-
 ::::::
 
 ::::::{step} Review the stream hierarchy
-After saving, your stream list updates to show the parent-child relationship. For example:
-
-```
-logs
-├── logs.otel.application  [30d retention]
-└── logs.otel.firewall     [7d retention]
-```
+After saving, your stream list updates to show the parent-child relationship.
 
 Child streams automatically inherit the parent's field mappings, lifecycle settings, and processors. You can override any inherited setting at the child level without affecting the parent or other children.
 ::::::

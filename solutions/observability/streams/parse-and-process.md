@@ -112,6 +112,14 @@ If you edit the stream after saving your changes, keep the following in mind:
 
 - Adding processors to the end of the list works as expected.
 - Editing or reordering existing processors can cause inaccurate results. Because the pipeline might have already processed the documents used for sampling, **Data preview** cannot accurately simulate changes to existing data.
+
+You can also adjust the which documents the preview uses:
+
+1. From the **Processing** tab, select the **Manage data sources** {icon}`controls` icon.
+1. Select **Add data source**, then **Add KQL search samples**.
+1. Add a filter using [KQL syntax](/explore-analyze/query-filter/languages/kql.md) and adjust the time window to include the data you want to use as a sample.
+
+The preview automatically uses your new data source.
 ::::::
 
 ::::::{step} Detect and resolve failures and mapping conflicts
