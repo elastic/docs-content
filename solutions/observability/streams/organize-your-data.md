@@ -33,7 +33,7 @@ Partitioning is only available on [wired streams](./get-data-in.md#get-data-in-w
 
 ## Partitioning recommendations [organize-partitioning-recommendations]
 
-Before creating partitions, keep the following in mind:
+Before creating partitions, refer to the following recommendations:
 
 - **Partition by logical groupings**, not by high-cardinality fields. Group logs by team, technology type, or environment (for example, `web-servers`, `application`, `security`) rather than by individual service names or host identifiers, which can generate too many streams to manage effectively.
 - **Aim for tens of partitions, not hundreds.** Each partition creates a dedicated data stream in {{es}}. There is a cost to each one, so keep the number manageable.
