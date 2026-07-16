@@ -99,7 +99,7 @@ You can later filter the data that shows in the chart and in the table by specif
 
    ![How to add a field as a column in the table](/explore-analyze/images/kibana-discover-add-field.png "title =50%")
 
-   When you add fields to the table, the **Summary** column is replaced.
+   When you add fields to the table, the **Summary** column is replaced. For {{esql}}-specific details about the time field and CSV exports, refer to [Organize the query results](try-esql.md#esql-kibana-results-table).
    ![Document table with fields for manufacturer](/explore-analyze/images/kibana-document-table.png "")
 
 4. Arrange the view to your liking to display the fields and data you care most about using the various display options of **Discover**. For example, you can change the order and size of columns, expand the table to be in full screen or collapse the chart and the list of fields. Check [Customize the Discover view](document-explorer.md) for more information.
