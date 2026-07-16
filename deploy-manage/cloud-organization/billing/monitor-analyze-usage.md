@@ -25,7 +25,8 @@ You can check the detailed usage for a selected time range grouped either by pro
 What you can see on the **Usage** page depends on your {{ecloud}} roles:
 
 * Users with the **Organization owner** or **Billing admin** role can view usage and costs for the entire organization.
-* Users with a cloud resource access role or a connected cluster access role can view usage and costs for the {{ech}} deployments, {{serverless-short}} projects, and connected clusters they have access to.
+* Users with a cloud resource access role can view usage and costs for the {{ech}} deployments and {{serverless-short}} projects they have access to.
+* Users with a connected cluster access role can view usage and costs for the connected clusters they have access to.
 
 For any resource you have access to, you can view its full available cost history, including costs from before you were granted access.
 
