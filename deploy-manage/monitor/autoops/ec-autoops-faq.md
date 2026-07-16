@@ -115,7 +115,7 @@ $$$maintenance$$$ **Do I have to do any maintenance when using AutoOps for ECE, 
 * When using the ECK installation method, make sure your instance of {{agent}} meets the [version requirements](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#prerequisites) for your license type.  
 
 $$$trial-ending$$$ **I connected my ECE, ECK, or self-managed cluster to AutoOps during a free trial of {{ecloud}}. What happens after my trial ends?**
-:   You don't need a paid {{ecloud}} subscription or an active {{ecloud}} trial to keep using AutoOps for ECE, ECK, or self-managed clusters. AutoOps is [free across all self-managed license types](https://www.elastic.co/subscriptions) through Cloud Connect. After your free trial ends, your cluster remains connected and AutoOps continues to process your {{es}} metrics as long as: 
+:   You don't need a paid {{ecloud}} subscription or an active {{ecloud}} trial to keep using AutoOps for ECE, ECK, or self-managed clusters. AutoOps is free across all [self-managed license types](https://www.elastic.co/subscriptions) through Cloud Connect. After your free trial ends, your cluster remains connected and AutoOps continues to process your {{es}} metrics as long as: 
 * You have an [active {{ecloud}} account](../../cloud-organization/billing/add-billing-details.md). Creating an {{ecloud}} account is free and doesn't require a paid subscription.
 * {{agent}} is running and shipping metrics to {{ecloud}}.
 
