@@ -10,23 +10,15 @@ products:
 
 # Jina models [ml-nlp-jina]
 
-Jina models are pretrained models for search and retrieval workflows. Use them to create embeddings for semantic and multimodal similarity search, rerank candidate results in hybrid search and retrieval-augmented generation (RAG), and extract structured content from HTML and complex documents before indexing.
+Jina models are pretrained models for search and retrieval workflows. You can use them to create embeddings for semantic and multimodal similarity search, rerank candidate results in hybrid search and retrieval-augmented generation (RAG), and extract structured content from HTML and complex documents before indexing.
 
-You can use Jina models in the following ways:
+You can deploy Jina models in the following ways:
 
-* [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md): Elastic hosts Jina models and serves them through managed {{infer}} endpoints in your cluster. Use EIS for {{ech}}, {{serverless-short}}, or self-managed clusters with [Cloud Connect](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md) when you want managed inference without deploying or operating model infrastructure yourself.
-* [Jina on-prem](#jina-on-prem): You run Jina models in Docker containers on your network using [jina-on-prem](https://github.com/jina-ai/jina-on-prem), and {{es}} connects to them through {{infer}} endpoints. Use on-prem when you cannot send data to a third-party API, need zero outbound network calls from inference, or must run models on your own infrastructure for compliance or data residency.
-* [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md): {{es}} connects to the [Jina AI API](https://jina.ai/) through {{infer}} endpoints. Use this option for self-managed clusters that cannot use EIS or on-prem but have outbound network access to the Jina AI API, or when you are evaluating Jina models with a Jina API key before choosing a production deployment path.
+* [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md): Elastic hosts Jina models and serves them through managed {{infer}} endpoints in your cluster, so you can run inference without deploying or managing model infrastructure.
+* [Jina on-prem](#jina-on-prem): You run Jina models in Docker containers on your network using [Jina on-prem](https://github.com/jina-ai/jina-on-prem), and {{es}} connects to them through {{infer}} endpoints. Using on-prem means you do not send data to a third-party API, inference makes no outbound network calls, and models run on your own infrastructure.
+* [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md): {{es}} connects to the [Jina AI API](https://jina.ai/) through {{infer}} endpoints, so you can call models hosted by Jina with your own API key. 
 
 ## Model overview [jina-model-overview]
-
-Jina provides models in the following categories:
-
-- Text embedding models
-- Multimodal embedding models
-- Code embedding models
-- Reader models
-- Rerankers
 
 The following tables list the available Jina models, provide a brief description of each model, and show the supported deployment types. Select a deployment type to view the corresponding setup and usage instructions.
 
@@ -36,7 +28,7 @@ For models accessed through [Elastic {{infer-cap}} Service (EIS)](/explore-analy
 
 ### Text embedding models [jina-text-embeddings]
 
-Text embedding models convert text into vector embeddings for semantic similarity search. Unlike [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md), these models produce compact dense vectors suited for multilingual and cross-domain use cases.
+Text embedding models convert text into vector embeddings for semantic similarity search. 
 
 | Model | Description | Deployment |
 | --- | --- | --- |
@@ -47,7 +39,7 @@ Text embedding models convert text into vector embeddings for semantic similarit
 
 ### Multimodal embedding models [jina-multimodal-embeddings]
 
-Multimodal embedding models convert text, images, video, audio, and documents such as PDF into vector embeddings in a shared vector space. {{es}} stores these vectors in [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) fields or through the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field.
+Multimodal embedding models convert text, images, video, audio, and documents such as PDF into vector embeddings in a shared vector space. 
 
 | Model | Description | Deployment |
 | --- | --- | --- |
@@ -86,13 +78,13 @@ Reranker models reorder candidate documents by predicted relevance to improve to
 
 ## Use models with Elastic {{infer-cap}} Service (EIS) [jina-eis-getting-started]
 
-To use a model on EIS, create an {{infer}} endpoint with `"service": "elastic"` and set `model_id` to the model name from the [model overview](#jina-model-overview) tables.
+With [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), Elastic hosts Jina models and serves them through managed {{infer}} endpoints in your cluster. Use this option when you want GPU-accelerated inference without deploying or managing model infrastructure.
+
+To use a model through EIS, create an {{infer}} endpoint with `"service": "elastic"` and set `model_id` to the name of the model you want to use.
 
 ### Text embedding models [jina-eis-text-embedding]
 
-The following examples use the `text_embedding` task type. For this task type, you can use the `jina-embeddings-v5-text-small`, `jina-embeddings-v5-text-nano`, and `jina-embeddings-v3` models.
-
-Create an {{infer}} endpoint and reference the `inference_id` in `text_embedding` {{infer}} tasks or search queries:
+The following examples use the `text_embedding` task type. Create an {{infer}} endpoint and reference the `inference_id` in `text_embedding` {{infer}} tasks or search queries:
 
 ::::{tab-set}
 :group: jina-text-embeddings
@@ -168,21 +160,11 @@ POST _inference/text_embedding/eis-jina-embeddings-v3
 
 ::::
 
-### Multimodal embedding models [jina-embeddings-v5-omni]
+### Multimodal embedding models [jina-omni-getting-started]
 
 {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga`
 
-The following examples use the `embedding` task type. For this task type, you can use the `jina-embeddings-v5-omni-small`, `jina-embeddings-v5-omni-nano`, and `jina-clip-v2` models.
-
-::::{note}
-The Jina v5 omni models availability and the support for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type depend on your {{stack}} version:
-
-- {applies_to}`stack: ga 9.3+` In {{stack}} 9.3 and later, you can create endpoints and run multimodal `embedding` {{infer}} requests. You cannot use these models with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type.
-- {applies_to}`stack: ga 9.4+` In {{stack}} 9.4 and later, you can use [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) mappings for text-only embeddings at ingest and search time.
-- {applies_to}`stack: ga 9.5+` In {{stack}} 9.5 and later, the `semantic_field` field type supports all modalities, such as text, images, video, audio, and documents.
-::::
-
-#### Multimodal embedding examples [jina-omni-getting-started]
+The following examples use the `embedding` task type.
 
 Create an {{infer}} endpoint. The URL path uses the `embedding` task type and ends with the `inference_id` you want to use:
 
@@ -627,11 +609,17 @@ PUT _inference/embedding/jina-omni-nano-32d
 
 ::::
 
+::::{note}
+The Jina v5 omni models availability and the support for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type depend on your {{stack}} version:
+
+- {applies_to}`stack: ga 9.3+` In {{stack}} 9.3 and later, you can create endpoints and run multimodal `embedding` {{infer}} requests. You cannot use these models with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type.
+- {applies_to}`stack: ga 9.4+` In {{stack}} 9.4 and later, you can use [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) mappings for text-only embeddings at ingest and search time.
+- {applies_to}`stack: ga 9.5+` In {{stack}} 9.5 and later, the `semantic_field` field type supports all modalities, such as text, images, video, audio, and documents.
+::::
+
 ### Reranker models [jina-eis-rerank]
 
-The following examples use the `rerank` task type. For this task type, you can use the `jina-reranker-v3` and `jina-reranker-v2-base-multilingual` models.
-
-Create an {{infer}} endpoint and reference the `inference_id` in `rerank` {{infer}} tasks:
+The following examples use the `rerank` task type. Create an {{infer}} endpoint and reference the `inference_id` in `rerank` {{infer}} tasks:
 
 ::::{tab-set}
 :group: jina-rerankers
@@ -686,11 +674,11 @@ POST _inference/rerank/jina-reranker-v2-base-multilingual
 
 ## Deploy Jina models on-prem [jina-on-prem]
 
-With [jina-on-prem](https://github.com/jina-ai/jina-on-prem), you run Jina models in Docker containers on your own infrastructure. Use this option when data cannot leave your network, when inference must work without outbound connectivity, or when compliance and data residency require self-hosted model deployment.
+With [Jina on-prem](https://github.com/jina-ai/jina-on-prem), you run Jina models in Docker containers on your own infrastructure. Use this option when data cannot leave your network, when inference must work without outbound connectivity, or when compliance and data residency require self-hosted model deployment.
 
-To pull, transfer, and run a prebuilt Docker image, refer to the [jina-on-prem Quick Start](https://github.com/jina-ai/jina-on-prem/wiki/Quick-Start).
+To pull, transfer, and run a prebuilt Docker image, refer to the [Jina on-prem Quick Start](https://github.com/jina-ai/jina-on-prem/wiki/Quick-Start).
 
-To connect {{es}} to a local jina-on-prem server, create {{infer}} endpoints that call the APIs exposed by the container. Use the `text_embedding` example for embedding models and the `rerank` example for reranker models. Create both endpoints if your workflow needs embeddings and reranking.
+To connect {{es}} to a local Jina on-prem server, create {{infer}} endpoints that call the APIs exposed by the container. 
 
 For an embedding model, create a `text_embedding` endpoint:
 
@@ -706,10 +694,10 @@ PUT _inference/text_embedding/jina-embed
 }
 ```
 
-1. Use the `openai` service type so {{es}} sends OpenAI-compatible `text_embedding` requests. jina-on-prem exposes this schema locally. Requests do not go to OpenAI.
-2. Point `url` to the `/v1/embeddings` endpoint on your jina-on-prem host.
+1. Use the `openai` service type so {{es}} sends OpenAI-compatible `text_embedding` requests. 
+2. Point `url` to the `/v1/embeddings` endpoint on your Jina on-prem host.
 3. Set `model_id` to the embedding model running in the container.
-4. Required by the {{es}} {{infer}} API. jina-on-prem ignores this value. Use any string, such as `not-needed`.
+4. This field is required by the {{es}} {{infer}} API but is not used by Jina on-prem. Specify any placeholder string, such as not-needed.
 
 For a reranker model, create a `rerank` endpoint:
 
@@ -725,14 +713,14 @@ PUT _inference/rerank/jina-rerank
 }
 ```
 
-1. Use the `cohere` service type so {{es}} sends Cohere-compatible rerank requests. jina-on-prem exposes this schema locally. Requests do not go to Cohere.
-2. Point `url` to the `/v1/rerank` endpoint on your jina-on-prem host.
+1. Use the `cohere` service type so {{es}} sends Cohere-compatible rerank requests. Jina on-prem exposes this schema locally. Requests do not go to Cohere.
+2. Point `url` to the `/v1/rerank` endpoint on your Jina on-prem host.
 3. Set `model_id` to the reranker model running in the container.
-4. Required by the {{es}} {{infer}} API. jina-on-prem ignores this value. Use any string, such as `not-needed`.
+4. This field is required by the {{es}} {{infer}} API but is not used by Jina on-prem. Specify any placeholder string, such as not-needed.
 
 You can reference the `inference_id` of these endpoints in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, {{infer}} processors, or search queries.
 
-For more endpoint configuration examples, refer to the [jina-on-prem API reference](https://github.com/jina-ai/jina-on-prem/wiki/API-Reference#elasticsearch-integration).
+For more endpoint configuration examples, refer to the [Jina on-prem API reference](https://github.com/jina-ai/jina-on-prem/wiki/API-Reference#elasticsearch-integration).
 
 ## Performance considerations [jina-performance]
 
@@ -842,5 +830,4 @@ For more background and related resources:
 * [jina-embeddings-v5-omni](https://www.elastic.co/search-labs/blog/jina-embeddings-v5-omni-all-media-one-index): Explains how to embed text, images, video, and audio into a single Elasticsearch index.
 * [Jina rerankers on EIS](https://www.elastic.co/search-labs/blog/jina-rerankers-elastic-inference-service): Covers `jina-reranker-v2-base-multilingual` and `jina-reranker-v3` for multilingual reranking in retrieval and RAG workflows.
 * [jina-embeddings-v3 on EIS](https://www.elastic.co/search-labs/blog/jina-embeddings-v3-elastic-inference-service): Introduces multilingual dense retrieval with `jina-embeddings-v3` on EIS.
-* [jina-on-prem Quick Start](https://github.com/jina-ai/jina-on-prem/wiki/Quick-Start): Walks through a five-minute Docker setup to run your first on-prem embeddings request.
 * [Jina model catalog](https://jina.ai/models#catalog): Browse the full set of Jina Search Foundation models and their capabilities.
