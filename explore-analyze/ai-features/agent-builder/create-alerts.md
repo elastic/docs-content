@@ -14,7 +14,7 @@ products:
 
 # Create alerts on {{agent-builder}} trace data
 
-{{agent-builder}} collects execution traces into a data stream in your own {{es}} cluster. These traces record token usage, errors, latency, and tool calls, so you can create {{kib}} alerting rules that notify you when something needs your attention. For example, you can alert on a conversation that uses too many tokens, token costs that exceed a budget, an agent error rate that spikes, or a tool that fails repeatedly.
+{{agent-builder}} collects execution traces into a data stream in your {{es}} cluster. These traces record token usage, errors, latency, and tool calls, so you can create {{kib}} alerting rules that notify you when something needs your attention. For example, you can alert on a conversation that uses too many tokens, token costs that exceed a budget, an agent error rate that spikes, or a tool that fails repeatedly.
 
 {{agent-builder}} has no dedicated alerting interface. You create standard {{kib}} rules against the trace data stream, so the rule types, check schedules, and connectors are the same ones you use elsewhere in {{kib}}.
 
@@ -32,7 +32,7 @@ Alert on the trace data with an [{{es}} query rule](/explore-analyze/alerting/al
 
 With ES|QL, the query targets the data stream directly in its `FROM` command, so you do not need a data view. The alert condition lives in the query, usually in a `WHERE` clause that compares a value to a threshold. Query one space at a time and avoid wildcards, so you do not mix data from different spaces.
 
-1. In {{kib}}, go to **{{stack-manage-app}}** > **{{rules-ui}}** and click **Create rule**.
+1. In {{kib}}, go to **{{stack-manage-app}}** → **{{rules-ui}}** and click **Create rule**.
 2. Select the **{{es}} query** rule type, then name the rule.
 3. For the query language, select **ES|QL**.
 4. Enter your ES|QL query against the trace data stream for your space, for example `FROM traces-agent_builder.otel-<space-id>`. The query defines the condition, including the threshold. See [Example alerts](#example-alerts).
