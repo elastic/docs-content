@@ -87,7 +87,15 @@ With a {{webhook-cm}} connector, you can map case fields to custom or existing f
 
 When you push updates, mapped fields are either overwritten or appended, depending on the field and connector. Retrieving data from external systems is not supported.
 
-## Add custom fields [case-custom-fields]
+## Add custom fields and create templates [case-custom-fields]
+
+Custom fields and templates are managed together in a field library and YAML template editor. Refer to [Manage case templates](manage-case-templates.md) for details.
+
+### Previous versions (9.0-9.4) [case-templates]
+
+```{applies_to}
+stack: ga 9.0-9.4
+```
 
 You can add optional and required fields for customized case collaboration.
 
@@ -99,8 +107,6 @@ To create a custom field:
 When you create a custom field, it's added to all new and existing cases. In existing cases, new custom text fields initially have null values.
 
 You can subsequently remove or edit custom fields on the **Settings** page.
-
-## Create templates [case-templates]
 
 Templates let you pre-fill case fields like severity, tags, title, description, and custom fields—speeding up case creation and ensuring consistency across your team. When creating a case, you can select a template and use its values or override them. Updating or deleting templates does not affect existing cases.
 

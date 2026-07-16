@@ -41,7 +41,7 @@ To create a new case:
 
    ::::
 
-2. (Optional) Select a [template](configure-case-settings.md#case-templates) to pre-fill field values.
+2. (Optional) Select a [template](manage-case-templates.md) to pre-fill field values.
 
 3. Enter a name, severity, and description. If you do not assign your case a severity level, it will be assigned **Low** by default. The description supports [Markdown](https://www.markdownguide.org/cheat-sheet).
 
