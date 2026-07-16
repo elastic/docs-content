@@ -650,6 +650,7 @@ toc:
       - file: api-keys/serverless-project-api-keys.md
       - file: api-keys/elastic-cloud-api-keys.md
       - file: api-keys/elastic-cloud-enterprise-api-keys.md
+      - hidden: app-connections/oauth-clients.md
   - file: manage-connectors.md
   - file: remote-clusters.md
     children:
