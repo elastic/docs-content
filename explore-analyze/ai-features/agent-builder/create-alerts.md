@@ -14,12 +14,6 @@ products:
 
 # Create alerts on {{agent-builder}} trace data
 
-<!--
-How-to (docs-content#7173). Last page in the trace cluster; merge order #7171 -> #7170 -> #7173.
-Depends on #7171 (collect-traces.md, PR #7322) and reuses the field reference from #7170 (agent-traces-dashboard.md, PR #7337).
-Do not publish any ES|QL query that has not been run on a 9.5 cluster.
--->
-
 {{agent-builder}} collects execution traces into a data stream in your own {{es}} cluster. These traces record token usage, errors, latency, and tool calls, so you can create {{kib}} alerting rules that notify you when something needs your attention. For example, you can alert on a conversation that uses too many tokens, token costs that exceed a budget, an agent error rate that spikes, or a tool that fails repeatedly.
 
 {{agent-builder}} has no dedicated alerting interface. You create standard {{kib}} rules against the trace data stream, so the rule types, check schedules, and connectors are the same ones you use elsewhere in {{kib}}.
@@ -39,15 +33,15 @@ Alert on the trace data with an [{{es}} query rule](/explore-analyze/alerting/al
 With ES|QL, the query targets the data stream directly in its `FROM` command, so you do not need a data view. The alert condition lives in the query, usually in a `WHERE` clause that compares a value to a threshold. Query one space at a time and avoid wildcards, so you do not mix data from different spaces.
 
 1. In {{kib}}, go to **{{stack-manage-app}}** > **{{rules-ui}}** and click **Create rule**.
-2. Select the **{{es}} query** rule type, then enter a name and optional tags.
+2. Select the **{{es}} query** rule type, then name the rule.
 3. For the query language, select **ES|QL**.
 4. Enter your ES|QL query against the trace data stream for your space, for example `FROM traces-agent_builder.otel-<space-id>`. The query defines the condition, including the threshold. See [Example alerts](#example-alerts).
 5. Set the alert grouping:
 
-    * **Time field**: the field used to filter results by the rule's time window, for example `@timestamp`.
-    * **Alert group**: select **Create an alert for each row** to raise one alert per matching row, for example per conversation over the threshold. Select **Create an alert if matches are found** to raise a single alert when the query returns any rows.
+    * **Select a time field**: the field used to filter results by the rule's time window, for example `@timestamp`.
+    * **Select alert group**: select **Create an alert for each row** to raise one alert per matching row, for example per conversation over the threshold. Select **Create an alert if matches are found** to raise a single alert when the query returns any rows.
 6. Set the **time window** to define how far back the query searches, for example the last hour.
-7. Set the **check interval** to define how often the rule runs. Keep it smaller than the time window to avoid gaps in detection.
+7. Set the **rule schedule** to define how often the rule checks the conditions. Keep it smaller than the time window to avoid gaps in detection.
 8. Click **Test query** to confirm the query is valid. For an ES|QL query, the matching rows appear in a table.
 9. Add an action, select a connector, then set the action frequency. See [Add actions](/explore-analyze/alerting/alerts/rule-type-es-query.md#_add_actions).
 10. Click **Save**.
@@ -58,10 +52,6 @@ ES|QL rules do not offer the **Exclude matches from previous run** option. If th
 
 After you save the rule, it appears on the **{{rules-ui}}** page, where you can confirm that it runs on schedule and check its status.
 
-<!-- TODO(cluster): confirm the navigation path to the Rules page on BOTH a 9.5 Stack deployment and an Elasticsearch Serverless project. If it differs, use an applies-switch. Confirm the ES|QL query language option and the "Create an alert for each row" / "Create an alert if matches are found" labels appear as written in 9.5. -->
-<!-- TODO(cluster): run Test query against real trace data and confirm it returns the expected rows. Confirm the healthy rule status label shown on the Rules page (for example "Succeeded" or "Active") and update the last sentence to match. -->
-<!-- TODO(screenshot, optional): decide whether to add one screenshot of the rule form with a trace ES|QL query and its Test query results. Screenshots are optional in how-tos and add maintenance cost. -->
-
 ## Example alerts
 
 Each example gives an ES|QL query and the rule settings to use with it. Adjust the fields, thresholds, and time windows to your environment.
@@ -69,8 +59,6 @@ Each example gives an ES|QL query and the rule settings to use with it. Adjust t
 :::{note}
 These queries are starting points, not tested rules. Run each one with **Test query** on your own data before you rely on it. Replace `default` in `traces-agent_builder.otel-default` with your space id. The rule applies its own time window through the **Time field** you select, so the queries do not include a `@timestamp` filter.
 :::
-
-<!-- TODO(cluster): validate every query below on 9.5 trace data. Confirm the field names (attributes.gen_ai.usage.input_tokens / output_tokens, attributes.gen_ai.conversation.id, attributes.gen_ai.agent.id, attributes.elastic.inference.span.kind, span.name, status.code, name), that TO_LONG is needed before SUM, and that the rule applies the time window via the Time field so no @timestamp filter is needed in the query. If a manual filter IS required, add `| WHERE @timestamp >= NOW() - <window>` to each query. -->
 
 ### A conversation exceeds a token limit
 
@@ -133,7 +121,7 @@ Rule settings:
 
 The `executions >= 20` guard avoids noisy alerts when an agent has run only a few times. `error_rate > 0.1` alerts when more than 10 percent of executions fail. Like conversation IDs, `attributes.gen_ai.agent.id` is a stable hash by default, so custom agents group by hash unless you turn on `agentBuilder:tracing:includeRealIds`.
 
-<!-- TODO(cluster): confirm that invoke_agent AGENT spans carry status.code == "Error" when an agent execution fails, and that this is the right span for an agent error rate. If agent errors are not recorded here, measure errors on a different span (for example chat spans) and update this query. -->
+<!-- OPEN for eng review: query mechanics validated on the QA cluster 2026-07-16 (COUNT / SUM(CASE) / TO_DOUBLE run; 6 AGENT executions, 0 errors, error_rate 0.0). The data had no failed executions, so we could not confirm that a failed agent execution sets status.code == "Error" on the invoke_agent/AGENT span. Ask @machadoum to confirm. If AGENT spans do not record errors this way, point this example at the span that does. -->
 
 ### A specific tool fails repeatedly
 
@@ -157,16 +145,15 @@ Each alert identifies the tool by its span name, for example `execute_tool <tool
 In 9.5, `status.code == "Error"` on `execute_tool` spans is set only for parameter and schema validation errors, such as invalid arguments. Errors that a tool catches and returns as a result do not set this status, so this alert can miss some tool failures.
 :::
 
-<!-- TODO(cluster): confirm which field holds the tool identifier. `name` and `span.name` hold the full span name, for example `execute_tool <toolId>`. `attributes.gen_ai.tool.name` may hold the bare tool id. To show a bare tool name in alerts, group BY attributes.gen_ai.tool.name instead and confirm it is populated. Custom tools may anonymize to `execute_tool custom` or `custom` and collapse into one group. -->
-
 <!-- TODO(author): when kibana#277689 (search-team#15284) merges and backports to 9.5, returned tool errors also set status.code == "Error" and add attributes.error.type = "tool_error". Revisit the note above and consider using attributes.error.type. -->
 
 ## Related
 
-* [Collect traces](collect-traces.md): turn on trace collection and learn about the data streams, privacy settings, and access model.
-* [Agent Builder traces dashboard](agent-traces-dashboard.md): the prebuilt overview dashboard and the full span and attribute reference.
+% RE-ADD the two links below once their target pages are on main. Remove the leading "% " from each link line.
+% Re-add when PR #7322 merges (collect-traces.md lands on main):
+% * [Collect traces](collect-traces.md): turn on trace collection and learn about the data streams, privacy settings, and access model.
+% Re-add when PR #7337 merges (agent-traces-dashboard.md lands on main):
+% * [Agent Builder traces dashboard](agent-traces-dashboard.md): the prebuilt overview dashboard and the full span and attribute reference.
 * [Monitor usage and costs](monitor-usage.md): how {{agent-builder}} counts tokens and how usage maps to cost.
 * [Create and manage rules](/explore-analyze/alerting/alerts/create-manage-rules.md): manage, snooze, and troubleshoot {{kib}} alerting rules.
 * [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md): full reference for the rule type used on this page.
-
-<!-- DUMMY LINKS: collect-traces.md (#7322) and agent-traces-dashboard.md (#7337) are not on this branch yet, so those two links are placeholders. They resolve once those PRs merge to main; until then a local build flags them as broken links. Confirm on rebase. Merge order: #7171 -> #7170 -> #7173. -->
