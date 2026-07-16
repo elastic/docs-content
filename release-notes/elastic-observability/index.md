@@ -272,7 +272,7 @@ There are no user-facing changes in {{observability}} for the 9.4.1 release.
 ## 9.3.7 [elastic-observability-9.3.7-release-notes]
 
 ### Features and enhancements [elastic-observability-9.3.7-features-enhancements]
-* Adds check to ensure APM integration policy updates have API keys in their configuration [#274647]({{kib-pull}}274647).
+* Adds a defensive check to ensure {{product.apm}} integration policy updates always include API keys in their configuration [#274647]({{kib-pull}}274647).
 
 
 ### Fixes [elastic-observability-9.3.7-fixes]
