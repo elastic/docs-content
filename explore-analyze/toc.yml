@@ -272,6 +272,7 @@ toc:
       - file: discover/save-open-search.md
       - file: discover/show-field-statistics.md
       - file: discover/run-pattern-analysis-discover.md
+      - file: discover/detect-change-points.md
       - file: discover/background-search.md
       - file: discover/try-esql.md
   - file: dashboards.md

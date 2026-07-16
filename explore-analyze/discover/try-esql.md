@@ -25,6 +25,7 @@ This tutorial covers the basics of querying data with {{esql}} in Discover. For 
 
 * [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Complete list of commands, functions, and operators
 * [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md): Detailed overview of {{esql}} features in {{product.kibana}}
+* {applies_to}`stack: ga 9.5+` [Detect change points in Discover](detect-change-points.md): Find statistically significant changes in time series data and investigate them in context
 * [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md): Techniques for writing fast queries
 
 
