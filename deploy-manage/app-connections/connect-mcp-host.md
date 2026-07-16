@@ -12,7 +12,7 @@ products:
 
 # Connect an MCP host to {{agent-builder}}
 
-After [creating an OAuth client](create-oauth-client.md), configure your MCP host, usually your AI agent, with the client ID and MCP server URL, then complete the OAuth authorization flow to establish the connection. After completing the setup, your MCP host has an authorized OAuth connection to {{agent-builder}} and can run its tools with your permissions.
+After an OAuth client is [created](create-oauth-client.md), configure your MCP host, usually your AI agent, with the client ID and MCP server URL, then complete the OAuth authorization flow to establish the connection. After completing the setup, your MCP host has an authorized OAuth connection to {{agent-builder}} and can run its tools with your permissions.
 
 This page covers two common MCP hosts:
 * Claude Code CLI, which has native OAuth support
@@ -25,7 +25,7 @@ Other OAuth 2.1 hosts follow the same general pattern, so consult your host's do
 Confirm the following before you configure your MCP host:
 
 - You have an MCP host that supports OAuth 2.1, such as the Claude Code CLI or Claude Desktop.
-- You have a client ID and MCP server URL from [creating an OAuth client](create-oauth-client.md).
+- You have the client ID and MCP server URL for the OAuth client. You either [created the client](create-oauth-client.md) yourself or received these values from the person who did.
 - You have access to the {{serverless-short}} project that the OAuth client is scoped to, not just organization-level access. The connection acts with your own permissions in that project, so you also need the privileges required for the tools you'll run through the MCP server, such as {{agent-builder}} access and **Read** access to any data those tools query. To learn more, refer to [Permissions](/explore-analyze/ai-features/agent-builder/permissions.md).
 
 ## Connect your MCP host to an OAuth client [connect-mcp-host]
@@ -46,7 +46,7 @@ Choose the instructions for your host.
 
 The Claude Code CLI supports OAuth natively, so no additional adapter is required.
 
-Run the following command, replacing `{CLIENT_ID}` and `{MCP_SERVER_URL}` with the values from your client's details page in {{kib}}:
+Run the following command, replacing `{CLIENT_ID}` and `{MCP_SERVER_URL}` with the values for your OAuth client:
 
 ```bash
 claude mcp add --transport http --client-id {CLIENT_ID} kibana-mcp {MCP_SERVER_URL}
@@ -74,7 +74,7 @@ claude mcp add --transport stdio kibana-mcp -- \
   "{\"client_id\":\"{CLIENT_ID}\"}"
 ```
 
-Replace `{MCP_SERVER_URL}` and `{CLIENT_ID}` with the values from your client's details page in {{kib}}.
+Replace `{MCP_SERVER_URL}` and `{CLIENT_ID}` with the values for your OAuth client.
 
 :::{note}
 Confidential clients must include the client secret in the `--static-oauth-client-info` JSON: `{"client_id":"{CLIENT_ID}","client_secret":"{CLIENT_SECRET}"}`.
@@ -111,7 +111,7 @@ To configure Claude Desktop:
    }
    ```
 
-   Replace `{MCP_SERVER_URL}` and `{CLIENT_ID}` with the values from your client's details page in {{kib}}.
+   Replace `{MCP_SERVER_URL}` and `{CLIENT_ID}` with the values for your OAuth client.
 
    :::{note}
    Confidential clients also require a `client_secret` in the `--static-oauth-client-info` JSON: `{"client_id":"{CLIENT_ID}","client_secret":"{CLIENT_SECRET}"}`.

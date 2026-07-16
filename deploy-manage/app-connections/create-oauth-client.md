@@ -13,7 +13,7 @@ products:
 
 # Create an OAuth client in {{agent-builder}}
 
-Register a new OAuth client in {{agent-builder}} to generate the credentials that an MCP host, such as Claude Desktop, needs to connect over OAuth 2.1. This is a one-time pre-registration step: OAuth requires each client to be registered with the authorization server before any host can connect or any user can authenticate and authorize access.
+Register a new OAuth client in {{agent-builder}} to generate the credentials that an MCP host, such as Claude Desktop, needs to connect over OAuth 2.1. This is a one-time step you complete before connecting any host to {{agent-builder}}.
 
 Each OAuth client is scoped to a single {{serverless-short}} project. Creating a client gives you a client ID and the MCP server URL for that project. For confidential clients, you also get a client secret that is shown only once and can't be retrieved later.
 
@@ -97,7 +97,9 @@ Clients created through the API are not visible in the Agent Builder client list
 
 ## Next steps
 
-Now that you have the connection information for your OAuth client, [configure your MCP host to use it](connect-mcp-host.md).
+Now that you have the client ID and MCP server URL for your OAuth client, [configure your MCP host to use them](connect-mcp-host.md).
+
+You can also share these values so that other people connect the same client in their own MCP hosts. Each person authorizes access separately and gets their own connection.
 
 ## Related pages
 
