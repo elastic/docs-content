@@ -1,5 +1,5 @@
 ---
-navigation_title: "Call agents from workflows"
+navigation_title: "Connect agents and workflows"
 description: "Learn how to connect Agent Builder agents and Elastic Workflows, including workflow tools, pre-execution workflows, and the `ai.agent` step."
 applies_to:
   stack: preview 9.3+
@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Call {{agent-builder}} agents from Elastic Workflows
+# Connect {{agent-builder}} agents and Elastic Workflows
 
 Elastic Workflows and {{agent-builder}} allow you to combine deterministic automation with conversational reasoning. By invoking an AI agent directly within a workflow execution, you can treat the agent as a "reasoning engine" that summarizes data, classifies events, or makes decisions before passing the results to the next step in your automation.
 
@@ -40,6 +40,7 @@ Before you begin:
 
 ## Pre-execution workflows [pre-execution-workflows]
 
+
 Pre-execution workflows run after each user message, before the agent makes any LLM calls in response. They let you use Elastic Workflows for deterministic preparation or control before the agent begins its reasoning loop.
 
 :::{note}
@@ -58,8 +59,8 @@ To configure pre-execution workflows:
 
 1. Select **Manage components** at the bottom of the left sidebar, then select **Agents**.
 2. Select an agent, then go to **Settings**.
-3. In **Pre-execution workflow**, select **Workflows**.
-4. Select one or more workflows to run after each user message and before the agent makes any LLM calls in response.
+3. In the **Pre-execution workflow** section, open the **Workflows** selector.
+4. Select one or more workflows. They run after each user message, before the agent makes any LLM calls in response.
 5. Save the agent.
 
 The following screenshot shows the **Pre-execution workflow** setting in the agent **Settings** view.
