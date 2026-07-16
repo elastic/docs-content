@@ -238,6 +238,8 @@ toc:
                - file: ai-features/agent-builder/mcp-server.md
           - file: ai-features/agent-builder/monitor-usage.md
           - file: ai-features/agent-builder/permissions.md
+            children:
+              - file: ai-features/agent-builder/api-keys.md
           - file: ai-features/agent-builder/troubleshooting.md
             children:
               - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
