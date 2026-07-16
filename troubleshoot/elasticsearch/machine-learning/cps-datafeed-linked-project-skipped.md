@@ -71,7 +71,7 @@ POST _ml/datafeeds/{datafeed_id}/_update
 }
 ```
 
-Use `_origin` or `_alias:_origin` when you need local-only analysis until cross-project access is restored ([{{cps-init}}](/deploy-manage/cross-project-search.md)).
+Use `_origin` or `_alias:_origin` when you need local-only analysis until cross-project access is restored ([{{cps-init}}](/explore-analyze/cross-project-search.md)).
 
 **Verify recovery**
 
