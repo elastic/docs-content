@@ -27,6 +27,34 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.4.4 [elastic-security-9.4.4-release-notes]
+
+### Features and enhancements [elastic-security-9.4.4-features-enhancements]
+
+* Adds the LXC container name to event telemetry for {{elastic-defend}} on Linux.
+
+### Fixes [elastic-security-9.4.4-fixes]
+
+* Fixes an issue where opening the rule details flyout for a deleted rule crashed the {{security-app}} when the rule was missing `severity_mapping` or `risk_score_mapping` values [#278545]({{kib-pull}}278545).
+* Fixes an issue where {{kib}} assets from an installed integration package (such as dashboards used by prebuilt detection rules) could remain stale across a {{kib}} upgrade because {{fleet}} never overwrote existing assets on reinstall [#277953]({{kib-pull}}277953).
+* Fixes an issue where the **Source event** link in an alert's **Highlighted fields** section failed to open the document when its source index had been restored (for example, from a cold or frozen tier) and renamed [#277703]({{kib-pull}}277703).
+* Fixes an issue where endpoints did not appear in the **Endpoints** list and response actions failed for agents whose `policy_id` included an agent-specific policy suffix [#277100]({{kib-pull}}277100).
+* Fixes an issue where saving an Indicator Match rule through the UI reset the API-only `concurrent_searches` and `items_per_search` fields to their defaults [#276823]({{kib-pull}}276823).
+* Fixes an issue where attaching an entity to a conversation in {{agent-builder}} crashed when a field such as `watchlists` or `sources` contained a single value instead of an array [#276201]({{kib-pull}}276201).
+* Preserves the prebuilt rule `revision` (incremented by 1) when upgrading a rule to a different rule type, matching the behavior of same-type upgrades [#275627]({{kib-pull}}275627).
+* Fixes the **Investigate in Timeline** action for suppressed alerts whose rule uses exception lists, which previously failed when the exception list data was stored as a single object instead of an array [#275417]({{kib-pull}}275417).
+* Fixes an issue where deprecated prebuilt rules could reappear as installable after being deleted through the deprecation callouts [#274447]({{kib-pull}}274447).
+* Fixes an issue where the rule editing UI rejected valid semver range version constraints (such as `^8.2.0 || ^9.0.0`) on related integrations [#274133]({{kib-pull}}274133).
+* Fixes an issue where running a workflow that requires manual input from the **Run workflow** alert action started the execution without prompting for the input, causing it to fail immediately. A manual input dialog now collects the required values before the workflow runs [#271586]({{kib-pull}}271586).
+* Fixes an issue where visualizations in dashboards created by Automatic Migration did not render on initial load, requiring manual interaction to display data [#264102]({{kib-pull}}264102).
+* Fixes a race condition when assigning the username of mounted USB devices in {{elastic-defend}} on Windows.
+* Improves serial number gathering accuracy in {{elastic-defend}} on Windows.
+* Updates the bundled `curl` library to 8.20.0 in {{elastic-defend}}, improving the stability of network operations on Linux.
+* Fixes an issue in {{elastic-defend}} that could result in incomplete addresses in network event tracking.
+* Fixes an issue where {{elastic-defend}} on macOS did not attempt to recover a failed subscription to network events, which previously remained stuck.
+* Fixes a crash in {{elastic-defend}} when the Kafka broker rejected a document that was too large.
+* Fixes an issue where {{elastic-defend}} on Windows did not display the custom popup for cached denied requests in Device Control.
+
 ## 9.4.3 [elastic-security-9.4.3-release-notes]
 
 ### Fixes [elastic-security-9.4.3-fixes]
