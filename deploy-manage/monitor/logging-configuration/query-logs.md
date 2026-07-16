@@ -20,6 +20,7 @@ The following query types are supported:
 - `esql`: [{{esql}}](elasticsearch://reference/query-languages/esql.md) queries
 - `eql`: [EQL](elasticsearch://reference/query-languages/eql/eql-syntax.md) queries
 - `sql`: [SQL](elasticsearch://reference/query-languages/sql.md) queries
+- `promql`: [PromQL API](elasticsearch://reference/query-languages/promql/promql-http-api.md) queries
 
 ## When to use query logging
 
