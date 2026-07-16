@@ -3,5 +3,9 @@
   - **Intervals granularity**: Use the slider to control how many intervals to create. {{kib}} divides the field into evenly spaced intervals (incremented by 10, 5, or 2) between the field's minimum and maximum values. The minimum granularity is 1, and the maximum is set by the `histogram:maxBars` advanced setting.
   - **Create custom ranges**: Define your own ranges with specific lower and upper bounds and optional labels, instead of using the automatic granularity.
   - **Include empty rows**: Include intervals that contain no matching documents. Existing saved visualizations keep their configured setting.
-    - {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For new visualizations, this option is on by default for tables, line charts, and area charts. It is off by default for bar charts, heat maps, pie charts, treemap charts, mosaic charts, waffle charts, metric charts, and tag clouds. When you switch visualization or series type, Lens applies the default for the new type. If you switch back to the visualization type you saved, Lens restores the saved setting.
+    - {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For new visualizations, this option is:
+      - On by default for tables, line charts, and area charts
+      - Off by default for bar charts, heat maps, pie charts, treemap charts, mosaic charts, waffle charts, metric charts, and tag clouds
+
+      When you switch visualization or series type, Lens applies the default for the new type. If you switch back to the visualization type you saved, Lens restores the saved setting.
     - {applies_to}`stack: ga 9.0-9.4` This option is on by default for all visualization types.
