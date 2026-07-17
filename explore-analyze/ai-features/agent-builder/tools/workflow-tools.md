@@ -119,7 +119,7 @@ The agent:
 - runs the workflow
 - returns the workflow's final output to the chat
 
-Review the inline reasoning events to trace the execution steps and inspect the raw workflow output.
+Review the [inline reasoning events](../chat.md#inspect-tool-calls-and-reasoning) to trace the execution steps and inspect the raw workflow output.
 
 :::{image} ../images/agent-builder-workflow-tool.png
 :screenshot:
