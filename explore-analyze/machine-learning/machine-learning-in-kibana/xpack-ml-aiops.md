@@ -60,11 +60,6 @@ stack: ga 9.5+, preview 9.0-9.4
 serverless: ga
 ```
 
-::::{warning}
-:applies_to: { stack: preview 9.0-9.4 }
-In technical preview releases, this functionality might change or be removed. Elastic works to fix issues, but technical preview features aren't subject to the support SLA of GA features.
-::::
-
 Change point detection uses the [change point aggregation](elasticsearch://reference/aggregations/search-aggregations-change-point-aggregation.md) to detect distribution changes, trend changes, and other statistically significant change points in a metric of your time series data.
 
 To detect change points with an {{esql}} query and investigate them in **Discover**, refer to [Detect change points in Discover](/explore-analyze/discover/detect-change-points.md). The workflow on this page uses the **AIOps Labs** interface.
