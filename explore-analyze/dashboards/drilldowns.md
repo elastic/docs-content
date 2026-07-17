@@ -62,8 +62,7 @@ Use the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data to creat
 1. Add the **Sample web logs** data.
 2. Create a new dashboard.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.5` Select **Add** in the application menu, then open the **From library** tab.
-    * {applies_to}`stack: ga 9.2-9.4` Select **Add** > **From library** in the application menu.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **From library**.
     * {applies_to}`stack: ga 9.0-9.1` Click **Add from library** in the dashboard toolbar.
 
 3. Add the following panel:
@@ -119,8 +118,7 @@ For example, if you have a dashboard that shows data from a Github repository, y
 3. In the application menu, click **Edit**.
 4. Create a pie chart.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.5` Select **Add** in the application menu, then select **Visualization**.
-    * {applies_to}`stack: ga 9.2-9.4` Select **Add** > **Visualization** in the application menu.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **Visualization**.
     * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. From the **Chart type** dropdown, select **Pie**.

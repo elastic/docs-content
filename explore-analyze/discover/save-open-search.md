@@ -189,17 +189,8 @@ Use this option to create a single-tab Discover session directly on the dashboar
 
 You need permission to access Discover, and the dashboard must be in **Edit** mode.
 
-1. Open the panel picker on the dashboard.
-
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.5` Select **Add** in the toolbar.
-    * {applies_to}`stack: ga 9.4` Select **Add** > **New panel** in the toolbar.
-
-2. Select the Discover session panel type:
-
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.5` Under **Other visualizations**, select {icon}`app_discover` **Discover session**.
-    * {applies_to}`stack: ga 9.4` In the **Visualizations** group, select {icon}`app_discover` **Discover session**.
-
-   Discover opens in embedded editor mode.
+1. Select **Add** in the dashboard toolbar and, if available, **New panel**.
+2. Under **Other visualizations** or **Visualizations**, select {icon}`app_discover` **Discover session**. Discover opens in embedded editor mode.
 3. Configure the session: enter a query, adjust columns, sort, and other view settings as needed.
 4. Select **Save and return** in the application menu to add the configured panel to the dashboard.
 

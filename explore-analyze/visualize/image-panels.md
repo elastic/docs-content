@@ -22,8 +22,7 @@ You can upload images from your computer, select previously uploaded images, or 
 
 1. From your dashboard, open the panel picker.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.5` Select **Add** in the toolbar.
-    * {applies_to}`stack: ga 9.2-9.4` Select **Add** > **New panel** in the toolbar.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the toolbar and, if available, **New panel**.
     * {applies_to}`stack: ga 9.0-9.1` Click **Add panel** in the dashboard toolbar.
 
 2. Select **Image**. The **Add image** flyout appears and lets you add and configure the image you want to display.

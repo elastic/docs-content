@@ -26,8 +26,7 @@ You can use **Links** panels to create links to other dashboards or external web
 
 1. Open the panel picker.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.5` Select **Add** in the toolbar to open the **Add to dashboard** flyout.
-    * {applies_to}`stack: ga 9.2-9.4` Select **Add** > **New panel** in the toolbar.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the toolbar and, if available, **New panel**.
     * {applies_to}`stack: ga 9.0-9.1` Click **Add panel** in the dashboard toolbar.
 
 2. Select **Links**. The **Create links panel** flyout appears and lets you add the link you want to display.
@@ -49,8 +48,7 @@ To add a previously saved links panel to another dashboard:
 
 1. Open the library panel picker.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.5` Select **Add** in the toolbar, then open the **From library** tab.
-    * {applies_to}`stack: ga 9.2-9.4` Select **Add** > **From library** in the toolbar.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the toolbar, then select **From library**.
     * {applies_to}`stack: ga 9.0-9.1` Click **Add from library** in the dashboard toolbar.
 
 2. Select **Links** from the **Types** dropdown and then select the Links panel you want to add.

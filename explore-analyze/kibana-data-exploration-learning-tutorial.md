@@ -282,8 +282,7 @@ You can also add panels powered by {{esql}} queries directly from the dashboard.
 
 1. Add a new panel:
 
-   - {applies_to}`serverless:` {applies_to}`stack: ga 9.5` Select **Add** in the toolbar, then select **Visualization (query)**.
-   - {applies_to}`stack: ga 9.2-9.4` Select **Add** > **New panel** in the toolbar, then select **{{esql}}** under **Visualizations**.
+   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the toolbar, then select the available {{esql}} option: **Visualization (query)** or **New panel** → **{{esql}}** under **Visualizations**.
    - {applies_to}`stack: ga 9.0-9.1` Select **Add panel** in the toolbar, then select **{{esql}}** under **Visualizations**.
 
 2. Enter the following query and run it:

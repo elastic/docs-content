@@ -17,8 +17,7 @@ To create the visualization:
 
 1. Open a dashboard and add a new {{esql}} visualization:
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.5` Select **Add** in the toolbar, then select **Visualization (query)**.
-    * {applies_to}`stack: ga 9.2-9.4` Select **Add** > **New panel** in the toolbar, then choose **{{esql}}** under **Visualizations**.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the toolbar, then select the available {{esql}} option: **Visualization (query)** or **New panel** → **{{esql}}** under **Visualizations**.
     * {applies_to}`stack: ga 9.0-9.1` Click **Add panel** in the dashboard toolbar, then choose **{{esql}}**.
 
 2. Enter the following query:
