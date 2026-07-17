@@ -404,7 +404,7 @@ When searching large datasets, you can get faster, estimated results by using {i
 
 The grouped layout activates when the `BY` clause contains a single field reference or a single [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md) call. Other grouping functions like `BUCKET` or `TBUCKET`, and queries that group by more than one field (for example, `BY clientip, extension`), keep the standard flat results table.
 
-### Pattern and sparkline rendering
+### Pattern rendering
 
 When the grouping field uses [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md), each row title shows the detected pattern with token highlighting, so you can scan repeated message structures at a glance. For example:
 
@@ -418,7 +418,7 @@ FROM kibana_sample_data_logs
 Pattern detection on text fields is also available outside {{esql}} from the **Patterns** tab in Discover's classic mode. Refer to [](/explore-analyze/discover/run-pattern-analysis-discover.md).
 ::::
 
-#### Add sparklines to patterns [esql-cascade-pattern-sparkline]
+### Add sparklines to patterns [esql-cascade-pattern-sparkline]
 ```{applies_to}
 stack: preview 9.5
 serverless: preview
