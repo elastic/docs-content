@@ -72,9 +72,11 @@ FROM logs-*
 | WHERE type IS NOT NULL
 ```
 
-Replace the index, time field, and aggregation with values appropriate for your data. If Discover shows **No change points detected**, the data either has no statistically significant change or doesn't provide the 22 values required for analysis. Widen the time range or adjust the bucket size to provide more values.
+To adapt and troubleshoot the query:
 
-For queries that read from an index, **Open in a new Discover tab** opens the source documents in a focused time range around the detected change.
+- **Use your data:** Replace the index, time field, and aggregation with values appropriate for your data.
+- **Troubleshoot empty results:** If Discover shows **No change points detected**, the data either has no statistically significant change or doesn't provide the 22 values required for analysis. Widen the time range or adjust the bucket size to provide more values.
+- **Inspect source documents:** For queries that read from an index, **Open in a new Discover tab** opens the source documents in a focused time range around the detected change.
 
 ## Compare change points across groups
 
@@ -90,6 +92,27 @@ FROM logs-*
 ```
 
 Discover displays a separate chart for each group that contains a detected change point. Use the chart grid to compare where each series changed.
+
+::::{dropdown} Example
+The following query simulates change points for two services, so you can preview grouped results without loading sample data:
+
+```esql
+ROW hour_offset = [24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0], service = ["checkout","search"]
+| MV_EXPAND hour_offset
+| MV_EXPAND service
+| EVAL time_bucket = TO_DATETIME(TO_LONG(NOW()) - TO_LONG(hour_offset) * 3600000)
+| EVAL request_count = CASE(service == "checkout", CASE(hour_offset >= 12, 10, 100), CASE(hour_offset >= 8, 20, 80))
+| SORT service, time_bucket
+| CHANGE_POINT request_count ON time_bucket BY service
+| WHERE type IS NOT NULL
+```
+
+:::{image} /explore-analyze/images/kibana-discover-grouped-change-points.png
+:alt: Discover showing separate change point charts and results for the checkout and search services
+:screenshot:
+:width: 90%
+:::
+::::
 
 ## Next steps
 
