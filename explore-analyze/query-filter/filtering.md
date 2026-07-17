@@ -26,10 +26,11 @@ Display data within a specified time range when your index contains time-based e
 1. Select the time range control.
 2. Set the time range in one of the following ways:
 
-    * Enter a range directly, such as `last 5 minutes` or `-12d to now`, then press **Enter**.
-    * Select a range from **Presets** or **Recent**.
-    * Select **Calendar**, select the start and end dates, then select **Apply**.
-    * Select **Custom range**, configure the **Start date** and **End date** as **Relative**, **Absolute**, or **Now**, then select **Apply**.
+    * For a common range, such as today or the last 15 minutes, select it under **Presets**.
+    * To reuse a range that you selected earlier, select **Recent**.
+    * If you know the range, enter it directly, such as `last 5 minutes` or `-12d to now`, then press **Enter**.
+    * To select start and end dates from a calendar, select **Calendar**, select the dates, then select **Apply**.
+    * To configure the start and end separately, select **Custom range**, set each one as **Relative**, **Absolute**, or **Now**, then select **Apply**.
 
     :::{image} /explore-analyze/images/kibana-date-range-picker.png
     :alt: Date range picker showing presets and controls for custom ranges, settings, and saving presets
@@ -52,10 +53,7 @@ The new picker doesn't support auto-refresh-only views. In those views, the time
 ::::
 
 ::::{applies-item} { stack: ga 9.0-9.4 }
-1. Select the calendar icon:
-
-    ![Calendar icon](/explore-analyze/images/kibana-time-filter-icon.png "calendar icon =7%x7%")
-
+1. Select the time filter.
 2. Select one of the following:
 
     * **Quick select**. Set a time based on the last or next number of seconds, minutes, hours, or other time unit.
@@ -69,11 +67,6 @@ The new picker doesn't support auto-refresh-only views. In those views, the time
     :::
 
 3. To set start and end times, select the bar next to the time filter. In the popup, select **Absolute**, **Relative**, or **Now**, then specify the required options.
-
-    :::{image} /explore-analyze/images/kibana-time-relative.png
-    :alt: Time filter showing relative time
-    :width: 350px
-    :::
 ::::
 :::::
 
