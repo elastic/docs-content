@@ -23,7 +23,7 @@ Display data within a specified time range when your index contains time-based e
 
 :::::{applies-switch}
 ::::{applies-item} { stack: preview 9.5+, serverless: preview }
-1. Select the time range control.
+1. Open the time filter.
 2. Set the time range in one of the following ways:
 
     * For a common range, such as today or the last 15 minutes, select it under **Presets**.
