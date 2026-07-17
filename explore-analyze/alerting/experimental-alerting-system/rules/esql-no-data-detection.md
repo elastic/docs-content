@@ -30,3 +30,8 @@ Every row returned is a host that has gone silent. The query result itself drive
 :::{note}
 This pattern detects specific silent sources. For controlling what the rule records when the entire base query returns zero rows, for example when an index is completely empty, refer to [No-data handling](configure-no-data-handling.md).
 :::
+
+## Related pages
+
+- [{{esql}} query patterns](esql-query-patterns.md): Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.
+- [No-data handling](configure-no-data-handling.md): Configure what the rule records when the base query returns zero rows.

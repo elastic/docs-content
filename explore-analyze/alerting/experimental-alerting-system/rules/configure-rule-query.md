@@ -108,3 +108,9 @@ FROM logs-*
 ```
 
 Because `?threshold` is resolved before saving, YAML and API representations of this rule always show the resolved value.
+
+## Related pages
+
+- [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
+- [{{esql}} query patterns](esql-query-patterns.md): Query examples ranging from a basic event filter to SLO burn rate and persistent breach detection.
+- [Create an {{esql}} rule](create-esql-rule.md): Preview query results in the sandbox before applying them to the rule form.

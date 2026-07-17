@@ -128,3 +128,8 @@ All duration fields accept the following units:
 | `m` | `5m` | Minutes |
 | `h` | `1h` | Hours |
 | `d` | `7d` | Days |
+
+## Related pages
+
+- [Create an {{esql}} rule](create-esql-rule.md): Author rules using the YAML editor, with a live sandbox for previewing results.
+- [Configure a rule](configure-a-rule.md): Field-by-field guidance for each setting, with examples and when-to-use recommendations.

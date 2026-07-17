@@ -90,3 +90,9 @@ Here's what the severity-specific steps do:
 - **`EVAL burn_rate`**: Computes the error rate as failures over total requests.
 - **`EVAL severity`**: Maps the burn rate to a severity level.
 - **`KEEP`**: Keeps `severity` in the output so the {{alerting-v2-system}} reads and stores it.
+
+## Related pages
+
+- [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
+- [SLO burn rate](esql-slo-burn-rate.md): A query pattern that assigns severity dynamically based on burn rate across multiple time windows.
+- [Rule grouping](configure-rule-grouping.md): Track multiple subjects as independent alert series, each with its own severity.

@@ -58,3 +58,8 @@ Triage steps:
 3. If errors are concentrated in one region, escalate to the infra team.
 4. If errors are global, page the payments on-call lead.
 ```
+
+## Related pages
+
+- [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
+- [View and manage rules](view-manage-rules.md): Filter the rules list by tag and view a rule's runbook from the rule details page.

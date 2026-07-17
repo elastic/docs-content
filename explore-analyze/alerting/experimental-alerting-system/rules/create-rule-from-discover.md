@@ -26,3 +26,8 @@ When you trigger rule creation from Discover, your {{esql}} query pre-fills the 
 The rule creation flyout supports both a step-by-step form and a YAML editor. You can switch between them at any point. Edits are preserved when you return to the form view. The YAML editor includes {{esql}} autocomplete in the query field.
 
 For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md).
+
+## Related pages
+
+- [Create a rule](create-a-rule.md): Compare this creation path with the others.
+- [{{esql}} query patterns](esql-query-patterns.md): Query examples ranging from a basic event filter to SLO burn rate and persistent breach detection.

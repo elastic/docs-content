@@ -30,7 +30,9 @@ To send a notification or trigger an action from a rule in the {{alerting-v2-sys
 
 - [Connect workflows](workflows-alerting.md): Understand how action policies and lifecycle triggers invoke workflows at runtime.
 - [About action policies](action-policies/about-action-policies.md): Understand how action policies evaluate and gate alert episodes.
+- [Examples and common scenarios](action-policies/common-action-policy-scenarios.md): Route by severity, manage escalation, and re-notify for persistently active episodes.
 - [Create an action policy](action-policies/create-configure-action-policy.md): Configure match conditions, grouping, frequency, and destinations.
 - [Action policy reference](action-policies/action-policy-reference.md): Look up match condition fields, grouping modes, and frequency options.
 - [Manage action policies](action-policies/manage-action-policies.md): Enable, disable, snooze, edit, or delete action policies.
+- [Review action policy execution history](action-policies/review-action-policy-execution-history.md): Monitor dispatcher outcomes and investigate unexpected notification behavior.
 - [Reduce notification noise](action-policies/reduce-notification-noise.md): Silence alert episodes using acknowledgment, snooze, and maintenance windows.

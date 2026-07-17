@@ -424,3 +424,9 @@ By completing this tutorial, you learned:
 - **Severity tiers** - An {{esql}} `CASE()` expression can classify each breach by severity, and those labels are recorded in `.rule-events` and shown on the episode's details page.
 - **Episode lifecycle** - **Alert delay** requires a breach to persist across consecutive evaluations before an episode opens, so transient spikes don't trigger it.
 - **Automatic recovery** - With default recovery, an episode closes as soon as a scheduled run finds the alert condition is no longer met, which is exactly what happened right after rewriting the latency values.
+
+## Next steps
+
+- [Configure a rule](../rules/configure-a-rule.md): Explore optional settings like severity, grouping, and no-data handling.
+- [{{esql}} query patterns](../rules/esql-query-patterns.md): Browse more detection patterns, from a basic event filter to SLO burn rate and persistent breach detection.
+- [Notifications and actions](../notifications-actions.md): Set up workflows and action policies to notify your team the next time an episode opens.

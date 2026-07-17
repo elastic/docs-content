@@ -66,3 +66,9 @@ FROM metrics-*
 | WHERE avg_cpu > 0.90
 | KEEP host.name, cloud.region, avg_cpu
 ```
+
+## Related pages
+
+- [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
+- [Threshold queries](esql-threshold-queries.md): Write single-series and grouped queries using a `BY` clause.
+- [Severity](configure-rule-severity.md): Assign a severity level to each alert series.

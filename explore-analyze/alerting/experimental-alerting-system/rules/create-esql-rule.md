@@ -40,3 +40,8 @@ While the sandbox is open, switching between rule form and YAML or between rule 
 ### Control how your query splits [sandbox-split-editor]
 
 By default, applying changes in the sandbox automatically splits your query into a base query and alert condition. If you want full manual control over the split, use the toggle in the sandbox to switch to separate Base and Alert editors. If auto-split fails, a callout on the alert condition step lets you open the sandbox directly in manual split mode. For what each part of the split does, refer to [{{esql}} query](configure-rule-query.md).
+
+## Related pages
+
+- [Create a rule](create-a-rule.md): Compare this creation path with the others.
+- [{{esql}} query patterns](esql-query-patterns.md): Query examples ranging from a basic event filter to SLO burn rate and persistent breach detection.

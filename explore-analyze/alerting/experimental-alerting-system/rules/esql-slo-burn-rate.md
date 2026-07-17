@@ -73,3 +73,8 @@ FROM metrics-*
 The rule's lookback window must cover the longest window in the query. In this example that's 3 days, driven by the 6-hour window pair.
 
 The `severity` column in `KEEP` maps directly to the `severity` field on each resulting alert episode. For accepted values and matching rules, refer to [Severity](configure-rule-severity.md).
+
+## Related pages
+
+- [{{esql}} query patterns](esql-query-patterns.md): Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.
+- [Severity](configure-rule-severity.md): Assign severity levels to alert episodes.

@@ -61,3 +61,9 @@ Create a rule that monitors infrastructure CPU. Configure the no-data strategy a
 ### Close the episode when a queue empties out
 
 Create a rule that monitors how many jobs are waiting in a queue and opens an episode when the backlog gets too large. Configure the no-data strategy as **Recover** (`recover`) so that once the queue is empty and the query has nothing to return, the episode closes.
+
+## Related pages
+
+- [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
+- [Recovery condition](configure-rule-recovery.md): How no-data handling fits into the recovery process.
+- [No-data detection](esql-no-data-detection.md): An {{esql}} pattern for detecting one specific silent source, rather than an empty base query result.

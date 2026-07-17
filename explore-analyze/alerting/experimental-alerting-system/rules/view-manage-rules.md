@@ -43,3 +43,8 @@ Use **Edit** to modify the rule, or the actions menu to enable, disable, clone, 
 ## Disable or snooze a rule [disable-snooze-rule]
 
 Use **Disable** when you want the rule to stop running entirely until you re-enable it. Snoozing is different: the rule keeps evaluating, but you suppress notifications or quiet a specific series or action policy.
+
+## Related pages
+
+- [Create a rule](create-a-rule.md): Compare rule creation paths and choose the one that fits your workflow.
+- [Review rule execution history](review-rule-execution-history.md): Monitor rule execution outcomes across all rules in a space.

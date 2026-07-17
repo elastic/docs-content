@@ -81,3 +81,9 @@ Create a rule that detects a potential security incident. Even after the query s
 ### Require consecutive recoveries before closing an episode
 
 Create a rule that monitors database connection pool saturation. After the condition clears, set `recovering_count` to `3` to require 3 consecutive non-breaching evaluations before closing the episode. Without this, a rule that alternates between breaching and recovering on consecutive evaluations generates a constant stream of open and closed notifications.
+
+## Related pages
+
+- [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
+- [Alert delay](configure-rule-alert-delay.md): The equivalent delay before an episode opens.
+- [No-data handling](configure-no-data-handling.md): How the rule behaves when it can't confirm whether a group's absence is a genuine recovery.

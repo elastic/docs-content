@@ -76,3 +76,9 @@ FROM metrics-*
 | WHERE max_disk_pct > 0.90
 | KEEP host.name, system.filesystem.mount_point, max_disk_pct
 ```
+
+## Related pages
+
+- [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
+- [Alert delay](configure-rule-alert-delay.md): Reduce noise from brief spikes before opening an episode.
+- [Duration format](yaml-rule-schema-reference.md#duration-format): The full list of accepted duration units.

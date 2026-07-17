@@ -37,3 +37,4 @@ This separation means you can build and test a rule without anyone getting paged
 - [View and manage rules](rules/view-manage-rules.md): Enable, disable, clone, delete, and bulk-manage rules from the **Rules** page.
 - [Review rule execution history](rules/review-rule-execution-history.md): Monitor rule execution outcomes across all rules in a space.
 - [{{esql}} query patterns](rules/esql-query-patterns.md): Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.
+- [Rule events](rules/rule-event-field-reference.md): Understand the documents rules write to `.rule-events`.
