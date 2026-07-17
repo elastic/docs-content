@@ -81,6 +81,8 @@ Inline actions include the following (some actions are unavailable in some conte
 
 The {{security-app}} contains the following pages that enable analysts to view, analyze, and manage security data.
 
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` You can reorder these items in the navigation menu, or hide the ones you don't use. Refer to [Customize your navigation menu](/explore-analyze/find-and-organize/customize-navigation.md).
+
 ### Discover [security-ui-discover]
 
 Use the [Discover](/explore-analyze/discover.md) UI to filter your data or learn about its structure.

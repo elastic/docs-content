@@ -236,6 +236,10 @@ toc:
                    - file: ai-features/agent-builder/agent-builder-api-tutorial.md
                - file: ai-features/agent-builder/a2a-server.md
                - file: ai-features/agent-builder/mcp-server.md
+                 children:
+                   - file: ai-features/agent-builder/mcp-server-api-keys.md
+                   - title: "OAuth authentication"
+                     crosslink: docs-content://deploy-manage/app-connections/oauth-clients.md
           - file: ai-features/agent-builder/monitor-usage.md
           - file: ai-features/agent-builder/permissions.md
           - file: ai-features/agent-builder/troubleshooting.md
@@ -283,15 +287,14 @@ toc:
           - file: dashboards/create-dashboards-programmatically.md
           - file: dashboards/create-dashboards-using-ai.md
           - file: dashboards/open-dashboard.md
-          - file: dashboards/add-controls.md
           - file: dashboards/drilldowns.md
           - file: dashboards/arrange-panels.md
           - file: dashboards/duplicate-dashboards.md
-          - file: dashboards/import-dashboards.md
       - file: dashboards/managing.md
         children:
+          - file: dashboards/sharing.md
+          - file: dashboards/import-dashboards.md
           - file: dashboards/manage-dashboards-as-code.md
-      - file: dashboards/sharing.md
       - file: dashboards/tutorials.md
         children:
           - file: dashboards/create-dashboard-of-panels-with-web-server-data.md
@@ -319,6 +322,12 @@ toc:
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
       - file: visualize/alert-panels.md
+      - file: visualize/dashboard-controls.md
+        children:
+          - file: visualize/add-controls.md
+          - file: visualize/add-time-slider-controls.md
+          - file: visualize/add-variable-controls.md
+          - file: visualize/dashboard-control-settings.md
       - file: visualize/canvas.md
         children:
           - file: visualize/canvas/edit-workpads.md
@@ -376,6 +385,7 @@ toc:
       - file: find-and-organize/reports.md
       - file: find-and-organize/tags.md
       - file: find-and-organize/find-apps-and-objects.md
+      - file: find-and-organize/customize-navigation.md
   - file: report-and-share.md
     children:
       - file: report-and-share/automating-report-generation.md
@@ -394,14 +404,47 @@ toc:
               - file: alerting/experimental-alerting-system/alerts/investigate-alert-episodes.md
           - file: alerting/experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md
           - file: alerting/experimental-alerting-system/alerts/field-reference.md
-      - hidden: alerting/compare-alerting-systems.md
-      - hidden: alerting/system-overview.md
-      - hidden: alerting/experimental-alerting-system/how-it-works.md
-      - hidden: alerting/experimental-alerting-system/glossary.md
-      - hidden: alerting/experimental-alerting-system/get-started.md
-      - hidden: alerting/experimental-alerting-system/get-started/setup.md
-      - hidden: alerting/experimental-alerting-system/get-started/configure-access.md
-      - hidden: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
+      - file: alerting/compare-alerting-systems.md
+      - file: alerting/system-overview.md
+        children:
+          - file: alerting/experimental-alerting-system/how-it-works.md
+          - file: alerting/experimental-alerting-system/glossary.md
+          - file: alerting/experimental-alerting-system/get-started.md
+            children:
+              - file: alerting/experimental-alerting-system/get-started/setup.md
+              - file: alerting/experimental-alerting-system/get-started/configure-access.md
+              - file: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
+          - file: alerting/experimental-alerting-system/rules.md
+            children:
+              - file: alerting/experimental-alerting-system/rules/create-a-rule.md
+                children:
+                  - file: alerting/experimental-alerting-system/rules/create-esql-rule.md
+                    children:
+                      - file: alerting/experimental-alerting-system/rules/yaml-rule-schema-reference.md
+                  - file: alerting/experimental-alerting-system/rules/create-rules-action-policies-agent-builder.md
+                  - file: alerting/experimental-alerting-system/rules/use-rule-builder.md
+                  - file: alerting/experimental-alerting-system/rules/create-rule-from-discover.md
+              - file: alerting/experimental-alerting-system/rules/configure-a-rule.md
+                children:
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-mode.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-query.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-schedule.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-severity.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-grouping.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-alert-delay.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-recovery.md
+                  - file: alerting/experimental-alerting-system/rules/configure-no-data-handling.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-tags.md
+              - file: alerting/experimental-alerting-system/rules/view-manage-rules.md
+              - file: alerting/experimental-alerting-system/rules/review-rule-execution-history.md
+              - file: alerting/experimental-alerting-system/rules/esql-query-patterns.md
+                children:
+                  - file: alerting/experimental-alerting-system/rules/esql-first-rule-query.md
+                  - file: alerting/experimental-alerting-system/rules/esql-threshold-queries.md
+                  - file: alerting/experimental-alerting-system/rules/esql-no-data-detection.md
+                  - file: alerting/experimental-alerting-system/rules/esql-slo-burn-rate.md
+                  - file: alerting/experimental-alerting-system/rules/esql-persistent-breach.md
+              - file: alerting/experimental-alerting-system/rules/rule-event-field-reference.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
