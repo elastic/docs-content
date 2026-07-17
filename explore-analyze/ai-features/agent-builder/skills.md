@@ -49,7 +49,7 @@ Use skills when you have domain-specific knowledge or procedures that multiple a
 
 - An [{{product.security}}](/solutions/security/ai/agent-builder/agent-builder.md) user asks about a suspicious host. The [`entity-analytics`](builtin-skills-reference.md#agent-builder-entity-analytics-skill) skill activates and guides the agent through finding the entity, analyzing its risk score, asset criticality, and behavioral history.
 - An [{{product.observability}}](/solutions/observability/ai/agent-builder-observability.md) user asks why a service is slow or why an alert fired. The [`observability.investigation`](builtin-skills-reference.md#agent-builder-observability-investigation-skill) skill activates and diagnoses the issue across APM services and infrastructure.
-- An {{product.elasticsearch}} user asks how to combine keyword and vector search for a product catalog. The [`search.hybrid-search`](builtin-skills-reference.md#agent-builder-search-hybrid-search-skill) skill activates and guides the agent through building a hybrid search solution.
+- An {{product.elasticsearch}} user asks how to combine keyword and vector search for a product catalog. The [`search.vector-hybrid-search`](builtin-skills-reference.md#agent-builder-search-vector-hybrid-search-skill) skill activates and guides the agent through building a hybrid search solution.
 
 ## Built-in skills
 

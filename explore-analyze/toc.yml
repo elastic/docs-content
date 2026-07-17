@@ -236,6 +236,10 @@ toc:
                    - file: ai-features/agent-builder/agent-builder-api-tutorial.md
                - file: ai-features/agent-builder/a2a-server.md
                - file: ai-features/agent-builder/mcp-server.md
+                 children:
+                   - file: ai-features/agent-builder/mcp-server-api-keys.md
+                   - title: "OAuth authentication"
+                     crosslink: docs-content://deploy-manage/app-connections/oauth-clients.md
           - file: ai-features/agent-builder/monitor-usage.md
           - file: ai-features/agent-builder/permissions.md
           - file: ai-features/agent-builder/troubleshooting.md
@@ -283,15 +287,14 @@ toc:
           - file: dashboards/create-dashboards-programmatically.md
           - file: dashboards/create-dashboards-using-ai.md
           - file: dashboards/open-dashboard.md
-          - file: dashboards/add-controls.md
           - file: dashboards/drilldowns.md
           - file: dashboards/arrange-panels.md
           - file: dashboards/duplicate-dashboards.md
-          - file: dashboards/import-dashboards.md
       - file: dashboards/managing.md
         children:
+          - file: dashboards/sharing.md
+          - file: dashboards/import-dashboards.md
           - file: dashboards/manage-dashboards-as-code.md
-      - file: dashboards/sharing.md
       - file: dashboards/tutorials.md
         children:
           - file: dashboards/create-dashboard-of-panels-with-web-server-data.md
@@ -319,6 +322,12 @@ toc:
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
       - file: visualize/alert-panels.md
+      - file: visualize/dashboard-controls.md
+        children:
+          - file: visualize/add-controls.md
+          - file: visualize/add-time-slider-controls.md
+          - file: visualize/add-variable-controls.md
+          - file: visualize/dashboard-control-settings.md
       - file: visualize/canvas.md
         children:
           - file: visualize/canvas/edit-workpads.md
@@ -376,6 +385,7 @@ toc:
       - file: find-and-organize/reports.md
       - file: find-and-organize/tags.md
       - file: find-and-organize/find-apps-and-objects.md
+      - file: find-and-organize/customize-navigation.md
   - file: report-and-share.md
     children:
       - file: report-and-share/automating-report-generation.md
@@ -385,28 +395,30 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
-      - file: alerting/experimental-alerting-system/notifications-actions.md
+      - file: alerting/compare-alerting-systems.md
+      - file: alerting/system-overview.md
         children:
-          - file: alerting/experimental-alerting-system/workflows-alerting.md
-          - file: alerting/experimental-alerting-system/action-policies/about-action-policies.md
-          - file: alerting/experimental-alerting-system/action-policies/common-action-policy-scenarios.md
+          - file: alerting/experimental-alerting-system/how-it-works.md
+          - file: alerting/experimental-alerting-system/glossary.md
+          - file: alerting/experimental-alerting-system/get-started.md
             children:
-              - file: alerting/experimental-alerting-system/action-policies/route-by-severity.md
-              - file: alerting/experimental-alerting-system/action-policies/severity-escalation.md
-              - file: alerting/experimental-alerting-system/action-policies/re-notification.md
-          - file: alerting/experimental-alerting-system/action-policies/create-configure-action-policy.md
-          - file: alerting/experimental-alerting-system/action-policies/action-policy-reference.md
-          - file: alerting/experimental-alerting-system/action-policies/manage-action-policies.md
-          - file: alerting/experimental-alerting-system/action-policies/review-action-policy-execution-history.md
-          - file: alerting/experimental-alerting-system/action-policies/reduce-notification-noise.md
-      - hidden: alerting/compare-alerting-systems.md
-      - hidden: alerting/system-overview.md
-      - hidden: alerting/experimental-alerting-system/how-it-works.md
-      - hidden: alerting/experimental-alerting-system/glossary.md
-      - hidden: alerting/experimental-alerting-system/get-started.md
-      - hidden: alerting/experimental-alerting-system/get-started/setup.md
-      - hidden: alerting/experimental-alerting-system/get-started/configure-access.md
-      - hidden: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
+              - file: alerting/experimental-alerting-system/get-started/setup.md
+              - file: alerting/experimental-alerting-system/get-started/configure-access.md
+              - file: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
+          - file: alerting/experimental-alerting-system/notifications-actions.md
+            children:
+              - file: alerting/experimental-alerting-system/workflows-alerting.md
+              - file: alerting/experimental-alerting-system/action-policies/about-action-policies.md
+              - file: alerting/experimental-alerting-system/action-policies/common-action-policy-scenarios.md
+                children:
+                  - file: alerting/experimental-alerting-system/action-policies/route-by-severity.md
+                  - file: alerting/experimental-alerting-system/action-policies/severity-escalation.md
+                  - file: alerting/experimental-alerting-system/action-policies/re-notification.md
+              - file: alerting/experimental-alerting-system/action-policies/create-configure-action-policy.md
+              - file: alerting/experimental-alerting-system/action-policies/action-policy-reference.md
+              - file: alerting/experimental-alerting-system/action-policies/manage-action-policies.md
+              - file: alerting/experimental-alerting-system/action-policies/review-action-policy-execution-history.md
+              - file: alerting/experimental-alerting-system/action-policies/reduce-notification-noise.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md

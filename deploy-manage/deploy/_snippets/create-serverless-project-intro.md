@@ -6,3 +6,7 @@ There are two options to create serverless projects:
 :::{note}
 If your organization restricts outbound browser traffic with a firewall, proxy, or secure web gateway, make sure users can access `kibana.estccdn.com` and `cloud.elastic.co`. If these domains are blocked, {{kib}} can load as a blank page in {{serverless-short}} projects. For more information, refer to [Browser access requirements](/deploy-manage/deploy/elastic-cloud.md#browser-access).
 :::
+
+:::{note}
+{{ecloud}} organizations have an adjustable limit of 500 {{serverless-short}} projects. If you reach this limit, you'll get an error when trying to create additional projects. To request an increase, [contact Elastic Support](/troubleshoot/index.md#contact-us).
+:::

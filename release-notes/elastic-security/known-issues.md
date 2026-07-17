@@ -23,6 +23,28 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Response actions fail and endpoints do not appear for agents on version-specific policies
+**Applies to: {{stack}} 9.4.0, 9.4.1, 9.4.2, 9.4.3**
+
+**Impact**<br>
+Certain {{agent}} integration packages and inputs can trigger the creation of a version-specific {{agent}} policy in {{fleet}}. When a version-specific policy includes the {{elastic-defend}} integration, response actions against the affected endpoints fail. In addition, the corresponding endpoints are not visible on the **Assets** → **Endpoints** and **Assets** → **Endpoints** → **Policies** pages.
+
+For more information, refer to [#276295](https://github.com/elastic/kibana/issues/276295).
+
+**Workaround**<br>
+Remove the version-specific integration policy from the {{agent}} policy, or move the affected endpoints to a new {{agent}} policy that does not include any version-specific integration policies. A fix will be included in a future 9.4.x release.
+:::
+
+:::{dropdown} Osquery cannot target agents on version-specific policies
+**Applies to: {{stack}} 9.4.0, 9.4.1, 9.4.2, 9.4.3**
+
+**Impact**<br>
+Certain {{agent}} integration packages and inputs can trigger the creation of a version-specific {{agent}} policy. When a version-specific policy includes the Osquery integration, the corresponding agents do not appear in the Osquery agent or policy selector, so they cannot be targeted. Live queries against an affected policy fail with a `No agents found for selection` error, and agent grouping and counts in the selector are inaccurate.
+
+**Workaround**<br>
+Remove the version-specific integration policy from the {{agent}} policy, or reassign the affected agents to a new {{agent}} policy that does not include any version-specific integration policies. A fix will be included in a future 9.4.x release.
+:::
+
 :::{dropdown} Problem Child and DGA integrations fail to install
 **Applies to: {{stack}} 9.3.6**
 

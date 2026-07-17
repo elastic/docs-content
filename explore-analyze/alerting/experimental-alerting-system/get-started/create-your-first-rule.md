@@ -19,7 +19,7 @@ Here's what you'll do:
 2. **Write a detection query** - Use the query sandbox to build and preview an {{esql}} query that computes P95 latency and flags breaches. The sandbox lets you verify the logic before the rule ever runs.
 3. **Configure the rule** - Set the alert condition, schedule, lookback window, and recovery behavior. You'll see how each setting shapes the alert lifecycle.
 4. **Confirm the rule is running** - Check the **Execution history** page to see that the rule is evaluating on schedule and its runs are succeeding.
-5. **Watch the episode open and recover** - Open the alert episode's details page to watch the episode move from `pending` to `active` as the breach persists, then close automatically when the degraded data ages out of the lookback window.
+5. **Watch the episode open and recover** - Open the alert episode's details page to watch the episode move from `pending` to `active` as the breach persists, then trigger the recovery condition directly to see it close.
 
 ## Requirements [create-rule-requirements]
 
@@ -71,185 +71,187 @@ Confirm the response shows `"acknowledged": true` before proceeding.
 
 ::::{step} Load the sample data
 
-Expand the drop-down below to copy the full bulk request, then run it in Dev Tools. It populates the index with synthetic latency data for a `checkout` service covering three phases:
+Expand the drop-down below to copy the full bulk request, then run it in Dev Tools. It populates the index with synthetic latency data for a `checkout` service covering three phases, all within a single hour:
 
-- **Healthy** (`21:57`–`22:12`): P95 well under 2 seconds
-- **Degraded** (`22:13`–`22:27`): P95 well over 2 seconds across 3 consecutive 5-minute windows
-- **Recovered** (`22:28`–`22:37`): P95 returns to healthy levels
+- **Healthy** (`:00`–`:15`): P95 well under 2 seconds
+- **Degraded** (`:16`–`:30`): P95 well over 2 seconds across 3 consecutive 5-minute windows
+- **Recovered** (`:31`–`:40`): P95 returns to healthy levels
 
 The response should show `errors: false` for all documents.
 
 :::{note}
-The timestamps are fixed to `2026-07-02`, which is in the past. Before running this request, open it in a text editor and replace `2026-07-02` with today's date in `YYYY-MM-DD` format, keeping the time values unchanged. Once you load the data, complete the tutorial within 2 hours to see the full episode lifecycle.
+The timestamps are fixed to `2026-07-02T21`. Before running this request, replace `2026-07-02T21` with today's date and the current UTC hour in `YYYY-MM-DDTHH` format (for example, `2026-07-14T09`), keeping the minutes and seconds unchanged.
+
+The rule can only see data that's already in the past, so each phase won't appear until real time reaches its minute mark.
 :::
 
-::::{dropdown} Bulk request: 80 synthetic latency events (healthy → degraded → recovered)
+::::{dropdown} Bulk request: 82 synthetic latency events (healthy → degraded → recovered)
 ```json
 POST checkout-service-logs/_bulk
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T21:57:01.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":468}
+{"@timestamp":"2026-07-02T21:00:01.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":468}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T21:57:31.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":336}
+{"@timestamp":"2026-07-02T21:00:31.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":336}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T21:58:01.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":367}
+{"@timestamp":"2026-07-02T21:01:01.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":367}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T21:58:31.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":372}
+{"@timestamp":"2026-07-02T21:01:31.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":372}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T21:59:01.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":497}
+{"@timestamp":"2026-07-02T21:02:01.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":497}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T21:59:31.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":305}
+{"@timestamp":"2026-07-02T21:02:31.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":305}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:00:01.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":384}
+{"@timestamp":"2026-07-02T21:03:01.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":384}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:00:31.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":406}
+{"@timestamp":"2026-07-02T21:03:31.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":406}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:01:01.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":427}
+{"@timestamp":"2026-07-02T21:04:01.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":427}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:01:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":461}
+{"@timestamp":"2026-07-02T21:04:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":461}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:02:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":448}
+{"@timestamp":"2026-07-02T21:05:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":448}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:02:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":527}
+{"@timestamp":"2026-07-02T21:05:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":527}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:03:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":272}
+{"@timestamp":"2026-07-02T21:06:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":272}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:03:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":477}
+{"@timestamp":"2026-07-02T21:06:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":477}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:04:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":355}
+{"@timestamp":"2026-07-02T21:07:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":355}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:04:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":466}
+{"@timestamp":"2026-07-02T21:07:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":466}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:05:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":528}
+{"@timestamp":"2026-07-02T21:08:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":528}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:05:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":280}
+{"@timestamp":"2026-07-02T21:08:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":280}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:06:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":278}
+{"@timestamp":"2026-07-02T21:09:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":278}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:06:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":252}
+{"@timestamp":"2026-07-02T21:09:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":252}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:07:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":443}
+{"@timestamp":"2026-07-02T21:10:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":443}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:07:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":447}
+{"@timestamp":"2026-07-02T21:10:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":447}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:08:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":504}
+{"@timestamp":"2026-07-02T21:11:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":504}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:08:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":260}
+{"@timestamp":"2026-07-02T21:11:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":260}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:09:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":353}
+{"@timestamp":"2026-07-02T21:12:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":353}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:09:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":508}
+{"@timestamp":"2026-07-02T21:12:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":508}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:10:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":381}
+{"@timestamp":"2026-07-02T21:13:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":381}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:10:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":315}
+{"@timestamp":"2026-07-02T21:13:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":315}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:11:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":284}
+{"@timestamp":"2026-07-02T21:14:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":284}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:11:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":261}
+{"@timestamp":"2026-07-02T21:14:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":261}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:12:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":371}
+{"@timestamp":"2026-07-02T21:15:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":371}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:12:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":329}
+{"@timestamp":"2026-07-02T21:15:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":329}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:13:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2704}
+{"@timestamp":"2026-07-02T21:16:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2704}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:13:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2909}
+{"@timestamp":"2026-07-02T21:16:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2909}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:14:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2898}
+{"@timestamp":"2026-07-02T21:17:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2898}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:14:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3094}
+{"@timestamp":"2026-07-02T21:17:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3094}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:15:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3701}
+{"@timestamp":"2026-07-02T21:18:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3701}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:15:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3977}
+{"@timestamp":"2026-07-02T21:18:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3977}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:16:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2368}
+{"@timestamp":"2026-07-02T21:19:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2368}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:16:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3954}
+{"@timestamp":"2026-07-02T21:19:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3954}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:17:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2610}
+{"@timestamp":"2026-07-02T21:20:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2610}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:17:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2491}
+{"@timestamp":"2026-07-02T21:20:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2491}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:18:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3751}
+{"@timestamp":"2026-07-02T21:21:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3751}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:18:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3909}
+{"@timestamp":"2026-07-02T21:21:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3909}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:19:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3903}
+{"@timestamp":"2026-07-02T21:22:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3903}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:19:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3905}
+{"@timestamp":"2026-07-02T21:22:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3905}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:20:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2292}
+{"@timestamp":"2026-07-02T21:23:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2292}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:20:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":4429}
+{"@timestamp":"2026-07-02T21:23:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":4429}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:21:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":4147}
+{"@timestamp":"2026-07-02T21:24:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":4147}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:21:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2462}
+{"@timestamp":"2026-07-02T21:24:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2462}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:22:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2733}
+{"@timestamp":"2026-07-02T21:25:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2733}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:22:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2869}
+{"@timestamp":"2026-07-02T21:25:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2869}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:23:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":4323}
+{"@timestamp":"2026-07-02T21:26:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":4323}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:23:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3802}
+{"@timestamp":"2026-07-02T21:26:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3802}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:24:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3105}
+{"@timestamp":"2026-07-02T21:27:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3105}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:24:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2335}
+{"@timestamp":"2026-07-02T21:27:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2335}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:25:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3649}
+{"@timestamp":"2026-07-02T21:28:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3649}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:25:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":4320}
+{"@timestamp":"2026-07-02T21:28:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":4320}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:26:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2671}
+{"@timestamp":"2026-07-02T21:29:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2671}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:26:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3438}
+{"@timestamp":"2026-07-02T21:29:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3438}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:27:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2251}
+{"@timestamp":"2026-07-02T21:30:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":2251}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:27:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3235}
+{"@timestamp":"2026-07-02T21:30:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":3235}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:28:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":525}
+{"@timestamp":"2026-07-02T21:31:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":525}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:28:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":458}
+{"@timestamp":"2026-07-02T21:31:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":458}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:29:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":448}
+{"@timestamp":"2026-07-02T21:32:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":448}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:29:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":453}
+{"@timestamp":"2026-07-02T21:32:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":453}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:30:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":435}
+{"@timestamp":"2026-07-02T21:33:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":435}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:30:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":463}
+{"@timestamp":"2026-07-02T21:33:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":463}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:31:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":319}
+{"@timestamp":"2026-07-02T21:34:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":319}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:31:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":421}
+{"@timestamp":"2026-07-02T21:34:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":421}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:32:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":353}
+{"@timestamp":"2026-07-02T21:35:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":353}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:32:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":378}
+{"@timestamp":"2026-07-02T21:35:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":378}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:33:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":369}
+{"@timestamp":"2026-07-02T21:36:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":369}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:33:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":490}
+{"@timestamp":"2026-07-02T21:36:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":490}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:34:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":284}
+{"@timestamp":"2026-07-02T21:37:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":284}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:34:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":359}
+{"@timestamp":"2026-07-02T21:37:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":359}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:35:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":468}
+{"@timestamp":"2026-07-02T21:38:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":468}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:35:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":292}
+{"@timestamp":"2026-07-02T21:38:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":292}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:36:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":427}
+{"@timestamp":"2026-07-02T21:39:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":427}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:36:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":423}
+{"@timestamp":"2026-07-02T21:39:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":423}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:37:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":259}
+{"@timestamp":"2026-07-02T21:40:02.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":259}
 {"index":{"_index":"checkout-service-logs"}}
-{"@timestamp":"2026-07-02T22:37:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":309}
+{"@timestamp":"2026-07-02T21:40:32.000Z","service.name":"checkout","transaction.name":"POST /checkout","latency_ms":309}
 ```
 ::::
 
@@ -265,13 +267,13 @@ You'll build a rule that detects when P95 latency for a service exceeds 2 second
 
 ::::{step} Open the rule editor
 
-Go to **Alerting V2 Preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the rules list, select the option to create a new rule. When the rule creation panel opens, select **Create ES|QL rule** to open the rule authoring flyout.
+Go to **Alerting v2 preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the **Rules** page, select the option to create an {{esql}} rule.
 
 ::::
 
 ::::{step} Write and test the detection query
 
-1. Paste the following {{esql}} query into the **Query sandbox**. It computes the 95th percentile latency per service, assigns a severity label based on the result, and filters to show only services where P95 exceeds 2 seconds. Each pipe (`|`) passes the output of one step to the next.
+1. Paste the following {{esql}} query into the **Query sandbox**. It finds the slowest 5% of requests for each service (P95 latency), labels how severe that is, and keeps only the services where that value is above 2 seconds. You don't need to add a time filter yourself: the sandbox and the rule both apply one automatically based on the date range or schedule you choose.
 
    ```esql
    FROM checkout-service-logs
@@ -281,18 +283,12 @@ Go to **Alerting V2 Preview** using the navigation menu or the [global search fi
        p95_latency_ms >= 2000, "high",
        "low"
      )
-   | WHERE p95_latency_ms > 2000 
+   | WHERE p95_latency_ms > 2000
    ```
 
-   :::{note}
-   You don't need to add a `WHERE @timestamp` clause to this query. Both the query sandbox and the rule executor automatically inject the time-window filter based on the date range you select in the sandbox or the rule's schedule and lookback once it's running.
-   :::
-
-2. Set the sandbox date range to **Last 1 hour** and run the query. This preset gives comfortable coverage of the full dataset without pulling in data from a previous run.
+2. Set the sandbox date range to the **Today** preset (from the **Commonly used** list) and run the query. **Today** covers the full calendar day, so it finds the sample data no matter what time it is right now.
 
 3. Confirm the query results. You should see one row for `service.name: checkout` with `p95_latency_ms` above 2000 and `severity: high` or `critical`.
-
-   You can also use the sandbox to preview what recovery looks like. If you narrow the range to a healthy window (before `22:13` or after `22:28`), the row disappears. No rows means no breach, and when a scheduled evaluation returns the same, the episode closes. You'll configure this behavior in the **Recovery Condition** step.
 
 4. Select **Apply changes** to populate the rule form, then select **Next**.
 
@@ -308,7 +304,7 @@ The query you applied from the sandbox auto-fills **Mode**, **Time field**, and 
 
 - Set **Alert delay** to **Breaches: 2**. The breach must persist across 2 consecutive evaluations before the episode moves to `active`.
 - Set **Schedule** to every `5` minutes.
-- Set **Lookback Window** to the last `2` hours. This ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial.
+- Set **Lookback Window** to the last `45` minutes. This ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial. Unlike the sandbox, this is always a relative range; it can't use an absolute range like **Today**. Go ahead and finish configuring and saving the rule; see **Observe the episode lifecycle** for when the episode will actually appear.
 
 Select **Next**.
 
@@ -321,7 +317,7 @@ Confirm the default settings:
 - **Recovery**: `Default recovery`
 - **Recovery delay**: `Immediate` (no delay, recovers on first non-breach)
 
-These default settings will produce the automatic recovery behavior this tutorial demonstrates. As soon as a scheduled run returns no breaching rows, the episode will close.
+These default settings will produce the automatic recovery behavior this tutorial demonstrates. As soon as a scheduled run finds that the service's P95 latency is back under the 2-second threshold, the episode will close.
 
 Select **Next**.
 
@@ -332,7 +328,7 @@ Select **Next**.
 1. On the **Details & Artifacts** step, enter the following:
 
    - **Name**: Checkout Service Latency
-   - **Description**: `Detects when P95 latency for the checkout service exceeds 2 seconds. Groups by service name and assigns severity: critical at 4 seconds, high at 2 seconds.`
+   - **Description**: Detects when P95 latency for the checkout service exceeds 2 seconds. Groups by service name and assigns severity: critical at 4 seconds, high at 2 seconds.
 
    Select **Next**.
 
@@ -346,35 +342,85 @@ Select **Next**.
 
 The sandbox showed that your query *can* find a breach. This step confirms the rule is actually running on schedule. The **Execution history** page gives you a real-time log of every rule run and its outcome.
 
-1. Open **Execution history** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+:::::{stepper}
 
-2. Select the **Rules** tab and use the **Rule** filter to select **Checkout Service Latency**.
+::::{step} Open Execution history
 
-3. Wait one schedule interval (5 minutes) after saving the rule, then check the table for a recent entry.
+Open **Execution history** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-4. Confirm the **Response** shows `success` and the **Timestamp** matches a recent time. If no entries appear, confirm at least one 5-minute interval has elapsed since you saved the rule.
+::::
+
+::::{step} Select the rule
+
+On the **Rules** tab, select **Checkout Service Latency**.
+
+::::
+
+::::{step} Wait for an execution
+
+Wait one schedule interval (5 minutes) after saving the rule, then check the table for a recent entry.
+
+::::
+
+::::{step} Confirm success
+
+Confirm the **Response** column shows `success` and the **Timestamp** matches a recent time. If no entries appear, confirm at least one 5-minute interval has elapsed since you saved the rule.
+
+::::
+
+:::::
 
 ## Observe the episode lifecycle [observe-episode-lifecycle]
 
-With the rule running, you can watch the full alert lifecycle play out on the Alerts page and in the episode detail view. The episode opens once the breach persists across consecutive evaluations, stays active while the degraded data is in the lookback window, and closes automatically when no breaching data remains.
+With the rule running, you can watch the full alert lifecycle play out on the **Alerts** page and in the episode's details page. It stays active until the recovery condition is met.
 
-:::{note}
-Because you set **Alert delay** to 2 consecutive breaches, the episode starts as `pending` and only moves to `active` once the breach persists across a second evaluation. This prevents transient spikes from opening an episode right away.
-:::
+:::::{stepper}
 
-1. Open **Alerting V2 Preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Alerts** page.
+::::{step} Open the Alerts page
 
-2. Filter by **Rule** to show only episodes for **Checkout Service Latency**. After the first two evaluations (about 10 minutes), you'll see an episode appear and move from `pending` to `active`.
+Open **Alerting v2 preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Alerts** page.
 
-3. Select the episode to open its details page. Use the metric trend to see how P95 latency compared to the threshold over the episode's lifetime, and confirm the grouping value (`checkout`) that triggered it.
+::::
 
-4. Wait for the rule's lookback window to advance past the degraded data. Once no breaching rows fall within the 2-hour window, the episode status changes to `inactive` automatically. No manual action is required. This is default recovery in action.
+::::{step} Find the episode
+
+The episode won't appear until the current UTC time passes 16 minutes past the hour, which is the start of the degraded window. After the first two evaluations following that point (about 10 minutes), you'll see an episode appear and move from `pending` to `active`.
+
+::::
+
+::::{step} Inspect the episode details
+
+Select the episode to open its details. Use the metric trend to see how P95 latency compared to the threshold over the episode's lifetime, and confirm the grouping value (`checkout`) that triggered it.
+
+::::
+
+::::{step} Force recovery
+
+Run the following in **Dev Tools** to rewrite the degraded documents' `latency_ms` values to a healthy level. This triggers the rule's recovery condition directly, so you see the episode close because the condition resolved.
+
+```json
+POST checkout-service-logs/_update_by_query
+{
+  "query": {
+    "range": { "latency_ms": { "gt": 2000 } }
+  },
+  "script": {
+    "source": "ctx._source.latency_ms = 300"
+  }
+}
+```
+
+This rewrites the degraded documents to a healthy latency value, so the next scheduled run (within 5 minutes) finds the service's P95 latency back under the threshold and moves the episode to `inactive`. Go to the **Alerts** page and open the episode's details again to confirm.
+
+::::
+
+:::::
 
 ## Key concepts demonstrated [create-rule-key-concepts]
 
-This tutorial put four core concepts into practice:
+By completing this tutorial, you learned:
 
-- **Rules** - The query you wrote runs every 5 minutes and computes P95 latency over a 2-hour lookback window. Each run checks whether the result exceeds 2000 ms. The schedule and lookback you configured determined how often the rule checked and how much history it analyzed each time.
-- **Severity tiers** - The `CASE()` expression you wrote classified each breach as `high` or `critical` based on the P95 value. Those labels are stored in `.rule-events` and visible in the episode detail view.
-- **Episode lifecycle** - Setting **Alert delay** to **Breaches: 2** meant the episode didn't open on the first breach. You watched it start as `pending` on the Alerts page, then move to `active` after a second consecutive breaching evaluation confirmed the condition wasn't transient.
-- **Automatic recovery** - Because you kept the default recovery settings, the episode closed on its own once the degraded data aged out of the lookback window. The rule detected the absence of a breach and moved the episode to `inactive`. 
+- **Rules** - A rule's schedule and lookback window control how often it evaluates and how much history each evaluation considers.
+- **Severity tiers** - An {{esql}} `CASE()` expression can classify each breach by severity, and those labels are recorded in `.rule-events` and shown on the episode's details page.
+- **Episode lifecycle** - **Alert delay** requires a breach to persist across consecutive evaluations before an episode opens, so transient spikes don't trigger it.
+- **Automatic recovery** - With default recovery, an episode closes as soon as a scheduled run finds the alert condition is no longer met, which is exactly what happened right after rewriting the latency values.
