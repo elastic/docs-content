@@ -26,8 +26,10 @@ The rest of this page explains how to manage spaces and their settings. For info
 
 ## Required permissions [_required_privileges_3]
 
-* {applies_to}`serverless:` `Admin` role or equivalent
-* {applies_to}`stack:` `kibana_admin` or equivalent
+To manage spaces, you need the following role or equivalent privileges for your deployment type:
+
+* {applies_to}`serverless:` `Admin` role
+* {applies_to}`stack:` `kibana_admin`
 
 
 ## Create a space [spaces-managing]
