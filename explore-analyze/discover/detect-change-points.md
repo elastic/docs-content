@@ -42,7 +42,7 @@ Use an {{esql}} [`CHANGE_POINT`](elasticsearch://reference/query-languages/esql/
 
    Discover replaces the usual visualization with a chart that shows the sharp increase from 10 to 100. The results table contains one `step_change` result. A lower p-value indicates a more significant change.
 
-6. Expand a change point in the results table, then select **Overview** to inspect its chart, time, metric, type, p-value, and description.
+6. Expand a change point in the results table. The **Overview** tab lets you inspect its chart, time, metric, type, p-value, and description.
 7. From the chart actions, select **Open in a new Discover tab** to open the series in a focused time range around the detected change.
 
 ## Analyze your own data
