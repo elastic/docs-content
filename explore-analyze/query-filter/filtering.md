@@ -38,14 +38,16 @@ Display data within a specified time range when your index contains time-based e
 :width: 250px
 :::
 
-3. Open {icon}`gear` **Settings** to configure automatic refresh and time display:
+Optionally, you can:
 
-    * Turn **Refresh every** on or off and set the refresh interval.
-    * Review **Time format and zone**, and select **Advanced settings** to change the time zone if you have access.
-    * Turn **Round relative time ranges** on or off.
-    * Under **Absolute time range**, select whether timestamps show **Minutes**, **Seconds**, or **Milliseconds**.
+- Open {icon}`gear` **Settings** to configure automatic refresh and time display:
 
-4. Save the current range as a preset and apply it with {icon}`save`. Saved ranges appear under **Presets**.
+    - Turn **Refresh every** on or off and set the refresh interval.
+    - Review **Time format and zone**, and select **Advanced settings** to change the time zone if you have access.
+    - Turn **Round relative time ranges** on or off.
+    - Under **Absolute time range**, select whether timestamps show **Minutes**, **Seconds**, or **Milliseconds**.
+
+- Save the current range as a preset for later reuse with {icon}`save`. Saving the preset also applies the range, and saved ranges appear under **Presets**.
 
 :::{note}
 The new picker doesn't support auto-refresh-only views. In those views, the time control and auto-refresh aren't available.
