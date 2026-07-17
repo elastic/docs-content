@@ -1,6 +1,6 @@
 ---
 navigation_title: Jina
-description: Use Jina embedding, reranker, and reader models through Elastic Inference Service, Jina on-prem, or the Jina AI API.
+description: Use Jina embedding, reranker, and reader models through Elastic Inference Service, the Jina AI API, or Jina on-prem.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,13 +10,7 @@ products:
 
 # Jina models [ml-nlp-jina]
 
-Jina models are pretrained models for search and retrieval workflows. You can use them to create embeddings for semantic and multimodal similarity search, rerank candidate results in hybrid search and retrieval-augmented generation (RAG), and extract structured content from HTML and complex documents before indexing.
-
-You can deploy Jina models in the following ways:
-
-* [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md): Elastic hosts Jina models and serves them through managed {{infer}} endpoints in your cluster, so you can run inference without deploying or managing model infrastructure.
-* [Jina on-prem](#jina-on-prem): You run Jina models in Docker containers on your network using [Jina on-prem](https://github.com/jina-ai/jina-on-prem), and {{es}} connects to them through {{infer}} endpoints. Using on-prem means you do not send data to a third-party API, inference makes no outbound network calls, and models run on your own infrastructure.
-* [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md): {{es}} connects to the [Jina AI API](https://jina.ai/) through {{infer}} endpoints, so you can call models hosted by Jina with your own API key. 
+Jina models are designed and trained for search and retrieval workflows. You can use them to create embeddings for text and multimodal semantic similarity search, rerank candidate results to improve the precision of hybrid search and retrieval-augmented generation (RAG) systems, and extract structured content from HTML and complex documents before indexing.
 
 ## Model overview [jina-model-overview]
 
@@ -32,10 +26,9 @@ Text embedding models convert text into vector embeddings for semantic similarit
 
 | Model | Description | Deployment |
 | --- | --- | --- |
-| [`jina-embeddings-v5-text-small`](https://jina.ai/models/jina-embeddings-v5-text-small/) | Multilingual text embeddings with task-specific adapters. Accepts text input and produces 1024-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [EIS](#jina-eis-text-embedding), [On-prem](#jina-on-prem), [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md) |
-| [`jina-embeddings-v5-text-nano`](https://jina.ai/models/jina-embeddings-v5-text-nano/) | Multilingual embeddings for edge deployment. Accepts text input and produces 768-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [EIS](#jina-eis-text-embedding), [On-prem](#jina-on-prem), [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md) |
-| [`jina-embeddings-v3`](https://jina.ai/models/jina-embeddings-v3/) | Multilingual text embeddings. Accepts text input and produces 1024-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [EIS](#jina-eis-text-embedding), [On-prem](#jina-on-prem), [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md) |
-| [`jina-colbert-v2`](https://jina.ai/models/jina-colbert-v2/) | Multilingual ColBERT model for embedding and reranking. Accepts text input and produces 128-dimensional multi-vector embeddings. Supports input lengths up to 8K tokens. | [On-prem](#jina-on-prem), [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md) |
+| [`jina-embeddings-v5-text-small`](https://jina.ai/models/jina-embeddings-v5-text-small/) | Multilingual text embeddings with task-specific adapters. Accepts text input and produces 1024-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [EIS](#jina-eis-text-embedding), [External {{infer}} - Jina API](#jina-external), [On-prem - Elastic-integrated](#jina-on-prem), [On-prem - Jina API](#jina-on-prem-additional) |
+| [`jina-embeddings-v5-text-nano`](https://jina.ai/models/jina-embeddings-v5-text-nano/) | Multilingual embeddings for edge deployment. Accepts text input and produces 768-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [EIS](#jina-eis-text-embedding), [External {{infer}} - Jina API](#jina-external), [On-prem - Elastic-integrated](#jina-on-prem), [On-prem - Jina API](#jina-on-prem-additional) |
+| [`jina-embeddings-v3`](https://jina.ai/models/jina-embeddings-v3/) | Multilingual text embeddings. Accepts text input and produces 1024-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [EIS](#jina-eis-text-embedding), [External {{infer}} - Jina API](#jina-external), [On-prem - Elastic-integrated](#jina-on-prem), [On-prem - Jina API](#jina-on-prem-additional) |
 
 ### Multimodal embedding models [jina-multimodal-embeddings]
 
@@ -43,11 +36,11 @@ Multimodal embedding models convert text, images, video, audio, and documents su
 
 | Model | Description | Deployment |
 | --- | --- | --- |
-| [`jina-embeddings-v5-omni-small`](https://jina.ai/models/jina-embeddings-v5-omni-small/) | Multimodal embeddings for text, image, audio, video, and PDF. Accepts multimodal input and produces 1024-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [EIS](#jina-omni-getting-started), [On-prem](#jina-on-prem), [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md) |
-| [`jina-embeddings-v5-omni-nano`](https://jina.ai/models/jina-embeddings-v5-omni-nano/) | Compact multimodal embeddings for edge deployment. Accepts multimodal input and produces 768-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [EIS](#jina-omni-getting-started), [On-prem](#jina-on-prem), [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md) |
-| [`jina-clip-v2`](https://jina.ai/models/jina-clip-v2/) | Multilingual multimodal embeddings for text and image retrieval. Accepts text and image input and produces 1024-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [EIS](#jina-omni-getting-started), [On-prem](#jina-on-prem), [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md) |
-| [`jina-embeddings-v4`](https://jina.ai/models/jina-embeddings-v4/) | Universal multimodal embeddings for text, image, and PDF retrieval. Accepts text, image, and PDF input and produces 2048-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [On-prem](#jina-on-prem), [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md) |
-| [`jina-vlm`](https://jina.ai/models/jina-vlm/) | Vision-language model for visual question answering. Accepts image and text input and generates text output. Supports input lengths up to 32K tokens. | [On-prem](#jina-on-prem), [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md) |
+| [`jina-embeddings-v5-omni-small`](https://jina.ai/models/jina-embeddings-v5-omni-small/) | Multimodal embeddings for text, image, audio, video, and PDF. Accepts multimodal input and produces 1024-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [EIS](#jina-omni-getting-started), [External {{infer}} - Jina API](#jina-external), [On-prem - Jina API](#jina-on-prem-additional) |
+| [`jina-embeddings-v5-omni-nano`](https://jina.ai/models/jina-embeddings-v5-omni-nano/) | Compact multimodal embeddings for edge deployment. Accepts multimodal input and produces 768-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [EIS](#jina-omni-getting-started), [External {{infer}} - Jina API](#jina-external), [On-prem - Jina API](#jina-on-prem-additional) |
+| [`jina-clip-v2`](https://jina.ai/models/jina-clip-v2/) | Multilingual multimodal embeddings for text and image retrieval. Accepts text and image input and produces 1024-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [EIS](#jina-omni-getting-started), [External {{infer}} - Jina API](#jina-external), [On-prem - Jina API](#jina-on-prem-additional) |
+| [`jina-embeddings-v4`](https://jina.ai/models/jina-embeddings-v4/) | Universal multimodal embeddings for text, image, and PDF retrieval. Accepts text, image, and PDF input and produces 2048-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [External {{infer}} - Jina API](#jina-external), [On-prem - Jina API](#jina-on-prem-additional) |
+| [`jina-vlm`](https://jina.ai/models/jina-vlm/) | Vision-language model for visual question answering. Accepts image and text input and generates text output. Supports input lengths up to 32K tokens. | [On-prem - Jina API](#jina-on-prem-additional) |
 
 ### Code embedding models [jina-code-embeddings]
 
@@ -55,8 +48,8 @@ Code embedding models convert source code and technical text into dense vectors 
 
 | Model | Description | Deployment |
 | --- | --- | --- |
-| [`jina-code-embeddings-1.5b`](https://jina.ai/models/jina-code-embeddings-1.5b/) | Code embeddings built on code generation models. Accepts source code and technical text and produces 1536-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [On-prem](#jina-on-prem), [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md) |
-| [`jina-code-embeddings-0.5b`](https://jina.ai/models/jina-code-embeddings-0.5b/) | Compact code embeddings for edge deployment. Accepts source code and technical text and produces 896-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [On-prem](#jina-on-prem), [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md) |
+| [`jina-code-embeddings-1.5b`](https://jina.ai/models/jina-code-embeddings-1.5b/) | Code embeddings built on code generation models. Accepts source code and technical text and produces 1536-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [External {{infer}} - Jina API](#jina-external), [On-prem - Elastic-integrated](#jina-on-prem), [On-prem - Jina API](#jina-on-prem-additional) |
+| [`jina-code-embeddings-0.5b`](https://jina.ai/models/jina-code-embeddings-0.5b/) | Compact code embeddings for edge deployment. Accepts source code and technical text and produces 896-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [External {{infer}} - Jina API](#jina-external), [On-prem - Elastic-integrated](#jina-on-prem), [On-prem - Jina API](#jina-on-prem-additional) |
 
 ### Reader models [jina-reader-models]
 
@@ -64,7 +57,7 @@ Reader models extract clean, structured content from HTML and complex documents 
 
 | Model | Description | Deployment |
 | --- | --- | --- |
-| [`ReaderLM-v2`](https://jina.ai/models/ReaderLM-v2/) | Converts raw HTML into Markdown or JSON. Accepts HTML input and generates Markdown or JSON output. Supports input lengths up to 512K tokens. | [On-prem](#jina-on-prem) |
+| [`ReaderLM-v2`](https://jina.ai/models/ReaderLM-v2/) | Converts raw HTML into Markdown or JSON. Accepts HTML input and generates Markdown or JSON output. Supports input lengths up to 512K tokens. | [On-prem - Jina API](#jina-on-prem-additional) |
 
 ### Rerankers [jina-rerankers]
 
@@ -72,17 +65,28 @@ Reranker models reorder candidate documents by predicted relevance to improve to
 
 | Model | Description | Deployment |
 | --- | --- | --- |
-| [`jina-reranker-v3`](https://jina.ai/models/jina-reranker-v3/) | Listwise reranker for multilingual document retrieval. Accepts text queries and documents and returns relevance rankings. Supports input lengths up to 131K tokens. | [EIS](#jina-eis-rerank), [On-prem](#jina-on-prem), [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md) |
-| [`jina-reranker-m0`](https://jina.ai/models/jina-reranker-m0/) | Multimodal reranker for visual documents. Accepts text or image queries and documents and returns relevance rankings. Supports input lengths up to 10K tokens. | [On-prem](#jina-on-prem), [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md) |
-| [`jina-reranker-v2-base-multilingual`](https://jina.ai/models/jina-reranker-v2-base-multilingual/) | Cross-encoder reranker for multilingual search. Accepts text queries and documents and returns relevance rankings. Supports input lengths up to 1K tokens. | [EIS](#jina-eis-rerank), [On-prem](#jina-on-prem), [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md) |
+| [`jina-reranker-v3`](https://jina.ai/models/jina-reranker-v3/) | Listwise reranker for multilingual document retrieval. Accepts text queries and documents and returns relevance rankings. Supports input lengths up to 131K tokens. | [EIS](#jina-eis-rerank), [External {{infer}} - Jina API](#jina-external), [On-prem - Elastic-integrated](#jina-on-prem), [On-prem - Jina API](#jina-on-prem-additional) |
+| [`jina-reranker-m0`](https://jina.ai/models/jina-reranker-m0/) | Multimodal reranker for visual documents. Accepts text or image queries and documents and returns relevance rankings. Supports input lengths up to 10K tokens. | [External {{infer}} - Jina API](#jina-external), [On-prem - Elastic-integrated](#jina-on-prem), [On-prem - Jina API](#jina-on-prem-additional) |
+| [`jina-reranker-v2-base-multilingual`](https://jina.ai/models/jina-reranker-v2-base-multilingual/) | Cross-encoder reranker for multilingual search. Accepts text queries and documents and returns relevance rankings. Supports input lengths up to 1K tokens. | [EIS](#jina-eis-rerank), [External {{infer}} - Jina API](#jina-external), [On-prem - Elastic-integrated](#jina-on-prem), [On-prem - Jina API](#jina-on-prem-additional) |
+| [`jina-colbert-v2`](https://jina.ai/models/jina-colbert-v2/) | Multilingual ColBERT model for embedding and reranking. Accepts text input and produces 128-dimensional multi-vector embeddings. Supports input lengths up to 8K tokens. | [External {{infer}} - Jina API](#jina-external), [On-prem - Jina API](#jina-on-prem-additional) |
 
-## Use models with Elastic {{infer-cap}} Service (EIS) [jina-eis-getting-started]
+## Deploy models [jina-deploy]
+
+You can deploy Jina models in the following ways:
+
+* [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md): Elastic hosts Jina models and serves them through managed {{infer}} endpoints in your cluster, so you can run inference without deploying or managing model infrastructure.
+* [External {{infer}} - Jina API](#jina-external): {{es}} connects to the hosted [Jina AI API](https://jina.ai/) through {{infer}} endpoints, so you can call models hosted by Jina with your own API key.
+* [On-prem](#jina-on-prem): You run Jina models in Docker containers on your own infrastructure with [Jina on-prem](https://github.com/jina-ai/jina-on-prem).
+  * [Elastic-integrated](#jina-on-prem): {{es}} connects to supported embedding and reranking models through {{infer}} endpoints.
+  * [Jina API](#jina-on-prem-additional): Your application calls the APIs exposed by the container directly.
+
+### Elastic {{infer-cap}} Service [jina-eis-getting-started]
 
 With [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), Elastic hosts Jina models and serves them through managed {{infer}} endpoints in your cluster. Use this option when you want GPU-accelerated inference without deploying or managing model infrastructure.
 
 To use a model through EIS, create an {{infer}} endpoint with `"service": "elastic"` and set `model_id` to the name of the model you want to use.
 
-### Text embedding models [jina-eis-text-embedding]
+#### Text embedding models [jina-eis-text-embedding]
 
 The following examples use the `text_embedding` task type. Create an {{infer}} endpoint and reference the `inference_id` in `text_embedding` {{infer}} tasks or search queries:
 
@@ -160,7 +164,7 @@ POST _inference/text_embedding/eis-jina-embeddings-v3
 
 ::::
 
-### Multimodal embedding models [jina-omni-getting-started]
+#### Multimodal embedding models [jina-omni-getting-started]
 
 {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga`
 
@@ -617,7 +621,7 @@ The Jina v5 omni models availability and the support for the [`semantic_text`](e
 - {applies_to}`stack: ga 9.5+` In {{stack}} 9.5 and later, the `semantic_field` field type supports all modalities, such as text, images, video, audio, and documents.
 ::::
 
-### Reranker models [jina-eis-rerank]
+#### Reranker models [jina-eis-rerank]
 
 The following examples use the `rerank` task type. Create an {{infer}} endpoint and reference the `inference_id` in `rerank` {{infer}} tasks:
 
@@ -672,13 +676,43 @@ POST _inference/rerank/jina-reranker-v2-base-multilingual
 
 ::::
 
-## Deploy Jina models on-prem [jina-on-prem]
+### External {{infer}} - Jina API [jina-external]
 
-With [Jina on-prem](https://github.com/jina-ai/jina-on-prem), you run Jina models in Docker containers on your own infrastructure. Use this option when data cannot leave your network, when inference must work without outbound connectivity, or when compliance and data residency require self-hosted model deployment.
+With [External {{infer}}](docs-content://explore-analyze/elastic-inference/external.md), {{es}} connects to the hosted [Jina AI API](https://jina.ai/) through {{infer}} endpoints. Use this option when you want to call models hosted by Jina with your own API key.
+
+To create a Jina AI API key, refer to the [Jina API dashboard](https://jina.ai/api-dashboard/reader).
+
+To use a model through the Jina AI API, create an {{infer}} endpoint with `"service": "jinaai"` and set `model_id` to the name of the model you want to use.
+
+The following example creates a `rerank` endpoint for `jina-colbert-v2`:
+
+```console
+PUT _inference/rerank/jina-colbert-v2-external
+{
+  "service": "jinaai",
+  "service_settings": {
+    "api_key": "<api_key>", <1>
+    "model_id": "jina-colbert-v2" <2>
+  }
+}
+```
+
+1. Your Jina AI API key.
+2. The model to use for the {{infer}} task.
+
+You can reference the `inference_id` of this endpoint in search queries.
+
+For more information about creating Jina AI {{infer}} endpoints, including `text_embedding` and `embedding` task types, refer to the [create a JinaAI {{infer}} endpoint]({{es-apis}}operation/operation-inference-put-jinaai) API documentation.
+
+### On-prem [jina-on-prem]
+
+With [Jina on-prem](https://github.com/jina-ai/jina-on-prem), you run Jina models in Docker containers on your own infrastructure, and {{es}} connects to them through {{infer}} endpoints. Use this option when data cannot leave your network, when inference must work without outbound connectivity, or when compliance and data residency require self-hosted model deployment. 
+
+Currently, text embedding and rerank models are supported for this integration. For the full list, refer to the [model overview](#jina-model-overview) tables. 
 
 To pull, transfer, and run a prebuilt Docker image, refer to the [Jina on-prem Quick Start](https://github.com/jina-ai/jina-on-prem/wiki/Quick-Start).
 
-To connect {{es}} to a local Jina on-prem server, create {{infer}} endpoints that call the APIs exposed by the container. 
+To connect {{es}} to a local Jina on-prem server, create {{infer}} endpoints that call the APIs exposed by the container.
 
 For an embedding model, create a `text_embedding` endpoint:
 
@@ -722,7 +756,25 @@ You can reference the `inference_id` of these endpoints in index mappings for th
 
 For more endpoint configuration examples, refer to the [Jina on-prem API reference](https://github.com/jina-ai/jina-on-prem/wiki/API-Reference#elasticsearch-integration).
 
+#### On-prem - Jina API [jina-on-prem-additional]
+
+You can also call any model running in a Jina on-prem container directly from your application or preprocessing pipeline, without creating an {{es}} {{infer}} endpoint. For request formats and supported API schemas, refer to the [Jina on-prem API reference](https://github.com/jina-ai/jina-on-prem/wiki/API-Reference).
+
+The following models are available through Jina on-prem but do not currently have a native {{es}} integration, so you must call them through the Jina API:
+
+* [`jina-embeddings-v5-omni-small`](https://jina.ai/models/jina-embeddings-v5-omni-small/)
+* [`jina-embeddings-v5-omni-nano`](https://jina.ai/models/jina-embeddings-v5-omni-nano/)
+* [`jina-clip-v2`](https://jina.ai/models/jina-clip-v2/)
+* [`jina-embeddings-v4`](https://jina.ai/models/jina-embeddings-v4/)
+* [`jina-colbert-v2`](https://jina.ai/models/jina-colbert-v2/)
+* [`jina-vlm`](https://jina.ai/models/jina-vlm/)
+* [`ReaderLM-v2`](https://jina.ai/models/ReaderLM-v2/)
+
+For the full list of models that Jina on-prem can run, refer to the [Jina on-prem model catalog](https://github.com/jina-ai/jina-on-prem/wiki/Model-Catalog).
+
 ## Performance considerations [jina-performance]
+
+The following guidance can help you choose models and configure ingestion so that latency, cost, and relevance stay balanced for your workload.
 
 ### Text embedding models [jina-text-embeddings-performance]
 
@@ -817,9 +869,9 @@ For more endpoint configuration examples, refer to the [Jina on-prem API referen
 
 How you are charged depends on how you deploy Jina models.
 
-- Models used through EIS are billed per million tokens. For details, refer to [Pricing](/explore-analyze/elastic-inference/eis.md#pricing) and the [Elasticsearch Serverless pricing page](https://www.elastic.co/pricing/serverless-search). To use Jina models on EIS, you must have the [appropriate subscription]({{subscriptions}}) level or the trial period activated.
-
-- Jina on-prem is a commercial offering. Pricing is based on a commercial license for self-hosted deployment, not on token usage. Commercial use in production requires an appropriate license from Elastic. For pricing and licensing details, refer to [Elastic subscriptions]({{subscriptions}}). 
+- Models used through EIS are billed per million tokens, or as otherwise included in EIS. For details, refer to [Pricing](/explore-analyze/elastic-inference/eis.md#pricing) and the [Elasticsearch Serverless pricing page](https://www.elastic.co/pricing/serverless-search). To use Jina models on EIS, you must have the [appropriate subscription]({{subscriptions}}) level or the trial period activated.
+- Models used through External {{infer}} are billed through the hosted [Jina AI API](https://jina.ai/api-dashboard/reader) according to your Jina AI account and API usage.
+- For Jina on-prem and other commercial licensing, contact [Elastic sales](https://www.elastic.co/contact) for pricing and licensing.
 
 
 ## Further reading
