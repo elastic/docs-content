@@ -31,7 +31,20 @@ Display data within a specified time range when your index contains time-based e
     * Select **Calendar**, select the start and end dates, then select **Apply**.
     * Select **Custom range**, configure the **Start date** and **End date** as **Relative**, **Absolute**, or **Now**, then select **Apply**.
 
-3. To configure automatic refresh, select the {icon}`gear` **Settings** icon, then set **Refresh every**.
+    :::{image} /explore-analyze/images/kibana-date-range-picker.png
+    :alt: Date range picker showing presets and controls for custom ranges, settings, and saving presets
+    :screenshot:
+    :width: 350px
+    :::
+
+3. To configure automatic refresh and time display, select the {icon}`gear` **Settings** icon:
+
+    * Turn **Refresh every** on or off and set the refresh interval.
+    * Review **Time format and zone**, and select **Advanced settings** to change the time zone if you have access.
+    * Turn **Round relative time ranges** on or off.
+    * Under **Absolute time range**, select whether timestamps show **Minutes**, **Seconds**, or **Milliseconds**.
+
+4. To save the current range as a preset and apply it, select the {icon}`save` **Save input range as preset and apply it** icon. Saved ranges appear under **Presets**.
 
 :::{note}
 The new picker doesn't support auto-refresh-only views. In those views, the time control and auto-refresh aren't available.
@@ -52,7 +65,7 @@ The new picker doesn't support auto-refresh-only views. In those views, the time
 
     :::{image} /explore-analyze/images/kibana-time-filter.png
     :alt: Time filter menu
-    :width: 300px
+    :width: 250px
     :::
 
 3. To set start and end times, select the bar next to the time filter. In the popup, select **Absolute**, **Relative**, or **Now**, then specify the required options.
