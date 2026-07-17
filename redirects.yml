@@ -847,6 +847,29 @@ redirects:
 # Renamed for SEO - URL now matches page title
   'solutions/security/detect-and-alert/requirements-privileges.md': 'solutions/security/detect-and-alert/turn-on-detections.md'
 
+# Split add-controls.md into multiple pages with clear content types, then moved to the Panels and visualizations section
+  'explore-analyze/dashboards/add-controls.md':
+    to: 'explore-analyze/visualize/add-controls.md'
+    many:
+      - to: 'explore-analyze/visualize/add-controls.md'
+        anchors:
+          'edit-controls': 'manage-controls'
+          'remove-controls': 'manage-controls'
+      - to: 'explore-analyze/visualize/add-variable-controls.md'
+        anchors:
+          'add-variable-control':
+          'esql-multi-values-controls': 'esql-multi-values-controls'
+          'chain-variable-controls': 'chain-variable-controls'
+      - to: 'explore-analyze/visualize/add-time-slider-controls.md'
+        anchors:
+          'add-time-slider-controls': 'add-time-slider-controls'
+      - to: 'explore-analyze/visualize/dashboard-control-settings.md'
+        anchors:
+          'configure-controls-settings': 'dashboard-control-settings'
+      - to: 'explore-analyze/visualize/dashboard-controls.md'
+        anchors:
+          'control-types': 'control-types'
+
 # Related to https://github.com/elastic/docs-content/pull/5245
   'explore-analyze/cross-project-search/cross-project-search-link-projects.md': 'deploy-manage/cross-project-search-config/cps-config-link-and-manage.md'
 
