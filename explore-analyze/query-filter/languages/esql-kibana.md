@@ -31,14 +31,14 @@ Editor support varies by area. Some areas use the {{esql}} editor described on t
 | [Discover](/explore-analyze/discover/try-esql.md) | Explore data, visualize results, and save findings to dashboards | {{esql}} editor |
 | [Dashboards and visualizations](/explore-analyze/visualize/esorql.md) | Create visualization panels and interactive controls | {{esql}} editor |
 | [Alerting](/explore-analyze/alerting/alerts/rule-type-es-query.md) | Create alerting rules based on {{esql}} queries | {{esql}} editor |
-| [{{alerting-v2-system-cap}}](/explore-analyze/alerting/system-overview.md) {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental` | Build and preview rules with separate base, alert, and recovery queries | Task-specific editor and YAML editor |
-| Maps {applies_to}`stack: beta` {applies_to}`serverless: beta` | Create map layers from {{esql}} queries | {{esql}} editor |
-| Data Visualizer | Explore field statistics from query results | {{esql}} editor |
-| [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/tools/esql-tools.md) {applies_to}`stack: ga 9.3+, preview =9.2` {applies_to}`serverless: ga` | Create custom tools that run parameterized queries | Task-specific editor |
-| Streams {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` | Define query streams | Task-specific editor |
+| [{{alerting-v2-system-cap}}](/explore-analyze/alerting/system-overview.md) | Build and preview rules with separate base, alert, and recovery queries | Task-specific editor and YAML editor |
+| [Maps](/explore-analyze/visualize/maps.md) {applies_to}`stack: beta` {applies_to}`serverless: beta` | Create map layers from {{esql}} queries | {{esql}} editor |
+| [Data Visualizer](/explore-analyze/machine-learning/machine-learning-in-kibana.md) | Explore field statistics from query results | {{esql}} editor |
+| [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/tools/esql-tools.md) | Create custom tools that run parameterized queries | Task-specific editor |
+| [Streams](/solutions/observability/streams/streams.md) | Define query streams | Task-specific editor |
 | [{{elastic-sec}} solution](/solutions/security/esql-for-security.md) | Hunt threats, create detection rules, and investigate events | {{esql}} editor |
 | [Dev Tools Console](/explore-analyze/query-filter/tools/console.md) | Run queries through the [{{esql}} REST API](elasticsearch://reference/query-languages/esql/esql-rest.md) | Embedded in the Console editor |
-| [Workflows](/explore-analyze/workflows/steps/elasticsearch.md) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Run queries with the `elasticsearch.esql.query` action | Embedded in the YAML editor |
+| [Workflows](/explore-analyze/workflows/steps/elasticsearch.md) | Run queries with the `elasticsearch.esql.query` action | Embedded in the YAML editor |
 | [Vega visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Use a query as a visualization data source | Embedded in the specification editor |
 
 
