@@ -36,7 +36,7 @@ Editor support varies by area. Some areas use the {{esql}} editor described on t
 | [Data Visualizer](/explore-analyze/machine-learning/machine-learning-in-kibana.md) | Explore field statistics from query results | {{esql}} editor |
 | [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/tools/esql-tools.md) | Create custom tools that run parameterized queries | Task-specific editor |
 | [Streams](/solutions/observability/streams/streams.md) {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` | Define query streams | Task-specific editor |
-| [{{observability}} solution](/solutions/observability.md) | Explore [logs](/solutions/observability/logs/discover-logs.md), [traces](/solutions/observability/apm/discover-traces.md), and [metrics](/solutions/observability/infra-and-hosts/discover-metrics.md) | {{esql}} editor |
+| [Elastic {{observability}} solution](/solutions/observability.md) | Explore [logs](/solutions/observability/logs/discover-logs.md), [traces](/solutions/observability/apm/discover-traces.md), and [metrics](/solutions/observability/infra-and-hosts/discover-metrics.md) | {{esql}} editor |
 | [{{elastic-sec}} solution](/solutions/security/esql-for-security.md) | Hunt threats, create detection rules, and investigate events | {{esql}} editor |
 | [Dev Tools Console](/explore-analyze/query-filter/tools/console.md) | Run queries through the [{{esql}} REST API](elasticsearch://reference/query-languages/esql/esql-rest.md) | Embedded in the Console editor |
 | [Workflows](/explore-analyze/workflows/steps/elasticsearch.md) | Run queries with the `elasticsearch.esql.query` action | Embedded in the YAML editor |
