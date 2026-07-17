@@ -19,9 +19,9 @@ After you deploy the CSPM integration, it can take up to 10 minutes for resource
 
 Newly unenrolled cloud accounts can take a maximum of 24 hours to disappear from the Cloud Security Posture dashboard.
 
-**Can I install an unlimited number of agentless integrations?**
+**Can I install an unlimited number of {{managed-integrations}}?**
 
-Each agentless integration deployment counts towards the maximum number of agentless integrations you can have in the same project. When you reach the maximum, you'll see an error message similar to `You have deployed the maximum number of agentless integrations. To continue, remove some or use agent-based deployment.` You won't be able to deploy another agentless integration until you remove an existing one. All [agentless integrations](/manage-data/ingest/agentless/agentless-integrations.md) count towards this limit.
+Each {{managed-integration}} deployment counts towards the maximum number of {{managed-integrations}} you can have in the same project. When you reach the maximum, you'll see an error message similar to `You've reached the maximum number of 50 managed integrations. To add more, either remove or change some to Elastic Agent-based integrations.` You won't be able to deploy another {{managed-integration}} until you remove an existing one. All [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md) count towards this limit.
 
 
 ## KSPM FAQ [_kspm_faq]
