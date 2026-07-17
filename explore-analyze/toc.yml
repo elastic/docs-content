@@ -402,7 +402,8 @@ toc:
               - file: alerting/experimental-alerting-system/rules/configure-rule-severity.md
               - file: alerting/experimental-alerting-system/rules/configure-rule-grouping.md
               - file: alerting/experimental-alerting-system/rules/configure-rule-schedule.md
-              - file: alerting/experimental-alerting-system/rules/configure-rule-thresholds.md
+              - file: alerting/experimental-alerting-system/rules/configure-rule-alert-delay.md
+              - file: alerting/experimental-alerting-system/rules/configure-rule-recovery.md
               - file: alerting/experimental-alerting-system/rules/configure-no-data-handling.md
               - file: alerting/experimental-alerting-system/rules/configure-rule-tags.md
           - file: alerting/experimental-alerting-system/rules/view-manage-rules.md

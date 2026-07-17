@@ -1,18 +1,18 @@
 ---
-navigation_title: Recovery strategy
+navigation_title: Recovery condition
 applies_to:
   stack: experimental 9.5+
   serverless: experimental
 products:
   - id: kibana
-description: "How to configure the recovery strategy for Alert-mode rules in the experimental alerting system. Controls whether an episode closes automatically, via a custom condition, or never."
+description: "How to configure when and how an Alert-mode rule recovers in the experimental alerting system: the recovery strategy and the delay before an episode closes."
 ---
 
-# Recovery strategy in the {{alerting-v2-system}} [recovery-strategy]
+# Recovery condition in the {{alerting-v2-system}} [recovery-condition]
 
-Recovery strategy is an optional setting for Alert-mode rules in the {{alerting-v2-system}}. Use `recovery_strategy` to control how the rule decides an alert episode has resolved and can close automatically. Setting this correctly ensures episodes close when the underlying problem is actually fixed, rather than staying open indefinitely or closing for the wrong reason.
+Recovery condition settings are optional for Alert-mode rules in the {{alerting-v2-system}}. They control how the rule decides an alert episode has resolved and how much confirmation it needs before closing the episode. Setting these correctly ensures episodes close when the underlying problem is actually fixed, rather than staying open indefinitely, closing for the wrong reason, or flapping between open and closed.
 
-## Recovery strategy options [recovery-strategy-options]
+## Recovery strategy [recovery-strategy-options]
 
 Choose one of the following options. Each maps to a `recovery_strategy` value if you're editing YAML directly.
 
@@ -26,7 +26,7 @@ Choose one of the following options. Each maps to a `recovery_strategy` value if
 An unset `recovery_strategy` is treated differently from an explicit `none`: leaving it unset means no recovery events are emitted at all, while `none` is a deliberate choice to disable recovery. Both leave episodes open indefinitely, but only the second reflects an intentional decision.
 :::
 
-## When to change the recovery strategy [recovery-strategy-when-to-use]
+### When to change the recovery strategy [recovery-strategy-when-to-use]
 
 Choose **Custom recovery** when:
 
@@ -39,6 +39,32 @@ Choose **No recovery** when:
 Leave the recovery strategy set to **Default** when:
 
 * The breach condition no longer matching is a reliable enough signal that the problem is resolved. This covers most rules.
+
+## Recovery delay [recovery-delay]
+
+Recovery delay controls how much confirmation the rule needs, once the recovery strategy's condition is met, before it actually closes the episode. This is separate from the recovery strategy: the strategy decides *what* counts as recovered, and the delay decides *how many times or for how long* that signal must hold before the episode closes. The same three modes available for [alert delay](configure-rule-alert-delay.md) apply:
+
+| Mode | Behavior | When to use |
+| --- | --- | --- |
+| Immediate | Closes the episode as soon as recovery is detected on the first evaluation. | Use when a single non-breaching evaluation is enough confidence that the problem is resolved. |
+| Recoveries | Closes the episode after recovery is detected a set number of times in a row. | Use when a rule alternates between breaching and recovering on consecutive evaluations, and you want to avoid a constant stream of open and closed notifications. |
+| Duration | Closes the episode after recovery has held continuously for a set time. | Use when you need the condition to stay resolved for a minimum stretch of time before you trust it, rather than just counting evaluations. |
+
+### Recovery delay fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `recovering_count` | Integer, 0–1000 | Number of consecutive non-breaching evaluations required before the alert episode closes. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
+| `recovering_timeframe` | Duration string | How long the condition must remain non-breaching before the alert episode closes. |
+| `recovering_operator` | `AND` or `OR` | When both `recovering_count` and `recovering_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
+
+Timeframe fields accept duration strings between `5s` and `365d`. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
+
+:::{note}
+In the YAML rule schema, these fields are prefixed with `state_transition.`. For example, `recovering_count` here is `state_transition.recovering_count` in the [YAML rule schema reference](yaml-rule-schema-reference.md#state-transition-fields). They are the same fields.
+:::
+
+You can combine Recoveries and Duration by setting both `recovering_count` and `recovering_timeframe`. Use `recovering_operator: AND` to require both conditions before the episode closes, or `recovering_operator: OR` if either condition alone is enough.
 
 ## Examples
 
@@ -53,3 +79,7 @@ Use this when a value hovering near the breach threshold would otherwise cause t
 This rule detects a potential security incident. Even after the query stops matching, the investigation might still be ongoing. Set the recovery strategy to **No recovery**. The episode never closes on its own; someone has to review and close it directly.
 
 Use this when treating "no longer matching" as "resolved" would be misleading or risky.
+
+### Require consecutive recoveries before closing an episode
+
+This rule monitors database connection pool saturation. After the condition clears, set `recovering_count` to `3` to require 3 consecutive non-breaching evaluations before closing the episode. Without this, a rule that alternates between breaching and recovering on consecutive evaluations generates a constant stream of open and closed notifications.
