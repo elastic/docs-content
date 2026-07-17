@@ -61,7 +61,7 @@ These terms appear throughout the {{alerting-v2-system}} docs. If a term is uncl
 **Threshold**
 :   The condition a rule uses to decide when something is worth alerting on, including how many times the condition must be met before an alert episode opens or closes.
 <!-- TODO: Uncomment when PR #6523 (rules) is merged:
-    To learn more, refer to [Activation and recovery thresholds](rules/configure-rule-thresholds.md).
+    To learn more, refer to [Alert delay](rules/configure-rule-alert-delay.md) and [Recovery condition](rules/configure-rule-recovery.md).
 -->
 
 **Workflow**

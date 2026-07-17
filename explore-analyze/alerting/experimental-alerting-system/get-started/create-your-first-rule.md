@@ -265,15 +265,15 @@ You'll build a rule that detects when P95 latency for a service exceeds 2 second
 
 :::::{stepper}
 
-::::{step} Open the rule editor
+::::{step} Open the rule form
 
-Go to **Alerting v2 preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the **Rules** page, select the option to create an {{esql}} rule.
+Go to **Rules** (**Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md) > **Rules**), create a new rule, then select **Create ES|QL rule** to open the rule authoring flyout.
 
 ::::
 
 ::::{step} Write and test the detection query
 
-1. Paste the following {{esql}} query into the **Query sandbox**. It finds the slowest 5% of requests for each service (P95 latency), labels how severe that is, and keeps only the services where that value is above 2 seconds. You don't need to add a time filter yourself: the sandbox and the rule both apply one automatically based on the date range or schedule you choose.
+1. Paste the following {{esql}} query into the **Query sandbox**. It finds the slowest 5% of requests for each service (P95 latency), labels how severe that is, and keeps only the services where that value is above 2 seconds. You don't need to add a time filter yourself. The sandbox and the rule both apply one automatically based on the date range or schedule you choose.
 
    ```esql
    FROM checkout-service-logs
@@ -302,9 +302,9 @@ Go to **Alerting v2 preview** using the navigation menu or the [global search fi
 
 The query you applied from the sandbox auto-fills **Mode**, **Time field**, and **Group fields**. Set the remaining fields:
 
-- Set **Alert delay** to **Breaches: 2**. The breach must persist across 2 consecutive evaluations before the episode moves to `active`.
-- Set **Schedule** to every `5` minutes.
-- Set **Lookback Window** to the last `45` minutes. This ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial. Unlike the sandbox, this is always a relative range; it can't use an absolute range like **Today**. Go ahead and finish configuring and saving the rule; see **Observe the episode lifecycle** for when the episode will actually appear.
+- **Alert delay**: `Breaches: 2` (The breach must persist across 2 consecutive evaluations before the episode moves to `active`.)
+- **Schedule**: `Every 5 minutes`
+- **Lookback Window**: `Last 45 minutes` (Ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial.)
 
 Select **Next**.
 
