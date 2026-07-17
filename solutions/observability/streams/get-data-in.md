@@ -52,7 +52,7 @@ For more information, refer to [Cluster privileges](elasticsearch://reference/el
 
 ::::
 
-## Ingest new data [get-data-in-wired]
+## Ingest new data with wired streams [get-data-in-wired]
 
 ```{applies_to}
 stack: preview 9.2+
@@ -203,7 +203,7 @@ When `LOAD` is set, unmapped fields are loaded from `_source` as `keyword` field
 
 For a conceptual overview and use cases, refer to [Unmapped fields](elasticsearch://reference/query-languages/esql/esql-unmapped-fields.md). For {{kib}} editor behavior, refer to [Handle unmapped fields with `SET unmapped_fields`](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-unmapped-fields).
 
-## Work with existing data [get-data-in-classic]
+## Work with existing data with classic streams [get-data-in-classic]
 
 Classic streams let you use the Streams UI to extract fields and configure data retention for data that's already being ingested into {{es}} without additional configuration.
 
