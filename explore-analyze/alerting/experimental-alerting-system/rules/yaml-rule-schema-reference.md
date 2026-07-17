@@ -11,7 +11,7 @@ description: "YAML rule definitions in Kibana's experimental alerting system sup
 # YAML rule schema reference for the {{alerting-v2-system}} [yaml-rule-schema-reference]
 
 
-YAML rule schema is part of the {{alerting-v2-system}} in {{kib}}. This page lists valid fields for YAML rule definitions. For examples and authoring guidance, refer to [Create an ES|QL rule](create-esql-rule.md#yaml-editor).
+YAML rule schema is part of the {{alerting-v2-system}} in {{kib}}. This page lists valid fields for YAML rule definitions. For authoring guidance, refer to [Create an {{esql}} rule](create-esql-rule.md).
 
 ## Base rule fields
 
@@ -98,7 +98,7 @@ Use grouping to split a rule's detections into independent series, one per uniqu
 
 ## No-data strategy
 
-Use `no_data_strategy` to control what the rule does when an evaluation returns no results. This matters when data sources can go silent: without a no-data strategy, a quiet data source and a healthy one look identical to the rule.
+Use `no_data_strategy` to control what the rule does when an evaluation returns no results. This matters when data sources can go silent. Without this setting, a quiet data source and a healthy one look identical to the rule.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|

@@ -273,7 +273,7 @@ Go to **Rules** (**Alerting V2 Preview** in the navigation menu or [global searc
 
 ::::{step} Write and test the detection query
 
-1. Paste the following {{esql}} query into the **Query sandbox**. It finds the slowest 5% of requests for each service (P95 latency), labels how severe that is, and keeps only the services where that value is above 2 seconds. You don't need to add a time filter yourself: the sandbox and the rule both apply one automatically based on the date range or schedule you choose.
+1. Paste the following {{esql}} query into the **Query sandbox**. It finds the slowest 5% of requests for each service (P95 latency), labels how severe that is, and keeps only the services where that value is above 2 seconds. You don't need to add a time filter yourself. The sandbox and the rule both apply one automatically based on the date range or schedule you choose.
 
    ```esql
    FROM checkout-service-logs
