@@ -47,15 +47,20 @@ In this example, you use the sample web logs data to detect changes in the avera
    :width: 90%
    :::
 
-6. To attach a chart to a case, hover over the chart and select **Add to case**. Then select an existing case or create a case. You need the `All` [**Cases** privilege](../cases/control-case-access.md#give-full-access) to use this action.
-7. Expand a change point in the results table. The **Overview** tab lets you inspect its chart, time, metric, type, p-value, and description.
-8. From the chart actions, select **Open in a new Discover tab** to open the series in a focused time range around the detected change.
+### Explore the results
 
-   :::{image} /explore-analyze/images/kibana-discover-change-point-overview.png
-   :alt: Expanded change point with the Overview tab selected and the Open in a new Discover tab action highlighted
-   :screenshot:
-   :width: 60%
-   :::
+After Discover shows the results, you can:
+
+- **Attach a chart to a case:** Hover over the chart and select **Add to case**. Then select an existing case or create a case. You need the `All` [**Cases** privilege](../cases/control-case-access.md#give-full-access) to use this action.
+- **Inspect a change point:** Expand a change point in the results table. The **Overview** tab shows its chart, time, metric, type, p-value, and description.
+- **Open a focused view:** From the chart actions, select **Open in a new Discover tab** to open the series in a focused time range around the detected change.
+
+  :::{image} /explore-analyze/images/kibana-discover-change-point-overview.png
+  :alt: Expanded change point with the Overview tab selected and the Open in a new Discover tab action highlighted
+  :screenshot:
+  :width: 60%
+  :::
+- **Save the session:** Save the Discover session to preserve the query and time range.
 
 ## Analyze your own data
 
@@ -86,10 +91,6 @@ FROM kibana_sample_data_logs
 ```
 
 Discover displays a separate chart for each group that contains a detected change point. Use the chart grid to compare where each series changed.
-
-## Next steps
-
-- Save the Discover session to preserve the query and time range.
 
 ## Related pages
 
