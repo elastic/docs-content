@@ -44,6 +44,8 @@ steps:
     type: cases.createCase
     with:
       title: "Potential compromise: {{ event.alerts[0].host.name }}"
+      description: "Potential host compromise detected by alert workflow"
+      owner: securitySolution
       severity: high
       tags: ["auto-triage"]
 
@@ -101,7 +103,7 @@ steps:
     with:
       case_id: "{{ steps.open_case.output.case.id }}"
       comment: |
-        **Decision:** {{ steps.review.output.approved ? "isolated" : "no action" }}
+        **Decision:** {% if steps.review.output.approved %}isolated{% else %}no action{% endif %}
         **Notes:** {{ steps.review.output.notes }}
 ```
 

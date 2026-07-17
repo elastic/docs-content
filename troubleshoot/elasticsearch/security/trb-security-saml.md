@@ -24,7 +24,7 @@ This topic describes troubleshooting SAML SSO at the deployment or cluster level
 
     ```
     Cannot find any matching realm for [SamlPrepareAuthenticationRequest{realmName=saml1,
-    assertionConsumerServiceURL=https://my.kibana.url/api/security/saml/callback}]
+    assertionConsumerServiceURL=https://my-kibana.example.com/api/security/saml/callback}]
     ```
     **Resolution:**
 
