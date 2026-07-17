@@ -49,7 +49,6 @@ On the action policies list, select one or more action policies to enable, disab
 
 ## Related pages
 
+- [Create and configure an action policy](create-configure-action-policy.md): Set up or update the action policies you manage here.
 - [Review action policy execution history](review-action-policy-execution-history.md): Check dispatcher outcomes and investigate unexpected notification behavior.
 - [Reduce notification noise](reduce-notification-noise.md): Silence individual alert episodes with acknowledgment, snooze, or deactivation.
-- [Action policy reference](action-policy-reference.md): Look up match condition fields, grouping modes, and frequency options.
-- [Create and configure an action policy](create-configure-action-policy.md): Set up or update the action policies you manage here.

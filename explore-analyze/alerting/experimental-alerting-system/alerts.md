@@ -58,9 +58,14 @@ Think of it like a patient's medical file. The file persists as long as the pati
 Snooze operates at the series level, not the alert episode level. If you snooze `checkout-service`, you're silencing all notifications from that series for the next X hours, regardless of how many new alert episodes start during that time.
 :::
 
-## Related pages
+## What to do next with alerts [alerts-next-steps]
 
-- [Alert data model](alerts/alert-data-model.md): Understand how the system stores alert data, including the signal versus alert distinction and the two underlying data streams.
+From here, you can view, manage, and query alert episode data.
+
 - [View and manage alerts](alerts/view-and-manage-alerts.md): Open the alert episodes table, triage active episodes, and acknowledge, snooze, or resolve them.
+- [Alert data model](alerts/alert-data-model.md): Understand how the system stores alert data, including the signal versus alert distinction and the two underlying data streams.
 - [Query {{alerting-v2-system}} alert history in Discover](alerts/query-alerts-and-signals-in-discover.md): Use {{esql}} to query `.rule-events` and `.alert-actions` for exploratory analysis and dashboards.
-- [Field reference](alerts/field-reference.md): Look up field names, types, and accepted values for the `.rule-events` and `.alert-actions` data streams.
+
+:::{important} - How to read the {{alerting-v2-system}} docs
+The docs about the {{alerting-v2-system}} don't always name a specific button or menu. When that's the case, look for the closest matching label in {{kib}}.
+:::

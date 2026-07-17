@@ -42,6 +42,6 @@ To use this query with your own data, change three things:
 2. **Alert condition**: Replace `level == "ERROR"` with the field name and value that defines a breach in your data. For example: `event.outcome == "failure"`, `http.response.status_code >= 500`, or `process.name == "malware.exe"`.
 3. **KEEP fields**: Replace the field list with whatever you need for triage. Include any fields you plan to use for grouping, routing, or displaying in the alert detail view.
 
-## Next steps
+## Other query patterns [first-rule-query-next-steps]
 
 This pattern alerts on individual events. If you want to alert only when a count or rate crosses a threshold rather than on individual occurrences, the [threshold query pattern](esql-threshold-queries.md) is the next step.

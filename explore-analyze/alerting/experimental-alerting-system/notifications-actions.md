@@ -26,13 +26,14 @@ To send a notification or trigger an action from a rule in the {{alerting-v2-sys
 
    For actions that fire exactly once in response to a specific alert episode event (such as opening a ticket when an episode is assigned) use an [alert episode lifecycle trigger](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven) instead of an action policy. Refer to [Connect workflows](workflows-alerting.md) for a comparison of action policies and lifecycle triggers.
 
-## Related pages
+## What to do next with action policies [notifications-actions-next-steps]
 
-- [Connect workflows](workflows-alerting.md): Understand how action policies and lifecycle triggers invoke workflows at runtime.
+From here, you can learn how action policies work and start creating your own.
+
 - [About action policies](action-policies/about-action-policies.md): Understand how action policies evaluate and gate alert episodes.
-- [Examples and common scenarios](action-policies/common-action-policy-scenarios.md): Route by severity, manage escalation, and re-notify for persistently active episodes.
 - [Create an action policy](action-policies/create-configure-action-policy.md): Configure match conditions, grouping, frequency, and destinations.
-- [Action policy reference](action-policies/action-policy-reference.md): Look up match condition fields, grouping modes, and frequency options.
-- [Manage action policies](action-policies/manage-action-policies.md): Enable, disable, snooze, edit, or delete action policies.
-- [Review action policy execution history](action-policies/review-action-policy-execution-history.md): Monitor dispatcher outcomes and investigate unexpected notification behavior.
-- [Reduce notification noise](action-policies/reduce-notification-noise.md): Silence alert episodes using acknowledgment, snooze, and maintenance windows.
+- [Examples and common scenarios](action-policies/common-action-policy-scenarios.md): Route by severity, manage escalation, and re-notify for persistently active episodes.
+
+:::{important} - How to read the {{alerting-v2-system}} docs
+The docs about the {{alerting-v2-system}} don't always name a specific button or menu. When that's the case, look for the closest matching label in {{kib}}.
+:::

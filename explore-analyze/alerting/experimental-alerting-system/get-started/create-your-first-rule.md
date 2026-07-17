@@ -425,8 +425,8 @@ By completing this tutorial, you learned:
 - **Episode lifecycle** - **Alert delay** requires a breach to persist across consecutive evaluations before an episode opens, so transient spikes don't trigger it.
 - **Automatic recovery** - With default recovery, an episode closes as soon as a scheduled run finds the alert condition is no longer met, which is exactly what happened right after rewriting the latency values.
 
-## Next steps
+## Manage your rule [create-rule-next-steps]
 
-- [Configure a rule](../rules/configure-a-rule.md): Explore optional settings like severity, grouping, and no-data handling.
-- [{{esql}} query patterns](../rules/esql-query-patterns.md): Browse more detection patterns, from a basic event filter to SLO burn rate and persistent breach detection.
-- [Notifications and actions](../notifications-actions.md): Set up workflows and action policies to notify your team the next time an episode opens.
+- **Ready to manage the rule you just created?** [View and manage rules](../rules/view-manage-rules.md) shows you how to enable, disable, clone, and bulk-manage rules from the **Rules** page.
+- **Want to explore more configuration options?** [Configure a rule](../rules/configure-a-rule.md) covers grouping, tags, no-data handling, and more.
+- **Ready to notify your team the next time an episode opens?** [Notifications and actions](../notifications-actions.md) shows you how workflows and action policies decide who gets notified, and when.

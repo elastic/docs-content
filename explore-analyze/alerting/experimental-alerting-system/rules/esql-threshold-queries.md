@@ -50,7 +50,7 @@ Without the `BY host.name` clause, the query would produce a single average acro
 
 The `BY` fields you use here must match the grouping configuration in the rule. Refer to [Rule grouping](configure-rule-grouping.md) for how to align them.
 
-## Next steps
+## More detection patterns [esql-threshold-queries-next-steps]
 
 If both of these patterns don't fit your use case, the next pages cover more specific detection problems:
 

@@ -18,8 +18,3 @@ The {{alerting-v2-system}} in {{kib}} provides several ways to create rules. Com
 | [Create using {{agent-builder}}](create-rules-action-policies-agent-builder.md) | When you know what you want to detect but aren't sure how to write the ES\|QL. |
 | [Use the rule builder](use-rule-builder.md) | Selecting a rule type (currently Threshold Alert) and configuring it through structured inputs, without writing {{esql}} by hand. |
 | [Create from Discover](create-rule-from-discover.md) | When you already have an ES\|QL query working in Discover and want to convert it into a rule. |
-
-## Related pages
-
-- [Configure a rule](configure-a-rule.md): Configurable rule settings and guidance on how to configure them.
-- [{{esql}} query patterns](esql-query-patterns.md): Query examples ranging from a basic event filter to SLO burn rate and persistent breach detection.

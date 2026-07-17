@@ -20,19 +20,13 @@ Use these fields in the **Match conditions** expression to filter which alert ep
 |---|---|---|
 | `episode_id` | Unique identifier of the alert episode. | `episode_id: "ep-001"` <br> Match a specific episode by ID. |
 | `episode_status` | Current lifecycle status of the alert episode. One of `inactive`, `pending`, `active`, or `recovering`. | `episode_status: "active"` <br> Match only active episodes. |
-| `severity` | Current severity level. One of `info`, `low`, `medium`, `high`, or `critical`. Populated when the rule's {{esql}} query includes a matching `severity` column (case-insensitive). Not set during recovery. Unrecognized values are ignored. | `severity: "critical" OR severity: "high"` <br> Route high-priority episodes to a dedicated workflow. |
+| `severity` | Current severity level. One of `info`, `low`, `medium`, `high`, or `critical`. Populated when the rule's {{esql}} query includes a `severity` column. Not set during recovery; severity-scoped matchers only match open episodes. Severity can change mid-episode without reopening it — action policy matching picks up the new value on the next dispatcher cycle. For how to configure severity in a rule, refer to [Severity](../rules/configure-rule-severity.md). | `severity: "critical" OR severity: "high"` <br> Route high-priority episodes to a dedicated workflow. |
 | `group_hash` | Stable hash identifying the alert series the episode belongs to. | `group_hash: "abc123"` <br> Match all episodes in a specific alert series. |
 | `last_event_timestamp` | ISO 8601 timestamp of the most recent event recorded for the episode. | `last_event_timestamp > "2026-01-01"` <br> Match episodes with activity after a specific date. |
 | `rule.id` | Unique identifier of the rule that generated the episode. | `rule.id: "rule-001"` <br> Match episodes from one specific rule. |
 | `rule.name` | Display name of the rule. | `rule.name: "High CPU"` <br> Match episodes from rules with this display name. |
 | `rule.tags` | Tags attached to the rule. | `rule.tags: "payment-service"` <br> Match episodes from all rules with this tag. |
 | `data.*` | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard fields in this table. | `data.host.name: "web-01"` <br> Match episodes from a specific host in a host-based rule. |
-
-<!--[TODO after PR #6523 merges]: Replace the `severity` row above with this line:
-
-| `severity` | Current severity level. One of `info`, `low`, `medium`, `high`, or `critical`. Populated when the rule's {{esql}} query includes a `severity` column. Not set during recovery; severity-scoped matchers only match open episodes. Severity can change mid-episode without reopening it — action policy matching picks up the new value on the next dispatcher cycle. For how to configure severity in a rule, refer to [Severity](../rules/configure-rule-severity.md). | `severity: "critical" OR severity: "high"` <br> Route high-priority episodes to a dedicated workflow. |
-
--->
 
 ## Notify per options [action-policy-notification-grouping]
 
@@ -47,6 +41,10 @@ Controls how the action policy batches matching episodes before sending a notifi
 ## Frequency [action-policy-throttle-strategies]
 
 Frequency controls how often the action policy fires for a given alert episode or notification group. The available options depend on the **Notify per** setting. Not all options are valid for all modes.
+
+:::{note}
+The `.alert-actions` data stream records a throttled notification as `suppress`, not `throttled`. This is the same event described as `throttled` in the action policy execution history and event log; the two streams just use different vocabulary. For the full mapping, refer to [Event-log outcomes and .alert-actions action types](review-action-policy-execution-history.md#outcome-vocab-mapping).
+:::
 
 | Option | Description | When to use |
 |---|---|---|
@@ -86,6 +84,5 @@ Available frequency options when you set **Notify per** to **Digest**.
 ## Related pages
 
 - [Create and configure an action policy](create-configure-action-policy.md): Apply these settings when configuring match conditions, grouping, and frequency.
-- [Manage action policies](manage-action-policies.md): Enable, disable, snooze, and rotate API keys for your action policies.
-- [Review action policy execution history](review-action-policy-execution-history.md): Check dispatcher outcomes and investigate unexpected notification behavior.
 - [About action policies](about-action-policies.md): Understand the eligibility, match, and frequency gates that run before dispatch.
+- [Review action policy execution history](review-action-policy-execution-history.md): Check dispatcher outcomes and investigate unexpected notification behavior.

@@ -104,6 +104,6 @@ Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but does n
 - **{{serverless-short}}** - On {{serverless-short}}, the {{alerting-v2-system}} is managed by Elastic. [Contact Elastic support](https://www.elastic.co/docs/troubleshoot) to turn it off.
 :::
 
-## Next steps
+## Configure access [alerting-setup-next-steps]
 
 After turning on the system, [configure access](configure-access.md) to create or update a role with access to the {{alerting-v2-system}} features and the data streams they write to.

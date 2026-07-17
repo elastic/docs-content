@@ -40,11 +40,8 @@ Keep the following in mind when configuring severity.
 - **Matching is case-insensitive** - `critical`, `Critical`, and `CRITICAL` are all treated the same. You can use any casing in your `EVAL` expression.
 - **Unrecognized values are silently ignored** - If the `severity` column contains a value that doesn't match one of the five levels, the alert episode is still created but `severity` is not set. If severity isn't appearing as expected, check the exact string your query is producing.
 - **Severity only applies to breached events** - `recovered` and `no_data` events don't carry a severity value. Action policy matchers that filter by severity only match open episodes.
-
-<!-- TODO - After action policies docs PR #6525 merge, uncomment the following list items: 
-- **Severity can change mid-episode** — An alert episode can escalate or de-escalate without reopening. Action policy matching picks up the new value on the next dispatcher cycle. Refer to [Manage severity escalation notifications](../action-policies/severity-escalation.md) for routing examples.
-- **The `severity` field is available in action policy matchers** - Once set, the value is stored on the alert episode and can be used to route episodes by urgency — for example, sending `critical` episodes to an on-call channel while `low` episodes go to a review queue. Refer to [Rule event field reference](../alerts/field-reference.md) for the full field reference.
--->
+- **Severity can change mid-episode** - An alert episode can escalate or de-escalate without reopening. Action policy matching picks up the new value on the next dispatcher cycle. Refer to [Manage severity escalation notifications](../action-policies/severity-escalation.md) for routing examples.
+- **The `severity` field is available in action policy matchers** - Once set, the value is stored on the alert episode and can be used to route episodes by urgency — for example, sending `critical` episodes to an on-call channel while `low` episodes go to a review queue. Refer to [Alert data stream field reference](../alerts/field-reference.md) for the full field reference.
 
 ## Examples
 
@@ -95,5 +92,4 @@ Here's what the severity-specific steps do:
 
 - [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
 - [SLO burn rate](esql-slo-burn-rate.md): A query pattern that assigns severity dynamically based on burn rate across multiple time windows.
-- [Rule grouping](configure-rule-grouping.md): Track multiple subjects as independent alert series, each with its own severity.
 - [View and manage alerts](../alerts/view-and-manage-alerts.md): Filter the **Alerts** page by severity to triage during incidents.

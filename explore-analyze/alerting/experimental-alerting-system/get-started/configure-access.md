@@ -119,20 +119,13 @@ For `.rule-events` and `.alert-actions`, {{es}} `read` access is bundled into th
 | Data source | What it stores | How to grant access |
 |---|---|---|
 | `.rule-events` | A record for every rule evaluation; one document per result row per run | Automatic with **Alerts: All** or **Alerts: Read**. If access is missing, grant `read` using a custom role as a fallback. |
-| `.alert-actions` | User-triggered triage records (acknowledge, snooze, resolve, assign) and system-written dispatcher records. | Automatic with **Alerts: All** or **Alerts: Read**. If access is missing, grant `read` using a custom role as a fallback. |
+| `.alert-actions` | User-triggered triage records (acknowledge, snooze, resolve, assign) and system-written dispatcher records. For all `action_type` values, refer to the [alert data stream field reference](../alerts/field-reference.md). | Automatic with **Alerts: All** or **Alerts: Read**. If access is missing, grant `read` using a custom role as a fallback. |
 | `.kibana-event-log-*` | Action policy dispatch outcomes written by the dispatcher: `dispatched`, `throttled`, and `unmatched` | Custom role with `read` index privilege. Not covered by the automatic grant. |
 
-<!-- TODO: When PR #6527 merges, update the `.alert-actions` row above ("What it stores" column) to add a link to the field reference. Full updated cell:
-"User-triggered triage records (acknowledge, snooze, resolve, assign) and system-written dispatcher records. For all `action_type` values, refer to the [alert data stream field reference](../alerts/field-reference.md)." -->
+## Set up rules and notifications [alerting-access-next-steps]
 
-## Next steps [alerting-access-next-steps]
+With access configured, you're ready to:
 
-With access configured, you're ready to [create your first rule](create-your-first-rule.md).
-
-<!-- TODO: When PRs #6523 (rules) and #6525 (workflows/notifications) are merged, replace the sentence
-above with the bulleted list below (delete the prose line, uncomment the list).
-
-- **[Create a rule](../rules/create-a-rule.md):** Write the {{esql}} query that defines what to detect, choose Signal or Alert mode, and configure grouping and thresholds. ← PR #6523
-- **[Set up workflows](../notifications-actions.md):** Configure the automation objects that deliver notifications — email, Slack, webhook, and so on. ← PR #6525
-- **[Create action policies](../action-policies/create-configure-action-policy.md):** Define who gets notified, how often, and under what conditions. ← PR #6525
--->
+- [Create a rule](../rules/create-a-rule.md): Write the {{esql}} query that defines what to detect, choose Signal or Alert mode, and configure grouping and thresholds.
+- [Set up workflows](../notifications-actions.md): Configure the automation objects that deliver notifications — email, Slack, webhook, and so on.
+- [Create action policies](../action-policies/create-configure-action-policy.md): Define who gets notified, how often, and under what conditions.
