@@ -18,7 +18,7 @@ This page covers how action policies drive workflow invocations at runtime, the 
 
 The {{alerting-v2-system}} connects to workflows through two pathways.
 
-- **Action policies** - Action policies evaluate active alert episodes on a continuous schedule and invoke workflows based on match conditions and frequency settings.
+- **Action Policies** - Action policies evaluate active alert episodes on a continuous schedule and invoke workflows based on match conditions and frequency settings.
 - **Alert episode lifecycle triggers** - Workflows are invoked when a specific event occurs on an alert episode, such as when the alert episode is activated, assigned, or resolved.
 
 ### Action policies [action-policy-driven-workflows]

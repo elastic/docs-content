@@ -10,7 +10,7 @@ description: "Create action policies in the experimental alerting system, config
 
 # Create an action policy for the {{alerting-v2-system}} [create-action-policy]
 
-In the {{alerting-v2-system}}, an action policy determines which alert episodes generate notifications, how they batch for dispatch, and where they're routed. To create an action policy, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action policies**.
+In the {{alerting-v2-system}}, an action policy determines which alert episodes generate notifications, how they batch for dispatch, and where they're routed. To create an action policy, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**.
 
 This page covers how to configure an action policy's match conditions, grouping, frequency, and workflow destinations. For a quicker setup, you can also create a basic action policy directly while creating a rule, as described in [Select workflows to invoke](#policy-destinations).
 
@@ -20,7 +20,7 @@ Action policies only apply to alert episodes from rules running in Alert mode. R
 
 ## Add tags to categorize the action policy [policy-tags]
 
-Tags are optional labels you assign to an action policy to categorize it or filter it in the **Action policies** list. Action policy tags describe the action policy itself, not the alert episodes it matches. You can add, edit, or remove tags at any time without affecting routing behavior.
+Tags are optional labels you assign to an action policy to categorize it or filter it in the **Action Policies** list. Action policy tags describe the action policy itself, not the alert episodes it matches. You can add, edit, or remove tags at any time without affecting routing behavior.
 
 ## Filter which episodes the action policy applies to [matcher]
 

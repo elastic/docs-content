@@ -69,7 +69,7 @@ Signal rules do not support notifications. Alert episodes, and therefore action 
 :::
 
 - **Workflows** - Workflows are the delivery mechanism. They define what happens when the {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
-- **Action policies** - Action policies are the gating mechanism. They evaluate alert episodes from the rule on a continuous schedule and invoke the workflow when the episode clears the action policy's match conditions and frequency settings. When the agent creates an action policy alongside a specific rule, the action policy is automatically scoped to that rule.
+- **Action Policies** - Action policies are the gating mechanism. They evaluate the rule's alert episodes and invoke the workflow when an episode matches. When created alongside a rule, an action policy is automatically scoped to it.
 
 Both objects are proposed as inline attachments and must be explicitly saved before they take effect.
 
