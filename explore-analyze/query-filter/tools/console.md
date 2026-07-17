@@ -229,11 +229,43 @@ A single successful response is required to use response filtering. To filter or
 
 1. Run one request, then select **Filter response** in the response panel.
 2. Select a filter mode:
-   * **JQ expression**: Extract or transform values in a JSON response. Console supports a subset of JQ. Select {icon}`question` **Filter expression help** for supported operations and examples.
+   * **JQ expression**: Extract or transform values in a JSON response.
    * **Regular expression**: Match the response line by line. Select **Include** to keep matching lines or **Exclude** to remove them.
 3. Enter an expression, then select **Apply**.
 
 The response panel shows the filtered output. Clear the expression to restore the complete response.
+
+### Use JQ expressions
+
+JQ expressions work only with JSON responses. Console supports these JQ operations:
+
+* Field and array access: `.field`, `.["field-name"]`, `.items[0]`, `.items[-1]`, and `.items[1:3]`
+* Iteration and traversal: `.items[]`, optional access such as `.field?`, and recursive descent with `..`
+* Pipelines and filtering: `|` and `select(...)`
+* Comparisons and logic: `==`, `!=`, `<`, `>`, `<=`, `>=`, `and`, `or`, and `not`
+* Value inspection and reshaping: `keys`, `to_entries`, `from_entries`, `[expression]`, and `{key: expression}`
+* String operations: `trim`, `ltrim`, `rtrim`, `startswith("...")`, `endswith("...")`, `ltrimstr("...")`, `rtrimstr("...")`, and `split("...")`
+* Array joining: `join("...")`
+
+Console doesn't support the complete JQ language. If an expression uses unsupported syntax, Console displays **Invalid JQ expression** and makes **Apply** unavailable.
+
+For example, use these expressions with a search response:
+
+* Return the first search result: `.hits.hits[0]`
+* Return the `_source` object from every search result: `.hits.hits[] | ._source`
+* Return the `_source` objects for search results whose `status` field is `active`: `.hits.hits[] | select(._source.status == "active") | ._source`
+* List the top-level response fields: `keys`
+
+Select {icon}`question` **Filter expression help** for more examples in Console.
+
+### Use regular expressions
+
+Console treats the expression as a JavaScript regular expression pattern and applies it to each response line independently. Enter the pattern without `/` delimiters or flags. For example:
+
+* Match lines that contain `green` or `yellow`: `green|yellow`
+* Match lines where `count` is the first JSON field after indentation: `^\s*"count"`
+
+Because regular expressions filter the rendered response line by line, the filtered output might be a fragment rather than valid JSON.
 
 
 ## Import and export requests [import-export-console-requests]
