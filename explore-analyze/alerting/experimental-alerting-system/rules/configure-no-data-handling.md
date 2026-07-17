@@ -33,7 +33,7 @@ Choose one of the following options. Each maps to a `no_data_strategy` value if 
 | --- | --- | --- |
 | Keep last status | `last_known_status` | Hold the last known lifecycle state. An active breach stays active and a recovered episode stays recovered. |
 | Recover | `recover` | Treat absence as recovery. |
-| Do nothing | `none` | Skip the no-data check. The rule never re-runs the base query, so an empty result is treated the same as **Recover** — just without confirming the pipeline isn't broken. |
+| Do nothing | `none` | Skip the no-data check. The rule never re-runs the base query, so an empty result is treated the same as **Recover**, but without confirming that the data pipeline is actually working. |
 
 :::{note}
 `no_data_strategy` only triggers when the base query returns **zero rows**. If one host or data source goes quiet but others keep reporting, the query still returns rows for the ones still reporting, so `no_data_strategy` won't trigger. To catch a single silent source in that situation, use the {{esql}} pattern in [No-data detection](esql-no-data-detection.md), which turns a silent source into its own alert row.
@@ -61,3 +61,9 @@ Create a rule that monitors infrastructure CPU. Configure the no-data strategy a
 ### Close the episode when a queue empties out
 
 Create a rule that monitors how many jobs are waiting in a queue and opens an episode when the backlog gets too large. Configure the no-data strategy as **Recover** (`recover`) so that once the queue is empty and the query has nothing to return, the episode closes.
+
+## Related pages
+
+- [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
+- [Recovery condition](configure-rule-recovery.md): How no-data handling fits into the recovery process.
+- [No-data detection](esql-no-data-detection.md): An {{esql}} pattern for detecting one specific silent source, rather than an empty base query result.

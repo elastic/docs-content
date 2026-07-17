@@ -42,3 +42,8 @@ FROM .rule-events
 "For more query examples including lifecycle replay and incident tracing, refer to [Query alert history in Discover](../alerts/query-alerts-and-signals-in-discover.md)."
 -->
 :::
+
+## Related pages
+
+- [{{esql}} query](configure-rule-query.md): How the base query and alert condition shape what's written to `.rule-events`.
+- [Rules](../rules.md): What rules do and how they fit into the broader {{alerting-v2-system}}.

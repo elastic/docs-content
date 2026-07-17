@@ -10,7 +10,7 @@ description: "Detect SLO error budget burn across multiple time windows in Kiban
 
 # SLO burn rate detection in the {{alerting-v2-system}} [slo-burn-rate-query]
 
-An SLO burn rate query asks a different question than a basic threshold: are you consuming your error budget faster than you can afford to? Rather than checking a single metric at a fixed limit, it calculates error rates across multiple time windows simultaneously and assigns a severity level based on how fast the budget is being consumed.
+An SLO burn rate query answers a specific question: are you consuming your error budget faster than you can afford to? It calculates error rates across multiple time windows simultaneously and assigns a severity level based on how fast the budget is being consumed.
 
 ## Single-tier query
 
@@ -73,3 +73,8 @@ FROM metrics-*
 The rule's lookback window must cover the longest window in the query. In this example that's 3 days, driven by the 6-hour window pair.
 
 The `severity` column in `KEEP` maps directly to the `severity` field on each resulting alert episode. For accepted values and matching rules, refer to [Severity](configure-rule-severity.md).
+
+## Related pages
+
+- [{{esql}} query patterns](esql-query-patterns.md): Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.
+- [Severity](configure-rule-severity.md): Assign severity levels to alert episodes.

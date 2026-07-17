@@ -48,3 +48,8 @@ You're writing a new detection query and want to verify it produces the results 
 ### Route critical episodes to an on-call workflow
 
 You have a checkout service error rate rule and want on-call engineers notified when it fires. Create the rule in Alert mode so each breach opens a tracked episode that action policies can route to a notification channel. The rule's episodes appear on the Alerts UI and are visible to any action policy whose KQL matcher matches the episode fields.
+
+## Related pages
+
+- [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
+- [Create a rule](create-a-rule.md): Compare rule creation paths and choose the one that fits your workflow.

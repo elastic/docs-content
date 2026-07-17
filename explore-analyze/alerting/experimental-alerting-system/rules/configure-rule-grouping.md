@@ -31,7 +31,7 @@ Rule grouping controls how alert series are created. Notification grouping, conf
 
 ## Configure grouping fields [grouping-fields-config]
 
-The {{alerting-v2-system}} does not automatically infer grouping from your {{esql}} query. When your query uses `BY` to produce one row per group, the system still treats all rows as a single series unless you explicitly declare which fields define series identity in the grouping configuration. The fields you declare in `grouping.fields` are what the system uses to separate rows into independent alert series and track each one through its own lifecycle.
+The {{alerting-v2-system}} does not automatically infer grouping from your {{esql}} query. You must declare which fields define series identity in `grouping.fields`; those are what the system uses to separate rows into independent alert series and track each one through its own lifecycle. Without that declaration, the system treats all query rows as a single series, even if your query uses `BY` to produce one row per group.
 
 The fields you declare in `grouping.fields` must match the column names produced by the `BY` clause in your {{esql}} `STATS` command. If they don't match, the system can't correlate query rows to alert series and the grouping configuration has no effect.
 
@@ -66,3 +66,9 @@ FROM metrics-*
 | WHERE avg_cpu > 0.90
 | KEEP host.name, cloud.region, avg_cpu
 ```
+
+## Related pages
+
+- [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
+- [Threshold queries](esql-threshold-queries.md): Write single-series and grouped queries using a `BY` clause.
+- [Severity](configure-rule-severity.md): Assign a severity level to each alert series.

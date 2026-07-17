@@ -10,7 +10,7 @@ description: "Assign severity levels to alert episodes in Kibana's experimental 
 
 # Severity in the {{alerting-v2-system}} [rule-severity]
 
-Severity is an optional setting for rules in the {{alerting-v2-system}}. To set it, include a column named `severity` in your {{esql}} query output and add it to your `KEEP` list. The framework reads that column after each evaluation and maps it to one of five fixed levels.
+Severity is an optional setting for rules in the {{alerting-v2-system}} that assigns an urgency level to each alert episode, so you can triage and route episodes differently depending on how serious they are. To set it, include a column named `severity` in your {{esql}} query output and add it to your `KEEP` list. The framework reads that column after each evaluation and maps it to one of five fixed levels.
 
 | Value | Description | Urgency |
 | --- | --- | --- |
@@ -31,7 +31,7 @@ Configure severity when:
 Skip severity when:
 
 * All breaches from the rule are equally urgent. A fixed label in the rule's tags is simpler and doesn't require query changes.
-* The underlying data doesn't produce a reliable metric to grade urgency. Severity that's frequently wrong generates more noise than routing by severity resolves.
+* The underlying data doesn't produce a reliable metric to grade urgency. Severity values that are frequently wrong just add noise instead of helping you route notifications.
 
 ## Severity behavior and usage [severity-behavior]
 
@@ -90,3 +90,9 @@ Here's what the severity-specific steps do:
 - **`EVAL burn_rate`**: Computes the error rate as failures over total requests.
 - **`EVAL severity`**: Maps the burn rate to a severity level.
 - **`KEEP`**: Keeps `severity` in the output so the {{alerting-v2-system}} reads and stores it.
+
+## Related pages
+
+- [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
+- [SLO burn rate](esql-slo-burn-rate.md): A query pattern that assigns severity dynamically based on burn rate across multiple time windows.
+- [Rule grouping](configure-rule-grouping.md): Track multiple subjects as independent alert series, each with its own severity.

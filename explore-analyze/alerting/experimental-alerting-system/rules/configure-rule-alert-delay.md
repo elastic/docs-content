@@ -61,3 +61,8 @@ Create a rule that monitors CPU usage and runs every minute. A single high readi
 ### Require sustained breach before escalating
 
 Create a rule that monitors a payment error rate. Brief spikes happen during deployments and are expected. Set `pending_count` to `5`, `pending_timeframe` to `2m`, and `pending_operator` to `AND`. The rule only fires when the error rate has breached on 5 consecutive evaluations and has been continuously elevated for at least 2 minutes. Either condition alone isn't enough.
+
+## Related pages
+
+- [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
+- [Recovery condition](configure-rule-recovery.md#recovery-delay): The equivalent delay before an episode closes.

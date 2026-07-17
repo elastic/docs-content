@@ -10,8 +10,7 @@ description: "YAML rule definitions in Kibana's experimental alerting system sup
 
 # YAML rule schema reference for the {{alerting-v2-system}} [yaml-rule-schema-reference]
 
-
-YAML rule schema is part of the {{alerting-v2-system}} in {{kib}}. This page lists valid fields for YAML rule definitions. For authoring guidance, refer to [Create an {{esql}} rule](create-esql-rule.md).
+This page lists valid fields for YAML rule definitions in the {{alerting-v2-system}}. For authoring guidance, refer to [Create an {{esql}} rule](create-esql-rule.md).
 
 ## Base rule fields
 
@@ -128,3 +127,8 @@ All duration fields accept the following units:
 | `m` | `5m` | Minutes |
 | `h` | `1h` | Hours |
 | `d` | `7d` | Days |
+
+## Related pages
+
+- [Create an {{esql}} rule](create-esql-rule.md): Author rules using the YAML editor, with a live sandbox for previewing results.
+- [Configure a rule](configure-a-rule.md): Field-by-field guidance for each setting, with examples and when-to-use recommendations.
