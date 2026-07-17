@@ -66,6 +66,6 @@ From here, you can view, manage, and query alert episode data.
 - [Alert data model](alerts/alert-data-model.md): Understand how the system stores alert data, including the signal versus alert distinction and the two underlying data streams.
 - [Query {{alerting-v2-system}} alert history in Discover](alerts/query-alerts-and-signals-in-discover.md): Use {{esql}} to query `.rule-events` and `.alert-actions` for exploratory analysis and dashboards.
 
-:::{important} - How to read the {{alerting-v2-system}} docs
+:::{important} - How to use the {{alerting-v2-system}} docs
 The docs about the {{alerting-v2-system}} don't always name a specific button or menu. When that's the case, look for the closest matching label in {{kib}}.
 :::

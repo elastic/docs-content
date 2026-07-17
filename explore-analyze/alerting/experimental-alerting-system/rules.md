@@ -37,6 +37,6 @@ From here, you can create, configure, and manage rules, and review what they've 
 - [{{esql}} query patterns](rules/esql-query-patterns.md): Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.
 - [Rule events](rules/rule-event-field-reference.md): Understand the documents rules write to `.rule-events`.
 
-:::{important} - How to read the {{alerting-v2-system}} docs
+:::{important} - How to use the {{alerting-v2-system}} docs
 The docs about the {{alerting-v2-system}} don't always name a specific button or menu. When that's the case, look for the closest matching label in {{kib}}.
 :::
