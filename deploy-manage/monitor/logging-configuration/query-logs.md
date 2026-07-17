@@ -318,7 +318,9 @@ Using parent task and node IDs, you can correlate the log entries of queries ini
 
 These fields are specific to query logging and common for all query languages.
 
-- `elasticsearch.querylog.type`: The type of operation (`dsl`, `esql`, `sql`, `eql`, `promql`).
+- `elasticsearch.querylog.type`: The type of operation (`dsl`, `esql`, `sql`, `eql`).
+	-  `promql` support: {applies_to}`stack: ga 9.6` 
+
 - `elasticsearch.querylog.took`: How long the request took to complete, in nanoseconds. This is the same value as `event.duration`.
 - `elasticsearch.querylog.took_millis`: How long (in milliseconds) the request took to complete.
 - `elasticsearch.querylog.timed_out`: Boolean specifying whether the query timed out.
