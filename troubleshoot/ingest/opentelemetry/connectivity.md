@@ -1,6 +1,6 @@
 ---
 navigation_title: Connectivity issues
-description: Troubleshoot connectivity issues between EDOT SDKs, the EDOT Collector, and Elastic.
+description: Troubleshoot connectivity issues between Elastic OTel SDKs, the Elastic Agent, and Elastic.
 applies_to:
   serverless: ga
   product:
@@ -11,9 +11,9 @@ products:
   - id: edot-sdk
 ---
 
-# Connectivity issues with EDOT
+# Connectivity issues with {{edot}} [connectivity-issues-with-edot]
 
-Connectivity problems occur when the EDOT SDKs or the EDOT Collector can't reach Elastic. Even with correct proxy settings, network restrictions such as blocked ports or firewalls can prevent data from flowing.
+Connectivity problems occur when the Elastic OTel SDKs or the {{agent}} can't reach Elastic. Even with correct proxy settings, network restrictions such as blocked ports or firewalls can prevent data from flowing.
 
 ## Symptoms
 
@@ -74,7 +74,7 @@ Connectivity errors usually trace back to one of the following issues:
 Errors can look similar whether they come from an SDK or the Collector. Identifying the source helps you isolate the problem.
 
 :::{note}
-Note: Some SDKs support setting a proxy directly (for example, using `HTTPS_PROXY`). Refer to [Proxy settings for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/proxy.md) for details.
+Note: Some SDKs support setting a proxy directly (for example, using `HTTPS_PROXY`). Refer to [Proxy settings for Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/proxy.md) for details.
 :::
 
 #### SDK

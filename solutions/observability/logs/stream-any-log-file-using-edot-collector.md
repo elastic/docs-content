@@ -13,9 +13,9 @@ products:
 
 # Send any log file using OTel Collector [logs-stream-edot]
 
-This guide shows you how to manually configure the {{edot}} (EDOT) Collector to send your log data to {{es}} by configuring the `otel.yml` file. For an Elastic Agent equivalent, refer to [Send any log file using {{agent}}](/solutions/observability/logs/stream-any-log-file.md).
+This guide shows you how to manually configure the {{edot}} Collector to send your log data to {{es}} by configuring the `otel.yml` file. For an Elastic Agent equivalent, refer to [Send any log file using {{agent}}](/solutions/observability/logs/stream-any-log-file.md).
 
-For more OpenTelemetry quickstarts, refer to [EDOT quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
+For more OpenTelemetry quickstarts, refer to [{{edot}} quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
 
 ## Prerequisites [logs-stream-edot-prereq]
 
@@ -43,15 +43,15 @@ The **Admin** role or higher is required to onboard log data. To learn more, ref
 
 ::::
 
-## Install the EDOT Collector [logs-stream-edot-install-config]
+## Install {{agent}} [logs-stream-edot-install-config]
 
-Complete these steps to install and configure the EDOT Collector and send your log data to Elastic Observability.
+Complete these steps to install and configure {{agent}} and send your log data to Elastic Observability.
 
 ::::::{stepper}
 
-:::::{step} Download and install the EDOT Collector
+:::::{step} Download and install {{agent}}
 
-On your host, download the EDOT Collector installation package that corresponds with your system:
+On your host, download the {{agent}} installation package that corresponds with your system:
 
 ::::{tab-set}
 
@@ -83,7 +83,7 @@ Expand-Archive .\elastic-agent-{{version.stack}}-windows-x86_64.zip
 ::::
 :::::
 
-:::::{step} Configure the EDOT Collector
+:::::{step} Configure {{agent}}
 
 Follow these steps to retrieve the managed OTLP endpoint URL for your Serverless project:
 
@@ -313,9 +313,9 @@ Key configuration elements:
 * `exporters`: Configures how data is sent to Elasticsearch (Elastic Stack) or OTLP endpoint (Serverless).
 :::::
 
-:::::{step} Run the EDOT Collector
+:::::{step} Run {{agent}}
 
-Run the following command to run the EDOT Collector:
+Run the following command to run {{agent}}:
 
 ::::{tab-set}
 
@@ -341,7 +341,7 @@ The Collector opens ports `4317` and `4318` to receive application data from loc
 :::::
 ::::::
 
-## Troubleshoot your EDOT Collector configuration [logs-stream-edot-troubleshooting]
+## Troubleshoot your {{agent}} configuration [logs-stream-edot-troubleshooting]
 
 If you're not seeing your log files in the UI, verify the following:
 
@@ -350,16 +350,16 @@ If you're not seeing your log files in the UI, verify the following:
 * The OTLP endpoint URL is correct and accessible.
 * The Collector is running without errors (check the console output).
 
-If you're still running into issues, see [EDOT Collector troubleshooting](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Configure EDOT Collector](elastic-agent://reference/edot-collector/config/index.md).
+If you're still running into issues, see [{{agent}} troubleshooting](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Configure {{agent}}](elastic-agent://reference/edot-collector/config/index.md).
 
 ## Next steps [logs-stream-edot-next-steps]
 
-After you have your EDOT Collector configured and are streaming log data to {{es}}:
+After you have {{agent}} configured and are streaming log data to {{es}}:
 
 * Refer to the [Explore log data](/solutions/observability/logs/discover-logs.md) documentation for information on exploring your log data in the UI, including searching and filtering your log data, getting information about the structure of log fields, and displaying your findings in a visualization.
 * Refer to the [Parse and organize logs](/solutions/observability/logs/parse-route-logs.md) documentation for information on extracting structured fields from your log data, rerouting your logs to different data streams, and filtering and aggregating your log data.
 * Refer to the [Filter and aggregate logs](/solutions/observability/logs/filter-aggregate-logs.md) documentation for information on filtering and aggregating your log data to find specific information, gain insight, and monitor your systems more efficiently.
-* To collect telemetry from applications and use the EDOT Collector as a gateway, instrument your target applications following the setup instructions:
+* To collect telemetry from applications and use {{agent}} as a gateway, instrument your target applications following the setup instructions:
   - [Android](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/android/)
   - [.NET](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/dotnet/setup/)
   - [iOS](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/ios/)

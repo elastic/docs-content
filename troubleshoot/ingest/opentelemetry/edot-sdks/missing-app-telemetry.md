@@ -1,6 +1,6 @@
 ---
 navigation_title: No app-level telemetry in Kibana
-description: Diagnose lack of telemetry flow due to issues with EDOT SDKs.
+description: Diagnose lack of telemetry flow due to issues with Elastic OTel SDKs.
 applies_to:
   stack:
   serverless:
@@ -15,7 +15,7 @@ products:
 
 # No application-level telemetry visible in Kibana
 
-This page helps you diagnose why application-level telemetry doesn’t appear when using {{edot}} (EDOT) SDKs:
+This page helps you diagnose why application-level telemetry doesn’t appear when using Elastic OTel SDKs:
 
 * [The SDK is turned off (`OTEL_SDK_DISABLED`)](#sdk-disabled)
 * [Auto-instrumentation or SDK initialization runs at the wrong time](#auto-instrumentation-not-attached)
@@ -34,7 +34,7 @@ Use this table to quickly spot the usual causes and fixes.
 | Works locally, not on prod       | Different environment/flags in container or service  | Match prod environment settings and restart |
 | Still unsure                     | Enable debug logging                         | Inspect logs for disabled/unsupported/delayed initialization hints |
 
-### EDOT central configuration toggles at a glance
+### Elastic OTel central configuration toggles at a glance [edot-central-configuration-toggles-at-a-glance]
 
 If you use central configuration using OpAMP, these options can mute or change signals even when local `OTEL_*` looks correct.
 
@@ -90,7 +90,7 @@ To fix the issue, try the following:
 
 	Restart after changing any configuration. Some SDKs only read environment variables at startup.
 
-If telemetry is still missing, you can enable debug logging. Refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md) for guidance. Make sure to [verify that you're looking at the right logs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md#verify-youre-looking-at-the-right-logs). If traces are missing due to sampling configuration, refer to [Missing or incomplete traces due to SDK sampling](/troubleshoot/ingest/opentelemetry/edot-sdks/misconfigured-sampling-sdk.md).
+If telemetry is still missing, you can enable debug logging. Refer to [Enable debug logging for Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md) for guidance. Make sure to [verify that you're looking at the right logs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md#verify-youre-looking-at-the-right-logs). If traces are missing due to sampling configuration, refer to [Missing or incomplete traces due to SDK sampling](/troubleshoot/ingest/opentelemetry/edot-sdks/misconfigured-sampling-sdk.md).
 
 ## Auto-instrumentation isn’t attaching [auto-instrumentation-not-attached]
 
@@ -112,7 +112,7 @@ Check the following:
 	4. **Webhook and injector logs**: Inspect the Operator and injector webhook logs for errors or skipped injections.
 	5. **Restart and rollout**: After changing the `Instrumentation` or annotations, perform a rollout so containers start with the updated environment variables and startup flags.
 
-	If you use EDOT-specific images or settings, align the Instrumentation configuration with EDOT’s SDK guidance for that language (see links below).
+	If you use {{edot}}-specific images or settings, align the Instrumentation configuration with {{edot}}’s SDK guidance for that language (see links below).
 
 
 * **Start-up mechanism by language**
@@ -149,7 +149,7 @@ Check the following:
 
 * **Compatibility tables**
 
-	Verify that your runtime and frameworks are supported by the SDK. Refer to the [EDOT SDK compatibility reference](opentelemetry://reference/compatibility/sdks.md) for more information.
+	Verify that your runtime and frameworks are supported by the SDK. Refer to the [Elastic OTel SDK compatibility reference](opentelemetry://reference/compatibility/sdks.md) for more information.
 
 * **Major version mismatches**
 

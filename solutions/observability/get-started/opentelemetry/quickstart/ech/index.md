@@ -1,6 +1,6 @@
 ---
 navigation_title: Elastic Cloud Hosted
-description: Quickstart setup guides for the Elastic Distribution of OpenTelemetry (EDOT) on Elastic Cloud Hosted.
+description: Quickstart setup guides for the {{edot}} on Elastic Cloud Hosted.
 applies_to:
   stack:
   serverless:
@@ -23,4 +23,4 @@ Select the quickstart guide for your environment from the following list:
 
 ## Troubleshooting
 
-Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.
+Having issues with {{edot}}? Refer to the [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.

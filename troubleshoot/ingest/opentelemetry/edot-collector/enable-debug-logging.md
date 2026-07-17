@@ -1,6 +1,6 @@
 ---
 navigation_title: Enable debug logging
-description: Learn how to enable debug logging for the EDOT Collector in supported environments.
+description: Learn how to enable debug logging for the Elastic Agent in supported environments.
 applies_to:
   stack:
   serverless:
@@ -15,13 +15,13 @@ products:
 
 # Enable debug logging
 
-You can enable debug-level logging in the Elastic Distributions of OpenTelemetry (EDOT) Collector by either modifying the configuration file or passing a runtime override. This is useful when troubleshooting startup issues or configuration problems.
+You can enable debug-level logging in the {{agent}} by either modifying the configuration file or passing a runtime override. This is useful when troubleshooting startup issues or configuration problems.
 
 This guide shows how to enable debug logging in different environments.
 
-## Standalone EDOT Collector
+## Standalone {{agent}} [standalone-edot-collector]
 
-If you're running the EDOT Collector directly, you can choose between two approaches:
+If you're running the {{agent}} directly, you can choose between two approaches:
 
 * [Configuration file](#configuration-file) - to persist debug logging across restarts
 * [Temporary override: runtime flag](#temporary-override-runtime-flag) - for temporary debugging or quick tests
@@ -30,7 +30,7 @@ Both approaches increase log verbosity and help surface misconfigurations.
 
 ### Configuration file
 
-Add the following section to your EDOT Collector configuration file (typically `otel.yml`):
+Add the following section to your {{agent}} configuration file (typically `otel.yml`):
 
 ```yaml
 service:
@@ -53,7 +53,7 @@ This applies debug-level logging without modifying your configuration file.
 
 ## Kubernetes (Helm deployment)
 
-If you're deploying the EDOT Collector using the OpenTelemetry Helm charts, enable debug logging by adding the configuration directly in your values.yaml file:
+If you're deploying the {{agent}} using the OpenTelemetry Helm charts, enable debug logging by adding the configuration directly in your values.yaml file:
 
 ```yaml
 config:
@@ -73,7 +73,7 @@ This ensures the Collector logs at debug level when deployed into your cluster.
 
 ## Other environments
 
-Standalone and Kubernetes are currently the only officially supported deployment environments for the EDOT Collector.
+Standalone and Kubernetes are currently the only officially supported deployment environments for the {{agent}}.
 
 However, if you're running the Collector in a different context, such as a manually containerized setup, you can still enable debug logging using the same methods:
 
@@ -88,4 +88,4 @@ Debug logging for the Collector is not currently configurable through {{fleet}}.
 
 ## Resources
 
-To learn how to enable debug logging for the EDOT SDKs, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+To learn how to enable debug logging for the Elastic OTel SDKs, refer to [Enable debug logging for Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).

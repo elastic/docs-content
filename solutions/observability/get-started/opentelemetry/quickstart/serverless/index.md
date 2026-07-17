@@ -1,6 +1,6 @@
 ---
 navigation_title: Elastic Cloud Serverless
-description: Quickstart setup guides for the Elastic Distribution of OpenTelemetry (EDOT) on Elastic Cloud Serverless.
+description: Quickstart setup guides for the {{edot}} on Elastic Cloud Serverless.
 applies_to:
   stack:
   serverless:
@@ -48,4 +48,4 @@ The {{motlp}} ensures that OpenTelemetry data is stored without any schema trans
 
 Help improve the {{motlp}} by sending us feedback in our [discussion forum](https://discuss.elastic.co/c/apm) or [community Slack](https://elasticstack.slack.com/signup).
 
-For EDOT Collector feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
+For {{agent}} feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).

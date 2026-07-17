@@ -1,5 +1,5 @@
 ---
-navigation_title: EDOT .NET
+navigation_title: Elastic OTel .NET
 description: Use the information in this section to troubleshoot common problems affecting the {{edot}} .NET.
 applies_to:
   stack:
@@ -13,28 +13,28 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting the EDOT .NET SDK
+# Troubleshooting the Elastic OTel .NET SDK [troubleshooting-the-edot-net-sdk]
 
-Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](elastic-otel-dotnet://reference/edot-dotnet/supported-technologies.md) for EDOT .NET and the OpenTelemetry SDK.
+Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](elastic-otel-dotnet://reference/edot-dotnet/supported-technologies.md) for Elastic OTel .NET and the OpenTelemetry SDK.
 
 If you have an Elastic support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). If you don't, post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-dotnet/issues).
 
-## Obtain EDOT .NET diagnostic logs
+## Obtain Elastic OTel .NET diagnostic logs [obtain-edot-net-diagnostic-logs]
 
-For most problems, such as when you don't see data in your {{product.observability}} backend, first check the EDOT .NET logs. These logs show initialization details and OpenTelemetry SDK events. If you don't see any warnings or errors in the EDOT .NET logs, switch the log level to `Debug` to investigate further. For more information on enabling debug logging, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md). If telemetry data isn't appearing in {{kib}}, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md).
+For most problems, such as when you don't see data in your {{product.observability}} backend, first check the Elastic OTel .NET logs. These logs show initialization details and OpenTelemetry SDK events. If you don't see any warnings or errors in the Elastic OTel .NET logs, switch the log level to `Debug` to investigate further. For more information on enabling debug logging, refer to [Enable debug logging for Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md). If telemetry data isn't appearing in {{kib}}, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md).
 
-The {{edot}} .NET includes built-in diagnostic logging. You can direct logs to a file, STDOUT, or, in common scenarios, an `ILogger` instance. EDOT .NET also observes the built-in diagnostics events from the contrib OpenTelemetry SDK and includes those in its logging output. You can collect the log output and use it to diagnose issues locally during development or when working with Elastic support channels.
+The {{edot}} .NET includes built-in diagnostic logging. You can direct logs to a file, STDOUT, or, in common scenarios, an `ILogger` instance. Elastic OTel .NET also observes the built-in diagnostics events from the contrib OpenTelemetry SDK and includes those in its logging output. You can collect the log output and use it to diagnose issues locally during development or when working with Elastic support channels.
 
 ## ASP.NET Core (generic host) logging integration
 
-When you build applications based on the generic host, such as those created by the [ASP.NET Core](https://learn.microsoft.com/aspnet/core/introduction-to-aspnet-core) and [worker service](https://learn.microsoft.com/dotnet/core/extensions/workers) templates, the {{edot}} .NET will try to automatically register with the built-in logging components when you use the `IHostApplicationBuilder.AddElasticOpenTelemetry` extension method to register EDOT .NET.
+When you build applications based on the generic host, such as those created by the [ASP.NET Core](https://learn.microsoft.com/aspnet/core/introduction-to-aspnet-core) and [worker service](https://learn.microsoft.com/dotnet/core/extensions/workers) templates, the {{edot}} .NET will try to automatically register with the built-in logging components when you use the `IHostApplicationBuilder.AddElasticOpenTelemetry` extension method to register Elastic OTel .NET.
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 builder.AddElasticOpenTelemetry();
 ```
 
-In this scenario, EDOT .NET tries to access an available `ILoggerFactory` and create an `ILogger`, logging to the event category `Elastic.OpenTelemetry`. EDOT .NET will register this as the additional logger for its diagnostics unless you have already configured a user-provided `ILogger`. This ensures that EDOT .NET and OpenTelemetry SDK logs are written for your application's configured logging providers. In ASP.NET Core, this includes the console logging provider and results in logs such as the following:
+In this scenario, Elastic OTel .NET tries to access an available `ILoggerFactory` and create an `ILogger`, logging to the event category `Elastic.OpenTelemetry`. Elastic OTel .NET will register this as the additional logger for its diagnostics unless you have already configured a user-provided `ILogger`. This ensures that Elastic OTel .NET and OpenTelemetry SDK logs are written for your application's configured logging providers. In ASP.NET Core, this includes the console logging provider and results in logs such as the following:
 
 ```
 info: Elastic.OpenTelemetry[0]
@@ -74,9 +74,9 @@ In the preceding code, you have filtered `Elastic.OpenTelemetry` to only emit lo
 
 ## Enable global file logging
 
-Integrated logging is helpful because it requires little to no setup. The logging infrastructure is not present by default in some application types, such as console applications. EDOT .NET also offers a global file logging feature, which is the easiest way for you to get diagnostics and debug information. You must enable file logging when you work with Elastic support, as debug logs will be requested. For more details, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+Integrated logging is helpful because it requires little to no setup. The logging infrastructure is not present by default in some application types, such as console applications. Elastic OTel .NET also offers a global file logging feature, which is the easiest way for you to get diagnostics and debug information. You must enable file logging when you work with Elastic support, as debug logs will be requested. For more details, refer to [Enable debug logging for Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
-Specify at least one of the following environment variables to make sure that EDOT .NET logs into a file.
+Specify at least one of the following environment variables to make sure that Elastic OTel .NET logs into a file.
 
 `OTEL_LOG_LEVEL` _(optional)_:
 Set the log level at which the profiler should log. Valid values are
@@ -117,11 +117,11 @@ The default value is `file` if you set `OTEL_DOTNET_AUTO_LOG_DIRECTORY` or set `
 
 ### Diagnosing initialization or bootstrap issues
 
-If EDOT for .NET fails before fully bootstrapping its internal components, it won't generate a log file. In such circumstances, you can provide an additional logger for diagnostic purposes. Alternatively, you can enable the `STDOUT` log target.
+If Elastic OTel .NET fails before fully bootstrapping its internal components, it won't generate a log file. In such circumstances, you can provide an additional logger for diagnostic purposes. Alternatively, you can enable the `STDOUT` log target.
 
 #### Providing an additional application logger
 
-You can provide an additional `ILogger` that EDOT .NET will use to log pre-bootstrap events by creating an instance of `ElasticOpenTelemetryOptions`.
+You can provide an additional `ILogger` that Elastic OTel .NET will use to log pre-bootstrap events by creating an instance of `ElasticOpenTelemetryOptions`.
 
 ```csharp
 using Elastic.OpenTelemetry;
@@ -152,7 +152,7 @@ You create and configure an `ILoggerFactory`. In this example, you configure the
 
 You use the `ILoggerFactory` to create an `ILogger`, which you then assign to the `ElasticOpenTelemetryOptions.AdditionalLogger` property. Once you pass the `ElasticOpenTelemetryOptions` into the `WithElasticDefaults` method, the provided logger can capture bootstrap logs.
 
-To simplify the preceding code, you can also configure the `ElasticOpenTelemetryOptions` with an `ILoggerFactory` instance that EDOT .NET can use to create its own logger.
+To simplify the preceding code, you can also configure the `ElasticOpenTelemetryOptions` with an `ILoggerFactory` instance that Elastic OTel .NET can use to create its own logger.
 
 ```csharp
 using var loggerFactory = LoggerFactory.Create(static builder =>
@@ -173,15 +173,15 @@ using var sdk = OpenTelemetrySdk.Create(builder => builder
 
 ## Known issues
 
-The following known issues affect EDOT .NET.
+The following known issues affect Elastic OTel .NET.
 
 ### Missing log records
 
 The contrib SDK currently does not [comply with the spec](https://github.com/open-telemetry/opentelemetry-dotnet/issues/4324) regarding the deduplication of attributes when exporting log records. When you create a log within multiple scopes, each scope may store information using the same logical key. In this situation, the exported data will have duplicated attributes.
 
-You are most likely to see this when you log in the scope of a request and enable the `OpenTelemetryLoggerOptions.IncludeScopes` option. ASP.NET Core adds the `RequestId` to multiple scopes. We recommend that you don't enable `IncludeScopes` until the SDK fixes this. When you use the EDOT Collector or the [{{motlp}}](opentelemetry://reference/motlp.md) in serverless, non-compliant log records will fail to be ingested.
+You are most likely to see this when you log in the scope of a request and enable the `OpenTelemetryLoggerOptions.IncludeScopes` option. ASP.NET Core adds the `RequestId` to multiple scopes. We recommend that you don't enable `IncludeScopes` until the SDK fixes this. When you use the {{agent}} or the [{{motlp}}](opentelemetry://reference/motlp.md) in serverless, non-compliant log records will fail to be ingested.
 
-EDOT .NET currently emits a warning if it detects that you use `IncludeScopes` in ASP.NET Core scenarios.
+Elastic OTel .NET currently emits a warning if it detects that you use `IncludeScopes` in ASP.NET Core scenarios.
 
 This can also happen even when you set `IncludeScopes` to false. The following code will also result in duplicate attributes and the potential for lost log records.
 
@@ -199,7 +199,7 @@ Logger.LogInformation("Eat your {fruit1} {fruit2} {fruit3}!", "apple", "banana",
 
 When using custom processors, be aware that they may not run before data is exported unless explicitly configured.
 
-By default, EDOT .NET simplifies the getting started experience by applying [opinionated defaults](elastic-otel-dotnet://reference/edot-dotnet/setup/edot-defaults.md). These defaults include registering the OTLP exporter with the OpenTelemetry SDK so that telemetry data is exported automatically, without requiring additional code.
+By default, Elastic OTel .NET simplifies the getting started experience by applying [opinionated defaults](elastic-otel-dotnet://reference/edot-dotnet/setup/edot-defaults.md). These defaults include registering the OTLP exporter with the OpenTelemetry SDK so that telemetry data is exported automatically, without requiring additional code.
 
 In advanced scenarios, you might want to develop custom processors that enrich telemetry data before it passes through the rest of the processing pipeline. In such circumstances, you have to add the processor to the relevant signal provider builder. 
 
@@ -212,7 +212,7 @@ builder.AddElasticOpenTelemetry(b => b
   .WithMetrics(m => m.AddMeter("MyAppMeter")));
 ```
 
-This code will not work as desired due to EDOT .NET registering the OTLP exporter before the processor,
+This code will not work as desired due to Elastic OTel .NET registering the OTLP exporter before the processor,
 therefore running earlier in the pipeline than `SpanRollupProcessor`. The exact behaviour may vary or appear to
 work because trace data is exported in batches and the custom processor may partially apply to trace data before
 the batch is exported.
@@ -243,13 +243,13 @@ after the processor has completed.
 
 ### Duplicate spans are visible in Elastic Observability
 
-EDOT .NET provides several APIs for registering OpenTelemetry instrumentation for your applications.
+Elastic OTel .NET provides several APIs for registering OpenTelemetry instrumentation for your applications.
 For the majority of scenarios, we recommend using the `AddElasticOpenTelemetry` methods on the `IHostApplicationBuilder`
 or `IServiceCollection`. 
 
 For advanced situations, we provide various `WithElastic...` methods on the specific
 signal builders intended to enable individual signals. Combining `AddElasticOpenTelemetry` and `WithElastic...` methods
-is incorrect and indicates a misconfiguration. EDOT .NET attempts to ensure that the OpenTelemetry SDK is
+is incorrect and indicates a misconfiguration. Elastic OTel .NET attempts to ensure that the OpenTelemetry SDK is
 registered once per application in these situations, but it's not always possible to fully validate the user
 intent.
 
@@ -286,7 +286,7 @@ builder.AddElasticOpenTelemetry(edotBuilder =>
 ```
 
 This code does not work as intended because `AddElasticOpenTelemetry` is being used
-which enables all EDOT defaults for all signals, but it's also being combined with `WithElasticDefaults`
+which enables all {{edot}} defaults for all signals, but it's also being combined with `WithElasticDefaults`
 and the signal-specific methods `WithElasticTracing` and `WithElasticMetrics`.
 
 The corrected code is as follows:
@@ -318,7 +318,7 @@ builder.AddElasticOpenTelemetry(options, edotBuilder =>
 ```
 
 This code uses the regular `WithLogging`, `WithTracing` and `WithMetrics` methods
-after calling `AddElasticOpenTelemetry` to avoid repeat registration of EDOT .NET
+after calling `AddElasticOpenTelemetry` to avoid repeat registration of Elastic OTel .NET
 defaults.
 
 Another example of incorrect code is:
@@ -331,9 +331,9 @@ builder.Services.AddOpenTelemetry()
     .AddProcessor(new CustomProcessor())));
 ```
 
-This uses `WithElasticDefaults` which is __not__ preferred when adding EDOT .NET
+This uses `WithElasticDefaults` which is __not__ preferred when adding Elastic OTel .NET
 to an `IServiceCollection`. Worse still, it combines `WithElasticDefaults` inside
-the delegate passed into `WithTracing`, which again, may register EDOT .NET twice.
+the delegate passed into `WithTracing`, which again, may register Elastic OTel .NET twice.
 
 The corrected code should be:
 
@@ -345,11 +345,11 @@ builder.Services.AddOpenTelemetry()
       .AddProcessor(new CustomProcessor())));
 ```
 
-This code calls `WithElasticDefaults` only once, which, in this case, enables EDOT .NET
+This code calls `WithElasticDefaults` only once, which, in this case, enables Elastic OTel .NET
 defaults for all signals.
 
 Better still, this should be rewritten to prefer `AddElasticOpenTelemetry`
-which can better integrate EDOT .NET with the other application services.
+which can better integrate Elastic OTel .NET with the other application services.
 
 ```csharp
 builder.Services.AddElasticOpenTelemetry(t => t

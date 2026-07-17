@@ -55,7 +55,7 @@ Bring logs from your hosts and services into Elastic {{observability}} to monito
 ::::{tab-set}
 :::{tab-item} Hosts
 
-Elastic {{observability}} can collect logs from hosts through the Elastic Distribution of OpenTelemetry (EDOT) Collector or the Elastic Agent.
+Elastic {{observability}} can collect logs from hosts through the {{agent}} or the Elastic Agent.
 
 1. Select **Add data** from the main menu and then select **Host**.
 2. Select one of these options:
@@ -63,13 +63,13 @@ Elastic {{observability}} can collect logs from hosts through the Elastic Distri
     * **Elastic Agent: Logs**: Bring data from Elastic integrations.
 3. Follow the instructions for your platform.
 
-For an overview of the EDOT, refer to [Elastic Distribution of OpenTelemetry (EDOT)](opentelemetry://reference/index.md).
+For an overview of the {{edot}}, refer to [{{edot}}](opentelemetry://reference/index.md).
 
 :::
 
 :::{tab-item} Kubernetes
 
-Elastic {{observability}} can collect logs from Kubernetes through the Elastic Distribution of OpenTelemetry (EDOT) Collector or the Elastic Agent.
+Elastic {{observability}} can collect logs from Kubernetes through the {{agent}} or the Elastic Agent.
 
 1. Select **Add data** from the main menu and then select **Kubernetes**.
 2. Select one of these options:
@@ -77,7 +77,7 @@ Elastic {{observability}} can collect logs from Kubernetes through the Elastic D
     * **Elastic Agent: Logs**: Bring data from Elastic integrations.
 3. Follow the instructions for your platform.
 
-For an overview of EDOT, refer to [Elastic Distribution of OpenTelemetry (EDOT)](opentelemetry://reference/index.md).
+For an overview of {{edot}}, refer to [{{edot}}](opentelemetry://reference/index.md).
 
 :::
 

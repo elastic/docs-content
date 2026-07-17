@@ -233,7 +233,7 @@ For Elastic Cloud Hosted and Elastic Cloud Enterprise deployments, you must also
 
 #### Example: A product feature that is only compatible with specific deployments
 
-If a feature in a product like a client library or EDOT distro requires a specific version of the stack, or a specific deployment type, then the page-level applies to should be about the product, and the stack version should be listed as a requirement or prerequisite:
+If a feature in a product like a client library or {{edot}} distribution requires a specific version of the stack, or a specific deployment type, then the page-level applies to should be about the product, and the stack version should be listed as a requirement or prerequisite:
 
 ```markdown
 ---

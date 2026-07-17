@@ -1,6 +1,6 @@
 ---
 navigation_title: Enable debug logging for SDKs
-description: Learn how to enable debug logging for EDOT SDKs to troubleshoot application-level instrumentation issues.
+description: Learn how to enable debug logging for Elastic OTel SDKs to troubleshoot application-level instrumentation issues.
 applies_to:
   stack:
   serverless:
@@ -13,9 +13,9 @@ products:
   - id: edot-sdk
 ---
 
-# Enable debug logging for EDOT SDKs
+# Enable debug logging for Elastic OTel SDKs [enable-debug-logging-for-edot-sdks]
 
-You can enable debug logging for Elastic Distributions of OpenTelemetry (EDOT) SDKs to troubleshoot application-level issues.
+You can enable debug logging for Elastic OTel SDKs to troubleshoot application-level issues.
 
 Enabling debug logging can help surface common problems such as:
 
@@ -55,7 +55,7 @@ Debug logs can be verbose, potentially impacting performance and containing sens
 
 You can enable debug logging using environment variables.
 
-For general EDOT Java agent debugging, try:
+For general Elastic OTel Java agent debugging, try:
 
 ```bash
 export ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL=debug
@@ -93,7 +93,7 @@ python your_application.py
 
 ## .NET
 
-To enable debug logging for the EDOT .NET agent, set:
+To enable debug logging for the Elastic OTel .NET agent, set:
 
 ::::{tab-set}
 
@@ -148,7 +148,7 @@ node --import @elastic/opentelemetry-node your-app.js
 
 ## PHP
 
-While the EDOT PHP agent supports the standard `OTEL_LOG_LEVEL` variable, you must also configure at least one of the Elastic-specific sink options to direct logs to a destination:
+While the Elastic OTel PHP agent supports the standard `OTEL_LOG_LEVEL` variable, you must also configure at least one of the Elastic-specific sink options to direct logs to a destination:
 
 * `ELASTIC_OTEL_LOG_LEVEL_FILE`
 * `ELASTIC_OTEL_LOG_LEVEL_STDERR`
@@ -189,4 +189,4 @@ Disable diagnostic collection when you're done by unsetting the variable or rest
 
 ## Resources
 
-To learn how to enable debug logging for the EDOT Collector, refer to [Enable debug logging for EDOT Collector](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md).
+To learn how to enable debug logging for the {{agent}}, refer to [Enable debug logging for {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md).

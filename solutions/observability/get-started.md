@@ -46,7 +46,7 @@ Bring logs and metrics from your hosts and services into Elastic {{observability
 ::::{tab-set}
 :::{tab-item} Hosts
 
-Elastic {{observability}} can collect telemetry data from hosts, containers, and {{k8s}} through the EDOT Collector or the Elastic Agent.
+Elastic {{observability}} can collect telemetry data from hosts, containers, and {{k8s}} through {{agent}}.
 
 1. Select **Add data** from the main menu and then select **Host**.
 2. Select one of these options:
@@ -57,13 +57,13 @@ Elastic {{observability}} can collect telemetry data from hosts, containers, and
     * **Wired Streams**: Route logs through [wired streams](/solutions/observability/streams/wired-streams.md), a managed log hierarchy with centralized data retention and routing. Logs are sent to root log streams, while metrics and traces continue through standard data streams. If you haven't enabled wired streams, you'll be prompted to do so.
 4. Follow the instructions for your platform.
 
-For an overview of the {{product.edot-collector}}, refer to [{{edot}} (EDOT)](opentelemetry://reference/index.md).
+For an overview of the {{product.edot-collector}}, refer to [{{edot}}](opentelemetry://reference/index.md).
 
 :::
 
 :::{tab-item} {{k8s}}
 
-Elastic {{observability}} can collect telemetry data from {{k8s}} through the Elastic Distribution of OpenTelemetry Collector or the Elastic Agent.
+Elastic {{observability}} can collect telemetry data from {{k8s}} through {{agent}}.
 
 1. Select **Add data** from the main menu and then select **{{k8s}}**.
 2. Select one of these options:
@@ -74,7 +74,7 @@ Elastic {{observability}} can collect telemetry data from {{k8s}} through the El
     * **Wired Streams**: Route logs through [wired streams](/solutions/observability/streams/wired-streams.md), a managed log hierarchy with centralized data retention and routing. Logs are sent to root log streams, while metrics and traces continue through standard data streams. If you haven't enabled wired streams, you'll be prompted to do so.
 4. Follow the instructions for your platform.
 
-For an overview of EDOT, refer to [{{edot}} (EDOT)](opentelemetry://reference/index.md).
+For an overview of {{edot}}, refer to [{{edot}}](opentelemetry://reference/index.md).
 
 :::
 

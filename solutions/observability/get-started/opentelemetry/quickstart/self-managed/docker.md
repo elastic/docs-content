@@ -1,6 +1,6 @@
 ---
 navigation_title: Docker
-description: Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment to collect host metrics, logs and application traces.
+description: Learn how to set up the {{agent}} and Elastic OTel SDKs in a Docker environment to collect host metrics, logs and application traces.
 applies_to:
   stack:
   serverless:
@@ -15,7 +15,7 @@ products:
 
 # Quickstart for Docker on self-managed deployments
 
-Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment to collect host metrics, logs and application traces.
+Learn how to set up the {{agent}} and Elastic OTel SDKs in a Docker environment to collect host metrics, logs and application traces.
 
 ## Guided setup
 
@@ -24,13 +24,13 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment to 
 
 ## Manual installation
 
-Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker.
+Follow these steps to deploy the {{agent}} and Elastic OTel SDKs in Docker.
 
 :::::{stepper}
 
 ::::{step} Create the config file
 
-Create the `otel-collector-config.yml` file with your EDOT Collector configuration. Refer to the [configuration reference](elastic-agent://reference/edot-collector/config/default-config-standalone.md).
+Create the `otel-collector-config.yml` file with your {{agent}} configuration. Refer to the [configuration reference](elastic-agent://reference/edot-collector/config/default-config-standalone.md).
 ::::
 
 ::::{step} Retrieve your settings
@@ -94,7 +94,7 @@ docker compose up -d
 
 ::::{step} (Optional) Instrument your applications
 
-To collect telemetry from applications and use the EDOT Collector as a gateway,
+To collect telemetry from applications and use the {{agent}} as a gateway,
 instrument your target applications following the setup instructions:
 
 - [Android](apm-agent-android://reference/edot-android/index.md)
@@ -105,7 +105,7 @@ instrument your target applications following the setup instructions:
 - [PHP](elastic-otel-php://reference/edot-php/setup/index.md)
 - [Python](elastic-otel-python://reference/edot-python/setup/index.md)
 
-Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
+Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 ::::
 
 ::::{step} Install the content packs
@@ -124,4 +124,4 @@ Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 
 ## Troubleshooting
 
-Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.
+Having issues with {{edot}}? Refer to the [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.

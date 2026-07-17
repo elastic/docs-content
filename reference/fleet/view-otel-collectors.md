@@ -25,7 +25,7 @@ To view detailed information about a specific OTel Collector, click its host nam
 
 :::{tip}
 To display only OTel Collectors in the list of agents:
-* From the **Tags** filter, select one or more tags to filter the list. EDOT Collectors are automatically assigned the `elastic-otel-collector` tag. Upstream and community-contributed OTel Collectors are automatically assigned the `otel-contrib` tag.
+* From the **Tags** filter, select one or more tags to filter the list. {{agent}} instances are automatically assigned the `elastic-otel-collector` tag. Upstream and community-contributed OTel Collectors are automatically assigned the `otel-contrib` tag.
 * From the **Agent policies** filter, select the **OpAMP** option to display all OTel Collectors.
 :::
 
@@ -46,11 +46,11 @@ The Overview section provides key information about the OTel Collector's current
 | **Last checkin message** | Status message from the last check-in (for example, `StatusOK`). |
 | **Agent ID** | The UUID assigned to the OTel Collector instance. |
 | **Agent policy** | Shows a dash (`-`) because OTel Collectors use managed policies. |
-| **Agent version** | The version of the upstream and community-contributed OTel Collector or EDOT Collector. |
+| **Agent version** | The version of the upstream and community-contributed OTel Collector or {{agent}}. |
 | **Host name** | The name of the host machine running the OTel Collector. |
 | **Host ID** | Shows a dash (`-`) for OTel Collectors. |
 | **Platform** | The operating system platform (for example, darwin, linux, windows). |
-| **Tags** | Automatically assigned tags based on collector type (`elastic-otel-collector` for EDOT Collector, `otel-contrib` for upstream and community-contributed OTel Collectors). |
+| **Tags** | Automatically assigned tags based on collector type (`elastic-otel-collector` for {{agent}} (OTel mode), `otel-contrib` for upstream and community-contributed OTel Collectors). |
 | **Collector capabilities** | The OpAMP capabilities reported by the collector: `ReportsAvailableComponents`, `ReportsEffectiveConfig`, `ReportsHealth`, and `ReportsStatus`. |
 
 ### Component health

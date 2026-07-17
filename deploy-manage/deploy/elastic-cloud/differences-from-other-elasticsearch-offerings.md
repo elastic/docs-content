@@ -123,9 +123,9 @@ This table compares Observability capabilities between {{ech}} deployments and O
 | [**AWS Firehose integration**](/solutions/observability/cloud/monitor-amazon-web-services-aws-with-amazon-data-firehose.md) | ✅ | ✅ | |
 | [**Custom roles for Kibana Spaces**](/deploy-manage/manage-spaces.md#spaces-control-user-access) | ✅ | ✅ | |
 | [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) | ✅ | ✅ | Primary lifecycle management method in Serverless |
-| [**EDOT Central Configuration**](opentelemetry://reference/central-configuration.md) | ✅ | ❌ | |
-| [**EDOT Cloud Forwarder**](opentelemetry://reference/edot-cloud-forwarder/index.md) | ✅ | ✅ | |
-| [**EDOT Tail-based sampling**](elastic-agent://reference/edot-collector/config/tail-based-sampling.md) | ✅ | ✅ | |
+| [**{{edot}} Central Configuration**](opentelemetry://reference/central-configuration.md) | ✅ | ❌ | |
+| [**Elastic Cloud Forwarder**](opentelemetry://reference/edot-cloud-forwarder/index.md) | ✅ | ✅ | |
+| [**{{edot}} Tail-based sampling**](elastic-agent://reference/edot-collector/config/tail-based-sampling.md) | ✅ | ✅ | |
 | **[Elastic Serverless Forwarder](elastic-serverless-forwarder://reference/index.md)** | ✅ | ❌ | |
 | **[Elastic Synthetics Private Locations](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add)** | ✅ | ✅ | |
 | **[Fleet Agent policies](/reference/fleet/agent-policy.md)** | ✅ | ✅ | |

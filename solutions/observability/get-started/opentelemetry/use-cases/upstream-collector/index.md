@@ -1,6 +1,6 @@
 ---
 navigation_title: Upstream OpenTelemetry Collector
-description: Send data from an upstream OpenTelemetry Collector to a self-managed Elastic Stack by routing it through an EDOT Collector gateway.
+description: Send data from an upstream OpenTelemetry Collector to a self-managed Elastic Stack by routing it through an {{agent}} gateway.
 applies_to:
   deployment:
     self: ga 9.2+
@@ -11,7 +11,7 @@ products:
 
 # Send data from an upstream OpenTelemetry Collector [upstream-collector-self-managed]
 
-This guide shows how to forward telemetry data from an existing (upstream) OpenTelemetry Collector to a self-managed {{stack}} using an [{{edot}} (EDOT) Collector](elastic-agent://reference/edot-collector/index.md) configured as a gateway. The examples use the [contrib distribution](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-contrib) (`otelcol-contrib`), but the same approach works with any OTel Collector distribution, including vendor distributions and custom builds assembled with the [OpenTelemetry Collector Builder](https://opentelemetry.io/docs/collector/custom-collector/).
+This guide shows how to forward telemetry data from an existing (upstream) OpenTelemetry Collector to a self-managed {{stack}} using an [{{edot}} {{agent}}](elastic-agent://reference/edot-collector/index.md) configured as a gateway. The examples use the [contrib distribution](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-contrib) (`otelcol-contrib`), but the same approach works with any OTel Collector distribution, including vendor distributions and custom builds assembled with the [OpenTelemetry Collector Builder](https://opentelemetry.io/docs/collector/custom-collector/).
 
 ## When to use this setup
 
@@ -20,11 +20,11 @@ Use this setup if you:
 * Already run an existing OpenTelemetry Collector and want to add Elastic as a backend without replacing your current setup
 * Need to send telemetry to multiple observability backends from a single Collector
 * Evaluate Elastic alongside another backend before committing to a full migration
-* Use a technology or language for which Elastic doesn't provide an EDOT SDK
+* Use a technology or language for which Elastic doesn't provide an Elastic OTel SDK
 
 ## Architecture
 
-Your services send telemetry to an OpenTelemetry Collector (for example, `otelcol-contrib`), which forwards it over OTLP/gRPC to the EDOT Collector gateway. The gateway applies Elastic-specific processing and writes directly to {{es}}.
+Your services send telemetry to an OpenTelemetry Collector (for example, `otelcol-contrib`), which forwards it over OTLP/gRPC to the {{agent}} gateway. The gateway applies Elastic-specific processing and writes directly to {{es}}.
 
 ```mermaid
 flowchart LR
@@ -42,7 +42,7 @@ flowchart LR
 The `elasticsearch` exporter with `mapping.mode: otel` is the recommended path for self-managed deployments.
 
 :::{note}
-The [Managed OTLP endpoint](opentelemetry://reference/motlp.md) is an alternative ingest path available only on {{ecloud}}, so it doesn't apply to self-managed deployments. Sending directly to {{apm-server-or-mis}} through OTLP is also possible, but the EDOT gateway path in this guide is recommended for full {{product.apm}} functionality.
+The [Managed OTLP endpoint](opentelemetry://reference/motlp.md) is an alternative ingest path available only on {{ecloud}}, so it doesn't apply to self-managed deployments. Sending directly to {{apm-server-or-mis}} through OTLP is also possible, but the {{edot}} gateway path in this guide is recommended for full {{product.apm}} functionality.
 :::
 
 ## Before you begin
@@ -50,17 +50,17 @@ The [Managed OTLP endpoint](opentelemetry://reference/motlp.md) is an alternativ
 You’ll need:
 
 * A running [self-managed](/deploy-manage/deploy/self-managed.md) {{es}} cluster
-* The EDOT Collector installed on the gateway host. It ships as part of the {{agent}} package and runs as {{agent}} in `otel` mode.
+* The {{agent}} installed on the gateway host. It ships as part of the {{agent}} package and runs as {{agent}} in `otel` mode.
 * An existing OpenTelemetry Collector installed on your agent hosts. This guide uses [`otelcol-contrib`](https://opentelemetry.io/docs/collector/installation/).
-* Network connectivity from your Collector hosts to the EDOT gateway host on port 4317
+* Network connectivity from your Collector hosts to the {{edot}} gateway host on port 4317
 
-## Set up the EDOT gateway
+## Set up the {{edot}} gateway [set-up-the-edot-gateway]
 
 :::::{stepper}
 
 ::::{step} Create an {{es}} API key
 
-The EDOT gateway authenticates to {{es}} using an API key.
+The {{edot}} gateway authenticates to {{es}} using an API key.
 
 1. Find **API keys** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Create API key**.
@@ -69,7 +69,7 @@ The EDOT gateway authenticates to {{es}} using an API key.
 
 ::::
 
-::::{step} Configure the EDOT gateway
+::::{step} Configure the {{edot}} gateway
 
 1. Set the following environment variables on the gateway host before starting the Collector:
 
@@ -135,7 +135,7 @@ The EDOT gateway authenticates to {{es}} using an API key.
     Refer to [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md) for more information.
     :::
 
-3. Start the EDOT gateway. The EDOT Collector is the {{agent}} binary run in `otel` mode, so start it with the `otel` subcommand:
+3. Start the {{edot}} gateway. The {{agent}} is the {{agent}} binary run in `otel` mode, so start it with the `otel` subcommand:
 
     ```bash
     elastic-agent otel --config gateway.yml
@@ -145,7 +145,7 @@ The EDOT gateway authenticates to {{es}} using an API key.
 
 ::::{step} Configure the contrib Collector
 
-1. Configure the OTLP exporter to point to the EDOT gateway. On each contrib Collector host, add or update the `exporters` and `service` sections in your existing `config.yml`:
+1. Configure the OTLP exporter to point to the {{edot}} gateway. On each contrib Collector host, add or update the `exporters` and `service` sections in your existing `config.yml`:
 
     ```yaml
     exporters:
@@ -164,7 +164,7 @@ The EDOT gateway authenticates to {{es}} using an API key.
           exporters: [otlp]
     ```
 
-    Replace `gateway-host` with the hostname or IP of your EDOT gateway host. In production, set `insecure: false` and configure `ca_file` with the path to the CA certificate used to secure communication between the contrib Collector and the gateway. Refer to the [TLS configuration settings](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md) for the full list of options.
+    Replace `gateway-host` with the hostname or IP of your {{edot}} gateway host. In production, set `insecure: false` and configure `ca_file` with the path to the CA certificate used to secure communication between the contrib Collector and the gateway. Refer to the [TLS configuration settings](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md) for the full list of options.
 
 2. Set the `deployment.environment` resource attribute in your contrib Collector so that services appear under the correct environment in the {{kib}} {{product.apm}} Service Map. Without it, all services show as "unset" in the environment selector:
 
@@ -202,5 +202,5 @@ If no data appears, refer to [No logs, metrics, or traces visible in {{kib}}](/t
 * [No logs, metrics, or traces visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md)
 * [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md)
 * [Attributes and labels](/solutions/observability/apm/opentelemetry/attributes.md)
-* [EDOT Collector](elastic-agent://reference/edot-collector/index.md)
+* [{{agent}}](elastic-agent://reference/edot-collector/index.md)
 * [Managed OTLP endpoint](opentelemetry://reference/motlp.md)
