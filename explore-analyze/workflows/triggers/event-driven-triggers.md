@@ -19,7 +19,7 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. Four t
 
 - **`workflows.failed`** — Fires when another workflow's execution fails. {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
 - **Cases triggers** — Fire when cases change (created, updated, status changed, attachments added, comments added). {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
-- **Alert episode lifecycle triggers** — Fire when an alert episode changes state in the {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
+- **Alert episode lifecycle triggers** — Fire on specific alert episode events in the {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 - **{{alerting-v2-system-cap}} rule lifecycle triggers** — Fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 
 :::{warning}
@@ -350,7 +350,7 @@ stack: experimental 9.5+
 serverless: experimental
 ```
 
-Alert episode lifecycle triggers fire when an alert episode changes state in the {{alerting-v2-system}}. Unlike `workflows.failed` and cases triggers, they are not configured through a `triggers` block in your workflow YAML. They are emitted by the alerting system and automatically invoke any workflow attached to the matching trigger type. Each trigger fires exactly once per state change. There is no polling interval or frequency gate.
+Alert episode lifecycle triggers fire on specific alert episode events in the {{alerting-v2-system}}. Unlike `workflows.failed` and cases triggers, they are not configured through a `triggers` block in your workflow YAML. They are emitted by the alerting system and automatically invoke any workflow attached to the matching trigger type. Each trigger fires exactly once per event. There is no polling interval or frequency gate.
 
 ### Available triggers [alert-episode-lifecycle-triggers-available]
 
@@ -479,7 +479,7 @@ steps:
 
 ## Prevent cascading handler loops
 
-This section applies to `workflows.failed` handlers. Alert episode lifecycle triggers fire once per state change and do not re-trigger on workflow failure.
+This section applies to `workflows.failed` handlers. Alert episode lifecycle triggers fire once per event and do not re-trigger on workflow failure.
 
 If a handler workflow itself fails, it can re-trigger itself. Two safeguards help you avoid infinite loops:
 
