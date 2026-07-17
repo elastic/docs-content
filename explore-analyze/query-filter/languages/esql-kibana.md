@@ -15,12 +15,23 @@ products:
 
 The {{esql}} editor lets you write, run, and manage [{{esql}}](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) queries across {{kib}}. Use it to query and aggregate your data, create visualizations, and set up alerts.
 
-The {{esql}} editor is available in the following areas of {{kib}}:
+Depending on the area, {{kib}} provides the full {{esql}} editor or a streamlined editor tailored to a specific workflow. {{esql}} editing is available in the following areas:
 
 - [**Discover**](/explore-analyze/discover/try-esql.md): Explore and analyze your data using {{esql}} queries, visualize results, and save your findings to dashboards.
-- [**Dashboards**](/explore-analyze/dashboards.md): Create {{esql}}-powered visualization panels and interactive controls.
+- [**Dashboards and visualizations**](/explore-analyze/visualize/esorql.md): Create {{esql}}-powered visualization panels and interactive controls.
 - [**Alerting**](/explore-analyze/alerting/alerts/rule-type-es-query.md): Create alerting rules based on {{esql}} queries.
+- {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental` [**{{alerting-v2-system-cap}}**](/explore-analyze/alerting/system-overview.md): Build and preview {{esql}} rules in a query sandbox or YAML editor, with separate base, alert, and recovery queries.
+- {applies_to}`stack: beta` {applies_to}`serverless: beta` **Maps**: Create map layers from {{esql}} queries.
+- **Data Visualizer**: Explore field statistics from {{esql}} query results.
+- {applies_to}`stack: ga 9.3+, preview =9.2` {applies_to}`serverless: ga` [**{{agent-builder}}**](/explore-analyze/ai-features/agent-builder/tools/esql-tools.md): Create custom tools that run parameterized {{esql}} queries.
+- {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` **Streams**: Define query streams with {{esql}}.
 - [**{{elastic-sec}} solution**](/solutions/security/esql-for-security.md): Use {{esql}} for threat hunting, detection rules, and investigation workflows.
+
+You can also write or embed {{esql}} queries in interfaces that use their own editors instead of the {{esql}} editor:
+
+- [**Dev Tools Console**](/explore-analyze/query-filter/tools/console.md): Run {{esql}} queries through the [{{esql}} REST API](elasticsearch://reference/query-languages/esql/esql-rest.md).
+- {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [**Workflows**](/explore-analyze/workflows/steps/elasticsearch.md): Run queries with the `elasticsearch.esql.query` action.
+- {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [**Vega and Vega-Lite visualizations**](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries): Use an {{esql}} query as a visualization data source.
 
 Find the complete list of supported commands, functions, and operators in the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
 
