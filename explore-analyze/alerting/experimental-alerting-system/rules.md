@@ -35,5 +35,5 @@ This separation means you can build and test a rule without anyone getting paged
 - [Create a rule](rules/create-a-rule.md): Compare creation paths and choose the one that fits your workflow.
 - [Configure a rule](rules/configure-a-rule.md): Set the schedule, grouping, alert delay, recovery condition, and no-data behavior.
 - [View and manage rules](rules/view-manage-rules.md): Enable, disable, clone, delete, and bulk-manage rules from the rules list.
-- [Review execution history](rules/review-rule-execution-history.md): Monitor rule and action policy execution outcomes across all rules in a space.
+- [Review rule execution history](rules/review-rule-execution-history.md): Monitor rule execution outcomes across all rules in a space.
 - [{{esql}} query patterns](rules/esql-query-patterns.md): Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.

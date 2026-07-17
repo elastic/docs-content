@@ -41,4 +41,4 @@ By default, applying changes automatically splits your query into a [base query 
 
 ## Using the YAML editor [yaml-editor]
 
-Use the YAML editor when you want to copy or adapt a rule quickly without re-entering settings by hand, or provision many rules at once. The YAML editor isn't available within the Threshold Alert builder.
+Use the YAML editor when you want to copy or adapt a rule quickly without re-entering settings by hand, or provision many rules at once. The YAML editor isn't available when creating a Threshold Alert rule with the [rule builder](use-rule-builder.md).

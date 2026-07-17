@@ -1,16 +1,18 @@
 ---
-navigation_title: Review execution history
+navigation_title: Review rule execution history
 applies_to:
   stack: experimental 9.5+
   serverless: experimental
 products:
   - id: kibana
-description: "Use the Execution History page in Kibana's experimental alerting system to monitor rule and action policy execution outcomes across all rules in a space."
+description: "Use the Execution History page in Kibana's experimental alerting system to monitor rule execution outcomes across all rules in a space."
 ---
 
-# Review execution history in the {{alerting-v2-system}} [review-rule-execution-history]
+# Review rule execution history in the {{alerting-v2-system}} [review-rule-execution-history]
 
-Execution history gives you a cross-rule, filterable log of every rule run and action policy dispatch across the space. Rule executions and action policy dispatcher decisions are shown separately, with different scopes.
+Rule execution history gives you a cross-rule, filterable log of every rule run in the space.
+
+<!-- TODO: When PR #6525 (action policies) merges and its dedicated execution history page exists, add a "Related pages" section here linking to it. -->
 
 ## Rule executions [rule-execution-records]
 
