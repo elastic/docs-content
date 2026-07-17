@@ -189,10 +189,9 @@ Use this option to create a single-tab Discover session directly on the dashboar
 
 You need permission to access Discover, and the dashboard must be in **Edit** mode.
 
-1. Select **Add** in the dashboard toolbar and, if available, **New panel**.
-2. Under **Other visualizations** or **Visualizations**, select {icon}`app_discover` **Discover session**. Discover opens in embedded editor mode.
-3. Configure the session: enter a query, adjust columns, sort, and other view settings as needed.
-4. Select **Save and return** in the application menu to add the configured panel to the dashboard.
+1. From the application menu, add a new **Discover session** panel.
+2. Configure the session: enter a query, adjust columns, sort, and other view settings as needed.
+3. Select **Save and return** in the application menu to add the configured panel to the dashboard.
 
 ### Manage Discover session panels on a dashboard [manage-discover-session-panels]
 

@@ -61,7 +61,7 @@ Before starting, add the eCommerce sample data that you’ll use in your spec, t
 
 Open **Vega-Lite** and change the time range.
 
-1. On the dashboard, select **Select type**, then select **Vega** (**Custom visualization** in versions before 9.5).
+1. In the application menu, select **Vega** or **Custom visualization**, depending on your {{kib}} version.
 
     A pre-populated line chart displays the total number of documents.
 

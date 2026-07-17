@@ -12,10 +12,10 @@ To view alerts in a dashboard, add **Alerts** panels that show selected alerts. 
 
 ## Create an alerts panel
 
-1. Open the panel picker from your dashboard.
+1. Open the panel menu from your dashboard.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the toolbar and, if available, **New panel**.
-    * {applies_to}`stack: ga 9.1` Click **Add panel** in the dashboard toolbar.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu and, if required, **New panel**.
+    * {applies_to}`stack: ga 9.1` Select **Add panel** in the application menu.
 
 2. Select **Alerts**. The configuration flyout appears.
 3. ({{stack}} deployments only) Under **Solution**, select either **Observability** or **Security** to specify the type of alerts you want to display. 
