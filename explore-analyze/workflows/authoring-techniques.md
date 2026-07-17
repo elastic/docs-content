@@ -18,11 +18,15 @@ products:
 Techniques that apply across workflow types, regardless of which outcome you're automating. Use this section when you're building or maintaining a workflow and need guidance on the mechanics.
 
 - [Use the YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md): Author and run workflows in the YAML editor in {{kib}}.
+- [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md): Every top-level field in a workflow definition and the execution lifecycle.
+- [Workflow settings](/explore-analyze/workflows/authoring-techniques/settings.md): Workflow-wide settings reference, including timeout, timezone, concurrency, max step size, and global on-failure.
+- [Choose the right step](/explore-analyze/workflows/authoring-techniques/choose-the-right-step.md): Decision aid for picking the right step type. Keyed by intent.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Move data between steps, use dynamic templating, and make workflows resilient with `on-failure`.
 - [Compose workflows from reusable parts](/explore-analyze/workflows/authoring-techniques/compose-workflows.md): Decompose long workflows into reusable child workflows, design the input and output contract, and fan out with asynchronous composition.
 - [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md): Pause a workflow for reviewer input and resume on their decision.
 - [Monitor workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md): Track runs, review execution history, and troubleshoot failures.
 - [Manage and organize workflows](/explore-analyze/workflows/authoring-techniques/manage-workflows.md): Find, edit, duplicate, enable, and disable workflows from the **Workflows** page.
+- [Troubleshoot workflows](/explore-analyze/workflows/authoring-techniques/troubleshooting.md): Resolve common issues with triggers, flow control, cases, alerts, Liquid, AI steps, composition, human-in-the-loop, and concurrency.
 - [Migrate workflows from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md): Side-by-side replacements for the deprecated Case aliases, HTTP step `timeout` relocation, and scheduled-trigger minimum interval.
 
 % Ben Ironside Goldstein, 2026-04-16: Follow-up PRs per Vision doc Section 7 will split pass-data-handle-errors.md

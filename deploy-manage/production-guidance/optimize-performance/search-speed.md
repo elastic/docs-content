@@ -77,9 +77,9 @@ deployment:
   ece: all
 ```
 
-Directly-attached (local) storage generally performs better than remote storage because it is simpler to configure well and avoids communications overheads.
+{{es}} clusters using directly-attached (local) storage generally perform better than those using remote storage. Direct storage typically provides lower latency for I/O operations, which is more critical for most {{es}} workloads than the high throughput that remote storage can often achieve.
 
-Some remote storage performs very poorly, especially under the kind of load that {{es}} imposes. However, with careful tuning, it is sometimes possible to achieve acceptable performance using remote storage too. Before committing to a particular storage architecture, benchmark your system with a realistic workload to determine the effects of any tuning parameters. If you cannot achieve the performance you expect, work with the vendor of your storage system to identify the problem.
+Some remote storage performs very poorly, especially under the kind of load that {{es}} imposes. However, on certain workloads and with careful tuning, it is sometimes possible to achieve acceptable performance using remote storage too. Before committing to a particular storage architecture, benchmark your system with a realistic workload to determine whether it will meet your performance goals. If you cannot achieve the performance you expect, work with the vendor of your storage system to identify suitable tuning parameter values.
 
 ::::{note}
 For {{eck}} deployments refer to the [ECK storage recommendations](/deploy-manage/deploy/cloud-on-k8s/storage-recommendations.md) for a complete overview of storage options in Kubernetes, along with their implications and best practices. In Kubernetes, remote storage solutions are commonly used and well-supported.
@@ -364,6 +364,10 @@ Now imagine that you have a 2-shards index and two nodes. In one case, the numbe
 
 So what is the right number of replicas? If you have a cluster that has `num_nodes` nodes, `num_primaries` primary shards *in total* and if you want to be able to cope with `max_failures` node failures at once at most, then the right number of replicas for you is `max(max_failures, ceil(num_nodes / num_primaries) - 1)`.
 
+
+## Optimize {{esql}} queries [_optimize_esql_queries]
+
+For {{esql}}-specific performance guidance, including common anti-patterns and techniques for reducing scan size, refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md).
 
 ## Tune your queries with the Search Profiler [_tune_your_queries_with_the_search_profiler]
 

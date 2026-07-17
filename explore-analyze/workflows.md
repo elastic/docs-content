@@ -14,13 +14,9 @@ products:
 
 # Workflows [workflows-overview]
 
-:::{admonition} Welcome to the Elastic workflow docs! 
-If you've been using the [Keep HQ workflow docs](https://docs.keephq.dev/workflows/overview), it's time to make the switch. Keep HQ's workflow docs are no longer maintained, and the Elastic workflow docs are now the source of truth for all up-to-date workflow documentation.
-:::
-
-## What are workflows [workflows-what]
-
 A workflow is a defined sequence of steps designed to achieve a specific outcome through automation. It's a reusable, versionable "recipe" that transforms inputs into actions.
+
+If you've been using the [Keep HQ workflow docs](https://docs.keephq.dev/workflows/overview), it's time to make the switch. Keep HQ's workflow docs are no longer maintained, and the Elastic workflow docs are now the source of truth for all up-to-date workflow documentation.
 
 ## Why use workflows [workflows-why]
 
@@ -33,11 +29,7 @@ Workflows address common operational challenges, such as:
 * **Manual, repetitive work**: Automate routine tasks consistently.
 * **Tool fragmentation**: Eliminate the need to add on external automation tools.
 
-Workflows can handle a wide range of tasks, from simple, repeatable steps to complex processes.
-
-## Who should use workflows [workflows-who]
-
-Workflows are for you if you want to cut down on manual effort, speed up response times, and make sure recurring situations are handled consistently.
+Workflows can handle a wide range of tasks, from simple, repeatable steps to complex processes. They're for you if you want to cut down on manual effort, speed up response times, and make sure recurring situations are handled consistently.
 
 ## Key concepts [workflows-concepts]
 
@@ -49,7 +41,7 @@ Some key concepts to understand while working with workflows:
 
 ## Workflow structure [workflow-structure]
 
-Workflows are defined in YAML. In the YAML editor, describe _what_ the workflow should do, and the platform handles execution.
+Workflows are defined in YAML. In the YAML editor, describe _what_ the workflow should do, and the platform handles execution. For the full reference on every top-level field and the execution lifecycle, refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
 
 ```yaml
 # ═══════════════════════════════════════════════════════════════
@@ -125,8 +117,9 @@ Explore what you can automate:
 
 - [Use cases](/explore-analyze/workflows/use-cases.md): Browse security, observability, and AI-augmented patterns you can build with workflows today.
 
-Reference and authoring:
+Concepts, reference, and authoring:
 
-- [Workflow authoring techniques](/explore-analyze/workflows/authoring-techniques.md): How to use the YAML editor, pass data between steps, and handle errors.
-- [Reference](/explore-analyze/workflows/reference.md): Triggers, steps, and templating engine reference.
+- [Workflow concepts](/explore-analyze/workflows/concepts.md): Triggers, steps, templating, and quick-reference pages.
+- [Workflow authoring techniques](/explore-analyze/workflows/authoring-techniques.md): How to use the YAML editor, the anatomy of a workflow, workflow settings, choosing the right step, passing data between steps, handling errors, and more.
+- [Glossary](/explore-analyze/workflows/reference/glossary.md): Definitions for every term used across the Workflows documentation.
 - [Workflow templates](/explore-analyze/workflows/templates.md): Pre-built workflows you can adapt.

@@ -58,7 +58,7 @@ To determine the exact reason for the high JVM memory pressure, capture and revi
 If you have an [Elastic subscription](https://www.elastic.co/pricing), you can [request Elastic's assistance](/troubleshoot/index.md#contact-us) reviewing this output. When reaching out, follow these guidelines:
 
 * Grant written permission for Elastic to review your uploaded heap dumps within the support case.
-* Share this file only after receiving any necessary business approvals as it might contain private information. Files are handled according to [Elastic's privacy statement](https://www.elastic.co/legal/privacy-statement).
+* Share this file only after receiving any necessary business approvals, as it might contain private information. Files are handled in accordance with [Elastic's privacy statement](https://www.elastic.co/legal/privacy-statement).
 * Share heap dumps through our secure [Support Portal](https://support.elastic.co/). If your files are too large to upload, you can request a secure URL in the support case.
 * Share the [garbage collector logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging) covering the same time period.
 
@@ -192,6 +192,10 @@ PUT _cluster/settings
   }
 }
 ```
+
+::::{tip}
+For {{esql}}-specific guidance on writing efficient queries, refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md).
+::::
 
 #### Prevent mapping explosion [reduce-jvm-memory-pressure-setup-mapping]
 

@@ -23,6 +23,69 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Response actions fail and endpoints do not appear for agents on version-specific policies
+**Applies to: {{stack}} 9.4.0, 9.4.1, 9.4.2, 9.4.3**
+
+**Impact**<br>
+Certain {{agent}} integration packages and inputs can trigger the creation of a version-specific {{agent}} policy in {{fleet}}. When a version-specific policy includes the {{elastic-defend}} integration, response actions against the affected endpoints fail. In addition, the corresponding endpoints are not visible on the **Assets** → **Endpoints** and **Assets** → **Endpoints** → **Policies** pages.
+
+For more information, refer to [#276295](https://github.com/elastic/kibana/issues/276295).
+
+**Workaround**<br>
+Remove the version-specific integration policy from the {{agent}} policy, or move the affected endpoints to a new {{agent}} policy that does not include any version-specific integration policies. A fix will be included in a future 9.4.x release.
+:::
+
+:::{dropdown} Osquery cannot target agents on version-specific policies
+**Applies to: {{stack}} 9.4.0, 9.4.1, 9.4.2, 9.4.3**
+
+**Impact**<br>
+Certain {{agent}} integration packages and inputs can trigger the creation of a version-specific {{agent}} policy. When a version-specific policy includes the Osquery integration, the corresponding agents do not appear in the Osquery agent or policy selector, so they cannot be targeted. Live queries against an affected policy fail with a `No agents found for selection` error, and agent grouping and counts in the selector are inaccurate.
+
+**Workaround**<br>
+Remove the version-specific integration policy from the {{agent}} policy, or reassign the affected agents to a new {{agent}} policy that does not include any version-specific integration policies. A fix will be included in a future 9.4.x release.
+:::
+
+:::{dropdown} Problem Child and DGA integrations fail to install
+**Applies to: {{stack}} 9.3.6**
+
+**Impact**<br>
+The [ProblemChild](https://www.elastic.co/docs/reference/integrations/problemchild) (Living off the Land Detection) and [DGA](https://www.elastic.co/docs/reference/integrations/dga) integration packages fail to install. This is caused by an {{es}} validation that limits field names in trained models to 100 characters.
+
+**Workaround**<br>
+Upgrade to {{stack}} 9.3.7.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.3.7.
+:::
+
+:::{dropdown} Upgrading to 9.3.x fails when a rule action contains oversized content
+**Applies to: {{stack}} 9.3.0, 9.3.1, 9.3.2, 9.3.3, 9.3.4**
+
+**Impact**<br>
+Upgrading from 9.2.x to 9.3.x can fail if any rule (including detection rules) has a connector action whose parameter values are larger than 32,766 bytes. Common examples include email message bodies or HTML templates, large webhook payloads, or Slack messages built from verbose templates.
+
+During the upgrade, {{kib}} migrates rule saved objects to a new internal mapping. Any oversized action parameter value causes the migration to abort with an error similar to:
+
+```
+Flattened field [alert.actions.params] contains one immense field whose keyed encoding is longer than the allowed max length of 32766 bytes
+```
+
+**Workaround**<br>
+
+Upgrade to 9.3.5 or 9.4.2.
+
+If the upgrade has failed with this error, identify rules that use connectors with large content (particularly email, webhook, and Slack connectors) and shorten the action parameter values, such as message bodies or HTML templates. Then retry the upgrade.
+
+
+For more information, refer to [#268982](https://github.com/elastic/kibana/issues/268982).
+
+
+**Resolved**
+
+This issue is resolved in {{stack}} 9.3.5 and 9.4.2.
+:::
+
 :::{dropdown} Detection Rule run failures due to failed Entity Analytics enrichment
 **Applies to: 9.4.0**
 
@@ -39,6 +102,9 @@ Detection Rules use their author’s permissions to enrich alerts with entity da
 
 Give appropriate `read` index-level permissions for the entity store index and alias in the appropriate space (`.entities.v2.latest.security_${spaceId}*` and `entities-latest-${spaceId}*`)  to a user, and have that user perform a no-op bulk update to all rules in the space. The rule will succeed on subsequent runs.
 
+**Resolved**<br>
+
+Resolved in {{stack}} 9.4.1
 :::
 
 :::{dropdown} SentinelOne response actions fail in Elastic Agent 9.3.4
@@ -59,10 +125,11 @@ The affected field is `event.created`. When this field is empty, {{kib}} cannot 
 This does not affect the primary `@timestamp` field.
 
 **Workaround**<br>
-Downgrade to {{agent}} 9.3.3, which is not affected by this issue.
+Upgrade to {{agent}} 9.3.5, which is not affected by this issue.
 
-**Fix**<br>
-The performance optimization has been reverted. A fix will be available in the next release. For more information, refer to [#266355](https://github.com/elastic/kibana/issues/266355).
+**Resolved**<br>
+
+Resolved in {{agent}} 9.3.5. For more information, refer to [#266355](https://github.com/elastic/kibana/issues/266355).
 :::
 
 :::{dropdown} Details about gap fills aren't properly updated
@@ -248,6 +315,37 @@ Ensure you give any users who will need access to the new space the appropriate 
 Resolved in {{stack}} 9.1.4
 
 ::::
+
+:::{dropdown} "Write role required to generate data" error when Data View Management is turned off for a space
+
+Applies to: 9.0
+
+**Impact**
+
+When the **Data View Management** feature is turned off for a {{kib}} space, users with write access to that space can encounter the following error in some {{elastic-sec}} apps, even when they have all the required [detections privileges](/solutions/security/detect-and-alert/detections-privileges.md):
+
+```txt
+Write role required to generate data: Users with write permission need to access the Elastic Security App to initialize the app source data
+```
+
+The error typically appears once per session until {{kib}} is fully reloaded.
+
+For more information, check [#4493](https://github.com/elastic/security-docs/issues/4493).
+
+**Workaround**
+
+Turn on the **Data View Management** feature for the affected space:
+
+1. Go to **Stack Management** → **Kibana** → **Spaces**.
+2. Edit the affected space.
+3. In the **Features** section, under **Management**, select the **Data View Management** checkbox.
+4. Save the space.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.1.0.
+
+:::
 
 :::{dropdown} The {{agent}} Docker image is not available at `docker.elastic.co/beats/elastic-agent:9.0.0`
 

@@ -29,6 +29,11 @@ This page covers the main ways to explore dashboard data: using Kibana Query Lan
 
 This section shows the most common ways for you to filter dashboard data. For more information about {{kib}} and {{es}} filtering capabilities, refer to [](/explore-analyze/query-filter.md).
 
+:::{note}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+When a dashboard includes {{esql}} visualizations that use the `STATS` command, you can turn on {icon}`bolt` **Fast mode** to return faster, estimated results for these visualizations. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
+:::
+
 ### Filter dashboards using the KQL query bar [_filter_dashboards_using_the_kql_query_bar]
 
 The query bar lets you build filters using [{{kib}} Query Language (KQL)](../query-filter/languages/kql.md). When typing, it dynamically suggests matching fields, operators, and values to help you get the exact results that you want.
@@ -68,7 +73,7 @@ You can create filter pills by:
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
-{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields created with {{esql}} commands like `EVAL` do not support filtering.
+{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields, such as those created with {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results, do not support filtering or drilldown actions, because there is no matching field in the underlying index to filter on. When you click a value that comes from a computed field, the filter and drilldown options are not available.
 :::
 
 
@@ -131,7 +136,7 @@ To edit it, click the filter. You can then adjust and apply the updated **Time r
 
 ### Use available controls [_use_available_controls]
 
-Dashboard authors can [add various types of additional controls](add-controls.md) to help you filter the data that you want to visualize.
+Dashboard authors can [add various types of additional controls](../visualize/dashboard-controls.md) to help you filter the data that you want to visualize.
 
 
 #### Filter the data with Options list controls [filter-the-data-with-options-list-controls]

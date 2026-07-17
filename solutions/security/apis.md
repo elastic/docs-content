@@ -25,7 +25,8 @@ You can use these APIs to interface with {{elastic-sec}} features:
 * [Detections API]({{kib-apis}}group/endpoint-security-detections-api): Manage detection rules, rule exceptions for individual rules, and alerts.
 * [Endpoint exceptions API]({{kib-apis}}group/endpoint-security-endpoint-exceptions-api): Manage detection rule endpoint exceptions.
 * [Endpoint management API]({{kib-apis}}group/endpoint-security-endpoint-management-api): Interact with and manage endpoints running the {{elastic-defend}} integration.
-* [Entity Analytics API]({{kib-apis}}group/endpoint-security-entity-analytics-api): Manage Entity Analytics features, such as asset criticality and entity store.
+* [Entity Analytics API]({{kib-apis}}group/endpoint-security-entity-analytics-api): Manage Entity Analytics features, such as asset criticality.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` [Entity store API]({{kib-apis}}group/endpoint-security-entity-store): Install, configure, and manage the entity store.
 * [Exceptions API]({{kib-apis}}group/endpoint-security-exceptions-api): Create and manage rule exceptions.
 * [Lists API]({{kib-apis}}group/endpoint-security-lists-api): Create source event value lists for use with rule exceptions.
 * [Osquery API]({{kib-apis}}group/endpoint-security-osquery-api): Manage live queries, packs, and saved queries.

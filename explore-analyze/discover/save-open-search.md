@@ -37,9 +37,9 @@ By default, a Discover session stores the query text, filters, and current view 
 1. Once you’ve created a view worth saving, select **Save** in the application menu. A dialog with several options opens:
     1. Enter a **Title** for the session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
     2. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
-    3. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, select **Existing** to add the session as a panel on a dashboard you choose, **New** to add it to a brand-new dashboard, or **None** to save the session to the library.
+    3. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose whether to also add the session as a panel on a dashboard. Select **New** to create a dashboard, **Existing** to choose one, or **None** to skip. The session is saved to the library in all cases.
 2. Select **Save**.
-3. To reload your search results in **Discover**, select **Open** in the application menu, and select the saved Discover session.
+3. To reload your search results in **Discover**, select **Open session** (or **Open** in earlier versions) in the application menu, and select the saved Discover session.
 
 If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
 
@@ -55,7 +55,7 @@ To duplicate an existing Discover session as a new one, the workflow depends on 
 1. In **Discover**, open the Discover session that you want to duplicate.
 2. In the application menu, from the menu next to **Save**, select **Save as**. The **Save Discover session** dialog opens.
 3. Enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
-4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, select **Existing** to add the session as a panel on a dashboard you choose, **New** to add it to a brand-new dashboard, or **None** to save the session to the library.
+4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose whether to also add the session as a panel on a dashboard. Select **New** to create a dashboard, **Existing** to choose one, or **None** to skip. The session is saved to the library in all cases.
 5. Select **Save**.
 :::
 
@@ -121,7 +121,7 @@ The flow you choose depends on where you start:
 
 - From Discover:
   - [Save the current table to a dashboard](#save-table-to-dashboard)
-  - [Save a Discover session to a dashboard or to the library](#save-discover-session-with-add-to-dashboard)
+  - [Save a Discover session and add it to a dashboard](#save-discover-session-with-add-to-dashboard)
 - From a dashboard:
   - [Add a Discover session from the library](#add-discover-session-from-library)
   - [Create a Discover session on the dashboard](#add-ad-hoc-discover-session-panel)
@@ -141,17 +141,20 @@ The button isn't available when Discover is opened from another application, suc
 3. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
 4. Select **Save and go to dashboard**.
 
-#### Save a Discover session to a dashboard or to the library [save-discover-session-with-add-to-dashboard]
+#### Save a Discover session and add it to a dashboard [save-discover-session-with-add-to-dashboard]
 
 From Discover, save the entire Discover session, including all its tabs, columns, sort order, and other settings.
 
 ::::{applies-switch}
 
 :::{applies-item} {"stack": "ga 9.5", "serverless": "ga"}
-When you save the session, the **Add to dashboard** option of the dialog determines what happens to it:
+When you save a Discover session, it is saved to the library. The **Add to dashboard** option of the dialog lets you choose whether to also add it as a panel on a dashboard:
 
-- **New** or **Existing**: The session is saved as a panel on a dashboard. The panel's configuration is stored with the dashboard, and the session isn't saved to the library. If the session has multiple tabs, you can [choose which tab the panel displays](#discover-session-choose-tab) on the dashboard.
-- **None**: The session is saved to the library, without being added to a dashboard. From there, you can later [add it as a panel on any dashboard](#add-discover-session-from-library).
+- **Existing**: The session is also added as a panel on a dashboard you choose.
+- **New**: The session is also added as a panel on a new dashboard.
+- **None**: The session is saved to the library only. To add it as a panel later, [add it from the dashboard library](#add-discover-session-from-library).
+
+If the session has multiple tabs, you can [choose which tab the panel displays](#discover-session-choose-tab) on the dashboard.
 
 Follow the steps under [Save a Discover session](#_save_a_discover_session), and select the **Add to dashboard** option that matches what you want.
 :::
@@ -205,11 +208,11 @@ When editing a Discover session panel from a dashboard, you can save your change
 2. Make your changes in **Discover**.
 3. In the application menu, from the menu next to **Save and return**, select **Save as**.
 4. In the **Save Discover session** dialog, enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
-5. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose where to save the new session:
+5. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose whether to also add the new session as a panel on a dashboard. The session is saved to the library in all cases.
 
-   - **Existing**: Save the session as an additional panel on a dashboard that already exists.
-   - **New**: Save the session as a panel on a new dashboard.
-   - **None**: Save the session to the library.
+   - **Existing**: The session is also added as a panel on a dashboard you choose.
+   - **New**: The session is also added as a panel on a new dashboard.
+   - **None**: The session is saved to the library only.
 
 6. Select **Save**.
 

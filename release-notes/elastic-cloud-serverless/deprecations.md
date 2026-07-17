@@ -11,6 +11,19 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
 
+<!-- :::{changelog} /releases
+:type: deprecation
+::: -->
+
+:::{include} _snippets/2026-06-18/deprecations.md
+:::
+
+:::{include} _snippets/2026-05-19/deprecations.md
+:::
+
+:::{include} _snippets/2026-05-14/deprecations.md
+:::
+
 ## April 28, 2026 [elastic-cloud-serverless-04282026-deprecations]
 * Removes the pre-built Threat Hunting Agent from Agent Builder. Security AI workflows now use the Elastic AI Agent with skills. For more information, refer to [#263996]({{kib-pull}}263996).
 

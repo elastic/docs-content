@@ -12,10 +12,7 @@ products:
   - id: kibana
 ---
 
-
-
 # Capture {{kib}} diagnostics [kibana-diagnostic]
-
 
 The {{kib}} [Support Diagnostic](https://github.com/elastic/support-diagnostics) tool captures a point-in-time snapshot of {{kib}} and its Task Manager health. It works on {{kib}} versions 7.11.0 and above.
 
@@ -24,6 +21,11 @@ You can use the information captured by the tool to troubleshoot problems with {
 You can generate diagnostic information using this tool before you contact [Elastic Support](https://support.elastic.co) or [Elastic Discuss](https://discuss.elastic.co) to help get a timely answer.
 
 See this [this video](https://www.youtube.com/watch?v=t0J32qBKlIU) for a walkthrough of capturing a {{kib}} diagnostic.
+
+::::{note}
+:::{include} /troubleshoot/_snippets/diagnostics-privacy.md
+:::
+::::
 
 ## Requirements [kibana-diagnostic-tool-requirements]
 
@@ -42,6 +44,9 @@ You can also get the latest version of the tool by downloading the `diagnostics-
 
 ## Capture diagnostic information [kibana-diagnostic-capture]
 
+::::{include} /deploy-manage/_snippets/curl-k-generic.md
+::::
+
 To run a {{kib}} diagnostic:
 
 1. In a terminal, verify that your network and user permissions are sufficient to connect by polling {{kib}}'s [Task Manager health]({{kib-apis}}operation/operation-task-manager-health).
@@ -49,7 +54,7 @@ To run a {{kib}} diagnostic:
     For example, with the parameters `host:localhost`, `port:5601`, and `username:elastic`, you’d use the following curl request. Adapt these parameters to your context.
 
     ```sh
-    curl -X GET -k -H 'kbn-xsrf: true' -u elastic -p https://localhost:5601/api/task_manager/_health
+    curl -X GET -H 'kbn-xsrf: true' -u elastic -p https://localhost:5601/api/task_manager/_health
     ```
 
     If you receive an HTTP 200 `OK` response, you can proceed to the next step. If you receive a different response code, you must [diagnose the issue](#kibana-diagnostic-non-200) before proceeding.

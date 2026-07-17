@@ -81,6 +81,8 @@ Inline actions include the following (some actions are unavailable in some conte
 
 The {{security-app}} contains the following pages that enable analysts to view, analyze, and manage security data.
 
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` You can reorder these items in the navigation menu, or hide the ones you don't use. Refer to [Customize your navigation menu](/explore-analyze/find-and-organize/customize-navigation.md).
+
 ### Discover [security-ui-discover]
 
 Use the [Discover](/explore-analyze/discover.md) UI to filter your data or learn about its structure.
@@ -105,7 +107,7 @@ You can also create and view custom dashboards. Refer to [](/solutions/security/
 
 Expand this section to access the following pages:
 
-* [Rules](/solutions/security/detect-and-alert/manage-detection-rules.md): Create and manage rules to monitor suspicious events.
+* [{{siem-rules-ui}}](/solutions/security/detect-and-alert/manage-detection-rules.md): Create and manage rules to monitor suspicious events.
 
 * [Benchmarks](/solutions/security/cloud/benchmarks.md): View, set up, or configure cloud security benchmarks.
 
@@ -114,7 +116,25 @@ Expand this section to access the following pages:
 * [MITRE ATT&CK® coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md): Review your coverage of MITRE ATT&CK® tactics and techniques, based on installed rules.
 
 
+### Detections [_detections]
+
+```yaml {applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+Expand this section to access the following pages:
+
+* [Alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md): View and manage detection alerts to monitor activity within your network.
+* [Attacks](/solutions/security/ai/attacks-page.md): View and triage correlated attack chains alongside their associated alerts.
+
+Refer to [Detections and alerts](/solutions/security/detect-and-alert.md) for more information.
+
 ### Alerts [_alerts]
+
+```yaml {applies_to}
+stack: ga 9.0-9.3
+```
 
 View and manage alerts to monitor activity within your network. Refer to [Detections and alerts](/solutions/security/detect-and-alert.md) for more information.
 
@@ -171,8 +191,8 @@ To access this section, turn on the `securitySolution:enablePrivilegedUserMonito
 
 Expand this section to access the following pages:
 
-- [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md): Access a comprehensive overview of entity risk scores and anomalies identified by prebuilt {{anomaly-jobs}}.
-- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md): Set up your privileged users and monitor their activities to identify suspicious behavior.
+- [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md): Access a comprehensive overview of entity risk scores and anomalies identified by prebuilt {{anomaly-jobs}}.
+- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activities.md): Set up your privileged users and monitor their activities to identify suspicious behavior.
 
 
 ### Explore [_explore] 

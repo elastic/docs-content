@@ -1,7 +1,8 @@
 ---
 applies_to:
   stack: ga 9.4+
-  serverless: unavailable
+  serverless:
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -25,8 +26,10 @@ To access the script library, find **Script library** in the navigation menu or 
 
     **Required fields:**
 
-    * **File**: Select or drag and drop a script file. You can upload individual script files (such as `.sh`, `.ps1`, or `.py`) or ZIP archive files that contain the script to run. Scripts are run on Windows machines using `CMD` and on Linux and MacOS machines using `Bash`.
-    
+    * **File**: Select or drag and drop a script file. You can upload individual script files or ZIP archive files. Individual script files must use a natively supported format: `.sh`, `.ps1`, or `.bat`. Scripts are run on Windows machines using `CMD` and on Linux and MacOS machines using `Bash`.
+
+      Other script formats, such as Python (`.py`), are not natively supported. To run a script in an unsupported format, include it in a ZIP archive together with a supported launcher script (for example, a `.ps1` file that calls the Python script), then upload the archive and set the launcher as the **Path to executable file**.
+  
       The default file size maximum is 25 MB, configurable in [`kibana.yml`](/deploy-manage/stack-settings.md) with the `xpack.securitySolution.maxEndpointScriptFileSize` setting. 
 
         ::::{note}

@@ -25,7 +25,7 @@ If you're new to workflows, complete [Build your first workflow](/explore-analyz
 
 - **Permissions.** `All` on **Analytics > Workflows**, **Observability > Cases**, and whatever Agent Builder privilege is required to invoke agents in your space. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 - **Alerting rule.** A configured [observability alerting rule](/solutions/observability/incident-management/alerting.md) that fires on the conditions you want to auto-investigate (metric thresholds, SLO burn rate, anomaly detection, or custom query).
-- **SRE agent.** An {{agent-builder}} agent configured to investigate observability signals. The source workflow uses an agent named `sre-agent`. Substitute your agent ID.
+- **SRE agent.** An {{agent-builder}} agent configured to investigate observability signals. The examples use `elastic-ai-agent` as a default. Substitute your agent ID.
 - **Attach the workflow to the rule.** After saving the workflow, attach it as an action on the alerting rule. Refer to [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md).
 
 ## How it works [workflows-rca-how-it-works]
@@ -62,11 +62,10 @@ Call the agent with the alert payload. Keep `create-conversation: true` so follo
 steps:
   - name: rca_analysis
     type: ai.agent
-    agent-id: "{{ consts.agent_id }}"
-    connector-id: "{{ consts.connector_id }}"
+    agent-id: elastic-ai-agent
     create-conversation: true
     with:
-      prompt: |
+      message: |
         Investigate the following alert and propose root causes.
         Keep your analysis and data exploration brief to preserve context.
 
@@ -85,19 +84,17 @@ Reuse the conversation (so the agent remembers its analysis) and ask it for a ti
 ```yaml
   - name: case_title
     type: ai.agent
-    agent-id: "{{ consts.agent_id }}"
-    connector-id: "{{ consts.connector_id }}"
-    conversation-id: "{{ steps.rca_analysis.output.conversation_id }}"
+    agent-id: elastic-ai-agent
     with:
-      prompt: "Based on your analysis, produce a clear case title. Output only the title."
+      conversation_id: "{{ steps.rca_analysis.output.conversation_id }}"
+      message: "Based on your analysis, produce a clear case title. Output only the title."
 
   - name: case_description
     type: ai.agent
-    agent-id: "{{ consts.agent_id }}"
-    connector-id: "{{ consts.connector_id }}"
-    conversation-id: "{{ steps.rca_analysis.output.conversation_id }}"
+    agent-id: elastic-ai-agent
     with:
-      prompt: "Based on your analysis, produce a clear case description. Output only the description."
+      conversation_id: "{{ steps.rca_analysis.output.conversation_id }}"
+      message: "Based on your analysis, produce a clear case description. Output only the description."
 ```
 
 Using a conversation ID keeps tokens cheap and ensures the title and description match the earlier analysis.
@@ -127,7 +124,7 @@ Create the case with the agent-generated title and description:
   - name: attach_alert
     type: cases.addAlerts
     with:
-      case_id: "{{ steps.create_case.output.id }}"
+      case_id: "{{ steps.create_case.output.case.id }}"
       alerts:
         - alertId: "{{ event.alerts[0]._id }}"
           index: "{{ event.alerts[0]._index }}"
@@ -145,7 +142,7 @@ Append the raw analysis as one comment and the reasoning trace as another. Fetch
   - name: add_analysis
     type: cases.addComment
     with:
-      case_id: "{{ steps.create_case.output.id }}"
+      case_id: "{{ steps.create_case.output.case.id }}"
       comment: "{{ steps.rca_analysis.output.message }}"
 
   - name: get_conversation
@@ -157,7 +154,7 @@ Append the raw analysis as one comment and the reasoning trace as another. Fetch
   - name: add_reasoning
     type: cases.addComment
     with:
-      case_id: "{{ steps.create_case.output.id }}"
+      case_id: "{{ steps.create_case.output.case.id }}"
       comment: |
         ## AI investigation summary
 
@@ -192,20 +189,15 @@ tags: ["rca", "ai", "observability"]
 triggers:
   - type: alert
 
-consts:
-  agent_id: "sre-agent"
-  connector_id: "your-connector-id"
-
 steps:
   - name: rca_analysis
     type: ai.agent
-    agent-id: "{{ consts.agent_id }}"
-    connector-id: "{{ consts.connector_id }}"
+    agent-id: elastic-ai-agent
     create-conversation: true
     with:
-      prompt: |
+      message: |
         Investigate the following alert and propose root causes.
-        Keep your analysis and data exploration brief.
+        Keep your analysis and data exploration brief to preserve context.
 
         <alert>
         {{ event | json }}
@@ -213,19 +205,17 @@ steps:
 
   - name: case_title
     type: ai.agent
-    agent-id: "{{ consts.agent_id }}"
-    connector-id: "{{ consts.connector_id }}"
-    conversation-id: "{{ steps.rca_analysis.output.conversation_id }}"
+    agent-id: elastic-ai-agent
     with:
-      prompt: "Based on your analysis, produce a clear case title. Output only the title."
+      conversation_id: "{{ steps.rca_analysis.output.conversation_id }}"
+      message: "Based on your analysis, produce a clear case title. Output only the title."
 
   - name: case_description
     type: ai.agent
-    agent-id: "{{ consts.agent_id }}"
-    connector-id: "{{ consts.connector_id }}"
-    conversation-id: "{{ steps.rca_analysis.output.conversation_id }}"
+    agent-id: elastic-ai-agent
     with:
-      prompt: "Based on your analysis, produce a clear case description. Output only the description."
+      conversation_id: "{{ steps.rca_analysis.output.conversation_id }}"
+      message: "Based on your analysis, produce a clear case description. Output only the description."
 
   - name: create_case
     type: cases.createCase
@@ -239,7 +229,7 @@ steps:
   - name: attach_alert
     type: cases.addAlerts
     with:
-      case_id: "{{ steps.create_case.output.id }}"
+      case_id: "{{ steps.create_case.output.case.id }}"
       alerts:
         - alertId: "{{ event.alerts[0]._id }}"
           index: "{{ event.alerts[0]._index }}"
@@ -250,7 +240,7 @@ steps:
   - name: add_analysis
     type: cases.addComment
     with:
-      case_id: "{{ steps.create_case.output.id }}"
+      case_id: "{{ steps.create_case.output.case.id }}"
       comment: "{{ steps.rca_analysis.output.message }}"
 
   - name: get_conversation
@@ -262,7 +252,7 @@ steps:
   - name: add_reasoning
     type: cases.addComment
     with:
-      case_id: "{{ steps.create_case.output.id }}"
+      case_id: "{{ steps.create_case.output.case.id }}"
       comment: |
         ## AI investigation summary
 
@@ -293,5 +283,7 @@ steps:
 - [Observability workflows](/explore-analyze/workflows/use-cases/observability.md): The outcome this workflow supports.
 - [AI steps reference](/explore-analyze/workflows/steps/ai-steps.md): Parameters for `ai.agent` and related AI steps.
 - [{{agent-builder}} for Observability](/solutions/observability/ai/agent-builder-observability.md): How Agent Builder integrates with observability workflows.
+- [{{observability}} incident management](/solutions/observability/incident-management.md): The product surface this workflow automates.
+- [{{observability}} alerting](/solutions/observability/incident-management/alerting.md): How alert triggers fire on {{observability}} rules.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): Full reference for `cases.*` steps.
 - [`elastic/workflows` examples folder](https://github.com/elastic/workflows/tree/main/workflows/examples): More end-to-end examples.

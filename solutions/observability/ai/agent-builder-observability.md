@@ -34,6 +34,28 @@ The Elastic AI Agent includes built-in [{{observability}} skills](/explore-analy
 
 By default it includes the [`observability.investigation`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-observability-investigation-skill) skill. You can [create a custom skill](/explore-analyze/ai-features/agent-builder/custom-skills.md) to extend the agent's capabilities for your specific use case. To learn more about the available skills, refer to [](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md).
 
+### Time range awareness
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+When you chat with the agent from an {{observability}} UI, it uses the current page's time picker as the default time range when invoking tools, unless you specify a different range in your prompt. Outside of a UI context, tools fall back to their built-in defaults.
+
+### Synthetics monitor context
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+When you chat with the agent from a Synthetics monitor detail page, it automatically has access to the monitor's configuration via the `observability.monitor` attachment. This context is available on all monitor detail tabs (Overview, History, Errors, and Alerts), and includes:
+
+- Monitor name, type, and schedule
+- Configured locations (public and private)
+- Tags
+
 :::
 
 :::{applies-item} stack: preview =9.3, removed =9.4
@@ -62,7 +84,9 @@ Workflows are tightly integrated with Agent Builder functionalities:
 
 ## Examples: Agent Builder and Elastic Workflows
 
-For specific examples of workflows, including complete annotated code samples, refer to the [elastic/workflows/observability](https://github.com/elastic/workflows/tree/main/workflows/observability) GitHub repo.
+For an end-to-end documented example, refer to [Automate root cause analysis for an {{observability}} alert](/explore-analyze/workflows/use-cases/observability/root-cause-analysis.md), which invokes an Agent Builder agent on each alert, opens a case populated with the analysis, and supports configurable next-step branches.
+
+For additional examples, including complete annotated code samples, refer to the [elastic/workflows/observability](https://github.com/elastic/workflows/tree/main/workflows/observability) GitHub repo.
 
 
 ## Related resources

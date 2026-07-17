@@ -23,6 +23,7 @@ products:
 :::{image} /deploy-manage/images/kibana-change-space.png
 :alt: Change current space menu
 :screenshot:
+:width: 50%
 :::
 
 You can find the **Spaces** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).

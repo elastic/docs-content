@@ -95,9 +95,9 @@ When the search completes, a notification informs you, even if you have navigate
 
 Background searches expire after 7 days. Beyond that period, you must run the search again. You can change this default value by editing the [`data.search.sessions.defaultExpiration`](kibana://reference/configuration-reference/search-sessions-settings.md) setting.
 
-## Reopen or manage background searches
+## Reopen, inspect, or manage background searches
 
-From the list of background searches, you can reopen and edit any searches, but also extend their validity period or delete them to keep only searches that you care about.
+From the list of background searches, you can reopen, inspect, and edit any searches, but also extend their validity period or delete them to keep only searches that you care about.
 
 1. Open your list of background searches using one of the following methods:
    - Once a background search is sent to the background, a notification appears to tell you, with a link to open the list of background searches.
@@ -112,11 +112,12 @@ From the list of background searches, you can reopen and edit any searches, but 
    - To open it to view its results and continue your explorations, select its name. Relative dates are converted to absolute dates.
    - To rename it, select the {icon}`boxes_horizontal` **More actions** button, then select {icon}`pencil` **Edit name**. By default, background searches get default names that indicate their execution date and time.
    - To extend its current expiration date by another 7 days, select the {icon}`boxes_horizontal` More actions button, then select **Extend**.
+   - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` To inspect the details of a background search, select {icon}`boxes_horizontal` **More actions**, then select {icon}`document` **Inspect**. A child flyout opens showing the configuration for that background search.
    - To delete it, select the {icon}`boxes_horizontal` More actions button, then select {icon}`trash` **Delete**.
 
 
 :::{note}
-Cluster administrators can also see running background searches on the [Query activity](/deploy-manage/monitor/query-activity.md) page. While you use background search to manage your own long-running searches, Query activity provides administrators with a cluster-wide view of all running queries, with the ability to cancel any of them.
+Administrators can also see running background searches on the [Query activity](/deploy-manage/monitor/query-activity.md) page. While you use background search to manage your own long-running searches, Query activity provides administrators with a cluster-wide view of all running queries, with the ability to cancel any of them.
 :::
 
 ## Background search limitations in dashboards [_limitations]

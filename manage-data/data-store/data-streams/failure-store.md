@@ -879,6 +879,8 @@ This API gives you fine-grained control over the indices in your failure store, 
 
 ## Cross Cluster Search compatibility [ccs-compatibility]
 
-:::{important}
-Accessing the failure store across clusters using `::failures` is not yet supported.
-:::
+```{applies_to}
+stack: ga 9.4
+```
+
+Accessing the failure store across clusters using `::failures` is only supported starting with {{es}} 9.4.

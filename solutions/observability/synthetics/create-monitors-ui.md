@@ -58,9 +58,9 @@ To use the UI to add a lightweight monitor:
     :::::
 
 5. Set the *Frequency*, and configure the monitor as needed.
-6. Click **Advanced options** to see more ways to configure your monitor.
+6. Click **Advanced options** for more configuration options.
 
-    {applies_to}`stack: ga 9.1+` In **Advanced options**, use **Spaces** to select which [{{kib}} spaces](/deploy-manage/manage-spaces.md) the monitor will be visible in. You can select multiple spaces or choose to make the monitor visible in all spaces.
+    {applies_to}`stack: ga 9.1+` In **Advanced options**, select which [**{{kib}} spaces**](/deploy-manage/manage-spaces.md) the monitor will be visible in. You can select multiple spaces or choose to make the monitor visible in all spaces.
 
 7. (Optional) Click **Run test** to verify that the test is valid.
 8. Click **Create monitor**.
@@ -112,7 +112,7 @@ To use the UI to add a browser monitor:
     * Use **Data options** to add context to the data coming from your monitors.
     * Use **Maintenance windows** to prevent alerts from being triggered during scheduled downtime.
     * Use the **Synthetics agent options** to provide fine-tuned configuration for the synthetics agent. Read more about available options in [Use the Synthetics CLI](/solutions/observability/synthetics/cli.md).
-    * {applies_to}`stack: ga 9.1+` Use **Spaces** to select which [{{kib}} spaces](/deploy-manage/manage-spaces.md) the monitor will be visible in. You can select multiple spaces or choose to make the monitor visible in all spaces.
+    * {applies_to}`stack: ga 9.1+` Select which [**{{kib}} spaces**](/deploy-manage/manage-spaces.md) the monitor will be visible in. You can select multiple spaces or choose to make the monitor visible in all spaces.
 
 7. (Optional) Click **Run test** to verify that the test is valid.
 8. Click **Create monitor**.

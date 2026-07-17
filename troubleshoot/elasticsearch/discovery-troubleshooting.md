@@ -37,9 +37,25 @@ For managed deployments:
 
 When a node wins the master election, it logs a message containing `elected-as-master` and all nodes log a message containing `master node changed` identifying the new elected master node.
 
-If there is no elected master node and no node can win an election, all nodes repeatedly log messages about the problem using a logger called `org.elasticsearch.cluster.coordination.ClusterFormationFailureHelper`. By default, this happens every 10 seconds.
+If there is no elected master node and no node can win an election, all nodes repeatedly log messages about the problem using a [logger](/deploy-manage/monitor/logging-configuration.md) called `org.elasticsearch.cluster.coordination.ClusterFormationFailureHelper`. By default, this happens every 10 seconds. 
 
-Master elections only involve master-eligible nodes, so focus your attention on the master-eligible nodes in this situation. These nodes' logs indicate the requirements for a master election, such as the discovery of a certain set of nodes. The [Health]({{es-apis}}operation/operation-health-report) API on these nodes also provides useful information about the situation.
+During this time, {{es}} returns `MasterNotDiscoveredException`. The following error displays:
+
+```json
+{
+  "error" : {
+    "root_cause" : [ {
+      "type" : "master_not_discovered_exception",
+      "reason" : null
+    } ],
+    "type" : "master_not_discovered_exception",
+    "reason" : null
+  },
+  "status" : 503
+}
+```
+
+Master elections only involve master-eligible nodes, so focus your attention on the [master-eligible nodes](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role) in this situation. These nodes' logs indicate the requirements for a master election, such as the discovery of a certain set of nodes. The [Health]({{es-apis}}operation/operation-health-report) API on these nodes also provides useful information about the situation.
 
 If the logs or the health report indicate that {{es}} can't discover enough nodes to form a quorum, you must address the reasons preventing {{es}} from discovering the missing nodes. The missing nodes are needed to reconstruct the cluster metadata. Without the cluster metadata, the data in your cluster is meaningless. The cluster metadata is stored on a subset of the master-eligible nodes in the cluster. If a quorum can't be discovered, the missing nodes were the ones holding the cluster metadata.
 
@@ -66,7 +82,7 @@ If the logs suggest that the node cannot discover or join the cluster due to tim
 
 ## Node joins cluster and leaves again [discovery-node-leaves]
 
-If a node joins the cluster but {{es}} determines it to be faulty, it is removed from the cluster again. Refer to [Troubleshooting an unstable cluster](/troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md) for more information.
+If a node joins the cluster but {{es}} determines it to be faulty, it is removed from the cluster again. This logs as `node-join` then afterwards as `node-left` by the elected master node. Refer to [Troubleshooting an unstable cluster](/troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md) for more information.
 
 
 ## Investigate timeout and network issues [investigate-timeout-and-network-issues]

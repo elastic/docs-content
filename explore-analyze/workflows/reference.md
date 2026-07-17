@@ -3,7 +3,7 @@ navigation_title: Reference
 applies_to:
   stack: preview 9.3, ga 9.4+
   serverless: ga
-description: Reference documentation for Elastic Workflows triggers, steps, and the templating engine.
+description: Quick-reference pages for the workflow YAML surface, including a cheat sheet, the A-Z step type index, context variables, and the Liquid filter catalog.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -13,14 +13,11 @@ products:
   - id: elastic-stack
 ---
 
-# Workflows reference [workflows-reference]
+# Workflow reference [workflows-reference]
 
-Reference material for the components that make up a workflow definition. Use this section when you need to know what a specific trigger or step accepts, what its output looks like, or how templating expressions are evaluated.
+Quick-reference pages that document the workflow YAML surface in one place. Use this section when you know what you want to look up and need the answer fast.
 
-- [Triggers](/explore-analyze/workflows/triggers.md): Manual, scheduled, alert, and event-driven triggers.
-- [Steps](/explore-analyze/workflows/steps.md): Action, flow control, AI, data, and composition steps.
-- [Templating engine](/explore-analyze/workflows/templating.md): Liquid templating syntax, variables, and filters.
-
-% Ben Ironside Goldstein, 2026-04-16: Follow-up PRs per Vision doc Section 6 will add:
-% - Alert and event fields reference (as a child of Reference > Triggers > Alert triggers)
-% - YAML schema reference
+- [Cheat sheet](/explore-analyze/workflows/reference/cheat-sheet.md): One-page bookmark card. Anatomy, triggers, the step menu, Liquid, and the top gotchas.
+- [Step type index](/explore-analyze/workflows/reference/step-types.md): Every step type available for Elastic Workflows, ordered alphabetically, with a one-line description and a link to its full reference.
+- [Context variables](/explore-analyze/workflows/reference/context-variables.md): Every variable you can reference in a Liquid expression, with an example for each.
+- [Liquid filters](/explore-analyze/workflows/reference/liquid-filters.md): The full categorized filter catalog, including the two custom filters the workflow engine adds to LiquidJS.

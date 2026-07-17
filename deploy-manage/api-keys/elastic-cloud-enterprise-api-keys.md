@@ -54,12 +54,15 @@ For token-based API authentication, you can use the same username and password t
 
 For operations that only read information, but don’t create, update or delete, you can authenticate with a user that has restricted permissions, such as the `readonly` user.
 
+::::{include} /deploy-manage/_snippets/curl-k-ece.md
+::::
+
 To create a bearer token:
 
 1. Open a terminal and send your credentials to the login endpoint:
 
     ```sh
-    curl -k -X POST -H 'Content-Type: application/json' https://$COORDINATOR_HOST:12443/api/v1/users/auth/_login --data-binary '
+    curl -X POST -H 'Content-Type: application/json' https://$COORDINATOR_HOST:12443/api/v1/users/auth/_login --data-binary '
     {
       "username": "USER",
       "password": "PASSWORD"

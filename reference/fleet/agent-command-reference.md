@@ -1208,6 +1208,7 @@ elastic-agent upgrade <version> [--source-uri <string>] [--help] [flags]
 
 `--source-uri <string>`
 :   The source URI to download the new version from. By default, {{agent}} uses the Elastic Artifacts URL.
+:   A file path is also accepted here. Example: `file://<file path>`
 
 `--skip-verify`
 :   Skip the package verification process. This option is not recommended as it is insecure.

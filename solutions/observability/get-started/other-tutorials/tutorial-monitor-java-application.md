@@ -1,4 +1,5 @@
 ---
+description: Step-by-step tutorial for monitoring a Java application with Elastic Observability, covering logs, infrastructure metrics, APM, and Uptime.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-java-app.html
 applies_to:

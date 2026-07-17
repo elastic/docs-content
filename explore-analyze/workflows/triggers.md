@@ -100,11 +100,15 @@ stack: preview 9.4+
 serverless: preview
 ```
 
-Event-driven triggers run workflows when a platform event occurs. In 9.4, the only event-driven trigger is `workflows.failed`, which fires when another workflow's execution fails.
+Event-driven triggers run workflows when a platform event occurs:
+
+* **`workflows.failed`** fires when another workflow's execution fails {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`.
+* **Cases triggers** fire when cases change {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`. The family includes `cases.caseCreated`, `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`.
 
 Use event-driven triggers for:
 
 * Central error-handler workflows that react to failures across your automation
+* Reacting to case lifecycle changes (case opened, status changed, attachments or comments added)
 * Paging on-call, opening cases, or logging when a production workflow fails
 
 Event-driven trigger example:
@@ -123,7 +127,11 @@ Each trigger type provides different data to the workflow context through the `e
 * **Manual**: User information and any parameters passed.
 * **Scheduled**: Execution time and schedule information.
 * **Alert**: Complete alert data including fields, severity, and rule information.
-* **Event-driven (`workflows.failed`)**: Metadata about the failed workflow, its execution, and the step that failed. Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md#event-payload) for the full payload shape.
+* **Event-driven**:
+  * `workflows.failed` provides metadata about the failed workflow, its execution, and the step that failed.
+  * Cases triggers provide `event.caseId`, `event.owner`, and event-specific fields (status changes carry `previousStatus` and `status`; attachment events carry IDs and type; comment events carry IDs).
+  
+  Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md) for the full payload shapes.
 
 Access trigger data in your workflow using template variables:
 

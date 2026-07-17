@@ -5,7 +5,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Instructions and best practices for building region map charts with Kibana Lens in Elastic.
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+description: Create region map charts to visualize geographic distributions, compare metrics across locations, and identify regional patterns.
 ---
 
 # Build region map charts with {{kib}}
@@ -26,9 +31,8 @@ To build a region map chart:
 ::::::{stepper}
 
 :::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a region map chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 :::::
 
 :::::{step} Set the visualization to Region map
@@ -61,11 +65,13 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Region maps are choropleth maps, where color represents data values. Be aware that larger regions can visually dominate, even if their values are smaller.
 
 Refer to [Region map chart settings](#region-map-chart-settings) to find all configuration options for your region map chart.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and reuse it later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 :::::
 
 ::::::
@@ -119,6 +125,11 @@ The **Metric** dimension defines the value that determines each region's color.
 
 ## Region map chart examples
 
+<!-- MAINTENANCE: the API payload examples in this section were verified
+against the Visualizations API spec. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file region-map-charts.md
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
+
 The following examples show various configuration options for building impactful region map charts.
 
 **Website traffic by destination country**
@@ -131,6 +142,102 @@ The following examples show various configuration options for building impactful
 
 ![Region map showing website traffic by destination country](/explore-analyze/images/region-map-example-traffic.png "=70%")
 
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a choropleth map that colors countries by request count, using the `geo.dest` field which contains two-letter ISO country codes.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "region_map", <1>
+  "title": "Website traffic by destination country",
+  "filters": [],
+  "query": { "expression": "" },
+  "metric": {
+    "operation": "count",
+    "format": {
+      "type": "number"
+    },
+    "filter": { "expression": "" }
+  },
+  "region": {
+    "operation": "terms",
+    "fields": ["geo.dest"], <2>
+    "limit": 50, <3>
+    "ems": { <4>
+      "boundaries": "world_countries",
+      "join": "iso2"
+    }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  }
+}
+```
+
+1. `region_map` renders a geographic choropleth where region color intensity reflects the metric value.
+2. `geo.dest` contains ISO country codes that are matched to EMS world country boundaries.
+3. `limit: 50` includes up to 50 countries, providing broad geographic coverage.
+4. `ems` sets the EMS boundary layer (`world_countries`) and the join field (`iso2`) used to match `geo.dest` values to map regions.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "region_map", <1>
+  "title": "Website traffic by destination country",
+  "filters": [],
+  "query": { "expression": "" },
+  "metric": {
+    "operation": "count",
+    "format": {
+      "type": "number"
+    },
+    "filter": { "expression": "" }
+  },
+  "region": {
+    "operation": "terms",
+    "fields": ["geo.dest"], <2>
+    "limit": 50, <3>
+    "ems": { <4>
+      "boundaries": "world_countries",
+      "join": "iso2"
+    }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  }
+}'
+```
+
+1. `region_map` renders a geographic choropleth where region color intensity reflects the metric value.
+2. `geo.dest` contains ISO country codes that are matched to EMS world country boundaries.
+3. `limit: 50` includes up to 50 countries, providing broad geographic coverage.
+4. `ems` sets the EMS boundary layer (`world_countries`) and the join field (`iso2`) used to match `geo.dest` values to map regions.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
+
 **Customer distribution by country**
 :   Show where your customers are located around the world:
 
@@ -141,6 +248,98 @@ The following examples show various configuration options for building impactful
 
 ![Region map showing customer distribution by country](/explore-analyze/images/region-map-example-customers.png "=70%")
 
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example colors countries by the number of unique customers rather than total orders, giving a clearer picture of market reach per region.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "region_map",
+  "title": "Customer distribution by country",
+  "filters": [],
+  "query": { "expression": "" },
+  "metric": {
+    "operation": "unique_count", <1>
+    "field": "customer_id",
+    "label": "Unique customers",
+    "format": { "type": "number" },
+    "filter": { "expression": "" }
+  },
+  "region": {
+    "operation": "terms",
+    "fields": ["geoip.country_iso_code"], <2>
+    "limit": 50,
+    "ems": {
+      "boundaries": "world_countries",
+      "join": "iso2"
+    }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  }
+}
+```
+
+1. `unique_count` on `customer_id` counts distinct customers per country, avoiding inflation from repeat buyers.
+2. `geoip.country_iso_code` provides ISO codes that map directly to EMS world country boundaries via the `iso2` join field.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "region_map",
+  "title": "Customer distribution by country",
+  "filters": [],
+  "query": { "expression": "" },
+  "metric": {
+    "operation": "unique_count", <1>
+    "field": "customer_id",
+    "label": "Unique customers",
+    "format": { "type": "number" },
+    "filter": { "expression": "" }
+  },
+  "region": {
+    "operation": "terms",
+    "fields": ["geoip.country_iso_code"], <2>
+    "limit": 50,
+    "ems": {
+      "boundaries": "world_countries",
+      "join": "iso2"
+    }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  }
+}'
+```
+
+1. `unique_count` on `customer_id` counts distinct customers per country, avoiding inflation from repeat buyers.
+2. `geoip.country_iso_code` provides ISO codes that map directly to EMS world country boundaries via the `iso2` join field.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
+
 **Average ticket price by destination country**
 :   Compare average flight ticket prices across destination countries:
 
@@ -150,3 +349,95 @@ The following examples show various configuration options for building impactful
     * **Metric**: Average of `AvgTicketPrice`
 
 ![Region map showing average ticket price by destination country](/explore-analyze/images/region-map-example-ticket-price.png "=70%")
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example maps average flight ticket prices by destination country, highlighting which regions have the most expensive flights.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "region_map",
+  "title": "Average ticket price by destination country",
+  "filters": [],
+  "query": { "expression": "" },
+  "metric": {
+    "operation": "average", <1>
+    "field": "AvgTicketPrice",
+    "label": "Average ticket price",
+    "format": { "type": "number" },
+    "filter": { "expression": "" }
+  },
+  "region": {
+    "operation": "terms",
+    "fields": ["DestCountry"], <2>
+    "limit": 50,
+    "ems": {
+      "boundaries": "world_countries",
+      "join": "iso2"
+    }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_flights",
+    "time_field": "timestamp"
+  }
+}
+```
+
+1. `average` on `AvgTicketPrice` computes the mean ticket price per country, making color intensity reflect cost rather than volume.
+2. `DestCountry` contains ISO country codes from the flights sample data, matched to EMS world boundaries.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "region_map",
+  "title": "Average ticket price by destination country",
+  "filters": [],
+  "query": { "expression": "" },
+  "metric": {
+    "operation": "average", <1>
+    "field": "AvgTicketPrice",
+    "label": "Average ticket price",
+    "format": { "type": "number" },
+    "filter": { "expression": "" }
+  },
+  "region": {
+    "operation": "terms",
+    "fields": ["DestCountry"], <2>
+    "limit": 50,
+    "ems": {
+      "boundaries": "world_countries",
+      "join": "iso2"
+    }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_flights",
+    "time_field": "timestamp"
+  }
+}'
+```
+
+1. `average` on `AvgTicketPrice` computes the mean ticket price per country, making color intensity reflect cost rather than volume.
+2. `DestCountry` contains ISO country codes from the flights sample data, matched to EMS world boundaries.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::

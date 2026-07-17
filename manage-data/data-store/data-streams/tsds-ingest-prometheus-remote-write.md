@@ -1,7 +1,8 @@
 ---
 navigation_title: "Prometheus remote write endpoint"
 applies_to:
-  stack: preview
+  stack: preview =9.4, ga 9.5+
+  serverless: ga
 products:
   - id: elasticsearch
 ---
@@ -12,6 +13,10 @@ In addition to the ingestion of metrics data through the bulk API,
 {{es}} offers an endpoint that natively supports the [Prometheus remote write protocol](https://prometheus.io/docs/concepts/remote_write_spec/).
 
 The endpoint is available under `/_prometheus/api/v1/write`.
+
+:::{note}
+If you are using {{serverless-full}}, use [managed inputs](opentelemetry://reference/motlp/prometheus-remote-write.md) to send Prometheus metrics instead. Managed inputs are the recommended ingestion path for {{ecloud}} deployments and provide durable buffering, unified authentication, and back-pressure handling.
+:::
 
 ## Overview
 
@@ -79,7 +84,12 @@ The endpoint accepts `POST` requests with:
 ## Send data to different data streams
 
 By default, metrics are ingested into the `metrics-generic.prometheus-default` data stream.
-You can control the target data stream using URL path parameters:
+You can control the target data stream using URL path parameters or per-time-series labels.
+In both cases, Elasticsearch sanitizes dataset and namespace values, replacing any character that is not alphanumeric, a hyphen, or an underscore with `_`.
+
+### Route by URL path
+
+Set the dataset and namespace via URL path segments:
 
 | Endpoint | Data stream |
 | --- | --- |
@@ -87,7 +97,7 @@ You can control the target data stream using URL path parameters:
 | `/_prometheus/metrics/{dataset}/api/v1/write` | `metrics-{dataset}.prometheus-default` |
 | `/_prometheus/metrics/{dataset}/{namespace}/api/v1/write` | `metrics-{dataset}.prometheus-{namespace}` |
 
-For example, to route infrastructure metrics into a dedicated data stream, configure the remote write URL as:
+For example, to route infrastructure metrics to a dedicated data stream, set the remote write URL to:
 
 ```yaml
 remote_write:
@@ -95,6 +105,28 @@ remote_write:
 ```
 
 This sends data to the `metrics-infrastructure.prometheus-production` data stream.
+
+### Route by labels
+
+You can also route individual time series to different data streams by attaching `data_stream_dataset` and `data_stream_namespace` labels to each time series. These labels take precedence over the URL path when set and allow a single remote write endpoint to fan out metrics to multiple data streams.
+
+Elasticsearch treats these as control fields and does not store them in the document's `labels` object.
+
+If only one of the two labels is present on a time series, the other value falls back to the URL path segment (or the default if no path segment was given).
+
+Use `write_relabel_configs` to add routing labels before sending:
+
+```yaml
+remote_write:
+  - url: "https://<es_endpoint>/_prometheus/api/v1/write"
+    write_relabel_configs:
+      - target_label: data_stream_dataset
+        replacement: myapp
+      - target_label: data_stream_namespace
+        replacement: production
+```
+
+This example attaches `data_stream_dataset=myapp` and `data_stream_namespace=production` to every time series in this remote write target and routes all metrics to `metrics-myapp.prometheus-production`.
 
 ## Data mapping
 
@@ -104,7 +136,9 @@ Incoming Prometheus time series are mapped as follows:
 | --- | --- | --- |
 | Timestamp | `@timestamp` | The sample timestamp (in milliseconds) |
 | `__name__` label | `metrics.<metric_name>` | The metric value, stored as a field named after the metric |
-| All labels | `labels.<label_name>` | Mapped as time series dimensions |
+| `data_stream_dataset` label | _(routing only)_ | Routes the time series to the specified dataset; not stored in `labels` |
+| `data_stream_namespace` label | _(routing only)_ | Routes the time series to the specified namespace; not stored in `labels` |
+| All other labels (including `__name__`) | `labels.<label_name>` | Mapped as time series dimensions |
 
 ### Metric types
 

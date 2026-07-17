@@ -225,7 +225,7 @@ Use commas:
 * For additional context, alert events are stored in hidden Elasticsearch indices.
 :::
 
-* To join independent clauses with a coordinating conjunction (*and*, *but*, *or*, *nor*, *fo*r, *so*, or *yet*).
+* To join independent clauses with a coordinating conjunction (*and*, *but*, *or*, *nor*, *for*, *so*, or *yet*).
 
 :::{dropdown} Examples
 * A case can have multiple connectors, but only one connector can be selected at a time.
@@ -248,7 +248,7 @@ Use commas:
 
 ❌ Don't use commas:
 
-* When an independent clause and a dependent clause are separated by a coordinating conjunction (*and*, *but*, *or*, *nor*, *fo*r, *so*, or *yet*).
+* When an independent clause and a dependent clause are separated by a coordinating conjunction (*and*, *but*, *or*, *nor*, *for*, *so*, or *yet*).
 
 :::{dropdown} Examples
 ❌ **Don't**: The rule runs every 5 minutes, but analyzes the documents added to indices during the last 6 minutes.

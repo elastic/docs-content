@@ -9,6 +9,66 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+<!-- :::{changelog} /releases
+::: -->
+
+:::{include} _snippets/2026-07-13/index.md
+:::
+:::{include} _snippets/2026-07-07/index.md
+:::
+:::{include} _snippets/2026-07-02/index.md
+:::
+:::{include} _snippets/2026-06-30/index.md
+:::
+
+:::{include} _snippets/2026-06-26/index.md
+:::
+
+:::{include} _snippets/2026-06-25/index.md
+:::
+
+:::{include} _snippets/2026-06-18/index.md
+:::
+
+:::{include} _snippets/2026-06-16/index.md
+:::
+
+:::{include} _snippets/2026-06-02/index.md
+:::
+
+:::{include} _snippets/2026-06-01/index.md
+:::
+
+:::{include} _snippets/2026-05-29/index.md
+:::
+
+:::{include} _snippets/2026-05-28/index.md
+:::
+
+:::{include} _snippets/2026-05-26/index.md
+:::
+
+:::{include} _snippets/2026-05-20/index.md
+:::
+
+:::{include} _snippets/2026-05-19/index.md
+:::
+
+:::{include} _snippets/2026-05-14/index.md
+:::
+
+:::{include} _snippets/2026-05-12/index.md
+:::
+
+:::{include} _snippets/2026-05-11/index.md
+:::
+
+:::{include} _snippets/2026-05-06/index.md
+:::
+
+:::{include} _snippets/2026-05-04/index.md
+:::
+
 ## April 30, 2026 [serverless-changelog-04302026]
 
 ### Features and enhancements [serverless-changelog-04302026-features-enhancements]
@@ -700,6 +760,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 
 * Improves {{esql}} controls to retrieve variable types from query results, preventing query failures when numeric values are stored as keyword fields [#254436]({{kib-pull}}254436)
 * Adds a size gauge to dashboard panels while resizing, showing the current grid dimensions [#255363]({{kib-pull}}255363)
+* Enforces panel limits on dashboards: up to 100 top-level items (panels, unpinned controls, and sections combined), up to 100 panels per section, and up to 100 pinned controls [#256102]({{kib-pull}}256102)
 * Prevents time series index mode from being enabled on non-metrics data stream types in input packages [#251205]({{kib-pull}}251205)
 * Adds autocomplete and validation support for the `MMR` command in the {{esql}} editor [#254014]({{kib-pull}}254014)
 * Defaults to table view in Discover when an index or data view has five or fewer columns [#255292]({{kib-pull}}255292)
@@ -1282,6 +1343,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Makes the auto-expand indices functionality use the desired cluster topology when one is available
 * Runs replica topology boundary enforcement when receiving the desired topology
 * Adds tests for {{esql}} index exclusion
+* Increases the retention period for AutoOps metrics and history from 4 days to 10 days, allowing you to analyze performance trends and notification history over a longer period.
 
 ### Fixes [serverless-changelog-01192026-fixes]
 
@@ -2791,7 +2853,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Adds table list view to the space selector screen [#229046]({{kib-pull}}229046)
 * Adds `kibana.alert.grouping` field to infra alerts [#229054]({{kib-pull}}229054)
 * Skips search shards with `INDEX_REFRESH_BLOCK`
-* Adds the `created_date` and `modified_date` system-managed properties to pipelines #130847](https://github.com/elastic/elasticsearch/pull/130847)
+* Adds the `created_date` and `modified_date` system-managed properties to pipelines [#130847](https://github.com/elastic/elasticsearch/pull/130847)
 * Adds the `created_date` and `modified_date` system-managed properties to component templates [#131536](https://github.com/elastic/elasticsearch/pull/131536)
 * Adds entity store and asset criticality index privileges to built-in roles [#129662](https://github.com/elastic/elasticsearch/pull/129662)
 * Organization IdP routes are now public in the OpenAPI specifications.
@@ -4400,6 +4462,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Improves messages for recovered alerts in Machine Learning Transforms [#205721]({{kib-pull}}205721)
 * Introduces new deployment performance metrics charts. AutoOps provides aggregate metrics at the cluster level for key performance indicators. The data is tier-based, offering users a comprehensive understanding of each tier and the entire cluster.
 * Deprecates Cloud Defend billing alerts. Following the deprecation of Cloud Defend in {{serverless-short}}, removes the billing logic associated with the feature.
+* You can now select specific "From/To" dates and times (up to 10 days) in AutoOps to inspect resource consumption and performance at a finer granularity.
 
 ### Fixes [elastic-cloud-serverless-01132025-fixes]
 * Fixes an issue where "KEEP" columns are not applied after an Elasticsearch error in Discover [#205833]({{kib-pull}}205833)

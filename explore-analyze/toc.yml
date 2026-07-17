@@ -44,6 +44,8 @@ toc:
       - file: elastic-inference/eis.md
         children:
           - file: elastic-inference/eis-supported-models.md
+          - file: elastic-inference/eis-region-and-hosting.md
+          - file: elastic-inference/eis-rate-limits.md
           - file: elastic-inference/connect-self-managed-cluster-to-eis.md
           - hidden: elastic-inference/ml-node-vs-eis.md
       - file: elastic-inference/external.md
@@ -67,6 +69,7 @@ toc:
               - file: machine-learning/anomaly-detection/ml-anomaly-detection-job-types.md
               - file: machine-learning/anomaly-detection/anomaly-detection-scale.md
               - file: machine-learning/anomaly-detection/ml-delayed-data-detection.md
+              - file: machine-learning/anomaly-detection/ml-ad-dst-calendars.md
           - file: machine-learning/anomaly-detection/ml-api-quickref.md
           - file: machine-learning/anomaly-detection/anomaly-how-tos.md
             children:
@@ -233,6 +236,10 @@ toc:
                    - file: ai-features/agent-builder/agent-builder-api-tutorial.md
                - file: ai-features/agent-builder/a2a-server.md
                - file: ai-features/agent-builder/mcp-server.md
+                 children:
+                   - file: ai-features/agent-builder/mcp-server-api-keys.md
+                   - title: "OAuth authentication"
+                     crosslink: docs-content://deploy-manage/app-connections/oauth-clients.md
           - file: ai-features/agent-builder/monitor-usage.md
           - file: ai-features/agent-builder/permissions.md
           - file: ai-features/agent-builder/troubleshooting.md
@@ -240,6 +247,7 @@ toc:
               - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
               - file: ai-features/agent-builder/troubleshooting/api-calls-return-403-forbidden.md
           - file: ai-features/agent-builder/limitations-known-issues.md
+          - file: ai-features/agent-builder/glossary.md
           - hidden: ai-features/agent-builder/connectors.md
           - hidden: ai-features/agent-builder/plugins.md
       - file: ai-features/ai-chat-experiences.md
@@ -279,21 +287,20 @@ toc:
           - file: dashboards/create-dashboards-programmatically.md
           - file: dashboards/create-dashboards-using-ai.md
           - file: dashboards/open-dashboard.md
-          - file: dashboards/add-controls.md
           - file: dashboards/drilldowns.md
           - file: dashboards/arrange-panels.md
           - file: dashboards/duplicate-dashboards.md
-          - file: dashboards/import-dashboards.md
       - file: dashboards/managing.md
-      - file: dashboards/sharing.md
+        children:
+          - file: dashboards/sharing.md
+          - file: dashboards/import-dashboards.md
+          - file: dashboards/manage-dashboards-as-code.md
       - file: dashboards/tutorials.md
         children:
           - file: dashboards/create-dashboard-of-panels-with-web-server-data.md
           - file: dashboards/create-dashboard-of-panels-with-ecommerce-data.md
   - file: visualize.md
     children:
-      - file: visualize/visualize-library.md
-      - file: visualize/manage-panels.md
       - file: visualize/lens.md
         children:
           - file: visualize/charts/area-charts.md
@@ -315,6 +322,12 @@ toc:
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
       - file: visualize/alert-panels.md
+      - file: visualize/dashboard-controls.md
+        children:
+          - file: visualize/add-controls.md
+          - file: visualize/add-time-slider-controls.md
+          - file: visualize/add-variable-controls.md
+          - file: visualize/dashboard-control-settings.md
       - file: visualize/canvas.md
         children:
           - file: visualize/canvas/edit-workpads.md
@@ -362,6 +375,8 @@ toc:
           - file: visualize/legacy-editors/aggregation-based.md
           - file: visualize/legacy-editors/tsvb.md
           - file: visualize/legacy-editors/timelion.md
+      - file: visualize/visualize-library.md
+      - file: visualize/manage-panels.md
   - file: find-and-organize.md
     children:
       - file: find-and-organize/data-views.md
@@ -370,6 +385,7 @@ toc:
       - file: find-and-organize/reports.md
       - file: find-and-organize/tags.md
       - file: find-and-organize/find-apps-and-objects.md
+      - file: find-and-organize/customize-navigation.md
   - file: report-and-share.md
     children:
       - file: report-and-share/automating-report-generation.md
@@ -379,6 +395,16 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
+      - file: alerting/compare-alerting-systems.md
+      - file: alerting/system-overview.md
+        children:
+          - file: alerting/experimental-alerting-system/how-it-works.md
+          - file: alerting/experimental-alerting-system/glossary.md
+          - file: alerting/experimental-alerting-system/get-started.md
+            children:
+              - file: alerting/experimental-alerting-system/get-started/setup.md
+              - file: alerting/experimental-alerting-system/get-started/configure-access.md
+              - file: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
@@ -396,6 +422,7 @@ toc:
           - file: alerting/alerts/alerting-troubleshooting.md
             children:
               - file: alerting/alerts/alerting-common-issues.md
+              - file: alerting/alerts/troubleshoot-rule-behavior.md
               - file: alerting/alerts/event-log-index.md
               - file: alerting/alerts/testing-connectors.md
           - file: alerting/alerts/maintenance-windows.md
@@ -479,17 +506,9 @@ toc:
           - file: workflows/use-cases/ai-augmented-workflows.md
             children:
               - file: workflows/use-cases/ai-augmented-workflows/classify-and-route-alerts.md
-      - file: workflows/authoring-techniques.md
+      - file: workflows/concepts.md
         children:
-          - file: workflows/authoring-techniques/use-yaml-editor.md
-          - file: workflows/authoring-techniques/pass-data-handle-errors.md
-          - file: workflows/authoring-techniques/compose-workflows.md
-          - file: workflows/authoring-techniques/human-in-the-loop.md
-          - file: workflows/authoring-techniques/monitor-workflows.md
-          - file: workflows/authoring-techniques/manage-workflows.md
-          - file: workflows/authoring-techniques/migrate-from-9-3.md
-      - file: workflows/reference.md
-        children:
+          - file: workflows/authorization.md
           - file: workflows/triggers.md
             children:
               - file: workflows/triggers/manual-triggers.md
@@ -519,6 +538,26 @@ toc:
               - file: workflows/steps/data.md
               - file: workflows/steps/composition.md
           - file: workflows/templating.md
+          - file: workflows/reference.md
+            children:
+              - file: workflows/reference/cheat-sheet.md
+              - file: workflows/reference/context-variables.md
+              - file: workflows/reference/glossary.md
+              - file: workflows/reference/liquid-filters.md
+              - file: workflows/reference/step-types.md
+      - file: workflows/authoring-techniques.md
+        children:
+          - file: workflows/authoring-techniques/use-yaml-editor.md
+          - file: workflows/authoring-techniques/anatomy.md
+          - file: workflows/authoring-techniques/settings.md
+          - file: workflows/authoring-techniques/choose-the-right-step.md
+          - file: workflows/authoring-techniques/pass-data-handle-errors.md
+          - file: workflows/authoring-techniques/compose-workflows.md
+          - file: workflows/authoring-techniques/human-in-the-loop.md
+          - file: workflows/authoring-techniques/monitor-workflows.md
+          - file: workflows/authoring-techniques/manage-workflows.md
+          - file: workflows/authoring-techniques/troubleshooting.md
+          - file: workflows/authoring-techniques/migrate-from-9-3.md
       - file: workflows/templates.md
   - file: numeral-formatting.md
   - hidden: explore-and-visualize.md

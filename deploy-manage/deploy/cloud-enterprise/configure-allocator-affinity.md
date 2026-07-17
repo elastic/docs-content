@@ -17,7 +17,10 @@ One of the benefits of the ECE platform is its robust deployment instance distri
 
 Configuring allocator affinity is an optional post-installation task that changes the behavior of {{ece}}. If you do not explicitly set an affinity strategy, all instances use the [`fill-anti-affinity`](#fill-anti-affinity) strategy by default.
 
-To follow these steps, you must be familiar with using the ECE RESTful API. The API examples in this topic use HTTPS, which requires that you have a [TLS certificate already installed](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). For testing purposes only, you can specify the `-k` option to turn off certificate verification, as shown in our examples, or use HTTP over port 12400 until you get your TLS certificate sorted out.
+To follow these steps, you must be familiar with using the ECE RESTful API. The API examples in this topic use HTTPS, which requires that you have a [TLS certificate already installed](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
+
+::::{include} /deploy-manage/_snippets/curl-k-ece.md
+::::
 
 
 ## Affinity strategies [ece_affinity_strategies] 
@@ -42,7 +45,7 @@ $$$fill-anti-affinity$$$`fill-anti-affinity` (default)
 To check how allocator affinity is currently configured:
 
 ```sh
-curl -X GET -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor
+curl -X GET -u admin:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor
 {
   "errors": [{
     "code": "platform.config.store.not_found",
@@ -56,7 +59,7 @@ If a configuration option cannot be found, the default `fill-anti-affinity` stra
 To set allocator affinity to the `distribute-anti-affinity` strategy:
 
 ```sh
-curl -X POST -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor -H 'Content-Type: application/json' -d '{ "value": "{ \"allocator_prioritization\": \"distribute-anti-affinity\" }" }'
+curl -X POST -u admin:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor -H 'Content-Type: application/json' -d '{ "value": "{ \"allocator_prioritization\": \"distribute-anti-affinity\" }" }'
 {
   "changed": false,
   "name": "constructor",
@@ -67,7 +70,7 @@ curl -X POST -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platfor
 To update allocator affinity to the `distribute` strategy:
 
 ```sh
-curl -X PUT -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor -H 'Content-Type: application/json' -d '{ "value": "{ \"allocator_prioritization\": \"distribute\" }" }'
+curl -X PUT -u admin:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor -H 'Content-Type: application/json' -d '{ "value": "{ \"allocator_prioritization\": \"distribute\" }" }'
 {
   "changed": true,
   "name": "constructor",
@@ -78,7 +81,7 @@ curl -X PUT -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform
 To change allocator affinity back to the default behavior:
 
 ```sh
-curl -X DELETE -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor
+curl -X DELETE -u admin:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor
 {
 
 }

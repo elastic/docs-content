@@ -30,6 +30,7 @@ By default, {{elastic-endpoint}} exceptions apply globally across all hosts runn
 
 {{elastic-endpoint}} exceptions are space-aware: when you create a per-policy exception, it is associated with the space you're working in. For more information on how spaces interact with endpoint artifacts, refer to [](/solutions/security/get-started/spaces-defend-faq.md).
 
+If you're upgrading from an earlier version, your existing {{elastic-endpoint}} exceptions are preserved and are managed from the **Artifacts** page. 
 
 ## Opt in to per-policy {{elastic-endpoint}} exceptions [endpoint-exceptions-opt-in]
 
@@ -105,6 +106,10 @@ The **Add Endpoint Exception** flyout opens.
 It might take longer for exceptions to be applied to hosts within larger deployments.
 ::::
 
+::::{tip}
+To add multiple exceptions at once, you can import an NDJSON file instead. Refer to [Import and export {{elastic-endpoint}} exceptions](#import-export-endpoint-exceptions).
+::::
+
 
 ## Nested conditions [nested-conditions]
 
@@ -118,7 +123,28 @@ The **Endpoint exceptions** tab on the **Artifacts** page displays all {{elastic
 * Select one or more policies to show only exceptions assigned to those policies.
 * Under **Additional filters**, select **Global entries** to show exceptions assigned globally, or **Unassigned entries** to show exceptions not assigned to any policy.
 
-You can import and export {{elastic-endpoint}} exceptions as NDJSON files using the actions menu ({icon}`boxes_vertical`) on the **Endpoint exceptions** tab.
+:::{image} /solutions/images/security-endpoint-exceptions.png
+:alt: List of Elastic Endpoint exceptions
+:screenshot:
+:::
+
+### Import and export {{elastic-endpoint}} exceptions [import-export-endpoint-exceptions]
+
+::::{admonition} Requirements
+* To export {{elastic-endpoint}} exceptions, you need the **Endpoint Exceptions: Read** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).
+* To import per-policy items, you need the **Endpoint Exceptions: All** privilege.
+* To import global items, you need the **Endpoint Exceptions: All** and the **Global artifact management: All** privilege.
+* To import items to a different space, you need the **Global artifact management: All** privilege.
+::::
+
+You can import and export {{elastic-endpoint}} exceptions as NDJSON files:
+
+- **When the list is empty**: Click **Import Endpoint exceptions**.
+- **When the list has entries**: Click the actions menu {icon}`boxes_vertical`, then select **Import Endpoint exceptions** or **Export Endpoint exceptions**.
+
+::::{note}
+The imported file must be an NDJSON file exported from {{kib}}. Files exported from third-party software are not supported.
+::::
 
 When you import an NDJSON file, the imported exceptions are appended to your existing exceptions — existing entries are not removed or overwritten.
 
@@ -126,10 +152,9 @@ When you import an NDJSON file, the imported exceptions are appended to your exi
 In versions prior to 9.4, importing offered the option to remove all existing exceptions and replace them with the imported ones. Starting in 9.4, import always appends — existing exceptions are never removed. If you're upgrading from an earlier version, this applies whether or not you have opted in to per-policy exceptions.
 ::::
 
-:::{image} /solutions/images/security-endpoint-exceptions.png
-:alt: List of Elastic Endpoint exceptions
-:screenshot:
-:::
+Items are processed individually on import — per-policy items that are not visible in the current space are skipped, while the remaining items are imported.
+
+If an imported per-policy item is assigned to a policy that doesn't exist in the current environment, the item is imported with the policy assignment removed.
 
 ### Edit an {{elastic-endpoint}} exception [edit-endpoint-exception]
 

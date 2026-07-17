@@ -99,9 +99,9 @@ Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Spl
 
    ```
    | rest /servicesNS/-/-/saved/searches
-   | search is_scheduled=1 AND eai:acl.app=splunksysmonsecurity
+   | search action.correlationsearch.enabled = "1" OR (eai:acl.app = "Splunk_Security_Essentials" AND is_scheduled=1)
    | where disabled=0
-   | table id, title, search, description, action.escu.eli5,
+   | table id, title, search, description, action.escu.eli5, action.correlationsearch.annotations, alert.severity
    ```
 
    For rule migration, we recommend against downloading all searches (for example with `| rest /servicesNS/-/-/saved/searches`) because much of the data would be irrelevant to asset migration.
@@ -191,7 +191,7 @@ The table's fields are as follows:
 To install any rules that were partially translated or not translated, you must first edit them. Optionally, you can also edit rules that were successfully translated to finetune them.
 
 :::{note}
-You cannot edit Elastic-authored rules using this interface, but after they are installed you can [edit them](/solutions/security/detect-and-alert/manage-detection-rules.md) from the **Rules** page.
+You cannot edit Elastic-authored rules using this interface, but after they are installed you can [edit them](/solutions/security/detect-and-alert/manage-detection-rules.md) from the **{{siem-rules-ui}}** page.
 :::
 
 Click a rule's name to open its details flyout to the **Translation** tab, which shows the source rule alongside the translated — or partially translated — Elastic version. You can update any part of the rule. When finished, click **Save**.

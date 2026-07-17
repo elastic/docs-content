@@ -15,7 +15,7 @@ products:
 
 # Flow control steps [workflows-flow-control-steps]
 
-Flow control steps shape a workflow's logic. They decide what runs, what gets skipped, when the workflow loops, and where it pauses. 9.4 ships the full set of 8 step types: `if`, `foreach`, `while`, `switch`, `wait`, `loop.break`, `loop.continue`, and `waitForInput`.
+Flow control steps shape a workflow's logic. They decide what runs, what gets skipped, when the workflow loops, and where it pauses. Workflows include 8 flow-control step types: `if`, `foreach`, `while`, `switch`, `wait`, `loop.break`, `loop.continue`, and `waitForInput`.
 
 ## When to reach for each
 
@@ -54,12 +54,16 @@ For expression syntax and additional examples, refer to [If step](/explore-analy
 
 ## `foreach` [foreach]
 
-Iterate over an array, running nested steps once per item. Inside the loop, the current item is available as `foreach.item`, the zero-based position as `foreach.index`, and the total count as `foreach.total`.
+Iterate over an array, running nested steps once per item. Inside the loop, the current item is available as `foreach.item`, the zero-based position as `foreach.index`, and the total count as `foreach.total`. It also supports guardrails to cap iterations, set timeouts, and handle failures.
 
 ```yaml
 - name: process_alerts
   type: foreach
   foreach: "${{ event.alerts }}"
+  max-iterations:
+    limit: 100
+    on-limit: fail
+  iteration-timeout: "30s"
   steps:
     - name: log_alert
       type: console
@@ -71,7 +75,7 @@ For the full parameter reference, refer to [Foreach step](/explore-analyze/workf
 
 ## `while` [while]
 
-Loop while a KQL condition evaluates to true. Optional `max-iterations` caps the number of iterations. Without it, the loop continues as long as the condition holds.
+Loop while a KQL condition evaluates to true. The `max-iterations` field caps the number of iterations and defaults to **2000**. The default `on-limit` behavior is `continue`, which means the step succeeds quietly when the cap is reached. To fail the workflow on the cap instead, use the object form with `on-limit: fail`. Like `foreach`, it also supports loop-level guardrails and per-iteration controls.
 
 ```yaml
 - name: poll_until_ready

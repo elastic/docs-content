@@ -87,9 +87,65 @@ However, you can choose to create custom EIS endpoints if you need to instantiat
 
 Alternatively, you can use [{{infer}} APIs]({{es-apis}}group/endpoint-inference), as described in the following section.
 
-## Use cases
+## Get started with models on EIS
 
 The following sections describe how to get started with specific models available through Elastic {{infer-cap}} Service, including creating {{infer}} endpoints and using them for search and ingest.
+
+### Jina v5 omni embedding models [jina-embeddings-v5-omni]
+
+```{applies_to}
+stack: ga 9.3+
+serverless: ga
+```
+
+::::{important}
+The Jina v5 omni models availability and the support for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type depend on your {{stack}} version:
+
+- {applies_to}`stack: ga 9.3+` In {{stack}} 9.3 and later, you can create endpoints and run multimodal `embedding` {{infer}} requests. You cannot use these models with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type.
+- {applies_to}`stack: ga 9.4+` In {{stack}} 9.4 and later, you can use [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) mappings for text-only embeddings at ingest and search time.
+- {applies_to}`stack: ga 9.5+` In {{stack}} 9.5 and later, the `semantic_field` field type supports all modalities, such as text, images, video, audio, and documents.
+::::
+
+There are two Jina v5 omni embedding models available through Elastic {{infer-cap}} Service, [`jina-embeddings-v5-omni-small`](#jina-embeddings-v5-omni-small-on-eis) and [`jina-embeddings-v5-omni-nano`](#jina-embeddings-v5-omni-nano-on-eis). Both models support multimodal embeddings for text, images, video, audio, and documents such as PDF in one shared vector space.
+
+- Use [`jina-embeddings-v5-omni-small`](#jina-embeddings-v5-omni-small-on-eis) for larger context windows and higher-capacity retrieval workloads. 
+- Use [`jina-embeddings-v5-omni-nano`](#jina-embeddings-v5-omni-nano-on-eis) for lower cost and lower resource usage.
+
+#### `jina-embeddings-v5-omni-small` on EIS [jina-embeddings-v5-omni-small-on-eis]
+
+Create an {{infer}} endpoint that references the `jina-embeddings-v5-omni-small` model in the `model_id` field. Use the `embedding` task type so the endpoint can accept multimodal input.
+
+```console
+PUT _inference/embedding/eis-jina-embeddings-v5-omni-small
+{
+  "service": "elastic",
+  "service_settings": {
+    "model_id": "jina-embeddings-v5-omni-small"
+  }
+}
+```
+
+You can reference the `inference_id` in `embedding` {{infer}} tasks and search queries on any supported version. 
+
+For examples of ingesting different media types and generating embeddings for text, images, audio, and video, refer to [Getting started with Jina v5 omni embedding models through Elastic {{infer-cap}} Service](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-omni-getting-started). Select the jina-embeddings-v5-omni-small tab in each example.
+
+#### `jina-embeddings-v5-omni-nano` on EIS [jina-embeddings-v5-omni-nano-on-eis]
+
+Create an {{infer}} endpoint that references the `jina-embeddings-v5-omni-nano` model in the `model_id` field. Use the `embedding` task type so the endpoint can accept multimodal input.
+
+```console
+PUT _inference/embedding/eis-jina-embeddings-v5-omni-nano
+{
+  "service": "elastic",
+  "service_settings": {
+    "model_id": "jina-embeddings-v5-omni-nano"
+  }
+}
+```
+
+You can reference the `inference_id` in `embedding` {{infer}} tasks and search queries on any supported version. 
+
+For examples of ingesting different media types and generating embeddings for text, images, audio, and video, refer to [Getting started with Jina v5 omni embedding models through Elastic {{infer-cap}} Service](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-omni-getting-started). Select the jina-embeddings-v5-omni-nano tab in each example.
 
 ### `jina-embeddings-v5-text-small` on EIS [jina-embeddings-v5-on-eis]
 
@@ -114,7 +170,7 @@ PUT _inference/text_embedding/eis-jina-embeddings-v5-text-small
 }
 ```
 
-The created {{infer}} endpoint uses the model for {{infer}} operations on the Elastic {{infer-cap}} Service. You can reference the `inference_id` of the endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, text_embedding {{infer}} tasks, or search queries.
+The created {{infer}} endpoint uses the model for {{infer}} operations on the Elastic {{infer-cap}} Service. You can reference the `inference_id` of the endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, `text_embedding` {{infer}} tasks, or search queries.
 
 ### `jina-embeddings-v3` on EIS [jina-embeddings-on-eis]
 
@@ -157,3 +213,42 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 ##### Get started with semantic search with ELSER on EIS
 
 [Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint.
+
+## Pricing [pricing]
+
+All models on EIS incur a charge per million tokens. Certain LLM providers charge different prices depending on the prompt size. The pricing details are available on our [Pricing page](https://cloud.elastic.co/cloud-pricing-table?productType=serverless).
+
+This pricing model differs from the existing [Machine Learning Nodes](https://www.elastic.co/docs/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models), which is billed through VCUs consumed.
+
+### Token-based billing
+
+EIS is billed per million tokens used:
+
+* For **chat** models, input and output tokens are billed. Longer conversations with extensive context or detailed responses will consume more tokens.
+* For **embeddings** models, only input tokens are billed.
+
+Tokens are the fundamental units that language models process for both input and output. Tokenizers convert text into numerical data by segmenting it into subword units. A token can be a complete word, part of a word, or a punctuation mark, depending on the model's trained tokenizer and the frequency patterns in its training data.
+
+For example, the sentence `It was the best of times, it was the worst of times.` contains 52 characters but would tokenize into approximately 14 tokens with a typical word-based approach, though the exact count varies by tokenizer.
+
+### Monitor your token usage [monitor-your-token-usage]
+
+To track your token consumption:
+
+1. Navigate to [**Billing > Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console.
+2. Look for line items where the **Billing dimension** is set to "Inference".
+
+## Service status [eis-service-status]
+
+Elastic {{infer-cap}} Service (EIS) is a global service on {{ecloud}}. Like any service, it might undergo availability changes from time to time. When availability changes, Elastic posts updates on the [Cloud Status](https://status.elastic.co/) page.
+
+EIS incidents and maintenance affect features that rely on EIS, such as semantic search, embeddings, reranking, and AI-powered assistants.
+
+To check current and past EIS availability, go to the [Cloud Status](https://status.elastic.co/) page. EIS is listed under **Global services** as **Elastic {{infer-cap}} Service**.
+
+:::{image} /explore-analyze/images/eis-status.png
+:alt: Elastic Inference Service status on the Cloud Status page
+:screenshot:
+:::
+
+Learn how to [subscribe to updates](/deploy-manage/cloud-organization/service-status.md#ec_subscribe_to_updates) on the Service status page.

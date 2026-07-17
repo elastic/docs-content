@@ -21,6 +21,33 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.4.3 [elastic-observability-9.4.3-release-notes]
+
+### Features and enhancements [elastic-observability-9.4.3-features-enhancements]
+* Improves investigation skill matching in the AI Agent to more reliably load for alert-related queries [#269377]({{kib-pull}}269377).
+* Improves the AI Agent investigation skill with a hypothesis-driven methodology [#268973]({{kib-pull}}268973).
+
+### Fixes [elastic-observability-9.4.3-fixes]
+* Fixes the **SLOs** link in the {{product.apm}} SLO overview flyout to include all-environment SLOs [#273367]({{kib-pull}}273367).
+* Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
+* Fixes the AI Agent investigation skill to anchor time range queries to the alert start time when investigating an alert [#271983]({{kib-pull}}271983).
+* Fixes knowledge base recall in Observability AI Assistant when the selected connector is an inference endpoint [#271753]({{kib-pull}}271753).
+
+## 9.4.2 [elastic-observability-9.4.2-release-notes]
+
+### Fixes [elastic-observability-9.4.2-fixes]
+* Fixes false **missing integration** warnings for project Synthetics monitors on private locations [#270137]({{kib-pull}}270137).
+* Fixes horizontal scroll clipping on the {{product.apm}} **Traces** page [#269936]({{kib-pull}}269936).
+* Fixes the **Explain this log entry** AI insight in the logs flyout collapsing and losing its state on auto-refresh [#268895]({{kib-pull}}268895).
+* Fixes the Streams **Significant Events** tab and import/export flyouts to correctly enforce the Enterprise license requirement [#268515]({{kib-pull}}268515).
+* Fixes the **SLO Overview** **No data** tile to correctly count newly created SLOs and SLOs whose summary transform has not yet produced a document [#266315]({{kib-pull}}266315).
+* Fixes the **Modify suggestions** button in Streams so clicking it while the popover is open correctly closes the popover [#265254]({{kib-pull}}265254).
+
+
+## 9.4.1 [elastic-observability-9.4.1-release-notes]
+
+There are no user-facing changes in {{observability}} for the 9.4.1 release.
+
 ## 9.4.0 [elastic-observability-9.4.0-release-notes]
 
 ### Features and enhancements [elastic-observability-9.4.0-features-enhancements]
@@ -94,6 +121,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Migrates the traces panel in Discover to the unified flyout system [#247451]({{kib-pull}}247451).
 * Adds critical path highlighting to the traces view in Discover [#246952]({{kib-pull}}246952).
 * Synchronizes span link and error count badges in the unified Trace Waterfall [#246510]({{kib-pull}}246510).
+* Metrics exploration in Discover is now generally available [#261325]({{kib-pull}}261325).
 * Improves `METRICS_INFO` failure handling in the UI to prevent error states [#260940]({{kib-pull}}260940).
 * Adds tooltip descriptions to metrics in the **View details** flyout [#257053]({{kib-pull}}257053).
 * Supports multi-dimension breakdowns in Lens series layers [#251731]({{kib-pull}}251731).
@@ -115,6 +143,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-observability-9.4.0-fixes]
 
+* Fixes an issue where Observability alerts sent recovery notifications but remained `active` in {{kib}} instead of transitioning to `recovered` [#261012]({{kib-pull}}261012).
 * Fixes the layout of the Elastic Inference Service (EIS) pricing callout [#262780]({{kib-pull}}262780).
 * Adds the EIS cost callout to all relevant AI Assistant settings locations [#255588]({{kib-pull}}255588).
 * Fixes AI/Inference connector creation to correctly use the `location` field for provider configuration [#250838]({{kib-pull}}250838).
@@ -219,6 +248,27 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes broken breadcrumbs and sidebar navigation for Data Visualizer and AIOps within solution views [#248167]({{kib-pull}}248167).
 * Fixes double scrollbars appearing in fullscreen flyouts [#247744]({{kib-pull}}247744).
 
+## 9.3.7 [elastic-observability-9.3.7-release-notes]
+
+### Features and enhancements [elastic-observability-9.3.7-features-enhancements]
+* Adds check to ensure APM integration policy updates have API keys in their configuration [#274647]({{kib-pull}}274647).
+
+
+### Fixes [elastic-observability-9.3.7-fixes]
+* Fixes deleted monitor labels from reappearing on the next fetch [#274404]({{kib-pull}}274404).
+* Fixes Canvas autoplay from stopping at the first page [#272619]({{kib-pull}}272619).
+
+## 9.3.6 [elastic-observability-9.3.6-release-notes]
+
+### Fixes [elastic-observability-9.3.6-fixes]
+* Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
+* Fixes the **SLO Overview** **No data** tile to correctly count newly created SLOs and SLOs whose summary transform has not yet produced a document [#266315]({{kib-pull}}266315).
+
+## 9.3.5 [elastic-observability-9.3.5-release-notes]
+
+### Fixes [elastic-observability-9.3.5-fixes]
+* Fixes the **Hosts** page KPI tiles showing `N/A` and the **Hosts** table displaying stale data when the in-app **Refresh** button is used with a relative time range after the page has been idle [#265515]({{kib-pull}}265515).
+* Fixes `too_small` zod error for AI pipeline suggestions with empty string grok patterns [#251113]({{kib-pull}}251113).
 
 ## 9.3.4 [elastic-observability-9.3.4-release-notes]
 
@@ -226,6 +276,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Defaults new APM alert rules to group by `transaction.name`, providing more granular out-of-the-box alerting for latency threshold, failed transaction rate, and error count rules. Existing rules are unaffected [#261929]({{kib-pull}}261929).
 
 ### Fixes [elastic-observability-9.3.4-fixes]
+* Fixes an issue where Observability alerts sent recovery notifications but remained `active` in {{kib}} instead of transitioning to `recovered` [#261012]({{kib-pull}}261012).
 * Fixes the Serverless APM navigation so **Service inventory** stays active on service map, service groups, and related paths, matching stateful behavior [#263119]({{kib-pull}}263119).
 * Fixes the **Hosts** table on the Observability Overview page to display OTel (semconv) host metrics alongside ECS metrics, so hosts ingesting through OpenTelemetry are no longer missing from the table [#261564]({{kib-pull}}261564).
 * Fixes an issue where malformed URL query parameters could crash APM and other plugins; affected pages now automatically recover by applying parameter defaults and redirecting to the corrected URL [#257245]({{kib-pull}}257245).
@@ -644,7 +695,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 * Fixes layout of SLO management page combo box filter [#239418]({{kib-pull}}239418).
 * Removes {{es}} `_sources` from query responses [#239205]({{kib-pull}}239205).
-* Fixes rule condition chart parser replacing metric names in filter values [#238849]{{kib-pull}}(238849).
+* Fixes rule condition chart parser replacing metric names in filter values [#238849]({{kib-pull}}238849).
 * Fixes creating and updating private location monitors [#238326]({{kib-pull}}238326).
 * Disables max attempts for the private locations sync task [#237784]({{kib-pull}}237784).
 * Fixes `useAnyOfApmParams` to include mobile services [#237500]({{kib-pull}}237500).

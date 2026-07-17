@@ -39,7 +39,11 @@ Before creating a dashboard, ensure you have:
     * [**Add new visualizations**](../visualize.md#panels-editors). Create a chart using [Lens](../visualize/lens.md), the default visualization editor in {{product.kibana}}, or other visualizations such as [Maps](../visualize/maps.md).
     * [**Add existing content from the library**](../visualize/visualize-library.md). Select existing visualizations or Discover sessions that have already been configured and saved to the **Visualize Library**.
     * [**Add annotations or navigation panels**](../visualize.md#panels-editors). Make your dashboard more informative and easier to read with sections, text, and images.
-    * [**Add controls**](add-controls.md). Define a set of interactive filters (options lists, range or time sliders) that you and future users of this dashboard can use to explore its data.
+    * [**Add controls**](../visualize/add-controls.md). Define a set of interactive filters (options lists, range or time sliders) that you and future users of this dashboard can use to explore its data.
+
+    Panels added from the library stay linked to it unless you explicitly unlink them. Edits you make are reflected on every dashboard that uses them. Panels created directly on the dashboard are local to it and are permanently lost if you remove them without saving to the library first.
+
+    {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` You can add up to 1,000 panels to a dashboard. Refer to [Panel limits](arrange-panels.md#dashboard-panel-limits) for the full breakdown.
 
 4. Organize your dashboard by [organizing the various panels](arrange-panels.md).
 5. Define the main settings of your dashboard from the **Settings** menu in the application menu.

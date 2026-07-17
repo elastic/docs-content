@@ -3,7 +3,7 @@ navigation_title: Event-driven triggers
 applies_to:
   stack: preview 9.4+
   serverless: preview
-description: Run a workflow in response to a platform event. In 9.4, the workflows.failed trigger fires when another workflow execution fails.
+description: Run a workflow in response to a platform event. Includes workflows.failed and the cases trigger family.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -15,10 +15,16 @@ products:
 
 # Event-driven triggers [workflows-event-driven-triggers]
 
-Event-driven triggers let workflows react to events elsewhere in {{kib}}. In 9.4, the only event-driven trigger is `workflows.failed`, which fires when another workflow's execution fails. More event-driven triggers are planned for subsequent releases.
+Event-driven triggers let workflows react to events elsewhere in {{kib}}. Two trigger families are available:
+
+- **`workflows.failed`** — Fires when another workflow's execution fails. {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
+- **Cases triggers** — Fire when cases change (created, updated, status changed, attachments added, comments added). {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
 
 :::{warning}
-The event-driven trigger system, including the `workflows.failed` trigger, is in technical preview. The schema and semantics can change in future releases.
+The event-driven trigger system is in technical preview, including the triggers documented on this page. The schema and semantics can change in future releases.
+:::
+
+:::{include} ../_snippets/schema-location-legend.md
 :::
 
 ## `workflows.failed`
@@ -146,6 +152,195 @@ steps:
       tags: ["workflow-failure", "auto-triage"]
 ```
 
+## Cases triggers
+
+```{applies_to}
+stack: preview 9.5+
+serverless: preview
+```
+
+Cases triggers fire when cases change. Use them to react to case lifecycle events without polling the Cases API.
+
+**Shared payload.** Every cases trigger event includes:
+
+- `event.caseId` — The case ID, the alphanumeric identifier that is unique to each case.
+- `event.owner` — The solution that owns the case. It can be `securitySolution` for {{elastic-sec}} cases, `observability` for Observability cases, or `cases` for Stack cases.
+
+Use `event.owner` in `on.condition` to filter by solution. For example, a workflow that only fires for {{elastic-sec}} cases:
+
+```yaml
+triggers:
+  - type: cases.caseCreated
+    on:
+      condition: 'event.owner: "securitySolution"'
+```
+
+Individual trigger sections below document any additional payload fields specific to that event.
+
+### `cases.caseCreated` [cases-casecreated-trigger]
+
+Fires when a case is created.
+
+#### Schema
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | Must be `cases.caseCreated`. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. |
+
+#### Event payload
+
+| Field | Contains |
+|---|---|
+| `event.caseId` | The new case's ID. |
+| `event.owner` | The case owner (`securitySolution`, `observability`, or `cases`). |
+
+#### Example
+
+Fire only for {{elastic-sec}} cases:
+
+```yaml
+triggers:
+  - type: cases.caseCreated
+    on:
+      condition: 'event.owner: "securitySolution"'
+```
+
+### `cases.caseUpdated` [cases-caseupdated-trigger]
+
+Fires when a case is updated. The `event.updatedFields` array lists which fields changed.
+
+This trigger also fires when a case's status changes; the dedicated [`cases.caseStatusUpdated`](#cases-casestatusupdated-trigger) trigger fires alongside it and carries the previous status for easier filtering. For bulk updates, `cases.caseUpdated` fires once per case.
+
+#### Schema
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | Must be `cases.caseUpdated`. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. |
+
+#### Event payload
+
+| Field | Contains |
+|---|---|
+| `event.caseId` | The updated case's ID. |
+| `event.owner` | The case owner (`securitySolution`, `observability`, or `cases`). |
+| `event.updatedFields` | Array of field names that changed in this update. |
+
+#### Example
+
+Fire when a {{elastic-sec}} case's title changes:
+
+```yaml
+triggers:
+  - type: cases.caseUpdated
+    on:
+      condition: 'event.owner: "securitySolution" and event.updatedFields: "title"'
+```
+
+### `cases.caseStatusUpdated` [cases-casestatusupdated-trigger]
+
+Fires when a case's status changes.
+
+#### Schema
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | Must be `cases.caseStatusUpdated`. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. |
+
+#### Event payload
+
+| Field | Contains |
+|---|---|
+| `event.caseId` | The case ID. |
+| `event.owner` | The case owner (`securitySolution`, `observability`, or `cases`). |
+| `event.previousStatus` | The previous status (`open`, `in-progress`, or `closed`). |
+| `event.status` | The current status (`open`, `in-progress`, or `closed`). |
+
+#### Example
+
+Fire when a {{elastic-sec}} case is closed:
+
+```yaml
+triggers:
+  - type: cases.caseStatusUpdated
+    on:
+      condition: 'event.owner: "securitySolution" and event.status: "closed"'
+```
+
+### `cases.attachmentsAdded` [cases-attachmentsadded-trigger]
+
+Fires when attachments are added to a case. If attachments of multiple types are added in one operation (for example, three alerts and two comments), the trigger fires once per type, with one event for each type.
+
+Adding a comment fires both this trigger (with `event.attachmentType: "comment"`) and the dedicated [`cases.commentsAdded`](#cases-commentsadded-trigger) trigger. Both exist because users don't always think of comments as attachments.
+
+#### Schema
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | Must be `cases.attachmentsAdded`. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. |
+
+#### Event payload
+
+| Field | Contains |
+|---|---|
+| `event.caseId` | The case ID. |
+| `event.owner` | The case owner (`securitySolution`, `observability`, or `cases`). |
+| `event.attachmentIds` | Array of attachment IDs added in this operation, all of `event.attachmentType`. |
+| `event.attachmentType` | The type of attachments added, for example `"comment"` or `"alert"`. |
+
+#### Examples
+
+Fire only for {{elastic-sec}} cases:
+
+```yaml
+triggers:
+  - type: cases.attachmentsAdded
+    on:
+      condition: 'event.owner: "securitySolution"'
+```
+
+Fire only when a comment-type attachment is added:
+
+```yaml
+triggers:
+  - type: cases.attachmentsAdded
+    on:
+      condition: 'event.attachmentType: "comment"'
+```
+
+### `cases.commentsAdded` [cases-commentsadded-trigger]
+
+Fires when comments are added to a case.
+
+#### Schema
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | Must be `cases.commentsAdded`. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. |
+
+#### Event payload
+
+| Field | Contains |
+|---|---|
+| `event.caseId` | The case ID. |
+| `event.owner` | The case owner (`securitySolution`, `observability`, or `cases`). |
+| `event.commentIds` | Array of comment IDs added in this operation. |
+
+#### Example
+
+Fire only for {{elastic-sec}} cases:
+
+```yaml
+triggers:
+  - type: cases.commentsAdded
+    on:
+      condition: 'event.owner: "securitySolution"'
+```
+
 ## Prevent cascading handler loops
 
 If a handler workflow itself fails, it can re-trigger itself. Two safeguards help you avoid infinite loops:
@@ -157,6 +352,7 @@ In practice, keep handler workflows simpler than the workflows they monitor. A h
 
 ## Related
 
-- [Triggers overview](/explore-analyze/workflows/triggers.md): Every 9.4 trigger type.
+- [Triggers overview](/explore-analyze/workflows/triggers.md): All trigger types.
+- [Workflow authorization](/explore-analyze/workflows/authorization.md): Whose privileges event-driven workflows run with.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Per-step `on-failure` strategies complement event-driven handlers.
 - [Cases steps](/explore-analyze/workflows/steps/cases.md): Open cases from your handler.

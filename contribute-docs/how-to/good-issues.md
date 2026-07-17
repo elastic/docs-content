@@ -1,5 +1,6 @@
 ---
 navigation_title: Create good issues
+description: "Guidelines for creating clear and actionable documentation issues that help the Elastic docs team respond efficiently."
 ---
 
 # How to create good docs issues

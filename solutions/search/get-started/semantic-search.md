@@ -1,22 +1,22 @@
 ---
-navigation_title: Vector search
-description: An introduction to vector search in Elasticsearch.
+navigation_title: Semantic search
+description: An introduction to semantic search in Elasticsearch using the semantic_text workflow.
 applies_to:
   serverless: all
   stack: all
 products:
   - id: elasticsearch
 ---
-# Get started with vector search
+# Get started with semantic search
 
-If you want to get a sense of how vector search works in {{es}}, this quickstart is for you. First, you create an index and store your data in two forms: plain text and vector embeddings. Then you run a query that searches both representations and combines the results.
+If you want to get a sense of how semantic search works in {{es}}, this quickstart is for you. You use the [`semantic_text`](../semantic-search/semantic-search-semantic-text.md) workflow, the simplest managed path for semantic search. First, you create an index and store your data in two forms: plain text for keyword matching and semantic representations in `semantic_text` (embeddings are generated automatically using [vector search](../vector.md) under the hood). Then you run a hybrid query that searches both representations and combines the results.
 
 :::{note}
-This quickstart uses [hybrid search](../hybrid-search.md): it combines keyword-based and vector search so you can match both exact terms and meaning. Keyword-based search matches exact terms in your data, while vector search understands the intent behind a query using embeddings.
+This quickstart demonstrates [semantic search](../semantic-search.md) with the `semantic_text` field type and [hybrid search](../hybrid-search.md): it combines keyword-based full-text search with semantic search so you can match both exact terms and meaning.
 
 For example, if a document contains the phrase "annual leave policy", a keyword search for "annual leave" will return it because the terms match. However, a search for "vacation rules" may not return the same document, because those exact words are not present.
 
-With vector search, a query like "vacation rules" can still return the "annual leave policy" document, because it matches based on meaning rather than exact terms.
+With semantic search, a query like "vacation rules" can still return the "annual leave policy" document, because it matches based on meaning rather than exact terms.
 
 With hybrid search, the same query can return both keyword and semantic matches, combining exact words with search by meaning so results stay useful.
 :::
@@ -30,7 +30,7 @@ A running {{es}} cluster. For the fastest way to follow this quickstart, [create
 :::::{stepper}
 ::::{step} Create an index mapping
 
-Define the [index mapping](/manage-data/data-store/mapping.md). The mapping specifies the fields in your index and their data types, including both plain text fields and fields used to store vector embeddings for vector search.
+Define the [index mapping](/manage-data/data-store/mapping.md). The mapping specifies the fields in your index and their data types, including a plain text field for full-text search and a `semantic_text` field for semantic search.
 
 ```console
 PUT semantic-embeddings
@@ -49,7 +49,7 @@ PUT semantic-embeddings
 }
 ```
 
-1. The `semantic_text` field with the `semantic_text` field type to create and store vector embeddings. The [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) is used.
+1. The `semantic_text` field with the `semantic_text` field type for semantic search. Embeddings are generated and stored automatically using the [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints).
 2. The `content` field with the `text` field type to store plain text. This field is used for keyword search.
 3. Values indexed into `content` are copied to `semantic_text` and processed by the default {{infer}} endpoint.
 
@@ -68,7 +68,7 @@ PUT semantic-embeddings
 ::::
 ::::{step} Index documents
 
-Index documents with the [bulk API]({{es-apis}}operation/operation-bulk). You only need to provide the content to the `content` field. The `copy_to` mapping copies the text into `semantic_text` and generates embeddings, so you can run keyword search on `content` and vector search on `semantic_text` for the same document.
+Index documents with the [bulk API]({{es-apis}}operation/operation-bulk). You only need to provide the content to the `content` field. The `copy_to` mapping copies the text into `semantic_text` and generates embeddings automatically, so you can run keyword search on `content` and semantic search on `semantic_text` for the same document.
 
 ```console
 POST _bulk
@@ -185,15 +185,15 @@ GET semantic-embeddings/_search
 ```
 
 1. The [match query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) is run against the `content` field, which stores plain text for keyword matching.
-2. The [match query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) is run against the `semantic_text` field, which stores vector embeddings for meaning-based search.
+2. The [match query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) is run against the `semantic_text` field for semantic search (embeddings are stored and compared automatically).
 
 If a document ranks well in either query, it can appear in the combined list.
 
 :::{dropdown} Example response
 
-In the example response below, the two hits show why combining both keyword search and vector search matters. 
+In the example response below, the two hits show why combining keyword search and semantic search in a hybrid query matters.
 
-The top document contains the phrase _muscle soreness_ and _running_, so it fits both keyword search and semantic search. The second document does not use those words at all; it talks about marathon training and recovery between sessions. A keyword-only search on `content` would likely miss or rank that document much lower, because the query terms are not in the text. 
+The top document contains the phrase _muscle soreness_ and _running_, so it fits both keyword search and semantic search. The second document does not use those words at all; it talks about marathon training and recovery between sessions. A keyword-only search on `content` would likely miss or rank that document much lower, because the query terms are not in the text.
 
 Semantic search still matches it because marathon training and recovery relate to the same idea as soreness after a run. Hybrid search keeps the document that matches the words and also brings in documents that match the topic without the same vocabulary.
 
@@ -261,3 +261,5 @@ Each `_score` is a relevance score for this search only. A higher score means th
 - [Ranking and reranking](../ranking.md) - Structure multi-stage pipelines: initial BM25, vector, or hybrid retrieval, then reranking with stronger models on smaller candidate sets.
 - [Build your search queries](../querying-for-search.md) - Choose Query DSL, {{esql}}, or retrievers on the Search API depending on whether you need classic queries, analytics-style pipes, or composable retrieval pipelines.
 
+To learn about more options, such as full-text, vector, and hybrid search, go to [Search approaches](/solutions/search/search-approaches.md).
+For a summary of vector search use cases, go to [Vector search use cases](/solutions/search/vector/vector-search-use-cases.md).

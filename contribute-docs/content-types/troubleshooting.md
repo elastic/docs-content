@@ -38,7 +38,7 @@ Readers of troubleshooting content are typically blocked or frustrated and want 
 
 ## Structure of a troubleshooting page
 
-To help users quickly identify and resolve problems, troubleshooting pages use a consistent structure. A predictable format helps users confirm they're in the right place and move directly to the solution they need.
+To help users quickly identify and resolve problems, troubleshooting pages use a consistent structure. A predictable format helps users confirm they've found the correct page and move directly to the solution they need.
 
 ### Required elements
 

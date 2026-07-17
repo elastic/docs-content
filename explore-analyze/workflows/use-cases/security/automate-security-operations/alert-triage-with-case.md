@@ -127,7 +127,7 @@ Link the alert that triggered the workflow with `cases.addAlerts`, then attach t
 - name: attach_alert
   type: cases.addAlerts
   with:
-    case_id: "{{ steps.create_case.output.id }}"
+    case_id: "{{ steps.create_case.output.case.id }}"
     alerts:
       - alertId: "{{ event.alerts[0]._id }}"
         index: "{{ event.alerts[0]._index }}"
@@ -138,9 +138,9 @@ Link the alert that triggered the workflow with `cases.addAlerts`, then attach t
 - name: attach_observables
   type: cases.addObservables
   with:
-    case_id: "{{ steps.create_case.output.id }}"
+    case_id: "{{ steps.create_case.output.case.id }}"
     observables:
-      - typeKey: "observable-type-hash-sha256"
+      - typeKey: "observable-type-file-hash"
         value: "{{ event.alerts[0].file.hash.sha256 }}"
       - typeKey: "observable-type-ipv4"
         value: "{{ event.alerts[0].source.ip }}"
@@ -163,9 +163,9 @@ Call the endpoint isolation API with `kibana.request`. Link the isolation action
     body:
       endpoint_ids:
         - "{{ event.alerts[0].elastic.agent.id }}"
-      comment: "Automated isolation: case {{ steps.create_case.output.id }}"
+      comment: "Automated isolation: case {{ steps.create_case.output.case.id }}"
       case_ids:
-        - "{{ steps.create_case.output.id }}"
+        - "{{ steps.create_case.output.case.id }}"
       alert_ids:
         - "{{ event.alerts[0]._id }}"
 ```
@@ -189,7 +189,7 @@ Post a rich message to the SOC Slack channel with links to the case and the Viru
       text: "Malware detected on {{ event.alerts[0].host.name }}"
       blocks: >-
         [{"type":"section","text":{"type":"mrkdwn","text":"*Malicious file on {{ event.alerts[0].host.name }}*\nHash: `{{ event.alerts[0].file.hash.sha256 }}`\nMalicious engines: {{ steps.lookup_reputation.output.stats.malicious }}"}},
-         {"type":"actions","elements":[{"type":"button","text":{"type":"plain_text","text":"View case"},"url":"{{ kibanaUrl }}/app/security/cases/{{ steps.create_case.output.id }}"}]}]
+         {"type":"actions","elements":[{"type":"button","text":{"type":"plain_text","text":"View case"},"url":"{{ kibanaUrl }}/app/security/cases/{{ steps.create_case.output.case.id }}"}]}]
     timeout: 30s
 ```
 
@@ -252,7 +252,7 @@ steps:
       - name: attach_alert
         type: cases.addAlerts
         with:
-          case_id: "{{ steps.create_case.output.id }}"
+          case_id: "{{ steps.create_case.output.case.id }}"
           alerts:
             - alertId: "{{ event.alerts[0]._id }}"
               index: "{{ event.alerts[0]._index }}"
@@ -263,9 +263,9 @@ steps:
       - name: attach_observables
         type: cases.addObservables
         with:
-          case_id: "{{ steps.create_case.output.id }}"
+          case_id: "{{ steps.create_case.output.case.id }}"
           observables:
-            - typeKey: "observable-type-hash-sha256"
+            - typeKey: "observable-type-file-hash"
               value: "{{ event.alerts[0].file.hash.sha256 }}"
             - typeKey: "observable-type-ipv4"
               value: "{{ event.alerts[0].source.ip }}"
@@ -279,9 +279,9 @@ steps:
           body:
             endpoint_ids:
               - "{{ event.alerts[0].elastic.agent.id }}"
-            comment: "Automated isolation: case {{ steps.create_case.output.id }}"
+            comment: "Automated isolation: case {{ steps.create_case.output.case.id }}"
             case_ids:
-              - "{{ steps.create_case.output.id }}"
+              - "{{ steps.create_case.output.case.id }}"
             alert_ids:
               - "{{ event.alerts[0]._id }}"
 
@@ -321,4 +321,6 @@ steps:
 - [Automate security operations](/explore-analyze/workflows/use-cases/security/automate-security-operations.md): The outcomes this workflow supports.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): Reference for every `cases.*` step.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): How retry, fallback, and continue work together.
+- [Triage alerts](/solutions/security/ai/triage-alerts.md): The interactive triage flow this workflow automates.
+- [Security cases](/solutions/security/investigate/security-cases.md): The product surface this workflow drives.
 - [`elastic/workflows` library](https://github.com/elastic/workflows): More security workflow examples.

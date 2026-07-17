@@ -10,6 +10,14 @@ on:
         description: "Root directory to sweep"
         required: false
         default: "."
+      target-path:
+        description: "Optional docs-root-relative directory to sweep recursively (accepts a leading slash)"
+        required: false
+        default: ""
+      scope-mode:
+        description: "How to scope the matched markdown files: auto, full, or shard"
+        required: false
+        default: "auto"
       target-batch-size:
         description: "Approximate pages per rotating slice"
         required: false
@@ -25,6 +33,7 @@ on:
 
 permissions:
   actions: read
+  copilot-requests: write
   contents: read
   discussions: write
   issues: write
@@ -36,8 +45,8 @@ jobs:
     with:
       source-repo: ${{ inputs.source-repo }}
       docs-root: ${{ inputs.docs-root }}
+      target-path: ${{ inputs.target-path }}
+      scope-mode: ${{ inputs.scope-mode }}
       target-batch-size: ${{ inputs.target-batch-size }}
       max-per-fix-issue: ${{ inputs.max-per-fix-issue }}
       stale-content-months: ${{ inputs.stale-content-months }}
-    secrets:
-      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}

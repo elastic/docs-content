@@ -38,7 +38,7 @@ Read these pages next:
 * [Security skills use cases](skills-use-cases.md)
 * [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md) for the full platform reference
 
-The standalone [Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) is deprecated. Hunting use cases now use the Elastic AI Agent with the Threat Hunting skill. For details, refer to the built-in agents reference.
+The standalone [Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) was removed in 9.4. Hunting use cases now use the Elastic AI Agent with the Threat Hunting skill. For details, refer to the built-in agents reference.
 
 :::
 

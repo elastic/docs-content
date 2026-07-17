@@ -87,6 +87,28 @@ The **Agents** page provides a centralized view of all your agents. From this pa
       :::
 
 
+## Elastic capabilities [elastic-capabilities]
+
+```{applies_to}
+stack: ga 9.4+
+```
+
+The **Enable Elastic capabilities** toggle controls whether an agent is automatically assigned all current and future Elastic-built [tools](tools/builtin-tools-reference.md), [skills](builtin-skills-reference.md), and plugins. The set of assigned capabilities is dynamic and grows as Elastic adds new built-in content. Disable this toggle to manage tool, skill, and plugin assignments manually.
+
+:::{image} images/elastic-capabilities.png
+:alt: Enable Elastic Capabilities toggle ON
+:width: 500px
+:::
+
+This toggle is available for all agents, both built-in and custom.
+
+### Default settings
+
+- **Built-in agents**: Elastic capabilities are **enabled** by default. Disable if you want to limit the agent to a specific set of tools and skills.
+- **Custom agents**: Elastic capabilities are **disabled** by default. Enable if you want the agent to have access to all current and future Elastic-built tools, skills, and plugins.
+
+To review which tools and skills are active, open the agent's **Tools** or **Skills** tab after enabling the toggle. Elastic-provided items are marked with a lock icon.
+
 ## Agents API
 
 The Agents API enables programmatic management of both built-in and custom agents.

@@ -67,7 +67,7 @@ Installing using an MSI package has the following behaviors:
 
 ## Upgrading [_upgrading]
 
-You can upgrade {{agent}} through {{fleet}}. If you want to upgrade outside {{fleet}} using the MSI, you must uninstall and reinstall the agent. The MSI implementation relies on the TAR {{agent}} binary to upgrade the installation. If you installed {{agent}} in an air-gapped environment, ensure the TAR image is available before you request an upgrade.
+You can upgrade {{agent}} through {{fleet}}. If you want to upgrade outside {{fleet}} using the MSI, you must uninstall and reinstall the agent. The MSI implementation relies on the TAR {{agent}} binary to upgrade the installation. If you installed {{agent}} in an air-gapped environment, ensure the TAR image is available before you request an upgrade. For a full summary of upgrade support across all installation methods, refer to [Restrictions](/reference/fleet/upgrade-elastic-agent.md#upgrade-agent-restrictions).
 
 For versions earlier than 9.4.0, the registered MSI version in the Windows Registry displays the initially installed version, while {{fleet}} and ingested data metadata show the correct version. Upgrade to 9.4.0 or later to automatically update the registry entry.
 

@@ -282,7 +282,7 @@ Examples:
 #### {{elastic-defend}} [runscript-defend]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: unavailable
+serverless: ga
 ```
 
 For {{elastic-defend}}, you must include the following parameter to identify the script you want to run:
@@ -398,9 +398,9 @@ You can follow this with the `execute` response action to upload and run scripts
 
 
 ::::{note}
-The default file size maximum is 25 MB, configurable in [`kibana.yml`](/deploy-manage/stack-settings.md) with the `xpack.securitySolution.maxUploadResponseActionFileBytes` setting. You must enter the value in bytes. 
+The file size maximum is configurable in [`kibana.yml`](/deploy-manage/stack-settings.md) with the `xpack.securitySolution.maxUploadResponseActionFileBytes` setting. You must enter the value in bytes. For default and maximum values, refer to [Security Solution settings in Kibana](kibana://reference/configuration-reference/security-solution-settings.md#elastic-defend-settings).
 
-({applies_to}`stack: removed 9.4+` the maximum value of `xpack.securitySolution.maxUploadResponseActionFileBytes` is `104857600` bytes, or 100 MB).
+Setting this value too high could cause timeouts, depending on your cluster's setup and resources.
 ::::
 
 
@@ -441,12 +441,6 @@ Click {icon}`question` **Help** in the upper-right to open the **Help** panel, w
 This panel displays only the response actions that you have the user role or privileges to perform.
 ::::
 
-
-:::{image} /solutions/images/security-response-console-help-panel.png
-:alt: Help panel
-:width: 65%
-:screenshot:
-:::
 
 You can use this panel to build commands with less typing. Click the add icon (![Add icon](/solutions/images/security-add-command-icon.png "title =20x20")) to add a command to the input area, enter any additional parameters or a comment, then press **Return** to run the command.
 

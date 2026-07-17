@@ -16,9 +16,11 @@ products:
 
 # {{agent-builder}} built-in tools reference
 
-This page lists all built-in tools available in {{agent-builder}}, grouped by namespace. Built-in tools are read-only: you can't modify or delete them.
+This page lists all built-in tools available in {{agent-builder}}, grouped by [namespace](custom-tools.md#protected-namespaces). Built-in tools are read-only: you can't modify or delete them.
 
-Platform tools are available across all deployments. Observability and security tools are scoped to their respective solutions. Tool prefixes (`platform.core`, `platform.streams`, `observability`, `security`) reflect this scoping.
+Platform tools are available across all deployments. Observability and security tools are scoped to their respective solutions. Tool prefixes (`platform.core`, `platform.streams`, `platform.sig_events`, `platform.workflows`, `observability`, `security`) reflect this scoping.
+
+Some tools are in technical preview or require a license, an [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings), or an experimental feature flag before they become available. These requirements are called out in each tool's entry.
 
 [Built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are pre-configured with relevant tools. You can also assign any available built-in tool to [custom agents](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) you create.
 
@@ -52,8 +54,8 @@ Platform core tools provide fundamental capabilities for interacting with {{es}}
 `platform.core.list_indices` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Lists the indices, aliases, and data streams in the {{es}} cluster the current user has access to.
 
-`platform.core.search` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
-:   Searches and analyzes data within your {{es}} cluster using full-text relevance searches or structured analytical queries.
+$$$agent-builder-builtin-search-tool$$$ `platform.core.search` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
+:   Searches {{es}} data using natural language, automatically selecting between query DSL and {{esql}} based on the query intent.
 
 $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves documentation about Elastic products. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Elastic documentation** from the **Documentation** section. This takes a few minutes.
@@ -64,15 +66,29 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 `platform.core.create_visualization` {applies_to}`stack: ga 9.4+`
 :   Creates or updates a visualization configuration based on a natural language description.
 
-`platform.core.cases` {applies_to}`stack: ga 9.3+`
-:   Searches and retrieves [cases](/explore-analyze/cases.md) for tracking and managing issues.
+`platform.core.execute_connector_sub_action` {applies_to}`stack: preview 9.4`
+:   Runs a single sub-action on a saved {{kib}} [connector](../connectors.md) (for example, sending an email or creating an issue), given a connector ID, sub-action name, and parameters. This lets an agent act on external systems without a dedicated [workflow tool](workflow-tools.md) for each connector.
+
+    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) must be turned on.
+
+#### Workflow execution tools
+
+These platform core tools let agents run and track [Elastic Workflows](/explore-analyze/workflows.md). For the tools that inspect workflow syntax and definitions, refer to [Workflows tools](#workflows-tools).
 
 `platform.core.get_workflow_execution_status` {applies_to}`stack: ga 9.3+`
 :   Retrieves the status and, if available, the final output of an [Elastic Workflows](/explore-analyze/workflows.md) execution from its execution ID.
 
 `platform.core.resume_workflow_execution` {applies_to}`stack: ga 9.4+`
-:   Resumes an [Elastic Workflows](/explore-analyze/workflows.md) execution that is paused at a `waitForInput` step, providing the reviewer's input to the workflow so it can continue.
-% TODO: Restore the link on `waitForInput` to /explore-analyze/workflows/authoring-techniques/human-in-the-loop.md once https://github.com/elastic/docs-content/pull/6048 merges (the page is added in that PR).
+:   Resumes an [Elastic Workflows](/explore-analyze/workflows.md) execution that is paused at a [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step, providing the reviewer's input to the workflow so it can continue.
+
+`platform.core.generate_workflow` {applies_to}`stack: preview 9.5`
+:   Generates or updates an [Elastic Workflows](/explore-analyze/workflows.md) definition from a natural language description, delegating to a specialized workflow-authoring agent that knows workflow syntax, step types, and available connectors.
+
+`platform.core.execute_workflow` {applies_to}`stack: preview 9.5`
+:   Executes an [Elastic Workflows](/explore-analyze/workflows.md) definition, given a saved workflow ID, inline YAML for an ephemeral run, or a workflow YAML attachment.
+
+`platform.core.list_workflow_executions` {applies_to}`stack: preview 9.5`
+:   Lists recent [Elastic Workflows](/explore-analyze/workflows.md) executions in the current space, most recent first, so you can find an execution ID to pass to `get_workflow_execution_status`.
 
 <!--
 ### Attachment tools
@@ -100,61 +116,148 @@ The following tools manage file attachments in conversations:
 :   Shows the differences between versions of a file attachment.
 -->
 
-## Dashboard tools
+<!--
+% SML (Semantic Metadata Layer) tools require the experimental Context Engine.
+% They are registered under platform.core.* and attached to the default agent, but only
+% surface when both the `agentBuilder:experimentalFeatures` and `contextEngine:enabled`
+% advanced settings are turned on. Uncomment when the Context Engine is publicly available.
+
+`platform.core.sml_search`
+:   Searches the Semantic Metadata Layer (SML) for {{kib}} assets such as saved visualizations, dashboards, workflows, and connectors, using hybrid lexical and semantic retrieval.
+
+`platform.core.sml_attach`
+:   Attaches {{kib}} assets found by `sml_search` to the conversation as attachments, given one or more chunk IDs.
+-->
+
+### Cases tools
+
+Cases tools search and manage [cases](/explore-analyze/cases.md) for tracking and managing issues. Access follows the current user's Cases privileges.
+
+`platform.core.cases` {applies_to}`stack: ga 9.3+`
+:   Searches and retrieves [cases](/explore-analyze/cases.md).
+
+`platform.core.cases.manage` {applies_to}`stack: preview 9.5`
+:   Creates, updates, deletes, and assigns cases, and manages their tags and custom fields. Supports creating from a template and bulk updates.
+
+`platform.core.cases.attachments` {applies_to}`stack: preview 9.5`
+:   Manages case attachments, including adding comments, linking alerts, linking events, and listing existing attachments.
+
+`platform.core.cases.observables` {applies_to}`stack: preview 9.5`
+:   Manages case observables such as IP addresses, domains, file hashes, URLs, emails, and registry keys.
+
+### Workflows tools
 ```{applies_to}
-stack: preview 9.4+
-serverless: preview
+stack: preview 9.5
 ```
 
-Dashboard tools enable agents to create and manage [dashboards](/explore-analyze/dashboards.md) through [chat](../chat.md).
+Workflows tools help agents author and inspect [Elastic Workflows](/explore-analyze/workflows.md) by exposing step, trigger, connector, and example libraries, and by validating and previewing workflow definitions. To run or track a workflow, use the [workflow execution tools](#workflow-execution-tools) in the platform core namespace.
 
-`dashboard.create_dashboard`
-:   Creates a dashboard with specified title, description, panels, and markdown summary.
+`platform.workflows.validate_workflow` {applies_to}`stack: preview 9.5`
+:   Validates a workflow YAML definition against all validation rules, including YAML syntax, schema conformance, step-name uniqueness, and Liquid template syntax.
 
-`dashboard.update_dashboard`
-:   Updates an existing dashboard with new panels or modifications.
+`platform.workflows.get_step_definitions` {applies_to}`stack: preview 9.5`
+:   Returns the available workflow step types with their input and configuration parameters and usage examples. Supports filtering by step type, keyword, or category.
 
-## Streams tools
+`platform.workflows.get_trigger_definitions` {applies_to}`stack: preview 9.5`
+:   Returns the available workflow trigger types with their schemas and YAML examples, including manual, scheduled, alert, and event-driven triggers.
+
+`platform.workflows.get_connectors` {applies_to}`stack: preview 9.5`
+:   Returns the connector instances configured in the deployment, including their action type and supported step types, so a workflow step can reference the correct connector.
+
+`platform.workflows.get_examples` {applies_to}`stack: preview 9.5`
+:   Searches and retrieves example workflow YAML files from a bundled library to illustrate correct syntax patterns.
+
+`platform.workflows.workflow_execute_step` {applies_to}`stack: preview 9.5`
+:   Executes a single workflow step against the live environment for testing and field discovery. Steps that write data or call external systems require explicit user confirmation before running.
+
+### Streams tools
 ```{applies_to}
 stack: ga 9.4+
 ```
 
 Streams tools provide capabilities for exploring and managing [Streams](/solutions/observability/streams/streams.md).
 
-`platform.streams.list_streams` {applies_to}`stack: ga 9.4+`
-:   Lists all streams the current user has access to, returning each stream's name, type, and description.
+:::{note}
+In 9.5, the individual stream read tools were consolidated into `inspect_streams` and `diagnose_stream`, and the individual stream write tools were consolidated into `update_stream`, `create_partition`, and `delete_stream`. The tools removed in 9.5 are listed at the end of this section.
+:::
 
-`platform.streams.get_stream` {applies_to}`stack: ga 9.4+`
-:   Returns the full definition of a single stream: type, description, retention policy, processing rules, field mappings, routing/partitions, and parent-child hierarchy.
+`platform.streams.inspect_streams` {applies_to}`stack: preview 9.5`
+:   Inspects one or more streams in a single call, returning only the requested aspects: overview, schema, quality, lifecycle, processing, or routing. Supports inspecting all streams at once.
 
-`platform.streams.get_schema` {applies_to}`stack: ga 9.4+`
-:   Returns the schema of a stream: mapped fields (own and inherited) with their types, and unmapped fields detected from recent documents.
-
-`platform.streams.get_data_quality` {applies_to}`stack: ga 9.4+`
-:   Returns data quality metrics for a stream: degraded document percentage, failed document percentage, an overall quality indicator (good, degraded, or poor), and failure store status.
-
-`platform.streams.get_lifecycle_stats` {applies_to}`stack: ga 9.4+`
-:   Returns lifecycle and storage statistics for a stream: effective retention policy and its source, total storage size, document count, and ILM tier breakdown.
+`platform.streams.diagnose_stream` {applies_to}`stack: preview 9.5`
+:   Gathers time-windowed health metrics, failure store error samples, and a per-field degraded-field breakdown for a single stream. Use this tool for root cause analysis when data quality issues are detected.
 
 `platform.streams.query_documents` {applies_to}`stack: ga 9.4+`
-:   Queries or aggregates data from a stream using a natural language description. The tool translates the description into an {{es}} query internally. Returns documents in flat dot-notation format or aggregation results.
+:   Queries or aggregates data from a stream using a natural language description. The tool translates the description into an {{es}} query internally. Returns documents in flat dot-notation format or aggregation results, and can query either the primary data store or the failure store.
 
-`platform.streams.get_failed_documents` {applies_to}`stack: ga 9.4+`
-:   Retrieves documents from a stream's failure store with error details (error type, message, stack trace) and the original document that failed ingestion. Use this tool for root cause analysis when data quality issues are detected.
+`platform.streams.design_pipeline` {applies_to}`stack: preview 9.5`
+:   Designs changes to a stream's processing pipeline from a natural language instruction, simulates them against sample documents, and returns the proposed pipeline for review. The change is applied only when committed with `update_stream`.
 
-% sig_events.search_kis is behind a feature flag in 9.4 — uncomment when publicly available.
-% Source: https://github.com/elastic/kibana/pull/258399
-<!-- `platform.streams.sig_events.search_kis` {applies_to}`stack: ga 9.4+`
-:   Searches Knowledge Indicators derived from streams data to enrich context for a target stream, service, or group of streams. -->
+`platform.streams.list_ilm_policies` {applies_to}`stack: preview 9.5`
+:   Lists the {{ilm}} ({{ilm-init}}) policies available on the cluster, including phase definitions and which streams and indices use them. On serverless, {{ilm-init}} is not available.
+
+`platform.streams.update_stream` {applies_to}`stack: preview 9.5`
+:   Updates a stream's configuration, including its processing pipeline, description, retention lifecycle, field mappings, and failure store. Requires user confirmation before applying changes.
+
+`platform.streams.create_partition` {applies_to}`stack: preview 9.5`
+:   Creates a child stream (partition) under a parent wired stream, using a routing condition to select the documents it receives. [Partitioning](/solutions/observability/streams/management/partitioning.md) and [wired streams](/solutions/observability/streams/streams.md) are in technical preview. Requires user confirmation.
+
+`platform.streams.delete_stream` {applies_to}`stack: preview 9.5`
+:   Permanently deletes a stream and all of its child streams. This action cannot be undone and requires user confirmation.
+
+The following streams tools were available in 9.4 and were removed in 9.5:
+
+`platform.streams.list_streams` {applies_to}`stack: ga 9.4, removed 9.5`
+:   Listed all streams the current user had access to. Replaced by `inspect_streams` with the `overview` aspect.
+
+`platform.streams.get_stream` {applies_to}`stack: ga 9.4, removed 9.5`
+:   Returned the full definition of a single stream. Replaced by `inspect_streams`.
+
+`platform.streams.get_schema` {applies_to}`stack: ga 9.4, removed 9.5`
+:   Returned the schema of a stream. Replaced by `inspect_streams` with the `schema` aspect.
+
+`platform.streams.get_data_quality` {applies_to}`stack: ga 9.4, removed 9.5`
+:   Returned data quality metrics for a stream. Replaced by `inspect_streams` with the `quality` aspect and by `diagnose_stream`.
+
+`platform.streams.get_lifecycle_stats` {applies_to}`stack: ga 9.4, removed 9.5`
+:   Returned lifecycle and storage statistics for a stream. Replaced by `inspect_streams` with the `lifecycle` aspect.
+
+`platform.streams.get_failed_documents` {applies_to}`stack: ga 9.4, removed 9.5`
+:   Retrieved documents from a stream's failure store with error details. Replaced by `diagnose_stream` and by `query_documents` with the failure store source.
+
+### Significant events tools
+```{applies_to}
+stack: preview 9.5
+```
+
+Significant events tools search, create, and manage [significant events](/solutions/observability/streams/management/significant-events.md) and Knowledge Indicators for [Streams](/solutions/observability/streams/streams.md).
+
+**Prerequisites:** Significant events require an [Enterprise license](https://www.elastic.co/subscriptions) and must be enabled for the deployment through the `observability:streamsEnableSignificantEvents` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings).
+
+`platform.sig_events.ki_search` {applies_to}`stack: preview 9.5`
+:   Searches Knowledge Indicators (both feature-based and query-based) derived from streams data to enrich context for a target stream, service, or group of streams.
+
+`platform.sig_events.ki_feature_create` {applies_to}`stack: preview 9.5`
+:   Creates a feature Knowledge Indicator that captures a newly discovered stream behavior pattern. Requires user confirmation.
+
+`platform.sig_events.ki_query_create` {applies_to}`stack: preview 9.5`
+:   Creates a query Knowledge Indicator that saves a newly discovered detection query. Requires user confirmation.
+
+`platform.sig_events.event_search` {applies_to}`stack: preview 9.5`
+:   Searches significant events across all streams or a specific stream, so the agent can check current event state before creating or updating events.
+
+`platform.sig_events.event_create` {applies_to}`stack: preview 9.5`
+:   Creates a significant event for one or more streams. Requires user confirmation.
+
+`platform.sig_events.event_status_update` {applies_to}`stack: preview 9.5`
+:   Updates the status of an existing significant event.
+
+`platform.streams.sig_events.event_investigation_attach` {applies_to}`stack: preview 9.5`
+:   Records an investigation run against a significant event, keeping the event up to date as an investigation starts and finishes.
 
 ## Observability tools
 
 Observability tools provide specialized capabilities for monitoring applications, infrastructure, and logs.
-
-% TODO (9.4): Document time range awareness behavior change in agent-builder-observability.md.
-% As of 9.4, the agent uses the current page's time picker by default when invoking tools,
-% unless the user specifies a different time range.
-% Source: https://github.com/elastic/kibana/pull/256343
 
 `observability.get_alerts` {applies_to}`stack: ga 9.3+`
 :   Retrieves Observability [alerts](/solutions/observability/incident-management/alerting.md) within a specified time range, supporting filtering by status (active/recovered) and KQL queries.
@@ -230,13 +333,9 @@ Security tools provide specialized capabilities for security monitoring, threat 
 `security.alerts` {applies_to}`stack: ga 9.3+`
 :   Searches and analyzes [security alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md) using full-text or structured queries for finding, counting, aggregating, or summarizing alerts.
 
-$$$agent-builder-security-entity-risk-score-tool$$$
-`security.entity_risk_score`
-:   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users, hosts, and services) to identify high-risk entities in the environment. This tool is only available when the risk score index exists in the current space. {applies_to}`stack: ga 9.4+`
-
 $$$agent-builder-security-attack-discovery-search-tool$$$
-`security.attack_discovery_search`
-:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs. Requires attack discovery to have been run at least once. {applies_to}`stack: ga 9.4+`
+`security.attack_discovery_search` {applies_to}`stack: ga 9.4+`
+:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs. Requires attack discovery to have been run at least once.
 
 $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 :   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.
@@ -244,15 +343,100 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 `security.create_detection_rule` {applies_to}`stack: ga 9.4+`
 :   Creates a security detection [rule](/solutions/security/detect-and-alert/rule-types.md) from a natural language description, including ES|QL query generation, metadata, tags, and scheduling. Currently supports [ES|QL rules](/solutions/security/detect-and-alert/esql.md) only. Form changes suggested in chat must be applied manually.
 
+`security.run_rule_preview` {applies_to}`stack: preview 9.5`
+:   Runs a security detection rule preview over a time range without saving the rule, then stores the result as a rule preview attachment so you can inspect the alerts the rule would have generated.
+
+    **Prerequisites:** The `rulePreviewAttachmentEnabled` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
+
+### Entity Analytics tools
+
+[Entity Analytics](/solutions/security/advanced-entity-analytics.md) tools work with security entities and their risk scores, asset criticality, watchlists, and threat hunting leads.
+
+$$$agent-builder-security-entity-risk-score-tool$$$
+`security.entity_risk_score` {applies_to}`stack: ga 9.4+`
+:   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users, hosts, and services) to identify high-risk entities in the environment. This tool is only available when the risk score index exists in the current space.
+
 `security.get_entity` {applies_to}`stack: ga 9.4+`
 :   Retrieves an entity profile (user, host, service, or generic) from the Entity store by entity ID (EUID), including any alerts that contributed to its risk score. Requires the entity risk engine and entity store to be enabled.
 
 `security.search_entities` {applies_to}`stack: ga 9.4+`
 :   Searches the Entity store for security entities (host, user, service, or generic), with filtering by risk score, asset criticality, entity attributes, and lifecycle timestamps. Use when the entity ID (EUID) is not known, use `security.get_entity` when it is.
 
+`security.set_asset_criticality` {applies_to}`stack: ga 9.5+`
+:   Sets or removes the [asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) level for a security entity and recalculates the entity's risk score.
+
+**Watchlist tools** manage [entity watchlists](/solutions/security/advanced-entity-analytics/watchlists.md). Mutating actions require user confirmation before running. A [Platinum or higher license](https://www.elastic.co/subscriptions) is required, and adding or removing entities also requires the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) to be enabled and populated.
+
+`security.list_watchlists` {applies_to}`stack: ga 9.5+`
+:   Lists the entity watchlists in the current space, including name, description, risk modifier, and member sources.
+
+`security.create_watchlist` {applies_to}`stack: ga 9.5+`
+:   Creates a new watchlist in the current space.
+
+`security.update_watchlist` {applies_to}`stack: ga 9.5+`
+:   Updates an existing watchlist, such as renaming it or changing its description or risk modifier.
+
+`security.delete_watchlist` {applies_to}`stack: ga 9.5+`
+:   Permanently deletes a watchlist. This action cannot be undone.
+
+`security.add_entities_to_watchlist` {applies_to}`stack: ga 9.5+`
+:   Adds one or more entities to a watchlist by entity ID (EUID).
+
+`security.remove_entities_from_watchlist` {applies_to}`stack: ga 9.5+`
+:   Removes one or more entities from a watchlist by entity ID (EUID).
+
+**Lead generation tools** surface AI-generated [threat hunting leads](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md#entity-threat-hunting-leads) for security entities. An [Enterprise license](https://www.elastic.co/subscriptions) is required.
+
+`security.list_leads` {applies_to}`stack: preview 9.5`
+:   Lists AI-generated threat hunting leads for security entities, sorted by priority.
+
+`security.generate_leads` {applies_to}`stack: preview 9.5`
+:   Generates new threat hunting leads. The job runs asynchronously and returns immediately.
+
+`security.dismiss_lead` {applies_to}`stack: preview 9.5`
+:   Dismisses an AI-generated threat hunting lead by ID, marking it as triaged.
+
+### SIEM readiness tools
+
+SIEM readiness tools assess [SIEM readiness](/solutions/security/get-started/siem-readiness.md) across four dimensions: coverage, quality, continuity, and retention.
+
+`security.siem_readiness.get_coverage` {applies_to}`stack: preview 9.5`
+:   Retrieves SIEM data coverage health across the SIEM data categories (endpoint, identity, network, cloud, and application/SaaS), including document counts, detection-rule presence, health status, and findings.
+
+`security.siem_readiness.get_quality` {applies_to}`stack: preview 9.5`
+:   Retrieves SIEM data quality health based on ECS compatibility check results, including incompatible field mappings, health status, and findings. Requires a prior Data Quality dashboard run.
+
+`security.siem_readiness.get_continuity` {applies_to}`stack: preview 9.5`
+:   Retrieves SIEM ingest pipeline continuity health, including active pipelines, failure rates, silent data streams, and volume drops.
+
+`security.siem_readiness.get_retention` {applies_to}`stack: preview 9.5`
+:   Retrieves SIEM data retention health, including data streams and indices with retention configuration, retention days, and compliance status.
+
+### PCI compliance tools
+```{applies_to}
+stack: preview 9.5
+```
+
+PCI compliance tools support PCI DSS v4.0.1 compliance assessments.
+
+**Prerequisites:** The `pciComplianceAgentBuilder` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
+
+`security.pci_scope_discovery` {applies_to}`stack: preview 9.5`
+:   Discovers PCI-relevant data coverage across indices, including custom-ingested data, and classifies it by scope area.
+
+`security.pci_compliance` {applies_to}`stack: preview 9.5`
+:   Runs PCI DSS v4.0.1 compliance checks or reports, returning either per-requirement findings with ES|QL evidence or a visual scorecard.
+
+`security.pci_field_mapper` {applies_to}`stack: preview 9.5`
+:   Inspects non-ECS index fields and suggests mappings to ECS fields for PCI queries. Use when scope discovery reports low ECS coverage.
+
 ## Inline tools
 
-Some [built-in skills](../builtin-skills-reference.md) include inline tools that are only available while that skill is active.
+Some [built-in skills](../builtin-skills-reference.md) include inline tools that are only available while that skill is active. Because they are scoped to a skill rather than assignable on their own, they are not listed among the namespaced tools in this reference. For example:
+
+- The [`dashboard-management`](../builtin-skills-reference.md#agent-builder-dashboard-management-skill) skill includes an inline tool for generating and updating dashboards.
+- The `rule-management` skill includes the `platform.alerting.manage_rule` and `platform.alerting.manage_action_policy` tools for composing and modifying alerting rules and their action policies.
+- The `alert-triage` skill includes the `security.alert-triage` tool for prioritizing the alert queue.
 
 :::{tip}
 You can also manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).
@@ -263,4 +447,3 @@ You can also manage tools programmatically. To learn more, refer to [Tools API](
 - [Tools in {{agent-builder}}](../tools.md)
 - [Custom ES|QL tools](esql-tools.md)
 - [Custom index search tools](index-search-tools.md)
-

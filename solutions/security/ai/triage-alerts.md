@@ -109,3 +109,10 @@ Based on your initial AI-assisted analysis, determine whether you're dealing wit
 ::::
 
 :::::
+
+## Related: Automate triage with workflows [ai-triage-related-workflows]
+
+The interactive flow above is one way to triage; you can also encode the same job as a declarative automation that runs without an analyst in the loop:
+
+- [Triage a security alert into a case](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-triage-with-case.md): Enrich an alert, open a case, attach observables, isolate the host, and notify the on-call analyst.
+- [Triage alerts with an AI agent](/explore-analyze/workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md): Invoke an {{agent-builder}} agent on each Attack Discovery alert, attach the analysis to a case, and post a Slack summary.

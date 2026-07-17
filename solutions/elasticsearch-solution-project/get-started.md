@@ -21,6 +21,11 @@ This solution provides specialized UI tools, such as Agent Builder, Playground, 
 If you're looking for an introduction to the {{stack}} or the {{es}} product, go to [](/get-started/index.md) or [](/manage-data/data-store.md).
 :::
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills@elasticsearch-onboarding
+This skill guides users through search concepts and helps create a working search use case.
+:::
+
 ::::::{stepper}
 :::::{step} Choose your deployment type
 

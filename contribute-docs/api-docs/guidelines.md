@@ -376,7 +376,7 @@ Here are some principles for effective examples:
 
 #### Generated examples
 
-In some cases examples are automatically generated as part of the publishing process.
+Sometimes examples are automatically generated as part of the publishing process.
 It's preferable to include curated examples in your OpenAPI document with a realistic combination of property values.
 You can provide more than one example object in the examples field, so consider adding examples that reflect the most common use cases.
 

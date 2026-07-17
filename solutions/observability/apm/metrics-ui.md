@@ -27,6 +27,22 @@ If you’re experiencing a problem with your service, you can use this page to a
 Dashboard resolution is version-aware: the Metrics tab uses the service’s runtime version — alongside data format, SDK name, and language — to load the correct dashboard. For example, .NET 9 and later services use a built-in runtime metrics dashboard, while .NET 8 and earlier services use a legacy contrib metrics dashboard. This ensures you always see the metrics that match your service’s runtime version.
 :::
 
+## Instrumentation changes during migration [instrumentation-change]
+```{applies_to}
+stack: ga 9.3
+serverless: ga
+```
+
+When migrating a service to OpenTelemetry instrumentation, you may have date ranges that contain both classic {{product.apm}} and OpenTelemetry data. The **Metrics** tab shows callouts to help you navigate this transition period.
+
+**Instrumentation change detected**
+:   When the **Metrics** tab detects a change in instrumentation, it shows: "We have detected a change on `<timestamp>` in the instrumentation of your service." It also shows the current instrumentation type and time period, and provides the date range for the previous instrumentation period so you can switch to it.
+
+**Overlapping instrumentation types**
+:   If classic {{product.apm}} and OpenTelemetry data overlap in the selected time range, the **Metrics** tab shows: "This service has overlapping data from multiple instrumentation types." It provides date ranges for each instrumentation type so you can click to switch to a specific period.
+
+## JVM metrics
+
 If you’re using the Java APM agent, you can view metrics for each JVM.
 
 :::{image} /solutions/images/observability-jvm-metrics-overview.png

@@ -124,6 +124,28 @@ To start using a custom tool, you must assign it to a [custom agent](../custom-a
 
 :::::
 
+## Protected namespaces
+
+Some tool ID prefixes are reserved by Elastic for built-in tools and cannot be used for custom tools. Saving a custom tool whose ID begins with a protected prefix fails with the error `Tool ID "<id>" uses a protected namespace.`
+
+The set of protected prefixes has expanded across {{stack}} versions. The version tag next to each prefix indicates the version in which it was added to the protected list:
+
+- `attachments.*` {applies_to}`stack: ga 9.4+`
+- `filestore.*` {applies_to}`stack: ga 9.4+`
+- `observability.*` {applies_to}`stack: ga 9.3+`
+- `platform.alerting.*` {applies_to}`stack: ga 9.5+`
+- `platform.core.*` {applies_to}`stack: ga 9.2+`
+- `platform.dashboard.*` {applies_to}`stack: ga 9.3+`
+- `platform.sig_events.*` {applies_to}`stack: ga 9.5+`
+- `platform.streams.*` {applies_to}`stack: ga 9.4+`
+- `platform.workflows.*` {applies_to}`stack: ga 9.4+`
+- `search.*` {applies_to}`stack: ga 9.4+`
+- `security.*` {applies_to}`stack: ga 9.3+`
+
+:::{important}
+The protected namespace list has grown across releases and may expand further. Before upgrading to a new version, check the list against your custom tool IDs and recreate any that might collide under a different namespace. Tools whose namespace becomes protected at upgrade time can no longer be modified or deleted.
+:::
+
 ## Best practices
 
 Follow these guidelines to create tools that agents can use effectively.
@@ -138,6 +160,8 @@ The Tool ID is a critical identifier. Use a namespace prefix to group tools logi
 - `finance.search_ticker`
 - `support.get_ticket_details`
 - `ecommerce.cancel_order`
+
+Some prefixes are reserved by Elastic for built-in tools and cannot be used for custom tool IDs. Refer to [Protected namespaces](#protected-namespaces).
 
 ### Writing effective tool descriptions
 

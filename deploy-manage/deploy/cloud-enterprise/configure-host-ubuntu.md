@@ -12,7 +12,7 @@ products:
 
 # Configure an Ubuntu host [ece-configure-hosts-ubuntu]
 
-The following instructions show you how to prepare your hosts on Ubuntu.
+Use the steps on this page to prepare an Ubuntu server for {{ece}} (ECE): install and configure Docker, set up an XFS volume for ECE data, tune kernel and systemd parameters for production workloads, and pin the Docker version to prevent unattended upgrades.
 
 * [Install Docker](#ece-install-docker-ubuntu)
 * [Set up XFS quotas](#ece-xfs-setup-ubuntu)
@@ -22,7 +22,7 @@ The following instructions show you how to prepare your hosts on Ubuntu.
 
 ## Install Docker on Ubuntu [ece-install-docker-ubuntu]
 
-Install a compatible Docker version on Ubuntu.
+Install a compatible Docker version on Ubuntu using `apt`.
 
 ::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
@@ -49,7 +49,7 @@ Install a compatible Docker version on Ubuntu.
       $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     ```
 
-4. Install the correct version of the `docker-ce` package. The following is an example of installing Docker 27.0. If you decide to install a different Docker version, make sure to replace with the desired version in the commands below.
+4. Install the correct version of the `docker-ce` package. The following command is an example of installing Docker 27.0. To install a different Docker version, replace 27.0 with your preferred version from the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise).
 
     ```sh
     sudo apt update && sudo apt install -y docker-ce=5:27.0.* docker-ce-cli=5:27.0.* containerd.io
@@ -166,7 +166,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 4. Adjust the system limits.
 
-    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the {{ecloud}} hosted offering and should be used for {{ece}} as well.
+    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the {{ecloud}} hosted offering and should be used for {{ece}} as well. These settings apply to host-level processes and interactive user sessions (for example, SSH).
 
     ::::{tip}
     If you are using a user name other than `elastic`, adjust the configuration values accordingly.
@@ -189,11 +189,15 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     root             soft    memlock        unlimited
     ```
 
+    ::::{important}
+    The `/etc/security/limits.conf` settings are PAM-based and do not apply to processes running inside Docker containers. To ensure the same limits are enforced inside containers, you must also configure the Docker daemon default ulimits. Refer to [Configure the Docker daemon options](#ece-configure-docker-daemon-ubuntu) for details.
+    ::::
+
 5. NOTE: This step is optional if the Docker registry doesn’t require authentication.
 
     Authenticate the `elastic` user to pull images from the Docker registry you use, by creating the file `/home/elastic/.docker/config.json`. This file needs to be owned by the `elastic` user. If you are using a user name other than `elastic`, adjust the path accordingly.
 
-    **Example**: In case you use `docker.elastic.co`, the file content looks like as follows:
+    **Example**: If you use `docker.elastic.co`, the file content looks like this:
 
     ```text
     {
@@ -246,14 +250,28 @@ For more information, refer to the [Docker daemon configuration overview](https:
       "default-ulimits": {
         "nofile": {
           "Name": "nofile",
-          "Soft": 1048576,
-          "Hard": 1048576
+          "Hard": 1024000,
+          "Soft": 1024000
+        },
+        "memlock": {
+          "Name": "memlock",
+          "Hard": -1,
+          "Soft": -1
+        },
+        "nproc": {
+          "Name": "nproc",
+          "Hard": -1,
+          "Soft": -1
         }
       }
     }
     ```
 
-    This configuration increases the maximum number of open file descriptors available to Docker containers.
+    This configuration ensures that all containers created by the Docker daemon inherit the required resource limits, which are not inherited from `/etc/security/limits.conf`.
+
+    ::::{note}
+    If you already have a `/etc/docker/daemon.json` file with other settings, merge the `default-ulimits` key into the existing file rather than replacing it.
+    ::::
 
 1. Create the `/etc/systemd/system/docker.service.d` directory if it does not exist, then create or update the `/etc/systemd/system/docker.service.d/docker.conf` file with the following configuration:
 

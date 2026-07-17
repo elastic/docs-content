@@ -24,6 +24,16 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 
 ## 9.4.0 [elastic-security-940-breaking-changes]
 
+::::{dropdown} Osquery: Scheduled query results no longer populate action_id
+Starting in 9.4, Osquery scheduled-pack result documents correlate using stable UUIDs (`pack_id` and `schedule_id`) instead of the name-derived `action_id`. `action_id` is no longer populated for scheduled results; it remains populated for live queries. This applies when using the Osquery Manager integration v1.23.0 or later.
+
+**Impact**<br> Any dashboard, saved search, detection rule, or ingest pipeline that groups or filters scheduled Osquery results by `action_id` returns no data after upgrading to 9.4 or later — including the default dashboards bundled with the Osquery Manager integration. Live query results are unaffected. No data is lost: the underlying result data remains fully queryable through the new fields.
+
+**Action**<br> Update any custom (user-authored) dashboards, saved searches, detection rules, and ingest pipelines that reference `action_id` for scheduled results to use `schedule_id` or `pack_id` instead. 
+
+For more information, check [#271572]({{kib-pull}}271572).
+::::
+
 ::::{dropdown} Entity Analytics: Risk scores reset after upgrading to 9.4
 Risk scoring is moving from name-based to ID-based scoring tied to the entity store. Historical name-based risk scores are not migrated to the new model.
 
@@ -34,6 +44,34 @@ Risk scoring is moving from name-based to ID-based scoring tied to the entity st
 For more information, check [#258197]({{kib-pull}}258197).
 ::::
 
+::::{dropdown} Entity Analytics requires additional index privileges for custom roles
+**Details**<br> Starting in 9.4.0, the entity store reads entity data from a new set of indices. Roles that grant access to the Entity Analytics features must now include `read` on the following index patterns:
+
+- `.entities.v2.latest.security_*`
+- `.entities.v2.updates.security_*`
+- `entities-latest-*`
+- `risk-score.risk-score-*`
+- `.entity_analytics.*`
+
+The built-in Security roles have been updated to grant these privileges. Custom roles created against the `v1` index patterns (`.entities.v1.latest.security_*`) are not updated automatically.
+
+**Impact**<br> Users assigned a custom role that does not include the index patterns above will see the **Entity Analytics** page load in a degraded state — without entity data and without the standard "insufficient privileges" message. Users assigned built-in Security roles are not affected.
+
+**Action**<br> If you use custom roles to control access to Entity Analytics, add `read` on the following entity store and risk score index patterns to each affected role:
+
+```yaml
+- names:
+    - ".entities.v2.latest.security_*"
+    - "entities-latest-*"
+    - "risk-score.risk-score-*"
+    - ".entity_analytics.*"
+  privileges:
+    - read
+```
+
+For more information, check [#255800]({{kib-pull}}255800).
+::::
+
 ::::{dropdown} Entity Analytics: Risk engine management APIs removed
 The standalone risk engine is replaced by an entity maintainer integrated into the entity store. The following risk engine management API endpoint is removed:
 
@@ -41,8 +79,7 @@ The standalone risk engine is replaced by an entity maintainer integrated into t
 
 **Impact**<br> Any scripts or automations using this endpoint will fail.
 
-**Action**<br> Remove references to this endpoint. Risk scoring is now managed through the entity store lifecycle. Refer to the Entity Store API documentation for the new endpoints.
-% TODO: Add link to Entity Store API documentation when available. See https://github.com/elastic/docs-content-internal/issues/1100
+**Action**<br> Remove references to this endpoint. Risk scoring is now managed through the entity store lifecycle. Refer to the [Entity store API documentation]({{kib-apis}}group/endpoint-security-entity-store) for the new endpoints.
 ::::
 
 ::::{dropdown} Entity Analytics: Asset criticality values reset and CSV format changed after upgrading to 9.4
@@ -108,8 +145,7 @@ Removed endpoints:
 
 **Impact**<br> Any scripts or automations using these endpoints will fail after upgrading to 9.4.
 
-**Action**<br> Remove references to these endpoints. Refer to the Entity Store API documentation for information on new endpoints.
-% TODO: Add link to Entity Store API documentation when available. See https://github.com/elastic/docs-content-internal/issues/1100
+**Action**<br> Remove references to these endpoints. Refer to the [Entity store API documentation]({{kib-apis}}group/endpoint-security-entity-store) for information on new endpoints.
 ::::
 
 ::::{dropdown} Entity store index structure has changed

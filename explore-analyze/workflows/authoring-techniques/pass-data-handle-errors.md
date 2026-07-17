@@ -17,6 +17,8 @@ products:
 
 A key feature of workflows is the ability to pass data between steps and handle failures gracefully. This page explains the mechanisms for controlling data flow and building resilient, fault-tolerant automations.
 
+For definitions of the terms used on this page, refer to the [Glossary](/explore-analyze/workflows/reference/glossary.md).
+
 ## Data flow [workflows-data-flow]
 
 Every step in a workflow produces an output. By default, this output is added to a global `steps` object in the workflow's context, making it available to all subsequent steps.
@@ -74,14 +76,14 @@ By default, if any step fails the entire workflow execution stops immediately (t
 | Layer | What it controls | Use for |
 |---|---|---|
 | **Per-step** `on-failure` | What happens when one step fails. | Retry transient failures, continue past non-critical steps, or provide a fallback. |
-| **Workflow-level** `settings.on-failure` | Default `on-failure` applied to every step. | A consistent global retry policy. |
+| **Workflow-level** `settings.on-failure` | Default `on-failure` applied to every step. Refer to [Workflow settings](/explore-analyze/workflows/authoring-techniques/settings.md). | A consistent global retry policy. |
 | **Cross-workflow** [`workflows.failed` trigger](/explore-analyze/workflows/triggers/event-driven-triggers.md) | A separate handler workflow that runs after another workflow has failed. | Paging on-call, opening cases, central error reporting. |
 
 ### Configuration levels [workflows-on-failure-levels]
 
 You can configure `on-failure` at two levels:
 
-**Step-level** — applies to a specific step:
+**Step-level** — Applies to a specific step:
 
 ```yaml
 steps:
@@ -93,7 +95,7 @@ steps:
         delay: "5s"
 ```
 
-**Workflow-level** (configured under `settings`) — applies to all steps as the default error handling behavior:
+**Workflow-level** (configured under `settings`) — Applies to all steps as the default error handling behavior:
 
 ```yaml
 settings:
@@ -134,7 +136,7 @@ The workflow fails when all retries are exhausted, unless paired with `fallback`
 
 ### Fallback [workflows-on-failure-fallback]
 
-Runs alternative steps after the primary step fails and all retries are exhausted. In the following example, when the `delete_critical_document` step fails, the workflow runs two additional steps: one sends a Slack notification to devops-alerts using `{{workflow.name}}`, while the other logs the error details from the failed step using `{{steps.delete_critical_document.error}}`.
+Runs alternative steps after the primary step fails and all retries are exhausted. In the following example, when the `delete_critical_document` step fails, the workflow runs two additional steps: one sends a Slack notification to devops-alerts using `{{workflow.name}}`, while the other logs the error details from the failed step using `{{steps.delete_critical_document.error.message}}`. The `error` object also exposes other fields, such as `error.status` for HTTP-style failures; reference a specific field rather than the whole object, which renders as `[object Object]`.
 
 ```yaml
 on-failure:
@@ -147,10 +149,10 @@ on-failure:
     - name: log_failure
       type: console
       with:
-        message: "Document deletion failed, error: {{steps.delete_critical_document.error}}"
+        message: "Document deletion failed, error: {{steps.delete_critical_document.error.message}}"
 ```
 
-Within fallback steps, access error information from the failed primary step using `steps.<failed_step_name>.error`.
+Within fallback steps, access the failed primary step's error object at `steps.<failed_step_name>.error` and reference its fields (`message`, `status`, and others) rather than the object itself.
 
 ### Continue [workflows-on-failure-continue]
 
@@ -196,9 +198,10 @@ In the following example:
 
 ### Restrictions [workflows-on-failure-restrictions]
 
-- Flow-control steps (`if`, `foreach`) cannot have workflow-level `on-failure` configurations.
+- The `if` step cannot have an `on-failure` configuration. (`foreach` and `while` loops do support loop-level `on-failure`; see their step references.)
 - Fallback steps run only after all retries have been exhausted.
 - When combined, failure-handling options are processed in this order: retry → fallback → continue.
+- For `foreach` and `while` loops, use `iteration-on-failure` when you want to handle one failed iteration without failing the whole loop.
 
 ### Handle failures across workflows [workflows-cross-workflow-handler]
 
@@ -224,14 +227,17 @@ Workflows support dynamic values through template variables and template express
 
 ### Template variables [workflows-template-variables]
 
-Template variables are the data sources you can reference inside template expressions. The following template variables are available:
+Template variables are the data sources you can reference inside template expressions. The most common ones:
 
-| Variable type | Syntax | Description |
-|---------------|--------|-------------|
-| Step outputs | `steps.<step_name>.output` | Data produced by each step during execution. Access results from previous steps to chain operations together. Refer to [Reference outputs](/explore-analyze/workflows/templating.md#workflows-ref-step-outputs) for more details. |
-| Constants | `consts.<constant_name>` | Reusable values defined once at the workflow level using the `consts` block. Refer to [Reference constants](/explore-analyze/workflows/templating.md#workflows-ref-constants) for more details. |
-| Inputs | `inputs.<input_name>` | Parameters defined in the `inputs` block that can be provided when the workflow is triggered. Refer to [Reference inputs](/explore-analyze/workflows/templating.md#workflows-ref-inputs) for more details. |
-| Context variables | `execution.id`, `event`, `foreach.item` | Data automatically provided by the workflow engine at runtime, including execution metadata, trigger data, and loop state. Refer to [Context variables reference](/explore-analyze/workflows/templating.md#workflows-context-variables) for more details. |
+- `inputs.<name>` — values provided when the workflow was invoked.
+- `consts.<name>` — constants declared at the top of the workflow.
+- `steps.<name>.output` — output of a previous step.
+- `steps.<name>.error` — error from a failed step (when paired with `on-failure: continue`).
+- `event.*` — the trigger payload.
+- `execution.*` — metadata about the current execution.
+- `foreach.item`, `foreach.index`, `foreach.total` — loop context inside a `foreach` step.
+
+For the full canonical reference with every variable and an example per entry, refer to [Context variables](/explore-analyze/workflows/reference/context-variables.md).
 
 #### Choose between constants and inputs [workflows-constants-or-inputs]
 

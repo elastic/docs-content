@@ -1,5 +1,6 @@
 ---
 navigation_title: Guidelines
+description: "Guidelines for writing cumulative documentation that stays valid across multiple product versions."
 ---
 
 # Cumulative docs guidelines
@@ -13,7 +14,7 @@ reach out to **@elastic/docs** in the related GitHub issue or PR.
 To get started with cumulative docs, ask yourself:
 
 * Does this content vary between products, versions, or deployment types?
-* Is this a feature lifecycle change or just content improvement?
+* Is this a feature lifecycle change or a content improvement?
 * Will users benefit from knowing this information?
 
 If the answer to at least one of these questions is _yes_, follow these guidelines to write cumulative documentation.
@@ -65,12 +66,14 @@ The `applies_to` keys fall into three dimensions based on the products and user 
 | Deployment | Represents how the Elastic platform is deployed and orchestrated. Use when your content is primarily about deployment, configuration, or management tasks that differ based on how users have deployed Elasticsearch and Kibana, or a deployment-specific tutorial for a stack task. | `deployment` (with subkeys: `ece`, `eck`, `ech`, `self`), `serverless` |
 | Product | Represents software outside the core Elastic platform that has its own versioning scheme. Use when your content is primarily about features or functionality specific to these standalone products. | `product` (with subkeys, including those for APM agents, EDOT SDKs, and client libraries) |
 
+For background on the deployment types and stack flavors these dimensions map to, and additional guidance on writing content that varies by deployment type, refer to [](/contribute-docs/how-to/deployment-types/index.md).
+
 Most pages focus on one primary context, so you should only use keys from one dimension at the page level. For example, a page about a Kibana feature would use the Stack/Serverless dimension, while a page about configuring cluster settings would use the Deployment dimension.
 
 ### Dimension usage tips
 
-* `serverless` can appear in both the Stack/Serverless dimension and the Deployment dimension. This is because Serverless acts as both a "version" or "flavor" of the stack (like `stack`), and a unique deployment type with specialized management processes (like `ece` or `eck`).
-* The versioned Elastic Stack (`stack`) can be deployed across ECE, ECK, ECH, and self-managed clusters. When deployment, configuration, or management tasks are available or consistent across these deployment types (often because they're built into Elasticsearch), use `stack` in the Stack/Serverless dimension rather than specifying each deployment type individually.
+:::{include} /contribute-docs/_snippets/applies_to-stack-serverless.md
+:::
 * If your content has nuances specific to another dimension, determine the "primary" dimension for the page level `applies_to` frontmatter, and then add the secondary dimension information as requirements, or as tagged sections later on the page. 
 * To determine the primary dimension of a page, consider what the main focus of the page is, what most of the content relates to, and what context users will primarily identify with when they arrive at the page. For example, if a page is primarily about a Kibana feature but mentions deployment-specific configuration, use the Stack/Serverless dimension as primary. Refer to [Cumulative docs example scenarios](/contribute-docs/how-to/cumulative-docs/example-scenarios.md#primary-dimension) for an example.
 
@@ -195,7 +198,10 @@ refer to [](reference.md#key).
   * Section-level and inline annotations can reference items from a different dimension than the page-level dimension when needed to clarify specific requirements.
 % Source: https://elastic.github.io/docs-builder/versions/#defaults-and-hierarchy
 * **Do not assume a default product or deployment type.**
-  Treat all products and deployment types equally. Don't treat one as the "base" and the other as the "exception".
+  Treat all products and deployment types equally. Don't treat one as the "base" and the other as the "exception."
+
+:::{include} /contribute-docs/_snippets/self-managed-naming.md
+:::
 
 ### Common scenarios [products-and-deployment-models-examples]
 
@@ -215,8 +221,8 @@ Here are some common scenarios you might come across:
   but one specific paragraph only applies to Elastic Cloud Hosted and Serverless,
   and another paragraph only applies to Elastic Cloud Enterprise.
   ([example](example-scenarios.md#page-section-varies-deployment))
-* Likewise, when the difference is specific to just one paragraph or list item, the same rules apply.
-  Just the syntax slightly differs so that it stays inline.
+* Likewise, when the difference is specific to one paragraph or list item, the same rules apply.
+  The syntax slightly differs so that it stays inline.
   % TO DO: Add example
   % ([example](example-scenarios.md#))
 
@@ -243,7 +249,7 @@ Here are some common scenarios you might come across:
   `applies_to` does not accept date-based versioning.
 * **Be aware of exceptions.**
   If the content also applies to another context (for example a feature is removed in both Kibana 9.x and Serverless),
-  then it must be kept for any user reading the page that may be using a version of Kibana prior to the removal.
+  then it must be kept for any user reading the page that might be using a version of Kibana before the removal.
 
 ### Common scenarios [versions-examples]
 
@@ -277,7 +283,7 @@ For versioned products like the Elastic Stack:
   % ([example](example-scenarios.md#))
 * When a feature in a versioned product changes lifecycle state,
   append the new lifecycle state and the version in which the state changed to the relevant key in `applies_to`.
-  This applies to all lifecycle states including `preview`, `beta`, `ga`, `deprecated`, and `removed`
+  This applies to all lifecycle states including `preview`, `ga`, `deprecated`, `experimental`, and `removed`
   ([example](example-scenarios.md#lifecycle-changed)).
 
 
@@ -287,8 +293,8 @@ For versioned products like the Elastic Stack:
   ([example](example-scenarios.md#stateful-serverless)).
 * When a feature in an unversioned product is removed, but the content also applies to
   another context (for example a feature is removed in both Kibana 9.x and Serverless),
-  then it must be kept for any user reading the page that may be using a version of
-  the product prior to the removal.
+  then it must be kept for any user reading the page that might be using a version of
+  the product before the removal.
   ([example](example-scenarios.md#removed))
 
 ## When to indicate something is NOT applicable
@@ -313,7 +319,7 @@ This is true for most situations. However, it can still be useful to call it out
 
 
 * **When only one section, paragraph, or element describes functionality that is unavailable in the context set at a higher level**.
-  For example, if a page is largely applicable to both `serverless` and `stack`, but one section describes functionality that is not possible in serverless (and there is no alternative).
+  For example, if a page is largely applicable to both `serverless` and `stack`, but one section describes functionality that is unavailable in serverless (and there is no alternative).
 
   ````md
   ---

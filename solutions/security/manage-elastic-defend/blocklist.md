@@ -26,6 +26,10 @@ The blocklist is not intended to broadly block benign applications for non-secur
 
 By default, a blocklist entry is recognized globally across all hosts running {{elastic-defend}}. You can also assign a blocklist entry to specific {{elastic-defend}} integration policies, which blocks the process only on hosts assigned to that policy.
 
+## Add a blocklist entry [add-blocklist-entry]
+
+To add a blocklist entry:
+
 1. Depending on your version, do one of the following:
    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Go to the **Artifacts** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Blocklist** tab.
    * {applies_to}`stack: ga 9.0-9.3` Go to the **Blocklist** page using the navigation menu or the global search field.
@@ -71,6 +75,11 @@ By default, a blocklist entry is recognized globally across all hosts running {{
     1. Go to the **Policies** page, then click on an integration policy.
     2. On the **Policy settings** tab, ensure that the **Malware protections** and **Blocklist** toggles are switched on. Both settings are enabled by default.
 
+::::{tip}
+:applies_to: { stack: ga 9.4+, serverless: ga }
+
+To add multiple blocklist entries at once, you can import an NDJSON file instead. Refer to [Import and export blocklist entries](#import-export-blocklist).
+::::
 
 
 ## View and manage the blocklist [manage-blocklist]
@@ -81,6 +90,36 @@ The **Blocklist** UI displays all the blocklist entries that have been added to 
 :alt: blocklist
 :screenshot:
 :::
+
+
+### Import and export blocklist entries [import-export-blocklist]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+::::{admonition} Requirements
+* To export blocklist entries, you need the **Blocklist: Read** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).
+* To import per-policy items, you need the **Blocklist: All** privilege.
+* To import global items, you need the **Blocklist: All** and the **Global artifact management: All** privilege.
+* To import items to a different space, you need the **Global artifact management: All** privilege.
+::::
+
+You can import and export blocklist entries as NDJSON files:
+
+- **When the list is empty**: Click **Import blocklist entries**.
+- **When the list has entries**: Click the actions menu {icon}`boxes_vertical`, then select **Import blocklist entries** or **Export blocklist entries**.
+
+::::{note}
+The imported file must be an NDJSON file exported from {{kib}}. Files exported from third-party software are not supported.
+::::
+
+When you import an NDJSON file, the imported blocklist entries are appended to your existing entries — existing entries are not removed or overwritten.
+
+Items are processed individually on import — per-policy items that are not visible in the current space are skipped, while the remaining items are imported.
+
+If an imported per-policy item is assigned to a policy that doesn't exist in the current environment, the item is imported with the policy assignment removed.
 
 
 ### Edit a blocklist entry [edit-blocklist-entry]

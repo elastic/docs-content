@@ -6,9 +6,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/alerts-ui-monitor.html#troubleshoot-signals
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-ui-monitor.html#troubleshoot-signals
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -22,12 +22,12 @@ This topic covers common troubleshooting issues when creating or managing [detec
 
 ## Setup errors [setup-errors-ts]
 
-Depending on your privileges and whether detection system indices have already been created for the {{kib}} space, you might get one of these error messages when you open the **Alerts** or **Rules** page:
+Depending on your privileges and whether detection system indices have already been created for the {{kib}} space, you might get one of these error messages when you open the **Alerts** or **{{siem-rules-ui}}** page:
 
 ::::{dropdown} Let's set up your detection engine
 :name: setup-detection-engine-ts
 
-If you get this message, a user with specific privileges must visit the **Alerts** or **Rules** page before you can view detection alerts and rules. Refer to [Detections prerequisites and requirements](../../solutions/security/detect-and-alert/detections-privileges.md) for a list of all the requirements.
+If you get this message, a user with specific privileges must visit the **Alerts** or **{{siem-rules-ui}}** page before you can view detection alerts and rules. Refer to [Detections prerequisites and requirements](../../solutions/security/detect-and-alert/detections-privileges.md) for a list of all the requirements.
 
 :::{note}
 For **self-managed** {{stack}} deployments only, this message might display when the `xpack.encryptedSavedObjects.encryptionKey` setting has not been added to the `kibana.yml` file. For more information, refer to [Turn on detections](../../solutions/security/detect-and-alert/turn-on-detections.md).
@@ -47,6 +47,25 @@ For **self-managed** {{stack}} deployments only, this message might display when
 ::::
 
 
+## Rule privileges [rule-privileges-ts]
+
+::::{dropdown} Warning about required read privileges for indices you can access
+:name: rule-privileges-combined-patterns-ts
+
+You might receive the following warning for a rule even when your role clearly includes privileges for the index patterns:
+
+`This rule may not have the required read privileges to the following index patterns: [...]`
+
+This can happen when your role's index privileges are defined as a single, comma-separated pattern. When you enter multiple index patterns as one combined entry (for example, `auditbeat-*,filebeat-*`), the privileges aren't granted to each pattern individually, so the rule's privilege check fails.
+
+To fix this, itemize the index privileges so each pattern is its own entry:
+
+1. Go to the **Custom Roles** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then edit the affected role.
+2. Split any combined, comma-separated index patterns into separate entries, then save the role.
+3. Edit and save the affected rule so it picks up the updated privileges. Turning a rule off and on does not refresh its privileges.
+::::
+
+
 ## {{ml-cap}} rules [ML-rules-ts]
 
 ::::{dropdown} {{ml-cap}} rule is failing and a required {{ml}} job is stopped
@@ -54,7 +73,7 @@ For **self-managed** {{stack}} deployments only, this message might display when
 
 If a {{ml}} rule is failing, check to make sure the required {{ml}} jobs are running and start any jobs that have stopped.
 
-1. Go to **Rules** → **Detection rules (SIEM)**, then select the {{ml}} rule. The required {{ml}} jobs and their statuses are listed in the **Definition** section.
+1. Go to **Rules** → **{{siem-rules-ui}}**, then select the {{ml}} rule. The required {{ml}} jobs and their statuses are listed in the **Definition** section.
 
    :::{image} /troubleshoot/images/security-rules-ts-ml-job-stopped.png
    :alt: Rule details page with ML job stopped

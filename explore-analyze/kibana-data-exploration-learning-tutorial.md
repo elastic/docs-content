@@ -74,7 +74,7 @@ Discover supports two exploration modes. This tutorial uses **{{esql}}** (Elasti
 
 :::::{step} Run your first query
 
-Enter the following query, then select {icon}`playFilled` **Run** or **Search**. If you choose to type your own query, the editor helps you with relevant autocomplete suggestions for commands, fields, and values.
+Enter the following query, then select {icon}`play_filled` **Run** or **Search**. If you choose to type your own query, the editor helps you with relevant autocomplete suggestions for commands, fields, and values.
 
 ```esql
 FROM kibana_sample_data_logs <1>
@@ -150,7 +150,7 @@ The aggregation query produced a chart showing event counts by response code. Yo
 :screenshot:
 :::
 
-**Result:** {{kib}} opens a new, unsaved dashboard with your response code chart already on it.
+**Result:** {{kib}} opens a new, unsaved dashboard with your response code chart already on it. The chart is saved to the library and linked to the dashboard, so any edits you make to the chart are reflected on every dashboard that uses it. Panels you add directly to a dashboard without saving to the library are local to that dashboard only.
 
 :::{tip}
 Want to show the results table on a dashboard instead of the chart? Save your Discover session (select **Save** in the toolbar), then from your dashboard, import it from the library as a new panel. This embeds the table view, including the query and any filters you applied.
@@ -227,7 +227,7 @@ A dashboard often starts with a row of metrics for key numbers at a glance. Usin
 4. From the **Available fields** list, drag **host.keyword** to the **Breakdown** area. Lens draws one line per host, each in a different color, so you can compare traffic patterns across servers.
 
 5. Add a reference line to give the chart visual context:
-   1. Select the **Add layer** icon {icon}`plus_in_square`, then select **Reference lines**.
+   1. Select the **Add layer** icon {icon}`plus_square`, then select **Reference lines**.
    2. Select the reference line value and enter `80`. This marks a "high traffic" threshold on the chart.
    3. Set the color to red, then under **Text decoration**, enter a label such as `High traffic` and select **Fill below** to shade the area under the line.
 
@@ -347,7 +347,7 @@ Dashboard panels are interactive. Try selecting the `404` bar in the **Events by
 To remove the filter, select the {icon}`cross` next to it in the dashboard's filter bar.
 
 :::{tip}
-If you know which dimensions your viewers will want to filter by, you can add [controls](dashboards/add-controls.md) (dropdown menus, range sliders) directly to the dashboard so they don't have to build those filters themselves.
+If you know which dimensions your viewers will want to filter by, you can add [controls](visualize/dashboard-controls.md) (dropdown menus, range sliders) directly to the dashboard so they don't have to build those filters themselves.
 :::
 :::::
 
@@ -358,6 +358,8 @@ Drag panels by their header to reposition them, and drag the corner handles to r
 - **Top row:** place metric panels side by side for key numbers at a glance. Keep them short, about 5 grid rows, so they don't dominate the page.
 - **Middle rows:** arrange time series charts (line charts) and bar charts below the metrics. A moderate height (roughly 10–12 grid rows) gives charts enough room to be readable without wasting space.
 - **Bottom row:** use wider panels for tables that benefit from more horizontal space and can afford a taller height.
+
+For a panel sizing reference with recommended widths and heights for each chart type, refer to [Organize dashboard panels](dashboards/arrange-panels.md#dashboard-grid-layout).
 
 To reduce clutter, consider hiding redundant axis titles. For example, on a bar chart the x-axis title may not add value when the panel title already describes the data. To hide it, edit the panel in Lens, open the {icon}`brush` **Style** panel, then under **Bottom axis**, set **Axis title** to **None**.
 
@@ -377,6 +379,7 @@ When you are happy with the layout, select **Save** in the toolbar.
 
 Your dashboard now combines multiple panel types built with Lens, and you've seen how inline editing and interactive filtering make the dashboard both customizable and interactive. To learn more, refer to [Dashboards](dashboards.md), [Lens](visualize/lens.md), and [Panels and visualizations](visualize.md).
 
+
 ## Step 4: Share the dashboard [share-the-dashboard]
 
 Once your dashboard is ready, share it with your team:
@@ -390,12 +393,643 @@ Users who receive the link need to authenticate and have the appropriate privile
 
 For more details on sharing options, access control, and managing dashboard ownership, refer to [Sharing dashboards](dashboards/sharing.md).
 
+## Recreate the dashboard with the API [recreate-dashboard-api]
+```{applies_to}
+stack: preview 9.4+
+serverless: preview
+```
+
+Everything you built in this tutorial can also be reproduced in a single API call. The [Dashboards API](dashboards/create-dashboards-programmatically.md) accepts a JSON payload that encodes the complete dashboard, including panel types, data sources, layout, and display options, making it straightforward to version-control dashboards or provision consistent environments programmatically.
+
+<!--
+  The curl example below is verified end-to-end by
+  .github/scripts/verify-dashboards-api-example.py. The Dashboards API is in
+  technical preview, so its schema can change between releases. Re-run that
+  script (with KIBANA_URL and API_KEY set) whenever you edit the payload, or
+  whenever the spec at https://github.com/elastic/dashboards-api-spec is
+  updated. Last verified against dashboards-api-spec @ 84120e3 on 2026-05-06.
+-->
+:::::::{dropdown} Recreate this dashboard with one API call
+
+The following request creates the same dashboard as the one you built in this tutorial, including the optional panels suggestions.
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/dashboards
+{
+  "title": "Web logs overview",
+  "description": "Recreates the dashboard built in the Kibana data exploration tutorial.",
+  "time_range": { "from": "now-90d", "to": "now" },
+  "panels": [
+    {
+      "grid": { "x": 0, "y": 0, "w": 12, "h": 5 },
+      "type": "vis",
+      "config": {
+        "type": "metric",
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_logs",
+          "time_field": "timestamp"
+        },
+        "metrics": [
+          {
+            "type": "primary",
+            "operation": "median",
+            "field": "bytes",
+            "label": "Median response size", <1>
+            "format": { "type": "bytes", "decimals": 2 },
+            "background_chart": { "type": "trend" },
+            "color": {
+              "type": "dynamic",
+              "range": "absolute",
+              "steps": [
+                { "lt": 6000, "color": "#24c292" },
+                { "gte": 6000, "lt": 10000, "color": "#fcd883" },
+                { "gte": 10000, "color": "#f6726a" }
+              ]
+            },
+            "apply_color_to": "background"
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 12, "y": 0, "w": 12, "h": 5 },
+      "type": "vis",
+      "config": {
+        "type": "metric",
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_logs",
+          "time_field": "timestamp"
+        },
+        "metrics": [
+          {
+            "type": "primary",
+            "operation": "unique_count",
+            "field": "clientip",
+            "label": "Unique visitors" <2>
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 24, "y": 0, "w": 12, "h": 5 },
+      "type": "vis",
+      "config": {
+        "type": "metric",
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_logs",
+          "time_field": "timestamp"
+        },
+        "metrics": [
+          {
+            "type": "primary",
+            "operation": "count",
+            "label": "Total requests" <3>
+          },
+          {
+            "type": "secondary",
+            "operation": "count",
+            "label": "Week to week",
+            "time_shift": "1w",
+            "compare": { "to": "primary", "palette": "compare_to", "icon": true, "value": true }
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 36, "y": 0, "w": 12, "h": 5 },
+      "type": "vis",
+      "config": {
+        "type": "metric",
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_logs",
+          "time_field": "timestamp"
+        },
+        "metrics": [
+          {
+            "type": "primary",
+            "operation": "unique_count",
+            "field": "request.keyword",
+            "label": "Unique URLs" <4>
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 0, "y": 5, "w": 24, "h": 10 },
+      "type": "vis",
+      "config": {
+        "type": "xy",
+        "title": "Response size over time, per host", <5>
+        "layers": [
+          {
+            "type": "line",
+            "data_source": {
+              "type": "data_view_spec",
+              "index_pattern": "kibana_sample_data_logs",
+              "time_field": "timestamp"
+            },
+            "x": { "operation": "date_histogram", "field": "timestamp" },
+            "y": [{ "operation": "median", "field": "bytes" }],
+            "breakdown_by": {
+              "operation": "terms",
+              "fields": ["host.keyword"],
+              "limit": 9
+            }
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 24, "y": 5, "w": 24, "h": 10 },
+      "type": "vis",
+      "config": {
+        "type": "xy",
+        "title": "Log volume over time, per host", <6>
+        "layers": [
+          {
+            "type": "line",
+            "data_source": {
+              "type": "data_view_spec",
+              "index_pattern": "kibana_sample_data_logs",
+              "time_field": "timestamp"
+            },
+            "x": { "operation": "date_histogram", "field": "timestamp" },
+            "y": [{ "operation": "count" }],
+            "breakdown_by": {
+              "operation": "terms",
+              "fields": ["host.keyword"],
+              "limit": 9
+            }
+          },
+          {
+            "type": "reference_lines",
+            "data_source": {
+              "type": "data_view_spec",
+              "index_pattern": "kibana_sample_data_logs",
+              "time_field": "timestamp"
+            },
+            "thresholds": [
+              {
+                "operation": "static_value",
+                "value": 80,
+                "label": "High traffic",
+                "color": { "type": "static", "color": "#f6726a" },
+                "icon": "alert"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 0, "y": 15, "w": 24, "h": 10 },
+      "type": "vis",
+      "config": {
+        "type": "xy",
+        "title": "Events by response code", <7>
+        "layers": [
+          {
+            "type": "bar_stacked",
+            "data_source": {
+              "type": "esql",
+              "query": "FROM kibana_sample_data_logs | WHERE response IS NOT NULL | STATS event_count = COUNT(*) BY response | SORT event_count DESC | LIMIT 50"
+            },
+            "x": { "column": "response" },
+            "y": [{ "column": "event_count" }]
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 24, "y": 15, "w": 24, "h": 10 },
+      "type": "vis",
+      "config": {
+        "type": "xy",
+        "title": "Requests by file extension", <8>
+        "layers": [
+          {
+            "type": "bar_stacked",
+            "data_source": {
+              "type": "data_view_spec",
+              "index_pattern": "kibana_sample_data_logs",
+              "time_field": "timestamp"
+            },
+            "x": {
+              "operation": "terms",
+              "fields": ["extension.keyword"],
+              "limit": 9,
+              "includes": { "as_regex": true, "values": [".+"] }
+            },
+            "y": [{ "operation": "count" }]
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 0, "y": 25, "w": 24, "h": 10 },
+      "type": "vis",
+      "config": {
+        "type": "pie",
+        "title": "Traffic distribution by operating system", <9>
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_logs",
+          "time_field": "timestamp"
+        },
+        "metrics": [{ "operation": "count" }],
+        "group_by": [
+          {
+            "operation": "terms",
+            "fields": ["machine.os.keyword"],
+            "limit": 9
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 24, "y": 25, "w": 24, "h": 10 },
+      "type": "vis",
+      "config": {
+        "type": "treemap",
+        "title": "Requests by geography", <10>
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_logs",
+          "time_field": "timestamp"
+        },
+        "metrics": [{ "operation": "count" }],
+        "group_by": [
+          {
+            "operation": "terms",
+            "fields": ["geo.dest"],
+            "limit": 9
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 0, "y": 35, "w": 48, "h": 17 },
+      "type": "vis",
+      "config": {
+        "type": "data_table",
+        "title": "Last 100 events", <11>
+        "data_source": {
+          "type": "esql",
+          "query": "FROM kibana_sample_data_logs | KEEP @timestamp, request, response, bytes | SORT @timestamp DESC | LIMIT 100"
+        },
+        "rows": [
+          { "column": "@timestamp" },
+          { "column": "request" },
+          { "column": "response" }
+        ],
+        "metrics": [
+          { "column": "bytes" }
+        ]
+      }
+    }
+  ]
+}
+```
+
+How each panel maps back to the tutorial:
+
+1. **Median response size**: Lens metric panel from the [Add a metric panel for median response size](#add-a-metric-panel-for-median-response-size) sub-step, including the bytes `format`, the trend `background_chart` for the sparkline, and the dynamic `color` thresholds.
+2. **Unique visitors**: `unique_count` of `clientip`, from the [Optional: add more metrics to build a row](#add-a-metric-panel-for-median-response-size) suggestion.
+3. **Total requests**: `count` with a secondary metric configured for week-over-week comparison via `time_shift: "1w"` and `compare`. Same source as the unique-visitors suggestion.
+4. **Unique URLs**: `unique_count` of `request.keyword`, also from the optional metrics row.
+5. **Response size over time, per host**: line chart of median `bytes` split by host, from the [Optional: add more time series](#add-a-line-chart-of-log-volume-over-time) suggestion in the line-chart sub-step.
+6. **Log volume over time, per host**: the line chart from the [Add a line chart of log volume over time](#add-a-line-chart-of-log-volume-over-time) sub-step. The reference line at value `80` is a separate `reference_lines` layer in the same panel.
+7. **Events by response code**: the {{esql}} bar chart saved to the dashboard from Discover in [Step 2](#explore-data-in-discover). ES|QL chart layers reference query result columns directly in `x` and `y` (for example, `"x": { "column": "response" }`), instead of the `operation`-based form used by data view layers.
+8. **Requests by file extension**: bar chart from the [Add a bar chart of requests by file extension](#add-a-bar-chart-of-requests-by-file-extension) sub-step. The `includes` filter with `as_regex: true` and value `.+` mirrors the regex applied during the inline-edit step.
+9. **Traffic distribution by operating system**: pie chart from the [Expand your dashboard](#expand-your-dashboard) sub-step. Pie panels use `config.type: "pie"` with a `metrics` array and a `group_by` array.
+10. **Requests by geography**: treemap from the same sub-step. Treemaps use the same `metrics` + `group_by` shape as pies.
+11. **Last 100 events**: {{esql}} data table from the [Add a table of recent events with {{esql}}](#add-a-table-of-recent-events-with-esql) sub-step. Categorical columns go in `rows`, numeric columns go in `metrics`.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/dashboards" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "title": "Web logs overview",
+  "description": "Recreates the dashboard built in the Kibana data exploration tutorial.",
+  "time_range": { "from": "now-90d", "to": "now" },
+  "panels": [
+    {
+      "grid": { "x": 0, "y": 0, "w": 12, "h": 5 },
+      "type": "vis",
+      "config": {
+        "type": "metric",
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_logs",
+          "time_field": "timestamp"
+        },
+        "metrics": [
+          {
+            "type": "primary",
+            "operation": "median",
+            "field": "bytes",
+            "label": "Median response size", <1>
+            "format": { "type": "bytes", "decimals": 2 },
+            "background_chart": { "type": "trend" },
+            "color": {
+              "type": "dynamic",
+              "range": "absolute",
+              "steps": [
+                { "lt": 6000, "color": "#24c292" },
+                { "gte": 6000, "lt": 10000, "color": "#fcd883" },
+                { "gte": 10000, "color": "#f6726a" }
+              ]
+            },
+            "apply_color_to": "background"
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 12, "y": 0, "w": 12, "h": 5 },
+      "type": "vis",
+      "config": {
+        "type": "metric",
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_logs",
+          "time_field": "timestamp"
+        },
+        "metrics": [
+          {
+            "type": "primary",
+            "operation": "unique_count",
+            "field": "clientip",
+            "label": "Unique visitors" <2>
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 24, "y": 0, "w": 12, "h": 5 },
+      "type": "vis",
+      "config": {
+        "type": "metric",
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_logs",
+          "time_field": "timestamp"
+        },
+        "metrics": [
+          {
+            "type": "primary",
+            "operation": "count",
+            "label": "Total requests" <3>
+          },
+          {
+            "type": "secondary",
+            "operation": "count",
+            "label": "Week to week",
+            "time_shift": "1w",
+            "compare": { "to": "primary", "palette": "compare_to", "icon": true, "value": true }
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 36, "y": 0, "w": 12, "h": 5 },
+      "type": "vis",
+      "config": {
+        "type": "metric",
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_logs",
+          "time_field": "timestamp"
+        },
+        "metrics": [
+          {
+            "type": "primary",
+            "operation": "unique_count",
+            "field": "request.keyword",
+            "label": "Unique URLs" <4>
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 0, "y": 5, "w": 24, "h": 10 },
+      "type": "vis",
+      "config": {
+        "type": "xy",
+        "title": "Response size over time, per host", <5>
+        "layers": [
+          {
+            "type": "line",
+            "data_source": {
+              "type": "data_view_spec",
+              "index_pattern": "kibana_sample_data_logs",
+              "time_field": "timestamp"
+            },
+            "x": { "operation": "date_histogram", "field": "timestamp" },
+            "y": [{ "operation": "median", "field": "bytes" }],
+            "breakdown_by": {
+              "operation": "terms",
+              "fields": ["host.keyword"],
+              "limit": 9
+            }
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 24, "y": 5, "w": 24, "h": 10 },
+      "type": "vis",
+      "config": {
+        "type": "xy",
+        "title": "Log volume over time, per host", <6>
+        "layers": [
+          {
+            "type": "line",
+            "data_source": {
+              "type": "data_view_spec",
+              "index_pattern": "kibana_sample_data_logs",
+              "time_field": "timestamp"
+            },
+            "x": { "operation": "date_histogram", "field": "timestamp" },
+            "y": [{ "operation": "count" }],
+            "breakdown_by": {
+              "operation": "terms",
+              "fields": ["host.keyword"],
+              "limit": 9
+            }
+          },
+          {
+            "type": "reference_lines",
+            "data_source": {
+              "type": "data_view_spec",
+              "index_pattern": "kibana_sample_data_logs",
+              "time_field": "timestamp"
+            },
+            "thresholds": [
+              {
+                "operation": "static_value",
+                "value": 80,
+                "label": "High traffic",
+                "color": { "type": "static", "color": "#f6726a" },
+                "icon": "alert"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 0, "y": 15, "w": 24, "h": 10 },
+      "type": "vis",
+      "config": {
+        "type": "xy",
+        "title": "Events by response code", <7>
+        "layers": [
+          {
+            "type": "bar_stacked",
+            "data_source": {
+              "type": "esql",
+              "query": "FROM kibana_sample_data_logs | WHERE response IS NOT NULL | STATS event_count = COUNT(*) BY response | SORT event_count DESC | LIMIT 50"
+            },
+            "x": { "column": "response" },
+            "y": [{ "column": "event_count" }]
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 24, "y": 15, "w": 24, "h": 10 },
+      "type": "vis",
+      "config": {
+        "type": "xy",
+        "title": "Requests by file extension", <8>
+        "layers": [
+          {
+            "type": "bar_stacked",
+            "data_source": {
+              "type": "data_view_spec",
+              "index_pattern": "kibana_sample_data_logs",
+              "time_field": "timestamp"
+            },
+            "x": {
+              "operation": "terms",
+              "fields": ["extension.keyword"],
+              "limit": 9,
+              "includes": { "as_regex": true, "values": [".+"] }
+            },
+            "y": [{ "operation": "count" }]
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 0, "y": 25, "w": 24, "h": 10 },
+      "type": "vis",
+      "config": {
+        "type": "pie",
+        "title": "Traffic distribution by operating system", <9>
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_logs",
+          "time_field": "timestamp"
+        },
+        "metrics": [{ "operation": "count" }],
+        "group_by": [
+          {
+            "operation": "terms",
+            "fields": ["machine.os.keyword"],
+            "limit": 9
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 24, "y": 25, "w": 24, "h": 10 },
+      "type": "vis",
+      "config": {
+        "type": "treemap",
+        "title": "Requests by geography", <10>
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_logs",
+          "time_field": "timestamp"
+        },
+        "metrics": [{ "operation": "count" }],
+        "group_by": [
+          {
+            "operation": "terms",
+            "fields": ["geo.dest"],
+            "limit": 9
+          }
+        ]
+      }
+    },
+    {
+      "grid": { "x": 0, "y": 35, "w": 48, "h": 17 },
+      "type": "vis",
+      "config": {
+        "type": "data_table",
+        "title": "Last 100 events", <11>
+        "data_source": {
+          "type": "esql",
+          "query": "FROM kibana_sample_data_logs | KEEP @timestamp, request, response, bytes | SORT @timestamp DESC | LIMIT 100"
+        },
+        "rows": [
+          { "column": "@timestamp" },
+          { "column": "request" },
+          { "column": "response" }
+        ],
+        "metrics": [
+          { "column": "bytes" }
+        ]
+      }
+    }
+  ]
+}'
+```
+
+How each panel maps back to the tutorial:
+
+1. **Median response size**: Lens metric panel from the [Add a metric panel for median response size](#add-a-metric-panel-for-median-response-size) sub-step, including the bytes `format`, the trend `background_chart` for the sparkline, and the dynamic `color` thresholds.
+2. **Unique visitors**: `unique_count` of `clientip`, from the [Optional: add more metrics to build a row](#add-a-metric-panel-for-median-response-size) suggestion.
+3. **Total requests**: `count` with a secondary metric configured for week-over-week comparison via `time_shift: "1w"` and `compare`. Same source as the unique-visitors suggestion.
+4. **Unique URLs**: `unique_count` of `request.keyword`, also from the optional metrics row.
+5. **Response size over time, per host**: line chart of median `bytes` split by host, from the [Optional: add more time series](#add-a-line-chart-of-log-volume-over-time) suggestion in the line-chart sub-step.
+6. **Log volume over time, per host**: the line chart from the [Add a line chart of log volume over time](#add-a-line-chart-of-log-volume-over-time) sub-step. The reference line at value `80` is a separate `reference_lines` layer in the same panel.
+7. **Events by response code**: the {{esql}} bar chart saved to the dashboard from Discover in [Step 2](#explore-data-in-discover). ES|QL chart layers reference query result columns directly in `x` and `y` (for example, `"x": { "column": "response" }`), instead of the `operation`-based form used by data view layers.
+8. **Requests by file extension**: bar chart from the [Add a bar chart of requests by file extension](#add-a-bar-chart-of-requests-by-file-extension) sub-step. The `includes` filter with `as_regex: true` and value `.+` mirrors the regex applied during the inline-edit step.
+9. **Traffic distribution by operating system**: pie chart from the [Expand your dashboard](#expand-your-dashboard) sub-step. Pie panels use `config.type: "pie"` with a `metrics` array and a `group_by` array.
+10. **Requests by geography**: treemap from the same sub-step. Treemaps use the same `metrics` + `group_by` shape as pies.
+11. **Last 100 events**: {{esql}} data table from the [Add a table of recent events with {{esql}}](#add-a-table-of-recent-events-with-esql) sub-step. Categorical columns go in `rows`, numeric columns go in `metrics`.
+
+::::
+
+:::::
+
+For the full request schema, including sections, filter controls, and library-linked panels, refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards/operation/post-dashboards).
+:::::::
+
+
 ## Navigate between Discover and dashboards [navigate-between-apps]
 
 One of {{kib}}'s strengths is how you can move between exploring raw data and visualizing it. Here are the key navigation paths:
 
 **From Discover to a dashboard**
-:   When a classic search or an {{esql}} aggregation produces a chart in Discover, select {icon}`app_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** in earlier versions) next to the chart, then choose **Add to dashboard** to send it to an existing or new dashboard. You can also save the entire Discover session (query, filters, and selected fields) directly to a dashboard from the Discover table toolbar, or save it to the library and add it from there.
+:   When a classic search or an {{esql}} aggregation produces a chart in Discover, select {icon}`app_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** in earlier versions) next to the chart, then choose **Add to dashboard** to send it to an existing or new dashboard. You can also save the current view of the table to a dashboard from the Discover table toolbar, or save the entire Discover session to the library and add it as a panel from a dashboard.
 
 **From a dashboard panel back to Discover**
 :   Open the context menu on any Lens panel and select **Explore in Discover**. {{kib}} opens Discover with the panel's query and filters already applied, so you can drill into the underlying data.

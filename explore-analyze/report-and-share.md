@@ -57,7 +57,7 @@ Anonymous users can also access the link if you have configured [Anonymous authe
 For more information on how to configure reporting in {{kib}}, refer to [Configure reporting in {{kib}}](/deploy-manage/kibana-reporting-configuration.md).
 :::
 
-Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads.
+Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads. For dashboard-specific export instructions, refer to [Share and export dashboards](/explore-analyze/dashboards/sharing.md).
 
 * **PDF** {applies_to}`serverless: unavailable` — Generate and download PDF files of dashboards, visualizations, and **Canvas** workpads. PDF reports are a [subscription feature](https://www.elastic.co/subscriptions).
 * **PNG** {applies_to}`serverless: unavailable` — Generate and download PNG files of dashboards and visualizations. PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
@@ -117,16 +117,16 @@ In the following dashboard, the shareable container is highlighted:
 
 ### CSV report limitations [csv-limitations]
 
-We recommend using CSV reports to export moderate amounts of data only. The feature enables analysis of data in external tools, but it is not intended for bulk export or to backup Elasticsearch data. Report timeout and incomplete data issues are likely if you are exporting data where:
+We recommend using CSV reports to export moderate amounts of data only. The feature enables analysis of data in external tools, but it is not intended for bulk export or to backup Elasticsearch data. The following conditions increase the risk of timeouts or incomplete data:
 
 * More than 250 MB of data is being exported
 * Data is stored on slow storage tiers
 * Any shard needed for the search is unavailable
 * Network latency between nodes is high
-* Cross-cluster search is used
+* Queries use cross-cluster search (CCS) across many indices or remote clusters
 * ES|QL is used and result row count exceeds the limits of ES|QL queries
 
-To work around the limitations, use filters to create multiple smaller reports, or extract the data you need directly with the Elasticsearch APIs.
+For large or long-running exports, use the Elasticsearch APIs directly. They are the recommended path for bulk data extraction. To reduce report size, use filters to create multiple smaller reports.
 
 For more information on using Elasticsearch APIs directly, see [Scroll API]({{es-apis}}operation/operation-scroll), [Point in time API]({{es-apis}}operation/operation-open-point-in-time), [ES|QL](elasticsearch://reference/query-languages/esql/esql-rest.md) or [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](/reference/elasticsearch-clients/index.md).
 
@@ -158,7 +158,7 @@ serverless: unavailable
 ```
 
 * {applies_to}`stack: beta` **Share on a website** — Download and securely share **Canvas** workpads on any website.
-* **Embed code** — Embed fully interactive dashboards as an iframe on web pages.
+* **Embed code** — Embed fully interactive dashboards as an iframe on web pages. Refer to [Embed in a webpage](/explore-analyze/dashboards/sharing.md#embed-dashboard) for detailed instructions.
 
 ::::{note}
 :name: reporting-on-cloud-resource-requirements

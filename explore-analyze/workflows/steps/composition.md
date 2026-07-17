@@ -18,7 +18,7 @@ products:
 Composition steps let one workflow invoke another. Use them to build reusable workflow building blocks, break long workflows into testable pieces, and fan out to background jobs.
 
 :::{warning}
-Composition steps (`workflow.execute`, `workflow.executeAsync`, `workflow.output`, `workflow.fail`) are in technical preview in 9.4. The parameter shapes can change in future releases. Use for prototypes and reusable utility workflows; hold off on critical paths until composition reaches GA.
+Composition steps (`workflow.execute`, `workflow.executeAsync`, `workflow.output`, `workflow.fail`) are in technical preview. The parameter shapes can change in future releases. Use for prototypes and reusable utility workflows; hold off on critical paths until composition reaches GA.
 :::
 
 ## When to use composition
@@ -51,6 +51,9 @@ The engine validates child outputs against the declared schema before returning 
 The execution engine enforces a maximum composition depth to prevent infinite recursion. If a child tries to invoke a grandchild that would exceed the limit, the step fails at the depth check. A workflow also cannot call itself directly.
 
 ---
+
+:::{include} ../_snippets/schema-location-legend.md
+:::
 
 ## `workflow.execute` [workflow-execute]
 

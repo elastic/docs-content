@@ -1,5 +1,6 @@
 ---
 navigation_title: Manage data retention
+description: Manage stream retention policies and view storage size, ingestion averages, and data lifecycle phase distribution.
 applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+

@@ -24,6 +24,14 @@ A snapshot taken using the default `found-snapshots` repository can only be rest
 
 From within {{ech}}, you can restore a snapshot from a different deployment in the same region.
 
+::::{important}
+{{ech}} registers the built-in `found-snapshots` repository on every deployment and uses it along with the `cloud-snapshot-policy` SLM policy for automated snapshots. This repository is your backup on {{ech}}. Snapshot data exists only in this repository and {{ech}} does not mirror it to separate storage or retain deleted snapshots through storage-level versioning or soft delete.
+
+When you delete a snapshot from `found-snapshots`, that data is removed from the repository and cannot be recovered. This also applies to [searchable snapshots](searchable-snapshots.md#back-up-restore-searchable-snapshots) stored in `found-snapshots`.
+
+If you need additional redundancy beyond the default repository, [configure a custom snapshot repository](#ess-repo-types) and take additional snapshots to storage you control.
+::::
+
 ## Prerequisites for {{ech}}
 
 :::{include} _snippets/restore-snapshot-common-prerequisites.md
@@ -53,18 +61,24 @@ The `found-snapshots` repository is specific to each deployment. However, you ca
 
 ## Register a snapshot repository in {{ech}} [register-snapshot-repos-ech]
 
-In **{{ech}}**, snapshot repositories are automatically registered for you, but you can create additional repositories if needed.
+In **{{ech}}**, the `found-snapshots` managed repository is automatically registered for you, but you can create additional repositories if needed, using any of the following methods:
 
 * {{kib}}'s **Snapshot and Restore** feature
 * {{es}}'s [snapshot repository management APIs]({{es-apis}}group/endpoint-snapshot)
 
-To manage repositories in {{kib}}:
+:::{include} _snippets/register-repository-kibana-steps.md
+:::
 
-1. Go to the **Snapshot and Restore** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select the **Repositories** tab. 
-3. To register a snapshot repository, click **Register repository**.
+::::{include} _snippets/ech-snapshot-repository-linking-note.md
+::::
 
-You can also register a repository using the [Create snapshot repository API]({{es-apis}}operation/operation-snapshot-create-repository).
+## Change the default snapshot repository [snapshot-repo-default]
+```{applies_to}
+stack: ga 9.5
+```
+
+:::{include} _snippets/default-snapshot-repository.md
+:::
 
 ## Verify a repository [snapshots-repository-verification]
 

@@ -36,12 +36,12 @@ the Serverless UI, add both the `stack` and `serverless` keys to the `applies_to
 When a section has different applicability than the applicability indicated at the
 page level in the frontmatter, use section-level `applies_to` badges.
 
-#### If labeling serverless vs. stateful [page-section-varies-product]
+#### If labeling serverless versus stateful [page-section-varies-product]
 
 <!--
 TO DO: Consider other alternative titles:
-* If labeling versioned products or serverless vs. stateful.
-* If labeling available vs. unavailable.
+* If labeling versioned products or serverless versus stateful.
+* If labeling available versus unavailable.
 -->
 
 <!--
@@ -49,7 +49,7 @@ TO DO: Please make this better
 -->
 When a documentation set or page is primarily about using a product following its own
 versioning schema or some combination of Elastic Stack components and the Serverless UI,
-it usually includes content that is meant to be used together (i.e. not parallel sections
+it usually includes content that is meant to be used together (that is, not parallel sections
 like in [If labeling deployment modes](#page-section-varies-deployment)), but is only
 available in specific versions or either serverless or stateful.
 
@@ -71,7 +71,7 @@ explicitly stated.
 
 :::{tip}
 **Don’t overload with badges that restate the page-level applicability.**
-In content that is primarily about serverless vs. stateful, use `unavailable`
+In content that is primarily about serverless versus stateful, use `unavailable`
 if functionality is not available at all in `serverless` or `stack`.
 Do not use `unavailable` for specific `stack` versions.
 Instead, include the lifecycle and version and the fact that it is not applicable
@@ -115,8 +115,8 @@ serverless: unavailable
 :::::
 
 :::{tip}
-Likewise, when the difference is specific to just one paragraph or list item, the same rules apply.
-Just the syntax slightly differs so that it stays inline: `` {applies_to}`serverless: unavailable` ``.
+Likewise, when the difference is specific to one paragraph or list item, the same rules apply.
+The syntax slightly differs so that it stays inline: `` {applies_to}`serverless: unavailable` ``.
 :::
 
 #### If labeling deployment modes [page-section-varies-deployment]
@@ -124,7 +124,7 @@ Just the syntax slightly differs so that it stays inline: `` {applies_to}`server
 <!--
 TO DO: Consider other alternative titles:
 * If labeling parallel content on a single page.
-* If labeling applicable vs. not applicable.
+* If labeling applicable versus not applicable.
 -->
 
 <!--
@@ -187,8 +187,8 @@ serverless: ga
 :::::
 
 :::{tip}
-Likewise, when the difference is specific to just one paragraph or list item, the same rules apply.
-Just the syntax slightly differs so that it stays inline: `` {applies_to}`ech: ga` {applies_to}`serverless: ga` ``.
+Likewise, when the difference is specific to one paragraph or list item, the same rules apply.
+The syntax slightly differs so that it stays inline: `` {applies_to}`ech: ga` {applies_to}`serverless: ga` ``.
 :::
 
 ### Choosing a primary dimension for your page [primary-dimension]
@@ -309,7 +309,7 @@ applies_to:
 
 #### If the section lifecycle is different than the page level [unversioned-added-different]
 
-For example, on the [Dashboard controls](https://www.elastic.co/docs/explore-analyze/dashboards/add-controls#add-esql-control) page we added content about new ES|QL controls functionality that was added to Serverless in preview.
+For example, on the [Add variable controls with ES|QL](https://www.elastic.co/docs/explore-analyze/visualize/add-variable-controls) page we added content about new ES|QL controls functionality that was added to Serverless in preview.
 Because this is different than the page-level applicability in the frontmatter, `serverless: ga`,
 label the content about the new functionality with `serverless: preview`.
 
@@ -403,7 +403,7 @@ For example, we removed the `securitySolution:enableVisualizationsInFlyout` sett
 [Configure advanced settings](https://www.elastic.co/docs/solutions/security/get-started/configure-advanced-settings)
 page from the Elastic Stack in 9.1.0 and from Serverless around the same time.
 Because this functionality is still available before 9.1.0, we need that content to continue to be
-available to users on Elastic Stack earlier versions while communicating to users on newer versions
+available to users on Elastic Stack earlier versions while communicating to users on later versions
 that it is no longer available.
 
 :::::{tab-set}
@@ -479,7 +479,7 @@ When your documentation has accumulated many variations across different context
 
 ### Code block content varies [code-block]
 
-Often the content in a code block will vary between situations (versions, deployment types, etc).
+Often the content in a code block will vary between situations (versions, deployment types, and so on).
 There are a couple possible solutions.
 
 #### Solution A: Use a code callout [code-block-callout]
@@ -490,7 +490,7 @@ Using a code callout is the lightest-touch solution, but might not be sufficient
 
 * The code block and its callouts fit vertically on a typical laptop screen.
   This will reduce the risk of users copying the code snippet without reading the information in the callout.
-* Syntax is either just added or just removed — syntax is not modified.
+* Syntax is either added or removed — syntax is not modified.
   It is difficult to communicate that some syntax is needed in more than one situation but varies depending on the situation.
 * The code block will not require more than 3 `applies_to`-related callouts.
   At that point, the code becomes more difficult to read and use.
@@ -563,8 +563,8 @@ but might not be sufficient in all cases.
 
 **When to use inline `applies_to`**:
 
-* Workflow steps that vary between situations can be easily isolated.
-* Each step that varies, only varies between 3 or fewer situations (deployment types, versions, etc).
+* Workflow steps that vary between situations can be isolated.
+* Each step that varies, only varies between 3 or fewer situations (deployment types, versions, and so on).
 * There are no more than 3 steps that need to be split into multiple lines with `applies_to` badges.
 
 **Best practices**:
@@ -659,7 +659,7 @@ Sibling pages are a last resort when no other solutions are appropriate.
 
 * Neither [inline `applies_to` badges](#workflow-inline) or [applies switch tabs](#workflow-tabs) are appropriate.
 * The workflow has significant differences across multiple procedures.
-* There are chained procedures where not all of the procedures are needed for all contexts
+* There are chained procedures where not all the procedures are needed for all contexts
   or where the flow across procedures is muddied when versioning context is added.
 * The workflow exists in a very complex page that is already heavily using tabs and other tools we use for versioning differences.
   This makes it difficult to add another “layer” of content.
@@ -719,12 +719,12 @@ For example, versioning the screenshot on the [Dashboards](https://www.elastic.c
 
 **When to use applies switch tabs**:
 * When the content is structurally similar but differs in detail — for example, slightly different instructions, outputs, or paths.
-* When you want to avoid repeating most of the surrounding content and isolate just the difference.
+* When you want to avoid repeating most of the surrounding content and isolate the difference.
 
 **Best practices**:
 * Only include content that varies inside the tab — don’t wrap entire pages or unrelated information.
 * Keep tabs short and focused to reduce cognitive load.
-* Label tabs clearly and consistently (e.g., by version or product).
+* Label tabs clearly and consistently (for example, by version or product).
 
 % TO DO: Add example
 % **Example**:

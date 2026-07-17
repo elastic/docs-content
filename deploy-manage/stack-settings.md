@@ -78,10 +78,12 @@ For {{ech}} and {{ece}} deployments, you edit {{stack}} settings through the {{e
 6. Apply the necessary settings in the flyout and select **Back**.
 7. Select **Save** to apply the changes to the deployment. Saving your changes initiates a configuration plan change that restarts the affected components for you.
 
-For further details and examples, refer to the resource for your deployment type: 
+:::{note}
+For further details and examples, including how to manage settings through the API for each deployment type, refer to:
 
 * [{{ech}}](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md)
 * [{{ece}}](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md)
+:::
 
 ::::
 

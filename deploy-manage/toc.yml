@@ -1,4 +1,8 @@
 project: 'Deploy and manage'
+
+suppress:
+  - DeepLinkingVirtualFile
+
 toc:
   - file: index.md
   - file: deploy.md
@@ -11,12 +15,16 @@ toc:
             children:
               - file: deploy/elastic-cloud/subscribe-from-marketplace.md
                 children:
+                  - file: deploy/elastic-cloud/marketplace-trial-upgrade.md
                   - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-aws-marketplace.md
                   - hidden: deploy/elastic-cloud/complete-registration-of-an-annual-subscription-on-aws-marketplace.md
                   - hidden: deploy/elastic-cloud/azure-marketplace-pricing.md
                   - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-gcp-marketplace.md
                   - file: deploy/elastic-cloud/aws-marketplace.md
                   - file: deploy/elastic-cloud/azure-native-isv-service.md
+                    children:
+                      - file: deploy/elastic-cloud/azure-native-isv-service-logs-metrics.md
+                      - file: deploy/elastic-cloud/azure-native-isv-service-troubleshooting.md
                   - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md
                   - file: deploy/elastic-cloud/heroku.md
                     children:
@@ -52,6 +60,7 @@ toc:
                       - file: deploy/elastic-cloud/edit-stack-settings.md
                       - file: deploy/elastic-cloud/add-plugins-extensions.md
                         children:
+                          - file: deploy/elastic-cloud/add-plugins-provided-with-ech.md
                           - file: deploy/elastic-cloud/upload-custom-plugins-bundles.md
                           - file: deploy/elastic-cloud/manage-plugins-extensions-through-api.md
                       - file: deploy/elastic-cloud/custom-endpoint-aliases.md
@@ -644,6 +653,14 @@ toc:
       - file: api-keys/serverless-project-api-keys.md
       - file: api-keys/elastic-cloud-api-keys.md
       - file: api-keys/elastic-cloud-enterprise-api-keys.md
+  - file: app-connections.md
+    children:
+      - file: app-connections/oauth-clients.md
+        children:
+          - file: app-connections/create-oauth-client.md
+          - file: app-connections/connect-mcp-host.md
+          - file: app-connections/revoke-oauth-client.md
+      - file: app-connections/manage-app-connections.md
   - file: manage-connectors.md
   - file: remote-clusters.md
     children:
@@ -697,6 +714,7 @@ toc:
           - file: monitor/autoops/cc-autoops-as-cloud-connected.md
             children:
               - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
+              - file: monitor/autoops/cc-autoops-metrics-storage-locations.md
               - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
               - file: monitor/autoops/autoops-sm-custom-certification.md
               - file: monitor/autoops/autoops-disable-metrics-collection.md
@@ -791,8 +809,10 @@ toc:
                 children:
                   - file: monitor/logging-configuration/kibana-log-settings-examples.md
   - file: kibana-reporting-configuration.md
+  - file: kibana-custom-branding.md
   - file: cloud-organization.md
     children:
+      - file: cloud-organization/manage-multiple-organizations.md
       - file: cloud-organization/billing.md
         children:
           - file: cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md

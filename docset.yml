@@ -4,9 +4,36 @@ max_toc_depth: 2
 features:
   primary-nav: true
 
+cta:
+  monitor-kubernetes:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-kubernetes
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  monitor-aws:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-aws
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  azure-mp:
+    button:
+      label: Get started on Azure
+      url: https://portal.azure.com?sourceCampaignName=elasticweb-docs&sourceCampaignId=elasticweb-docs#view/Azure_Marketplace_Elastic/CreateBlade/offerId/elastic.ec-azure-pp
+    benefits:
+      - "Simplified billing and MACC burndown"
+      - "Manage resources from the Azure portal"
+      - "Built-in logs and metrics forwarding"
+
 exclude:
   - 'README.md'
-  - 'raw-migrated-files/**'
+  - 'changelog/**'
+  - 'releases/**'
 
 cross_links:
   - apm-agent-android
@@ -110,6 +137,7 @@ subs:
   stack-manage-app:   "Stack Management"
   stack-monitor-app:   "Stack Monitoring"
   rules-ui:   "Rules"
+  siem-rules-ui: "Detection rules (SIEM)"
   connectors-ui:   "Connectors"
   connectors-feature:   "Actions and Connectors"
   stack-rules-feature:   "Stack Rules"
@@ -121,6 +149,8 @@ subs:
   ls-pipelines-app:   "Logstash Pipelines"
   maint-windows-app:   "Maintenance Windows"
   maint-windows-cap:   "Maintenance windows"
+  alerting-v2-system:   "experimental alerting system"
+  alerting-v2-system-cap:   "Experimental alerting system"
   custom-roles-app:   "Custom Roles"
   data-source:   "data view"
   data-sources:   "data views"
@@ -139,6 +169,8 @@ subs:
   fleet-server:   "Fleet Server"
   integrations-server:   "Integrations Server"
   integrations:   "Integrations"
+  managed-integration:   "Elastic Managed integration"
+  managed-integrations:   "Elastic Managed integrations"
   package-registry:   "Elastic Package Registry"
   artifact-registry:   "Elastic Artifact Registry"
   aws:   "AWS"
@@ -290,9 +322,9 @@ subs:
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
   kube-stack-version: 0.12.4
-  helm-version: 3.19.5
-  ece-docker-images-8: 8.19.11
-  ece-docker-images-9: 9.3.0
+  helm-version: 3.21.0
+  ece-docker-images-8: 8.19.16
+  ece-docker-images-9: 9.3.5
   search-platform: "Search AI Platform"
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"

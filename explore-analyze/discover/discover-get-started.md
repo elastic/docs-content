@@ -29,6 +29,8 @@ This context-aware experience is determined by both your solution context and th
 
 When you access **Discover** outside of a specific solution context, or when working with data types that don't have specialized experiences, you get the default **Discover** interface with all its core functionality for general-purpose data exploration.
 
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` The active profile also shapes [AI-powered deep analysis](#analyze-with-ai): when you query logs, metrics, or traces from the matching solution context, the agent receives domain-specific guidance on which fields to group by and which {{esql}} commands to use. For example, it uses the `TS` command for time series metrics.
+
 ### Context-awareness with multiple data types
 
 Your query may include multiple data types that each have tailored experiences; for example, if you query both `logs-*` and `traces-*` indices within an Observability context.
@@ -40,7 +42,7 @@ In this case **Discover** provides the default experience until it detects that 
 You can check which experience is currently active for your current Discover session. This can help you confirm whether the type of data you're currently exploring is properly detected or if Discover is currently using its default experience.
 
 1. Open the Inspector:
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**. You can also select **Inspect tab** from the application menu to inspect the active tab.
    * {applies_to}`stack: ga 9.0-9.3` Select **Inspect** from the application menu.
 1. Open the **View** dropdown, then select **Profiles**.
 
@@ -349,6 +351,8 @@ You can open new tabs or duplicate existing ones to compare different queries:
 - To start a fresh exploration in a new tab, select the {icon}`plus` icon next to the existing tabs.
 - To test variations of your current query in a new tab, hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Duplicate**.
 
+A session supports a maximum of 25 open tabs. When the limit is reached, the {icon}`plus` icon and **Duplicate** are disabled. You can't add more tabs until you close some.
+
 To manage and organize your tabs, you can:
 - Rename them: Double-click its label or hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Rename**.
 - Reorder them: Drag and drop a tab to move it.
@@ -359,7 +363,7 @@ To manage and organize your tabs, you can:
   If you want to discard all open tabs, you can also start a {icon}`plus` **New session**/**New** from the application menu. When you use this option, any unsaved changes to your current session are lost.
   :::
 - Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`arrow_down` **Tabs menu** icon located at the end of the tab bar.
-  - {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` Tabs closed at the same time (for example, when navigating away from Discover) are grouped together in the {icon}`arrow_down` **Tabs menu**. You can expand a group to view the individual tabs, restore a specific tab, or restore all tabs in the group at once.
+  - {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` Tabs closed at the same time (for example, when navigating away from Discover) are grouped together in the {icon}`arrow_down` **Tabs menu**. You can expand a group to view the individual tabs, restore a specific tab, or restore all tabs in the group at once. If restoring a group would exceed the 25-tab limit, only the first tabs in the group are restored up to the remaining capacity.
 
 To keep all your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
 
@@ -384,7 +388,7 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 1. In the application menu, select **Save**.
 2. Enter a title and a description for the session.
 3. Optionally store [tags](../find-and-organize/tags.md) and the time range with the session.
-4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, use **Add to dashboard** to choose where to save the session. For details, refer to [Save a Discover session](save-open-search.md#_save_a_discover_session).
+4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, use **Add to dashboard** to also add the session as a panel on a dashboard, in addition to the library. For details, refer to [Save a Discover session](save-open-search.md#_save_a_discover_session).
 5. Select **Save**.
 
 
@@ -393,12 +397,47 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
 
 
+## Analyze your data with AI [analyze-with-ai]
+
+```{applies_to}
+stack: ga 9.5
+serverless: ga
+```
+
+**Discover** integrates with [{{agent-builder}}](../ai-features/elastic-agent-builder.md) to provide AI-powered analysis of your {{esql}} query results. The [`discover-data-analysis` skill](../ai-features/agent-builder/builtin-skills-reference.md#agent-builder-discover-data-analysis-skill) runs aggregation queries against the full dataset behind your current view, renders a chart for the main finding, and proposes drill-down queries you can run in a new tab.
+
+This feature is available only when **Discover** is in [{{esql}} mode](/explore-analyze/discover/try-esql.md). To write or fix the query itself with AI, use the [AI assistance in the {{esql}} editor](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-ai-assistance).
+
+To start an analysis:
+
+1. Switch to {{esql}} mode and run a query so results are loaded in the table.
+2. Select the **AI Agent** button in the {{kib}} header, or press {kbd}`cmd+;` (Mac) / {kbd}`ctrl+;` (Windows and Linux), to open the agent chat.
+
+   The agent automatically receives your current query, columns, sample rows, and time range as context.
+
+3. Ask the agent to analyze your data. For example, prompt it with `analyze this data` or a more specific question.
+4. Review the agent's findings, the inline visualization, and the suggested drill-down queries.
+
+You can also ask the agent for follow-up analyses, including correlations between fields, time-over-time comparisons, and field statistics for specific columns.
+
+### Context-aware deep analysis
+
+When your data matches one of the [context-aware experiences](#context-aware-discover), the agent receives shape-specific guidance so the analysis is tailored to the data type:
+
+* **Logs**: groups by `log.level`, `service.name`, `host.name`, and `event.dataset`; surfaces error and warning frequency and shifts in level distribution.
+* **Metrics**: uses the {{esql}} `TS` source command for time series data streams, runs `TS_INFO` first to discover metric names, types, and dimension fields, then aggregates with the right function for each metric type (`RATE` or `SUM` for counters, `AVG`, `MAX`, `MIN`, or `PERCENTILE` for gauges, `PERCENTILE` for histograms).
+* **APM traces**: focuses on latency percentiles of transaction and span durations, throughput by transaction or span name, and error rate via `event.outcome`.
+* **OTel traces**: focuses on latency percentiles of `duration`, throughput by service and span kind, and error rate via `status.code`.
+
+If your query doesn't match any context-aware profile, the agent infers the analysis strategy from the column names and types in the results instead.
+
+
 ## Generate alerts [alert-from-Discover]
 
 From **Discover**, you can create a rule to periodically check when data goes above or below a certain threshold within a given time interval.
 
 1. Ensure that your data view, query, and filters fetch the data for which you want an alert.
-2. In the application menu, click **Alerts > Create search threshold rule**.
+2. In the application menu, select **Create alert rule** (or **Alerts** in earlier versions), then select **Create search threshold rule**.
 
     The **Create rule** form is pre-filled with the latest query sent to {{es}}.
 
