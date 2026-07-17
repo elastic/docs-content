@@ -280,7 +280,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a crash in index fields formatting when a field or index was named using a reserved JavaScript object property (such as `constructor` or `__proto__`) [#277851]({{kib-pull}}277851).
 * Fixes an issue where the **Source event** link in an alert's **Highlighted fields** section failed to open the document when its source index had been restored (for example, from a cold or frozen tier) and renamed [#277703]({{kib-pull}}277703).
 * Preserves the prebuilt rule `revision` (incremented by 1) when upgrading a rule to a different rule type, matching the behavior of same-type upgrades [#275627]({{kib-pull}}275627).
-* Updates the bundled `curl` library to 8.20.0 in {{elastic-defend}}, improving the stability of network operations on Linux.
+* Updates the bundled `curl` library in {{elastic-defend}}, improving the stability of network operations on Linux.
 * Fixes an issue where {{elastic-defend}} on macOS did not attempt to recover a failed subscription to network events, which previously remained stuck.
 * Fixes a crash in {{elastic-defend}} when the Kafka broker rejected a document that was too large.
 * Fixes an issue in {{elastic-defend}} that could result in incomplete addresses in network event tracking.
