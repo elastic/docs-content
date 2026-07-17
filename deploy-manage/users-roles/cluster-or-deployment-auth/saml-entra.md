@@ -6,9 +6,7 @@ applies_to:
   stack: all
 products:
   - id: elasticsearch
-  - id: cloud-enterprise
-  - id: cloud-hosted
-  - id: cloud-kubernetes
+  - id: kibana
 ---
 # Set up SAML with Microsoft Entra ID [ec-securing-clusters-saml-azure]
 
