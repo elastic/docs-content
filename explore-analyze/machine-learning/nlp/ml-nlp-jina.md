@@ -30,6 +30,43 @@ Text embedding models convert text into vector embeddings for semantic similarit
 | [`jina-embeddings-v5-text-nano`](https://jina.ai/models/jina-embeddings-v5-text-nano/) | Multilingual embeddings for edge deployment. Accepts text input and produces 768-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [EIS](#jina-eis-text-embedding), [External {{infer}} - Jina API](#jina-external), [On-prem - Elastic-integrated](#jina-on-prem), [On-prem - Jina API](#jina-on-prem-additional) |
 | [`jina-embeddings-v3`](https://jina.ai/models/jina-embeddings-v3/) | Multilingual text embeddings. Accepts text input and produces 1024-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [EIS](#jina-eis-text-embedding), [External {{infer}} - Jina API](#jina-external), [On-prem - Elastic-integrated](#jina-on-prem), [On-prem - Jina API](#jina-on-prem-additional) |
 
+#### Performance considerations [jina-text-embeddings-performance]
+
+::::{tab-set}
+:group: jina-text-embeddings
+
+:::{tab-item} jina-embeddings-v5-text-small
+:sync: text-small
+
+- `jina-embeddings-v5-text-small` works best on small, medium or large sized fields that contain natural language. For connector or web crawler use cases, this aligns best with fields like title, description, summary, or abstract.
+- Although the model supports an input token length of 32K, consider chunking very large fields to control latency and cost.
+- Larger documents take longer at ingestion time, and {{infer}} time per document also increases the more fields in a document that need to be processed.
+- The more fields your pipeline has to perform {{infer}} on, the longer it takes per document to ingest.
+
+:::
+
+:::{tab-item} jina-embeddings-v5-text-nano
+:sync: text-nano
+
+- `jina-embeddings-v5-text-nano` works best on small, medium or large sized fields that contain natural language. For connector or web crawler use cases, this aligns best with fields like title, description, summary, or abstract.
+- Although the model supports an input token length of 8K, consider chunking very large fields to control latency and cost.
+- Larger documents take longer at ingestion time, and {{infer}} time per document also increases the more fields in a document that need to be processed.
+- The more fields your pipeline has to perform {{infer}} on, the longer it takes per document to ingest.
+
+:::
+
+:::{tab-item} jina-embeddings-v3
+:sync: text-v3
+
+- `jina-embeddings-v3` works best on small, medium or large sized fields that contain natural language. For connector or web crawler use cases, this aligns best with fields like title, description, summary, or abstract.
+- Although `jina-embeddings-v3` supports an input token length of 8K, it's best to limit the input to 2048-4096 tokens for optimal performance. For larger fields that exceed this limit - for example, `body_content` on web crawler documents - consider chunking the content into multiple values, where each chunk can be under 4096 tokens.
+- Larger documents take longer at ingestion time, and {{infer}} time per document also increases the more fields in a document that need to be processed.
+- The more fields your pipeline has to perform {{infer}} on, the longer it takes per document to ingest.
+
+:::
+
+::::
+
 ### Multimodal embedding models [jina-multimodal-embeddings]
 
 Multimodal embedding models convert text, images, video, audio, and documents such as PDF into vector embeddings in a shared vector space. 
@@ -41,6 +78,34 @@ Multimodal embedding models convert text, images, video, audio, and documents su
 | [`jina-clip-v2`](https://jina.ai/models/jina-clip-v2/) | Multilingual multimodal embeddings for text and image retrieval. Accepts text and image input and produces 1024-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [EIS](#jina-omni-getting-started), [External {{infer}} - Jina API](#jina-external), [On-prem - Jina API](#jina-on-prem-additional) |
 | [`jina-embeddings-v4`](https://jina.ai/models/jina-embeddings-v4/) | Universal multimodal embeddings for text, image, and PDF retrieval. Accepts text, image, and PDF input and produces 2048-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [External {{infer}} - Jina API](#jina-external), [On-prem - Jina API](#jina-on-prem-additional) |
 | [`jina-vlm`](https://jina.ai/models/jina-vlm/) | Vision-language model for visual question answering. Accepts image and text input and generates text output. Supports input lengths up to 32K tokens. | [On-prem - Jina API](#jina-on-prem-additional) |
+
+#### Performance considerations [jina-omni-performance]
+
+::::{tab-set}
+:group: jina-omni
+
+:::{tab-item} jina-embeddings-v5-omni-small
+:sync: omni-small
+
+- Use short video clips instead of long videos. Embeddings created from long videos are often less accurate for search because they try to represent too much content at once. Splitting videos into short clips or scenes improves retrieval quality.
+- Image, video, and audio {{infer}} is typically more expensive than text alone. Batch and chunk content to control latency and cost.
+- For long text fields: the model supports an input token length of 32K, but splitting very large passages into chunks often improves latency and per-chunk quality.
+
+:::
+
+:::{tab-item} jina-embeddings-v5-omni-nano
+:sync: omni-nano
+
+- Use short video clips instead of long videos. Embeddings created from long videos are often less accurate for search because they try to represent too much content at once. Splitting videos into short clips or scenes improves retrieval quality.
+- Image, video, and audio {{infer}} is typically more expensive than text alone. Batch and chunk content to control latency and cost.
+- `jina-embeddings-v5-omni-nano` works best on small, medium or large sized fields that contain natural language. For connector or web crawler use cases, this aligns best with fields like title, description, summary, or abstract.
+- Although the model supports an input token length of 8K, consider chunking very large fields to control latency and cost.
+- Larger documents take longer at ingestion time, and {{infer}} time per document also increases the more fields in a document that need to be processed.
+- The more fields your pipeline has to perform {{infer}} on, the longer it takes per document to ingest.
+
+:::
+
+::::
 
 ### Code embedding models [jina-code-embeddings]
 
@@ -69,6 +134,30 @@ Reranker models reorder candidate documents by predicted relevance to improve to
 | [`jina-reranker-m0`](https://jina.ai/models/jina-reranker-m0/) | Multimodal reranker for visual documents. Accepts text or image queries and documents and returns relevance rankings. Supports input lengths up to 10K tokens. | [External {{infer}} - Jina API](#jina-external), [On-prem - Elastic-integrated](#jina-on-prem), [On-prem - Jina API](#jina-on-prem-additional) |
 | [`jina-reranker-v2-base-multilingual`](https://jina.ai/models/jina-reranker-v2-base-multilingual/) | Cross-encoder reranker for multilingual search. Accepts text queries and documents and returns relevance rankings. Supports input lengths up to 1K tokens. | [EIS](#jina-eis-rerank), [External {{infer}} - Jina API](#jina-external), [On-prem - Elastic-integrated](#jina-on-prem), [On-prem - Jina API](#jina-on-prem-additional) |
 | [`jina-colbert-v2`](https://jina.ai/models/jina-colbert-v2/) | Multilingual ColBERT model for embedding and reranking. Accepts text input and produces 128-dimensional multi-vector embeddings. Supports input lengths up to 8K tokens. | [External {{infer}} - Jina API](#jina-external), [On-prem - Jina API](#jina-on-prem-additional) |
+
+#### Performance considerations [jina-rerankers-performance]
+
+::::{tab-set}
+:group: jina-rerankers
+
+:::{tab-item} jina-reranker-v3
+:sync: reranker-v3
+
+- `jina-reranker-v3` is designed for top-k reranking in hybrid search and RAG workflows.
+- For larger candidate sets, rerank the most relevant results returned by your first-stage retrieval.
+
+:::
+
+:::{tab-item} jina-reranker-v2-base-multilingual
+:sync: reranker-v2
+
+- `jina-reranker-v2-base-multilingual` works best on small, medium or large sized fields that contain natural language. This aligns best with fields like title, description, summary, or abstract.
+- The model supports an input token length of 1K and automatically chunks larger content.
+- Larger documents take longer to process, and {{infer}} time also increases the more documents are present in the reranking request.
+
+:::
+
+::::
 
 ## Deploy models [jina-deploy]
 
@@ -771,99 +860,6 @@ The following models are available through Jina on-prem but do not currently hav
 * [`ReaderLM-v2`](https://jina.ai/models/ReaderLM-v2/)
 
 For the full list of models that Jina on-prem can run, refer to the [Jina on-prem model catalog](https://github.com/jina-ai/jina-on-prem/wiki/Model-Catalog).
-
-## Performance considerations [jina-performance]
-
-The following guidance can help you choose models and configure ingestion so that latency, cost, and relevance stay balanced for your workload.
-
-### Text embedding models [jina-text-embeddings-performance]
-
-::::{tab-set}
-:group: jina-text-embeddings
-
-:::{tab-item} jina-embeddings-v5-text-small
-:sync: text-small
-
-- `jina-embeddings-v5-text-small` works best on small, medium or large sized fields that contain natural language. For connector or web crawler use cases, this aligns best with fields like title, description, summary, or abstract.
-- Although the model supports an input token length of 32K, consider chunking very large fields to control latency and cost.
-- Larger documents take longer at ingestion time, and {{infer}} time per document also increases the more fields in a document that need to be processed.
-- The more fields your pipeline has to perform {{infer}} on, the longer it takes per document to ingest.
-
-:::
-
-:::{tab-item} jina-embeddings-v5-text-nano
-:sync: text-nano
-
-- `jina-embeddings-v5-text-nano` works best on small, medium or large sized fields that contain natural language. For connector or web crawler use cases, this aligns best with fields like title, description, summary, or abstract.
-- Although the model supports an input token length of 8K, consider chunking very large fields to control latency and cost.
-- Larger documents take longer at ingestion time, and {{infer}} time per document also increases the more fields in a document that need to be processed.
-- The more fields your pipeline has to perform {{infer}} on, the longer it takes per document to ingest.
-
-:::
-
-:::{tab-item} jina-embeddings-v3
-:sync: text-v3
-
-- `jina-embeddings-v3` works best on small, medium or large sized fields that contain natural language. For connector or web crawler use cases, this aligns best with fields like title, description, summary, or abstract.
-- Although `jina-embeddings-v3` supports an input token length of 8K, it's best to limit the input to 2048-4096 tokens for optimal performance. For larger fields that exceed this limit - for example, `body_content` on web crawler documents - consider chunking the content into multiple values, where each chunk can be under 4096 tokens.
-- Larger documents take longer at ingestion time, and {{infer}} time per document also increases the more fields in a document that need to be processed.
-- The more fields your pipeline has to perform {{infer}} on, the longer it takes per document to ingest.
-
-:::
-
-::::
-
-### Multimodal embedding models [jina-omni-performance]
-
-::::{tab-set}
-:group: jina-omni
-
-:::{tab-item} jina-embeddings-v5-omni-small
-:sync: omni-small
-
-- Use short video clips instead of long videos. Embeddings created from long videos are often less accurate for search because they try to represent too much content at once. Splitting videos into short clips or scenes improves retrieval quality.
-- Image, video, and audio {{infer}} is typically more expensive than text alone. Batch and chunk content to control latency and cost.
-- For long text fields: the model supports an input token length of 32K, but splitting very large passages into chunks often improves latency and per-chunk quality.
-
-:::
-
-:::{tab-item} jina-embeddings-v5-omni-nano
-:sync: omni-nano
-
-- Use short video clips instead of long videos. Embeddings created from long videos are often less accurate for search because they try to represent too much content at once. Splitting videos into short clips or scenes improves retrieval quality.
-- Image, video, and audio {{infer}} is typically more expensive than text alone. Batch and chunk content to control latency and cost.
-- `jina-embeddings-v5-omni-nano` works best on small, medium or large sized fields that contain natural language. For connector or web crawler use cases, this aligns best with fields like title, description, summary, or abstract.
-- Although the model supports an input token length of 8K, consider chunking very large fields to control latency and cost.
-- Larger documents take longer at ingestion time, and {{infer}} time per document also increases the more fields in a document that need to be processed.
-- The more fields your pipeline has to perform {{infer}} on, the longer it takes per document to ingest.
-
-:::
-
-::::
-
-### Reranker models [jina-rerankers-performance]
-
-::::{tab-set}
-:group: jina-rerankers
-
-:::{tab-item} jina-reranker-v3
-:sync: reranker-v3
-
-- `jina-reranker-v3` is designed for top-k reranking in hybrid search and RAG workflows.
-- For larger candidate sets, rerank the most relevant results returned by your first-stage retrieval.
-
-:::
-
-:::{tab-item} jina-reranker-v2-base-multilingual
-:sync: reranker-v2
-
-- `jina-reranker-v2-base-multilingual` works best on small, medium or large sized fields that contain natural language. This aligns best with fields like title, description, summary, or abstract.
-- The model supports an input token length of 1K and automatically chunks larger content.
-- Larger documents take longer to process, and {{infer}} time also increases the more documents are present in the reranking request.
-
-:::
-
-::::
 
 ## Pricing and licensing [jina-pricing-licensing]
 
