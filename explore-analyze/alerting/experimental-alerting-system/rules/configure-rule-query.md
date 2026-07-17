@@ -44,6 +44,8 @@ FROM logs-*
 
 The `KEEP` command controls which fields appear on each stored alert event. Only the fields in `KEEP` are available for action policy matchers, grouping keys, and triage.
 
+You don't have to write the base query and alert condition as two separate steps yourself. When writing {{esql}} directly, the query sandbox can [derive this split automatically](create-esql-rule.md#sandbox-split-editor) from a single query, or you can switch to manual control over the split.
+
 ## When to add an alert condition [query-when-to-use]
 
 Add an alert condition when:

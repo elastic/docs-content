@@ -16,12 +16,8 @@ The {{alerting-v2-system}} in {{kib}} provides several ways to create rules.
 | --- | --- |
 | [Create an ES\|QL rule](create-esql-rule.md) | Full control over the query. Supports both a step-by-step form and a YAML editor. |
 | [Create using {{agent-builder}}](create-rules-action-policies-agent-builder.md) | When you know what you want to detect but aren't sure how to write the ES\|QL. |
-| [Use the rule builder](use-rule-builder.md) | Rules that follow a guided setup for Threshold Alert conditions, without writing {{esql}} by hand. |
+| [Use the rule builder](use-rule-builder.md) | Selecting a rule type (currently Threshold Alert) and configuring it through structured inputs, without writing {{esql}} by hand. |
 | [Create from Discover](create-rule-from-discover.md) | When you already have an ES\|QL query working in Discover and want to convert it into a rule. |
-
-:::{note}
-**Rule form** and **rule builder** are the names this documentation uses for the guided setup in each creation path. Choose the path fits how you want to define your rule. The steps on that path's page apply regardless of the underlying UI.
-:::
 
 ## Related pages
 
