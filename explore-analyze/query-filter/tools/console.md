@@ -247,8 +247,6 @@ JQ expressions work only with JSON responses. Console supports these JQ operatio
 * String operations: `trim`, `ltrim`, `rtrim`, `startswith("...")`, `endswith("...")`, `ltrimstr("...")`, `rtrimstr("...")`, and `split("...")`
 * Array joining: `join("...")`
 
-Console doesn't support the complete JQ language. If an expression uses unsupported syntax, Console displays **Invalid JQ expression** and makes **Apply** unavailable.
-
 For example, use these expressions with a search response:
 
 * Return the first search result: `.hits.hits[0]`
@@ -257,6 +255,10 @@ For example, use these expressions with a search response:
 * List the top-level response fields: `keys`
 
 Select {icon}`question` **Filter expression help** for more examples in Console.
+
+:::{note}
+Console doesn't support the complete JQ language. If an expression uses unsupported syntax, Console displays **Invalid JQ expression** and makes **Apply** unavailable.
+:::
 
 ### Use regular expressions
 
