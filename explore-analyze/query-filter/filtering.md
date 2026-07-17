@@ -38,14 +38,14 @@ Display data within a specified time range when your index contains time-based e
 :width: 250px
 :::
 
-3. To configure automatic refresh and time display, select the {icon}`gear` **Settings** icon:
+3. Open {icon}`gear` **Settings** to configure automatic refresh and time display:
 
     * Turn **Refresh every** on or off and set the refresh interval.
     * Review **Time format and zone**, and select **Advanced settings** to change the time zone if you have access.
     * Turn **Round relative time ranges** on or off.
     * Under **Absolute time range**, select whether timestamps show **Minutes**, **Seconds**, or **Milliseconds**.
 
-4. To save the current range as a preset and apply it, select the {icon}`save` **Save input range as preset and apply it** icon. Saved ranges appear under **Presets**.
+4. Save the current range as a preset and apply it with {icon}`save`. Saved ranges appear under **Presets**.
 
 :::{note}
 The new picker doesn't support auto-refresh-only views. In those views, the time control and auto-refresh aren't available.
@@ -53,7 +53,7 @@ The new picker doesn't support auto-refresh-only views. In those views, the time
 ::::
 
 ::::{applies-item} { stack: ga 9.0-9.4 }
-1. Select the {icon}`calendar` icon.
+1. Open the {icon}`calendar` time filter.
 2. Select one of the following:
 
     * **Quick select**. Set a time based on the last or next number of seconds, minutes, hours, or other time unit.
