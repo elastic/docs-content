@@ -188,6 +188,12 @@ $$$genai-settings$$$
 GenAI Settings {applies_to}`stack: ga 9.4+`
 :   The {{kib}} settings page where you configure the default model and other generative-AI options that affect {{agent-builder}}. See [](models.md#change-the-default-model).
 
+## H
+
+$$$human-in-the-loop$$$
+Human-in-the-loop (HITL)
+:   A pattern where an agent pauses during a conversation and waits for you to respond before it continues. {{agent-builder}} uses human-in-the-loop prompts to confirm write operations, authorize access to external connectors, and ask clarifying questions. See [](chat.md#human-in-the-loop-prompts).
+
 ## I
 
 $$$index-search-tool$$$
@@ -268,9 +274,13 @@ $$$reasoning$$$
 Reasoning
 :   The iterative process an agent follows to answer a request: analyzing the input, choosing tools, executing them, and incorporating results into a response. Each iteration is a _reasoning step_. See [](agent-builder-agents.md#how-agents-work).
 
+$$$reasoning-events$$$
+Reasoning events {applies_to}`stack: ga 9.5+`
+:   The inline sequence in Agent Chat that shows an agent's reasoning steps, tool calls, tool responses, and final answer in the order they happen. See [](chat.md#inspect-tool-calls-and-reasoning).
+
 $$$reasoning-panel$$$
-Reasoning panel
-:   The expandable section of the chat reply that shows the underlying reasoning steps, tool calls, and tool responses behind an agent's answer. See [](chat.md#inspect-tool-calls-and-reasoning).
+Reasoning panel {applies_to}`stack: removed 9.5`
+:   The pre-9.5 expandable section of the chat reply that showed the reasoning steps, tool calls, and tool responses behind an agent's answer. In 9.5 and later, Agent Chat uses inline reasoning events instead. See [](chat.md#inspect-tool-calls-and-reasoning).
 
 $$$rest-api$$$
 REST API
