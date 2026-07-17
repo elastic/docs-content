@@ -48,10 +48,6 @@ Optionally, you can:
     - Under **Absolute time range**, select whether timestamps show **Minutes**, **Seconds**, or **Milliseconds**.
 
 - Save the current range as a preset for later reuse with {icon}`save`. Saving the preset also applies the range, and saved ranges appear under **Presets**.
-
-:::{note}
-In the Visualize editor, auto-refresh isn't available for visualizations that don't show the time filter.
-:::
 ::::
 
 ::::{applies-item} { stack: ga 9.0-9.4 }
