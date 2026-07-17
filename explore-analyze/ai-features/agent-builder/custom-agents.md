@@ -94,6 +94,17 @@ For more information, refer to [Elastic capabilities](agent-builder-agents.md#el
 
 :::::
 
+:::::{step} Configure pre-execution workflows (optional)
+```{applies_to}
+stack: ga 9.4+
+```
+
+Administrators can assign workflows that run once after each user message, before the agent makes any LLM calls in response. Use pre-execution workflows to prepare prompt context or stop an agent run before the LLM starts.
+
+For details, refer to [Pre-execution workflows](agents-and-workflows.md#pre-execution-workflows).
+
+:::::
+
 :::::{step} Set visibility
 ```{applies_to}
 stack: ga 9.4+

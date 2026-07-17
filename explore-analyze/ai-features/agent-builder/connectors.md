@@ -2,7 +2,7 @@
 navigation_title: "Connectors"
 description: "Learn about the Agent Builder connectors library, which configures access to external systems for agents."
 applies_to:
-  stack: preview 9.4+
+  stack: preview 9.5+
   serverless: preview
 products:
   - id: elasticsearch
