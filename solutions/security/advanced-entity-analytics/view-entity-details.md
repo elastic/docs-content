@@ -36,10 +36,6 @@ The entity details flyout includes the following sections:
 * [Observed data](#observed-data), which displays entity details.
 * {applies_to}`stack: removed 9.4+, ga 9.0-9.3` {applies_to}`serverless: removed` [Asset Criticality](#asset-criticality), which allows you to view and assign asset criticality.
 
-:::{image} /solutions/images/security-host-details-flyout.png
-:alt: Host details flyout
-:screenshot:
-:::
 
 ### Entity summary
 ```yaml {applies_to}
