@@ -16,44 +16,62 @@ Use an {{esql}} [`CHANGE_POINT`](elasticsearch://reference/query-languages/esql/
 ## Before you begin
 
 - You need an [appropriate subscription](https://www.elastic.co/subscriptions) or a trial license.
-- You need time series data with a date field and values that you can aggregate into a metric. The `CHANGE_POINT` command requires at least 22 values per series.
-- {{esql}} must be enabled in {{kib}}. To try the example in this guide, [install the sample web logs](../index.md#gs-get-data-into-kibana).
+- {{esql}} must be enabled in {{kib}}.
+- To analyze your own data, you need a date field and values that you can aggregate into a numeric metric. The `CHANGE_POINT` command requires at least 22 values per series.
 
 ## Find and investigate change points
 
 1. Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Switch to {{esql}} mode. Refer to [Using {{esql}}](try-esql.md#tutorial-try-esql) for the available options.
-3. Set the time range to a seven-day period that contains data. For newly installed sample data, use **Last 7 days**. If that range has no data, select an earlier absolute range or reinstall the sample data to refresh its timestamps.
+3. Set the time range to **Last 24 hours**.
 4. Enter the following query:
 
    ```esql
-   FROM kibana_sample_data_logs
-   | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
-   | STATS event_count = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
-   | CHANGE_POINT event_count ON time_bucket
+   ROW hour_offset = [24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0]
+   | MV_EXPAND hour_offset
+   | EVAL time_bucket = TO_DATETIME(TO_LONG(NOW()) - TO_LONG(hour_offset) * 3600000)
+   | EVAL request_count = CASE(hour_offset >= 12, 10, 100)
+   | SORT time_bucket
+   | CHANGE_POINT request_count ON time_bucket
    | WHERE type IS NOT NULL
    ```
 
-   The query counts events in 50 time buckets, analyzes the count for changes, and returns only detected change points. For your own data, replace the index, time field, and aggregation.
+   The query creates 25 hourly values, increases `request_count` from 10 to 100 midway through the series, and returns the detected step change. Because it generates timestamps relative to the current time, you can run it at any time without installing sample data.
 
 5. Select **Search**.
 
-   When the query detects a change point, Discover replaces the usual visualization with a chart of the analyzed series and marks each change. The results table remains available. A lower p-value indicates a more significant change.
-
-   If Discover shows **No change points detected**, the data either has no statistically significant change or doesn't provide the 22 values required for analysis. Widen the time range or adjust the bucket size to provide more values.
+   Discover replaces the usual visualization with a chart that shows the sharp increase from 10 to 100. The results table contains one `step_change` result. A lower p-value indicates a more significant change.
 
 6. Expand a change point in the results table, then select **Overview** to inspect its chart, time, metric, type, p-value, and description.
-7. From the chart actions, select **Open in a new Discover tab** to inspect the source documents around the change point. The new tab is filtered to a focused time range around the detected change.
+7. From the chart actions, select **Open in a new Discover tab** to open the series in a focused time range around the detected change.
+
+## Analyze your own data
+
+For indexed data, structure your query so that it produces one numeric metric value per time bucket before calling `CHANGE_POINT`. For example, the following query analyzes changes in log volume over the selected time range:
+
+```esql
+FROM logs-*
+| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
+| STATS event_count = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+| SORT time_bucket
+| CHANGE_POINT event_count ON time_bucket
+| WHERE type IS NOT NULL
+```
+
+Replace the index, time field, and aggregation with values appropriate for your data. If Discover shows **No change points detected**, the data either has no statistically significant change or doesn't provide the 22 values required for analysis. Widen the time range or adjust the bucket size to provide more values.
+
+For queries that read from an index, **Open in a new Discover tab** opens the source documents in a focused time range around the detected change.
 
 ## Compare change points across groups
 
-Add `BY` to analyze each group as a separate series. For example, the following query analyzes event counts for each operating system:
+Add `BY` to analyze each group as a separate series. For example, the following query analyzes log volume for each host:
 
 ```esql
-FROM kibana_sample_data_logs
+FROM logs-*
 | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
-| STATS event_count = COUNT(*) BY machine.os, time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
-| CHANGE_POINT event_count ON time_bucket BY machine.os
+| STATS event_count = COUNT(*) BY host.name, time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+| SORT host.name, time_bucket
+| CHANGE_POINT event_count ON time_bucket BY host.name
 | WHERE type IS NOT NULL
 ```
 
