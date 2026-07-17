@@ -19,6 +19,8 @@ Known issues are significant defects or limitations that may impact your impleme
 :::{changelog}
 :type: known-issue
 :cdn: cloud-serverless
+:link-visibility: keep-links
+:description-visibility: keep-descriptions
 :::
 
 ## Active

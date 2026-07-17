@@ -11,6 +11,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 :::{changelog}
 :cdn: cloud-serverless
+:description-visibility: hide-descriptions
+:link-visibility: keep-links
 :::
 
 ## April 30, 2026 [serverless-changelog-04302026]

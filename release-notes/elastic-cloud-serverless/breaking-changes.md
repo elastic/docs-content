@@ -10,6 +10,8 @@ products:
 :type: breaking-change
 :cdn: cloud-serverless
 :dropdowns:
+:link-visibility: keep-links
+:description-visibility: keep-descriptions
 :::
 
 ## May 28, 2026 [elastic-cloud-serverless-05282026-breaking]

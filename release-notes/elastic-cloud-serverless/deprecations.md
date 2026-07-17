@@ -14,6 +14,8 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 :::{changelog}
 :type: deprecation
 :cdn: cloud-serverless
+:link-visibility: keep-links
+:description-visibility: keep-descriptions
 :::
 
 ## April 28, 2026 [elastic-cloud-serverless-04282026-deprecations]
