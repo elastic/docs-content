@@ -10,12 +10,12 @@ description: "How rule mode determines whether detections produce signal documen
 
 # Rule mode in the {{alerting-v2-system}} [rule-mode]
 
-Rule mode is a required setting for rules in the {{alerting-v2-system}}. It determines what the rule produces when the detection query finds a match. Rule mode is set by the rule creation method. Some [creation paths](create-a-rule.md) only support one mode.
+Rule mode is a required setting for rules in the {{alerting-v2-system}}. It determines what the rule produces when the detection query finds a match. Rule mode is set by the rule creation method. Some [creation paths](create-a-rule.md) only support one mode. If you're editing YAML directly, this maps to the `kind` field.
 
-| Mode | Behavior |
-| --- | --- |
-| Signal | Records each matching row as a signal document. No alert episodes, no notifications. |
-| Alert | Creates an alert episode for each matching row. Episodes are tracked through lifecycle states, appear on the Alerts UI, and can be routed to notifications by action policies. |
+| Mode | `kind` value | Behavior |
+| --- | --- | --- |
+| Signal | `signal` | Records each matching row as a signal document. No alert episodes, no notifications. |
+| Alert | `alert` | Creates an alert episode for each matching row. Episodes are tracked through lifecycle states, appear on the Alerts UI, and can be routed to notifications by action policies. |
 
 ## When to use each rule mode [rule-mode-when-to-use]
 

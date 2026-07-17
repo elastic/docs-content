@@ -66,7 +66,7 @@ Recovery thresholds control when an active alert episode transitions back to ina
 Time frame fields accept the same `5s` to `365d` bounds as activation time frames. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
 
 :::{note}
-`recovery_strategy` is a separate field that controls how recovery is detected, independent of how many recoveries these thresholds require. Refer to [YAML rule schema reference](yaml-rule-schema-reference.md#recovery-strategy) for field details and default values.
+`recovery_strategy` is a separate field that controls how recovery is detected, independent of how many recoveries these thresholds require. Refer to [Recovery strategy](configure-rule-recovery.md) for when to configure each option.
 :::
 
 ## Examples
