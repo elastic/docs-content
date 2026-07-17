@@ -10,7 +10,7 @@ description: "Create action policies in the experimental alerting system, config
 
 # Create an action policy for the {{alerting-v2-system}} [create-action-policy]
 
-Action policies are part of the {{alerting-v2-system}} in {{kib}}. This page covers how to configure match conditions, grouping, frequency, and workflow destinations. Where rules define what counts as a problem, action policies define what happens when one is detected: which alert episodes generate notifications, how they batch for dispatch, and where they're routed.
+This page covers how to configure an action policy's match conditions, grouping, frequency, and workflow destinations in the {{alerting-v2-system}}. Where rules define what counts as a problem, action policies define what happens when one is detected: which alert episodes generate notifications, how they batch for dispatch, and where they're routed.
 
 Because action policies are separate from rules, you can update notification behavior across many rules at once without touching detection logic, and you can route the same alert episodes differently depending on severity or source. You create and manage action policies from the **Action policies** page, not from the rule form.
 

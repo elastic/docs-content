@@ -10,7 +10,7 @@ description: "Assign severity levels to alert episodes in Kibana's experimental 
 
 # Severity in the {{alerting-v2-system}} [rule-severity]
 
-Severity is an optional setting for rules in the {{alerting-v2-system}}. To set it, include a column named `severity` in your {{esql}} query output and add it to your `KEEP` list. The framework reads that column after each evaluation and maps it to one of five fixed levels.
+Severity is an optional setting for rules in the {{alerting-v2-system}} that assigns an urgency level to each alert episode, so you can triage and route episodes differently depending on how serious they are. To set it, include a column named `severity` in your {{esql}} query output and add it to your `KEEP` list. The framework reads that column after each evaluation and maps it to one of five fixed levels.
 
 | Value | Description | Urgency |
 | --- | --- | --- |

@@ -10,7 +10,7 @@ description: "View action policy details, enable, disable, snooze, and rotate AP
 
 # Manage action policies for the {{alerting-v2-system}} [manage-action-policies]
 
-Action policies are part of the {{alerting-v2-system}} in {{kib}}. This page covers how to view action policy details, enable and disable action policies, snooze them during planned outages, and rotate their API keys. To monitor dispatcher activity and review execution outcomes, refer to [Review action policy execution history](review-action-policy-execution-history.md).
+This page covers how to view action policy details in the {{alerting-v2-system}}, enable and disable action policies, snooze them during planned outages, and rotate their API keys. To monitor dispatcher activity and review execution outcomes, refer to [Review action policy execution history](review-action-policy-execution-history.md).
 
 ## View and edit an action policy
 

@@ -10,7 +10,7 @@ description: "How workflows connect to the experimental alerting system through 
 
 # Connect workflows to the {{alerting-v2-system}} [connect-workflows]
 
-[Workflows](../../workflows.md) are part of the {{alerting-v2-system}} in {{kib}}. They are the delivery layer that defines what happens when the {{alerting-v2-system}} takes an action, such as sending a message, calling a webhook, or triggering an automation. Workflows are what allow your team's incident response tools to connect with the {{alerting-v2-system}}.
+[Workflows](../../workflows.md) are the delivery layer that defines what happens when the {{alerting-v2-system}} takes an action, such as sending a message, calling a webhook, or triggering an automation. Workflows are what allow your team's incident response tools to connect with the {{alerting-v2-system}}.
 
 This page covers how action policies drive workflow invocations at runtime, the available alert episode lifecycle triggers, and when to use each pathway.
 
