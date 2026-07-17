@@ -19,10 +19,10 @@ Go to **Execution history** in the navigation menu or [global search](/explore-a
 | **Timestamp** | When the rule execution ran. |
 | **Rule** | The rule that ran. Selecting the rule name opens a summary so you can inspect the rule without leaving the page. |
 | **Duration** | How long the execution took. |
-| **Response** | The outcome of the run: `success` or `failure`. |
+| **Response** | The outcome of the run. Can be `success` or `failure`. |
 | **Message** | An optional message included with the execution result, typically an error description for failed runs. |
 
-Use the outcome filter to view only successful or failed executions. Filtering is applied server-side. Results are paginated up to 100 per page. You can page through up to 10,000 records — this is a pagination ceiling, not a retention limit. Deeper history exists in the event log but is not reachable by paging further.
+Use the outcome filter to view only successful or failed executions. Filtering is applied server-side. Results are paginated up to 100 per page. You can page through up to 10,000 records.
 
 ## Related pages
 

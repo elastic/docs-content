@@ -12,14 +12,14 @@ description: "Monitor action policy dispatch activity from the execution history
 
 Action policy execution history shows dispatcher decisions from the last 24 hours across all action policies in the space, so you can confirm notifications are dispatching as expected or investigate unexpected notification behavior.
 
-Go to **Execution history** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Action policies** tab. Each row covers one dispatcher run for each action policy evaluated against a rule:
+Go to **Execution history** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Policies** tab. Each row covers one dispatcher run for each action policy evaluated against a rule:
 
 | Column | Description |
 |---|---|
 | **Timestamp** | When the dispatcher ran. |
 | **Policy** | The action policy that was evaluated. |
-| **Rules** | The rule whose alert episodes the action policy processed. |
 | **Outcome** | Whether the dispatcher acted on the episode: `dispatched`, `throttled`, or `unmatched`. Definitions are in [Dispatch outcomes](#dispatch-outcomes). |
+| **Rules** | The rule whose alert episodes the action policy processed. |
 | **Episodes** | The number of alert episodes processed in this run. |
 | **Action groups** | The number of action groups involved. |
 | **Workflows** | The workflows invoked, if any. |

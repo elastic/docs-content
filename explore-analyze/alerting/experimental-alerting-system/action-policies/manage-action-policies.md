@@ -14,7 +14,9 @@ This page covers how to view action policy details in the {{alerting-v2-system}}
 
 ## View and edit an action policy
 
-To find your action policies, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action policies**. From the list, you can open an action policy to view its full configuration, including match conditions, grouping mode, frequency, and destinations. The list also shows the display name of the user who created the action policy and the user who last updated it. You can also edit, clone, delete, enable, disable, snooze, or update its API key without leaving the list page.
+To find your action policies, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action policies**. From the list, you can open an action policy to view its full configuration, including match conditions, grouping mode, frequency, and destinations.
+
+The list also shows the display name of the user who created the action policy and the user who last updated it, along with quick actions for common tasks, such as cloning or deleting an action policy, without leaving the list page. For enabling, disabling, snoozing, or rotating an API key, refer to the sections below.
 
 ## Enable, disable, and snooze an action policy
 
