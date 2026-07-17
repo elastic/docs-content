@@ -24,28 +24,9 @@ The three gates are episode eligibility, match conditions, and frequency:
 
 * **Episode eligibility** - Skips episodes that are acknowledged, snoozed, or in a maintenance window. For details, refer to [Reduce notification noise](reduce-notification-noise.md).
 * **Match conditions** - Filters which alert episodes the action policy applies to. You define them using a [KQL](../../../query-filter/languages/kql.md) expression. An empty match condition applies to all eligible episodes in the space.
-* **Frequency** - Controls how often the action policy can invoke its workflows for the same group of episodes, and how episodes batch before a workflow is invoked. If a workflow was already invoked within the frequency interval that you chose, the episode waits.<!-- For available options, refer to [Action policy reference](action-policy-reference.md). -->
+* **Frequency** - Controls how often the action policy can invoke its workflows for the same group of episodes, and how episodes batch before a workflow is invoked. If a workflow was already invoked within the frequency interval that you chose, the episode waits. For available options, refer to [Action policy reference](action-policy-reference.md).
 
 If any gate stops the episode, the workflow is not invoked for that action policy. Because each action policy evaluates alert episodes independently, an episode blocked by one action policy can still trigger a workflow through a second action policy with different conditions.
-
-### Scoping with the KQL matcher [policy-types]
-
-Every action policy you create has the potential to match alert episodes from any rule in the space. Which episodes actually get matched is expressed entirely through the KQL matcher. Leave the matcher empty to match all episodes in your space.
-
-:::{note}
-An empty matcher applies to all eligible episodes in the space, not literally every episode. The eligibility check runs first, so episodes that are acknowledged, snoozed, or covered by a maintenance window are excluded before the matcher ever evaluates them.
-:::
-
-The following table shows how different [KQL](../../../query-filter/languages/kql.md) expressions control the matching scope of an action policy:
-
-| I want to match… | KQL expression | Example |
-|---|---|---|
-| All episodes that pass the eligibility check, regardless of rule or severity | No expression | No example |
-| Episodes from one specific rule | `rule.id: "<rule-id>"` | `rule.id: "9fc6b280-5b9e-11ef-a6ec-119f369f542a"` |
-| Episodes from rules sharing a tag | `rule.tags: "<tag>"` | `rule.tags: "checkout"` |
-| Episodes at a specific severity level | `severity: "<severity>"` | `severity: "critical"` |
-
-Multiple action policies can match the same alert episode, and each runs independently. There is no precedence or merging between them. If no action policy matches an alert episode, no workflow is invoked and no notification is sent. If you delete a rule, any action policies scoped to it are not deleted automatically. You must delete them manually after deleting the rule.
 
 ## How action policies are evaluated [how-action-policies-evaluated]
 

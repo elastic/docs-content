@@ -15,7 +15,7 @@ products:
 
 # Event-driven triggers [workflows-event-driven-triggers]
 
-Event-driven triggers let workflows react to events elsewhere in {{kib}}. Four trigger families are available:
+Event-driven triggers let workflows react to events elsewhere in {{kib}}. The following trigger families are available:
 
 - **`workflows.failed`** — Fires when another workflow's execution fails. {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
 - **Cases triggers** — Fire when cases change (created, updated, status changed, attachments added, comments added). {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
