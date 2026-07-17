@@ -45,6 +45,12 @@ Use an {{esql}} [`CHANGE_POINT`](elasticsearch://reference/query-languages/esql/
 6. Expand a change point in the results table. The **Overview** tab lets you inspect its chart, time, metric, type, p-value, and description.
 7. From the chart actions, select **Open in a new Discover tab** to open the series in a focused time range around the detected change.
 
+   :::{image} /explore-analyze/images/kibana-discover-change-point-overview.png
+   :alt: Expanded change point with the Overview tab selected and the Open in a new Discover tab action highlighted
+   :screenshot:
+   :width: 60%
+   :::
+
 ## Analyze your own data
 
 For indexed data, structure your query so that it produces one numeric metric value per time bucket before calling `CHANGE_POINT`. For example, the following query analyzes changes in log volume over the selected time range:
