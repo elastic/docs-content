@@ -16,35 +16,33 @@ Use an {{esql}} [`CHANGE_POINT`](elasticsearch://reference/query-languages/esql/
 ## Before you begin
 
 - You need a [Platinum or Enterprise subscription](https://www.elastic.co/subscriptions) or an active trial for Elastic Stack. On Elastic Cloud Serverless, `CHANGE_POINT` is available for all project types and feature tiers, including Elastic AI SOC Engine (EASE).
+- To follow the example, [add the **Sample web logs** data](../index.md#gs-get-data-into-kibana).
 - To analyze your own data, you need a date field and values that you can aggregate into a numeric metric. The `CHANGE_POINT` command requires at least 22 values per series.
 
 ## Find and investigate change points
 
-In this example, you use a query that simulates a change point, so you can explore the results without loading sample data.
+In this example, you use the sample web logs data to detect changes in the average number of bytes transferred for each destination country.
 
 1. Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Switch to {{esql}} mode. Refer to [Using {{esql}}](try-esql.md#tutorial-try-esql) for the available options.
-3. Set the time range to **Last 24 hours**.
+3. Set the time range to **All time**, or select a range that covers at least one month of the sample data.
 4. Enter the following query:
 
    ```esql
-   ROW hour_offset = [24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0]
-   | MV_EXPAND hour_offset
-   | EVAL time_bucket = TO_DATETIME(TO_LONG(NOW()) - TO_LONG(hour_offset) * 3600000)
-   | EVAL request_count = CASE(hour_offset >= 12, 10, 100)
-   | SORT time_bucket
-   | CHANGE_POINT request_count ON time_bucket
+   FROM kibana_sample_data_logs
+   | STATS avg_bytes = AVG(bytes) BY geo.dest, day = BUCKET(timestamp, 1d)
+   | CHANGE_POINT avg_bytes ON day BY geo.dest
    | WHERE type IS NOT NULL
    ```
 
-   The query creates 25 hourly values, increases `request_count` from 10 to 100 midway through the series, and returns the detected step change. Because it generates timestamps relative to the current time, you can run it at any time without installing sample data.
+   The query calculates the average number of bytes transferred each day for every destination country, then returns the detected change points.
 
 5. Select **Search**.
 
-   Discover replaces the usual visualization with a chart that shows the sharp increase from 10 to 100. The results table contains one `step_change` result. A lower p-value indicates a more significant change.
+   Discover shows a separate chart for each destination country with a detected change point. The results table lists the detected changes. A lower p-value indicates a more significant change.
 
    :::{image} /explore-analyze/images/kibana-discover-change-point-results.png
-   :alt: Discover chart showing the simulated increase from 10 to 100 and one step change result
+   :alt: Discover showing change point charts and results for destination countries in the sample web logs data
    :screenshot:
    :width: 90%
    :::
@@ -79,39 +77,16 @@ To adapt and troubleshoot the query:
 
 ## Compare change points across groups
 
-Add `BY` to analyze each group as a separate series. For example, the following query analyzes log volume for each host:
+Add fields to `BY` to analyze each unique combination as a separate series. For example, the following query analyzes the sum of transferred bytes for each host and response code in the sample web logs data:
 
 ```esql
-FROM logs-*
-| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
-| STATS event_count = COUNT(*) BY host.name, time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
-| SORT host.name, time_bucket
-| CHANGE_POINT event_count ON time_bucket BY host.name
+FROM kibana_sample_data_logs
+| STATS sum_bytes = SUM(bytes) BY host, response.keyword, day = BUCKET(timestamp, 1d)
+| CHANGE_POINT sum_bytes ON day BY host, response.keyword
 | WHERE type IS NOT NULL
 ```
 
 Discover displays a separate chart for each group that contains a detected change point. Use the chart grid to compare where each series changed.
-
-::::{dropdown} Example
-The following query simulates change points for two services, so you can preview grouped results without loading sample data:
-
-```esql
-ROW hour_offset = [24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0], service = ["checkout","search"]
-| MV_EXPAND hour_offset
-| MV_EXPAND service
-| EVAL time_bucket = TO_DATETIME(TO_LONG(NOW()) - TO_LONG(hour_offset) * 3600000)
-| EVAL request_count = CASE(service == "checkout", CASE(hour_offset >= 12, 10, 100), CASE(hour_offset >= 8, 20, 80))
-| SORT service, time_bucket
-| CHANGE_POINT request_count ON time_bucket BY service
-| WHERE type IS NOT NULL
-```
-
-:::{image} /explore-analyze/images/kibana-discover-grouped-change-points.png
-:alt: Discover showing separate change point charts and results for the checkout and search services
-:screenshot:
-:width: 90%
-:::
-::::
 
 ## Next steps
 
