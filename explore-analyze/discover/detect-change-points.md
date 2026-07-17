@@ -21,6 +21,8 @@ Use an {{esql}} [`CHANGE_POINT`](elasticsearch://reference/query-languages/esql/
 
 ## Find and investigate change points
 
+In this example, you use a query that simulates a change point, so you can explore the results without loading sample data.
+
 1. Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Switch to {{esql}} mode. Refer to [Using {{esql}}](try-esql.md#tutorial-try-esql) for the available options.
 3. Set the time range to **Last 24 hours**.
