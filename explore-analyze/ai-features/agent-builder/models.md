@@ -100,6 +100,35 @@ To change which model is used by default:
 
 For more information about these settings, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 
+## Fast model for low-effort tasks [fast-model]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+To reduce latency, {{agent-builder}} automatically routes some low-effort, latency-sensitive operations to a fast model instead of your default model. A fast model is a smaller, high-throughput model that returns results more quickly than a frontier reasoning model.
+
+This routing is automatic. You do not need to configure anything to benefit from it. Your default model still handles agent reasoning, tool selection, and response synthesis.
+
+### When the fast model is used
+
+{{agent-builder}} uses the fast model for well-scoped tasks that do not need deep reasoning. The main example is {{esql}} query generation, where a natural language request is translated into an {{esql}} query.
+
+### Fast models on Elastic-managed deployments
+
+On {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} runs on Elastic Managed LLMs on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md), so the fast model is preconfigured. No setup is required. Examples of preconfigured fast models include Claude 4.5 Haiku and Gemini 3.0 Flash. The latency improvement is most noticeable on {{serverless-full}}.
+
+<!-- CONFIRM on a 9.5 cluster before merge: is the "Fast models" entry user-visible and editable in Feature settings? If it is internal only, cut the "Change the fast model" subsection below. The names "Feature settings" and "Fast models" come from Kibana source (inference_features.ts), but the UI exposure is unverified. -->
+
+### Change the fast model
+
+You can assign a specific model to the fast model, the same way you set your default model. On the **Feature settings** page, use the per-feature model configuration to select a model for the **Fast models** capability. Refer to [Change the default model](#change-the-default-model).
+
+### Fallback behavior
+
+If no fast model is available, {{agent-builder}} uses your default model instead. Fast model routing is an optimization, so a missing fast model reduces the latency benefit but does not cause errors.
+
 ## Use additional models
 
 You can configure additional models for {{agent-builder}} in two ways:
