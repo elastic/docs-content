@@ -15,6 +15,7 @@ In {{ece}} (ECE), every host is a runner. Depending on the size of your platform
 This section focuses on the allocator role, and explains how to plan its capacity in terms of memory, CPU, `processors` setting, and storage.
 
 * [Memory](#ece-alloc-memory)
+  * [Swap considerations](#ece-alloc-swap-consideration)
 * [CPU quotas](#ece-alloc-cpu)
 * [Processors setting](#ece-alloc-processors-setting)
 * [Storage](#ece-alloc-storage)
