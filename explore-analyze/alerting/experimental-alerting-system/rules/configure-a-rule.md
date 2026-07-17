@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Overview of all configurable rule settings in the experimental alerting system. Required settings are mode, ES|QL query, and schedule. Optional settings include severity, grouping, activation and recovery thresholds, no-data handling, and tags."
+description: "Overview of configurable rule settings in the experimental alerting system: required settings (mode, query, schedule) and optional settings (severity, grouping, alert delay, recovery, no-data, tags)."
 ---
 
 # Configure a rule in the {{alerting-v2-system}} [rule-settings]

@@ -385,45 +385,47 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
-      - file: alerting/experimental-alerting-system/rules.md
+      - file: alerting/compare-alerting-systems.md
+      - file: alerting/system-overview.md
         children:
-          - file: alerting/experimental-alerting-system/rules/create-a-rule.md
+          - file: alerting/experimental-alerting-system/how-it-works.md
+          - file: alerting/experimental-alerting-system/glossary.md
+          - file: alerting/experimental-alerting-system/get-started.md
             children:
-              - file: alerting/experimental-alerting-system/rules/create-esql-rule.md
+              - file: alerting/experimental-alerting-system/get-started/setup.md
+              - file: alerting/experimental-alerting-system/get-started/configure-access.md
+              - file: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
+          - file: alerting/experimental-alerting-system/rules.md
+            children:
+              - file: alerting/experimental-alerting-system/rules/create-a-rule.md
                 children:
-                  - file: alerting/experimental-alerting-system/rules/yaml-rule-schema-reference.md
-              - file: alerting/experimental-alerting-system/rules/create-rules-action-policies-agent-builder.md
-              - file: alerting/experimental-alerting-system/rules/use-rule-builder.md
-              - file: alerting/experimental-alerting-system/rules/create-rule-from-discover.md
-          - file: alerting/experimental-alerting-system/rules/configure-a-rule.md
-            children:
-              - file: alerting/experimental-alerting-system/rules/configure-rule-mode.md
-              - file: alerting/experimental-alerting-system/rules/configure-rule-query.md
-              - file: alerting/experimental-alerting-system/rules/configure-rule-severity.md
-              - file: alerting/experimental-alerting-system/rules/configure-rule-grouping.md
-              - file: alerting/experimental-alerting-system/rules/configure-rule-schedule.md
-              - file: alerting/experimental-alerting-system/rules/configure-rule-alert-delay.md
-              - file: alerting/experimental-alerting-system/rules/configure-rule-recovery.md
-              - file: alerting/experimental-alerting-system/rules/configure-no-data-handling.md
-              - file: alerting/experimental-alerting-system/rules/configure-rule-tags.md
-          - file: alerting/experimental-alerting-system/rules/view-manage-rules.md
-          - file: alerting/experimental-alerting-system/rules/review-rule-execution-history.md
-          - file: alerting/experimental-alerting-system/rules/esql-query-patterns.md
-            children:
-              - file: alerting/experimental-alerting-system/rules/esql-first-rule-query.md
-              - file: alerting/experimental-alerting-system/rules/esql-threshold-queries.md
-              - file: alerting/experimental-alerting-system/rules/esql-no-data-detection.md
-              - file: alerting/experimental-alerting-system/rules/esql-slo-burn-rate.md
-              - file: alerting/experimental-alerting-system/rules/esql-persistent-breach.md
-          - file: alerting/experimental-alerting-system/rules/rule-event-field-reference.md
-      - hidden: alerting/compare-alerting-systems.md
-      - hidden: alerting/system-overview.md
-      - hidden: alerting/experimental-alerting-system/how-it-works.md
-      - hidden: alerting/experimental-alerting-system/glossary.md
-      - hidden: alerting/experimental-alerting-system/get-started.md
-      - hidden: alerting/experimental-alerting-system/get-started/setup.md
-      - hidden: alerting/experimental-alerting-system/get-started/configure-access.md
-      - hidden: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
+                  - file: alerting/experimental-alerting-system/rules/create-esql-rule.md
+                    children:
+                      - file: alerting/experimental-alerting-system/rules/yaml-rule-schema-reference.md
+                  - file: alerting/experimental-alerting-system/rules/create-rules-action-policies-agent-builder.md
+                  - file: alerting/experimental-alerting-system/rules/use-rule-builder.md
+                  - file: alerting/experimental-alerting-system/rules/create-rule-from-discover.md
+              - file: alerting/experimental-alerting-system/rules/configure-a-rule.md
+                children:
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-mode.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-query.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-schedule.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-severity.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-grouping.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-alert-delay.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-recovery.md
+                  - file: alerting/experimental-alerting-system/rules/configure-no-data-handling.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-tags.md
+              - file: alerting/experimental-alerting-system/rules/view-manage-rules.md
+              - file: alerting/experimental-alerting-system/rules/review-rule-execution-history.md
+              - file: alerting/experimental-alerting-system/rules/esql-query-patterns.md
+                children:
+                  - file: alerting/experimental-alerting-system/rules/esql-first-rule-query.md
+                  - file: alerting/experimental-alerting-system/rules/esql-threshold-queries.md
+                  - file: alerting/experimental-alerting-system/rules/esql-no-data-detection.md
+                  - file: alerting/experimental-alerting-system/rules/esql-slo-burn-rate.md
+                  - file: alerting/experimental-alerting-system/rules/esql-persistent-breach.md
+              - file: alerting/experimental-alerting-system/rules/rule-event-field-reference.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
