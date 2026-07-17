@@ -47,8 +47,6 @@ In this example, you use the sample web logs data to detect changes in the avera
    :width: 90%
    :::
 
-### Explore the results
-
 After Discover shows the results, you can:
 
 - **Attach a chart to a case:** Hover over the chart and select **Add to case**. Then select an existing case or create a case. You need the `All` [**Cases** privilege](../cases/control-case-access.md#give-full-access) to use this action.
