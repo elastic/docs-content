@@ -31,7 +31,7 @@ flowchart LR
     S["Your services"] -->|OTLP| U["Upstream otelcol-contrib<br/>(one per host)"]
     U -->|"OTLP/gRPC :4317"| G
 
-    subgraph G["EDOT Collector (gateway)"]
+    subgraph G["Elastic Agent (gateway)"]
         P["elasticapm processor<br/>enriches spans"]
         C["elasticapm connector<br/>generates aggregated metrics"]
     end
