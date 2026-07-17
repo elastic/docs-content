@@ -23,7 +23,7 @@ Use an {{esql}} [`CHANGE_POINT`](elasticsearch://reference/query-languages/esql/
 
 1. Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Switch to {{esql}} mode. Refer to [Using {{esql}}](try-esql.md#tutorial-try-esql) for the available options.
-3. Set the time range to **Last 7 days**.
+3. Set the time range to a seven-day period that contains data. For newly installed sample data, use **Last 7 days**. If that range has no data, select an earlier absolute range or reinstall the sample data to refresh its timestamps.
 4. Enter the following query:
 
    ```esql
