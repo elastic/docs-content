@@ -17,7 +17,7 @@ Use an {{esql}} [`CHANGE_POINT`](elasticsearch://reference/query-languages/esql/
 
 - You need a [Platinum or Enterprise subscription](https://www.elastic.co/subscriptions) or an active trial for Elastic Stack. On Elastic Cloud Serverless, `CHANGE_POINT` is available for all project types.
 - To analyze your own data, you need a date field and values that you can aggregate into a numeric metric. The `CHANGE_POINT` command requires at least 22 values per series.
-- To follow the example, [add the **Sample web logs** data](../index.md#gs-get-data-into-kibana).
+- To follow the example, [add the **Sample web logs** data](/manage-data/ingest/sample-data.md).
 
 ## Find and investigate change points
 
@@ -47,8 +47,9 @@ In this example, you use the sample web logs data to detect changes in the avera
    :width: 90%
    :::
 
-6. Expand a change point in the results table. The **Overview** tab lets you inspect its chart, time, metric, type, p-value, and description.
-7. From the chart actions, select **Open in a new Discover tab** to open the series in a focused time range around the detected change.
+6. To attach a chart to a case, hover over the chart and select **Add to case**. Then select an existing case or create a case. You need the `All` [**Cases** privilege](../cases/control-case-access.md#give-full-access) to use this action.
+7. Expand a change point in the results table. The **Overview** tab lets you inspect its chart, time, metric, type, p-value, and description.
+8. From the chart actions, select **Open in a new Discover tab** to open the series in a focused time range around the detected change.
 
    :::{image} /explore-analyze/images/kibana-discover-change-point-overview.png
    :alt: Expanded change point with the Overview tab selected and the Open in a new Discover tab action highlighted
@@ -69,10 +70,8 @@ FROM logs-*
 | WHERE type IS NOT NULL
 ```
 
-To adapt and troubleshoot the query:
-
-- **Use your data:** Replace the index, time field, and aggregation with values appropriate for your data.
-- **Troubleshoot empty results:** If Discover shows **No change points detected**, the data either has no statistically significant change or doesn't provide the 22 values required for analysis. Widen the time range or adjust the bucket size to provide more values.
+- **Adapt the query to your data:** Replace the index, time field, and aggregation with values appropriate for your data.
+- **If no change points are detected:** The data either has no statistically significant change or doesn't provide the 22 values required for analysis. Widen the time range or adjust the bucket size to provide more values.
 - **Inspect source documents:** For queries that read from an index, **Open in a new Discover tab** opens the source documents in a focused time range around the detected change.
 
 ## Compare change points across groups
@@ -91,7 +90,6 @@ Discover displays a separate chart for each group that contains a detected chang
 ## Next steps
 
 - Save the Discover session to preserve the query and time range.
-- Use the chart actions to inspect the visualization or attach it to an existing case.
 
 ## Related pages
 
