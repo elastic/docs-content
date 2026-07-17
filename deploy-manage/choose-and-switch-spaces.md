@@ -26,8 +26,8 @@ From the global header, select your current space, then select the space you wan
 
 What {{kib}} opens when you log in depends on your version and whether it has remembered a space:
 
-- {applies_to}`stack: ga 9.0-9.4` If you can access more than one space, {{kib}} asks you to select a space.
 - {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` {{kib}} can remember the space you use and return you to it. If {{kib}} has no remembered space or you no longer have access to it, {{kib}} asks you to select a space.
+- {applies_to}`stack: ga 9.0-9.4` If you can access more than one space, {{kib}} asks you to select a space.
 
 A direct link continues to open the linked {{kib}} app or object instead of redirecting you to the remembered space.
 
