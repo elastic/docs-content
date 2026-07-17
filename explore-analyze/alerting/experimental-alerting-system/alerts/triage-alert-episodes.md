@@ -8,7 +8,7 @@ products:
 description: "Take triage actions on alert episodes in Kibana's experimental alerting system. Acknowledge, snooze, resolve, activate, deactivate, tag, and assign episodes individually or in bulk."
 ---
 
-# Triage alert episodes [triage-alert-episodes]
+# Triage alert episodes in the {{alerting-v2-system}} [triage-alert-episodes]
 
 In the {{alerting-v2-system}}, you can take the following triage actions on alert episodes individually or in bulk. For deeper investigation of a specific episode, refer to [Investigate alert episodes](investigate-alert-episodes.md).
 

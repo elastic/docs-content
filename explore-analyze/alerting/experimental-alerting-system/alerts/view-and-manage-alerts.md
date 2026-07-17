@@ -8,9 +8,12 @@ products:
 description: "Monitor alert episodes in Kibana's experimental alerting system using KPI panels, an episode histogram, and filter controls. Triage and investigate episodes from the same interface."
 ---
 
-# View and manage alerts [view-manage-alerts]
+# View and manage alerts in the {{alerting-v2-system}} [view-manage-alerts]
 
-When a rule in the {{alerting-v2-system}} detects a problem, the Alerts page gives you health summaries and filtering tools to understand what's happening. For triage actions (acknowledge, snooze, resolve, activate, and tag), refer to [Triage alert episodes](triage-alert-episodes.md). For episode lifecycle history, related episodes, and assignment, refer to [Investigate alert episodes](investigate-alert-episodes.md).
+When a rule in the {{alerting-v2-system}} detects a problem, the **Alerts** page gives you health summaries and filtering tools to understand what's happening. 
+
+
+For triage actions (acknowledge, snooze, resolve, activate, and tag), refer to [Triage alert episodes](triage-alert-episodes.md). For episode lifecycle history, related episodes, and assignment, refer to [Investigate alert episodes](investigate-alert-episodes.md).
 
 ## Space scoping [episode-space-isolation]
 
@@ -28,6 +31,8 @@ The episode histogram queries up to 10,000 alert episodes for each time range. N
 :::
 
 ## Filter and search [filter-and-search]
+
+Use the following controls on the **Alerts** page to narrow the episode list:
 
 - **Rule** - Limit to one or more rules.
 - **Status** - Limit by lifecycle state (inactive, pending, active, recovering).

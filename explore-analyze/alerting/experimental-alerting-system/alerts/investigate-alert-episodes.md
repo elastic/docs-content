@@ -19,7 +19,7 @@ Each episode includes key context to answer the first questions in any investiga
 - **Grouping** - The value of the `BY` clause that identifies this episode's group, such as a hostname or service name. Use it to confirm which entity the rule is firing on.
 - **Triggered** - When the episode opened.
 - **Duration** - How long the episode has been active.
-- **Assignee** - Who currently owns the episode, if anyone.
+- **Assignee** - Who currently owns the episode, if anyone. To assign or reassign the episode, refer to [Triage alert episodes](triage-alert-episodes.md).
 
 The **Rule overview** section shows the rule name, type, and status alongside a snippet of its {{esql}} query. Select **View rule details** to open the full rule configuration and confirm exactly what condition the rule evaluates.
 
@@ -62,7 +62,3 @@ Each episode includes a metadata view that surfaces the field values computed or
 ## Access the response runbook [access-runbook]
 
 If the rule has a runbook URL configured, you can access it directly from the episode to follow documented response procedures.
-
-## Assign the episode [assign-episode]
-
-Assign an episode to a user to establish ownership and prevent duplicate work when multiple people are reviewing the same queue. Only one user can hold the assignment at a time. Assigning replaces any existing assignee.
