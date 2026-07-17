@@ -378,7 +378,7 @@ With the rule running, you can watch the full alert lifecycle play out on the **
 
 ::::{step} Open the Alerts page
 
-Open **Alerting v2 preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Alerts** page.
+Open **Alerting V2 preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Alerts** page.
 
 ::::
 
