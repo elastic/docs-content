@@ -62,6 +62,30 @@ Note that the recommended reservations above are not guaranteed upper limits, if
 
 These fluctuations should not be a concern in practice. To get actual limits that could be used in alerts, you could add 4GB to the recommended values above.
 
+### Swap considerations [ece-alloc-swap-consideration]
+
+While {{es}} nodes generally run with [swap disabled](../self-managed/setup-configuration-memory.md), ECE hosts should have swap enabled for stability reasons.
+
+If an ECE host runs out of memory, the Linux out of memory (OOM) killer stops a random process on the runner. Having swap space available can prevent this from happening and protect the availability of ECE services.
+
+::::{important}
+Swap should be treated as an emergency safety net only — not as a way to overcommit memory or reduce host RAM. If a container runtime process (Docker or Podman) runs on swap, it can cause allocator failures due to API timeouts (visible as errors in `allocator.log`). Always ensure allocators are not over-allocated so the OS does not routinely rely on swap.
+::::
+
+There is no specific recommendation for sizing swap, but 4 GB of swap per 32 GB of RAM has proven to be a reasonable safeguard for most ECE installations. As a baseline, ECE hosts should have at least 512 MB of swap space.
+
+Set the `vm.swappiness` kernel setting to `1`, as described in the [Configure your OS](/deploy-manage/deploy/cloud-enterprise/configure-operating-system.md) preparation guides, so that swap is used only as a last resort.
+
+The method for provisioning swap space depends on your operating system and infrastructure provider. Consult your OS or cloud provider's documentation for instructions on creating a swap file or partition.
+
+Follow the host configuration steps for your OS to enable swap:
+
+* [Ubuntu](/deploy-manage/deploy/cloud-enterprise/configure-host-ubuntu.md)
+* [RHEL](/deploy-manage/deploy/cloud-enterprise/configure-host-rhel.md)
+* [SUSE](/deploy-manage/deploy/cloud-enterprise/configure-host-suse.md)
+
+
+
 
 ## CPU quotas [ece-alloc-cpu]
 
@@ -151,29 +175,4 @@ You can change the value of the disk multiplier at different levels:
 ::::{important}
 The override only persists during the lifecycle of the instance container. If a new container is created, for example during a `grow_and_shrink` plan or a vacate operation, the quota is reset to its default. To increase the storage ratio in a persistent way, [edit the instance configurations](ece-configuring-ece-instance-configurations-edit.md).
 ::::
-
-## Swap memory considerations [ece-alloc-swap-consideration]
-
-While {{es}} nodes generally run with [swap disabled](../self-managed/setup-configuration-memory.md), ECE hosts should have swap enabled for stability reasons.
-
-If an ECE host runs out of memory, the Linux out of memory (OOM) killer stops a random process on the runner. Having swap space available can prevent this from happening and protect the availability of ECE services.
-
-::::{important}
-Swap should be treated as an emergency safety net only — not as a way to overcommit memory or reduce host RAM. If a container runtime process (Docker or Podman) runs on swap, it can cause allocator failures due to API timeouts (visible as errors in `allocator.log`). Always ensure allocators are not over-allocated so the OS does not routinely rely on swap.
-::::
-
-
-There is no specific recommendation for sizing swap, but 4 GB of swap per 32 GB of RAM has proven to be a reasonable safeguard for most ECE installations. As a baseline, ECE hosts should have at least 512 MB of swap space.
-
-Set the `vm.swappiness` kernel setting to `1`, as described in the [Configure your OS](/deploy-manage/deploy/cloud-enterprise/configure-operating-system.md) preparation guides, so that swap is used only as a last resort.
-
-The method for provisioning swap space depends on your operating system and infrastructure provider. Consult your OS or cloud provider's documentation for instructions on creating a swap file or partition.
-
-### Enabling swap [ece-alloc-enabling-swap]
-
-Follow the host configuration steps for your OS to enable swap:
-
-* [Ubuntu](/deploy-manage/deploy/cloud-enterprise/configure-host-ubuntu.md)
-* [RHEL](/deploy-manage/deploy/cloud-enterprise/configure-host-rhel.md)
-* [SUSE](/deploy-manage/deploy/cloud-enterprise/configure-host-suse.md)
 
