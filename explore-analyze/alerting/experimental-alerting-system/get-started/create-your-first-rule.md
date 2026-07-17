@@ -49,7 +49,7 @@ Before creating the rule, set up the index and load the sample data it will quer
 
 ::::{step} Create the index
 
-Run the following in **Dev Tools** to create the index that your rule will query. Unlike data streams, this index requires explicit creation because it uses a custom mapping.
+Run the following in **Dev Tools** to create the index that your rule will query. This index requires explicit creation because it uses a custom mapping.
 
 ```json
 PUT checkout-service-logs
@@ -410,7 +410,7 @@ POST checkout-service-logs/_update_by_query
 }
 ```
 
-This rewrites the degraded documents to a healthy latency value, so the next scheduled run (within 5 minutes) finds the service's P95 latency back under the threshold and moves the episode to `inactive`. Go to the **Alerts** page and open the episode's details again to confirm.
+Wait for the next scheduled run (within 5 minutes), then go to the **Alerts** page and open the episode's details again to confirm it moved to `inactive`.
 
 ::::
 

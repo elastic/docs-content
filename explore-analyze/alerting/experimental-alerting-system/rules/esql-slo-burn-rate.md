@@ -10,7 +10,7 @@ description: "Detect SLO error budget burn across multiple time windows in Kiban
 
 # SLO burn rate detection in the {{alerting-v2-system}} [slo-burn-rate-query]
 
-An SLO burn rate query asks a different question than a basic threshold: are you consuming your error budget faster than you can afford to? Rather than checking a single metric at a fixed limit, it calculates error rates across multiple time windows simultaneously and assigns a severity level based on how fast the budget is being consumed.
+An SLO burn rate query answers a specific question: are you consuming your error budget faster than you can afford to? It calculates error rates across multiple time windows simultaneously and assigns a severity level based on how fast the budget is being consumed.
 
 ## Single-tier query
 

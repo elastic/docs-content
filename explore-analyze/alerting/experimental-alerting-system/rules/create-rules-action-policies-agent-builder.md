@@ -10,9 +10,7 @@ description: "How Agent Builder creates rules and action policies in the experim
 
 # Create rules and action policies with {{agent-builder}} [create-rules-agent-builder]
 
-Use {{agent-builder}} to create and configure rules and action policies through natural language instead of the rule form. An agent equipped with the rule management skill proposes, creates, and configures both object types based on your conversation.
-
-Instead of filling out the rule form manually, you describe what you want to monitor and the agent uses its rule management skill and tools to resolve the data source and build a fully configured rule proposal for you.
+Use {{agent-builder}} to create and configure rules and action policies through natural language instead of the rule form. Describe what you want to monitor, and an agent equipped with the rule management skill resolves the data source and proposes a fully configured rule.
 
 ## Requirements [create-ai-agent-requirements]
 
@@ -33,7 +31,7 @@ Before you start, make sure you have the following:
 
 ### Start a proposal [ai-agent-start-proposal]
 
-Go to the **Rules** page, then start creating a rule. When choosing a creation path, select the one that lets you create the rule with an agent. Alternatively, open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. 
+Go to the **Rules** page (go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md) > **Rules**), then start creating a rule. When choosing a creation path, select the one that lets you create the rule with an agent. Alternatively, open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. 
 
 The rule management skill gives the agent domain expertise in {{alerting-v2-system}} rule authoring, including knowledge of {{esql}} query patterns, threshold configuration, grouping, and the {{alerting-v2-system}} data model. When you describe a monitoring requirement, the agent uses its tools to resolve the relevant data source and builds a rule proposal.
 
@@ -51,7 +49,7 @@ The agent can also search for and attach an existing rule to the conversation us
 
 The agent does not persist the rule automatically. Saving is an explicit action that signals the configuration is ready. Until the rule is saved, the proposal exists only in the conversation and is not evaluated against data.
 
-When {{agent-builder}} saves or edits a rule, {{kib}} automatically adds an `agent-builder-assisted` tag to it. The tag appears in the rules list and works as a normal filter tag. You can remove it or edit it manually. If the agent edits the same rule later, the tag is re-applied automatically.
+When {{agent-builder}} saves or edits a rule, {{kib}} automatically adds an `agent-builder-assisted` tag to it. The tag appears on the **Rules** page and works as a normal filter tag. You can remove it or edit it manually. If the agent edits the same rule later, the tag is re-applied automatically.
 
 ## Example prompts [ai-agent-sample-prompts]
 

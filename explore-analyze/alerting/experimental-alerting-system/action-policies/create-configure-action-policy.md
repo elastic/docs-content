@@ -46,7 +46,7 @@ Use a [KQL](../../../query-filter/languages/kql.md) expression to filter which a
 **Frequency** limits how often the action policy fires for a given notification group. The interval resets from the last time the action policy fired, so successive notifications stay at least `interval` apart. Set a duration such as `1h` or `30m`.
 
 :::{note}
-`On status change` only re-notifies when the alert episode's status changes, not when its severity changes. If an episode escalates from `low` to `critical` but the action policy already matched it and the status hasn't changed, the throttle blocks re-notification.
+`On status change` only re-notifies when the alert episode's status changes, not when its severity changes. If the action policy already matched an episode and its status stays the same, the throttle blocks re-notification, even if severity later escalates from `low` to `critical`.
 
 To receive escalation notifications, either create separate action policies scoped to specific severity levels, or use a time-based throttle such as `At most once every 1h` so the action policy re-notifies after the interval regardless of severity or status changes. For examples, refer to [Re-notify for persistently active episodes](re-notification.md).
 :::

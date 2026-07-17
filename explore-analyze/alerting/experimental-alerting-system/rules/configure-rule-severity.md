@@ -31,7 +31,7 @@ Configure severity when:
 Skip severity when:
 
 * All breaches from the rule are equally urgent. A fixed label in the rule's tags is simpler and doesn't require query changes.
-* The underlying data doesn't produce a reliable metric to grade urgency. Severity that's frequently wrong generates more noise than routing by severity resolves.
+* The underlying data doesn't produce a reliable metric to grade urgency. Severity values that are frequently wrong just add noise instead of helping you route notifications.
 
 ## Severity behavior and usage [severity-behavior]
 

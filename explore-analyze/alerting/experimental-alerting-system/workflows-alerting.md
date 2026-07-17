@@ -27,9 +27,9 @@ Action policies evaluate alert episodes on a continuous schedule and invoke work
 
 ### Alert episode lifecycle triggers [alert-episode-lifecycle-triggers]
 
-Lifecycle triggers start a workflow immediately in response to a specific event on an alert episode, without any scheduling or gating. Alert episode lifecycle triggers are a type of [event-driven trigger](../../workflows/triggers/event-driven-triggers.md) that start a workflow automatically when a specific event occurs. 
+Lifecycle triggers are a type of [event-driven trigger](../../workflows/triggers/event-driven-triggers.md) that start a workflow immediately when a specific event occurs on an alert episode, with no scheduling or gating.
 
-The {{alerting-v2-system}} emits a trigger event each time one of these episode events occurs (for example, when the episode is activated, assigned to a user, acknowledged, or snoozed) and any workflow attached to that trigger type runs immediately in response. Not all of these events move the episode between its lifecycle states (`inactive`, `pending`, `active`, `recovering`). Triage actions such as assigning, acknowledging, or snoozing an episode don't change its lifecycle state, but each still emits its own lifecycle trigger.
+When an episode is activated, assigned to a user, acknowledged, or snoozed, the {{alerting-v2-system}} emits a trigger event, and any workflow attached to that trigger type runs immediately. Assigning, acknowledging, and snoozing are triage actions. They each emit their own lifecycle trigger, but they don't move the episode between its lifecycle states (`inactive`, `pending`, `active`, `recovering`).
 <!-- TODO: When PR #6527 (alerts) merges, link "lifecycle states" above to alerts.md#alert-episode-lifecycle and "triage actions" to alerts/triage-alert-episodes.md. -->
 
 For a list of available triggers and event payload fields, refer to [Alert episode lifecycle triggers](../../workflows/triggers/event-driven-triggers.md). 

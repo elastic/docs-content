@@ -10,7 +10,7 @@ description: "How action policies gate alert episodes through eligibility checks
 
 # About action policies [about-action-policies]
 
-Action policies are part of the {{alerting-v2-system}} in {{kib}}. An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by running the alert episode through a sequence of gates. A workflow runs only if the alert episode clears each gate in sequence.
+Action policies are part of the {{alerting-v2-system}} in {{kib}}. An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by running the alert episode through a sequence of gates, and a workflow runs only once the episode clears every gate.
 
 ## Why action policies are separate from rules [policies-separate-from-rules]
 
@@ -33,7 +33,7 @@ If any gate stops the episode, the workflow is not invoked for that action polic
 Every action policy you create has the potential to match alert episodes from any rule in the space. Which episodes actually get matched is expressed entirely through the KQL matcher. Leave the matcher empty to match all episodes in your space.
 
 :::{note}
-An empty matcher does not match every episode without exception. The eligibility check runs before the matcher, so episodes that are acknowledged, snoozed, or covered by a maintenance window are excluded before the matcher evaluates. An empty matcher applies to all eligible episodes in the space.
+An empty matcher applies to all eligible episodes in the space, not literally every episode. The eligibility check runs first, so episodes that are acknowledged, snoozed, or covered by a maintenance window are excluded before the matcher ever evaluates them.
 :::
 
 The following table shows how different [KQL](../../../query-filter/languages/kql.md) expressions control the matching scope of an action policy:
@@ -59,7 +59,7 @@ For each enabled action policy that is not snoozed, the dispatcher works through
 | 2 | Check whether the alert episode matches the action policy's KQL. If not, stop evaluating this action policy and move to the next one. The episode continues to be evaluated by other enabled action policies. |
 | 3 | Determine how matching alert episodes batch into notification groups. |
 | 4 | Check whether a workflow has already been invoked for this notification group recently. If so, wait. |
-| 5 | Invoke the configured workflows. Workflow invocations happen after the dispatcher's next polling cycle, which runs roughly every 5 seconds after a rule evaluates. |
+| 5 | Invoke the configured workflows, on the dispatcher's next polling cycle (roughly every 5 seconds). |
 
 :::{tip}
 A severity change can cause an action policy to match an episode for the first time and fire a notification, but it does not re-trigger an action policy that already matched the episode. For details and examples, refer to [Manage severity escalation notifications](severity-escalation.md).

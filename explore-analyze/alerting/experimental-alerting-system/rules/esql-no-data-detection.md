@@ -10,7 +10,7 @@ description: "Detect silent hosts and stopped data sources in Kibana's experimen
 
 # No-data detection in the {{alerting-v2-system}} [no-data-esql-query]
 
-No-data detection solves a different problem from threshold alerting. A threshold query evaluates data that's present. No-data detection identifies sources that have gone silent. Threshold queries can't do this. A silent host produces no rows at all, so there's nothing to evaluate a condition against.
+No-data detection identifies sources that have gone silent, such as a host that stopped reporting metrics. A silent host produces no rows at all, so a threshold query has nothing to evaluate a condition against.
 
 The pattern inverts the normal approach: use a broad lookback to find all known hosts, then surface only those that have not reported recently.
 

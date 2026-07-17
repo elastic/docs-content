@@ -15,7 +15,7 @@ Creating an {{esql}} rule lets you write the detection query directly instead of
 - **Rule form** - Fill in the step-by-step form with a live preview of results. For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md).
 - **YAML editor** - Edit the raw rule definition directly instead of using the form. You can switch between form and YAML at any time. Invalid YAML that can't be translated to a valid form state locks you into the YAML editor until it's fixed. For a list of supported YAML fields, refer to [YAML rule schema reference](yaml-rule-schema-reference.md).
 
-Go to the **Rules** page, then start creating a rule. When choosing a creation path, select the one that lets you write the query directly as {{esql}}.
+Go to the **Rules** page (go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md) > **Rules**), then start creating a rule. When choosing a creation path, select the one that lets you write the query directly as {{esql}}.
 
 :::{note}
 **Rule form** and **YAML editor** are the names used in this documentation, not necessarily exact UI labels. Look for the equivalent options when creating or editing a rule.
