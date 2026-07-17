@@ -14,7 +14,7 @@ description: Definitions of key terms used throughout the experimental Kibana al
 These terms appear throughout the {{alerting-v2-system}} docs. If a term is unclear while reading, check its definition here before going further.
 
 **Action policy**
-:   A configuration that controls whether and how often an alert episode triggers a notification, including which alerts qualify and how to avoid sending too many notifications. A single action policy can apply to one rule, several rules, or all rules in the space.
+:   A configuration that controls which alert episodes trigger a notification and how often. A single action policy can apply to one rule, several rules, or all rules in the space.
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
     To learn more, refer to [Notifications and actions](notifications-actions.md).
 -->
@@ -61,7 +61,7 @@ These terms appear throughout the {{alerting-v2-system}} docs. If a term is uncl
 **Threshold**
 :   The condition a rule uses to decide when something is worth alerting on, including how many times the condition must be met before an alert episode opens or closes.
 <!-- TODO: Uncomment when PR #6523 (rules) is merged:
-    To learn more, refer to [Activation and recovery thresholds](rules/configure-rule-thresholds.md).
+    To learn more, refer to [Alert delay](rules/configure-rule-alert-delay.md) and [Recovery condition](rules/configure-rule-recovery.md).
 -->
 
 **Workflow**

@@ -13,6 +13,19 @@ products:
 
 Manage your collection of dashboards in {{product.kibana}} using search, filtering, and organization features that help you quickly find and track the dashboards you need. Whether you're working with a few dashboards or hundreds, these management tools help you stay organized and monitor dashboard usage across your team.
 
+On this page, find and organize your dashboards:
+
+- [Browse dashboards](#find-dashboards): Search, filter, and sort to quickly find the dashboards you need in a large collection.
+- [Browse saved visualizations and annotation groups](#find-visualizations-annotation-groups): Manage the visualizations saved in the library that you can reuse across multiple dashboards.
+- [Keep track of your favorite dashboards](#_keep_track_of_your_favorite_dashboards): Flag the dashboards you use often so you can access them faster.
+- [View dashboard usage](#_view_dashboard_usage): Check how much a dashboard is viewed.
+
+To move dashboards between environments or manage them as code, refer to:
+
+- [Share and export dashboards](sharing.md): Share with your team using links or embeds, and export as PDF, PNG, CSV, or JSON.
+- [Import a dashboard](import-dashboards.md): Bring a dashboard from another space, instance, deployment, or project into your own.
+- [Manage dashboards as code](manage-dashboards-as-code.md): Version-control dashboards and deploy them across spaces, clusters, and stages.
+
 
 ## Browse dashboards [find-dashboards]
 

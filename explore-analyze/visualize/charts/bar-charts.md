@@ -463,29 +463,9 @@ When creating or editing a visualization, you can customize several appearance o
 
 
 #### Legend settings
-Configure elements of your bar chart's legend. Configurable options include:
 
-**Visibility**
-:   Specify whether to automatically show the legend or hide it.
-
-**Position**
-:   Choose to show the legend inside or outside the chart, then pick the side (left, right, top, or bottom) and fine-tune alignment (vertical/horizontal) for grid-style layouts.
-
-**Width**
-:   Set the width of the legend.
-
-**Layout** {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
-:   For legends positioned outside the chart at the top or bottom, choose how series labels are arranged:
-    - **List**: A compact layout that flows series labels to fit the available space. List is the default for new charts when the legend is at the top or bottom.
-    - **Grid**: A table-style layout that aligns series labels and statistics into rows and columns.
-
-    Visualizations created before this setting was introduced keep their previous layout until you change it.
-
-**Statistics**
-:   Choose one or more statistics to show (for example, average, min, max, last value). Lens appends those numbers to every series label so you don't have to hover over the chart to see headline figures.
-
-**Label truncation**
-:   For legends positioned inside the chart, outside on the side, or outside at the top or bottom with the **Grid** layout, choose whether to truncate long series labels and set the maximum number of lines for each label.
+:::{include} ../../_snippets/xy-chart-legend-settings.md
+:::
 
 ## Bar chart examples
 

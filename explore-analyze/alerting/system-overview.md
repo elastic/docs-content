@@ -53,17 +53,13 @@ Refer to [Alert episodes](experimental-alerting-system/alerts.md) to learn more.
 
 An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by evaluating episode eligibility, match conditions, and frequency. Policy configuration determines the scope. A policy can apply to alert episodes from a specific rule, multiple rules, or all rules in the space.
 
-<!-- TODO: When PR #6525 (workflows/notifications) merges, uncomment the link below and trim this sub-section to 1–2 anchor sentences + the link.
 Refer to [Notifications and actions](experimental-alerting-system/notifications-actions.md) to learn more.
--->
 
 ### Workflows
 
-A workflow is what actually sends the message or runs the automation, for example, posting to Slack, sending an email, calling a webhook. The {{alerting-v2-system}} invokes workflows through action policies that you configure to trigger on a schedule or on a state change on an alert episode.
+A workflow is what actually sends the message or runs the automation, for example, posting to Slack, sending an email, calling a webhook. The {{alerting-v2-system}} invokes workflows in two ways: action policies that you configure to route alert episodes to a workflow based on match conditions and frequency, or alert episode lifecycle triggers that invoke a workflow immediately in response to a specific episode event, such as when it's activated or assigned.
 
-<!-- TODO: When PR #6525 (workflows/notifications) merges, uncomment the link below and trim this sub-section to 1–2 anchor sentences + the link.
 Refer to [Connect workflows](experimental-alerting-system/workflows-alerting.md) to learn more.
--->
 
 ## How the pieces fit together [how-pieces-fit-together]
 
