@@ -144,9 +144,7 @@ Learn more in [Agent Chat](chat.md).
 
 ::::{step} Enable experimental features (optional)
 
-Some of the latest {{agent-builder}} features are experimental and hidden by default. Turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}} to try them before they're generally available.
-
-
+Some {{agent-builder}} features are experimental and hidden by default. Turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}} to try them before they're generally available.
 ::::
 
 ::::{step} Configure model (optional)
