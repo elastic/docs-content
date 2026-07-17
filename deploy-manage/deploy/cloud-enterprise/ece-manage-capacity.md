@@ -18,7 +18,6 @@ This section focuses on the allocator role, and explains how to plan its capacit
 * [CPU quotas](#ece-alloc-cpu)
 * [Processors setting](#ece-alloc-processors-setting)
 * [Storage](#ece-alloc-storage)
-* [Swap consideration](#ece-alloc-swap-consideration)
 
 ::::{important}
 ECE does not support hot-adding of resources to a running node.  When increasing CPU, memory, or disk allocated to an ECE node, a restart is needed to use the additional resources.
