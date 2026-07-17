@@ -20,30 +20,16 @@ products:
 
 {{kib}} creates a default space for you. You can change your current space at any time from the top menu.
 
-{applies_to}`stack: ga 9.0-9.4` When you create more spaces, {{kib}} asks users to select a space when they log in.
+When you log in:
+
+- {applies_to}`stack: ga 9.0-9.4` If you can access more than one space, {{kib}} asks you to select a space.
+- {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` {{kib}} can remember the space you use and return you to it. If you can access more than one space and {{kib}} has no remembered space or you no longer have access to it, {{kib}} asks you to select a space.
 
 :::{image} /deploy-manage/images/kibana-change-space.png
 :alt: Change current space menu
 :screenshot:
 :width: 50%
 :::
-
-## Control which space opens after login [remember-last-selected-space]
-```{applies_to}
-stack: ga 9.5+
-serverless: ga
-```
-
-When you have access to more than one space and **Remember last selected space** is enabled, {{kib}} opens your remembered space the next time you log in. If no space is remembered or you no longer have access to it, {{kib}} opens the space selector.
-
-On self-managed deployments, you can change this preference:
-
-1. Open the user menu from the header.
-2. Select **Edit profile**.
-3. In **Space Configuration**, turn **Remember last selected space** on or off.
-4. Select **Save changes**.
-
-When you turn off **Remember last selected space** and have access to more than one space, {{kib}} opens the space selector when you log in.
 
 You can find the **Spaces** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
