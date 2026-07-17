@@ -78,14 +78,6 @@ Set the `vm.swappiness` kernel setting to `1`, as described in the [Configure yo
 
 The method for provisioning swap space depends on your operating system and infrastructure provider. Consult your OS or cloud provider's documentation for instructions on creating a swap file or partition.
 
-Follow the host configuration steps for your OS to enable swap:
-
-* [Ubuntu](/deploy-manage/deploy/cloud-enterprise/configure-host-ubuntu.md)
-* [RHEL](/deploy-manage/deploy/cloud-enterprise/configure-host-rhel.md)
-* [SUSE](/deploy-manage/deploy/cloud-enterprise/configure-host-suse.md)
-
-
-
 
 ## CPU quotas [ece-alloc-cpu]
 
