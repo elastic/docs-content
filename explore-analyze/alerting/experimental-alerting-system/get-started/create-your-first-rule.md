@@ -302,9 +302,9 @@ Go to **Rules** (**Alerting V2 Preview** in the navigation menu or [global searc
 
 The query you applied from the sandbox auto-fills **Mode**, **Time field**, and **Group fields**. Set the remaining fields:
 
-- Set **Alert delay** to **Breaches: 2**. The breach must persist across 2 consecutive evaluations before the episode moves to `active`.
-- Set **Schedule** to every `5` minutes.
-- Set **Lookback Window** to the last `45` minutes. This ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial. Unlike the sandbox, this is always a relative range; it can't use an absolute range like **Today**. Go ahead and finish configuring and saving the rule; see **Observe the episode lifecycle** for when the episode will actually appear.
+- **Alert delay**: `Breaches: 2` (The breach must persist across 2 consecutive evaluations before the episode moves to `active`.)
+- **Schedule**: `Every 5 minutes`
+- **Lookback Window**: `Last 45 minutes` (Ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial.)
 
 Select **Next**.
 
