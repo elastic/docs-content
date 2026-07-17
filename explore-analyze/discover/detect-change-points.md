@@ -15,8 +15,8 @@ Use an {{esql}} [`CHANGE_POINT`](elasticsearch://reference/query-languages/esql/
 
 ## Before you begin
 
-- You need an [appropriate subscription](https://www.elastic.co/subscriptions) or a trial license.
-- {{esql}} must be enabled in {{kib}}.
+- {applies_to}`stack: ga 9.5+` You need a [Platinum or Enterprise subscription](https://www.elastic.co/subscriptions) or an active trial.
+- {applies_to}`serverless: ga` You can use `CHANGE_POINT` in Elasticsearch, Observability, and Security projects.
 - To analyze your own data, you need a date field and values that you can aggregate into a numeric metric. The `CHANGE_POINT` command requires at least 22 values per series.
 
 ## Find and investigate change points
