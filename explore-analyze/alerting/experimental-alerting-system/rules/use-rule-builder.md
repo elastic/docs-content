@@ -12,13 +12,11 @@ description: "Create rules in Kibana's experimental alerting system by selecting
 
 The rule builder lets you create a rule by selecting a rule type and configuring it through structured inputs, instead of writing {{esql}} directly. Behind the scenes, the rule builder generates the {{esql}} query for you from the data source, aggregation, filters, and alert conditions you set.
 
-Go to the **Rules** page (go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md) > **Rules**), then start creating a rule. When choosing a creation path, select the one that uses the rule builder.
+To create a rule, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules**. When choosing a creation path, select the one in the rule builder section.
 
 :::{note}
 The rule builder differs from the **Rule form** described in [Create an {{esql}} rule](create-esql-rule.md). The Rule form is for writing an {{esql}} query directly, with a live preview of results. The rule builder instead has you select a rule type, then fills in the query for you based on the structured inputs you provide for that type.
 :::
-
-For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md).
 
 ## Threshold Alert [use-threshold-alert-builder]
 

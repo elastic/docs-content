@@ -1,5 +1,5 @@
 ---
-navigation_title: Review execution history
+navigation_title: Review action policy execution history
 applies_to:
   stack: experimental 9.5+
   serverless: experimental
@@ -10,7 +10,9 @@ description: "Monitor action policy dispatch activity from the execution history
 
 # Review action policy execution history in the {{alerting-v2-system}} [review-action-policy-execution-history]
 
-The execution history for action policies shows dispatcher decisions from the last 24 hours across all action policies in the space. Each row covers one dispatcher run for each action policy evaluated against a rule:
+Action policy execution history shows dispatcher decisions from the last 24 hours across all action policies in the space, so you can confirm notifications are dispatching as expected or investigate unexpected notification behavior.
+
+Go to **Execution history** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Action policies** tab. Each row covers one dispatcher run for each action policy evaluated against a rule:
 
 | Column | Description |
 |---|---|
@@ -30,8 +32,6 @@ The execution history for action policies shows dispatcher decisions from the la
      triggered a workflow in this run. Only relevant when the policy uses Group mode;
      otherwise 1."). Verify with the Alerting v2 team before uncommenting.
 -->
-
-
 
 You can search records by action policy name, rule name, or saved-object ID, and filter by outcome to view only dispatched or throttled records.
 

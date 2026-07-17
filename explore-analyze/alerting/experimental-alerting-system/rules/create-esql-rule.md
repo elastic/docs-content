@@ -10,12 +10,14 @@ description: "Write ES|QL detection queries for rules in Kibana's experimental a
 
 # Create an {{esql}} rule in the {{alerting-v2-system}} [create-esql-rule]
 
-Creating an {{esql}} rule lets you write the detection query directly instead of going through the rule builder's structured inputs. There are two ways to define the rule:
+Creating an {{esql}} rule lets you write the detection query directly instead of going through the rule builder's structured inputs.
+
+To create a rule, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules**. When choosing a creation path, select the one that lets you write {{esql}} directly.
+
+Once you're in that flow, there are two ways to define the rule:
 
 - **Rule form** - Fill in the step-by-step form with a live preview of results. For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md).
 - **YAML editor** - Edit the raw rule definition directly instead of using the form. You can switch between form and YAML at any time. Invalid YAML that can't be translated to a valid form state locks you into the YAML editor until it's fixed. For a list of supported YAML fields, refer to [YAML rule schema reference](yaml-rule-schema-reference.md).
-
-Go to the **Rules** page (go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md) > **Rules**), then start creating a rule. When choosing a creation path, select the one that lets you write the query directly as {{esql}}.
 
 :::{note}
 **Rule form** and **YAML editor** are the names used in this documentation, not necessarily exact UI labels. Look for the equivalent options when creating or editing a rule.

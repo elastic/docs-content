@@ -10,11 +10,9 @@ description: "Use the Execution History page in Kibana's experimental alerting s
 
 # Review rule execution history in the {{alerting-v2-system}} [review-rule-execution-history]
 
-Rule execution history gives you a cross-rule, filterable log of every rule run in the space.
+Rule execution history gives you a cross-rule, filterable log of every rule run in the space, so you can confirm rules are running on schedule or spot patterns that aren't visible when looking at individual rules, such as a cluster of failures at the same timestamp that points to a shared dependency issue.
 
-## Rule executions [rule-execution-records]
-
-Rule execution history shows one row per rule evaluation across all rules in the space. Use it to spot patterns that aren't visible when looking at individual rules, for example, a cluster of failures at the same timestamp that points to a shared dependency issue.
+Go to **Execution history** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Rules** tab, which lists the following for each rule evaluation:
 
 | Column | Description |
 |---|---|

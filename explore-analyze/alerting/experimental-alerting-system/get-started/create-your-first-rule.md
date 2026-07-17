@@ -267,7 +267,7 @@ You'll build a rule that detects when P95 latency for a service exceeds 2 second
 
 ::::{step} Open the rule form
 
-Go to **Rules** (**Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md) > **Rules**), create a new rule, then select **Create ES|QL rule** to open the rule authoring flyout.
+Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules**, create a new rule, then select **Create ES|QL rule** to open the rule authoring flyout.
 
 ::::
 
