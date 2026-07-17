@@ -32,11 +32,11 @@ Display data within a specified time range when your index contains time-based e
     * To select start and end dates from a calendar, select **Calendar**, select the dates, then select **Apply**.
     * To configure the start and end separately, select **Custom range**, set each one as **Relative**, **Absolute**, or **Now**, then select **Apply**.
 
-    :::{image} /explore-analyze/images/kibana-date-range-picker.png
-    :alt: Date range picker showing presets and controls for custom ranges, settings, and saving presets
-    :screenshot:
-    :width: 350px
-    :::
+:::{image} /explore-analyze/images/kibana-date-range-picker.png
+:alt: Date range picker showing presets and controls for custom ranges, settings, and saving presets
+:screenshot:
+:width: 250px
+:::
 
 3. To configure automatic refresh and time display, select the {icon}`gear` **Settings** icon:
 
@@ -53,7 +53,7 @@ The new picker doesn't support auto-refresh-only views. In those views, the time
 ::::
 
 ::::{applies-item} { stack: ga 9.0-9.4 }
-1. Select the time filter.
+1. Select the {icon}`calendar` icon.
 2. Select one of the following:
 
     * **Quick select**. Set a time based on the last or next number of seconds, minutes, hours, or other time unit.
@@ -61,10 +61,11 @@ The new picker doesn't support auto-refresh-only views. In those views, the time
     * **Recently used date ranges**. Use a previously selected date range.
     * **Refresh every**. Specify an automatic refresh rate.
 
-    :::{image} /explore-analyze/images/kibana-time-filter.png
-    :alt: Time filter menu
-    :width: 250px
-    :::
+:::{image} /explore-analyze/images/kibana-time-filter.png
+:alt: Time filter menu
+:screenshot:
+:width: 200px
+:::
 
 3. To set start and end times, select the bar next to the time filter. In the popup, select **Absolute**, **Relative**, or **Now**, then specify the required options.
 ::::
