@@ -25,7 +25,7 @@ The `.rule-events` and `.alert-actions` data streams are [system indices](/refer
 Each time a rule evaluates, {{kib}} writes one document per matched series to `.rule-events`. The `type` field determines the document kind:
 
 - **`signal`** - A point-in-time record that the query matched. Useful for querying history or chaining into follow-on rules. Signal documents don't include `episode.*` fields.
-- **`alert`** - A lifecycle-tracked episode visible in the alert inbox, episode details, and triage views. Alert documents include `episode.*` fields and represent a breach that stays open until the condition clears.
+- **`alert`** - A lifecycle-tracked episode visible on the **Alerts** page, including its episode details and triage actions. Alert documents include `episode.*` fields and represent a breach that stays open until the condition clears.
 
 Both kinds share base fields. Only `alert` documents add episode fields that carry the lifecycle state for the matched series.
 
@@ -47,3 +47,4 @@ FROM .rule-events
 
 - [{{esql}} query](configure-rule-query.md): How the base query and alert condition shape what's written to `.rule-events`.
 - [Rules](../rules.md): What rules do and how they fit into the broader {{alerting-v2-system}}.
+- [View and manage alerts](../alerts/view-and-manage-alerts.md): Where lifecycle-tracked episodes appear in the UI, with triage actions and episode details.

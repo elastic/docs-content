@@ -21,7 +21,7 @@ When a breached group stops matching, the rule re-runs the [base query](configur
 
 The check described above is part of the recovery process, so it only runs when `recovery_strategy` is **Default** or **Custom recovery**.
 
-If `recovery_strategy` is **No recovery** instead, episodes never recover automatically. That means the base-query check above never runs, so `no_data_strategy` has no effect.
+If `recovery_strategy` is **No recovery** instead, episodes stay open until someone closes them manually, the base-query check above doesn't run, and `no_data_strategy` has no effect.
 
 ## No-data strategy options [no-data-strategy-options]
 
@@ -33,7 +33,7 @@ Choose one of the following options. Each maps to a `no_data_strategy` value if 
 | --- | --- | --- |
 | Keep last status | `last_known_status` | Hold the last known lifecycle state. An active breach stays active and a recovered episode stays recovered. |
 | Recover | `recover` | Treat absence as recovery. |
-| Do nothing | `none` | Skip the no-data check. The rule never re-runs the base query, so an empty result is treated the same as **Recover**, but without confirming that the data pipeline is actually working. |
+| Do nothing | `none` | Skip the no-data check. An empty result is treated the same as **Recover**, but the rule doesn't confirm that the data pipeline is actually working. |
 
 :::{note}
 `no_data_strategy` only triggers when the base query returns **zero rows**. If one host or data source goes quiet but others keep reporting, the query still returns rows for the ones still reporting, so `no_data_strategy` won't trigger. To catch a single silent source in that situation, use the {{esql}} pattern in [No-data detection](esql-no-data-detection.md), which turns a silent source into its own alert row.

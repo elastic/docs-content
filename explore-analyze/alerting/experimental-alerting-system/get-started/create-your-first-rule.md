@@ -384,7 +384,7 @@ Open **Alerting V2 preview** using the navigation menu or the [global search fie
 
 ::::{step} Find the episode
 
-The episode won't appear until the current UTC time passes 16 minutes past the hour, which is the start of the degraded window. After the first two evaluations following that point (about 10 minutes), you'll see an episode appear and move from `pending` to `active`.
+The degraded window starts at 16 minutes past the hour. Once the current UTC time passes that point, wait for two rule evaluations (about 10 minutes). An episode then appears and moves from `pending` to `active`.
 
 ::::
 

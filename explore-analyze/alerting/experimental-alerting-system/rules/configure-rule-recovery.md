@@ -18,9 +18,9 @@ Choose one of the following options. Each maps to a `recovery_strategy` value if
 
 | Option | `recovery_strategy` value | Description |
 | --- | --- | --- |
-| Default | `no_breach` | Recovers an episode once its group stops breaching but still shows up in the base query (checked without the alert condition applied). That second check confirms the group is actually healthy, not just missing from the data. This is the default and covers most rules. |
+| Default | `no_breach` | Recovers an episode when its group no longer breaches and the base query (without the alert condition) still returns that group. That confirms the group is actually healthy, not just missing from the data. This is the default and covers most rules. |
 | Custom recovery | `query` | Evaluates a separate recovery condition. A match recovers the episode. No match falls back to the same base-query check as **Default**. |
-| No recovery | `none` | Turns off automatic recovery entirely. Episodes stay open until closed manually. Because recovery is never evaluated, no-data handling never runs either. |
+| No recovery | `none` | Turns off automatic recovery entirely. Episodes stay open until closed manually. With recovery turned off, no-data handling doesn't run either. |
 
 :::{note}
 An unset `recovery_strategy` behaves the same as **No recovery**, but unset usually means the setting was overlooked rather than a deliberate choice.

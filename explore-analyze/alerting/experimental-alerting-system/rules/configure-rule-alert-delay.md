@@ -29,7 +29,7 @@ Leave alert delay set to Immediate when:
 | Mode | Behavior | When to use |
 | --- | --- | --- |
 | Immediate | Opens an alert episode as soon as the threshold is breached on the first evaluation. | Use when any single breach warrants attention and latency matters. |
-| Breaches | Opens an alert episode after the threshold is breached a set number of times in a row. | Use when a single breach isn't enough reason to act, for example when brief spikes are normal and you only care if the condition keeps firing. |
+| Breaches | Opens an alert episode after the threshold is breached a set number of times in a row. | Use when brief spikes are normal and you only want to act after the condition keeps firing—a single breach on its own isn't enough. |
 | Duration | Opens an alert episode after the threshold has been continuously breached for a set time. | Use when duration of the problem matters more than how many evaluations caught it, for example sustained high CPU rather than a momentary spike. |
 
 ### Alert delay fields

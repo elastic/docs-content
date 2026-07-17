@@ -10,7 +10,7 @@ description: "Take triage actions on alert episodes in Kibana's experimental ale
 
 # Triage alert episodes in the {{alerting-v2-system}} [triage-alert-episodes]
 
-In the {{alerting-v2-system}}, you can take the following triage actions on alert episodes individually or in bulk. For deeper investigation of a specific episode, refer to [Investigate alert episodes](investigate-alert-episodes.md).
+From the **Alerts** page (find **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**), you can take the following triage actions on alert episodes individually or in bulk. For deeper investigation of a specific episode, refer to [Investigate alert episodes](investigate-alert-episodes.md).
 
 | Action | Description | When to use | Scope |
 |---|---|---|---|

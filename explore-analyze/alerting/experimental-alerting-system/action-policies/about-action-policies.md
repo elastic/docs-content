@@ -43,7 +43,7 @@ For each enabled action policy that is not snoozed, the dispatcher works through
 | 5 | Invoke the configured workflows, on the dispatcher's next polling cycle (roughly every 5 seconds). |
 
 :::{tip}
-A severity change can cause an action policy to match an episode for the first time and fire a notification, but it does not re-trigger an action policy that already matched the episode. For details and examples, refer to [Manage severity escalation notifications](severity-escalation.md).
+If an action policy already matched an episode, a severity change does not re-trigger it. A severity change can still cause a different action policy to match for the first time and fire a notification. For details and examples, refer to [Manage severity escalation notifications](severity-escalation.md).
 :::
 
 ## Related pages

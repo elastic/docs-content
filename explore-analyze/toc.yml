@@ -395,15 +395,6 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
-      - file: alerting/experimental-alerting-system/alerts.md
-        children:
-          - file: alerting/experimental-alerting-system/alerts/alert-data-model.md
-          - file: alerting/experimental-alerting-system/alerts/view-and-manage-alerts.md
-            children:
-              - file: alerting/experimental-alerting-system/alerts/triage-alert-episodes.md
-              - file: alerting/experimental-alerting-system/alerts/investigate-alert-episodes.md
-          - file: alerting/experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md
-          - file: alerting/experimental-alerting-system/alerts/field-reference.md
       - file: alerting/compare-alerting-systems.md
       - file: alerting/system-overview.md
         children:
@@ -445,6 +436,15 @@ toc:
                   - file: alerting/experimental-alerting-system/rules/esql-slo-burn-rate.md
                   - file: alerting/experimental-alerting-system/rules/esql-persistent-breach.md
               - file: alerting/experimental-alerting-system/rules/rule-event-field-reference.md
+          - file: alerting/experimental-alerting-system/alerts.md
+            children:
+              - file: alerting/experimental-alerting-system/alerts/alert-data-model.md
+              - file: alerting/experimental-alerting-system/alerts/view-and-manage-alerts.md
+                children:
+                  - file: alerting/experimental-alerting-system/alerts/triage-alert-episodes.md
+                  - file: alerting/experimental-alerting-system/alerts/investigate-alert-episodes.md
+              - file: alerting/experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md
+              - file: alerting/experimental-alerting-system/alerts/field-reference.md
           - file: alerting/experimental-alerting-system/notifications-actions.md
             children:
               - file: alerting/experimental-alerting-system/workflows-alerting.md

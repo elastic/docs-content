@@ -10,7 +10,7 @@ description: "Monitor alert episodes in Kibana's experimental alerting system us
 
 # View and manage alerts in the {{alerting-v2-system}} [view-manage-alerts]
 
-When a rule in the {{alerting-v2-system}} detects a problem, the **Alerts** page gives you health summaries and filtering tools to understand what's happening. 
+Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**. When a rule in the {{alerting-v2-system}} detects a problem, the **Alerts** page gives you health summaries and filtering tools to understand what's happening. 
 
 
 For triage actions (acknowledge, snooze, resolve, activate, and tag), refer to [Triage alert episodes](triage-alert-episodes.md). For episode lifecycle history, related episodes, and assignment, refer to [Investigate alert episodes](investigate-alert-episodes.md).

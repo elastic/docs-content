@@ -34,7 +34,7 @@ Use the flyout when you want to confirm a rule is healthy or take a quick action
 
 The rule details page is organized into tabs that let you review a rule's configuration and activity history.
 
-- **Overview** (Alert mode only): Shows a color-coded alert activity timeline per series, with summary statistics (episodes started, recovered, still open, and median duration) and a link to view matching episodes.
+- **Overview** (Alert mode only): Shows a color-coded alert activity timeline per series, with summary statistics (episodes started, recovered, still open, and median duration) and a link to view matching episodes on the **Alerts** page.
 - **Conditions**: The rule's base query, alert condition, schedule, lookback, grouping, and recovery settings.
 - **Runbook**: The rule's investigation guide, if one has been added. Use it to document steps for diagnosing or responding to alerts produced by this rule.
 
@@ -48,3 +48,4 @@ Use **Disable** when you want the rule to stop running entirely until you re-ena
 
 - [Create a rule](create-a-rule.md): Compare rule creation paths and choose the one that fits your workflow.
 - [Review rule execution history](review-rule-execution-history.md): Monitor rule execution outcomes across all rules in a space.
+- [View and manage alerts](../alerts/view-and-manage-alerts.md): Triage and investigate the alert episodes a rule produces.

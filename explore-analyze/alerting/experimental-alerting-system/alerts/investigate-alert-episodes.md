@@ -10,7 +10,7 @@ description: "Investigate alert episodes in Kibana's experimental alerting syste
 
 # Investigate alert episodes in the {{alerting-v2-system}} [investigate-alert-episodes]
 
-This page explains what information is available on the episode detail page in the {{alerting-v2-system}} and how to use it to understand what triggered an episode, assess its severity, identify recurring patterns, and coordinate a response. 
+From the **Alerts** page, select an episode to open its detail page, which surfaces what triggered the episode, its severity, recurring patterns, and response history, so you can investigate and coordinate a response.
 
 ## Understand the trigger and scope [understand-trigger]
 
@@ -32,7 +32,7 @@ When a rule includes multiple threshold conditions:
 - Conditions that compare the **same metric** appear together, with each threshold represented separately.
 - Conditions that compare **different metrics** appear in separate views, one for each metric.
 
-This chart only appears when the system can parse threshold conditions from the rule's query. It doesn't appear for signal-mode rules or rules whose query doesn't contain extractable threshold comparisons.
+This chart appears only for alert-mode rules whose query contains extractable threshold comparisons.
 
 The episode timeline shows its full duration as a horizontal bar, from when it was triggered to its most recent evaluation or close time.
 

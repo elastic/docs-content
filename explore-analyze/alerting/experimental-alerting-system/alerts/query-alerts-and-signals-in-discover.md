@@ -10,7 +10,7 @@ description: "Use ES|QL in Discover to replay incidents, audit triage actions, a
 
 # Query {{alerting-v2-system}} alert history in Discover [query-alert-history-discover]
 
-The Alerts UI within the {{alerting-v2-system}} shows current episode state. Discover lets you go further and replay how an incident unfolded, view who acknowledged or snoozed it, measure time-to-acknowledge trends, or correlate alert history with other data in your environment.
+Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**. The **Alerts** page shows current episode state. Discover lets you go further and replay how an incident unfolded, view who acknowledged or snoozed it, measure time-to-acknowledge trends, or correlate alert history with other data in your environment.
 
 For field definitions for both streams, refer to [Field reference](field-reference.md). For triage in the product UI, refer to [View and manage alerts](view-and-manage-alerts.md).
 
@@ -152,7 +152,7 @@ FROM .alert-actions
 To get the complete picture of an incident, filter both streams by the same identifier. Both streams share `group_hash` as a flat keyword, making it the most reliable join key. `episode.id` in `.rule-events` and `episode_id` in `.alert-actions` hold the same value but use different naming conventions: dot-notation in `.rule-events` and flat snake_case in `.alert-actions`.
 
 :::{note}
-`episode_id` is optional in `.alert-actions`. System-written action types (`fire`, `suppress`, `unmatched`, `notified`) key to a `group_hash` rather than a specific episode and might not carry an `episode_id`. Filtering by `episode_id` returns user actions (`ack`, `assign`, `deactivate`, and similar) and notifications, but might omit dispatcher-level entries. Use `group_hash` if you need the complete dispatcher history.
+Filter by `episode_id` to return user actions (`ack`, `assign`, `deactivate`, and similar) and notifications for one episode. Dispatcher-level entries might be missing because system-written action types (`fire`, `suppress`, `unmatched`, `notified`) key to `group_hash` and might not carry an `episode_id`. Filter by `group_hash` to include the complete dispatcher history.
 :::
 
 1. Run a `.rule-events` query to find the `episode.id` or `group_hash` you care about.

@@ -30,7 +30,7 @@ inactive → pending → active → recovering → inactive
 | Recovering | Errors have stopped, but the system is waiting to confirm it's truly resolved. |
 
 :::{dropdown} Example: A checkout-latency episode moving through all four states
-A checkout-latency rule runs every 5 minutes. It has an activation threshold of 2 consecutive breaches and a recovery threshold of 2 consecutive clears. This means the episode doesn't open on the first breach or close on the first clear. The system waits for confirmation in both directions.
+A checkout-latency rule runs every 5 minutes. It has an activation threshold of 2 consecutive breaches and a recovery threshold of 2 consecutive clears. The episode opens only after consecutive breaches meet the activation threshold and closes only after consecutive clears meet the recovery threshold. The system waits for confirmation in both directions.
 
 1. **14:00**: Routine check. p95 is within budget. No episode exists yet; the series is `inactive`.
 2. **14:05**: p95 jumps to 3.1s. The rule detects the first breach. The system creates the episode in `pending` and starts counting consecutive breaches. Without an activation threshold, the episode opens `active` immediately at this step.

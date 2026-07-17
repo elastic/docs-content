@@ -25,7 +25,7 @@ Severity is an optional setting for rules in the {{alerting-v2-system}} that ass
 Configure severity when:
 
 * You want to route different urgency levels to different notification channels, for example, send `critical` episodes to an on-call channel and `low` episodes to a review queue.
-* You want to filter the Alerts UI by urgency to help triage during incidents.
+* You want to filter episodes by urgency on the **Alerts** page to help triage during incidents.
 * The rule's detection logic can meaningfully distinguish between urgency levels through a computed metric, such as burn rate, error count, or latency percentile.
 
 Skip severity when:
@@ -96,3 +96,4 @@ Here's what the severity-specific steps do:
 - [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
 - [SLO burn rate](esql-slo-burn-rate.md): A query pattern that assigns severity dynamically based on burn rate across multiple time windows.
 - [Rule grouping](configure-rule-grouping.md): Track multiple subjects as independent alert series, each with its own severity.
+- [View and manage alerts](../alerts/view-and-manage-alerts.md): Filter the **Alerts** page by severity to triage during incidents.
