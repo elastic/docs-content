@@ -152,10 +152,6 @@ Use the chat history panel to access previous conversations.
 
 ### Track conversation status
 
-```{applies_to}
-stack: ga 9.5+
-```
-
 The chat history panel shows the status of each conversation at a glance, so you can keep track of what your agents are doing across conversations:
 
 | Icon | Status | Meaning |
@@ -177,17 +173,23 @@ Conversations run independently, so you can work in several at the same time: st
 
 ### Inspect tool calls and reasoning
 
-Expand the **Reasoning** section to see how the agent handles your request. This provides a detailed breakdown of the agent's reasoning steps, the tool calls it makes, and the responses it receives. The agent runs tools in a loop until it achieves its goal or [exceeds the maximum conversation length](limitations-known-issues.md#conversation-length-exceeded).
+::::{note}
+:applies_to: stack: ga 9.5+, serverless: ga
+
+Inline reasoning events replace the [Reasoning panel](glossary.md#reasoning-panel).
+::::
+
+Agent responses show reasoning, tool calls, tool results, and the final response inline as a single sequence. Events appear in the order they happen, so you can follow how the agent handles your request in context. The agent runs tools in a loop until it achieves its goal or [exceeds the maximum conversation length](limitations-known-issues.md#conversation-length-exceeded).
 
 :::{image} images/reasoning-steps.png
 :screenshot:
-:alt: Reasoning panel showing tool calls and execution steps
+:alt: Inline reasoning events showing tool calls and execution steps in Agent Chat
 :width: 650px
 :::
 
-Select **Inspect response** to view detailed information about individual tool calls and responses.
+Tool call events show whether a tool is still running or has returned a response. Expand a tool call to inspect **Parameters sent** and **Response returned**. Some results render inline; other results provide **View JSON** or **View execution** links for more detail.
 
-Select **View JSON** to view the full raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
+After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
 ### Human-in-the-loop prompts
 ```{applies_to}
