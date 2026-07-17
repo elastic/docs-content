@@ -28,7 +28,7 @@ Before you create a rule, make sure that:
 
 ## Create a rule
 
-Alert on the trace data with an [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md) that runs an ES|QL query on a schedule and runs an action when the query returns matches. For a simple count-based threshold, you can use an [index threshold rule](/explore-analyze/alerting/alerts/rule-type-index-threshold.md) instead. The index threshold rule cannot sum the token fields, because they are stored as strings, so use the {{es}} query rule with ES|QL for token-based alerts.
+Alert on the trace data with an [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md) that runs an ES|QL query on a schedule and runs an action when the query returns matches. For a simple count-based threshold, you can use an [index threshold rule](/explore-analyze/alerting/alerts/rule-type-index-threshold.md) instead. The index threshold rule cannot sum the token fields, so use the {{es}} query rule with ES|QL for token-based alerts.
 
 With ES|QL, the query targets the data stream directly in its `FROM` command, so you do not need a data view. The alert condition lives in the query, usually in a `WHERE` clause that compares a value to a threshold. Query one space at a time and avoid wildcards, so you do not mix data from different spaces.
 
@@ -41,7 +41,7 @@ With ES|QL, the query targets the data stream directly in its `FROM` command, so
     * **Select a time field**: the field used to filter results by the rule's time window, for example `@timestamp`.
     * **Select alert group**: select **Create an alert for each row** to raise one alert per matching row, for example per conversation over the threshold. Select **Create an alert if matches are found** to raise a single alert when the query returns any rows.
 6. Set the **time window** to define how far back the query searches, for example the last hour.
-7. Set the **rule schedule** to define how often the rule checks the conditions. Keep it smaller than the time window to avoid gaps in detection.
+7. Set the **check interval** to define how often the rule runs. Keep it smaller than the time window to avoid gaps in detection.
 8. Click **Test query** to confirm the query is valid. For an ES|QL query, the matching rows appear in a table.
 9. Add an action, select a connector, then set the action frequency. See [Add actions](/explore-analyze/alerting/alerts/rule-type-es-query.md#_add_actions).
 10. Click **Save**.
@@ -121,7 +121,7 @@ Rule settings:
 
 The `executions >= 20` guard avoids noisy alerts when an agent has run only a few times. `error_rate > 0.1` alerts when more than 10 percent of executions fail. Like conversation IDs, `attributes.gen_ai.agent.id` is a stable hash by default, so custom agents group by hash unless you turn on `agentBuilder:tracing:includeRealIds`.
 
-<!-- OPEN for eng review: query mechanics validated on the QA cluster 2026-07-16 (COUNT / SUM(CASE) / TO_DOUBLE run; 6 AGENT executions, 0 errors, error_rate 0.0). The data had no failed executions, so we could not confirm that a failed agent execution sets status.code == "Error" on the invoke_agent/AGENT span. Ask @machadoum to confirm. If AGENT spans do not record errors this way, point this example at the span that does. -->
+This alert counts agent executions that fail outright. An error that the agent handles and still returns as a completed response does not set `status.code` to `Error`, so it is not counted here.
 
 ### A specific tool fails repeatedly
 
@@ -142,10 +142,12 @@ Rule settings:
 Each alert identifies the tool by its span name, for example `execute_tool <toolId>`.
 
 :::{note}
+By default, {{agent-builder}} anonymizes custom tool names, so each custom tool's span name becomes `execute_tool custom` and this alert groups all custom tools into one bucket. Built-in tools keep their names. To alert on individual custom tools, turn on **Include real tool and agent names in traces** (`agentBuilder:tracing:includeRealNames`).
+
 In 9.5, `status.code == "Error"` on `execute_tool` spans is set only for parameter and schema validation errors, such as invalid arguments. Errors that a tool catches and returns as a result do not set this status, so this alert can miss some tool failures.
 :::
 
-<!-- TODO(author): when kibana#277689 (search-team#15284) merges and backports to 9.5, returned tool errors also set status.code == "Error" and add attributes.error.type = "tool_error". Revisit the note above and consider using attributes.error.type. -->
+<!-- TODO(author): kibana#277689 (returned tool errors also set status.code == "Error" and add attributes.error.type = "tool_error") merged for 9.6 with backport:skip, so it is NOT in 9.5. The 9.5 note above stays correct. Revisit this when documenting 9.6. -->
 
 ## Related
 
