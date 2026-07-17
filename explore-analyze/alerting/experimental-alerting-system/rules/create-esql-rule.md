@@ -38,7 +38,3 @@ While the sandbox is open, switching between rule form and YAML or between rule 
 ### Control how your query splits [sandbox-split-editor]
 
 By default, applying changes in the sandbox automatically splits your query into a base query and alert condition. If you want full manual control over the split, use the toggle in the sandbox to switch to separate Base and Alert editors. If auto-split fails, a callout on the alert condition step lets you open the sandbox directly in manual split mode. For what each part of the split does, refer to [{{esql}} query](configure-rule-query.md).
-
-## Using the YAML editor [yaml-editor]
-
-Use the YAML editor when you want to copy or adapt a rule quickly without re-entering settings by hand, or provision many rules at once. The YAML editor isn't available when creating a Threshold Alert rule with the [rule builder](use-rule-builder.md).
