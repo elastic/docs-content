@@ -39,7 +39,7 @@ Editor support varies by area. Some areas use the {{esql}} editor described on t
 | [{{elastic-sec}} solution](/solutions/security/esql-for-security.md) | Hunt threats, create detection rules, and investigate events | {{esql}} editor |
 | [Dev Tools Console](/explore-analyze/query-filter/tools/console.md) | Run queries through the [{{esql}} REST API](elasticsearch://reference/query-languages/esql/esql-rest.md) | Embedded in the Console editor |
 | [Workflows](/explore-analyze/workflows/steps/elasticsearch.md) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Run queries with the `elasticsearch.esql.query` action | Embedded in the YAML editor |
-| [Vega and Vega-Lite visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Use a query as a visualization data source | Embedded in the specification editor |
+| [Vega visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Use a query as a visualization data source | Embedded in the specification editor |
 
 
 ## Write queries with the {{esql}} editor [esql-kibana-get-started]
