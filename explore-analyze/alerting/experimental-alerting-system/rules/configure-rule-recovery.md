@@ -18,13 +18,15 @@ Choose one of the following options. Each maps to a `recovery_strategy` value if
 
 | Option | `recovery_strategy` value | Description |
 | --- | --- | --- |
-| Default | `no_breach` | Recovers an episode as soon as its active group no longer appears in the breach results. This is the default and covers most rules. |
-| Custom recovery | `query` | Evaluates a separate recovery condition. The episode only recovers when this condition matches, independent of whether the breach condition still matches. |
-| No recovery | `none` | Turns off automatic recovery entirely. Episodes stay open until closed manually. |
+| Default | `no_breach` | Recovers an episode once its active group no longer appears in the breach results **and** still appears in the base query results without the alert condition applied. That second check confirms the absence is a genuine recovery rather than missing data. This is the default and covers most rules. |
+| Custom recovery | `query` | Evaluates a separate recovery condition. A match recovers the episode. No match falls back to the same base-query check as **Default**. |
+| No recovery | `none` | Turns off automatic recovery entirely. Episodes stay open until closed manually. Because recovery is never evaluated, no-data handling never runs either. |
 
 :::{note}
-An unset `recovery_strategy` is treated differently from an explicit `none`: leaving it unset means no recovery events are emitted at all, while `none` is a deliberate choice to disable recovery. Both leave episodes open indefinitely, but only the second reflects an intentional decision.
+An unset `recovery_strategy` behaves the same as **No recovery**, but unset usually means the setting was overlooked rather than a deliberate choice.
 :::
+
+An empty base query result triggers [no-data handling](configure-no-data-handling.md) for rules using **Default** or **Custom recovery**.
 
 ### When to change the recovery strategy [recovery-strategy-when-to-use]
 
@@ -52,11 +54,11 @@ Recovery delay controls how much confirmation the rule needs, once the recovery 
 
 ### Recovery delay fields
 
-| Field | Type | Description |
-| --- | --- | --- |
-| `recovering_count` | Integer, 0–1000 | Number of consecutive non-breaching evaluations required before the alert episode closes. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
-| `recovering_timeframe` | Duration string | How long the condition must remain non-breaching before the alert episode closes. |
-| `recovering_operator` | `AND` or `OR` | When both `recovering_count` and `recovering_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
+| Field | Type | Accepted values | Description |
+| --- | --- | --- | --- |
+| `recovering_count` | integer | 0–1000 | Number of consecutive non-breaching evaluations required before the alert episode closes. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
+| `recovering_timeframe` | duration | Any duration string | How long the condition must remain non-breaching before the alert episode closes. |
+| `recovering_operator` | string | `AND` or `OR` | When both `recovering_count` and `recovering_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
 
 Timeframe fields accept duration strings between `5s` and `365d`. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
 
@@ -70,16 +72,12 @@ You can combine Recoveries and Duration by setting both `recovering_count` and `
 
 ### Recover only after a value returns to a safe margin, not just below the breach threshold
 
-This rule monitors CPU usage and opens an episode above 90%. Recovering as soon as usage dips to 89% would reopen and close the episode repeatedly during normal fluctuation. Set the recovery strategy to **Custom recovery** and define a recovery condition that only matches once CPU drops below 70%. The episode stays active through the fluctuation and recovers only when usage is solidly back in a safe range.
-
-Use this when a value hovering near the breach threshold would otherwise cause the episode to flap between active and recovered.
+Create a rule that monitors CPU usage and opens an episode above 90%. Recovering as soon as usage dips to 89% would reopen and close the episode repeatedly during normal fluctuation. Set the recovery strategy to **Custom recovery** and define a recovery condition that only matches once CPU drops below 70%. The episode stays active through the fluctuation and recovers only when usage is solidly back in a safe range.
 
 ### Require a manual decision before closing an episode
 
-This rule detects a potential security incident. Even after the query stops matching, the investigation might still be ongoing. Set the recovery strategy to **No recovery**. The episode never closes on its own; someone has to review and close it directly.
-
-Use this when treating "no longer matching" as "resolved" would be misleading or risky.
+Create a rule that detects a potential security incident. Even after the query stops matching, the investigation might still be ongoing. Set the recovery strategy to **No recovery**. The episode never closes on its own. Someone has to review and close it manually.
 
 ### Require consecutive recoveries before closing an episode
 
-This rule monitors database connection pool saturation. After the condition clears, set `recovering_count` to `3` to require 3 consecutive non-breaching evaluations before closing the episode. Without this, a rule that alternates between breaching and recovering on consecutive evaluations generates a constant stream of open and closed notifications.
+Create a rule that monitors database connection pool saturation. After the condition clears, set `recovering_count` to `3` to require 3 consecutive non-breaching evaluations before closing the episode. Without this, a rule that alternates between breaching and recovering on consecutive evaluations generates a constant stream of open and closed notifications.

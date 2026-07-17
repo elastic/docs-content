@@ -40,11 +40,11 @@ Use the following fields to configure the Breaches and Duration modes. Timeframe
 In the YAML rule schema, these fields are prefixed with `state_transition.`. For example, `pending_count` here is `state_transition.pending_count` in the [YAML rule schema reference](yaml-rule-schema-reference.md#state-transition-fields). They are the same fields.
 :::
 
-| Field | Type | Description |
-| --- | --- | --- |
-| `pending_count` | Integer, 0–1000 | Number of consecutive breach evaluations required before the alert episode opens. Appears as **Consecutive breaches** in Breaches mode. Set to `0` to skip the pending phase and transition directly to active on the first breach. |
-| `pending_timeframe` | Duration string | How long the condition must remain breached before the alert episode opens. Appears as **Active for** in Duration mode. |
-| `pending_operator` | `AND` or `OR` | When both `pending_count` and `pending_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
+| Field | Type | Accepted values | Description |
+| --- | --- | --- | --- |
+| `pending_count` | integer | 0–1000 | Number of consecutive breach evaluations required before the alert episode opens. Appears as **Consecutive breaches** in Breaches mode. Set to `0` to skip the pending phase and transition directly to active on the first breach. |
+| `pending_timeframe` | duration | Any duration string | How long the condition must remain breached before the alert episode opens. Appears as **Active for** in Duration mode. |
+| `pending_operator` | string | `AND` or `OR` | When both `pending_count` and `pending_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
 
 You can combine Breaches and Duration by setting both `pending_count` and `pending_timeframe`. Use `pending_operator: AND` to require both conditions before the episode opens, or `pending_operator: OR` if either condition alone is enough.
 
@@ -56,8 +56,8 @@ Looking for the equivalent delay before an episode closes? Refer to [Recovery co
 
 ### Ignore brief CPU spikes
 
-This rule monitors CPU usage and runs every minute. A single high reading is often a process starting up. Set `pending_count` to `3` so the rule requires 3 consecutive breaches before opening an episode, meaning the condition has been true for at least 3 minutes. This filters out noise without losing real signals.
+Create a rule that monitors CPU usage and runs every minute. A single high reading is often a process starting up. Set `pending_count` to `3` so the rule requires 3 consecutive breaches before opening an episode, meaning the condition has been true for at least 3 minutes. This filters out noise without losing real signals.
 
 ### Require sustained breach before escalating
 
-This rule monitors a payment error rate. Brief spikes happen during deployments and are expected. Set `pending_count` to `5`, `pending_timeframe` to `2m`, and `pending_operator` to `AND`. The rule only fires when the error rate has breached on 5 consecutive evaluations and has been continuously elevated for at least 2 minutes. Either condition alone isn't enough.
+Create a rule that monitors a payment error rate. Brief spikes happen during deployments and are expected. Set `pending_count` to `5`, `pending_timeframe` to `2m`, and `pending_operator` to `AND`. The rule only fires when the error rate has breached on 5 consecutive evaluations and has been continuously elevated for at least 2 minutes. Either condition alone isn't enough.

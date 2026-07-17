@@ -43,7 +43,9 @@ Write the query first, then set the group fields. That way the `BY` columns are 
 
 ### Track error rates per service
 
-This rule counts HTTP errors per service and opens a separate alert series for each service that exceeds the threshold. Each service gets its own lifecycle. If the checkout service recovers but the payments service stays critical, those are tracked independently.
+Create a rule that counts HTTP errors per service and opens a separate alert series for each service that exceeds the threshold. Each service gets its own lifecycle. If the checkout service recovers but the payments service stays critical, those are tracked independently.
+
+Without a matching `grouping.fields` entry, the rule treats all services as a single combined series. A spike in one service would activate the alert for everything, and recovery requires all services to drop below the threshold at the same time.
 
 ```esql
 FROM logs-*
@@ -53,11 +55,9 @@ FROM logs-*
 | KEEP service.name, error_count
 ```
 
-Without a matching `grouping.fields` entry, the rule treats all services as a single combined series. A spike in one service would activate the alert for everything, and recovery requires all services to drop below the threshold at the same time.
-
 ### Track CPU usage per host and region
 
-When the query groups by multiple fields, include all fields in `grouping.fields` to create one alert series per unique combination.
+Create a rule that tracks average CPU usage across hosts in multiple cloud regions. Because the query groups by both `host.name` and `cloud.region`, include both fields in `grouping.fields` to create one alert series per unique host-region combination.
 
 ```esql
 FROM metrics-*

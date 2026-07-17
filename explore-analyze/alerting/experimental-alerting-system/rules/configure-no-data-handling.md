@@ -10,7 +10,18 @@ description: "How to configure the no-data strategy for rules in the experimenta
 
 # No-data handling in the {{alerting-v2-system}} [no-data-handling]
 
-No-data handling is an optional setting for rules in the {{alerting-v2-system}}. Use `no_data_strategy` to control what the rule records when the base query returns no results. Setting this correctly prevents false recoveries and misleading `no_data` events when data sources stop reporting.
+No-data handling is an optional setting for Alert-mode rules in the {{alerting-v2-system}}. Use `no_data_strategy` to control what the rule does when it can't tell whether an episode has genuinely recovered or the data just stopped showing up. Setting this correctly prevents false recoveries and misleading `no_data` events when data sources stop reporting.
+
+## How no-data handling fits into recovery [no-data-and-recovery]
+
+When a breached group stops matching, the rule re-runs the [base query](configure-rule-query.md#query-base) to confirm the group is actually gone before recovering the episode:
+
+* **Group still there** - The base query still returns the group, confirming this is a genuine [recovery](configure-rule-recovery.md) rather than a data gap.
+* **Group missing too** - The base query returns nothing for the group either, so the rule can't tell whether the problem actually cleared up or the data source just stopped reporting. What happens next depends on how you've configured `no_data_strategy`.
+
+The check described above is part of the recovery process, so it only runs when `recovery_strategy` is **Default** or **Custom recovery**.
+
+If `recovery_strategy` is **No recovery** instead, episodes never recover automatically. That means the base-query check above never runs, so `no_data_strategy` has no effect.
 
 ## No-data strategy options [no-data-strategy-options]
 
@@ -22,11 +33,10 @@ Choose one of the following options. Each maps to a `no_data_strategy` value if 
 | --- | --- | --- |
 | Keep last status | `last_known_status` | Hold the last known lifecycle state. An active breach stays active and a recovered episode stays recovered. |
 | Recover | `recover` | Treat absence as recovery. |
-| Do nothing | `none` | Turn off no-data detection. |
-| _(unconfirmed)_ | `emit` | Record a no-data event. |
+| Do nothing | `none` | Skip the no-data check. The rule never re-runs the base query, so an empty result is treated the same as **Recover** — just without confirming the pipeline isn't broken. |
 
 :::{note}
-`no_data_strategy` only applies when the base query returns **no rows at all**. If one host or data source goes silent while others continue reporting, the query still returns results for the active sources and `no_data_strategy` does not trigger. Refer to [No-data detection](esql-no-data-detection.md) for an {{esql}} pattern that surfaces individual silent sources as alert rows.
+`no_data_strategy` only triggers when the base query returns **zero rows**. If one host or data source goes quiet but others keep reporting, the query still returns rows for the ones still reporting, so `no_data_strategy` won't trigger. To catch a single silent source in that situation, use the {{esql}} pattern in [No-data detection](esql-no-data-detection.md), which turns a silent source into its own alert row.
 :::
 
 ## When to configure no-data handling [no-data-when-to-use]
@@ -37,23 +47,17 @@ Configure `no_data_strategy` when:
 * A false recovery caused by an empty query result would be more harmful than holding the current alert state.
 * Absence of data is itself a signal worth surfacing, such as missing heartbeat events from a critical service.
 
-Leave `no_data_strategy` unconfigured (or set to **Do nothing**) when:
+Do not configure `no_data_strategy`, or set it to **Do nothing**, when:
 
-* Your data source reliably produces output on every evaluation and a gap in data would indicate a genuine recovery.
-* You are still tuning the rule and don't yet know how it behaves when data is absent. Set the strategy once the rule's normal behavior is understood.
+* Your data source reliably produces output on every evaluation and a gap in data would indicate a genuine recovery. 
+* You are still tuning the rule and don't yet know how it behaves when data is absent.
 
 ## Examples
 
 ### Maintain alert state during a metrics collection outage
 
-This rule monitors infrastructure CPU. If the metrics collection agent stops sending data, you don't want an active CPU breach to auto-recover because the query returned nothing. Set the no-data strategy to **Keep last status** (`last_known_status`). The rule holds the alert in its current state until data resumes.
+Create a rule that monitors infrastructure CPU. Configure the no-data strategy as **Keep last status** (`last_known_status`) so that if the metrics collection agent ever stops sending data, an active CPU breach doesn't auto-recover just because the query returned nothing. Instead, the rule holds the alert in its current state until data resumes.
 
-Use this when an empty query result most likely means a pipeline problem rather than a genuine recovery.
+### Close the episode when a queue empties out
 
-### Surface a broken data pipeline as an alert
-
-<!-- TODO: Confirm `emit` is still available for M2 before publishing this example; see the TODO above the options table. -->
-
-This rule monitors for login events from an identity provider. If no events appear in the lookback window, it's unusual enough to warrant attention. Either the pipeline is broken or something has suppressed activity. Set `no_data_strategy` to `emit`. The absence is recorded as a `no_data` event in `.rule-events`, making it visible alongside other rule activity.
-
-Use this when receiving no data is itself a signal worth investigating.
+Create a rule that monitors how many jobs are waiting in a queue and opens an episode when the backlog gets too large. Configure the no-data strategy as **Recover** (`recover`) so that once the queue is empty and the query has nothing to return, the episode closes.

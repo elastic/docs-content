@@ -53,7 +53,7 @@ Avoid setting the lookback shorter than the execution interval. If the lookback 
 
 ### High-frequency security rule
 
-This rule detects a burst of failed login attempts. Because the threat can develop quickly and needs fast detection, the interval is set to **1 minute** and the lookback to **5 minutes**. The 5-minute lookback is five times the interval, so a burst that straddles two evaluation windows is never missed.
+Create a rule that detects a burst of failed login attempts. Because the threat can develop quickly and needs fast detection, the interval is set to **1 minute** and the lookback to **5 minutes**. The 5-minute lookback is five times the interval, so a burst that straddles two evaluation windows is never missed.
 
 ```esql
 FROM logs-*
@@ -67,7 +67,7 @@ The `?_tstart` and `?_tend` parameters are automatically bound to the lookback w
 
 ### Cost-optimized infrastructure rule
 
-This rule monitors disk utilization for capacity planning. Fast response isn't critical, so the interval is set to **15 minutes** and the lookback to **30 minutes**. The wider window smooths out brief spikes that don't indicate a real capacity problem, reducing evaluation cost without sacrificing coverage.
+Create a rule that monitors disk utilization for capacity planning. Fast response isn't critical, so the interval is set to **15 minutes** and the lookback to **30 minutes**. The wider window smooths out brief spikes that don't indicate a real capacity problem, reducing evaluation cost without sacrificing coverage.
 
 ```esql
 FROM metrics-*

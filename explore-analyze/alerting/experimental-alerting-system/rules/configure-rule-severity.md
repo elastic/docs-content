@@ -50,7 +50,9 @@ Keep the following in mind when configuring severity.
 
 ### Static severity for a fixed threshold rule
 
-If every breach of a rule is equally urgent, assign a fixed severity rather than computing it dynamically. The `EVAL` command adds a constant `severity` column to every row the query returns.
+Create a rule that alerts when a service logs more than 100 5xx errors in the lookback window. Every breach of this rule is equally urgent, so assign a fixed severity rather than computing it dynamically. The `EVAL` command adds a constant `severity` column to every row the query returns.
+
+Every breach from this rule produces a `critical` episode.
 
 ```esql
 FROM logs-*
@@ -61,11 +63,9 @@ FROM logs-*
 | KEEP service.name, error_count, severity
 ```
 
-Every breach from this rule produces a `critical` episode. Use this when the threshold itself represents a critical condition and intermediate severity levels don't apply.
-
 ### Dynamic severity based on burn rate
 
-Use `CASE` to map a computed metric to different severity levels. This query grades each service's error rate. Services consuming error budget at 14.4× baseline or above are `critical`, those between 6× and 14.4× are `high`, and so on. Only services above 1× are returned, so below-threshold services don't generate alert rows.
+Create a rule that grades each service's error rate against its SLO error budget. Use `CASE` to map the computed burn rate to different severity levels: services consuming error budget at 14.4× baseline or above are `critical`, those between 6× and 14.4× are `high`, and so on. Only services above 1× are returned, so below-threshold services don't generate alert rows.
 
 ```esql
 FROM metrics-*
@@ -85,9 +85,8 @@ FROM metrics-*
 | KEEP service.name, burn_rate, severity
 ```
 
-- **`WHERE`** (time filter): Scopes the query to the rule's configured lookback window using the reserved `?_tstart` and `?_tend` parameters.
-- **`STATS`**: Counts failures and total requests, grouped by service.
-- **`EVAL burn_rate`**: Computes the error rate as a fraction of failures to total requests.
+Here's what the severity-specific steps do:
+
+- **`EVAL burn_rate`**: Computes the error rate as failures over total requests.
 - **`EVAL severity`**: Maps the burn rate to a severity level.
-- **`WHERE burn_rate`**: Only services above the minimum threshold count as breaches.
-- **`KEEP`**: Includes `severity` in the output so the {{alerting-v2-system}} reads and stores it.
+- **`KEEP`**: Keeps `severity` in the output so the {{alerting-v2-system}} reads and stores it.
