@@ -10,10 +10,10 @@ description: "Create Threshold Alert rules in Kibana's experimental alerting sys
 
 # Create a rule using the rule builder in the {{alerting-v2-system}} [use-rule-builder]
 
-The rule builder provides a guided form for creating rules without writing {{esql}} by hand. The builder generates the {{esql}} query automatically from structured inputs for the data source, aggregation, filters, and alert conditions.
+Go to the **Rules** page, then start creating a rule. When choosing a creation path, select the one that lets you build the rule using a guided form instead of writing {{esql}} by hand. The rule builder generates the {{esql}} query automatically from structured inputs for the data source, aggregation, filters, and alert conditions.
 
-For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md). 
+For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md).
 
 ## Threshold Alert [use-threshold-alert-builder]
 
-Threshold Alert is the rule type currently available in the rule builder. Use it to monitor metrics against one or more threshold conditions. Custom aggregations let you control how metric values are computed before they are compared to the threshold.
+Threshold Alert is the only rule type currently available in the rule builder. Use it to monitor metrics against one or more threshold conditions. Custom aggregations let you control how metric values are computed before they are compared to the threshold.

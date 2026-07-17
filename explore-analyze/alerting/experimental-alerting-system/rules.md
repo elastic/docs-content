@@ -14,6 +14,10 @@ A rule is where the {{alerting-v2-system}} starts. It points {{kib}} at the data
 
 This page explains what rules do, what they don't control, and how to choose a creation path.
 
+:::{note}
+Documentation for the {{alerting-v2-system}} primarily covers settings and concepts to help you understand the core ideas and have a point of reference. When a page doesn't point to a specific button or menu, look for the closest matching label in {{kib}}. The concept and behavior described here still apply even if the in-application wording differs slightly.
+:::
+
 ## What rules do [detection-and-notification]
 
 On each run, a rule executes an {{esql}} query against your data. Matches are recorded as rule events (`rule_event`), and handled according to the rule's mode, which can be Signal mode or Alert mode. 

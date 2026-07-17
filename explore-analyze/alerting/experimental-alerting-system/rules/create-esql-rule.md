@@ -10,12 +10,14 @@ description: "Write ES|QL detection queries for rules in Kibana's experimental a
 
 # Create an {{esql}} rule in the {{alerting-v2-system}} [create-esql-rule]
 
-The {{esql}} rule path lets you write the detection query directly. There are two ways to define the rule: 
+Go to the **Rules** page, then start creating a rule. When choosing a creation path, select the one that lets you write the detection query directly as {{esql}}. There are two ways to define the rule: 
 
-- **Rule form** - Fill in the step-by-step form with a live preview of results.
-- **YAML mode** - Edit the raw rule definition. You can switch between form and YAML at any time, unless the YAML can't be translated to a valid form state, in which case you must stay in YAML.
+- **Rule form** - Fill in the step-by-step form with a live preview of results. For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md).
+- **YAML editor** - Edit the raw rule definition directly instead of using the form. You can switch between form and YAML at any time, unless the YAML can't be translated to a valid form state, in which case you must stay in YAML. For a list of supported YAML fields, refer to [YAML rule schema reference](yaml-rule-schema-reference.md).
 
-For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md). For a list of supported YAML fields, refer to [YAML rule schema reference](yaml-rule-schema-reference.md).
+:::{note}
+**Rule form** and **YAML editor** are the names used in this documentation, not necessarily exact UI labels. Look for the equivalent options when creating or editing a rule.
+:::
 
 ## Preview query results in the sandbox [rule-builder-query-sandbox]
 

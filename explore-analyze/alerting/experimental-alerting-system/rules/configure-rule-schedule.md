@@ -14,6 +14,16 @@ Schedule and lookback are required settings for rules in the {{alerting-v2-syste
 
 Both fields accept duration strings such as `30s`, `5m`, `2h`, or `7d`. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
 
+## Execution interval [schedule-execution-interval]
+
+The execution interval (`schedule.every`) determines how frequently the rule evaluates. The minimum is `5s` and the maximum is `365d`. Values outside that range are rejected.
+
+## Lookback window [schedule-lookback-window]
+
+The lookback window (`schedule.lookback`) determines the time range that the {{esql}} query covers. The minimum is `5s` and the maximum is `365d`.
+
+If the lookback is shorter than the execution interval, evaluations can miss data between runs. Use a lookback at least as long as the execution interval unless you have a deliberate reason not to.
+
 ## When to use a short or long interval and lookback [schedule-when-to-use]
 
 Use a short execution interval (seconds to a few minutes) when:
@@ -38,16 +48,6 @@ Use a longer lookback window when:
 * Ingestion lag means events arrive later than their timestamps, and a wider window ensures late-arriving data is still evaluated.
 
 Avoid setting the lookback shorter than the execution interval. If the lookback doesn't cover the full gap between evaluations, events that arrive between runs can be missed.
-
-## Execution interval [schedule-execution-interval]
-
-The execution interval (`schedule.every`) determines how frequently the rule evaluates. The minimum is `5s` and the maximum is `365d`. Values outside that range are rejected.
-
-## Lookback window [schedule-lookback-window]
-
-The lookback window (`schedule.lookback`) determines the time range that the {{esql}} query covers. The minimum is `5s` and the maximum is `365d`.
-
-If the lookback is shorter than the execution interval, evaluations can miss data between runs. Use a lookback at least as long as the execution interval unless you have a deliberate reason not to.
 
 ## Examples [schedule-examples]
 

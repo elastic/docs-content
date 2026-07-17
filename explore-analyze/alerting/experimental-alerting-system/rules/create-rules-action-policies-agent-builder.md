@@ -10,7 +10,7 @@ description: "How Agent Builder creates rules and action policies in the experim
 
 # Create rules and action policies with {{agent-builder}} [create-rules-agent-builder]
 
-Rule and action policy authoring in {{agent-builder}} is part of the {{alerting-v2-system}} in {{kib}}. The {{alerting-v2-system}} registers rules and action policies as attachment types in {{agent-builder}}, so an agent equipped with the rule management skill can propose, create, and configure them through natural language conversation.
+Use {{agent-builder}} to create and configure rules and action policies through natural language instead of the rule form. An agent equipped with the rule management skill proposes, creates, and configures both object types based on your conversation.
 
 Instead of filling out the rule form manually, you describe what you want to monitor and the agent uses its rule management skill and tools to resolve the data source and build a fully configured rule proposal for you.
 
@@ -31,7 +31,13 @@ Before you start, make sure you have the following:
 
 ## Propose and save a rule [ai-agent-rule-proposal]
 
-You can start from the rule management page by selecting the option to create a rule with an agent, or open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. The rule management skill gives the agent domain expertise in {{alerting-v2-system}} rule authoring, including knowledge of {{esql}} query patterns, threshold configuration, grouping, and the alerting v2 data model. When you describe a monitoring requirement, the agent uses its tools to resolve the relevant data source and builds a rule proposal.
+### Start a proposal [ai-agent-start-proposal]
+
+Go to the **Rules** page, then start creating a rule. When choosing a creation path, select the one that lets you create the rule with an agent. Alternatively, open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. 
+
+The rule management skill gives the agent domain expertise in {{alerting-v2-system}} rule authoring, including knowledge of {{esql}} query patterns, threshold configuration, grouping, and the alerting v2 data model. When you describe a monitoring requirement, the agent uses its tools to resolve the relevant data source and builds a rule proposal.
+
+### Review the proposal [ai-agent-review-proposal]
 
 The proposal appears as an inline attachment in the conversation, summarizing the rule name, type, schedule, and tags. Opening the attachment shows the full configuration across three views:
 
@@ -41,13 +47,11 @@ The proposal appears as an inline attachment in the conversation, summarizing th
 
 The agent can also search for and attach an existing rule to the conversation using the same inline attachment, opening the same view for inspection or revision.
 
+### Save the rule [ai-agent-save-rule]
+
 The agent does not persist the rule automatically. Saving is an explicit action that signals the configuration is ready. Until the rule is saved, the proposal exists only in the conversation and is not evaluated against data.
 
 When {{agent-builder}} saves or edits a rule, {{kib}} automatically adds an `agent-builder-assisted` tag to it. The tag appears in the rules list and works as a normal filter tag. You can remove it or edit it manually. If the agent edits the same rule later, the tag is re-applied automatically.
-
-:::{note} 
-Signal rules do not support notifications. Alert episodes, and therefore action policies, only apply to rules running in Alert mode. If you ask the agent to set up notifications for a signal rule, the rule management skill explains the limitation and offers to either convert the rule to Alert mode or create a separate alert rule.
-:::
 
 ## Example prompts [ai-agent-sample-prompts]
 
@@ -62,8 +66,12 @@ Use these prompts as a starting point, then adjust them to your data and thresho
 
 After a rule is saved, you can ask the agent to configure notifications. The rule management skill handles this by creating workflows and action policies.
 
+:::{note}
+Signal rules do not support notifications. Alert episodes, and therefore action policies, only apply to rules running in Alert mode. If you ask the agent to set up notifications for a signal rule, the rule management skill explains the limitation and offers to either convert the rule to Alert mode or create a separate alert rule.
+:::
+
 - **Workflows** - Workflows are the delivery mechanism. They define what happens when the {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
-- **Action policies** - Action policies are the gating mechanism. They evaluates alert episodes from the rule on a continuous schedule and invokes the workflow when the episode clears the action policy's match conditions and frequency settings. When the agent creates an action policy alongside a specific rule, the action policy is automatically scoped to that rule.
+- **Action policies** - Action policies are the gating mechanism. They evaluate alert episodes from the rule on a continuous schedule and invoke the workflow when the episode clears the action policy's match conditions and frequency settings. When the agent creates an action policy alongside a specific rule, the action policy is automatically scoped to that rule.
 
 Both objects are proposed as inline attachments and must be explicitly saved before they take effect.
 

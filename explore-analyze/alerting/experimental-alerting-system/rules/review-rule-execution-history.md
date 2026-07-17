@@ -25,7 +25,3 @@ Rule execution history shows one row per rule evaluation across all rules in the
 | **Message** | An optional message included with the execution result, typically an error description for failed runs. |
 
 Use the outcome filter to view only successful or failed executions. Filtering is applied server-side. Results are paginated up to 100 per page. You can page through up to 10,000 records — this is a pagination ceiling, not a retention limit. Deeper history exists in the event log but is not reachable by paging further.
-
-## Action policy dispatcher decisions [policy-execution-records]
-
-Action policy execution history shows one row per action policy dispatcher decision and covers the **last 24 hours** only. Use it to audit whether action policies are dispatching as expected. Results are paginated up to 100 per page.
