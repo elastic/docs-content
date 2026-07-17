@@ -74,7 +74,10 @@ The following video demonstrates these steps (click to watch).
 
 ::::{important}
 :applies_to: {"stack": "deprecated 9.5, removed 9.6", "serverless": "removed"}
-You can no longer create a new Azure OpenAI connector from the {{kib}} UI. Existing Azure OpenAI connectors continue to work and can still be edited from **{{connectors-ui}}**. To connect to Azure OpenAI, use [External {{infer}}](/explore-analyze/elastic-inference/external.md), or create the connector with the [Connectors API]({{kib-apis}}group/endpoint-connectors).
+The Azure OpenAI connector is deprecated. Existing Azure OpenAI connectors and rule actions that use them continue to work but display deprecation indicators. Follow the guidance that matches your version and deployment type:
+
+- {applies_to}`serverless: removed` {applies_to}`stack: removed 9.6` You cannot create new LLM connectors through the standard connector UI.
+- {applies_to}`stack: deprecated 9.5` For new AI integrations, use {{es}} {{infer}} endpoints instead of LLM connectors. Plan migration of existing LLM connectors and any rule actions that reference them before future removal.
 ::::
 
 Finally, configure the connector in {{kib}}:
