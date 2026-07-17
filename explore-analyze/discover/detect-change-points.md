@@ -75,8 +75,6 @@ FROM logs-*
 | WHERE type IS NOT NULL
 ```
 
-Use the following guidance to adapt the query, troubleshoot empty results, and inspect source documents:
-
 - **Adapt the query to your data:** Replace the index, time field, and aggregation with values appropriate for your data.
 - **If no change points are detected:** The data either has no statistically significant change or doesn't provide the 22 values required for analysis. Widen the time range or adjust the bucket size to provide more values.
 - **Inspect source documents:** For queries that read from an index, **Open in a new Discover tab** opens the source documents in a focused time range around the detected change.
