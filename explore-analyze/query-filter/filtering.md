@@ -50,7 +50,7 @@ Optionally, you can:
 - Save the current range as a preset for later reuse with {icon}`save`. Saving the preset also applies the range, and saved ranges appear under **Presets**.
 
 :::{note}
-The new picker doesn't support auto-refresh-only views. In those views, the time control and auto-refresh aren't available.
+In the Visualize editor, auto-refresh isn't available for visualizations that don't show the time filter.
 :::
 ::::
 
