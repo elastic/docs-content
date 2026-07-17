@@ -85,6 +85,9 @@ toc:
           - file: elasticsearch-solution-project/search-applications/search-application-api.md
           - file: elasticsearch-solution-project/search-applications/search-application-security.md
           - file: elasticsearch-solution-project/search-applications/search-application-client.md
+  - file: vector-database.md
+    children:
+      - file: vector-database/get-started.md
   - file: observability.md
     children:
       - file: observability/get-started.md
