@@ -49,7 +49,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where visualizations in dashboards created by Automatic Migration did not render on initial load, requiring manual interaction to display data [#264102]({{kib-pull}}264102).
 * Fixes a race condition when assigning the username of mounted USB devices in {{elastic-defend}} on Windows.
 * Improves serial number gathering accuracy in {{elastic-defend}} on Windows.
-* Updates the bundled `curl` library to 8.20.0 in {{elastic-defend}}, improving the stability of network operations on Linux.
+* Updates the bundled `curl` library in {{elastic-defend}}, improving the stability of network operations on Linux.
 * Fixes an issue in {{elastic-defend}} that could result in incomplete addresses in network event tracking.
 * Fixes an issue where {{elastic-defend}} on macOS did not attempt to recover a failed subscription to network events, which previously remained stuck.
 * Fixes a crash in {{elastic-defend}} when the Kafka broker rejected a document that was too large.
