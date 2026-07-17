@@ -148,13 +148,10 @@ When a query without transformational commands (such as `KEEP` or `STATS`) retur
 
 Omitting the `LIMIT` command, the results table defaults to up to 1,000 rows. Using `LIMIT`, you can increase the limit to up to 10,000 rows.
 
-### Render sparkline columns [esql-sparkline-columns]
-```{applies_to}
-stack: preview 9.5
-serverless: preview
-```
+Depending on your query, **Discover** provides additional ways to display and organize the results table:
 
-When a `STATS` or `INLINE STATS` query includes a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) aggregation, **Discover** renders the result as an inline chart. To combine inline charts with pattern analysis, refer to [Add sparklines to patterns](#esql-cascade-pattern-sparkline).
+- {applies_to}`{ stack: preview 9.4, serverless: preview }` A `STATS BY` query with a single grouping field displays expandable groups. Refer to [View grouped results from a STATS query](#esql-cascade-layout).
+- {applies_to}`{ stack: preview 9.5, serverless: preview }` A `STATS` or `INLINE STATS` query that includes a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) aggregation displays inline charts. To add sparklines to categorized patterns, refer to [Add sparklines to patterns](#esql-cascade-pattern-sparkline).
 
 ### Limitations [esql-kibana-results-table-limitations]
 
