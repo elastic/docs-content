@@ -173,7 +173,7 @@ The method for provisioning swap space depends on your operating system and infr
 
 Follow the host configuration steps for your OS to enable swap:
 
-* [Ubuntu](https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise/configure-host-ubuntu)
-* [RHEL](https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise/configure-host-rhel)
-* [SUSE](https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise/configure-host-suse)
+* [Ubuntu](/deploy-manage/deploy/cloud-enterprise/configure-host-ubuntu.md)
+* [RHEL](/deploy-manage/deploy/cloud-enterprise/configure-host-rhel.md)
+* [SUSE](/deploy-manage/deploy/cloud-enterprise/configure-host-suse.md)
 
