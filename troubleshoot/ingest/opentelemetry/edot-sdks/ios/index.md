@@ -1,8 +1,8 @@
 ---
-navigation_title: EDOT iOS
+navigation_title: Elastic OTel iOS
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/swift/current/troubleshooting.html
-description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry (EDOT) iOS agent, covering common issues.
+description: Troubleshooting guide for the Elastic OTel iOS agent, covering common issues.
 applies_to:
   stack:
   serverless:
@@ -15,11 +15,11 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting the EDOT iOS agent [troubleshooting]
+# Troubleshooting the Elastic OTel iOS agent [troubleshooting]
 
-This page provides guidance for resolving common problems when instrumenting iOS applications with the {{edot}} (EDOT) SDK.
+This page provides guidance for resolving common problems when instrumenting iOS applications with the {{edot}} SDK.
 
-When troubleshooting the EDOT iOS agent, ensure your app is compatible with the agent's [supported technologies](apm-agent-ios://reference/edot-ios/supported-technologies.md).
+When troubleshooting the Elastic OTel iOS agent, ensure your app is compatible with the agent's [supported technologies](apm-agent-ios://reference/edot-ios/supported-technologies.md).
 
 
 ## SDK fails to export data

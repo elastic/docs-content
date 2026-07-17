@@ -1,6 +1,6 @@
 ---
 navigation_title: Docker
-description: Step-by-step guide for setting up the EDOT Collector and SDKs in a Docker environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces.
+description: Step-by-step guide for setting up the {{agent}} and SDKs in a Docker environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces.
 applies_to:
   stack:
   serverless:
@@ -15,7 +15,7 @@ products:
 
 # Quickstart for Docker on Elastic Cloud Serverless
 
-Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with {{serverless-full}} to collect host metrics, logs, and application traces.
+Learn how to set up the {{agent}} and Elastic OTel SDKs in a Docker environment with {{serverless-full}} to collect host metrics, logs, and application traces.
 
 
 ## Guided setup
@@ -25,13 +25,13 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment wit
 
 ## Manual installation
 
-Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker with {{serverless-full}}.
+Follow these steps to deploy the {{agent}} and Elastic OTel SDKs in Docker with {{serverless-full}}.
 
 :::::{stepper}
 
 ::::{step} Create the config file
 
-Create a `otel-collector-config.yml` file with your EDOT collector configuration. For more details, refer to the [configuration reference](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for {{motlp}}.
+Create a `otel-collector-config.yml` file with your {{agent}} configuration. For more details, refer to the [configuration reference](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for {{motlp}}.
 
 ::::
 
@@ -100,7 +100,7 @@ docker compose up -d
 
 ::::{step} (Optional) Instrument your applications
 
-To collect telemetry from applications and use the EDOT Collector as a gateway,
+To collect telemetry from applications and use the {{agent}} as a gateway,
 instrument your target applications following the setup instructions:
 
 - [Android](apm-agent-android://reference/edot-android/index.md)
@@ -111,7 +111,7 @@ instrument your target applications following the setup instructions:
 - [PHP](elastic-otel-php://reference/edot-php/setup/index.md)
 - [Python](elastic-otel-python://reference/edot-python/setup/index.md)
 
-Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
+Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 
 ::::
 

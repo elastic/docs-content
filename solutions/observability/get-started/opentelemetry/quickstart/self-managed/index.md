@@ -1,6 +1,6 @@
 ---
 navigation_title: Self-managed
-description: Before following the quickstart guides to set up your EDOT deployment, make sure to install your self-managed Elastic Stack.
+description: Before following the quickstart guides to set up your {{edot}} deployment, make sure to install your self-managed Elastic Stack.
 applies_to:
   stack:
   serverless:
@@ -21,8 +21,8 @@ Select the quickstart guide for your environment from the following list:
 - [Docker on self-managed](docker.md)
 - [Hosts or VMs on self-managed](hosts_vms.md)
 
-Before following the quickstart guides to set up your EDOT deployment, make sure to [install your self-managed Elastic Stack](/solutions/observability/apm/opentelemetry/index.md).
+Before following the quickstart guides to set up your {{edot}} deployment, make sure to [install your self-managed Elastic Stack](/solutions/observability/apm/opentelemetry/index.md).
 
 ## Troubleshooting
 
-Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.
+Having issues with {{edot}}? Refer to the [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.

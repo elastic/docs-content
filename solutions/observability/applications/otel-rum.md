@@ -20,20 +20,20 @@ Using OpenTelemetry for Real User Monitoring (RUM) with {{product.observability}
 You can instrument your web application with OpenTelemetry browser instrumentation for use with {{product.observability}}. The following sections detail the required components and their proper configuration to acquire traces, logs, and metrics from the application to visualize them within {{kib}}.
 
 :::{note}
-Elastic also provides the [{{edot}} Browser](elastic-otel-rum-js://reference/edot-browser/index.md) (EDOT Browser), a managed distribution of the OpenTelemetry Browser SDK with Elastic-specific enhancements.
+Elastic also provides the [Elastic OTel Browser](elastic-otel-rum-js://reference/edot-browser/index.md), a managed distribution of the OpenTelemetry Browser SDK with Elastic-specific enhancements.
 :::
 
 ## Before you begin [before-you-begin]
 
-You need an OTLP endpoint to ingest data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, [create](/solutions/observability/get-started.md) an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md). If you own a self-hosted stack or your deployment does not have the {{motlp}}, configure an [EDOT Collector in Gateway mode](https://www.elastic.co/docs/reference/edot-collector/modes#edot-collector-as-gateway).
+You need an OTLP endpoint to ingest data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, [create](/solutions/observability/get-started.md) an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md). If you own a self-hosted stack or your deployment does not have the {{motlp}}, configure [{{agent}} in Gateway mode](https://www.elastic.co/docs/reference/edot-collector/modes#edot-collector-as-gateway).
 
 After you have prepared the OTLP endpoint, set up a reverse proxy to forward the telemetry from your web application origin to the Collector. You need a reverse proxy for the following reasons:
 
-- EDOT Collector requires an `Authorization` header with an ApiKey to accept OTLP exports. Setting up the required key in a web application makes it publicly available, which is not advisable. A reverse proxy can help you manage this key securely.
-- If you have set up your own EDOT Collector, it's likely to have a different origin than your web application. In this scenario you have to set up [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) for the web application in the EDOT Collector configuration file. This procedure can be cumbersome if you have to manage many applications.
-- You can apply rate limiting or any other mechanisms to control traffic before it reaches the EDOT Collector.
+- {{agent}} requires an `Authorization` header with an ApiKey to accept OTLP exports. Setting up the required key in a web application makes it publicly available, which is not advisable. A reverse proxy can help you manage this key securely.
+- If you have set up your own {{agent}}, it's likely to have a different origin than your web application. In this scenario you have to set up [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) for the web application in the {{agent}} configuration file. This procedure can be cumbersome if you have to manage many applications.
+- You can apply rate limiting or any other mechanisms to control traffic before it reaches {{agent}}.
 
-The following snippet shows the configuration for an NGINX reverse proxy to forward all telemetry to the EDOT Collector located at `collector.example.com` from the origin `webapp.example.com`:
+The following snippet shows the configuration for an NGINX reverse proxy to forward all telemetry to {{agent}} located at `collector.example.com` from the origin `webapp.example.com`:
 
 :::{dropdown} NGINX reverse proxy configuration
 ```nginx
@@ -789,7 +789,7 @@ curl -X POST https://your-proxy/v1/traces \
 
 3. Review proxy logs for errors or blocked requests.
 
-4. Ensure the proxy can reach the backend EDOT Collector or mOTLP endpoint.
+4. Ensure the proxy can reach the backend {{agent}} or mOTLP endpoint.
 
 :::
 
@@ -886,7 +886,7 @@ Content-Security-Policy: connect-src 'self' https://collector.example.com:4318
 
 :::{dropdown} Authentication failures
 
-If using mOTLP or an EDOT Collector with authentication requirements:
+If using mOTLP or {{agent}} with authentication requirements:
 
 1. Ensure your authentication credentials are valid and not expired.
 

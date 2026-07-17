@@ -23,7 +23,7 @@ APM Agent Central Configuration allows you to fine-tune your APM agents from wit
 To learn more about this feature, see [APM Agent Central Configuration](/solutions/observability/apm/apm-agents/central-configuration.md).
 
 ::::{note}
-To configure EDOT SDKs through APM Agent Central Configuration, refer to [EDOT SDKs Central Configuration](opentelemetry://reference/central-configuration.md).
+To configure Elastic OTel SDKs through APM Agent Central Configuration, refer to [Elastic OTel SDKs Central Configuration](opentelemetry://reference/central-configuration.md).
 ::::
 
 ## APM agent configuration options [_apm_agent_configuration_options]

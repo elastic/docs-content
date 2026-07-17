@@ -1,6 +1,6 @@
 ---
 navigation_title: Kubernetes observability
-description: Kubernetes observability setup with EDOT, covering components, deployment, customization, and application instrumentation.
+description: Kubernetes observability setup with {{edot}}, covering components, deployment, customization, and application instrumentation.
 applies_to:
   stack:
   serverless:
@@ -13,16 +13,16 @@ products:
   - id: edot-collector
 ---
 
-# Kubernetes observability with EDOT
+# Kubernetes observability with {{edot}} [kubernetes-observability-with-edot]
 
-The [quickstart guides](/solutions/observability/get-started/opentelemetry/quickstart/index.md) for Kubernetes install a set of different EDOT Collectors and EDOT SDKs to cover collection of OpenTelemetry data for infrastructure monitoring, logs collection and application monitoring.
+The [quickstart guides](/solutions/observability/get-started/opentelemetry/quickstart/index.md) for Kubernetes install a set of different {{agents}} and Elastic OTel SDKs to cover collection of OpenTelemetry data for infrastructure monitoring, logs collection and application monitoring.
 
-The Kubernetes setup relies on the OpenTelemetry Operator, configured to automate orchestration of EDOT as follows:
+The Kubernetes setup relies on the OpenTelemetry Operator, configured to automate orchestration of {{edot}} as follows:
 
-* EDOT Collector Cluster: Collection of cluster metrics.
-* EDOT Collector Daemon: Collection of node metrics, logs, and application telemetry.
-* EDOT Collector Gateway: Preprocessing, aggregation, and ingestion of data into Elastic.
-* EDOT SDKs: Annotated applications are auto-instrumented with [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md).
+* {{agent}} Cluster: Collection of cluster metrics.
+* {{agent}} Daemon: Collection of node metrics, logs, and application telemetry.
+* {{agent}} Gateway: Preprocessing, aggregation, and ingestion of data into Elastic.
+* Elastic OTel SDKs: Annotated applications are auto-instrumented with [Elastic OTel SDKs](opentelemetry://reference/edot-sdks/index.md).
 
 The following diagram summarizes the previous components and how they interact with Elastic:
 
@@ -31,5 +31,5 @@ The following diagram summarizes the previous components and how they interact w
 Read on to learn how to:
 
 - Install the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) using the [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
-- Use the EDOT Collectors to send Kubernetes logs, metrics, and application traces to an {{es}} cluster.
+- Use the {{agents}} to send Kubernetes logs, metrics, and application traces to an {{es}} cluster.
 - Use the operator for applications [auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/) in all supported languages.

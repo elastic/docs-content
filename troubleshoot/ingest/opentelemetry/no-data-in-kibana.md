@@ -1,6 +1,6 @@
 ---
 navigation_title: No data visible in Kibana
-description: Learn what to check when no data (logs, metrics, traces) appears in Kibana after setting up EDOT.
+description: Learn what to check when no data (logs, metrics, traces) appears in Kibana after setting up {{edot}}.
 applies_to:
   stack:
   serverless:
@@ -15,10 +15,10 @@ products:
 
 # No logs, metrics, or traces visible in Kibana
 
-If the EDOT Collector or SDKs appear to be running, but you see no logs, metrics, or traces in the {{kib}} UI, try to use these solutions to identify and resolve the issue.
+If the {{agent}} or Elastic OTel SDKs appear to be running, but you see no logs, metrics, or traces in the {{kib}} UI, try to use these solutions to identify and resolve the issue.
 
 :::{tip}
-If you're sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake, keep in mind that this flow is not supported. Send data to an [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md) instead.
+If you're sending Elastic OTel SDK telemetry directly to {{apm-server}}'s OTel intake, keep in mind that this flow is not supported. Send data to an [{{agent}} Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md) instead.
 :::
 
 ## Symptoms
@@ -38,7 +38,7 @@ This issue is typically caused by one or more of the following:
 * TLS verification failures
 * Misconfigured pipelines or disabled signals
 * The `elasticapmconnector` is misconfigured as a processor, which means that traces flow normally but {{product.apm}} metrics are never produced, so services don't appear in {{kib}} {{product.apm}}. Refer to [{{product.apm}} services missing due to misconfigured `elasticapmconnector`](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md).
-* Incomplete setup — to capture all telemetry data, you must use the EDOT Collector together with an appropriate EDOT SDK
+* Incomplete setup — to capture all telemetry data, you must use the {{agent}} together with an appropriate Elastic OTel SDK
 
 ## Resolution
 
@@ -82,7 +82,7 @@ Also look for:
 * TLS handshake failures
 * Invalid character errors, which may indicate proxy or HTML redirect instead of JSON
 
-Increase verbosity using `--log-level=debug` for deeper insights. For more information, refer to [Enable debug logging for the EDOT Collector](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) or [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+Increase verbosity using `--log-level=debug` for deeper insights. For more information, refer to [Enable debug logging for the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) or [Enable debug logging for Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
 ### Test network connectivity
 
@@ -96,7 +96,7 @@ Or use `telnet` or `nc` to verify port 443 is reachable. For detailed connectivi
 
 <!--### Check proxy environment variables
 
-Ensure environment variables are correctly set in your deployment. Refer to [Proxy settings for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/proxy.md) for more information relevant to your configuration.
+Ensure environment variables are correctly set in your deployment. Refer to [Proxy settings for Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/proxy.md) for more information relevant to your configuration.
 
 In Kubernetes or container environments, pass these as `env:` entries.
 -->
@@ -116,4 +116,4 @@ service:
 
 If only logs are configured, metrics and traces will not be sent.
 
-If you're using EDOT SDKs and not seeing application-level telemetry, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md) for SDK-specific troubleshooting.
+If you're using Elastic OTel SDKs and not seeing application-level telemetry, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md) for SDK-specific troubleshooting.

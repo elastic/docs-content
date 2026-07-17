@@ -1,6 +1,6 @@
 ---
-navigation_title: EDOT PHP
-description: Troubleshooting the Elastic Distribution of OpenTelemetry PHP agent.
+navigation_title: Elastic OTel PHP
+description: Troubleshooting the Elastic OTel PHP agent.
 applies_to:
   stack:
   serverless:
@@ -13,21 +13,21 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting the EDOT PHP agent
+# Troubleshooting the Elastic OTel PHP agent [troubleshooting-the-edot-php-agent]
 
-Use the information on this page to troubleshoot issues using EDOT PHP.
+Use the information on this page to troubleshoot issues using Elastic OTel PHP.
 
 If you need help and you're an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues).
 
-As a first step, review the [supported technologies](elastic-otel-php://reference/edot-php/supported-technologies.md) to ensure your application is supported by the agent. Are you using a PHP version that EDOT PHP supports? Are the versions of your dependencies in the supported version range to be instrumented?
+As a first step, review the [supported technologies](elastic-otel-php://reference/edot-php/supported-technologies.md) to ensure your application is supported by the agent. Are you using a PHP version that Elastic OTel PHP supports? Are the versions of your dependencies in the supported version range to be instrumented?
 
 ## Turn on logging
 
-When diagnosing issues with the agent's operation, logs play a key role. You can find a detailed explanation of the logging configuration options in [Configuration](elastic-otel-php://reference/edot-php/configuration.md#logging-configuration). For more information on enabling debug logging, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+When diagnosing issues with the agent's operation, logs play a key role. You can find a detailed explanation of the logging configuration options in [Configuration](elastic-otel-php://reference/edot-php/configuration.md#logging-configuration). For more information on enabling debug logging, refer to [Enable debug logging for Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
 In most cases, setting the logging level to `debug` is sufficient. You can also use `trace` can be used, but keep in mind that the amount of generated data might be significant.
 
-Additionally, turn on logging for OpenTelemetry components, for example as shown in the following example . Logs from OpenTelemetry components are directed to the same output configured for EDOT logs.
+Additionally, turn on logging for OpenTelemetry components, for example as shown in the following example . Logs from OpenTelemetry components are directed to the same output configured for {{edot}} logs.
 
 ```
 export OTEL_LOG_LEVEL=DEBUG
@@ -119,7 +119,7 @@ The following information is collected:
 
 ## Turn on debugging for instrumented functions
 
-EDOT can collect detailed diagnostics of arguments passed to instrumented functions. Use them to verify whether the data used by the instrumented application is correctly analyzed by the instrumentation code.
+{{edot}} can collect detailed diagnostics of arguments passed to instrumented functions. Use them to verify whether the data used by the instrumented application is correctly analyzed by the instrumentation code.
 
 To turn on debugging for instrumented function, set the following environment variable:
 
@@ -130,7 +130,7 @@ ELASTIC_OTEL_DEBUG_PHP_HOOKS_ENABLED=true
 
 ## Turn on instrumentation of all the application code
 
-For diagnostic purposes outside of production environments, EDOT allows instrumenting the entire code of your application. This allows tracking function calls throughout the processing of an entire request or script and provides better insight into the application's behavior.
+For diagnostic purposes outside of production environments, {{edot}} allows instrumenting the entire code of your application. This allows tracking function calls throughout the processing of an entire request or script and provides better insight into the application's behavior.
 
 To turn on debugging for instrumented function, set the following environment variable:
 

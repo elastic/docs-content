@@ -10,9 +10,9 @@ products:
   - id: edot-collector
 ---
 
-# Run Elastic Agent as an EDOT Collector [otel-agent]
+# Run {{agent}} as an OTel Collector [otel-agent]
 
-The [Elastic Distribution of OpenTelemetry (EDOT) Collector](elastic-agent://reference/edot-collector/index.md) is an open-source agent that can receive, process, and export telemetry data. {{agent}} includes an embedded EDOT Collector that allows you to instrument your applications and infrastructure once, and send data to multiple vendors and backends.
+[{{agent}}](elastic-agent://reference/edot-collector/index.md) is an open-source agent that can receive, process, and export telemetry data. {{agent}} includes an embedded OTel Collector that allows you to instrument your applications and infrastructure once, and send data to multiple vendors and backends.
 
 When you run {{agent}} in `otel` mode, it supports the standard OpenTelemetry Collector configuration format that defines a set of receivers, processors, exporters, and connectors. Logs, metrics, and traces can be collected and exported using OpenTelemetry data formats.
 

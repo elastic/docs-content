@@ -64,7 +64,7 @@ The `applies_to` keys fall into three dimensions based on the products and user 
 | --- | --- | --- |
 | Stack/Serverless | Represents the version or "flavor" of the core Elastic platform. Use when your content is primarily about features, functionality, or workflows that vary based on which version of the Elastic platform users are running.<br><br>Also use for deployment, configuration, or management tasks that are available or consistent across deployment types (these are often built into Elasticsearch - see tips). | `stack`, `serverless` |
 | Deployment | Represents how the Elastic platform is deployed and orchestrated. Use when your content is primarily about deployment, configuration, or management tasks that differ based on how users have deployed Elasticsearch and Kibana, or a deployment-specific tutorial for a stack task. | `deployment` (with subkeys: `ece`, `eck`, `ech`, `self`), `serverless` |
-| Product | Represents software outside the core Elastic platform that has its own versioning scheme. Use when your content is primarily about features or functionality specific to these standalone products. | `product` (with subkeys, including those for APM agents, EDOT SDKs, and client libraries) |
+| Product | Represents software outside the core Elastic platform that has its own versioning scheme. Use when your content is primarily about features or functionality specific to these standalone products. | `product` (with subkeys, including those for APM agents, Elastic OTel SDKs, and client libraries) |
 
 For background on the deployment types and stack flavors these dimensions map to, and additional guidance on writing content that varies by deployment type, refer to [](/contribute-docs/how-to/deployment-types/index.md).
 
@@ -162,7 +162,7 @@ Keys are ordered as follows:
 
 1. **Stack/Serverless**: Stack, Serverless
 2. **Deployment types**: ECH (Elastic Cloud Hosted), ECK (Elastic Cloud on Kubernetes), ECE (Elastic Cloud Enterprise), Self-Managed
-3. **ProductApplicability**: ECCTL, Curator, EDOT items (alphabetically), APM Agent items (alphabetically)
+3. **ProductApplicability**: ECCTL, Curator, {{edot}} items (alphabetically), APM Agent items (alphabetically)
 
 For example this syntax:
 

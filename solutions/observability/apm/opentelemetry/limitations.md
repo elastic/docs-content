@@ -26,16 +26,16 @@ products:
 * The application logs data stream (`app_logs`) has dynamic mapping disabled. This means the automatic detection and mapping of new fields is disabled (see issue [#9093](https://github.com/elastic/apm-server/issues/9093)).
 
 ::::{note}
-Logs ingest through the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) is fully supported.
+Logs ingest through [{{agent}}](elastic-agent://reference/edot-collector/index.md) is fully supported.
 ::::
 
 ## OpenTelemetry Line Protocol (OTLP) [apm-open-telemetry-otlp-limitations]
 
 Elastic supports both the  [OTLP/gRPC](https://opentelemetry.io/docs/specs/otlp/#otlpgrpc) and [OTLP/HTTP](https://opentelemetry.io/docs/specs/otlp/#otlphttp) protocol with ProtoBuf payload. Elastic does not yet support JSON Encoding for OTLP/HTTP.
 
-## EDOT SDKs with APM Server OTel intake [apm-open-telemetry-edot-sdk-limitations]
+## Elastic OTel SDKs with APM Server OTel intake [apm-open-telemetry-edot-sdk-limitations]
 
-EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
+Elastic OTel SDKs are tested and supported only with [{{agent}} Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using Elastic OTel SDKs directly with {{apm-server}}'s OTel intake is not supported.
 
 ## OpenTelemetry Collector exporter for Elastic [apm-open-telemetry-collector-exporter]
 
@@ -59,4 +59,4 @@ When using OpenTelemetry with Elastic APM, there are two different implementatio
 
 Using the [tailsamplingprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor) in the OpenTelemetry Collector comes with an important limitation when used with APM Server. Elastic’s APM backend calculates span and transaction metrics based on the incoming span events. These metrics are accurate for 100% sampling scenarios. In scenarios with probabilistic sampling, Elastic’s APM backend is being informed about the sampling rate of spans and can extrapolate throughput metrics based on the incoming, partial data. However, with tail-based sampling there’s no clear probability for sampling decisions as the rules can be more complex and the OpenTelemetry Collector does not provide sampling probability information to the Elastic backend that could be used for extrapolation of data. Therefore, there’s no way for APM Server to properly extrapolate throughput and count metrics that are derived from span events that have been tail-based sampled in the OpenTelemetry Collector. In these scenarios, derived throughput and count metrics are likely to be inaccurate.
 
-Use the [EDOT Collector tail-based sampling](elastic-agent://reference/edot-collector/config/tail-based-sampling.md) instead of sending data directly to APM Server. The EDOT Collector provides native support for tail-based sampling that properly handles metric extrapolation.
+Use [{{agent}} tail-based sampling](elastic-agent://reference/edot-collector/config/tail-based-sampling.md) instead of sending data directly to APM Server. {{agent}} provides native support for tail-based sampling that properly handles metric extrapolation.

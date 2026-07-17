@@ -1,6 +1,6 @@
 ---
-navigation_title: EDOT Node.js
-description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js).
+navigation_title: Elastic OTel Node.js
+description: Troubleshooting guide for the Elastic OTel Node.js SDK.
 applies_to:
   stack:
   serverless:
@@ -13,9 +13,9 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting the EDOT Node.js SDK
+# Troubleshooting the Elastic OTel Node.js SDK [troubleshooting-the-edot-nodejs-sdk]
 
-Use the information on this page to troubleshoot issues using EDOT Node.js.
+Use the information on this page to troubleshoot issues using Elastic OTel Node.js.
 
 If you need help and you're an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues).
 
@@ -35,7 +35,7 @@ curl -i $ELASTIC_OTLP_ENDPOINT \
     -H "Authorization: ApiKey $ELASTIC_API_KEY"
 ```
 
-For example, if you [configured](elastic-otel-node://reference/edot-node/configuration.md#basic-configuration) EDOT Node.js with:
+For example, if you [configured](elastic-otel-node://reference/edot-node/configuration.md#basic-configuration) Elastic OTel Node.js with:
 
 ```bash
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://my-deployment-abc123.ingest.us-west-2.aws.elastic.cloud"
@@ -65,7 +65,7 @@ Content-Length: 21
 
 ## Deactivate the SDK
 
-If your application has an issue, but you are not sure if the EDOT Node.js SDK could be the cause, try deactivating the SDK.
+If your application has an issue, but you are not sure if the Elastic OTel Node.js SDK could be the cause, try deactivating the SDK.
 
 You can exclude the SDK by not starting it with your application by running the following command:
 
@@ -82,13 +82,13 @@ node --import @elastic/opentelemetry-node my-app.js
 
 ## SDK diagnostic logs [sdk-diagnostic-logs]
 
-Turn on verbose diagnostic or debug logging from EDOT Node.js:
+Turn on verbose diagnostic or debug logging from Elastic OTel Node.js:
 
 1. Set the `OTEL_LOG_LEVEL` environment variable to `verbose`.
 2. Restart your application, and reproduce the issue. If the issue is about not seeing telemetry that you expect to see, be sure to use your application so that telemetry data is generated. For troubleshooting missing telemetry, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md).
 3. Gather the full verbose log from application start until after the issue was reproduced.
 
-For more information, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+For more information, refer to [Enable debug logging for Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
 The start of the diagnostic log will look something like this:
 
@@ -120,17 +120,17 @@ export OTEL_NODE_DISABLED_INSTRUMENTATIONS=dns,net
 node --import @elastic/opentelemetry-node my-app.js
 ```
 
-## Check if EDOT Node.js is running
+## Check if Elastic OTel Node.js is running [check-if-edot-nodejs-is-running]
 
 Look for `start Elastic Distribution of OpenTelemetry Node.js` in the application log.
 
-As it is starting, EDOT Node.js always logs at the "info" level a preamble to indicate that it has started. For example:
+As it is starting, Elastic OTel Node.js always logs at the "info" level a preamble to indicate that it has started. For example:
 
 ```json
 {"name":"elastic-otel-node","level":30,"preamble":true,"distroVersion":"0.7.0","env":{"os":"darwin 24.3.0","arch":"arm64","runtime":"Node.js v18.20.4"},"msg":"start Elastic Distribution of OpenTelemetry Node.js","time":"2025-03-27T22:14:08.288Z"}
 ...
 ```
 
-The `distroVersion` field also indicates which version of EDOT Node.js is being used.
+The `distroVersion` field also indicates which version of Elastic OTel Node.js is being used.
 
 
