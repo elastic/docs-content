@@ -34,16 +34,16 @@ You install the dashboard separately in each {{kib}} space, and each copy shows 
 
 The dashboard groups its panels into four areas:
 
-- **Token usage and LLM requests**: Input and output tokens by model, and LLM request counts by model and provider.
-- **Conversation volume and latency**: How many conversation rounds ran and how long they took, including average, 95th percentile, and maximum duration.
-- **Agent execution**: How often each agent ran and how long it took, broken down by agent.
-- **Tool calls and errors**: How often tools were called, their success and error rates, average tool duration, and the most-used tools.
+- **Token Usage & Cost**: Input and output tokens by model, and LLM request counts by model and provider.
+- **Conversation Volume & Latency**: How many conversation rounds ran and how long they took, including average, 95th percentile, and maximum duration.
+- **Agent Execution**: How often each agent ran and how long it took, broken down by agent.
+- **Tool Call Frequency & Errors**: How often tools were called, their success and error rates, average tool duration, and the most-used tools.
 
 When trace data is flowing, the dashboard looks like this:
 
 :::{image} images/agent-builder-overview-dashboard.png
 :screenshot:
-:alt: The Agent Builder Overview dashboard showing the Token Usage and Cost section with total input and output tokens, LLM request count, and token usage over time by model
+:alt: The Agent Builder Overview dashboard showing the Token Usage & Cost section with total input and output tokens, LLM request count, and token usage over time by model
 :::
 
 ## Before you begin
@@ -52,10 +52,10 @@ Before you install the dashboard:
 
 - Make sure trace collection is on for the space and the setting is saved. It is on by default. The **Install Dashboard** button appears only after trace collection is enabled and saved. For details, refer to Collect agent traces.
 - Make sure you can read the trace data stream, otherwise the panels have no data to show. For the required privileges, refer to Read trace data.
+- Make sure you can manage {{kib}} advanced settings. Installing and uninstalling the dashboard requires this privilege.
 - Install the dashboard in each {{kib}} space where you want it. It is not shared across spaces.
 
 <!-- TODO(#7322): make "Collect agent traces" a link to collect-traces.md and "Read trace data" a link to permissions.md#read-trace-data once #7322 is on main. -->
-<!-- VERIFY(cluster): which privilege lets a user open the GenAI Settings page and install or uninstall the dashboard (for example advanced settings save, or a management privilege). Not determinable from source. -->
 
 ## Install the dashboard
 
