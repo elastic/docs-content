@@ -6,16 +6,12 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "Authorization in the {{alerting-v2-system}} determines which user's privileges a rule uses when it runs, how API keys are stored and refreshed, and how to resolve authorization errors."
-tags:
-  - experimental-alerting
-  - alerting
-  - kibana
+description: "Learn which credentials authorize rule, action policy, and workflow runs in the experimental alerting system, and how to diagnose and resolve authorization errors."
 ---
 
-# API keys and authorization in the {{alerting-v2-system}} [experimental-alerting-authorization]
+# Rule, action policy, and workflow authorization in the {{alerting-v2-system}} [experimental-alerting-authorization]
 
-Rule, action policy, and workflow runs in the {{alerting-v2-system}} are each authorized separately, and not every one uses a stored [{{es}} API key](../../../deploy-manage/api-keys/elasticsearch-api-keys.md) to do it. Use this page to understand which credential authorizes each operation, diagnose authorization errors, and keep credentials current.
+The {{alerting-v2-system}} authorizes rules, action policies, and workflows differently. Use this page to understand which credential applies to each operation, diagnose authorization errors, and keep credentials current.
 
 ## Which key authorizes each operation [key-per-operation]
 
@@ -23,15 +19,17 @@ The type of operation determines which credential authorizes it.
 
 | Operation | How it's authorized |
 |---|---|
-| Rule executes | The rule uses the API key of the user who last saved it. That key determines what data the rule can query. |
+| Rule executes | The rule uses the [API key](../alerts/alerting-setup.md#alerting-authorization) of the user who last saved it. That key determines what data the rule can query. |
 | Action policy evaluates and dispatches | Uses different credentials at different phases. Refer to [How action policies authorize a workflow run](#action-policy-workflow-keys). |
 | Workflow steps run | The workflow uses its own API key, separate from the action policy's, to run its steps. |
 
 ## How action policies authorize a workflow run [action-policy-workflow-keys]
 
-An action policy matches alert episodes as an internal system process, without using a stored credential.
+Authorizing a workflow run happens in three steps, and each step uses a different credential:
 
-Once a policy matches and needs to notify someone, it uses its own stored API key, captured from the user who last saved the policy, to schedule the workflow. The workflow then uses its own separate stored API key to run its steps. Refer to [How steps use the API key](../../workflows/authorization.md#workflows-authorization-scope) for how a workflow's key applies across its steps.
+1. The action policy checks alert episodes against its match conditions. This step runs as an internal system process and doesn't use a stored credential.
+2. Once a match is found, the policy schedules the workflow using its own stored API key, captured from the user who last saved the policy.
+3. The workflow then runs its steps using its own separate stored API key, not the policy's. Refer to [How steps use the API key](../../workflows/authorization.md#workflows-authorization-scope) for how a workflow's key applies across its steps.
 
 ## Check and fix authorization errors [check-and-fix-errors]
 

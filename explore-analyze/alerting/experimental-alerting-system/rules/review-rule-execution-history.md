@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Use the Execution History page in Kibana's experimental alerting system to monitor rule execution outcomes across all rules in a space."
+description: "Use the Execution History page in the experimental alerting system to monitor rule execution outcomes across all rules in a space."
 ---
 
 # Review rule execution history in the {{alerting-v2-system}} [review-rule-execution-history]

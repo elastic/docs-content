@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "ES|QL query patterns for rules in Kibana's experimental alerting system, from basic event filters to SLO burn rates, silent source detection, and persistent breach checks."
+description: "ES|QL query patterns for rules in the experimental alerting system, from basic event filters to SLO burn rates, silent source detection, and persistent breach checks."
 ---
 
 # {{esql}} query patterns for rules in the {{alerting-v2-system}} [esql-query-patterns]

@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Configure alert delay for Alert-mode rules in Kibana's experimental alerting system to reduce noise from brief spikes before opening an episode."
+description: "Configure alert delay for Alert-mode rules in the experimental alerting system to reduce noise from brief spikes before opening an episode."
 ---
 
 # Alert delay in the {{alerting-v2-system}} (Alert mode only) [alert-delay]

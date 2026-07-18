@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Convert an ES|QL query from a Discover session into a rule in Kibana's experimental alerting system, with the query pre-filled and a preview panel for verifying grouping."
+description: "Convert an ES|QL query from a Discover session into a rule in the experimental alerting system, with the query pre-filled and a preview panel for verifying grouping."
 ---
 
 # Create a rule from Discover in the {{alerting-v2-system}} [create-from-discover]

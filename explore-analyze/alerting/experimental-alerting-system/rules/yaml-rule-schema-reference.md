@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "YAML rule definitions in Kibana's experimental alerting system support fields for detection mode, schedule, query, grouping, and recovery. Reference tables list all valid field values."
+description: "YAML rule definitions in the experimental alerting system support fields for detection mode, schedule, query, grouping, and recovery. Reference tables list all valid field values."
 ---
 
 # YAML rule schema reference for the {{alerting-v2-system}} [yaml-rule-schema-reference]

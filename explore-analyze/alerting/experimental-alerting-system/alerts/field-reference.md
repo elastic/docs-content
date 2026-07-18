@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Find field schemas for the .rule-events and .alert-actions data streams in Kibana's experimental alerting system. Covers evaluation event fields, triage action fields, and all action_type values."
+description: "Find field schemas for the .rule-events and .alert-actions data streams in the experimental alerting system. Covers evaluation event fields, triage action fields, and all action_type values."
 ---
 
 # Alert data stream field reference [field-reference]

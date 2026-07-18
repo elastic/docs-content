@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "Step-by-step tutorial for creating an ES|QL rule in Kibana's experimental alerting system, covering alert delay, .rule-events evaluation history, and default recovery behavior."
+description: "Step-by-step tutorial for creating an ES|QL rule in the experimental alerting system, covering alert delay, .rule-events evaluation history, and default recovery behavior."
 ---
 
 # Create a rule and observe the alert lifecycle [create-first-rule]

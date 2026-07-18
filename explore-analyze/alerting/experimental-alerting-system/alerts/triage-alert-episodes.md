@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Take triage actions on alert episodes in Kibana's experimental alerting system. Acknowledge, snooze, resolve, activate, deactivate, tag, and assign episodes individually or in bulk."
+description: "Take triage actions on alert episodes in the experimental alerting system. Acknowledge, snooze, resolve, activate, deactivate, tag, and assign episodes individually or in bulk."
 ---
 
 # Triage alert episodes in the {{alerting-v2-system}} [triage-alert-episodes]

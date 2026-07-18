@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Detect SLO error budget burn across multiple time windows in Kibana's experimental alerting system using ES|QL conditional aggregation."
+description: "Detect SLO error budget burn across multiple time windows in the experimental alerting system using ES|QL conditional aggregation."
 ---
 
 # SLO burn rate detection in the {{alerting-v2-system}} [slo-burn-rate-query]

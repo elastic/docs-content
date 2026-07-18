@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Detect silent hosts and stopped data sources in Kibana's experimental alerting system using ES|QL last-seen queries."
+description: "Detect silent hosts and stopped data sources in the experimental alerting system using ES|QL last-seen queries."
 ---
 
 # No-data detection in the {{alerting-v2-system}} [no-data-esql-query]
