@@ -25,6 +25,6 @@ Once you're comfortable with the basics, use the following pages as your entry p
 - [Alerts](alerts.md) explains how alert episodes track a problem from first detection through recovery, and how to triage them as they come in.
 - [Notifications and actions](notifications-actions.md) shows you how to connect workflows and action policies so the right people hear about the right problems, at the right time.
 
-:::{important} - How to use the {{alerting-v2-system}} docs
-Because the {{alerting-v2-system}} is still evolving, its UI can change before general availability. Rather than pointing to an exact button or menu, this documentation focuses on the underlying concepts and behavior. If something doesn't match what you see in the {{kib}} UI, look for the closest equivalent instead. The concepts and behaviors described in the docs still apply.
+:::{important} - How to use the {{alerting-v2-system}} documentation
+Because the {{alerting-v2-system}} is still evolving, its UI can change before general availability. Rather than pointing to an exact button or menu, the documentation focuses on the underlying concepts and behavior. If something doesn't match what you see in the {{kib}} UI, look for the closest equivalent instead. The concepts and behaviors described in the documentation still apply.
 :::
