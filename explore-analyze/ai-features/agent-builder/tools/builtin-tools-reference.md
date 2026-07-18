@@ -335,7 +335,7 @@ Security tools provide specialized capabilities for security monitoring, threat 
 
 $$$agent-builder-security-attack-discovery-search-tool$$$
 `security.attack_discovery_search` {applies_to}`stack: ga 9.4+`
-:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs. Requires attack discovery to have been run at least once.
+:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery/attack-discovery.md) from the last week, given one or more alert IDs. Requires attack discovery to have been run at least once.
 
 $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 :   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.

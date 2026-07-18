@@ -580,10 +580,20 @@ toc:
             children:
               - file: security/ai/ai-assistant-knowledge-base.md
               - file: security/ai/usecase-knowledge-base-walkthrough.md
-          - file: security/ai/attack-discovery.md
+          - file: security/ai/attack-discovery/attack-discovery.md
             children:
-              - file: security/ai/attacks-page.md
-              - file: security/ai/triage-attack-discovery-findings.md
+              - file: security/ai/attack-discovery/rbac.md
+              - file: security/ai/attack-discovery/run-attack-discovery.md
+                children:
+                  - file: security/ai/attack-discovery/manual-runs.md
+                  - file: security/ai/attack-discovery/schedule-discoveries.md
+                  - hidden: security/ai/attack-discovery/embedded-runs.md
+                  - hidden: security/ai/attack-discovery/conversational-runs.md
+              - file: security/ai/attack-discovery/triage-attack-discovery-findings.md
+              - file: security/ai/attack-discovery/manage-saved-discoveries.md
+                children:
+                  - file: security/ai/attack-discovery/attacks-page.md
+                  - file: security/ai/attack-discovery/manage-discoveries.md
           - file: security/ai/large-language-model-performance-matrix.md
           - file: security/ai/use-cases.md
             children:

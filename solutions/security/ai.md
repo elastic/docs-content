@@ -23,7 +23,7 @@ These security-specific AI capabilities build on Elastic's [platform-level AI in
 
 | Your goal | Start here |
 |---|---|
-| Automatically discover attacks across alerts | [Attack Discovery](/solutions/security/ai/attack-discovery.md) |
+| Automatically discover attacks across alerts | [Attack Discovery](/solutions/security/ai/attack-discovery/attack-discovery.md) |
 | Get AI help with investigation, queries, and incident response | [AI Assistant](/solutions/security/ai/ai-assistant.md) or [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) |
 | Deploy an AI-powered SOC on {{sec-serverless}} | [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) |
 | Compare LLM performance for security tasks | [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) |
@@ -36,7 +36,7 @@ The following tools provide interactive, LLM-driven capabilities for security an
 
 ### Attack Discovery [attack-discovery-overview]
 
-[Attack Discovery](/solutions/security/ai/attack-discovery.md) uses LLMs to automatically analyze alerts in your environment and surface potential attacks. Rather than requiring you to review alerts individually, Attack Discovery identifies relationships among multiple alerts, maps activity to the MITRE ATT&CK matrix, and suggests which threat actors might be responsible. You can schedule Attack Discovery to run automatically and send notifications through connectors such as Slack, Microsoft Teams, PagerDuty, or email.
+[Attack Discovery](/solutions/security/ai/attack-discovery/attack-discovery.md) uses LLMs to automatically analyze alerts in your environment and surface potential attacks. Rather than requiring you to review alerts individually, Attack Discovery identifies relationships among multiple alerts, maps activity to the MITRE ATT&CK matrix, and suggests which threat actors might be responsible. You can schedule Attack Discovery to run automatically and send notifications through connectors such as Slack, Microsoft Teams, PagerDuty, or email.
 
 ### AI chat [ai-chat-overview]
 

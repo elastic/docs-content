@@ -1027,3 +1027,54 @@ redirects:
     to: 'reference/fleet/managed-content.md'
     anchors:
       'managed-integrations-content':
+
+  # Related to the Attack Discovery docs restructure: moved attack-discovery.md, attacks-page.md,
+  # and triage-attack-discovery-findings.md into a new solutions/security/ai/attack-discovery/ folder,
+  # split attack-discovery.md's RBAC, scheduling, and manual-run sections into their own pages,
+  # merged attacks-page.md's content into manage-saved-discoveries.md as an "Attacks page" section,
+  # and later split manage-saved-discoveries.md into manage-discoveries.md (Attack Discovery page
+  # tasks) and attacks-page.md (Attacks page tasks), leaving manage-saved-discoveries.md as a hub page.
+  'solutions/security/ai/attack-discovery.md':
+    to: 'solutions/security/ai/attack-discovery/attack-discovery.md'
+    many:
+      - to: 'solutions/security/ai/attack-discovery/rbac.md'
+        anchors:
+          'attack-discovery-rbac': 'attack-discovery-rbac'
+      - to: 'solutions/security/ai/attack-discovery/schedule-discoveries.md'
+        anchors:
+          'schedule-discoveries': 'schedule-discoveries'
+      - to: 'solutions/security/ai/attack-discovery/manual-runs.md'
+        anchors:
+          'attack-discovery-generate-discoveries': 'attack-discovery-generate-discoveries'
+  'solutions/security/ai/attacks-page.md':
+    to: 'solutions/security/ai/attack-discovery/attacks-page.md'
+  'solutions/security/ai/attack-discovery/manage-saved-discoveries.md':
+    to: 'solutions/security/ai/attack-discovery/manage-saved-discoveries.md'
+    anchors:
+      'attacks-next-steps': 'next-steps'
+    many:
+      - to: 'solutions/security/ai/attack-discovery/manage-discoveries.md'
+        anchors:
+          'manage-discoveries': 'manage-discoveries'
+          'discovery-status': 'discovery-status'
+          'share-attack-discoveries': 'share-attack-discoveries'
+          'take-bulk-actions': 'take-bulk-actions'
+          'search-filter-discoveries': 'search-filter-discoveries'
+      - to: 'solutions/security/ai/attack-discovery/attacks-page.md'
+        anchors:
+          'attacks-page': 'attacks-page'
+          'attacks-prerequisites': 'attacks-prerequisites'
+          'attacks-how-it-works': 'attacks-how-it-works'
+          'attacks-schedule-discoveries': 'attacks-schedule-discoveries'
+          'attacks-filter-search': 'attacks-filter-search'
+          'attacks-view-options': 'attacks-view-options'
+          'attacks-filtering-behavior': 'attacks-filtering-behavior'
+          'attacks-manage': 'attacks-manage'
+          'change-attack-status': 'change-attack-status'
+          'run-workflow-from-attack': 'run-workflow-from-attack'
+          'assign-attacks': 'assign-attacks'
+          'apply-attack-tags': 'apply-attack-tags'
+          'attacks-investigate-timeline': 'attacks-investigate-timeline'
+          'attacks-add-to-case': 'attacks-add-to-case'
+          'attacks-view-in-ai-chat': 'attacks-view-in-ai-chat'
+  'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'

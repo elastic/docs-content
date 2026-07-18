@@ -144,7 +144,7 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 
 ### Attack Discovery
 
-[Attack Discovery](/solutions/security/ai/attack-discovery.md) uses AI to triage your alerts and identify potential threats. Each "discovery" represents a potential attack and describes relationships among alerts to identify related users and hosts, map alerts to the MITRE ATT&CK matrix, and help identify threat actors.
+[Attack Discovery](/solutions/security/ai/attack-discovery/attack-discovery.md) uses AI to triage your alerts and identify potential threats. Each "discovery" represents a potential attack and describes relationships among alerts to identify related users and hosts, map alerts to the MITRE ATT&CK matrix, and help identify threat actors.
 
 
 ### Automatic Migration

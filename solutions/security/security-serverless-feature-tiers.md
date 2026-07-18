@@ -36,7 +36,7 @@ The following table compares features available in each feature tier:
 | **[Triage](/solutions/security/detect-and-alert/manage-detection-alerts.md), [investigation](/solutions/security/investigate.md), and [hunting](https://www.elastic.co/security/threat-hunting)** | ✅ | ✅ | ❌ |
 | **[Threat intelligence integration](/solutions/security/get-started/enable-threat-intelligence-integrations.md)** | ✅ | ✅ | ❌ |
 | **[AI Assistant](/solutions/security/ai/ai-assistant.md) with custom knowledge support** | ✅ | ❌ | ✅ |
-| **[Attack Discovery](/solutions/security/ai/attack-discovery.md) (AI-powered alert correlation)** | ✅ | ❌ | ✅ |
+| **[Attack Discovery](/solutions/security/ai/attack-discovery/attack-discovery.md) (AI-powered alert correlation)** | ✅ | ❌ | ✅ |
 | **[Automatic Import](/explore-analyze/ai-features/automatic-import.md) (AI-powered custom integrations)** | ✅ | ❌ | ❌ |
 | **[Entity analytics / UEBA](/solutions/security/advanced-entity-analytics.md)** | ✅ | ❌ | ❌ |
 | **Extended security content** | ✅ | ❌ | ❌ |
