@@ -89,8 +89,8 @@ For each rule still mapped to the old Defense Evasion tactic, decide whether the
 Some techniques might belong under Execution, Lateral Movement, or Privilege Escalation instead. Review the linked MITRE ATT&CK pages to compare technique descriptions before you decide.
 ::::
 
-::::{step} Update saved searches and dashboards
-Update any saved search, dashboard, or report that filters or groups by TA0005 under its old meaning, and add equivalent views for TA0112.
+::::{step} (Optional) Update custom saved searches and dashboards
+Update any custom saved search, dashboard, or report that filters or groups by TA0005 under its old meaning, and add equivalent views for TA0112.
 
 :::{dropdown} How to find and update these references
 Each alert stores its own copy of its rule's MITRE mapping, in the `kibana.alert.rule.threat.tactic.id` and `kibana.alert.rule.threat.tactic.name` fields. Remapping a rule only affects new alerts, so a saved search or dashboard filtering on `TA0005` can match both older Defense Evasion alerts and newer Stealth alerts. 
@@ -104,7 +104,7 @@ To update affected saved searches and dashboards:
 ::::
 
 ::::{step} Verify on the coverage page
-Filter to enabled rules and confirm the Stealth and Defense Impairment columns match your expected coverage, and that the count of rules with outdated mappings has dropped to zero (or to only the rules you intend to leave mapped to a previous MITRE ATT&CK version).
+Filter to enabled rules and confirm the Stealth and Defense Impairment columns match your expected coverage, and that the list of rules with outdated mappings contains no rules (or only the rules you intend to leave mapped to a previous MITRE ATT&CK version).
 ::::
 :::::
 

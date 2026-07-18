@@ -74,7 +74,6 @@ Searches for tactics and techniques must match exactly, are case sensitive, and 
 ::::
 
 
-
 ## Expand and collapse cells [security-rules-coverage-expand-and-collapse-cells]
 
 Select **Collapse cells** or **Expand cells** to change how much information the cells display. Cells always include the technique's name and the number of sub-techniques covered by enabled rules. Expand the cells to also display counts of not-enabled and enabled rules for each technique.
