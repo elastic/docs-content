@@ -85,7 +85,6 @@ Action policies saved or edited through {{agent-builder}} also receive the `agen
 
 ## Related pages
 
-- [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md): How the {{agent-builder}} platform works, including agents, skills, and tools.
-<!-- - [About action policies](action-policies/about-action-policies.md): How action policies evaluate and gate alert episodes before invoking a workflow. -->
-<!-- - [Create an action policy](action-policies/create-configure-action-policy.md): Configure an action policy manually, with full control over match conditions, grouping, and destinations. -->
-<!-- - [Connect workflows to the {{alerting-v2-system}}](workflows-alerting.md): How action policies and lifecycle triggers invoke workflows at runtime, and when to use each. -->
+- [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md): Learn how the {{agent-builder}} platform works, including agents, skills, and tools.
+- [About action policies](action-policies/about-action-policies.md): Understand the gating mechanism the agent configures on your behalf.
+- [Connect workflows to the {{alerting-v2-system}}](workflows-alerting.md): Understand the delivery mechanism the agent sets up when you ask it to configure notifications.

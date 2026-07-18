@@ -12,7 +12,20 @@ description: "Use ES|QL in Discover to replay incidents, audit triage actions, a
 
 Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**. The **Alerts** page shows current episode state. Discover lets you go further and replay how an incident unfolded, view who acknowledged or snoozed it, measure time-to-acknowledge trends, or correlate alert history with other data in your environment.
 
-For field definitions for both streams, refer to [Field reference](field-reference.md). For triage in the product UI, refer to [View and manage alerts](view-and-manage-alerts.md).
+Use the following table to jump to the query you need:
+
+| Query | What it returns | Stream |
+|---|---|---|
+| [Reconstruct the lifecycle of a specific episode](#replay-episode) | Every evaluation for one episode, in chronological order | `.rule-events` |
+| [Find all currently active episodes](#find-active-episodes) | One row per episode currently in `active` state | `.rule-events` |
+| [List all breaches for a specific rule](#list-rule-breaches) | Every evaluation where a rule's condition was met | `.rule-events` |
+| [Identify evaluation gaps](#identify-no-data) | Recent `no_data` rows that may point to a pipeline issue | `.rule-events` |
+| [View the full triage history for an episode](#full-triage-history) | Every action taken on one episode, in chronological order | `.alert-actions` |
+| [Find all acknowledgments in a time window](#find-acknowledgments) | Every acknowledgment action across all episodes | `.alert-actions` |
+| [Check episode assignment state](#check-assignments) | Every assignment action and who it was assigned to | `.alert-actions` |
+| [Audit dispatcher outcomes for a rule](#audit-dispatcher-outcomes) | Notified, suppressed, and unmatched outcomes for a rule | `.alert-actions` |
+| [Find snoozed series](#find-snoozed-series) | Active and historical snoozes, including who set them and when they expire | `.alert-actions` |
+| [Trace the full story of an incident](#trace-incident) | Both streams filtered or joined together for a complete incident timeline | Both |
 
 ## Before you begin [add-data-views-before-begin]
 
