@@ -64,18 +64,18 @@ When a user or the system records an action on an alert episode, {{kib}} writes 
 
 Every `.alert-actions` document has an `action_type` that identifies what happened and who initiated it. Users trigger the user-written types through the API or UI. System-written types come from either rule evaluation (`fire`) or the dispatcher (`notified`, `suppress`, `unmatched`).
 
-| Value | Written by | Meaning |
+| Value | Written by | What happened |
 |---|---|---|
-| `ack` | user | Acknowledge episode |
-| `unack` | user | Remove acknowledgment |
-| `assign` | user | Assign to user (`assignee_uid`) |
-| `tag` | user | Add tags |
-| `snooze` | user | Snooze until `expiry` |
-| `unsnooze` | user | Remove snooze |
-| `activate` | user | Manually activate the episode |
-| `deactivate` | user | Manually deactivate the episode, resuming automatic recovery without closing it |
-| `resolve` | user | Close the episode |
-| `unresolve` | user | Reopen a resolved episode |
+| `ack` | user | Acknowledged the episode |
+| `unack` | user | Removed the acknowledgment |
+| `assign` | user | Assigned to a user (`assignee_uid`) |
+| `tag` | user | Added tags |
+| `snooze` | user | Snoozed until `expiry` |
+| `unsnooze` | user | Removed the snooze |
+| `activate` | user | Manually activated the episode |
+| `deactivate` | user | Manually deactivated the episode, resuming automatic recovery without closing it |
+| `resolve` | user | Closed the episode |
+| `unresolve` | user | Reopened a resolved episode |
 | `fire` | system | Episode opened or continued |
 | `notified` | system | Workflow invoked |
 | `suppress` | system | Notification throttled by the frequency limit |

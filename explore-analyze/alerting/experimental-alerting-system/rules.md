@@ -38,5 +38,5 @@ From here, you can create, configure, and manage rules, and review what they've 
 - [Rule events](rules/rule-event-field-reference.md): Understand the documents rules write to `.rule-events`.
 
 :::{important} - How to use the {{alerting-v2-system}} docs
-The docs for the {{alerting-v2-system}} don't always name a specific button or menu. When that's the case, look for the closest matching label in the {{kib}} UI. Even if the in-application wording differs slightly, the concepts and behaviors described in the docs still apply.
+Because the {{alerting-v2-system}} is still evolving, its UI can change before general availability. Rather than pointing to an exact button or menu, this documentation focuses on the underlying concepts and behavior. If something doesn't match what you see in the {{kib}} UI, look for the closest equivalent instead. The concepts and behaviors described in the docs still apply.
 :::
