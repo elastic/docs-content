@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Monitor alert episodes in Kibana's experimental alerting system using KPI panels, an episode histogram, and filter controls. Triage and investigate episodes from the same interface."
+description: "Monitor alert episodes in the experimental alerting system using KPI panels, an episode histogram, and filter controls. Triage and investigate episodes from the same interface."
 ---
 
 # View and manage alerts in the {{alerting-v2-system}} [view-manage-alerts]

@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Detect conditions that persist across consecutive time buckets in Kibana's experimental alerting system using ES|QL bucket counting."
+description: "Detect conditions that persist across consecutive time buckets in the experimental alerting system using ES|QL bucket counting."
 ---
 
 # Persistent breach detection in the {{alerting-v2-system}} [persistent-breach]

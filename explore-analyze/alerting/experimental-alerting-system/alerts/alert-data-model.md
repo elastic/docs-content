@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Alert history in Kibana's experimental alerting system lives in two append-only streams, .rule-events for evaluations and .alert-actions for triage. Signals and alerts differ by rule mode."
+description: "Alert history in the experimental alerting system lives in two append-only streams, .rule-events for evaluations and .alert-actions for triage. Signals and alerts differ by rule mode."
 ---
 
 # Alert data model in the {{alerting-v2-system}} [alert-data-model]

@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Alert episodes in Kibana's experimental alerting system track a problem from first detection through recovery. Episodes belong to a series that groups recurrences of the same condition."
+description: "Alert episodes in the experimental alerting system track a problem from first detection through recovery. Episodes belong to a series that groups recurrences of the same condition."
 ---
 
 # Alerts in the {{alerting-v2-system-cap}} [alerts]

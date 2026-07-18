@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Assign severity levels to alert episodes in Kibana's experimental alerting system using a severity column in ES|QL query output."
+description: "Assign severity levels to alert episodes in the experimental alerting system using a severity column in ES|QL query output."
 ---
 
 # Severity in the {{alerting-v2-system}} [rule-severity]

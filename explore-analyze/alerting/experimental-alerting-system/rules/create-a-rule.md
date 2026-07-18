@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Create rules in Kibana's experimental alerting system using the ES|QL editor, AI Agent, rule builder, or directly from a Discover session."
+description: "Create rules in the experimental alerting system using the ES|QL editor, AI Agent, rule builder, or directly from a Discover session."
 ---
 
 # Create a rule in the {{alerting-v2-system}} [create-a-rule]

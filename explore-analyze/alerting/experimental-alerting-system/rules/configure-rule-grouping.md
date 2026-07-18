@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Configure rule grouping in Kibana's experimental alerting system to track multiple subjects as independent alert series."
+description: "Configure rule grouping in the experimental alerting system to track multiple subjects as independent alert series."
 ---
 
 # Rule grouping in the {{alerting-v2-system}} [rule-grouping]

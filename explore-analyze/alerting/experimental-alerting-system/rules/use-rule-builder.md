@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Create rules in Kibana's experimental alerting system by selecting a rule type and configuring it through a guided form that generates ES|QL automatically."
+description: "Create rules in the experimental alerting system by selecting a rule type and configuring it through a guided form that generates ES|QL automatically."
 ---
 
 # Create a rule using the rule builder in the {{alerting-v2-system}} [use-rule-builder]

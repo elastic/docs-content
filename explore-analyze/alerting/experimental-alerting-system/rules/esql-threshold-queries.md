@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Write ES|QL threshold queries for rules in Kibana's experimental alerting system. Covers single-series and grouped rules using STATS aggregation."
+description: "Write ES|QL threshold queries for rules in the experimental alerting system. Covers single-series and grouped rules using STATS aggregation."
 ---
 
 # Threshold queries in the {{alerting-v2-system}} [esql-threshold-queries]

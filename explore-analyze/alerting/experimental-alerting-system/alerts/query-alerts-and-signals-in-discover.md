@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Use ES|QL in Discover to replay incidents, audit triage actions, and measure response times for alert episodes in Kibana's experimental alerting system."
+description: "Use ES|QL in Discover to replay incidents, audit triage actions, and measure response times for alert episodes in the experimental alerting system."
 ---
 
 # Query {{alerting-v2-system}} alert history in Discover [query-alert-history-discover]

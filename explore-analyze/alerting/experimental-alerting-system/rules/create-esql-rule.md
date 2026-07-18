@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Write ES|QL detection queries for rules in Kibana's experimental alerting system using the rule form or YAML editor, with a live query sandbox for previewing results."
+description: "Write ES|QL detection queries for rules in the experimental alerting system using the rule form or YAML editor, with a live query sandbox for previewing results."
 ---
 
 # Create an {{esql}} rule in the {{alerting-v2-system}} [create-esql-rule]

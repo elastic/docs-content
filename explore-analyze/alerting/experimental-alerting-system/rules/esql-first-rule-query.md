@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Write your first ES|QL rule query in Kibana's experimental alerting system. Covers the minimum query structure and how to adapt it to your data."
+description: "Write your first ES|QL rule query in the experimental alerting system. Covers the minimum query structure and how to adapt it to your data."
 ---
 
 # Your first rule query in the {{alerting-v2-system}} [first-rule-query]
