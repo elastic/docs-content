@@ -21,14 +21,16 @@ Mark an episode as seen, or flag it again for follow-up, without changing its li
 | Acknowledge | Marks the episode as seen. | You've reviewed the episode and want to track that it's been seen without taking further action. | Episode |
 | Unacknowledge | Removes the seen marker from the episode. | You want to re-flag an episode for follow-up. | Episode |
 
-## Suppress notifications [suppress-notifications]
+## Silence notifications [silence-notifications]
 
-Temporarily stop actions from firing for an episode's series, without disabling the rule.
+Temporarily silence notifications for an episode's series, without disabling the rule.
 
 | Action | Description | When to use | Scope |
 |---|---|---|---|
-| Snooze | Suppresses actions for the episode's series for a set duration. The rule continues to evaluate and the episode remains visible. | A known condition is expected to persist for a fixed time and you want to suppress noise without disabling the rule, for example during a scheduled maintenance window. | Series |
-| Unsnooze | Ends the active snooze, restoring action execution immediately. Clears the snooze for all episodes sharing the same `group_hash`, not only the one you acted on. | The condition has changed and you want notifications to resume before the snooze expires. | Series |
+| Snooze | Silences notifications for the episode's series for a set duration. The rule continues to evaluate and the episode remains visible. | A known condition is expected to persist for a fixed time and you want to reduce noise without disabling the rule, for example during a scheduled maintenance window. | Series |
+| Unsnooze | Ends the active snooze, restoring notifications immediately. Clears the snooze for all episodes sharing the same `group_hash`, not only the one you acted on. | The condition has changed and you want notifications to resume before the snooze expires. | Series |
+
+Snooze is one of several silencing mechanisms in the {{alerting-v2-system}}, each with a different scope. For the full comparison, refer to [Reduce notification noise](../action-policies/reduce-notification-noise.md).
 
 ## Close and reopen episodes [close-and-reopen-episodes]
 

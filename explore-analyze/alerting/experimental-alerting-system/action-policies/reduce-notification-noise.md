@@ -37,4 +37,4 @@ Snoozing an alert episode differs from snoozing an action policy. When you snooz
 
 - [About action policies](about-action-policies.md): Understand how eligibility checks, match conditions, and frequency gates work after silencing.
 - [Create and configure an action policy](create-configure-action-policy.md): Set up the action policies that run after episode silencing checks pass.
-- [View and manage alerts](../alerts/view-and-manage-alerts.md): Acknowledge, snooze, or deactivate episodes from the **Alerts** page.
+- [Triage alert episodes](../alerts/triage-alert-episodes.md): Acknowledge, snooze, or deactivate episodes from the **Alerts** page.
