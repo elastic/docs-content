@@ -66,7 +66,7 @@ At the simplest level:
 
 For a more detailed explanation of each stage, refer to [How the {{alerting-v2-system}} works](experimental-alerting-system/how-it-works.md).
 
-## How to get started or go deeper [system-overview-next-steps]
+## Get started or go deeper [system-overview-next-steps]
 
 - **New to the {{alerting-v2-system}}?** [Get started](experimental-alerting-system/get-started.md) walks you through enabling the system, setting up role access, and creating your first rule with a hands-on tutorial.
 - **Wondering what you can detect?** [Rules](experimental-alerting-system/rules.md) shows you how to define what to watch for in {{esql}}, and how to choose and configure the right creation path for your use case.
