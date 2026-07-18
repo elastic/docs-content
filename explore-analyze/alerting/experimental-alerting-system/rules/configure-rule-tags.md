@@ -12,14 +12,14 @@ description: "Add tags and runbooks to Alert-mode rules in Kibana's experimental
 
 Tags and runbooks are optional artifacts for Alert-mode rules in the {{alerting-v2-system}}.
 
-- **Tags**: Free-form labels for filtering and organization. Maximum 20 tags per rule. Each tag can be up to 128 characters.
+- **Tags**: Free-form labels for filtering and organization. A rule can have up to 20 tags, each up to 128 characters.
 - **Runbooks**: An investigation guide stored with the rule so responders have context when alerts are generated.
 
 ## When to configure tags and runbooks [tags-when-to-use]
 
 Configure tags when:
 
-* You want to filter the Alerts UI by team, environment, or severity tier without writing ad hoc KQL queries each time.
+* You want to filter episodes by team, environment, or severity tier on the **Alerts** page (find **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**) without writing a custom KQL query each time.
 * You are using action policies and want to match episodes by ownership or category rather than by rule name. Tags are inherited by alert episodes, so any tag you add to a rule is available as a KQL matcher in action policies.
 * You manage many rules and need a consistent labeling scheme to track which team owns which alerts.
 
@@ -43,11 +43,11 @@ Tags let you filter alerts by team, environment, or severity tier. For a checkou
 - `env:production`
 - `sev:p1`
 
-On-call engineers can then narrow the alerts view to rules their team owns without scanning every active episode.
+On-call engineers can then narrow the **Alerts** page to rules their team owns without scanning every active episode.
 
 ### Add a runbook with triage steps
 
-A runbook gives responders immediate context when an alert fires. Write it as plain text in the rule's description field. Include enough detail that an engineer unfamiliar with the service can triage without asking for help.
+A runbook gives responders immediate context when an alert fires. Write it as markdown so it renders correctly in the rule detail view. Include enough detail that an engineer unfamiliar with the service can triage without asking for help.
 
 ```
 Fires when checkout error rate exceeds 10% for 3 consecutive evaluations.
@@ -63,3 +63,4 @@ Triage steps:
 
 - [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
 - [View and manage rules](view-manage-rules.md): Filter the rules list by tag and view a rule's runbook from the rule details page.
+- [View and manage alerts](../alerts/view-and-manage-alerts.md): Filter the **Alerts** page by tag to narrow episodes to your team's rules.

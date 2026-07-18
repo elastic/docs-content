@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "Tutorial for creating an ES|QL rule in Kibana's experimental alerting system. Covers how alert delay controls when an episode opens, how .rule-events records each evaluation, and how default recovery closes an episode automatically when no breach is detected."
+description: "Step-by-step tutorial for creating an ES|QL rule in Kibana's experimental alerting system, covering alert delay, .rule-events evaluation history, and default recovery behavior."
 ---
 
 # Create a rule and observe the alert lifecycle [create-first-rule]
@@ -37,7 +37,7 @@ Before you start, make sure you have the following:
   | Task | Required privilege |
   |---|---|
   | Create and manage rules | **Rules: All** (under **Alerting**) |
-  | View and triage alert episodes | **Alerts: Read** (under **Alerting**); also automatically grants {{es}} `read` access to `.rule-events`, no separate index privilege needed |
+  | View and triage alert episodes | **Alerts: All** (under **Alerting**); also automatically grants {{es}} `read` access to `.rule-events` and `.alert-actions` |
   | Review execution history | **Execution history: Read** (under **Alerting**) |
   | Create the tutorial index and load sample data | `create_index` and `write` index privileges on `checkout-service-logs` |
 
@@ -384,7 +384,7 @@ Open **Alerting V2 preview** using the navigation menu or the [global search fie
 
 ::::{step} Find the episode
 
-The episode won't appear until the current UTC time passes 16 minutes past the hour, which is the start of the degraded window. After the first two evaluations following that point (about 10 minutes), you'll see an episode appear and move from `pending` to `active`.
+The degraded window starts at 16 minutes past the hour. Once the current UTC time passes that point, wait for two rule evaluations (about 10 minutes). An episode then appears and moves from `pending` to `active`.
 
 ::::
 
@@ -425,8 +425,8 @@ By completing this tutorial, you learned:
 - **Episode lifecycle** - **Alert delay** requires a breach to persist across consecutive evaluations before an episode opens, so transient spikes don't trigger it.
 - **Automatic recovery** - With default recovery, an episode closes as soon as a scheduled run finds the alert condition is no longer met, which is exactly what happened right after rewriting the latency values.
 
-## Next steps
+## What to do next with your rule [create-rule-next-steps]
 
-- [Configure a rule](../rules/configure-a-rule.md): Explore optional settings like severity, grouping, and no-data handling.
-- [{{esql}} query patterns](../rules/esql-query-patterns.md): Browse more detection patterns, from a basic event filter to SLO burn rate and persistent breach detection.
-- [Notifications and actions](../notifications-actions.md): Set up workflows and action policies to notify your team the next time an episode opens.
+- **Ready to manage the rule you just created?** [View and manage rules](../rules/view-manage-rules.md) shows you how to enable, disable, clone, and bulk-manage rules from the **Rules** page.
+- **Want to explore more configuration options?** [Configure a rule](../rules/configure-a-rule.md) covers grouping, tags, no-data handling, and more.
+- **Ready to notify your team the next time an episode opens?** [Notifications and actions](../notifications-actions.md) shows you how workflows and action policies decide who gets notified, and when.

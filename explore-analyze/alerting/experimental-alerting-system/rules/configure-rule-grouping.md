@@ -33,7 +33,7 @@ Rule grouping controls how alert series are created. Notification grouping, conf
 
 The {{alerting-v2-system}} does not automatically infer grouping from your {{esql}} query. You must declare which fields define series identity in `grouping.fields`; those are what the system uses to separate rows into independent alert series and track each one through its own lifecycle. Without that declaration, the system treats all query rows as a single series, even if your query uses `BY` to produce one row per group.
 
-The fields you declare in `grouping.fields` must match the column names produced by the `BY` clause in your {{esql}} `STATS` command. If they don't match, the system can't correlate query rows to alert series and the grouping configuration has no effect.
+The fields you declare in `grouping.fields` must match the column names produced by the `BY` clause in your {{esql}} `STATS` command. When they don't match, the grouping configuration has no effect—the system can't correlate query rows to alert series.
 
 :::{tip}
 Write the query first, then set the group fields. That way the `BY` columns are already defined and you can select them directly. If you later add or remove a `BY` field in the query, update the group fields to match.

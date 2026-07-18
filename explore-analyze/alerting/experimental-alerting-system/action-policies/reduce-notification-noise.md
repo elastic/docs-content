@@ -22,7 +22,7 @@ The following mechanisms let you silence notifications, each at a different scop
 |---|---|---|
 | Acknowledge | Per alert episode | You're actively investigating a breach and want to silence notifications for it without closing the alert episode. Clear the acknowledgment when you're done to restore notifications. |
 | Snooze | Per series (group) | You want to quiet an entire alert series for a defined period, for example, during a known noisy window for a specific host. Snooze expires automatically at the end of the duration. |
-| Deactivate | Per alert episode | You want to manually close an alert episode that hasn't recovered automatically. Deactivating marks the alert episode as inactive and stops notifications for it. Unlike acknowledge, this closes the alert episode rather than silencing it while leaving it active. |
+| Deactivate | Per alert episode | You manually [activated](../alerts/triage-alert-episodes.md) an episode and now want to return it to normal automatic recovery behavior. Deactivating doesn't close the episode. It resumes automatic recovery detection, so the episode closes on its own the next time the rule evaluates as recovered. |
 | [Maintenance window](../../alerts/maintenance-windows.md) | All action policies in a space | You want to pause all action policy dispatching in a space for a planned maintenance period. All active action policies stop dispatching; rule evaluation and episode recording continue. Maintenance windows are configured separately from action policies. |
 
 ### Snooze scope [snooze-scope]
@@ -37,4 +37,4 @@ Snoozing an alert episode differs from snoozing an action policy. When you snooz
 
 - [About action policies](about-action-policies.md): Understand how eligibility checks, match conditions, and frequency gates work after silencing.
 - [Create and configure an action policy](create-configure-action-policy.md): Set up the action policies that run after episode silencing checks pass.
-- [Action policy reference](action-policy-reference.md): Look up match condition fields, grouping modes, and frequency options.
+- [Triage alert episodes](../alerts/triage-alert-episodes.md): Acknowledge, snooze, or deactivate episodes from the **Alerts** page.

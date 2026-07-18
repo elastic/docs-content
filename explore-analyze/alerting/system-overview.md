@@ -14,7 +14,7 @@ description: The experimental Kibana alerting system uses ES|QL rules to detect 
 The {{alerting-v2-system}} in {{kib}} watches your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, such as when to open an issue, who should know, and how often to notify them. The system handles the rest.
 
 ::::{note}
-In the generally available {{kib}} alerting system, the term *alert* refers to a tracked occurrence of a rule condition. In the {{alerting-v2-system}}, the equivalent concept is called an *alert episode*. The two terms describe similar ideas in different systems and are not interchangeable.
+In the generally available {{kib}} alerting system, the term **alert** refers to a tracked occurrence of a rule condition. In the {{alerting-v2-system}}, the equivalent concept is called an **alert episode**. The two terms describe similar ideas in different systems and are not interchangeable.
 ::::
 
 ## The core idea [core-idea]
@@ -32,22 +32,15 @@ The {{alerting-v2-system}} is built around four objects: rules, alert episodes, 
 
 ### Rules
 
-A rule defines what to watch for in your data and how often to check. Every rule runs in one of two modes: alert or signal.
+A rule defines what to watch for in your data and how often to check, and runs in one of two modes: alert, which opens and tracks an alert episode until the condition clears, or signal, which records results over time without opening episodes or sending notifications.
 
-- **Alert** - Opens an alert episode when the rule finds a match and closes it when the condition clears, notifying your team at each episode state change. Helpful when you want to follow a problem from first detection to resolution.
-- **Signal** - Records rule query results over time without opening episodes or sending notifications. Helps you build a baseline, spot trends, or collect evidence before deciding whether something is worth alerting on.
-
-<!-- TODO: When PR #6523 (rules) merges, uncomment the link below and trim this sub-section to 1–2 anchor sentences + the link.
 Refer to [Rules](experimental-alerting-system/rules.md) to learn more.
--->
 
 ### Alert episodes
 
-In Alert mode, the rule opens one alert episode per problem and keeps it open until the condition clears. The alert episode moves through states (pending, active, recovering, inactive) giving you one lifecycle to triage rather than a separate item per rule check.
+In Alert mode, the rule opens one alert episode per problem and keeps it open until the condition clears. The alert episode moves through states (pending, active, recovering, inactive), giving you one lifecycle to triage rather than a separate item per rule check.
 
-<!-- TODO: When PR #6527 (alerts) merges, uncomment the link below and trim this sub-section to 1–2 anchor sentences + the link.
 Refer to [Alert episodes](experimental-alerting-system/alerts.md) to learn more.
--->
 
 ### Action policies
 
@@ -73,12 +66,9 @@ At the simplest level:
 
 For a more detailed explanation of each stage, refer to [How the {{alerting-v2-system}} works](experimental-alerting-system/how-it-works.md).
 
-## Next steps
+## Get started or go deeper [system-overview-next-steps]
 
-To understand how the {{alerting-v2-system}} fits into {{kib}}'s alerting options, refer to [Alerting](../alerting.md) or [Compare alerting systems](compare-alerting-systems.md).
-
-<!-- TODO: When PRs #6523, #6525, and #6527 merge, replace the paragraph above with these three forward-facing tracks and remove the compare-alerting-systems link (it points here, not forward):
-- **Rules**: Refer to [Rules](experimental-alerting-system/rules.md) to learn how to create and configure detection rules.
-- **Alerts**: Refer to [Alerts](experimental-alerting-system/alerts.md) to learn how alert episodes work and how to triage them.
-- **Notifications**: Refer to [Notifications and actions](experimental-alerting-system/notifications-actions.md) to learn how action policies and workflows route notifications.
--->
+- **New to the {{alerting-v2-system}}?** [Get started](experimental-alerting-system/get-started.md) walks you through enabling the system, setting up role access, and creating your first rule with a hands-on tutorial.
+- **Wondering what you can detect?** [Rules](experimental-alerting-system/rules.md) shows you how to define what to watch for in {{esql}}, and how to choose and configure the right creation path for your use case.
+- **Curious what happens when something breaks?** [Alerts](experimental-alerting-system/alerts.md) explains how alert episodes track a problem from first detection through recovery, and how to triage them as they come in.
+- **Want the right people to know when it matters?** [Notifications and actions](experimental-alerting-system/notifications-actions.md) shows you how workflows and action policies decide who gets notified, and when.

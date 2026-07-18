@@ -77,4 +77,4 @@ The `severity` column in `KEEP` maps directly to the `severity` field on each re
 ## Related pages
 
 - [{{esql}} query patterns](esql-query-patterns.md): Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.
-- [Severity](configure-rule-severity.md): Assign severity levels to alert episodes.
+- [Severity](configure-rule-severity.md): Understand the accepted values and matching rules for the severity levels this pattern assigns dynamically.

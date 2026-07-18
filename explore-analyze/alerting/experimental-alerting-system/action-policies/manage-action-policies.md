@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "View action policy details, enable, disable, snooze, and rotate API keys for action policies in the experimental alerting system."
+description: "Manage action policies in the experimental alerting system: turn them on or off, snooze notifications, and rotate API keys."
 ---
 
 # Manage action policies for the {{alerting-v2-system}} [manage-action-policies]
@@ -34,22 +34,12 @@ During a [maintenance window](../../alerts/maintenance-windows.md), action polic
 
 You can rotate the API key used to run an action policy's workflows without changing matchers or destinations. Use the **Update API key** action on one action policy or for multiple selected action policies.
 
-<!-- TODO: Verify accuracy before publishing — is the API key rotation behavior described below still accurate?
-::::{important} 
-
-**Production considerations**
-
-When you update or delete an action policy, previous API keys used for execution are queued for removal on a schedule managed by {{kib}}. Allow for a short delay before new keys are used for dispatch.
-::::
--->
-
 ## Manage multiple action policies at once
 
 On the action policies list, select one or more action policies to enable, disable, snooze, and do more in bulk. **Select all** selects every action policy on the current page of results. Clear the selection before changing filters if you need a different set.
 
 ## Related pages
 
-- [Review action policy execution history](review-action-policy-execution-history.md): Check dispatcher outcomes and investigate unexpected notification behavior.
-- [Reduce notification noise](reduce-notification-noise.md): Silence individual alert episodes with acknowledgment, snooze, or deactivation.
-- [Action policy reference](action-policy-reference.md): Look up match condition fields, grouping modes, and frequency options.
 - [Create and configure an action policy](create-configure-action-policy.md): Set up or update the action policies you manage here.
+- [Review action policy execution history](review-action-policy-execution-history.md): Check dispatcher outcomes and investigate unexpected notification behavior.
+- [Reduce notification noise](reduce-notification-noise.md): Silence alert episodes with acknowledgment, snooze, or deactivation.

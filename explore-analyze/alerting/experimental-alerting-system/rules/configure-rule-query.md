@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How to structure the ES|QL detection query for a rule in the experimental alerting system. Covers the base query, the optional alert condition that gates which rows become breaches, and dynamic parameters for time bounds and configurable thresholds."
+description: "How to structure the ES|QL detection query for a rule in the experimental alerting system: the base query, the alert condition, and dynamic parameters for time bounds and thresholds."
 ---
 
 # {{esql}} query in the {{alerting-v2-system}} [esql-query-rule]

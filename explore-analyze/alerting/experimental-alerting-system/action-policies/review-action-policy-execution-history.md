@@ -51,12 +51,9 @@ After each dispatcher run, {{kib}} records one of three outcomes for each action
 Episodes that are acknowledged, snoozed, marked inactive, or covered by a [maintenance window](../../alerts/maintenance-windows.md) are excluded before the dispatcher runs and don't appear in the execution history.
 :::
 
-<!--
-TODO (after PR #6527 merges): uncomment this section and verify field values against field-reference.md.
-
 ## Event-log outcomes and .alert-actions action types [outcome-vocab-mapping]
 
-The three outcomes above (`dispatched`, `throttled`, `unmatched`) are the **event-log terms** written to `.kibana-event-log-*`. PR #6527 introduces a parallel data stream (`.alert-actions`) that uses a different vocabulary for the same events. The mapping is:
+The three outcomes above (`dispatched`, `throttled`, `unmatched`) are the **event-log terms** written to `.kibana-event-log-*`. The `.alert-actions` data stream records the same events using different terms. The mapping is:
 
 | Event-log outcome (`event.action`) | `.alert-actions` `action_type` | Meaning |
 |---|---|---|
@@ -64,13 +61,11 @@ The three outcomes above (`dispatched`, `throttled`, `unmatched`) are the **even
 | `throttled` | `suppress` | Policy matched but frequency limit not yet cleared; no workflow invoked. |
 | `unmatched` | `unmatched` | No action policy matched the episode; no workflow invoked. |
 
-Note: `.alert-actions` also records alert-lifecycle events (`fire`, `activate`, `deactivate`, `ack`, `unack`)
-that have no event-log counterpart in this context — they are not dispatcher outcomes.
+`.alert-actions` also records triage actions (`ack`, `unack`, `assign`, `tag`, `snooze`, `unsnooze`, `activate`, `deactivate`, `resolve`, `unresolve`) and the `fire` action type, which marks that an episode opened or continued. These have no event-log counterpart in this context — they aren't dispatcher outcomes. For the full field reference, refer to [Action type values](../alerts/field-reference.md#action-type-values).
 
-Caution on naming: `suppress` in `.alert-actions` means **rate-limited by frequency** (same as `throttled`
-in the event log). It is unrelated to the eligibility gate (acknowledged/snoozed/maintenance-window episodes).
-Cross-reference this note from `action-policy-reference.md` Frequency section.
--->
+:::{note}
+`suppress` in `.alert-actions` means the same thing as `throttled` in the event log: the action policy matched but the frequency setting hadn't cleared yet, so no notification was sent. It's unrelated to the eligibility gate that excludes acknowledged, snoozed, or maintenance-window episodes before the dispatcher runs.
+:::
 
 ## Related pages
 

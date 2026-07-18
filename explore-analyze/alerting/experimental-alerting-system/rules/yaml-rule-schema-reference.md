@@ -82,10 +82,10 @@ Only valid when `kind: alert`. Controls how many consecutive detections are requ
 |---|---|---|---|
 | `state_transition.pending_operator` | string | `AND` or `OR` | Whether both the count and timeframe must be met (`AND`) or either one (`OR`) before becoming active. |
 | `state_transition.pending_count` | integer | Integer, 0–1000 | Number of consecutive breaches required before the episode becomes active. Set to `0` to skip the pending phase and transition directly to active on the first breach. |
-| `state_transition.pending_timeframe` | duration | Any duration string | Time window within which the breach count must be met. For example: `5m`. |
+| `state_transition.pending_timeframe` | duration | Any duration string | How long the condition must remain continuously breached before the episode becomes active. For example: `5m`. |
 | `state_transition.recovering_operator` | string | `AND` or `OR` | Whether both the count and timeframe must be met (`AND`) or either one (`OR`) before recovering. |
 | `state_transition.recovering_count` | integer | Integer, 0–1000 | Number of consecutive clear evaluations required before the episode recovers. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
-| `state_transition.recovering_timeframe` | duration | Any duration string | Time window within which the recovery count must be met. For example: `5m`. |
+| `state_transition.recovering_timeframe` | duration | Any duration string | How long the condition must remain continuously non-breaching before the episode recovers. For example: `5m`. |
 
 ## Grouping fields
 
