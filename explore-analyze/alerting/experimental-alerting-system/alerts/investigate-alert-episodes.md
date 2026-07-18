@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Investigate alert episodes in Kibana's experimental alerting system. Understand what triggered an episode, assess metric behavior, find related episodes, review responders, and inspect underlying data."
+description: "Investigate alert episodes in the experimental alerting system. Understand what triggered an episode, assess metric behavior, find related episodes, review responders, and inspect underlying data."
 ---
 
 # Investigate alert episodes in the {{alerting-v2-system}} [investigate-alert-episodes]
@@ -57,7 +57,9 @@ These rows only appear when the episode is in the corresponding state. System-ge
 
 Each episode includes a metadata view that surfaces the field values computed or retained by the rule's {{esql}} query. For example, a query using `STATS ... BY` stores aggregated values, not all fields from the underlying events. Use it to inspect rule-specific context such as resource identifiers or computed metrics. You can search by field name or value and toggle off null fields to focus on populated data.
 
-To view the full source documents instead of these computed values, use the **Open in Discover** action. It runs the rule's base query in Discover, aligned with the episode's timeframe. From there, adjust the query for what you want to see. For example, remove the aggregation to return source documents instead of aggregated output. For more information, refer to [Triage alert episodes](triage-alert-episodes.md).
+:::{tip}
+Use the **Open in Discover** action to view the full source documents instead of these computed values. The action runs the rule's base query in Discover, aligned with the episode's timeframe. Once there, adjust the query to see what you need. For example, remove the aggregation to return source documents instead of aggregated output.
+:::
 
 ## Access the response runbook [access-runbook]
 

@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How to configure the no-data strategy for rules in the experimental alerting system. Controls whether an empty query result emits a no-data event, holds the last known alert state, triggers recovery, or is ignored."
+description: "How to configure the no-data strategy for rules in the experimental alerting system: hold the last known alert state, trigger recovery, or ignore an empty query result."
 ---
 
 # No-data handling in the {{alerting-v2-system}} [no-data-handling]

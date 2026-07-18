@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "Tutorial for creating an ES|QL rule in Kibana's experimental alerting system. Covers how alert delay controls when an episode opens, how .rule-events records each evaluation, and how default recovery closes an episode automatically when no breach is detected."
+description: "Step-by-step tutorial for creating an ES|QL rule in Kibana's experimental alerting system, covering alert delay, .rule-events evaluation history, and default recovery behavior."
 ---
 
 # Create a rule and observe the alert lifecycle [create-first-rule]
@@ -425,7 +425,7 @@ By completing this tutorial, you learned:
 - **Episode lifecycle** - **Alert delay** requires a breach to persist across consecutive evaluations before an episode opens, so transient spikes don't trigger it.
 - **Automatic recovery** - With default recovery, an episode closes as soon as a scheduled run finds the alert condition is no longer met, which is exactly what happened right after rewriting the latency values.
 
-## Manage your rule [create-rule-next-steps]
+## What to do next with your rule [create-rule-next-steps]
 
 - **Ready to manage the rule you just created?** [View and manage rules](../rules/view-manage-rules.md) shows you how to enable, disable, clone, and bulk-manage rules from the **Rules** page.
 - **Want to explore more configuration options?** [Configure a rule](../rules/configure-a-rule.md) covers grouping, tags, no-data handling, and more.

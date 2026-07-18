@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "View action policy details, enable, disable, snooze, and rotate API keys for action policies in the experimental alerting system."
+description: "Manage action policies in the experimental alerting system: turn them on or off, snooze notifications, and rotate API keys."
 ---
 
 # Manage action policies for the {{alerting-v2-system}} [manage-action-policies]

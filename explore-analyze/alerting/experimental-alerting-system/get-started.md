@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "Get started with the experimental alerting system in Kibana: review requirements, enable the system, configure role access, and follow a tutorial to create a rule and observe the alert lifecycle."
+description: "Get started with the experimental alerting system in Kibana: review requirements, turn on the system, configure role access, and follow a tutorial to create a rule and observe the alert lifecycle."
 ---
 
 # Get started with the {{alerting-v2-system}} [get-started]

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "Privilege requirements for Kibana experimental alerting features: which Kibana feature privileges and Elasticsearch index privileges each role needs to manage rules, action policies, alerts, and query rule events and alert actions."
+description: "Privilege requirements for the experimental alerting system in Kibana: Kibana feature privileges and Elasticsearch index privileges needed to manage rules, action policies, and alerts."
 ---
 
 # Configure access to the {{alerting-v2-system}} [access]
