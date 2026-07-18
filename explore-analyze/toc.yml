@@ -400,12 +400,12 @@ toc:
         children:
           - file: alerting/experimental-alerting-system/how-it-works.md
           - file: alerting/experimental-alerting-system/glossary.md
-          - file: alerting/experimental-alerting-system/authorization.md
           - file: alerting/experimental-alerting-system/get-started.md
             children:
               - file: alerting/experimental-alerting-system/get-started/setup.md
               - file: alerting/experimental-alerting-system/get-started/configure-access.md
               - file: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
+          - file: alerting/experimental-alerting-system/authorization.md
           - file: alerting/experimental-alerting-system/rules.md
             children:
               - file: alerting/experimental-alerting-system/rules/create-a-rule.md

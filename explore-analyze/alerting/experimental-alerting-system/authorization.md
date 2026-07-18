@@ -13,48 +13,33 @@ tags:
   - kibana
 ---
 
-# Authorization in the {{alerting-v2-system}} [experimental-alerting-authorization]
+# API keys and authorization in the {{alerting-v2-system}} [experimental-alerting-authorization]
 
-Each rule stores an API key, captured from the user who last saved it, and that key's privileges determine what data the rule can query. The key stays in place until someone updates it, even if that user later changes roles or leaves the team. Use this page to understand how the API key model works, keep credentials current, and resolve authorization errors.
+Rule, action policy, and workflow runs in the {{alerting-v2-system}} are each authorized separately, and not every one uses a stored [{{es}} API key](../../../deploy-manage/api-keys/elasticsearch-api-keys.md) to do it. Use this page to understand which credential authorizes each operation, diagnose authorization errors, and keep credentials current.
 
-## Whose privileges authorize a run [privs-that-authorize-runs]
+## Which key authorizes each operation [key-per-operation]
 
-The {{alerting-v2-system}} uses a different authorization model depending on which type of operation is running.
+The type of operation determines which credential authorizes it.
 
-| Operation | Authorization model |
+| Operation | How it's authorized |
 |---|---|
 | Rule executes | The rule uses the API key of the user who last saved it. That key determines what data the rule can query. |
-| Action policy evaluates | Action policy evaluation doesn't use any stored credentials. |
-| Workflow is invoked by an action policy | The workflow uses the API key of the user who last saved it. |
+| Action policy evaluates and dispatches | Uses different credentials at different phases. Refer to [How action policies authorize a workflow run](#action-policy-workflow-keys). |
+| Workflow steps run | The workflow uses its own API key, separate from the action policy's, to run its steps. |
 
-## How {{kib}} records execution identity [record-execution-identity]
+## How action policies authorize a workflow run [action-policy-workflow-keys]
 
-When a rule runs, {{kib}} records the identity of the user whose API key authorized the execution. This identity appears in rule execution history, so you can audit which credentials each run used.
+An action policy matches alert episodes as an internal system process, without using a stored credential.
 
-Workflow runs triggered by action policies are recorded the same way, so you can audit them too. For details, refer to [Workflow authorization](../../workflows/authorization.md#workflows-authorization-audit).
-
-## How the API key works [how-api-key-works]
-
-When you save a rule, {{kib}} creates an API key that captures your privileges and authorizes the rule's {{esql}} query and writes to `.rule-events`. Workflow invocations use the workflow's own key, not the rule's.
-
-::::{important}
-If a user with fewer privileges saves the rule, the rule runs with those reduced privileges. If a user with greater privileges saves the rule, the rule runs with those elevated privileges. The API key always reflects the privileges of the user who most recently saved the rule.
-::::
-
-## How to keep a rule's privileges current [keep-rules-privileges-current]
-
-To refresh the stored API key for future runs, save the rule again with the desired user, or toggle the rule off and back on. A rule retains its key when turned off. If the key is missing when you turn it back on, {{kib}} generates a new one using your current privileges.
-
-::::{important}
-Deactivating a user or changing their role doesn't automatically update the stored key. To remove an outgoing user's access from future runs, save the rule again with a different user, or toggle it off and back on.
-::::
+Once a policy matches and needs to notify someone, it uses its own stored API key, captured from the user who last saved the policy, to schedule the workflow. The workflow then uses its own separate stored API key to run its steps. Refer to [How steps use the API key](../../workflows/authorization.md#workflows-authorization-scope) for how a workflow's key applies across its steps.
 
 ## Check and fix authorization errors [check-and-fix-errors]
 
-The following table covers authorization errors that can cause a rule or an action policy to fail. If a workflow produces authorization errors, refer to [Workflow authorization](../../workflows/authorization.md#workflows-authorization-troubleshoot).
+The following authorization errors can cause a rule to fail or prevent an action policy from delivering a notification. If a workflow produces authorization errors, refer to [Workflow authorization](../../workflows/authorization.md#workflows-authorization-troubleshoot).
 
 | Error type | Cause | Where it appears | How to resolve it |
 |---|---|---|---|
 | Insufficient privileges | The API key doesn't have the privileges required to query the rule's target data. | Rule execution history shows the run as failed. | Save the rule as a user who has the required index privileges, or update that user's role and save again. |
 | Stale or not valid API key | The stored key is no longer valid, for example because an administrator deleted or expired a role it depended on. | An API key error in rule execution history. | Refresh the key by saving the rule again or toggling it off and back on. |
-| Action policy's API key is missing or not valid | The workflow the action policy should trigger doesn't run. | Not shown in the UI or execution history. Check the {{kib}} server logs. | Save the action policy again to refresh its stored API key. |
+| Action policy's API key is missing or not valid | The action policy's own stored API key is no longer valid, so it can't schedule the workflow it should trigger. | Not shown in the UI or execution history. Check the {{kib}} server logs. | Save the action policy again to refresh its stored API key. |
+| Workflow's API key is missing or not valid | The action policy successfully schedules the workflow, but the workflow's own stored API key is no longer valid, so its steps fail. | Not shown in the UI or execution history. Check the {{kib}} server logs, or refer to [Workflow authorization](../../workflows/authorization.md#workflows-authorization-audit) to confirm which credentials a run used. | Save the workflow again to refresh its stored API key. |

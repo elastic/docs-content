@@ -28,3 +28,4 @@ Use the outcome filter to view only successful or failed executions. Filtering i
 
 - [Review action policy execution history](../action-policies/review-action-policy-execution-history.md): Monitor dispatcher outcomes for the notifications a rule's alert episodes trigger.
 - [View and manage rules](view-manage-rules.md): Find the rule behind a specific execution and inspect or edit it.
+- [Rule events](rule-event-field-reference.md): Understand the underlying `.rule-events` documents each execution writes.
