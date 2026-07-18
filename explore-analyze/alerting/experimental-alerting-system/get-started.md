@@ -26,5 +26,5 @@ Once you're comfortable with the basics, use the following pages as your entry p
 - [Notifications and actions](notifications-actions.md) shows you how to connect workflows and action policies so the right people hear about the right problems, at the right time.
 
 :::{important} - How to use the {{alerting-v2-system}} docs
-The docs about the {{alerting-v2-system}} don't always name a specific button or menu. When that's the case, look for the closest matching label in the {{kib}} UI.
+The docs about the {{alerting-v2-system}} don't always name a specific button or menu. When that's the case, look for the closest matching label in the {{kib}} UI. Even if the in-application wording differs slightly, the concepts and behaviors described in the docs still apply.
 :::
