@@ -52,7 +52,7 @@ The coverage page maps detections to [MITRE ATT&CK versions](https://attack.mitr
 | 9.1.10 | [v18.1](https://attack.mitre.org/resources/updates/updates-october-2025/) |
 | 9.2.0-9.2.3 | [v17.1](https://attack.mitre.org/resources/updates/updates-april-2025/) |
 | 9.2.4-9.4.3 | [v18.1](https://attack.mitre.org/resources/updates/updates-october-2025/) |
-| 9.5.0 | [v19](https://attack.mitre.org/resources/updates/updates-april-2026/) |
+| 9.5.0+ | [v19.1](https://attack.mitre.org/resources/updates/updates-april-2026/) |
 
 ::::{note}
 :applies_to: {stack: ga 9.5, serverless: ga}
