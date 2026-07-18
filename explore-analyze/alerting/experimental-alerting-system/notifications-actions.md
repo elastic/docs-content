@@ -35,5 +35,5 @@ From here, you can learn how action policies work and start creating your own.
 - [Examples and common scenarios](action-policies/common-action-policy-scenarios.md): Route by severity, manage escalation, and re-notify for persistently active episodes.
 
 :::{important} - How to use the {{alerting-v2-system}} docs
-The docs about the {{alerting-v2-system}} don't always name a specific button or menu. When that's the case, look for the closest matching label in {{kib}}.
+The docs about the {{alerting-v2-system}} don't always name a specific button or menu. When that's the case, look for the closest matching label in the {{kib}} UI.
 :::

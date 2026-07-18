@@ -67,5 +67,5 @@ From here, you can view, manage, and query alert episode data.
 - [Query {{alerting-v2-system}} alert history in Discover](alerts/query-alerts-and-signals-in-discover.md): Use {{esql}} to query `.rule-events` and `.alert-actions` for exploratory analysis and dashboards.
 
 :::{important} - How to use the {{alerting-v2-system}} docs
-The docs about the {{alerting-v2-system}} don't always name a specific button or menu. When that's the case, look for the closest matching label in {{kib}}.
+The docs about the {{alerting-v2-system}} don't always name a specific button or menu. When that's the case, look for the closest matching label in the {{kib}} UI.
 :::
