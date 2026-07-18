@@ -43,11 +43,11 @@ Close an episode once the underlying problem is fixed, or reopen it if it turns 
 
 ## Override the automatic lifecycle [override-automatic-lifecycle]
 
-Take manual control of an episode's lifecycle state when automatic recovery doesn't match what's actually happening.
+Take manual control of an episode's lifecycle state. 
 
 | Action | Description | When to use | Scope |
 |---|---|---|---|
-| Activate | Manually moves the episode to `active` state without waiting to meet the activation threshold. | A metric drops below the threshold but the underlying problem isn't resolved and you want to keep the episode open. | Episode |
+| Activate | Manually moves the episode to `active` state without waiting to meet the activation threshold. | Another signal already confirms the problem, or the metric recovered but the problem persists. | Episode |
 | Deactivate | Returns a manually activated episode to normal behavior. | You want to restore automatic recovery behavior for a previously activated episode. | Episode |
 
 :::{note}
@@ -67,7 +67,7 @@ Add context to an episode for filtering, routing, or ownership.
 
 ## Investigate the underlying data [investigate-underlying-data]
 
-Jump into Discover to inspect the data behind an episode.
+Go to Discover to inspect the data behind an episode.
 
 | Action | Description | When to use | Scope |
 |---|---|---|---|
