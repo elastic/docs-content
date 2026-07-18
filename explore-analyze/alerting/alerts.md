@@ -23,7 +23,7 @@ To learn about the {{alerting-v2-system}} built on {{esql}}, refer to the [{{ale
 ::::
 
 :::{important}
-In the generally available {{kib}} alerting system, the term *alert* refers to a tracked occurrence of a rule condition. In the {{alerting-v2-system}}, the equivalent concept is called an *alert episode*. The two terms describe similar ideas in different systems and are not interchangeable.
+In the generally available {{kib}} alerting system, the term **alert** refers to a tracked occurrence of a rule condition. In the {{alerting-v2-system}}, the equivalent concept is called an **alert episode**. The two terms describe similar ideas in different systems and are not interchangeable.
 ::::
 
 ## {{rules-ui}} [rules]
