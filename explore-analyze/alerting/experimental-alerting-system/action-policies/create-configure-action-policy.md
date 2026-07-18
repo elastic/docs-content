@@ -64,8 +64,6 @@ Multiple action policies can match the same alert episode, and each runs indepen
 To receive escalation notifications, either create separate action policies scoped to specific severity levels, or use a time-based throttle such as `At most once every 1h` so the action policy re-notifies after the interval regardless of severity or status changes. For examples, refer to [Re-notify for persistently active episodes](re-notification.md).
 :::
 
-<!-- For detailed descriptions, frequency options, and examples for each mode, refer to [Notify per options](action-policy-reference.md#action-policy-notification-grouping). -->
-
 ## Select workflows to invoke [policy-destinations]
 
 Attach one or more [workflows](../../../workflows.md) to define what happens when the action policy matches. If you don't have a workflow ready, you can set up a simple email or Slack notification while creating a rule instead. The system creates and links the workflow for you when you save. You can add or remove these notifications later by editing the action policy. For more complex routing or multi-step automations, build a dedicated workflow first and then attach it.

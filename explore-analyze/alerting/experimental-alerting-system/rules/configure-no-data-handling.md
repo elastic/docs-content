@@ -25,8 +25,6 @@ If `recovery_strategy` is **No recovery** instead, episodes stay open until some
 
 ## No-data strategy options [no-data-strategy-options]
 
-<!-- TODO: Confirm with jasonrhodes before publishing. He indicated (PR elastic/docs-content#7375) that the UI friendly names below are "Keep last status," "Recover," and "Do nothing," but that `emit` may have been removed for M2 and isn't guaranteed to still be a selectable option. Verify the current option list and exact labels before relying on this mapping. -->
-
 Choose one of the following options. Each maps to a `no_data_strategy` value if you're editing YAML directly.
 
 | Option | `no_data_strategy` value | Description |

@@ -57,8 +57,8 @@ These rows only appear when the episode is in the corresponding state. System-ge
 
 Each episode includes a metadata view that surfaces the field values computed or retained by the rule's {{esql}} query. For example, a query using `STATS ... BY` stores aggregated values, not all fields from the underlying events. Use it to inspect rule-specific context such as resource identifiers or computed metrics. You can search by field name or value and toggle off null fields to focus on populated data.
 
-<!-- TODO: Confirm how users access the full source document from here — is it via Open in Discover, direct query of the source index, or is there no direct path? Add guidance once confirmed. -->
+To view the full source documents instead of these computed values, use the **Open in Discover** action. It runs the rule's base query in Discover, aligned with the episode's timeframe. From there, adjust the query for what you want to see. For example, remove the aggregation to return source documents instead of aggregated output. For more information, refer to [Triage alert episodes](triage-alert-episodes.md).
 
 ## Access the response runbook [access-runbook]
 
-If the rule has a runbook URL configured, you can access it directly from the episode to follow documented response procedures.
+If the rule has a runbook attached, you can view it directly from the episode to follow the documented triage steps.
