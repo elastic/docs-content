@@ -50,13 +50,13 @@ Multiple action policies can match the same alert episode, and each runs indepen
 
 | Notify per | What it does | Available Frequency options |
 |---|---|---|
-| Episode | One notification for each alert episode. | - On status change <br> - On status change + repeat at interval <br> - Every evaluation |
+| Episode | One notification for each alert episode. | - On status change <br> - On status change + repeat at interval <br> - At most once every… <br> - Every evaluation |
 | Group | Bundle alert episodes that share a field value. Specify a **Group by** field such as `data.service.name` or `data.host.name`. | - At most once every… <br> - Every evaluation |
 | Digest | One notification for all matching alert episodes combined. | - At most once every… (default) <br> - Every evaluation |
 
 :::
 
-**Frequency** limits how often the action policy fires for a given notification group. The interval resets from the last time the action policy fired, so successive notifications stay at least `interval` apart. Set a duration such as `1h` or `30m`.
+**Frequency** limits how often the action policy fires for a given alert episode or notification group, depending on the **Notify per** setting. The interval resets from the last time the action policy fired, so successive notifications stay at least `interval` apart. Set a duration such as `1h` or `30m`.
 
 :::{note}
 `On status change` only re-notifies when the alert episode's status changes, not when its severity changes. If the action policy already matched an episode and its status stays the same, the throttle blocks re-notification, even if severity later escalates from `low` to `critical`.

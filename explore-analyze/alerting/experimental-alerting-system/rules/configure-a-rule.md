@@ -16,10 +16,10 @@ Rules in the {{alerting-v2-system}} have three required settings and several opt
 | --- | --- | --- |
 | [Rule mode](configure-rule-mode.md) | Can be Signal or Alert. Controls whether matching rows generate signal documents or tracked alert episodes. | Required |
 | [{{esql}} query](configure-rule-query.md) | The detection logic and the parameters available in query expressions. | Required |
-| [Schedule and lookback](configure-rule-schedule.md) | How often the rule evaluates and how far back the query looks. | Required |
+| [Schedule and lookback](configure-rule-schedule.md) | How often the rule evaluates and how far back the query looks. Schedule is required; lookback is optional but strongly recommended. | Strongly reccomended |
 | [Severity](configure-rule-severity.md) | Assign severity levels to alert episodes using a `severity` column in query output. | Optional |
 | [Grouping](configure-rule-grouping.md) | Track multiple subjects (hosts, services, users) as independent alert series in one rule. | Optional |
 | [Alert delay](configure-rule-alert-delay.md) | Reduce noise with delay modes for opening alert episodes. Alert mode only. | Optional |
 | [Recovery condition](configure-rule-recovery.md) | Whether an alert episode closes automatically, and how much confirmation it needs before it does. Alert mode only. | Optional |
-| [No-data handling](configure-no-data-handling.md) | What the rule records when the base query returns no results. | Optional |
+| [No-data handling](configure-no-data-handling.md) | What the rule records when the base query returns no results. Alert mode only. | Optional |
 | [Tags and runbooks](configure-rule-tags.md) | Free-form labels and investigation guides attached to the rule. Alert mode only. | Optional |

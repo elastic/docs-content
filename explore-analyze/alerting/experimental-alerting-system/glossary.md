@@ -29,7 +29,7 @@ These terms appear throughout the {{alerting-v2-system}} docs. If a term is uncl
 :   The query language every rule uses to search your data. To learn more, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql.md).
 
 **Notification**
-:   The message or action delivered when an alert episode matches an action policy and a workflow sends it, such as a Slack message, an email, or a webhook call. To learn more, refer to [How action policies are evaluated](action-policies/about-action-policies.md#how-action-policies-evaluated).
+:   The message or action a workflow sends (such as a Slack message, an email, or a webhook call) when an alert episode matches an action policy or a lifecycle trigger fires. To learn more, refer to [How action policies are evaluated](action-policies/about-action-policies.md#how-action-policies-evaluated).
 
 **Rule**
 :   The definition of what to watch for in your data, how often to check, and what counts as a match. A rule runs on a schedule and produces signals (Signal mode) or tracks alert episodes (Alert mode). To learn more, refer to [Rules](rules.md).
@@ -47,4 +47,4 @@ These terms appear throughout the {{alerting-v2-system}} docs. If a term is uncl
 :   The condition a rule uses to decide when something is worth alerting on, including how many times the condition must be met before an alert episode opens or closes. To learn more, refer to [Alert delay](rules/configure-rule-alert-delay.md) and [Recovery condition](rules/configure-rule-recovery.md).
 
 **Workflow**
-:   The automation that sends a message or runs an action when an action policy decides a notification should go out, such as posting to Slack, sending an email, or calling a webhook. To learn more, refer to [Connect workflows](workflows-alerting.md).
+:   The automation that sends a message or runs an action (such as posting to Slack, sending an email, or calling a webhook) when an action policy or an alert episode lifecycle trigger invokes it. To learn more, refer to [Connect workflows](workflows-alerting.md).

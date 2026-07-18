@@ -10,7 +10,7 @@ description: "How the execution interval and lookback window control when a rule
 
 # Schedule and lookback in the {{alerting-v2-system}} [schedule-lookback]
 
-Schedule and lookback are required settings for rules in the {{alerting-v2-system}}. They control how often a rule runs and how far back it looks when evaluating data. This page describes both fields, lists the accepted values and bounds, and includes guidance on choosing appropriate values for different monitoring scenarios.
+Schedule is a required setting for rules in the {{alerting-v2-system}}, and lookback is optional but strongly recommended. Together they control how often a rule runs and how far back it looks when evaluating data. This page describes both fields, lists the accepted values and bounds, and includes guidance on choosing appropriate values for different monitoring scenarios.
 
 Both fields accept duration strings such as `30s`, `5m`, `2h`, or `7d`. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
 
@@ -20,7 +20,7 @@ The execution interval (`schedule.every`) determines how frequently the rule eva
 
 ## Lookback window [schedule-lookback-window]
 
-The lookback window (`schedule.lookback`) determines the time range that the {{esql}} query covers. The minimum is `5s` and the maximum is `365d`.
+The lookback window (`schedule.lookback`) is optional and determines the time range that the {{esql}} query covers. The minimum is `5s` and the maximum is `365d`. If you omit it, the query runs without a time bound, so leaving it unset is rarely what you want outside of quick testing.
 
 If the lookback is shorter than the execution interval, evaluations can miss data between runs. Use a lookback at least as long as the execution interval unless you deliberately want a shorter window.
 

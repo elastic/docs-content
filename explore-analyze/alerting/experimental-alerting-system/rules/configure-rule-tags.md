@@ -47,7 +47,7 @@ On-call engineers can then narrow the **Alerts** page to rules their team owns w
 
 ### Add a runbook with triage steps
 
-A runbook gives responders immediate context when an alert fires. Write it as plain text in the rule's description field. Include enough detail that an engineer unfamiliar with the service can triage without asking for help.
+A runbook gives responders immediate context when an alert fires. Write it as markdown so it renders correctly in the rule detail view. Include enough detail that an engineer unfamiliar with the service can triage without asking for help.
 
 ```
 Fires when checkout error rate exceeds 10% for 3 consecutive evaluations.

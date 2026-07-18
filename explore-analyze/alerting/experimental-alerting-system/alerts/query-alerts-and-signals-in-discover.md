@@ -35,17 +35,19 @@ Each rule evaluation produces one document in `.rule-events`. {{kib}} never over
 
 ### Reconstruct the lifecycle of a specific episode [replay-episode]
 
-Use the `group_hash` to pull all evaluations for one series in chronological order. This shows exactly how the episode moved through its lifecycle states from open to close.
+Use the episode's `episode.id` to pull all of its evaluations in chronological order. This shows exactly how that one episode moved through its lifecycle states from open to close, without mixing in other episodes from the same series.
 
 ```esql
 FROM .rule-events
-// Scope to a single series by its group_hash
-| WHERE group_hash == "<hash>"
+// Scope to a single episode by its ID
+| WHERE episode.id == "<episode-id>"
 // Sort oldest-first to read the progression forward in time
 | SORT @timestamp ASC
 // Keep the fields most relevant to reading the lifecycle sequence
 | KEEP @timestamp, status, episode.id, episode.status, episode.status_count
 ```
+
+To pull evaluations across every episode in a series instead, filter by `group_hash` in place of `episode.id`.
 
 ### Find all currently active episodes [find-active-episodes]
 
@@ -126,12 +128,12 @@ FROM .alert-actions
 
 ### Audit dispatcher outcomes for a rule [audit-dispatcher-outcomes]
 
-Returns all system-written actions for a rule, covering episodes the dispatcher opened, suppressed due to throttling, or didn't match to any action policy.
+Returns all dispatcher decisions for a rule, covering episodes that were notified, suppressed due to throttling, or didn't match to any action policy.
 
 ```esql
 FROM .alert-actions
-// Filter to one rule and only the three system-written dispatcher action types
-| WHERE rule_id == "my-rule-id" AND action_type IN ("fire", "suppress", "unmatched")
+// Filter to one rule and only the three dispatcher outcome action types
+| WHERE rule_id == "my-rule-id" AND action_type IN ("notified", "suppress", "unmatched")
 | SORT @timestamp DESC
 ```
 

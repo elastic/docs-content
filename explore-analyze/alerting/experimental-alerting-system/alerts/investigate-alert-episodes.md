@@ -48,7 +48,7 @@ Related episodes from the same rule are grouped to help you answer whether this 
 Each episode tracks who performed the most recent response action of each type, so you can avoid duplicating work or missing a step someone else already handled:
 
 - **Acknowledged by** - The user who most recently acknowledged the episode.
-- **Resolved by** - The user who most recently resolved or deactivated the episode.
+- **Resolved by** - The user who most recently resolved the episode.
 - **Snoozed by** - The user who snoozed the episode, shown together with the **Snoozed until** time.
 
 These rows only appear when the episode is in the corresponding state. System-generated actions display as **System**.
