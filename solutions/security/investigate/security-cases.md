@@ -25,7 +25,8 @@ Beyond the [core case functionality](/explore-analyze/cases.md), {{elastic-sec}}
 * [View case metrics](#cases-view-metrics)
 * [Attach events from Timeline](#cases-add-events)
 * [Add threat intelligence indicators](#cases-indicators)
-* [Link Timelines to preserve investigation context](#cases-timeline)
+* [Attach Timelines to preserve investigation context](#cases-timeline)
+* {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` [Attach entities under investigation](#cases-add-entities)
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/security/case-management
@@ -77,12 +78,34 @@ Attach [threat intelligence indicators](/solutions/security/investigate/indicato
 
 ## Add Timelines [cases-timeline]
 
-Attach [Timelines](/solutions/security/investigate/timeline.md) to cases to preserve your investigation context and share it with your team. When you link a Timeline, other analysts can see the exact queries, filters, and events you examined, making it easier to collaborate, hand off investigations, or document your evidence trail.
+Attach [Timelines](/solutions/security/investigate/timeline.md) to cases to preserve your investigation context and share it with your team. When you attach a Timeline, other analysts can see the exact queries, filters, and events you examined, making it easier to collaborate, hand off investigations, or document your evidence trail.
 
 ::::{tip}
 To insert a Timeline link in the case description, click the Timeline icon {icon}`timeline`.
 ::::
 
+### Attach a Timeline as a structured table [cases-timeline-attachment]
+
+```{applies_to}
+stack: preview 9.5
+serverless: preview
+```
+
+Instead of inserting a link, you can attach a Timeline as a structured, filterable table in its own section on the case's **Attachments** tab. From a Timeline, select **Attach to case**, then **Attach to new case** or **Attach to existing case**. You can also attach a Timeline from the case itself: select **Attach**, then **Timeline**, from the case's **Activity** tab.
+
+## Add entities [cases-add-entities]
+
+```{applies_to}
+stack: preview 9.5
+serverless: preview
+```
+
+Attach a host, user, or service entity to a case to connect it to what's under investigation. From an entity's details flyout, open the **Take action** menu, then select **Add to new case** or **Add to existing case**.
+
+Attached entities appear in their own **Entities** section on the case's **Attachments** tab.
+
 ## Automate case workflows [cases-automate]
 
 Use [Elastic Workflows](/explore-analyze/workflows.md) to create, update, and close cases programmatically as part of a larger SOC automation. The [Triage a security alert into a case](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-triage-with-case.md) workflow shows the end-to-end pattern: open a case when a detection alert fires, attach the alert and observables, isolate the host, and notify the on-call analyst. For the full `cases.*` step reference, refer to [Cases action steps](/explore-analyze/workflows/steps/cases.md).
+
+Detection rules can also create cases directly, without a workflow, using the [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md) rule action.
