@@ -583,12 +583,10 @@ toc:
           - file: security/ai/attack-discovery/attack-discovery.md
             children:
               - file: security/ai/attack-discovery/rbac.md
+              - file: security/ai/attack-discovery/configure-attack-discovery-settings.md
               - file: security/ai/attack-discovery/run-attack-discovery.md
                 children:
-                  - file: security/ai/attack-discovery/manual-runs.md
-                  - file: security/ai/attack-discovery/schedule-discoveries.md
-                  - hidden: security/ai/attack-discovery/embedded-runs.md
-                  - hidden: security/ai/attack-discovery/conversational-runs.md
+                  - file: security/ai/attack-discovery/run-from-ui.md
               - file: security/ai/attack-discovery/triage-attack-discovery-findings.md
               - file: security/ai/attack-discovery/manage-saved-discoveries.md
                 children:

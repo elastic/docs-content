@@ -11,33 +11,23 @@ products:
 
 # Manage saved discoveries [manage-saved-discoveries]
 
-Attack discoveries are automatically saved on the **Attack Discovery** page each time you generate them. Once saved, discoveries remain available for later review, reporting, and tracking over time. This allows you to revisit discoveries to monitor trends, maintain audit trails, and support investigations as your environment evolves.
+Attack discoveries are automatically saved each time they're generated. Once saved, discoveries remain available for later review, reporting, and tracking over time. This allows you to revisit discoveries to monitor trends, maintain audit trails, and support investigations as your environment evolves.
 
-<!-- 9.5 unifies manual and scheduled attacks into the Attacks page (docs-content#6949) and may eventually restrict this legacy view/manage flow to the EASE tier once the Attacks page GA-promotes (item 7 of that issue). That update will be doc'd in a separate PR once item 7 lands — not included here. -->
+Where you manage saved discoveries depends on your version.
 
-## Compare the Attack Discovery and Attacks pages [compare-pages]
+## Choose the right page for your version [choose-page]
 
-Discoveries and attacks can be managed from two different places in {{elastic-sec}}:
+The **Attack Discovery** page is your primary place to generate, save, and triage discoveries.
 
-* [Manage discoveries on the Attack Discovery page](/solutions/security/ai/attack-discovery/manage-discoveries.md), where discoveries are generated and saved.
-* {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` [Use the Attacks page](/solutions/security/ai/attack-discovery/attacks-page.md), a unified triage view that correlates attacks with their alerts.
+::::{note}
+:applies_to: {stack: preview 9.4, serverless: preview}
+If you turn on the [**Enable alerts and attacks alignment**](/solutions/security/get-started/configure-advanced-settings.md#enable-alerts-and-attacks-alignment) setting to display the **Attacks** page, you can split these tasks instead:
 
-Some tasks are available from only one page, and some are available from both. Use the following table to find where to go:
+- Go to **Attack Discovery** to run LLM analysis on demand and create new attack discoveries.
+- Go to **Attacks** for day-to-day triage of all attacks (manual and scheduled), and to manage their investigation lifecycle.
+::::
 
-| Task | Attack Discovery page | Attacks page |
-|---|---|---|
-| Change status | [✓](/solutions/security/ai/attack-discovery/manage-discoveries.md#discovery-status) | [✓](/solutions/security/ai/attack-discovery/attacks-page.md#change-attack-status) |
-| Share a discovery | [✓](/solutions/security/ai/attack-discovery/manage-discoveries.md#share-attack-discoveries) | — |
-| Take bulk actions | [✓](/solutions/security/ai/attack-discovery/manage-discoveries.md#take-bulk-actions) | — |
-| Search and filter | [✓](/solutions/security/ai/attack-discovery/manage-discoveries.md#search-filter-discoveries) | [✓](/solutions/security/ai/attack-discovery/attacks-page.md#attacks-filter-search) |
-| Schedule discovery runs | [✓](/solutions/security/ai/attack-discovery/schedule-discoveries.md) | [✓](/solutions/security/ai/attack-discovery/attacks-page.md#attacks-schedule-discoveries) |
-| View overview visualizations | — | [✓](/solutions/security/ai/attack-discovery/attacks-page.md#attacks-how-it-works) |
-| Assign or unassign | — | [✓](/solutions/security/ai/attack-discovery/attacks-page.md#assign-attacks) |
-| Apply tags | — | [✓](/solutions/security/ai/attack-discovery/attacks-page.md#apply-attack-tags) |
-| Run a workflow | — | [✓](/solutions/security/ai/attack-discovery/attacks-page.md#run-workflow-from-attack) |
-| Add to case | [✓](/solutions/security/ai/attack-discovery/attack-discovery.md#attack-discovery-workflows) | [✓](/solutions/security/ai/attack-discovery/attacks-page.md#attacks-add-to-case) |
-| Investigate in Timeline | [✓](/solutions/security/ai/attack-discovery/attack-discovery.md#attack-discovery-workflows) | [✓](/solutions/security/ai/attack-discovery/attacks-page.md#attacks-investigate-timeline) |
-| View in AI chat | [✓](/solutions/security/ai/attack-discovery/attack-discovery.md#attack-discovery-workflows) | [✓](/solutions/security/ai/attack-discovery/attacks-page.md#attacks-view-in-ai-chat) |
+<!-- In a future release (9.5 and serverless), the Attacks page becomes the only place to triage discoveries, replacing the Attack Discovery page's triage role, per docs-content#6949. Not documented yet per explicit instruction — revisit once shipped and confirmed. -->
 
 ## Next steps [next-steps]
 

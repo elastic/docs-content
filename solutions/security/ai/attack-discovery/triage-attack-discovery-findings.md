@@ -28,8 +28,8 @@ This skill automates the triage workflow described on this page, scoring confide
 
 Before you start, make sure you have the following:
 
-- Attack Discovery is [configured with an LLM connector](/solutions/security/ai/attack-discovery/manual-runs.md#attack-discovery-generate-discoveries).
-- At least one finding has been generated, either [manually](/solutions/security/ai/attack-discovery/manual-runs.md#attack-discovery-generate-discoveries) or through a [schedule](/solutions/security/ai/attack-discovery/schedule-discoveries.md).
+- Attack Discovery is [configured with an LLM connector](/solutions/security/ai/attack-discovery/run-from-ui.md#attack-discovery-generate-discoveries).
+- At least one finding has been generated, either [manually](/solutions/security/ai/attack-discovery/run-from-ui.md#attack-discovery-generate-discoveries) or through a [schedule](/solutions/security/ai/attack-discovery/run-from-ui.md#schedule-discoveries).
 - Your role has the [required privileges](/solutions/security/ai/attack-discovery/rbac.md) to view and modify Attack Discovery alerts.
 
 :::{tip}
@@ -387,7 +387,7 @@ Refer to the [agent-skills README](https://github.com/elastic/agent-skills/blob/
 
 ## Next steps [next-steps]
 
-- [Scheduled runs](/solutions/security/ai/attack-discovery/schedule-discoveries.md) for continuous coverage without manual generation.
+- [Scheduled runs](/solutions/security/ai/attack-discovery/run-from-ui.md#schedule-discoveries) for continuous coverage without manual generation.
 - Set up [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) for richer triage context.
 - Learn about [case management workflows](/solutions/security/investigate/security-cases.md) to standardize how your team tracks confirmed threats.
 - Use [AI Assistant](/solutions/security/ai/ai-assistant.md) for follow-up investigation and deeper analysis of individual findings.

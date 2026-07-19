@@ -1,5 +1,5 @@
 ---
-navigation_title: Role-based access control (RBAC)
+navigation_title: Grant feature access
 applies_to:
   stack: ga
   serverless:
@@ -9,7 +9,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Role-based access control (RBAC) for Attack Discovery [attack-discovery-rbac]
+# Grant access to Attack Discovery [attack-discovery-rbac]
 
 To use Attack Discovery, your role needs specific privileges.
 

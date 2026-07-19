@@ -1,14 +1,51 @@
 ---
-navigation_title: Scheduled runs
+navigation_title: Attack Discovery UI
+description: "Generate Attack Discovery findings manually on demand or automatically on a recurring schedule, directly from the Attack Discovery UI."
 applies_to:
-  stack: ga 9.1
-  serverless: ga
+  stack: ga
+  serverless:
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
 ---
 
-# Scheduled runs [schedule-discoveries]
+# Run Attack Discovery from the UI [run-ad-from-ui]
+
+Before you run Attack Discovery, you can [configure its settings](/solutions/security/ai/attack-discovery/configure-attack-discovery-settings.md) to control which alerts it analyzes.
+
+## Generate discoveries manually [attack-discovery-generate-discoveries]
+
+You’ll need to select an LLM connector before you can analyze alerts. 
+
+To get started:
+
+1. Click the **Attack Discovery** page from {{elastic-sec}}'s navigation menu.
+2. Do one of the following:
+   - {applies_to}`stack: ga 9.1+` Click the settings icon next to the **Run** button, then in the settings menu, select an existing connector from the dropdown menu, or add a new one.
+   - {applies_to}`stack: ga =9.0` Select an existing connector from the dropdown menu, or add a new one.
+
+   :::{admonition} Recommended models
+   While Attack Discovery is compatible with many different models, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) to see which models perform best.
+
+   :::
+
+3. Once you’ve selected a connector, do one of the following to start the analysis:
+   - {applies_to}`stack: ga 9.1+` Click **Save and run**.
+   - {applies_to}`stack: ga =9.0` Click **Generate**.
+   
+It may take from a few seconds up to several minutes to generate discoveries, depending on the number of alerts and the model you selected. Once the analysis is complete, any threats it identifies will appear as discoveries. Click each one’s title to expand or collapse it. Click **Run** at any time to start the Attack Discovery process again with the selected alerts.
+
+::::{important}
+Attack Discovery uses the same data anonymization settings as [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md). To configure which alert fields are sent to the LLM and which of those fields are obfuscated, use the Elastic AI Assistant settings. Consider the privacy policies of third-party LLMs before sending them sensitive data.
+::::
+
+## Schedule runs [schedule-discoveries]
+
+```{applies_to}
+stack: ga 9.1
+serverless: ga
+```
 
 :::{note}
 {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` You can also create and manage schedules from the [Attacks page](/solutions/security/ai/attack-discovery/attacks-page.md). Schedules created on either page appear on both.
@@ -77,4 +114,4 @@ Scheduled discoveries are shown with a **Scheduled Attack discovery** icon ({ico
 
 :::::
 
-<!-- Per item 4 of docs-content-internal#1448, scheduled runs become an "always-on agent" in 9.5, every N-hour run is inspected by the attack-discovery-generator skill (ground-truthing retrieval, cross-skill corroboration, detection-gap closure), and discoveries land in the UI with notifications routed to any existing Alerting Framework connector (Slack, ServiceNow, Jira, PagerDuty, Cases, Email, Webhook). This page is also the linked "Scheduled runs" entry in the run-attack-discovery.md overview. Content deferred to a separate PR, not included here. -->
+<!-- Per item 4 of docs-content-internal#1448, scheduled runs become an "always-on agent" in 9.5, every N-hour run is inspected by the attack-discovery-generator skill (ground-truthing retrieval, cross-skill corroboration, detection-gap closure), and discoveries land in the UI with notifications routed to any existing Alerting Framework connector (Slack, ServiceNow, Jira, PagerDuty, Cases, Email, Webhook). Content deferred to a separate PR, not included here. -->

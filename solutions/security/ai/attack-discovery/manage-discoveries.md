@@ -11,7 +11,7 @@ products:
 
 # Manage discoveries from the Attack Discovery page [manage-discoveries]
 
-This page describes how to change status, share, bulk-act on, and search saved discoveries directly from the **Attack Discovery** page. For a unified, alert-correlated view that also supports triage actions like assignment and tagging, use the [Attacks page](/solutions/security/ai/attack-discovery/attacks-page.md) instead. To compare what each page offers, refer to [Manage saved discoveries](/solutions/security/ai/attack-discovery/manage-saved-discoveries.md#compare-pages).
+This page describes how to change status, share, bulk-act on, and search saved discoveries directly from the **Attack Discovery** page. For a unified, alert-correlated view that also supports triage actions like assignment and tagging, use the [Attacks page](/solutions/security/ai/attack-discovery/attacks-page.md) instead. For guidance on which page to use for your version, refer to [Manage saved discoveries](/solutions/security/ai/attack-discovery/manage-saved-discoveries.md).
 
 ## Change a discovery's status [discovery-status]
 
@@ -54,3 +54,19 @@ You can search and filter saved discoveries to help locate relevant findings.
 * **Connector**: Filter discoveries by connector name. Connectors that are deleted after discoveries have been generated are shown with a **Deleted** tag.
 
 * Time filter: Adjust the time filter to view discoveries generated within a specific timeframe.
+
+## Incorporate discoveries with other workflows [attack-discovery-workflows]
+
+There are several ways you can incorporate discoveries into your {{elastic-sec}} workflows:
+
+* Click an entity’s name to open the entity details flyout and view more details that may be relevant to your investigation.
+* Hover over an entity’s name to either add the entity to Timeline (![Add to timeline icon](/solutions/images/security-icon-add-to-timeline.png "title =20x20")) or copy its field name and value to the clipboard (![Copy to clipboard icon](/solutions/images/security-icon-copy.png "title =20x20")).
+* Click **Take action**, then select **Add to new case** or **Add to existing case** to add a discovery to a [case](/solutions/security/investigate/security-cases.md). This makes it easy to share the information with your team and other stakeholders.
+* Click **Investigate in timeline** to explore the discovery in [Timeline](/solutions/security/investigate/timeline.md).
+* Click **View in AI Assistant** or **Add to chat** to attach the discovery to a conversation. You can then ask follow-up questions about the discovery or associated alerts.
+* **Automate the triage end-to-end** with [Elastic Workflows](/explore-analyze/workflows.md). The [AI-driven alert triage workflow](/explore-analyze/workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md) shows how to invoke an Agent Builder agent on each discovery, open a case populated with the analysis, isolate the affected host, and notify the SOC.
+
+:::{image} /solutions/images/security-add-discovery-to-assistant.gif
+:alt: Attack Discovery view in AI Assistant
+:width: 60%
+:::

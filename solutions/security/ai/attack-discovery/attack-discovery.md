@@ -15,18 +15,18 @@ products:
 
 Attack Discovery leverages large language models (LLMs) to analyze alerts in your environment and identify threats. Each "discovery" represents a potential attack and describes relationships among multiple alerts to tell you which users and hosts are involved, how alerts correspond to the MITRE ATT&CK matrix, and which threat actor might be responsible. This can help make the most of each security analyst’s time, fight alert fatigue, and reduce your mean time to respond.
 
+You can generate discoveries in two ways:
+
+* **Manual runs**: run the analysis on demand, whenever you need it.
+* **Scheduled runs**: define a recurring schedule so discoveries are generated automatically, without needing manual runs.
+
+Both methods run the same underlying analysis pipeline, so the discoveries you get are consistent no matter which one you use.
+
 For a demo, refer to the following video (click to view).
 
 [![Attack Discovery video](https://play.vidyard.com/eT92arEbpRddmSM4JeyzdX.jpg)](https://videos.elastic.co/watch/eT92arEbpRddmSM4JeyzdX?)
 
 <!-- In 9.5, this legacy page displays a callout confirmed via product screenshot: "Attack Discovery is moving to Detections. You can now schedule scans and view promoted attacks from Detections → Attacks. Manual scans are still available only here, on the legacy page. Attack Discovery will move completely to the Detections section in a future release." The page itself is NOT moving in 9.5 — it stays here, demoted to the security nav's "More" menu — so no structural change is needed now, only a note about the callout once its docs treatment is decided. Content deferred to a separate PR. -->
-
-In this section:
-
-* [Role-based access control (RBAC) for Attack Discovery](/solutions/security/ai/attack-discovery/rbac.md)
-* [Run Attack Discovery](/solutions/security/ai/attack-discovery/run-attack-discovery.md)
-* [Triage Attack Discovery findings](/solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md)
-* [Manage saved discoveries](/solutions/security/ai/attack-discovery/manage-saved-discoveries.md)
 
 ## What information does each discovery include? [attack-discovery-what-info]
 
@@ -43,19 +43,3 @@ Each discovery includes the following information describing the potential threa
 :::
 
 <!-- 9.5 adds a v2 attack flyout (Overview tab: AI Summary, Visualizations/Attack Chain accordion, Insights), per docs-content#7296. That update will be added in a separate PR once the flyout is confirmed as shipped UI — not included here. -->
-
-## Incorporate discoveries with other workflows [attack-discovery-workflows]
-
-There are several ways you can incorporate discoveries into your {{elastic-sec}} workflows:
-
-* Click an entity’s name to open the entity details flyout and view more details that may be relevant to your investigation.
-* Hover over an entity’s name to either add the entity to Timeline (![Add to timeline icon](/solutions/images/security-icon-add-to-timeline.png "title =20x20")) or copy its field name and value to the clipboard (![Copy to clipboard icon](/solutions/images/security-icon-copy.png "title =20x20")).
-* Click **Take action**, then select **Add to new case** or **Add to existing case** to add a discovery to a [case](/solutions/security/investigate/security-cases.md). This makes it easy to share the information with your team and other stakeholders.
-* Click **Investigate in timeline** to explore the discovery in [Timeline](/solutions/security/investigate/timeline.md).
-* Click **View in AI Assistant** or **Add to chat** to attach the discovery to a conversation. You can then ask follow-up questions about the discovery or associated alerts.
-* **Automate the triage end-to-end** with [Elastic Workflows](/explore-analyze/workflows.md). The [AI-driven alert triage workflow](/explore-analyze/workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md) shows how to invoke an Agent Builder agent on each discovery, open a case populated with the analysis, isolate the affected host, and notify the SOC.
-
-:::{image} /solutions/images/security-add-discovery-to-assistant.gif
-:alt: Attack Discovery view in AI Assistant
-:width: 60%
-:::

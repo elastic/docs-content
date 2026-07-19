@@ -17,7 +17,7 @@ The **Attacks** page is the triage hub where you view, filter, assign, tag, and 
 - Go to **Attack Discovery** to run LLM analysis on demand and create new attack discoveries.
 - Go to **Attacks** for day-to-day triage of all attacks (manual and scheduled), and to manage their investigation lifecycle.
 
-You can also schedule recurring Attack Discovery runs from either page; schedules created on one page appear on the other. To compare what each page offers, refer to [Manage saved discoveries](/solutions/security/ai/attack-discovery/manage-saved-discoveries.md#compare-pages).
+You can also schedule recurring Attack Discovery runs from either page; schedules created on one page appear on the other. For guidance on which page to use for your version, refer to [Manage saved discoveries](/solutions/security/ai/attack-discovery/manage-saved-discoveries.md).
 
 ## Prerequisites [attacks-prerequisites]
 
@@ -42,7 +42,7 @@ Below the summary section, the Attacks table lists individual attacks. You can e
 
 ## Schedule attack discoveries [attacks-schedule-discoveries]
 
-You can schedule Attack Discovery runs directly from the Attacks page. The scheduling flow is the same as on the Attack Discovery page, and schedules you create on either page appear on both. For step-by-step instructions, refer to [Scheduled runs](/solutions/security/ai/attack-discovery/schedule-discoveries.md).
+You can schedule Attack Discovery runs directly from the Attacks page. The scheduling flow is the same as on the Attack Discovery page, and schedules you create on either page appear on both. For step-by-step instructions, refer to [Scheduled runs](/solutions/security/ai/attack-discovery/run-from-ui.md#schedule-discoveries).
 
 ## Filter and search attacks [attacks-filter-search]
 

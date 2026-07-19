@@ -1032,22 +1032,30 @@ redirects:
   # and triage-attack-discovery-findings.md into a new solutions/security/ai/attack-discovery/ folder,
   # split attack-discovery.md's RBAC, scheduling, and manual-run sections into their own pages,
   # merged attacks-page.md's content into manage-saved-discoveries.md as an "Attacks page" section,
-  # and later split manage-saved-discoveries.md into manage-discoveries.md (Attack Discovery page
-  # tasks) and attacks-page.md (Attacks page tasks), leaving manage-saved-discoveries.md as a hub page.
+  # later split manage-saved-discoveries.md into manage-discoveries.md (Attack Discovery page
+  # tasks) and attacks-page.md (Attacks page tasks), leaving manage-saved-discoveries.md as a hub page,
+  # then moved the "Incorporate discoveries with other workflows" section from
+  # attack-discovery.md into manage-discoveries.md, alongside the rest of the page-management tasks,
+  # and finally merged manual-runs.md and schedule-discoveries.md into a single run-from-ui.md page,
+  # leaving run-attack-discovery.md with one visible child page for now (UI-driven runs).
   'solutions/security/ai/attack-discovery.md':
     to: 'solutions/security/ai/attack-discovery/attack-discovery.md'
     many:
       - to: 'solutions/security/ai/attack-discovery/rbac.md'
         anchors:
           'attack-discovery-rbac': 'attack-discovery-rbac'
-      - to: 'solutions/security/ai/attack-discovery/schedule-discoveries.md'
+      - to: 'solutions/security/ai/attack-discovery/run-from-ui.md'
         anchors:
           'schedule-discoveries': 'schedule-discoveries'
-      - to: 'solutions/security/ai/attack-discovery/manual-runs.md'
-        anchors:
           'attack-discovery-generate-discoveries': 'attack-discovery-generate-discoveries'
   'solutions/security/ai/attacks-page.md':
     to: 'solutions/security/ai/attack-discovery/attacks-page.md'
+  'solutions/security/ai/attack-discovery/attack-discovery.md':
+    to: 'solutions/security/ai/attack-discovery/attack-discovery.md'
+    many:
+      - to: 'solutions/security/ai/attack-discovery/manage-discoveries.md'
+        anchors:
+          'attack-discovery-workflows': 'attack-discovery-workflows'
   'solutions/security/ai/attack-discovery/manage-saved-discoveries.md':
     to: 'solutions/security/ai/attack-discovery/manage-saved-discoveries.md'
     anchors:
