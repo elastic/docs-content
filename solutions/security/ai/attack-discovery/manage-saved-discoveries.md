@@ -13,21 +13,21 @@ products:
 
 Attack discoveries are automatically saved each time they're generated. Once saved, discoveries remain available for later review, reporting, and tracking over time. This allows you to revisit discoveries to monitor trends, maintain audit trails, and support investigations as your environment evolves.
 
-Where you manage saved discoveries depends on your version.
+Which page you use to manage saved discoveries depends on what you're trying to do.
 
-## Choose the right page for your version [choose-page]
+## Choose the right page for your goal [choose-page]
 
 The **Attack Discovery** page is your primary place to generate, save, and triage discoveries.
 
-::::{note}
-:applies_to: {stack: preview 9.4, serverless: preview}
-If you turn on the [**Enable alerts and attacks alignment**](/solutions/security/get-started/configure-advanced-settings.md#enable-alerts-and-attacks-alignment) setting to display the **Attacks** page, you can split these tasks instead:
+If you'd rather split generation and triage into separate flows, you can instead:
 
 - Go to **Attack Discovery** to run LLM analysis on demand and create new attack discoveries.
 - Go to **Attacks** for day-to-day triage of all attacks (manual and scheduled), and to manage their investigation lifecycle.
-::::
 
-<!-- In a future release (9.5 and serverless), the Attacks page becomes the only place to triage discoveries, replacing the Attack Discovery page's triage role, per docs-content#6949. Not documented yet per explicit instruction — revisit once shipped and confirmed. -->
+::::{note}
+:applies_to: {stack: preview 9.4, serverless: preview}
+Splitting split generation and triage into separate flows requires turning on the [**Enable alerts and attacks alignment**](/solutions/security/get-started/configure-advanced-settings.md#enable-alerts-and-attacks-alignment) setting to display the **Attacks** page.
+::::
 
 ## Next steps [next-steps]
 

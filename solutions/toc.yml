@@ -582,16 +582,16 @@ toc:
               - file: security/ai/usecase-knowledge-base-walkthrough.md
           - file: security/ai/attack-discovery/attack-discovery.md
             children:
-              - file: security/ai/attack-discovery/rbac.md
-              - file: security/ai/attack-discovery/configure-attack-discovery-settings.md
+              - file: security/ai/attack-discovery/grant-access.md
               - file: security/ai/attack-discovery/run-attack-discovery.md
                 children:
-                  - file: security/ai/attack-discovery/run-from-ui.md
+                  - file: security/ai/attack-discovery/run-from-attacks-page.md
+                  - file: security/ai/attack-discovery/run-from-attack-discovery-page.md
               - file: security/ai/attack-discovery/triage-attack-discovery-findings.md
               - file: security/ai/attack-discovery/manage-saved-discoveries.md
                 children:
-                  - file: security/ai/attack-discovery/attacks-page.md
-                  - file: security/ai/attack-discovery/manage-discoveries.md
+                  - file: security/ai/attack-discovery/manage-discoveries-from-attacks-page.md
+                  - file: security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md
           - file: security/ai/large-language-model-performance-matrix.md
           - file: security/ai/use-cases.md
             children:

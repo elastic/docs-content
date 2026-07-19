@@ -140,7 +140,7 @@ stack: preview 9.4
 serverless: preview
 ```
 
-Turn on the **Enable alerts and attacks alignment** setting to access the [Attacks page](/solutions/security/ai/attack-discovery/attacks-page.md), which provides a unified interface for triaging and managing attacks alongside their correlated alerts.
+Turn on the **Enable alerts and attacks alignment** setting to access the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), which provides a unified interface for triaging and managing attacks alongside their correlated alerts.
 
 ## Enable asset inventory
 ```{applies_to}

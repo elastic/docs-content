@@ -1,6 +1,6 @@
 ---
-navigation_title: Attack Discovery UI
-description: "Generate Attack Discovery findings manually on demand or automatically on a recurring schedule, directly from the Attack Discovery UI."
+navigation_title: Attack Discovery page
+description: "Generate Attack Discovery findings manually on demand or automatically on a recurring schedule, directly from the Attack Discovery page."
 applies_to:
   stack: ga
   serverless:
@@ -10,9 +10,37 @@ products:
   - id: cloud-serverless
 ---
 
-# Run Attack Discovery from the UI [run-ad-from-ui]
+# Run from the Attack Discovery page [run-from-attack-discovery-page]
 
-Before you run Attack Discovery, you can [configure its settings](/solutions/security/ai/attack-discovery/configure-attack-discovery-settings.md) to control which alerts it analyzes.
+This page describes how to run Attack Discovery directly from the **Attack Discovery** page: configure which alerts get analyzed, trigger an on-demand run, and set up a recurring schedule so discoveries are generated automatically. Use this page when you want to work from the dedicated Attack Discovery experience; if you're triaging attacks from the unified Attacks page instead, you can create and manage schedules there too—refer to [Manage discoveries from the Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
+
+## Set up Attack Discovery [set-up-attack-discovery]
+
+By default, Attack Discovery analyzes up to 100 alerts from the last 24 hours, but you can customize how many and which alerts it analyzes using the settings menu. To open it, click the settings icon next to the **Run** button.
+
+:::{note}
+:applies_to: stack: ga =9.0
+In {{stack}} 9.0.0, the **Run** button is called **Generate**.
+:::
+
+::::{image} /solutions/images/security-attack-discovery-settings.png
+:alt: Attack Discovery's settings menu
+:screenshot:
+:width: 60%
+::::
+
+You can select which alerts Attack Discovery processes by filtering based on a KQL query, the time and date selector, and the **Number of alerts** slider. Note that sending more alerts than your chosen LLM can handle may result in an error. Under **Alert summary** you can view a summary of the selected alerts grouped by various fields, and under **Alerts preview** you can view more details about the selected alerts.
+
+:::{admonition} How to add non-ECS fields to Attack Discovery
+Attack Discovery is designed for use with alerts based on data that complies with ECS, and by default only analyses ECS-compliant fields. However, you can enable Attack Discovery to review additional fields by following these steps:
+
+1.  Select an alert with some of the non-ECS fields you want to analyze, and go to its details flyout. From here, use the **Ask AI Assistant** or **Add to chat** button to open an AI chat.
+2.  At the bottom of the chat window, the alert's information appears. Click **Edit** to open the anonymization window to this alert's fields.
+3.  Search for and select the non-ECS fields you want Attack Discovery to analyze. Set them to **Allowed**.
+4.  Check the `Update presets` box to add the allowed fields to the space's default anonymization settings.
+
+The next time you run Attack Discovery it will be able to analyze the selected fields.
+:::
 
 ## Generate discoveries manually [attack-discovery-generate-discoveries]
 
@@ -48,7 +76,7 @@ serverless: ga
 ```
 
 :::{note}
-{applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` You can also create and manage schedules from the [Attacks page](/solutions/security/ai/attack-discovery/attacks-page.md). Schedules created on either page appear on both.
+{applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` You can also [create and manage schedules from the Attacks page](/solutions/security/ai/attack-discovery/run-from-attacks-page.md). Schedules created on either page appear on both.
 :::
 
 You can define recurring schedules (for example, daily or weekly) to automatically generate attack discoveries without needing manual runs. For example, you can generate discoveries every 24 hours and send a Slack notification to your SecOps channel if discoveries are found. Notifications are sent using configured [connectors](/deploy-manage/manage-connectors.md), such as Slack or email, and you can customize the notification content to tailor alert context to your needs.
@@ -113,5 +141,3 @@ Scheduled discoveries are shown with a **Scheduled Attack discovery** icon ({ico
 ::::
 
 :::::
-
-<!-- Per item 4 of docs-content-internal#1448, scheduled runs become an "always-on agent" in 9.5, every N-hour run is inspected by the attack-discovery-generator skill (ground-truthing retrieval, cross-skill corroboration, detection-gap closure), and discoveries land in the UI with notifications routed to any existing Alerting Framework connector (Slack, ServiceNow, Jira, PagerDuty, Cases, Email, Webhook). Content deferred to a separate PR, not included here. -->

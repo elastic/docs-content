@@ -11,7 +11,7 @@ products:
 
 # Manage discoveries from the Attack Discovery page [manage-discoveries]
 
-This page describes how to change status, share, bulk-act on, and search saved discoveries directly from the **Attack Discovery** page. For a unified, alert-correlated view that also supports triage actions like assignment and tagging, use the [Attacks page](/solutions/security/ai/attack-discovery/attacks-page.md) instead. For guidance on which page to use for your version, refer to [Manage saved discoveries](/solutions/security/ai/attack-discovery/manage-saved-discoveries.md).
+This page describes how to change status, share, bulk-act on, and search saved discoveries directly from the **Attack Discovery** page. For a unified, alert-correlated view that also supports triage actions like assignment and tagging, use the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) instead. For guidance on which page to use for your version, refer to [Manage saved discoveries](/solutions/security/ai/attack-discovery/manage-saved-discoveries.md).
 
 ## Change a discovery's status [discovery-status]
 
@@ -23,7 +23,7 @@ You can set a discovery's status to indicate that it's under active investigatio
 | Acknowledged | Under active investigation |
 | Closed | Resolved |
 
-Attacks on the [Attacks page](/solutions/security/ai/attack-discovery/attacks-page.md) use this same status lifecycle.
+Attacks on the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) use this same status lifecycle.
 
 To change a discovery's status, click **Take action**, then select **Mark as acknowledged** or **Mark as closed**. You can choose to change the status of only the discovery, or of both the discovery and the alerts associated with it.
 

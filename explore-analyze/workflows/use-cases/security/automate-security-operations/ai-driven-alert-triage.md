@@ -379,6 +379,6 @@ steps:
 - [Call {{agent-builder}} agents from Elastic Workflows](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md): How to wire agents into workflow steps.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): Full reference for `cases.*` steps.
 - [Attack Discovery](/solutions/security/ai/attack-discovery/attack-discovery.md): What Attack Discovery produces and how to enable it.
-- [Attacks page](/solutions/security/ai/attack-discovery/attacks-page.md): The unified attacks UI where discoveries surface.
+- [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md): The unified attacks UI where discoveries surface.
 - [Triage Attack Discovery findings](/solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md): The interactive triage flow this workflow automates.
 - [`elastic/workflows` library](https://github.com/elastic/workflows): More agentic and SOC automation examples.
