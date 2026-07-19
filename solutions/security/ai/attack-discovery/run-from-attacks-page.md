@@ -40,7 +40,7 @@ To create a new schedule:
 2. In the **Attack discovery schedule** flyout, select **Create new schedule**.
 3. Enter a name for the new schedule.
 4. Select the LLM connector to use for generating discoveries, or add a new one.
-5. [Configure which alerts to analyze](#attacks-page-set-up).
+5. [Configure which alerts to analyze](#attacks-page-configure-alert-retrieval).
 6. Define the schedule's frequency (for example, every 24 hours).
 7. Optionally, select the [connectors](/deploy-manage/manage-connectors.md) to use for receiving notifications, and define their actions.
 8. Click **Create & enable schedule**.
