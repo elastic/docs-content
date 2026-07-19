@@ -49,6 +49,15 @@ Cases actions provide 27 step types for creating, querying, updating, and managi
 
 Refer to [](/explore-analyze/workflows/steps/cases.md) for the complete 27-step catalog.
 
+## Attack triage
+
+Attack triage actions provide 6 step types (`security.*`) for triaging alerts and attacks in {{elastic-sec}} through explicit, schema-validated parameters instead of the generic `kibana.request` step. Use Attack triage actions to:
+
+* Set alert status and manage alert tags and assignees (`security.setAlertStatus`, `security.setAlertTags`, `security.assignAlert`)
+* Set attack status and manage attack tags and assignees (`security.setAttackStatus`, `security.setAttackTags`, `security.assignAttack`)
+
+Refer to [](/explore-analyze/workflows/steps/attack-triage.md) for more information.
+
 ## Streams
 
 ```{applies_to}

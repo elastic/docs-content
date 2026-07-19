@@ -83,6 +83,12 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`kibana.streams.list`](/explore-analyze/workflows/steps/streams.md#kibana-streams-list) | Streams (tech preview) | List available streams. |
 | [`loop.break`](/explore-analyze/workflows/steps/loop-break.md) | Flow control | Exit the innermost loop. |
 | [`loop.continue`](/explore-analyze/workflows/steps/loop-continue.md) | Flow control | Skip to the next iteration. |
+| [`security.assignAlert`](/explore-analyze/workflows/steps/attack-triage.md#security-assignalert) | Attack triage | Assign or unassign users on one or more alerts. |
+| [`security.assignAttack`](/explore-analyze/workflows/steps/attack-triage.md#security-assignattack) | Attack triage | Assign or unassign users on one or more attacks. |
+| [`security.setAlertStatus`](/explore-analyze/workflows/steps/attack-triage.md#security-setalertstatus) | Attack triage | Set alert status: `open`, `acknowledged`, or `closed`. |
+| [`security.setAlertTags`](/explore-analyze/workflows/steps/attack-triage.md#security-setalerttags) | Attack triage | Add or remove tags on one or more alerts. |
+| [`security.setAttackStatus`](/explore-analyze/workflows/steps/attack-triage.md#security-setattackstatus) | Attack triage | Set attack status: `open`, `acknowledged`, or `closed`. |
+| [`security.setAttackTags`](/explore-analyze/workflows/steps/attack-triage.md#security-setattacktags) | Attack triage | Add or remove tags on one or more attacks. |
 | [`switch`](/explore-analyze/workflows/steps/switch.md) | Flow control | Multi-way dispatch. |
 | [`wait`](/explore-analyze/workflows/steps/wait.md) | Flow control | Pause for a fixed duration. |
 | [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) | Flow control | Pause for human input (human-in-the-loop). |
