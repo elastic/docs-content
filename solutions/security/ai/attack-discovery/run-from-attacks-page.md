@@ -26,6 +26,10 @@ The **Attacks** page requires the same privileges as Attack Discovery. Refer to 
 To access the Attacks page, you must turn on the [**Enable alerts and attacks alignment**](/solutions/security/get-started/configure-advanced-settings.md#enable-alerts-and-attacks-alignment) setting under **Security Solution** in **Advanced Settings**.
 :::
 
+## Configure alert retrieval [attacks-page-configure-alert-retrieval]
+
+When you create a schedule, you can customize which alerts Attack Discovery analyzes using the KQL query bar, time filter, and alerts slider in the **Attack discovery schedule** flyout. Note that sending more alerts than your chosen LLM can handle may result in an error.
+
 ## Schedule runs [attacks-page-schedule-runs]
 
 You can define recurring schedules (for example, daily or weekly) to automatically generate attack discoveries without needing manual runs. For example, you can generate discoveries every 24 hours and send a Slack notification to your SecOps channel if discoveries are found. Notifications are sent using configured [connectors](/deploy-manage/manage-connectors.md), such as Slack or email, and you can customize the notification content to tailor alert context to your needs.
@@ -36,7 +40,7 @@ To create a new schedule:
 2. In the **Attack discovery schedule** flyout, select **Create new schedule**.
 3. Enter a name for the new schedule.
 4. Select the LLM connector to use for generating discoveries, or add a new one.
-5. Use the KQL query bar, time filter, and alerts slider to customize the set of alerts that will be analyzed.
+5. [Configure which alerts to analyze](#attacks-page-set-up).
 6. Define the schedule's frequency (for example, every 24 hours).
 7. Optionally, select the [connectors](/deploy-manage/manage-connectors.md) to use for receiving notifications, and define their actions.
 8. Click **Create & enable schedule**.
