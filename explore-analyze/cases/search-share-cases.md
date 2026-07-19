@@ -33,6 +33,8 @@ Note the following rules for search:
 
 {applies_to}`stack: ga 9.3+` You can also search for alert and event IDs, observable values, case comments, and custom fields (text type only). For example, you can search {{elastic-sec}} for a specific IP address that's been specified as an observable, a colleague's comment, or the ID of an alert that's attached to the case.
 
+{applies_to}`stack: ga 9.5+` You can also search by the values of [case template and field library](manage-case-templates.md) fields, using each field's label rather than its internal name. Number, date, checkbox, and user-selection fields all support search, including numeric and date ranges.
+
 ## Filter cases [filter-cases]
 
 You can filter cases by attributes such as assignees, categories, severity, status, and tags. 

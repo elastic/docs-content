@@ -104,6 +104,31 @@ Users must log in to their deployment at least once before they can be assigned 
 
 ::::
 
+## Give access to manage case templates [give-manage-templates-access]
+
+```{applies_to}
+stack: ga 9.5
+serverless: ga
+```
+
+::::{applies-switch}
+
+:::{applies-item} stack: ga
+
+`All` for the **Cases** feature under the appropriate solution (**Management**, **Security**, or **{{observability}}**), with the **Manage templates** sub-feature privilege enabled.
+
+:::
+
+:::{applies-item} serverless: ga
+
+`All` for the **Cases** feature under the appropriate solution (**Security** or **{{observability}}**), with the **Manage templates** sub-feature privilege enabled.
+
+:::
+
+::::
+
+This is required to create, edit, delete, import, and export [case templates and field library entries](manage-case-templates.md). Users without the **Manage templates** sub-feature privilege can still select and apply enabled templates when creating or updating a case.
+
 ## Give access to add alerts to cases [give-alerts-access] 
 
 ::::{applies-switch} 
