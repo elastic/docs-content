@@ -24,6 +24,7 @@ If you're using {{ecloud}}, this setting only applies to the {{kib}} UI of your 
 2. Select **Language**.
 
    :::{note}
+   :applies_to: self:
    On self-managed deployments of {{kib}}, this option is located on your profile page. To access it, select **Edit profile** from the header's user menu, then find the **Language** section.
    :::
 
