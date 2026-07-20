@@ -94,6 +94,16 @@ You can also use this optional parameter:
 
 * `--force`: Forcefully cancel an in-progress action.
 
+::::{note}
+For {{elastic-defend}}, only the following response actions can be canceled:
+* `execute`
+* `get-file`
+* `memory-dump`
+* `runscript`
+* `scan`
+* `upload`
+::::
+
 Required role or privilege: `cancel` doesn't have its own required role or privilege. To use it, you must have the same role or privilege that's required for the action you're canceling. For example, canceling a `runscript` action requires the **Execute Operations** privilege.
 
 Example: `cancel --action="action-123-456-789" --force --comment="Force-canceling a script that is still running"`
