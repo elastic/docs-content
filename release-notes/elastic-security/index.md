@@ -91,6 +91,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds experimental macOS 27 support to {{elastic-defend}}.
 * Adds collection of additional Windows security events in {{elastic-defend}}: Service Installation (`4697`), Scheduled Task Creation (`4698`), Scheduled Task Updated (`4702`), User Account Created (`4720`), and Vault Credentials Were Read (`5382`).
 * Adds detection of DLL masquerading via potential search order hijacking in {{elastic-defend}} on Windows. `dll.Ext.defense_evasions` is now populated with `DLL Hijack: Masquerading` when a DLL that shares a name with a known Windows system DLL (such as one from System32 or SysWOW64) is loaded from an unexpected directory.
+* Adds persistence of original Windows security audit policies in {{elastic-defend}}, so they can be restored after an unclean shutdown.
 
 
 ### Fixes [elastic-security-9.5.0-fixes]
