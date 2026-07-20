@@ -12,7 +12,7 @@ type: how-to
 
 # Change the interface language in {{kib}}
 
-{{kib}} can display its interface in several languages. From the application header, you can select the language you prefer. The languages available to you depend on what the deployment administrator has enabled.
+{{kib}} can display its interface in several languages. From the application header, you can select the language you prefer.
 
 :::{tip}
 If you're using {{ecloud}}, this setting only applies to the {{kib}} UI of your serverless projects and hosted deployments.
@@ -34,12 +34,9 @@ If you're using {{ecloud}}, this setting only applies to the {{kib}} UI of your 
 
 ## If your language isn't available
 
-The **Display language** menu only lists languages enabled for your deployment.
+By default, {{kib}} offers localized versions for [some languages](kibana://reference/configuration-reference/internationalization-settings.md#built-in-and-custom-locales).
 
-- If the language you want isn't listed, ask an administrator to enable it.
-- If you don't see a **Language** option at all, language selection has been turned off for your deployment.
-
-Administrators configure available languages and the default locale with the settings in [Internationalization settings in {{kib}}](kibana://reference/configuration-reference/internationalization-settings.md). On {{serverless-full}}, Elastic manages these settings.
+{applies_to}`ech:` {applies_to}`ece:` {applies_to}`eck:` {applies_to}`self:` On {{ech}}, {{ece}}, {{eck}}, and self-managed deployments, administrators can enable or disable languages, or turn language selection off, in the [internationalization settings](kibana://reference/configuration-reference/internationalization-settings.md).
 
 ## Related pages
 
