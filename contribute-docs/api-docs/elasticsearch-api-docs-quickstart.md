@@ -78,7 +78,7 @@ Once you're satisfied with your docs changes:
 This is everything that is needed to contribute to the spec, as most validation is performed by CI. 
 If you need to preview the changes locally and check how they'll be displayed in Bump, then a few more steps are needed.
 
-## Preview Bump changes locally
+## Generate a Bump preview
 
 :::::{stepper}
 ::::{step} Format, generate and validate your changes
