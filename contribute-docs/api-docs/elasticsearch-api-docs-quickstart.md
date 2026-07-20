@@ -68,7 +68,7 @@ Run this command to format your changes according to the standard used in the sp
 
 Once you're satisfied with your docs changes:
 1. Create a pull request from a branch on your local clone
-2. Make sure not to include any generated output file in the PR, otherwise the backporting job will likely fail
+2. Do not include generated files in the PR, including files under `output/` and `docs/examples/languageExamples.json`. CI regenerates these files, and committing them can cause backport jobs to fail.
 3. The CI will generate the output and validate your additions
 4. Once approved, merge your changes and ensure they are backported to the appropriate branches
 ::::
