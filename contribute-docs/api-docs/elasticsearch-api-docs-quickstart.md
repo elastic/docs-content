@@ -143,6 +143,7 @@ Run these commands to generate short-lived previews:
 bump preview output/openapi/elasticsearch-openapi-docs-final.json # Preview Elasticsearch API docs
 bump preview output/openapi/elasticsearch-serverless-openapi-docs-final.json # Preview Elasticsearch serverless API docs
 ```
+After generating the previews, make sure files under `output/` and `docs/examples/languageExamples.json` are not included in your pull request. CI regenerates these files.
 ::::
 
 :::::
