@@ -61,7 +61,8 @@ Edit the relevant TypeScript files in the `specification` directory. Use JSDoc c
 ```shell
 make spec-format-fix
 ```
-Run this command to format your changes according to the standard used in the specification. 
+Run this command to format your changes according to the standard used in the specification.
+::::
 
 ::::{step} Open a pull request
 
