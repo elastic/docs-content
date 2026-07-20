@@ -15,18 +15,32 @@ products:
 
 The {{esql}} editor lets you write, run, and manage [{{esql}}](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) queries across {{kib}}. Use it to query and aggregate your data, create visualizations, and set up alerts.
 
-The {{esql}} editor is available in the following areas of {{kib}}:
-
-- [**Discover**](/explore-analyze/discover/try-esql.md): Explore and analyze your data using {{esql}} queries, visualize results, and save your findings to dashboards.
-- [**Dashboards**](/explore-analyze/dashboards.md): Create {{esql}}-powered visualization panels and interactive controls.
-- [**Alerting**](/explore-analyze/alerting/alerts/rule-type-es-query.md): Create alerting rules based on {{esql}} queries.
-- [**{{elastic-sec}} solution**](/solutions/security/esql-for-security.md): Use {{esql}} for threat hunting, detection rules, and investigation workflows.
-
 Find the complete list of supported commands, functions, and operators in the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-esql
 :::
+
+
+## Use {{esql}} across {{kib}} [esql-kibana-areas]
+
+Editor support varies by area. Some areas use the {{esql}} editor described on this page, while others provide a task-specific editor or embed {{esql}} in their own editor.
+
+| Area | What you can do | Editing experience |
+|------|-----------------|--------------------|
+| [Discover](/explore-analyze/discover/try-esql.md) | Explore data, visualize results, and save findings to dashboards | {{esql}} editor |
+| [Dashboards and visualizations](/explore-analyze/visualize/esorql.md) | Create visualization panels and interactive controls | {{esql}} editor |
+| [Alerting](/explore-analyze/alerting/alerts/rule-type-es-query.md) | Create alerting rules based on {{esql}} queries | {{esql}} editor |
+| [{{alerting-v2-system-cap}}](/explore-analyze/alerting/system-overview.md) | Build and preview rules with separate base, alert, and recovery queries | Task-specific editor and YAML editor |
+| [Maps](/explore-analyze/visualize/maps.md) {applies_to}`stack: beta` {applies_to}`serverless: beta` | Create map layers from {{esql}} queries | {{esql}} editor |
+| [Data Visualizer](/explore-analyze/machine-learning/machine-learning-in-kibana.md) | Explore field statistics from query results | {{esql}} editor |
+| [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/tools/esql-tools.md) | Create custom tools that run parameterized queries | Task-specific editor |
+| [Streams](/solutions/observability/streams/streams.md) {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` | Define query streams | Task-specific editor |
+| [Elastic {{observability}} solution](/solutions/observability.md) | Explore [logs](/solutions/observability/logs/discover-logs.md), [traces](/solutions/observability/apm/discover-traces.md), and [metrics](/solutions/observability/infra-and-hosts/discover-metrics.md) | {{esql}} editor |
+| [{{elastic-sec}} solution](/solutions/security/esql-for-security.md) | Hunt threats, create detection rules, and investigate events | {{esql}} editor |
+| [Dev Tools Console](/explore-analyze/query-filter/tools/console.md) | Run queries through the [{{esql}} REST API](elasticsearch://reference/query-languages/esql/esql-rest.md) | Embedded in the Console editor |
+| [Workflows](/explore-analyze/workflows/steps/elasticsearch.md) | Run queries with the `elasticsearch.esql.query` action | Embedded in the YAML editor |
+| [Vega visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Use a query as a visualization data source | Embedded in the specification editor |
 
 
 ## Write queries with the {{esql}} editor [esql-kibana-get-started]
@@ -222,7 +236,7 @@ The proposed fix appears directly below your query, with the original lines and 
 :::
 
 :::{tip}
-:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
 After you run a query in **Discover**, an AI agent can also analyze the results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
 :::
 
