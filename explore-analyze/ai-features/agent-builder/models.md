@@ -117,7 +117,7 @@ This routing is automatic. You do not need to configure anything to benefit from
 
 ### Fast models on Elastic-managed deployments
 
-On {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} runs on Elastic Managed LLMs on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md), so the fast model is preconfigured. No setup is required. Examples of preconfigured fast models include Claude 4.5 Haiku and Gemini 3.0 Flash. The latency improvement is most noticeable on {{serverless-full}}.
+On {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} uses Elastic Managed LLMs on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md) by default, so the fast model is preconfigured. No setup is required. Examples of preconfigured fast models include Claude 4.5 Haiku and Gemini 3.0 Flash. The latency improvement is most noticeable on {{serverless-full}}.
 
 ### Change the fast model
 
