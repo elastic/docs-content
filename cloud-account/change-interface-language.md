@@ -40,6 +40,6 @@ By default, {{kib}} offers localized versions for [some languages](kibana://refe
 
 ## Related pages
 
+- [Internationalization settings in {{kib}}](kibana://reference/configuration-reference/internationalization-settings.md)
 - [Use dark mode in {{kib}}](dark-mode.md)
 - [Use high-contrast mode in {{kib}}](high-contrast.md)
-- [Internationalization settings in {{kib}}](kibana://reference/configuration-reference/internationalization-settings.md)
