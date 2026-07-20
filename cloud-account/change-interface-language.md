@@ -32,10 +32,17 @@ If you're using {{ecloud}}, this setting only applies to the {{kib}} UI of your 
 4. Select **Save changes**.
 5. Refresh the page to apply the selected language.
 
-If you don't see a **Language** option, an administrator has disabled language selection for your deployment.
+## If your language isn't available
+
+The **Display language** menu only lists languages enabled for your deployment.
+
+- If the language you want isn't listed, ask an administrator to enable it.
+- If you don't see a **Language** option at all, language selection has been turned off for your deployment.
+
+Administrators configure available languages and the default locale with the settings in [Internationalization settings in {{kib}}](kibana://reference/configuration-reference/internationalization-settings.md). On {{serverless-full}}, Elastic manages these settings.
 
 ## Related pages
 
 - [Use dark mode in {{kib}}](dark-mode.md)
 - [Use high-contrast mode in {{kib}}](high-contrast.md)
-- [Internationalization settings in {{kib}}](kibana://reference/configuration-reference/internationalization-settings.md): for administrators who configure available languages, defaults, and how {{kib}} resolves language when a user hasn't set a preference
+- [Internationalization settings in {{kib}}](kibana://reference/configuration-reference/internationalization-settings.md)
