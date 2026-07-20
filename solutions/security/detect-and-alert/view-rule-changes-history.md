@@ -27,7 +27,8 @@ The changes history page opens in a split-panel layout, with the **Version histo
 
 The **Version history** panel lists every recorded change for the rule, most recent first. Each entry shows:
 
-* Rule's revision number at that point in time (for example, `R2`), and its Elastic version number if it's a prebuilt rule (for example, `V3`)
+* Rule's revision number at that point in time (for example, `R2`)
+* Elastic version number if it's a prebuilt rule (for example, `V3`)
 * Action taken (for example, created, edited, enabled, disabled, deleted, imported, or restored)
 * Date and time of the change
 * User who made the change
