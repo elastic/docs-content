@@ -274,9 +274,13 @@ $$$reasoning$$$
 Reasoning
 :   The iterative process an agent follows to answer a request: analyzing the input, choosing tools, executing them, and incorporating results into a response. Each iteration is a _reasoning step_. See [](agent-builder-agents.md#how-agents-work).
 
+$$$reasoning-events$$$
+Reasoning events {applies_to}`stack: ga 9.5+`
+:   The inline sequence in Agent Chat that shows an agent's reasoning steps, tool calls, tool responses, and final answer in the order they happen. See [](chat.md#inspect-tool-calls-and-reasoning).
+
 $$$reasoning-panel$$$
-Reasoning panel
-:   The expandable section of the chat reply that shows the underlying reasoning steps, tool calls, and tool responses behind an agent's answer. See [](chat.md#inspect-tool-calls-and-reasoning).
+Reasoning panel {applies_to}`stack: removed 9.5`
+:   The pre-9.5 expandable section of the chat reply that showed the reasoning steps, tool calls, and tool responses behind an agent's answer. In 9.5 and later, Agent Chat uses inline reasoning events instead. See [](chat.md#inspect-tool-calls-and-reasoning).
 
 $$$rest-api$$$
 REST API

@@ -322,7 +322,10 @@ These fields are specific to query logging and common for all query languages.
 - `elasticsearch.querylog.took_millis`: How long (in milliseconds) the request took to complete.
 - `elasticsearch.querylog.timed_out`: Boolean specifying whether the query timed out.
 - `elasticsearch.querylog.query`: The query text (depending on the query language, could be string or JSON).
-- `elasticsearch.querylog.indices`: Array containing the indices that were requested. These may not be fully resolved. May contain wildcards and index expressions, and it is not guaranteed these resolve to any specific index or exist at all. Not supported for `sql` or `esql` queries.
+- `elasticsearch.querylog.indices`: Array containing the indices that were requested. These may not be fully resolved. May contain wildcards and index expressions, and it is not guaranteed these resolve to any specific index or exist at all. Support limitations:
+  - Not supported for `sql` queries.
+  - `esql` queries support: {applies_to}`stack: ga 9.5`
+- `elasticsearch.querylog.params`: Query parameters, if [parameterized query](elasticsearch://reference/query-languages/esql/esql-rest.md#esql-rest-params) was used. Only supported for `sql` and `esql`. Positional parameters are reported under the field name `?`. {applies_to}`stack: ga 9.5`
 - `elasticsearch.querylog.result_count`: The number of results actually returned in the response.
 - `elasticsearch.querylog.is_system`: If system index logging is enabled, indicates whether the request was performed only on system indices.
 - `elasticsearch.querylog.has_aggregations`: For a `dsl` search result, this boolean flag specifies whether the result has a non-empty aggregations section.
@@ -351,8 +354,8 @@ Each query language may also include its own fields, prefixed with `elasticsearc
 
 ### Fields specific to {{esql}}
 
+- `elasticsearch.querylog.esql.filter`: Query [filter](elasticsearch://reference/query-languages/esql/esql-rest.md#esql-rest-filtering), if the query used one. {applies_to}`stack: ga 9.5`
 - `elasticsearch.querylog.esql.profile.*.took`: {{esql}} query profiling metrics, in nanoseconds
-
 
 ## Related pages 
 
