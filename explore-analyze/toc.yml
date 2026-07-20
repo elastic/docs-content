@@ -537,6 +537,8 @@ toc:
       - file: cases/search-share-cases.md
       - file: cases/configure-case-settings.md
       - file: cases/manage-case-templates.md
+        children:
+          - file: cases/yaml-template-schema-reference.md
       - file: cases/cases-as-data.md
   - file: workflows.md
     children:

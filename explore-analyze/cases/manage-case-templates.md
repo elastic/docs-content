@@ -13,12 +13,12 @@ description: Build a reusable field library and YAML-defined templates to standa
 
 # Create and manage case templates [create-manage-case-templates]
 
-Case templates pre-fill case fields such as severity, tags, title, description, and custom fields, so your team can create consistent, complete cases faster. When someone creates a case, they can select a template and use its values as is or override them, and updating or deleting a template later doesn't affect cases already created from it.
+Case templates pre-fill case fields such as severity, tags, title, description, and custom fields, so your team can create consistent, complete cases faster. When someone creates a case, they can select a template and use its values as is or override them. Cases already created from a template aren't affected if you update or delete it.
 
 Managing templates and the field library requires the **Manage templates** sub-feature privilege for **Cases**. Refer to [Control access to cases](control-case-access.md#give-manage-templates-access).
 
 :::{important}
-When you upgrade to 9.5, your existing custom fields and templates are automatically migrated to the new system: custom fields become **global fields** in the field library, and templates are migrated to the new YAML-based format. You don't need to take any action, and you can continue to edit the migrated fields and templates like any others.
+When you upgrade to {{stack}} 9.5, your existing custom fields and templates are automatically migrated to the new system: custom fields become **global fields** in the field library, and templates are migrated to the new YAML-based format. You don't need to take any action, and you can continue to edit the migrated fields and templates like any others.
 :::
 
 ## What's in a template [case-templates-anatomy]
@@ -42,7 +42,7 @@ Templates draw their custom fields from a **field library**, where you define ea
 
 You can define up to 200 fields in the library for each owner. Owners are **{{manage-app}}**, **{{observability}}**, and **Security**.
 
-Each field has one of the following types.
+When you create a field, you choose one of the following types for it.
 
 | Type | Description |
 | --- | --- |
@@ -57,14 +57,26 @@ Each field has one of the following types.
 
 ## Create a field in the library [case-templates-create-field]
 
+You define a field's properties in YAML. For example, the following creates a required text field with a default value:
+
+```yaml
+name: summary
+control: INPUT_TEXT
+type: keyword
+label: Summary
+metadata:
+  default: Default summary text
+validation:
+  required: true
+```
+
 To create a field:
 
 1. From the **Templates** page, select **Field library**, then click **Create field definition**.
-2. Optionally add a description, and turn on **Global field** if the field should apply to every case.
-3. In the YAML editor, define the field's name, label, and type. Add any options the type requires, such as a list of choices, and set validation and display rules if needed. The editor validates your YAML and suggests values as you type. A live preview shows how the field will render, and changes you make in the preview sync back to the YAML.
-4. Click **Save**.
-
-Global fields are added to all new and existing cases immediately. Reusable fields become available to add to a template by referencing the field's name.
+2. (Optional) Add a description.
+3. (Optional) Turn on **Global field** if the field should apply to every case.
+4. In the YAML editor, define the field's name, label, and type. Add any options the type requires, such as a list of choices, and set validation and display rules if needed. The editor validates your YAML and suggests values as you type. A live preview shows how the field will render, and changes you make in the preview sync back to the YAML. Refer to the [YAML schema reference for case templates](yaml-template-schema-reference.md) for the complete list of supported keys, field types, and validation and display options.
+5. Click **Save**. Global fields are added to all new and existing cases immediately. Reusable fields become available to add to a template by referencing the field's name.
 
 ## Create a template [case-templates-create-template]
 
@@ -73,11 +85,28 @@ The template editor has a YAML pane and a preview pane with **Fields** and **Set
 To create a template:
 
 1. From the **Templates** page, click **Create**.
-2. In the YAML editor, define the template's name, description, tags, severity, category, and the fields you want it to pre-fill. Add any fields from your field library by name.
+2. In the YAML editor, define the template's name, description, tags, severity, category, and the fields you want it to pre-fill. Add any fields from your field library by name. Refer to the [YAML schema reference for case templates](yaml-template-schema-reference.md) for every supported key.
 3. Select the **Settings** tab to optionally set a default connector and default case settings (**Sync alert status** and **Auto-extract observables**).
 4. Turn the template on so it's available when creating a case, then click **Save**.
 
 As you edit, the editor validates your YAML and suggests values, and the **Fields** tab shows a live preview of how the template will render on the case creation form. Changes you make in the preview sync back to the YAML.
+
+To add a field from the library instead of redefining it, reference it by name:
+
+```yaml
+fields:
+  - $ref: summary
+```
+
+A reference can also use a different name for that template, or override the field's default value, without changing the original field in the library:
+
+```yaml
+fields:
+  - $ref: summary
+    name: incident_summary
+    metadata:
+      default: A different default for this template
+```
 
 ## Edit, clone, or delete a template [case-templates-manage-template]
 
