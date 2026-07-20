@@ -29,6 +29,7 @@ $$$panels-editors$$$
 |  | [Markdown text](visualize/text-panels.md) | Add context to your dashboard with markdown-based **text** |
 |  | [Image](visualize/image-panels.md) | Personalize your dashboard with custom images |
 |  | [Links](visualize/link-panels.md) | Add links to other dashboards or to external websites |
+|  | [Controls](visualize/dashboard-controls.md) | Add interactive filters (options lists, range sliders, time sliders, and {{esql}} variable controls) so viewers can explore data without writing queries |
 |  | | |
 | Machine Learning and Analytics | [Anomaly swim lane](machine-learning/anomaly-detection/ml-ad-view-results.md) | Display the results from machine learning anomaly detection jobs |
 |  | [Anomaly chart](machine-learning/anomaly-detection/ml-ad-view-results.md) | Display an anomaly chart from the **Anomaly Explorer** |
