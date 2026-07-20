@@ -88,4 +88,4 @@ These details include a graph showing the total number of views during the last 
 
 ![Graph showing the number of views during the last 90 days](/explore-analyze/images/kibana-dashboard-usage-count.png "")
 
-{applies_to}`stack: preview 9.5` For per-user records of dashboard creation, updates, deletion, views, and refreshes, configure [Kibana user activity logging](kibana://reference/user-activity.md#event-fields).
+{applies_to}`stack: preview 9.5` For per-user records of dashboard creation, updates, deletion, views, and refreshes, configure [Kibana user activity logging](kibana://reference/user-activity.md#dashboard-event-fields).
