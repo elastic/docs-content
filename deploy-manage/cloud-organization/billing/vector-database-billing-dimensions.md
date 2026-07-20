@@ -7,93 +7,52 @@ products:
   - id: elasticsearch
 description: >-
   Learn how costs for Elasticsearch Vector Database Serverless projects are
-  calculated across storage, searchable capacity, indexing, and infrastructure.
+  calculated across storage, search, and indexing.
 ---
 
 # {{es}} Vector Database billing dimensions [vector-database-billing]
 
-{{es}} Vector Database projects on {{serverless-full}} use a different billing model from {{es-serverless}} projects. Instead of virtual compute units (VCUs), charges are based on storage, searchable capacity, indexing volume, and project infrastructure time.
+{{es}} Vector Database projects on {{serverless-full}} are priced based on consumption across storage, search, and indexing.
+
+Your monthly bill is calculated based on these components:
+
+* **Storage** — Measured by the total amount of data stored in your project, in GB.
+* **Search** — Measured by the resources allocated to keep your data searchable. Allocation is controlled by your project's [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) setting.
+* **Indexing** — Measured by the volume of data you index into your project over the course of a month, in GB.
+
 
 For current rates, refer to the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless) or the [{{serverless-full}} pricing](https://www.elastic.co/pricing/serverless) pages.
 
 <!-- Fact-check: add a dedicated Vector Database pricing URL when marketing publishes one. -->
 
-## Boosted and unboosted indices [vector-database-billing-boosted-unboosted]
+## Storage [vector-database-billing-storage]
 
-Indices in a Vector Database project can be **boosted** or **unboosted**. These states describe searchability only:
+You are charged per GB of data stored in the project. Storage charges apply for as long as the data remains in the project.
 
-| Index state | Meaning |
-| --- | --- |
-| **Boosted** | The index is searchable. |
-| **Unboosted** | The index is not searchable. |
+## Search [vector-database-billing-search]
 
-Do not treat boosted vs unboosted as billing tiers. Storage charges still apply to durable data in either state. How the invoice **Boosted** line item is calculated in the initial release is covered under [Boosted (searchable capacity)](#vector-database-billing-boosted).
+Search charges cover the resources used to keep your data searchable. All stored data is boosted by default, which means it is searchable and contributes to Search charges.
 
-::::{warning}
-* **Unboosted indices are not searchable.**
-* **In the initial release, billing is still computed as if all data is boosted.** Changing an index to unboosted does not reduce the Boosted line item. There is no archive or unboosted discount yet.
-::::
+[Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) controls how many baseline resources are kept ready for your data and the maximum resources the system can allocate under search load. Increasing Search Power improves query performance and increases search charges. Decreasing Search Power reduces provisioned resources and cost, with more variable query latency under load.
 
-## Billing dimensions [vector-database-billing-dimensions]
+## Indexing [vector-database-billing-indexing]
 
-Your invoice includes these line items:
+Indexing charges are based on the volume of data written to your project, measured in GB for the billing period. This uses the same definition of billable indexing bytes as other {{serverless-short}} offerings.
 
-| Line item | What you pay for | How it is measured |
-| --- | --- | --- |
-| **Storage** | Durable data stored in the project | GB-month of stored data |
-| **Boosted** | Searchable capacity for your data | GB-month of boosted data, multiplied by Search Power |
-| **Indexing** | Write volume into the project | GB of billable indexing over the billing period |
-| **Infrastructure** | Keeping the project available | Hours the project is running |
+## Managing Vector Database costs [vector-database-billing-managing-costs]
 
-### Storage [vector-database-billing-storage]
+Vector Database costs follow your storage footprint, search resource allocation, and indexing volume. To balance performance with spend, adjust the controls described in this section.
 
-**Storage** covers the durable footprint of your indices, measured in GB-month (decimal gigabytes, prorated over time).
+### Search Power setting [vector-database-billing-search-power-setting]
 
-You are charged for data as long as it remains stored in the project, whether or not it is searchable.
+[Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) controls search performance and the resources allocated to boosted data. Increase Search Power when you need more consistent latency and throughput. Decrease it when you want to reduce Search charges and can accept more variable latency.
 
-### Boosted (searchable capacity) [vector-database-billing-boosted]
+### Inactivity API [vector-database-billing-inactivity-api]
 
-The invoice line item named **Boosted** covers the cost of searchable capacity. Charges use GB-month of data priced as boosted, scaled by your project's [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) (SP):
+Boosted versus unboosted is not a customer-facing index setting. All storage is boosted by default. To reduce Search charges for data you do not need to keep searchable, use the Inactivity API.
 
-```text
-Boosted charge ∝ Boosted_GB × (SP_used / 100)
-```
+<!-- Fact-check: link Inactivity API reference when published. Confirm exact API name and behavior (searchability vs billing). -->
 
-Higher Search Power increases searchable performance and increases the Boosted line item. If Search Power changes during the billing period, or if the project autoscales within a configured SP range, Elastic bills using the time-weighted Search Power actually used.
-
-In the initial release, `Boosted_GB` matches total durable storage for pricing. See [Boosted and unboosted indices](#vector-database-billing-boosted-unboosted).
-
-### Indexing [vector-database-billing-indexing]
-
-**Indexing** covers billable write volume into the project, measured in GB for the billing period. This follows the same platform definition of billable indexing bytes used for other {{serverless-short}} offerings.
-
-### Infrastructure [vector-database-billing-infrastructure]
-
-**Infrastructure** is a project availability fee billed by the hour for the time your project is running.
-
-Marketing may describe this as a monthly amount (for example, a full month of continuous availability). On the invoice, that amount is converted to an hourly rate and charged for the hours the project emits a heartbeat. If the project runs for only part of the month, you pay only for those hours.
-
-## How this differs from {{es-serverless}} [vector-database-billing-vs-elasticsearch]
-
-| | {{es}} Vector Database | {{es-serverless}} |
-| --- | --- | --- |
-| Primary model | Storage, boosted capacity, indexing GB, and infrastructure hours | VCUs (search, ingest, ML) plus storage |
-| Search performance lever | Search Power multiplies the Boosted line | Search Power affects Search VCU baseline and scale |
-| Idle project | Infrastructure accrues while the project exists; storage and boosted continue for stored data | Search VCUs keep a reduced baseline while data remains searchable |
-
-For {{es-serverless}} billing details, see [](elasticsearch-billing-dimensions.md).
-
-## Understand your bill [vector-database-billing-explain]
-
-Use this mapping to relate each invoice line item to the underlying meter:
-
-| Invoice line item | Meter | What drives the charge |
-| --- | --- | --- |
-| **Storage** | `Storage_GB` (GB-month) | Durable bytes stored over time for all indices (boosted and unboosted) |
-| **Boosted** | `Boosted_GB` (GB-month) × (`SP_used` / 100) | Data priced as searchable capacity, scaled by the Search Power actually used over time |
-| **Indexing** | `Indexing_GB` (GB) | Billable write volume during the billing period |
-| **Infrastructure** | Hours running | Hours the project is available (heartbeat), at the published hourly infrastructure rate |
-
-In the initial release, `Boosted_GB` equals `Storage_GB` for billing. Search Power changes and autoscaling within an SP range are time-weighted into `SP_used`.
+## Related billing dimensions [vector-database-billing-related]
 
 Shared {{serverless-short}} add-ons such as [data out](serverless-project-billing-dimensions.md#general-serverless-billing-data-out) and [support](serverless-project-billing-dimensions.md#general-serverless-billing-support) may also appear on your bill. See [](serverless-project-billing-dimensions.md).

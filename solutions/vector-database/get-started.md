@@ -45,7 +45,7 @@ After you've created your project, note the {{es}} endpoint and API key from the
 
 When you create a new Vector Database project, the **Set up your Elasticsearch Vector Database** page includes two guided paths you can follow. Each path walks you through ingest and then search examples, with sample scripts you can run in a client of your choosing or run the examples directly in the Console.
 
-Choose one:
+The following setup guides are available in {{kib}}:
 
 | Guide | When to use | What you do |
 | --- | --- | --- |
@@ -91,21 +91,16 @@ To walk through kNN search, follow [kNN search in {{es}}](/solutions/search/vect
 
 For more query options, see [Querying for search](/solutions/search/querying-for-search.md) and the [{{es-serverless}} API documentation]({{es-serverless-apis}}).
 :::::
-
-:::::{step} Tune for your workload
-
-After you have a baseline that returns relevant results:
-
-* Review [vector search](/solutions/search/vector.md) concepts (field types, quantization, similarity)
-* Adjust relevance with [ranking and reranking](/solutions/search/ranking.md)
-* For RAG applications, see [RAG](/solutions/search/rag.md)
-* Review project [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) and [billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md) for latency versus cost
-:::::
 ::::::
 
 ## Next steps
 
-* [Vector search in {{es}}](/solutions/search/vector.md): Concepts, field types, and query options
+After you've learned how to ingest embeddings and return relevant results, dig deeper into how vector search works, improve ranking for your use case, and tune project settings for latency and cost. Review the following: 
+
+* [Vector search in {{es}}](/solutions/search/vector.md): Concepts, field types, quantization, and query options
+* [Ranking and reranking](/solutions/search/ranking.md): Improve relevance after you have a baseline
+* [RAG](/solutions/search/rag.md): Patterns for grounding LLMs on retrieved context
 * [Vector search use cases](/solutions/search/vector/vector-search-use-cases.md): RAG, recommendations, multimodal search, and more
-* [{{es}} Vector Database overview](/solutions/vector-database.md): When to choose this project type
-* [{{es}} solution](/solutions/elasticsearch-solution-project.md): UI tools for broader search application development
+* [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) and [billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md): Balance latency and cost for your project
+* [{{es}} Vector Database overview](/solutions/vector-database.md): When to choose this project type versus the general-purpose {{es}} project
+* [{{es}} solution](/solutions/elasticsearch-solution-project.md): General-purpose project type and search application UI tools

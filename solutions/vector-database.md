@@ -4,25 +4,28 @@ applies_to:
   serverless: preview
 description: >-
   The Elasticsearch Vector Database project type on Elastic Cloud Serverless is
-  built for AI-powered retrieval workloads such as RAG, recommendations, and semantic search.
+  optimized for vector workloads, with vector-tuned defaults, hardware profile,
+  inference access, and pricing. It supports semantic and hybrid search.
 products:
   - id: elasticsearch
   - id: cloud-serverless
 ---
 
-# {{es}} Vector Database project
+# {{es}} Vector Database project overview
 
-The {{es}} Vector Database {{serverless-short}} project type provides optimized defaults for vector search workloads. Use it when you are building AI-powered retrieval, such as a chatbot, RAG pipeline, or recommendation engine, where embeddings and similarity search are central. Typical use cases include RAG, semantic retrieval, recommendations, and hybrid search.
+The {{es}} Vector Database {{serverless-short}} project type is optimized for vector workloads. Compared with the general-purpose [{{es}} project type](/solutions/elasticsearch-solution-project.md), it uses a vector-tuned default configuration, a hardware profile suited to embeddings, streamlined access to {{infer}}, and a pricing model built for vector storage and search.
 
-[Vector search](/solutions/search/vector.md) works the same way as in other {{es}} projects. The difference is that the default configuration of the Vector Database project is tuned for vector-first workloads.
+[Vector search](/solutions/search/vector.md) uses the same query APIs in both project types.
+
+Use it when embeddings and similarity search are central to your application, for example RAG, recommendations, semantic retrieval, or multimodal search. You can run [semantic](/solutions/search/semantic-search.md) and [hybrid](/solutions/search/hybrid-search.md) search in the same project.
 
 ## What you get
 
-The {{es}} Vector Database project type is designed for load-once, query-often vector workloads that your application calls over the API. Compared with a general-purpose {{es-serverless}} project, it prioritizes vector-friendly index defaults suited to embedding storage and similarity search.
+A Vector Database project gives you {{serverless-full}} operations with defaults and project settings aimed at embedding storage, {{infer}}, and similarity or hybrid search.
 
-### Vector index mode by default
+### Vector-optimized defaults and hardware profile
 
-Indices in a Vector Database project use the [`index.mode: vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) vector index mode automatically. It applies storage, indexing, and merge defaults tuned for similarity search on dense vectors, so you get efficient embedding storage and approximate [kNN](/solutions/search/vector/knn.md) search without configuring each setting yourself.
+Indices in a Vector Database project use the [`index.mode: vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) vector index mode automatically. It applies storage, indexing, and merge defaults tuned for similarity search on dense vectors, so you get efficient embedding storage and approximate [kNN](/solutions/search/vector/knn.md) search without configuring each setting yourself. The project hardware profile is also tuned for vector workloads.
 
 :::{tip}
 On other [deployment types](/deploy-manage/deploy.md), you can set the vector index mode explicitly when you create an index.
@@ -34,23 +37,25 @@ The Vector Database project type favors workloads where you ingest and embed dat
 
 <!-- Fact-check: confirm messaging around merge behavior and guidance for high-churn ingest (e.g. logs) before publish. -->
 
+### Access to {{infer}}
+
+Vector Database projects are set up for embedding workflows: generate vectors in {{es}} with managed models (for example through `semantic_text`), or store vectors you create yourself and attach the same model at query time. In-product setup guides walk through both paths.
+
 ### Multi-tenant partitioning with slices
 
 For multi-tenant or multi-customer vector apps, you can use slices to partition an index so each tenant’s vectors are indexed and searched in isolation. Slice mode is opt-in and is not enabled automatically on Vector Database projects.
 
 <!-- Link "slices" to the Partitioning with _slice section on knn.md when that content lands. -->
 
-### Usage-based {{serverless-short}} operations
+### Pricing designed for vector workloads
 
 Similar to other {{serverless-full}} projects, Elastic manages the infrastructure, scaling, and upgrades. You create a project, get an endpoint, and start indexing and querying without sizing nodes for vector RAM yourself.
 
-Billing uses storage, searchable capacity, indexing volume, and infrastructure hours rather than the VCU model used by {{es-serverless}}. See [{{es}} Vector Database billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md).
+Billing uses storage, search, and indexing, rather than the compute-based VCU model used by {{es-serverless}} projects. Refer to [{{es}} Vector Database billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md) for details.
 
 ## When to use this project type
 
-Choose {{es}} Vector Database when you are building retrieval for AI features: a chatbot, RAG pipeline, recommendation engine, or similar workloads where your application consumes results. This provides out of the box vector-tuned defaults.
-
-Choose the [{{es}} project type](/solutions/elasticsearch-solution-project.md) when you are building a search application people interact with directly (a search bar, catalog, or knowledge base), or when you need broader search application tooling in {{kib}} such as [Playground](/solutions/elasticsearch-solution-project/playground.md), [Query Rules UI](/solutions/elasticsearch-solution-project/query-rules-ui.md), or [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md).
+Both the {{es}} Vector Database and the {{es}} project types support [vector search](/solutions/search/vector.md). Choose Vector Database when embeddings and similarity search are central to the workload. Choose the [{{es}} project type](/solutions/elasticsearch-solution-project.md) for general-purpose data storage and search, including mixed lexical, time series, and analytics workloads, or {{kib}} search tooling such as [Playground](/solutions/elasticsearch-solution-project/playground.md), [Query Rules UI](/solutions/elasticsearch-solution-project/query-rules-ui.md), and [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md). You might prefer the {{es}} project type if you are an existing {{es}} or OpenSearch user.
 
 | Use case | Fit | Why |
 | --- | --- | --- |
@@ -59,8 +64,12 @@ Choose the [{{es}} project type](/solutions/elasticsearch-solution-project.md) w
 | [Multimodal search](/solutions/search/vector/vector-search-use-cases.md#multimodal-search) | Strong | Search across images, audio, video, or text with embeddings from a multimodal model |
 | [Duplicate detection, fraud, and anomaly detection](/solutions/search/vector/vector-search-use-cases.md#duplicate-detection-fraud-and-anomaly-detection) | Strong | Compare embeddings to find near-duplicates, suspicious matches, or unusual patterns at scale |
 | [Long-term memory for LLMs](/solutions/search/vector/vector-search-use-cases.md#long-term-memory-for-llms) | Strong | Store facts, chat turns, or summaries so an assistant can retrieve relevant past context |
-| Full-text or keyword search without vectors | Prefer the {{es}} project | The {{es}} project is built for lexical search, filters, and analytics on document-centric data |
-| Log, event, or other time series search | Prefer {{es}} project | Choose the {{es}} project for continuously ingested logs and events, where general-purpose defaults fit write-heavy, frequently updated data |
+| Full-text or keyword search without vectors | Prefer the {{es}} project | General-purpose defaults suit lexical search, filters, and document-centric analytics |
+| Log, event, or other time series search | Prefer the {{es}} project | General-purpose defaults suit write-heavy, frequently updated time series data |
+
+:::{note}
+Vector Database projects use vector index mode only. Time series (tsdb) and LogsDB index modes are not supported; use the {{es}} project type for those workloads. Data streams are supported when their backing indices use vector index mode.
+:::
 
 ## Get started
 
