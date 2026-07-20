@@ -240,18 +240,19 @@ The response panel shows the filtered output. Clear the expression to restore th
 JQ expressions work only with JSON responses. Console supports these JQ operations:
 
 * Field and array access: `.field`, `.["field-name"]`, `.items[0]`, `.items[-1]`, and `.items[1:3]`
-* Iteration and traversal: `.items[]`, optional access such as `.field?`, and recursive descent with `..`
+* Iteration and traversal: `.items[]` for array elements, `.[]` for array elements or object values, optional access such as `.field?`, and recursive descent with `..`
 * Pipelines and filtering: `|` and `select(...)`
 * Comparisons and logic: `==`, `!=`, `<`, `>`, `<=`, `>=`, `and`, `or`, and `not`
 * Value inspection and reshaping: `keys`, `to_entries`, `from_entries`, `[expression]`, and `{key: expression}`
 * String operations: `trim`, `ltrim`, `rtrim`, `startswith("...")`, `endswith("...")`, `ltrimstr("...")`, `rtrimstr("...")`, and `split("...")`
 * Array joining: `join("...")`
 
-For example, use these expressions with a search response:
+For example:
 
 * Return the first search result: `.hits.hits[0]`
 * Return the `_source` object from every search result: `.hits.hits[] | ._source`
 * Return the `_source` objects for search results whose `status` field is `active`: `.hits.hits[] | select(._source.status == "active") | ._source`
+* Return the mappings for every index in a get mapping response: `.[].mappings`
 * List the top-level response fields: `keys`
 
 Select {icon}`question` **Filter expression help** for more examples in Console.
