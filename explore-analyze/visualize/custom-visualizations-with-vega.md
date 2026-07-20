@@ -10,7 +10,9 @@ products:
 
 # Custom visualizations with Vega [vega]
 
-**Vega** and **Vega-Lite** are both grammars for creating custom visualizations. They are recommended for advanced users who are comfortable writing {{es}} queries manually. **Vega-Lite** is a good starting point for users who are new to both grammars, but they are not compatible.
+**Vega** and **Vega-Lite** are grammars for creating custom visualizations. **Vega-Lite** is a good starting point if you are new to both grammars, but they are not compatible.
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When you need to load data from {{es}}, prefer an [{{esql}}](../query-filter/languages/esql-kibana.md) query as the data source. A single readable query replaces nested Query DSL aggregations and format paths, so you spend less time wiring data and more time on the visualization. For the full parameter reference, see [Writing {{esql}} queries in Vega](#vega-esql-queries). Use [Query DSL](#vega-queries) when you need aggregation shapes that {{esql}} does not cover.
 
 **Vega** and **Vega-Lite** panels can display one or more data sources, including {{es}}, Elastic Map Service, URL, or static data, and support [{{kib}} extensions](#reference-for-kibana-extensions) that allow you to embed the panels on your dashboard and add interactive tools.
 
@@ -46,31 +48,100 @@ Both **Vega** and **Vega-Lite** use JSON, but {{kib}} has made this simpler to t
 
 ### Tutorials: Create custom panels [_tutorials_create_custom_panels]
 
-Learn how to connect **Vega-Lite** with {{kib}} filters and {{es}} data, then learn how to create more {{kib}} interaction using **Vega**.
+Learn how to connect **Vega-Lite** with {{kib}} filters and your data, then learn how to create more {{kib}} interaction using **Vega**.
 
-As you edit the specs, work in small steps, and frequently save your work. Small changes can cause unexpected results. To save, click **Save** in the toolbar.
+As you edit the specs, work in small steps, and frequently save your work. Small changes can cause unexpected results. To save, select **Save** in the toolbar.
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Start with the {{esql}} tutorial to build a chart from a single query. If {{esql}} is unavailable, or you need Query DSL aggregations, use the {{es}} search query tutorials that follow.
+
+
+## Tutorial: Create a line chart from an {{esql}} query [vega-tutorial-create-a-line-chart-from-esql]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+Learn how to query your data with {{esql}} from **Vega-Lite** and display the results in a line chart. {{kib}} converts the columnar {{esql}} response into the row-based format that **Vega** expects, so you do not need nested aggregation paths or a `format` property.
+
+#### Before you begin [_vega_esql_tutorial_before_you_begin]
+
+1. [Install the sample web logs data set](/manage-data/ingest/sample-data.md).
+2. Go to **Dashboards**.
+3. On the **Dashboards** page, select **Create dashboard**.
+
+#### Create the visualization [_vega_esql_tutorial_create_the_visualization]
+
+1. Select **Add** in the toolbar.
+2. Select **Vega**.
+
+    A pre-populated line chart displays the total number of documents.
+
+3. Make sure the [time filter](../query-filter/filtering.md) is **Last 7 days**.
+4. Replace the entire **Vega-Lite** spec with the following, then select **Update**:
+
+```json
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Event counts over time",
+  "data": {
+    "url": {
+      "%type%": "esql",
+      "%context%": true,
+      "%timefield%": "@timestamp",
+      "query": "FROM kibana_sample_data_logs | WHERE @timestamp >= ?_tstart AND @timestamp <= ?_tend | STATS doc_count=COUNT() BY key=DATE_TRUNC(2 hour, @timestamp) | SORT key"
+    }
+  },
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "key",
+      "type": "temporal",
+      "axis": {"title": false}
+    },
+    "y": {
+      "field": "doc_count",
+      "type": "quantitative",
+      "axis": {"title": "Document count"}
+    }
+  }
+}
+```
+
+The chart shows event counts over time from `kibana_sample_data_logs`. The `"%type%": "esql"` setting tells {{kib}} to run the query as {{esql}}. `"%context%": true` and `"%timefield%": "@timestamp"` apply the dashboard filters and time range through the `?_tstart` and `?_tend` parameters in the query.
+
+For the full list of {{esql}} `url` parameters, see [Writing {{esql}} queries in Vega](#vega-esql-queries).
+
+To continue with interactive filtering and Query DSL examples, follow the {{es}} search query tutorials below.
+
+
+### Tutorials using {{es}} Query DSL [_tutorials_using_elasticsearch_query_dsl]
+
+The following tutorials use {{es}} Query DSL.
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` If you completed the {{esql}} tutorial, create a new dashboard (or clear the editor) before you continue.
 
 Before starting, add the eCommerce sample data that you’ll use in your spec, then create the dashboard.
 
 1. [Install the eCommerce sample data set](../index.md#gs-get-data-into-kibana).
 2. Go to **Dashboards**.
-3. On the **Dashboards** page, click **Create dashboard**.
+3. On the **Dashboards** page, select **Create dashboard**.
 
 
 #### Open and set up Vega-Lite [_open_and_set_up_vega_lite]
 
 Open **Vega-Lite** and change the time range.
 
-1. On the dashboard, click **Select type**, then select **Custom visualization**.
+1. Select **Add** in the toolbar.
+2. Select **Vega**.
 
     A pre-populated line chart displays the total number of documents.
 
-2. Make sure the [time filter](../query-filter/filtering.md) is **Last 7 days**.
+3. Make sure the [time filter](../query-filter/filtering.md) is **Last 7 days**.
 
 
 ## Tutorial: Create a stacked area chart from an {{es}} search query [vega-tutorial-create-a-stacked-area-chart]
 
-Learn how to query {{es}} from **Vega-Lite**, displaying the results in a stacked area chart.
+Learn how to query {{es}} with Query DSL from **Vega-Lite**, displaying the results in a stacked area chart.
 
 1. In the **Vega-Lite** spec, replace `index: _all` with the following, then click **Update**:
 
@@ -1126,6 +1197,7 @@ Learn more about {{kib}} extension, additional **Vega** resources, and examples.
 
 * Automatic sizing
 * Default theme to match {{kib}}
+* {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Writing {{esql}} queries using the time range and filters from dashboards
 * Writing {{es}} queries using the time range and filters from dashboards
 * {applies_to}`stack: preview` {applies_to}`serverless: preview` Using the Elastic Map Service in Vega maps
 * Additional tooltip styling
@@ -1180,6 +1252,8 @@ Autosize in Vega-Lite has [several limitations](https://vega.github.io/vega-lite
 
 
 ##### Writing {{es}} queries in Vega [vega-queries]
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Prefer [Writing {{esql}} queries in Vega](#vega-esql-queries) when you can use {{esql}}. Use the Query DSL approach in this section when you need aggregation shapes that {{esql}} does not cover, or when {{esql}} is unavailable.
 
 {{kib}} extends the Vega [data](https://vega.github.io/vega/docs/data/) elements with support for direct {{es}} queries specified as `url`.
 
@@ -1328,6 +1402,8 @@ The `"%timefilter%"` can also be used to specify a single min or max value. The 
 stack: ga 9.4
 serverless: ga
 ```
+
+To get started with a worked example, see [Tutorial: Create a line chart from an {{esql}} query](#vega-tutorial-create-a-line-chart-from-esql). For Query DSL instead, see [Writing {{es}} queries in Vega](#vega-queries).
 
 To use an [{{esql}}](../query-filter/languages/esql-kibana.md) query as a data source, set `"%type%"` to `"esql"` in the `url` object and provide your query in the `"query"` parameter. {{esql}} queries work in both **Vega** and **Vega-Lite** visualizations.
 
