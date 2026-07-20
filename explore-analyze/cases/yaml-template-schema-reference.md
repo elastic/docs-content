@@ -113,7 +113,3 @@ Instead of redefining a field inline, a template can reference a field library e
 | `$ref` | string | Name of a field library entry | Required. The library field to reuse. |
 | `name` | string | Any string | Optional local alias for this template. If omitted, the library field's own name is used. |
 | `metadata.default` | Depends on the referenced field's control | Any value valid for that control | Optional. Overrides the referenced field's default value for this template only. |
-
-## Related pages
-
-- [Manage case templates](manage-case-templates.md): Authoring guidance for the field library and template editors.
