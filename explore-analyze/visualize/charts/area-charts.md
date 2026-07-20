@@ -59,7 +59,7 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Use **Stacked** to show contribution to a whole, **Percentage** for normalized representation of values, or **Unstacked** when absolute trends matter more than composition. For a practical use case, check how to [show composition with stacked and 100% stacked areas](#area-stacking).
 
 **Handle gaps and noise**
-:   For sparse data, configure **Missing values** and **Line interpolation** to avoid misleading gaps or sharp edges. Check the [Visualization appearance options](../lens.md#customize-visualization-appearance).
+:   For sparse data, configure **Missing values** and **Line interpolation** to avoid misleading gaps or sharp edges. Refer to [General layout settings](#appearance-options).
 
 **Use color purposefully**
 :   Apply colors to highlight important data or patterns. Avoid using too many colors that might distract from the data. You can also assign [consistent colors to key categories](../lens.md#assign-colors-to-terms).
@@ -197,7 +197,10 @@ When creating or editing a visualization, you can adjust the following settings.
 :::{include} ../../_snippets/area-chart-style-settings.md
 :::
 
-:::{include} ../../_snippets/line-chart-legend-settings.md
+:::{include} ../../_snippets/line-area-missing-values-settings.md
+:::
+
+:::{include} ../../_snippets/xy-chart-legend-settings.md
 :::
 
 
