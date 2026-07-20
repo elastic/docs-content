@@ -440,6 +440,7 @@ Customize your metric chart to display exactly the information you need, formatt
     - **Background chart** or supporting visualization **Type** (depending on your version): Options include:
       - **None**: Show a unified background.    
       - **Line**: Show a light line chart in the background.
+        - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Available for {{esql}}-backed metric charts. Converting a form-based metric that uses the **Line** background chart to {{esql}} preserves it.
       - **Bar**: Show a progress bar that represents the current value of the chart measured against the [Maximum value](#max-value-options) defined for the chart.
     - **Bar orientation**: Options include **Vertical** and **Horizontal**.
     - **Color mode** or **Color by value** (depending on your version): Apply colors to the chart. Choose between **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. By default, the color applies to the chart's background. 
