@@ -113,17 +113,21 @@ This routing is automatic. You do not need to configure anything to benefit from
 
 ### When the fast model is used
 
-{{agent-builder}} uses the fast model for well-scoped tasks that do not need deep reasoning. The main example is {{esql}} query generation, where a natural language request is translated into an {{esql}} query.
+{{agent-builder}} uses the fast model for well-scoped tasks that do not need deep reasoning, such as {{esql}} query generation and conversation title generation.
 
 ### Fast models on Elastic-managed deployments
 
 On {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} runs on Elastic Managed LLMs on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md), so the fast model is preconfigured. No setup is required. Examples of preconfigured fast models include Claude 4.5 Haiku and Gemini 3.0 Flash. The latency improvement is most noticeable on {{serverless-full}}.
 
-<!-- CONFIRM on a 9.5 cluster before merge: is the "Fast models" entry user-visible and editable in Feature settings? If it is internal only, cut the "Change the fast model" subsection below. The names "Feature settings" and "Fast models" come from Kibana source (inference_features.ts), but the UI exposure is unverified. -->
-
 ### Change the fast model
 
-You can assign a specific model to the fast model, the same way you set your default model. On the **Feature settings** page, use the per-feature model configuration to select a model for the **Fast models** capability. Refer to [Change the default model](#change-the-default-model).
+To use a specific model instead of the default fast model, open the **Feature settings** page. In the **Agent Builder** section, turn off **Use recommended defaults** for **Fast models**, then assign the models you want. To find this page, refer to [Change the default model](#change-the-default-model).
+
+:::{image} images/agent-builder-fast-models-feature-settings.png
+:alt: Main models and Fast models cards in the Agent Builder section of the Feature settings page
+:width: 600px
+:screenshot:
+:::
 
 ### Fallback behavior
 
@@ -204,7 +208,11 @@ The following models are known to work well with {{agent-builder}}. These catego
 |---|---|---|---|
 | Extended reasoning | - Gemini 3.1 Pro <br>- Claude 4.6 Opus | Open-ended exploration, multi-step planning, complex analysis, and {{esql}}-heavy dashboard generation | Higher latency and cost. Best for latency-insensitive, batch, async, or dashboard workflows that need fewer corrections. |
 | Balanced performance | - GPT-5.2 <br>- Claude 4.6 Sonnet | General-purpose agents requiring reliable tool orchestration and data retrieval and synthesis | Moderate cost. Suitable for real-time and interactive use. For {{esql}}-heavy dashboard generation, use an extended reasoning model. |
-| High throughput | Gemini 3.0 Flash | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth. Ideal for high-volume workloads with well-defined tasks. |
+| High throughput | - Claude 4.5 Haiku <br>- Gemini 3.0 Flash | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth. Ideal for high-volume workloads with well-defined tasks. |
+
+:::{note}
+{{agent-builder}} automatically routes some low-effort tasks to a high-throughput model. Refer to [Fast model for low-effort tasks](#fast-model).
+:::
 
 :::{tip}
 For agents working with large documents or conversation histories, consider models with extended context windows. For example, Claude 4.6 Sonnet and Gemini 3.1 Pro support up to 1M tokens. Check your model provider's documentation for specific context limits.
