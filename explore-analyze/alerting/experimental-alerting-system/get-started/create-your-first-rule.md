@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "Tutorial for creating an ES|QL rule in Kibana's experimental alerting system. Covers how alert delay controls when an episode opens, how .rule-events records each evaluation, and how default recovery closes an episode automatically when no breach is detected."
+description: "Step-by-step tutorial for creating an ES|QL rule in the experimental alerting system, covering alert delay, .rule-events evaluation history, and default recovery behavior."
 ---
 
 # Create a rule and observe the alert lifecycle [create-first-rule]
@@ -37,7 +37,7 @@ Before you start, make sure you have the following:
   | Task | Required privilege |
   |---|---|
   | Create and manage rules | **Rules: All** (under **Alerting**) |
-  | View and triage alert episodes | **Alerts: Read** (under **Alerting**); also automatically grants {{es}} `read` access to `.rule-events`, no separate index privilege needed |
+  | View and triage alert episodes | **Alerts: All** (under **Alerting**); also automatically grants {{es}} `read` access to `.rule-events` and `.alert-actions` |
   | Review execution history | **Execution history: Read** (under **Alerting**) |
   | Create the tutorial index and load sample data | `create_index` and `write` index privileges on `checkout-service-logs` |
 
@@ -49,7 +49,7 @@ Before creating the rule, set up the index and load the sample data it will quer
 
 ::::{step} Create the index
 
-Run the following in **Dev Tools** to create the index that your rule will query. Unlike data streams, this index requires explicit creation because it uses a custom mapping.
+Run the following in **Dev Tools** to create the index that your rule will query. This index requires explicit creation because it uses a custom mapping.
 
 ```json
 PUT checkout-service-logs
@@ -265,15 +265,15 @@ You'll build a rule that detects when P95 latency for a service exceeds 2 second
 
 :::::{stepper}
 
-::::{step} Open the rule editor
+::::{step} Open the rule form
 
-Go to **Alerting v2 preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the **Rules** page, select the option to create an {{esql}} rule.
+Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules**, create a new rule, then select **Create ES|QL rule** to open the rule authoring flyout.
 
 ::::
 
 ::::{step} Write and test the detection query
 
-1. Paste the following {{esql}} query into the **Query sandbox**. It finds the slowest 5% of requests for each service (P95 latency), labels how severe that is, and keeps only the services where that value is above 2 seconds. You don't need to add a time filter yourself: the sandbox and the rule both apply one automatically based on the date range or schedule you choose.
+1. Paste the following {{esql}} query into the **Query sandbox**. It finds the slowest 5% of requests for each service (P95 latency), labels how severe that is, and keeps only the services where that value is above 2 seconds. You don't need to add a time filter yourself. The sandbox and the rule both apply one automatically based on the date range or schedule you choose.
 
    ```esql
    FROM checkout-service-logs
@@ -302,9 +302,9 @@ Go to **Alerting v2 preview** using the navigation menu or the [global search fi
 
 The query you applied from the sandbox auto-fills **Mode**, **Time field**, and **Group fields**. Set the remaining fields:
 
-- Set **Alert delay** to **Breaches: 2**. The breach must persist across 2 consecutive evaluations before the episode moves to `active`.
-- Set **Schedule** to every `5` minutes.
-- Set **Lookback Window** to the last `45` minutes. This ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial. Unlike the sandbox, this is always a relative range; it can't use an absolute range like **Today**. Go ahead and finish configuring and saving the rule; see **Observe the episode lifecycle** for when the episode will actually appear.
+- **Alert delay**: `Breaches: 2` (The breach must persist across 2 consecutive evaluations before the episode moves to `active`.)
+- **Schedule**: `Every 5 minutes`
+- **Lookback Window**: `Last 45 minutes` (Ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial.)
 
 Select **Next**.
 
@@ -378,13 +378,13 @@ With the rule running, you can watch the full alert lifecycle play out on the **
 
 ::::{step} Open the Alerts page
 
-Open **Alerting v2 preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Alerts** page.
+Open **Alerting V2 preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Alerts** page.
 
 ::::
 
 ::::{step} Find the episode
 
-The episode won't appear until the current UTC time passes 16 minutes past the hour, which is the start of the degraded window. After the first two evaluations following that point (about 10 minutes), you'll see an episode appear and move from `pending` to `active`.
+The degraded window starts at 16 minutes past the hour. Once the current UTC time passes that point, wait for two rule evaluations (about 10 minutes). An episode then appears and moves from `pending` to `active`.
 
 ::::
 
@@ -410,7 +410,7 @@ POST checkout-service-logs/_update_by_query
 }
 ```
 
-This rewrites the degraded documents to a healthy latency value, so the next scheduled run (within 5 minutes) finds the service's P95 latency back under the threshold and moves the episode to `inactive`. Go to the **Alerts** page and open the episode's details again to confirm.
+Wait for the next scheduled run (within 5 minutes), then go to the **Alerts** page and open the episode's details again to confirm it moved to `inactive`.
 
 ::::
 
@@ -424,3 +424,9 @@ By completing this tutorial, you learned:
 - **Severity tiers** - An {{esql}} `CASE()` expression can classify each breach by severity, and those labels are recorded in `.rule-events` and shown on the episode's details page.
 - **Episode lifecycle** - **Alert delay** requires a breach to persist across consecutive evaluations before an episode opens, so transient spikes don't trigger it.
 - **Automatic recovery** - With default recovery, an episode closes as soon as a scheduled run finds the alert condition is no longer met, which is exactly what happened right after rewriting the latency values.
+
+## What to do next with your rule [create-rule-next-steps]
+
+- **Ready to manage the rule you just created?** [View and manage rules](../rules/view-manage-rules.md) shows you how to enable, disable, clone, and bulk-manage rules from the **Rules** page.
+- **Want to explore more configuration options?** [Configure a rule](../rules/configure-a-rule.md) covers grouping, tags, no-data handling, and more.
+- **Ready to notify your team the next time an episode opens?** [Notifications and actions](../notifications-actions.md) shows you how workflows and action policies decide who gets notified, and when.
