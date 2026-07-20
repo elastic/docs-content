@@ -105,7 +105,7 @@ serverless: ga
 * This feature is only available for users and hosts.
 ::::
 
-The **Behavioral anomalies** section surfaces {{ml}} anomalies detected for the entity over the selected time range, mapped to the [MITRE ATT&CK](https://attack.mitre.org) framework. It helps you spot suspicious activity — such as an unusual login from an atypical location — in the context of an attack chain. The section is hidden when no anomalies are found for the entity.
+The **Behavioral anomalies** section surfaces {{ml}} anomalies detected for the entity over the selected time range, mapped to the [MITRE ATT&CK](https://attack.mitre.org) framework. It helps you spot suspicious activity — such as an unusual login from an atypical location — in the context of an attack chain.
 
 The section overview displays:
 
