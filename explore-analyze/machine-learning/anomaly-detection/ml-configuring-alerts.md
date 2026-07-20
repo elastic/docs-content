@@ -67,8 +67,13 @@ anomaly with an `anomaly_score` of 75 or higher triggers the associated action.
 7. (Optional) Turn on **Include interim results** to include results that are created by the anomaly detection job *before* a bucket is finalized. These results might disappear after the bucket is fully processed. Include interim results to get notified earlier about potential anomalies, even if they might be false positives. Don't include interim results if you want to get notified only about anomalies of fully processed buckets.
 
 8. (Optional) Configure **Advanced settings**:
+
+::::{note}
+{applies_to}`stack: ga 9.6`{applies_to}`serverless: ga` When anomaly results include `event.ingested` (the time the result was written to the results index), the rule matches results indexed since the previous run. Each result is evaluated once, which avoids duplicate alerts when the check interval is shorter than the job's bucket span. The time an alert fires is not tied to the anomaly's bucket `timestamp`. The bucket `timestamp` (for example, in `context.timestamp`) indicates when the anomaly occurred; `event.ingested` indicates when the rule first sees the result. For older results that do not include `event.ingested`, the rule continues to use the _Lookback interval_.
+::::
+
    - Configure the _Lookback interval_ to define how far back to query previous anomalies during each condition check. Its value is derived from the bucket span of the job and the query delay of the {{dfeed}} by default. It is not recommended to set the lookback interval lower than the default value, as it might result in missed anomalies.
-   - Configure the _Number of latest buckets_ to specify how many buckets to check to obtain the highest anomaly score found during the _Lookback interval_. The alert is created based on the highest scoring anomaly from the most anomalous bucket.
+   - Configure the _Number of latest buckets_ to specify how many buckets to check to obtain the highest anomaly score among the matched results. The alert is created based on the highest scoring anomaly from the most anomalous bucket.
 
 ::::{tip}
 You can preview how the rule would perform on existing data:
