@@ -168,7 +168,7 @@ In the **Schedule** section of the pack, choose how the pack and its queries run
     2. **Frequency**: How often the queries run.
 
         * **Daily**: Run every day at the start time.
-        * **Custom**: Run on specific days of the week. Select the days to run on, and use **Repeat every** to run every *N* weeks.
+        * **Custom**: Run at a custom interval. In **Repeat every**, enter a number and select a unit of **Week(s)**, **Month(s)**, or **Year(s)**. If you select **Week(s)**, also select the specific days of the week to run on. For **Month(s)** or **Year(s)**, queries run on the same calendar date as the start date.
 
     3. **Stop after** (optional): Turn on to set a stop date after which the schedule stops running.
     4. **Splay time** (optional): Randomly delay execution by up to 12 hours to stagger query execution across your {{agents}} and avoid load spikes. Set a splay value and unit (seconds, minutes, or hours). Splay is recommended for deployments with more than approximately 100 {{agents}}—without it, every {{agent}} runs at the same wall-clock moment.
