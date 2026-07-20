@@ -62,7 +62,12 @@ If someone else changes or deletes the rule after the revision you're restoring 
 
 * You can't view or restore changes made before this feature was introduced, or while it was turned off.
 * Rule changes history is read-only. You can't edit or delete version history entries.
+* Capturing rule changes history adds a small amount of overhead when rules are created or updated.
 
 ## Turn off rule changes history [turn-off-rule-changes-history]
 
-Rule changes history is turned on by default. If you want to turn it off, disable the `securitySolution:enableRuleChangesHistory` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#enable-rule-changes-history).
+Rule changes history is turned on by default. If you want to turn it off — for example, to avoid that overhead — disable the `securitySolution:enableRuleChangesHistory` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#enable-rule-changes-history).
+
+::::{note}
+Turning off rule changes history creates a gap in rule revisions. That gap isn't filled when you turn the feature back on later, and changes made while it was off can't be recovered.
+::::
