@@ -76,6 +76,33 @@ In these versions, {{managed-integrations}} are in technical preview and are pro
 
 Documents ingested through {{managed-integrations}} are stored in your project or {{ech}} deployment, the same as data ingested by agent-based integrations.
 
+### What are the `agentless-state-*` indices in my cluster? [managed-integrations-faq-state-indices]
+
+Some {{managed-integrations}} keep track of their own collection progress — for example, the point up to which they've already collected data from a source. {{managed-integrations}} store this progress information in your cluster, in indices whose names start with `agentless-state-`. Elastic creates and updates these indices automatically as part of running the integration.
+
+These indices hold only a small amount of internal tracking information, not the data collected from your source. You don't need to create, size, or manage them yourself.
+
+:::{important}
+Treat `agentless-state-*` indices as managed by Elastic. Don't delete, reindex, or otherwise modify them while the related integration is enabled, because doing so can disrupt data collection.
+:::
+
+:::{dropdown} Can I delete `agentless-state-*` indices?
+:open:
+Avoid deleting an `agentless-state-*` index while its integration is enabled. Deleting one doesn't remove any data the integration has already collected into your cluster, but the integration loses track of where it left off. The next time it runs, it starts collecting from its default starting point, which can re-collect recent data and create duplicate documents.
+:::
+
+:::{dropdown} Do I need to back up or snapshot `agentless-state-*` indices?
+:applies_to: serverless: unavailable
+:open:
+No. {{managed-integrations}} rebuild this state automatically, so `agentless-state-*` indices don't need separate backups. Including them in a [snapshot](/deploy-manage/tools/snapshot-and-restore.md) of your cluster does no harm, but they aren't required to restore your collected data.
+:::
+
+:::{dropdown} Can I apply an {{ilm-cap}} ({{ilm-init}}) policy to `agentless-state-*` indices?
+:applies_to: serverless: unavailable
+:open:
+No. These indices hold current state that's updated in place, not time-based data that ages out. An {{ilm-init}} policy that rolls over or deletes them can interrupt data collection, so leave them unmanaged.
+:::
+
 ### Does my data travel over the public internet? [managed-integrations-faq-public-internet]
 
 Usually not. Data flows from Elastic-managed infrastructure to your cluster over Elastic's internal network. However, if your {{ech}} deployment is in a region that isn't served by {{serverless-full}}, data might traverse the public internet to reach your cluster.
