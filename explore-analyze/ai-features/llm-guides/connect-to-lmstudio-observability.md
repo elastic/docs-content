@@ -128,6 +128,14 @@ To enable other devices on the same network to access the server, go to **Settin
 
 ## Configure the connector in your Elastic deployment [configure-the-connector-in-your-elastic-deployment]
 
+::::{important}
+:applies_to: {"stack": "deprecated 9.5, removed 9.6", "serverless": "removed"}
+The OpenAI connector is deprecated. Existing OpenAI connectors and rule actions that use them continue to work but display deprecation indicators. Follow the guidance that matches your version and deployment type:
+
+- {applies_to}`serverless: removed` {applies_to}`stack: removed 9.6` You cannot create new LLM connectors through the standard connector UI.
+- {applies_to}`stack: deprecated 9.5` For new AI integrations, use {{es}} {{infer}} endpoints instead of LLM connectors. Plan migration of existing LLM connectors and any rule actions that reference them before future removal.
+::::
+
 Finally, configure the connector:
 
 1. Log in to your Elastic deployment.
