@@ -22,6 +22,18 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+## 9.5.0 [elastic-security-9.5.0-breaking-changes]
+
+::::{dropdown} Entity Analytics: Entity Store v1 implementation removed
+Following the move to Entity Store v2 in 9.4, the remaining v1 implementation is fully removed in 9.5. Entity Store v2 (the standalone `entity_store` plugin) is now the only implementation, and its API is generally available. This removes the v1 code, the internal `entityStoreDisabled` feature flag, and any remaining v1 routes that were still registered behind it. For plugin developers, `getEntityStoreDataClient` and `getEntityStoreCrudClient` are removed from the request-handler context.
+
+**Impact**<br> The v1 entity store API surface was already replaced by v2 in 9.4. In 9.5, any remaining code, automations, or plugins still relying on the v1 implementation or its request-context clients will fail.
+
+**Action**<br> Ensure you are using the v2 [Entity store API]({{kib-apis}}group/endpoint-security-entity-store). Plugin developers should stop using the removed request-context clients.
+
+For more information, check [#266410]({{kib-pull}}266410).
+::::
+
 ## 9.4.0 [elastic-security-940-breaking-changes]
 
 ::::{dropdown} Osquery: Scheduled query results no longer populate action_id
