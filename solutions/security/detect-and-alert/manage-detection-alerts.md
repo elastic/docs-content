@@ -121,7 +121,7 @@ Group alerts by up to three fields, such as rule name, host, user, source IP, or
 | Sort fields | Sort by one or more columns |
 | Fields | Add or remove fields (including [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md)) |
 | Full screen | Expand table to full screen |
-| Export to CSV {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Export filtered alerts and visible columns to a CSV file. Requires [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access). <br><br> Clicking the button starts a report generation job for the alerts and columns displayed in the table. A toast notification provides a link to the **Reporting** page, where you can download the CSV file. |
+| Export to CSV {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Export filtered alerts and visible columns to a CSV file. Requires [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access). |
 
 ### View modes
 
