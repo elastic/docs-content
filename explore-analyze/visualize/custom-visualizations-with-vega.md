@@ -10,11 +10,14 @@ products:
 
 # Custom visualizations with Vega [vega]
 
-**Vega** and **Vega-Lite** are grammars for creating custom visualizations. **Vega-Lite** is a good starting point if you are new to both grammars, but they are not compatible.
-
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When you need to load data from {{es}}, prefer an [{{esql}}](../query-filter/languages/esql-kibana.md) query as the data source. A single readable query replaces nested Query DSL aggregations and format paths, so you spend less time wiring data and more time on the visualization. For the full parameter reference, see [Writing {{esql}} queries in Vega](#vega-esql-queries). Use [Query DSL](#vega-queries) when you need aggregation shapes that {{esql}} does not cover.
+**Vega** and **Vega-Lite** are grammars for creating custom visualizations. You write a JSON (or HJSON) specification that defines the data, transforms, and visual marks. **Vega-Lite** is a good starting point if you are new to both grammars, but they are not compatible.
 
 **Vega** and **Vega-Lite** panels can display one or more data sources, including {{es}}, Elastic Map Service, URL, or static data, and support [{{kib}} extensions](#reference-for-kibana-extensions) that allow you to embed the panels on your dashboard and add interactive tools.
+
+To define an {{es}} data source, you can use:
+
+* {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` An [{{esql}}](../query-filter/languages/esql-kibana.md) query (recommended). One query string replaces nested Query DSL aggregations and format paths. See [Writing {{esql}} queries in Vega](#vega-esql-queries).
+* An {{es}} [Query DSL](#vega-queries) search. Use this approach when {{esql}} is unavailable, or when you already have a Query DSL request you want to reuse.
 
 Use **Vega** or **Vega-Lite** when you want to create visualizations with:
 
@@ -1253,7 +1256,7 @@ Autosize in Vega-Lite has [several limitations](https://vega.github.io/vega-lite
 
 ##### Writing {{es}} queries in Vega [vega-queries]
 
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Prefer [Writing {{esql}} queries in Vega](#vega-esql-queries) when you can use {{esql}}. Use the Query DSL approach in this section when you need aggregation shapes that {{esql}} does not cover, or when {{esql}} is unavailable.
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Prefer [Writing {{esql}} queries in Vega](#vega-esql-queries) when you can use {{esql}}. Use the Query DSL approach in this section when {{esql}} is unavailable, or when you already have a Query DSL request you want to reuse.
 
 {{kib}} extends the Vega [data](https://vega.github.io/vega/docs/data/) elements with support for direct {{es}} queries specified as `url`.
 
