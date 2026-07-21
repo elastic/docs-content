@@ -1,54 +1,27 @@
 ---
-navigation_title: Triage and manage attacks
-description: "Triage and manage correlated attack chains alongside individual alerts on the Attacks page, a unified interface for investigating and responding to threats."
+navigation_title: Attacks page
 applies_to:
   stack: preview 9.4
-  serverless:
-    security: preview
+  serverless: preview
 products:
   - id: security
   - id: cloud-serverless
 ---
 
-# Triage and manage attacks [attacks-page]
+# Manage discoveries from the Attacks page [attacks-page]
 
-The **Attacks** page is the triage hub where you view, filter, assign, tag, and act on all attacks in your environment, alongside their correlated alerts. It pairs with the [**Attack Discovery**](/solutions/security/ai/attack-discovery.md) page, which is where you manually generate new discoveries using large language models (LLMs):
-
-- Go to **Attack Discovery** to run LLM analysis on demand and create new attack discoveries.
-- Go to **Attacks** for day-to-day triage of all attacks (manual and scheduled), and to manage their investigation lifecycle.
-
-You can also schedule recurring Attack Discovery runs from either page; schedules created on one page appear on the other.
-
-
-## Prerequisites [attacks-prerequisites]
-
-The **Attacks** page requires the same privileges as Attack Discovery. Refer to [Role-based access control (RBAC) for Attack Discovery](/solutions/security/ai/attack-discovery.md#attack-discovery-rbac) for details.
-
-:::{important}
-To access the Attacks page, you must turn on the [**Enable alerts and attacks alignment**](/solutions/security/get-started/configure-advanced-settings.md#enable-alerts-and-attacks-alignment) setting under **Security Solution** in **Advanced Settings**.
-:::
-
+This page describes how to manage discoveries from the **Attacks** page: view, filter, assign, tag, and act on all attacks in your environment, alongside their correlated alerts. Before you get started, make sure you meet the [prerequisites](/solutions/security/ai/attack-discovery/run-from-attacks-page.md#run-from-attacks-page-prerequisites) for accessing the page.
 
 ## How it works [attacks-how-it-works]
 
-At the top of the **Attacks** page, you can find overview visualizations and tables. The **Summary** tab shows the total number of attacks detected and attack volume over time, while the **Trends**, **Count**, and **Treemap** tabs all describe alerts associated with these attacks. 
-
+At the top of the **Attacks** page, you can find overview visualizations and tables. The **Summary** tab shows the total number of attacks detected and attack volume over time, while the **Trends**, **Count**, and **Treemap** tabs all describe alerts associated with these attacks.
 
 ::::{image} /solutions/images/security-attacks-page-ov.png
 :alt: Overview of the Attacks page showing the Summary tab
 :screenshot:
 ::::
 
-
-## Schedule attack discoveries [attacks-schedule-discoveries]
-
-You can schedule Attack Discovery runs directly from the Attacks page. The scheduling flow is the same as on the Attack Discovery page, and schedules you create on either page appear on both. For step-by-step instructions, refer to [Schedule discoveries](/solutions/security/ai/attack-discovery.md#schedule-discoveries).
-
-
-## Triage attacks [attacks-triage]
-
-The Attacks table appears under the summary section and lists individual attacks. You can expand an attack to view details including which entities were involved and which steps of the attack chain were performed.
-
+Below the summary section, the Attacks table lists individual attacks. You can expand an attack to view details including which entities were involved and which steps of the attack chain were performed.
 
 ## Filter and search attacks [attacks-filter-search]
 
@@ -58,8 +31,8 @@ Use the controls at the top of the Attacks table to narrow results:
 |---------------|-------------|
 | KQL search | Enter queries in the search bar. Autocomplete includes fields from both attacks and alerts. |
 | Date/time picker | Set a specific time range. |
-| Status filter | Filter by **Open**, **Acknowledged**, or **Closed**. |
-| Assignees filter | Click **Filter by assignees** to show only attacks or alerts assigned to specific users. |
+| Status filter | Filter by [status](#change-attack-status): **Open**, **Acknowledged**, or **Closed**. |
+| Assignees filter | Click **Filter by assignees** to show only attacks or alerts [assigned](#assign-attacks) to specific users. |
 | Sort | Use the **Sort by** menu to sort by **Most recent**, **Least recent**, **Most alerts**, or **Least alerts**. |
 
 ### View options [attacks-view-options]
@@ -76,7 +49,7 @@ When **Show attacks only** is disabled, standalone alerts appear in a group labe
 
 ### How filtering works on the Attacks page [attacks-filtering-behavior]
 
-The **Attacks** page uses a single data view that combines both the attacks index and the alerts index. This enables powerful cross-document filtering, but it also means that filters apply to both document types simultaneously. 
+The **Attacks** page uses a single data view that combines both the attacks index and the alerts index. This enables powerful cross-document filtering, but it also means that filters apply to both document types simultaneously.
 
 :::{dropdown} Filtering behavior details
 
@@ -98,13 +71,12 @@ The **Attacks** page uses a single data view that combines both the attacks inde
 
 :::
 
-
 ## Take actions on an attack [attacks-manage]
 
 Access actions from the **Take actions** menu on an attack's row in the Attacks table.
 
 :::{note}
-When you change an attack's status, assign or unassign it, or apply attack tags, a modal appears that lets you apply the action to the attack only, or to both the attack and its linked alerts.
+When you change an attack's status, assign or unassign it, or apply attack tags, a modal appears that lets you apply the action to the attack only, or to both the attack and its associated alerts — the same choice available when [changing a discovery's status](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md#discovery-status).
 :::
 
 | Action | Description |
@@ -119,13 +91,7 @@ When you change an attack's status, assign or unassign it, or apply attack tags,
 
 ### Change attack status [change-attack-status]
 
-Attack statuses track investigation progress:
-
-| Status | Meaning |
-|--------|---------|
-| Open | Needs investigation (default) |
-| Acknowledged | Under active investigation |
-| Closed | Resolved |
+Attacks use the same [status lifecycle as discoveries](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md#discovery-status): **Open** (default), **Acknowledged**, or **Closed**.
 
 To change an attack's status, click **Take actions** on the attack row, then select **Mark as acknowledged** or **Mark as closed**.
 
@@ -173,11 +139,3 @@ To add an attack to a [case](/solutions/security/investigate/security-cases.md),
 ### View in AI Chat [attacks-view-in-ai-chat]
 
 To continue investigating an attack with an [AI agent](/explore-analyze/ai-features/ai-chat-experiences.md), click **Take actions**, then select **View in AI Chat**. You can ask follow-up questions about the attack or its associated alerts.
-
-
-## Next steps [attacks-next-steps]
-
-- [Learn about Attack Discovery](/solutions/security/ai/attack-discovery.md)
-- [Investigate threats with Timeline](/solutions/security/investigate/timeline.md)
-- [Manage security cases](/solutions/security/investigate/security-cases.md)
-- [Automate attack triage with Elastic Workflows](/explore-analyze/workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md)

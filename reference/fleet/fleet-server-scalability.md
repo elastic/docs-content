@@ -66,6 +66,10 @@ stack: ga
 
 The following advanced settings are available to fine tune your {{fleet-server}} deployment.
 
+::::{note}
+You can't configure agent offline detection through these settings. An agent is marked offline after it stops checking in with {{fleet-server}} for 5 minutes. This threshold is fixed and can't be changed.
+::::
+
 `cache`
 :   `num_counters`
 :   Size of the hash table. Best practice is to have this set to 10 times the max connections.
@@ -75,10 +79,10 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 
 `server.timeouts`
 :   `checkin_timestamp`
-:   How often {{fleet-server}} updates the "last activity" field for each agent. Defaults to `30s`. In a large-scale deployment, increasing this setting might improve performance. If this setting is higher than `2m`, most agents will be shown as "offline" in the Fleet UI. For a typical setup, it’s recommended that you set this value to less than `2m`.
+:   How often {{fleet-server}} updates the **Last activity** field for each agent. Defaults to `30s`. In a large-scale deployment, increasing this setting might improve performance. To avoid agents appearing offline in {{fleet}}, keep this value well below 5 minutes.
 
 `checkin_long_poll`
-:   How long {{fleet-server}} allows a long poll request from an agent before timing out. Defaults to `5m`. In a large-scale deployment, increasing this setting might improve performance.
+:   How long {{fleet-server}} allows a long poll request from an agent before timing out. Defaults to `5m`. In a large-scale deployment, increasing this setting might improve performance. This setting controls the connection lifecycle between {{fleet-server}} and agents. It doesn't affect how quickly an agent is marked offline in {{fleet}}.
 
 `server.limits`
 :   `policy_throttle`
@@ -101,7 +105,7 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 :   Burst of check-ins allowed before falling back to the rate defined by `interval`.
 
 `checkin_limit.max_body_byte_size`
-:   Maximum size in bytes of the checkin API request body. Defaults to `1048576` bytes (1 MiB). Deployments running many Synthetics monitors might need to increase this value to avoid check-in failures that cause agents to appear offline or unhealthy in the Fleet UI despite monitors executing successfully. For example:
+:   Maximum size in bytes of the checkin API request body. Defaults to `1048576` bytes (1 MiB). Deployments running many Synthetics monitors might need to increase this value to avoid check-in failures that cause agents to appear offline or unhealthy in {{fleet}} despite monitors executing successfully. For example:
 
     ```yaml
     server:
