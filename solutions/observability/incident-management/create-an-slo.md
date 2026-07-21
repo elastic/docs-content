@@ -192,9 +192,9 @@ serverless: ga
 
 After creating an {{product.apm}} latency or {{product.apm}} availability SLO, you can explore the underlying events directly from the SLO detail page:
 
-* **Open in {{product.apm}} or Discover**: Use the **Open in {{product.apm}}** or **Open in Discover** links to view the SLI events in context. Previously, there was no quick action to navigate from an SLO to its underlying data.
-* **View good and bad events in Discover**: Clicking **View events** in the good vs bad events section opens the trace data in Discover with a toggle to switch between viewing good events and bad events. Previously this link opened a generic Discover view with no way to distinguish between good and bad events.
-* **Service name shown as source**: The `service.name` field is displayed as the **Source** on the SLO detail page, making it easy to identify which service the SLO is tracking at a glance.
+* **Open in {{product.apm}} or Discover**: Use the **In {{product.apm}}** or **Traces in Discover** links to view the SLI events in context. Previously, there was no quick action to navigate from an SLO to its underlying data.
+* **View events in Discover**: Clicking **View events** in the good vs bad events section opens the trace data in Discover with a three-way control (**Good**, **Bad**, **All**) to filter the events. Previously this link opened a generic Discover view with no way to distinguish between good and bad events.
+* **Service fields shown as source**: The `service.name`, `service.environment`, `transaction.type`, and `transaction.name` fields are displayed in the **Source** panel on the SLO detail page, making it easy to identify exactly which service and transaction the SLO is tracking.
 
 
 ### Synthetics availability [synthetics-availability-sli]
