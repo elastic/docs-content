@@ -128,6 +128,40 @@ stringData:
     }
 ```
 
+## {{es}} secure settings hot-reload [k8s-es-secure-settings-hot-reload]
+```{applies_to}
+deployment:
+  eck: ga 3.5
+```
+
+By default, every change to a `spec.secureSettings` source secret triggers a rolling restart of the {{es}} cluster because the keystore init container must re-run to repopulate the keystore. For {{es}} 9.5 and later, ECK supports an opt-in file-based delivery mechanism that eliminates this restart: secrets are written into the {{es}} file-based settings path and {{es}} reloads them in place when the file changes.
+
+To enable file-based delivery, add the following annotation to your {{es}} resource:
+
+```yaml subs=true
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: quickstart
+  annotations:
+    eck.k8s.elastic.co/file-based-secure-settings: "true"
+spec:
+  version: {{version.stack}}
+  nodeSets:
+  - name: default
+    count: 3
+  secureSettings:
+  - secretName: s3-credentials
+```
+
+When the annotation is set and the cluster is running {{es}} 9.5+, ECK delivers all `spec.secureSettings` entries via the `cluster_secrets` field of the file-based settings mechanism instead of the keystore init container. Updating a source secret no longer triggers a pod restart — {{es}} reloads the credentials in place on each node.
+
+::::{important}
+Only use this annotation when **all** entries in `spec.secureSettings` are hot-reloadable settings. Settings that must be present in the keystore at startup — such as OIDC `client_secret`, SAML key passphrases, and `xpack.watcher.encryption_key` — will cause {{es}} to fail to start if the keystore is absent. Typical reloadable settings include S3, GCS, and Azure repository credentials, and remote-cluster API keys.
+
+When the annotation is absent or the cluster is running {{es}} earlier than 9.5, the existing keystore init container path is used unchanged.
+::::
+
 ## {{kib}} secure settings [k8s-kibana-secure-settings]
 
 Similar to {{es}} secure settings, you can use Kubernetes secrets to manage keystore settings for {{kib}}.
