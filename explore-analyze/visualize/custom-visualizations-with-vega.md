@@ -12,24 +12,16 @@ products:
 
 **Vega** and **Vega-Lite** are grammars for creating custom visualizations. You write a JSON (or HJSON) specification that defines the data, transforms, and visual marks. **Vega-Lite** is a good starting point if you are new to both grammars, but they are not compatible.
 
-**Vega** and **Vega-Lite** panels can display one or more data sources, including {{es}}, Elastic Map Service, URL, or static data, and support [{{kib}} extensions](#reference-for-kibana-extensions) that allow you to embed the panels on your dashboard and add interactive tools.
+Add a **Vega** panel on a dashboard to use these grammars with {{kib}} filters, the time range, and other [{{kib}} extensions](#reference-for-kibana-extensions). Panels can also use Elastic Map Service, URL, or static data.
+
+Use **Vega** when you need a chart type or data shape that other editors do not support, for example custom marks, multi-source specs, or aggregations without a {{data-source}}. These grammars do not support tables, and can’t run queries conditionally.
 
 To define an {{es}} data source, you can use:
 
 * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` An [{{esql}}](../query-filter/languages/esql-kibana.md) query (recommended). One query string replaces nested Query DSL aggregations and format paths. See [Writing {{esql}} queries in Vega](#vega-esql-queries).
 * An {{es}} [Query DSL](#vega-queries) search. Use this approach when {{esql}} is unavailable, or when you already have a Query DSL request you want to reuse.
 
-Use **Vega** or **Vega-Lite** when you want to create visualizations with:
-
-* Aggregations that use `nested` or `parent/child` mapping
-* Aggregations without a {{data-source}}
-* Queries that use custom time filters
-* Complex calculations
-* Extracted data from _source instead of aggregations
-* Scatter charts, sankey charts, and custom maps
-* An unsupported visual theme
-
-These grammars have some limitations: they do not support tables, and can’t run queries conditionally.
+Start with the tutorials below.
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-vega
@@ -40,25 +32,13 @@ These grammars have some limitations: they do not support tables, and can’t ru
 :screenshot:
 :::
 
-Both **Vega** and **Vega-Lite** use JSON, but {{kib}} has made this simpler to type by integrating [HJSON](https://hjson.github.io/). HJSON supports the following:
 
-* Optional quotes
-* Double quotes or single quotes
-* Optional commas
-* Comments using // or /* syntax
-* Multiline strings
+## Tutorials [_tutorials_create_custom_panels]
+
+As you edit the specs, work in small steps and save often. Small changes can cause unexpected results. Specs can use [HJSON](https://hjson.github.io/), which allows optional quotes and commas, comments, and multiline strings.
 
 
-### Tutorials: Create custom panels [_tutorials_create_custom_panels]
-
-Learn how to connect **Vega-Lite** with {{kib}} filters and your data, then learn how to create more {{kib}} interaction using **Vega**.
-
-As you edit the specs, work in small steps, and frequently save your work. Small changes can cause unexpected results. To save, select **Save** in the toolbar.
-
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Start with the {{esql}} tutorial to build a chart from a single query. If {{esql}} is unavailable, or you need Query DSL aggregations, use the {{es}} search query tutorials that follow.
-
-
-## Tutorial: Create a line chart from an {{esql}} query [vega-tutorial-create-a-line-chart-from-esql]
+### Create a line chart from an {{esql}} query [vega-tutorial-create-a-line-chart-from-esql]
 ```{applies_to}
 stack: ga 9.4
 serverless: ga
@@ -114,37 +94,27 @@ The chart shows event counts over time from `kibana_sample_data_logs`. The `"%ty
 
 For the full list of {{esql}} `url` parameters, see [Writing {{esql}} queries in Vega](#vega-esql-queries).
 
-To continue with interactive filtering and Query DSL examples, follow the {{es}} search query tutorials below.
+To continue with interactive filtering and Query DSL examples, follow the tutorials below.
 
 
-### Tutorials using {{es}} Query DSL [_tutorials_using_elasticsearch_query_dsl]
+### Create a stacked area chart from an {{es}} search query [vega-tutorial-create-a-stacked-area-chart]
 
-The following tutorials use {{es}} Query DSL.
+Learn how to query {{es}} with Query DSL from **Vega-Lite**, displaying the results in a stacked area chart.
 
 {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` If you completed the {{esql}} tutorial, create a new dashboard (or clear the editor) before you continue.
 
-Before starting, add the eCommerce sample data that you’ll use in your spec, then create the dashboard.
+#### Before you begin [_open_and_set_up_vega_lite]
 
 1. [Install the eCommerce sample data set](../index.md#gs-get-data-into-kibana).
 2. Go to **Dashboards**.
 3. On the **Dashboards** page, select **Create dashboard**.
-
-
-#### Open and set up Vega-Lite [_open_and_set_up_vega_lite]
-
-Open **Vega-Lite** and change the time range.
-
-1. Select **Add** in the toolbar.
-2. Select **Vega**.
+4. Select **Add** in the toolbar, then select **Vega**.
 
     A pre-populated line chart displays the total number of documents.
 
-3. Make sure the [time filter](../query-filter/filtering.md) is **Last 7 days**.
+5. Make sure the [time filter](../query-filter/filtering.md) is **Last 7 days**.
 
-
-## Tutorial: Create a stacked area chart from an {{es}} search query [vega-tutorial-create-a-stacked-area-chart]
-
-Learn how to query {{es}} with Query DSL from **Vega-Lite**, displaying the results in a stacked area chart.
+#### Add the index and time field [_vega_stacked_area_add_index_and_time_field]
 
 1. In the **Vega-Lite** spec, replace `index: _all` with the following, then click **Update**:
 
@@ -608,7 +578,7 @@ The selection is controlled by a signal. To view the signal, click **Inspect** i
 
 
 
-## Tutorial: Update {{kib}} filters from Vega [vega-tutorial-update-kibana-filters-from-vega]
+### Update {{kib}} filters from Vega [vega-tutorial-update-kibana-filters-from-vega]
 
 To build an area chart using an {{es}} search query, edit the **Vega** spec, then add click and drag handlers to update the {{kib}} filters.
 
@@ -1406,7 +1376,7 @@ stack: ga 9.4
 serverless: ga
 ```
 
-To get started with a worked example, see [Tutorial: Create a line chart from an {{esql}} query](#vega-tutorial-create-a-line-chart-from-esql). For Query DSL instead, see [Writing {{es}} queries in Vega](#vega-queries).
+To get started with a worked example, see [Create a line chart from an {{esql}} query](#vega-tutorial-create-a-line-chart-from-esql). For Query DSL instead, see [Writing {{es}} queries in Vega](#vega-queries).
 
 To use an [{{esql}}](../query-filter/languages/esql-kibana.md) query as a data source, set `"%type%"` to `"esql"` in the `url` object and provide your query in the `"query"` parameter. {{esql}} queries work in both **Vega** and **Vega-Lite** visualizations.
 
