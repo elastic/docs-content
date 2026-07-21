@@ -36,7 +36,7 @@ If you're using {{ecloud}}, this setting only applies to the {{kib}} UI of your 
 
 By default, {{kib}} offers localized versions for [some languages](kibana://reference/configuration-reference/internationalization-settings.md#built-in-and-custom-locales).
 
-{applies_to}`ech:` {applies_to}`ece:` {applies_to}`eck:` {applies_to}`self:` On {{ech}}, {{ece}}, {{eck}}, and self-managed deployments, administrators can enable or disable languages, or turn language selection off, in the [internationalization settings](kibana://reference/configuration-reference/internationalization-settings.md).
+On {{ech}}, {{ece}}, {{eck}}, and self-managed deployments, administrators can enable or disable languages, or turn language selection off, in the [internationalization settings](kibana://reference/configuration-reference/internationalization-settings.md).
 
 ## Related pages
 
