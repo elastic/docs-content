@@ -17,11 +17,6 @@ Attack Discovery helps SOC analysts reduce alert fatigue by using large language
 
 You can start a run from the UI (manual or scheduled), from an automated workflow, or from an {{agent-builder}} conversation. All methods use the same analysis steps, so the discoveries you get are consistent no matter which one you use. To choose a path for your role, refer to [Run Attack Discovery](/solutions/security/ai/attack-discovery/run-attack-discovery.md).
 
-:::{note}
-:applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
-Turning on [`securitySolution:enableAttackDiscoveryWorkflows`](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) unlocks flexible alert retrieval on the Attacks view, workflow and {{agent-builder}} triggers, and AI troubleshooting. For details, refer to [Run from the Attacks view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md).
-:::
-
 For a demo, refer to the following video (click to view).
 
 [![Attack Discovery video](https://play.vidyard.com/eT92arEbpRddmSM4JeyzdX.jpg)](https://videos.elastic.co/watch/eT92arEbpRddmSM4JeyzdX?)
