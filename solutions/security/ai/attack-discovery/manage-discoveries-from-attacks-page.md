@@ -113,6 +113,8 @@ A callout above the alerts table explains this behavior and includes a **Show ma
 
 Attack group statistics in the Attacks table, such as the total alert count, continue to reflect the full set of linked alerts, not only the filtered subset.
 
+Next, [take actions on an attack](#attacks-manage).
+
 ## Take actions on an attack [attacks-manage]
 
 Access actions from the **Take actions** menu on an attack's row in the Attacks table.
@@ -130,3 +132,5 @@ When you change an attack's status, assign or unassign it, or apply attack tags,
 | Investigate in timeline | **Take actions** > **Investigate in timeline** | Includes all alerts originally correlated when the attack was created. It does not reflect your current page filters or time range. |
 | Add to case | **Take actions** > **Add to new case** or **Add to existing case** | Attaches the attack to a [case](/solutions/security/investigate/security-cases.md). |
 | View in AI Chat | **Take actions** > **View in AI Chat** | Continue investigating with an [AI agent](/explore-analyze/ai-features/ai-chat-experiences.md). Ask follow-up questions about the attack or its alerts. |
+
+After you triage an attack, add it to a [case](/solutions/security/investigate/security-cases.md) or continue the investigation in [Timeline](/solutions/security/investigate/timeline.md) from the same **Take actions** menu.

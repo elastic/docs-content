@@ -13,9 +13,9 @@ products:
 
 # Attack Discovery
 
-Attack Discovery helps SOC analysts reduce alert fatigue by using large language models (LLMs) to analyze alerts and identify potential attacks. Each discovery groups related alerts into an attack narrative. It shows which users and hosts are involved, how alerts map to the MITRE ATT&CK matrix, and which threat actor might be responsible. Use discoveries to prioritize investigation and shorten mean time to respond.
+Attack Discovery uses large language models (LLMs) to analyze alerts and identify potential attacks, so you can reduce alert fatigue. Each discovery groups related alerts into an attack narrative. It shows which users and hosts are involved, how alerts map to the MITRE ATT&CK matrix, and which threat actor might be responsible. Use discoveries to prioritize investigation and shorten mean time to respond.
 
-You can start a run from the UI (manual or scheduled), from an automated workflow, or from an {{agent-builder}} conversation. All methods use the same analysis steps, so the discoveries you get are consistent no matter which one you use. To choose a path for your role, refer to [Run Attack Discovery](/solutions/security/ai/attack-discovery/run-attack-discovery.md).
+You can start a run from the UI (manual or scheduled), from an automated workflow, or from an {{agent-builder}} conversation. All methods use the same analysis steps, so the discoveries you get are consistent no matter which one you use.
 
 For a demo, refer to the following video (click to view).
 
@@ -34,3 +34,12 @@ Each discovery includes the following information describing the potential threa
 :screenshot:
 :width: 60%
 :::
+
+## Get started with Attack Discovery [attack-discovery-get-started]
+
+Follow these steps to set up and use Attack Discovery:
+
+1. Confirm your role has the {{kib}} and index privileges you need in [Grant access to Attack Discovery](/solutions/security/ai/attack-discovery/grant-access.md).
+2. Choose how to start a run from the **Attacks** view, a workflow, {{agent-builder}}, or the **Attack Discovery** page in [Run Attack Discovery](/solutions/security/ai/attack-discovery/run-attack-discovery.md).
+3. Triage findings, update status, and take investigation actions after a run finishes in [Manage saved discoveries](/solutions/security/ai/attack-discovery/manage-saved-discoveries.md).
+4. (Optional) Follow a guided investigation workflow in [Triage Attack Discovery findings](/solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md).

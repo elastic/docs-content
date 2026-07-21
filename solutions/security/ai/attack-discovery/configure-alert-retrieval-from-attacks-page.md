@@ -11,7 +11,7 @@ products:
 
 # Configure Attack Discovery settings from the Attacks view [configure-alert-retrieval-from-attacks-page]
 
-Before Attack Discovery can generate findings, choose which alerts to analyze and how generation and validation run. From the **Attacks** view, use the settings flyout when Attack Discovery Workflows is on, or the schedule flyout's alert selection controls when it is off. Use the following table to find the right section for your setup.
+Before Attack Discovery can generate findings, choose which alerts to analyze and how generation and validation run. From the **Attacks** view, use the settings flyout when Attack Discovery Workflows is on, or the schedule flyout's alert selection controls when it is off. Use the following table to find the right section for your setup. After you finish configuring settings, [start a manual run](/solutions/security/ai/attack-discovery/manual-runs-from-attacks-page.md) or [create a schedule](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).
 
 | Your setup | Available in | Go to |
 |---|---|---|
@@ -43,6 +43,8 @@ Common setups:
 * **Skill plus {{esql}} or workflows:** Focus the run with a query or workflow, and still let the skill add related alerts.
 * **{{esql}} or workflows only:** Analyze only the alerts your query or workflows return. Turn off **Attack discovery skill retrieves alerts** for this.
 
+After you choose your retrieval methods, continue with [Generation](#attacks-page-generation) and [Validation](#attacks-page-validation).
+
 ### How the retrieval methods work together [attacks-page-alert-merge]
 
 When you enable more than one **Alert retrieval method** toggle, Attack Discovery merges their results before analysis:
@@ -71,6 +73,8 @@ The connector you select here applies to manual runs from the **Attacks** view. 
 
 If you want to call Attack Discovery from automation instead of from this view, select **View example** to open a working example in the Workflows editor. Refer to [Run Attack Discovery from a workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md).
 
+Next, configure [Validation](#attacks-page-validation).
+
 ### Validation [attacks-page-validation]
 
 Under **Validation**, choose what happens to discoveries after generation and before they are saved as attacks. Use this step to check, enrich, or filter findings so only the results you want are saved.
@@ -83,6 +87,8 @@ Under **Validation**, choose what happens to discoveries after generation and be
 Custom validation workflows must explicitly save discoveries. For details, refer to [Custom retrieval and validation workflows](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md#run-ad-workflow-custom).
 :::
 
+After you save these settings, [start a manual run](/solutions/security/ai/attack-discovery/manual-runs-from-attacks-page.md) or [create a schedule](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).
+
 ## Alert selection in the schedule flyout [attacks-page-schedule-alert-selection]
 
 Use the schedule flyout's KQL query bar, time filter, and alerts slider in these cases:
@@ -92,4 +98,4 @@ Use the schedule flyout's KQL query bar, time filter, and alerts slider in these
 
 Sending more alerts than your chosen LLM can handle may result in an error.
 
-For the full schedule procedure, refer to [Schedule runs from the Attacks view](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).
+Next, finish creating or editing the schedule. For the full procedure, refer to [Schedule runs from the Attacks view](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).

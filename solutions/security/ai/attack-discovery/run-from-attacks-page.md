@@ -29,6 +29,8 @@ To use the **Attacks** view, you need:
 
 Open the **Attacks** view at **Detections > Views > Attacks**. The view includes the same run and schedule capabilities as the **Attack Discovery** page.
 
+Next, [start a run](#attacks-view-start-a-run).
+
 ::::
 
 ::::{applies-item} stack: preview =9.4
@@ -37,6 +39,8 @@ Open **Attacks** at **Detections > Views > Attacks**. Use it with the [**Attack 
 
 - Go to **Attack Discovery** for manual runs.
 - Go to **Attacks** for recurring schedules and day-to-day triage.
+
+Next, [start a run](#attacks-view-start-a-run).
 
 ::::
 

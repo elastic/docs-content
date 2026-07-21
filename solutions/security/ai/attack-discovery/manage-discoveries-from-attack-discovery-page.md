@@ -62,7 +62,7 @@ You can search and filter saved discoveries to help locate relevant findings.
 
 ## Incorporate discoveries with other workflows [attack-discovery-workflows]
 
-There are several ways you can incorporate discoveries into your {{elastic-sec}} workflows:
+After you update status, share, or filter discoveries, use these options to continue the investigation in {{elastic-sec}}:
 
 * Click an entity’s name to open the entity details flyout and view more details that may be relevant to your investigation.
 * Hover over an entity’s name to either add the entity to Timeline (![Add to timeline icon](/solutions/images/security-icon-add-to-timeline.png "title =20x20")) or copy its field name and value to the clipboard (![Copy to clipboard icon](/solutions/images/security-icon-copy.png "title =20x20")).

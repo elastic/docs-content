@@ -15,7 +15,7 @@ Use AI troubleshooting when an Attack Discovery run fails, is canceled or dismis
 
 ## Before you begin [troubleshoot-runs-before-you-begin]
 
-You need to the [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on.
+You need the [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on.
 
 ## Open AI troubleshooting [troubleshoot-runs-open]
 
@@ -31,6 +31,8 @@ AI troubleshooting:
 * Identifies what failed and suggests a fix
 
 Like query editing, troubleshooting uses a dedicated {{agent-builder}} skill that does not replace the main generation skill.
+
+After you identify the fix, update your [Attack Discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md) if needed, then [start another manual run](/solutions/security/ai/attack-discovery/manual-runs-from-attacks-page.md) or wait for the next scheduled run.
 
 ## Download a diagnostic report [troubleshoot-runs-diagnostic-report]
 

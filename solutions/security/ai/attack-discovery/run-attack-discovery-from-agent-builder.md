@@ -21,11 +21,13 @@ This page covers prerequisites, a first chat flow, what the report can include, 
 To run Attack Discovery from {{agent-builder}}, you need:
 
 * [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) available in {{elastic-sec}}. {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` It is the default chat experience.
-* The [`securitySolution:enableAttackDiscoveryWorkflows`](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on.
+* The [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on.
 * The `attack-discovery-generator` skill enabled on the Elastic AI Agent. For how to assign skills, refer to [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md) and [Elastic AI Agent, skills, and tools in {{elastic-sec}}](/solutions/security/ai/agent-builder/skills-model.md).
 * The privileges described in [Grant access to Attack Discovery](/solutions/security/ai/attack-discovery/grant-access.md).
 
 Conversations and their results are private to the person who started them. There is no cross-user sharing or visibility control yet.
+
+When you meet the prerequisites, continue with [Try it](#run-ad-conversation-try-it).
 
 ## Try it [run-ad-conversation-try-it]
 
@@ -53,3 +55,5 @@ If the skill finds a gap, such as an important event in a confirmed attack that 
 ## Check on a run [run-ad-conversation-check-status]
 
 You can ask about the status of a run using its execution ID without starting a new one, for example: `What's the status of Attack Discovery run <execution-id>?`
+
+After a discovery is saved, continue triage in the [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).

@@ -29,6 +29,8 @@ Analysis can take from a few seconds to several minutes, depending on the number
 Attack Discovery uses the same data anonymization settings as [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md). Configure which alert fields are sent to the LLM, and which are obfuscated, in the Elastic AI Assistant settings. Consider the privacy policies of third-party LLMs before sending them sensitive data.
 :::
 
+After the run finishes, [manage discoveries from the Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md). If the run fails, [troubleshoot it with AI](/solutions/security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md).
+
 ::::
 
 ::::{applies-item} stack: preview =9.4

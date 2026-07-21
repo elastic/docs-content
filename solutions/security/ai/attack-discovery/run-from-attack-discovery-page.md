@@ -67,6 +67,8 @@ Attack Discovery is designed for use with alerts based on data that complies wit
 The next time you run Attack Discovery it will be able to analyze the selected fields.
 :::
 
+After you choose which alerts to analyze, [manually run Attack Discovery](#attack-discovery-generate-discoveries) or [create a schedule](#schedule-discoveries).
+
 ## Manually run Attack Discovery [attack-discovery-generate-discoveries]
 
 Manually run Attack Discovery when you want to start analysis yourself, instead of waiting for a schedule. You’ll need to select an LLM connector before you can analyze alerts.
@@ -92,6 +94,8 @@ It may take from a few seconds up to several minutes to generate discoveries, de
 ::::{important}
 Attack Discovery uses the same data anonymization settings as [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md). To configure which alert fields are sent to the LLM and which of those fields are obfuscated, use the Elastic AI Assistant settings. Consider the privacy policies of third-party LLMs before sending them sensitive data.
 ::::
+
+After discoveries appear, [manage them from the Attack Discovery page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md). {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` For triage next to related alerts, use the [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
 
 ## Schedule runs [schedule-discoveries]
 
@@ -128,6 +132,8 @@ To create a schedule from this page:
 8. Select **Create & enable schedule**.
 
 After you create schedules, you can view, edit, or delete them from the **Attack discovery schedule** flyout. Scheduled discoveries show a calendar icon. Select the icon to open the schedule that created the discovery.
+
+After discoveries appear from a schedule, [manage them from the Attack Discovery page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md). {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` For triage next to related alerts, use the [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
 
 ::::
 

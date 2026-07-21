@@ -54,3 +54,5 @@ To create a schedule:
 From the schedule flyout, you can edit, enable, disable, or delete schedules. To change several at once, select them in the table and use **Bulk actions**. To manage schedules programmatically, use the [Attack discovery API]({{kib-apis}}group/endpoint-security-attack-discovery-api).
 
 Scheduled discoveries show a calendar icon. For how to recognize scheduled versus manually generated attacks, refer to [Manually generated and scheduled attacks](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md#manually-generated-attacks).
+
+After discoveries appear from a schedule, [manage them from the Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md). If a scheduled run fails, [troubleshoot it with AI](/solutions/security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md).

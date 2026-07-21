@@ -68,6 +68,10 @@ A custom validation workflow must explicitly save its discoveries. If it does no
 
 Start from a working example in the **Attack discovery settings** flyout (**View example** under **Generation** or **Validation**), then adapt it for your environment.
 
+Next, [try an example](#run-ad-workflow-example).
+
 ## Try an example [run-ad-workflow-example]
 
 A working example workflow is available from the **Attack discovery settings** flyout on the [Attacks view](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md#attacks-page-generation) (**Detections > Views > Attacks**). In the **Generation** section, select **View example**. The **Validation** section also includes **View example** and **Create a new workflow**.
+
+After the workflow saves discoveries, [manage them from the Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
