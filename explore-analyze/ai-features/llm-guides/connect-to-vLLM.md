@@ -194,7 +194,7 @@ To run a different model:
 With your vLLM connector set up, you can use it to power features including:
 
 * [AI Assistant for Security](/solutions/security/ai/ai-assistant.md): Interact with an agent designed to assist with {{elastic-sec}} tasks.
-* [Attack Discovery](/solutions/security/ai/attack-discovery.md): Use AI to quickly correlate and triage security alerts.
+* [Attack Discovery](/solutions/security/ai/attack-discovery/index.md): Use AI to quickly correlate and triage security alerts.
 * [Automatic Import](/explore-analyze/ai-features/automatic-import.md): Use AI to create custom integrations for third-party data sources.
 * [AI Assistant for Observability and Search](/solutions/observability/ai/observability-ai-assistant.md): Interact with an agent designed to assist with {{observability}} and Search tasks.
 
