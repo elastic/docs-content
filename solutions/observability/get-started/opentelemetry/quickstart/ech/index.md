@@ -22,7 +22,7 @@ Select the quickstart guide for your environment from the following list:
 - [Hosts or VMs on hosted](hosts_vms.md)
 
 :::{note}
-Before version 9.5, the Elastic Collector component used in these quickstarts was called the **EDOT Collector**. From 9.5 onwards, this capability is built into **{{agent}}**.
+Before version 9.5, the **EDOT Collector** was a standalone product. From 9.5 onwards, this OpenTelemetry collector capability is built into **{{agent}}**.
 :::
 
 ## Troubleshooting

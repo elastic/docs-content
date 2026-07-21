@@ -11,7 +11,7 @@ products:
 
 # `ResourceExhausted` errors in Collector-to-Collector pipelines
 
-This troubleshooting guide helps you diagnose and resolve `rpc error: code = ResourceExhausted` errors that occur in Collector-to-Collector pipelines when using {{edot}} Collectors. These errors typically indicate that one or more resource limits, such as gRPC message size, decompression memory, or internal buffering, have been exceeded.
+This troubleshooting guide helps you diagnose and resolve `rpc error: code = ResourceExhausted` errors that occur in Collector-to-Collector pipelines when using {{agent}}s. These errors typically indicate that one or more resource limits, such as gRPC message size, decompression memory, or internal buffering, have been exceeded.
 
 The root cause depends on your pipeline architecture (number of Collectors, transport, batching, and queue settings). Each case is different; use the diagnosis and resolution steps in this document to narrow down the cause and experiment with mitigations.
 
