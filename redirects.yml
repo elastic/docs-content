@@ -1028,24 +1028,7 @@ redirects:
     anchors:
       'managed-integrations-content':
 
-  # Related to the Attack Discovery docs restructure: moved attack-discovery.md, attacks-page.md,
-  # and triage-attack-discovery-findings.md into a new solutions/security/ai/attack-discovery/ folder,
-  # split attack-discovery.md's RBAC, scheduling, and manual-run sections into their own pages,
-  # merged attacks-page.md's content into manage-saved-discoveries.md as an "Attacks page" section,
-  # later split manage-saved-discoveries.md into manage-discoveries.md (Attack Discovery page
-  # tasks) and attacks-page.md (Attacks page tasks), leaving manage-saved-discoveries.md as a hub page,
-  # then moved the "Incorporate discoveries with other workflows" section from
-  # attack-discovery.md into manage-discoveries.md, alongside the rest of the page-management tasks,
-  # merged manual-runs.md and schedule-discoveries.md into a single run-from-ui.md page,
-  # leaving run-attack-discovery.md with one visible child page for now (UI-driven runs), then
-  # merged configure-attack-discovery-settings.md's content into that page as a "Set up Attack
-  # Discovery" section, renamed the page to run-from-attack-discovery-page.md to clarify it's
-  # scoped to the Attack Discovery page specifically, added a parallel run-from-attacks-page.md
-  # page (moving the Attacks page's own scheduling/prerequisites content there from attacks-page.md
-  # and manage-saved-discoveries.md), renamed rbac.md to grant-access.md to match its
-  # plain-language "Grant access" title, and finally renamed attacks-page.md and manage-discoveries.md
-  # to manage-discoveries-from-attacks-page.md and manage-discoveries-from-attack-discovery-page.md
-  # respectively, to clarify which UI each page covers.
+  # Related to https://github.com/elastic/docs-content/pull/7448
   'solutions/security/ai/attack-discovery.md':
     to: 'solutions/security/ai/attack-discovery/attack-discovery.md'
     many:
@@ -1054,57 +1037,27 @@ redirects:
           'attack-discovery-rbac': 'attack-discovery-rbac'
       - to: 'solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md'
         anchors:
-          'schedule-discoveries': 'schedule-discoveries'
+          'set-up-attack-discovery': 'set-up-attack-discovery'
           'attack-discovery-generate-discoveries': 'attack-discovery-generate-discoveries'
-  'solutions/security/ai/attacks-page.md':
-    to: 'solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md'
-  'solutions/security/ai/attack-discovery/rbac.md':
-    to: 'solutions/security/ai/attack-discovery/grant-access.md'
-  'solutions/security/ai/attack-discovery/run-from-ui.md':
-    to: 'solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md'
-  'solutions/security/ai/attack-discovery/configure-attack-discovery-settings.md':
-    to: 'solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md'
-    anchors:
-      'configure-attack-discovery-settings': 'set-up-attack-discovery'
-  'solutions/security/ai/attack-discovery/attacks-page.md':
-    to: 'solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md'
-  'solutions/security/ai/attack-discovery/manage-discoveries.md':
-    to: 'solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md'
-  'solutions/security/ai/attack-discovery/attack-discovery.md':
-    to: 'solutions/security/ai/attack-discovery/attack-discovery.md'
-    many:
+          'schedule-discoveries': 'schedule-discoveries'
       - to: 'solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md'
         anchors:
           'attack-discovery-workflows': 'attack-discovery-workflows'
-  'solutions/security/ai/attack-discovery/manage-saved-discoveries.md':
-    to: 'solutions/security/ai/attack-discovery/manage-saved-discoveries.md'
-    anchors:
-      'attacks-next-steps': 'next-steps'
-    many:
-      - to: 'solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md'
-        anchors:
-          'manage-discoveries': 'manage-discoveries'
-          'discovery-status': 'discovery-status'
+          'view-saved-discoveries': 'manage-discoveries'
+          'change-a-discoverys-status': 'discovery-status'
           'share-attack-discoveries': 'share-attack-discoveries'
           'take-bulk-actions': 'take-bulk-actions'
-          'search-filter-discoveries': 'search-filter-discoveries'
-      - to: 'solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md'
-        anchors:
-          'attacks-page': 'attacks-page'
-          'attacks-how-it-works': 'attacks-how-it-works'
-          'attacks-filter-search': 'attacks-filter-search'
-          'attacks-view-options': 'attacks-view-options'
-          'attacks-filtering-behavior': 'attacks-filtering-behavior'
-          'attacks-manage': 'attacks-manage'
-          'change-attack-status': 'change-attack-status'
-          'run-workflow-from-attack': 'run-workflow-from-attack'
-          'assign-attacks': 'assign-attacks'
-          'apply-attack-tags': 'apply-attack-tags'
-          'attacks-investigate-timeline': 'attacks-investigate-timeline'
-          'attacks-add-to-case': 'attacks-add-to-case'
-          'attacks-view-in-ai-chat': 'attacks-view-in-ai-chat'
+          'search-and-filter-saved-discoveries': 'search-filter-discoveries'
+  'solutions/security/ai/attacks-page.md':
+    to: 'solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md'
+    anchors:
+      'attacks-triage':
+    many:
       - to: 'solutions/security/ai/attack-discovery/run-from-attacks-page.md'
         anchors:
-          'attacks-schedule-discoveries': 'attacks-page-schedule-runs'
           'attacks-prerequisites': 'run-from-attacks-page-prerequisites'
+          'attacks-schedule-discoveries': 'attacks-page-schedule-runs'
+      - to: 'solutions/security/ai/attack-discovery/manage-saved-discoveries.md'
+        anchors:
+          'attacks-next-steps': 'next-steps'
   'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'
