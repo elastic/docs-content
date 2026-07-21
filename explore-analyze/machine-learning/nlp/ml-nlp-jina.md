@@ -22,7 +22,7 @@ The following tables list the available Jina models and show where each model ca
 Select a deployment or access option to view the corresponding setup and usage instructions.
 
 ::::{note}
-For models accessed through [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), availability may vary by Stack version. For supported models and version requirements, refer to [Elastic {{infer-cap}} Service supported models](/explore-analyze/elastic-inference/eis-supported-models.md). Cloud marketplace availability can also vary by model and provider.
+For models accessed through [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), availability may vary by Stack version. For supported models and version requirements, refer to [Elastic {{infer-cap}} Service supported models](/explore-analyze/elastic-inference/eis-supported-models.md).
 ::::
 
 ### Text embedding models [jina-text-embeddings]
@@ -31,9 +31,8 @@ Text embedding models convert text into vector embeddings for semantic similarit
 
 | Model | Description | Deployment | Access |
 | --- | --- | --- | --- |
-| [`jina-embeddings-v5-text-small`](https://jina.ai/models/jina-embeddings-v5-text-small/) | Multilingual text embeddings with task-specific adapters. Accepts text input and produces 1024-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-eis-text-embedding), [Jina API](#jina-external) |
-| [`jina-embeddings-v5-text-nano`](https://jina.ai/models/jina-embeddings-v5-text-nano/) | Multilingual embeddings for edge deployment. Accepts text input and produces 768-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-eis-text-embedding), [Jina API](#jina-external) |
-| [`jina-embeddings-v3`](https://jina.ai/models/jina-embeddings-v3/) | Multilingual text embeddings. Accepts text input and produces 1024-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-eis-text-embedding), [Jina API](#jina-external) |
+| [`jina-embeddings-v5-text-small`](https://jina.ai/models/jina-embeddings-v5-text-small/) | Multilingual text embeddings with task-specific adapters. Accepts text input and produces 1024-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-eis-text-embedding), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
+| [`jina-embeddings-v5-text-nano`](https://jina.ai/models/jina-embeddings-v5-text-nano/) | Multilingual embeddings for edge deployment. Accepts text input and produces 768-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-eis-text-embedding), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
 
 #### Performance considerations [jina-text-embeddings-performance]
 
@@ -60,16 +59,6 @@ Text embedding models convert text into vector embeddings for semantic similarit
 
 :::
 
-:::{tab-item} jina-embeddings-v3
-:sync: text-v3
-
-- `jina-embeddings-v3` works best on small, medium or large sized fields that contain natural language. For connector or web crawler use cases, this aligns best with fields like title, description, summary, or abstract.
-- Although `jina-embeddings-v3` supports an input token length of 8K, it's best to limit the input to 2048-4096 tokens for optimal performance. For larger fields that exceed this limit - for example, `body_content` on web crawler documents - consider chunking the content into multiple values, where each chunk can be under 4096 tokens.
-- Larger documents take longer at ingestion time, and {{infer}} time per document also increases the more fields in a document that need to be processed.
-- The more fields your pipeline has to perform {{infer}} on, the longer it takes per document to ingest.
-
-:::
-
 ::::
 
 ### Multimodal embedding models [jina-multimodal-embeddings]
@@ -78,11 +67,11 @@ Multimodal embedding models convert text, images, video, audio, and documents su
 
 | Model | Description | Deployment | Access |
 | --- | --- | --- | --- |
-| [`jina-embeddings-v5-omni-small`](https://jina.ai/models/jina-embeddings-v5-omni-small/) | Multimodal embeddings for text, image, audio, video, and PDF. Accepts multimodal input and produces 1024-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-omni-getting-started), [Jina API](#jina-external) |
-| [`jina-embeddings-v5-omni-nano`](https://jina.ai/models/jina-embeddings-v5-omni-nano/) | Compact multimodal embeddings for edge deployment. Accepts multimodal input and produces 768-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-omni-getting-started), [Jina API](#jina-external) |
-| [`jina-clip-v2`](https://jina.ai/models/jina-clip-v2/) | Multilingual multimodal embeddings for text and image retrieval. Accepts text and image input and produces 1024-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-omni-getting-started), [Jina API](#jina-external) |
-| [`jina-embeddings-v4`](https://jina.ai/models/jina-embeddings-v4/) | Universal multimodal embeddings for text, image, and PDF retrieval. Accepts text, image, and PDF input and produces 2048-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external) |
-| [`jina-vlm`](https://jina.ai/models/jina-vlm/) | Vision-language model for visual question answering. Accepts image and text input and generates text output. Supports input lengths up to 32K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external) |
+| [`jina-embeddings-v5-omni-small`](https://jina.ai/models/jina-embeddings-v5-omni-small/) | Multimodal embeddings for text, image, audio, video, and PDF. Accepts multimodal input and produces 1024-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-omni-getting-started), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
+| [`jina-embeddings-v5-omni-nano`](https://jina.ai/models/jina-embeddings-v5-omni-nano/) | Compact multimodal embeddings for edge deployment. Accepts multimodal input and produces 768-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-omni-getting-started), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
+| [`jina-clip-v2`](https://jina.ai/models/jina-clip-v2/) | Multilingual multimodal embeddings for text and image retrieval. Accepts text and image input and produces 1024-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-omni-getting-started), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
+| [`jina-embeddings-v4`](https://jina.ai/models/jina-embeddings-v4/) | Universal multimodal embeddings for text, image, and PDF retrieval. Accepts text, image, and PDF input and produces 2048-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
+| [`jina-vlm`](https://jina.ai/models/jina-vlm/) | Vision-language model for visual question answering. Accepts image and text input and generates text output. Supports input lengths up to 32K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
 
 #### Performance considerations [jina-omni-performance]
 
@@ -118,8 +107,8 @@ Code embedding models convert source code and technical text into dense vectors 
 
 | Model | Description | Deployment | Access |
 | --- | --- | --- | --- |
-| [`jina-code-embeddings-1.5b`](https://jina.ai/models/jina-code-embeddings-1.5b/) | Code embeddings built on code generation models. Accepts source code and technical text and produces 1536-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external) |
-| [`jina-code-embeddings-0.5b`](https://jina.ai/models/jina-code-embeddings-0.5b/) | Compact code embeddings for edge deployment. Accepts source code and technical text and produces 896-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external) |
+| [`jina-code-embeddings-1.5b`](https://jina.ai/models/jina-code-embeddings-1.5b/) | Code embeddings built on code generation models. Accepts source code and technical text and produces 1536-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
+| [`jina-code-embeddings-0.5b`](https://jina.ai/models/jina-code-embeddings-0.5b/) | Compact code embeddings for edge deployment. Accepts source code and technical text and produces 896-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
 
 ### Reader models [jina-reader-models]
 
@@ -127,7 +116,7 @@ Reader models extract clean, structured content from HTML and complex documents 
 
 | Model | Description | Deployment | Access |
 | --- | --- | --- | --- |
-| [`ReaderLM-v2`](https://jina.ai/models/ReaderLM-v2/) | Converts raw HTML into Markdown or JSON. Accepts HTML input and generates Markdown or JSON output. Supports input lengths up to 512K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external) |
+| [`ReaderLM-v2`](https://jina.ai/models/ReaderLM-v2/) | Converts raw HTML into Markdown or JSON. Accepts HTML input and generates Markdown or JSON output. Supports input lengths up to 512K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
 
 ### Rerankers [jina-rerankers]
 
@@ -135,10 +124,10 @@ Reranker models reorder candidate documents by predicted relevance to improve to
 
 | Model | Description | Deployment | Access |
 | --- | --- | --- | --- |
-| [`jina-reranker-v3`](https://jina.ai/models/jina-reranker-v3/) | Listwise reranker for multilingual document retrieval. Accepts text queries and documents and returns relevance rankings. Supports input lengths up to 131K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-eis-rerank), [Jina API](#jina-external) |
-| [`jina-reranker-m0`](https://jina.ai/models/jina-reranker-m0/) | Multimodal reranker for visual documents. Accepts text or image queries and documents and returns relevance rankings. Supports input lengths up to 10K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external) |
-| [`jina-reranker-v2-base-multilingual`](https://jina.ai/models/jina-reranker-v2-base-multilingual/) | Cross-encoder reranker for multilingual search. Accepts text queries and documents and returns relevance rankings. Supports input lengths up to 1K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-eis-rerank), [Jina API](#jina-external) |
-| [`jina-colbert-v2`](https://jina.ai/models/jina-colbert-v2/) | Multilingual ColBERT model for embedding and reranking. Accepts text input and produces 128-dimensional multi-vector embeddings. Supports input lengths up to 8K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external) |
+| [`jina-reranker-v3`](https://jina.ai/models/jina-reranker-v3/) | Listwise reranker for multilingual document retrieval. Accepts text queries and documents and returns relevance rankings. Supports input lengths up to 131K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-eis-rerank), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
+| [`jina-reranker-m0`](https://jina.ai/models/jina-reranker-m0/) | Multimodal reranker for visual documents. Accepts text or image queries and documents and returns relevance rankings. Supports input lengths up to 10K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
+| [`jina-reranker-v2-base-multilingual`](https://jina.ai/models/jina-reranker-v2-base-multilingual/) | Cross-encoder reranker for multilingual search. Accepts text queries and documents and returns relevance rankings. Supports input lengths up to 1K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-eis-rerank), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
+| [`jina-colbert-v2`](https://jina.ai/models/jina-colbert-v2/) | Multilingual ColBERT model for embedding and reranking. Accepts text input and produces 128-dimensional multi-vector embeddings. Supports input lengths up to 8K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
 
 #### Performance considerations [jina-rerankers-performance]
 
@@ -243,29 +232,6 @@ PUT _inference/text_embedding/eis-jina-embeddings-v5-text-nano
 
 ```console
 POST _inference/text_embedding/eis-jina-embeddings-v5-text-nano
-{
-  "input": "The sky above the port was the color of television tuned to a dead channel.",
-  "input_type": "ingest"
-}
-```
-
-:::
-
-:::{tab-item} jina-embeddings-v3
-:sync: text-v3
-
-```console
-PUT _inference/text_embedding/eis-jina-embeddings-v3
-{
-  "service": "elastic",
-  "service_settings": {
-    "model_id": "jina-embeddings-v3"
-  }
-}
-```
-
-```console
-POST _inference/text_embedding/eis-jina-embeddings-v3
 {
   "input": "The sky above the port was the color of television tuned to a dead channel.",
   "input_type": "ingest"
@@ -918,5 +884,4 @@ For more background and related resources:
 * [jina-embeddings-v5-text](https://www.elastic.co/search-labs/blog/jina-embeddings-v5-text): Introduces the compact multilingual text embedding models (`small` and `nano`) and how to use them on EIS.
 * [jina-embeddings-v5-omni](https://www.elastic.co/search-labs/blog/jina-embeddings-v5-omni-all-media-one-index): Explains how to embed text, images, video, and audio into a single Elasticsearch index.
 * [Jina rerankers on EIS](https://www.elastic.co/search-labs/blog/jina-rerankers-elastic-inference-service): Covers `jina-reranker-v2-base-multilingual` and `jina-reranker-v3` for multilingual reranking in retrieval and RAG workflows.
-* [jina-embeddings-v3 on EIS](https://www.elastic.co/search-labs/blog/jina-embeddings-v3-elastic-inference-service): Introduces multilingual dense retrieval with `jina-embeddings-v3` on EIS.
 * [Jina model catalog](https://jina.ai/models#catalog): Browse the full set of Jina Search Foundation models and their capabilities.
