@@ -236,7 +236,7 @@ The proposed fix appears directly below your query, with the original lines and 
 :::
 
 :::{tip}
-:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
 After you run a query in **Discover**, an AI agent can also analyze the results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
 :::
 
@@ -458,6 +458,11 @@ For a conceptual overview and use cases, refer to [Unmapped fields](elasticsearc
 stack: preview 9.4
 serverless: preview
 ```
+
+::::{admonition} Requirements
+:applies_to: { ess:, ece:, eck:, self: }
+For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, approximation requires an [Enterprise subscription](https://www.elastic.co/subscriptions).
+::::
 
 On large datasets, you can trade exact results for speed by enabling [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries. Approximation runs your `STATS` aggregations on a sample of the data and extrapolates to estimate results for the full dataset, so the numbers come out close to the exact ones. You can enable approximation in two ways:
 
