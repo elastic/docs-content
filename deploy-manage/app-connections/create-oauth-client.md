@@ -2,7 +2,7 @@
 navigation_title: "Create an OAuth client"
 description: "Register an OAuth client in Agent Builder to get the credentials and server URL needed to connect an MCP host over OAuth."
 applies_to:
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana

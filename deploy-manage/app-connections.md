@@ -3,7 +3,7 @@ navigation_title: Application connections
 description: Register OAuth clients and manage application connections for authorized access to Elastic Serverless projects.
 type: overview
 applies_to:
-  serverless: preview
+  serverless: ga
 products:
   - id: cloud-serverless
   - id: kibana
