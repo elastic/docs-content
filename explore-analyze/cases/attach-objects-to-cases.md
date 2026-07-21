@@ -96,7 +96,7 @@ serverless:
 
 With the appropriate subscription, you can auto-extract observables from alerts instead of adding them manually. Note that auto-extracting observables is unavailable for {{observability}} cases.
 
-{applies_to}`stack: ga 9.5` Auto-extraction also runs when a case is created automatically, such as through a rule's [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md) action, as long as the case template or configuration has **Auto-extract observables** turned on.
+{applies_to}`stack: ga 9.5` Auto-extraction also runs for cases created with the Cases API or a [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md) action, as long as **Auto-extract observables** is turned on in the global case configuration or case template.
 
 ## Add Lens visualizations [cases-lens-visualization]
 
