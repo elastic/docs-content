@@ -22,6 +22,10 @@ The {{motlp}} is designed for the following use cases:
 * Logs and Infrastructure Monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format.
 * APM: Application telemetry in OTLP format.
 
+:::{note}
+Before version 9.5, the Elastic Collector component used in these quickstarts was called the **EDOT Collector**. From 9.5 onwards, this capability is built into **{{agent}}**.
+:::
+
 ## Prerequisites
 
 * An Elastic Observability Serverless project.
