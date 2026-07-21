@@ -41,15 +41,15 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-Use the map controls to adjust the layout and navigate large maps:
+Use the map controls to adjust the layout, filter what’s displayed, and navigate large maps:
 
-* **Orientation**: Change the direction of the map layout (for example, top-to-bottom or left-to-right) to better suit your architecture.
-* **Minimap**: Use the minimap in the corner of the map to quickly see where you are in a large architecture and navigate to a different area.
+* **Presentation**: Switch between **Horizontal** and **Vertical** layout to best fit your architecture.
 * **Find in page**: Search for a specific service by name to locate and highlight it on the map.
+* **Filters**: Use the **Dependencies**, **Alert status**, **SLO status**, and **Anomaly severity** drop-downs to focus the map on specific services.
 
-To add the current service map view to a {{kib}} dashboard, click **Add to dashboard**.
+To save the current service map view to a {{kib}} dashboard, click **Copy to dashboard**.
 
-When you click on a service node, a **service fly-out** panel opens with a quick summary of the service’s health and performance, without leaving the map.
+When you click an instrumented service node (circle shape), a **service flyout** panel opens with a summary of the service’s RED metrics and infrastructure usage. Use the footer menu to open traces, logs, alerts, or SLOs for the service without leaving the map. Dependency nodes (diamond shape) and connections still use a compact popover.
 
 :::{image} /solutions/images/observability-service-maps-java.png
 :alt: Example view of service maps in the Applications UI in Kibana
@@ -76,7 +76,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-An interactive legend is available directly on the map. Click the legend icon to expand it and see an explanation of node shapes, connections, and anomaly score colors.
+An interactive legend is available directly on the map. Click the **?** (**Legend**) button to expand it and see an explanation of node shapes, connections, and anomaly score colors.
 
 ### Nodes [service-maps-legend-nodes]
 
