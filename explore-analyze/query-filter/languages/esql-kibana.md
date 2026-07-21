@@ -459,6 +459,11 @@ stack: preview 9.4
 serverless: preview
 ```
 
+::::{admonition} Requirements
+:applies_to: { ess:, ece:, eck:, self: }
+For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, approximation requires an [Enterprise subscription](https://www.elastic.co/subscriptions).
+::::
+
 On large datasets, you can trade exact results for speed by enabling [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries. Approximation runs your `STATS` aggregations on a sample of the data and extrapolates to estimate results for the full dataset, so the numbers come out close to the exact ones. You can enable approximation in two ways:
 
 - {applies_to}`{stack: "preview 9.5", serverless: "preview"}` From the {{kib}} UI, with [Fast mode](#esql-kibana-fast-mode-toggle).

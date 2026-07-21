@@ -32,7 +32,11 @@ Certain {{agent}} integration packages and inputs can trigger the creation of a 
 For more information, refer to [#276295](https://github.com/elastic/kibana/issues/276295).
 
 **Workaround**<br>
-Remove the version-specific integration policy from the {{agent}} policy, or move the affected endpoints to a new {{agent}} policy that does not include any version-specific integration policies. A fix will be included in a future 9.4.x release.
+Remove the version-specific integration policy from the {{agent}} policy, or move the affected endpoints to a new {{agent}} policy that does not include any version-specific integration policies.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.4.4.
 :::
 
 :::{dropdown} Osquery cannot target agents on version-specific policies
@@ -42,7 +46,11 @@ Remove the version-specific integration policy from the {{agent}} policy, or mov
 Certain {{agent}} integration packages and inputs can trigger the creation of a version-specific {{agent}} policy. When a version-specific policy includes the Osquery integration, the corresponding agents do not appear in the Osquery agent or policy selector, so they cannot be targeted. Live queries against an affected policy fail with a `No agents found for selection` error, and agent grouping and counts in the selector are inaccurate.
 
 **Workaround**<br>
-Remove the version-specific integration policy from the {{agent}} policy, or reassign the affected agents to a new {{agent}} policy that does not include any version-specific integration policies. A fix will be included in a future 9.4.x release.
+Remove the version-specific integration policy from the {{agent}} policy, or reassign the affected agents to a new {{agent}} policy that does not include any version-specific integration policies.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.4.4.
 :::
 
 :::{dropdown} Problem Child and DGA integrations fail to install
