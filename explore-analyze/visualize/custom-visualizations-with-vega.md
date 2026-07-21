@@ -74,7 +74,7 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
 
     A pre-populated line chart displays the total number of documents.
 
-3. Make sure the [time filter](../query-filter/filtering.md) is **Last 7 days**.
+3. Set the [time filter](../query-filter/filtering.md) to a range that includes the sample data. Sample data timestamps are relative to when you installed the data set, so **Last 7 days** works if you just installed it.
 4. Replace the entire **Vega-Lite** spec with the following, then select **Update**:
 
 ```json
@@ -127,7 +127,7 @@ Learn how to query {{es}} with Query DSL from **Vega-Lite**, displaying the resu
 
     A pre-populated line chart displays the total number of documents.
 
-5. Make sure the [time filter](../query-filter/filtering.md) is **Last 7 days**.
+5. Set the [time filter](../query-filter/filtering.md) to a range that includes the sample data. Sample data timestamps are relative to when you installed the data set, so **Last 7 days** works if you just installed it.
 
 #### Add the index and time field [_vega_stacked_area_add_index_and_time_field]
 
