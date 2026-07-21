@@ -7,24 +7,6 @@ Adjust the visual appearance of your area chart to control how the data series a
 - **Area fill opacity**: Control how transparent or opaque the colored area beneath the data line appears. The opacity value ranges from 0 to 1.
 - **Point visibility**: Show or hide data points. Set to **Auto** by default: Points are visible unless the distance between them is too short.
 - **Line interpolation**: Choose how to interpolate the line between data points from the available options: **Straight** (default), **Smooth**, and **Step**.
-- **Missing values**: Choose between **Hide**, **Zero**, **Linear**, **Last**, and **Next**. This option controls how gaps in data appear on the chart. By default, gaps are hidden. Missing values include empty buckets and metrics: Buckets without documents or metrics that returned `null` due to their operation and data content.
-    
-    ```{note}
-    You can only use this option when the **Include empty rows** option of the chart is enabled or when a metric produces a null bucket. For example, if a moving average finds empty buckets.
-    ```
-    * **Hide**: Don't show gaps in data.
-    * **Zero**: Fill gaps by connecting starting and ending data points to zero.
-    * **Linear**: Fill gaps by connecting related starting and ending data points together with a direct line.   
-    * **Last**: Fill gaps between data points with a horizontal or vertical line that uses the last ending point value, when available, to determine its position.
-    * **Next**: Fill gaps between data points with a horizontal or vertical line that uses the next starting point value, when available, to determine its position.
-
-* **End values**: If you've chosen to show missing values, you can also decide to extend data series to the edge of the chart. By default, end values are hidden.
-        
-    * **Hide**: Don't extend series to the edge of the chart.
-    * **Zero**: Extend series as zero to the edge of the chart.
-    * **Nearest**: Extend series with their first or last value to the edge of the chart.
-
-* **Show as dotted line**: If you've chosen to show missing values, you can turn on this option to show gaps as a dotted line.
 
 **Left axis**
 :   Allow you to customize the Y-axis appearance. 
