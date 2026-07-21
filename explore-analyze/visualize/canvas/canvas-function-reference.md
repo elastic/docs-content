@@ -514,7 +514,7 @@ This creates a table based on the results of two `essql` queries, joined into on
 | --- | --- | --- |
 | `ids` † | `string` | Column ids to generate in positional order. ID represents the key in the row. |
 | `names` † | `string` | Column names to generate in positional order. Names are not required to be unique, and default to the ID if not provided. |
-| `rowCount` | `number` | The number of empty rows to add to the table, to be assigned a value later<br>Default: `1` |
+| `rowCount` | `number` | The number of empty rows to add to the table, to be assigned a value later.<br>{applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` Must be an integer from 0 through 10,000.<br>Default: `1` |
 
 **Returns:** `datatable`
 
