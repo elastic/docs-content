@@ -38,6 +38,21 @@ Display data within a specified time range when your index contains time-based e
 :width: 250px
 :::
 
+When you enter the time range as text, the time filter interprets a single value as a range relative to now, such as `3 days ago`. To set the start and end explicitly, enter `to` or `until` between two values, such as `yesterday to today`. You can enter and combine any of the following formats:
+
+| Format | Examples |
+| --- | --- |
+| Relative time | `-15m`, `last 5 minutes`, `past 5 min`, `next 2 weeks`, `2 hours from now`. You can spell out time units or abbreviate them, for example `m`, `min`, or `minutes`. |
+| Named ranges | `today`, `yesterday`, `tomorrow`, `this week`, `this month until now`, `last month`, `next year`. The mnemonics `td`, `yd`, and `tmr` stand for today, yesterday, and tomorrow. |
+| Absolute time | `Dec 1, 2025, 00:00` (default format), `2025-12-01` (ISO 8601), `Fri, 1 Dec 2025 00:00:00 GMT` (RFC 2822), `12/1/2025` (month/day/year), `1760665383890` (Unix timestamp in seconds or milliseconds). For example, you can paste a date or timestamp copied from a document or a log entry directly into the input. |
+| Date math | `now-15m`, `now/w`, and other [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math) expressions. |
+| Preset labels | `Last 24 hours` or any other range listed under **Presets**. |
+
+The picker can also give you the text for a range:
+
+- To open the syntax reference, select **Discover allowed formats and shorthands**.
+- To get the text equivalent of a range without typing it, select **Custom range** and configure the range. The **Shorthand** field shows the corresponding text, which you can copy and paste into the time filter whenever you need the same range again.
+
 Optionally, you can:
 
 - Open {icon}`gear` **Settings** to configure automatic refresh and time display:
@@ -47,7 +62,9 @@ Optionally, you can:
     - Turn **Round relative time ranges** on or off.
     - Under **Absolute time range**, select whether timestamps show **Minutes**, **Seconds**, or **Milliseconds**.
 
-- Save the current range as a preset for later reuse with {icon}`save`. Saving the preset also applies the range, and saved ranges appear under **Presets**.
+- Save the current range as a preset for later reuse with {icon}`save`, or select **Save as preset** when applying a range from the **Calendar** or **Custom range** panels. Saving a preset also applies the range, and saved ranges appear under **Presets**. Presets are personal to your user profile, and you can save up to 40. To delete one, point to it under **Presets** and select {icon}`trash` **Delete preset**.
+
+- Step through time with the buttons next to the time range: **Previous** and **Next** shift the range backward or forward by its own duration, and **Zoom out** and **Zoom in** widen or narrow it.
 ::::
 
 ::::{applies-item} { stack: ga 9.0-9.4 }
