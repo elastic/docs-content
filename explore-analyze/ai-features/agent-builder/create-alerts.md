@@ -1,6 +1,6 @@
 ---
 navigation_title: "Create alerts on trace data"
-description: "Create Kibana alerting rules on Agent Builder trace data to monitor token usage, costs, agent error rates, and tool failures."
+description: "Create Kibana alerting rules on Agent Builder trace data to monitor token usage, agent error rates, and tool failures."
 applies_to:
   stack: ga 9.5+
   serverless: ga
@@ -14,7 +14,7 @@ products:
 
 # Create alerts on {{agent-builder}} trace data
 
-{{agent-builder}} collects execution traces into a data stream in your {{es}} cluster. These traces record token usage, errors, latency, and tool calls, so you can create {{kib}} alerting rules that notify you when something needs your attention. For example, you can alert on a conversation that uses too many tokens, token costs that exceed a budget, an agent error rate that spikes, or a tool that fails repeatedly.
+{{agent-builder}} collects execution traces into a data stream in your {{es}} cluster. These traces record token usage, errors, latency, and tool calls, so you can create {{kib}} alerting rules that notify you when something needs your attention. For example, you can alert on a conversation that uses too many tokens, total token usage that exceeds a budget, an agent error rate that spikes, or a tool that fails repeatedly.
 
 {{agent-builder}} has no dedicated alerting interface. You create standard {{kib}} rules against the trace data stream, so the rule types, check schedules, and connectors are the same ones you use elsewhere in {{kib}}.
 
@@ -79,7 +79,7 @@ Rule settings:
 * **Alert group**: Create an alert for each row, so you get one alert per conversation over the threshold.
 * **Time window**: the period to evaluate, for example the last 24 hours.
 
-256,000 is an example cost threshold, not a hard limit. {{agent-builder}} compacts long conversations, so a conversation can pass this value without failing. By default, `attributes.gen_ai.conversation.id` is a stable hash, which is enough to group and count conversations. To include the real conversation ID in alerts, turn on the **Include real conversation and workflow IDs** privacy setting (`agentBuilder:tracing:includeRealIds`).
+256,000 is an example token threshold, not a hard limit. {{agent-builder}} compacts long conversations, so a conversation can pass this value without failing. By default, `attributes.gen_ai.conversation.id` is a stable hash, which is enough to group and count conversations. To include the real conversation ID in alerts, turn on the **Include real conversation and workflow IDs** privacy setting (`agentBuilder:tracing:includeRealIds`).
 
 ### Token consumption over a period exceeds a budget
 
