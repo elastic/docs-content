@@ -147,11 +147,11 @@ xpack.security.authc.realms.saml.saml1:
 ```
 
 1. URL or file path to the IdP's SAML metadata. A URL is recommended — {{es}} monitors it for changes and reloads automatically. If using a file path, it is resolved relative to the {{es}} config directory. For {{ech}} and {{ece}}, [upload the file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) first. For {{eck}}, install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md).
-2. The entity ID your IdP uses. Must match the `entityID` attribute in the IdP metadata.
-3. A unique identifier for this {{kib}} instance, expressed as a URI. Must match the entity ID you set in your IdP in [Step 1](#saml-configure-idp). We recommend using the {{kib}} base URL.
+2. The entity ID your IdP uses. Must match the `entityID` attribute in the IdP metadata exactly — the comparison is case-sensitive.
+3. A unique identifier for this {{kib}} instance, expressed as a URI. Must match the entity ID you set in your IdP in [Step 1](#saml-configure-idp) exactly — the comparison is case-sensitive. We recommend using the {{kib}} base URL.
 4. The ACS URL where the IdP sends authentication responses. Must be reachable from users' browsers.
 5. The URL where the IdP sends logout messages. Required for [SAML Single Logout](#saml-logout). If not configured, {{es}} refuses all `<LogoutRequest>` messages from the IdP.
-6. The SAML attribute that {{es}} uses as the username (`principal`). Replace with the URI your IdP uses. See [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
+6. The SAML attribute that {{es}} uses as the username (`principal`). Replace with the URI your IdP uses — attribute URIs vary between providers. If your IdP uses `NameID`, use `nameid` here; if it issues transient NameIDs, use `nameid:persistent` instead to avoid users getting a new identity on every login. See [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
 7. The SAML attribute that maps to group memberships. Replace with the URI your IdP uses. Optional but recommended for role-based access control.
 
 :::{note}
@@ -162,9 +162,17 @@ For the full list of available settings, refer to [SAML realm settings](elastics
 
 #### Map SAML attributes [saml-attributes-mapping]
 
-The values for `attributes.principal` and `attributes.groups` must exactly match the attribute identifiers your IdP sends. {{es}} does not require specific URIs. For options such as mapping from the SAML `NameID` or extracting part of an attribute value, refer to [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
+:::{warning}
+The attribute URIs in `attributes.principal` and `attributes.groups` must exactly match the identifiers your IdP sends in the SAML assertion — including case. A mismatch silently breaks authentication: the login may appear to succeed but the user's principal or group memberships will be missing or incorrect. Verify the exact URIs with your IdP administrator or by inspecting a captured SAML assertion.
+:::
+
+{{es}} does not require specific URIs. For options such as mapping from the SAML `NameID` or extracting part of an attribute value, refer to [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
 
 If your IdP requires signed requests or uses encrypted assertions, refer to [Signing and encryption](#saml-enc-sign).
+
+:::{note}
+SAML assertions have a short validity window. If the system clocks of {{es}} and your IdP differ by more than a few minutes, authentication will fail with a validation error. Ensure clocks are synchronized using NTP.
+:::
 ::::
 
 ::::{step} Configure role mappings
