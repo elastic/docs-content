@@ -31,7 +31,7 @@ To define an {{es}} data source, you can use:
 
 ## When to use Vega [_when_to_use_vega]
 
-For most charts, start with [Lens](lens.md) or an [{{esql}} visualization](esorql.md). Use [Maps](maps.md) for geographic data.
+For most charts, start with [Visualizations](lens.md), using either point-and-click or an [{{esql}} query](esorql.md). Use [Maps](maps.md) for geographic data.
 
 Choose **Vega** when you need full control of the specification, for example:
 
