@@ -51,7 +51,7 @@ When trace data is flowing, the dashboard looks like this:
 Before you install the dashboard:
 
 - Make sure trace collection is on for the space and the setting is saved. It is on by default. The **Install Dashboard** button appears only after trace collection is enabled and saved. For details, refer to Collect agent traces.
-- Make sure you can read the trace data stream, otherwise the panels have no data to show. For the required privileges, refer to Read trace data.
+- Make sure you can read the trace data, otherwise the panels have no data to show. For the required privileges, refer to Read trace data.
 - Make sure you can manage {{kib}} advanced settings. Installing and uninstalling the dashboard requires this privilege.
 - Install the dashboard in each {{kib}} space where you want it. It is not shared across spaces.
 
