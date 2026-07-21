@@ -460,6 +460,7 @@ serverless: preview
 ```
 
 ::::{admonition} Requirements
+:applies_to: { ess:, ece:, eck:, self: }
 For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, approximation requires an [Enterprise subscription](https://www.elastic.co/subscriptions).
 ::::
 
