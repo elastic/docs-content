@@ -45,7 +45,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Enables the advanced setting that turns on the new flyout system in {{elastic-sec}} [#279300]({{kib-pull}}279300).
 * Enables search in the **JSON** tab of the Security Solution alert flyout, matching the behavior of the Discover document flyout [#263875]({{kib-pull}}263875).
 * Adds an action in the correlations section of the alert details flyout to open a related attack as a preview (legacy expandable flyout) or as a child panel (new flyout system) [#279306]({{kib-pull}}279306).
-* Adds an **Add to chat** bulk action to the alerts table, letting analysts send up to 20 selected alerts to the {{agent-builder}} chat for triage [#270904]({{kib-pull}}270904).
+* Adds an **Add to chat** bulk action to the alerts table, letting analysts send up to 100 selected alerts to the {{agent-builder}} chat for triage [#270904]({{kib-pull}}270904).
 * Adds an **Export to CSV** button to the alerts table that exports the currently filtered alerts and links to the reporting page (requires the reporting capability) [#263895]({{kib-pull}}263895).
 * Adds an alert analysis managed workflow that gathers context around an alert, sends it to an LLM, and writes the result to alert notes and tags, optionally auto-closing high-confidence false positives. Includes a configuration UI in the rules section and requires an Enterprise license [#269743]({{kib-pull}}269743), [#276788]({{kib-pull}}276788).
 * Updates the alert **Run workflow** panel to include managed workflows, such as the alert analysis workflow [#276555]({{kib-pull}}276555).
