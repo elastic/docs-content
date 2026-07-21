@@ -26,14 +26,16 @@ Selecting a non-mobile [**service**](/solutions/observability/apm/services.md) b
 * Latency, throughput, and errors over time
 * Service dependencies
 
+Active alerts and SLOs for the service are shown at the top of the page so you can assess health at a glance without scrolling to the metadata section.
+
+Use the **Actions** menu at the top of the page to act on the service directly — for example, to create an alert rule or SLO.
+
 ```{applies_to}
 stack: ga 9.5+
 serverless: ga
 ```
 
-Active alerts and SLOs for the service are shown at the top of the page so you can assess health at a glance without scrolling to the metadata section.
-
-Use the **Actions** menu at the top of the page to act on the service directly — for example, to create an alert rule or SLO.
+An **Anomaly** badge appears at the top of the page alongside alerts and SLOs when [{{ml}}](/solutions/observability/apm/machine-learning.md) is enabled. It shows the highest anomaly score across all metrics and environments, and indicates which metric triggered the anomaly. Click the badge to navigate to the service view pre-configured with the relevant environment and anomaly threshold.
 
 ## Time series and expected bounds comparison [service-time-comparison]
 
@@ -58,11 +60,6 @@ The expected bounds comparison is powered by [machine learning](/solutions/obser
 
 Response times for the service. You can filter the **Latency** chart to display the average, 95th, or 99th percentile latency times for the service.
 
-```{applies_to}
-stack: ga 9.5+
-serverless: ga
-```
-
 Click **Open in Discover** on the **Latency** chart to explore the underlying trace data for the displayed time range directly in Discover.
 
 :::{image} /solutions/images/observability-latency.png
@@ -74,11 +71,6 @@ Click **Open in Discover** on the **Latency** chart to explore the underlying tr
 
 The **Throughput** chart visualizes the average number of transactions per minute for the selected service.
 
-```{applies_to}
-stack: ga 9.5+
-serverless: ga
-```
-
 Click **Open in Discover** on the **Throughput** chart to explore the underlying trace data directly in Discover.
 
 The **Transactions** table displays a list of *transaction groups* for the selected service and includes the latency, traffic, error rate, and the impact for each transaction. Transactions that share the same name are grouped, and only one entry is displayed for each group.
@@ -88,11 +80,6 @@ By default, transaction groups are sorted by *Impact* to show the most used and 
 ## Failed transaction rate and errors [service-error-rates]
 
 The failed transaction rate represents the percentage of failed transactions from the perspective of the selected service. It’s useful for visualizing unexpected increases, decreases, or irregular patterns in a service’s transactions.
-
-```{applies_to}
-stack: ga 9.5+
-serverless: ga
-```
 
 Click **Open in Discover** on the **Failed transaction rate** chart to explore the underlying failed transaction data directly in Discover.
 
