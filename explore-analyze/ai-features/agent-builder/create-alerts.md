@@ -57,7 +57,7 @@ After you save the rule, it appears on the **{{rules-ui}}** page, where you can 
 Each example gives an ES|QL query and the rule settings to use with it. Adjust the fields, thresholds, and time windows to your environment.
 
 :::{note}
-These queries are starting points, not tested rules. Run each one with **Test query** on your own data before you rely on it. Replace `default` in `traces-agent_builder.otel-default` with your space id. The rule applies its own time window through the **Time field** you select, so the queries do not include a `@timestamp` filter. If you test a query directly in the ES|QL editor instead, add a `@timestamp` range filter so it does not scan the full data stream.
+These queries are starting points, not tested rules. Run each one with **Test query** on your own data before you rely on it. Replace `default` in `traces-agent_builder.otel-default` with your space id. The rule applies its own time window through the **Time field** you select, so the queries do not include a `@timestamp` filter. If you run a query outside a rule, make sure a time range applies, through the {{kib}} time picker or a `@timestamp` filter in the query, so it does not scan the whole data stream.
 :::
 
 ### A conversation exceeds a token limit
