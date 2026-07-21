@@ -269,6 +269,18 @@ There are no user-facing changes in {{observability}} for the 9.4.1 release.
 * Fixes broken breadcrumbs and sidebar navigation for Data Visualizer and AIOps within solution views [#248167]({{kib-pull}}248167).
 * Fixes double scrollbars appearing in fullscreen flyouts [#247744]({{kib-pull}}247744).
 
+## 9.3.8 [elastic-observability-9.3.8-release-notes]
+
+### Features and enhancements [elastic-observability-9.3.8-features-enhancements]
+* Adds a defensive check to ensure {{product.apm}} integration policy updates always include API keys in their configuration [#274647]({{kib-pull}}274647).
+
+
+### Fixes [elastic-observability-9.3.8-fixes]
+* Fixes `retest_on_failure: false` being ignored when updating an existing Synthetics monitor through the API [#277701]({{kib-pull}}277701).
+* Fixes crashes in the {{apm-app}} caused by missing or malformed URL query parameters [#276420]({{kib-pull}}276420).
+* Fixes the **Cases** link in alert details routing to an internal URL instead of the Cases app when accessed from external apps [#275647]({{kib-pull}}275647).
+* Fixes the Task Manager API key invalidation task from prematurely invalidating shared API keys still in use by other active tasks [#275157]({{kib-pull}}275157).
+
 ## 9.3.7 [elastic-observability-9.3.7-release-notes]
 
 ### Features and enhancements [elastic-observability-9.3.7-features-enhancements]
