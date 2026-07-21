@@ -1388,6 +1388,8 @@ The following example creates a metric that counts documents over time, using th
 }
 ```
 
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When a dashboard contains a **Vega** or **Vega-Lite** panel that uses an {{esql}} data source, the dashboard's {icon}`bolt` **Fast mode** control becomes available. Selecting **Fast mode** applies approximate execution to the panel's {{esql}} requests, so they return faster, approximate results like other {{esql}} visualizations on the dashboard. For details about accuracy, confidence intervals, and limitations, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
+
 
 #### Access Elastic Map Service files [vega-esmfiles]
 ```{applies_to}
