@@ -31,7 +31,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Features and enhancements [elastic-security-9.5.0-features-enhancements]
 
-* Adds Discover, Agents, and Workflows links to the classic {{elastic-sec}} navigation [#269683]({{kib-pull}}269683).
+* Adds Discover, Agents, and Workflows links to the {{elastic-sec}} classic view [#269683]({{kib-pull}}269683).
 * Moves the {{agent-builder}} navigation link to the top of the {{elastic-sec}} navigation [#271532]({{kib-pull}}271532).
 * Makes detection rule changes history generally available. A **History** entry in the rule actions menu opens a dedicated changes-history page with an infinite-scroll timeline of recorded rule changes and a JSON diff between revisions [#278052]({{kib-pull}}278052), [#269617]({{kib-pull}}269617), [#270091]({{kib-pull}}270091).
 * Adds the ability to restore a detection rule to a previous state captured in its changes history [#274605]({{kib-pull}}274605).
@@ -97,13 +97,13 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Fixes [elastic-security-9.5.0-fixes]
 
 * Fixes the **Security** category link in the global classic side navigation, which pointed to the Value Report instead of the **Get started** page [#272155]({{kib-pull}}272155).
-* Fixes an incorrect ordering of the **Launchpad** item in the classic global side navigation. The item now appears above **Manage**, consistent with {{elastic-sec}} own classic navigation [#268216]({{kib-pull}}268216).
+* Fixes an incorrect ordering of the **Launchpad** item in the classic global side navigation. The item now appears above **Manage**, consistent with {{elastic-sec}} own classic view [#268216]({{kib-pull}}268216).
 * Fixes a crash when opening the rule panel flyout for a deleted rule caused by missing `severity_mapping` or `risk_score_mapping` fields [#278545]({{kib-pull}}278545).
 * Fixes the integration assets accordion to display the security rule name, since security rules have no title field [#272089]({{kib-pull}}272089).
 * Fixes an issue where detection engine gap errors were classified as non-user errors, which caused gap-only rule failures to count against SLO dashboards [#263244]({{kib-pull}}263244).
 * Fixes a validation error when resolving a `required_fields` conflict during a prebuilt rule upgrade [#278125]({{kib-pull}}278125).
 * Preserves the prebuilt rule `revision` (incremented by 1) when upgrading a rule to a different type, matching the behavior of same-type upgrades [#275627]({{kib-pull}}275627).
-* Fixes an issue where {{kib}} assets from an installed integration package (such as dashboards used by prebuilt detection rules) could remain stale across a {{kib}} upgrade because Fleet never overwrote existing assets on reinstall [#277953]({{kib-pull}}277953).
+* Fixes an issue where {{kib}} assets from an installed integration package (such as dashboards used by prebuilt detection rules) could remain stale across a {{kib}} upgrade because {{fleet}} never overwrote existing assets on reinstall [#277953]({{kib-pull}}277953).
 * Fixes an issue where deprecated prebuilt rules could reappear as installable after being deleted [#274447]({{kib-pull}}274447).
 * Fixes an issue where the **Delete all** action for deprecated prebuilt rules failed when more than 100 deprecated rules existed [#271550]({{kib-pull}}271550).
 * Fixes an issue in EQL rule creation where the query field did not re-validate after changing the index pattern, leaving stale errors on screen even when the query was valid for the newly selected {{data-source}} [#261027]({{kib-pull}}261027).
@@ -113,7 +113,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where the rule editing UI rejected valid semver range version constraints (such as `^8.2.0 || ^9.0.0`) on related integrations [#274133]({{kib-pull}}274133).
 * Fixes an issue where the `concurrent_searches` and `items_per_search` API fields for `threat_match` (Indicator Match) rules were reset to their defaults when the rule was saved through the UI [#276823]({{kib-pull}}276823).
 * Fixes an issue with Indicator Filters in the read-only rule details UI, where incorrect backing indices caused misleading warnings to display on hover [#263657]({{kib-pull}}263657).
-* Fixes an issue where pressing Esc while a Timeline modal was open on top of the alert details flyout closed both, dropping the analyst out of the investigation context [#279153]({{kib-pull}}279153).
+* Fixes an issue where pressing Escape while a Timeline modal was open on top of the alert details flyout closed both, dropping the analyst out of the investigation context [#279153]({{kib-pull}}279153).
 * Fixes missing cell actions in the new attack flyout in Discover and {{elastic-sec}} [#277833]({{kib-pull}}277833).
 * Fixes an error when opening a source event from the **Highlighted fields** section of the alert details flyout when the source index had been restored, and renamed, from a cold or frozen tier [#277703]({{kib-pull}}277703).
 * Fixes two display bugs in the new flyout system: a host silently dropped from the **Entities** panel, and incorrect chevron display [#277083]({{kib-pull}}277083).
@@ -138,7 +138,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes the analyzer alert-hits query so it honors the `securitySolution:excludeColdAndFrozenTiersInAnalyzer` setting, which previously excluded cold and frozen tiers only from other analyzer queries [#278972]({{kib-pull}}278972).
 * Adds a date range picker above the **Alerts related by ancestry** table in the correlations section and bounds the underlying query to it, preventing timeouts on very large indices [#278971]({{kib-pull}}278971).
 * Fixes the **Alert processing analytics** donut on the Value Report, which failed to load when many alerts were linked to attack discoveries in the report window [#277220]({{kib-pull}}277220).
-* Fixes an issue where Attack Discovery incorrectly required access to its internal backing indices, causing predefined roles such as `soc_manager` and `platform_engineer` to hit missing-index-privilege errors [#272122]({{kib-pull}}272122).
+* Fixes an issue where the Attack Discovery privilege check required access to internal backing indices instead of the user-facing alert aliases, causing roles with alias-only access to fail with missing-index-privilege errors [#272122]({{kib-pull}}272122).
 * Fixes the **Manage license** link on the Attack Discovery page to navigate directly to **License Management** instead of the {{stack-manage-app}} landing page [#266445]({{kib-pull}}266445).
 * Fixes an issue where **Add to case** actions were visible under the Attack Discovery tab when the user's Cases privilege was set to None; they are now hidden [#266127]({{kib-pull}}266127).
 * Fixes an issue where integration icons in the Attack Discovery schedule form blinked while typing in input fields [#266117]({{kib-pull}}266117).
@@ -151,18 +151,17 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a sticky redirect where users routed to Automatic Migration during onboarding could no longer open **Launchpad → Get started** afterward [#273753]({{kib-pull}}273753).
 * Fixes an issue where migrated Splunk dashboard panels failed to render in Lens with a "wrong data type" error because column types were incorrectly inferred as `unknown` [#270563]({{kib-pull}}270563).
 * Fixes an issue where uploading a migration file containing invalid rules or dashboards could leave behind an orphaned migration record [#266359]({{kib-pull}}266359).
-* Fixes migrated Splunk dashboards showing blank visualizations on initial load by removing hardcoded time fields and data view titles from migration templates [#264102]({{kib-pull}}264102).
+* Fixes migrated Splunk dashboards showing blank visualizations on initial load by removing hardcoded time fields and {{data-source}} titles from migration templates [#264102]({{kib-pull}}264102).
 * Fixes an issue in the AI Assistant where selecting all conversations and then saving an edit to a single conversation deleted all conversations instead of updating only the edited one [#274033]({{kib-pull}}274033).
 * Fixes an issue where attachments from one AI Assistant conversation leaked into the next [#273017]({{kib-pull}}273017).
 * Fixes an issue where the {{agent-builder}} announcement modal could reappear during page navigation after being dismissed, particularly in high-latency or proxy environments [#272276]({{kib-pull}}272276).
 * Fixes a duplicate "AI Assistant" section on the **Feature Settings** page by consolidating the {{elastic-sec}} AI Assistant configuration under the **Security** group, and hides the AI Assistant for Security entry when AI Assistant is not the selected chat experience [#266697]({{kib-pull}}266697).
-* Fixes {{elastic-sec}} {{serverless-full}} navigation that ignored registered UI defaults for the preferred chat experience and Elastic Workflows UI when no space value was saved, leaving navigation on Classic or disabled even though **GenAI Settings** showed Agent [#266824]({{kib-pull}}266824).
 * Removes Beta labels and badges from the AI Agent chat experience, including the chat selection card, announcement modal, advanced settings value, and Elastic {{observability}} opt-in tour [#264200]({{kib-pull}}264200).
 * Suppresses the AI Agent announcement modal in automated browser sessions by checking `navigator.webdriver`, so synthetic monitors and end-to-end tests are not affected [#263785]({{kib-pull}}263785).
 * Updates the copy in the AI Agent announcement modal [#263034]({{kib-pull}}263034).
 * Fixes the **Threat Intelligence** page height in classic navigation, where the page did not fill the available window space [#276150]({{kib-pull}}276150).
 * Fixes an issue where the **Data Quality** dashboard showed no data when {{kib}} was set to Japanese [#265782]({{kib-pull}}265782).
-* Fixes the events histogram and host/network event count panels on the **Overview** dashboard, which incorrectly included alert documents in event counts, and ensures compatibility with cross-cluster search so events from remote clusters are correctly included [#265561]({{kib-pull}}265561).
+* Fixes the events histogram and host/network event count panels on the **Overview** dashboard, which incorrectly included alert documents in event counts, and ensures compatibility with {{ccs}} so events from remote clusters are correctly included [#265561]({{kib-pull}}265561).
 * Fixes an issue where the last event ingested metric pulled from an incorrect scope and too few indices [#262346]({{kib-pull}}262346).
 * Fixes Entity Store routing so it respects the feature flag's registered default instead of always behaving as if the flag were off [#269642]({{kib-pull}}269642).
 * Fixes an issue where uninstalling the entity store could delete Entity Store indices and data streams while other engines were still running; they are now kept while any engine is present [#276697]({{kib-pull}}276697).
@@ -182,7 +181,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes unreachable last pages in grouped tables with more than 10,000 groups by capping pagination at the 10,000-group limit and revealing pages progressively with a **Load more** control [#277322]({{kib-pull}}277322).
 * Restores the asset inventory telemetry usage collector, which had stopped reporting `asset_inventory` stats [#271944]({{kib-pull}}271944).
 * Fixes an error that prevented adding the Osquery Manager integration in custom {{kib}} spaces when a global Osquery pack existed in the Default space [#278498]({{kib-pull}}278498).
-* Fixes intermittent duplicate execution of scheduled Osquery packs by deduplicating concurrent Fleet package-policy writes for package policies shared across multiple agent policies [#278159]({{kib-pull}}278159).
+* Fixes intermittent duplicate execution of scheduled Osquery packs by deduplicating concurrent {{fleet}} package-policy writes for package policies shared across multiple agent policies [#278159]({{kib-pull}}278159).
 * Fixes Osquery agent selection, policy grouping, and live query dispatch for agents whose `policy_id` carries a version suffix (such as `<id>#9.5`) [#277283]({{kib-pull}}277283).
 * Fixes empty **Last results**, **Docs**, and **Agents** columns on the Osquery pack details page for scheduled queries [#267894]({{kib-pull}}267894).
 * Extends the query execution timeout to 24 hours [#262008]({{kib-pull}}262008).
