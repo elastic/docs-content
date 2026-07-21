@@ -74,8 +74,8 @@ Alert detail pages for {{product.apm}} rules include additional context to help 
 
 For **{{product.apm}} anomaly** alerts specifically, the alert detail page also includes:
 
-* A **{{product.apm}} anomaly detected** callout that identifies which metric (latency, throughput, or error rate) the anomaly was detected on, color-coded by severity (warning, minor, major, or critical).
-* An **anomaly badge** on the corresponding RED metric chart, with the severity label, icon, and color matching the detected anomaly.
+* A severity-colored callout with a title in the format **{Severity} {{product.apm}} anomaly detected - {Detector}** — for example, "Warning {{product.apm}} anomaly detected - Latency". The callout color reflects the anomaly severity: critical anomalies appear in red, major and minor anomalies in yellow, and warning anomalies in blue.
+* An **anomaly badge** on the specific RED metric chart where the anomaly was detected — for example, the badge appears on the **Latency** chart for a latency anomaly.
 
 ## Review related alerts [observability-view-alerts-find-related-alerts]
 ```{applies_to}
