@@ -149,10 +149,10 @@ This section describes the most common settings. For the full list of available 
 :   A unique identifier for your {{kib}} instance, expressed as a URI. Must match exactly the entity ID you [configure in your IdP](#saml-configure-idp). The comparison is case-sensitive. We recommend using the {{kib}} base URL.
 
 `sp.acs`
-:   The URL within {{kib}} that receives authentication responses from your IdP, using the HTTP-POST binding. Set this to `{kibana-url}/api/security/saml/callback`. This URL must be reachable from users' browsers — it does not need to be directly accessible by {{es}} or the IdP. If {{kib}} is behind a reverse proxy, use the public-facing URL.
+:   The URL of the Assertion Consumer Service within {{kib}} that receives authentication responses from your IdP, using the HTTP-POST binding. For example, `https://kibana.example.com/api/security/saml/callback`. This URL must be reachable from users' browsers — it does not need to be directly accessible by {{es}} or the IdP. If {{kib}} is behind a reverse proxy, use the public-facing URL.
 
 `sp.logout`
-:   The URL where the IdP sends logout messages. Required for [SAML Single Logout](#saml-logout). If not configured, {{es}} refuses all `<LogoutRequest>` messages from the IdP.
+:   The URL of the Single Logout service within {{kib}} that receives logout messages from your IdP. For example, `https://kibana.example.com/logout`. Required for [SAML Single Logout](#saml-logout). If not configured, {{es}} refuses all `<LogoutRequest>` messages from the IdP.
 
 `attributes.principal` (required)
 :   The SAML attribute that {{es}} uses as the username (`principal`). Replace with the URI your IdP uses. Attribute URIs vary between providers. If your IdP uses `NameID`, use `nameid` here. Refer to [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md) for more details.
