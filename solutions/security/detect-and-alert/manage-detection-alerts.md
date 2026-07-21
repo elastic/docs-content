@@ -37,7 +37,7 @@ The Alerts page is your central hub for triaging and investigating detection ale
 | Add to case | Click the **More actions** icon {icon}`boxes_horizontal` > **Add to case** |
 | Investigate in Timeline | Click **Investigate in timeline** icon {icon}`timeline` |
 | Add exception | Click the **More actions** icon {icon}`boxes_horizontal` > **Add exception** |
-| Export alerts to CSV {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Click **Export to CSV** in the toolbar. Requires [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access). |
+| Export alerts to CSV {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | In the toolbar, select the option to export to CSV. Requires [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access). |
 
 
 ## Filter alerts [detection-view-and-filter-alerts]
