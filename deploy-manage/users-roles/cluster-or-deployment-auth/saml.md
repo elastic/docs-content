@@ -21,7 +21,7 @@ products:
   - id: cloud-kubernetes
 ---
 
-# SAML single sign-on [saml-realm]
+# SAML authentication [saml-realm]
 
 % eedugon note: compare with original, add extra links if needed (advanced, etc.. perhaps)
 
