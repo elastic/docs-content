@@ -14,14 +14,10 @@ products:
 
 Add a **Vega** panel on a dashboard to use these grammars with {{kib}} filters, the time range, and other [{{kib}} extensions](#reference-for-kibana-extensions). Panels can also use Elastic Map Service, URL, or static data.
 
-Use **Vega** when you need a chart type or data shape that other editors do not support, for example custom marks, multi-source specs, or aggregations without a {{data-source}}. These grammars do not support tables, and can’t run queries conditionally.
-
 To define an {{es}} data source, you can use:
 
 * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` An [{{esql}}](../query-filter/languages/esql-kibana.md) query (recommended). One query string replaces nested Query DSL aggregations and format paths. See [Writing {{esql}} queries in Vega](#vega-esql-queries).
 * An {{es}} [Query DSL](#vega-queries) search. Use this approach when {{esql}} is unavailable, or when you already have a Query DSL request you want to reuse.
-
-Start with the tutorials below.
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-vega
@@ -31,6 +27,23 @@ Start with the tutorials below.
 :alt: Vega UI
 :screenshot:
 :::
+
+
+## When to use Vega [_when_to_use_vega]
+
+For most charts, start with [Lens](lens.md) or an [{{esql}} visualization](esorql.md). Use [Maps](maps.md) for geographic data.
+
+Choose **Vega** when you need full control of the specification, for example:
+
+* Chart types that other editors do not support, such as scatter charts, sankey charts, or a custom visual theme
+* Aggregations that use `nested` or `parent/child` mapping
+* Aggregations without a {{data-source}}
+* Queries that use custom time filters
+* Complex calculations
+* Data extracted from `_source` instead of aggregations
+* Multiple data sources in one panel
+
+**Vega** and **Vega-Lite** do not support tables, and can’t run queries conditionally.
 
 
 ## Tutorials [_tutorials_create_custom_panels]
