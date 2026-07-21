@@ -613,6 +613,8 @@ toc:
                   - file: security/detect-and-alert/cross-project-search-detection-rules.md
                   - file: security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md
           - file: security/detect-and-alert/mitre-attack-coverage.md
+            children:
+              - file: security/detect-and-alert/remap-mitre-attack.md
           - file: security/detect-and-alert/prebuilt-rules.md
             children:
               - file: security/detect-and-alert/prebuilt-rule-components.md
