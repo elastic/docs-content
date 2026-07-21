@@ -57,7 +57,7 @@ After you save the rule, it appears on the **{{rules-ui}}** page, where you can 
 Each example gives an ES|QL query and the rule settings to use with it. Adjust the fields, thresholds, and time windows to your environment.
 
 :::{note}
-These queries are starting points, not tested rules. Run each one with **Test query** on your own data before you rely on it. Replace `default` in `traces-agent_builder.otel-default` with your space id. The rule applies its own time window through the **Time field** you select, so the queries do not include a `@timestamp` filter.
+These queries are starting points, not tested rules. Run each one with **Test query** on your own data before you rely on it. Replace `default` in `traces-agent_builder.otel-default` with your space id. The rule applies its own time window through the **Time field** you select, so the queries do not include a `@timestamp` filter. If you test a query directly in the ES|QL editor instead, add a `@timestamp` range filter so it does not scan the full data stream.
 :::
 
 ### A conversation exceeds a token limit
@@ -108,8 +108,8 @@ Alert when an agent's error rate goes above a threshold. Count each agent's exec
 ```esql
 FROM traces-agent_builder.otel-default
 | WHERE `span.name` LIKE "invoke_agent *" AND attributes.elastic.inference.span.kind == "AGENT"
-| EVAL is_error = CASE(status.code == "Error", 1, 0)
-| STATS executions = COUNT(*), errors = SUM(is_error) BY attributes.gen_ai.agent.id
+| STATS executions = COUNT(*), errors = COUNT(*) WHERE status.code == "Error"
+    BY attributes.gen_ai.agent.id
 | EVAL error_rate = TO_DOUBLE(errors) / executions
 | WHERE executions >= 20 AND error_rate > 0.1
 ```
