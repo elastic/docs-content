@@ -3,7 +3,7 @@ navigation_title: FAQ
 description: Frequently asked questions about Elastic Managed integrations, including limits, supportability, data residency, and common setup questions.
 applies_to:
   stack: ga 9.5+, preview 9.0-9.4
-  serverless: preview
+  serverless: ga
 products:
   - id: elastic-agent
   - id: fleet
@@ -92,7 +92,7 @@ No. {{managed-integrations}} run on shared infrastructure and don't use a fixed 
 
 ```{applies_to}
 stack: ga 9.5+, preview 9.1+
-serverless: preview
+serverless: ga
 ```
 
 Yes. {{managed-integrations}} support traffic filtering, and no additional configuration is necessary.
@@ -134,7 +134,7 @@ Each integration policy shows the integration's status, so you can check its hea
 
 :::::{applies-switch}
 
-::::{applies-item} {serverless: preview, stack: ga 9.5+}
+::::{applies-item} {serverless: ga, stack: ga 9.5+}
 Each integration's status appears on its **Integration policies** tab in the **{{integrations}}** app.
 
 If an {{managed-integration}} is unhealthy:
