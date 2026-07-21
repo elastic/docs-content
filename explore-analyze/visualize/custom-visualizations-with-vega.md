@@ -59,7 +59,7 @@ stack: ga 9.4
 serverless: ga
 ```
 
-Learn how to query your data with {{esql}} from **Vega-Lite** and display the results in a line chart. {{kib}} converts the columnar {{esql}} response into the row-based format that **Vega** expects, so you do not need nested aggregation paths or a `format` property.
+Learn how to query your data with {{esql}} from **Vega-Lite** and display the results in a line chart.
 
 #### Before you begin [_vega_esql_tutorial_before_you_begin]
 
@@ -83,10 +83,10 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
   "title": "Event counts over time",
   "data": {
     "url": {
-      "%type%": "esql",
-      "%context%": true,
-      "%timefield%": "@timestamp",
-      "query": "FROM kibana_sample_data_logs | WHERE @timestamp >= ?_tstart AND @timestamp <= ?_tend | STATS doc_count=COUNT() BY key=DATE_TRUNC(2 hour, @timestamp) | SORT key"
+      "%type%": "esql", <1>
+      "%context%": true, <2>
+      "%timefield%": "@timestamp", <3>
+      "query": "FROM kibana_sample_data_logs | WHERE @timestamp >= ?_tstart AND @timestamp <= ?_tend | STATS doc_count=COUNT() BY key=DATE_TRUNC(2 hour, @timestamp) | SORT key" <4>
     }
   },
   "mark": "line",
@@ -105,9 +105,12 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
 }
 ```
 
-The chart shows event counts over time from `kibana_sample_data_logs`. The `"%type%": "esql"` setting tells {{kib}} to run the query as {{esql}}. `"%context%": true` and `"%timefield%": "@timestamp"` apply the dashboard filters and time range through the `?_tstart` and `?_tend` parameters in the query.
+1. Tells {{kib}} to run the query as {{esql}}.
+2. Applies the dashboard filters to the query.
+3. Enables the `?_tstart` and `?_tend` named parameters so the query uses the dashboard time range.
+4. The {{esql}} query. {{kib}} converts the columnar response into the row-based format that **Vega** expects.
 
-For the full list of {{esql}} `url` parameters, see [Writing {{esql}} queries in Vega](#vega-esql-queries).
+The chart shows event counts over time from `kibana_sample_data_logs`. For the full list of {{esql}} `url` parameters, see [Writing {{esql}} queries in Vega](#vega-esql-queries).
 
 To continue with interactive filtering and Query DSL examples, follow the tutorials below.
 
