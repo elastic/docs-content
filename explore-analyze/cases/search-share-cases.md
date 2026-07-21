@@ -23,17 +23,45 @@ Quickly locate relevant cases and share them with others or external ticketing s
 
 ## Search cases [search-cases]
 
-The **Cases** page has a search bar for quickly finding cases and case data. You can search for case titles, descriptions, and IDs using keywords and text. 
+The **Cases** page has a search bar for quickly finding cases and case data. You can search for case titles, descriptions, and IDs using keywords and text.
 
 Note the following rules for search:
 
 * **Keywords**: Searches for keywords (like case and alert IDs) must be exact.
 * **Text**: Text searches (such as case titles and descriptions) are case-insensitive.
-* **Syntax**: No special syntax is required when entering your search criteria.
+* **Multi-word terms**: If a term contains spaces, wrap it in quotation marks so it's treated as a single term. For example, `"Needs review"`.
+* **Multiple criteria**: To search on more than one criterion at once, separate each term with a space.
+* **Syntax**: No special syntax is required for general keyword and text searches. To target a field library or custom field, use `label:value` syntax (described later).
 
-{applies_to}`stack: ga 9.3+` You can also search for alert and event IDs, observable values, case comments, and custom fields (text type only). For example, you can search {{elastic-sec}} for a specific IP address that's been specified as an observable, a colleague's comment, or the ID of an alert that's attached to the case.
+### Search alerts, comments, and observables [search-case-related-data]
 
-{applies_to}`stack: ga 9.5+` You can also search by the values of [case template and field library](manage-case-templates.md) fields, using each field's label rather than its internal name. Number, date, checkbox, and user-selection fields all support search, including numeric and date ranges.
+```{applies_to}
+stack: ga 9.3+
+```
+
+You can also search for alert and event IDs, observable values, case comments, and custom fields (text type only). For example, in {{elastic-sec}} you can search for a specific IP address that's been specified as an observable, a colleague's comment, or the ID of an alert that's attached to the case.
+
+### Search template and field library values [search-case-field-values]
+
+```{applies_to}
+stack: ga 9.5+
+```
+
+You can search by the values of [case template and field library](manage-case-templates.md) fields. Use each field's label rather than its internal name. Number, date, checkbox, and user-selection fields all support search, including numeric and date ranges.
+
+To target a specific field, use `label:value` syntax. The left side is the field's label as it appears on the case; the right side is the value to match. For example, the following finds cases where the field labeled `Team` is set to `A1`:
+
+```text
+"Team":"A1"
+```
+
+Unlike general text search, `label:value` searches are case-sensitive. For example, `"Team":"A1"` matches `A1`, not `a1`. You can mix `label:value` pairs with free-text terms in the same query:
+
+```text
+"Team":"A1" "Priority":"High" phishing "Escalation reason"
+```
+
+Substring matches also work. For example, `"Summary":"network"` matches a text area whose value contains "network".
 
 ## Filter cases [filter-cases]
 

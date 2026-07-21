@@ -106,10 +106,10 @@ A condition is either a single rule or a compound rule that combines several sin
 
 ## Reference a field from the library [case-templates-field-ref]
 
-Instead of redefining a field inline, a template can reference a field library entry by name.
+Instead of redefining a field inline, a template can reference a reusable field from the library with `$ref` and the field's `name`. Global fields appear on every case automatically and don't need a `$ref`.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `$ref` | string | Name of a field library entry | Required. The library field to reuse. |
+| `$ref` | string | Name of a field library entry | Required. The library field's `name` (not its label) to reuse. |
 | `name` | string | Any string | Optional local alias for this template. If omitted, the library field's own name is used. |
 | `metadata.default` | Depends on the referenced field's control | Any value valid for that control | Optional. Overrides the referenced field's default value for this template only. |

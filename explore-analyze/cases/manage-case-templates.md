@@ -69,14 +69,15 @@ metadata:
 validation:
   required: true
 ```
+Refer to the [YAML schema reference for case templates](yaml-template-schema-reference.md) for the complete list of supported keys, field types, and validation and display options.
 
 To create a field:
 
 1. From the **Templates** page, select **Field library**, then click **Create field definition**.
 2. (Optional) Add a description.
 3. (Optional) Turn on **Global field** if the field should apply to every case.
-4. In the YAML editor, define the field's name, label, and type. Add any options the type requires, such as a list of choices, and set validation and display rules if needed. The editor validates your YAML and suggests values as you type. A live preview shows how the field will render, and changes you make in the preview sync back to the YAML. Refer to the [YAML schema reference for case templates](yaml-template-schema-reference.md) for the complete list of supported keys, field types, and validation and display options.
-5. Click **Save**. Global fields are added to all new and existing cases immediately. Reusable fields become available to add to a template by referencing the field's name.
+4. In the YAML editor, define the field's name, label, and type. Add any options the type requires, such as a list of choices, and set validation and display rules if needed. The editor validates your YAML and suggests values as you type. A live preview shows how the field will render, and changes you make in the preview sync back to the YAML.
+5. Click **Save**. Global fields are added to all new and existing cases immediately. Reusable fields become available to add to a template with `$ref` and the field's `name`.
 
 ## Create a template [case-templates-create-template]
 
@@ -85,13 +86,13 @@ The template editor has a YAML pane and a preview pane with **Fields** and **Set
 To create a template:
 
 1. From the **Templates** page, click **Create**.
-2. In the YAML editor, define the template's name, description, tags, severity, category, and the fields you want it to pre-fill. Add any fields from your field library by name. Refer to the [YAML schema reference for case templates](yaml-template-schema-reference.md) for every supported key.
+2. In the YAML editor, define the template's name, description, tags, severity, category, and the fields you want it to pre-fill. Add reusable fields from your field library using `$ref`. Refer to the [YAML schema reference for case templates](yaml-template-schema-reference.md) for every supported key.
 3. Select the **Settings** tab to optionally set a default connector and default case settings (**Sync alert status** and **Auto-extract observables**).
 4. Turn the template on so it's available when creating a case, then click **Save**.
 
 As you edit, the editor validates your YAML and suggests values, and the **Fields** tab shows a live preview of how the template will render on the case creation form. Changes you make in the preview sync back to the YAML.
 
-To add a field from the library instead of redefining it, reference it by name:
+Global fields appear on every case automatically, so you don't add them to a template. To include a reusable (non-global) field from the library, reference it with `$ref` and the field's `name` (not its label). For example, to add the `summary` field from the library:
 
 ```yaml
 fields:
@@ -143,4 +144,4 @@ You can apply a template when you create a case, or apply a different template t
 
 ## Search cases by template field values [case-templates-search]
 
-Cases are searchable by their template and field library values, using the field's label rather than its internal name. Refer to [Search cases](search-share-cases.md#search-cases).
+Cases are searchable by their template and field library values, using the field's label rather than its internal name. On the **Cases** page, use case-sensitive `label:value` syntax (for example, `"Team":"A1"`). For search syntax and rules, refer to [Search template and field library values](search-share-cases.md#search-case-field-values).
