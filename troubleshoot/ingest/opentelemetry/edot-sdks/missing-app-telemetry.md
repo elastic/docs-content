@@ -34,7 +34,7 @@ Use this table to quickly spot the usual causes and fixes.
 | Works locally, not on prod       | Different environment/flags in container or service  | Match prod environment settings and restart |
 | Still unsure                     | Enable debug logging                         | Inspect logs for disabled/unsupported/delayed initialization hints |
 
-### Elastic OTel central configuration toggles at a glance [edot-central-configuration-toggles-at-a-glance]
+### EDOT central configuration toggles at a glance [edot-central-configuration-toggles-at-a-glance]
 
 If you use central configuration using OpAMP, these options can mute or change signals even when local `OTEL_*` looks correct.
 

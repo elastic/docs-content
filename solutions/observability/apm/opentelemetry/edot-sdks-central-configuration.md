@@ -34,7 +34,7 @@ Supported configurations are also tagged with the ![dynamic config](/solutions/i
 | PHP | EDOT PHP SDK | [Configuration reference](elastic-otel-php://reference/edot-php/configuration.md) |
 | Python | EDOT Python SDK | [Configuration reference](elastic-otel-python://reference/edot-python/configuration.md) |
 
-## Elastic OTel configuration [_edot_configuration]
+## EDOT configuration [_edot_configuration]
 
 EDOT SDK configuration is an optional feature. To activate it, refer to [EDOT SDK Central Configuration](/solutions/observability/apm/opentelemetry/edot-sdks-central-configuration.md).
 

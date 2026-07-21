@@ -39,7 +39,7 @@ There are several ways to send OpenTelemetry data to Elastic. The right choice d
 
 ### Instrument your applications
 
-* **Elastic OTel language SDKs**: Use Elastic's customized OpenTelemetry SDKs, which apply opinionated defaults and preselected instrumentations for zero-code setup, with full Elastic support. The recommended approach for most applications. Refer to [Why use the Elastic Distributions of OpenTelemetry?](#why-use-the-elastic-distributions-of-opentelemetry) for more information.
+* **EDOT language SDKs**: Use Elastic's customized OpenTelemetry SDKs, which apply opinionated defaults and preselected instrumentations for zero-code setup, with full Elastic support. The recommended approach for most applications. Refer to [Why use the Elastic Distributions of OpenTelemetry?](#why-use-the-elastic-distributions-of-opentelemetry) for more information.
 * **Contrib OpenTelemetry SDKs**: Use community OpenTelemetry SDKs for a language that doesn't have an EDOT SDK, such as Go or C++. These work with Elastic over OTLP but receive community support only. Refer to [Contrib OpenTelemetry Collector and SDKs](#apm-otel-upstream) for more information.
 * **Elastic {{product.apm}} agents with the OpenTelemetry bridge**: Instrument your application with the vendor-neutral OpenTelemetry API while the Elastic {{apm-agent}} collects and exports the data. Useful for reusing existing manual OpenTelemetry instrumentation without vendor lock-in, though some OpenTelemetry API features aren't supported. Refer to [Contrib OpenTelemetry with Elastic {{apm-agent}}](#apm-otel-api-sdk-elastic-agent) for more information.
 

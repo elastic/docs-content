@@ -25,7 +25,7 @@ As a first step, review the [supported technologies](elastic-otel-python://refer
 
 Follow these recommended actions to make sure that EDOT Python is configured correctly.
 
-### Elastic OTel logging level [edot-logging-level] 
+### EDOT logging level [edot-logging-level] 
 
 ```{applies_to}
 product:
