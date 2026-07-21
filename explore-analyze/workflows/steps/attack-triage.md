@@ -15,7 +15,7 @@ products:
 
 # Attack triage action steps [workflows-attack-triage-steps]
 
-Attack triage action steps let workflows manage the same alert and attack lifecycle you triage on the [Attacks page](/solutions/security/ai/attacks-page.md), including status changes, assignments, and tags on individual alerts and on the correlated attacks that group them, in {{elastic-sec}}.
+Attack triage action steps let workflows manage the same alert and attack lifecycle you triage on the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), including status changes, assignments, and tags on individual alerts and on the correlated attacks that group them, in {{elastic-sec}}.
 
 :::{note}
 These steps live under the `security.*` step type namespace (for example, `security.setAlertStatus`, `security.setAttackStatus`). They expose explicit input schemas for operations that were previously reachable only through the generic `kibana.request` step, so parameters are validated at save time and discoverable in the Workflows editor.
@@ -210,7 +210,7 @@ Add or remove tags on one or multiple attacks.
 
 ## Related
 
-- [Triage and manage attacks](/solutions/security/ai/attacks-page.md): The {{kib}} UI for the alerts and attacks these steps automate.
+- [Triage and manage attacks](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md): The {{kib}} UI for the alerts and attacks these steps automate.
 - [Kibana action steps](/explore-analyze/workflows/steps/kibana.md): The `kibana.SetAlertsStatus` and `kibana.SetAlertTags` steps predate this namespace; the `security.*` steps on this page are now the preferred path for alert triage.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): Hand off a triaged alert or attack to a case after status, assignee, or tag changes.
 - [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md): Run a workflow automatically when a detection rule generates an alert.
