@@ -108,6 +108,7 @@ The following fields are available under `StackConfigPolicy.spec.elasticsearch`:
 | `indexTemplates.composableIndexTemplates` | Configure [index templates](/manage-data/data-store/templates.md#index-templates) to define settings, mappings, and aliases that can be applied automatically to new indices.<br><br>[Specifics for index and component templates](#templates-specifics) | [Named resources map](#syntax-types)<br><br>[Index template API]({{es-apis}}operation/operation-indices-put-index-template) |
 | `indexTemplates.componentTemplates` | Configure [component templates](/manage-data/data-store/templates.md#component-templates), reusable building-blocks to define settings, mappings, and aliases for new indices.<br><br>[Specifics for index and component templates](#templates-specifics) | [Named resources map](#syntax-types)<br><br>[Component template API]({{es-apis}}operation/operation-cluster-put-component-template) |
 | `securityRoleMappings` | Configure [role mappings](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) to associate roles to users based on rules. | [Named resources map](#syntax-types)<br><br>[Role mapping API]({{es-apis}}operation/operation-security-put-role-mapping) |
+| `securityRoles` {applies_to}`eck: ga 3.5` | Define custom {{es}} roles that are merged into the `roles.yml` file mounted into {{es}} pods. Refer to [Specifics for security roles](#k8s-stack-config-policy-specifics-security-roles). | [Named resources map](#syntax-types)<br><br>[Security role API]({{es-apis}}operation/operation-security-put-role) |
 
 ### Specifics for secret mounts [k8s-stack-config-policy-specifics-secret-mounts]
 
@@ -151,6 +152,16 @@ spec:
         my-component-template:
           # ...
 ```
+
+### Specifics for security roles [k8s-stack-config-policy-specifics-security-roles]
+```{applies_to}
+deployment:
+  eck: ga 3.5
+```
+
+The `securityRoles` field lets you define custom {{es}} roles declaratively through a `StackConfigPolicy` and apply them consistently across multiple clusters.
+
+Unlike most SCP-managed settings, roles are **not** configured through the {{es}} file-based settings API (which does not support the `roles` resource). Instead, ECK merges the role definitions into the `roles.yml` file mounted into {{es}} pods. {{es}} hot-reloads this file at runtime, so role changes take effect without a pod restart.
 
 ## {{kib}} settings [kib-settings]
 
@@ -300,6 +311,45 @@ spec:
               number_of_shards: 1
           version: 1
 ```
+
+### Define custom {{es}} roles through a policy [k8s-stack-config-policy-security-roles-example]
+```{applies_to}
+deployment:
+  eck: ga 3.5
+```
+
+Use `securityRoles` to declaratively define {{es}} roles and apply them across multiple clusters:
+
+```yaml
+apiVersion: stackconfigpolicy.k8s.elastic.co/v1alpha1
+kind: StackConfigPolicy
+metadata:
+  name: custom-roles-policy
+spec:
+  resourceSelector:
+    matchLabels:
+      env: production
+  elasticsearch:
+    securityRoles:
+      my-app-reader:
+        cluster:
+          - monitor
+        indices:
+          - names:
+              - logs-*
+            privileges:
+              - read
+              - view_index_metadata
+      my-app-writer:
+        indices:
+          - names:
+              - logs-*
+            privileges:
+              - write
+              - create_index
+```
+
+Roles defined here are merged into `roles.yml` and hot-reloaded by {{es}} without requiring a pod restart.
 
 ### Configure both {{es}} and {{kib}} through a policy
 
