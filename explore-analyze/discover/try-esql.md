@@ -106,7 +106,7 @@ When you write a query, the {{esql}} editor includes two interactive browsers th
 - **Fields browser**: lists fields for the data sources currently in your query and lets you insert one field at a time at the cursor position.
 
 :::{note}
-:applies_to: {stack: preview 9.4.0, serverless: unavailable}
+:applies_to: {stack: preview 9.4.0, serverless: preview}
 [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) aren't shown in the data source browser but they're visible through the autocomplete menu suggestions.
 :::
 
