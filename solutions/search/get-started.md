@@ -52,7 +52,7 @@ Get hands-on experience with {{es}} using guided tutorials that walk you through
 
 - [**Index and search basics**](/solutions/search/get-started/index-basics.md): Learn how to create indices, add documents, and perform searches
 - [**Keyword search with Python**](/solutions/search/get-started/keyword-search-python.md): Build your first search query with Python
-- [**Semantic search**](/solutions/search/get-started/semantic-search.md): Implement semantic search using embeddings
+- [**Semantic search**](/solutions/search/get-started/semantic-search.md): Implement semantic search with vector embeddings using the `semantic_text` workflow
 :::::
 :::::{step} Identify your search goals
 Depending on your use case, you can choose multiple [search approaches](/solutions/search/search-approaches.md), for example full-text and semantic search.
