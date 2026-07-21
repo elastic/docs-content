@@ -20,7 +20,7 @@ Using OpenTelemetry for Real User Monitoring (RUM) with {{product.observability}
 You can instrument your web application with OpenTelemetry browser instrumentation for use with {{product.observability}}. The following sections detail the required components and their proper configuration to acquire traces, logs, and metrics from the application to visualize them within {{kib}}.
 
 :::{note}
-Elastic also provides the [Elastic OTel Browser](elastic-otel-rum-js://reference/edot-browser/index.md), a managed distribution of the OpenTelemetry Browser SDK with Elastic-specific enhancements.
+Elastic also provides the [EDOT Browser](elastic-otel-rum-js://reference/edot-browser/index.md), a managed distribution of the OpenTelemetry Browser SDK with Elastic-specific enhancements.
 :::
 
 ## Before you begin [before-you-begin]

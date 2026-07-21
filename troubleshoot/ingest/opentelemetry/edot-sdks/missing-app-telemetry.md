@@ -1,6 +1,6 @@
 ---
 navigation_title: No app-level telemetry in Kibana
-description: Diagnose lack of telemetry flow due to issues with Elastic OTel SDKs.
+description: Diagnose lack of telemetry flow due to issues with EDOT SDKs.
 applies_to:
   stack:
   serverless:
@@ -15,7 +15,7 @@ products:
 
 # No application-level telemetry visible in Kibana
 
-This page helps you diagnose why application-level telemetry doesn’t appear when using Elastic OTel SDKs:
+This page helps you diagnose why application-level telemetry doesn’t appear when using EDOT SDKs:
 
 * [The SDK is turned off (`OTEL_SDK_DISABLED`)](#sdk-disabled)
 * [Auto-instrumentation or SDK initialization runs at the wrong time](#auto-instrumentation-not-attached)
@@ -90,7 +90,7 @@ To fix the issue, try the following:
 
 	Restart after changing any configuration. Some SDKs only read environment variables at startup.
 
-If telemetry is still missing, you can enable debug logging. Refer to [Enable debug logging for Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md) for guidance. Make sure to [verify that you're looking at the right logs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md#verify-youre-looking-at-the-right-logs). If traces are missing due to sampling configuration, refer to [Missing or incomplete traces due to SDK sampling](/troubleshoot/ingest/opentelemetry/edot-sdks/misconfigured-sampling-sdk.md).
+If telemetry is still missing, you can enable debug logging. Refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md) for guidance. Make sure to [verify that you're looking at the right logs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md#verify-youre-looking-at-the-right-logs). If traces are missing due to sampling configuration, refer to [Missing or incomplete traces due to SDK sampling](/troubleshoot/ingest/opentelemetry/edot-sdks/misconfigured-sampling-sdk.md).
 
 ## Auto-instrumentation isn’t attaching [auto-instrumentation-not-attached]
 
@@ -149,7 +149,7 @@ Check the following:
 
 * **Compatibility tables**
 
-	Verify that your runtime and frameworks are supported by the SDK. Refer to the [Elastic OTel SDK compatibility reference](opentelemetry://reference/compatibility/sdks.md) for more information.
+	Verify that your runtime and frameworks are supported by the SDK. Refer to the [EDOT SDK compatibility reference](opentelemetry://reference/compatibility/sdks.md) for more information.
 
 * **Major version mismatches**
 

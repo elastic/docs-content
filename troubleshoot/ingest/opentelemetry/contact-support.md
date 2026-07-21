@@ -77,7 +77,7 @@ To help Elastic Support investigate the problem efficiently, please include the 
 
 ### Logs and diagnostics
 
-* Recent Collector logs with relevant errors or warning messages. For guidance on enabling debug logging, refer to [Enable debug logging for the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) or [Enable debug logging for Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+* Recent Collector logs with relevant errors or warning messages. For guidance on enabling debug logging, refer to [Enable debug logging for the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) or [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 * Output from:
 
   ```bash

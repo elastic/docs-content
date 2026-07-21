@@ -53,11 +53,11 @@ The **Infrastructure** tab assumes you're observing the service and its underlyi
 
 **Elastic APM Agent** or **Elastic Agent system integration**: Queries ECS data from Metricbeat or Elastic Agent integrations.
 
-**OTel SDK** or **Elastic OTel SDK**: Queries OpenTelemetry semantic convention (semconv) data from the OTel Collector or {{agent}} (for example, `hostmetricsreceiver.otel`, `kubeletstatsreceiver.otel`, `dockerstatsreceiver.otel`).
+**OTel SDK** or **EDOT SDK**: Queries OpenTelemetry semantic convention (semconv) data from the OTel Collector or {{agent}} (for example, `hostmetricsreceiver.otel`, `kubeletstatsreceiver.otel`, `dockerstatsreceiver.otel`).
 Cross-schema setups show as **N/A**:
 
 - A service instrumented with Elastic APM or Elastic Agent, but running on infrastructure observed only by the OTel Collector.
-- A service instrumented with an OTel or Elastic OTel SDK, but running on infrastructure observed only by Metricbeat or the Elastic Agent system, Kubernetes, or Docker integrations.
+- A service instrumented with an OTel or EDOT SDK, but running on infrastructure observed only by Metricbeat or the Elastic Agent system, Kubernetes, or Docker integrations.
 
 To see infrastructure metrics, make sure the service instrumentation and the infrastructure collector use the same schema.
 ::::

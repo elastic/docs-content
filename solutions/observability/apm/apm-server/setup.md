@@ -50,7 +50,7 @@ Fleet-managed APM Server does *not* support all the outputs that are supported b
 
 **Required components**:
 
-* Elastic OTel SDKs or APM agents
+* EDOT SDKs or APM agents
 * {{agent}} (which runs multiple subprocesses including APM Server, Fleet Server, and {{stack}})
 
 **Configuration method**: {{kib}} UI
@@ -81,7 +81,7 @@ Install, configure, and run the APM Server binary wherever you need it.
 
 **Required components**:
 
-* Elastic OTel SDKs or APM agents
+* EDOT SDKs or APM agents
 * APM Server
 * {{stack}}
 

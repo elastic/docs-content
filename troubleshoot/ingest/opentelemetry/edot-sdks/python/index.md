@@ -1,6 +1,6 @@
 ---
-navigation_title: Elastic OTel Python
-description: Troubleshoot issues with the Elastic OTel Python Agent.
+navigation_title: EDOT Python
+description: Troubleshoot issues with the EDOT Python Agent.
 applies_to:
   stack:
   serverless:
@@ -13,17 +13,17 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting the Elastic OTel Python Agent [troubleshooting-the-edot-python-agent]
+# Troubleshooting the EDOT Python Agent [troubleshooting-the-edot-python-agent]
 
-Use the information on this page to troubleshoot issues using Elastic OTel Python.
+Use the information on this page to troubleshoot issues using EDOT Python.
 
 If you need help and you're an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues).
 
-As a first step, review the [supported technologies](elastic-otel-python://reference/edot-python/supported-technologies.md) to ensure your application is supported by the agent. Are you using a Python version that Elastic OTel Python supports? Are the versions of your dependencies in the supported version range to be instrumented?
+As a first step, review the [supported technologies](elastic-otel-python://reference/edot-python/supported-technologies.md) to ensure your application is supported by the agent. Are you using a Python version that EDOT Python supports? Are the versions of your dependencies in the supported version range to be instrumented?
 
 ## General troubleshooting
 
-Follow these recommended actions to make sure that Elastic OTel Python is configured correctly.
+Follow these recommended actions to make sure that EDOT Python is configured correctly.
 
 ### Elastic OTel logging level [edot-logging-level] 
 
@@ -32,7 +32,7 @@ product:
   edot_python: ga 1.9.0
 ```
 
-You can change the default verbosity of both Elastic OTel Python and OpenTelemetry Python SDK code with `OTEL_LOG_LEVEL`, see [configuration](elastic-otel-python://reference/edot-python/configuration.md#differences-from-opentelemetry-python) for the possible values. For more detailed debugging information, refer to [Enable debug logging for Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+You can change the default verbosity of both EDOT Python and OpenTelemetry Python SDK code with `OTEL_LOG_LEVEL`, see [configuration](elastic-otel-python://reference/edot-python/configuration.md#differences-from-opentelemetry-python) for the possible values. For more detailed debugging information, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
 ### Log configuration
 
@@ -41,7 +41,7 @@ product:
   edot_python: ga 1.9.0
 ```
 
-Elastic OTel Python would print its configuration at startup when `OTEL_LOG_LEVEL` is set to `info` or a more verbose logging level.
+EDOT Python would print its configuration at startup when `OTEL_LOG_LEVEL` is set to `info` or a more verbose logging level.
 
 ### Debug and development modes
 
@@ -61,7 +61,7 @@ Flask applications running in debug mode require to turn off the reloader to be 
 
 ## Turn off {{edot}} [turn-off-edot]
 
-In the unlikely event Elastic OTel Python causes disruptions to a production application, you can turn it off while you troubleshoot. To turn off the underlying OpenTelemetry SDK, set the `OTEL_SDK_DISABLED` environment variable to `true`.
+In the unlikely event EDOT Python causes disruptions to a production application, you can turn it off while you troubleshoot. To turn off the underlying OpenTelemetry SDK, set the `OTEL_SDK_DISABLED` environment variable to `true`.
 
 If only a subset of instrumentation are causing disruptions, turn them off using the `OTEL_PYTHON_DISABLED_INSTRUMENTATIONS` environment variable. The variable accepts a list of comma-separated instrumentations. Refer to [OpenTelemetry zero code documentation](https://opentelemetry.io/docs/zero-code/python/configuration/#disabling-specific-instrumentations).
 
@@ -77,16 +77,16 @@ For some semantic conventions, like HTTP, there is a migration path, but the con
 
 ## Access or modification of application code
 
-Elastic OTel Python is distributed as a Python package and so must be installed in the same environment as your application. Once it is available in the path, it can auto-instrument your application without changing the application code.
+EDOT Python is distributed as a Python package and so must be installed in the same environment as your application. Once it is available in the path, it can auto-instrument your application without changing the application code.
 
 ## Issues with binary packages on the Kubernetes Operator
 
-Some Elastic OTel Python dependencies include binary components that depend on both the C library and the Python version used to build them. These dependencies must be compatible with the Docker image used by the instrumented application.
+Some EDOT Python dependencies include binary components that depend on both the C library and the Python version used to build them. These dependencies must be compatible with the Docker image used by the instrumented application.
 
-Elastic OTel Python provides a Docker image that includes auto-instrumentation code for both:
+EDOT Python provides a Docker image that includes auto-instrumentation code for both:
 
 - glibc-based distributions (for example, Ubuntu)
 - musl-based distributions (for example, Alpine)
 
 If the provided Docker images don't work in your environment and you encounter errors when loading modules, build a custom Docker image instead.
-You can base your custom Dockerfile on the one used to build the official Docker images available in the [operator directory](https://github.com/elastic/elastic-otel-python/tree/main/operator]) of the Elastic OTel Python repository.
+You can base your custom Dockerfile on the one used to build the official Docker images available in the [operator directory](https://github.com/elastic/elastic-otel-python/tree/main/operator]) of the EDOT Python repository.

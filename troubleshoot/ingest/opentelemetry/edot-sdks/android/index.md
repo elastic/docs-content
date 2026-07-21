@@ -1,6 +1,6 @@
 ---
-navigation_title: Elastic OTel Android
-description: Use the information in this section to troubleshoot common problems affecting Elastic OTel Android.
+navigation_title: EDOT Android
+description: Use the information in this section to troubleshoot common problems affecting EDOT Android.
 applies_to:
   stack:
   serverless:
@@ -15,9 +15,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/apm/SDK/android/current/faq.html
 ---
 
-# Troubleshooting the Elastic OTel Android SDK [troubleshooting-the-edot-android-sdk]
+# Troubleshooting the EDOT Android SDK [troubleshooting-the-edot-android-sdk]
 
-Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](apm-agent-android://reference/edot-android/getting-started.md#requirements) for Elastic OTel Android and the OpenTelemetry SDK.
+Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](apm-agent-android://reference/edot-android/getting-started.md#requirements) for EDOT Android and the OpenTelemetry SDK.
 
 If you have an Elastic support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). If you don't, post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/apm-agent-android/issues).
 
@@ -25,7 +25,7 @@ If you have an Elastic support contract, create a ticket in the [Elastic Support
 
 The SDK creates logs that allow you to see what it's working on and what might have failed at some point. You can find the logs in [logcat](https://developer.android.com/studio/debug/logcat), filtered by the tag `ELASTIC_AGENT`.
 
-For more information about the SDK's internal logs, as well as how to configure them, refer to the [internal logging policy](apm-agent-android://reference/edot-android/configuration.md#internal-logging-policy) configuration. For more information on enabling debug logging, refer to [Enable debug logging for Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+For more information about the SDK's internal logs, as well as how to configure them, refer to the [internal logging policy](apm-agent-android://reference/edot-android/configuration.md#internal-logging-policy) configuration. For more information on enabling debug logging, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
 ## Connectivity to the {{stack}}
 

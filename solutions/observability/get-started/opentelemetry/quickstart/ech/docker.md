@@ -1,6 +1,6 @@
 ---
 navigation_title: Docker
-description: Learn how to set up the {{agent}} and Elastic OTel SDKs in a Docker environment with Elastic Cloud Hosted to collect host metrics, logs and application traces.
+description: Learn how to set up the {{agent}} and EDOT SDKs in a Docker environment with Elastic Cloud Hosted to collect host metrics, logs and application traces.
 applies_to:
   stack:
   deployment:
@@ -15,7 +15,7 @@ products:
 
 # Quickstart for Docker on {{product.cloud-hosted}}
 
-Learn how to set up the {{agent}} and Elastic OTel SDKs in a Docker environment with {{ech}} (ECH) to collect host metrics, logs, and application traces.
+Learn how to set up the {{agent}} and EDOT SDKs in a Docker environment with {{ech}} (ECH) to collect host metrics, logs, and application traces.
 
 ## Guided setup
 
@@ -24,7 +24,7 @@ Learn how to set up the {{agent}} and Elastic OTel SDKs in a Docker environment 
 
 ## Manual installation
 
-Follow these steps to deploy the {{agent}} and Elastic OTel SDKs in Docker with ECH.
+Follow these steps to deploy the {{agent}} and EDOT SDKs in Docker with ECH.
 
 :::::{stepper}
 
@@ -109,7 +109,7 @@ instrument your target applications following the setup instructions:
    Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 
 :::{tip}
-Activate Central Configuration to configure your Elastic OTel SDKs from within {{product.kibana}}. Refer to [Elastic OTel SDKs Central Configuration](opentelemetry://reference/central-configuration.md).
+Activate Central Configuration to configure your EDOT SDKs from within {{product.kibana}}. Refer to [EDOT SDKs Central Configuration](opentelemetry://reference/central-configuration.md).
 :::
 
 ::::
@@ -130,4 +130,4 @@ Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 
 ## Troubleshooting
 
-Having issues with {{edot}}? Refer to the [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.
+Having issues with {{edot}}? Refer to the [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.

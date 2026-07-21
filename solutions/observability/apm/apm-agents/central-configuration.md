@@ -21,12 +21,12 @@ To get started, select the services and environments you want to configure. The 
 :::
 
 ::::{important}
-To configure Elastic OTel SDKs through APM Agent Central Configuration, refer to [Elastic OTel SDKs Central Configuration](/solutions/observability/apm/opentelemetry/edot-sdks-central-configuration.md).
+To configure EDOT SDKs through APM Agent Central Configuration, refer to [EDOT SDKs Central Configuration](/solutions/observability/apm/opentelemetry/edot-sdks-central-configuration.md).
 ::::
 
 ## Precedence [_precedence]
 
-Configurations set from the Applications UI take precedence over configurations set locally in each APM agent or Elastic OTel SDK. However, if APM Server is slow to respond, is offline, reports an error, etc., agents and SDKs will use local defaults until they’re able to update the configuration. For this reason, it is still essential to set custom default configurations locally in each of your APM agents and Elastic OTel SDKs.
+Configurations set from the Applications UI take precedence over configurations set locally in each APM agent or EDOT SDK. However, if APM Server is slow to respond, is offline, reports an error, etc., agents and SDKs will use local defaults until they’re able to update the configuration. For this reason, it is still essential to set custom default configurations locally in each of your APM agents and EDOT SDKs.
 
 ## Supported configurations [_supported_configurations]
 

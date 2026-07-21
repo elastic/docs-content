@@ -15,7 +15,7 @@ products:
 
 # Quickstart for Kubernetes on Elastic Cloud Serverless
 
-Learn how to set up the {{agent}} and Elastic OTel SDKs in a Kubernetes environment with {{serverless-full}} to collect host metrics, logs and application traces.
+Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment with {{serverless-full}} to collect host metrics, logs and application traces.
 
 ## Guided setup
 
@@ -28,7 +28,7 @@ To use the OpenTelemetry Kube Stack Chart, you need Helm version 3.9+ up to and 
 
 ## Manual installation
 
-Follow these steps to deploy the {{agent}} and Elastic OTel SDKs in Kubernetes.
+Follow these steps to deploy the {{agent}} and EDOT SDKs in Kubernetes.
 
 :::::{stepper}
 

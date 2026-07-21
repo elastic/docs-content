@@ -15,7 +15,7 @@ products:
 
 #  Quickstart for hosts / VMs on Elastic Cloud Serverless
 
-Learn how to set up the {{agent}} and Elastic OTel SDKs on hosts and VMs with {{serverless-full}} to collect host metrics, logs, and application traces. Send the data through OTLP to your Elastic Serverless project.
+Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{serverless-full}} to collect host metrics, logs, and application traces. Send the data through OTLP to your Elastic Serverless project.
 
 ## Guided setup
 
@@ -24,7 +24,7 @@ Learn how to set up the {{agent}} and Elastic OTel SDKs on hosts and VMs with {{
 
 ## Manual installation
 
-Follow these steps to deploy the {{agent}} and Elastic OTel SDKs with {{serverless-full}}.
+Follow these steps to deploy the {{agent}} and EDOT SDKs with {{serverless-full}}.
 
 ::::::{stepper}
 

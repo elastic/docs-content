@@ -15,7 +15,7 @@ products:
 
 # Quickstart for Docker on Elastic Cloud Serverless
 
-Learn how to set up the {{agent}} and Elastic OTel SDKs in a Docker environment with {{serverless-full}} to collect host metrics, logs, and application traces.
+Learn how to set up the {{agent}} and EDOT SDKs in a Docker environment with {{serverless-full}} to collect host metrics, logs, and application traces.
 
 
 ## Guided setup
@@ -25,7 +25,7 @@ Learn how to set up the {{agent}} and Elastic OTel SDKs in a Docker environment 
 
 ## Manual installation
 
-Follow these steps to deploy the {{agent}} and Elastic OTel SDKs in Docker with {{serverless-full}}.
+Follow these steps to deploy the {{agent}} and EDOT SDKs in Docker with {{serverless-full}}.
 
 :::::{stepper}
 

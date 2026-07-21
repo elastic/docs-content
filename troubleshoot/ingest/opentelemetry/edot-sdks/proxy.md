@@ -1,6 +1,6 @@
 ---
 navigation_title: Proxy settings
-description: Configuration of the Elastic OTel SDKs proxy settings.
+description: Configuration of the EDOT SDKs proxy settings.
 applies_to:
   stack:
   serverless:
@@ -13,9 +13,9 @@ products:
   - id: edot-collector
 ---
 
-# Proxy settings for Elastic OTel SDKs [proxy-settings-for-edot-sdks]
+# Proxy settings for EDOT SDKs [proxy-settings-for-edot-sdks]
 
-Elastic OTel SDKs generally use the standard proxy environment variables. However, there are exceptions and limitations depending on the language and exporter type. For general connectivity troubleshooting, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md).
+EDOT SDKs generally use the standard proxy environment variables. However, there are exceptions and limitations depending on the language and exporter type. For general connectivity troubleshooting, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md).
 
 ## Python SDK
 
@@ -37,7 +37,7 @@ If you're using Java SDK, you must configure Java system properties using the Ja
 
 ## Other SDKs
 
-Other Elastic OTel SDKs honor standard proxy environment variables with no additional setup required. For example:
+Other EDOT SDKs honor standard proxy environment variables with no additional setup required. For example:
 
 ```
 export HTTP_PROXY=http://<proxy.address>:<port>

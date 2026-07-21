@@ -31,7 +31,7 @@ If you're not sure where to start, review the Collector's logs for error message
 
 * [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md): Resolve missing {{product.apm}} services and metrics caused by placing the `elasticapm` connector under `processors:` instead of `connectors:`.
 
-* [Collector doesn't propagate client metadata](/troubleshoot/ingest/opentelemetry/edot-collector/metadata.md): Learn why the Collector doesn't extract custom attributes and how to propagate such values using Elastic OTel SDKs.
+* [Collector doesn't propagate client metadata](/troubleshoot/ingest/opentelemetry/edot-collector/metadata.md): Learn why the Collector doesn't extract custom attributes and how to propagate such values using EDOT SDKs.
 
 ## Connectivity and export issues
 
@@ -45,7 +45,7 @@ If you're not sure where to start, review the Collector's logs for error message
 
 ## See also
 
-* [Elastic OTel SDKs troubleshooting](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md): For end-to-end issues that may involve both the Collector and SDKs.
+* [EDOT SDKs troubleshooting](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md): For end-to-end issues that may involve both the Collector and SDKs.
 
 * [Troubleshoot {{edot}}](/troubleshoot/ingest/opentelemetry/index.md): Overview of all {{edot}} troubleshooting resources.
 

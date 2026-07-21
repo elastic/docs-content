@@ -1,5 +1,5 @@
 ---
-navigation_title: Create APM agent key for Elastic OTel SDKs
+navigation_title: Create APM agent key for EDOT SDKs
 description: Learn how to create an APM agent key for {{edot}} SDKs using Kibana.
 applies_to:
   stack: ga
@@ -10,7 +10,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Create {{apm-agent}} key for Elastic OTel SDKs [create-apm-agent-key-for-edot-sdks]
+# Create {{apm-agent}} key for EDOT SDKs [create-apm-agent-key-for-edot-sdks]
 
 {{apm-agent}} keys are least-privilege API keys for ingesting {{product.apm}} data. Create these keys using the Applications UI in {{kib}}.
 
@@ -27,16 +27,16 @@ There are two ways to create API keys in {{kib}}:
 
 ## Create an {{apm-agent}} key
 
-The Applications UI provides a built-in workflow to create {{apm-agent}} keys. These keys have the minimum required privileges for Elastic OTel SDKs to send data to Elastic.
+The Applications UI provides a built-in workflow to create {{apm-agent}} keys. These keys have the minimum required privileges for EDOT SDKs to send data to Elastic.
 
 :::{include} ../_snippets/create-apm-agent-key-applications-ui.md
 :::
 
-For Elastic OTel SDKs, the **Agent configuration** privilege enables [Elastic OTel SDKs Central Configuration](opentelemetry://reference/central-configuration.md) for remote configuration.
+For EDOT SDKs, the **Agent configuration** privilege enables [EDOT SDKs Central Configuration](opentelemetry://reference/central-configuration.md) for remote configuration.
 
-## Use the {{apm-agent}} key with Elastic OTel SDKs [use-the-apm-agent-key-with-edot-sdks]
+## Use the {{apm-agent}} key with EDOT SDKs [use-the-apm-agent-key-with-edot-sdks]
 
-After creating the {{apm-agent}} key, configure your Elastic OTel SDK to use it. Configuration details vary by language and deployment:
+After creating the {{apm-agent}} key, configure your EDOT SDK to use it. Configuration details vary by language and deployment:
 
 * **Android**: [`apiKey`](apm-agent-android://reference/edot-android/configuration.md)
 * **.NET**: [`ApiKey`](apm-agent-dotnet://reference/config-reporter.md#config-api-key)
