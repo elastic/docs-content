@@ -161,7 +161,7 @@ When the setting is on, you can:
 
 * Use the **Attack discovery settings** flyout on the [Attacks view](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md) to configure alert retrieval, generation, and validation
 * Run Attack Discovery [from a workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md) or [from {{agent-builder}}](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md)
-* Troubleshoot failed runs with AI from the **Generations** control center
+* Troubleshoot failed runs with AI from the [**Generations**](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md#attacks-view-generations) control center
 
 Each time the Attack Discovery skill runs, {{agent-builder}} opens a new conversation for that run (including manual and scheduled runs from the Attacks view).
 

@@ -18,6 +18,10 @@ Use this page when you are a SOC analyst managing saved discoveries from the ded
 To triage discoveries next to their related alerts, and to assign or tag them, use the [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) at **Detections > Views > Attacks** instead.
 :::
 
+## Check run status [attack-discovery-page-generations]
+
+Recent Attack Discovery generations appear as status callouts on the **Attack Discovery** page, above your saved discoveries. Use them to check run status while a generation is running or after it finishes.
+
 ## Change a discovery's status [discovery-status]
 
 You can set a discovery's status to indicate that it's under active investigation or that it's been resolved:

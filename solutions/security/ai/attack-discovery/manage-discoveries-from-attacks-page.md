@@ -13,7 +13,7 @@ products:
 
 The **Attacks** view brings Attack Discovery findings together with their related alerts so you can triage them in one place under **Detections**. Open it at **Detections > Views > Attacks**. It is a sibling of **Alerts**, not a standalone top-level page.
 
-This page covers how to filter and search attacks, tell manually generated and scheduled attacks apart, review linked alerts, and take triage actions. Before you get started, make sure you meet the [Before you begin](/solutions/security/ai/attack-discovery/run-from-attacks-page.md#run-from-attacks-page-before-you-begin) requirements for accessing the view.
+This page covers how to filter and search attacks, tell manually generated and scheduled attacks apart, review linked alerts, and take triage actions. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` It also covers checking runs in **Generations**. Before you get started, make sure you meet the [Before you begin](/solutions/security/ai/attack-discovery/run-from-attacks-page.md#run-from-attacks-page-before-you-begin) requirements for accessing the view.
 
 ## How it works [attacks-how-it-works]
 
@@ -25,6 +25,17 @@ At the top of the **Attacks** view, overview visualizations summarize activity. 
 ::::
 
 Below the summary, the Attacks table lists individual attacks. Expand an attack to see involved entities and steps in the attack chain.
+
+## Check runs in Generations [attacks-view-generations]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+The **Generations** control center in the **Attacks** view header lists recent Attack Discovery runs, including manual and scheduled runs. Open it to check run status and open workflow execution details for a run.
+
+If a run fails, is canceled or dismissed, or an analysis step fails, [troubleshoot it with AI](/solutions/security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md).
 
 ## Manually generated and scheduled attacks [manually-generated-attacks]
 
