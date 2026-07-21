@@ -19,7 +19,7 @@ The guides in this section describe example workflows for AI Assistant and Attac
 * [Identify, investigate, and document threats](/solutions/security/ai/identify-investigate-document-threats.md)
 * [Generate, customize, and learn about {{esql}} queries](/solutions/security/ai/generate-customize-learn-about-esorql-queries.md)
 
-For general information, refer to [AI Assistant](/solutions/security/ai/ai-assistant.md) or [Attack discovery](/solutions/security/ai/attack-discovery/attack-discovery.md).
+For general information, refer to [AI Assistant](/solutions/security/ai/ai-assistant.md) or [Attack discovery](/solutions/security/ai/attack-discovery/index.md).
 
 ## Other AI-powered tools
 

@@ -1029,8 +1029,9 @@ redirects:
       'managed-integrations-content':
 
   # Related to https://github.com/elastic/docs-content/pull/7448
+  # Hub page is attack-discovery/index.md, which publishes at the same URL as the
+  # former attack-discovery.md. Keep only split-out anchor redirects for that path.
   'solutions/security/ai/attack-discovery.md':
-    to: 'solutions/security/ai/attack-discovery/attack-discovery.md'
     many:
       - to: 'solutions/security/ai/attack-discovery/grant-access.md'
         anchors:
@@ -1048,6 +1049,7 @@ redirects:
           'share-attack-discoveries': 'share-attack-discoveries'
           'take-bulk-actions': 'take-bulk-actions'
           'search-and-filter-saved-discoveries': 'search-filter-discoveries'
+  'solutions/security/ai/attack-discovery/attack-discovery.md': 'solutions/security/ai/attack-discovery/index.md'
   'solutions/security/ai/attacks-page.md':
     to: 'solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md'
     anchors:

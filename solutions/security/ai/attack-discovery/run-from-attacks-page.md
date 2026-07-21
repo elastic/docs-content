@@ -11,7 +11,7 @@ products:
 
 # Run from the Attacks page [run-from-attacks-page]
 
-The **Attacks** page pairs with the [**Attack Discovery**](/solutions/security/ai/attack-discovery/attack-discovery.md) page, which is where you manually generate new discoveries using large language models (LLMs):
+The **Attacks** page pairs with the [**Attack Discovery**](/solutions/security/ai/attack-discovery/index.md) page, which is where you manually generate new discoveries using large language models (LLMs):
 
 - Go to **Attack Discovery** to run LLM analysis on demand and create new attack discoveries.
 - Go to **Attacks** for day-to-day triage of all attacks (manual and scheduled), and to manage their investigation lifecycle.

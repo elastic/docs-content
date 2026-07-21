@@ -31,7 +31,7 @@ Splitting generation and triage into separate flows requires turning on the [**E
 
 ## Next steps [next-steps]
 
-- [Learn about Attack Discovery](/solutions/security/ai/attack-discovery/attack-discovery.md)
+- [Learn about Attack Discovery](/solutions/security/ai/attack-discovery/index.md)
 - [Investigate threats with Timeline](/solutions/security/investigate/timeline.md)
 - [Manage security cases](/solutions/security/investigate/security-cases.md)
 - [Automate attack triage with Elastic Workflows](/explore-analyze/workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md)

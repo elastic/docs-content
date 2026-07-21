@@ -152,7 +152,7 @@ Create and manage workflows that automate tasks such as incident response, case 
 
 ### Attack discovery
 
-Use large language models (LLMs) to analyze alerts in your environment and identify threats. Refer to [](/solutions/security/ai/attack-discovery/attack-discovery.md) for more information.
+Use large language models (LLMs) to analyze alerts in your environment and identify threats. Refer to [](/solutions/security/ai/attack-discovery/index.md) for more information.
 
 
 ### Assets [security-ui-assets]

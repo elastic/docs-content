@@ -248,7 +248,7 @@ The `cases:maxOpenCasesPerRuleRun` advanced setting sets the upper limit for how
 For example, if one rule run creates many alerts and you want a case opened for each alert, you can increase the limit for the `cases:maxOpenCasesPerRuleRun` setting to avoid meeting the per-run limit. Pick a number that works for your team and cluster, but be aware that opening a large batch of cases in a single run might increase load on {{kib}} and {{es}}. 
 
 ::::{note}
-The `cases:maxOpenCasesPerRuleRun` setting does not apply to [Attack Discovery](/solutions/security/ai/attack-discovery/attack-discovery.md). Attack Discovery continues to use its own case-creation limit (20).
+The `cases:maxOpenCasesPerRuleRun` setting does not apply to [Attack Discovery](/solutions/security/ai/attack-discovery/index.md). Attack Discovery continues to use its own case-creation limit (20).
 ::::
 
 ## Add custom alert closing reasons [custom-alert-closing-reasons]

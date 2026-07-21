@@ -18,7 +18,7 @@ This page describes how to create an EASE project, how to ingest your data, and 
 
 EASE provides a set of capabilities designed to help make the most of each security analyst’s time, fight alert fatigue, and reduce your mean time to respond. Once your data is ingested, you can start using the following features:
 
-- **[Attack Discovery](/solutions/security/ai/attack-discovery/attack-discovery.md)**: Helps you analyze alerts in your environment and identify threats. Each discovery represents a potential attack and describes relationships among multiple alerts to tell you which users and hosts are involved, how alerts correspond to the MITRE ATT&CK matrix, and which threat actor might be responsible. 
+- **[Attack Discovery](/solutions/security/ai/attack-discovery/index.md)**: Helps you analyze alerts in your environment and identify threats. Each discovery represents a potential attack and describes relationships among multiple alerts to tell you which users and hosts are involved, how alerts correspond to the MITRE ATT&CK matrix, and which threat actor might be responsible. 
 
      :::{image} /solutions/images/security-attck-disc-example-disc.png
      :alt: Attack Discovery detail view
