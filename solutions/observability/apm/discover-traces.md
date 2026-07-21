@@ -10,15 +10,15 @@ products:
 # Explore traces in Discover [explore-traces-discover]
 
 :::{important}
-This functionality is experimental. It may change or be removed at anytime.
+This functionality is experimental. It might change or be removed at any time.
 :::
 
-**Discover** offers a dedicated experience for exploring trace data. When **Discover** detects data in `traces-*` indices, it automatically enables features that help you investigate distributed traces more effectively. The traces experience includes a pre-selected set of trace fields in the data grid, a structured overview of each document's key attributes, latency comparisons for similar spans, and a waterfall visualization of the full trace timeline.
+**Discover** offers a dedicated experience for exploring trace data. When **Discover** detects data in `traces-*` indices, it automatically enables features that help you investigate distributed traces more effectively. The traces experience includes a preselected set of trace fields in the data grid, a structured overview of each document's key attributes, latency comparisons for similar spans, and a waterfall visualization of the full trace timeline.
 
-If you're just getting started with **Discover** and want to learn its main principles, you should get familiar with the [default experience](/explore-analyze/discover.md).
+If you're getting started with **Discover** and want to learn its main principles, get familiar with the [default experience](/explore-analyze/discover.md).
 
 :::{image} /solutions/images/discover-traces-main.png
-:alt: Discover showing trace data with the traces profile active, including pre-selected columns for service name, transaction name, span name, and duration.
+:alt: Discover showing trace data with the traces profile active, including preselected columns for service name, transaction name, span name, and duration.
 :screenshot:
 :::
 
@@ -54,15 +54,15 @@ The traces experience is available in:
 
 ## Traces-specific features [traces-specific-features]
 
-When **Discover** recognizes trace data, it pre-selects a set of relevant fields as columns in the data grid: `service.name`, `transaction.name`, `span.name`, `transaction.duration.us`, `span.duration.us`, and `event.outcome`. You can [reorder or resize these columns](/explore-analyze/discover/document-explorer.md#document-explorer-columns), or add new ones, using the standard **Discover** column controls.
+When **Discover** recognizes trace data, it preselects a set of relevant fields as columns in the data grid: `service.name`, `transaction.name`, `span.name`, `transaction.duration.us`, `span.duration.us`, and `event.outcome`. You can [reorder, resize, or add new columns](/explore-analyze/discover/document-explorer.md#document-explorer-columns) using the standard **Discover** column controls.
 
 ### Overview charts ({{esql}}) [traces-overview-charts]
 
 In {{esql}} mode, **Discover** displays three summary charts above the results:
 
-- **Latency**: Average response time over the selected time range.
-- **Error Rate**: Percentage of failed trace events over time.
-- **Throughput**: Number of trace events per unit of time.
+- **Latency**: Average response time over the selected time range
+- **Error Rate**: Percentage of failed trace events over time
+- **Throughput**: Number of trace events per unit of time
 
 :::{image} /solutions/images/discover-traces-esql-charts.png
 :alt: {{esql}} mode showing Latency, Error Rate, and Throughput summary charts above the trace results.
@@ -73,12 +73,12 @@ In {{esql}} mode, **Discover** displays three summary charts above the results:
 
 Select {icon}`expand` in any row to open the document detail panel. The **Overview** tab shows the key attributes of the selected trace document:
 
-- **Span ID** and **Span name**: Identify the specific operation.
-- **Trace ID**: Links all documents that belong to the same trace.
-- **Service name**: The service that generated this span.
-- **Duration**: How long the operation took, and what percentage of the total trace duration it represents.
-- **Start time**: When the operation started.
-- **Type** and **Subtype**: The category of the operation, for example `db` / `postgresql` or `external` / `http`.
+- **Span ID** and **Span name**: Identifies the specific operation
+- **Trace ID**: Links all documents that belong to the same trace
+- **Service name**: The service that generated this span
+- **Duration**: How long the operation took, and what percentage of the total trace duration it represents
+- **Start time**: When the operation started
+- **Type** and **Subtype**: The category of the operation, for example `db` / `postgresql` or `external` / `http`
 
 :::{image} /solutions/images/discover-traces-document-overview.png
 :alt: The Overview tab in the document detail panel showing span attributes including Trace ID, Service name, Duration as a percentage of trace, and a latency chart in the Similar spans section.
@@ -129,7 +129,7 @@ The expanded trace timeline shows all spans and transactions in a trace in a ded
 stack: preview 9.4+
 serverless: preview
 ```
-Toggle **Show critical path** to highlight the sequence of spans that determined the trace's total duration.
+Turn on **Show critical path** to highlight the sequence of spans that determined the trace's total duration.
 :::
 
 :::::{applies-switch}

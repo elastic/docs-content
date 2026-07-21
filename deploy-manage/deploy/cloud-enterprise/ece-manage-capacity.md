@@ -15,6 +15,7 @@ In {{ece}} (ECE), every host is a runner. Depending on the size of your platform
 This section focuses on the allocator role, and explains how to plan its capacity in terms of memory, CPU, `processors` setting, and storage.
 
 * [Memory](#ece-alloc-memory)
+  * [Swap considerations](#ece-alloc-swap-consideration)
 * [CPU quotas](#ece-alloc-cpu)
 * [Processors setting](#ece-alloc-processors-setting)
 * [Storage](#ece-alloc-storage)
@@ -29,7 +30,7 @@ You should plan your deployment size based on the amount of data you ingest. Mem
 
 During installation, the allocator capacity defaults to 85% of the host physical memory, as the rest is reserved for ECE system services.
 
-To adjust the allocator capacity prior to ECE 3.5.0, you must reinstall ECE on the host with a new value assigned to the `--capacity` parameter. Starting with ECE 3.5.0, you can update the allocator capacity using the [allocator settings ECE API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-allocator-settings). After making this change, you must restart the allocator service for it to take effect.
+To adjust the allocator capacity prior to ECE 3.5.0, you must reinstall ECE on the host with a new value assigned to the `--capacity` parameter. Starting with ECE 3.5.0, you can update the allocator capacity using the [allocator settings ECE API]({{ece-apis}}operation/operation-set-allocator-settings). After making this change, you must restart the allocator service for it to take effect.
 
 ```sh
 curl -X PUT \
@@ -60,6 +61,22 @@ Here are some examples to make Elastic deployments and ECE system services run s
 Note that the recommended reservations above are not guaranteed upper limits, if you measure actual memory usage you may see numbers 0-2GB higher or lower.
 
 These fluctuations should not be a concern in practice. To get actual limits that could be used in alerts, you could add 4GB to the recommended values above.
+
+### Swap considerations [ece-alloc-swap-consideration]
+
+While {{es}} nodes generally run with [swap disabled](../self-managed/setup-configuration-memory.md), ECE hosts should have swap enabled for stability reasons.
+
+If an ECE host runs out of memory, the Linux out of memory (OOM) killer stops a random process on the runner. Having swap space available can prevent this from happening and protect the availability of ECE services.
+
+::::{important}
+Swap should be treated as an emergency safety net only — not as a way to overcommit memory or reduce host RAM. If a container runtime process (Docker or Podman) runs on swap, it can cause allocator failures due to API timeouts (visible as errors in `allocator.log`). Always ensure allocators are not over-allocated so the OS does not routinely rely on swap.
+::::
+
+There is no specific recommendation for sizing swap, but 4 GB of swap per 32 GB of RAM has proven to be a reasonable safeguard for most ECE installations. As a baseline, ECE hosts should have at least 512 MB of swap space.
+
+Set the `vm.swappiness` kernel setting to `1`, as described in the [Configure your OS](/deploy-manage/deploy/cloud-enterprise/configure-operating-system.md) preparation guides, so that swap is used only as a last resort.
+
+The method for provisioning swap space depends on your operating system and infrastructure provider. Consult your OS or cloud provider's documentation for instructions on creating a swap file or partition.
 
 
 ## CPU quotas [ece-alloc-cpu]
@@ -150,5 +167,4 @@ You can change the value of the disk multiplier at different levels:
 ::::{important}
 The override only persists during the lifecycle of the instance container. If a new container is created, for example during a `grow_and_shrink` plan or a vacate operation, the quota is reset to its default. To increase the storage ratio in a persistent way, [edit the instance configurations](ece-configuring-ece-instance-configurations-edit.md).
 ::::
-
 

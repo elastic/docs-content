@@ -24,6 +24,14 @@ A snapshot taken using the default `found-snapshots` repository can only be rest
 
 From within {{ech}}, you can restore a snapshot from a different deployment in the same region.
 
+::::{important}
+{{ech}} registers the built-in `found-snapshots` repository on every deployment and uses it along with the `cloud-snapshot-policy` SLM policy for automated snapshots. This repository is your backup on {{ech}}. Snapshot data exists only in this repository and {{ech}} does not mirror it to separate storage or retain deleted snapshots through storage-level versioning or soft delete.
+
+When you delete a snapshot from `found-snapshots`, that data is removed from the repository and cannot be recovered. This also applies to [searchable snapshots](searchable-snapshots.md#back-up-restore-searchable-snapshots) stored in `found-snapshots`.
+
+If you need additional redundancy beyond the default repository, [configure a custom snapshot repository](#ess-repo-types) and take additional snapshots to storage you control.
+::::
+
 ## Prerequisites for {{ech}}
 
 :::{include} _snippets/restore-snapshot-common-prerequisites.md
@@ -53,24 +61,30 @@ The `found-snapshots` repository is specific to each deployment. However, you ca
 
 ## Register a snapshot repository in {{ech}} [register-snapshot-repos-ech]
 
-In **{{ech}}**, snapshot repositories are automatically registered for you, but you can create additional repositories if needed.
+In **{{ech}}**, the `found-snapshots` managed repository is automatically registered for you, but you can create additional repositories if needed, using any of the following methods:
 
 * {{kib}}'s **Snapshot and Restore** feature
-* {{es}}'s [snapshot repository management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-snapshot)
+* {{es}}'s [snapshot repository management APIs]({{es-apis}}group/endpoint-snapshot)
 
-To manage repositories in {{kib}}:
+:::{include} _snippets/register-repository-kibana-steps.md
+:::
 
-1. Go to the **Snapshot and Restore** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select the **Repositories** tab. 
-3. To register a snapshot repository, click **Register repository**.
+::::{include} _snippets/ech-snapshot-repository-linking-note.md
+::::
 
-You can also register a repository using the [Create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository).
+## Change the default snapshot repository [snapshot-repo-default]
+```{applies_to}
+stack: ga 9.5
+```
+
+:::{include} _snippets/default-snapshot-repository.md
+:::
 
 ## Verify a repository [snapshots-repository-verification]
 
 When you register a snapshot repository, {{es}} automatically verifies that the repository is available and functional on all master and data nodes.
 
-To disable this verification during repository creation, set the [create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository)'s `verify` query parameter to `false`. You can’t disable repository verification in {{kib}}.
+To disable this verification during repository creation, set the [create snapshot repository API]({{es-apis}}operation/operation-snapshot-create-repository)'s `verify` query parameter to `false`. You can’t disable repository verification in {{kib}}.
 
 ```console
 PUT _snapshot/my_unverified_backup?verify=false
@@ -82,7 +96,7 @@ PUT _snapshot/my_unverified_backup?verify=false
 }
 ```
 
-If wanted, you can manually run the repository verification check. To verify a repository in {{kib}}, go to the **Repositories** list page and click the name of a repository. Then click **Verify repository**. You can also use the [verify snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-verify-repository).
+If wanted, you can manually run the repository verification check. To verify a repository in {{kib}}, go to the **Repositories** list page and click the name of a repository. Then click **Verify repository**. You can also use the [verify snapshot repository API]({{es-apis}}operation/operation-snapshot-verify-repository).
 
 ```console
 POST _snapshot/my_unverified_backup/_verify
@@ -90,7 +104,7 @@ POST _snapshot/my_unverified_backup/_verify
 
 If successful, the request returns a list of nodes used to verify the repository. If verification fails, the request returns an error.
 
-You can test a repository more thoroughly using the [repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze).
+You can test a repository more thoroughly using the [repository analysis API]({{es-apis}}operation/operation-snapshot-repository-analyze).
 
 
 ## Clean up a repository [snapshots-repository-cleanup]
@@ -99,7 +113,7 @@ Repositories can over time accumulate data that is not referenced by any existin
 
 To run the repository cleanup operation in {{kib}}, go to the **Repositories** list page and click the name of a repository. Then click **Clean up repository**.
 
-You can also use the [clean up snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-cleanup-repository).
+You can also use the [clean up snapshot repository API]({{es-apis}}operation/operation-snapshot-cleanup-repository).
 
 ```console
 POST _snapshot/my_repository/_cleanup
@@ -138,5 +152,5 @@ Do not use filesystem snapshots of individual nodes as a backup mechanism. You m
 ::::
 
 
-When restoring a repository from a backup, you must not register the repository with {{es}} until the repository contents are fully restored. If you alter the contents of a repository while it is registered with {{es}} then the repository may become unreadable or may silently lose some of its contents. After restoring a repository from a backup, use the [Verify repository integrity](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-verify-integrity) API to verify its integrity before you start to use the repository.
+When restoring a repository from a backup, you must not register the repository with {{es}} until the repository contents are fully restored. If you alter the contents of a repository while it is registered with {{es}} then the repository may become unreadable or may silently lose some of its contents. After restoring a repository from a backup, use the [Verify repository integrity]({{es-apis}}operation/operation-snapshot-repository-verify-integrity) API to verify its integrity before you start to use the repository.
 

@@ -1,5 +1,6 @@
 ---
 navigation_title: "Tutorial: Manual dense and sparse workflows"
+description: Set up semantic search with deployed NLP models using ingest pipelines for dense or sparse vector embeddings.
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-deployed-nlp-model.html
 applies_to:
@@ -14,7 +15,7 @@ products:
 ::::{important}
 
 * For the easiest way to perform semantic search in the {{stack}}, refer to the [`semantic_text`](../semantic-search/semantic-search-semantic-text.md) end-to-end tutorial.
-* This tutorial predates the [{{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) and the [`semantic_text` field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). Today there are simpler, higher-level options for semantic search than the ones outlined in this tutorial. The semantic text workflow is the recommended way to perform semantic search for most use cases.
+* This tutorial predates the [{{infer}} endpoint]({{es-apis}}group/endpoint-inference) and the [`semantic_text` field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). Today there are simpler, higher-level options for semantic search than the ones outlined in this tutorial. The semantic text workflow is the recommended way to perform semantic search for most use cases.
 ::::
 
 This guide shows how to implement semantic search in {{es}} with deployed NLP models: from selecting a model, to configuring ingest pipelines, to running queries.
@@ -25,9 +26,41 @@ This guide shows how to implement semantic search in {{es}} with deployed NLP mo
 
 While bringing your own text embedding model is possible, achieving strong results typically requires tuning and evaluation. Selecting a well-performing third-party model from our list is a good start. Training the model on your own data is essential to ensure better search results than using only BM25. However, the model training process requires a team of data scientists and ML experts, making it expensive and time-consuming.
 
-To lower the barrier, Elastic provides [**Elastic Learned Sparse EncodeR (ELSER)**](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md), a pre-trained sparse vector model (English-only) that delivers strong out-of-the-box relevance without fine-tuning. This adaptability makes it suitable for various NLP use cases out of the box. Unless you have an ML team, we recommend starting with ELSER.
+::::{dropdown} When to use dense or sparse embeddings?
+:open:
 
-Sparse vectors are mostly zeros with a small number of non-zero values. This representation is commonly used for textual data. With ELSER, both documents and queries are represented as high-dimensional sparse vectors. Each non-zero element of the vector corresponds to a term in the model vocabulary. The ELSER vocabulary contains around 30000 terms, so the sparse vectors created by ELSER contain about 30000 values, the majority of which are zero. The ELSER model replaces the terms in the original query with other terms learned from the training dataset that appear in documents matching the original search terms, and assigns weights to control their importance.
+Dense and sparse embeddings represent text differently, and each approach fits different search goals. The following examples illustrate typical choices.
+
+#### Sparse embeddings [deployed-sparse-embeddings]
+
+Use sparse embeddings when you want semantic expansion on top of keyword-style search. Sparse models such as [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) expand queries and documents into weighted terms, which helps when users search with short phrases, acronyms, or domain vocabulary. Sparse vectors are high-dimensional vectors where most values are zero and only a small set of token weights are non-zero.
+
+Common use cases include:
+
+- Workplace and IT search: Find runbooks, tickets, and internal wikis when users search for error codes, service names, or team-specific jargon.
+- Security and observability: Surface related alerts, playbooks, and detection rules from analyst queries that mix technical terms and natural language.
+- Support and self-service: Match customer questions to help articles when the query uses product terminology that does not appear verbatim in the document.
+
+Sparse embeddings are a practical default when you need explainable results, strong relevance for English text without training a custom model, or semantic search at scale without a dedicated {{ml}} team.
+
+For more detail, refer to [Sparse vector search in {{es}}](sparse-vector.md).
+
+#### Dense embeddings [deployed-dense-embeddings]
+
+Use dense embeddings when you want to match content by overall meaning in vector space, not by overlapping keywords. Dense models map text (and other content types) to fixed-length vectors so that conceptually similar items sit close together. Dense vectors are compact arrays of floating-point values from an embedding model.
+
+Common use cases include:
+
+- [Context engineering for AI agents](/explore-analyze/ai-features/elastic-agent-builder.md): Combine retrieval, tools, and instructions so responses are grounded in your data. [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) provides an out-of-the-box toolkit for this workflow.
+- [Retrieval augmented generation (RAG)](../rag.md): Retrieve document passages that answer a user's question, even when the question and the source text use different words.
+- [Natural language Q&A](/explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md): Match questions like "How do I reset my password?" to FAQ entries, product documentation, or policy pages.
+- [Recommendations and similarity](knn.md): Find related articles, products, or media. For example, you can surface articles like the current one or visually similar product images.
+
+Dense embeddings are ideal when you care more about the semantic meaning of search terms than exact keyword matches - they excel at retrieving relevant results based on synonyms and paraphrasing of the original query to return results that reflect the user's intensions.
+
+For more detail, refer to [Dense vector search in {{es}}](dense-vector.md).
+
+::::
 
 ## Deploy the model in {{es}} [deployed-deploy-nlp-model]
 
@@ -172,7 +205,7 @@ To ingest data through the pipeline to generate text embeddings with your chosen
 ::::::
 
 :::::::
-Now it is time to perform semantic search!
+Now it is time to perform semantic search.
 
 ## Search the data with vector search [deployed-search]
 
@@ -224,14 +257,14 @@ GET my-index/_search
 
 ## Beyond semantic search with hybrid search [deployed-hybrid-search]
 
-In some situations, lexical search may perform better than semantic search. For example, when searching for single words or IDs, like product numbers.
+In some situations, lexical search might perform better than semantic search. For example, when searching for single words or IDs, like product numbers.
 
 Combining semantic and lexical search into one hybrid search request using [reciprocal rank fusion](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) provides the best of both worlds. Not only that, but hybrid search using reciprocal rank fusion [has been shown to perform better in general](https://www.elastic.co/blog/improving-information-retrieval-elastic-stack-hybrid).
 
 :::::::{tab-set}
 
 ::::::{tab-item} ELSER
-Hybrid search between a semantic and lexical query can be achieved by using an [`rrf` retriever](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) as part of your search request. Provide a `sparse_vector` query and a full-text query as [`standard` retrievers](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) for the `rrf` retriever. The `rrf` retriever uses [reciprocal rank fusion](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) to rank the top documents.
+Hybrid search between a semantic and lexical query can be achieved by using an [`rrf` retriever]({{es-apis}}operation/operation-search#operation-search-body-application-json-retriever) as part of your search request. Provide a `sparse_vector` query and a full-text query as [`standard` retrievers]({{es-apis}}operation/operation-search#operation-search-body-application-json-retriever) for the `rrf` retriever. The `rrf` retriever uses [reciprocal rank fusion](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) to rank the top documents.
 
 ```console
 GET my-index/_search

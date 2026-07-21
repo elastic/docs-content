@@ -21,6 +21,11 @@ This solution provides specialized UI tools, such as Agent Builder, Playground, 
 If you're looking for an introduction to the {{stack}} or the {{es}} product, go to [](/get-started/index.md) or [](/manage-data/data-store.md).
 :::
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills@elasticsearch-onboarding
+This skill guides users through search concepts and helps create a working search use case.
+:::
+
 ::::::{stepper}
 :::::{step} Choose your deployment type
 
@@ -52,7 +57,7 @@ Get hands-on experience with {{es}} using guided tutorials that walk you through
 
 - [**Index and search basics**](/solutions/search/get-started/index-basics.md): Learn how to create indices, add documents, and perform searches
 - [**Keyword search with Python**](/solutions/search/get-started/keyword-search-python.md): Build your first search query with Python
-- [**Semantic search**](/solutions/search/get-started/semantic-search.md): Implement semantic search using embeddings
+- [**Semantic search**](/solutions/search/get-started/semantic-search.md): Implement semantic search with vector embeddings using the `semantic_text` workflow
 :::::
 
 :::::{step} Identify your search goals
@@ -87,6 +92,7 @@ Each decision builds on the previous ones, offering flexibility to mix and match
 
 The {{es}} solution provides additional UI tools on top of the core {{es}} capabilities, to help you build search-powered applications:
 
+- [**AI onboarding**](/solutions/elasticsearch-solution-project/ai-onboarding.md): Build a working search experience through a guided, AI-powered workflow.
 - [**Agent Builder**](/explore-analyze/ai-features/elastic-agent-builder.md): Create AI agents that interact with your {{es}} data
 - [**Query Rules UI**](/solutions/elasticsearch-solution-project/query-rules-ui.md): Create rules to modify search behavior
 - [**Search with synonyms**](/solutions/search/full-text/search-with-synonyms.md): Manage synonym sets through the UI

@@ -116,7 +116,7 @@ During your upgrade tests, pay particular attention to the following aspects:
 :    Does the new version of {{es}} perform the same (or better) than the current one on your specific workload and data?
 
 **Snapshots**
-:    Do all of your snapshot repositories work correctly and pass [repository analysis](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze)?
+:    Do all of your snapshot repositories work correctly and pass [repository analysis]({{es-apis}}operation/operation-snapshot-repository-analyze)?
 
 ## Upgrade order
 

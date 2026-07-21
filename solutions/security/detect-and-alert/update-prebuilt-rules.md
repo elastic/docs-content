@@ -20,10 +20,10 @@ For deployments without internet access, refer to [Prebuilt rules in air-gapped 
 
 ## Update availability [update-availability]
 
-When updated versions are available for your installed prebuilt rules, the **Rule Updates** tab appears on the **Rules** page.
+When updated versions are available for your installed prebuilt rules, the **Rule Updates** tab appears on the **{{siem-rules-ui}}** page.
 
 ::::{note}
-The **Rules** page was renamed to **Detection rules (SIEM)** in versions 9.3.1, 9.2.6, and 8.19.12.
+The page was renamed from **Rules** to **{{siem-rules-ui}}** in versions 9.3.1 and 9.2.6.
 ::::
 
 :::{admonition} Automatic updates
@@ -34,8 +34,8 @@ On {{stack}}, automatic updates are supported for the current {{elastic-sec}} ve
 
 Before applying updates, you can examine what's changing in each rule.
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the **Rules** table, select the **Rule Updates** tab.
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. In the Rules table, select the **Rule Updates** tab.
 
     ::::{note}
     The **Rule Updates** tab doesn't appear if all your installed prebuilt rules are up to date.
@@ -122,7 +122,7 @@ Use the search bar and **Tags** filter to find specific rules. For example, filt
 ::::
 
 :::{image} /solutions/images/security-prebuilt-rules-update.png
-:alt: The Rule Updates tab on the Rules page
+:alt: The Rule Updates tab on the Detection rules (SIEM) page
 :screenshot:
 :::
 

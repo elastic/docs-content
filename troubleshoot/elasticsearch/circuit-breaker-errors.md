@@ -49,7 +49,7 @@ Caused by: org.elasticsearch.common.breaker.CircuitBreakingException: [parent] D
 
 To get statistics about the circuit breaker per node, use one of the following:
 
-* You can use the [get node statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) API:
+* You can use the [get node statistics]({{es-apis}}operation/operation-nodes-stats) API:
 
     ```console
     GET _nodes/stats?filter_path=nodes.*.breakers
@@ -62,7 +62,7 @@ To get statistics about the circuit breaker per node, use one of the following:
     - And an overhead which is a constant that all estimates for the circuit breaker are multiplied with to calculate a final estimate.
     
 
-* {applies_to}`stack: ga 9.3` Starting with {{es}} version 9.3, you can use the [get circuit breakers statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-circuit-breaker) API:
+* {applies_to}`stack: ga 9.3` Starting with {{es}} version 9.3, you can use the [get circuit breakers statistics]({{es-apis}}operation/operation-cat-circuit-breaker) API:
 
     ```console
     GET /_cat/circuit_breaker/
@@ -80,13 +80,13 @@ To get statistics about the circuit breaker per node, use one of the following:
 
 If you’ve enabled Stack Monitoring, you can view JVM memory usage in {{kib}}. In the main menu, click **Stack Monitoring**. On the Stack Monitoring **Overview** page, click **Nodes**. The **JVM Heap** column lists the current memory usage for each node.
 
-You can also use the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) to get the current `heap.percent` for each node.
+You can also use the [cat nodes API]({{es-apis}}operation/operation-cat-nodes) to get the current `heap.percent` for each node.
 
 ```console
 GET _cat/nodes?v=true&h=name,node*,heap*
 ```
 
-To get the JVM memory usage for each circuit breaker, use the [node stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats).
+To get the JVM memory usage for each circuit breaker, use the [node stats API]({{es-apis}}operation/operation-nodes-stats).
 
 ```console
 GET _nodes/stats/breaker
@@ -105,7 +105,7 @@ For high-cardinality `text` fields, fielddata can use a large amount of JVM memo
 
 **Clear the fielddata cache**
 
-If you’ve triggered the fielddata circuit breaker and can’t disable fielddata, use the [clear cache API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clear-cache) to clear the fielddata cache. This may disrupt any in-flight searches that use fielddata.
+If you’ve triggered the fielddata circuit breaker and can’t disable fielddata, use the [clear cache API]({{es-apis}}operation/operation-indices-clear-cache) to clear the fielddata cache. This may disrupt any in-flight searches that use fielddata.
 
 ```console
 POST _cache/clear?fielddata=true

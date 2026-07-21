@@ -15,7 +15,7 @@ products:
 
 Cloud Connect enables you to use {{ecloud}} services in your [ECE](/deploy-manage/deploy/cloud-enterprise.md), [ECK](/deploy-manage/deploy/cloud-on-k8s.md), or [self-managed](/deploy-manage/deploy/self-managed.md) cluster without having to install and maintain their infrastructure yourself. In this way, you can get faster access to new features without adding to your operational overhead.
 
-AutoOps is the first service available for use with Cloud Connect. More services are coming soon.
+The following services are available for use with Cloud Connect. More services are coming soon.
 
 ## AutoOps
 
@@ -36,7 +36,7 @@ You can use EIS to enable features such as:
 - [Semantic search](/solutions/search/semantic-search.md)
 - [AI Assistants](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md)
 - [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md)
-- [Attack Discovery](/solutions/security/ai/attack-discovery.md)
+- [Attack Discovery](/solutions/security/ai/attack-discovery/index.md)
 
 For a full list of EIS-powered features, refer to [AI features powered by EIS](/explore-analyze/elastic-inference/eis.md#ai-features-powered-by-eis).
 

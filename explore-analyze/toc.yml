@@ -43,8 +43,12 @@ toc:
     children:
       - file: elastic-inference/eis.md
         children:
+          - file: elastic-inference/eis-supported-models.md
+          - file: elastic-inference/eis-region-and-hosting.md
+          - file: elastic-inference/eis-rate-limits.md
           - file: elastic-inference/connect-self-managed-cluster-to-eis.md
           - hidden: elastic-inference/ml-node-vs-eis.md
+      - file: elastic-inference/external.md
       - file: elastic-inference/inference-api.md
   - file: machine-learning.md
     children:
@@ -65,6 +69,7 @@ toc:
               - file: machine-learning/anomaly-detection/ml-anomaly-detection-job-types.md
               - file: machine-learning/anomaly-detection/anomaly-detection-scale.md
               - file: machine-learning/anomaly-detection/ml-delayed-data-detection.md
+              - file: machine-learning/anomaly-detection/ml-ad-dst-calendars.md
           - file: machine-learning/anomaly-detection/ml-api-quickref.md
           - file: machine-learning/anomaly-detection/anomaly-how-tos.md
             children:
@@ -183,14 +188,17 @@ toc:
   - file: cross-cluster-search.md
     children:
       - file: cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
-  - hidden: cross-project-search.md
+  - file: cross-project-search.md
     children:
-      - hidden: cross-project-search/cross-project-search-link-projects.md
-      - hidden: cross-project-search/cross-project-search-search.md
-      - hidden: cross-project-search/cross-project-search-tags.md
-      - hidden: cross-project-search/cross-project-search-project-routing.md
+      - file: cross-project-search/cross-project-search-search.md
+      - file: cross-project-search/cross-project-search-tags.md
+      - file: cross-project-search/cross-project-search-project-routing.md
+      - file: cross-project-search/cross-project-search-manage-scope.md
+      - title: "CPS in ES|QL"
+        crosslink: elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md
   - file: ai-features.md
     children:
+      - file: ai-features/automatic-import.md
       - file: ai-features/elastic-agent-builder.md
         children:
           - file: ai-features/agent-builder/get-started.md
@@ -198,12 +206,19 @@ toc:
           - file: ai-features/agent-builder/chat.md
             children:
               - file: ai-features/agent-builder/standalone-and-flyout-modes.md
+              - file: ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md
           - file: ai-features/agent-builder/agent-builder-agents.md
             children:
             - file: ai-features/agent-builder/custom-agents.md
             - file: ai-features/agent-builder/builtin-agents-reference.md
             - file: ai-features/agent-builder/prompt-engineering.md
             - file: ai-features/agent-builder/agents-and-workflows.md
+          - file: ai-features/agent-builder/skills.md
+            children:
+              - file: ai-features/agent-builder/builtin-skills-reference.md
+              - file: ai-features/agent-builder/custom-skills.md
+              - file: ai-features/agent-builder/skill-creation-guidelines.md
+          - file: ai-features/agent-builder/plugins.md
           - file: ai-features/agent-builder/tools.md
             children:
               - file: ai-features/agent-builder/tools/builtin-tools-reference.md
@@ -213,6 +228,7 @@ toc:
                   - file: ai-features/agent-builder/tools/index-search-tools.md
                   - file: ai-features/agent-builder/tools/mcp-tools.md
                   - file: ai-features/agent-builder/tools/workflow-tools.md
+          - file: ai-features/agent-builder/connectors.md
           - file: ai-features/agent-builder/programmatic-access.md
             children:
                - file: ai-features/agent-builder/kibana-api.md
@@ -220,6 +236,10 @@ toc:
                    - file: ai-features/agent-builder/agent-builder-api-tutorial.md
                - file: ai-features/agent-builder/a2a-server.md
                - file: ai-features/agent-builder/mcp-server.md
+                 children:
+                   - file: ai-features/agent-builder/mcp-server-api-keys.md
+                   - title: "OAuth authentication"
+                     crosslink: docs-content://deploy-manage/app-connections/oauth-clients.md
           - file: ai-features/agent-builder/monitor-usage.md
           - file: ai-features/agent-builder/permissions.md
           - file: ai-features/agent-builder/troubleshooting.md
@@ -227,6 +247,9 @@ toc:
               - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
               - file: ai-features/agent-builder/troubleshooting/api-calls-return-403-forbidden.md
           - file: ai-features/agent-builder/limitations-known-issues.md
+          - file: ai-features/agent-builder/glossary.md
+          - hidden: ai-features/agent-builder/connectors.md
+          - hidden: ai-features/agent-builder/plugins.md
       - file: ai-features/ai-chat-experiences.md
         children:
           - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
@@ -261,22 +284,23 @@ toc:
       - file: dashboards/building.md
         children:
           - file: dashboards/create-dashboard.md
+          - file: dashboards/create-dashboards-programmatically.md
+          - file: dashboards/create-dashboards-using-ai.md
           - file: dashboards/open-dashboard.md
-          - file: dashboards/add-controls.md
           - file: dashboards/drilldowns.md
           - file: dashboards/arrange-panels.md
           - file: dashboards/duplicate-dashboards.md
-          - file: dashboards/import-dashboards.md
       - file: dashboards/managing.md
-      - file: dashboards/sharing.md
+        children:
+          - file: dashboards/sharing.md
+          - file: dashboards/import-dashboards.md
+          - file: dashboards/manage-dashboards-as-code.md
       - file: dashboards/tutorials.md
         children:
           - file: dashboards/create-dashboard-of-panels-with-web-server-data.md
           - file: dashboards/create-dashboard-of-panels-with-ecommerce-data.md
   - file: visualize.md
     children:
-      - file: visualize/visualize-library.md
-      - file: visualize/manage-panels.md
       - file: visualize/lens.md
         children:
           - file: visualize/charts/area-charts.md
@@ -298,6 +322,12 @@ toc:
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
       - file: visualize/alert-panels.md
+      - file: visualize/dashboard-controls.md
+        children:
+          - file: visualize/add-controls.md
+          - file: visualize/add-time-slider-controls.md
+          - file: visualize/add-variable-controls.md
+          - file: visualize/dashboard-control-settings.md
       - file: visualize/canvas.md
         children:
           - file: visualize/canvas/edit-workpads.md
@@ -345,6 +375,8 @@ toc:
           - file: visualize/legacy-editors/aggregation-based.md
           - file: visualize/legacy-editors/tsvb.md
           - file: visualize/legacy-editors/timelion.md
+      - file: visualize/visualize-library.md
+      - file: visualize/manage-panels.md
   - file: find-and-organize.md
     children:
       - file: find-and-organize/data-views.md
@@ -353,6 +385,7 @@ toc:
       - file: find-and-organize/reports.md
       - file: find-and-organize/tags.md
       - file: find-and-organize/find-apps-and-objects.md
+      - file: find-and-organize/customize-navigation.md
   - file: report-and-share.md
     children:
       - file: report-and-share/automating-report-generation.md
@@ -362,6 +395,71 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
+      - file: alerting/compare-alerting-systems.md
+      - file: alerting/system-overview.md
+        children:
+          - file: alerting/experimental-alerting-system/how-it-works.md
+          - file: alerting/experimental-alerting-system/glossary.md
+          - file: alerting/experimental-alerting-system/get-started.md
+            children:
+              - file: alerting/experimental-alerting-system/get-started/setup.md
+              - file: alerting/experimental-alerting-system/get-started/configure-access.md
+              - file: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
+          - file: alerting/experimental-alerting-system/authorization.md
+          - file: alerting/experimental-alerting-system/rules.md
+            children:
+              - file: alerting/experimental-alerting-system/rules/create-a-rule.md
+                children:
+                  - file: alerting/experimental-alerting-system/rules/create-esql-rule.md
+                    children:
+                      - file: alerting/experimental-alerting-system/rules/yaml-rule-schema-reference.md
+                  - file: alerting/experimental-alerting-system/rules/create-rules-action-policies-agent-builder.md
+                  - file: alerting/experimental-alerting-system/rules/use-rule-builder.md
+                  - file: alerting/experimental-alerting-system/rules/create-rule-from-discover.md
+              - file: alerting/experimental-alerting-system/rules/configure-a-rule.md
+                children:
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-mode.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-query.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-schedule.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-severity.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-grouping.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-alert-delay.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-recovery.md
+                  - file: alerting/experimental-alerting-system/rules/configure-no-data-handling.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-tags.md
+              - file: alerting/experimental-alerting-system/rules/view-manage-rules.md
+              - file: alerting/experimental-alerting-system/rules/review-rule-execution-history.md
+              - file: alerting/experimental-alerting-system/rules/esql-query-patterns.md
+                children:
+                  - file: alerting/experimental-alerting-system/rules/esql-first-rule-query.md
+                  - file: alerting/experimental-alerting-system/rules/esql-threshold-queries.md
+                  - file: alerting/experimental-alerting-system/rules/esql-no-data-detection.md
+                  - file: alerting/experimental-alerting-system/rules/esql-slo-burn-rate.md
+                  - file: alerting/experimental-alerting-system/rules/esql-persistent-breach.md
+              - file: alerting/experimental-alerting-system/rules/rule-event-field-reference.md
+          - file: alerting/experimental-alerting-system/alerts.md
+            children:
+              - file: alerting/experimental-alerting-system/alerts/alert-data-model.md
+              - file: alerting/experimental-alerting-system/alerts/view-and-manage-alerts.md
+                children:
+                  - file: alerting/experimental-alerting-system/alerts/triage-alert-episodes.md
+                  - file: alerting/experimental-alerting-system/alerts/investigate-alert-episodes.md
+              - file: alerting/experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md
+              - file: alerting/experimental-alerting-system/alerts/field-reference.md
+          - file: alerting/experimental-alerting-system/notifications-actions.md
+            children:
+              - file: alerting/experimental-alerting-system/workflows-alerting.md
+              - file: alerting/experimental-alerting-system/action-policies/about-action-policies.md
+              - file: alerting/experimental-alerting-system/action-policies/common-action-policy-scenarios.md
+                children:
+                  - file: alerting/experimental-alerting-system/action-policies/route-by-severity.md
+                  - file: alerting/experimental-alerting-system/action-policies/severity-escalation.md
+                  - file: alerting/experimental-alerting-system/action-policies/re-notification.md
+              - file: alerting/experimental-alerting-system/action-policies/create-configure-action-policy.md
+              - file: alerting/experimental-alerting-system/action-policies/action-policy-reference.md
+              - file: alerting/experimental-alerting-system/action-policies/manage-action-policies.md
+              - file: alerting/experimental-alerting-system/action-policies/review-action-policy-execution-history.md
+              - file: alerting/experimental-alerting-system/action-policies/reduce-notification-noise.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
@@ -379,6 +477,7 @@ toc:
           - file: alerting/alerts/alerting-troubleshooting.md
             children:
               - file: alerting/alerts/alerting-common-issues.md
+              - file: alerting/alerts/troubleshoot-rule-behavior.md
               - file: alerting/alerts/event-log-index.md
               - file: alerting/alerts/testing-connectors.md
           - file: alerting/alerts/maintenance-windows.md
@@ -440,35 +539,80 @@ toc:
       - file: cases/cases-as-data.md
   - file: workflows.md
     children:
-      - file: workflows/setup.md
       - file: workflows/get-started.md
-      - file: workflows/core-components.md
         children:
+          - file: workflows/get-started/setup.md
+          - file: workflows/get-started/build-your-first-workflow.md
+      - file: workflows/use-cases.md
+        children:
+          - file: workflows/use-cases/security.md
+            children:
+              - file: workflows/use-cases/security/automate-security-operations.md
+                children:
+                  - file: workflows/use-cases/security/automate-security-operations/alert-triage-with-case.md
+                  - file: workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md
+                  - file: workflows/use-cases/security/automate-security-operations/enrich-alert-with-threat-intel.md
+              - file: workflows/use-cases/security/manage-detection-rules.md
+                children:
+                  - file: workflows/use-cases/security/manage-detection-rules/run-rules-on-demand.md
+          - file: workflows/use-cases/observability.md
+            children:
+              - file: workflows/use-cases/observability/root-cause-analysis.md
+          - file: workflows/use-cases/ai-augmented-workflows.md
+            children:
+              - file: workflows/use-cases/ai-augmented-workflows/classify-and-route-alerts.md
+      - file: workflows/concepts.md
+        children:
+          - file: workflows/authorization.md
           - file: workflows/triggers.md
             children:
               - file: workflows/triggers/manual-triggers.md
               - file: workflows/triggers/scheduled-triggers.md
               - file: workflows/triggers/alert-triggers.md
+              - file: workflows/triggers/event-driven-triggers.md
           - file: workflows/steps.md
             children:
               - file: workflows/steps/action-steps.md
                 children:
                   - file: workflows/steps/elasticsearch.md
-                  - file: workflows/steps/kibana.md                  
+                  - file: workflows/steps/kibana.md
+                  - file: workflows/steps/cases.md
+                  - file: workflows/steps/streams.md
                   - file: workflows/steps/external-systems-apps.md
               - file: workflows/steps/flow-control-steps.md
                 children:
                   - file: workflows/steps/if.md
                   - file: workflows/steps/foreach.md
+                  - file: workflows/steps/while.md
+                  - file: workflows/steps/switch.md
                   - file: workflows/steps/wait.md
+                  - file: workflows/steps/wait-for-input.md
+                  - file: workflows/steps/loop-break.md
+                  - file: workflows/steps/loop-continue.md
               - file: workflows/steps/ai-steps.md
-      - file: workflows/data.md
+              - file: workflows/steps/data.md
+              - file: workflows/steps/composition.md
+          - file: workflows/templating.md
+          - file: workflows/reference.md
+            children:
+              - file: workflows/reference/cheat-sheet.md
+              - file: workflows/reference/context-variables.md
+              - file: workflows/reference/glossary.md
+              - file: workflows/reference/liquid-filters.md
+              - file: workflows/reference/step-types.md
+      - file: workflows/authoring-techniques.md
         children:
-          - file: workflows/data/templating.md
-      - file: workflows/author-workflows.md
-      - file: workflows/monitor-troubleshoot.md
-      - file: workflows/manage-workflows.md
-      - hidden: workflows/use-cases.md
+          - file: workflows/authoring-techniques/use-yaml-editor.md
+          - file: workflows/authoring-techniques/anatomy.md
+          - file: workflows/authoring-techniques/settings.md
+          - file: workflows/authoring-techniques/choose-the-right-step.md
+          - file: workflows/authoring-techniques/pass-data-handle-errors.md
+          - file: workflows/authoring-techniques/compose-workflows.md
+          - file: workflows/authoring-techniques/human-in-the-loop.md
+          - file: workflows/authoring-techniques/monitor-workflows.md
+          - file: workflows/authoring-techniques/manage-workflows.md
+          - file: workflows/authoring-techniques/troubleshooting.md
+          - file: workflows/authoring-techniques/migrate-from-9-3.md
       - file: workflows/templates.md
   - file: numeral-formatting.md
   - hidden: explore-and-visualize.md

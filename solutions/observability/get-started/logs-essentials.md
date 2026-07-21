@@ -1,5 +1,6 @@
 ---
 navigation_title: Logs Essentials
+description: Step-by-step guide to getting started with Elastic Observability Serverless Logs Essentials, covering log collection, setup, and data exploration.
 applies_to:
   serverless: ga
 products:

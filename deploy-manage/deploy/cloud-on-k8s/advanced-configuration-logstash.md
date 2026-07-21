@@ -15,7 +15,7 @@ products:
 
 You can change JVM settings by using the `LS_JAVA_OPTS` environment variable to override default settings in `jvm.options`. This approach ensures that expected settings from `jvm.options` are set, and only options that explicitly need to be overridden are.
 
-To do, this, set the  `LS_JAVA_OPTS` environment variable in the container definition of your Logstash resource:
+To do this, set the `LS_JAVA_OPTS` environment variable in the container definition of your Logstash resource:
 
 ```yaml
 apiVersion: logstash.k8s.elastic.co/v1alpha1
@@ -49,7 +49,7 @@ metadata:
   name: logstash-keystore-pass
 stringData:
   LOGSTASH_KEYSTORE_PASS: changed   <1>
-
+---
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:

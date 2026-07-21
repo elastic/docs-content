@@ -12,12 +12,12 @@ products:
 
 # Explore logs in Discover [explore-logs]
 
-From the `logs-*` or `All logs` data view in Discover, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. You can also customize and save your searches and place them on a dashboard. Instead of having to log into different servers, change directories, and view individual files, all your logs are available in a single view.
+**Discover** offers a dedicated experience for exploring log data. When **Discover** recognizes data in `logs-*` indices, it enables specific features to help you investigate log events more effectively. Use this view to quickly search and filter your log data, explore field structure, and surface findings in visualizations or dashboards.
 
-To open **Discover**, find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select the `logs-*` or `All logs` data view from the **Data view** menu.
+If you're just getting started with **Discover** and want to learn its main principles, you should get familiar with the [default experience](/explore-analyze/discover.md).
 
 :::{note}
-For a contextual logs experience, set the **Solution view** for your space to **Observability**. Refer to [Managing spaces](/deploy-manage/manage-spaces.md) for more information.
+For a contextual logs experience, set the **Solution view** for your space to **{{observability}}**. Refer to [Managing spaces](/deploy-manage/manage-spaces.md) for more information.
 :::
 
 :::{image} ../../images/observability-log-explorer.png
@@ -30,13 +30,27 @@ For a contextual logs experience, set the **Solution view** for your space to **
 Viewing data in Discover logs data views requires `read` privileges for **Discover**, **Index**, and **Logs**. For more on assigning {{kib}} privileges, refer to the [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) docs.
 
 
-## Find your logs [find-your-logs]
+## Load log data [load-log-data]
 
-By default, the **All logs** data view shows all of your logs, according to the index patterns set in the **logs sources** advanced setting. To open **Advanced settings**, find it in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+The logs experience is available in:
 
-To focus on logs from a specific source or sources, create a data view using the index patterns of those source. For more information on creating data views, refer to [Create a data view](/explore-analyze/find-and-organize/data-views.md#settings-create-pattern)
+* **{{data-source-cap}} mode**: Select the `logs-*` or `All logs` {{data-source}} from the **Discover** main page. By default, **All logs** shows all of your logs according to the index patterns set in the **logs sources** advanced setting. You can navigate to the **Advanced settings** from the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-Once you have the logs you want to focus on displayed, you can drill down further to find the information you need. For more on filtering your data in Discover, refer to [Filter logs in Discover](/solutions/observability/logs/filter-aggregate-logs.md#logs-filter-discover).
+    To focus on logs from a specific source, create a data view using the index patterns for that source. For more information, refer to [Create a data view](/explore-analyze/find-and-organize/data-views.md#settings-create-pattern).
+
+* **{{esql}} mode**: Switch to **{{esql}}** mode and use the `FROM` command to query your log data:
+
+    ```esql
+    FROM logs-*-*,logs-*,filebeat-*
+    ```
+
+    You can also query a specific index:
+
+    ```esql
+    FROM logs-myservice-default
+    ```
+
+Once you have the logs you want to focus on, you can drill down further. For more on filtering, refer to [Filter logs in Discover](/solutions/observability/logs/filter-aggregate-logs.md#logs-filter-discover).
 
 
 ## Review log data in the documents table [review-log-data-in-the-documents-table]
@@ -59,7 +73,7 @@ The actions column provides additional information about your logs.
 
 ## View log details [view-log-details]
 
-Click the expand icon ![icon to open log details](/solutions/images/observability-expand-icon.png "") to get an in-depth look at an individual log file.
+Select the expand icon ![icon to open log details](/solutions/images/observability-expand-icon.png "") to get an in-depth look at an individual log file.
 
 These details provide immediate feedback and context for what’s happening and where it’s happening for each log. From here, you can quickly debug errors and investigate the services where errors have occurred.
 
@@ -70,9 +84,31 @@ The following actions help you filter and focus on specific fields in the log de
 * **Filter for field present (![filter for present icon](../../images/observability-filter.png "")):** Show logs that contain the specific field.
 * **Toggle column in table (![toggle column in table icon](../../images/observability-listAdd.png "")):** Add or remove a column for the field to the main Discover table.
 
+### Content breakdown [discover-logs-content-breakdown]
 
-## View log data set details [view-log-data-set-details]
+The **Content breakdown** section gives you a view of the raw log text. For each message, the breakdown displays:
 
-Go to **Data Sets** to view more details about your data sets and monitor their overall quality. To open the **Data Set Quality** management page, find it in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+- **Field name** — the source field being parsed (for example, `message`)
+- **Timestamp** — the time the log event occurred
+- **Message content** — the full text of the log message
 
-Refer to [Data set quality](/solutions/observability/data-set-quality-monitoring.md) for more information.
+From the content breakdown, you can select **Parse content in Streams** to open the related stream and extract structured fields from the message. Use this when your logs contain unstructured data that you want to query or filter on.
+
+### Similar errors [discover-logs-similar-errors]
+
+The **Similar errors** section shows an occurrences chart for errors that share the same `service.name`, `error.culprit`, `message`, and `error.grouping_name` fields. Use this view to identify recurring errors and spot patterns across your services.
+
+Select **Open in Discover** to open a filtered view of all similar errors.
+
+### Stream [discover-logs-stream]
+The **Stream** section provides a link to the related [stream](../streams/streams.md) for the selected log. From here, you can extract fields, set data retention, and route data from one place.
+
+### Stacktrace [discover-logs-stacktrace]
+
+The **Stacktrace** section is available for logs from instrumented applications. It shows the full stack trace leading to the error, including the culprit, error message, and individual frames. Frames from your application code are shown alongside library frames, which you can expand to see the full call stack.
+
+When a root cause is available, a **Caused by** section appears below the main stack trace with additional context about the underlying error.
+
+### Trace summary [discover-logs-trace-summary]
+
+The **Trace summary** section is available for logs from instrumented applications. It shows a condensed waterfall of the trace the selected document belongs to. Each row represents a span or transaction, positioned on a timeline to show when it started and how long it took.

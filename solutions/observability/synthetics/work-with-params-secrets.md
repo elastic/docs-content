@@ -55,7 +55,7 @@ stack: ga 9.1
 serverless: ga
 ```
 
-By default, custom user roles do not have access to global parameter values. Administrators can grant read access to global parameters by adding the Synthetics **Can read global parameter values** {{kib}} sub-feature privilege to a role. When added, users can view a global parameter value using the [**Get parameters** API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-parameters) or by selecting the {icon}`eye` icon.
+By default, custom user roles do not have access to global parameter values. Administrators can grant read access to global parameters by adding the Synthetics **Can read global parameter values** {{kib}} sub-feature privilege to a role. When added, users can view a global parameter value using the [**Get parameters** API]({{kib-apis}}operation/operation-get-parameters) or by selecting the {icon}`eye` icon.
 
 To add the **Can read global parameter values** {{kib}} privilege to a role:
 

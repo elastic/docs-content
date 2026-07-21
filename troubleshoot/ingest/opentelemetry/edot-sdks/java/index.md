@@ -27,7 +27,7 @@ Make you have set a service name, for example `-Dotel.service.name=Service1` or 
 
 Check from the host, VM, pod, container, or image running the app that connectivity is available to the Collector. For more detailed connectivity troubleshooting, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md).
 
-The following examples use a default URL, `http://127.0.0.1:4318/, which you should replace with the endpoint you are using:
+The following examples use a default URL, `http://127.0.0.1:4318/`, which you should replace with the endpoint you are using:
 
 - OpenTelemetry or EDOT Collector without authentication: `curl -i http://127.0.0.1:4318/v1/traces -X POST -d '{}' -H content-type:application/json`
 - OpenTelemetry or EDOT Collector with API key authentication: `curl -i http://127.0.0.1:4318/v1/traces -X POST -d '{}' -H content-type:application/json -H "Authorization:ApiKey <api_key>"`
@@ -40,10 +40,34 @@ The Collector should produce output similar to the following:
 
 ## Agent troubleshooting
 
-Determine if the issue is related to the agent by following these steps:
+Determine if the issue is related to the EDOT agent, other agents, extensions, or connectivity issues by following these steps:
 
-1. Start the application with no agent and see if the issue is not present. Observe if the issue is again present when restarting with the agent.
-2. Check end-to-end connectivity without the agent by running one or more of the example apps in [elastic-otel-java](https://github.com/elastic/elastic-otel-java/blob/main/examples/troubleshooting/README.md). These use the OpenTelemetry SDK rather than the auto-instrumentation. They can confirm that the issue is specific to the Java agent or can otherwise identify that the issue is caused by something else.
+:::::{stepper}
+
+::::{step} Run the application without the EDOT agent
+Start the application with no agent (remove `-javaagent:` argument) and restart the application.
+- If the issue is still present without the EDOT agent, then the problem is likely related to the application or its environment.
+- If the issue is resolved, then re-adding the EDOT agent should let you confirm that the issue is related to the agent.
+::::
+
+::::{step} Remove other agents
+If more than one instrumentation agent is being used on the application (multiple `-javaagent:` JVM arguments), remove other agents and restart the application. Multiple instrumentation agents can conflict with each other and are a known cause of unpredictable behavior.
+
+- If the issue is still present with only the EDOT agent, then it indicates the problem is likely related to the EDOT agent.
+- If the issue is resolved, then it indicates the problem might be related to interactions between instrumentation agents.
+::::
+
+::::{step} Remove instrumentation extensions
+If [instrumentation extensions](https://opentelemetry.io/docs/zero-code/java/agent/extensions/) are being used with the `otel.javaagent.extensions` JVM system property or the `OTEL_JAVAAGENT_EXTENSIONS` environment variable, remove them and restart the application.
+- If the issue is still present without the extensions, then the problem is likely related to the EDOT agent.
+- If the issue is resolved, then it indicates the problem might be related to the extensions.
+::::
+
+::::{step} Check end-to-end connectivity
+Check end-to-end connectivity without the EDOT agent by running one or more of the example apps in [elastic-otel-java](https://github.com/elastic/elastic-otel-java/blob/main/examples/troubleshooting/README.md). These use the OpenTelemetry SDK rather than the auto-instrumentation. They can help confirm whether the issue is specific to the EDOT agent or caused by something else.
+::::
+
+:::::
 
 ## Agent debug logging
 

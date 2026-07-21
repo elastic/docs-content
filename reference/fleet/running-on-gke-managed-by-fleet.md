@@ -29,7 +29,7 @@ Specific manifests are provided to cover [Autopilot environments](https://github
 
 `kube-state-metrics` also must be installed to another namespace rather than the `default` as access to `kube-system` is not allowed.
 
-## Additonal Resources: [_additonal_resources]
+## Additional Resources: [_additonal_resources]
 
 * Blog [Using Elastic to observe GKE Autopilot clusters](https://www.elastic.co/blog/elastic-observe-gke-autopilot-clusters)
 * Elastic speakers webinar: ["Get full Kubernetes visibility into GKE Autopilot with Elastic Observability"](https://www.elastic.co/virtual-events/get-full-kubernetes-visibility-into-gke-autopilot-with-elastic-observability)

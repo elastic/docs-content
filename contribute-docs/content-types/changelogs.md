@@ -1,8 +1,11 @@
 ---
+navigation_title: "Changelogs"
 description: "Guidelines for writing effective release notes content in changelog YAML files for Elastic products."
 ---
 
 # Changelogs
+
+% Title and technical-formatting guidance updated (base-form verbs, {{esql}}, cleanup checklist, YAML quoting note) — documentation agent, 2026-05-11.
 
 This page provides guidelines for writing useful and consistent changelogs, which are the building blocks of Elastic release notes.
 Use this content type and the associated schema to draft new changelogs or to evaluate existing content.
@@ -15,7 +18,7 @@ Use this page to:
 - Write clear, user-focused content.
 - Evaluate existing changelogs against the standards outlined here.
 
-Whether you're create a changelog to summarize your pull request or reviewing someone else's work, these guidelines help ensure consistency, completeness, and quality across the Elastic documentation.
+Whether you're creating a changelog to summarize your pull request or reviewing someone else's work, these guidelines help ensure consistency, completeness, and quality across the Elastic documentation.
 
 ## What are changelogs
 
@@ -140,32 +143,58 @@ Security
 :   Follow security team guidelines for disclosure of sensitive information.
 :   Examples include security patches and vulnerability disclosures.
 
+### Technical terms and inline code [changelog-technical-terms]
+
+In general, follow the [Emphasis guidelines](/contribute-docs/style-guide/formatting.md#emphasis) for all documentation.
+
+Use inline code (backticks) for anything code-like so titles and descriptions stay scannable and consistent:
+
+- Field names, settings keys, and parameters (for example, `` `index.refresh_interval` ``).
+- API paths or methods when they are the clearest label (for example, `` `POST /_search` ``).
+- Class, type, or notable code identifiers when they are the main subject (for example, `` `SearchHit` ``).
+- {{esql}} commands, functions, and operators in running text or titles when needed (for example, `` `STATS` ``, `` `MV_EXPAND` ``, `` `LIMIT` ``).
+
+:::{important}
+Titles that contain backticks, colons, `#`, or brackets must be valid YAML scalars: quote the whole `title` value in the changelog file (double-quoted string; escape internal `"` as `\"`). See [Create and bundle changelogs](https://elastic.github.io/docs-builder/contribute/changelog/) if you use automation.
+:::
+
 ### Write effective titles [changelog-titles]
 
 The changelog title should be a clear, concise, and user-focused summary.
 
 Follow these best practices:
 
-- **Use present tense**: "Adds support for..." not "Added support for...".
-- **Focus on user impact**: What can users do now, or what problem is solved?
+- **Start with a strong verb and use present tense and imperative mood**: Use "Fix", "Add", "Improve", "Remove", "Enable", "Update", and similar—not passive openings.
+- **Focus on user impact**: What users can do now, or what problem is solved.
 - **Be specific**: Avoid vague titles like "Bug fixes and performance improvements".
-- **Keep it short**: Use a maximum of 80 characters.
-- **Avoid jargon and acronyms**: Use plain language that all users can understand.
-- **Start with action verbs**: "Fixes...", "Adds...", "Improves...", "Removes...".
+- **Keep it short**: Use a maximum of 80 characters. If the full story does not fit, keep the title under the limit and use the `description` field for more details.
+- **Use American English** in titles (for example, *serialize* not *serialise*).
+- **Avoid jargon and acronyms** where plain language works; use the same product names as the rest of Elastic documentation. For formatting code-like terms in titles, see [Technical terms and inline code](#changelog-technical-terms).
 
 #### Good title examples
 
-- "Adds support for custom authentication providers"
-- "Fixes memory leak in long-running queries"
-- "Improves query performance for date range filters"
-- "Removes deprecated `_all` field from search API"
+- Add support for custom authentication providers
+- Fix memory leak in long-running queries
+- Improve query performance for date range filters
+- Remove deprecated `_all` field from search API
 
 #### Poor title examples
 
-- "Bug fixes" (too vague)
-- "Refactored internal query processing" (focuses on implementation, not user impact)
-- "Fixed bug #12345" (uses internal reference, doesn't explain impact)
-- "Performance improvements" (too vague)
+- Bug fixes (too vague)
+- Refactored internal query processing (focuses on implementation, not user impact)
+- Fixed bug #12345 (uses internal reference, doesn't explain impact)
+- Performance improvements (too vague)
+- feat: Add sorting (development-style prefix; omit in changelogs)
+- Fix: [Team] Widget broken (bracketed tracker labels; write a user-facing title instead)
+
+#### Title cleanup checklist [title-cleanup-checklist]
+
+Before you merge or publish, check titles for:
+
+- **Stripped development labels**: Remove prefixes such as `feat:`, `fix:`, `Fix:`, `auto-implement:`, and trailing tracker fragments like `Bugfix -`.
+- **No bracket-only team tags**: Replace `[Security Solution]`, `[Query Rules]`, and similar with plain, user-facing wording.
+- **Strong verbs**: Prefer *Improve validation for...* over *Better validation for...* when both fit in 80 characters.
+- **No buried lede**: If the title is vague, fold in concrete detail from the description (or rewrite both) so release notes stand alone.
 
 ### Write effective descriptions [changelog-descriptions]
 
@@ -190,7 +219,7 @@ Follow these best practices:
 #### Good description examples
 
 - This enhancement allows you to configure custom authentication providers through the security settings. Previously, only built-in providers were supported.
-- Fixes an issue where queries with date range filters could cause excessive memory usage in clusters with many shards. The fix optimizes memory allocation for date range queries.
+- Fix an issue where queries with date range filters could cause excessive memory usage in clusters with many shards. The change optimizes memory allocation for date range queries.
 
 #### Poor description examples
 
@@ -227,7 +256,7 @@ Follow these best practices:
 
 - For a breaking change: "Update all queries that use `_all` to use specific field names instead. For example, replace `_all:search_term` with `message:search_term OR title:search_term`".
 - For a deprecation: "Migrate to the new `new_api` endpoint before version 10.0. Update your code to use `POST /api/v2/endpoint` instead of `POST /api/v1/old_endpoint`. View the migration guide for detailed examples."
-- For a known issue: "As a workaround, restart the service after applying the configuration change. This issue will be fixed in the next release".
+- For a known issue: "As a workaround, restart the service after applying the configuration change. This issue will be fixed in the next release."
 
 ## Common anti-patterns
 
@@ -237,10 +266,10 @@ Avoid these common mistakes:
 - **Using internal references**: Avoid "Fixed bug #12345" or "See PR #67890"--summarize the change so that users can decide whether to follow the links.
 - **Being too vague**: "Bug fixes and performance improvements" doesn't help users understand what changed.
 - **Including unnecessary technical details**: Skip internal architecture changes unless they affect users.
+- **Shipping PR-style titles unchanged**: Omit `feat:`/`fix:` prefixes, auto-implement labels, and bracketed team tags—rewrite for users (see [Title cleanup checklist](#title-cleanup-checklist)).
 
 ## Examples
 
 Here are some examples of release notes that are generated from changelog files:
 
-- [{{es}} release notes](elasticsearch://release-notes/index.md), generated from [changelog files in the Elasticsearch repo](https://github.com/elastic/elasticsearch/tree/main/docs/changelog)
-- [{{agent}} release notes](elastic-agent://release-notes/index.md), generated from [changelog files in the Elastic Agent repo](https://github.com/elastic/elastic-agent/tree/main/changelog)
+- [Elastic Distribution of OpenTelemetry Java release notes](elastic-otel-java://release-notes/index.md), generated from [changelog bundles in the elastic-otel-java repo](https://github.com/elastic/elastic-otel-java/tree/main/docs/releases)

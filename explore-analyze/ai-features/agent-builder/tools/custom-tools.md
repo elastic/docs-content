@@ -31,8 +31,22 @@ You can create custom tools in the Kibana UI.
 
 To create a custom tool in the UI:
 
-1. Navigate to the **Tools** section on the **Agents** page in Kibana.
-2. Click **New tool**.
+1. Navigate to the Tools page:
+   :::::{applies-switch}
+
+   ::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+    Click **Manage components** at the bottom of the left sidebar, then select **Tools**. You can also reach this page from **Customize > Tools > Manage all tools**.
+   ::::
+
+   ::::{applies-item} { stack: ga =9.3 }
+
+    Navigate to the **Tools** section from the key actions menu in the Agent Chat UI.
+
+   ::::
+
+   :::::
+2. Click **+ New tool**.
 
   :::{image} ../images/new-tool-button.png
   :screenshot:
@@ -87,11 +101,50 @@ If you didn't select **Save and test** immediately:
 
 ## Assign tools to agents
 
-To start using a custom tool, you must assign it to a [custom agent](../custom-agents.md#create-a-new-agent).
+To start using a custom tool, you must assign it to a [custom agent](../custom-agents.md).
+
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+1. Select the agent from the agent selector in the left sidebar.
+2. Expand the **Customize** accordion and select **Tools**.
+3. Click **Add tool** and select the tools to assign.
+
+::::
+
+::::{applies-item} { stack: ga =9.3 }
+
 1. Navigate to the agent configuration page.
 2. Select the **Tools** tab.
 3. Add the desired tools to the agent.
 4. Save the agent configuration.
+
+::::
+
+:::::
+
+## Protected namespaces
+
+Some tool ID prefixes are reserved by Elastic for built-in tools and cannot be used for custom tools. Saving a custom tool whose ID begins with a protected prefix fails with the error `Tool ID "<id>" uses a protected namespace.`
+
+The set of protected prefixes has expanded across {{stack}} versions. The version tag next to each prefix indicates the version in which it was added to the protected list:
+
+- `attachments.*` {applies_to}`stack: ga 9.4+`
+- `filestore.*` {applies_to}`stack: ga 9.4+`
+- `observability.*` {applies_to}`stack: ga 9.3+`
+- `platform.alerting.*` {applies_to}`stack: ga 9.5+`
+- `platform.core.*` {applies_to}`stack: ga 9.2+`
+- `platform.dashboard.*` {applies_to}`stack: ga 9.3+`
+- `platform.sig_events.*` {applies_to}`stack: ga 9.5+`
+- `platform.streams.*` {applies_to}`stack: ga 9.4+`
+- `platform.workflows.*` {applies_to}`stack: ga 9.4+`
+- `search.*` {applies_to}`stack: ga 9.4+`
+- `security.*` {applies_to}`stack: ga 9.3+`
+
+:::{important}
+The protected namespace list has grown across releases and may expand further. Before upgrading to a new version, check the list against your custom tool IDs and recreate any that might collide under a different namespace. Tools whose namespace becomes protected at upgrade time can no longer be modified or deleted.
+:::
 
 ## Best practices
 
@@ -107,6 +160,8 @@ The Tool ID is a critical identifier. Use a namespace prefix to group tools logi
 - `finance.search_ticker`
 - `support.get_ticket_details`
 - `ecommerce.cancel_order`
+
+Some prefixes are reserved by Elastic for built-in tools and cannot be used for custom tool IDs. Refer to [Protected namespaces](#protected-namespaces).
 
 ### Writing effective tool descriptions
 

@@ -37,7 +37,7 @@ A TSDS is designed to ingest current metrics data. When the TSDS is first create
 
 Only data that falls within this range is indexed.
 
-To check the accepted time range for writing to a TSDS, use the [get data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream):
+To check the accepted time range for writing to a TSDS, use the [get data stream API]({{es-apis}}operation/operation-indices-get-data-stream):
 
 ```console
 GET _data_stream/my-tsds

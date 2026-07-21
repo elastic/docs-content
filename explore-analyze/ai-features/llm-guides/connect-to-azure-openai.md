@@ -53,13 +53,12 @@ Now, set up the Azure OpenAI model:
 
 1. From within your Azure OpenAI deployment, select **Model deployments**, then click **Manage deployments**.
 2. On the **Deployments** page, select **Create new deployment**.
-3. Under **Select a model**, choose `gpt-4o` or `gpt-4 turbo`.
+3. Under **Select a model**, choose a model.
 4. Set the model version to "Auto-update to default".
 
    :::{important}
-   The models available to you depend on [region availability](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#model-summary-table-and-region-availability). For best results, use `GPT-4o 2024-05-13` with the maximum Tokens-Per-Minute (TPM) capacity. For more information on how different models perform for different tasks, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
+   The models available to you depend on [region availability](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#model-summary-table-and-region-availability). For more information on how different models perform for different tasks, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
    :::
-
 5. Under **Deployment type**, select **Standard**.
 6. Name your deployment.
 7. Slide the **Tokens per Minute Rate Limit** to the maximum. The following example supports 80,000 TPM, but other regions might support higher limits.
@@ -72,6 +71,14 @@ The following video demonstrates these steps (click to watch).
 
 
 ## Configure Elastic AI Assistant [_configure_elastic_ai_assistant]
+
+::::{important}
+:applies_to: {"stack": "deprecated 9.5, removed 9.6", "serverless": "removed"}
+The Azure OpenAI connector is deprecated. Existing Azure OpenAI connectors and rule actions that use them continue to work but display deprecation indicators. Follow the guidance that matches your version and deployment type:
+
+- {applies_to}`serverless: removed` {applies_to}`stack: removed 9.6` You cannot create new LLM connectors through the standard connector UI.
+- {applies_to}`stack: deprecated 9.5` For new AI integrations, use {{es}} {{infer}} endpoints instead of LLM connectors. Plan migration of existing LLM connectors and any rule actions that reference them before future removal.
+::::
 
 Finally, configure the connector in {{kib}}:
 
@@ -87,7 +94,13 @@ Finally, configure the connector in {{kib}}:
     4. (Optional) Alternatively, refer to the [API documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/reference) to learn how to create the URL manually.
 
 6. Under **API key**, enter one of your API keys.
-7. Click **Save & test**, then click **Run**.
+7. {applies_to}`stack: ga 9.2+`  (Optional) In the **Default model** field, enter a model name, for example `gpt-4o`.
+
+   :::{note}
+   This field is only required if you're routing requests through Azure API Management (APIM) or another proxy endpoint that cannot infer the model from the deployment URL. Standard Azure OpenAI deployments do not need it. When set, the value acts as a fallback: it is only injected into the request body when the request does not already specify a model.
+   :::
+
+8. Click **Save & test**, then click **Run**.
 
 Your LLM connector is now configured. The following video demonstrates these steps (click to watch).
 

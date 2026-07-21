@@ -74,3 +74,13 @@ Customize each layer to highlight meaningful dimensions in your data. For exampl
 Search across the layers in your map to focus on just the data you want. Combine free text search with field-based search using the [{{kib}} Query Language](../../explore-analyze/query-filter/languages/kql.md). Set the time filter to restrict layers by time. Draw a polygon on the map or use the shape from features to create spatial filters. Filter individual layers to compares facets.
 
 Check out [Search geographic data](../../explore-analyze/visualize/maps/maps-search.md).
+
+### Search across linked projects [maps-cps]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) to control which projects your map queries. All {{es}}-backed layers, including [vector layers](/explore-analyze/visualize/maps/vector-layer.md), joins, and [heat map layers](/explore-analyze/visualize/maps/heatmap-layer.md), pull data from linked projects based on the current {{cps}} scope. When you change the scope, these layers update to reflect the new set of projects.
+
+ES|QL layers additionally support query-level overrides using [`SET project_routing`](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-cps). When you embed a map in a dashboard and a layer uses a [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) override, the map panel displays a **Custom CPS scope** badge. Refer to [View data from multiple projects](/explore-analyze/dashboards/using.md#dashboard-cps-scope) for details.

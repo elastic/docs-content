@@ -12,6 +12,10 @@ products:
 
 To provide context to your dashboard panels, add **Text** panels that display important information, instructions, images, and more. You can create **Text** panels using GitHub-flavored Markdown text.
 
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` You can also save a Markdown panel to the **Visualize Library** to reuse it across multiple dashboards. For details, refer to [Save and reuse Markdown panels across dashboards](#markdown-library-reuse).
+
+## Create a Markdown panel [create-markdown-panel]
+
 :::::{applies-switch}
 
 ::::{applies-item} { stack: ga 9.2, serverless: }  
@@ -96,4 +100,40 @@ For detailed information about writing on GitHub, click **Help** on the top-righ
 ::::
 
 :::::
+
+## Save and reuse Markdown panels across dashboards [markdown-library-reuse]
+
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+Save a Markdown panel to the **Visualize Library** so you can add it to multiple dashboards. When you edit a saved Markdown panel, your changes are reflected on every dashboard that uses it. For an overview of the library, refer to [Visualize Library](visualize-library.md).
+
+### Save a Markdown panel to the library [markdown-save-to-library]
+
+To save an existing Markdown panel from a dashboard to the **Visualize Library**:
+
+1. On your dashboard, open the {icon}`boxes_vertical` panel menu of the Markdown panel.
+2. Select **Save to library**.
+3. Enter a **Title** for the panel, then select **Save**.
+
+The panel is now linked to the library. Any subsequent edit you apply to it from a dashboard updates the library entry, and the change appears on every dashboard where the panel is added.
+
+### Add a saved Markdown panel from the library [markdown-add-from-library]
+
+To add a previously saved Markdown panel to a dashboard:
+
+1. From your dashboard, select **Add panel** > **From library** in the toolbar.
+2. From the **Types** dropdown, select **Markdown**.
+3. Select the panel you want to add.
+
+### Unlink a Markdown panel from the library [markdown-unlink-from-library]
+
+To make changes to a saved Markdown panel on a single dashboard without affecting other dashboards, unlink it from the library:
+
+1. On your dashboard, open the {icon}`boxes_vertical` panel menu of the Markdown panel.
+2. Select **Unlink from library**.
+
+The panel is now part of the dashboard only. Edits you make to it no longer update the library entry or other dashboards.
 

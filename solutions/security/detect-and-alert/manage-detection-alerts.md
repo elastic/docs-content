@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/alerts-ui-manage.html
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-manage.html
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -37,6 +37,7 @@ The Alerts page is your central hub for triaging and investigating detection ale
 | Add to case | Click the **More actions** icon {icon}`boxes_horizontal` > **Add to case** |
 | Investigate in Timeline | Click **Investigate in timeline** icon {icon}`timeline` |
 | Add exception | Click the **More actions** icon {icon}`boxes_horizontal` > **Add exception** |
+| CSV export {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | In the toolbar, select the option to export to CSV. Requires [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access). |
 
 
 ## Filter alerts [detection-view-and-filter-alerts]
@@ -68,7 +69,7 @@ Hover over any value in the Alerts table to see inline actions. Click the expand
 
 ### View rule-specific alerts
 
-Go to **Rules** > **Detection rules (SIEM)**, then select a rule name. The rule details page shows all alerts from that rule, including alerts from previous rule revisions.
+Go to **Rules** > **{{siem-rules-ui}}**, then select a rule name. The rule details page shows all alerts from that rule, including alerts from previous rule revisions.
 
 
 ## Edit drop-down filter controls [drop-down-filter-controls]
@@ -120,11 +121,7 @@ Group alerts by up to three fields, such as rule name, host, user, source IP, or
 | Sort fields | Sort by one or more columns |
 | Fields | Add or remove fields (including [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md)) |
 | Full screen | Expand table to full screen |
-
-:::{image} /solutions/images/security-alert-table-toolbar-buttons.png
-:alt: Alerts table with toolbar buttons highlighted
-:screenshot:
-:::
+| Export to CSV {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Export filtered alerts and visible columns to a CSV file. Requires [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access). |
 
 ### View modes
 
@@ -149,7 +146,7 @@ Access actions from the **More actions** (**…**) menu in the Alerts table, or 
 | [Add to case](/explore-analyze/cases/attach-objects-to-cases.md) | Attach alert to a new or existing case |
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Run a workflow from an alert](#run-workflow-from-alert) | Run an Elastic workflow for on-demand response or investigation |
 | [Add rule exception](#add-exception-from-alerts) | Prevent rule from generating similar alerts |
-| [Add {{elastic-endpoint}} exception](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) | Prevent {{elastic-endpoint}} alerts for specific conditions |
+| [Add {{elastic-endpoint}} exception](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md) | Prevent {{elastic-endpoint}} alerts for specific conditions |
 | [Apply alert tags](#apply-alert-tags) | Categorize alerts for filtering |
 | [Assign users](#assign-users-to-alerts) | Assign analysts to investigate |
 | [Investigate in Timeline](#signals-to-timelines) | Open alert in Timeline for analysis |
@@ -206,13 +203,15 @@ You can add your own closing reason options by updating the `securitySolution:al
 
 The closing reason is stored in `kibana.alert.workflow_reason` and can be used for filtering. Reopening an alert removes this field.
 
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` You can also set an alert closing reason when you [close an {{elastic-sec}} case with sync enabled](/solutions/security/investigate/security-cases.md#cases-set-closing-reason).
+
 ### Run a workflow from an alert [run-workflow-from-alert]
 ```yaml {applies_to}
 stack: ga 9.4+
 serverless: ga
 ```
 
-You can run an [Elastic workflow](/explore-analyze/workflows.md) directly from an alert to trigger an on-demand response or investigation. To use this feature, make sure you meet the [workflows prerequisites](/explore-analyze/workflows/get-started.md#workflows-prerequisites).
+You can run an [Elastic workflow](/explore-analyze/workflows.md) directly from an alert to trigger an on-demand response or investigation. To use this feature, make sure you meet the [workflows prerequisites](/explore-analyze/workflows/get-started/build-your-first-workflow.md#workflows-prerequisites).
 
 To run a workflow on an individual alert, do one of the following:
 

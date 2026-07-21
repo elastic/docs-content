@@ -175,7 +175,7 @@ Follow [this quick guide](../../../../../deploy-manage/api-keys/elasticsearch-ap
 
 ### Use REST APIs
 
-Follow [this guide](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) to create an API Key using REST APIs.
+Follow [this guide]({{es-apis}}operation/operation-security-create-api-key) to create an API Key using REST APIs.
 
 ## Missing general attributes
 

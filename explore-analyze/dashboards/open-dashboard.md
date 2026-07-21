@@ -31,19 +31,19 @@ Managed dashboards created by integrations can't be edited directly, but you can
    ::::
 
 3. Click the dashboard name you want to open.
-   The dashboard opens automatically in **Edit** mode if you have the right permissions. You can switch between edit and view modes from the toolbar.
+   The dashboard opens automatically in **Edit** mode if you have the right permissions. You can switch between edit and view modes from the application menu.
 
 5. Make the changes that you need to the dashboard:
 
     * Adjust the dashboard’s settings
     * [Add, remove, move, or edit panels](../visualize.md#panels-editors)
-    * [Change the available controls](add-controls.md)
+    * [Change the available controls](../visualize/dashboard-controls.md)
 
 6. **Save** the dashboard.
 
 ## Reset dashboard changes [reset-the-dashboard]
 
-When editing a dashboard, you can revert any changes you’ve made since the last save using the **Reset** button located next to **Save** in the toolbar.
+When editing a dashboard, you can revert any changes you’ve made since the last save using the **Reset**/**Reset changes** button.
 
 ::::{note}
 Once changes are saved, you can no longer revert them in one click, and instead have to edit the dashboard manually.

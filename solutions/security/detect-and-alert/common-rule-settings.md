@@ -84,7 +84,9 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
     After you create the rule, you can find all custom highlighted fields in the About section of the rule details page. If the rule has alerts, you can find custom highlighted fields in the [Highlighted fields](/solutions/security/detect-and-alert/view-detection-alert-details.md#investigation-section) section of the alert details flyout.
 
 **Elastic endpoint exceptions** (optional)
-:   Adds all [{{elastic-endpoint}} exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) to this rule.
+:   When this setting is available, it adds all [{{elastic-endpoint}} exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) to this rule.
+
+    This setting is available on deployments where {{elastic-endpoint}} exceptions are evaluated by detection rules. It's not available on deployments that use [per-policy {{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md#endpoint-exceptions-opt-in).
 
     ::::{note}
     If you select this option, you can add {{elastic-endpoint}} exceptions on the Rule details page. Additionally, all future exceptions added to [endpoint protection rules](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) will also affect this rule.
@@ -103,11 +105,15 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
 :   Specify the maximum number of alerts the rule can create each time it executes. Default is 100.
 
 ::::{admonition} System-level alert limit
-The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/configuration-reference/alerting-settings.md#alert-settings) acts as a system-level limit on alerts per rule execution, and can supersede a security rule's **Max alerts per run** setting. If a rule's **Max alerts per run** value exceeds `xpack.alerting.rules.run.alerts.max`, the lower system setting takes precedence and the rule will not generate more alerts than it allows.
+The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/configuration-reference/alerting-settings.md) acts as a system-level limit on alerts per rule execution, and can supersede a security rule's **Max alerts per run** setting. If a rule's **Max alerts per run** value exceeds `xpack.alerting.rules.run.alerts.max`, the lower system setting takes precedence and the rule will not generate more alerts than it allows.
 ::::
 
 **MITRE ATT&CK threats** (optional)
 :   Add relevant [MITRE ATT&CK](https://attack.mitre.org/) tactics, techniques, and subtechniques.
+
+    ::::{note}
+    The tactic and technique options here only include the MITRE ATT&CK version currently supported by {{elastic-sec}}. If you're upgrading and existing mappings are affected by a MITRE ATT&CK version change, refer to [Remap detection rules to MITRE ATT&CK v19](/solutions/security/detect-and-alert/remap-mitre-attack.md).
+    ::::
 
 **Reference URLs** (optional)
 :   References to information that is relevant to the rule. For example, links to background information.
@@ -275,7 +281,7 @@ The following variables can only be passed if the rule's action frequency is **F
 
 ### Placeholder examples [placeholder-examples]
 
-To understand which fields to parse, see the [Detections API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-detections-api) to view the JSON representation of rules.
+To understand which fields to parse, see the [Detections API]({{kib-apis}}group/endpoint-security-detections-api) to view the JSON representation of rules.
 
 Example using `{{context.rule.filters}}` to output a list of filters:
 

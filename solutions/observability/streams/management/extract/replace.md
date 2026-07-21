@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Replace portions of a string field matching a regular expression with the Streams replace processor in Streamlang.
 ---
 
 # Replace processor [streams-replace-processor]

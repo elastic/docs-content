@@ -36,15 +36,15 @@ Once you understand the basics, explore these common tasks:
 **Build and customize dashboards**
 - [Build dashboards](dashboards/building.md): Learn the fundamentals of creating and configuring dashboards.
 - [Create a dashboard](dashboards/create-dashboard.md): Start with an empty dashboard and add your content.
-- [Add filter controls](dashboards/add-controls.md): Enable interactive filtering with options lists, range sliders, and time sliders.
+- [Add dashboard controls](visualize/dashboard-controls.md): Enable interactive filtering with options lists, range sliders, time sliders, and ES|QL variable controls.
 - [Add drilldowns](dashboards/drilldowns.md): Create interactive navigation between dashboards or to external URLs.
 - [Organize dashboard panels](dashboards/arrange-panels.md): Arrange panels using collapsible sections, resizing, and positioning.
 
 **Manage and share**
 - [Manage dashboards](dashboards/managing.md): Browse, search, organize, and track usage of your dashboards.
-- [Share dashboards](dashboards/sharing.md): Share with your team using links, embeds, or file exports.
+- [Share and export dashboards](dashboards/sharing.md): Share with your team using links or embeds, and export as PDF, PNG, or CSV.
 - [Duplicate a dashboard](dashboards/duplicate-dashboards.md): Create customizable copies of existing dashboards.
-- [Import a dashboard](dashboards/import-dashboards.md): Bring dashboards from other environments.
+- [Import a dashboard](dashboards/import-dashboards.md): Bring a dashboard from another space, instance, or deployment into your own.
 
 ## About managed dashboards [managed-dashboards]
 

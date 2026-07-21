@@ -23,7 +23,7 @@ How you use this page depends on your goal:
 
 ## Access the page [access-mitre-page]
 
-Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **MITRE ATT&CK coverage**.
+Find **MITRE ATT&CK coverage** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} /solutions/images/security-rules-coverage.png
 :alt: MITRE ATT&CK coverage page
@@ -42,11 +42,22 @@ The coverage grid only includes detection rules you currently have installed, an
 
 The coverage page maps detections to [MITRE ATT&CK versions](https://attack.mitre.org/resources/updates/) used by {{elastic-sec}}.
 
-| MITRE ATT\&CK version | {{elastic-sec}} version |
+| {{elastic-sec}} version | MITRE ATT\&CK version |
 | :---- | :---- |
-| [v16.1](https://attack.mitre.org/resources/updates/updates-october-2024/) | 9.0.0-9.0.6, 9.1.0-9.1.3|
-| [v17.1](https://attack.mitre.org/resources/updates/updates-april-2025/) | 9.0.7, 9.1.4, 9.2.0|
-| [v18.1](https://attack.mitre.org/resources/updates/updates-october-2025/) | 9.1.10, 9.2.4, {applies_to}`stack: ga 9.3.0`, {{serverless-short}}|
+| 9.0.0 | [v15.1](https://attack.mitre.org/resources/updates/updates-april-2024/) |
+| 9.0.1-9.0.6 | [v16.1](https://attack.mitre.org/resources/updates/updates-october-2024/) |
+| 9.0.7-9.0.8 | [v17.1](https://attack.mitre.org/resources/updates/updates-april-2025/) |
+| 9.1.0-9.1.3 | [v16.1](https://attack.mitre.org/resources/updates/updates-october-2024/) |
+| 9.1.4-9.1.9 | [v17.1](https://attack.mitre.org/resources/updates/updates-april-2025/) |
+| 9.1.10 | [v18.1](https://attack.mitre.org/resources/updates/updates-october-2025/) |
+| 9.2.0-9.2.3 | [v17.1](https://attack.mitre.org/resources/updates/updates-april-2025/) |
+| 9.2.4-9.4.3 | [v18.1](https://attack.mitre.org/resources/updates/updates-october-2025/) |
+| 9.5.0+ | [v19.1](https://attack.mitre.org/resources/updates/updates-april-2026/) |
+
+::::{note}
+:applies_to: {stack: ga 9.5, serverless: ga}
+MITRE ATT\&CK v19 retires the Defense Evasion tactic and replaces it with Stealth and Defense Impairment. If you have custom rules mapped to MITRE ATT\&CK, check [](/solutions/security/detect-and-alert/remap-mitre-attack.md) to find and update mappings that changed in v19.
+::::
 
 
 ## Filter rules [security-rules-coverage-filter-rules]
@@ -61,7 +72,6 @@ You can also search for a tactic or technique name, technique number, or rule na
 ::::{note}
 Searches for tactics and techniques must match exactly, are case sensitive, and do *not* support wildcards.
 ::::
-
 
 
 ## Expand and collapse cells [security-rules-coverage-expand-and-collapse-cells]

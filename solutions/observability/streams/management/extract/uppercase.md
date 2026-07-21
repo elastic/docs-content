@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Convert a string field to uppercase with the Streams uppercase processor in Streamlang.
 ---
 
 # Uppercase processor [streams-uppercase-processor]

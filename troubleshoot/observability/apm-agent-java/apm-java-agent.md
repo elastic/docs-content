@@ -203,7 +203,7 @@ There are two reasons why this might happen:
 
 
     Requests do not reach a servlet
-    :   It’s possible to change the default transaction naming to use the URL path instead. See [`use_path_as_transaction_name` ([1.0.0])](apm-agent-java://reference/config-http.md#config-use-path-as-transaction-name) for more information.
+    :   It’s possible to change the default transaction naming to use the URL path instead. See [`use_path_as_transaction_name`](apm-agent-java://reference/config-http.md#config-use-path-as-transaction-name) for more information.
 
         Unfortunately, this may create a lot of duplicate transactions if they have similar paths. For example, in `/usr/{{id}}`, where `{{id}}` is the user ID, you can end up with as many transactions as there are users. You can mitigate this by using [`url_groups` (deprecated)](apm-agent-java://reference/config-http.md#config-url-groups), which will allow the use of wildcards in transaction URLs.
 
@@ -255,12 +255,12 @@ Known issues:
 
 * Early Java 8 versions before update 40 are **not supported** because they have several bugs that might result in JVM crashes when a java agent is active, thus agent **will not start** on those versions.
 * Similarly, Java 7 versions before update 60 are not supported as they are buggy in regard to `invokedynamic`.
-* Later Java 7 versions (> update 60) and early Java 8 versions (< update 40) are known to crash with agent versions 1.18.0-1.20.0 at some random point after (sometimes long after) startup due to [a bug](https://bugs.openjdk.java.net/browse/JDK-8041920) causing the creation of faulty native code by the C2 compiler. Symptoms of such crashes are non-deterministic. In order to prevent such crashes, we added a built-in delay for agent initialization in agent version 1.21.0, that will be automatically applied on these Java versions. If crashes still occur with agent version > 1.20.0, try one of the followings:
+* Later Java 7 versions (> update 60) and early Java 8 versions (< update 40) are known to crash with agent versions 1.18.0-1.20.0 at some random point after (sometimes long after) startup due to [a bug](https://bugs.openjdk.java.net/browse/JDK-8041920) causing the creation of faulty native code by the C2 compiler. Symptoms of such crashes are non-deterministic. In order to prevent such crashes, we added a built-in delay for agent initialization in agent version 1.21.0, that will be automatically applied on these Java versions. If crashes still occur with agent version > 1.20.0, try one of the following:
 
     1. Add `-XX:CompileCommand=exclude,java.lang.invoke.LambdaForm*::*` to the command line to avoid the problematic JIT compilation
     2. Increase the delay from the default (3000ms) by setting the `elastic.apm.delay_agent_premain_ms` System property to indicate the number of milliseconds to delay, through the command line, for example: `-Delastic.apm.delay_agent_premain_ms=10000`.
 
-* When [`profiling_inferred_spans_enabled` ([1.15.0] experimental)](apm-agent-java://reference/config-profiling.md#config-profiling-inferred-spans-enabled) is set to `true`, it uses a native library that collects low-level information from the JVM. All known issues so far had been fixed. Try to disable it if you think the crash may be related. We continuously upgrade to the latest async profiler version, so upgrading your agent to the latest version may already contain a fix.
+* When [`profiling_inferred_spans_enabled`](apm-agent-java://reference/config-profiling.md#config-profiling-inferred-spans-enabled) is set to `true`, it uses a native library that collects low-level information from the JVM. All known issues so far had been fixed. Try to disable it if you think the crash may be related. We continuously upgrade to the latest async profiler version, so upgrading your agent to the latest version may already contain a fix.
 
 Whenever you encounter a JVM crash, report through [our forum](https://discuss.elastic.co/c/observability/apm/58) or by opening an issue on our [GitHub repository](https://github.com/elastic/apm-agent-java). Look for the crash log (e.g. an `hs_err_pid<PID>.log`) and provide it when reporting, as well as all factors describing you setup and scenario.
 

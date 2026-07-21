@@ -119,7 +119,7 @@ To manage {{slm-init}} in {{kib}}:
 2. Select the **Policies** tab. 
 3. To create a policy, click **Create policy**.
 
-You can also manage {{slm-init}} using the [{{slm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm). To create a policy, use the [create {{slm-init}} policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-put-lifecycle).
+You can also manage {{slm-init}} using the [{{slm-init}} APIs]({{es-apis}}group/endpoint-slm). To create a policy, use the [create {{slm-init}} policy API]({{es-apis}}operation/operation-slm-put-lifecycle).
 
 The following request creates a policy that backs up the cluster state, all data streams, and all indices daily at 1:30 a.m. UTC.
 
@@ -154,7 +154,7 @@ PUT _slm/policy/nightly-snapshots
 
 You can manually run an {{slm-init}} policy to immediately create a snapshot. This is useful for testing a new policy or taking a snapshot before an upgrade. Manually running a policy doesn’t affect its snapshot schedule.
 
-To run a policy in {{kib}}, go to the **Policies** page and click the run icon under the **Actions** column. You can also use the [execute {{slm-init}} policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-execute-lifecycle).
+To run a policy in {{kib}}, go to the **Policies** page and click the run icon under the **Actions** column. You can also use the [execute {{slm-init}} policy API]({{es-apis}}operation/operation-slm-execute-lifecycle).
 
 ```console
 POST _slm/policy/nightly-snapshots/_execute
@@ -176,7 +176,7 @@ PUT _cluster/settings
 }
 ```
 
-To immediately run the retention task, use the [execute {{slm-init}} retention policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-execute-retention).
+To immediately run the retention task, use the [execute {{slm-init}} retention policy API]({{es-apis}}operation/operation-slm-execute-retention).
 
 ```console
 POST _slm/_execute_retention
@@ -207,12 +207,12 @@ For example, you can change the schedule, or snapshot retention-related configur
 ![change snapshot retention](/deploy-manage/images/elasticsearch-reference-change-slm-snapshot-retention.png)
 
 
-You can also update an {{slm-init}} policy using the [{{slm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm), as described in [Create an {{slm-init}} policy](#create-slm-policy).
+You can also update an {{slm-init}} policy using the [{{slm-init}} APIs]({{es-apis}}group/endpoint-slm), as described in [Create an {{slm-init}} policy](#create-slm-policy).
 
 
 ## Manually create a snapshot [manually-create-snapshot]
 
-To take a snapshot without an {{slm-init}} policy, use the [create snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create). The snapshot name supports [date math](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-date-math-index-names).
+To take a snapshot without an {{slm-init}} policy, use the [create snapshot API]({{es-apis}}operation/operation-snapshot-create). The snapshot name supports [date math](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-date-math-index-names).
 
 ```console
 # PUT _snapshot/my_repository/<my_snapshot_{now/d}>
@@ -225,18 +225,18 @@ Depending on its size, a snapshot can take a while to complete. By default, the 
 PUT _snapshot/my_repository/my_snapshot?wait_for_completion=true
 ```
 
-You can also clone an existing snapshot using [clone snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-clone).
+You can also clone an existing snapshot using [clone snapshot API]({{es-apis}}operation/operation-snapshot-clone).
 
 
 ## Monitor a snapshot [monitor-snapshot]
 
-To monitor any currently running snapshots, use the [get snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get) with the `_current` request path parameter.
+To monitor any currently running snapshots, use the [get snapshot API]({{es-apis}}operation/operation-snapshot-get) with the `_current` request path parameter.
 
 ```console
 GET _snapshot/my_repository/_current
 ```
 
-To get a complete breakdown of each shard participating in any currently running snapshots, use the [get snapshot status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get).
+To get a complete breakdown of each shard participating in any currently running snapshots, use the [get snapshot status API]({{es-apis}}operation/operation-snapshot-get).
 
 ```console
 GET _snapshot/_status
@@ -245,13 +245,13 @@ GET _snapshot/_status
 
 ### Check {{slm-init}} history [check-slm-history]
 
-To get more information about a cluster’s {{slm-init}} execution history, including stats for each {{slm-init}} policy, use the [get {{slm-init}} stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-stats). The API also returns information about the cluster’s snapshot retention task history.
+To get more information about a cluster’s {{slm-init}} execution history, including stats for each {{slm-init}} policy, use the [get {{slm-init}} stats API]({{es-apis}}operation/operation-slm-get-stats). The API also returns information about the cluster’s snapshot retention task history.
 
 ```console
 GET _slm/stats
 ```
 
-To get information about a specific {{slm-init}} policy’s execution history, use the [get {{slm-init}} policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle). The response includes:
+To get information about a specific {{slm-init}} policy’s execution history, use the [get {{slm-init}} policy API]({{es-apis}}operation/operation-slm-get-lifecycle). The response includes:
 
 * The next scheduled policy execution.
 * The last time the policy successfully started the snapshot process, if applicable. A successful start doesn’t guarantee the snapshot completed.
@@ -268,7 +268,7 @@ To delete a snapshot in {{kib}}, go to the **Snapshots** page and click the tras
 
 ![delete snapshot](/deploy-manage/images/elasticsearch-reference-delete-snapshots.png)
 
-You can also use the [delete snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-delete).
+You can also use the [delete snapshot API]({{es-apis}}operation/operation-snapshot-delete).
 
 ```console
 DELETE _snapshot/my_repository/my_snapshot_2099.05.06
@@ -293,7 +293,7 @@ By default, a snapshot that includes the cluster state also includes all [featur
 
 You can also configure a snapshot to only include specific feature states, regardless of the cluster state.
 
-To get a list of available features, use the [get features API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-get-features).
+To get a list of available features, use the [get features API]({{es-apis}}operation/operation-features-get-features).
 
 ```console
 GET _features
@@ -347,7 +347,7 @@ PUT _slm/policy/nightly-snapshots
 }
 ```
 
-Any index or data stream that’s part of the feature state will display in a snapshot’s contents. For example, if you back up the `security` feature state, the `security-*` system indices display in the [get snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get)'s response under both `indices` and `feature_states`.
+Any index or data stream that’s part of the feature state will display in a snapshot’s contents. For example, if you back up the `security` feature state, the `security-*` system indices display in the [get snapshot API]({{es-apis}}operation/operation-snapshot-get)'s response under both `indices` and `feature_states`.
 
 
 ## Dedicated cluster state snapshots [cluster-state-snapshots]

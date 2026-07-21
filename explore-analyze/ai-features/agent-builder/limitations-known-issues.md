@@ -23,12 +23,14 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 ## Limitations
 
 :::{tip}
-Refer to [Get started](get-started.md#enable-agent-builder) if you need instructions about enabling {{agent-builder}} for your deployment type.
+{{agent-builder}} is automatically enabled on all deployment types as of 9.4. For instructions about enabling {{agent-builder}} in earlier versions, refer to [Get started](get-started.md#access-agent-builder).
 :::
 
-### Cross-cluster search not supported in index search tools
+### Cross-cluster search support
 
-Index search tool types do not yet support [cross-cluster search (CCS)](/explore-analyze/cross-cluster-search.md).
+In version 9.4+, [index search tools](tools/index-search-tools.md) support [cross-cluster search (CCS)](/explore-analyze/cross-cluster-search.md). Index search tools only search remote clusters when you explicitly configure a cross-cluster pattern like `remote_cluster:logs-*`. Without a remote pattern, the tool resolves indices locally. To learn how to configure a tool for remote clusters, refer to [Index search tools](tools/index-search-tools.md#common-patterns).
+
+In previous versions, only [{{esql}} tools](tools/esql-tools.md) support CCS. To search remote clusters, use a custom {{esql}} tool and instruct your agent to query `remote_cluster:index_name`.
 
 ### A2A streaming not supported
 
@@ -57,6 +59,12 @@ Error executing agent: No tool calls found in the response.
 ```
 
 To learn more, refer to [](models.md).
+
+### Claude 4.6 Sonnet may generate invalid ES|QL for dashboards
+
+Current testing shows that Claude 4.6 Sonnet may generate invalid {{esql}} for dashboard and visualization workflows, particularly with reserved keywords, dotted field names such as `system.load.1`, and incorrectly formatted aliases.
+
+**Workaround:** Use a higher-tier model, such as Claude 4.6 Opus, for {{esql}}-heavy dashboard generation. To learn more, refer to [Recommended models](models.md#recommended-models).
 
 ### Context length exceeded error [conversation-length-exceeded]
 
@@ -100,4 +108,3 @@ For more information about {{agent-builder}} and Spaces, refer to [Permissions a
 
 - [Get started](get-started.md)
 - [Troubleshooting](troubleshooting.md)
-

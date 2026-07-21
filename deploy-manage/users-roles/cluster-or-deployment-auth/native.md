@@ -97,7 +97,7 @@ POST /_security/user/user1/_password
 }
 ```
 
-For more information and examples, see [Users](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security).
+For more information and examples, see [Users]({{es-apis}}group/endpoint-security).
 
 ## Reset passwords for native users using the command line [reset-pw-cmd-line]
 

@@ -7,7 +7,7 @@ applies_to:
   stack:
 products:
   - id: elastic-stack
-description: Learn how Elastic handles versioning and feature availability in the docs. Find the product versions that are supported, how to read availability badges, and...
+description: "Reference for how Elastic products are versioned, how feature availability badges work, and how to find documentation for your deployment type and version."
 ---
 
 # Versioning and availability
@@ -103,7 +103,7 @@ The components of the {{stack}} typically use semantic versioning in the `X.Y.Z`
 
 | Version | Description |
 | ----- | ----- |
-| Major (X) | Indicates significant changes, such as new features, breaking changes, and major enhancements. Upgrading to a new major version may require changes to your existing setup and configurations. |
+| Major (X) | Indicates significant changes, such as new features, breaking changes, and major enhancements. Upgrading to a new major version might require changes to your existing setup and configurations. |
 | Minor (Y) | Introduces new features and improvements, while maintaining backward compatibility with the previous minor versions within the same major version. Upgrading to a new minor version should not require any changes to your existing setup. |
 | Patch (Z) | Contains bug fixes and security updates, without introducing new features or breaking changes. Upgrading to a new patch version should be seamless and not require any changes to your existing setup. |
 
@@ -125,8 +125,8 @@ Available features can differ based on deployment type, product lifecycle stage,
 
 | Lifecycle state | Description |
 | ----- | ----- |
-| Technical preview | Feature is in early development stage |
-| Beta | Feature is nearing general availability, but not yet production ready |
+| Experimental | Feature is in early development stage and might change or be removed at any time |
+| Technical preview | Feature is nearing general availability and ready for evaluation. Use with caution in production. |
 | Generally Available (GA) | Production-ready feature. When unspecified, GA is the default |
 | Deprecated | Feature is still usable, but is planned to be removed or replaced in a future update |
 | Removed | Feature can no longer be used |

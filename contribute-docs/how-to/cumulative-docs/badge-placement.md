@@ -1,3 +1,7 @@
+---
+description: "Patterns and use cases for placing applies_to badges in cumulative documentation."
+---
+
 # Badge usage and placement
 
 :::{note}
@@ -47,7 +51,7 @@ Do **not** use [section-level](https://elastic.github.io/docs-builder/syntax/app
 
 ### Headings [headings]
 
-Use [section annotations](https://elastic.github.io/docs-builder/syntax/applies#section-level) on the next line after a heading when the entire content between that heading and the next [heading](https://elastic.github.io/docs-builder/syntax/headings) of the same or higher level is version or product-specific.
+Use [section annotations](https://elastic.github.io/docs-builder/syntax/applies#section-level) on the next line after a heading when the entire content between that heading and the next [heading](https://elastic.github.io/docs-builder/syntax/headings) of the same or later level is version or product-specific.
 
 For example, on the [Observability AI Assistant](https://www.elastic.co/docs/solutions/observability/ai/observability-ai-assistant#choose-the-knowledge-base-language-model) page, all the content in this section is only applicable to Elastic Stack versions 9.1.0 and later.
 
@@ -104,7 +108,7 @@ Do **not** put the `applies_to` badge at the beginning or end of the definition 
 
 #### If the badge is only relevant to a portion of the definition, follow the appropriate placement guidelines for the elements used in the definition [definition-list-item-part]
 
-This might include labeling just one of multiple paragraphs, or one item in an ordered or unordered list. For example, on the [Google Gemini Connector page](https://www.elastic.co/docs/reference/kibana/connectors-kibana/gemini-action-type#gemini-connector-configuration), the default model is different depending on the deployment type and version of the Elastic Stack. These differences should be called out with their own `applies_to` badges.
+This might include labeling only one of multiple paragraphs, or one item in an ordered or unordered list. For example, on the [Google Gemini Connector page](https://www.elastic.co/docs/reference/kibana/connectors-kibana/gemini-action-type#gemini-connector-configuration), the default model is different depending on the deployment type and version of the Elastic Stack. These differences should be called out with their own `applies_to` badges.
 
 In this example, the `applies_to` badges should be at the beginning of each list item as described in [the guidelines for lists](#ordered-and-unordered-lists).
 
@@ -128,7 +132,7 @@ For example, the [Streaming Input](https://www.elastic.co/docs/reference/beats/f
 :alt:
 ::::
 
-In some cases it might be appropriate to add column dedicated to applicability,
+Sometimes it might be appropriate to add column dedicated to applicability,
 but you should avoid adding specific Markdown real estate to the page layout and
 causing existing tables with content from long before the base version,
 for example Elastic Stack 9.0.0, look incomplete.

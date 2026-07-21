@@ -27,4 +27,4 @@ This snippet is in use in the following locations:
 
 2. Restart the local cluster to load changes to the keystore and settings.
 
-    If you are configuring only the cross-cluster API key, you can use the [Nodes reload secure settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) instead of restarting the cluster. Configuring the `remote_cluster_client` settings in `elasticsearch.yml` still requires a restart.
+    If you are configuring only the cross-cluster API key, you can use the [Nodes reload secure settings API]({{es-apis}}operation/operation-nodes-reload-secure-settings) instead of restarting the cluster. Configuring the `remote_cluster_client` settings in `elasticsearch.yml` still requires a restart.

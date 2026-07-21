@@ -249,7 +249,7 @@ bin/elasticsearch-keystore add xpack.notification.email.account.ses_account.smtp
 ```
 
 ::::{note}
-You need to use your Amazon SES SMTP credentials to send email through Amazon SES. For more information, see [Obtaining Your Amazon SES SMTP Credentials](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/smtp-credentials.md). You might also need to verify [your email address](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.md) or [your whole domain](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-domains.md) at AWS.
+You need to use your Amazon SES SMTP credentials to send email through Amazon SES. For more information, see [Obtaining Your Amazon SES SMTP Credentials](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/smtp-credentials.html). You might also need to verify [your email address](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html) or [your whole domain](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-domains.html) at AWS.
 ::::
 
 #### Sending email from Microsoft Exchange [exchange]

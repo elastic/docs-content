@@ -13,7 +13,7 @@ products:
 
 Note the following restrictions when installing {{agent}} on your system:
 
-* You can install only a single {{agent}} per host. Due to the fact that the {{agent}} may read data sources that are only accessible by a superuser, {{agent}} will therefore also need to be executed with superuser permissions.
+* You can install only a single {{agent}} per host. This restriction does not apply to containerized Elastic Agent, provided each container uses distinct volume mounts for its persisted state. Due to the fact that the {{agent}} may read data sources that are only accessible by a superuser, {{agent}} will therefore also need to be executed with superuser permissions.
 * You might need to log in as a root user (or Administrator on Windows) to run the commands described here. After the {{agent}} service is installed and running, make sure you run these commands without prepending them with `./` to avoid invoking the wrong binary.
 * Running {{agent}} commands using the Windows PowerShell ISE is not supported.
 * See also the [resource requirements](#elastic-agent-installation-resource-requirements) described on this page.

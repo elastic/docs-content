@@ -36,12 +36,13 @@ The following table compares features available in each feature tier:
 | **[Triage](/solutions/security/detect-and-alert/manage-detection-alerts.md), [investigation](/solutions/security/investigate.md), and [hunting](https://www.elastic.co/security/threat-hunting)** | ✅ | ✅ | ❌ |
 | **[Threat intelligence integration](/solutions/security/get-started/enable-threat-intelligence-integrations.md)** | ✅ | ✅ | ❌ |
 | **[AI Assistant](/solutions/security/ai/ai-assistant.md) with custom knowledge support** | ✅ | ❌ | ✅ |
-| **[Attack Discovery](/solutions/security/ai/attack-discovery.md) (AI-powered alert correlation)** | ✅ | ❌ | ✅ |
-| **[Automatic Import](/solutions/security/get-started/automatic-import.md) (AI-powered custom integrations)** | ✅ | ❌ | ❌ |
+| **[Attack Discovery](/solutions/security/ai/attack-discovery/index.md) (AI-powered alert correlation)** | ✅ | ❌ | ✅ |
+| **[Automatic Import](/explore-analyze/ai-features/automatic-import.md) (AI-powered custom integrations)** | ✅ | ❌ | ❌ |
 | **[Entity analytics / UEBA](/solutions/security/advanced-entity-analytics.md)** | ✅ | ❌ | ❌ |
 | **Extended security content** | ✅ | ❌ | ❌ |
 | **Threat intelligence management** | ✅ | ❌ | ❌ |
-| **[Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus)** | ✅ | ❌ | ❌ |
+| **[Private connectivity](/deploy-manage/security/private-connectivity.md)** | ✅ | ❌ | ❌ |
+| **[IP filtering](/deploy-manage/security/ip-filtering.md)** | ✅ | ❌ | ❌ |
 
 
 ## Add-on options
@@ -68,8 +69,6 @@ Both the **Security Analytics Complete** and **Security Analytics Essentials** f
 
 % commenting this out until it gets reintroduced in 9.3 | **Drift protection for containers** | ✅ | ❌ |
 
-The [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) is automatically included with the **Security Analytics Complete** feature tier at no additional charge.
-
 ## Upgrade to a higher feature tier [sec-subscription-upgrade]
 
 :::{warning}
@@ -82,3 +81,34 @@ To access the additional features available in a higher feature tier:
 1. Next to **Project features**, select **Edit**.
 1. Select your desired feature tier.
 1. Select **Save** to complete the upgrade.
+
+## Downgrade the feature tier [elasticsearch-manage-project-downgrading-the-feature-tier]
+
+:::{note}
+You cannot downgrade to EASE from any other feature tier. You can upgrade from EASE to other tiers.
+:::
+
+When you downgrade your Security project features selection from **Security Analytics Complete** to **Security Analytics Essentials**, the following features become unavailable:
+
+* All Entity Analytics features
+* The ability to use certain entity analytics-related integration packages, such as:
+  * Data Exfiltration detection
+  * Lateral Movement detection
+  * Living off the Land Attack detection
+* Intelligence Indicators page
+* External rule action connectors
+* Case connectors
+* Endpoint response actions history
+* Endpoint host isolation exceptions
+* Trusted devices
+* AI Assistant
+* Attack discovery
+
+And, the following data may be permanently deleted:
+
+* AI Assistant conversation history
+* AI Assistant settings
+* Entity Analytics user and host risk scores
+* Entity Analytics asset criticality information
+* Detection rule external connector settings
+* Detection rule response action settings

@@ -189,7 +189,7 @@ You can modify dynamic [remote recovery settings](elasticsearch://reference/elas
 ::::
 
 
-Use the [recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery) on the cluster containing the follower index to obtain information about an in-progress remote recovery. Because {{es}} implements remote recoveries using the [snapshot and restore](snapshot-and-restore.md) infrastructure, running remote recoveries are labelled as type `snapshot` in the recovery API.
+Use the [recovery API]({{es-apis}}operation/operation-cat-recovery) on the cluster containing the follower index to obtain information about an in-progress remote recovery. Because {{es}} implements remote recoveries using the [snapshot and restore](snapshot-and-restore.md) infrastructure, running remote recoveries are labelled as type `snapshot` in the recovery API.
 
 
 ## Replicating a leader requires soft deletes [ccr-leader-requirements]
@@ -203,7 +203,7 @@ The [`index.soft_deletes.retention_lease.period`](elasticsearch://reference/elas
 Soft deletes must be enabled for indices that you want to use as leader indices. Soft deletes are enabled by default on new indices created on or after {{es}} 7.0.0.
 
 ::::{important}
-{{ccr-cap}} cannot be used on existing indices created using {{es}} 7.0.0 or earlier, where soft deletes are disabled. You must [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) your data into a new index with soft deletes enabled.
+{{ccr-cap}} cannot be used on existing indices created using {{es}} 7.0.0 or earlier, where soft deletes are disabled. You must [reindex]({{es-apis}}operation/operation-reindex) your data into a new index with soft deletes enabled.
 ::::
 
 
@@ -225,14 +225,14 @@ This following sections provide more information about how to configure and use 
 * [System indices](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#system-indices)
 * [Machine learning jobs](../../explore-analyze/machine-learning.md)
 * [index templates](../../manage-data/data-store/templates.md)
-* [{{ilm-cap}}](../../manage-data/lifecycle/index-lifecycle-management.md) and [{{slm}}](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm) polices
+* [{{ilm-cap}}](../../manage-data/lifecycle/index-lifecycle-management.md) and [{{slm}}]({{es-apis}}group/endpoint-slm) polices
 * [User permissions and role mappings](../users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md)
 * [Snapshot repository settings](snapshot-and-restore/self-managed.md)
 * [Cluster settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md)
 * [Searchable snapshot](snapshot-and-restore/searchable-snapshots.md)
 
-If you want to replicate any of this data, you must replicate it to a remote cluster manually.
+If you want to replicate any of this data, you must replicate it to a local cluster manually.
 
 ::::{note}
-Data for [searchable snapshot](snapshot-and-restore/searchable-snapshots.md) indices is stored in the snapshot repository. {{ccr-cap}} won’t replicate these indices completely, even though they’re either partially or fully-cached on the {{es}} nodes. To achieve searchable snapshots in a remote cluster, configure snapshot repositories on the remote cluster and use the same {{ilm}} policy from the local cluster to move data into the cold or frozen tiers on the remote cluster.
+Data for [searchable snapshot](snapshot-and-restore/searchable-snapshots.md) indices is stored in the snapshot repository. {{ccr-cap}} won’t replicate these indices completely, even though they’re either partially or fully-cached on the {{es}} nodes. To achieve searchable snapshots in a local cluster, configure snapshot repositories on the local cluster and use the same {{ilm}} policy from the remote cluster to move data into the cold or frozen tiers on the local cluster.
 ::::

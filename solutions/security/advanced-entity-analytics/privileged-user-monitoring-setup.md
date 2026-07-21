@@ -1,9 +1,10 @@
 ---
 navigation_title: Set up privileged user monitoring
+description: Set up and manage the privileged user monitoring feature in Elastic Security to track users with elevated permissions.
 applies_to:
-  stack: ga 9.3, preview 9.1
+  stack: removed 9.4+, ga =9.3, preview 9.1-9.2
   serverless:
-    security: ga
+    security: removed
 products:
   - id: security
   - id: cloud-serverless
@@ -11,11 +12,16 @@ products:
 
 # Set up and manage privileged user monitoring
 
+::::{note}
+:applies_to: {stack: removed 9.4+, serverless: removed}
+Privileged user monitoring is removed. Use [Watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) instead.
+::::
+
 :::{admonition} Requirements
 To use privileged user monitoring, you must:
 
 * Have the appropriate user role or privileges
-* {applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` Turn on the required advanced setting
+* {applies_to}`stack: removed 9.3` Turn on the required advanced setting
 
 For more information, refer to [Privileged user monitoring requirements](/solutions/security/advanced-entity-analytics/privileged-user-monitoring-requirements.md).
 :::
@@ -28,7 +34,7 @@ Privileged users typically include accounts with elevated access rights that all
 
 You can define privileged users in the following ways:
 
-* {applies_to}`stack: preview =9.2, ga 9.3+` {applies_to}`serverless: ga` [Add a supported integration](#privmon-integrations) with your organization’s user identities. If your environment is already ingesting data from a supported integration, the setup steps are skipped—you're taken directly to the Privileged user monitoring dashboard, where you can start [monitoring user activity](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md).
+* {applies_to}`stack: preview =9.2, ga =9.3` [Add a supported integration](#privmon-integrations) with your organization’s user identities. If your environment is already ingesting data from a supported integration, the setup steps are skipped—you're taken directly to the Privileged user monitoring dashboard, where you can start [monitoring user activity](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activities.md).
 * [Select an existing index](#privmon-index) or create a new custom index with privileged user data.
 * [Bulk-upload](#privmon-upload) a list of privileged users using a CSV or TXT file. 
 * Use the Entity analytics APIs to [mark individual users as privileged]({{kib-apis}}/operation/operation-createprivmonuser) or [bulk-upload multiple privileged users]({{kib-apis}}/operation/operation-privmonbulkuploaduserscsv).
@@ -37,8 +43,7 @@ To get started, find the **Privileged user monitoring** page in the navigation m
 
 ### Add a supported integration [privmon-integrations]
 ```yaml {applies_to}
-stack: ga 9.3, preview =9.2
-serverless: ga
+stack: ga =9.3, preview =9.2
 ```
 
 :::::{stepper}
@@ -50,7 +55,7 @@ On the **Privileged user monitoring** page, select an integration. The supported
 
       :::::{applies-switch}
 
-      ::::{applies-item} { stack: ga 9.3+, serverless: ga }
+      ::::{applies-item} stack: ga =9.3
       Privileged users are identified by matching the `entityanalytics_ad.user.privileged.group_member` field against privileged Active Directory groups based on [security identifier (SID) group codes](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-identifiers#well-known-sids). Users in the following Active Directory groups are automatically assigned as privileged:
 
       * `512`: Domain Admins
@@ -138,7 +143,7 @@ jdoe,IT Support
 Any lines that don’t follow the required file structure will be highlighted, and those users won't be added. We recommend that you fix any invalid lines and re-upload the file.
 :::
 
-After setting up your privileged users, you can start [monitoring their activity](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md) and related insights on the Privileged user monitoring dashboard.
+After setting up your privileged users, you can start [monitoring their activity](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activities.md) and related insights on the Privileged user monitoring dashboard.
 
 You can update the selected data sources at any time by selecting **Manage data sources**.
 
@@ -150,7 +155,7 @@ You can use multiple data source types, such as an index and a CSV file, at the 
 
 On this page, you can:
 
-* {applies_to}`stack: preview =9.2, ga 9.3+` {applies_to}`serverless: preview` Change which integrations you're using as data sources.
+* {applies_to}`stack: preview =9.2, ga =9.3` Change which integrations you're using as data sources.
 * View, remove, and change indices after initially defining them.
 * Import a new supported file with a list of privileged users.
 

@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Evaluate arithmetic expressions and store the result in a target field with the Streams math processor in Streamlang.
 ---
 
 # Math processor [streams-math-processor]

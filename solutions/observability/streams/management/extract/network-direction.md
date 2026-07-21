@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Classify network traffic as inbound, outbound, internal, or external based on IP addresses with the Streams network direction processor in Streamlang.
 ---
 
 # Network direction processor [streams-network-direction-processor]

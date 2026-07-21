@@ -2,9 +2,9 @@
 navigation_title: Detect and respond to threats with SIEM
 description: An introduction to detecting threats with SIEM in {{elastic-sec}}.
 applies_to:
+  stack: ga
   serverless:
-    security: all
-  stack:
+    security: ga
 products:
   - id: security
 ---
@@ -95,7 +95,7 @@ Detection rules allow you to monitor your environment by searching for source ev
 
 :::{dropdown} Steps to install and turn on prebuilt rules
 1. On the **Get Started** page, scroll down to the **Configure rules and alerts** section. 
-2. Click **Install Elastic rules**, then **Add Elastic rules**. The **Rules** page displays. 
+2. Click **Install Elastic rules**, then **Add Elastic rules**. The **{{siem-rules-ui}}** page displays. 
 3. At the top of the page, click **Add Elastic rules**. The badge next to it shows the number of prebuilt rules available for installation.  
 4. Use the search bar and **Tags** filter to find the rules you want to install. For example, to filter by operating system, search for the appropriate OS (such as `macOS`) from the **Tags** menu. 
 5. Once you've filtered the rules, confirm that the rules displayed are the ones you'd like to install. If you'd like to learn more about any rule before installing it, click on the rule name to expand the rule details flyout. Here's an example of one: 
@@ -182,7 +182,7 @@ For a comprehensive overview of the alert details flyout, refer to [View detecti
 Once you've had a chance to install detection rules and check out alerts, we recommend exploring the following investigation tools and resources to assist you with threat hunting: 
 
 * View and analyze data with out-of-the-box [dashboards](/solutions/security/dashboards.md). 
-* Learn how to reduce your mean time to respond with [Attack Discovery](/solutions/security/ai/attack-discovery.md), an AI threat hunting feature that leverages large language models (LLMs) to analyze alerts in your environment, identify threats, and show how they correspond to the MITRE ATT&CK matrix.
+* Learn how to reduce your mean time to respond with [Attack Discovery](/solutions/security/ai/attack-discovery/index.md), an AI threat hunting feature that leverages large language models (LLMs) to analyze alerts in your environment, identify threats, and show how they correspond to the MITRE ATT&CK matrix.
 * Learn how to use [Cases](/solutions/security/investigate/security-cases.md) to track investigation details.  
 * Download the "Guide to high-volume data sources for SIEM" [white paper](https://www.elastic.co/campaigns/guide-to-high-volume-data-sources-for-siem?elektra=organic&storm=CLP&rogue=siem-gic). 
 * Check out [Elastic Security Labs](https://www.elastic.co/security-labs) for the latest on threat research.  

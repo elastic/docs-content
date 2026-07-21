@@ -187,7 +187,7 @@ Another Kibana instance appears to be migrating the index. Waiting for that migr
 To resolve this:
 
 1. Check that you don’t need the content.
-2. Run an {{es}} [Delete index request](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete) to remove the existing index.
+2. Run an {{es}} [Delete index request]({{es-apis}}operation/operation-indices-delete) to remove the existing index.
 
     In this example, the `.kibana_2` index is the rollover of saved objects (such as Kibana visualizations or dashboards) from the original `.kibana_1` index. Since `.kibana_2` was created as part of the failed upgrade process, this index does not yet contain any pertinent data and it can safely be deleted.
 

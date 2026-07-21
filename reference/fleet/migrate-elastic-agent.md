@@ -139,7 +139,7 @@ The easiest way to find the `deployment-id` is from the deployment URL:
 
 ### Reset the {{ecloud}} policy [migrate-elastic-agent-reset-policy]
 
-On your target cluster, certain settings from the original {{ecloud}} {{agent}} policiy may still be retained, and need to be updated to reference the new cluster. For example, in the APM policy installed to the {{ecloud}} {{agent}} policy, the original and outdated APM URL is preserved. This can be fixed by running the `reset_preconfigured_agent_policies` API request. When you reset the policy, all APM Integration settings are reset, including the secret key or any tail-based sampling.
+On your target cluster, certain settings from the original {{ecloud}} {{agent}} policy may still be retained, and need to be updated to reference the new cluster. For example, in the APM policy installed to the {{ecloud}} {{agent}} policy, the original and outdated APM URL is preserved. This can be fixed by running the `reset_preconfigured_agent_policies` API request. When you reset the policy, all APM Integration settings are reset, including the secret key or any tail-based sampling.
 
 To reset the {{ecloud}} {{agent}} policy:
 
@@ -153,7 +153,7 @@ To reset the {{ecloud}} {{agent}} policy:
         -u username:password \
         --header 'Content-Type: application/json' \
         --header 'kbn-xsrf: as' \
-        --header 'elastic-api-version: 1'
+        --header 'elastic-api-version: 2023-10-31'
         ```
 
     * If you’re using a {{kib}} version below 8.11, run:

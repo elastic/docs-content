@@ -11,6 +11,8 @@ description: Create rules using KQL or Lucene queries to detect known field valu
 
 # Custom query rules [custom-query-rule-type]
 
+## Overview
+
 Custom query rules search your {{es}} indices using a KQL or Lucene query and generate an alert whenever one or more documents match. 
 
 ### When to use a custom query rule

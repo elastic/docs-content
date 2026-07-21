@@ -202,15 +202,17 @@ This example restricts {{es}} nodes so they are only scheduled on Kubernetes hos
 
 ## Topology spread constraints and availability zone awareness [k8s-availability-zone-awareness]
 
-Distributing {{es}} nodes and shard replicas across failure domains (typically cloud availability zones) is a fundamental requirement for production clusters. ECK provides built-in zone awareness support and also allows manual configuration for advanced use cases.
+Production clusters should distribute {{es}} nodes and shard replicas across failure domains, typically cloud availability zones. ECK provides built-in zone awareness and also supports manual configuration for advanced use cases.
 
 ### Zone awareness using the `zoneAwareness` field [k8s-zone-awareness]
 
-{applies_to}`eck: ga 3.4`
+```{applies_to}
+eck: ga 3.4
+```
 
-The `zoneAwareness` field on NodeSets is the recommended way to set up availability zone awareness. Instead of manually configuring topology spread constraints, downward node labels, environment variables, and {{es}} allocation awareness settings yourself, you add a single `zoneAwareness` field and ECK handles the rest.
+The `zoneAwareness` field on NodeSets is the recommended way to set up availability zone awareness. Instead of manually configuring topology spread constraints, downward node labels, environment variables, and {{es}} allocation awareness settings, you add a single `zoneAwareness` field and ECK handles the rest.
 
-When `zoneAwareness` is set on a NodeSet, the operator automatically:
+When `zoneAwareness` is set on a NodeSet, the operator automatically does the following:
 
 * Injects a `TopologySpreadConstraint` with `maxSkew: 1` and `whenUnsatisfiable: DoNotSchedule` to evenly spread pods across zones.
 * Exposes the Kubernetes node's zone as a `ZONE` environment variable inside each pod using [downward node labels](#k8s-availability-zone-awareness-downward-api).
@@ -258,7 +260,7 @@ spec:
         - us-east1-c
 ```
 
-#### Zone awareness with custom topology key
+#### Zone awareness with a custom topology key
 
 By default, `zoneAwareness` uses the `topology.kubernetes.io/zone` node label. To use a different label:
 
@@ -302,13 +304,13 @@ spec:
 
 #### Mixed NodeSets with and without zone awareness
 
-Enable `zoneAwareness` on **all** NodeSets in a cluster for the best results. If some NodeSets are accidentally left without `zoneAwareness`, the operator applies safeguards to keep the cluster consistent:
+Enable `zoneAwareness` on all NodeSets in a cluster for the best results. If some NodeSets don't have `zoneAwareness` enabled, the operator applies safeguards to keep the cluster consistent:
 
 * All NodeSets in the cluster still receive the `ZONE` environment variable and {{es}} zone configuration (`node.attr.zone`, `cluster.routing.allocation.awareness.attributes`) so that shard allocation awareness works cluster-wide.
-* Non-zoneAware NodeSets receive a required node affinity ensuring that the topology key exists for nodes that carry the topology label, but they do not receive topology spread constraints and might not be evenly distributed across zones.
+* NodeSets without `zoneAwareness` receive a required node affinity ensuring that the topology key exists for nodes that carry the topology label, but they do not receive topology spread constraints and might not be evenly distributed across zones.
 
 ::::{important}
-Adding `zoneAwareness` to any NodeSet triggers a one-time rolling restart of **all** NodeSets in the cluster, because zone-related {{es}} configuration and environment variables are applied cluster-wide. To avoid unnecessary restarts, enable `zoneAwareness` on every NodeSet at the same time.
+Adding `zoneAwareness` to any NodeSet triggers a one-time rolling restart of all NodeSets in the cluster, because zone-related {{es}} configuration and environment variables are applied cluster-wide. To avoid unnecessary restarts, enable `zoneAwareness` on every NodeSet at the same time.
 ::::
 
 #### Validation rules
@@ -319,7 +321,7 @@ Adding `zoneAwareness` to any NodeSet triggers a one-time rolling restart of **a
 
 ### Manual zone awareness configuration [k8s-zone-awareness-manual]
 
-For ECK versions before 3.4.0, or for advanced use cases not covered by the `zoneAwareness` field, you can manually configure availability zone awareness. The following section describes how to manually configure availability zone awareness.
+For ECK versions before 3.4.0, or for advanced use cases not covered by the `zoneAwareness` field, you can manually configure availability zone awareness.
 
 #### Exposing Kubernetes node topology labels in Pods [k8s-availability-zone-awareness-downward-api]
 
@@ -338,7 +340,7 @@ Refer to the next section or to the [{{es}} sample resource in the ECK source re
 
 The following example demonstrates how to use the `topology.kubernetes.io/zone` node labels to spread a NodeSet across the availability zones of a Kubernetes cluster.
 
-By default ECK creates a `k8s_node_name` attribute with the name of the Kubernetes node running the Pod, and configures {{es}} to use this attribute. This ensures that {{es}} allocates primary and replica shards to Pods running on different Kubernetes nodes and never to Pods that are scheduled onto the same Kubernetes node. To preserve this behavior while making {{es}} aware of the availability zone, include the `k8s_node_name` attribute in the comma-separated `cluster.routing.allocation.awareness.attributes` list.
+By default, ECK creates a `k8s_node_name` attribute with the name of the Kubernetes node running the Pod, and configures {{es}} to use this attribute. This ensures that {{es}} allocates primary and replica shards to Pods running on different Kubernetes nodes and never to Pods that are scheduled onto the same Kubernetes node. To preserve this behavior while making {{es}} aware of the availability zone, include the `k8s_node_name` attribute in the comma-separated `cluster.routing.allocation.awareness.attributes` list.
 
 ```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1

@@ -17,7 +17,11 @@ products:
 
 # Model Context Protocol (MCP) tools in {{agent-builder}}
 
-Agent Builder MCP tools enable calling a remote [MCP server's](https://modelcontextprotocol.io/docs/learn/server-concepts) tools in your agent [chat](../chat.md). When your agent calls an MCP tool, it executes the associated tool on the MCP server and returns its result.
+Agent Builder MCP tools enable calling a remote [MCP server's](https://modelcontextprotocol.io/docs/learn/server-concepts) tools in your agent [chat](../chat.md). For example, you can import a documentation-lookup tool from an external service so your agent can fetch current library docs during a conversation. When your agent calls an MCP tool, it executes the associated tool on the MCP server and returns its result.
+
+:::{note}
+On this page, {{agent-builder}} acts as the MCP client: your agents connect to an external MCP server to use its tools. To instead let external MCP hosts use your {{agent-builder}} tools, refer to [](../mcp-server.md).
+:::
 
 ## Prerequisites
 
@@ -29,7 +33,7 @@ You can import MCP tools individually or in bulk.
 
 ### Add a single tool
 
-Once you've set up an MCP connector, click "New tool" on the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page and select the `MCP` tool type.
+Once you've set up an MCP connector, click **+ New tool** on the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) page and select the **MCP** tool type.
 
 :::{image} ../images/mcp-createnewtool-config-example.png
 :screenshot:
@@ -51,7 +55,7 @@ Once a tool is selected, the `Tool ID` and `Description` fields automatically po
 
 ### Bulk import MCP tools
 
-To import multiple tools at once, go to the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page and select **Bulk import MCP tools** from the "Manage MCP" dropdown.
+To import multiple tools at once, go to the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) page and select **Bulk import MCP tools** from the **Manage MCP** dropdown.
 
 :::{image} ../images/mcp-bulkimport-location.png
 :screenshot:
@@ -91,7 +95,7 @@ When an agent calls an MCP tool:
 
 ## Monitoring tool health
 
-MCP tools have built-in health monitoring. Tools that are unhealthy display an icon next to their IDs in the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page.
+MCP tools have built-in health monitoring. Tools that are unhealthy display an icon next to their IDs on the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) page.
 
 An MCP tool is marked "unhealthy" when:
 

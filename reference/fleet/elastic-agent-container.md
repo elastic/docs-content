@@ -11,15 +11,15 @@ products:
 
 # Run Elastic Agent in a container [elastic-agent-container]
 
-You can run {{agent}} inside a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the [Elastic Docker registry](https://www.docker.elastic.co/r/elastic-agent/elastic-agent). If you are running in Kubernetes, refer to [run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md).
+You can run {{agent}} inside a container, either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the [Elastic Docker registry](https://www.docker.elastic.co/r/elastic-agent/elastic-agent). If you are running in {{k8s}}, refer to [run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md).
 
-Running {{agent}} in a container is supported only in Linux environments. For this reason we don't currently provide {{agent}} container images for Windows.
+Running {{agent}} in a container is supported only in Linux environments. For this reason, we don't provide {{agent}} container images for Windows.
 
 In version 9.0.0, the default Ubuntu-based Docker images used for {{agent}} have been changed to Red Hat UBI (Universal Base Image) minimal based images, to reduce the overall footprint of the agent Docker images and to improve compliance with enterprise standards. Refer to [#6427]({{agent-pull}}6427) for details.
 
 Considerations:
 
-* When {{agent}} runs inside a container, it cannot be upgraded through {{fleet}} as it expects that the container itself is upgraded.
+* When {{agent}} runs inside a container, it cannot be upgraded through {{fleet}} as it expects that the container itself is upgraded. For a full summary of upgrade support across all installation methods, refer to [Restrictions](/reference/fleet/upgrade-elastic-agent.md#upgrade-agent-restrictions).
 * Enrolling and running an {{agent}} is usually a two-step process. However, this doesn’t work in a container, so a special subcommand, `container`, is called. This command allows environment variables to configure all properties, and runs the `enroll` and `run` commands as a single command.
 
 
@@ -52,7 +52,7 @@ Run the `docker pull` command against the Elastic Docker registry:
 docker pull docker.elastic.co/elastic-agent/elastic-agent-slim:{{version.stack}}
 ```
 
-Alternately, you can use the hardened [Wolfi](https://github.com/wolfi-dev/) image. Using Wolfi images requires Docker version 20.10.10 or later. For details about why the Wolfi images have been introduced, refer to our article [Reducing CVEs in Elastic container images](https://www.elastic.co/blog/reducing-cves-in-elastic-container-images).
+Alternatively, you can use the hardened [Wolfi](https://github.com/wolfi-dev/) image. Using Wolfi images requires Docker version 20.10.10 or later. For details about why the Wolfi images have been introduced, refer to our article [Reducing CVEs in Elastic container images](https://www.elastic.co/blog/reducing-cves-in-elastic-container-images).
 
 ```terminal subs=true
 docker pull docker.elastic.co/elastic-agent/elastic-agent-slim-wolfi:{{version.stack}}
@@ -77,20 +77,21 @@ The Docker image you should use to run {{agent}} as a Synthetic Private Location
 * If running _only_ lightweight monitors, use the `elastic-agent` image (and the `wolfi` variant).
 * If running _any_ browser monitors, use the `elastic-agent-complete` image.
 
-Run the following docker pull command to fetch the `elastic-agent-complete` image:
+Run the following command to pull the `elastic-agent-complete` image:
 
 ```terminal subs=true
 docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
 ```
+
 To run Synthetics tests using the hardened [Wolfi](https://github.com/wolfi-dev/) image, run:
 
 ```terminal subs=true
 docker pull docker.elastic.co/elastic-agent/elastic-agent-complete-wolfi:{{version.stack}}
 ```
 
-## Step 2: Optional: Verify the image [_step_2_optional_verify_the_image]
+## Step 2: Verify the image (optional) [_step_2_optional_verify_the_image]
 
-Although it’s optional, we highly recommend verifying the signatures included with your downloaded Docker images to ensure that the images are valid.
+Verify the signatures included with your downloaded Docker images to ensure that the images are valid.
 
 Elastic images are signed with Cosign which is part of the [Sigstore](https://www.sigstore.dev) project. Cosign supports container signing, verification, and storage in an OCI registry. Install the appropriate Cosign application for your operating system.
 
@@ -109,6 +110,7 @@ If you’re using the elastic-agent-complete image, run the commands as follows:
 wget https://artifacts.elastic.co/cosign.pub
 cosign verify --key cosign.pub docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
 ```
+
 The command prints the check results and the signature payload in JSON format, for example:
 
 ```terminal subs=true
@@ -119,9 +121,9 @@ The following checks were performed on each of these signatures:
   - The signatures were verified against the specified public key
 ```
 
-## Step 3: Get aware of the Elastic Agent container command [_step_3_get_aware_of_the_elastic_agent_container_command]
+## Step 3: Review the {{agent}} container command [_step_3_get_aware_of_the_elastic_agent_container_command]
 
-The Elastic Agent container command offers a wide variety of options. To see the full list, run:
+The {{agent}} container command offers a wide variety of options. To see the full list, run:
 
 ```terminal subs=true
 docker run --rm docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} elastic-agent container -h
@@ -151,7 +153,7 @@ Refer to [Environment variables](/reference/fleet/agent-environment-variables.md
 
 :::{applies-item} self:
 
-If you’re running a self-managed cluster and want to run your own {{fleet-server}}, run the following command, which will spin up both {{agent}} and {{fleet-server}} in a container:
+If you’re running a self-managed cluster and want to run your own {{fleet-server}}, run the following command, which spins up both {{agent}} and {{fleet-server}} in a container:
 
 ```terminal subs=true
 docker run \
@@ -167,7 +169,7 @@ docker run \
 2. Your cluster’s {{es}} host URL.
 3. The {{fleet}} service token. [Generate one in the {{fleet}} UI](/reference/fleet/fleet-enrollment-tokens.md#create-fleet-enrollment-tokens) if you don’t have one already.
 4. ID of the {{fleet-server}} policy. We recommend only having one fleet-server policy. To learn how to create a policy, refer to [Create an agent policy without using the UI](/reference/fleet/create-policy-no-ui.md).
-5. publish container port 8220 to host.
+5. Publish container port 8220 to the host.
 6. Switch `elastic-agent` to `elastic-agent-complete` if you intend to use the complete version. Use the `elastic-agent` user instead of root to run synthetic browser monitors. Synthetic browser monitors cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
 Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
 :::
@@ -190,7 +192,7 @@ If you need to run {{fleet-server}} as well, adjust the `docker run` command abo
 :::{tip}
 **Running {{agent}} on a read-only file system**
 
-If you’d like to run {{agent}} in a Docker container on a read-only file system, you can do so by specifying the `--read-only` option. {{agent}} requires a stateful directory to store application data, so with the `--read-only` option you also need to use the `--mount` option to specify a path to where that data can be stored.
+To run {{agent}} in a Docker container on a read-only file system, use the `--read-only` option. {{agent}} requires a stateful directory to store application data, so with the `--read-only` option you also need to use the `--mount` option to specify a path to where that data can be stored.
 
 For example:
 
@@ -200,14 +202,14 @@ docker run --rm --mount source=$(pwd)/state,destination=/state -e STATE_PATH=/st
 
 1. Where `STATE_PATH` is the path to a stateful directory to mount where {{agent}} application data can be stored.
 
-You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destination=/state...`) to specify a temporary file storage location. This should be done with caution as it can cause data duplication, particularly for logs, when the container is restarted, as no state data is persisted.
+You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destination=/state...`) to specify a temporary file storage location. Use this option with caution as it can cause data duplication, particularly for logs, when the container is restarted, as no state data is persisted.
 
 :::
 
 
 ## Step 5: View your data in {{kib}} [_step_5_view_your_data_in_kib]
 
-1. Launch {{kib}}:
+1. Open {{kib}}:
 
    ::::{applies-switch}
 
@@ -229,16 +231,15 @@ You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destin
     :screenshot:
     :::
 
-3. To view data flowing in, go to **Analytics → Discover** and select the index `metrics-*`, or even more specific, `metrics-kubernetes.*`. If you can’t see these indexes, [create a data view](/explore-analyze/find-and-organize/data-views.md) for them.
+3. To view data flowing in, go to **Analytics → Discover** and select the index `metrics-*`, or even more specifically, `metrics-kubernetes.*`. If you can’t see these indexes, [create a {{data-source}}](/explore-analyze/find-and-organize/data-views.md) for them.
 4. To view predefined dashboards, either select **Analytics→Dashboard** or [install assets through an integration](/reference/fleet/view-integration-assets.md).
 
 
 ## Docker compose [_docker_compose]
 
-You can run {{agent}} in docker-compose. The example below shows how to enroll an {{agent}}:
+You can run {{agent}} in docker-compose. The following example shows how to enroll an {{agent}}:
 
 ```yaml subs=true
-version: "3"
 services:
   elastic-agent:
     image: docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} <1>
@@ -265,11 +266,64 @@ If you need to run {{fleet-server}} as well, adjust the docker-compose file abov
 Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
 
 
+## Persist agent state [_persist_agent_state]
+
+{{agent}} requires a persistent state directory to store enrollment data and application state. By default, this directory is `/usr/share/elastic-agent/state`. If you don't mount a persistent volume, the container loses its state when it's removed or restarted, and {{agent}} re-enrolls as a new agent every time it starts.
+
+To preserve agent state across container restarts, bind mount a host directory into the container and set the `STATE_PATH` environment variable to that mount point. The container runs as the non-root `elastic-agent` user (UID 1000) by default, so the host directory must be writable by that UID.
+
+First, create the host directory and set its ownership:
+
+```bash
+mkdir -p ./elastic-agent-state
+sudo chown 1000:1000 ./elastic-agent-state
+```
+
+Then start {{agent}} using one of the following examples.
+
+**`docker run` example:**
+
+```bash subs=true
+docker run \
+  --env FLEET_ENROLL=1 \
+  --env FLEET_URL=<fleet-server-host-url> \
+  --env FLEET_ENROLLMENT_TOKEN=<enrollment-token> \
+  --user 1000:1000 \ <1>
+  --volume "$(pwd)/elastic-agent-state:/state" \
+  --env STATE_PATH=/state \
+  docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
+```
+
+1. Set this to the UID:GID that owns the host directory you bind-mounted. `1000:1000` is the default `elastic-agent` user inside the image, but any UID:GID works as long as it matches the directory's ownership.
+
+**Docker Compose example:**
+
+```yaml subs=true
+services:
+  elastic-agent:
+    image: docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
+    container_name: elastic-agent
+    restart: always
+    user: "1000:1000" <1>
+    environment:
+      - FLEET_ENROLLMENT_TOKEN=<enrollment-token>
+      - FLEET_ENROLL=1
+      - FLEET_URL=<fleet-server-url>
+      - STATE_PATH=/state
+    volumes:
+      - ./elastic-agent-state:/state
+```
+
+1. Set this to the UID:GID that owns the host directory you bind-mounted. `1000:1000` is the default `elastic-agent` user inside the image, but any UID:GID works as long as it matches the directory's ownership.
+
+Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
+
+
 ## Logs [_logs]
 
-Since a container supports only a single version of {{agent}}, logs and state are stored a bit differently than when running an {{agent}} outside of a container. The logs can be found under: `/usr/share/elastic-agent/state/data/logs/*`.
+Because a container supports only a single version of {{agent}}, logs and state are stored differently than when running an {{agent}} outside of a container. Logs are stored at `/usr/share/elastic-agent/state/data/logs/*`.
 
-It’s important to note that only the logs from the {{agent}} process itself are logged to `stdout`. Subprocess logs are not. Each subprocess writes its own logs to the `default` directory inside the logs directory:
+Only the logs from the {{agent}} process itself are sent to `stdout`. Subprocess logs are not. Each subprocess writes its own logs to the `default` directory inside the logs directory:
 
 ```bash
 /usr/share/elastic-agent/state/data/logs/default/*
@@ -281,9 +335,9 @@ Running into errors with {{fleet-server}}? Check the fleet-server subprocess log
 
 ## Debugging [_debugging]
 
-A monitoring endpoint can be enabled to expose resource usage and event processing data. The endpoint is compatible with {{agent}}s running in both {{fleet}} mode and Standalone mode.
+You can activate a monitoring endpoint to expose resource usage and event processing data. The endpoint is compatible with {{agent}}s running in both {{fleet}} mode and Standalone mode.
 
-Enable the monitoring endpoint in `elastic-agent.yml` on the host where the {{agent}} is installed. A sample configuration looks like this:
+Turn on the monitoring endpoint in `elastic-agent.yml` on the host where the {{agent}} is installed. A sample configuration looks like this:
 
 ```yaml
 agent.monitoring:
@@ -306,7 +360,7 @@ agent.monitoring:
 
 The above configuration exposes a monitoring endpoint at `http://localhost:6791/processes`.
 
-::::{dropdown} http://localhost:6791/processes output
+::::{dropdown} /processes output
 ```json
 {
    "processes":[
@@ -352,7 +406,7 @@ The above configuration exposes a monitoring endpoint at `http://localhost:6791/
 
 Each process ID in the `/processes` output can be accessed for more details.
 
-::::{dropdown} http://localhost:6791/processes/\{\{process-name\}\} output
+::::{dropdown} /processes/{{process-name}} output
 ```json
 {
    "beat":{

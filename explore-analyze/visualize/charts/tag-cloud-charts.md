@@ -5,7 +5,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Instructions and best practices for building tag cloud charts with Kibana Lens in Elastic.
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+description: Create tag cloud charts to visualize word frequency, show popular categories, and summarize text-based data at a glance.
 ---
 
 # Build tag cloud charts with {{kib}}
@@ -26,9 +31,8 @@ To build a tag cloud chart:
 ::::::{stepper}
 
 :::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a tag cloud chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 :::::
 
 :::::{step} Set the visualization to Tag cloud
@@ -61,11 +65,13 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Use colors to add meaning (categories) or keep them neutral to focus attention on size differences.
 
 Refer to [Tag cloud chart settings](#tag-cloud-chart-settings) to find all configuration options for your tag cloud chart.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and reuse it later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 :::::
 
 ::::::
@@ -76,26 +82,25 @@ Customize your tag cloud chart to display exactly the information you need, form
 
 ### Tags settings [tags-settings]
 
-The **Tags** dimension defines the text labels that appear in the cloud.
+The **Tags** dimension defines the text labels that appear in the cloud. For best legibility, display 20 to 50 tags.
 
 **Data**
 :   The **Tags** dimension supports the following functions:
 
-    - **Top values**: Display the most common values in a field.
-      - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term tags. When multiple fields are selected, each tag represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many tags to display (recommended: 20-50).
+    :::{include} ../../_snippets/lens-bucket-top-values.md
+    :::
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
-    - **Date histogram**: Group data into time-based buckets.
-      - **Field**: Select the date field to use for the time-based grouping.
+    :::{include} ../../_snippets/lens-bucket-date-histogram.md
+    :::
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
-    - **Intervals**: Create numeric ranges for continuous data.
-      - **Field**: Select the numeric field to create intervals from.
-      - **Include empty rows**: Include intervals with no matching documents.
-    - **Filters**: Define custom KQL filters to create specific tags.
+    :::{include} ../../_snippets/lens-bucket-intervals.md
+    :::
+    :::{include} ../../_snippets/lens-bucket-filters.md
+    :::
 
 **Appearance**
 :   - **Name**: Customize the label shown in the visualization title.
@@ -138,6 +143,11 @@ When creating or editing a visualization, you can customize several appearance o
 
 ## Tag cloud chart examples
 
+<!-- MAINTENANCE: the API payload examples in this section were verified
+against the Visualizations API spec. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file tag-cloud-charts.md
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
+
 The following examples show various configuration options for building impactful tag cloud charts.
 
 **Popular request URLs**
@@ -150,13 +160,199 @@ The following examples show various configuration options for building impactful
 
 ![Tag cloud showing popular request URLs](/explore-analyze/images/tag-cloud-example-urls.png "=70%")
 
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a tag cloud of the 30 most frequently requested URLs, where tag size reflects how often each URL was accessed.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "tag_cloud",
+  "title": "Popular request URLs",
+  "filters": [],
+  "query": { "expression": "" },
+  "metric": { "operation": "count", "empty_as_null": true },
+  "tag_by": {
+    "operation": "terms",
+    "fields": ["request.keyword"], <1>
+    "limit": 30, <2>
+    "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+    "color": { "mode": "categorical", "palette": "default", "mapping": [] }
+  },
+  "styling": {
+    "orientation": "horizontal",
+    "font_size": { "min": 18, "max": 72 },
+    "caption": { "visible": true }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  }
+}
+```
+
+1. `request.keyword` provides the text for each tag, showing the full URL path. Tags are ranked by count so the most-visited URLs appear largest.
+2. `limit: 30` displays the top 30 URLs, which is within the recommended range for readable tag clouds.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "tag_cloud",
+  "title": "Popular request URLs",
+  "filters": [],
+  "query": { "expression": "" },
+  "metric": { "operation": "count", "empty_as_null": true },
+  "tag_by": {
+    "operation": "terms",
+    "fields": ["request.keyword"], <1>
+    "limit": 30, <2>
+    "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+    "color": { "mode": "categorical", "palette": "default", "mapping": [] }
+  },
+  "styling": {
+    "orientation": "horizontal",
+    "font_size": { "min": 18, "max": 72 },
+    "caption": { "visible": true }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  }
+}'
+```
+
+1. `request.keyword` provides the text for each tag, showing the full URL path. Tags are ranked by count so the most-visited URLs appear largest.
+2. `limit: 30` displays the top 30 URLs, which is within the recommended range for readable tag clouds.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
+
 **Most popular flight destinations**
 :   Show which cities receive the most flights, with larger tags indicating higher traffic:
 
     * Example based on: {{kib}} Sample Data Flights
     * **Tags**: `DestCityName` (Top 30 values)
     * **Metric**: Count
-    * **Orientation**: Multiple
+    * **Orientation**: Angled
     * **Color**: Gradient
 
 ![Tag cloud showing most popular flight destinations](/explore-analyze/images/tag-cloud-example-destinations.png "=70%")
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a tag cloud of destination city names from the flights sample data, with the most popular destinations appearing in larger text.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "tag_cloud",
+  "title": "Most popular flight destinations",
+  "filters": [],
+  "query": { "expression": "" },
+  "metric": { "operation": "count", "empty_as_null": true },
+  "tag_by": {
+    "operation": "terms",
+    "fields": ["DestCityName"], <1>
+    "limit": 30,
+    "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+    "color": {
+      "mode": "gradient", <2>
+      "palette": "default",
+      "mapping": [],
+      "sort": "desc",
+      "gradient": [{ "type": "from_palette", "palette": "default", "index": 0 }]
+    }
+  },
+  "styling": {
+    "orientation": "angled", <3>
+    "font_size": { "min": 18, "max": 112 },
+    "caption": { "visible": true }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_flights",
+    "time_field": "timestamp"
+  }
+}
+```
+
+1. `DestCityName` provides human-readable city names as tag labels, sized by flight count so the busiest destinations appear largest.
+2. The `gradient` color mode with `sort: "desc"` applies the palette spectrum from the most to the least popular city, reinforcing the frequency ranking with color intensity.
+3. `orientation: "angled"` allows tags to appear at multiple angles, making better use of space when many cities compete for room.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "tag_cloud",
+  "title": "Most popular flight destinations",
+  "filters": [],
+  "query": { "expression": "" },
+  "metric": { "operation": "count", "empty_as_null": true },
+  "tag_by": {
+    "operation": "terms",
+    "fields": ["DestCityName"], <1>
+    "limit": 30,
+    "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+    "color": {
+      "mode": "gradient", <2>
+      "palette": "default",
+      "mapping": [],
+      "sort": "desc",
+      "gradient": [{ "type": "from_palette", "palette": "default", "index": 0 }]
+    }
+  },
+  "styling": {
+    "orientation": "angled", <3>
+    "font_size": { "min": 18, "max": 112 },
+    "caption": { "visible": true }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_flights",
+    "time_field": "timestamp"
+  }
+}'
+```
+
+1. `DestCityName` provides human-readable city names as tag labels, sized by flight count so the busiest destinations appear largest.
+2. The `gradient` color mode with `sort: "desc"` applies the palette spectrum from the most to the least popular city, reinforcing the frequency ranking with color intensity.
+3. `orientation: "angled"` allows tags to appear at multiple angles, making better use of space when many cities compete for room.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::

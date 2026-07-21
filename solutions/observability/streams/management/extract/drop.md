@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Prevent documents from being indexed when they meet a condition with the Streams drop document processor in Streamlang.
 ---
 
 # Drop document processor [streams-drop-processor]

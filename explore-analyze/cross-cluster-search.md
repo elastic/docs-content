@@ -12,28 +12,31 @@ products:
 
 **{{ccs-cap}}** lets you run a single search request against one or more remote clusters. For example, you can use a {{ccs}} to filter and analyze log data stored on clusters in different data centers.
 
+:::{admonition} Search across {{serverless-short}} projects
+To run searches across multiple {{serverless-full}} projects, use [{{cps}}](/explore-analyze/cross-project-search.md).
+:::
 
 ## Supported APIs [ccs-supported-apis]
 
 The following APIs support {{ccs}}:
 
-* [Search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
-* [Async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit)
-* [Multi search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch)
+* [Search]({{es-apis}}operation/operation-search)
+* [Async search]({{es-apis}}operation/operation-async-search-submit)
+* [Multi search]({{es-apis}}operation/operation-msearch)
 * [Search template](/solutions/search/search-templates.md)
-* [Multi search template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template)
-* [Field capabilities](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps)
+* [Multi search template]({{es-apis}}operation/operation-msearch-template)
+* [Field capabilities]({{es-apis}}operation/operation-field-caps)
 * [Painless execute API](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md)
-* [Resolve Index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index)
-* [Vector tile search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt)
+* [Resolve Index API]({{es-apis}}operation/operation-indices-resolve-index)
+* [Vector tile search]({{es-apis}}operation/operation-search-mvt)
 * {applies_to}`stack: preview =9.0, ga 9.1+` [ES|QL](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md)
-* {applies_to}`stack: preview` [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search)
-* {applies_to}`stack: preview` [SQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query)
+* {applies_to}`stack: preview` [EQL search]({{es-apis}}operation/operation-eql-search)
+* {applies_to}`stack: preview` [SQL search]({{es-apis}}operation/operation-sql-query)
 
 
 ## Prerequisites [_prerequisites]
 
-* {{ccs-cap}} requires remote clusters. To set up remote clusters, see [*Remote clusters*](/deploy-manage/remote-clusters.md).
+* {{ccs-cap}} requires remote clusters. To set up remote clusters, see [Remote clusters](/deploy-manage/remote-clusters.md).
 
     To ensure your remote cluster configuration supports {{ccs}}, see [Supported {{ccs}} configurations](#ccs-supported-configurations).
 
@@ -46,7 +49,131 @@ The following APIs support {{ccs}}:
 
 
 * If you use [proxy mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#proxy-mode), the local coordinating node must be able to connect to the configured `proxy_address`. The proxy at this address must be able to route connections to gateway and coordinating nodes on the remote cluster.
-* {{ccs-cap}} requires different security privileges on the local cluster and remote cluster. See [Configure privileges for {{ccs}}](/deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-ccs) and [*Remote clusters*](/deploy-manage/remote-clusters.md).
+* {{ccs-cap}} requires different security privileges on the local cluster and remote cluster. Refer to [Configure privileges](#configure-privileges-for-ccs) for details.
+
+
+## Configure privileges for {{ccs}} [configure-privileges-for-ccs]
+
+After [remote clusters are connected](/deploy-manage/remote-clusters.md), you can configure which users on your local cluster can search data on remote clusters. The steps depend on the [remote cluster security model](/deploy-manage/remote-clusters/security-models.md) in use:
+
+* [API key authentication](#configure-privileges-for-ccs-api-key) (recommended), where you create roles with the required remote privileges on the local cluster.
+* {applies_to}`stack: deprecated 9.0` [TLS certificate authentication](#configure-privileges-for-ccs-cert), where you create matching roles on both the local and remote clusters.
+
+:::{include} /deploy-manage/remote-clusters/_snippets/configure-privileges-role-management.md
+:::
+
+### API key authentication [configure-privileges-for-ccs-api-key]
+
+:::{include} /deploy-manage/remote-clusters/_snippets/configure-privileges-api-key-authorization.md
+:::
+
+To grant a user {{ccs}} access, create a role on the local cluster, assign it the required privileges for the remote cluster alias and target indices, then assign that role to the user.
+
+Assuming the remote cluster is connected under the name of `my_remote_cluster`, the following request creates a `remote-search` role on the local cluster that allows searching the remote `target-index` index:
+
+```console
+POST /_security/role/remote-search
+{
+  "remote_indices": [
+    {
+      "clusters": [ "my_remote_cluster" ],
+      "names": [
+        "target-index"
+      ],
+      "privileges": [
+        "read",
+        "read_cross_cluster",
+        "view_index_metadata"
+      ]
+    }
+  ]
+}
+```
+
+After creating the `remote-search` role, use the [create or update users]({{es-apis}}operation/operation-security-put-user) API to create a user on the local cluster and assign the `remote-search` role. For example, the following request assigns the `remote-search` role to a user named `cross-search-user`:
+
+```console
+POST /_security/user/cross-search-user
+{
+  "password" : "l0ng-r4nd0m-p@ssw0rd",
+  "roles" : [ "remote-search" ]
+}
+```
+
+
+:::{note}
+You only need to create this user and role on the **local** cluster.
+
+The same user can hold multiple roles, or a single role can combine [remote indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) with local index privileges and {{kib}} access roles.
+:::
+
+### TLS certificate authentication [configure-privileges-for-ccs-cert]
+```{applies_to}
+stack: deprecated 9.0
+```
+
+:::{warning}
+
+Certificate based authentication is deprecated. Configure [API key authentication](/deploy-manage/remote-clusters/remote-clusters-api-key.md) instead or follow a guide on how to [migrate remote clusters from certificate to API key authentication](/deploy-manage/remote-clusters/remote-clusters-migrate.md).
+:::
+
+After [connecting remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md), create matching user roles on both the local and remote clusters and assign the necessary privileges. With TLS-based authentication, the local user's role names are forwarded to the remote cluster, which authorizes the request by evaluating roles with the same names defined locally.
+
+:::{important}
+You must use the same role names on both the local and remote clusters. For example, the following configuration uses the `remote-search` role name on both clusters. However, you can specify different role definitions on each cluster.
+:::
+
+#### Remote cluster [configure-privileges-for-ccs-cert-remote]
+
+On the remote cluster, the {{ccs}} role requires the `read` and `read_cross_cluster` [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for the target indices.
+
+:::{note}
+If requests are issued [on behalf of other users](/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md), then the authenticating user must have the [`run_as` privilege](elasticsearch://reference/elasticsearch/security-privileges.md#_run_as_privilege) on the remote cluster.
+:::
+
+The following request creates a `remote-search` role on the remote cluster:
+
+```console
+POST /_security/role/remote-search
+{
+  "indices": [
+    {
+      "names": [
+        "target-indices"
+      ],
+      "privileges": [
+        "read",
+        "read_cross_cluster"
+      ]
+    }
+  ]
+}
+```
+
+#### Local cluster [configure-privileges-for-ccs-cert-local]
+
+On the local cluster, which is the cluster used to initiate cross cluster search, assign users the `remote-search` role. If users only need remote access, you can leave the local role empty. If they also need to query local indices or use {{kib}}, grant the required local privileges in the same role or assign the user additional roles.
+
+The following request creates a `remote-search` role on the local cluster with no privileges:
+
+```console
+POST /_security/role/remote-search
+{}
+```
+
+After creating the `remote-search` role on each cluster, use the [create or update users]({{es-apis}}operation/operation-security-put-user) API to create a user on the local cluster and assign the `remote-search` role. For example, the following request assigns the `remote-search` role to a user named `cross-search-user`:
+
+```console
+POST /_security/user/cross-search-user
+{
+  "password" : "l0ng-r4nd0m-p@ssw0rd",
+  "roles" : [ "remote-search" ]
+}
+```
+
+:::{note}
+You only need to create this user on the **local** cluster.
+:::
 
 
 ## {{ccs-cap}} examples [ccs-example]
@@ -54,7 +181,7 @@ The following APIs support {{ccs}}:
 
 ### Remote cluster setup [ccs-remote-cluster-setup]
 
-The following [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API request adds three remote clusters: `cluster_one`, `cluster_two`, and `cluster_three`.
+The following [cluster update settings]({{es-apis}}operation/operation-cluster-put-settings) API request adds three remote clusters: `cluster_one`, `cluster_two`, and `cluster_three`.
 
 ```console
 PUT _cluster/settings
@@ -93,7 +220,7 @@ PUT _cluster/settings
 
 In the search request, you specify data streams and indices on a remote cluster as `<remote_cluster_name>:<target>`.
 
-The following [search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) API request searches the `my-index-000001` index on a single remote cluster, `cluster_one`.
+The following [search]({{es-apis}}operation/operation-search) API request searches the `my-index-000001` index on a single remote cluster, `cluster_one`.
 
 ```console
 GET /cluster_one:my-index-000001/_search
@@ -171,7 +298,12 @@ The API returns the following response. Note that when you search one or more re
 }
 ```
 
-1. This section of counters shows all possible cluster search states and how many cluster searches are currently in that state. The clusters can be one of the following statuses: **running**, **successful** (searches on all shards were successful), **partial** (searches on at least one shard of the cluster was successful and at least one failed), **skipped** (the search failed on a cluster marked with `skip_unavailable`=`true`) or **failed** (the search failed on a cluster marked with `skip_unavailable`=`false`).
+1. This section of counters shows all possible cluster search states and how many cluster searches are currently in that state. The clusters can be in one of the following statuses:<br>
+   - **running**<br>
+   - **successful** (searches on all shards were successful)<br>
+   - **partial** (searches on at least one shard of the cluster were successful and at least one failed)<br>
+   - **skipped** (the search failed on a cluster marked with `skip_unavailable`=`true`)<br>
+   - **failed** (the search failed on a cluster marked with `skip_unavailable`=`false`)
 2. The `_clusters/details` section shows metadata about the search on each cluster.
 3. The index expression supplied by the user. If you provide a wildcard such as `logs-*`, this section will show the value with the wildcard, not the concrete indices being searched.
 4. How long (in milliseconds) the sub-search took on that cluster.
@@ -182,7 +314,7 @@ The API returns the following response. Note that when you search one or more re
 
 ### Search multiple remote clusters [ccs-search-multi-remote-cluster]
 
-The following [search](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search) API request searches the `my-index-000001` index on three clusters:
+The following [search]({{es-apis}}group/endpoint-search) API request searches the `my-index-000001` index on three clusters:
 
 * The local ("querying") cluster, with 10 shards
 * Two remote clusters, `cluster_one`, with 12 shards and `cluster_two` with 6 shards.
@@ -330,7 +462,7 @@ The API returns the following response:
 
 ## Using async search for {{ccs}} with ccs_minimize_roundtrips=true [ccs-async-search-minimize-roundtrips-true]
 
-Remote clusters can be queried asynchronously using the [async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) API. A {{ccs}} accepts a [`ccs_minimize_roundtrips`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-ccs_minimize_roundtrips) parameter. For asynchronous searches it defaults to `false`. (Note: for synchronous searches it defaults to `true`.) See [Considerations for choosing whether to minimize roundtrips in a {{ccs}}](#ccs-min-roundtrips) to learn more about this option.
+Remote clusters can be queried asynchronously using the [async search]({{es-apis}}operation/operation-async-search-submit) API. A {{ccs}} accepts a [`ccs_minimize_roundtrips`]({{es-apis}}operation/operation-search#operation-search-ccs_minimize_roundtrips) parameter. For asynchronous searches it defaults to `false`. (Note: for synchronous searches it defaults to `true`.) See [Considerations for choosing whether to minimize roundtrips in a {{ccs}}](#ccs-min-roundtrips) to learn more about this option.
 
 The following request does an asynchronous search of the `my-index-000001` index using `ccs_minimize_roundtrips=true` against three clusters (same ones as the previous example).
 
@@ -407,7 +539,7 @@ The API returns the following response:
 3. The `_clusters` section indicates that 3 clusters are in scope for the search and all are currently in the "running" state.
 
 
-If you query the [get async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) endpoint while the query is still running, you will see an update in the `_clusters` and `_shards` section of the response as each cluster finishes its search.
+If you query the [get async search]({{es-apis}}operation/operation-async-search-submit) endpoint while the query is still running, you will see an update in the `_clusters` and `_shards` section of the response as each cluster finishes its search.
 
 If you set `ccs_minimize_roundtrips=false`, then you will also see partial aggregation results from shards (from any cluster) that have finished, but no results are shown in "hits" section until the search has completed.
 
@@ -492,7 +624,7 @@ Response:
 3. Number of hits from the completed searches so far. Final hits are not shown until searches on all clusters have been completed and merged. Thus, the "hits" section can change as you call this endpoint until the search is completely done.
 
 
-After searches on all the clusters have completed, querying the [get async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) endpoint will show the final status of the `_clusters` and `_shards` section as well as the hits and any aggregation results.
+After searches on all the clusters have completed, querying the [get async search]({{es-apis}}operation/operation-async-search-submit) endpoint will show the final status of the `_clusters` and `_shards` section as well as the hits and any aggregation results.
 
 ```console
 GET /_async_search/FklQYndoTDJ2VEFlMEVBTzFJMGhJVFEaLVlKYndBWWZSMUdicUc4WVlEaFl4ZzoxNTU=
@@ -890,7 +1022,7 @@ POST /my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001/_a
 }
 ```
 
-The API returns the following response if the query takes longer than the `wait_for_completion_timeout` duration (see [Async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit)).
+The API returns the following response if the query takes longer than the `wait_for_completion_timeout` duration (see [Async search]({{es-apis}}operation/operation-async-search-submit)).
 
 ```console-result
 {
@@ -982,7 +1114,7 @@ If `skip_unavailable` is `true`, a {{ccs}}:
 
 * Skips the remote cluster if its nodes are unavailable during the search. The response’s `_clusters.skipped` value contains a count of any skipped clusters and the `_clusters.details` section of the response will show a `skipped` status.
 * Ignores errors returned by the remote cluster, such as errors related to unavailable shards or indices. This can include errors related to search parameters such as [`allow_no_indices`](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [`ignore_unavailable`](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index).
-* Ignores the [`allow_partial_search_results`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-allow_partial_search_results) parameter and the related `search.default_allow_partial_results` cluster setting when searching the remote cluster. This means searches on the remote cluster may return partial results.
+* Ignores the [`allow_partial_search_results`]({{es-apis}}operation/operation-search#operation-search-allow_partial_search_results) parameter and the related `search.default_allow_partial_results` cluster setting when searching the remote cluster. This means searches on the remote cluster may return partial results.
 
 You can modify the `skip_unavailable` setting by editing the `cluster.remote.<cluster_alias>` settings in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) config file. For example:
 
@@ -997,7 +1129,7 @@ cluster:
             skip_unavailable: true
 ```
 
-Or you can set the `cluster.remote` settings via the [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API as shown [here](#ccs-remote-cluster-setup).
+Or you can set the `cluster.remote` settings via the [cluster update settings]({{es-apis}}operation/operation-cluster-put-settings) API as shown [here](#ccs-remote-cluster-setup).
 
 When a remote cluster configured with `skip_unavailable: true` (such as `cluster_two` above) is disconnected or unavailable during a {{ccs}}, {{es}} won’t include matching documents from that cluster in the final results and the search will be considered successful (HTTP status 200 OK).
 
@@ -1015,13 +1147,13 @@ Because {{ccs}} involves sending requests to remote clusters, any network delays
 
 
 [Don’t minimize network roundtrips](#ccs-unmin-roundtrips)
-:   For search requests that include a scroll or inner hits, {{es}} sends multiple outgoing and ingoing requests to each remote cluster. You can also choose this option by setting the [`ccs_minimize_roundtrips`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) parameter to `false`. While typically slower, this approach may work well for networks with low latency.
+:   For search requests that include a scroll or inner hits, {{es}} sends multiple outgoing and ingoing requests to each remote cluster. You can also choose this option by setting the [`ccs_minimize_roundtrips`]({{es-apis}}operation/operation-search) parameter to `false`. While typically slower, this approach may work well for networks with low latency.
 
     See [Don’t minimize network roundtrips](#ccs-unmin-roundtrips) to learn how this option works.
 
 
 ::::{note}
-The [vector tile search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt) always minimizes network roundtrips and doesn’t include the `ccs_minimize_roundtrips` parameter.
+The [vector tile search API]({{es-apis}}operation/operation-search-mvt) always minimizes network roundtrips and doesn’t include the `ccs_minimize_roundtrips` parameter.
 ::::
 
 
@@ -1119,7 +1251,7 @@ $$$ccs-version-compatibility$$$
 :::
 
 ::::{important}
-For the [EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search), the local and remote clusters must use the same {{es}} version if they have versions prior to 7.17.7 (included) or prior to 8.5.1 (included).
+For the [EQL search API]({{es-apis}}operation/operation-eql-search), the local and remote clusters must use the same {{es}} version if they have versions prior to 7.17.7 (included) or prior to 8.5.1 (included).
 ::::
 
 Only features that exist across all searched clusters are supported. Using a feature with a remote cluster where the feature is not supported will result in undefined behavior.

@@ -140,6 +140,14 @@ For quick testing, you can use [ngrok](https://ngrok.com/) as an alternative to 
 
 ::::{step} Configure the connector in your Elastic deployment
 
+:::{important}
+:applies_to: {"stack": "deprecated 9.5, removed 9.6", "serverless": "removed"}
+The OpenAI connector is deprecated. Existing OpenAI connectors and rule actions that use them continue to work but display deprecation indicators. Follow the guidance that matches your version and deployment type:
+
+- {applies_to}`serverless: removed` {applies_to}`stack: removed 9.6` You cannot create new LLM connectors through the standard connector UI.
+- {applies_to}`stack: deprecated 9.5` For new AI integrations, use {{es}} {{infer}} endpoints instead of LLM connectors. Plan migration of existing LLM connectors and any rule actions that reference them before future removal.
+:::
+
 Create the connector within your Elastic deployment to link it to your vLLM instance.
 
 1. In {{kib}}, navigate to the **Connectors** page, click **Create Connector**, and select **OpenAI**.
@@ -186,8 +194,8 @@ To run a different model:
 With your vLLM connector set up, you can use it to power features including:
 
 * [AI Assistant for Security](/solutions/security/ai/ai-assistant.md): Interact with an agent designed to assist with {{elastic-sec}} tasks.
-* [Attack Discovery](/solutions/security/ai/attack-discovery.md): Use AI to quickly correlate and triage security alerts.
-* [Automatic import](/solutions/security/get-started/automatic-import.md): Use AI to create custom integrations for third-party data sources.
+* [Attack Discovery](/solutions/security/ai/attack-discovery/index.md): Use AI to quickly correlate and triage security alerts.
+* [Automatic Import](/explore-analyze/ai-features/automatic-import.md): Use AI to create custom integrations for third-party data sources.
 * [AI Assistant for Observability and Search](/solutions/observability/ai/observability-ai-assistant.md): Interact with an agent designed to assist with {{observability}} and Search tasks.
 
 You can also learn how to [set up other types of LLM connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md).

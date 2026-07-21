@@ -20,8 +20,8 @@ This section contains reference information for Elastic Observability features, 
 To learn more about Observability features and how to get started, refer to [Elastic Observability](/solutions/observability.md).
 To interface with Elastic Observability features, you can use the following APIs:
 
-* [Observability Intake Serverless APIs](https://www.elastic.co/docs/api/doc/observability-serverless)
-* [Service level objectives](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-slo)
+* [Observability Intake Serverless APIs]({{intake-apis}})
+* [Service level objectives]({{kib-apis}}group/endpoint-slo)
 
 You can also browse reference documentation for the following components:
 

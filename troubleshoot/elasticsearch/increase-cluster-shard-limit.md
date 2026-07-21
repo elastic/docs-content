@@ -38,7 +38,7 @@ You can run the following steps using either [API console](/explore-analyze/quer
 
 ### Check the current setting [check-the-shard-limiting-setting]
 
-Use the [get cluster-wide settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings) API to inspect the current value of `cluster.routing.allocation.total_shards_per_node`:
+Use the [get cluster-wide settings]({{es-apis}}operation/operation-cluster-get-settings) API to inspect the current value of `cluster.routing.allocation.total_shards_per_node`:
 
 ```console
 GET /_cluster/settings?flat_settings
@@ -59,7 +59,7 @@ The response looks like this:
 
 ### Increase the setting
 
-Use the [update the cluster settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API to increase the value to a higher number that accommodates your workload:
+Use the [update the cluster settings]({{es-apis}}operation/operation-cluster-put-settings) API to increase the value to a higher number that accommodates your workload:
 
 ```console
 PUT _cluster/settings

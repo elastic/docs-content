@@ -140,7 +140,7 @@ Inside the callback for each step, you’ll likely use a lot of Playwright synta
 * Simulating [mouse](https://playwright.dev/docs/api/class-mouse), [touch](https://playwright.dev/docs/api/class-touchscreen), or [keyboard](https://playwright.dev/docs/api/class-keyboard) events.
 * Making assertions using [`@playwright/test`'s `expect` function](https://playwright.dev/docs/test-assertions). Read more in [Make assertions](/solutions/observability/synthetics/write-synthetic-test.md#synthetics-make-assertions).
 
-Visit the [Playwright documentation](https://playwright.dev/docs) for information.
+Visit the [Playwright documentation](https://playwright.dev/docs/intro) for information.
 
 ::::{note}
 Do not attempt to run in headful mode (using `headless:false`) when running through Elastic’s global managed testing infrastructure or Private Locations as this is not supported.

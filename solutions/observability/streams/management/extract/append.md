@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Add values to an existing array field or create the field as an array with the Streams append processor in Streamlang.
 ---
 # Append processor [streams-append-processor]
 

@@ -10,7 +10,7 @@ The `min_age` value is relative to the rollover time, not the index creation tim
 ::::
 
 
-You can create the policy in {{kib}} or with the [create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API.
+You can create the policy in {{kib}} or with the [create or update policy]({{es-apis}}operation/operation-ilm-put-lifecycle) API.
 
 ::::{tab-set}
 :group: kibana-api
@@ -33,7 +33,7 @@ By default, only the hot index lifecycle phase is enabled. Enable each additiona
 
 :::{tab-item} API
 :sync: api
-Use the [Create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API to add an ILM policy to the {{es}} cluster:
+Use the [Create or update policy]({{es-apis}}operation/operation-ilm-put-lifecycle) API to add an ILM policy to the {{es}} cluster:
 
 ```console
 PUT _ilm/policy/timeseries_policy

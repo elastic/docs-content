@@ -2,6 +2,7 @@ toc:
   - file: index.md
   - file: fleet-agent-serverless-restrictions.md
   - file: beats-agent-comparison.md
+  - file: elastic-agent-as-otel-collector.md
   - file: migrate-from-beats-to-elastic-agent.md
     children:
       - file: migrate-auditbeat-to-agent.md
@@ -93,9 +94,15 @@ toc:
           - file: create-policy-no-ui.md
           - file: enable-custom-policy-settings.md
           - file: fleet-agent-environment-variables.md
+          - file: version-specific-agent-policies.md
       - file: fleet-roles-privileges.md
       - file: fleet-enrollment-tokens.md
       - file: fleet-api-docs.md
+  - file: monitor-otel-collectors.md
+    children:
+      - file: add-otel-collector.md
+      - file: view-otel-collectors.md
+      - file: add-otel-collector-internal-telemetry.md
   - file: configure-standalone-elastic-agents.md
     children:
       - file: create-standalone-agent-policy.md
@@ -139,9 +146,10 @@ toc:
       - file: integration-level-outputs.md
       - file: upgrade-integration.md
       - file: roll-back-integration.md
-      - file: managed-integrations-content.md
+      - file: managed-content.md
       - file: integrations-assets-best-practices.md
       - file: otel-integrations.md
+      - file: deprecated-integrations.md
       - file: data-streams.md
         children:
           - file: data-streams-ilm-tutorial.md

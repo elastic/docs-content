@@ -29,7 +29,7 @@ products:
 % 
 % If you are using a self-managed deployment, access {{kib}} through the web application on port 5601.
 % 
-% 1. Point your web browser to the machine where you are running {{kib}} and specify the port number. For example, `localhost:5601` or `http://YOURDOMAIN.com:5601`.
+% 1. Point your web browser to the machine where you are running {{kib}} and specify the port number. For example, `localhost:5601` or `my-kibana.example.com:5601`.
 % 
 %     To remotely connect to {{kib}}, set [server.host](kibana://reference/configuration-reference/general-settings.md#server-host) to a non-loopback address.
 % 
@@ -52,11 +52,11 @@ To view {{kib}}'s status, use the `status` endpoint. For example, `localhost:560
 :screenshot:
 :::
 
-For JSON-formatted server status details, use the [{{kib}} current status API](https://www.elastic.co/docs/api/doc/kibana/v9/operation/operation-get-status). For example, `localhost:5601/api/status`.
+For JSON-formatted server status details, use the [{{kib}} current status API]({{kib-apis}}v9/operation/operation-get-status). For example, `localhost:5601/api/status`.
 
 ## Triage {{kib}} health using the status API [access-triage]
 
-The following steps demonstrate a typical investigative flow. It assumes the [{{kib}} current status API](https://www.elastic.co/docs/api/doc/kibana/v9/operation/operation-get-status) is saved locally as `kibana_status.json`, and uses third-party tool [JQ](https://jqlang.github.io/jq/) as a JSON processor.
+The following steps demonstrate a typical investigative flow. It assumes the [{{kib}} current status API]({{kib-apis}}v9/operation/operation-get-status) is saved locally as `kibana_status.json`, and uses third-party tool [JQ](https://jqlang.github.io/jq/) as a JSON processor.
 
 1. Check the overall status.
 

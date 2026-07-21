@@ -1,5 +1,6 @@
 ---
 navigation_title: Other Observability tutorials
+description: Tutorials covering Elastic Observability use cases and scenarios, including Java application monitoring.
 applies_to:
   stack: ga
   serverless: ga

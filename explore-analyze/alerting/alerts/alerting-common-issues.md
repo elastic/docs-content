@@ -51,7 +51,7 @@ A connector gets a TLS socket error when connecting to the server to run an acti
 
 **Solution**
 
-Configuration options are available to specialize connections to TLS servers, including ignoring server certificate validation and providing certificate authority data to verify servers using custom certificates. For more details, see [Action settings](kibana://reference/configuration-reference/alerting-settings.md#action-settings).
+Configuration options are available to specialize connections to TLS servers, including ignoring server certificate validation and providing certificate authority data to verify servers using custom certificates. For more details, see [Action settings](kibana://reference/configuration-reference/alerting-settings.md).
 
 ## Rules take a long time to run [rules-long-run-time]
 
@@ -79,7 +79,7 @@ and in the [details page](create-manage-rules.md#rule-details):
 :screenshot:
 :::
 
-If you want your rules to run longer, update the `xpack.alerting.rules.run.timeout` configuration in your [Alerting settings](kibana://reference/configuration-reference/alerting-settings.md#alert-settings). You can also target a specific rule type by using `xpack.alerting.rules.run.ruleTypeOverrides`.
+If you want your rules to run longer, update the `xpack.alerting.rules.run.timeout` configuration in your [Alerting settings](kibana://reference/configuration-reference/alerting-settings.md). You can also target a specific rule type by using `xpack.alerting.rules.run.ruleTypeOverrides`.
 
 Rules that consistently run longer than their [check interval](create-manage-rules.md#create-edit-rules) may produce unexpected results. If the average run duration, visible on the [details page](create-manage-rules.md#rule-details), is greater than the check interval, consider increasing the check interval.
 

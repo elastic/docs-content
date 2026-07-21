@@ -34,7 +34,7 @@ From the role management screen:
 :screenshot:
 :::
 
-Using the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles):
+Using the [role APIs]({{kib-apis}}group/endpoint-roles):
 
 ```js
 PUT /api/security/role/my_kibana_role
@@ -79,7 +79,7 @@ From the role management screen:
 :screenshot:
 :::
 
-Using the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles):
+Using the [role APIs]({{kib-apis}}group/endpoint-roles):
 
 ```js
 PUT /api/security/role/my_kibana_role

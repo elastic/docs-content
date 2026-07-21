@@ -126,7 +126,7 @@ A rule you understand, have data for, and have tuned is worth far more than 100 
 
 Most prebuilt rules don't start running by default. Use **Install and enable** to start rules immediately, or install first and enable later.
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
 
     The badge next to **Add Elastic rules** shows the number of prebuilt rules available for installation.
 
@@ -156,7 +156,7 @@ Most prebuilt rules don't start running by default. Use **Install and enable** t
     :screenshot:
     :::
 
-4. For any rules you haven't already enabled, go back to the {{rules-ui}} page, search or filter for the rules you want to run, and do either of the following:
+4. For any rules you haven't already enabled, go back to the **{{siem-rules-ui}}** page, search or filter for the rules you want to run, and do either of the following:
 
     * Enable a single rule: Turn on the rule's **Enabled** switch.
     * Enable multiple rules: Select the rules, then select **Bulk actions** > **Enable**.

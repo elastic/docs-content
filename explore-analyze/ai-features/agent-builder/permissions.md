@@ -37,16 +37,30 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
 #### `Read`
 
-Required to use agents, send chat messages, view tools, and access conversations.
+Grants access to:
+
+- Use agents
+- Send chat messages
+- View tools
+- View skills {applies_to}`stack: ga 9.4+`
+- Access conversations
+- Manage OAuth MCP clients for the [{{agent-builder}} MCP server](mcp-server.md) {applies_to}`serverless: preview`
 
 Instead of `All`, you can pair `Read` with individual sub-features for more granular control over what users can manage:
 
 - `Manage agents`: Create, update, or delete custom agents.
 - `Manage tools`: Create, update, or delete custom tools.
+- `Manage skills` {applies_to}`stack: ga 9.4+`: Create, update, or delete custom skills.
 
 #### `All`
 
-The broadest access level. Grants everything in `Read`, plus the ability to create, update, or delete custom agents and tools. Includes both management sub-features by default.
+The broadest access level. Grants everything in `Read`, plus the ability to:
+
+- Create, update, or delete custom agents
+- Create, update, or delete custom tools
+- Create, update, or delete custom skills {applies_to}`stack: ga 9.4+`
+
+Includes all management sub-features by default.
 :::
 
 :::{applies-item} { stack: ga 9.2-9.3 }
@@ -133,6 +147,12 @@ POST /_security/role/agent-builder-full
 For granular access, pair `feature_agentBuilder.read` with only the sub-feature privileges needed. To learn more, refer to [Kibana privileges](#kib-privileges).
 :::
 
+:::{admonition} Permissions for MCP clients
+:applies_to: {"serverless": "preview"}
+
+Roles also determine what an MCP client can do when it connects to the {{agent-builder}} MCP server through OAuth. The MCP client inherits the permissions of the user who authorizes the connection. To learn more, refer to [OAuth for MCP clients](/deploy-manage/app-connections/oauth-clients.md).
+:::
+
 ### Grant access with API keys
 
 When using the {{agent-builder}} APIs programmatically, authenticate with an API key that includes the required privileges.
@@ -140,7 +160,7 @@ When using the {{agent-builder}} APIs programmatically, authenticate with an API
 Unlike roles, which use UI-friendly feature privilege names like `feature_agentBuilder.all`, API keys use the underlying API privilege names (`read_onechat`, `manage_onechat`). This is because API keys interact directly with the {{kib}} API layer rather than through the UI.
 
 Refer to these pages for API key configuration examples:
-- [MCP server](mcp-server.md#api-key-application-privileges)
+- [MCP server](mcp-server-api-keys.md#api-key-application-privileges)
 - [{{kib}} API](kibana-api.md)
 
 Learn more about [API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
@@ -151,7 +171,7 @@ Learn more about [API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
 
 When configuring roles or API keys, specify the space in the application privileges resources (for example, `"resources": ["space:production"]`). Users and API keys cannot access resources in other spaces.
 
-Learn how to [Copy your MCP server URL](tools.md#copy-your-mcp-server-url).
+Learn how to [Copy your MCP server URL](tools.md#mcp-server-access).
 
 :::{important}
 When accessing {{agent-builder}} APIs or the MCP server from a custom space, include the space name in the URL path: `https://<deployment>/s/<space-name>/api/agent_builder/...`

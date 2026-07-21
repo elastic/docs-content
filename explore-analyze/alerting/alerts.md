@@ -10,9 +10,21 @@ products:
   - id: kibana
   - id: cloud-serverless
   - id: cloud-hosted
+description: "Overview of Kibana alerting: rules, alerts, actions, connectors, and how they work together."
 ---
 
-# Alerts
+# {{kib}} alerting [alerts]
+
+{{kib}} alerting is the built-in alerting system in {{kib}}. It lets you define rules that check your data on a schedule, create alerts when conditions are met, and trigger actions through connectors (email, Slack, webhooks, and more). It is available on all deployments.
+
+:::{note}
+:applies_to: {"stack": "experimental 9.5+", "serverless": "experimental"}
+To learn about the {{alerting-v2-system}} built on {{esql}}, refer to the [{{alerting-v2-system-cap}} overview](system-overview.md).
+::::
+
+:::{important}
+In the generally available {{kib}} alerting system, the term **alert** refers to a tracked occurrence of a rule condition. In the {{alerting-v2-system}}, the equivalent concept is called an **alert episode**. The two terms describe similar ideas in different systems and are not interchangeable.
+::::
 
 ## {{rules-ui}} [rules]
 
