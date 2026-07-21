@@ -60,6 +60,23 @@ To view the alert in the app that triggered it:
 * From the alert detail flyout, click **View in app**.
 * From the Alerts table, click the {icon}`eye` icon.
 
+### {{product.apm}} alert detail pages [observability-view-alerts-apm-detail]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Alert detail pages for {{product.apm}} rules include additional context to help you diagnose problems quickly:
+
+* **RED metric charts**: Latency, throughput, and failed transaction rate charts are shown directly on the alert detail page, giving you visibility into service performance around the time the alert fired.
+* **Service map**: The service map is embedded on the alert detail page so you can see connected services and identify whether the issue is isolated or affecting upstream or downstream dependencies.
+
+For **{{product.apm}} anomaly** alerts specifically, the alert detail page also includes:
+
+* A **{{product.apm}} anomaly detected** callout that identifies which metric (latency, throughput, or error rate) the anomaly was detected on, color-coded by severity (warning, minor, major, or critical).
+* An **anomaly badge** on the corresponding RED metric chart, with the severity label, icon, and color matching the detected anomaly.
+
 ## Review related alerts [observability-view-alerts-find-related-alerts]
 ```{applies_to}
 stack: ga 9.1 
