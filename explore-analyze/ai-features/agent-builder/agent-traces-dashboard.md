@@ -121,12 +121,12 @@ These fields carry the details the dashboard aggregates. Generative AI attribute
 
 ### Example queries
 
-Use these as starting points, and test them on your own data. They query all spaces. To scope a query to one space, replace the wildcard with that space's data stream, for example `traces-agent_builder.otel-default`.
+Use these as starting points, and test them on your own data. They query one space. Replace `default` in `traces-agent_builder.otel-default` with your space id. To query across all spaces at once, use the `traces-agent_builder.otel-*` wildcard, which combines data from every space.
 
 Total input and output tokens by model and provider:
 
 ```esql
-FROM traces-agent_builder.otel-*
+FROM traces-agent_builder.otel-default
 | WHERE span.name LIKE "chat *"
 | STATS
     input_tokens = SUM(TO_LONG(attributes.gen_ai.usage.input_tokens)),
@@ -139,7 +139,7 @@ FROM traces-agent_builder.otel-*
 Tool calls and errors by tool:
 
 ```esql
-FROM traces-agent_builder.otel-*
+FROM traces-agent_builder.otel-default
 | WHERE span.name LIKE "execute_tool *"
 | STATS
     calls = COUNT(*),
