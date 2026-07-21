@@ -69,7 +69,7 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 `platform.core.execute_connector_sub_action` {applies_to}`stack: preview 9.4`
 :   Runs a single sub-action on a saved {{kib}} [connector](../connectors.md) (for example, sending an email or creating an issue), given a connector ID, sub-action name, and parameters. This lets an agent act on external systems without a dedicated [workflow tool](workflow-tools.md) for each connector.
 
-    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) must be turned on.
+    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](../get-started.md#enable-experimental-features-optional) must be turned on.
 
 #### Workflow execution tools
 
@@ -335,7 +335,7 @@ Security tools provide specialized capabilities for security monitoring, threat 
 
 $$$agent-builder-security-attack-discovery-search-tool$$$
 `security.attack_discovery_search` {applies_to}`stack: ga 9.4+`
-:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs. Requires attack discovery to have been run at least once.
+:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery/index.md) from the last week, given one or more alert IDs. Requires attack discovery to have been run at least once.
 
 $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 :   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.

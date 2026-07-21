@@ -1059,3 +1059,39 @@ redirects:
     to: 'reference/fleet/managed-content.md'
     anchors:
       'managed-integrations-content':
+
+  # Related to https://github.com/elastic/docs-content/pull/7448
+  # Hub page is attack-discovery/index.md, which publishes at the same URL as the
+  # former attack-discovery.md. Keep only split-out anchor redirects for that path.
+  'solutions/security/ai/attack-discovery.md':
+    many:
+      - to: 'solutions/security/ai/attack-discovery/grant-access.md'
+        anchors:
+          'attack-discovery-rbac':
+      - to: 'solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md'
+        anchors:
+          'set-up-attack-discovery': 'set-up-attack-discovery'
+          'attack-discovery-generate-discoveries': 'attack-discovery-generate-discoveries'
+          'schedule-discoveries': 'schedule-discoveries'
+      - to: 'solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md'
+        anchors:
+          'attack-discovery-workflows': 'attack-discovery-workflows'
+          'view-saved-discoveries':
+          'change-a-discoverys-status': 'discovery-status'
+          'share-attack-discoveries': 'share-attack-discoveries'
+          'take-bulk-actions': 'take-bulk-actions'
+          'search-and-filter-saved-discoveries': 'search-filter-discoveries'
+  'solutions/security/ai/attack-discovery/attack-discovery.md': 'solutions/security/ai/attack-discovery/index.md'
+  'solutions/security/ai/attacks-page.md':
+    to: 'solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md'
+    anchors:
+      'attacks-triage':
+    many:
+      - to: 'solutions/security/ai/attack-discovery/run-from-attacks-page.md'
+        anchors:
+          'attacks-prerequisites': 'run-from-attacks-page-prerequisites'
+          'attacks-schedule-discoveries': 'attacks-page-schedule-runs'
+      - to: 'solutions/security/ai/attack-discovery/manage-saved-discoveries.md'
+        anchors:
+          'attacks-next-steps': 'next-steps'
+  'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'
