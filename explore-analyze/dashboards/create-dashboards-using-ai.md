@@ -38,7 +38,9 @@ Use {{agent-builder}} when you want to:
 
 {{agent-builder}} generates ES|QL-powered visualizations, markdown panels, and collapsible sections. For panel types the agent does not support yet, such as controls, use the [Dashboards API](create-dashboards-programmatically.md) directly.
 
-Refer to [Chat with {{agent-builder}} agents](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md).
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` Visualizations render with Lens by default. For chart shapes Lens can't express, such as small multiples, combination charts, and scatter or bubble charts, the agent can use Vega-Lite instead.
+
+Refer to [Chat with {{agent-builder}} agents](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md) for renderer guidance and limitations.
 
 ## {{product.kibana}} dashboards agent skill [dashboards-agent-skill]
 ```{applies_to}
