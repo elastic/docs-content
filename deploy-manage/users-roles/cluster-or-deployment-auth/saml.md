@@ -196,7 +196,7 @@ Replace the example values with your own. Each setting is described below:
 :   A unique identifier for your {{kib}} instance, expressed as a URI. Must match exactly the entity ID you [configure in your IdP](#saml-configure-idp). The comparison is case-sensitive. We recommend using the {{kib}} base URL.
 
 `sp.acs`
-:   The *Assertion Consumer Service* (ACS) endpoint is the URL within {{kib}} that accepts authentication messages from the IdP. Must be reachable from users' browsers, and it does not need to be directly accessible by {{es}} or the IdP. Refer to [`sp.acs`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings) for more details.
+:   The URL within {{kib}} that receives authentication responses from your IdP, using the HTTP-POST binding. Set this to `{kibana-url}/api/security/saml/callback`. This URL must be reachable from users' browsers — it does not need to be directly accessible by {{es}} or the IdP. If {{kib}} is behind a reverse proxy, use the public-facing URL.
 
 `sp.logout`
 :   The URL where the IdP sends logout messages. Required for [SAML Single Logout](#saml-logout). If not configured, {{es}} refuses all `<LogoutRequest>` messages from the IdP.
