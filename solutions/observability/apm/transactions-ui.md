@@ -62,6 +62,13 @@ The **Transactions** table displays a list of *transaction groups* for the selec
 
 By default, transaction groups are sorted by *Impact*. Impact helps show the most used and slowest endpoints in your service - in other words, it’s the collective amount of pain a specific endpoint is causing your users. If there’s a particular endpoint you’re worried about, you can click on it to view the [transaction details](/solutions/observability/apm/transactions-ui.md#transaction-details).
 
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Each row in the Transactions table has an **Actions** menu. Use it to act on a specific transaction group — for example, to create an alert rule or SLO for that endpoint.
+
 ::::{important}
 If you only see one route in the Transactions table, or if you have transactions named "unknown route", it could be a symptom that the APM agent either wasn’t installed correctly or doesn’t support your framework.
 
@@ -138,9 +145,16 @@ Learn more about a trace sample in the **Metadata** tab:
 * FaaS information, like cold start, AWS request ID, trigger type, and trigger request ID
 
 ::::{tip}
-All of this data is stored in documents in Elasticsearch. This means you can select "Actions - View transaction in Discover" to see the actual Elasticsearch document under the discover tab.
+All of this data is stored in documents in {{es}}. Select **Actions** → **View transaction in Discover** to see the raw {{es}} document for this trace sample.
 
 ::::
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Click **Open full trace in Discover** to explore the entire trace — all spans and transactions — in Discover. This is useful for deeper analysis beyond what the timeline waterfall shows.
 
 **Trace sample logs**
 
@@ -162,6 +176,6 @@ To learn how to correlate your logs with your instrumented services, see [Stream
 Correlations surface attributes of your data that are potentially correlated with high-latency or erroneous transactions. To learn more, see [Find transaction latency and failure correlations](/solutions/observability/apm/find-transaction-latency-failure-correlations.md).
 
 :::{image} /solutions/images/observability-correlations-hover.png
-:alt: APM lattency correlations
+:alt: APM latency correlations
 :screenshot:
 :::
