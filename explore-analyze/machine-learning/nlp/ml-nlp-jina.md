@@ -844,7 +844,7 @@ For more information about creating Jina AI {{infer}} endpoints, including `text
 
 #### On-prem [jina-on-prem]
 
-With [Jina on-prem](https://github.com/jina-ai/jina-on-prem), you run Jina models in Docker containers on your own infrastructure and access them through the Jina API schemas exposed by the container. Use this option when data cannot leave your network, when inference must work without outbound connectivity, or when compliance and data residency require self-hosted model deployment.
+With [Jina on-prem](https://github.com/jina-ai/jina-on-prem), you run Jina models in Docker containers on your own infrastructure and access them through the Jina API schemas exposed by the container. Use this option for air-gapped or network-restricted environments, offline inference, or compliance and data residency scenarios that require self-hosted model deployment.
 
 To pull, transfer, and run a prebuilt Docker image, refer to the [Jina on-prem Quick Start](https://github.com/jina-ai/jina-on-prem/wiki/Quick-Start).
 
