@@ -464,6 +464,10 @@ On large datasets, you can trade exact results for speed by enabling [approximat
 - {applies_to}`{stack: "preview 9.5", serverless: "preview"}` From the {{kib}} UI, with [Fast mode](#esql-kibana-fast-mode-toggle).
 - From within a query, with the [`SET approximation`](#esql-kibana-approximation) directive.
 
+**Requirements**
+
+- For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, you need an Enterprise license.
+
 However you enable it, {{es}} applies approximation only when it actually speeds up the query. When your data is smaller than the sample size (by default around 1 million rows for `STATS ... BY` queries and 100,000 rows for other `STATS` queries), or a filter has already narrowed the results, {{es}} returns exact results instead. Approximation only works with certain aggregations, so functions such as `COUNT_DISTINCT`, `MIN`, `MAX`, and `LAST` always run exactly. Because approximate results are estimates, they can vary between runs and might drop low-frequency groups. For the full conditions and supported functions, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
 
 ### Use Fast mode [esql-kibana-fast-mode-toggle]
