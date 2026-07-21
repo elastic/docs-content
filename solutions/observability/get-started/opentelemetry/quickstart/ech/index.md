@@ -21,6 +21,10 @@ Select the quickstart guide for your environment from the following list:
 - [Docker on hosted](docker.md)
 - [Hosts or VMs on hosted](hosts_vms.md)
 
+:::{note}
+Before version 9.5, the Elastic Collector component used in these quickstarts was called the **EDOT Collector**. From 9.5 onwards, this capability is built into **{{agent}}**.
+:::
+
 ## Troubleshooting
 
 Having issues with {{edot}}? Refer to the [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.
