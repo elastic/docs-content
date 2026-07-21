@@ -81,6 +81,8 @@ Inline actions include the following (some actions are unavailable in some conte
 
 The {{security-app}} contains the following pages that enable analysts to view, analyze, and manage security data.
 
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` You can reorder these items in the navigation menu, or hide the ones you don't use. Refer to [Customize your navigation menu](/explore-analyze/find-and-organize/customize-navigation.md).
+
 ### Discover [security-ui-discover]
 
 Use the [Discover](/explore-analyze/discover.md) UI to filter your data or learn about its structure.
@@ -124,7 +126,7 @@ serverless: preview
 Expand this section to access the following pages:
 
 * [Alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md): View and manage detection alerts to monitor activity within your network.
-* [Attacks](/solutions/security/ai/attacks-page.md): View and triage correlated attack chains alongside their associated alerts.
+* [Attacks](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md): View and triage correlated attack chains alongside their associated alerts.
 
 Refer to [Detections and alerts](/solutions/security/detect-and-alert.md) for more information.
 
@@ -150,7 +152,7 @@ Create and manage workflows that automate tasks such as incident response, case 
 
 ### Attack discovery
 
-Use large language models (LLMs) to analyze alerts in your environment and identify threats. Refer to [](/solutions/security/ai/attack-discovery.md) for more information.
+Use large language models (LLMs) to analyze alerts in your environment and identify threats. Refer to [](/solutions/security/ai/attack-discovery/index.md) for more information.
 
 
 ### Assets [security-ui-assets]

@@ -36,6 +36,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [Can I use AutoOps if my environment is air-gapped?](#autoops-air-gapped)
 * [Do I have to do any maintenance when using AutoOps for ECE, ECK, or self-managed clusters?](#maintenance)
 * [I connected my ECE, ECK, or self-managed cluster to AutoOps during a free trial of {{ecloud}}. What happens after my trial ends?](#trial-ending)
+* [Who has access to AutoOps in my cluster?](#access-autoops)
 * [What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?](#support)
 
 **Setting up AutoOps for ECE, ECK, or self-managed clusters**
@@ -114,9 +115,13 @@ $$$maintenance$$$ **Do I have to do any maintenance when using AutoOps for ECE, 
 * When using the ECK installation method, make sure your instance of {{agent}} meets the [version requirements](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#prerequisites) for your license type.  
 
 $$$trial-ending$$$ **I connected my ECE, ECK, or self-managed cluster to AutoOps during a free trial of {{ecloud}}. What happens after my trial ends?**
-:   After your free trial ends, your cluster remains connected and AutoOps continues to process your {{es}} metrics as long as: 
-* You have an [active {{ecloud}} account](../../cloud-organization/billing/add-billing-details.md).
+:   You don't need a paid {{ecloud}} subscription or an active {{ecloud}} trial to keep using AutoOps for ECE, ECK, or self-managed clusters. AutoOps is free across all [self-managed license types](https://www.elastic.co/subscriptions) through Cloud Connect. After your free trial ends, your cluster remains connected and AutoOps continues to process your {{es}} metrics as long as: 
+* You have an [active {{ecloud}} account](../../cloud-organization/billing/add-billing-details.md). Creating an {{ecloud}} account is free and doesn't require a paid subscription.
 * {{agent}} is running and shipping metrics to {{ecloud}}.
+
+$$$access-autoops$$$**Who has access to AutoOps in my cluster?**
+:   :::{include} ../_snippets/access-cloud-connect-autoops.md
+    :::
 
 $$$support$$$ **What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?**
 :   Support eligibility is determined by the license of your connected cluster:

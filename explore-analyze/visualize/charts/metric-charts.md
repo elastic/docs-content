@@ -546,7 +546,10 @@ When creating or editing a visualization, you can customize several appearance o
 :   Define the **Alignment** of the secondary metric.
 
 **Other**
-:   Choose the **Icon** position.
+:   Configure the icon and layout:
+    - **Icon decoration**: Add an icon to the metric chart.
+    - **Icon position**: Select **Left** or **Right**.
+    - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` **Density**: Select **Compact** for tighter spacing, less padding, and smaller text, or **Default** for more spacing, more padding, and larger text. New metric charts use **Default**. Charts saved before this option was introduced use **Compact** until you change the setting.
 
 
 ## Metric chart examples

@@ -38,6 +38,11 @@ Entities do not have a default asset criticality level. You can either assign as
 
 When you assign, change, or unassign an individual entity’s asset criticality level, that entity’s risk score is immediately recalculated.
 
+:::{tip}
+:applies_to: {stack: ga 9.5+, serverless: ga}
+You can also update an entity's asset criticality conversationally with {{agent-builder}} using the `entity-analytics` [skill](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#security-skills). For example prompts, refer to [Entity risk investigation](/solutions/security/ai/agent-builder/skills-use-cases.md#entity-risk-investigation).
+:::
+
 ::::{note}
 If you assign asset criticality using the file import feature, risk scores are **not** immediately recalculated. However, you can trigger an immediate recalculation by clicking **Recalculate entity risk scores now**. Otherwise, the newly assigned or updated asset criticality levels will be factored in during the next hourly risk scoring calculation.
 ::::

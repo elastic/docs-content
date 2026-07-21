@@ -13,7 +13,7 @@ products:
 
 # Large language model performance matrix for {{elastic-sec}} [llm-performance-matrix]
 
-This page summarizes internal test results comparing large language models (LLMs) across {{elastic-sec}} [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) and AI-powered feature use cases. The matrix tests each model across [Agent Builder](/solutions/security/ai/agent-builder/agent-builder.md), [Attack Discovery](/solutions/security/ai/attack-discovery.md), and [Automatic Migration](/solutions/security/get-started/automatic-migration.md). To learn more about these use cases, refer to [AI-powered features](/explore-analyze/ai-features.md#security-features).
+This page summarizes internal test results comparing large language models (LLMs) across {{elastic-sec}} [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) and AI-powered feature use cases. The matrix tests each model across [Agent Builder](/solutions/security/ai/agent-builder/agent-builder.md), [Attack Discovery](/solutions/security/ai/attack-discovery/index.md), and [Automatic Migration](/solutions/security/get-started/automatic-migration.md). To learn more about these use cases, refer to [AI-powered features](/explore-analyze/ai-features.md#security-features).
 
 ::::{important}
 Higher scores indicate better performance, on a scale of 1 to 10. A score of 10 on a capability means the model met or exceeded all task-specific benchmarks for that capability.
@@ -44,6 +44,9 @@ The matrix uses three top-line capability scores — **Agent Builder**, **Attack
 
 Models from third-party LLM providers.
 
+:::{table}
+:matrix:
+
 | **Model** | Agent Builder: Alert Analysis | Agent Builder: Entity Analytics | Agent Builder: Threat Hunting | Agent Builder: Detection Rules | Agent Builder: Workflow Authoring | Agent Builder: Triggering Workflows | Agent Builder: Multi-Step Executions | **Overall Agent Builder Score** | **Attack Discovery** | **Automatic Migration** | **Overall Score** |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Anthropic Claude Opus 4.7** | 9.00 | 8.00 | 8.00 | 8.00 | 9.00 | 8.00 | 8.00 | **8.29** | 9.70 | 9.70 | **9.23** |
@@ -66,9 +69,14 @@ Models from third-party LLM providers.
 | **Google Gemini 2.5 Flash Lite** | 4.00 | 6.00 | 3.00 | 3.00 | 2.00 | 5.00 | 6.00 | **4.14** | 0.00 | 7.30 | **3.81** |
 | **OpenAI GPT-4.1 Mini** | 6.00 | 3.00 | 6.00 | 5.00 | 9.00 | 7.00 | 3.00 | **5.57** | 4.20 | 0.00 | **3.26** |
 
+:::
+
 ## Open-source models [_open_source_models]
 
 Models you can [deploy yourself](/explore-analyze/ai-features/llm-guides/local-llms-overview.md).
+
+:::{table}
+:matrix:
 
 | **Model** | Agent Builder: Alert Analysis | Agent Builder: Entity Analytics | Agent Builder: Threat Hunting | Agent Builder: Detection Rules | Agent Builder: Workflow Authoring | Agent Builder: Triggering Workflows | Agent Builder: Multi-Step Executions | **Overall Agent Builder Score** | **Attack Discovery** | **Automatic Migration** | **Overall Score** |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -78,3 +86,5 @@ Models you can [deploy yourself](/explore-analyze/ai-features/llm-guides/local-l
 | **OpenAI GPT-OSS 20B** | 4.00 | 5.00 | 5.00 | 7.00 | 5.00 | 8.00 | 4.00 | **5.43** | 2.60 | 4.00 | **4.01** |
 | **Qwen 3.6 27B** | 5.00 | 7.00 | 7.00 | 8.00 | 9.00 | 8.00 | 6.00 | **7.14** | 0.00 | 4.10 | **3.75** |
 | **Kimi K2.6** | 0.00 | 6.00 | 0.00 | 0.00 | 9.00 | 6.00 | 7.00 | **4.00** | 0.00 | 3.10 | **2.37** |
+
+:::

@@ -17,8 +17,10 @@ A failure store is a secondary set of indices inside a data stream, dedicated to
 
 When a data stream's failure store is enabled, these failures are instead captured in a separate index and persisted to be analysed later. Clients receive a successful response with a flag indicating the failure was redirected. 
 
+A failure store is attached to a single data stream. If a [`reroute` processor](elasticsearch://reference/enrich-processor/reroute-processor.md) changes the target data stream of an indexing request, subsequent failures are directed to the new target's failure store, if enabled.
+
 :::{important}
-Failure stores do not capture failures caused by backpressure or document version conflicts. These failures are always returned as-is since they warrant specific action by the client.
+Failure stores do not capture failures caused by backpressure, security issues, or document version conflicts. These failures are always returned as-is since they warrant specific action by the client.
 :::
 
 On this page, you'll learn how to set up, use, and manage a failure store, as well as the structure of failure store documents.
