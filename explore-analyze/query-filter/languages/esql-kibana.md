@@ -459,9 +459,9 @@ stack: preview 9.4
 serverless: preview
 ```
 
-**Requirements**
-
-- For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, you need an Enterprise license.
+::::{admonition} Requirements
+For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, you need an Enterprise license.
+::::
 
 On large datasets, you can trade exact results for speed by enabling [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries. Approximation runs your `STATS` aggregations on a sample of the data and extrapolates to estimate results for the full dataset, so the numbers come out close to the exact ones. You can enable approximation in two ways:
 
