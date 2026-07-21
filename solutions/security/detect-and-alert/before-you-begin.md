@@ -26,8 +26,3 @@ You might need to revisit the following as you onboard new data sources, add use
 
 - [User roles and privileges](/solutions/security/detect-and-alert/detections-privileges.md): As your team grows or responsibilities shift, review and update role assignments to ensure analysts have the access they need.
 - [Advanced data source configuration](/solutions/security/detect-and-alert/advanced-data-source-configuration.md): Revisit {{ccs}} setup, data tier exclusions, and index mode settings when you add new clusters, change data retention policies, or onboard data sources that use different index configurations.
-
-:::{note}
-:applies_to: {"stack": "experimental 9.5+", "serverless": "experimental"}
-{{kib}} also has an {{esql}}-based alerting system that's not tied to any specific solution. For threat detection in {{elastic-sec}}, keep using detection rules—they include security-specific capabilities such as [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) and [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) that the solution-agnostic system doesn't provide. To compare the platform alerting options, refer to [Compare alerting systems](/explore-analyze/alerting/compare-alerting-systems.md).
-:::
