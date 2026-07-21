@@ -469,7 +469,7 @@ Up to and including version 9.2, filtering for multi-value fields isn't supporte
 Other interactions with the results table do not update the query, such as dragging fields onto the table or sorting the table in a specific order.
 
 :::{tip}
-:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
 You can also have an AI agent analyze your {{esql}} results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
 :::
 
