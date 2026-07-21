@@ -112,7 +112,7 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
 
 The chart shows event counts over time from `kibana_sample_data_logs`. For the full list of {{esql}} `url` parameters, see [Writing {{esql}} queries in Vega](#vega-esql-queries).
 
-To continue with interactive filtering and Query DSL examples, follow the tutorials below.
+To continue with interactive filtering and Query DSL examples, see [Create a stacked area chart from an {{es}} search query](#vega-tutorial-create-a-stacked-area-chart) and [Update {{kib}} filters from Vega](#vega-tutorial-update-kibana-filters-from-vega).
 
 
 ### Create a stacked area chart from an {{es}} search query [vega-tutorial-create-a-stacked-area-chart]
