@@ -1,6 +1,6 @@
 ---
 navigation_title: SDK sampling issues
-description: Learn how to troubleshoot missing or incomplete traces in Elastic OTel SDKs caused by head sampling configuration.
+description: Learn how to troubleshoot missing or incomplete traces in EDOT SDKs caused by head sampling configuration.
 applies_to:
   serverless: ga
 products:

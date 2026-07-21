@@ -19,7 +19,7 @@ Find solutions to common issues in {{edot}} components and SDKs.
 
 * [{{agent}} troubleshooting](/troubleshoot/ingest/opentelemetry/edot-collector/index.md): Troubleshoot issues with the {{agent}}, including resource problems, configuration errors, and connectivity issues.
 
-* [Elastic OTel SDKs troubleshooting](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md): Troubleshoot issues with Elastic OTel SDKs for Android, .NET, iOS, Java, Node.js, PHP, and Python.
+* [EDOT SDKs troubleshooting](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md): Troubleshoot issues with EDOT SDKs for Android, .NET, iOS, Java, Node.js, PHP, and Python.
 
 ## Common troubleshooting topics
 
@@ -35,7 +35,7 @@ These guides apply to both the Collector and SDKs:
 
 ## Supported architectures
 
-Elastic OTel SDKs are tested and supported only with [{{agent}} Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using Elastic OTel SDKs directly with {{apm-server}}'s OTel intake is not supported.
+EDOT SDKs are tested and supported only with [{{agent}} Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
 
 ## Additional resources
 

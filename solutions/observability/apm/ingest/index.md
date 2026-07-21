@@ -41,14 +41,14 @@ For a comparison of {{edot}} and APM data streams, refer to [Comparison with cla
 
 | Language | {{edot}} | Elastic APM agent |
 | --- | --- | --- |
-| **Android** | Elastic OTel Android | Not available |
+| **Android** | EDOT Android | Not available |
 | **Go** | Not available | Go agent |
-| **iOS** | Elastic OTel iOS  | Not available |
-| **Java** | Elastic OTel Java | Java agent |
-| **.NET** | Elastic OTel .NET | .NET agent |
-| **Node.js** | Elastic OTel Node.js | Node.js agent |
-| **PHP** | Elastic OTel PHP | PHP agent |
-| **Python** | Elastic OTel Python | Python agent |
+| **iOS** | EDOT iOS  | Not available |
+| **Java** | EDOT Java | Java agent |
+| **.NET** | EDOT .NET | .NET agent |
+| **Node.js** | EDOT Node.js | Node.js agent |
+| **PHP** | EDOT PHP | PHP agent |
+| **Python** | EDOT Python | Python agent |
 | **Ruby** | Not available | Ruby agent |
 
 ## Service-specific options [_service_specific_options]

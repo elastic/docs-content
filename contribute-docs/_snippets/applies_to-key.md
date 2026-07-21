@@ -21,16 +21,16 @@
   * `apm_agent_rum`: Applies to the [APM RUM JavaScript agent](https://www.elastic.co/docs/reference/apm/agents/rum-js).
   * `curator`: Applies to [Elasticsearch Curator](https://www.elastic.co/docs/reference/elasticsearch/curator) (Curator).
   * `ecctl`: Applies to [Elastic cloud control](https://www.elastic.co/docs/reference/ecctl) (ECCTL).
-  * `edot_android`: Applies to the [Elastic Distribution of OpenTelemetry Android](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/android/) (Elastic OTel Android).
+  * `edot_android`: Applies to the [Elastic Distribution of OpenTelemetry Android](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/android/) (EDOT Android).
   * `edot_cf_aws`: Applies to the [Elastic Distribution of OpenTelemetry Cloud Forwarder](https://www.elastic.co/docs/reference/opentelemetry/edot-cloud-forwarder/) (Elastic Cloud Forwarder).
   * `edot_cf_azure`: Applies to the [Elastic Distribution of OpenTelemetry Cloud Forwarder](https://www.elastic.co/docs/reference/opentelemetry/edot-cloud-forwarder/) (Elastic Cloud Forwarder).
   * `edot_collector`: Applies to the [Elastic Distribution of OpenTelemetry Collector](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/) ({{agent}}).
-  * `edot_dotnet`: Applies to the [Elastic Distribution of OpenTelemetry .NET](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/dotnet/) (Elastic OTel .NET).
-  * `edot_ios`: Applies to the [Elastic Distribution of OpenTelemetry iOS](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/ios/) (Elastic OTel iOS).
-  * `edot_java`: Applies to the [Elastic Distribution of OpenTelemetry Java](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/java/) (Elastic OTel Java).
-  * `edot_node`: Applies to the [Elastic Distribution of OpenTelemetry Node.js](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/nodejs/) (Elastic OTel Node.js).
-  * `edot_php`: Applies to the [Elastic Distribution of OpenTelemetry PHP](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/php/) (Elastic OTel PHP).
-  * `edot_python`: Applies to the [Elastic Distribution of OpenTelemetry Python](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/python/) (Elastic OTel Python).
+  * `edot_dotnet`: Applies to the [Elastic Distribution of OpenTelemetry .NET](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/dotnet/) (EDOT .NET).
+  * `edot_ios`: Applies to the [Elastic Distribution of OpenTelemetry iOS](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/ios/) (EDOT iOS).
+  * `edot_java`: Applies to the [Elastic Distribution of OpenTelemetry Java](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/java/) (EDOT Java).
+  * `edot_node`: Applies to the [Elastic Distribution of OpenTelemetry Node.js](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/nodejs/) (EDOT Node.js).
+  * `edot_php`: Applies to the [Elastic Distribution of OpenTelemetry PHP](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/php/) (EDOT PHP).
+  * `edot_python`: Applies to the [Elastic Distribution of OpenTelemetry Python](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/python/) (EDOT Python).
 
 :::{note}
 The `product` key and its subkeys are used to indicate feature availability and applicability. The similarly named [`products` frontmatter field](https://elastic.github.io/docs-builder/syntax/frontmatter#products) is used to drive elastic.co search filters.

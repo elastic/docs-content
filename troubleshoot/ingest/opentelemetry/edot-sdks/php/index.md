@@ -1,6 +1,6 @@
 ---
-navigation_title: Elastic OTel PHP
-description: Troubleshooting the Elastic OTel PHP agent.
+navigation_title: EDOT PHP
+description: Troubleshooting the EDOT PHP agent.
 applies_to:
   stack:
   serverless:
@@ -13,17 +13,17 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting the Elastic OTel PHP agent [troubleshooting-the-edot-php-agent]
+# Troubleshooting the EDOT PHP agent [troubleshooting-the-edot-php-agent]
 
-Use the information on this page to troubleshoot issues using Elastic OTel PHP.
+Use the information on this page to troubleshoot issues using EDOT PHP.
 
 If you need help and you're an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues).
 
-As a first step, review the [supported technologies](elastic-otel-php://reference/edot-php/supported-technologies.md) to ensure your application is supported by the agent. Are you using a PHP version that Elastic OTel PHP supports? Are the versions of your dependencies in the supported version range to be instrumented?
+As a first step, review the [supported technologies](elastic-otel-php://reference/edot-php/supported-technologies.md) to ensure your application is supported by the agent. Are you using a PHP version that EDOT PHP supports? Are the versions of your dependencies in the supported version range to be instrumented?
 
 ## Turn on logging
 
-When diagnosing issues with the agent's operation, logs play a key role. You can find a detailed explanation of the logging configuration options in [Configuration](elastic-otel-php://reference/edot-php/configuration.md#logging-configuration). For more information on enabling debug logging, refer to [Enable debug logging for Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+When diagnosing issues with the agent's operation, logs play a key role. You can find a detailed explanation of the logging configuration options in [Configuration](elastic-otel-php://reference/edot-php/configuration.md#logging-configuration). For more information on enabling debug logging, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
 In most cases, setting the logging level to `debug` is sufficient. You can also use `trace` can be used, but keep in mind that the amount of generated data might be significant.
 

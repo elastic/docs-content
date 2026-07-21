@@ -1,6 +1,6 @@
 ---
 navigation_title: Collector doesn’t propagate metadata
-description: Learn why the Collector doesn’t extract custom attributes and how to propagate such values using Elastic OTel SDKs.
+description: Learn why the Collector doesn’t extract custom attributes and how to propagate such values using EDOT SDKs.
 applies_to:
   stack:
   serverless:
@@ -25,7 +25,7 @@ For example:
 
 - Authorization headers
 - Trace propagation headers
-- `user-agent` strings sent by HTTP clients or Elastic OTel SDKs
+- `user-agent` strings sent by HTTP clients or EDOT SDKs
 
 This is transport-level metadata, and not application-level context.
 
@@ -62,7 +62,7 @@ This will not work, as the Collector doesn't automatically extract such values f
 
 ## Resolution
 
-If you want to propagate customer IDs or project names into spans or metrics, you must instrument this in your code using one of the SDKs. For SDK-specific troubleshooting guidance, refer to [Elastic OTel SDKs troubleshooting](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md).
+If you want to propagate customer IDs or project names into spans or metrics, you must instrument this in your code using one of the SDKs. For SDK-specific troubleshooting guidance, refer to [EDOT SDKs troubleshooting](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md).
 
 Use `span.set_attribute` in your application code, where OpenTelemetry spans are created. For example:
 

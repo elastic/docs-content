@@ -1,6 +1,6 @@
 ---
-navigation_title: Elastic OTel Java
-description: Troubleshooting guide for the Elastic OTel Java agent, covering connectivity, agent identification, and debugging.
+navigation_title: EDOT Java
+description: Troubleshooting guide for the EDOT Java agent, covering connectivity, agent identification, and debugging.
 applies_to:
   stack:
   serverless:
@@ -13,9 +13,9 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting the Elastic OTel Java agent [troubleshooting-the-edot-java-agent]
+# Troubleshooting the EDOT Java agent [troubleshooting-the-edot-java-agent]
 
-Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](elastic-otel-java://reference/edot-java/supported-technologies.md) for Elastic OTel Java and the OpenTelemetry SDK.
+Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](elastic-otel-java://reference/edot-java/supported-technologies.md) for EDOT Java and the OpenTelemetry SDK.
 
 If you need help and you're an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues)
 
@@ -76,9 +76,9 @@ As debugging output is verbose and might produce noticeable overhead on the appl
 - In case of a technical issue or exception with the agent, use [agent debugging](#agent-debugging).
 - If you need details on the captured data, use [per-signal debugging](#per-signal-debugging).
 
-For more information, refer to [Enable debug logging for Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+For more information, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
-In case of missing data, check first that the technology used in the application is supported in [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md) and in [Elastic OTel Java](elastic-otel-java://reference/edot-java/supported-technologies.md). For more troubleshooting guidance, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md).
+In case of missing data, check first that the technology used in the application is supported in [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md) and in [EDOT Java](elastic-otel-java://reference/edot-java/supported-technologies.md). For more troubleshooting guidance, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md).
 
 ### Agent debugging
 
@@ -150,14 +150,14 @@ Also, you can inspect the `Implementation-Version` entry in `META-INF/MANIFEST.M
 
 ## Versions of the OpenTelemetry contrib dependencies
 
-Because Elastic OTel Java is a distribution of [OpenTelemetry Java instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation), it includes the following dependencies:
+Because EDOT Java is a distribution of [OpenTelemetry Java instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation), it includes the following dependencies:
 
 - [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 - [OpenTelemetry Java SDK](https://github.com/open-telemetry/opentelemetry-java)
 - [Semantic Conventions Java mappings](https://github.com/open-telemetry/semantic-conventions-java)
 - [OpenTelemetry Java Contrib](https://github.com/open-telemetry/opentelemetry-java-contrib)
 
-The versions of those included in {{edot}} are usually aligned with the OpenTelemetry Java Instrumentation. For reference, check the [Elastic OTel Java release notes](elastic-otel-java://release-notes/index.md) details of versions included in each release.
+The versions of those included in {{edot}} are usually aligned with the OpenTelemetry Java Instrumentation. For reference, check the [EDOT Java release notes](elastic-otel-java://release-notes/index.md) details of versions included in each release.
 
 ## When and how to update {{edot}} [when-and-how-to-update-edot]
 
@@ -175,17 +175,17 @@ Updating to the latest {{edot}} version involves reviewing changes of the includ
 - [Semantic Conventions Java mappings](https://github.com/open-telemetry/semantic-conventions-java)
 - [OpenTelemetry Java Contrib](https://github.com/open-telemetry/opentelemetry-java-contrib)
 
-To review each of those individually, you can use the [Elastic OTel Java release notes](elastic-otel-java://release-notes/index.md) for links to the respective versions of each component.
+To review each of those individually, you can use the [EDOT Java release notes](elastic-otel-java://release-notes/index.md) for links to the respective versions of each component.
 
 ### OpenTelemetry API/SDK update
 
 To implement manual instrumentation, some applications use the OpenTelemetry API and/or SDK which allows them to capture custom spans, metrics or even send data without any instrumentation agent.
 
-Updates of the OpenTelemetry API/SDK in the application and the Elastic OTel Java agent can be done independently.
+Updates of the OpenTelemetry API/SDK in the application and the EDOT Java agent can be done independently.
 
-- Elastic OTel Java is backward-compatible with all previous versions of OpenTelemetry API/SDK.
+- EDOT Java is backward-compatible with all previous versions of OpenTelemetry API/SDK.
 - Using a more recent version of API/SDK than the one in {{edot}} should usually work without problem, however to ensure maximum compatibility keeping OpenTelemetry API/SDK version ≤ {{edot}} OpenTelemetry API/SDK version is recommended.
 
 ### How to update
 
-Updating the Elastic OTel Java agent is done by replacing the agent binary `.jar` that has been [added during setup](elastic-otel-java://reference/edot-java/setup/index.md).
+Updating the EDOT Java agent is done by replacing the agent binary `.jar` that has been [added during setup](elastic-otel-java://reference/edot-java/setup/index.md).

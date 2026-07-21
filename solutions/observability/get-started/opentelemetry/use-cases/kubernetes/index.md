@@ -15,14 +15,14 @@ products:
 
 # Kubernetes observability with {{edot}} [kubernetes-observability-with-edot]
 
-The [quickstart guides](/solutions/observability/get-started/opentelemetry/quickstart/index.md) for Kubernetes install a set of different {{agents}} and Elastic OTel SDKs to cover collection of OpenTelemetry data for infrastructure monitoring, logs collection and application monitoring.
+The [quickstart guides](/solutions/observability/get-started/opentelemetry/quickstart/index.md) for Kubernetes install a set of different {{agents}} and EDOT SDKs to cover collection of OpenTelemetry data for infrastructure monitoring, logs collection and application monitoring.
 
 The Kubernetes setup relies on the OpenTelemetry Operator, configured to automate orchestration of {{edot}} as follows:
 
 * {{agent}} Cluster: Collection of cluster metrics.
 * {{agent}} Daemon: Collection of node metrics, logs, and application telemetry.
 * {{agent}} Gateway: Preprocessing, aggregation, and ingestion of data into Elastic.
-* Elastic OTel SDKs: Annotated applications are auto-instrumented with [Elastic OTel SDKs](opentelemetry://reference/edot-sdks/index.md).
+* EDOT SDKs: Annotated applications are auto-instrumented with [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md).
 
 The following diagram summarizes the previous components and how they interact with Elastic:
 

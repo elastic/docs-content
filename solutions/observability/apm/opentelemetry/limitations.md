@@ -33,9 +33,9 @@ Logs ingest through [{{agent}}](elastic-agent://reference/edot-collector/index.m
 
 Elastic supports both the  [OTLP/gRPC](https://opentelemetry.io/docs/specs/otlp/#otlpgrpc) and [OTLP/HTTP](https://opentelemetry.io/docs/specs/otlp/#otlphttp) protocol with ProtoBuf payload. Elastic does not yet support JSON Encoding for OTLP/HTTP.
 
-## Elastic OTel SDKs with APM Server OTel intake [apm-open-telemetry-edot-sdk-limitations]
+## EDOT SDKs with APM Server OTel intake [apm-open-telemetry-edot-sdk-limitations]
 
-Elastic OTel SDKs are tested and supported only with [{{agent}} Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using Elastic OTel SDKs directly with {{apm-server}}'s OTel intake is not supported.
+EDOT SDKs are tested and supported only with [{{agent}} Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
 
 ## OpenTelemetry Collector exporter for Elastic [apm-open-telemetry-collector-exporter]
 

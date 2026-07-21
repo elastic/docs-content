@@ -33,7 +33,7 @@ To secure the communication between APM Agents and either {{apm-server-or-mis}} 
 4. [Set the API key in your APM agents](#apm-agent-api-key)
 
 ::::{note}
-If you're using [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md), refer to [Create {{apm-agent}} key for Elastic OTel SDKs](/solutions/observability/apm/opentelemetry/create-apm-agent-key-for-edot-sdks.md) for {{edot}}-specific guidance on creating and using API keys.
+If you're using [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md), refer to [Create {{apm-agent}} key for EDOT SDKs](/solutions/observability/apm/opentelemetry/create-apm-agent-key-for-edot-sdks.md) for {{edot}}-specific guidance on creating and using API keys.
 ::::
 
 ## Enable API keys [apm-enable-api-key]

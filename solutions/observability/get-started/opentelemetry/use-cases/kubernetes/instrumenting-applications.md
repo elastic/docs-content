@@ -1,6 +1,6 @@
 ---
 navigation_title: Instrumenting Applications
-description: Guidance on instrumenting applications with Elastic OTel SDKs on Kubernetes using automatic or manual instrumentation.
+description: Guidance on instrumenting applications with EDOT SDKs on Kubernetes using automatic or manual instrumentation.
 applies_to:
   stack:
   serverless:
@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Instrument applications with Elastic OTel SDKs on Kubernetes [instrument-applications-with-edot-sdks-on-kubernetes]
+# Instrument applications with EDOT SDKs on Kubernetes [instrument-applications-with-edot-sdks-on-kubernetes]
 
 The [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md) cover multiple languages. Read on to learn how to instrument applications for APM in a Kubernetes environment for all supported languages.
 

@@ -15,7 +15,7 @@ products:
 
 # Quickstart for Kubernetes on Elastic Cloud Hosted
 
-Learn how to set up the {{agent}} and Elastic OTel SDKs in a Kubernetes environment with {{ech}} (ECH) to collect host metrics, logs and application traces.
+Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment with {{ech}} (ECH) to collect host metrics, logs and application traces.
 
 ## Guided setup
 
@@ -28,7 +28,7 @@ To use the OpenTelemetry Kube Stack Chart, you need Helm version 3.9+ up to and 
 
 ## Manual installation
 
-Follow these steps to deploy the {{agent}} and Elastic OTel SDKs in Kubernetes with ECH.
+Follow these steps to deploy the {{agent}} and EDOT SDKs in Kubernetes with ECH.
 
 :::::{stepper}
 
@@ -101,4 +101,4 @@ Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 
 ## Troubleshooting
 
-Having issues with {{edot}}? Refer to the [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the Elastic OTel SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.
+Having issues with {{edot}}? Refer to the [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.

@@ -20,7 +20,7 @@ Use this setup if you:
 * Already run an existing OpenTelemetry Collector and want to add Elastic as a backend without replacing your current setup
 * Need to send telemetry to multiple observability backends from a single Collector
 * Evaluate Elastic alongside another backend before committing to a full migration
-* Use a technology or language for which Elastic doesn't provide an Elastic OTel SDK
+* Use a technology or language for which Elastic doesn't provide an EDOT SDK
 
 ## Architecture
 
