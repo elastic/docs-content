@@ -121,53 +121,6 @@ Add a SAML realm to your [{{es}} configuration](/deploy-manage/stack-settings.md
 ```yaml
 xpack.security.authc.realms.saml.saml1:
   order: 2
-  idp.metadata.path: "https://idp.example.com/metadata"  # <1>
-  idp.entity_id: "https://idp.example.com/"              # <2>
-  sp.entity_id: "https://kibana.example.com"             # <3>
-  sp.acs: "https://kibana.example.com/api/security/saml/callback"  # <4>
-  sp.logout: "https://kibana.example.com/logout"         # <5>
-  attributes.principal: "urn:oid:0.9.2342.19200300.100.1.1"  # <6>
-  attributes.groups: "urn:oid:1.3.6.1.4.1.5923.1.5.1."      # <7>
-```
-
-1. URL or file path to the IdP's SAML metadata. A URL is recommended — {{es}} monitors it for changes and reloads automatically. If using a file path, it is resolved relative to the {{es}} config directory. For {{ech}} and {{ece}}, [upload the file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) first. For {{eck}}, install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md).
-2. The identifier (SAML EntityID) that your IdP uses. Must match the `entityID` attribute in the IdP metadata exactly. The comparison is case-sensitive.
-3. A unique identifier for this {{kib}} instance, expressed as a URI. Must match the entity ID you set in your IdP in [Step 1](#saml-configure-idp) exactly — the comparison is case-sensitive. We recommend using the {{kib}} base URL.
-4. The URL within {{kib}} that receives authentication responses from your IdP, using the HTTP-POST binding. Set this to `{kibana-url}/api/security/saml/callback`. This URL must be reachable from users' browsers — it does not need to be directly accessible by {{es}} or the IdP. If {{kib}} is behind a reverse proxy, use the public-facing URL.
-5. The URL where the IdP sends logout messages. Required for [SAML Single Logout](#saml-logout). If not configured, {{es}} refuses all `<LogoutRequest>` messages from the IdP.
-6. The SAML attribute that {{es}} uses as the username (`principal`). Replace with the URI your IdP uses — attribute URIs vary between providers. If your IdP uses `NameID`, use `nameid` here; if it issues transient NameIDs, use `nameid:persistent` instead to avoid users getting a new identity on every login. See [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
-7. The SAML attribute that maps to group memberships. Replace with the URI your IdP uses. Optional but recommended for role-based access control.
-
-:::{note}
-The `order` setting controls realm priority. Assign SSO realms (SAML, OpenID Connect) higher order values than password-based realms (native, LDAP). If you're using {{eck}}, set `order` to a value greater than the file realm (default `-100`) and native realm (default `-99`), which ECK relies on for its own operation.
-:::
-
-For the full list of available settings, refer to [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
-
-#### Map SAML attributes [saml-attributes-mapping]
-
-:::{warning}
-The attribute URIs in `attributes.principal` and `attributes.groups` must exactly match the identifiers your IdP sends in the SAML assertion — including case. A mismatch silently breaks authentication: the login may appear to succeed but the user's principal or group memberships will be missing or incorrect. Verify the exact URIs with your IdP administrator or by inspecting a captured SAML assertion.
-:::
-
-{{es}} does not require specific URIs. For options such as mapping from the SAML `NameID` or extracting part of an attribute value, refer to [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
-
-If your IdP requires signed requests or uses encrypted assertions, refer to [Signing and encryption](#saml-enc-sign).
-
-:::{note}
-SAML assertions have a short validity window. If the system clocks of {{es}} and your IdP differ by more than a few minutes, authentication will fail with a validation error. Ensure clocks are synchronized using NTP.
-:::
-::::
-
-% eedugon note: ALTERNATIVE VERSION of Step 2 for comparison — remove before merging
-
-::::{step} Create a SAML realm in {{es}} (alternative layout, work in progress)
-
-Add a SAML realm to your [{{es}} configuration](/deploy-manage/stack-settings.md). The realm ties together three pieces: your IdP's identity and metadata, the {{stack}}'s service provider endpoints, and the attribute mapping that tells {{es}} how to identify users from the IdP's assertions:
-
-```yaml
-xpack.security.authc.realms.saml.saml1:
-  order: 2
   idp.metadata.path: "https://idp.example.com/metadata"
   idp.entity_id: "https://idp.example.com/"
   sp.entity_id: "https://kibana.example.com"
@@ -213,13 +166,17 @@ The `order` setting controls realm priority. Assign SSO realms (SAML, OpenID Con
 
 For the full list of available settings, refer to [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
 
-#### Map SAML attributes
+#### Map SAML attributes [saml-attributes-mapping]
+
+When a user authenticates via SAML, the IdP sends an assertion containing *attributes* — pieces of information about the user such as their username, email address, or group memberships. The `attributes.*` settings tell {{es}} which SAML attribute URI to use for each {{es}} user property.
+
+`attributes.principal` is **required** — it determines the username {{es}} assigns to the authenticated user. `attributes.groups` is optional but recommended if you want to assign roles based on IdP group memberships.
 
 :::{warning}
-The attribute URIs in `attributes.principal` and `attributes.groups` must exactly match the identifiers your IdP sends in the SAML assertion — including case. A mismatch silently breaks authentication: the login may appear to succeed but the user's principal or group memberships will be missing or incorrect. Verify the exact URIs with your IdP administrator or by inspecting a captured SAML assertion.
+The attribute URIs must exactly match what your IdP sends in the assertion — including case. A mismatch silently breaks authentication: the login may appear to succeed but the user's principal or group memberships will be missing or incorrect. Verify the exact URIs with your IdP administrator or by inspecting a captured SAML assertion.
 :::
 
-{{es}} does not require specific URIs. For options such as mapping from the SAML `NameID` or extracting part of an attribute value, refer to [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
+For advanced use cases — mapping from the SAML `NameID`, extracting partial attribute values with regular expressions, or the full list of mappable user properties — refer to [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
 
 If your IdP requires signed requests or uses encrypted assertions, refer to [Signing and encryption](#saml-enc-sign).
 
