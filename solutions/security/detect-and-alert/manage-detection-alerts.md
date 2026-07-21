@@ -37,6 +37,7 @@ The Alerts page is your central hub for triaging and investigating detection ale
 | Add to case | Click the **More actions** icon {icon}`boxes_horizontal` > **Add to case** |
 | Investigate in Timeline | Click **Investigate in timeline** icon {icon}`timeline` |
 | Add exception | Click the **More actions** icon {icon}`boxes_horizontal` > **Add exception** |
+| Export alerts to CSV {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Click **Export to CSV** in the toolbar. Requires [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access). |
 
 
 ## Filter alerts [detection-view-and-filter-alerts]
@@ -120,11 +121,7 @@ Group alerts by up to three fields, such as rule name, host, user, source IP, or
 | Sort fields | Sort by one or more columns |
 | Fields | Add or remove fields (including [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md)) |
 | Full screen | Expand table to full screen |
-
-:::{image} /solutions/images/security-alert-table-toolbar-buttons.png
-:alt: Alerts table with toolbar buttons highlighted
-:screenshot:
-:::
+| Export to CSV {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Export filtered alerts and visible columns to a CSV file. Requires [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access). <br><br> Clicking the button starts a report generation job for the alerts and columns displayed in the table. A toast notification provides a link to the **Reporting** page, where you can download the CSV file. |
 
 ### View modes
 
