@@ -31,7 +31,7 @@ Note the following rules for search:
 * **Text**: Text searches (such as case titles and descriptions) are case-insensitive.
 * **Multi-word terms**: If a term contains spaces, wrap it in quotation marks so it's treated as a single term. For example, `"Needs review"`.
 * **Multiple criteria**: To search on more than one criterion at once, separate each term with a space.
-* **Syntax**: No special syntax is required for general keyword and text searches. To target a field library or custom field, use `label:value` syntax (described later).
+* **Syntax**: No special syntax is required for general keyword and text searches. {applies_to}`stack: ga 9.5+` To target a field library field, use `label:value` syntax (described later).
 
 ### Search alerts, comments, and observables [search-case-related-data]
 
@@ -39,15 +39,19 @@ Note the following rules for search:
 stack: ga 9.3+
 ```
 
-You can also search for alert and event IDs, observable values, case comments, and custom fields (text type only). For example, in {{elastic-sec}} you can search for a specific IP address that's been specified as an observable, a colleague's comment, or the ID of an alert that's attached to the case.
+You can also search for alert and event IDs, observable values, and case comments. For example, in {{elastic-sec}} you can search for a specific IP address that's been specified as an observable, a colleague's comment, or the ID of an alert that's attached to the case.
+
+* {applies_to}`stack: ga 9.3-9.4` You can also search custom fields (text type only).
+* {applies_to}`stack: ga 9.5+` For field library fields, see [Search template and field library values](#search-case-field-values).
 
 ### Search template and field library values [search-case-field-values]
 
 ```{applies_to}
 stack: ga 9.5+
+serverless: ga
 ```
 
-You can search by the values of [case template and field library](manage-case-templates.md) fields. Use each field's label rather than its internal name. Number, date, checkbox, and user-selection fields all support search, including numeric and date ranges.
+You can search by the values of [field library](create-case-field-library.md) fields (including values set by a [case template](manage-case-templates.md)). Use each field's **label** as it appears on the case, not its internal `name`. The `name` is what you use in YAML (for example, with `$ref`). Number, date, checkbox, and user-selection fields all support search, including numeric and date ranges.
 
 To target a specific field, use `label:value` syntax. The left side is the field's label as it appears on the case; the right side is the value to match. For example, the following finds cases where the field labeled `Team` is set to `A1`:
 

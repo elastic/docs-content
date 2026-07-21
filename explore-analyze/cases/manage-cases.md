@@ -33,6 +33,15 @@ To view a case, go to the **Cases** page and select its name. From the case deta
 
 To attach alerts, files, observables, or visualizations to a case, refer to [Attach objects to cases](attach-objects-to-cases.md).
 
+## Apply a template to a case [apply-case-template]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+You can apply a different [case template](manage-case-templates.md) to an existing case. Open the case, select **Apply template** from the case actions menu, then choose an enabled template. Applying a template updates the case's fields. It doesn't change the case's existing connector.
+
 ## Bulk-manage cases [bulk-manage-cases]
 
 From the **Cases** page, select one or more cases to perform bulk actions such as deleting cases or changing their status, severity, assignees, or tags.

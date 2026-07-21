@@ -1,5 +1,5 @@
 ---
-navigation_title: YAML template schema reference
+navigation_title: YAML schema reference
 applies_to:
   stack: ga 9.5
   serverless: ga
@@ -8,28 +8,29 @@ products:
   - id: security
   - id: observability
   - id: cloud-serverless
-description: "YAML definitions for case templates and field library entries support fields for identity, case defaults, field types, and validation and display rules. Reference tables list valid field values."
+type: reference
+description: Look up valid YAML keys, field types, and validation and display options for case templates and field library entries.
 ---
 
-# YAML schema reference for case templates [yaml-template-schema-reference]
+# YAML schema reference for case templates and the field library [yaml-template-schema-reference]
 
-This page lists valid fields for YAML template and field library definitions. For authoring guidance, refer to [Manage case templates](manage-case-templates.md).
+Use this page to look up valid keys and values when writing YAML for case templates and field library entries. For concepts and step-by-step instructions, refer to [Case templates](manage-case-templates.md), [Create fields in the case field library](create-case-field-library.md), and [Create case templates](create-case-templates.md).
 
 ## Template fields
 
-These fields go at the top level of a template's YAML definition.
+These fields go at the top level of a template's YAML definition and pre-fill matching fields on the case.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `name` | string | Any string | The template's name. Required. Max 100 characters. Also becomes the case's title when someone creates a case from the template. |
-| `description` | string | Any string | Optional description of the template. |
-| `tags` | array of strings | Array of strings | Optional tags for organizing and finding the template. |
+| `name` | string | Any string | Optional case title to pre-fill. |
+| `description` | string | Any string | Optional case description to pre-fill. |
+| `tags` | array of strings | Array of strings | Optional case tags to pre-fill. |
 | `severity` | string | `low`, `medium`, `high`, or `critical` | Optional case severity to pre-fill. |
 | `category` | string | Any string | Optional case category to pre-fill. |
-| `fields` | array | Array of field definitions or field references | Optional. The custom fields the template pre-fills. Field names must be unique within the template. See [Field definition keys](#case-templates-field-keys) and [Reference a field from the library](#case-templates-field-ref). |
+| `fields` | array | Array of field references, or inline field definitions | Optional. The custom fields the template pre-fills. Prefer `$ref` for reusable library fields. You can also define a field inline with the same keys as a library entry when it isn't shared. Field names must be unique within the template. See [Field definition keys](#case-templates-field-keys) and [Reference a field from the library](#case-templates-field-ref). |
 
 :::{note}
-A template's default connector and default case settings (**Sync alert status** and **Auto-extract observables**) aren't part of the YAML. You set them separately, in the template's **Settings** tab.
+The template's own name, description, and tags (used in the **Templates** list), plus its default connector and case settings (**Sync alerts** and **Extract observables**), aren't part of the YAML. You set them on the **Configuration** tab. **Extract observables** is available in {{elastic-sec}} only.
 :::
 
 ## Field definition keys [case-templates-field-keys]
@@ -106,7 +107,7 @@ A condition is either a single rule or a compound rule that combines several sin
 
 ## Reference a field from the library [case-templates-field-ref]
 
-Instead of redefining a field inline, a template can reference a reusable field from the library with `$ref` and the field's `name`. Global fields appear on every case automatically and don't need a `$ref`.
+Prefer referencing a reusable field from the library with `$ref` and the field's `name` (not its label). Global fields appear on every case automatically and don't need a `$ref`. For a how-to example, refer to [Add reusable fields from the library](create-case-templates.md#case-templates-field-ref).
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|

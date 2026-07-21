@@ -21,33 +21,23 @@ description: Create cases to track incidents, attach alerts and files, assign te
 
 To create a new case:
 
-1. Go to the **Cases** page, then select **Create case**.
+1. Find **Cases** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Create case**.
 
-   ::::{applies-switch}
 
-   :::{applies-item} stack: ga
-   To access the **Cases** page:
-   * **{{stack-manage-app}}**: Go to **{{stack-manage-app}}** > **Cases**.
-   * **{{elastic-sec}}**: Find **Cases** in the navigation menu or search for `Security/Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-   * **{{observability}}**: Find **Cases** in the navigation menu or search for `Observability/Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-   :::
+   Cases are scoped by solution. On {{stack}}, search for `Security/Cases` or `Observability/Cases`, or go to **{{stack-manage-app}}** > **Cases**. On {{serverless-short}}, search for `Cases` in {{elastic-sec}} or {{observability}}.
 
-   :::{applies-item} serverless: ga
-   To access the **Cases** page:
-   * **{{elastic-sec}}**: Find **Cases** in the navigation menu or search for `Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-   * **{{observability}}**: Find **Cases** in the navigation menu or search for `Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-   :::
-
-   ::::
-
-2. (Optional) Select a [template](manage-case-templates.md) to pre-fill field values.
+2. (Optional) Select a template to pre-fill field values. You can override any pre-filled value before saving the case.
+   * {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Templates and the [field library](create-case-field-library.md) are managed on the **Templates** page. Refer to [Case templates](manage-case-templates.md).
+   * {applies_to}`stack: ga 9.0-9.4` Templates are configured in [case settings](configure-case-settings.md#case-templates).
 
 3. Enter a name, severity, and description. If you do not assign your case a severity level, it will be assigned **Low** by default. The description supports [Markdown](https://www.markdownguide.org/cheat-sheet).
 
 4. (Optional) Add a category, [assignees](control-case-access.md), and tags.
 
-5. (Optional) Fill in any [custom fields](configure-case-settings.md#case-custom-fields) in the **Additional fields** section.
+5. (Optional) Fill in any additional fields on the form.
+   * {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` These come from the [field library](create-case-field-library.md).
+   * {applies_to}`stack: ga 9.0-9.4` These are [custom fields](configure-case-settings.md#case-custom-fields) configured in case settings.
 
 6. Configure sync and extraction options:
    * **Sync alert status** syncs alert statuses with the case status (on by default).

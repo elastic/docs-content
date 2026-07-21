@@ -115,7 +115,7 @@ serverless: ga
 
 :::{applies-item} stack: ga
 
-`All` for the **Cases** feature under the appropriate solution (**Management**, **Security**, or **{{observability}}**), with the **Manage templates** sub-feature privilege enabled.
+`All` for the **Cases** feature under the appropriate solution (**{{stack-manage-app}}**, **Security**, or **{{observability}}**), with the **Manage templates** sub-feature privilege enabled.
 
 :::
 
@@ -127,7 +127,7 @@ serverless: ga
 
 ::::
 
-This is required to create, edit, delete, import, and export [case templates and field library entries](manage-case-templates.md). Users without the **Manage templates** sub-feature privilege can still select and apply enabled templates when creating or updating a case.
+This is required to create, edit, delete, import, and export [case templates](create-case-templates.md) and [field library entries](create-case-field-library.md). Users without the **Manage templates** sub-feature privilege can still select and apply enabled templates when creating or updating a case.
 
 ## Give access to add alerts to cases [give-alerts-access] 
 

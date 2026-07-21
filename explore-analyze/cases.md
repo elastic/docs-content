@@ -25,7 +25,7 @@ You can create cases in {{elastic-sec}}, {{observability}}, or {{stack-manage-ap
 
 ## Get started [cases-get-started]
 
-Start by [creating your first case](cases/create-cases.md), then [configure case settings](cases/configure-case-settings.md) to add external connectors, custom fields, and templates. Once you have cases, you can [attach alerts, files, and visualizations](cases/attach-objects-to-cases.md) to document your investigation, [manage case details](cases/manage-cases.md), and [share cases](cases/search-share-cases.md) with external systems. 
+Start by [creating your first case](cases/create-cases.md), then [configure case settings](cases/configure-case-settings.md) to standardize how cases are created. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` On {{stack}} 9.5 and later, and in {{serverless-short}}, also set up [case templates](cases/manage-case-templates.md) and the field library. Once you have cases, you can [attach alerts, files, and visualizations](cases/attach-objects-to-cases.md) to document your investigation, [manage case details](cases/manage-cases.md), and [share cases](cases/search-share-cases.md) with external systems.
 
 :::{note}
 If you're using {{elastic-sec}}, explore [Security case features](/solutions/security/investigate/security-cases.md) for additional capabilities like adding events and Timelines to cases.
