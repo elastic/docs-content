@@ -62,11 +62,11 @@ Setting up SAML requires coordination with your Identity Provider (IdP). You'll 
 
 The {{stack}} supports the SAML 2.0 Web Browser SSO and Single Logout profiles, and can integrate with any IdP that supports at least the Web Browser SSO profile. It has been tested with [Microsoft Active Directory Federation Services (ADFS)](https://www.elastic.co/blog/how-to-configure-elasticsearch-saml-authentication-with-adfs), [Microsoft Entra ID](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-entra.md), and [Okta](https://www.elastic.co/blog/how-to-set-up-okta-saml-login-kibana-elastic-cloud).
 
-To configure {{es}}, you will need a standard XML-formatted SAML *metadata* document from your IdP, which defines its capabilities and features. You should be able to download or generate it from your IdP's administration interface.
+To configure {{es}}, you will need a standard XML-formatted SAML *metadata* document from your IdP, which defines its capabilities and features. You should be able to download or generate it from your IdP's administration interface. You can pass it to {{es}} as a URL (preferred, so {{es}} reloads it automatically when it changes) or as a local file. For more information, refer to [Create a SAML realm in {{es}}](#saml-create-realm).
 
-Most IdPs will provide an appropriate metadata file with all the features that the {{stack}} requires. The minimum requirements that the {{stack}} has for the IdP's metadata are:
+Most IdPs will provide an appropriate metadata file with all the features that the {{stack}} requires. Verify that your IdP's metadata includes the following:
 
-* An `<EntityDescriptor>` with an `entityID` that you will configure as `idp.entity_id` in {{es}}
+* An `<EntityDescriptor>` with an `entityID` that you will configure as `idp.entity_id` in the {{es}} realm
 * An `<IDPSSODescriptor>` that supports the SAML 2.0 protocol (`urn:oasis:names:tc:SAML:2.0:protocol`)
 * At least one `<KeyDescriptor>` configured for signing (with `use="signing"`, or `use` left unspecified)
 * A `<SingleSignOnService>` with binding of HTTP-Redirect (`urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect`)
@@ -74,26 +74,19 @@ Most IdPs will provide an appropriate metadata file with all the features that t
 
 All messages from the IdP must be signed. For `<Response>` messages, the signature can be on the response itself or on individual assertions. For `<LogoutRequest>` messages, the signature must be provided as a URL parameter, as required by the `HTTP-Redirect` binding.
 
-### Information to gather [saml-info-collect]
-
-Collect the following from your IdP before you begin:
-
-| What you need | Where to find it |
-|---|---|
-| **IdP metadata URL or file** | Your IdP's admin interface. A URL is preferred so {{es}} can reload it automatically when it changes. |
-| **IdP entity ID** | An identifier assigned to your IdP, most commonly expressed as a URI. Your admin interface might display it directly, or you can find it in the metadata XML as the `entityID` attribute on the `EntityDescriptor` element. |
-
 ### Prerequisites for self-managed clusters
 
 If you're using a self-managed cluster:
 
-* Enable TLS for the {{es}} HTTP interface. SAML requires HTTPS. For more information, see [Encrypt HTTP client communications for {{es}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-http-communication). If you started {{es}} [with security enabled](/deploy-manage/deploy/self-managed/installing-elasticsearch.md), TLS is already enabled.
+* Enable TLS for the {{es}} HTTP interface. SAML requires HTTPS. For more information, see [Encrypt HTTP client communications for {{es}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-http-communication). If you started {{es}} [with security enabled](/deploy-manage/security/self-setup.md), TLS is already enabled.
 * The {{es}} token service must be enabled. It is automatically enabled when TLS is configured on the HTTP interface. You can also enable it explicitly in [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
   ```yaml
   xpack.security.authc.token.enabled: true
   ```
 
-{{ech}}, {{ece}}, and {{eck}} have TLS and the token service enabled by default.
+:::{note}
+{{ech}}, {{ece}}, and {{eck}} enable HTTPS and the token service by default.
+:::
 
 ## Configuration steps
 
@@ -123,16 +116,7 @@ If your IdP requires signed outgoing SAML messages (authentication requests or l
 ::::{step} Create a SAML realm in {{es}}
 :anchor: saml-create-realm
 
-% eedugon note: compare a bit more with original, links to bundles, check common-settings dropdown and do final refinement and decision
-
-Add a SAML realm to your [{{es}} configuration](/deploy-manage/stack-settings.md).
-
-This realm has a few mandatory settings and a number of optional settings. The available settings are described in detail in [Security settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md):
-
-* [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings)
-* [SAML realm signing settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-signing-settings)
-* [SAML realm encryption settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-encryption-settings)
-* [SAML realm SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-ssl-settings)
+Add a SAML realm to your [{{es}} configuration](/deploy-manage/stack-settings.md). The realm ties together three pieces: your IdP's identity and metadata, the {{stack}}'s service provider endpoints, and the attribute mapping that tells {{es}} how to identify users from the IdP's assertions:
 
 ```yaml
 xpack.security.authc.realms.saml.saml1:
@@ -161,6 +145,75 @@ The `order` setting controls realm priority. Assign SSO realms (SAML, OpenID Con
 For the full list of available settings, refer to [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
 
 #### Map SAML attributes [saml-attributes-mapping]
+
+:::{warning}
+The attribute URIs in `attributes.principal` and `attributes.groups` must exactly match the identifiers your IdP sends in the SAML assertion — including case. A mismatch silently breaks authentication: the login may appear to succeed but the user's principal or group memberships will be missing or incorrect. Verify the exact URIs with your IdP administrator or by inspecting a captured SAML assertion.
+:::
+
+{{es}} does not require specific URIs. For options such as mapping from the SAML `NameID` or extracting part of an attribute value, refer to [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
+
+If your IdP requires signed requests or uses encrypted assertions, refer to [Signing and encryption](#saml-enc-sign).
+
+:::{note}
+SAML assertions have a short validity window. If the system clocks of {{es}} and your IdP differ by more than a few minutes, authentication will fail with a validation error. Ensure clocks are synchronized using NTP.
+:::
+::::
+
+% eedugon note: ALTERNATIVE VERSION of Step 2 for comparison — remove before merging
+
+::::{step} Create a SAML realm in {{es}} (alternative layout, work in progress)
+
+Add a SAML realm to your [{{es}} configuration](/deploy-manage/stack-settings.md). The realm ties together three pieces: your IdP's identity and metadata, the {{stack}}'s service provider endpoints, and the attribute mapping that tells {{es}} how to identify users from the IdP's assertions:
+
+```yaml
+xpack.security.authc.realms.saml.saml1:
+  order: 2
+  idp.metadata.path: "https://idp.example.com/metadata"
+  idp.entity_id: "https://idp.example.com/"
+  sp.entity_id: "https://kibana.example.com"
+  sp.acs: "https://kibana.example.com/api/security/saml/callback"
+  sp.logout: "https://kibana.example.com/logout"
+  attributes.principal: "urn:oid:0.9.2342.19200300.100.1.1"
+  attributes.groups: "urn:oid:1.3.6.1.4.1.5923.1.5.1."
+```
+
+Replace the example values with your own. Each setting is described below:
+
+`idp.metadata.path`
+:   The path or URL to the SAML metadata file for your Identity Provider. A URL is recommended so {{es}} reloads it automatically when it changes.
+
+    :::{tip}
+    If you want to pass a file path, then review the following:
+    * File path settings are resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.
+    * If you're using {{ech}} or {{ece}}, then you must upload the file before it can be referenced. For {{ech}}, upload the file [as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). For {{ece}}, follow the equivalent [ECE procedure](/deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md).
+    * If you're using {{eck}}, then install the file as [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+    :::
+
+`idp.entity_id`
+:   The identifier (SAML EntityID) that your IdP uses. Must match the `entityID` attribute in the IdP metadata exactly. The comparison is case-sensitive.
+
+`sp.entity_id`
+:   A unique identifier for your {{kib}} instance, expressed as a URI. Must match exactly the entity ID you [configure in your IdP](#saml-configure-idp). The comparison is case-sensitive. We recommend using the {{kib}} base URL.
+
+`sp.acs`
+:   The *Assertion Consumer Service* (ACS) endpoint is the URL within {{kib}} that accepts authentication messages from the IdP. Must be reachable from users' browsers, and it does not need to be directly accessible by {{es}} or the IdP. Refer to [`sp.acs`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings) for more details.
+
+`sp.logout`
+:   The URL where the IdP sends logout messages. Required for [SAML Single Logout](#saml-logout). If not configured, {{es}} refuses all `<LogoutRequest>` messages from the IdP.
+
+`attributes.principal`
+:   The SAML attribute that {{es}} uses as the username (`principal`). Replace with the URI your IdP uses — attribute URIs vary between providers. If your IdP uses `NameID`, use `nameid` here; if it issues transient NameIDs, use `nameid:persistent` instead to avoid users getting a new identity on every login. See [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
+
+`attributes.groups`
+:   The SAML attribute that maps to group memberships. Replace with the URI your IdP uses. Optional but recommended for role-based access control.
+
+:::{note}
+The `order` setting controls realm priority. Assign SSO realms (SAML, OpenID Connect) higher order values than password-based realms (native, LDAP). If you're using {{eck}}, set `order` to a value greater than the file realm (default `-100`) and native realm (default `-99`), which ECK relies on for its own operation.
+:::
+
+For the full list of available settings, refer to [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
+
+#### Map SAML attributes
 
 :::{warning}
 The attribute URIs in `attributes.principal` and `attributes.groups` must exactly match the identifiers your IdP sends in the SAML assertion — including case. A mismatch silently breaks authentication: the login may appear to succeed but the user's principal or group memberships will be missing or incorrect. Verify the exact URIs with your IdP administrator or by inspecting a captured SAML assertion.
