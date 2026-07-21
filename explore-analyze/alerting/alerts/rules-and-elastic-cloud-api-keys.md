@@ -12,7 +12,7 @@ description: Understand how Elastic Cloud API keys affect rule behavior, ownersh
 
 In {{serverless-full}} projects, rules authenticate using [{{ecloud}} API keys](../../../deploy-manage/api-keys/elastic-cloud-api-keys.md) rather than [{{es}} API keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md), which are used in Stack deployments and as a fallback in Serverless when an {{ecloud}} API key isn't available.
 
-{{kib}} creates an API key when a rule is created or edited, then uses it to authorize execution on every run. {{es}} API keys are scoped to a user's **privileges**, whereas {{ecloud}} API keys are scoped to snapshot of a user's current **roles**.
+{{kib}} creates an API key when a rule is created or edited, then uses it to authorize execution on every run. {{es}} API keys are scoped to a user's **privileges**, whereas {{ecloud}} API keys are scoped to a snapshot of a user's current **roles**.
 
 Use this page to understand how {{ecloud}} API keys work for Serverless alerting rules and how role changes affect rule access. If your organization was part of Elastic's migration from {{es}} to {{ecloud}} API keys, it also includes a checklist to verify your rules are still running correctly.
 
