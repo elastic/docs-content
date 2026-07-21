@@ -113,7 +113,7 @@ The data visible in a dashboard highly depends on the time range that is applied
 Use the global time filter next to the query bar in the dashboard header to select a time range and set how often the dashboard data refreshes. Refer to [Set the time range](../query-filter/filtering.md) for details.
 
 :::{image} /explore-analyze/images/kibana-date-range-picker.png
-:alt: Date range picker showing presets and controls for custom ranges, settings, and saving presets
+:alt: Time filter showing presets and controls for custom ranges, settings, and saving presets
 :screenshot:
 :width: 250px
 :::

@@ -33,7 +33,7 @@ Display data within a specified time range when your index contains time-based e
     * To configure the start and end separately, select **Custom range**, set each one as **Relative**, **Absolute**, or **Now**, then select **Apply**.
 
 :::{image} /explore-analyze/images/kibana-date-range-picker.png
-:alt: Date range picker showing presets and controls for custom ranges, settings, and saving presets
+:alt: Time filter showing presets and controls for custom ranges, settings, and saving presets
 :screenshot:
 :width: 250px
 :::
@@ -48,7 +48,7 @@ When you enter the time range as text, the time filter interprets a single value
 | Date math | `now-15m`, `now/w`, and other [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math) expressions. |
 | Preset labels | `Last 24 hours` or any other range listed under **Presets**. |
 
-The picker can also give you the text for a range:
+The time filter can also give you the text for a range:
 
 - To open the syntax reference, select **Discover allowed formats and shorthands**.
 - To get the text equivalent of a range without typing it, select **Custom range** and configure the range. The **Shorthand** field shows the corresponding text, which you can copy and paste into the time filter whenever you need the same range again.
