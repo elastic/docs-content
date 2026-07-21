@@ -125,6 +125,8 @@ Agents create [{{esql}}](/explore-analyze/visualize/esorql.md)-powered visualiza
 
 Agents can also create markdown panels and collapsible sections.
 
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` Agents can add and remove interactive [filter controls](/explore-analyze/dashboards/add-controls.md), which appear above the dashboard and let users filter the data without editing queries. The supported control types are **Options list**, **Range slider**, and **Time slider**. When building a dashboard, the agent can proactively add **Options list** controls for useful categorical fields, such as service or host names. A dashboard can contain only one **Time slider** control.
+
 ## Related pages
 
 - [Dashboards](/explore-analyze/dashboards.md)
