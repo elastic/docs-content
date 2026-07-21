@@ -69,7 +69,7 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
 
 #### Create the visualization [_vega_esql_tutorial_create_the_visualization]
 
-1. Select **Add** in the toolbar.
+1. Select **Add** in the application menu.
 2. Select **Vega**.
 
     A pre-populated line chart displays the total number of documents.
@@ -123,7 +123,7 @@ Learn how to query {{es}} with Query DSL from **Vega-Lite**, displaying the resu
 1. [Install the eCommerce sample data set](../index.md#gs-get-data-into-kibana).
 2. Go to **Dashboards**.
 3. On the **Dashboards** page, select **Create dashboard**.
-4. Select **Add** in the toolbar, then select **Vega**.
+4. Select **Add** in the application menu, then select **Vega**.
 
     A pre-populated line chart displays the total number of documents.
 
