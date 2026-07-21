@@ -49,6 +49,7 @@ The **GenAI Settings** page has the following settings:
 
 - **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features.
 - **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+- **Token usage tracking**: {applies_to}`stack: ga 9.5` Turn on tracking of token usage by AI features.
 - **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses.
 ::::
 ::::{applies-item} stack: ga 9.2-9.3
@@ -73,6 +74,24 @@ The **GenAI Settings** page has the following settings:
 
 ::::
 :::::
+
+### Track token usage across AI features
+```{applies_to}
+stack: ga 9.5
+serverless: ga
+```
+
+**Token usage tracking** is turned off by default. When you turn it on, Elastic records the token counts for each completed request that AI features send to an LLM, and makes a managed dashboard available to monitor them. To change this setting, you need the `Advanced Settings: all` {{kib}} privilege.
+
+For each request, Elastic records the number of prompt, completion, and total tokens, along with the model, connector, and the feature that made the request.
+
+To review usage, open the **[Elastic] Inference Token Usage** dashboard from the [Dashboards](/explore-analyze/dashboards.md) page. It summarizes:
+
+- Total, prompt, and completion tokens, and the total number of requests.
+- Token usage over time, broken down by feature.
+- Token usage by feature and by model.
+
+These counts cover the AI features that use the {{kib}} inference service. For per-response token counts and billing details specific to {{agent-builder}}, refer to [Monitor usage and costs for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/monitor-usage.md).
 
 ## Feature settings
 ```{applies_to}

@@ -63,6 +63,8 @@ To view the raw JSON response which includes detailed token information, click t
 :alt: Screenshot of the JSON raw response modal
 :::
 
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` These counts are specific to each {{agent-builder}} response. To monitor aggregate token usage across all AI features in {{kib}}, turn on token usage tracking and use the managed dashboard. Refer to [Track token usage across AI features](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#track-token-usage-across-ai-features).
+
 ## Execution-based billing
 
 How {{agent-builder}} usage is billed depends on your deployment type.
