@@ -48,6 +48,8 @@ Choose **Vega** when you need full control of the specification, for example:
 
 ## Tutorials [_tutorials_create_custom_panels]
 
+These tutorials walk you through building **Vega** and **Vega-Lite** panels on a dashboard: define a data source, shape the chart, and optionally update {{kib}} filters from the visualization.
+
 As you edit the specs, work in small steps and save often. Small changes can cause unexpected results. Specs can use [HJSON](https://hjson.github.io/), which allows optional quotes and commas, comments, and multiline strings.
 
 
