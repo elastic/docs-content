@@ -10,7 +10,7 @@
 /cloud-account/                             @elastic/admin-docs
 /deploy-manage/                             @elastic/admin-docs
 
-/explore-analyze/                           @elastic/ski-docs @elastic/developer-docs
+/explore-analyze/                           @elastic/ski-docs
 /explore-analyze/ai-features/agent-builder/ @elastic/developer-docs
 /explore-analyze/elastic-inference/         @elastic/developer-docs @elastic/ski-docs
 /explore-analyze/machine-learning/          @elastic/developer-docs @elastic/ski-docs
