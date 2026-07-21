@@ -109,7 +109,7 @@ This topic describes troubleshooting SAML SSO at the deployment or cluster level
     ```
     This configuration means that {{es}} expects to find a SAML Attribute with the name `AttributeName0` or a `NameID` with the appropriate format in the SAML response so that [it can map it](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-attributes-mapping) to the `principal` user property. The `principal` user property is a mandatory one, so if this mapping can’t happen, the authentication fails.
 
-    If you are attempting to map a `NameID`, make sure that the expected `NameID` format matches the one that is sent. See [Special attribute names](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-attribute-mapping-nameid) for more details.
+    If you are attempting to map a `NameID`, make sure that the expected `NameID` format matches the one that is sent. See [Special attribute names](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md#saml-attribute-mapping-nameid) for more details.
 
     If you are attempting to map a SAML attribute and it is not part of the list in the error message, it might mean that you have misspelled the attribute name, or that the IdP is not sending this particular attribute. You might be able to use another attribute from the list to map to `principal` or consult with your IdP administrator to determine if the required attribute can be sent.
 

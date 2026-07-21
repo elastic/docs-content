@@ -241,7 +241,7 @@ xpack.security.authc.providers:
 
 With this configuration, {{kib}} redirects all unauthenticated users to your IdP for login.
 
-**Allow both SAML and username/password login**
+#### Allow both SAML and username/password login [saml-kibana-basic]
 
 To let some users (for example, local administrators) log in with a username and password, enable a basic provider alongside SAML:
 
