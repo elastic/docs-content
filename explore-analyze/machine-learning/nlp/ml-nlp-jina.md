@@ -814,9 +814,9 @@ With [Jina on-prem](https://github.com/jina-ai/jina-on-prem), you run Jina model
 
 To pull, transfer, and run a prebuilt Docker image, refer to the [Jina on-prem Quick Start](https://github.com/jina-ai/jina-on-prem/wiki/Quick-Start).
 
-For supported embedding and rerank models, you can connect {{es}} to the local server through {{infer}} endpoints that call the APIs exposed by the container. For the models that support this {{es}} integration today, refer to the [model overview](#jina-model-overview) tables.
+For supported text embedding models, you can connect {{es}} to the local server through {{infer}} endpoints that call the APIs exposed by the container. For the models that support this {{es}} integration today, refer to the [model overview](#jina-model-overview) tables.
 
-For an embedding model, create a `text_embedding` endpoint:
+Create a `text_embedding` endpoint:
 
 ```console
 PUT _inference/text_embedding/jina-embed
@@ -835,31 +835,12 @@ PUT _inference/text_embedding/jina-embed
 3. Set `model_id` to the embedding model running in the container.
 4. This field is required by the {{es}} {{infer}} API but is not used by Jina on-prem. Specify any placeholder string, such as not-needed.
 
-For a reranker model, create a `rerank` endpoint:
-
-```console
-PUT _inference/rerank/jina-rerank
-{
-  "service": "cohere", <1>
-  "service_settings": {
-    "url": "http://rerank-host:8081/v1/rerank", <2>
-    "model_id": "jina-reranker-v3", <3>
-    "api_key": "not-needed" <4>
-  }
-}
-```
-
-1. Use the `cohere` service type so {{es}} sends Cohere-compatible rerank requests. Jina on-prem exposes this schema locally. Requests do not go to Cohere.
-2. Point `url` to the `/v1/rerank` endpoint on your Jina on-prem host.
-3. Set `model_id` to the reranker model running in the container.
-4. This field is required by the {{es}} {{infer}} API but is not used by Jina on-prem. Specify any placeholder string, such as not-needed.
-
-You can reference the `inference_id` of these endpoints in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, {{infer}} processors, or search queries.
+You can reference the `inference_id` of this endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, {{infer}} processors, or search queries.
 
 You can also call any model running in a Jina on-prem container directly from your application or preprocessing pipeline through the Jina API, without creating an {{es}} {{infer}} endpoint. For request formats and supported API schemas, refer to the [Jina on-prem API reference](https://github.com/jina-ai/jina-on-prem/wiki/API-Reference).
 
 ::::{note}
-Some models, like [`ReaderLM-v2`](https://jina.ai/models/ReaderLM-v2/) and [`jina-vlm`](https://jina.ai/models/jina-vlm/), do not yet have a native {{es}} {{infer}} integration. For those models, call the Jina API exposed by the on-prem container, then send the results to {{es}} for indexing or search.
+Currently, only text embedding models have a native {{es}} {{infer}} integration on-prem. For other models, call the Jina API exposed by the on-prem container, then send the results to {{es}} for indexing or search.
 ::::
 
 ### Cloud marketplace endpoints [jina-cloud-marketplaces-access]
