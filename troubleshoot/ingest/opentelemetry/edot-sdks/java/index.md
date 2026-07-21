@@ -40,31 +40,31 @@ The Collector should produce output similar to the following:
 
 ## Agent troubleshooting
 
-Determine if the issue is related to the Elastic OTel agent, other agents, extensions, or connectivity issues by following these steps:
+Determine if the issue is related to the EDOT agent, other agents, extensions, or connectivity issues by following these steps:
 
 :::::{stepper}
 
-::::{step} Run the application without the Elastic OTel agent
+::::{step} Run the application without the EDOT agent
 Start the application with no agent (remove `-javaagent:` argument) and restart the application.
-- If the issue is still present without the Elastic OTel agent, then the problem is likely related to the application or its environment.
-- If the issue is resolved, then re-adding the Elastic OTel agent should let you confirm that the issue is related to the agent.
+- If the issue is still present without the EDOT agent, then the problem is likely related to the application or its environment.
+- If the issue is resolved, then re-adding the EDOT agent should let you confirm that the issue is related to the agent.
 ::::
 
 ::::{step} Remove other agents
 If more than one instrumentation agent is being used on the application (multiple `-javaagent:` JVM arguments), remove other agents and restart the application. Multiple instrumentation agents can conflict with each other and are a known cause of unpredictable behavior.
 
-- If the issue is still present with only the Elastic OTel agent, then it indicates the problem is likely related to the Elastic OTel agent.
+- If the issue is still present with only the EDOT agent, then it indicates the problem is likely related to the EDOT agent.
 - If the issue is resolved, then it indicates the problem might be related to interactions between instrumentation agents.
 ::::
 
 ::::{step} Remove instrumentation extensions
 If [instrumentation extensions](https://opentelemetry.io/docs/zero-code/java/agent/extensions/) are being used with the `otel.javaagent.extensions` JVM system property or the `OTEL_JAVAAGENT_EXTENSIONS` environment variable, remove them and restart the application.
-- If the issue is still present without the extensions, then the problem is likely related to the Elastic OTel agent.
+- If the issue is still present without the extensions, then the problem is likely related to the EDOT agent.
 - If the issue is resolved, then it indicates the problem might be related to the extensions.
 ::::
 
 ::::{step} Check end-to-end connectivity
-Check end-to-end connectivity without the Elastic OTel agent by running one or more of the example apps in [elastic-otel-java](https://github.com/elastic/elastic-otel-java/blob/main/examples/troubleshooting/README.md). These use the OpenTelemetry SDK rather than the auto-instrumentation. They can help confirm whether the issue is specific to the Elastic OTel agent or caused by something else.
+Check end-to-end connectivity without the EDOT agent by running one or more of the example apps in [elastic-otel-java](https://github.com/elastic/elastic-otel-java/blob/main/examples/troubleshooting/README.md). These use the OpenTelemetry SDK rather than the auto-instrumentation. They can help confirm whether the issue is specific to the EDOT agent or caused by something else.
 ::::
 
 :::::
@@ -133,7 +133,7 @@ There are a few ways you can detect if the agent has been attached to a JVM:
 - In JVM arguments, Run `ps -ef|grep javaagent`.
 - In environment variables, for example `JAVA_TOOL_OPTIONS`. Check by inspecting the output of `export|grep javaagent`.
 
-## Identify the version of Elastic OTel agent [identify-the-version-of-edot-agent]
+## Identify the version of EDOT agent [identify-the-version-of-edot-agent]
 
 When the agent starts, a log message in the standard error provides the agent version: 
 
@@ -161,7 +161,7 @@ The versions of those included in {{edot}} are usually aligned with the OpenTele
 
 ## When and how to update {{edot}} [when-and-how-to-update-edot]
 
-The general recommendation is to update the Elastic OTel agent to the latest version when possible to benefit from:
+The general recommendation is to update the EDOT agent to the latest version when possible to benefit from:
 
 - Bug fixes and technical improvements.
 - Support of new features and instrumentation.
