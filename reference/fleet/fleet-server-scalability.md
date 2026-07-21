@@ -79,7 +79,7 @@ You can't configure agent offline detection through these settings. An agent is 
 
 `server.timeouts`
 :   `checkin_timestamp`
-:   How often {{fleet-server}} updates the **Last activity** field for each agent. Defaults to `30s`. In a large-scale deployment, increasing this setting might improve performance. It only controls how frequently the field is written and doesn't determine when an agent is marked offline in {{fleet}}.
+:   How often {{fleet-server}} updates the **Last activity** field for each agent. Defaults to `30s`. In a large-scale deployment, increasing this setting might improve performance. To avoid agents appearing offline in {{fleet}}, keep this value well below 5 minutes.
 
 `checkin_long_poll`
 :   How long {{fleet-server}} allows a long poll request from an agent before timing out. Defaults to `5m`. In a large-scale deployment, increasing this setting might improve performance. This setting controls the connection lifecycle between {{fleet-server}} and agents. It doesn't affect how quickly an agent is marked offline in {{fleet}}.
