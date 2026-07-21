@@ -131,9 +131,9 @@ xpack.security.authc.realms.saml.saml1:
 ```
 
 1. URL or file path to the IdP's SAML metadata. A URL is recommended — {{es}} monitors it for changes and reloads automatically. If using a file path, it is resolved relative to the {{es}} config directory. For {{ech}} and {{ece}}, [upload the file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) first. For {{eck}}, install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md).
-2. The entity ID your IdP uses. Must match the `entityID` attribute in the IdP metadata exactly — the comparison is case-sensitive.
+2. The identifier (SAML EntityID) that your IdP uses. Must match the `entityID` attribute in the IdP metadata exactly. The comparison is case-sensitive.
 3. A unique identifier for this {{kib}} instance, expressed as a URI. Must match the entity ID you set in your IdP in [Step 1](#saml-configure-idp) exactly — the comparison is case-sensitive. We recommend using the {{kib}} base URL.
-4. The ACS URL where the IdP sends authentication responses. Must be reachable from users' browsers.
+4. The URL within {{kib}} that receives authentication responses from your IdP, using the HTTP-POST binding. Set this to `{kibana-url}/api/security/saml/callback`. This URL must be reachable from users' browsers — it does not need to be directly accessible by {{es}} or the IdP. If {{kib}} is behind a reverse proxy, use the public-facing URL.
 5. The URL where the IdP sends logout messages. Required for [SAML Single Logout](#saml-logout). If not configured, {{es}} refuses all `<LogoutRequest>` messages from the IdP.
 6. The SAML attribute that {{es}} uses as the username (`principal`). Replace with the URI your IdP uses — attribute URIs vary between providers. If your IdP uses `NameID`, use `nameid` here; if it issues transient NameIDs, use `nameid:persistent` instead to avoid users getting a new identity on every login. See [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
 7. The SAML attribute that maps to group memberships. Replace with the URI your IdP uses. Optional but recommended for role-based access control.
