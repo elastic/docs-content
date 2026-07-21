@@ -62,19 +62,19 @@ Cross-schema setups show as **N/A**:
 To see infrastructure metrics, make sure the service instrumentation and the infrastructure collector use the same schema.
 ::::
 
-## Analyze metric trends [observability-apm-infrastructure-analyze-metric-trends]
+## Compare metrics in Discover [observability-apm-infrastructure-compare-metrics]
 
 ```{applies_to}
 stack: ga 9.5+
 serverless: ga
 ```
 
-To compare infrastructure metric trends across all entities a service depends on, click **Analyze metric trends** next to a resource type (hosts, pods, or containers). This opens the data in Discover, broken down by entity so you can compare trends side by side.
+To compare infrastructure metric trends across all entities a service depends on, click **Compare metrics in Discover** next to a resource type (hosts, pods, or containers). This opens the data in Discover, broken down by entity so you can compare trends side by side.
 
-The breakdown field used depends on the instrumentation schema:
+The breakdown field for each resource type:
 
-| Resource | Elastic {{product.apm}} / ECS | OTel |
-| --- | --- | --- |
-| Hosts | `host.name` | `host.name` |
-| Pods | `kubernetes.pod.name` | `k8s.pod.name` |
-| Containers | `container.id` | `container.id` |
+| Resource | Breakdown field |
+| --- | --- |
+| Hosts | `host.name` |
+| Pods | `k8s.pod.name` |
+| Containers | `container.id` |
