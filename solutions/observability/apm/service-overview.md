@@ -26,6 +26,15 @@ Selecting a non-mobile [**service**](/solutions/observability/apm/services.md) b
 * Latency, throughput, and errors over time
 * Service dependencies
 
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Active alerts and SLOs for the service are shown at the top of the page so you can assess health at a glance without scrolling to the metadata section.
+
+Use the **Actions** menu at the top of the page to act on the service directly — for example, to create an alert rule or SLO.
+
 ## Time series and expected bounds comparison [service-time-comparison]
 
 For insight into the health of your services, you can compare how a service performs relative to a previous time frame or to the expected bounds from the corresponding {{anomaly-job}}. For example, has latency been slowly increasing over time, did the service experience a sudden spike, is the throughput similar to what the {{ml}} job expects — enabling a comparison can provide the answer.
@@ -49,6 +58,13 @@ The expected bounds comparison is powered by [machine learning](/solutions/obser
 
 Response times for the service. You can filter the **Latency** chart to display the average, 95th, or 99th percentile latency times for the service.
 
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Click **Open in Discover** on the **Latency** chart to explore the underlying trace data for the displayed time range directly in Discover.
+
 :::{image} /solutions/images/observability-latency.png
 :alt: Service latency
 :screenshot:
@@ -58,6 +74,13 @@ Response times for the service. You can filter the **Latency** chart to display 
 
 The **Throughput** chart visualizes the average number of transactions per minute for the selected service.
 
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Click **Open in Discover** on the **Throughput** chart to explore the underlying trace data directly in Discover.
+
 The **Transactions** table displays a list of *transaction groups* for the selected service and includes the latency, traffic, error rate, and the impact for each transaction. Transactions that share the same name are grouped, and only one entry is displayed for each group.
 
 By default, transaction groups are sorted by *Impact* to show the most used and slowest endpoints in your service. If there is a particular endpoint you are interested in, click **View transactions** to view a list of similar transactions on the [transactions overview](/solutions/observability/apm/transactions-ui.md) page.
@@ -65,6 +88,13 @@ By default, transaction groups are sorted by *Impact* to show the most used and 
 ## Failed transaction rate and errors [service-error-rates]
 
 The failed transaction rate represents the percentage of failed transactions from the perspective of the selected service. It’s useful for visualizing unexpected increases, decreases, or irregular patterns in a service’s transactions.
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Click **Open in Discover** on the **Failed transaction rate** chart to explore the underlying failed transaction data directly in Discover.
 
 ::::{tip}
 HTTP **transactions** from the HTTP server perspective do not consider a `4xx` status code (client error) as a failure because the failure was caused by the caller, not the HTTP server. Thus, `event.outcome=success` and there will be no increase in failed transaction rate.
@@ -146,6 +176,7 @@ To view metadata relating to the service agent, and if relevant, the container a
 * Function name(s)
 * Event trigger type
 
-**Alerts**
+**Alerts and SLOs**
 
 * Recently fired alerts
+* Active SLOs associated with the service
