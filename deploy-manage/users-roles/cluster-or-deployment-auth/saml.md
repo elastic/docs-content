@@ -23,8 +23,6 @@ products:
 
 # SAML authentication [saml-realm]
 
-% eedugon note: compare with original, add extra links if needed (advanced, etc.. perhaps)
-
 The {{stack}} supports SAML single sign-on (SSO) into {{kib}}, using {{es}} as a backend service. This guide helps you configure SAML SSO so that users can log in to {{kib}} using your organization's identity provider (IdP).
 
 For a detailed walk-through of how to implement SAML authentication for {{kib}} with Microsoft Entra ID as an identity provider, refer to [Set up SAML with Microsoft Entra ID](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-entra.md).
@@ -101,8 +99,8 @@ Register the {{stack}} as a SAML service provider in your IdP. The exact steps v
 2. Set the **Assertion Consumer Service (ACS) URL** to `{kibana-url}/api/security/saml/callback`.
 3. Set the **entity ID** to a URI that uniquely identifies this {{kib}} instance as a Service Provider. We recommend using the {{kib}} base URL (for example, `https://kibana.example.com`).
 4. Set the **logout URL** to `{kibana-url}/logout` if your IdP supports Single Logout.
-5. Identify the user attributes your IdP can include in SAML assertions — consult your IdP documentation or local admin. This varies between providers. These attribute URIs will be used to configure the attribute mapping in {{es}}.
-6. Note the **IdP metadata URL** or download the metadata file — you will need this for the {{es}} configuration.
+5. Identify the user attributes your IdP can include in SAML assertions. Consult your IdP documentation or local admin. This varies between providers. These attribute URIs will be used to configure the attribute mapping in {{es}}.
+6. Note the **IdP metadata URL** or download the metadata file. You will need this for the {{es}} configuration.
 
 :::{tip}
 If your IdP supports SP metadata import, you can generate an SP metadata file after [configuring the {{es}} realm](#saml-create-realm) and use it to populate or verify these values in your IdP. Refer to [Generate SP metadata](#saml-sp-metadata) for more details.
@@ -116,7 +114,7 @@ If your IdP requires signed outgoing SAML messages (authentication requests or l
 ::::{step} Create a SAML realm in {{es}}
 :anchor: saml-create-realm
 
-Add a SAML realm to your [{{es}} configuration](/deploy-manage/stack-settings.md). The realm ties together three pieces: your IdP's identity and metadata, the {{stack}}'s service provider endpoints, and the attribute mapping that tells {{es}} how to identify users from the IdP's assertions:
+Add a SAML realm to your [{{es}} configuration](/deploy-manage/stack-settings.md). The realm ties together three pieces: your IdP's identity and metadata, the {{stack}}'s service provider endpoints, and the attribute mapping that tells {{es}} how to identify users from the IdP's assertions.
 
 ```yaml
 xpack.security.authc.realms.saml.saml1:
@@ -130,7 +128,9 @@ xpack.security.authc.realms.saml.saml1:
   attributes.groups: "urn:oid:1.3.6.1.4.1.5923.1.5.1."
 ```
 
-Replace the example values with your own. Each setting is described below:
+Replace the example values with your own.
+
+This section describes the most common settings. For the full list of available settings, refer to [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
 
 `idp.metadata.path`
 :   The path or URL to the SAML metadata file for your Identity Provider. A URL is recommended so {{es}} reloads it automatically when it changes.
@@ -154,31 +154,29 @@ Replace the example values with your own. Each setting is described below:
 `sp.logout`
 :   The URL where the IdP sends logout messages. Required for [SAML Single Logout](#saml-logout). If not configured, {{es}} refuses all `<LogoutRequest>` messages from the IdP.
 
-`attributes.principal`
-:   The SAML attribute that {{es}} uses as the username (`principal`). Replace with the URI your IdP uses — attribute URIs vary between providers. If your IdP uses `NameID`, use `nameid` here; if it issues transient NameIDs, use `nameid:persistent` instead to avoid users getting a new identity on every login. See [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
+`attributes.principal` (required)
+:   The SAML attribute that {{es}} uses as the username (`principal`). Replace with the URI your IdP uses. Attribute URIs vary between providers. If your IdP uses `NameID`, use `nameid` here. Refer to [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md) for more details.
 
-`attributes.groups`
-:   The SAML attribute that maps to group memberships. Replace with the URI your IdP uses. Optional but recommended for role-based access control.
+`attributes.groups` (recommended)
+:   The SAML attribute that maps to group memberships. Replace with the URI your IdP uses. Recommended if you want to assign roles based on IdP group memberships.
 
 :::{note}
 The `order` setting controls realm priority. Assign SSO realms (SAML, OpenID Connect) higher order values than password-based realms (native, LDAP). If you're using {{eck}}, set `order` to a value greater than the file realm (default `-100`) and native realm (default `-99`), which ECK relies on for its own operation.
 :::
 
-For the full list of available settings, refer to [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
-
-#### Map SAML attributes [saml-attributes-mapping]
-
-When a user authenticates through SAML, the IdP sends an assertion containing *attributes* — pieces of information about the user such as their username, email address, or group memberships. The `attributes.*` settings tell {{es}} which SAML attribute URI to use for each {{es}} user property.
-
-`attributes.principal` is **required** — it determines the username {{es}} assigns to the authenticated user. `attributes.groups` is optional but recommended if you want to assign roles based on IdP group memberships.
-
-:::{warning}
-The attribute URIs must exactly match what your IdP sends in the assertion — including case. A mismatch silently breaks authentication: the login may appear to succeed but the user's principal or group memberships will be missing or incorrect. Verify the exact URIs with your IdP administrator or by inspecting a captured SAML assertion.
+:::{note}
+If your IdP requires signed requests or uses encrypted assertions, refer to [Signing and encryption](#saml-enc-sign).
 :::
 
-For advanced use cases — mapping from the SAML `NameID`, extracting partial attribute values with regular expressions, or the full list of mappable user properties — refer to [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
+#### Map SAML attributes to {{es}} user properties [saml-attributes-mapping]
 
-If your IdP requires signed requests or uses encrypted assertions, refer to [Signing and encryption](#saml-enc-sign).
+When a user authenticates through SAML, the IdP sends an assertion containing *attributes* (pieces of information about the user such as their username, email address, or group memberships). The `attributes.*` realm settings tell {{es}} which SAML attribute URI to use for each {{es}} user property.
+
+:::{warning}
+The attribute URIs must exactly match what your IdP sends in the assertion. A mismatch silently breaks authentication: the login might appear to succeed but the user's principal or group memberships will be missing or incorrect. Verify the exact URIs with your IdP administrator or by inspecting a captured SAML assertion.
+:::
+
+The most important mappings are `attributes.principal` and `attributes.groups`: `attributes.principal` is required and determines the username {{es}} assigns to the authenticated user, and `attributes.groups` is recommended if you want to assign roles based on IdP group memberships. For the full list of mappable user properties and advanced use cases (such as mapping from the SAML `NameID` or extracting partial attribute values with regular expressions), refer to [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
 
 :::{note}
 SAML assertions have a short validity window. If the system clocks of {{es}} and your IdP differ by more than a few minutes, authentication will fail with a validation error. Ensure clocks are synchronized using NTP.
@@ -246,7 +244,7 @@ If your users also exist in an LDAP directory or similar repository that {{es}} 
 
 Add the SAML authentication provider to your {{kib}} configuration.
 
-If you're using a self-managed cluster, configure {{kib}} to connect to {{es}} over HTTPS. You may also need to configure `elasticsearch.ssl.certificateAuthorities` to trust the certificates {{es}} uses.
+If you're using a self-managed cluster, configure {{kib}} to connect to {{es}} over HTTPS. You might also need to configure `elasticsearch.ssl.certificateAuthorities` to trust the certificates {{es}} uses.
 
 ```yaml
 xpack.security.authc.providers:
@@ -286,11 +284,11 @@ If you encounter issues, refer to the [SAML troubleshooting documentation](../..
 
 ## Advanced configuration
 
-The following sections cover optional features and specific SAML behaviors that go beyond the standard configuration steps. They address particular aspects of the protocol — such as logout coordination, message signing, or authentication constraints — that you may need depending on your IdP's capabilities and your organization's security requirements.
+The following sections cover optional features and specific SAML behaviors that go beyond the standard configuration steps. They address particular aspects of the protocol, such as logout coordination, message signing, or authentication constraints, that you might need depending on your IdP's capabilities and your organization's security requirements.
 
 ### SAML Single Logout [saml-logout]
 
-The SAML protocol supports Single Logout (SLO), which ends both the {{kib}} session and the IdP session when a user logs out. Support for SLO varies between identity providers — consult your IdP's documentation to determine what Logout services it offers.
+The SAML protocol supports Single Logout (SLO), which ends both the {{kib}} session and the IdP session when a user logs out. Support for SLO varies between identity providers. Consult your IdP's documentation to determine what Logout services it offers.
 
 By default, {{es}} uses SAML SLO when all of the following are true:
 * Your IdP metadata includes a `<SingleLogoutService>` with HTTP-Redirect binding
@@ -327,17 +325,14 @@ Some IdPs require logout requests to be signed. Check your IdP's documentation a
 
 ### Signing and encryption [saml-enc-sign]
 
-Some IdPs require SAML logout requests or authentication requests to be signed. Others, like Microsoft Entra ID, accept unsigned requests. Some IdPs also encrypt their SAML assertions.
+Depending on your IdP, you might need to sign outgoing SAML messages (authentication or logout requests), decrypt encrypted assertions, or both. You can configure {{es}} to:
 
-You can configure {{es}} to:
-* Sign outgoing SAML messages (all message types, or only specific ones such as `AuthnRequest` or `LogoutRequest`)
+* Sign outgoing SAML messages (all types, or only specific ones such as `AuthnRequest` or `LogoutRequest`)
 * Decrypt incoming encrypted assertions
 
-{{es}} supports PEM, PKCS#12, and JKS certificate formats. For a step-by-step guide including certificate generation (using `openssl` or `elasticsearch-certutil`) and full configuration examples, refer to [Configure SAML signing and encryption](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-signing-encryption.md).
+For certificate generation and configuration examples (PEM, PKCS#12, and JKS), refer to [Configure SAML signing and encryption](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-signing-encryption.md).
 
-For the full list of available settings, refer to:
-* [SAML realm signing settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-signing-settings)
-* [SAML realm encryption settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-encryption-settings)
+For available settings, refer to [SAML realm signing settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-signing-settings) and [SAML realm encryption settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-encryption-settings).
 
 ### Request specific authentication methods [req-authn-context]
 
@@ -429,8 +424,8 @@ xpack.security.authc.realms.saml.saml_eng:
 
 ### SAML without {{kib}} [saml-no-kibana]
 
-If you're building a custom web application that needs to authenticate users against {{es}} using SAML — without {{kib}} — you can use the SAML REST APIs to implement the full authentication flow directly. This is relevant when you have a custom portal, a microservice-based architecture, or any scenario where the browser-based SSO flow must be handled by your own application code rather than by {{kib}}.
+If you're building a custom web application that needs to authenticate users against {{es}} using SAML (without {{kib}}), you can use the SAML REST APIs to implement the full authentication flow directly. This is relevant when you have a custom portal, a microservice-based architecture, or any scenario where the browser-based SSO flow must be handled by your own application code rather than by {{kib}}.
 
 The application acts as an authentication proxy: it drives the SP-initiated or IdP-initiated SSO flow, exchanges the SAML response for an {{es}} access token and refresh token, and uses that token as a `Bearer` credential for subsequent requests.
 
-For the complete implementation guide — including service account setup, SP-initiated and IdP-initiated flows, and logout handling — refer to [SAML without {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-without-kibana.md).
+For the complete implementation guide (including service account setup, SP-initiated and IdP-initiated flows, and logout handling), refer to [SAML without {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-without-kibana.md).
