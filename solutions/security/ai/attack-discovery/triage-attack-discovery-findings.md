@@ -370,7 +370,6 @@ An [agent skill](https://github.com/elastic/agent-skills/tree/main/skills/securi
 
 Refer to the [agent-skills README](https://github.com/elastic/agent-skills/blob/main/README.md) for setup instructions.
 :::
--->
 
 ## Next steps [next-steps]
 

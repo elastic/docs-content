@@ -26,7 +26,7 @@ If you'd rather split generation and triage into separate flows, you can instead
 
 ::::{note}
 :applies_to: {stack: preview 9.4, serverless: preview}
-Splitting split generation and triage into separate flows requires turning on the [**Enable alerts and attacks alignment**](/solutions/security/get-started/configure-advanced-settings.md#enable-alerts-and-attacks-alignment) setting to display the **Attacks** page.
+Splitting generation and triage into separate flows requires turning on the [**Enable alerts and attacks alignment**](/solutions/security/get-started/configure-advanced-settings.md#enable-alerts-and-attacks-alignment) setting to display the **Attacks** page.
 ::::
 
 ## Next steps [next-steps]
