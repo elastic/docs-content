@@ -27,7 +27,7 @@ These attribute identifiers vary between IdPs, and most IdPs offer ways to custo
 
 ## How attributes appear in user metadata [saml-user-metadata]
 
-By default users who authenticate via SAML will have some additional metadata fields.
+By default users who authenticate through SAML will have some additional metadata fields.
 
 * `saml_nameid` will be set to the value of the `NameID` element in the SAML authentication response
 * `saml_nameid_format` will be set to the full URI of the NameID's `format` attribute

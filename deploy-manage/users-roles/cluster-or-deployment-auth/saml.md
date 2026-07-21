@@ -168,7 +168,7 @@ For the full list of available settings, refer to [SAML realm settings](elastics
 
 #### Map SAML attributes [saml-attributes-mapping]
 
-When a user authenticates via SAML, the IdP sends an assertion containing *attributes* — pieces of information about the user such as their username, email address, or group memberships. The `attributes.*` settings tell {{es}} which SAML attribute URI to use for each {{es}} user property.
+When a user authenticates through SAML, the IdP sends an assertion containing *attributes* — pieces of information about the user such as their username, email address, or group memberships. The `attributes.*` settings tell {{es}} which SAML attribute URI to use for each {{es}} user property.
 
 `attributes.principal` is **required** — it determines the username {{es}} assigns to the authenticated user. `attributes.groups` is optional but recommended if you want to assign roles based on IdP group memberships.
 
@@ -201,7 +201,7 @@ You can configure role mappings using:
 
 **Grant access by realm**
 
-This mapping grants the `example_role` role to all users who authenticate via the `saml1` realm:
+This mapping grants the `example_role` role to all users who authenticate through the `saml1` realm:
 
 ```console
 PUT /_security/role_mapping/saml-all-users
@@ -216,7 +216,7 @@ PUT /_security/role_mapping/saml-all-users
 
 **Grant access by group**
 
-If your IdP provides group memberships, you can map specific groups to roles. This mapping grants the `finance_data` role to users in the `finance-team` group authenticating via `saml1`:
+If your IdP provides group memberships, you can map specific groups to roles. This mapping grants the `finance_data` role to users in the `finance-team` group authenticating through `saml1`:
 
 ```console
 PUT /_security/role_mapping/saml-finance
