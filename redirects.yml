@@ -1035,7 +1035,7 @@ redirects:
     many:
       - to: 'solutions/security/ai/attack-discovery/grant-access.md'
         anchors:
-          'attack-discovery-rbac': 'attack-discovery-rbac'
+          'attack-discovery-rbac':
       - to: 'solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md'
         anchors:
           'set-up-attack-discovery': 'set-up-attack-discovery'
@@ -1044,7 +1044,7 @@ redirects:
       - to: 'solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md'
         anchors:
           'attack-discovery-workflows': 'attack-discovery-workflows'
-          'view-saved-discoveries': 'manage-discoveries'
+          'view-saved-discoveries':
           'change-a-discoverys-status': 'discovery-status'
           'share-attack-discoveries': 'share-attack-discoveries'
           'take-bulk-actions': 'take-bulk-actions'
