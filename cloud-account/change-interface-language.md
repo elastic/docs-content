@@ -12,7 +12,7 @@ type: how-to
 
 # Change the interface language in {{kib}}
 
-{{kib}} can display its interface in several languages. From the application header, you can select the language you prefer.
+{{kib}} can display its interface in several languages. From the application header, you can select the language you prefer for your current project or deployment.
 
 :::{tip}
 If you're using {{ecloud}}, this setting only applies to the {{kib}} UI of your serverless projects and hosted deployments.
