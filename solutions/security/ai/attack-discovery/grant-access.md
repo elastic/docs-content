@@ -1,5 +1,6 @@
 ---
 navigation_title: Grant feature access
+description: "Required Kibana, index, and workflow privileges for Attack Discovery by version."
 applies_to:
   stack: ga
   serverless:
@@ -11,69 +12,51 @@ products:
 
 # Grant access to Attack Discovery [attack-discovery-rbac]
 
-To use Attack Discovery, your role needs specific privileges.
+Attack Discovery requires specific {{kib}} feature privileges and, in most versions, index privileges on Attack Discovery alert indices. Additional Workflows and {{agent-builder}} access is required for some 9.5 capabilities.
 
-::::{applies-switch}
+Use this page to grant the right access for your version:
 
-:::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
+* [Kibana feature privileges](#attack-discovery-kibana-privileges)
+* [Index privileges](#attack-discovery-index-privileges)
+* [Workflow and Agent Builder privileges](#attack-discovery-workflows-privileges)
 
-Ensure your role has:
+## Kibana feature privileges [attack-discovery-kibana-privileges]
 
-* Minimum [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for these **Security** features:
+Grant these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security** features in your version:
 
-  - `All` for **Attack discovery**
-  - At least `Read` for **Rules**
-  - At least `Read` for **Alerts**
+| Available in | Privileges |
+|---|---|
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | `All` for **Attack discovery**, and at least `Read` for **Rules** and **Alerts** |
+| {applies_to}`stack: ga 9.1-9.3` | `All` for **Security > Attack discovery**, and at least `Read` for **Security > Rules, Alerts, and Exceptions** |
+| {applies_to}`stack: ga =9.0` | `All` for **Security > Attack discovery** |
 
-* The appropriate [index privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_index_privileges), based on what you want to do with Attack Discovery alerts:
+## Index privileges [attack-discovery-index-privileges]
 
-| Action | Indices | {{es}} privileges |
-|---------|---------|--------------------------|
-| Read Attack Discovery alerts | - `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br> - `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read` and `view_index_metadata` |
-| Read and modify Attack Discovery alerts. This includes:<br>- Generating discovery alerts manually<br>- Generating discovery alerts using schedules<br>- Sharing manually created alerts with other users<br>- Updating a discovery's status |- `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read`, `view_index_metadata`, `write`, and `maintenance`|
+```{applies_to}
+stack: ga 9.1+
+serverless: ga
+```
 
-:::
-
-:::{applies-item} { "stack": "ga 9.3"}
-
-Ensure your role has:
-
-* `All` [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack discovery** {{kib}} feature and at least `Read` privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
-
-    ![attack-discovery-rules-rbac](/solutions/images/attack-discovery-rules-rbac.png "elasticsearch =60%x60%")
-
-* The appropriate [index privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_index_privileges), based on what you want to do with Attack Discovery alerts:
+Grant the appropriate [index privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_index_privileges) based on what users need to do with Attack Discovery alerts. Replace `<space-id>` with the {{kib}} space ID.
 
 | Action | Indices | {{es}} privileges |
 |---------|---------|--------------------------|
-| Read Attack Discovery alerts | - `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br> - `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read` and `view_index_metadata` |
-| Read and modify Attack Discovery alerts. This includes:<br>- Generating discovery alerts manually<br>- Generating discovery alerts using schedules<br>- Sharing manually created alerts with other users<br>- Updating a discovery's status |- `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read`, `view_index_metadata`, `write`, and `maintenance`|
+| Read Attack Discovery alerts | - `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>` | `read` and `view_index_metadata` |
+| Read and modify Attack Discovery alerts, including:<br>- Generating discoveries manually<br>- Generating discoveries using schedules<br>- Sharing manually created alerts with other users<br>- Updating a discovery's status | - `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>` | `read`, `view_index_metadata`, `write`, and `maintenance` |
 
-:::
+## Workflow and Agent Builder privileges [attack-discovery-workflows-privileges]
 
-:::{applies-item} stack: ga 9.1-9.2
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
 
-Ensure your role has:
+When [`securitySolution:enableAttackDiscoveryWorkflows`](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) is turned on, some Attack Discovery capabilities also require Workflows access, and {{agent-builder}} for conversational runs and AI troubleshooting:
 
-* `All` [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack discovery** {{kib}} feature and at least `Read` privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
+| Capability | Privileges |
+|---|---|
+| Build, view, or run workflows that call Attack Discovery | `All` or `Read` for **Analytics > Workflows**, depending on the action. This privilege is separate from Attack Discovery access. The Attack Discovery `All` privilege alone does not include it. Serverless roles already grant Workflows access by default. On self-managed and Elastic Cloud Hosted deployments, add it explicitly to custom roles. Refer to [Set up Workflows](/explore-analyze/workflows/get-started/setup.md). |
+| Run Attack Discovery from {{agent-builder}}, or use AI troubleshooting and AI-assisted query editing | {{agent-builder}} in addition to Attack Discovery access. Refer to [Run Attack Discovery from {{agent-builder}}](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md). |
+| Edit Elastic's built-in Attack Discovery workflows | A separate privilege beyond base Workflows access. Built-in workflows are read-only for most users. Deletion is always blocked. Refer to [Built-in workflows](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md#run-ad-workflow-built-in). |
 
-    ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png "elasticsearch =60%x60%")
-
-* The appropriate [index privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_index_privileges), based on what you want to do with Attack Discovery alerts:
-
-| Action | Indices | {{es}} privileges |
-|---------|---------|--------------------------|
-| Read Attack Discovery alerts | - `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br> - `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read` and `view_index_metadata` |
-| Read and modify Attack Discovery alerts. This includes:<br>- Generating discovery alerts manually<br>- Generating discovery alerts using schedules<br>- Sharing manually created alerts with other users<br>- Updating a discovery's status |- `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read`, `view_index_metadata`, `write`, and `maintenance`|
-
-:::
-
-:::{applies-item} stack: ga =9.0
-
-Ensure your role has `All` [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack discovery** {{kib}} feature.
-
-![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png "elasticsearch =60%x60%")
-
-:::
-
-::::
+<!-- FLAG: Confirm the exact privilege name for editing built-in Attack Discovery workflows. -->

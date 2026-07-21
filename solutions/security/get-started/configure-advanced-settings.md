@@ -136,11 +136,46 @@ Turn on the `securitySolution:enableGraphVisualization` setting to integrate the
 
 ## Enable alerts and attacks alignment
 ```{applies_to}
-stack: preview 9.4
-serverless: preview
+stack: preview =9.4, ga 9.5+
+serverless: ga
 ```
 
-Turn on the **Enable alerts and attacks alignment** setting to access the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), which provides a unified interface for triaging and managing attacks alongside their correlated alerts.
+The [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) is a single place to triage Attack Discovery findings alongside their related alerts, next to **Alerts** under **Detections**.
+
+The **Enable alerts and attacks alignment** setting (`securitySolution:enableAlertsAndAttacksAlignment`) controls whether **Attacks** appears in the {{security-app}} navigation. The setting is on by default in {{stack}} 9.5 and off by default in {{stack}} 9.4.
+
+:::{note}
+:applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
+On the Elastic AI SOC Engine (EASE) tier, the **Attacks** view is unavailable. Use the dedicated [Attack Discovery page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md) instead.
+:::
+
+## Enable Attack Discovery Workflows [enable-attack-discovery-workflows]
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Turn on the **Attack Discovery Workflows** advanced setting (`securitySolution:enableAttackDiscoveryWorkflows`) to enable Attack Discovery workflows for the space. When enabled, Attack Discovery uses workflows to collect alerts and run analysis. This unlocks flexible alert retrieval on the Attacks view, workflow and {{agent-builder}} triggers, and AI-assisted query editing and troubleshooting for SOC analysts and automation builders. This setting is turned off by default.
+
+When the setting is on, you can:
+
+* Use the **Attack discovery settings** flyout on the [Attacks view](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md) to configure alert retrieval, generation, and validation
+* Run Attack Discovery [from a workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md) or [from {{agent-builder}}](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md)
+* Troubleshoot failed runs with AI from the **Generations** control center
+
+Each time the Attack Discovery skill runs, {{agent-builder}} opens a new conversation for that run (including manual and scheduled runs from the Attacks view).
+
+### How the setting affects schedules
+
+Turning the setting on does **not** update existing Attack Discovery schedules automatically. Schedules you already created keep their previous behavior and do not adopt the 9.5 skill enhancements (flexible alert retrieval, generation, and validation) until someone opens each schedule and saves it again while the setting is on. New schedules created after you enable the setting use the enhanced path from the start.
+
+If you later turn the setting off:
+
+* An already-switched schedule does not revert to the previous path. It stops generating (without erroring) until the setting is turned on again, and it temporarily disappears from the schedule list.
+* Manual runs from the Attacks view always follow the setting's current value. They have no equivalent stickiness.
+
+For how to edit schedules after you enable the setting, refer to [Schedule runs from the Attacks view](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).
+
 
 ## Enable asset inventory
 ```{applies_to}

@@ -13,14 +13,14 @@ products:
 
 # Attack Discovery
 
-Attack Discovery leverages large language models (LLMs) to analyze alerts in your environment and identify threats. Each "discovery" represents a potential attack and describes relationships among multiple alerts to tell you which users and hosts are involved, how alerts correspond to the MITRE ATT&CK matrix, and which threat actor might be responsible. This can help make the most of each security analyst’s time, fight alert fatigue, and reduce your mean time to respond.
+Attack Discovery helps SOC analysts reduce alert fatigue by using large language models (LLMs) to analyze alerts and identify potential attacks. Each discovery groups related alerts into an attack narrative. It shows which users and hosts are involved, how alerts map to the MITRE ATT&CK matrix, and which threat actor might be responsible. Use discoveries to prioritize investigation and shorten mean time to respond.
 
-You can generate discoveries in two ways:
+You can start a run from the UI (manual or scheduled), from an automated workflow, or from an {{agent-builder}} conversation. All methods use the same analysis steps, so the discoveries you get are consistent no matter which one you use. To choose a path for your role, refer to [Run Attack Discovery](/solutions/security/ai/attack-discovery/run-attack-discovery.md).
 
-* **Manual runs**: run the analysis on demand, whenever you need it.
-* **Scheduled runs**: define a recurring schedule so discoveries are generated automatically, without needing manual runs.
-
-Both methods run the same underlying analysis pipeline, so the discoveries you get are consistent no matter which one you use.
+:::{note}
+:applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
+Turning on [`securitySolution:enableAttackDiscoveryWorkflows`](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) unlocks flexible alert retrieval on the Attacks view, workflow and {{agent-builder}} triggers, and AI troubleshooting. For details, refer to [Run from the Attacks view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md).
+:::
 
 For a demo, refer to the following video (click to view).
 

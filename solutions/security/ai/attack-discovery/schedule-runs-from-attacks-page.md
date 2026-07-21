@@ -1,0 +1,56 @@
+---
+navigation_title: Schedule runs
+description: "Create and manage recurring Attack Discovery schedules from the Attacks view under Detections."
+applies_to:
+  stack: preview =9.4, ga 9.5+
+  serverless: ga
+products:
+  - id: security
+  - id: cloud-serverless
+---
+
+# Schedule runs from the Attacks view [schedule-runs-from-attacks-page]
+
+Create a schedule so Attack Discovery runs automatically at intervals you choose, without waiting for someone to select **Run**. From the **Attacks** view you can define how often analysis runs, which alerts to include, and optionally notify your team when discoveries are found.
+
+:::::{applies-switch}
+
+::::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
+
+:::{important}
+Enabling the [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting doesn't update existing schedules automatically. Each schedule keeps its previous behavior until you open it and save it again (or create a new schedule) while the setting is on. Until then, those schedules don't use the skill enhancements for alert retrieval, generation, and validation.
+:::
+
+To create a schedule:
+
+1. Go to **Detections > Views > Attacks**, then select **Schedule > Create new schedule**.
+2. Name the schedule and choose an LLM connector for generation.
+3. [Configure which alerts to analyze](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md). For example, keep skill retrieval on and add an {{esql}} query to focus on high-severity alerts.
+4. Set how often the schedule runs, such as every 24 hours.
+5. (Optional) Add notification [connectors](/deploy-manage/manage-connectors.md) and actions, then select **Create & enable schedule**. Supported notification connectors include Slack, {{sn}}, {{jira}}, PagerDuty, Cases, Email, and {{webhook}}.
+
+To adopt the enhanced settings on an existing schedule, open it from **Schedule**, update alert retrieval as needed, and save it again.
+
+::::
+
+::::{applies-item} stack: preview =9.4
+
+To create a schedule:
+
+1. Go to **Detections > Views > Attacks**.
+2. In the top-right corner, select **Schedule**.
+3. In the **Attack discovery schedule** flyout, select **Create new schedule**.
+4. Enter a name for the schedule.
+5. Select the LLM connector to use for generating discoveries, or add a new one.
+6. [Configure which alerts to analyze](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md#attacks-page-schedule-alert-selection).
+7. Define the schedule's frequency (for example, every 24 hours).
+8. Optionally select notification [connectors](/deploy-manage/manage-connectors.md) and define their actions. For example, send a Slack or email notification when discoveries are found.
+9. Select **Create & enable schedule**.
+
+::::
+
+:::::
+
+From the schedule flyout, you can edit, enable, disable, or delete schedules. To change several at once, select them in the table and use **Bulk actions**. To manage schedules programmatically, use the [Attack discovery API]({{kib-apis}}group/endpoint-security-attack-discovery-api).
+
+Scheduled discoveries show a calendar icon. For how to recognize scheduled versus manually generated attacks, refer to [Manually generated and scheduled attacks](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md#manually-generated-attacks).

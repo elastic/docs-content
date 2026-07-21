@@ -586,6 +586,13 @@ toc:
               - file: security/ai/attack-discovery/run-attack-discovery.md
                 children:
                   - file: security/ai/attack-discovery/run-from-attacks-page.md
+                    children:
+                      - file: security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md
+                      - file: security/ai/attack-discovery/manual-runs-from-attacks-page.md
+                      - file: security/ai/attack-discovery/schedule-runs-from-attacks-page.md
+                      - file: security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md
+                  - file: security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md
+                  - file: security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md
                   - file: security/ai/attack-discovery/run-from-attack-discovery-page.md
               - file: security/ai/attack-discovery/triage-attack-discovery-findings.md
               - file: security/ai/attack-discovery/manage-saved-discoveries.md

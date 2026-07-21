@@ -20,8 +20,8 @@ Each Attack Discovery finding groups related alerts into a single attack narrati
 
 Before you start, make sure you have the following:
 
-- Attack Discovery is [configured with an LLM connector](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries).
-- At least one finding has been generated, either [manually](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries) or through a [schedule](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#schedule-discoveries).
+- Attack Discovery is configured with an LLM connector. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Prefer [Configure Attack Discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md) on the Attacks view. You can also use the [Attack Discovery page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries).
+- At least one finding has been generated, either [manually](/solutions/security/ai/attack-discovery/manual-runs-from-attacks-page.md) or through a [schedule](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).
 - Your role has the [required privileges](/solutions/security/ai/attack-discovery/grant-access.md) to view and modify Attack Discovery alerts.
 
 :::{tip}
@@ -37,7 +37,29 @@ Start by retrieving all open findings and prioritizing them by risk score. This 
 ::::{tab-item} Attack Discovery UI
 :sync: attack-discovery-ui
 
-1. Go to **Attack Discovery** from the {{elastic-sec}} navigation menu.
+:::::{applies-switch}
+
+::::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
+
+1. Go to **Detections > Views > Attacks** (or **Attack Discovery** if you prefer that page).
+2. Use the **Status** filter to show only **Open** findings.
+3. Sort to prioritize what to review first. On **Attacks**, use **Most recent** or **Most alerts**. On **Attack Discovery**, sort by risk score (highest first).
+
+For each finding, note the following key signals:
+
+- **Risk score** (Attack Discovery page): The overall severity assigned to the discovery.
+- **Alert count**: How many underlying security alerts the discovery groups together.
+- **MITRE ATT&CK tactics**: Which tactics the discovery maps to. More tactics suggest a broader attack.
+- **Entities**: Which users and hosts are involved.
+- On **Attacks**, review related alerts on the attack's **Alerts** tab.
+
+For the full Attacks triage UI, refer to [Manage discoveries from the Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
+
+::::
+
+::::{applies-item} stack: ga 9.1-9.4
+
+1. Go to **Attack Discovery** from the {{elastic-sec}} navigation menu. {applies_to}`stack: preview =9.4` You can also triage from **Detections > Views > Attacks**.
 2. Use the **Status** filter to show only **Open** findings.
 3. Sort by risk score (highest first) to prioritize the most critical findings.
 
@@ -45,14 +67,18 @@ For each finding, note the following key signals:
 
 - **Risk score**: The overall severity assigned to the discovery.
 - **Alert count**: How many underlying security alerts the discovery groups together.
-- **MITRE ATT&CK tactics**: Which tactics the discovery maps to—more tactics suggest a broader attack.
+- **MITRE ATT&CK tactics**: Which tactics the discovery maps to. More tactics suggest a broader attack.
 - **Entities**: Which users and hosts are involved.
+
+::::
+
+:::::
 
 ::::
 ::::{tab-item} Discover with ES|QL queries
 :sync: esql
 
-You can run ES|QL queries in multiple ways, including from [**Discover**](/explore-analyze/query-filter/languages/esql-kibana.md). The following query retrieves open findings from both scheduled and on-demand discovery indices. Replace `default` with your {{kib}} space ID if you're using a non-default space:
+You can run ES|QL queries in multiple ways, including from [**Discover**](/explore-analyze/query-filter/languages/esql-kibana.md). The following query retrieves open findings from both scheduled and manual-run discovery indices. Replace `default` with your {{kib}} space ID if you're using a non-default space:
 
 ```esql
 FROM .alerts-security.attack.discovery.alerts-default, .adhoc.alerts-security.attack.discovery.alerts-default METADATA _id
@@ -370,11 +396,4 @@ An [agent skill](https://github.com/elastic/agent-skills/tree/main/skills/securi
 
 Refer to the [agent-skills README](https://github.com/elastic/agent-skills/blob/main/README.md) for setup instructions.
 :::
-
-## Next steps [next-steps]
-
-- [Scheduled runs](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#schedule-discoveries) for continuous coverage without manual generation.
-- Set up [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) for richer triage context.
-- Learn about [case management workflows](/solutions/security/investigate/security-cases.md) to standardize how your team tracks confirmed threats.
-- Use [AI Assistant](/solutions/security/ai/ai-assistant.md) for follow-up investigation and deeper analysis of individual findings.
 

@@ -1,5 +1,5 @@
 ---
-navigation_title: Attack Discovery page
+navigation_title: Manage from Attack Discovery page
 applies_to:
   stack: ga 9.1
   serverless:
@@ -11,7 +11,12 @@ products:
 
 # Manage discoveries from the Attack Discovery page [manage-discoveries]
 
-This page describes how to change status, share, bulk-act on, and search saved discoveries directly from the **Attack Discovery** page. For a unified, alert-correlated view that also supports triage actions like assignment and tagging, use the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) instead. For guidance on which page to use for your version, refer to [Manage saved discoveries](/solutions/security/ai/attack-discovery/manage-saved-discoveries.md).
+Use this page when you are a SOC analyst managing saved discoveries from the dedicated **Attack Discovery** page. Change status, share, bulk-act on, and search discoveries there. For guidance on which page to use for your version, refer to [Manage saved discoveries](/solutions/security/ai/attack-discovery/manage-saved-discoveries.md).
+
+:::{note}
+:applies_to: {"stack": "preview =9.4, ga 9.5+", "serverless": "ga"}
+To triage discoveries next to their related alerts, and to assign or tag them, use the [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) at **Detections > Views > Attacks** instead.
+:::
 
 ## Change a discovery's status [discovery-status]
 
