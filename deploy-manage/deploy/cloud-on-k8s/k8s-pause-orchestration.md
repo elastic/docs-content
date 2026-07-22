@@ -45,6 +45,12 @@ spec:
     count: 3
 ```
 
+Or using `kubectl annotate`:
+
+```sh
+kubectl annotate elasticsearch quickstart eck.k8s.elastic.co/pause-orchestration=true --overwrite
+```
+
 The same annotation works on any other resource type. Only the exact string values `"true"` and `"false"` are accepted — the webhook rejects any other value (for example `"True"`, `"1"`, or an empty string).
 
 ## What continues and what pauses [k8s-pause-orchestration-behaviour]
