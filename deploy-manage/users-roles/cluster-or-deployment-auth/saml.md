@@ -130,7 +130,7 @@ xpack.security.authc.realms.saml.saml1:
 
 1. Controls realm priority. Assign SSO realms higher order values than password-based realms (native, LDAP). If you're using {{eck}}, set `order` to a value greater than the file realm (default `-100`) and native realm (default `-99`).
 
-This section describes the most common settings. For the full list of available settings, refer to [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
+Configure each setting as described below. For the full list of available settings, refer to [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
 
 `idp.metadata.path`
 :   The path or URL to the SAML metadata file for your Identity Provider. A URL is recommended so {{es}} reloads it automatically when it changes.
