@@ -16,21 +16,13 @@ Learn how to systematically assess open Attack Discovery findings, determine whi
 
 Each Attack Discovery finding groups related alerts into a single attack narrative. Rather than investigating each alert individually, you assess the attack as a unit—evaluating confidence based on alert diversity, detection rule quality, and entity risk context—then decide whether to create a case, investigate further, or acknowledge and move on.
 
-<!-- Commented out until the agent skill is publicly available — agent, 2026-04-02
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills@security-attack-discovery-triage
-
-This skill automates the triage workflow described on this page, scoring confidence programmatically and presenting a summary for your approval before creating cases or acknowledging alerts. For details, refer to [Automate triage with an agent skill](#automate-triage-agent-skill).
-:::
--->
-
 ## Before you begin [before-you-begin]
 
 Before you start, make sure you have the following:
 
-- Attack Discovery is [configured with an LLM connector](/solutions/security/ai/attack-discovery.md#attack-discovery-generate-discoveries).
-- At least one finding has been generated, either [manually](/solutions/security/ai/attack-discovery.md#attack-discovery-generate-discoveries) or through a [schedule](/solutions/security/ai/attack-discovery.md#schedule-discoveries).
-- Your role has the [required privileges](/solutions/security/ai/attack-discovery.md#attack-discovery-rbac) to view and modify Attack Discovery alerts.
+- Attack Discovery is [configured with an LLM connector](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries).
+- At least one finding has been generated, either [manually](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries) or through a [schedule](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#schedule-discoveries).
+- Your role has the [required privileges](/solutions/security/ai/attack-discovery/grant-access.md) to view and modify Attack Discovery alerts.
 
 :::{tip}
 For richer triage context, enable [entity analytics](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md). This helps you assess whether the users and hosts in a discovery are already known to be high risk, which can strengthen your assessment. Entity analytics isn't required for triage, but it can improve decision quality.
@@ -360,11 +352,6 @@ POST /api/attack_discovery/_bulk
 ::::
 :::::
 
-<!-- Commented out until the agent skill is publicly available — agent, 2026-04-02
-## Automate triage with an agent skill [automate-triage-agent-skill]
-
-An agent skill is available that automates the triage workflow described on this page using the same confidence scoring methodology.
-
 :::{dropdown} Agent skill details
 
 An [agent skill](https://github.com/elastic/agent-skills/tree/main/skills/security/attack-discovery-triage) can be loaded into a compatible AI agent to retrieve open findings, score confidence programmatically, and present a triage summary for your approval before taking action.
@@ -383,11 +370,10 @@ An [agent skill](https://github.com/elastic/agent-skills/tree/main/skills/securi
 
 Refer to the [agent-skills README](https://github.com/elastic/agent-skills/blob/main/README.md) for setup instructions.
 :::
--->
 
 ## Next steps [next-steps]
 
-- [Schedule discoveries](/solutions/security/ai/attack-discovery.md#schedule-discoveries) for continuous coverage without manual generation.
+- [Scheduled runs](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#schedule-discoveries) for continuous coverage without manual generation.
 - Set up [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) for richer triage context.
 - Learn about [case management workflows](/solutions/security/investigate/security-cases.md) to standardize how your team tracks confirmed threats.
 - Use [AI Assistant](/solutions/security/ai/ai-assistant.md) for follow-up investigation and deeper analysis of individual findings.
