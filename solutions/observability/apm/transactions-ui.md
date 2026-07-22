@@ -67,7 +67,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-Each row in the Transactions table has an **Actions** menu. Use it to act on a specific transaction group — for example, create an alert rule, create an SLO, or select **Open traces in Discover** to explore the underlying trace data.
+Each row in the Transactions table has an **Actions** menu. Use it to act on a specific transaction group. For example, you can create an alert rule, create an SLO, or select **Open traces in Discover** to explore the underlying trace data.
 
 ::::{important}
 If you only see one route in the Transactions table, or if you have transactions named "unknown route", it could be a symptom that the APM agent either wasn’t installed correctly or doesn’t support your framework.
@@ -154,7 +154,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-Click **View full trace** to open a flyout showing the complete trace timeline — all spans and transactions from the same distributed trace — without leaving the {{product.apm}} UI.
+Click **View full trace** to open a flyout showing the complete trace timeline (all spans and transactions from the same distributed trace) without leaving the {{product.apm}} UI.
 
 **Trace sample logs**
 
