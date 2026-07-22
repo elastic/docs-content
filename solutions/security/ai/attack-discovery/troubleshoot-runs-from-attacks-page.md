@@ -39,5 +39,5 @@ The report includes failure details, analysis step timing, configuration and con
 The same diagnostic report is attached automatically when you start AI troubleshooting, so the agent has that context in the conversation.
 
 :::{note}
-On the **Attack Discovery** page, after a run finishes, a details button on the success or failure banner opens the workflow execution details flyout if you have workflow-read privileges. From there, the same AI troubleshooting option and diagnostic report actions are available. Refer to [Run from the Attack Discovery page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-page-troubleshoot).
+On the **Attack Discovery** page, after a run finishes, a details button on the success or failure banner opens the workflow execution details flyout if you have workflow-read privileges. From there, the same AI troubleshooting option and diagnostic report actions are available.
 :::

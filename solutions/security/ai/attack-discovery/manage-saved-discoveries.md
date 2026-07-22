@@ -12,7 +12,7 @@ products:
 
 # Manage saved discoveries [manage-saved-discoveries]
 
-Attack Discovery saves findings automatically after each run. From there you can update status, filter and search discoveries, take triage actions such as assign or open a case, and review linked alerts. Where you do that work depends on your version. Pick a guide from the following table based on your needs and version.
+Attack Discovery saves findings automatically after each run. From there you can update status, filter and search discoveries, take triage actions such as assign or open a case, and review linked alerts. Where you do that work depends on your version.
 
 | Best for | Available in | Go to |
 |---|---|---|
