@@ -47,7 +47,7 @@ Use the map controls to adjust the layout, filter what’s displayed, and naviga
 * **Find in page**: Search for a specific service by name to locate and highlight it on the map.
 * **Filters**: Use the **Dependencies**, **Alert status**, **SLO status**, and **Anomaly severity** drop-downs to focus the map on specific services.
 
-To save the current service map view to a {{kib}} dashboard, click **Copy to dashboard**.
+To save the current service map view to a {{kib}} dashboard, click **Copy to dashboard** icon located in the right-upper corner of the map.
 
 When you click an instrumented service node (circle shape), a **service flyout** panel opens with a summary of the service’s RED metrics and infrastructure usage. Use the footer menu to open traces, logs, alerts, or SLOs for the service without leaving the map. Dependency nodes (diamond shape) and connections still use a compact popover.
 
@@ -58,8 +58,8 @@ serverless: ga
 
 A **minimap** in the corner of the map lets you see where you are in a large architecture and quickly navigate to a different area.
 
-:::{image} /solutions/images/observability-service-maps-java.png
-:alt: Example view of service maps in the Applications UI in Kibana
+:::{image} /solutions/images/observability-apm-service-map.png
+:alt: Service map showing the controls panel with filters and presentation toggle, the map canvas with circle and diamond nodes, and the minimap in the bottom-right corner
 :screenshot:
 :::
 
