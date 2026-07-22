@@ -6,6 +6,9 @@ products:
 
 # {{serverless-full}} breaking changes [elastic-cloud-serverless-breaking-changes]
 
+:::{include} _snippets/2026-07-21/breaking-changes.md
+:::
+
 :::{changelog}
 :type: breaking-change
 :cdn: cloud-serverless
