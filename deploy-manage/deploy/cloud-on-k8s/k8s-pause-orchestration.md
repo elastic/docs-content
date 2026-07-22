@@ -21,11 +21,7 @@ ECK provides two annotations that affect reconciliation behavior:
 | `eck.k8s.elastic.co/pause-orchestration: "true"` | {applies_to}`eck: ga 3.5+` | Pauses spec-driven changes only. Housekeeping continues. |
 | `eck.k8s.elastic.co/managed: "false"` | {applies_to}`eck: deprecated 3.5+` | Stops all reconciliation entirely. Deprecated in favor of `pause-orchestration`. |
 
-The key difference is that `pause-orchestration` keeps certificate rotation, service reconciliation, user and secret management, and health monitoring running. This avoids cluster degradation during extended maintenance windows.
-
-## Supported resources [k8s-pause-orchestration-resources]
-
-The annotation is supported on all ECK-managed resource types: {{es}}, {{kib}}, {{apm-server}}, Enterprise Search, {{hosted-ems}}, {{ls}}, {{agent}}, {{beats}}, and AutoOps Agent Policy.
+The key difference is that `pause-orchestration` keeps certificate rotation, service reconciliation, user and secret management, and health monitoring running. This avoids cluster degradation during extended maintenance windows. The annotation is supported on all ECK-managed resource types: {{es}}, {{kib}}, {{apm-server}}, Enterprise Search, {{hosted-ems}}, {{ls}}, {{agent}}, {{beats}}, Elastic Package Registry, and AutoOps Agent Policy.
 
 ## How to pause orchestration [k8s-pause-orchestration-usage]
 
