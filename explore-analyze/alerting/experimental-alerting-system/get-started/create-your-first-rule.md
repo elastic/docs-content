@@ -286,7 +286,7 @@ Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore
    | WHERE p95_latency_ms > 2000
    ```
 
-2. Set the sandbox date range to the **Today** preset (from the **Commonly used** list) and run the query. **Today** covers the full calendar day, so it finds the sample data no matter what time it is right now.
+2. Set the sandbox date range to **Today** and run the query. **Today** covers the full calendar day, so it finds the sample data no matter what time it is right now.
 
 3. Confirm the query results. You should see one row for `service.name: checkout` with `p95_latency_ms` above 2000 and `severity: high` or `critical`.
 

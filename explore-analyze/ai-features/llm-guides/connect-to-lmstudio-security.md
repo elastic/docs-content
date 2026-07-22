@@ -219,5 +219,5 @@ Finally, configure the connector:
 Setup is now complete. You can use the model you’ve loaded in LM Studio to power Elastic’s generative AI features. You can test a variety of models as you interact with AI Assistant to see what works best without having to update your connector.
 
 ::::{note}
-While local models work well for [AI Assistant](/solutions/security/ai/ai-assistant.md), we recommend you use one of [these models](/solutions/security/ai/large-language-model-performance-matrix.md) for interacting with [Attack discovery](/solutions/security/ai/attack-discovery.md). As local models become more performant over time, this is likely to change.
+While local models work well for [AI Assistant](/solutions/security/ai/ai-assistant.md), we recommend you use one of [these models](/solutions/security/ai/large-language-model-performance-matrix.md) for interacting with [Attack discovery](/solutions/security/ai/attack-discovery/index.md). As local models become more performant over time, this is likely to change.
 ::::

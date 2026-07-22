@@ -282,8 +282,8 @@ You can also add panels powered by {{esql}} queries directly from the dashboard.
 
 1. Add a new panel:
 
-   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **New panel** in the toolbar, then select **{{esql}}** under **Visualizations**.
-   - {applies_to}`stack: ga 9.0-9.1` Select **Add panel** in the toolbar, then select **{{esql}}** under **Visualizations**.
+   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **Visualization (query)** or **New panel** → **{{esql}}** under **Visualizations**, depending on your {{kib}} version.
+   - {applies_to}`stack: ga 9.0-9.1` Select **Add panel** in the application menu, then select **{{esql}}** under **Visualizations**.
 
 2. Enter the following query and run it:
 
@@ -1037,7 +1037,7 @@ One of {{kib}}'s strengths is how you can move between exploring raw data and vi
 :   Select {icon}`pencil` on any panel to open the inline **Configuration** flyout. For deeper changes, select **Edit in Lens** in the flyout to switch to the full editor, then **Save and return** to go back to the dashboard.
 
 **Add a new visualization directly from a dashboard**
-:   From a dashboard, select **Add** > **Visualization** to open the Lens editor, or **Add** > **New panel** and then **ES|QL** under **Visualizations** to create a chart from an {{esql}} query without going through Discover first.
+:   From a dashboard, select **Add**, then select **Visualization** to open the Lens editor, or **Visualization (query)** to create a chart from an {{esql}} query without going through Discover first.
 
 :::{tip}
 This back-and-forth workflow is especially useful when investigating anomalies: spot something unusual on a dashboard, jump to Discover to examine the raw events, refine your query, then save an updated visualization back to the dashboard.
