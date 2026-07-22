@@ -11,11 +11,11 @@ products:
 
 # Manage discoveries from the Attacks view [attacks-page]
 
-The **Attacks** view brings Attack Discovery findings together with their related alerts so you can triage them in one place under **Detections**. Open it at **Detections > Views > Attacks**. It is a sibling of **Alerts**, not a standalone top-level page.
+The **Attacks** view brings Attack Discovery findings together with their related alerts under **Detections**. Open it at **Detections > Views > Attacks**. 
 
-This page covers how to filter and search attacks, tell manually generated and scheduled attacks apart, review linked alerts, and take triage actions. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` It also covers checking runs in **Generations**. Before you get started, make sure you meet the [Before you begin](/solutions/security/ai/attack-discovery/run-from-attacks-page.md#run-from-attacks-page-before-you-begin) requirements for accessing the view.
+This page covers how to filter and search attacks, tell manually generated and scheduled attacks apart, review linked alerts, and take triage actions.
 
-## How it works [attacks-how-it-works]
+## Explore the Attacks view layout [attacks-how-it-works]
 
 At the top of the **Attacks** view, overview visualizations summarize activity. The **Summary** tab shows the total number of attacks detected and attack volume over time. The **Trends**, **Count**, and **Treemap** tabs describe alerts associated with those attacks.
 
@@ -26,18 +26,18 @@ At the top of the **Attacks** view, overview visualizations summarize activity. 
 
 Below the summary, the Attacks table lists individual attacks. Expand an attack to see involved entities and steps in the attack chain.
 
-## Check runs in Generations [attacks-view-generations]
+## Check Attack Discovery runs in Generations [attacks-view-generations]
 
 ```{applies_to}
 stack: ga 9.5+
 serverless: ga
 ```
 
-The **Generations** control center in the **Attacks** view header lists recent Attack Discovery runs, including manual and scheduled runs. Open it to check run status and open workflow execution details for a run.
+The **Generations** control center in the **Attacks** view header lists recent Attack Discovery runs. Open it to check run status and open workflow execution details.
 
 If a run fails, is canceled or dismissed, or an analysis step fails, [troubleshoot it with AI](/solutions/security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md).
 
-## Manually generated and scheduled attacks [manually-generated-attacks]
+## Recognize manually generated and scheduled attacks [manually-generated-attacks]
 
 ::::{applies-switch}
 
@@ -60,7 +60,7 @@ In 9.4, the **Attacks** view lists scheduled discoveries. Manual runs appear aft
 
 ::::
 
-## Filter and search attacks [attacks-filter-search]
+## Filter and search for attacks [attacks-filter-search]
 
 Use the controls at the top of the Attacks table to narrow results:
 
@@ -79,14 +79,14 @@ Use the controls at the top of the Attacks table to narrow results:
 **Type**, **Connector**, and **Assignees** filter selections persist across page reloads. The **Attacks volume over time** summary graph updates to match the filters you apply.
 :::
 
-### View options [attacks-view-options]
+### Show or hide attacks and anonymized values [attacks-view-options]
 
 Open the **View options** ({icon}`controls`) menu for these toggles:
 
 * **Show attacks only** (on by default): Hides standalone alerts that don't belong to any attack. Turn it off to see all alerts, including unlinked ones. Unlinked alerts appear in a group labeled `-` (dash).
 * **Show anonymized values**: Replaces attack titles and summaries with anonymized placeholders. Turn this off if you are searching for specific entities such as hostnames or IP addresses.
 
-### How filtering works [attacks-filtering-behavior]
+### Understand how filters apply to attacks and alerts [attacks-filtering-behavior]
 
 The **Attacks** view uses one data view that combines the attacks index and the alerts index, so filters apply to both document types at once.
 
@@ -124,8 +124,6 @@ A callout above the alerts table explains this behavior and includes a **Show ma
 
 Attack group statistics in the Attacks table, such as the total alert count, continue to reflect the full set of linked alerts, not only the filtered subset.
 
-Next, [take actions on an attack](#attacks-manage).
-
 ## Take actions on an attack [attacks-manage]
 
 Access actions from the **Take actions** menu on an attack's row in the Attacks table.
@@ -143,5 +141,3 @@ When you change an attack's status, assign or unassign it, or apply attack tags,
 | Investigate in timeline | **Take actions** > **Investigate in timeline** | Includes all alerts originally correlated when the attack was created. It does not reflect your current page filters or time range. |
 | Add to case | **Take actions** > **Add to new case** or **Add to existing case** | Attaches the attack to a [case](/solutions/security/investigate/security-cases.md). |
 | View in AI Chat | **Take actions** > **View in AI Chat** | Continue investigating with an [AI agent](/explore-analyze/ai-features/ai-chat-experiences.md). Ask follow-up questions about the attack or its alerts. |
-
-After you triage an attack, add it to a [case](/solutions/security/investigate/security-cases.md) or continue the investigation in [Timeline](/solutions/security/investigate/timeline.md) from the same **Take actions** menu.

@@ -11,14 +11,14 @@ products:
 
 # Manage discoveries from the Attack Discovery page [manage-discoveries]
 
-Use this page when you are a SOC analyst managing saved discoveries from the dedicated **Attack Discovery** page. Change status, share, bulk-act on, and search discoveries there. For guidance on which page to use for your version, refer to [Manage saved discoveries](/solutions/security/ai/attack-discovery/manage-saved-discoveries.md).
+Change status, share, bulk-act on, and search saved discoveries from the dedicated **Attack Discovery** page. For which page to use in your version, refer to [Manage saved discoveries](/solutions/security/ai/attack-discovery/manage-saved-discoveries.md).
 
 :::{note}
 :applies_to: {"stack": "preview =9.4, ga 9.5+", "serverless": "ga"}
 To triage discoveries next to their related alerts, and to assign or tag them, use the [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) at **Detections > Views > Attacks** instead.
 :::
 
-## Check run status [attack-discovery-page-generations]
+## Check Attack Discovery run status [attack-discovery-page-generations]
 
 Recent Attack Discovery generations appear as status callouts on the **Attack Discovery** page, above your saved discoveries. Use them to check run status while a generation is running or after it finishes.
 
@@ -46,7 +46,7 @@ Manually generated discoveries are private by default. To share them, change **N
 Once a discovery is shared, its visibility cannot be changed.
 :::
 
-## Take bulk actions [take-bulk-actions]
+## Take bulk actions on discoveries [take-bulk-actions]
 
 You can take bulk actions on multiple discoveries, such as bulk-changing their status or adding them to a case. To do this, select the checkboxes next to each discovery, then click **Selected *x* Attack discoveries** and choose the action you want to take.
 
@@ -64,9 +64,9 @@ You can search and filter saved discoveries to help locate relevant findings.
 
 * Time filter: Adjust the time filter to view discoveries generated within a specific timeframe.
 
-## Incorporate discoveries with other workflows [attack-discovery-workflows]
+## Continue an investigation from a discovery [attack-discovery-workflows]
 
-After you update status, share, or filter discoveries, use these options to continue the investigation in {{elastic-sec}}:
+Use these options to continue an investigation:
 
 * Click an entity’s name to open the entity details flyout and view more details that may be relevant to your investigation.
 * Hover over an entity’s name to either add the entity to Timeline (![Add to timeline icon](/solutions/images/security-icon-add-to-timeline.png "title =20x20")) or copy its field name and value to the clipboard (![Copy to clipboard icon](/solutions/images/security-icon-copy.png "title =20x20")).

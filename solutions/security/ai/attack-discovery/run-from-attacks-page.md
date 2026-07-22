@@ -1,6 +1,6 @@
 ---
 navigation_title: Run from Attacks view
-description: "For SOC analysts: open the Attacks view under Detections to configure, run, and schedule Attack Discovery."
+description: "Configure, run, and schedule Attack Discovery from the Attacks view under Detections."
 applies_to:
   stack: preview =9.4, ga 9.5+
   serverless: ga
@@ -9,17 +9,20 @@ products:
   - id: cloud-serverless
 ---
 
-# Run from the Attacks view [run-from-attacks-page]
+# Run Attack Discovery from the Attacks view [run-from-attacks-page]
 
-Use the **Attacks** view under **Detections** to configure which alerts Attack Discovery analyzes, then start a manual or scheduled run. For triage after a run finishes, refer to [Manage discoveries from the Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
+Use the **Attacks** view to configure which alerts Attack Discovery analyzes, then start a manual or scheduled run. 
 
 ## Before you begin [run-from-attacks-page-before-you-begin]
 
 To use the **Attacks** view, you need:
 
-* `All` for **Attack discovery**, plus at least `Read` for {{rules-ui}} and **Alerts**. For the full privilege list, refer to [Grant access to Attack Discovery](/solutions/security/ai/attack-discovery/grant-access.md).
-* The [**Enable alerts and attacks alignment**](/solutions/security/get-started/configure-advanced-settings.md#enable-alerts-and-attacks-alignment) setting turned on. 
-* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) turned on if you want the settings flyout with skill, query, and workflow retrieval. Existing schedules do not adopt these enhancements until you [update each schedule](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md) manually.
+* The [**Enable alerts and attacks alignment**](/solutions/security/get-started/configure-advanced-settings.md#enable-alerts-and-attacks-alignment) advanced setting turned on. 
+* (Optional) The [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) turned on if you want the settings flyout with skill, query, and workflow retrieval.
+* A role with the [index privileges](/solutions/security/ai/attack-discovery/grant-access.md#ad-index-privileges) required to generate and read discoveries, and these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_kibana_privileges) at minimum:
+  * **Security > Attack discovery**: `All`
+  * **Security > Rules and Exceptions**: `Read`
+  * **Security > Alerts**: `Read`
 
 ## Open the Attacks view [open-attacks-view]
 
@@ -27,9 +30,7 @@ To use the **Attacks** view, you need:
 
 ::::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
 
-Open the **Attacks** view at **Detections > Views > Attacks**. The view includes the same run and schedule capabilities as the **Attack Discovery** page.
-
-Next, [start a run](#attacks-view-start-a-run).
+Open the **Attacks** view at **Detections > Views > Attacks**.
 
 ::::
 
@@ -40,13 +41,11 @@ Open **Attacks** at **Detections > Views > Attacks**. Use it with the [**Attack 
 - Go to **Attack Discovery** for manual runs.
 - Go to **Attacks** for recurring schedules and day-to-day triage.
 
-Next, [start a run](#attacks-view-start-a-run).
-
 ::::
 
 :::::
 
-## Start a run [attacks-view-start-a-run]
+## Configure, run, and schedule Attack Discovery [attacks-view-start-a-run]
 
 ::::{applies-switch}
 

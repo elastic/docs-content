@@ -11,7 +11,7 @@ products:
 
 # Manually run Attack Discovery from the Attacks view [manual-runs-from-attacks-page]
 
-Manually run Attack Discovery when you want to start analysis yourself, instead of waiting for a schedule.
+Manually run Attack Discovery when you want to analyze the current alert selection right away, for example after you change settings or during an active investigation. Discoveries from a manual run appear in the **Attacks** table alongside scheduled discoveries.
 
 :::::{applies-switch}
 
@@ -35,8 +35,10 @@ After the run finishes, [manage discoveries from the Attacks view](/solutions/se
 
 ::::{applies-item} stack: preview =9.4
 
-In 9.4, start manual runs from the [Attack Discovery page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries). Use the **Attacks** page for triage and [schedules](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).
+In 9.4, start manual runs from the [Attack Discovery page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries). Use the **Attacks** page for triage and schedules.
 
 ::::
 
 :::::
+
+To run Attack Discovery automatically at intervals, [schedule a run](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).

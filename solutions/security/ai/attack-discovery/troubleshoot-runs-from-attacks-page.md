@@ -18,7 +18,7 @@ Use AI troubleshooting when an Attack Discovery run fails, is canceled or dismis
 To troubleshoot a run with AI, you need:
 
 * The [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on.
-* A run in [**Generations**](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md#attacks-view-generations) that you want to diagnose. Use this page when a run fails, is canceled or dismissed, or an analysis step fails.
+* A run in [**Generations**](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md#attacks-view-generations) to diagnose. Use this page when a run fails, is canceled or dismissed, or an analysis step fails.
 
 ## Open AI troubleshooting [troubleshoot-runs-open]
 

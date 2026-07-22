@@ -10,15 +10,15 @@ products:
   - id: cloud-serverless
 ---
 
-# Run from the Attack Discovery page [run-from-attack-discovery-page]
+# Run Attack Discovery from the Attack Discovery page [run-from-attack-discovery-page]
 
-Use this page when you are a SOC analyst working from the dedicated **Attack Discovery** experience. Configure which alerts get analyzed, manually run Attack Discovery, and set up a recurring schedule so it can run automatically.
+Configure which alerts get analyzed, manually run Attack Discovery, and set up a recurring schedule from the dedicated **Attack Discovery** page.
 
 ::::{applies-switch}
 
 :::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
 
-Prefer the **Attacks** view at **Detections > Views > Attacks** for manual runs, schedules, and triage next to related alerts. Refer to [Run from the Attacks view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md). Continue with this page if you prefer the dedicated Attack Discovery experience.
+Prefer the **Attacks** view at **Detections > Views > Attacks** for manual runs, schedules, and triage next to related alerts. Refer to [Run from the Attacks view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md).
 
 :::
 
@@ -34,10 +34,13 @@ Use this page for manual runs. Create and manage schedules from here or from the
 
 To use the **Attack Discovery** page, you need:
 
-* `All` for **Attack discovery**, plus at least `Read` for {{rules-ui}} and **Alerts**. For the full privilege list, refer to [Grant access to Attack Discovery](/solutions/security/ai/attack-discovery/grant-access.md).
-* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Optionally turn on the [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting if you want workflow-backed runs and AI troubleshooting from this page.
+* (Optional) The [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on if you want workflow-backed runs and AI troubleshooting from this page.
+* A role with the [index privileges](/solutions/security/ai/attack-discovery/grant-access.md#ad-index-privileges) required to generate and read discoveries, and these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_kibana_privileges) at minimum:
+  * **Security > Attack discovery**: `All`
+  * **Security > Rules and Exceptions**: `Read`
+  * **Security > Alerts**: `Read`
 
-## Set up Attack Discovery [set-up-attack-discovery]
+## Configure which alerts to analyze [set-up-attack-discovery]
 
 By default, Attack Discovery analyzes up to 100 alerts from the last 24 hours, but you can customize how many and which alerts it analyzes using the settings menu. To open it, click the settings icon next to the **Run** button.
 
@@ -71,7 +74,7 @@ After you choose which alerts to analyze, [manually run Attack Discovery](#attac
 
 ## Manually run Attack Discovery [attack-discovery-generate-discoveries]
 
-Manually run Attack Discovery when you want to start analysis yourself, instead of waiting for a schedule. You’ll need to select an LLM connector before you can analyze alerts.
+Manually run Attack Discovery to start analyzing alerts immediately. Select an LLM connector before you analyze alerts.
 
 To get started:
 
@@ -97,7 +100,7 @@ Attack Discovery uses the same data anonymization settings as [Elastic AI Assist
 
 After discoveries appear, [manage them from the Attack Discovery page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md). {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` For triage next to related alerts, use the [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
 
-## Schedule runs [schedule-discoveries]
+## Schedule Attack Discovery runs [schedule-discoveries]
 
 ```{applies_to}
 stack: ga 9.1
@@ -139,7 +142,7 @@ After discoveries appear from a schedule, [manage them from the Attack Discovery
 
 :::::
 
-## Open workflow execution details [attack-discovery-page-troubleshoot]
+## Open workflow execution details and troubleshoot with AI [attack-discovery-page-troubleshoot]
 
 ```{applies_to}
 stack: ga 9.5+

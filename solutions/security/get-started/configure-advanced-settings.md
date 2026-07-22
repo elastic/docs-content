@@ -134,7 +134,7 @@ serverless: removed
 ```
 Turn on the `securitySolution:enableGraphVisualization` setting to integrate the GraphViz visualization into the Alert and Event flyouts for supported event types. When enabled, it appears in the **Visualization** section of the flyout and can be viewed in full-screen mode.
 
-## Enable alerts and attacks alignment
+## Enable alerts and attacks alignment [enable-alerts-and-attacks-alignment]
 ```{applies_to}
 stack: preview =9.4, ga 9.5+
 serverless: ga
@@ -155,7 +155,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-Turn on the **Attack Discovery Workflows** advanced setting (`securitySolution:enableAttackDiscoveryWorkflows`) to enable Attack Discovery workflows for the space. When enabled, Attack Discovery uses workflows to collect alerts and run analysis. This unlocks flexible alert retrieval on the Attacks view, workflow and {{agent-builder}} triggers, and AI-assisted query editing and troubleshooting for SOC analysts and automation builders. This setting is turned off by default.
+Turn on the **Attack Discovery Workflows** advanced setting (`securitySolution:enableAttackDiscoveryWorkflows`) to enable Attack Discovery workflows for the space. When enabled, Attack Discovery uses workflows to collect alerts and run analysis. This turns on flexible alert retrieval on the Attacks view, workflow and {{agent-builder}} triggers, and AI-assisted query editing and troubleshooting. This setting is turned off by default.
 
 When the setting is on, you can:
 
@@ -165,14 +165,14 @@ When the setting is on, you can:
 
 Each time the Attack Discovery skill runs, {{agent-builder}} opens a new conversation for that run (including manual and scheduled runs from the Attacks view).
 
-### How the setting affects schedules
+### How Attack Discovery Workflows affects existing schedules
 
-Turning the setting on does **not** update existing Attack Discovery schedules automatically. Schedules you already created keep their previous behavior and do not adopt the 9.5 skill enhancements (flexible alert retrieval, generation, and validation) until someone opens each schedule and saves it again while the setting is on. New schedules created after you enable the setting use the enhanced path from the start.
+Turning the setting on does not update existing schedules. Open and save each schedule again while the setting is on, or create a new schedule. Later runs then use the workflow-backed path for alert retrieval, generation, and validation.
 
-If you later turn the setting off:
+If you turn the setting off:
 
-* An already-switched schedule does not revert to the previous path. It stops generating (without erroring) until the setting is turned on again, and it temporarily disappears from the schedule list.
-* Manual runs from the Attacks view always follow the setting's current value. They have no equivalent stickiness.
+* An already-switched schedule doesn't revert to the previous path. It stops generating (without erroring) until the setting is turned on again, and it temporarily disappears from the schedule list.
+* Manual runs from the Attacks view always follow the setting's current value.
 
 For how to edit schedules after you enable the setting, refer to [Schedule runs from the Attacks view](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).
 

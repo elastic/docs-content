@@ -12,14 +12,14 @@ products:
 
 # Manage saved discoveries [manage-saved-discoveries]
 
-Discoveries are saved automatically after Attack Discovery runs, so you can revisit them for review, reporting, and ongoing investigations. Use the table to open the guide that matches what you need to do.
+Discoveries are saved automatically after Attack Discovery runs. Use the table to open the matching guide.
 
-## Choose the right page for your goal [choose-page]
+## Choose where to manage discoveries [choose-page]
 
 | Best for | Available in | Go to |
 |---|---|---|
-| Day-to-day triage of attack findings together with their related alerts, including assign, tag, filter, and case actions. | {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` | [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) |
-| Manage saved discoveries without alert-linked triage. Update status, share findings, run bulk actions, and search discoveries on the dedicated Attack Discovery UI (the primary manage surface before Attacks in {{stack}} 9.5). | {applies_to}`stack: ga 9.1-9.4` | [Attack Discovery page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md) |
+| Day-to-day triage of attack findings together with their related alerts, including assign, tag, filter, and case actions. | {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` | [Manage from the Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) |
+| Update status, share findings, run bulk actions, and search discoveries on the Attack Discovery page (primary before Attacks in {{stack}} 9.5). | {applies_to}`stack: ga 9.1-9.4` | [Manage from the Attack Discovery page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md) |
 
 :::{note}
 :applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
