@@ -41,11 +41,6 @@ serverless: ga
 
 The **Anomalies** column shows each service's highest [{{ml}}](/solutions/observability/apm/machine-learning.md) anomaly score for the selected time range, replacing the previous health status. To use this feature, {{anomaly-detect}} must be enabled.
 
-:::{image} /solutions/images/observability-apm-services-overview.png
-:alt: Example view of the Services inventory in the Applications UI in Kibana
-:screenshot:
-:::
-
 ## Service groups [service-groups]
 
 ::::{note}
