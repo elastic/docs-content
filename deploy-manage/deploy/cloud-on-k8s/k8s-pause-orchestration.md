@@ -14,7 +14,7 @@ During maintenance windows, such as draining {{k8s}} nodes or applying infrastru
 
 ## Paused vs. fully unmanaged [k8s-pause-vs-unmanaged]
 
-ECK provides two annotations that affect reconciliation behaviour:
+ECK provides two annotations that affect reconciliation behavior:
 
 | Annotation | Effect |
 |---|---|
@@ -49,7 +49,7 @@ The same annotation works on any other resource type. Only the exact string valu
 
 ## What continues and what pauses [k8s-pause-orchestration-behaviour]
 
-| Operation | Behaviour when paused |
+| Operation | Behavior when paused |
 |---|---|
 | Certificate rotation (HTTP and transport) | Continues |
 | Service reconciliation | Continues |
