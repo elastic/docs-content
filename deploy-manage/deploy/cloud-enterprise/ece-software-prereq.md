@@ -17,6 +17,7 @@ To install ECE, make sure you prepare your environment with the following softwa
 * [Free RAM](#ece-free-ram)
 * [XFS](#ece-xfs)
 * [FIPS compliance](#ece-fips)
+* [Swap considerations](#ece-swap-considerations)
 
 
 ## Supported Linux kernel [ece-linux-kernel] 
@@ -88,3 +89,28 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 :::
 
 For more information about FIPS compliance across the {{stack}}, refer to [](/deploy-manage/security/fips.md).
+
+
+## Swap considerations [ece-swap-considerations]
+
+Unlike Elasticsearch nodes, which run with [swap disabled](/deploy-manage/deploy/self-managed/setup-configuration-memory.md), ECE hosts have different swap requirements depending on the host role.
+
+### Director hosts
+
+::::{warning}
+Do not enable swap on director hosts. ECE director hosts run ZooKeeper, and swapping seriously degrades ZooKeeper performance. Refer to the [ZooKeeper administrator guide](https://zookeeper.apache.org/doc/current/zookeeperAdmin.html) for details.
+::::
+
+### Allocator and other hosts
+
+If an ECE allocator runs out of memory, the Linux out of memory (OOM) killer stops a random process on the runner. Having swap space available can prevent this from happening and protect the availability of ECE services.
+
+:::{important}
+Swap should be treated as an emergency safety net only — not as a way to overcommit memory or reduce host RAM. If a container runtime process (Docker or Podman) runs on swap, it can cause allocator failures due to API timeouts (visible as errors in `allocator.log`). Always ensure allocators are not over-allocated so the OS does not routinely rely on swap.
+:::
+
+There is no specific recommendation for sizing swap, but 4 GB of swap per 32 GB of RAM has proven to be a reasonable safeguard for most ECE installations. As a baseline, ECE hosts should have at least 512 MB of swap space.
+
+Set the `vm.swappiness` kernel setting to `1`, as described in the [Configure your OS](./configure-operating-system.md) preparation guides, so that swap is used only as a last resort.
+
+The method for provisioning swap space depends on your operating system and infrastructure provider. Consult your OS or cloud provider's documentation for instructions on creating a swap file or partition.
