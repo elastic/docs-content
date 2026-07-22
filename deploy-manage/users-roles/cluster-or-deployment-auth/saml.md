@@ -202,7 +202,7 @@ With this configuration, {{kib}} redirects all unauthenticated users to your IdP
 If you run multiple {{kib}} instances connected to the same cluster or deployment (for example, behind a load balancer), apply this SAML provider configuration to every instance. If each instance is accessed through a different URL, each needs its own SAML realm. Refer to [Multiple {{kib}} instances and URLs](#_operating_multiple_kib_instances).
 :::
 
-#### Allow both SAML and username/password login [saml-kibana-basic]
+#### Allow both SAML and basic authentication [saml-kibana-basic]
 
 To let some users (for example, local administrators) log in with a username and password, enable a basic provider alongside SAML:
 
@@ -302,7 +302,7 @@ GET /_security/_authenticate
 The response shows the authenticated username, assigned roles, and SAML metadata. If roles are missing or incorrect, review your role mapping rules, the realm configuration, and the SAML attributes your IdP is sending.
 
 :::{tip}
-If SAML is not yet working and you cannot access {{kib}}, make sure you have configured a basic authentication provider as described in [Allow both SAML and username/password login](#saml-kibana-basic).
+If SAML is not yet working and you cannot access {{kib}}, make sure you have configured a basic authentication provider as described in [Allow both SAML and basic authentication](#saml-kibana-basic).
 :::
 
 If something does not work as expected, refer to the [SAML troubleshooting documentation](../../../troubleshoot/elasticsearch/security/trb-security-saml.md) for common issues and their resolutions, including how to enable debug logging to diagnose authentication failures.
