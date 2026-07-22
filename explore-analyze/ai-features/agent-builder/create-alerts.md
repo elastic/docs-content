@@ -28,7 +28,11 @@ Before you create a rule, make sure that:
 
 ## Create a rule
 
-Alert on the trace data with an [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md) that runs an ES|QL query on a schedule and runs an action when the query returns matches. For a simple count-based threshold, you can use an [index threshold rule](/explore-analyze/alerting/alerts/rule-type-index-threshold.md) instead. The index threshold rule cannot sum the token fields, so use the {{es}} query rule with ES|QL for token-based alerts.
+Alert on the trace data with an [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md) that runs an ES|QL query on a schedule and runs an action when the query returns matches.
+
+:::{tip}
+For a simple count-based threshold, you can use an [index threshold rule](/explore-analyze/alerting/alerts/rule-type-index-threshold.md) instead. It cannot sum the token fields, so use the {{es}} query rule with ES|QL for token-based alerts.
+:::
 
 With ES|QL, the query targets the data stream directly in its `FROM` command, so you do not need a data view. The alert condition lives in the query, usually in a `WHERE` clause that compares a value to a threshold. Query one space at a time and avoid wildcards, so you do not mix data from different spaces.
 
@@ -42,13 +46,13 @@ With ES|QL, the query targets the data stream directly in its `FROM` command, so
     * **Select alert group**: select **Create an alert for each row** to raise one alert per matching row, for example per conversation over the threshold. Select **Create an alert if matches are found** to raise a single alert when the query returns any rows.
 6. Set the **time window** to define how far back the query searches, for example the last hour.
 7. Set the **check interval** to define how often the rule runs. Keep it smaller than the time window to avoid gaps in detection.
+
+    :::{note}
+    ES|QL rules do not offer the **Exclude matches from previous run** option. If the check interval is smaller than the time window, a row that keeps matching can alert more than once. Choose the time window, check interval, and query so that a condition alerts as often as you want.
+    :::
 8. Click **Test query** to confirm the query is valid. For an ES|QL query, the matching rows appear in a table.
 9. Add an action, select a connector, then set the action frequency. See [Add actions](/explore-analyze/alerting/alerts/rule-type-es-query.md#_add_actions).
 10. Click **Save**.
-
-:::{note}
-ES|QL rules do not offer the **Exclude matches from previous run** option. If the check interval is smaller than the time window, a row that keeps matching can alert more than once. Choose the time window, check interval, and query so that a condition alerts as often as you want.
-:::
 
 After you save the rule, it appears on the **{{rules-ui}}** page, where you can confirm that it runs on schedule and check its status.
 
@@ -58,6 +62,10 @@ Each example gives an ES|QL query and the rule settings to use with it. Adjust t
 
 :::{note}
 These queries are starting points, not tested rules. Run each one with **Test query** on your own data before you rely on it. Replace `default` in `traces-agent_builder.otel-default` with your space id. The rule applies its own time window through the **Time field** you select, so the queries do not include a `@timestamp` filter. If you run a query outside a rule, make sure a time range applies, through the {{kib}} time picker or a `@timestamp` filter in the query, so it does not scan the whole data stream.
+:::
+
+:::{note}
+By default, {{agent-builder}} anonymizes custom tool names, so any query that groups by tool name buckets all custom tools under `execute_tool custom`. Built-in tools keep their names. To group by individual custom tool names, turn on **Include real tool and agent names in traces** (`agentBuilder:tracing:includeRealNames`).
 :::
 
 ### A conversation exceeds a token limit
@@ -142,9 +150,9 @@ Rule settings:
 Each alert identifies the tool by its span name, for example `execute_tool <toolId>`.
 
 :::{note}
-By default, {{agent-builder}} anonymizes custom tool names, so each custom tool's span name becomes `execute_tool custom` and this alert groups all custom tools into one bucket. Built-in tools keep their names. To alert on individual custom tools, turn on **Include real tool and agent names in traces** (`agentBuilder:tracing:includeRealNames`).
+{applies_to}`stack: ga 9.5`
 
-In 9.5, `status.code == "Error"` on `execute_tool` spans is set only for parameter and schema validation errors, such as invalid arguments. Errors that a tool catches and returns as a result do not set this status, so this alert can miss some tool failures.
+`status.code == "Error"` on `execute_tool` spans is set only for parameter and schema validation errors, such as invalid arguments. Errors that a tool catches and returns as a result do not set this status, so this alert can miss some tool failures.
 :::
 
 <!-- TODO(author): kibana#277689 (returned tool errors also set status.code == "Error" and add attributes.error.type = "tool_error") merged for 9.6 with backport:skip, so it is NOT in 9.5. The 9.5 note above stays correct. Revisit this when documenting 9.6. -->
