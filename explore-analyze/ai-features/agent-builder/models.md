@@ -109,25 +109,19 @@ serverless: ga
 
 To reduce latency, {{agent-builder}} automatically routes some low-effort, latency-sensitive operations to a fast model instead of your default model. A fast model is a smaller, high-throughput model that returns results more quickly than a frontier reasoning model.
 
-This routing is automatic. You do not need to configure anything to benefit from it. Your default model still handles agent reasoning, tool selection, and response synthesis.
+This routing is automatic and cannot be turned off. You do not need to configure anything to benefit from it. Your default model still handles agent reasoning, tool selection, and response synthesis.
 
 ### When the fast model is used
 
 {{agent-builder}} uses the fast model for well-scoped tasks that do not need deep reasoning, such as {{esql}} query generation and conversation title generation.
 
-### Fast models on Elastic-managed deployments
+### Fast model availability by deployment type
 
-On {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} uses Elastic Managed LLMs on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md) by default, so the fast model is preconfigured. No setup is required. Examples of preconfigured fast models include Claude 4.5 Haiku and Gemini 3.0 Flash. The latency improvement is most noticeable on {{serverless-full}}.
+On {{serverless-full}} projects and {{ech}} deployments, the fast model is preconfigured through Elastic Managed LLMs on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md), with no setup. Claude Haiku 4.5 is one example. The latency improvement is most noticeable on {{serverless-full}}.
 
-### Change the fast model
+On {{ece}}, {{eck}}, and self-managed deployments, there is no preconfigured fast model unless you [connect to EIS through Cloud Connect](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md). Without it, fast model routing falls back to your default model.
 
-To use a specific model instead of the default fast model, open the **Feature settings** page. In the **Agent Builder** section, turn off **Use recommended defaults** for **Fast models**, then assign the models you want. To find this page, refer to [Change the default model](#change-the-default-model).
-
-:::{image} images/agent-builder-fast-models-feature-settings.png
-:alt: Main models and Fast models cards in the Agent Builder section of the Feature settings page
-:width: 600px
-:screenshot:
-:::
+<!-- TODO(#15449): "Change the fast model" (custom fast-model assignment) is omitted for 9.5. Re-add this section when the https://github.com/elastic/search-team/issues/15449 fix ships. -->
 
 ### Fallback behavior
 
