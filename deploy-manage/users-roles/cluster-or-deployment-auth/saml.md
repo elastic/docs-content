@@ -286,7 +286,7 @@ If your users also exist in a repository that can be directly accessed by {{es}}
 3. Set `authorization_realms` in your SAML realm to the name of the realm from step 2.
 ::::
 
-::::{step} Test your configuration
+::::{step} Test SAML authentication
 :anchor: saml-test
 
 After applying all changes, open {{kib}} in a browser. You should be redirected to your IdP's login page. After authenticating, you should be returned to {{kib}} as a logged-in user.
@@ -298,6 +298,10 @@ GET /_security/_authenticate
 ```
 
 The response shows the authenticated username, assigned roles, and SAML metadata. If roles are missing or incorrect, review your role mapping rules, the realm configuration, and the SAML attributes your IdP is sending.
+
+:::{tip}
+If SAML is not yet working and you cannot access {{kib}}, make sure you have configured a basic authentication provider as described in [Allow both SAML and username/password login](#saml-kibana-basic).
+:::
 
 If something does not work as expected, refer to the [SAML troubleshooting documentation](../../../troubleshoot/elasticsearch/security/trb-security-saml.md) for common issues and their resolutions, including how to enable debug logging to diagnose authentication failures.
 ::::
