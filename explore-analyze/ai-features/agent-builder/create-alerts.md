@@ -150,7 +150,7 @@ Rule settings:
 Each alert identifies the tool by its span name, for example `execute_tool <toolId>`.
 
 :::{note}
-{applies_to}`stack: ga 9.5`
+{applies_to}`stack: ga =9.5`
 
 `status.code == "Error"` on `execute_tool` spans is set only for parameter and schema validation errors, such as invalid arguments. Errors that a tool catches and returns as a result do not set this status, so this alert can miss some tool failures.
 :::
