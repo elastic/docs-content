@@ -99,7 +99,7 @@ Register the {{stack}} as a SAML service provider in your IdP. The exact steps v
 2. Set the **Assertion Consumer Service (ACS) URL** to your {{kib}} base URL followed by `/api/security/saml/callback` (for example, `https://kibana.example.com/api/security/saml/callback`).
 3. Set the **entity ID** to a URI that uniquely identifies this {{kib}} instance as a Service Provider. We recommend using the {{kib}} base URL (for example, `https://kibana.example.com`).
 4. Set the **logout URL** to your {{kib}} base URL followed by `/logout` if your IdP supports Single Logout (for example, `https://kibana.example.com/logout`).
-5. Identify the user attributes your IdP can include in SAML assertions. Consult your IdP documentation or local admin. This varies between providers. These attribute URIs will be used to configure the attribute mapping in {{es}}.
+5. Identify the user attributes your IdP can include in SAML assertions. Consult your IdP documentation or local admin. This varies between providers. These attribute URIs will be used to configure the attribute mapping in the {{es}} realm.
 6. Note the **IdP metadata URL** or download the metadata file. You will need this for the {{es}} configuration.
 
 :::{tip}
@@ -179,10 +179,6 @@ The attribute URIs must exactly match what your IdP sends in the assertion. A mi
 :::
 
 The most important mappings are `attributes.principal` and `attributes.groups`: `attributes.principal` is required and determines the username {{es}} assigns to the authenticated user, and `attributes.groups` is recommended if you want to assign roles based on IdP group memberships. For the full list of mappable user properties and advanced use cases (such as mapping from the SAML `NameID` or extracting partial attribute values with regular expressions), refer to [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
-
-:::{note}
-SAML assertions have a short validity window. If the system clocks of {{es}} and your IdP differ by more than a few minutes, authentication will fail with a validation error. Ensure clocks are synchronized using NTP.
-:::
 
 ::::
 
