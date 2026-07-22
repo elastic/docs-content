@@ -25,6 +25,8 @@ Techniques that apply across workflow types, regardless of which outcome you're 
 - [Compose workflows from reusable parts](/explore-analyze/workflows/authoring-techniques/compose-workflows.md): Decompose long workflows into reusable child workflows, design the input and output contract, and fan out with asynchronous composition.
 - [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md): Pause a workflow for reviewer input and resume on their decision.
 - [Monitor workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md): Track runs, review execution history, and troubleshoot failures.
+- [View workflow executions](/explore-analyze/workflows/authoring-techniques/view-workflow-executions.md): Browse and filter executions across your space in the global Executions view. {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
+% Follow-up (#1453): If Executions is added to the Workflows side-nav menu later, update this blurb.
 - [Manage and organize workflows](/explore-analyze/workflows/authoring-techniques/manage-workflows.md): Find, edit, duplicate, enable, and disable workflows from the **Workflows** page.
 - [Troubleshoot workflows](/explore-analyze/workflows/authoring-techniques/troubleshooting.md): Resolve common issues with triggers, flow control, cases, alerts, Liquid, AI steps, composition, human-in-the-loop, and concurrency.
 - [Migrate workflows from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md): Side-by-side replacements for the deprecated Case aliases, HTTP step `timeout` relocation, and scheduled-trigger minimum interval.
