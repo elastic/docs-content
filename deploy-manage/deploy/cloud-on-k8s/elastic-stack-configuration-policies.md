@@ -502,7 +502,7 @@ ECK watches all referenced ConfigMaps and Secrets and automatically reconciles t
 
 | Expression | Behavior |
 |---|---|
-| `${VAR}` | Substituted with the value of `VAR` from the sources. Error if `VAR` is not defined in any source. |
+| `${VAR}` | Substituted with the value of `VAR` from the sources. If `VAR` is not defined in any source, left verbatim — this may cause an error downstream if Elasticsearch or Kibana cannot resolve the expression. |
 | `${VAR:-default}` | Substituted with the value of `VAR`, or `default` if `VAR` is not defined. |
 
 Only string-typed fields can be templated. Numeric, boolean, and object fields cannot be substituted because source values are always strings and the target type cannot be inferred.
