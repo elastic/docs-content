@@ -14,7 +14,7 @@ products:
 Change status, share, bulk-act on, and search saved discoveries from the dedicated **Attack Discovery** page. For which page to use in your version, refer to [Manage saved discoveries](/solutions/security/ai/attack-discovery/manage-saved-discoveries.md).
 
 :::{note}
-:applies_to: {"stack": "preview =9.4, ga 9.5+", "serverless": "ga"}
+:applies_to: {"stack": "preview =9.4, ga 9.5+", "serverless": {"security": "ga"}}
 To triage discoveries next to their related alerts, and to assign or tag them, use the [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) at **Detections > Views > Attacks** instead.
 :::
 

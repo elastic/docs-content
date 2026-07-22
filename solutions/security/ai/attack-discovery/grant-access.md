@@ -30,6 +30,8 @@ Your role needs these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or
 
 ```{applies_to}
 stack: ga 9.1+
+serverless:
+  security: ga
 ```
 
 Your role needs the appropriate [index privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_index_privileges) based on what it must do with Attack Discovery alerts. Replace `<space-id>` with the {{kib}} space ID.
@@ -56,9 +58,8 @@ Your role needs the {{es}} privileges `read`, `view_index_metadata`, `write`, an
 
 ```{applies_to}
 stack: ga 9.5+
-serverless: ga
+serverless:
+  security: ga
 ```
 
-When you turn on the [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting, your role may need additional Workflows privileges based on what it must do.
-
-Your role needs `All` or `Read` for **Analytics > Workflows**, depending on the action. {{serverless-short}} roles include Workflows access by default. On self-managed and {{ech}} deployments, you must add Workflows access to custom roles. Refer to [Manage access to workflows](/explore-analyze/workflows/get-started/setup.md#workflows-role-access) for more information.
+When you turn on [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows), your role needs access to **Analytics > Workflows**. {{serverless-short}} roles include that access by default. On self-managed and {{ech}} deployments, add it to custom roles. For the privilege level each action needs, refer to [Manage access to workflows](/explore-analyze/workflows/get-started/setup.md#workflows-role-access).

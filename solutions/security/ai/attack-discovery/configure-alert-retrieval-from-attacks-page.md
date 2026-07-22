@@ -3,7 +3,8 @@ navigation_title: Configure Attack Discovery settings
 description: "Configure alert retrieval, generation, and validation for Attack Discovery from the Attacks view."
 applies_to:
   stack: preview =9.4, ga 9.5+
-  serverless: ga
+  serverless:
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -11,18 +12,23 @@ products:
 
 # Configure Attack Discovery settings from the Attacks view [configure-alert-retrieval-from-attacks-page]
 
-Choose which alerts to analyze and how generation and validation run. From the **Attacks** view, use the settings flyout when Attack Discovery Workflows is on, or the schedule flyout's alert selection controls when it is off. Use the table to find the right section. After you configure settings, [start a manual run](/solutions/security/ai/attack-discovery/manual-runs-from-attacks-page.md) or [create a schedule](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).
+You can configure which alerts Attack Discovery retrieves, and how discoveries are created and checked. Use the table to open the section that matches your setup.
 
 | Your setup | Available in | Go to |
 |---|---|---|
 | [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) is turned on. Configure alert retrieval methods, generation, and validation for manual runs and schedules. | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | [Configure the Attack discovery settings flyout](#attacks-page-settings-flyout) |
 | Attack Discovery Workflows is turned off. Use the KQL query bar, time filter, and alerts slider when you create or edit a schedule. | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | [Select alerts in the schedule flyout](#attacks-page-schedule-alert-selection) |
-| You are creating or editing a schedule on the **Attacks** page. | {applies_to}`stack: preview =9.4` | [Select alerts in the schedule flyout](#attacks-page-schedule-alert-selection) |
+
+:::{note}
+:applies_to: stack: preview =9.4
+Choose alerts when you create or edit a schedule. Refer to [Select alerts in the schedule flyout](#attacks-page-schedule-alert-selection) for more information.
+:::
 
 ## Configure the Attack discovery settings flyout [attacks-page-settings-flyout]
 ```{applies_to}
 stack: ga 9.5+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 Open the **Attack discovery settings** flyout from the **Attacks** view by selecting **Settings**. Use it to configure alert retrieval, generation, and validation.

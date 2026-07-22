@@ -20,6 +20,6 @@ Attack Discovery saves findings automatically after each run. From there you can
 | Update status, share findings, run bulk actions, and search discoveries on the Attack Discovery page (primary before Attacks in {{stack}} 9.5). | {applies_to}`stack: ga 9.1-9.4` | [Manage from the Attack Discovery page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md) |
 
 :::{note}
-:applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
+:applies_to: {"stack": "ga 9.5+", "serverless": {"security": "ga"}}
 On the Elastic AI SOC Engine (EASE) tier, the **Attacks** view is unavailable. Use the [Attack Discovery page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md) instead.
 :::

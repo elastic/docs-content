@@ -3,7 +3,8 @@ navigation_title: Manual runs
 description: "Manually run Attack Discovery from the Attacks view, or from the Attack Discovery page in 9.4."
 applies_to:
   stack: preview =9.4, ga 9.5+
-  serverless: ga
+  serverless:
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -15,7 +16,7 @@ Manually run Attack Discovery when you want to analyze the current alert selecti
 
 :::::{applies-switch}
 
-::::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
+::::{applies-item} { "stack": "ga 9.5+", "serverless": {"security": "ga"} }
 
 To manually run Attack Discovery from the **Attacks** view:
 
@@ -29,16 +30,14 @@ Analysis can take from a few seconds to several minutes, depending on the number
 Attack Discovery uses the same data anonymization settings as [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md). Configure which alert fields are sent to the LLM, and which are obfuscated, in the Elastic AI Assistant settings. Consider the privacy policies of third-party LLMs before sending them sensitive data.
 :::
 
-After the run finishes, [manage discoveries from the Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md). If the run fails, [troubleshoot it with AI](/solutions/security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md).
+After the run finishes, [manage discoveries from the Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md). If the run fails, [troubleshoot it with AI](/solutions/security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md). To run Attack Discovery automatically at intervals, [schedule a run](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).
 
 ::::
 
 ::::{applies-item} stack: preview =9.4
 
-In 9.4, start manual runs from the [Attack Discovery page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries). Use the **Attacks** page for triage and schedules.
+Start manual runs from the [Attack Discovery page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries). Use the **Attacks** page for triage, or [schedule a run](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md) for recurring analysis.
 
 ::::
 
 :::::
-
-To run Attack Discovery automatically at intervals, [schedule a run](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).

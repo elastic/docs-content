@@ -39,7 +39,7 @@ Start by retrieving all open findings and prioritizing them by risk score. This 
 
 :::::{applies-switch}
 
-::::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
+::::{applies-item} { "stack": "ga 9.5+", "serverless": {"security": "ga"} }
 
 1. Go to **Detections > Views > Attacks** (or **Attack Discovery** if you prefer that page).
 2. Use the **Status** filter to show only **Open** findings.

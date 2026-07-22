@@ -3,7 +3,8 @@ navigation_title: Manage from Attacks view
 description: "Triage Attack Discovery findings alongside related alerts from the Attacks view under Detections."
 applies_to:
   stack: preview =9.4, ga 9.5+
-  serverless: ga
+  serverless:
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -11,7 +12,7 @@ products:
 
 # Manage discoveries from the Attacks view [attacks-page]
 
-The **Attacks** view brings Attack Discovery findings together with their related alerts under **Detections**. Open it at **Detections > Views > Attacks**. 
+The **Attacks** view brings Attack Discovery findings together with their related alerts. Open it at **Detections > Views > Attacks**. 
 
 This page covers how to filter and search attacks, tell manually generated and scheduled attacks apart, review linked alerts, and take triage actions.
 
@@ -30,7 +31,8 @@ Below the summary, the Attacks table lists individual attacks. Expand an attack 
 
 ```{applies_to}
 stack: ga 9.5+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 The **Generations** control center in the **Attacks** view header lists recent Attack Discovery runs. Open it to check run status and open workflow execution details.
@@ -41,7 +43,7 @@ If a run fails, is canceled or dismissed, or an analysis step fails, [troublesho
 
 ::::{applies-switch}
 
-:::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
+:::{applies-item} { "stack": "ga 9.5+", "serverless": {"security": "ga"} }
 
 The Attacks table lists both manually generated and scheduled discoveries. Both types share the same details flyout and triage actions. To start a manual run, refer to [Manually run Attack Discovery](/solutions/security/ai/attack-discovery/manual-runs-from-attacks-page.md).
 
@@ -75,7 +77,7 @@ Use the controls at the top of the Attacks table to narrow results:
 | Sort | Use the **Sort by** menu to sort by **Most recent**, **Least recent**, **Most alerts**, or **Least alerts**. |
 
 :::{note}
-:applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
+:applies_to: {"stack": "ga 9.5+", "serverless": {"security": "ga"}}
 **Type**, **Connector**, and **Assignees** filter selections persist across page reloads. The **Attacks volume over time** summary graph updates to match the filters you apply.
 :::
 
@@ -113,7 +115,8 @@ The **Attacks** view uses one data view that combines the attacks index and the 
 ## Review alerts for an attack [attacks-alerts-tab]
 ```{applies_to}
 stack: ga 9.5+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 When you open an attack's details, the **Alerts** tab shows the alerts linked to that attack.

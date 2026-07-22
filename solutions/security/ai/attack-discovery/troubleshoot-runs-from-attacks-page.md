@@ -3,7 +3,8 @@ navigation_title: Troubleshoot with AI
 description: "Use AI troubleshooting from the Attacks view to diagnose failed Attack Discovery runs."
 applies_to:
   stack: ga 9.5+
-  serverless: ga
+  serverless:
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -27,15 +28,7 @@ To troubleshoot a run with AI, you need:
 3. Select a failed, canceled, or dismissed run, or a run with a failed analysis step.
 4. Start AI troubleshooting.
 
-AI troubleshooting:
-
-* Pre-loads a diagnostic summary
-* Walks through the analysis steps (alert retrieval > generation > validation)
-* Identifies what failed and suggests a fix
-
-Like query editing, troubleshooting uses a dedicated {{agent-builder}} skill that does not replace the main generation skill.
-
-After you identify the fix, update your [Attack Discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md) if needed, then [start another manual run](/solutions/security/ai/attack-discovery/manual-runs-from-attacks-page.md) or wait for the next scheduled run.
+AI troubleshooting pre-loads a diagnostic summary, walks through the analysis steps (alert retrieval, generation, and validation), then identifies what failed and suggests a fix. After you identify the fix, update your [Attack Discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md) if needed, then [start another manual run](/solutions/security/ai/attack-discovery/manual-runs-from-attacks-page.md) or wait for the next scheduled run.
 
 ## Download a diagnostic report [troubleshoot-runs-diagnostic-report]
 

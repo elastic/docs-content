@@ -137,24 +137,25 @@ Turn on the `securitySolution:enableGraphVisualization` setting to integrate the
 ## Enable alerts and attacks alignment [enable-alerts-and-attacks-alignment]
 ```{applies_to}
 stack: preview =9.4, ga 9.5+
-serverless: ga
+serverless:
+  security: ga
 ```
 
-The [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) is a single place to triage Attack Discovery findings alongside their related alerts, next to **Alerts** under **Detections**.
+The [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) is a single place to triage Attack Discovery findings alongside their related alerts, next to **Alerts**.
 
 The **Enable alerts and attacks alignment** setting (`securitySolution:enableAlertsAndAttacksAlignment`) controls whether **Attacks** appears in the {{security-app}} navigation. The setting is on by default in {{stack}} 9.5 and off by default in {{stack}} 9.4.
 
 :::{note}
-:applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
+:applies_to: {"stack": "ga 9.5+", "serverless": {"security": "ga"}}
 On the Elastic AI SOC Engine (EASE) tier, the **Attacks** view is unavailable. Use the dedicated [Attack Discovery page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md) instead.
 :::
 
 ## Enable Attack Discovery Workflows [enable-attack-discovery-workflows]
 ```{applies_to}
 stack: ga 9.5+
-serverless: ga
+serverless:
+  security: ga
 ```
-
 Turn on the **Attack Discovery Workflows** advanced setting (`securitySolution:enableAttackDiscoveryWorkflows`) to enable Attack Discovery workflows for the space. When enabled, Attack Discovery uses workflows to collect alerts and run analysis. This turns on flexible alert retrieval on the Attacks view, workflow and {{agent-builder}} triggers, and AI-assisted query editing and troubleshooting. This setting is turned off by default.
 
 When the setting is on, you can:

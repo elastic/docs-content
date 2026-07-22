@@ -1,6 +1,6 @@
 ---
-navigation_title: Run from Attack Discovery page
-description: "Manually run Attack Discovery or set up a recurring schedule from the Attack Discovery page."
+navigation_title: Attack Discovery page
+description: "Generate Attack Discovery findings manually on demand or automatically on a recurring schedule, directly from the Attack Discovery page."
 applies_to:
   stack: ga
   serverless:
@@ -10,41 +10,18 @@ products:
   - id: cloud-serverless
 ---
 
-# Run Attack Discovery from the Attack Discovery page [run-from-attack-discovery-page]
+# Run from the Attack Discovery page [run-from-attack-discovery-page]
 
-Configure which alerts get analyzed, manually run Attack Discovery, and set up a recurring schedule from the dedicated **Attack Discovery** page.
+This page describes how to run Attack Discovery from the **Attack Discovery** page. You can configure which alerts get analyzed, start an on-demand run, and set up a recurring schedule so discoveries are generated automatically.
 
-::::{applies-switch}
-
-:::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
-
-Prefer the **Attacks** view at **Detections > Views > Attacks** for manual runs, schedules, and triage next to related alerts. Refer to [Run from the Attacks view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md).
-
+:::{note}
+:applies_to: {"stack": "ga 9.5+", "serverless": {"security": "ga"}}
+On {{stack}} 9.5+ and {{serverless-short}} use the [**Attacks**](/solutions/security/ai/attack-discovery/run-from-attacks-page.md)  view to configure, run, and schedule Attack Discovery.
 :::
 
-:::{applies-item} stack: preview =9.4
-
-Use this page for manual runs. Create and manage schedules from here or from the **Attacks** page. For triage next to related alerts, refer to [Manage discoveries from the Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
-
-:::
-
-::::
-
-## Before you begin [run-from-attack-discovery-page-before-you-begin]
-
-To use the **Attack Discovery** page, you need:
-
-* (Optional) The [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on if you want workflow-backed runs and AI troubleshooting from this page.
-* A role with the [index privileges](/solutions/security/ai/attack-discovery/grant-access.md#ad-index-privileges) required to generate and read discoveries, and these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_kibana_privileges) at minimum:
-  * **Security > Attack discovery**: `All`
-  * **Security > Rules and Exceptions**: `Read`
-  * **Security > Alerts**: `Read`
-
-## Configure which alerts to analyze [set-up-attack-discovery]
+## Set up Attack Discovery [set-up-attack-discovery]
 
 By default, Attack Discovery analyzes up to 100 alerts from the last 24 hours, but you can customize how many and which alerts it analyzes using the settings menu. To open it, click the settings icon next to the **Run** button.
-
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` When the [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting is turned on, the primary settings experience for skill, query, and workflow retrieval is the **Attack discovery settings** flyout on the [Attacks view](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md). This page keeps the classic settings menu described below.
 
 :::{note}
 :applies_to: stack: ga =9.0
@@ -70,11 +47,9 @@ Attack Discovery is designed for use with alerts based on data that complies wit
 The next time you run Attack Discovery it will be able to analyze the selected fields.
 :::
 
-After you choose which alerts to analyze, [manually run Attack Discovery](#attack-discovery-generate-discoveries) or [create a schedule](#schedule-discoveries).
+## Generate discoveries manually [attack-discovery-generate-discoveries]
 
-## Manually run Attack Discovery [attack-discovery-generate-discoveries]
-
-Manually run Attack Discovery to start analyzing alerts immediately. Select an LLM connector before you analyze alerts.
+You’ll need to select an LLM connector before you can analyze alerts. 
 
 To get started:
 
@@ -98,57 +73,76 @@ It may take from a few seconds up to several minutes to generate discoveries, de
 Attack Discovery uses the same data anonymization settings as [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md). To configure which alert fields are sent to the LLM and which of those fields are obfuscated, use the Elastic AI Assistant settings. Consider the privacy policies of third-party LLMs before sending them sensitive data.
 ::::
 
-After discoveries appear, [manage them from the Attack Discovery page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md). {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` For triage next to related alerts, use the [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
-
-## Schedule Attack Discovery runs [schedule-discoveries]
+## Schedule runs [schedule-discoveries]
 
 ```{applies_to}
 stack: ga 9.1
 serverless: ga
 ```
 
+:::{note}
+{applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` You can also [create and manage schedules from the Attacks page](/solutions/security/ai/attack-discovery/run-from-attacks-page.md). Schedules created on either page appear on both.
+:::
+
+You can define recurring schedules (for example, daily or weekly) to automatically generate attack discoveries without needing manual runs. For example, you can generate discoveries every 24 hours and send a Slack notification to your SecOps channel if discoveries are found. Notifications are sent using configured [connectors](/deploy-manage/manage-connectors.md), such as Slack or email, and you can customize the notification content to tailor alert context to your needs.
+
+:::{note}
+You can still generate discoveries manually at any time, regardless of an active schedule.
+:::
+
 :::::{applies-switch}
-
-::::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
-
-For the primary schedule experience, use [Schedule runs from the Attacks view](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md) at **Detections > Views > Attacks**. You can still create and manage schedules from this page if you prefer the dedicated Attack Discovery experience. You can generate discoveries manually at any time, regardless of an active schedule.
-
-::::
 
 ::::{applies-item} stack: ga 9.1-9.4
 
-{applies_to}`stack: preview =9.4` For schedules from the **Attacks** page, use the same steps as [Schedule runs from the Attacks view](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md). Schedules created on either page appear on both.
-
-You can define recurring schedules (for example, daily or weekly) so Attack Discovery generates discoveries without manual runs. For example, run every 24 hours and send a Slack notification when discoveries are found. Notifications use configured [connectors](/deploy-manage/manage-connectors.md), such as Slack or email.
-
-You can still generate discoveries manually at any time, regardless of an active schedule.
-
-To create a schedule from this page:
+To create a new schedule:
 
 1. In the top-right corner, select **Schedule**.
 2. In the **Attack discovery schedule** flyout, select **Create new schedule**.
-3. Enter a name for the schedule.
+3. Enter a name for the new schedule.
 4. Select the LLM connector to use for generating discoveries, or add a new one.
-5. Use the KQL query bar, time filter, and alerts slider to choose which alerts to analyze.
+5. Use the KQL query bar, time filter, and alerts slider to customize the set of alerts that will be analyzed.
 6. Define the schedule's frequency (for example, every 24 hours).
-7. Optionally select notification [connectors](/deploy-manage/manage-connectors.md) and define their actions.
-8. Select **Create & enable schedule**.
+7. Optionally, select the [connectors](/deploy-manage/manage-connectors.md) to use for receiving notifications, and define their actions.
+8. Click **Create & enable schedule**.
 
-After you create schedules, you can view, edit, or delete them from the **Attack discovery schedule** flyout. Scheduled discoveries show a calendar icon. Select the icon to open the schedule that created the discovery.
+After creating new schedules, you can view their status, modify them or delete them from the **Attack discovery schedule** flyout.
 
-After discoveries appear from a schedule, [manage them from the Attack Discovery page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md). {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` For triage next to related alerts, use the [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
+:::{tip}
+Scheduled discoveries are shown with a **Scheduled Attack discovery** icon ({icon}`calendar`). Click the icon to view the schedule that created it.
+:::
+
+::::
+
+::::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
+
+To create a new schedule:
+
+1. In the top-right corner, select **Schedule**.
+2. In the **Attack discovery schedule** flyout, select **Create new schedule**.
+3. Enter a name for the new schedule.
+4. Select the LLM connector to use for generating discoveries, or add a new one.
+5. Use the KQL query bar, time filter, and alerts slider to customize the set of alerts that will be analyzed.
+6. Define the schedule's frequency (for example, every 24 hours).
+7. Optionally, select the [connectors](/deploy-manage/manage-connectors.md) to use for receiving notifications, and define their actions.
+8. Click **Create & enable schedule**.
+
+After creating new schedules, you can view their status, modify them, or delete them from the **Attack discovery schedule** flyout. You can also act on multiple schedules at once:
+
+1. In the schedule table, select the checkbox next to each schedule you want to act on.
+2. Select **Bulk actions**, then choose one of the following:
+
+    * **Enable** to enable the selected schedules.
+    * **Disable** to disable the selected schedules.
+    * **Delete** to delete the selected schedules. You'll be asked to confirm before the schedules are removed.
+
+Bulk actions apply only to the schedules you've explicitly selected in the table.
+
+To manage schedules programmatically, use the [Attack discovery API]({{kib-apis}}group/endpoint-security-attack-discovery-api), which includes endpoints for bulk-enabling, bulk-disabling, and bulk-deleting schedules.
+
+:::{tip}
+Scheduled discoveries are shown with a **Scheduled Attack discovery** icon ({icon}`calendar`). Click the icon to view the schedule that created it.
+:::
 
 ::::
 
 :::::
-
-## Open workflow execution details and troubleshoot with AI [attack-discovery-page-troubleshoot]
-
-```{applies_to}
-stack: ga 9.5+
-serverless: ga
-```
-
-After a run finishes, the success or failure banner can show a details button if you have workflow-read privileges. The button opens the workflow execution details flyout.
-
-From that flyout, a failed, canceled, or dismissed run (or any failed analysis step) offers a way to troubleshoot with AI. Refer to [Troubleshoot a run with AI](/solutions/security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md).
