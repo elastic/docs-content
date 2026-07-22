@@ -80,6 +80,7 @@ The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.update
 |---|---|
 | Fixed-duration pause | [`wait`](/explore-analyze/workflows/steps/wait.md) |
 | Pause for human input | [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md). Refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md). |
+| Pause for approve/reject | [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`. Refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md). |
 
 ### Transform data between steps [workflows-choose-transform]
 

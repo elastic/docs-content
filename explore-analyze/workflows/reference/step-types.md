@@ -85,6 +85,7 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`loop.continue`](/explore-analyze/workflows/steps/loop-continue.md) | Flow control | Skip to the next iteration. |
 | [`switch`](/explore-analyze/workflows/steps/switch.md) | Flow control | Multi-way dispatch. |
 | [`wait`](/explore-analyze/workflows/steps/wait.md) | Flow control | Pause for a fixed duration. |
+| [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | Flow control | Pause for approve/reject (human-in-the-loop). |
 | [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) | Flow control | Pause for human input (human-in-the-loop). |
 | [`while`](/explore-analyze/workflows/steps/while.md) | Flow control | Loop while a condition holds. |
 | [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute) | Composition (tech preview) | Run a child workflow synchronously. |
