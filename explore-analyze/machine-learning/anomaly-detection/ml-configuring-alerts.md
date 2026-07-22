@@ -69,7 +69,7 @@ anomaly with an `anomaly_score` of 75 or higher triggers the associated action.
 8. (Optional) Configure **Advanced settings**:
 
    :::{note}
-   :applies_to: stack: ga 9.6, serverless: ga
+   :applies_to: {"stack": "ga 9.6", "serverless": "ga"}
    When anomaly results include `event.ingested` (the time the result was written to the results index), the rule matches results indexed since the previous run. Each result is evaluated once, which avoids duplicate alerts when the check interval is shorter than the job's bucket span. The time an alert fires is not tied to the anomaly's bucket `timestamp`. The bucket `timestamp` (for example, in `context.timestamp`) indicates when the anomaly occurred; `event.ingested` indicates when the rule first sees the result. For older results that do not include `event.ingested`, the rule continues to use the _Lookback interval_.
    ::::
 
