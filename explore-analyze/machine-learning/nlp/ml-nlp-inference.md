@@ -119,7 +119,7 @@ PUT ner-test
 ```
 
 ::::{tip}
-To use the `annotated_text` data type in this example, you must install the [mapper annotated text plugin](elasticsearch://reference/elasticsearch-plugins/mapper-annotated-text.md). For more installation details, refer to [Add plugins provided with {{ech}}](elasticsearch://reference/elasticsearch-plugins/plugin-management.md).
+To use the `annotated_text` data type in this example, you must install the [mapper annotated text plugin](elasticsearch://reference/elasticsearch-plugins/mapper-annotated-text.md).
 ::::
 
 You can then use the new pipeline to index some documents. For example, use a bulk indexing request with the `pipeline` query parameter for your NER pipeline:

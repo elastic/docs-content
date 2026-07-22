@@ -128,6 +128,7 @@ toc:
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/upgrade.md
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/customization.md
               - folder: observability/get-started/opentelemetry/use-cases/llms
+              - file: observability/get-started/opentelemetry/use-cases/upstream-collector/index.md
           - file: observability/get-started/other-tutorials/index.md
             children:
               - file: observability/get-started/other-tutorials/tutorial-monitor-java-application.md
@@ -579,10 +580,18 @@ toc:
             children:
               - file: security/ai/ai-assistant-knowledge-base.md
               - file: security/ai/usecase-knowledge-base-walkthrough.md
-          - file: security/ai/attack-discovery.md
+          - file: security/ai/attack-discovery/index.md
             children:
-              - file: security/ai/attacks-page.md
-              - file: security/ai/triage-attack-discovery-findings.md
+              - file: security/ai/attack-discovery/grant-access.md
+              - file: security/ai/attack-discovery/run-attack-discovery.md
+                children:
+                  - file: security/ai/attack-discovery/run-from-attacks-page.md
+                  - file: security/ai/attack-discovery/run-from-attack-discovery-page.md
+              - file: security/ai/attack-discovery/triage-attack-discovery-findings.md
+              - file: security/ai/attack-discovery/manage-saved-discoveries.md
+                children:
+                  - file: security/ai/attack-discovery/manage-discoveries-from-attacks-page.md
+                  - file: security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md
           - file: security/ai/large-language-model-performance-matrix.md
           - file: security/ai/use-cases.md
             children:
@@ -604,6 +613,8 @@ toc:
                   - file: security/detect-and-alert/cross-project-search-detection-rules.md
                   - file: security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md
           - file: security/detect-and-alert/mitre-attack-coverage.md
+            children:
+              - file: security/detect-and-alert/remap-mitre-attack.md
           - file: security/detect-and-alert/prebuilt-rules.md
             children:
               - file: security/detect-and-alert/prebuilt-rule-components.md
