@@ -459,6 +459,11 @@ stack: preview 9.4
 serverless: preview
 ```
 
+::::{admonition} Requirements
+:applies_to: { ess:, ece:, eck:, self: }
+For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, approximation requires an [Enterprise subscription](https://www.elastic.co/subscriptions).
+::::
+
 On large datasets, you can trade exact results for speed by enabling [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries. Approximation runs your `STATS` aggregations on a sample of the data and extrapolates to estimate results for the full dataset, so the numbers come out close to the exact ones. You can enable approximation in two ways:
 
 - {applies_to}`{stack: "preview 9.5", serverless: "preview"}` From the {{kib}} UI, with [Fast mode](#esql-kibana-fast-mode-toggle).
@@ -482,7 +487,7 @@ Fast mode is the {{kib}} UI control for {{esql}} approximation. Select the {icon
 Where it applies depends on the context:
 
 - In [**Discover**](/explore-analyze/discover/try-esql.md), in {{esql}} mode, the button is always available, but **Fast mode** applies only to queries that use exactly one `STATS` command.
-- In [**Dashboards**](/explore-analyze/visualize/esorql.md), **Fast mode** applies to the dashboard's {{esql}} visualizations that use one `STATS` command. The option is disabled when the dashboard has no {{esql}} visualizations.
+- In **Dashboards**, **Fast mode** applies to the dashboard's [{{esql}} visualizations](/explore-analyze/visualize/esorql.md) and [**Vega** or **Vega-Lite** panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use an {{esql}} data source with one `STATS` command. The option is unavailable when the dashboard has no {{esql}} panels.
 
 **Fast mode** is preserved when you save or share a dashboard.
 
