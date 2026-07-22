@@ -611,6 +611,7 @@ toc:
           - file: workflows/authoring-techniques/compose-workflows.md
           - file: workflows/authoring-techniques/human-in-the-loop.md
           - file: workflows/authoring-techniques/monitor-workflows.md
+          - file: workflows/authoring-techniques/view-workflow-executions.md
           - file: workflows/authoring-techniques/manage-workflows.md
           - file: workflows/authoring-techniques/troubleshooting.md
           - file: workflows/authoring-techniques/migrate-from-9-3.md

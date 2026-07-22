@@ -17,6 +17,8 @@ products:
 
 After you run a workflow, you can track its progress in real time, review past executions, and diagnose any failures. This page explains how to use the execution panel and logs on the **Executions tab** to understand what happened during a workflow run.
 
+To browse executions across all workflows in your space, refer to [](/explore-analyze/workflows/authoring-techniques/view-workflow-executions.md). {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
+
 ::::{admonition} Requirements
 To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. Refer to [](/explore-analyze/workflows/get-started/setup.md) for more information.
 
@@ -31,6 +33,8 @@ When a workflow runs, the execution panel displays:
 - **Status indicators**: Green indicates success and red represents failure.
 - **Timestamps**: The duration of each step.
 - **Expandable details**: Click any step to examine details such as input parameters, output data, and execution timelines.
+
+% Follow-up (#1454): Link to visualize-workflows.md here after that page ships (diagram run overlay).
 
 ## View execution history [workflows-execution-history]
 
