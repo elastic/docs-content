@@ -1,5 +1,5 @@
 ---
-navigation_title: Schedule runs
+navigation_title: Scheduled runs
 description: "Create and manage recurring Attack Discovery schedules from the Attacks view under Detections."
 applies_to:
   stack: preview =9.4, ga 9.5+
