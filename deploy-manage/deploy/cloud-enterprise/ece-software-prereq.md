@@ -97,9 +97,7 @@ Unlike Elasticsearch nodes, which run with [swap disabled](/deploy-manage/deploy
 
 ### Director hosts
 
-::::{warning}
-Do not enable swap on director hosts. ECE director hosts run ZooKeeper, and swapping seriously degrades ZooKeeper performance. Refer to the [ZooKeeper administrator guide](https://zookeeper.apache.org/doc/current/zookeeperAdmin.html) for details.
-::::
+Do not enable swap on director hosts. ECE director hosts run ZooKeeper, and swapping can significantly degrade ZooKeeper performance. Refer to the [ZooKeeper administrator guide](https://zookeeper.apache.org/doc/current/zookeeperAdmin.html) for details.
 
 ### Allocator and other hosts
 
