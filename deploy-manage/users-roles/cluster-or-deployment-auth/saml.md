@@ -46,7 +46,7 @@ Depending on your deployment type, you can also configure SSO for the following 
 
 In SAML terminology, your identity system is the *Identity Provider* (IdP): it authenticates users and issues SAML assertions about them. The {{stack}} acts as a *Service Provider* (SP): {{kib}} initiates and coordinates the SSO flow, and {{es}} validates the SAML assertions and issues session tokens.
 
-To enable SSO, register the {{stack}} as a known SP within your IdP, and configure {{es}} and {{kib}} to trust and communicate with your IdP. When SAML is enabled in {{kib}}, unauthenticated users are redirected to the IdP login page by default. Refer to [Configure {{kib}} for SAML authentication](#saml-configure-kibana) for details.
+To enable SSO, register the {{stack}} as a known SP within your IdP, and configure {{es}} and {{kib}} to trust and communicate with your IdP. When SAML is enabled in {{kib}}, unauthenticated users are redirected to the IdP login page by default.
  
 The {{stack}} implements SAML SSO with the SAML 2.0 Web Browser SSO profile. Because the flow is browser-based, the SAML realm is not suitable for standard REST clients. If you configure SAML for {{kib}}, also add a realm for API access, such as the [native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md).
 
@@ -96,9 +96,9 @@ If you're using a self-managed cluster:
 Register the {{stack}} as a SAML service provider in your IdP. The exact steps vary by provider, but you generally need to:
 
 1. Create a new SAML application or service provider entry in your IdP.
-2. Set the **Assertion Consumer Service (ACS) URL** to `{kibana-url}/api/security/saml/callback`.
+2. Set the **Assertion Consumer Service (ACS) URL** to your {{kib}} base URL followed by `/api/security/saml/callback` (for example, `https://kibana.example.com/api/security/saml/callback`).
 3. Set the **entity ID** to a URI that uniquely identifies this {{kib}} instance as a Service Provider. We recommend using the {{kib}} base URL (for example, `https://kibana.example.com`).
-4. Set the **logout URL** to `{kibana-url}/logout` if your IdP supports Single Logout.
+4. Set the **logout URL** to your {{kib}} base URL followed by `/logout` if your IdP supports Single Logout (for example, `https://kibana.example.com/logout`).
 5. Identify the user attributes your IdP can include in SAML assertions. Consult your IdP documentation or local admin. This varies between providers. These attribute URIs will be used to configure the attribute mapping in {{es}}.
 6. Note the **IdP metadata URL** or download the metadata file. You will need this for the {{es}} configuration.
 
