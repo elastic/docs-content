@@ -107,7 +107,7 @@ When you write a query, the {{esql}} editor includes two interactive browsers th
 - **Fields browser**: lists fields for the data sources currently in your query and lets you insert one field at a time at the cursor position.
 
 :::{note}
-:applies_to: {stack: preview 9.4.0, serverless: unavailable}
+:applies_to: {stack: preview 9.4.0, serverless: preview}
 [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) aren't shown in the data source browser but they're visible through the autocomplete menu suggestions.
 :::
 
@@ -128,7 +128,13 @@ If you’d like to keep the visualization and add it to a dashboard, you can sav
 
 ## Organize the query results [esql-kibana-results-table]
 
-By default, the results table shows the `@timestamp` field and a **Summary** column that lists each result's key-value pairs. To display specific fields from the documents, use the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command:
+By default, the results table shows the `@timestamp` field and a **Summary** column that lists each result's key-value pairs. To customize the visible columns without changing the query, [add fields from the fields list](discover-get-started.md#explore-fields-in-your-data).
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` When the query doesn't contain transformational commands such as `KEEP` or `STATS`, the time field remains the first column after you add other fields. The time field is also included in CSV exports from **Discover** and from Discover session panels on dashboards.
+
+To hide the time field, enable [**Hide 'Time' column** (`doc_table:hideTimeColumn`)](kibana://reference/advanced-settings.md#kibana-discover-settings).
+
+To control which fields the query returns, use the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -148,6 +154,13 @@ When a query without transformational commands (such as `KEEP` or `STATS`) retur
 :::
 
 Omitting the `LIMIT` command, the results table defaults to up to 1,000 rows. Using `LIMIT`, you can increase the limit to up to 10,000 rows.
+
+Depending on your query, **Discover** provides additional ways to display and organize the results table:
+
+- {applies_to}`{ stack: preview 9.4, serverless: preview }` A `STATS BY` query with a single grouping field displays expandable groups. Refer to [View grouped results from a STATS query](#esql-cascade-layout).
+- {applies_to}`{ stack: preview 9.5, serverless: preview }` A `STATS` or `INLINE STATS` query that includes a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) aggregation displays inline charts. To add sparklines to categorized patterns, refer to [Add sparklines to patterns](#esql-cascade-pattern-sparkline).
+
+To reorder or resize columns, adjust the table density or row height, or display the table in full-screen mode, refer to [Customize the Discover view](document-explorer.md).
 
 ### Limitations [esql-kibana-results-table-limitations]
 
@@ -408,35 +421,33 @@ FROM kibana_sample_data_logs
 | SORT Count DESC
 ```
 
-% RESTORE FOR 9.5 - start
-% The block below documents the inline SPARKLINE rendering. SPARKLINE has been
-% deferred from 9.4 to 9.5. When SPARKLINE ships in a release build, restore
-% this block, rename the subsection back to "Pattern and sparkline rendering",
-% uncomment the screenshot directive, and update the screenshot if needed.
-% Tracked in: https://github.com/elastic/docs-content/issues/6215
-%
-% When the query also computes a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) over time, the resulting array is rendered as an inline sparkline next to the row aggregates. For example, the following query categorizes log messages and renders a per-pattern sparkline:
-%
-% ```esql
-% FROM kibana_sample_data_logs
-% | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
-% | STATS Count = COUNT(*),
-%         Sparkline = SPARKLINE(COUNT(*), @timestamp, 40, ?_tstart, ?_tend)
-%     BY Pattern = CATEGORIZE(message)
-% | SORT Count DESC
-% ```
-%
-% On larger data sets, add a [`SAMPLE`](elasticsearch://reference/query-languages/esql/commands/sample.md) command before `STATS` to keep the categorization fast, and divide `COUNT(*)` by the same sample fraction to keep the counts representative. For example, `SAMPLE 0.001` followed by `Count = COUNT(*) / 0.001`.
-%
-% :::{image} /explore-analyze/images/discover-esql-cascade-pattern-sparkline.png
-% :alt: A grouped row showing a CATEGORIZE pattern with token highlighting and an inline sparkline
-% :screenshot:
-% :::
-% RESTORE FOR 9.5 - end
-
 ::::{tip}
 Pattern detection on text fields is also available outside {{esql}} from the **Patterns** tab in Discover's classic mode. Refer to [](/explore-analyze/discover/run-pattern-analysis-discover.md).
 ::::
+
+### Add sparklines to patterns [esql-cascade-pattern-sparkline]
+```{applies_to}
+stack: preview 9.5
+serverless: preview
+```
+
+When the query also computes a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) over time, **Discover** renders an inline chart next to the row aggregates. For example, the following query categorizes log messages and renders a sparkline for each pattern:
+
+```esql
+FROM kibana_sample_data_logs
+| WHERE @timestamp >= ?_tstart AND @timestamp < ?_tend
+| STATS Count = COUNT(*),
+        Sparkline = SPARKLINE(COUNT(*), @timestamp, 40, ?_tstart, ?_tend)
+    BY Pattern = CATEGORIZE(message)
+| SORT Count DESC
+```
+
+On larger data sets, add a [`SAMPLE`](elasticsearch://reference/query-languages/esql/commands/sample.md) command before `STATS` to keep the categorization fast, and divide `COUNT(*)` by the same sample fraction to keep the counts representative. For example, `SAMPLE 0.001` followed by `Count = COUNT(*) / 0.001`.
+
+:::{image} /explore-analyze/images/discover-esql-cascade-pattern-sparkline.png
+:alt: A grouped row showing a CATEGORIZE pattern with token highlighting and an inline sparkline
+:screenshot:
+:::
 
 ### Grouped row actions
 
@@ -470,7 +481,7 @@ Up to and including version 9.2, filtering for multi-value fields isn't supporte
 Other interactions with the results table do not update the query, such as dragging fields onto the table or sorting the table in a specific order.
 
 :::{tip}
-:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
 You can also have an AI agent analyze your {{esql}} results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
 :::
 

@@ -30,7 +30,7 @@ Refer to [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builde
 
 ## Relationship to the standalone Threat Hunting Agent
 
-In {{stack}} 9.3 and earlier {{agent-builder}} documentation, {{elastic-sec}} documented a separate Threat Hunting Agent built-in agent. That standalone agent is deprecated starting in 9.4. Threat hunting workflows now use the Elastic AI Agent with the Threat Hunting skill enabled. For migration guidance, refer to the [Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) section in the built-in agents reference.
+In {{stack}} 9.3 and earlier {{agent-builder}} documentation, {{elastic-sec}} documented a separate Threat Hunting Agent built-in agent. That standalone agent was removed in 9.4. Threat hunting workflows now use the Elastic AI Agent with the Threat Hunting skill enabled. For migration guidance, refer to the [Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) section in the built-in agents reference.
 
 ## Frequently asked questions
 

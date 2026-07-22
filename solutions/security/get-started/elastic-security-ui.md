@@ -126,7 +126,7 @@ serverless: preview
 Expand this section to access the following pages:
 
 * [Alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md): View and manage detection alerts to monitor activity within your network.
-* [Attacks](/solutions/security/ai/attacks-page.md): View and triage correlated attack chains alongside their associated alerts.
+* [Attacks](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md): View and triage correlated attack chains alongside their associated alerts.
 
 Refer to [Detections and alerts](/solutions/security/detect-and-alert.md) for more information.
 
@@ -152,7 +152,7 @@ Create and manage workflows that automate tasks such as incident response, case 
 
 ### Attack discovery
 
-Use large language models (LLMs) to analyze alerts in your environment and identify threats. Refer to [](/solutions/security/ai/attack-discovery.md) for more information.
+Use large language models (LLMs) to analyze alerts in your environment and identify threats. Refer to [](/solutions/security/ai/attack-discovery/index.md) for more information.
 
 
 ### Assets [security-ui-assets]
