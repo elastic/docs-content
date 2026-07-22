@@ -3,7 +3,7 @@ navigation_title: Cases
 applies_to:
   stack: ga 9.4+
   serverless: ga
-description: Reference for the 28 Cases action steps that let workflows create, query, update, attach content, push to external connectors, and manage the lifecycle of cases in any Cases-enabled app.
+description: Reference for the Cases action steps that let workflows create, query, update, attach content, push to external connectors, and manage the lifecycle of cases in any Cases-enabled app.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -66,7 +66,7 @@ Every `cases.*` step shares the same conventions, so once you learn one step the
 
 ## Step catalog [workflows-cases-catalog]
 
-The 28 Cases steps group into seven operational categories. Jump to any step:
+The following Cases steps group into seven operational categories. Jump to any step:
 
 **Create, fetch, and search**
 [`cases.createCase`](#cases-createcase) ·
@@ -97,6 +97,7 @@ The 28 Cases steps group into seven operational categories. Jump to any step:
 
 **Tags and assignees**
 [`cases.addTags`](#cases-addtags) ·
+[`cases.removeTags`](#cases-removetags) ·
 [`cases.assignCase`](#cases-assigncase) ·
 [`cases.unassignCase`](#cases-unassigncase)
 
@@ -548,6 +549,23 @@ Add tags to a case.
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
 | `tags` | `with` | `string[]` | Yes | Tags to add. |
+
+### `cases.removeTags` [cases-removetags]
+
+Remove tags from a case. Pass the case ID and the list of tags to remove.
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `case_id` | `with` | string | Yes | Case ID. |
+| `tags` | `with` | `string[]` | Yes | Tags to remove. Tags that are not on the case are ignored. |
+
+```yaml
+- name: remove_case_tags
+  type: cases.removeTags
+  with:
+    case_id: "{{ steps.create_case.output.case.id }}"
+    tags: ["investigation", "high-priority"]
+```
 
 ### `cases.assignCase` [cases-assigncase]
 

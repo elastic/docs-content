@@ -41,6 +41,7 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`cases.getCases`](/explore-analyze/workflows/steps/cases.md#cases-getcases) | Cases | Fetch multiple cases by ID. |
 | [`cases.getCasesByAlertId`](/explore-analyze/workflows/steps/cases.md#cases-getcasesbyalertid) | Cases | Find cases containing a specific alert. |
 | [`cases.pushCases`](/explore-analyze/workflows/steps/cases.md#cases-pushcases) | Cases | Push one or more cases to their configured external connector. |
+| [`cases.removeTags`](/explore-analyze/workflows/steps/cases.md#cases-removetags) | Cases | Remove tags from a case. |
 | [`cases.setCategory`](/explore-analyze/workflows/steps/cases.md#cases-setcategory) | Cases | Set a case's category. |
 | [`cases.setCustomField`](/explore-analyze/workflows/steps/cases.md#cases-setcustomfield) | Cases | Set a custom field on a case. |
 | [`cases.setDescription`](/explore-analyze/workflows/steps/cases.md#cases-setdescription) | Cases | Update a case's description. |
