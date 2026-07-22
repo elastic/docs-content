@@ -1388,6 +1388,8 @@ The following example creates a metric that counts documents over time, using th
 }
 ```
 
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` **Vega** and **Vega-Lite** panels that use an {{esql}} data source are subject to the {icon}`bolt` [**Fast mode**](../query-filter/languages/esql-kibana.md#approximation-fast-mode) dashboard option. When this option is active on a dashboard, these panels return faster, estimated results for `STATS` aggregations.
+
 
 #### Access Elastic Map Service files [vega-esmfiles]
 ```{applies_to}
