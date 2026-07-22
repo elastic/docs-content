@@ -22,10 +22,11 @@ A service only appears in the **Services** inventory if it has sent transactions
 Active alerts for each service are prominently displayed in the service inventory table. Selecting an active alert badge brings you to the [**Alerts**](/solutions/observability/apm/create-apm-rules-alerts.md) tab where you can learn more about the active alert and take action.
 
 ```{applies_to}
-stack: ga 9.0-9.4
+stack: ga 9.5+
+serverless: ga
 ```
 
-To help surface potential issues, services are sorted by their health status: **critical** → **warning** → **healthy** → **unknown**. Health status is powered by [{{ml}}](/solutions/observability/apm/machine-learning.md) and requires {{anomaly-detect}} to be enabled.
+The **Anomalies** column shows each service's highest [{{ml}}](/solutions/observability/apm/machine-learning.md) anomaly score for the selected time range, replacing the previous health status. To use this feature, {{anomaly-detect}} must be enabled.
 
 ```{applies_to}
 stack: ga 9.4+
@@ -35,11 +36,10 @@ serverless: ga
 SLOs for each service are also shown in the service inventory table. Use the **Actions** menu on any service row to act on the service directly, or the **Environment** selector to filter the inventory by environment.
 
 ```{applies_to}
-stack: ga 9.5+
-serverless: ga
+stack: ga 9.0-9.4
 ```
 
-The **Anomalies** column shows each service's highest [{{ml}}](/solutions/observability/apm/machine-learning.md) anomaly score for the selected time range, replacing the previous health status. To use this feature, {{anomaly-detect}} must be enabled.
+To help surface potential issues, services are sorted by their health status: **critical** → **warning** → **healthy** → **unknown**. Health status is powered by [{{ml}}](/solutions/observability/apm/machine-learning.md) and requires {{anomaly-detect}} to be enabled.
 
 ## Service groups [service-groups]
 
