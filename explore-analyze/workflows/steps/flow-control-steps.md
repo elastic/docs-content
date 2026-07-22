@@ -3,7 +3,7 @@ navigation_title: Flow control
 applies_to:
   stack: preview 9.3, ga 9.4+
   serverless: ga
-description: The 8 flow-control step types for branching, iterating, looping, pausing, and waiting for human input in workflows.
+description: The flow-control step types for branching, iterating, looping, pausing, and waiting for human input in workflows.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -15,7 +15,7 @@ products:
 
 # Flow control steps [workflows-flow-control-steps]
 
-Flow control steps shape a workflow's logic. They decide what runs, what gets skipped, when the workflow loops, and where it pauses. Workflows include 8 flow-control step types: `if`, `foreach`, `while`, `switch`, `wait`, `loop.break`, `loop.continue`, and `waitForInput`.
+Flow control steps shape a workflow's logic. They decide what runs, what gets skipped, when the workflow loops, and where it pauses. Workflows include these flow-control step types: `if`, `foreach`, `while`, `switch`, `wait`, `loop.break`, `loop.continue`, `waitForInput`, and `waitForApproval` {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`.
 
 ## When to reach for each
 
@@ -29,6 +29,7 @@ Flow control steps shape a workflow's logic. They decide what runs, what gets sk
 | Exit a loop early | [`loop.break`](#loop-break) |
 | Skip to the next loop iteration | [`loop.continue`](#loop-continue) |
 | Pause for human input (human-in-the-loop) | [`waitForInput`](#waitforinput) |
+| Pause for approve/reject (human-in-the-loop) | [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` |
 
 For fan-out across independent workflow executions, refer to [`workflow.executeAsync`](/explore-analyze/workflows/steps/composition.md#workflow-executeasync) in the composition reference.
 
@@ -191,8 +192,29 @@ Pause the workflow until a human submits input through the resume API or the Kib
 
 For the complete HITL pattern, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md). For the step parameter reference, refer to [waitForInput step](/explore-analyze/workflows/steps/wait-for-input.md).
 
+## `waitForApproval` [waitforapproval]
+
+```{applies_to}
+stack: preview 9.5+
+serverless: preview
+```
+
+Pause the workflow until a human approves or rejects the request. Use when the decision is yes or no. The step returns `approved: true` or `false`.
+
+```yaml
+- name: request_approval
+  type: waitForApproval
+  timeout: 24h
+  with:
+    message: "Approve isolation for {{ event.alerts[0].host.name }}?"
+    approveLabel: Approve
+    rejectLabel: Decline
+```
+
+For the complete HITL pattern, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md). For the step parameter reference, refer to [waitForApproval step](/explore-analyze/workflows/steps/wait-for-approval.md).
+
 ## Related
 
 - [Composition steps](/explore-analyze/workflows/steps/composition.md): `workflow.executeAsync` for fan-out across independent executions.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): `on-failure` strategies for individual steps inside loops.
-- [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md): Full HITL pattern using `waitForInput`.
+- [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md): Full HITL pattern using `waitForInput` and `waitForApproval`.

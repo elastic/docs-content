@@ -588,6 +588,7 @@ toc:
                   - file: workflows/steps/switch.md
                   - file: workflows/steps/wait.md
                   - file: workflows/steps/wait-for-input.md
+                  - file: workflows/steps/wait-for-approval.md
                   - file: workflows/steps/loop-break.md
                   - file: workflows/steps/loop-continue.md
               - file: workflows/steps/ai-steps.md
