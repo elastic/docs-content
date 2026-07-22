@@ -80,7 +80,7 @@ Each `StackConfigPolicy` must define the following fields under `spec`:
 
 ### Optional fields
 
-The following fields are optional. They control which {{es}} clusters and {{kib}} instances the policy targets.
+The following fields are optional. They control policy targeting, priority, and variable substitution.
 
 * {applies_to}`eck: ga 3.3+` `weight`: An integer that determines the priority of this policy when multiple policies target the same resource. Refer to [Policy priority and weight](#k8s-stack-config-policy-priority-weight) for details.
 
@@ -503,7 +503,7 @@ deployment:
   eck: ga 3.5
 ```
 
-`variablesFrom` lets you externalise environment-specific values into ConfigMaps or Secrets and reference them as `${VAR}` expressions anywhere in the `elasticsearch` or `kibana` spec fields of a policy. This allows a single policy definition to serve multiple environments without duplicating or hardcoding values.
+Use `variablesFrom` to load environment-specific values from ConfigMaps or Secrets. You can then reference those values as `${VAR}` expressions in the policy's `elasticsearch` and `kibana` fields where you need them. Variable substitution lets you reuse a single policy definition across multiple environments without duplicating or hardcoding values.
 
 ### Define variable sources
 
