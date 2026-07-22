@@ -26,21 +26,11 @@ Selecting a non-mobile [**service**](/solutions/observability/apm/services.md) b
 * Latency, throughput, and errors over time
 * Service dependencies
 
-```{applies_to}
-stack: ga 9.5+
-serverless: ga
-```
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` An **Anomaly** badge appears at the top of the page alongside alerts and SLOs when [{{ml}}](/solutions/observability/apm/machine-learning.md) is enabled. It shows the highest anomaly score across all metrics and environments, and indicates which metric triggered the anomaly. Click the badge to navigate to the service view pre-configured with the relevant environment and anomaly threshold.
 
-An **Anomaly** badge appears at the top of the page alongside alerts and SLOs when [{{ml}}](/solutions/observability/apm/machine-learning.md) is enabled. It shows the highest anomaly score across all metrics and environments, and indicates which metric triggered the anomaly. Click the badge to navigate to the service view pre-configured with the relevant environment and anomaly threshold.
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Active alerts and SLOs for the service are shown at the top of the page so you can assess health without scrolling to the metadata section. Use the **Actions** menu located in the bottom right of the page to act on the service directly. For example, you can create an alert rule or SLO.
 
-```{applies_to}
-stack: ga 9.4+
-serverless: ga
-```
-
-Active alerts and SLOs for the service are shown at the top of the page so you can assess health without scrolling to the metadata section. Use the **Actions** menu located in the bottom right of the page to act on the service directly. For example, you can create an alert rule or SLO.
-
-Each RED metric chart (**Latency**, **Throughput**, and **Failed transaction rate**) includes an **Open in Discover** button to explore the underlying trace data directly in Discover.
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Each RED metric chart (**Latency**, **Throughput**, and **Failed transaction rate**) includes an **Open in Discover** button to explore the underlying trace data directly in Discover.
 
 ## Time series and expected bounds comparison [service-time-comparison]
 
