@@ -320,12 +320,9 @@ The following sections cover optional features and specific SAML behaviors that 
 
 ### Signing and encryption [saml-enc-sign]
 
-Depending on your IdP, you might need to sign outgoing SAML messages (authentication or logout requests), decrypt encrypted assertions, or both. You can configure {{es}} to:
+Depending on your IdP, you might need to sign outgoing SAML messages (authentication or logout requests), decrypt encrypted assertions, or both. {{es}} supports both cases through certificate configuration in the SAML realm.
 
-* Sign outgoing SAML messages (all types, or only specific ones such as `AuthnRequest` or `LogoutRequest`)
-* Decrypt incoming encrypted assertions
-
-For certificate generation and configuration examples (PEM, PKCS#12, and JKS), refer to [Configure SAML signing and encryption](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-signing-encryption.md).
+For a complete example including certificate generation and configuration for PEM, PKCS#12, and JKS formats, refer to [Configure SAML signing and encryption](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-signing-encryption.md).
 
 For available settings, refer to [SAML realm signing settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-signing-settings) and [SAML realm encryption settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-encryption-settings).
 
