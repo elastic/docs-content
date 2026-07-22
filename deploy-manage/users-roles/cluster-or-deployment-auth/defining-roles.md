@@ -162,5 +162,12 @@ stringData:
           grant: ['category', '@timestamp', 'message' ]
         query: '{"match": {"category": "click"}}'
 ```
+
+```{applies_to}
+deployment:
+  eck: ga 3.5
+```
+
+If you need to apply role definitions across multiple {{es}} clusters, you can use the `securityRoles` field in a [`StackConfigPolicy`](/deploy-manage/deploy/cloud-on-k8s/elastic-stack-configuration-policies.md) instead. Refer to [Define custom Elasticsearch roles through a policy](/deploy-manage/deploy/cloud-on-k8s/elastic-stack-configuration-policies.md#k8s-stack-config-policy-security-roles-example).
 :::
 ::::
