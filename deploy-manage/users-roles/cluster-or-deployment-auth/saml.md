@@ -320,7 +320,7 @@ The following sections cover optional features and specific SAML behaviors that 
 
 ### Signing and encryption [saml-enc-sign]
 
-Depending on your IdP, you might need to sign outgoing SAML messages (authentication or logout requests), decrypt encrypted assertions, or both. {{es}} supports both cases through certificate configuration in the SAML realm.
+Depending on your IdP, you might need to sign outgoing SAML messages (authentication or logout requests), decrypt encrypted assertions, or both. {{es}} supports both cases using X.509 certificates configured in the SAML realm.
 
 For a complete example including certificate generation and configuration for PEM, PKCS#12, and JKS formats, refer to [Configure SAML signing and encryption](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-signing-encryption.md).
 
