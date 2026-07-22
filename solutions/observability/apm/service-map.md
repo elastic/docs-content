@@ -36,6 +36,8 @@ If you’re using EDOT or contrib OpenTelemetry, set the `deployment.environment
 
 If there’s a specific service that interests you, select that service to highlight its connections. Click **Focus map** to refocus the map on the selected service and lock the connection highlighting. Click the **Transactions** tab to jump to the Transaction overview for the selected service. You can also use the tabs at the top of the page to easily jump to the **Errors** or **Metrics** overview.
 
+### Map controls [service-map-controls]
+
 ```{applies_to}
 stack: ga 9.5+
 serverless: ga
@@ -56,12 +58,7 @@ When you click an instrumented service node (circle shape), a **service flyout**
 :screenshot:
 :::
 
-```{applies_to}
-stack: ga 9.4+
-serverless: ga
-```
-
-A **minimap** in the corner of the map lets you see where you are in a large architecture and quickly navigate to a different area.
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` A **minimap** in the corner of the map lets you see where you are in a large architecture and quickly navigate to a different area.
 
 :::{image} /solutions/images/observability-apm-service-map.png
 :alt: Service map showing the controls panel with filters and presentation toggle, the map canvas with circle and diamond nodes, and the minimap in the bottom-right corner
