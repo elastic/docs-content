@@ -118,7 +118,7 @@ Add a SAML realm to your [{{es}} configuration](/deploy-manage/stack-settings.md
 
 ```yaml
 xpack.security.authc.realms.saml.saml1:
-  order: 2
+  order: 2  # <1>
   idp.metadata.path: "https://idp.example.com/metadata"
   idp.entity_id: "https://idp.example.com/"
   sp.entity_id: "https://kibana.example.com"
@@ -127,6 +127,8 @@ xpack.security.authc.realms.saml.saml1:
   attributes.principal: "urn:oid:0.9.2342.19200300.100.1.1"
   attributes.groups: "urn:oid:1.3.6.1.4.1.5923.1.5.1."
 ```
+
+1. Controls realm priority. Assign SSO realms higher order values than password-based realms (native, LDAP). If you're using {{eck}}, set `order` to a value greater than the file realm (default `-100`) and native realm (default `-99`).
 
 Replace the example values with your own.
 
@@ -155,14 +157,10 @@ This section describes the most common settings. For the full list of available 
 :   The URL of the Single Logout service within {{kib}} that receives logout messages from your IdP. For example, `https://kibana.example.com/logout`. Required for [SAML Single Logout](#saml-logout). If not configured, {{es}} refuses all `<LogoutRequest>` messages from the IdP.
 
 `attributes.principal` (required)
-:   The SAML attribute that {{es}} uses as the username (`principal`). Replace with the URI your IdP uses. Attribute URIs vary between providers. If your IdP uses `NameID`, use `nameid` here. Refer to [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md) for more details.
+:   The SAML attribute that {{es}} uses as the username (`principal`). Replace with the URI your IdP uses. Attribute URIs vary between providers. If your IdP uses `NameID`, use `nameid` here. See [Map SAML attributes](#saml-attributes-mapping).
 
 `attributes.groups` (recommended)
-:   The SAML attribute that maps to group memberships. Replace with the URI your IdP uses. Recommended if you want to assign roles based on IdP group memberships.
-
-:::{note}
-The `order` setting controls realm priority. Assign SSO realms (SAML, OpenID Connect) higher order values than password-based realms (native, LDAP). If you're using {{eck}}, set `order` to a value greater than the file realm (default `-100`) and native realm (default `-99`), which ECK relies on for its own operation.
-:::
+:   The SAML attribute that maps to group memberships. Replace with the URI your IdP uses. Recommended if you want to assign roles based on IdP group memberships. See [Map SAML attributes](#saml-attributes-mapping).
 
 :::{note}
 If your IdP requires signed requests or uses encrypted assertions, refer to [Signing and encryption](#saml-enc-sign).
@@ -188,23 +186,22 @@ SAML assertions have a short validity window. If the system clocks of {{es}} and
 
 SAML authentication identifies users to the {{stack}}, but does not automatically grant them any access. You must map SAML users to {{es}} roles before they can do anything.
 
-You can configure role mappings using:
-* The **Role Mappings** page in {{kib}}
-* The [role mapping API]({{es-apis}}operation/operation-security-put-role-mapping)
-* [Authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms) (if your users exist in an LDAP directory or similar)
+Role mappings connect SAML user identities to {{es}} roles, but the roles themselves must exist first. You can use built-in roles such as `superuser` or `kibana_admin` for initial testing. For production, create [custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) with appropriate access to your data and [{{kib}} features](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
+
+You can create role mappings in the **Role Mappings** page in {{kib}} or with the [role mapping API]({{es-apis}}operation/operation-security-put-role-mapping). For the general concepts, UI workflow, and rule syntax, refer to [Map external users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md). The examples below show common SAML patterns.
 
 :::{note}
 [Role mapping files](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file) cannot be used for SAML users.
 :::
 
-**Grant access by realm**
+#### Grant access by realm
 
-This mapping grants the `example_role` role to all users who authenticate through the `saml1` realm:
+This is an example of a simple role mapping that grants the `example_role` role to any user who authenticates against the `saml1` realm:
 
 ```console
 PUT /_security/role_mapping/saml-all-users
 {
-  "roles": [ "example_role" ],
+  "roles": [ "example_role" ], <1>
   "enabled": true,
   "rules": {
     "field": { "realm.name": "saml1" }
@@ -212,9 +209,20 @@ PUT /_security/role_mapping/saml-all-users
 }
 ```
 
-**Grant access by group**
+1. Replace `example_role` with the role you want to assign.
 
-If your IdP provides group memberships, you can map specific groups to roles. This mapping grants the `finance_data` role to users in the `finance-team` group authenticating through `saml1`:
+#### Grant access by group
+
+The user fields available in role mapping rules are derived from the SAML attributes configured in the realm:
+
+* `username`: The `principal` attribute
+* `dn`: The `dn` attribute
+* `groups`: The `groups` attribute
+* `metadata`: See [User metadata](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md#saml-user-metadata)
+
+If your IdP provides group memberships, [configure `attributes.groups` in the {{es}} realm](#saml-create-realm) and then use it in a role mapping rule.
+
+This example grants the `finance_data` role to users in the `finance-team` group authenticating through `saml1` realm:
 
 ```console
 PUT /_security/role_mapping/saml-finance
@@ -223,16 +231,16 @@ PUT /_security/role_mapping/saml-finance
   "enabled": true,
   "rules": { "all": [
     { "field": { "realm.name": "saml1" } },
-    { "field": { "groups": "finance-team" } }
+    { "field": { "groups": "finance-team" } } <1>
   ] }
 }
 ```
 
-The `groups` field supports wildcards (`*`). Refer to the [role mapping API]({{es-apis}}operation/operation-security-put-role-mapping) for the full rule syntax.
+1. The `groups` field supports wildcards (`*`). Refer to the [role mapping API]({{es-apis}}operation/operation-security-put-role-mapping) for the full rule syntax.
 
-**Delegate authorization to another realm**
+#### Delegate authorization to another realm
 
-If your users also exist in an LDAP directory or similar repository that {{es}} can directly access, you can use [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms) instead of role mappings:
+If your users also exist in a repository that can be directly accessed by {{es}} (such as an LDAP directory), you can use [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms) instead of role mappings:
 
 1. Configure `attributes.principal` in your SAML realm to identify the user for the lookup.
 2. Create a realm that can look up users from your repository (for example, an `ldap` realm).
