@@ -62,7 +62,7 @@ Note that the recommended reservations above are not guaranteed upper limits, if
 These fluctuations should not be a concern in practice. To get actual limits that could be used in alerts, you could add 4GB to the recommended values above.
 
 :::{note}
-For swap considerations, review [](./ece-software-prereq.md#ece-swap-considerations) for more guidance.
+Configure swap on ECE allocator hosts unless they also have the director role. For sizing and more guidance, refer to [](./ece-software-prereq.md#ece-swap-considerations).
 :::
 
 
