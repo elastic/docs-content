@@ -2,8 +2,8 @@
 navigation_title: Manage as code
 description: Version-control Kibana dashboards and deploy them across spaces, clusters, and stages using the Dashboards API and Git-based review workflows.
 applies_to:
-  stack: preview 9.4+
-  serverless: preview
+  stack: ga 9.5+, preview =9.4
+  serverless: ga
 products:
   - id: kibana
 type: overview
