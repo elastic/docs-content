@@ -46,7 +46,7 @@ Depending on your deployment type, you can also configure SSO for the following 
 
 In SAML terminology, your identity system is the *Identity Provider* (IdP): it authenticates users and issues SAML assertions about them. The {{stack}} acts as a *Service Provider* (SP): {{kib}} initiates and coordinates the SSO flow, and {{es}} validates the SAML assertions and issues session tokens.
 
-To enable SSO, register the {{stack}} as a known SP within your IdP, and configure {{es}} and {{kib}} to trust and communicate with your IdP. When SAML is enabled in {{kib}}, unauthenticated users are redirected to the IdP login page by default. Refer to [Configure {{kib}}](#saml-configure-kibana) for details.
+To enable SSO, register the {{stack}} as a known SP within your IdP, and configure {{es}} and {{kib}} to trust and communicate with your IdP. When SAML is enabled in {{kib}}, unauthenticated users are redirected to the IdP login page by default. Refer to [Configure {{kib}} for SAML authentication](#saml-configure-kibana) for details.
  
 The {{stack}} implements SAML SSO with the SAML 2.0 Web Browser SSO profile. Because the flow is browser-based, the SAML realm is not suitable for standard REST clients. If you configure SAML for {{kib}}, also add a realm for API access, such as the [native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md).
 
@@ -182,12 +182,10 @@ SAML assertions have a short validity window. If the system clocks of {{es}} and
 
 ::::
 
-::::{step} Configure {{kib}}
+::::{step} Configure {{kib}} for SAML authentication
 :anchor: saml-configure-kibana
 
-Add the SAML authentication provider to your [{{kib}} configuration](/deploy-manage/stack-settings.md#configure-stack-settings) and restart {{kib}} for the changes to take effect.
-
-If you're using a self-managed cluster, configure {{kib}} to connect to {{es}} over HTTPS. You might also need to configure `elasticsearch.ssl.certificateAuthorities` to trust the certificates {{es}} uses.
+Add the SAML [authentication provider](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md) to your [{{kib}} configuration](/deploy-manage/stack-settings.md#configure-stack-settings) and restart {{kib}} for the changes to take effect.
 
 ```yaml
 xpack.security.authc.providers:
@@ -199,6 +197,10 @@ xpack.security.authc.providers:
 1. Must match the SAML realm name defined in your {{es}} configuration.
 
 With this configuration, {{kib}} redirects all unauthenticated users to your IdP for login.
+
+:::{note}
+If you run multiple {{kib}} instances connected to the same cluster or deployment (for example, behind a load balancer), apply this SAML provider configuration to every instance. If each instance is accessed through a different URL, each needs its own SAML realm. Refer to [Multiple {{kib}} instances and URLs](#_operating_multiple_kib_instances).
+:::
 
 #### Allow both SAML and username/password login [saml-kibana-basic]
 
@@ -413,11 +415,18 @@ kubectl cp elasticsearch-sample-es-default-0:/usr/share/elasticsearch/saml-elast
 :::
 ::::
 
-### Multiple {{kib}} instances [_operating_multiple_kib_instances]
+### Multiple {{kib}} instances and URLs [_operating_multiple_kib_instances]
+```yaml {applies_to}
+  deployment:
+    self: all
+    eck: all
+```
 
-If multiple {{kib}} instances authenticate against the same {{es}} cluster, each instance requires its own SAML realm with a unique `sp.entity_id` and `sp.acs`. {{es}} routes each authentication request to the correct realm by matching the `sp.acs` value.
+Use this configuration when each {{kib}} instance is reached through a different URL. If multiple instances serve the same URL (for example, behind a load balancer), use a single SAML realm and apply the same provider settings to every instance, as shown in [Configure {{kib}} for SAML authentication](#saml-configure-kibana).
 
-The following example shows three {{kib}} instances: two share an internal IdP, and one uses a different IdP.
+When instances use different URLs and authenticate against the same {{es}} cluster, each instance requires its own SAML realm. Each realm must have its own unique Entity ID (`sp.entity_id`) and Assertion Consumer Service URL (`sp.acs`), but they can all use the same Identity Provider. In {{kib}}, configure each instance's SAML provider to point to its corresponding realm.
+
+The following is an example of having 3 different {{kib}} instances, 2 of which use the same internal IdP, and another which uses a different IdP.
 
 ```yaml
 xpack.security.authc.realms.saml.saml_finance:
@@ -447,6 +456,8 @@ xpack.security.authc.realms.saml.saml_eng:
   sp.logout: "<kibana-engineering-example-url>/logout"
   attributes.principal: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"
 ```
+
+It is possible to have one or more {{kib}} instances that use SAML, while other instances use basic authentication against another realm type (for example, [Native](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md) or [LDAP](/deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md)).
 
 ### SAML without {{kib}} [saml-no-kibana]
 
