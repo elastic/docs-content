@@ -114,7 +114,9 @@ If your IdP requires signed outgoing SAML messages (authentication requests or l
 ::::{step} Create a SAML realm in {{es}}
 :anchor: saml-create-realm
 
-Add a SAML realm to your [{{es}} configuration](/deploy-manage/stack-settings.md). The realm ties together three pieces: your IdP's identity and metadata, the {{stack}}'s service provider endpoints, and the attribute mapping that tells {{es}} how to identify users from the IdP's assertions.
+Add a SAML realm to your [{{es}} configuration](/deploy-manage/stack-settings.md#configure-stack-settings) and restart the cluster for the changes to take effect.
+
+The realm ties together three pieces: your IdP's identity and metadata, the {{stack}}'s service provider endpoints, and the attribute mapping that tells {{es}} how to identify users from the IdP's assertions.
 
 ```yaml
 xpack.security.authc.realms.saml.saml1:
@@ -177,6 +179,45 @@ The most important mappings are `attributes.principal` and `attributes.groups`: 
 :::{note}
 SAML assertions have a short validity window. If the system clocks of {{es}} and your IdP differ by more than a few minutes, authentication will fail with a validation error. Ensure clocks are synchronized using NTP.
 :::
+
+::::
+
+::::{step} Configure {{kib}}
+:anchor: saml-configure-kibana
+
+Add the SAML authentication provider to your [{{kib}} configuration](/deploy-manage/stack-settings.md#configure-stack-settings) and restart {{kib}} for the changes to take effect.
+
+If you're using a self-managed cluster, configure {{kib}} to connect to {{es}} over HTTPS. You might also need to configure `elasticsearch.ssl.certificateAuthorities` to trust the certificates {{es}} uses.
+
+```yaml
+xpack.security.authc.providers:
+  saml.saml1:
+    order: 0
+    realm: "saml1"  # <1>
+```
+
+1. Must match the SAML realm name defined in your {{es}} configuration.
+
+With this configuration, {{kib}} redirects all unauthenticated users to your IdP for login.
+
+#### Allow both SAML and username/password login [saml-kibana-basic]
+
+To let some users (for example, local administrators) log in with a username and password, enable a basic provider alongside SAML:
+
+```yaml
+xpack.security.authc.providers:
+  saml.saml1:
+    order: 0
+    realm: "saml1"
+    description: "Log in with SSO"
+  basic.basic1:
+    order: 1
+```
+
+Users will see a login selector and can choose their preferred method. Users who log in with basic authentication must have credentials in a configured {{es}} realm (such as native or LDAP).
+
+You can also adjust [session timeout settings](/deploy-manage/security/kibana-session-management.md) (`xpack.security.session.idleTimeout` and `xpack.security.session.lifespan`) to match your security requirements.
+
 ::::
 
 ::::{step} Configure role mappings
@@ -245,48 +286,23 @@ If your users also exist in a repository that can be directly accessed by {{es}}
 3. Set `authorization_realms` in your SAML realm to the name of the realm from step 2.
 ::::
 
-::::{step} Configure {{kib}}
-:anchor: saml-configure-kibana
+::::{step} Test your configuration
+:anchor: saml-test
 
-Add the SAML authentication provider to your {{kib}} configuration.
+After applying all changes, open {{kib}} in a browser. You should be redirected to your IdP's login page. After authenticating, you should be returned to {{kib}} as a logged-in user.
 
-If you're using a self-managed cluster, configure {{kib}} to connect to {{es}} over HTTPS. You might also need to configure `elasticsearch.ssl.certificateAuthorities` to trust the certificates {{es}} uses.
+To verify the user's identity and roles, use the [authenticate API]({{es-apis}}operation/operation-security-authenticate):
 
-```yaml
-xpack.security.authc.providers:
-  saml.saml1:
-    order: 0
-    realm: "saml1"  # <1>
+```console
+GET /_security/_authenticate
 ```
 
-1. Must match the SAML realm name defined in your {{es}} configuration.
+The response shows the authenticated username, assigned roles, and SAML metadata. If roles are missing or incorrect, review your role mapping rules, the realm configuration, and the SAML attributes your IdP is sending.
 
-With this configuration, {{kib}} redirects all unauthenticated users to your IdP for login.
-
-#### Allow both SAML and username/password login [saml-kibana-basic]
-
-To let some users (for example, local administrators) log in with a username and password, enable a basic provider alongside SAML:
-
-```yaml
-xpack.security.authc.providers:
-  saml.saml1:
-    order: 0
-    realm: "saml1"
-    description: "Log in with SSO"
-  basic.basic1:
-    order: 1
-```
-
-Users will see a login selector and can choose their preferred method. Users who log in with basic authentication must have credentials in a configured {{es}} realm (such as native or LDAP).
-
-You can also adjust [session timeout settings](/deploy-manage/security/kibana-session-management.md) (`xpack.security.session.idleTimeout` and `xpack.security.session.lifespan`) to match your security requirements.
+If something does not work as expected, refer to the [SAML troubleshooting documentation](../../../troubleshoot/elasticsearch/security/trb-security-saml.md) for common issues and their resolutions, including how to enable debug logging to diagnose authentication failures.
 ::::
 
 :::::
-
-## Troubleshooting [saml-troubleshooting]
-
-If you encounter issues, refer to the [SAML troubleshooting documentation](../../../troubleshoot/elasticsearch/security/trb-security-saml.md).
 
 ## Advanced configuration
 
