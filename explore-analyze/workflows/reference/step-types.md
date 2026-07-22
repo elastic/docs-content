@@ -24,6 +24,7 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) | AI | Prompt a model, optionally with structured output. |
 | [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize) | AI | Summarize content with an LLM. |
 | [`cases.addAlerts`](/explore-analyze/workflows/steps/cases.md#cases-addalerts) | Cases | Attach detection alerts to a case. |
+| [`cases.addAttachments`](/explore-analyze/workflows/steps/cases.md#cases-addattachments) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Cases | Attach several attachment types to a case in one request. |
 | [`cases.addComment`](/explore-analyze/workflows/steps/cases.md#cases-addcomment) | Cases | Add a comment to a case. |
 | [`cases.addEvents`](/explore-analyze/workflows/steps/cases.md#cases-addevents) | Cases | Attach events to a case. |
 | [`cases.addObservables`](/explore-analyze/workflows/steps/cases.md#cases-addobservables) | Cases | Add observables (IPs, hashes, domains) to a case. |
