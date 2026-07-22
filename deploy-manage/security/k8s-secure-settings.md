@@ -17,7 +17,11 @@ The secrets should contain a key-value pair for each secure setting you want to 
 
 To allow the operator to inject the settings into the application, you must reference your secrets in the `spec.secureSettings` field of your {{es}} or {{kib}} object definition. Next, you’ll find examples for both {{es}} and {{kib}}.
 
-## {{es}} basic usage [k8s_basic_usage]
+## {{es}} secure settings [k8s-es-secure-settings]
+
+Reference one or more Kubernetes secrets from `spec.secureSettings` so ECK can inject secure settings into your {{es}} Pods. You can [add secrets to the resource](#k8s_basic_usage), [map secret keys to keystore setting names](#k8s_projection_of_secret_keys_to_specific_paths), and [update secure settings without a rolling restart](#k8s-es-secure-settings-hot-reload).
+
+### Reference secrets in the Elasticsearch resource [k8s_basic_usage]
 
 It is possible to reference several secrets:
 
@@ -56,7 +60,7 @@ stringData:
 Note that by default [Kubernetes secrets](https://kubernetes.io/docs/concepts/configuration/secret/) are expecting the value to be base64 encoded unless under a `stringData` field.
 ::::
 
-### Projection of secret keys to specific paths [k8s_projection_of_secret_keys_to_specific_paths]
+### Project secret keys to specific paths [k8s_projection_of_secret_keys_to_specific_paths]
 
 You can export a subset of secret keys and also project keys to specific paths using the `entries`, `key` and `path` fields:
 
@@ -128,7 +132,7 @@ stringData:
     }
 ```
 
-## {{es}} secure settings hot-reload [k8s-es-secure-settings-hot-reload]
+### Update secure settings without a restart [k8s-es-secure-settings-hot-reload]
 ```{applies_to}
 deployment:
   eck: ga 3.5
