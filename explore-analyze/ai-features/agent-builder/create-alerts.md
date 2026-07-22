@@ -16,7 +16,7 @@ products:
 
 {{agent-builder}} collects execution traces into a data stream in your {{es}} cluster. These traces record token usage, errors, latency, and tool calls, so you can create {{kib}} alerting rules that notify you when something needs your attention. For example, you can alert on a conversation that uses too many tokens, total token usage that exceeds a budget, an agent error rate that spikes, or a tool that fails repeatedly.
 
-{{agent-builder}} has no dedicated alerting interface. You create standard {{kib}} rules against the trace data stream, so the rule types, check schedules, and connectors are the same ones you use elsewhere in {{kib}}.
+Because traces are stored in a regular data stream, you can use the same {{kib}} rule types, check schedules, and connectors as any other alerting workflow.
 
 ## Prerequisites
 
