@@ -93,7 +93,7 @@ For more information about FIPS compliance across the {{stack}}, refer to [](/de
 
 ## Swap considerations [ece-swap-considerations]
 
-Unlike Elasticsearch nodes, which run with [swap disabled](/deploy-manage/deploy/self-managed/setup-configuration-memory.md), ECE hosts have different swap requirements depending on the host role.
+Unlike Elasticsearch nodes, which run with [swap disabled](/deploy-manage/deploy/self-managed/setup-configuration-memory.md), ECE hosts have different swap requirements based on their roles.
 
 ### Director hosts
 
