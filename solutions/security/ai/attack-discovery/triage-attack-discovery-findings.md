@@ -20,8 +20,9 @@ Each Attack Discovery finding groups related alerts into a single attack narrati
 
 Before you start, make sure you have the following:
 
-- Attack Discovery is configured with an LLM connector. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Prefer [Configure Attack Discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md) on the Attacks view. You can also use the [Attack Discovery page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries).
-- At least one finding has been generated, either [manually](/solutions/security/ai/attack-discovery/manual-runs-from-attacks-page.md) or through a [schedule](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).
+- Attack Discovery is [configured with an LLM connector](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries).
+- At least one finding has been generated, either [manually](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries) or through a [schedule](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#schedule-discoveries).
+- Your role has the [required privileges](/solutions/security/ai/attack-discovery/grant-access.md) to view and modify Attack Discovery alerts.
 
 :::{tip}
 For richer triage context, enable [entity analytics](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md). This helps you assess whether the users and hosts in a discovery are already known to be high risk, which can strengthen your assessment. Entity analytics isn't required for triage, but it can improve decision quality.

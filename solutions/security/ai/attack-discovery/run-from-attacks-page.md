@@ -45,7 +45,7 @@ Open **Attacks** at **Detections > Views > Attacks**. Use it with the [**Attack 
 
 :::::
 
-## Configure, run, and schedule Attack Discovery [attacks-view-start-a-run]
+## Start a run from the Attacks view [attacks-view-start-a-run]
 
 ::::{applies-switch}
 
