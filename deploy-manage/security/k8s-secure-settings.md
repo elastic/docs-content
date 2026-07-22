@@ -163,12 +163,12 @@ spec:
   - secretName: s3-credentials
 ```
 
-When the annotation is set and the cluster is running {{es}} 9.5+, ECK delivers all `spec.secureSettings` entries via the `cluster_secrets` field of the file-based settings mechanism instead of the keystore init container. Updating a source secret no longer triggers a pod restart — {{es}} reloads the credentials in place on each node.
+When the annotation is set and the cluster is running {{es}} 9.5+, ECK delivers all `spec.secureSettings` entries through {{es}} file-based settings instead of the keystore init container. Updating a source secret no longer triggers a rolling restart. Instead, {{es}} applies the updated credentials in place on each node.
+
+When the annotation is absent or the cluster is running {{es}} earlier than 9.5, the existing keystore init container path is used unchanged.
 
 ::::{important}
 Only use this annotation when **all** entries in `spec.secureSettings` are hot-reloadable settings. Settings that must be present in the keystore at startup — such as OIDC `client_secret`, SAML key passphrases, and `xpack.watcher.encryption_key` — will cause {{es}} to fail to start if the keystore is absent. Typical reloadable settings include S3, GCS, and Azure repository credentials, and remote-cluster API keys.
-
-When the annotation is absent or the cluster is running {{es}} earlier than 9.5, the existing keystore init container path is used unchanged.
 ::::
 
 ## {{kib}} secure settings [k8s-kibana-secure-settings]
