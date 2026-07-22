@@ -17,7 +17,7 @@ products:
 The instructions on this page are for **local development only**. Do not use this configuration for production deployments, because it is not secure. Refer to [deployment options](/get-started/deployment-options.md) for a list of production deployment options.
 ::::
 
-Quickly set up {{es}} and {{kib}} in Docker for local development or testing, using this one-liner in the command line. This setup comes with a one-month trial license that includes all Elastic features.
+Quickly set up {{es}} and {{kib}} in Docker for local development or testing, using this one-liner in the command line. This setup comes with a one-month trial license that includes all {{es}} features.
 
 As an alternative, you can also explore {{es}} and {{kib}} by [signing up for a free {{ecloud}} trial](https://cloud.elastic.co/registration).
 
