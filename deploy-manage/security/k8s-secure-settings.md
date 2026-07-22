@@ -168,7 +168,7 @@ When the annotation is set and the cluster is running {{es}} 9.5+, ECK delivers 
 When the annotation is absent or the cluster is running {{es}} earlier than 9.5, the existing keystore init container path is used unchanged.
 
 ::::{important}
-Only use this annotation when **all** entries in `spec.secureSettings` are hot-reloadable settings. Settings that must be present in the keystore at startup — such as OIDC `client_secret`, SAML key passphrases, and `xpack.watcher.encryption_key` — will cause {{es}} to fail to start if the keystore is absent. Typical reloadable settings include S3, GCS, and Azure repository credentials, and remote-cluster API keys.
+Only use this annotation when all entries in `spec.secureSettings` are [reloadable settings](/deploy-manage/security/secure-settings.md#reloadable-secure-settings). Settings that must be present in the keystore at startup, such as OIDC `client_secret`, SAML key passphrases, and `xpack.watcher.encryption_key`, will cause {{es}} to fail to start if the keystore is absent.
 ::::
 
 ## {{kib}} secure settings [k8s-kibana-secure-settings]
