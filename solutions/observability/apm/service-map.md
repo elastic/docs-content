@@ -51,6 +51,13 @@ To save the current service map view to a {{kib}} dashboard, click **Copy to das
 
 When you click an instrumented service node (circle shape), a **service flyout** panel opens with a summary of the service’s RED metrics and infrastructure usage. Use the footer menu to open traces, logs, alerts, or SLOs for the service without leaving the map. Dependency nodes (diamond shape) and connections still use a compact popover.
 
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+A **minimap** in the corner of the map lets you see where you are in a large architecture and quickly navigate to a different area.
+
 :::{image} /solutions/images/observability-service-maps-java.png
 :alt: Example view of service maps in the Applications UI in Kibana
 :screenshot:
