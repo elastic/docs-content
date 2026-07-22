@@ -1,5 +1,5 @@
 :::{admonition} Simplify the deployment process
-Self-managed clusters are useful for local development, and for exploring Elastic features. However, Elastic offers several deployment options that can simplify the process of deploying and managing multi-node deployments, especially in production. They also allow you to deploy and manage multiple deployments from a single surface.
+Self-managed clusters are useful for local development, and for exploring {{es}} features. However, Elastic offers several deployment options that can simplify the process of deploying and managing multi-node deployments, especially in production. They also allow you to deploy and manage multiple deployments from a single surface.
 
 Managed by Elastic:
 * [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md)
