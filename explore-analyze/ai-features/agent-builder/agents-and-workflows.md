@@ -40,6 +40,9 @@ Before you begin:
 
 ## Pre-execution workflows [pre-execution-workflows]
 
+```{applies_to}
+stack: ga 9.4+
+```
 
 Pre-execution workflows run after each user message, before the agent makes any LLM calls in response. They let you use Elastic Workflows for deterministic preparation or control before the agent begins its reasoning loop.
 
