@@ -5,11 +5,12 @@ applies_to:
     eck: ga 3.5
 products:
   - id: cloud-kubernetes
+description: Learn how to temporarily pause ECK spec-driven orchestration during maintenance windows.
 ---
 
 # Pause orchestration on ECK [k8s-pause-orchestration]
 
-During maintenance windows — such as draining {{k8s}} nodes or applying infrastructure changes — it can be useful to temporarily prevent ECK from applying spec changes to your Elastic resources. The `eck.k8s.elastic.co/pause-orchestration` annotation lets you freeze spec-driven orchestration on any ECK-managed resource while keeping essential housekeeping running.
+During maintenance windows, such as draining {{k8s}} nodes or applying infrastructure changes, you can temporarily prevent ECK from applying spec changes to your Elastic resources. The `eck.k8s.elastic.co/pause-orchestration` annotation lets you freeze spec-driven orchestration on any ECK-managed resource while keeping essential housekeeping running.
 
 ## Paused vs. fully unmanaged [k8s-pause-vs-unmanaged]
 
