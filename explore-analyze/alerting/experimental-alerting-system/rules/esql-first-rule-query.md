@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Write your first ES|QL rule query in Kibana's experimental alerting system. Covers the minimum query structure and how to adapt it to your data."
+description: "Write your first ES|QL rule query in the experimental alerting system. Covers the minimum query structure and how to adapt it to your data."
 ---
 
 # Your first rule query in the {{alerting-v2-system}} [first-rule-query]
@@ -42,6 +42,6 @@ To use this query with your own data, change three things:
 2. **Alert condition**: Replace `level == "ERROR"` with the field name and value that defines a breach in your data. For example: `event.outcome == "failure"`, `http.response.status_code >= 500`, or `process.name == "malware.exe"`.
 3. **KEEP fields**: Replace the field list with whatever you need for triage. Include any fields you plan to use for grouping, routing, or displaying in the alert detail view.
 
-## Next steps
+## Other query patterns [first-rule-query-next-steps]
 
 This pattern alerts on individual events. If you want to alert only when a count or rate crosses a threshold rather than on individual occurrences, the [threshold query pattern](esql-threshold-queries.md) is the next step.

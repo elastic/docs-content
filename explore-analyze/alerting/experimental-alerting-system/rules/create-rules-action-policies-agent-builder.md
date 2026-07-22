@@ -10,9 +10,7 @@ description: "How Agent Builder creates rules and action policies in the experim
 
 # Create rules and action policies with {{agent-builder}} [create-rules-agent-builder]
 
-Use {{agent-builder}} to create and configure rules and action policies through natural language instead of the rule form. An agent equipped with the rule management skill proposes, creates, and configures both object types based on your conversation.
-
-Instead of filling out the rule form manually, you describe what you want to monitor and the agent uses its rule management skill and tools to resolve the data source and build a fully configured rule proposal for you.
+Use {{agent-builder}} to create and configure rules and action policies through natural language instead of the rule form. Describe what you want to monitor, and an agent equipped with the rule management skill resolves the data source and proposes a fully configured rule.
 
 ## Requirements [create-ai-agent-requirements]
 
@@ -33,7 +31,7 @@ Before you start, make sure you have the following:
 
 ### Start a proposal [ai-agent-start-proposal]
 
-Go to the **Rules** page, then start creating a rule. When choosing a creation path, select the one that lets you create the rule with an agent. Alternatively, open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. 
+To create a rule, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules**. When choosing a creation path, select the one that lets you create the rule with an agent. Alternatively, open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. 
 
 The rule management skill gives the agent domain expertise in {{alerting-v2-system}} rule authoring, including knowledge of {{esql}} query patterns, threshold configuration, grouping, and the {{alerting-v2-system}} data model. When you describe a monitoring requirement, the agent uses its tools to resolve the relevant data source and builds a rule proposal.
 
@@ -51,7 +49,7 @@ The agent can also search for and attach an existing rule to the conversation us
 
 The agent does not persist the rule automatically. Saving is an explicit action that signals the configuration is ready. Until the rule is saved, the proposal exists only in the conversation and is not evaluated against data.
 
-When {{agent-builder}} saves or edits a rule, {{kib}} automatically adds an `agent-builder-assisted` tag to it. The tag appears in the rules list and works as a normal filter tag. You can remove it or edit it manually. If the agent edits the same rule later, the tag is re-applied automatically.
+When {{agent-builder}} saves or edits a rule, {{kib}} automatically adds an `agent-builder-assisted` tag to it. The tag appears on the **Rules** page and works as a normal filter tag. You can remove it or edit it manually. If the agent edits the same rule later, the tag is re-applied automatically.
 
 ## Example prompts [ai-agent-sample-prompts]
 
@@ -71,7 +69,7 @@ Signal rules do not support notifications. Alert episodes, and therefore action 
 :::
 
 - **Workflows** - Workflows are the delivery mechanism. They define what happens when the {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
-- **Action policies** - Action policies are the gating mechanism. They evaluate alert episodes from the rule on a continuous schedule and invoke the workflow when the episode clears the action policy's match conditions and frequency settings. When the agent creates an action policy alongside a specific rule, the action policy is automatically scoped to that rule.
+- **Action Policies** - Action policies are the gating mechanism. They evaluate the rule's alert episodes and invoke the workflow when an episode matches. When created alongside a rule, an action policy is automatically scoped to it.
 
 Both objects are proposed as inline attachments and must be explicitly saved before they take effect.
 
@@ -87,7 +85,6 @@ Action policies saved or edited through {{agent-builder}} also receive the `agen
 
 ## Related pages
 
-- [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) - How the {{agent-builder}} platform works, including agents, skills, and tools.
-<!-- - [About action policies](action-policies/about-action-policies.md) - How action policies evaluate and gate alert episodes before invoking a workflow. -->
-<!-- - [Create an action policy](action-policies/create-configure-action-policy.md) - Configure an action policy manually, with full control over match conditions, grouping, and destinations. -->
-<!-- - [Connect workflows to the {{alerting-v2-system}}](workflows-alerting.md) - How action policies and lifecycle triggers invoke workflows at runtime, and when to use each. -->
+- [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md): Learn how the {{agent-builder}} platform works, including agents, skills, and tools.
+- [About action policies](../action-policies/about-action-policies.md): Understand the gating mechanism the agent configures on your behalf.
+- [Connect workflows to the {{alerting-v2-system}}](../workflows-alerting.md): Understand the delivery mechanism the agent sets up when you ask it to configure notifications.

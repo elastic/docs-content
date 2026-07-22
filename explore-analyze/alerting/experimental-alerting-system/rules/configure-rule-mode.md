@@ -15,7 +15,9 @@ Rule mode is a required setting for rules in the {{alerting-v2-system}}. It dete
 | Mode | `kind` value | Behavior |
 | --- | --- | --- |
 | Signal | `signal` | Records each matching row as a signal document. No alert episodes, no notifications. |
-| Alert | `alert` | Creates an alert episode for each matching row. Episodes are tracked through lifecycle states, appear on the Alerts UI, and can be routed to notifications by action policies. |
+| Alert | `alert` | Creates an alert episode for each matching row. Episodes are tracked through lifecycle states, appear on the **Alerts** page, and can be routed to notifications by action policies. |
+
+Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view and triage alert episodes.
 
 ## When to use each rule mode [rule-mode-when-to-use]
 
@@ -47,4 +49,9 @@ You're writing a new detection query and want to verify it produces the results 
 
 ### Route critical episodes to an on-call workflow
 
-You have a checkout service error rate rule and want on-call engineers notified when it fires. Create the rule in Alert mode so each breach opens a tracked episode that action policies can route to a notification channel. The rule's episodes appear on the Alerts UI and are visible to any action policy whose KQL matcher matches the episode fields.
+You have a checkout service error rate rule and want on-call engineers notified when it fires. Create the rule in Alert mode so each breach opens a tracked episode that action policies can route to a notification channel. The rule's episodes appear on the **Alerts** page and are visible to any action policy whose KQL matcher matches the episode fields.
+
+## Related pages
+
+- [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
+- [Create a rule](create-a-rule.md): Compare rule creation paths and choose the one that fits your workflow.

@@ -9,7 +9,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Event Settings [ec-autoops-event-settings]
+# Event settings [ec-autoops-event-settings]
 
 AutoOps events are triggered when specific conditions are met and are closed when those conditions are no longer satisfied. An event can be triggered by multiple conditions, and each event comes with a default setting that can be adjusted differently for each connected deployment.
 
@@ -17,29 +17,31 @@ AutoOps events are triggered when specific conditions are met and are closed whe
 Only **Organization owners** can configure these settings.
 ::::
 
+To view an event's settings, select an event on the **Deployment** or **Cluster** page and choose **Settings** from its actions menu. Not all events have customizable settings.
 
-To view event settings, go to the event details page and select **Customize** from the menu. Note that for some events, AutoOps doesn’t provide the option to customize it.
+Depending on the event, settings can include:
 
-The event settings include:
-
-* Event trigger threshold - This is a list of parameters explicitly set for an event. Default settings can be adjusted to meet operational and business needs. You can apply different settings to some or all deployments.
-* Index patterns to exclude - AutoOps will exclude system indices to prevent unnecessary events from opening. You can add or remove indices from the list.
-* Data roles tier to exclude from indications - Add threshold based on the type of data tier.
+* Event trigger threshold: A list of parameters explicitly set for an event. Default settings can be adjusted to meet operational and business needs. You can apply different settings to some or all deployments.
+* Data roles (tiers) to exclude from indication: Add a threshold based on the type of data tier.
+* Index filter patterns to ignore: AutoOps will ignore selected indices to prevent unnecessary events from opening. You can add or remove indices from the list.
 
 :::{image} /deploy-manage/images/cloud-autoops-event-settings.png
 :screenshot:
-:alt: Screenshot showing the Event Settings dialogue in AutoOps
+:alt: Screenshot showing the Event settings dialog in AutoOps
 :::
 
+## Events settings report [ec-event-settings-report]
 
-## Event settings report [ec-event-settings-report]
-
-The **Event Settings** report provides a list of all the events for which the settings were modified.
-
-From the **Event Settings** report, you can click **Add** to add new settings, or select the edit icon to modify the existing settings.
+The **Events settings** report provides a list of all the events for which settings have been customized.
 
 :::{image} /deploy-manage/images/cloud-autoops-events-settings-report.png
 :screenshot:
-:alt: Screenshot showing the Event Settings page with the Add button
+:alt: Screenshot showing the Events settings page with the Add event settings button
 :::
 
+On the **Events settings** page, click **Add event settings** to add new settings, or select the edit icon to modify existing settings.
+
+:::{image} /deploy-manage/images/add-event-settings-flyout.png
+:screenshot:
+:alt: Screenshot of the Add event settings flyout with custom settings for the "Sharp increase of shards on node" event type
+:::

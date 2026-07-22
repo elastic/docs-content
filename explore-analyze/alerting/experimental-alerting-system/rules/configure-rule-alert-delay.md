@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Configure alert delay for Alert-mode rules in Kibana's experimental alerting system to reduce noise from brief spikes before opening an episode."
+description: "Configure alert delay for Alert-mode rules in the experimental alerting system to reduce noise from brief spikes before opening an episode."
 ---
 
 # Alert delay in the {{alerting-v2-system}} (Alert mode only) [alert-delay]
@@ -29,7 +29,7 @@ Leave alert delay set to Immediate when:
 | Mode | Behavior | When to use |
 | --- | --- | --- |
 | Immediate | Opens an alert episode as soon as the threshold is breached on the first evaluation. | Use when any single breach warrants attention and latency matters. |
-| Breaches | Opens an alert episode after the threshold is breached a set number of times in a row. | Use when a single breach isn't enough reason to act, for example when brief spikes are normal and you only care if the condition keeps firing. |
+| Breaches | Opens an alert episode after the threshold is breached a set number of times in a row. | Use when brief spikes are normal and you only want to act after the condition keeps firing—a single breach on its own isn't enough. |
 | Duration | Opens an alert episode after the threshold has been continuously breached for a set time. | Use when duration of the problem matters more than how many evaluations caught it, for example sustained high CPU rather than a momentary spike. |
 
 ### Alert delay fields
@@ -61,3 +61,8 @@ Create a rule that monitors CPU usage and runs every minute. A single high readi
 ### Require sustained breach before escalating
 
 Create a rule that monitors a payment error rate. Brief spikes happen during deployments and are expected. Set `pending_count` to `5`, `pending_timeframe` to `2m`, and `pending_operator` to `AND`. The rule only fires when the error rate has breached on 5 consecutive evaluations and has been continuously elevated for at least 2 minutes. Either condition alone isn't enough.
+
+## Related pages
+
+- [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
+- [Recovery condition](configure-rule-recovery.md#recovery-delay): The equivalent delay before an episode closes.

@@ -276,6 +276,7 @@ toc:
       - file: discover/save-open-search.md
       - file: discover/show-field-statistics.md
       - file: discover/run-pattern-analysis-discover.md
+      - file: discover/detect-change-points.md
       - file: discover/background-search.md
       - file: discover/try-esql.md
   - file: dashboards.md
@@ -405,6 +406,7 @@ toc:
               - file: alerting/experimental-alerting-system/get-started/setup.md
               - file: alerting/experimental-alerting-system/get-started/configure-access.md
               - file: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
+          - file: alerting/experimental-alerting-system/authorization.md
           - file: alerting/experimental-alerting-system/rules.md
             children:
               - file: alerting/experimental-alerting-system/rules/create-a-rule.md
@@ -436,6 +438,29 @@ toc:
                   - file: alerting/experimental-alerting-system/rules/esql-slo-burn-rate.md
                   - file: alerting/experimental-alerting-system/rules/esql-persistent-breach.md
               - file: alerting/experimental-alerting-system/rules/rule-event-field-reference.md
+          - file: alerting/experimental-alerting-system/alerts.md
+            children:
+              - file: alerting/experimental-alerting-system/alerts/alert-data-model.md
+              - file: alerting/experimental-alerting-system/alerts/view-and-manage-alerts.md
+                children:
+                  - file: alerting/experimental-alerting-system/alerts/triage-alert-episodes.md
+                  - file: alerting/experimental-alerting-system/alerts/investigate-alert-episodes.md
+              - file: alerting/experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md
+              - file: alerting/experimental-alerting-system/alerts/field-reference.md
+          - file: alerting/experimental-alerting-system/notifications-actions.md
+            children:
+              - file: alerting/experimental-alerting-system/workflows-alerting.md
+              - file: alerting/experimental-alerting-system/action-policies/about-action-policies.md
+              - file: alerting/experimental-alerting-system/action-policies/common-action-policy-scenarios.md
+                children:
+                  - file: alerting/experimental-alerting-system/action-policies/route-by-severity.md
+                  - file: alerting/experimental-alerting-system/action-policies/severity-escalation.md
+                  - file: alerting/experimental-alerting-system/action-policies/re-notification.md
+              - file: alerting/experimental-alerting-system/action-policies/create-configure-action-policy.md
+              - file: alerting/experimental-alerting-system/action-policies/action-policy-reference.md
+              - file: alerting/experimental-alerting-system/action-policies/manage-action-policies.md
+              - file: alerting/experimental-alerting-system/action-policies/review-action-policy-execution-history.md
+              - file: alerting/experimental-alerting-system/action-policies/reduce-notification-noise.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md

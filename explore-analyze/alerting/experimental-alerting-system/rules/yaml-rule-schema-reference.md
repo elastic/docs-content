@@ -5,13 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "YAML rule definitions in Kibana's experimental alerting system support fields for detection mode, schedule, query, grouping, and recovery. Reference tables list all valid field values."
+description: "YAML rule definitions in the experimental alerting system support fields for detection mode, schedule, query, grouping, and recovery. Reference tables list all valid field values."
 ---
 
 # YAML rule schema reference for the {{alerting-v2-system}} [yaml-rule-schema-reference]
 
-
-YAML rule schema is part of the {{alerting-v2-system}} in {{kib}}. This page lists valid fields for YAML rule definitions. For authoring guidance, refer to [Create an {{esql}} rule](create-esql-rule.md).
+This page lists valid fields for YAML rule definitions in the {{alerting-v2-system}}. For authoring guidance, refer to [Create an {{esql}} rule](create-esql-rule.md).
 
 ## Base rule fields
 
@@ -83,10 +82,10 @@ Only valid when `kind: alert`. Controls how many consecutive detections are requ
 |---|---|---|---|
 | `state_transition.pending_operator` | string | `AND` or `OR` | Whether both the count and timeframe must be met (`AND`) or either one (`OR`) before becoming active. |
 | `state_transition.pending_count` | integer | Integer, 0–1000 | Number of consecutive breaches required before the episode becomes active. Set to `0` to skip the pending phase and transition directly to active on the first breach. |
-| `state_transition.pending_timeframe` | duration | Any duration string | Time window within which the breach count must be met. For example: `5m`. |
+| `state_transition.pending_timeframe` | duration | Any duration string | How long the condition must remain continuously breached before the episode becomes active. For example: `5m`. |
 | `state_transition.recovering_operator` | string | `AND` or `OR` | Whether both the count and timeframe must be met (`AND`) or either one (`OR`) before recovering. |
 | `state_transition.recovering_count` | integer | Integer, 0–1000 | Number of consecutive clear evaluations required before the episode recovers. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
-| `state_transition.recovering_timeframe` | duration | Any duration string | Time window within which the recovery count must be met. For example: `5m`. |
+| `state_transition.recovering_timeframe` | duration | Any duration string | How long the condition must remain continuously non-breaching before the episode recovers. For example: `5m`. |
 
 ## Grouping fields
 
@@ -128,3 +127,8 @@ All duration fields accept the following units:
 | `m` | `5m` | Minutes |
 | `h` | `1h` | Hours |
 | `d` | `7d` | Days |
+
+## Related pages
+
+- [Create an {{esql}} rule](create-esql-rule.md): Author rules using the YAML editor, with a live sandbox for previewing results.
+- [Configure a rule](configure-a-rule.md): Field-by-field guidance for each setting, with examples and when-to-use recommendations.

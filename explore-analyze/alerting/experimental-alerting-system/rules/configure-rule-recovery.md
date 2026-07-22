@@ -18,9 +18,9 @@ Choose one of the following options. Each maps to a `recovery_strategy` value if
 
 | Option | `recovery_strategy` value | Description |
 | --- | --- | --- |
-| Default | `no_breach` | Recovers an episode once its active group no longer appears in the breach results **and** still appears in the base query results without the alert condition applied. That second check confirms the absence is a genuine recovery rather than missing data. This is the default and covers most rules. |
+| Default | `no_breach` | Recovers an episode when its group no longer breaches and the base query (without the alert condition) still returns that group. That confirms the group is actually healthy, not just missing from the data. This is the default and covers most rules. |
 | Custom recovery | `query` | Evaluates a separate recovery condition. A match recovers the episode. No match falls back to the same base-query check as **Default**. |
-| No recovery | `none` | Turns off automatic recovery entirely. Episodes stay open until closed manually. Because recovery is never evaluated, no-data handling never runs either. |
+| No recovery | `none` | Turns off automatic recovery entirely. Episodes stay open until closed manually. With recovery turned off, no-data handling doesn't run either. |
 
 :::{note}
 An unset `recovery_strategy` behaves the same as **No recovery**, but unset usually means the setting was overlooked rather than a deliberate choice.
@@ -81,3 +81,9 @@ Create a rule that detects a potential security incident. Even after the query s
 ### Require consecutive recoveries before closing an episode
 
 Create a rule that monitors database connection pool saturation. After the condition clears, set `recovering_count` to `3` to require 3 consecutive non-breaching evaluations before closing the episode. Without this, a rule that alternates between breaching and recovering on consecutive evaluations generates a constant stream of open and closed notifications.
+
+## Related pages
+
+- [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
+- [Alert delay](configure-rule-alert-delay.md): The equivalent delay before an episode opens.
+- [No-data handling](configure-no-data-handling.md): How the rule behaves when it can't confirm whether a group's absence is a genuine recovery.

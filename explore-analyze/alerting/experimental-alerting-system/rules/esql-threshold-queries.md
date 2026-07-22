@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Write ES|QL threshold queries for rules in Kibana's experimental alerting system. Covers single-series and grouped rules using STATS aggregation."
+description: "Write ES|QL threshold queries for rules in the experimental alerting system. Covers single-series and grouped rules using STATS aggregation."
 ---
 
 # Threshold queries in the {{alerting-v2-system}} [esql-threshold-queries]
@@ -16,7 +16,7 @@ This page covers two variants: a single-series threshold that produces one resul
 
 ## Single-series threshold
 
-This query counts HTTP 5xx responses and error rates over the lookback window and alerts when the error rate for any service exceeds 10%.
+This query counts HTTP 5xx responses across all services combined and alerts when the overall error rate exceeds 10% over the lookback window.
 
 ```esql
 FROM logs-*
@@ -24,13 +24,12 @@ FROM logs-*
 | STATS
     error_count = COUNT_IF(http.response.status_code >= 500),  // Count only error responses
     total_count = COUNT(*)                                     // Count all requests for the denominator
-  BY service.name
 | EVAL error_rate = error_count / total_count  // Compute error rate as a fraction (0–1)
-| WHERE error_rate > 0.10                      // Alert condition: services above 10% error rate are breaches
-| KEEP service.name, error_rate, error_count, total_count
+| WHERE error_rate > 0.10                      // Alert condition: An overall error rate above 10% is a breach
+| KEEP error_rate, error_count, total_count
 ```
 
-One window, one aggregate per service, one threshold check. The result is either a breach or no breach for each service.
+One window, one aggregate across all the data, one threshold check. The result is either a single breach or no breach.
 
 ## Grouped threshold
 
@@ -50,7 +49,7 @@ Without the `BY host.name` clause, the query would produce a single average acro
 
 The `BY` fields you use here must match the grouping configuration in the rule. Refer to [Rule grouping](configure-rule-grouping.md) for how to align them.
 
-## Next steps
+## More detection patterns [esql-threshold-queries-next-steps]
 
 If both of these patterns don't fit your use case, the next pages cover more specific detection problems:
 

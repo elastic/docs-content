@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Detect conditions that persist across consecutive time buckets in Kibana's experimental alerting system using ES|QL bucket counting."
+description: "Detect conditions that persist across consecutive time buckets in the experimental alerting system using ES|QL bucket counting."
 ---
 
 # Persistent breach detection in the {{alerting-v2-system}} [persistent-breach]
@@ -43,3 +43,8 @@ If you want to allow some gaps, replace `exceeding_buckets == total_buckets` wit
 ```
 
 Design the query so that gaps in reporting produce the behavior you want before deploying it.
+
+## Related pages
+
+- [{{esql}} query patterns](esql-query-patterns.md): Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.
+- [Alert delay](configure-rule-alert-delay.md): A setting-based alternative for requiring consecutive breaches before an episode opens.
