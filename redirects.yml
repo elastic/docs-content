@@ -1061,5 +1061,5 @@ redirects:
           'attacks-schedule-discoveries': 'attacks-view-start-a-run'
       - to: 'solutions/security/ai/attack-discovery/manage-saved-discoveries.md'
         anchors:
-          'attacks-next-steps': 'choose-page'
+          'attacks-next-steps': 'manage-saved-discoveries'
   'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'

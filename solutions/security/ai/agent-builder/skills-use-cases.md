@@ -147,7 +147,7 @@ Use this skill to diagnose [{{elastic-defend}}](/solutions/security/configure-el
 | Which endpoints are reporting policy response failures? | Search for policy response errors or warnings across endpoints and summarize affected endpoint IDs. |
 | Is there any incompatible antivirus software on the managed hosts? | Inspect endpoint data for known antivirus conflicts and recommend resolution steps. |
 
-## Attack Discovery generation
+## Attack Discovery generation [attack-discovery-generation]
 ```{applies_to}
 stack: ga 9.5+
 serverless: ga
