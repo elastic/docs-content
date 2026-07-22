@@ -157,10 +157,10 @@ Configure each setting as described below. For the full list of available settin
 :   The URL of the Single Logout service within {{kib}} that receives logout messages from your IdP. For example, `https://kibana.example.com/logout`. Required for [SAML Single Logout](#saml-logout). If not configured, {{es}} refuses all `<LogoutRequest>` messages from the IdP.
 
 `attributes.principal` (required)
-:   The SAML attribute that {{es}} uses as the username (`principal`). Replace with the URI your IdP uses. Attribute URIs vary between providers. If your IdP uses `NameID`, use `nameid` here. See [Map SAML attributes](#saml-attributes-mapping).
+:   The SAML attribute that {{es}} uses as the username (`principal`). Replace with the URI your IdP uses. Attribute URIs vary between providers. If your IdP uses `NameID`, use `nameid` here. See [Attribute mapping](#saml-attributes-mapping).
 
 `attributes.groups` (recommended)
-:   The SAML attribute that maps to group memberships. Replace with the URI your IdP uses. Recommended if you want to assign roles based on IdP group memberships. See [Map SAML attributes](#saml-attributes-mapping).
+:   The SAML attribute that maps to group memberships. Replace with the URI your IdP uses. Recommended if you want to assign roles based on IdP group memberships. See [Attribute mapping](#saml-attributes-mapping).
 
 :::{note}
 If your IdP requires signed requests or uses encrypted assertions, refer to [Signing and encryption](#saml-enc-sign).
@@ -170,7 +170,7 @@ If your IdP requires signed requests or uses encrypted assertions, refer to [Sig
 If your IdP supports Authentication Context restrictions (for example, to require MFA), you can configure `req_authn_context_class_ref` in the realm. Refer to [Request specific authentication methods](#req-authn-context).
 :::
 
-#### Map SAML attributes to {{es}} user properties [saml-attributes-mapping]
+#### Attribute mapping [saml-attributes-mapping]
 
 When a user authenticates through SAML, the IdP sends an assertion containing *attributes* (pieces of information about the user such as their username, email address, or group memberships). The `attributes.*` realm settings tell {{es}} which SAML attribute URI to use for each {{es}} user property.
 
@@ -178,7 +178,9 @@ When a user authenticates through SAML, the IdP sends an assertion containing *a
 The attribute URIs must exactly match what your IdP sends in the assertion. A mismatch silently breaks authentication: the login might appear to succeed but the user's principal or group memberships will be missing or incorrect. Verify the exact URIs with your IdP administrator or by inspecting a captured SAML assertion.
 :::
 
-The most important mappings are `attributes.principal` and `attributes.groups`: `attributes.principal` is required and determines the username {{es}} assigns to the authenticated user, and `attributes.groups` is recommended if you want to assign roles based on IdP group memberships. For the full list of mappable user properties and advanced use cases (such as mapping from the SAML `NameID` or extracting partial attribute values with regular expressions), refer to [Map SAML attributes](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
+The most important mappings are `attributes.principal` and `attributes.groups`: `attributes.principal` is required and determines the username {{es}} assigns to the authenticated user, and `attributes.groups` is recommended if you want to assign roles based on IdP group memberships.
+
+For a complete reference of mappable user properties, special attribute names, and advanced patterns, refer to [Map SAML attributes to {{es}} user properties](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md).
 
 ::::
 
