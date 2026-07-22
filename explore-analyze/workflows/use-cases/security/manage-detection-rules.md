@@ -19,11 +19,14 @@ Teams that run large sets of detection rules (prebuilt, custom, or both) have re
 
 Use workflows to automate these rule-operations tasks. Workflows can query detection engine APIs on a schedule, post summaries to a chat channel, index results for dashboarding, or open a ticket when something is wrong, all using existing workflow building blocks.
 
+To enable or disable detection rules from a workflow, use [`security.enableRule`](/explore-analyze/workflows/steps/security.md#security-enablerule) and [`security.disableRule`](/explore-analyze/workflows/steps/security.md#security-disablerule). These steps validate their inputs and return a per-rule success summary. Prefer them instead of calling the detection engine bulk API with [`kibana.request`](/explore-analyze/workflows/steps/kibana.md#kibana-request).
+
 ## What you can automate [workflows-rule-ops-patterns]
 
-The following patterns combine [scheduled triggers](/explore-analyze/workflows/triggers/scheduled-triggers.md) with [{{kib}} request actions](/explore-analyze/workflows/steps/kibana.md#kibana-request) to drive rule-operations work:
+The following patterns combine [scheduled triggers](/explore-analyze/workflows/triggers/scheduled-triggers.md) with [{{kib}} request actions](/explore-analyze/workflows/steps/kibana.md#kibana-request) and [Security action steps](/explore-analyze/workflows/steps/security.md) to drive rule-operations work:
 
 - **Audit rule health on a schedule.** A scheduled workflow queries the detection engine API for rule status, filters for rules in an error or disabled state, and publishes a daily summary.
+- **Enable or disable rules by ID or query.** Use [`security.enableRule`](/explore-analyze/workflows/steps/security.md#security-enablerule) and [`security.disableRule`](/explore-analyze/workflows/steps/security.md#security-disablerule) to change rule state.
 - **Surface rule errors.** Use [`if` steps](/explore-analyze/workflows/steps/if.md) to branch on rule status and send a targeted notification when the failing rule is business-critical.
 - **Report on coverage.** Use [`foreach` steps](/explore-analyze/workflows/steps/foreach.md) to iterate over rules, group by tag or framework mapping, and index the result to an {{es}} index for dashboard visualization.
 - **Sync rule status to external systems.** Use [HTTP actions](/explore-analyze/workflows/steps/external-systems-apps.md) to mirror rule status into an external tracker, or post to Slack or PagerDuty when a rule crosses a threshold.
@@ -37,6 +40,7 @@ Step-by-step guides for rule-operations workflows:
 ## Learn more
 
 - [Scheduled triggers](/explore-analyze/workflows/triggers/scheduled-triggers.md): Run workflows on a cron-like schedule.
+- [Security action steps](/explore-analyze/workflows/steps/security.md): Native steps to enable or disable detection rules.
 - [{{kib}} action steps](/explore-analyze/workflows/steps/kibana.md): Reference for generic {{kib}} API requests.
 - [Foreach step](/explore-analyze/workflows/steps/foreach.md): Iterate over arrays returned by API calls.
 - [Detection rule concepts](/solutions/security/detect-and-alert/detection-rule-concepts.md): Background on how detection rules work.

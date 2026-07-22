@@ -49,6 +49,19 @@ Cases actions provide 27 step types for creating, querying, updating, and managi
 
 Refer to [](/explore-analyze/workflows/steps/cases.md) for the complete 27-step catalog.
 
+## Security
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Security actions provide named steps for {{elastic-sec}} detection-rule management. Use Security actions to:
+
+* Enable or disable detection rules by ID list or query (`security.enableRule`, `security.disableRule`)
+
+Refer to [](/explore-analyze/workflows/steps/security.md) for more information.
+
 ## Streams
 
 ```{applies_to}

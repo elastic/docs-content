@@ -83,6 +83,8 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`kibana.streams.list`](/explore-analyze/workflows/steps/streams.md#kibana-streams-list) | Streams (tech preview) | List available streams. |
 | [`loop.break`](/explore-analyze/workflows/steps/loop-break.md) | Flow control | Exit the innermost loop. |
 | [`loop.continue`](/explore-analyze/workflows/steps/loop-continue.md) | Flow control | Skip to the next iteration. |
+| [`security.disableRule`](/explore-analyze/workflows/steps/security.md#security-disablerule) | Security | Disable one or more detection rules by ID list or KQL query, with partial-failure reporting. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` |
+| [`security.enableRule`](/explore-analyze/workflows/steps/security.md#security-enablerule) | Security | Enable one or more detection rules by ID list or KQL query, with partial-failure reporting. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` |
 | [`switch`](/explore-analyze/workflows/steps/switch.md) | Flow control | Multi-way dispatch. |
 | [`wait`](/explore-analyze/workflows/steps/wait.md) | Flow control | Pause for a fixed duration. |
 | [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) | Flow control | Pause for human input (human-in-the-loop). |
