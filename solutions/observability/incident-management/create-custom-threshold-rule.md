@@ -78,6 +78,19 @@ To gather the total number of log documents with a log level of `warn`:
 
 Set an equation using your aggregations. Based on the results of your equation, set a threshold to define when to trigger an alert. The equations use basic math or boolean logic. Refer to the following examples for possible use cases.
 
+### Add a warning threshold [custom-threshold-warning-threshold]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Optionally turn on **Add warning threshold** to define a warning-level threshold, in addition to the critical threshold. When the warning threshold is met, the rule fires the **Warning** action group. When the critical threshold is met, the rule fires the **Alert** action group.
+
+For example, you can alert with a warning when average CPU usage is above 80% and with a critical alert when it is above 95%.
+
+When the warning threshold is met, the alert severity is set to `warning`. When the critical threshold is met, the alert severity is set to `critical`. You can use these severity values in [per-alert snooze](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alert-options) conditions, such as to unsnooze an alert when its severity changes.
+
 
 ### Basic math equation [custom-threshold-math-equation]
 
@@ -237,7 +250,7 @@ For more information on creating connectors, refer to [Connectors](/deploy-manag
 
 
 :::::{dropdown} Action frequency
-After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: `Alert`, `No Data`, or `Recovered`.
+After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: `Alert`, {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` `Warning`, `No Data`, or `Recovered`.
 
 :::{image} /solutions/images/serverless-custom-threshold-run-when.png
 :alt: Configure when a rule is triggered

@@ -28,6 +28,7 @@ Manage alerts from the following places:
 ::::{note}
 You must have the appropriate {{kib}} {{alert-features}} and index privileges to view alerts. Refer to [Alerting security requirements](alerting-setup.md#alerting-security).
 
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To snooze, unsnooze, or acknowledge alerts, use the **Stack Alerts** or **Observability Alerts** feature privileges. These privileges do not include rule management. Refer to [Give access to triage alerts without managing rules](alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
 ::::
 
 ## Filter alerts [filter-alerts]
@@ -79,27 +80,84 @@ There are four common alert statuses:
 `untracked`
 :   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the Alerts table, click the action menu icon {icon}`boxes_vertical` and select **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated and the alert's status can no longer be changed. You can choose to move active alerts to this state when you disable or delete rules.
 
+## Snooze alerts [snooze-alerts]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+If an alert is active, you can snooze it to suppress that alert's actions. The rest of the rule keeps sending notifications. While an alert is snoozed, the rule continues to run and the alert continues to be evaluated. Actions stay suppressed until you unsnooze the alert, the time expires, or an unsnooze condition is met. Future alerts that share the same alert ID are also affected while the snooze is active.
+
+Use per-alert snooze when a single alert instance is noisy, such as one host or service. To silence every notification from a rule, [snooze the rule](create-manage-rules.md#controlling-rules) instead. Per-alert snooze is available for {{stack-manage-app}} and {{observability}} alerts only.
+
+::::{note}
+**Snooze** replaces the **Mute** action in {{stack}} 9.5.x and {{serverless-short}}. Snooze indefinitely to silence an alert. Existing alerts that are muted show as snoozed indefinitely.
+::::
+
+### Snooze options [snooze-alert-options]
+
+You can snooze an alert in any of the following ways:
+
+* **For a duration or until a date and time**: The alert is automatically unsnoozed when the time expires.
+* **Until unsnooze conditions are met**: The alert is automatically unsnoozed when one or more conditions are met. You can require that any one condition is met, or that all conditions are met:
+  * A specified alert field changes
+  * The alert severity changes
+  * The alert severity equals a target level (`critical`, `high`, `medium`, `low`, or `info`)
+* **Indefinitely**: The alert stays snoozed until you unsnooze it manually. This option replaces the previous mute alert behavior.
+
+You can set both a time expiry and unsnooze conditions. The alert unsnoozes when the time expires or when the conditions are met.
+
+::::{tip}
+:applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
+
+[Custom threshold](/solutions/observability/incident-management/create-custom-threshold-rule.md#custom-threshold-warning-threshold) and [metric threshold](/solutions/observability/incident-management/create-metric-threshold-rule.md#metrics-conditions) rules set the alert severity to `warning` or `critical` based on whether the warning or critical threshold was met. Severity-based unsnooze conditions, such as when severity changes, can match those alerts.
+::::
+
+### Snooze or unsnooze an alert [snooze-or-unsnooze-an-alert]
+
+1. Open the **Alerts** page:
+   * **Classic navigation**: Find **{{stack-manage-app}} > Alerts** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+   * **Solution navigation**: Find **Alerts** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Open the action menu ({icon}`boxes_vertical`) for an active alert, then select **Snooze**.
+3. Select a time expiry, unsnooze conditions, or snooze indefinitely, then apply your changes.
+
+You can also snooze or unsnooze an alert from the alert details page actions.
+
+Snoozed alerts display the icon {icon}`bell_slash` in the Alerts table. Hover over the icon to see when the snooze ends or which conditions unsnooze the alert.
+
+To unsnooze an alert, open the action menu ({icon}`boxes_vertical`) and select **Unsnooze**.
+
+::::{note}
+To permanently suppress an alert's actions, open the actions menu for the appropriate alert, then select **Mark as untracked**. In this case, the alert's status is no longer updated and actions are no longer run. These changes are only applied to the alert that you untracked and cannot be reverted. Future alerts with the same alert ID are unaffected.
+
+To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#controlling-rules).
+::::
+
 ## Mute alerts [mute-alerts]
+
+```{applies_to}
+stack: ga 9.0-9.4
+```
 
 If an alert is active or flapping, you can mute it to temporarily suppress future actions. While muted, the alert's status will continue to update but rule actions won't run. All future alerts with the same alert ID will also be muted. You can mute alerts in the following ways:
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.3+
+:::{applies-item} stack: ga 9.3-9.4
 You can mute individual alerts or multiple ones:
 
 - Mute individual alerts: Find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), open the action menu ({icon}`boxes_vertical`) for the appropriate alert, then select **Mute**.
-- Bulk-mute alerts: Select one or more alerts from the **Alerts** management page, click **Selected _x_ alerts** at the upper-left above the table, then select **Mute selected**. Select the **Unmute selected** option to unmute alerts. Muted alerts display the icon {icon}`bell_slash` in the Alerts table. 
+- Bulk-mute alerts: Select one or more alerts from the **Alerts** management page, click **Selected _x_ alerts** at the upper-left above the table, then select **Mute selected**. Select the **Unmute selected** option to unmute alerts. Muted alerts display the icon {icon}`bell_slash` in the Alerts table.
 :::
 
 :::{applies-item} stack: ga 9.0-9.2
-You can only mute individual alerts. To mute an alert, find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), click the action menu icon {icon}`boxes_vertical` for the appropriate alert, then select **Mute**. 
+You can only mute individual alerts. To mute an alert, find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), click the action menu icon {icon}`boxes_vertical` for the appropriate alert, then select **Mute**.
 :::
 
 ::::
 
 ::::{note}
-
 To permanently suppress an alert's actions, open the actions menu for the appropriate alert, then select **Mark as untracked**. In this case, the alert's status is no longer updated and actions are no longer run. These changes are only applied to the alert that you untracked and cannot be reverted. Future alerts with the same alert ID are unaffected.
 
 To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#controlling-rules).

@@ -20,6 +20,12 @@ description: Create and manage alerting rules for Elastic Observability applicat
 
 ::::
 
+::::{note}
+:applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
+
+To grant access to read {{observability}} alerts and perform per-alert actions such as snooze, unsnooze, and acknowledge, assign the **Observability Alerts** feature privilege. This privilege does not include rule management. For details, refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
+::::
+
 
 Alerting enables you to define *rules*, which detect complex conditions within different apps and trigger actions when those conditions are met. Alerting provides a set of built-in connectors and rules for you to use.
 
@@ -102,6 +108,8 @@ The rule listing enables you to quickly snooze, disable, enable, or delete indiv
 When you snooze a rule, the rule checks continue to run on a schedule but the alert will not trigger any actions. You can snooze for a specified period of time, indefinitely, or schedule single or recurring downtimes.
 
 When a rule is in a snoozed state, you can cancel or change the duration of this state.
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To silence actions for one alert instance instead of the whole rule, [snooze that alert](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts).
 
 To temporarily suppress notifications for *all* rules, create a [maintenance window](/explore-analyze/alerting/alerts/maintenance-windows.md).
 
