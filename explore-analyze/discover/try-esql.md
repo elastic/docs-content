@@ -106,7 +106,7 @@ When you write a query, the {{esql}} editor includes two interactive browsers th
 - **Fields browser**: lists fields for the data sources currently in your query and lets you insert one field at a time at the cursor position.
 
 :::{note}
-:applies_to: {stack: preview 9.4.0, serverless: unavailable}
+:applies_to: {stack: preview 9.4.0, serverless: preview}
 [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) aren't shown in the data source browser but they're visible through the autocomplete menu suggestions.
 :::
 
@@ -127,7 +127,13 @@ If you’d like to keep the visualization and add it to a dashboard, you can sav
 
 ## Organize the query results [esql-kibana-results-table]
 
-By default, the results table shows the `@timestamp` field and a **Summary** column that lists each result's key-value pairs. To display specific fields from the documents, use the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command:
+By default, the results table shows the `@timestamp` field and a **Summary** column that lists each result's key-value pairs. To customize the visible columns without changing the query, [add fields from the fields list](discover-get-started.md#explore-fields-in-your-data).
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` When the query doesn't contain transformational commands such as `KEEP` or `STATS`, the time field remains the first column after you add other fields. The time field is also included in CSV exports from **Discover** and from Discover session panels on dashboards.
+
+To hide the time field, enable [**Hide 'Time' column** (`doc_table:hideTimeColumn`)](kibana://reference/advanced-settings.md#kibana-discover-settings).
+
+To control which fields the query returns, use the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -469,7 +475,7 @@ Up to and including version 9.2, filtering for multi-value fields isn't supporte
 Other interactions with the results table do not update the query, such as dragging fields onto the table or sorting the table in a specific order.
 
 :::{tip}
-:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
 You can also have an AI agent analyze your {{esql}} results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
 :::
 
