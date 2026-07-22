@@ -100,7 +100,7 @@ To change which model is used by default:
 
 For more information about these settings, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 
-## Fast model for low-effort tasks [fast-model]
+## Fast model routing [fast-model]
 
 ```{applies_to}
 stack: ga 9.5+
