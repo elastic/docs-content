@@ -159,9 +159,9 @@ deployment:
   eck: ga 3.5
 ```
 
-The `securityRoles` field lets you define custom {{es}} roles declaratively through a `StackConfigPolicy` and apply them consistently across multiple clusters.
+Unlike most other policy fields, `securityRoles` is not applied through an {{es}} API. ECK merges the definitions into [the `roles.yml` file](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file) mounted on each {{es}} pod. ECK creates and manages this file, so no pre-existing `roles.yml` is required. {{es}} reloads that file at runtime, so changes take effect without a pod restart.
 
-Unlike most SCP-managed settings, roles are **not** configured through the {{es}} file-based settings API (which does not support the `roles` resource). Instead, ECK merges the role definitions into the `roles.yml` file mounted into {{es}} pods. {{es}} hot-reloads this file at runtime, so role changes take effect without a pod restart.
+For an example, refer to [Define custom Elasticsearch roles through a policy](#k8s-stack-config-policy-security-roles-example).
 
 ## {{kib}} settings [kib-settings]
 
@@ -318,7 +318,7 @@ deployment:
   eck: ga 3.5
 ```
 
-Use `securityRoles` to declaratively define {{es}} roles and apply them across multiple clusters:
+Use `securityRoles` to declaratively define {{es}} roles and apply them across multiple clusters. Roles defined here are merged into `roles.yml` and hot-reloaded by {{es}} without requiring a pod restart.
 
 ```yaml
 apiVersion: stackconfigpolicy.k8s.elastic.co/v1alpha1
@@ -348,8 +348,6 @@ spec:
               - write
               - create_index
 ```
-
-Roles defined here are merged into `roles.yml` and hot-reloaded by {{es}} without requiring a pod restart.
 
 ### Configure both {{es}} and {{kib}} through a policy
 
