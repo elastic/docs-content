@@ -68,7 +68,7 @@ Most IdPs will provide an appropriate metadata file with all the features that t
 * An `<IDPSSODescriptor>` that supports the SAML 2.0 protocol (`urn:oasis:names:tc:SAML:2.0:protocol`)
 * At least one `<KeyDescriptor>` configured for signing (with `use="signing"`, or `use` left unspecified)
 * A `<SingleSignOnService>` with binding of HTTP-Redirect (`urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect`)
-* If you want Single Logout: a `<SingleLogoutService>` with binding of HTTP-Redirect
+* If you want [Single Logout](#saml-logout): a `<SingleLogoutService>` with binding of HTTP-Redirect
 
 All messages from the IdP must be signed. For `<Response>` messages, the signature can be on the response itself or on individual assertions. For `<LogoutRequest>` messages, the signature must be provided as a URL parameter, as required by the `HTTP-Redirect` binding.
 
@@ -332,13 +332,7 @@ By default, {{es}} uses SAML SLO when all of the following are true:
 * You have configured `sp.logout`
 * The setting `idp.use_single_logout` is not `false`
 
-**IdP SLO service requirements**
-
-The `<SingleLogoutService>` in your IdP's metadata must support the `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` binding. {{es}} sends both `<LogoutRequest>` and `<LogoutResponse>` messages to this service.
-
-**The `sp.logout` setting**
-
-`sp.logout` specifies a URL in {{kib}} to which the IdP can send both `<LogoutRequest>` and `<LogoutResponse>` messages using the HTTP-Redirect binding. When {{es}} receives a `<LogoutRequest>`, it performs a global signout that invalidates all {{es}} security tokens associated with that SAML session.
+The `sp.logout` setting specifies a URL in {{kib}} to which the IdP can send both `<LogoutRequest>` and `<LogoutResponse>` messages using the HTTP-Redirect binding. {{es}} sends both message types to the IdP's `<SingleLogoutService>` as appropriate. When {{es}} receives a `<LogoutRequest>`, it performs a global signout that invalidates all {{es}} security tokens associated with that SAML session.
 
 If you don't configure `sp.logout`, {{es}} will refuse all `<LogoutRequest>` messages from the IdP.
 
@@ -356,7 +350,7 @@ The possible solutions to this problem are:
 To disable SLO even when your IdP advertises support for it, set `idp.use_single_logout: false` in the realm configuration.
 
 ::::{note}
-Some IdPs require logout requests to be signed. Check your IdP's documentation and configure [signing credentials](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-signing-settings) if needed.
+Some IdPs require logout requests to be signed. Check your IdP's documentation and configure [signing certificates](#saml-enc-sign) if needed.
 ::::
 
 ### Request specific authentication methods [req-authn-context]
