@@ -109,6 +109,6 @@ Swap should be treated as an emergency safety net only — not as a way to overc
 
 There is no specific recommendation for sizing swap, but 4 GB of swap per 32 GB of RAM has proven to be a reasonable safeguard for most ECE installations. As a baseline, ECE hosts should have at least 512 MB of swap space.
 
-Set the `vm.swappiness` kernel setting to `1`, as described in the [Configure your OS](./configure-operating-system.md) preparation guides, so that swap is used only as a last resort.
+To ensure that swap remains a last-resort safeguard, set the `vm.swappiness` kernel setting to `1`, as described in the [Configure your OS](./configure-operating-system.md) preparation guides.
 
 The method for provisioning swap space depends on your operating system and infrastructure provider. Consult your OS or cloud provider's documentation for instructions on creating a swap file or partition.
