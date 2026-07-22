@@ -35,6 +35,14 @@ Models that do not appear in these resources may still work, but Elastic hasn't 
 
 ## Connect to a third-party or self-managed LLM
 
+::::{important}
+:applies_to: {"stack": "deprecated 9.5, removed 9.6", "serverless": "removed"}
+The OpenAI, Amazon Bedrock, Google Gemini, and Elastic {{infer-cap}} connector types are deprecated. Existing connectors of these types and rule actions that use them continue to work but display deprecation indicators. Follow the guidance that matches your version and deployment type:
+
+- {applies_to}`serverless: removed` {applies_to}`stack: removed 9.6` You cannot create new LLM connectors through the standard connector UI.
+- {applies_to}`stack: deprecated 9.5` For new AI integrations, use {{es}} {{infer}} endpoints instead of LLM connectors. Plan migration of existing LLM connectors and any rule actions that reference them before future removal.
+::::
+
 Follow these guides to connect to one or more third-party LLM providers:
 
 * [Azure OpenAI](/explore-analyze/ai-features/llm-guides/connect-to-azure-openai.md)

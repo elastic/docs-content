@@ -29,7 +29,7 @@ This context-aware experience is determined by both your solution context and th
 
 When you access **Discover** outside of a specific solution context, or when working with data types that don't have specialized experiences, you get the default **Discover** interface with all its core functionality for general-purpose data exploration.
 
-{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` The active profile also shapes [AI-powered deep analysis](#analyze-with-ai): when you query logs, metrics, or traces from the matching solution context, the agent receives domain-specific guidance on which fields to group by and which {{esql}} commands to use. For example, it uses the `TS` command for time series metrics.
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` The active profile also shapes [AI-powered deep analysis](#analyze-with-ai): when you query logs, metrics, or traces from the matching solution context, the agent receives domain-specific guidance on which fields to group by and which {{esql}} commands to use. For example, it uses the `TS` command for time series metrics.
 
 ### Context-awareness with multiple data types
 
@@ -99,7 +99,7 @@ You can later filter the data that shows in the chart and in the table by specif
 
    ![How to add a field as a column in the table](/explore-analyze/images/kibana-discover-add-field.png "title =50%")
 
-   When you add fields to the table, the **Summary** column is replaced.
+   When you add fields to the table, the **Summary** column is replaced. For {{esql}}-specific details about the time field and CSV exports, refer to [Organize the query results](try-esql.md#esql-kibana-results-table).
    ![Document table with fields for manufacturer](/explore-analyze/images/kibana-document-table.png "")
 
 4. Arrange the view to your liking to display the fields and data you care most about using the various display options of **Discover**. For example, you can change the order and size of columns, expand the table to be in full screen or collapse the chart and the list of fields. Check [Customize the Discover view](document-explorer.md) for more information.
@@ -398,10 +398,9 @@ To share your search and **Discover** view with a larger audience, click {icon}`
 
 
 ## Analyze your data with AI [analyze-with-ai]
-
 ```{applies_to}
-stack: ga 9.5
-serverless: ga
+stack: preview 9.5
+serverless: preview
 ```
 
 **Discover** integrates with [{{agent-builder}}](../ai-features/elastic-agent-builder.md) to provide AI-powered analysis of your {{esql}} query results. The [`discover-data-analysis` skill](../ai-features/agent-builder/builtin-skills-reference.md#agent-builder-discover-data-analysis-skill) runs aggregation queries against the full dataset behind your current view, renders a chart for the main finding, and proposes drill-down queries you can run in a new tab.

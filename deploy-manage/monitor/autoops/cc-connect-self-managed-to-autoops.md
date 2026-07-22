@@ -41,11 +41,6 @@ If your ECK-managed cluster's license is downgraded, you must upgrade {{agent}} 
 
 ## Connect to AutoOps [connect-to-autoops]
 
-:::{note}
-:::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
-:::
-:::
-
 The following steps describe how to connect your cluster to AutoOps. 
 
 :::::{tab-set}
