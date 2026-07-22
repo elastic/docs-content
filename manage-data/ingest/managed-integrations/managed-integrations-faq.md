@@ -22,7 +22,7 @@ Frequently asked questions about {{managed-integrations}}.
 
 ### What types of integrations are supported? [managed-integrations-faq-supported]
 
-{{managed-integrations}} are best suited for integrations that pull data from a cloud source through an API at lower volumes. For a complete list, refer to [{{managed-integrations}} quick reference](integration-docs://reference/managed_integrations.md). Elastic continually adds more integrations to this list.
+{{managed-integrations}} are best suited for integrations that pull data from a cloud source through an API at [lower volumes](/manage-data/ingest/managed-integrations/managed-integrations.md#managed-integrations-limits). For a complete list, refer to [{{managed-integrations}} quick reference](integration-docs://reference/managed_integrations.md). Elastic continually adds more integrations to this list.
 
 ### Why aren't some integrations available as {{managed-integrations}}? [managed-integrations-faq-missing]
 
@@ -94,7 +94,7 @@ Avoid deleting an `agentless-state-*` index while its integration is enabled. De
 :::{dropdown} Do I need to back up or snapshot `agentless-state-*` indices?
 :applies_to: serverless: unavailable
 :open:
-No. {{managed-integrations}} rebuild this state automatically, so `agentless-state-*` indices don't need separate backups. Including them in a [snapshot](/deploy-manage/tools/snapshot-and-restore.md) of your cluster does no harm, but they aren't required to restore your collected data.
+No. `agentless-state-*` indices are included in [cluster snapshots](/deploy-manage/tools/snapshot-and-restore.md) by default, so you don't need to do anything to back them up. They aren't required to restore your collected data: if a state index is missing, the integration recreates it and resumes collecting from its default starting point, which can re-collect recent data and create duplicate documents.
 :::
 
 :::{dropdown} Can I apply an {{ilm-cap}} ({{ilm-init}}) policy to `agentless-state-*` indices?
