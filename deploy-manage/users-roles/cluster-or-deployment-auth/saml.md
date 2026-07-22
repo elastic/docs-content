@@ -166,6 +166,10 @@ Configure each setting as described below. For the full list of available settin
 If your IdP requires signed requests or uses encrypted assertions, refer to [Signing and encryption](#saml-enc-sign).
 :::
 
+:::{note}
+If your IdP supports Authentication Context restrictions (for example, to require MFA), you can configure `req_authn_context_class_ref` in the realm. Refer to [Request specific authentication methods](#req-authn-context).
+:::
+
 #### Map SAML attributes to {{es}} user properties [saml-attributes-mapping]
 
 When a user authenticates through SAML, the IdP sends an assertion containing *attributes* (pieces of information about the user such as their username, email address, or group memberships). The `attributes.*` realm settings tell {{es}} which SAML attribute URI to use for each {{es}} user property.
@@ -364,13 +368,21 @@ For available settings, refer to [SAML realm signing settings](elasticsearch://r
 
 ### Request specific authentication methods [req-authn-context]
 
-It is sometimes necessary for a SAML SP to impose specific restrictions on the authentication that takes place at the IdP, in order to assess the level of confidence it can place in the corresponding authentication response. The restrictions might relate to the authentication method (password, client certificates, etc.), the user identification method during registration, and other details. {{es}} implements [SAML 2.0 Authentication Context](https://docs.oasis-open.org/security/saml/v2.0/saml-authn-context-2.0-os.pdf) for this purpose.
+It is sometimes necessary for a SAML SP to impose specific restrictions on the authentication that takes place at the IdP. The restrictions might relate to the authentication method used — such as password, client certificates, or MFA — the user identification method during registration, and other details. {{es}} implements [SAML 2.0 Authentication Context](https://docs.oasis-open.org/security/saml/v2.0/saml-authn-context-2.0-os.pdf) for this purpose.
 
 The SAML SP sends a set of Authentication Context Class Reference values in the Authentication Request, describing the restrictions to impose on the IdP. The IdP attempts to satisfy those restrictions and indicates the result in its Authentication Response. If the IdP cannot grant the requested restrictions, authentication fails.
 
-Configure the class reference values using `req_authn_context_class_ref` in your SAML realm. Refer to [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
+Configure the class reference values using `req_authn_context_class_ref` in your SAML realm. For example:
 
-{{es}} supports only the `exact` comparison method. The Authentication Response must include one of the specified values; otherwise, authentication fails.
+```yaml
+xpack.security.authc.realms.saml.saml1:
+  req_authn_context_class_ref:
+    - "http://schemas.microsoft.com/claims/multipleauthn"  # <1>
+```
+
+1. This example uses the Entra ID URI for MFA. The exact URI values depend on your IdP. Some standard SAML 2.0 values such as `urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport` are widely supported, but IdP-specific URIs are common. Consult your IdP's documentation.
+
+{{es}} supports only the `exact` comparison method. The Authentication Response must include one of the specified values; otherwise, authentication fails. For more details, refer to [`req_authn_context_class_ref`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
 
 ### Generate SP metadata [saml-sp-metadata]
 
