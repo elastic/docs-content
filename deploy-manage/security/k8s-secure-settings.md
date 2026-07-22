@@ -13,9 +13,14 @@ products:
 
 With the help of ECK operator, you can specify {{es}} and {{kib}} [secure settings](/deploy-manage/security/secure-settings.md) to your deployments through [Kubernetes secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
 
-The secrets should contain a key-value pair for each secure setting you want to add. ECK automatically injects these settings into the keystore on each {{es}} or {{kib}} Pod before it starts. The ECK operator continues to watch the secrets for changes and will update the {{es}} or {{kib}} keystores when it detects a change.
+The secrets should contain a key-value pair for each secure setting you want to add. ECK watches the referenced secrets for changes and delivers them to your {{es}} or {{kib}} Pods. By default, each update triggers a rolling restart of the affected Pods to repopulate the keystore.
 
-To allow the operator to inject the settings into the application, you must reference your secrets in the `spec.secureSettings` field of your {{es}} or {{kib}} object definition. Next, you’ll find examples for both {{es}} and {{kib}}.
+```{applies_to}
+deployment:
+  eck: ga 3.5+
+```
+
+For {{es}} 9.5 and later, you can opt in to [updating secure settings without a restart](#k8s-es-secure-settings-hot-reload).
 
 ## {{es}} secure settings [k8s-es-secure-settings]
 
@@ -135,7 +140,7 @@ stringData:
 ### Update secure settings without a restart [k8s-es-secure-settings-hot-reload]
 ```{applies_to}
 deployment:
-  eck: ga 3.5
+  eck: ga 3.5+
 ```
 
 By default, every change to a `spec.secureSettings` source secret triggers a rolling restart of the {{es}} cluster because the keystore init container must re-run to repopulate the keystore. For {{es}} 9.5 and later, ECK supports an opt-in file-based delivery mechanism that eliminates this restart: secrets are written into the {{es}} file-based settings path and {{es}} reloads them in place when the file changes.
