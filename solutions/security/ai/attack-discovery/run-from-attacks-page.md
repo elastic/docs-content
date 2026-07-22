@@ -11,7 +11,7 @@ products:
 
 # Run Attack Discovery from the Attacks view [run-from-attacks-page]
 
-Use the **Attacks** view to configure which alerts Attack Discovery analyzes, then start a manual or scheduled run. 
+Use the **Attacks** view under **Detections** to configure which alerts Attack Discovery analyzes, then start a manual or scheduled run. Discoveries land in the same view next to their related alerts, so you can triage findings without leaving **Detections**. This page covers opening **Attacks**, setting up a run, and where to go next for troubleshooting and day-to-day management.
 
 ## Before you begin [run-from-attacks-page-before-you-begin]
 
