@@ -38,7 +38,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-Active alerts and SLOs for the service are shown at the top of the page so you can assess health at a glance without scrolling to the metadata section. Use the **Actions** menu to act on the service directly — for example, to create an alert rule or SLO.
+Active alerts and SLOs for the service are shown at the top of the page so you can assess health without scrolling to the metadata section. Use the **Actions** menu located in the bottom right of the page to act on the service directly. For example, you can create an alert rule or SLO.
 
 Each RED metric chart (**Latency**, **Throughput**, and **Failed transaction rate**) includes an **Open in Discover** button to explore the underlying trace data directly in Discover.
 
@@ -162,12 +162,20 @@ To view metadata relating to the service agent, and if relevant, the container a
 * Function name(s)
 * Event trigger type
 
+
+**Alerts and SLOs**
 ```{applies_to}
 stack: ga 9.4+
 serverless: ga
 ```
 
-**Alerts and SLOs**
-
 * Recently fired alerts
 * Active SLOs associated with the service
+
+
+**Alerts**
+```{applies_to}
+stack: ga 9.0-9.3
+```
+
+* Recently fired alerts
