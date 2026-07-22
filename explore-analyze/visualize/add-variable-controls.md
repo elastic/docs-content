@@ -43,6 +43,11 @@ On a dashboard, you can also add a variable control directly by selecting **Add*
 :::{include} ../_snippets/variable-control-procedure.md
 :::
 
+For controls that use **Values from a query**, you can shape the options the control offers:
+
+:::{include} ../_snippets/esql-query-control-value-examples.md
+:::
+
 You can reference the control in your {{esql}} visualization queries by typing its name.
 
 Where you place a variable control affects which panels it filters. For details, refer to [How controls affect the dashboard](dashboard-controls.md#controls-scope).
