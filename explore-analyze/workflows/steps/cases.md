@@ -98,6 +98,7 @@ The Cases steps group into seven operational categories. Jump to any step:
 
 **Tags and assignees**
 [`cases.addTags`](#cases-addtags) ·
+[`cases.removeTags`](#cases-removetags) ·
 [`cases.assignCase`](#cases-assigncase) ·
 [`cases.unassignCase`](#cases-unassigncase)
 
@@ -614,6 +615,23 @@ Add tags to a case.
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
 | `tags` | `with` | `string[]` | Yes | Tags to add. |
+
+### `cases.removeTags` [cases-removetags]
+
+Remove tags from a case. Pass the case ID and the list of tags to remove.
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `case_id` | `with` | string | Yes | Case ID. |
+| `tags` | `with` | `string[]` | Yes | Tags to remove. Tags that are not on the case are ignored. |
+
+```yaml
+- name: remove_case_tags
+  type: cases.removeTags
+  with:
+    case_id: "{{ steps.create_case.output.case.id }}"
+    tags: ["investigation", "high-priority"]
+```
 
 ### `cases.assignCase` [cases-assigncase]
 
