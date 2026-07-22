@@ -17,7 +17,7 @@ Pattern analysis in **Discover** helps you find patterns in unstructured log mes
 :applies_to: { stack: preview 9.4, serverless: preview }
 You can also detect patterns from {{esql}}:
 
-- Use the [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md) grouping function to render the results as expandable groups with row actions. Refer to [](/explore-analyze/discover/try-esql.md#esql-cascade-layout).
+- {applies_to}`{ stack: preview 9.4, serverless: preview }` Use the [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md) grouping function to render the results as expandable groups with row actions. Refer to [](/explore-analyze/discover/try-esql.md#esql-cascade-layout).
 - {applies_to}`{ stack: preview 9.5, serverless: preview }` Add a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) aggregation to display an inline trend for each pattern. Refer to [Add sparklines to patterns](/explore-analyze/discover/try-esql.md#esql-cascade-pattern-sparkline).
 :::
 
