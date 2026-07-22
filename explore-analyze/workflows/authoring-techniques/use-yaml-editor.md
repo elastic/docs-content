@@ -15,7 +15,7 @@ products:
 
 # Use the YAML editor [workflows-yaml-editor]
 
-The YAML editor is the primary interface for creating and editing workflows. This page describes the editor's components and features, and explains how test runs and production runs differ.
+The YAML editor is the primary interface for creating and editing workflows. This page describes the editor's components and features, and explains how test runs and production runs differ. To review a workflow as a read-only diagram instead of YAML, refer to [](/explore-analyze/workflows/authoring-techniques/visualize-workflows.md).
 
 ::::{admonition} Requirements
 To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. Refer to [](/explore-analyze/workflows/get-started/setup.md) for more information.

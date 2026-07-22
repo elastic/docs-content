@@ -604,6 +604,7 @@ toc:
       - file: workflows/authoring-techniques.md
         children:
           - file: workflows/authoring-techniques/use-yaml-editor.md
+          - file: workflows/authoring-techniques/visualize-workflows.md
           - file: workflows/authoring-techniques/anatomy.md
           - file: workflows/authoring-techniques/settings.md
           - file: workflows/authoring-techniques/choose-the-right-step.md
