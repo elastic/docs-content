@@ -536,18 +536,18 @@ ECK watches all referenced ConfigMaps and Secrets and automatically reconciles t
 
 ### Syntax
 
-| Expression | Behaviour |
+| Expression | Behavior |
 |---|---|
 | `${VAR}` | Substituted with the value of `VAR` from the sources. Error if `VAR` is not defined in any source. |
 | `${VAR:-default}` | Substituted with the value of `VAR`, or `default` if `VAR` is not defined. |
 
-Only **string-typed** fields can be templated. Numeric, boolean, and object fields cannot be substituted because source values are always strings and the target type cannot be inferred.
+Only string-typed fields can be templated. Numeric, boolean, and object fields cannot be substituted because source values are always strings and the target type cannot be inferred.
 
 {{es}}-native variable expressions (such as `${node.name}`) are left verbatim and resolved by {{es}} at runtime — ECK only substitutes keys that are present in a declared source.
 
 ### Source precedence and namespace rules
 
-When multiple sources define the same key, the **last entry** in `variablesFrom` takes precedence.
+When multiple sources define the same key, the last entry in `variablesFrom` takes precedence.
 
 Sources without an explicit `namespace` field default to the policy's own namespace. To reference a source in a different namespace, set the `namespace` field on the entry — this is only permitted for policies deployed in the operator namespace. Policies in any other namespace must reference sources in their own namespace.
 
