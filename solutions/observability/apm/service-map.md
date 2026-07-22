@@ -51,6 +51,11 @@ To save the current service map view to a {{kib}} dashboard, click **Copy to das
 
 When you click an instrumented service node (circle shape), a **service flyout** panel opens with a summary of the service’s RED metrics and infrastructure usage. Use the footer menu to open traces, logs, alerts, or SLOs for the service without leaving the map. Dependency nodes (diamond shape) and connections still use a compact popover.
 
+:::{image} /solutions/images/observability-apm-service-map-anomaly-viewer.png
+:alt: Service flyout panel open alongside the service map, showing RED metrics and a transactions list for the selected service
+:screenshot:
+:::
+
 ```{applies_to}
 stack: ga 9.4+
 serverless: ga
@@ -71,22 +76,6 @@ You can create {{ml}} jobs to calculate anomaly scores on {{product.apm}} transa
 :alt: Example view of anomaly scores on service maps in the Applications UI
 :screenshot:
 :::
-
-```{applies_to}
-stack: ga 9.5+
-serverless: ga
-```
-
-If an anomaly has been detected, click **View anomalies** to open the {{anomaly-detect}} metric viewer in a side panel. You can review anomaly data without leaving the service map.
-
-:::{image} /solutions/images/observability-apm-service-map-anomaly-viewer.png
-:alt: {{anomaly-detect-cap}} metric viewer open in a side panel alongside the service map
-:screenshot:
-:::
-
-```{applies_to}
-stack: ga 9.0-9.4
-```
 
 If an anomaly has been detected, click **View anomalies** to view the {{anomaly-detect}} metric viewer. This time series analysis displays additional details on the severity and time of the detected anomalies.
 
