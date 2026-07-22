@@ -20,6 +20,8 @@ products:
 
 When an agent runs, {{agent-builder}} records the run as OpenTelemetry (OTel) traces. Each trace covers one conversation round. A trace is made up of spans that map to the work the agent did, such as model calls and tool calls.
 
+Trace collection is space-aware. Each {{kib}} space writes its traces to its own data streams, named with the space id, such as `traces-agent_builder.otel-default` for the `default` space. Use the `traces-agent_builder.otel-*` wildcard to work with every space's traces at once.
+
 {{agent-builder}} ingests this data into managed OpenTelemetry data streams in your {{es}} deployment. Execution spans, such as model calls and tool calls, are stored in `traces-agent_builder.otel-*`, with their timings, token usage, model, and status. Trace data is also stored in `logs-agent_builder.otel-*`, so reading all of it requires read access to both patterns.
 
 When you opt in to capturing conversation content, that content is added to the `traces-agent_builder.otel-*` spans as attributes, such as user prompts, agent responses, system prompts, and tool call details. Content is captured only when you enable it in [Trace privacy settings](#trace-privacy-settings).
@@ -27,8 +29,6 @@ When you opt in to capturing conversation content, that content is added to the 
 These data streams are OTel-compatible and use the standard OTel index templates, so they inherit the mappings, settings, and data lifecycle that {{es}} maintains for OTel data.
 
 These are regular data streams, not system or hidden indices. You can explore and analyze the data with the same tools you use for any other data in {{es}}, including [Discover](/explore-analyze/discover.md), [Dashboards](/explore-analyze/dashboards.md), [Lens](/explore-analyze/visualize/lens.md), and [ES|QL](elasticsearch://reference/query-languages/esql.md).
-
-Trace collection is space-aware. Each {{kib}} space collects its own traces.
 
 ### What a trace contains
 
@@ -91,8 +91,7 @@ For the full privilege model, including {{kib}} feature and cluster privileges, 
 
 ## Build dashboards on trace data
 
-When trace collection is on, {{agent-builder}} provides a prebuilt overview dashboard for agent activity and token usage. You install or reinstall it per space from the **Agent Builder Traces** settings section. For what each panel shows and the full span and attribute reference, refer to Agent Builder traces overview dashboard.
-% TODO add link: [Agent Builder traces overview dashboard](TODO).
+When trace collection is on, {{agent-builder}} provides a prebuilt overview dashboard for agent activity and token usage. You install or reinstall it per space from the **Agent Builder Traces** settings section. For what each panel shows and the full span and attribute reference, refer to [Agent Builder traces overview dashboard](agent-traces-dashboard.md).
 
 Because traces are stored in regular data streams, you can also build your own visualizations with [Dashboards](/explore-analyze/dashboards.md) and [Lens](/explore-analyze/visualize/lens.md), or query the data with [ES|QL](elasticsearch://reference/query-languages/esql.md). To explore traces in natural language, use the [built-in traces skill](builtin-skills-reference.md).
 
@@ -105,6 +104,5 @@ In [Agent Chat](chat.md), you can open the trace waterfall for a single conversa
 - [](permissions.md)
 - [](monitor-usage.md)
 - [](chat.md)
+- [](agent-traces-dashboard.md)
 - [](builtin-skills-reference.md)
-% [Agent Builder traces overview dashboard](TODO)
-% [Create alerts on Agent Builder trace data](TODO)

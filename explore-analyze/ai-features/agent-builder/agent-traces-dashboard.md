@@ -22,9 +22,7 @@ Use the dashboard to:
 - Spot slow conversations and long-running agent executions.
 - Find tools that fail or run slowly.
 
-The dashboard visualizes the trace data that {{agent-builder}} sends to your {{es}} deployment, giving you a view of real agent activity. First, you must configure trace collection. Then install the dashboard in each {{kib}} space where you want to view the data.
-
-<!-- TODO(#7322): link "agent trace data" and "trace data" -> collect-traces.md once it is on main. -->
+The dashboard visualizes the trace data that {{agent-builder}} sends to your {{es}} deployment, giving you a view of real agent activity. First, you must [configure trace collection](collect-traces.md). Then install the dashboard in each {{kib}} space where you want to view the data.
 
 ## What the dashboard shows
 
@@ -50,12 +48,10 @@ When trace data is flowing, the dashboard looks like this:
 
 Before you install the dashboard:
 
-- Make sure trace collection is on for the space and the setting is saved. It is on by default. The **Install Dashboard** button appears only after trace collection is enabled and saved. For details, refer to Collect agent traces.
-- Make sure you can read the trace data, otherwise the panels have no data to show. For the required privileges, refer to Read trace data.
+- Make sure trace collection is on for the space and the setting is saved. It is on by default. The **Install Dashboard** button appears only after trace collection is enabled and saved. For details, refer to [Collect agent traces](collect-traces.md).
+- Make sure you can read the trace data, otherwise the panels have no data to show. For the required privileges, refer to [Read trace data](permissions.md#read-trace-data).
 - Make sure you can manage {{kib}} advanced settings. Installing and uninstalling the dashboard requires this privilege.
 - Install the dashboard in each {{kib}} space where you want it. It is not shared across spaces.
-
-<!-- TODO(#7322): make "Collect agent traces" a link to collect-traces.md and "Read trace data" a link to permissions.md#read-trace-data once #7322 is on main. -->
 
 ## Install the dashboard
 
@@ -89,7 +85,7 @@ Because the original is managed, Elastic can ship improvements to it without ove
 
 The dashboard panels are [ES|QL](elasticsearch://reference/query-languages/esql.md) queries over your trace data. To build your own visualizations in [Dashboards](/explore-analyze/dashboards.md), [Lens](/explore-analyze/visualize/lens.md), or [Discover](/explore-analyze/discover.md), query the trace data stream and filter by span type and attribute.
 
-Traces are stored in the `traces-agent_builder.otel-*` data stream, where each document is a span. The dashboard identifies the kind of work a span represents from its `span.name`, and reads generative AI details from the span attributes.
+The dashboard's panels query span data from the `traces-agent_builder.otel-*` data streams, where each document is a span. The dashboard identifies the kind of work a span represents from its `span.name`, and reads generative AI details from the span attributes. For the full set of trace data streams and the read privileges, refer to [Read trace data](permissions.md#read-trace-data).
 
 ### Span types
 
@@ -150,10 +146,8 @@ FROM traces-agent_builder.otel-default
 
 ## Related pages
 
-<!-- Phase 5. Wire these once targets exist on main:
-     - collect-traces.md (#7171)
-     - permissions.md
-     - monitor-usage.md
-     - chat.md
-     - builtin-skills-reference.md
-     - alerting how-to (#7173) once published -->
+- [](collect-traces.md)
+- [](permissions.md)
+- [](monitor-usage.md)
+- [](chat.md)
+- [](builtin-skills-reference.md)
