@@ -16,10 +16,10 @@ During maintenance windows, such as draining {{k8s}} nodes or applying infrastru
 
 ECK provides two annotations that affect reconciliation behavior:
 
-| Annotation | Effect |
-|---|---|
-| `eck.k8s.elastic.co/pause-orchestration: "true"` | Pauses spec-driven changes only. Housekeeping continues. |
-| `eck.k8s.elastic.co/managed: "false"` | Stops all reconciliation entirely. **Deprecated** — use `pause-orchestration` instead. |
+| Annotation | Availability | Effect |
+|---|---|---|
+| `eck.k8s.elastic.co/pause-orchestration: "true"` | {applies_to}`eck: ga 3.5+` | Pauses spec-driven changes only. Housekeeping continues. |
+| `eck.k8s.elastic.co/managed: "false"` | {applies_to}`eck: deprecated 3.5+` | Stops all reconciliation entirely. Deprecated in favor of `pause-orchestration`. |
 
 The key difference is that `pause-orchestration` keeps certificate rotation, service reconciliation, user and secret management, and health monitoring running. This avoids cluster degradation during extended maintenance windows.
 
