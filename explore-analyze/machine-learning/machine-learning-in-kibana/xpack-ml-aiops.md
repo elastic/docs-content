@@ -55,12 +55,14 @@ You can find log pattern analysis under **{{ml-app}}** > **AIOps Labs** or by us
 Select a field for categorization and optionally apply any filters that you want, then start the analysis. The analysis uses the same algorithms as a {{ml}} categorization job. The results of the analysis are shown in a table that makes it possible to open **Discover** and show or filter out the given category there, which helps you to further examine your log messages.
 
 ## Change point detection [change-point-detection]
-
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
+```{applies_to}
+stack: ga 9.5+, preview 9.0-9.4
+serverless: ga
+```
 
 Change point detection uses the [change point aggregation](elasticsearch://reference/aggregations/search-aggregations-change-point-aggregation.md) to detect distribution changes, trend changes, and other statistically significant change points in a metric of your time series data.
+
+To detect change points with an {{esql}} query and investigate them in **Discover**, refer to [Detect change points in Discover](/explore-analyze/discover/detect-change-points.md). The workflow on this page uses the **AIOps Labs** interface.
 
 You can find change point detection under **{{ml-app}}** > **AIOps Labs** or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Here, you can select the {{data-source}} or saved Discover session that you want to analyze.
 

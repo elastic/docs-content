@@ -135,7 +135,7 @@ To add trend indicators to your metric visualization:
 The metric visualization now shows the secondary metric as a comparison with a trend indicator.
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 Send the following request to create a metric that counts unique orders for the current period and compares the result to the previous week using a time-shifted formula.
 
@@ -291,7 +291,7 @@ You can combine progress bars with secondary metrics to show both progress towar
 ::::
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a metric that shows the current count of users against a target of 2,500, with a progress bar and a weekly comparison badge.
 
@@ -576,7 +576,7 @@ The following examples show various configuration options that you can use for b
 ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a metric that calculates the ratio of successful HTTP requests using a formula with a KQL filter, and adds a fixed target value as a secondary metric.
 
@@ -723,7 +723,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate-top-countries.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example builds on the previous one by adding a breakdown that splits the success rate into one tile per destination country.
 
@@ -879,7 +879,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Metric showing weekly visits with weekly comparison trend](../../images/metric-website-views-weekly-trend-example.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a metric that counts page views and compares the current value to the previous week using a time-shifted formula.
 
