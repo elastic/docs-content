@@ -534,14 +534,14 @@ Each entry in `attachments` uses a `type` field that selects the payload shape. 
 
 Common `type` values include:
 
-- `comment`
-- `stack.alert`, `security.alert`, `observability.alert`
-- `security.event`, `security.endpoint`, `security.indicator`, `security.timeline`
+- `comment` ([`cases.addComment`](#cases-addcomment))
+- `stack.alert`, `security.alert`, `observability.alert` ([`cases.addAlerts`](#cases-addalerts))
+- `security.event` ([`cases.addEvents`](#cases-addevents)), `security.endpoint`, `security.indicator`, `security.timeline`
 - `osquery`
 - `dashboard`, `map`, `discoverSession`
 - `lens` (by saved-object reference: `attachmentId` plus `metadata.title` and `metadata.soType: "lens"`)
 
-Which types appear depends on the solutions and plugins enabled in your deployment. The YAML editor lists the types available in your environment.
+Which types appear depends on the solutions and plugins enabled in your deployment. Use the example below for the payload shapes this step expects.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
