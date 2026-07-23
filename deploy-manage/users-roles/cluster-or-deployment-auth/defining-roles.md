@@ -168,6 +168,6 @@ deployment:
   eck: ga 3.5
 ```
 
-If you need to apply role definitions across multiple {{es}} clusters, you can use the `securityRoles` field in a [`StackConfigPolicy`](/deploy-manage/deploy/cloud-on-k8s/elastic-stack-configuration-policies.md) instead. Refer to [Define custom Elasticsearch roles through a policy](/deploy-manage/deploy/cloud-on-k8s/elastic-stack-configuration-policies.md#k8s-stack-config-policy-security-roles-example).
+For multi-cluster deployments where you already use a [`StackConfigPolicy`](/deploy-manage/deploy/cloud-on-k8s/elastic-stack-configuration-policies.md) to manage {{es}} or {{kib}} configuration, the `securityRoles` field lets you extend that same policy to cover role definitions, as shown in [Define custom Elasticsearch roles through a policy](/deploy-manage/deploy/cloud-on-k8s/elastic-stack-configuration-policies.md#k8s-stack-config-policy-security-roles-example). This approach is complementary to the [secrets-based approach](#roles-management-file): both can coexist, and ECK merges roles from all sources into the same `roles.yml` file.
 :::
 ::::
