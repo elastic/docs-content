@@ -2,8 +2,8 @@
 navigation_title: Create programmatically
 description: Use the Dashboards API and Visualizations API to create and manage Kibana dashboards and visualizations from code, CI/CD pipelines, or custom tooling.
 applies_to:
-  stack: preview 9.4+
-  serverless: preview
+  stack: ga 9.5+, preview =9.4
+  serverless: ga
 products:
   - id: kibana
 type: overview
@@ -24,8 +24,8 @@ If you want to create dashboards from natural language without writing API reque
 
 ## Dashboards API [dashboards-api]
 ```{applies_to}
-stack: preview 9.4+
-serverless: preview
+stack: ga 9.5+, preview =9.4
+serverless: ga
 ```
 
 The Dashboards API gives you full read and write access to dashboards, including their panels, controls, sections, and display options. You define panels inline as JSON, so you can store dashboard definitions in version control and deploy them through automated pipelines.
@@ -48,8 +48,7 @@ The API supports any panel type that has a defined schema:
 - Synthetics panels: stats overview and monitors
 - {applies_to}`stack: ga 9.5` Links
 - {applies_to}`stack: ga 9.5` APM service map
-- {applies_to}`stack: ga 9.5` Machine learning panels: single metric viewer, anomaly swim lane, and anomaly charts
-- {applies_to}`stack: ga 9.5` Log rate analysis, change point detection, and pattern analysis panels
+- {applies_to}`stack: ga 9.5` Machine learning and AIOps panels: single metric viewer, anomaly swim lane, anomaly charts, log rate analysis, change point detection, pattern analysis, and field statistics table
 
 Panel types without a defined schema, such as Maps, aren't supported yet and return an error on write.
 
@@ -59,8 +58,8 @@ Refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api
 
 ## Visualizations API [lens-visualizations-api]
 ```{applies_to}
-stack: preview 9.4+
-serverless: preview
+stack: ga 9.5+, preview =9.4
+serverless: ga
 ```
 
 The Visualizations API lets you create and manage visualizations as standalone saved objects in the {{product.kibana}} Visualizations library. Embed them in dashboards by referencing their ID, so a single update propagates to every dashboard that uses them.

@@ -15,7 +15,7 @@ products:
 
 # Triage alerts with an AI agent [workflows-ai-driven-alert-triage]
 
-This guide walks through building a workflow that triages [Attack Discovery](/solutions/security/ai/attack-discovery.md) alerts with an [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) agent. The workflow creates a case for each discovery, has an agent produce a remediation analysis, posts a concise summary to Slack, and isolates the host pending review.
+This guide walks through building a workflow that triages [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) alerts with an [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) agent. The workflow creates a case for each discovery, has an agent produce a remediation analysis, posts a concise summary to Slack, and isolates the host pending review.
 
 The workflow is adapted from [`ad-automated-triaging.yaml`](https://github.com/elastic/workflows/blob/main/workflows/security/response/ad-automated-triaging.yaml) in the `elastic/workflows` library.
 
@@ -24,7 +24,7 @@ If you're new to workflows, complete [Build your first workflow](/explore-analyz
 ## Before you begin [workflows-ai-driven-alert-triage-prereqs]
 
 - **Permissions.** `All` on **Analytics > Workflows**, **Security > Cases**, and whatever Agent Builder privilege is required to invoke agents in your space. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-- **Attack Discovery enabled.** Attack Discovery must be running in your {{elastic-sec}} deployment and producing findings. Refer to [Attack Discovery](/solutions/security/ai/attack-discovery.md).
+- **Attack Discovery enabled.** Attack Discovery must be running in your {{elastic-sec}} deployment and producing findings. Refer to [Attack Discovery](/solutions/security/ai/attack-discovery/index.md).
 - **Agent Builder agent.** A configured agent in {{agent-builder}} that can reason over security context. Use one of the built-in agents (for example, the Elastic AI Agent) or a [custom agent](/explore-analyze/ai-features/agent-builder/custom-agents.md). The examples use `elastic-ai-agent` as a default. Substitute your agent ID.
 - **Slack connector.** A Slack [connector](/deploy-manage/manage-connectors.md) or webhook URL for notifications.
 - **Attach the workflow to a rule.** After saving the workflow, attach it to the Attack Discovery detection rule or the rule group you want to triage. Refer to [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md).
@@ -378,7 +378,7 @@ steps:
 - [AI steps reference](/explore-analyze/workflows/steps/ai-steps.md): Parameters for `ai.agent`, `ai.classify`, `ai.summarize`, and `ai.prompt`.
 - [Call {{agent-builder}} agents from Elastic Workflows](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md): How to wire agents into workflow steps.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): Full reference for `cases.*` steps.
-- [Attack Discovery](/solutions/security/ai/attack-discovery.md): What Attack Discovery produces and how to enable it.
-- [Attacks page](/solutions/security/ai/attacks-page.md): The unified attacks UI where discoveries surface.
-- [Triage Attack Discovery findings](/solutions/security/ai/triage-attack-discovery-findings.md): The interactive triage flow this workflow automates.
+- [Attack Discovery](/solutions/security/ai/attack-discovery/index.md): What Attack Discovery produces and how to enable it.
+- [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md): The unified attacks UI where discoveries surface.
+- [Triage Attack Discovery findings](/solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md): The interactive triage flow this workflow automates.
 - [`elastic/workflows` library](https://github.com/elastic/workflows): More agentic and SOC automation examples.
