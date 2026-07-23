@@ -59,8 +59,9 @@ serverless: ga
 Security actions provide named `security.*` steps for {{elastic-sec}} operations through explicit, schema-validated parameters instead of the generic `kibana.request` step. Use Security actions to:
 
 * Triage alerts and attacks — set status and manage tags and assignees (`security.setAlertStatus`, `security.setAlertTags`, `security.assignAlert`, `security.setAttackStatus`, `security.setAttackTags`, `security.assignAttack`)
+* Enable or disable detection rules by ID list or query (`security.enableRule`, `security.disableRule`)
 
-Refer to [](/explore-analyze/workflows/steps/security.md) for the Security step categories, and [](/explore-analyze/workflows/steps/attack-triage.md) for the Attack triage catalog.
+Refer to [](/explore-analyze/workflows/steps/security.md) for the Security step categories, [](/explore-analyze/workflows/steps/attack-triage.md) for the Attack triage catalog, and [](/explore-analyze/workflows/steps/detection-rules.md) for the Detection rules catalog.
 
 ## Streams
 

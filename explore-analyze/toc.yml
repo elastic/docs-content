@@ -581,6 +581,7 @@ toc:
                   - file: workflows/steps/security.md
                     children:
                       - file: workflows/steps/attack-triage.md
+                      - file: workflows/steps/detection-rules.md
                   - file: workflows/steps/streams.md
                   - file: workflows/steps/external-systems-apps.md
               - file: workflows/steps/flow-control-steps.md

@@ -90,6 +90,7 @@ Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/wo
 | Manage cases | `cases.createCase`, `cases.updateCase`, `cases.addComment`, `cases.addAlerts`, `cases.pushCases` |
 | Manage alerts | `security.setAlertStatus`, `security.setAlertTags`, `security.assignAlert` (preferred); `kibana.SetAlertsStatus`, `kibana.SetAlertTags` (PascalCase) |
 | Manage attacks | `security.setAttackStatus`, `security.setAttackTags`, `security.assignAttack` |
+| Enable or disable detection rules | `security.enableRule`, `security.disableRule` |
 | Call an API | `http` (with optional `connector-id`) |
 | Call a service | `<connector>.<action>` (for example, `slack.postMessage`, `jira.createIssue`) |
 | Branch | `if`, `switch` |

@@ -87,6 +87,8 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`loop.continue`](/explore-analyze/workflows/steps/loop-continue.md) | Flow control | Skip to the next iteration. |
 | [`security.assignAlert`](/explore-analyze/workflows/steps/attack-triage.md#security-assignalert) | Security | Assign or unassign users on one or more alerts. |
 | [`security.assignAttack`](/explore-analyze/workflows/steps/attack-triage.md#security-assignattack) | Security | Assign or unassign users on one or more attacks. |
+| [`security.disableRule`](/explore-analyze/workflows/steps/detection-rules.md#security-disablerule) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Security | Disable one or more detection rules by rule-ID list or KQL query, with partial-failure reporting. |
+| [`security.enableRule`](/explore-analyze/workflows/steps/detection-rules.md#security-enablerule) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Security | Enable one or more detection rules by rule-ID list or KQL query, with partial-failure reporting. |
 | [`security.setAlertStatus`](/explore-analyze/workflows/steps/attack-triage.md#security-setalertstatus) | Security | Set alert status: `open`, `acknowledged`, or `closed`. |
 | [`security.setAlertTags`](/explore-analyze/workflows/steps/attack-triage.md#security-setalerttags) | Security | Add or remove tags on one or more alerts. |
 | [`security.setAttackStatus`](/explore-analyze/workflows/steps/attack-triage.md#security-setattackstatus) | Security | Set attack status: `open`, `acknowledged`, or `closed`. |

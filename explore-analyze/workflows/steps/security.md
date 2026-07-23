@@ -3,7 +3,7 @@ navigation_title: Security
 applies_to:
   stack: ga 9.5+
   serverless: ga
-description: Named security.* workflow action steps for Elastic Security operations such as attack triage.
+description: Named security.* workflow action steps for Elastic Security operations such as attack triage and detection rule management.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -30,9 +30,21 @@ Use them to:
 
 Refer to [Attack triage action steps](/explore-analyze/workflows/steps/attack-triage.md) for shared conventions, parameters, and YAML examples.
 
+## Detection rules
+
+Detection rules steps enable or disable detection rules by ID list or KQL query, with partial-failure reporting in the step output.
+
+Use them to:
+
+* Enable one or more detection rules (`security.enableRule`)
+* Disable one or more detection rules (`security.disableRule`)
+
+Refer to [Detection rules action steps](/explore-analyze/workflows/steps/detection-rules.md) for shared conventions, parameters, output fields, and YAML examples.
+
 ## Related
 
 - [Attack triage action steps](/explore-analyze/workflows/steps/attack-triage.md): Status, assignee, and tag management for alerts and attacks.
+- [Detection rules action steps](/explore-analyze/workflows/steps/detection-rules.md): Enable or disable detection rules by ID list or query.
 - [Kibana action steps](/explore-analyze/workflows/steps/kibana.md): Generic `kibana.request` and older PascalCase alert steps.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): Hand off a triaged alert or attack to a case.
 - [Step type index](/explore-analyze/workflows/reference/step-types.md): Alphabetical lookup of every step type.
