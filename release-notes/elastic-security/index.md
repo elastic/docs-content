@@ -52,7 +52,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Shortens the tags written by the alert analysis workflow and adds a configurable `securitySolution:alertAnalysisWorkflowTagPrefix` setting (default `alert-analysis`) [#276547]({{kib-pull}}276547).
 * Adds bulk enable, disable, and delete actions for Attack Discovery schedules, backed by new public bulk schedule APIs [#267549]({{kib-pull}}267549).
 * Integrates Attack Discovery 2.0 workflow-based generation with alerting-framework scheduling and registers {{agent-builder}} skills for editing and troubleshooting workflows [#260816]({{kib-pull}}260816), [#260811]({{kib-pull}}260811).
-% TODO: Confirm with the PR author whether this belongs in the 9.5 release notes. The feature is gated behind the `securitySolution.attackDiscoveryWorkflowsEnabled` core feature flag, which defaults to OFF in 9.5 (enabled only via config), so it may not be available to customers.
 * Improves the AI Value Report empty state: first-time users with no attack discoveries see a laid-out sample report preview, while returning users with no data in the selected range see a prompt to adjust the time range [#265091]({{kib-pull}}265091).
 * Improves the copy for the Microsoft Sentinel rules upload step in Automatic Migration [#276242]({{kib-pull}}276242).
 * Improves Automatic Migration dashboard migration accuracy by sampling index records before query translation, enabling the LLM to generate {{esql}} queries with correct field names and values from the first attempt [#261927]({{kib-pull}}261927).
@@ -73,8 +72,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds an `entityStore.updateAssetCriticality` workflow step that updates an entity's asset criticality and triggers a risk score recalculation [#276092]({{kib-pull}}276092).
 * Adds `entityStore.entityAssetCriticalityUpdated` and `entityStore.entityRiskScoreChanged` workflow triggers that fire when an entity's asset criticality is set or cleared, or when its risk score changes [#275670]({{kib-pull}}275670).
 * Updates Entity Store APIs to reject unknown keys in request bodies, query parameters, and path parameters with a `400 Bad Request` instead of silently ignoring them [#273098]({{kib-pull}}273098).
-* Adds a rich visual renderer for `security.entity` attachments in {{agent-builder}}, displaying resolved entities as cards or tables [#264985]({{kib-pull}}264985).
-% TODO: Confirm with the PR author whether this belongs in the 9.5 release notes. This is gated behind the `entityAttachmentsEnabled` experimental feature flag, which defaults to `false` (OFF) in 9.5, so it may not be generally available to customers.
 * Adds recurrence-based scheduling to Osquery packs. Pack authors can run a pack on a **Daily** or **Custom** schedule, with an optional start date, stop-after date, and splay, and can override the schedule per query [#275896]({{kib-pull}}275896), [#271865]({{kib-pull}}271865), [#270639]({{kib-pull}}270639), [#269730]({{kib-pull}}269730).
 * Adds the ability to export Osquery query results as CSV, JSON, or NDJSON files directly from the query results page [#275597]({{kib-pull}}275597), [#267800]({{kib-pull}}267800), [#266582]({{kib-pull}}266582), [#265995]({{kib-pull}}265995).
 * Adds an {{elastic-defend}} advanced policy setting for Windows that lets you disable enrichment of DLL Search Order Hijacking detection events [#272068]({{kib-pull}}272068).
@@ -92,6 +89,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds collection of additional Windows security events in {{elastic-defend}}: Service Installation (`4697`), Scheduled Task Creation (`4698`), Scheduled Task Updated (`4702`), User Account Created (`4720`), and Vault Credentials Were Read (`5382`).
 * Adds detection of DLL masquerading via potential search order hijacking in {{elastic-defend}} on Windows. `dll.Ext.defense_evasions` is now populated with `DLL Hijack: Masquerading` when a DLL that shares a name with a known Windows system DLL (such as one from System32 or SysWOW64) is loaded from an unexpected directory.
 * Adds persistence of original Windows security audit policies in {{elastic-defend}}, so they can be restored after an unclean shutdown.
+* Adds the LXC container name to event telemetry for {{elastic-defend}} on Linux.
 
 
 ### Fixes [elastic-security-9.5.0-fixes]
@@ -175,7 +173,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue on the **Entity Analytics** page where the search bar appeared blank after navigating to Discover and back, and where **Refresh** could reuse a stale query [#265926]({{kib-pull}}265926).
 * Fixes an issue where the **Entity Analytics** left panel showed stale details when previewing a different entity [#265512]({{kib-pull}}265512).
 * Fixes multiple rendering issues in the entity details flyout when opened in **Preview** mode from {{agent-builder}} [#267342]({{kib-pull}}267342).
-* Fixes a crash when adding an entity attachment for an entity with a single-value `watchlists` keyword field [#276201]({{kib-pull}}276201).
 * Fixes an issue where users with read-only access could see the asset criticality update dropdown in the entity details flyout. The dropdown is now correctly gated on write permissions [#269164]({{kib-pull}}269164).
 * Fixes an issue where the **Top Threat Hunting Leads** section was silently hidden for users without read access to the leads index; a privileges callout now explains the missing access [#271207]({{kib-pull}}271207).
 * Fixes unreachable last pages in grouped tables with more than 10,000 groups by capping pagination at the 10,000-group limit and revealing pages progressively with a **Load more** control [#277322]({{kib-pull}}277322).
@@ -200,6 +197,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a rare process tracking issue in {{elastic-defend}} on macOS and Linux.
 * Fixes an issue where {{elastic-defend}} on Linux did not properly read tty events on older kernels (`4.18`) with eBPF backports, such as on RHEL 8.
 * Improves the reliability of fanotify event collection in {{elastic-defend}} on Ubuntu 26.04 and Linux 7.0.
+* Fixes {{elastic-defend}} on Linux to no longer perform any file reads for executables matching a trusted application entry.
 * Fixes {{elastic-defend}} on Windows to display the custom popup on cached denied requests in Device Control.
 * Fixes {{elastic-defend}} handling of `windows.advanced.events.security.event_disabled` on Windows, so removing event IDs from the list correctly re-enables those Security events without requiring an additional policy reapply.
 * Fixes a rare edge case where {{elastic-defend}} could lose Tamper Protection.
@@ -346,6 +344,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Introduces the Entity Threat Hunting backend infrastructure, including the feature flag, shared types and index templates, observation module interface, Risk and Temporal State modules, behavioral observation modules, entity retrieval and enrichment, API routes, `LeadDataClient`, async lead generation, and an automated email-based entity resolution maintainer [#255272]({{kib-pull}}255272), [#256156]({{kib-pull}}256156), [#256270]({{kib-pull}}256270), [#256628]({{kib-pull}}256628), [#257046]({{kib-pull}}257046), [#257479]({{kib-pull}}257479).
 * Allows user and host details flyouts to open while observed data is loading [#252657]({{kib-pull}}252657).
 * Adds an Entity Analytics Agent Builder skill for answering risk score and entity risk questions [#252400]({{kib-pull}}252400).
+* Adds a rich visual renderer for `security.entity` attachments in {{agent-builder}}, displaying resolved entities as cards or tables [#264985]({{kib-pull}}264985).
 * Adds a `communicates_with` entity relationship maintainer for Entity Store v2, populating user entity relationship data based on cloud API and MDM activity from {{aws}} CloudTrail, Azure Sign-in Logs, Okta System Logs, and Jamf Pro [#258656]({{kib-pull}}258656).
 * Adds a namespace ID filter to **Advanced settings** for filtering Entity Store entities by namespace [#247733]({{kib-pull}}247733).
 * Enables showing entity relationships from the entity node context menu in the graph visualization [#252803]({{kib-pull}}252803).
