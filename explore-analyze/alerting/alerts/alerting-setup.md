@@ -72,6 +72,30 @@ The rule type also affects the privileges that are required. For example, to vie
 
 ::::
 
+### Give access to triage alerts without managing rules [_give_access_to_triage_alerts_without_managing_rules]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+To let users read alerts and perform per-alert actions such as [snooze](view-alerts.md#snooze-alerts), unsnooze, and [acknowledge](view-alerts.md#acknowledge-alerts), assign one or both of the following feature privileges. These privileges do not include rule management.
+
+**{{kib}} privileges**
+
+* **Management > Stack Alerts**:
+  * `All`: Read {{stack-manage-app}} alerts and perform per-alert actions across {{stack-manage-app}} rule types (for example, the {{es}} query, index threshold, geo-containment, transform health, {{ml}} anomaly detection, and custom threshold rule types).
+  * `Read`: Read stack alerts and their snooze state.
+* **Observability > Observability Alerts**:
+  * `All`: Read {{observability}} alerts and perform per-alert actions across {{observability}} rule types (for example, the APM, infrastructure, logs, SLO burn rate, Synthetics, and custom threshold rule types).
+  * `Read`: Read {{observability}} alerts and their snooze state.
+
+Some rule types, such as {{es}} query, custom threshold, and {{ml}} anomaly detection, can appear on both the **Stack Alerts** and **Observability Alerts** pages. Grant the privilege that matches the alerts page your users work from, or grant both when they need access in each context.
+
+:::{note}
+These privileges don't grant permission to create, edit, enable, disable, or delete rules. To manage rules, users still need the appropriate **{{stack-rules-feature}}** or {{observability}} feature privileges described earlier on this page.
+:::
+
 ### Give view-only access to alerts in **Discover** or **Dashboards** [_give_view_only_access_to_alerts_in_discover_or_dashboards]
 
 **{{kib}} privileges**

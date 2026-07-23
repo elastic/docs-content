@@ -9,13 +9,13 @@ applies_to:
 products:
   - id: "observability"
   - id: "serverless-observability"
-description: Filter, investigate, and manage Elastic Observability alerts from the Alerts page. Acknowledge or mute active alerts, organize with tags and cases, review related alerts, and clean up alert indices.
+description: Filter, investigate, and manage Elastic Observability alerts from the Alerts page. Acknowledge or snooze active alerts, organize with tags and cases, review related alerts, and clean up alert indices.
 ---
 
 # View and manage alerts in Elastic {{observability}} [observability-view-alerts]
 
 
-The **Alerts** page provides a central view of all alerts across your Elastic {{observability}} applications and SLOs. Use it to investigate why an alert fired, review related alerts, manage alert statuses, and take action, from muting or acknowledging individual alerts to organizing them with tags and cases.
+The **Alerts** page provides a central view of all alerts across your Elastic {{observability}} applications and SLOs. Use it to investigate why an alert fired, review related alerts, manage alert statuses, and take action, from snoozing or acknowledging individual alerts to organizing them with tags and cases.
 
 :::{image} /solutions/images/serverless-observability-alerts-view.png
 :alt: Alerts page
@@ -113,13 +113,26 @@ To acknowledge an alert, go to the Alerts table, click the action menu {icon}`bo
 To filter for acknowledged alerts in the Alerts table, enter `kibana.alert.workflow_status : "acknowledged"` in the KQL bar.
 ::::
 
+## Snooze alerts [observability-view-alerts-snooze-alerts]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Snooze an active alert to suppress that alert's actions. The rest of the rule keeps sending notifications. For snooze options, unsnooze conditions, and how to snooze or unsnooze from the Alerts page, refer to [Snooze alerts](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts).
+
 ## Mute alerts [observability-view-alerts-mute-alerts]
+
+```{applies_to}
+stack: ga 9.0-9.4
+```
 
 If an alert is active or flapping, you can mute it to temporarily suppress future actions. While muted, the alert's status will continue to update but rule actions won't run. All future alerts with the same alert ID will also be muted. You can mute alerts in the following ways:
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.3+
+:::{applies-item} stack: ga 9.3-9.4
 You can mute individual alerts or multiple ones:
 
 - Mute individual alerts: Find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), open the action menu ({icon}`boxes_vertical`) for the appropriate alert, then select **Mute**.
@@ -133,7 +146,6 @@ You can only mute individual alerts. To mute an alert, find the **Alerts** manag
 ::::
 
 ::::{note}
-
 To permanently suppress an alert's actions, open the actions menu for the appropriate alert, then select **Mark as untracked**. In this case, the alert's status is no longer updated and actions are no longer run. These changes are only applied to the alert that you untracked and cannot be reverted. Future alerts with the same alert ID are unaffected.
 
 To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#observability-create-manage-rules-snooze-and-disable-rules).
