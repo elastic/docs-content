@@ -20,9 +20,11 @@ Information about your current {{ecloud}} subscription usage is available direct
 * Check the usage breakdown for a selected time range
 * View usage totals by product
 
+## View detailed usage
+
 You can check the detailed usage for a selected time range grouped either by product or by resource, such as an {{ech}} deployment or a {{serverless-full}} project.
 
-What you can see on the **Usage** page depends on your {{ecloud}} roles:
+The information you can see on the **Usage** page depends on your {{ecloud}} [roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#types-of-roles):
 
 * Users with the **Organization owner** or **Billing admin** role can view usage and costs for the entire organization.
 * Users with a cloud resource access role can view usage and costs for the {{ech}} deployments and {{serverless-short}} projects they have access to.
