@@ -469,7 +469,7 @@ toc:
         - file: observability/streams/manage-data-quality.md
         - file: observability/streams/map-fields.md
         - file: observability/streams/advanced.md
-        - file: observability/streams/knowledge-indicators.md
+        - file: observability/streams/significant-events/knowledge-indicators.md
         - file: observability/streams/wired-streams-field-naming.md
         - file: observability/streams/streamlang.md
           children:
@@ -493,6 +493,10 @@ toc:
           - file: observability/streams/processors/trim.md
           - file: observability/streams/processors/uppercase.md
           - file: observability/streams/processors/manual-pipeline-configuration.md
+        - hidden: observability/streams/significant-events/index.md
+          children:
+            - hidden: observability/streams/significant-events/how-it-works.md
+            - hidden: observability/streams/significant-events/operator-guide.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md

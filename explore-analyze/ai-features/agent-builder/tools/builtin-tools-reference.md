@@ -2,7 +2,7 @@
 navigation_title: "Built-in tools"
 description: "Reference of all built-in tools available in Elastic Agent Builder."
 applies_to:
-  stack: 
+  stack:
   serverless:
 products:
   - id: elasticsearch
@@ -230,7 +230,7 @@ The following streams tools were available in 9.4 and were removed in 9.5:
 stack: preview 9.5
 ```
 
-Significant events tools search, create, and manage [significant events](/solutions/observability/streams/knowledge-indicators.md) and Knowledge Indicators for [Streams](/solutions/observability/streams/streams.md).
+Significant events tools search, create, and manage significant events and [Knowledge Indicators](/solutions/observability/streams/significant-events/knowledge-indicators.md) for [Streams](/solutions/observability/streams/streams.md).
 
 **Prerequisites:** Significant events require an [Enterprise license](https://www.elastic.co/subscriptions) and must be enabled for the deployment through the `observability:streamsEnableSignificantEvents` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings).
 
