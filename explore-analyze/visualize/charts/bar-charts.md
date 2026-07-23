@@ -112,7 +112,7 @@ To create a stacked bar chart:
 ![Bar chart with stacking](../../images/stacked-bar-chart.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a stacked bar chart that counts log entries over time and breaks them down by HTTP response code.
 
@@ -242,7 +242,7 @@ To create an unstacked bar chart:
 ![Bar chart without stacking showing breakdown](../../images/unstacked-bar-chart.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates an unstacked bar chart where each breakdown category renders as a separate bar placed side by side, making individual values straightforward to compare.
 
@@ -494,7 +494,7 @@ The following examples show various configuration options that you can use for b
 ![Stacked bar chart showing traffic per week broken down per region](/explore-analyze/images/weekly-website-traffic-per-region.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a stacked bar chart that tracks page views over time with a custom metric label and breaks them down by the top 9 destination regions.
 
@@ -624,7 +624,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Bar chart with reference line showing traffic per week broken down per region](/explore-analyze/images/request-error-rate-per-host.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a horizontal bar chart with a formula-based metric and a reference line layer that marks the acceptable error threshold.
 
