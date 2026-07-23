@@ -27,6 +27,38 @@ redirects:
   'reference/observability/fields-and-object-schemas/metrics-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
   'solutions/observability/infra-and-hosts/universal-profiling-issues.md': 'release-notes/elastic-observability/index.md'
 
+  # Related to https://github.com/elastic/docs-content/pull/7062
+  'solutions/observability/streams/wired-streams.md': 'solutions/observability/streams/get-data-in.md'
+  'solutions/observability/streams/management/advanced.md': 'solutions/observability/streams/advanced.md'
+  'solutions/observability/streams/management/data-quality.md': 'solutions/observability/streams/manage-data-quality.md'
+  'solutions/observability/streams/management/extract.md': 'solutions/observability/streams/parse-and-process.md'
+  'solutions/observability/streams/management/extract/append.md': 'solutions/observability/streams/processors/append.md'
+  'solutions/observability/streams/management/extract/concat.md': 'solutions/observability/streams/processors/concat.md'
+  'solutions/observability/streams/management/extract/convert.md': 'solutions/observability/streams/processors/convert.md'
+  'solutions/observability/streams/management/extract/date.md': 'solutions/observability/streams/processors/date.md'
+  'solutions/observability/streams/management/extract/dissect.md': 'solutions/observability/streams/processors/dissect.md'
+  'solutions/observability/streams/management/extract/drop.md': 'solutions/observability/streams/processors/drop.md'
+  'solutions/observability/streams/management/extract/enrich.md': 'solutions/observability/streams/processors/enrich.md'
+  'solutions/observability/streams/management/extract/grok.md': 'solutions/observability/streams/processors/grok.md'
+  'solutions/observability/streams/management/extract/join.md': 'solutions/observability/streams/processors/join.md'
+  'solutions/observability/streams/management/extract/lowercase.md': 'solutions/observability/streams/processors/lowercase.md'
+  'solutions/observability/streams/management/extract/manual-pipeline-configuration.md': 'solutions/observability/streams/processors/manual-pipeline-configuration.md'
+  'solutions/observability/streams/management/extract/math.md': 'solutions/observability/streams/processors/math.md'
+  'solutions/observability/streams/management/extract/network-direction.md': 'solutions/observability/streams/processors/network-direction.md'
+  'solutions/observability/streams/management/extract/redact.md': 'solutions/observability/streams/processors/redact.md'
+  'solutions/observability/streams/management/extract/remove.md': 'solutions/observability/streams/processors/remove.md'
+  'solutions/observability/streams/management/extract/rename.md': 'solutions/observability/streams/processors/rename.md'
+  'solutions/observability/streams/management/extract/replace.md': 'solutions/observability/streams/processors/replace.md'
+  'solutions/observability/streams/management/extract/set.md': 'solutions/observability/streams/processors/set.md'
+  'solutions/observability/streams/management/extract/trim.md': 'solutions/observability/streams/processors/trim.md'
+  'solutions/observability/streams/management/extract/uppercase.md': 'solutions/observability/streams/processors/uppercase.md'
+  'solutions/observability/streams/management/knowledge-indicators.md': 'solutions/observability/streams/knowledge-indicators.md'
+  'solutions/observability/streams/management/partitioning.md': 'solutions/observability/streams/organize-your-data.md'
+  'solutions/observability/streams/management/retention.md': 'solutions/observability/streams/configure-retention.md'
+  'solutions/observability/streams/management/schema.md': 'solutions/observability/streams/map-fields.md'
+  'solutions/observability/streams/management/significant-events.md': 'solutions/observability/streams/knowledge-indicators.md'
+  'solutions/observability/streams/management/streamlang.md': 'solutions/observability/streams/streamlang.md'
+
   # Related to https://github.com/elastic/docs-content/pull/1069
   'solutions/observability/apps/llm-observability.md': 'solutions/observability/applications/llm-observability.md'
   'solutions/observability/apps.md': 'solutions/observability/applications/index.md'
@@ -413,12 +445,12 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/3101
   'solutions/observability/logs/streams/streams.md': 'solutions/observability/streams/streams.md'
-  'solutions/observability/logs/streams/management/extract.md': 'solutions/observability/streams/management/extract.md'
-  'solutions/observability/logs/streams/management/extract/date.md': 'solutions/observability/streams/management/extract/date.md'
-  'solutions/observability/logs/streams/management/extract/dissect.md': 'solutions/observability/streams/management/extract/dissect.md'
-  'solutions/observability/logs/streams/management/extract/grok.md': 'solutions/observability/streams/management/extract/grok.md'
-  'solutions/observability/logs/streams/management/retention.md': 'solutions/observability/streams/management/retention.md'
-  'solutions/observability/logs/streams/management/advanced.md': 'solutions/observability/streams/management/advanced.md'
+  'solutions/observability/logs/streams/management/extract.md': 'solutions/observability/streams/parse-and-process.md'
+  'solutions/observability/logs/streams/management/extract/date.md': 'solutions/observability/streams/processors/date.md'
+  'solutions/observability/logs/streams/management/extract/dissect.md': 'solutions/observability/streams/processors/dissect.md'
+  'solutions/observability/logs/streams/management/extract/grok.md': 'solutions/observability/streams/processors/grok.md'
+  'solutions/observability/logs/streams/management/retention.md': 'solutions/observability/streams/configure-retention.md'
+  'solutions/observability/logs/streams/management/advanced.md': 'solutions/observability/streams/advanced.md'
 
 # Related to https://github.com/elastic/docs-content/issues/1449
 # APM Agent files (owned by ingest-docs)
