@@ -25,7 +25,14 @@ You configure {{ccr}} clusters in a uni-directional or bi-directional setup:
 * In a uni-directional configuration, one cluster contains only leader indices, and the other cluster contains only follower indices.
 * In a bi-directional configuration, each cluster contains both leader and follower indices.
 
-In a uni-directional configuration, the cluster containing follower indices must be running **the same or newer** version of {{es}} as the remote cluster. If newer, the versions must also be compatible as outlined in the following matrix.
+In a uni-directional configuration, the cluster containing follower indices (the *local* cluster) must be compatible with the cluster containing leader indices (the *remote* cluster). Both of the following conditions must be met:
+
+* The local cluster must be running **the same or newer** version of {{es}} as the remote cluster. This comparison includes the patch version: if the remote cluster is running `X.Y.3`, the local cluster must be running `X.Y.3` or higher. `X.Y.1` is not sufficient, even though both clusters are on the same minor version.
+* If the local cluster is running a newer version, the versions must also be compatible as outlined in the following matrix.
+
+::::{important}
+The following matrix groups versions into ranges, and expresses only the second condition. It does not relax the first: within a single cell of the matrix, the local cluster must still be running the same or a higher patch version than the remote cluster.
+::::
 
 :::::{dropdown} Version compatibility matrix
 :name: ccr-version-compatibility
