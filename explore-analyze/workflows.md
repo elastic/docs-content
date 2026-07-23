@@ -122,4 +122,4 @@ Concepts, reference, and authoring:
 - [Workflow concepts](/explore-analyze/workflows/concepts.md): Triggers, steps, templating, and quick-reference pages.
 - [Workflow authoring techniques](/explore-analyze/workflows/authoring-techniques.md): How to use the YAML editor, the anatomy of a workflow, workflow settings, choosing the right step, passing data between steps, handling errors, and more.
 - [Glossary](/explore-analyze/workflows/reference/glossary.md): Definitions for every term used across the Workflows documentation.
-- [Workflow templates](/explore-analyze/workflows/templates.md): Pre-built workflows you can adapt.
+- [Workflow templates](/explore-analyze/workflows/templates.md): Pre-built workflows you can adapt, including the Template Library.
