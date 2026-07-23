@@ -73,13 +73,13 @@ toc:
         children:
           - file: elasticsearch-solution-project/ai-onboarding.md
           - file: elasticsearch-solution-project/search-connection-details.md
+      - title: "Agent Builder"
+        crosslink: docs-content://explore-analyze/ai-features/elastic-agent-builder.md
       - file: elasticsearch-solution-project/playground.md
         children:
           - file: elasticsearch-solution-project/playground-context.md
           - file: elasticsearch-solution-project/playground-query.md
           - file: elasticsearch-solution-project/playground-troubleshooting.md
-      - title: "Agent Builder"
-        crosslink: docs-content://explore-analyze/ai-features/elastic-agent-builder.md
       - file: elasticsearch-solution-project/query-rules-ui.md
       - file: elasticsearch-solution-project/search-applications.md
         children:
