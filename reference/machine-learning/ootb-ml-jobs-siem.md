@@ -148,7 +148,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 `auth_rare_hour_for_a_user_ea`
 :   Looks for a user logging in at a time of day that is unusual for the user. This can be due to credentialed access through a compromised account when the user and the threat actor are in different time zones. In addition, unauthorized user activity often takes place during non-business hours.
 
-    **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md)
+    **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 
     **Supported OS:** Windows, Linux
 
@@ -697,7 +697,7 @@ To access the host traffic anomalies dashboard in Kibana, go to: `Security -> Da
 `high_count_events_for_a_host_name_ea`
 :   Detects sudden spikes in traffic associated with a host. This can be due to a range of security issues, such as a compromised system, DDoS attacks, malware infections, privilege escalation, or data exfiltration.
 
-    **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [System](integration-docs://reference/system/index.md)
+    **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [System](integration-docs://reference/system/index.md)
 
     **Supported OS:** Windows, Linux, macOS
 
@@ -731,7 +731,7 @@ To access the host traffic anomalies dashboard in Kibana, go to: `Security -> Da
 `low_count_events_for_a_host_name_ea`
 :   Detects sudden drops in traffic associated with a host. This can be due to a range of security issues, such as a compromised system, a failed service, or a network misconfiguration.
 
-    **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [System](integration-docs://reference/system/index.md)
+    **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [System](integration-docs://reference/system/index.md)
 
     **Supported OS:** Windows, Linux, macOS
 
@@ -772,7 +772,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 `v3_linux_anomalous_network_activity_ea`
 :   Looks for unusual processes using the network which could indicate command-and-control, lateral movement, persistence, or data exfiltration activity.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
     **Supported OS:** Linux
 
@@ -806,7 +806,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 `v3_linux_anomalous_network_port_activity_ea`
 :   Looks for unusual destination port activity that could indicate command-and-control, persistence mechanism, or data exfiltration activity.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
     **Supported OS:** Linux
 
@@ -840,7 +840,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 `v3_linux_anomalous_process_all_hosts_ea`
 :   Looks for processes that are unusual to all Linux hosts. Such unusual processes may indicate unauthorized software, malware, or persistence mechanisms.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
     **Supported OS:** Linux
 
@@ -1078,7 +1078,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 `v3_linux_rare_user_compiler_ea`
 :   Looks for compiler activity by a user context which does not normally run compilers. This can be ad-hoc software changes or unauthorized software deployment. This can also be due to local privilege elevation through locally run exploits or malware activity.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Auditd Manager](integration-docs://reference/auditd_manager/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
 
     **Supported OS:** Linux
 
@@ -1341,9 +1341,9 @@ This job is replaced by `dns_tunneling_ea` in the [Network module](#security-net
 
     **Supported OS:** Windows, Linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.4/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_dns_tunneling_ea.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_dns_tunneling_ea.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.4/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_dns_tunneling_ea.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_dns_tunneling_ea.json)
 
 :::
 
@@ -1383,9 +1383,9 @@ This job is replaced by `rare_dns_question_ea` in the [Network module](#security
 
     **Supported OS:** Windows, Linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.4/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_dns_question_ea.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_dns_question_ea.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.4/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_dns_question_ea.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_dns_question_ea.json)
 
 :::
 
@@ -1558,7 +1558,7 @@ If there are additional requirements such as installing the Windows System Monit
 `v3_windows_anomalous_network_activity_ea`
 :   Looks for unusual processes using the network which could indicate command-and-control, lateral movement, persistence, or data exfiltration activity.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
     **Supported OS:** Windows
 
@@ -1592,7 +1592,7 @@ If there are additional requirements such as installing the Windows System Monit
 `v3_windows_anomalous_path_activity_ea`
 :   Looks for activity in unusual paths that may indicate execution of malware or persistence mechanisms. Windows payloads often execute from user profile paths.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
     **Supported OS:** Windows
 
@@ -1626,7 +1626,7 @@ If there are additional requirements such as installing the Windows System Monit
 `v3_windows_anomalous_process_all_hosts_ea`
 :   Looks for processes that are unusual to all Windows hosts. Such unusual processes may indicate execution of unauthorized software, malware, or persistence mechanisms.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
     **Supported OS:** Windows
 
@@ -1660,7 +1660,7 @@ If there are additional requirements such as installing the Windows System Monit
 `v3_windows_anomalous_process_creation_ea`
 :   Looks for unusual process relationships which may indicate execution of malware or persistence mechanisms.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
     **Supported OS:** Windows
 
@@ -1694,7 +1694,7 @@ If there are additional requirements such as installing the Windows System Monit
 `v3_windows_anomalous_script_ea`
 :   Looks for unusual powershell scripts that may indicate execution of malware, or persistence mechanisms.
 
-    **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
+    **Supported integrations:** [Windows](integration-docs://reference/windows/index.md)
 
     **Supported OS:** Windows
 
@@ -1796,7 +1796,7 @@ If there are additional requirements such as installing the Windows System Monit
 `v3_windows_rare_metadata_process_ea`
 :   Looks for anomalous access to the metadata service by an unusual process. The metadata service may be targeted in order to harvest credentials or user data scripts containing secrets.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
     **Supported OS:** Windows
 
@@ -1830,7 +1830,7 @@ If there are additional requirements such as installing the Windows System Monit
 `v3_windows_rare_metadata_user_ea`
 :   Looks for anomalous access to the metadata service by an unusual user. The metadata service may be targeted in order to harvest credentials or user data scripts containing secrets.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
 
     **Supported OS:** Windows
 
@@ -1898,7 +1898,7 @@ If there are additional requirements such as installing the Windows System Monit
 `v3_windows_rare_user_type10_remote_login_ea`
 :   Unusual RDP (remote desktop protocol) user logins can indicate account takeover or credentialed access.
 
-    **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
+    **Supported integrations:** [Winlogbeat](beats://reference/winlogbeat/index.md)
 
     **Supported OS:** Windows
 
@@ -1932,7 +1932,7 @@ If there are additional requirements such as installing the Windows System Monit
 `v3_windows_rare_script_ea`
 :   Looks for rare powershell scripts that may indicate execution of malware, or persistence mechanisms using hash.
 
-    **Supported integrations:** [Windows](integration-docs://reference/windows/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md)
+    **Supported integrations:** [Windows](integration-docs://reference/windows/index.md)
 
     **Supported OS:** Windows
 
@@ -1985,7 +1985,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 `ded_high_sent_bytes_destination_geo_country_iso_code_ea`
 :   Detects data exfiltration to an unusual geo-location (by country iso code).
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md)
 
     **Supported OS:** Windows, Linux
 
@@ -1996,7 +1996,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 `ded_high_sent_bytes_destination_geo_country_iso_code`
 :   Detects data exfiltration to an unusual geo-location (by country iso code).
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md)
 
     **Supported OS:** Windows, Linux
 
@@ -2011,7 +2011,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 `ded_high_sent_bytes_destination_ip_ea`
 :   Detects data exfiltration to an unusual geo-location (by IP address).
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md)
 
     **Supported OS:** Windows, Linux
 
@@ -2022,7 +2022,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 `ded_high_sent_bytes_destination_ip`
 :   Detects data exfiltration to an unusual geo-location (by IP address).
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md)
 
     **Supported OS:** Windows, Linux
 
@@ -2037,7 +2037,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 `ded_high_sent_bytes_destination_port_ea`
 :   Detects data exfiltration to an unusual destination port.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md)
 
     **Supported OS:** Windows, Linux
 
@@ -2048,7 +2048,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 `ded_high_sent_bytes_destination_port`
 :   Detects data exfiltration to an unusual destination port.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md)
 
     **Supported OS:** Windows, Linux
 
@@ -2063,7 +2063,7 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 `ded_high_sent_bytes_destination_region_name_ea`
 :   Detects data exfiltration to an unusual geo-location (by region name).
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md)
 
     **Supported OS:** Windows, Linux
 
@@ -2074,10 +2074,9 @@ To download, refer to the [documentation](integration-docs://reference/ded/index
 `ded_high_sent_bytes_destination_region_name`
 :   Detects data exfiltration to an unusual geo-location (by region name).
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md)
 
     **Supported OS:** Windows, Linux
-
 :::
 
 ::::
@@ -2672,63 +2671,63 @@ To download, refer to the [documentation](integration-docs://reference/pad.md).
 `pad_windows_high_count_special_logon_events_ea`
 :   Detects unusually high special logon events initiated by a user.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
+    **Supported integrations:** [System](integration-docs://reference/system/index.md)
 
     **Supported OS:** Windows
 
 `pad_windows_high_count_special_privilege_use_events_ea`
 :   Detects unusually high special privilege use events initiated by a user.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
+    **Supported integrations:** [System](integration-docs://reference/system/index.md)
 
     **Supported OS:** Windows
 
 `pad_windows_high_count_group_management_events_ea`
 :   Detects unusually high security group management events initiated by a user.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
+    **Supported integrations:** [System](integration-docs://reference/system/index.md)
 
     **Supported OS:** Windows
 
 `pad_windows_high_count_user_account_management_events_ea`
 :   Detects unusually high security user account management events initiated by a user.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
+    **Supported integrations:** [System](integration-docs://reference/system/index.md)
 
     **Supported OS:** Windows
 
 `pad_windows_rare_privilege_assigned_to_user_ea`
 :   Detects an unusual privilege type assigned to a user.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
+    **Supported integrations:** [System](integration-docs://reference/system/index.md)
 
     **Supported OS:** Windows
 
 `pad_windows_rare_group_name_by_user_ea`
 :   Detects an unusual group name accessed by a user.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
+    **Supported integrations:** [System](integration-docs://reference/system/index.md)
 
     **Supported OS:** Windows
 
 `pad_windows_rare_device_by_user_ea`
 :   Detects an unusual device accessed by a user.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
+    **Supported integrations:** [System](integration-docs://reference/system/index.md)
 
     **Supported OS:** Windows
 
 `pad_windows_rare_source_ip_by_user_ea`
 :   Detects an unusual source IP address accessed by a user.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
+    **Supported integrations:** [System](integration-docs://reference/system/index.md)
 
     **Supported OS:** Windows
 
 `pad_windows_rare_region_name_by_user_ea`
 :   Detects an unusual region name for a user.
 
-    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
+    **Supported integrations:** [System](integration-docs://reference/system/index.md)
 
     **Supported OS:** Windows
 
