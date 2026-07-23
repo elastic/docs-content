@@ -49,7 +49,7 @@ Use the map controls to adjust the layout, filter what’s displayed, and naviga
 * **Find in page**: Search for a specific service by name to locate and highlight it on the map.
 * **Filters**: Use the **Dependencies**, **Alert status**, **SLO status**, and **Anomaly severity** drop-downs to focus the map on specific services.
 
-To save the current service map view to a {{kib}} dashboard, click **Copy to dashboard** icon located in the right-upper corner of the map.
+To save the current service map view to a {{kib}} dashboard, click the **Copy to dashboard** icon located in the upper-right corner of the map.
 
 When you click an instrumented service node (circle shape), a **service flyout** panel opens with a summary of the service’s RED metrics and infrastructure usage. Use the footer menu to open traces, logs, alerts, or SLOs for the service without leaving the map. Dependency nodes (diamond shape) and connections still use a compact popover.
 
