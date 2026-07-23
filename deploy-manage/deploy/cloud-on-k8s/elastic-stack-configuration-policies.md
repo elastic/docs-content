@@ -80,13 +80,15 @@ Each `StackConfigPolicy` must define the following fields under `spec`:
 
 ### Optional fields
 
-The following fields are optional. They control which {{es}} clusters and {{kib}} instances the policy targets.
+The following fields are optional. They control policy targeting, priority, and variable substitution.
 
 * {applies_to}`eck: ga 3.3+` `weight`: An integer that determines the priority of this policy when multiple policies target the same resource. Refer to [Policy priority and weight](#k8s-stack-config-policy-priority-weight) for details.
 
 * `namespace`: The namespace of the `StackConfigPolicy` resource, used to identify the {{es}} clusters and {{kib}} instances to which the policy applies. If it equals the operator namespace, the policy applies to all namespaces managed by the operator. Otherwise, the policy applies only to the namespace where the policy is defined.
 
 * `resourceSelector`: A [label selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) to identify the {{es}} clusters and {{kib}} instances to which the policy applies in combination with the namespace(s). If `resourceSelector` is not defined, the policy applies to all {{es}} clusters and {{kib}} instances in the namespace(s).
+
+* {applies_to}`eck: ga 3.5` `variablesFrom`: A list of ConfigMaps or Secrets whose keys become substitution variables available as `${VAR}` expressions in the `elasticsearch` and `kibana` spec fields. Refer to [Variable substitution](#k8s-stack-config-policy-variable-substitution) for details.
 
 
 ## {{es}} settings [es-settings]
@@ -458,6 +460,72 @@ spec:
 ```
 
 In this example, clusters labeled with both `env: production` and `tier: critical` have the `production-override-policy` (weight: 100) settings applied, which overwrite the `base-policy` (weight: 0) settings. Other production clusters use only the `base-policy` (weight: 0) settings.
+
+## Variable substitution [k8s-stack-config-policy-variable-substitution]
+```{applies_to}
+deployment:
+  eck: ga 3.5
+```
+
+Use `variablesFrom` to load environment-specific values from ConfigMaps or Secrets. You can then reference those values as `${VAR}` expressions in the policy's `elasticsearch` and `kibana` fields where you need them. Variable substitution lets you reuse a single policy definition across multiple environments without duplicating or hardcoding values.
+
+### Define variable sources
+
+Each entry in `variablesFrom` references a ConfigMap or Secret by `kind` and `name`. Every key in the referenced object becomes an available variable:
+
+```yaml
+spec:
+  variablesFrom:
+    - kind: ConfigMap
+      name: es-tuning
+    - kind: Secret
+      name: es-credentials
+  elasticsearch:
+    clusterSettings:
+      indices.recovery.max_bytes_per_sec: "${RECOVERY_RATE}"
+```
+
+The corresponding ConfigMap:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: es-tuning
+data:
+  RECOVERY_RATE: "200mb"
+```
+
+ECK watches all referenced ConfigMaps and Secrets and automatically reconciles the policy whenever a source is updated.
+
+### Syntax
+
+| Expression | Behavior |
+|---|---|
+| `${VAR}` | Substituted with the value of `VAR` from the sources. If `VAR` is not defined in any source, the expression is left verbatim. This can cause an error downstream if {{es}} or {{kib}} cannot resolve the expression. |
+| `${VAR:-default}` | Substituted with the value of `VAR`, or `default` if `VAR` is not defined. |
+
+Only string-typed fields can be templated. Numeric, boolean, and object fields cannot be substituted because source values are always strings and the target type cannot be inferred.
+
+{{es}}-native variable expressions (such as `${node.name}`) are left verbatim and resolved by {{es}} at runtime — ECK only substitutes keys that are present in a declared source.
+
+### Source precedence and namespace rules
+
+When multiple sources define the same key, the last entry in `variablesFrom` takes precedence.
+
+Sources without an explicit `namespace` field default to the policy's own namespace. To reference a source in a different namespace, set the `namespace` field on the entry — this is only permitted for policies deployed in the operator namespace. Policies in any other namespace must reference sources in their own namespace.
+
+To suppress a reconciliation error when a source does not exist, set `optional: true` on that entry:
+
+```yaml
+spec:
+  variablesFrom:
+    - kind: ConfigMap
+      name: optional-overrides
+      optional: true
+    - kind: Secret
+      name: required-credentials
+```
 
 ## Syntax types used in configuration policy fields [syntax-types]
 
