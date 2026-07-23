@@ -141,7 +141,7 @@ kubectl annotate elasticsearch quickstart $RM_ANNOTATION
 ```
 ::::
 
-::::{applies-item} eck: ga 3.0-3.5
+::::{applies-item} eck: ga 3.0-3.4
 Use the `eck.k8s.elastic.co/managed` annotation:
 
 :::{warning}
