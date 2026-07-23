@@ -2,7 +2,7 @@
 navigation_title: Elasticsearch client certificate authentication
 applies_to:
   deployment:
-    eck: ga 3.5
+    eck: ga 3.4
 products:
   - id: cloud-kubernetes
 ---
@@ -12,8 +12,6 @@ products:
 For how ECK secures HTTP traffic and manages TLS certificates, see [Manage TLS certificates on ECK](/deploy-manage/security/eck-tls.md).
 
 You can configure {{es}} to require client certificates for HTTP authentication, enabling mutual TLS (mTLS) between clients and {{es}}. When enabled, clients must present a valid certificate signed by a trusted CA to communicate with {{es}}.
-
-ECK automatically generates and manages client certificates for all {{stack}} components that connect to {{es}}: {{kib}}, {{apm-server}}, {{beats}}, {{ls}}, {{hosted-ems}}, Enterprise Search, {{agent}}, and {{fleet-server}}. Stack monitoring sidecars and the AutoOps agent are also configured automatically. Each component is issued a certificate by ECK; you can optionally supply a custom certificate instead.
 
 :::{note}
 This requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](/deploy-manage/license/manage-your-license-in-eck.md) for more details about managing licenses.
@@ -42,7 +40,8 @@ spec:
 When client authentication is enabled, ECK does the following:
 
 * Sets `xpack.security.http.ssl.client_authentication: required` in the {{es}} configuration.
-* Automatically generates and manages client certificates for the ECK operator, {{kib}}, {{apm-server}}, {{beats}}, {{ls}}, {{hosted-ems}}, Enterprise Search, standalone and fleet-managed {{agents}}, stack monitoring sidecars ({{metricbeat}} and {{filebeat}}), and the AutoOps agent, configuring each to present its certificate when connecting to {{es}}.
+* {applies_to}`eck: ga 3.5+` Automatically generates and manages client certificates for all {{stack}} components that connect to {{es}}, including stack monitoring sidecars and the AutoOps agent, configuring each to present its certificate when connecting to {{es}}.
+* {applies_to}`eck: ga =3.4` The only supported component is {{kib}}. ECK automatically generates and manages a client certificate for it, configuring it to present its certificate when connecting to {{es}}. Other workloads that connect to {{es}} over HTTP are not configured automatically.
 
 :::{note}
 * If you have manually set `xpack.security.http.ssl.client_authentication` in `spec.nodeSets[*].config`, that value takes precedence over the ECK-managed setting and the mTLS configuration may not apply as expected.
@@ -79,6 +78,11 @@ data:
 
 ### Kibana [k8s-kibana-custom-client-cert]
 
+```{applies_to}
+deployment:
+  eck: ga =3.4
+```
+
 Set `clientCertificateSecretName` in the `elasticsearchRef` of the {{kib}} resource:
 
 ```yaml subs=true
@@ -95,6 +99,11 @@ spec:
 ```
 
 ### APM Server [k8s-apm-custom-client-cert]
+
+```{applies_to}
+deployment:
+  eck: ga 3.5+
+```
 
 Set `clientCertificateSecretName` in the `elasticsearchRef` of the {{apm-server}} resource:
 
@@ -113,6 +122,11 @@ spec:
 
 ### Beats [k8s-beats-custom-client-cert]
 
+```{applies_to}
+deployment:
+  eck: ga 3.5+
+```
+
 Set `clientCertificateSecretName` in the `elasticsearchRef` of the {{beats}} resource:
 
 ```yaml subs=true
@@ -129,6 +143,11 @@ spec:
 ```
 
 ### Enterprise Search [k8s-ent-search-custom-client-cert]
+
+```{applies_to}
+deployment:
+  eck: ga 3.5+
+```
 
 Set `clientCertificateSecretName` in the `elasticsearchRef` of the Enterprise Search resource:
 
@@ -151,6 +170,11 @@ A bug in Enterprise Search's JRuby runtime can cause startup failures with some 
 
 ### Elastic Maps Server [k8s-maps-custom-client-cert]
 
+```{applies_to}
+deployment:
+  eck: ga 3.5+
+```
+
 Set `clientCertificateSecretName` in the `elasticsearchRef` of the {{hosted-ems}} resource:
 
 ```yaml subs=true
@@ -167,6 +191,11 @@ spec:
 ```
 
 ### Logstash [k8s-logstash-custom-client-cert]
+
+```{applies_to}
+deployment:
+  eck: ga 3.5+
+```
 
 {{ls}} supports multiple {{es}} references, so `clientCertificateSecretName` is configured per entry in `elasticsearchRefs`:
 
@@ -190,6 +219,11 @@ spec:
 
 ### Elastic Agent [k8s-agent-custom-client-cert]
 
+```{applies_to}
+deployment:
+  eck: ga 3.5+
+```
+
 For standalone {{agent}}, `clientCertificateSecretName` is configured per entry in `elasticsearchRefs`:
 
 ```yaml subs=true
@@ -208,6 +242,11 @@ spec:
 For fleet-managed {{agents}}, {{fleet-server}} automatically propagates the client certificate information to all connected agents. No additional configuration is required.
 
 ### Fleet Server [k8s-fleet-server-es-custom-client-cert]
+
+```{applies_to}
+deployment:
+  eck: ga 3.5+
+```
 
 {{fleet-server}} also connects to {{es}} and can be configured with a custom client certificate via `elasticsearchRefs`:
 
