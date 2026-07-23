@@ -46,17 +46,12 @@ The number, duration, and frequency of these breaches over time gives you an ind
 
 ::::{note}
 The contents of the alert details page may vary depending on the type of SLI that’s defined in the SLO.
+::::
 
-```{applies_to}
-stack: ga 9.5+
-serverless: ga
-```
-
-For SLOs based on {{product.apm}} latency or {{product.apm}} availability SLIs, the alert details page includes additional actions to help you investigate the breach:
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For SLOs based on {{product.apm}} latency or {{product.apm}} availability SLIs, the alert details page includes additional actions to help you investigate the breach:
 
 * Click **View events** in the good vs bad events section to open the trace data in Discover. Use the **Good**, **Bad**, or **All** control to filter events and understand what changed around the time of the breach.
 * Use the **In {{product.apm}}** or **Traces in Discover** links to navigate directly to the underlying service data.
-::::
 
 
 After investigating the alert, you may want to:

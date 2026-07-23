@@ -185,6 +185,8 @@ When defining either an APM latency or APM availability SLI, set the following f
 * **Threshold (APM latency only):** The latency threshold in milliseconds (ms) to consider the request as good.
 * **Query filter:** An optional query filter on the APM data.
 
+#### Explore SLO events [apm-latency-slo-explore-events]
+
 ```{applies_to}
 stack: ga 9.5+
 serverless: ga
