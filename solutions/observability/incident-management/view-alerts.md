@@ -69,17 +69,22 @@ serverless: ga
 
 Alert detail pages for {{product.apm}} rules include additional context to help you diagnose problems quickly:
 
-* **RED metric charts**: Latency, throughput, and failed transaction rate charts are shown directly on the alert detail page, giving you visibility into service performance around the time the alert fired.
-* **Service map**: The service map is embedded on the alert detail page so you can see connected services and identify whether the issue is isolated or affecting upstream or downstream dependencies.
+* **RED metric charts**: Latency, throughput, and failed transaction rate charts are shown on the alert detail page, letting you check the service performance around the time the alert fired.
+* **Service map**: When the affected service is included in a service map with {{anomaly-detect}} enabled, the service map is also embedded on the alert detail page so you can see connected services and identify whether the issue is isolated or affecting upstream or downstream dependencies.
 
 For **{{product.apm}} anomaly** alerts specifically, the alert detail page also includes:
 
-* A severity-colored callout with a title in the format **{Severity} {{product.apm}} anomaly detected - {Detector}** — for example, "Warning {{product.apm}} anomaly detected - Latency". The callout color reflects the anomaly severity: critical anomalies appear in red, major and minor anomalies in yellow, and warning anomalies in blue.
-* An **anomaly badge** on the specific RED metric chart where the anomaly was detected — for example, the badge appears on the **Latency** chart for a latency anomaly.
+* A severity-colored callout with a title in the format **{Severity} {{product.apm}} anomaly detected - {Detector}** (for example, "Warning {{product.apm}} anomaly detected - Latency). The callout color reflects the anomaly severity: critical anomalies appear in red, major and minor anomalies in yellow, and warning anomalies in blue. For a full description of severity colors, refer to [Anomaly score colors](/solutions/observability/apm/service-map.md#service-maps-legend-anomaly-colors).
+* An anomaly badge on the specific RED metric chart where the anomaly was detected. For example, the badge appears on the **Latency** chart for a latency anomaly:
+
+:::{image} /solutions/images/observability-apm-alert-detail-anomaly.png
+:alt: APM anomaly alert detail page showing RED metric charts for latency, throughput, and failed transaction rate, with a Major anomaly badge on the Latency chart
+:screenshot:
+:::
 
 ## Review related alerts [observability-view-alerts-find-related-alerts]
 ```{applies_to}
-stack: ga 9.1 
+stack: ga 9.1+
 ```
 
 Check related alerts to find other alerts that might be related to the same incident. You can add these alerts to a case and investigate them as a group instead of analyzing them individually.
