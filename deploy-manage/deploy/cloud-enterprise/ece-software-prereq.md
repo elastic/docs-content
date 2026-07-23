@@ -15,9 +15,9 @@ To install ECE, make sure you prepare your environment with the following softwa
 * [Supported Linux kernel](#ece-linux-kernel)
 * [Linux distributions with compatible Docker versions](#ece-linux-docker)
 * [Free RAM](#ece-free-ram)
+* [Swap considerations](#ece-swap-considerations)
 * [XFS](#ece-xfs)
 * [FIPS compliance](#ece-fips)
-* [Swap considerations](#ece-swap-considerations)
 
 
 ## Supported Linux kernel [ece-linux-kernel] 
@@ -72,25 +72,6 @@ free -h
 ```
 
 
-## XFS [ece-xfs] 
-
-XFS is required if you want to use disk space quotas for {{es}} data directories.
-
-Disk space quotas set a limit on the amount of disk space an {{es}} cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
-
-::::{important} 
-You must use XFS and have quotas enabled on all allocators, otherwise disk usage won’t display correctly.
-::::
-
-
-## FIPS compliance [ece-fips]
-
-:::{include} /deploy-manage/deploy/_snippets/ece-fips-message.md
-:::
-
-For more information about FIPS compliance across the {{stack}}, refer to [](/deploy-manage/security/fips.md).
-
-
 ## Swap considerations [ece-swap-considerations]
 
 Unlike Elasticsearch nodes, which run with [swap disabled](/deploy-manage/deploy/self-managed/setup-configuration-memory.md), ECE hosts have different swap requirements based on their roles.
@@ -112,3 +93,22 @@ There is no specific recommendation for sizing swap, but 4 GB of swap per 32 GB 
 To ensure that swap remains a last-resort safeguard, set the `vm.swappiness` kernel setting to `1`, as described in the [Configure your OS](./configure-operating-system.md) preparation guides.
 
 The method for provisioning swap space depends on your operating system and infrastructure provider. Consult your OS or cloud provider's documentation for instructions on creating a swap file or partition.
+
+
+## XFS [ece-xfs] 
+
+XFS is required if you want to use disk space quotas for {{es}} data directories.
+
+Disk space quotas set a limit on the amount of disk space an {{es}} cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
+
+::::{important} 
+You must use XFS and have quotas enabled on all allocators, otherwise disk usage won’t display correctly.
+::::
+
+
+## FIPS compliance [ece-fips]
+
+:::{include} /deploy-manage/deploy/_snippets/ece-fips-message.md
+:::
+
+For more information about FIPS compliance across the {{stack}}, refer to [](/deploy-manage/security/fips.md).
