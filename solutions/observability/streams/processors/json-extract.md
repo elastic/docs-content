@@ -16,7 +16,7 @@ description: Extract values from JSON strings using JSONPath-like selectors with
 
 # JSON extract processor [streams-json-extract-processor]
 
-The **JSON extract** processor extracts values from a JSON-encoded string field using JSONPath-like selectors, and writes each extracted value to its own target field.
+The **JSON extract** processor extracts values from a JSON-encoded string field using JSONPath-like selectors, and writes each extracted value to its own target field. Supported selector syntax includes dot notation (`user.address.city`), bracket notation (`['user']['name']`), and array indexing (`items[0]`), with an optional `$` root prefix.
 
 To extract values from a JSON string:
 
