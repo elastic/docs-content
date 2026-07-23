@@ -11,6 +11,9 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
 
+:::{include} _snippets/2026-07-21/deprecations.md
+:::
+
 :::{changelog}
 :type: deprecation
 :cdn: cloud-serverless
