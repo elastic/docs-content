@@ -49,8 +49,10 @@ Text embedding models convert text into vector embeddings for semantic similarit
 
 :::
 
-:::{tab-item} jina-embeddings-v5-text-nano
-:sync: text-nano
+- {applies_to}`stack: ga 9.3+` In {{stack}} 9.3 and later, you can create endpoints and run multimodal `embedding` {{infer}} requests. You cannot use these models with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type.
+- {applies_to}`stack: ga 9.4+` In {{stack}} 9.4 and later, you can use [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) mappings for text-only embeddings at ingest and search time.
+- {applies_to}`stack: ga 9.5+` In {{stack}} 9.5 and later, the `semantic` field type supports all modalities, such as text, images, video, audio, and documents.
+::::
 
 - `jina-embeddings-v5-text-nano` works best on small, medium or large sized fields that contain natural language. For connector or web crawler use cases, this aligns best with fields like title, description, summary, or abstract.
 - Although the model supports an input token length of 8K, consider chunking very large fields to control latency and cost.
