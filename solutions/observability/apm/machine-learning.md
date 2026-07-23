@@ -40,12 +40,12 @@ Results from {{ml}} jobs are shown in multiple places throughout the Application
 To enable {{ml}} {{anomaly-detect}}:
 
 1. In your {{obs-serverless}} project or {{kib}}, go to any **Applications** page.
-2. Select **Anomaly detection**.
-3. Select **Create Job**.
+2. Click **{{anomaly-detect-cap}}**.
+3. Click **Create Job**.
 4. {{ml-jobs-cap}} are created at the environment level. Select all of the service environments that you want to enable {{anomaly-detect}} in. Anomalies will surface for all services and transaction types within the selected environments.
-5. Select **Create Jobs**.
+5. Click **Create Jobs**.
 
-After a few minutes, the job will begin calculating results; it might take additional time for results to appear on your service maps. To manage existing jobs, select **Manage jobs** (or go to **Machine learning** → **Jobs**).
+After a few minutes, the job will begin calculating results; it might take additional time for results to appear on your service maps. To manage existing jobs, click **Manage jobs** (or go to **{{ml-cap}}** → **Jobs**).
 
 ## {{anomaly-detect-cap}} warning [observability-apm-integrate-with-machine-learning-anomaly-detection-warning]
 
