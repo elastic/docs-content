@@ -40,7 +40,7 @@ serverless: unavailable
 This personal preference controls whether {{kib}} returns you to your last space or shows the space selector when you log in and can access multiple spaces.
 
 **Requirements**:
-- Your Kibana instance must be self-managed or deployed through {{ece}} or {{eck}}. This menu option is not available on {{ecloud}}.
+- Your Kibana instance must be self-managed or deployed through {{ece}} or {{eck}}. This option is not available on {{ecloud}}.
 
 1. From the global header's user menu, select **Edit profile**.
 2. In **Space Configuration**, turn **Remember last selected space** on or off.
