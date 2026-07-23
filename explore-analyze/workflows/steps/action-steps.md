@@ -49,6 +49,17 @@ Cases actions provide 27 step types for creating, querying, updating, and managi
 
 Refer to [](/explore-analyze/workflows/steps/cases.md) for the complete 27-step catalog.
 
+## Entity store
+
+```{applies_to}
+stack: preview 9.5+
+serverless: preview
+```
+
+The entity store action operates on entities in the {{elastic-sec}} entity store. Use this action to set or remove an entity's asset criticality.
+
+Refer to [](/explore-analyze/workflows/steps/entity-store.md) for more information.
+
 ## Streams
 
 ```{applies_to}
