@@ -22,8 +22,8 @@ Because traces are stored in a regular data stream, you can use the same {{kib}}
 
 Before you create a rule, make sure that:
 
-* **Trace collection is on.** {{agent-builder}} must be writing traces to the `traces-agent_builder.otel-<space-id>` data stream in the space where you create the rule. Collection is on by default. <!-- TODO(#7322): link to Collect traces (collect-traces.md) once it is on main. -->
-* **You can read the trace data.** The rule queries `traces-agent_builder.otel-*`, so you need read access to those data streams. See [Permissions](permissions.md). <!-- TODO(#7322): update to the #read-trace-data anchor once #7322 adds it. -->
+* **Trace collection is on.** {{agent-builder}} must be writing traces to the `traces-agent_builder.otel-<space-id>` data stream in the space where you create the rule. Collection is on by default. See [Collect agent traces](collect-traces.md).
+* **You can read the trace data.** The rule queries `traces-agent_builder.otel-*`, so you need read access to those data streams. See [Read trace data](permissions.md#read-trace-data).
 * **You can use {{kib}} alerting.** You need privileges to create and manage rules, plus a connector to send notifications such as Slack, email, or PagerDuty. See [Set up alerting](/explore-analyze/alerting/alerts/alerting-setup.md).
 
 ## Create a rule
@@ -155,15 +155,10 @@ Each alert identifies the tool by its span name, for example `execute_tool <tool
 `status.code == "Error"` on `execute_tool` spans is set only for parameter and schema validation errors, such as invalid arguments. Errors that a tool catches and returns as a result do not set this status, so this alert can miss some tool failures.
 :::
 
-<!-- TODO(author): kibana#277689 (returned tool errors also set status.code == "Error" and add attributes.error.type = "tool_error") merged for 9.6 with backport:skip, so it is NOT in 9.5. The 9.5 note above stays correct. Revisit this when documenting 9.6. -->
-
 ## Related
 
-% RE-ADD the two links below once their target pages are on main. Remove the leading "% " from each link line.
-% Re-add when PR #7322 merges (collect-traces.md lands on main):
-% * [Collect traces](collect-traces.md): turn on trace collection and learn about the data streams, privacy settings, and access model.
-% Re-add when PR #7337 merges (agent-traces-dashboard.md lands on main):
-% * [Agent Builder traces dashboard](agent-traces-dashboard.md): the prebuilt overview dashboard and the full span and attribute reference.
+* [Collect traces](collect-traces.md): turn on trace collection and learn about the data streams, privacy settings, and access model.
+* [Agent Builder traces dashboard](agent-traces-dashboard.md): the prebuilt overview dashboard and the full span and attribute reference.
 * [Monitor usage and costs](monitor-usage.md): how {{agent-builder}} counts tokens and how usage maps to cost.
 * [Create and manage rules](/explore-analyze/alerting/alerts/create-manage-rules.md): manage, snooze, and troubleshoot {{kib}} alerting rules.
 * [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md): full reference for the rule type used on this page.
