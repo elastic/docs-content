@@ -26,6 +26,8 @@ Use **Vega** or **Vega-Lite** when you want to create visualizations with:
 
 These grammars have some limitations: they do not support tables, and can’t run queries conditionally.
 
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` You can also ask [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md) to generate Vega-Lite visualizations from natural language when it creates or updates a dashboard through chat.
+
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-vega
 :::

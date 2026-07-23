@@ -13,6 +13,8 @@ products:
 
 **Controls** are interactive panels that you add to your dashboards to help viewers filter and display only the data they want to explore. Controls apply filters to relevant panels so viewers can focus on specific data segments without writing filtering queries.
 
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` You can also ask [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md) to add controls for you when it creates or updates a dashboard through chat.
+
 ## Control types [control-types]
 
 You can add three kinds of controls:
