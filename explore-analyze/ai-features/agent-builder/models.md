@@ -121,7 +121,19 @@ On {{serverless-full}} projects and {{ech}} deployments, the fast model is preco
 
 On {{ece}}, {{eck}}, and self-managed deployments, there is no preconfigured fast model unless you [connect to EIS through Cloud Connect](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md). Without it, fast model routing falls back to your default model.
 
-<!-- TODO(#15449): "Change the fast model" (custom fast-model assignment) is omitted for 9.5. Re-add this section when the https://github.com/elastic/search-team/issues/15449 fix ships. -->
+### Choose the fast model
+
+{{agent-builder}} uses a recommended Elastic Managed LLM for fast routing. When more than one recommended fast model is available, such as Claude Haiku 4.5 and Google Gemini Flash, it uses the first one. To prefer a specific model, open the **Feature settings** page, go to the **Agent Builder** section, and order the models under **Fast models** so your preferred one is at the top. To find this page, refer to [Change the default model](#change-the-default-model).
+
+In 9.5, only recommended Elastic Managed LLMs are used for fast routing. Assigning a custom or non-recommended model has no effect on the fast model.
+
+:::{image} images/agent-builder-fast-models-feature-settings.png
+:alt: Main models and Fast models cards in the Agent Builder section of the Feature settings page
+:width: 600px
+:screenshot:
+:::
+
+<!-- TODO(verify before merge): confirm the exact Fast models ordering UI in Feature settings and that this screenshot still matches the flow (check with Joe/Sid or on a 9.5 cluster). Custom-assignment support is tracked in search-team#15449 (not in 9.5). -->
 
 ### Fallback behavior
 
