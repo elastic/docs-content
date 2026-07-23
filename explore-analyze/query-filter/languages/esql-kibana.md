@@ -448,7 +448,7 @@ The first time a query references an unmapped field, the editor shows a warning 
 `LOAD` doesn't work in queries that use `FORK`, `LOOKUP JOIN`, subqueries, views, or full-text search functions. Subfields of `flattened` fields aren't loaded. When querying multiple indices, fields that have a non-keyword type in some indices but are unmapped in others need an explicit cast (for example, `my_field::integer` or `TO_INTEGER(my_field)`) unless referenced in a `KEEP` or `DROP` command.
 :::
 
-{applies_to}`stack: preview 9.5` When querying a [wired stream](/solutions/observability/streams/wired-streams.md) and the editor detects an unknown column error, a **Load unmapped fields** quick fix is available. Select it to apply `SET unmapped_fields = "LOAD";` automatically. Refer to [Query unmapped fields](/solutions/observability/streams/wired-streams.md#streams-wired-streams-discover-unmapped) for wired stream–specific details.
+{applies_to}`stack: preview 9.5` When querying a [wired stream](/solutions/observability/streams/get-data-in.md#get-data-in-wired) and the editor detects an unknown column error, a **Load unmapped fields** quick fix is available. Select it to apply `SET unmapped_fields = "LOAD";` automatically. Refer to [Query unmapped fields](/solutions/observability/streams/get-data-in.md#streams-wired-streams-discover-unmapped) for wired stream–specific details.
 
 For a conceptual overview and use cases, refer to [Unmapped fields](elasticsearch://reference/query-languages/esql/esql-unmapped-fields.md).
 
@@ -458,6 +458,11 @@ For a conceptual overview and use cases, refer to [Unmapped fields](elasticsearc
 stack: preview 9.4
 serverless: preview
 ```
+
+::::{admonition} Requirements
+:applies_to: { ess:, ece:, eck:, self: }
+For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, approximation requires an [Enterprise subscription](https://www.elastic.co/subscriptions).
+::::
 
 On large datasets, you can trade exact results for speed by enabling [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries. Approximation runs your `STATS` aggregations on a sample of the data and extrapolates to estimate results for the full dataset, so the numbers come out close to the exact ones. You can enable approximation in two ways:
 
@@ -482,7 +487,7 @@ Fast mode is the {{kib}} UI control for {{esql}} approximation. Select the {icon
 Where it applies depends on the context:
 
 - In [**Discover**](/explore-analyze/discover/try-esql.md), in {{esql}} mode, the button is always available, but **Fast mode** applies only to queries that use exactly one `STATS` command.
-- In [**Dashboards**](/explore-analyze/visualize/esorql.md), **Fast mode** applies to the dashboard's {{esql}} visualizations that use one `STATS` command. The option is disabled when the dashboard has no {{esql}} visualizations.
+- In **Dashboards**, **Fast mode** applies to the dashboard's [{{esql}} visualizations](/explore-analyze/visualize/esorql.md) and [**Vega** or **Vega-Lite** panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use an {{esql}} data source with one `STATS` command. The option is unavailable when the dashboard has no {{esql}} panels.
 
 **Fast mode** is preserved when you save or share a dashboard.
 
