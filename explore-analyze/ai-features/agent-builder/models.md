@@ -107,7 +107,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-To reduce latency, {{agent-builder}} automatically routes some low-effort, latency-sensitive operations to a fast model instead of your default model. A fast model is a smaller, high-throughput model that returns results more quickly than a frontier reasoning model.
+Get faster responses at a lower token cost, automatically. To do this, {{agent-builder}} routes some low-effort, latency-sensitive operations to a fast model instead of your default model. A fast model is a smaller, high-throughput model that returns results more quickly than a frontier reasoning model.
 
 This routing is automatic and cannot be turned off. You do not need to configure anything to benefit from it. Your default model still handles agent reasoning, tool selection, and response synthesis.
 

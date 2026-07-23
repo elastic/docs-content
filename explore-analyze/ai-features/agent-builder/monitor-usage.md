@@ -20,6 +20,8 @@ This page covers how to monitor token usage in {{agent-builder}} and understand 
 
 When working with {{agent-builder}}, total token usage typically exceeds the visible conversation text. Because {{agent-builder}} uses an agentic framework, a single user request often triggers multiple model calls to process reasoning steps, run tools, and interpret results.
 
+{applies_to}`stack: ga 9.5+` To keep this efficient, {{agent-builder}} automatically routes some of these low-effort operations to a faster, lower-cost model. For details, see [Fast model routing](models.md#fast-model).
+
 Token counts include:
 
 * **Input tokens:** These are tokens **sent** to the model, which accumulate throughout the session. They include the user's current query, the conversation history from previous rounds, system prompts, and the results returned from any tools used during execution.
