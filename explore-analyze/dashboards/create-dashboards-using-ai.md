@@ -36,7 +36,7 @@ Use {{agent-builder}} when you want to:
 - Explore an unfamiliar data source by asking the agent to surface and visualize key fields
 - Prototype a dashboard through conversation, then save it when you are satisfied
 
-{{agent-builder}} generates ES|QL-powered visualizations, markdown panels, collapsible sections, and interactive [filter controls](/explore-analyze/dashboards/add-controls.md).
+{{agent-builder}} generates ES|QL-powered visualizations, markdown panels, collapsible sections, and interactive [filter controls](/explore-analyze/visualize/add-controls.md).
 
 Refer to [Chat with {{agent-builder}} agents](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md).
 
