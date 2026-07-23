@@ -40,7 +40,3 @@ To access your account usage:
 ::::{important}
 The usage breakdown information visible on the **Usage** page is an estimate, and does not include prepaid credits, free allowances or any discounts. If you're an **Organization owner** or **Billing admin**, check your invoices in the [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md) to find the exact amount you owe for a given month.
 ::::
-
-:::{note}
-Organization-wide financial details — such as your credit balance, [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md), and invoices — remain available only to users with the **Organization owner** or **Billing admin** role.
-:::

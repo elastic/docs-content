@@ -27,6 +27,10 @@ Refer to our [Billing FAQ](/deploy-manage/cloud-organization/billing/billing-faq
 
 ## View available credits
 
+:::{note}
+Available credits are visible only to users with the **Organization owner** or **Billing admin** role.
+:::
+
 If you have an annual subscription billed using the prepaid consumption model, you can check details of your available credits on the [Billing overview page](https://cloud.elastic.co/billing/overview), in the **Available credits** section.
 
 When you buy ECU to pay for your {{ecloud}} usage, they are contracted through a purchase order consisting of one or more order lines. Each order line has a number of attributes:

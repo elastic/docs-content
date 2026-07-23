@@ -15,6 +15,10 @@ products:
 
 Information about outstanding payments, statements, and billing invoices is available from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
+:::{note}
+Billing history is available only to users with the **Organization owner** or **Billing admin** role.
+:::
+
 To check your billing history:
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
