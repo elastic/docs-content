@@ -9,7 +9,7 @@ products:
 ---
 # Elastic AI SOC Engine with {{sec-serverless}}
 
-Elastic AI SOC Engine (EASE) is an {{sec-serverless}} project type that provides cutting-edge AI-powered tools to augment your existing SIEM and EDR/XDR platforms. Because serverless deployments are quick to deploy and easy to configure, and because all the integrations that you can use to ingest data to EASE support fast and easy [agentless](/manage-data/ingest/agentless/agentless-integrations.md) deployment, you can start getting value from EASE in minutes.
+Elastic AI SOC Engine (EASE) is an {{sec-serverless}} project type that provides cutting-edge AI-powered tools to augment your existing SIEM and EDR/XDR platforms. Because serverless deployments are quick to deploy and easy to configure, and because all the integrations that you can use to ingest data to EASE can run as [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md), you can start getting value from EASE in minutes.
 
 This page describes how to create an EASE project, how to ingest your data, and how to use its key features.
 
@@ -18,14 +18,14 @@ This page describes how to create an EASE project, how to ingest your data, and 
 
 EASE provides a set of capabilities designed to help make the most of each security analyst’s time, fight alert fatigue, and reduce your mean time to respond. Once your data is ingested, you can start using the following features:
 
-- **[Attack Discovery](/solutions/security/ai/attack-discovery.md)**: Helps you analyze alerts in your environment and identify threats. Each discovery represents a potential attack and describes relationships among multiple alerts to tell you which users and hosts are involved, how alerts correspond to the MITRE ATT&CK matrix, and which threat actor might be responsible. 
+- **[Attack Discovery](/solutions/security/ai/attack-discovery/index.md)**: Helps you analyze alerts in your environment and identify threats. Each discovery represents a potential attack and describes relationships among multiple alerts to tell you which users and hosts are involved, how alerts correspond to the MITRE ATT&CK matrix, and which threat actor might be responsible. 
 
      :::{image} /solutions/images/security-attck-disc-example-disc.png
      :alt: Attack Discovery detail view
      :width: 600px
      :::
 
-     You can [schedule](/solutions/security/ai/attack-discovery.md#schedule-discoveries) Attack Discovery to run automatically, and notify you of any discoveries through a range of connectors such as Slack, Teams, PagerDuty, or email.
+     You can [schedule](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#schedule-discoveries) Attack Discovery to run automatically, and notify you of any discoveries through a range of connectors such as Slack, Teams, PagerDuty, or email.
 
 - **[AI Assistant](/solutions/security/ai/ai-assistant.md)**: An LLM-powered virtual assistant specialized for digital security; it helps with data analysis, alert investigation, incident response, and {{esql}} query generation. You can add custom background knowledge and data to its [knowledge base](/solutions/security/ai/ai-assistant-knowledge-base.md) and use natural language to ask for its assistance with your SOC operations. 
 
