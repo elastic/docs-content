@@ -123,6 +123,8 @@ You can also go back to any previously generated version of a dashboard in the c
 
 Agents create [{{esql}}](/explore-analyze/visualize/esorql.md)-powered visualizations. If a dashboard contains [data view](/explore-analyze/find-and-organize/data-views.md)-based visualizations, the agent asks to replace them with {{esql}} equivalents when making changes.
 
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` By default, the agent renders visualizations with [Lens](/explore-analyze/visualize/lens.md). When a request is better expressed with Vega-Lite, such as small multiples, layered or combination charts, scatter plots, or bubble charts, the agent generates a Vega-Lite visualization instead. It also uses Vega-Lite when you ask for a Vega or custom visualization. You can create and edit both types through chat, preview them inline with a time picker, and select **Save to dashboard** to add them to a dashboard. The agent supports Vega-Lite specifications only, not raw Vega. Chart types that Vega-Lite can't express, such as Sankey, radar, or network diagrams, fall back to the closest supported chart.
+
 Agents can also create markdown panels and collapsible sections.
 
 ## Related pages
