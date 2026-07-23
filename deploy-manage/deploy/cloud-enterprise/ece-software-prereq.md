@@ -103,8 +103,8 @@ Do not enable swap on director hosts. ECE director hosts run ZooKeeper, and swap
 
 Enable swap on all ECE hosts except director hosts to improve system stability. If an allocator runs out of memory, the Linux out-of-memory (OOM) killer might terminate a random process on the host. Having swap space available provides a safeguard against sudden memory pressure and helps protect the availability of ECE services.
 
-:::{important}
-Swap should be treated as an emergency safety net only — not as a way to overcommit memory or reduce host RAM. If a container runtime process (Docker or Podman) runs on swap, it can cause allocator failures due to API timeouts (visible as errors in `allocator.log`). Always ensure allocators are not over-allocated so the OS does not routinely rely on swap.
+:::{admonition} Use swap only as an emergency safety net
+A container runtime process, such as Docker or Podman, running on swap can cause allocator failures due to API timeouts. Do not rely on it to overcommit memory or reduce host RAM. Size allocator capacity so the OS does not need swap during normal operation. For allocator capacity planning, refer to [](./ece-manage-capacity.md).
 :::
 
 There is no specific recommendation for sizing swap, but 4 GB of swap per 32 GB of RAM has proven to be a reasonable safeguard for most ECE installations. As a baseline, ECE hosts should have at least 512 MB of swap space.
