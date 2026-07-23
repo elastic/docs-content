@@ -72,28 +72,19 @@ free -h
 ```
 
 
-## Swap considerations [ece-swap-considerations]
+## Swap [ece-swap-considerations]
 
-Unlike Elasticsearch nodes, which run with [swap disabled](/deploy-manage/deploy/self-managed/setup-configuration-memory.md), ECE hosts have different swap requirements based on their roles.
-
-### Director hosts
-
-Do not enable swap on director hosts. ECE director hosts run ZooKeeper, and swapping can significantly degrade ZooKeeper performance. Refer to the [ZooKeeper administrator guide](https://zookeeper.apache.org/doc/current/zookeeperAdmin.html) for details.
-
-### Allocator and other hosts
-
-Enable swap on all ECE hosts except director hosts to improve system stability. If an allocator runs out of memory, the Linux out-of-memory (OOM) killer might terminate a random process on the host. Having swap space available provides a safeguard against sudden memory pressure and helps protect the availability of ECE services.
+Swap requirements depend on the ECE roles assigned to the host:
+* **Director hosts:** Do not enable swap. Directors run ZooKeeper, and swap can severely degrade ZooKeeper performance. For background, refer to the [ZooKeeper administrator guide](https://zookeeper.apache.org/doc/current/zookeeperAdmin.html).
+* **All other hosts, including allocators:** Enable swap. If the host runs out of memory, the Linux OOM killer can stop a random process. Swap acts as a last-resort safeguard and helps protect ECE service availability.
 
 :::{admonition} Use swap only as an emergency safety net
 A container runtime process, such as Docker or Podman, running on swap can cause allocator failures due to API timeouts. Do not rely on it to overcommit memory or reduce host RAM. Size allocator capacity so the OS does not need swap during normal operation. For allocator capacity planning, refer to [](./ece-manage-capacity.md).
 :::
 
-There is no specific recommendation for sizing swap, but 4 GB of swap per 32 GB of RAM has proven to be a reasonable safeguard for most ECE installations. As a baseline, ECE hosts should have at least 512 MB of swap space.
-
-To ensure that swap remains a last-resort safeguard, set the `vm.swappiness` kernel setting to `1`, as described in the [Configure your OS](./configure-operating-system.md) preparation guides.
-
-The method for provisioning swap space depends on your operating system and infrastructure provider. Consult your OS or cloud provider's documentation for instructions on creating a swap file or partition.
-
+As a baseline, provision at least 512 MB of swap. A common safeguard is 4 GB of swap for every 32 GB of RAM.
+Set `vm.swappiness` to `1` so the kernel uses swap only as a last resort. The OS preparation guides in [](./configure-operating-system.md) include this setting.
+How you create swap space depends on your operating system and infrastructure provider. Use your OS or cloud provider documentation to create a swap file or partition.
 
 ## XFS [ece-xfs] 
 
