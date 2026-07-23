@@ -30,7 +30,7 @@ This step lives under the `entityStore.*` step type namespace. It exposes an exp
 
 Set, update, or remove the asset criticality level of an entity store entity, identified by its entity type and entity ID (EUID).
 
-To run this step, the workflow's execution identity needs permission to write to the entity store in the target space. The target entity must already exist in the entity store; attempting to set an asset criticality for an entity that isn't in the store fails with an error.
+To run this step, the workflow's execution identity needs permission to write to the entity store in the target space. The target entity must already exist in the entity store; attempting to set asset criticality for an entity that isn't in the store fails with an error.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
