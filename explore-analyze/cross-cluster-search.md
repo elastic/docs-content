@@ -959,9 +959,9 @@ To exclude an entire cluster, you would put the minus sign in front of the clust
 
 To exclude a specific remote index, you would put the minus sign in front of the index, such as `mycluster:-myindex`.
 
-{applies_to}`stack: ga 9.5` You can also put the minus sign in front of the cluster alias instead of the index, as long as the index is not `*`. The form `-mycluster:myindex` is accepted as an alternative for `mycluster:-myindex`, so the two are equivalent. Combining both prefixes, such as `-mycluster:-myindex`, is invalid and rejected.
+{applies_to}`stack: ga 9.5` You can also put the minus sign in front of the cluster alias instead of the index, as long as the index is not `*`. The form `-mycluster:myindex` is accepted as an alternative for `mycluster:-myindex`, so the two are equivalent. Combining both prefixes, such as `-mycluster:-myindex`, is not valid and is rejected.
 
-The two forms have different semantics. `-mycluster:*` is a cluster-level exclusion. It requires the cluster to have been included by a preceding expression, and `-mycluster:*` on its own is rejected. `-mycluster:myindex` is an index-level exclusion. It is equivalent to `mycluster:-myindex` and can appear on its own.
+The two forms have different semantics. `-mycluster:*` is a cluster-level exclusion. It requires the cluster to have been included by a preceding expression, and `-mycluster:*` on its own is rejected. `-mycluster:myindex` is an index-level exclusion. It works for any index name or wildcard pattern other than `*`. It is equivalent to `mycluster:-myindex` and can appear on its own.
 
 **Exclude a remote cluster**
 

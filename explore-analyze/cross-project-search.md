@@ -95,13 +95,13 @@ The following examples assume an origin project with two linked projects: `linke
 :   Searches everything across all projects, then excludes only the `my-index` index on the `linked-project-1` project. All other indices on `linked-project-1` and all indices on the origin project and `linked-project-2` are still included.
 
 `*,-linked-project-1:my-index`
-:   Excludes only the `my-index` index on the `linked-project-1` project. This is functionally equivalent to `*,linked-project-1:-my-index`.
+:   Searches everything across all projects, then excludes only the `my-index` index on the `linked-project-1` project. This is equivalent to `*,linked-project-1:-my-index`.
 
 `*,-my-index*,-logs`
 :   Searches everything, then applies two exclusion patterns. Indices matching `my-index*` and the `logs` index are excluded from the results from all projects.
 
 `*,linked-project-1:-*`
-:   Excludes all indices on the `linked-project-1` project. This is functionally equivalent to `*,-linked-project-1:*`.
+:   Excludes all indices on the `linked-project-1` project. The result is the same as `*,-linked-project-1:*`, but the two differ. `linked-project-1:-*` keeps the project in scope and returns no indices, while `-linked-project-1:*` removes the project and needs a preceding inclusion pattern.
 
 `*,-*`
 :   Matches all indices across all projects, then excludes all of them. The result is an empty scope.
