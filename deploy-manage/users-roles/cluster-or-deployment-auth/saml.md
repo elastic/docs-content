@@ -460,7 +460,9 @@ xpack.security.authc.realms.saml.saml_eng:
   attributes.principal: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"
 ```
 
-It is possible to have one or more {{kib}} instances that use SAML, while other instances use basic authentication against another realm type (for example, [Native](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md) or [LDAP](/deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md)).
+:::{note}
+You can also mix authentication methods across instances: some {{kib}} instances can use SAML while others use basic authentication against another realm type (for example, [Native](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md) or [LDAP](/deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md)).
+:::
 
 ### SAML without {{kib}} [saml-no-kibana]
 
