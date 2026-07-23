@@ -28,12 +28,12 @@ Results from {{ml}} jobs are shown in multiple places throughout the Application
 * {applies_to}`stack: ga 9.0-9.4` The **Services** inventory provides a quick-glance view of the general health of all of your services.
 * The transaction duration chart shows the expected bounds and adds an annotation when the anomaly score is 75 or above.
 * Service Maps display a color-coded anomaly indicator on each service node based on the detected anomaly score.
-* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Alert detail pages for {{product.apm}} anomaly alerts show RED metric charts and the service map, along with a severity-colored callout identifying the anomaly type. For more information, refer to [View alerts](/solutions/observability/incident-management/view-alerts.md).
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Alert detail pages for {{product.apm}} anomaly alerts show RED metric charts and the service map, along with [a severity-colored callout](/solutions/observability/apm/service-map.md#service-maps-legend-anomaly-colors) identifying the anomaly type. For more information, refer to [View alerts](/solutions/observability/incident-management/view-alerts.md).
 
-    :::{image} /solutions/images/observability-apm-service-map-anomaly.png
-    :alt: Example view of anomaly scores on service maps in the Applications UI
-    :screenshot:
-    :::
+:::{image} /solutions/images/observability-apm-service-map-anomaly-scores.png
+:alt: Service map showing color-coded anomaly score indicators on service nodes, with yellow and red borders indicating degraded or unhealthy services
+:screenshot:
+:::
 
 ## Enable {{anomaly-detect}} [observability-apm-integrate-with-machine-learning-enable-anomaly-detection]
 
