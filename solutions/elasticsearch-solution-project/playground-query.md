@@ -2,13 +2,16 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/playground-query.html
 applies_to:
-  stack: preview =9.0, beta 9.1+
-  serverless: beta
+  stack: preview =9.0, beta 9.1-9.3, deprecated 9.4+
+  serverless: deprecated
 products:
   - id: kibana
 ---
 
 # View and modify queries [playground-query]
+
+::::{include} /solutions/_snippets/playground-deprecated.md
+::::
 
 Once you've set up your chat interface, you can start chatting with the model. Playground automatically generates {{es}} queries based on your questions, and retrieves the most relevant documents from your {{es}} indices. The Playground UI enables you to view and modify these queries.
 
