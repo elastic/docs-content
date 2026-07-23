@@ -33,10 +33,8 @@ From the global header, select your current space, then select the space you wan
 
 ## Change whether Kibana remembers your space
 ```{applies_to}
-deployment:
-  self: ga
-  ece: ga
-  eck: ga
+stack: ga 9.5
+serverless: unavailable
 ```
 
 This personal preference controls whether {{kib}} returns you to your last space or shows the space selector when you log in and can access multiple spaces.
