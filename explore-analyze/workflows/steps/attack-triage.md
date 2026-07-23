@@ -30,7 +30,7 @@ Use Attack triage steps for patterns like:
 
 ## Shared conventions [workflows-attack-triage-conventions]
 
-Every `security.*` step shares the same conventions, so once you learn one step the others are predictable.
+Every Attack triage step shares the same conventions, so once you learn one step the others are predictable.
 
 **All parameters live under `with`.** IDs, status, assignees, and tags are all `with`-level fields — there are no top-level fields specific to this namespace.
 
@@ -210,6 +210,7 @@ Add or remove tags on one or multiple attacks.
 
 ## Related
 
+- [Security action steps](/explore-analyze/workflows/steps/security.md): Overview of the `security.*` step namespace.
 - [Triage and manage attacks](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md): The {{kib}} UI for the alerts and attacks these steps automate.
 - [Kibana action steps](/explore-analyze/workflows/steps/kibana.md): The `kibana.SetAlertsStatus` and `kibana.SetAlertTags` steps predate this namespace; the `security.*` steps on this page are now the preferred path for alert triage.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): Hand off a triaged alert or attack to a case after status, assignee, or tag changes.

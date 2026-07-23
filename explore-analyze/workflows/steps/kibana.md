@@ -38,7 +38,7 @@ The detection alert step type IDs use **PascalCase**, not lowercase or snake_cas
 ---
 
 :::{tip}
-For new workflows, prefer the [`security.setAlertStatus`](/explore-analyze/workflows/steps/attack-triage.md#security-setalertstatus) and [`security.setAlertTags`](/explore-analyze/workflows/steps/attack-triage.md#security-setalerttags) steps over `kibana.SetAlertsStatus` and `kibana.SetAlertTags`. These live alongside equivalent attack-triage steps (`security.setAttackStatus`, `security.assignAttack`, `security.setAttackTags`) on [Attack triage action steps](/explore-analyze/workflows/steps/attack-triage.md), which is the preferred path for alert and attack triage going forward.
+For new workflows, prefer the [`security.setAlertStatus`](/explore-analyze/workflows/steps/attack-triage.md#security-setalertstatus) and [`security.setAlertTags`](/explore-analyze/workflows/steps/attack-triage.md#security-setalerttags) steps over `kibana.SetAlertsStatus` and `kibana.SetAlertTags`. These live alongside equivalent attack-triage steps (`security.setAttackStatus`, `security.assignAttack`, `security.setAttackTags`) under [Security action steps](/explore-analyze/workflows/steps/security.md), which is the preferred path for alert and attack triage going forward.
 :::
 
 ## `kibana.SetAlertsStatus` [kibana-setalertsstatus]
@@ -142,7 +142,7 @@ Refer to [Migrate workflows from 9.3 to 9.4](/explore-analyze/workflows/authorin
 
 ## Related
 
-- [Attack triage action steps](/explore-analyze/workflows/steps/attack-triage.md): The preferred steps for alert and attack triage, including status, assignee, and tag management.
+- [Security action steps](/explore-analyze/workflows/steps/security.md): Named `security.*` steps for {{elastic-sec}}, including [Attack triage](/explore-analyze/workflows/steps/attack-triage.md) for alert and attack status, assignee, and tag management.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): 27 step types for working with cases. Use these instead of the deprecated Case aliases above.
 - [Streams action steps](/explore-analyze/workflows/steps/streams.md): Observability Streams operations.
 - [Elasticsearch action steps](/explore-analyze/workflows/steps/elasticsearch.md): For {{es}} API calls.
