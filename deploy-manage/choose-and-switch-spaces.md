@@ -34,7 +34,9 @@ From the global header, select your current space, then select the space you wan
 ## Change whether Kibana remembers your space
 ```{applies_to}
 deployment:
-  self: ga 9.5+
+  self: ga
+  ece: ga
+  eck: ga
 ```
 
 This personal preference controls whether {{kib}} returns you to your last space or shows the space selector when you log in and can access multiple spaces.
