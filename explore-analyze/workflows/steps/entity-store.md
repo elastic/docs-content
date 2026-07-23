@@ -41,7 +41,7 @@ To run this step, the workflow's execution identity needs permission to write to
 
 **Removing a criticality level.** `criticality_level` is required, but you can pass `null` to clear the current level rather than setting a new one.
 
-**Risk score recalculation.** By default, a successful criticality update triggers a risk score recalculation for the entity. Set `recalculate-risk-score: false` to skip it. Recalculation runs as a side effect of the update, so if it fails (for example, when no risk engine is configured for the space) the step still succeeds and the criticality change is preserved. If recalculation fails or is skipped, the entity's risk score is recalculated on the next scheduled risk scoring engine run.
+**Risk score recalculation.** By default, a successful criticality update triggers a risk score recalculation for the entity. Set `recalculate-risk-score: false` to skip it. Recalculation runs as a side effect of the update, so if it fails (for example, when no risk engine is configured for the space) the step still succeeds and the criticality change is preserved. If recalculation fails or is skipped, the entity's risk score is recalculated on the next scheduled risk score maintainer run.
 
 ### Output [entitystore-updateassetcriticality-output]
 
