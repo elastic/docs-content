@@ -12,7 +12,7 @@ products:
 
 # Configure Attack Discovery settings from the Attacks view [configure-alert-retrieval-from-attacks-page]
 
-You can configure which alerts Attack Discovery retrieves, and how discoveries are created and checked. Use the table to open the section that matches your setup.
+You can configure which alerts Attack Discovery retrieves, and how discoveries are created and checked. Use the following table to find the section that matches your setup.
 
 | Your setup | Available in | Go to |
 |---|---|---|
