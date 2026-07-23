@@ -85,7 +85,7 @@ Because the original is managed, Elastic can ship improvements to it without ove
 
 The dashboard panels are [ES|QL](elasticsearch://reference/query-languages/esql.md) queries over your trace data. To build your own visualizations in [Dashboards](/explore-analyze/dashboards.md), [Lens](/explore-analyze/visualize/lens.md), or [Discover](/explore-analyze/discover.md), query the trace data stream and filter by span type and attribute.
 
-The dashboard's panels query span data from the `traces-agent_builder.otel-*` data streams, where each document is a span. The dashboard identifies the kind of work a span represents from its `span.name`, and reads generative AI details from the span attributes. For the full set of trace data streams and the read privileges, refer to [Read trace data](permissions.md#read-trace-data).
+The dashboard's panels query span data from the `traces-agent_builder.otel-*` data stream, where each document is a span. The dashboard identifies the kind of work a span represents from its `span.name`, and reads generative AI details from the span attributes. For the trace data stream and the read privileges, refer to [Read trace data](permissions.md#read-trace-data).
 
 ### Span types
 

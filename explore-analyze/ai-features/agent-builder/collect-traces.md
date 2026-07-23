@@ -20,11 +20,11 @@ products:
 
 When an agent runs, {{agent-builder}} records the run as OpenTelemetry (OTel) traces. Each trace covers one conversation round. A trace is made up of spans that map to the work the agent did, such as model calls and tool calls.
 
-Trace collection is space-aware. Each {{kib}} space writes its traces to its own data streams, named with the space id, such as `traces-agent_builder.otel-default` for the `default` space. Use the `traces-agent_builder.otel-*` wildcard to work with every space's traces at once.
+Trace collection is space-aware. Each {{kib}} space writes its traces to its own data stream, named with the space id, such as `traces-agent_builder.otel-default` for the `default` space. Use the `traces-agent_builder.otel-*` wildcard to work with every space's traces at once.
 
-{{agent-builder}} ingests this data into managed OpenTelemetry data streams in your {{es}} deployment. Execution spans, such as model calls and tool calls, are stored in `traces-agent_builder.otel-*`, with their timings, token usage, model, and status. Trace data is also stored in `logs-agent_builder.otel-*`, so reading all of it requires read access to both patterns.
+{{agent-builder}} ingests this data into managed OpenTelemetry data streams in your {{es}} deployment. Execution spans, such as model calls and tool calls, are stored in `traces-agent_builder.otel-*`, with their timings, token usage, model, and status.
 
-When you opt in to capturing conversation content, that content is added to the `traces-agent_builder.otel-*` spans as attributes, such as user prompts, agent responses, system prompts, and tool call details. Content is captured only when you enable it in [Trace privacy settings](#trace-privacy-settings).
+When you opt in to capturing conversation content, that content is stored on the `chat` spans in `traces-agent_builder.otel-*` as attributes, covering user prompts, agent responses, system prompts, and tool call details. Content is captured only when you enable it in [Trace privacy settings](#trace-privacy-settings).
 
 These data streams are OTel-compatible and use the standard OTel index templates, so they inherit the mappings, settings, and data lifecycle that {{es}} maintains for OTel data.
 
@@ -83,7 +83,7 @@ Built-in tools and agents always appear under their real names. When a value is 
 
 ## Grant access to trace data
 
-Trace data is stored in the `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*` data streams. To read it, a role needs `read` and `view_index_metadata` on both patterns.
+Trace data is stored in the `traces-agent_builder.otel-*` data stream. To read it, a role needs `read` and `view_index_metadata` on that pattern.
 
 Access is granted at the index level. Any user who can read these data streams can read all collected traces, so trace access is not scoped per user. To control who can read traces, configure index privileges through roles in **Stack Management → Roles**.
 
