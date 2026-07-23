@@ -103,7 +103,7 @@ Register the {{stack}} as a SAML service provider in your IdP. The exact steps v
 6. Note the **IdP metadata URL** or download the metadata file. You will need this for the {{es}} configuration.
 
 :::{tip}
-If your IdP supports SP metadata import, you can generate an SP metadata file after [configuring the {{es}} realm](#saml-create-realm) and use it to populate or verify these values in your IdP. Refer to [Generate SP metadata](#saml-sp-metadata) for more details.
+If your IdP supports SP metadata import, you can generate an SP metadata file after [configuring the {{es}} realm](#saml-create-realm) and import it into your IdP to register the {{stack}} as a Service Provider automatically. Refer to [Generate SP metadata](#saml-sp-metadata).
 :::
 
 :::{note}
@@ -375,7 +375,7 @@ xpack.security.authc.realms.saml.saml1:
 
 ### Generate SP metadata [saml-sp-metadata]
 
-Some Identity Providers support importing a metadata file from the Service Provider. This will automatically configure many of the integration options between the IdP and the SP.
+The SP metadata is an XML document that describes your {{stack}} as a SAML Service Provider. It contains your entity ID, ACS URL, logout URL, and any signing or encryption certificates configured in the realm. Some Identity Providers can import this file to configure the integration automatically, instead of requiring you to enter each value individually when [registering the {{stack}} in your IdP](#saml-configure-idp).
 
 Once you have [configured a SAML realm in {{es}}](#saml-create-realm), you can generate its SP metadata file using the [SAML service provider metadata API]({{es-apis}}operation/operation-security-saml-service-provider-metadata) or the [`bin/elasticsearch-saml-metadata` command](elasticsearch://reference/elasticsearch/command-line-tools/saml-metadata.md).
 
@@ -384,8 +384,10 @@ Once you have [configured a SAML realm in {{es}}](#saml-create-realm), you can g
 You can generate the SAML metadata by issuing the API request to {{es}} and store it as an XML file using tools like `jq`. For example, the following command generates the metadata for the SAML realm `saml1` and saves it to a `metadata.xml` file:
 
 ```console
-curl -u user_name:password  -X GET http://localhost:9200/_security/saml/metadata/saml1 -H 'Content-Type: application/json' | jq -r '.[]' > metadata.xml
+curl -u user_name:password -X GET https://elasticsearch.example.com:9200/_security/saml/metadata/saml1 -H 'Content-Type: application/json' | jq -r '.[]' > metadata.xml  # <1>
 ```
+
+1. Replace `elasticsearch.example.com:9200` with your actual {{es}} endpoint.
 
 #### Using the `elasticsearch-saml-metadata` command
 
