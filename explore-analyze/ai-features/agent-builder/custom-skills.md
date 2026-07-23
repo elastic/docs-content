@@ -25,7 +25,7 @@ Create a custom skill when you have domain-specific knowledge or procedures that
 - **Scope tools to a task**: Bundle specific tools with the instructions that explain how and when to use them, so the agent only has access to relevant tools for the task at hand.
 - **Keep agent prompts clean**: Move detailed, task-specific instructions out of the system prompt and into a skill that loads only when needed.
 
-## Create a custom skill
+## Create a custom skill in the UI [create-a-custom-skill]
 
 Follow these steps to create a custom skill and add it to your skill library. Once saved, you need to add the skill to an agent before the agent can use it.
 
@@ -101,7 +101,15 @@ To create a skill from chat, open a conversation with any agent and ask it to cr
 
 This approach is useful when you want to iterate quickly or when you find it easier to explain a workflow in natural language than to write structured instructions from scratch.
 
-## Skills API
+The agent presents the generated skill as a draft in the conversation. Review the description, instructions, associated tools, and references, and ask for any changes. When the draft is ready, select **Create skill**. The skill is not added to your library until you confirm this action.
+
+:::{image} images/create-skill-from-chat.png
+:screenshot:
+:alt: Skill draft in Agent Chat showing its description, instructions preview, associated tool references, and a Create skill button
+:width: 750px
+:::
+
+## Create a skill with the API [skills-api]
 
 You can also create and manage skills programmatically using the {{kib}} REST API. The API supports all the same fields as the UI, including [`referenced_content`]({{kib-apis}}operation/operation-post-agent-builder-skills#operation-post-agent-builder-skills-body-application-json-referenced_content) for additional named content blocks the agent can read selectively. For request examples, refer to [Skills APIs](kibana-api.md#skills-apis).
 
