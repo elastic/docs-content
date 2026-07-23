@@ -155,9 +155,14 @@ serverless: ga
 
 **Enable:** `attack-discovery-generator` (requires [`securitySolution:enableAttackDiscoveryWorkflows`](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows))
 
-Use this skill when you are investigating in chat and want {{agent-builder}} to run Attack Discovery as part of answering you. The skill gathers and cross-checks evidence from other Security skills, then runs the same Attack Discovery analysis used by manual, scheduled, and workflow triggers. Each skill run opens a new {{agent-builder}} conversation. For the full conversational flow, including in-chat reports, detection gap closure, and privacy, refer to [Run Attack Discovery from {{agent-builder}}](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md).
+Use this skill when you are investigating in chat and want {{agent-builder}} to run Attack Discovery as part of answering you. The skill gathers and cross-checks evidence from other Security skills, then runs the same Attack Discovery analysis used by manual, scheduled, and workflow triggers. Chat runs stay in the current conversation. For the full conversational flow, including in-chat reports, detection gap closure, and privacy, refer to [Run Attack Discovery from {{agent-builder}}](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md).
 
-Separate skills also power AI-assisted query editing in [Attack Discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md) and [run troubleshooting](/solutions/security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md) on the Attacks view. Those skills diagnose or refine configuration. They do not replace the main generation skill.
+Related Attack Discovery skills in the Skills library:
+
+* `attack-discovery-alert-retrieval-builder`: Powers **Edit with AI** when you refine an {{esql}} or custom query in [Attack Discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md).
+* `attack-discovery-workflow-troubleshooting`: Powers [AI troubleshooting](/solutions/security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md) for failed runs on the Attacks view.
+
+Those skills diagnose or refine configuration. They do not replace `attack-discovery-generator`.
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|

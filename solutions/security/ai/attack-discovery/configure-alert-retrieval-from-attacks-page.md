@@ -16,31 +16,29 @@ You can configure which alerts Attack Discovery retrieves, and how discoveries a
 
 | Your setup | Available in | Go to |
 |---|---|---|
-| [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) is turned on. Configure alert retrieval methods, generation, and validation for manual runs and schedules. | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | [Configure the Attack discovery settings flyout](#attacks-page-settings-flyout) |
-| Attack Discovery Workflows is turned off. Use the KQL query bar, time filter, and alerts slider when you create or edit a schedule. | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | [Select alerts in the schedule flyout](#attacks-page-schedule-alert-selection) |
+| [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) is turned on. Configure alert retrieval methods, generation, and validation for manual runs and schedules. | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | [Configure alert retrieval, generation, and validation](#attacks-page-settings-flyout) |
+| Attack Discovery Workflows is turned off. Configure alerts for manual runs with the query bar, time filter, and alerts slider. | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | [Configure alerts for manual runs with the query bar and alerts slider](#attacks-page-classic-settings) |
+| Attack Discovery Workflows is turned off, or not available in your version. Configure alerts for scheduled runs with the query bar, time filter, and alerts slider. | {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` | [Configure alerts for scheduled runs with the query bar and alerts slider](#attacks-page-schedule-alert-selection) |
 
-:::{note}
-:applies_to: stack: preview =9.4
-Choose alerts when you create or edit a schedule. Refer to [Select alerts in the schedule flyout](#attacks-page-schedule-alert-selection) for more information.
-:::
-
-## Configure the Attack discovery settings flyout [attacks-page-settings-flyout]
+## Configure alert retrieval, generation, and validation [attacks-page-settings-flyout]
 ```{applies_to}
 stack: ga 9.5+
 serverless:
   security: ga
 ```
 
-Open the **Attack discovery settings** flyout from the **Attacks** view by selecting **Settings**. Use it to configure alert retrieval, generation, and validation.
+When [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) is turned on, use **Attack discovery settings** to control which alerts Attack Discovery analyzes, which LLM creates the discoveries, and how those discoveries are checked before they are saved as attacks. Your choices apply to the manual runs you start from the **Attacks** view and are saved for you on this browser. Schedules can use different settings. 
+
+To open the **Attack discovery settings** flyout, select **Settings** next to **Run** on the **Attacks** page.
 
 ### Choose an alert retrieval method [attacks-page-alert-retrieval-method]
 
-Under **Alert retrieval method**, choose how alerts are collected. Each method can add alerts to the set that Attack Discovery analyzes. At least one method must stay enabled. You can turn on more than one method at a time.
+Under **Alert retrieval method**, choose one or more ways to collect the alerts Attack Discovery analyzes. At least one method must stay enabled.
 
 | Toggle | Default | What it does | When to use it |
 |---|---|---|---|
-| **Attack discovery skill retrieves alerts** | On | The skill finds and adds related alerts on top of whatever the other methods collect. | Keep this on for broad coverage. Use it alone for general monitoring, or with a query or workflow when you want the skill to still add related alerts. |
-| **{{esql}} or custom query** | Off | Retrieves alerts that match a query you define. | Turn this on when you already know which alerts matter, for example high-severity alerts or a specific rule set. With the toggle on, an AI-assisted editing option appears next to the query editor so you can refine the query through chat in {{agent-builder}}. |
+| **Attack discovery skill retrieves alerts** | On | The skill retrieves and curates additional relevant alerts on top of any alerts collected by the other retrieval methods. | Keep this on for broad coverage. Use it alone for general monitoring, or with a query or workflow when you want the skill to still add related alerts. |
+| **{{esql}} or custom query** | Off | Retrieves alerts that match a query you define. | Turn this on when you already know which alerts matter, for example high-severity alerts or a specific rule set. With the toggle on, **Edit with AI** appears next to the query editor so you can refine the query through chat in {{agent-builder}}. |
 | **Alert retrieval workflows** | Off | Runs one or more user-authored workflows to retrieve and enrich alerts. | Turn this on when your team maintains reusable retrieval or enrichment logic in Workflows. Select which workflows to run. For building custom retrieval workflows, refer to [Run Attack Discovery from a workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md). |
 
 Common setups:
@@ -53,50 +51,81 @@ After you choose your retrieval methods, continue with [generation](#attacks-pag
 
 ### Understand how alert retrieval methods combine [attacks-page-alert-merge]
 
-When you enable more than one **Alert retrieval method** toggle, Attack Discovery merges their results before analysis:
+When you enable more than one **Alert retrieval method** toggle, Attack Discovery combines their results before analysis:
 
-1. **{{esql}} or custom query** and **Alert retrieval workflows** run at the same time and each add matching alerts.
-2. If **Attack discovery skill retrieves alerts** is also on, the skill adds related alerts on top of that result.
-3. Attack Discovery then checks the collected alerts before saving discoveries. This check is skipped for runs started from {{agent-builder}}, because the agent already verifies its own data. If the same alert appears from more than one method, Attack Discovery keeps the more complete version.
+1. **{{esql}} or custom query** and **Alert retrieval workflows** each add matching alerts.
+2. If **Attack discovery skill retrieves alerts** is also on, the skill can add related alerts on top of that result.
+3. If the same alert appears from more than one method, Attack Discovery keeps one copy.
 
 :::{important}
-Turning off **Attack discovery skill retrieves alerts** doesn't turn the skill off. The skill still enriches, validates, and searches related evidence on every run. The toggle only controls whether the skill adds *extra* alerts beyond what your query or workflows already supply.
+The **Attack discovery skill retrieves alerts** toggle only controls whether the skill adds extra related alerts. For manual, scheduled, and workflow-triggered runs, the skill still reviews the collected alerts during generation.
 :::
 
 :::{note}
-Each time the Attack Discovery skill runs, {{agent-builder}} opens a new conversation for that run. This happens for manual runs, scheduled runs, and other skill-backed triggers, not only when you start from chat.
+Manual, scheduled, and workflow-triggered runs open a new {{agent-builder}} conversation you can audit later. Open it from **Workflow execution details** with **Open conversation**. Runs started from {{agent-builder}} chat stay in the current conversation.
 :::
 
 ### Choose a connector for generation [attacks-page-generation]
 
 Under **Generation**, choose the LLM that turns the collected alerts into attack discoveries. This step runs after alert retrieval and before validation.
 
-1. Select the **Connector for generating attack discoveries**. Attack Discovery cannot run without a connector.
+1. Select the **Connector for generating attack discoveries**. You must select a connector before you can save these settings or start a manual run from the **Attacks** view.
 2. Prefer a model that performs well for Attack Discovery. Refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) for recommended models.
 3. If you do not already have a connector, add one from the connector dropdown. Refer to [{{connectors-ui}}](/deploy-manage/manage-connectors.md).
 
 The connector you select here applies to manual runs from the **Attacks** view. Schedules can use their own connector when you create or edit them.
 
-If you want to call Attack Discovery from automation instead of from this view, select **View example** to open a working example in the Workflows editor. Refer to [Run Attack Discovery from a workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md).
+If you want to call Attack Discovery from automation instead of from this view, select **View example** to open the managed **Security - Attack discovery - Run example** workflow. Refer to [Run Attack Discovery from a workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md).
 
 Next, [choose a validation workflow](#attacks-page-validation).
 
 ### Choose a validation workflow [attacks-page-validation]
 
-Under **Validation**, choose what happens to discoveries after generation and before they are saved as attacks. Use this step to check, enrich, or filter findings so only the results you want are saved.
+Under **Validation**, choose what happens to discoveries after generation and before they are saved as attacks.
 
-1. Select a **Validation workflow**. For most teams, keep the default **Security - Attack discovery - Default validation**.
-2. Select **View example** if you want to inspect how a validation workflow is built before you change anything.
-3. Select **Create a new workflow** only when you need custom logic, such as extra enrichment, stricter filtering, or org-specific checks.
+For most setups, keep **Security - Attack discovery - Default validation**. That workflow:
+
+1. Removes discoveries that reference alert IDs that were not part of the analysis (hallucinated IDs).
+2. Deduplicates the remaining discoveries.
+3. Saves the results as attacks.
+
+Choose a different workflow only when you need extra steps before save, such as enrichment, stricter filtering, or org-specific checks. You can:
+
+* Select **View example** to open **Security - Attack discovery - Custom validation example**, which shows how to run the default checks and then change discovery fields before saving.
+* Select **Create a new workflow** to build your own validation workflow.
 
 :::{important}
-Custom validation workflows must explicitly save discoveries. For details, refer to [Create custom retrieval and validation workflows](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md#run-ad-workflow-custom).
+If you create a custom validation workflow, it must save the discoveries you want to keep. Otherwise they never appear as attacks. For details, refer to [Create custom retrieval and validation workflows](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md#run-ad-workflow-custom).
 :::
 
-After you save these settings, [start a manual run](/solutions/security/ai/attack-discovery/manual-runs-from-attacks-page.md) or [create a schedule](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).
+Select **Save** to keep the settings, or **Save and run** to save and start a manual run immediately. You can also [start a manual run](/solutions/security/ai/attack-discovery/manual-runs-from-attacks-page.md) later with **Run**, or [create a schedule](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).
 
-## Select alerts in the schedule flyout [attacks-page-schedule-alert-selection]
+## Configure alerts for manual runs with the query bar and alerts slider [attacks-page-classic-settings]
+```{applies_to}
+stack: ga 9.5+
+serverless:
+  security: ga
+```
 
-Use the schedule flyout's KQL query bar, time filter, and alerts slider to choose which alerts the schedule analyzes. Sending more alerts than your chosen LLM can handle may result in an error.
+When [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) is turned off, use **Attack discovery settings** to choose which alerts to analyze. You set a query and time range, then choose how many alerts to send. Your choices apply to the manual runs you start from the **Attacks** view and are saved for you on this browser. Schedules can use different settings.
+
+To open the **Attack discovery settings** flyout, select **Settings** next to **Run** on the **Attacks** page, then:
+
+1. Select a **Connector for generating attack discoveries**.
+2. Optionally add a KQL query and set the time range.
+3. Use **Set number of alerts to analyze** to choose how many alerts to send. Send fewer alerts if the model's context window is small, or more if it is larger.
+4. Review the selection under **Alert summary** or **Alerts preview**.
+5. Select **Save**, or **Save and run** to start analysis immediately.
+
+Sending more alerts than your chosen LLM can handle may result in an error.
+
+## Configure alerts for scheduled runs with the query bar and alerts slider [attacks-page-schedule-alert-selection]
+```{applies_to}
+stack: preview =9.4, ga 9.5+
+serverless:
+  security: ga
+```
+
+When [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) is turned off, or not available in your version, set which alerts each schedule analyzes when you create or edit it. You choose a query, a time range, and how many alerts to send. Sending more alerts than your chosen LLM can handle may result in an error.
 
 Refer to [Schedule runs from the Attacks view](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md) to finish creating or editing the schedule.

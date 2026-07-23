@@ -21,10 +21,10 @@ Manually run Attack Discovery when you want to analyze the current alert selecti
 To manually run Attack Discovery from the **Attacks** view:
 
 1. Go to **Detections > Views > Attacks**.
-2. [Configure alert retrieval, generation, and validation](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md) in **Settings**, and confirm an LLM connector is selected.
+2. [Configure Attack Discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md) in **Settings** next to **Run**, and confirm an LLM connector is selected. You can start analysis from the flyout with **Save and run**, or close the flyout and continue with the next step.
 3. Select **Run**. A notification confirms that generation has started.
 
-Analysis can take from a few seconds to several minutes, depending on the number of alerts and the model. When the run finishes, the discoveries you started appear in the same **Attacks** table as scheduled discoveries (labeled as manually generated). Select **Run** again anytime to start another analysis with the current alert selection.
+Analysis can take from a few seconds to several minutes, depending on the number of alerts and the model. Open **Generations** in the **Attacks** view header to watch progress. When the run finishes, refresh the **Attacks** view to see new discoveries in the same table as scheduled discoveries (labeled as manually generated). Select **Run** again anytime to start another analysis with the current alert selection.
 
 :::{note}
 Attack Discovery uses the same data anonymization settings as [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md). Configure which alert fields are sent to the LLM, and which are obfuscated, in the Elastic AI Assistant settings. Consider the privacy policies of third-party LLMs before sending them sensitive data.

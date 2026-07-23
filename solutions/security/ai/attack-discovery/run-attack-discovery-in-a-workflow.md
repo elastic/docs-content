@@ -48,27 +48,32 @@ Along with those options, choose whether Attack Discovery runs synchronously or 
 
 ## Audit runs and approve detection gap proposals [run-ad-workflow-when-it-runs]
 
-When the workflow runs, Attack Discovery uses those settings and the same analysis as manual and scheduled runs. Each time the Attack Discovery skill runs, {{agent-builder}} opens a new conversation for that run. Open that conversation from the workflow execution details to audit the run or to [review and approve detection rule proposals](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md#run-ad-conversation-gap-closure) in chat. You cannot approve those proposals inside the workflow itself.
+When the workflow runs, Attack Discovery uses those settings and the same analysis as manual and scheduled runs. The run opens a new {{agent-builder}} conversation. From **Workflow execution details**, select **Open conversation** to audit the run or to [review and approve detection rule proposals](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md#run-ad-conversation-gap-closure) in chat. You cannot approve those proposals inside the workflow itself.
 
 With a synchronous run, later steps can branch on the results, including Attack triage steps for status, assignees, or tags.
 
 ## Work with built-in Attack Discovery workflows [run-ad-workflow-built-in]
 
-Elastic provides system-managed workflows that cover retrieval, generation, and validation. These workflows are hidden from the main workflow list by default. You can still open them directly by URL.
-
-You can enable or disable built-in workflows, but you cannot edit or delete them.
+Elastic provides system-managed workflows that cover retrieval, generation, and validation. Open examples from **Attack discovery settings** with **View example**. You can enable or disable built-in workflows, but you cannot edit or delete them.
 
 ## Create custom retrieval and validation workflows [run-ad-workflow-custom]
 
 You can plug in your own workflows for alert retrieval or validation:
 
 * **Custom retrieval**: Build a workflow that returns the alerts Attack Discovery should analyze. Select it under **Alert retrieval workflows** in the [Attack discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md#attacks-page-alert-retrieval-method) flyout, or pass it as an input to the `security.attack-discovery.run` step.
-* **Custom validation**: Build a workflow that runs after generation to check, enrich, or filter discoveries before they are saved.
+* **Custom validation**: Build a workflow that runs after generation to check, enrich, or filter discoveries before they are saved. From **Validation** in the settings flyout, select **View example** to open **Security - Attack discovery - Custom validation example**.
+
+For a custom retrieval workflow, return the alerts as the output of the last step that produces results. From **Alert retrieval workflows** in the settings flyout, open the in-product example and select **Create a new workflow** to start from that pattern.
 
 :::{important}
-A custom validation workflow must explicitly save its discoveries. If it does not, discoveries are dropped silently. You see only a log warning, not a visible error in the UI.
+If you create a custom validation workflow, it must save the discoveries you want to keep. Otherwise they never appear as attacks.
 :::
 
 ## Open a workflow example from Attack Discovery settings [run-ad-workflow-example]
 
-From the **Attack discovery settings** flyout on the [Attacks view](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md#attacks-page-generation), select **View example** under **Generation** or **Validation**. Adapt the example for your environment.
+From the **Attack discovery settings** flyout on the [Attacks view](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md#attacks-page-generation):
+
+* Under **Generation**, select **View example** to open **Security - Attack discovery - Run example** (`security.attack-discovery.run`).
+* Under **Validation**, select **View example** to open **Security - Attack discovery - Custom validation example**.
+
+Adapt the example for your environment.

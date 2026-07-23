@@ -25,7 +25,7 @@ To use the **Attacks** view, you need:
   * **Security > Rules and Exceptions**: `Read`
   * **Security > Alerts**: `Read`
 
-## Start a run [attacks-view-start-a-run]
+## Start a manual or scheduled run [attacks-view-start-a-run]
 
 ::::{applies-switch}
 

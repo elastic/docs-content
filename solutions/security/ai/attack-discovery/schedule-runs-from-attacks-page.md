@@ -19,7 +19,7 @@ Create a schedule so Attack Discovery runs automatically at intervals you choose
 ::::{applies-item} { "stack": "ga 9.5+", "serverless": {"security": "ga"} }
 
 :::{important}
-Turning on [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) does not update existing schedules. Open and save each schedule again while the setting is on, or create a new schedule. Later runs then use the workflow-backed path for alert retrieval, generation, and validation. Each time the Attack Discovery skill runs, {{agent-builder}} opens a new conversation.
+After you turn on [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows), reopen and save each existing schedule, or create a new one. Until you do, schedules keep their previous configuration. Each scheduled run also opens a new {{agent-builder}} conversation you can audit later from **Workflow execution details**.
 :::
 
 To create a schedule:
@@ -46,6 +46,6 @@ To create a schedule:
 
 :::::
 
-After creating a schedule, you can edit, enable, disable, or delete it. To change several at once, select them in the table and use **Bulk actions**. To manage schedules programmatically, use the [Attack discovery API]({{kib-apis}}group/endpoint-security-attack-discovery-api).
+After creating a schedule, you can edit, enable, disable, or delete it. To change several at once, select them in the table and use **Bulk actions**. Schedule management requires the [**Schedules > Allow changes**](/solutions/security/ai/attack-discovery/grant-access.md#ad-schedules-privilege) privilege. To manage schedules programmatically, use the [Attack discovery API]({{kib-apis}}group/endpoint-security-attack-discovery-api).
 
 Scheduled discoveries show a calendar icon. For how to recognize scheduled versus manually generated attacks, refer to [Recognize manually generated and scheduled attacks](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md#manually-generated-attacks).

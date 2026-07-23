@@ -28,13 +28,13 @@ To troubleshoot a run with AI, you need:
 3. Select a failed, canceled, or dismissed run, or a run with a failed analysis step.
 4. Start AI troubleshooting.
 
-AI troubleshooting pre-loads a diagnostic summary, walks through the analysis steps (alert retrieval, generation, and validation), then identifies what failed and suggests a fix. After you identify the fix, update your [Attack Discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md) if needed, then [start another manual run](/solutions/security/ai/attack-discovery/manual-runs-from-attacks-page.md) or wait for the next scheduled run.
+AI troubleshooting reviews the failed run (alert retrieval, generation, and validation), identifies what went wrong, and suggests a fix. After you identify the fix, update your [Attack Discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md) if needed, then [start another manual run](/solutions/security/ai/attack-discovery/manual-runs-from-attacks-page.md) or wait for the next scheduled run.
 
 ## Download a diagnostic report [troubleshoot-runs-diagnostic-report]
 
 From the same workflow execution details view, you can download a Markdown diagnostic report for the run. Use **Download diagnostic report** to save the file, or copy or inspect it first.
 
-The report includes failure details, analysis step timing, configuration and connector context, quality metrics, and how the run was started. Share the downloaded file with Elastic Support when you open a case about a failed run.
+The report includes failure details, step timing, configuration context, and how the run was started. Share the downloaded file with Elastic Support when you open a case about a failed run.
 
 The same diagnostic report is attached automatically when you start AI troubleshooting, so the agent has that context in the conversation.
 

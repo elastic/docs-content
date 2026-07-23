@@ -35,7 +35,9 @@ serverless:
   security: ga
 ```
 
-The **Generations** control center in the **Attacks** view header lists recent Attack Discovery runs. Open it to check run status and open workflow execution details.
+The **Generations** control center in the **Attacks** view header lists recent Attack Discovery runs. Open it to check run status. When a run finishes, refresh the **Attacks** view to see new results.
+
+Select a run to open **Workflow execution details**. That view shows alert retrieval, generation, and validation, with timing and counts for each step. Use **Inspect** on a step to review its data. For manual, scheduled, and workflow-triggered runs, select **Open conversation** to audit the run in {{agent-builder}}.
 
 If a run fails, is canceled or dismissed, or an analysis step fails, [troubleshoot it with AI](/solutions/security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md).
 
@@ -90,25 +92,26 @@ Open the **View options** ({icon}`controls`) menu for these toggles:
 
 ### Understand how filters apply to attacks and alerts [attacks-filtering-behavior]
 
-The **Attacks** view uses one data view that combines the attacks index and the alerts index, so filters apply to both document types at once.
+Filters on the **Attacks** view apply to both attacks and their related alerts at once.
 
 :::{dropdown} Filtering behavior details
 
-**Timeframe filtering**: An attack group appears if either the attack itself or any of its related alerts fall within the selected time range. If the attack is within the time range but all its alerts are outside of it, the attack renders but shows 0 alerts when expanded. Conversely, if the attack is outside the time range but some of its alerts are inside, the attack still appears.
+**Timeframe filtering**: An attack appears when the attack or any of its related alerts falls in the selected time range.
 
-**Alert-specific field filters**: Filtering on a field that only exists on alert documents (not attack documents) excludes attack documents from the underlying dataset. Attack groups still appear, but group statistics and sorting may be affected.
+* If the attack is in range but its alerts are not, the attack appears with 0 alerts when expanded.
+* If the attack is out of range but some related alerts are in range, the attack still appears.
 
-**Attack-specific field filters**: Filtering on a field that only exists on attack documents (for example, the connector that generated an attack) hides all related alerts from the dataset. The attack group appears, but expanding it shows 0 alerts because the alert documents don't contain the attack-specific field.
+**Alert-only field filters**: Filtering on a field that exists only on alerts can change group statistics and sort order, even though attack groups still appear.
 
-**Status filter**: The status filter evaluates both attacks and their related alerts. A closed attack can still appear when you filter by **Open** status if it has underlying open alerts that match the filter.
+**Attack-only field filters**: Filtering on a field that exists only on attacks (for example, the connector that generated an attack) can hide related alerts. The attack still appears, but expanding it may show 0 alerts.
 
-**Assignees filter**: The assignees filter applies across both attacks and alerts. Filtering by assigned user may hide an attack's alerts if those alerts have a different assignee.
+**Status filter**: Status checks both the attack and its related alerts. A closed attack can still appear under an **Open** filter when it has open related alerts.
 
-**Sorting by timestamp**: Sorting evaluates all visible documents in a group. If an alert-specific query filters out an attack document, the group's position in the sort order is based solely on the timestamps of its remaining alerts.
+**Assignees filter**: Assignees apply to both attacks and alerts. Filtering by assigned user may hide an attack's alerts when those alerts have a different assignee.
 
-**KQL autocomplete**: The KQL autocomplete shows fields from both attacks and alerts. Be cautious when filtering, because using a field exclusive to one document type filters out the other type from the underlying data.
+**KQL autocomplete**: Autocomplete includes fields from both attacks and alerts. A field that exists on only one type can filter out the other.
 
-**Alerts count badge**: The **Alerts: N** badge on each attack group counts only detection alerts that match the current filters. It doesn't include the attack document itself. When you expand a group, the badge may show a format like `2/10`, where the first number is the count of alerts matching your current filters and time range, and the second is the total number of alerts historically linked to the attack.
+**Alerts count badge**: The **Alerts: N** badge counts detection alerts that match the current filters. When you expand a group, a format like `2/10` means 2 alerts match your current filters and time range, out of 10 alerts historically linked to the attack.
 
 :::
 
@@ -121,7 +124,7 @@ serverless:
 
 When you open an attack's details, the **Alerts** tab shows the alerts linked to that attack.
 
-By default, the tab shows **all** linked alerts, even when page filters are active. Alerts that do not match the current filters stay visible but are visually de-emphasized (greyed out), so the list still matches the attack's total alert count.
+By default, the tab shows **all** linked alerts, even when page filters are active. Alerts outside the current filters stay visible but greyed out, so the list still matches the attack's total alert count.
 
 A callout above the alerts table explains this behavior and includes a **Show matching alerts only** toggle. Turn the toggle on if you want to hide non-matching alerts. Your toggle choice persists across attacks.
 

@@ -26,6 +26,23 @@ Your role needs these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or
 | {applies_to}`stack: ga 9.1-9.3` | `All` for **Security > Attack discovery**, and at least `Read` for **Security > Rules, Alerts, and Exceptions** |
 | {applies_to}`stack: ga =9.0` | `All` for **Security > Attack discovery** |
 
+
+### Schedules sub-feature privilege [ad-schedules-privilege]
+
+```{applies_to}
+stack: ga 9.1+
+serverless:
+  security: ga
+```
+
+**Attack discovery** includes a **Schedules** sub-feature privilege:
+
+| UI label | What it controls |
+|---|---|
+| **Schedules > Allow changes** | Create, edit, enable, disable, or delete Attack discovery schedules |
+
+Selecting `All` for **Attack discovery** includes **Allow changes**. To run Attack Discovery without managing schedules, turn on **Customize sub-feature privileges** and clear **Allow changes**.
+
 ## Index privileges [ad-index-privileges]
 
 ```{applies_to}
@@ -62,4 +79,13 @@ serverless:
   security: ga
 ```
 
-When you turn on [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows), your role needs access to **Analytics > Workflows**. {{serverless-short}} roles include that access by default. On self-managed and {{ech}} deployments, add it to custom roles. For the privilege level each action needs, refer to [Manage access to workflows](/explore-analyze/workflows/get-started/setup.md#workflows-role-access).
+When you turn on [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows), your role also needs **Analytics > Workflows** privileges. {{serverless-short}} roles include that access by default. On self-managed and {{ech}} deployments, add it to custom roles.
+
+| Attack Discovery action | Workflows privilege needed |
+|---|---|
+| Monitor runs in **Generations** and open workflow execution details | `read` for **Analytics > Workflows** |
+| Generate discoveries (manual or scheduled) | `execute` for **Analytics > Workflows** |
+| Create, edit, or enable schedules | `execute` for **Analytics > Workflows**, plus [**Schedules** → **Allow changes**](#ad-schedules-privilege) |
+| Disable or delete schedules | [**Schedules** → **Allow changes**](#ad-schedules-privilege) only |
+
+Granting `All` for **Analytics > Workflows** includes `read` and `execute`. For finer-grained access, use Workflows [sub-feature privileges](/explore-analyze/workflows/get-started/setup.md#workflows-role-access).

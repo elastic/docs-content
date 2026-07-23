@@ -164,15 +164,15 @@ When the setting is on, you can:
 * Run Attack Discovery [from a workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md) or [from {{agent-builder}}](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md)
 * Troubleshoot failed runs with AI from the [**Generations**](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md#attacks-view-generations) control center
 
-Each time the Attack Discovery skill runs, {{agent-builder}} opens a new conversation for that run (including manual and scheduled runs from the Attacks view).
+Manual, scheduled, and workflow-triggered runs open a new {{agent-builder}} conversation you can audit later. Runs started from {{agent-builder}} chat stay in the current conversation.
 
 ### How Attack Discovery Workflows affects existing schedules
 
-Turning the setting on does not update existing schedules. Open and save each schedule again while the setting is on, or create a new schedule. Later runs then use the workflow-backed path for alert retrieval, generation, and validation.
+After you turn the setting on, reopen and save each existing schedule, or create a new one. Until you do, schedules keep their previous configuration.
 
 If you turn the setting off:
 
-* An already-switched schedule doesn't revert to the previous path. It stops generating (without erroring) until the setting is turned on again, and it temporarily disappears from the schedule list.
+* Schedules that already used the workflow settings stop generating and temporarily disappear from the schedule list. Turn the setting on again to restore them.
 * Manual runs from the Attacks view always follow the setting's current value.
 
 For how to edit schedules after you enable the setting, refer to [Schedule runs from the Attacks view](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).

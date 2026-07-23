@@ -46,13 +46,18 @@ More example prompts are in [Attack Discovery generation](/solutions/security/ai
 
 The `attack-discovery-generator` skill first gathers and cross-checks evidence. It can pull from other skills such as threat hunting, entity analytics, alert analysis, threat intelligence, and the knowledge base. Then it runs the same analysis steps used by every other Attack Discovery trigger.
 
-Each time the Attack Discovery skill runs, {{agent-builder}} opens a **new** conversation for that run. Manual and scheduled runs from the Attacks view do the same when the skill is involved.
+Runs started from chat stay in the current conversation. Manual, scheduled, and workflow-triggered runs open a separate {{agent-builder}} conversation you can audit later.
 
-Separate skills power AI-assisted query editing and [run troubleshooting](/solutions/security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md) on the Attacks view. Those skills do not replace `attack-discovery-generator`.
+Related skills on the Attacks view do not replace `attack-discovery-generator`:
+
+* `attack-discovery-alert-retrieval-builder` powers **Edit with AI** in Attack Discovery settings.
+* `attack-discovery-workflow-troubleshooting` powers [AI troubleshooting](/solutions/security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md) for failed runs.
 
 ## Approve detection rule proposals for gaps [run-ad-conversation-gap-closure]
 
-If the skill finds a gap, such as an important event in a confirmed attack that had no matching alert, it proposes a detection rule and waits for your approval before creating anything.
+If the skill finds a gap, such as an important event in a confirmed attack that had no matching alert, it proposes a detection rule in the conversation and waits for your approval before creating anything. Reply in chat to approve (for example, `create the rule`) or to refine the proposal first. The agent uses the `detection-rule-edit` skill only after you approve.
+
+The same gap-closure flow is available from the {{agent-builder}} conversation that manual and scheduled runs open. From **Workflow execution details**, select **Open conversation**.
 
 ## Check the status of an Attack Discovery run [run-ad-conversation-check-status]
 
