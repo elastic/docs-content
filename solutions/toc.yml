@@ -499,6 +499,9 @@ toc:
           - file: observability/streams/processors/uri-parts.md
           - file: observability/streams/processors/user-agent.md
           - file: observability/streams/processors/manual-pipeline-configuration.md
+      - hidden: observability/nightshift/nightshift.md
+        children:
+          - hidden: observability/nightshift/get-started.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
