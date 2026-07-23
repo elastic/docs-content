@@ -121,11 +121,14 @@ You can also go back to any previously generated version of a dashboard in the c
 
 ## Supported panel types
 
-Agents create [{{esql}}](/explore-analyze/visualize/esorql.md)-powered visualizations. If a dashboard contains [data view](/explore-analyze/find-and-organize/data-views.md)-based visualizations, the agent asks to replace them with {{esql}} equivalents when making changes.
+Agents can create and manage the following panel types:
 
-Agents can also create markdown panels and collapsible sections.
-
-{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` Agents can add and remove interactive [filter controls](/explore-analyze/visualize/add-controls.md), which appear above the dashboard and let users filter the data without editing queries. The supported control types are **Options list**, **Range slider**, and **Time slider**. When building a dashboard, the agent can proactively add **Options list** controls for useful categorical fields, such as service or host names. A dashboard can contain only one **Time slider** control.
+| Panel type | Description |
+| --- | --- |
+| [{{esql}} visualizations](/explore-analyze/visualize/esorql.md) | Charts, tables, and metrics powered by {{esql}}. If a dashboard contains [data view](/explore-analyze/find-and-organize/data-views.md)-based visualizations, the agent asks to replace them with {{esql}} equivalents when making changes. |
+| Markdown panels | Text panels for notes, headings, and other context. |
+| Collapsible sections | Grouped panels that readers can expand or collapse. |
+| [Filter controls](/explore-analyze/visualize/add-controls.md) {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` | Interactive filters that appear above the dashboard and let users filter data without editing queries. The agent can add and remove **Options list**, **Range slider**, and **Time slider** controls, and can proactively add **Options list** controls for useful categorical fields such as service or host names. A dashboard can contain only one **Time slider** control. |
 
 ## Related pages
 
