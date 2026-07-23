@@ -53,7 +53,7 @@ To save the current service map view to a {{kib}} dashboard, click **Copy to das
 
 When you click an instrumented service node (circle shape), a **service flyout** panel opens with a summary of the service’s RED metrics and infrastructure usage. Use the footer menu to open traces, logs, alerts, or SLOs for the service without leaving the map. Dependency nodes (diamond shape) and connections still use a compact popover.
 
-:::{image} /solutions/images/observability-apm-service-map-anomaly-viewer.png
+:::{image} /solutions/images/observability-apm-service-map-service-flyout.png
 :alt: Service flyout panel open alongside the service map, showing RED metrics and a transactions list for the selected service
 :screenshot:
 :::
