@@ -27,7 +27,7 @@ To concatenate values:
 
 ## YAML reference [streams-concat-yaml-reference]
 
-In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the concat processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+In [YAML mode](../parse-and-process.md#streams-editing-yaml-mode), configure the concat processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
 
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |
