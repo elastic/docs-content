@@ -30,6 +30,9 @@ Before you create an OAuth client:
   - The [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md), which exposes those tools to external MCP hosts, and its [authentication methods](/explore-analyze/ai-features/agent-builder/mcp-server.md#mcp-server-authentication). OAuth is one of two ways to authenticate to the MCP server, so confirm it fits your use case.
   - [MCP clients and the OAuth flow](oauth-clients.md).
 - Make sure you have **Read** access to the {{agent-builder}} {{kib}} feature, which grants access to the MCP client management UI. To learn more, refer to [Permissions](/explore-analyze/ai-features/agent-builder/permissions.md#kib-privileges).
+- Enable the **Manage OAuth clients for MCP** [{{kib}} advanced settings](kibana://reference/advanced-settings.md#kibana-general-settings). 
+  
+  You can access the **Advanced Settings** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## Create the client
 
