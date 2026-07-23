@@ -125,10 +125,13 @@ Agents can create and manage the following panel types:
 
 | Panel type | Description |
 | --- | --- |
-| [{{esql}} visualizations](/explore-analyze/visualize/esorql.md) | Charts, tables, and metrics powered by {{esql}}. If a dashboard contains [data view](/explore-analyze/find-and-organize/data-views.md)-based visualizations, the agent asks to replace them with {{esql}} equivalents when making changes. |
+| [{{esql}} visualizations](/explore-analyze/visualize/esorql.md) | Charts, tables, and metrics powered by {{esql}}, rendered with [Lens](/explore-analyze/visualize/lens.md) by default. If a dashboard contains [data view](/explore-analyze/find-and-organize/data-views.md)-based visualizations, the agent asks to replace them with {{esql}} equivalents when making changes. |
+| Vega-Lite visualizations {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` | Used for chart shapes that Lens can't express, such as small multiples, layered or combination charts, scatter plots, and bubble charts, or when you ask for a Vega or custom visualization. The agent supports Vega-Lite specifications only, not raw Vega. Shapes that Vega-Lite can't express, such as Sankey, radar, or network diagrams, fall back to the closest supported chart. |
 | Markdown panels | Text panels for notes, headings, and other context. |
 | Collapsible sections | Grouped panels that readers can expand or collapse. |
 | [Filter controls](/explore-analyze/visualize/add-controls.md) {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` | Interactive filters that appear above the dashboard and let users filter data without editing queries. The agent can add and remove **Options list**, **Range slider**, and **Time slider** controls, and can proactively add **Options list** controls for useful categorical fields such as service or host names. A dashboard can contain only one **Time slider** control. |
+
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` You can preview generated visualizations inline with a time picker and select **Save to dashboard** to add them to a dashboard.
 
 ## Related pages
 
