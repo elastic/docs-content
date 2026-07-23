@@ -140,6 +140,13 @@ For quick testing, you can use [ngrok](https://ngrok.com/) as an alternative to 
 
 ::::{step} Configure the connector in your Elastic deployment
 
+:::{important}
+:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
+The OpenAI connector is deprecated and is being progressively removed from the create connector UI. Existing connectors and their rule actions continue to work.
+
+For new AI integrations, use {{es}} {{infer}} endpoints. Migrate existing LLM connectors and related rule actions before the future removal.
+:::
+
 Create the connector within your Elastic deployment to link it to your vLLM instance.
 
 1. In {{kib}}, navigate to the **Connectors** page, click **Create Connector**, and select **OpenAI**.
@@ -186,7 +193,7 @@ To run a different model:
 With your vLLM connector set up, you can use it to power features including:
 
 * [AI Assistant for Security](/solutions/security/ai/ai-assistant.md): Interact with an agent designed to assist with {{elastic-sec}} tasks.
-* [Attack Discovery](/solutions/security/ai/attack-discovery.md): Use AI to quickly correlate and triage security alerts.
+* [Attack Discovery](/solutions/security/ai/attack-discovery/index.md): Use AI to quickly correlate and triage security alerts.
 * [Automatic Import](/explore-analyze/ai-features/automatic-import.md): Use AI to create custom integrations for third-party data sources.
 * [AI Assistant for Observability and Search](/solutions/observability/ai/observability-ai-assistant.md): Interact with an agent designed to assist with {{observability}} and Search tasks.
 

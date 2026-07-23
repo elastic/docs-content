@@ -236,8 +236,14 @@ toc:
                    - file: ai-features/agent-builder/agent-builder-api-tutorial.md
                - file: ai-features/agent-builder/a2a-server.md
                - file: ai-features/agent-builder/mcp-server.md
+                 children:
+                   - file: ai-features/agent-builder/mcp-server-api-keys.md
+                   - title: "OAuth authentication"
+                     crosslink: docs-content://deploy-manage/app-connections/oauth-clients.md
           - file: ai-features/agent-builder/monitor-usage.md
             children:
+              - file: ai-features/agent-builder/collect-traces.md
+              - file: ai-features/agent-builder/agent-traces-dashboard.md
               - file: ai-features/agent-builder/create-alerts.md
           - file: ai-features/agent-builder/permissions.md
           - file: ai-features/agent-builder/troubleshooting.md
@@ -274,6 +280,7 @@ toc:
       - file: discover/save-open-search.md
       - file: discover/show-field-statistics.md
       - file: discover/run-pattern-analysis-discover.md
+      - file: discover/detect-change-points.md
       - file: discover/background-search.md
       - file: discover/try-esql.md
   - file: dashboards.md
@@ -403,6 +410,61 @@ toc:
               - file: alerting/experimental-alerting-system/get-started/setup.md
               - file: alerting/experimental-alerting-system/get-started/configure-access.md
               - file: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
+          - file: alerting/experimental-alerting-system/authorization.md
+          - file: alerting/experimental-alerting-system/rules.md
+            children:
+              - file: alerting/experimental-alerting-system/rules/create-a-rule.md
+                children:
+                  - file: alerting/experimental-alerting-system/rules/create-esql-rule.md
+                    children:
+                      - file: alerting/experimental-alerting-system/rules/yaml-rule-schema-reference.md
+                  - file: alerting/experimental-alerting-system/rules/create-rules-action-policies-agent-builder.md
+                  - file: alerting/experimental-alerting-system/rules/use-rule-builder.md
+                  - file: alerting/experimental-alerting-system/rules/create-rule-from-discover.md
+              - file: alerting/experimental-alerting-system/rules/configure-a-rule.md
+                children:
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-mode.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-query.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-schedule.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-severity.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-grouping.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-alert-delay.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-recovery.md
+                  - file: alerting/experimental-alerting-system/rules/configure-no-data-handling.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-tags.md
+              - file: alerting/experimental-alerting-system/rules/view-manage-rules.md
+              - file: alerting/experimental-alerting-system/rules/review-rule-execution-history.md
+              - file: alerting/experimental-alerting-system/rules/esql-query-patterns.md
+                children:
+                  - file: alerting/experimental-alerting-system/rules/esql-first-rule-query.md
+                  - file: alerting/experimental-alerting-system/rules/esql-threshold-queries.md
+                  - file: alerting/experimental-alerting-system/rules/esql-no-data-detection.md
+                  - file: alerting/experimental-alerting-system/rules/esql-slo-burn-rate.md
+                  - file: alerting/experimental-alerting-system/rules/esql-persistent-breach.md
+              - file: alerting/experimental-alerting-system/rules/rule-event-field-reference.md
+          - file: alerting/experimental-alerting-system/alerts.md
+            children:
+              - file: alerting/experimental-alerting-system/alerts/alert-data-model.md
+              - file: alerting/experimental-alerting-system/alerts/view-and-manage-alerts.md
+                children:
+                  - file: alerting/experimental-alerting-system/alerts/triage-alert-episodes.md
+                  - file: alerting/experimental-alerting-system/alerts/investigate-alert-episodes.md
+              - file: alerting/experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md
+              - file: alerting/experimental-alerting-system/alerts/field-reference.md
+          - file: alerting/experimental-alerting-system/notifications-actions.md
+            children:
+              - file: alerting/experimental-alerting-system/workflows-alerting.md
+              - file: alerting/experimental-alerting-system/action-policies/about-action-policies.md
+              - file: alerting/experimental-alerting-system/action-policies/common-action-policy-scenarios.md
+                children:
+                  - file: alerting/experimental-alerting-system/action-policies/route-by-severity.md
+                  - file: alerting/experimental-alerting-system/action-policies/severity-escalation.md
+                  - file: alerting/experimental-alerting-system/action-policies/re-notification.md
+              - file: alerting/experimental-alerting-system/action-policies/create-configure-action-policy.md
+              - file: alerting/experimental-alerting-system/action-policies/action-policy-reference.md
+              - file: alerting/experimental-alerting-system/action-policies/manage-action-policies.md
+              - file: alerting/experimental-alerting-system/action-policies/review-action-policy-execution-history.md
+              - file: alerting/experimental-alerting-system/action-policies/reduce-notification-noise.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
