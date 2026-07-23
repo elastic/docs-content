@@ -133,8 +133,6 @@ In 9.5, only recommended Elastic Managed LLMs are used for fast routing. Assigni
 :screenshot:
 :::
 
-<!-- TODO(verify before merge): confirm the exact Fast models ordering UI in Feature settings and that this screenshot still matches the flow (check with Joe/Sid or on a 9.5 cluster). Custom-assignment support is tracked in search-team#15449 (not in 9.5). -->
-
 ### Fallback behavior
 
 If no fast model is available, {{agent-builder}} uses your default model instead. Fast model routing is an optimization, so a missing fast model reduces the latency benefit but does not cause errors.
