@@ -29,6 +29,37 @@ cta:
       - "Simplified billing and MACC burndown"
       - "Manage resources from the Azure portal"
       - "Built-in logs and metrics forwarding"
+  observability:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=observability
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+    paths:
+      - solutions/observability
+  security:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=security
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+    paths:
+      - solutions/security
+  search:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=search
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+    paths:
+      - solutions/search
+      - solutions/elasticsearch-solution-project
 
 exclude:
   - 'README.md'
