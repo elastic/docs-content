@@ -83,7 +83,9 @@ A container runtime process, such as Docker or Podman, running on swap can cause
 :::
 
 As a baseline, provision at least 512 MB of swap. A common safeguard is 4 GB of swap for every 32 GB of RAM.
+
 Set `vm.swappiness` to `1` so the kernel uses swap only as a last resort. The OS preparation guides in [](./configure-operating-system.md) include this setting.
+
 How you create swap space depends on your operating system and infrastructure provider. Use your OS or cloud provider documentation to create a swap file or partition.
 
 ## XFS [ece-xfs] 
