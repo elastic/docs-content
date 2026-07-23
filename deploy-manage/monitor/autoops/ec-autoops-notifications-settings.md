@@ -163,7 +163,7 @@ To set up notifications through a custom webhook, follow these steps:
     * `RESOURCE_NAME`: Customer deployment name
     * `TITLE`: The title of the event.
     * `DESCRIPTION`: The description of the issue that was found.
-    * `SEVERITY`: One of the three severity levels (High, Medium, Low).
+    * `SEVERITY`: One of the four severity levels (Critical, High, Medium, Low).
     * `STATUS`: Indicates if the event is currently open or closed.
     * `MESSAGE`: The background and impact of the issue.
     * `START_TIME`: The time the event was opened.
