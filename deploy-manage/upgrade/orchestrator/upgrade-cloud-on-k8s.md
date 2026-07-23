@@ -113,9 +113,9 @@ Stepping over one of these versions, for example, upgrading ECK from 2.6 to 2.9,
 
 If you have a very large {{es}} cluster or multiple {{stack}} deployments, this rolling restart might be disruptive or inconvenient. To have more control over when the pods belonging to a particular deployment should be restarted, temporarily pause orchestration on the corresponding resources. When the time is convenient, remove the annotation and let the rolling restart go through.
 
-:::::{tab-set}
+:::::{applies-switch}
 
-::::{tab-item} ECK 3.5 and later
+::::{applies-item} eck: ga 3.5+
 Use [pause orchestration](/deploy-manage/deploy/cloud-on-k8s/k8s-pause-orchestration.md), which stops spec-driven changes while keeping housekeeping running:
 
 ```shell subs=true
@@ -141,7 +141,7 @@ kubectl annotate elasticsearch quickstart $RM_ANNOTATION
 ```
 ::::
 
-::::{tab-item} Earlier versions
+::::{applies-item} eck: ga 3.0-3.5
 Use the `eck.k8s.elastic.co/managed` annotation:
 
 :::{warning}

@@ -186,9 +186,9 @@ For debugging purposes, you might want to temporarily prevent ECK from modifying
 * Kibana
 * ApmServer
 
-:::::{tab-set}
+:::::{applies-switch}
 
-::::{tab-item} ECK 3.5 and later
+::::{applies-item} eck: ga 3.5+
 Use [pause orchestration](/deploy-manage/deploy/cloud-on-k8s/k8s-pause-orchestration.md), which stops spec-driven changes while keeping housekeeping running:
 
 ```yaml
@@ -204,7 +204,7 @@ kubectl annotate elasticsearch quickstart eck.k8s.elastic.co/pause-orchestration
 ```
 ::::
 
-::::{tab-item} Earlier versions
+::::{applies-item} eck: ga 3.0-3.5
 Use the `eck.k8s.elastic.co/managed` annotation:
 
 ```yaml
