@@ -24,7 +24,7 @@ From the global header, select your current space, then select the space you wan
 
 ## Understand what happens when you log in
 
-{applies_to}`ech: ga` {applies_to}`ece: ga` {applies_to}`eck: ga` {applies_to}`serverless: ga` If you can access more than one space, {{kib}} asks you to select a space when you log in.
+{applies_to}`ech: ga` {applies_to}`serverless: ga` If you can access more than one space, {{kib}} asks you to select a space when you log in.
 
 {applies_to}`self: ga` On self-managed deployments, what {{kib}} opens when you log in depends on your version and whether it has remembered a space:
 
