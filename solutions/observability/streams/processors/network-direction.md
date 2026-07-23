@@ -28,7 +28,7 @@ To determine network direction:
 
 ## YAML reference [streams-network-direction-yaml-reference]
 
-In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the network direction processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+In [YAML mode](../parse-and-process.md#streams-editing-yaml-mode), configure the network direction processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
 
 Specify exactly one of `internal_networks` or `internal_networks_field`.
 

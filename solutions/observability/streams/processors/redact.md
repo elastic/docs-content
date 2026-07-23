@@ -11,25 +11,25 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
-description: Mask sensitive data in string fields by matching grok patterns and replacing them with a placeholder using the Streams redact processor in Streamlang.
+description: Mask sensitive data in string fields by matching Grok patterns and replacing them with a placeholder using the Streams redact processor in Streamlang.
 ---
 
 # Redact processor [streams-redact-processor]
 
-The **Redact** processor redacts sensitive data in a string field by matching grok patterns and replacing the matched content with a placeholder.
+The **Redact** processor redacts sensitive data in a string field by matching Grok patterns and replacing the matched content with a placeholder.
 
 To redact sensitive information:
 
 1. Select **Create** → **Create processor**.
 1. Select **Redact** from the **Processor** menu.
 1. Set the **Source Field** to the field containing text you want to redact.
-1. Set the **Patterns** to one or more grok patterns that match sensitive data (for example, IP addresses or email addresses).
+1. Set the **Patterns** to one or more Grok patterns that match sensitive data (for example, IP addresses or email addresses).
 
-This functionality uses the {{es}} [Redact processor](elasticsearch://reference/enrich-processor/redact-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+This functionality uses the {{es}} [Redact processor](elasticsearch://reference/enrich-processor/redact-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../streamlang.md#streams-processor-inconsistencies).
 
 ## YAML reference [streams-redact-yaml-reference]
 
-In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the redact processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+In [YAML mode](../parse-and-process.md#streams-editing-yaml-mode), configure the redact processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
 
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |

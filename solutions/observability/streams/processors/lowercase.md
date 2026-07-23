@@ -11,23 +11,23 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
-description: Convert a string field to uppercase with the Streams uppercase processor in Streamlang.
+description: Convert a string field to lowercase with the Streams lowercase processor in Streamlang.
 ---
 
-# Uppercase processor [streams-uppercase-processor]
+# Lowercase processor [streams-lowercase-processor]
 
-The **Uppercase** processor converts a string field to uppercase.
+The **Lowercase** processor converts a string field to lowercase.
 
-To convert a field to uppercase:
+To convert a field to lowercase:
 
 1. Select **Create** → **Create processor**.
-1. Select **Uppercase** from the **Processor** menu.
+1. Select **Lowercase** from the **Processor** menu.
 1. Set the **Source Field** to the field you want to convert.
 1. (Optional) Set **Target field** to write the result to a different field.
 
-## YAML reference [streams-uppercase-yaml-reference]
+## YAML reference [streams-lowercase-yaml-reference]
 
-In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the uppercase processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+In [YAML mode](../parse-and-process.md#streams-editing-yaml-mode), configure the lowercase processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
 
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |
@@ -36,6 +36,6 @@ In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the uppercase
 | `ignore_missing` | boolean | No | When `true`, skip this processor if the source field is missing. |
 
 ```yaml
-- action: uppercase
-  from: attributes.level
+- action: lowercase
+  from: attributes.method
 ```

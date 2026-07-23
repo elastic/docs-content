@@ -25,7 +25,7 @@ To extract a timestamp field using the date processor:
 1. Set the **Source Field** to the field containing the timestamp.
 1. Set the **Format** field to one of the accepted date formats (ISO8601, UNIX, UNIX_MS, or TAI64N) or use a Java time pattern. Refer to the [example formats](#streams-date-examples) for more information.
 
-This functionality uses the {{es}} [Date processor](elasticsearch://reference/enrich-processor/date-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+This functionality uses the {{es}} [Date processor](elasticsearch://reference/enrich-processor/date-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../streamlang.md#streams-processor-inconsistencies).
 
 ## Example formats [streams-date-examples]
 
@@ -63,7 +63,7 @@ You can set the following optional fields for the date processor in the **Advanc
 
 ## YAML reference [streams-date-yaml-reference]
 
-In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the date processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+In [YAML mode](../parse-and-process.md#streams-editing-yaml-mode), configure the date processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
 
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |
