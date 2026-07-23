@@ -15,12 +15,7 @@ With the help of ECK operator, you can specify {{es}} and {{kib}} [secure settin
 
 The secrets should contain a key-value pair for each secure setting you want to add. ECK watches the referenced secrets for changes and delivers them to your {{es}} or {{kib}} Pods. By default, each update triggers a rolling restart of the affected Pods to repopulate the keystore.
 
-```{applies_to}
-deployment:
-  eck: ga 3.5+
-```
-
-For {{es}} 9.5 and later, you can opt in to [updating secure settings without a restart](#k8s-es-secure-settings-hot-reload).
+You also can opt in to [updating secure settings without a restart](#k8s-es-secure-settings-hot-reload).
 
 ## {{es}} secure settings [k8s-es-secure-settings]
 
