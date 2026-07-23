@@ -48,7 +48,6 @@ For services instrumented with OpenTelemetry, the tab exclusively shows OTel-obs
 * **Containers** and **Pods**: Link to [**Metrics** in Discover](/solutions/observability/infra-and-hosts/discover-metrics.md), as the Containers and Pods UIs do not yet support OTel semantic conventions.
 
 ::::{important}
-:applies_to: stack: ga 9.4+
 The **Infrastructure** tab assumes you're observing the service and its underlying infrastructure (hosts, pods, containers) using the same schema. The schema is inferred from the {{apm-agent}} name:
 
 **Elastic APM Agent** or **Elastic Agent system integration**: Queries ECS data from Metricbeat or Elastic Agent integrations.
