@@ -29,7 +29,6 @@ Known issues are significant defects or limitations that may impact your impleme
 **Impact**<br>
 On {{stack}} 9.4.4, {{elastic-sec}} deployments with a large number of indices can enter a crash loop. Entity store extraction tasks generate oversized HTTP requests that cause {{kib}} to crash repeatedly.
 
-For more information, refer to the [knowledge base article](https://support.elastic.dev/knowledge/view/3d6b63ae).
 
 **Workaround**<br>
 Follow these steps to stabilize {{kib}}:
