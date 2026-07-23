@@ -29,11 +29,11 @@ To extract user agent details:
    - **Properties**: The specific properties to extract. Defaults to all: `name`, `os`, `device`, `original`, `version`.
    - **Extract device type**: Extracts the device type from the user agent string. This functionality is in beta and is subject to change.
 
-This functionality uses the {{es}} [User agent processor](elasticsearch://reference/ingest-processor/user-agent-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+This functionality uses the {{es}} [User agent processor](elasticsearch://reference/ingest-processor/user-agent-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../streamlang.md#streams-processor-inconsistencies).
 
 ## YAML reference [streams-user-agent-yaml-reference]
 
-In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the user agent processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+In [YAML mode](../parse-and-process.md#streams-editing-yaml-mode), configure the user agent processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
 
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |

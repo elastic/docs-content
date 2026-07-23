@@ -26,11 +26,11 @@ To split a field into an array:
 1. Set **Separator** to a regex that matches the separator. For example, use `,` for commas, `\s+` for whitespace, or `\.` for a literal dot.
 1. (Optional) Set **Target field** to write the resulting array to a different field. Leave empty to update the **Source Field**.
 
-This functionality uses the {{es}} [Split processor](elasticsearch://reference/ingest-processor/split-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+This functionality uses the {{es}} [Split processor](elasticsearch://reference/ingest-processor/split-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../streamlang.md#streams-processor-inconsistencies).
 
 ## YAML reference [streams-split-yaml-reference]
 
-In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the split processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+In [YAML mode](../parse-and-process.md#streams-editing-yaml-mode), configure the split processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
 
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |

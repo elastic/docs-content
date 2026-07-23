@@ -27,11 +27,11 @@ To parse a URI:
 1. (Optional) Toggle **Keep original** to preserve the raw URI string at `<prefix>.original`. Enabled by default.
 1. (Optional) Toggle **Remove source on success** to remove the source field after a successful parse. The source field is kept when parsing fails. Disabled by default.
 
-This functionality uses the {{es}} [URI parts processor](elasticsearch://reference/ingest-processor/uri-parts-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+This functionality uses the {{es}} [URI parts processor](elasticsearch://reference/ingest-processor/uri-parts-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../streamlang.md#streams-processor-inconsistencies).
 
 ## YAML reference [streams-uri-parts-yaml-reference]
 
-In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the URI parts processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+In [YAML mode](../parse-and-process.md#streams-editing-yaml-mode), configure the URI parts processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
 
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |

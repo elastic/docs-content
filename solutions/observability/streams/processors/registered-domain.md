@@ -25,11 +25,11 @@ To extract the parts of a domain:
 1. Set the **Field** to the field containing the FQDN.
 1. Set **Prefix** to the prefix used for the output fields. The extracted parts are written as `<prefix>.domain`, `<prefix>.registered_domain`, `<prefix>.subdomain`, and `<prefix>.top_level_domain`.
 
-This functionality uses the {{es}} [Registered domain processor](elasticsearch://reference/ingest-processor/registered-domain-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+This functionality uses the {{es}} [Registered domain processor](elasticsearch://reference/ingest-processor/registered-domain-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../streamlang.md#streams-processor-inconsistencies).
 
 ## YAML reference [streams-registered-domain-yaml-reference]
 
-In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the registered domain processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+In [YAML mode](../parse-and-process.md#streams-editing-yaml-mode), configure the registered domain processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
 
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |

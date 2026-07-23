@@ -26,11 +26,11 @@ To sort an array field:
 1. Set **Order** to **Ascending** or **Descending**. Defaults to **Ascending**.
 1. (Optional) Set **Target field** to write the sorted array to a different field. Leave empty to update the **Source Field**.
 
-This functionality uses the {{es}} [Sort processor](elasticsearch://reference/ingest-processor/sort-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+This functionality uses the {{es}} [Sort processor](elasticsearch://reference/ingest-processor/sort-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../streamlang.md#streams-processor-inconsistencies).
 
 ## YAML reference [streams-sort-yaml-reference]
 
-In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the sort processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+In [YAML mode](../parse-and-process.md#streams-editing-yaml-mode), configure the sort processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
 
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |
