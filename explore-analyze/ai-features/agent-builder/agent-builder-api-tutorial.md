@@ -944,6 +944,27 @@ When an agent calls an Elastic-built tool that requires your confirmation, the r
 
 To respond, call the converse API again with the same conversation ID and map the exact prompt ID to your response:
 
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+POST kbn://api/agent_builder/converse
+{
+  "agent_id": "books-search-agent",
+  "conversation_id": "<CONVERSATION_ID>",
+  "prompts": {
+    "<PROMPT_ID>": {
+      "allow": true
+    }
+  }
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
      -H "Authorization: ApiKey ${API_KEY}" \
@@ -959,6 +980,9 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
        }
      }'
 ```
+:::
+
+::::
 
 Set `allow` to `false` to deny the action. This request resumes the existing conversation round. It does not start a new user turn. To learn about the prompt types shown in chat, refer to [Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts).
 
