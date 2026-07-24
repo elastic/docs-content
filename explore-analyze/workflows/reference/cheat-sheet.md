@@ -48,16 +48,20 @@ triggers:
 
   - type: alert                        # requires rule Action attachment
 
-  - type: workflows.failed             # tech preview
+  - type: workflows.failed             # GA (9.5+), tech preview (9.4)
     on:
       condition: "event.workflow.name : 'critical-ingest-pipeline'"
 
   - type: cases.caseCreated            # tech preview (9.5+)
     on:
       condition: 'event.owner: "securitySolution"'
+
+  - type: entityStore.entityRiskScoreChanged   # tech preview (9.5+)
+    on:
+      condition: 'event.direction: "increase" AND event.delta >= 25'
 ```
 
-The full cases trigger family also includes `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`. Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
+The full cases trigger family also includes `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`. The entity store trigger family also includes `entityStore.entityAssetCriticalityUpdated`. Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
 
 Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/workflows/triggers.md).
 

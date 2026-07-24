@@ -1,9 +1,9 @@
 ---
 navigation_title: Event-driven triggers
 applies_to:
-  stack: preview 9.4+
-  serverless: preview
-description: Run a workflow in response to a platform event. Includes workflows.failed, the cases trigger family, alert episode lifecycle triggers, and {{alerting-v2-system}} rule lifecycle triggers.
+  stack: ga 9.5+, preview =9.4
+  serverless: ga
+description: Run a workflow in response to a platform event, such as a workflow failure, a case change, an entity store change, or an alert lifecycle event.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -17,13 +17,14 @@ products:
 
 Event-driven triggers let workflows react to events elsewhere in {{kib}}. The following trigger families are available:
 
-- **`workflows.failed`** — Fires when another workflow's execution fails. {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
+- **`workflows.failed`** — Fires when another workflow's execution fails. {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga`
 - **Cases triggers** — Fire when cases change (created, updated, status changed, attachments added, comments added). {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
+- **Entity store triggers** — Fire when an entity's asset criticality or risk score changes in the entity store. {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
 - **Alert episode lifecycle triggers** — Fire on specific alert episode events in the {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 - **{{alerting-v2-system-cap}} rule lifecycle triggers** — Fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 
-:::{warning}
-The event-driven trigger system is in technical preview, including the triggers documented on this page. The schema and semantics can change in future releases.
+:::{note}
+The event-driven trigger framework is generally available. Individual trigger families can have a different maturity: check the availability badge in each section. The schema and semantics of triggers still in technical preview can change in future releases.
 :::
 
 :::{include} ../_snippets/schema-location-legend.md
@@ -343,12 +344,131 @@ triggers:
       condition: 'event.owner: "securitySolution"'
 ```
 
+## Entity store triggers [entity-store-triggers-event-driven]
+
+```{applies_to}
+stack: preview 9.5+
+serverless: preview
+```
+
+Entity store triggers fire when an entity in the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) changes. Use them to react to changes in an entity's asset criticality or risk score without polling.
+
+**Shared payload.** Every entity store trigger event includes:
+
+- `event.entityId` — The unique identifier (EUID) of the entity that changed.
+- `event.entityType` — The type of entity: `host`, `user`, or `service`.
+
+Individual trigger sections below document the additional payload fields specific to that event.
+
+### `entityStore.entityAssetCriticalityUpdated` [entitystore-assetcriticalityupdated-trigger]
+
+Fires when an entity's asset criticality level is assigned or cleared.
+
+#### Schema
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | Must be `entityStore.entityAssetCriticalityUpdated`. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. |
+
+#### Event payload
+
+| Field | Contains |
+|---|---|
+| `event.entityId` | The unique identifier (EUID) of the entity whose asset criticality changed. |
+| `event.entityType` | The entity type (`host`, `user`, or `service`). |
+| `event.criticalityLevel` | The new asset criticality level (`low_impact`, `medium_impact`, `high_impact`, or `extreme_impact`), or `null` when criticality is cleared. |
+
+#### Examples
+
+Fire when an entity is assigned high or extreme impact:
+
+```yaml
+triggers:
+  - type: entityStore.entityAssetCriticalityUpdated
+    on:
+      condition: 'event.criticalityLevel: "high_impact" OR event.criticalityLevel: "extreme_impact"'
+```
+
+Fire only when a host entity's criticality changes:
+
+```yaml
+triggers:
+  - type: entityStore.entityAssetCriticalityUpdated
+    on:
+      condition: 'event.entityType: "host"'
+```
+
+Fire when criticality is removed from an entity:
+
+```yaml
+triggers:
+  - type: entityStore.entityAssetCriticalityUpdated
+    on:
+      condition: 'NOT event.criticalityLevel: *'
+```
+
+### `entityStore.entityRiskScoreChanged` [entitystore-riskscorechanged-trigger]
+
+Fires when an entity's risk score changes.
+
+#### Schema
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | Must be `entityStore.entityRiskScoreChanged`. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. |
+
+#### Event payload
+
+| Field | Contains |
+|---|---|
+| `event.entityId` | The unique identifier (EUID) of the entity whose risk score changed. |
+| `event.entityType` | The entity type (`host`, `user`, or `service`). |
+| `event.score` | The risk score after the update (0–100). |
+| `event.previousScore` | The risk score before the update, or `null` when this is the first score assignment. |
+| `event.delta` | The absolute magnitude of the change in risk score. Use `event.direction` to distinguish an increase from a decrease. `null` when the previous score is unavailable. |
+| `event.direction` | Whether the risk score increased or decreased (`increase` or `decrease`). `null` when the previous score is unavailable. |
+
+#### Examples
+
+Fire when a risk score increases by 25 or more:
+
+```yaml
+triggers:
+  - type: entityStore.entityRiskScoreChanged
+    on:
+      condition: 'event.direction: "increase" AND event.delta >= 25'
+```
+
+Fire when a risk score decreases:
+
+```yaml
+triggers:
+  - type: entityStore.entityRiskScoreChanged
+    on:
+      condition: 'event.direction: "decrease"'
+```
+
+Fire when a risk score crosses a high-risk threshold:
+
+```yaml
+triggers:
+  - type: entityStore.entityRiskScoreChanged
+    on:
+      condition: 'event.score >= 70'
+```
+
 ## {{alerting-v2-system-cap}} alert episode lifecycle triggers [alert-episode-lifecycle-triggers-event-driven]
 
 ```{applies_to}
 stack: experimental 9.5+
 serverless: experimental
 ```
+
+:::{note}
+These triggers are available only when the {{alerting-v2-system}} is enabled. If it isn't enabled, they don't appear in the trigger picker.
+:::
 
 Alert episode lifecycle triggers fire on specific alert episode events in the {{alerting-v2-system}}. Unlike `workflows.failed` and cases triggers, they are not configured through a `triggers` block in your workflow YAML. They are emitted by the alerting system and automatically invoke any workflow attached to the matching trigger type. Each trigger fires exactly once per event. There is no polling interval or frequency gate.
 
@@ -394,6 +514,10 @@ Use these fields to write workflow conditions that scope the automation to speci
 stack: experimental 9.5+
 serverless: experimental
 ```
+
+:::{note}
+These triggers are available only when the {{alerting-v2-system}} is enabled. If it isn't enabled, they don't appear in the trigger picker.
+:::
 
 {{alerting-v2-system-cap}} rule lifecycle triggers fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. Use them to automate responses to rule management actions, for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
 
@@ -477,21 +601,68 @@ steps:
         Rule {{ event.rule.ruleId }} in space {{ event.rule.spaceId }} — trigger: {{ trigger.type }}
 ```
 
-## Prevent cascading handler loops
+## Control event chains and prevent loops
 
-This section applies to `workflows.failed` handlers. Alert episode lifecycle triggers fire once per event and do not re-trigger on workflow failure.
+When a workflow's own steps cause an event that its trigger listens for, executions can chain together (workflow A emits an event, which runs workflow B, which emits an event that runs A again). Left unchecked, these chains can loop or generate load. Event-driven triggers give you controls to manage this, with safe defaults.
 
-If a handler workflow itself fails, it can re-trigger itself. Two safeguards help you avoid infinite loops:
+### Filter workflow-generated events [event-driven-triggers-workflow-events]
 
-- Every event includes `event.workflow.isErrorHandler`, which is `true` when the failing workflow is itself a handler. Filter on this in your handler's logic to skip handling your own failures.
-- The execution engine enforces a chain-depth limit on cascading event-driven triggers as a safety net.
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Use `on.workflowEvents` on any event-driven trigger to control whether events that originated from a workflow run can fire this trigger:
+
+| Value | Behavior |
+|---|---|
+| `avoid-loop` | Default, applied when `workflowEvents` is omitted or set to an unrecognized value. The trigger fires on workflow-generated events, but a cycle guard skips scheduling when this workflow is already part of the current event chain. This blocks same-workflow loops while still allowing linear chains. |
+| `ignore` | The trigger does not fire on workflow-generated events. Events that originate from a user action or a domain change (not attributed to a workflow) still fire the trigger. Use this to react only to external signals. |
+| `allow-all` | The trigger fires even when this workflow is already in the event chain, bypassing the cycle guard. Use this only when repeated same-workflow runs are intentional. The maximum chain depth still applies as a backstop. |
+
+```yaml
+triggers:
+  - type: cases.caseUpdated
+    on:
+      # React only to case updates made by people, not updates made by workflows
+      workflowEvents: ignore
+```
+
+Regardless of the value, the execution engine enforces a maximum event-chain depth as a final safety net against runaway chains.
+
+### Prevent `workflows.failed` handler loops [event-driven-triggers-handler-loops]
+
+If a `workflows.failed` handler fails, it can trigger itself. In addition to the controls above, every failure event includes `event.workflow.isErrorHandler`, which is `true` when the failed workflow was itself a handler. Filter on this field to skip handling your own failures:
+
+```yaml
+triggers:
+  - type: workflows.failed
+    on:
+      condition: "event.workflow.isErrorHandler : false"
+```
 
 In practice, keep handler workflows simpler than the workflows they monitor. A handler that only logs, opens a case, and notifies is less likely to fail than the automation it's handling.
+
+## Test a workflow with a real event [event-driven-triggers-test]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+You can test an event-driven workflow against a real event before enabling it. When you run a workflow from the editor, the **Run workflow** dialog shows a trigger tab for each way to supply input, including an **Event** tab for event-driven triggers.
+
+On the **Event** tab, browse events that have already occurred for your trigger type. Use the KQL search bar and time range to narrow the list, select an event from the results, and run the workflow against that event's payload. The execution then runs exactly as it would have when the event first occurred, so you can confirm your conditions and steps behave as expected.
+
+:::{tip}
+To reuse the input from an earlier run instead of a fresh event, use the **Historical** tab, which lets you rerun a workflow with the input data from a previous execution.
+:::
 
 ## Related
 
 - [Triggers overview](/explore-analyze/workflows/triggers.md): All trigger types.
 - [Workflow authorization](/explore-analyze/workflows/authorization.md): Whose privileges event-driven workflows run with.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Per-step `on-failure` strategies complement event-driven handlers.
+- [Monitor workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md): See what triggered each run and inspect the event payload.
 - [Cases steps](/explore-analyze/workflows/steps/cases.md): Open cases from your handler.
 - [Connect workflows to the {{alerting-v2-system}}](../../alerting/experimental-alerting-system/workflows-alerting.md): Full reference for alert episode lifecycle triggers, including available trigger IDs, event payload fields, and when to use lifecycle triggers versus action policies.
