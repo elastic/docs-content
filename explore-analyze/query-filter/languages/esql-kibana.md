@@ -249,9 +249,16 @@ Some {{esql}} commands have dedicated editor features beyond autocomplete, such 
 
 The {{esql}} editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
 
-{applies_to}`stack: ga 9.2.0` Remote lookup joins are supported in [cross-cluster queries](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md). The lookup index must exist on _all_ remote clusters being queried, because each cluster uses its local lookup index data.
-
 In **Discover**, LOOKUP JOIN commands let you create or edit lookup indices directly from the editor. Find more information in [](/explore-analyze/discover/try-esql.md#discover-esql-lookup-join).
+
+##### Cross-cluster and cross-project lookup joins
+```{applies_to}
+stack: ga 9.2.0
+```
+
+Remote lookup joins are supported in [cross-cluster](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md) and [cross-project](elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md) queries. By default, {{esql}} resolves the lookup index on every remote cluster in the query and each cluster joins against its own local index with that name.
+
+{applies_to}`stack: ga 9.6` To join against a lookup index on the local cluster or origin project when that index is missing from one or more clusters or projects in the query, use [`LOOKUP JOIN` coordinator mode](elasticsearch://reference/query-languages/esql/esql-lookup-join.md#coordinator-mode).
 
 
 #### ENRICH command and enrich policies [esql-kibana-enrich]
