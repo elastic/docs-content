@@ -2,8 +2,8 @@
 navigation_title: "Dashboards and visualizations"
 description: "Create, edit, and save Kibana dashboards and visualizations through natural language chat with Agent Builder agents."
 applies_to:
-  stack: preview 9.4+
-  serverless: preview
+  stack: preview 9.4, ga 9.5+
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana
@@ -37,7 +37,7 @@ The full-screen [standalone chat mode](standalone-and-flyout-modes.md#standalone
 
 ## How dashboards appear in chat
 
-When an agent creates a dashboard, it describes the contents in the conversation and attaches the dashboard to the message. Dashboards are both inputs and outputs: the agent can reason about the panels in an attached dashboard when answering follow-up questions.
+When an agent creates a dashboard, it describes the contents in the conversation and attaches the dashboard to the message. Dashboards are both inputs and outputs: the agent can reason about the panels in an attached dashboard when answering follow-up questions. If you open a new conversation while viewing a dashboard, that dashboard is attached automatically as context, so you can ask about it right away.
 
 The following example walks through creating a dashboard from a natural language request.
 
@@ -58,6 +58,13 @@ Select **Preview** to open the dashboard in a canvas alongside the conversation.
 :::{image} images/agent-builder-dashboard-canvas-preview.png
 :screenshot:
 :alt: Full-screen chat with the conversation on the left and a dashboard canvas preview on the right showing metrics, charts, and trend panels
+:::
+
+In the full-screen canvas, you can explore the data before you save the dashboard: enter a KQL query, add filter pills, adjust the time range, and select chart elements or legend values to filter the results. To work with an individual panel, hover over it to reveal its actions, such as maximizing or inspecting it.
+
+:::{tip}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+Select the {icon}`bolt` **Fast mode** control and turn it on to get approximate {{esql}} results for faster performance on large datasets. Fast mode is available when the dashboard includes at least one {{esql}} visualization that uses `STATS`, and it isn't available in the sidebar preview.
 :::
 ::::
 ::::{step} Save or refine
