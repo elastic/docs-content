@@ -191,6 +191,18 @@ Tool call events show whether a tool is still running or has returned a response
 
 After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
+### View traces for a conversation round
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Each conversation round can record OpenTelemetry traces of how the agent ran. To inspect them, select the **View Trace** icon ({icon}`apm_trace`) on the round. A **Trace** flyout opens with a waterfall of the round's spans, including model calls and tool calls.
+
+The **View Trace** icon appears only when trace collection is enabled and the conversation round has a trace. If trace collection is off, or the round produced no trace, the icon does not appear.
+
+To learn how traces are collected, configured, and secured, refer to [Collect agent traces](collect-traces.md).
+
 ### Human-in-the-loop prompts
 ```{applies_to}
 stack: ga 9.4+
@@ -198,15 +210,41 @@ stack: ga 9.4+
 
 At certain points an agent pauses and hands control back to you before it continues. This pattern is known as human-in-the-loop (HITL). While a conversation is paused this way, it shows an **Awaiting your input** status in the [chat history panel](#track-conversation-status).
 
+{{agent-builder}} uses different prompts depending on why the agent needs your input:
+
+| Prompt | When it appears | Available responses |
+| --- | --- | --- |
+| Tool confirmation | An Elastic-built tool or skill requires approval before it performs an action | Confirm the action or deny it |
+| Connector authorization {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | An external connector needs access to continue | Authorize access or deny it |
+| Clarifying question {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | The agent needs more information to continue | Answer or skip the question |
+
+HITL prompts do not replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
+
 #### Confirm a change
 
-You control every write operation an agent performs. Whenever an agent proposes to create, update, or delete a resource, the chat pauses and presents a preview before anything takes effect. The preview format and available actions depend on the skill the agent is using. Review the preview, then confirm it to apply the change or dismiss it to discard it. Nothing is applied until you respond.
+Some Elastic-built tools and skills pause for confirmation before performing consequential actions. When confirmation is required, the chat presents a preview before the action takes effect. The preview format and available responses depend on the tool or skill. Review the preview, then confirm the action to proceed or deny it to cancel.
 
 For example, when an agent updates a workflow, it shows the proposed change as a diff and waits for you to review it before applying:
 
 :::{image} images/agent-builder-preview-changes.png
 :screenshot:
 :alt: Preview panel showing proposed changes from an agent action before they are applied.
+:width: 700px
+:::
+
+The Streams management skill also previews the proposed configuration when it creates a stream:
+
+:::{image} images/agent-builder-confirm-create-stream.png
+:screenshot:
+:alt: Confirmation prompt previewing a new logs.otel.checkout stream and its routing condition
+:width: 700px
+:::
+
+For irreversible actions, the prompt highlights the consequences before you proceed:
+
+:::{image} images/agent-builder-confirm-delete-stream.png
+:screenshot:
+:alt: Confirmation prompt warning that the logs.otel.checkout stream and its data will be permanently deleted
 :width: 700px
 :::
 
