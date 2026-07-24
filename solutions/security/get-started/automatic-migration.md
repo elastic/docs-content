@@ -49,6 +49,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
+* For rule migrations, [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) must be available. Automatic Migration uses ELSER to match translated rules to recommended integrations.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
 :::
@@ -60,6 +61,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
+* For rule migrations, [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) must be available. Automatic Migration uses ELSER to match translated rules to recommended integrations.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
 :::
@@ -71,6 +73,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
+* For rule migrations, [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) must be available. Automatic Migration uses ELSER to match translated rules to recommended integrations.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
 
@@ -272,3 +275,7 @@ Rule migration data appears in `.kibana-siem-rule-migrations-rules-default`. Das
 **How does Automatic Migration handle Splunk assets which lookup other indices?**
 
 Assets that fall into this category will typically appear with a status of partially translated. You can use the [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) capability to help in this situation.
+
+**Why are no integrations shown for translated rules?**
+
+This can occur if the `.kibana-siem-rule-migrations-integrations` index was created when the ELSER inference endpoint was unavailable, causing it to fall back to a different embedding model. This mismatched model causes integration matching to fail, resulting in no integrations appearing for translated rules, as well as inconsistent or empty semantic search results. Refer to [Troubleshoot Automatic Migration](automatic-migration-troubleshooting.md) for instructions on how to re-create the index with the correct ELSER inference endpoint.
