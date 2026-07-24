@@ -15,7 +15,7 @@ description: Look up the fields in the case analytics indices, including case, a
 
 # Case analytics field reference [case-analytics-fields]
 
-This page lists the most useful fields in the three [case analytics indices](case-analytics-indices.md). For the complete, authoritative schema, refer to [Case analytics indices schema](kibana://reference/case-analytics-indices-schema.md).
+This page lists the most useful fields in the three [case analytics indices](case-analytics-indices.md).
 
 Field names use the singular `case.*` form, such as `case.status`, even though the index names are plural, such as `.cases`. The `owner`, `space_id`, and `@timestamp` fields sit at the top level instead of under `case.*`.
 
