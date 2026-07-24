@@ -2,8 +2,8 @@
 navigation_title: "Dashboards and visualizations"
 description: "Create, edit, and save Kibana dashboards and visualizations through natural language chat with Agent Builder agents."
 applies_to:
-  stack: preview 9.4+
-  serverless: preview
+  stack: preview =9.4, ga 9.5+
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana
@@ -37,7 +37,7 @@ The full-screen [standalone chat mode](standalone-and-flyout-modes.md#standalone
 
 ## How dashboards appear in chat
 
-When an agent creates a dashboard, it describes the contents in the conversation and attaches the dashboard to the message. Dashboards are both inputs and outputs: the agent can reason about the panels in an attached dashboard when answering follow-up questions.
+When an agent creates a dashboard, it describes the contents in the conversation and attaches the dashboard to the message. Dashboards are both inputs and outputs: the agent can reason about the panels in an attached dashboard when answering follow-up questions. If you open a new conversation while viewing a dashboard, that dashboard is attached automatically as context, so you can ask about it right away.
 
 The following example walks through creating a dashboard from a natural language request.
 
@@ -48,7 +48,7 @@ Describe what you want to visualize. The agent creates the dashboard and respond
 
 :::{image} images/agent-builder-dashboard-chat-response.png
 :screenshot:
-:alt: Agent chat response showing a created Web Traffic Analysis Dashboard with a Preview button and a breakdown of the included sections and metrics
+:alt: Agent chat showing a natural language request to create a web traffic dashboard and the agent's response describing the skills it loaded, the data it used, and a breakdown of the dashboard structure
 :::
 ::::
 ::::{step} Preview the dashboard
@@ -58,6 +58,13 @@ Select **Preview** to open the dashboard in a canvas alongside the conversation.
 :::{image} images/agent-builder-dashboard-canvas-preview.png
 :screenshot:
 :alt: Full-screen chat with the conversation on the left and a dashboard canvas preview on the right showing metrics, charts, and trend panels
+:::
+
+In the canvas, you can explore the data before you save the dashboard: enter a KQL query, add filter pills, adjust the time range, and select chart elements or legend values to filter the results. To work with an individual panel, hover over it to reveal its actions, such as maximizing or inspecting it.
+
+:::{tip}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+Select the {icon}`bolt` **Fast mode** option and turn it on to get approximate {{esql}} results for faster performance on large datasets. Fast mode is available when the dashboard includes at least one {{esql}} visualization that uses `STATS`. For more about {{esql}} approximation, refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
 :::
 ::::
 ::::{step} Save or refine
@@ -74,7 +81,7 @@ Select **Save** to [save the dashboard](#save-a-dashboard) as a {{kib}} saved ob
 
 You can also continue chatting to refine the dashboard. For example, ask the agent to add panels, change chart types, update metrics, or rearrange the layout.
 
-Individual visualizations display inline in the conversation when you ask for a single chart or metric.
+Individual visualizations display inline in the conversation when you ask for a single chart or metric. Inline visualizations are interactive: adjust the time range, or select a range directly on the chart to zoom in.
 ::::
 :::::
 
@@ -97,7 +104,6 @@ To save an agent-created dashboard as a {{kib}} saved object:
 :::{image} images/agent-builder-dashboard-save-dialog.png
 :screenshot:
 :alt: Save as new dashboard dialog with title, description, tags, and permissions fields
-:width: 450px
 :::
 
 After saving, you can open the dashboard in the [Dashboards app](/explore-analyze/dashboards.md) for further editing using the full dashboard editor.

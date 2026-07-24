@@ -2,8 +2,8 @@
 navigation_title: Create using AI
 description: Use Agent Builder or the Kibana dashboards agent skill to create dashboards from natural language, without writing API requests or learning the dashboard schema.
 applies_to:
-  stack: preview 9.4+
-  serverless: preview
+  stack: preview =9.4, ga 9.5+
+  serverless: ga
 products:
   - id: kibana
 type: overview
@@ -24,8 +24,8 @@ If you need to create dashboards from code or CI/CD pipelines using REST APIs, r
 
 ## {{agent-builder}} [agent-builder-dashboard-tools]
 ```{applies_to}
-stack: preview 9.4+
-serverless: preview
+stack: preview =9.4, ga 9.5+
+serverless: ga
 ```
 
 {{agent-builder}} agents can create and update dashboards through natural language [chat](/explore-analyze/ai-features/agent-builder/chat.md), using the chat UI in {{product.kibana}}, the [Chat API](/explore-analyze/ai-features/agent-builder/kibana-api.md), or the [MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md). Describe what you want to visualize and the agent builds a dashboard with [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md)-powered visualizations. Dashboards are in-memory by default and exist as conversation attachments until you save them, so you can iterate freely before finalizing.
