@@ -768,3 +768,7 @@ This request returns an error:
   "status": 404
 }
 ```
+
+## Related pages
+
+* [Troubleshoot {{ml}} with {{cps-init}}](/troubleshoot/elasticsearch/machine-learning.md) — Diagnose and resolve anomaly detection {{dfeeds}} that search across linked projects.

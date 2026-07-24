@@ -261,3 +261,7 @@ If you are upgrading your cluster, you can use the following request to close al
 ```console
 POST _ml/anomaly_detectors/_all/_close
 ```
+
+## Related pages
+
+* [Troubleshoot {{ml}} with {{cps-init}}](/troubleshoot/elasticsearch/machine-learning.md) — Resolve cross-project {{dfeeds}} issues on {{serverless-full}}, including credential, scope, and mapping problems.
