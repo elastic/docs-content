@@ -537,7 +537,15 @@ toc:
       - file: cases/attach-objects-to-cases.md
       - file: cases/search-share-cases.md
       - file: cases/configure-case-settings.md
-      - file: cases/cases-as-data.md
+      - file: cases/case-analytics.md
+        children:
+          - file: cases/grant-access-case-analytics.md
+          - file: cases/case-analytics-indices.md
+          - file: cases/explore-case-data.md
+          - file: cases/query-case-data-esql.md
+          - file: cases/analyze-case-fields.md
+          - file: cases/case-analytics-fields.md
+          - file: cases/administer-case-analytics.md
   - file: workflows.md
     children:
       - file: workflows/get-started.md
