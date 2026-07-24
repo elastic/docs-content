@@ -482,17 +482,26 @@ toc:
           - file: observability/streams/processors/enrich.md
           - file: observability/streams/processors/grok.md
           - file: observability/streams/processors/join.md
+          - file: observability/streams/processors/json-extract.md
           - file: observability/streams/processors/lowercase.md
           - file: observability/streams/processors/math.md
           - file: observability/streams/processors/network-direction.md
           - file: observability/streams/processors/redact.md
+          - file: observability/streams/processors/registered-domain.md
           - file: observability/streams/processors/remove.md
           - file: observability/streams/processors/rename.md
           - file: observability/streams/processors/replace.md
           - file: observability/streams/processors/set.md
+          - file: observability/streams/processors/sort.md
+          - file: observability/streams/processors/split.md
           - file: observability/streams/processors/trim.md
           - file: observability/streams/processors/uppercase.md
+          - file: observability/streams/processors/uri-parts.md
+          - file: observability/streams/processors/user-agent.md
           - file: observability/streams/processors/manual-pipeline-configuration.md
+      - hidden: observability/nightshift/nightshift.md
+        children:
+          - hidden: observability/nightshift/get-started.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
