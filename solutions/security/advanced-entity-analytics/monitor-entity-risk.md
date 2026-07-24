@@ -83,7 +83,8 @@ serverless: ga
 ```
 
 :::{admonition} Requirements
-To display anomaly results, you must [install and run](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt anomaly detection jobs](/reference/machine-learning/ootb-ml-jobs-siem.md).
+* To display anomaly results, you must [install and run](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt {{anomaly-jobs}}](/reference/machine-learning/ootb-ml-jobs-siem.md).
+* Loading this panel requires `read` privileges for the `.ml-anomalies-shared*` index and **Read** for the **Machine Learning** {{kib}} feature.
 :::
 
 This panel displays recent entity-related anomalies detected by prebuilt {{ml}} jobs. Interact with this section in the following ways:

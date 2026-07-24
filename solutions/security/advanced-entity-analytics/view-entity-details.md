@@ -29,16 +29,13 @@ The entity details flyout includes the following sections:
 * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Flyout header, which displays key entity information and allows you to assign asset criticality.
 * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` [Entity summary](#entity-summary), which allows you to generate an AI summary of the entity.
 * [Entity risk summary](#entity-risk-summary), which displays entity risk data and inputs.
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [Behavioral anomalies](#behavioral-anomalies), which shows {{ml}} anomalies detected for the entity, mapped to the MITRE ATT&CK framework.
 * {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` [Visualizations](#visualizations), which shows a graph preview of the entity's connections and relationships.
 * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Resolution](#resolution), which allows you to view and manage the entity's resolution group.
 * [Insights](#insights), which displays vulnerabilities or misconfiguration findings for the entity.
 * [Observed data](#observed-data), which displays entity details.
 * {applies_to}`stack: removed 9.4+, ga 9.0-9.3` {applies_to}`serverless: removed` [Asset Criticality](#asset-criticality), which allows you to view and assign asset criticality.
 
-:::{image} /solutions/images/security-host-details-flyout.png
-:alt: Host details flyout
-:screenshot:
-:::
 
 ### Entity summary
 ```yaml {applies_to}
@@ -96,6 +93,34 @@ To expand the entity risk summary section, click **View risk contributions**. Th
 
 {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` If you have [AI Assistant](/solutions/security/ai/ai-assistant.md) set up, you can also ask it to explain how the risk inputs contributed to the entity's risk score and recommend next steps.
 
+### Behavioral anomalies [behavioral-anomalies]
+```yaml {applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+::::{admonition} Requirements
+* To display anomaly results, you must [install and run](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt {{anomaly-jobs}}](/reference/machine-learning/ootb-ml-jobs-siem.md).
+* Viewing behavioral anomalies requires `read` privileges for the `.ml-anomalies-shared*` index and **Read** for the **Machine Learning** {{kib}} feature.
+* This feature is only available for users and hosts.
+::::
+
+The **Behavioral anomalies** section surfaces {{ml}} anomalies detected for the entity over the selected time range, mapped to the [MITRE ATT&CK](https://attack.mitre.org) framework. It helps you spot suspicious activity — such as an unusual login from an atypical location — in the context of an attack chain.
+
+The section overview displays:
+
+* The total number of anomalies and an attack chain showing the MITRE ATT&CK tactics associated with them, with a badge indicating the number of anomalies per tactic.
+* A table listing the three most recent anomalies, with the {{ml}} job that detected each one, its timestamp, and the anomalous value observed for the entity. Click a {{ml}} job name to open the record in the [Single Metric Viewer](/explore-analyze/machine-learning/anomaly-detection/ml-ad-view-results.md).
+
+Click **All anomalies** to expand the flyout and open the **Behavioral anomalies** tab. The tab provides:
+
+* **Filters**: filter anomalies by time range and anomaly score severity range.
+* **Attack chain**: a visualization of the MITRE ATT&CK tactics represented in the detected anomalies. Select a tactic to filter the timeline and table to that tactic's anomalies.
+* **Anomaly timeline**: a swimlane chart showing the anomalies over time, grouped by tactic and colored by severity.
+* **Anomalies** table: a detailed, sortable list of anomaly records. Expand a row to see a plain-language explanation of the anomaly, the number of anomalous events, and the key fields that triggered it.
+
+From the **Row actions** menu {icon}`boxes_vertical` of the **Anomalies** table, you can add an anomaly to Timeline, view its underlying events in Discover, or open the record in the Single Metric Viewer.
+
 ### Visualizations [visualizations]
 ```yaml {applies_to}
 stack: preview 9.4+
@@ -103,7 +128,7 @@ serverless: preview
 ```
 
 ::::{admonition} Requirements
-[Entity store v2](/solutions/security/advanced-entity-analytics/entity-store.md) must be enabled and populated in the active space.
+[Entity store](/solutions/security/advanced-entity-analytics/entity-store.md) must be enabled and populated in the active space.
 ::::
 
 The **Visualizations** section shows a collapsible graph preview centered on the entity, covering the last 30 days of connections and [relationships](/solutions/security/advanced-entity-analytics/entity-relationships.md). To open the full interactive graph, click **Graph preview** to expand the flyout. In the graph view, you can:
