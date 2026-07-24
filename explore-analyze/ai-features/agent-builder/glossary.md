@@ -192,7 +192,7 @@ GenAI Settings {applies_to}`stack: ga 9.4+`
 
 $$$human-in-the-loop$$$
 Human-in-the-loop (HITL)
-:   A pattern where an agent pauses during a conversation and waits for you to respond before it continues. {{agent-builder}} uses human-in-the-loop prompts to confirm write operations, authorize access to external connectors, and ask clarifying questions. See [](chat.md#human-in-the-loop-prompts).
+:   A pattern where an agent pauses during a conversation and waits for you to respond before it continues. {{agent-builder}} uses human-in-the-loop prompts to request confirmation for some actions, authorize access to external connectors, and ask clarifying questions. See [](chat.md#human-in-the-loop-prompts).
 
 ## I
 

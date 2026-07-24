@@ -20,7 +20,6 @@ toc:
           - file: query-filter/tools/console.md
           - file: query-filter/tools/search-profiler.md
           - file: query-filter/tools/grok-debugger.md
-          - file: query-filter/tools/playground.md
       - file: query-filter/aggregations.md
         children:
           - file: query-filter/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md
@@ -241,6 +240,10 @@ toc:
                    - title: "OAuth authentication"
                      crosslink: docs-content://deploy-manage/app-connections/oauth-clients.md
           - file: ai-features/agent-builder/monitor-usage.md
+            children:
+              - file: ai-features/agent-builder/collect-traces.md
+              - file: ai-features/agent-builder/agent-traces-dashboard.md
+              - file: ai-features/agent-builder/create-alerts.md
           - file: ai-features/agent-builder/permissions.md
           - file: ai-features/agent-builder/troubleshooting.md
             children:

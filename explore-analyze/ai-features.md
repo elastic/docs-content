@@ -89,10 +89,6 @@ The [{{es}}](/solutions/search.md) solution view (or project type in {{serverles
 
 [](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
-### Playground
-
-[Playground](/solutions/elasticsearch-solution-project/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](/solutions/search/retrievers-overview.md) syntax with the `_search` endpoint.
-
 ### Model Context Protocol (MCP) servers
 
 Elastic offers two MCP server options for connecting agents to your {{es}} data. The Agent Builder MCP server is the recommended approach for {{es}} 9.2+ deployments and Serverless projects, offering full access to built-in and custom tools. For older {{es}} versions without Agent Builder, you can use the `mcp-elasticsearch` server which has a limited tool set.
@@ -125,9 +121,9 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 [Streams](/solutions/observability/streams/streams.md) is an AI-assisted centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data. Streams leverages AI in the following features:
 
 % * [Significant Events](/solutions/observability/streams/management/significant-events.md): Use AI to suggest queries based on your data that find important events in your stream.
-* [Grok processing](/solutions/observability/streams/management/extract/grok.md#streams-grok-patterns): Use AI to generate grok patterns that extract meaningful fields from your data.
-* [Partitioning](/solutions/observability/streams/management/partitioning.md): Use AI to suggest logical groupings and child streams based on your data when using wired streams.
-* [Advanced settings](/solutions/observability/streams/management/advanced.md): Use AI to generate a [stream description](/solutions/observability/streams/management/advanced.md#streams-advanced-description) and a [feature identification](/solutions/observability/streams/management/advanced.md#streams-advanced-features) that other AI features use when generating suggestions.
+* [Grok processing](/solutions/observability/streams/processors/grok.md#streams-grok-patterns): Use AI to generate grok patterns that extract meaningful fields from your data.
+* [Partitioning](/solutions/observability/streams/organize-your-data.md): Use AI to suggest logical groupings and child streams based on your data when using wired streams.
+* [Advanced settings](/solutions/observability/streams/advanced.md): Use AI to generate a [stream description](/solutions/observability/streams/advanced.md#streams-advanced-description) and a [feature identification](/solutions/observability/streams/advanced.md#streams-advanced-features) that other AI features use when generating suggestions.
 
 ### Automatic Import [automatic-import-observability]
 

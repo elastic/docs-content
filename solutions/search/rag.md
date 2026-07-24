@@ -77,7 +77,9 @@ You can build RAG applications with {{es}} by retrieving relevant context from y
 
 If you're using the {{es}} solution or serverless project type, these additional tools enable RAG workflows:
 
-**Playground:** Build, test, and deploy RAG interfaces with a UI that automatically selects retrieval methods and provides full control over queries and model instructions. Download Python code to integrate with your applications. Learn more in the [Playground documentation](/solutions/elasticsearch-solution-project/playground.md).
+**Agent Builder:** Build AI-powered search experiences using [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md), which provides built-in agents, tools, and skills for interacting with your {{es}} data through a chat interface.
+
+**Playground (deprecated):** [Playground](/solutions/elasticsearch-solution-project/playground.md) has been deprecated as of version 9.4. Use Agent Builder instead.
 
 
 ## Learn more [rag-elasticsearch-learn-more]
