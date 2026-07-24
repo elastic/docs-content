@@ -106,3 +106,21 @@ The applicable filter type for the remote cluster depends on the local and remot
 ::::{note}
 When using self-managed security mechanisms (such as firewalls), keep in mind that remote clusters with API key–based authentication use port `9443` by default. Specify this port if a destination port is required.
 ::::
+
+### Supported connection paths [remote-clusters-connection-paths]
+
+Remote cluster connections to an {{ech}} deployment always target the remote deployment's **proxy address**, found on the **Security** page of the remote deployment: port `9400` for the TLS certificate–based model, or port `9443` for the API key–based model. The network paths supported for this connection depend on where the local cluster runs:
+
+| Local cluster location | Remote cluster | Connection path | Private connectivity applicable? |
+|---|---|---|---|
+| {{ech}} deployment (any region or cloud provider) | {{ech}} deployment | Remote proxy address over public endpoints. Cross-region and cross-provider connections are supported. | **No.** Private connection hostnames resolve only inside your VPC or VNet through your private DNS zone. Deployment-to-deployment traffic originates from Elastic-managed networks and can't traverse your private endpoint. |
+| Self-managed or {{ece}} cluster in your VPC or VNet | {{ech}} deployment | Public proxy address, or a private connection: create a VPC endpoint (AWS), private endpoint (Azure), or Private Service Connect endpoint (GCP) and connect to the remote cluster ports through it. Inter-region private connections are supported where the cloud provider supports them. | **Yes** (in this direction only). |
+| {{ech}} deployment | Self-managed cluster in your network | Outbound from Elastic over the public internet to your cluster's endpoint. Allow the connection with IP-based rules on your side. | **No.** {{ech}} deployments can't consume private endpoints in customer networks. |
+
+::::{warning}
+Don't use a private connection hostname (for example, `*.vpce.{region}.aws.elastic-cloud.com` or your Azure private hosted zone domain) as the `proxy_address` for a remote cluster connection between two {{ech}} deployments. The connection will fail because the hostname is not resolvable from Elastic-managed networks. Use the proxy address from the remote deployment's **Security** page instead.
+::::
+
+::::{tip}
+Traffic sent between deployments for {{ccs}} and {{ccr}} is metered as **Data out** on the deployment the data is replicated or searched from, regardless of destination or path. Refer to [Cloud Hosted deployment billing dimensions](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md).
+::::

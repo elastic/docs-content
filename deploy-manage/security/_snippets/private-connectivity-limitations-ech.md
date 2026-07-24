@@ -1,4 +1,5 @@
 * **Transport client:** The {{es}} transport client is not supported over private connections.
+* **Remote clusters between {{ech}} deployments:** Remote cluster connections ({{ccs}} and {{ccr}}) between two {{ech}} deployments don't traverse your private endpoint. Deployment-to-deployment traffic uses the remote deployment's proxy address. Private connections apply to remote cluster traffic only when the local cluster runs in your own VPC or VNet (self-managed or {{ece}}). Refer to [Supported connection paths](/deploy-manage/remote-clusters.md#remote-clusters-connection-paths).
 * **Managed OTLP endpoint:** In {{ech}} deployments, the [managed OTLP endpoint](opentelemetry://reference/motlp.md) is not accessible over private connections. The public endpoint is still available.
 * **SSO to {{kib}} from the {{ecloud}} console:** In {{ech}} deployments, you can't use SSO to log in to {{kib}} endpoints that are protected by private connections. The connection to the {{kib}} public URL is still available. In {{serverless-full}}, this limitation does not apply.
 
