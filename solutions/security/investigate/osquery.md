@@ -120,7 +120,11 @@ A pack is a set of grouped queries that perform similar functions or address com
 
 You can also create a custom pack with one or more queries. For example, when creating custom packs, you might create one pack that checks for IT compliance-type issues, and another pack that monitors for evidence of malware.
 
-You can run packs as live queries or schedule packs to run for one or more agent policies. When scheduled, queries in the pack are run at the set intervals for all agents in those policies.
+You can run packs as live queries or schedule packs to run for one or more agent policies. When scheduled, queries in the pack are run for all agents in those policies.
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The schedule is set at the pack level and inherited by all queries in the pack. Individual queries can override the pack schedule.
+
+### Create or edit a pack
 
 1. Click the **Packs** tab.
 2. Create a new pack, or click the name of an existing pack, then **Edit** to add queries to an existing pack.
@@ -139,20 +143,49 @@ You can run packs as live queries or schedule packs to run for one or more agent
     ::::
 
 
-    * **Scheduled {{agent}} policies (optional)**: Allows you to deploy the pack to specific agent policies. By default, the pack is deployed to all {{agents}} that are registered to the policies you define.
-    * **Partial deployment (shards)**: Allows you to deploy the pack to a portion of the agents on each specified agent policy. After defining a policy, use the **Shard** slider to set the amount of agents to which the pack is deployed. For example, after specifying a policy, you can choose to deploy the pack to half of the policy’s agents by selecting 50% on the slider.
+    1. **Scheduled {{agent}} policies (optional)**: Allows you to deploy the pack to specific agent policies. By default, the pack is deployed to all {{agents}} that are registered to the policies you define.
+    2. **Partial deployment (shards)**: Allows you to deploy the pack to a portion of the agents on each specified agent policy. After defining a policy, use the **Shard** slider to set the amount of agents to which the pack is deployed. For example, after specifying a policy, you can choose to deploy the pack to half of the policy’s agents by selecting 50% on the slider.
 
-5. If you’re creating a new pack, add queries to schedule:
 
-    * Click **Add query** and then add a saved query or enter a new query. Each query must include a unique query ID and the interval at which it should run. Optionally, set the minimum Osquery version and platform, specify a timeout period, or [map ECS fields](#osquery-map-fields). When you add a saved query to a pack, this adds a copy of the query. A connection is not maintained between saved queries and packs.
+### Set a pack schedule [osquery-set-pack-schedule]
+```yaml {applies_to}
+stack: ga 9.5+
+serverless: ga
+```
 
-        ::::{note}
-        Overwriting the query’s default timeout period allows you to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
-        ::::
+In the **Schedule** section of the pack, choose how the pack and its queries run. The two schedule types are mutually exclusive: a pack and all of its queries share one schedule type.
 
-    * Upload queries from a `.conf` query pack by dragging the pack to the drop zone under the query table. To explore the community packs that Osquery publishes, click **Example packs**.
+* **Interval**: Run queries based on specified time intervals, calculated from when each {{agent}} was deployed. Set the **Intervals** value in seconds.
+* **Date & time**: Run queries at a set date and time, such as every Saturday at 9am. Configure the following fields:
 
-6. Click **Save pack**. The queries run when the policy receives the update.
+    1. **Start date and time**: The first occurrence and the recurring time of day.
+    2. **Frequency**: How often the queries run.
+
+        * **Daily**: Run every day at the start time.
+        * **Custom**: Run at a custom interval. In **Repeat every**, enter a number and select a unit of **Week(s)**, **Month(s)**, or **Year(s)**. If you select **Week(s)**, also select the specific days of the week to run on. For **Month(s)** or **Year(s)**, queries run on the same calendar date as the start date.
+
+    3. **Stop after** (optional): Turn on to set a stop date after which the schedule stops running.
+    4. **Splay time** (optional): Randomly delay execution by up to 12 hours to stagger query execution across your {{agents}} and avoid load spikes. Set a splay value and unit (seconds, minutes, or hours). Splay is recommended for deployments with more than approximately 100 {{agents}}—without it, every {{agent}} runs at the same wall-clock moment.
+
+
+### Add queries to a pack
+
+1. Click **Add query** and then add a saved query or enter a new query. Each query must include a unique query ID and a schedule that controls when it runs. When you add a saved query to a pack, this adds a copy of the query. A connection is not maintained between saved queries and packs. 
+
+    ::::{note}
+    :applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
+    By default, queries inherit the pack schedule. To set a different schedule for a query, enable **Override pack schedule** in the query flyout. An override changes the schedule details only; a query cannot use a different schedule type than its pack.
+    ::::
+    
+2. Optionally, set the minimum Osquery version and platform, specify a timeout period, or [map ECS fields](#osquery-map-fields). 
+
+    ::::{note}
+    Overwriting the query’s default timeout period allows you to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
+    ::::
+
+3. Upload queries from a `.conf` query pack by dragging the pack to the drop zone under the query table. To explore the community packs that Osquery publishes, click **Example packs**.
+
+4. Click **Save pack**. The queries run when the policy receives the update.
 
 
 ### View status of scheduled packs [osquery-schedule-status]
@@ -197,7 +230,9 @@ To save a query:
     * The defaults to set when you add the query to a pack.
 
         * The frequency to run the query.
-        * The minimum [version of Osquery](https://github.com/osquery/osquery/releases)) required to run the query.
+        
+            {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` This frequency applies when the query is added to a pack that uses an **Interval** schedule. If the pack uses a **Date & time** schedule, the query inherits the [pack schedule](#osquery-set-pack-schedule) instead.
+        * The minimum [version of Osquery](https://github.com/osquery/osquery/releases) required to run the query.
         * The operating system required to run the query. For information about supported platforms per table, refer to the [Osquery schema](https://osquery.io/schema).
 
 3. Click **Test configuration** to test the query and any mapped fields:
