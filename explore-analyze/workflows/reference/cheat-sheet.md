@@ -89,6 +89,7 @@ Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/wo
 | Write to {{es}} | `elasticsearch.index`, `elasticsearch.bulk`, `elasticsearch.update` |
 | Manage cases | `cases.createCase`, `cases.updateCase`, `cases.addComment`, `cases.addAlerts`, `cases.addAttachments`, `cases.pushCases` |
 | Manage alerts | `kibana.SetAlertsStatus`, `kibana.SetAlertTags` (PascalCase) |
+| Manage asset criticality | `entityStore.updateAssetCriticality` |
 | Call an API | `http` (with optional `connector-id`) |
 | Call a service | `<connector>.<action>` (for example, `slack.postMessage`, `jira.createIssue`) |
 | Branch | `if`, `switch` |

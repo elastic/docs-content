@@ -581,6 +581,7 @@ toc:
                   - file: workflows/steps/elasticsearch.md
                   - file: workflows/steps/kibana.md
                   - file: workflows/steps/cases.md
+                  - file: workflows/steps/entity-store.md
                   - file: workflows/steps/streams.md
                   - file: workflows/steps/external-systems-apps.md
               - file: workflows/steps/flow-control-steps.md
