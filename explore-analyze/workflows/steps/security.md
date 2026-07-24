@@ -15,17 +15,26 @@ products:
 
 # Security action steps [workflows-security-steps]
 
-Security action steps (`security.*`) provide named, schema-validated operations for {{elastic-sec}}. Prefer these over a generic [`kibana.request`](/explore-analyze/workflows/steps/kibana.md#kibana-request) call when a named step exists for the task.
+Security action steps (`security.*`) provide named, schema-validated operations for {{elastic-sec}}. Use these instead of a generic [`kibana.request`](/explore-analyze/workflows/steps/kibana.md#kibana-request) call when a named step exists for the task.
 
 These steps are authenticated automatically using the permissions or API key of the identity executing the workflow, the same model as the [`kibana.*`](/explore-analyze/workflows/steps/kibana.md) and [`cases.*`](/explore-analyze/workflows/steps/cases.md) steps.
 
-## Attack triage
+## Alert triage
 
-Attack triage steps manage the alert and attack lifecycle you work with on the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md): status, assignees, and tags on individual alerts and on the correlated attacks that group them.
+Alert triage steps manage the alert lifecycle: status, assignees, and tags on individual alerts.
 
 Use them to:
 
 * Set alert status and manage alert tags and assignees (`security.setAlertStatus`, `security.setAlertTags`, `security.assignAlert`)
+
+Refer to [Alert triage action steps](/explore-analyze/workflows/steps/alert-triage.md) for shared conventions, parameters, and YAML examples.
+
+## Attack triage
+
+Attack triage steps manage the attack lifecycle you work with on the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md): status, assignees, and tags on the correlated attacks that group related alerts.
+
+Use them to:
+
 * Set attack status and manage attack tags and assignees (`security.setAttackStatus`, `security.setAttackTags`, `security.assignAttack`)
 
 Refer to [Attack triage action steps](/explore-analyze/workflows/steps/attack-triage.md) for shared conventions, parameters, and YAML examples.
@@ -43,7 +52,8 @@ Refer to [Detection rules action steps](/explore-analyze/workflows/steps/detecti
 
 ## Related
 
-- [Attack triage action steps](/explore-analyze/workflows/steps/attack-triage.md): Status, assignee, and tag management for alerts and attacks.
+- [Alert triage action steps](/explore-analyze/workflows/steps/alert-triage.md): Status, assignee, and tag management for individual alerts.
+- [Attack triage action steps](/explore-analyze/workflows/steps/attack-triage.md): Status, assignee, and tag management for attacks.
 - [Detection rules action steps](/explore-analyze/workflows/steps/detection-rules.md): Enable or disable detection rules by ID list or query.
 - [Kibana action steps](/explore-analyze/workflows/steps/kibana.md): Generic `kibana.request` and older PascalCase alert steps.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): Hand off a triaged alert or attack to a case.
