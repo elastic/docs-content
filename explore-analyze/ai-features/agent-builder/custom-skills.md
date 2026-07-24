@@ -25,11 +25,19 @@ Create a custom skill when you have domain-specific knowledge or procedures that
 - **Scope tools to a task**: Bundle specific tools with the instructions that explain how and when to use them, so the agent only has access to relevant tools for the task at hand.
 - **Keep agent prompts clean**: Move detailed, task-specific instructions out of the system prompt and into a skill that loads only when needed.
 
-## Create a custom skill
+## Create a custom skill [create-a-custom-skill]
+
+You can create a custom skill in three ways:
+
+- Use the {{agent-builder}} UI.
+- Use the {{kib}} REST API.
+- Ask an agent to create it from Agent Chat.
+
+### Create a skill in the UI [create-a-skill-in-the-ui]
 
 Follow these steps to create a custom skill and add it to your skill library. Once saved, you need to add the skill to an agent before the agent can use it.
 
-You can create a skill from **Manage components > Skills**, or inline when adding skills to an agent from **Customize > Skills**.
+You can create a skill from **Manage components → Skills**, or inline when adding skills to an agent from **Customize → Skills**.
 
 :::{tip}
 For guidance on writing effective descriptions and instructions, refer to [Skill creation guidelines](skill-creation-guidelines.md).
@@ -38,7 +46,7 @@ For guidance on writing effective descriptions and instructions, refer to [Skill
 :::::{stepper}
 ::::{step} Open the Create skill dialog
 
-Go to **Manage components > Skills**, then select **Create a skill**.
+Go to **Manage components → Skills**, then select **Create a skill**.
 
 :::{image} images/create-new-skill.png
 :alt: Create skill dialog showing fields for ID, Name, Description, Instructions, and Associated tools
@@ -69,9 +77,9 @@ Select **Save**. The skill is added to your library and becomes available to ass
 
 ::::{step} Add the skill to an agent
 
-Custom skills in your library are not available to your agents until you explicitly add them. To add a skill, go to **Customize > Skills** on the agent you want to configure and select **Add skills**. From here you can:
+Custom skills in your library are not available to your agents until you explicitly add them. To add a skill, go to **Customize → Skills** on the agent you want to configure and select **Add skills**. From here you can:
 
-- **Import from skill library**: Select an existing skill from **Manage components > Skills**. After importing, make sure the skill is toggled on in the agent's skill list.
+- **Import from skill library**: Select an existing skill from **Manage components → Skills**. After importing, make sure the skill is toggled on in the agent's skill list.
 - **Create a skill**: Build a new skill and add it to this agent in one step. The skill is enabled for the agent automatically and also saved to your library.
 
 Built-in skill availability depends on your deployment type. Refer to [Built-in skills reference](builtin-skills-reference.md) for details.
@@ -88,28 +96,32 @@ For guidance on writing effective instructions, refer to [Skill creation guideli
 
 :::::
 
-## Create a skill from chat
+### Create a skill with the API [skills-api]
 
-```{applies_to}
-stack: ga 9.5+
-serverless: ga
-```
-
-You can create custom skills conversationally by asking an agent to build one directly in the chat interface. Instead of filling in a form, you describe the skill you want and the agent guides you through defining the name, description, instructions, and tools.
-
-To create a skill from chat, open a conversation with any agent and ask it to create a new skill. For example, you might say "Create a skill that triages production alerts using our incident runbook." The agent walks you through each field, suggests instructions based on your input, and saves the skill to your library when you confirm.
-
-This approach is useful when you want to iterate quickly or when you find it easier to explain a workflow in natural language than to write structured instructions from scratch.
-
-## Skills API
-
-You can also create and manage skills programmatically using the {{kib}} REST API. The API supports all the same fields as the UI, including [`referenced_content`]({{kib-apis}}operation/operation-post-agent-builder-skills#operation-post-agent-builder-skills-body-application-json-referenced_content) for additional named content blocks the agent can read selectively. For request examples, refer to [Skills APIs](kibana-api.md#skills-apis).
+Create and manage skills programmatically using the {{kib}} REST API. The API supports all the same fields as the UI, including [`referenced_content`]({{kib-apis}}operation/operation-post-agent-builder-skills#operation-post-agent-builder-skills-body-application-json-referenced_content) for additional named content blocks the agent can read selectively. For request examples, refer to [Skills APIs](kibana-api.md#skills-apis).
 
 - [List skills]({{kib-apis}}operation/operation-get-agent-builder-skills) `GET /api/agent_builder/skills`
 - [Create a skill]({{kib-apis}}operation/operation-post-agent-builder-skills) `POST /api/agent_builder/skills`
 - [Get a skill by ID]({{kib-apis}}operation/operation-get-agent-builder-skills-skillid) `GET /api/agent_builder/skills/{skillId}`
 - [Update a skill]({{kib-apis}}operation/operation-put-agent-builder-skills-skillid) `PUT /api/agent_builder/skills/{skillId}`
 - [Delete a skill]({{kib-apis}}operation/operation-delete-agent-builder-skills-skillid) `DELETE /api/agent_builder/skills/{skillId}`
+
+### Create a skill from Agent Chat [create-a-skill-from-chat]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Open a conversation with any agent and ask it to create a skill. For example, "Create a skill that triages production alerts using our incident runbook." The agent asks clarifying questions when it needs more information, then presents the generated skill as a draft.
+
+Review the description, instructions, associated tools, and references, and ask for any changes. When the draft is ready, select **Create skill**. The skill is not added to your library until you confirm this action.
+
+:::{image} images/create-skill-from-chat.png
+:screenshot:
+:alt: Skill draft in Agent Chat showing its description, instructions preview, associated tool references, and a Create skill button
+:width: 750px
+:::
 
 ## Related pages
 

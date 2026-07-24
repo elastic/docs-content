@@ -282,6 +282,39 @@ For example, before creating a dashboard the agent might ask which sample data s
 :width: 650px
 :::
 
+## Create skills and workflows in chat [create-skills-and-workflows-directly-from-chat]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+In addition to answering questions and analyzing data, agents can help you create reusable skills and Elastic Workflows without leaving the conversation. Describe what you want to build in natural language:
+
+- **Skills**: For example, "Create a skill that triages production alerts using our incident runbook."
+- **Workflows**: For example, "Create a workflow that checks for failed payments every five minutes and sends a Slack notification."
+
+Creating a resource from chat is a [human-in-the-loop](#human-in-the-loop-prompts) process:
+
+1. The agent gathers the requirements from your request. If important information is missing or ambiguous, it pauses to ask [clarifying questions](#answer-a-clarifying-question).
+2. The agent generates a draft and presents it in the conversation. You can review the configuration and ask for changes in natural language.
+3. When the draft is ready, use the action on the preview to confirm creation. The resource is not created until you explicitly confirm the change.
+
+When you create a workflow, include details such as its trigger, inputs, data sources, conditions, and connectors. The agent asks for any missing information, generates and validates the workflow YAML, and shows the proposed changes for you to review. You can continue refining the draft in the conversation before you confirm creation.
+
+For example, the following preview shows a skill draft that you can review before selecting **Create skill**:
+
+:::{image} images/create-skill-from-chat.png
+:screenshot:
+:alt: Skill draft in Agent Chat showing its description, instructions preview, associated tool references, and a Create skill button
+:width: 750px
+:::
+
+You need the same privileges that are required to create the resource in its management UI. For resource-specific fields, limitations, and alternative creation methods, refer to:
+
+- [Create and manage custom skills](custom-skills.md#create-a-skill-from-chat)
+- [Create and manage workflows](/explore-analyze/workflows.md)
+
 ## Customize your agent [customize-your-agent]
 
 ```{applies_to}
