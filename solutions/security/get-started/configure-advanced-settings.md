@@ -158,6 +158,15 @@ serverless: preview
 
 Turn on the `securitySolution:enableCloudConnector` setting to enable Cloud Connector deployment for Elastic's CSPM and Asset Inventory integrations.
 
+## Turn rule changes history on or off [enable-rule-changes-history]
+```{applies_to}
+stack: ga 9.5
+```
+
+The `securitySolution:enableRuleChangesHistory` setting controls whether you can view a chronological [history of changes](/solutions/security/detect-and-alert/view-rule-changes-history.md) made to a detection rule, compare revisions, and restore a rule to a previous state. This setting is turned on by default. You can turn the setting off if you don't need the feature. If you turn it off and later turn it back on, any gap in rule revisions from while it was off isn't filled.
+
+Capturing rule change history might add a small amount of overhead when rules are created or updated.
+
 ## Exclude cold and frozen tier data from analyzer queries [exclude-cold-frozen-tiers]
 
 Including data from cold and frozen [data tiers](/manage-data/lifecycle/data-tiers.md) in [visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md) queries may result in performance degradation. The `securitySolution:excludeColdAndFrozenTiersInAnalyzer` setting allows you to exclude this data from analyzer queries. This setting is turned off by default.

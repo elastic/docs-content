@@ -652,6 +652,8 @@ toc:
               - file: security/detect-and-alert/write-investigation-guides.md
               - file: security/detect-and-alert/validate-and-test-rules.md
           - file: security/detect-and-alert/manage-detection-rules.md
+            children:
+              - file: security/detect-and-alert/view-rule-changes-history.md
           - file: security/detect-and-alert/monitor-rule-executions.md
             children:
               - file: security/detect-and-alert/fill-rule-gaps.md
