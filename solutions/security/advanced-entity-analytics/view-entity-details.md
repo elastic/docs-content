@@ -22,6 +22,8 @@ You can learn more about an entity (host, user, or service) from the entity deta
 * The **Users** and user details pages
 * The **Hosts** and host details pages
 
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can also use the entity details flyout to attach an entity to a [case](/solutions/security/investigate/security-cases.md). To do this, click **Take action** at the bottom of the flyout, then select **Add to new case** or **Add to existing case**.
+
 ## Entity details flyout
 
 The entity details flyout includes the following sections:
