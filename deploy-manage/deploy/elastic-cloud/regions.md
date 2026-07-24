@@ -47,12 +47,14 @@ The following Azure regions are currently available for {{serverless-short}} pro
 | Region | Name |
 | :--- | :--- |
 | australiaeast | Australia East (New South Wales) |
+| brazilsouth | Brazil South (Sao Paulo State) |
 | eastus | East US (Virginia) |
 | eastus2 | East US 2 (Virginia) |
 | germanywestcentral | Germany West Central (Frankfurt) |
 | northeurope | North Europe (Ireland) |
 | southeastasia | Southeast Asia (Singapore) |
 | spaincentral | Spain Central (Madrid) |
+| swedencentral | Sweden Central (Gävle) |
 | uaenorth | UAE (Dubai) |
 | westus2 | West US 2 (Washington) |
 
@@ -62,8 +64,10 @@ The following GCP regions are currently available for {{serverless-short}} proje
 
 | Region | Name |
 | :--- | :--- |
+| asia-northeast1 | Japan (Tokyo) |
 | asia-south1 | India (Mumbai) |
 | asia-southeast1 | Singapore (Jurong West) |
+| europe-southwest1 | Spain (Madrid) |
 | europe-west1 | Belgium (St. Ghislain) |
 | europe-west2 | England (London) |
 | europe-west3 | Germany (Frankfurt) |
