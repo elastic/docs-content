@@ -48,7 +48,7 @@ Describe what you want to visualize. The agent creates the dashboard and respond
 
 :::{image} images/agent-builder-dashboard-chat-response.png
 :screenshot:
-:alt: Agent chat response showing a created Web Traffic Analysis Dashboard with a Preview button and a breakdown of the included sections and metrics
+:alt: Agent chat showing a natural language request to create a web traffic dashboard and the agent's response describing the skills it loaded, the data it used, and a breakdown of the dashboard structure
 :::
 ::::
 ::::{step} Preview the dashboard
