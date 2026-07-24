@@ -215,8 +215,8 @@ At certain points an agent pauses and hands control back to you before it contin
 | Prompt | When it appears | Available responses |
 | --- | --- | --- |
 | Tool confirmation | An Elastic-built tool or skill requires approval before it performs an action | Confirm the action or deny it |
-| Connector authorization | An external connector needs access to continue | Authorize access or deny it |
-| Clarifying question | The agent needs more information to continue | Answer or skip the question |
+| Connector authorization {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | An external connector needs access to continue | Authorize access or deny it |
+| Clarifying question {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | The agent needs more information to continue | Answer or skip the question |
 
 HITL prompts do not replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
 
