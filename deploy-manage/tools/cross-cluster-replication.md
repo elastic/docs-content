@@ -25,6 +25,8 @@ You configure {{ccr}} clusters in a uni-directional or bi-directional setup:
 * In a uni-directional configuration, one cluster contains only leader indices, and the other cluster contains only follower indices.
 * In a bi-directional configuration, each cluster contains both leader and follower indices.
 
+## Version compatibility
+
 In a uni-directional configuration, the cluster containing follower indices (the *local* cluster) must be compatible with the cluster containing leader indices (the *remote* cluster). Both of the following conditions must be met:
 
 * The local cluster must be running **the same or newer** version of {{es}} as the remote cluster. This comparison includes the patch version: if the remote cluster is running `X.Y.3`, the local cluster must be running `X.Y.3` or higher. `X.Y.1` is not sufficient, even though both clusters are on the same minor version.
