@@ -46,18 +46,35 @@ To add interactive Options list and Range slider controls, create the controls, 
 3. Choose how to populate the values available in the control:
 
     - **Select a field**: base the control on a [data view](../find-and-organize/data-views.md) field. The control offers the values found in that field.
-
-        1. From the **Data view** dropdown, select the data view that contains the field you want to use.
-        2. In the **Field** list, select the field you want to filter on.
-
     - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5` **Write a query**: populate the control with the results of an {{esql}} query. Use this for high-cardinality fields, where listing every value isn't practical, or when you want to filter or otherwise shape the values the control offers.
 
-        1. Write an {{esql}} query that returns a single column. The column determines the field the control filters on and the values it offers. Use a command such as `STATS BY` to return a single column.
-        2. Run the query to preview the values it returns under **Values preview**. If the query returns more than one column, select a column or narrow the query. If it returns no values, edit the query and run it again.
+    :::::{tab-set}
+    ::::{tab-item} Select a field
+    :sync: select-a-field
 
-        :::{tip}
-        Because the values come from a query, you can also chain the control to a [variable control](add-variable-controls.md) by referencing its variable with the `?variable_name` syntax.
-        :::
+    1. From the **Data view** dropdown, select the data view that contains the field you want to use.
+    2. In the **Field** list, select the field you want to filter on.
+    ::::
+
+    ::::{tab-item} Write a query
+    :sync: write-a-query
+
+    ```{applies_to}
+    stack: ga 9.5
+    serverless: ga
+    ```
+
+    1. Write an {{esql}} query that returns a single column. The column determines the field the control filters on and the values it offers. Use a command such as `STATS BY` to return a single column.
+    2. Run the query to preview the values it returns under **Values preview**. If the query returns more than one column, select a column or narrow the query. If it returns no values, edit the query and run it again.
+
+    :::{include} ../_snippets/esql-query-control-value-examples.md
+    :::
+
+    :::{tip}
+    Because the values come from a query, you can also chain the control to a [variable control](add-variable-controls.md) by referencing its variable with the `?variable_name` syntax.
+    :::
+    ::::
+    :::::
 
 4. Under **Control type**, select **Options list** or **Range slider**. Range sliders are only compatible with numeric fields. The slider's minimum and maximum come from the data: the field's values, or the query results if you populate it with a query.
 
