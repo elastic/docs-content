@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-infrastructure.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-infrastructure.html
 applies_to:
-  stack: beta
-  serverless: beta
+  stack: ga 9.5+
+  serverless: ga
 products:
   - id: observability
   - id: apm
@@ -38,7 +38,7 @@ For services instrumented with Elastic {{product.apm}}, the tab uses the followi
 
 ## OTel-instrumented services [observability-apm-infrastructure-otel]
 ```{applies_to}
-stack: ga 9.4
+stack: ga 9.4+
 serverless: ga
 ```
 
@@ -48,8 +48,7 @@ For services instrumented with OpenTelemetry, the tab exclusively shows OTel-obs
 * **Containers** and **Pods**: Link to [**Metrics** in Discover](/solutions/observability/infra-and-hosts/discover-metrics.md), as the Containers and Pods UIs do not yet support OTel semantic conventions.
 
 ::::{important}
-:applies_to: stack: ga 9.4+
-The **Infrastructure** tab assumes you're observing the service and its underlying infrastructure (hosts, pods, containers) using the same schema. It infers the schema is inferred from the APM agent name:
+The **Infrastructure** tab assumes you're observing the service and its underlying infrastructure (hosts, pods, containers) using the same schema. The schema is inferred from the {{apm-agent}} name:
 
 **Elastic APM Agent** or **Elastic Agent system integration**: Queries ECS data from Metricbeat or Elastic Agent integrations.
 
@@ -61,3 +60,20 @@ Cross-schema setups show as **N/A**:
 
 To see infrastructure metrics, make sure the service instrumentation and the infrastructure collector use the same schema.
 ::::
+
+## Compare metrics in Discover [observability-apm-infrastructure-compare-metrics]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+To compare infrastructure metric trends across all entities a service depends on, click **Compare metrics in Discover** next to a resource type (hosts, pods, or containers). This opens the data in Discover, broken down by entity so you can compare trends side by side.
+
+The breakdown field for each resource type:
+
+| Resource | Breakdown field |
+| --- | --- |
+| Hosts | `host.name` |
+| Pods | `k8s.pod.name` |
+| Containers | `container.id` |
