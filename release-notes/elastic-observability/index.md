@@ -21,6 +21,130 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.5.0 [elastic-observability-9.5.0-release-notes]
+
+### Features and enhancements [elastic-observability-9.5.0-features-enhancements]
+
+* Adds the `observability.investigation` skill to the {{agent}}, providing structured investigation methodology across all {{observability}} tools for service health, dependency analysis, and log and trace correlation [#262293]({{kib-pull}}262293).
+* Adds AI Agent as the default {{observability}} chat experience. [#260570]({{kib-pull}}260570).
+* Improves investigation skill matching in the AI Agent to more reliably load for alert-related queries [#269377]({{kib-pull}}269377).
+* Improves the AI Agent investigation skill with a hypothesis-driven methodology [#268973]({{kib-pull}}268973).
+* Adds a Service Map skill to the AI Agent for contextual service topology analysis [#263537]({{kib-pull}}263537).
+* Adds a `uri_parts` processor to Streams, parsing URI strings into ECS-aligned fields at write time [#265608]({{kib-pull}}265608).
+* Adds partitioning support to query-based Streams [#264765]({{kib-pull}}264765).
+* Adds a frozen phase configuration to the Streams data lifecycle UI, allowing users to add, edit, and remove a frozen phase directly from the **Data retention** page. [#275706]({{kib-pull}}275706) [#274580]({{kib-pull}}274580).
+* Enables attachments for all stream types by default [#265145]({{kib-pull}}265145).
+* Adds name validation for query stream creation [#264695]({{kib-pull}}264695).
+* Improves simulation feedback and AI prompt quality for Streams pipeline suggestions [#262789]({{kib-pull}}262789).
+* Improves the Streams user-guided partitioning workflow [#262594]({{kib-pull}}262594).
+* Adds a **Load more matching samples** option to Streams condition editors for loading additional matching log entries [#266175]({{kib-pull}}266175).
+* Adds stream navigation to the metrics details flyout [#265987]({{kib-pull}}265987).
+* Shows stream names and descriptions in the {{esql}} editor when completing index names [#261823]({{kib-pull}}261823).
+* Extends the Synthetics TLS certificate expiry rule to optionally cover browser monitor certificates, with opt-in controls for certificate origin and resource type filtering [#272325]({{kib-pull}}272325).
+* Shows TLS certificates observed by browser monitors on the Synthetics **Certificates** page [#271844]({{kib-pull}}271844).
+* Adds a **Remote cluster** filter to the Synthetics monitors overview when Cross-Cluster Search is enabled, allowing users to scope the monitor list to a specific remote cluster [#267849]({{kib-pull}}267849).
+* Improves Synthetics performance by bounding remote monitor latest-state queries to a run timestamp window and screenshot and step queries to a window around the check run's timestamp [#274333]({{kib-pull}}274333) [#273513]({{kib-pull}}273513).
+* Enables Synthetics to respect the `observability:searchExcludedDataTiers` advanced setting, allowing operators to exclude slow data tiers from Synthetics searches [#273418]({{kib-pull}}273418).
+* Adds the {{product.apm}} Service Map as a dashboard embeddable panel with KQL filter support and interactive popovers [#261195]({{kib-pull}}261195).
+* Adds the {{product.apm}} Service Map with a **Copy to dashboard** action and editable options for embedded service map panels [#272277]({{kib-pull}}272277).
+* Adds a floating options panel to the {{product.apm}} Service Map with alert, SLO, and anomaly status filters, layout orientation toggle, and show/hide controls [#263531]({{kib-pull}}263531).
+* Adds alert and SLO badge links to {{product.apm}} Service Map node popovers for at-a-glance service health [#263107]({{kib-pull}}263107).
+* Enables the SLO badge on the {{product.apm}} Service Map to open the SLO details flyout directly from the map [#262538]({{kib-pull}}262538).
+* Adds an {{product.apm}} Service Map preview to the {{observability}} **Alerts** page for service topology context [#268873]({{kib-pull}}268873).
+* Shows quick-filters and minimap on maximized {{product.apm}} Service Map dashboard panels [#274551]({{kib-pull}}274551).
+* Adds unified search controls and KQL filter support to the {{product.apm}} Service Map [#269550]({{kib-pull}}269550).
+* Adds context highlighting to the {{product.apm}} Service Map embeddable and focused map view [#266021]({{kib-pull}}266021).
+* Moves the {{product.apm}} Service Map controls menu to the right of the map toggle [#269705]({{kib-pull}}269705).
+* Adds a **Breakdown by** field selector to trace RED metrics charts in Discover, splitting latency, error rate, and throughput series by field values with a persistent legend. Breakdown state persists in app state and URL [#273969]({{kib-pull}}273969).
+* Adds throughput and infrastructure metrics correlation modes to {{product.apm}} correlations, identifying service dimensions correlated with throughput changes and infrastructure entities over-represented among slow transactions [#266704]({{kib-pull}}266704).
+* Truncates long service names in the {{product.apm}} **Traces** table with an ellipsis, shows the full name on hover [#275553]({{kib-pull}}275553).
+* Adds an advanced setting for configuring default log columns in {{product.apm}} trace samples [#275365]({{kib-pull}}275365).
+* Adds **Explore traces** entry points to the {{product.apm}} **Traces** page for opening trace context directly in Discover [#269283]({{kib-pull}}269283).
+* Replaces the **Health** column with an **Anomalies** column in the {{product.apm}} **Service Inventory** table, surfacing ML {{anomaly-detect}} data directly in the service list [#266194]({{kib-pull}}266194).
+* Improves the empty state on the {{product.apm}} service **Infrastructure** tab [#271090]({{kib-pull}}271090).
+* Adds a defensive check to ensure {{product.apm}} integration policy updates always include API keys in their configuration [#274647]({{kib-pull}}274647).
+* Adds a **Compare metrics in Discover** button to infrastructure metrics tables [#273406]({{kib-pull}}273406).
+* Serves infrastructure KPI metrics via client-side {{esql}} queries with optimized query patterns [#272091]({{kib-pull}}272091).
+* Allows searching by additional fields for infrastructure metrics views [#273935]({{kib-pull}}273935).
+* Synchronizes crosshair cursor position across all dashboard panels for correlated data analysis [#269297]({{kib-pull}}269297).
+* Shows stream names for Cross-Cluster Search and Cross-Cluster Proxy results in the Discover sidebar [#270169]({{kib-pull}}270169).
+* Adds recommended {{esql}} queries for metrics exploration as suggested queries in the {{esql}} editor [#259465]({{kib-pull}}259465).
+* Adds an {{esql}} pre-filter option to data controls, allowing users to limit option list values or constrain range slider bounds using an {{esql}} query [#266492]({{kib-pull}}266492).
+* Adds a warning severity tier to Custom Threshold rules, enabling a second threshold that fires at `warning` severity before the critical threshold is reached. [#275875]({{kib-pull}}275875).
+* Makes ML {{anomaly-detect}} alerts and Stack alerts visible on the {{observability}} **Alerts** page for users who have the corresponding feature privileges [#269718]({{kib-pull}}269718).
+* Adds a Stack Alerts feature privilege for users with alerts-only access to use alert actions [#273804]({{kib-pull}}273804).
+* Adds an `observabilityAlerts` feature privilege for {{observability}} alert access control [#273572]({{kib-pull}}273572).
+* Adds a query inspector to alert rules for reviewing the {{es}} queries executed during rule evaluation [#262354]({{kib-pull}}262354).
+* Moves the **Rules** page into **{{stack-manage-app}}** [#269568]({{kib-pull}}269568).
+* Updates the **Add data** API Endpoints section to display the managed {{es}} bulk endpoint when Managed Inputs is available, with appropriate API key creation for each endpoint type [#275817]({{kib-pull}}275817).
+* Makes {{k8s}} onboarding OpenTelemetry-first [#275012]({{kib-pull}}275012) [#271387]({{kib-pull}}271387).
+* Adds an Amazon CloudWatch (OpenTelemetry) quickstart tile to the **Cloud** category in **Add data** [#273736]({{kib-pull}}273736).
+* Adds support for the `OTEL_AGENT_NAMES` environment variable for identifying OpenTelemetry agent names, consistent with `EDOT_AGENT_NAMES` [#266630]({{kib-pull}}266630).
+* Persists flyout panel state across navigation so users return to the same flyout state when navigating back to a page [#266718]({{kib-pull}}266718).
+* Redesigns the **Add to Dashboard** workflow for improved usability [#264457]({{kib-pull}}264457).
+
+### Fixes [elastic-observability-9.5.0-fixes]
+
+* Fixes the AI Agent investigation skill to anchor time range queries to the alert start time when investigating an alert [#271983]({{kib-pull}}271983).
+* Fixes knowledge base recall in {{observability}} AI Assistant when the selected connector is an inference endpoint [#271753]({{kib-pull}}271753).
+* Fixes the **Explain this log entry** AI insight in the logs flyout collapsing and losing its state on auto-refresh [#268895]({{kib-pull}}268895).
+* Removes the **Try the new AI Agent** opt-in popover from the AI Assistant chat header and settings menu, as AI Agent is now the default experience [#264263]({{kib-pull}}264263).
+* Removes Beta labels and badges from the AI Agent chat experience, including the chat selection card, announcement modal, and {{observability}} opt-in tour [#264200]({{kib-pull}}264200).
+* Fixes the layout of the Elastic {{infer-cap}} Service (EIS) pricing callout [#262780]({{kib-pull}}262780).
+* Fixes Streams processing not being applied to a second OpenTelemetry metrics data stream when its first processing step is added [#269988]({{kib-pull}}269988).
+* Fixes the Streams **Significant Events** tab and import/export flyouts to correctly enforce the Enterprise license requirement [#268515]({{kib-pull}}268515).
+* Fixes an infinite loop in the Streams **Retention** tab [#268434]({{kib-pull}}268434).
+* Adds a flyout for deleting data lifecycle phases directly in the Streams UI [#269869]({{kib-pull}}269869).
+* Fixes {{observability}} index discovery for Streams data [#269633]({{kib-pull}}269633).
+* Fixes the Knowledge Indicator details flyout pushing page content in dark mode [#268282]({{kib-pull}}268282).
+* Retries log sample fetches with a smaller page size when an async search response size limit error is encountered [#268917]({{kib-pull}}268917).
+* Preserves user-typed source field names in the Streams processing chart query when a single source is specified [#266520]({{kib-pull}}266520).
+* Implements dimension pruning when switching data stream types in Streams to prevent unexpected dimension conflicts [#265464]({{kib-pull}}265464).
+* Fixes the **Modify suggestions** button in Streams so clicking it while the popover is open correctly closes the popover [#265254]({{kib-pull}}265254).
+* Fixes an issue where the edit filters quick action popover in embeddables remained open after the edit flyout was displayed, obstructing the panel edit UI [#264620]({{kib-pull}}264620).
+* Exposes the `canReadFailureStore` permission on a per-stream basis [#264087]({{kib-pull}}264087).
+* Fixes dimension type conflicts in Streams by casting dimension values [#263472]({{kib-pull}}263472).
+* Improves performance on the Streams listing page by batching ingestion document count queries [#274514]({{kib-pull}}274514).
+* Fixes `retest_on_failure: false` being ignored when updating an existing Synthetics monitor through the API [#277701]({{kib-pull}}277701).
+* Fixes Synthetics monitor label deletions not persisting after save [#274404]({{kib-pull}}274404).
+* Fixes the Synthetics monitor health API incorrectly reporting monitors as unhealthy when monitors, private locations, and {{fleet}} policies are distributed across multiple {{kib}} Spaces [#270540]({{kib-pull}}270540).
+* Fixes false **missing integration** warnings for project Synthetics monitors on private locations [#270137]({{kib-pull}}270137).
+* Fixes the **Failed Tests by Step** panel in Synthetics to update correctly when the time range changes [#263317]({{kib-pull}}263317).
+* Fixes the **SLOs** link in the {{product.apm}} SLO overview flyout to include all-environment SLOs [#273367]({{kib-pull}}273367).
+* Fixes the SLO details flyout crashing when expanded from the {{product.apm}} **Service Inventory**, and fixes the active alerts badge no longer switching to the **Alerts** tab when the flyout is already open [#271237]({{kib-pull}}271237).
+* Fixes the **SLO Overview** **No data** tile to correctly count newly created SLOs and SLOs whose summary transform has not yet produced a document [#266315]({{kib-pull}}266315).
+* Fixes a {{esql}} `verification_exception` when using the **View in Discover** link from the {{product.apm}} traces flyout on indices where `transaction.id` is unmapped [#278294]({{kib-pull}}278294).
+* Fixes crashes in the {{apm-app}} caused by missing or malformed URL query parameters [#276420]({{kib-pull}}276420).
+* Fixes the key column shrinking too narrow in {{product.apm}} metadata key-value tables [#275941]({{kib-pull}}275941).
+* Fixes the {{product.apm}} service **Logs** tab incorrectly filtering by `service.environment` [#275555]({{kib-pull}}275555).
+* Fixes duplicate {{product.apm}} {{anomaly-detect}} alerts by filtering ML results on `event.ingested` (result write time) instead of the anomaly bucket time [#275289]({{kib-pull}}275289).
+* Hides {{product.apm}} Service Map node controls when required fields are missing [#274879]({{kib-pull}}274879).
+* Fixes the **Open in Discover** link on alert details pages for {{product.apm}} alerts where no service environment is set [#272119]({{kib-pull}}272119).
+* Fixes the {{product.apm}} Service Map environment selector to be single-select [#271754]({{kib-pull}}271754).
+* Adds a minimum time guard to the trace change point aggregation to prevent errors on very short time ranges [#271350]({{kib-pull}}271350).
+* Makes ML {{anomaly-detect}} alerts and Stack alerts visible on the {{observability}} **Alerts** page for users who have the corresponding feature privileges [#270782]({{kib-pull}}270782).
+* Fixes horizontal scroll clipping on the {{product.apm}} **Traces** page [#269936]({{kib-pull}}269936).
+* Aligns {{product.apm}} Service Map anomaly severity colors with ML severity levels [#267278]({{kib-pull}}267278).
+* Fixes the {{product.apm}} Service Map embeddable flyout position to correctly overlay the map [#266138]({{kib-pull}}266138).
+* Fixes {{product.apm}} Service Map filter relayout, controls UI, and fit-view icon issues [#265275]({{kib-pull}}265275).
+* Fixes horizontal scrolling and overflow in {{product.apm}} data tables [#264992]({{kib-pull}}264992).
+* Aligns {{product.apm}} service navigation in serverless with stateful deployments [#263119]({{kib-pull}}263119).
+* Fixes {{product.apm}} routing and settings page navigation [#262723]({{kib-pull}}262723).
+* Fixes **Service Map** layout failures when the Dagre rendering algorithm encounters errors [#262240]({{kib-pull}}262240).
+* Fixes the **Hosts** page KPI tiles showing `N/A` and the **Hosts** table displaying stale data when the **Refresh** button is used with a relative time range after the page has been idle [#265515]({{kib-pull}}265515).
+* Hides the **Rules** entry from {{kib}} global search for users who have alerts-only access (`stackAlertsOnly`) without rules access [#278895]({{kib-pull}}278895).
+* Fixes alert untracking on the {{observability}} **Alert Details** page for alerts from non-observability rule types [#278643]({{kib-pull}}278643).
+* Fixes custom threshold and metric threshold rules dropping alert context fields when source data uses flat dotted keys (for example, `"host.hostname": "host1"`) instead of nested objects [#277354]({{kib-pull}}277354).
+* Fixes API key cloning to transmit metadata before the source key expires [#276245]({{kib-pull}}276245).
+* Fixes the Task Manager API key invalidation task from prematurely invalidating shared API keys still in use by other active tasks [#275157]({{kib-pull}}275157).
+* Fixes the **Cases** link in alert details routing to an internal URL instead of the Cases app when accessed from external apps [#275647]({{kib-pull}}275647).
+* Removes the `actionsAuthorization.execute` check from per-alert mute and unmute, fixing mute/unmute for users who have alert access but limited action execution permissions [#273392]({{kib-pull}}273392).
+* Fixes the Log threshold rule's alert details preview chart failing to render with a KQL syntax error when a criterion uses `matches phrase` or `does not match phrase` with values containing special characters such as `:` [#266783]({{kib-pull}}266783).
+* Fixes the active tab's query not running in the **Compose** Discover sandbox [#275853]({{kib-pull}}275853).
+* Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
+* Improves accessibility in the {{observability}} UI [#262975]({{kib-pull}}262975).
+* Fixes crashes caused by malformed URLs in plugins; affected pages now attempt automatic recovery [#257245]({{kib-pull}}257245).
+
 ## 9.4.4 [elastic-observability-9.4.4-release-notes]
 
 ### Features and enhancements [elastic-observability-9.4.4-features-enhancements]

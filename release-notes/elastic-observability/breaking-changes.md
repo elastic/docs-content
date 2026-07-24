@@ -15,7 +15,7 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % ## Next version [elastic-observability-nextversion-breaking-changes]
 % **Release date:** Month day, year
 
-% ::::{dropdown} Title of breaking change 
+% ::::{dropdown} Title of breaking change
 % Description of the breaking change.
 % For more information, check [PR #](PR link).
 
@@ -24,9 +24,17 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
-## 9.0.1 [elastic-observability-9.0.1-breaking-changes]
+## 9.5.0 [elastic-observability-9.5.0-breaking-changes]
 
-There are no breaking changes in Elastic {{observability}} 9.0.1.
+::::{dropdown} Align search endpoint schema with As Code schemas
+The Dashboard API `search` endpoint response schema has been updated to align with the shared As Code API schema. The response structure changes from `{ dashboards: [], page: 1, total: 20 }` to `{ data: [], meta: { page: 1, per_page: 20, total: 20 } }`. The `per_page` parameter is now capped at 1000, consistent with the Lens API.
+
+View [#268951]({{kib-pull}}268951).
+
+**Impact**<br> Code that reads the `dashboards` array or the top-level `page` and `total` fields from the Dashboard API search response will break.
+
+**Action**<br> Update client code to read `data` instead of `dashboards`, and `meta.page` and `meta.total` instead of `page` and `total`.
+::::
 
 ## 9.0.0 [elastic-observability-9.0.0-breaking-changes]
 

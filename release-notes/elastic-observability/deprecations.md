@@ -23,6 +23,28 @@ Review the deprecated functionality for Elastic {{observability}}. While depreca
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+## 9.5.0 [elastic-observability-9.5.0-deprecations]
+
+::::{dropdown} Deprecate experimental public Significant Events APIs
+The five experimental public Significant Events API endpoints (`/api/streams/{name}/queries*` and `/api/streams/{name}/significant_events`) are deprecated and will be removed in a future release. These endpoints have been superseded by internal query routes.
+
+View [#273310]({{kib-pull}}273310).
+
+**Impact**<br> Calls to these endpoints return a `299` deprecation warning header.
+
+**Action**<br> Migrate to the internal stream query routes before these endpoints are removed.
+::::
+
+::::{dropdown} Mark all LLM connectors as deprecated
+All LLM connectors are now marked as deprecated. Deprecation badges and warnings are displayed on affected connectors in the UI.
+
+View [#261591]({{kib-pull}}261591).
+
+**Impact**<br> LLM connectors continue to function but display deprecation indicators in the {{connectors-ui}}.
+
+**Action**<br> Migrate to a supported connector type. Refer to the guidance displayed on the connector for recommended alternatives.
+::::
+
 ## 9.4.0 [elastic-observability-9.4.0-deprecations]
 
 ::::{dropdown} Remove Observability Agent from Agent Builder
