@@ -15,7 +15,7 @@ products:
 
 ::::{important}
 
-**For Observability serverless projects**, The **Editor** role or higher is required to create SLOs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the [**SLO Editor** custom role](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md#slo-all-access) is required to create SLOs.
 
 **For Elastic Stack**, to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present, and [SLO access](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
 
@@ -259,3 +259,9 @@ After you’ve created your SLO, you can monitor it from the *SLOs* page in Obse
 :alt: Using the Add panel button to add an SLO Overview widget to a dashboard
 :screenshot:
 :::
+
+## Next steps [slo-create-next-steps]
+
+* [Create an SLO burn rate rule](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md)
+* [Triage SLO burn rate breaches](/solutions/observability/incident-management/triage-slo-burn-rate-breaches.md)
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` [Create a composite SLO](/solutions/observability/incident-management/create-a-composite-slo.md)
