@@ -15,7 +15,7 @@ products:
 
 # Detection rules action steps [workflows-detection-rules-steps]
 
-Detection rules action steps let workflows enable or disable one or more detection rules in {{elastic-sec}} by rule ID list or KQL query. Prefer these named steps over a generic [`kibana.request`](/explore-analyze/workflows/steps/kibana.md#kibana-request) call to the detection engine `_bulk_action` API when you only need to change rule enabled state.
+Detection rules action steps let workflows enable or disable one or more detection rules in {{elastic-sec}} by rule ID list or KQL query. Use these named steps instead of a generic [`kibana.request`](/explore-analyze/workflows/steps/kibana.md#kibana-request) call to the detection engine `_bulk_action` API when you only need to change rule enabled state.
 
 :::{note}
 These steps live under the `security.*` step type namespace (`security.enableRule`, `security.disableRule`). They expose an explicit input schema so parameters are discoverable in the Workflows editor, and they report per-rule outcomes in the step output.
