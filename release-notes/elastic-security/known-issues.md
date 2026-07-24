@@ -69,9 +69,16 @@ Follow these steps to stabilize {{kib}}:
    - For all non-default spaces, prefix the path with `/s/{space_id}`:
 
       ```
-   PUT kbn:/s/{space_id}/api/security/entity_store/stop
-   {}
-   ```
+      PUT kbn:/s/{space_id}/api/security/entity_store/stop
+      {}
+      ```
+
+      ```
+      POST kbn:/s/{space_id}/api/kibana/settings/securitySolution:entityStoreEnableV2
+      {
+         "value": false
+      }
+      ```
 
    At this point, entity engines stop running, data processing is paused, and the Entity Analytics experience becomes unavailable. For the full API reference, refer to [Stop Entity Store engines](https://www.elastic.co/docs/api/doc/kibana/operation/operation-put-security-entity-store-stop).
 
