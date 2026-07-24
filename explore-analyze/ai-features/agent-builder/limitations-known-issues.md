@@ -38,7 +38,9 @@ The [A2A server](a2a-server.md) does not currently support streaming operations.
 
 ### Human-in-the-loop prompts require an interactive conversation
 
-[Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts) are supported only in interactive {{agent-builder}} conversations. Standalone sub-agent executions, whether foreground or background, cannot collect a response to these prompts, so actions that require confirmation or authorization are declined. A2A clients also cannot respond to {{agent-builder}} HITL prompts.
+[Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts) are supported only in interactive {{agent-builder}} conversations. Standalone sub-agent executions, whether foreground or background, cannot collect a response to these prompts, so actions that require confirmation or authorization are declined.
+
+A2A executions behave differently: the action is not declined. Instead, the conversation round remains in the `awaiting_prompt` state, but A2A clients cannot respond to the prompt.
 
 This limitation is separate from the [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step in Workflows, which pauses a workflow execution for reviewer input.
 
