@@ -69,7 +69,7 @@ If your file isn't one of these types (for example, a Microsoft Office format li
 
 ## Add observables [add-case-observables]
 
-Observables are discrete pieces of data relevant to an investigation, such as IP addresses, file hashes, domain names, or URLs. By attaching observables to cases, you can spot patterns across incidents or events. For example, if the same malicious IP appears in multiple cases, you may be dealing with a coordinated attack or shared threat infrastructure. This correlation helps you assess the true scope of an incident and prioritize your response.
+Observables are discrete pieces of data relevant to an investigation, such as IP addresses, file hashes, domain names, or URLs. By attaching observables to cases, you can spot patterns across incidents or events. For example, if the same malicious IP appears in multiple cases, you might be dealing with a coordinated attack or shared threat infrastructure. This correlation helps you assess the true scope of an incident and prioritize your response.
 
 You can view and manage case observables under **Observables** on the case's **Attachments** tab. Each case supports up to 50 observables.
 
@@ -96,7 +96,10 @@ serverless:
 
 With the appropriate subscription, you can auto-extract observables from alerts instead of adding them manually. Note that auto-extracting observables is unavailable for {{observability}} cases.
 
-{applies_to}`stack: ga 9.5` Auto-extraction also runs for cases created with the Cases API or a [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md) action, as long as **Auto-extract observables** is turned on in the global case configuration or case template.
+{applies_to}`stack: ga 9.5` Auto-extraction can also run for cases created outside the UI, such as with the Cases API or a [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md) action:
+
+* When a [case template](/explore-analyze/cases/configure-case-settings.md#case-templates) is applied, extraction follows the template's **Auto-extract observables** setting, which is on by default.
+* For cases created directly with the Cases API, extraction is off by default. Set `extractObservables` to `true` in the create-case request to turn it on.
 
 ## Add Lens visualizations [cases-lens-visualization]
 

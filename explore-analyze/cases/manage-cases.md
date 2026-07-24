@@ -39,9 +39,13 @@ From the **Cases** page, select one or more cases to perform bulk actions such a
 
 ## Export and import cases [export-import-cases]
 
-Use export and import to move cases between {{kib}} spaces. Exports are saved as newline-delimited JSON (`.ndjson`) files and include user actions, text string comments, and any attached Lens visualizations, dashboards, maps, Discover sessions, or Timelines that reference a saved object.
+Use export and import to move cases between {{kib}} spaces. Exports are saved as newline-delimited JSON (`.ndjson`) files and include user actions, text string comments, and any attached Lens visualizations, dashboards, maps, or Discover sessions that reference a saved object.
 
-Files and alerts attached to the case are **not** included; you must re-add them after importing. Before importing cases, also ensure that any referenced saved objects (such as Lens visualizations, dashboards, maps, Discover sessions, or Timelines) already exist in the destination space, otherwise those references won't work.
+:::{note}
+Files, alerts, and Timelines attached to the case are **not** included. You must re-add them after importing. 
+
+Before importing cases, also ensure that any referenced saved objects (such as Lens visualizations, dashboards, maps, or Discover sessions) already exist in the destination space, otherwise those references won't work.
+:::
 
 ### Export cases [cases-export]
 

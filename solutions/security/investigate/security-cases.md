@@ -88,7 +88,8 @@ To insert a Timeline link in the case description, click the Timeline icon {icon
 
 ```{applies_to}
 stack: preview 9.5
-serverless: preview
+serverless:
+  security: preview
 ```
 
 Instead of inserting a link, you can attach a Timeline as a structured, filterable table in its own section on the case's **Attachments** tab. From a Timeline, select **Attach to case**, then **Attach to new case** or **Attach to existing case**. You can also attach a Timeline from the case itself: select **Attach**, then **Timeline**, from the case's **Activity** tab.
@@ -97,7 +98,8 @@ Instead of inserting a link, you can attach a Timeline as a structured, filterab
 
 ```{applies_to}
 stack: preview 9.5
-serverless: preview
+serverless:
+  security: preview
 ```
 
 Attach a host, user, or service entity to a case to connect it to what's under investigation. From an entity's details flyout, open the **Take action** menu, then select **Add to new case** or **Add to existing case**.
