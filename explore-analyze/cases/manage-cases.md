@@ -36,7 +36,7 @@ The **Cases** page lists all the cases you can access. Use the view toggle to sw
 The following controls are shared across both views:
 
 - **Sort**: In List view, order cases by newest or oldest first.
-- **Fields** (List view) or **Columns** (Table view): Select which optional details to show—such as tags, category, comments, alerts, events, dates, connector, external incident, description, and custom or template fields—and drag to reorder them.
+- **Fields** (List view) or **Columns** (Table view): Select which optional details to show. Options include tags, category, comments, alerts, events, dates, connector, external incident, description, and custom or template fields. You can also drag to reorder them.
 - **Search and filters**: Narrow the list by text, status, severity, tags, categories, assignees, solution, or date range.
 
 ## Edit case details [edit-case-details]
@@ -49,7 +49,7 @@ To view a case, go to the **Cases** page and select its name. From the case deta
 - Update assignees, status, and severity.
 - Add or change connectors and push updates to external systems.
 - {applies_to}`stack: ga 9.5` Edit the case title inline from the header.
-- {applies_to}`stack: ga 9.5` [Send the case to an AI chat conversation](#cases-ai-chat) to summarize it or use it as context.
+- {applies_to}`stack: ga 9.5` [Send the case to an AI chat conversation](analyze-cases-with-ai.md) to summarize it or use it as context.
 
 To attach alerts, files, observables, or visualizations to a case, refer to [Attach objects to cases](attach-objects-to-cases.md).
 
@@ -75,28 +75,6 @@ serverless: ga
 ```
 
 The activity feed tracks a case's comments and history. To find specific entries, use the search box, filter by type (comments or history) or author, and sort by newest or oldest first. Select **Show more** to load additional entries, or clear the filters to return to the full feed.
-
-## Add a case to an AI chat conversation [cases-ai-chat]
-
-```{applies_to}
-stack: ga 9.5
-serverless: ga
-```
-
-::::{admonition} Requirements
-- [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) must be available, with the Agent chat experience selected.
-- At least an Enterprise subscription ({{stack}}) or the appropriate [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) ({{serverless-short}}).
-- The `xpack.cases.chat.enabled` setting must be `true`. This feature is turned off by default.
-::::
-
-When the requirements are met, two actions appear in the case details header:
-
-- **Add to chat**: Opens a new {{agent-builder}} conversation with the current case attached as context. No message is sent automatically.
-- **Summarize case**: Opens a conversation with the case attached and a pre-filled prompt that asks the agent to summarize the case and suggest next steps.
-
-The attached context includes the case ID, title, description, status, severity, tags, assignees, category, created and updated timestamps, alert, comment, attachment, and observable counts, connector name, and a link back to the case.
-
-If you keep the chat open on the same case, any changes the agent makes to the case are reflected on the case page in real time.
 
 ## Bulk-manage cases [bulk-manage-cases]
 
