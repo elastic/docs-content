@@ -33,7 +33,7 @@ In a uni-directional configuration, the cluster containing follower indices (the
 * If the local cluster is running a newer version than the remote cluster, the versions must also be compatible as outlined in the following matrix.
 
 ::::{important}
-The following matrix groups versions into ranges, and expresses only the second condition. It does not relax the first: within a single cell of the matrix, the local cluster must still be running the same or a higher patch version than the remote cluster.
+The following matrix describes the version compatibility between local and remote clusters when the local cluster is running a later version than the remote. The patch version requirement still applies: within any cell, the local cluster must still match or exceed the remote cluster's exact patch version.
 ::::
 
 :::::{dropdown} Version compatibility matrix
