@@ -94,7 +94,7 @@ You can configure custom color ranges on the **Cell value** dimension to emphasi
 ![Example Lens heat map chart showing error rates per day for various errors](/explore-analyze/images/heat-map-chart-example-server-errors.png)
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example tracks 404 and 503 error activity over time. Named filter rows isolate each error type, and absolute count thresholds drive the color — gray for normal, yellow for elevated, red for high — so anomalous periods stand out immediately.
 
@@ -374,7 +374,7 @@ The following examples show various configuration options for building impactful
 ![Heat map showing request volume by hour and day](/explore-analyze/images/heat-map-example-request-volume.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example builds a day-by-hour traffic grid using a runtime field (`hour_of_day`) on the vertical axis to reveal peak activity patterns across the week.
 
@@ -501,7 +501,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Heat map showing sales performance by product and region](/explore-analyze/images/heat-map-example-sales-performance.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example uses two `terms` dimensions (city and product category) to create a category-versus-region grid, with cell color representing total revenue.
 
