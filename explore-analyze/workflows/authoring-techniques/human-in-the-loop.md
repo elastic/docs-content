@@ -37,7 +37,7 @@ When the workflow reaches either step, execution pauses in the `WAITING_FOR_INPU
 
 ## What happens while the workflow is paused
 
-While a HITL step is waiting, the execution status is `WAITING_FOR_INPUT` and the run appears in the execution history with a resume action. 
+While a HITL step is waiting, the execution status is `WAITING_FOR_INPUT` and the run appears in the execution history with a resume action.
 
 {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` When Inbox is enabled, the waiting action also appears there.
 
