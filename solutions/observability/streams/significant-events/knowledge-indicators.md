@@ -200,7 +200,7 @@ Streams that have never been processed are always prioritized. Among remaining c
 
 The continuous extraction workflow has a 34-minute timeout (one minute shorter than the 35-minute schedule, to prevent overlapping runs). If multiple runs would overlap, excess triggers are silently dropped.
 
-Toggling continuous extraction off cancels any in-flight extraction tasks and disables the workflow. Re-enabling turns it back on; already-extracted KIs are preserved throughout.
+Toggling continuous extraction off cancels any in-flight extraction tasks and disables the workflow. Re-enabling turns it back on. Already-extracted KIs are preserved throughout.
 
 ### Continuous extraction settings
 
