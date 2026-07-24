@@ -1087,10 +1087,19 @@ redirects:
     anchors:
       'managed-integrations-content':
 
+  # Jina on-prem deployment content moved back to ml-nlp-jina.md
+  'explore-analyze/machine-learning/nlp/ml-nlp-jina-on-prem.md':
+    to: 'explore-analyze/machine-learning/nlp/ml-nlp-jina.md'
+    anchors:
+      'ml-nlp-jina-on-prem': 'jina-on-prem'
+      'jina-on-prem-prerequisites': 'jina-on-prem'
+      'jina-on-prem-getting-started': 'jina-on-prem'
+      'jina-on-prem-elasticsearch-integration': 'jina-on-prem'
   # Related to https://github.com/elastic/docs-content/pull/7448
   # Hub page is attack-discovery/index.md, which publishes at the same URL as the
-  # former attack-discovery.md. Keep only split-out anchor redirects for that path.
+  # former attack-discovery.md. Default to the hub; keep split-out anchor redirects.
   'solutions/security/ai/attack-discovery.md':
+    to: 'solutions/security/ai/attack-discovery/index.md'
     many:
       - to: 'solutions/security/ai/attack-discovery/grant-access.md'
         anchors:
