@@ -85,7 +85,7 @@ To stabilize {{kib}} until we resolve the issue, we recommend temporarily disabl
    The entity store uses a 3-hour lookback window for log extraction, so entity records missed during the outage are recovered after you re-enable the store.
 
 
-4. Remove the `xpack.task_manager.unsafe.exclude_task_types` setting.
+3. Remove the `xpack.task_manager.unsafe.exclude_task_types` setting.
 
    Remove this setting for your deployment:
 
