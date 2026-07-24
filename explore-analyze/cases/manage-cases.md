@@ -25,10 +25,11 @@ Browse the case list, edit case details, and perform bulk actions like deleting 
 
 ```{applies_to}
 stack: ga 9.5
-serverless: ga
 ```
 
-The **Cases** page lists all the cases you can access. Use the view toggle to switch between two layouts:
+The **Cases** page lists all the cases you can access. A summary at the top of the page shows counts for open, in-progress, and closed cases, along with the average time to close.
+
+Use the view toggle to switch between two layouts:
 
 - **List view** (default): Shows each case as a card with its ID, title, severity, status, alert count, assignees, author, last updated date, and comment count.
 - **Table view**: Shows cases in rows and columns.
@@ -53,6 +54,8 @@ To view a case, go to the **Cases** page and select its name. From the case deta
 
 To attach alerts, files, observables, or visualizations to a case, refer to [Attach objects to cases](attach-objects-to-cases.md).
 
+### Work with the case details view [case-details-view]
+
 ```{applies_to}
 stack: ga 9.5
 ```
@@ -71,7 +74,6 @@ The case details page organizes information into editable sections:
 
 ```{applies_to}
 stack: ga 9.5
-serverless: ga
 ```
 
 The activity feed tracks a case's comments and history. To find specific entries, use the search box, filter by type (comments or history) or author, and sort by newest or oldest first. Select **Show more** to load additional entries, or clear the filters to return to the full feed.
