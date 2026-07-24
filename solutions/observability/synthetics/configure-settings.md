@@ -8,6 +8,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
+description: Configure Synthetics settings including alerting rules, private locations, global parameters, data retention, project API keys, and cross-cluster search settings.
 ---
 
 # Configure Synthetics settings [synthetics-settings]
@@ -18,19 +19,19 @@ There are several Synthetics settings you can adjust in Observability.
 
 Alerting enables you to detect complex conditions using **rules** across Observability and send a notification using **connectors**.
 
-When you create a new synthetic monitor, new default synthetics rules will be applied. To edit the default rules:
+When you create a new synthetic monitor, Synthetics applies new default rules to the monitor. To edit the default rules:
 
-1. Click **Alerts** in the top bar.
+1. Click **Alerts** in the global header.
 2. Select a rule to open a panel where you can edit the rule’s configuration:
 
-    * **Monitor status rule** for receiving notifications for errors and outages.
-    * **TLS certificate rule** for receiving notifications when one or more of your HTTP or TCP lightweight monitors has a TLS certificate expiring within a specified threshold or when it exceeds an age limit.
+    * **Monitor status rule** for receiving notifications for errors and outages
+    * **TLS certificate rule** for receiving notifications when one or more of your HTTP or TCP lightweight monitors has a TLS certificate expiring within a specified threshold or when it exceeds an age limit
 
 However, the automatically created Synthetics internal alert is intentionally preconfigured, and some configuration options can’t be changed. For example, you can’t change how often it checks the rule.
 
 If you need specific alerting behavior, set up a different rule. To view all existing rules or create a new rule:
 
-1. Click **Alerts** in the top bar.
+1. Click **Alerts** in the global header.
 2. Click **Manage rules** to go to the *Rules* page.
 
 On the *Rules* page, you can manage the default synthetics rules including snoozing rules, disabling rules, deleting rules, and more.
@@ -41,7 +42,7 @@ On the *Rules* page, you can manage the default synthetics rules including snooz
 :::
 
 ::::{note}
-You can enable and disable default alerts for individual monitors in a few ways:
+You can turn on and turn off default alerts for individual monitors in a few ways:
 
 * In the Synthetics UI when you [create a monitor](/solutions/observability/synthetics/create-monitors-ui.md).
 * In the Synthetics UI *after* a monitor is already created, on the **Monitors** page or on the **Edit monitor** page for the monitor.
@@ -50,9 +51,9 @@ You can enable and disable default alerts for individual monitors in a few ways:
 ::::
 
 In the **Alerting** tab on the **Monitor** Settings page, you can:
-- Enable or disable default rules.
-- Add and configure connectors. Check all available connectors in [Action types](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md).
-- Set up email alerts, if you are running in Elastic Cloud. An SMTP connector will automatically be configured. 
+- Turn on or turn off default rules.
+- Add and configure connectors. For available connectors, refer to [Action types](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md).
+- Set up email alerts, if you are running in Elastic Cloud. An SMTP connector is automatically configured.
 
 :::{image} /solutions/images/observability-synthetics-settings-alerting.png
 :alt: Alerting tab on the Synthetics Settings page in {{kib}}
@@ -63,7 +64,7 @@ In the **Alerting** tab on the **Monitor** Settings page, you can:
 
 {{private-location}}s allow you to run monitors from your own premises.
 
-In the **{{private-location}}s** tab, you can add and manage {{private-location}}s. After you [Set up {{fleet-server}} and {{agent}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-fleet-agent) and [Connect to the {{stack}} or your serverless Observability project](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-connect), this is where you will add the {{private-location}} so you can specify it as the location for a monitor created using the Synthetics UI or a Synthetics project.
+In the **{{private-location}}s** tab, you can add and manage {{private-location}}s. After you [Set up {{fleet-server}} and {{agent}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-fleet-agent) and [Connect to the {{stack}} or your serverless Observability project](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-connect), this is where you add the {{private-location}} so you can specify it as the location for a monitor created using the Synthetics UI or a Synthetics project.
 
 :::{image} /solutions/images/observability-synthetics-settings-private-locations.png
 :alt: {{private-location}}s tab on the Synthetics Settings page in {{kib}}
@@ -113,19 +114,44 @@ In a serverless project, to create a Project API key you must be logged in as a 
 :::
 
 - The **Elastic managed locations enabled** toggle controls whether your Synthetics monitors are permitted to run from Elastic's globally distributed, cloud-hosted testing infrastructure. If enabled, the key can push monitors to both Elastic-managed and private locations. If disabled, the key is restricted to private locations only.
-- The **Spaces** drop-down allows you to select the Kibana Space where your API keys will be available. 
+- The **Spaces** menu allows you to select the space where your API keys are available.
+
+## Remote clusters [synthetics-settings-remote-clusters]
+```{applies_to}
+stack: ga 9.5+
+```
+
+In the **Remote clusters** tab, you can configure {{ccs}} ({{ccs-init}}) settings so that Synthetics can include monitor data from remote {{es}} clusters alongside your local monitors.
+
+These settings apply to one or more {{kib}} spaces. Changes you make here affect all spaces that have access to these settings.
+
+### Source settings [synthetics-settings-remote-clusters-source]
+
+Use the **Use all remote clusters** toggle to turn on or turn off {{ccs}} for Synthetics. When enabled, monitors from remote clusters appear alongside local monitors in the Synthetics UI.
+
+### Remote clusters [synthetics-settings-remote-clusters-select]
+
+When **Use all remote clusters** is disabled, use the **Select remote clusters** combo box to select which remote clusters Synthetics queries. Each cluster is shown with a connected or disconnected status indicator.
+
+To configure remote clusters, go to **{{stack-manage-app}} → Remote Clusters**.
+
+### Spaces with access [synthetics-settings-remote-clusters-spaces]
+
+Use the **Spaces** combo box to control which {{kib}} spaces these {{ccs-init}} settings apply to. You can select individual spaces, multiple spaces, or **All spaces** to share the settings across your entire deployment. Removing a space from the selection hides these settings in that space.
+
+If you leave the field empty, the current sharing configuration remains unchanged.
 
 ## Advanced [synthetics-settings-advanced]
 ```{applies_to}
-serverless: ga
 stack: ga 9.4+
+serverless: ga
 ```
 
 In the **Advanced** tab, you can configure advanced settings for your Synthetics deployment.
 
-### Maintenance windows sync interval [synthetics-settings-advanced-sync-interval]
+### {{maint-windows-cap}} sync interval [synthetics-settings-advanced-sync-interval]
 
-Private location monitors are periodically synced to apply active maintenance window changes. The **Maintenance windows sync interval** setting controls how frequently this sync occurs.
+Private location monitors are periodically synced to apply active maintenance window changes. The **{{maint-windows-cap}} sync interval** setting controls how frequently this sync occurs.
 
 Use the **Sync interval (minutes)** field to set the interval. The default is 5 minutes, and valid values range from 5 to 1440 minutes. When you apply a new interval, an immediate sync is triggered so the change takes effect right away.
 
