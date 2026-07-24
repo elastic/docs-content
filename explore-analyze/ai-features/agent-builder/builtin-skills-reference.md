@@ -33,7 +33,7 @@ Platform skills are available across all deployment types. They cover core capab
 ### Core skills
 
 $$$agent-builder-visualization-creation-skill$$$ `visualization-creation` {applies_to}`stack: ga 9.4+`
-:   Creates standalone or reusable Lens visualizations from index and field context. Use when a user asks for a chart, metric, trend, or breakdown visualization, or wants to update an existing one.
+:   Creates standalone or reusable Lens or Vega-Lite visualizations from index and field context. Use when a user asks for a chart, metric, trend, or breakdown visualization, or wants to update an existing one.
 
     :::{dropdown} Assigned tools
     `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.create_visualization`

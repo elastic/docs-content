@@ -94,6 +94,8 @@ Built-in tools cannot be modified or deleted.
 
 For a quick overview of how to work programmatically with tools, refer to [Tools API](kibana-api.md#tools-apis).
 
+Direct tool calls through the Tools API are not subject to {{agent-builder}} [human-in-the-loop confirmation](chat.md#human-in-the-loop-prompts).
+
 ### API reference
 
 For the complete API reference, refer to the [Kibana API reference]({{kib-apis}}operation/operation-get-agent-builder-tools).

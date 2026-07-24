@@ -66,17 +66,23 @@ The following table lists all available processors. Refer to the individual proc
 | [`enrich`](./processors/enrich.md) | {applies_to}`stack: ga 9.4+` Adds data from an enrich policy to incoming documents. |
 | [`grok`](./processors/grok.md) | Parses unstructured text using predefined or custom patterns. |
 | [`join`](./processors/join.md) | {applies_to}`stack: ga 9.4+` Concatenates the values of multiple fields with a delimiter. |
+| [`json_extract`](./processors/json-extract.md) | {applies_to}`stack: ga 9.4+` Extracts values from a JSON-encoded string field using JSONPath-like selectors. |
 | [`lowercase`](./processors/lowercase.md) | {applies_to}`stack: ga 9.4+` Converts a string field to lowercase. |
 | [`math`](./processors/math.md) | {applies_to}`stack: ga 9.3+` Evaluates an arithmetic expression and stores the result. |
 | [`network_direction`](./processors/network-direction.md) | {applies_to}`stack: ga 9.4+` Determines network traffic direction based on source and destination IP addresses. |
 | [`redact`](./processors/redact.md) | {applies_to}`stack: ga 9.4+` Redacts sensitive data in a string field by matching patterns. |
+| [`registered_domain`](./processors/registered-domain.md) | {applies_to}`stack: ga 9.5+` Extracts the domain, registered domain, top-level domain, and subdomain from a fully qualified domain name. |
 | [`remove`](./processors/remove.md) | {applies_to}`stack: ga 9.3+` Removes a field from the document. |
 | [`remove_by_prefix`](./processors/remove.md#streams-remove-by-prefix-processor) | Removes a field and all nested fields matching a prefix. |
 | [`rename`](./processors/rename.md) | Moves a field's value to a new field name and removes the original. |
 | [`replace`](./processors/replace.md) | {applies_to}`stack: ga 9.3+` Replaces portions of a string field that match a regular expression. |
 | [`set`](./processors/set.md) | Assigns a value to a field, creating the field if it doesn't exist. |
+| [`sort`](./processors/sort.md) | {applies_to}`stack: ga 9.4+` Sorts the elements of an array field in ascending or descending order. |
+| [`split`](./processors/split.md) | {applies_to}`stack: ga 9.4+` Splits a field value into an array using a separator. |
 | [`trim`](./processors/trim.md) | {applies_to}`stack: ga 9.4+` Removes leading and trailing whitespace from a string field. |
 | [`uppercase`](./processors/uppercase.md) | {applies_to}`stack: ga 9.4+` Converts a string field to uppercase. |
+| [`uri_parts`](./processors/uri-parts.md) | {applies_to}`stack: ga 9.5+` Parses a URI string into its components, such as scheme, domain, path, and query. |
+| [`user_agent`](./processors/user-agent.md) | {applies_to}`stack: ga 9.5+` Extracts browser, operating system, and device details from a user agent string. |
 
 ### Processor limitations and inconsistencies [streams-processor-inconsistencies]
 

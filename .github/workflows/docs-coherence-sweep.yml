@@ -29,7 +29,6 @@ on:
 
 permissions:
   actions: read
-  copilot-requests: write
   contents: read
   discussions: write
   issues: write
@@ -45,3 +44,4 @@ jobs:
       scope-mode: ${{ inputs.scope-mode }}
       target-batch-size: ${{ inputs.target-batch-size }}
       max-per-fix-issue: ${{ inputs.max-per-fix-issue }}
+    secrets: inherit
