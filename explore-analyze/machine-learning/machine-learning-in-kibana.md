@@ -66,4 +66,6 @@ You can find the data drift view in **{{ml-app}}** > **{{data-viz}}** in {{kib}}
 
 Select a {{data-source}} that you want to analyze, then select a time range for the reference and the comparison data in the appearing histogram chart. You can adjust the time range for both the reference and the comparison data by moving the respective brushes. When you finished setting the time ranges, click **Run analysis**.
 
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` You can select or switch the {{data-source}} at any time from the picker in the page header, without going through a separate selection step.
+
 You can decide whether you want to see all the fields in the {{data-source}} or only the ones that contains drifted data. The analysis results table displays the fields, their types, if drift is detected, the p-value that indicates how significant the detected change is, the reference and comparison distribution, and the comparison chart. You can expand the results for a particular field by clicking the arrow icon at the beginning of the field’s row.
