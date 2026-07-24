@@ -28,6 +28,8 @@ In certain apps, you can also query your {{es}} data using [{{esql}}](elasticsea
 * If a read-only indicator appears, you have insufficient privileges to create or save {{data-sources}}. In addition, the buttons to create {{data-sources}} or save existing {{data-sources}} are not visible.
 * {applies_to}`stack: ga 9.2` Some data views are exclusively configured and **managed** by Elastic. You can view and use these managed data views, but you can't edit them. If you'd like to use a modified version of a managed data view, you can [duplicate it](#duplicate-managed-data-view) and edit that new copy as needed.
 
+  {applies_to}`stack: ga 9.4` You also can't delete a managed data view.
+
 
 ## Create a data view [settings-create-pattern]
 
@@ -169,6 +171,8 @@ To restrict a {{data-source}} to specific projects regardless of the active scop
 ## Delete a {{data-source}} [delete-data-view]
 
 When you delete a {{data-source}}, you cannot recover the associated field formatters, runtime fields, source filters, and field popularity data. Deleting a {{data-source}} does not remove any indices or data documents from {{es}}.
+
+{applies_to}`stack: ga 9.4` You can't delete managed data views. On the **Data Views** management page, the delete action isn't available for these data views, and they can't be selected for bulk deletion. To use a modified version of a managed data view, [duplicate it](#duplicate-managed-data-view) instead.
 
 ::::{warning}
 Deleting a {{data-source}} breaks all visualizations, saved Discover sessions, and other saved objects that reference the data view.

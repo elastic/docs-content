@@ -23,6 +23,59 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Entity Store extraction tasks can crash Kibana
+**Applies to: {{stack}} 9.4.4**
+
+**Impact**<br>
+On {{stack}} 9.4.4, {{elastic-sec}} deployments with a large number of indices can enter a crash loop. Entity store extraction tasks generate oversized HTTP requests that cause {{kib}} to crash repeatedly.
+
+
+**Workaround**<br>
+Follow these steps to stabilize {{kib}}:
+
+1. Block the entity store tasks from running by applying this setting:
+
+   ```yaml
+   xpack.task_manager.unsafe.exclude_task_types:
+     - 'entity_store:v2:extract_entity_task:user'
+     - 'entity_store:v2:extract_entity_task:host'
+     - 'entity_store:v2:extract_entity_task:generic'
+     - 'entity_store:v2:extract_entity_task:service'
+   ```
+
+   Apply this setting for your deployment:
+
+   * **{{ech}}**: [Contact Elastic Support](https://www.elastic.co/support) to apply this as a system-level override. You cannot add it to `kibana.yml` directly. {{kib}} restarts as part of applying the change.
+   * **Self-managed**: Add the setting to `kibana.yml`, save your change, and restart {{kib}}.
+
+   After the override is in place, {{kib}} stabilizes and the crash loop stops.
+
+2. Stop the entity store engines.
+
+   Send the following request in every {{kib}} space where the entity store is enabled:
+
+   ```
+   PUT /api/security/entity_store/stop
+   ```
+
+   If you're using a non-default {{kib}} space, prefix the path with `/s/{space_id}`:
+
+   ```
+   PUT /s/{space_id}/api/security/entity_store/stop
+   ```
+
+   The request stops running entity engines and pauses data processing. For the full API reference, refer to [Stop Entity Store engines](https://www.elastic.co/docs/api/doc/kibana/operation/operation-put-security-entity-store-stop).
+
+   The entity store uses a 3-hour lookback window for log extraction, so entity records missed during the outage are recovered after you re-enable the store.
+
+3. Remove the `xpack.task_manager.unsafe.exclude_task_types` setting.
+
+   Remove this setting for your deployment:
+
+   * **{{ech}}**: [Contact Elastic Support](https://www.elastic.co/support) to remove the system-level override.
+   * **Self-managed**: Remove the setting from `kibana.yml`, save your change, and restart {{kib}}.
+:::
+
 :::{dropdown} Response actions fail and endpoints do not appear for agents on version-specific policies
 **Applies to: {{stack}} 9.4.0, 9.4.1, 9.4.2, 9.4.3**
 
@@ -32,7 +85,11 @@ Certain {{agent}} integration packages and inputs can trigger the creation of a 
 For more information, refer to [#276295](https://github.com/elastic/kibana/issues/276295).
 
 **Workaround**<br>
-Remove the version-specific integration policy from the {{agent}} policy, or move the affected endpoints to a new {{agent}} policy that does not include any version-specific integration policies. A fix will be included in a future 9.4.x release.
+Remove the version-specific integration policy from the {{agent}} policy, or move the affected endpoints to a new {{agent}} policy that does not include any version-specific integration policies.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.4.4.
 :::
 
 :::{dropdown} Osquery cannot target agents on version-specific policies
@@ -42,7 +99,11 @@ Remove the version-specific integration policy from the {{agent}} policy, or mov
 Certain {{agent}} integration packages and inputs can trigger the creation of a version-specific {{agent}} policy. When a version-specific policy includes the Osquery integration, the corresponding agents do not appear in the Osquery agent or policy selector, so they cannot be targeted. Live queries against an affected policy fail with a `No agents found for selection` error, and agent grouping and counts in the selector are inaccurate.
 
 **Workaround**<br>
-Remove the version-specific integration policy from the {{agent}} policy, or reassign the affected agents to a new {{agent}} policy that does not include any version-specific integration policies. A fix will be included in a future 9.4.x release.
+Remove the version-specific integration policy from the {{agent}} policy, or reassign the affected agents to a new {{agent}} policy that does not include any version-specific integration policies.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.4.4.
 :::
 
 :::{dropdown} Problem Child and DGA integrations fail to install
