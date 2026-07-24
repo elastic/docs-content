@@ -33,7 +33,7 @@ These fields go at the top level of a template's YAML definition and pre-fill ma
 | `tags` | array of strings | Array of strings | Optional case tags to pre-fill. |
 | `severity` | string | `low`, `medium`, `high`, or `critical` | Optional case severity to pre-fill. |
 | `category` | string | Any string | Optional case category to pre-fill. |
-| `fields` | array | Array of field references, or inline field definitions | Optional. The custom fields the template pre-fills. Use `$ref` for reusable library fields. You can also define a field inline with the same keys as a library entry when it isn't shared. Field names must be unique within the template. See [Field definition keys](#case-templates-field-keys) and [Reference a field from the library](#case-templates-field-ref). |
+| `fields` | array | Array of field references, or inline field definitions | Optional. The custom fields the template pre-fills. Use `$ref` for reusable library fields. You can also define a field inline with the same keys as a library entry when it isn't shared. Field names must be unique within the template. See [Field definition keys](#case-templates-field-keys) and [Reference a field from the library](#case-templates-field-ref-schema). |
 
 :::{note}
 The template's own name, description, and tags (used in the **Templates** list), plus its default connector and case settings (**Sync alerts** and **Extract observables**), aren't part of the YAML. You set them on the **Configuration** tab. **Extract observables** is available in {{elastic-sec}} only.
@@ -57,18 +57,22 @@ A field library entry, and each entry in a template's `fields` array, uses these
 
 The `metadata` keys a field supports depend on its `control`.
 
-| Control | `type` value | Metadata keys | Description |
-|---|---|---|---|
-| `INPUT_TEXT` | `keyword` | `default` (string) | A single line of text. |
-| `INPUT_NUMBER` | One of `long`, `integer`, `short`, `byte`, `double`, `float`, `half_float`, `scaled_float`, or `unsigned_long` | `default` (number) | A numeric value. |
-| `SELECT_BASIC` | `keyword` | `options` (array of strings, required), `default` (string) | A single choice from a list of options. |
-| `TEXTAREA` | `keyword` | `default` (string), `markdown` (boolean) | Multiple lines of text. Set `markdown: true` to render a Markdown editor instead of plain text. |
-| `DATE_PICKER` | `date` | `default` (string, ISO 8601 datetime), `show_time` (boolean), `timezone` (`utc` or `local`) | A date, optionally with a time and time zone. `timezone` defaults to `utc`. |
-| `CHECKBOX_GROUP` | `keyword` | `options` (array of strings, required, max 30, unique), `default` (array of strings, must match `options`) | A multi-select from up to 30 options. |
-| `RADIO_GROUP` | `keyword` | `options` (array of strings, required, 2–20 items, unique), `default` (string, must match `options`) | A single choice from 2 to 20 options. |
-| `USER_PICKER` | `keyword` | `multiple` (boolean), `default` (array of objects with `uid` and `name`) | One or more {{kib}} users. Set `multiple: false` to restrict to a single selection. |
-| `TOGGLE` | `boolean` | `default` (boolean) | An on/off toggle. |
-| `MARKDOWN` | `keyword` | `content` (string) | A display-only Markdown block. Use `content` for the Markdown to render. |
+| Control | UI label | `type` value | Metadata keys | Description |
+|---|---|---|---|---|
+| `INPUT_TEXT` | Text | `keyword` | `default` (string) | A single line of text. |
+| `INPUT_NUMBER` | Number | One of `long`, `integer`, `short`, `byte`, `double`, `float`, `half_float`, `scaled_float`, or `unsigned_long` | `default` (number) | A numeric value. |
+| `SELECT_BASIC` | Dropdown | `keyword` | `options` (array of strings, required), `default` (string) | A single choice from a list of options. |
+| `TEXTAREA` | Text area | `keyword` | `default` (string), `markdown` (boolean) | Multiple lines of text. Set `markdown: true` to render a Markdown editor instead of plain text. |
+| `DATE_PICKER` | Date/time picker | `date` | `default` (string, ISO 8601 datetime), `show_time` (boolean), `timezone` (`utc` or `local`) | A date, optionally with a time and time zone. `timezone` defaults to `utc`. |
+| `CHECKBOX_GROUP` | Checkboxes | `keyword` | `options` (array of strings, required, max 30, unique), `default` (array of strings, must match `options`) | A multi-select from up to 30 options. |
+| `RADIO_GROUP` | Radio buttons | `keyword` | `options` (array of strings, required, 2–20 items, unique), `default` (string, must match `options`) | A single choice from 2 to 20 options. |
+| `USER_PICKER` | User selection | `keyword` | `multiple` (boolean), `default` (array of objects with `uid` and `name`) | One or more {{kib}} users. Set `multiple: false` to restrict to a single selection. |
+| `TOGGLE` | Toggle | `boolean` | `default` (boolean) | An on/off toggle. |
+| `MARKDOWN` | Markdown (display only) | `keyword` | `content` (string) | A display-only Markdown block. Use `content` for the Markdown to render. |
+
+:::{note}
+There are two Markdown options. Use the `MARKDOWN` control for a display-only block that users can't edit. To let users enter and edit Markdown, use the `TEXTAREA` control with `markdown: true` instead.
+:::
 
 For example, `MARKDOWN` and `TOGGLE` fields look like this:
 
@@ -129,9 +133,9 @@ A condition is either a single rule or a compound rule that combines several sin
 | `combine` | string | `all` or `any` | Whether every rule must match (`all`) or at least one rule must match (`any`). Defaults to `all`. |
 | `rules` | array | One or more single rules | The rules to evaluate. |
 
-## Reference a field from the library [case-templates-field-ref]
+## Reference a field from the library [case-templates-field-ref-schema]
 
-Prefer referencing a reusable field from the library with `$ref` and the field's `name` (not its label). Global fields appear on every case automatically and don't need a `$ref`. For a how-to example, refer to [Add reusable fields from the library](create-case-templates.md#case-templates-field-ref).
+Reference a reusable field from the library with `$ref` and the field's `name` (not its label). Global fields appear on every case automatically and don't need a `$ref`. For a how-to example, refer to [Add reusable fields from the library](create-case-templates.md#case-templates-field-ref).
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|

@@ -37,7 +37,7 @@ The field library is an optional catalog where you can define a field once and r
 * **Global fields** appear on every case, whether or not a template was used.
 * **Reusable fields** appear only when a template that references them is used to create a case, or [applied to an existing case](manage-cases.md#apply-case-template).
 
-For how to create fields and choose a scope in the UI, refer to [Create fields in the case field library](create-case-field-library.md).
+For how to create fields and select a scope in the UI, refer to [Create fields in the case field library](create-case-field-library.md).
 
 ## What to do next with case templates [case-templates-next-steps]
 

@@ -9,7 +9,7 @@ products:
   - id: observability
   - id: cloud-serverless
 type: how-to
-description: Edit, clone, delete, or disable case templates, manage field library entries, and import or export templates between spaces or deployments.
+description: Edit, clone, delete, or turn off case templates, manage field library entries, and import or export templates between spaces or deployments.
 ---
 
 # Edit and share case templates [edit-case-templates]
@@ -26,7 +26,7 @@ Update existing case templates, make copies, or move them between spaces and dep
 You can edit, clone, or delete a template from the **Templates** page at any time. You can also turn a template off to hide it from the case creation flow without deleting it.
 
 1. Find **Cases** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Templates**.
-2. From the templates list, edit, clone, delete, or disable the template you want to change.
+2. From the templates list, edit, clone, delete, or turn off the template you want to change.
 
 While you're editing, your changes are saved as a draft so you don't lose your work. Select **Reset** to discard the draft and return to the last saved version.
 
@@ -41,6 +41,6 @@ Changing a library field updates the definition for templates that reference it.
 
 ## Import and export templates [case-templates-import-export]
 
-To share a template with another space or deployment, or to back it up, export it from the **Templates** page. To add templates from an exported file, click **Import**, upload the file, then choose which templates to add to the current space.
+To share a template with another space or deployment, or to back it up, export it from the **Templates** page. To add templates from an exported file, select **Import**, upload the file, then select which templates to add to the current space.
 
 Import and export apply to templates only. Field library entries aren't included. If a template references reusable fields, those fields must already exist in the destination field library (with matching `name` values) before or after you import the template.

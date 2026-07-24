@@ -20,7 +20,7 @@ Create a case template to pre-fill case defaults whenever your team opens a simi
 
 * Your role must have the **Manage templates** sub-feature privilege for **Cases**. Refer to [Control access to cases](control-case-access.md#give-manage-templates-access).
 * Review [what's in a template](manage-case-templates.md#case-templates-anatomy) and how it uses the [field library](manage-case-templates.md#case-templates-field-library).
-* (Optional) [Create reusable fields](create-case-field-library.md) that the template should include.
+* (Optional) [Create reusable fields](create-case-field-library.md) to include in the template.
 
 ## Create a template [case-templates-create-template]
 
@@ -33,11 +33,11 @@ To create a template:
 
 1. Find **Cases** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Templates** → **Create**.
 
-
+   :::{note}
    Cases are [scoped by solution](create-cases.md#cases-limitations). On {{stack}}, search for `Security/Cases` or `Observability/Cases`, or go to **{{stack-manage-app}}** → **Cases**. On {{serverless-short}}, search for `Cases` in {{elastic-sec}} or {{observability}}.
+   :::
 
-
-2. On the **Fields** tab, define case defaults and the fields to pre-fill. Use the **Actions menu** to insert scaffolding for a new field, [reference a reusable field](#case-templates-field-ref) from your field library, or add validation and conditional logic. The preview pane updates in real time so you can see how fields will look and behave before saving. Refer to the [YAML schema reference](yaml-template-schema-reference.md) for the full set of supported keys.
+2. On the **Fields** tab, define case defaults and the fields to pre-fill. Use the **Actions menu** to insert scaffolding for a new field, [reference a reusable field](#case-templates-field-ref) from your field library, or add validation and conditional logic. The preview pane updates in real time so you can see how fields look and behave before saving. Refer to the [YAML schema reference](yaml-template-schema-reference.md) for the full set of supported keys.
 
 3. On the **Configuration** tab, enter a template name. Optionally add a description, tags, case settings (**Sync alerts** and **Extract observables**), and an external connector. 
 
@@ -45,7 +45,7 @@ To create a template:
    **Extract observables** is available in {{elastic-sec}} only.
    :::
 
-4. Click **Create**. The template is enabled by default so it's available when creating a case.
+4. Select **Create**. The template is enabled by default so it's available when creating a case.
 
 As you edit, the editor validates your YAML and suggests values. While you're editing, your changes are saved as a draft so you don't lose your work. Select **Reset** to discard the draft and return to the last saved version.
 

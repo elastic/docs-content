@@ -18,10 +18,10 @@ Use the **field library** to define custom case fields once and reuse them acros
 
 ## Before you begin
 
-* Your role needs **Manage templates** sub-feature privilege for **Cases**. Refer to [Control access to cases](control-case-access.md#give-manage-templates-access) for more information.
+* Your role must have the **Manage templates** sub-feature privilege for **Cases**. Refer to [Control access to cases](control-case-access.md#give-manage-templates-access) for more information.
 * Understand [how templates and the field library work together](manage-case-templates.md#case-templates-field-library).
 
-## Choose a field scope [case-templates-field-library]
+## Select a field scope [case-field-library-scope]
 
 When you create a field, leave **Global field** cleared for a reusable field, or select it for a global field. For when to use each scope, refer to [About the field library](manage-case-templates.md#case-templates-field-library).
 
@@ -69,7 +69,7 @@ To create a field:
 
 2. (Optional) Add a description.
 3. Leave **Global field** cleared to create a reusable field, or select it if the field should apply to every case.
-4. In the YAML editor, define the field's `name`, `label`, and `control` (field type). Refer to the [YAML schema reference](yaml-template-schema-reference.md) for supported keys and values.
+4. In the YAML editor, define the field's `name`, `label`, `control` (the field type), and `type` (the underlying data type). Refer to the [YAML schema reference](yaml-template-schema-reference.md) for supported keys and values.
 5. (Optional) Add type-specific options, such as a list of choices, and set validation or display rules.
 6. Check the live preview. Changes you make in the preview sync back to the YAML.
 7. Click **Save**. Global fields are added to all new and existing cases immediately. Reusable fields become available to [add to a template](create-case-templates.md#case-templates-field-ref). Existing cases don't include a reusable field until you create a case from a template that adds it, or [apply that template](manage-cases.md#apply-case-template) to the case.

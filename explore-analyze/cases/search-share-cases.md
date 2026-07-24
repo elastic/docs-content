@@ -42,7 +42,7 @@ stack: ga 9.3+
 
 You can also search for alert and event IDs, observable values, and case comments. For example, in {{elastic-sec}} you can search for a specific IP address that's been specified as an observable, a colleague's comment, or the ID of an alert that's attached to the case.
 
-* {applies_to}`stack: ga 9.5+` For field library fields, see [Search template and field library values](#search-case-field-values).
+* {applies_to}`stack: ga 9.5+` For field library fields, refer to [Search template and field library values](#search-case-field-values).
 * {applies_to}`stack: ga 9.3-9.4` You can also search custom fields (text type only).
 
 ### Search template and field library values [search-case-field-values]
