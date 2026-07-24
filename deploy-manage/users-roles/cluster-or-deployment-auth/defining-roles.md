@@ -119,6 +119,13 @@ A safer approach would be to apply the change on one of the nodes and have the `
 :::
 :::{applies-item} eck:
 
+ECK supports two complementary approaches for file-based role management, and both can coexist — ECK merges roles from all sources into the same `roles.yml` file:
+
+* Using Kubernetes secrets
+* {applies_to}`eck: ga 3.5` Using the `securityRoles` field in a [`StackConfigPolicy`](/deploy-manage/deploy/cloud-on-k8s/elastic-stack-configuration-policies.md). This approach is best for applying role definitions across multiple {{es}} clusters. Refer to [Define custom Elasticsearch roles through a policy](/deploy-manage/deploy/cloud-on-k8s/elastic-stack-configuration-policies.md#k8s-stack-config-policy-security-roles-example).
+
+#### Define roles using Kubernetes secrets
+
 You can set up file-based role management in {{eck}} by referencing Kubernetes secrets containing the roles specification.
 
 ```yaml
@@ -162,12 +169,5 @@ stringData:
           grant: ['category', '@timestamp', 'message' ]
         query: '{"match": {"category": "click"}}'
 ```
-
-```{applies_to}
-deployment:
-  eck: ga 3.5
-```
-
-For multi-cluster deployments where you already use a [`StackConfigPolicy`](/deploy-manage/deploy/cloud-on-k8s/elastic-stack-configuration-policies.md) to manage {{es}} or {{kib}} configuration, the `securityRoles` field lets you extend that same policy to cover role definitions, as shown in [Define custom Elasticsearch roles through a policy](/deploy-manage/deploy/cloud-on-k8s/elastic-stack-configuration-policies.md#k8s-stack-config-policy-security-roles-example). This approach is complementary to the [secrets-based approach](#roles-management-file): both can coexist, and ECK merges roles from all sources into the same `roles.yml` file.
 :::
 ::::
