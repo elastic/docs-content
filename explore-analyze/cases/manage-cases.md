@@ -19,7 +19,7 @@ description: Edit case details, perform bulk actions, and export or import cases
 
 # Manage cases [manage-cases]
 
-Browse the case list, edit case details, perform bulk actions like deleting or updating multiple cases at once, and export or import cases between spaces or when upgrading to a new stack version.
+Browse the case list, edit case details, and perform bulk actions like deleting or updating multiple cases. You can also export and import cases between spaces or when upgrading to a new stack version.
 
 ## View and organize the case list [view-case-list]
 
@@ -30,7 +30,7 @@ serverless: ga
 
 The **Cases** page lists all the cases you can access. Use the view toggle to switch between two layouts:
 
-- **List view** (default): Shows each case as a card with its ID, title, severity, status, alert count, assignees, the user who created it, when it was last updated, and comment count.
+- **List view** (default): Shows each case as a card with its ID, title, severity, status, alert count, assignees, author, last updated date, and comment count.
 - **Table view**: Shows cases in rows and columns.
 
 The following controls are shared across both views:
@@ -63,7 +63,7 @@ The case details page organizes information into editable sections:
 - A collapsible sidebar groups case attributes into sections you can edit in place, each with confirm and cancel controls:
   - **Attributes**: Assignees, severity, participants, tags, and category.
   - **Template fields**: Custom and template fields.
-  - **Connectors**: The external system the case is pushed to.
+  - **{{connectors-ui}}**: The external system the case is pushed to.
 
   Collapse the sidebar to give the main case content more room.
 

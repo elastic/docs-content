@@ -21,13 +21,13 @@ Make sure the following requirements are met:
 
 - [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) must be available, with the Agent chat experience selected.
 - At least an Enterprise subscription ({{stack}}) or the appropriate [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) ({{serverless-short}}).
-- The `xpack.cases.chat.enabled` setting must be `true`. This feature is turned off by default.
+- The `xpack.cases.chat.enabled` setting must be `true`. It's `false` by default.
 
 ## Send a case to a chat conversation [analyze-cases-with-ai-send]
 
 To analyze a case, open it from the **Cases** page and use one of the following actions in the case details header:
 
-- **Add to chat**: Opens a new {{agent-builder}} conversation with the current case attached as context. No message is sent automatically.
+- **Add to chat**: Opens a new {{agent-builder}} conversation with the current case attached as context. You send the first message when you're ready.
 - **Summarize case**: Opens a conversation with the case attached and a pre-filled prompt that asks the agent to summarize the case and suggest next steps.
 
 ### What the agent receives [analyze-cases-with-ai-context]
@@ -49,4 +49,4 @@ The attached context includes the following case details:
 
 ### Keep the case and chat in sync [analyze-cases-with-ai-sync]
 
-If you keep the chat open on the same case, any changes the agent makes to the case are reflected on the case page in real time.
+If you keep the chat open, the case page updates in real time to show any changes the agent makes.
