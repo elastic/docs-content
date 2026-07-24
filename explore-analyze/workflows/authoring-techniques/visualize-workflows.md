@@ -31,7 +31,7 @@ The diagram view is off by default. Turn on the **Elastic Workflows: Experimenta
 2. Search for `workflows:experimentalFeatures` (or **Elastic Workflows: Experimental Features**).
 3. Toggle the setting on, then save your changes and reload the page.
 
-Reload the YAML editor. The **YAML ↔ Graph** toggle will appear in the editor's bottom bar.
+The **YAML ↔ Graph** toggle will appear in the editor's bottom bar.
 
 ## View a workflow as a diagram [workflows-visualize-how-to]
 
