@@ -1,7 +1,7 @@
 ---
 navigation_title: Query with ES|QL
 applies_to:
-  stack: preview=9.2-9.4, ga 9.5+
+  stack: preview 9.2-9.4, ga 9.5+
   serverless: ga
 products:
   - id: kibana
