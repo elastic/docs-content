@@ -84,27 +84,6 @@ Follow these steps to stabilize {{kib}}:
 
    The entity store uses a 3-hour lookback window for log extraction, so entity records missed during the outage are recovered after you re-enable the store.
 
-3. Disable the Entity Store feature flag.
-
-   Send the following request in every {{kib}} space where the entity store needs to be removed:
-
-   ```
-   POST kbn:/api/kibana/settings/securitySolution:entityStoreEnableV2
-   {
-      "value": false
-   }
-   ```
-
-   If you're using a non-default {{kib}} space, prefix the path with `/s/{space_id}`:
-
-   ```
-   POST kbn:/s/{space_id}/api/kibana/settings/securitySolution:entityStoreEnableV2
-   {
-      "value": false
-   }
-   ```
-
-   The Entity Analytics experience will be unavailable while the feature flag is disabled.
 
 4. Remove the `xpack.task_manager.unsafe.exclude_task_types` setting.
 
