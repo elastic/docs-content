@@ -3,7 +3,7 @@ navigation_title: "Revoke an OAuth client or connection"
 description: "Remove an individual connection or an entire OAuth client from Agent Builder to cut off OAuth access for a user or application."
 type: how-to
 applies_to:
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana

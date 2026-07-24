@@ -3,7 +3,7 @@ navigation_title: "Connect an MCP host"
 description: "Configure an MCP host to use an OAuth client and complete the authorization flow to establish a connection to Agent Builder."
 type: how-to
 applies_to:
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana
