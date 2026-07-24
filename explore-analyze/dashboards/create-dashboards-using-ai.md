@@ -2,7 +2,7 @@
 navigation_title: Create using AI
 description: Use Agent Builder or the Kibana dashboards agent skill to create dashboards from natural language, without writing API requests or learning the dashboard schema.
 applies_to:
-  stack: preview 9.4, ga 9.5+
+  stack: preview =9.4, ga 9.5+
   serverless: ga
 products:
   - id: kibana
@@ -24,7 +24,7 @@ If you need to create dashboards from code or CI/CD pipelines using REST APIs, r
 
 ## {{agent-builder}} [agent-builder-dashboard-tools]
 ```{applies_to}
-stack: preview 9.4, ga 9.5+
+stack: preview =9.4, ga 9.5+
 serverless: ga
 ```
 

@@ -2,7 +2,7 @@
 navigation_title: "Dashboards and visualizations"
 description: "Create, edit, and save Kibana dashboards and visualizations through natural language chat with Agent Builder agents."
 applies_to:
-  stack: preview 9.4, ga 9.5+
+  stack: preview =9.4, ga 9.5+
   serverless: ga
 products:
   - id: elasticsearch
