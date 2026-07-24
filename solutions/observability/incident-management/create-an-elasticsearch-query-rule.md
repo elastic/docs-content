@@ -13,14 +13,6 @@ products:
 
 # Create an Elasticsearch query rule [observability-create-elasticsearch-query-rule]
 
-
-::::{note}
-
-The **Editor** role or higher is required to create Elasticsearch query rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
-
-::::
-
-
 The {{es}} query rule type runs a user-configured query, compares the number of matches to a configured threshold, and schedules actions to run when the threshold condition is met.
 
 1. To access this page, from your project go to **Alerts**.
@@ -29,6 +21,11 @@ The {{es}} query rule type runs a user-configured query, compares the number of 
 
 An {{es}} query rule can be defined using {{es}} Query Domain Specific Language (DSL), {{es}} Query Language (ES|QL), {{kib}} Query Language (KQL), or Lucene.
 
+## Requirements
+
+The **Editor** role or higher is required to create Elasticsearch query rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
 
 ## Define the conditions [observability-create-elasticsearch-query-rule-define-the-conditions]
 

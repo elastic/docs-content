@@ -28,7 +28,10 @@ To create metric threshold rules, you need the following:
 - {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#logs-metrics-prereqs).
 - {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
-### Indices used by this rule
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
+
+## Indices used by this rule
 
 This rule queries the metrics indices from the [Infrastructure and Metrics Explorer settings](/solutions/observability/infra-and-hosts/configure-settings.md). The default are `metrics-*` and `metricbeat-*`. You cannot override these indices on a per-rule basis.
 

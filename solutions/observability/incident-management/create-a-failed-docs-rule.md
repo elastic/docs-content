@@ -11,18 +11,21 @@ applies_to:
 # Create a failed docs rule [observability-create-failed-docs-rule]
 
 
-::::{note}
-
-The **Editor** role or higher is required to create a failed docs rule using custom threshold rule. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-
-::::
-
 Create a failed docs rule using the [custom threshold rule](../incident-management/create-custom-threshold-rule.md) to alert when the number of failed documents in your data stream reaches or exceeds a given value.
 
 :::{image} /solutions/images/failed-docs-rule.png
 :alt: Create failed docs rule using the custom threshold rule type
 :screenshot:
 :::
+
+## Requirements
+
+The **Editor** role or higher is required to create a failed docs rule using custom threshold rule. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
+
+## Create a rule
 
 When creating a failed docs rule, the process depends on your deployment type and your space's solution view. You can check your solution view by selecting the **Spaces** icon.
 

@@ -21,9 +21,12 @@ Within the Synthetics UI, create a **Monitor Status** rule to receive notificati
 
 To create synthetic monitor status rules, you need the following:
 
-- {applies_to}`stack: ga` The permission for the [Synthetics application](/solutions/observability/synthetics/grant-access-to-secured-resources.md).
+{applies_to}`stack: ga` The permission for the [Synthetics application](/solutions/observability/synthetics/grant-access-to-secured-resources.md).
 
-### Indices used by this rule
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
+
+## Indices used by this rule
 
 This rule only queries against `synthetics-*` and that is hardcoded.
 
