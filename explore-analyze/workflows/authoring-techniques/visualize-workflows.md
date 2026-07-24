@@ -21,7 +21,7 @@ The diagram view shows your workflow as a visual graph generated from its YAML. 
 ## Before you begin [workflows-visualize-before-you-begin]
 
 - Workflows must be turned on, and your role must have the appropriate privileges. Refer to [](/explore-analyze/workflows/get-started/setup.md) for more information.
-- The diagram view is off by default. In **Advanced Settings**, turn on the **Elastic Agent Builder: Experimental Features** (`agentBuilder:experimentalFeatures`) advanced setting, then reload the page. The **YAML ↔ Graph** toggle appears in the editor's bottom bar.
+- The diagram view is off by default. In **Advanced Settings**, turn on the **Elastic Workflows: Experimental Features** (`workflows:experimentalFeatures`) advanced setting, then reload the page. The **YAML ↔ Graph** toggle appears in the editor's bottom bar.
 
 ## View a workflow as a diagram [workflows-visualize-how-to]
 
