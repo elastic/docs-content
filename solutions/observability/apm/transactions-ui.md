@@ -140,7 +140,9 @@ Learn more about a trace sample in the **Metadata** tab:
 * FaaS information, like cold start, AWS request ID, trigger type, and trigger request ID
 
 ::::{tip}
-All of this data is stored in documents in {{es}}. Click **Open full trace in Discover** to explore the trace data in Discover.
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` All of this data is stored in documents in {{es}}. Click **Open full trace in Discover** to explore the trace data in Discover.
+
+{applies_to}`stack: ga 9.0-9.4` All of this data is stored in documents in {{es}}. Select **Actions** → **View transaction in Discover** to see the raw {{es}} document for this trace sample.
 
 ::::
 
