@@ -540,6 +540,12 @@ toc:
       - file: cases/attach-objects-to-cases.md
       - file: cases/search-share-cases.md
       - file: cases/configure-case-settings.md
+      - file: cases/manage-case-templates.md
+        children:
+          - file: cases/create-case-field-library.md
+          - file: cases/create-case-templates.md
+          - file: cases/edit-case-templates.md
+          - file: cases/yaml-template-schema-reference.md
       - file: cases/cases-as-data.md
   - file: workflows.md
     children:

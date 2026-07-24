@@ -21,47 +21,29 @@ description: Create cases to track incidents, attach alerts and files, assign te
 
 To create a new case:
 
-1. Go to the **Cases** page, then select **Create case**.
+1. Find **Cases** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Create case**.
 
-   ::::{applies-switch}
-
-   :::{applies-item} stack: ga
-   To access the **Cases** page:
-   * **{{stack-manage-app}}**: Go to **{{stack-manage-app}}** > **Cases**.
-   * **{{elastic-sec}}**: Find **Cases** in the navigation menu or search for `Security/Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-   * **{{observability}}**: Find **Cases** in the navigation menu or search for `Observability/Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+   :::{note}
+   Cases are [scoped by solution](#cases-limitations). On {{stack}}, search for `Security/Cases` or `Observability/Cases`, or go to **{{stack-manage-app}}** > **Cases**. On {{serverless-short}}, search for `Cases` in {{elastic-sec}} or {{observability}}.
    :::
 
-   :::{applies-item} serverless: ga
-   To access the **Cases** page:
-   * **{{elastic-sec}}**: Find **Cases** in the navigation menu or search for `Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-   * **{{observability}}**: Find **Cases** in the navigation menu or search for `Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. (Optional) Select a template to pre-fill values.
+   * {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Create and manage templates on the **Templates** page. Refer to [Case templates](manage-case-templates.md).
+   * {applies_to}`stack: ga 9.0-9.4` Create and manage templates in [case settings](configure-case-settings.md#case-templates).
 
-   :::
+3. Enter a name, severity, and description. Optionally add a category, [assignees](control-case-access.md#give-assignee-access), tags, and additional fields.
+   * {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Additional fields come from the [field library](create-case-field-library.md).
+   * {applies_to}`stack: ga 9.0-9.4` Additional fields are [custom fields](configure-case-settings.md#case-custom-fields) configured in case settings.
 
-   ::::
-
-2. (Optional) Select a [template](configure-case-settings.md#case-templates) to pre-fill field values.
-
-3. Enter a name, severity, and description. If you do not assign your case a severity level, it will be assigned **Low** by default. The description supports [Markdown](https://www.markdownguide.org/cheat-sheet).
-
-4. (Optional) Add a category, [assignees](control-case-access.md), and tags.
-
-5. (Optional) Fill in any [custom fields](configure-case-settings.md#case-custom-fields) in the **Additional fields** section.
-
-6. Configure sync and extraction options:
+4. (Optional) Adjust sync and extraction options, or leave the defaults:
    * **Sync alert status** syncs alert statuses with the case status (on by default).
-   * **Auto-extract observables** extracts observables from attached alerts (on by default, requires appropriate subscription).
+   * **Auto-extract observables** extracts observables from attached alerts (on by default). Available in {{sec-serverless}} and {{elastic-sec}} 9.2+ only.
 
-      :::{note}
-      Auto-extracting observables is only available in {{sec-serverless}} and {{elastic-sec}} 9.2+.
-      :::
+5. (Optional) Select a [connector](configure-case-settings.md#case-connectors) to send the case to an external system. When you create the case, it's pushed to that system automatically.
 
-7. (Optional) Select a [connector](configure-case-settings.md#case-connectors) to send the case to an external system.
+6. Select **Create case**.
 
-8. Select **Create case**. If you've selected a connector for the case, the case is automatically pushed to the third-party system it's connected to.
-
-After creating a case, you can [attach objects](attach-objects-to-cases.md) like alerts, files, observables, and visualizations to provide context and supporting evidence. You can also [set up email notifications](#add-case-notifications) so users are alerted when they're assigned to a case.
+After creating a case, [attach objects](attach-objects-to-cases.md) such as alerts, files, observables, and visualizations. To notify users when they're assigned to a case, [set up email notifications](#add-case-notifications).
 
 ## Set up email notifications [add-case-notifications]
 
@@ -73,7 +55,7 @@ Set up email notifications to alert users when they're assigned to a case, so th
 
 Add the email domains to the [notifications domain allowlist](/explore-analyze/alerting/alerts.md).
 
-You do not need to configure an email connector or update {{kib}} user settings—the preconfigured Elastic-Cloud-SMTP connector is used by default.
+You do not need to configure an email connector or update {{kib}} user settings. The preconfigured Elastic-Cloud-SMTP connector is used by default.
 
 :::
 
