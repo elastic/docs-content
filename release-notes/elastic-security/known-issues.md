@@ -82,8 +82,6 @@ To stabilize {{kib}} until we resolve the issue, we recommend temporarily disabl
 
    At this point, entity engines stop running, data processing is paused, and the Entity Analytics experience becomes unavailable. For the full API reference, refer to [Stop Entity Store engines](https://www.elastic.co/docs/api/doc/kibana/operation/operation-put-security-entity-store-stop).
 
-   The entity store uses a 3-hour lookback window for log extraction, so entity records missed during the outage are recovered after you re-enable the store.
-
 
 3. Remove the `xpack.task_manager.unsafe.exclude_task_types` setting.
 
