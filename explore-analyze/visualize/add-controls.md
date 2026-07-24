@@ -17,6 +17,11 @@ Add interactive [controls](dashboard-controls.md) to your dashboards to help vie
 
 To add other control types, refer to [Add time slider controls](add-time-slider-controls.md) or [Add variable controls](add-variable-controls.md).
 
+:::{tip}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+You can also ask [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md) to add Options list and Range slider controls when it creates or updates a dashboard through chat.
+:::
+
 ## Before you begin [add-controls-requirements]
 
 To add Options list and Range slider controls to a dashboard, you need:
