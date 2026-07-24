@@ -395,19 +395,18 @@ For more details on sharing options, access control, and managing dashboard owne
 
 ## Recreate the dashboard with the API [recreate-dashboard-api]
 ```{applies_to}
-stack: preview 9.4+
-serverless: preview
+stack: ga 9.5+, preview =9.4
+serverless: ga
 ```
 
 Everything you built in this tutorial can also be reproduced in a single API call. The [Dashboards API](dashboards/create-dashboards-programmatically.md) accepts a JSON payload that encodes the complete dashboard, including panel types, data sources, layout, and display options, making it straightforward to version-control dashboards or provision consistent environments programmatically.
 
 <!--
   The curl example below is verified end-to-end by
-  .github/scripts/verify-dashboards-api-example.py. The Dashboards API is in
-  technical preview, so its schema can change between releases. Re-run that
-  script (with KIBANA_URL and API_KEY set) whenever you edit the payload, or
-  whenever the spec at https://github.com/elastic/dashboards-api-spec is
-  updated. Last verified against dashboards-api-spec @ 84120e3 on 2026-05-06.
+  .github/scripts/verify-dashboards-api-example.py. Re-run that script (with
+  KIBANA_URL and API_KEY set) whenever you edit the payload, or whenever the
+  spec at https://github.com/elastic/dashboards-api-spec is updated. Last
+  verified against dashboards-api-spec @ 84120e3 on 2026-05-06.
 -->
 :::::::{dropdown} Recreate this dashboard with one API call
 

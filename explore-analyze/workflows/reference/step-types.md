@@ -24,6 +24,7 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) | AI | Prompt a model, optionally with structured output. |
 | [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize) | AI | Summarize content with an LLM. |
 | [`cases.addAlerts`](/explore-analyze/workflows/steps/cases.md#cases-addalerts) | Cases | Attach detection alerts to a case. |
+| [`cases.addAttachments`](/explore-analyze/workflows/steps/cases.md#cases-addattachments) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Cases | Attach several attachment types to a case in one request. |
 | [`cases.addComment`](/explore-analyze/workflows/steps/cases.md#cases-addcomment) | Cases | Add a comment to a case. |
 | [`cases.addEvents`](/explore-analyze/workflows/steps/cases.md#cases-addevents) | Cases | Attach events to a case. |
 | [`cases.addObservables`](/explore-analyze/workflows/steps/cases.md#cases-addobservables) | Cases | Add observables (IPs, hashes, domains) to a case. |
@@ -41,6 +42,7 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`cases.getCases`](/explore-analyze/workflows/steps/cases.md#cases-getcases) | Cases | Fetch multiple cases by ID. |
 | [`cases.getCasesByAlertId`](/explore-analyze/workflows/steps/cases.md#cases-getcasesbyalertid) | Cases | Find cases containing a specific alert. |
 | [`cases.pushCases`](/explore-analyze/workflows/steps/cases.md#cases-pushcases) | Cases | Push one or more cases to their configured external connector. |
+| [`cases.removeTags`](/explore-analyze/workflows/steps/cases.md#cases-removetags) | Cases | Remove tags from a case. |
 | [`cases.setCategory`](/explore-analyze/workflows/steps/cases.md#cases-setcategory) | Cases | Set a case's category. |
 | [`cases.setCustomField`](/explore-analyze/workflows/steps/cases.md#cases-setcustomfield) | Cases | Set a custom field on a case. |
 | [`cases.setDescription`](/explore-analyze/workflows/steps/cases.md#cases-setdescription) | Cases | Update a case's description. |

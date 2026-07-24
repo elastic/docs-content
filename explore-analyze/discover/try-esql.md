@@ -25,6 +25,7 @@ This tutorial covers the basics of querying data with {{esql}} in Discover. For 
 
 * [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Complete list of commands, functions, and operators
 * [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md): Detailed overview of {{esql}} features in {{product.kibana}}
+* {applies_to}`stack: ga 9.5+` [Detect change points in Discover](detect-change-points.md): Find statistically significant changes in time series data and investigate them in context
 * [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md): Techniques for writing fast queries
 
 
@@ -153,6 +154,13 @@ When a query without transformational commands (such as `KEEP` or `STATS`) retur
 :::
 
 Omitting the `LIMIT` command, the results table defaults to up to 1,000 rows. Using `LIMIT`, you can increase the limit to up to 10,000 rows.
+
+Depending on your query, **Discover** provides additional ways to display and organize the results table:
+
+- {applies_to}`{ stack: preview 9.4, serverless: preview }` A `STATS BY` query with a single grouping field displays expandable groups. Refer to [View grouped results from a STATS query](#esql-cascade-layout).
+- {applies_to}`{ stack: preview 9.5, serverless: preview }` A `STATS` or `INLINE STATS` query that includes a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) aggregation displays inline charts. To add sparklines to categorized patterns, refer to [Add sparklines to patterns](#esql-cascade-pattern-sparkline).
+
+To reorder or resize columns, adjust the table density or row height, or display the table in full-screen mode, refer to [Customize the Discover view](document-explorer.md).
 
 ### Limitations [esql-kibana-results-table-limitations]
 
@@ -413,35 +421,33 @@ FROM kibana_sample_data_logs
 | SORT Count DESC
 ```
 
-% RESTORE FOR 9.5 - start
-% The block below documents the inline SPARKLINE rendering. SPARKLINE has been
-% deferred from 9.4 to 9.5. When SPARKLINE ships in a release build, restore
-% this block, rename the subsection back to "Pattern and sparkline rendering",
-% uncomment the screenshot directive, and update the screenshot if needed.
-% Tracked in: https://github.com/elastic/docs-content/issues/6215
-%
-% When the query also computes a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) over time, the resulting array is rendered as an inline sparkline next to the row aggregates. For example, the following query categorizes log messages and renders a per-pattern sparkline:
-%
-% ```esql
-% FROM kibana_sample_data_logs
-% | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
-% | STATS Count = COUNT(*),
-%         Sparkline = SPARKLINE(COUNT(*), @timestamp, 40, ?_tstart, ?_tend)
-%     BY Pattern = CATEGORIZE(message)
-% | SORT Count DESC
-% ```
-%
-% On larger data sets, add a [`SAMPLE`](elasticsearch://reference/query-languages/esql/commands/sample.md) command before `STATS` to keep the categorization fast, and divide `COUNT(*)` by the same sample fraction to keep the counts representative. For example, `SAMPLE 0.001` followed by `Count = COUNT(*) / 0.001`.
-%
-% :::{image} /explore-analyze/images/discover-esql-cascade-pattern-sparkline.png
-% :alt: A grouped row showing a CATEGORIZE pattern with token highlighting and an inline sparkline
-% :screenshot:
-% :::
-% RESTORE FOR 9.5 - end
-
 ::::{tip}
 Pattern detection on text fields is also available outside {{esql}} from the **Patterns** tab in Discover's classic mode. Refer to [](/explore-analyze/discover/run-pattern-analysis-discover.md).
 ::::
+
+### Add sparklines to patterns [esql-cascade-pattern-sparkline]
+```{applies_to}
+stack: preview 9.5
+serverless: preview
+```
+
+When the query also computes a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) over time, **Discover** renders an inline chart next to the row aggregates. For example, the following query categorizes log messages and renders a sparkline for each pattern:
+
+```esql
+FROM kibana_sample_data_logs
+| WHERE @timestamp >= ?_tstart AND @timestamp < ?_tend
+| STATS Count = COUNT(*),
+        Sparkline = SPARKLINE(COUNT(*), @timestamp, 40, ?_tstart, ?_tend)
+    BY Pattern = CATEGORIZE(message)
+| SORT Count DESC
+```
+
+On larger data sets, add a [`SAMPLE`](elasticsearch://reference/query-languages/esql/commands/sample.md) command before `STATS` to keep the categorization fast, and divide `COUNT(*)` by the same sample fraction to keep the counts representative. For example, `SAMPLE 0.001` followed by `Count = COUNT(*) / 0.001`.
+
+:::{image} /explore-analyze/images/discover-esql-cascade-pattern-sparkline.png
+:alt: A grouped row showing a CATEGORIZE pattern with token highlighting and an inline sparkline
+:screenshot:
+:::
 
 ### Grouped row actions
 

@@ -110,12 +110,12 @@ The data visible in a dashboard highly depends on the time range that is applied
 
 #### Apply a global time range to an entire dashboard [_apply_a_global_time_range_to_an_entire_dashboard]
 
-The global time range menu is located right next to the query bar, in the dashboard’s header. With this menu, you can select the time range to apply, and set the frequency for refreshing the dashboard data. Setting the time range is a common action in {{kib}}. Refer to [Set the time range](../query-filter/filtering.md) for more details.
+Use the global time filter next to the query bar in the dashboard header to select a time range and set how often the dashboard data refreshes. Refer to [Set the time range](../query-filter/filtering.md) for details.
 
-:::{image} /explore-analyze/images/kibana-dashboard-global-time-range.png
-:alt: Time range menu with multiple time range suggestions
+:::{image} /explore-analyze/images/kibana-date-range-picker.png
+:alt: Time filter showing presets and controls for custom ranges, settings, and saving presets
 :screenshot:
-:width: 500px
+:width: 250px
 :::
 
 
