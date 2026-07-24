@@ -55,9 +55,16 @@ Follow these steps to stabilize {{kib}}:
    - For the default space:
 
       ```
-   PUT kbn:/api/security/entity_store/stop
-   {}
-   ```
+      PUT kbn:/api/security/entity_store/stop
+      {}
+      ```
+
+      ```
+      POST kbn:/api/kibana/settings/securitySolution:entityStoreEnableV2
+      {
+         "value": false
+      }
+      ```
 
    - For all non-default spaces, prefix the path with `/s/{space_id}`:
 
