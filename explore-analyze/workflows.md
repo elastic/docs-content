@@ -41,13 +41,20 @@ Some key concepts to understand while working with workflows:
 
 ## Workflow structure [workflow-structure]
 
-Workflows are defined in YAML. In the YAML editor, describe _what_ the workflow should do, and the platform handles execution. For the full reference on every top-level field and the execution lifecycle, refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
+Workflows are defined in YAML. In the YAML editor, describe _what_ the workflow should do, and the platform handles execution. The `inputs` field location depends on your version:
+
+- {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` `inputs` is defined under the `manual` trigger, as shown in [the following example](#workflow-structure-example).
+- {applies_to}`stack: preview 9.3, ga 9.4` `inputs` sits at the workflow root instead.
+
+For the full reference, including [both `inputs` placements](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs), refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
+
+### Example workflow [workflow-structure-example]
 
 ```yaml
 # ═══════════════════════════════════════════════════════════════
 # METADATA - Identifies and describes the workflow
 # ═══════════════════════════════════════════════════════════════
-name: My Workflow                    # Required: Unique identifier 
+name: My Workflow                    # Required: Unique identifier
 description: What this workflow does # Optional: Shown in UI
 enabled: true                        # Optional: Enable or disable execution
 tags: ["demo", "production"]         # Optional: For organizing workflows
@@ -64,26 +71,22 @@ consts:
     backup: "https://backup.example.com"
 
 # ═══════════════════════════════════════════════════════════════
-# INPUTS - Parameters passed when the workflow is triggered
-# ═══════════════════════════════════════════════════════════════
-inputs:
-  - name: environment
-    type: string
-    required: true
-    default: "staging"
-    description: "Target environment"
-  - name: dryRun
-    type: boolean
-    default: true
-
-# ═══════════════════════════════════════════════════════════════
-# TRIGGERS - How/when the workflow starts
+# TRIGGERS - How/when the workflow starts; inputs nest under manual
 # ═══════════════════════════════════════════════════════════════
 triggers:
   - type: manual                      # User clicks Run button
+    inputs:                           # Parameters passed when triggered
+      - name: environment
+        type: string
+        required: true
+        default: "staging"
+        description: "Target environment"
+      - name: dryRun
+        type: boolean
+        default: true
   # - type: scheduled                  # Runs on a schedule
   #   with:
-        every: 1d
+  #     every: 1d
   # - type: alert                     # Triggered by an alert
 
 # ═══════════════════════════════════════════════════════════════
