@@ -159,7 +159,7 @@ deployment:
   eck: ga 3.5
 ```
 
-Unlike most other policy fields, `securityRoles` is not applied through an {{es}} API. ECK merges the definitions into [the `roles.yml` file](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file) mounted on each {{es}} pod. ECK creates and manages this file, so no pre-existing `roles.yml` is required. {{es}} reloads that file at runtime, so changes take effect without a pod restart.
+ECK merges the definitions into [the `roles.yml` file](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file) mounted on each {{es}} pod. ECK creates and manages this file, so no pre-existing `roles.yml` is required. {{es}} reloads that file at runtime, so changes take effect without a pod restart.
 
 `securityRoles` is complementary to [file-based role management using Kubernetes secrets](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file): both can coexist, and ECK merges roles from all sources into the same `roles.yml` file. Use `securityRoles` when you already manage {{es}} or {{kib}} configuration centrally through a `StackConfigPolicy` and want to include role definitions in the same policy, applying them consistently across all targeted clusters.
 
