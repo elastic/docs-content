@@ -52,6 +52,62 @@ Access to workflows is controlled by [{{kib}} privileges](/deploy-manage/users-r
 | Fully manage workflows | `All` for **Analytics > Workflows** |
 | Grant access to specific workflow actions | Set sub-feature privileges for **Analytics > Workflows** | 
 
+## Enable the Template Library [workflows-templates-enable]
+
+```{applies_to}
+stack: preview 9.5+
+serverless: preview
+```
+
+The [Template Library](/explore-analyze/workflows/templates/start-from-a-template.md) is turned off by default and must be enabled by an administrator. If you don't see **Template Library** in the Workflows navigation, ask an administrator to turn it on. After it's enabled, reload the page. **Template Library** appears in the Workflows navigation, and an empty workflows list shows **Explore library**.
+
+::::{applies-switch}
+:::{applies-item} stack: preview 9.5+
+
+An administrator can enable the Template Library in either of these ways:
+
+**Option 1: Edit `kibana.yml`**
+
+Add the following, then restart {{kib}}:
+
+```yaml
+uiSettings.overrides:
+  workflowsManagement:library:enabled: true
+```
+
+**Option 2: Use the global settings API**
+
+In [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md), run:
+
+```json
+POST kbn:/internal/kibana/global_settings
+{
+  "changes": {
+    "workflowsManagement:library:enabled": true
+  }
+}
+```
+:::
+
+:::{applies-item} serverless:
+
+{{serverless-short}} has no Global Advanced Settings UI, so an administrator uses [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md) to call the global settings API:
+
+```json
+POST kbn:/internal/kibana/global_settings
+{
+  "changes": {
+    "workflowsManagement:library:enabled": true
+  }
+}
+```
+:::
+::::
+
+:::{note}
+The `/internal/kibana/global_settings` endpoint is an internal API and might change without notice. There is currently no public equivalent.
+:::
+
 ## What's next [workflows-what-next]
 
 - Create and run your first workflow. Refer to [](/explore-analyze/workflows/get-started/build-your-first-workflow.md) to learn more.

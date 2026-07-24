@@ -1,8 +1,8 @@
 ---
 navigation_title: Start from a template
 applies_to:
-  stack: experimental 9.5+
-  serverless: experimental
+  stack: preview 9.5+
+  serverless: preview
 description: Browse curated, pre-built workflow templates in the Template Library, preview them, and add one as your own workflow to customize and run.
 products:
   - id: kibana
@@ -25,70 +25,15 @@ With the Template Library, you can:
 
 Because templates live in a central catalog, Elastic can publish new and updated templates without requiring a {{kib}} upgrade.
 
-:::{note}
-The Template Library is experimental. The templates and the library UI can change between releases.
-:::
-
 ## Before you begin [workflows-templates-before-you-begin]
 
-::::{admonition} Requirements
 - Workflows must be available in your deployment. Refer to [](/explore-analyze/workflows/get-started/setup.md).
-- You need privileges to create workflows (**Analytics → Workflows** write access) to use **Add workflow**.
-- The Template Library is turned off by default. An administrator must enable it before you can use it. Refer to [Enable the Template Library](#workflows-templates-enable).
-::::
-
-## Enable the Template Library [workflows-templates-enable]
-
-The Template Library is turned off by default and must be enabled by an administrator. If you don't see **Template Library** in the Workflows navigation, ask an administrator to turn it on. After it's enabled, reload the page. **Template Library** appears in the Workflows navigation, and an empty workflows list shows **Explore library**.
-
-::::{applies-switch}
-:::{applies-item} stack: experimental 9.5+
-
-An administrator can enable the Template Library in either of these ways:
-
-**Option 1: Edit `kibana.yml`**
-
-Add the following, then restart {{kib}}:
-
-```yaml
-uiSettings.overrides:
-  workflowsManagement:library:enabled: true
-```
-
-**Option 2: Use the global settings API**
-
-In [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md), run:
-
-```json
-POST kbn:/internal/kibana/global_settings
-{
-  "changes": {
-    "workflowsManagement:library:enabled": true
-  }
-}
-```
-:::
-
-:::{applies-item} serverless:
-
-{{serverless-short}} has no Global Advanced Settings UI, so an administrator uses [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md) to call the global settings API:
-
-```json
-POST kbn:/internal/kibana/global_settings
-{
-  "changes": {
-    "workflowsManagement:library:enabled": true
-  }
-}
-```
-:::
-::::
-
-:::{note}
-The `/internal/kibana/global_settings` endpoint is an internal API and might change without notice. There is currently no public equivalent.
-:::
+- You need the **`All`** privilege for **Analytics → Workflows** to create workflows and use **Add workflow**.
+- The Template Library is turned off by default. An administrator must enable it before you can use it. Refer to [Enable the Template Library](/explore-analyze/workflows/get-started/setup.md#workflows-templates-enable).
 
 ## Browse and filter templates [workflows-templates-browse]
+
+If the library is empty, no templates are available for your {{kib}} version yet.
 
 1. Open **Workflows** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Open the library:
@@ -96,10 +41,10 @@ The `/internal/kibana/global_settings` endpoint is an internal API and might cha
    - On an empty workflows list, select **Explore library**.
 3. Find a template that matches your use case:
    - Search by name or description.
-   - Filter by **solution** (for example, Security or {{observability}}). In some {{kib}} apps, the solution filter is already set for you.
+   - Filter by **solution** (for example, Security or {{observability}}).
    - Narrow the results with **Categories**.
 
-Each template card shows step and trigger icons, so you can tell which connectors and step types a template uses before you open it. If the library is empty, no templates are available for your {{kib}} version yet.
+Each template card shows step and trigger icons, so you can tell which connectors and step types a template uses before you open it.
 
 ## Preview a template [workflows-templates-preview]
 
