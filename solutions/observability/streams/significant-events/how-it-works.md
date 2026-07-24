@@ -26,39 +26,6 @@ The pipeline has four sequential phases, each building on the outputs of the pre
 - [Phase 3: Rule execution](#sig-events-hiw-execution): Alerting framework runs promoted rules continuously
 - [Phase 4: Discovery](#sig-events-hiw-discovery): Detection, discovery, and triage workflows convert alert signals into confirmed Significant Events
 
-```mermaid
-flowchart TD
-    LLM(["Generative AI<br/>connector"])
-    LOGS[("stream logs")]
-
-    subgraph KB["Kibana"]
-        KI["KI extraction<br/>Task Manager + Workflow"]
-        RG["Rule generation<br/>Workflow"]
-        RE["Rule execution<br/>Alerting framework"]
-        DW["Detection<br/>Workflows · cron 10m"]
-        DA["Discovery agent<br/>Workflows + Agent Builder"]
-        JA["Judge agent<br/>Workflows + Agent Builder"]
-    end
-
-    LOGS -->|samples| KI
-    KI <-.->|LLM| LLM
-    KI --> RG
-    KI -.->|context| DA
-    RG <-.->|LLM| LLM
-    RG -->|promote rules| RE
-    RE -->|queries| LOGS
-    RE --> DW
-    DW --> DA
-    DA <-.->|LLM| LLM
-    DA --> JA
-    JA <-.->|LLM| LLM
-
-    classDef llm fill:#5c3fa3,color:#fff,stroke:none
-    classDef det fill:#1d6b47,color:#fff,stroke:none
-    class KI,RG,DA,JA llm
-    class RE,DW det
-```
-
 ## Phase 1: KI extraction [sig-events-hiw-ki]
 
 KIs are stable, evidence-backed facts about the services and infrastructure present in a stream's log data. The LLM that generates detection operates entirely on KIs. This keeps rule generation deterministic and decouples detection logic from data format specifics.
