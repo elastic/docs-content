@@ -104,7 +104,6 @@ To save an agent-created dashboard as a {{kib}} saved object:
 :::{image} images/agent-builder-dashboard-save-dialog.png
 :screenshot:
 :alt: Save as new dashboard dialog with title, description, tags, and permissions fields
-:width: 450px
 :::
 
 After saving, you can open the dashboard in the [Dashboards app](/explore-analyze/dashboards.md) for further editing using the full dashboard editor.
