@@ -139,19 +139,6 @@ Here are some important terms:
 * **Rerankers**. Special compound retrievers that reorder hits and may adjust the number of hits, with distinctions between first-stage and second-stage rerankers.
 
 
-## Test retriever syntax in Playground [retrievers-overview-play-in-search]
-
-```{applies_to}
-stack: beta
-elasticsearch: beta
-```
-
-Playground builds {{es}} queries using the retriever abstraction. It automatically detects the fields and types in your index and builds a retriever tree based on your selections.
-
-You can use the Playground to experiment with different retriever configurations and observe how they affect search results.
-
-Refer to the [Playground documentation](/solutions/elasticsearch-solution-project/playground.md) for more information.
-
 ## Reference docs and examples [retrievers-overview-api-reference]
 
 For implementation details, including notable restrictions, refer to the [reference documentation](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md).
