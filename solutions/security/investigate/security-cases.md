@@ -102,7 +102,7 @@ serverless: preview
 
 Attach a host, user, or service entity to a case to connect it to what's under investigation. From an entity's details flyout, open the **Take action** menu, then select **Add to new case** or **Add to existing case**.
 
-Attached entities appear in their own **Entities** section on the case's **Attachments** tab.
+Attached entities appear in their own **Entities** section on the case's **Attachments** tab. To access this section, you need the `read` privilege for the `.entities.v2.latest.security_*` index.
 
 ## Automate case workflows [cases-automate]
 
