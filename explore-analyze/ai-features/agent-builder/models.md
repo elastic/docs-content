@@ -100,6 +100,43 @@ To change which model is used by default:
 
 For more information about these settings, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 
+## Fast model routing [fast-model]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+To give you faster responses at a lower token cost, {{agent-builder}} automatically routes some low-effort, latency-sensitive operations to a fast model instead of your default model. A fast model is a smaller, high-throughput model that returns results more quickly than a frontier reasoning model.
+
+This routing is automatic and cannot be turned off. You do not need to configure anything to benefit from it. Your default model still handles agent reasoning, tool selection, and response synthesis.
+
+### When the fast model is used
+
+{{agent-builder}} uses the fast model for well-scoped tasks that do not need deep reasoning, such as {{esql}} query generation and conversation title generation.
+
+### Fast model availability by deployment type
+
+On {{serverless-full}} projects and {{ech}} deployments, the fast model is preconfigured through Elastic Managed LLMs on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md), with no setup. Claude Haiku 4.5 is one example. The latency improvement is most noticeable on {{serverless-full}}.
+
+On {{ece}}, {{eck}}, and self-managed deployments, there is no preconfigured fast model unless you [connect to EIS through Cloud Connect](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md). Without it, fast model routing falls back to your default model.
+
+### Choose the fast model
+
+{{agent-builder}} uses a recommended Elastic Managed LLM for fast routing. When more than one recommended fast model is available, such as Claude Haiku 4.5 and Google Gemini Flash, it uses the first one. To prefer a specific model, open the **Feature settings** page, go to the **Agent Builder** section, and order the models under **Fast models** so your preferred one is at the top. To find this page, refer to [Change the default model](#change-the-default-model).
+
+In 9.5, only recommended Elastic Managed LLMs are used for fast routing. Assigning a custom or non-recommended model has no effect on the fast model.
+
+:::{image} images/agent-builder-fast-models-feature-settings.png
+:alt: Main models and Fast models cards in the Agent Builder section of the Feature settings page
+:width: 600px
+:screenshot:
+:::
+
+### Fallback behavior
+
+If no fast model is available, {{agent-builder}} uses your default model instead. Fast model routing is an optimization, so a missing fast model reduces the latency benefit but does not cause errors.
+
 ## Use additional models
 
 You can configure additional models for {{agent-builder}} in two ways:
@@ -175,7 +212,11 @@ The following models are known to work well with {{agent-builder}}. These catego
 |---|---|---|---|
 | Extended reasoning | - Gemini 3.1 Pro <br>- Claude 4.6 Opus | Open-ended exploration, multi-step planning, complex analysis, and {{esql}}-heavy dashboard generation | Higher latency and cost. Best for latency-insensitive, batch, async, or dashboard workflows that need fewer corrections. |
 | Balanced performance | - GPT-5.2 <br>- Claude 4.6 Sonnet | General-purpose agents requiring reliable tool orchestration and data retrieval and synthesis | Moderate cost. Suitable for real-time and interactive use. For {{esql}}-heavy dashboard generation, use an extended reasoning model. |
-| High throughput | Gemini 3.0 Flash | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth. Ideal for high-volume workloads with well-defined tasks. |
+| High throughput | - Claude 4.5 Haiku <br>- Gemini 3.0 Flash | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth. Ideal for high-volume workloads with well-defined tasks. |
+
+:::{note}
+{{agent-builder}} automatically routes some low-effort tasks to a high-throughput model. Refer to [Fast model for low-effort tasks](#fast-model).
+:::
 
 :::{tip}
 For agents working with large documents or conversation histories, consider models with extended context windows. For example, Claude 4.6 Sonnet and Gemini 3.1 Pro support up to 1M tokens. Check your model provider's documentation for specific context limits.
