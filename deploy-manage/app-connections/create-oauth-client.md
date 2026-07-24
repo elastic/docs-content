@@ -30,6 +30,9 @@ Before you create an OAuth client:
   - The [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md), which exposes those tools to external MCP hosts, and its [authentication methods](/explore-analyze/ai-features/agent-builder/mcp-server.md#mcp-server-authentication). OAuth is one of two ways to authenticate to the MCP server, so confirm it fits your use case.
   - [MCP clients and the OAuth flow](oauth-clients.md).
 - Make sure you have **Read** access to the {{agent-builder}} {{kib}} feature, which grants access to the MCP client management UI. To learn more, refer to [Permissions](/explore-analyze/ai-features/agent-builder/permissions.md#kib-privileges).
+- Enable the **Manage OAuth clients for MCP** [{{kib}} advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings). 
+  
+  You can access the **Advanced Settings** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## Create the client
 
@@ -84,16 +87,6 @@ The client ID and MCP server URL can be retrieved at any time from the **MCP cli
 ::::
 
 :::::
-
-% todo: endpoint link
-:::{note}
-
-OAuth clients can also be created through the {{kib}} API. To create a client through the API, you must use an {{ecloud}} API key with [Cloud, {{es}}, and {{kib}} API access](/deploy-manage/api-keys/elastic-cloud-api-keys.md#project-access). Creating a client with an API key created directly in {{es}} is not supported. 
-
-Clients created through the API are not visible in the Agent Builder client list in {{kib}}, because they are not owned by a specific user. They appear only in the organization-level [Application connections](manage-app-connections.md) view in the {{ecloud}} Console.
-
-% source: https://elastic.slack.com/archives/C0AH1CA7S3Y/p1780340150585789
-:::
 
 ## Next steps
 
