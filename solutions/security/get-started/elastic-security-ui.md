@@ -119,14 +119,16 @@ Expand this section to access the following pages:
 ### Detections [_detections]
 
 ```yaml {applies_to}
-stack: preview 9.4
-serverless: preview
+stack: preview =9.4, ga 9.5+
+serverless: ga
 ```
 
 Expand this section to access the following pages:
 
 * [Alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md): View and manage detection alerts to monitor activity within your network.
 * [Attacks](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md): View and triage correlated attack chains alongside their associated alerts.
+
+Open **Attacks** at **Detections > Views > Attacks**.
 
 Refer to [Detections and alerts](/solutions/security/detect-and-alert.md) for more information.
 

@@ -32,12 +32,34 @@ For richer triage context, enable [entity analytics](/solutions/security/advance
 
 Start by retrieving all open findings and prioritizing them by risk score. This gives you a ranked list of potential attacks to work through, starting with the most critical.
 
-:::::{tab-set}
+::::::{tab-set}
 :group: triage-method
-::::{tab-item} Attack Discovery UI
+:::::{tab-item} Attack Discovery UI
 :sync: attack-discovery-ui
 
-1. Go to **Attack Discovery** from the {{elastic-sec}} navigation menu.
+::::{applies-switch}
+
+:::{applies-item} { "stack": "ga 9.5+", "serverless": {"security": "ga"} }
+
+1. Go to **Detections > Views > Attacks** (or **Attack Discovery** if you prefer that page).
+2. Use the **Status** filter to show only **Open** findings.
+3. Sort to prioritize what to review first. On **Attacks**, use **Most recent** or **Most alerts**. On **Attack Discovery**, sort by risk score (highest first).
+
+For each finding, note the following key signals:
+
+- **Risk score** (Attack Discovery page): The overall severity assigned to the discovery.
+- **Alert count**: How many underlying security alerts the discovery groups together.
+- **MITRE ATT&CK tactics**: Which tactics the discovery maps to. More tactics suggest a broader attack.
+- **Entities**: Which users and hosts are involved.
+- On **Attacks**, review related alerts on the attack's **Alerts** tab.
+
+For the full Attacks triage UI, refer to [Manage discoveries from the Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
+
+:::
+
+:::{applies-item} stack: ga 9.1-9.4
+
+1. Go to **Attack Discovery** from the {{elastic-sec}} navigation menu. {applies_to}`stack: preview =9.4` You can also triage from **Detections > Views > Attacks**.
 2. Use the **Status** filter to show only **Open** findings.
 3. Sort by risk score (highest first) to prioritize the most critical findings.
 
@@ -45,14 +67,18 @@ For each finding, note the following key signals:
 
 - **Risk score**: The overall severity assigned to the discovery.
 - **Alert count**: How many underlying security alerts the discovery groups together.
-- **MITRE ATT&CK tactics**: Which tactics the discovery maps to—more tactics suggest a broader attack.
+- **MITRE ATT&CK tactics**: Which tactics the discovery maps to. More tactics suggest a broader attack.
 - **Entities**: Which users and hosts are involved.
 
+:::
+
 ::::
-::::{tab-item} Discover with ES|QL queries
+
+:::::
+:::::{tab-item} Discover with ES|QL queries
 :sync: esql
 
-You can run ES|QL queries in multiple ways, including from [**Discover**](/explore-analyze/query-filter/languages/esql-kibana.md). The following query retrieves open findings from both scheduled and on-demand discovery indices. Replace `default` with your {{kib}} space ID if you're using a non-default space:
+You can run ES|QL queries in multiple ways, including from [**Discover**](/explore-analyze/query-filter/languages/esql-kibana.md). The following query retrieves open findings from both scheduled and manual-run discovery indices. Replace `default` with your {{kib}} space ID if you're using a non-default space:
 
 ```esql
 FROM .alerts-security.attack.discovery.alerts-default, .adhoc.alerts-security.attack.discovery.alerts-default METADATA _id
@@ -71,8 +97,8 @@ FROM .alerts-security.attack.discovery.alerts-default, .adhoc.alerts-security.at
 
 If one index doesn't exist yet (for example, no scheduled discoveries have been generated), ES|QL returns an error. In that case, query each index separately and combine the results.
 
-::::
-::::{tab-item} Attack Discovery API
+:::::
+:::::{tab-item} Attack Discovery API
 :sync: api
 
 Use the Attack Discovery Find API to retrieve open findings. Results are sorted by `@timestamp` (most recent first) by default:
@@ -89,8 +115,8 @@ GET /s/my-space/api/attack_discovery/_find?status=open&start=now-24h&end=now&wit
 
 Review the returned findings and prioritize by `risk_score` in the response.
 
-::::
 :::::
+::::::
 
 Before moving to Step 2, scan the results for duplicate findings. Overlapping schedule runs or repeated manual generations can produce similar discoveries covering the same alerts. Compare the `alert_ids` across findings—if two findings share most of their alerts, triage them together as one.
 
@@ -351,30 +377,4 @@ POST /api/attack_discovery/_bulk
 
 ::::
 :::::
-
-:::{dropdown} Agent skill details
-
-An [agent skill](https://github.com/elastic/agent-skills/tree/main/skills/security/attack-discovery-triage) can be loaded into a compatible AI agent to retrieve open findings, score confidence programmatically, and present a triage summary for your approval before taking action.
-
-**Advantages:**
-
-- Processes findings in bulk rather than one at a time.
-- Applies the confidence scoring heuristics consistently without manual lookups.
-- Runs all enrichment queries (entity risk, rule frequency, alert context) automatically.
-
-**Trade-offs to consider:**
-
-- The skill requires the [agent-skills](https://github.com/elastic/agent-skills) repository, Node.js 18+, and API keys with appropriate permissions.
-- Confidence scoring uses fixed heuristics. Manual triage lets you apply institutional knowledge that the skill can't account for, such as knowing that a specific host is a honeypot or that a particular rule was recently tuned.
-- Write operations (case creation, alert acknowledgment) still require your explicit approval, but you have less granular control over how findings are enriched and summarized.
-
-Refer to the [agent-skills README](https://github.com/elastic/agent-skills/blob/main/README.md) for setup instructions.
-:::
-
-## Next steps [next-steps]
-
-- [Scheduled runs](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#schedule-discoveries) for continuous coverage without manual generation.
-- Set up [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) for richer triage context.
-- Learn about [case management workflows](/solutions/security/investigate/security-cases.md) to standardize how your team tracks confirmed threats.
-- Use [AI Assistant](/solutions/security/ai/ai-assistant.md) for follow-up investigation and deeper analysis of individual findings.
 

@@ -1,5 +1,5 @@
 ---
-navigation_title: Attack Discovery page
+navigation_title: Manage from Attack Discovery page
 applies_to:
   stack: ga 9.1
   serverless:
@@ -11,7 +11,16 @@ products:
 
 # Manage discoveries from the Attack Discovery page [manage-discoveries]
 
-This page describes how to change status, share, bulk-act on, and search saved discoveries directly from the **Attack Discovery** page. For a unified, alert-correlated view that also supports triage actions like assignment and tagging, use the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) instead. For guidance on which page to use for your version, refer to [Manage saved discoveries](/solutions/security/ai/attack-discovery/manage-saved-discoveries.md).
+This page describes how to change status, share, bulk-act on, and search saved discoveries directly from the **Attack Discovery** page. For a unified, alert-correlated view that also supports triage actions like assignment and tagging, use the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) instead.
+
+:::{note}
+:applies_to: {"stack": "ga 9.5+", "serverless": {"security": "ga"}}
+On {{stack}} 9.5+ and {{serverless-short}}, manage discoveries from the [**Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md).
+:::
+
+## Check Attack Discovery run status [attack-discovery-page-generations]
+
+Recent Attack Discovery generations appear as status callouts on the **Attack Discovery** page, above your saved discoveries. Use them to check run status while a generation is running or after it finishes.
 
 ## Change a discovery's status [discovery-status]
 
@@ -37,7 +46,7 @@ Manually generated discoveries are private by default. To share them, change **N
 Once a discovery is shared, its visibility cannot be changed.
 :::
 
-## Take bulk actions [take-bulk-actions]
+## Take bulk actions on discoveries [take-bulk-actions]
 
 You can take bulk actions on multiple discoveries, such as bulk-changing their status or adding them to a case. To do this, select the checkboxes next to each discovery, then click **Selected *x* Attack discoveries** and choose the action you want to take.
 
@@ -55,12 +64,12 @@ You can search and filter saved discoveries to help locate relevant findings.
 
 * Time filter: Adjust the time filter to view discoveries generated within a specific timeframe.
 
-## Incorporate discoveries with other workflows [attack-discovery-workflows]
+## Continue an investigation from a discovery [attack-discovery-workflows]
 
-There are several ways you can incorporate discoveries into your {{elastic-sec}} workflows:
+Use these options to continue an investigation:
 
-* Click an entity’s name to open the entity details flyout and view more details that may be relevant to your investigation.
-* Hover over an entity’s name to either add the entity to Timeline (![Add to timeline icon](/solutions/images/security-icon-add-to-timeline.png "title =20x20")) or copy its field name and value to the clipboard (![Copy to clipboard icon](/solutions/images/security-icon-copy.png "title =20x20")).
+* Click an entity's name to open the entity details flyout and view more details that may be relevant to your investigation.
+* Hover over an entity's name to either add the entity to Timeline (![Add to timeline icon](/solutions/images/security-icon-add-to-timeline.png "title =20x20")) or copy its field name and value to the clipboard (![Copy to clipboard icon](/solutions/images/security-icon-copy.png "title =20x20")).
 * Click **Take action**, then select **Add to new case** or **Add to existing case** to add a discovery to a [case](/solutions/security/investigate/security-cases.md). This makes it easy to share the information with your team and other stakeholders.
 * Click **Investigate in timeline** to explore the discovery in [Timeline](/solutions/security/investigate/timeline.md).
 * Click **View in AI Assistant** or **Add to chat** to attach the discovery to a conversation. You can then ask follow-up questions about the discovery or associated alerts.

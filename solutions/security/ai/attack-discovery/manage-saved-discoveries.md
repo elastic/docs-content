@@ -1,5 +1,6 @@
 ---
 navigation_title: Manage saved discoveries
+description: "Choose where to triage saved Attack Discovery findings: the Attacks view or the Attack Discovery page."
 applies_to:
   stack: ga 9.1
   serverless:
@@ -11,27 +12,14 @@ products:
 
 # Manage saved discoveries [manage-saved-discoveries]
 
-Attack discoveries are automatically saved each time they're generated. Once saved, discoveries remain available for later review, reporting, and tracking over time. This allows you to revisit discoveries to monitor trends, maintain audit trails, and support investigations as your environment evolves.
+Attack Discovery saves findings automatically after each run. From there you can update status, filter and search discoveries, take triage actions such as assign or open a case, and review linked alerts. Where you do that work depends on your version.
 
-Which page you use to manage saved discoveries depends on what you're trying to do.
+| Best for | Available in | Go to |
+|---|---|---|
+| Day-to-day triage of attack findings together with their related alerts, including assign, tag, filter, and case actions. | {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` | [Manage from the Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) |
+| Update status, share findings, run bulk actions, and search discoveries on the Attack Discovery page (primary before Attacks in {{stack}} 9.5). | {applies_to}`stack: ga 9.1-9.4` | [Manage from the Attack Discovery page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md) |
 
-## Choose the right page for your goal [choose-page]
-
-The **Attack Discovery** page is your primary place to generate, save, and triage discoveries.
-
-If you'd rather split generation and triage into separate flows, you can instead:
-
-- Go to **Attack Discovery** to run LLM analysis on demand and create new attack discoveries.
-- Go to **Attacks** for day-to-day triage of all attacks (manual and scheduled), and to manage their investigation lifecycle.
-
-::::{note}
-:applies_to: {stack: preview 9.4, serverless: preview}
-Splitting generation and triage into separate flows requires turning on the [**Enable alerts and attacks alignment**](/solutions/security/get-started/configure-advanced-settings.md#enable-alerts-and-attacks-alignment) setting to display the **Attacks** page.
-::::
-
-## Next steps [next-steps]
-
-- [Learn about Attack Discovery](/solutions/security/ai/attack-discovery/index.md)
-- [Investigate threats with Timeline](/solutions/security/investigate/timeline.md)
-- [Manage security cases](/solutions/security/investigate/security-cases.md)
-- [Automate attack triage with Elastic Workflows](/explore-analyze/workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md)
+:::{note}
+:applies_to: {"stack": "ga 9.5+", "serverless": {"security": "ga"}}
+On the Elastic AI SOC Engine (EASE) tier, the **Attacks** view is unavailable. Use the [Attack Discovery page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md) instead.
+:::

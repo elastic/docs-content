@@ -1098,9 +1098,9 @@ redirects:
     many:
       - to: 'solutions/security/ai/attack-discovery/run-from-attacks-page.md'
         anchors:
-          'attacks-prerequisites': 'run-from-attacks-page-prerequisites'
-          'attacks-schedule-discoveries': 'attacks-page-schedule-runs'
+          'attacks-prerequisites': 'run-from-attacks-page-before-you-begin'
+          'attacks-schedule-discoveries': 'attacks-view-start-a-run'
       - to: 'solutions/security/ai/attack-discovery/manage-saved-discoveries.md'
         anchors:
-          'attacks-next-steps': 'next-steps'
+          'attacks-next-steps': 'manage-saved-discoveries'
   'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'
