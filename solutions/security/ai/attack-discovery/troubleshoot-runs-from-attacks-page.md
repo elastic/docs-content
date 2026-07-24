@@ -23,7 +23,7 @@ To troubleshoot a run with AI, you need:
 
 ## Open AI troubleshooting [troubleshoot-runs-open]
 
-1. Go to **Detections > Views > Attacks**.
+1. Go to **Detections** → **Views** → **Attacks**.
 2. Open the [**Generations**](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md#attacks-view-generations) control center in the **Attacks** view header.
 3. Select a failed, canceled, or dismissed run, or a run with a failed analysis step.
 4. Start AI troubleshooting.

@@ -24,7 +24,7 @@ After you turn on [Attack Discovery Workflows](/solutions/security/get-started/c
 
 To create a schedule:
 
-1. Go to **Detections > Views > Attacks**, then select **Schedule > Create new schedule**.
+1. Go to **Detections** → **Views** → **Attacks**, then select **Schedule** → **Create new schedule**.
 2. Name the schedule and choose an LLM connector for generation.
 3. [Configure which alerts to analyze](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md). For example, keep skill retrieval on and add an {{esql}} query to focus on high-severity alerts.
 4. Set how often the schedule runs, such as every 24 hours.
@@ -36,7 +36,7 @@ To create a schedule:
 
 To create a schedule:
 
-1. Go to **Detections > Views > Attacks**, then select **Schedule > Create new schedule**.
+1. Go to **Detections** → **Views** → **Attacks**, then select **Schedule** → **Create new schedule**.
 2. Name the schedule and choose an LLM connector for generation.
 3. [Configure which alerts to analyze](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md#attacks-page-schedule-alert-selection).
 4. Set how often the schedule runs, such as every 24 hours.

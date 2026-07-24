@@ -41,7 +41,7 @@ Start by retrieving all open findings and prioritizing them by risk score. This 
 
 :::{applies-item} { "stack": "ga 9.5+", "serverless": {"security": "ga"} }
 
-1. Go to **Detections > Views > Attacks** (or **Attack Discovery** if you prefer that page).
+1. Go to **Detections** → **Views** → **Attacks** (or **Attack Discovery** if you prefer that page).
 2. Use the **Status** filter to show only **Open** findings.
 3. Sort to prioritize what to review first. On **Attacks**, use **Most recent** or **Most alerts**. On **Attack Discovery**, sort by risk score (highest first).
 
@@ -59,7 +59,7 @@ For the full Attacks triage UI, refer to [Manage discoveries from the Attacks vi
 
 :::{applies-item} stack: ga 9.1-9.4
 
-1. Go to **Attack Discovery** from the {{elastic-sec}} navigation menu. {applies_to}`stack: preview =9.4` You can also triage from **Detections > Views > Attacks**.
+1. Go to **Attack Discovery** from the {{elastic-sec}} navigation menu. {applies_to}`stack: preview =9.4` You can also triage from **Detections** → **Views** → **Attacks**.
 2. Use the **Status** filter to show only **Open** findings.
 3. Sort by risk score (highest first) to prioritize the most critical findings.
 

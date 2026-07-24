@@ -20,7 +20,7 @@ Manually run Attack Discovery when you want to analyze the current alert selecti
 
 To manually run Attack Discovery from the **Attacks** view:
 
-1. Go to **Detections > Views > Attacks**.
+1. Go to **Detections** → **Views** → **Attacks**.
 2. [Configure Attack Discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md) in **Settings** next to **Run**, and confirm an LLM connector is selected. You can start analysis from the flyout with **Save and run**, or close the flyout and continue with the next step.
 3. Select **Run**. A notification confirms that generation has started.
 

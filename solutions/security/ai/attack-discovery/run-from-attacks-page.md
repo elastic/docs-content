@@ -30,7 +30,7 @@ To use the **Attacks** view, you need:
 ::::{applies-switch}
 
 :::{applies-item} { "stack": "ga 9.5+", "serverless": {"security": "ga"} }
-1. Open the **Attacks** view at **Detections > Views > Attacks**.
+1. Open the **Attacks** view at **Detections** → **Views** → **Attacks**.
 2. [Configure Attack Discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md).
 3. Start Attack Discovery with a [manual run](/solutions/security/ai/attack-discovery/manual-runs-from-attacks-page.md) or a [scheduled run](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).
 
@@ -38,7 +38,7 @@ To use the **Attacks** view, you need:
 
 :::{applies-item} stack: preview =9.4
 
-1. Open the **Attacks** view at **Detections > Views > Attacks**.
+1. Open the **Attacks** view at **Detections** → **Views** → **Attacks**.
 2. [Configure which alerts to analyze](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md#attacks-page-schedule-alert-selection) when you create or edit a schedule (classic schedule flyout controls).
 3. [Schedule runs](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md) from **Attacks**, or [manually run Attack Discovery](/solutions/security/ai/attack-discovery/manual-runs-from-attacks-page.md) from the Attack Discovery page.
 

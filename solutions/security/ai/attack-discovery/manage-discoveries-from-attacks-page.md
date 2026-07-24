@@ -12,7 +12,7 @@ products:
 
 # Manage discoveries from the Attacks view [attacks-page]
 
-The **Attacks** view brings Attack Discovery findings together with their related alerts. Open it at **Detections > Views > Attacks**. 
+The **Attacks** view brings Attack Discovery findings together with their related alerts. Open it at **Detections** → **Views** → **Attacks**. 
 
 This page covers how to filter and search attacks, tell manually generated and scheduled attacks apart, review linked alerts, and take triage actions.
 
@@ -140,10 +140,10 @@ When you change an attack's status, assign or unassign it, or apply attack tags,
 
 | Action | How to do it | Notes |
 |--------|--------------|-------|
-| Change status | **Take actions** > **Mark as acknowledged** or **Mark as closed** | Status lifecycle matches [discoveries](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md#discovery-status): **Open** (default), **Acknowledged**, or **Closed**. |
-| Run workflow | **Take actions** > **Run workflow** > select a workflow > **Run workflow** | Requires [workflows prerequisites](/explore-analyze/workflows/get-started.md). You can select only enabled workflows. |
-| Assign or unassign | **Take actions** > **Assign attack** or **Unassign attack** | Users are not notified when assigned or unassigned. |
-| Apply attack tags | **Take actions** > **Apply attack tags** | Use tags to categorize attacks for filtering. |
-| Investigate in timeline | **Take actions** > **Investigate in timeline** | Includes all alerts originally correlated when the attack was created. It does not reflect your current page filters or time range. |
-| Add to case | **Take actions** > **Add to new case** or **Add to existing case** | Attaches the attack to a [case](/solutions/security/investigate/security-cases.md). |
-| View in AI Chat | **Take actions** > **View in AI Chat** | Continue investigating with an [AI agent](/explore-analyze/ai-features/ai-chat-experiences.md). Ask follow-up questions about the attack or its alerts. |
+| Change status | **Take actions** → **Mark as acknowledged** or **Mark as closed** | Status lifecycle matches [discoveries](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md#discovery-status): **Open** (default), **Acknowledged**, or **Closed**. |
+| Run workflow | **Take actions** → **Run workflow** → select a workflow → **Run workflow** | Requires [workflows prerequisites](/explore-analyze/workflows/get-started.md). You can select only enabled workflows. |
+| Assign or unassign | **Take actions** → **Assign attack** or **Unassign attack** | Users are not notified when assigned or unassigned. |
+| Apply attack tags | **Take actions** → **Apply attack tags** | Use tags to categorize attacks for filtering. |
+| Investigate in timeline | **Take actions** → **Investigate in timeline** | Includes all alerts originally correlated when the attack was created. It does not reflect your current page filters or time range. |
+| Add to case | **Take actions** → **Add to new case** or **Add to existing case** | Attaches the attack to a [case](/solutions/security/investigate/security-cases.md). |
+| View in AI Chat | **Take actions** → **View in AI Chat** | Continue investigating with an [AI agent](/explore-analyze/ai-features/ai-chat-experiences.md). Ask follow-up questions about the attack or its alerts. |

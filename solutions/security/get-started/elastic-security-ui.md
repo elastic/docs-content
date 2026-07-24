@@ -128,7 +128,7 @@ Expand this section to access the following pages:
 * [Alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md): View and manage detection alerts to monitor activity within your network.
 * [Attacks](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md): View and triage correlated attack chains alongside their associated alerts.
 
-Open **Attacks** at **Detections > Views > Attacks**.
+Open **Attacks** at **Detections** → **Views** → **Attacks**.
 
 Refer to [Detections and alerts](/solutions/security/detect-and-alert.md) for more information.
 
