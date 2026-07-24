@@ -27,7 +27,7 @@ For details about how {{cps-init}} scope works in {{kib}}, refer to [](/explore-
 
 - Make sure that users who need to search across linked projects have a [role assigned](/deploy-manage/users-roles.md) on each linked project they need to access, and are granted **Cloud Console, {{es}}, and {{kib}}** access to those projects. Authorization is evaluated on the linked project, without regard to the origin project.
 - If a user reports missing data from a linked project, check their role assignment on that specific linked project first.
-- For programmatic access, make sure the {{ecloud}} API key has the appropriate [roles](/deploy-manage/api-keys/elastic-cloud-api-keys.md#roles) on each project the key needs to access, and is granted **Cloud, {{es}}, and {{kib}} API access** to those projects.
+- For programmatic access, make sure the {{ecloud}} API key has the appropriate [roles](/deploy-manage/api-keys/elastic-cloud-api-keys.md#roles) on each project the key needs to access, and is granted **Cloud, {{es}}, and {{kib}} API access** to those projects. Members with the **Workload credentials owner** role can [create their own {{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md#ec-api-keys) for this purpose. **Organization owners** can create keys for any scope and can revoke any key in the organization.
 
 ## Manage {{cps}} scope [cps-search-scope]
 

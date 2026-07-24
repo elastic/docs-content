@@ -55,7 +55,7 @@ To invite users to your organization:
 
 5. If desired, assign roles to the users so that they automatically get the appropriate permissions when they accept the invitation and sign in to your organization.
 
-    You can grant access to {{ech}} deployments, {{serverless-full}} projects, or connected clusters, either to all resources or scoped to specific ones. For more details, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+    You can grant access to {{ech}} deployments, {{serverless-full}} projects, or connected clusters, either to all resources or scoped to specific ones. You can also allow the member you invite to manage useful workload credentials, such as [API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md), by assigning the [**Workload credentials owner**](/deploy-manage/users-roles/cloud-organization/user-roles.md#workload-credentials-owner) role.
 
 6. Click **Send invites**.
 

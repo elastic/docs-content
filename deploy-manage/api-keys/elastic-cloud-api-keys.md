@@ -18,7 +18,12 @@ products:
 * [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs
 * {applies_to}`serverless: ga` Optionally, [{{es}} {{serverless-full}}]({{es-serverless-apis}}) and [{{kib}} {{serverless-full}}]({{kib-serverless-apis}})  APIs
 
-Only **Organization owners** can create and manage API keys. An API key is not tied to the user who created it. When creating a key, you assign it specific roles to control its access to organizational resources, including hosted deployments and serverless projects. If a user leaves the organization, the API keys they have created will still function until they expire.
+An {{ecloud}} API key belongs to the organization and is not tied to the user who created it. When a key is created, it is assigned specific roles that control its access to organizational resources. If the creator leaves the organization, the API keys they created will still function until they expire or are revoked.
+
+**Organization owners** can create and manage API keys for the organization. They can view and revoke all API keys in the organization. 
+
+Members with the **Workload credentials owner** role can create, list, and revoke only the API keys they created. For more information about the **Workload credentials owner** role, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#workload-credentials-owner).
+
 
 You can have multiple API keys for different purposes, and you can revoke them when you no longer need them. Each organization can have up to 500 active API keys.
 
@@ -94,6 +99,8 @@ curl -XPOST \
 
 ## Revoke an API key [ec_revoke_an_api_key]
 
+**Organization owners** can revoke any API key in the organization. Members with the [Workload credentials owner](/deploy-manage/users-roles/cloud-organization/user-roles.md#workload-credentials-owner) role can revoke only the API keys they created.
+
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the navigation menu, select **Organization > API keys**.
 3. Find the key you want to revoke, and click the trash icon under **Actions**.
@@ -111,6 +118,11 @@ When an API key expires, it is automatically removed from the **API keys** tab.
 Roles grant an API key specific privileges for your {{ecloud}} organization and resources.
 
 You can grant a cloud API key [the same types of roles that you assign to users](/deploy-manage/users-roles/cloud-organization/user-roles.md#types-of-roles): organization-level roles, cloud resource access roles, and connected cluster access roles.
+
+The roles you can assign depend on your privileges:
+
+* **Organization owners** can assign any organization-level roles, cloud resource access roles, and connected cluster access roles.
+* Members with the **Workload credentials owner** role can assign only roles they already hold, on deployments or projects they already have access to.
 
 ### Granting {{es}} and {{kib}} API access [project-access]
 ```{applies_to}
