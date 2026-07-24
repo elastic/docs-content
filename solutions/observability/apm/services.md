@@ -19,14 +19,13 @@ The **Services** inventory provides a quick, high-level overview of the health a
 A service only appears in the **Services** inventory if it has sent transactions or spans within the selected time window. Services that send only logs are not listed. If a service is missing, verify that it is sending transaction or span data and that the selected time range includes recent activity.
 ::::
 
-To help surface potential issues, services are sorted by their health status: **critical** → **warning** → **healthy** → **unknown**. Health status is powered by [machine learning](/solutions/observability/apm/machine-learning.md) and requires anomaly detection to be enabled.
+Active alerts for each service are prominently displayed in the service inventory table. Clicking an active alert badge brings you to the [**Alerts**](/solutions/observability/apm/create-apm-rules-alerts.md) tab where you can learn more about the active alert and take action.
 
-In addition to health status, active alerts for each service are prominently displayed in the service inventory table. Selecting an active alert badge brings you to the [**Alerts**](/solutions/observability/apm/create-apm-rules-alerts.md) tab where you can learn more about the active alert and take action.
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The **Anomalies** column shows each service's highest [{{ml}}](/solutions/observability/apm/machine-learning.md) anomaly score for the selected time range, replacing the previous health status. To use this feature, {{anomaly-detect}} must be enabled.
 
-:::{image} /solutions/images/observability-apm-services-overview.png
-:alt: Example view of services table the Applications UI in Kibana
-:screenshot:
-:::
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` SLOs for each service are also shown in the service inventory table. Use the **Actions** menu on any service row to act on the service directly, or the **Environment** selector to filter the inventory by environment.
+
+{applies_to}`stack: ga 9.0-9.3` To help surface potential issues, services are sorted by their health status: **critical** → **warning** → **healthy** → **unknown**. Health status is powered by [{{ml}}](/solutions/observability/apm/machine-learning.md) and requires {{anomaly-detect}} to be enabled.
 
 ## Service groups [service-groups]
 
