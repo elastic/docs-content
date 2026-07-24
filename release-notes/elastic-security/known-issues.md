@@ -55,13 +55,25 @@ Follow these steps to stabilize {{kib}}:
    Send the following request in every {{kib}} space where the entity store is enabled:
 
    ```
-   PUT /api/security/entity_store/stop
+   PUT kbn:/api/security/entity_store/stop
+   {}
+
+   POST kbn:/api/kibana/settings/securitySolution:entityStoreEnableV2
+   {
+      "value": false
+   }
    ```
 
    If you're using a non-default {{kib}} space, prefix the path with `/s/{space_id}`:
 
    ```
-   PUT /s/{space_id}/api/security/entity_store/stop
+   PUT kbn:/s/{space_id}/api/security/entity_store/stop
+   {}
+
+   POST kbn:/s/{space_id}/api/kibana/settings/securitySolution:entityStoreEnableV2
+   {
+      "value": false
+   }
    ```
 
    The request stops running entity engines and pauses data processing. For the full API reference, refer to [Stop Entity Store engines](https://www.elastic.co/docs/api/doc/kibana/operation/operation-put-security-entity-store-stop).
