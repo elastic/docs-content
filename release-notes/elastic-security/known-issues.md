@@ -59,7 +59,7 @@ Follow these steps to stabilize {{kib}}:
    {}
    ```
 
-   If you're using a non-default {{kib}} space, prefix the path with `/s/{space_id}`:
+   - For all non-default spaces, prefix the path with `/s/{space_id}`:
 
    ```
    PUT kbn:/s/{space_id}/api/security/entity_store/stop
