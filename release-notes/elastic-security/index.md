@@ -27,6 +27,185 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.5.0 [elastic-security-9.5.0-release-notes]
+
+### Features and enhancements [elastic-security-9.5.0-features-enhancements]
+
+* Adds Discover, Agents, and Workflows links to the {{elastic-sec}} classic view [#269683]({{kib-pull}}269683).
+* Moves the {{agent-builder}} navigation link to the top of the {{elastic-sec}} navigation [#271532]({{kib-pull}}271532).
+* Makes detection rule changes history generally available. A **History** entry in the rule actions menu opens a dedicated changes-history page with an infinite-scroll timeline of recorded rule changes and a JSON diff between revisions [#278052]({{kib-pull}}278052), [#269617]({{kib-pull}}269617), [#270091]({{kib-pull}}270091).
+* Adds the ability to restore a detection rule to a previous state captured in its changes history [#274605]({{kib-pull}}274605).
+* Improves prebuilt rule installation performance, making installation of all prebuilt rules approximately 5x faster [#275523]({{kib-pull}}275523).
+* Updates MITRE ATT&CK mappings to `v19.1` [#278547]({{kib-pull}}278547).
+* Surfaces rules with unsupported MITRE ATT&CK mappings on the coverage overview and rule edit pages after a mappings version update, so you can review and update them [#274793]({{kib-pull}}274793).
+* Migrates the prebuilt `packetbeat_dns_tunneling_ea` and `packetbeat_rare_dns_question_ea` {{ml}} jobs to the `security_network` module [#268267]({{kib-pull}}268267).
+* Adds `security.enableRule` and `security.disableRule` workflow steps for bulk enabling or disabling detection rules by rule IDs or query [#275187]({{kib-pull}}275187).
+* Enables the **Close all alerts that match this exception** checkbox when creating an exception from a runtime field defined on the rule's source index [#270219]({{kib-pull}}270219).
+* Adds a warning callout and confirmation modal to the rule exceptions form when entering escaped characters (such as `\*` or `\?`) with the `matches` operator, indicating they might have intended wildcards instead [#268397]({{kib-pull}}268397).
+* Enables the advanced setting that turns on the new flyout system in {{elastic-sec}} [#279300]({{kib-pull}}279300).
+* Enables search in the **JSON** tab of the Security Solution alert flyout, matching the behavior of the Discover document flyout [#263875]({{kib-pull}}263875).
+* Adds an action in the correlations section of the alert details flyout to open a related attack as a preview (legacy expandable flyout) or as a child panel (new flyout system) [#279306]({{kib-pull}}279306).
+* Adds an **Add to chat** bulk action to the alerts table, letting analysts send up to 100 selected alerts to the {{agent-builder}} chat for triage [#270904]({{kib-pull}}270904).
+* Adds an **Export to CSV** button to the alerts table that exports the currently filtered alerts and links to the reporting page (requires the reporting capability) [#263895]({{kib-pull}}263895).
+* Adds an alert analysis managed workflow that gathers context around an alert, sends it to an LLM, and writes the result to alert notes and tags, optionally auto-closing high-confidence false positives. Includes a configuration UI in the rules section and requires an Enterprise license [#269743]({{kib-pull}}269743), [#276788]({{kib-pull}}276788).
+* Updates the alert **Run workflow** panel to include managed workflows, such as the alert analysis workflow [#276555]({{kib-pull}}276555).
+* Shortens the tags written by the alert analysis workflow and adds a configurable `securitySolution:alertAnalysisWorkflowTagPrefix` setting (default `alert-analysis`) [#276547]({{kib-pull}}276547).
+* Adds bulk enable, disable, and delete actions for Attack Discovery schedules, backed by new public bulk schedule APIs [#267549]({{kib-pull}}267549).
+* Integrates Attack Discovery 2.0 workflow-based generation with alerting-framework scheduling and registers {{agent-builder}} skills for editing and troubleshooting workflows [#260816]({{kib-pull}}260816), [#260811]({{kib-pull}}260811).
+* Improves the AI Value Report empty state: first-time users with no attack discoveries see a laid-out sample report preview, while returning users with no data in the selected range see a prompt to adjust the time range [#265091]({{kib-pull}}265091).
+* Improves the copy for the Microsoft Sentinel rules upload step in Automatic Migration [#276242]({{kib-pull}}276242).
+* Improves Automatic Migration dashboard migration accuracy by sampling index records before query translation, enabling the LLM to generate {{esql}} queries with correct field names and values from the first attempt [#261927]({{kib-pull}}261927).
+* Improves Automatic Migration lookup translation by giving lookup resources (such as Microsoft Sentinel watchlists) field metadata, so generated {{esql}} can produce more accurate `LOOKUP JOIN` clauses [#275845]({{kib-pull}}275845).
+* Adds Microsoft Sentinel watchlist upload support to SIEM rule migrations, validating and ingesting watchlist ARM exports as lookup resources [#269726]({{kib-pull}}269726).
+* Changes the default chat experience in {{elastic-sec}} and Elastic {{observability}} contexts to AI Agent. A one-time announcement explains the change and allows you to return to the classic AI Assistant from **GenAI Settings**. The dismissal state is remembered per space [#260570]({{kib-pull}}260570).
+* Redesigns the {{agent-builder}} announcement modal into three layouts based on whether the user has prior AI Assistant history and whether they can revert the space-level chat experience [#264995]({{kib-pull}}264995).
+* Updates the {{agent-builder}} announcement modal so that clicking **Revert** immediately switches all space users back to AI Assistant [#267906]({{kib-pull}}267906).
+* Removes the **Switch to AI Agent** confirmation modal; switching to AI Agent now takes effect immediately [#264839]({{kib-pull}}264839).
+* Adds request and response examples and standardized descriptions to the {{elastic-sec}} AI Assistant and Elastic Assistant OpenAPI specifications, and fixes several schema inaccuracies (no runtime API behavior change) [#263322]({{kib-pull}}263322).
+* Adds a `recommend-prebuilt-rules` {{agent-builder}} skill that recommends which Elastic prebuilt detection rules to install and answers questions about the installable rule catalog [#269559]({{kib-pull}}269559).
+* Adds a `find-security-rules` {{agent-builder}} skill for discovering, filtering, sorting, and counting detection rules using natural-language queries [#269089]({{kib-pull}}269089).
+* Adds an `alert-triage` {{agent-builder}} skill that ranks the open alert queue by combining base risk, MITRE tactic, entity risk, and asset criticality to highlight what to focus on [#273439]({{kib-pull}}273439).
+* Adds a `pci-compliance` {{agent-builder}} skill with tools for PCI DSS v4.0.1 scope discovery, compliance checks, reporting, and field mapping [#256060]({{kib-pull}}256060).
+* Adds support for attaching Timelines to cases, including a timelines table for selecting a Timeline to attach (behind the `xpack.cases.attachments.enabled` feature flag) [#272768]({{kib-pull}}272768), [#271353]({{kib-pull}}271353).
+* Persists the entity AI summary to the entity metadata index so it is no longer regenerated each time the entity details flyout is opened. A callout prompts regeneration when the entity's risk score drifts from the snapshot [#276038]({{kib-pull}}276038).
+* Adds an Anomalies section to the entity details flyout and details tab for host and user entities, showing a 30-day anomaly overview by MITRE ATT&CK tactic and detailed, filterable anomaly records, with actions including **Add to Timeline**, **View in Discover**, and opening the **Single Metric Viewer** in {{ml}} [#273139]({{kib-pull}}273139), [#275118]({{kib-pull}}275118).
+* Adds an `entityStore.updateAssetCriticality` workflow step that updates an entity's asset criticality and triggers a risk score recalculation [#276092]({{kib-pull}}276092).
+* Adds `entityStore.entityAssetCriticalityUpdated` and `entityStore.entityRiskScoreChanged` workflow triggers that fire when an entity's asset criticality is set or cleared, or when its risk score changes [#275670]({{kib-pull}}275670).
+* Updates Entity Store APIs to reject unknown keys in request bodies, query parameters, and path parameters with a `400 Bad Request` instead of silently ignoring them [#273098]({{kib-pull}}273098).
+* Adds recurrence-based scheduling to Osquery packs. Pack authors can run a pack on a **Daily** or **Custom** schedule, with an optional start date, stop-after date, and splay, and can override the schedule per query [#275896]({{kib-pull}}275896), [#271865]({{kib-pull}}271865), [#270639]({{kib-pull}}270639), [#269730]({{kib-pull}}269730).
+* Adds the ability to export Osquery query results as CSV, JSON, or NDJSON files directly from the query results page [#275597]({{kib-pull}}275597), [#267800]({{kib-pull}}267800), [#266582]({{kib-pull}}266582), [#265995]({{kib-pull}}265995).
+* Adds an {{elastic-defend}} advanced policy setting for Windows that lets you disable enrichment of DLL Search Order Hijacking detection events [#272068]({{kib-pull}}272068).
+* Adds a new `canceled` response action status, shown in the response action history and console, with support across response action types including Microsoft Defender for Endpoint [#271357]({{kib-pull}}271357).
+* Raises the default file size limit for the `upload` response action to 500 MB and effectively removes the maximum, configurable via `xpack.securitySolution.maxUploadResponseActionFileBytes` [#275850]({{kib-pull}}275850).
+* Adds a warning callout to the **Endpoint exceptions**, **Trusted applications**, and **Event filters** forms when users enter unnecessarily escaped characters [#268477]({{kib-pull}}268477).
+* Adds an **AND** button to the trusted devices form, allowing multiple conditions per trusted device entry, with a duplicate-field warning [#268011]({{kib-pull}}268011).
+* Enables the automatic troubleshooting skill for {{agent-builder}}, so endpoint troubleshooting uses the skill instead of the {{elastic-sec}} AI Assistant-backed Defend Insights APIs [#273865]({{kib-pull}}273865).
+* Adds more data to kernel module load events for {{elastic-defend}} on Linux.
+* Adds support for the `cancel` response action in {{elastic-defend}}.
+* Adds hardware breakpoint detection to shellcode thread alerts in {{elastic-defend}}. Hardware breakpoints on the creator thread are detected via kernel-mode inspection, improving the reliability of `process.thread.Ext.hardware_breakpoint_set` reporting.
+* Adds AI-agent process attribution with process descendant enrichment to {{elastic-defend}}.
+* Adds support for running PowerShell scripts via the `runscript` response action in {{elastic-defend}} on Windows.
+* Adds experimental macOS 27 support to {{elastic-defend}}.
+* Adds collection of additional Windows security events in {{elastic-defend}}: Service Installation (`4697`), Scheduled Task Creation (`4698`), Scheduled Task Updated (`4702`), User Account Created (`4720`), and Vault Credentials Were Read (`5382`).
+* Adds detection of DLL masquerading via potential search order hijacking in {{elastic-defend}} on Windows. `dll.Ext.defense_evasions` is now populated with `DLL Hijack: Masquerading` when a DLL that shares a name with a known Windows system DLL (such as one from System32 or SysWOW64) is loaded from an unexpected directory.
+* Adds persistence of original Windows security audit policies in {{elastic-defend}}, so they can be restored after an unclean shutdown.
+* Adds the LXC container name to event telemetry for {{elastic-defend}} on Linux.
+
+
+### Fixes [elastic-security-9.5.0-fixes]
+
+* Fixes the **Security** category link in the global classic side navigation, which pointed to the Value Report instead of the **Get started** page [#272155]({{kib-pull}}272155).
+* Fixes an incorrect ordering of the **Launchpad** item in the classic global side navigation. The item now appears above **Manage**, consistent with {{elastic-sec}} own classic view [#268216]({{kib-pull}}268216).
+* Fixes a crash when opening the rule panel flyout for a deleted rule caused by missing `severity_mapping` or `risk_score_mapping` fields [#278545]({{kib-pull}}278545).
+* Fixes the integration assets accordion to display the security rule name, since security rules have no title field [#272089]({{kib-pull}}272089).
+* Fixes an issue where detection engine gap errors were classified as non-user errors, which caused gap-only rule failures to count against SLO dashboards [#263244]({{kib-pull}}263244).
+* Fixes a validation error when resolving a `required_fields` conflict during a prebuilt rule upgrade [#278125]({{kib-pull}}278125).
+* Preserves the prebuilt rule `revision` (incremented by 1) when upgrading a rule to a different type, matching the behavior of same-type upgrades [#275627]({{kib-pull}}275627).
+* Fixes an issue where {{kib}} assets from an installed integration package (such as dashboards used by prebuilt detection rules) could remain stale across a {{kib}} upgrade because {{fleet}} never overwrote existing assets on reinstall [#277953]({{kib-pull}}277953).
+* Fixes an issue where deprecated prebuilt rules could reappear as installable after being deleted [#274447]({{kib-pull}}274447).
+* Fixes an issue where the **Delete all** action for deprecated prebuilt rules failed when more than 100 deprecated rules existed [#271550]({{kib-pull}}271550).
+* Fixes an issue in EQL rule creation where the query field did not re-validate after changing the index pattern, leaving stale errors on screen even when the query was valid for the newly selected {{data-source}} [#261027]({{kib-pull}}261027).
+* Fixes orphaned {{esql}} requests left running when navigating away from the {{esql}} rule edit page [#267455]({{kib-pull}}267455).
+* Fixes the AI rule creation flow to respect the `enableESQL` advanced setting. When {{esql}} is disabled, the AI rule creation option is hidden and {{esql}} rule creation is blocked in {{agent-builder}} [#267247]({{kib-pull}}267247).
+* Fixes an issue where the Agent Builder sidebar did not open when navigating directly to rule creation [#262588]({{kib-pull}}262588).
+* Fixes an issue where the rule editing UI rejected valid semver range version constraints (such as `^8.2.0 || ^9.0.0`) on related integrations [#274133]({{kib-pull}}274133).
+* Fixes an issue where the `concurrent_searches` and `items_per_search` API fields for `threat_match` (Indicator Match) rules were reset to their defaults when the rule was saved through the UI [#276823]({{kib-pull}}276823).
+* Fixes an issue with Indicator Filters in the read-only rule details UI, where incorrect backing indices caused misleading warnings to display on hover [#263657]({{kib-pull}}263657).
+* Fixes an issue where pressing Escape while a Timeline modal was open on top of the alert details flyout closed both, dropping the analyst out of the investigation context [#279153]({{kib-pull}}279153).
+* Fixes missing cell actions in the new attack flyout in Discover and {{elastic-sec}} [#277833]({{kib-pull}}277833).
+* Fixes an error when opening a source event from the **Highlighted fields** section of the alert details flyout when the source index had been restored, and renamed, from a cold or frozen tier [#277703]({{kib-pull}}277703).
+* Fixes two display bugs in the new flyout system: a host silently dropped from the **Entities** panel, and incorrect chevron display [#277083]({{kib-pull}}277083).
+* Fixes an issue where the alert details flyout **Overview** tab crashed in Discover for external alert documents [#269000]({{kib-pull}}269000).
+* Fixes a double border in the EASE alert summary flyout header [#268996]({{kib-pull}}268996).
+* Fixes an incorrect banner shown in the Discover document flyout when Discover is embedded in a dashboard [#268249]({{kib-pull}}268249).
+* Fixes an issue where the alert details flyout failed to render its header, content, and footer when Discover was embedded in a dashboard [#267321]({{kib-pull}}267321).
+* Fixes alert action error toasts (assign, tag, open, close, acknowledge) so they show the full error message from {{es}} instead of a blank body [#269592]({{kib-pull}}269592).
+* Fixes an issue where only the first assignee was displayed in the alert details flyout instead of all assigned users [#273801]({{kib-pull}}273801).
+* Fixes a scroll-position jump in the alert details flyout **Table** tab [#273521]({{kib-pull}}273521).
+* Adds the **Add to chat** action to the alerts table row actions [#273740]({{kib-pull}}273740).
+* Fixes the alerts table CSV export so reports record the actual {{kib}} version instead of `7.14.0` [#272418]({{kib-pull}}272418).
+* Fixes an unwanted **Read more** button on long rule descriptions in the alert details flyout [#264876]({{kib-pull}}264876).
+* Fixes an issue where auto-refresh on the **Alerts** page with grouping applied caused open flyouts and dialogs to close unexpectedly [#264518]({{kib-pull}}264518).
+* Fixes a Firefox scroll position jump that occurred when hovering field rows with cell actions in the **Table** tab of the alert details flyout [#262682]({{kib-pull}}262682).
+* Fixes an issue where alert KPI counts were rendered with incorrect whitespace [#260803]({{kib-pull}}260803).
+* Fixes a crash in index fields formatting when a field or index is named after an `Object.prototype` property such as `constructor`, `toString`, or `__proto__` [#277851]({{kib-pull}}277851).
+* Fixes **Investigate in Timeline** for suppressed alerts whose exception list data was stored as a single object instead of an array [#275417]({{kib-pull}}275417).
+* Fixes **Investigate in Timeline** for Indicator Match alerts by quoting and escaping KQL values that contain reserved characters, such as `:` in URLs [#271639]({{kib-pull}}271639).
+* Fixes incorrect button alignment in Timeline [#268314]({{kib-pull}}268314).
+* Adds examples and descriptions to the Timeline and pinned events OpenAPI specifications and fixes several spec inaccuracies [#264388]({{kib-pull}}264388).
+* Fixes the analyzer alert-hits query so it honors the `securitySolution:excludeColdAndFrozenTiersInAnalyzer` setting, which previously excluded cold and frozen tiers only from other analyzer queries [#278972]({{kib-pull}}278972).
+* Adds a date range picker above the **Alerts related by ancestry** table in the correlations section and bounds the underlying query to it, preventing timeouts on very large indices [#278971]({{kib-pull}}278971).
+* Fixes the **Alert processing analytics** donut on the Value Report, which failed to load when many alerts were linked to attack discoveries in the report window [#277220]({{kib-pull}}277220).
+* Fixes an issue where the Attack Discovery privilege check required access to internal backing indices instead of the user-facing alert aliases, causing roles with alias-only access to fail with missing-index-privilege errors [#272122]({{kib-pull}}272122).
+* Fixes the **Manage license** link on the Attack Discovery page to navigate directly to **License Management** instead of the {{stack-manage-app}} landing page [#266445]({{kib-pull}}266445).
+* Fixes an issue where **Add to case** actions were visible under the Attack Discovery tab when the user's Cases privilege was set to None; they are now hidden [#266127]({{kib-pull}}266127).
+* Fixes an issue where integration icons in the Attack Discovery schedule form blinked while typing in input fields [#266117]({{kib-pull}}266117).
+* Fixes an issue where the Attack Discovery bulk action allowed changing selected items to a status they already had [#266115]({{kib-pull}}266115).
+* Fixes an issue where **View in AI Assistant** buttons and context menu items in Attack Discovery remained visible when the AI Assistant was hidden via **GenAI Settings** [#266111]({{kib-pull}}266111).
+* Fixes truncated **Run** button text in the Attack Discovery page header [#266105]({{kib-pull}}266105).
+* Adds a manual input dialog for workflow runs that require input, showing event and manual inputs in separate tabs [#271586]({{kib-pull}}271586).
+* Fixes a layout issue in the translated rule flyout where editing the {{esql}} translation could shrink the original rule definition column [#276459]({{kib-pull}}276459).
+* Fixes an issue where the Automatic Migration integrations index could bind to a non-ELSER inference endpoint, causing translated rules to show no recommended integrations [#275766]({{kib-pull}}275766).
+* Fixes a sticky redirect where users routed to Automatic Migration during onboarding could no longer open **Launchpad → Get started** afterward [#273753]({{kib-pull}}273753).
+* Fixes an issue where migrated Splunk dashboard panels failed to render in Lens with a "wrong data type" error because column types were incorrectly inferred as `unknown` [#270563]({{kib-pull}}270563).
+* Fixes an issue where uploading a migration file containing invalid rules or dashboards could leave behind an orphaned migration record [#266359]({{kib-pull}}266359).
+* Fixes migrated Splunk dashboards showing blank visualizations on initial load by removing hardcoded time fields and {{data-source}} titles from migration templates [#264102]({{kib-pull}}264102).
+* Fixes an issue in the AI Assistant where selecting all conversations and then saving an edit to a single conversation deleted all conversations instead of updating only the edited one [#274033]({{kib-pull}}274033).
+* Fixes an issue where attachments from one AI Assistant conversation leaked into the next [#273017]({{kib-pull}}273017).
+* Fixes an issue where the {{agent-builder}} announcement modal could reappear during page navigation after being dismissed, particularly in high-latency or proxy environments [#272276]({{kib-pull}}272276).
+* Fixes a duplicate "AI Assistant" section on the **Feature Settings** page by consolidating the {{elastic-sec}} AI Assistant configuration under the **Security** group, and hides the AI Assistant for Security entry when AI Assistant is not the selected chat experience [#266697]({{kib-pull}}266697).
+* Removes Beta labels and badges from the AI Agent chat experience, including the chat selection card, announcement modal, advanced settings value, and Elastic {{observability}} opt-in tour [#264200]({{kib-pull}}264200).
+* Suppresses the AI Agent announcement modal in automated browser sessions by checking `navigator.webdriver`, so synthetic monitors and end-to-end tests are not affected [#263785]({{kib-pull}}263785).
+* Updates the copy in the AI Agent announcement modal [#263034]({{kib-pull}}263034).
+* Fixes the **Threat Intelligence** page height in classic navigation, where the page did not fill the available window space [#276150]({{kib-pull}}276150).
+* Fixes an issue where the **Data Quality** dashboard showed no data when {{kib}} was set to Japanese [#265782]({{kib-pull}}265782).
+* Fixes the events histogram and host/network event count panels on the **Overview** dashboard, which incorrectly included alert documents in event counts, and ensures compatibility with {{ccs}} so events from remote clusters are correctly included [#265561]({{kib-pull}}265561).
+* Fixes an issue where the last event ingested metric pulled from an incorrect scope and too few indices [#262346]({{kib-pull}}262346).
+* Fixes entity store routing so it respects the feature flag's registered default instead of always behaving as if the flag were off [#269642]({{kib-pull}}269642).
+* Fixes an issue where uninstalling the entity store could delete entity store indices and data streams while other engines were still running; they are now kept while any engine is present [#276697]({{kib-pull}}276697).
+* Fixes an issue where the entity store log extraction window could grow unboundedly in lagging environments, causing {{esql}} probe cost to spiral. Adds a `maxTimeWindowSize` parameter (default: `15m`) to the install and update APIs to cap each probe's window size. Also adds an `excludedIndexPatterns` parameter that lets you exclude specific index patterns from log extraction [#268170]({{kib-pull}}268170).
+* Fixes an entity store log extraction failure caused by field mapping ambiguity during single-field identity evaluation [#272344]({{kib-pull}}272344).
+* Fixes an issue where detection rules failed with errors when their executing users lacked read access to entity store indices. Entity store enrichment is now silently skipped for users without entity store index access [#267787]({{kib-pull}}267787).
+* Scopes watchlist index sync to the watchlist creator's credentials, requiring read access to the configured index. Watchlists created before this change show a **Sync paused** callout with a **Re-authorize** action [#270292]({{kib-pull}}270292).
+* Fixes an issue where the prebuilt Privileged Users watchlist was only installed in the default space; it is now installed in custom spaces as well [#277645]({{kib-pull}}277645).
+* Fixes an issue where entity maintainer tasks (risk score, watchlist, and relationship maintainers) kept running after the entity store was toggled off; they now stop when all engines stop and restart when engines are started again [#273890]({{kib-pull}}273890).
+* Fixes the entities table on the **Entity Analytics** page to sort by risk score by default, showing the highest-risk entities first and placing entities without a risk score at the bottom [#272234]({{kib-pull}}272234).
+* Fixes an issue on the **Entity Analytics** page where the search bar appeared blank after navigating to Discover and back, and where **Refresh** could reuse a stale query [#265926]({{kib-pull}}265926).
+* Fixes an issue where the **Entity Analytics** left panel showed stale details when previewing a different entity [#265512]({{kib-pull}}265512).
+* Fixes multiple rendering issues in the entity details flyout when opened in **Preview** mode from {{agent-builder}} [#267342]({{kib-pull}}267342).
+* Fixes an issue where users with read-only access could see the asset criticality update dropdown in the entity details flyout. The dropdown is now correctly gated on write permissions [#269164]({{kib-pull}}269164).
+* Fixes an issue where the **Top Threat Hunting Leads** section was silently hidden for users without read access to the leads index; a privileges callout now explains the missing access [#271207]({{kib-pull}}271207).
+* Fixes unreachable last pages in grouped tables with more than 10,000 groups by capping pagination at the 10,000-group limit and revealing pages progressively with a **Load more** control [#277322]({{kib-pull}}277322).
+* Restores the asset inventory telemetry usage collector, which had stopped reporting `asset_inventory` stats [#271944]({{kib-pull}}271944).
+* Fixes an error that prevented adding the Osquery Manager integration in custom {{kib}} spaces when a global Osquery pack existed in the Default space [#278498]({{kib-pull}}278498).
+* Fixes intermittent duplicate execution of scheduled Osquery packs by deduplicating concurrent {{fleet}} package-policy writes for package policies shared across multiple agent policies [#278159]({{kib-pull}}278159).
+* Fixes Osquery agent selection, policy grouping, and live query dispatch for agents whose `policy_id` carries a version suffix (such as `<id>#9.5`) [#277283]({{kib-pull}}277283).
+* Fixes empty **Last results**, **Docs**, and **Agents** columns on the Osquery pack details page for scheduled queries [#267894]({{kib-pull}}267894).
+* Extends the query execution timeout to 24 hours [#262008]({{kib-pull}}262008).
+* Fixes Endpoint metadata queries and response actions for agents whose `policy_id` carries a version suffix, so they appear in the **Endpoint list** and their response actions succeed [#277100]({{kib-pull}}277100).
+* Fixes {{elastic-defend}} package policy inputs to use the package policy ID even when input IDs are supplied, which {{elastic-defend}} relies on [#271269]({{kib-pull}}271269).
+* Fixes the `run_script` response action path in the OpenAPI specification (was `/api/endpoint/action/runscript`, now `/api/endpoint/action/run_script`) [#271759]({{kib-pull}}271759).
+* Fixes the response console input so a space is automatically inserted after a custom argument value selector, letting you keep typing without affecting the previous argument [#262628]({{kib-pull}}262628).
+* Fixes CrowdStrike `runscript` response actions to correctly display script output (stdout/stderr) in the **Response Console** and **Action History** views [#262470]({{kib-pull}}262470).
+* Fixes an issue where {{elastic-defend}} could lose Tamper Protection state on startup, by rehydrating the cache from disk when a policy is applied.
+* Fixes {{elastic-defend}} recovery from network event subscription failures on macOS (26.5.2), where a failed subscription was previously sticky with no retry attempts.
+* Fixes an {{elastic-defend}} crash that occurred when a Kafka broker rejected an oversized document.
+* Fixes {{elastic-defend}} to properly honor {{es}} `queue.*` settings sent from {{kib}}, as well as queue presets.
+* Fixes validation of the `bulk_max_size` output setting in {{elastic-defend}}.
+* Fixes a race condition when assigning the username of mounted USB devices in {{elastic-defend}} on Windows.
+* Improves the accuracy of serial number gathering in {{elastic-defend}} on Windows.
+* Fixes a rare process tracking issue in {{elastic-defend}} on macOS and Linux.
+* Fixes an issue where {{elastic-defend}} on Linux did not properly read tty events on older kernels (`4.18`) with eBPF backports, such as on RHEL 8.
+* Improves the reliability of fanotify event collection in {{elastic-defend}} on Ubuntu 26.04 and Linux 7.0.
+* Fixes {{elastic-defend}} on Linux to no longer perform any file reads for executables matching a trusted application entry.
+* Fixes {{elastic-defend}} on Windows to display the custom popup on cached denied requests in Device Control.
+* Fixes {{elastic-defend}} handling of `windows.advanced.events.security.event_disabled` on Windows, so removing event IDs from the list correctly re-enables those Security events without requiring an additional policy reapply.
+* Fixes a rare edge case where {{elastic-defend}} could lose Tamper Protection.
+* Fixes an issue with rollback configuration in {{elastic-defend}} on Windows, where under certain runtime conditions the endpoint could get stuck in the `CONFIGURING` state for an extended period when updating a policy with rollback enabled.
+* Fixes a partial-write bug so {{elastic-defend}} correctly sends data to a {{ls}} output when the kernel TCP send buffer is full, resolving premature connection failures.
+* Fixes a sharing violation in the `get-file` response action in {{elastic-defend}}.
+
+
 ## 9.4.4 [elastic-security-9.4.4-release-notes]
 
 ### Features and enhancements [elastic-security-9.4.4-features-enhancements]
@@ -165,6 +344,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Introduces the Entity Threat Hunting backend infrastructure, including the feature flag, shared types and index templates, observation module interface, Risk and Temporal State modules, behavioral observation modules, entity retrieval and enrichment, API routes, `LeadDataClient`, async lead generation, and an automated email-based entity resolution maintainer [#255272]({{kib-pull}}255272), [#256156]({{kib-pull}}256156), [#256270]({{kib-pull}}256270), [#256628]({{kib-pull}}256628), [#257046]({{kib-pull}}257046), [#257479]({{kib-pull}}257479).
 * Allows user and host details flyouts to open while observed data is loading [#252657]({{kib-pull}}252657).
 * Adds an Entity Analytics Agent Builder skill for answering risk score and entity risk questions [#252400]({{kib-pull}}252400).
+* Adds a rich visual renderer for `security.entity` attachments in {{agent-builder}}, displaying resolved entities as cards or tables [#264985]({{kib-pull}}264985).
 * Adds a `communicates_with` entity relationship maintainer for Entity Store v2, populating user entity relationship data based on cloud API and MDM activity from {{aws}} CloudTrail, Azure Sign-in Logs, Okta System Logs, and Jamf Pro [#258656]({{kib-pull}}258656).
 * Adds a namespace ID filter to **Advanced settings** for filtering Entity Store entities by namespace [#247733]({{kib-pull}}247733).
 * Enables showing entity relationships from the entity node context menu in the graph visualization [#252803]({{kib-pull}}252803).
