@@ -17,6 +17,11 @@ products:
 
 The detection engine also surfaces alerts from [{{elastic-defend}}'s endpoint protection](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) (malware, ransomware, memory threats, and malicious behavior) and [external alerts](https://www.elastic.co/docs/reference/security/prebuilt-rules/rules/promotions/external_alerts) from third-party tools like Suricata, giving you a unified view of threats across your security stack.
 
+:::{note}
+:applies_to: {"stack": "experimental 9.5+", "serverless": "experimental"}
+{{kib}} also has an {{esql}}-based alerting system that's not tied to any specific solution. For threat detection in {{elastic-sec}}, keep using detection rules—they include security-specific capabilities such as [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) and [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) that the solution-agnostic system doesn't provide. To compare the platform alerting options, refer to [Compare alerting systems](/explore-analyze/alerting/compare-alerting-systems.md).
+:::
+
 ## Where to start
 
 | Your goal | Start here |
