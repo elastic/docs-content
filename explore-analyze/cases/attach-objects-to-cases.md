@@ -49,7 +49,7 @@ After adding alerts, you can review them under **Alerts** on the case's **Attach
 
 ## Add files [add-case-files]
 
-After you create a case, you can upload and manage files under **Files** tab. Each file can be up to 100 MiB (10 MiB for images), and a case can have up to 100 files attached.
+After you create a case, you can upload and manage files under the **Files** tab. Each file can be up to 100 MiB (10 MiB for images), and a case can have up to 100 files attached.
 
 {applies_to}`stack: ga 9.5` You can also upload a file from the **Activity** tab. Select **Attach**, then **Upload file**.
 
