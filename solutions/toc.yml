@@ -689,6 +689,7 @@ toc:
               - file: security/configure-elastic-defend/configure-data-volume-for-elastic-endpoint.md
               - file: security/configure-elastic-defend/create-an-elastic-defend-policy-using-api.md
           - file: security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md
+          - file: security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md
           - file: security/configure-elastic-defend/uninstall-elastic-agent.md
       - file: security/manage-elastic-defend.md
         children:
