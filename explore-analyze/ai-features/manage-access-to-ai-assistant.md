@@ -37,6 +37,7 @@ The **GenAI Settings** page has the following settings:
 - **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 - **Token usage tracking**: Turn on tracking of token usage by AI features.
 - **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses.
+  - When you install this content, {{kib}} automatically selects the best available embedding model. Elastic documentation uses Jina v5 (`.jina-embeddings-v5-text-small`) when that endpoint is available, and otherwise falls back to ELSER (`.elser-2-elastic` or `.elser-2-elasticsearch`). Security labs content uses ELSER.
 ::::
 ::::{applies-item} stack: ga 9.4+
 
@@ -50,6 +51,7 @@ The **GenAI Settings** page has the following settings:
 - **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features.
 - **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 - **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses.
+  - {applies_to}`stack: ga 9.5` When you install this content, {{kib}} automatically selects the best available embedding model. Elastic documentation uses Jina v5 (`.jina-embeddings-v5-text-small`) when that endpoint is available, and otherwise falls back to ELSER (`.elser-2-elastic` or `.elser-2-elasticsearch`). Security labs content uses ELSER.
 ::::
 ::::{applies-item} stack: ga 9.2-9.3
 
