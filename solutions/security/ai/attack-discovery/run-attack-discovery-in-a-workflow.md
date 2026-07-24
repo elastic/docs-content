@@ -23,7 +23,7 @@ For chat-based investigation, use [Run Attack Discovery from {{agent-builder}}](
 
 To run Attack Discovery from a workflow, you need:
 
-* The [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on.
+* The [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on.
 * A role with the [index privileges](/solutions/security/ai/attack-discovery/grant-access.md#ad-index-privileges) required to generate and read discoveries, and these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_kibana_privileges) at minimum:
   * **Security > Attack discovery**: `All`
   * **Security > Rules and Exceptions**: `Read`
@@ -47,6 +47,41 @@ Along with those options, choose whether Attack Discovery runs synchronously or 
 * **Asynchronously**: The step returns immediately with a run ID, and discoveries keep saving in the background. Use this when you only need to start the analysis and don't need the discoveries in later steps of this workflow.
 
 For an example of this step, open **Attack discovery settings** on the [Attacks view](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md#attacks-page-generation). Under **Generation**, select **View example** to open **Security - Attack discovery - Run example** (`security.attack-discovery.run`).
+
+## Call the Attack Discovery API from a workflow step [run-ad-workflow-api-step]
+
+If you want full control over the request body instead of using the `security.attack-discovery.run` step, add a [`kibana.request`](/explore-analyze/workflows/steps/kibana.md#kibana-request) step that posts to the [Attack Discovery generate endpoint]({{kib-apis}}operation/operation-postattackdiscoverygenerate). The step returns an `execution_uuid` that later steps can use to track the run.
+
+The generate request requires `anonymizationFields`, which controls which alert fields are sent to the LLM. Retrieve them from the AI Assistant anonymization fields API in an earlier step, then pass them into the generation step:
+
+```yaml
+steps:
+  - name: get_anonymization_fields
+    type: kibana.request
+    with:
+      method: GET
+      path: /api/security_ai_assistant/anonymization_fields/_find
+      query:
+        per_page: 1000
+
+  - name: generate_discoveries
+    type: kibana.request
+    with:
+      method: POST
+      path: /api/attack_discovery/_generate
+      body:
+        alertsIndexPattern: .alerts-security.alerts-default
+        anonymizationFields: "{{ steps.get_anonymization_fields.output.data.data }}"
+        apiConfig:
+          connectorId: your-connector-id
+          actionTypeId: .gen-ai
+        subAction: invokeAI
+        size: 100
+        start: now-24h
+        end: now
+```
+
+To limit which alerts are analyzed, add a `filter` (an {{es}} query DSL object) to the request body. Reference the returned run ID in later steps with `{{ steps.generate_discoveries.output.data.execution_uuid }}`, or retrieve the finished discoveries with the [Attack discovery API]({{kib-apis}}group/endpoint-security-attack-discovery-api) once generation completes.
 
 ## View runs and approve detection gap proposals [run-ad-workflow-when-it-runs]
 

@@ -79,7 +79,7 @@ serverless:
   security: ga
 ```
 
-When you turn on [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows), your role also needs **Analytics > Workflows** privileges. {{serverless-short}} roles include that access by default. On self-managed and {{ech}} deployments, add it to custom roles.
+When you turn on [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows), your role also needs **Analytics > Workflows** privileges. {{serverless-short}} roles include that access by default. On self-managed and {{ech}} deployments, add it to custom roles.
 
 | Attack Discovery action | Workflows privilege needed |
 |---|---|

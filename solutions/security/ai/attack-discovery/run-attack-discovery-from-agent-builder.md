@@ -20,7 +20,7 @@ For example prompts, refer to [Security use cases for {{agent-builder}}](/soluti
 
 To run Attack Discovery from {{agent-builder}}, you need:
 
-* The [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on.
+* The [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on.
 * A role with the [index privileges](/solutions/security/ai/attack-discovery/grant-access.md#ad-index-privileges) required to generate and read discoveries, and these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_kibana_privileges) at minimum:
   * **Security > Attack discovery**: `All`
   * **Security > Rules and Exceptions**: `Read`

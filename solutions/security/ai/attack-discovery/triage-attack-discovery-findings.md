@@ -378,22 +378,3 @@ POST /api/attack_discovery/_bulk
 ::::
 :::::
 
-:::{dropdown} Agent skill details
-
-An [agent skill](https://github.com/elastic/agent-skills/tree/main/skills/security/attack-discovery-triage) can be loaded into a compatible AI agent to retrieve open findings, score confidence programmatically, and present a triage summary for your approval before taking action.
-
-**Advantages:**
-
-- Processes findings in bulk rather than one at a time.
-- Applies the confidence scoring heuristics consistently without manual lookups.
-- Runs all enrichment queries (entity risk, rule frequency, alert context) automatically.
-
-**Trade-offs to consider:**
-
-- The skill requires the [agent-skills](https://github.com/elastic/agent-skills) repository, Node.js 18+, and API keys with appropriate permissions.
-- Confidence scoring uses fixed heuristics. Manual triage lets you apply institutional knowledge that the skill can't account for, such as knowing that a specific host is a honeypot or that a particular rule was recently tuned.
-- Write operations (case creation, alert acknowledgment) still require your explicit approval, but you have less granular control over how findings are enriched and summarized.
-
-Refer to the [agent-skills README](https://github.com/elastic/agent-skills/blob/main/README.md) for setup instructions.
-:::
-

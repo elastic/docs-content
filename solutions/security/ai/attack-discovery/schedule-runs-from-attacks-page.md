@@ -19,7 +19,7 @@ Create a schedule so Attack Discovery runs automatically at intervals you choose
 ::::{applies-item} { "stack": "ga 9.5+", "serverless": {"security": "ga"} }
 
 :::{important}
-After you turn on [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows), existing schedules keep their previous configuration until you edit and save them. Each scheduled run also opens a new {{agent-builder}} conversation you can view later from **Workflow execution details**.
+After you turn on [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows), existing schedules keep their previous configuration until you edit and save them. Each scheduled run also opens a new {{agent-builder}} conversation you can view later from **Workflow execution details**.
 :::
 
 To create a schedule:

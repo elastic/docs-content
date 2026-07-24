@@ -18,8 +18,8 @@ From the **Attacks** view, configure which alerts to analyze, then start a manua
 
 To use the **Attacks** view, you need:
 
-* The [**Enable alerts and attacks alignment**](/solutions/security/get-started/configure-advanced-settings.md#enable-alerts-and-attacks-alignment) advanced setting turned on (only required for {{stack}} 9.4.x). 
-* The [**Attack Discovery Workflows**](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on if you want the settings flyout with skill, query, and workflow retrieval.
+* The [Enable alerts and attacks alignment](/solutions/security/get-started/configure-advanced-settings.md#enable-alerts-and-attacks-alignment) advanced setting turned on (only required for {{stack}} 9.4.x). 
+* The [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on if you want the settings flyout with skill, query, and workflow retrieval.
 * A role with the [index privileges](/solutions/security/ai/attack-discovery/grant-access.md#ad-index-privileges) required to generate and read discoveries, and these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_kibana_privileges) at minimum:
   * **Security > Attack discovery**: `All`
   * **Security > Rules and Exceptions**: `Read`
