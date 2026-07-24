@@ -160,7 +160,7 @@ If you're using component templates with a time series data stream, check the fo
 After creating the index template, you can create a time series data stream by [indexing a document](use-data-stream.md#add-documents-to-a-data-stream). The TSDS is created automatically when you index the first document, as long as the index name matches the index template pattern. You can use a bulk API request or a POST request.
 
 :::{important}
-To test the following `_bulk` example, update the timestamps to within two hours of your current time. Data added to a TSDS must fit the [accepted time range](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-accepted-time-range).
+To test the following `_bulk` example, update the timestamps to within two hours of your current time. Data added to a TSDS must fit the [accepted time range](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-accepted-time-range) of a backing index that covers the timestamp. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` If no backing index exists yet for a timestamp, the write is rejected unless [past-index creation](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-backfill-past-timestamps) is enabled and the timestamp is inside the [eligible write window](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-eligible-write-window).
 :::
 
 ```console
@@ -235,6 +235,8 @@ To control access to a TSDS, use [index privileges](elasticsearch://reference/el
 
 For an example, refer to [Data stream privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md#data-stream-privileges).
 
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When [past-index creation](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-backfill-past-timestamps) is enabled, users who write documents that trigger creation of past backing indices need the `auto_configure` index privilege on the data stream, in addition to privileges that allow indexing (such as `create_doc` or `index`). Users with only the `index` privilege receive a `security_exception` when a write would create a past backing index.
+
 ## Next steps [set-up-tsds-whats-next]
 
 Now that you've set up a time series data stream, you can manage and use it like a regular data stream. For more information, refer to:
@@ -242,4 +244,5 @@ Now that you've set up a time series data stream, you can manage and use it like
 * [Use a data stream](use-data-stream.md) for indexing and searching
 * [Change data stream settings](modify-data-stream.md#data-streams-change-mappings-and-settings) as needed
 * Query time series data using the {{esql}} [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md)
+* {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Load historical metrics into a TSDS](/manage-data/data-store/data-streams/load-historical-tsds.md)
 * Use [data stream APIs]({{es-apis}}group/endpoint-data-stream)

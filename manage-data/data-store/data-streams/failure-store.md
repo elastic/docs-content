@@ -23,6 +23,8 @@ A failure store is attached to a single data stream. If a [`reroute` processor](
 Failure stores do not capture failures caused by backpressure, security issues, or document version conflicts. These failures are always returned as-is since they warrant specific action by the client.
 :::
 
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` For [time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md), documents rejected because their `@timestamp` falls outside the [eligible write window](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-eligible-write-window) can be redirected to the failure store when it is enabled.
+
 On this page, you'll learn how to set up, use, and manage a failure store, as well as the structure of failure store documents.
 
 For examples of how to use failure stores to identify and fix errors in ingest pipelines and your data, refer to [](/manage-data/data-store/data-streams/failure-store-recipes.md).

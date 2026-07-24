@@ -21,6 +21,8 @@ To reindex, follow the steps on this page.
 
 :::{note}
 This process only applies to time series data streams without a [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) configuration. To reindex a downsampled data stream, reindex the backing indices individually, then add them to a new, empty data stream.
+
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` If you need to add late-arriving or historical metrics to an existing live TSDS, consider [loading historical metrics](/manage-data/data-store/data-streams/load-historical-tsds.md) instead of reindexing.
 :::
 
 ## Overview
