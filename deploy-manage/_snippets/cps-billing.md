@@ -1,9 +1,12 @@
-{{cps-cap}} billing varies by project type:
+During technical preview, there are no separate {{cps}} charges.
 
-| Project type | Billing |
-|--------------|---------|
-| {{es-serverless}} | {{cps-cap}} federated queries are handled by search VCUs, which scale the origin project to accommodate cross-project workloads. Refer to [](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md) for information about search VCUs. |
-| {{obs-serverless}}<br><br>{{sec-serverless}} | During technical preview, there are no separate {{cps}} charges.<br><br>When {{cps-init}} becomes generally available, origin projects will incur an additional monthly charge for each GB of data retained in each project linked from the origin. Each retained GB in a linked project will be billed to the origin project on a monthly basis. |
+When {{cps-init}} becomes generally available, charges are billed to the origin project. 
 
+Usage is metered and charged based on the following factors:
 
-When {{cps-init}} becomes generally available, all project types will also incur a charge for data moved between projects. Exact rates and billing mechanics will be provided closer to GA.
+* **Retained data volume:** The volume of data retained in your linked projects each month. The rate varies by the type of each linked project, such as Observability, Security, or {{es}}. For Observability linked projects, the rate also depends on the type of retained data.
+* **{{cps-init}} queries:** Cross-project search queries incur a separate data egress charge for data transferred as a result of those queries. This appears as a separate line item on your bill.
+
+From August 1, 2026, your [usage page](https://cloud.elastic.co/usage) shows a billing preview with projected {{cps}} charges based on your current usage. No charges apply until billing begins.
+
+To estimate monthly spend based on your linked project configuration, use the [{{ecloud}} pricing calculator](https://cloud.elastic.co/pricing).
