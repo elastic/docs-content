@@ -57,7 +57,24 @@ Follow these steps to stabilize {{kib}}:
    ```
    PUT kbn:/api/security/entity_store/stop
    {}
+   ```
 
+   If you're using a non-default {{kib}} space, prefix the path with `/s/{space_id}`:
+
+   ```
+   PUT kbn:/s/{space_id}/api/security/entity_store/stop
+   {}
+   ```
+
+   The request stops running entity engines and pauses data processing. For the full API reference, refer to [Stop Entity Store engines](https://www.elastic.co/docs/api/doc/kibana/operation/operation-put-security-entity-store-stop).
+
+   The entity store uses a 3-hour lookback window for log extraction, so entity records missed during the outage are recovered after you re-enable the store.
+
+3. Disable the Entity Store feature flag.
+
+   Send the following request in every {{kib}} space where the entity store needs to be removed:
+
+   ```
    POST kbn:/api/kibana/settings/securitySolution:entityStoreEnableV2
    {
       "value": false
@@ -67,20 +84,15 @@ Follow these steps to stabilize {{kib}}:
    If you're using a non-default {{kib}} space, prefix the path with `/s/{space_id}`:
 
    ```
-   PUT kbn:/s/{space_id}/api/security/entity_store/stop
-   {}
-
    POST kbn:/s/{space_id}/api/kibana/settings/securitySolution:entityStoreEnableV2
    {
       "value": false
    }
    ```
 
-   The request stops running entity engines and pauses data processing. For the full API reference, refer to [Stop Entity Store engines](https://www.elastic.co/docs/api/doc/kibana/operation/operation-put-security-entity-store-stop).
+   The Entity Analytics experience will be unavailable while the feature flag is disabled.
 
-   The entity store uses a 3-hour lookback window for log extraction, so entity records missed during the outage are recovered after you re-enable the store.
-
-3. Remove the `xpack.task_manager.unsafe.exclude_task_types` setting.
+4. Remove the `xpack.task_manager.unsafe.exclude_task_types` setting.
 
    Remove this setting for your deployment:
 
