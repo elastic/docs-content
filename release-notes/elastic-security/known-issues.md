@@ -88,6 +88,10 @@ To stabilize {{kib}} until we resolve the issue, we recommend temporarily disabl
 
    * **{{ech}}**: [Contact Elastic Support](https://www.elastic.co/support) to remove the system-level override.
    * **Self-managed**: Remove the setting from `kibana.yml`, save your change, and restart {{kib}}.
+
+
+We will update this page with instructions on how to enable the feature again once once versions with a fix are available.
+
 :::
 
 :::{dropdown} Response actions fail and endpoints do not appear for agents on version-specific policies
