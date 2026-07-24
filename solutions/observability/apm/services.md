@@ -25,7 +25,7 @@ Active alerts for each service are prominently displayed in the service inventor
 
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` SLOs for each service are also shown in the service inventory table. Use the **Actions** menu on any service row to act on the service directly, or the **Environment** selector to filter the inventory by environment.
 
-{applies_to}`stack: ga 9.0-9.4` To help surface potential issues, services are sorted by their health status: **critical** → **warning** → **healthy** → **unknown**. Health status is powered by [{{ml}}](/solutions/observability/apm/machine-learning.md) and requires {{anomaly-detect}} to be enabled.
+{applies_to}`stack: ga 9.0-9.3` To help surface potential issues, services are sorted by their health status: **critical** → **warning** → **healthy** → **unknown**. Health status is powered by [{{ml}}](/solutions/observability/apm/machine-learning.md) and requires {{anomaly-detect}} to be enabled.
 
 ## Service groups [service-groups]
 
