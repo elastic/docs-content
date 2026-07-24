@@ -256,7 +256,7 @@ In **Discover**, LOOKUP JOIN commands let you create or edit lookup indices dire
 stack: ga 9.2.0
 ```
 
-Remote lookup joins are supported in [cross-cluster](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md) and [cross-project](elasticsearch://reference/query-languages/esql/esql-cross-project.md) queries. By default, {{esql}} resolves the lookup index on every remote cluster in the query and each cluster joins against its own local index with that name.
+Remote lookup joins are supported in [cross-cluster](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md) and [cross-project](elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md) queries. By default, {{esql}} resolves the lookup index on every remote cluster in the query and each cluster joins against its own local index with that name.
 
 {applies_to}`stack: ga 9.6` To join against a lookup index on the local cluster or origin project when that index is missing from one or more clusters or projects in the query, use [`LOOKUP JOIN` coordinator mode](elasticsearch://reference/query-languages/esql/esql-lookup-join.md#coordinator-mode).
 
