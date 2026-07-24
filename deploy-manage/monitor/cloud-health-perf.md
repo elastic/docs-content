@@ -39,10 +39,6 @@ This page provides the following information:
 
 You can also search and filter the table based on affected resources, such as indices, repositories, nodes, or SLM policies. Individual issues can be further expanded to get more details and guided troubleshooting.
 
-:::{image} /deploy-manage/images/cloud-es-monitoring-page-table.png
-:alt: {{es}} Expanded health issue with details and troubleshooting
-:::
-
 For more information about specific errors, refer to [](/troubleshoot/elasticsearch.md). You can also [contact us](/troubleshoot/index.md#contact-us) if you need more help.
 
 ### Health warnings [ec-es-health-warnings]
