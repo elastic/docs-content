@@ -21,7 +21,7 @@ Before setting up a time series data stream, make sure you're familiar with gene
 
 _Metrics_ consist of data point&ndash;timestamp pairs, identified by [dimension fields](#time-series-dimension), that can be used in aggregation queries. Both a regular data stream and a time series data stream can store metrics data. 
 
-Choose a time series data stream if you typically add metrics data to {{es}} in near real-time and in `@timestamp` order. For other timestamped data, such as logs or traces, use a [logs data stream](logs-data-stream.md) or a [regular data stream](/manage-data/data-store/data-streams.md).
+Choose a time series data stream if you typically add metrics data to {{es}} in near real-time and in `@timestamp` order. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` You can also load historical metrics into an existing TSDS when [past-index creation](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-backfill-past-timestamps) is enabled. For details, refer to [Load historical metrics into a TSDS](/manage-data/data-store/data-streams/load-historical-tsds.md). For other timestamped data, such as logs or traces, use a [logs data stream](logs-data-stream.md) or a [regular data stream](/manage-data/data-store/data-streams.md).
 
 To make sure a TSDS is right for your use case, review the list of [differences from a regular data stream](#differences-from-regular-data-stream) on this page.
 
@@ -95,7 +95,7 @@ A time series data stream works like a regular data stream, with some key differ
   * One or more [dimension fields](#time-series-dimension), set with `time_series_dimension: true`  
   * One or more [metric fields](#time-series-metric)
   * An auto-generated document `_id` (custom `_id` values are not supported)
-* **Backing indices:** A TSDS uses [time-bound indices](/manage-data/data-store/data-streams/time-bound-tsds.md) to store data from the same time period in the same backing index.
+* **Backing indices:** A TSDS uses [time-bound indices](/manage-data/data-store/data-streams/time-bound-tsds.md) to store data from the same time period in the same backing index. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When past-index creation is enabled, {{es}} can create missing past backing indices on demand during indexing.
 * **Dimension-based routing:** The routing logic uses dimension fields to map all data points of a time series to the same shard, improving storage efficiency and query performance. Duplicate data points are rejected.
 * **Sorting:** A TSDS uses internal [index sorting](elasticsearch://reference/elasticsearch/index-settings/sorting.md) to order shard segments by `_tsid` and `@timestamp`, for better compression. Time series data streams do not use `index.sort.*` settings.
 * **Source field:** A TSDS uses [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source), and as a result is subject to some [restrictions](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-restrictions) and [modifications](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-modifications) applied to the `_source` field.
@@ -118,4 +118,5 @@ You can use the {{esql}} [`TS` command](elasticsearch://reference/query-language
 * [Ingest data using the OpenTelemetry Protocol (OTLP)](/manage-data/data-store/data-streams/tsds-ingest-otlp.md)
 * [Ingest data using Prometheus remote write](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md)
 * Learn about [metric temporality](/manage-data/data-store/data-streams/metric-temporality.md) (delta versus cumulative)
+* {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Load historical metrics into a TSDS](/manage-data/data-store/data-streams/load-historical-tsds.md)
 * Learn about [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) to reduce storage footprint

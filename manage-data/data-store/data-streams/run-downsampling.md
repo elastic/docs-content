@@ -27,7 +27,7 @@ In most cases, you can choose the data stream lifecycle option. If you're using 
 
 :::{tab-item} Data stream lifecycle
 
-## Downsample with a data stream lifecycle
+## Downsample with a data stream lifecycle [downsample-with-a-data-stream-lifecycle]
 ```{applies_to}
 stack: ga
 serverless: ga
@@ -57,7 +57,11 @@ PUT _data_stream/my-data-stream/_lifecycle
 }
 ```
 
-The downsampling action runs after the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) has passed. 
+The downsampling action runs after the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) has passed.
+
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Data stream lifecycle limits how many backing indices per data stream it submits for downsampling at once. When the number of indices actively being downsampled reaches the threshold configured by [`data_streams.lifecycle.downsampling.max_indices_in_progress`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#data-streams-lifecycle-downsampling-max-indices-in-progress) (default `10`), data stream lifecycle pauses queuing further downsampling operations for that data stream until the count drops. Deferred indices are recorded in the error store with a warning and retried in a subsequent lifecycle run. Other data streams are not affected.
+
+This limit helps prevent cluster overload when many indices become eligible for downsampling at the same time, such as after [loading historical metrics](/manage-data/data-store/data-streams/load-historical-tsds.md) and enabling lifecycle on the data stream.
 :::
 
 :::{tab-item} Index lifecycle
