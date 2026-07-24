@@ -643,6 +643,7 @@ toc:
               - file: users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md
   - file: manage-spaces.md
     children:
+      - file: choose-and-switch-spaces.md
       - file: manage-spaces-fleet.md
   - file: api-keys.md
     children:
