@@ -136,3 +136,4 @@ Agents can create and manage the following panel types:
 - [Dashboards](/explore-analyze/dashboards.md)
 - [Chat with {{agent-builder}} agents](chat.md)
 - [Create dashboards programmatically](/explore-analyze/dashboards/create-dashboards-programmatically.md)
+- [Agent Builder traces overview dashboard](agent-traces-dashboard.md): a prebuilt, managed dashboard for monitoring agent activity from trace data

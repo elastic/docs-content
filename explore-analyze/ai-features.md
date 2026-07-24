@@ -125,9 +125,9 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 [Streams](/solutions/observability/streams/streams.md) is an AI-assisted centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data. Streams leverages AI in the following features:
 
 % * [Significant Events](/solutions/observability/streams/management/significant-events.md): Use AI to suggest queries based on your data that find important events in your stream.
-* [Grok processing](/solutions/observability/streams/management/extract/grok.md#streams-grok-patterns): Use AI to generate grok patterns that extract meaningful fields from your data.
-* [Partitioning](/solutions/observability/streams/management/partitioning.md): Use AI to suggest logical groupings and child streams based on your data when using wired streams.
-* [Advanced settings](/solutions/observability/streams/management/advanced.md): Use AI to generate a [stream description](/solutions/observability/streams/management/advanced.md#streams-advanced-description) and a [feature identification](/solutions/observability/streams/management/advanced.md#streams-advanced-features) that other AI features use when generating suggestions.
+* [Grok processing](/solutions/observability/streams/processors/grok.md#streams-grok-patterns): Use AI to generate grok patterns that extract meaningful fields from your data.
+* [Partitioning](/solutions/observability/streams/organize-your-data.md): Use AI to suggest logical groupings and child streams based on your data when using wired streams.
+* [Advanced settings](/solutions/observability/streams/advanced.md): Use AI to generate a [stream description](/solutions/observability/streams/advanced.md#streams-advanced-description) and a [feature identification](/solutions/observability/streams/advanced.md#streams-advanced-features) that other AI features use when generating suggestions.
 
 ### Automatic Import [automatic-import-observability]
 
@@ -144,7 +144,7 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 
 ### Attack Discovery
 
-[Attack Discovery](/solutions/security/ai/attack-discovery.md) uses AI to triage your alerts and identify potential threats. Each "discovery" represents a potential attack and describes relationships among alerts to identify related users and hosts, map alerts to the MITRE ATT&CK matrix, and help identify threat actors.
+[Attack Discovery](/solutions/security/ai/attack-discovery/index.md) uses AI to triage your alerts and identify potential threats. Each "discovery" represents a potential attack and describes relationships among alerts to identify related users and hosts, map alerts to the MITRE ATT&CK matrix, and help identify threat actors.
 
 
 ### Automatic Migration

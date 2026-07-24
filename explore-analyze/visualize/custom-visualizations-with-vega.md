@@ -66,7 +66,7 @@ Before starting, add the eCommerce sample data that you’ll use in your spec, t
 
 Open **Vega-Lite** and change the time range.
 
-1. On the dashboard, click **Select type**, then select **Custom visualization**.
+1. In the application menu, select **Vega** or **Custom visualization**, depending on your {{kib}} version.
 
     A pre-populated line chart displays the total number of documents.
 
@@ -1392,6 +1392,8 @@ The following example creates a metric that counts documents over time, using th
   }
 }
 ```
+
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` **Vega** and **Vega-Lite** panels that use an {{esql}} data source are subject to the {icon}`bolt` [**Fast mode**](../query-filter/languages/esql-kibana.md#approximation-fast-mode) dashboard option. When this option is active on a dashboard, these panels return faster, estimated results for `STATS` aggregations.
 
 
 #### Access Elastic Map Service files [vega-esmfiles]

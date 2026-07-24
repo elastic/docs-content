@@ -15,7 +15,6 @@ on:
 
 permissions:
   actions: read
-  copilot-requests: write
   checks: read
   contents: read
   discussions: write
@@ -191,7 +190,6 @@ jobs:
     permissions:
       actions: read
       contents: read
-      copilot-requests: write
       discussions: write
       issues: write
       pull-requests: write
@@ -201,6 +199,7 @@ jobs:
       additional-instructions: |
         This repository stores documentation as markdown across the repository, not only under `docs/`.
         Prefer concise, high-signal review comments with exact replacement text when possible.
+    secrets: inherit
 
   refresh-menu-after-docs-review:
     name: Refresh AI PR menu after docs review
