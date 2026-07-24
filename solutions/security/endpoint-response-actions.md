@@ -55,6 +55,7 @@ Some response actions may take a few seconds to complete. Once you enter a comma
 Activity in the response console is persistent, so you can navigate away from the page and any pending actions you’ve submitted will continue to run. To confirm that an action completed, return to the response console to view the console output or check the [response actions history](/solutions/security/endpoint-response-actions.md#actions-log).
 
 ::::{important}
+:applies_to: stack: ga 9.0-9.1
 Once you submit a response action, you can’t cancel it, even if the action is pending for an offline host.
 ::::
 
@@ -66,19 +67,56 @@ The following response action commands are available in the response console.
 
 ### `cancel` [cancel]
 ```yaml {applies_to}
-stack: ga 9.2
+stack: ga 9.2+
 serverless: ga
 ```
 
 ::::{note}
-This response action is supported only for [Microsoft Defender for Endpoint–enrolled hosts](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions).
+This response action is supported for:
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) and [Microsoft Defender for Endpoint](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions) hosts.
+* {applies_to}`stack: ga 9.2-9.4` Microsoft Defender for Endpoint–enrolled hosts only.
+ 
 ::::
 
-Cancel an ongoing action on the host. This allows you to force-cancel actions that are stuck in a pending state, unblocking further use of the response console.
+Cancel a pending or in-progress action on the host. This allows you to force-cancel actions that were misfired or are taking too long, unblocking further use of the response console.
 
-You must include the following parameter to identify the action to cancel:
+#### {{elastic-defend}} 
+```yaml {applies_to}
+stack: ga 9.5+
+serverless: ga
+```
 
-* `--action`: The response action to cancel. Select from a list of pending actions.
+For {{elastic-defend}}, you must include the following parameter to identify the action to cancel:
+
+* `--action`: The response action to cancel. Select from a list of pending or in-progress actions.
+
+You can also use this optional parameter:
+
+* `--force`: Forcefully cancel an in-progress action.
+
+::::{note}
+For {{elastic-defend}}, only the following response actions can be canceled:
+* `execute`
+* `get-file`
+* `memory-dump`
+* `runscript`
+* `scan`
+* `upload`
+::::
+
+Required role or privilege: `cancel` doesn't have its own required role or privilege. To use it, you must have the same role or privilege that's required for the action you're canceling. For example, canceling a `runscript` action requires the **Execute Operations** privilege.
+
+Example: `cancel --action="action-123-456-789" --force --comment="Force-canceling a script that is still running"`
+
+#### Microsoft Defender for Endpoint
+```yaml {applies_to}
+stack: ga 9.2+
+serverless: ga
+```
+
+For Microsoft Defender for Endpoint, you must include the following parameter to identify the action to cancel:
+
+* `--action`: The response action to cancel. Select from a list of pending or in-progress actions.
 
 Required role or privilege: `cancel` doesn't have its own required role or privilege. To use it, you must have the same role or privilege that's required for the action you're canceling. For example, canceling a `runscript` action requires the **Execute Operations** privilege.
 
