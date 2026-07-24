@@ -158,7 +158,7 @@ spec:
   - secretName: s3-credentials
 ```
 
-When the annotation is set and the cluster is running {{es}} 9.5+, ECK delivers all `spec.secureSettings` entries through {{es}} file-based settings instead of the keystore init container. Updating a source secret no longer triggers a rolling restart. Instead, {{es}} applies the updated credentials in place on each node.
+When the annotation is set and the cluster is running {{es}} 9.5+, ECK delivers all `spec.secureSettings` entries through {{es}} file-based settings instead of the keystore init container. Updating a source secret no longer triggers a rolling restart. Instead, {{es}} applies the updated credentials in place on each node. Note that enabling or disabling the annotation itself causes a one-time rolling restart, because it changes the Pod template by adding or removing the keystore init container.
 
 When the annotation is absent or the cluster is running {{es}} earlier than 9.5, the existing keystore init container path is used unchanged.
 
