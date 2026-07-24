@@ -21,7 +21,7 @@ This page describes the pipeline behavior for engineers and adopters who need to
 
 The pipeline has four sequential phases, each building on the outputs of the previous:
 
-- [Phase 1: KI extraction](#sig-events-hiw-ki): LLM and programmatic analysis of stream logs
+- [Phase 1: Knowledge Indicators (KIs) extraction](#sig-events-hiw-ki): LLM and programmatic analysis of stream logs
 - [Phase 2: Rule generation](#sig-events-hiw-rules): LLM generates detection rules using KIs as input
 - [Phase 3: Rule execution](#sig-events-hiw-execution): Alerting framework runs promoted rules continuously
 - [Phase 4: Discovery](#sig-events-hiw-discovery): Detection, discovery, and triage workflows convert alert signals into confirmed Significant Events
@@ -29,6 +29,7 @@ The pipeline has four sequential phases, each building on the outputs of the pre
 ```mermaid
 flowchart TD
     LLM(["Generative AI<br/>connector"])
+    LOGS[("stream logs")]
 
     subgraph KB["Kibana"]
         KI["KI extraction<br/>Task Manager + Workflow"]
@@ -39,32 +40,18 @@ flowchart TD
         JA["Judge agent<br/>Workflows + Agent Builder"]
     end
 
-    subgraph ES["Elasticsearch"]
-        LOGS[("stream logs")]
-        FEAT[(".significant_events-knowledge_indicators")]
-        ALRT[(".rule-events")]
-        DETS[(".significant_events-detections")]
-        DISC[(".significant_events-discoveries")]
-        EVTS[(".significant_events-events")]
-    end
-
     LOGS -->|samples| KI
     KI <-.->|LLM| LLM
-    KI --> FEAT
-    FEAT --> RG
+    KI --> RG
+    KI -.->|context| DA
     RG <-.->|LLM| LLM
     RG -->|promote rules| RE
     RE -->|queries| LOGS
-    RE --> ALRT
-    ALRT --> DW
-    DW --> DETS
-    DETS --> DA
-    FEAT -.->|context| DA
+    RE --> DW
+    DW --> DA
     DA <-.->|LLM| LLM
-    DA --> DISC
-    DISC --> JA
+    DA --> JA
     JA <-.->|LLM| LLM
-    JA --> EVTS
 
     classDef llm fill:#5c3fa3,color:#fff,stroke:none
     classDef det fill:#1d6b47,color:#fff,stroke:none
@@ -74,7 +61,7 @@ flowchart TD
 
 ## Phase 1: KI extraction [sig-events-hiw-ki]
 
-Knowledge Indicators (KIs) are stable, evidence-backed facts about the services and infrastructure present in a stream's log data. The LLM that generates detection operates entirely on KIs. This keeps rule generation deterministic and decouples detection logic from data format specifics.
+KIs are stable, evidence-backed facts about the services and infrastructure present in a stream's log data. The LLM that generates detection operates entirely on KIs. This keeps rule generation deterministic and decouples detection logic from data format specifics.
 
 ### How KIs are extracted
 
@@ -82,15 +69,15 @@ The pipeline runs up to five iterations, sampling up to 20 documents per round f
 
 ### KI types
 
-KIs cover five types: Entity, Infrastructure, Technology, Dependency, and Schema. Entity KIs have the highest extraction priority — services and databases are identified before individual pods or hosts. See [KI types](./knowledge-indicators.md#sig-events-ki-types) for the full data model.
+KIs cover five types: Entity, Infrastructure, Technology, Dependency, and Schema. The model is instructed to prioritize services and databases over individual instances like pods or hosts. See [KI types](./knowledge-indicators.md#sig-events-ki-types) for the full data model.
 
 ### KI lifecycle
 
-KIs are written to `.significant_events-knowledge_indicators`, deduplicated on `(type, subtype, properties)`, and expire after 30 days if not re-observed. See [KI lifecycles](./knowledge-indicators.md#sig-events-ki-lifecycle) for lifecycle and continuous extraction details.
+KIs are written to `.significant_events-knowledge_indicators` and deduplicated on `type`, `subtype`, and `properties`. KIs expire after 30 days if they aren't re-observed. See [KI lifecycles](./knowledge-indicators.md#sig-events-ki-lifecycle) for lifecycle and continuous extraction details.
 
 ## Phase 2: Rule generation [sig-events-hiw-rules]
 
-Once KIs exist for a stream, the LLM generates detection rules using them as input. Rules are expressed as native {{esql}} expressions targeting the stream's index pattern:
+Once a stream has KIs, the LLM generates detection rules using the KIs as input. The generated rule is an {{esql}} query with conditions derived from the stream's KIs:
 
 ```
 FROM {stream},{stream}.* METADATA _id | WHERE <esql_expression>
@@ -100,36 +87,36 @@ The LLM operates in a reasoning loop: it calls `get_stream_features` to retrieve
 
 ## Phase 3: Rule execution [sig-events-hiw-execution]
 
-Each promoted rule runs as a {{kib}} alerting rule on a per-rule schedule. On each execution cycle, the rule:
+Each promoted rule runs as a {{kib}} alerting rule, on its own schedule. On each execution cycle, the rule:
 
 1. Builds an {{esql}} query from the stored rule parameters.
 2. Queries the stream with a lookback window of 2× the rule interval to ensure no events fall through the gap between runs.
 3. Excludes document IDs seen in previous executions.
 4. Writes matching rows to `.rule-events`.
 
-**Execution cap**: Each rule execution writes at most 1,000 alert documents. Matching events beyond this limit are dropped.
+**Write limits**: Each time a rule executes, it can write up to 1,000 documents. Once this limit is met, documents aren't written to `.rule-events` until the next time the rule executes.
 
 ## Phase 4: Discovery [sig-events-hiw-discovery]
 
 Discovery converts raw alert signals into confirmed Significant Events. It runs as three sequenced workflows (detection, discovery, and triage) coordinated by an Orchestrator workflow.
 
-- [Detection Workflow](#sig-events-hiw-detection) — `change_point` analysis per alerting rule, written to the detections index
-- [Discovery Workflow](#sig-events-hiw-discovery-agent) — discovery agent generates hypotheses, written to the discoveries index
-- [Triage Workflow](#sig-events-hiw-triage) — judge agent independently verifies and promotes, written to the events index
+- [Detection Workflow](#sig-events-hiw-detection): Change point aggregation per alerting rule, written to the detections index
+- [Discovery Workflow](#sig-events-hiw-discovery-agent): Discovery agent generates hypotheses, written to the discoveries index
+- [Triage Workflow](#sig-events-hiw-triage): Judge agent independently verifies and promotes, written to the events index
 
 ### Detection [sig-events-hiw-detection]
 
-The Detection Workflow reads `.rule-events` and runs `change_point` analysis grouped per alerting rule. When a rule's alert pattern enters a genuinely anomalous state, the workflow appends a detection document to the detections index. Current state per rule is the latest document.
+A Detection workflow reads `.rule-events`, buckets each rule's alerts by time, and runs the change point aggregation function against those counts to detect statistically significant shifts. When a shift is found, a document is appended to the detections index. The most recent detection document for a rule reflects its current state, for example, whether it's still producing an unusual rate of alerts or has returned to normal.
 
-Change point detection is per-rule: a stream can have many independent rules, and one rule recovering does not collapse the signal from others still anomalous on the same stream.
+Change point detection is per-rule. A stream can have many independent rules, and one rule recovering does not collapse the signal from others still anomalous on the same stream.
 
 ### Discovery agent [sig-events-hiw-discovery-agent]
 
-The discovery workflow reads unhandled detection documents and calls the discovery agent. The discovery agent is a hypothesis agent. It reads detection signals and produces structured discovery documents describing what is happening. Its scope is observation only, describing the anomaly, not prescribing remediation.
+A Discovery workflow reads unhandled detection documents and calls the Discovery agent. The Discovery agent is a hypothesis agent. It reads detection signals and produces structured discovery documents describing what is happening. Its scope is observation only, describing the anomaly, not prescribing remediation.
 
-### Triage and the judge agent [sig-events-hiw-triage]
+### Triage and the Judge agent [sig-events-hiw-triage]
 
-The triage workflow reads unassessed discovery documents and calls the judge agent. The judge agent independently verifies the discovery agent's hypothesis and promotes, acknowledges, demotes, or resolves it. The judge agent runs in a separate invocation with no shared state. It receives the discovery agent's output as input but is explicitly instructed to treat it as a hypothesis to challenge, not a conclusion to ratify. Status transitions are written as new documents to the events index.
+The Triage workflow reads unassessed discovery documents and calls the Judge agent. The Judge agent independently verifies the Discovery agent's hypothesis and sets the event status to open (page on-call), closed (confirmed settled), or dismissed (low severity and low confidence). The Judge agent runs in a separate invocation with no shared state. It receives the Discovery agent's output as input but is explicitly instructed to treat it as a hypothesis to challenge, not a conclusion to ratify. Status transitions are written as new documents to the events index.
 
 The two-agent design is intended to prevent a single agent that both investigates and judges from confirming its own hypothesis.
 

@@ -232,7 +232,7 @@ stack: preview 9.5
 
 Significant events tools search, create, and manage significant events and [Knowledge Indicators](/solutions/observability/streams/significant-events/knowledge-indicators.md) for [Streams](/solutions/observability/streams/streams.md).
 
-**Prerequisites:** Significant events require an [Enterprise license](https://www.elastic.co/subscriptions) and must be enabled for the deployment through the `observability:streamsEnableSignificantEvents` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings).
+**Prerequisites:** Significant events require an [Enterprise license](https://www.elastic.co/subscriptions).
 
 `platform.sig_events.ki_search` {applies_to}`stack: preview 9.5`
 :   Searches Knowledge Indicators (both feature-based and query-based) derived from streams data to enrich context for a target stream, service, or group of streams.

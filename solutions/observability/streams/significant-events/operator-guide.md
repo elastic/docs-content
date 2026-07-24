@@ -19,23 +19,24 @@ products:
 
 Use this guide to understand how Significant Events affects your cluster and how to manage it.
 
-- [What runs where](#sig-events-op-components): which components run on {{kib}}, {{es}}, and Workflows
-- [System impact](#sig-events-op-impact): query load, pipeline lag, memory, and storage growth
+- [What runs where](#sig-events-op-components): Which components run on {{kib}}, {{es}}, and Workflows
+- [System impact](#sig-events-op-impact): Query load, pipeline lag, memory, and storage growth
 - [Cost drivers](#sig-events-op-costs): LLM call sites and token usage by phase
-- [Disable and re-enable](#sig-events-op-disable): how to stop the pipeline or pause KI refresh
-- [Recovery procedures](#sig-events-op-recovery): symptoms and actions for common degraded states
+- [Disable and re-enable](#sig-events-op-disable): How to stop the pipeline or pause Knowledge Indicator (KI) refresh
+- [Recovery procedures](#sig-events-op-recovery): Symptoms and actions for common degraded states
 
 ## What runs where [sig-events-op-components]
 
 The following table shows each pipeline component, where it runs, what triggers it, and what it reads and writes:
 
-| Component | Runs on | Trigger | Reads | Writes |
+| Component | Uses | Trigger | Reads | Writes |
 |---|---|---|---|---|
-| Knowledge indicator (KI) feature identification | {{kib}} (Task Manager + workflow) | On-demand / continuous extraction | Stream logs | `.significant_events-knowledge_indicators` |
-| KI query generation | {{kib}} (workflow) | On-demand | Features + existing queries | Query KI assets |
-| Alerting rule execution | {{kib}} alerting → {{es}} | Per-rule schedule | Stream data via {{esql}} | `.rule-events` |
-| Detection workflow | {{kib}} Workflows | Cron 10m | `.rule-events` | `.significant_events-detections` |
-| Discovery workflow | {{kib}} Workflows + Agent Builder | Cron 10m | `.significant_events-detections` + KIs | `.significant_events-discoveries` |
+| KI feature identification | Task Manager + Workflow | On-demand / continuous extraction | Stream logs | `.significant_events-knowledge_indicators` |
+| KI query generation | Workflow | On-demand | Features + existing queries | Query KI assets |
+| Alerting rule execution | {{kib}} alerting → {{es}} | Per-rule schedule | Stream data using {{esql}} | `.rule-events` |
+| Detection Workflow | Workflows | Cron 10m | `.rule-events` | `.significant_events-detections` |
+| Discovery Workflow | Workflows + Agent Builder | Cron 10m | `.significant_events-detections` + KIs | `.significant_events-discoveries` |
+| Triage workflow | {{kib}} Workflows + Agent Builder | Cron 10m | `.significant_events-discoveries` | `.significant_events-events` |
 
 ## System impact [sig-events-op-impact]
 
@@ -43,7 +44,7 @@ The following sections describe the query load, pipeline lag, memory, and storag
 
 **Alerting rule query load**
 
-One {{esql}} alerting rule runs per promoted query KI. Each rule fires on its own schedule. A `change_point` aggregation runs across all active rules' alert results on each detection cycle. Alert volume in `.rule-events` grows proportionally to the number of promoted rules and the rate at which they fire.
+One {{esql}} alerting rule runs for each promoted query KI. Each rule executes on its own schedule, creating an alert when its query matches. On each detection cycle, change point aggregation runs separately for each active rule, against that rule's per-time-bucket alert counts. Document volume in `.rule-events` grows with the number of promoted rules and how often they execute.
 
 **Pipeline lag**
 
@@ -70,11 +71,11 @@ Significant Events writes to the following data streams:
 
 | Data stream | Written by | Growth driver |
 |---|---|---|
-| `.significant_events-detections` | Detection workflow | Append-only; one document per observed state transition per rule |
-| `.significant_events-discoveries` | Discovery agent + Judge agent | Append-only; one document per discovery state change |
+| `.significant_events-detections` | Detection Workflow | Append-only; one document per observed state transition per rule |
+| `.significant_events-discoveries` | Discovery agent | Append-only; one document per discovery state change |
 | `.significant_events-events` | Judge | Append-only; one document per Significant Event state change |
 
-The `.significant_events-*` data streams use Data Stream Lifecycle (DSL) with a default 90-day retention. You can override retention per stream using the DSL API. See [{{esql}} traceability](./how-it-works.md#sig-events-hiw-traceability) for the full index layout and traceability guidance.
+The `.significant_events-detections` and `.significant_events-discoveries` data streams use DSL with a default 90-day retention (the events data stream currently has no default retention configured). You can override retention per stream using the DSL API. See [{{esql}} traceability](./how-it-works.md#sig-events-hiw-traceability) for the full index layout and traceability guidance.
 
 ## Cost drivers [sig-events-op-costs]
 
@@ -104,7 +105,7 @@ To stop continuous extraction without disabling Significant Events:
 1. Select **Significant Events** → **Settings**.
 2. Under **Continuous KI extraction**, turn off **Enable continuous KI extraction**.
 
-Disabling continuous extraction cancels all in-flight feature identification tasks and force-deletes the continuous extraction workflow. Already-extracted KIs are not deleted. Manually-triggered extractions continue to work.
+Turning off continuous extraction cancels all in-flight feature identification tasks and turns off the continuous extraction workflow. Already-extracted KIs are not deleted. Manually-triggered extractions continue to work.
 
 
 ## Recovery procedures [sig-events-op-recovery]

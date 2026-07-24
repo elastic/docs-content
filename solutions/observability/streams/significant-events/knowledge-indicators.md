@@ -19,17 +19,12 @@ products:
 
 Knowledge Indicators (KIs) are structured facts that Elastic extracts from your raw log data automatically without requiring schemas, service catalogs, or manual configuration. When you run extraction against a log stream, Elastic analyzes the raw data and returns facts about your environment: which services are running, the underlying infrastructure they rely on, how they depend on each other, and the log schemas they use.
 
-Rather than a static configuration, this knowledge accumulates over time, automatically expires when a service disappears, and feeds directly into downstream capabilities like the Significant Events detection pipeline, topology maps, AI agent investigations, and dashboards.
-
-KIs feed the Significant Events pipeline. See [How Significant Events works](../significant-events/how-it-works.md) for how KIs connect to detection, discovery, and triage.
+Rather than a static configuration, this knowledge accumulates over time, automatically expires when a service disappears, and feeds directly into downstream capabilities like the [Significant Events detection pipeline](./how-it-works.md), topology maps, AI agent investigations, and dashboards.
 
 To access Knowledge Indicators, open **Significant Events** from the Streams main page and select the **Knowledge Indicators** tab.
 
 :::{admonition} Requirements
-To use this feature, you need:
-
-- A [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md), which can incur additional costs.
-- The `observability:streamsSigEventsScheduledDiscoveryEnabled` {{kib}} setting enabled.
+To use this feature, you need a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
 :::
 
 ## Generate KIs [sig-events-ki-generate]
@@ -54,7 +49,7 @@ The pipeline runs up to five iterations. Each iteration fetches a batch of up to
 
 | Bucket | Share | Strategy |
 |---|---|---|
-| Entity-filtered | 40% | Random sample that excludes documents matching already-discovered feature filters, steering toward undiscovered patterns |
+| Entity-filtered | 40% | Random sample that excludes documents matching already-discovered feature filters (features excluded by users), steering toward undiscovered patterns |
 | Diverse | 40% | One representative document per log category, based on message structure |
 | Random | 20% | Plain random sample to avoid systematic blind spots |
 
@@ -97,15 +92,15 @@ Sampled documents are sent to an LLM that identifies the following feature types
 | Dependency | Relationships between components |
 | Schema | Log format conventions: {{product.ecs}}, OTel, custom |
 
-Every feature must include stable identifying properties and cite direct evidence from the sampled logs. The LLM assigns a confidence score from 0–100 for each KI. The pipeline also tracks features excluded by users (false positives) and carries them forward to prevent re-identification in future runs.
+Every feature must include stable identifying properties and cite direct evidence from the sampled logs. The LLM assigns a confidence score from 0–100 (where 0 is the lowest confidence and 100 is the highest) for each KI. The pipeline also tracks features excluded by users (false positives) and carries them forward to prevent re-identification in future runs.
 
 ### Deterministic generators [sig-events-ki-generators]
 
 In parallel with LLM analysis, a set of deterministic code-based generators independently analyze the data to produce statistical summaries, log samples, pattern clusters, and error-specific features. Because these are computed rather than inferred, they always receive a confidence score of 100.
 
-### Merging results [sig-events-ki-merge]
+### Results handling [sig-events-ki-merge]
 
-LLM results and computed features are merged and deduplicated. Known KIs reuse their existing UUIDs, new discoveries get fresh ones, and the pipeline drops user-excluded features. Surviving KIs are saved with an active status and an expiration date set seven days out.
+LLM results and computed features are merged and deduplicated. Known KIs reuse their existing UUIDs, new discoveries get fresh ones, and the pipeline drops user-excluded features. Surviving KIs are saved with an active status and an expiration date set 30 days out.
 
 Extraction runs entirely as a background task and never blocks ingestion.
 
@@ -186,18 +181,18 @@ FROM logs-mystream,logs-mystream.*
 | STATS error_count = COUNT(*) WHERE level == "ERROR" BY service.name, @timestamp
 ```
 
-### Downstream path: from query KIs to alerting rules [sig-events-ki-downstream]
+### Downstream path: From query KIs to alerting rules [sig-events-ki-downstream]
 
-When you promote a query KI, it becomes a {{kib}} alerting rule. Each promoted rule runs its {{esql}} query on a per-rule schedule and writes results to `.rule-events`. The number of promoted query KIs is the main driver of alerting query load on your cluster.
+When you promote a query KI, it becomes an alerting rule that runs its {{esql}} query on a schedule and writes a match count to `.rule-events` for each time bucket. Only MATCH queries can be promoted — STATS queries cannot be converted to alerting rules yet. The number of promoted query KIs, and how often each one executes, is the main driver of alerting query load on your cluster.
 
-The Significant Events pipeline picks up from there: a detection workflow runs the `change_point` aggregation over alert firing patterns and writes significant transitions to `.significant_events-detections`. The discovery workflow then processes those detections with an AI agent.
+The Significant Events pipeline picks up from there. A Detection workflow runs change point aggregation against those per-rule counts and writes a document to `.significant_events-detections` when statistically significant shifts are found. A Discovery workflow then uses an LLM to process those documents.
 
 ## Continuous extraction [sig-events-ki-continuous]
 
-When continuous extraction is enabled, a {{kib}} Workflow runs every 35 minutes and processes up to five eligible streams per run. A stream is eligible if:
+When continuous extraction is enabled, a workflow runs every 35 minutes and processes up to five eligible streams per run. A stream is eligible if:
 
-- It is a wired or classic stream
-- It does not match any configured exclusion glob pattern
+- It is a wired, classic, or query stream that matches the configured Significant Events index patterns
+- No feature identification is currently running for it
 - No feature identification task is currently running for it
 - Enough time has elapsed since its last extraction (controlled by the **Extraction interval** setting, default 12 hours)
 
@@ -205,7 +200,7 @@ Streams that have never been processed are always prioritized. Among remaining c
 
 The continuous extraction workflow has a 34-minute timeout (one minute shorter than the 35-minute schedule, to prevent overlapping runs). If multiple runs would overlap, excess triggers are silently dropped.
 
-Toggling continuous extraction off cancels any in-flight extraction tasks and force-deletes the workflow. Re-enabling it creates a fresh workflow from the latest definition. The workflow state is not preserved between enable/disable cycles.
+Toggling continuous extraction off cancels any in-flight extraction tasks and disables the workflow. Re-enabling turns it back on; already-extracted KIs are preserved throughout.
 
 ### Continuous extraction settings
 
@@ -213,9 +208,8 @@ Toggling continuous extraction off cancels any in-flight extraction tasks and fo
 |---|---|---|
 | `observability:streamsContinuousKiExtractionEnabled` | `false` | Enables or disables continuous extraction |
 | `observability:streamsContinuousKiExtractionIntervalHours` | `12` | Minimum hours between extraction runs for a single stream |
-| `observability:streamsContinuousKiExtractionExcludedStreamPatterns` | `""` | Comma-separated glob patterns for streams to skip |
 
-These settings are only modifiable through the Significant Events Settings page, not through {{kib}} Advanced Settings.
+These settings are only modifiable through the Significant Events Settings page.
 
 ## KI lifecycle and maintenance [sig-events-ki-lifecycle]
 
