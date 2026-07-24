@@ -61,7 +61,7 @@ In {{stack}} 9.5+ and {{serverless-short}}, query the shared `.cases`, `.cases-a
 ::::
 
 ::::{applies-item} stack: preview 9.2-9.4
-In 9.2-9.4, each index covers one solution in one space, so use the [index name](case-analytics-indices.md) for the data you want, such as `.internal.cases.observability-default`. Reference fields without the `case.*` prefix, such as `status` instead of `case.status`. These examples use the `default` space. Here are some sample queries to get you started:
+In {{stack}} 9.2.x-9.4.x, each index covers one solution in one space, so use the [index name](case-analytics-indices.md) for the data you want, such as `.internal.cases.observability-default`. Reference fields without the `case.*` prefix, such as `status` instead of `case.status`. These examples use the `default` space. Here are some sample queries to get you started:
 
 * Count cases by status. Change the index name to target a different solution or space:
 

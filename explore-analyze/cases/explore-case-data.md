@@ -30,7 +30,7 @@ You can save visualizations to dashboards and use the same indices as the basis 
 ::::
 
 ::::{applies-item} stack: preview 9.2-9.4
-In 9.2-9.4, create a [{{data-source}}](../find-and-organize/data-views.md) that points to one or more case analytics indices or their aliases. To point to all case analytics indices in your space, use the `.internal.cases*` index pattern.
+In {{stack}} 9.2.x-9.4.x, create a [{{data-source}}](../find-and-organize/data-views.md) that points to one or more case analytics indices or their aliases. To point to all case analytics indices in your space, use the `.internal.cases*` index pattern.
 
 :::{note}
 Case data is stored in hidden indices. To display hidden indices, select **Show advanced settings**, then turn on **Allow hidden and system indices**.

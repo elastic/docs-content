@@ -42,7 +42,7 @@ For the fields available in each index, refer to [Case analytics field reference
 ::::
 
 ::::{applies-item} stack: preview 9.2-9.4
-In 9.2-9.4, {{es}} automatically creates the analytics indices for you, so you don't need to create them or manage their lifecycle policies. It creates a separate set of indices for each solution in every space that has cases.
+In {{stack}} 9.2.x-9.4.x, {{es}} automatically creates the analytics indices for you, so you don't need to create them or manage their lifecycle policies. It creates a separate set of indices for each solution in every space that has cases.
 
 {{es}} names each index `.internal.<type>.<solution>-<space-name>`, with a matching alias that drops the `.internal` prefix. For example, Security case attachments in the `default` space use the index `.internal.cases-attachments.securitysolution-default` and the alias `.cases-attachments.securitysolution-default`.
 
@@ -62,7 +62,7 @@ Combine a type and a solution to build the name for the data you want:
 | Security | `securitysolution` |
 
 :::{important}
-In 9.2-9.4, fields are unprefixed. For example, use `status` and `time_to_resolve`, not `case.status`. This differs from 9.5 and later, where fields use the `case.*` prefix.
+In {{stack}} 9.2.x-9.4.x, fields are unprefixed. For example, use `status` and `time_to_resolve`, not `case.status`. This differs from 9.5 and later, where fields use the `case.*` prefix.
 :::
 
 For schema details, refer to [Case analytics indices schema](kibana://reference/case-analytics-indices-schema.md).
@@ -84,7 +84,7 @@ Because updates take a moment to apply, a new or edited case can take a short ti
 ::::
 
 ::::{applies-item} stack: preview 9.2-9.4
-In 9.2-9.4, a background task refreshes the analytics indices every five minutes with a snapshot of the most current case data. During each refresh, {{es}} overwrites the historical case data.
+In {{stack}} 9.2.x-9.4.x, a background task refreshes the analytics indices every five minutes with a snapshot of the most current case data. During each refresh, {{es}} overwrites the historical case data.
 
 :::{note}
 - After you create a case, indexing the new case data can take up to 10 minutes.
