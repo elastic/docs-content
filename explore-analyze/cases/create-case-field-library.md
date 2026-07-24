@@ -25,8 +25,6 @@ Use the **field library** to define custom case fields once and reuse them acros
 
 When you create a field, leave **Global field** cleared for a reusable field, or select it for a global field. For when to use each scope, refer to [About the field library](manage-case-templates.md#case-templates-field-library).
 
-You can define up to 200 fields in the library for each Cases app. On {{stack}}, that's **{{stack-manage-app}}**, **{{observability}}**, and **Security**. On {{serverless-short}}, that's **{{observability}}** and **Security**.
-
 ## Field types [case-templates-field-types]
 
 When you create a field, set its type to control what input appears on the case form and what kind of value it accepts. For example, set the type to Text for a single line of text, Number for a numeric value, or Dropdown for a list of choices.
@@ -43,6 +41,8 @@ In YAML, the type is the `control` key (for example, `INPUT_TEXT` for Text or `S
 | Checkboxes | A multi-select from up to 30 options. |
 | Date/time picker | A date, optionally with a time and time zone. |
 | User selection | One or more {{kib}} users. |
+| Toggle | An on/off toggle. |
+| Markdown (display only) | A display-only Markdown block. |
 
 ## Create a field [case-templates-create-field]
 
@@ -61,10 +61,10 @@ validation:
 
 To create a field:
 
-1. Find **Cases** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), select **Templates** > **Field library**, then click **Create field definition**.
+1. Find **Cases** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), select **Templates** → **Field library**, then click **Create field definition**.
 
    :::{note}
-   Cases are [scoped by solution](create-cases.md#cases-limitations). On {{stack}}, search for `Security/Cases` or `Observability/Cases`, or go to **{{stack-manage-app}}** > **Cases**. On {{serverless-short}}, search for `Cases` in {{elastic-sec}} or {{observability}}.
+   Cases are [scoped by solution](create-cases.md#cases-limitations). On {{stack}}, search for `Security/Cases` or `Observability/Cases`, or go to **{{stack-manage-app}}** → **Cases**. On {{serverless-short}}, search for `Cases` in {{elastic-sec}} or {{observability}}.
    :::
 
 2. (Optional) Add a description.
@@ -74,7 +74,7 @@ To create a field:
 6. Check the live preview. Changes you make in the preview sync back to the YAML.
 7. Click **Save**. Global fields are added to all new and existing cases immediately. Reusable fields become available to [add to a template](create-case-templates.md#case-templates-field-ref). Existing cases don't include a reusable field until you create a case from a template that adds it, or [apply that template](manage-cases.md#apply-case-template) to the case.
 
-The editor validates your YAML and suggests values as you type. While you're editing, your changes are saved as a draft so you don't lose your work. Select **Reset** to discard the draft and return to the last saved version.
+The editor validates your YAML and suggests values as you type. While you're editing, your changes are saved as a draft so you don't lose your work.
 
 ## Set validation and display rules [case-templates-validation]
 

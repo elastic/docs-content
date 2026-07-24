@@ -34,7 +34,7 @@ While you're editing, your changes are saved as a draft so you don't lose your w
 
 Field library entries are managed on the **Field library** page, separately from templates.
 
-1. Find **Cases** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Templates** > **Field library**.
+1. Find **Cases** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Templates** → **Field library**.
 2. Open the field you want to change, edit its YAML, then save. Or delete the field if it's no longer needed.
 
 Changing a library field updates the definition for templates that reference it. Deleting a reusable field that's still referenced by a template can break that template until you remove or replace the reference.

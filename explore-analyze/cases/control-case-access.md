@@ -158,7 +158,7 @@ To create, edit, delete, import, and export [case templates](create-case-templat
 
 * `All` for the **Cases** feature under the appropriate solution (**Security** or **{{observability}}**).
 * To work with alerts in cases:
-  - **Security**: `Read` or `All` for the **Security > Alerts** feature. For what each level allows, refer to [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md#manage-alerts).
+  - **Security**: `Read` or `All` for the **Security → Alerts** feature. For what each level allows, refer to [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md#manage-alerts).
   - **{{observability}}**: `Read` for **{{observability}}** 
 
 :::

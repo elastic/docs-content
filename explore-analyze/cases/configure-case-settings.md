@@ -35,7 +35,7 @@ Connectors let you send cases to external incident management systems. To create
 
 ### Create a connector [create-connector]
 
-You can create connectors in **{{stack-manage-app}} > {{connectors-ui}}** (see [Connectors](/deploy-manage/manage-connectors.md)) or from the case **Settings** page:
+You can create connectors in **{{stack-manage-app}} → {{connectors-ui}}** (see [Connectors](/deploy-manage/manage-connectors.md)) or from the case **Settings** page:
 
 1. From the **Incident management system** list, select **Add new connector**.
 2. Select the system to send cases to:

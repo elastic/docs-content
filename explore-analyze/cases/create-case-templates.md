@@ -26,18 +26,18 @@ Create a case template to pre-fill case defaults whenever your team opens a simi
 
 The template editor has a YAML pane and a preview pane with **Fields** and **Configuration** tabs:
 
-* **Fields**: Define case defaults and custom fields in YAML, and preview how they render on a case. Changes in the preview sync back to the YAML.
+* **Fields**: Define case defaults and custom fields in YAML, and preview how they render on a case. Changes in the preview sync back to the YAML. Use the **Actions menu** to quickly insert scaffolding for any field type, pull in a reusable field from your library, or add validation and conditional logic.
 * **Configuration**: Set the template's identity, case settings, and an optional external connector. These values aren't part of the YAML definition.
 
 To create a template:
 
-1. Find **Cases** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Templates** > **Create**.
+1. Find **Cases** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Templates** → **Create**.
 
 
-   Cases are [scoped by solution](create-cases.md#cases-limitations). On {{stack}}, search for `Security/Cases` or `Observability/Cases`, or go to **{{stack-manage-app}}** > **Cases**. On {{serverless-short}}, search for `Cases` in {{elastic-sec}} or {{observability}}.
+   Cases are [scoped by solution](create-cases.md#cases-limitations). On {{stack}}, search for `Security/Cases` or `Observability/Cases`, or go to **{{stack-manage-app}}** → **Cases**. On {{serverless-short}}, search for `Cases` in {{elastic-sec}} or {{observability}}.
 
 
-2. On the **Fields** tab, define case defaults and the fields to pre-fill. [Add reusable fields from your field library](#case-templates-field-ref). Refer to the [YAML schema reference](yaml-template-schema-reference.md) for supported keys.
+2. On the **Fields** tab, define case defaults and the fields to pre-fill. Use the **Actions menu** to insert scaffolding for a new field, [reference a reusable field](#case-templates-field-ref) from your field library, or add validation and conditional logic. The preview pane updates in real time so you can see how fields will look and behave before saving. Refer to the [YAML schema reference](yaml-template-schema-reference.md) for the full set of supported keys.
 
 3. On the **Configuration** tab, enter a template name. Optionally add a description, tags, case settings (**Sync alerts** and **Extract observables**), and an external connector. 
 
@@ -51,7 +51,9 @@ As you edit, the editor validates your YAML and suggests values. While you're ed
 
 ### Add reusable fields from the library [case-templates-field-ref]
 
-Global fields appear on every case automatically, so you don't add them to a template. To include a reusable field, add it in the YAML on the **Fields** tab. Use `$ref` with the field's `name` (not its label). Use the `name` in YAML when you author templates. Use the field's `label` when you [search cases](search-share-cases.md#search-case-field-values).
+Global fields appear on every case automatically, so you don't add them to a template. To include a reusable field, use the **Actions menu** and select **Field library**. Search for the field by name, select it, and the correct `$ref` YAML is inserted for you.
+
+If you prefer to write the reference directly, use `$ref` with the field's `name` (not its label) on the **Fields** tab. Use the field's `label` when you [search cases](search-share-cases.md#search-case-field-values).
 
 For example, to add the `summary` field from the library:
 

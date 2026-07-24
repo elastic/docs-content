@@ -24,7 +24,7 @@ To create a new case:
 1. Find **Cases** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Create case**.
 
    :::{note}
-   Cases are [scoped by solution](#cases-limitations). On {{stack}}, search for `Security/Cases` or `Observability/Cases`, or go to **{{stack-manage-app}}** > **Cases**. On {{serverless-short}}, search for `Cases` in {{elastic-sec}} or {{observability}}.
+   Cases are [scoped by solution](#cases-limitations). On {{stack}}, search for `Security/Cases` or `Observability/Cases`, or go to **{{stack-manage-app}}** → **Cases**. On {{serverless-short}}, search for `Cases` in {{elastic-sec}} or {{observability}}.
    :::
 
 2. (Optional) Select a template to pre-fill values.

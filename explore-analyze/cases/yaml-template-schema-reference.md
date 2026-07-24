@@ -14,7 +14,13 @@ description: Look up valid YAML keys, field types, and validation and display op
 
 # YAML schema reference for case templates and the field library [yaml-template-schema-reference]
 
-Use this page to look up valid keys and values when writing YAML for case templates and field library entries. For concepts and step-by-step instructions, refer to [Case templates](manage-case-templates.md), [Create fields in the case field library](create-case-field-library.md), and [Create case templates](create-case-templates.md).
+Use this page to look up valid keys and values when writing YAML for case templates and field library entries.
+
+:::{tip}
+Before writing YAML by hand, try the **Actions menu** in the template editor: it scaffolds field definitions, library references, validation rules, and conditional logic for you. Use this reference when you need to verify a specific key, customize beyond what the scaffolding provides, or work with templates outside the editor.
+:::
+
+For concepts and step-by-step instructions, refer to [Case templates](manage-case-templates.md), [Create fields in the case field library](create-case-field-library.md), and [Create case templates](create-case-templates.md).
 
 ## Template fields
 
@@ -27,7 +33,7 @@ These fields go at the top level of a template's YAML definition and pre-fill ma
 | `tags` | array of strings | Array of strings | Optional case tags to pre-fill. |
 | `severity` | string | `low`, `medium`, `high`, or `critical` | Optional case severity to pre-fill. |
 | `category` | string | Any string | Optional case category to pre-fill. |
-| `fields` | array | Array of field references, or inline field definitions | Optional. The custom fields the template pre-fills. Prefer `$ref` for reusable library fields. You can also define a field inline with the same keys as a library entry when it isn't shared. Field names must be unique within the template. See [Field definition keys](#case-templates-field-keys) and [Reference a field from the library](#case-templates-field-ref). |
+| `fields` | array | Array of field references, or inline field definitions | Optional. The custom fields the template pre-fills. Use `$ref` for reusable library fields. You can also define a field inline with the same keys as a library entry when it isn't shared. Field names must be unique within the template. See [Field definition keys](#case-templates-field-keys) and [Reference a field from the library](#case-templates-field-ref). |
 
 :::{note}
 The template's own name, description, and tags (used in the **Templates** list), plus its default connector and case settings (**Sync alerts** and **Extract observables**), aren't part of the YAML. You set them on the **Configuration** tab. **Extract observables** is available in {{elastic-sec}} only.
@@ -41,7 +47,7 @@ A field library entry, and each entry in a template's `fields` array, uses these
 |---|---|---|---|
 | `name` | string | Any string | The field's name. Required. |
 | `label` | string | Any string | Optional display label shown on the case form. |
-| `control` | string | `INPUT_TEXT`, `INPUT_NUMBER`, `SELECT_BASIC`, `TEXTAREA`, `DATE_PICKER`, `CHECKBOX_GROUP`, `RADIO_GROUP`, or `USER_PICKER` | The field type. Required. See [Field types and metadata](#case-templates-field-types-ref). |
+| `control` | string | `INPUT_TEXT`, `INPUT_NUMBER`, `SELECT_BASIC`, `TEXTAREA`, `DATE_PICKER`, `CHECKBOX_GROUP`, `RADIO_GROUP`, `USER_PICKER`, `TOGGLE`, or `MARKDOWN` | The field type. Required. See [Field types and metadata](#case-templates-field-types-ref). |
 | `type` | string | Depends on `control` | The underlying data type. `keyword` for most controls. See [Field types and metadata](#case-templates-field-types-ref) for exceptions. Required. |
 | `metadata` | object | Control-specific keys | Optional. Holds the default value and any other options the control requires, such as a list of choices. See [Field types and metadata](#case-templates-field-types-ref). |
 | `validation` | object | See [Validation keys](#case-templates-validation-keys) | Optional. Determines whether the field is required and what values it accepts. |
@@ -61,6 +67,24 @@ The `metadata` keys a field supports depend on its `control`.
 | `CHECKBOX_GROUP` | `keyword` | `options` (array of strings, required, max 30, unique), `default` (array of strings, must match `options`) | A multi-select from up to 30 options. |
 | `RADIO_GROUP` | `keyword` | `options` (array of strings, required, 2–20 items, unique), `default` (string, must match `options`) | A single choice from 2 to 20 options. |
 | `USER_PICKER` | `keyword` | `multiple` (boolean), `default` (array of objects with `uid` and `name`) | One or more {{kib}} users. Set `multiple: false` to restrict to a single selection. |
+| `TOGGLE` | `boolean` | `default` (boolean) | An on/off toggle. |
+| `MARKDOWN` | `keyword` | `content` (string) | A display-only Markdown block. Use `content` for the Markdown to render. |
+
+For example, `MARKDOWN` and `TOGGLE` fields look like this:
+
+```yaml
+- name: instructions
+  type: keyword
+  control: MARKDOWN
+  metadata:
+    content: "### Instructions"
+- name: field_name_3
+  label: Label
+  control: TOGGLE
+  type: boolean
+  metadata:
+    default: false
+```
 
 ## Validation keys [case-templates-validation-keys]
 

@@ -31,7 +31,8 @@ Note the following rules for search:
 * **Text**: Text searches (such as case titles and descriptions) are case-insensitive.
 * **Multi-word terms**: If a term contains spaces, wrap it in quotation marks so it's treated as a single term. For example, `"Needs review"`.
 * **Multiple criteria**: To search on more than one criterion at once, separate each term with a space.
-* **Syntax**: No special syntax is required for general keyword and text searches. {applies_to}`stack: ga 9.5+` To target a field library field, use `label:value` syntax (described later).
+* **Syntax**: No special syntax is required for general keyword and text searches.
+   {applies_to}`stack: ga 9.5+` To target a field library field, use `label:value` syntax.
 
 ### Search alerts, comments, and observables [search-case-related-data]
 
@@ -41,8 +42,8 @@ stack: ga 9.3+
 
 You can also search for alert and event IDs, observable values, and case comments. For example, in {{elastic-sec}} you can search for a specific IP address that's been specified as an observable, a colleague's comment, or the ID of an alert that's attached to the case.
 
-* {applies_to}`stack: ga 9.3-9.4` You can also search custom fields (text type only).
 * {applies_to}`stack: ga 9.5+` For field library fields, see [Search template and field library values](#search-case-field-values).
+* {applies_to}`stack: ga 9.3-9.4` You can also search custom fields (text type only).
 
 ### Search template and field library values [search-case-field-values]
 

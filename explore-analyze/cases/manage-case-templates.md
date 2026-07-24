@@ -20,19 +20,22 @@ This page explains what templates contain and how they use the field library.
 
 ## What's in a template [case-templates-anatomy]
 
-A template has two kinds of settings:
+A template is made up of the following components:
 
-* **Template identity** (name, description, and tags): Identifies the template in the templates list. These values don't become case field defaults.
-* **Case defaults** (title, description, severity, category, tags, and field library fields): Pre-fill the case when someone uses the template.
+* **Template identity**: Identifies the template in the templates list with a name, description, and tags. These values don't become case field defaults.
+* **Case defaults**: Pre-fill the case with a title, description, severity, category, and tags when someone uses the template.
+* **Custom fields**: Typed inputs, such as dropdowns, text boxes, and date pickers, that appear on cases created from the template. Define them inline (specific to that template) or reference fields from the field library.
+* **Case settings**: (Optional) Default values for **Sync alerts** and **Extract observables**, applied to every case created from the template.
+* **Connector**: (Optional) An external system ({{jira}}, {{sn}}, and others) to pre-select on the case.
 
-A template can also include default case settings (**Sync alerts** and **Extract observables**) and an optional external connector. Those values apply to every case created from the template. You set identity, case settings, and the connector on the template's **Configuration** tab. Case defaults are defined in YAML on the **Fields** tab.
+You set case settings and the connector on the template's **Configuration** tab. Case defaults and custom fields are defined in YAML on the **Fields** tab.
 
 ## About the field library [case-templates-field-library]
 
-Templates draw their custom fields from a **field library**, where you define each field once and reuse it across templates:
+The field library is an optional catalog where you can define a field once and reuse it across multiple templates. It's not required. Templates can define all their custom fields inline. Fields in the library come in two scopes:
 
 * **Global fields** appear on every case, whether or not a template was used.
-* **Reusable fields** appear only when a template that includes them is used to create a case, or [applied to an existing case](manage-cases.md#apply-case-template).
+* **Reusable fields** appear only when a template that references them is used to create a case, or [applied to an existing case](manage-cases.md#apply-case-template).
 
 For how to create fields and choose a scope in the UI, refer to [Create fields in the case field library](create-case-field-library.md).
 
