@@ -196,17 +196,7 @@ After creating an {{product.apm}} latency or {{product.apm}} availability SLO, y
 
 * **Open in {{product.apm}} or Discover**: In the **Historical SLI** section, click **Open** to access **In {{product.apm}}** or **Traces in Discover** links and view the SLI events in context.
 
-  :::{image} /solutions/images/observability-apm-slo-open-in-apm.png
-  :alt: SLO detail page showing the Historical SLI section with the Open dropdown expanded, revealing In APM and Traces in Discover links
-  :screenshot:
-  :::
-
 * **View events in Discover**: In the **Good vs bad events** section, click **View events** to open the trace data in Discover. Use the **Event type** control to filter by **Good**, **Bad**, or **All** events.
-
-  :::{image} /solutions/images/observability-apm-slo-view-events-discover.png
-  :alt: Discover view opened from an APM availability SLO, showing the Event type filter with All, Good, and Bad options
-  :screenshot:
-  :::
 
 * **Service fields shown as source**: The `service.name`, `service.environment`, `transaction.type`, and `transaction.name` fields are displayed in the **Source** row at the top of the SLO detail page, making it easy to identify exactly which service and transaction the SLO is tracking.
 
