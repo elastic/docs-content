@@ -48,7 +48,6 @@ To stabilize {{kib}} until we resolve the issue, we recommend temporarily disabl
    * **{{ech}}**: [Contact Elastic Support](https://www.elastic.co/support) to apply this as a system-level override. You cannot add it to `kibana.yml` directly. {{kib}} restarts as part of applying the change.
    * **Self-managed**: Add the setting to `kibana.yml`, save your change, and restart {{kib}}.
 
-   After the override is in place, {{kib}} stabilizes and the crash loop stops.
 
 2. Stop the entity store engines and disable the Entity store feature in all {{kib}} spaces where it is enabled:
 
