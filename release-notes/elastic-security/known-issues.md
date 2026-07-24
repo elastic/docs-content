@@ -31,7 +31,7 @@ On {{stack}} 9.4.4, {{elastic-sec}} deployments with a large number of indices c
 
 
 **Workaround**<br>
-Follow these steps to stabilize {{kib}}:
+To stabilize {{kib}} until we resolve the issue, we recommend temporarily disabling the Entity store feature:
 
 1. Block the entity store tasks from running by applying this setting:
 
