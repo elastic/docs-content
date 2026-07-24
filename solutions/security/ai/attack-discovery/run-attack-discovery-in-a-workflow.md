@@ -46,9 +46,11 @@ Along with those options, choose whether Attack Discovery runs synchronously or 
 * **Synchronously**: The workflow waits briefly for the run to finish so later steps can use the discoveries right away. Use this when the next step depends on the results, such as branching on discovery count or updating attack status.
 * **Asynchronously**: The step returns immediately with a run ID, and discoveries keep saving in the background. Use this when you only need to start the analysis and don't need the discoveries in later steps of this workflow.
 
-## Audit runs and approve detection gap proposals [run-ad-workflow-when-it-runs]
+For an example of this step, open **Attack discovery settings** on the [Attacks view](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md#attacks-page-generation). Under **Generation**, select **View example** to open **Security - Attack discovery - Run example** (`security.attack-discovery.run`).
 
-When the workflow runs, Attack Discovery uses those settings and the same analysis as manual and scheduled runs. The run opens a new {{agent-builder}} conversation. From **Workflow execution details**, select **Open conversation** to audit the run or to [review and approve detection rule proposals](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md#run-ad-conversation-gap-closure) in chat. You cannot approve those proposals inside the workflow itself.
+## View runs and approve detection gap proposals [run-ad-workflow-when-it-runs]
+
+When the workflow runs, Attack Discovery uses those settings and the same analysis as manual and scheduled runs. The run opens a new {{agent-builder}} conversation. From **Workflow execution details**, select **Open conversation** to view the run or to [review and approve detection rule proposals](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md#run-ad-conversation-gap-closure) in chat. You cannot approve those proposals inside the workflow itself.
 
 With a synchronous run, later steps can branch on the results, including Attack triage steps for status, assignees, or tags.
 
@@ -63,17 +65,8 @@ You can plug in your own workflows for alert retrieval or validation:
 * **Custom retrieval**: Build a workflow that returns the alerts Attack Discovery should analyze. Select it under **Alert retrieval workflows** in the [Attack discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md#attacks-page-alert-retrieval-method) flyout, or pass it as an input to the `security.attack-discovery.run` step.
 * **Custom validation**: Build a workflow that runs after generation to check, enrich, or filter discoveries before they are saved. From **Validation** in the settings flyout, select **View example** to open **Security - Attack discovery - Custom validation example**.
 
-For a custom retrieval workflow, return the alerts as the output of the last step that produces results. From **Alert retrieval workflows** in the settings flyout, open the in-product example and select **Create a new workflow** to start from that pattern.
+For a custom retrieval workflow, return the alerts as the output of the last step that produces results. In the settings flyout, select the info icon next to **Alert retrieval workflows** for a copy-pasteable example. You can also select **Create a new workflow** from that example to start from the pattern.
 
 :::{important}
 If you create a custom validation workflow, it must save the discoveries you want to keep. Otherwise they never appear as attacks.
 :::
-
-## Open a workflow example from Attack Discovery settings [run-ad-workflow-example]
-
-From the **Attack discovery settings** flyout on the [Attacks view](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md#attacks-page-generation):
-
-* Under **Generation**, select **View example** to open **Security - Attack discovery - Run example** (`security.attack-discovery.run`).
-* Under **Validation**, select **View example** to open **Security - Attack discovery - Custom validation example**.
-
-Adapt the example for your environment.

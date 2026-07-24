@@ -25,6 +25,7 @@ To run Attack Discovery from {{agent-builder}}, you need:
   * **Security > Attack discovery**: `All`
   * **Security > Rules and Exceptions**: `Read`
   * **Security > Alerts**: `Read`
+  * **Analytics > Workflows**: `read` and `execute` (see [Grant Workflows privileges for Attack Discovery](/solutions/security/ai/attack-discovery/grant-access.md#attack-discovery-workflows-privileges))
 
 :::{note}
 Conversations and their results are private to the person who started them.
@@ -46,7 +47,7 @@ More example prompts are in [Attack Discovery generation](/solutions/security/ai
 
 The `attack-discovery-generator` skill first gathers and cross-checks evidence. It can pull from other skills such as threat hunting, entity analytics, alert analysis, threat intelligence, and the knowledge base. Then it runs the same analysis steps used by every other Attack Discovery trigger.
 
-Runs started from chat stay in the current conversation. Manual, scheduled, and workflow-triggered runs open a separate {{agent-builder}} conversation you can audit later.
+Runs started from chat stay in the current conversation. Manual, scheduled, and workflow-triggered runs open a separate {{agent-builder}} conversation you can view later.
 
 Related skills on the Attacks view do not replace `attack-discovery-generator`:
 

@@ -164,11 +164,11 @@ When the setting is on, you can:
 * Run Attack Discovery [from a workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md) or [from {{agent-builder}}](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md)
 * Troubleshoot failed runs with AI from the [**Generations**](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md#attacks-view-generations) control center
 
-Manual, scheduled, and workflow-triggered runs open a new {{agent-builder}} conversation you can audit later. Runs started from {{agent-builder}} chat stay in the current conversation.
+Manual, scheduled, and workflow-triggered runs open a new {{agent-builder}} conversation you can view later. Runs started from {{agent-builder}} chat stay in the current conversation.
 
 ### How Attack Discovery Workflows affects existing schedules
 
-After you turn the setting on, reopen and save each existing schedule, or create a new one. Until you do, schedules keep their previous configuration.
+After you turn the setting on, existing schedules keep their previous configuration until you edit and save them.
 
 If you turn the setting off:
 

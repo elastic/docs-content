@@ -37,7 +37,7 @@ serverless:
 
 The **Generations** control center in the **Attacks** view header lists recent Attack Discovery runs. Open it to check run status. When a run finishes, refresh the **Attacks** view to see new results.
 
-Select a run to open **Workflow execution details**. That view shows alert retrieval, generation, and validation, with timing and counts for each step. Use **Inspect** on a step to review its data. For manual, scheduled, and workflow-triggered runs, select **Open conversation** to audit the run in {{agent-builder}}.
+Select a run to open **Workflow execution details**. That view shows alert retrieval, generation, and validation, with timing and counts for each step. Use **Inspect** on a step to review its data. For manual, scheduled, and workflow-triggered runs, select **Open conversation** to view the run in {{agent-builder}}.
 
 If a run fails, is canceled or dismissed, or an analysis step fails, [troubleshoot it with AI](/solutions/security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md).
 

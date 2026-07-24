@@ -84,8 +84,8 @@ When you turn on [**Attack Discovery Workflows**](/solutions/security/get-starte
 | Attack Discovery action | Workflows privilege needed |
 |---|---|
 | Monitor runs in **Generations** and open workflow execution details | `read` for **Analytics > Workflows** |
-| Generate discoveries (manual or scheduled) | `execute` for **Analytics > Workflows** |
-| Create, edit, or enable schedules | `execute` for **Analytics > Workflows**, plus [**Schedules** → **Allow changes**](#ad-schedules-privilege) |
+| Generate discoveries (manual or scheduled) | `read` and `execute` for **Analytics > Workflows** |
+| Create, edit, or enable schedules | `read` and `execute` for **Analytics > Workflows**, plus [**Schedules** → **Allow changes**](#ad-schedules-privilege) |
 | Disable or delete schedules | [**Schedules** → **Allow changes**](#ad-schedules-privilege) only |
 
 Granting `All` for **Analytics > Workflows** includes `read` and `execute`. For finer-grained access, use Workflows [sub-feature privileges](/explore-analyze/workflows/get-started/setup.md#workflows-role-access).
