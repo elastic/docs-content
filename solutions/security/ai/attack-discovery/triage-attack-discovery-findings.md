@@ -32,14 +32,14 @@ For richer triage context, enable [entity analytics](/solutions/security/advance
 
 Start by retrieving all open findings and prioritizing them by risk score. This gives you a ranked list of potential attacks to work through, starting with the most critical.
 
-:::::{tab-set}
+::::::{tab-set}
 :group: triage-method
-::::{tab-item} Attack Discovery UI
+:::::{tab-item} Attack Discovery UI
 :sync: attack-discovery-ui
 
-:::::{applies-switch}
+::::{applies-switch}
 
-::::{applies-item} { "stack": "ga 9.5+", "serverless": {"security": "ga"} }
+:::{applies-item} { "stack": "ga 9.5+", "serverless": {"security": "ga"} }
 
 1. Go to **Detections > Views > Attacks** (or **Attack Discovery** if you prefer that page).
 2. Use the **Status** filter to show only **Open** findings.
@@ -55,9 +55,9 @@ For each finding, note the following key signals:
 
 For the full Attacks triage UI, refer to [Manage discoveries from the Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
 
-::::
+:::
 
-::::{applies-item} stack: ga 9.1-9.4
+:::{applies-item} stack: ga 9.1-9.4
 
 1. Go to **Attack Discovery** from the {{elastic-sec}} navigation menu. {applies_to}`stack: preview =9.4` You can also triage from **Detections > Views > Attacks**.
 2. Use the **Status** filter to show only **Open** findings.
@@ -70,12 +70,12 @@ For each finding, note the following key signals:
 - **MITRE ATT&CK tactics**: Which tactics the discovery maps to. More tactics suggest a broader attack.
 - **Entities**: Which users and hosts are involved.
 
+:::
+
 ::::
 
 :::::
-
-::::
-::::{tab-item} Discover with ES|QL queries
+:::::{tab-item} Discover with ES|QL queries
 :sync: esql
 
 You can run ES|QL queries in multiple ways, including from [**Discover**](/explore-analyze/query-filter/languages/esql-kibana.md). The following query retrieves open findings from both scheduled and manual-run discovery indices. Replace `default` with your {{kib}} space ID if you're using a non-default space:
@@ -97,8 +97,8 @@ FROM .alerts-security.attack.discovery.alerts-default, .adhoc.alerts-security.at
 
 If one index doesn't exist yet (for example, no scheduled discoveries have been generated), ES|QL returns an error. In that case, query each index separately and combine the results.
 
-::::
-::::{tab-item} Attack Discovery API
+:::::
+:::::{tab-item} Attack Discovery API
 :sync: api
 
 Use the Attack Discovery Find API to retrieve open findings. Results are sorted by `@timestamp` (most recent first) by default:
@@ -115,8 +115,8 @@ GET /s/my-space/api/attack_discovery/_find?status=open&start=now-24h&end=now&wit
 
 Review the returned findings and prioritize by `risk_score` in the response.
 
-::::
 :::::
+::::::
 
 Before moving to Step 2, scan the results for duplicate findings. Overlapping schedule runs or repeated manual generations can produce similar discoveries covering the same alerts. Compare the `alert_ids` across findings—if two findings share most of their alerts, triage them together as one.
 
