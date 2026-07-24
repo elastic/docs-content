@@ -96,14 +96,15 @@ Refer to [](/explore-analyze/workflows/triggers/alert-triggers.md) for more info
 ### Event-driven triggers
 
 ```{applies_to}
-stack: preview 9.4+
-serverless: preview
+stack: ga 9.5+, preview =9.4
+serverless: ga
 ```
 
 Event-driven triggers run workflows when a platform event occurs:
 
-* **`workflows.failed`** fires when another workflow's execution fails {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`.
+* **`workflows.failed`** fires when another workflow's execution fails {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga`.
 * **Cases triggers** fire when cases change {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`. The family includes `cases.caseCreated`, `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`.
+* **Entity store triggers** fire when an entity's asset criticality or risk score changes in the entity store {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`. The family includes `entityStore.entityAssetCriticalityUpdated` and `entityStore.entityRiskScoreChanged`.
 * **Alert episode lifecycle triggers** fire on specific alert episode events in the {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 * **{{alerting-v2-system-cap}} rule lifecycle triggers** fire when rules in the {{alerting-v2-system}} are created, updated, deleted, or have their status changed. The family includes `alerting.ruleCreated`, `alerting.ruleUpdated`, `alerting.ruleDeleted`, `alerting.ruleEnabled`, and `alerting.ruleDisabled`. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 
@@ -133,6 +134,7 @@ Each trigger type provides different data to the workflow context through the `e
 * **Event-driven**:
   * `workflows.failed` provides metadata about the failed workflow, its execution, and the step that failed.
   * Cases triggers provide `event.caseId`, `event.owner`, and event-specific fields (status changes carry `previousStatus` and `status`; attachment events carry IDs and type; comment events carry IDs).
+  * Entity store triggers provide `event.entityId`, `event.entityType`, and event-specific fields (asset criticality changes carry `criticalityLevel`; risk score changes carry `score`, `previousScore`, `delta`, and `direction`). {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
   * Alert episode lifecycle triggers provide `event.episodeId`, `event.ruleId`, and `event.spaceId`. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
   * {{alerting-v2-system-cap}} rule lifecycle triggers provide `event.rule.ruleId` and `event.rule.spaceId`. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 
