@@ -50,7 +50,7 @@ Follow these steps to stabilize {{kib}}:
 
    After the override is in place, {{kib}} stabilizes and the crash loop stops.
 
-2. Stop the entity store engines.
+2. Stop the entity store engines and disable the Entity store feature in all {{kib}} where it is enabled:
 
    Send the following request in every {{kib}} space where the entity store is enabled:
 
