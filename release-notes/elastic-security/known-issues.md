@@ -50,7 +50,7 @@ To stabilize {{kib}} until we resolve the issue, we recommend temporarily disabl
 
    After the override is in place, {{kib}} stabilizes and the crash loop stops.
 
-2. Stop the entity store engines and disable the Entity store feature in all {{kib}} where it is enabled:
+2. Stop the entity store engines and disable the Entity store feature in all {{kib}} spaces where it is enabled:
 
    - For the default space:
 
