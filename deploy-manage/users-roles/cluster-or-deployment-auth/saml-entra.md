@@ -89,7 +89,7 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
         * For `idp.metadata.path`, we’ve shown the format to construct the URL. This value should be identical to the `App Federation Metadata URL` setting that you made a note of in the previous step.
 
         :::{admonition} For organizations with many group memberships
-        If you configure [`attributes.groups`](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-es-user-properties) to read the list of Azure AD groups from the SAML assertion, be aware that users who belong to many groups may exceed Azure AD’s size limit for SAML tokens. In that case, the `groups` attribute will be omitted.
+        If you configure [`attributes.groups`](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md#saml-es-user-properties) to read the list of Azure AD groups from the SAML assertion, be aware that users who belong to many groups may exceed Azure AD’s size limit for SAML tokens. In that case, the `groups` attribute will be omitted.
 
         To avoid this, enable the **Groups assigned to the application** option in Azure Entra (**App registrations > Token configuration > Edit groups claim**). This setting limits the `groups` attribute in the SAML assertion to only those groups assigned to the application.
 
