@@ -31,7 +31,8 @@ These limitations apply to remote {{es}} output:
 
 * All {{fleet-server}} hosts that are configured for the remote output must be able to reach the remote {{es}} cluster with a service token to generate API keys for the {{agents}} that use the remote output for data ingestion.
 * Using a remote {{es}} output with a target cluster that has [network security](/deploy-manage/security/network-security.md) enabled is not currently supported.
-* Using {{elastic-defend}} when a remote {{es}} output is configured for an {{agent}} is not currently supported.
+* {applies_to}`stack: ga 9.0-9.4` Using {{elastic-defend}} when a remote {{es}} output is configured for an {{agent}} is not supported.
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` Using {{elastic-defend}} with a remote {{es}} output is only available on {{stack}} deployments. For more information, refer to [Use {{elastic-defend}} with a remote {{es}} output](/solutions/security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md).
 * When the remote {{es}} cluster is a {{serverless-short}} project, [automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md) is not available.
 
 ## Configure the remote output [remote-output-config]
@@ -214,7 +215,10 @@ If you have multiple {{fleet-server}} instances, each {{fleet-server}} tests con
 
 ## Set up {{ccs}} to query remote data [set-up-ccs]
 
-In some cases, {{ccs}} (CCS) is required to query data on the remote cluster from the management cluster, such as Osquery queries on {{agents}} that use a remote {{es}} output.
+In some cases, {{ccs}} (CCS) is required to query data on the remote cluster from the management cluster. For example:
+
+* Osquery queries on {{agents}} that use a remote {{es}} output.
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` {{elastic-defend}} endpoint data for {{agents}} that use a remote {{es}} output, so that endpoint management features in {{elastic-sec}} can read data stored on the remote cluster. For more information, refer to [Use {{elastic-defend}} with a remote {{es}} output](/solutions/security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md).
 
 :::{note}
 You don't need to set up {{ccs-init}} for {{agents}} to send data to a remote {{es}} output or for [automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md). Add {{ccs}} only when the management cluster must search data stored on the remote cluster.
