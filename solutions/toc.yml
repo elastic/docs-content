@@ -463,37 +463,46 @@ toc:
               - file: observability/logs/logs-index-template-defaults.md
       - file: observability/streams/streams.md
         children:
-        - file: observability/streams/management/retention.md
-        - file: observability/streams/management/extract.md
+        - file: observability/streams/get-data-in.md
+        - file: observability/streams/organize-your-data.md
+        - file: observability/streams/parse-and-process.md
+        - file: observability/streams/configure-retention.md
+        - file: observability/streams/manage-data-quality.md
+        - file: observability/streams/map-fields.md
+        - file: observability/streams/advanced.md
+        - file: observability/streams/knowledge-indicators.md
+        - file: observability/streams/wired-streams-field-naming.md
+        - file: observability/streams/streamlang.md
           children:
-            - file: observability/streams/management/extract/append.md
-            - file: observability/streams/management/extract/concat.md
-            - file: observability/streams/management/extract/convert.md
-            - file: observability/streams/management/extract/date.md
-            - file: observability/streams/management/extract/dissect.md
-            - file: observability/streams/management/extract/drop.md
-            - file: observability/streams/management/extract/enrich.md
-            - file: observability/streams/management/extract/grok.md
-            - file: observability/streams/management/extract/join.md
-            - file: observability/streams/management/extract/lowercase.md
-            - file: observability/streams/management/extract/math.md
-            - file: observability/streams/management/extract/network-direction.md
-            - file: observability/streams/management/extract/redact.md
-            - file: observability/streams/management/extract/remove.md
-            - file: observability/streams/management/extract/rename.md
-            - file: observability/streams/management/extract/replace.md
-            - file: observability/streams/management/extract/set.md
-            - file: observability/streams/management/extract/trim.md
-            - file: observability/streams/management/extract/uppercase.md
-            - file: observability/streams/management/extract/manual-pipeline-configuration.md
-        - file: observability/streams/management/partitioning.md
-        - file: observability/streams/management/schema.md
-        - file: observability/streams/management/data-quality.md
-        - hidden: observability/streams/management/significant-events.md
-        - file: observability/streams/management/advanced.md
-        - file: observability/streams/management/knowledge-indicators.md
-        - file: observability/streams/wired-streams.md
-        - file: observability/streams/management/streamlang.md
+          - file: observability/streams/processors/append.md
+          - file: observability/streams/processors/concat.md
+          - file: observability/streams/processors/convert.md
+          - file: observability/streams/processors/date.md
+          - file: observability/streams/processors/dissect.md
+          - file: observability/streams/processors/drop.md
+          - file: observability/streams/processors/enrich.md
+          - file: observability/streams/processors/grok.md
+          - file: observability/streams/processors/join.md
+          - file: observability/streams/processors/json-extract.md
+          - file: observability/streams/processors/lowercase.md
+          - file: observability/streams/processors/math.md
+          - file: observability/streams/processors/network-direction.md
+          - file: observability/streams/processors/redact.md
+          - file: observability/streams/processors/registered-domain.md
+          - file: observability/streams/processors/remove.md
+          - file: observability/streams/processors/rename.md
+          - file: observability/streams/processors/replace.md
+          - file: observability/streams/processors/set.md
+          - file: observability/streams/processors/sort.md
+          - file: observability/streams/processors/split.md
+          - file: observability/streams/processors/trim.md
+          - file: observability/streams/processors/uppercase.md
+          - file: observability/streams/processors/uri-parts.md
+          - file: observability/streams/processors/user-agent.md
+          - file: observability/streams/processors/manual-pipeline-configuration.md
+      - hidden: observability/nightshift/nightshift.md
+        children:
+          - hidden: observability/nightshift/get-started.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md

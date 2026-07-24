@@ -240,6 +240,10 @@ toc:
                    - title: "OAuth authentication"
                      crosslink: docs-content://deploy-manage/app-connections/oauth-clients.md
           - file: ai-features/agent-builder/monitor-usage.md
+            children:
+              - file: ai-features/agent-builder/collect-traces.md
+              - file: ai-features/agent-builder/agent-traces-dashboard.md
+              - file: ai-features/agent-builder/create-alerts.md
           - file: ai-features/agent-builder/permissions.md
           - file: ai-features/agent-builder/troubleshooting.md
             children:
