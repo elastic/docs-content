@@ -92,7 +92,7 @@ serverless:
   security: preview
 ```
 
-Instead of inserting a link, you can attach a Timeline as a structured, filterable table in its own section on the case's **Attachments** tab. From a Timeline, select **Attach to case**, then **Attach to new case** or **Attach to existing case**. You can also attach a Timeline from the case itself: select **Attach**, then **Timeline**, from the case's **Activity** tab.
+Instead of inserting a link, you can attach a Timeline as a structured, filterable table in its own section on the case's **Attachments** tab. From a Timeline, select **Attach to case** → **Attach to new case** or **Attach to existing case**. You can also attach a Timeline from the case itself: select **Attach** → **Timeline** from the case's **Activity** tab.
 
 ## Add entities [cases-add-entities]
 
@@ -102,7 +102,7 @@ serverless:
   security: preview
 ```
 
-Attach a host, user, or service entity to a case to connect it to what's under investigation. From an entity's details flyout, open the **Take action** menu, then select **Add to new case** or **Add to existing case**.
+Attach a host, user, or service entity to a case to connect it to what's under investigation. From an entity's details flyout, select **Take action** → **Add to new case** or **Add to existing case**.
 
 Attached entities appear in their own **Entities** section on the case's **Attachments** tab. To access this section, you need the `read` privilege for the `.entities.v2.latest.security_*` index.
 

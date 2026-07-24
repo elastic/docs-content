@@ -51,7 +51,7 @@ After adding alerts, you can review them under **Alerts** on the case's **Attach
 
 After you create a case, you can upload and manage files under the **Files** tab. Each file can be up to 100 MiB (10 MiB for images), and a case can have up to 100 files attached.
 
-{applies_to}`stack: ga 9.5` You can also upload a file from the **Activity** tab. Select **Attach**, then **Upload file**.
+{applies_to}`stack: ga 9.5` You can also upload a file from the **Activity** tab. Select **Attach** → **Upload file**.
 
 When you upload a file, a comment is added to the case activity log, and the file becomes accessible from the **Files** management page. To view an image, select its name in the activity or file list. To download or delete a file, or copy its hash (MD5, SHA-1, or SHA-256) to your clipboard, open the action menu {icon}`boxes_horizontal`.
 
@@ -125,7 +125,7 @@ stack: preview 9.5
 serverless: preview
 ```
 
-You can also attach an existing Lens visualization by reference, which keeps a live link to the source so the case reflects the latest version whenever it's edited. Select **Attach**, then **Saved object** from the case's **Activity** tab, search for the visualization, and select it to open it in Lens, where you can adjust it before returning to the case.
+You can also attach an existing Lens visualization by reference, which keeps a live link to the source so the case reflects the latest version whenever it's edited. Select **Attach** → **Saved object** from the case's **Activity** tab, search for the visualization, and select it to open it in Lens, where you can adjust it before returning to the case.
 
 ## Add dashboards, maps, and Discover sessions [cases-saved-objects]
 
@@ -138,7 +138,7 @@ Attach an existing dashboard, map, or Discover session to a case to give teammat
 To attach these objects:
 
 1. Go to the case's details page, then select the **Activity** tab.
-2. Select **Attach**, then **Saved object**.
+2. Select **Attach** → **Saved object**.
 3. In the **Attach saved object** dialog, search for the dashboard, map, or Discover session by title. Optionally, filter by type, then select **Attach** next to the item you want.
 
 The attached object appears in the case activity log and in its own section on the **Attachments** tab, labeled with the object's title. Dashboards and maps also show an inline snapshot when one is available. Select the title to open the full dashboard, map, or Discover session.
