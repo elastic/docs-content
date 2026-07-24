@@ -57,7 +57,7 @@ There are three categories of roles you can assign to users:
 
 * $$$workload-credentials-owner$$$**Workload credentials owner**: Allows the member to manage workload credentials, such as creating, listing, and revoking their own [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md).
 
-    This role only adds the ability to manage credentials. It does not give the member access to any deployments or projects. To create useful API keys, the member also needs [cloud resource access roles](#ec_instance_access_roles) for the deployments or projects the keys they manage should cover. An API key created with this role can only include roles that the member already holds on those resources. Organization owners can still view and revoke all API keys in the organization.
+    This role only adds the ability to manage credentials. It does not give the member access to any deployments or projects. To create useful credentials, such as API keys, the member also needs [cloud resource access roles](#ec_instance_access_roles) for the deployments or projects those credentials should cover. Credentials created with this role can only include roles that the member already holds on those resources. Organization owners can still view and revoke all workload credentials in the organization.
 
 ### Cloud resource access roles [ec_instance_access_roles]
 
