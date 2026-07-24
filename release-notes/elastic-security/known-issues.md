@@ -54,7 +54,7 @@ Follow these steps to stabilize {{kib}}:
 
    - For the default space:
 
-   ```
+      ```
    PUT kbn:/api/security/entity_store/stop
    {}
    ```
