@@ -15,7 +15,7 @@ products:
 
 # waitForApproval [workflows-waitforapproval-step]
 
-The `waitForApproval` step pauses workflow execution until a human approves or rejects the request. Use it when the decision is yes or no. The step returns `approved: true` or `false` and renders approve/reject controls in {{kib}} and in external notifications.
+The `waitForApproval` step pauses workflow execution until a human approves or rejects the request. Use it when the decision is yes or no. The step returns `approved: true` or `false` and renders approve/reject controls in {{kib}} and in external notifications. Approvers respond from the workflow execution view, the [Inbox app](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md#workflows-hitl-inbox), or an external notification.
 
 For free-form or multi-field input, use [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) instead. For the end-to-end human-in-the-loop pattern, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md).
 
@@ -67,7 +67,7 @@ Both channel configs accept an optional `message` template.
 External channels send public, short-lived resume links. Don't use them for destructive, production-impacting, or hard-to-reverse workflows.
 :::
 
-To turn off external resume, set the `hitlExternalResume.enabled` settings in `kibana.yml`. For details, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md#workflows-hitl-external-channels).
+To turn off external resume, set both `hitlExternalResume.enabled` keys in `kibana.yml` (both default to `true`). For the exact settings, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md#workflows-hitl-external-channels).
 
 ## Example: Approve host isolation
 

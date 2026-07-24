@@ -29,7 +29,7 @@ For the end-to-end pattern, including the Inbox app, external Slack delivery, an
 | `name` | top level | string | Yes | Unique step identifier. |
 | `type` | top level | string | Yes | Must be `waitForInput`. |
 | `timeout` {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | top level | duration | No | How long the step waits for input. Format: number + unit (`ms`/`s`/`m`/`h`/`d`/`w`). Defaults to `72h`. If no one responds before the timeout, the step fails. |
-| `message` | `with` | string | No | Markdown message displayed to the reviewer. |
+| `message` | `with` | string | No | Markdown message displayed to the responder. |
 | `schema` | `with` | object | No | JSON Schema that describes the expected input. Renders as a form in the Kibana UI and Inbox **Respond** flyout, and validates the resume payload. |
 | `channels` {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | `with` | object | No | External notification channels that send resume links. Responders can act without signing in to {{kib}}. See [External channels](#external-channels). |
 
@@ -68,7 +68,7 @@ notes: "..."
 ## Execution state
 
 - While waiting, the execution state is `WAITING_FOR_INPUT`.
-- {applies_to}`stack: ga 9.4` There is no step-level default timeout. The workflow waits until a reviewer responds, or until a workflow-level [`settings.timeout`](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md) cancels the run.
+- {applies_to}`stack: ga 9.4` There is no step-level default timeout. The workflow waits until someone responds, or until a workflow-level [`settings.timeout`](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md) cancels the run.
 - {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` By default, the step times out after `72h`. This default applies whether or not you configure an external channel. Override it with a top-level `timeout` on the step. If no one responds before the timeout, the step fails.
 
 ## External channels [external-channels]
@@ -91,14 +91,14 @@ Both channel configs accept an optional `message` template. Use `{{ context.hitl
 External channels send public, short-lived resume links. Don't use them for destructive, production-impacting, or hard-to-reverse workflows.
 :::
 
-To turn off external resume, set the `hitlExternalResume.enabled` settings in `kibana.yml`. For details, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md#workflows-hitl-external-channels).
+To turn off external resume, set both `hitlExternalResume.enabled` keys in `kibana.yml` (both default to `true`). For the exact settings, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md#workflows-hitl-external-channels).
 
 ## Example: Approval gate before a destructive action
 
 ```yaml
 - name: review
   type: waitForInput
-  timeout: 24h
+  timeout: 24h # overrides the 72h default
   with:
     message: |
       ## Confirm host isolation

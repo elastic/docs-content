@@ -3,7 +3,7 @@ navigation_title: Human-in-the-loop
 applies_to:
   stack: ga 9.4+
   serverless: ga
-description: Pause a workflow to wait for human input, then resume with the reviewer's decision using waitForInput or waitForApproval.
+description: Pause a workflow to wait for human input, then resume with the responder's decision using waitForInput or waitForApproval.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -15,7 +15,7 @@ products:
 
 # Human-in-the-loop workflows [workflows-human-in-the-loop]
 
-Not every decision should be fully automated. *Human-in-the-loop* (HITL) is the pattern where a workflow pauses at a critical decision point, presents structured findings to a reviewer, waits for their input, and then resumes based on that input. It lets you combine the reach of automation with human judgment where judgment matters most.
+Not every decision should be fully automated. *Human-in-the-loop* (HITL) is the pattern where a workflow pauses at a critical decision point, presents structured findings to a responder, waits for their input, and then resumes based on that input. It lets you combine the reach of automation with human judgment where judgment matters most.
 
 ## When to reach for HITL
 
@@ -33,11 +33,33 @@ HITL is built on wait steps that pause execution until a human responds:
 | [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) | You need a custom form (notes, severity, multi-field decisions) | Your JSON Schema payload (see [output shape](#hitl-output-shape)) |
 | [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | The decision is approve or reject | `approved: true` or `false` under `output.response` |
 
-When the workflow reaches either step, execution pauses in the `WAITING_FOR_INPUT` state. The reviewer sees the message and form (or approve/reject controls). When they respond, the workflow resumes with their input available as `steps.<step_name>.output`.
+When the workflow reaches either step, execution pauses in the `WAITING_FOR_INPUT` state. The responder sees the message and form (or approve/reject controls). When they respond, the workflow resumes with their input available as `steps.<step_name>.output`.
+
+## What happens while the workflow is paused
+
+While a HITL step is waiting, the execution status is `WAITING_FOR_INPUT` and the run appears in the execution history with a resume action. 
+
+{applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` When Inbox is enabled, the waiting action also appears there.
+
+Timeout behavior depends on the {{stack}} version that you're using:
+
+::::{applies-switch}
+
+:::{applies-item} { stack: preview 9.5+, serverless: preview }
+Wait steps time out by default: `waitForInput` after `72h` and `waitForApproval` after `24h`. These defaults apply whether or not you configure an external channel. Override them with a top-level `timeout` on the step. If no one responds before the timeout, the step fails.
+:::
+
+:::{applies-item} stack: ga 9.4
+`waitForInput` has no default timeout and waits until someone responds. To limit the wait, set a workflow-level `settings.timeout`.
+:::
+
+::::
+
+If a workflow-level `settings.timeout` elapses before anyone responds, the execution is cancelled.
 
 ## Write a HITL workflow
 
-The three ingredients: a preceding step that gathers context, a wait step that presents it, and subsequent steps that branch on the reviewer's decision.
+The three ingredients: a preceding step that gathers context, a wait step that presents it, and subsequent steps that branch on the responder's decision.
 
 ```yaml
 name: isolate-host-with-approval
@@ -116,7 +138,30 @@ steps:
         **Responded by:** {{ steps.review.output.respondedBy }}
 ```
 
-Execution pauses at `review`. Until a reviewer responds, the execution state is `WAITING_FOR_INPUT`. When they respond, execution resumes at `isolate`, which is gated by an `if` guard on the approval decision.
+Execution pauses at `review`. Until someone responds, the execution state is `WAITING_FOR_INPUT`. When they respond, execution resumes at `isolate`, which is gated by an `if` guard on the approval decision.
+
+### Simplify a yes/no decision with `waitForApproval`
+
+```{applies_to}
+stack: preview 9.5+
+serverless: preview
+```
+
+The `review` step above is a simple yes/no decision, so you can replace it with [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md), which renders approve/reject controls without a schema:
+
+```yaml
+  - name: review
+    type: waitForApproval
+    with:
+      message: |
+        ## Alert on `{{ event.alerts[0].host.name }}`
+
+        **AI classification:** {{ steps.classify.output.category }}
+
+        Isolate this host?
+```
+
+Downstream steps read the decision from `{{ steps.review.output.response.approved }}`, exactly as they would with `waitForInput`.
 
 ## Resume a paused workflow
 
@@ -126,7 +171,7 @@ Resume a paused workflow using the following methods.
 
 Open the execution view. The paused step renders a form generated from the `schema` (or approve/reject controls for `waitForApproval`). Fill it in, submit, and the workflow resumes.
 
-### From the Inbox app
+### From the Inbox app [workflows-hitl-inbox]
 
 ```{applies_to}
 stack: preview 9.5+
@@ -137,14 +182,14 @@ The **Inbox** app lists HITL actions that need a response. Enable it with `xpack
 
 Inbox splits into:
 
-- **Awaiting response** — Pending `waitForInput` / `waitForApproval` steps. Open the **Respond** flyout to fill in the form (or approve/reject). If the preceding step included a reasoning summary, Inbox shows it to help the reviewer decide.
+- **Awaiting response** — Pending `waitForInput` / `waitForApproval` steps. Open the **Respond** flyout to fill in the form (or approve/reject). If the preceding step included a reasoning summary, Inbox shows it to help the responder decide.
 - **History** — A record of actions that were responded to, timed out, or whose workflow was deleted. Each entry includes who responded, their response, the channel, and when it happened.
 
 If more than one person responds, only the first response is accepted.
 
 ### From the API
 
-Send a `POST` request to the resume endpoint with the reviewer's input:
+Send a `POST` request to the resume endpoint with the responder's input:
 
 ```http
 POST /api/workflowExecutions/{executionId}/resume
@@ -180,7 +225,7 @@ How responders act:
 External links work without a {{kib}} session. Each link includes a short-lived, single-use token that {{kib}} invalidates after use, timeout, or workflow cancellation.
 
 :::{warning}
-External channels send public resume links. Don't use them for destructive, production-impacting, or hard-to-reverse workflows.
+External channels send public, short-lived resume links. Don't use them for destructive, production-impacting, or hard-to-reverse workflows.
 :::
 
 To resume waiting workflows from {{kib}} only, set external resume to `false` in `kibana.yml`:
@@ -203,32 +248,10 @@ How you read the resume payload depends on the {{stack}} version:
 
 A HITL message is read by a human mid-incident. Design for speed:
 
-- **Lead with the decision.** The first line should say what the reviewer needs to decide.
-- **Include the evidence.** Relevant context (alert details, enrichment results, AI rationale) belongs in the message so the reviewer doesn't have to dig.
+- **Lead with the decision.** The first line should say what the responder needs to decide.
+- **Include the evidence.** Relevant context (alert details, enrichment results, AI rationale) belongs in the message so the responder doesn't have to dig.
 - **Keep the schema small.** Three fields is a lot. One boolean plus an optional notes field is often enough. Prefer [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` when you only need yes/no.
 - **Use Markdown.** The message supports Markdown, so use headings, bold text, and bullets to make it scannable.
-
-## What happens while the workflow is paused
-
-While a HITL step is waiting, the execution status is `WAITING_FOR_INPUT`. The run appears in the execution history with a resume action. 
-
-{applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` When Inbox is enabled, the waiting action also appears there.
-
-Timeout behavior depends on the {{stack}} version:
-
-::::{applies-switch}
-
-:::{applies-item} { stack: preview 9.5+, serverless: preview }
-By default, `waitForInput` times out after `72h` and `waitForApproval` after `24h`. These defaults apply whether or not you configure an external channel. Override them with a top-level `timeout` on the step. If no one responds before the timeout, the step fails.
-:::
-
-:::{applies-item} stack: ga 9.4
-`waitForInput` has no default timeout and waits until someone responds. To limit the wait, set a workflow-level `settings.timeout`.
-:::
-
-::::
-
-If a workflow-level `settings.timeout` elapses before the reviewer responds, the execution is cancelled.
 
 ## Related
 
@@ -236,6 +259,3 @@ If a workflow-level `settings.timeout` elapses before the reviewer responds, the
 - [`waitForApproval` step reference](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`: Approve/reject without a custom schema.
 - [AI steps](/explore-analyze/workflows/steps/ai-steps.md): Pair AI classification or summarization with HITL for uncertain cases.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): Record decisions and outcomes on the case.
-
-
-% Sub-workflow waiting propagation and Agent Builder rich-input alignment aredeferred pending engineering confirmation (docs-content-internal#1455).

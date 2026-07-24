@@ -171,7 +171,7 @@ For the full reference, refer to [Loop continue step](/explore-analyze/workflows
 
 ## `waitForInput` [waitforinput]
 
-Pause the workflow until a human submits input through the resume API or the Kibana UI. The primary human-in-the-loop primitive.
+Pause the workflow until a human responds. The primary human-in-the-loop primitive. Responders can reply in {{kib}}, through the resume API, or through an external channel.
 
 ```yaml
 - name: review
