@@ -21,17 +21,7 @@ The diagram view shows your workflow as a visual graph generated from its YAML. 
 ## Before you begin [workflows-visualize-before-you-begin]
 
 - Workflows must be turned on, and your role must have the appropriate privileges. Refer to [](/explore-analyze/workflows/get-started/setup.md) for more information.
-- Turn on the advanced setting that displays the diagram view. Refer to [Enable the diagram view](#workflows-visualize-enable) for more information.
-
-## Enable the diagram view [workflows-visualize-enable]
-
-The diagram view is off by default. Turn on the **Elastic Workflows: Experimental Features** advanced setting (`workflows:experimentalFeatures`) to use it.
-
-1. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `workflows:experimentalFeatures` (or **Elastic Workflows: Experimental Features**).
-3. Toggle the setting on, then save your changes and reload the page.
-
-The **YAML ↔ Graph** toggle will appear in the editor's bottom bar.
+- The diagram view is off by default. In **Advanced Settings**, turn on the **Elastic Agent Builder: Experimental Features** (`agentBuilder:experimentalFeatures`) advanced setting, then reload the page. The **YAML ↔ Graph** toggle appears in the editor's bottom bar.
 
 ## View a workflow as a diagram [workflows-visualize-how-to]
 
@@ -40,9 +30,9 @@ The **YAML ↔ Graph** toggle will appear in the editor's bottom bar.
 3. Click a step or the trigger on the diagram to open its details panel. The panel shows the name, type, and definition as read-only YAML.
 4. From the details panel, select **Open in YAML editor** to jump to that step in the YAML. If you have execute privileges, you can also select **Run step** from the panel, or from the play control that appears when you hover a step on the diagram.
 
-The diagram updates as you change the YAML. Selecting a step highlights it in both the Graph and YAML views. You should see the trigger and each step on the diagram. Conditional and parallel steps appear as separate branches. Use the zoom controls on the canvas to zoom in, zoom out, reset zoom, or fit the workflow in view.
+The diagram updates as you change the YAML. Selecting a step highlights it in both the Graph and YAML views. Use the zoom controls on the canvas to zoom in, zoom out, reset zoom, or fit the workflow in view.
 
-## What the diagram shows [workflows-visualize-capabilities]
+### What the diagram shows [workflows-visualize-capabilities]
 
 | Feature | What you see |
 |---------|--------------|
