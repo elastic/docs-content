@@ -60,11 +60,11 @@ Select **Preview** to open the dashboard in a canvas alongside the conversation.
 :alt: Full-screen chat with the conversation on the left and a dashboard canvas preview on the right showing metrics, charts, and trend panels
 :::
 
-In the full-screen canvas, you can explore the data before you save the dashboard: enter a KQL query, add filter pills, adjust the time range, and select chart elements or legend values to filter the results. To work with an individual panel, hover over it to reveal its actions, such as maximizing or inspecting it.
+In the canvas, you can explore the data before you save the dashboard: enter a KQL query, add filter pills, adjust the time range, and select chart elements or legend values to filter the results. To work with an individual panel, hover over it to reveal its actions, such as maximizing or inspecting it.
 
 :::{tip}
 :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
-Select the {icon}`bolt` **Fast mode** option and turn it on to get approximate {{esql}} results for faster performance on large datasets. Fast mode is available when the dashboard includes at least one {{esql}} visualization that uses `STATS`, and it isn't available in the sidebar preview. For more about {{esql}} approximation, refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
+Select the {icon}`bolt` **Fast mode** option and turn it on to get approximate {{esql}} results for faster performance on large datasets. Fast mode is available when the dashboard includes at least one {{esql}} visualization that uses `STATS`. For more about {{esql}} approximation, refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
 :::
 ::::
 ::::{step} Save or refine
