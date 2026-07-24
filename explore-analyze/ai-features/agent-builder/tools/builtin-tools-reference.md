@@ -82,7 +82,7 @@ These platform core tools let agents run and track [Elastic Workflows](/explore-
 :   Resumes an [Elastic Workflows](/explore-analyze/workflows.md) execution that is paused at a [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step, providing the reviewer's input to the workflow so it can continue.
 
 `platform.core.generate_workflow` {applies_to}`stack: preview 9.5`
-:   Generates or updates an [Elastic Workflows](/explore-analyze/workflows.md) definition from a natural language description, delegating to a specialized workflow-authoring agent that knows workflow syntax, step types, and available connectors.
+:   Generates or updates an [Elastic Workflows](/explore-analyze/workflows.md) definition from a natural language description, delegating to a specialized workflow-authoring agent that knows workflow syntax, step types, and available connectors. This tool powers [workflow creation from Agent Chat](../chat.md#create-skills-and-workflows-directly-from-chat).
 
 `platform.core.execute_workflow` {applies_to}`stack: preview 9.5`
 :   Executes an [Elastic Workflows](/explore-analyze/workflows.md) definition, given a saved workflow ID, inline YAML for an ephemeral run, or a workflow YAML attachment.
