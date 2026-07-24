@@ -13,9 +13,9 @@ products:
   - id: edot-sdk
 ---
 
-# Enable debug logging for EDOT SDKs
+# Enable debug logging for EDOT SDKs [enable-debug-logging-for-edot-sdks]
 
-You can enable debug logging for Elastic Distributions of OpenTelemetry (EDOT) SDKs to troubleshoot application-level issues.
+You can enable debug logging for EDOT SDKs to troubleshoot application-level issues.
 
 Enabling debug logging can help surface common problems such as:
 
@@ -189,4 +189,4 @@ Disable diagnostic collection when you're done by unsetting the variable or rest
 
 ## Resources
 
-To learn how to enable debug logging for the EDOT Collector, refer to [Enable debug logging for EDOT Collector](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md).
+To learn how to enable debug logging for the {{agent}}, refer to [Enable debug logging for {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md).

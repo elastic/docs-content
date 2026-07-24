@@ -1,6 +1,6 @@
 ---
 navigation_title: Create APM agent key for EDOT SDKs
-description: Learn how to create an APM agent key for Elastic Distribution of OpenTelemetry (EDOT) SDKs using Kibana.
+description: Learn how to create an APM agent key for {{edot}} SDKs using Kibana.
 applies_to:
   stack: ga
   serverless: ga
@@ -23,7 +23,7 @@ products:
 There are two ways to create API keys in {{kib}}:
 
 * **{{stack-manage-app}} > API keys > Create API key**: Creates general-purpose API keys for {{es}} operations. For more information, refer to [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
-* **Applications > Settings > Agent keys > Create {{apm-agent}} key** (the method described on this page): Creates API keys specifically for ingesting {{product.apm}} data. All [{{edot}} (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md) should use this method.
+* **Applications > Settings > Agent keys > Create {{apm-agent}} key** (the method described on this page): Creates API keys specifically for ingesting {{product.apm}} data. All [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md) should use this method.
 
 ## Create an {{apm-agent}} key
 
@@ -34,7 +34,7 @@ The Applications UI provides a built-in workflow to create {{apm-agent}} keys. T
 
 For EDOT SDKs, the **Agent configuration** privilege enables [EDOT SDKs Central Configuration](opentelemetry://reference/central-configuration.md) for remote configuration.
 
-## Use the {{apm-agent}} key with EDOT SDKs
+## Use the {{apm-agent}} key with EDOT SDKs [use-the-apm-agent-key-with-edot-sdks]
 
 After creating the {{apm-agent}} key, configure your EDOT SDK to use it. Configuration details vary by language and deployment:
 

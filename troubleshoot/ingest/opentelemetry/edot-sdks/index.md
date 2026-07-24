@@ -11,7 +11,7 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting the EDOT SDKs
+# Troubleshooting the EDOT SDKs [troubleshooting-the-edot-sdks]
 
 Find solutions to common issues with EDOT SDKs for various programming languages and platforms.
 
@@ -47,13 +47,13 @@ These guides apply to all EDOT SDKs:
 
 ## Supported architectures
 
-EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
+EDOT SDKs are tested and supported only with [{{agent}} Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
 
 ## See also
 
-* [EDOT Collector troubleshooting](/troubleshoot/ingest/opentelemetry/edot-collector/index.md): For end-to-end issues that may involve both the Collector and SDKs.
+* [{{agent}} troubleshooting](/troubleshoot/ingest/opentelemetry/edot-collector/index.md): For end-to-end issues that may involve both the Collector and SDKs.
 
-* [Troubleshoot EDOT](/troubleshoot/ingest/opentelemetry/index.md): Overview of all EDOT troubleshooting resources.
+* [Troubleshoot {{edot}}](/troubleshoot/ingest/opentelemetry/index.md): Overview of all {{edot}} troubleshooting resources.
 
 :::{warning}
 Avoid using EDOT SDKs alongside any other {{apm-agent}}, including Elastic {{product.apm}} agents. Running multiple agents in the same application process may lead to unexpected behavior, conflicting instrumentation, or duplicated telemetry.

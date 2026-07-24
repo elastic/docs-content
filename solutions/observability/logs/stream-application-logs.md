@@ -100,9 +100,9 @@ Learn more about log correlation in the agent-specific ingestion guides:
 
 ::::{tab-set}
 
-:::{tab-item} OpenTelemetry (EDOT)
+:::{tab-item} OpenTelemetry ({{edot}})
 
-The {{edot}} (EDOT) provides SDKs for multiple programming languages with built-in support for log correlation:
+The {{edot}} provides SDKs for multiple programming languages with built-in support for log correlation:
 
 * [Java](elastic-otel-java://reference/edot-java/index.md)
 * [.NET](elastic-otel-dotnet://reference/edot-dotnet/index.md)
@@ -110,7 +110,7 @@ The {{edot}} (EDOT) provides SDKs for multiple programming languages with built-
 * [PHP](elastic-otel-php://reference/edot-php/index.md)
 * [Python](elastic-otel-python://reference/edot-python/index.md)
 
-For more information about EDOT, refer to [Elastic Distribution of OpenTelemetry (EDOT)](opentelemetry://reference/index.md).
+For more information about {{edot}}, refer to [{{edot}}](opentelemetry://reference/index.md).
 
 :::
 

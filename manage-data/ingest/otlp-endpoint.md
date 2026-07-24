@@ -36,7 +36,7 @@ For most users, one of the following higher-level ingestion paths is recommended
 
 Use {{motlp}} if it's available in your deployment, even when an application can target the {{es}} OTLP endpoint directly.
 
-For an overview of the recommended OpenTelemetry-based ingestion architecture, refer to the [EDOT reference architecture](opentelemetry://reference/architecture/index.md).
+For an overview of the recommended OpenTelemetry-based ingestion architecture, refer to the [{{edot}} reference architecture](opentelemetry://reference/architecture/index.md).
 
 Use the {{es}} OTLP endpoint directly when one of the following applies:
 
@@ -224,5 +224,5 @@ Note that cumulative temporality for histograms is only supported if `xpack.otel
   If part of a request fails, the client retries the entire batch, which can produce duplicate logs or trace spans.
   Metrics are not affected because metric points written to time series data streams are [deduplicated based on their dimensions and timestamp](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension).
 * **Profiles:** Profiles are not supported.
-  To ingest profiles, use a distribution of the OpenTelemetry Collector that includes the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md), such as the [{{edot}} (EDOT) Collector](opentelemetry://reference/edot-collector/index.md).
+  To ingest profiles, use a distribution of the OpenTelemetry Collector that includes the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md), such as [{{agent}}](opentelemetry://reference/edot-collector/index.md).
 * **Exemplars:** Exemplars are not supported yet.

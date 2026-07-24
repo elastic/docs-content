@@ -30,7 +30,7 @@ Titles help us identify and triage issues. The more specific they are, the bette
 | ✅ Do this | ❌ Don't do this |
 | ----- | ----- |
 | *Add a new section on air-gapped configuration* | *Update docs* |
-| *Website Link in EDOT logs tutorial is broken* | *Website some-doc-url* |
+| *Website Link in {{edot}} logs tutorial is broken* | *Website some-doc-url* |
 | *Python code snippet is not valid in tutorial X* | *This docs is wrong1!1* |
 
 ### Formulate a clear request in the description

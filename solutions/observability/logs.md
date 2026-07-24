@@ -31,7 +31,7 @@ Refer to [Ingest tools overview](/manage-data/ingest/tools.md) for more informat
 
 :::{tab-item} {{edot}}
 
-The Elastic Distribution of OpenTelemetry (EDOT) Collector and SDKs provide native OpenTelemetry support for collecting logs, metrics, and traces. This approach is ideal for:
+The {{edot}} Collector and SDKs provide native OpenTelemetry support for collecting logs, metrics, and traces. This approach is ideal for:
 
 * Native OpenTelemetry: When you want to use OpenTelemetry standards and are already using OpenTelemetry in your environment.
 * Full observability: When you need to collect logs, metrics, and traces from a single collector.

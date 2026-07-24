@@ -21,7 +21,7 @@ products:
 
 Use Elastic APM agents or an OpenTelemetry language SDK to instrument a service in the language its written in:
 
-* [**OpenTelemetry**](/solutions/observability/apm/opentelemetry/index.md): OpenTelemetry is an open source set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications. Elastic offers [Elastic Distributions of OpenTelemetry (EDOT)](opentelemetry://reference/edot-sdks/index.md), which are customized versions of [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/) that are optimized to work with an Elastic backend.
+* [**OpenTelemetry**](/solutions/observability/apm/opentelemetry/index.md): OpenTelemetry is an open source set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications. Elastic offers [{{edot}}](opentelemetry://reference/edot-sdks/index.md), which are customized versions of [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/) that are optimized to work with an Elastic backend.
 * [**Elastic APM agents**](/solutions/observability/apm/apm-agents/index.md): Elastic APM agents are instrumentation libraries written in the same language as your service.
 
 
@@ -29,17 +29,17 @@ Use Elastic APM agents or an OpenTelemetry language SDK to instrument a service 
 
 ### Capabilities [_capabilities]
 
-|  | Elastic Distributions of OpenTelemetry (EDOT) | Elastic APM agent |
+|  | {{edot}} | Elastic APM agent |
 | --- | --- | --- |
 | **Support level** | Fully supported for available languages | Fully supported |
 | **Data protocol** | [OpenTelemetry protocol (OTLP)](https://opentelemetry.io/docs/specs/otel/protocol/) | Elastic protocol |
 | **Central configuration** | {applies_to}`product: preview` Supported<br>*Refer to* [*Central configuration*](opentelemetry://reference/central-configuration.md) | Supported<br>*Refer to* [*APM agent central configuration*](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md) |
 
-For a comparison of EDOT and APM data streams, refer to [Comparison with classic APM data streams](opentelemetry://reference/compatibility/data-streams.md#comparison-with-classic-apm-data-streams).
+For a comparison of {{edot}} and APM data streams, refer to [Comparison with classic APM data streams](opentelemetry://reference/compatibility/data-streams.md#comparison-with-classic-apm-data-streams).
 
 ### Availability [apm-collect-data-availability]
 
-| Language | Elastic Distributions of OpenTelemetry (EDOT) | Elastic APM agent |
+| Language | {{edot}} | Elastic APM agent |
 | --- | --- | --- |
 | **Android** | EDOT Android | Not available |
 | **Go** | Not available | Go agent |

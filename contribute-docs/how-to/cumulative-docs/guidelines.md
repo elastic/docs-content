@@ -162,7 +162,7 @@ Keys are ordered as follows:
 
 1. **Stack/Serverless**: Stack, Serverless
 2. **Deployment types**: ECH (Elastic Cloud Hosted), ECK (Elastic Cloud on Kubernetes), ECE (Elastic Cloud Enterprise), Self-Managed
-3. **ProductApplicability**: ECCTL, Curator, EDOT items (alphabetically), APM Agent items (alphabetically)
+3. **ProductApplicability**: ECCTL, Curator, {{edot}} items (alphabetically), APM Agent items (alphabetically)
 
 For example this syntax:
 

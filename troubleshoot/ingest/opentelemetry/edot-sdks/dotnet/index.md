@@ -13,13 +13,13 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting the EDOT .NET SDK
+# Troubleshooting the EDOT .NET SDK [troubleshooting-the-edot-net-sdk]
 
 Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](elastic-otel-dotnet://reference/edot-dotnet/supported-technologies.md) for EDOT .NET and the OpenTelemetry SDK.
 
 If you have an Elastic support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). If you don't, post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-dotnet/issues).
 
-## Obtain EDOT .NET diagnostic logs
+## Obtain EDOT .NET diagnostic logs [obtain-edot-net-diagnostic-logs]
 
 For most problems, such as when you don't see data in your {{product.observability}} backend, first check the EDOT .NET logs. These logs show initialization details and OpenTelemetry SDK events. If you don't see any warnings or errors in the EDOT .NET logs, switch the log level to `Debug` to investigate further. For more information on enabling debug logging, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md). If telemetry data isn't appearing in {{kib}}, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md).
 
@@ -117,7 +117,7 @@ The default value is `file` if you set `OTEL_DOTNET_AUTO_LOG_DIRECTORY` or set `
 
 ### Diagnosing initialization or bootstrap issues
 
-If EDOT for .NET fails before fully bootstrapping its internal components, it won't generate a log file. In such circumstances, you can provide an additional logger for diagnostic purposes. Alternatively, you can enable the `STDOUT` log target.
+If EDOT .NET fails before fully bootstrapping its internal components, it won't generate a log file. In such circumstances, you can provide an additional logger for diagnostic purposes. Alternatively, you can enable the `STDOUT` log target.
 
 #### Providing an additional application logger
 
@@ -179,7 +179,7 @@ The following known issues affect EDOT .NET.
 
 The contrib SDK currently does not [comply with the spec](https://github.com/open-telemetry/opentelemetry-dotnet/issues/4324) regarding the deduplication of attributes when exporting log records. When you create a log within multiple scopes, each scope may store information using the same logical key. In this situation, the exported data will have duplicated attributes.
 
-You are most likely to see this when you log in the scope of a request and enable the `OpenTelemetryLoggerOptions.IncludeScopes` option. ASP.NET Core adds the `RequestId` to multiple scopes. We recommend that you don't enable `IncludeScopes` until the SDK fixes this. When you use the EDOT Collector or the [{{motlp}}](opentelemetry://reference/motlp.md) in serverless, non-compliant log records will fail to be ingested.
+You are most likely to see this when you log in the scope of a request and enable the `OpenTelemetryLoggerOptions.IncludeScopes` option. ASP.NET Core adds the `RequestId` to multiple scopes. We recommend that you don't enable `IncludeScopes` until the SDK fixes this. When you use the {{agent}} or the [{{motlp}}](opentelemetry://reference/motlp.md) in serverless, non-compliant log records will fail to be ingested.
 
 EDOT .NET currently emits a warning if it detects that you use `IncludeScopes` in ASP.NET Core scenarios.
 
@@ -286,7 +286,7 @@ builder.AddElasticOpenTelemetry(edotBuilder =>
 ```
 
 This code does not work as intended because `AddElasticOpenTelemetry` is being used
-which enables all EDOT defaults for all signals, but it's also being combined with `WithElasticDefaults`
+which enables all {{edot}} defaults for all signals, but it's also being combined with `WithElasticDefaults`
 and the signal-specific methods `WithElasticTracing` and `WithElasticMetrics`.
 
 The corrected code is as follows:

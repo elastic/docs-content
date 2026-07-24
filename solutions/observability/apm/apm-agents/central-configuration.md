@@ -71,5 +71,5 @@ For most users, APM agent configuration should work out-of-the-box. If you run i
 Refer to [configure APM agent configuration](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md) to learn how to configure APM Server to avoid these problems.
 
 ::::{note}
-You can't configure APM agents through the EDOT Collector. Use APM Server for that purpose.
+You can't configure APM agents through {{agent}}. Use APM Server for that purpose.
 ::::

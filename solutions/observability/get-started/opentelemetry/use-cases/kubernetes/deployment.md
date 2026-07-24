@@ -1,6 +1,6 @@
 ---
 navigation_title: Deployment
-description: Instructions for deploying EDOT components for Kubernetes monitoring, using guided onboarding or manual steps.
+description: Instructions for deploying {{edot}} components for Kubernetes monitoring, using guided onboarding or manual steps.
 applies_to:
   stack:
   serverless:
@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Deploy EDOT for Kubernetes observability [k8s-edot-deployment]
+# Deploy {{edot}} for Kubernetes observability [k8s-edot-deployment]
 
 You can use the [guided onboarding](#deploy-using-the-guided-onboarding) or [deploy all components manually](#manual-deployment)
 
@@ -24,7 +24,7 @@ The guided onboarding simplifies deploying your Kubernetes components by setting
 Follow these steps to use the guided onboarding:
 
 1. In {{kib}}, navigate to **Observability** → **Add data**.
-2. Select **Kubernetes**, then choose **Kubernetes monitoring with EDOT Collector**.
+2. Select **Kubernetes**, then choose **Kubernetes monitoring with {{agent}}**.
 3. Follow the instructions to install the OpenTelemetry Operator using the Helm chart and the provided `values.yaml`.
 
 When installing the OpenTelemetry Operator:

@@ -1,5 +1,5 @@
 ---
-description: Learn how to monitor your application performance using the Elastic Distribution of OpenTelemetry (EDOT) SDKs and Elastic APM.
+description: Learn how to monitor your application performance using the {{edot}} SDKs and Elastic APM.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,7 +10,7 @@ products:
 
 # Quickstart: Monitor your application performance [quickstart-monitor-your-application-performance]
 
-In this quickstart guide, you’ll learn how to instrument your application using the Elastic Distribution of OpenTelemetry (EDOT) SDKs. You’ll also learn how to use {{observability}} features to gain deeper insight into your application telemetry data after collecting it.
+In this quickstart guide, you’ll learn how to instrument your application using the {{edot}} SDKs. You’ll also learn how to use {{observability}} features to gain deeper insight into your application telemetry data after collecting it.
 
 ## Prerequisites [_prerequisites]
 
@@ -20,7 +20,7 @@ In this quickstart guide, you’ll learn how to instrument your application usin
 
 * An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-* An {{edot}} (EDOT) Collector or the contrib OpenTelemetry Collector running on the host.
+* An {{edot}} {{agent}} or the contrib OpenTelemetry Collector running on the host.
 * An {{apm-agent}} key for authenticating your EDOT SDKs. To create one, refer to [Create {{apm-agent}} key for EDOT SDKs](/solutions/observability/apm/opentelemetry/create-apm-agent-key-for-edot-sdks.md).
 :::
 
@@ -28,17 +28,17 @@ In this quickstart guide, you’ll learn how to instrument your application usin
 
 * An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-* An {{edot}} (EDOT) Collector or the contrib OpenTelemetry Collector running on the host.
+* An {{edot}} {{agent}} or the contrib OpenTelemetry Collector running on the host.
 * An {{apm-agent}} key for authenticating your EDOT SDKs. To create one, refer to [Create {{apm-agent}} key for EDOT SDKs](/solutions/observability/apm/opentelemetry/create-apm-agent-key-for-edot-sdks.md).
 :::
 
 ::::
 
-## Install the EDOT Collector [_install_edot_collector]
+## Install the {{agent}} [_install_edot_collector]
 
-The EDOT Collector in [Agent mode](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-agent) collects infrastructure and application telemetry data sent by the EDOT SDKs and forwards it to Elastic.
+The {{agent}} in [Agent mode](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-agent) collects infrastructure and application telemetry data sent by the EDOT SDKs and forwards it to Elastic.
 
-Refer to the [EDOT Quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md) to install the EDOT Collector for your deployment mode.
+Refer to the [{{edot}} Quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md) to install the {{agent}} for your deployment mode.
 
 ## Collect application telemetry data [_collect_your_data]
 

@@ -1,6 +1,6 @@
 ---
 navigation_title: ResourceExhausted errors in Collector-to-Collector pipelines
-description: Troubleshoot EDOT Collector `ResourceExhausted` errors caused by gRPC message size limits, decompression limits, memory pressure, or backpressure in Collector-to-Collector pipelines.
+description: Troubleshoot Elastic Agent `ResourceExhausted` errors caused by gRPC message size limits, decompression limits, memory pressure, or backpressure in Collector-to-Collector pipelines.
 applies_to:
   stack: ga
   serverless: ga
@@ -11,7 +11,7 @@ products:
 
 # `ResourceExhausted` errors in Collector-to-Collector pipelines
 
-This troubleshooting guide helps you diagnose and resolve `rpc error: code = ResourceExhausted` errors that occur in Collector-to-Collector pipelines when using {{edot}} (EDOT) Collectors. These errors typically indicate that one or more resource limits, such as gRPC message size, decompression memory, or internal buffering, have been exceeded.
+This troubleshooting guide helps you diagnose and resolve `rpc error: code = ResourceExhausted` errors that occur in Collector-to-Collector pipelines when using {{agent}}s. These errors typically indicate that one or more resource limits, such as gRPC message size, decompression memory, or internal buffering, have been exceeded.
 
 The root cause depends on your pipeline architecture (number of Collectors, transport, batching, and queue settings). Each case is different; use the diagnosis and resolution steps in this document to narrow down the cause and experiment with mitigations.
 
@@ -29,7 +29,7 @@ This issue is most often reported in the following setups:
 
 You might observe one or more of the following:
 
-- EDOT Collector logs containing messages similar to:
+- {{agent}} logs containing messages similar to:
   - `rpc error: code = ResourceExhausted`
   - Errors mentioning message size, decompression, or resource exhaustion
 - Telemetry data (traces, metrics, or logs) partially or completely dropped
@@ -57,7 +57,7 @@ This limit is not derived from pod CPU/memory sizing. It is primarily a protocol
 
 When using the standard [OTLP receiver (`otlp`) with gRPC protocol](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver):
 
-- The EDOT Collector inherits contrib OpenTelemetry Collector behavior.
+- The {{agent}} inherits contrib OpenTelemetry Collector behavior.
 - If `max_recv_msg_size_mib` is not explicitly configured, the Collector uses the [gRPC library default](https://pkg.go.dev/google.golang.org/grpc#MaxRecvMsgSize), which is 4 MiB.
 - Messages larger than this limit result in a `ResourceExhausted` error sent by the receiving side and logged on the sending side.
 
