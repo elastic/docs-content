@@ -154,18 +154,6 @@ To view metadata relating to the service agent, and if relevant, the container a
 
 
 **Alerts and SLOs**
-```{applies_to}
-stack: ga 9.4+
-serverless: ga
-```
 
-* Recently fired alerts
-* Active SLOs associated with the service
-
-
-**Alerts**
-```{applies_to}
-stack: ga 9.0-9.3
-```
-
-* Recently fired alerts
+* {applies_to}`stack: ga 9.0+` {applies_to}`serverless: ga` Recently fired alerts
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Active SLOs associated with the service
