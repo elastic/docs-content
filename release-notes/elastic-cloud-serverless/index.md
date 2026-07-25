@@ -9,6 +9,9 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+:::{include} _snippets/2026-07-21/index.md
+:::
+
 :::{changelog}
 :cdn: cloud-serverless
 :description-visibility: hide-descriptions
