@@ -23,7 +23,8 @@ The {{motlp}} is designed for the following use cases:
 * APM: Application telemetry in OTLP format.
 
 :::{note}
-Before version 9.5, the **EDOT Collector** was a standalone product. From 9.5 onwards, this OpenTelemetry collector capability is built into **{{agent}}**.
+:applies_to: stack: ga 9.5+
+In previous versions, the **EDOT Collector** was a standalone product. From this version onwards, this OpenTelemetry collector capability is built into **{{agent}}**.
 :::
 
 ## Prerequisites

@@ -24,7 +24,8 @@ Select the quickstart guide for your environment from the following list:
 Before following the quickstart guides to set up your {{edot}} deployment, make sure to [install your self-managed Elastic Stack](/solutions/observability/apm/opentelemetry/index.md).
 
 :::{note}
-Before version 9.5, the **EDOT Collector** was a standalone product. From 9.5 onwards, this OpenTelemetry collector capability is built into **{{agent}}**.
+:applies_to: stack: ga 9.5+
+In previous versions, the **EDOT Collector** was a standalone product. From this version onwards, this OpenTelemetry collector capability is built into **{{agent}}**.
 :::
 
 ## Troubleshooting
