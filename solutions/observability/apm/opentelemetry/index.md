@@ -1,6 +1,6 @@
 ---
 navigation_title: OpenTelemetry
-description: Learn how to integrate OpenTelemetry with Elastic APM using Elastic Distributions, contrib SDKs, and APM agents. Includes setup for serverless, self-managed, and AWS Lambda.
+description: Learn how to integrate OpenTelemetry with Elastic APM using {{edot}}, contrib SDKs, and APM agents. Includes setup for serverless, self-managed, and AWS Lambda.
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-opentelemetry.html
   - https://www.elastic.co/guide/en/observability/current/apm-open-telemetry.html
@@ -28,7 +28,7 @@ In the Kibana Integrations UI, search for `otel` to find and install available i
 Other Integrations which are beats-based include dashboards based on ECS data and are not compatible with OpenTelemetry semantic conventions.
 :::
 
-Elastic offers several distributions of OpenTelemetry. Each [Elastic Distribution of OpenTelemetry](opentelemetry://reference/index.md) is a customized version of an OpenTelemetry language SDK and the OpenTelemetry Collector, ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), APM Server, or directly to {{es}}.
+Elastic offers several [{{edot}}](opentelemetry://reference/index.md) distributions. Each is a customized version of an OpenTelemetry language SDK and the OpenTelemetry Collector, ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), APM Server, or directly to {{es}}.
 
 :::{include} /solutions/_snippets/edot-reference-arch.md
 :::
@@ -71,7 +71,7 @@ To set up OpenTelemetry with Elastic, refer to these guides for each SDK:
 * [**Elastic Distribution of OpenTelemetry Browser**](elastic-otel-rum-js://reference/edot-browser/index.md)
 
 ::::{important}
-For a complete overview of OpenTelemetry and Elastic, explore [**Elastic Distributions of OpenTelemetry**](opentelemetry://reference/index.md).
+For a complete overview of OpenTelemetry and Elastic, explore [**{{edot}}**](opentelemetry://reference/index.md).
 ::::
 
 ## Contrib OpenTelemetry Collector and SDKs [apm-otel-upstream]
@@ -92,7 +92,7 @@ For more on the limitations associated with using contrib OpenTelemetry tools, r
 [**Get started with contrib OpenTelemetry Collectors and language SDKs →**](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md)
 
 :::{note}
-To understand the differences between Elastic Distributions of OpenTelemetry and contrib OpenTelemetry, refer to [{{edot}} compared to contrib OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md).
+To understand the differences between {{edot}} and contrib OpenTelemetry, refer to [{{edot}} compared to contrib OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md).
 :::
 
 ## Contrib OpenTelemetry with Elastic APM agent [apm-otel-api-sdk-elastic-agent]

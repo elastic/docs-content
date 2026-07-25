@@ -16,6 +16,6 @@ products:
 
 When you run {{agent}} in `otel` mode, it supports the standard OpenTelemetry Collector configuration format that defines a set of receivers, processors, exporters, and connectors. Logs, metrics, and traces can be collected and exported using OpenTelemetry data formats.
 
-For a full overview and steps to configure {{agent}} in `otel` mode, including a guided onboarding, refer to [Elastic Distributions for OpenTelemetry](elastic-agent://reference/edot-collector/index.md). You can also check the [`elastic-agent otel` command](/reference/fleet/agent-command-reference.md#elastic-agent-otel-command) in the {{fleet}} and {{agent}} Command reference.
+For a full overview and steps to configure {{agent}} in `otel` mode, including a guided onboarding, refer to [{{agent}} in OpenTelemetry mode](elastic-agent://reference/edot-collector/index.md). You can also check the [`elastic-agent otel` command](/reference/fleet/agent-command-reference.md#elastic-agent-otel-command) in the {{fleet}} and {{agent}} Command reference.
 
 If you have a currently running {{agent}} you can [transform it to run as an OTel Collector](/reference/fleet/otel-agent-transform.md).

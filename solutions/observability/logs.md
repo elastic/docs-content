@@ -38,7 +38,7 @@ The {{edot}} Collector and SDKs provide native OpenTelemetry support for collect
 * Modern applications: When building new applications with OpenTelemetry instrumentation.
 * Standards compliance: When you need to follow OpenTelemetry specifications.
 
-For more information, refer to [Elastic Distribution of OpenTelemetry](opentelemetry://reference/index.md).
+For more information, refer to [{{edot}}](opentelemetry://reference/index.md).
 
 :::
 
