@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-infrastructure.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-infrastructure.html
 applies_to:
-  stack: ga 9.5+
+  stack: beta 9.0-9.4, ga 9.5+
   serverless: ga
 products:
   - id: observability
@@ -68,7 +68,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-To compare infrastructure metric trends across all entities a service depends on, click **Compare metrics in Discover** next to a resource type (hosts, pods, or containers). This opens the data in Discover, broken down by entity so you can compare trends side by side.
+To compare infrastructure metric trends across all entities a service depends on, select the **Hosts**, **Pods**, or **Containers** tab, then click **Compare metrics in Discover**. This opens the data in Discover, broken down by entity so you can compare trends side by side.
 
 The breakdown field for each resource type:
 
