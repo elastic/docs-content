@@ -85,28 +85,35 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-An interactive legend is available directly on the map. Click the **?** (**Legend**) button to expand it and see an explanation of node shapes, connections, and anomaly score colors.
+An interactive legend is available directly on the map. Click the {icon}`question` (**Legend**) button to expand it and see an explanation of node shapes, connections, and anomaly score colors.
 
 ### Nodes [service-maps-legend-nodes]
 
-Nodes appear on the map in one of two shapes:
+Nodes appear on the map in one of three shapes:
 
 * **Circle**: Instrumented services. Interior icons are based on the language of the {{apm-agent}} used.
 * **Diamond**: Databases, external, and messaging. Interior icons represent the generic type, with specific icons for known entities, like {{es}}. Type and subtype are based on `span.type`, and `span.subtype`.
+* **Grouped resources**: Groups of related external resources or dependencies, such as those sharing a namespace or label.
 
 ### Connections [service-maps-legend-connections]
 
-Connections between nodes represent observed communication between services based on distributed trace data. The direction of the arrow indicates the direction of the request.
+Connections between nodes represent observed communication between services based on distributed trace data:
+
+* **One-way**: Traffic flows in a single direction between services. The arrow indicates the direction of the request.
+* **Two-way**: Traffic flows in both directions between services.
 
 ### Anomaly score colors [service-maps-legend-anomaly-colors]
 
 When {{anomaly-detect}} is enabled, node borders are color-coded based on the maximum anomaly score detected for that service:
 
-|  |  |
+| Score range | Severity |
 | --- | --- |
-| ![Healthy service node icon](/solutions/images/observability-green-service.png "") | Max anomaly score **≤25**. Service is healthy. |
-| ![Degraded service node icon](/solutions/images/observability-yellow-service.png "") | Max anomaly score **26-74**. Anomalous activity detected. Service may be degraded. |
-| ![Unhealthy service node icon](/solutions/images/observability-red-service.png "") | Max anomaly score **≥75**. Anomalous activity detected. Service is unhealthy. |
+| No score | No anomaly data available |
+| 0–3 | Low |
+| 3–25 | Warning |
+| 25–50 | Minor |
+| 50–75 | Major |
+| 75–100 | Critical |
 
 ## Supported APM agents [service-maps-supported]
 
