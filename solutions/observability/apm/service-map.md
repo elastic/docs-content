@@ -67,7 +67,17 @@ When you click an instrumented service node (circle shape), a **service flyout**
 
 ## Anomaly detection with machine learning [service-map-anomaly-detection]
 
-You can create {{ml}} jobs to calculate anomaly scores on {{product.apm}} transaction durations within the selected service. When these jobs are active, service maps display a color-coded anomaly indicator on each service node based on the detected anomaly score. For a description of what each color means, refer to [Anomaly score colors](#service-maps-legend-anomaly-colors).
+You can create {{ml}} jobs to calculate anomaly scores on {{product.apm}} transaction durations within the selected service. When these jobs are active, service maps display a color-coded anomaly indicator on each service node based on the detected anomaly score.
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For a description of what each color means, refer to [Anomaly score colors](#service-maps-legend-anomaly-colors).
+
+{applies_to}`stack: ga 9.0-9.4` Node borders are color-coded based on the maximum anomaly score:
+
+|  |  |
+| --- | --- |
+| ![Healthy service node icon](/solutions/images/observability-green-service.png "") | Max anomaly score **≤25**. Service is healthy. |
+| ![Degraded service node icon](/solutions/images/observability-yellow-service.png "") | Max anomaly score **26-74**. Anomalous activity detected. Service might be degraded. |
+| ![Unhealthy service node icon](/solutions/images/observability-red-service.png "") | Max anomaly score **≥75**. Anomalous activity detected. Service is unhealthy. |
 
 :::{image} /solutions/images/observability-apm-service-map-anomaly.png
 :alt: Example view of anomaly scores on service maps in the Applications UI
@@ -106,14 +116,14 @@ Connections between nodes represent observed communication between services base
 
 When {{anomaly-detect}} is enabled, node borders are color-coded based on the maximum anomaly score detected for that service:
 
-| Score range | Severity |
-| --- | --- |
-| No score | No anomaly data available |
-| 0–3 | Low |
-| 3–25 | Warning |
-| 25–50 | Minor |
-| 50–75 | Major |
-| 75–100 | Critical |
+| Score range | Severity | Node color |
+| --- | --- | --- |
+| No score | No anomaly data available | Gray |
+| 0–3 | Low | White |
+| 3–25 | Warning | Blue |
+| 25–50 | Minor | Yellow |
+| 50–75 | Major | Orange |
+| 75–100 | Critical | Red |
 
 ## Supported APM agents [service-maps-supported]
 
