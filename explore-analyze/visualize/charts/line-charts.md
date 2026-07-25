@@ -216,7 +216,7 @@ See .github/scripts/verify-lens-api-examples.py for full usage. -->
 ![Average RAM per host](../../images/kibana-lens-average-ram-host.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 Send the following request to create a line chart that plots the moving average of RAM, broken down by the top 4 hosts.
 
@@ -369,7 +369,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Unique IPs throughout the day](../../images/kibana-lens-unique-ip-throughout-day.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 Send the following request to create a line chart that plots the unique count of client IPs over time, with linear interpolation for missing values.
 

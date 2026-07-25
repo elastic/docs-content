@@ -117,13 +117,7 @@ For this example, let’s look for logs with a `WARN` or `ERROR` log level that 
     ```text
     log.level: ("ERROR" or "WARN")
     ```
-1. Click the current time range, select **Absolute**, and set the **Start date** to `Apr 14, 2025 @ 00:00:00.000`.
-
-    ![Set the time range start date](../../images/serverless-logs-start-date.png "")
-
-1. Click the end of the current time range, select **Absolute**, and set the **End date** to `Apr 15, 2025 @ 23:59:59.999`.
-
-    ![Set the time range end date](/solutions/images/serverless-logs-end-date.png "")
+1. Set the time filter to an absolute range that starts at `Apr 14, 2025 @ 00:00:00.000` and ends at `Apr 15, 2025 @ 23:59:59.999`.
 
 
 Under the **Documents** tab, you’ll see the filtered log data matching your query.

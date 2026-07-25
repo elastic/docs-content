@@ -16,6 +16,10 @@ products:
 
 You can extend the built-in tool catalog with your own custom tool definitions. Custom tools offer flexibility in how they interact with your data. This flexibility allows you to create tools that match your specific use cases and data access patterns.
 
+:::{note}
+[Human-in-the-loop confirmation](../chat.md#human-in-the-loop-prompts) is not currently available for custom tools.
+:::
+
 ## Tool types
 
 {{agent-builder}} supports several tool types:
