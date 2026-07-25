@@ -24,8 +24,7 @@ The {{ml}} integration initiates a new job predefined to calculate anomaly score
 
 Results from {{ml}} jobs are shown in multiple places throughout the Applications UI:
 
-* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The **Services** inventory highlights services with active anomalies so you can quickly identify problem areas.
-* {applies_to}`stack: ga 9.0-9.4` The **Services** inventory provides a quick-glance view of the general health of all of your services.
+* The **Services** inventory provides a quick-glance view of the general health of all of your services. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Services are color coded to show services with active anomalies so you can quickly identify problem areas.
 * The transaction duration chart shows the expected bounds and adds an annotation when the anomaly score is 75 or above.
 * Service Maps display a color-coded anomaly indicator on each service node based on the detected anomaly score.
 * {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Alert detail pages for {{product.apm}} anomaly alerts show RED metric charts and the service map, along with [a severity-colored callout](/solutions/observability/apm/service-map.md#service-maps-legend-anomaly-colors) identifying the anomaly type. For more information, refer to [View alerts](/solutions/observability/incident-management/view-alerts.md).
