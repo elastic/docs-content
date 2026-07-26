@@ -97,7 +97,7 @@ Before deploying ECE, validate the following on your director hosts:
 * Firewall rules allow bidirectional traffic on ZooKeeper ports. Refer to [Inbound traffic](#ece-inbound).
 * ZooKeeper transaction log is on a dedicated disk.
 * JVM heap is sized appropriately, not exceeding available physical memory on director hosts. Refer to [JVM heap size](ece-jvm.md).
-* Swap is disabled on director hosts that run the ZooKeeper process. Refer to [Swap considerations](ece-manage-capacity.md#ece-alloc-swap-consideration).
+* Swap is disabled on director hosts that run the ZooKeeper process. Refer to [Swap considerations](./ece-software-prereq.md#ece-swap-considerations).
 ::::
 
 If these requirements are not met, ECE control plane operations can fail intermittently, including plan changes, vacates, and new deployment creation.
