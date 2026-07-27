@@ -166,6 +166,7 @@ jobs:
       discussions: write
       issues: write
       pull-requests: write
+      copilot-requests: write
     uses: elastic/docs-actions/.github/workflows/gh-aw-issue-triage.lock.yml@v1
     with:
       additional-instructions: |
@@ -197,6 +198,7 @@ jobs:
       discussions: write
       issues: write
       pull-requests: write
+      copilot-requests: write
     uses: elastic/docs-actions/.github/workflows/gh-aw-issue-size.lock.yml@v1
     secrets: inherit
 
@@ -210,6 +212,7 @@ jobs:
       discussions: write
       issues: write
       pull-requests: write
+      copilot-requests: write
     uses: elastic/docs-actions/.github/workflows/gh-aw-docs-issue-scope.lock.yml@v1
     secrets: inherit
 
