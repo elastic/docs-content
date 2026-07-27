@@ -253,7 +253,7 @@ In **Discover**, LOOKUP JOIN commands let you create or edit lookup indices dire
 
 ##### Cross-cluster and cross-project lookup joins
 ```{applies_to}
-stack: ga 9.2.0
+stack: ga 9.2
 ```
 
 Remote lookup joins are supported in [cross-cluster](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md) and [cross-project](elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md) queries. By default, {{esql}} resolves the lookup index on every remote cluster in the query and each cluster joins against its own local index with that name.
