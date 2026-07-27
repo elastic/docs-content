@@ -22,7 +22,7 @@ An {{ecloud}} API key belongs to the organization and is not tied to the user wh
 
 **Organization owners** can create and manage API keys for the organization. They can view and revoke all API keys in the organization. 
 
-Members with the **Workload credentials owner** role can create, list, and revoke only the API keys they created. For more information about the **Workload credentials owner** role, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#workload-credentials-owner).
+Members with the **Workload credentials owner** role can create API keys and can list and revoke only the API keys they created. For more information about the **Workload credentials owner** role, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#workload-credentials-owner).
 
 
 You can have multiple API keys for different purposes, and you can revoke them when you no longer need them. Each organization can have up to 500 active API keys.
