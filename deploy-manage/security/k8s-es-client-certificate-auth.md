@@ -157,7 +157,9 @@ spec:
 ```
 
 :::{warning}
-A bug in Enterprise Search's JRuby runtime can cause startup failures with some PKCS#8 private keys. If Enterprise Search fails to start after enabling client authentication, for operator-managed certificates delete the affected client certificate secret to force ECK to regenerate it. For custom certificates, regenerate and re-supply the certificate.
+A bug in Enterprise Search's JRuby runtime can cause startup failures with some PKCS#8 private keys. If Enterprise Search fails to start after enabling client authentication:
+* For operator-managed certificates, delete the affected client certificate secret to force ECK to regenerate it. 
+* For custom certificates, regenerate and re-supply the certificate.
 :::
 
 ### Elastic Maps Server [k8s-maps-custom-client-cert]
