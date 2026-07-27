@@ -195,4 +195,5 @@ steps:
 - [Triage a security alert into a case](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-triage-with-case.md): Pair enrichment with case creation for full triage.
 - [HTTP step](/explore-analyze/workflows/steps/external-systems-apps.md#http-actions): Full `http` step reference.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Retry, fallback, and continue strategies in more depth.
+- [Indicators of compromise](/solutions/security/investigate/indicators-of-compromise.md): The product surface where investigators triage threat-intel indicators interactively.
 - [`elastic/workflows` enrichment folder](https://github.com/elastic/workflows/tree/main/workflows/security/enrichment): More enrichment examples.

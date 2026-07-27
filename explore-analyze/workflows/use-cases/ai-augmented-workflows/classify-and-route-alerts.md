@@ -308,4 +308,5 @@ steps:
 - [AI-augmented workflows](/explore-analyze/workflows/use-cases/ai-augmented-workflows.md): The outcome this workflow supports.
 - [AI steps reference](/explore-analyze/workflows/steps/ai-steps.md): Parameters for `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent`.
 - [Flow control steps](/explore-analyze/workflows/steps/flow-control-steps.md): `foreach`, `if`, `switch`, and others.
+- [{{elastic-sec}} AI use cases](/solutions/security/ai/use-cases.md): Where this kind of automation fits among the other AI-powered tools available to SOC users.
 - [`elastic/workflows` observability folder](https://github.com/elastic/workflows/tree/main/workflows/observability): More observability workflow examples.

@@ -1,4 +1,5 @@
 ---
+description: Find semantically similar documents using k-nearest neighbor (kNN) vector search in Elasticsearch.
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/knn-search.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-knn-search.html
@@ -49,14 +50,31 @@ The default type of {{es-serverless}} project is suitable for this use case unle
 Refer to [](dense-vector.md#vector-profiles).
 :::
 
-## kNN search methods: approximate and exact kNN [knn-methods]
+## kNN search methods [knn-methods]
 
-{{es}} supports two methods for kNN search:
+{{es}} provides several ways to perform kNN search. Which one you use depends on your field type and whether you need to combine kNN with other queries.
 
-* [**Approximate kNN**](#approximate-knn): Fast, scalable similarity search using the `knn` option, `knn` query, or a `knn` retriever. Ideal for most production workloads.  
-* [**Exact, brute-force kNN**](#exact-knn): Uses a `script_score` query with a vector function. Best for small datasets or precise scoring.
+### Approximate kNN [knn-methods-approximate]
 
-Approximate kNN offers low latency and good accuracy, while exact kNN guarantees accurate results but does not scale well for large datasets. With this approach, a `script_score` query must scan each matching document to compute the vector function, which can result in slow search speeds. However, you can improve latency by using a [query](../../../explore-analyze/query-filter/languages/querydsl.md) to limit the number of matching documents passed to the function. If you filter your data to a small subset of documents, you can get good search performance using this approach.
+Fast, scalable similarity search. Ideal for most production workloads. There are three ways to run approximate kNN search, with different field type support:
+
+| Method | Supported field types | Use case |
+|---|---|---|
+| [Top-level `knn` option](#approximate-knn) | [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) | Standalone kNN search or hybrid search with score fusion |
+| [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md) | [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md), [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) | Composable with other queries in a `bool` clause. Required for `semantic_text` fields |
+| [`knn` retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers/knn-retriever.md) | [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) | Use within a retriever pipeline for ranking and result merging |
+
+::::{tip}
+If you use `semantic_text` fields, query them with a [`match` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) for the simplest approach, or use the [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#knn-query-with-semantic-text) when you need more control over the search.
+::::
+
+### Exact, brute-force kNN [knn-methods-exact]
+
+Uses a [`script_score` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) with a vector function. Best for small datasets or precise scoring. Refer to [exact kNN](#exact-knn).
+
+### Choosing between approximate and exact kNN
+
+Approximate kNN offers low latency and good accuracy, while exact kNN guarantees accurate results but does not scale well for large datasets. With exact kNN, a `script_score` query must scan each matching document to compute the vector function, which can result in slow search speeds. However, you can improve latency by using a [query](../../../explore-analyze/query-filter/languages/querydsl.md) to limit the number of matching documents passed to the function. If you filter your data to a small subset of documents, you can get good search performance using this approach.
 
 ## Approximate kNN search [approximate-knn]
 
@@ -127,7 +145,7 @@ To run an approximate kNN search:
 The document `_score` is a positive 32-bit floating-point number that ranks result relevance. In {{es}} kNN search, `_score` is derived from the chosen vector similarity metric between the query and document vectors. Refer to [`similarity`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-similarity) for details on how kNN scores are computed.
 
 ::::{note}
-Support for approximate kNN search was added in version 8.0. Before 8.0, `dense_vector` fields did not support enabling `index` in the mapping. If you created an index prior to 8.0 with `dense_vector` fields, reindex using a new mapping with `index: true` (which is the default value) to use approximate kNN.
+Support for approximate kNN search was added in version 8.0. Before 8.0, `dense_vector` fields did not support enabling `index` in the mapping. If you created an index before 8.0 with `dense_vector` fields, reindex using a new mapping with `index: true` (which is the default value) to use approximate kNN.
 ::::
 
 ### Indexing considerations for approximate kNN search [knn-indexing-considerations]
@@ -256,7 +274,7 @@ POST byte-image-index/_search
 If you want to provide `float` vectors but still get the memory savings of `byte` vectors, use the [quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) feature. Quantization allows you to provide `float` vectors, but internally they are indexed as `byte` vectors. Additionally, the original `float` vectors are still retained in the index.
 
 ::::{note}
-The default index type for `dense_vector` is either `bbq_hnsw` or `int8_hnsw`, depending on your product version. Refer to [Dense vector field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md).
+The default index type for `float` vectors is either `bbq_hnsw` or `int8_hnsw`, depending on your product version and vector dimensions. Other element types, such as `byte`, default to plain `hnsw` with no quantization. Refer to [Dense vector field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md).
 ::::
 
 You can use the default quantization strategy or specify an index option.
@@ -418,7 +436,7 @@ POST image-index/_search
 
 This search finds the global top `k = 5` vector matches, combines them with the matches from the `match` query, and finally returns the 10 top-scoring results. The `knn` and `query` matches are combined through a disjunction, as if you took a boolean *or* between them. The top `k` vector results represent the global nearest neighbors across all index shards.
 
-The score of each hit is the sum of the `knn` and `query` scores. You can specify a `boost` value to give a weight to each score in the sum. In the example above, the scores will be calculated as
+The score of each result is the sum of the `knn` and `query` scores. You can specify a `boost` value to give a weight to each score in the sum. In the preceding example, the scores will be calculated as
 
 ```
 score = 0.9 * match_score + 0.1 * knn_score
@@ -568,7 +586,7 @@ In this data set, the only document with `file-type = png` has the vector `[42, 
 When text exceeds a model’s token limit, chunking must be performed before generating embeddings for each chunk. By combining [`nested`](elasticsearch://reference/elasticsearch/mapping-reference/nested.md) fields with [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md), you can perform nearest passage retrieval without copying top-level document metadata.  
 Note that nested kNN queries only support [score_mode](elasticsearch://reference/query-languages/query-dsl/query-dsl-nested-query.md#nested-top-level-params)=`max`.
 
-Here is a simple passage vectors index that stores vectors and some top-level metadata for filtering.
+Here is a basic passage vectors index that stores vectors and some top-level metadata for filtering.
 
 ```console
 PUT passage_vectors
@@ -644,7 +662,7 @@ POST passage_vectors/_search
 }
 ```
 
-Note that even with 4 total nested vectors, the response still returns two documents. kNN search over nested dense vectors will always diversify the top results over the top-level document; `"k"` top-level documents will be returned, scored by their nearest passage vector (for example, `"paragraph.vector"`).
+Note that even with 4 total nested vectors, the response still returns two documents. kNN search over nested dense vectors will always diversify the top results over the top-level document. `"k"` top-level documents will be returned, scored by their nearest passage vector (for example, `"paragraph.vector"`).
 
 ```console-result
 {
@@ -1221,7 +1239,7 @@ All quantization introduces some accuracy loss, and higher compression generally
 
 * `int8` typically needs little to no rescoring.
 * `int4` often benefits from rescoring for higher accuracy or recall; 1.5×–2× oversampling usually recovers most loss.
-* `bbq` commonly requires rescoring except on very large indices or models specifically designed for quantization; 3×–5× oversampling is generally sufficient, but higher may be needed for low-dimension vectors or embeddings that quantize poorly.
+* `bbq` commonly requires rescoring except on very large indices or models specifically designed for quantization; 3×–5× oversampling is generally sufficient, but higher might be needed for low-dimension vectors or embeddings that quantize poorly.
 
 #### The `rescore_vector` option
 ```{applies_to}
@@ -1318,7 +1336,7 @@ POST /my-index/_search
 2. The number of results to return from the KNN search. This will do an approximate KNN search with 50 candidates per HNSW graph and use the quantized vectors, returning the 20 most similar vectors according to the quantized score. Additionally, because this is the top-level `knn` object, the global top 20 results from all shards will be gathered before rescoring. Combining with `rescore`, this is oversampling by `2x`, meaning gathering 20 nearest neighbors according to quantized scoring and rescoring with higher fidelity float vectors.
 3. The number of results to rescore, if you want to rescore all results, set this to the same value as `k`
 4. The script to rescore the results. Script score will interact directly with the originally provided float32 vector.
-5. The weight of the original query, here we simply throw away the original score
+5. The weight of the original query, here we throw away the original score
 6. The weight of the rescore query, here we only use the rescore query
 
 ##### Use a `script_score` query to rescore per shard [dense-vector-knn-search-rescoring-script-score]

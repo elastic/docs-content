@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 600" role="img" aria-labelledby="title desc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+  <title id="title">Kibana chrome layout</title>
+  <desc id="desc">Wireframe of the Kibana chrome, showing the Global header, Navigation menu, Secondary navigation, Application menu, Workspace, Flyout, and Sidebar regions.</desc>
+
+  <style>
+    .box { stroke: #b8c0d0; stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .label { fill: #34495e; font-size: 16px; text-anchor: middle; dominant-baseline: middle; }
+    .label-bold { font-weight: 600; }
+  </style>
+
+  <rect x="0" y="0" width="1024" height="600" fill="#ffffff"/>
+
+  <!-- Global header -->
+  <rect class="box" x="16" y="20" width="992" height="36" fill="#eef1f6" rx="2"/>
+  <text class="label label-bold" x="512" y="38">Global header</text>
+
+  <!-- Navigation menu (left vertical strip) -->
+  <rect class="box" x="16" y="68" width="48" height="516" fill="#eef1f6" rx="2"/>
+  <text class="label label-bold" x="40" y="326" transform="rotate(-90 40 326)">Navigation menu</text>
+
+  <!-- Secondary navigation -->
+  <rect class="box" x="72" y="68" width="148" height="516" fill="#eef1f6" rx="2"/>
+  <text class="label label-bold" x="146" y="316">Secondary</text>
+  <text class="label label-bold" x="146" y="336">navigation</text>
+
+  <!-- Application menu -->
+  <rect class="box" x="228" y="68" width="392" height="40" fill="#eef1f6" rx="2"/>
+  <text class="label label-bold" x="424" y="88">Application menu</text>
+
+  <!-- Workspace -->
+  <rect class="box" x="228" y="116" width="392" height="468" fill="#b9e8cf" rx="2"/>
+  <text class="label label-bold" x="424" y="350" fill="#1f4d3a">Workspace</text>
+
+  <!-- Flyout -->
+  <rect class="box" x="628" y="68" width="156" height="516" fill="#d2efe0" rx="2"/>
+  <text class="label label-bold" x="706" y="326" fill="#1f4d3a">Flyout</text>
+
+  <!-- Sidebar -->
+  <rect class="box" x="792" y="68" width="216" height="516" fill="#eef1f6" rx="2"/>
+  <text class="label label-bold" x="900" y="326">Sidebar</text>
+</svg>

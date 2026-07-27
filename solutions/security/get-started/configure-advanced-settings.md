@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/advanced-settings.html
   - https://www.elastic.co/guide/en/serverless/current/security-advanced-settings.html
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -25,7 +25,7 @@ The advanced settings control the behavior of the {{security-app}}, such as:
 * The default {{elastic-sec}} pages refresh time
 * Which IP reputation links appear on [IP detail](/solutions/security/advanced-entity-analytics/network-page.md) pages
 * Whether cross-cluster search (CCS) privilege warnings are displayed
-* Whether related integrations are displayed on the Rules page tables
+* Whether related integrations are displayed on the **{{siem-rules-ui}}** page tables
 * The options provided in the alert tag menu
 * The maximum number of cases the Cases connector can open each time a detection rule runs 
 
@@ -140,7 +140,7 @@ stack: preview 9.4
 serverless: preview
 ```
 
-Turn on the **Enable alerts and attacks alignment** setting to access the [Attacks page](/solutions/security/ai/attacks-page.md), which provides a unified interface for triaging and managing attacks alongside their correlated alerts.
+Turn on the **Enable alerts and attacks alignment** setting to access the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), which provides a unified interface for triaging and managing attacks alongside their correlated alerts.
 
 ## Enable asset inventory
 ```{applies_to}
@@ -227,9 +227,9 @@ stack: ga 9.2
 
 To control whether alert suppression continues after you close a suppressed alert during an [active suppression window](/solutions/security/detect-and-alert/alert-suppression.md#security-alert-suppression-impact-close-alerts), configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting. This setting lets you choose whether suppression continues or restarts when the next qualifying alert meets the suppression criteria. The default selection is **Restart suppression**.
 
-## Show/hide related integrations in Rules page tables [show-related-integrations]
+## Show/hide related integrations on the {{siem-rules-ui}} page [show-related-integrations]
 
-By default, Elastic prebuilt rules in the **Rules** and **Rule Monitoring** tables include a badge showing how many related integrations have been installed. Turn off `securitySolution:showRelatedIntegrations` to hide this in the rules tables (related integrations will still appear on rule details pages).
+By default, Elastic prebuilt rules on the **Installed Rules** and **Rule Monitoring** tabs include a badge showing how many related integrations have been installed. Turn off `securitySolution:showRelatedIntegrations` to hide this in the rules tables (related integrations will still appear on rule details pages).
 
 
 ## Manage alert tag options [manage-alert-tags]
@@ -248,7 +248,7 @@ The `cases:maxOpenCasesPerRuleRun` advanced setting sets the upper limit for how
 For example, if one rule run creates many alerts and you want a case opened for each alert, you can increase the limit for the `cases:maxOpenCasesPerRuleRun` setting to avoid meeting the per-run limit. Pick a number that works for your team and cluster, but be aware that opening a large batch of cases in a single run might increase load on {{kib}} and {{es}}. 
 
 ::::{note}
-The `cases:maxOpenCasesPerRuleRun` setting does not apply to [Attack Discovery](/solutions/security/ai/attack-discovery.md). Attack Discovery continues to use its own case-creation limit (20).
+The `cases:maxOpenCasesPerRuleRun` setting does not apply to [Attack Discovery](/solutions/security/ai/attack-discovery/index.md). Attack Discovery continues to use its own case-creation limit (20).
 ::::
 
 ## Add custom alert closing reasons [custom-alert-closing-reasons]
@@ -307,7 +307,7 @@ stack: removed 9.3, ga 9.1
 serverless: removed
 ```
 
-The `securitySolution:enablePrivilegedUserMonitoring` setting allows you to access the [Entity analytics overview page](/solutions/security/advanced-entity-analytics/overview.md) and the [privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) feature. This setting is turned off by default.
+The `securitySolution:enablePrivilegedUserMonitoring` setting allows you to access the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) and the [privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) feature. This setting is turned off by default.
 
 ## Turn off {{esql}}-based risk scoring
 ```yaml {applies_to}

@@ -114,7 +114,7 @@ xpack.fleet.isAirGapped: true
 
 After your self-hosted {{package-registry}} is running and {{kib}} is configured to use it, you can install prebuilt rules:
 
-1. In your air-gapped {{elastic-sec}} instance, find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
+1. In your air-gapped {{elastic-sec}} instance, find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
 
 2. Click **Add Elastic rules**. The available prebuilt rules from your self-hosted registry are displayed.
 
@@ -157,7 +157,7 @@ Elastic releases prebuilt rule updates biweekly. To receive the latest updates i
 
 After updating your registry, install the rule updates in your air-gapped {{elastic-sec}} instance:
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
 
 2. If updates are available, the **Rule Updates** tab appears. Click it to view available updates.
 
@@ -196,7 +196,7 @@ For more details on exporting and importing rules, refer to [Export and import r
 
 2. Export the prebuilt rules:
 
-    1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
+    1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
     2. Select the rules you want to export, or click **Select all** to select all rules.
     3. Click **Bulk actions** > **Export**.
 
@@ -206,7 +206,7 @@ For more details on exporting and importing rules, refer to [Export and import r
 ::::{step} Import rules into your air-gapped instance
 :anchor: import-rules-airgapped
 
-1. In your air-gapped {{elastic-sec}} instance, find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
+1. In your air-gapped {{elastic-sec}} instance, find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
 
 2. Click **Import rules** above the Rules table.
 

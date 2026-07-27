@@ -34,14 +34,13 @@ You can proceed with this scenario and [install ECE](./install.md).
 
 This type of deployment is recommended for many production setups. You need:
 
-* 3 hosts with at least 32 GB RAM each for directors and coordinators (ECE management services)
+* 3 hosts with at least 32 GB RAM each for directors and coordinators (ECE management services), and proxies.
 * 3 hosts for allocators, each with one of the following RAM configurations:
 
     * 1 x 256 GB RAM
     * 2 x 128 GB RAM
     * 4 x 64 GB RAM
 
-* 3 hosts with 16 GB RAM each for proxies
 * 3 availability zones
 
 :::{image} /deploy-manage/images/cloud-enterprise-ece-pb-6.png

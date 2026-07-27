@@ -21,6 +21,50 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.4.4 [elastic-observability-9.4.4-release-notes]
+
+### Features and enhancements [elastic-observability-9.4.4-features-enhancements]
+
+* Truncates long service names in the {{product.apm}} **Traces** table with an ellipsis, shows the full name on hover [#275553]({{kib-pull}}275553).
+* Adds a defensive check to ensure {{product.apm}} integration policy updates always include API keys in their configuration [#274647]({{kib-pull}}274647).
+* Improves Synthetics performance by bounding screenshot and step queries to a window around the check run's timestamp [#273513]({{kib-pull}}273513).
+* Enables Synthetics to respect the `observability:searchExcludedDataTiers` advanced setting, allowing operators to exclude slow data tiers from Synthetics searches to reduce latency and search thread pool pressure [#273418]({{kib-pull}}273418).
+
+### Fixes [elastic-observability-9.4.4-fixes]
+
+* Fixes alert untracking on the {{observability}} **Alert Details** page for alerts from non-observability rule types [#278643]({{kib-pull}}278643).
+* Fixes `retest_on_failure: false` being ignored when updating an existing Synthetics monitor through the API [#277701]({{kib-pull}}277701).
+* Fixes crashes in the {{apm-app}} caused by missing or malformed URL query parameters [#276420]({{kib-pull}}276420).
+* Fixes the key column shrinking too narrow in {{product.apm}} metadata key-value tables [#275941]({{kib-pull}}275941).
+* Fixes the **Cases** link in alert details routing to an internal URL instead of the Cases app when accessed from external apps [#275647]({{kib-pull}}275647).
+* Fixes the {{product.apm}} service **Logs** tab incorrectly filtering by `service.environment` [#275555]({{kib-pull}}275555).
+* Fixes the Task Manager API key invalidation task from prematurely invalidating shared API keys still in use by other active tasks [#275157]({{kib-pull}}275157).
+* Fixes Synthetics monitor label deletions not persisting after save [#274404]({{kib-pull}}274404).
+* Fixes Streams processing not being applied to a second OpenTelemetry metrics data stream when its first processing step is added [#269988]({{kib-pull}}269988).
+
+## 9.4.3 [elastic-observability-9.4.3-release-notes]
+
+### Features and enhancements [elastic-observability-9.4.3-features-enhancements]
+* Improves investigation skill matching in the AI Agent to more reliably load for alert-related queries [#269377]({{kib-pull}}269377).
+* Improves the AI Agent investigation skill with a hypothesis-driven methodology [#268973]({{kib-pull}}268973).
+
+### Fixes [elastic-observability-9.4.3-fixes]
+* Fixes the **SLOs** link in the {{product.apm}} SLO overview flyout to include all-environment SLOs [#273367]({{kib-pull}}273367).
+* Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
+* Fixes the AI Agent investigation skill to anchor time range queries to the alert start time when investigating an alert [#271983]({{kib-pull}}271983).
+* Fixes knowledge base recall in Observability AI Assistant when the selected connector is an inference endpoint [#271753]({{kib-pull}}271753).
+
+## 9.4.2 [elastic-observability-9.4.2-release-notes]
+
+### Fixes [elastic-observability-9.4.2-fixes]
+* Fixes false **missing integration** warnings for project Synthetics monitors on private locations [#270137]({{kib-pull}}270137).
+* Fixes horizontal scroll clipping on the {{product.apm}} **Traces** page [#269936]({{kib-pull}}269936).
+* Fixes the **Explain this log entry** AI insight in the logs flyout collapsing and losing its state on auto-refresh [#268895]({{kib-pull}}268895).
+* Fixes the Streams **Significant Events** tab and import/export flyouts to correctly enforce the Enterprise license requirement [#268515]({{kib-pull}}268515).
+* Fixes the **SLO Overview** **No data** tile to correctly count newly created SLOs and SLOs whose summary transform has not yet produced a document [#266315]({{kib-pull}}266315).
+* Fixes the **Modify suggestions** button in Streams so clicking it while the popover is open correctly closes the popover [#265254]({{kib-pull}}265254).
+
+
 ## 9.4.1 [elastic-observability-9.4.1-release-notes]
 
 There are no user-facing changes in {{observability}} for the 9.4.1 release.
@@ -225,6 +269,39 @@ There are no user-facing changes in {{observability}} for the 9.4.1 release.
 * Fixes broken breadcrumbs and sidebar navigation for Data Visualizer and AIOps within solution views [#248167]({{kib-pull}}248167).
 * Fixes double scrollbars appearing in fullscreen flyouts [#247744]({{kib-pull}}247744).
 
+## 9.3.8 [elastic-observability-9.3.8-release-notes]
+
+### Features and enhancements [elastic-observability-9.3.8-features-enhancements]
+* Adds a defensive check to ensure {{product.apm}} integration policy updates always include API keys in their configuration [#274647]({{kib-pull}}274647).
+
+
+### Fixes [elastic-observability-9.3.8-fixes]
+* Fixes `retest_on_failure: false` being ignored when updating an existing Synthetics monitor through the API [#277701]({{kib-pull}}277701).
+* Fixes crashes in the {{apm-app}} caused by missing or malformed URL query parameters [#276420]({{kib-pull}}276420).
+* Fixes the **Cases** link in alert details routing to an internal URL instead of the Cases app when accessed from external apps [#275647]({{kib-pull}}275647).
+* Fixes the Task Manager API key invalidation task from prematurely invalidating shared API keys still in use by other active tasks [#275157]({{kib-pull}}275157).
+
+## 9.3.7 [elastic-observability-9.3.7-release-notes]
+
+### Features and enhancements [elastic-observability-9.3.7-features-enhancements]
+* Adds a defensive check to ensure {{product.apm}} integration policy updates always include API keys in their configuration [#274647]({{kib-pull}}274647).
+
+
+### Fixes [elastic-observability-9.3.7-fixes]
+* Fixes deleted monitor labels from reappearing on the next fetch [#274404]({{kib-pull}}274404).
+* Fixes Canvas autoplay from stopping at the first page [#272619]({{kib-pull}}272619).
+
+## 9.3.6 [elastic-observability-9.3.6-release-notes]
+
+### Fixes [elastic-observability-9.3.6-fixes]
+* Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
+* Fixes the **SLO Overview** **No data** tile to correctly count newly created SLOs and SLOs whose summary transform has not yet produced a document [#266315]({{kib-pull}}266315).
+
+## 9.3.5 [elastic-observability-9.3.5-release-notes]
+
+### Fixes [elastic-observability-9.3.5-fixes]
+* Fixes the **Hosts** page KPI tiles showing `N/A` and the **Hosts** table displaying stale data when the in-app **Refresh** button is used with a relative time range after the page has been idle [#265515]({{kib-pull}}265515).
+* Fixes `too_small` zod error for AI pipeline suggestions with empty string grok patterns [#251113]({{kib-pull}}251113).
 
 ## 9.3.4 [elastic-observability-9.3.4-release-notes]
 

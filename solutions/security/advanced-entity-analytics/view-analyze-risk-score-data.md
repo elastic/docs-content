@@ -1,4 +1,5 @@
 ---
+description: View and analyze entity risk score data across alerts, the Hosts and Users pages, and entity flyouts to triage and investigate risky entities in Elastic Security.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/analyze-risk-score-data.html
   - https://www.elastic.co/guide/en/serverless/current/security-analyze-risk-score-data.html
@@ -19,14 +20,14 @@ The {{security-app}} provides several ways to monitor the change in the risk pos
 After reviewing an entity’s risk score, the recommended next step is to investigate the risky entity in [Timeline](/solutions/security/investigate/timeline.md).
 ::::
 
-## Entity Analytics overview [entity-analytics-overview]
+## Entity analytics page [entity-analytics-overview]
 
-In the Entity Analytics overview, you can view entity key performance indicators (KPIs), risk scores, and levels. You can also click the number link in the **Alerts** column to investigate and analyze the alerts on the Alerts page.
+On the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), you can view entity key performance indicators (KPIs), risk scores, and levels. You can also click the number link in the **Alerts** column to investigate and analyze the alerts on the Alerts page.
 
 If you have enabled the [entity store](entity-store.md), you'll also get access to the **Entities** section, where you can view all hosts, users, and services along with their risk and asset criticality data.
 
-Access the Entity Analytics overview from the following pages:
-* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md) 
+Access this risk data from the following pages:
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) 
 * [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
 
 

@@ -26,11 +26,6 @@ This approach simplifies the process of keeping your agents up to date. It also 
 
 By default, {{agent}}s require internet access to perform binary upgrades from {{fleet}}. However, you can host your own artifacts repository and configure {{agent}}s to download binaries from it. For more information, refer to [Air-gapped environments](/reference/fleet/air-gapped.md).
 
-::::{note}
-The upgrade feature is not supported for upgrading DEB/RPM packages or Docker images. Refer to [Upgrade RPM and DEB system packages](#upgrade-system-packages) to upgrade a DEB or RPM package manually.
-::::
-
-
 For a detailed view of the {{agent}} upgrade process and the interactions between {{fleet}}, {{agent}}, and {{es}}, refer to the [Communications amongst components](https://github.com/elastic/elastic-agent/blob/main/docs/upgrades.md) diagram in the `elastic-agent` GitHub repository.
 
 
@@ -39,8 +34,19 @@ For a detailed view of the {{agent}} upgrade process and the interactions betwee
 Note the following restrictions with upgrading an {{agent}}:
 
 * {{agent}} cannot be upgraded to a minor version higher than the currently installed minor version of {{fleet-server}}. For example, you can enroll 9.1.5 {{agents}} with a 9.1.0 {{fleet-server}}, but not 9.2.0 {{agents}}. So while you can install newer maintenance releases, you cannot install newer minor versions. Before you upgrade {{agents}} to a newer minor version, you should first upgrade any agents that are acting as a [{{fleet-server}}](/reference/fleet/fleet-server.md) (any agents associated with a {{fleet-server}} policy).
-* To be upgradeable, {{agent}} must not be running inside a container.
-* To be upgradeable in a Linux environment, {{agent}} must be running as a service. The Linux Tar install instructions for {{agent}} provided in {{fleet}} include the commands to run it as a service. {{agent}} RPM and DEB system packages cannot be upgraded through {{fleet}}.
+
+Whether {{agent}} can be upgraded through {{fleet}} also depends on the installation method:
+
+| Installation method | {{fleet}}-managed upgrade supported? | How to upgrade |
+| --- | --- | --- |
+| Linux `.tar.gz` (running as a service) | Yes | [Upgrade through {{fleet}}](/reference/fleet/upgrade-elastic-agent.md#upgrade-an-agent) |
+| Linux `.deb` (DEB) | No | [Upgrade DEB packages manually](/reference/fleet/upgrade-elastic-agent.md#upgrade-system-packages) |
+| Linux `.rpm` (RPM) | No | [Upgrade RPM packages manually](/reference/fleet/upgrade-elastic-agent.md#upgrade-system-packages) |
+| Windows `.msi` (MSI) | Yes | [Upgrade through {{fleet}}](/reference/fleet/upgrade-elastic-agent.md#upgrade-an-agent) |
+| Windows `.zip` | Yes | [Upgrade through {{fleet}}](/reference/fleet/upgrade-elastic-agent.md#upgrade-an-agent) |
+| macOS `.tar.gz` | Yes | [Upgrade through {{fleet}}](/reference/fleet/upgrade-elastic-agent.md#upgrade-an-agent) |
+| Docker container | No | [Upgrade the container image](/reference/fleet/elastic-agent-container.md) |
+| Kubernetes (Helm chart or manifests) | No | [Upgrade the container image](/reference/fleet/running-on-kubernetes-managed-by-fleet.md) |
 
 These restrictions apply whether you are upgrading {{agents}} individually or in bulk. In the event that an upgrade isn’t eligible, {{fleet}} generates a warning message when you attempt the upgrade.
 

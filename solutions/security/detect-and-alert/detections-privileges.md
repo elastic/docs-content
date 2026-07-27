@@ -145,6 +145,11 @@ Index privileges
     - {applies_to}`stack: ga 9.3` `All` for the `Rules, Alerts, and Exceptions` feature to view alert management flows
     - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
+::::{note}
+:applies_to: {stack: ga 9.5+, serverless: ga}
+To export alerts to CSV from the Alerts table, you also need [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access).
+::::
+
 ## Manage exceptions
 
 Cluster privileges
@@ -199,7 +204,7 @@ Index privileges
     - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
 ::::{important}
-To create the `.lists` and `.items` data streams in your space, visit the **Rules** page for each appropriate space.
+To create the `.lists` and `.items` data streams in your space, visit the **{{siem-rules-ui}}** page for each appropriate space.
 ::::
 
 

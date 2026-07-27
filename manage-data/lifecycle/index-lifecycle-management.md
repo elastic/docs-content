@@ -15,7 +15,7 @@ products:
 
 # {{ilm-cap}} ({{ilm-init}}) in {{es}}
 
-{{ilm}} ({{ilm-init}}) automates the management of time-based indices, such as logs and metrics. Using {{ILM-init}} policies, you can streamline index rollover, retention, and deletion to optimize performance, reliability, and storage costs for your data.
+{{ilm-cap}} ({{ilm-init}}) automates the management of time-based indices, such as logs and metrics. Using {{ILM-init}} policies, you can streamline index rollover, retention, and deletion to optimize performance, reliability, and storage costs for your data.
 
 For example, you can use {{ilm-init}} to:
 

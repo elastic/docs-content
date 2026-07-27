@@ -1,5 +1,7 @@
 ---
 navigation_title: Add plugins and extensions
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-plugins.html
 applies_to:
   deployment:
     ece:
@@ -26,7 +28,7 @@ Additional plugins might be available. If a plugin is listed for your version of
 
 You can also [create](elasticsearch://extend/index.md) and add custom plugins.
 
-To add plugins when creating a new deployment:
+## Add plugins when creating a new {{ece}} deployment
 
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md) and select **Create deployment**.
 2. Make your initial deployment selections, then select **Advanced settings**.
@@ -36,7 +38,7 @@ To add plugins when creating a new deployment:
 
 The deployment spins up with the plugins installed.
 
-To add plugins to an existing deployment:
+## Add plugins to an existing {{ece}} deployment
 
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.

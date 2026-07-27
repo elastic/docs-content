@@ -193,6 +193,10 @@ PUT _cluster/settings
 }
 ```
 
+::::{tip}
+For {{esql}}-specific guidance on writing efficient queries, refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md).
+::::
+
 #### Prevent mapping explosion [reduce-jvm-memory-pressure-setup-mapping]
 
 Defining too many fields or nesting fields too deeply can lead to [mapping explosions](/troubleshoot/elasticsearch/mapping-explosion.md) that use large amounts of memory. To prevent mapping explosions, use the [mapping limit settings](elasticsearch://reference/elasticsearch/index-settings/mapping-limit.md) to limit the number of field mappings.

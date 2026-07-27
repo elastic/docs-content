@@ -16,6 +16,14 @@ In {{kib}}, you can view and manage your trained models in **{{stack-manage-app}
 
 Alternatively, you can use APIs like [get trained models]({{es-apis}}operation/operation-ml-get-trained-models) and [delete trained models]({{es-apis}}operation/operation-ml-delete-trained-model).
 
+## Model management actions [ml-trained-models-actions]
+
+The actions available on the **{{models-app}}** page depend on the model type:
+
+* **{{dfanalytics}} models**: Use **Deploy model** to create an {{infer}} pipeline. See [Models trained by {{dfanalytics}}](#_models_trained_by_dfanalytics).
+* **NLP models** (such as ELSER and E5): Download, start, update, and test deployments from the **Actions** menu. See [Deploy trained models](../nlp/ml-nlp-deploy-models.md).
+* **Rerank models** (such as [Elastic Rerank](../nlp/ml-nlp-rerank.md), available from version 9.5): Use **Start deployment** and **Update deployment** from the **Actions** menu. The deployment modal does not include the **Optimize for use case** selector (Ingest, Search, Balanced), because this optimization does not apply to rerank models. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga`
+
 ## Deploying trained models [deploy-dfa-trained-models]
 
 ### Models trained by {{dfanalytics}} [_models_trained_by_dfanalytics]

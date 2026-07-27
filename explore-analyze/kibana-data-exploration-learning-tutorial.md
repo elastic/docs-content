@@ -74,7 +74,7 @@ Discover supports two exploration modes. This tutorial uses **{{esql}}** (Elasti
 
 :::::{step} Run your first query
 
-Enter the following query, then select {icon}`playFilled` **Run** or **Search**. If you choose to type your own query, the editor helps you with relevant autocomplete suggestions for commands, fields, and values.
+Enter the following query, then select {icon}`play_filled` **Run** or **Search**. If you choose to type your own query, the editor helps you with relevant autocomplete suggestions for commands, fields, and values.
 
 ```esql
 FROM kibana_sample_data_logs <1>
@@ -150,7 +150,7 @@ The aggregation query produced a chart showing event counts by response code. Yo
 :screenshot:
 :::
 
-**Result:** {{kib}} opens a new, unsaved dashboard with your response code chart already on it.
+**Result:** {{kib}} opens a new, unsaved dashboard with your response code chart already on it. The chart is saved to the library and linked to the dashboard, so any edits you make to the chart are reflected on every dashboard that uses it. Panels you add directly to a dashboard without saving to the library are local to that dashboard only.
 
 :::{tip}
 Want to show the results table on a dashboard instead of the chart? Save your Discover session (select **Save** in the toolbar), then from your dashboard, import it from the library as a new panel. This embeds the table view, including the query and any filters you applied.
@@ -227,7 +227,7 @@ A dashboard often starts with a row of metrics for key numbers at a glance. Usin
 4. From the **Available fields** list, drag **host.keyword** to the **Breakdown** area. Lens draws one line per host, each in a different color, so you can compare traffic patterns across servers.
 
 5. Add a reference line to give the chart visual context:
-   1. Select the **Add layer** icon {icon}`plus_in_square`, then select **Reference lines**.
+   1. Select the **Add layer** icon {icon}`plus_square`, then select **Reference lines**.
    2. Select the reference line value and enter `80`. This marks a "high traffic" threshold on the chart.
    3. Set the color to red, then under **Text decoration**, enter a label such as `High traffic` and select **Fill below** to shade the area under the line.
 
@@ -282,8 +282,8 @@ You can also add panels powered by {{esql}} queries directly from the dashboard.
 
 1. Add a new panel:
 
-   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **New panel** in the toolbar, then select **{{esql}}** under **Visualizations**.
-   - {applies_to}`stack: ga 9.0-9.1` Select **Add panel** in the toolbar, then select **{{esql}}** under **Visualizations**.
+   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **Visualization (query)** or **New panel** → **{{esql}}** under **Visualizations**, depending on your {{kib}} version.
+   - {applies_to}`stack: ga 9.0-9.1` Select **Add panel** in the application menu, then select **{{esql}}** under **Visualizations**.
 
 2. Enter the following query and run it:
 
@@ -347,7 +347,7 @@ Dashboard panels are interactive. Try selecting the `404` bar in the **Events by
 To remove the filter, select the {icon}`cross` next to it in the dashboard's filter bar.
 
 :::{tip}
-If you know which dimensions your viewers will want to filter by, you can add [controls](dashboards/add-controls.md) (dropdown menus, range sliders) directly to the dashboard so they don't have to build those filters themselves.
+If you know which dimensions your viewers will want to filter by, you can add [controls](visualize/dashboard-controls.md) (dropdown menus, range sliders) directly to the dashboard so they don't have to build those filters themselves.
 :::
 :::::
 
@@ -358,6 +358,8 @@ Drag panels by their header to reposition them, and drag the corner handles to r
 - **Top row:** place metric panels side by side for key numbers at a glance. Keep them short, about 5 grid rows, so they don't dominate the page.
 - **Middle rows:** arrange time series charts (line charts) and bar charts below the metrics. A moderate height (roughly 10–12 grid rows) gives charts enough room to be readable without wasting space.
 - **Bottom row:** use wider panels for tables that benefit from more horizontal space and can afford a taller height.
+
+For a panel sizing reference with recommended widths and heights for each chart type, refer to [Organize dashboard panels](dashboards/arrange-panels.md#dashboard-grid-layout).
 
 To reduce clutter, consider hiding redundant axis titles. For example, on a bar chart the x-axis title may not add value when the panel title already describes the data. To hide it, edit the panel in Lens, open the {icon}`brush` **Style** panel, then under **Bottom axis**, set **Axis title** to **None**.
 
@@ -393,19 +395,18 @@ For more details on sharing options, access control, and managing dashboard owne
 
 ## Recreate the dashboard with the API [recreate-dashboard-api]
 ```{applies_to}
-stack: preview 9.4+
-serverless: preview
+stack: ga 9.5+, preview =9.4
+serverless: ga
 ```
 
 Everything you built in this tutorial can also be reproduced in a single API call. The [Dashboards API](dashboards/create-dashboards-programmatically.md) accepts a JSON payload that encodes the complete dashboard, including panel types, data sources, layout, and display options, making it straightforward to version-control dashboards or provision consistent environments programmatically.
 
 <!--
   The curl example below is verified end-to-end by
-  .github/scripts/verify-dashboards-api-example.py. The Dashboards API is in
-  technical preview, so its schema can change between releases. Re-run that
-  script (with KIBANA_URL and API_KEY set) whenever you edit the payload, or
-  whenever the spec at https://github.com/elastic/dashboards-api-spec is
-  updated. Last verified against dashboards-api-spec @ 84120e3 on 2026-05-06.
+  .github/scripts/verify-dashboards-api-example.py. Re-run that script (with
+  KIBANA_URL and API_KEY set) whenever you edit the payload, or whenever the
+  spec at https://github.com/elastic/dashboards-api-spec is updated. Last
+  verified against dashboards-api-spec @ 84120e3 on 2026-05-06.
 -->
 :::::::{dropdown} Recreate this dashboard with one API call
 
@@ -1036,7 +1037,7 @@ One of {{kib}}'s strengths is how you can move between exploring raw data and vi
 :   Select {icon}`pencil` on any panel to open the inline **Configuration** flyout. For deeper changes, select **Edit in Lens** in the flyout to switch to the full editor, then **Save and return** to go back to the dashboard.
 
 **Add a new visualization directly from a dashboard**
-:   From a dashboard, select **Add** > **Visualization** to open the Lens editor, or **Add** > **New panel** and then **ES|QL** under **Visualizations** to create a chart from an {{esql}} query without going through Discover first.
+:   From a dashboard, select **Add**, then select **Visualization** to open the Lens editor, or **Visualization (query)** to create a chart from an {{esql}} query without going through Discover first.
 
 :::{tip}
 This back-and-forth workflow is especially useful when investigating anomalies: spot something unusual on a dashboard, jump to Discover to examine the raw events, refine your query, then save an updated visualization back to the dashboard.

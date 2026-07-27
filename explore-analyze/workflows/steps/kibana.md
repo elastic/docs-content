@@ -25,6 +25,9 @@ All {{kib}} actions are automatically authenticated using the permissions or API
 The detection alert step type IDs use **PascalCase**, not lowercase or snake_case: `kibana.SetAlertsStatus`, `kibana.SetAlertTags`. The editor rejects lowercase variants. This is the most common authoring surprise on the {{kib}} namespace.
 :::
 
+:::{include} ../_snippets/schema-location-legend.md
+:::
+
 ## Step types
 
 - [`kibana.SetAlertsStatus`](#kibana-setalertsstatus): Change the status of one or more detection alerts.

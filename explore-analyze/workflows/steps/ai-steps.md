@@ -24,8 +24,18 @@ AI steps let workflows call a large language model (LLM) for reasoning, classifi
 - [`ai.summarize`](#ai-summarize): Generate a summary of the provided content. {applies_to}`stack: ga 9.4+`
 - [`ai.agent`](#ai-agent): Invoke an {{agent-builder}} agent as a workflow step. {applies_to}`stack: preview 9.3, ga 9.4+`
 
-:::{important}
-`connector-id`, `agent-id`, and `inference-id` are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`), written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most AI parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`). Authentication-style references stay at the top level in kebab-case; content parameters stay inside `with` in camelCase.
+`connector-id`, `agent-id`, and `inference-id` are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`) and are written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most AI parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`).
+
+::::{applies-switch}
+:::{applies-item} { stack: ga 9.5, serverless: ga }
+Liquid expressions are evaluated in these top-level fields, so you can use templated values (for example, `"{{ consts.agent_id }}"`).
+:::
+:::{applies-item} stack: ga 9.3-9.4
+Liquid expressions in these top-level fields aren't evaluated, so use a literal value (for example, `agent-id: elastic-ai-agent`) instead of `"{{ consts.agent_id }}"`.
+:::
+::::
+
+:::{include} ../_snippets/schema-location-legend.md
 :::
 
 ## `ai.prompt` [ai-prompt]

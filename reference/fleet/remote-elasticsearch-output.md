@@ -19,6 +19,12 @@ Both the management cluster (where you configure {{fleet}}) and the remote clust
 
 A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-output-settings.md) as your management {{es}} cluster.
 
+:::{note}
+:applies_to: {serverless: preview, stack: preview 9.5+}
+
+The remote {{es}} output can also serve as the exporter target for [OpenTelemetry input packages](/reference/fleet/otel-integrations.md) managed by {{fleet}}.
+:::
+
 ## Limitations [remote-output-limitations]
 
 These limitations apply to remote {{es}} output:
@@ -171,7 +177,7 @@ For more information about TLS configuration options, refer to [One-way and mutu
 
 3. Select the [performance tuning settings](/reference/fleet/es-output-settings.md#es-output-settings-performance-tuning-settings) to optimize {{agent}}s for throughput, scale, or latency, or leave the default `balanced` setting.
 
-4. {applies_to}`stack: preview 9.2` Choose whether {{agents}} using this output should send data to [wired streams](/solutions/observability/streams/streams.md#streams-wired-streams). Using this feature requires additional steps. For more details, refer to [Ship data to streams → {{fleet}}](/solutions/observability/streams/wired-streams.md#streams-wired-streams-ship).
+4. {applies_to}`stack: preview 9.2` Choose whether {{agents}} using this output should send data to [wired streams](/solutions/observability/streams/get-data-in.md#get-data-in-wired). Using this feature requires additional steps. For more details, refer to [Ship data to streams → {{fleet}}](/solutions/observability/streams/get-data-in.md#get-data-in-wired).
 :::::
 
 :::::{step} Configure advanced settings (optional)
