@@ -191,7 +191,7 @@ deployment:
   eck: ga 3.5+
 ```
 
-{{ls}} supports multiple {{es}} references, so `clientCertificateSecretName` is configured per entry in `elasticsearchRefs`:
+{{ls}} supports multiple {{es}} references, so `clientCertificateSecretName` is configured for each entry in `elasticsearchRefs`:
 
 ```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
