@@ -14,7 +14,7 @@ products:
 
 When you connect your ECE, ECK, or self-managed {{es}} cluster to AutoOps, {{agent}} collects data from your cluster and sends it to AutoOps to diagnose issues and provide performance recommendations. 
 
-If you don't want the agent to access certain types of data, you can disable the collection of related metrics by editing your configuration file as described in the following section.
+If you don't want the agent to access certain types of data, you can disable the collection of related metrics as described in the following section.
 
 :::{warning}
 Disable data collection only when necessary, as it limits the insights that AutoOps can provide. For example, disabling the collection of cluster health metrics prevents you from receiving critical warnings and diagnostics about your cluster's health.
