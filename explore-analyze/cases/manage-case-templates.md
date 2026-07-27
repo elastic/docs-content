@@ -18,8 +18,6 @@ Case templates pre-fill case fields such as severity, tags, title, description, 
 
 This page explains what templates contain and how they use the field library.
 
-To create, edit, or delete templates and field library entries, your role needs the **Manage templates** sub-feature privilege for **Cases**. Anyone with access to cases can select and apply enabled templates when creating a case. Refer to [Control access to cases](control-case-access.md#give-manage-templates-access).
-
 ## What's in a template [case-templates-anatomy]
 
 A template is made up of the following components:
