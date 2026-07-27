@@ -27,7 +27,7 @@ With a namespace selector configured, the operator watches all namespaces cluste
 * The [validating webhook](configure-validating-webhook.md) applies the same filtering: resources in namespaces that do not match the selector are not validated (admission requests for them are silently accepted rather than blocked).
 * The namespace in which the operator itself runs is always considered managed, regardless of its labels.
 
-### On-boarding [k8s-dynamic-namespace-handling-onboarding]
+### Onboarding [k8s-dynamic-namespace-handling-onboarding]
 
 To onboard a namespace, apply the labels that match the configured selector. For example, with a selector matching `eck-managed: "true"`:
 
