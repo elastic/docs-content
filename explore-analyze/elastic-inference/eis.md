@@ -24,7 +24,7 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 * You can use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to perform semantic search as a service (ELSER on EIS). {applies_to}`stack: preview =9.1, ga 9.2+` {applies_to}`serverless: ga`
 
-* You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v3) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
+* You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-text-embeddings) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
 
 ## Manage your models [manage-models]
 
