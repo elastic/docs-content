@@ -213,7 +213,7 @@ config:
   restrictWatchedResources: true
 ```
 
-To enable it via the `elastic-operator` ConfigMap:
+To enable it using the `elastic-operator` ConfigMap:
 
 ```yaml
 data:
