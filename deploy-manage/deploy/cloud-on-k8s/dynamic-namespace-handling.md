@@ -85,7 +85,7 @@ helm upgrade elastic-operator elastic/eck-operator -n elastic-system \
   --set-string 'managedNamespaceSelector.matchLabels.eck-managed=true'
 ```
 
-Note the use of `--set-string`, which prevents Helm from interpreting the label value `true` as a boolean, namespace label values are always strings. If the label key contains dots, escape them with `\.` (for example, `managedNamespaceSelector.matchLabels.kubernetes\.io/metadata\.name`).
+Note the use of `--set-string`, which prevents Helm from interpreting the label value `true` as a Boolean. Namespace label values are always strings. If the label key contains dots, escape them with `\.`, for example, `managedNamespaceSelector.matchLabels.kubernetes\.io/metadata\.name`.
 
 ::::{important}
 When `managedNamespaceSelector` is set, the chart requires `createClusterScopedResources` to be `true` (the default), and fails to install if `managedNamespaces` is set at the same time.
