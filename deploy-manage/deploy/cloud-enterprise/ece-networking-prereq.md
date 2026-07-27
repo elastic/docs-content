@@ -17,6 +17,7 @@ For versions 2.4.0 and 2.4.1, IPv6 should remain enabled on any host with the Pr
 * [Inbound traffic](#ece-inbound)
 * [Outbound traffic](#ece-outbound)
 * [Container communication on the same host](#ece-container-communication-on-same-host)
+* [Network stability requirements](#ece-network-stability)
 * [Hosts in multiple data centers](#ece-multiple-data-centers)
 
 ## Inbound traffic [ece-inbound]
@@ -82,6 +83,24 @@ The following ports need to be open for containers communicating with the host o
 | 8080-8084 | Health/monitoring ports | All roles |
 | 9000, 9043 | Internal proxy use | Proxy |
 | 9244 | Internal proxy port | All roles |
+
+
+## Network stability requirements [ece-network-stability]
+
+ECE relies on [Apache ZooKeeper](https://zookeeper.apache.org/) for all control plane coordination, including plan changes, vacates, allocator health checks, and leader elections. ZooKeeper is sensitive to network and disk latency, and even brief disruptions can cause ensemble members to disconnect, resulting in ECE control plane instability.
+
+Before deploying ECE, validate the following on your director hosts:
+
+* Round-trip latency between all director hosts is consistently < 10 ms. Use `netperf` (preferred) or `ping` to validate.
+* No packet loss between director hosts, validated over a sustained period (24+ hours).
+* Firewall rules allow bidirectional traffic on ZooKeeper ports. Refer to [Inbound traffic](#ece-inbound).
+* ECE data directory (`/mnt/data`), which contains the ZooKeeper transaction log, is located on a dedicated disk.
+* JVM heap is sized appropriately, not exceeding available physical memory on director hosts. Refer to [JVM heap size](ece-jvm.md).
+* Swap is disabled on director hosts that run the ZooKeeper process. Refer to [Swap considerations](./ece-software-prereq.md#ece-swap-considerations).
+
+If these requirements are not met, ECE control plane operations can fail intermittently, including plan changes, vacates, and new deployment creation.
+
+For a detailed explanation of how network instability affects ZooKeeper and what to monitor, refer to the [Network Stability Requirement](https://ela.st/ece-network-stability-requirement) KB article.
 
 
 ## Hosts in multiple data centers [ece-multiple-data-centers]
