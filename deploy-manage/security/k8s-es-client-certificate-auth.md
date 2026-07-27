@@ -244,7 +244,7 @@ deployment:
   eck: ga 3.5+
 ```
 
-{{fleet-server}} also connects to {{es}} and can be configured with a custom client certificate via `elasticsearchRefs`:
+{{fleet-server}} also connects to {{es}} and can be configured with a custom client certificate through `elasticsearchRefs`:
 
 ```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
