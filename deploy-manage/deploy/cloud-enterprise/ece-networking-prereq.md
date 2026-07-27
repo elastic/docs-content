@@ -94,7 +94,7 @@ Before deploying ECE, validate the following on your director hosts:
 * Round-trip latency between all director hosts is consistently < 10 ms. Use `netperf` (preferred) or `ping` to validate.
 * No packet loss between director hosts, validated over a sustained period (24+ hours).
 * Firewall rules allow bidirectional traffic on ZooKeeper ports. Refer to [Inbound traffic](#ece-inbound).
-* ZooKeeper transaction log is on a dedicated disk.
+* ECE data directory (`/mnt/data`), which contains the ZooKeeper transaction log, is located on a dedicated disk.
 * JVM heap is sized appropriately, not exceeding available physical memory on director hosts. Refer to [JVM heap size](ece-jvm.md).
 * Swap is disabled on director hosts that run the ZooKeeper process. Refer to [Swap considerations](./ece-software-prereq.md#ece-swap-considerations).
 
