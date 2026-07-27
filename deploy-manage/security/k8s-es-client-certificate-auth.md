@@ -220,7 +220,7 @@ deployment:
   eck: ga 3.5+
 ```
 
-For standalone {{agent}}, `clientCertificateSecretName` is configured per entry in `elasticsearchRefs`:
+For standalone {{agent}}, `clientCertificateSecretName` is configured for each entry in `elasticsearchRefs`:
 
 ```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
