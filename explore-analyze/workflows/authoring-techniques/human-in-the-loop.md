@@ -39,23 +39,21 @@ When the workflow reaches either step, execution pauses in the `WAITING_FOR_INPU
 
 While a HITL step is waiting, the execution status is `WAITING_FOR_INPUT` and the run appears in the execution history with a resume action.
 
-{applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` When Inbox is enabled, the waiting action also appears there.
+{applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` When [Inbox](#workflows-hitl-inbox) is enabled, the waiting action also appears there.
 
 Timeout behavior depends on the {{stack}} version that you're using:
 
 ::::{applies-switch}
 
 :::{applies-item} { stack: preview 9.5+, serverless: preview }
-Wait steps time out by default: `waitForInput` after `72h` and `waitForApproval` after `24h`. These defaults apply whether or not you configure an external channel. Override them with a top-level `timeout` on the step. If no one responds before the timeout, the step fails.
+Wait steps time out by default: `waitForInput` after `72h` and `waitForApproval` after `24h`. These defaults apply whether you configure an external channel. Override them with a top-level `timeout` on the step. If no one responds before the timeout, the step fails.
 :::
 
 :::{applies-item} stack: ga 9.4
-`waitForInput` has no default timeout and waits until someone responds. To limit the wait, set a workflow-level `settings.timeout`.
+`waitForInput` has no default timeout and waits until someone responds. To limit the wait, set a workflow-level `settings.timeout`. If that timeout elapses before anyone responds, the execution is cancelled.
 :::
 
 ::::
-
-If a workflow-level `settings.timeout` elapses before anyone responds, the execution is cancelled.
 
 ## Write a HITL workflow
 
@@ -161,15 +159,15 @@ The `review` step above is a simple yes/no decision, so you can replace it with 
         Isolate this host?
 ```
 
-Downstream steps read the decision from `{{ steps.review.output.response.approved }}`, exactly as they would with `waitForInput`.
+Downstream steps read the decision from `{{ steps.review.output.response.approved }}` — the same path as a `waitForInput` schema that defines an `approved` boolean.
 
 ## Resume a paused workflow
 
-Resume a paused workflow using the following methods.
+Resume a paused workflow using any of the following methods. The step resumes on the first response it receives. If the action reaches more than one responder (for example, in a shared Inbox or a Slack channel), only the first response is accepted; the resume token is single-use, so later responses are rejected.
 
-### From the Kibana UI
+### From the execution view
 
-Open the execution view. The paused step renders a form generated from the `schema` (or approve/reject controls for `waitForApproval`). Fill it in, submit, and the workflow resumes.
+Open the workflow execution view in {{kib}}. The paused step renders a form generated from the `schema` (or approve/reject controls for `waitForApproval`). Fill it in, submit, and the workflow resumes.
 
 ### From the Inbox app [workflows-hitl-inbox]
 
@@ -178,30 +176,30 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-The **Inbox** app lists HITL actions that need a response. Enable it with `xpack.inbox.enabled: true` in `kibana.yml` (disabled by default).
+The **Inbox** app is a separate {{kib}} app that lists HITL actions that need a response across all workflows, so responders don't have to open each execution individually. Enable it with `xpack.inbox.enabled: true` in `kibana.yml` (disabled by default). When enabled, open it from the {{kib}} navigation menu.
 
 Inbox splits into:
 
 - **Awaiting response** — Pending `waitForInput` / `waitForApproval` steps. Open the **Respond** flyout to fill in the form (or approve/reject). If the preceding step included a reasoning summary, Inbox shows it to help the responder decide.
 - **History** — A record of actions that were responded to, timed out, or whose workflow was deleted. Each entry includes who responded, their response, the channel, and when it happened.
 
-If more than one person responds, only the first response is accepted.
-
 ### From the API
 
-Send a `POST` request to the resume endpoint with the responder's input:
+Send a `POST` request to the resume endpoint with the responder's input wrapped in an `input` object:
 
 ```http
-POST /api/workflowExecutions/{executionId}/resume
+POST /api/workflows/executions/{executionId}/resume
 Content-Type: application/json
 
 {
-  "approved": true,
-  "notes": "Confirmed malicious. Proceeding with isolation."
+  "input": {
+    "approved": true,
+    "notes": "Confirmed malicious. Proceeding with isolation."
+  }
 }
 ```
 
-The input body becomes part of the step output. See [Output shape](#hitl-output-shape) for how to reference fields by Stack version.
+The `input` fields become part of the step output. See [Output shape](#hitl-output-shape) for how to reference fields by Stack version.
 
 ### From an external channel (Slack) [workflows-hitl-external-channels]
 
@@ -210,17 +208,12 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-Configure `with.channels` on `waitForInput` or `waitForApproval` to notify responders in Slack. Slack is the only built-in channel in 9.5.
-
-| Channel key | What you need |
-|---|---|
-| `slack` | A Slack **webhook** connector. Posts to the webhook's configured channel. |
-| `slack_api` | A Slack **API** connector plus one or more Slack channel IDs (`channels: ["C…"]`). |
+Configure `with.channels` on `waitForInput` or `waitForApproval` to notify responders in Slack. Slack is the only supported built-in channel. For the channel configuration, refer to [`waitForApproval` external channels](/explore-analyze/workflows/steps/wait-for-approval.md#external-channels) or [`waitForInput` external channels](/explore-analyze/workflows/steps/wait-for-input.md#external-channels).
 
 How responders act:
 
-- **`waitForApproval`** — Approve and reject links (and Slack API buttons) that resume the step. Responders can act without signing in to {{kib}}.
-- **`waitForInput`** — A link to a hosted form where responders submit the schema fields. The Slack notification can also include a one-click query link.
+- **`waitForApproval`** — Responders receive approve and reject links (and Slack API buttons) that allow them to resume the step. They can act without signing in to {{kib}}.
+- **`waitForInput`** — Responders receive a link to a hosted form where they submit the schema fields. The Slack notification can also include a query link, which responders complete by appending the schema field values.
 
 External links work without a {{kib}} session. Each link includes a short-lived, single-use token that {{kib}} invalidates after use, timeout, or workflow cancellation.
 
@@ -228,7 +221,7 @@ External links work without a {{kib}} session. Each link includes a short-lived,
 External channels send public, short-lived resume links. Don't use them for destructive, production-impacting, or hard-to-reverse workflows.
 :::
 
-To resume waiting workflows from {{kib}} only, set external resume to `false` in `kibana.yml`:
+To disable external resume links so that workflows can only be resumed from {{kib}} (the execution view, the Inbox app, or the resume API), set external resume to `false` in `kibana.yml`:
 
 ```yaml
 workflowsManagement.hitlExternalResume.enabled: false
@@ -250,7 +243,7 @@ A HITL message is read by a human mid-incident. Design for speed:
 
 - **Lead with the decision.** The first line should say what the responder needs to decide.
 - **Include the evidence.** Relevant context (alert details, enrichment results, AI rationale) belongs in the message so the responder doesn't have to dig.
-- **Keep the schema small.** Three fields is a lot. One boolean plus an optional notes field is often enough. Prefer [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` when you only need yes/no.
+- **Keep the schema small.** Three fields is a lot. One boolean plus an optional notes field is often enough. Prefer [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) when you only need yes/no.
 - **Use Markdown.** The message supports Markdown, so use headings, bold text, and bullets to make it scannable.
 
 ## Related

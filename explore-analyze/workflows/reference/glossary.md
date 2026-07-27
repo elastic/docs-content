@@ -241,7 +241,7 @@ A human-in-the-loop step that pauses a workflow for an approve or reject decisio
 
 ### waitForInput [workflows-glossary-wait-for-input]
 
-The human-in-the-loop primitive. Pauses a workflow for human input. Refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) and [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md).
+A human-in-the-loop step that pauses a workflow for human input. Refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) and [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md).
 
 ### Workflow [workflows-glossary-workflow]
 

@@ -15,9 +15,11 @@ products:
 
 # Flow control steps [workflows-flow-control-steps]
 
-Flow control steps shape a workflow's logic. They decide what runs, what gets skipped, when the workflow loops, and where it pauses. Workflows include these flow-control step types: `if`, `foreach`, `while`, `switch`, `wait`, `loop.break`, `loop.continue`, `waitForInput`, and `waitForApproval` {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`.
+Flow control steps shape a workflow's logic. They decide what runs, what gets skipped, when the workflow loops, and where it pauses.
 
 ## When to reach for each
+
+Workflows include the following flow-control step types. Use this table to understand when to use each.
 
 | Pattern | Step |
 |---|---|

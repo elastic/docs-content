@@ -34,6 +34,23 @@ For free-form or multi-field input, use [`waitForInput`](/explore-analyze/workfl
 | `rejectLabel` | `with` | string | No | Label for the reject action. Defaults to `Decline`. |
 | `channels` | `with` | object | No | External notification channels that send approve/reject links. Responders can act without signing in to {{kib}}. See [External channels](#external-channels). |
 
+## External channels [external-channels]
+
+Use `with.channels` to notify approvers outside Kibana. Slack is the only built-in channel. Notifications include one-click approve and reject links. Responders can act without signing in to {{kib}}.
+
+| Channel key | Connector type | Required fields | Notes |
+|---|---|---|---|
+| `slack` | Slack webhook (`slack`) | `connector-id` | Posts to the channel configured on the webhook connector. |
+| `slack_api` | Slack API (`slack_api`) | `connector-id`, `channels` (array of Slack channel IDs) | Posts approve/reject buttons to the listed channels. |
+
+Slack content comes from the step-level `with.message` plus the generated approve and reject actions.
+
+:::{warning}
+External channels send public, short-lived resume links. Don't use them for destructive, production-impacting, or hard-to-reverse workflows.
+:::
+
+To turn off external resume, set both `hitlExternalResume.enabled` keys in `kibana.yml` (both default to `true`). For the exact settings, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md#workflows-hitl-external-channels).
+
 ## Output
 
 After someone responds, the step output has this shape:
@@ -49,25 +66,10 @@ Downstream steps typically gate on `{{ steps.<step_name>.output.response.approve
 ## Execution state
 
 - While waiting, the execution state is `WAITING_FOR_INPUT`.
-- By default, the step times out after `24h`. This default applies whether or not you configure an external channel.
+- **Approve** finishes the step successfully with `response.approved: true`.
+- **Reject** also finishes the step successfully, with `response.approved: false`. Rejecting does not fail the step or cancel the workflow, so you must branch on the decision (for example, with an `if` guard on `output.response.approved`) to stop downstream work.
+- By default, the step times out after `24h`. This default applies whether you configure an external channel.
 - If no one responds before the timeout, the step fails.
-
-## External channels [external-channels]
-
-Use `with.channels` to notify approvers outside Kibana. Slack is the only built-in channel. Notifications include one-click approve and reject links. Responders can act without signing in to {{kib}}.
-
-| Channel key | Connector type | Required fields | Notes |
-|---|---|---|---|
-| `slack` | Slack webhook (`slack`) | `connector-id` | Posts to the channel configured on the webhook connector. |
-| `slack_api` | Slack API (`slack_api`) | `connector-id`, `channels` (array of Slack channel IDs) | Posts approve/reject buttons to the listed channels. |
-
-Both channel configs accept an optional `message` template.
-
-:::{warning}
-External channels send public, short-lived resume links. Don't use them for destructive, production-impacting, or hard-to-reverse workflows.
-:::
-
-To turn off external resume, set both `hitlExternalResume.enabled` keys in `kibana.yml` (both default to `true`). For the exact settings, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md#workflows-hitl-external-channels).
 
 ## Example: Approve host isolation
 
