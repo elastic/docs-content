@@ -235,7 +235,7 @@ spec:
       clientCertificateSecretName: my-custom-client-cert
 ```
 
-For fleet-managed {{agents}}, {{fleet-server}} automatically propagates the client certificate information to all connected agents. No additional configuration is required.
+For Fleet-managed {{agents}}, {{fleet-server}} automatically propagates the client certificate information to all connected agents. No additional configuration is required.
 
 ### Fleet Server [k8s-fleet-server-es-custom-client-cert]
 
