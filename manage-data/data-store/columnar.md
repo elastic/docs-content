@@ -1,5 +1,5 @@
 ---
-navigation_title: Columnar
+navigation_title: Columnar storage
 description: Learn when to use columnar index mode to store data once for analytics and search with a smaller storage footprint.
 applies_to:
   stack: preview 9.5
