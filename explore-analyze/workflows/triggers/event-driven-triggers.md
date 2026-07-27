@@ -353,12 +353,6 @@ serverless: preview
 
 Entity store triggers fire when an entity in the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) changes. Use them to react to changes in an entity's asset criticality or risk score without polling.
 
-**Shared payload.** Every entity store trigger event includes:
-
-- `event.entityId` — The unique identifier (EUID) of the entity that changed.
-- `event.entityType` — The type of entity: `host`, `user`, or `service`.
-
-Individual trigger sections below document the additional payload fields specific to that event.
 
 ### `entityStore.entityAssetCriticalityUpdated` [entitystore-assetcriticalityupdated-trigger]
 
