@@ -73,11 +73,6 @@ data:
 
 ### Kibana [k8s-kibana-custom-client-cert]
 
-```{applies_to}
-deployment:
-  eck: ga =3.4
-```
-
 Set `clientCertificateSecretName` in the `elasticsearchRef` of the {{kib}} resource:
 
 ```yaml subs=true
