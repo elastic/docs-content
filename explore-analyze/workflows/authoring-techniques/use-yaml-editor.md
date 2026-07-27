@@ -46,6 +46,8 @@ The editor layout is composed of the following elements:
 When viewing step output in the executions panel, click the **Copy** icon next to a step name to copy its full output path to your clipboard. For example, clicking **Copy** on a step named `check_if_newer` copies `steps.check_if_newer.output.conditionResult`, which you can paste directly into your workflow YAML to reference that step's output.
 :::
 
+% Follow-up (#1454): Add a short link to visualize-workflows.md when that page ships.
+
 ## Test runs and production runs [workflows-test-vs-production-runs]
 
 Every workflow execution is either a test run or a production run. Understanding the difference helps you iterate safely during development without affecting real processes.
