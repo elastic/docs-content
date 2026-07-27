@@ -89,7 +89,6 @@ The following ports need to be open for containers communicating with the host o
 
 ECE relies on [Apache ZooKeeper](https://zookeeper.apache.org/) for all control plane coordination, including plan changes, vacates, allocator health checks, and leader elections. ZooKeeper is sensitive to network and disk latency, and even brief disruptions can cause ensemble members to disconnect, resulting in ECE control plane instability.
 
-::::{admonition} Network stability checklist
 Before deploying ECE, validate the following on your director hosts:
 
 * Round-trip latency between all director hosts is consistently < 10 ms. Use `netperf` (preferred) or `ping` to validate.
@@ -98,7 +97,6 @@ Before deploying ECE, validate the following on your director hosts:
 * ZooKeeper transaction log is on a dedicated disk.
 * JVM heap is sized appropriately, not exceeding available physical memory on director hosts. Refer to [JVM heap size](ece-jvm.md).
 * Swap is disabled on director hosts that run the ZooKeeper process. Refer to [Swap considerations](./ece-software-prereq.md#ece-swap-considerations).
-::::
 
 If these requirements are not met, ECE control plane operations can fail intermittently, including plan changes, vacates, and new deployment creation.
 
