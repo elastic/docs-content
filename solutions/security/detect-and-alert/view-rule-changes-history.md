@@ -62,7 +62,6 @@ If someone else changes or deletes the rule after the revision you're restoring 
 
 * You can't view or restore changes made before this feature was introduced, or while it was turned off.
 * Rule changes history is read-only. You can't edit or delete version history entries.
-* Capturing rule changes history adds a small amount of overhead when rules are created or updated.
 
 ## Turn off rule changes history [turn-off-rule-changes-history]
 
