@@ -22,10 +22,10 @@ Disable data collection only when necessary, as it limits the insights that Auto
 
 ## Configure data collection
 
-:::::{tab-set}
+:::::{applies-switch}
 :group: autoops-configure-collection
 
-::::{tab-item} Edit configuration file
+:::{applies-item} { ece: ga, self: ga }
 :sync: configure-collection-other
 
 To disable the collection of certain types of data from your environment, delete the lines related to that data from your `autoops_es.yml` file on the host machine where {{agent}} is installed.
