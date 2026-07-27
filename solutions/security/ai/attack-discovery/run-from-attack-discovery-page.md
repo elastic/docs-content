@@ -16,7 +16,7 @@ This page describes how to run Attack Discovery from the **Attack Discovery** pa
 
 :::{note}
 :applies_to: {"stack": "ga 9.5+", "serverless": {"security": "ga"}}
-You can also configure and run Attack Discovery from the [**Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md).
+Configure and run Attack Discovery from the [**Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md).
 :::
 
 ## Set up Attack Discovery [set-up-attack-discovery]
