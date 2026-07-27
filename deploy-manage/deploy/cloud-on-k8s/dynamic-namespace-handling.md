@@ -12,7 +12,7 @@ description: Use a label selector to dynamically control which namespaces the EC
 
 By default, the ECK operator manages either all namespaces in the cluster or a static list of namespaces defined through the [`namespaces` configuration option](configure-eck.md). Dynamic namespace handling replaces the static list with a [Kubernetes label selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors): the operator evaluates the selector against each namespace's labels at runtime to determine which namespaces it manages.
 
-When a namespace gains labels that match the selector, the operator starts managing the Elastic resources in it. This is called namespace **on-boarding**. When a namespace stops matching the selector, it is **off-boarded** and the operator stops managing its resources. The operator monitors namespace label changes live and adjusts on the fly, no operator restart is required in either direction.
+When a namespace gains labels that match the selector, the operator starts managing the Elastic resources in it. This is called namespace **onboarding**. When a namespace stops matching the selector, it is **offboarded** and the operator stops managing its resources. The operator watches for label changes and updates its managed namespaces automatically. No operator restart is required.
 
 ::::{note}
 Dynamic namespace handling requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../../license/manage-your-license-in-eck.md) for more details about managing licenses.
