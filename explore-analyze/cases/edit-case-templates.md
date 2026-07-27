@@ -28,7 +28,7 @@ You can edit, clone, or delete a template from the **Templates** page at any tim
 1. Find **Cases** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Templates**.
 
    :::{note}
-   Cases are [scoped by solution](create-cases.md#cases-limitations). On {{stack}}, search for `Security/Cases` or `Observability/Cases`, or go to **{{stack-manage-app}}** > **Cases**. On {{serverless-short}}, search for `Cases` in {{elastic-sec}} or {{observability}}.
+   Cases are [scoped by solution](create-cases.md#cases-limitations). On {{stack}}, search for `Security/Cases` or `Observability/Cases`, or go to **{{stack-manage-app}}** → **Cases**. On {{serverless-short}}, search for `Cases` in {{elastic-sec}} or {{observability}}.
    :::
 
 2. From the templates list, edit, clone, delete, or turn off the template you want to change.
