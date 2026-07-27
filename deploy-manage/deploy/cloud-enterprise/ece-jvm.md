@@ -23,7 +23,7 @@ When you install ECE specify the recommended JVM heap sizes with `--memory-setti
 Other JVM heap sizes can be left at their defaults.
 
 ::::{note}
-There is currently no UI option to change JVM heap sizes after installation. If you need to change them, refer to our KB article [How to change JVM memory of ECE components after installation](https://ela.st/change-ece-jvm-heap) for guidance.
+There is currently no UI option to change JVM heap sizes after installation. If you need to change them, refer to [our KB article](https://ela.st/change-ece-jvm-heap) for guidance.
 ::::
 
 
