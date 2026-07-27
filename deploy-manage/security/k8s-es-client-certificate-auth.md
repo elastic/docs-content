@@ -48,6 +48,8 @@ When client authentication is enabled, ECK does the following:
 * {{fleet-server}} requires version 8.13.0 or later. If the version is below 8.13.0, ECK blocks pod reconciliation and sets the agent status to red with a warning event.
 :::
 
+For Fleet Server acting as the mTLS endpoint (requiring client certificates from connecting {{agents}}), see [Fleet Server client certificate authentication](/deploy-manage/security/k8s-fleet-server-client-certificate-auth.md).
+
 ## Use a custom client certificate [k8s-custom-client-cert]
 
 ECK automatically issues a client certificate to each component. To use your own certificate instead, set `clientCertificateSecretName` in the component's `elasticsearchRef`.
