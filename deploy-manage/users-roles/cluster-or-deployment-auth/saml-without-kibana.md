@@ -15,7 +15,7 @@ The SAML realm in {{es}} is designed to allow users to authenticate to {{kib}} a
 This page assumes that you are familiar with the SAML 2.0 standard and more specifically with the SAML 2.0 Web Browser Single Sign On profile.
 ::::
 
-Single sign-on realms such as OpenID Connect and SAML make use of the Token Service in {{es}} and in principle exchange a SAML or OpenID Connect Authentication response for an {{es}} access token and a refresh token. The access token is used as credentials for subsequent calls to {{es}}. The refresh token enables the user to get new {{es}} access tokens after the current one expires.
+Single sign-on realms such as OpenID Connect and SAML use the Token Service in {{es}} and in principle exchange a SAML or OpenID Connect Authentication response for an {{es}} access token and a refresh token. The access token is used as credentials for subsequent calls to {{es}}. The refresh token enables the user to get new {{es}} access tokens after the current one expires.
 
 ## SAML realm [saml-no-kibana-realm]
 
@@ -23,7 +23,7 @@ You must create a SAML realm and configure it accordingly in {{es}}. See [Create
 
 ## Service account user for accessing the APIs [saml-no-kibana-user]
 
-The realm is designed with the assumption that there needs to be a privileged entity acting as an authentication proxy. In this case, the custom web application is the authentication proxy handling the authentication of end users (more correctly, "delegating" the authentication to the SAML Identity Provider). The SAML related APIs require authentication and the necessary authorization level for the authenticated user. For this reason, you must create a Service Account user and assign it a role that gives it the `manage_saml` cluster privilege. The use of the `manage_token` cluster privilege will be necessary after the authentication takes place, so that the service account user can maintain access in order to refresh access tokens on behalf of the authenticated users or to subsequently log them out.
+The realm is designed with the assumption that there needs to be a privileged entity acting as an authentication proxy. In this case, the custom web application is the authentication proxy handling the authentication of end users (more correctly, "delegating" the authentication to the SAML Identity Provider). The SAML related APIs require authentication and the necessary authorization level for the authenticated user. For this reason, you must create a Service Account user and assign it a role that gives it the `manage_saml` cluster privilege. The use of the `manage_token` cluster privilege will be necessary after the authentication takes place, so that the service account user can maintain access to refresh access tokens on behalf of the authenticated users or to subsequently log them out.
 
 ```console
 POST /_security/role/saml-service-role
@@ -42,7 +42,7 @@ POST /_security/user/saml-service-user
 
 ## Handling the SP-initiated authentication flow [saml-no-kibana-sp-init-sso]
 
-On a high level, the custom web application would need to perform the following steps in order to authenticate a user with SAML against {{es}}:
+On a high level, the custom web application would need to perform the following steps to authenticate a user with SAML against {{es}}:
 
 1. Make an HTTP POST request to `_security/saml/prepare`, authenticating as the `saml-service-user` user. Use either the name of the SAML realm in the {{es}} configuration or the value for the Assertion Consumer Service URL in the request body. See the [SAML prepare authentication API]({{es-apis}}operation/operation-security-saml-prepare-authentication) for more details.
 
@@ -53,7 +53,7 @@ On a high level, the custom web application would need to perform the following 
     }
     ```
 
-2. Handle the response from `/_security/saml/prepare`. The response from {{es}} will contain 3 parameters: `redirect`, `realm` and `id`. The custom web application would need to store the value for `id` in the user's session (client side in a cookie or server side if session information is persisted this way). It must also redirect the user's browser to the URL that was returned in the `redirect` parameter. The `id` value should not be disregarded as it is used as a nonce in SAML in order to mitigate against replay attacks.
+2. Handle the response from `/_security/saml/prepare`. The response from {{es}} will contain 3 parameters: `redirect`, `realm` and `id`. The custom web application would need to store the value for `id` in the user's session (client side in a cookie or server side if session information is persisted this way). It must also redirect the user's browser to the URL that was returned in the `redirect` parameter. The `id` value should not be disregarded as it is used as a nonce in SAML to mitigate against replay attacks.
 
 3. Handle a subsequent response from the SAML IdP. After the user is successfully authenticated with the Identity Provider they will be redirected back to the Assertion Consumer Service URL. This `sp.acs` needs to be defined as a URL which the custom web application handles. When it receives this HTTP POST request, the custom web application must parse it and make an HTTP POST request itself to the `_security/saml/authenticate` API. It must authenticate as the `saml-service-user` user and pass the Base64 encoded SAML Response that was sent as the body of the request. It must also pass the value for `id` that it had saved in the user's session previously.
 
@@ -95,9 +95,9 @@ POST /_security/saml/authenticate
     }
     ```
 
-    If the SAML realm is configured accordingly and the IdP supports it (see [SAML Single Logout](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-logout)), this request will trigger a SAML SP-initiated Single Logout. In this case, the response will include a `redirect` parameter indicating where the user needs to be redirected at the IdP in order to complete the logout.
+    If the SAML realm is configured accordingly and the IdP supports it (see [SAML Single Logout](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-logout)), this request will trigger a SAML SP-initiated Single Logout. In this case, the response will include a `redirect` parameter indicating where the user needs to be redirected at the IdP to complete the logout.
 
-2. Alternatively, the IdP might initiate the Single Logout flow at some point. In order to handle this, the Logout URL (`sp.logout`) needs to be handled by the custom web app. The query part of the URL that the user will be redirected to will contain a SAML Logout request and this query part needs to be relayed to {{es}} using the [SAML invalidate API]({{es-apis}}operation/operation-security-saml-invalidate):
+2. Alternatively, the IdP might initiate the Single Logout flow at some point. To handle this, the Logout URL (`sp.logout`) needs to be handled by the custom web app. The query part of the URL that the user will be redirected to will contain a SAML Logout request and this query part needs to be relayed to {{es}} using the [SAML invalidate API]({{es-apis}}operation/operation-security-saml-invalidate):
 
     ```console
     POST /_security/saml/invalidate
@@ -109,4 +109,4 @@ POST /_security/saml/authenticate
 
     The custom web application will then need to also handle the response, which will include a `redirect` parameter with a URL in the IdP that contains the SAML Logout response. The application should redirect the user there to complete the logout.
 
-For SP-initiated Single Logout, the IdP may send back a logout response which can be verified by {{es}} using the [SAML complete logout API]({{es-apis}}operation/operation-security-saml-complete-logout).
+For SP-initiated Single Logout, the IdP can send back a logout response which can be verified by {{es}} using the [SAML complete logout API]({{es-apis}}operation/operation-security-saml-complete-logout).

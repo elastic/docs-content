@@ -9,13 +9,13 @@ products:
 
 # Configure SAML signing and encryption [saml-enc-sign]
 
-The {{stack}} supports generating signed SAML messages (for authentication and/or logout), verifying signed SAML messages from the IdP (for both authentication and logout) and can process encrypted content.
+The {{stack}} supports generating signed SAML messages (for authentication or logout), verifying signed SAML messages from the IdP (for both authentication and logout) and can process encrypted content.
 
 You can configure {{es}} for signing, encryption or both, using a single key or individual keys.
 
 The {{stack}} uses X.509 certificates with RSA private keys for SAML cryptography. These keys can be generated using any standard SSL tool, including the `elasticsearch-certutil` tool.
 
-Your IdP may require that the {{stack}} have a cryptographic key for signing SAML messages, and that you provide the corresponding signing certificate within the Service Provider configuration (either within the {{stack}} SAML metadata file, or manually configured within the IdP administration interface).
+Your IdP might require that the {{stack}} have a cryptographic key for signing SAML messages, and that you provide the corresponding signing certificate within the Service Provider configuration (either within the {{stack}} SAML metadata file, or manually configured within the IdP administration interface).
 
 While most IdPs do not expect authentication requests to be signed, it is commonly the case that signatures are required for logout requests. Your IdP will validate these signatures against the signing certificate that has been configured for the {{stack}} Service Provider.
 
@@ -76,7 +76,7 @@ By default, {{es}} will sign *all* outgoing SAML messages if a signing certifica
 If you want to use **PEM formatted** keys and certificates for signing, then you should configure the following settings on the SAML realm:
 
 `signing.certificate`
-:   The path to the PEM formatted certificate file. e.g. `saml/saml-sign.crt`
+:   The path to the PEM formatted certificate file. for example, `saml/saml-sign.crt`
 
     :::::{note}
     Only the single leaf certificate is required for the `signing.certificate` setting, even when using an internal or non-public Certificate Authority (CA).
@@ -84,7 +84,7 @@ If you want to use **PEM formatted** keys and certificates for signing, then you
     :::::
 
 `signing.key`
-:   The path to the PEM formatted key file. e.g. `saml/saml-sign.key`
+:   The path to the PEM formatted key file. for example, `saml/saml-sign.key`
 
 `signing.secure_key_passphrase`
 :   The passphrase for the key, if the file is encrypted. This is a secure setting that must be uploaded to your [{{es}} keystore](/deploy-manage/security/secure-settings.md).
@@ -94,10 +94,10 @@ If you want to use **PEM formatted** keys and certificates for signing, then you
 If you want to use **PKCS#12 formatted** files or a **Java Keystore** for signing, then you should configure the following settings on the SAML realm:
 
 `signing.keystore.path`
-:   The path to the PKCS#12 or JKS keystore. e.g. `saml/saml-sign.p12`
+:   The path to the PKCS#12 or JKS keystore. for example, `saml/saml-sign.p12`
 
 `signing.keystore.alias`
-:   The alias of the key within the keystore. e.g. `signing-key`
+:   The alias of the key within the keystore. for example, `signing-key`
 
 `signing.keystore.secure_password`
 :   The passphrase for the keystore, if the file is encrypted. This is a secure setting that must be uploaded to your [{{es}} keystore](/deploy-manage/security/secure-settings.md).
@@ -144,7 +144,7 @@ If an `Assertion` contains both encrypted and plain-text attributes, then failur
 If you want to use **PEM formatted** keys and certificates for SAML encryption, then you should configure the following settings on the SAML realm:
 
 `encryption.certificate`
-:   The path to the PEM formatted certificate file. e.g. `saml/saml-crypt.crt`
+:   The path to the PEM formatted certificate file. for example, `saml/saml-crypt.crt`
 
     :::::{note}
     Only the single leaf certificate is required for the `encryption.certificate` setting, even when using an internal or non-public Certificate Authority (CA).
@@ -152,7 +152,7 @@ If you want to use **PEM formatted** keys and certificates for SAML encryption, 
     :::::
 
 `encryption.key`
-:   The path to the PEM formatted key file. e.g. `saml/saml-crypt.key`
+:   The path to the PEM formatted key file. for example, `saml/saml-crypt.key`
 
 `encryption.secure_key_passphrase`
 :   The passphrase for the key, if the file is encrypted. This is a secure setting that must be uploaded to your [{{es}} keystore](/deploy-manage/security/secure-settings.md).
@@ -163,10 +163,10 @@ If you want to use **PEM formatted** keys and certificates for SAML encryption, 
 If you want to use **PKCS#12 formatted** files or a **Java Keystore** for SAML encryption, then you should configure the following settings on the SAML realm:
 
 `encryption.keystore.path`
-:   The path to the PKCS#12 or JKS keystore. e.g. `saml/saml-crypt.p12`
+:   The path to the PKCS#12 or JKS keystore. for example, `saml/saml-crypt.p12`
 
 `encryption.keystore.alias`
-:   The alias of the key within the keystore. e.g. `encryption-key`
+:   The alias of the key within the keystore. for example, `encryption-key`
 
 `encryption.keystore.secure_password`
 :   The passphrase for the keystore, if the file is encrypted. This is a secure setting that must be uploaded to your [{{es}} keystore](/deploy-manage/security/secure-settings.md).

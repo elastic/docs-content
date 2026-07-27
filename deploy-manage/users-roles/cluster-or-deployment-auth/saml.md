@@ -132,7 +132,7 @@ xpack.security.authc.realms.saml.saml1:
 
 1. Controls realm priority. Assign SSO realms higher order values than password-based realms (native, LDAP). If you're using {{eck}}, set `order` to a value greater than the file realm (default `-100`) and native realm (default `-99`).
 
-Configure each setting as described below. For the full list of available settings, refer to [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
+Configure each setting as follows. For the full list of available settings, refer to [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
 
 `idp.metadata.path`
 :   The path or URL to the SAML metadata file for your Identity Provider. A URL is recommended so {{es}} reloads it automatically when it changes.
@@ -239,7 +239,7 @@ You can create role mappings in the **Role Mappings** page in {{kib}} or with th
 
 #### Grant access by realm
 
-This is an example of a simple role mapping that grants the `example_role` role to any user who authenticates against the `saml1` realm:
+This is an example of a basic role mapping that grants the `example_role` role to any user who authenticates against the `saml1` realm:
 
 ```console
 PUT /_security/role_mapping/saml-all-users
@@ -328,7 +328,7 @@ For available settings, refer to [SAML realm signing settings](elasticsearch://r
 
 The SAML protocol supports Single Logout (SLO), which ends both the {{kib}} session and the IdP session when a user logs out. Support for SLO varies between identity providers. Consult your IdP's documentation to determine what Logout services it offers.
 
-By default, {{es}} uses SAML SLO when all of the following are true:
+By default, {{es}} uses SAML SLO when all the following are true:
 * Your IdP metadata includes a `<SingleLogoutService>` with HTTP-Redirect binding
 * Your IdP releases a `NameID` in the SAML assertion
 * You have configured `sp.logout`
