@@ -52,14 +52,14 @@ Access to workflows is controlled by [{{kib}} privileges](/deploy-manage/users-r
 | Fully manage workflows | `All` for **Analytics > Workflows** |
 | Grant access to specific workflow actions | Set sub-feature privileges for **Analytics > Workflows** | 
 
-## Enable the Template Library [workflows-templates-enable]
+## Enable the Template library[workflows-templates-enable]
 
 ```{applies_to}
 stack: preview 9.5+
 serverless: preview
 ```
 
-The [Template Library](/explore-analyze/workflows/templates/start-from-a-template.md) is turned off by default and must be enabled by an administrator. If you don't see **Template Library** in the Workflows navigation, ask an administrator to turn it on. After it's enabled, reload the page. **Template Library** appears in the Workflows navigation, and an empty workflows list shows **Explore library**.
+The [Template library](/explore-analyze/workflows/templates/start-from-a-template.md) is turned off by default and must be enabled by an administrator. If you don't see **Template library** in the Workflows navigation, ask an administrator to turn it on. After it's enabled, reload the page. **Template library** appears in the Workflows navigation, and an empty workflows list shows **Explore library**.
 
 ::::{applies-switch}
 :::{applies-item} stack: preview 9.5+
