@@ -3,7 +3,7 @@ navigation_title: Workflow templates
 applies_to:
   stack: preview 9.3, ga 9.4+
   serverless: ga
-description: Explore pre-built workflow templates, or browse and add curated templates from the Template Library.
+description: Explore pre-built workflow templates, or browse and add curated templates from the Template library.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -21,17 +21,7 @@ Workflow templates are pre-built workflows that you can use as a starting point.
 - Learning how workflows work
 - Saving time with a ready-made example of a common automation pattern
 
-You can get templates in two ways. Browse the source examples in the public [GitHub repository](https://github.com/elastic/workflows/), or browse and add curated templates without leaving {{kib}} using the in-product [Template Library](/explore-analyze/workflows/templates/start-from-a-template.md).
+You can get templates in two ways:
 
-## Access templates on GitHub [workflows-templates-access]
-
-[Browse](https://github.com/elastic/workflows/) available templates and examples to find one that matches your use case. Refer to the readme to get started using templates.
-
-## Use the Template Library [workflows-templates-library]
-
-```{applies_to}
-stack: preview 9.5+
-serverless: preview
-```
-
-Browse and add curated, out-of-the-box templates directly in {{kib}} with the **Template Library**, without leaving the Workflows app or starting from a blank editor. Refer to [](/explore-analyze/workflows/templates/start-from-a-template.md) to get started.
+- **On GitHub**: [Browse](https://github.com/elastic/workflows/) the available templates and examples in the public GitHub repository to find one that matches your use case. Refer to the readme to get started.
+- **In the Template library** {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`: Browse and add curated, out-of-the-box templates directly in {{kib}}, without leaving the Workflows app or starting from a blank editor. Refer to [](/explore-analyze/workflows/templates/start-from-a-template.md) to get started.
