@@ -17,8 +17,8 @@ To create the visualization:
 
 1. Open a dashboard and add a new {{esql}} visualization:
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **New panel** in the toolbar, then choose **{{esql}}** under **Visualizations**.
-    * {applies_to}`stack: ga 9.0-9.1` Click **Add panel** in the dashboard toolbar, then choose **{{esql}}**.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **Visualization (query)** or **New panel** → **{{esql}}** under **Visualizations**, depending on your {{kib}} version.
+    * {applies_to}`stack: ga 9.0-9.1` Select **Add panel** in the application menu, then select **{{esql}}**.
 
 2. Enter the following query:
 
@@ -55,4 +55,4 @@ To create the visualization:
 
 6. Optionally, once the panel is saved, select the panel title to give it a meaningful name like `Status per host`.
 
-Once you have your visualization working, you can add [controls](/explore-analyze/dashboards/add-controls.md#add-variable-control) to filter by host or time range, use [LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) to enrich your data with metadata from other indices, or create [alerts](/explore-analyze/alerting/alerts/rule-type-es-query.md) based on the same query to get notified when status changes.
+Once you have your visualization working, you can add [controls](/explore-analyze/visualize/add-variable-controls.md) to filter by host or time range, use [LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) to enrich your data with metadata from other indices, or create [alerts](/explore-analyze/alerting/alerts/rule-type-es-query.md) based on the same query to get notified when status changes.

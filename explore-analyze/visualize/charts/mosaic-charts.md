@@ -88,27 +88,23 @@ The **Horizontal axis** dimension defines the columns of the mosaic. Column widt
 **Data**
 :   The **Horizontal axis** dimension supports the following functions:
 
-    - **Top values**: Create columns for the most common values in a field.
-      - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term columns. When multiple fields are selected, each column represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many categories to display. The default number of values depends on your environment:
-        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-        - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
+    :::{include} ../../_snippets/lens-bucket-top-values.md
+    :::
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
-    - **Date histogram**: Group data into time-based buckets.
-      - **Field**: Select the date field to use for the time-based grouping.
+    :::{include} ../../_snippets/lens-bucket-date-histogram.md
+    :::
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
-    - **Intervals**: Create numeric ranges for continuous data.
-      - **Field**: Select the numeric field to create intervals from.
-      - **Include empty rows**: Include intervals with no matching documents.
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
-    - **Filters**: Define custom KQL filters to create specific columns.
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
+    :::{include} ../../_snippets/lens-bucket-intervals.md
+    :::
+    :::{include} ../../_snippets/lens-bucket-filters.md
+    :::
+
+    :::{include} ../../_snippets/lens-collapse-by.md
+    :::
 
 **Appearance**
 :   - **Name**: Customize the axis label.
@@ -121,27 +117,23 @@ The **Vertical axis** dimension defines the rows within each column. Rectangle h
 **Data**
 :   The **Vertical axis** dimension supports the following functions:
 
-    - **Top values**: Create rows for the most common values in a field.
-      - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term rows. When multiple fields are selected, each row represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many categories to display. The default number of values depends on your environment:
-        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-        - {applies_to}`stack: ga 9.0-9.3` Defaults to 3.
+    :::{include} ../../_snippets/lens-bucket-top-values.md
+    :::
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
-    - **Date histogram**: Group data into time-based buckets.
-      - **Field**: Select the date field to use for the time-based grouping.
+    :::{include} ../../_snippets/lens-bucket-date-histogram.md
+    :::
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
-    - **Intervals**: Create numeric ranges for continuous data.
-      - **Field**: Select the numeric field to create intervals from.
-      - **Include empty rows**: Include intervals with no matching documents.
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
-    - **Filters**: Define custom KQL filters to create specific rows.
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
+    :::{include} ../../_snippets/lens-bucket-intervals.md
+    :::
+    :::{include} ../../_snippets/lens-bucket-filters.md
+    :::
+
+    :::{include} ../../_snippets/lens-collapse-by.md
+    :::
 
 **Appearance**
 :   - **Name**: Customize the axis label.
@@ -220,7 +212,7 @@ The following examples show various configuration options for building impactful
 ![Mosaic chart showing response status by operating system](/explore-analyze/images/mosaic-example-response-by-os.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a mosaic chart where column widths represent OS popularity and the colored rows within each column show the proportion of success, client error, and server error responses.
 
@@ -372,7 +364,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Mosaic chart showing product categories by continent](/explore-analyze/images/mosaic-example-category-by-continent.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example uses `terms` on both axes to compare product category preferences across continents, revealing how shopping behavior varies by region.
 

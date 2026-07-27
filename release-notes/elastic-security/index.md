@@ -27,6 +27,52 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.4.4 [elastic-security-9.4.4-release-notes]
+
+### Features and enhancements [elastic-security-9.4.4-features-enhancements]
+
+* Adds the LXC container name to event telemetry for {{elastic-defend}} on Linux.
+
+### Fixes [elastic-security-9.4.4-fixes]
+
+* Fixes an issue where opening the rule details flyout for a deleted rule crashed the {{security-app}} when the rule was missing `severity_mapping` or `risk_score_mapping` values [#278545]({{kib-pull}}278545).
+* Fixes an issue where {{kib}} assets from an installed integration package (such as dashboards used by prebuilt detection rules) could remain stale across a {{kib}} upgrade because {{fleet}} never overwrote existing assets on reinstall [#277953]({{kib-pull}}277953).
+* Fixes an issue where the **Source event** link in an alert's **Highlighted fields** section failed to open the document when its source index had been restored (for example, from a cold or frozen tier) and renamed [#277703]({{kib-pull}}277703).
+* Fixes an issue where agents on version-specific policies did not appear in the Osquery agent or policy selector and could not be targeted, causing live queries to fail with a `No agents found for selection` error [#277283]({{kib-pull}}277283).
+* Fixes an issue where endpoints did not appear in the **Endpoints** list and response actions failed for agents whose `policy_id` included an agent-specific policy suffix [#277100]({{kib-pull}}277100).
+* Fixes an issue where saving an Indicator Match rule through the UI reset the API-only `concurrent_searches` and `items_per_search` fields to their defaults [#276823]({{kib-pull}}276823).
+* Fixes an issue where attaching an entity to a conversation in {{agent-builder}} crashed when a field such as `watchlists` or `sources` contained a single value instead of an array [#276201]({{kib-pull}}276201).
+* Preserves the prebuilt rule `revision` (incremented by 1) when upgrading a rule to a different rule type, matching the behavior of same-type upgrades [#275627]({{kib-pull}}275627).
+* Fixes the **Investigate in Timeline** action for suppressed alerts whose rule uses exception lists, which previously failed when the exception list data was stored as a single object instead of an array [#275417]({{kib-pull}}275417).
+* Fixes an issue where deprecated prebuilt rules could reappear as installable after being deleted through the deprecation callouts [#274447]({{kib-pull}}274447).
+* Fixes an issue where the rule editing UI rejected valid semver range version constraints (such as `^8.2.0 || ^9.0.0`) on related integrations [#274133]({{kib-pull}}274133).
+* Fixes an issue where running a workflow that requires manual input from the **Run workflow** alert action started the execution without prompting for the input, causing it to fail immediately. A manual input dialog now collects the required values before the workflow runs [#271586]({{kib-pull}}271586).
+* Fixes an issue where visualizations in dashboards created by Automatic Migration did not render on initial load, requiring manual interaction to display data [#264102]({{kib-pull}}264102).
+* Fixes a race condition when assigning the username of mounted USB devices in {{elastic-defend}} on Windows.
+* Improves serial number gathering accuracy in {{elastic-defend}} on Windows.
+* Updates the bundled `curl` library in {{elastic-defend}}, improving the stability of network operations on Linux.
+* Fixes an issue in {{elastic-defend}} that could result in incomplete addresses in network event tracking.
+* Fixes an issue where {{elastic-defend}} on macOS did not attempt to recover a failed subscription to network events, which previously remained stuck.
+* Fixes a crash in {{elastic-defend}} when the Kafka broker rejected a document that was too large.
+* Fixes an issue where {{elastic-defend}} on Windows did not display the custom popup for cached denied requests in Device Control.
+
+## 9.4.3 [elastic-security-9.4.3-release-notes]
+
+### Fixes [elastic-security-9.4.3-fixes]
+
+* Fixes an issue where only the first assignee was displayed in the alert details flyout instead of all assigned users [#273801]({{kib-pull}}273801).
+* Fixes a scroll-position jump in the alert details flyout **Table** tab [#273521]({{kib-pull}}273521).
+* Fixes an issue where the {{agent-builder}} announcement modal could reappear during page navigation after being dismissed, particularly in high-latency or proxy environments [#272276]({{kib-pull}}272276).
+* Fixes the entities table on the **Entity Analytics** page to sort by risk score by default, showing the highest-risk entities first and placing entities without a risk score at the bottom [#272234]({{kib-pull}}272234).
+* Scopes watchlist index sync to the watchlist creator's credentials, requiring read access to the configured index. Watchlists created before this change show a **Sync paused** callout with a **Re-authorize** action [#270292]({{kib-pull}}270292).
+* Fixes an issue where the **Delete all** action for deprecated prebuilt rules failed when more than 100 deprecated rules existed [#271550]({{kib-pull}}271550).
+* Fixes an issue in {{elastic-defend}} on Linux where BPF DNS event sources could corrupt probe data.
+* Fixes an issue where {{elastic-defend}} on Linux did not correctly read TTY events on older kernels (4.18) with eBPF backports, such as on RHEL 8.
+* Improves {{elastic-defend}} event enrichment scalability on hosts with many long-lived processes by using a larger, self-pruning process cache.
+* Fixes a rare edge case where {{elastic-defend}} could lose Tamper Protection.
+* Fixes a rare process tracking issue in {{elastic-defend}} on macOS and Linux.
+* Fixes a race condition when assigning the username of mounted USB devices in {{elastic-defend}} on Windows.
+
 
 ## 9.4.2 [elastic-security-9.4.2-release-notes]
 
@@ -250,6 +296,30 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where {{elastic-defend}} on Windows could log a warning about "Quarantine directory failed validation due to ACL or file attribute change" for empty removable media drives such as optical drives.
 * Fixes an issue in {{elastic-defend}} that could cause the system to lock up for up to several minutes during {{elastic-defend}} uninstallation or upgrade.
 
+## 9.3.8 [elastic-security-9.3.8-release-notes]
+
+### Features and enhancements [elastic-security-9.3.8-features-enhancements]
+
+* Adds the LXC container name to event telemetry for {{elastic-defend}} on Linux.
+
+### Fixes [elastic-security-9.3.8-fixes]
+
+* Fixes an issue where opening the rule details flyout for a deleted rule crashed the {{security-app}} when the rule was missing `severity_mapping` or `risk_score_mapping` values [#278545]({{kib-pull}}278545).
+* Fixes an issue where {{kib}} assets from an installed integration package (such as dashboards used by prebuilt detection rules) could remain stale across a {{kib}} upgrade because {{fleet}} never overwrote existing assets on reinstall [#277953]({{kib-pull}}277953).
+* Fixes a crash in index fields formatting when a field or index was named using a reserved JavaScript object property (such as `constructor` or `__proto__`) [#277851]({{kib-pull}}277851).
+* Fixes an issue where the **Source event** link in an alert's **Highlighted fields** section failed to open the document when its source index had been restored (for example, from a cold or frozen tier) and renamed [#277703]({{kib-pull}}277703).
+* Preserves the prebuilt rule `revision` (incremented by 1) when upgrading a rule to a different rule type, matching the behavior of same-type upgrades [#275627]({{kib-pull}}275627).
+* Updates the bundled `curl` library in {{elastic-defend}}, improving the stability of network operations on Linux.
+* Fixes an issue where {{elastic-defend}} on macOS did not attempt to recover a failed subscription to network events, which previously remained stuck.
+* Fixes a crash in {{elastic-defend}} when the Kafka broker rejected a document that was too large.
+* Fixes an issue in {{elastic-defend}} that could result in incomplete addresses in network event tracking.
+
+## 9.3.7 [elastic-security-9.3.7-release-notes]
+
+### Fixes [elastic-security-9.3.7-fixes]
+* Fixes an issue where the rule editing UI rejected valid semver range version constraints (such as `^8.2.0 || ^9.0.0`) on related integrations [#274133]({{kib-pull}}274133).
+* Fixes an issue in the AI Assistant where selecting all conversations and then saving an edit to a single conversation deleted all conversations instead of updating only the edited one [#274033]({{kib-pull}}274033).
+* Fixes `bulk_max_size` output setting validation in {{elastic-defend}}.
 
 ## 9.3.6 [elastic-security-9.3.6-release-notes]
 
@@ -410,7 +480,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds DNS events for {{elastic-defend}} on Linux (only supported by eBPF-based event collection).
 * Removes the 100 MB file size limit for the {{elastic-defend}} `get-file` response action.
 * Adds `entropy` and `header_bytes` fields to Linux file events in {{elastic-defend}}.
-* Adds a trusted ancestor feature to {{elastic-defend}}. When enabled, allows a trusted process to also be marked as a trusted ancestor, so all child processes are automatically trusted and skipped by other endpoint subsystems. Configure using the `advanced.trusted_ancestors` policy setting.
 * Adds the `size` field to {{elastic-defend}} file events on Linux.
 * Optimizes the {{elastic-defend}} kernel driver to collect file and registry access events more efficiently, improving overall system responsiveness and reducing CPU usage.
 * Adds script content collection to {{elastic-defend}} on macOS. Use the `advanced.events.script_capture` setting to enable this feature and `advanced.events.script_max_size` to control the maximum size of collected content.

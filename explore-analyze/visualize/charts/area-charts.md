@@ -59,7 +59,7 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Use **Stacked** to show contribution to a whole, **Percentage** for normalized representation of values, or **Unstacked** when absolute trends matter more than composition. For a practical use case, check how to [show composition with stacked and 100% stacked areas](#area-stacking).
 
 **Handle gaps and noise**
-:   For sparse data, configure **Missing values** and **Line interpolation** to avoid misleading gaps or sharp edges. Check the [Visualization appearance options](../lens.md#customize-visualization-appearance).
+:   For sparse data, configure **Missing values** and **Line interpolation** to avoid misleading gaps or sharp edges. Refer to [General layout settings](#appearance-options).
 
 **Use color purposefully**
 :   Apply colors to highlight important data or patterns. Avoid using too many colors that might distract from the data. You can also assign [consistent colors to key categories](../lens.md#assign-colors-to-terms).
@@ -126,22 +126,20 @@ Customize your area chart to match the information you need and how you want it 
 **Data**
 :   
     - **Functions**:
-      - **Top values**: Create separate areas for the most common values in a field.
-        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each area represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display. The default number of values depends on your environment:
-          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-          - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
+      :::{include} ../../_snippets/lens-bucket-top-values.md
+      :::
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
-      - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
-        - **Field**: Select the date field to use for the time-based grouping.
+      :::{include} ../../_snippets/lens-bucket-date-histogram.md
+      :::
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
-      - **Intervals**: Create numeric ranges for continuous data. You can define the interval granularity or specify custom ranges.
-        - **Field**: Select the numeric field to create intervals from.
-      - **Filters**: Allow you to segment your data based on specific conditions, creating separate areas for each filter.
+      :::{include} ../../_snippets/lens-bucket-intervals.md
+      :::
+      :::{include} ../../_snippets/lens-bucket-filters.md
+      :::
 
 **Appearance**
 :   **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a meaningful title.
@@ -151,7 +149,7 @@ Customize your area chart to match the information you need and how you want it 
 **Data**
 :   To represent the metrics or values you want to visualize, you can use quick functions like Average, Count, Percentile, Counter rate, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples.
 
-    :::{include} ../../_snippets/area-vertical-axis-advanced-settings.md
+    :::{include} ../../_snippets/lens-value-advanced-settings.md
     :::
 
 **Appearance**
@@ -168,22 +166,23 @@ You can split your data by a categorical field to create multiple stacked or ove
 **Data**
 :   
     - **Functions**:
-      - **Top values**: Create separate areas for the most common values in a field.
-        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each area represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display. The default number of values depends on your environment:
-          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-          - {applies_to}`stack: ga 9.0-9.3` Defaults to 3.
+      :::{include} ../../_snippets/lens-bucket-top-values.md
+      :::
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
-      - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
-        - **Field**: Select the date field to use for the time-based grouping.
+      :::{include} ../../_snippets/lens-bucket-date-histogram.md
+      :::
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
-      - **Intervals**: Create numeric ranges for continuous data. You can define the interval granularity or specify custom ranges.
-        - **Field**: Select the numeric field to create intervals from.
-      - **Filters**: Create separate colored areas based on filter conditions.
+      :::{include} ../../_snippets/lens-bucket-intervals.md
+      :::
+      :::{include} ../../_snippets/lens-bucket-filters.md
+      :::
+
+    :::{include} ../../_snippets/lens-collapse-by.md
+    :::
 
 **Appearance**
 :   Allow you to customize how your breakdown data is displayed in line charts, including:
@@ -198,7 +197,10 @@ When creating or editing a visualization, you can adjust the following settings.
 :::{include} ../../_snippets/area-chart-style-settings.md
 :::
 
-:::{include} ../../_snippets/line-chart-legend-settings.md
+:::{include} ../../_snippets/line-area-missing-values-settings.md
+:::
+
+:::{include} ../../_snippets/xy-chart-legend-settings.md
 :::
 
 
@@ -218,7 +220,7 @@ See .github/scripts/verify-lens-api-examples.py for full usage. -->
 ![Example Lens area chart geographical regions](../../images/kibana-area-geo-regions.png " =70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 Send the following request to create a stacked area chart that shows record counts broken down by geographic destination.
 
@@ -359,7 +361,7 @@ Visualizing HTTP response codes over time, highlighting the proportion of succes
 ![Example Lens area chart response code annotations](../../images/kibana-response-code-annotations.png " =70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 Send the following request to create a percentage area chart that shows the distribution of HTTP response codes over time.
 
