@@ -31,8 +31,7 @@ These limitations apply to remote {{es}} output:
 
 * All {{fleet-server}} hosts that are configured for the remote output must be able to reach the remote {{es}} cluster with a service token to generate API keys for the {{agents}} that use the remote output for data ingestion.
 * Using a remote {{es}} output with a target cluster that has [network security](/deploy-manage/security/network-security.md) enabled is not currently supported.
-* {applies_to}`stack: ga 9.0-9.4` Using {{elastic-defend}} when a remote {{es}} output is configured for an {{agent}} is not supported.
-* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` Using {{elastic-defend}} with a remote {{es}} output is only available on {{stack}} deployments. For more information, refer to [Use {{elastic-defend}} with a remote {{es}} output](/solutions/security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md).
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` Using {{elastic-defend}} with a remote {{es}} output is only available on {{stack}} deployments from this version. It is not available for previous versions and on {{serverless-short}}. For more information, refer to [Use {{elastic-defend}} with a remote {{es}} output](/solutions/security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md).
 * When the remote {{es}} cluster is a {{serverless-short}} project, [automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md) is not available.
 
 ## Configure the remote output [remote-output-config]
