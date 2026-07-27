@@ -114,7 +114,7 @@ To open the **Attack discovery settings** flyout, select **Settings** next to **
 4. Review the selection under **Alert summary** or **Alerts preview**.
 5. Select **Save**, or **Save and run** to start analysis immediately.
 
-Sending more alerts than your chosen LLM can handle may result in an error.
+Sending more alerts than your chosen LLM can handle might result in an error.
 
 ## Configure alerts for scheduled runs with the query bar and alerts slider [attacks-page-schedule-alert-selection]
 ```{applies_to}
@@ -123,6 +123,6 @@ serverless:
   security: ga
 ```
 
-When [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) is turned off, or not available in your version, set which alerts each schedule analyzes when you create or edit it. You choose a query, a time range, and how many alerts to send. Sending more alerts than your chosen LLM can handle may result in an error.
+When [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) is turned off, or not available in your version, set which alerts each schedule analyzes when you create or edit it. You choose a query, a time range, and how many alerts to send. Sending more alerts than your chosen LLM can handle might result in an error.
 
 Refer to [Schedule runs from the Attacks view](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md) to finish creating or editing the schedule.

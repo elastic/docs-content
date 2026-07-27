@@ -22,10 +22,10 @@ To run Attack Discovery from {{agent-builder}}, you need:
 
 * The [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on.
 * A role with the [index privileges](/solutions/security/ai/attack-discovery/grant-access.md#ad-index-privileges) required to generate and read discoveries, and these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_kibana_privileges) at minimum:
-  * **Security > Attack discovery**: `All`
-  * **Security > Rules and Exceptions**: `Read`
-  * **Security > Alerts**: `Read`
-  * **Analytics > Workflows**: `read` and `execute` (see [Grant Workflows privileges for Attack Discovery](/solutions/security/ai/attack-discovery/grant-access.md#attack-discovery-workflows-privileges))
+  * **Security → Attack discovery**: `All`
+  * **Security → Rules and Exceptions**: `Read`
+  * **Security → Alerts**: `Read`
+  * **Analytics → Workflows**: `read` and `execute` (see [Grant Workflows privileges for Attack Discovery](/solutions/security/ai/attack-discovery/grant-access.md#attack-discovery-workflows-privileges))
 
 :::{note}
 Conversations and their results are private to the person who started them.

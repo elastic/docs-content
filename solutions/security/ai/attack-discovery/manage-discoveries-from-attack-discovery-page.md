@@ -68,7 +68,7 @@ You can search and filter saved discoveries to help locate relevant findings.
 
 Use these options to continue an investigation:
 
-* Click an entity's name to open the entity details flyout and view more details that may be relevant to your investigation.
+* Click an entity's name to open the entity details flyout and view more details that might be relevant to your investigation.
 * Hover over an entity's name to either add the entity to Timeline (![Add to timeline icon](/solutions/images/security-icon-add-to-timeline.png "title =20x20")) or copy its field name and value to the clipboard (![Copy to clipboard icon](/solutions/images/security-icon-copy.png "title =20x20")).
 * Click **Take action**, then select **Add to new case** or **Add to existing case** to add a discovery to a [case](/solutions/security/investigate/security-cases.md). This makes it easy to share the information with your team and other stakeholders.
 * Click **Investigate in timeline** to explore the discovery in [Timeline](/solutions/security/investigate/timeline.md).

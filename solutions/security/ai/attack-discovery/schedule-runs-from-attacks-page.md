@@ -46,6 +46,6 @@ To create a schedule:
 
 :::::
 
-After creating a schedule, you can edit, enable, disable, or delete it. To change several at once, select them in the table and use **Bulk actions**. Schedule management requires the [**Schedules > Allow changes**](/solutions/security/ai/attack-discovery/grant-access.md#ad-schedules-privilege) privilege. To manage schedules programmatically, use the [Attack discovery API]({{kib-apis}}group/endpoint-security-attack-discovery-api).
+After creating a schedule, you can edit, enable, disable, or delete it. To change several at once, select them in the table and use **Bulk actions**. Schedule management requires the [**Schedules → Allow changes**](/solutions/security/ai/attack-discovery/grant-access.md#ad-schedules-privilege) privilege. To manage schedules programmatically, use the [Attack discovery API]({{kib-apis}}group/endpoint-security-attack-discovery-api).
 
 Scheduled discoveries show a calendar icon. For how to recognize scheduled versus manually generated attacks, refer to [Recognize manually generated and scheduled attacks](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md#manually-generated-attacks).

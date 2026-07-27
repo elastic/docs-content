@@ -39,7 +39,7 @@ serverless:
 
 | UI label | What it controls |
 |---|---|
-| **Schedules > Allow changes** | Create, edit, enable, disable, or delete Attack discovery schedules |
+| **Schedules → Allow changes** | Create, edit, enable, disable, or delete Attack discovery schedules |
 
 Selecting `All` for **Attack discovery** includes **Allow changes**. To run Attack Discovery without managing schedules, turn on **Customize sub-feature privileges** and clear **Allow changes**.
 
@@ -83,9 +83,9 @@ When you turn on [Attack Discovery Workflows](/solutions/security/get-started/co
 
 | Attack Discovery action | Workflows privilege needed |
 |---|---|
-| Monitor runs in **Generations** and open workflow execution details | `read` for **Analytics > Workflows** |
-| Generate discoveries (manual or scheduled) | `read` and `execute` for **Analytics > Workflows** |
-| Create, edit, or enable schedules | `read` and `execute` for **Analytics > Workflows**, plus [**Schedules** → **Allow changes**](#ad-schedules-privilege) |
-| Disable or delete schedules | [**Schedules** → **Allow changes**](#ad-schedules-privilege) only |
+| Monitor runs in **Generations** and open workflow execution details | `read` for **Analytics → Workflows** |
+| Generate discoveries (manual or scheduled) | `read` and `execute` for **Analytics → Workflows** |
+| Create, edit, or enable schedules | `read` and `execute` for **Analytics → Workflows**, plus [**Schedules** → **Allow changes**](#ad-schedules-privilege) |
+| Deactivate or delete schedules | [**Schedules** → **Allow changes**](#ad-schedules-privilege) only |
 
-Granting `All` for **Analytics > Workflows** includes `read` and `execute`. For finer-grained access, use Workflows [sub-feature privileges](/explore-analyze/workflows/get-started/setup.md#workflows-role-access).
+Granting `All` for **Analytics → Workflows** includes `read` and `execute`. For finer-grained access, use Workflows [sub-feature privileges](/explore-analyze/workflows/get-started/setup.md#workflows-role-access).
