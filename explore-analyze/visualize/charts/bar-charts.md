@@ -112,7 +112,7 @@ To create a stacked bar chart:
 ![Bar chart with stacking](../../images/stacked-bar-chart.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a stacked bar chart that counts log entries over time and breaks them down by HTTP response code.
 
@@ -242,7 +242,7 @@ To create an unstacked bar chart:
 ![Bar chart without stacking showing breakdown](../../images/unstacked-bar-chart.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates an unstacked bar chart where each breakdown category renders as a separate bar placed side by side, making individual values straightforward to compare.
 
@@ -463,29 +463,9 @@ When creating or editing a visualization, you can customize several appearance o
 
 
 #### Legend settings
-Configure elements of your bar chart's legend. Configurable options include:
 
-**Visibility**
-:   Specify whether to automatically show the legend or hide it.
-
-**Position**
-:   Choose to show the legend inside or outside the chart, then pick the side (left, right, top, or bottom) and fine-tune alignment (vertical/horizontal) for grid-style layouts.
-
-**Width**
-:   Set the width of the legend.
-
-**Layout** {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
-:   For legends positioned outside the chart at the top or bottom, choose how series labels are arranged:
-    - **List**: A compact layout that flows series labels to fit the available space. List is the default for new charts when the legend is at the top or bottom.
-    - **Grid**: A table-style layout that aligns series labels and statistics into rows and columns.
-
-    Visualizations created before this setting was introduced keep their previous layout until you change it.
-
-**Statistics**
-:   Choose one or more statistics to show (for example, average, min, max, last value). Lens appends those numbers to every series label so you don't have to hover over the chart to see headline figures.
-
-**Label truncation**
-:   For legends positioned inside the chart, outside on the side, or outside at the top or bottom with the **Grid** layout, choose whether to truncate long series labels and set the maximum number of lines for each label.
+:::{include} ../../_snippets/xy-chart-legend-settings.md
+:::
 
 ## Bar chart examples
 
@@ -514,7 +494,7 @@ The following examples show various configuration options that you can use for b
 ![Stacked bar chart showing traffic per week broken down per region](/explore-analyze/images/weekly-website-traffic-per-region.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a stacked bar chart that tracks page views over time with a custom metric label and breaks them down by the top 9 destination regions.
 
@@ -644,7 +624,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Bar chart with reference line showing traffic per week broken down per region](/explore-analyze/images/request-error-rate-per-host.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a horizontal bar chart with a formula-based metric and a reference line layer that marks the acceptable error threshold.
 

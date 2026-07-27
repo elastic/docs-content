@@ -37,6 +37,10 @@ You can perform the following tasks to manage multiple organizations:
 
 You can create a new organization at any time. Each organization starts with its own [14-day trial](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial).
 
+:::{note}
+Each organization is a completely independent entity, and is not affiliated with any other organization. It has its own users, resources, settings, and billing, so creating an organization does not charge or affect any organization you already belong to. Billing for the new organization begins only when you [add billing details](/deploy-manage/cloud-organization/billing/add-billing-details.md) to that organization.
+:::
+
 To create a new organization:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
