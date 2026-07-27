@@ -15,13 +15,13 @@ products:
 
 # Attack triage action steps [workflows-attack-triage-steps]
 
-Attack triage action steps let workflows manage the attack lifecycle you triage on the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), including status changes, assignments, and tags on the correlated attacks that group related alerts, in {{elastic-sec}}.
+Attack triage action steps let workflows manage the lifecycle of attacks you triage on the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md). This includes status changes, assignments, and tags on the correlated attacks that group related alerts in {{elastic-sec}}.
 
 :::{note}
 These steps live under the `security.*` step type namespace (for example, `security.setAttackStatus`). They expose explicit input schemas for operations that were previously reachable only through the generic `kibana.request` step, so parameters are validated at save time and discoverable in the Workflows editor.
 :::
 
-Use Attack triage steps for patterns like:
+Use attack triage steps for patterns like:
 
 - Assign a newly detected attack to an on-call analyst as soon as it's created.
 - Tag attacks as escalated before handing off to a case with [`cases.*`](/explore-analyze/workflows/steps/cases.md) steps.
@@ -31,7 +31,7 @@ To manage individual alerts, use the [Alert triage action steps](/explore-analyz
 
 ## Shared conventions [workflows-attack-triage-conventions]
 
-Every Attack triage step shares the same conventions, so once you learn one step the others are predictable.
+Every attack triage step shares the same conventions, so once you learn one step the others are predictable.
 
 **All parameters live under `with`.** IDs, status, assignees, and tags are all `with`-level fields. There are no top-level fields specific to this namespace.
 
@@ -44,7 +44,7 @@ Every Attack triage step shares the same conventions, so once you learn one step
 **Cascade to related alerts.** Every attack step accepts an `update_related_alerts` boolean (default `false`) that also applies the change to the alerts correlated with the attack.
 
 :::{note}
-The equivalent [alert steps](/explore-analyze/workflows/steps/alert-triage.md) use different parameter names. Attack steps use `ids` instead of `alert_ids` and `reason` instead of `close_reason`, and alert steps don't have the `update_related_alerts` parameter. Document and use these exactly as implemented, and don't normalize the names.
+The equivalent [alert steps](/explore-analyze/workflows/steps/alert-triage.md) use different parameter names. Attack steps use `ids` instead of `alert_ids` and `reason` instead of `close_reason`, and alert steps don't have the `update_related_alerts` parameter.
 :::
 
 :::{include} ../_snippets/schema-location-legend.md
@@ -52,7 +52,7 @@ The equivalent [alert steps](/explore-analyze/workflows/steps/alert-triage.md) u
 
 ## Step catalog [workflows-attack-triage-catalog]
 
-The 3 Attack triage steps manage the attack lifecycle. Jump to any step:
+The 3 attack triage steps manage the attack lifecycle. Jump to any step:
 
 [`security.setAttackStatus`](#security-setattackstatus) ·
 [`security.assignAttack`](#security-assignattack) ·
@@ -67,8 +67,8 @@ Change the status of one or multiple attacks.
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `ids` | `with` | `string` or `string[]` | Yes | A single attack ID or a list of IDs (bulk). |
-| `status` | `with` | `open` \| `acknowledged` \| `closed` | Yes | New status for the attacks. |
-| `reason` | `with` | string | No, only valid when `status: closed` | Reason for closing. Predefined values: `false_positive`, `duplicate`, `true_positive`, `benign_positive`, `automated_closure`, `other`. A custom string (max 1024 chars) is also accepted. |
+| `status` | `with` | `string` | Yes | New status for the attacks: `open`, `acknowledged`, or `closed`. |
+| `reason` | `with` | `string` | No, only valid when `status: closed` | Reason for closing. Predefined values: `false_positive`, `duplicate`, `true_positive`, `benign_positive`, `automated_closure`, `other`. A custom string (max 1024 chars) is also accepted. |
 | `update_related_alerts` | `with` | boolean | No (default `false`) | Also apply the status change to alerts related to the attack. |
 
 ```yaml

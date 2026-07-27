@@ -21,7 +21,7 @@ Alert triage action steps let workflows manage the alert lifecycle in {{elastic-
 These steps live under the `security.*` step type namespace (for example, `security.setAlertStatus`). They expose explicit input schemas for operations that were previously reachable only through the generic `kibana.request` step, so parameters are validated at save time and discoverable in the Workflows editor.
 :::
 
-Use Alert triage steps for patterns like:
+Use alert triage steps for patterns like:
 
 - Close a batch of false-positive alerts and record a close reason.
 - Assign a newly detected alert to an on-call analyst as soon as it's created.
@@ -31,7 +31,7 @@ To manage the correlated attacks that group these alerts, use the [Attack triage
 
 ## Shared conventions [workflows-alert-triage-conventions]
 
-Every Alert triage step shares the same conventions, so once you learn one step the others are predictable.
+Every alert triage step shares the same conventions, so once you learn one step the others are predictable.
 
 **All parameters live under `with`.** IDs, status, assignees, and tags are all `with`-level fields. There are no top-level fields specific to this namespace.
 
@@ -42,7 +42,7 @@ Every Alert triage step shares the same conventions, so once you learn one step 
 **At least one of add/remove is required.** The assign and tags steps (`assignees_to_add`/`assignees_to_remove`, `tags_to_add`/`tags_to_remove`) require at least one of the pair. You can send both in a single step invocation.
 
 :::{note}
-The equivalent [attack steps](/explore-analyze/workflows/steps/attack-triage.md) use different parameter names. Attack steps use `ids` instead of `alert_ids` and `reason` instead of `close_reason`. Document and use these exactly as implemented, and don't normalize the names.
+The equivalent [attack steps](/explore-analyze/workflows/steps/attack-triage.md) use different parameter names. Attack steps use `ids` instead of `alert_ids` and `reason` instead of `close_reason`.
 :::
 
 **Reading current assignees.** To remove specific assignees without clearing the whole list, read the current values from the alert's `kibana.alert.workflow_assignee_ids` field (for example, `{{ event.alerts[0].kibana.alert.workflow_assignee_ids }}` in an alert-triggered workflow) before composing the `assignees_to_remove` list for `security.assignAlert`.
@@ -52,7 +52,7 @@ The equivalent [attack steps](/explore-analyze/workflows/steps/attack-triage.md)
 
 ## Step catalog [workflows-alert-triage-catalog]
 
-The 3 Alert triage steps manage the alert lifecycle. Jump to any step:
+The 3 alert triage steps manage the alert lifecycle. Jump to any step:
 
 [`security.setAlertStatus`](#security-setalertstatus) ·
 [`security.assignAlert`](#security-assignalert) ·
@@ -67,8 +67,8 @@ Change the status of one or multiple alerts.
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `alert_ids` | `with` | `string` or `string[]` | Yes | A single alert ID or a list of IDs (bulk). |
-| `status` | `with` | `open` \| `acknowledged` \| `closed` | Yes | New status for the alerts. |
-| `close_reason` | `with` | string | No, only valid when `status: closed` | Reason for closing. Predefined values: `false_positive`, `duplicate`, `true_positive`, `benign_positive`, `automated_closure`, `other`. A custom string (max 1024 chars) is also accepted. |
+| `status` | `with` | `string` | Yes | New status for the alerts: `open`, `acknowledged`, or `closed`. |
+| `close_reason` | `with` | `string` | No, only valid when `status: closed` | Reason for closing. Predefined values: `false_positive`, `duplicate`, `true_positive`, `benign_positive`, `automated_closure`, `other`. A custom string (max 1024 chars) is also accepted. |
 
 ```yaml
 - name: close_alerts

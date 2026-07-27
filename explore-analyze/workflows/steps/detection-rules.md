@@ -21,7 +21,7 @@ Detection rules action steps let workflows enable or disable one or more detecti
 These steps live under the `security.*` step type namespace (`security.enableRule`, `security.disableRule`). They expose an explicit input schema so parameters are discoverable in the Workflows editor, and they report per-rule outcomes in the step output.
 :::
 
-Use Detection rules steps for patterns like:
+Use detection rules steps for patterns like:
 
 - Enable a newly imported rule as soon as a prerequisite data source is available.
 - Disable a noisy rule (or every rule matching a tag query) until an investigation completes.
@@ -29,7 +29,7 @@ Use Detection rules steps for patterns like:
 
 ## Shared conventions [workflows-detection-rules-conventions]
 
-Both Detection rules steps share the same conventions.
+Both detection rules steps share the same conventions.
 
 **All parameters live under `with`.** Both `ids` and `query` are `with`-level fields — there are no top-level fields specific to these steps.
 
@@ -119,7 +119,7 @@ Both steps return the same summary object. Use it for branching or logging after
 | `failed` | `number` | Rules the step couldn't update. |
 | `skipped` | `number` | Rules already in the target state (already enabled or already disabled). |
 | `total` | `number` | Total rules targeted. |
-| `errors` | `array` | Present only when at least one rule failed. Each entry includes `message`, `status_code`, and `rules` (`id`, and `name` when known). |
+| `errors` | `array` | Present only when at least one rule failed. Each entry includes `message`, `status_code`, `rules.id`, and `rules.name` (when known). |
 
 ## Related
 
