@@ -203,7 +203,7 @@ In clusters with many user-managed `Secret`, `Service`, or `ConfigMap` resources
 Starting with ECK 3.5.0, the operator stamps `eck.k8s.elastic.co/watched=true` on every `Secret`, `Service`, and `ConfigMap` it creates or reconciles.
 
 ::::{important}
-Do not enable `restrict-watched-resources` immediately after upgrading to ECK 3.5.0. Wait until the operator has completed at least one full reconcile cycle for all ECK-managed resources so they all carry the label. Enabling the flag before that makes any unlabeled ECK-managed resources invisible to the operator's cache, which can break your deployments.
+Do not enable `restrict-watched-resources` immediately after upgrading to ECK 3.5. Wait until the operator has completed at least one full reconcile cycle for all ECK-managed resources so they all carry the label. Enabling the flag before that makes any unlabeled ECK-managed resources invisible to the operator's cache, which can break your deployments.
 ::::
 
 To enable label-based discovery using the Helm chart, set the following in your values file:
