@@ -64,3 +64,9 @@ A security team wants to track calls to a rarely-used administrator API endpoint
 3. The signals accumulate silently and are immediately queryable in Discover.
 
 After a few weeks, the accumulated signals become useful in two ways. The team can write an Alert mode rule that combines admin API calls with other signals (such as a spike in error rates) to catch correlated activity that neither signal would surface on its own. When an outage happens, the team can query the signal history as evidence directly in Discover, without reconstructing the original query or worrying that the source data has become stale.
+
+## Related pages
+
+- [Get started](get-started.md): Enable the {{alerting-v2-system}} and create your first rule.
+- [Rules](rules.md): What rules do, what they don't control, and how to choose a creation path.
+- [Notifications and actions](notifications-actions.md): Set up workflows and action policies to notify your team when a rule detects a problem.
