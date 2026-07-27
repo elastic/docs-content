@@ -100,7 +100,7 @@ Before deploying ECE, validate the following on your director hosts:
 
 If these requirements are not met, ECE control plane operations can fail intermittently, including plan changes, vacates, and new deployment creation.
 
-For a detailed explanation of how network instability affects ZooKeeper and what to monitor, refer to our KB article [[ECE] Network Stability Requirement](https://ela.st/ece-network-stability-requirement).
+For a detailed explanation of how network instability affects ZooKeeper and what to monitor, refer to the [Network Stability Requirement](https://ela.st/ece-network-stability-requirement) KB article.
 
 
 ## Hosts in multiple data centers [ece-multiple-data-centers]
