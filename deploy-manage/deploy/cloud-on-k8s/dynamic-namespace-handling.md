@@ -29,7 +29,7 @@ With a namespace selector configured, the operator watches all namespaces cluste
 
 ### On-boarding [k8s-dynamic-namespace-handling-onboarding]
 
-To on-board a namespace, apply the labels that match the configured selector. For example, with a selector matching `eck-managed: "true"`:
+To onboard a namespace, apply the labels that match the configured selector. For example, with a selector matching `eck-managed: "true"`:
 
 ```sh
 kubectl label namespace my-namespace eck-managed=true
