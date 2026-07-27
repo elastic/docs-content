@@ -23,9 +23,6 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - **Alert episode lifecycle triggers** — Fire on specific alert episode events in the {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 - **{{alerting-v2-system-cap}} rule lifecycle triggers** — Fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 
-:::{note}
-The event-driven trigger framework is generally available. Individual trigger families can have a different maturity: check the availability badge in each section. The schema and semantics of triggers still in technical preview can change in future releases.
-:::
 
 :::{include} ../_snippets/schema-location-legend.md
 :::
