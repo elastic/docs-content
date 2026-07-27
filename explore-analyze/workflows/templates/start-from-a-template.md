@@ -13,7 +13,7 @@ products:
   - id: elastic-stack
 ---
 
-# Start a workflow from a curated template [workflows-templates-start]
+# Create a workflow from a template [workflows-templates-start]
 
 Instead of building a workflow from a blank editor, start from a curated, pre-built template in the **Template Library**. Templates are ready-made examples of common automation patterns that you can preview, add as your own workflow, and customize for your environment. It's the fastest way to go from an idea to a working workflow.
 
@@ -38,7 +38,7 @@ If the library is empty, no templates are available for your {{kib}} version yet
 1. Open **Workflows** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Open the library:
    - Select **Template Library** in the Workflows navigation, or
-   - On an empty workflows list, select **Explore library**.
+   - If you don't have any workflows yet, select **Explore library** when accessing the **Workflows** page.
 3. Find a template that matches your use case:
    - Search by name or description.
    - Filter by **solution** (for example, Security or {{observability}}).
