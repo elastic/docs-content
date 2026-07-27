@@ -59,7 +59,7 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-The [Template library](/explore-analyze/workflows/templates/start-from-a-template.md) is turned off by default and must be enabled by an administrator. If you don't see **Template library** in the Workflows navigation, ask an administrator to turn it on. After it's enabled, reload the page. **Template library** will appear in the Workflows navigation.
+The [Template library](/explore-analyze/workflows/templates/start-from-a-template.md) is turned off by default and must be enabled by an administrator. If you don't see **Template library** in the Workflows navigation, ask an administrator to turn it on.
 
 ::::{applies-switch}
 :::{applies-item} stack: preview 9.5+
@@ -74,7 +74,7 @@ uiSettings.overrides:
 
 :::{applies-item} serverless:
 
-Have an administrator run the following request from [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md) to enable the Template libary in the default space:
+Have an administrator run the following request from [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md) to enable the Template library in the default space:
 
 ```json
 POST kbn:/internal/kibana/global_settings
@@ -92,6 +92,8 @@ To enable the Template library in a different space, add the `/s/{space_id}` pre
 :::{note}
 The `/internal/kibana/global_settings` endpoint is an internal API and might change without notice. There is currently no public equivalent.
 :::
+
+After the Template library is enabled, reload the **Workflows** page. It can take a few minutes and several reloads before **Template library** appears in the navigation.
 
 ## What's next [workflows-what-next]
 

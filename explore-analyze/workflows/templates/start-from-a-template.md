@@ -56,12 +56,12 @@ Preview a template to confirm it fits your use case before you add it.
 When you add a template, {{kib}} creates a copy that you own and can modify freely.
 
 1. On the template detail page, select **Add workflow**.
-2. {{kib}} opens the workflow editor with the template's YAML prefilled as an unsaved workflow.
+2. {{kib}} opens the workflow editor with the template's YAML already loaded as an unsaved workflow.
 3. Customize the workflow for your environment. For example, select a connector and set indices or other step parameters. The editor flags steps that still need configuration, such as an unset connector. For more about editing workflows, refer to [](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md).
 4. Save the workflow. It appears on the **Workflows** list, and you can edit, enable, and run it like any other workflow.
 
 ::::{tip}
-Adding a template creates a copy you own. Catalog updates apply only to new additions, not to workflows you've already added. To use a newer version of a template, add it again from the library.
+Adding a template creates a copy you own. Catalog updates apply only to new additions, not to workflows you've already added. To use a later version of a template, add it again from the library.
 ::::
 
 ## Related [workflows-templates-related]
