@@ -20,11 +20,11 @@ description: Create custom roles and configure Kibana feature privileges to cont
 
 To manage cases, users need the appropriate {{kib}} feature privileges. You can grant different levels of access depending on what users need to do, from full control over cases to view-only access.
 
-## Quick reference [cases-quick-reference]
+## Minimum privileges by task [cases-quick-reference]
 
 The following table shows the minimum privileges required for each activity. Higher privilege levels include the access shown here. Set **Cases** privileges under your solution (**{{stack-manage-app}}**, **Security**, or **{{observability}}**). Refer to the following sections for the full breakdown.
 
-| To... | Minimum required |
+| To... | Minimum required privilege |
 |---|---|
 | View cases | **Cases: Read** |
 | Create and manage cases | **Cases: All** |
@@ -53,7 +53,7 @@ The following table shows the minimum privileges required for each activity. Hig
 
 ## Customize sub-feature privileges for cases [cases-sub-feature-privileges]
 
-When **Customize sub-feature privileges** is on for **Cases**, you can grant these privileges individually:
+When **Customize sub-feature privileges** is on for **Cases**, you can grant these privileges individually. For details about feature and sub-feature privileges, refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
 | Privilege | Description |
 | --- | --- |

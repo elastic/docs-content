@@ -18,6 +18,8 @@ Case templates pre-fill case fields such as severity, tags, title, description, 
 
 This page explains what templates contain and how they use the field library.
 
+To create, edit, or delete templates and field library entries, your role needs the **Manage templates** sub-feature privilege for **Cases**. Anyone with access to cases can select and apply enabled templates when creating a case. Refer to [Control access to cases](control-case-access.md#give-manage-templates-access).
+
 ## What's in a template [case-templates-anatomy]
 
 A template is made up of the following components:
@@ -25,7 +27,7 @@ A template is made up of the following components:
 * **Template identity**: Identifies the template in the templates list with a name, description, and tags. These values don't become case field defaults.
 * **Case defaults**: Pre-fill the case with a title, description, severity, category, and tags when someone uses the template.
 * **Custom fields**: Typed inputs, such as dropdowns, text boxes, and date pickers, that appear on cases created from the template. Define them inline (specific to that template) or reference fields from the field library.
-* **Case settings**: (Optional) Default values for **Sync alerts** and **Extract observables**, applied to every case created from the template.
+* **Case settings**: (Optional) Default values for **Sync alerts** and **Extract observables** (Security only), applied to every case created from the template.
 * **Connector**: (Optional) An external system ({{jira}}, {{sn}}, and others) to pre-select on the case.
 
 You set case settings and the connector on the template's **Configuration** tab. Case defaults and custom fields are defined in YAML on the **Fields** tab.

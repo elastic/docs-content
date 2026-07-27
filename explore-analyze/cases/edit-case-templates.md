@@ -14,7 +14,7 @@ description: Edit, clone, delete, or turn off case templates, manage field libra
 
 # Edit and share case templates [edit-case-templates]
 
-Update existing case templates, make copies, or move them between spaces and deployments. Changes to a template only affect cases created after the change. You can also edit or delete fields in the field library.
+Update existing case templates, make copies, or move them between spaces and deployments. Changes to a template only affect cases created after the change. You can also edit or delete fields in the [field library](manage-case-templates.md#case-templates-field-library).
 
 ## Before you begin
 
@@ -26,6 +26,11 @@ Update existing case templates, make copies, or move them between spaces and dep
 You can edit, clone, or delete a template from the **Templates** page at any time. You can also turn a template off to hide it from the case creation flow without deleting it.
 
 1. Find **Cases** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Templates**.
+
+   :::{note}
+   Cases are [scoped by solution](create-cases.md#cases-limitations). On {{stack}}, search for `Security/Cases` or `Observability/Cases`, or go to **{{stack-manage-app}}** > **Cases**. On {{serverless-short}}, search for `Cases` in {{elastic-sec}} or {{observability}}.
+   :::
+
 2. From the templates list, edit, clone, delete, or turn off the template you want to change.
 
 While you're editing, your changes are saved as a draft so you don't lose your work. Select **Reset** to discard the draft and return to the last saved version.

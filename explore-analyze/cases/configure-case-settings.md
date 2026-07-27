@@ -74,7 +74,7 @@ When you push updates, mapped fields are either overwritten or appended, dependi
 
 :::{applies-item} { stack: ga 9.5+, serverless: ga }
 
-Custom fields are managed in the [field library](create-case-field-library.md) instead of case settings. When you upgrade to {{stack}} 9.5, existing custom fields become **global fields** in the field library automatically. You don't need to take any action.
+Custom fields are managed in the [field library](create-case-field-library.md) instead of case settings. Existing custom fields become **global fields** in the field library automatically, when you upgrade to {{stack}} 9.5 or when the feature becomes available on {{serverless-short}}. You don't need to take any action.
 
 :::
 
@@ -103,7 +103,7 @@ Templates let you pre-fill case fields like severity, tags, title, description, 
 
 :::{applies-item} { stack: ga 9.5+, serverless: ga }
 
-Templates are managed on the **Templates** page instead of case settings. When you upgrade to {{stack}} 9.5, existing templates are migrated to the new YAML-based format automatically. You don't need to take any action. Refer to [Case templates](manage-case-templates.md).
+Templates are managed on the **Templates** page instead of case settings. Existing templates are migrated to the new YAML-based format automatically, when you upgrade to {{stack}} 9.5 or when the feature becomes available on {{serverless-short}}. You don't need to take any action. Refer to [Case templates](manage-case-templates.md).
 
 :::
 
