@@ -79,7 +79,7 @@ Select **Save**. The skill is added to your library and becomes available to ass
 
 Custom skills in your library are not available to your agents until you explicitly add them. To add a skill, go to **Customize → Skills** on the agent you want to configure and select **Add skills**. From here you can:
 
-- **Import from skill library**: Select an existing skill from **Manage components → Skills**. After importing, make sure the skill is toggled on in the agent's skill list.
+- **Import from skill library**: Select an existing skill from **Manage components → Skills**. After importing, make sure the skill is turned on in the agent's skill list.
 - **Create a skill**: Build a new skill and add it to this agent in one step. The skill is enabled for the agent automatically and also saved to your library.
 
 Built-in skill availability depends on your deployment type. Refer to [Built-in skills reference](builtin-skills-reference.md) for details.
@@ -113,9 +113,9 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-Open a conversation with any agent and ask it to create a skill. For example, "Create a skill that triages production alerts using our incident runbook." The agent asks clarifying questions when it needs more information, then presents the generated skill as a draft.
+Open a conversation with any agent and ask it to create a skill. For example, "Create a skill that handles production alerts using our incident runbook." The agent asks clarifying questions when it needs more information, then presents the generated skill as a draft.
 
-Review the description, instructions, associated tools, and references, and ask for any changes. When the draft is ready, select **Create skill**. The skill is not added to your library until you confirm this action.
+Review the description, instructions, associated tools, and references, and ask the agent to edit anything that needs changing. When the draft is ready, select **Create skill**. The skill is not added to your library until you select **Create skill**.
 
 :::{image} images/create-skill-from-chat.png
 :screenshot:

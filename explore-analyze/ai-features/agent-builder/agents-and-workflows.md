@@ -20,7 +20,7 @@ Elastic Workflows and {{agent-builder}} combine deterministic automation with co
 
 There are three ways to use {{agent-builder}} and workflows together:
 
-* **Create workflows from Agent Chat** {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`: Describe the automation you want in natural language, refine the generated draft, then confirm creation. Refer to [Create skills and workflows in chat](chat.md#create-skills-and-workflows-directly-from-chat).
+* **Create workflows from Agent Chat** {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`: Describe the automation you want in natural language, refine the generated draft, then open **Preview** and select **Save** to create it. Refer to [Create skills and workflows in chat](chat.md#create-skills-and-workflows-directly-from-chat).
 * **Use workflows from agents:** Trigger an existing workflow from a conversation with a [workflow tool](./tools/workflow-tools.md), or assign [pre-execution workflows](#pre-execution-workflows) that run before the agent starts reasoning.
 * **Use agents from workflows:** Invoke an agent from a workflow with the [`ai.agent` step](#use-ai-agent-workflow-step). For advanced API operations, use the [`kibana.request` step](#use-kibana-request-workflow-step).
 
@@ -32,7 +32,6 @@ Before you begin:
 * Enable the Workflows feature in **Advanced settings**.
 * Ensure you have the correct privileges to create and run workflows.
 * For details, refer to [Set up workflows](/explore-analyze/workflows/get-started/setup.md).
-* Create at least one workflow.
 
 ## Pre-execution workflows [pre-execution-workflows]
 

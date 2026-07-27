@@ -291,16 +291,28 @@ serverless: ga
 
 In addition to answering questions and analyzing data, agents can help you create reusable skills and Elastic Workflows without leaving the conversation. Describe what you want to build in natural language:
 
-- **Skills**: For example, "Create a skill that triages production alerts using our incident runbook."
+- **Skills**: For example, "Create a skill that handles production alerts using our incident runbook."
 - **Workflows**: For example, "Create a workflow that checks for failed payments every five minutes and sends a Slack notification."
 
 Creating a resource from chat is a [human-in-the-loop](#human-in-the-loop-prompts) process:
 
 1. The agent gathers the requirements from your request. If important information is missing or ambiguous, it pauses to ask [clarifying questions](#answer-a-clarifying-question).
 2. The agent generates a draft and presents it in the conversation. You can review the configuration and ask for changes in natural language.
-3. When the draft is ready, use the action on the preview to confirm creation. The resource is not created until you explicitly confirm the change.
+3. When the draft is ready, confirm creation from the preview:
+   - For skills, select **Create skill**.
+   - For workflows, select **Preview**, review the definition, then select **Save**. If you are replacing an existing workflow, select **Override**.
 
-When you create a workflow, include details such as its trigger, inputs, data sources, conditions, and connectors. The agent asks for any missing information, generates and validates the workflow YAML, and shows the proposed changes for you to review. You can continue refining the draft in the conversation before you confirm creation.
+   The resource is not created until you complete this step.
+
+When you create a workflow, include details such as its trigger, inputs, data sources, conditions, and connectors. The agent asks for any missing information, generates and validates the workflow YAML, and shows the proposed changes for you to review. You can continue refining the draft in the conversation before you open the preview.
+
+For example, the following response includes the generated workflow definition and a summary of its trigger and steps. Select **Preview** to review and save the workflow:
+
+:::{image} images/create-workflow-from-chat.png
+:screenshot:
+:alt: Agent Chat showing a workflow request, generated YAML diff, workflow summary, and Preview button
+:width: 720px
+:::
 
 For example, the following preview shows a skill draft that you can review before selecting **Create skill**:
 
