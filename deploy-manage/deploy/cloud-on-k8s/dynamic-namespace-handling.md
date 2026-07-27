@@ -115,4 +115,4 @@ When the Enterprise license expires, ECK normally reverts the managed {{es}} clu
 To recover, install a valid [Enterprise license](../../license/manage-your-license-in-eck.md) (or Enterprise Trial License), or remove the namespace selector so that the operator reverts the clusters to Basic.
 ::::
 
-Create the license secret in the operator's namespace, as described in [Manage your license in ECK](../../license/manage-your-license-in-eck.md). This is particularly important with dynamic namespace handling: the operator's namespace is always in scope regardless of its labels, so a license stored there can never be off-boarded together with a managed namespace.
+Create the license secret in the operator's namespace, as described in [Manage your license in ECK](../../license/manage-your-license-in-eck.md). This is particularly important with dynamic namespace handling: the operator's namespace is always in scope regardless of its labels, so a license stored there can never be offboarded together with a managed namespace.
