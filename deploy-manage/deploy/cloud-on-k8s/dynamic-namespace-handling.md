@@ -23,7 +23,7 @@ Dynamic namespace handling requires a valid Enterprise license or Enterprise tri
 With a namespace selector configured, the operator watches all namespaces cluster-wide and filters the events it receives by matching each namespace's current labels against the selector:
 
 * Events from resources in non-matching namespaces are ignored, and the operator does not reconcile those resources.
-* The operator also watches `Namespace` objects themselves. When a namespace flips in or out of the selector's scope, the operator immediately enumerates the Elastic resources in that namespace and starts or stops managing them.
+* The operator also watches `Namespace` objects themselves. When a namespace enters or leaves the selector's scope, the operator immediately enumerates the Elastic resources in that namespace and starts or stops managing them.
 * The [validating webhook](configure-validating-webhook.md) applies the same filtering: resources in namespaces that do not match the selector are not validated (admission requests for them are silently accepted rather than blocked).
 * The namespace in which the operator itself runs is always considered managed, regardless of its labels.
 
