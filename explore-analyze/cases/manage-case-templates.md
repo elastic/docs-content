@@ -27,7 +27,7 @@ A template is made up of the following components:
 * **Template identity**: Identifies the template in the templates list with a name, description, and tags. These values don't become case field defaults.
 * **Case defaults**: Pre-fill the case with a title, description, severity, category, and tags when someone uses the template.
 * **Custom fields**: Typed inputs, such as dropdowns, text boxes, and date pickers, that appear on cases created from the template. Define them inline (specific to that template) or reference fields from the field library.
-* **Case settings**: (Optional) Default values for **Sync alerts** and **Extract observables** (Security only), applied to every case created from the template.
+* **Case settings**: (Optional) Default values for **Sync alerts** and **Extract observables** ({{elastic-sec}} only), applied to every case created from the template.
 * **Connector**: (Optional) An external system ({{jira}}, {{sn}}, and others) to pre-select on the case.
 
 You set case settings and the connector on the template's **Configuration** tab. Case defaults and custom fields are defined in YAML on the **Fields** tab.
