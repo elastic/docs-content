@@ -76,10 +76,11 @@ This enables you to start with a broad search scope and narrow it down by removi
 
 Exclusion follows these rules:
 
-* A leading `-` on a pattern signals exclusion. The dash can be placed on the index part or on the project part of an expression, each with different requirements.
-Placing the dash on the **index** part (for example, `linked-project-1:-my-index` or `linked-project-1:-*`) works for any index pattern and can be used on its own.
-Placing the dash on the **project** part behaves differently depending on the index part. With the `*` wildcard (for example, `*,-linked-project-1:*`), it is a project-level exclusion. It removes the entire project and requires a preceding inclusion pattern. With a specific index (for example, `*,-linked-project-1:my-index`), it is an index-level exclusion. It is equivalent to `linked-project-1:-my-index` and can be used on its own.
-You cannot prefix both the project and the index with a dash in the same expression (for example, `-linked-project-1:-*` is invalid).
+* A leading `-` on a pattern signals exclusion. You can place the dash on the index part or the project part:
+    * On the **index part** (for example, `linked-project-1:-my-index` or `linked-project-1:-*`): works for any index pattern and can be used on its own.
+    * On the **project part** with a specific index (for example, `-linked-project-1:my-index`): an index-level exclusion, equivalent to `linked-project-1:-my-index`, that can be used on its own.
+    * On the **project part** with the `*` wildcard (for example, `-linked-project-1:*`): a project-level exclusion that removes the entire project and requires a preceding inclusion pattern.
+    * You cannot combine both prefixes (for example, `-linked-project-1:-*` is not valid).
 * An exclusion pattern only affects patterns that appear **before** it in the expression.
 Patterns listed **after** the exclusion are not affected by it (for example, in `*,-*,my-index`, the exclusion `-*` removes everything matched by the first `*`, but `my-index` comes after the exclusion and is still included).
 * You can use multiple exclusion patterns in a single expression.
