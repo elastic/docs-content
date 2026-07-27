@@ -37,7 +37,7 @@ kubectl label namespace my-namespace eck-managed=true
 
 The operator picks up any existing Elastic resources in the namespace and starts reconciling them immediately.
 
-### Off-boarding [k8s-dynamic-namespace-handling-offboarding]
+### Offboarding [k8s-dynamic-namespace-handling-offboarding]
 
 To offboard a namespace, remove or change the labels so that the namespace no longer matches the selector:
 
