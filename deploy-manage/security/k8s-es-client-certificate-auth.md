@@ -208,7 +208,9 @@ spec:
 ```
 
 :::{warning}
-{{ls}} versions 8.10–8.18 and 9.0 can crash on startup with some PKCS#8 private keys due to a JRuby runtime bug. This is fixed in {{ls}} 8.19 and 9.1+. If you are running an affected version and {{ls}} fails to start after enabling client authentication, for operator-managed certificates delete the affected client certificate secret to force ECK to regenerate it. For custom certificates, regenerate and re-supply the certificate.
+{{ls}} versions 8.10–8.18 and 9.0 can crash on startup with some PKCS#8 private keys due to a JRuby runtime bug. This is fixed in {{ls}} 8.19 and 9.1+. If you are running an affected version and {{ls}} fails to start after enabling client authentication:
+* For operator-managed certificates, delete the affected client certificate secret to force ECK to regenerate it. 
+* For custom certificates, regenerate and re-supply the certificate.
 :::
 
 ### Elastic Agent [k8s-agent-custom-client-cert]
