@@ -47,6 +47,15 @@ The attached context includes the following case details:
 - Connector name
 - A link back to the case
 
+### What you can do with a case in a chat [analyze-cases-with-ai-actions]
+
+After a case is attached, you can ask the agent to act on it directly from the conversation. For example, you can:
+
+- Add case comments. For example, after the agent summarizes a case, you can ask it to add that summary as a comment.
+- Update case metadata, such as the status, severity, tags, category, title, and description.
+- Change the assignees.
+- Add attachments, such as alerts, events, or observables.
+
 ### Keep the case and chat in sync [analyze-cases-with-ai-sync]
 
 If you keep the chat open, the case page updates in real time to show any changes the agent makes.

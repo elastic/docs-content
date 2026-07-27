@@ -65,7 +65,7 @@ The case details page organizes information into editable sections:
 - The **description** appears in its own panel that you can collapse or expand. An indicator shows when you have unsaved draft changes.
 - A collapsible sidebar groups case attributes into sections you can edit in place, each with confirm and cancel controls:
   - **Attributes**: Assignees, severity, participants, tags, and category.
-  - **Template fields**: Custom and template fields.
+  - **Template fields**: Custom and template fields. When you apply a template, this section's title changes to the template's name (for example, **Compromised Account**).
   - **{{connectors-ui}}**: The external system the case is pushed to.
 
   Collapse the sidebar to give the main case content more room.
