@@ -45,7 +45,7 @@ The following requirements apply to the project where you want to apply an IP fi
 :::{include} _snippets/network-sec-tier-reqs.md
 :::
 
-There are no specific requirements for {{es-serverless}} projects or {{ech}} deployments.
+There are no specific requirements for other {{serverless-short}} project types or {{ech}} deployments.
 
 ## Limitations
 ```{applies_to}

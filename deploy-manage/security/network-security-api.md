@@ -57,7 +57,7 @@ The following requirements apply to the project where you want to apply a networ
 :::{include} _snippets/network-sec-tier-reqs.md
 :::
 
-There are no specific requirements for {{es-serverless}} projects, {{ech}} deployments, or {{ece}} deployments.
+There are no specific requirements for other {{serverless-short}} project types, {{ech}} deployments, or {{ece}} deployments.
 
 ## API reference
 

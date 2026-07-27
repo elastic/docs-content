@@ -139,7 +139,10 @@ After you create your private connection policy, you can [edit](#edit-private-co
 
     Follow the [Azure instructions](https://docs.microsoft.com/en-us/azure/private-link/create-private-endpoint-portal#create-a-private-endpoint) for details on creating a private endpoint to an endpoint service.
 
-    Use [the service aliases for your region](#ec-private-link-azure-service-aliases). Select the **Connect to an Azure resource by resource ID or alias** option. For example, for {{ech}} deployments in the region `eastus2`, the service alias is `eastus2-prod-002-privatelink-service.64359fdd-7893-4215-9929-ece3287e1371.eastus2.azure.privatelinkservice`. For {{serverless-full}} projects in the same region, use `eastus2-prod-privatelink-serverless.46552e7f-8404-48e2-8c79-66801ef74a76.eastus2.azure.privatelinkservice`.
+    Use [the service aliases for your region](#ec-private-link-azure-service-aliases). Select the **Connect to an Azure resource by resource ID or alias** option. For example, for resources in `eastus2`:
+    
+    * For {{ech}} deployments: The service alias is `eastus2-prod-002-privatelink-service.64359fdd-7893-4215-9929-ece3287e1371.eastus2.azure.privatelinkservice`.
+    * For {{serverless-short}} projects: The service alias is `eastus2-prod-privatelink-serverless.46552e7f-8404-48e2-8c79-66801ef74a76.eastus2.azure.privatelinkservice`.
 
     ::::{note}
     The Private Link endpoint is created in the `Awaiting Approval` state. We validate and approve the endpoints when you create the private connection policy using the Private Link `resource ID`, as described in [Create a private connection policy](#ec-azure-allow-traffic-from-link-id).
@@ -149,7 +152,14 @@ After you create your private connection policy, you can [edit](#edit-private-co
 
     1. Create a private DNS zone.
 
-        Refer to the **Private hosted zone domain name** column in the [Azure Private Link Service aliases](#ec-private-link-azure-service-aliases) table for the name of the zone. For example, in `eastus2`, use `privatelink.eastus2.azure.elastic-cloud.com` for {{ech}} or `private.eastus2.azure.elastic.cloud` for {{serverless-full}}. Using this zone domain name is required to ensure certificate names match.
+        Refer to the **Private hosted zone domain name** column in the [Azure Private Link Service aliases](#ec-private-link-azure-service-aliases) table for the name of the zone. 
+        
+        For example, in `eastus2`:
+        
+        * For {{ech}} deployments: Use `privatelink.eastus2.azure.elastic-cloud.com`.
+        * For {{serverless-short}} projects: Use `private.eastus2.azure.elastic.cloud`.
+        
+        Using this zone domain name is required to ensure certificate names match.
 
         :::{tip}
         Private hosted zone domain names differ between {{ech}} and {{serverless-full}}, even if the region is the same.
