@@ -69,7 +69,7 @@ Complete the following steps:
 
 ::::
 
-::::{tab-item} ECK
+::::{applies-item} eck: ga 3.5
 :sync: configure-collection-eck
 ```{applies_to}
 deployment:
