@@ -9,64 +9,10 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
-<!-- :::{changelog} /releases
-::: -->
-
-:::{include} _snippets/2026-07-13/index.md
-:::
-:::{include} _snippets/2026-07-07/index.md
-:::
-:::{include} _snippets/2026-07-02/index.md
-:::
-:::{include} _snippets/2026-06-30/index.md
-:::
-
-:::{include} _snippets/2026-06-26/index.md
-:::
-
-:::{include} _snippets/2026-06-25/index.md
-:::
-
-:::{include} _snippets/2026-06-18/index.md
-:::
-
-:::{include} _snippets/2026-06-16/index.md
-:::
-
-:::{include} _snippets/2026-06-02/index.md
-:::
-
-:::{include} _snippets/2026-06-01/index.md
-:::
-
-:::{include} _snippets/2026-05-29/index.md
-:::
-
-:::{include} _snippets/2026-05-28/index.md
-:::
-
-:::{include} _snippets/2026-05-26/index.md
-:::
-
-:::{include} _snippets/2026-05-20/index.md
-:::
-
-:::{include} _snippets/2026-05-19/index.md
-:::
-
-:::{include} _snippets/2026-05-14/index.md
-:::
-
-:::{include} _snippets/2026-05-12/index.md
-:::
-
-:::{include} _snippets/2026-05-11/index.md
-:::
-
-:::{include} _snippets/2026-05-06/index.md
-:::
-
-:::{include} _snippets/2026-05-04/index.md
+:::{changelog}
+:cdn: cloud-serverless
+:description-visibility: hide-descriptions
+:link-visibility: keep-links
 :::
 
 ## April 30, 2026 [serverless-changelog-04302026]

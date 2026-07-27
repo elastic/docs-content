@@ -69,7 +69,7 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 `platform.core.execute_connector_sub_action` {applies_to}`stack: preview 9.4`
 :   Runs a single sub-action on a saved {{kib}} [connector](../connectors.md) (for example, sending an email or creating an issue), given a connector ID, sub-action name, and parameters. This lets an agent act on external systems without a dedicated [workflow tool](workflow-tools.md) for each connector.
 
-    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) must be turned on.
+    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](../get-started.md#enable-experimental-features-optional) must be turned on.
 
 #### Workflow execution tools
 
@@ -200,7 +200,7 @@ In 9.5, the individual stream read tools were consolidated into `inspect_streams
 :   Updates a stream's configuration, including its processing pipeline, description, retention lifecycle, field mappings, and failure store. Requires user confirmation before applying changes.
 
 `platform.streams.create_partition` {applies_to}`stack: preview 9.5`
-:   Creates a child stream (partition) under a parent wired stream, using a routing condition to select the documents it receives. [Partitioning](/solutions/observability/streams/management/partitioning.md) and [wired streams](/solutions/observability/streams/streams.md) are in technical preview. Requires user confirmation.
+:   Creates a child stream (partition) under a parent wired stream, using a routing condition to select the documents it receives. [Partitioning](/solutions/observability/streams/organize-your-data.md) and [wired streams](/solutions/observability/streams/get-data-in.md#get-data-in-wired) are in technical preview. Requires user confirmation.
 
 `platform.streams.delete_stream` {applies_to}`stack: preview 9.5`
 :   Permanently deletes a stream and all of its child streams. This action cannot be undone and requires user confirmation.
@@ -230,7 +230,7 @@ The following streams tools were available in 9.4 and were removed in 9.5:
 stack: preview 9.5
 ```
 
-Significant events tools search, create, and manage [significant events](/solutions/observability/streams/management/significant-events.md) and Knowledge Indicators for [Streams](/solutions/observability/streams/streams.md).
+Significant events tools search, create, and manage [significant events](/solutions/observability/streams/knowledge-indicators.md) and Knowledge Indicators for [Streams](/solutions/observability/streams/streams.md).
 
 **Prerequisites:** Significant events require an [Enterprise license](https://www.elastic.co/subscriptions) and must be enabled for the deployment through the `observability:streamsEnableSignificantEvents` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings).
 
@@ -335,7 +335,7 @@ Security tools provide specialized capabilities for security monitoring, threat 
 
 $$$agent-builder-security-attack-discovery-search-tool$$$
 `security.attack_discovery_search` {applies_to}`stack: ga 9.4+`
-:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs. Requires attack discovery to have been run at least once.
+:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery/index.md) from the last week, given one or more alert IDs. Requires attack discovery to have been run at least once.
 
 $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 :   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.

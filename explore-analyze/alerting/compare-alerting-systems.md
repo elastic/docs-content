@@ -32,22 +32,9 @@ Elastic offers three alerting systems, each suited to different use cases and wo
 | | {{kib}} alerting | {{alerting-v2-system-cap}} | Watcher |
 |---|---|---|---|
 | **Best for** | Teams using built-in rule types with form-based setup | Teams that need full control over detection and notification routing | Custom alerting logic requiring scripting |
-| **Rule definition** | Select a rule type and fill in parameters | Write an {{esql}} query or use a rule builder with form-based setup | Write a JSON watch definition |
-| **Alert data** | In-place updates, limited query support | Append-only events queryable with {{esql}} in Discover | Watch history index |
-| **Notifications** | Configured per action on each rule | Centralized action policies, reusable across rules; supports action-level throttling and conditions | Action-level throttling and conditions |
-| **Noise reduction** | Snooze per rule, maintenance windows | Per-episode acknowledge or deactivate, per-series snooze, maintenance windows, match condition routing in action policies | Action conditions and throttling |
+| **Rule definition** | Select a rule type and fill in parameters | [Write an {{esql}} query](experimental-alerting-system/rules/configure-rule-query.md) or use a rule builder with form-based setup | Write a JSON watch definition |
+| **Alert data** | In-place updates, limited query support | [Append-only events queryable with {{esql}} in Discover](experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md) | Watch history index |
+| **Notifications** | Configured per action on each rule | [Centralized action policies](experimental-alerting-system/notifications-actions.md), reusable across rules; supports action-level throttling and conditions | Action-level throttling and conditions |
+| **Noise reduction** | Snooze per rule, maintenance windows | [Per-episode acknowledge or deactivate, per-series snooze, maintenance windows, match condition routing in action policies](experimental-alerting-system/action-policies/reduce-notification-noise.md) | Action conditions and throttling |
 | **Available on {{serverless-full}}** | Yes | Yes, {applies_to}`serverless: experimental` | No |
 | **Available on {{stack}}** | Yes | Yes, {applies_to}`stack: experimental 9.5+` | Yes |
-
-<!--
-TODO: Once PRs #6523, #6525, and #6527 are merged, add cross-links to the experimental system cells in the comparison table above. The cells currently describe the system but don't link anywhere. Suggested targets:
-
-| Row                        | Link target                                                                 |
-|----------------------------|-----------------------------------------------------------------------------|
-| Alert data (experimental)  | experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md (PR #6527) |
-| Notifications (experimental) | experimental-alerting-system/notifications-actions.md or action-policies/about-action-policies.md (PR #6525) |
-| Noise reduction (experimental) | experimental-alerting-system/action-policies/reduce-notification-noise.md (PR #6525) |
-| Rule definition (experimental) | experimental-alerting-system/rules/configure-rule-query.md (PR #6523) |
-
-Also add links to the experimental system rows in the "Select by use case" table once the relevant pages are available.
--->

@@ -152,10 +152,6 @@ Use the chat history panel to access previous conversations.
 
 ### Track conversation status
 
-```{applies_to}
-stack: ga 9.5+
-```
-
 The chat history panel shows the status of each conversation at a glance, so you can keep track of what your agents are doing across conversations:
 
 | Icon | Status | Meaning |
@@ -177,17 +173,35 @@ Conversations run independently, so you can work in several at the same time: st
 
 ### Inspect tool calls and reasoning
 
-Expand the **Reasoning** section to see how the agent handles your request. This provides a detailed breakdown of the agent's reasoning steps, the tool calls it makes, and the responses it receives. The agent runs tools in a loop until it achieves its goal or [exceeds the maximum conversation length](limitations-known-issues.md#conversation-length-exceeded).
+::::{note}
+:applies_to: stack: ga 9.5+, serverless: ga
+
+Inline reasoning events replace the [Reasoning panel](glossary.md#reasoning-panel).
+::::
+
+Agent responses show reasoning, tool calls, tool results, and the final response inline as a single sequence. Events appear in the order they happen, so you can follow how the agent handles your request in context. The agent runs tools in a loop until it achieves its goal or [exceeds the maximum conversation length](limitations-known-issues.md#conversation-length-exceeded).
 
 :::{image} images/reasoning-steps.png
 :screenshot:
-:alt: Reasoning panel showing tool calls and execution steps
+:alt: Inline reasoning events showing tool calls and execution steps in Agent Chat
 :width: 650px
 :::
 
-Select **Inspect response** to view detailed information about individual tool calls and responses.
+Tool call events show whether a tool is still running or has returned a response. Expand a tool call to inspect **Parameters sent** and **Response returned**. Some results render inline; other results provide **View JSON** or **View execution** links for more detail.
 
-Select **View JSON** to view the full raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
+After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
+
+### View traces for a conversation round
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Each conversation round can record OpenTelemetry traces of how the agent ran. To inspect them, select the **View Trace** icon ({icon}`apm_trace`) on the round. A **Trace** flyout opens with a waterfall of the round's spans, including model calls and tool calls.
+
+The **View Trace** icon appears only when trace collection is enabled and the conversation round has a trace. If trace collection is off, or the round produced no trace, the icon does not appear.
+
+To learn how traces are collected, configured, and secured, refer to [Collect agent traces](collect-traces.md).
 
 ### Human-in-the-loop prompts
 ```{applies_to}
@@ -196,15 +210,41 @@ stack: ga 9.4+
 
 At certain points an agent pauses and hands control back to you before it continues. This pattern is known as human-in-the-loop (HITL). While a conversation is paused this way, it shows an **Awaiting your input** status in the [chat history panel](#track-conversation-status).
 
+{{agent-builder}} uses different prompts depending on why the agent needs your input:
+
+| Prompt | When it appears | Available responses |
+| --- | --- | --- |
+| Tool confirmation | An Elastic-built tool or skill requires approval before it performs an action | Confirm the action or deny it |
+| Connector authorization {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | An external connector needs access to continue | Authorize access or deny it |
+| Clarifying question {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | The agent needs more information to continue | Answer or skip the question |
+
+HITL prompts do not replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
+
 #### Confirm a change
 
-You control every write operation an agent performs. Whenever an agent proposes to create, update, or delete a resource, the chat pauses and presents a preview before anything takes effect. The preview format and available actions depend on the skill the agent is using. Review the preview, then confirm it to apply the change or dismiss it to discard it. Nothing is applied until you respond.
+Some Elastic-built tools and skills pause for confirmation before performing consequential actions. When confirmation is required, the chat presents a preview before the action takes effect. The preview format and available responses depend on the tool or skill. Review the preview, then confirm the action to proceed or deny it to cancel.
 
 For example, when an agent updates a workflow, it shows the proposed change as a diff and waits for you to review it before applying:
 
 :::{image} images/agent-builder-preview-changes.png
 :screenshot:
 :alt: Preview panel showing proposed changes from an agent action before they are applied.
+:width: 700px
+:::
+
+The Streams management skill also previews the proposed configuration when it creates a stream:
+
+:::{image} images/agent-builder-confirm-create-stream.png
+:screenshot:
+:alt: Confirmation prompt previewing a new logs.otel.checkout stream and its routing condition
+:width: 700px
+:::
+
+For irreversible actions, the prompt highlights the consequences before you proceed:
+
+:::{image} images/agent-builder-confirm-delete-stream.png
+:screenshot:
+:alt: Confirmation prompt warning that the logs.otel.checkout stream and its data will be permanently deleted
 :width: 700px
 :::
 
@@ -260,7 +300,7 @@ The **Customize** accordion in the left sidebar provides agent-scoped configurat
 :   Lists the plugins assigned to the current agent. Each plugin bundles a set of related skills that install together. To assign a plugin, click **Add plugins**. To view and manage all plugins, click **Manage all plugins**. 
 
 :::{note}
-The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}}.
+The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
 **Tools**
@@ -289,14 +329,14 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
 :   View and install plugins across the deployment. Install a plugin from a URL or by uploading a ZIP file. Each plugin bundles related skills that you can assign to agents.
 
 :::{note}
-The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}}.
+The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
 **Connectors** {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
 :   View and manage the agent builder connectors library, which gives agents access to external data sources and systems. 
 
 :::{note}
-The **Connectors** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}}.
+The **Connectors** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
 **Tools**
