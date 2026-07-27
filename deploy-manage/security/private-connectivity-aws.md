@@ -41,7 +41,7 @@ The following requirements apply to the project where you want to apply a privat
 :::{include} _snippets/network-sec-tier-reqs.md
 :::
 
-There are no specific requirements for {{es-serverless}} projects or {{ech}} deployments.
+There are no specific requirements for other {{serverless-short}} project types or {{ech}} deployments.
 
 ## Considerations
 
@@ -79,11 +79,12 @@ When using AWS PrivateLink, the following limitations apply:
 
 ## PrivateLink service names and aliases [ec-private-link-service-names-aliases]
 
+PrivateLink Service is set up by Elastic in all supported AWS regions under the following service names.
+
 Some metadata might differ between {{ech}} and {{serverless-full}}, even if the region is the same.
 
 :::::{applies-switch}
 ::::{applies-item} ess: ga
-PrivateLink Service is set up by Elastic in all supported AWS regions under the following service names:
 
 :::{dropdown} AWS public regions
 | Region | VPC service name | Private hosted zone domain name | AZ names (AZ IDs) |
@@ -119,7 +120,23 @@ PrivateLink Service is set up by Elastic in all supported AWS regions under the 
 :::
 ::::
 ::::{applies-item} serverless: ga
-To view the service metadata for your selected region, start to [create a new private connection policy](#ec-add-vpc-elastic) for the region and expand the **Service metadata** dropdown.
+
+:::{dropdown} AWS public regions
+| Region | VPC service name | Private hosted zone domain name | AZ names (AZ IDs) |
+| --- | --- | --- | --- |
+| ap-northeast-1 | `com.amazonaws.vpce.ap-northeast-1.vpce-svc-06284ba62764f1d90` | `private.ap-northeast-1.aws.elastic.cloud` | `ap-northeast-1a` (`apne1-az4`), `ap-northeast-1c` (`apne1-az1`), `ap-northeast-1d` (`apne1-az2`) |
+| ap-southeast-1 | `com.amazonaws.vpce.ap-southeast-1.vpce-svc-03b39b802f04ea0d0` | `private.ap-southeast-1.aws.elastic.cloud` | `ap-southeast-1a` (`apse1-az2`), `ap-southeast-1b` (`apse1-az1`), `ap-southeast-1c` (`apse1-az3`) |
+| ap-southeast-2 | `com.amazonaws.vpce.ap-southeast-2.vpce-svc-0f49488ed054785dd` | `private.ap-southeast-2.aws.elastic.cloud` | `ap-southeast-2a` (`apse2-az1`), `ap-southeast-2b` (`apse2-az3`), `ap-southeast-2c` (`apse2-az2`) |
+| ca-central-1 | `com.amazonaws.vpce.ca-central-1.vpce-svc-07c1055703fa21557` | `private.ca-central-1.aws.elastic.cloud` | `ca-central-1a` (`cac1-az1`), `ca-central-1b` (`cac1-az2`), `ca-central-1d` (`cac1-az4`) |
+| eu-central-1 | `com.amazonaws.vpce.eu-central-1.vpce-svc-08bdd241053768a93` | `private.eu-central-1.aws.elastic.cloud` | `eu-central-1a` (`euc1-az2`), `eu-central-1b` (`euc1-az3`), `eu-central-1c` (`euc1-az1`) |
+| eu-west-1 | `com.amazonaws.vpce.eu-west-1.vpce-svc-063ee4d57bcb7e850` | `private.eu-west-1.aws.elastic.cloud` | `eu-west-1a` (`euw1-az2`), `eu-west-1b` (`euw1-az3`), `eu-west-1c` (`euw1-az1`) |
+| eu-west-2 | `com.amazonaws.vpce.eu-west-2.vpce-svc-0eff494bfad918e69` | `private.eu-west-2.aws.elastic.cloud` | `eu-west-2a` (`euw2-az2`), `eu-west-2b` (`euw2-az3`), `eu-west-2c` (`euw2-az1`) |
+| us-east-1 | `com.amazonaws.vpce.us-east-1.vpce-svc-06b7aa0d52044e98f` | `private.us-east-1.aws.elastic.cloud` | `us-east-1b` (`use1-az2`), `us-east-1c` (`use1-az4`), `us-east-1d` (`use1-az6`) |
+| us-east-2 | `com.amazonaws.vpce.us-east-2.vpce-svc-05572e19a6a405b79` | `private.us-east-2.aws.elastic.cloud` | `us-east-2a` (`use2-az1`), `us-east-2b` (`use2-az2`), `us-east-2c` (`use2-az3`) |
+| us-west-2 | `com.amazonaws.vpce.us-west-2.vpce-svc-057a54fcdb1617033` | `private.us-west-2.aws.elastic.cloud` | `us-west-2a` (`usw2-az2`), `us-west-2b` (`usw2-az1`), `us-west-2c` (`usw2-az3`) |
+:::
+
+You can also view the service metadata for your selected region by starting to [create a new private connection policy](#ec-add-vpc-elastic) for the region and expanding the **Service metadata** dropdown.
 ::::
 :::::
 
