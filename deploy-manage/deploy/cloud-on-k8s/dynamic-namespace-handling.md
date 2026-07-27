@@ -39,7 +39,7 @@ The operator picks up any existing Elastic resources in the namespace and starts
 
 ### Off-boarding [k8s-dynamic-namespace-handling-offboarding]
 
-To off-board a namespace, remove or change the labels so that the namespace no longer matches the selector:
+To offboard a namespace, remove or change the labels so that the namespace no longer matches the selector:
 
 ```sh
 kubectl label namespace my-namespace eck-managed-
