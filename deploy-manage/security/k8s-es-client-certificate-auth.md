@@ -48,11 +48,6 @@ When client authentication is enabled, ECK does the following:
 * {{fleet-server}} requires version 8.13.0 or later. If the version is below 8.13.0, ECK blocks pod reconciliation and sets the agent status to red with a warning event.
 :::
 
-:::{warning}
-* {{ls}} versions 8.10–8.18 and 9.0 can crash on startup with some PKCS#8 private keys due to a JRuby runtime bug. This is fixed in {{ls}} 8.19 and 9.1+. If affected, delete the client certificate secret to force ECK to regenerate it.
-* Enterprise Search can crash on startup with some PKCS#8 private keys due to a JRuby runtime bug. If affected, delete the client certificate secret to force ECK to regenerate it.
-:::
-
 ## Use a custom client certificate [k8s-custom-client-cert]
 
 ECK automatically issues a client certificate to each component. To use your own certificate instead, set `clientCertificateSecretName` in the component's `elasticsearchRef`.
