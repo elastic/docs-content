@@ -37,7 +37,11 @@ To create a new case:
 
 4. (Optional) Adjust sync and extraction options, or leave the defaults:
    * **Sync alert status** syncs alert statuses with the case status (on by default).
-   * **Auto-extract observables** extracts observables from attached alerts (on by default). Available in {{sec-serverless}} and {{elastic-sec}} 9.2+ only.
+   * **Auto-extract observables** extracts observables from attached alerts (on by default, requires appropriate subscription). {applies_to}`stack: ga 9.5` Auto-extraction can also run for cases created through the Cases API or automations. For details, refer to [Auto-extract observables](attach-objects-to-cases.md#cases-auto-extract-observables).
+
+      :::{note}
+      Auto-extracting observables is only available in {{sec-serverless}} and {{elastic-sec}} 9.2+.
+      :::
 
 5. (Optional) Select a [connector](configure-case-settings.md#case-connectors) to send the case to an external system. When you create the case, it's pushed to that system automatically.
 
