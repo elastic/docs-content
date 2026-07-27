@@ -46,7 +46,7 @@ kubectl label namespace my-namespace eck-managed-
 ```
 
 ::::{important}
-Off-boarding a namespace does not delete or modify the Elastic resources deployed in it. Existing {{es}} clusters, {{kib}} instances, and other Elastic applications keep running as they are, but the operator stops monitoring and operating them: changes to their manifests are no longer reconciled, and features driven by the operator, such as certificate rotation, stop being applied. If the namespace is on-boarded again later, the operator resumes managing those resources.
+Offboarding a namespace does not delete or modify the Elastic resources deployed in it. Existing {{es}} clusters, {{kib}} instances, and other Elastic applications keep running as they are, but the operator stops monitoring and operating them: changes to their manifests are no longer reconciled, and features driven by the operator, such as certificate rotation, stop being applied. If the namespace is onboarded again later, the operator resumes managing those resources.
 ::::
 
 ## Enable dynamic namespace handling [k8s-dynamic-namespace-handling-enable]
