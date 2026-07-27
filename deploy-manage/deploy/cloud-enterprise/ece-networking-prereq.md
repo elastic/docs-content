@@ -87,7 +87,7 @@ The following ports need to be open for containers communicating with the host o
 
 ## Network stability requirements [ece-network-stability]
 
-ECE relies on [Apache ZooKeeper](https://zookeeper.apache.org/) for all control plane coordination, including plan changes, vacates, allocator health checks, and leader elections. ZooKeeper is sensitive to network and disk latency — even brief disruptions can cause ensemble members to disconnect, resulting in ECE control plane instability.
+ECE relies on [Apache ZooKeeper](https://zookeeper.apache.org/) for all control plane coordination, including plan changes, vacates, allocator health checks, and leader elections. ZooKeeper is sensitive to network and disk latency, and even brief disruptions can cause ensemble members to disconnect, resulting in ECE control plane instability.
 
 ::::{admonition} Network stability checklist
 Before deploying ECE, validate the following on your director hosts:
