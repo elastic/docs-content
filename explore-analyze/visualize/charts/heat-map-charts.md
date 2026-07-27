@@ -99,6 +99,9 @@ You can configure custom color ranges on the **Cell value** dimension to emphasi
 This example tracks 404 and 503 error activity over time. Named filter rows isolate each error type, and absolute count thresholds drive the color — gray for normal, yellow for elevated, red for high — so anomalous periods stand out immediately.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -379,6 +382,9 @@ The following examples show various configuration options for building impactful
 This example builds a day-by-hour traffic grid using a runtime field (`hour_of_day`) on the vertical axis to reveal peak activity patterns across the week.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -505,6 +511,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 This example uses two `terms` dimensions (city and product category) to create a category-versus-region grid, with cell color representing total revenue.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

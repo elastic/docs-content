@@ -265,6 +265,9 @@ The following examples show various configuration options you can use for buildi
 Send the following request to create a table that displays the top 5 request pages ranked by unique visitor count.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -372,6 +375,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 Send the following request to create a pivot table that shows unique customer counts per day, split into columns by the top 3 continents.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -502,6 +508,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 Send the following request to create a table that compares total bytes transferred across custom-defined file size ranges.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -626,6 +635,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 Send the following request to create a table that shows weekly order counts alongside a formula-based percentage change column.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
