@@ -27,14 +27,14 @@ You can learn more about an entity (host, user, or service) from the entity deta
 The entity details flyout includes the following sections:
 
 * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Flyout header, which displays key entity information and allows you to assign asset criticality.
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` [Entity summary](#entity-summary), which allows you to generate an AI summary of the entity.
+* [Entity summary](#entity-summary), which allows you to generate an AI summary of the entity.
 * [Entity risk summary](#entity-risk-summary), which displays entity risk data and inputs.
-* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [Behavioral anomalies](#behavioral-anomalies), which shows {{ml}} anomalies detected for the entity, mapped to the MITRE ATT&CK framework.
-* {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` [Visualizations](#visualizations), which shows a graph preview of the entity's connections and relationships.
-* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Resolution](#resolution), which allows you to view and manage the entity's resolution group.
+* [Behavioral anomalies](#behavioral-anomalies), which shows {{ml}} anomalies detected for the entity, mapped to the MITRE ATT&CK framework.
+* [Visualizations](#visualizations), which shows a graph preview of the entity's connections and relationships.
+* [Resolution](#resolution), which allows you to view and manage the entity's resolution group.
 * [Insights](#insights), which displays vulnerabilities or misconfiguration findings for the entity.
 * [Observed data](#observed-data), which displays entity details.
-* {applies_to}`stack: removed 9.4+, ga 9.0-9.3` {applies_to}`serverless: removed` [Asset Criticality](#asset-criticality), which allows you to view and assign asset criticality.
+* [Asset Criticality](#asset-criticality), which allows you to view and assign asset criticality.
 
 
 ### Entity summary
