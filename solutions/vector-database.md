@@ -1,7 +1,7 @@
 ---
 navigation_title: Vector Database project
 applies_to:
-  serverless: preview
+  serverless: ga
 description: >-
   The Elasticsearch Vector Database project type on Elastic Cloud Serverless is
   optimized for vector workloads, with vector-tuned defaults, hardware profile,
@@ -17,7 +17,7 @@ The {{es}} Vector Database {{serverless-short}} project type is optimized for ve
 
 [Vector search](/solutions/search/vector.md) uses the same query APIs in both project types.
 
-Use it when embeddings and similarity search are central to your application, for example RAG, recommendations, semantic retrieval, or multimodal search. You can run [semantic](/solutions/search/semantic-search.md) and [hybrid](/solutions/search/hybrid-search.md) search in the same project.
+Use it when embeddings and similarity search are central to your application, for example RAG, recommendations, [semantic search](/solutions/search/semantic-search.md), [hybrid search](/solutions/search/hybrid-search.md), or multimodal search.
 
 ## What you get
 
@@ -41,17 +41,11 @@ The Vector Database project type favors workloads where you ingest and embed dat
 
 Vector Database projects are set up for embedding workflows: generate vectors in {{es}} with managed models (for example through `semantic_text`), or store vectors you create yourself and attach the same model at query time. In-product setup guides walk through both paths.
 
-### Multi-tenant partitioning with slices
-
-For multi-tenant or multi-customer vector apps, you can use slices to partition an index so each tenant’s vectors are indexed and searched in isolation. Slice mode is opt-in and is not enabled automatically on Vector Database projects.
-
-<!-- Link "slices" to the Partitioning with _slice section on knn.md when that content lands. -->
-
 ### Pricing designed for vector workloads
 
 Similar to other {{serverless-full}} projects, Elastic manages the infrastructure, scaling, and upgrades. You create a project, get an endpoint, and start indexing and querying without sizing nodes for vector RAM yourself.
 
-Billing uses storage, search, and indexing, rather than the compute-based VCU model used by {{es-serverless}} projects. Refer to [{{es}} Vector Database billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md) for details.
+Billing uses storage, search, indexing, and infrastructure, rather than the compute-based VCU model used by {{es-serverless}} projects. Refer to [{{es}} Vector Database billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md) for details.
 
 ## When to use this project type
 
@@ -59,11 +53,11 @@ Both the {{es}} Vector Database and the {{es}} project types support [vector sea
 
 | Use case | Fit | Why |
 | --- | --- | --- |
-| [RAG and question answering](/solutions/search/vector/vector-search-use-cases.md#rag-and-question-answering-on-your-own-data) | Strong | Retrieve passages from documents, wikis, tickets, or knowledge bases and pass them to an LLM for assistants, support bots, and cited answers |
-| [Discovery and recommendations](/solutions/search/vector/vector-search-use-cases.md#discovery-and-recommendations) | Strong | Find related products, articles, or other items by similarity when keywords alone are not enough |
+| [RAG and question answering](/solutions/search/vector/vector-search-use-cases.md#rag-and-question-answering-on-your-own-data) | Strong | Retrieve passages from documents, wikis, tickets, or knowledge bases and pass them to an LLM. Hybrid search combines semantic similarity with keyword matching when queries mix natural language with exact terms, IDs, or product names |
+| [Discovery and recommendations](/solutions/search/vector/vector-search-use-cases.md#discovery-and-recommendations) | Strong | Find related products, articles, or other items by similarity when keywords alone are not enough. Use hybrid ranking when you also need lexical or attribute matches in the same result set |
 | [Multimodal search](/solutions/search/vector/vector-search-use-cases.md#multimodal-search) | Strong | Search across images, audio, video, or text with embeddings from a multimodal model |
 | [Duplicate detection, fraud, and anomaly detection](/solutions/search/vector/vector-search-use-cases.md#duplicate-detection-fraud-and-anomaly-detection) | Strong | Compare embeddings to find near-duplicates, suspicious matches, or unusual patterns at scale |
-| [Long-term memory for LLMs](/solutions/search/vector/vector-search-use-cases.md#long-term-memory-for-llms) | Strong | Store facts, chat turns, or summaries so an assistant can retrieve relevant past context |
+| [Long-term memory for LLMs](/solutions/search/vector/vector-search-use-cases.md#long-term-memory-for-llms) | Strong | Store facts, chat turns, or summaries so an assistant can retrieve relevant past context by meaning, optionally combined with keyword filters on metadata |
 | Full-text or keyword search without vectors | Prefer the {{es}} project | General-purpose defaults suit lexical search, filters, and document-centric analytics |
 | Log, event, or other time series search | Prefer the {{es}} project | General-purpose defaults suit write-heavy, frequently updated time series data |
 

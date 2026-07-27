@@ -4,7 +4,7 @@ description: >-
   Create an Elasticsearch Vector Database project on Elastic Cloud Serverless,
   ingest embeddings, and run your first vector or semantic searches.
 applies_to:
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: cloud-serverless
@@ -59,8 +59,13 @@ You can also skip the setup guide and continue with the steps below.
 Use the approach that matches how you create embeddings.
 
 ::::{dropdown} Generate embeddings from your content
-Create an index with a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field, then ingest documents so {{es}} generates embeddings automatically. The default model is [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v3), integrated through the {{es}} {{infer}} pipeline.
+You can generate embeddings as part of the ingestion workflow instead of creating them in advance.
 
+For text content, the recommended approach is to map the target field as [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). When you ingest documents, {{es}} uses the configured {{infer}} endpoint to generate and store embeddings automatically. You can check which models are used by default and learn how to change them in [Configure {{infer}} endpoints documentation](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+
+For more control over the {{infer}} and ingestion workflow, you can also generate embeddings with an {{infer}} processor in an ingest pipeline and store them in a vector field. For more information, see [](/solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md).
+
+To walk through mapping a `semantic_text` field, ingesting sample content, and running a hybrid query, follow the [semantic search quickstart](/solutions/search/get-started/semantic-search.md).
 ::::
 
 ::::{dropdown} Store your existing embeddings
@@ -73,21 +78,12 @@ Use a language [client](/reference/elasticsearch-clients/index.md) or the [Bulk]
 :::::
 
 :::::{step} Search your data
-Use the approach that matches how you ingested embeddings.
+Match your query to the vector field type in your mapping. For details on which queries each field type supports, see [Field types and queries](/solutions/search/vector.md#vector-queries-and-field-types).
 
-::::{dropdown} Search embeddings generated from your content
-Query with natural language. {{es}} embeds the query and returns the most relevant matches. You can also run a hybrid query that combines semantic and lexical ranking.
+To walk through common patterns, refer to the following pages:
 
-To walk through hybrid search with `semantic_text`, follow [Hybrid search with `semantic_text`](/solutions/search/hybrid-semantic-text.md). For query and retrieval options, see [Search and retrieve `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-search-retrieval.md).
-::::
-
-::::{dropdown} Search your existing embeddings
-Run a kNN search against your `dense_vector` field, or combine kNN with lexical search for hybrid retrieval.
-
-Queries need to be converted into vectors the same way your documents were. Specify the model you used to generate your embeddings so {{es}} can apply it to your queries too.
-
-To walk through kNN search, follow [kNN search in {{es}}](/solutions/search/vector/knn.md). For combining vector and lexical ranking, see [Hybrid search](/solutions/search/hybrid-search.md).
-::::
+* [kNN search in {{es}}](/solutions/search/vector/knn.md)
+* [Hybrid search](/solutions/search/hybrid-search.md)
 
 For more query options, see [Querying for search](/solutions/search/querying-for-search.md) and the [{{es-serverless}} API documentation]({{es-serverless-apis}}).
 :::::
