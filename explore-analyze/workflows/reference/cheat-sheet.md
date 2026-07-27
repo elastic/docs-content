@@ -87,7 +87,7 @@ Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/wo
 |---|---|
 | Query {{es}} | `elasticsearch.search`, `elasticsearch.esql.query` |
 | Write to {{es}} | `elasticsearch.index`, `elasticsearch.bulk`, `elasticsearch.update` |
-| Manage cases | `cases.createCase`, `cases.updateCase`, `cases.addComment`, `cases.addAlerts`, `cases.pushCases` |
+| Manage cases | `cases.createCase`, `cases.updateCase`, `cases.addComment`, `cases.addAlerts`, `cases.addAttachments`, `cases.pushCases` |
 | Manage alerts | `kibana.SetAlertsStatus`, `kibana.SetAlertTags` (PascalCase) |
 | Call an API | `http` (with optional `connector-id`) |
 | Call a service | `<connector>.<action>` (for example, `slack.postMessage`, `jira.createIssue`) |
@@ -261,6 +261,10 @@ Full reference: [Pass data and handle errors](/explore-analyze/workflows/authori
        inputs:
          alerts: "${{ event.alerts }}"
    ```
+
+   :::{tip}
+   The `shared--` prefix in the workflow ID is an optional [naming convention](/explore-analyze/workflows/authoring-techniques/compose-workflows.md) for shared workflows, not required syntax.
+   :::
 
 8. **`data.*` steps (except `data.set`) put source data at the top level:** `items:`, `arrays:`, or `source:`. The transformation configuration goes in `with`.
 

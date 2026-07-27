@@ -78,13 +78,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
     To save a single query for future use, click **Save for later** and define the ID, description, and other [details](../../../solutions/security/investigate/osquery.md#osquery-manage-query).
     ::::
 
-7. Review the results and do any of the following:
-
-    * Click **View in Discover** ({icon}`app_discover`) to explore the results in **Discover**.
-    * Click **View in Lens** ({icon}`app_lens`) to navigate to **Lens**, where you can use the drag-and-drop **Lens** editor to create visualizations.
-    * Click **Add to Case** ({icon}`app_cases`) to add the query results to a new or existing case.
-    * Click the view details icon ({icon}`expand`) to examine the query ID and statement.
-    * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Add or remove tags to organize and label the queries for future use.
+7. Review the results. For the actions you can take from the results table, refer to [Examine Osquery results](/solutions/security/investigate/examine-osquery-results.md#investigate-osquery-results).
 
 8. To view more information about the request, such as failures, open the **Status** tab.
 

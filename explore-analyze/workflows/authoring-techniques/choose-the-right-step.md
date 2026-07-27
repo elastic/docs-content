@@ -41,6 +41,7 @@ For an alphabetical catalog of every step type, refer to the [Step type index](/
 | Look up a case | [`cases.getCase`](/explore-analyze/workflows/steps/cases.md#cases-getcase), [`cases.findCases`](/explore-analyze/workflows/steps/cases.md#cases-findcases), [`cases.getCasesByAlertId`](/explore-analyze/workflows/steps/cases.md#cases-getcasesbyalertid) |
 | Change status, severity, or tags | [`cases.updateCase`](/explore-analyze/workflows/steps/cases.md#cases-updatecase) or the field-specific `set*` steps |
 | Attach alerts or observables | [`cases.addAlerts`](/explore-analyze/workflows/steps/cases.md#cases-addalerts), [`cases.addObservables`](/explore-analyze/workflows/steps/cases.md#cases-addobservables) |
+| Attach comments, alerts, dashboards, and more | [`cases.addAttachments`](/explore-analyze/workflows/steps/cases.md#cases-addattachments) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` |
 | Add a comment | [`cases.addComment`](/explore-analyze/workflows/steps/cases.md#cases-addcomment) |
 | Close the case | [`cases.closeCase`](/explore-analyze/workflows/steps/cases.md#cases-closecase) |
 | Assign or unassign | [`cases.assignCase`](/explore-analyze/workflows/steps/cases.md#cases-assigncase), [`cases.unassignCase`](/explore-analyze/workflows/steps/cases.md#cases-unassigncase) |

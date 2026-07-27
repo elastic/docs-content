@@ -48,7 +48,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** Windows
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_high_count_logon_events_ea.json)
 
@@ -82,7 +82,7 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Supported integrations:** [System](integration-docs://reference/system/index.md), [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Winlogbeat](beats://reference/winlogbeat/index.md), [Windows](integration-docs://reference/windows/index.md)
 
-    **Supported OS:** Windows
+    **Supported OS:** Windows, Linux
 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/auth_high_count_logon_events_for_a_source_ip_ea.json)
 
@@ -1341,9 +1341,9 @@ This job is replaced by `dns_tunneling_ea` in the [Network module](#security-net
 
     **Supported OS:** Windows, Linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_dns_tunneling_ea.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.4/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_dns_tunneling_ea.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_dns_tunneling_ea.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.4/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_dns_tunneling_ea.json)
 
 :::
 
@@ -1383,9 +1383,9 @@ This job is replaced by `rare_dns_question_ea` in the [Network module](#security
 
     **Supported OS:** Windows, Linux
 
-    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_dns_question_ea.json)
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/9.4/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_dns_question_ea.json)
 
-    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_dns_question_ea.json)
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.4/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_dns_question_ea.json)
 
 :::
 

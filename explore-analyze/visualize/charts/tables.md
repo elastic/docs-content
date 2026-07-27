@@ -260,7 +260,7 @@ The following examples show various configuration options you can use for buildi
 ![Table showing top pages by unique visitors](../../images/kibana-table-with-request-keyword-and-client-ip-8.16.0.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 Send the following request to create a table that displays the top 5 request pages ranked by unique visitor count.
 
@@ -368,7 +368,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Table showing customers over time by continent](../../images/kibana-lens_table_over_time.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 Send the following request to create a pivot table that shows unique customer counts per day, split into columns by the top 3 continents.
 
@@ -497,7 +497,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
       * **Color by value**: Dynamic coloring to highlight ranges with higher byte transfers
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 Send the following request to create a table that compares total bytes transferred across custom-defined file size ranges.
 
@@ -622,7 +622,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
          * **Text alignment**: `Right`
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 Send the following request to create a table that shows weekly order counts alongside a formula-based percentage change column.
 

@@ -161,7 +161,7 @@ The following examples show various configuration options for building impactful
 ![Tag cloud showing popular request URLs](/explore-analyze/images/tag-cloud-example-urls.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a tag cloud of the 30 most frequently requested URLs, where tag size reflects how often each URL was accessed.
 
@@ -258,7 +258,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Tag cloud showing most popular flight destinations](/explore-analyze/images/tag-cloud-example-destinations.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a tag cloud of destination city names from the flights sample data, with the most popular destinations appearing in larger text.
 
