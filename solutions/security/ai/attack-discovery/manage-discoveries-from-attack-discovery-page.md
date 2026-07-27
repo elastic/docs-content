@@ -15,7 +15,7 @@ This page describes how to change status, share, bulk-act on, and search saved d
 
 :::{note}
 :applies_to: {"stack": "ga 9.5+", "serverless": {"security": "ga"}}
-On {{stack}} 9.5+ and {{serverless-short}}, manage discoveries from the [**Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md).
+On {{stack}} 9.5+ and {{serverless-short}}, manage discoveries from the [**Attacks** view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
 :::
 
 ## Check Attack Discovery run status [attack-discovery-page-generations]
