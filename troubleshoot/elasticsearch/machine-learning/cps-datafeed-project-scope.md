@@ -20,11 +20,11 @@ The `project_routing` field decides which linked projects a {{cps}} {{dfeed}} se
 
 **Check the effective scope in {{kib}}**
 
-Open **Machine Learning → Anomaly Detection** and review the **Project scope** column in the {{anomaly-jobs}} list. Each cell shows a parsed/total count (for example, `2/5`) derived from the stored routing expression and the number of linked projects — not from live resolution of which aliases match. {{kib}} parses the segment after `_alias:`: omitted or `null` routing shows `1`; `_alias:*` shows the full linked-project total; a single expression such as `_alias:production-*` or `_alias:_origin` shows `1`. Because the count comes from parsing rather than resolution, a wildcard that matches several projects still shows `1`. Select the count to open a popover titled **Project scope** that displays the routing expression stored on the {{dfeed}}. A legacy {{anomaly-job}} with no stored routing shows `_alias:_origin` in the popover.
+Open **Machine Learning → Anomaly Detection** and review the **Project scope** column in the {{anomaly-jobs}} list. Each cell shows a parsed/total count (for example, `2/5`) derived from the stored routing expression and the number of linked projects, not from live resolution of which aliases match. {{kib}} parses the segment after `_alias:`: omitted or `null` routing shows `1`. `_alias:*` shows the full linked-project total. A single expression such as `_alias:production-*` or `_alias:_origin` shows `1`. Because the count comes from parsing rather than resolution, a wildcard that matches several projects still shows `1`. Select the count to open a popover titled **Project scope** that displays the routing expression stored on the {{dfeed}}. A legacy {{anomaly-job}} with no stored routing shows `_alias:_origin` in the popover.
 
-**Error messages — routing matches no project**
+**Error messages: routing matches no project**
 
-During create, update, or extraction, **Job messages** or the API may report one of these {{ml}}-enriched errors:
+During create, update, or extraction, **Job messages** or the API can report one of these {{ml}}-enriched errors:
 
 On create or update (validate-before-mint):
 
@@ -56,12 +56,12 @@ The suggested `_origin` example in the {{ml}} messages is not a valid routing va
 
 | Situation | Typical behavior |
 | --- | --- |
-| Flat-world {{dfeed}} (empty `project_routing`, unqualified index patterns) with no linked projects | Create or update may succeed; the first run-time search fails |
-| Flat-world {{dfeed}} (unqualified index patterns) with `_alias:` expression that matches no linked tags, including typos | Create or update may succeed; the first run-time search fails |
+| Flat-world {{dfeed}} (empty `project_routing`, unqualified index patterns) with no linked projects | Create or update can succeed. The first run-time search fails |
+| Flat-world {{dfeed}} (unqualified index patterns) with `_alias:` expression that matches no linked tags, including typos | Create or update can succeed. The first run-time search fails |
 | {{dfeed}} with qualified `project:index` patterns and `project_routing` that matches no linked tags | Fails immediately on create or update (validate-before-mint) |
 | Qualified `project:index` references a project that does not exist or is unauthorized | Fails immediately on create or update |
 
-Validate-before-mint defers a no-match `project_routing` to run time only when every entry in `indices` is unqualified (flat-world). Any qualified `project:index` pattern — including one whose project alias is missing — fails immediately on create or update.
+Validate-before-mint defers a no-match `project_routing` to run time only when every entry in `indices` is unqualified (flat-world). Any qualified `project:index` pattern, including one whose project alias is missing, fails immediately on create or update.
 
 **Scope is wider than intended**
 

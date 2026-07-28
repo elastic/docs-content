@@ -11,7 +11,7 @@ products:
 
 # Project scope changes [cps-datafeed-scope-change]
 
-Changing `project_routing` — the **Project scope** field in {{kib}} — decides which linked projects a {{cps}} {{dfeed}} searches. This page covers three related problems: {{es}} or {{kib}} rejects the change, a bulk update succeeds for some jobs but not others, or the change took effect and the {{anomaly-job}} model is reacting to a different data set.
+Changing `project_routing` (the **Project scope** field in {{kib}}) decides which linked projects a {{cps}} {{dfeed}} searches. This page covers three related problems: {{es}} or {{kib}} rejects the change, a bulk update succeeds for some jobs but not others, or the change took effect and the {{anomaly-job}} model is reacting to a different data set.
 
 ## Diagnose project scope changes [diagnose-cps-datafeed-scope-change]
 
@@ -49,7 +49,7 @@ The model for this job was trained on a specific set of data. Changing this data
 
 Confirm with **Yes, save** or cancel with **Cancel**.
 
-Failed jobs display no inline error text in the flyout — only the job id and a cross icon. To learn why a job failed, open **Job messages** for that job or retry the update through the API and read the error response.
+Failed jobs display no inline error text in the flyout, only the job id and a cross icon. To learn why a job failed, open **Job messages** for that job or retry the update through the API and read the error response.
 
 After submission, result toasts report:
 
@@ -69,7 +69,7 @@ The bracketed routing value is always `_alias:_origin` for first-time CPS migrat
 
 **Scope changed, and the model is reacting**
 
-When linked projects are added or removed — whether because you changed `project_routing`, linked or unlinked a project in {{ecloud}}, or a migration defaulted routing — the {{dfeed}} may search a different set of projects than when the model was trained. {{es}} records scope changes only after they stabilize (see below). Temporary anomalies are expected while the model adapts.
+When linked projects are added or removed (whether because you changed `project_routing`, linked or unlinked a project in {{ecloud}}, or a migration defaulted routing), the {{dfeed}} might search a different set of projects than when the model was trained. {{es}} records scope changes only after they stabilize (see below). Temporary anomalies are expected while the model adapts.
 
 Scope-change confirmations appear in **Job messages** once stabilization completes. Examples with realistic alias names (linked/unlinked aliases vary):
 
@@ -91,7 +91,7 @@ When both happen in the same stabilization window:
 Datafeed search scope changed: [production] linked, [staging] unlinked. Data distribution may have changed, which can cause temporary anomalies while the model adapts. If detection quality degrades, consider specifying the source clusters explicitly and reviewing recent model snapshots for potential rollback.
 ```
 
-If anomaly scores spike after a confirmed change, **Job messages** may also show:
+If anomaly scores spike after a confirmed change, **Job messages** might also show:
 
 ```txt
 Elevated anomaly scores detected after search scope change at [2026-07-28T10:15:00.000Z] (production linked). [12] buckets with anomaly score >= 75 observed since the scope change. This is likely caused by the data distribution shift. Consider reviewing model snapshots if the anomalies are not meaningful.
@@ -122,9 +122,9 @@ For routing expressions that match no project or reference stale aliases, see [P
 **The bulk update partly succeeded**
 
 1. Note every job id that shows a cross icon in the flyout (or that appeared in the partial-failure toast).
-2. For each failed job, open **Job messages** and read the API error — common causes are an open job, a missing model snapshot, invalid `project_routing`, or a credential problem.
+2. For each failed job, open **Job messages** and read the API error. Common causes are an open job, a missing model snapshot, invalid `project_routing`, or a credential problem.
 3. Fix the underlying cause per job. For credential failures, see [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md).
-4. Re-run the update for the failed jobs only — select just those jobs and use **Change project scope** again.
+4. Re-run the update for the failed jobs only. Select just those jobs and use **Change project scope** again.
 5. When one job keeps failing, use the single-job path: edit the job, open the **Datafeed** tab, set **Project scope**, and save after closing the job.
 
 Example retry for one job after closing it:
@@ -145,7 +145,7 @@ Adjust `project_routing` to the scope you chose in the bulk flyout. The legacy m
 
 If the scope change was intentional, allow several extraction cycles for the model to adapt. Monitor **Job messages** and annotations until elevated-score warnings stop.
 
-If the change was unintentional — for example a project was unlinked in {{ecloud}} or migration defaulted routing to `_alias:_origin` — restore the link or update `project_routing` to the intended expression. See [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md) for routing syntax.
+If the change was unintentional (for example a project was unlinked in {{ecloud}} or migration defaulted routing to `_alias:_origin`), restore the link or update `project_routing` to the intended expression. See [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md) for routing syntax.
 
 If detection quality degrades and anomalies are not meaningful, roll back to the model snapshot {{es}} retained before the scope change (see the preconditions block) or to an earlier snapshot:
 

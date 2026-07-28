@@ -11,7 +11,7 @@ products:
 
 # Field mapping conflicts [cps-datafeed-field-mappings]
 
-A {{cps}} {{dfeed}} merges search results across linked projects, so a field name must represent the same analytical type everywhere. When mappings disagree, {{es}} may log a report-only warning after a confirmed scope change, exclude one project from the current run, or refuse to start the {{dfeed}} — depending on whether the field is optional or the required time field.
+A {{cps}} {{dfeed}} merges search results across linked projects, so a field name must represent the same analytical type everywhere. When mappings disagree, {{es}} can log a report-only warning after a confirmed scope change, exclude one project from the current run, or refuse to start the {{dfeed}}, depending on whether the field is optional or the required time field.
 
 ## Diagnose field mapping conflicts [diagnose-cps-datafeed-field-mappings]
 
@@ -22,19 +22,19 @@ A {{cps}} {{dfeed}} merges search results across linked projects, so a field nam
 
 Search **Job messages** (or `.ml-notifications-*`) for these patterns. The bracketed datafeed id, field name, project aliases, and type detail vary with your configuration.
 
-*Optional field — after project scope stabilizes following a link or routing change, {{es}} re-checks field capabilities and logs a report-only warning; the {{dfeed}} continues:*
+*Optional field*: after project scope stabilizes following a link or routing change, {{es}} re-checks field capabilities and logs a report-only warning. The {{dfeed}} continues:
 
 ```txt
 Cross-project field conflict for datafeed [my-datafeed]: field [status] has incompatible types across linked projects: keyword in [prod-us], long in [prod-eu]. Align index mappings across projects or narrow project_routing to projects with a consistent schema.
 ```
 
-*Required time field — fail-fast when {{es}} builds the extractor (start or preview); the {{dfeed}} does not run:*
+*Required time field*: fail-fast when {{es}} builds the extractor (start or preview). The {{dfeed}} does not run:
 
 ```txt
 Cannot run datafeed [my-datafeed]: required time field [@timestamp] has conflicting types across projects in scope: date in [prod-us], long in [prod-eu]. Fix mappings so [@timestamp] uses the same type in every project in scope, or exclude the conflicting project(s) via project_routing.
 ```
 
-*Required time field — mid-run project exclusion after a scope change; the {{dfeed}} keeps running on the remaining projects:*
+*Required time field*: mid-run project exclusion after a scope change. The {{dfeed}} keeps running on the remaining projects:
 
 ```txt
 Datafeed [my-datafeed] excluded project [prod-eu] from this run: required time field [@timestamp] has conflicting types: date in [prod-us], long in [prod-eu]. Fix mappings in [prod-eu] to resume searching it, or remove it from project_routing.
@@ -65,14 +65,14 @@ Types within the same family do not trigger a warning (for example `long` in one
 
 **Compare mappings across projects**
 
-Run [field capabilities]({{es-apis}}operation/operation-field-caps) on the indices the {{dfeed}} queries — one call per project in scope:
+Run [field capabilities]({{es-apis}}operation/operation-field-caps) on the indices the {{dfeed}} queries, one call per project in scope:
 
 ```console
 GET _origin:logs-*/_field_caps?fields=@timestamp,status&include_unmapped
 GET prod-us:logs-*/_field_caps?fields=@timestamp,status&include_unmapped
 ```
 
-Use the `_origin:` qualifier for the origin project and the linked project's alias for remote projects. In each response, inspect the field entry's type keys and compare them across calls using the compatibility families above — multiple keys in the same family (for example `long` and `integer`) are compatible; keys spanning different families indicate a conflict.
+Use the `_origin:` qualifier for the origin project and the linked project's alias for remote projects. In each response, inspect the field entry's type keys and compare them across calls using the compatibility families above. Multiple keys in the same family (for example `long` and `integer`) are compatible. Keys spanning different families indicate a conflict.
 
 **A mapping changed after the {{dfeed}} was created**
 
@@ -81,7 +81,7 @@ Index templates, ingest pipelines, or explicit mapping updates in one linked pro
 * **Job messages** report a new extraction error even though routing and credentials are unchanged.
 * The {{dfeed}} fails to start or preview after a restart because the time field now conflicts at extractor build time.
 
-Optional-field conflict warnings and time-field project exclusions appear only when {{es}} re-checks field capabilities after project scope stabilizes — for example after a project is linked or `project_routing` changes — not from a mapping change by itself. When that recheck runs, you may also see:
+Optional-field conflict warnings and time-field project exclusions appear only when {{es}} re-checks field capabilities after project scope stabilizes (for example after a project is linked or `project_routing` changes), not from a mapping change by itself. When that recheck runs, you might also see:
 
 * An optional-field conflict warning (see above).
 * A project-exclusion message for the time field (see above).
@@ -97,7 +97,7 @@ The text after the colon is the underlying cause and varies (parse failure, miss
 
 **Align the mappings**
 
-Standardize the conflicting field to a compatible type in every linked project — especially the time field (use `date` with a consistent format, or `date_nanos` everywhere). Update index templates or reindex where needed, then restart or preview the {{dfeed}}.
+Standardize the conflicting field to a compatible type in every linked project, especially the time field (use `date` with a consistent format, or `date_nanos` everywhere). Update index templates or reindex where needed, then restart or preview the {{dfeed}}.
 
 **Exclude the conflicting project**
 

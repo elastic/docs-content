@@ -264,4 +264,4 @@ POST _ml/anomaly_detectors/_all/_close
 
 ## Related pages
 
-* [Troubleshoot cross-project search {{dfeeds}}](/troubleshoot/elasticsearch/machine-learning-cps.md) — Resolve cross-project {{dfeeds}} issues on {{serverless-full}}, including credential, scope, and mapping problems.
+* [Troubleshoot cross-project search {{dfeeds}}](/troubleshoot/elasticsearch/machine-learning-cps.md): Resolve cross-project {{dfeeds}} issues on {{serverless-full}}, including credential, scope, and mapping problems.

@@ -11,7 +11,7 @@ products:
 
 # Cloud credential problems [cps-datafeed-credentials]
 
-A {{cps}} {{dfeed}} stores an internal cloud (UIAM) API key so periodic searches can read linked projects on your behalf. {{es}} mints that key only when a cloud-authenticated caller creates or updates the {{dfeed}} — never during a scheduled extraction cycle. Failures fall into four paths: the key could not be created, an existing key no longer authorizes search, the key was cleared by a non-cloud-authenticated update, or no key was ever minted because the {{dfeed}} was created or last updated without cloud authentication.
+A {{cps}} {{dfeed}} stores an internal cloud (UIAM) API key so periodic searches can read linked projects on your behalf. {{es}} mints that key only when a cloud-authenticated caller creates or updates the {{dfeed}}, not during a scheduled extraction cycle. Failures fall into four paths: the key could not be created, an existing key no longer authorizes search, the key was cleared by a non-cloud-authenticated update, or no key was ever minted because the {{dfeed}} was created or last updated without cloud authentication.
 
 ## Diagnose cloud credential problems [diagnose-cps-datafeed-credentials]
 
@@ -22,11 +22,11 @@ A {{cps}} {{dfeed}} stores an internal cloud (UIAM) API key so periodic searches
 
 Use observable behavior to pick a path:
 
-* **Create or update fails immediately** — validate-before-mint probe or mint error; see **Creation and update failures** below.
-* **Searches used to work; `authorization.cloud_api_key.id` still present** — runtime auth or authz failure; see **Runtime failures** below.
-* **`authorization.cloud_api_key.id` is missing** — two cases:
-  * **Credential cleared** — **Job messages** record `Internal cloud API key cleared on datafeed update with non-cloud credentials` after a non-cloud-authenticated update removed a stored key. See **Credential cleared** below.
-  * **Never minted** — the {{dfeed}} was created or last updated without cloud authentication, so no key was ever stored and no CLEARED message appears. **Job messages** lack `Internal cloud API key minted for cross-project datafeed`. Mint a key with a cloud-authenticated create or update.
+* **Create or update fails immediately**: validate-before-mint probe or mint error. See **Creation and update failures** below.
+* **Searches used to work with `authorization.cloud_api_key.id` still present**: runtime auth or authz failure. See **Runtime failures** below.
+* **`authorization.cloud_api_key.id` is missing**: two cases:
+  * **Credential cleared**: **Job messages** record `Internal cloud API key cleared on datafeed update with non-cloud credentials` after a non-cloud-authenticated update removed a stored key. See **Credential cleared** below.
+  * **Never minted**: the {{dfeed}} was created or last updated without cloud authentication, so no key was ever stored and no CLEARED message appears. **Job messages** lack `Internal cloud API key minted for cross-project datafeed`. Mint a key with a cloud-authenticated create or update.
 
 For linked-project skip summaries without a credential-specific message, see [Linked project unavailable](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-linked-project-unavailable.md).
 
@@ -60,7 +60,7 @@ Datafeed search probe failed with status [403]
 
 The bracketed HTTP status varies (for example `401` or `403`).
 
-Routing that matches no linked project is reported separately — see [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md).
+Routing that matches no linked project is reported separately. See [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md).
 
 **Runtime failures**
 
@@ -111,7 +111,7 @@ A mint or re-key followed by a runtime failure means the key worked at create or
 
 **Re-create or re-key the credential**
 
-Resolve missing index privileges, routing that matches nothing, or other validate-before-mint errors before retrying create or update. Sign in to {{kib}} or call the API as a cloud-authenticated user — a {{ecloud}} session or cloud-managed credential, not a stack API key alone.
+Resolve missing index privileges, routing that matches nothing, or other validate-before-mint errors before retrying create or update. Sign in to {{kib}} or call the API as a cloud-authenticated user: a {{ecloud}} session or cloud-managed credential, not a stack API key alone.
 
 When a stored key still exists but no longer works, {{es}} re-keys only if the update changes the cross-project search surface: `project_routing`, `indices`, or `indices_options`. Submitting the same values unchanged does **not** replace an existing key.
 
@@ -158,4 +158,4 @@ After re-keying, {{es}} best-effort revokes the old key. If revocation fails:
 Failed to revoke internal cloud API key [abc123def456]
 ```
 
-Search uses the new key; the message is informational and does not block recovery.
+Search uses the new key. The message is informational and does not block recovery.

@@ -30,4 +30,4 @@ Rollback model snapshot [1720000000] retained before project_routing scope chang
 
 You can revert to that snapshot if detection quality degrades after a scope change.
 
-Exception: assigning `_alias:_origin` for the first time to a {{dfeed}} that had no `project_routing` preserves the existing local-only scope. That update bypasses the rollback gate entirely — neither the closed-job check nor the snapshot requirement applies.
+Exception: assigning `_alias:_origin` for the first time to a {{dfeed}} that had no `project_routing` preserves the existing local-only scope. That update bypasses the rollback gate entirely. Neither the closed-job check nor the snapshot requirement applies.

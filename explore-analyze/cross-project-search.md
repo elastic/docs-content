@@ -777,4 +777,4 @@ This request returns an error:
 
 ## Related pages
 
-* [Troubleshoot cross-project search {{dfeeds}}](/troubleshoot/elasticsearch/machine-learning-cps.md) — Diagnose and resolve anomaly detection {{dfeeds}} that search across linked projects.
+* [Troubleshoot cross-project search {{dfeeds}}](/troubleshoot/elasticsearch/machine-learning-cps.md): Diagnose and resolve anomaly detection {{dfeeds}} that search across linked projects.
