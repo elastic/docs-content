@@ -11,7 +11,7 @@ products:
 
 # Field mapping conflicts [cps-datafeed-field-mappings]
 
-A {{cps}} {{dfeed}} merges search results across linked projects, so a field name must represent the same analytical type everywhere. When mappings disagree, {{es}} may warn and continue without the field, exclude one project from the current run, or refuse to start the {{dfeed}} — depending on whether the field is optional or the required time field.
+A {{cps}} {{dfeed}} merges search results across linked projects, so a field name must represent the same analytical type everywhere. When mappings disagree, {{es}} may log a report-only warning after a confirmed scope change, exclude one project from the current run, or refuse to start the {{dfeed}} — depending on whether the field is optional or the required time field.
 
 ## Diagnose field mapping conflicts [diagnose-cps-datafeed-field-mappings]
 
@@ -22,7 +22,7 @@ A {{cps}} {{dfeed}} merges search results across linked projects, so a field nam
 
 Search **Job messages** (or `.ml-notifications-*`) for these patterns. The bracketed datafeed id, field name, project aliases, and type detail vary with your configuration.
 
-*Optional field — {{es}} logs a warning and the {{dfeed}} continues; the conflicting field may be omitted from extraction:*
+*Optional field — after project scope stabilizes following a link or routing change, {{es}} re-checks field capabilities and logs a report-only warning; the {{dfeed}} continues:*
 
 ```txt
 Cross-project field conflict for datafeed [my-datafeed]: field [status] has incompatible types across linked projects: keyword in [prod-us], long in [prod-eu]. Align index mappings across projects or narrow project_routing to projects with a consistent schema.
@@ -72,16 +72,22 @@ GET _origin:logs-*/_field_caps?fields=@timestamp,status&include_unmapped
 GET prod-us:logs-*/_field_caps?fields=@timestamp,status&include_unmapped
 ```
 
-Use the `_origin:` qualifier for the origin project and the linked project's alias for remote projects. In each response, inspect the field entry: one type key means a consistent mapping; more than one type key for the same field means the field is mapped differently across indices in that call. Compare results across calls to see cross-project drift.
+Use the `_origin:` qualifier for the origin project and the linked project's alias for remote projects. In each response, inspect the field entry's type keys and compare them across calls using the compatibility families above — multiple keys in the same family (for example `long` and `integer`) are compatible; keys spanning different families indicate a conflict.
 
 **A mapping changed after the {{dfeed}} was created**
 
-Index templates, ingest pipelines, or explicit mapping updates in one linked project can introduce conflicts that were not present at create time. Symptoms include:
+Index templates, ingest pipelines, or explicit mapping updates in one linked project can introduce conflicts that were not present at create time. A mapping rollout alone does not trigger {{es}}'s field-conflict recheck. Symptoms of mapping drift include:
 
-* New optional-field conflict warnings in **Job messages** after a mapping rollout.
-* The {{dfeed}} fails to start or preview after a restart because the time field now conflicts.
-* A project-exclusion message appears after project scope stabilizes following a link or routing change.
-* **Job messages** report a new extraction error even though routing and credentials are unchanged:
+* **Job messages** report a new extraction error even though routing and credentials are unchanged.
+* The {{dfeed}} fails to start or preview after a restart because the time field now conflicts at extractor build time.
+
+Optional-field conflict warnings and time-field project exclusions appear only when {{es}} re-checks field capabilities after project scope stabilizes — for example after a project is linked or `project_routing` changes — not from a mapping change by itself. When that recheck runs, you may also see:
+
+* An optional-field conflict warning (see above).
+* A project-exclusion message for the time field (see above).
+
+Example extraction error after mapping drift:
+
 
 ```txt
 Datafeed is encountering errors extracting data: Cannot parse field [status] of type [long] in document with id 'abc123'
