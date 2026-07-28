@@ -576,7 +576,7 @@ Add a layer that uses attributes in the data to set the style and orientation of
        :::
 
 7. Click **Keep changes**.
-8. Open the [time filter](../../query-filter/filtering.md), and set **Refresh every** to 10 seconds, and click **Start**.
+8. Open the [time filter](../../query-filter/filtering.md), turn on automatic refresh, and set the refresh interval to 10 seconds.
 
 Your map should automatically refresh every 10 seconds to show the latest vehicle positions and tracks.
 

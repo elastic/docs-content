@@ -1,6 +1,6 @@
 ---
 navigation_title: Run Attack Discovery
-description: "The different ways to trigger Attack Discovery analysis, from a manual run to a fully automated, always-on pipeline."
+description: "Choose how to run Attack Discovery: from the Attacks view, a workflow, Agent Builder chat, or the Attack Discovery page."
 applies_to:
   stack: ga
   serverless:
@@ -12,14 +12,11 @@ products:
 
 # Run Attack Discovery [run-attack-discovery]
 
-You can run Attack Discovery on demand or on a recurring schedule. Use the following table to find the right entry point for your needs.
+Pick the path that fits how you work and the {{stack}} version you have. Every option uses the same analysis steps.
 
-| Best for | Available in | Go to |
+| When to use this | Available in | Go to |
 |---|---|---|
-| Creating or managing schedules without leaving the unified attack-triage view. Only supports scheduled runs, and requires turning on the [**Enable alerts and attacks alignment**](/solutions/security/get-started/configure-advanced-settings.md#enable-alerts-and-attacks-alignment) setting. | {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` | [Attacks page](/solutions/security/ai/attack-discovery/run-from-attacks-page.md) |
-| Triggering an on-demand run, or setting up a schedule. The only entry point that supports on-demand runs. | {applies_to}`stack: ga` {applies_to}`serverless: ga` | [Attack Discovery page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md) |
-
-:::{note}
-Schedules created on either page appear on both, so you can switch between them without losing track of what's running.
-:::
-
+| Choose which alerts to analyze, then run Attack Discovery immediately or on a schedule. | {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` | [Run from the Attacks view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md) |
+| Include Attack Discovery as one step in a larger workflow. | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | [Run from a workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md) |
+| Ask {{agent-builder}} to investigate in chat. | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | [Run from {{agent-builder}}](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md) |
+| Work from the standalone Attack Discovery experience | {applies_to}`stack: ga 9.0-9.4` | [Run from the Attack Discovery page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md) |

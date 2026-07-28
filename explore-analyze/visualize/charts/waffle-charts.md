@@ -101,7 +101,7 @@ This example uses the **Kibana Sample Data eCommerce** data set. If you haven't 
 ![Waffle chart showing revenue progress toward a sales target](/explore-analyze/images/waffle-scenario-completion.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example uses two metrics without a `group_by` to create a goal-tracking waffle: one metric shows earned revenue and the other calculates the gap to a $500K target.
 
@@ -302,7 +302,7 @@ The following examples show various configuration options for building impactful
 ![Waffle chart showing response status breakdown](/explore-analyze/images/waffle-example-response-status.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example uses `filters` grouping to define three custom categories based on HTTP response code ranges, each filling a proportional section of the waffle grid.
 
@@ -445,7 +445,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Waffle chart showing OS distribution](/explore-analyze/images/waffle-example-os.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a waffle chart grouped by operating system, where each colored section represents a different OS and its size shows the proportion of visitors using it.
 
