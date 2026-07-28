@@ -48,7 +48,7 @@ When trace data is flowing, the dashboard looks like this:
 
 Before you install the dashboard:
 
-- Make sure trace collection is on for the space and the setting is saved. It is on by default. The **Install Dashboard** button appears only after trace collection is enabled and saved. For details, refer to [Collect agent traces](collect-traces.md).
+- Make sure trace collection is on for the space. It is on by default, so the **Install Dashboard** button is normally available straight away. If you have just changed the setting, save it first, because the button is hidden while the change is unsaved. For details, refer to [Collect agent traces](collect-traces.md).
 - Make sure you can read the trace data, otherwise the panels have no data to show. For the required privileges, refer to [Read trace data](permissions.md#read-trace-data).
 - Make sure you can manage {{kib}} advanced settings. Installing and uninstalling the dashboard requires this privilege.
 - Install the dashboard in each {{kib}} space where you want it. It is not shared across spaces.
@@ -118,7 +118,7 @@ These fields carry the details the dashboard aggregates. Generative AI attribute
 
 ### Message content attributes [message-content-attributes]
 
-The dashboard does not use these fields, but you can query them yourself. When an administrator opts in to capturing conversation content, that content is stored as the following attributes. Each one depends on a [trace privacy setting](collect-traces.md#trace-privacy-settings), and all of those settings are off by default.
+The dashboard does not use these fields, but you can query them yourself. When an administrator opts in to capturing conversation content, prompts, responses, and tool call content are stored in the following attributes. Each one depends on a [trace privacy setting](collect-traces.md#trace-privacy-settings), and all of those settings are off by default.
 
 | Field | Span | Description | Requires |
 |---|---|---|---|
@@ -128,7 +128,11 @@ The dashboard does not use these fields, but you can query them yourself. When a
 | `attributes.gen_ai.tool.call.arguments` | `execute_tool` | Arguments passed to the tool | **Include tool call details in traces** |
 | `attributes.gen_ai.tool.call.result` | `execute_tool` | Value the tool returned | **Include tool call details in traces** |
 
-Any turn that a privacy setting excludes is dropped from `attributes.gen_ai.input.messages`. When all three of the settings that govern it are off, the field is an empty array (`[]`). Filter those rows out, as the following example does. The `attributes.gen_ai.tool.call.id` field on the `execute_tool` spans is always recorded, whatever the privacy settings.
+Any turn that a privacy setting excludes is dropped from `attributes.gen_ai.input.messages`. When all three of the settings that govern it are off, the field is an empty array (`[]`). Filter those rows out, as the following example does. The `attributes.gen_ai.tool.call.id` field on the `execute_tool` spans is not affected by the privacy settings, though it is absent when a tool call has no id.
+
+**Include tool call details in traces** reaches further than the tool turns. When it is off, tool calls are also removed from the assistant turns that remain, in both `attributes.gen_ai.input.messages` and `attributes.gen_ai.output.messages`, so an assistant turn keeps its text but not the call it made.
+
+Spans carry other content-bearing attributes besides these. The `chat` spans record the definitions of the tools offered to the model in `attributes.gen_ai.tool.definitions`, including each tool's description and parameter schema, and the `execute_tool` spans record the tool's own description in `attributes.gen_ai.tool.description`.
 
 Each content field holds a JSON string rather than indexed text, following the [OpenTelemetry semantic conventions for generative AI](https://github.com/open-telemetry/semantic-conventions-genai). The message attributes hold an array of `{"role": ..., "parts": [...]}` objects, where each part is a `text`, `tool_call`, or `tool_call_response` item, and `attributes.gen_ai.system_instructions` holds an array of `{"type": ..., "content": ...}` objects.
 
@@ -137,7 +141,7 @@ These content fields are `keyword` fields with `ignore_above` set to `1024`. A v
 
 To read the full content, request the document with [{{es}} search](/solutions/search/querying-for-search.md) instead of {{esql}}, and ask for `_source`. The `fields` option applies the same limit and returns nothing.
 
-To find the affected spans in the first place, use the `_ignored` metadata field, which lists the fields that were too long to index. It is available both on search hits and in {{esql}}, as shown in [Example queries](#example-queries).
+To find the affected spans in the first place, use the `_ignored` metadata field, which lists the fields on a document that were not indexed. For these attributes, that means the value passed the length limit. It is available both on search hits and in {{esql}}, as shown in [Example queries](#example-queries).
 
 Tool arguments and results are also recorded on the `execute_tool` spans, in `attributes.gen_ai.tool.call.arguments` and `attributes.gen_ai.tool.call.result`. Each of those holds one tool call rather than the whole conversation, so it is less likely to pass the limit, though a large tool result still can. Prefer them when you query tool activity with {{esql}}.
 :::
