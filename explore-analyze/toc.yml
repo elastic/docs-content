@@ -549,7 +549,6 @@ toc:
           - file: cases/yaml-template-schema-reference.md
       - file: cases/case-analytics.md
         children:
-          - file: cases/grant-access-case-analytics.md
           - file: cases/case-analytics-indices.md
           - file: cases/explore-case-data.md
           - file: cases/query-case-data-esql.md

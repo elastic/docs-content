@@ -15,7 +15,7 @@ description: Reference for the case analytics indices that store case data, cove
 
 # Case analytics indices [case-analytics-indices]
 
-Elastic mirrors your case data into dedicated analytics indices that are built for reporting and aggregation. This page describes those indices and how often they refresh.
+Elastic mirrors your case data into dedicated analytics indices that are built for reporting and aggregation. This page describes those indices and how often they refresh. To let users report on this data, [grant access to the case analytics indices](control-case-access.md#give-analytics-access).
 
 ## Indices [case-analytics-indices-list]
 

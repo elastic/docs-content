@@ -793,9 +793,9 @@ redirects:
     to: 'explore-analyze/cases/case-analytics.md'
     anchors: '!'
     many:
-      - to: 'explore-analyze/cases/grant-access-case-analytics.md'
+      - to: 'explore-analyze/cases/control-case-access.md'
         anchors:
-          'case-analytics-indices-privs': 'grant-access-case-analytics'
+          'case-analytics-indices-privs': 'give-analytics-access'
       - to: 'explore-analyze/cases/case-analytics-indices.md'
         anchors:
           'create-manage-case-analytics-indices': 'case-analytics-indices'
@@ -807,9 +807,9 @@ redirects:
     to: 'explore-analyze/cases/case-analytics.md'
     anchors: '!'
     many:
-      - to: 'explore-analyze/cases/grant-access-case-analytics.md'
+      - to: 'explore-analyze/cases/control-case-access.md'
         anchors:
-          'case-analytics-indices-privs': 'grant-access-case-analytics'
+          'case-analytics-indices-privs': 'give-analytics-access'
       - to: 'explore-analyze/cases/case-analytics-indices.md'
         anchors:
           'create-manage-case-analytics-indices': 'case-analytics-indices'
@@ -817,6 +817,10 @@ redirects:
       - to: 'explore-analyze/cases/explore-case-data.md'
         anchors:
           'explore-case-data': 'explore-case-analytics'
+  'explore-analyze/cases/grant-access-case-analytics.md':
+    to: 'explore-analyze/cases/control-case-access.md'
+    anchors:
+      'grant-access-case-analytics': 'give-analytics-access'
   'explore-analyze/cases/setup-cases.md': 'explore-analyze/cases/control-case-access.md'
   'explore-analyze/cases/configure-case-access.md': 'explore-analyze/cases/control-case-access.md'
   'explore-analyze/cases/find-share-cases.md': 'explore-analyze/cases/search-share-cases.md'

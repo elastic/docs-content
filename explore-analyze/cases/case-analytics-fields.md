@@ -19,6 +19,8 @@ This page lists the most useful fields in the three [case analytics indices](cas
 
 Field names use the singular `case.*` form, such as `case.status`, even though the index names are plural, such as `.cases`. The `owner`, `space_id`, and `@timestamp` fields sit at the top level instead of under `case.*`.
 
+Fields with the `date` type use ISO 8601 format, set to the server's time zone, such as `2025-07-27T14:30:00.000Z`.
+
 ## General case data (`.cases`) [case-analytics-fields-cases]
 
 The `.cases` index holds one document per case, with the current state of each case.
@@ -29,9 +31,9 @@ The `.cases` index holds one document per case, with the current state of each c
 | --- | --- | --- |
 | `@timestamp` | date | When {{es}} last wrote this document, which tracks the case's last update. |
 | `space_id` | keyword | The space the case belongs to. |
-| `owner` | keyword | The owning solution: `securitySolution`, `observability`, or `cases` (Stack Management). |
+| `owner` | keyword | The solution that owns the case: `securitySolution` (Elastic Security) or `observability` (Elastic Observability). On {{stack}} deployments, `cases` (Stack Management) can also appear; on Serverless, only `securitySolution` and `observability` are used. |
 | `case.id` | keyword | The case ID. Join key for the activity and attachment indices. |
-| `case.incremental_id` | unsigned_long | The sequential case number shown in the UI. |
+| `case.incremental_id` | unsigned_long | The sequential case number shown in the UI. For more information, refer to [case identifiers](search-share-cases.md#case-identifiers). |
 
 ### Core attributes [case-analytics-fields-core]
 
