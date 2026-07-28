@@ -39,15 +39,9 @@ Datafeed settings cannot be edited while the datafeed is running. Please stop th
 
 **The bulk update partly succeeded**
 
-**Entry points**
+**Entry point**
 
-Legacy {{anomaly-jobs}} without `project_routing` show a callout on the jobs list:
-
-* Title: **Update project routing for legacy jobs**
-* Body: *Some jobs are not using project routing. Update their project routing to use cross-project search.*
-* Button: **Update project routing for *N* jobs**
-
-The button and the multi-select action **Change project scope** both open the same bulk flyout titled **Update project routing for *N* anomaly detection jobs**. When scope selection is enabled, the flyout shows a **Project scope** picker to choose the routing expression, then **Update *N* jobs**. Clicking **Update *N* jobs** opens a confirmation dialog titled **Update project scope?** (or **Change project scope for *job id*?** / **Change project scope for *N* jobs?** for specific selections). The dialog body reads:
+Select the {{anomaly-jobs}} in the jobs list, then choose **Change project scope** from the multi-select action menu. That action opens the bulk flyout titled **Update project routing for *N* anomaly detection jobs**, which shows a **Project scope** picker for the routing expression and an **Update *N* jobs** button. Clicking **Update *N* jobs** opens a confirmation dialog titled **Update project scope?** (or **Change project scope for *job id*?** / **Change project scope for *N* jobs?** for specific selections). The dialog body reads:
 
 ```txt
 The model for this job was trained on a specific set of data. Changing this data set may cause temporary model instability and an increase in false-positives. Are you sure you want to apply these changes?
@@ -130,7 +124,7 @@ For routing expressions that match no project or reference stale aliases, see [P
 1. Note every job id that shows a cross icon in the flyout (or that appeared in the partial-failure toast).
 2. For each failed job, open **Job messages** and read the API error — common causes are an open job, a missing model snapshot, invalid `project_routing`, or a credential problem.
 3. Fix the underlying cause per job. For credential failures, see [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md).
-4. Re-run the update for the failed jobs only — use **Change project scope** with those jobs selected, or the legacy callout button scoped to the remaining jobs.
+4. Re-run the update for the failed jobs only — select just those jobs and use **Change project scope** again.
 5. When one job keeps failing, use the single-job path: edit the job, open the **Datafeed** tab, set **Project scope**, and save after closing the job.
 
 Example retry for one job after closing it:
