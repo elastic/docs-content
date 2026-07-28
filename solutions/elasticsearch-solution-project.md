@@ -36,10 +36,6 @@ The {{es}} solution provides the following specialized UI tools and features to 
 
 [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
 
-### Playground
-
-[Playground](/solutions/elasticsearch-solution-project/playground.md) lets you use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also useful for testing and debugging your {{es}} queries using the [retrievers](/solutions/search/retrievers-overview.md) syntax.
-
 ### Synonyms UI
 
 The [synonyms UI](/solutions/search/full-text/search-with-synonyms.md#method-1-kib-ui) enables managing synonym sets directly within {{kib}}. This makes it easier to improve search relevance without editing configuration files.

@@ -92,7 +92,7 @@ Both use the same underlying inference endpoints and re-ranking models.
 
 Both approaches require an inference endpoint configured for the `rerank` task. You have the following options:
 
-1. Use the preconfigured `.jina-reranker-v3` endpoint, powered by the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This is the recommended option. Learn more about [Jina Reranker v3](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-reranker-v3).
+1. Use the preconfigured `.jina-reranker-v3` endpoint, powered by the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This is the recommended option. Learn more about [Jina reranker models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-rerankers).
 2. Use the Elastic Rerank cross-encoder model through a preconfigured `.rerank-v1-elasticsearch` endpoint or create a custom one using the [{{infer}} API’s {{es}} service]({{es-apis}}operation/operation-inference-put-elasticsearch).
 3. Use the [Jina AI Rerank {{infer}} endpoint]({{es-apis}}operation/operation-inference-put-jinaai) to create a `rerank` endpoint.
 4. Use the [Cohere Rerank {{infer}} endpoint]({{es-apis}}operation/operation-inference-put-cohere) to create a `rerank` endpoint.

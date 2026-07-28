@@ -101,7 +101,7 @@ $$$export-dashboard-json$$$ $$$export-ndjson$$$
 
 :::::{applies-switch}
 
-::::{applies-item} {stack: preview 9.4+, serverless: preview}
+::::{applies-item} {stack: "ga 9.5+, preview =9.4", serverless: ga}
 
 Export the dashboard's JSON source in a format that the [{{kib}} dashboards API](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) can consume, so you can manage dashboards as code or work with the API. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance. To version-control this JSON and deploy it across environments through a Git-based workflow, refer to [Manage dashboards as code](manage-dashboards-as-code.md).
 
