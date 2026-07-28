@@ -27,28 +27,6 @@ With a namespace selector configured, the operator watches all namespaces cluste
 * The [validating webhook](configure-validating-webhook.md) applies the same filtering: resources in namespaces that do not match the selector are not validated (admission requests for them are silently accepted rather than blocked).
 * The namespace in which the operator itself runs is always considered managed, regardless of its labels.
 
-### Onboarding [k8s-dynamic-namespace-handling-onboarding]
-
-To onboard a namespace, apply the labels that match the configured selector. For example, with a selector matching `eck-managed: "true"`:
-
-```sh
-kubectl label namespace my-namespace eck-managed=true
-```
-
-The operator picks up any existing Elastic resources in the namespace and starts reconciling them immediately.
-
-### Offboarding [k8s-dynamic-namespace-handling-offboarding]
-
-To offboard a namespace, remove or change the labels so that the namespace no longer matches the selector:
-
-```sh
-kubectl label namespace my-namespace eck-managed-
-```
-
-::::{important}
-Offboarding a namespace does not delete or modify the Elastic resources deployed in it. Existing {{es}} clusters, {{kib}} instances, and other Elastic applications keep running as they are, but the operator stops monitoring and operating them: changes to their manifests are no longer reconciled, and features driven by the operator, such as certificate rotation, stop being applied. If the namespace is onboarded again later, the operator resumes managing those resources.
-::::
-
 ## Enable dynamic namespace handling [k8s-dynamic-namespace-handling-enable]
 
 The namespace selector supports the standard Kubernetes `matchLabels` and `matchExpressions` semantics, and is subject to the following constraints:
@@ -103,6 +81,28 @@ namespace-selector:
 
 ::::{note}
 Because the value of `namespace-selector` is an object rather than a scalar, it can only be set through the operator configuration file. It cannot be passed as a command-line flag or as an environment variable.
+::::
+
+### Onboarding [k8s-dynamic-namespace-handling-onboarding]
+
+To onboard a namespace, apply the labels that match the configured selector. For example, with a selector matching `eck-managed: "true"`:
+
+```sh
+kubectl label namespace my-namespace eck-managed=true
+```
+
+The operator picks up any existing Elastic resources in the namespace and starts reconciling them immediately.
+
+### Offboarding [k8s-dynamic-namespace-handling-offboarding]
+
+To offboard a namespace, remove or change the labels so that the namespace no longer matches the selector:
+
+```sh
+kubectl label namespace my-namespace eck-managed-
+```
+
+::::{important}
+Offboarding a namespace does not delete or modify the Elastic resources deployed in it. Existing {{es}} clusters, {{kib}} instances, and other Elastic applications keep running as they are, but the operator stops monitoring and operating them: changes to their manifests are no longer reconciled, and features driven by the operator, such as certificate rotation, stop being applied. If the namespace is onboarded again later, the operator resumes managing those resources.
 ::::
 
 ## License handling [k8s-dynamic-namespace-handling-license]
