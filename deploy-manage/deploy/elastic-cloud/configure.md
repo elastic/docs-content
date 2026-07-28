@@ -6,6 +6,7 @@ mapped_pages:
 applies_to:
   deployment:
     ess: ga
+navigation_title: Configure
 products:
   - id: cloud-hosted
 ---
