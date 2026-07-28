@@ -83,13 +83,13 @@ The timeline lists committed versions newest first. Each entry shows:
 Select a version in the timeline to preview its YAML in the editor:
 
 - **Single-version view**: The full YAML for that version
-- **Compare view**: A structure-aware side-by-side or unified diff against the previous version (or against another version you choose with **Compare to this version**). Changes are grouped by steps, triggers, and settings rather than only line-by-line text. Use hunk navigation to move between changes. Validation errors in the preview are highlighted inline.
+- **Compare view**: A structure-aware side-by-side or unified diff against the previous version or against another version you choose with **Compare to this version**. Changes are grouped by steps, triggers, and settings rather than only line-by-line text. Use hunk navigation to move between changes. Validation errors in the preview are highlighted inline.
 
 If you have unsaved edits, they appear at the top of the timeline as **Unsaved changes**. Select that row to compare your draft against the last committed version before you save.
 
 ### Restore a previous version [workflows-version-history-restore]
 
-1. Select a version in the timeline (or use **Restore this version** on a timeline row).
+1. Select a version in the timeline or use **Restore this version** on a timeline row.
 2. Review the preview or diff.
 3. Select **Restore**, then confirm.
 
@@ -99,4 +99,4 @@ You cannot restore **Managed** workflows. Restore requires the Workflows **Updat
 
 ### Execution and version linkage [workflows-version-history-executions]
 
-Each workflow execution is linked to the workflow version that was active when it ran. Open an execution from the **Executions** tab to see which version that run used. Refer to [](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md).
+Each workflow execution is linked to the workflow version that was active when it ran. Open an execution from the **Executions** tab to see which version was used for that run. Refer to [](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md).
