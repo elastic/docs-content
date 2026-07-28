@@ -10,7 +10,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Configure
+# Configure ECH deployments
 
 You might want to change the configuration of your deployment to:
 
