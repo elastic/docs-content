@@ -173,4 +173,4 @@ When using the `_project_routing` API to create, retrieve, or delete expressions
 
 ## Related pages
 
-* [Troubleshoot {{ml}} with {{cps-init}}](/troubleshoot/elasticsearch/machine-learning.md) — Diagnose {{ml}} {{dfeeds}} issues such as `project_routing` mismatches and linked project skips.
+* [Troubleshoot cross-project search {{dfeeds}}](/troubleshoot/elasticsearch/machine-learning-cps.md) — Diagnose {{ml}} {{dfeeds}} issues such as `project_routing` mismatches and linked project skips.

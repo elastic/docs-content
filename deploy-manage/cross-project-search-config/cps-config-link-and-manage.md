@@ -62,6 +62,8 @@ To remove a linked project from the current {{cps-init}} configuration, navigate
 
 After you confirm, searches from the origin project will no longer include data from the unlinked projects.
 
+Running {{cps}} anomaly detection {{dfeeds}} may fail extraction cycles or adapt their models when a linked project is removed — see [Troubleshoot cross-project search {{dfeeds}}](/troubleshoot/elasticsearch/machine-learning-cps.md).
+
 ::::{note}
 You can't delete a project that's linked to an origin project. To delete a linked project, first unlink it from every origin project it's connected to, then delete it.
 ::::
