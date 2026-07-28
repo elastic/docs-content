@@ -42,12 +42,16 @@ When client authentication is enabled, ECK sets `xpack.security.http.ssl.client_
 The supported {{stack}} components differ by version. ECK performs the following additional steps depending on your version:
 
 * {applies_to}`eck: ga 3.5+` Automatically generates and manages client certificates for all {{stack}} components that connect to {{es}}, including stack monitoring sidecars and the AutoOps agent, configuring each to present its certificate when connecting to {{es}}.
+
+  :::{note}
+  {{fleet-server}} requires version 8.13.0 or later. If the version is below 8.13.0, ECK blocks pod reconciliation and sets the agent status to red with a warning event.
+  :::
+
 * {applies_to}`eck: ga =3.4` The only supported component is {{kib}}. ECK automatically generates and manages a client certificate for it, configuring it to present its certificate when connecting to {{es}}. Other workloads that connect to {{es}} over HTTP are not configured automatically.
 
-:::{note}
-* If you have manually set `xpack.security.http.ssl.client_authentication` in `spec.nodeSets[*].config`, that value takes precedence over the ECK-managed setting and the mTLS configuration may not apply as expected.
-* {{fleet-server}} requires version 8.13.0 or later. If the version is below 8.13.0, ECK blocks pod reconciliation and sets the agent status to red with a warning event.
-:::
+  :::{note}
+  If you have manually set `xpack.security.http.ssl.client_authentication` in `spec.nodeSets[*].config`, that value takes precedence over the ECK-managed setting and the mTLS configuration may not apply as expected.
+  :::
 
 For Fleet Server acting as the mTLS endpoint (requiring client certificates from connecting {{agents}}), see [Fleet Server client certificate authentication](/deploy-manage/security/k8s-fleet-server-client-certificate-auth.md).
 
@@ -159,7 +163,7 @@ spec:
 
 :::{warning}
 A bug in Enterprise Search's JRuby runtime can cause startup failures with some PKCS#8 private keys. If Enterprise Search fails to start after enabling client authentication:
-* For operator-managed certificates, delete the affected client certificate secret to force ECK to regenerate it. 
+* For operator-managed certificates, delete the affected client certificate secret to force ECK to regenerate it.
 * For custom certificates, regenerate and re-supply the certificate.
 :::
 
@@ -210,7 +214,7 @@ spec:
 
 :::{warning}
 {{ls}} versions 8.10–8.18 and 9.0 can crash on startup with some PKCS#8 private keys due to a JRuby runtime bug. This is fixed in {{ls}} 8.19 and 9.1+. If you are running an affected version and {{ls}} fails to start after enabling client authentication:
-* For operator-managed certificates, delete the affected client certificate secret to force ECK to regenerate it. 
+* For operator-managed certificates, delete the affected client certificate secret to force ECK to regenerate it.
 * For custom certificates, regenerate and re-supply the certificate.
 :::
 
