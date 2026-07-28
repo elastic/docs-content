@@ -28,6 +28,8 @@ During create, update, or extraction, **Job messages** or the API may report one
 
 On create or update (validate-before-mint):
 
+Create failures use the same *Cannot update datafeed* wording even though the request is a put.
+
 ```txt
 Cannot update datafeed [my-datafeed]: project_routing [_alias:nonexistent-*] matched no linked project (no matching project after applying project routing [_alias:nonexistent-*]). Link the missing project in Elastic Cloud project settings, or update project_routing to a valid linked alias (for example _origin for local-only scope).
 ```
@@ -55,11 +57,11 @@ The suggested `_origin` example in the {{ml}} messages is not a valid routing va
 | Situation | Typical behavior |
 | --- | --- |
 | Flat-world {{dfeed}} (empty `project_routing`, unqualified index patterns) with no linked projects | Create or update may succeed; the first run-time search fails |
-| `_alias:` expression matches no linked project tags | Fails at search time |
-| Typo in alias or routing expression | Fails at search time |
+| Flat-world {{dfeed}} (unqualified index patterns) with `_alias:` expression that matches no linked tags, including typos | Create or update may succeed; the first run-time search fails |
+| {{dfeed}} with qualified `project:index` patterns and `project_routing` that matches no linked tags | Fails immediately on create or update (validate-before-mint) |
 | Qualified `project:index` references a project that does not exist or is unauthorized | Fails immediately on create or update |
 
-A flat-world {{dfeed}} whose routing matches nothing at validate-before-mint time is deferred to run time. A qualified `project:index` reference to a missing or unauthorized project still fails immediately on create or update.
+Validate-before-mint defers a no-match `project_routing` to run time only when every entry in `indices` is unqualified (flat-world). Any qualified `project:index` pattern — including one whose project alias is missing — fails immediately on create or update.
 
 **Scope is wider than intended**
 
@@ -87,7 +89,7 @@ A flat-world {{dfeed}} whose routing matches nothing at validate-before-mint tim
 
 **Correct the routing expression**
 
-Stop the {{dfeed}}, close the {{anomaly-job}} if required, then update routing to a valid `_alias:` expression:
+Update routing to a valid `_alias:` expression:
 
 ```console
 POST _ml/datafeeds/{datafeed_id}/_update
