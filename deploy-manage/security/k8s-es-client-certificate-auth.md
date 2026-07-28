@@ -57,7 +57,7 @@ For Fleet Server acting as the mTLS endpoint (requiring client certificates from
 
 ## Use a custom client certificate [k8s-custom-client-cert]
 
-ECK automatically issues a client certificate to each component. To use your own certificate instead, set `clientCertificateSecretName` in the component's `elasticsearchRef`.
+ECK automatically issues a client certificate to each component. To use your own certificate instead, set `clientCertificateSecretName` in the component's `elasticsearchRef`. When you provide a custom certificate, ECK automatically configures {{es}} to trust it — no additional trust configuration is required.
 
 The referenced secret must contain `tls.crt` and `tls.key` entries:
 

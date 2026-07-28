@@ -48,7 +48,7 @@ If you have manually set `FLEET_SERVER_CLIENT_AUTH` in the pod template, that va
 
 ## Use a custom client certificate for an Elastic Agent [k8s-agent-fleet-server-custom-client-cert]
 
-To provide your own client certificate for an {{agent}} connecting to a {{fleet-server}} with client authentication enabled, set `clientCertificateSecretName` in the `fleetServerRef`:
+To provide your own client certificate for an {{agent}} connecting to a {{fleet-server}} with client authentication enabled, set `clientCertificateSecretName` in the `fleetServerRef`. When you provide a custom certificate, ECK automatically configures {{fleet-server}} to trust it — no additional trust configuration is required.
 
 ```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
