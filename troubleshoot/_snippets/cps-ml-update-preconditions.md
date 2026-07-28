@@ -25,7 +25,7 @@ A job that has never run has no snapshot. Open it, let it process data, then clo
 {{es}} records the retained rollback snapshot in the job's **Job messages** (or `.ml-notifications-*`), for example:
 
 ```txt
-Rollback model snapshot [1720000000000] retained before project_routing scope change: Automatic rollback snapshot retained before project_routing scope change [_alias:_origin] -> [_alias:prod-*]
+Rollback model snapshot [1720000000] retained before project_routing scope change: Automatic rollback snapshot retained before project_routing scope change [_alias:_origin] -> [_alias:prod-*]
 ```
 
 You can revert to that snapshot if detection quality degrades after a scope change.
