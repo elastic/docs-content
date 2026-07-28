@@ -6,11 +6,12 @@ mapped_pages:
 applies_to:
   deployment:
     ess: ga
+navigation_title: Configure
 products:
   - id: cloud-hosted
 ---
 
-# Configure
+# Configure {{stack}} deployments on ECH
 
 You might want to change the configuration of your deployment to:
 

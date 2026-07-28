@@ -41,7 +41,7 @@ Follow these steps to send data to Elastic using the {{motlp}}.
 ::::{applies-item} serverless:
 1. Log in to the {{ecloud}} Console.
 2. Find your project and select **Manage**.
-3. In the **Application endpoints, cluster and component IDs** section, select **Ingest**.
+3. In the **Application endpoints, cluster and component IDs** section, select **OpenTelemetry**.
 4. Copy the endpoint value.
 
 :::{tip}

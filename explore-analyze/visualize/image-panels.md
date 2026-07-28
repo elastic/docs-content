@@ -20,8 +20,12 @@ Image uploads are limited to 10 MiB.
 
 You can upload images from your computer, select previously uploaded images, or add images from an external link.
 
-1. From your dashboard, select **Add panel**.
-2. In the **Add panel** flyout, select **Image**. The **Add image** flyout appears and lets you add and configure the image you want to display.
+1. From your dashboard, open the panel menu.
+
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu and, if required, **New panel**.
+    * {applies_to}`stack: ga 9.0-9.1` Select **Add panel** in the application menu.
+
+2. Select **Image**. The **Add image** flyout appears and lets you add and configure the image you want to display.
 3. Add your image and configure the settings, and then click **Save**.
 
 :::{image} /explore-analyze/images/kibana-dashboard_addImageEditor_8.7.0.png

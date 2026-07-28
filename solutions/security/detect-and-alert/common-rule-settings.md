@@ -111,6 +111,10 @@ The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/c
 **MITRE ATT&CK threats** (optional)
 :   Add relevant [MITRE ATT&CK](https://attack.mitre.org/) tactics, techniques, and subtechniques.
 
+    ::::{note}
+    The tactic and technique options here only include the MITRE ATT&CK version currently supported by {{elastic-sec}}. If you're upgrading and existing mappings are affected by a MITRE ATT&CK version change, refer to [Remap detection rules to MITRE ATT&CK v19](/solutions/security/detect-and-alert/remap-mitre-attack.md).
+    ::::
+
 **Reference URLs** (optional)
 :   References to information that is relevant to the rule. For example, links to background information.
 
