@@ -19,8 +19,8 @@ To provide context to your dashboard panels, add **Text** panels that display im
 :::::{applies-switch}
 
 ::::{applies-item} { stack: ga 9.2, serverless: }  
-1. From your dashboard, select **Add** => **New panel**.
-2. In the **Add panel** flyout, select **Markdown Text**. A Markdown editor appears and lets you configure the information you want to display. 
+1. From your dashboard, select **Add** in the application menu and, if required, **New panel**.
+2. Select **Markdown Text**. A Markdown editor appears and lets you configure the information you want to display.
 3. Enter your text, then click **Apply**.
 
 While switching between **Editor** and **Preview** modes, you can keep editing your text.
@@ -124,7 +124,7 @@ The panel is now linked to the library. Any subsequent edit you apply to it from
 
 To add a previously saved Markdown panel to a dashboard:
 
-1. From your dashboard, select **Add panel** > **From library** in the toolbar.
+1. From your dashboard, select **Add** in the application menu, then select **From library**.
 2. From the **Types** dropdown, select **Markdown**.
 3. Select the panel you want to add.
 

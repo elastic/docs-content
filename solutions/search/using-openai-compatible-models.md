@@ -113,6 +113,10 @@ Exposing a local endpoint to the internet can introduce security risks. Anyone w
 
 ## Connecting the local LLM to Playground
 
+::::{note}
+Playground has been deprecated as of version 9.4, but the connector setup procedure described here applies to [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) and other LLM use cases in Elastic.
+::::
+
 :::{include} ../_snippets/connect-local-llm-to-playground.md
 :::
 

@@ -3,13 +3,16 @@ navigation_title: Troubleshooting
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/playground-troubleshooting.html
 applies_to:
-  stack: preview =9.0, beta 9.1+
-  serverless: beta
+  stack: preview =9.0, beta 9.1-9.3, deprecated 9.4+
+  serverless: deprecated
 products:
   - id: kibana
 ---
 
 # Troubleshooting RAG Playground [playground-troubleshooting]
+
+::::{include} /solutions/_snippets/playground-deprecated.md
+::::
 
 Dense vectors are not searchable
 :   Embeddings must be generated using the [inference processor](elasticsearch://reference/enrich-processor/inference-processor.md) with an ML node.
