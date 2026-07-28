@@ -34,6 +34,8 @@ After turning on cases as data, you do not need to manually create the analytics
 
 You also do not need to manually manage the lifecycle policies of the analytics indices. Every five minutes, a background task runs to refresh the indices with a snapshot of the most current cases data. During the refresh, historical case data is overwritten. 
 
+Custom fields from the [case template field library](manage-case-templates.md) are stored as typed `extended_fields` in these indices, so you can query and visualize them the same way as built-in case fields.
+
 ::::{note} 
 - After making new cases, it may take up to 10 minutes to index the new case data. 
 - After making a new space, it can take up to an hour for the case analytics indices for that space to form.  
