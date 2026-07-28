@@ -10,7 +10,7 @@ products:
   - id: cloud-kubernetes
   - id: cloud-serverless
   - id: elastic-stack
-description: Query case analytics indices to track operational metrics like MTTR, case volume, and analyst workload with Discover, Lens, and ES|QL.
+description: Query case analytics indices to track operational metrics like mean time to respond (MTTR), case volume, and analyst workload with Discover, Lens, and ES|QL.
 ---
 
 # Case analytics [case-analytics]

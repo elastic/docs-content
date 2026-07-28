@@ -39,31 +39,48 @@ You can also change how often the background update runs. The minimum is 5 minut
 xpack.cases.analyticsV2.reconciliationIntervalMinutes: 30
 ```
 
-## Check health, reconcile, or reset [case-analytics-admin-routes]
+## Run admin operations [case-analytics-admin-routes]
 
-All admin routes are internal APIs. Include the `x-elastic-internal-origin: Kibana` header. For `POST` requests, also include `kbn-xsrf: true`.
+All admin routes are internal APIs. Include the `x-elastic-internal-origin: Kibana` header, and for `POST` requests, also include `kbn-xsrf: true`.
+
+### Check health and rebuild progress [case-analytics-check-health]
+
+The `state` route is always available when case analytics is on. Use it to check health, the last update time, and the progress of any rebuild:
 
 ```bash
-# Check analytics health and reset progress
 curl -s -u "${USER}:${PASS}" \
   -H "x-elastic-internal-origin: Kibana" \
   "${KIBANA_URL}/internal/cases/_analyticsV2/state"
+```
 
-# Force an immediate update (requires enableAdminRoutes: true)
+While a rebuild is running, check the `active_reset.state` values: `phase`, `cases_processed`, `activity_processed`, and `attachments_processed`. When `active_reset` is `null`, the rebuild is complete.
+
+### Force an immediate update [case-analytics-force-update]
+
+Force an update instead of waiting for the next scheduled background update. This route requires [admin routes to be turned on](#turn-on-case-analytics-admin-routes):
+
+```bash
 curl -s -X POST -u "${USER}:${PASS}" \
   -H "kbn-xsrf: true" -H "x-elastic-internal-origin: Kibana" \
   "${KIBANA_URL}/internal/cases/_analyticsV2/reconcile/run_soon"
+```
 
-# Full rebuild - affects every space (requires enableAdminRoutes: true)
+If an update is already running, the response includes `already_running: true` and no second update starts.
+
+::::{note}
+The background update finds only cases that changed recently. To rebuild older cases that haven't changed in a long time, run a full `reset`.
+::::
+
+### Rebuild the indices from your cases [case-analytics-rebuild-indices]
+
+Recreate all three indices and their data sources from your current cases. This route requires [admin routes to be turned on](#turn-on-case-analytics-admin-routes):
+
+```bash
 curl -s -X POST -u "${USER}:${PASS}" \
   -H "kbn-xsrf: true" -H "x-elastic-internal-origin: Kibana" \
   "${KIBANA_URL}/internal/cases/_analyticsV2/reset"
 ```
 
-If you call `reconcile/run_soon` while an update is already running, the response includes `already_running: true` and no second update starts.
-
-`reset` returns `202 Accepted` once it recreates the indices and starts rebuilding the data. The rebuild runs in the background and can take several minutes on large deployments. To track progress, call `GET .../state` and check the `active_reset.state` values (`phase`, `cases_processed`, `activity_processed`, and `attachments_processed`). When `active_reset` is `null`, the rebuild is complete. If you run another `reset` while one is in progress, it replaces the first.
-
-::::{note}
-The background update finds only cases that changed recently. To rebuild older cases that haven't changed in a long time, run a full `reset`.
-::::
+* `reset` returns `202 Accepted`, then recreates the indices and rebuilds the data in the background. On large deployments, the rebuild can take several minutes.
+* To track progress, use the [`state` route](#case-analytics-check-health).
+* Running another `reset` while one is in progress replaces the first.

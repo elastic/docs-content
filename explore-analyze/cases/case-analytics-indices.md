@@ -78,7 +78,7 @@ For schema details, refer to [Case analytics indices schema](kibana://reference/
 Case analytics keeps your data current in two ways:
 
 1. It updates the indices as soon as you create, edit, or delete a case.
-2. As a backup, a background task checks for recently changed cases on a regular schedule (every 30 minutes by default) and fills in anything the immediate update missed.
+2. As a backup, a background task checks for recently changed cases on a regular schedule (about every 30 minutes) and fills in anything the immediate update missed.
 
 Because updates take a moment to apply, a new or edited case can take a short time to appear in your queries.
 ::::

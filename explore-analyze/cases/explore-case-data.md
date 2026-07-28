@@ -41,4 +41,4 @@ Case data is stored in hidden indices. To display hidden indices, select **Show 
 
 ## Next steps [explore-case-analytics-next]
 
-[Query case data with {{esql}}](query-case-data-esql.md) to calculate metrics like case volume, closure rates, and MTTR.
+[Query case data with {{esql}}](query-case-data-esql.md) to calculate metrics like case volume, closure rates, and mean time to respond (MTTR).

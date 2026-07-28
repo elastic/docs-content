@@ -31,17 +31,22 @@ Legacy custom fields live in a separate `case.customFields` field, which you can
 
 ## Use typed fields in Discover and Lens [analyze-case-fields-typed]
 
-The managed **Case Analytics** {{data-source}} publishes each templated or global field as a typed field named `case.<name>_as_<type>` (for example, `case.effort_as_integer`), so you get numeric, date, and boolean operators instead of text matching.
+A typed field is a version of a case field that the managed Case Analytics {{data-source}} publishes with a specific data type, named `case.<name>_as_<type>` (for example, `case.effort_as_integer`). The {{data-source}} publishes one for each templated or global field. Because a typed field has a real type, you get numeric, date, and boolean operators in Discover and Lens instead of text matching on the raw value stored in `case.extended_fields`.
 
-:::{note}
-{{kib}} publishes a typed field only for fields that a current template uses or the global field library defines, and only when the field name uses letters, digits, and underscores. Fields migrated from before 9.5 keep hyphenated keys, so they don't get a typed field, and a newly added field can take a short time to appear. To refresh the field list immediately, restart {{kib}} or ask an administrator to refresh the {{data-source}}.
+### Which fields get a typed field [analyze-case-fields-typed-availability]
+
+{{kib}} publishes a typed field only when both of these are true:
+
+- A current template uses the field, or the global field library defines it.
+- The field name uses only letters, digits, and underscores. Fields created before {{stack}} 9.5 might have hyphenated keys, so {{kib}} doesn't publish a typed field for them.
+
+A newly added field can take a short time to appear. To refresh the field list immediately, restart {{kib}} or ask an administrator to refresh the {{data-source}}.
 
 Fields without a typed field are still stored in `case.extended_fields`, so you can always reach them with `FIELD_EXTRACT` or a `terms` aggregation.
-:::
 
 ## Use `FIELD_EXTRACT` in {{esql}} [analyze-case-fields-field-extract]
 
-`FIELD_EXTRACT` {applies_to}`stack: preview` {applies_to}`serverless: preview` returns a string, so cast the value to the type you need, then aggregate:
+`FIELD_EXTRACT` returns a string, so cast the value to the type you need, then aggregate:
 
 ```esql
 FROM .cases

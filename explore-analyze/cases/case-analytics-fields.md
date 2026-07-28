@@ -15,11 +15,13 @@ description: Look up the fields in the case analytics indices, including case, a
 
 # Case analytics field reference [case-analytics-fields]
 
-This page lists the most useful fields in the three [case analytics indices](case-analytics-indices.md).
+Use this page as a reference for the fields you can query in the [case analytics indices](case-analytics-indices.md) when you're looking for specific case data.
 
-Field names use the singular `case.*` form, such as `case.status`, even though the index names are plural, such as `.cases`. The `owner`, `space_id`, and `@timestamp` fields sit at the top level instead of under `case.*`.
+Most fields use the singular `case.*` prefix, such as `case.status`, even though the index names are plural, such as `.cases`. A few fields, including `owner`, `space_id`, and `@timestamp`, sit at the top level without the `case.*` prefix.
 
+:::{note}
 Fields with the `date` type use ISO 8601 format, set to the server's time zone, such as `2025-07-27T14:30:00.000Z`.
+:::
 
 ## General case data (`.cases`) [case-analytics-fields-cases]
 
@@ -31,9 +33,9 @@ The `.cases` index holds one document per case, with the current state of each c
 | --- | --- | --- |
 | `@timestamp` | date | When {{es}} last wrote this document, which tracks the case's last update. |
 | `space_id` | keyword | The space the case belongs to. |
-| `owner` | keyword | The solution that owns the case: `securitySolution` (Elastic Security) or `observability` (Elastic Observability). On {{stack}} deployments, `cases` (Stack Management) can also appear; on Serverless, only `securitySolution` and `observability` are used. |
-| `case.id` | keyword | The case ID. Join key for the activity and attachment indices. |
-| `case.incremental_id` | unsigned_long | The sequential case number shown in the UI. For more information, refer to [case identifiers](search-share-cases.md#case-identifiers). |
+| `owner` | keyword | The solution that owns the case: `securitySolution` for {{elastic-sec}}, `observability` for {{observability}}, or `cases` for {{stack-manage-app}} (unavailable in {{serverless-short}}). |
+| `case.id` | keyword | The case UUID. Join key for the activity and attachment indices. For more information, refer to [UUID](search-share-cases.md#case-identifiers). |
+| `case.incremental_id` | unsigned_long | The sequential case number shown in the UI. For more information, refer to [numeric ID](search-share-cases.md#case-identifiers). |
 
 ### Core attributes [case-analytics-fields-core]
 
@@ -45,7 +47,7 @@ The `.cases` index holds one document per case, with the current state of each c
 | `case.category` | keyword | Case category. |
 | `case.status` | keyword | Case status: `open`, `in-progress`, or `closed`. |
 | `case.severity` | keyword | Case severity: `low`, `medium`, `high`, or `critical`. |
-| `case.assignees.uid` | keyword | Profile IDs of the case's assignees. Join to the `.cases-activity` `actor.*` fields when you need display names. |
+| `case.assignees.uid` | keyword | Profile UIDs of the case's assignees (a case can have several), not display names. To resolve a UID to a name, look it up with the [user profile API]({{es-apis}}operation/operation-security-get-user-profile), or match it to `actor.profile_uid` in `.cases-activity`, which also carries `actor.username`, `.full_name`, and `.email`. The `.cases-activity` method only resolves users who have acted on a case. |
 
 ### Timestamps and timing metrics [case-analytics-fields-timing]
 
@@ -86,9 +88,13 @@ Timing fields store values in seconds and are `null` until the case reaches the 
 | `case.template.id` | keyword | ID of the template applied when the case was created, if any. |
 | `case.template.version` | integer | Version of the applied template. |
 | `case.extended_fields` | flattened | Template field values, keyed as `<name>_as_<type>`. Query the keys with `FIELD_EXTRACT` or a `terms` aggregation. Refer to [Analyze case fields](analyze-case-fields.md). |
-| `case.customFields.key` | keyword | Key of a legacy custom field. Paired with `.type` and `.value`. |
-| `case.customFields.type` | keyword | Legacy custom field type. |
-| `case.customFields.value` | keyword | Legacy custom field value, with typed sub-fields `.boolean`, `.date`, `.ip`, `.number`, and `.string`. |
+| `case.customFields.key` | keyword | Key of a custom field. Paired with `.type` and `.value`. |
+| `case.customFields.type` | keyword | The custom field's type. |
+| `case.customFields.value` | keyword | The custom field's value, with typed sub-fields `.boolean`, `.date`, `.ip`, `.number`, and `.string`. |
+
+:::{note}
+`case.customFields` holds a case's custom field values in raw form and is populated for current cases. Because it's a `nested` field, you can't query it with {{esql}}. Use Query DSL `nested` queries and aggregations instead. For values defined by a template or the field library, use `case.extended_fields`, which supports {{esql}} and typed fields. Refer to [Analyze case fields](analyze-case-fields.md).
+:::
 
 ### Connector and external service [case-analytics-fields-connector]
 
@@ -115,7 +121,7 @@ The `.cases-activity` index holds one document per case action, such as a status
 | `@timestamp` | date | When the action occurred. |
 | `space_id` | keyword | The space the action's case belongs to. |
 | `owner` | keyword | The owning solution. |
-| `case.id` | keyword | ID of the case the action was performed on. Join key back to `.cases`. |
+| `case.id` | keyword | UUID of the case the action was performed on. Join key back to `.cases`. |
 | `actor.username` | keyword | Who performed the action. Also includes `.email`, `.full_name`, and `.profile_uid`. |
 | `action.type` | keyword | What was acted on, such as `create_case`, `status`, `severity`, `comment`, `template`, `tags`, `assignees`, or `connector`. |
 | `action.verb` | keyword | The action verb, such as `create`, `update`, `delete`, or `add`. |
@@ -136,7 +142,7 @@ The `.cases-attachments` index holds one document per attachment, such as a comm
 | `@timestamp` | date | When {{es}} last wrote this document. |
 | `space_id` | keyword | The space the attachment's case belongs to. |
 | `owner` | keyword | The owning solution. |
-| `case.id` | keyword | ID of the case the attachment belongs to. Join key back to `.cases`. |
+| `case.id` | keyword | UUID of the case the attachment belongs to. Join key back to `.cases`. |
 | `attachment.type` | keyword | Attachment kind, such as `user` (comment), `alert`, `externalReference`, `persistableState`, or `dashboard`. |
 | `attachment.attachment_id` | keyword | Referenced entity IDs, such as alert IDs or the saved object ID of an attached dashboard. |
 | `attachment.comment` | text | Comment text for comment attachments. Also indexed as `.keyword`. |
