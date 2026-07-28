@@ -11,7 +11,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Configure ECH deployments
+# Configure {{stack}} deployments on ECH
 
 You might want to change the configuration of your deployment to:
 
