@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: observability
   - id: cloud-serverless
-description: Advanced guidance for scaling and architecting Elastic Synthetics deployments, including cross-cluster search support, tagging strategies, and custom dashboards.
+description: Advanced guidance for scaling and designing Elastic Synthetics deployments, including cross-cluster search support, tagging strategies, and custom dashboards.
 ---
 
 # Scale and architect a Synthetics deployment [synthetics-scale-and-architect]
@@ -25,7 +25,7 @@ stack: ga
 
 In complex environments, it’s common to have multiple task-specific {{stack}} deployments with one centralized overview cluster using {{ccs}} or {{ccr}} to centralize {{kib}} dashboards and apps. **Do not use this pattern with the Synthetics UI**. Instead, configure your synthetic monitors directly on the {{kib}} instance where you want to view and manage them.
 
-You may, however, use the Dashboards and the Discover app with {{ccs-init}} to view `synthetics-*` indices.
+You can, however, use Dashboards and the Discover app with {{ccs-init}} to view `synthetics-*` indices.
 
 The Synthetics UI does *not* work with {{ccs-init}}/{{ccr-init}} because it would limit the rich user experience that the Synthetics UI provides. Unlike the majority of {{kib}} apps, the Synthetics UI relies heavily on state stored in {{kib}} shared objects in order to provide a rich user experience. Because {{kib}} saved objects cannot be shared using {{ccs-init}}/{{ccr-init}}, the Synthetics UI doesn't show any user data even if you configure {{ccs-init}}/{{ccr-init}}.
 
