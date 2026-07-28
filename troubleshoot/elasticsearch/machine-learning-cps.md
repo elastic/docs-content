@@ -31,7 +31,7 @@ Start with the symptom that best matches what you see:
 * **The {{dfeed}} returns no results** — [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md)
 * **Results come only from the origin project** — [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md)
 * **Extraction cycles are suddenly slower after you linked projects** — [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md)
-* **The {{dfeed}} keeps failing with extraction errors** — [Linked project unavailable](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-linked-project-unavailable.md)
+* **The {{dfeed}} keeps failing with extraction errors** — [Linked project unavailable](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-linked-project-unavailable.md) when **Job messages** report a skipped linked project; for authorization failures or field type conflicts, start with [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md) or [Field mapping conflicts](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-field-mappings.md) instead.
 * **{{es}} or {{kib}} rejected a project scope change** — [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md)
 * **Some jobs failed during a bulk Change project scope update** — [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md)
 * **Anomaly scores spiked after a scope change** — [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md)
@@ -46,10 +46,10 @@ Every valid `project_routing` value starts with `_alias:`. Bare `_origin` is **n
 | --- | --- |
 | Empty or omitted (`null`) | **Flat world** — searches the origin project and all linked projects |
 | `_alias:_origin` | **Origin only** — searches the origin project |
-| `_alias:*` | **All linked projects** — wildcard match-all (origin is included when its alias matches) |
-| `_alias:production-*` (prefix wildcard) | **Subset** — linked projects whose alias starts with `production-` |
-| `_alias:*-prod` (suffix wildcard) | **Subset** — linked projects whose alias ends with `-prod` |
-| `_alias:*staging*` (contains wildcard) | **Subset** — linked projects whose alias contains `staging` |
+| `_alias:*` | **Same as flat world** — equivalent to an empty or omitted value; searches the origin project and all linked projects |
+| `_alias:production-*` (prefix wildcard) | **Subset** — linked projects whose alias starts with `production-`, plus the origin project when its alias matches |
+| `_alias:*-prod` (suffix wildcard) | **Subset** — linked projects whose alias ends with `-prod`, plus the origin project when its alias matches |
+| `_alias:*staging*` (contains wildcard) | **Subset** — linked projects whose alias contains `staging`, plus the origin project when its alias matches |
 | `_alias:production-us` (exact alias) | **Single linked project** — only the named alias |
 
 Prefix, suffix, and contains wildcards are supported; internal wildcards (for example `_alias:prod*eu`) and multiple sequential wildcards are not.
