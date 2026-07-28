@@ -1,5 +1,6 @@
 ---
 navigation_title: ML in Kibana
+description: Explore your data with the Data Visualizer, and detect distribution changes over time with Data drift, directly in Kibana.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-ml.html
 applies_to:
@@ -13,7 +14,7 @@ products:
 
 As data sets increase in size and complexity, the human effort required to inspect dashboards or maintain rules for spotting infrastructure problems, cyber attacks, or business issues becomes impractical. Elastic {{ml-features}} such as {{anomaly-detect}} and {{oldetection}} make it easier to notice suspicious activities with minimal human interference.
 
-{{kib}} includes a free **{{data-viz}}** to learn more about your data. In particular, if your data is stored in {{es}} and contains a time field, you can use the **{{data-viz}}** to identify possible fields for {{anomaly-detect}}.
+{{kib}} includes a free **{{data-viz}}** that helps you understand your data's structure, distribution, and quality before you act on it. If your data is stored in {{es}} and contains a time field, the **{{data-viz}}** also helps you identify possible fields for {{anomaly-detect}}.
 
 ::::{tip}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
@@ -64,6 +65,6 @@ You can find the **Data drift** view in **{{ml-app}}** → **{{data-viz}}** in {
 :screenshot:
 :::
 
-Select a {{data-source}} that you want to analyze, then select a time range for the reference and the comparison data in the appearing histogram chart. You can adjust the time range for both the reference and the comparison data by moving the respective brushes. When you finish setting the time ranges, click **Run analysis**.
+You select a {{data-source}} to analyze, along with separate time ranges for the reference and comparison data in the histogram chart, adjusting each range by moving its brush. **Run analysis** then compares the reference and comparison periods.
 
-You can decide whether you want to view all the fields in the {{data-source}} or only the ones that contain drifted data. The analysis results table displays the fields, their types, if drift is detected, the p-value that indicates how significant the detected change is, the reference and comparison distribution, and the comparison chart. You can expand the results for a particular field by clicking the row's arrow icon.
+You can decide whether you want to view all the fields in the {{data-source}} or only the ones that contain drifted data. The analysis results table displays the fields, their types, if drift is detected, the p-value that indicates how significant the detected change is, the reference and comparison distribution, and the comparison chart. To expand the results for a particular field, select its row's arrow icon.

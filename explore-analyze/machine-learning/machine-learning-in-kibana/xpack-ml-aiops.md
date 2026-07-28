@@ -1,4 +1,5 @@
 ---
+description: Use AIOps Labs in Kibana to analyze log rate spikes and drops, find patterns in log messages, and detect change points in your time series data.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-ml-aiops.html
   - https://www.elastic.co/guide/en/serverless/current/observability-machine-learning.html
@@ -14,7 +15,7 @@ products:
 
 # AIOps Labs [xpack-ml-aiops]
 
-**AIOps Labs** is a part of {{ml-app}} in {{kib}}. It provides features that use advanced statistical methods to help you interpret your data and its behavior.
+**AIOps Labs** is a part of {{ml-app}} in {{kib}}. It provides features that use advanced statistical methods to help you interpret your data and its behavior, so you can quickly identify the causes behind unusual changes without manually digging through the data.
 
 ::::{tip}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
@@ -32,7 +33,7 @@ You can find log rate analysis embedded in multiple apps. In {{kib}}, you can fi
 :screenshot:
 :::
 
-Select a spike or drop in the log event histogram chart to start the analysis. It identifies statistically significant field-value combinations that contribute to the spike or drop and displays them in a table. The table also shows an indicator of the level of impact and a sparkline showing the shape of the impact in the chart. When you hover over a row, it displays the impact on the histogram chart in more detail.
+To start the analysis, select a spike or drop in the log event histogram chart. It identifies statistically significant field-value combinations that contribute to the spike or drop and displays them in a table, along with an indicator of the level of impact and a sparkline showing its shape. When you hover over a row, it displays the impact on the histogram chart in more detail.
 
 From the **Actions** column, you can:
 
@@ -60,7 +61,7 @@ You can find log pattern analysis under **{{ml-app}}** → **AIOps Labs** or by 
 :screenshot:
 :::
 
-Select a field for categorization and optionally apply any filters that you want, then start the analysis. The analysis uses the same algorithms as a {{ml}} categorization job. The table shows the analysis results and lets you open **Discover** to show or filter out the given category, which helps you further examine your log messages.
+You select a field for categorization, optionally apply filters, then start the analysis, which uses the same algorithms as a {{ml}} categorization job. The table shows the analysis results and lets you open **Discover** to show or filter out the given category, which helps you further examine your log messages.
 
 ## Change point detection [change-point-detection]
 ```{applies_to}
@@ -79,7 +80,7 @@ You can find change point detection under **{{ml-app}}** → **AIOps Labs** or b
 :screenshot:
 :::
 
-Select a function and a metric field, then select a date range to start detecting change points in the defined range. Optionally, you can split the data by a field. If the cardinality of the split field exceeds 10,000, then only the first 10,000, sorted by document count, are analyzed. You can configure a maximum of six combinations of a function applied to a metric field, partitioned by a split field to identify change points.
+You choose a function and a metric field, and a date range, to detect change points within that range. Optionally, you can split the data by a field. If the cardinality of the split field exceeds 10,000, then only the first 10,000, sorted by document count, are analyzed. You can configure a maximum of six combinations of a function applied to a metric field, partitioned by a split field, to identify change points.
 
 When a change point is detected, a row displays basic information including the timestamp, a preview chart, the type, its p-value, and the name and value of the split field. You can use the change point type selector to filter the results by specific types of change points.
 

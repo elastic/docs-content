@@ -1,5 +1,6 @@
 ---
 navigation_title: Tutorial
+description: Follow this tutorial to explore sample data with the Data Visualizer, create anomaly detection jobs, and identify anomalies in Kibana.
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html
 applies_to:
