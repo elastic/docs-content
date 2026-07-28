@@ -27,7 +27,7 @@ The most common rejection is an open {{anomaly-job}}. Changing `project_routing`
 
 From the **API**, a rejected update returns HTTP `409` (datafeed still running or job still open) or `400` (no model snapshot). The response body repeats the messages shown in the preconditions block above.
 
-From **{{kib}}**, the bulk **Change project scope** action (multi-select jobs list) opens the flyout titled **Update project routing for *N* anomaly detection jobs**. After you click **Update *N* jobs**, each job in the list shows a success or failure icon, but failed jobs display no inline error text — only the job id and a cross icon. To learn why a job failed, open **Job messages** for that job or retry the update through the API and read the error response.
+From **{{kib}}**, the bulk **Change project scope** action (multi-select jobs list) opens the flyout titled **Update project routing for *N* anomaly detection jobs**.
 
 **Important:** the bulk update stops and restarts a running {{dfeed}} for you, but it does **not** close the {{anomaly-job}}. Because a `project_routing` change requires a closed job, open jobs fail the bulk update even though their {{dfeed}} was stopped automatically. Close those jobs first, then run the update again.
 
@@ -38,6 +38,8 @@ Datafeed settings cannot be edited while the datafeed is running. Please stop th
 ```
 
 **The bulk update partly succeeded**
+
+**Entry points**
 
 Legacy {{anomaly-jobs}} without `project_routing` show a callout on the jobs list:
 
@@ -52,6 +54,8 @@ The model for this job was trained on a specific set of data. Changing this data
 ```
 
 Confirm with **Yes, save** or cancel with **Cancel**.
+
+Failed jobs display no inline error text in the flyout — only the job id and a cross icon. To learn why a job failed, open **Job messages** for that job or retry the update through the API and read the error response.
 
 After submission, result toasts report:
 

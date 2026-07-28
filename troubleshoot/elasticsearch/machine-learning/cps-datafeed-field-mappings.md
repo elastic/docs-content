@@ -87,7 +87,6 @@ Optional-field conflict warnings and time-field project exclusions appear only w
 * A project-exclusion message for the time field (see above).
 
 Example extraction error after mapping drift:
-
 ```txt
 Datafeed is encountering errors extracting data: Cannot parse field [status] of type [long] in document with id 'abc123'
 ```
