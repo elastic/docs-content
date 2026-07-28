@@ -49,10 +49,8 @@ Text embedding models convert text into vector embeddings for semantic similarit
 
 :::
 
-- {applies_to}`stack: ga 9.3+` In {{stack}} 9.3 and later, you can create endpoints and run multimodal `embedding` {{infer}} requests. You cannot use these models with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type.
-- {applies_to}`stack: ga 9.4+` In {{stack}} 9.4 and later, you can use [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) mappings for text-only embeddings at ingest and search time.
-- {applies_to}`stack: ga 9.5+` In {{stack}} 9.5 and later, the `semantic` field type supports all modalities, such as text, images, video, audio, and documents.
-::::
+:::{tab-item} jina-embeddings-v5-text-nano
+:sync: text-nano
 
 - `jina-embeddings-v5-text-nano` works best on small, medium or large sized fields that contain natural language. For connector or web crawler use cases, this aligns best with fields like title, description, summary, or abstract.
 - Although the model supports an input token length of 8K, consider chunking very large fields to control latency and cost.
@@ -126,7 +124,7 @@ Reranker models reorder candidate documents by predicted relevance to improve to
 
 | Model | Description | Deployment | Access |
 | --- | --- | --- | --- |
-| [`jina-reranker-v3`](https://jina.ai/models/jina-reranker-v3/) | Listwise reranker for multilingual document retrieval. Accepts text queries and documents and returns relevance rankings. Supports input lengths up to 131K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-eis-rerank), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
+| [`jina-reranker-v3.5`](https://jina.ai/models/jina-reranker-v3.5/) | Domain-ready listwise reranker for multilingual document retrieval. Accepts text queries and documents and returns relevance rankings. Supports input lengths up to 131K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-eis-rerank), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
 | [`jina-reranker-m0`](https://jina.ai/models/jina-reranker-m0/) | Multimodal reranker for visual documents. Accepts text or image queries and documents and returns relevance rankings. Supports input lengths up to 10K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
 | [`jina-reranker-v2-base-multilingual`](https://jina.ai/models/jina-reranker-v2-base-multilingual/) | Cross-encoder reranker for multilingual search. Accepts text queries and documents and returns relevance rankings. Supports input lengths up to 1K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-eis-rerank), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
 | [`jina-colbert-v2`](https://jina.ai/models/jina-colbert-v2/) | Multilingual ColBERT model for embedding and reranking. Accepts text input and produces 128-dimensional multi-vector embeddings. Supports input lengths up to 8K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
@@ -136,10 +134,10 @@ Reranker models reorder candidate documents by predicted relevance to improve to
 ::::{tab-set}
 :group: jina-rerankers
 
-:::{tab-item} jina-reranker-v3
-:sync: reranker-v3
+:::{tab-item} jina-reranker-v3.5
+:sync: reranker-v35
 
-- `jina-reranker-v3` is designed for top-k reranking in hybrid search and RAG workflows.
+- `jina-reranker-v3.5` is designed for top-k reranking in hybrid search and RAG workflows.
 - For larger candidate sets, rerank the most relevant results returned by your first-stage retrieval.
 
 :::
@@ -708,21 +706,21 @@ The following examples use the `rerank` task type. Create an {{infer}} endpoint 
 ::::{tab-set}
 :group: jina-rerankers
 
-:::{tab-item} jina-reranker-v3
-:sync: reranker-v3
+:::{tab-item} jina-reranker-v3.5
+:sync: reranker-v35
 
 ```console
-PUT _inference/rerank/eis-jina-reranker-v3
+PUT _inference/rerank/eis-jina-reranker-v3.5
 {
   "service": "elastic",
   "service_settings": {
-    "model_id": "jina-reranker-v3"
+    "model_id": "jina-reranker-v3.5"
   }
 }
 ```
 
 ```console
-POST _inference/rerank/eis-jina-reranker-v3
+POST _inference/rerank/eis-jina-reranker-v3.5
 {
   "input": ["The Swiss Alps", "a steep hill", "a pebble", "a glacier"],
   "query": "mountain range"
