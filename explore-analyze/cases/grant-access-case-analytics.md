@@ -20,7 +20,7 @@ To let users report on case data, grant them read access to the [case analytics 
 :::::{applies-switch}
 
 ::::{applies-item} { "stack": "ga 9.5", "serverless": "ga" }
-In {{stack}} 9.5+ and {{serverless-short}}, {{es}} stores case analytics data in three hidden indices:
+{{es}} stores case analytics data in three hidden indices:
 
 | Index | Use it to report on |
 | --- | --- |
@@ -53,7 +53,7 @@ A role with read access to these indices can query case data across all spaces a
 ::::
 
 ::::{applies-item} stack: preview 9.2-9.4
-In {{stack}} 9.2.x-9.4.x, grant your role at least `read` and `view_index_metadata` privileges on the case analytics indices. Each solution and space has its own set of indices, so use the `.internal.cases*` pattern to cover them all, or target specific indices by name. To find the right index names, refer to [Case analytics indices](case-analytics-indices.md#case-analytics-indices-list).
+Grant your role at least `read` and `view_index_metadata` privileges on the case analytics indices. Each solution and space has its own set of indices, so use the `.internal.cases*` pattern to cover them all, or target specific indices by name. To find the right index names, refer to [Case analytics indices](case-analytics-indices.md#case-analytics-indices-list).
 ::::
 
 :::::
