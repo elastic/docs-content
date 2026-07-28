@@ -18,7 +18,7 @@ Logsdb index mode is enabled by default for logs in {{serverless-full}}, and for
 
 :::{note}
 :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
-For a fully columnar storage profile for logs, you can set `index.mode` to `logsdb_columnar` instead. For when to choose that mode, refer to [Columnar index mode](/manage-data/data-store/columnar.md).
+For a fully columnar logs storage profile, you can set `index.mode` to `logsdb_columnar` instead. To learn when to choose that mode, refer to [](/manage-data/data-store/columnar.md).
 :::
 
 ## Availability of logsdb index mode [logsdb-availability]

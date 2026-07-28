@@ -13,7 +13,7 @@ products:
 Columnar index mode turns {{es}} into an analytical and search columnar store for the indices where you enable it. Instead of keeping multiple copies of each field for different query paths, columnar mode stores fields once as [doc values](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md) by default, which can reduce storage cost for high-volume, analytics-heavy data while keeping the same APIs, dashboards, and integrations.
 
 Columnar mode ships alongside existing index modes such as `standard`, [`logsdb`](/manage-data/data-store/data-streams/logs-data-stream.md), and [`time_series`](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md).
-You choose it per index (or in a template) at creation time; you can't change the mode after the index exists.
+You choose it per index (or in a template) at creation time; you can't change the mode after the index has been created.
 
 This page explains what columnar index mode is, when to use it, and how it fits with the rest of the {{es}} data store.
 <!--
@@ -25,12 +25,13 @@ For enablement steps, sorting, `_source` modes, and limitations, refer to [Colum
 
 Choose columnar index mode when your data is written in volume, queried analytically (filters, aggregations, and dashboards), and retained for a long time. Typical fits include:
 
-* Logs and observability at scale: High ingest rates where storage and aggregation cost dominate, and you still need full-text search on message fields.
+* Logs, traces and observability at scale: High ingest rates where storage and aggregation cost dominate, and you still need full-text search on message fields.
 * Security telemetry and threat hunting: Faceted exploration and historical lookups over large event stores, without giving up search behavior for pivot and lookup workflows.
 * Operational and business analytics: Dashboards and aggregations over application events, transactions, or IoT readings that would otherwise push you to a separate analytics store.
 
 Columnar mode isn't a universal default.
-Prefer a standard index (or another specialized mode) when your workload is document-centric search that needs the original JSON `_source` as submitted, or when you rely on inverted indexes and related structures on most fields by default.
+
+Prefer a `standard` index (or another specialized mode) when your workload is document-centric search that needs the original JSON `_source` as submitted, or when you rely on inverted indexes and related structures on most fields by default.
 
 For metrics that need time series dimensions and metric field semantics, use a [time series data stream](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) instead.
 For logs that should keep the current `logsdb` defaults without switching to a fully columnar store, use a [logs data stream](/manage-data/data-store/data-streams/logs-data-stream.md).
