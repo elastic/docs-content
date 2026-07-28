@@ -14,14 +14,14 @@ products:
 
 Import a dashboard that was exported from another {{product.kibana}} space, instance, deployment, or project. How you import it depends on the format it was exported in. Refer to [Share and export dashboards](sharing.md#export-dashboards) for the export options, then use the matching import method:
 
-- {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` **JSON**: import it with the [Dashboards API](create-dashboards-programmatically.md). This is the recommended method.
+- {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` **JSON**: import it with the [Dashboards API](create-dashboards-programmatically.md). This is the recommended method.
 - **NDJSON**: import it with the [Saved Objects API]({{kib-apis}}group/endpoint-saved-objects), or from the **Saved Objects** page.
 
 ::::::{tab-set}
 
 :::::{tab-item} JSON (Dashboards API)
 
-{applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` Recreate the dashboard by sending its JSON definition to the [Dashboards API](create-dashboards-programmatically.md). This is the recommended import method.
+{applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` Recreate the dashboard by sending its JSON definition to the [Dashboards API](create-dashboards-programmatically.md). This is the recommended import method.
 
 **Prerequisites**
 

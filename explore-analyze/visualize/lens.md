@@ -47,17 +47,13 @@ With Lens, you can create the following visualization types:
 ## Create visualizations with the API [lens-api]
 
 ```{applies_to}
-stack: preview 9.4
-serverless: preview
+stack: ga 9.5+, preview =9.4
+serverless: ga
 ```
 
 You can create and manage Lens visualizations programmatically using the Visualizations API ([stateful](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations), [serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-visualizations)). This is useful for managing visualizations as code, automating their lifecycle, or building tooling around Lens charts.
 
 Visualizations created through this API can be added to dashboards using the Kibana UI or the Dashboards API.
-
-:::{note}
-The Visualizations API is in technical preview and may change in future releases.
-:::
 
 ## Create visualizations [create-the-visualization-panel]
 
