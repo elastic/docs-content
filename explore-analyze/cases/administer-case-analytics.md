@@ -27,7 +27,7 @@ One set of case analytics indices serves the entire deployment across all spaces
 
 ## Turn on admin routes [turn-on-case-analytics-admin-routes]
 
-The `reconcile/run_soon` and `reset` routes return a `404` error until you turn them on. To turn them on, add the following setting to [`kibana.yml`](/deploy-manage/stack-settings.md) and restart {{kib}}:
+The `reconcile/run_soon` and `reset` routes return a `404` error until you turn them on. To turn them on, add the following setting to your [`kibana.yml`](/deploy-manage/stack-settings.md) and restart {{kib}}:
 
 ```yaml
 xpack.cases.analyticsV2.enableAdminRoutes: true
