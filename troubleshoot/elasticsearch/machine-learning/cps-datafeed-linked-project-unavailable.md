@@ -45,13 +45,11 @@ Example excerpt (field names and structure match the stats API; values vary):
 ```json
 "remote_cluster_stats": {
   "total_clusters": 3,
-  "available_clusters": 2,
-  "skipped_clusters": 1,
-  "availability_ratio": 0.6666666666666666,
-  "stabilized_cluster_aliases": ["origin", "production"],
-  "per_cluster_consecutive_skips": {
-    "staging": 4
-  }
+  "available_clusters": 3,
+  "skipped_clusters": 0,
+  "availability_ratio": 1.0,
+  "stabilized_cluster_aliases": ["origin", "production", "staging"],
+  "per_cluster_consecutive_skips": {}
 }
 ```
 

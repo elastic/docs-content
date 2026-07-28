@@ -45,9 +45,7 @@ Legacy {{anomaly-jobs}} without `project_routing` show a callout on the jobs lis
 * Body: *Some jobs are not using project routing. Update their project routing to use cross-project search.*
 * Button: **Update project routing for *N* jobs**
 
-The button and the multi-select action **Change project scope** both open the same bulk flyout titled **Update project routing for *N* anomaly detection jobs**. When scope selection is enabled, the flyout shows a **Project scope** picker to choose the routing expression, then **Update *N* jobs** to submit.
-
-Before updating, a confirmation dialog asks **Update project scope?** (or **Change project scope for *job id*?** / **Change project scope for *N* jobs?** for specific selections). The dialog body reads:
+The button and the multi-select action **Change project scope** both open the same bulk flyout titled **Update project routing for *N* anomaly detection jobs**. When scope selection is enabled, the flyout shows a **Project scope** picker to choose the routing expression, then **Update *N* jobs**. Clicking **Update *N* jobs** opens a confirmation dialog titled **Update project scope?** (or **Change project scope for *job id*?** / **Change project scope for *N* jobs?** for specific selections). The dialog body reads:
 
 ```txt
 The model for this job was trained on a specific set of data. Changing this data set may cause temporary model instability and an increase in false-positives. Are you sure you want to apply these changes?

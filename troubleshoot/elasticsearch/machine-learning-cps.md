@@ -50,7 +50,7 @@ Every valid `project_routing` value starts with `_alias:`. Bare `_origin` is **n
 | `_alias:production-*` (prefix wildcard) | **Subset** — linked projects whose alias starts with `production-`, plus the origin project when its alias matches |
 | `_alias:*-prod` (suffix wildcard) | **Subset** — linked projects whose alias ends with `-prod`, plus the origin project when its alias matches |
 | `_alias:*staging*` (contains wildcard) | **Subset** — linked projects whose alias contains `staging`, plus the origin project when its alias matches |
-| `_alias:production-us` (exact alias) | **Single linked project** — only the named alias |
+| `_alias:production-us` (exact alias) | **Single linked project** — only the named alias, plus the origin project when its alias matches |
 
 Prefix, suffix, and contains wildcards are supported; internal wildcards (for example `_alias:prod*eu`) and multiple sequential wildcards are not.
 

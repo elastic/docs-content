@@ -11,7 +11,7 @@ products:
 
 # Cloud credential problems [cps-datafeed-credentials]
 
-A {{cps}} {{dfeed}} stores an internal cloud (UIAM) API key so periodic searches can read linked projects on your behalf. {{es}} mints that key only when a cloud-authenticated caller creates or updates the {{dfeed}} — never during a scheduled extraction cycle. Failures fall into three shapes: the key could not be created, an existing key no longer authorizes search, or the key was cleared by a non-cloud-authenticated update.
+A {{cps}} {{dfeed}} stores an internal cloud (UIAM) API key so periodic searches can read linked projects on your behalf. {{es}} mints that key only when a cloud-authenticated caller creates or updates the {{dfeed}} — never during a scheduled extraction cycle. Failures fall into four paths: the key could not be created, an existing key no longer authorizes search, the key was cleared by a non-cloud-authenticated update, or no key was ever minted because the {{dfeed}} was created or last updated without cloud authentication.
 
 ## Diagnose cloud credential problems [diagnose-cps-datafeed-credentials]
 
