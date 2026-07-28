@@ -61,7 +61,7 @@ If you select **Cloud Hosted**, a deployment is created with **16GB of RAM** and
 :::{admonition} Configure advanced settings after deployment creation
 The Azure portal exposes only a subset of configuration options at deployment creation time. To access the full set of settings, open the **Advanced Settings** link from your deployment's overview page in the Azure portal. This opens the {{ecloud}} console, where you can configure:
 
-* **Deployment size**: Adjust RAM and storage to match your workload. Usage charges are based on deployment size, so size your instance efficiently. Refer to [](/deploy-manage/deploy/elastic-cloud/configure.md).
+* **Deployment size**: Adjust RAM and storage to match your workload. Usage charges are based on deployment size, so size your instance efficiently. Refer to [Configure ECH deployments](/deploy-manage/deploy/elastic-cloud/configure.md).
 * **Customer-managed encryption key (BYOK)**: Encrypt your deployment at rest using a key from your own key management service. Refer to [Customer-managed encryption keys](azure-native-isv-service-byok.md).
 :::
 
