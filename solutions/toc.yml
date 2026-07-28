@@ -73,12 +73,13 @@ toc:
         children:
           - file: elasticsearch-solution-project/ai-onboarding.md
           - file: elasticsearch-solution-project/search-connection-details.md
+      - title: "Agent Builder"
+        crosslink: docs-content://explore-analyze/ai-features/elastic-agent-builder.md
       - file: elasticsearch-solution-project/playground.md
         children:
           - file: elasticsearch-solution-project/playground-context.md
           - file: elasticsearch-solution-project/playground-query.md
           - file: elasticsearch-solution-project/playground-troubleshooting.md
-      - file: elasticsearch-solution-project/ai-assistant.md
       - file: elasticsearch-solution-project/query-rules-ui.md
       - file: elasticsearch-solution-project/search-applications.md
         children:
@@ -595,6 +596,13 @@ toc:
               - file: security/ai/attack-discovery/run-attack-discovery.md
                 children:
                   - file: security/ai/attack-discovery/run-from-attacks-page.md
+                    children:
+                      - file: security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md
+                      - file: security/ai/attack-discovery/manual-runs-from-attacks-page.md
+                      - file: security/ai/attack-discovery/schedule-runs-from-attacks-page.md
+                      - file: security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md
+                  - file: security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md
+                  - file: security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md
                   - file: security/ai/attack-discovery/run-from-attack-discovery-page.md
               - file: security/ai/attack-discovery/triage-attack-discovery-findings.md
               - file: security/ai/attack-discovery/manage-saved-discoveries.md
@@ -652,6 +660,8 @@ toc:
               - file: security/detect-and-alert/write-investigation-guides.md
               - file: security/detect-and-alert/validate-and-test-rules.md
           - file: security/detect-and-alert/manage-detection-rules.md
+            children:
+              - file: security/detect-and-alert/view-rule-changes-history.md
           - file: security/detect-and-alert/monitor-rule-executions.md
             children:
               - file: security/detect-and-alert/fill-rule-gaps.md
