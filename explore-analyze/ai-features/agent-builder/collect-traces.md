@@ -36,7 +36,7 @@ Trace collection is space-aware. Each {{kib}} space writes its traces to its own
 
 {{agent-builder}} ingests this data into managed OpenTelemetry data streams in your {{es}} deployment. Execution spans, such as model calls and tool calls, are stored in `traces-agent_builder.otel-*`, with their timings, token usage, model, and status.
 
-When you opt in to capturing conversation content, that content is stored as span attributes in `traces-agent_builder.otel-*`. The `chat` spans carry the chat history, the model responses, and the system prompt, and the `execute_tool` spans carry the arguments and results of each tool call. Content is captured only when you enable it in [Trace privacy settings](#trace-privacy-settings).
+When you opt in to capturing conversation content, that content is stored as span attributes in `traces-agent_builder.otel-*`. The `chat` spans contain the chat history, the model responses, and the system prompt, and the `execute_tool` spans contain the arguments and results of each tool call. Content is captured only when you enable it in [Trace privacy settings](#trace-privacy-settings).
 
 These data streams are OTel-compatible and use the standard OTel index templates, so they inherit the mappings, settings, and data lifecycle that {{es}} maintains for OTel data.
 
@@ -50,7 +50,7 @@ Each trace is a set of spans that follow a run from the overall conversation rou
 - Each model call.
 - Each tool call.
 
-Spans follow [OpenTelemetry semantic conventions for generative AI](https://github.com/open-telemetry/semantic-conventions-genai) (currently experimental) and carry generative AI attributes for the model, the provider, and token usage. Use them to break down usage and latency by model, agent, or tool. For the exact fields and the prebuilt visualizations that use them, refer to [Build dashboards on trace data](#build-dashboards-on-trace-data).
+Spans follow [OpenTelemetry semantic conventions for generative AI](https://github.com/open-telemetry/semantic-conventions-genai) (currently experimental) and contain generative AI attributes for the model, the provider, and token usage. Use them to break down usage and latency by model, agent, or tool. For the exact fields and the prebuilt visualizations that use them, refer to [Build dashboards on trace data](#build-dashboards-on-trace-data).
 
 By default, traces record structural metadata only. Conversation content such as prompts and responses is excluded unless an administrator opts in. For details, refer to [Trace privacy settings](#trace-privacy-settings).
 
@@ -93,7 +93,11 @@ To change what is captured, expand **Advanced privacy settings** in the **Agent 
 Built-in tools and agents always appear under their real names. Anonymized names are replaced with the literal value `custom`, so every custom tool, agent, and workflow shares one value and you cannot tell them apart by name. Anonymized IDs are different: they are replaced with a stable hash, so you can still group and correlate traces by conversation or agent ID.
 :::
 
-Prompts, responses, and the system prompt are stored on the `chat` spans as the `attributes.gen_ai.input.messages`, `attributes.gen_ai.output.messages`, and `attributes.gen_ai.system_instructions` attributes, and tool call details on the `execute_tool` spans as `attributes.gen_ai.tool.call.arguments` and `attributes.gen_ai.tool.call.result`. Anyone who can read the trace data stream can read this content, so review [Grant access to trace data](#grant-access-to-trace-data) before you turn these settings on. For the field-level details, refer to [Message content attributes](agent-traces-dashboard.md#message-content-attributes).
+Content is stored across different span types:
+- **`chat` spans**: Store prompts, responses, and the system prompt in the `attributes.gen_ai.input.messages`, `attributes.gen_ai.output.messages`, and `attributes.gen_ai.system_instructions` attributes.
+- **`execute_tool` spans**: Store tool call details in `attributes.gen_ai.tool.call.arguments` and `attributes.gen_ai.tool.call.result`.
+
+Anyone who can read the trace data stream can read this content, so review [Grant access to trace data](#grant-access-to-trace-data) before you turn these settings on. For the field-level details, refer to [Message content attributes](agent-traces-dashboard.md#message-content-attributes).
 
 ## Grant access to trace data
 
