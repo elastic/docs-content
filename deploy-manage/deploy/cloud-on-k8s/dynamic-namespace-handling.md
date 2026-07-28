@@ -37,7 +37,7 @@ The namespace selector supports the standard Kubernetes `matchLabels` and `match
 
 ### Using the Helm chart
 
-If you installed ECK through the [Helm chart](install-using-helm-chart.md), set the `managedNamespaceSelector` value. That this is a top-level chart value, not part of the `config` section:
+If you installed ECK through the [Helm chart](install-using-helm-chart.md), set the `managedNamespaceSelector` value. This is a top-level chart value, not part of the `config` section:
 
 ```yaml
 managedNamespaceSelector:
