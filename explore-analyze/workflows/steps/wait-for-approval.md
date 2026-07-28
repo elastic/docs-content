@@ -65,11 +65,11 @@ Downstream steps typically gate on `{{ steps.<step_name>.output.response.approve
 
 ## Execution state
 
-- While waiting, the execution state is `WAITING_FOR_INPUT`.
+While waiting for a response, the step stays in the `WAITING_FOR_INPUT` state. How the step resolves depends on the response it receives:
+
 - **Approve** finishes the step successfully with `response.approved: true`.
-- **Reject** also finishes the step successfully, with `response.approved: false`. Rejecting does not fail the step or cancel the workflow, so you must branch on the decision (for example, with an `if` guard on `output.response.approved`) to stop downstream work.
-- By default, the step times out after `24h`. This default applies whether you configure an external channel.
-- If no one responds before the timeout, the step fails.
+- **Reject** also finishes the step successfully, but with `response.approved: false`. Rejecting does not fail the step or cancel the workflow, so you must branch on the decision (for example, with an `if` guard on `output.response.approved`) to stop downstream work.
+- **No response** fails the step. By default, the step times out after `24h`, whether or not you configure an external channel. Override this with a top-level `timeout`.
 
 ## Example: Approve host isolation
 
