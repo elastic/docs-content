@@ -19,9 +19,9 @@ There are several Synthetics settings you can adjust in Observability.
 
 Alerting enables you to detect complex conditions using **rules** across Observability and send a notification using **connectors**.
 
-When you create a new synthetic monitor, Synthetics applies new default rules to the monitor. To edit the default rules:
+When you create a new synthetic monitor, Synthetics applies default rules to the monitor. To edit the default rules:
 
-1. Click **Alerts** in the global header.
+1. Click **Alerts** in the application menu.
 2. Select a rule to open a panel where you can edit the rule’s configuration:
 
     * **Monitor status rule** for receiving notifications for errors and outages
@@ -31,7 +31,7 @@ However, the automatically created Synthetics internal alert is intentionally pr
 
 If you need specific alerting behavior, set up a different rule. To view all existing rules or create a new rule:
 
-1. Click **Alerts** in the global header.
+1. Click **Alerts** in the application menu.
 2. Click **Manage rules** to go to the *Rules* page.
 
 On the *Rules* page, you can manage the default synthetics rules including snoozing rules, disabling rules, deleting rules, and more.
@@ -119,27 +119,36 @@ In a serverless project, to create a Project API key you must be logged in as a 
 ## Remote clusters [synthetics-settings-remote-clusters]
 ```{applies_to}
 stack: ga 9.5+
+serverless: unavailable
 ```
 
-In the **Remote clusters** tab, you can configure {{ccs}} ({{ccs-init}}) settings so that Synthetics can include monitor data from remote {{es}} clusters alongside your local monitors.
+In the **Remote clusters** tab, you can configure {{ccs}} ({{ccs-init}}) settings so that Synthetics can include monitor data from remote {{es}} clusters alongside local monitors.
 
-These settings apply to one or more {{kib}} spaces. Changes you make here affect all spaces that have access to these settings.
+These are deployment-wide settings stored as a single shared configuration. You control which {{kib}} spaces have access to them using the **Spaces** field.
 
 ### Source settings [synthetics-settings-remote-clusters-source]
 
-Use the **Use all remote clusters** toggle to turn on or turn off {{ccs}} for Synthetics. When enabled, monitors from remote clusters appear alongside local monitors in the Synthetics UI.
+Use the **Use all remote clusters** toggle and **Select remote clusters** combo box to control which remote clusters Synthetics queries:
 
-### Remote clusters [synthetics-settings-remote-clusters-select]
-
-When **Use all remote clusters** is disabled, use the **Select remote clusters** combo box to select which remote clusters Synthetics queries. Each cluster is shown with a connected or disconnected status indicator.
+- Turn on **Use all remote clusters** to include monitor data from all configured remote clusters.
+- Turn off **Use all remote clusters** and use the **Select remote clusters** combo box to choose specific clusters. Each cluster is shown with a connected or disconnected status indicator.
 
 To configure remote clusters, go to **{{stack-manage-app}} → Remote Clusters**.
 
 ### Spaces with access [synthetics-settings-remote-clusters-spaces]
 
-Use the **Spaces** combo box to control which {{kib}} spaces these {{ccs-init}} settings apply to. You can select individual spaces, multiple spaces, or **All spaces** to share the settings across your entire deployment. Removing a space from the selection hides these settings in that space.
+Use the **Spaces** combo box to control which {{kib}} spaces can access these {{ccs-init}} settings. Select one or more specific spaces, or select **All spaces** to make the settings available across your entire deployment. Removing a space makes the settings inaccessible there, meaning that users in that space see default {{ccs-init}} settings instead.
 
-If you leave the field empty, the current sharing configuration remains unchanged.
+::::{note}
+The **Spaces** field shows the current sharing configuration when you open the tab. Clearing the field and saving leaves that configuration unchanged, meaning it does not remove access from existing spaces. To update which spaces have access, select the new spaces explicitly.
+::::
+
+::::{note}
+<!-- TODO: Confirm which role/privilege grants access to edit these settings. The capability required is `uptime.configureSettings` — clarify which built-in role includes this. -->
+To edit these settings, you must have the required Synthetics configuration privileges. If the form is read-only, contact your administrator.
+::::
+
+<!-- TODO: Confirm the default space scope when these settings are first saved on a new deployment. -->
 
 ## Advanced [synthetics-settings-advanced]
 ```{applies_to}
