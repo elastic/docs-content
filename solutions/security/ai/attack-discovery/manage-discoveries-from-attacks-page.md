@@ -25,7 +25,7 @@ At the top of the **Attacks** view, overview visualizations summarize activity. 
 :screenshot:
 ::::
 
-Below the summary, the Attacks table lists individual attacks. Expand an attack to see involved entities and steps in the attack chain.
+Below the summary, the Attacks table lists individual attacks. Expand an attack to see involved entities and steps in the attack chain. Open an attack to view its details in a flyout, where the **Overview** tab organizes the discovery into **AI Summary**, **Visualizations**, and **Insights** sections. For more on these sections, refer to [Information included in each discovery](/solutions/security/ai/attack-discovery/index.md#attack-discovery-details-flyout).
 
 ## Check Attack Discovery runs in Generations [attacks-view-generations]
 
