@@ -10,7 +10,9 @@ products:
 
 # Columnar index mode [columnar-index-mode]
 
-Columnar index mode turns {{es}} into an analytical and search columnar store for the indices where you enable it. Instead of keeping multiple copies of each field for different query paths, columnar mode stores fields once as [doc values](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md) by default, which can reduce storage cost for high-volume, analytics-heavy data while keeping the same APIs, dashboards, and integrations.
+Columnar index mode turns {{es}} into an analytical and search columnar store for the indices where you enable it.
+Instead of keeping multiple copies of each field for different query paths, columnar mode stores fields once as [doc values](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md) by default.
+This strategy can reduce storage cost for high-volume, analytics-heavy data while keeping the same APIs, dashboards, and integrations.
 
 Columnar mode ships alongside existing index modes such as `standard`, [`logsdb`](/manage-data/data-store/data-streams/logs-data-stream.md), and [`time_series`](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md).
 You choose it per index (or in a template) at creation time; you can't change the mode after the index has been created.
@@ -56,7 +58,6 @@ At a high level, columnar index mode changes storage defaults while leaving the 
 
 * Store once, by field: Non-text fields are stored as doc values and aren't indexed by default, which avoids paying for structures your analytics workload may not need.
 * Keep search where it matters: Text fields remain indexed by default so full-text search continues to work on fields such as log messages.
-* Reconstruct `_source` when needed: The original JSON document body isn't stored as a separate copy. {{es}} returns a reconstructed or columnar `_source` representation at query time (or can store a columnar `_source` for faster retrieval).
 * Flat field layout: Object and passthrough mappings are flattened to leaf fields, which matches how columnar systems organize data for efficient scanning and compression.
 
 Index sorting remains important for compression and query performance.
