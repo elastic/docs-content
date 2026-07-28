@@ -23,6 +23,8 @@ Legacy custom fields live in a separate `case.customFields` field, which you can
 
 ## Ways to query case fields [analyze-case-fields-methods]
 
+Choose a method based on the tool you want to work in and what you need to do:
+
 | Method | Tool | Use it when |
 | --- | --- | --- |
 | [Typed fields](#analyze-case-fields-typed) | Discover and Lens | You want to explore and visualize fields with numeric, date, and boolean operators. |
@@ -32,6 +34,10 @@ Legacy custom fields live in a separate `case.customFields` field, which you can
 ## Use typed fields in Discover and Lens [analyze-case-fields-typed]
 
 A typed field is a version of a case field that the managed Case Analytics {{data-source}} publishes with a specific data type, named `case.<name>_as_<type>` (for example, `case.effort_as_integer`). The {{data-source}} publishes one for each templated or global field. Because a typed field has a real type, you get numeric, date, and boolean operators in Discover and Lens instead of text matching on the raw value stored in `case.extended_fields`.
+
+:::{note}
+Typed fields exist only in the managed Case Analytics {{data-source}}, not in the underlying index. In the index, every value nests under `case.extended_fields` as `case.extended_fields.<name>_as_<type>`, where `extended_fields` is a `flattened` field, so each value is stored as a keyword. The {{data-source}} adds a runtime field that applies the real data type (from the field's template definition) and lifts it up a level to `case.<name>_as_<type>` for convenience.
+:::
 
 ### Which fields get a typed field [analyze-case-fields-typed-availability]
 

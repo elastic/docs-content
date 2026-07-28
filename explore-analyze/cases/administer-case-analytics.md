@@ -82,5 +82,6 @@ curl -s -X POST -u "${USER}:${PASS}" \
 ```
 
 * `reset` returns `202 Accepted`, then recreates the indices and rebuilds the data in the background. On large deployments, the rebuild can take several minutes.
+* The rebuild runs in batches in the background and doesn't disrupt active case work.
 * To track progress, use the `state` route, described in [Check health and rebuild progress](#case-analytics-check-health).
 * Running another `reset` while one is in progress replaces the first.
