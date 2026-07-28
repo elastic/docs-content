@@ -3,7 +3,7 @@ applies_to:
   deployment:
     self:
     ece:
-    eck:
+    eck: ga 3.5+
 navigation_title: Disable certain types of data collection
 products:
   - id: cloud-kubernetes
