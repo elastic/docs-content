@@ -310,7 +310,7 @@ To add a proxy certificate from the command line:
     ```
 
 ::::{warning}
-After the proxy certificate expires, renewing it does not automatically renew the internal route server certificate, which may cause the administration console to become unavailable. You need to rotate the route server certificate manually. For details, check [our KB article](https://ela.st/ece-route-server-cert-rotation).
+Renew the proxy certificate before it expires. After the proxy certificate expires, renewing it does not automatically renew the internal route server certificate, which may cause the administration console to become unavailable. In such case, you need to rotate the route server certificate manually. For details, check [our KB article](https://ela.st/ece-route-server-cert-rotation).
 ::::
 
 ## Add an Adminconsole certificate [ece-tls-adminconsole] 
