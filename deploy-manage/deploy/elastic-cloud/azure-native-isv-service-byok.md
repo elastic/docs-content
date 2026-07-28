@@ -17,10 +17,7 @@ BYOK is not available as a configuration option when creating a deployment from 
 
 ## Prerequisites
 
-Before configuring BYOK, review the [prerequisites](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md#ec_prerequisites_3) in the main BYOK documentation, in particular:
-
-* Your deployment must be on the **Enterprise** subscription level. Deployments created through the Azure Native Service default to Enterprise, so this requirement is already met.
-* You need an RSA key in Azure Key Vault and the necessary permissions to create a service principal for {{ecloud}} in your Azure tenant.
+Before configuring BYOK, you need an RSA key in Azure Key Vault and the necessary permissions to create a service principal for {{ecloud}} in your Azure tenant. Refer to [BYOK prerequisites](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md#ec_prerequisites_3) for the full list.
 
 ## Add a customer-managed key to your deployment
 
