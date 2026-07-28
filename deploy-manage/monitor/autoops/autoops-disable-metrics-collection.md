@@ -71,10 +71,6 @@ Complete the following steps:
 
 ::::{applies-item} eck: ga 3.5
 :sync: configure-collection-eck
-```{applies_to}
-deployment:
-  eck: ga 3.5
-```
 
 When using {{eck}}, configure data collection directly in the `AutoOpsAgentPolicy` resource using `spec.config` or `spec.configRef`. At most one of these fields can be set at a time.
 
