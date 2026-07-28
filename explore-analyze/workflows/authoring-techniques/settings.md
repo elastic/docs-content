@@ -87,13 +87,13 @@ Use `settings.concurrency` to prevent overlapping executions from colliding. Thi
 - Workflows that mutate shared state (create or update a case, write a counter).
 - Scheduled workflows whose runtime can exceed the schedule interval.
 
-Concurrency is scoped per group within a single workflow. There is no cross-workflow queue, and queued runs start in the order they arrived (no priority).
+Concurrency is scoped by the evaluated `key` within a {{kib}} space. Runs from different workflows that resolve to the same key share the same group. Queued runs start in the order they arrived (no priority).
 
 ### Fields [workflows-settings-concurrency-fields]
 
 | Field | Type | Purpose |
 |---|---|---|
-| `key` | Liquid string | Expression that resolves to a group identifier. Executions with the same key belong to the same concurrency group. |
+| `key` | Liquid string | Expression that resolves to a group identifier. Executions in the same space with the same evaluated key belong to the same concurrency group, even across workflows. |
 | `strategy` | string | How to handle a new execution when the concurrency group already has `max` runs in progress: `queue`, `drop`, or `cancel-in-progress`. Set this field explicitly. Refer to [Choosing a concurrency strategy](#workflows-settings-concurrency-choose). |
 | `max` | number | Maximum concurrent executions per group. Defaults to `1` when omitted. |
 | `queue-size` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | number | Only applies when `strategy` is `queue`. Maximum backlog depth before new runs are skipped. Defaults to `100`. |
@@ -131,7 +131,7 @@ When two alerts fire on the same host within seconds, the first workflow runs. T
 `queue` also works with `max` greater than 1: as soon as a slot frees, the next queued execution in that group starts.
 
 :::{warning}
-Concurrency keys that use `event.*` are alert-specific. `event.alerts[0].host.name` is only populated when an [alert trigger](/explore-analyze/workflows/triggers/alert-triggers.md) fires. If the same workflow is ever invoked by a manual or scheduled trigger, the key evaluates to the empty string and all executions share one group. For workflows that mix trigger types, prefer a key derived from an input (`{{ inputs.host_name }}`) or a static key (`"my-workflow"`).
+Concurrency keys that use `event.*` are alert-specific. `event.alerts[0].host.name` is only populated when an [alert trigger](/explore-analyze/workflows/triggers/alert-triggers.md) fires. If the same workflow is invoked by a manual or scheduled trigger, the key can evaluate to an empty string, and concurrency is not enforced for that run. For workflows that mix trigger types, prefer a key derived from an input (`{{ inputs.host_name }}`) or a static key (`"my-workflow"`).
 :::
 
 ### Drop overlapping runs [workflows-settings-concurrency-drop]
