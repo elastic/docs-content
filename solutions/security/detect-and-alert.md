@@ -19,7 +19,7 @@ The detection engine also surfaces alerts from [{{elastic-defend}}'s endpoint pr
 
 :::{note}
 :applies_to: {"stack": "experimental 9.5+", "serverless": "experimental"}
-{{kib}} also has an {{esql}}-based alerting system that's not tied to any specific solution. For threat detection in {{elastic-sec}}, keep using detection rules—they include security-specific capabilities such as [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) and [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) that the solution-agnostic system doesn't provide. To compare the platform alerting options, refer to [Compare alerting systems](/explore-analyze/alerting/compare-alerting-systems.md).
+{{kib}} also has an {{esql}}-based alerting system that's not tied to any specific solution. For threat detection, use {{elastic-sec}} detection rules. They include security-specific capabilities such as [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) and [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) that the solution-agnostic system doesn't provide.
 :::
 
 ## Where to start
