@@ -2,8 +2,8 @@
 navigation_title: How it works
 description: Pipeline internals for engineers and adopters — KI extraction, rule generation, detection, discovery, storage model, and ES|QL traceability.
 applies_to:
-  serverless: beta
-  stack: beta 9.5+
+  serverless: experimental
+  stack: experimental 9.5+
 products:
   - id: observability
   - id: elasticsearch

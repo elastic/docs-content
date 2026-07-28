@@ -2,8 +2,8 @@
 navigation_title: Significant Events
 description: Significant Events automatically correlates signals from your log streams into prioritized incidents using a combination of deterministic detection and AI-powered investigation.
 applies_to:
-  serverless: beta
-  stack: beta 9.5+
+  serverless: experimental
+  stack: experimental 9.5+
 products:
   - id: observability
   - id: elasticsearch

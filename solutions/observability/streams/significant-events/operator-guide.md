@@ -2,8 +2,8 @@
 navigation_title: Operator guide
 description: System impact, cost drivers, and operational procedures for cluster operators running Significant Events.
 applies_to:
-  serverless: beta
-  stack: beta 9.5+
+  serverless: experimental
+  stack: experimental 9.5+
 products:
   - id: observability
   - id: elasticsearch
