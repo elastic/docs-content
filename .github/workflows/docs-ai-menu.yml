@@ -14,7 +14,6 @@ on:
 
 permissions:
   contents: read
-  copilot-requests: write
   issues: write
 
 jobs:
@@ -164,10 +163,10 @@ jobs:
     permissions:
       actions: read
       contents: read
-      copilot-requests: write
       discussions: write
       issues: write
       pull-requests: write
+      copilot-requests: write
     uses: elastic/docs-actions/.github/workflows/gh-aw-issue-triage.lock.yml@v1
     with:
       additional-instructions: |
@@ -187,6 +186,7 @@ jobs:
         **Shared ownership**: Some paths have shared ownership (e.g., `/explore-analyze/machine-learning/` is shared by Developer and Experience). Pick the team whose keywords best match the issue content.
         **Internal projects**: If the issue seems related to an internal documentation project, initiative, or content strategy effort, apply `Team:Projects`.
         **Fallback**: If you genuinely cannot determine the owning team, apply `cross-team` so the issue stays visible to all teams.
+    secrets: inherit
 
   run-docs-size:
     name: Docs AI / size
@@ -195,11 +195,12 @@ jobs:
     permissions:
       actions: read
       contents: read
-      copilot-requests: write
       discussions: write
       issues: write
       pull-requests: write
+      copilot-requests: write
     uses: elastic/docs-actions/.github/workflows/gh-aw-issue-size.lock.yml@v1
+    secrets: inherit
 
   run-docs-issue-scope:
     name: Docs AI / issue scope
@@ -208,11 +209,12 @@ jobs:
     permissions:
       actions: read
       contents: read
-      copilot-requests: write
       discussions: write
       issues: write
       pull-requests: write
+      copilot-requests: write
     uses: elastic/docs-actions/.github/workflows/gh-aw-docs-issue-scope.lock.yml@v1
+    secrets: inherit
 
   refresh-menu-after-docs-triage:
     name: Refresh AI menu after docs triage
