@@ -22,9 +22,11 @@ A {{cps}} {{dfeed}} stores an internal cloud (UIAM) API key so periodic searches
 
 Use observable behavior to pick a path:
 
-* **Create or update fails immediately** — see [Creation and update failures](#creation-and-update-failures).
-* **Searches used to work; `authorization.cloud_api_key.id` still present** — see [Runtime failures](#runtime-failures).
-* **`authorization.cloud_api_key.id` is missing** — see [Credential cleared](#credential-cleared).
+* **Create or update fails immediately** — validate-before-mint probe or mint error; see **Creation and update failures** below.
+* **Searches used to work; `authorization.cloud_api_key.id` still present** — runtime auth or authz failure; see **Runtime failures** below.
+* **`authorization.cloud_api_key.id` is missing** — two cases:
+  * **Credential cleared** — **Job messages** record `Internal cloud API key cleared on datafeed update with non-cloud credentials` after a non-cloud-authenticated update removed a stored key. See **Credential cleared** below.
+  * **Never minted** — the {{dfeed}} was created or last updated without cloud authentication, so no key was ever stored and no CLEARED message appears. **Job messages** lack `Internal cloud API key minted for cross-project datafeed`. Mint a key with a cloud-authenticated create or update.
 
 For linked-project skip summaries without a credential-specific message, see [Linked project unavailable](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-linked-project-unavailable.md).
 
@@ -107,13 +109,9 @@ A mint or re-key followed by a runtime failure means the key worked at create or
 :::{include} /troubleshoot/_snippets/cps-ml-update-preconditions.md
 :::
 
-**Fix probe failures first**
-
-Fix missing index privileges, routing that matches nothing, or other probe errors before retrying create or update.
-
 **Re-create or re-key the credential**
 
-Sign in to {{kib}} or call the API as a cloud-authenticated user — a {{ecloud}} session or cloud-managed credential, not a stack API key alone.
+Resolve missing index privileges, routing that matches nothing, or other validate-before-mint errors before retrying create or update. Sign in to {{kib}} or call the API as a cloud-authenticated user — a {{ecloud}} session or cloud-managed credential, not a stack API key alone.
 
 When a stored key still exists but no longer works, {{es}} re-keys only if the update changes the cross-project search surface: `project_routing`, `indices`, or `indices_options`. Submitting the same values unchanged does **not** replace an existing key.
 
