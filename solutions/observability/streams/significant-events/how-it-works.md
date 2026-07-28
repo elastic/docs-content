@@ -52,16 +52,15 @@ FROM {stream},{stream}.* METADATA _id | WHERE <esql_expression>
 
 The LLM operates in a reasoning loop: it calls `get_stream_features` to retrieve KIs for the stream, analyzes what entities and technologies are present, then calls `add_queries` to submit a batch of rules. This means rules are scoped to the specific services and failure modes present in each stream.
 
-## Phase 3: Rule execution [sig-events-hiw-execution]
+## Phase 3: Rule execution and detection [sig-events-hiw-execution]
 
-Each promoted rule runs as a {{kib}} alerting rule, on its own schedule. On each execution cycle, the rule:
+Each promoted MATCH rule runs as an alerting rule on a single shared cadence of every 5 minutes with a 7-minute lookback. Each run writes compact metric series (`{ bucket, metric_value }` pairs) to `.rule-events`, not copies of matching source documents.
 
-1. Builds an {{esql}} query from the stored rule parameters.
-2. Queries the stream with a lookback window of 2× the rule interval to ensure no events fall through the gap between runs.
-3. Excludes document IDs seen in previous executions.
-4. Writes matching rows to `.rule-events`.
+The 7-minute lookback on a 5-minute cadence means adjacent runs cover the same minutes. Readers use `MAX(metric_value)` per minute when building occurrence charts and change-point input, so overlapping runs do not double-count.
 
-**Write limits**: Each time a rule executes, it can write up to 1,000 documents. Once this limit is met, documents aren't written to `.rule-events` until the next time the rule executes.
+**Severity and cadence**: All MATCH rules share the same 5 minute cadence with a 7 minute lookback schedule. Severity drives the detection analysis profile applied in Phase 4: the lookback window and bucket size used for change-point analysis (critical: ~40m window / 1m buckets; default: ~125m window / 5m buckets).
+
+**STATS rules**: STATS KIs are generated but not yet backed as alerting rules.
 
 ## Phase 4: Discovery [sig-events-hiw-discovery]
 

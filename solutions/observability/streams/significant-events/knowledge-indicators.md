@@ -183,7 +183,7 @@ FROM logs-mystream,logs-mystream.*
 
 ### Downstream path: From query KIs to alerting rules [sig-events-ki-downstream]
 
-When you promote a query KI, it becomes an alerting rule that runs its {{esql}} query on a schedule and writes a match count to `.rule-events` for each time bucket. Only MATCH queries can be promoted — STATS queries cannot be converted to alerting rules yet. The number of promoted query KIs, and how often each one executes, is the main driver of alerting query load on your cluster.
+When you promote a query KI, it becomes an alerting rule that runs its {{esql}} query on a schedule and writes a match count to `.rule-events` for each time bucket. Only MATCH queries can be promoted; STATS queries cannot be converted to alerting rules yet. The number of promoted query KIs, and how often each one executes, is the main driver of alerting query load on your cluster.
 
 The Significant Events pipeline picks up from there. A Detection workflow runs change point aggregation against those per-rule counts and writes a document to `.significant_events-detections` when statistically significant shifts are found. A Discovery workflow then uses an LLM to process those documents.
 
