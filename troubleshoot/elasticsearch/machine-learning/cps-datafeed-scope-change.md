@@ -29,7 +29,7 @@ From the **API**, a rejected update returns HTTP `409` (datafeed still running o
 
 From **{{kib}}**, the bulk **Change project scope** action (multi-select jobs list) opens the flyout titled **Update project routing for *N* anomaly detection jobs**. After you click **Update *N* jobs**, each job in the list shows a success or failure icon, but failed jobs display no inline error text — only the job id and a cross icon. To learn why a job failed, open **Job messages** for that job or retry the update through the API and read the error response.
 
-**Important:** the bulk update stops and restarts a running {{dfeed}} for you (`restartRunningJobs` defaults to `true` on the server route), but it does **not** close the {{anomaly-job}}. Because a `project_routing` change requires a closed job, open jobs fail the bulk update even though their {{dfeed}} was stopped automatically. Close those jobs first, then run the update again.
+**Important:** the bulk update stops and restarts a running {{dfeed}} for you, but it does **not** close the {{anomaly-job}}. Because a `project_routing` change requires a closed job, open jobs fail the bulk update even though their {{dfeed}} was stopped automatically. Close those jobs first, then run the update again.
 
 The single-job path has the same datafeed gate: open **Machine Learning → Anomaly Detection**, edit the job, open the **Datafeed** tab, and adjust **Project scope**. While the {{dfeed}} is running, the tab shows:
 
@@ -45,7 +45,15 @@ Legacy {{anomaly-jobs}} without `project_routing` show a callout on the jobs lis
 * Body: *Some jobs are not using project routing. Update their project routing to use cross-project search.*
 * Button: **Update project routing for *N* jobs**
 
-The button and the multi-select action **Change project scope** both open the same bulk flyout. Before updating, a confirmation dialog asks **Update project scope?** (or **Change project scope for *job id*?** / **Change project scope for *N* jobs?** for specific selections). The body warns that changing the data set may cause temporary model instability and false positives; confirm with **Yes, save** or cancel with **Cancel**.
+The button and the multi-select action **Change project scope** both open the same bulk flyout titled **Update project routing for *N* anomaly detection jobs**. When scope selection is enabled, the flyout shows a **Project scope** picker to choose the routing expression, then **Update *N* jobs** to submit.
+
+Before updating, a confirmation dialog asks **Update project scope?** (or **Change project scope for *job id*?** / **Change project scope for *N* jobs?** for specific selections). The dialog body reads:
+
+```txt
+The model for this job was trained on a specific set of data. Changing this data set may cause temporary model instability and an increase in false-positives. Are you sure you want to apply these changes?
+```
+
+Confirm with **Yes, save** or cancel with **Cancel**.
 
 After submission, result toasts report:
 
