@@ -135,9 +135,9 @@ Each content field holds a JSON string rather than indexed text, following the [
 :::{important}
 These content fields are `keyword` fields with `ignore_above` set to `1024`. A value longer than 1024 characters is not indexed, and {{esql}} returns it as `null` even though the full value is stored in the document. System prompts, model responses, and any chat history that carries a tool result routinely pass 1024 characters, so treat {{esql}} as dependable only for short values here.
 
-To read the full content, request the document with [{{es}} search](/solutions/search/querying-for-search.md) instead of {{esql}}. The `_ignored` metadata field on each hit lists the fields that were too long to index, so you can tell when this is happening.
+To read the full content, request the document with [{{es}} search](/solutions/search/querying-for-search.md) instead of {{esql}}, and ask for `_source`. The `fields` option applies the same limit and returns nothing. The `_ignored` metadata field on each hit lists the fields that were too long to index, so you can tell when this is happening.
 
-Tool arguments and results are also recorded on the `execute_tool` spans, in `attributes.gen_ai.tool.call.arguments` and `attributes.gen_ai.tool.call.result`. Each of those holds a single tool call rather than the whole conversation, so they stay under the limit more often. Prefer them when you query tool activity with {{esql}}.
+Tool arguments and results are also recorded on the `execute_tool` spans, in `attributes.gen_ai.tool.call.arguments` and `attributes.gen_ai.tool.call.result`. Each of those holds one tool call rather than the whole conversation, so it is less likely to pass the limit, though a large tool result still can. Prefer them when you query tool activity with {{esql}}.
 :::
 
 ### Example queries
@@ -174,11 +174,13 @@ Recent captured user prompts (requires **Include user prompts in traces**):
 ```esql
 FROM traces-agent_builder.otel-default
 | WHERE span.name LIKE "chat *"
-| WHERE attributes.gen_ai.input.messages IS NOT NULL AND attributes.gen_ai.input.messages != "[]"
+| WHERE attributes.gen_ai.input.messages != "[]"
 | SORT @timestamp DESC
 | LIMIT 20
 | KEEP @timestamp, attributes.gen_ai.input.messages
 ```
+
+This returns only the messages that are short enough to be indexed. Anything over 1024 characters is `null` here and does not match the filter, so use a search request for those, as described in [Message content attributes](#message-content-attributes).
 
 ## Related pages
 

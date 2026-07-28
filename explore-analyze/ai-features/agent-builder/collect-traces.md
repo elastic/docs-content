@@ -80,7 +80,7 @@ To change what is captured, expand **Advanced privacy settings** in the **Agent 
 :alt: The expanded Advanced privacy settings, showing six toggles for including sensitive content in traces, all turned off
 :::
 
-| Setting | Advanced setting | Effect when enabled |
+| Setting | Setting ID | Effect when enabled |
 |---|---|---|
 | **Include user prompts in traces** | `agentBuilder:tracing:includeUserPrompts` | Captures user messages. |
 | **Include LLM responses in traces** | `agentBuilder:tracing:includeLlmResponses` | Captures agent responses. |
@@ -90,7 +90,7 @@ To change what is captured, expand **Advanced privacy settings** in the **Agent 
 | **Include real conversation and workflow IDs in traces** | `agentBuilder:tracing:includeRealIds` | Records real conversation and workflow IDs instead of anonymized values. |
 
 :::{note}
-Built-in tools and agents always appear under their real names. When a value is anonymized, {{agent-builder}} uses a stable identifier, so you can still group and correlate traces without exposing names or IDs.
+Built-in tools and agents always appear under their real names. Anonymized names are replaced with the literal value `custom`, so every custom tool, agent, and workflow shares one value and you cannot tell them apart by name. Anonymized IDs are different: they are replaced with a stable hash, so you can still group and correlate traces by conversation or agent ID.
 :::
 
 Prompts, responses, and the system prompt are stored on the `chat` spans as the `attributes.gen_ai.input.messages`, `attributes.gen_ai.output.messages`, and `attributes.gen_ai.system_instructions` attributes, and tool call details on the `execute_tool` spans as `attributes.gen_ai.tool.call.arguments` and `attributes.gen_ai.tool.call.result`. Anyone who can read the trace data stream can read this content, so review [Grant access to trace data](#grant-access-to-trace-data) before you turn these settings on. For the field-level details, refer to [Message content attributes](agent-traces-dashboard.md#message-content-attributes).
