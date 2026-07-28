@@ -547,7 +547,14 @@ toc:
           - file: cases/create-case-templates.md
           - file: cases/edit-case-templates.md
           - file: cases/yaml-template-schema-reference.md
-      - file: cases/cases-as-data.md
+      - file: cases/case-analytics.md
+        children:
+          - file: cases/case-analytics-indices.md
+          - file: cases/explore-case-data.md
+          - file: cases/query-case-data-esql.md
+          - file: cases/analyze-case-fields.md
+          - file: cases/case-analytics-fields.md
+          - file: cases/administer-case-analytics.md
   - file: workflows.md
     children:
       - file: workflows/get-started.md
