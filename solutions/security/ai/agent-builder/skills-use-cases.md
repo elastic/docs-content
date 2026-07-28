@@ -147,6 +147,29 @@ Use this skill to diagnose [{{elastic-defend}}](/solutions/security/configure-el
 | Which endpoints are reporting policy response failures? | Search for policy response errors or warnings across endpoints and summarize affected endpoint IDs. |
 | Is there any incompatible antivirus software on the managed hosts? | Inspect endpoint data for known antivirus conflicts and recommend resolution steps. |
 
+## Attack Discovery generation [attack-discovery-generation]
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+**Enable:** `attack-discovery-generator` (requires [`securitySolution:enableAttackDiscoveryWorkflows`](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows))
+
+Use this skill when you are investigating in chat and want {{agent-builder}} to run Attack Discovery as part of answering you. The skill gathers and cross-checks evidence from other Security skills, then runs the same Attack Discovery analysis used by manual, scheduled, and workflow triggers. Chat runs stay in the current conversation. For the full conversational flow, including in-chat reports, detection gap closure, and privacy, refer to [Run Attack Discovery from {{agent-builder}}](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md).
+
+Related Attack Discovery skills in the Skills library:
+
+* `attack-discovery-alert-retrieval-builder`: Powers **Edit with AI** when you refine an {{esql}} or custom query in [Attack Discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md).
+* `attack-discovery-workflow-troubleshooting`: Powers [AI troubleshooting](/solutions/security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md) for failed runs on the Attacks view.
+
+Those skills diagnose or refine configuration. They do not replace `attack-discovery-generator`.
+
+| Example prompt | What the agent can do |
+|----------------|----------------------|
+| Investigate lateral movement involving `host-12` over the last 24 hours. | Gather related alerts and entity context, run Attack Discovery, and return a narrative report with supporting evidence. |
+| What's the status of Attack Discovery run `<execution-id>`? | Report progress for that run without starting a new one. |
+| The skill proposed a detection rule for a gap. Create it. | Create the proposed rule only after you explicitly approve it in the chat. |
+
 ## Combining skills across use cases [combining-skills-across-workflows]
 
 The Elastic AI Agent can use a variety of skills in one conversation. As your questions shift across domains, the agent activates the matching skill — you don't need to start over or switch agents. The following examples show common multi-skill flows and the skills each turn activates.

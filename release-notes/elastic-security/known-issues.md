@@ -31,7 +31,7 @@ On {{stack}} 9.4.4, {{elastic-sec}} deployments with a large number of indices c
 
 
 **Workaround**<br>
-Follow these steps to stabilize {{kib}}:
+To stabilize {{kib}} until we resolve the issue, we recommend temporarily disabling the Entity store feature:
 
 1. Block the entity store tasks from running by applying this setting:
 
@@ -48,25 +48,39 @@ Follow these steps to stabilize {{kib}}:
    * **{{ech}}**: [Contact Elastic Support](https://www.elastic.co/support) to apply this as a system-level override. You cannot add it to `kibana.yml` directly. {{kib}} restarts as part of applying the change.
    * **Self-managed**: Add the setting to `kibana.yml`, save your change, and restart {{kib}}.
 
-   After the override is in place, {{kib}} stabilizes and the crash loop stops.
 
-2. Stop the entity store engines.
+2. Stop the entity store engines and disable the Entity store feature in all {{kib}} spaces where it is enabled:
 
-   Send the following request in every {{kib}} space where the entity store is enabled:
+   - For the default space:
 
-   ```
-   PUT /api/security/entity_store/stop
-   ```
+      ```
+      PUT kbn:/api/security/entity_store/stop
+      {}
+      ```
 
-   If you're using a non-default {{kib}} space, prefix the path with `/s/{space_id}`:
+      ```
+      POST kbn:/api/kibana/settings/securitySolution:entityStoreEnableV2
+      {
+         "value": false
+      }
+      ```
 
-   ```
-   PUT /s/{space_id}/api/security/entity_store/stop
-   ```
+   - For all non-default spaces, prefix the path with `/s/{space_id}`:
 
-   The request stops running entity engines and pauses data processing. For the full API reference, refer to [Stop Entity Store engines](https://www.elastic.co/docs/api/doc/kibana/operation/operation-put-security-entity-store-stop).
+      ```
+      PUT kbn:/s/{space_id}/api/security/entity_store/stop
+      {}
+      ```
 
-   The entity store uses a 3-hour lookback window for log extraction, so entity records missed during the outage are recovered after you re-enable the store.
+      ```
+      POST kbn:/s/{space_id}/api/kibana/settings/securitySolution:entityStoreEnableV2
+      {
+         "value": false
+      }
+      ```
+
+   At this point, entity engines stop running, data processing is paused, and the Entity Analytics experience becomes unavailable. For the full API reference, refer to [Stop Entity Store engines](https://www.elastic.co/docs/api/doc/kibana/operation/operation-put-security-entity-store-stop).
+
 
 3. Remove the `xpack.task_manager.unsafe.exclude_task_types` setting.
 
@@ -74,6 +88,10 @@ Follow these steps to stabilize {{kib}}:
 
    * **{{ech}}**: [Contact Elastic Support](https://www.elastic.co/support) to remove the system-level override.
    * **Self-managed**: Remove the setting from `kibana.yml`, save your change, and restart {{kib}}.
+
+
+We will update this page with instructions on how to enable the feature again once versions with a fix are available.
+
 :::
 
 :::{dropdown} Response actions fail and endpoints do not appear for agents on version-specific policies
