@@ -316,7 +316,8 @@ When you invoke a workflow — manually, on schedule, or through a trigger — t
 
 | State | Meaning |
 |---|---|
-| `pending` | The execution is queued and waiting to start. |
+| `queued` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | The execution is in the concurrency backlog waiting for a slot to open. Distinct from `pending`. Appears in the execution view with a **Queued** status. Refer to [Concurrency control](/explore-analyze/workflows/authoring-techniques/settings.md#workflows-settings-concurrency). |
+| `pending` | The execution is scheduled and waiting to start. |
 | `running` | At least one step is executing. |
 | `waiting` | The workflow has paused on a [`wait`](/explore-analyze/workflows/steps/wait.md) step. Returns to `running` when the timer fires. |
 | `waiting_for_input` | The workflow has paused on a [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) step. Returns to `running` when the input arrives. |
@@ -325,7 +326,7 @@ When you invoke a workflow — manually, on schedule, or through a trigger — t
 | `failed` | Terminal. A step failed and `on-failure` did not recover. |
 | `cancelled` | Terminal. The operator cancelled the run, or the concurrency strategy stopped it. |
 | `timed_out` | Terminal. The workflow exceeded its `settings.timeout`. |
-| `skipped` | Terminal. The concurrency `drop` strategy skipped this run because another execution was already in flight. |
+| `skipped` | Terminal. The run was discarded: the concurrency `drop` strategy skipped it because another execution was already in flight, or a `queue` backlog exceeded `queue-size` or `queue-ttl`. |
 
 Five states are terminal: `completed`, `failed`, `cancelled`, `timed_out`, and `skipped`. Every terminal execution reports its usage to the consumption metering system. Refer to the [Workflow settings page](/explore-analyze/workflows/authoring-techniques/settings.md) for how concurrency and execution metering interact.
 
