@@ -20,7 +20,7 @@ Case analytics data behaves like any other {{es}} data in [Discover](../discover
 :::::{applies-switch}
 
 ::::{applies-item} { "stack": "ga 9.5", "serverless": "ga" }
-In {{stack}} 9.5+ and {{serverless-short}}, the first time someone uses Cases in a space, {{kib}} creates a managed **Case Analytics** {{data-source}} for that space. The {{data-source}} covers all three analytics indices and is ready to use in Discover and Lens.
+The first time a case is created or used in a space, {{kib}} creates a managed **Case Analytics** {{data-source}} that covers all three analytics indices and is ready to use in Discover and Lens.
 
 1. Go to [Discover](../discover.md) or [Lens](../visualize/lens.md).
 2. Select the **Case Analytics** {{data-source}}.
@@ -30,7 +30,7 @@ You can save visualizations to dashboards and use the same indices as the basis 
 ::::
 
 ::::{applies-item} stack: preview 9.2-9.4
-In {{stack}} 9.2.x-9.4.x, create a [{{data-source}}](../find-and-organize/data-views.md) that points to one or more case analytics indices or their aliases. To point to all case analytics indices in your space, use the `.internal.cases*` index pattern.
+Create a [{{data-source}}](../find-and-organize/data-views.md) that points to one or more case analytics indices or their aliases. To point to all case analytics indices in your space, use the `.internal.cases*` index pattern.
 
 :::{note}
 Case data is stored in hidden indices. To display hidden indices, select **Show advanced settings**, then turn on **Allow hidden and system indices**.

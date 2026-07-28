@@ -22,7 +22,7 @@ Elastic mirrors your case data into dedicated analytics indices that are built f
 :::::{applies-switch}
 
 ::::{applies-item} { "stack": "ga 9.5", "serverless": "ga" }
-In {{stack}} 9.5+ and {{serverless-short}}, {{es}} automatically creates three analytics indices and keeps them in sync with your case data:
+{{es}} automatically creates three analytics indices and keeps them in sync with your case data:
 
 | Index | What it holds | Example |
 | --- | --- | --- |
@@ -42,7 +42,7 @@ For the fields available in each index, refer to [Case analytics field reference
 ::::
 
 ::::{applies-item} stack: preview 9.2-9.4
-In {{stack}} 9.2.x-9.4.x, {{es}} automatically creates the analytics indices for you, so you don't need to create them or manage their lifecycle policies. It creates a separate set of indices for each solution in every space that has cases.
+{{es}} automatically creates the analytics indices for you, so you don't need to create them or manage their lifecycle policies. It creates a separate set of indices for each solution in every space that has cases.
 
 {{es}} names each index `.internal.<type>.<solution>-<space-name>`, with a matching alias that drops the `.internal` prefix. For example, Security case attachments in the `default` space use the index `.internal.cases-attachments.securitysolution-default` and the alias `.cases-attachments.securitysolution-default`.
 
@@ -75,7 +75,7 @@ For schema details, refer to [Case analytics indices schema](kibana://reference/
 :::::{applies-switch}
 
 ::::{applies-item} { "stack": "ga 9.5", "serverless": "ga" }
-In {{stack}} 9.5+ and {{serverless-short}}, case analytics keeps your data current in two ways:
+Case analytics keeps your data current in two ways:
 
 1. It updates the indices as soon as you create, edit, or delete a case.
 2. As a backup, a background task checks for recently changed cases on a regular schedule (every 30 minutes by default) and fills in anything the immediate update missed.
@@ -84,7 +84,7 @@ Because updates take a moment to apply, a new or edited case can take a short ti
 ::::
 
 ::::{applies-item} stack: preview 9.2-9.4
-In {{stack}} 9.2.x-9.4.x, a background task refreshes the analytics indices every five minutes with a snapshot of the most current case data. During each refresh, {{es}} overwrites the historical case data.
+A background task refreshes the analytics indices every five minutes with a snapshot of the most current case data. During each refresh, {{es}} overwrites the historical case data.
 
 :::{note}
 - After you create a case, indexing the new case data can take up to 10 minutes.

@@ -21,9 +21,9 @@ Because that data lives in {{es}} indices, you can work with it using the tools 
 
 To dive in, [explore and visualize your case data](explore-case-data.md) or [query it with {{esql}}](query-case-data-esql.md). The rest of this section covers where your data lives, the fields you can report on, and how to grant access and administer the feature.
 
-:::{dropdown} Turn on case analytics in 9.2-9.4
+:::{dropdown} Turn on case analytics
 :applies_to: stack: preview 9.2-9.4
-On {{stack}} 9.2-9.4, you need to turn on case analytics first. To do this, add `xpack.cases.analytics.index.enabled: true` to your [`kibana.yml`](/deploy-manage/stack-settings.md) file.
+You need to turn on case analytics first. To do this, add `xpack.cases.analytics.index.enabled: true` to your [`kibana.yml`](/deploy-manage/stack-settings.md) file.
 
 This feature works best when your deployment has 10 or fewer spaces with cases. In each of those spaces, a background task refreshes the analytics indices every five minutes, so with many spaces the combined work can put too much load on Task Manager. If you have more spaces, hold off on turning it on.
 :::

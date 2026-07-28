@@ -20,7 +20,7 @@ description: Analyze case data directly with ES|QL queries against the case anal
 :::::{applies-switch}
 
 ::::{applies-item} { "stack": "ga 9.5", "serverless": "ga" }
-In {{stack}} 9.5+ and {{serverless-short}}, query the shared `.cases`, `.cases-activity`, and `.cases-attachments` indices, and reference fields with the singular `case.*` prefix, such as `case.status`. For field units and other details, refer to the [field reference](case-analytics-fields.md). Here are some sample queries to get you started:
+Query the shared `.cases`, `.cases-activity`, and `.cases-attachments` indices, and reference fields with the singular `case.*` prefix, such as `case.status`. For field units and other details, refer to the [field reference](case-analytics-fields.md). Here are some sample queries to get you started:
 
 * Count open cases by severity:
 
@@ -61,7 +61,7 @@ In {{stack}} 9.5+ and {{serverless-short}}, query the shared `.cases`, `.cases-a
 ::::
 
 ::::{applies-item} stack: preview 9.2-9.4
-In {{stack}} 9.2.x-9.4.x, each index covers one solution in one space, so use the [index name](case-analytics-indices.md) for the data you want, such as `.internal.cases.observability-default`. Reference fields without the `case.*` prefix, such as `status` instead of `case.status`. These examples use the `default` space. Here are some sample queries to get you started:
+Each index covers one solution in one space, so use the [index name](case-analytics-indices.md) for the data you want, such as `.internal.cases.observability-default`. Reference fields without the `case.*` prefix, such as `status` instead of `case.status`. These examples use the `default` space. Here are some sample queries to get you started:
 
 * Count cases by status. Change the index name to target a different solution or space:
 
