@@ -30,17 +30,15 @@ The bracketed skip and total counts vary with how many linked projects are in sc
 
 **Read the per-project statistics**
 
-Use [get datafeed stats]({{es-apis}}operation/operation-ml-get-datafeed-stats) to inspect `remote_cluster_stats` from the latest extraction cycles:
+Inspect `remote_cluster_stats` via [get datafeed stats]({{es-apis}}operation/operation-ml-get-datafeed-stats). It reflects the **last completed extraction cycle**, not a cycle still in progress or one that failed mid-extraction.
 
-```console
-GET _ml/datafeeds/{datafeed_id}/_stats
-```
+During an active skip outage, **Job messages** are the authoritative signal. Extraction aborts when a project is skipped, before stats are updated — so `skipped_clusters` can remain `0` while skip errors repeat in **Job messages**.
 
-The fields that matter for this problem:
+After cycles complete successfully, these fields help track recovery:
 
-* `skipped_clusters` — how many linked projects were skipped or unavailable in the last recorded cycle.
-* `per_cluster_consecutive_skips` — a map from project alias to the number of consecutive cycles that project has been skipped or failed; resets to `0` when the project becomes available again.
-* `availability_ratio` — `available_clusters` divided by `total_clusters` for the last cycle (also see `total_clusters` and `available_clusters`).
+* `skipped_clusters` — linked projects skipped in the last completed cycle.
+* `per_cluster_consecutive_skips` — consecutive skip/fail counts per alias from completed cycles; resets to `0` when a cycle completes with that project available.
+* `availability_ratio` — `available_clusters` divided by `total_clusters` for the last completed cycle (also see `total_clusters` and `available_clusters`).
 
 Example excerpt (field names and structure match the stats API; values vary):
 
@@ -96,7 +94,7 @@ Use an expression that matches only the linked projects you still need. Changing
 
 **Wait out a transient outage**
 
-When the underlying link or platform issue clears, `per_cluster_consecutive_skips` for that alias returns to `0` on the next successful cycle and the {{dfeed}} recovers without configuration changes. **Job messages** may show:
+When the underlying link or platform issue clears, the {{dfeed}} recovers on the next successful cycle without configuration changes. **Job messages** may show:
 
 ```txt
 Datafeed has recovered data extraction and analysis
@@ -114,7 +112,7 @@ Each failed extraction cycle leaves a gap in the time series the {{anomaly-job}}
 
 **Verify**
 
-`GET _ml/datafeeds/{datafeed_id}/_stats` should show `skipped_clusters` at `0`, no non-zero entries in `per_cluster_consecutive_skips`, and **Job messages** should stop reporting new extraction errors for the skip cause.
+**Job messages** should stop reporting new extraction errors for the skip cause. After at least one successful completed cycle, `remote_cluster_stats` should show `skipped_clusters` at `0` and no non-zero entries in `per_cluster_consecutive_skips`.
 
 **When to contact support**
 
