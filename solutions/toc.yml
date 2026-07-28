@@ -503,6 +503,8 @@ toc:
       - hidden: observability/nightshift/nightshift.md
         children:
           - hidden: observability/nightshift/get-started.md
+          - hidden: observability/nightshift/investigations.md
+          - hidden: observability/nightshift/memory.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
