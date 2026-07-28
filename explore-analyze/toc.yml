@@ -537,10 +537,24 @@ toc:
       - file: cases/control-case-access.md
       - file: cases/create-cases.md
       - file: cases/manage-cases.md
+      - file: cases/analyze-cases-with-ai.md
       - file: cases/attach-objects-to-cases.md
       - file: cases/search-share-cases.md
       - file: cases/configure-case-settings.md
-      - file: cases/cases-as-data.md
+      - file: cases/manage-case-templates.md
+        children:
+          - file: cases/create-case-field-library.md
+          - file: cases/create-case-templates.md
+          - file: cases/edit-case-templates.md
+          - file: cases/yaml-template-schema-reference.md
+      - file: cases/case-analytics.md
+        children:
+          - file: cases/case-analytics-indices.md
+          - file: cases/explore-case-data.md
+          - file: cases/query-case-data-esql.md
+          - file: cases/analyze-case-fields.md
+          - file: cases/case-analytics-fields.md
+          - file: cases/administer-case-analytics.md
   - file: workflows.md
     children:
       - file: workflows/get-started.md
@@ -581,6 +595,11 @@ toc:
                   - file: workflows/steps/elasticsearch.md
                   - file: workflows/steps/kibana.md
                   - file: workflows/steps/cases.md
+                  - file: workflows/steps/security.md
+                    children:
+                      - file: workflows/steps/detection-rules.md
+                      - file: workflows/steps/alert-triage.md
+                      - file: workflows/steps/attack-triage.md
                   - file: workflows/steps/streams.md
                   - file: workflows/steps/external-systems-apps.md
               - file: workflows/steps/flow-control-steps.md
