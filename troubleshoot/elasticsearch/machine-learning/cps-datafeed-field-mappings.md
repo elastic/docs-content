@@ -91,7 +91,7 @@ Example extraction error after mapping drift:
 Datafeed is encountering errors extracting data: Cannot parse field [status] of type [long] in document with id 'abc123'
 ```
 
-The text after the colon is the underlying cause and varies (parse failure, missing field, incompatible type, and so on). During active extraction problems, **Job messages** are authoritative.
+The text after the colon is the underlying cause and varies (parse failure, missing field, incompatible type, and so on).
 
 ## Resolve field mapping conflicts [resolve-cps-datafeed-field-mappings]
 

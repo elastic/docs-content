@@ -28,19 +28,41 @@ If you can't find your issue here, explore the other [troubleshooting topics](/t
 
 Start with the symptom that best matches what you see:
 
-* **The {{dfeed}} returns no results**: [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md)
-* **Results come only from the origin project**: [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md) when `project_routing` is `_alias:_origin` or the job has no stored routing (legacy default). When `authorization.cloud_api_key.id` is missing from `GET _ml/datafeeds/{datafeed_id}` or **Job messages** report `Internal cloud API key cleared on datafeed update with non-cloud credentials` or lack `Internal cloud API key minted for cross-project datafeed`, start with [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md) instead
-* **Extraction cycles are suddenly slower after you linked projects**: [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md)
-* **The {{dfeed}} keeps failing with extraction errors**: [Linked project unavailable](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-linked-project-unavailable.md) when **Job messages** report a skipped linked project. For authorization failures or field type conflicts, start with [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md) or [Field mapping conflicts](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-field-mappings.md) instead.
-* **{{es}} or {{kib}} rejected a project scope change**: [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md)
-* **Some jobs failed during a bulk Change project scope update**: [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md)
-* **Anomaly scores spiked after a scope change**: [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md)
-* **A field is missing, a project is excluded from a run, or mappings conflict across projects**: [Field mapping conflicts](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-field-mappings.md)
-* **Authorization errors after the {{dfeed}} had been working**: [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md)
+| Symptom | Start here | When to use a different page |
+| --- | --- | --- |
+| The {{dfeed}} returns no results | [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md) | — |
+| Results come only from the origin project | [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md) | When `project_routing` is `_alias:_origin` or the job has no stored routing (legacy default). When `authorization.cloud_api_key.id` is missing or **Job messages** report a cleared or never-minted key, use [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md) instead |
+| Extraction cycles are suddenly slower after you linked projects | [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md) | — |
+| The {{dfeed}} keeps failing with extraction errors | [Linked project unavailable](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-linked-project-unavailable.md) | When **Job messages** report a skipped linked project. For authorization failures, use [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md). For field type conflicts, use [Field mapping conflicts](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-field-mappings.md) |
+| {{es}} or {{kib}} rejected a project scope change | [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md) | — |
+| Some jobs failed during a bulk **Change project scope** update | [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md) | — |
+| Anomaly scores spiked after a scope change | [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md) | — |
+| A field is missing, a project is excluded from a run, or mappings conflict across projects | [Field mapping conflicts](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-field-mappings.md) | — |
+| Authorization errors after the {{dfeed}} had been working | [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md) | — |
+
+## Find a message [cps-ml-message-index]
+
+If you already have an error or audit string from **Job messages**, the API, or {{kib}}, use this index:
+
+| Message (substring match) | Page |
+| --- | --- |
+| `matched no linked project` / `cannot search any project` | [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md) |
+| `remote clusters out of` / `were skipped when performing datafeed search` | [Linked project unavailable](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-linked-project-unavailable.md) |
+| `Cannot update project_routing` / `no model snapshot to use as a rollback point` / `while its status is started` | [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md) |
+| `Rollback model snapshot` retained before `project_routing` scope change | [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md) |
+| `CPS migration: project_routing defaulted` | [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md) |
+| `Datafeed search scope changed` / `Elevated anomaly scores detected after search scope change` | [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md) |
+| `Internal cloud API key` / `Datafeed search probe failed` / `User lacks the required permissions` | [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md) |
+| `Failed to revoke internal cloud API key` | [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md) |
+| `Cross-project field conflict` / `conflicting types across projects` / `excluded project` from this run | [Field mapping conflicts](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-field-mappings.md) |
+| `Cannot run datafeed` + `required time field` | [Field mapping conflicts](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-field-mappings.md) |
+| `Datafeed has recovered data extraction` / `started retrieving data again` | [Linked project unavailable](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-linked-project-unavailable.md) |
 
 ## `project_routing` quick reference [cps-ml-routing-reference]
 
-Every valid `project_routing` value starts with `_alias:`. Bare `_origin` is **not** a routing value.
+Every valid `project_routing` value starts with `_alias:`. Bare `_origin` is **not** a routing value. Each value is a **single** routing expression; comma-separated lists (for example `_alias:a,b`) are not supported.
+
+Alias matching is case-insensitive. Prefix, suffix, and contains wildcards are supported. Internal wildcards (for example `_alias:prod*eu`) and multiple sequential wildcards are not.
 
 | `project_routing` value | Effective search scope |
 | --- | --- |
@@ -51,8 +73,6 @@ Every valid `project_routing` value starts with `_alias:`. Bare `_origin` is **n
 | `_alias:*-prod` (suffix wildcard) | **Subset**: linked projects whose alias ends with `-prod`, plus the origin project when its alias matches |
 | `_alias:*staging*` (contains wildcard) | **Subset**: linked projects whose alias contains `staging`, plus the origin project when its alias matches |
 | `_alias:production-us` (exact alias) | **Single linked project**: only the named alias, plus the origin project when its alias matches |
-
-Prefix, suffix, and contains wildcards are supported. Internal wildcards (for example `_alias:prod*eu`) and multiple sequential wildcards are not.
 
 **Index qualifier, not routing.** In `indices`, prefix a pattern with `_origin:` to target the origin project (for example `_origin:logs-*`). That qualifier is separate from `project_routing`.
 

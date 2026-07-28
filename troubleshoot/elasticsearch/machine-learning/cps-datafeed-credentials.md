@@ -55,10 +55,10 @@ User lacks the required permissions to read from the datafeed indices.
 Other probe failures surface as:
 
 ```txt
-Datafeed search probe failed with status [403]
+Datafeed search probe failed with status [FORBIDDEN]
 ```
 
-The bracketed HTTP status varies (for example `401` or `403`).
+The bracketed status is the `RestStatus` enum name (for example `UNAUTHORIZED` or `FORBIDDEN`), not an HTTP status code.
 
 Routing that matches no linked project is reported separately. See [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md).
 
@@ -100,6 +100,14 @@ Internal cloud API key minted for cross-project datafeed
 
 ```txt
 Internal cloud API key re-keyed for cross-project datafeed update
+```
+
+```txt
+Internal cloud API key revoked for cross-project datafeed
+```
+
+```txt
+Skipping revocation of cloud API key [abc123def456] — revoke primitive not yet available
 ```
 
 A mint or re-key followed by a runtime failure means the key worked at create or update time but later stopped authorizing search.

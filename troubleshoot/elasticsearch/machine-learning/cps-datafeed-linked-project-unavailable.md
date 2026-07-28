@@ -11,7 +11,7 @@ products:
 
 # Linked project unavailable [cps-datafeed-linked-project-unavailable]
 
-When a linked project in the {{dfeed}}'s scope is skipped or fails during a search cycle, {{es}} fails the entire extraction cycle instead of continuing on the remaining projects. Partial cross-project results could produce spurious anomalies, so the cycle produces no data, the error is audited, and the {{dfeed}} retries on its next scheduled cycle. You see repeated extraction errors in **Job messages** and gaps in results for the affected time buckets until every project in scope is reachable again or you narrow `project_routing`.
+When a linked project in the {{dfeed}}'s scope is **skipped** during a search cycle, {{es}} fails the entire extraction cycle instead of continuing on the remaining projects. Partial cross-project results could produce spurious anomalies, so the cycle produces no data, the error is audited, and the {{dfeed}} retries on its next scheduled cycle. You see repeated extraction errors in **Job messages** and gaps in results for the affected time buckets until every project in scope is reachable again or you narrow `project_routing`. A hard cluster failure (status `FAILED`, not `SKIPPED`) surfaces through the ordinary search-failure path with different **Job messages** text.
 
 ## Diagnose linked project unavailable [diagnose-cps-datafeed-linked-project-unavailable]
 
@@ -30,15 +30,11 @@ The bracketed skip and total counts vary with how many linked projects are in sc
 
 **Read the per-project statistics**
 
-Inspect `remote_cluster_stats` via [get datafeed stats]({{es-apis}}operation/operation-ml-get-datafeed-stats). It reflects the **last completed extraction cycle**, not a cycle still in progress or one that failed mid-extraction.
+Inspect `remote_cluster_stats` via [get datafeed stats]({{es-apis}}operation/operation-ml-get-datafeed-stats).
 
-During an active skip outage, **Job messages** are the authoritative signal. Extraction aborts when a project is skipped, before stats are updated, so `skipped_clusters` can remain `0` while skip errors repeat in **Job messages**.
+During an active skip outage, `skipped_clusters` can remain `0` while skip errors repeat in **Job messages** because extraction aborts before stats are updated.
 
-After cycles complete successfully, these fields help track recovery:
-
-* `skipped_clusters`: linked projects skipped in the last completed cycle.
-* `per_cluster_consecutive_skips`: consecutive skip/fail counts per alias from completed cycles. Resets to `0` when a cycle completes with that project available.
-* `availability_ratio`: `available_clusters` divided by `total_clusters` for the last completed cycle (also see `total_clusters` and `available_clusters`).
+After cycles complete successfully, compare `per_cluster_consecutive_skips` and `availability_ratio` with `project_routing` from `GET _ml/datafeeds/{datafeed_id}` and linked projects from `GET /_project/tags` or the Cloud console.
 
 Example excerpt (field names and structure match the stats API, values vary):
 
@@ -52,8 +48,6 @@ Example excerpt (field names and structure match the stats API, values vary):
   "per_cluster_consecutive_skips": {}
 }
 ```
-
-Compare `per_cluster_consecutive_skips` with `project_routing` from `GET _ml/datafeeds/{datafeed_id}` and linked projects from `GET /_project/tags` or the Cloud console.
 
 **Distinguish configuration from an outage**
 

@@ -9,7 +9,4 @@
 * **`GET /_project/tags`**: Lists linked projects and their tags so you can compare them with a routing expression.
 * **Elastic Cloud console**: Review linked projects in [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md).
 
-```console
-GET _ml/datafeeds/{datafeed_id}
-GET _ml/datafeeds/{datafeed_id}/_stats
-```
+During active extraction problems, **Job messages** are authoritative. `remote_cluster_stats` from [get datafeed stats]({{es-apis}}operation/operation-ml-get-datafeed-stats) reflects the last **completed** cycle.

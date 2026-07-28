@@ -20,12 +20,9 @@ Changing `project_routing` (the **Project scope** field in {{kib}}) decides whic
 
 **The scope change is rejected**
 
-:::{include} /troubleshoot/_snippets/cps-ml-update-preconditions.md
-:::
-
 The most common rejection is an open {{anomaly-job}}. Changing `project_routing` to a new effective scope requires a closed job so {{es}} can retain the current model snapshot as a rollback point.
 
-From the **API**, a rejected update returns HTTP `409` (datafeed still running or job still open) or `400` (no model snapshot). The response body repeats the messages shown in the preconditions block above.
+From the **API**, a rejected update returns HTTP `409` (datafeed still running or job still open) or `400` (no model snapshot). The response body repeats the messages shown in the preconditions block in [Resolve project scope changes](#resolve-cps-datafeed-scope-change).
 
 From **{{kib}}**, the bulk **Change project scope** action (multi-select jobs list) opens the flyout titled **Update project routing for *N* anomaly detection jobs**.
 
@@ -41,15 +38,29 @@ Datafeed settings cannot be edited while the datafeed is running. Please stop th
 
 **Entry point**
 
-Select the {{anomaly-jobs}} in the jobs list, then choose **Change project scope** from the multi-select action menu. That action opens the bulk flyout titled **Update project routing for *N* anomaly detection jobs**, which shows a **Project scope** picker for the routing expression and an **Update *N* jobs** button. Clicking **Update *N* jobs** opens a confirmation dialog titled **Update project scope?** (or **Change project scope for *job id*?** / **Change project scope for *N* jobs?** for specific selections). The dialog body reads:
+Select the {{anomaly-jobs}} in the jobs list, then choose **Change project scope** from the multi-select action menu. That action opens the bulk flyout titled **Update project routing for *N* anomaly detection jobs**, which shows a **Project scope** picker for the routing expression and an **Update *N* jobs** button.
+
+When you pick any routing expression other than `_alias:_origin`, the flyout shows a warning callout titled **Non-default project scope selected**:
+
+```txt
+Using a project routing scope other than _alias:_origin may negatively affect the job's anomaly detection results.
+```
+
+That warning reflects the risk of a data-distribution shift, not a hard block. Cross-project scope is appropriate when the {{anomaly-job}} should analyze linked-project data; use `_alias:_origin` only when origin-project-only search is intended.
+
+Clicking **Update *N* jobs** opens a confirmation dialog titled **Update project scope?** (or **Change project scope for *job id*?** / **Change project scope for *N* jobs?** for specific selections). The dialog body reads:
 
 ```txt
 The model for this job was trained on a specific set of data. Changing this data set may cause temporary model instability and an increase in false-positives. Are you sure you want to apply these changes?
 ```
 
+When you select more than one job, the dialog also lists **Affected jobs** with per-job added and removed project counts so you can review the scope delta before confirming.
+
 Confirm with **Yes, save** or cancel with **Cancel**.
 
 Failed jobs display no inline error text in the flyout, only the job id and a cross icon. To learn why a job failed, open **Job messages** for that job or retry the update through the API and read the error response.
+
+If the flyout cannot load the job list, {{kib}} shows **Could not load jobs for project routing update**. If the bulk API call fails before per-job results are returned, {{kib}} shows **Project routing update failed**. Both differ from the per-job cross-icon path above.
 
 After submission, result toasts report:
 
@@ -99,13 +110,14 @@ Elevated anomaly scores detected after search scope change at [2026-07-28T10:15:
 
 The timestamp, change summary in parentheses, and bucket count vary with your job.
 
-**Detection delay.** {{es}} confirms a scope change only after the linked-project set stays stable for **12 consecutive extraction cycles** and at least **5 minutes** of wall-clock time since the change was first observed. Until both conditions are met, you will not see scope-change messages or annotations even if projects were linked or unlinked in {{ecloud}}.
+**Detection delay.** By default, {{es}} confirms a scope change only after the linked-project set stays stable for **12 consecutive extraction cycles** and at least **5 minutes** of wall-clock time since the change was first observed. Until both conditions are met, you will not see scope-change messages or annotations even if projects were linked or unlinked in {{ecloud}}.
 
 **Check annotations.** {{es}} writes scope-change annotations to `.ml-annotations-*`. The annotation `event` field carries `search_scope_changed`. Search that index for the job id and filter on `event: search_scope_changed` to see when scope stabilized.
 
-During active extraction problems, **Job messages** are authoritative. `remote_cluster_stats` from [get datafeed stats]({{es-apis}}operation/operation-ml-get-datafeed-stats) reflects the last **completed** cycle.
-
 ## Resolve project scope changes [resolve-cps-datafeed-scope-change]
+
+:::{include} /troubleshoot/_snippets/cps-ml-update-preconditions.md
+:::
 
 **The scope change is rejected**
 
@@ -114,8 +126,6 @@ During active extraction problems, **Job messages** are authoritative. `remote_c
 | API update | Stop the {{dfeed}}, close the {{anomaly-job}}, confirm a model snapshot exists, then retry `POST _ml/datafeeds/{datafeed_id}/_update`. |
 | {{kib}} bulk **Change project scope** | Close every open job in the selection (the bulk action does not close jobs for you), then re-run the update. |
 | {{kib}} single-job **Datafeed** tab | Stop the {{dfeed}} so **Project scope** becomes editable, close the job if you are changing to a new effective scope, then save. |
-
-A job that has never run has no model snapshot. Open it, let it ingest data, close it, then change scope.
 
 For routing expressions that match no project or reference stale aliases, see [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md).
 
@@ -135,9 +145,6 @@ POST _ml/datafeeds/{datafeed_id}/_update
   "project_routing": "_alias:production-*"
 }
 ```
-
-:::{include} /troubleshoot/_snippets/cps-ml-update-preconditions.md
-:::
 
 Adjust `project_routing` to the scope you chose in the bulk flyout. The legacy migration default is `_alias:_origin`.
 
