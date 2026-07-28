@@ -45,7 +45,7 @@ In an {{ecloud}} or self-managed environment, ILM lets you automatically transit
 * Define the retention period of your data. The retention period is the minimum time {{es}} stores your data. {{es}} can delete data older than this period.
 * Define [multiple tiers](/manage-data/lifecycle/data-tiers.md) of data nodes with different performance characteristics.
 * Automatically transition indices through the data tiers according to your performance needs and retention policies.
-* Leverage [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) stored in a remote repository to provide resiliency for your older indices while reducing operating costs and maintaining search performance.
+* Leverage [{{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) stored in a remote repository to provide resiliency for your older indices while reducing operating costs and maintaining search performance.
 * Perform [asynchronous searches](/solutions/search/async-search-api.md) of data stored on less-performant hardware.
 
 **[Read more in {{ilm-cap}} ->](/manage-data/lifecycle/index-lifecycle-management.md)**
@@ -56,6 +56,7 @@ In an {{ecloud}} or self-managed environment, ILM lets you automatically transit
 
 * Define the retention period of your data. The retention period is the minimum time {{es}} stores your data. {{es}} can delete data older than this period at a later time.
 * Improve the performance of your data stream by performing background operations that optimize how {{es}} stores your data stream.
+* {applies_to}`stack: ga 9.5` {applies_to}`serverless: unavailable` Move older backing indices to partially mounted {{search-snaps}} on the frozen tier, so you can keep data searchable for longer at a lower local storage cost. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
 
 **[Read more in Data stream lifecycle ->](/manage-data/lifecycle/data-stream.md)**
 
