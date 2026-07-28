@@ -35,7 +35,7 @@ The dashboard groups its panels into four areas:
 - **Token Usage & Cost**: Input and output tokens by model, and LLM request counts by model and provider.
 - **Conversation Volume & Latency**: How many conversation rounds ran and how long they took, including average, 95th percentile, and maximum duration.
 - **Agent Execution**: How often each agent ran and how long it took, broken down by agent.
-- **Tool Call Frequency & Errors**: How often tools were called, their success and error rates, average tool duration, and the most-used tools.
+- **Tool Call Frequency & Errors**: How often tools were called, their success and error rates, average tool duration, and the most-used tools. This section is collapsed when you install the dashboard, so expand it to see the panels.
 
 When trace data is flowing, the dashboard looks like this:
 
@@ -57,7 +57,7 @@ Before you install the dashboard:
 
 The overview dashboard is not installed automatically. Install it once per {{kib}} space.
 
-1. Go to **Management → GenAI Settings**.
+1. Go to **{{stack-manage-app}}** → **GenAI Settings**.
 2. In the **Agent Builder Traces** section, confirm that **Collect conversation traces** is on and saved.
 3. Select **Install Dashboard**.
 
@@ -109,11 +109,36 @@ These fields carry the details the dashboard aggregates. Generative AI attribute
 | `attributes.gen_ai.request.model` | Model name |
 | `attributes.gen_ai.provider.name` | Model provider |
 | `attributes.gen_ai.agent.id` | Agent identifier |
-| `attributes.elastic.inference.span.kind` | On `invoke_agent` spans, separates conversation rounds (`CHAIN`) from agent executions (`AGENT`) |
+| `attributes.gen_ai.conversation.id` | Conversation identifier |
+| `attributes.elastic.inference.span.kind` | The kind of work a span represents: `LLM` on `chat` spans, `TOOL` on `execute_tool` spans, and `CHAIN` or `AGENT` on `invoke_agent` spans, where `CHAIN` is a conversation round and `AGENT` is an agent execution. Internal spans such as `generate_title` also use `CHAIN`, so combine this field with a `span.name` filter instead of using it on its own |
 | `name` | Span name. On `execute_tool` spans it is `execute_tool <tool-id>`, for example `execute_tool platform.core.list_indices`. For the bare tool id, use `attributes.gen_ai.tool.name` |
 | `duration` | Span duration in nanoseconds (root field). Divide by 1,000,000,000 for seconds |
 | `status.code` | Span status, for example `Error` (root field) |
 | `@timestamp` | When the span started |
+
+### Message content attributes [message-content-attributes]
+
+The dashboard does not use these fields, but you can query them yourself. When an administrator opts in to capturing conversation content, that content is stored as the following attributes. Each one depends on a [trace privacy setting](collect-traces.md#trace-privacy-settings), and all of those settings are off by default.
+
+| Field | Span | Description | Requires |
+|---|---|---|---|
+| `attributes.gen_ai.input.messages` | `chat` | Chat history sent to the model, as a series of user, assistant, and tool turns | **Include user prompts in traces** for the user turns, **Include LLM responses in traces** for the assistant turns, and **Include tool call details in traces** for the tool turns |
+| `attributes.gen_ai.output.messages` | `chat` | Model responses | **Include LLM responses in traces** |
+| `attributes.gen_ai.system_instructions` | `chat` | System prompt | **Include system prompt in traces** |
+| `attributes.gen_ai.tool.call.arguments` | `execute_tool` | Arguments passed to the tool | **Include tool call details in traces** |
+| `attributes.gen_ai.tool.call.result` | `execute_tool` | Value the tool returned | **Include tool call details in traces** |
+
+Any turn that a privacy setting excludes is dropped from `attributes.gen_ai.input.messages`. When all three of the settings that govern it are off, the field is an empty array (`[]`). Filter those rows out, as the following example does. The `attributes.gen_ai.tool.call.id` field on the `execute_tool` spans is always recorded, whatever the privacy settings.
+
+Each content field holds a JSON string rather than indexed text, following the [OpenTelemetry semantic conventions for generative AI](https://github.com/open-telemetry/semantic-conventions-genai). The message attributes hold an array of `{"role": ..., "parts": [...]}` objects, where each part is a `text`, `tool_call`, or `tool_call_response` item, and `attributes.gen_ai.system_instructions` holds an array of `{"type": ..., "content": ...}` objects.
+
+:::{important}
+These content fields are `keyword` fields with `ignore_above` set to `1024`. A value longer than 1024 characters is not indexed, and {{esql}} returns it as `null` even though the full value is stored in the document. System prompts, model responses, and any chat history that carries a tool result routinely pass 1024 characters, so treat {{esql}} as dependable only for short values here.
+
+To read the full content, request the document with [{{es}} search](/solutions/search/querying-for-search.md) instead of {{esql}}. The `_ignored` metadata field on each hit lists the fields that were too long to index, so you can tell when this is happening.
+
+Tool arguments and results are also recorded on the `execute_tool` spans, in `attributes.gen_ai.tool.call.arguments` and `attributes.gen_ai.tool.call.result`. Each of those holds a single tool call rather than the whole conversation, so they stay under the limit more often. Prefer them when you query tool activity with {{esql}}.
+:::
 
 ### Example queries
 
@@ -142,6 +167,17 @@ FROM traces-agent_builder.otel-default
     errors = COUNT(*) WHERE status.code == "Error"
   BY tool = name
 | SORT calls DESC
+```
+
+Recent captured user prompts (requires **Include user prompts in traces**):
+
+```esql
+FROM traces-agent_builder.otel-default
+| WHERE span.name LIKE "chat *"
+| WHERE attributes.gen_ai.input.messages IS NOT NULL AND attributes.gen_ai.input.messages != "[]"
+| SORT @timestamp DESC
+| LIMIT 20
+| KEEP @timestamp, attributes.gen_ai.input.messages
 ```
 
 ## Related pages
