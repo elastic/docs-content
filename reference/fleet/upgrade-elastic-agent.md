@@ -33,7 +33,7 @@ For a detailed view of the {{agent}} upgrade process and the interactions betwee
 
 Note the following restrictions with upgrading an {{agent}}:
 
-* {{agent}} cannot be upgraded to a minor version higher than the currently installed minor version of {{fleet-server}}. For example, you can enroll 9.1.5 {{agents}} with a 9.1.0 {{fleet-server}}, but not 9.2.0 {{agents}}. So while you can install newer maintenance releases, you cannot install newer minor versions. Before you upgrade {{agents}} to a newer minor version, you should first upgrade any agents that are acting as a [{{fleet-server}}](/reference/fleet/fleet-server.md) (any agents associated with a {{fleet-server}} policy).
+* You can upgrade {{agent}} to a newer patch release within its current minor version, but not to a minor version newer than the {{fleet-server}} it's enrolled with. For example, a 9.1.0 {{fleet-server}} supports upgrading {{agents}} to any 9.1.x release, but not to 9.2.0. Before you upgrade {{agents}} to a new minor version, first upgrade any agents that are acting as [{{fleet-server}}](/reference/fleet/fleet-server.md) (any agents that have a {{fleet-server}} policy associated with them).
 
 Whether {{agent}} can be upgraded through {{fleet}} also depends on the installation method:
 

@@ -282,8 +282,8 @@ You can also add panels powered by {{esql}} queries directly from the dashboard.
 
 1. Add a new panel:
 
-   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **New panel** in the toolbar, then select **{{esql}}** under **Visualizations**.
-   - {applies_to}`stack: ga 9.0-9.1` Select **Add panel** in the toolbar, then select **{{esql}}** under **Visualizations**.
+   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **Visualization (query)** or **New panel** → **{{esql}}** under **Visualizations**, depending on your {{kib}} version.
+   - {applies_to}`stack: ga 9.0-9.1` Select **Add panel** in the application menu, then select **{{esql}}** under **Visualizations**.
 
 2. Enter the following query and run it:
 
@@ -395,19 +395,18 @@ For more details on sharing options, access control, and managing dashboard owne
 
 ## Recreate the dashboard with the API [recreate-dashboard-api]
 ```{applies_to}
-stack: preview 9.4+
-serverless: preview
+stack: ga 9.5+, preview =9.4
+serverless: ga
 ```
 
 Everything you built in this tutorial can also be reproduced in a single API call. The [Dashboards API](dashboards/create-dashboards-programmatically.md) accepts a JSON payload that encodes the complete dashboard, including panel types, data sources, layout, and display options, making it straightforward to version-control dashboards or provision consistent environments programmatically.
 
 <!--
   The curl example below is verified end-to-end by
-  .github/scripts/verify-dashboards-api-example.py. The Dashboards API is in
-  technical preview, so its schema can change between releases. Re-run that
-  script (with KIBANA_URL and API_KEY set) whenever you edit the payload, or
-  whenever the spec at https://github.com/elastic/dashboards-api-spec is
-  updated. Last verified against dashboards-api-spec @ 84120e3 on 2026-05-06.
+  .github/scripts/verify-dashboards-api-example.py. Re-run that script (with
+  KIBANA_URL and API_KEY set) whenever you edit the payload, or whenever the
+  spec at https://github.com/elastic/dashboards-api-spec is updated. Last
+  verified against dashboards-api-spec @ 84120e3 on 2026-05-06.
 -->
 :::::::{dropdown} Recreate this dashboard with one API call
 
@@ -1038,7 +1037,7 @@ One of {{kib}}'s strengths is how you can move between exploring raw data and vi
 :   Select {icon}`pencil` on any panel to open the inline **Configuration** flyout. For deeper changes, select **Edit in Lens** in the flyout to switch to the full editor, then **Save and return** to go back to the dashboard.
 
 **Add a new visualization directly from a dashboard**
-:   From a dashboard, select **Add** > **Visualization** to open the Lens editor, or **Add** > **New panel** and then **ES|QL** under **Visualizations** to create a chart from an {{esql}} query without going through Discover first.
+:   From a dashboard, select **Add**, then select **Visualization** to open the Lens editor, or **Visualization (query)** to create a chart from an {{esql}} query without going through Discover first.
 
 :::{tip}
 This back-and-forth workflow is especially useful when investigating anomalies: spot something unusual on a dashboard, jump to Discover to examine the raw events, refine your query, then save an updated visualization back to the dashboard.
