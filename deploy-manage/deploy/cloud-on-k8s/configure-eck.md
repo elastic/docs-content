@@ -213,7 +213,7 @@ config:
   restrictWatchedResources: true
 ```
 
-To enable it using the `elastic-operator` ConfigMap:
+To enable it using the `elastic-operator` ConfigMap, add the following setting to the existing `eck.yaml` configuration:
 
 ```yaml
 data:
