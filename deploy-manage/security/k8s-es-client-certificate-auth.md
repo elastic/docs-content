@@ -37,9 +37,10 @@ spec:
         authentication: true
 ```
 
-When client authentication is enabled, ECK does the following:
+When client authentication is enabled, ECK sets `xpack.security.http.ssl.client_authentication: required` in the {{es}} configuration.
 
-* Sets `xpack.security.http.ssl.client_authentication: required` in the {{es}} configuration.
+The supported {{stack}} components differ by version. ECK performs the following additional steps depending on your version:
+
 * {applies_to}`eck: ga 3.5+` Automatically generates and manages client certificates for all {{stack}} components that connect to {{es}}, including stack monitoring sidecars and the AutoOps agent, configuring each to present its certificate when connecting to {{es}}.
 * {applies_to}`eck: ga =3.4` The only supported component is {{kib}}. ECK automatically generates and manages a client certificate for it, configuring it to present its certificate when connecting to {{es}}. Other workloads that connect to {{es}} over HTTP are not configured automatically.
 
