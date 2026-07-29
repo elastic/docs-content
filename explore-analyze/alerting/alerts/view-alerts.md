@@ -92,12 +92,20 @@ Actions for the snoozed alert aren't triggered until you unsnooze the alert, the
 
 If a rule uses **Group alerts by** to track hosts, services, or other fields separately, snoozing one alert does not affect the others. For example, if a rule is set to group alerts by `host.name`, it creates one alert per host. Snoozing the alert for `web-01` does not silence alerts for `web-02` or `web-03`.
 
-Use per-alert snooze to stop notifications from one alert without silencing the rest of the rule. To silence every notification from a rule, [snooze the rule](create-manage-rules.md#controlling-rules) instead. Per-alert snooze is available for {{stack-manage-app}} and {{observability}} alerts only.
+Use per-alert snooze to stop notifications from one alert without silencing the rest of the rule. To silence every notification from a rule, [snooze the rule](create-manage-rules.md#controlling-rules) instead.
 
-::::{note}
-:applies_to: {"stack": "ga 9.5+", "serverless": "unavailable"}
-**Snooze** replaces the **Mute** action in {{stack}} 9.5.x. If you upgrade from an earlier version where you muted alerts, those alerts appear as snoozed indefinitely in the UI. Select **Unsnooze** to resume alert actions.
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.5+
+If you upgrade from an earlier {{stack}} version where you muted alerts (for example, {{stack}} 9.4), those alerts appear as snoozed indefinitely in the UI. Select **Unsnooze** to resume alert actions.
+:::
+
+:::{applies-item} serverless: ga
+When your {{serverless-short}} project updates to a version with per-alert snooze, alerts you previously muted appear as snoozed indefinitely in the UI. Select **Unsnooze** to resume alert actions.
+:::
+
 ::::
+
 
 To snooze an active alert, open its action menu ({icon}`boxes_vertical`) from the Alerts table or the alert details page, then select **Snooze**. Choose **Quick Snooze** when you know how long it should stay quiet, or **Condition based** when you'd rather the alert itself, not the clock, decide when actions resume. Configure your snooze, then select **Snooze alert** to apply it.
 
