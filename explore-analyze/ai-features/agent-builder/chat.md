@@ -191,13 +191,17 @@ Tool call events show whether a tool is still running or has returned a response
 
 After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
-### View traces for a conversation round
+### View traces for a conversation round [view-traces]
 ```{applies_to}
 stack: ga 9.5+
 serverless: ga
 ```
 
 Each conversation round can record OpenTelemetry traces of how the agent ran. To inspect them, select the **View Trace** icon ({icon}`apm_trace`) on the round. A **Trace** flyout opens with a waterfall of the round's spans, including model calls and tool calls.
+
+The flyout is titled with the trace id and reports the span count and total duration. Each row in the waterfall shows the span's kind and duration, and model calls also show their input and output token counts.
+
+Select a span to open its details, including its generative AI attributes and any captured input and output. Message content appears only when the matching [trace privacy settings](collect-traces.md#trace-privacy-settings) are on. Otherwise the span reports that no input or output data is available.
 
 The **View Trace** icon appears only when trace collection is enabled and the conversation round has a trace. If trace collection is off, or the round produced no trace, the icon does not appear.
 
@@ -281,6 +285,51 @@ For example, before creating a dashboard the agent might ask which sample data s
 :alt: Clarifying question prompt showing multiple-choice options, a custom answer field, and a Skip question button
 :width: 650px
 :::
+
+## Create skills and workflows in chat [create-skills-and-workflows-directly-from-chat]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+In addition to answering questions and analyzing data, agents can help you create reusable skills and Elastic Workflows without leaving the conversation. Describe what you want to build in natural language:
+
+- **Skills**: For example, "Create a skill that handles production alerts using our incident runbook."
+- **Workflows**: For example, "Create a workflow that checks for failed payments every five minutes and sends a Slack notification."
+
+Creating a resource from chat is a [human-in-the-loop](#human-in-the-loop-prompts) process:
+
+1. The agent gathers the requirements from your request. If important information is missing or ambiguous, it pauses to ask [clarifying questions](#answer-a-clarifying-question).
+2. The agent generates a draft and presents it in the conversation. You can review the configuration and ask for changes in natural language.
+3. When the draft is ready, confirm creation from the preview:
+   - For skills, select **Create skill**.
+   - For workflows, select **Preview**, review the definition, then select **Save**. If you are replacing an existing workflow, select **Override**.
+
+   The resource is not created until you complete this step.
+
+When you create a workflow, include details such as its trigger, inputs, data sources, conditions, and connectors. The agent asks for any missing information, generates and validates the workflow YAML, and shows the proposed changes for you to review. You can continue refining the draft in the conversation before you open the preview.
+
+For example, the following response includes the generated workflow definition and a summary of its trigger and steps. Select **Preview** to review and save the workflow:
+
+:::{image} images/create-workflow-from-chat.png
+:screenshot:
+:alt: Agent Chat showing a workflow request, generated YAML diff, workflow summary, and Preview button
+:width: 720px
+:::
+
+For example, the following preview shows a skill draft that you can review before selecting **Create skill**:
+
+:::{image} images/create-skill-from-chat.png
+:screenshot:
+:alt: Skill draft in Agent Chat showing its description, instructions preview, associated tool references, and a Create skill button
+:width: 750px
+:::
+
+You need the same privileges that are required to create the resource in its management UI. For resource-specific fields, limitations, and alternative creation methods, refer to:
+
+- [Create and manage custom skills](custom-skills.md#create-a-skill-from-chat)
+- [Create and manage workflows](/explore-analyze/workflows.md)
 
 ## Customize your agent [customize-your-agent]
 
