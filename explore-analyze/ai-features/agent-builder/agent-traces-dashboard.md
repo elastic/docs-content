@@ -120,7 +120,7 @@ These fields contain the details the dashboard aggregates. Generative AI attribu
 
 The dashboard does not use these fields, but you can query them yourself. When an administrator opts in to capturing conversation content, prompts, responses, and tool call content are stored in the following attributes. Each one depends on a [trace privacy setting](collect-traces.md#trace-privacy-settings), and all of those settings are off by default.
 
-| Field | Span | Description | Requires |
+| Field | Span | Description | Required setting(s) |
 |---|---|---|---|
 | `attributes.gen_ai.input.messages` | `chat` | Chat history sent to the model, as a series of user, assistant, and tool turns | **Include user prompts in traces** for the user turns, **Include LLM responses in traces** for the assistant turns, and **Include tool call details in traces** for the tool turns |
 | `attributes.gen_ai.output.messages` | `chat` | Model responses | **Include LLM responses in traces** |
