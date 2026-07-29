@@ -60,6 +60,11 @@ To add interactive Options list and Range slider controls, create the controls, 
     :::{include} ../_snippets/esql-query-control-value-examples.md
     :::
 
+    :::{image} /explore-analyze/images/dashboard-control-query-filter-values.png
+    :alt: The Edit control flyout, showing the Write a query tab with an ES|QL query and the values it returns under Values preview
+    :screenshot:
+    :::
+
     :::{tip}
     Because the values come from a query, you can also chain the control to a [variable control](add-variable-controls.md) by referencing its variable with the `?variable_name` syntax.
     :::

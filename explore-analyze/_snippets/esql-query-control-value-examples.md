@@ -5,8 +5,3 @@ FROM kibana_sample_data_logs
 | WHERE extension.keyword == "css"
 | STATS BY machine.os.keyword
 ```
-
-:::{image} /explore-analyze/images/dashboard-control-query-filter-values.png
-:alt: A control populated by an ES|QL query that filters the offered values to operating systems seen in CSS file requests
-:screenshot:
-:::
