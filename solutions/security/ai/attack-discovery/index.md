@@ -35,20 +35,6 @@ Each discovery includes the following information describing the potential threa
 :width: 60%
 :::
 
-### View discovery details in the flyout [attack-discovery-details-flyout]
-
-```{applies_to}
-stack: ga 9.5+
-serverless:
-  security: ga
-```
-
-When you open an attack from the [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), its details appear in a flyout. The **Overview** tab organizes the information above into the following sections:
-
-* **AI Summary**: The discovery's title and the LLM-generated summary of the potential threat.
-* **Visualizations**: An expandable **Attack Chain** diagram that maps the attack to [MITRE ATT&CK](https://attack.mitre.org/) tactics. Expand or collapse this section to show or hide the diagram; your choice persists across sessions.
-* **Insights**: The related entities (users and hosts) and correlated alerts involved in the attack.
-
 ## Get started with Attack Discovery [attack-discovery-get-started]
 
 Choose how to start a run from the **Attacks** view, a workflow, {{agent-builder}}, or the **Attack Discovery** page in [Run Attack Discovery](/solutions/security/ai/attack-discovery/run-attack-discovery.md).
