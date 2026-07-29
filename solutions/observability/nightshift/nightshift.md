@@ -10,7 +10,7 @@ products:
 
 # Nightshift
 
-Nightshift is an AI-powered observability product built into Elastic. It analyzes your telemetry, automatically detects what matters, and surfaces actionable intelligence so your team can spend less time finding problems and more time fixing them.
+Nightshift is an AI-powered observability product built into Elastic. It analyzes your telemetry, automatically detects what matters, and surfaces actionable intelliƒgence so your team can spend less time finding problems and more time fixing them.
 
 Nightshift works by:
 
@@ -27,7 +27,7 @@ Nightshift works by:
 
 ## Nightshift UI [nightshift-landing-page]
 
-The Nightshift landing page is your central hub for active Significant Events. It shows critical Significant Events detected across your streams, what [investigations](./investigations.md) are running, and what needs your attention.
+The Nightshift landing page is your central hub for active Significant Events. It shows critical and high severity Significant Events detected across your streams, what [investigations](./investigations.md) are running, and what needs your attention.
 
 ## Access the Nightshift UI [nightshift-landing-page-access]
 
@@ -40,7 +40,7 @@ If you don't see any events, Nightshift may still be running its initial KI extr
 The landing page is divided into two panels:
 
 - **Needs action** and **Resolved**: These panels show the count of events that need action and resolved events. Select the panel to go to the list of active or resolved significant events.
-- **Blast radius**: This panel shows the most affected entities. Select an entity to filter results related to it.
+- **Blast radius**: This panel shows the most affected services. Select a service to filter Significant Events related to it.
 
 ### View all events [nightshift-events-view-all]
 
