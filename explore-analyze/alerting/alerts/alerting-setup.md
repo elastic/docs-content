@@ -79,7 +79,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-To let users read alerts and perform per-alert actions such as snooze, unsnooze, and [acknowledge](view-alerts.md#acknowledge-alerts), assign one or both of the following feature privileges. These privileges do not include rule management.
+To let users read alerts and perform per-alert actions such as [snooze](view-alerts.md), unsnooze, and [acknowledge](view-alerts.md#acknowledge-alerts), assign one or both of the following feature privileges. These privileges do not include rule management.
 
 **{{kib}} privileges**
 
