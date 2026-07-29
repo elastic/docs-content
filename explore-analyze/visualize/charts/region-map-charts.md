@@ -148,6 +148,9 @@ The following examples show various configuration options for building impactful
 This example creates a choropleth map that colors countries by request count, using the `geo.dest` field which contains two-letter ISO country codes.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -254,6 +257,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 This example colors countries by the number of unique customers rather than total orders, giving a clearer picture of market reach per region.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -355,6 +361,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 This example maps average flight ticket prices by destination country, highlighting which regions have the most expensive flights.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
