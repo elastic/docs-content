@@ -16,11 +16,21 @@ products:
 Information about your current {{ecloud}} subscription usage is available directly from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and includes:
 
 * Monitor usage for the current month, including month-to-date usage
-* For customers with annual prepaid credits, the total value of credits to be applied in the current billing cycle
+* For customers with annual prepaid credits, the total value of credits to be applied in the current billing cycle (visible only to users with the **Organization owner** or **Billing admin** role)
 * Check the usage breakdown for a selected time range
 * View usage totals by product
 
+## View detailed usage
+
 You can check the detailed usage for a selected time range grouped either by product or by resource, such as an {{ech}} deployment or a {{serverless-full}} project.
+
+The information you can see on the **Usage** page depends on your {{ecloud}} [roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#types-of-roles):
+
+* Users with the **Organization owner** or **Billing admin** role can view usage and costs for the entire organization.
+* Users with a cloud resource access role can view usage and costs for the {{ech}} deployments and {{serverless-short}} projects they have access to.
+* Users with a connected cluster access role can view usage and costs for the connected clusters they have access to.
+
+Additionally, for any resource you currently have access to, you can view its full available cost history, including costs from before you were granted access.
 
 To access your account usage:
 
@@ -28,5 +38,5 @@ To access your account usage:
 2. From the navigation menu, select **Billing > Usage**.
 
 ::::{important}
-The usage breakdown information visible on the **Usage** page is an estimate, and does not include prepaid credits, free allowances or any discounts. To get the exact amount you owe for a given month, check your invoices in the [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md).
+The usage breakdown information visible on the **Usage** page is an estimate, and does not include prepaid credits, free allowances or any discounts. If you're an **Organization owner** or **Billing admin**, check your invoices in the [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md) to find the exact amount you owe for a given month.
 ::::
