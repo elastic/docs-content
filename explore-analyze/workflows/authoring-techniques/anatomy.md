@@ -23,7 +23,7 @@ The `inputs` field can sit at the top of the workflow or inside a `manual` trigg
 
 ::::{applies-switch}
 
-:::{applies-item} stack: preview 9.3, ga 9.4
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
 ```yaml
 name: slo-breach-response            # identity
 description: Investigate and mitigate SLO breaches.
@@ -36,11 +36,10 @@ version: "1"                         # schema version
 
 triggers:                            # when it runs
   - type: manual
-
-inputs:                              # runtime parameters (optional)
-  - name: service_name
-    type: string
-    required: true
+    inputs:                          # runtime parameters (optional)
+      - name: service_name
+        type: string
+        required: true
 
 consts:                              # reusable constants (optional)
   severity_threshold: 70
@@ -62,7 +61,7 @@ steps:                               # what it does
 ```
 :::
 
-:::{applies-item} { stack: ga 9.5+, serverless: ga }
+:::{applies-item} stack: preview =9.3, ga =9.4
 ```yaml
 name: slo-breach-response            # identity
 description: Investigate and mitigate SLO breaches.
@@ -75,10 +74,11 @@ version: "1"                         # schema version
 
 triggers:                            # when it runs
   - type: manual
-    inputs:                          # runtime parameters (optional)
-      - name: service_name
-        type: string
-        required: true
+
+inputs:                              # runtime parameters (optional)
+  - name: service_name
+    type: string
+    required: true
 
 consts:                              # reusable constants (optional)
   severity_threshold: 70
@@ -189,22 +189,6 @@ The location of `inputs` in the YAML depends on your version. On stack 9.4 and e
 
 ::::{applies-switch}
 
-:::{applies-item} stack: preview 9.3, ga 9.4
-```yaml
-inputs:
-  - name: alert_id
-    type: string
-    required: true
-  - name: severity
-    type: choice
-    options: [low, medium, high, critical]
-    default: medium
-  - name: dry_run
-    type: boolean
-    default: false
-```
-:::
-
 :::{applies-item} { stack: ga 9.5+, serverless: ga }
 ```yaml
 triggers:
@@ -220,6 +204,22 @@ triggers:
       - name: dry_run
         type: boolean
         default: false
+```
+:::
+
+:::{applies-item} stack: preview =9.3, ga =9.4
+```yaml
+inputs:
+  - name: alert_id
+    type: string
+    required: true
+  - name: severity
+    type: choice
+    options: [low, medium, high, critical]
+    default: medium
+  - name: dry_run
+    type: boolean
+    default: false
 ```
 :::
 
@@ -316,7 +316,8 @@ When you invoke a workflow — manually, on schedule, or through a trigger — t
 
 | State | Meaning |
 |---|---|
-| `pending` | The execution is queued and waiting to start. |
+| `queued` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | The execution is in the concurrency backlog waiting for a slot to open. Distinct from `pending`. Appears in the execution view with a **Queued** status. Refer to [Concurrency control](/explore-analyze/workflows/authoring-techniques/settings.md#workflows-settings-concurrency). |
+| `pending` | The execution is scheduled and waiting to start. |
 | `running` | At least one step is executing. |
 | `waiting` | The workflow has paused on a [`wait`](/explore-analyze/workflows/steps/wait.md) step. Returns to `running` when the timer fires. |
 | `waiting_for_input` | The workflow has paused on a [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) step. Returns to `running` when the input arrives. |
@@ -325,7 +326,7 @@ When you invoke a workflow — manually, on schedule, or through a trigger — t
 | `failed` | Terminal. A step failed and `on-failure` did not recover. |
 | `cancelled` | Terminal. The operator cancelled the run, or the concurrency strategy stopped it. |
 | `timed_out` | Terminal. The workflow exceeded its `settings.timeout`. |
-| `skipped` | Terminal. The concurrency `drop` strategy skipped this run because another execution was already in flight. |
+| `skipped` | Terminal. The run was discarded: the concurrency `drop` strategy skipped it because another execution was already in flight, or a `queue` backlog exceeded `queue-size` or `queue-ttl`. |
 
 Five states are terminal: `completed`, `failed`, `cancelled`, `timed_out`, and `skipped`. Every terminal execution reports its usage to the consumption metering system. Refer to the [Workflow settings page](/explore-analyze/workflows/authoring-techniques/settings.md) for how concurrency and execution metering interact.
 
