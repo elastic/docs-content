@@ -59,7 +59,7 @@ To add interactive Options list and Range slider controls, create the controls, 
     ::::{tab-item} Write a query
     :sync: write-a-query
 
-    1. Write an {{esql}} query that returns a single column. The column determines the field the control filters on and the values it offers. Use a command such as `STATS BY` to return a single column.
+    1. Write an [{{esql}}](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) query that returns a single column. The column determines the field the control filters on and the values it offers. Use a command such as `STATS BY` to return a single column.
     2. Run the query to preview the values it returns under **Values preview**. If the query returns more than one column, select a column or narrow the query. If it returns no values, edit the query and run it again.
 
     :::{include} ../_snippets/esql-query-control-value-examples.md
