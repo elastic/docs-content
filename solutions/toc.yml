@@ -36,14 +36,17 @@ toc:
                   - file: search/semantic-search/semantic-search-inference.md
                   - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
                   - file: search/semantic-search/cohere-es.md
+                  - file: search/semantic-search/dense-versus-sparse-ingest-pipelines.md
+                  - file: search/semantic-search/using-openai-compatible-models.md
+              - file: search/multimodal-search.md
+                children:
+                  - file: search/multimodal-search/multimodal-search-tutorial.md
               - file: search/vector/dense-vector.md
                 children:
                   - file: search/vector/knn.md
                   - file: search/vector/bring-own-vectors.md
                   - file: search/vector/vector-storage-for-semantic-search.md
               - file: search/vector/sparse-vector.md
-              - file: search/vector/dense-versus-sparse-ingest-pipelines.md
-              - file: search/using-openai-compatible-models.md
           - file: search/hybrid-search.md
             children:
               - file: search/hybrid-semantic-text.md
