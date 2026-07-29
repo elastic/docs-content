@@ -43,8 +43,6 @@ On a dashboard, you can also add a variable control directly by selecting **Add*
 :::{include} ../_snippets/variable-control-procedure.md
 :::
 
-For controls that use **Values from a query**, you can shape the options the control offers:
-
 :::{include} ../_snippets/esql-query-control-value-examples.md
 :::
 
