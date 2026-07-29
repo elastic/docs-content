@@ -27,13 +27,11 @@ Nightshift works by:
 
 ## Nightshift UI [nightshift-landing-page]
 
-The Nightshift landing page is your central hub for active Significant Events. It shows critical and high severity Significant Events detected across your streams, what [investigations](./investigations.md) are running, and what needs your attention.
+The Nightshift UI is your central hub for active Significant Events. It shows **critical** and **high** severity Significant Events detected across your streams, [investigations](./investigations.md) that are running and resolved, and what needs your attention.
 
 ## Access the Nightshift UI [nightshift-landing-page-access]
 
-From your {{observability}} project, navigate to **Streams** ➡ **Significant Events** ➡ **Nightshift** to open the Nightshift UI. Nightshift opens and begins loading Significant Events.
-
-If you don't see any events, Nightshift may still be running its initial KI extraction and rule generation. If your streams have sufficient data, events will surface automatically.
+From your {{observability}} project, navigate to **Streams** ➡ **Significant Events** ➡ **Nightshift** to open the Nightshift UI. If you don't see any Significant Events, Nightshift might still be running its initial KI extraction and rule generation. If your streams have sufficient data, Significant Events surface automatically.
 
 ## Significant Events list [nightshift-events-list]
 
@@ -44,7 +42,7 @@ The landing page is divided into two panels:
 
 ### View all events [nightshift-events-view-all]
 
-Click **View all Significant Events** to open the full list of Significant Events. Here you can select Significant Events with lower severity ratings and run inspections on them.
+Click **View all Significant Events** to open the full list of Significant Events. Here you can review Significant Events with severity ratings below **critical** and **high** and investigate them.
 
 ## Significant Event flyout [nightshift-event-detail]
 
@@ -52,7 +50,7 @@ Click any event in the **Needs action** or **Resolved** list to open the event f
 
 ### Overview [nightshift-event-detail-overview]
 
-The top of the flyout shows the event title, triage status (**Needs action** or resolved), investigation status (**Investigating** or **Investigated**), timestamp, and a plain-language summary of what Nightshift detected.
+The top of the flyout shows the event title, triage status (**Needs action** or **Resolved**), investigation status (**Investigating** or **Investigated**), timestamp, and a plain-language summary of what Nightshift detected.
 
 ### Detections [nightshift-event-detail-detections]
 
@@ -60,7 +58,7 @@ The **Detections** section lists the individual signals that contributed to this
 
 ### Investigations [nightshift-event-detail-investigations]
 
-The **Investigations** section shows the [investigations](./investigations.md) Nightshift ran for this event.
+The **Investigations** section shows the investigation Nightshift ran for this event.
 
 For more on what investigations produce and how they work, see [Investigations](./investigations.md).
 
