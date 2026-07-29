@@ -86,6 +86,9 @@ toc:
           - file: elasticsearch-solution-project/search-applications/search-application-api.md
           - file: elasticsearch-solution-project/search-applications/search-application-security.md
           - file: elasticsearch-solution-project/search-applications/search-application-client.md
+  - hidden: vector-database.md
+    children:
+      - hidden: vector-database/get-started.md
   - file: observability.md
     children:
       - file: observability/get-started.md
@@ -500,6 +503,11 @@ toc:
           - file: observability/streams/processors/uri-parts.md
           - file: observability/streams/processors/user-agent.md
           - file: observability/streams/processors/manual-pipeline-configuration.md
+        - hidden: observability/streams/significant-events/index.md
+          children:
+            - hidden: observability/streams/significant-events/how-it-works.md
+            - hidden: observability/streams/significant-events/operator-guide.md
+            - hidden: observability/streams/significant-events/knowledge-indicators.md
       - hidden: observability/nightshift/nightshift.md
         children:
           - hidden: observability/nightshift/get-started.md
