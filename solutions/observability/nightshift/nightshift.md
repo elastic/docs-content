@@ -10,7 +10,7 @@ products:
 
 # Nightshift
 
-Nightshift is an AI-powered observability product built into Elastic. It analyzes your telemetry, automatically detects what matters, and surfaces actionable intelliƒgence so your team can spend less time finding problems and more time fixing them.
+Nightshift is an AI-powered observability feature built into Elastic. It monitors your systems, discovers Significant Events, investigates likely causes, and helps your team remediate incidents.
 
 Nightshift works by:
 
