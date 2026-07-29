@@ -12,7 +12,7 @@ To access AutoOps in your {{serverless-short}} project, follow these steps:
 
 1. Log in to your {{ecloud}} account.
 2. Locate the {{serverless-short}} project you want to work on and select **Manage**.
-3. On the project overview page, in the **Usage and Performance** section, select **View in AutoOps**.
+3. Select **AutoOps** from the navigation menu or click **Open AutoOps** in the project overview.
 
 :::{image} /deploy-manage/images/serverless-autoops-how-to-access.png
 :screenshot:

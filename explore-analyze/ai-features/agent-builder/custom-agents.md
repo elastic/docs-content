@@ -145,7 +145,7 @@ Switch to the **Plugins** tab to assign plugins to your agent. Each plugin bundl
 For more information, refer to [Plugins in {{agent-builder}}](plugins.md).
 
 :::{note}
-The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}}.
+The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
 :::::

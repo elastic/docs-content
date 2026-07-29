@@ -220,7 +220,7 @@ See .github/scripts/verify-lens-api-examples.py for full usage. -->
 ![Example Lens area chart geographical regions](../../images/kibana-area-geo-regions.png " =70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 Send the following request to create a stacked area chart that shows record counts broken down by geographic destination.
 
@@ -361,7 +361,7 @@ Visualizing HTTP response codes over time, highlighting the proportion of succes
 ![Example Lens area chart response code annotations](../../images/kibana-response-code-annotations.png " =70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 Send the following request to create a percentage area chart that shows the distribution of HTTP response codes over time.
 
