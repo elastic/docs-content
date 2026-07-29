@@ -132,7 +132,7 @@ Most hosts that support OAuth 2.1 accept a similar configuration to Claude. Prov
 :::::
 
 :::{note}
-The `mcp-remote` adapter stores OAuth credentials in `~/.mcp-auth` on your machine, keyed by MCP server URL. If more than one MCP host uses `mcp-remote` with the same server URL and client ID, those hosts share one authorization and one app connection.
+The `mcp-remote` adapter stores OAuth credentials in `~/.mcp-auth` on your machine, keyed by MCP server URL. If more than one MCP host uses `mcp-remote` with the same server URL and client ID, those hosts share one authorization and one app connection. After you complete the authorization flow in the first host, additional hosts that use the same configuration don't prompt you to authorize again.
 :::
 
 ::::::
