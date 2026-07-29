@@ -38,7 +38,6 @@ Both use the same foundational concepts such as documents, mappings, templates, 
 
 How your indices are structured and managed affects query performance, storage efficiency, and how easily your cluster scales. {{es}} provides tools to control document field types, manage unstructured text, standardize index configurations, and to simplify and automate access logic:
 
-* {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` [](/manage-data/data-store/columnar.md): Choose columnar index mode when you want lower storage cost and analytics-oriented defaults while keeping the same search APIs and dashboards.
 * [](/manage-data/data-store/mapping.md): Define how documents and their fields are stored and indexed. Choose between dynamic mapping for automatic field detection and explicit mapping for full control over field types and indexing behavior.
 * [](/manage-data/data-store/text-analysis.md): Configure how unstructured text is converted into a structured format optimized for full-text search, including tokenization, normalization, and custom analyzers.
 * [](/manage-data/data-store/templates.md): Define reusable index configurations including settings, mappings, and aliases that are automatically applied when new indices or data streams are created.

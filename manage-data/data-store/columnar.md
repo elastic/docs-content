@@ -36,6 +36,7 @@ Columnar mode isn't a universal default.
 Prefer a `standard` index (or another specialized mode) when your workload is document-centric search that needs the original JSON `_source` as submitted, or when you rely on inverted indexes and related structures on most fields by default.
 
 For metrics that need time series dimensions and metric field semantics, use a [time series data stream](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) instead.
+
 For logs that should keep the current `logsdb` defaults without switching to a fully columnar store, use a [logs data stream](/manage-data/data-store/data-streams/logs-data-stream.md).
 
 ## Columnar modes [columnar-modes]
