@@ -191,13 +191,17 @@ Tool call events show whether a tool is still running or has returned a response
 
 After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
-### View traces for a conversation round
+### View traces for a conversation round [view-traces]
 ```{applies_to}
 stack: ga 9.5+
 serverless: ga
 ```
 
 Each conversation round can record OpenTelemetry traces of how the agent ran. To inspect them, select the **View Trace** icon ({icon}`apm_trace`) on the round. A **Trace** flyout opens with a waterfall of the round's spans, including model calls and tool calls.
+
+The flyout is titled with the trace id and reports the span count and total duration. Each row in the waterfall shows the span's kind and duration, and model calls also show their input and output token counts.
+
+Select a span to open its details, including its generative AI attributes and any captured input and output. Message content appears only when the matching [trace privacy settings](collect-traces.md#trace-privacy-settings) are on. Otherwise the span reports that no input or output data is available.
 
 The **View Trace** icon appears only when trace collection is enabled and the conversation round has a trace. If trace collection is off, or the round produced no trace, the icon does not appear.
 
