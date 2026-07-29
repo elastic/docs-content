@@ -14,33 +14,14 @@ products:
   - id: security
   - id: observability
   - id: cloud-serverless
-description: Configure case closure options, custom fields, templates, and connectors for external incident management systems.
+description: Configure case closure options, external connectors, and custom observable types for cases.
 ---
 
 # Configure case settings [configure-case-settings]
 
-Customize how your team works with cases by setting up templates for faster case creation, adding custom fields to capture data specific to your workflow, and connecting to external systems like Jira or ServiceNow to keep incidents in sync.
+Customize how your team works with cases by configuring automatic case closure, connecting to external systems like Jira or ServiceNow, and defining custom observable types. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For templates and the field library, refer to [Case templates](manage-case-templates.md).
 
-To perform these tasks, you must have [full access](control-case-access.md) to the appropriate case and connector features.
-
-::::{applies-switch}
-
-:::{applies-item} stack: ga
-To access case settings:
-* **{{stack-manage-app}}**: Go to **{{stack-manage-app}}** > **Cases**, then click **Settings**.
-* **{{elastic-sec}}**: Find **Cases** in the navigation menu or search for `Security/Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**.
-* **{{observability}}**: Find **Cases** in the navigation menu or search for `Observability/Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**.
-:::
-
-:::{applies-item} serverless: ga
-To access case settings:
-* **{{elastic-sec}}**: Find **Cases** in the navigation menu or search for `Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**.
-* **{{observability}}**: Find **Cases** in the navigation menu or search for `Cases` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**.
-
-:::
-
-::::
-
+To perform these tasks, you must have [full access](control-case-access.md) to the appropriate case and connector features. Find **Cases** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Settings**.
 
 ## Close cases automatically [case-closures]
 
@@ -54,7 +35,7 @@ Connectors let you send cases to external incident management systems. To create
 
 ### Create a connector [create-connector]
 
-You can create connectors in **{{stack-manage-app}} > {{connectors-ui}}** (see [Connectors](/deploy-manage/manage-connectors.md)) or from the case **Settings** page:
+You can create connectors in **{{stack-manage-app}} → {{connectors-ui}}** (see [Connectors](/deploy-manage/manage-connectors.md)) or from the case **Settings** page:
 
 1. From the **Incident management system** list, select **Add new connector**.
 2. Select the system to send cases to:
@@ -89,6 +70,16 @@ When you push updates, mapped fields are either overwritten or appended, dependi
 
 ## Add custom fields [case-custom-fields]
 
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
+
+Custom fields are managed in the [field library](create-case-field-library.md) instead of case settings. Existing custom fields become **global fields** in the field library automatically, when you upgrade to {{stack}} 9.5 or when the feature becomes available on {{serverless-short}}. You don't need to take any action.
+
+:::
+
+:::{applies-item} stack: ga 9.0-9.4
+
 You can add optional and required fields for customized case collaboration.
 
 To create a custom field:
@@ -100,15 +91,33 @@ When you create a custom field, it's added to all new and existing cases. In exi
 
 You can subsequently remove or edit custom fields on the **Settings** page.
 
+:::
+
+::::
+
 ## Create templates [case-templates]
 
-Templates let you pre-fill case fields like severity, tags, title, description, and custom fields—speeding up case creation and ensuring consistency across your team. When creating a case, you can select a template and use its values or override them. Updating or deleting templates does not affect existing cases.
+Templates let you pre-fill case fields like severity, tags, title, description, and custom fields, so your team can create cases faster and more consistently. When creating a case, you can select a template and use its values or override them. Updating or deleting templates does not affect existing cases.
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
+
+Templates are managed on the **Templates** page instead of case settings. Existing templates are migrated to the new YAML-based format automatically, when you upgrade to {{stack}} 9.5 or when the feature becomes available on {{serverless-short}}. You don't need to take any action. Refer to [Case templates](manage-case-templates.md).
+
+:::
+
+:::{applies-item} stack: ga 9.0-9.4
 
 To create a template:
 
 1. In the **Templates** section, click **Add template**.
-2. Provide a template name and case severity. 
+2. Provide a template name and case severity.
 3. (Optional) Add template tags and a description, values for each case field, and a case connector.
+
+:::
+
+::::
 
 ## Add observable types [cases-observable-types]
 
