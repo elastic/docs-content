@@ -38,6 +38,8 @@ Conditions for each rule can be applied to specific metrics that you select. You
 
 In this example, the conditions state that you receive a critical alert for hosts with a CPU usage of 120% or above and a warning alert if CPU usage is 100% or above. Note that you will receive an alert only if memory usage is 20% or above, as per the second condition.
 
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` When the warning threshold is met, the alert severity is set to `warning`. When the critical threshold is met, the alert severity is set to `critical`. You can use these severity values in [per-alert snooze](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alert-options) conditions, such as to unsnooze an alert when its severity changes.
+
 {applies_to}`stack: ga =9.0, removed 9.1+` When you select **Alert me if there’s no data**, the rule triggers if the metrics don’t report any data over the expected time period, or if the rule fails to query {{es}}.
 
 
