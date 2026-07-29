@@ -24,6 +24,9 @@ This section includes information on how to set up {{es}} and get it running, in
 
 To quickly set up {{es}} and {{kib}} in Docker for local development or testing, jump to [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
 
+:::{include} /deploy-manage/deploy/_snippets/deploy-options.md
+:::
+
 ## Installation methods
 
 If you want to install and manage {{es}} yourself, you can:
