@@ -23,7 +23,7 @@ The `inputs` field can sit at the top of the workflow or inside a `manual` trigg
 
 ::::{applies-switch}
 
-:::{applies-item} stack: preview 9.3, ga 9.4
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
 ```yaml
 name: slo-breach-response            # identity
 description: Investigate and mitigate SLO breaches.
@@ -36,11 +36,10 @@ version: "1"                         # schema version
 
 triggers:                            # when it runs
   - type: manual
-
-inputs:                              # runtime parameters (optional)
-  - name: service_name
-    type: string
-    required: true
+    inputs:                          # runtime parameters (optional)
+      - name: service_name
+        type: string
+        required: true
 
 consts:                              # reusable constants (optional)
   severity_threshold: 70
@@ -62,7 +61,7 @@ steps:                               # what it does
 ```
 :::
 
-:::{applies-item} { stack: ga 9.5+, serverless: ga }
+:::{applies-item} stack: preview =9.3, ga =9.4
 ```yaml
 name: slo-breach-response            # identity
 description: Investigate and mitigate SLO breaches.
@@ -75,10 +74,11 @@ version: "1"                         # schema version
 
 triggers:                            # when it runs
   - type: manual
-    inputs:                          # runtime parameters (optional)
-      - name: service_name
-        type: string
-        required: true
+
+inputs:                              # runtime parameters (optional)
+  - name: service_name
+    type: string
+    required: true
 
 consts:                              # reusable constants (optional)
   severity_threshold: 70
@@ -189,22 +189,6 @@ The location of `inputs` in the YAML depends on your version. On stack 9.4 and e
 
 ::::{applies-switch}
 
-:::{applies-item} stack: preview 9.3, ga 9.4
-```yaml
-inputs:
-  - name: alert_id
-    type: string
-    required: true
-  - name: severity
-    type: choice
-    options: [low, medium, high, critical]
-    default: medium
-  - name: dry_run
-    type: boolean
-    default: false
-```
-:::
-
 :::{applies-item} { stack: ga 9.5+, serverless: ga }
 ```yaml
 triggers:
@@ -220,6 +204,22 @@ triggers:
       - name: dry_run
         type: boolean
         default: false
+```
+:::
+
+:::{applies-item} stack: preview =9.3, ga =9.4
+```yaml
+inputs:
+  - name: alert_id
+    type: string
+    required: true
+  - name: severity
+    type: choice
+    options: [low, medium, high, critical]
+    default: medium
+  - name: dry_run
+    type: boolean
+    default: false
 ```
 :::
 

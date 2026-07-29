@@ -146,7 +146,7 @@ settings:
     max: 1
 ```
 
-When two alerts fire on the same host within seconds, the first workflow runs; the second goes straight to the `skipped` terminal state.
+When two alerts fire on the same host within seconds, the first workflow runs, while the second goes straight to the `skipped` terminal state.
 
 ### Cancel in-progress runs for scheduled health checks [workflows-settings-concurrency-cancel]
 
