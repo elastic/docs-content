@@ -14,8 +14,8 @@ Nightshift is an AI-powered observability feature built into Elastic. It monitor
 
 Nightshift works by:
 
-1. **Extracting Knowledge Indicators (KIs)**: Nightshift reads your stream data and extracts stable facts: what services are running, what infrastructure is in use, what technologies are present, and how they relate to each other.
-2. **Generating and running detection rules**: Based on KIs, Nightshift generates ES|QL detection rules and runs them continuously. When rule firing patterns change, it detects the change.
+1. **Extracting Knowledge Indicators (KIs)**: Nightshift reads your stream data and extracts stable facts: what services are running, what infrastructure is in use, what technologies are present, and how they relate to each other. See [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md).
+2. **Generating and running detection rules**: Based on KIs, Nightshift generates ES|QL detection rules and runs them continuously. When rule firing patterns change, it detects the change. See [How Significant Events works](../streams/significant-events/how-it-works.md).
 3. **Surfacing Significant Events**: When detections correlate into something meaningful, Nightshift promotes a Significant Event — a concise summary of what's happening, with severity, evidence, and suggested next steps.
 4. **Investigating automatically**: For **critical** and **high** severity Significant Events, Nightshift triggers an autonomous [investigation](./investigations.md): it reads your system memory, runs targeted queries, and produces a root cause hypothesis with remediation options.
 5. **Learning over time**: The [memory](./memory.md) system captures knowledge from each incident so future investigations are faster and more precise.
@@ -76,6 +76,9 @@ The AI Agent has access to the event's detections, associated KIs, and [memory](
 
 ## Learn more [nightshift-landing-page-nav]
 
-- [Nightshift overview](./nightshift.md)
 - [Investigations](./investigations.md)
 - [Memory](./memory.md)
+- [Significant Events overview](../streams/significant-events/index.md)
+- [How Significant Events works](../streams/significant-events/how-it-works.md)
+- [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md)
+- [Operator guide](../streams/significant-events/operator-guide.md)

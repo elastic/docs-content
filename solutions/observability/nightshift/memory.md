@@ -29,7 +29,7 @@ Memory pages are created manually by the user, through the [onboarding interview
 
 ### Synthesize Memory [nightshift-memory-synthesis]
 
-Run the **Synthesize Memory** workflow to have it build wiki pages by selectively querying available information sources like Knowledge Indicators, Significant Events, existing memory pages, and connected external tools. The agent decides which sources to consult based on what's most relevant, then synthesizes the results into coherent pages organized around services, infrastructure, and operations.
+Run the **Synthesize Memory** workflow to have it build wiki pages by selectively querying available information sources like [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md), Significant Events, existing memory pages, and connected external tools. The agent decides which sources to consult based on what's most relevant, then synthesizes the results into coherent pages organized around services, infrastructure, and operations.
 
 ### Consolidate Memory [nightshift-memory-consolidation]
 
@@ -79,3 +79,5 @@ Memory is also available to you directly during chat. You can ask the AI Agent w
 
 - [Nightshift overview](./nightshift.md)
 - [Investigations](./investigations.md)
+- [How Significant Events works](../streams/significant-events/how-it-works.md)
+- [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md)

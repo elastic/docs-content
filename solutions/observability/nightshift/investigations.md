@@ -56,5 +56,6 @@ A completed investigation provides:
 ## Learn more [nightshift-investigations-nav]
 
 - [Nightshift overview](./nightshift.md)
-- [Investigations](./investigations.md)
 - [Memory](./memory.md)
+- [How Significant Events works](../streams/significant-events/how-it-works.md)
+- [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md)
