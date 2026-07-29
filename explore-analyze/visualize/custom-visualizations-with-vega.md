@@ -1191,7 +1191,7 @@ Add a signal that updates the {{kib}} time filter when the cursor is released wh
 Learn more about {{kib}} extension, additional **Vega** resources, and examples.
 
 
-#### Reference for {{kib}} extensions [reference-for-kibana-extensions]
+### Reference for {{kib}} extensions [reference-for-kibana-extensions]
 
 {{kib}} has extended Vega and Vega-Lite with extensions that support:
 
@@ -1206,7 +1206,7 @@ Learn more about {{kib}} extension, additional **Vega** resources, and examples.
 * (Vega only) Expression functions which can update the time range and dashboard filters
 
 
-##### Automatic sizing [vega-sizing-and-positioning]
+#### Automatic sizing [vega-sizing-and-positioning]
 
 Most users will want their Vega visualizations to take the full available space, so unlike Vega examples, `width` and `height` are not required parameters in {{kib}} because your spec will be merged with the default {{kib}} settings in most cases:
 
@@ -1246,12 +1246,12 @@ Autosize in Vega-Lite has [several limitations](https://vega.github.io/vega-lite
 
 
 
-##### Default theme to match {{kib}} [vega-theme]
+#### Default theme to match {{kib}} [vega-theme]
 
 {{kib}} registers a default [Vega color scheme](https://vega.github.io/vega/docs/schemes/) with the id `elastic`, and sets a default color for each `mark` type. Override it by providing a different `stroke`, `fill`, or `color` (Vega-Lite) value.
 
 
-##### Writing {{es}} queries in Vega [vega-queries]
+#### Writing {{es}} queries in Vega [vega-queries]
 
 {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Prefer [Writing {{esql}} queries in Vega](#vega-esql-queries) when you can use {{esql}}. Use the Query DSL approach in this section when {{esql}} is unavailable, or when you already have a Query DSL request you want to reuse.
 
@@ -1397,7 +1397,7 @@ When using `"%context%": true` or defining a value for `"%timefield%"` the body 
 The `"%timefilter%"` can also be used to specify a single min or max value. The date_histogram’s `extended_bounds` can be set with two values - min and max. Instead of hardcoding a value, you may use `"min": {"%timefilter%": "min"}`, which will be replaced with the beginning of the current time range. The `shift` and `unit` values are also supported. The `"interval"` can also be set dynamically, depending on the currently picked range: `"interval": {"%autointerval%": 10}` will try to get about 10-15 data points (buckets).
 
 
-##### Writing {{esql}} queries in Vega [vega-esql-queries]
+#### Writing {{esql}} queries in Vega [vega-esql-queries]
 ```{applies_to}
 stack: ga 9.4
 serverless: ga
@@ -1494,6 +1494,49 @@ format: {property: "features"}
 ```
 
 
+#### Additional tooltip styling [vega-tooltip]
+
+{{kib}} has installed the [Vega tooltip plugin](https://vega.github.io/vega-lite/docs/tooltip.html), so tooltips can be defined in the ways documented there. Beyond that, {{kib}} also supports a configuration option for changing the tooltip position and padding:
+
+```js
+{
+  config: {
+    kibana: {
+      tooltips: {
+        position: 'top',
+        padding: 15,
+        textTruncate: true,
+      }
+    }
+  }
+}
+```
+
+
+#### Enable URL loading from any domain [vega-url-loading]
+
+**Vega** can load data from any URL. To enable, set `vis_type_vega.enableExternalUrls: true` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
+
+The files that the external URLs load must allow [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). The remote URL must include `Access-Control-Allow-Origin`, which allows requests from the {{kib}} URL.
+
+You can make the current time range part of the external as a millisecond timestamp by using the placeholders `%timefilter_min%` and `%timefilter_max%`, e.g. `http://example.com?min=%timefilter_min%`.
+
+
+#### Vega Inspector [vega-inspector]
+
+Use the contextual **Inspect** tool to gain insights into different elements.
+
+
+#### Inspect {{es}} requests [inspect-elasticsearch-requests]
+
+**Vega** uses the [{{es}} search API]({{es-apis}}operation/operation-search) to get documents and aggregation results from {{es}}. To troubleshoot these requests, click **Inspect**, which shows the most recent requests. In case your specification has more than one request, you can switch between the views using the **View** dropdown.
+
+:::{image} /explore-analyze/images/kibana-vega_tutorial_inspect_requests.png
+:alt: vega tutorial inspect requests
+:screenshot:
+:::
+
+
 ### Vega with a Map [vega-with-a-map]
 ```{applies_to}
 stack: preview
@@ -1572,49 +1615,6 @@ The visualization automatically injects a `"projection"`, which you can use to c
     }
   ]
 ```
-
-
-##### Additional tooltip styling [vega-tooltip]
-
-{{kib}} has installed the [Vega tooltip plugin](https://vega.github.io/vega-lite/docs/tooltip.html), so tooltips can be defined in the ways documented there. Beyond that, {{kib}} also supports a configuration option for changing the tooltip position and padding:
-
-```js
-{
-  config: {
-    kibana: {
-      tooltips: {
-        position: 'top',
-        padding: 15,
-        textTruncate: true,
-      }
-    }
-  }
-}
-```
-
-
-##### Enable URL loading from any domain [vega-url-loading]
-
-**Vega** can load data from any URL. To enable, set `vis_type_vega.enableExternalUrls: true` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
-
-The files that the external URLs load must allow [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). The remote URL must include `Access-Control-Allow-Origin`, which allows requests from the {{kib}} URL.
-
-You can make the current time range part of the external as a millisecond timestamp by using the placeholders `%timefilter_min%` and `%timefilter_max%`, e.g. `http://example.com?min=%timefilter_min%`.
-
-
-##### Vega Inspector [vega-inspector]
-
-Use the contextual **Inspect** tool to gain insights into different elements.
-
-
-##### Inspect {{es}} requests [inspect-elasticsearch-requests]
-
-**Vega** uses the [{{es}} search API]({{es-apis}}operation/operation-search) to get documents and aggregation results from {{es}}. To troubleshoot these requests, click **Inspect**, which shows the most recent requests. In case your specification has more than one request, you can switch between the views using the **View** dropdown.
-
-:::{image} /explore-analyze/images/kibana-vega_tutorial_inspect_requests.png
-:alt: vega tutorial inspect requests
-:screenshot:
-:::
 
 
 #### Vega debugging [vega-debugging]
