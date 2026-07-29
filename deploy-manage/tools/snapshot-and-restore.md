@@ -158,21 +158,37 @@ You can’t restore a snapshot to an earlier version of {{es}}. For example, you
 
 Any index you restore from a snapshot must also be compatible with the current cluster’s version. If you try to restore an index created in an incompatible version, the restore attempt fails.
 
-| Index creation version                   | {{version.stack.base}}–{{version.stack}} | 8.3–8.19 | 8.0–8.2 | 7.2–7.17 | 7.0–7.1 | 6.8 | 
-|------------------------------------------| ----------------------------------------- |----------|---------|----------|---------|-----|
-| 5.0–5.6                                  | ✅ ^1^                                    | ✅ ^1^   | ❌      | ❌       | ❌      | ✅  |         
-| 6.0–6.7                                  | ✅ ^1^                                    | ✅ ^1^   | ❌      | ✅       | ✅      | ✅  | 
-| 6.8                                      | ✅ ^1^                                    | ✅ ^1^   | ❌      | ✅       | ❌      | ✅  |    
-| 7.0–7.1                                  | ✅ ^1, 2^                                 | ✅       | ✅      | ✅       | ✅      | ❌  |       
-| 7.2–7.17                                 | ✅ ^1, 2^                                 | ✅       | ✅      | ✅       | ❌      | ❌  |      
-| 8.0–8.19                                 | ✅                                        | ✅       | ✅      | ❌       | ❌      | ❌  |
-| {{version.stack.base}}–{{version.stack}} | ✅                                        | ❌       | ❌      | ❌       | ❌      | ❌  | 
+Index compatibility in the context of the snapshot and restore process, indicates that {{es}} can restore the index and its data from the snapshot as a regular index or in a read-only form through [archive indices](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md). It does not mean that every application reading that data will treat it as valid on the target cluster version.
+
+For indices and data streams you own and control, a compatible restore usually means the data remains usable. For {{stack}} feature data, including {{kib}} saved objects and data that other features write to their own indices, {{es}} compatibility does not guarantee validity across versions. Those applications can expect different data formats across {{stack}} versions, so a restore that {{es}} accepts can still fail or leave data in an unusable state.
+
+Use snapshot restore to recover or move data you own. Do not use it as a substitute for upgrading {{stack}} features. Follow the normal upgrade path for {{kib}} and other feature states.
+
+The following table shows whether an index can be restored to a given cluster version. Find your index’s creation version in the left column and your cluster version (which is the restore target version) across the top. For example, an index created in 6.8 can be restored to a {{version.stack.base}}–{{version.stack}} cluster (✅) but not to a 7.0–7.1 cluster (❌).
+
+:::{table}
+:widths: 3-2-1-2-2-1-1
+
+|                       |     |        |       |          |         |     |
+|-----------------------|-----|--------|-------|----------|---------|-----|
+|                       | Restore to <br> {{version.stack.base}}–{{version.stack}} |  8.3–8.19 | 8.0–8.2 |  7.2–7.17 | 7.0–7.1  | 6.8  |
+| Index created in version |  |  |  |  |  |  |
+| 5.0–5.6               | ✅ ^1^                                   | ✅ ^1^   | ❌      | ❌       | ❌      | ✅  |
+| 6.0–6.7               | ✅ ^1^                                   | ✅ ^1^   | ❌      | ✅       | ✅      | ✅  |
+| 6.8                   | ✅ ^1^                                   | ✅ ^1^   | ❌      | ✅       | ❌      | ✅  |
+| 7.0–7.1               | ✅ ^1, 2^                                | ✅       | ✅      | ✅       | ✅      | ❌  |
+| 7.2–7.17              | ✅ ^1, 2^                                | ✅       | ✅      | ✅       | ❌      | ❌  |
+| 8.0–8.19              | ✅                                       | ✅       | ✅      | ❌       | ❌      | ❌  |
+| {{version.stack.base}}–{{version.stack}} | ✅                            | ❌       | ❌      | ❌       | ❌      | ❌  |
+:::
+
 
 ^1^ $$$footnote-1$$$ Supported with [archive indices](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md).
 
 ^2^ $$$footnote-2$$$ Supported with [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md).
 
 You can’t restore an index to an earlier version of {{es}}. For example, you can’t restore an index created in 8.18.0 to a cluster running 8.15.0.
+
 
 #### Restoring incompatible indices
 
@@ -181,6 +197,38 @@ A compatible snapshot can contain indices created in an older incompatible versi
 To ensure index compatibility, you can first restore the index to another cluster running the latest version of {{es}} that’s compatible with both the index and your current cluster. You can then use [reindex-from-remote](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-reindex.html#reindex-from-remote) to rebuild the index on your current cluster. Reindex from remote is only possible if the index’s [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) is enabled.
 
 Reindexing from remote can take significantly longer than restoring a snapshot. Before you start, test the reindex from remote process with a subset of the data to estimate your time requirements.
+
+### {{kib}} compatibility
+
+{{es}} and {{kib}} apply different compatibility rules to restored snapshots. A restore that {{es}} accepts can still fail when {{kib}} starts.
+
+{{es}} can typically read data from indices created in a previous major version. For example, restoring a snapshot from an 8.1.0 cluster to a 9.2.4 cluster can succeed at the {{es}} layer, but can fail at the {{kib}} layer. This might happen due to an additional check {{kib}} applies on startup: it inspects version aliases on the `.kibana` index and runs saved object migrations. 
+
+If the restored {{kib}} system indices, such as `.kibana` and `.kibana_task_manager`, were last written by a version older than 8.18.0, {{kib}} 9.x doesn't start the migrations and reports an error similar to:
+
+```
+FATAL  Error: Kibana 8.1.0 deployment detected. Please upgrade to Kibana 8.18.0 or newer before upgrading to 9.x series.
+```
+
+Restoring an old snapshot directly to a 9.x cluster is not a shortcut around the normal [upgrade paths](/deploy-manage/upgrade.md#upgrade-paths). It is recommended you upgrade to the latest compatible minor release before a major upgrade, even when you use snapshots to move data between clusters.
+
+#### Move {{kib}} configuration and saved objects across major versions [move-kibana-config-saved-objects]
+
+To make the {{kib}} state from an older 8.x snapshot compatible with a 9.x cluster, restore and migrate to an intermediate 8.19.x cluster first, then create a snapshot on the intermediate cluster, and then restore again on the target version:
+
+1. [Restore the snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) to a cluster running {{kib}} 8.19.x, or, if your target is 9.0.x, to a cluster running 8.18.x, as described in [Prepare to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md).
+2. Start {{kib}} on the intermediate cluster and wait for startup to complete. During the startup, {{kib}} detects data from a previous compatible version and runs saved object migrations, similar to what would happen during a {{kib}} upgrade. This process rewrites the `.kibana` system indices from their restored version (for example, 8.1.0) to the 8.19.x format, which is fully compatible with 9.x. {{es}} does not run these migrations during a snapshot restore.
+3. [Take a new snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md) of the migrated cluster, then restore that snapshot to your 9.x cluster. Start {{kib}} and wait for the startup to complete. During startup, {{kib}} runs saved object migrations, as it would when upgrading from 8.19.x to 9.x.
+
+For example, to restore the {{kib}} state from an 8.1.0 snapshot to a 9.2.4 cluster, restore the 8.1.0 snapshot to an 8.19.x cluster, let {{kib}} complete its startup migrations, snapshot the 8.19.x cluster, restore that snapshot to 9.2.4, and let {{kib}} perform the latest data migrations.
+
+Alternatively, if you only need to recover data and can accept a fresh {{kib}} setup, restore the snapshot without the `kibana` feature state.
+
+:::{admonition} Roll back after a failed upgrade
+The steps described in [moving the {{kib}} configuration and saved objects across major versions](#move-kibana-config-saved-objects) move {{kib}} state forward to a newer major version. Don't use these steps to roll back after a failed upgrade.
+
+To roll back {{kib}}, restore the `kibana` feature state from a snapshot taken immediately before the failed upgrade, then start {{kib}} on the version that was running before that upgrade attempt. For more information, refer to [Roll back {{kib}}](/deploy-manage/upgrade/deployment-or-cluster/kibana-roll-back.md).
+:::
 
 ## Warnings
 

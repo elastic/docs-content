@@ -12,7 +12,7 @@ products:
 
 # Configure an Ubuntu host [ece-configure-hosts-ubuntu]
 
-The following instructions show you how to prepare your hosts on Ubuntu.
+Use the steps on this page to prepare an Ubuntu server for {{ece}} (ECE): install and configure Docker, set up an XFS volume for ECE data, tune kernel and systemd parameters for production workloads, and pin the Docker version to prevent unattended upgrades.
 
 * [Install Docker](#ece-install-docker-ubuntu)
 * [Set up XFS quotas](#ece-xfs-setup-ubuntu)
@@ -22,7 +22,7 @@ The following instructions show you how to prepare your hosts on Ubuntu.
 
 ## Install Docker on Ubuntu [ece-install-docker-ubuntu]
 
-Install a compatible Docker version on Ubuntu.
+Install a compatible Docker version on Ubuntu using `apt`.
 
 ::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
@@ -49,7 +49,7 @@ Install a compatible Docker version on Ubuntu.
       $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     ```
 
-4. Install the correct version of the `docker-ce` package. The following is an example of installing Docker 27.0. If you decide to install a different Docker version, make sure to replace with the desired version in the commands below.
+4. Install the correct version of the `docker-ce` package. The following command is an example of installing Docker 27.0. To install a different Docker version, replace 27.0 with your preferred version from the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise).
 
     ```sh
     sudo apt update && sudo apt install -y docker-ce=5:27.0.* docker-ce-cli=5:27.0.* containerd.io
@@ -197,7 +197,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
     Authenticate the `elastic` user to pull images from the Docker registry you use, by creating the file `/home/elastic/.docker/config.json`. This file needs to be owned by the `elastic` user. If you are using a user name other than `elastic`, adjust the path accordingly.
 
-    **Example**: In case you use `docker.elastic.co`, the file content looks like as follows:
+    **Example**: If you use `docker.elastic.co`, the file content looks like this:
 
     ```text
     {

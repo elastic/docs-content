@@ -53,6 +53,11 @@ An entity can belong to more than one watchlist.
 
 The **Watchlists** tab displays all watchlists in the current {{kib}} space. You can edit and delete individual watchlists using the icons in the relevant watchlist row.
 
+:::{tip}
+:applies_to: {stack: ga 9.5+, serverless: ga}
+You can also manage watchlists conversationally with {{agent-builder}} using the `manage-watchlists` [skill](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#security-skills). For example prompts, refer to [Watchlist management](/solutions/security/ai/agent-builder/skills-use-cases.md#watchlist-management).
+:::
+
 :::{image} /solutions/images/security-watchlists.png
 :alt: The Watchlists tab on the Entity analytics management page
 :screenshot:
