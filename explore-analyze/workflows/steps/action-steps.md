@@ -49,7 +49,6 @@ Cases actions provide 27 step types for creating, querying, updating, and managi
 
 Refer to [](/explore-analyze/workflows/steps/cases.md) for the complete 27-step catalog.
 
-<<<<<<< HEAD
 ## Entity store
 
 ```{applies_to}
@@ -60,7 +59,7 @@ serverless: preview
 The entity store action operates on entities in the {{elastic-sec}} entity store. Use this action to set or remove an entity's asset criticality.
 
 Refer to [](/explore-analyze/workflows/steps/entity-store.md) for more information.
-=======
+
 ## Security
 
 ```{applies_to}
@@ -74,7 +73,6 @@ Security actions provide named `security.*` steps for {{elastic-sec}} operations
 * Enable or disable detection rules by ID list or query (`security.enableRule`, `security.disableRule`)
 
 Refer to [](/explore-analyze/workflows/steps/security.md) for the Security step categories, [](/explore-analyze/workflows/steps/alert-triage.md) for the Alert triage catalog, [](/explore-analyze/workflows/steps/attack-triage.md) for the Attack triage catalog, and [](/explore-analyze/workflows/steps/detection-rules.md) for the Detection rules catalog.
->>>>>>> origin/main
 
 ## Streams
 
