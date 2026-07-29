@@ -41,6 +41,8 @@ For more information on alerting concepts and the types of rules and connectors 
 
 Access to rules is granted based on your {{alert-features}} privileges. For more information, go to [Security](alerting-setup.md#alerting-security).
 
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To grant access to read alerts and perform per-alert actions such as snooze, unsnooze, and acknowledge, assign the **Stack Alerts** feature privilege. This privilege does not include rule management. For details, refer to [Give access to triage alerts without managing rules](alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
+
 ## {{cps-cap}} scope for rules [cps-scope-for-rules]
 ```{applies_to}
 serverless: preview

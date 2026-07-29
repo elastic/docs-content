@@ -28,6 +28,7 @@ Manage alerts from the following places:
 ::::{note}
 You must have the appropriate {{kib}} {{alert-features}} and index privileges to view alerts. Refer to [Alerting security requirements](alerting-setup.md#alerting-security).
 
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To snooze, unsnooze, or acknowledge alerts, use the **Stack Alerts** or **Observability Alerts** feature privileges. These privileges do not include rule management. Refer to [Give access to triage alerts without managing rules](alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
 ::::
 
 ## Filter alerts [filter-alerts]

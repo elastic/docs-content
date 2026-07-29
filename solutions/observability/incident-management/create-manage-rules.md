@@ -20,6 +20,12 @@ description: Create and manage alerting rules for Elastic Observability applicat
 
 ::::
 
+::::{note}
+:applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
+
+To grant access to read {{observability}} alerts and perform per-alert actions such as snooze, unsnooze, and acknowledge, assign the **Observability Alerts** feature privilege. This privilege does not include rule management. For details, refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
+::::
+
 
 Alerting enables you to define *rules*, which detect complex conditions within different apps and trigger actions when those conditions are met. Alerting provides a set of built-in connectors and rules for you to use.
 
