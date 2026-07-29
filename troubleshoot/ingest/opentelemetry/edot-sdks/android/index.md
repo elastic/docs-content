@@ -23,7 +23,7 @@ If you have an Elastic support contract, create a ticket in the [Elastic Support
 
 ## Kibana visualizations
 
-If you're troubleshooting the Kibana visualizations for the Android SDK, refer to [Troubleshooting Android dashboards](https://www.elastic.co/docs/reference/integrations/otel_android_dashboards#troubleshooting).
+If you're troubleshooting the Kibana visualizations for the Android SDK, refer to [Troubleshooting Android dashboards](integration-docs://reference/otel_android_dashboards.md#troubleshooting).
 
 ## General troubleshooting
 
