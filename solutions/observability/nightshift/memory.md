@@ -10,7 +10,7 @@ products:
 
 # Memory [nightshift-memory]
 
-Nightshift memory is a persistent knowledge base that agents read before investigating incidents. Rather than re-deriving knowledge from raw telemetry on every [investigation](./investigations.md), Nightshift maintains a curated wiki of facts about your systems, with  services, deployment processes, infrastructure, known failure patterns, and more. Both agents and users can create memory articles.
+Nightshift memory is a persistent knowledge base that agents read before investigating incidents. Rather than re-deriving knowledge from raw telemetry on every [investigation](./investigations.md), Nightshift maintains a curated wiki of facts about your systems, with services, deployment processes, infrastructure, known failure patterns, and more. Both agents and users can create memory articles.
 
 Each page added to memory reduces the need for external queries for the next similar incident.
 
@@ -37,7 +37,7 @@ Run the **Consolidate Memory** workflow to have it review the full wiki for dupl
 
 ### Scrape Conversations [nightshift-memory-scraper]
 
-Run the **Scrape Conversations** workflow to have it read recent AI agent conversations. It extracts durable, reusable knowledge like architectural facts, operational patterns, troubleshooting steps and discovered during conversations. It then writes those back to memory as wiki pages.
+Run the **Scrape Conversations** workflow to have it read recent AI Agent conversations. It extracts durable, reusable knowledge like architectural facts, operational patterns, and troubleshooting steps discovered during conversations. It then writes those back to memory as wiki pages.
 
 ### Detect Gaps [nightshift-memory-gap-detection]
 
@@ -73,7 +73,7 @@ When an [investigation](./investigations.md) starts, the investigation agent rea
 - Targeted ES|QL queries replace broad exploratory queries.
 - Investigations for familiar issue types complete faster and produce higher-confidence hypotheses.
 
-Memory is also available to you directly during chat. You can ask the AI agent what it knows about a service, request the current gap overview, or ask it to update a memory page based on something you've just learned.
+Memory is also available to you directly during chat. You can ask the AI Agent what it knows about a service, request the current gap overview, or ask it to update a memory page based on something you've just learned.
 
 ## Learn more [nightshift-memory-nav]
 

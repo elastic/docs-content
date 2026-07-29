@@ -33,11 +33,11 @@ You can view investigations in the Nightshift UI or chat with the AI Agent.
 
 ### From the Nightshift UI [nightshift-investigations-landing-page]
 
-Each Significant Event on the [landing page](./nightshift.md) shows its investigation status. Click the event to open the detail view, then expand the **Investigation** section to see results.
+Each Significant Event on the [landing page](./nightshift.md) shows its investigation status. Select the event to open the details view, then expand the **Investigation** section to see results.
 
 ### From chat [nightshift-investigations-chat]
 
-Click **Open in chat** on any Significant Event to open an AI conversation with the investigation context pre-attached. You can:
+Select **Open in chat** on any Significant Event to open an AI conversation with the investigation context pre-attached. You can:
 
 - Read the full investigation narrative.
 - Ask follow-up questions about specific evidence.

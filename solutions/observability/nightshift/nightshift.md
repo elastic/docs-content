@@ -17,13 +17,14 @@ Nightshift works by:
 1. **Extracting Knowledge Indicators (KIs)**: Nightshift reads your stream data and extracts stable facts: what services are running, what infrastructure is in use, what technologies are present, and how they relate to each other.
 2. **Generating and running detection rules**: Based on KIs, Nightshift generates ES|QL detection rules and runs them continuously. When rule firing patterns change, it detects the change.
 3. **Surfacing Significant Events**: When detections correlate into something meaningful, Nightshift promotes a Significant Event — a concise summary of what's happening, with severity, evidence, and suggested next steps.
-4. **Investigating automatically**: For each Significant Event, Nightshift triggers an autonomous [investigation](./investigations.md): it reads your system memory, runs targeted queries, and produces a root cause hypothesis with remediation options.
+4. **Investigating automatically**: For **critical** and **high** severity Significant Events, Nightshift triggers an autonomous [investigation](./investigations.md): it reads your system memory, runs targeted queries, and produces a root cause hypothesis with remediation options.
 5. **Learning over time**: The [memory](./memory.md) system captures knowledge from each incident so future investigations are faster and more precise.
 
 ## Requirements [nightshift-requirements]
 
 - **Enterprise license**: Nightshift requires an active Elastic Enterprise license or trial on {{product.serverless-elasticsearch}}.
 - **Streams**: Your data must be organized in [Streams](/solutions/observability/streams/streams.md). Nightshift attaches to streams and runs the KI extraction and detection pipeline per stream.
+- **Generative AI connector**: A [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md) is required to run KI extraction, rule generation, and investigations.
 
 ## Nightshift UI [nightshift-landing-page]
 
@@ -31,13 +32,13 @@ The Nightshift UI is your central hub for active Significant Events. It shows **
 
 ## Access the Nightshift UI [nightshift-landing-page-access]
 
-From your {{observability}} project, navigate to **Streams** ➡ **Significant Events** ➡ **Nightshift** to open the Nightshift UI. If you don't see any Significant Events, Nightshift might still be running its initial KI extraction and rule generation. If your streams have sufficient data, Significant Events surface automatically.
+From your {{observability}} project, select **Streams → Significant Events → Nightshift** to open the Nightshift UI. If you don't see any Significant Events, Nightshift might still be running its initial KI extraction and rule generation. If your streams have sufficient data, Significant Events surface automatically.
 
 ## Significant Events list [nightshift-events-list]
 
-The landing page is divided into two panels:
+The landing page is divided into the following:
 
-- **Needs action** and **Resolved**: These panels show the count of events that need action and resolved events. Select the panel to go to the list of active or resolved significant events.
+- **Needs action** and **Resolved** panels: These panels show the count of events that need action and resolved events. Select the panel to go to the list of active or resolved significant events.
 - **Blast radius**: This panel shows the most affected services. Select a service to filter Significant Events related to it.
 
 ### View all events [nightshift-events-view-all]
