@@ -167,14 +167,14 @@ Example query KI:
 
 Query KIs are generated in two {{esql}} forms depending on what the LLM determines is most useful for detection:
 
-**Match queries** filter for specific log events — errors, exceptions, failure messages:
+**MATCH queries** filter for specific log events, such as errors, exceptions, failure messages:
 
 ```esql
 FROM logs-mystream,logs-mystream.* METADATA _id, _source
 | WHERE message : "connection refused" AND service.name == "api_gateway"
 ```
 
-**Stats queries** aggregate metrics over time — rates, counts, or derived values — useful when the signal is a change in volume rather than the presence of a specific event:
+**STATS queries** aggregate metrics over time, such as rates, counts, or derived values. These are useful when the signal is a change in volume rather than the presence of a specific event:
 
 ```esql
 FROM logs-mystream,logs-mystream.*

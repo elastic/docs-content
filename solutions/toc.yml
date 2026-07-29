@@ -473,7 +473,7 @@ toc:
         - file: observability/streams/manage-data-quality.md
         - file: observability/streams/map-fields.md
         - file: observability/streams/advanced.md
-        - file: observability/streams/significant-events/knowledge-indicators.md
+        - file: observability/streams/knowledge-indicators.md
         - file: observability/streams/wired-streams-field-naming.md
         - file: observability/streams/streamlang.md
           children:
@@ -507,6 +507,7 @@ toc:
           children:
             - hidden: observability/streams/significant-events/how-it-works.md
             - hidden: observability/streams/significant-events/operator-guide.md
+            - hidden: observability/streams/significant-events/knowledge-indicators.md
       - hidden: observability/nightshift/nightshift.md
         children:
           - hidden: observability/nightshift/get-started.md
