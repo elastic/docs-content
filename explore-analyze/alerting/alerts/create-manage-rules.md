@@ -164,8 +164,6 @@ When you snooze a rule, the rule checks continue to run on a schedule but alerts
 
 When a rule is in a snoozed state, you can cancel or change the duration of this state.
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To silence actions for one alert instance instead of the whole rule, [snooze that alert](view-alerts.md#snooze-alerts).
-
 {applies_to}`stack: preview` {applies_to}`serverless: preview` To temporarily suppress notifications for rules, you can also create a [maintenance window](maintenance-windows.md).
 
 ## View rule details [rule-details]
