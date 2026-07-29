@@ -14,15 +14,14 @@ products:
 
 Add a **Vega** panel on a dashboard to use these grammars with {{kib}} filters, the time range, and other [{{kib}} extensions](#reference-for-kibana-extensions). A panel's data can come from:
 
-* {{es}}, using [{{esql}}](#vega-esql-queries) or [Query DSL](#vega-queries)
+* {{es}}, using:
+   * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` An [{{esql}}](../query-filter/languages/esql-kibana.md) query (recommended). One query string replaces nested Query DSL aggregations and format paths. See [Writing {{esql}} queries in Vega](#vega-esql-queries).
+   * An {{es}} [Query DSL](#vega-queries) search. Use this approach when {{esql}} is unavailable, or when you already have a Query DSL request you want to reuse.
 * [Elastic Map Service](#vega-esmfiles) vector shapes
 * A file at an external URL, using Vega's native [`url` data source](https://vega.github.io/vega/docs/data/#url)
 * Static values written directly into the spec, using Vega's native [inline data](https://vega.github.io/vega/docs/data/#inline-data)
 
-To query {{es}}, you can use:
 
-* {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` An [{{esql}}](../query-filter/languages/esql-kibana.md) query (recommended). One query string replaces nested Query DSL aggregations and format paths. See [Writing {{esql}} queries in Vega](#vega-esql-queries).
-* An {{es}} [Query DSL](#vega-queries) search. Use this approach when {{esql}} is unavailable, or when you already have a Query DSL request you want to reuse.
 
 :::{tip}
 :applies_to: {"stack": "ga 9.5"}
