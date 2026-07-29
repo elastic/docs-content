@@ -91,6 +91,10 @@ estimated\ bytes &= (1,000,000 \times 4 \times 16) + (1,000,000 \times 4 \times 
 
 If you're using DiskBBQ, a fraction of the clusters and centroids need to be in memory.  When doing this estimation, it makes more sense to include both the index structure and the quantized vectors together as the structures are dependent. To estimate the total bytes, first compute the number of clusters, then compute the cost of the centroids plus the cost of the quantized vectors within the clusters to get the total estimated bytes.  The default value for the number of `vectors_per_cluster` is `384`.
 
+The cost of the quantized vectors also depends on the number of bits used to quantize indexed vectors (document vectors) and the number of bits used to quantize query vectors during search. Since 9.4, you can set the following quantization schemes: 1–4 (default), 2–4, 4–4 and 7–7 bits for document and query vectors, respectively.
+
+Increasing bits used for document vectors increases the persistent off-heap footprint approximately linearly, while increasing the bits used for query vectors increases query-time working-set and compute cost approximately linearly.
+
 ```{math}
 \begin{align*}
 num\_clusters=\frac{num\_vectors}{vectors\_per\_cluster}=\frac{num\_vectors}{384}
@@ -100,13 +104,13 @@ num\_clusters=\frac{num\_vectors}{vectors\_per\_cluster}=\frac{num\_vectors}{384
 ```{math}
 \begin{align*}
 estimated\ centroid\ bytes &= num\_clusters \times num\_dimensions \times 4 \\
-& + num\_clusters \times (num\_dimensions + 14)
+& + num\_clusters \times \left(\left\lceil\frac{num\_dimensions \times doc\_bits}{8}\right\rceil + 14\right)
 \end{align*}
 ```
 
 ```{math}
 \begin{align*}
-estimated\ quantized\ vector\ bytes = num\_vectors \times ((num\_dimensions/8 + 14 + 2) \times 2)
+estimated\ quantized\ vector\ bytes &= \left(\left\lceil\frac{num\_dimensions \times doc\_bits}{8}\right\rceil + 14 + 2\right) \times 2 \\ & \times num\_vectors
 \end{align*}
 ```
 
