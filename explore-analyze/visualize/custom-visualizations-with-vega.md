@@ -74,12 +74,13 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
 
 #### Create the visualization [_vega_esql_tutorial_create_the_visualization]
 
-1. In the application menu, select **Vega** or **Custom visualization**, depending on your {{kib}} version.
+1. Select **Add** in the application menu.
+2. Select **Vega** or **Custom visualization**: you might see either name depending on your {{kib}} version.
 
     A pre-populated line chart displays the total number of documents.
 
-2. Set the [time filter](../query-filter/filtering.md) to a range that includes the sample data. Sample data timestamps are relative to when you installed the data set, so **Last 7 days** works if you just installed it.
-3. Replace the entire **Vega-Lite** spec with the following, then select **Update**:
+3. Set the [time filter](../query-filter/filtering.md) to a range that includes the sample data. Sample data timestamps are relative to when you installed the data set, so **Last 7 days** works if you just installed it.
+4. Replace the entire **Vega-Lite** spec with the following, then select **Update**:
 
 ```json
 {
@@ -130,7 +131,7 @@ Learn how to query {{es}} with Query DSL from **Vega-Lite**, displaying the resu
 1. [Install the eCommerce sample data set](../index.md#gs-get-data-into-kibana).
 2. Go to **Dashboards**.
 3. On the **Dashboards** page, select **Create dashboard**.
-4. Select **Add** in the application menu, then select **Vega**.
+4. Select **Add** (or **Add panel** in earlier versions) in the application menu, then select **Vega** or **Custom visualization**: you might see either name depending on your {{kib}} version.
 
     A pre-populated line chart displays the total number of documents.
 
