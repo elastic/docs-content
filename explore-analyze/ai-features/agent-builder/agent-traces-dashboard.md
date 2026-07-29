@@ -153,12 +153,15 @@ Each content field holds a JSON string rather than indexed text, following the [
 These content fields are `keyword` fields with `ignore_above` set to `1024`. A value longer than 1024 characters is not indexed, and {{esql}} returns it as `null` even though the full value is stored in the document. System prompts, model responses, and any chat history that contains a tool result routinely pass 1024 characters, so treat {{esql}} as dependable only for short values here.
 
 **Reading full content**
+
 To read the full content, request the document with [{{es}} search](/solutions/search/querying-for-search.md) instead of {{esql}}, and ask for `_source`. The `fields` option applies the same limit and returns nothing.
 
 **Finding affected spans**
+
 To find the affected spans in the first place, use the `_ignored` metadata field, which lists the fields on a document that were not indexed. For these attributes, that means the value passed the length limit. It is available both on search hits and in {{esql}}, as shown in [Example queries](#example-queries).
 
 **Tool arguments and results**
+
 Tool arguments and results are also recorded on the `execute_tool` spans, in `attributes.gen_ai.tool.call.arguments` and `attributes.gen_ai.tool.call.result`. Each of those holds one tool call rather than the whole conversation, so it is less likely to pass the limit, though a large tool result still can. Prefer them when you query tool activity with {{esql}}.
 
 ### Example queries
