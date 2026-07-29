@@ -75,7 +75,16 @@ For most deployments, we recommend creating a dedicated **overview project** tha
 
 In this architecture, you create a new, empty project and link existing projects to it. You run all cross-project searches from the new overview project, while your actual active projects continue to operate independently. The linked ("spoke") projects are not linked to each other.
 
-![Overview project architecture for cross-project search](images/serverless-cross-project-search-arch.svg)
+```mermaid
+flowchart TB
+    O["Overview project<br/>Origin (empty hub)"]
+    O --> S["Security project<br/>Linked (data)"]
+    O --> Obs["Observability project<br/>Linked (data)"]
+    O --> E["Elasticsearch project<br/>Linked (data)"]
+    O --> V["Vector Database project<br/>Linked (data)"]
+```
+
+Searches run from the overview project across all linked projects. Linked projects operate independently and are not linked to each other. You can link any combination of compatible projects.
 
 The overview project becomes a central point for broad searches, dashboards, and investigations, without affecting your existing setup.
 
