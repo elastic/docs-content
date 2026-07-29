@@ -35,11 +35,11 @@ serverless:
   security: ga
 ```
 
-When you open an attack, its details appear in a flyout. The **Overview** tab organizes each discovery's information into the following sections:
+When you open an attack, its details appear in a flyout. The attack title, status, alert count, assignees, and notes appear in the flyout header. On the **Overview** tab, the discovery information is organized into the following expandable sections:
 
-* **AI Summary**: The discovery's title and the LLM-generated summary of the potential threat.
-* **Visualizations**: An expandable **Attack Chain** diagram that maps the attack to [MITRE ATT&CK](https://attack.mitre.org/) tactics. Expand or collapse this section to show or hide the diagram; your choice persists across sessions.
-* **Insights**: The related entities (users and hosts) and correlated alerts involved in the attack.
+* **Attack Summary**: The LLM-generated summary of the potential threat and a **Background** section with additional details.
+* **Visualizations**: An expandable section containing an **Attack Chain** diagram that maps the attack to [MITRE ATT&CK](https://attack.mitre.org/) tactics. Expand or collapse this section to show or hide the diagram; your choice persists across sessions.
+* **Insights**: An expandable section with **Entities** (related users and hosts) and **Correlation** (related alerts) panels. Select a panel to open a child flyout with full details.
 
 ## Check Attack Discovery runs in Generations [attacks-view-generations]
 
