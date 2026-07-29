@@ -48,9 +48,9 @@ Access to workflows is controlled by [{{kib}} privileges](/deploy-manage/users-r
 
 | Action | Required privilege |
 |--------|-------------------|
-| Access the **Workflows** page | `All` or `Read` for **Analytics > Workflows** |
-| Fully manage workflows | `All` for **Analytics > Workflows** |
-| Grant access to specific workflow actions | Set sub-feature privileges for **Analytics > Workflows** | 
+| Access the **Workflows** page | `All` or `Read` for **Analytics → Workflows** |
+| Fully manage workflows | `All` for **Analytics → Workflows** |
+| Grant access to specific workflow actions | Set sub-feature privileges for **Analytics → Workflows** |
 
 ## Enable the Template library [workflows-templates-enable]
 
