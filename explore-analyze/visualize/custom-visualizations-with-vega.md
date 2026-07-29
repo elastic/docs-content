@@ -19,6 +19,11 @@ To define an {{es}} data source, you can use:
 * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` An [{{esql}}](../query-filter/languages/esql-kibana.md) query (recommended). One query string replaces nested Query DSL aggregations and format paths. See [Writing {{esql}} queries in Vega](#vega-esql-queries).
 * An {{es}} [Query DSL](#vega-queries) search. Use this approach when {{esql}} is unavailable, or when you already have a Query DSL request you want to reuse.
 
+:::{tip}
+:applies_to: {"stack": "ga 9.5"}
+You can also ask [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md) to generate Vega-Lite visualizations from natural language when it creates or updates a dashboard through chat.
+:::
+
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-vega
 :::
@@ -69,13 +74,12 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
 
 #### Create the visualization [_vega_esql_tutorial_create_the_visualization]
 
-1. Select **Add** in the application menu.
-2. Select **Vega**.
+1. In the application menu, select **Vega** or **Custom visualization**, depending on your {{kib}} version.
 
     A pre-populated line chart displays the total number of documents.
 
-3. Set the [time filter](../query-filter/filtering.md) to a range that includes the sample data. Sample data timestamps are relative to when you installed the data set, so **Last 7 days** works if you just installed it.
-4. Replace the entire **Vega-Lite** spec with the following, then select **Update**:
+2. Set the [time filter](../query-filter/filtering.md) to a range that includes the sample data. Sample data timestamps are relative to when you installed the data set, so **Last 7 days** works if you just installed it.
+3. Replace the entire **Vega-Lite** spec with the following, then select **Update**:
 
 ```json
 {
@@ -1454,6 +1458,8 @@ The following example creates a metric that counts documents over time, using th
   }
 }
 ```
+
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` **Vega** and **Vega-Lite** panels that use an {{esql}} data source are subject to the {icon}`bolt` [**Fast mode**](../query-filter/languages/esql-kibana.md#approximation-fast-mode) dashboard option. When this option is active on a dashboard, these panels return faster, estimated results for `STATS` aggregations.
 
 
 #### Access Elastic Map Service files [vega-esmfiles]

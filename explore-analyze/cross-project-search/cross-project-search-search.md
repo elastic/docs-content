@@ -48,6 +48,8 @@ GET _origin:logs/_search
 
 For additional examples of qualified search expressions, refer to the [examples section](/explore-analyze/cross-project-search.md#cps-examples).
 
+To exclude specific projects or indices from a search, refer to [Excluding indices and projects](/explore-analyze/cross-project-search.md#cps-exclude).
+
 ::::{tip}
 [Project routing expressions](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) provide an additional way for you to control which projects the query is routed to, but they serve a different purpose than qualified search expressions.
 While qualified search expressions control scope by explicitly naming projects by their project aliases in the index expression, project routing expressions enable you to route the query to projects dynamically based on other project metadata.
