@@ -68,8 +68,6 @@ TO-DO: Wait for related PR to merge
 Details are in the [reference](elasticsearch://reference/columnar/index.md#index-sorting).
 -->
 
-## What stays the same [columnar-what-stays-the-same]
-
 Columnar mode doesn't replace the [core data store concepts](/manage-data/data-store/index-basics.md):
 
 * You still store JSON documents in indices (or data streams), define mappings, and target indices by name, alias, or stream.
