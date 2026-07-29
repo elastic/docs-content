@@ -10,7 +10,7 @@ products:
 
 # Memory [nightshift-memory]
 
-Nightshift memory is a persistent knowledge base that agents read before investigating incidents. Rather than re-deriving knowledge from raw telemetry on every [investigation](nightshift-investigations.md), Nightshift maintains a curated wiki of facts about your systems, with  services, deployment processes, infrastructure, known failure patterns, and more. Both agents and users can create memory articles.
+Nightshift memory is a persistent knowledge base that agents read before investigating incidents. Rather than re-deriving knowledge from raw telemetry on every [investigation](./investigations.md), Nightshift maintains a curated wiki of facts about your systems, with  services, deployment processes, infrastructure, known failure patterns, and more. Both agents and users can create memory articles.
 
 Each page added to memory reduces the need for external queries for the next similar incident.
 

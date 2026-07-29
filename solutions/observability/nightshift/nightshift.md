@@ -17,8 +17,8 @@ Nightshift works by:
 1. **Extracting Knowledge Indicators (KIs)**: Nightshift reads your stream data and extracts stable facts: what services are running, what infrastructure is in use, what technologies are present, and how they relate to each other.
 2. **Generating and running detection rules**: Based on KIs, Nightshift generates ES|QL detection rules and runs them continuously. When rule firing patterns change, it detects the change.
 3. **Surfacing Significant Events**: When detections correlate into something meaningful, Nightshift promotes a Significant Event — a concise summary of what's happening, with severity, evidence, and suggested next steps.
-4. **Investigating automatically**: For each Significant Event, Nightshift triggers an autonomous [investigation](nightshift-investigations.md): it reads your system memory, runs targeted queries, and produces a root cause hypothesis with remediation options.
-5. **Learning over time**: The [memory](nightshift-memory.md) system captures knowledge from each incident so future investigations are faster and more precise.
+4. **Investigating automatically**: For each Significant Event, Nightshift triggers an autonomous [investigation](./investigations.md): it reads your system memory, runs targeted queries, and produces a root cause hypothesis with remediation options.
+5. **Learning over time**: The [memory](./memory.md) system captures knowledge from each incident so future investigations are faster and more precise.
 
 ## Requirements [nightshift-requirements]
 
@@ -27,7 +27,7 @@ Nightshift works by:
 
 ## Nightshift UI [nightshift-landing-page]
 
-The Nightshift landing page is your central hub for active Significant Events. It shows critical Significant Events detected across your streams, what [investigations](nightshift-investigations.md) are running, and what needs your attention.
+The Nightshift landing page is your central hub for active Significant Events. It shows critical Significant Events detected across your streams, what [investigations](./investigations.md) are running, and what needs your attention.
 
 ## Access the Nightshift UI [nightshift-landing-page-access]
 
@@ -60,9 +60,9 @@ The **Detections** section lists the individual signals that contributed to this
 
 ### Investigations [nightshift-event-detail-investigations]
 
-The **Investigations** section shows the [investigations](nightshift-investigations.md) Nightshift ran for this event.
+The **Investigations** section shows the [investigations](./investigations.md) Nightshift ran for this event.
 
-For more on what investigations produce and how they work, see [Investigations](nightshift-investigations.md).
+For more on what investigations produce and how they work, see [Investigations](./investigations.md).
 
 ## Chat about a Significant Event [nightshift-chat]
 
@@ -73,10 +73,10 @@ Every Significant Event has an **Open in chat** button. Select it to open a conv
 - Ask about affected services or dependencies.
 - Explore hypotheses the investigation didn't fully cover.
 
-The AI Agent has access to the event's detections, associated KIs, and [memory](nightshift-memory.md) pages about your system.
+The AI Agent has access to the event's detections, associated KIs, and [memory](./memory.md) pages about your system.
 
 ## Learn more [nightshift-landing-page-nav]
 
-- [Nightshift overview](index.md)
-- [Investigations](nightshift-investigations.md)
-- [Memory](nightshift-memory.md)
+- [Nightshift overview](./nightshift.md)
+- [Investigations](./investigations.md)
+- [Memory](./memory.md)

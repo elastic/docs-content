@@ -17,7 +17,7 @@ When Nightshift surfaces a critical Significant Event, it automatically triggers
 
 Each investigation runs as a structured, agentic process:
 
-1. **Memory read** — Before querying raw telemetry, the investigation agent reads relevant [memory pages](nightshift-memory.md) about your system. If Nightshift has previously encountered similar issues or has context about the affected service, it uses that knowledge as a starting point.
+1. **Memory read** — Before querying raw telemetry, the investigation agent reads relevant [memory pages](./memory.md) about your system. If Nightshift has previously encountered similar issues or has context about the affected service, it uses that knowledge as a starting point.
 
 2. **Targeted queries** — The agent runs targeted ES|QL queries against your streams to gather evidence about the event — error rates, service dependencies, infrastructure state, and related signals.
 
@@ -25,7 +25,7 @@ Each investigation runs as a structured, agentic process:
 
 4. **Hypothesis and remediation** — The agent synthesizes all evidence into a root cause hypothesis with a confidence assessment. It also proposes ranked remediation options where it can determine them.
 
-6. **Memory write-back** — New findings — such as failure patterns or service relationships discovered during the investigation — are written back to [memory](nightshift-memory.md) so future investigations benefit from this context.
+6. **Memory write-back** — New findings — such as failure patterns or service relationships discovered during the investigation — are written back to [memory](./memory.md) so future investigations benefit from this context.
 
 ## What an investigation produces [nightshift-investigations-output]
 
@@ -40,7 +40,7 @@ A completed investigation provides:
 
 ### From the Nightshift landing page [nightshift-investigations-landing-page]
 
-Each Significant Event on the [landing page](nightshift-landing-page.md) shows its investigation status. Click the event to open the detail view, then expand the **Investigation** section to see results.
+Each Significant Event on the [landing page](./nightshift.md) shows its investigation status. Click the event to open the detail view, then expand the **Investigation** section to see results.
 
 ### From chat [nightshift-investigations-chat]
 
@@ -64,7 +64,7 @@ Nightshift automatically triggers an investigation for every critical Significan
 
 ## Relationship to memory [nightshift-investigations-memory]
 
-Investigations and [memory](nightshift-memory.md) form a feedback loop: investigations read memory to start from a richer baseline, and write new findings back to memory when they're done. Over time, this means investigations for recurring issue types become progressively faster and more accurate as Nightshift accumulates knowledge about your environment.
+Investigations and [memory](./memory.md) form a feedback loop: investigations read memory to start from a richer baseline, and write new findings back to memory when they're done. Over time, this means investigations for recurring issue types become progressively faster and more accurate as Nightshift accumulates knowledge about your environment.
 
 ## Learn more [nightshift-investigations-nav]
 
