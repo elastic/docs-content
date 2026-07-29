@@ -36,7 +36,7 @@ The editor layout is composed of the following elements:
 | Component | Description |
 |-----------|-------------|
 | **Editor pane** | The main area for writing and editing workflows. To learn more about the expected workflow structure, refer to [](/explore-analyze/workflows.md). |
-| **Actions menu** | A quick-add menu for pre-formatted [triggers](/explore-analyze/workflows/triggers.md) and [step types](/explore-analyze/workflows/steps.md). |
+| **Actions menu** | A quick-add menu for pre-formatted [triggers](/explore-analyze/workflows/triggers.md) and [step types](/explore-analyze/workflows/steps.md). Built-in triggers (`manual`, `scheduled`, and `alert`) appear at the top level. <br> {applies_to}`stack: ga 9.5+` Event-driven triggers are grouped by family when a family has more than one trigger, so related triggers such as the cases triggers appear together under a **Cases** group. |
 | **Save button** | Saves the current workflow. |
 | **Run button** | Manually runs the entire workflow or an individual step. <br> - Entire workflow: Click the **Run** icon {icon}`play` (next to **Save**).  <br> - Individual step: Select the step in the editor pane, then click the **Run** icon {icon}`play`.   |
 | **Executions tab** | Shows [execution history](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md) and real-time logs. |

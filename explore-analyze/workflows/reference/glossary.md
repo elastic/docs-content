@@ -99,8 +99,8 @@ The trigger payload. For alert triggers, the alert data; for scheduled triggers,
 ### Event-driven trigger [workflows-glossary-event-driven-trigger]
 
 ```{applies_to}
-stack: preview 9.4+
-serverless: preview
+stack: ga 9.5+, preview =9.4
+serverless: ga
 ```
 
 A trigger that fires on a platform event rather than on a schedule or manual invocation. Includes `workflows.failed` and the `cases.*` event triggers. Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
@@ -230,10 +230,6 @@ What starts a workflow. Supported types: `manual`, `scheduled`, `alert`, `workfl
 
 Named values set by `data.set` steps. Global within an execution. Accessed as `variables.<name>`. Refer to [`data.set`](/explore-analyze/workflows/steps/data.md#data-set).
 
-### waitForInput [workflows-glossary-wait-for-input]
-
-The human-in-the-loop primitive. Pauses a workflow for human input. Refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) and [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md).
-
 ### Workflow [workflows-glossary-workflow]
 
 A declarative YAML automation. The primary unit of work in Elastic Workflows. Refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
@@ -241,8 +237,8 @@ A declarative YAML automation. The primary unit of work in Elastic Workflows. Re
 ### `workflows.failed` [workflows-glossary-workflows-failed]
 
 ```{applies_to}
-stack: preview 9.4+
-serverless: preview
+stack: ga 9.5+, preview =9.4
+serverless: ga
 ```
 
 An [event-driven trigger](/explore-analyze/workflows/triggers/event-driven-triggers.md) that fires when another workflow's execution reaches the `failed` terminal state. Used to build handler workflows that react to failures.
