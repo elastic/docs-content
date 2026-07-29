@@ -53,10 +53,10 @@ There are limitations in {{ml-features}} that affect {{kib}}. For more informati
 ::::
 
 ## Data drift [data-drift-view]
-
-::::{warning}
-This functionality is in technical preview and might be changed or removed in a future release. Elastic works to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
+```{applies_to}
+stack: ga 9.4+, preview 9.0-9.3
+serverless: ga
+```
 
 You can find the **Data drift** view in **{{ml-app}}** → **{{data-viz}}** in {{kib}} or by using the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md). The **Data drift** view shows you the differences in each field for two different time ranges in a given {{data-source}}. The view helps you to visualize the changes in your data over time and enables you to understand its behavior better.
 
