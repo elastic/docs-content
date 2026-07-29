@@ -186,6 +186,9 @@ The following examples show various configuration options for building impactful
 This example creates a single-level treemap where each rectangle represents a file extension and its size reflects total bandwidth consumed.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -307,6 +310,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 This example creates a two-level treemap: the outer rectangles represent airlines and the inner rectangles show destination countries, revealing how each carrier's flight volume is distributed geographically.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -425,6 +431,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 This example nests KQL-based response status categories inside host rectangles, combining `terms` and `filters` groupings to show both traffic volume and health per host.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

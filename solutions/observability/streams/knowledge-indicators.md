@@ -17,11 +17,7 @@ products:
 
 # Knowledge Indicators [streams-knowledge-indicators]
 
-Knowledge Indicators (KIs) are structured facts that Elastic extracts from your raw log data automatically without requiring schemas, service catalogs, or manual configuration. When you run extraction against a log stream, Elastic analyzes the raw data and returns facts about your environment: which services are running, the underlying infrastructure they rely on, how they depend on each other, and the log schemas they use.
-
-Rather than a static configuration, this knowledge accumulates over time, automatically expires when a service disappears, and feeds directly into downstream capabilities like Rules, topology maps, AI agent investigations, and dashboards.
-
-To access Knowledge Indicators, open **Significant Events** from the Streams main page and select the **Knowledge Indicators** tab.
+Knowledge Indicators (KIs) are structured facts that Elastic automatically extracts from raw log data without requiring schemas, service catalogs, or manual configuration. When you run extraction on a stream, Elastic returns facts about which services are running, the infrastructure they rely on, how they depend on each other, and the log schemas they use. This knowledge accumulates over time, expires when services disappear, and feeds into Rules, topology maps, AI investigations, and dashboards. Access Knowledge Indicators from **Significant Events** → **Knowledge Indicators** on the Streams main page.
 
 :::{admonition} Requirements
 To use this feature, you need:
@@ -114,7 +110,7 @@ Feature KIs carry a full data model:
 - **`properties`**: Stable key-value pairs used to deduplicate findings across multiple runs
 - **`confidence`**: 0–100. LLM-identified KIs score based on evidence quality. Deterministic KIs always score 100.
 - **`evidence`**: 2–5 supporting log excerpts that justify the KI's existence
-- **`filter`**: An optional [Streamlang](./streamlang.md) condition scoping the KI to specific documents
+- **`filter`**: An optional [StreamLang](./streamlang.md) condition scoping the KI to specific documents
 
 Example dependency KI:
 

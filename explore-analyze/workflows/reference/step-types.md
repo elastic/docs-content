@@ -74,6 +74,7 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`elasticsearch.request`](/explore-analyze/workflows/steps/elasticsearch.md#generic-request-actions) | {{es}} | Generic {{es}} API escape hatch. |
 | [`elasticsearch.search`](/explore-analyze/workflows/steps/elasticsearch.md#named-actions) | {{es}} | Run a search. |
 | [`elasticsearch.update`](/explore-analyze/workflows/steps/elasticsearch.md#named-actions) | {{es}} | Update one document. |
+| [`entityStore.updateAssetCriticality`](/explore-analyze/workflows/steps/entity-store.md#entitystore-updateassetcriticality) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | Entity store | Set or remove an entity's asset criticality, and optionally recalculate its risk score. |
 | [`foreach`](/explore-analyze/workflows/steps/foreach.md) | Flow control | Iterate over a collection. |
 | [`http`](/explore-analyze/workflows/steps/external-systems-apps.md#http-actions) | HTTP and console | Call any external HTTP API. |
 | [`if`](/explore-analyze/workflows/steps/if.md) | Flow control | Conditional branching. |
@@ -95,6 +96,7 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`security.setAttackTags`](/explore-analyze/workflows/steps/attack-triage.md#security-setattacktags) | Security | Add or remove tags on one or more attacks. |
 | [`switch`](/explore-analyze/workflows/steps/switch.md) | Flow control | Multi-way dispatch. |
 | [`wait`](/explore-analyze/workflows/steps/wait.md) | Flow control | Pause for a fixed duration. |
+| [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | Flow control | Pause for approve/reject (human-in-the-loop). |
 | [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) | Flow control | Pause for human input (human-in-the-loop). |
 | [`while`](/explore-analyze/workflows/steps/while.md) | Flow control | Loop while a condition holds. |
 | [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute) | Composition (tech preview) | Run a child workflow synchronously. |
