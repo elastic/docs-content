@@ -21,15 +21,15 @@ Use the information in this section to troubleshoot common problems. As a first 
 
 If you have an Elastic support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). If you don't, post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/apm-agent-android/issues).
 
-## Kibana visualizations
-
-If you're troubleshooting the Kibana visualizations for the Android SDK, refer to [Troubleshooting Android dashboards](integration-docs://reference/otel_android_dashboards.md#troubleshooting).
-
 ## General troubleshooting
 
 The SDK creates logs that allow you to see what it's working on and what might have failed at some point. You can find the logs in [logcat](https://developer.android.com/studio/debug/logcat), filtered by the tag `ELASTIC_AGENT`.
 
 For more information about the SDK's internal logs, as well as how to configure them, refer to the [internal logging policy](apm-agent-android://reference/edot-android/configuration.md#internal-logging-policy) configuration. For more information on enabling debug logging, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+
+## Kibana visualizations
+
+If you're troubleshooting the Kibana visualizations for the Android SDK, refer to [Troubleshooting Android dashboards](integration-docs://reference/otel_android_dashboards.md#troubleshooting).
 
 ## Connectivity to the {{stack}}
 
