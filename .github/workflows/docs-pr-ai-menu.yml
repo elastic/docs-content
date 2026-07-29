@@ -20,6 +20,7 @@ permissions:
   discussions: write
   issues: write
   pull-requests: write
+  copilot-requests: write
 
 jobs:
   post-menu:
@@ -193,13 +194,13 @@ jobs:
       discussions: write
       issues: write
       pull-requests: write
+      copilot-requests: write
     uses: elastic/docs-actions/.github/workflows/gh-aw-docs-review.lock.yml@v1
     with:
       review-scope: repo-wide-markdown
       additional-instructions: |
         This repository stores documentation as markdown across the repository, not only under `docs/`.
         Prefer concise, high-signal review comments with exact replacement text when possible.
-    secrets: inherit
 
   refresh-menu-after-docs-review:
     name: Refresh AI PR menu after docs review
