@@ -1,6 +1,6 @@
 **Where to look**
 
-* **{{ml}} job messages in {{kib}}**: Open **Machine Learning → Anomaly Detection**, select the job, and review the **Job messages** tab for audit entries and warnings about linked projects, credentials, or scope changes. On the **Datafeed** tab, **View datafeed counts** opens the datafeed chart flyout for extraction timing.
+* **{{anomaly-job}} job messages in {{kib}}**: Open **Machine Learning → Anomaly Detection**, select the job, and review the **Job messages** tab for audit entries and warnings about linked projects, credentials, or scope changes. On the **Datafeed** tab, **View datafeed counts** opens the datafeed chart flyout for extraction timing.
 
   The same entries are stored in `.ml-notifications-*`.
 * **`GET _ml/datafeeds/{datafeed_id}`**: Shows the effective `project_routing` value and, when an internal cloud credential exists, `authorization.cloud_api_key.id`.
