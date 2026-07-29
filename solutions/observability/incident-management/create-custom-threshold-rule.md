@@ -85,11 +85,11 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-Optionally turn on **Add warning threshold** to define a warning-level threshold, in addition to the critical threshold. When the warning threshold is met, the rule fires the **Warning** action group. When the critical threshold is met, the rule fires the **Alert** action group.
+Optionally turn on **Add warning threshold** to set a less severe threshold alongside your critical threshold. Crossing the warning threshold triggers the **Warning** action group. Crossing the critical threshold triggers the **Alert** action group. When you set up actions for the rule, choose which action group each one runs for, so you can send different notifications (or none at all) for warnings versus critical alerts.
 
-For example, you can alert with a warning when average CPU usage is above 80% and with a critical alert when it is above 95%.
+For example, you could trigger a warning when average CPU usage goes above 80%, and a critical alert when it goes above 95%.
 
-When the warning threshold is met, the alert severity is set to `warning`. When the critical threshold is met, the alert severity is set to `critical`. You can use these severity values in [per-alert snooze](/explore-analyze/alerting/alerts/view-alerts.md) conditions, such as to unsnooze an alert when its severity changes.
+The alert's severity matches whichever threshold triggered it: `warning` or `critical`. You can use these severity values in [per-alert snooze](/explore-analyze/alerting/alerts/view-alerts.md) conditions to automatically unsnooze an alert when its severity changes.
 
 
 ### Basic math equation [custom-threshold-math-equation]
