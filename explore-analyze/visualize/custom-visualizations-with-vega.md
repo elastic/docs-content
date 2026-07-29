@@ -1615,7 +1615,7 @@ The visualization automatically injects a `"projection"`, which you can use to c
 ```
 
 
-#### Vega debugging [vega-debugging]
+### Vega debugging [vega-debugging]
 
 With the **Vega debug** view, you can inspect the **Data sets** and **Signal Values** runtime data.
 
@@ -1629,7 +1629,7 @@ The runtime data is read from the [runtime scope](https://vega.github.io/vega/do
 To debug more complex specs, copy the Vega spec from the **Spec** tab and use the [online Vega Editor](https://vega.github.io/editor/) to debug it.
 
 
-##### Asking for help with a Vega spec [asking-for-help-with-a-vega-spec]
+#### Asking for help with a Vega spec [asking-for-help-with-a-vega-spec]
 
 Because of the dynamic nature of the data in {{es}}, it is hard to help you with **Vega** specs unless you can share a dataset. To do this, click **Inspect**, select the **Vega debug** view, then select **Spec**.
 
@@ -1641,7 +1641,7 @@ Because of the dynamic nature of the data in {{es}}, it is hard to help you with
 To copy the response, click **Copy to clipboard**. Paste the copied data to [gist.github.com](https://gist.github.com/), possibly with a .json extension. Use the [raw] button, and share that when asking for help.
 
 
-#### (Vega only) Expression functions which can update the time range and dashboard filters [vega-expression-functions]
+### (Vega only) Expression functions which can update the time range and dashboard filters [vega-expression-functions]
 
 {{kib}} has extended the Vega expression language with these functions. These functions will trigger new data to be fetched, which by default will reset Vega signals. To keep signal values set `restoreSignalValuesOnRefresh: true` in the Vega config.
 
@@ -1670,7 +1670,7 @@ kibanaSetTimeFilter(start, end)
 ```
 
 
-#### Additional configuration options [vega-additional-configuration-options]
+### Additional configuration options [vega-additional-configuration-options]
 
 ```yaml
 {
