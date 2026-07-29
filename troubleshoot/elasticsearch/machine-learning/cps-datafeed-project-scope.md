@@ -1,4 +1,4 @@
----
+§§§§§§§§§§§§§§§§§§§§§§§---
 navigation_title: Project scope problems
 applies_to:
   stack: unavailable
@@ -20,7 +20,7 @@ The `project_routing` field decides which linked projects a {{cps}} {{dfeed}} se
 
 **Check the effective scope in {{kib}}**
 
-Open **Machine Learning → Anomaly Detection** and review the **Project scope** column in the {{anomaly-jobs}} list. Each cell shows a parsed/total count (for example, `2/5`) derived from the stored routing expression and the total project count (origin plus linked projects), not from live resolution of which aliases match. {{kib}} parses the segment after `_alias:`: omitted or `null` routing shows `1`. `_alias:*` shows the origin-plus-linked total. A single expression such as `_alias:production-*` or `_alias:_origin` shows `1`. Because the count comes from parsing rather than resolution, a wildcard that matches several projects still shows `1`. Comma-separated values after `_alias:` (for example `_alias:a,b`) inflate the parsed count, but {{es}} does not support comma-separated routing expressions; treat such a value as a single literal alias. Select the count to open a popover titled **Project scope** that displays the routing expression stored on the {{dfeed}}. A legacy {{anomaly-job}} with no stored routing shows `_alias:_origin` in the popover.
+Open **Machine Learning → Anomaly Detection** and review the **Project scope** column in the {{anomaly-jobs}} list. Each cell shows a parsed/total count (for example, `2/5`) derived from the stored routing expression and the total project count (origin plus linked projects), not from live resolution of which aliases match. {{kib}} parses the segment after `_alias:`: omitted or `null` routing shows `1`. `_alias:*` shows the origin-plus-linked total. A single expression such as `_alias:production-*` or `_alias:_origin` shows `1`. Because the count comes from parsing rather than resolution, a wildcard that matches several projects still shows `1`. Select the count to open a popover titled **Project scope** that displays the routing expression stored on the {{dfeed}}. A legacy {{anomaly-job}} with no stored routing shows `_alias:_origin` in the popover.
 
 **Error messages: routing matches no project**
 
