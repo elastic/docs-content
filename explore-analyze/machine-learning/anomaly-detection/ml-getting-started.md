@@ -1,5 +1,6 @@
 ---
 navigation_title: Tutorial
+description: Follow this tutorial to explore sample data with the Data Visualizer, create anomaly detection jobs, and identify anomalies in Kibana.
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html
 applies_to:
@@ -44,7 +45,7 @@ To get the best results from {{ml}} analytics, you must understand your data. Yo
 
 2. Open **Machine Learning** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 3. Select the **{{data-viz}}** tab.
-4. Click **Select data view** and choose the `kibana_sample_data_logs` {{data-source}}.
+4. Select the `kibana_sample_data_logs` {{data-source}}.
 5. Use the time filter to select a time period that you’re interested in exploring. Alternatively, click **Use full data** to view the full time range of data.
 6. Optional: You can change the random sampling behavior, which affects the number of documents per shard that are used in the {{data-viz}}. You can use automatic random sampling that balances accuracy and speed, manual sampling where you can chose a value for the sampling percentage, or you can turn the feaure off to use the full data set. There is a relatively small number of documents in the {{kib}} sample data, so you can turn random sampling off. For larger data sets, keep in mind that using a large sample size increases query run times and increases the load on the cluster.
 7. Explore the fields in the {{data-viz}}.
