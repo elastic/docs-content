@@ -89,9 +89,7 @@ Optionally turn on **Add warning threshold** to define a warning-level threshold
 
 For example, you can alert with a warning when average CPU usage is above 80% and with a critical alert when it is above 95%.
 
-When the warning threshold is met, the alert severity is set to `warning`. When the critical threshold is met, the alert severity is set to `critical`. 
-
-% You can use these severity values in [per-alert snooze](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alert-options) conditions, such as to unsnooze an alert when its severity changes.
+When the warning threshold is met, the alert severity is set to `warning`. When the critical threshold is met, the alert severity is set to `critical`. You can use these severity values in [per-alert snooze](/explore-analyze/alerting/alerts/view-alerts.md) conditions, such as to unsnooze an alert when its severity changes.
 
 
 ### Basic math equation [custom-threshold-math-equation]
