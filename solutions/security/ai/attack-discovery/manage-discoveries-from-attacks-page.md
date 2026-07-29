@@ -35,7 +35,7 @@ serverless:
   security: ga
 ```
 
-When you open an attack, its details appear in a flyout. The **Overview** tab organizes [each discovery's information](/solutions/security/ai/attack-discovery/index.md#attack-discovery-what-info) into the following sections:
+When you open an attack, its details appear in a flyout. The **Overview** tab organizes each discovery's information into the following sections:
 
 * **AI Summary**: The discovery's title and the LLM-generated summary of the potential threat.
 * **Visualizations**: An expandable **Attack Chain** diagram that maps the attack to [MITRE ATT&CK](https://attack.mitre.org/) tactics. Expand or collapse this section to show or hide the diagram; your choice persists across sessions.
