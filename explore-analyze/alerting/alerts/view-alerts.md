@@ -110,7 +110,7 @@ You can set both a time expiry and unsnooze conditions. The alert unsnoozes when
 ::::{tip}
 :applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
 
-[Custom threshold](/solutions/observability/incident-management/create-custom-threshold-rule.md#custom-threshold-warning-threshold) and [metric threshold](/solutions/observability/incident-management/create-metric-threshold-rule.md#metrics-conditions) rules set the alert severity to `warning` or `critical` based on whether the warning or critical threshold was met. Severity-based unsnooze conditions, such as when severity changes, can match those alerts.
+[Custom threshold](/solutions/observability/incident-management/create-custom-threshold-rule.md) and [metric threshold](/solutions/observability/incident-management/create-metric-threshold-rule.md#metrics-conditions) rules set the alert severity to `warning` or `critical` based on whether the warning or critical threshold was met. Severity-based unsnooze conditions, such as when severity changes, can match those alerts.
 ::::
 
 ### Snooze or unsnooze an alert [snooze-or-unsnooze-an-alert]
