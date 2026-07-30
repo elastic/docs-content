@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: {{es}} configuration
 ---
 
-# {{es}} configuration [k8s-elasticsearch-specification]
+# {{es}} configuration on ECK [k8s-elasticsearch-specification]
 
 This section covers various {{es}} cluster configuration scenarios when using ECK. For configuration topics relevant to both {{es}} and {{kib}}, see the [](./configure-deployments.md).
 
