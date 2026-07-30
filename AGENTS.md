@@ -2,7 +2,7 @@
 
 This is the shared baseline for AI agents working in this repository. Claude Code reads it through `CLAUDE.md`, a symlink to this file. Cursor, Codex, and Copilot read `AGENTS.md` directly. Personal preferences belong in the gitignored `CLAUDE.local.md` or `AGENTS.local.md`, which load in addition to this file.
 
-Keep this file lean. It points to the contribution guide in [`contribute-docs/`](contribute-docs/index.md) rather than restating it. If the two disagree, the contribution guide wins, so fix this file.
+Keep this file lean: it points to the [`contribute-docs/`](contribute-docs/index.md) guide rather than restating it. Two resources back it up. When the **Elastic docs skills** are installed, reach for the relevant skill first, since it's the fast path. When a skill doesn't fit or you're unsure, the contribution guide has the deeper context, and unlike the skills it's always present in this repo. If this file and the contribution guide ever disagree, the guide wins, so fix this file.
 
 ## What this repo is
 
@@ -32,8 +32,8 @@ This is a rule of thumb for finding files, not for writing links. Links in the d
 
 - **Verify before you draft.** For anything the product actually does, such as UI labels, defaults, and behavior, the source of truth is the product's code repo at `HEAD`, not the issue or PR description. Never publish something the model inferred without checking source. Because these are cumulative docs, also confirm a statement holds for earlier v9 minors when there is any doubt. A page must stay true for users on any supported v9 minor.
 - **Find the canonical home for content.** Search for a page that already covers the topic before adding a new one.
-- **Place content where it belongs, once.** Each content type and each page has a defined role and depth. Put information in its most correct place. Minor details belong where they are relevant, not repeated everywhere a feature is mentioned. A feature is often documented in several places for good reasons: when you change one, check the others so you do not introduce inconsistencies, and update every place that needs it. When the same content genuinely has to appear in more than one place, a snippet is the clean way to reuse it, though a single duplication across a couple of pages is acceptable rather than maintaining an include. Check a page against its type with the `docs-content-type-checker` skill, backed by the [content types](contribute-docs/content-types/index.md) guide.
-- **Cumulative docs.** These docs serve every supported version at once. Preserve existing content and scope new content with `applies_to` rather than overwriting. Use the `docs-applies-to-tagging` skill for tagging and lifecycle decisions, and consult the [cumulative-docs guide](contribute-docs/how-to/cumulative-docs/index.md) when a case isn't clear.
+- **Place content where it belongs, once.** Each content type and each page has a defined role and depth. Put information in its most correct place. Minor details belong where they are relevant, not repeated everywhere a feature is mentioned. A feature is often documented in several places for good reasons: when you change one, check the others so you do not introduce inconsistencies, and update every place that needs it. When the same content genuinely has to appear in more than one place, a snippet is the clean way to reuse it, though a single duplication across a couple of pages is acceptable rather than maintaining an include. See [content types](contribute-docs/content-types/index.md).
+- **Cumulative docs.** These docs serve every supported version at once. Preserve existing content and scope new content with `applies_to` rather than overwriting. See the [cumulative-docs guide](contribute-docs/how-to/cumulative-docs/index.md).
 - **Don't assume existing content already follows every rule.** Consistency with surrounding pages is a good default, but the existing docs are not guaranteed correct. When content obviously diverges from the documented best practices, prefer fixing or improving it over matching the divergence.
 - **Write for the reader, not the PR.** Translate developer jargon into user language. One precise sentence beats three vague ones.
 
@@ -80,30 +80,30 @@ High-signal conventions:
 
 Opening a PR builds a preview automatically. The link appears on the PR and updates within minutes. Before requesting review, check your changes for:
 
-- **Content type compliance** (`docs-content-type-checker`): the right structure and depth for the page's type.
-- **applies_to and cumulative-docs compliance** (`docs-applies-to-tagging`): correct scoping for versions and deployments.
-- **Style compliance** (`docs-check-style`): apply the [Vale](contribute-docs/vale-linter.md) recommendations where relevant.
+- **Content type compliance**: the right structure and depth for the page's type.
+- **applies_to and cumulative-docs compliance**: correct scoping for versions and deployments.
+- **Style compliance**: apply the [Vale](contribute-docs/vale-linter.md) recommendations where relevant.
 - **Accuracy against the product code**: labels, defaults, and behavior verified at `HEAD`.
 
-Preview locally with docs-builder ([build locally](contribute-docs/locally.md)) and run Vale on changed files. When you move, rename, or delete a page, add the redirect in `redirects.yml`. For AI-assisted contributions specifically, read [`AI.md`](AI.md).
+Preview locally with `docs-builder serve`, or run `docs-builder` with no argument for a full build that surfaces errors ([build locally](contribute-docs/locally.md)). Run Vale on changed files. When you move, rename, or delete a page, add the redirect in `redirects.yml`. For AI-assisted contributions specifically, read [`AI.md`](AI.md).
 
 ## Tooling
 
-If your agent has the **Elastic docs skills** installed (from <https://github.com/elastic/elastic-docs-skills>), prefer them for authoring and validation. A skill is the fast path. The [`contribute-docs/`](contribute-docs/index.md) guides are the deeper reference for cases a skill doesn't cover, or when you're in doubt.
+The **Elastic docs skills** (from <https://github.com/elastic/elastic-docs-skills>) cover the common tasks. Install them, then reach for the one that fits. When a skill doesn't cover your case, fall back to the contribution guide, as described at the top of this file.
 
-| Task | Skill | Deeper reference |
-|---|---|---|
-| Issue to drafted PR, end to end | `accept-docs-quest` | this file |
-| `applies_to` tagging and cumulative docs | `docs-applies-to-tagging` | [cumulative docs](contribute-docs/how-to/cumulative-docs/index.md) |
-| Content type structure and depth | `docs-content-type-checker` | [content types](contribute-docs/content-types/index.md) |
-| Style, voice, and grammar | `docs-check-style` | [style guide](contribute-docs/style-guide/index.md) |
-| MyST and directive syntax | `docs-syntax-help` | [syntax quick reference](contribute-docs/syntax-quick-reference.md) |
-| Internal jargon | `docs-flag-jargon-skill` | [word choice](contribute-docs/style-guide/word-choice.md) |
-| Frontmatter completeness and descriptions | `docs-frontmatter-audit`, `docs-frontmatter-description` | [SEO](contribute-docs/how-to/seo.md) |
-| Page opening (H1, intro, requirements) | `docs-page-opening-optimizer` | [content types](contribute-docs/content-types/index.md) |
-| Code sample validation | `docs-validate-code-samples` | [syntax quick reference](contribute-docs/syntax-quick-reference.md) |
-| Cross-link validation | `crosslink-validator` | [link syntax](https://elastic.github.io/docs-builder/syntax/links/) |
-| Redirects | `docs-redirects` | `redirects.yml` |
+| Task | Skill |
+|---|---|
+| Issue to drafted PR, end to end | `accept-docs-quest` |
+| `applies_to` tagging and cumulative docs | `docs-applies-to-tagging` |
+| Content type structure and depth | `docs-content-type-checker` |
+| Style, voice, and grammar | `docs-check-style` |
+| MyST and directive syntax | `docs-syntax-help` |
+| Internal jargon | `docs-flag-jargon-skill` |
+| Frontmatter completeness and descriptions | `docs-frontmatter-audit`, `docs-frontmatter-description` |
+| Page opening (H1, intro, requirements) | `docs-page-opening-optimizer` |
+| Code sample validation | `docs-validate-code-samples` |
+| Cross-link validation | `crosslink-validator` |
+| Redirects | `docs-redirects` |
 
 The **elastic-docs MCP**, when available, searches the published corpus, finds related pages, and checks coherence.
 
