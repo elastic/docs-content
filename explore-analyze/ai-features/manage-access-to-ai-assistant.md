@@ -93,6 +93,11 @@ After you turn on tracking, the managed **[Elastic] Inference Token Usage** dash
 - Token usage over time, broken down by feature.
 - Token usage by feature and by model.
 
+:::{image} /explore-analyze/images/inference-token-usage-dashboard.png
+:alt: Inference Token Usage dashboard showing token totals, request count, usage over time by feature, and token usage by feature and by model
+:screenshot:
+:::
+
 :::{tip}
 If you open the dashboard right after turning on tracking and its breakdown panels show an error or no data, reload {{kib}} to refresh the dashboard's fields.
 :::
