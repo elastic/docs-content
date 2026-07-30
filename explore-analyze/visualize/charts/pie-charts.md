@@ -102,6 +102,9 @@ Donut charts are pie charts with a hollow center. The empty space can provide a 
 This example creates a donut chart sliced by the top 5 log tag values, with raw counts shown inside each slice.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -253,6 +256,9 @@ This example demonstrates the core value of multiple metrics: using KQL filters 
 This example uses multiple metrics mode (no `group_by`) where each metric counts documents matching a specific file extension, with each metric assigned a static color.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -394,6 +400,9 @@ The resulting chart shows the 3 most common hosts, with all remaining hosts comb
 
 This example shows the top 3 hosts as individual slices and groups all remaining hosts into an "Other" slice using the `other_bucket` option.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -608,6 +617,9 @@ The following examples show various configuration options for building impactful
 This example uses formula-based metrics to count visits from specific referrer domains, producing one slice per traffic source without a `group_by` dimension.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -742,6 +754,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 This example creates a pie chart that sums revenue per product category from the eCommerce sample data, showing each category's share of total revenue.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -859,6 +874,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 This example uses the `filters` grouping operation to define custom slices based on HTTP response code ranges, rather than relying on field values directly.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

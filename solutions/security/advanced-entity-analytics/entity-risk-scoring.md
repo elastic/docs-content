@@ -149,6 +149,8 @@ When an entity belongs to a [resolution group](/solutions/security/advanced-enti
 
 The risk score is updated every hour based on the configured date and time range, which defaults to 30 days. Each update generates a new score, calculated independently of any previous scores.
 
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Because every calculation is retained, you can [investigate an entity's risk score over time](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) and inspect the risk inputs behind an earlier score.
+
 ### Residual risk score
 
 In some cases, entities can retain a residual risk score:
