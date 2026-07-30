@@ -64,6 +64,7 @@ High-signal conventions:
 - Bold UI labels and controls, such as **Save**, **Add panel**, and **Settings**.
 - Separate navigation steps with ` → `, as in **Add** → **Controls** → **Variable control**.
 - Use MyST directives per the [syntax quick reference](contribute-docs/syntax-quick-reference.md). Keep content in prose where it reads naturally, and don't stack admonitions.
+- Write links with the [docs-builder link syntax](https://elastic.github.io/docs-builder/syntax/links/), including the cross-repo `<repo>://` form. Validate them with the `crosslink-validator` skill.
 
 ## Before you open a PR
 
