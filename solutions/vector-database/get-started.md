@@ -25,7 +25,7 @@ If you're looking for an introduction to the {{stack}} or the {{es}} product, go
 
 There are two options to create serverless projects:
 
-* If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration). For more information about {{ecloud}} trials, check out [Trial information](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial).
+* If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For more information about {{ecloud}} trials, check out [Trial information](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial).
 * If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login) and do the following:
   1. Select **Create project** from the **Serverless projects** panel.
   2. Select **Next** from the **Vector Database** panel.

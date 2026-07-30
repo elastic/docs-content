@@ -7,18 +7,18 @@ products:
   - id: elasticsearch
 description: >-
   Learn how costs for Elasticsearch Vector Database Serverless projects
-  are calculated across storage, search, indexing, and infrastructure.
+  are calculated across storage, search, ingest, and infrastructure.
 ---
 
 # {{es}} Vector Database billing dimensions [vector-database-billing]
 
-{{es}} Vector Database projects on {{serverless-full}} are priced based on consumption across storage, search, indexing, and infrastructure.
+{{es}} Vector Database projects on {{serverless-full}} are priced based on consumption across storage, search, ingest, and infrastructure.
 
 Your monthly bill is calculated based on these components:
 
 * **Storage** — Measured by the total amount of data stored in your project, in GB.
 * **Search** — Measured by reserved search capacity for your stored data. Capacity is controlled by your project's [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) setting and scales with how much data you store.
-* **Indexing** — Measured by the volume of data you index into your project over the course of a month, in GB.
+* **Ingest** — Measured by the volume of data you ingest into your project over the course of a month, in GB.
 * **Infrastructure fee** — Measured by the number of hours your project is running.
 
 For current rates, refer to the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless) or the [{{serverless-full}} pricing](https://www.elastic.co/pricing/serverless) pages.
@@ -37,9 +37,9 @@ Search charges cover the search capacity reserved for your stored data. All stor
 
 Increasing Search Power reserves more capacity and raises search charges. Running more queries does not increase search charges. For current rates, refer to the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless).
 
-## Indexing [vector-database-billing-indexing]
+## Ingest [vector-database-billing-ingest]
 
-Indexing charges are based on the volume of data written to your project, measured in GB for the billing period. This uses the same definition of billable indexing bytes as other Serverless offerings.
+Ingest charges are based on the volume of data written to your project, measured in GB for the billing period. This uses the same definition of billable ingested bytes as other Serverless offerings.
 
 ## Infrastructure [vector-database-billing-infrastructure]
 
@@ -47,7 +47,7 @@ You are billed an hourly infrastructure fee for every hour that your project is 
 
 ## Managing Vector Database costs [vector-database-billing-managing-costs]
 
-Vector Database costs follow your storage footprint, search resource allocation, indexing volume, and the hours your project is available. To balance performance with spend, adjust the controls described in this section.
+Vector Database costs follow your storage footprint, search resource allocation, ingest volume, and the hours your project is available. To balance performance with spend, adjust the controls described in this section.
 
 ### Search Power setting [vector-database-billing-search-power-setting]
 
