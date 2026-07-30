@@ -16,7 +16,7 @@ Ingress and egress are independent capabilities with different infrastructure re
 * **[IPv6 ingress](#ece-ipv6-ingress)**: IPv4 and IPv6 clients reach your deployments and the Cloud UI. It is handled entirely in front of ECE, so the ECE hosts are not modified. This makes it available to existing IPv4 installations.
 * **[IPv6 egress](#ece-ipv6-egress)**: ECE services and deployments open outbound connections to IPv6 destinations. This traffic originates on the ECE hosts, so it requires dual-stack host and container networking.
 
-ECE itself remains an IPv4 platform. IPv6 support is limited to ingress and egress connectivity, and there is no global IPv6 mode for the platform.
+ECE itself remains an IPv4 platform. IPv6 is supported only for ingress and egress connectivity, and there is no platform-wide IPv6 mode.
 
 :::{note}
 For a complete end-to-end tutorial that implements the concepts and requirements described on this page, refer to [Set up IPv6 for ECE on {{aws}}](./ece-ipv6-aws-setup.md). The tutorial covers dual-stack networking, load balancer configuration, Proxy Protocol v2, container networking, and both new and existing ECE installations.
