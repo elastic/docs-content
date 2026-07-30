@@ -35,14 +35,46 @@ The speed of kNN search scales linearly with the number of vector dimensions, be
 {{es}} stores the original JSON document that was passed at index time in the [`_source` field](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md). By default, each hit in the search results contains the full document `_source`. When the documents contain high-dimensional `dense_vector` fields, the `_source` can be quite large and expensive to load. This could significantly slow down the speed of kNN search.
 
 ::::{note}
-[reindex]({{es-apis}}operation/operation-reindex), [update]({{es-apis}}operation/operation-update), and [update by query]({{es-apis}}operation/operation-update-by-query) operations generally require the `_source` field. Disabling `_source` for a field might result in unexpected behavior for these operations. For example, reindex might not actually contain the `dense_vector` field in the new index.
+As of 9.2, new indices exclude vector fields (`dense_vector`, `sparse_vector`, `rank_vector`) from `_source` by default, using the dedicated `index.mapping.exclude_source_vectors` index setting described below. Existing indices are unaffected and continue to store vectors in `_source` as before.
 ::::
 
 
-You can disable storing `dense_vector` fields in the `_source` through the [`excludes`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#include-exclude) mapping parameter. This prevents loading and returning large vectors during search, and also cuts down on the index size. Vectors that have been omitted from `_source` can still be used in kNN search, since it relies on separate data structures to perform the search. Before using the [`excludes`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#include-exclude) parameter, make sure to review the downsides of omitting fields from `_source`.
+### Recommended: `index.mapping.exclude_source_vectors`
+
+For vector fields specifically, prefer the `index.mapping.exclude_source_vectors` index setting over the generic `excludes` mapping parameter described further down. Vectors excluded through this setting are **rehydrated automatically** for [reindex]({{es-apis}}operation/operation-reindex), [update]({{es-apis}}operation/operation-update), [update by query]({{es-apis}}operation/operation-update-by-query), and recovery, so these operations continue to work as expected even though the vector isn't physically stored in `_source`.
+
+```console
+PUT my-index
+{
+  "settings": {
+    "index.mapping.exclude_source_vectors": true
+  }
+}
+```
+
+This is enabled by default for indices created on 9.2+. If you need the original vector values preserved exactly as provided (for example, `double` precision input rather than the internally-stored `float` representation), disable it at index creation time:
+
+```console
+PUT my-index
+{
+  "settings": {
+    "index.mapping.exclude_source_vectors": false
+  }
+}
+```
+
+To retrieve vector values in a specific search response despite this setting, use the [`fields`]({{es-apis}}operation/operation-search#operation-search-body-application-json-fields) option, or re-enable inclusion in `_source` for that request.
+
+### Alternative: the generic `excludes` mapping parameter
+
+::::{note}
+[reindex]({{es-apis}}operation/operation-reindex), [update]({{es-apis}}operation/operation-update), and [update by query]({{es-apis}}operation/operation-update-by-query) operations generally require the `_source` field. Disabling `_source` for a field through the generic `excludes` parameter (unlike `index.mapping.exclude_source_vectors` above) does **not** support rehydration, and might result in unexpected behavior for these operations. For example, reindex might not actually contain the `dense_vector` field in the new index.
+::::
+
+
+You can also disable storing `dense_vector` fields in the `_source` through the [`excludes`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#include-exclude) mapping parameter. This prevents loading and returning large vectors during search, and also cuts down on the index size. Vectors that have been omitted from `_source` can still be used in kNN search, since it relies on separate data structures to perform the search. Before using the [`excludes`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#include-exclude) parameter, make sure to review the downsides of omitting fields from `_source`.
 
 Another option is to use  [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source).
-
 
 ## Ensure data nodes have enough memory [_ensure_data_nodes_have_enough_memory]
 
