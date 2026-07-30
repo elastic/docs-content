@@ -53,6 +53,10 @@ A completed investigation provides:
 - **Next steps**: Specific, actionable items. These are textual suggestions only — Nightshift does not take automated remediation actions.
 - **Gaps found**: Data sources or access boundaries Nightshift couldn't reach during the investigation, such as missing structured log fields, unavailable infrastructure metrics, or connectors with limited access. Gaps are listed explicitly so you know what the investigation couldn't verify.
 
+## Give feedback [nightshift-investigations-feedback]
+
+Nightshift is in private preview. Use the **Submit feedback** {icon}`comment` button at the top of the page to share your experience. Your feedback goes directly to the team.
+
 ## Learn more [nightshift-investigations-nav]
 
 - [Nightshift overview](./nightshift.md)

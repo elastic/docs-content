@@ -75,6 +75,10 @@ When an [investigation](./investigations.md) starts, the investigation agent rea
 
 Memory is also available to you directly during chat. You can ask the AI Agent what it knows about a service, request the current gap overview, or ask it to update a memory page based on something you've just learned.
 
+## Give feedback [nightshift-memory-feedback]
+
+Nightshift is in private preview. Use the **Submit feedback** {icon}`comment` button at the top of the page to share your experience. Your feedback goes directly to the team.
+
 ## Learn more [nightshift-memory-nav]
 
 - [Nightshift overview](./nightshift.md)

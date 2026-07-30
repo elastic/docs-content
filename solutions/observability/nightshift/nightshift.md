@@ -74,6 +74,10 @@ Every Significant Event has an **Open in chat** button. Select it to open a conv
 
 The AI Agent has access to the event's detections, associated KIs, and [memory](./memory.md) pages about your system.
 
+## Give feedback [nightshift-feedback]
+
+Nightshift is in private preview. Use the **Submit feedback** {icon}`comment` button at the top of the page to share your experience. Your feedback goes directly to the team.
+
 ## Learn more [nightshift-landing-page-nav]
 
 - [Investigations](./investigations.md)
