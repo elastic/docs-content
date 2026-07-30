@@ -137,6 +137,15 @@ If you duplicate the rule and its exceptions, copies of the exceptions are creat
 4. If any selected rules have exceptions, choose how to handle them.
 
 
+## View changes history [view-changes-history-entry]
+
+```{applies_to}
+stack: ga 9.5
+```
+
+Select the **All actions** menu {icon}`boxes_horizontal` on a rule, or select **All actions** on the rule's details page, then select **History** to view a chronological timeline of changes made to the rule, compare revisions, and restore the rule to a previous state. Refer to [View rule changes history](/solutions/security/detect-and-alert/view-rule-changes-history.md) for more details.
+
+
 ## Delete rules [delete-rules]
 
 Delete rules to permanently remove them from your system. This action cannot be undone.
