@@ -48,7 +48,7 @@ This is a rule of thumb for finding files, not for writing links. Links in the d
 | `manage-data/` | Ingesting, transforming, and lifecycle-managing data |
 | `reference/` | Reference material such as settings, APIs, CLIs, and config |
 | `troubleshoot/` | Troubleshooting and diagnostics |
-| `release-notes/` | Release notes and changelogs for Elastic Stack and Serverless. Generated from source, so don't hand-edit the rendered entries. |
+| `release-notes/` | Release notes and changelogs for Elastic Stack and Serverless. Produced from code changes, not part of regular docs edits. |
 | `cloud-account/` | Elastic Cloud account and billing |
 | `extend/` | Extending and integrating with Elastic |
 | `contribute-docs/` | The public contribution guide: style, content types, cumulative docs, syntax. The canonical source this file points to. |
@@ -113,6 +113,6 @@ The **elastic-docs MCP**, when available, searches the published corpus, finds r
 - Don't create a new page before searching for a page that can absorb the content.
 - Don't duplicate prose across pages when a `_snippets/` include is the better fit.
 - Don't delete content for a still-supported version. Scope it with `applies_to` instead.
-- Don't hand-edit auto-generated content. Release notes and changelog pages are assembled by the `{changelog}` directive from source entries, not prose you edit in place. Correct the source and let the page regenerate.
+- Don't update release notes manually as part of a regular docs change. They're produced from code changes, not hand-edited here.
 - Don't add or replace screenshots on a hunch. Flag the screenshots that need updating and let a human capture them.
 - Don't restructure or rename pages beyond the task, unless the change is required for the new content to make sense.
