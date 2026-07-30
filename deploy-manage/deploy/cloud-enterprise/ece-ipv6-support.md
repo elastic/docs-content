@@ -43,8 +43,10 @@ To enable IPv6 ingress:
 * When creating firewall rules, allow IPv6 on the load balancer listener ports only. The ECE hosts continue to receive IPv4 traffic only, so no IPv6 inbound rules are required. ECE [port requirements](./ece-networking-prereq.md) are unchanged.
 
 :::{note}
-[IP filtering](/deploy-manage/security/ip-filtering-ece.md) rules accept IPv6 addresses and CIDR blocks, so you can filter IPv6 clients once their addresses reach the proxies.
+[IP filtering](/deploy-manage/security/ip-filtering-ece.md) rules accept IPv6 addresses and CIDR blocks, so you can filter IPv6 clients the same way as IPv4 clients.
 :::
+
+Although ECE endpoints listen on IPv4, IP filtering rules accept IPv6 addresses and CIDR blocks, so you can filter IPv6 clients.
 
 ## IPv6 egress [ece-ipv6-egress]
 
