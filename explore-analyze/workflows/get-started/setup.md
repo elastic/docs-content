@@ -48,9 +48,50 @@ Access to workflows is controlled by [{{kib}} privileges](/deploy-manage/users-r
 
 | Action | Required privilege |
 |--------|-------------------|
-| Access the **Workflows** page | `All` or `Read` for **Analytics > Workflows** |
-| Fully manage workflows | `All` for **Analytics > Workflows** |
-| Grant access to specific workflow actions | Set sub-feature privileges for **Analytics > Workflows** | 
+| Access the **Workflows** page | `All` or `Read` for **Analytics → Workflows** |
+| Fully manage workflows | `All` for **Analytics → Workflows** |
+| Grant access to specific workflow actions | Set sub-feature privileges for **Analytics → Workflows** |
+
+## Enable the Template library [workflows-templates-enable]
+
+```{applies_to}
+stack: preview 9.5+
+serverless: preview
+```
+
+The [Template library](/explore-analyze/workflows/templates/start-from-a-template.md) is turned off by default and must be enabled by an administrator. If you don't see **Template library** in the Workflows navigation, ask an administrator to turn it on.
+
+::::{applies-switch}
+:::{applies-item} stack: preview 9.5+
+
+An administrator can enable the Template library by adding the following to `kibana.yml`, then restarting {{kib}}:
+
+```yaml
+uiSettings.globalOverrides:
+  workflowsManagement:library:enabled: true
+```
+:::
+
+:::{applies-item} serverless:
+
+Have an administrator run the following request from [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md) to enable the Template library. This is a global setting, so it applies to your entire project, in all spaces:
+
+```json
+POST kbn:/internal/kibana/global_settings
+{
+  "changes": {
+    "workflowsManagement:library:enabled": true
+  }
+}
+```
+:::
+::::
+
+:::{note}
+The `/internal/kibana/global_settings` endpoint is an internal API and might change without notice. There is currently no public equivalent.
+:::
+
+After the Template library is enabled, reload the **Workflows** page. It can take a few minutes and several reloads before **Template library** appears in the navigation.
 
 ## What's next [workflows-what-next]
 
