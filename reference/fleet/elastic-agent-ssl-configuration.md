@@ -208,6 +208,10 @@ $$$client-ssl-options$$$
 
 $$$server-ssl-options$$$
 
+::::{tip}
+These server configuration options also apply to the {{fleet-server}} HTTPS endpoint. To set them for a {{fleet}}-managed {{fleet-server}}, add them under a `server.ssl` block in the {{fleet-server}} integration policy. For more information, refer to [Configure advanced SSL/TLS settings for {{fleet-server}}](/reference/fleet/secure-connections.md#fleet-server-advanced-ssl-settings).
+::::
+
 `ssl.certificate` $$$ssl.certificate-server-setting$$$
 :   (string) The path to the certificate for SSL server authentication. If the certificate is not specified, startup will fail.
 

@@ -250,6 +250,10 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
             `fleet-server-cert-key-passphrase`
             :   Passphrase file used to decrypt {{fleet-server}}'s private key.
 
+            ::::{note}
+            The `install` command doesn't provide flags for the allowed TLS versions (`supported_protocols`) or cipher suites (`cipher_suites`). To configure these, add a `server.ssl` block to the {{fleet-server}} integration policy, as described in [Configure advanced SSL/TLS settings for {{fleet-server}}](#fleet-server-advanced-ssl-settings).
+            ::::
+
             What happens if you enroll {{fleet-server}} without specifying certificates?
             If the certificates are managed by your organization and installed at the system level, they will be used to encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}.
             If system-level certificates don’t exist, {{fleet-server}} automatically generates self-signed certificates. Traffic between {{fleet-server}} and {{agent}}s over HTTPS is encrypted, but the certificate chain cannot be verified. Any {{agent}}s enrolling in {{fleet-server}} will need to pass the `--insecure` flag to acknowledge that the certificate chain is not verified.
@@ -317,3 +321,39 @@ Editing SSL or proxy settings for an existing {{fleet-server}} might cause agent
 :::
 
 To configure a mutual TLS connection from {{fleet-server}} to {{es}}, use the {{es}} output settings. For more information, refer to [Output SSL options](/reference/fleet/tls-overview.md#output-ssl-options).
+
+## Configure advanced SSL/TLS settings for {{fleet-server}} [fleet-server-advanced-ssl-settings]
+
+The {{fleet}} UI and the `elastic-agent install` command cover the most common SSL/TLS settings, such as certificates, certificate authorities, and client authentication. Granular options like the allowed TLS versions (`supported_protocols`) and cipher suites (`cipher_suites`) aren't exposed as UI fields or install command flags. To set them, add a `server.ssl` block to the {{fleet-server}} integration policy's advanced YAML configuration. {{fleet-server}} applies these settings to the HTTPS endpoint that {{agents}} connect to.
+
+To edit the advanced YAML configuration:
+
+1. Find {{fleet}} in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select the **Agent policies** tab, then select the policy that runs {{fleet-server}}.
+3. Open the **Actions** menu {icon}`ellipsis` for the {{fleet-server}} integration, and select **Edit integration**.
+4. Expand **Advanced options** in the **Fleet Server** section.
+5. In the **Custom fleet-server configurations** field, add a `server.ssl` block with the required SSL configurations. For example:
+
+    ```yaml
+    server:
+      ssl:
+        enabled: true
+        supported_protocols:
+          - TLSv1.2
+          - TLSv1.3
+        cipher_suites:
+          - ECDHE-RSA-AES-256-GCM-SHA384
+          - ECDHE-RSA-AES-128-GCM-SHA256
+          - ECDHE-ECDSA-AES-256-GCM-SHA384
+          - ECDHE-ECDSA-AES-128-GCM-SHA256
+    ```
+
+6. Save the integration to roll out the updated policy to your {{fleet-server}}s.
+
+If you omit `supported_protocols`, {{fleet-server}} allows `TLSv1.2` and `TLSv1.3`. If you omit `cipher_suites`, the default cipher suites are used. TLS 1.3 cipher suites can't be configured individually.
+
+For the full list of SSL settings and their allowed values, refer to the server configuration options in [Configure SSL/TLS for standalone {{agents}}](/reference/fleet/elastic-agent-ssl-configuration.md#server-ssl-options).
+
+:::{warning}
+Editing SSL settings for an existing {{fleet-server}} might cause agents to lose connectivity. If you restrict `supported_protocols` or `cipher_suites` to values that connected {{agents}} don't support, those agents fail to check in. Verify that your chosen protocols and cipher suites are compatible with all connected {{agents}} before you apply the change.
+:::
