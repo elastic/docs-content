@@ -67,7 +67,7 @@ The [Template library](/explore-analyze/workflows/templates/start-from-a-templat
 An administrator can enable the Template library by adding the following to `kibana.yml`, then restarting {{kib}}:
 
 ```yaml
-uiSettings.overrides:
+uiSettings.globalOverrides:
   workflowsManagement:library:enabled: true
 ```
 :::
