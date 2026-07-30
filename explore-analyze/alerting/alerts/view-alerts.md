@@ -94,24 +94,15 @@ If a rule uses **Group alerts by** to track hosts, services, or other fields sep
 
 Use per-alert snooze to stop notifications from one alert without silencing the rest of the rule. To silence every notification from a rule, [snooze the rule](create-manage-rules.md#controlling-rules) instead.
 
-::::{applies-switch}
-
-:::{applies-item} stack: ga 9.5+
-If you upgrade from an earlier {{stack}} version where you muted alerts (for example, {{stack}} 9.4), those alerts appear as snoozed indefinitely in the UI. Select **Unsnooze** to resume alert actions.
+:::{note}
+Muted alerts from earlier {{stack}} versions (for example, {{stack}} 9.4) or from before {{serverless-short}} added per-alert snooze appear as snoozed indefinitely in the UI. Select **Unsnooze** to resume alert actions.
 :::
 
-:::{applies-item} serverless: ga
-When your {{serverless-short}} project updates to a version with per-alert snooze, alerts you previously muted appear as snoozed indefinitely in the UI. Select **Unsnooze** to resume alert actions.
-:::
-
-::::
-
-
-To snooze an active alert, open its action menu ({icon}`boxes_vertical`) from the Alerts table or the alert details page, then select **Snooze**. Choose **Quick Snooze** when you know how long it should stay quiet, or **Condition based** when you'd rather the alert itself, not the clock, decide when actions resume. Configure your snooze, then select **Snooze alert** to apply it.
+To snooze an active alert, open its action menu ({icon}`boxes_vertical`) from the Alerts table or the alert details page, then select **Snooze**. Choose **Quick Snooze** when you know how long it should stay quiet, or **Condition based** when you want actions to resume based on a change in the alert itself, optionally paired with a time condition as a backstop rather than the primary trigger. Configure your snooze, then select **Snooze alert** to apply it.
 
 ### Quick Snooze [quick-snooze]
 
-Pick a duration when the noisy condition is temporary and time-bound, for example, a planned maintenance window or a deploy you expect to stabilize within a few hours. Use a **preset duration** (1, 8, or 24 hours) for common cases, or a **custom** duration or end date when those presets don't fit.
+Pick a duration when the noisy condition is temporary and time-bound, for example, a planned maintenance window or a deploy you expect to stabilize within a few hours. Use a **preset duration** (1, 8, or 24 hours) for common cases, or a **Custom** duration or end date when those presets don't fit.
 
 Pick **Indefinitely** when you have no fixed window in mind, such as an alert you've triaged and will follow up on yourself. It stays snoozed until you unsnooze it manually, and is also what existing muted alerts show as.
 
@@ -127,7 +118,7 @@ For the **data condition** (a change to the alert itself, not your source data),
 * **Severity change**: You want actions to resume the moment its severity moves, in either direction, without committing to a specific level.
 * **Severity equals**: You only care about one severity level. For example, stay quiet through `warning` but resume actions the moment the alert reaches `critical`.
 
-If you add more than one data condition, decide how strict the trigger should be:
+If you add more than one data condition, click **ANY** or **ALL** above the conditions list to decide how strict the trigger should be:
 
 * **Any**: The broadest safety net. It unsnoozes the moment a single condition is met.
 * **All**: A stricter bar. Stay quiet unless every condition lines up at once, useful for avoiding actions triggered by one flapping field.
@@ -138,7 +129,7 @@ If you add more than one data condition, decide how strict the trigger should be
 [Custom threshold](/solutions/observability/incident-management/create-custom-threshold-rule.md) and [metric threshold](/solutions/observability/incident-management/create-metric-threshold-rule.md#metrics-conditions) rules set the alert severity to `warning` or `critical` based on whether the warning or critical threshold was met. **Severity change** and **Severity equals** data conditions can match those alerts.
 ::::
 
-Snoozed alerts display the icon {icon}`bell_slash` in the Alerts table. Hover over it to see when the snooze ends or which conditions unsnooze the alert. To unsnooze early, open the action menu ({icon}`boxes_vertical`) and select **Unsnooze**.
+Snoozed alerts display the icon {icon}`bell_slash` in the alert lifecycle status cell of the Alerts table. Hover over it to see when the snooze ends or which conditions unsnooze the alert. To unsnooze early, open the action menu ({icon}`boxes_vertical`) and select **Unsnooze**.
 
 ::::{note}
 To permanently stop an alert's actions, open the actions menu for the appropriate alert, then select **Mark as untracked**. In this case, the alert's status is no longer updated and actions are no longer run. These changes are only applied to the alert that you untracked and cannot be reverted. Future alerts with the same alert ID are unaffected.

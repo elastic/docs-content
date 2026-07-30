@@ -142,26 +142,14 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-Snooze an active alert to stop that alert's actions, like email or Slack notifications, from running, until you unsnooze it, the snooze expires, or an unsnooze condition is met. For snooze options, unsnooze conditions, and how to snooze or unsnooze an alert, refer to [Snooze alerts](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts).
+Snooze an active alert to stop that alert's actions, like email or Slack notifications, from running. Actions resume when you unsnooze it, the snooze expires, or an unsnooze condition is met. For snooze options, unsnooze conditions, and how to snooze or unsnooze an alert, refer to [Snooze alerts](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts).
 
 To affect the behavior of the rule rather than individual alerts, refer to [Snooze and disable rules](create-manage-rules.md#observability-create-manage-rules-snooze-and-disable-rules) instead.
 
 ::::{note}
 :applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
 
-**Snooze** replaces the **Mute** action in {{stack}} 9.5+ and {{serverless-short}}.
-
-::::{applies-switch}
-
-:::{applies-item} stack: ga 9.5+
-If you upgrade from an earlier {{stack}} version where you muted alerts, those alerts appear as snoozed indefinitely in the UI. Select **Unsnooze** to resume alert actions.
-:::
-
-:::{applies-item} serverless: ga
-When your {{serverless-short}} project updates to a version with per-alert snooze, alerts you previously muted appear as snoozed indefinitely in the UI. You don't need to take any action for the change to apply. Select **Unsnooze** to resume alert actions.
-:::
-
-::::
+**Snooze** replaces the **Mute** action in {{stack}} 9.5+ and {{serverless-short}}. Muted alerts from earlier {{stack}} versions or from before {{serverless-short}} added per-alert snooze appear as snoozed indefinitely in the UI. Select **Unsnooze** to resume alert actions.
 ::::
 
 ## Mute alerts [observability-view-alerts-mute-alerts]
