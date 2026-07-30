@@ -81,17 +81,21 @@ stack: ga 9.5
 serverless: ga
 ```
 
-**Token usage tracking** is turned off by default. When you turn it on, Elastic records the token counts for each completed request that AI features send to an LLM, and makes a managed dashboard available to monitor them. To change this setting, you need the `Advanced Settings: all` {{kib}} privilege.
+**Token usage tracking** is turned off by default. When you turn it on, Elastic records the token counts for each completed request that AI features send to an LLM through the {{kib}} inference service, and makes a managed dashboard available to monitor them.
+
+To start tracking, go to **GenAI Settings** and turn on **Token usage tracking**. You need the `Advanced Settings: all` {{kib}} privilege to change this setting.
 
 For each request, Elastic records the number of prompt, completion, and total tokens, along with the model, connector, and the feature that made the request.
 
-To review usage, open the **[Elastic] Inference Token Usage** dashboard from the [Dashboards](/explore-analyze/dashboards.md) page. It summarizes:
+After you turn on tracking, the managed **[Elastic] Inference Token Usage** dashboard becomes available on the [Dashboards](/explore-analyze/dashboards.md) page. Open it to review usage. It summarizes:
 
 - Total, prompt, and completion tokens, and the total number of requests.
 - Token usage over time, broken down by feature.
 - Token usage by feature and by model.
 
-These counts cover the AI features that use the {{kib}} inference service. For per-response token counts and billing details specific to {{agent-builder}}, refer to [Monitor usage and costs for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/monitor-usage.md).
+If you open the dashboard right after turning on tracking and its breakdown panels show an error or no data, reload the page to refresh the dashboard's fields.
+
+For per-response token counts and billing details specific to {{agent-builder}}, refer to [Monitor usage and costs for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/monitor-usage.md).
 
 ## Feature settings
 ```{applies_to}
