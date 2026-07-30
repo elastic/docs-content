@@ -12,7 +12,7 @@ products:
 
 **Vega** and **Vega-Lite** are grammars for creating custom visualizations. You write a JSON (or HJSON) specification that defines the data, transforms, and visual marks. **Vega-Lite** is a good starting point if you are new to both grammars, but they are not compatible.
 
-Add a **Vega** panel on a dashboard to use these grammars with {{kib}} filters, the time range, and other [{{kib}} extensions](#reference-for-kibana-extensions). A panel's data can come from:
+Add a **Vega** panel on a dashboard to use these grammars with {{kib}} filters, the time range, and other [{{kib}} extensions](#reference-for-kibana-extensions). You can set the panel's data source to:
 
 * {{es}}, using:
    * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` An [{{esql}}](../query-filter/languages/esql-kibana.md) query (recommended). One query string replaces nested Query DSL aggregations and format paths. See [Writing {{esql}} queries in Vega](#vega-esql-queries).
