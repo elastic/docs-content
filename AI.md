@@ -4,7 +4,7 @@ AI tools can help you draft, restructure, and review documentation in this repo.
 
 ## Own what you submit
 
-- Review, understand, and be able to explain every change — the same as any PR you write by hand.
+- Review, understand, and be able to explain every change, the same as any PR you write by hand.
 - The editorial standard is unchanged: the [style guide](contribute-docs/style-guide/index.md) and [content types](contribute-docs/content-types/index.md) apply to AI-drafted content exactly as they do to hand-written content.
 
 ## Verify facts against source, not the model
@@ -12,7 +12,7 @@ AI tools can help you draft, restructure, and review documentation in this repo.
 Documentation's job is to be correct. A confident wrong label is worse than no label.
 
 - Verify every UI string, default, setting, and behavior against the product's own code repo at `HEAD` (`elastic/kibana`, `elasticsearch`, and others). Never publish something the model produced from memory or inferred from an issue.
-- Cite where a factual claim comes from — the issue, the PR diff, or the source file — so a reviewer can check it.
+- Cite where a factual claim comes from, whether the issue, the PR diff, or the source file, so a reviewer can check it.
 - Test IDs, component names, and data attributes are not user-facing labels. Don't document them as such.
 
 ## Start with intent
