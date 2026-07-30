@@ -814,9 +814,11 @@ With [Jina on-prem](https://github.com/jina-ai/jina-on-prem), you run Jina model
 
 To pull, transfer, and run a prebuilt Docker image, refer to the [Jina on-prem Quick Start](https://github.com/jina-ai/jina-on-prem/wiki/Quick-Start).
 
-For supported text embedding models, you can connect {{es}} to the local server through {{infer}} endpoints that call the APIs exposed by the container. For the models that support this {{es}} integration today, refer to the [model overview](#jina-model-overview) tables.
+For supported text embedding and rerank models, you can connect {{es}} to the local server through {{infer}} endpoints that call the APIs exposed by the container. For the models that support this {{es}} integration, refer to the [model overview](#jina-model-overview) tables.
 
-Create a `text_embedding` endpoint:
+##### Text embedding [jina-on-prem-text-embedding]
+
+Create a `text_embedding` endpoint with the `openai` service type so {{es}} sends OpenAI-compatible embedding requests to the Jina on-prem `/v1/embeddings` API:
 
 ```console
 PUT _inference/text_embedding/jina-embed
@@ -830,17 +832,53 @@ PUT _inference/text_embedding/jina-embed
 }
 ```
 
-1. Use the `openai` service type so {{es}} sends OpenAI-compatible `text_embedding` requests. 
+1. Use the `openai` service type so {{es}} sends OpenAI-compatible `text_embedding` requests.
 2. Point `url` to the `/v1/embeddings` endpoint on your Jina on-prem host.
 3. Set `model_id` to the embedding model running in the container.
-4. This field is required by the {{es}} {{infer}} API but is not used by Jina on-prem. Specify any placeholder string, such as not-needed.
+4. This field is required by the {{es}} {{infer}} API but is not used by Jina on-prem. Specify any placeholder string, such as `not-needed`.
 
 You can reference the `inference_id` of this endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, {{infer}} processors, or search queries.
+
+##### Rerank [jina-on-prem-rerank]
+
+Create a `rerank` endpoint with the [`custom`]({{es-apis}}operation/operation-inference-put-custom) service so {{es}} can call the Jina on-prem `/v1/rerank` API:
+
+```console
+PUT _inference/rerank/jina-on-prem-reranker-v2-custom
+{
+  "service": "custom", 
+  "service_settings": {
+    "url": "http://rerank-host:8084/v1/rerank", <1>
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "request": """
+    {
+      "model": "jina-reranker-v2-base-multilingual",
+      "query": ${query},
+      "documents": ${input}
+    }
+    """, <2>
+    "response": { <3>
+      "json_parser": {
+        "relevance_score": "$.results[*].relevance_score",
+        "reranked_index": "$.results[*].index"
+      }
+    }
+  }
+}
+```
+
+1. Set url to the `/v1/rerank` endpoint exposed by the Jina on-prem container.
+2. Define the JSON body that Elasticsearch sends to Jina for each rerank request. `model` identifies the model running in the container. At inference time, Elasticsearch replaces `${query}` with the search query and `${input}` with the documents to rerank.
+3. Define how Elasticsearch extracts the reranking results from the Jina response. `relevance_score` reads the score assigned to each document, and `reranked_index` reads the document's original position in the input list.
+
+You can reference the `inference_id` of this endpoint in `rerank` {{infer}} tasks or in a [`text_similarity_reranker`](/solutions/search/ranking/semantic-reranking.md) retriever.
 
 You can also call any model running in a Jina on-prem container directly from your application or preprocessing pipeline through the Jina API, without creating an {{es}} {{infer}} endpoint. For request formats and supported API schemas, refer to the [Jina on-prem API reference](https://github.com/jina-ai/jina-on-prem/wiki/API-Reference).
 
 ::::{note}
-Currently, only text embedding models have a native {{es}} {{infer}} integration on-prem. For other models, call the Jina API exposed by the on-prem container, then send the results to {{es}} for indexing or search.
+For models other than text embedding and rerank, call the Jina API exposed by the on-prem container, then send the results to {{es}} for indexing or search.
 ::::
 
 ### Cloud marketplace endpoints [jina-cloud-marketplaces-access]
