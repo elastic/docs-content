@@ -10,24 +10,19 @@ products:
 
 # Custom visualizations with Vega [vega]
 
-**Vega** and **Vega-Lite** are both grammars for creating custom visualizations. They are recommended for advanced users who are comfortable writing {{es}} queries manually. **Vega-Lite** is a good starting point for users who are new to both grammars, but they are not compatible.
+**Vega** and **Vega-Lite** are grammars for creating custom visualizations. You write a JSON (or HJSON) specification that defines the data, transforms, and visual marks. **Vega-Lite** is a good starting point if you are new to both grammars, but they are not compatible.
 
-**Vega** and **Vega-Lite** panels can display one or more data sources, including {{es}}, Elastic Map Service, URL, or static data, and support [{{kib}} extensions](#reference-for-kibana-extensions) that allow you to embed the panels on your dashboard and add interactive tools.
+Add a **Vega** panel on a dashboard to use these grammars with {{kib}} filters, the time range, and other [{{kib}} extensions](#reference-for-kibana-extensions). You can set the panel's data source to:
 
-Use **Vega** or **Vega-Lite** when you want to create visualizations with:
-
-* Aggregations that use `nested` or `parent/child` mapping
-* Aggregations without a {{data-source}}
-* Queries that use custom time filters
-* Complex calculations
-* Extracted data from _source instead of aggregations
-* Scatter charts, sankey charts, and custom maps
-* An unsupported visual theme
-
-These grammars have some limitations: they do not support tables, and can’t run queries conditionally.
+* {{es}}, using:
+   * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` An [{{esql}}](../query-filter/languages/esql-kibana.md) query (recommended). One query string replaces nested Query DSL aggregations and format paths. See [Writing {{esql}} queries in Vega](#vega-esql-queries).
+   * An {{es}} [Query DSL](#vega-queries) search. Use this approach when {{esql}} is unavailable, or when you already have a Query DSL request you want to reuse.
+* [Elastic Map Service](#vega-esmfiles) vector shapes
+* A file at an external URL, using Vega's native [`url` data source](https://vega.github.io/vega/docs/data/#url)
+* Static values written directly into the spec, using Vega's native [inline data](https://vega.github.io/vega/docs/data/#inline-data)
 
 :::{tip}
-:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+:applies_to: {"stack": "ga 9.5"}
 You can also ask [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md) to generate Vega-Lite visualizations from natural language when it creates or updates a dashboard through chat.
 :::
 
@@ -40,42 +35,111 @@ You can also ask [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/
 :screenshot:
 :::
 
-Both **Vega** and **Vega-Lite** use JSON, but {{kib}} has made this simpler to type by integrating [HJSON](https://hjson.github.io/). HJSON supports the following:
 
-* Optional quotes
-* Double quotes or single quotes
-* Optional commas
-* Comments using // or /* syntax
-* Multiline strings
+## When to use Vega [_when_to_use_vega]
+
+For most charts, start with [Visualizations](lens.md), using either point-and-click or an [{{esql}} query](esorql.md). Use [Maps](maps.md) for geographic data.
+
+Choose **Vega** when you need full control of the specification, for example:
+
+* Chart types that other editors do not support, such as scatter charts, sankey charts, or a custom visual theme
+* Aggregations that use `nested` or `parent/child` mapping
+* Aggregations without a {{data-source}}
+* Queries that use custom time filters
+* Complex calculations
+* Data extracted from `_source` instead of aggregations
+* Multiple data sources in one panel
+
+**Vega** and **Vega-Lite** do not support tables, and can’t run queries conditionally.
 
 
-### Tutorials: Create custom panels [_tutorials_create_custom_panels]
+## Tutorials [_tutorials_create_custom_panels]
 
-Learn how to connect **Vega-Lite** with {{kib}} filters and {{es}} data, then learn how to create more {{kib}} interaction using **Vega**.
+These tutorials walk you through building **Vega** and **Vega-Lite** panels on a dashboard: define a data source, shape the chart, and optionally update {{kib}} filters from the visualization.
 
-As you edit the specs, work in small steps, and frequently save your work. Small changes can cause unexpected results. To save, click **Save** in the toolbar.
+As you edit the specs, work in small steps and save often. Small changes can cause unexpected results. Specs can use [HJSON](https://hjson.github.io/), which allows optional quotes and commas, comments, and multiline strings.
 
-Before starting, add the eCommerce sample data that you’ll use in your spec, then create the dashboard.
 
-1. [Install the eCommerce sample data set](../index.md#gs-get-data-into-kibana).
+### Create a line chart from an {{esql}} query [vega-tutorial-create-a-line-chart-from-esql]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+Learn how to query your data with {{esql}} from **Vega-Lite** and display the results in a line chart.
+
+#### Before you begin [_vega_esql_tutorial_before_you_begin]
+
+1. [Install the sample web logs data set](/manage-data/ingest/sample-data.md).
 2. Go to **Dashboards**.
-3. On the **Dashboards** page, click **Create dashboard**.
+3. On the **Dashboards** page, select **Create dashboard**.
 
+#### Create the visualization [_vega_esql_tutorial_create_the_visualization]
 
-#### Open and set up Vega-Lite [_open_and_set_up_vega_lite]
-
-Open **Vega-Lite** and change the time range.
-
-1. In the application menu, select **Vega** or **Custom visualization**, depending on your {{kib}} version.
+1. Select **Add** in the application menu.
+2. Select **Vega** or **Custom visualization**: you might see either name depending on your {{kib}} version.
 
     A pre-populated line chart displays the total number of documents.
 
-2. Make sure the [time filter](../query-filter/filtering.md) is **Last 7 days**.
+3. Set the [time filter](../query-filter/filtering.md) to a range that includes the sample data. Sample data timestamps are relative to when you installed the data set, so **Last 7 days** works if you just installed it.
+4. Replace the entire **Vega-Lite** spec with the following, then select **Update**:
+
+```json
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Event counts over time",
+  "data": {
+    "url": {
+      "%type%": "esql", <1>
+      "%context%": true, <2>
+      "%timefield%": "@timestamp", <3>
+      "query": "FROM kibana_sample_data_logs | WHERE @timestamp >= ?_tstart AND @timestamp <= ?_tend | STATS doc_count=COUNT() BY key=DATE_TRUNC(2 hour, @timestamp) | SORT key" <4>
+    }
+  },
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "key",
+      "type": "temporal",
+      "axis": {"title": false}
+    },
+    "y": {
+      "field": "doc_count",
+      "type": "quantitative",
+      "axis": {"title": "Document count"}
+    }
+  }
+}
+```
+
+1. Tells {{kib}} to run the query as {{esql}}.
+2. Applies the dashboard filters to the query.
+3. Enables the `?_tstart` and `?_tend` named parameters so the query uses the dashboard time range.
+4. The {{esql}} query. {{kib}} converts the columnar response into the row-based format that **Vega** expects.
+
+The chart shows event counts over time from `kibana_sample_data_logs`. For the full list of {{esql}} `url` parameters, see [Writing {{esql}} queries in Vega](#vega-esql-queries).
+
+To continue with interactive filtering and Query DSL examples, see [Create a stacked area chart from an {{es}} search query](#vega-tutorial-create-a-stacked-area-chart) and [Update {{kib}} filters from Vega](#vega-tutorial-update-kibana-filters-from-vega).
 
 
-## Tutorial: Create a stacked area chart from an {{es}} search query [vega-tutorial-create-a-stacked-area-chart]
+### Create a stacked area chart from an {{es}} search query [vega-tutorial-create-a-stacked-area-chart]
 
-Learn how to query {{es}} from **Vega-Lite**, displaying the results in a stacked area chart.
+Learn how to query {{es}} with Query DSL from **Vega-Lite**, displaying the results in a stacked area chart.
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` If you completed the {{esql}} tutorial, create a new dashboard (or clear the editor) before you continue.
+
+#### Before you begin [_open_and_set_up_vega_lite]
+
+1. [Install the eCommerce sample data set](../index.md#gs-get-data-into-kibana).
+2. Go to **Dashboards**.
+3. On the **Dashboards** page, select **Create dashboard**.
+4. Select **Add** (or **Add panel** in earlier versions) in the application menu, then select **Vega** or **Custom visualization**: you might see either name depending on your {{kib}} version.
+
+    A pre-populated line chart displays the total number of documents.
+
+5. Set the [time filter](../query-filter/filtering.md) to a range that includes the sample data. Sample data timestamps are relative to when you installed the data set, so **Last 7 days** works if you just installed it.
+
+#### Add the index and time field [_vega_stacked_area_add_index_and_time_field]
 
 1. In the **Vega-Lite** spec, replace `index: _all` with the following, then click **Update**:
 
@@ -539,7 +603,7 @@ The selection is controlled by a signal. To view the signal, click **Inspect** i
 
 
 
-## Tutorial: Update {{kib}} filters from Vega [vega-tutorial-update-kibana-filters-from-vega]
+### Update {{kib}} filters from Vega [vega-tutorial-update-kibana-filters-from-vega]
 
 To build an area chart using an {{es}} search query, edit the **Vega** spec, then add click and drag handlers to update the {{kib}} filters.
 
@@ -1125,12 +1189,13 @@ Add a signal that updates the {{kib}} time filter when the cursor is released wh
 Learn more about {{kib}} extension, additional **Vega** resources, and examples.
 
 
-#### Reference for {{kib}} extensions [reference-for-kibana-extensions]
+### Reference for {{kib}} extensions [reference-for-kibana-extensions]
 
 {{kib}} has extended Vega and Vega-Lite with extensions that support:
 
 * Automatic sizing
 * Default theme to match {{kib}}
+* {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Writing {{esql}} queries using the time range and filters from dashboards
 * Writing {{es}} queries using the time range and filters from dashboards
 * {applies_to}`stack: preview` {applies_to}`serverless: preview` Using the Elastic Map Service in Vega maps
 * Additional tooltip styling
@@ -1139,7 +1204,7 @@ Learn more about {{kib}} extension, additional **Vega** resources, and examples.
 * (Vega only) Expression functions which can update the time range and dashboard filters
 
 
-##### Automatic sizing [vega-sizing-and-positioning]
+#### Automatic sizing [vega-sizing-and-positioning]
 
 Most users will want their Vega visualizations to take the full available space, so unlike Vega examples, `width` and `height` are not required parameters in {{kib}} because your spec will be merged with the default {{kib}} settings in most cases:
 
@@ -1179,12 +1244,14 @@ Autosize in Vega-Lite has [several limitations](https://vega.github.io/vega-lite
 
 
 
-##### Default theme to match {{kib}} [vega-theme]
+#### Default theme to match {{kib}} [vega-theme]
 
 {{kib}} registers a default [Vega color scheme](https://vega.github.io/vega/docs/schemes/) with the id `elastic`, and sets a default color for each `mark` type. Override it by providing a different `stroke`, `fill`, or `color` (Vega-Lite) value.
 
 
-##### Writing {{es}} queries in Vega [vega-queries]
+#### Writing {{es}} queries in Vega [vega-queries]
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Prefer [Writing {{esql}} queries in Vega](#vega-esql-queries) when you can use {{esql}}. Use the Query DSL approach in this section when {{esql}} is unavailable, or when you already have a Query DSL request you want to reuse.
 
 {{kib}} extends the Vega [data](https://vega.github.io/vega/docs/data/) elements with support for direct {{es}} queries specified as `url`.
 
@@ -1328,11 +1395,13 @@ When using `"%context%": true` or defining a value for `"%timefield%"` the body 
 The `"%timefilter%"` can also be used to specify a single min or max value. The date_histogram’s `extended_bounds` can be set with two values - min and max. Instead of hardcoding a value, you may use `"min": {"%timefilter%": "min"}`, which will be replaced with the beginning of the current time range. The `shift` and `unit` values are also supported. The `"interval"` can also be set dynamically, depending on the currently picked range: `"interval": {"%autointerval%": 10}` will try to get about 10-15 data points (buckets).
 
 
-##### Writing {{esql}} queries in Vega [vega-esql-queries]
+#### Writing {{esql}} queries in Vega [vega-esql-queries]
 ```{applies_to}
 stack: ga 9.4
 serverless: ga
 ```
+
+To get started with a worked example, see [Create a line chart from an {{esql}} query](#vega-tutorial-create-a-line-chart-from-esql). For Query DSL instead, see [Writing {{es}} queries in Vega](#vega-queries).
 
 To use an [{{esql}}](../query-filter/languages/esql-kibana.md) query as a data source, set `"%type%"` to `"esql"` in the `url` object and provide your query in the `"query"` parameter. {{esql}} queries work in both **Vega** and **Vega-Lite** visualizations.
 
@@ -1423,6 +1492,49 @@ format: {property: "features"}
 ```
 
 
+#### Additional tooltip styling [vega-tooltip]
+
+{{kib}} has installed the [Vega tooltip plugin](https://vega.github.io/vega-lite/docs/tooltip.html), so tooltips can be defined in the ways documented there. Beyond that, {{kib}} also supports a configuration option for changing the tooltip position and padding:
+
+```js
+{
+  config: {
+    kibana: {
+      tooltips: {
+        position: 'top',
+        padding: 15,
+        textTruncate: true,
+      }
+    }
+  }
+}
+```
+
+
+#### Enable URL loading from any domain [vega-url-loading]
+
+**Vega** can load data from any URL. To enable, set `vis_type_vega.enableExternalUrls: true` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
+
+The files that the external URLs load must allow [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). The remote URL must include `Access-Control-Allow-Origin`, which allows requests from the {{kib}} URL.
+
+You can make the current time range part of the external as a millisecond timestamp by using the placeholders `%timefilter_min%` and `%timefilter_max%`, e.g. `http://example.com?min=%timefilter_min%`.
+
+
+#### Vega Inspector [vega-inspector]
+
+Use the contextual **Inspect** tool to gain insights into different elements.
+
+
+#### Inspect {{es}} requests [inspect-elasticsearch-requests]
+
+**Vega** uses the [{{es}} search API]({{es-apis}}operation/operation-search) to get documents and aggregation results from {{es}}. To troubleshoot these requests, click **Inspect**, which shows the most recent requests. In case your specification has more than one request, you can switch between the views using the **View** dropdown.
+
+:::{image} /explore-analyze/images/kibana-vega_tutorial_inspect_requests.png
+:alt: vega tutorial inspect requests
+:screenshot:
+:::
+
+
 ### Vega with a Map [vega-with-a-map]
 ```{applies_to}
 stack: preview
@@ -1503,50 +1615,7 @@ The visualization automatically injects a `"projection"`, which you can use to c
 ```
 
 
-##### Additional tooltip styling [vega-tooltip]
-
-{{kib}} has installed the [Vega tooltip plugin](https://vega.github.io/vega-lite/docs/tooltip.html), so tooltips can be defined in the ways documented there. Beyond that, {{kib}} also supports a configuration option for changing the tooltip position and padding:
-
-```js
-{
-  config: {
-    kibana: {
-      tooltips: {
-        position: 'top',
-        padding: 15,
-        textTruncate: true,
-      }
-    }
-  }
-}
-```
-
-
-##### Enable URL loading from any domain [vega-url-loading]
-
-**Vega** can load data from any URL. To enable, set `vis_type_vega.enableExternalUrls: true` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
-
-The files that the external URLs load must allow [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). The remote URL must include `Access-Control-Allow-Origin`, which allows requests from the {{kib}} URL.
-
-You can make the current time range part of the external as a millisecond timestamp by using the placeholders `%timefilter_min%` and `%timefilter_max%`, e.g. `http://example.com?min=%timefilter_min%`.
-
-
-##### Vega Inspector [vega-inspector]
-
-Use the contextual **Inspect** tool to gain insights into different elements.
-
-
-##### Inspect {{es}} requests [inspect-elasticsearch-requests]
-
-**Vega** uses the [{{es}} search API]({{es-apis}}operation/operation-search) to get documents and aggregation results from {{es}}. To troubleshoot these requests, click **Inspect**, which shows the most recent requests. In case your specification has more than one request, you can switch between the views using the **View** dropdown.
-
-:::{image} /explore-analyze/images/kibana-vega_tutorial_inspect_requests.png
-:alt: vega tutorial inspect requests
-:screenshot:
-:::
-
-
-#### Vega debugging [vega-debugging]
+### Vega debugging [vega-debugging]
 
 With the **Vega debug** view, you can inspect the **Data sets** and **Signal Values** runtime data.
 
@@ -1560,7 +1629,7 @@ The runtime data is read from the [runtime scope](https://vega.github.io/vega/do
 To debug more complex specs, copy the Vega spec from the **Spec** tab and use the [online Vega Editor](https://vega.github.io/editor/) to debug it.
 
 
-##### Asking for help with a Vega spec [asking-for-help-with-a-vega-spec]
+#### Asking for help with a Vega spec [asking-for-help-with-a-vega-spec]
 
 Because of the dynamic nature of the data in {{es}}, it is hard to help you with **Vega** specs unless you can share a dataset. To do this, click **Inspect**, select the **Vega debug** view, then select **Spec**.
 
@@ -1572,7 +1641,7 @@ Because of the dynamic nature of the data in {{es}}, it is hard to help you with
 To copy the response, click **Copy to clipboard**. Paste the copied data to [gist.github.com](https://gist.github.com/), possibly with a .json extension. Use the [raw] button, and share that when asking for help.
 
 
-#### (Vega only) Expression functions which can update the time range and dashboard filters [vega-expression-functions]
+### (Vega only) Expression functions which can update the time range and dashboard filters [vega-expression-functions]
 
 {{kib}} has extended the Vega expression language with these functions. These functions will trigger new data to be fetched, which by default will reset Vega signals. To keep signal values set `restoreSignalValuesOnRefresh: true` in the Vega config.
 
@@ -1601,7 +1670,7 @@ kibanaSetTimeFilter(start, end)
 ```
 
 
-#### Additional configuration options [vega-additional-configuration-options]
+### Additional configuration options [vega-additional-configuration-options]
 
 ```yaml
 {

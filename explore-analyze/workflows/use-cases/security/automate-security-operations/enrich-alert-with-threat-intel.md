@@ -23,7 +23,7 @@ If you're new to workflows, complete [Build your first workflow](/explore-analyz
 
 ## Before you begin [workflows-enrich-alert-prereqs]
 
-- **Permissions.** `All` on **Analytics > Workflows**. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+- **Permissions.** `All` on **Analytics → Workflows**. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 - **Threat intel API key.** A VirusTotal, AbuseIPDB, or similar API key. Store keys in the workflow's `consts` block so you can swap environments without touching step bodies.
 - **Optional: an alert-triggered parent workflow.** If you want the enrichment to run automatically when an alert fires, attach it to a detection rule. This guide uses a manual trigger so you can test the workflow in isolation first.
 
