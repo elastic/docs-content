@@ -412,6 +412,9 @@ Everything you built in this tutorial can also be reproduced in a single API cal
 
 The following request creates the same dashboard as the one you built in this tutorial, including the optional panels suggestions.
 
+:::{include} _snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console

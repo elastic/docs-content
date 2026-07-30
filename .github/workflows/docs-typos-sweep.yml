@@ -37,6 +37,7 @@ permissions:
   discussions: write
   issues: write
   pull-requests: read
+  copilot-requests: write
 
 jobs:
   run:
