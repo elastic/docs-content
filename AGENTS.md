@@ -15,24 +15,13 @@ Pages are [MyST Markdown](https://elastic.github.io/docs-builder/syntax/) with E
 This repo hosts the cross-product, narrative user documentation for the products and versions already described. Some content lives elsewhere:
 
 - **Reference docs that sit next to the code they describe.** Reference content generated from or maintained alongside a codebase stays in that code repo. API references are the clearest case: they're generated from OpenAPI specs, most often in `elastic/kibana` or `elastic/elasticsearch-specification`, not authored as Markdown here. The same holds for other in-repo reference material that ships with the product.
-- **Legacy-version content.** Documentation for versions earlier than the ones this repo covers, essentially Elastic v8 and before, lives in the respective code repositories, on older branches, in AsciiDoc, and is not built by docs-builder. Update it when a change is relevant to those versions, but not in this repo. Opening pull requests against those targets is encouraged, though the general rule is to do so only for a clear product behavior change or a critical fix.
-
-## Finding a page from its URL
-
-To locate the source file behind a published page, strip `https://www.elastic.co/docs/` from the URL and append `.md`:
-
-```
-https://www.elastic.co/docs/explore-analyze/discover/document-explorer
-→ explore-analyze/discover/document-explorer.md
-```
-
-This is a rule of thumb for finding files, not for writing links. Links in the docs follow their own rules, defined in [the docs-builder link syntax](https://elastic.github.io/docs-builder/syntax/links/).
+- **Legacy-version content.** Documentation for versions earlier than the ones this repo covers, essentially Elastic v8 and before, lives in the respective code repositories, on older branches, in AsciiDoc, and is not built by docs-builder. Update those repos directly when relevant, but only for a clear product behavior change or critical fix.
 
 ## Core principles
 
 - **Verify before you draft.** For anything the product actually does, such as UI labels, defaults, and behavior, the source of truth is the product's code repo at `HEAD`, not the issue or PR description. Never publish something the model inferred without checking source. Because these are cumulative docs, also confirm a statement holds for earlier v9 minors when there is any doubt. A page must stay true for users on any supported v9 minor.
 - **Find the canonical home for content.** Search for a page that already covers the topic before adding a new one.
-- **Place content where it belongs, once.** Each content type and each page has a defined role and depth. Put information in its most correct place. Minor details belong where they are relevant, not repeated everywhere a feature is mentioned. A feature is often documented in several places for good reasons: when you change one, check the others so you do not introduce inconsistencies, and update every place that needs it. When the same content genuinely has to appear in more than one place, a snippet is the clean way to reuse it, though a single duplication across a couple of pages is acceptable rather than maintaining an include. See [content types](contribute-docs/content-types/index.md).
+- **Place content where it belongs, once.** Put each detail in its single most correct page, not everywhere the feature is mentioned. When a feature appears in several places, keep them consistent and update all of them. Reuse shared content with a snippet, though a single duplication across a couple of pages beats maintaining an include. See [content types](contribute-docs/content-types/index.md).
 - **Cumulative docs.** These docs serve every supported version at once. Preserve existing content and scope new content with `applies_to` rather than overwriting. See the [cumulative-docs guide](contribute-docs/how-to/cumulative-docs/index.md).
 - **Don't assume existing content already follows every rule.** Consistency with surrounding pages is a good default, but the existing docs are not guaranteed correct. When content obviously diverges from the documented best practices, prefer fixing or improving it over matching the divergence.
 - **Write for the reader, not the PR.** Translate developer jargon into user language. One precise sentence beats three vague ones.
@@ -109,10 +98,8 @@ The **elastic-docs MCP**, when available, searches the published corpus, finds r
 
 ## What not to do
 
-- Don't invent UI labels, defaults, or behavior. Verify against the product's code repo at `HEAD`.
-- Don't create a new page before searching for a page that can absorb the content.
-- Don't duplicate prose across pages when a `_snippets/` include is the better fit.
-- Don't delete content for a still-supported version. Scope it with `applies_to` instead.
+The core principles cover most of this. Beyond them:
+
 - Don't update release notes manually as part of a regular docs change. They're produced from code changes, not hand-edited here.
 - Don't add or replace screenshots on a hunch. Flag the screenshots that need updating and let a human capture them.
 - Don't restructure or rename pages beyond the task, unless the change is required for the new content to make sense.
