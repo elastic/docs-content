@@ -242,8 +242,16 @@ This limitation does not apply to [cross-region PrivateLink connections](#ec-aws
 
 After you create your VPC endpoint and DNS entries, check that you are able to reach your deployment or project over PrivateLink.
 
+:::::{applies-switch}
+::::{applies-item} ess: ga
 :::{include} _snippets/private-url-struct.md
 :::
+::::
+::::{applies-item} serverless: ga
+:::{include} _snippets/private-url-struct-serverless.md
+:::
+::::
+:::::
 
 :::{tip}
 Private hosted zone domain names differ between {{ech}} and {{serverless-full}}, even if the region is the same.
@@ -422,8 +430,16 @@ For traffic to connect with the deployment or project over AWS PrivateLink, the 
 Use the alias you’ve set up as CNAME DNS record to access your resource.
 ::::
 
+:::::{applies-switch}
+::::{applies-item} ess: ga
 :::{include} _snippets/private-url-struct.md
 :::
+::::
+::::{applies-item} serverless: ga
+:::{include} _snippets/private-url-struct-serverless.md
+:::
+::::
+:::::
 
 :::{tip}
 Private hosted zone domain names differ between {{ech}} and {{serverless-full}}, even if the region is the same.

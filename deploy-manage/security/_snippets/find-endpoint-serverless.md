@@ -14,3 +14,5 @@
     ```
 
 In this endpoint, `my-project-d53192` is an alias, and `es` is the product you want to access within your project.
+
+You can also connect using the project ID, for example, https://6b111580caaa4a9e84b18ec7c600155e.{{example-serverless-phz-dn}}.

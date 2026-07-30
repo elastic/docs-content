@@ -262,8 +262,16 @@ After the private link connection is approved, you can optionally [test the conn
 
 After you create your private connection, you can check that you're able to reach your deployment or project over Private Link.
 
+:::::{applies-switch}
+::::{applies-item} ess: ga
 :::{include} _snippets/private-url-struct.md
 :::
+::::
+::::{applies-item} serverless: ga
+:::{include} _snippets/private-url-struct-serverless.md
+:::
+::::
+:::::
 
 :::{tip}
 Private hosted zone domain names differ between {{ech}} and {{serverless-full}}, even if the region is the same.
@@ -430,8 +438,16 @@ For traffic to connect with the deployment or project over Azure Private Link, t
 Use the alias you've set up as an A record to access your resource.
 ::::
 
+:::::{applies-switch}
+::::{applies-item} ess: ga
 :::{include} _snippets/private-url-struct.md
 :::
+::::
+::::{applies-item} serverless: ga
+:::{include} _snippets/private-url-struct-serverless.md
+:::
+::::
+:::::
 
 :::{tip}
 Private hosted zone domain names differ between {{ech}} and {{serverless-full}}, even if the region is the same.
