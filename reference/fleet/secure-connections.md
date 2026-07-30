@@ -95,6 +95,10 @@ This section describes how to use the `certutil` tool provided by {{es}}, but yo
 
 Use the CLI to configure SSL or TLS when installing or enrolling {{fleet-server}}. This method gives you granular control over certificate paths, verification modes, and authentication behavior.
 
+::::{note}
+The `install` command covers certificates, certificate authorities, keys, and client authentication, but not the allowed TLS versions (`supported_protocols`) or cipher suites (`cipher_suites`). To configure those, refer to [Configure advanced SSL/TLS settings for {{fleet-server}}](#fleet-server-advanced-ssl-settings).
+::::
+
 ### Encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}} [_encrypt_traffic_between_agents_fleet_server_and_es]
 
 {{fleet-server}} needs a CA certificate or the CA fingerprint to connect securely to {{es}}. It also needs to expose a {{fleet-server}} certificate so other {{agent}}s can connect to it securely.
@@ -249,10 +253,6 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
 
             `fleet-server-cert-key-passphrase`
             :   Passphrase file used to decrypt {{fleet-server}}'s private key.
-
-            ::::{note}
-            The `install` command doesn't provide flags for the allowed TLS versions (`supported_protocols`) or cipher suites (`cipher_suites`). To configure these, add a `server.ssl` block to the {{fleet-server}} integration policy, as described in [Configure advanced SSL/TLS settings for {{fleet-server}}](#fleet-server-advanced-ssl-settings).
-            ::::
 
             What happens if you enroll {{fleet-server}} without specifying certificates?
             If the certificates are managed by your organization and installed at the system level, they will be used to encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}.
