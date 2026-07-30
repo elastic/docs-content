@@ -74,7 +74,7 @@ uiSettings.globalOverrides:
 
 :::{applies-item} serverless:
 
-Have an administrator run the following request from [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md) to enable the Template library in the default space:
+Have an administrator run the following request from [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md) to enable the Template library. This is a global setting, so it applies to your entire project, in all spaces:
 
 ```json
 POST kbn:/internal/kibana/global_settings
@@ -84,8 +84,6 @@ POST kbn:/internal/kibana/global_settings
   }
 }
 ```
-
-To enable the Template library in a different space, add the `/s/{space_id}` prefix to the request path, for example `POST kbn:/s/{space_id}/internal/kibana/global_settings`.
 :::
 ::::
 
