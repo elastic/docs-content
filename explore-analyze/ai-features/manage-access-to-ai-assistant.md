@@ -81,13 +81,13 @@ stack: ga 9.5
 serverless: ga
 ```
 
-**Token usage tracking** is turned off by default. When you turn it on, Elastic records the token counts for each completed request that AI features send to an LLM through the {{kib}} inference service, and makes a managed dashboard available to monitor them.
+**Token usage tracking** is off by default. When you turn it on, Elastic records the token counts for each completed request that the AI features in {{kib}} send to an LLM, and makes a managed dashboard available to monitor them.
 
-To start tracking, go to **GenAI Settings** and turn on **Token usage tracking**. You need the `Advanced Settings: all` {{kib}} privilege to change this setting.
+To start tracking, go to **GenAI Settings** and turn on **Token usage tracking**.
 
 For each request, Elastic records the number of prompt, completion, and total tokens, along with the model, connector, and the feature that made the request.
 
-After you turn on tracking, the managed **[Elastic] Inference Token Usage** dashboard becomes available on the Dashboards app. Open it to review usage. It summarizes:
+After you turn on tracking, the managed **[Elastic] Inference Token Usage** dashboard becomes available in the **Dashboards** app. Open it to review usage. It summarizes:
 
 - Total, prompt, and completion tokens, and the total number of requests.
 - Token usage over time, broken down by feature.
