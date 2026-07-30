@@ -13,6 +13,10 @@ You can set up connectors for self-managed LLMs to maintain more control of your
 
 For model performance on {{elastic-sec}} and {{observability}} AI tasks, refer to the [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md) and the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md).
 
+:::{warning}
+Self-managed LLMs work well for {{elastic-sec}}'s [AI Assistant](/solutions/security/ai/ai-assistant.md). We do not recommend them for [Attack Discovery](/solutions/security/ai/attack-discovery/index.md). For Attack Discovery, choose a connector that uses a model from the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md).
+:::
+
 The following guides describe how to set up self-managed LLMs for {{elastic-sec}} and {{observability}}.
 
 **Self-managed LLMs for {{elastic-sec}}:**
