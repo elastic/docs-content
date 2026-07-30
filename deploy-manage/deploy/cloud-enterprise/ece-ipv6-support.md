@@ -33,8 +33,8 @@ To enable IPv6 ingress:
 
 * Configure a dual-stack load balancer to forward deployment traffic to the ECE proxies and Cloud UI traffic to the ECE coordinators. Refer to [Load balancers](./ece-load-balancers.md) and [Client IP preservation](./ece-load-balancers.md#ece-client-ip-preservation) for more details.
 
-  * For deployment traffic, use a TCP (L4) listener and configure Proxy Protocol v2 for client IP preservation.
-  * For Cloud UI traffic, use an HTTP (L7) listener and configure it to set the `X-Forwarded-For` header for client IP preservation.
+  * For deployment traffic (ports `9200` and `9243`), use a TCP (L4) listener and configure Proxy Protocol v2 for client IP preservation.
+  * For Cloud UI traffic (ports `12400` and `12443`), use an HTTP (L7) listener and configure it to set the `X-Forwarded-For` header for client IP preservation.
 
 * Enable Proxy Protocol v2 on the ECE proxies by using the `--proxy-protocol-version` and `--proxy-protocol-lenient` flags when running the [installation script](./install.md). To enable it on an existing environment, refer to [Add Proxy Protocol v2 support to an existing installation](./ece-ipv6-aws-setup.md#reconfigure-proxies).
 
