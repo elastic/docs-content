@@ -639,6 +639,8 @@ toc:
           - file: workflows/authoring-techniques/troubleshooting.md
           - file: workflows/authoring-techniques/migrate-from-9-3.md
       - file: workflows/templates.md
+        children:
+          - file: workflows/templates/start-from-a-template.md
   - file: numeral-formatting.md
   - hidden: explore-and-visualize.md
   - hidden: track-and-respond.md
