@@ -117,6 +117,9 @@ To create a stacked bar chart:
 This example creates a stacked bar chart that counts log entries over time and breaks them down by HTTP response code.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -246,6 +249,9 @@ To create an unstacked bar chart:
 
 This example creates an unstacked bar chart where each breakdown category renders as a separate bar placed side by side, making individual values straightforward to compare.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -499,6 +505,9 @@ The following examples show various configuration options that you can use for b
 This example creates a stacked bar chart that tracks page views over time with a custom metric label and breaks them down by the top 9 destination regions.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -628,6 +637,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 This example creates a horizontal bar chart with a formula-based metric and a reference line layer that marks the acceptable error threshold.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
