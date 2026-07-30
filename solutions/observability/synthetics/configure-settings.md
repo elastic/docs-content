@@ -122,13 +122,17 @@ stack: ga 9.5+
 serverless: unavailable
 ```
 
-In the **Remote clusters** tab, you can configure {{ccs}} ({{ccs-init}}) settings so that Synthetics can include monitor data from remote {{es}} clusters alongside local monitors.
+In the **Remote clusters** tab, you can configure {{ccs}} ({{ccs-init}}) settings so that Synthetics can include monitor data from remote {{es}} clusters alongside local monitors. {{ccs-init}} is off by default; on first save, the settings are anchored to the space you are currently in.
 
-These are deployment-wide settings stored as a single shared configuration. You control which {{kib}} spaces have access to them using the **Spaces** field.
+These settings are stored as a single shared configuration — one per deployment, not a separate copy per space. Use the **Spaces** field to control which {{kib}} spaces it applies to.
+
+::::{note}
+To edit these settings, you must have the **All** privilege for the **Synthetics and Uptime** feature in **{{stack-manage-app}} → Roles → {{kib}} privileges → {{observability}}**. Users with only the **Read** privilege see the form as read-only.
+::::
 
 ### Source settings [synthetics-settings-remote-clusters-source]
 
-Use the **Use all remote clusters** toggle and **Select remote clusters** combo box to control which remote clusters Synthetics queries:
+Use the **Use all remote clusters** toggle or **Select remote clusters** combo box to control which remote clusters Synthetics queries:
 
 - Turn on **Use all remote clusters** to include monitor data from all configured remote clusters.
 - Turn off **Use all remote clusters** and use the **Select remote clusters** combo box to choose specific clusters. Each cluster is shown with a connected or disconnected status indicator.
@@ -140,15 +144,8 @@ To configure remote clusters, go to **{{stack-manage-app}} → Remote Clusters**
 Use the **Spaces** combo box to control which {{kib}} spaces can access these {{ccs-init}} settings. Select one or more specific spaces, or select **All spaces** to make the settings available across your entire deployment. Removing a space makes the settings inaccessible there, meaning that users in that space see default {{ccs-init}} settings instead.
 
 ::::{note}
-The **Spaces** field shows the current sharing configuration when you open the tab. Clearing the field and saving leaves that configuration unchanged, meaning it does not remove access from existing spaces. To update which spaces have access, select the new spaces explicitly.
+The **Spaces** field shows the current sharing configuration when you open the tab (your current space by default). Clearing the field and saving leaves that configuration unchanged, meaning it does not remove access from existing spaces. To update which spaces have access, select the new spaces explicitly.
 ::::
-
-::::{note}
-<!-- TODO: Confirm which role/privilege grants access to edit these settings. The capability required is `uptime.configureSettings` — clarify which built-in role includes this. -->
-To edit these settings, you must have the required Synthetics configuration privileges. If the form is read-only, contact your administrator.
-::::
-
-<!-- TODO: Confirm the default space scope when these settings are first saved on a new deployment. -->
 
 ## Advanced [synthetics-settings-advanced]
 ```{applies_to}

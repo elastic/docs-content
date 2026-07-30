@@ -16,29 +16,25 @@ description: Advanced guidance for scaling and designing Elastic Synthetics depl
 
 Use these advanced considerations when you use the {{synthetics-app}} for large and complex use cases.
 
-% Stateful only for do not use... section
+## View monitor data from remote clusters [synthetics-ccs-settings]
+```{applies_to}
+stack: ga 9.5+
+serverless: unavailable
+```
+
+Previously, the Synthetics UI couldn’t display data from remote clusters through {{ccs-init}}/{{ccr-init}}, so this setup was discouraged. However, synthetics now includes a built-in {{ccs}} integration that lets you view monitor data from remote {{es}} clusters alongside your local monitors, directly in the Synthetics UI.
+
+This view is read-only, meaning that the integration queries each remote cluster’s `synthetics-*` data indices at query time, but monitor definitions and settings stay as saved objects on the {{kib}} where they were created (saved objects aren’t shared across clusters). To create, edit, or delete those monitors, manage them directly in the Synthetics UI on the remote {{kib}}.
+
+To enable it, go to **{{synthetics-app}} → Settings → Remote clusters**. You can select which remote clusters to query and which {{kib}} spaces the settings apply to. Refer to [Remote clusters](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters) for details.
 
 ## Do not use the Synthetics UI with {{ccs-init}}/{{ccr-init}} [synthetics-no-ccs-ccr]
 ```{applies_to}
-stack: ga
+stack: removed 9.5+
+serverless: unavailable
 ```
 
-In complex environments, it’s common to have multiple task-specific {{stack}} deployments with one centralized overview cluster using {{ccs}} or {{ccr}} to centralize {{kib}} dashboards and apps. **Do not use this pattern with the Synthetics UI**. Instead, configure your synthetic monitors directly on the {{kib}} instance where you want to view and manage them.
-
-You can, however, use the Dashboards and the Discover apps with {{ccs-init}} to view `synthetics-*` indices.
-
-The Synthetics UI does *not* work with {{ccs-init}}/{{ccr-init}} because it would limit the rich user experience that the Synthetics UI provides. Unlike the majority of {{kib}} apps, the Synthetics UI relies heavily on state stored in {{kib}} shared objects in order to provide a rich user experience. Because {{kib}} saved objects cannot be shared using {{ccs-init}}/{{ccr-init}}, the Synthetics UI doesn't show any user data even if you configure {{ccs-init}}/{{ccr-init}}.
-
-{applies_to}`stack: ga 9.5+` To include monitor data from remote clusters, use the [built-in {{ccs}} integration](#synthetics-ccs-settings) instead.
-
-## Use {{ccs-init}} to include monitor data from remote clusters [synthetics-ccs-settings]
-```{applies_to}
-stack: ga 9.5+
-```
-
-Synthetics supports a dedicated {{ccs}} integration that lets you include monitor data from remote {{es}} clusters alongside your local monitors. Unlike the {{ccs-init}}/{{ccr-init}} federation pattern described in [Do not use the Synthetics UI with {{ccs-init}}/{{ccr-init}}](#synthetics-no-ccs-ccr), this is a native Synthetics feature that works with {{kib}} saved objects and the Synthetics UI.
-
-To configure this, go to **{{synthetics-app}} → Settings → Remote clusters**. You can select which remote clusters to query and which {{kib}} spaces the settings apply to. Refer to [Remote clusters](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters) for details.
+Do not use {{ccs}} ({{ccs-init}}) or {{ccr}} ({{ccr-init}}) to federate Synthetics data across deployments. The Synthetics UI manages monitors and settings as {{kib}} saved objects, which are not shared using {{ccs-init}} or {{ccr-init}}. If you use {{ccs-init}} to query Synthetics data from a remote cluster, monitors appear in the UI but cannot be managed there. Use the {{synthetics-app}} on the cluster where the monitors are defined.
 
 ## Synthetics UI does not support autodiscovery for infrastructure or {{k8s}} monitoring [synthetics-no-autodiscovery-for-k8s-infra]
 
