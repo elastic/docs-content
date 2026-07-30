@@ -95,7 +95,7 @@ If a rule uses **Group alerts by** to track hosts, services, or other fields sep
 Use per-alert snooze to stop notifications from one alert without silencing the rest of the rule. To silence every notification from a rule, [snooze the rule](create-manage-rules.md#controlling-rules) instead.
 
 :::{note}
-Muted alerts from earlier {{stack}} versions (for example, {{stack}} 9.4) or from before {{serverless-short}} added per-alert snooze appear as snoozed indefinitely in the UI. Select **Unsnooze** to resume alert actions.
+If you previously muted an alert, either in an earlier {{stack}} version (for example, {{stack}} 9.4) or before {{serverless-short}} added per-alert snooze, it now appears as snoozed indefinitely in the UI. Select **Unsnooze** to resume alert actions.
 :::
 
 To snooze an active alert, open its action menu ({icon}`boxes_vertical`) from the Alerts table or the alert details page, then select **Snooze**. Choose **Quick Snooze** when you know how long it should stay quiet, or **Condition based** when you want actions to resume based on a change in the alert itself, optionally paired with a time condition as a backstop rather than the primary trigger. Configure your snooze, then select **Snooze alert** to apply it.

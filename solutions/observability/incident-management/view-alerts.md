@@ -149,7 +149,7 @@ To affect the behavior of the rule rather than individual alerts, refer to [Snoo
 ::::{note}
 :applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
 
-**Snooze** replaces the **Mute** action in {{stack}} 9.5+ and {{serverless-short}}. Muted alerts from earlier {{stack}} versions or from before {{serverless-short}} added per-alert snooze appear as snoozed indefinitely in the UI. Select **Unsnooze** to resume alert actions.
+**Snooze** replaces the **Mute** action in {{stack}} 9.5+ and {{serverless-short}}. If you previously muted an alert, either in an earlier {{stack}} version or before {{serverless-short}} added per-alert snooze, it now appears as snoozed indefinitely in the UI. Select **Unsnooze** to resume alert actions.
 ::::
 
 ## Mute alerts [observability-view-alerts-mute-alerts]
