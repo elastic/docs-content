@@ -6,12 +6,13 @@
 .idea
 *.iml
 
-# Add LLM/AI related files
-AGENTS.md
+# Shared agent guidance is committed: AGENTS.md, CLAUDE.md (symlink), AI.md.
+# Personal, per-contributor agent files stay local and ignored:
+AGENTS.local.md
+CLAUDE.local.md
+GEMINI.md
 .github/copilot-instructions.md
 .github/instructions/
-CLAUDE.md
-GEMINI.md
 .cursor
 .claude/worktrees
 
