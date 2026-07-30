@@ -28,6 +28,8 @@ In certain apps, you can also query your {{es}} data using [{{esql}}](elasticsea
 * If a read-only indicator appears, you have insufficient privileges to create or save {{data-sources}}. In addition, the buttons to create {{data-sources}} or save existing {{data-sources}} are not visible.
 * {applies_to}`stack: ga 9.2` Some data views are exclusively configured and **managed** by Elastic. You can view and use these managed data views, but you can't edit them. If you'd like to use a modified version of a managed data view, you can [duplicate it](#duplicate-managed-data-view) and edit that new copy as needed.
 
+  {applies_to}`stack: ga 9.4` You also can't delete a managed data view.
+
 
 ## Create a data view [settings-create-pattern]
 
@@ -170,6 +172,8 @@ To restrict a {{data-source}} to specific projects regardless of the active scop
 
 When you delete a {{data-source}}, you cannot recover the associated field formatters, runtime fields, source filters, and field popularity data. Deleting a {{data-source}} does not remove any indices or data documents from {{es}}.
 
+{applies_to}`stack: ga 9.4` You can't delete managed data views. On the **Data Views** management page, the delete action isn't available for these data views, and they can't be selected for bulk deletion. To use a modified version of a managed data view, [duplicate it](#duplicate-managed-data-view) instead.
+
 ::::{warning}
 Deleting a {{data-source}} breaks all visualizations, saved Discover sessions, and other saved objects that reference the data view.
 ::::
@@ -206,7 +210,7 @@ Runtime fields can impact {{kib}} performance. When you run a query, {{es}} uses
 ::::
 
 
-For detailed information on how to use runtime fields with {{es}}, refer to [Runtime fields](../../manage-data/data-store/mapping/runtime-fields.md).
+For detailed information on how to use runtime fields with {{es}}, refer to [Runtime fields](../../manage-data/data-store/mapping/runtime-fields.md). Runtime fields are different from unmapped fields, which can be present in documents but not defined in the index mapping. To query unmapped fields in {{esql}}, refer to [Unmapped fields](elasticsearch://reference/query-languages/esql/esql-unmapped-fields.md).
 
 
 #### Add runtime fields [create-runtime-fields]

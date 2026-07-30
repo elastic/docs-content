@@ -41,8 +41,8 @@ The total volume of search-ready data is the sum of the following:
 1. The volume of non-time series project data
 2. The volume of time series project data included in the Search Boost Window
 
-::::{note}
-Time series data refers to any document in standard indices or data streams that includes the `@timestamp` field. This field must be present for data to be subject to the Search Boost Window setting.
+::::{important}
+Time series data refers to any document in standard indices or data streams that includes a concrete `@timestamp` field. The `@timestamp` field must be an actual mapped field for data to be subject to the Search Boost Window setting. A [field alias](elasticsearch://reference/elasticsearch/mapping-reference/field-alias.md) named `@timestamp` that points to another field does not qualify the data as time series data. Such data is always treated as search-ready and is not governed by the Search Boost Window.
 ::::
 
 Each project type offers different settings that let you adjust the performance and volume of search-ready data, as well as the features available in your projects.

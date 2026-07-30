@@ -22,8 +22,8 @@ When you install ECE specify the recommended JVM heap sizes with `--memory-setti
 
 Other JVM heap sizes can be left at their defaults.
 
-::::{note} 
-In the current release, there is no direct way to change the Java heap size in the UI. In case you need to configure the settings after ECE installation, refer to [Cloud UI login failures](../../../troubleshoot/deployments/cloud-enterprise/common-issues.md#ece-issues-login-failure) for further guidance.
+::::{note}
+There is currently no UI option to change JVM heap sizes after installation. To change them, follow the guidance in the [How to change JVM memory of ECE components](https://ela.st/change-ece-jvm-heap) KB article.
 ::::
 
 

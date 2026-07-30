@@ -959,6 +959,10 @@ To exclude an entire cluster, you would put the minus sign in front of the clust
 
 To exclude a specific remote index, you would put the minus sign in front of the index, such as `mycluster:-myindex`.
 
+{applies_to}`stack: ga 9.5` You can also put the minus sign in front of the cluster alias. For example, `-mycluster:myindex` is equivalent to `mycluster:-myindex`. This works for any index name or wildcard pattern other than `*`.
+
+Combining both prefixes, such as `-mycluster:-myindex`, is not valid and is rejected.
+
 **Exclude a remote cluster**
 
 Here’s how you would exclude `cluster_three` from a {{ccs}} that uses a wildcard to specify a list of clusters:
@@ -995,6 +999,8 @@ POST /my-index-000001,cluster*:my-index-*,cluster_three:-my-index-000001/_async_
 ```
 
 1. This will **not** exclude `cluster_three` from the search. It will still be contacted and told to search any indexes matching `my-index-*` except for `my-index-000001`.
+
+{applies_to}`stack: ga 9.5` For this request, `cluster_three:-my-index-000001` can also be written as `-cluster_three:my-index-000001`. Both forms are equivalent.
 
 
 

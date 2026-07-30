@@ -207,6 +207,17 @@ Because both `histogram` and `exponential_histogram` support [coerce](elasticsea
 This setting only applies to metrics ingested through the {{es}} OTLP endpoint.
 Documents ingested using the Bulk API (for example through the {{es}} exporter for the OpenTelemetry Collector) are not affected.
 
+## Metric temporality
+```{applies_to}
+stack: ga 9.5
+```
+
+The OTLP endpoint preserves the [temporality](/manage-data/data-store/data-streams/metric-temporality.md) of ingested metrics and stores it in a `temporality` [dimension](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension). This allows {{es}} to correctly interpret counter and histogram values during [ES|QL time series queries](/manage-data/data-store/data-streams/metric-temporality.md#temporality-and-queries) and [downsampling](/manage-data/data-store/data-streams/metric-temporality.md#temporality-and-downsampling).
+
+The `temporality` dimension is set automatically based on the OTLP [AggregationTemporality](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality) of each metric data point. No additional configuration is needed.
+
+Note that cumulative temporality for histograms is only supported if `xpack.otel_data.histogram_field_type` is set to `exponential_histogram` (which is the default).
+
 ## Limitations
 
 * **Delivery guarantees:** {{es}} can only acknowledge an OTLP request as a whole, not on a per-record basis.
@@ -214,6 +225,4 @@ Documents ingested using the Bulk API (for example through the {{es}} exporter f
   Metrics are not affected because metric points written to time series data streams are [deduplicated based on their dimensions and timestamp](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension).
 * **Profiles:** Profiles are not supported.
   To ingest profiles, use a distribution of the OpenTelemetry Collector that includes the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md), such as the [{{edot}} (EDOT) Collector](opentelemetry://reference/edot-collector/index.md).
-* **Histogram temporality:** Histograms are only supported in delta temporality.
-  Set the temporality preference to delta in your SDKs, or use the [`cumulativetodelta` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor) so cumulative histograms aren't dropped.
 * **Exemplars:** Exemplars are not supported yet.

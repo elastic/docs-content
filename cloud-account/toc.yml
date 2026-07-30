@@ -6,5 +6,7 @@ toc:
   - file: change-your-password.md
   - file: add-a-login-method.md
   - file: multifactor-authentication.md
+  - file: switch-organizations.md
   - file: dark-mode.md
   - file: high-contrast.md
+  - file: change-interface-language.md
