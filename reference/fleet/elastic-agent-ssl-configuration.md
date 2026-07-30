@@ -13,15 +13,17 @@ products:
 # Configure SSL/TLS for standalone {{agent}}s [elastic-agent-ssl-configuration]
 
 
-There are a number of SSL configuration settings available depending on whether you are configuring a client, server, or both. See the following tables for available settings:
+Use these settings to configure SSL/TLS for a standalone {{agent}}. The available settings depend on whether {{agent}} acts as a client, a server, or both:
 
-* [Table 7, Common configuration options](#common-ssl-options). These settings are valid in both client and server configurations.
-* [Table 8, Client configuration options](#client-ssl-options)
-* [Table 9, Server configuration options](#server-ssl-options)
+* [Common configuration options](#common-ssl-config-options): Valid in both client and server configurations.
+* [Client configuration options](#client-ssl-config-options): Apply when {{agent}} connects to a server.
+* [Server configuration options](#server-ssl-config-options): Apply when {{agent}} accepts incoming connections.
 
 ::::{tip}
 For more information about using certificates, refer to [Secure connections](/reference/fleet/secure.md).
 ::::
+
+## Common configuration options [common-ssl-config-options]
 
 $$$common-ssl-options$$$
 
@@ -99,6 +101,8 @@ $$$common-ssl-options$$$
 :   (list) List of allowed SSL/TLS versions. If the SSL/TLS server supports none of the specified versions, the connection will be dropped during or after the handshake. The list of allowed protocol versions include: `TLSv1.1`, `TLSv1.2`, and `TLSv1.3`.
 
     **Default:** `[TLSv1.2, TLSv1.3]`
+
+## Client configuration options [client-ssl-config-options]
 
 $$$client-ssl-options$$$
 
@@ -205,6 +209,8 @@ $$$client-ssl-options$$$
     ```yaml
     ssl.ca_trusted_fingerprint: 3b24d33844d6553...826
     ```
+
+## Server configuration options [server-ssl-config-options]
 
 $$$server-ssl-options$$$
 

@@ -352,7 +352,7 @@ To edit the advanced YAML configuration:
 
 If you omit `supported_protocols`, {{fleet-server}} allows `TLSv1.2` and `TLSv1.3`. If you omit `cipher_suites`, the default cipher suites are used. TLS 1.3 cipher suites can't be configured individually.
 
-For the full list of SSL settings and their allowed values, refer to the server configuration options in [Configure SSL/TLS for standalone {{agents}}](/reference/fleet/elastic-agent-ssl-configuration.md#server-ssl-options).
+For the full list of SSL settings and their allowed values, refer to the server configuration options in [Configure SSL/TLS for standalone {{agents}}](/reference/fleet/elastic-agent-ssl-configuration.md#server-ssl-config-options).
 
 :::{warning}
 Editing SSL settings for an existing {{fleet-server}} might cause agents to lose connectivity. If you restrict `supported_protocols` or `cipher_suites` to values that connected {{agents}} don't support, those agents fail to check in. Verify that your chosen protocols and cipher suites are compatible with all connected {{agents}} before you apply the change.
