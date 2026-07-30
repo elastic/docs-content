@@ -14,8 +14,7 @@ products:
 
 You can run Attack Discovery as a step in an Elastic workflow (`security.attack-discovery.run`). The step uses the same analysis as manual and scheduled runs, so you can fold it into larger automations and branch later steps on how many discoveries were created.
 
-`security.attack-discovery.run` generates discoveries. It does not set status, assignees, or tags on alerts or attacks. Those triage actions use separate Attack triage steps such as `security.setAttackStatus`, `security.assignAttack`, and `security.setAttackTags`.
-<!-- FLAG: Uncomment after docs-content#7449 merges: Refer to [Attack triage action steps](/explore-analyze/workflows/steps/attack-triage.md). -->
+`security.attack-discovery.run` generates discoveries. It does not set status, assignees, or tags on alerts or attacks. Those triage actions use separate Attack triage steps such as `security.setAttackStatus`, `security.assignAttack`, and `security.setAttackTags`. Refer to [Attack triage action steps](/explore-analyze/workflows/steps/attack-triage.md) for more information.
 
 For chat-based investigation, use [Run Attack Discovery from {{agent-builder}}](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md).
 
