@@ -30,18 +30,18 @@ This repo hosts the cross-product, narrative user documentation for the products
 
 | Path | What it documents |
 |---|---|
-| `get-started/` | Onboarding and first-run content across products |
-| `solutions/` | Solution docs for Search, Observability, and Security |
-| `explore-analyze/` | Discover, dashboards, visualizations, alerting, AI features, ML |
-| `deploy-manage/` | Deploying, scaling, securing, and operating clusters and projects |
+| `get-started/` | Onboarding and first-run content across products. Fundamental knowledge about Elastic |
+| `solutions/` | Docs for solutions and serverless project types packaged on top of Elasticsearch and Kibana: Search, Observability, Security, Vector DB |
+| `explore-analyze/` | Home for core Kibana features such as Discover, dashboards, visualizations, alerting, AI features, ML |
+| `deploy-manage/` | Deploying, scaling, securing, and operating clusters, deployments, and projects |
 | `manage-data/` | Ingesting, transforming, and lifecycle-managing data |
-| `reference/` | Reference material such as settings, APIs, CLIs, and config |
+| `reference/` | Reference material such as settings, APIs, CLIs, and config that isn't naturally sitting in other code repos |
 | `troubleshoot/` | Troubleshooting and diagnostics |
-| `release-notes/` | Release notes and changelogs for Elastic Stack and Serverless. Produced from code changes, not part of regular docs edits. |
+| `release-notes/` | Release notes and changelogs for Elastic products. Generally generated from code changes. |
 | `cloud-account/` | Elastic Cloud account and billing |
-| `extend/` | Extending and integrating with Elastic |
+| `extend/` | Extending and integrating with Elastic, for external developers |
 | `contribute-docs/` | The public contribution guide: style, content types, cumulative docs, syntax. The canonical source this file points to. |
-| `serverless/`, `archive.md` | Serverless landing content and archived material |
+| `serverless/`, `archive.md` | Serverless landing content and archived material. This content should not be updated. It's legacy and no longer published. |
 
 Key files:
 
