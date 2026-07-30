@@ -19,7 +19,7 @@ This repo hosts the cross-product, narrative user documentation for the products
 
 ## Core principles
 
-- **Verify before you draft.** For anything the product actually does, such as UI labels, defaults, and behavior, the source of truth is the product's code repo at `HEAD`, not the issue or PR description. Never publish something the model inferred without checking source. Because these are cumulative docs, also confirm a statement holds for earlier v9 minors when there is any doubt. A page must stay true for users on any supported v9 minor.
+- **Verify before you draft.** For anything the product actually does, such as UI labels, defaults, and behavior, the source of truth is the product's code repo at `HEAD`, not the issue or PR description. Never publish something the model inferred without checking source. Because these are cumulative docs, also confirm a statement holds for earlier relevant product minors versions when there is any doubt: A page must stay true for users on any version that this repo documents.
 - **Find the canonical home for content.** Search for a page that already covers the topic before adding a new one.
 - **Place content where it belongs, once.** Put each detail in its single most correct page, not everywhere the feature is mentioned. When a feature appears in several places, keep them consistent and update all of them. Reuse shared content with a snippet, though a single duplication across a couple of pages beats maintaining an include. See [content types](contribute-docs/content-types/index.md).
 - **Cumulative docs.** These docs serve every supported version at once. Preserve existing content and scope new content with `applies_to` rather than overwriting. See the [cumulative-docs guide](contribute-docs/how-to/cumulative-docs/index.md).
@@ -33,7 +33,7 @@ This repo hosts the cross-product, narrative user documentation for the products
 | `get-started/` | Onboarding and first-run content across products. Fundamental knowledge about Elastic |
 | `solutions/` | Docs for solutions and serverless project types packaged on top of Elasticsearch and Kibana: Search, Observability, Security, Vector DB |
 | `explore-analyze/` | Home for core Kibana features such as Discover, dashboards, visualizations, alerting, AI features, ML |
-| `deploy-manage/` | Deploying, scaling, securing, and operating clusters, deployments, and projects |
+| `deploy-manage/` | Deploying, scaling, securing, and operating orchestrators, clusters, deployments, and projects |
 | `manage-data/` | Ingesting, transforming, and lifecycle-managing data |
 | `reference/` | Reference material such as settings, APIs, CLIs, and config that isn't naturally sitting in other code repos |
 | `troubleshoot/` | Troubleshooting and diagnostics |
@@ -75,7 +75,7 @@ Opening a PR builds a preview automatically. The link appears on the PR and upda
 - **Style compliance**: apply the [Vale](contribute-docs/vale-linter.md) recommendations where relevant.
 - **Accuracy against the product code**: labels, defaults, and behavior verified at `HEAD`.
 
-Preview locally with `docs-builder serve`, or run `docs-builder` with no argument for a full build that surfaces errors ([build locally](contribute-docs/locally.md)). Run Vale on changed files. When you move, rename, or delete a page, add the redirect in `redirects.yml`. For AI-assisted contributions specifically, read [`AI.md`](AI.md).
+Preview locally with `docs-builder serve`, or run `docs-builder` with no argument for a full build that surfaces errors ([build locally](contribute-docs/locally.md)). Run Vale on changed files. When you move, rename, or delete a page that has already been published, add the redirect in `redirects.yml`. For AI-assisted contributions specifically, read [`AI.md`](AI.md).
 
 ## Tooling
 
