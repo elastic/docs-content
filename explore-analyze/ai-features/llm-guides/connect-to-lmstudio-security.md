@@ -31,7 +31,7 @@ For testing, you can use alternatives to Nginx such as [Azure Dev Tunnels](https
 
 
 ::::{warning}
-Self-managed models work well for [AI Assistant](/solutions/security/ai/ai-assistant.md). We do not recommend them for [Attack Discovery](/solutions/security/ai/attack-discovery/index.md). For Attack Discovery, select a connector that uses one of the models listed in the [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
+Self-managed models work well for [AI Assistant](/solutions/security/ai/ai-assistant.md). For [Attack Discovery](/solutions/security/ai/attack-discovery/index.md), we recommend using one of the models in the [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
 ::::
 
 

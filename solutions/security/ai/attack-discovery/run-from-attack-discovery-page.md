@@ -52,7 +52,7 @@ The next time you run Attack Discovery it will be able to analyze the selected f
 You'll need to select an LLM connector before you can analyze alerts. If your subscription or project includes [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md), one may already be available with no setup required. Otherwise, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md) to add one.
 
 :::{note}
-Use a model that performs well for Attack Discovery. Refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) for recommended models. Self-managed LLMs are not recommended.
+We recommend using one of the models in the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) for Attack Discovery.
 :::
 
 

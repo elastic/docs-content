@@ -69,7 +69,7 @@ Manual, scheduled, and workflow-triggered runs open a new {{agent-builder}} conv
 
 Under **Generation**, select the **Connector for generating attack discoveries**. You must select a connector before you can save alert retrieval settings or start a manual run. Schedules can use their own connector when you create or edit them.
 
-An [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) may already be available with no setup. Otherwise, add a connector using a model that performs well for Attack Discovery. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md) to set one up, and the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) for recommended models. Self-managed LLMs are not recommended.
+An [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) may already be available with no setup. Otherwise, add a connector. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md) to set one up. We recommend using one of the models in the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) for Attack Discovery.
 
 If you want to call Attack Discovery from automation instead, select **View example** to open the managed **Security - Attack discovery - Run example** workflow. Refer to [Run Attack Discovery from a workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md) for more information.
 
