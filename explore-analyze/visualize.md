@@ -20,10 +20,10 @@ $$$panels-editors$$$
 | --- | --- | --- |
 | Visualizations | [Lens](visualize/lens.md) | Create powerful charts in {{kib}}. This is the default editor. |
 |  | [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md) | Create visualizations from {{esql}} queries |
-|  | [Discover sessions](discover.md) {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` | Create a Discover session directly in your dashboard. Saved sessions can be added to multiple dashboards from the **Add panel** flow. |
+|  | [Discover sessions](discover.md) {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` | Create a Discover session directly in your dashboard. Saved sessions can be added to multiple dashboards from the dashboard **Add** menu. |
 |  | [Maps](visualize/maps.md) | Create beautiful displays of your geographical data |
 |  | [Alerts](visualize/alert-panels.md) | View Observability or Security alerts in your dashboard |
-|  | [Custom visualizations](visualize/custom-visualizations-with-vega.md) | Use Vega to create new types of visualizations |
+|  | [Vega or custom visualizations](visualize/custom-visualizations-with-vega.md) | Use Vega to create new types of visualizations |
 |  | | |
 | Annotations and navigation | [Collapsible sections](dashboards/arrange-panels.md#collapsible-sections) | Organize your dashboard into sections that can be collapsed and save loading time |
 |  | [Markdown text](visualize/text-panels.md) | Add context to your dashboard with markdown-based **text** |
@@ -44,5 +44,5 @@ $$$panels-editors$$$
 |  | [TSVB](visualize/legacy-editors/tsvb.md) | Visualize time-based data through various panel types |
 
 :::{note}
-Legacy panel types only appear in the **Add panel** dashboard menu if you already have such panels in your dashboards. If you have never used these panel types, use Lens instead.
+Legacy panel types only appear in the dashboard **Add** menu if you already have such panels in your dashboards. If you have never used these panel types, use Lens instead.
 :::

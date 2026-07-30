@@ -26,6 +26,12 @@ Selecting a non-mobile [**service**](/solutions/observability/apm/services.md) b
 * Latency, throughput, and errors over time
 * Service dependencies
 
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` An **Anomaly** badge appears at the top of the page alongside alerts and SLOs when [{{ml}}](/solutions/observability/apm/machine-learning.md) is enabled. It shows the highest anomaly score across all metrics and environments, and indicates which metric triggered the anomaly. Click the badge to navigate to the service view pre-configured with the relevant environment and anomaly threshold.
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Active alerts and SLOs for the service are shown at the top of the page so you can assess health without scrolling to the metadata section. Use the **Actions** menu located in the bottom right of the page to act on the service directly. For example, you can create an alert rule or SLO.
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Each RED metric chart (**Latency**, **Throughput**, and **Failed transaction rate**) includes an **Open in Discover** button to explore the underlying trace data directly in Discover.
+
 ## Time series and expected bounds comparison [service-time-comparison]
 
 For insight into the health of your services, you can compare how a service performs relative to a previous time frame or to the expected bounds from the corresponding {{anomaly-job}}. For example, has latency been slowly increasing over time, did the service experience a sudden spike, is the throughput similar to what the {{ml}} job expects — enabling a comparison can provide the answer.
@@ -146,6 +152,8 @@ To view metadata relating to the service agent, and if relevant, the container a
 * Function name(s)
 * Event trigger type
 
-**Alerts**
 
-* Recently fired alerts
+**Alerts and SLOs**
+
+* {applies_to}`stack: ga 9.0+` {applies_to}`serverless: ga` Recently fired alerts
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Active SLOs associated with the service
