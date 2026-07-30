@@ -190,6 +190,8 @@ The [entity store](/solutions/security/advanced-entity-analytics/entity-store.md
 
 By analyzing current and past entity data, you can understand how your environment and its entities evolve over time.
 
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To review an entity's scoring history without writing a query, use the [risk score history chart](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) in the entity details flyout.
+
 ::::{note}
 If you enabled the entity store before upgrading to 9.2, you'll need to re-start it using the **On**/**Off** toggle to access the historical analysis feature.
 ::::
