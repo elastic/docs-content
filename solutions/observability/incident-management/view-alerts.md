@@ -156,6 +156,7 @@ To affect the behavior of the rule rather than individual alerts, refer to [Snoo
 
 ```{applies_to}
 stack: ga 9.0-9.4
+serverless: unavailable
 ```
 
 If an alert is active or flapping, you can mute it to temporarily stop future actions. For mute options and how to mute or unmute an alert, refer to [Mute alerts](/explore-analyze/alerting/alerts/view-alerts.md#mute-alerts).

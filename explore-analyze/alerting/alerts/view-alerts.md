@@ -141,6 +141,7 @@ To affect the behavior of the rule rather than individual alerts, check out [Sno
 
 ```{applies_to}
 stack: ga 9.0-9.4
+serverless: unavailable
 ```
 
 If an alert is active or flapping, you can mute it to temporarily stop future actions. While muted, the alert's status will continue to update but rule actions won't run. All future alerts with the same alert ID will also be muted. You can mute alerts in the following ways:
