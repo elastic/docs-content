@@ -2,7 +2,7 @@
 navigation_title: "Create an OAuth client"
 description: "Register an OAuth client in Agent Builder to get the credentials and server URL needed to connect an MCP host over OAuth."
 applies_to:
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana
@@ -84,16 +84,6 @@ The client ID and MCP server URL can be retrieved at any time from the **MCP cli
 ::::
 
 :::::
-
-% todo: endpoint link
-:::{note}
-
-OAuth clients can also be created through the {{kib}} API. To create a client through the API, you must use an {{ecloud}} API key with [Cloud, {{es}}, and {{kib}} API access](/deploy-manage/api-keys/elastic-cloud-api-keys.md#project-access). Creating a client with an API key created directly in {{es}} is not supported. 
-
-Clients created through the API are not visible in the Agent Builder client list in {{kib}}, because they are not owned by a specific user. They appear only in the organization-level [Application connections](manage-app-connections.md) view in the {{ecloud}} Console.
-
-% source: https://elastic.slack.com/archives/C0AH1CA7S3Y/p1780340150585789
-:::
 
 ## Next steps
 

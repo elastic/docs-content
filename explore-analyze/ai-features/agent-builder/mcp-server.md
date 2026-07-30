@@ -48,13 +48,13 @@ External MCP hosts need credentials to reach the MCP server endpoint. The way th
 Use one of the following authentication paths:
 
 - [API key authentication](mcp-server-api-keys.md)
-- [OAuth 2.1 authentication](/deploy-manage/app-connections/oauth-clients.md) using an [application connection](/deploy-manage/app-connections.md) {applies_to}`serverless: preview`
+- [OAuth 2.1 authentication](/deploy-manage/app-connections/oauth-clients.md) using an [application connection](/deploy-manage/app-connections.md) {applies_to}`serverless: ga`
 
 The following table compares the two paths.
 
 | Consideration | API key | OAuth |
 | --- | --- | --- |
-| Supported platforms | {{stack}} deployments and {{serverless-short}} projects | {{serverless-short}} projects only {applies_to}`serverless: preview` |
+| Supported platforms | {{stack}} deployments and {{serverless-short}} projects | {{serverless-short}} projects only {applies_to}`serverless: ga` |
 | Best for | Automation, unattended access, and shared machine-to-machine use | Interactive MCP hosts acting on behalf of a person (Claude Desktop, Cursor), including teams that share one client |
 | Multi-user access | One shared key means one shared identity; all callers act with the same permissions | One client registration serves many users. Each person consents separately and gets their own connection, acting with their own permissions and revocable individually |
 | Identity | The key's snapshotted permissions | The consenting user; permissions are the user's live permissions in the project |
