@@ -47,16 +47,11 @@ Each template card shows step and trigger icons, so you can tell which connector
 If the library is empty, templates aren't available for your {{kib}} version yet.
 :::
 
-## Preview a template [workflows-templates-preview]
+## Use templates [workflows-templates-use]
 
-Preview a template to confirm it fits your use case before you build a workflow from it.
+Before you commit to a template, you can review its name, description, tags, solutions, and version, along with a read-only view of its workflow definition (YAML) showing the triggers and steps it uses. Use this to confirm the template fits your use case.
 
-1. Select a template card to open its detail page. The detail page shows the template's name, description, tags, solutions, and version.
-2. Inspect the read-only **Preview** of the workflow definition (YAML) to see the triggers and steps the template uses.
-
-## Use a template to build a workflow [workflows-templates-use]
-
-From a template's detail page, you can build a new workflow based on it. {{kib}} creates a copy of the template's YAML definition as your own workflow, without affecting the original template or any other workflows built from it.
+When you're ready, build a new workflow based on the template. {{kib}} creates a copy of the template's YAML definition as your own workflow, without affecting the original template or any other workflows built from it.
 
 Customize the workflow for your environment. For example, select a connector and set indices or other step parameters. The editor flags steps that still need configuration, such as an unset connector. For more about editing workflows, refer to [](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md).
 
