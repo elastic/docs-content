@@ -102,5 +102,5 @@ The **elastic-docs MCP**, when available, searches the published corpus, finds r
 The core principles cover most of this. Beyond them:
 
 - Don't update release notes manually as part of a regular docs change. They're produced from code changes, not hand-edited here.
-- Don't invent or auto-generate screenshots. When one is needed, call out which screenshots to add or update and which carry the most value. If a suitable image is provided or already available, add it yourself.
+- Don't invent or auto-generate screenshots. When one is needed, call out which screenshots to add or update and which carry the most value. If a suitable image is provided, add it yourself.
 - Don't restructure or rename pages beyond the task, unless the change is required for the new content to make sense.
