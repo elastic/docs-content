@@ -26,5 +26,5 @@ To check your billing history:
 4. On the **History** page, select the invoice number for a detailed PDF.
 
 :::{note}
-You can use the [Billing History API](https://www.elastic.co/docs/api/doc/cloud-billing/operation/operation-gethistoryv1) to retrieve invoice history programmatically. Review the [Elastic Cloud RESTful API documentation](cloud://reference/cloud-hosted/ec-api-restful.md) for more guidance of how to use Elastic Cloud APIs.
+You can use the [Billing History API](https://www.elastic.co/docs/api/doc/cloud-billing/operation/operation-gethistoryv1) to retrieve invoice history programmatically. Review the [Elastic Cloud RESTful API documentation](cloud://reference/cloud-hosted/ec-api-restful.md) for more guidance on using Elastic Cloud APIs.
 :::
