@@ -15,6 +15,7 @@ sub:
   service-name: "Azure Private Link"
   example-phz-dn: "privatelink.eastus2.azure.elastic-cloud.com"
   example-default-dn: "eastus2.azure.elastic-cloud.com"
+  example-serverless-phz-dn: "private.eastus2.azure.elastic.cloud"
 ---
 
 # Private connectivity with Azure Private Link
@@ -283,10 +284,12 @@ To test the connection:
     ::::
     :::::
 
-2. Test the setup using the following cURL command. Pass the username and password for a user that has access to the cluster. Make sure to replace the URL with your deployment or project's endpoint information and the private hosted zone domain name that you registered.
+2. Test the setup using the following cURL command. Pass the username and password for a user that has access to the cluster.
 
     ::::{applies-switch}
     :::{applies-item} ess: ga
+    Make sure to replace the URL with your deployment's endpoint information and the private hosted zone domain name that you registered.
+
     **Request**
 
     ```sh
@@ -319,6 +322,8 @@ To test the connection:
     The connection is established, and a valid certificate is presented to the client. Elastic responds, in the case of the {{es}} endpoint, with basic information about the cluster.
     :::
     :::{applies-item} serverless: ga
+    Make sure to replace the URL with the **Private endpoint** URL from your project.
+
     **Request**
 
     ```sh

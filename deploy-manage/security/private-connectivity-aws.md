@@ -15,6 +15,7 @@ sub:
   service-name: "AWS PrivateLink"
   example-phz-dn: "vpce.us-east-1.aws.elastic-cloud.com"
   example-default-dn: "us-east-1.aws.elastic-cloud.com"
+  example-serverless-phz-dn: "private.us-east-1.aws.elastic.cloud"
 ---
 
 # Private connectivity with AWS PrivateLink
@@ -263,10 +264,12 @@ To test the connection:
     ::::
     :::::
 
-2. Test the setup using the following cURL command. Pass the username and password for a user that has access to the cluster. Make sure to replace the URL with your deployment or project's endpoint information and the private hosted zone domain name that you registered.
+2. Test the setup using the following cURL command. Pass the username and password for a user that has access to the cluster.
 
     ::::{applies-switch}
     :::{applies-item} ess: ga
+    Make sure to replace the URL with your deployment's endpoint information and the private hosted zone domain name that you registered.
+
     **Request**
 
     ```sh
@@ -292,6 +295,8 @@ To test the connection:
     ```
     :::
     :::{applies-item} serverless: ga
+    Make sure to replace the URL with the **Private endpoint** URL from your project.
+
     **Request**
 
     ```sh
