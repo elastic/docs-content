@@ -126,6 +126,11 @@ We recommend using CSV reports to export moderate amounts of data only. The feat
 * Queries use cross-cluster search (CCS) across many indices or remote clusters
 * ES|QL is used and result row count exceeds the limits of ES|QL queries
 
+:::{note}
+:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+CSV reports of {{esql}} Discover sessions and Discover session panels apply the values currently selected in any [variable controls](/explore-analyze/query-filter/languages/esql-kibana.md#add-variable-control), for both immediate and scheduled reports. In earlier versions, these exports failed with an unknown query parameter error.
+:::
+
 For large or long-running exports, use the Elasticsearch APIs directly. They are the recommended path for bulk data extraction. To reduce report size, use filters to create multiple smaller reports.
 
 For more information on using Elasticsearch APIs directly, see [Scroll API]({{es-apis}}operation/operation-scroll), [Point in time API]({{es-apis}}operation/operation-open-point-in-time), [ES|QL](elasticsearch://reference/query-languages/esql/esql-rest.md) or [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](/reference/elasticsearch-clients/index.md).

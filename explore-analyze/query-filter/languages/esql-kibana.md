@@ -336,6 +336,11 @@ They're available for:
 * [Discover queries](/explore-analyze/discover/try-esql.md#add-variable-control) {applies_to}`stack: ga 9.2`
 * [{{esql}} visualizations in dashboards](/explore-analyze/visualize/add-variable-controls.md)
 
+:::{note}
+:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+When you generate a [CSV report](/explore-analyze/report-and-share.md#csv-limitations) from a Discover session or a Discover session panel that uses variable controls, the query runs with the values currently selected in the controls, for both immediate and scheduled reports.
+:::
+
 :::{include} ../../_snippets/variable-control-procedure.md
 :::
 
