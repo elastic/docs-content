@@ -171,5 +171,4 @@ The [`elastic/workflows` GitHub repo](https://github.com/elastic/workflows) cont
 * [Tools overview](./tools.md)
 * [Workflow tools](../agent-builder/tools/workflow-tools.md)
 * [Author workflows with natural language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md)
-* [Workflows](/explore-analyze/workflows.md)
 * [Agent Builder API]({{kib-apis}}group/endpoint-agent-builder)
