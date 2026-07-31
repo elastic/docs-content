@@ -46,8 +46,6 @@ To enable IPv6 ingress:
 [IP filtering](/deploy-manage/security/ip-filtering-ece.md) rules accept IPv6 addresses and CIDR blocks, so you can filter IPv6 clients the same way as IPv4 clients.
 :::
 
-Although ECE endpoints listen on IPv4, IP filtering rules accept IPv6 addresses and CIDR blocks, so you can filter IPv6 clients.
-
 ## IPv6 egress [ece-ipv6-egress]
 
 Outbound IPv6 connectivity is needed when ECE services or your deployments must reach destinations available only over IPv6, such as snapshot repositories, authentication providers, webhook targets, or remote clusters.
