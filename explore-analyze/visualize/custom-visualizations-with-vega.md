@@ -1465,6 +1465,11 @@ The following example creates a metric that counts documents over time, using th
 {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` **Vega** and **Vega-Lite** panels that use an {{esql}} data source are subject to the {icon}`bolt` [**Fast mode**](../query-filter/languages/esql-kibana.md#approximation-fast-mode) dashboard option. When this option is active on a dashboard, these panels return faster, estimated results for `STATS` aggregations.
 
 
+#### {{esql}} data source limitations [vega-esql-limitations]
+
+{applies_to}`stack: ga =9.4` The dashboard query bar, filters, and controls don't recognize the fields from the index that a **Vega** or **Vega-Lite** {{esql}} panel queries. Later versions recognize these fields.
+
+
 #### Access Elastic Map Service files [vega-esmfiles]
 ```{applies_to}
 stack: preview
