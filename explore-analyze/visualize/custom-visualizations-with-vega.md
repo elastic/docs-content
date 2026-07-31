@@ -1692,6 +1692,8 @@ kibanaSetTimeFilter(start, end)
 }
 ```
 
+{{kib}} reads a limited set of embed options from a spec's `usermeta.embedOptions.loader` object: only the `target` and `rel` link attributes are honored, and all other loader properties, such as `baseURL` or HTTP request options, are ignored. As a result, a spec cannot change how {{kib}} loads external resources.
+
 
 ### Resources and examples [resources-and-examples]
 
