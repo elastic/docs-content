@@ -28,7 +28,7 @@ Elastic helps you build applications for three main use cases: search, observabi
 | Protecting against threats | [Security solution](/solutions/security.md) | Detect and respond to security threats |
 
 ::::{tip}
-Not sure which to choose? Start with the {{es}} solution, if you don't need the additional features in {{product.observability}} or {{product.security}}.
+Not sure which to choose? Start with the {{es}} solution for general-purpose search and analytics across structured data, logs, metrics, documents, and vectors. On {{serverless-full}}, choose [{{es}} Vector Database](/solutions/vector-database.md) when embeddings drive the workload. Choose {{product.observability}} or {{product.security}} when you need those solution features.
 ::::
 
 ## About solutions and project types

@@ -17,7 +17,8 @@ Whether you're building a search experience, monitoring your infrastructure, or 
 
 | Your need | Recommended solution | Best for |
 |-----------|-------------------|----------|
-| Build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights| [{{es}}](/solutions/elasticsearch-solution-project.md)<br>• [Get started](/solutions/elasticsearch-solution-project/get-started.md)| Developers, architects, data engineers |
+| Build powerful, scalable search and analytics applications across structured data, logs, metrics, documents, and vectors as part of a broader {{stack}} | [{{es}}](/solutions/elasticsearch-solution-project.md)<br>• [Get started](/solutions/elasticsearch-solution-project/get-started.md)| Developers, architects, data engineers |
+| Build embedding-driven workloads such as semantic search, RAG, and AI-powered retrieval | [{{es}} Vector Database](/solutions/vector-database.md) {applies_to}`serverless:`<br>• [Get started](/solutions/vector-database/get-started.md) {applies_to}`serverless:` | Developers building AI retrieval and similarity search applications |
 | Observe and monitor system health and performance, or send telemetry data | [Elastic {{observability}}](/solutions/observability.md)<br>• [Get started](/solutions/observability/get-started.md) | DevOps, SREs, IT operations |
 | Monitor data for anomalous activity, detect, prevent, and respond to security incidents | [{{elastic-sec}}](/solutions/security.md)<br>• [Get started](/solutions/security/get-started.md)| SOC teams, security analysts, IT security admins |
 
