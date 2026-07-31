@@ -25,7 +25,7 @@ After you turn on [Attack Discovery Workflows](/solutions/security/get-started/c
 To create a schedule:
 
 1. Go to **Detections** → **Views** → **Attacks**, then select **Schedule** → **Create new schedule**.
-2. Name the schedule and choose an LLM connector for generation.
+2. Name the schedule and choose an LLM connector for generation. If you don't already have one, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 3. [Configure which alerts to analyze](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md). For example, keep skill retrieval on and add an {{esql}} query to focus on high-severity alerts.
 4. Set how often the schedule runs, such as every 24 hours.
 5. (Optional) Add notification [connectors](/deploy-manage/manage-connectors.md) and actions, then select **Create & enable schedule**. Supported notification connectors include Slack, {{sn}}, {{jira}}, PagerDuty, Cases, Email, and {{webhook}}.
@@ -37,7 +37,7 @@ To create a schedule:
 To create a schedule:
 
 1. Go to **Detections** → **Views** → **Attacks**, then select **Schedule** → **Create new schedule**.
-2. Name the schedule and choose an LLM connector for generation.
+2. Name the schedule and choose an LLM connector for generation. If you don't already have one, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 3. [Configure which alerts to analyze](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md#attacks-page-schedule-alert-selection).
 4. Set how often the schedule runs, such as every 24 hours.
 5. (Optional) Add notification [connectors](/deploy-manage/manage-connectors.md) and actions, then select **Create & enable schedule**. For example, send a Slack or email notification when discoveries are found.
@@ -46,6 +46,6 @@ To create a schedule:
 
 :::::
 
-After creating a schedule, you can edit, enable, disable, or delete it. To change several at once, select them in the table and use **Bulk actions**. Schedule management requires the [**Schedules → Allow changes**](/solutions/security/ai/attack-discovery/grant-access.md#ad-schedules-privilege) privilege. To manage schedules programmatically, use the [Attack discovery API]({{kib-apis}}group/endpoint-security-attack-discovery-api).
+After creating a schedule, you can edit, enable, disable, or delete it. To change several at once, select them in the table and use **Bulk actions**. To manage schedules programmatically, use the [Attack discovery API]({{kib-apis}}group/endpoint-security-attack-discovery-api).
 
 Scheduled discoveries show a calendar icon. For how to recognize scheduled versus manually generated attacks, refer to [Recognize manually generated and scheduled attacks](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md#manually-generated-attacks).
