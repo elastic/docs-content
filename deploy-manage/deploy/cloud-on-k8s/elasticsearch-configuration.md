@@ -6,7 +6,7 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
-navigation_title: {{es}} configuration
+navigation_title: Elasticsearch configuration
 ---
 
 # {{es}} configuration on ECK [k8s-elasticsearch-specification]
