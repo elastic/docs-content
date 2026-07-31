@@ -1426,11 +1426,16 @@ The `url` object supports the following parameters:
 | `"%type%"` | Set to `"esql"` to use the {{esql}} parser. |
 | `"query"` | The {{esql}} query to run. Required. |
 | `"%context%"` | When set to `true`, applies the dashboard filters to the query. |
-| `"%timefield%"` | {applies_to}`stack: ga 9.4` Lets your query use the `?_tstart` and `?_tend` parameters, which {{kib}} replaces with the start and end of the dashboard time range. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` The date field that {{kib}} filters on to apply the dashboard time range to the query. |
+| `"%timefield%"` | The timestamp field to use for the dashboard time range. |
 | `"dropNullColumns"` | Defaults to `true`. When `true`, columns that contain only `null` values are excluded from the response. |
 | `"params"` | An array of named parameter objects to substitute into the query. |
 
-{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` The dashboard time range applies to {{esql}} data sources automatically, the same way it does in Lens and Discover. {{kib}} adds a range filter for the resolved time field, and it still binds the `?_tstart` and `?_tend` parameters when they appear in the query. The time field resolves in this order: the explicit `"%timefield%"` value, then the field the query compares against `?_tstart` and `?_tend`, then a field named `@timestamp` on the queried index. If none of these apply, the query isn't filtered by time, so set `"%timefield%"` when your data's time field isn't named `@timestamp`. Time filtering applies whether or not `"%context%"` is set.
+{{kib}} applies the dashboard time range to your {{esql}} query as follows:
+
+* {applies_to}`stack: ga 9.4` Reference the time field with the `?_tstart` and `?_tend` parameters in your query, for example in a `WHERE` clause, and set `"%timefield%"`. {{kib}} replaces the parameters with the start and end of the time range. Both are required for the time range to apply.
+* {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` {{kib}} applies the time range automatically, the same way it does in Lens and Discover. It filters on the field set in `"%timefield%"`. If you don't set one, it uses the field your query references with `?_tstart` and `?_tend`, or a field named `@timestamp`. Set `"%timefield%"` when your time field has another name.
+
+Time filtering works independently of `"%context%"`.
 
 The response is converted from the {{esql}} columnar format into the row-based format that **Vega** expects, with one object per row keyed by column name.
 
