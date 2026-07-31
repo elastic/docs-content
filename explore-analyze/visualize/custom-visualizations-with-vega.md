@@ -1426,7 +1426,7 @@ The `url` object supports the following parameters:
 | `"%type%"` | Set to `"esql"` to use the {{esql}} parser. |
 | `"query"` | The {{esql}} query to run. Required. |
 | `"%context%"` | When set to `true`, applies the dashboard filters to the query. |
-| `"%timefield%"` | {applies_to}`stack: ga 9.4` Enables the `?_tstart` and `?_tend` named parameters in the query, which are replaced with the start and end of the dashboard time range. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Sets the field that {{kib}} uses to apply the dashboard time range to the query. |
+| `"%timefield%"` | {applies_to}`stack: ga 9.4` Lets your query use the `?_tstart` and `?_tend` parameters, which {{kib}} replaces with the start and end of the dashboard time range. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` The date field that {{kib}} filters on to apply the dashboard time range to the query. |
 | `"dropNullColumns"` | Defaults to `true`. When `true`, columns that contain only `null` values are excluded from the response. |
 | `"params"` | An array of named parameter objects to substitute into the query. |
 
