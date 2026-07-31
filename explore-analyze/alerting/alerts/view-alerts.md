@@ -25,11 +25,9 @@ Manage alerts from the following places:
 :screenshot:
 :::
 
-::::{note}
-You must have the appropriate {{kib}} {{alert-features}} and index privileges to view alerts. Refer to [Alerting security requirements](alerting-setup.md#alerting-security).
+## Required permissions [_required_permissions]
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To snooze, unsnooze, or acknowledge alerts, use the **Stack Alerts** or **Observability Alerts** feature privileges. These privileges do not include rule management. Refer to [Give access to triage alerts without managing rules](alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
-::::
+To view alerts and perform per-alert actions such as snooze, unsnooze, and acknowledge, assign the **Stack Alerts** or **Observability Alerts** feature privilege, depending on which alerts page you use (`All` for full access, or `Read` for view and snooze state only). Assign this through {{kib}} roles on the {{stack}}, or through a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md) on serverless. For more information, refer to [Give access to triage alerts without managing rules](alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
 
 ## Filter alerts [filter-alerts]
 
