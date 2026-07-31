@@ -62,7 +62,7 @@ There are four common alert statuses:
 
 `flapping`
 
-:   The alert switched repeatedly between active and recovered states. If actions are configured to run when its status changes, they are suppressed. Refer to [Alert flapping](create-manage-rules.md#defining-rules-flapping-details) to learn more about configuring alert flapping for rules.
+:   The alert switched repeatedly between active and recovered states. If actions are configured to run when its status changes, they don't run. Refer to [Alert flapping](create-manage-rules.md#defining-rules-flapping-details) to learn more about configuring alert flapping for rules.
 
 `recovered`
 :   The conditions for the rule are no longer met. If the rule has [recovery actions](create-manage-rules.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. Recovery actions only run if the rule's conditions aren't met during the current rule execution, but were in the previous one. 
@@ -79,28 +79,90 @@ There are four common alert statuses:
 `untracked`
 :   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the Alerts table, click the action menu icon {icon}`boxes_vertical` and select **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated and the alert's status can no longer be changed. You can choose to move active alerts to this state when you disable or delete rules.
 
+## Snooze alerts [snooze-alerts]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+If an alert is `active`, you can snooze it to stop that alert's actions, like email or Slack notifications, from running. While an alert is snoozed, the rule continues to run and the alert's state can still update. For example, a snoozed alert can still change from `recovered` to `active`. 
+
+Actions for the snoozed alert aren't triggered until you unsnooze the alert, the snooze expires, or an unsnooze condition is met. If the snoozed alert recovers and becomes active again, it remains snoozed.
+
+If a rule uses **Group alerts by** to track hosts, services, or other fields separately, snoozing one alert does not affect the others. For example, if a rule is set to group alerts by `host.name`, it creates one alert per host. Snoozing the alert for `web-01` does not silence alerts for `web-02` or `web-03`.
+
+Use per-alert snooze to stop notifications from one alert without silencing the rest of the rule. To silence every notification from a rule, [snooze the rule](create-manage-rules.md#controlling-rules) instead.
+
+:::{note}
+If you previously muted an alert, either in an earlier {{stack}} version (for example, {{stack}} 9.4) or before {{serverless-short}} added per-alert snooze, it now appears as snoozed indefinitely in the UI. Select **Unsnooze** to resume alert actions.
+:::
+
+To snooze an active alert, open its action menu ({icon}`boxes_vertical`) from the Alerts table or the alert details page, then select **Snooze**. Choose **Quick Snooze** when you know how long it should stay quiet, or **Condition based** when you want actions to resume based on a change in the alert itself, optionally paired with a time condition as a backstop rather than the primary trigger. Configure your snooze, then select **Snooze alert** to apply it.
+
+### Quick Snooze [quick-snooze]
+
+Pick a duration when the noisy condition is temporary and time-bound, for example, a planned maintenance window or a deploy you expect to stabilize within a few hours. Use a **preset duration** (1, 8, or 24 hours) for common cases, or a **Custom** duration or end date when those presets don't fit.
+
+Pick **Indefinitely** when you have no fixed window in mind, such as an alert you've triaged and will follow up on yourself. It stays snoozed until you unsnooze it manually, and is also what existing muted alerts show as.
+
+### Condition based snooze [condition-based-snooze]
+
+Use this tab when a fixed time period doesn't fit the situation: You want actions to resume based on what the alert does, not when the clock runs out. You can combine a **time condition** and a **data condition**; whichever is met first unsnoozes the alert. At least one is required.
+
+Add a **time condition** as an upper bound alongside a data condition, so the alert doesn't stay snoozed forever if the change you're waiting for never happens.
+
+For the **data condition** (a change to the alert itself, not your source data), pick based on what you actually want to know about next:
+
+* **Field change**: You're tracking one specific value on the alert. For example, unsnooze as soon as a match-count field increments, signaling the condition matched again.
+* **Severity change**: You want actions to resume the moment its severity moves, in either direction, without committing to a specific level.
+* **Severity equals**: You only care about one severity level. For example, stay quiet through `warning` but resume actions the moment the alert reaches `critical`.
+
+If you add more than one data condition, click **ANY** or **ALL** above the conditions list to decide how strict the trigger should be:
+
+* **Any**: The broadest safety net. It unsnoozes the moment a single condition is met.
+* **All**: A stricter bar. Stay quiet unless every condition lines up at once, useful for avoiding actions triggered by one flapping field.
+
+::::{tip}
+:applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
+
+[Custom threshold](/solutions/observability/incident-management/create-custom-threshold-rule.md) and [metric threshold](/solutions/observability/incident-management/create-metric-threshold-rule.md#metrics-conditions) rules set the alert severity to `warning` or `critical` based on whether the warning or critical threshold was met. **Severity change** and **Severity equals** data conditions can match those alerts.
+::::
+
+Snoozed alerts display the icon {icon}`bell_slash` in the alert lifecycle status cell of the Alerts table. Hover over it to see when the snooze ends or which conditions unsnooze the alert. To unsnooze early, open the action menu ({icon}`boxes_vertical`) and select **Unsnooze**.
+
+::::{note}
+To permanently stop an alert's actions, open the actions menu for the appropriate alert, then select **Mark as untracked**. In this case, the alert's status is no longer updated and actions are no longer run. These changes are only applied to the alert that you untracked and cannot be reverted. Future alerts with the same alert ID are unaffected.
+
+To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#controlling-rules).
+::::
+
 ## Mute alerts [mute-alerts]
 
-If an alert is active or flapping, you can mute it to temporarily suppress future actions. While muted, the alert's status will continue to update but rule actions won't run. All future alerts with the same alert ID will also be muted. You can mute alerts in the following ways:
+```{applies_to}
+stack: ga 9.0-9.4
+serverless: unavailable
+```
+
+If an alert is active or flapping, you can mute it to temporarily stop future actions. While muted, the alert's status will continue to update but rule actions won't run. All future alerts with the same alert ID will also be muted. You can mute alerts in the following ways:
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.3+
+:::{applies-item} stack: ga 9.3-9.4
 You can mute individual alerts or multiple ones:
 
 - Mute individual alerts: Find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), open the action menu ({icon}`boxes_vertical`) for the appropriate alert, then select **Mute**.
-- Bulk-mute alerts: Select one or more alerts from the **Alerts** management page, click **Selected _x_ alerts** at the upper-left above the table, then select **Mute selected**. Select the **Unmute selected** option to unmute alerts. Muted alerts display the icon {icon}`bell_slash` in the Alerts table. 
+- Bulk-mute alerts: Select one or more alerts from the **Alerts** management page, click **Selected _x_ alerts** at the upper-left above the table, then select **Mute selected**. Select the **Unmute selected** option to unmute alerts. Muted alerts display the icon {icon}`bell_slash` in the Alerts table.
 :::
 
 :::{applies-item} stack: ga 9.0-9.2
-You can only mute individual alerts. To mute an alert, find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), click the action menu icon {icon}`boxes_vertical` for the appropriate alert, then select **Mute**. 
+You can only mute individual alerts. To mute an alert, find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), click the action menu icon {icon}`boxes_vertical` for the appropriate alert, then select **Mute**.
 :::
 
 ::::
 
 ::::{note}
-
-To permanently suppress an alert's actions, open the actions menu for the appropriate alert, then select **Mark as untracked**. In this case, the alert's status is no longer updated and actions are no longer run. These changes are only applied to the alert that you untracked and cannot be reverted. Future alerts with the same alert ID are unaffected.
+To permanently stop an alert's actions, open the actions menu for the appropriate alert, then select **Mark as untracked**. In this case, the alert's status is no longer updated and actions are no longer run. These changes are only applied to the alert that you untracked and cannot be reverted. Future alerts with the same alert ID are unaffected.
 
 To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#controlling-rules).
 ::::
@@ -114,7 +176,7 @@ serverless: ga
 
 Acknowledge an alert to explicitly indicate that someone is investigating it. Acknowledged alerts have their `kibana.alert.workflow_status` set to `acknowledged`, which displays a badge in the alert lifecycle status cell.
 
-Acknowledging an alert does not suppress future notifications or affect rule recovery. The alert continues to update its status normally.
+Acknowledging an alert does not stop future notifications or affect rule recovery. The alert continues to update its status normally.
 
 To acknowledge an alert, go to the Alerts table, click the action menu icon {icon}`boxes_vertical` for the appropriate alert, then select **Acknowledge**. To revert the acknowledgment, from the action menu, select **Unacknowledge**.
 

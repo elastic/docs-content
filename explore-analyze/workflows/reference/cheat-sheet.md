@@ -48,16 +48,20 @@ triggers:
 
   - type: alert                        # requires rule Action attachment
 
-  - type: workflows.failed             # tech preview
+  - type: workflows.failed             # GA (9.5+), tech preview (9.4)
     on:
       condition: "event.workflow.name : 'critical-ingest-pipeline'"
 
   - type: cases.caseCreated            # tech preview (9.5+)
     on:
       condition: 'event.owner: "securitySolution"'
+
+  - type: entityStore.entityRiskScoreChanged   # tech preview (9.5+)
+    on:
+      condition: 'event.direction: "increase" AND event.delta >= 25'
 ```
 
-The full cases trigger family also includes `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`. Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
+The full cases trigger family also includes `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`. The entity store trigger family also includes `entityStore.entityAssetCriticalityUpdated`. Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
 
 Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/workflows/triggers.md).
 
@@ -88,7 +92,10 @@ Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/wo
 | Query {{es}} | `elasticsearch.search`, `elasticsearch.esql.query` |
 | Write to {{es}} | `elasticsearch.index`, `elasticsearch.bulk`, `elasticsearch.update` |
 | Manage cases | `cases.createCase`, `cases.updateCase`, `cases.addComment`, `cases.addAlerts`, `cases.addAttachments`, `cases.pushCases` |
-| Manage alerts | `kibana.SetAlertsStatus`, `kibana.SetAlertTags` (PascalCase) |
+| Manage alerts | `security.setAlertStatus`, `security.setAlertTags`, `security.assignAlert` (preferred); `kibana.SetAlertsStatus`, `kibana.SetAlertTags` (PascalCase) |
+| Manage attacks | `security.setAttackStatus`, `security.setAttackTags`, `security.assignAttack` |
+| Enable or disable detection rules | `security.enableRule`, `security.disableRule` |
+| Manage asset criticality | `entityStore.updateAssetCriticality` |
 | Call an API | `http` (with optional `connector-id`) |
 | Call a service | `<connector>.<action>` (for example, `slack.postMessage`, `jira.createIssue`) |
 | Branch | `if`, `switch` |
