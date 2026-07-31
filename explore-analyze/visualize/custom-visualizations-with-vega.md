@@ -1430,7 +1430,7 @@ The `url` object supports the following parameters:
 | `"dropNullColumns"` | Defaults to `true`. When `true`, columns that contain only `null` values are excluded from the response. |
 | `"params"` | An array of named parameter objects to substitute into the query. |
 
-{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` The dashboard time range applies to {{esql}} data sources automatically, the same way it does in Lens and Discover. {{kib}} adds a range filter on the resolved time field, and it also binds the `?_tstart` and `?_tend` parameters whenever they appear in the query. The time field resolves in this order: the explicit `"%timefield%"` value, then the query's default time field, then no time filtering if neither is available. Time filtering works independently of `"%context%"` and of whether the query uses `?_tstart` and `?_tend`.
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` The dashboard time range applies to {{esql}} data sources automatically, the same way it does in Lens and Discover. {{kib}} adds a range filter for the resolved time field, and it still binds the `?_tstart` and `?_tend` parameters when they appear in the query. The time field resolves in this order: the explicit `"%timefield%"` value, then the field the query compares against `?_tstart` and `?_tend`, then a field named `@timestamp` on the queried index. If none of these apply, the query isn't filtered by time, so set `"%timefield%"` when your data's time field isn't named `@timestamp`. Time filtering applies whether or not `"%context%"` is set.
 
 The response is converted from the {{esql}} columnar format into the row-based format that **Vega** expects, with one object per row keyed by column name.
 
