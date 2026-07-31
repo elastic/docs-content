@@ -74,6 +74,7 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`elasticsearch.request`](/explore-analyze/workflows/steps/elasticsearch.md#generic-request-actions) | {{es}} | Generic {{es}} API escape hatch. |
 | [`elasticsearch.search`](/explore-analyze/workflows/steps/elasticsearch.md#named-actions) | {{es}} | Run a search. |
 | [`elasticsearch.update`](/explore-analyze/workflows/steps/elasticsearch.md#named-actions) | {{es}} | Update one document. |
+| [`entityStore.updateAssetCriticality`](/explore-analyze/workflows/steps/entity-store.md#entitystore-updateassetcriticality) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | Entity store | Set or remove an entity's asset criticality, and optionally recalculate its risk score. |
 | [`foreach`](/explore-analyze/workflows/steps/foreach.md) | Flow control | Iterate over a collection. |
 | [`http`](/explore-analyze/workflows/steps/external-systems-apps.md#http-actions) | HTTP and console | Call any external HTTP API. |
 | [`if`](/explore-analyze/workflows/steps/if.md) | Flow control | Conditional branching. |
