@@ -142,6 +142,10 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     EOF
     ```
 
+    ::::{note}
+    If you need IPv6 egress from containers, also add `net.ipv6.conf.all.forwarding=1` to the same `sysctl` configuration.
+    ::::
+
     ::::{important}
     The `net.ipv4.tcp_retries2` setting applies to all TCP connections and affects the reliability of communication with systems other than {{es}} clusters too. If your clusters communicate with external systems over a low quality network then you may need to select a higher value for `net.ipv4.tcp_retries2`.
     ::::
@@ -325,6 +329,11 @@ For more information, refer to the [Docker daemon configuration overview](https:
     sudo usermod -aG docker $USER
     ```
 
+### Optional: Enable dual-stack networking for IPv6 egress
+
+::::{include} /deploy-manage/deploy/_snippets/ece-docker-ipv6-daemon.md
+::::
+
 1. Recommended: Tune your network settings.
 
     Create a `70-cloudenterprise.conf` file in the `/etc/sysctl.d/` file path that includes these network settings:
@@ -360,5 +369,24 @@ For more information, refer to the [Docker daemon configuration overview](https:
     If the command returns `Docker Root Dir: /mnt/data/docker`, then your changes were applied successfully and persist as expected.
 
     If the command returns `Docker Root Dir: /var/lib/docker`, then you need to troubleshoot the previous configuration steps until the Docker settings are applied successfully before continuing with the installation process. For more information, check [Docker daemon configuration](https://docs.docker.com/engine/daemon/) in the Docker documentation.
+
+1. Optional: If you enabled dual-stack networking for IPv6 egress, verify both the default bridge configuration and outbound IPv6 connectivity from a container:
+
+    1. Confirm that the default bridge has an IPv6 subnet:
+
+        ```sh
+        docker network inspect bridge --format '{{json .IPAM.Config}}'
+        ```
+
+        The output should include an IPv6 subnet such as `fd00:10:89::/64`.
+
+    1. Run a short-lived container and test IPv6 egress:
+
+        ```sh
+        docker run --rm curlimages/curl:latest \
+          -6 -s -o /dev/null -w "%{http_code}\n" https://ipv6.google.com
+        ```
+
+        A response of `200` confirms that containers can reach IPv6 endpoints.
 
 1. Repeat these steps on other hosts that you want to use with {{ece}} or follow the steps in the next section to start installing {{ece}}.
