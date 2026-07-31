@@ -1446,9 +1446,13 @@ How the dashboard time range reaches an {{esql}} data source depends on your ver
 :::::{applies-switch}
 
 ::::{applies-item} { stack: ga 9.5+, serverless: ga }
-{{kib}} applies the dashboard time range automatically, the same way it does in Lens and Discover. It filters on the field set in `"%timefield%"`. If you don't set one, it uses the field the query references with `?_tstart` and `?_tend`, or a field named `@timestamp`. Set `"%timefield%"` when your time field has another name.
+{{kib}} applies the dashboard time range automatically, the same way it does in Lens and Discover. It filters on a date field, chosen in this order:
 
-The `?_tstart` and `?_tend` parameters remain available for queries that use them, such as a `BUCKET` on a time series.
+1. The field set in `"%timefield%"`.
+2. The field the query compares against `?_tstart` and `?_tend`.
+3. A field named `@timestamp`.
+
+If none of these apply, the query isn't filtered by time. When the query uses `?_tstart` and `?_tend`, {{kib}} also replaces them with the start and end of the time range.
 
 For example, this metric counts documents within the dashboard time range, with no time configuration in the spec:
 
