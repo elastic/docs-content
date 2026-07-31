@@ -55,11 +55,3 @@ Refer to [Serverless billing dimensions](serverless-project-billing-dimensions.m
 ## Elastic Managed LLMs [observability-billing-elastic-managed-llms]
 
 [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to leverage AI-powered search as a service without deploying a model in your serverless project. The models are configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Observability Complete" feature tier. Using Elastic Managed LLMs will use tokens and incur related token-based add-on billing for your serverless project.
-
-## {{cps-cap}} [observability-billing-cps]
-```{applies_to}
-serverless: preview
-```
-
-:::{include} _snippets/cps-billing-obs-sec.md
-:::
