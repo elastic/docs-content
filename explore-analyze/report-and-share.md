@@ -128,7 +128,7 @@ We recommend using CSV reports to export moderate amounts of data only. The feat
 
 :::{note}
 :applies_to: {"stack": "ga 9.5", "serverless": "ga"}
-CSV reports of {{esql}} Discover sessions and Discover session panels apply the values currently selected in any [variable controls](/explore-analyze/query-filter/languages/esql-kibana.md#add-variable-control), for both immediate and scheduled reports. In earlier versions, these exports failed with an unknown query parameter error.
+CSV reports of {{esql}} Discover sessions and Discover session panels apply the values currently selected in any [variable controls](/explore-analyze/discover/try-esql.md#add-variable-control), for both immediate and scheduled reports. In earlier versions, these exports failed with an unknown query parameter error.
 :::
 
 For large or long-running exports, use the Elasticsearch APIs directly. They are the recommended path for bulk data extraction. To reduce report size, use filters to create multiple smaller reports.
