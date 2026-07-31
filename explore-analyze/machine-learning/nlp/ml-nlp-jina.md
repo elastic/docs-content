@@ -814,7 +814,7 @@ With [Jina on-prem](https://github.com/jina-ai/jina-on-prem), you run Jina model
 
 To pull, transfer, and run a prebuilt Docker image, refer to the [Jina on-prem Quick Start](https://github.com/jina-ai/jina-on-prem/wiki/Quick-Start).
 
-For supported text embedding and rerank models, you can connect {{es}} to the local server through {{infer}} endpoints that call the APIs exposed by the container. For the models that support this {{es}} integration, refer to the [model overview](#jina-model-overview) tables.
+For supported text embedding and reranking models, you can connect {{es}} to the local server through {{infer}} endpoints that call the APIs exposed by the container. For the models that support this {{es}} integration, refer to the [model overview](#jina-model-overview) tables.
 
 ##### Text embedding [jina-on-prem-text-embedding]
 
@@ -869,8 +869,8 @@ PUT _inference/rerank/jina-on-prem-reranker-v2-custom
 }
 ```
 
-1. Set url to the `/v1/rerank` endpoint exposed by the Jina on-prem container.
-2. Define the JSON body that Elasticsearch sends to Jina for each rerank request. `model` identifies the model running in the container. At inference time, Elasticsearch replaces `${query}` with the search query and `${input}` with the documents to rerank.
+1. Set `url` to the `/v1/rerank` endpoint exposed by the Jina on-prem container.
+2. Define the JSON body that Elasticsearch sends to Jina for each reranking request. `model` identifies the model running in the container. At inference time, Elasticsearch replaces `${query}` with the search query and `${input}` with the documents to rerank.
 3. Define how Elasticsearch extracts the reranking results from the Jina response. `relevance_score` reads the score assigned to each document, and `reranked_index` reads the document's original position in the input list.
 
 You can reference the `inference_id` of this endpoint in `rerank` {{infer}} tasks or in a [`text_similarity_reranker`](/solutions/search/ranking/semantic-reranking.md) retriever.
@@ -878,7 +878,7 @@ You can reference the `inference_id` of this endpoint in `rerank` {{infer}} task
 You can also call any model running in a Jina on-prem container directly from your application or preprocessing pipeline through the Jina API, without creating an {{es}} {{infer}} endpoint. For request formats and supported API schemas, refer to the [Jina on-prem API reference](https://github.com/jina-ai/jina-on-prem/wiki/API-Reference).
 
 ::::{note}
-For models other than text embedding and rerank, call the Jina API exposed by the on-prem container, then send the results to {{es}} for indexing or search.
+For models other than text embedding and reranking, call the Jina API exposed by the on-prem container, then send the results to {{es}} for indexing or search.
 ::::
 
 ### Cloud marketplace endpoints [jina-cloud-marketplaces-access]
