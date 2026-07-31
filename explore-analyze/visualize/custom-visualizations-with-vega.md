@@ -1426,13 +1426,15 @@ The `url` object supports the following parameters:
 | `"%type%"` | Set to `"esql"` to use the {{esql}} parser. |
 | `"query"` | The {{esql}} query to run. Required. |
 | `"%context%"` | When set to `true`, applies the dashboard filters to the query. |
-| `"%timefield%"` | When set, enables the `?_tstart` and `?_tend` named parameters in the query. These parameters are replaced with the start and end of the dashboard time range. |
+| `"%timefield%"` | {applies_to}`stack: ga 9.4` Enables the `?_tstart` and `?_tend` named parameters in the query, which are replaced with the start and end of the dashboard time range. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Sets the field that {{kib}} uses to apply the dashboard time range to the query. |
 | `"dropNullColumns"` | Defaults to `true`. When `true`, columns that contain only `null` values are excluded from the response. |
 | `"params"` | An array of named parameter objects to substitute into the query. |
 
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` The dashboard time range applies to {{esql}} data sources automatically, the same way it does in Lens and Discover. {{kib}} adds a range filter on the resolved time field, and it also binds the `?_tstart` and `?_tend` parameters whenever they appear in the query. The time field resolves in this order: the explicit `"%timefield%"` value, then the query's default time field, then no time filtering if neither is available. Time filtering works independently of `"%context%"` and of whether the query uses `?_tstart` and `?_tend`.
+
 The response is converted from the {{esql}} columnar format into the row-based format that **Vega** expects, with one object per row keyed by column name.
 
-The following example creates a metric that counts documents over time, using the dashboard filters and time range through `"%context%"`, `"%timefield%"`, and the `?_tstart` and `?_tend` parameters. To try it, [install the sample web logs data set](/manage-data/ingest/sample-data.md), open a new custom visualization on a dashboard, and paste the spec:
+The following example creates a line chart that counts documents over time. It uses `"%context%"` to apply the dashboard filters, `"%timefield%"` to integrate with the dashboard time range, and the `?_tstart` and `?_tend` parameters to bound the histogram buckets to that range. To try it, [install the sample web logs data set](/manage-data/ingest/sample-data.md), open a new custom visualization on a dashboard, and paste the spec:
 
 ```json
 {
