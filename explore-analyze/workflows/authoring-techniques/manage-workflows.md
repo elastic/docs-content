@@ -69,7 +69,7 @@ Versions are kept indefinitely by default.
 ### Open the history timeline [workflows-version-history-open]
 
 1. Open a workflow in the editor.
-2. From the workflow detail header menu, select **History**.
+2. In the workflow header, open the **More** menu {icon}`boxes_vertical` and select **History**.
 
 The timeline lists committed versions newest first. Each entry shows:
 
@@ -83,7 +83,11 @@ The timeline lists committed versions newest first. Each entry shows:
 Select a version in the timeline to preview its YAML in the editor:
 
 - **Single-version view**: The full YAML for that version
-- **Compare view**: A structure-aware side-by-side or unified diff against the previous version or against another version you choose with **Compare to this version**. Changes are grouped by steps, triggers, and settings rather than only line-by-line text. Use hunk navigation to move between changes. Validation errors in the preview are highlighted inline.
+- **Compare view**: A line-by-line diff against the previous version, or against another version you choose with **Compare to this version**. Added and removed lines are highlighted in the YAML, and a counter at the bottom of the editor shows how many changes the version contains. Use the arrows beside it to step through the changes one at a time.
+
+  :::{tip}
+  To flag validation errors, select the settings icon {icon}`controls` at the bottom right of the YAML preview, then turn on validation error highlighting.
+  :::
 
 If you have unsaved edits, they appear at the top of the timeline as **Unsaved changes**. Select that row to compare your draft against the last committed version before you save.
 
@@ -99,4 +103,4 @@ You cannot restore **Managed** workflows. Restore requires the Workflows **Updat
 
 ### Execution and version linkage [workflows-version-history-executions]
 
-Each workflow execution is linked to the workflow version that was active when it ran. Open an execution from the **Executions** tab to see which version was used for that run. Refer to [](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md).
+Each workflow execution is linked to the workflow version that was active when it ran. Open an execution from the **Executions** tab to see which version was used for that run. Refer to [](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md).
