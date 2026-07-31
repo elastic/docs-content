@@ -86,6 +86,19 @@ The listing of reports in **Stack Management > Reporting** allows you to inspect
 :::
 
 
+## ES|QL variable control errors [reporting-troubleshooting-csv-esql-variables]
+
+Generating a CSV report from an {{esql}} query that references a [variable control](/explore-analyze/discover/try-esql.md#add-variable-control), such as `?crew_id`, can fail with an error like:
+
+```txt
+parsing_exception: Unknown query parameter [crew_id]
+```
+
+This occurs on versions where the reporting task didn't pass the selected control values through to the query. It was resolved in 9.5.0 and backported to the 8.19, 9.3.9, and 9.4.4 patch releases, so that reports now run with the values currently selected in the controls.
+
+To work around the error on an earlier version, upgrade to a version that includes the fix, or replace the variable references in the query with fixed values before you export.
+
+
 ## Token expiration [reporting-troubleshooting-csv-token-expired]
 
 A relatively common type of error seen for CSV exports is: `security_exception Root causes: security_exception: token expired`.
