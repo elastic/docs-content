@@ -253,7 +253,7 @@ serverless: preview
 stack: unavailable
 ```
 
-A dashboard can display data from multiple {{serverless-short}} projects when [{{cps}}](/explore-analyze/cross-project-search.md) is enabled. To check and control which projects are queried, use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header. You can change this scope at any time during your session, and all panels update accordingly.
+A dashboard can display data from multiple {{serverless-short}} projects when [{{cps}}](/explore-analyze/cross-project-search.md) is enabled. To check and control which projects are queried, use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header. You can change this scope at any time during your session, and all panels update accordingly. Dashboard controls, such as **Options list** controls, also suggest values from all projects in the selected scope.
 
 Sometimes, the scope behaves differently:
 
