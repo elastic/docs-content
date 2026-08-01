@@ -69,6 +69,12 @@ Keep in mind that large shard sizes come with drawbacks, such as long full recov
 
 Refer to [](./size-shards.md) for more information about sharding strategies.
 
+## Reduce `_source` storage overhead
+
+If disk usage is a concern but you still need `_source` for features like update, reindex, or highlighting, consider [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source) before disabling `_source` entirely. It reconstructs `_source` at retrieval time instead of storing it on disk, with no additional storage overhead for most common field types. Unlike disabling `_source` or excluding fields from it, reindex and update continue to work normally.
+
+Synthetic `_source` requires an [Enterprise subscription](https://www.elastic.co/pricing) (from {{es}} 8.17 onward), and the reconstructed `_source` may differ slightly from the original document (field order, array handling) — see [synthetic `_source` modifications](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-modifications) for details.
+
 ## Disable `_source` [disable-source]
 
 The [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) field stores the original JSON body of the document. If you don't need access to it you can disable it. However, APIs that needs access to `_source` such as update, highlight and reindex won't work.
