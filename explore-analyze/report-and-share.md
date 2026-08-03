@@ -69,23 +69,21 @@ Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboa
 1. Open the saved Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
 2. Choose a file type for the report.
 
-    * {applies_to}`stack: ga 9.1+` From the toolbar, click the {icon}`download` **Export** icon, then choose a file type. 
-    * {applies_to}`stack: ga =9.0` From the toolbar, click **Share** > **Export** tab, then choose a file type. Note that when you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
+    * {applies_to}`stack: ga 9.1+` From the toolbar, click the {icon}`download` **Export** icon, then choose a file type.
+    * {applies_to}`stack: ga =9.0` From the toolbar, click **Share** → **Export** tab, then choose a file type.
 
-    {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When you export a Discover session as CSV and its {{esql}} query references a [variable control](/explore-analyze/discover/try-esql.md#add-variable-control), the report uses the values currently selected in the controls.
+    Some export formats have specific considerations:
 
-    ::::{note}
+    :::{dropdown} PDF
     When you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
-    ::::
 
-    ::::{tip}
+    * For dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
+    * For workpad PDFs, select **Full page layout** to create PDFs without the margins that surround the workpad.
+    :::
 
-    Tips for generating PDF reports:
-
-    * If you are creating dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
-    * If you are creating workpad PDFs, select **Full page layout** to create PDFs without margins that surround the workpad.
-    
-    ::::
+    :::{dropdown} CSV
+    {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When you export a Discover session whose {{esql}} query references a [variable control](/explore-analyze/discover/try-esql.md#add-variable-control), the report uses the values currently selected in the controls.
+    :::
 
 3. Click the button that generates or exports the report. A message appears, indicating that the report is in the export queue.
 
