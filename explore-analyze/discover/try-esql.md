@@ -362,11 +362,6 @@ Variable controls help you make your queries more dynamic instead of having to m
 
 You can add them from your Discover {{esql}} query.
 
-:::{note}
-:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
-When you generate a [CSV report](/explore-analyze/report-and-share.md#csv-limitations) from a Discover session or a Discover session panel on a dashboard, the exported data reflects the values currently selected in the variable controls. This applies to both immediate and scheduled reports.
-:::
-
 :::{include} ../_snippets/variable-control-procedure.md
 :::
 

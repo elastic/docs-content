@@ -66,6 +66,11 @@ Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboa
 * **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
 * {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` **Export JSON**: export the JSON source of a dashboard in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
 
+:::{note}
+:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+When a Discover session uses an {{esql}} query that references a [variable control](/explore-analyze/discover/try-esql.md#add-variable-control), its CSV report runs with the values currently selected in the controls. In earlier versions, these exports failed with an unknown query parameter error.
+:::
+
 1. Open the saved Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
 2. Choose a file type for the report.
 
