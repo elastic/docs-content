@@ -72,7 +72,7 @@ Substring matches also work. For example, `"Summary":"network"` matches a text a
 
 You can filter cases by attributes such as assignees, categories, severity, status, and tags. 
 
-{applies_to}`stack: ga 9.3+` To find cases created during a specific time range, use the date time picker above the Cases table. The default selection is the last 30 days—click **Show all cases** to display every case in your space.
+{applies_to}`stack: ga 9.3+` To find cases created during a specific time range, use the date time picker above the Cases table. The default selection is the last 30 days. Click **Show all cases** to display every case in your space.
 
 ## Send cases to external systems [send-cases-external]
 

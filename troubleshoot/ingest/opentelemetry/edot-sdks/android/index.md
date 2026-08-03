@@ -27,6 +27,10 @@ The SDK creates logs that allow you to see what it's working on and what might h
 
 For more information about the SDK's internal logs, as well as how to configure them, refer to the [internal logging policy](apm-agent-android://reference/edot-android/configuration.md#internal-logging-policy) configuration. For more information on enabling debug logging, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
+## Kibana visualizations
+
+If you're troubleshooting the Kibana visualizations for the Android SDK, refer to [Troubleshooting Android dashboards](integration-docs://reference/otel_android_dashboards.md#troubleshooting).
+
 ## Connectivity to the {{stack}}
 
 If after following the [getting started](apm-agent-android://reference/edot-android/getting-started.md) guide and configuring your {{stack}} [endpoint parameters](apm-agent-android://reference/edot-android/configuration.md#export-connectivity), you can't see your application's data in {{kib}}, you can follow the following tips to try and figure out what could be wrong. For more detailed connectivity troubleshooting, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md). If telemetry data isn't appearing in {{kib}}, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md) or [No data visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md).
