@@ -11,7 +11,9 @@ products:
 # Investigations [nightshift-investigations]
 
 
-When Nightshift surfaces a critical or high severity Significant Event, it automatically triggers an investigation. For lower-severity events, you can trigger one manually using the **Run investigation** button on the event. The investigation attempts to determine the root cause and propose remediation options by running as a background workflow against your streams data and connected tools.
+An investigation is a background workflow that reads memory pages, queries your streams data, and calls connected external tools to determine the root cause of a Significant Event and propose remediation options. Results include ranked root cause hypotheses with confidence scores, a conclusion with supporting evidence, and actionable next steps.
+
+When Nightshift surfaces a critical or high severity Significant Event, it automatically triggers an investigation. For lower-severity events, you can trigger one manually using the **Run investigation** button on the event.
 
 ## How investigations work [nightshift-investigations-how]
 
