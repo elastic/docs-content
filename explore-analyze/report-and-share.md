@@ -61,7 +61,7 @@ Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboa
 
 * **PDF** {applies_to}`serverless: unavailable` — Generate and download PDF files of dashboards, visualizations, and **Canvas** workpads. PDF reports are a [subscription feature](https://www.elastic.co/subscriptions).
 * **PNG** {applies_to}`serverless: unavailable` — Generate and download PNG files of dashboards and visualizations. PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
-* **CSV Reports** — Generate CSV reports of saved Discover sessions. [Certain limitations apply](/explore-analyze/report-and-share.md#csv-limitations).
+* **CSV Reports** — Generate CSV reports of saved Discover sessions.
 * **CSV Download** — Generate and download CSV files of **Lens** visualizations.
 * **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
 * {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` **Export JSON**: export the JSON source of a dashboard in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
@@ -75,14 +75,15 @@ Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboa
     Some export formats have specific considerations:
 
     :::{dropdown} PDF
-    When you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
-
+    * When a dashboard report includes a data table or Discover session, the PDF includes only the visible data.
     * For dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
     * For workpad PDFs, select **Full page layout** to create PDFs without the margins that surround the workpad.
+    * Certain [limitations apply](#pdf-limitations).
     :::
 
     :::{dropdown} CSV
-    {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When you export a Discover session whose {{esql}} query references a [variable control](/explore-analyze/discover/try-esql.md#add-variable-control), the report uses the values currently selected in the controls.
+    * {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When you export a Discover session whose {{esql}} query references a [variable control](/explore-analyze/discover/try-esql.md#add-variable-control), the report uses the values currently selected in the controls. In earlier versions, these exports failed with an unknown query parameter error.
+    * Certain [limitations apply](#csv-limitations).
     :::
 
 3. Click the button that generates or exports the report. A message appears, indicating that the report is in the export queue.
