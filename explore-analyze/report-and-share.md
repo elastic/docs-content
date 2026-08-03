@@ -66,16 +66,13 @@ Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboa
 * **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
 * {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` **Export JSON**: export the JSON source of a dashboard in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
 
-:::{note}
-:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
-When a Discover session uses an {{esql}} query that references a [variable control](/explore-analyze/discover/try-esql.md#add-variable-control), its CSV report runs with the values currently selected in the controls. In earlier versions, these exports failed with an unknown query parameter error.
-:::
-
 1. Open the saved Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
 2. Choose a file type for the report.
 
     * {applies_to}`stack: ga 9.1+` From the toolbar, click the {icon}`download` **Export** icon, then choose a file type. 
     * {applies_to}`stack: ga =9.0` From the toolbar, click **Share** > **Export** tab, then choose a file type. Note that when you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
+
+    {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When you export a Discover session as CSV and its {{esql}} query references a [variable control](/explore-analyze/discover/try-esql.md#add-variable-control), the report uses the values currently selected in the controls.
 
     ::::{note}
     When you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
