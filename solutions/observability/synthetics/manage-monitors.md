@@ -21,7 +21,7 @@ If you’re using {{project-monitors}}, you should also set up a workflow that u
 stack: ga 9.5+
 serverless: unavailable
 ```
-Remote monitors (meaning monitors loaded from remote {{es}} clusters using {{ccs}}) are read-only. **Edit**, **Enable/Disable**, and **Delete** actions are not available for them. To manage a remote monitor, use the {{synthetics-app}} on the {{kib}} where the monitor is defined. Refer to [Remote monitors](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-remote-monitors) for details.
+Remote monitors (meaning monitors loaded from remote {{es}} clusters using {{ccs}}) are read-only. **Edit**, **Enable/Disable**, **Delete**, and **Run test manually** actions are not available for them. To manage a remote monitor, use the {{synthetics-app}} on the {{kib}} where the monitor is defined. Refer to [Remote monitors](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-remote-monitors) for details.
 ::::
 
 ## Update a monitor [manage-monitors-config]

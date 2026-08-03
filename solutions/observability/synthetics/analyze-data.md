@@ -43,7 +43,7 @@ stack: ga 9.5+
 serverless: unavailable
 ```
 
-With remote clusters configured in **{{synthetics-app}} → Settings → Remote clusters**, monitor data from remote {{es}} clusters appears in the Synthetics UI alongside your local monitors.
+With remote clusters configured in [**{{synthetics-app}} → Settings → Remote clusters**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters), monitor data from remote {{es}} clusters appears in the Synthetics UI alongside your local monitors.
 
 ### Overview [synthetics-analyze-remote-monitors-overview]
 
