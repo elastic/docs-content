@@ -13,7 +13,7 @@ products:
 
 An investigation is a background workflow that reads memory pages, queries your streams data, and calls connected external tools to determine the root cause of a Significant Event and propose remediation options. Results include ranked root cause hypotheses with confidence scores, a conclusion with supporting evidence, and actionable next steps.
 
-When Nightshift surfaces a critical or high severity Significant Event, it automatically triggers an investigation. For lower-severity events, you can trigger one manually using the **Run investigation** button on the event.
+When Nightshift surfaces a `critical` or `high` severity Significant Event, it automatically triggers an investigation. For lower-severity events, you can trigger one manually using the **Run investigation** button on the event.
 
 ## How investigations work [nightshift-investigations-how]
 
@@ -57,7 +57,7 @@ A completed investigation provides:
 
 ## Give feedback [nightshift-investigations-feedback]
 
-Nightshift is in private preview. Use the **Submit feedback** {icon}`comment` button at the top of the page to share your experience. Your feedback goes directly to the team.
+Use the **Submit feedback** {icon}`comment` button at the top of the page to share your experience. Your feedback goes directly to the team.
 
 ## Learn more [nightshift-investigations-nav]
 

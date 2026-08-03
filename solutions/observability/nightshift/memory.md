@@ -10,7 +10,7 @@ products:
 
 # Memory [nightshift-memory]
 
-Nightshift **Memory** is a persistent knowledge base that agents read before investigating incidents. Rather than rebuilding knowledge from raw telemetry on every [investigation](./investigations.md), Nightshift maintains a curated wiki of facts about your systems, with services, deployment processes, infrastructure, known failure patterns, and more. Both agents and users can create memory articles.Each page added to memory reduces the need for external queries for the next similar incident.
+Nightshift **Memory** is a persistent knowledge base that agents read before investigating incidents. Rather than rebuilding knowledge from raw telemetry on every [investigation](./investigations.md), Nightshift maintains a curated wiki of facts about your systems with information about services, deployment processes, infrastructure, known failure patterns, and more. Both agents and users can add memory articles, and each added page reduces the need for external queries for the next similar incident.
 
 To review or edit existing memory pages or create new ones, go to **Streams** → **Signficant Events** → **Memory**.
 
@@ -20,7 +20,7 @@ Memory is organized into wiki pages. Each page covers a topic relevant to your e
 
 ## How memory is built [nightshift-memory-how-built]
 
-Memory pages are created manually by the user, through the [onboarding interview](#nightshift-memory-onboarding), or by the following workflows.
+You can manually create memory pages from the **Memory** tab under **Significant Events** or through the [onboarding interview](#nightshift-memory-onboarding). You can also run the following workflows from the **Workflow actions** {icon}`boxes_vertical` menu:
 
 - [Synthesize Memory](#nightshift-memory-synthesis)
 - [Consolidate Memory](#nightshift-memory-consolidation)
@@ -29,19 +29,19 @@ Memory pages are created manually by the user, through the [onboarding interview
 
 ### Synthesize Memory [nightshift-memory-synthesis]
 
-Run the **Synthesize Memory** workflow to have it build wiki pages by selectively querying available information sources like [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md), Significant Events, existing memory pages, and connected external tools. The agent decides which sources to consult based on what's most relevant, then synthesizes the results into coherent pages organized around services, infrastructure, and operations.
+The **Synthesize Memory** workflow builds wiki pages by selectively querying available information sources like [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md), Significant Events, existing memory pages, and connected external tools. The agent decides which sources to consult based on what's most relevant, then synthesizes the results into coherent pages organized around services, infrastructure, and operations.
 
 ### Consolidate Memory [nightshift-memory-consolidation]
 
-Run the **Consolidate Memory** workflow to have it review the full wiki for duplicates, stale entries, and disorganized content. It then merges duplicates, removes outdated pages, improves categories, and adds cross-references between related topics. Consolidation reorganizes data. It doesn't invent new facts.
+The **Consolidate Memory** workflow reviews the full wiki for duplicates, stale entries, and disorganized content. It then merges duplicates, removes outdated pages, improves categories, and adds cross-references between related topics. Consolidation reorganizes data. It doesn't invent new facts.
 
 ### Scrape Conversations [nightshift-memory-scraper]
 
-Run the **Scrape Conversations** workflow to have it read recent AI Agent conversations. It extracts durable, reusable knowledge like architectural facts, operational patterns, and troubleshooting steps discovered during conversations. It then writes those back to memory as wiki pages.
+The **Scrape Conversations** workflow reads recent AI Agent conversations. It extracts durable, reusable knowledge like architectural facts, operational patterns, and troubleshooting steps discovered during conversations. It then writes those back to memory as wiki pages.
 
 ### Detect Gaps [nightshift-memory-gap-detection]
 
-Run the **Detect Gaps** workflow to have it audit the entire knowledge base against required knowledge dimensions and identify what's missing.
+The **Detect Gaps** workflow audits the entire knowledge base against required knowledge dimensions and identify what's missing.
 
 It checks the following dimensions:
 
@@ -57,13 +57,13 @@ It checks the following dimensions:
 - Data and request flows (end-to-end paths, queues, databases)
 - Access points and connectors (dashboards, wikis, runbooks)
 
-After each run, **Detect Gaps** writes a structured overview page listing coverage per dimension, the top gaps, and suggested next steps.
+After each run, **Detect Gaps** creates a structured overview page that lists coverage per dimension, the top gaps, and suggested next steps.
 
 ## Onboarding interview [nightshift-memory-onboarding]
 
-The onboarding interview is a conversational agent that populates memory with knowledge about your specific environment at setup time. The agent asks targeted questions about your system to fill the gaps most important for accurate investigations.
+The onboarding interview is a conversational agent that creates memory pages with knowledge about your specific environment at setup time. The agent asks targeted questions about your system to fill in gaps required for investigations.
 
-To start the onboarding interview, open **Significant Events** and select **Tell us about your system**. Before asking questions, the interview reads the current gap overview and focuses on the highest-priority gaps, so running the Detect Gaps workflow first gives you the most targeted session. The agent skips information that is already covered in memory.
+To start the onboarding interview, open **Significant Events** and select **Tell us about your system**. Before asking questions, the interview reads the current gap overview and focuses on the highest-priority gaps, so it's best to run the Detect Gaps workflow before starting the interview. The agent skips information that is already covered in memory.
 
 ## How agents use memory [nightshift-memory-usage]
 
@@ -73,11 +73,11 @@ When an [investigation](./investigations.md) starts, the investigation agent rea
 - Targeted ES|QL queries replace broad exploratory queries.
 - Investigations for familiar issue types complete faster and produce higher-confidence hypotheses.
 
-Memory is also available to you directly during chat. You can ask the AI Agent what it knows about a service, request the current gap overview, or ask it to update a memory page based on something you've just learned.
+Memory is also available to you directly during chat. You can ask the AI Agent what it knows about a service, request the current gap overview, or ask it to update a memory page based on something you've learned.
 
 ## Give feedback [nightshift-memory-feedback]
 
-Nightshift is in private preview. Use the **Submit feedback** {icon}`comment` button at the top of the page to share your experience. Your feedback goes directly to the team.
+Use the **Submit feedback** {icon}`comment` button at the top of the page to share your experience. Your feedback goes directly to the team.
 
 ## Learn more [nightshift-memory-nav]
 
