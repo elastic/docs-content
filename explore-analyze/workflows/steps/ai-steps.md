@@ -105,7 +105,7 @@ Classify input into one of a fixed set of categories. Optionally includes a rati
 |---|---|---|---|---|
 | `connector-id` | top level | string | No | GenAI connector to use. |
 | `input` | `with` | string, array, or object | Yes | Input to classify. |
-| `categories` | `with` | `(string \| { name, description })[]` | Yes | Allowed categories. At least one required. Each entry is either a plain category-name string or an object with `name` and `description`. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` |
+| `categories` | `with` | `string \| { name, description }` | Yes | Allowed categories. At least one required. Each entry is either a plain category-name string or an object with `name` and `description`. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` |
 | `instructions` | `with` | string | No | Guidance for the classifier. |
 | `allowMultipleCategories` | `with` | boolean | No | Allow the output to include more than one category. |
 | `fallbackCategory` | `with` | `string \| { name, description }` | No | Category returned when the model can't confidently choose. Accepts a plain string or an object with `name` and `description`. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` |
