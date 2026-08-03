@@ -145,6 +145,11 @@ Index privileges
     - {applies_to}`stack: ga 9.3` `All` for the `Rules, Alerts, and Exceptions` feature to view alert management flows
     - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
+::::{note}
+:applies_to: {stack: ga 9.5+, serverless: ga}
+To export alerts to CSV from the Alerts table, you also need [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access).
+::::
+
 ## Manage exceptions
 
 Cluster privileges

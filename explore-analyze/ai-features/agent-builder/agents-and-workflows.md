@@ -1,6 +1,6 @@
 ---
-navigation_title: "Call agents from workflows"
-description: "Learn how to invoke AI agents in Elastic Workflows using the `ai.agent` or `kibana.request` steps to add reasoning to your automated tasks."
+navigation_title: "Connect agents and workflows"
+description: "Learn how Agent Builder works with Elastic Workflows, including creating workflows from chat, workflow tools, pre-execution workflows, and the `ai.agent` step."
 applies_to:
   stack: preview 9.3+
   serverless: preview
@@ -12,20 +12,17 @@ products:
   - id: cloud-serverless
 ---
 
-# Call {{agent-builder}} agents from Elastic Workflows
+# Connect {{agent-builder}} agents and Elastic Workflows
 
-Elastic Workflows and {{agent-builder}} allow you to combine deterministic automation with conversational reasoning. By invoking an AI agent directly within a workflow execution, you can treat the agent as a "reasoning engine" that summarizes data, classifies events, or makes decisions before passing the results to the next step in your automation.
-
-:::{note}
-This guide explains how to call an agent from a workflow. If you want to trigger a workflow in an agent conversation, you need to create a custom [workflow tool](./tools/workflow-tools.md).
-:::
+Elastic Workflows and {{agent-builder}} combine deterministic automation with conversational reasoning. You can create workflows conversationally, make workflows available to agents, and invoke agents from workflows.
 
 ## Approaches
 
-There are two ways to integrate agents into your workflows:
+There are three ways to use {{agent-builder}} and workflows together:
 
-* **The `ai.agent` step:** A simplified shorthand step for common operations. Use this when you want to send a prompt to an agent and receive a text response without complex configuration.
-* **The `kibana.request` step:** A generic step that provides full access to the {{agent-builder}} APIs. Use this for advanced use cases, such as listing available agents or managing agent sessions programmatically.
+* **Create workflows from Agent Chat** {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`: Describe the automation you want in natural language, refine the generated draft, then open **Preview** and select **Save** to create it. Refer to [Create skills and workflows in chat](chat.md#create-skills-and-workflows-directly-from-chat).
+* **Use workflows from agents:** Trigger an existing workflow from a conversation with a [workflow tool](./tools/workflow-tools.md), or assign [pre-execution workflows](#pre-execution-workflows) that run before the agent starts reasoning.
+* **Use agents from workflows:** Invoke an agent from a workflow with the [`ai.agent` step](#use-ai-agent-workflow-step). For advanced API operations, use the [`kibana.request` step](#use-kibana-request-workflow-step).
 
 ## Prerequisites
 
@@ -35,7 +32,43 @@ Before you begin:
 * Enable the Workflows feature in **Advanced settings**.
 * Ensure you have the correct privileges to create and run workflows.
 * For details, refer to [Set up workflows](/explore-analyze/workflows/get-started/setup.md).
-* Create at least one workflow.
+
+## Pre-execution workflows [pre-execution-workflows]
+
+```{applies_to}
+stack: ga 9.4+
+```
+
+Pre-execution workflows run after each user message, before the agent makes any LLM calls in response. They let you use Elastic Workflows for deterministic preparation or control before the agent begins its reasoning loop.
+
+:::{note}
+Only administrators can configure pre-execution workflows.
+:::
+
+A pre-execution workflow runs once for each user message. It does not run before every LLM call or tool call within the agent's response.
+
+Pre-execution workflows can:
+
+* Add or rewrite prompt context before the agent starts.
+* Cancel the agent run when a workflow detects that the request should not continue.
+* Run multiple workflows in sequence when more than one workflow is assigned.
+
+To configure pre-execution workflows:
+
+1. Select **Manage components** at the bottom of the left sidebar, then select **Agents**.
+2. Select an agent, then go to **Settings**.
+3. In the **Pre-execution workflow** section, open the **Workflows** selector.
+4. Select one or more workflows. They run after each user message, before the agent makes any LLM calls in response.
+5. Save the agent.
+
+The following screenshot shows the **Pre-execution workflow** setting in the agent **Settings** view.
+
+:::{image} images/pre-execution-workflows.png
+:screenshot:
+:width: 900px
+:alt: Edit agent settings flyout showing the Pre-execution workflow section with a workflow selector
+:::
+
 
 ## Use the `ai.agent` step [use-ai-agent-workflow-step]
 

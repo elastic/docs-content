@@ -97,10 +97,13 @@ Donut charts are pie charts with a hollow center. The empty space can provide a 
 ![Setting the donut hole size in Pie chart Style settings](/explore-analyze/images/pie-chart-donut.png "50%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a donut chart sliced by the top 5 log tag values, with raw counts shown inside each slice.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -248,10 +251,13 @@ This example uses the **Kibana Sample Data Logs** data set and groups requests b
 This example demonstrates the core value of multiple metrics: using KQL filters on each metric to compare distinct categories. Unlike **Slice by**, which splits a single metric by category values, multiple metrics lets you define completely custom groupings — even those that don't exist as a field in your data.
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example uses multiple metrics mode (no `group_by`) where each metric counts documents matching a specific file extension, with each metric assigned a static color.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -390,10 +396,13 @@ The resulting chart shows the 3 most common hosts, with all remaining hosts comb
 ![Pie chart showing top 3 hosts with remaining hosts grouped as Other](/explore-analyze/images/pie-chart-group-as-other.png)
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example shows the top 3 hosts as individual slices and groups all remaining hosts into an "Other" slice using the `other_bucket` option.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -603,10 +612,13 @@ The following examples show various configuration options for building impactful
 ![Donut chart with traffic by sources](/explore-analyze/images/pie-chart-example-traffic-by-source.png "=60%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example uses formula-based metrics to count visits from specific referrer domains, producing one slice per traffic source without a `group_by` dimension.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -737,10 +749,13 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Pie chart with revenue by product category](/explore-analyze/images/pie-chart-example-revenue-by-product-category.png "=60%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a pie chart that sums revenue per product category from the eCommerce sample data, showing each category's share of total revenue.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -855,10 +870,13 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Donut chart with distribution of errors by type](/explore-analyze/images/pie-chart-example-response-distribution.png "=60%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example uses the `filters` grouping operation to define custom slices based on HTTP response code ranges, rather than relying on field values directly.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

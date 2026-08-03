@@ -67,7 +67,7 @@ While both the project ID and project alias uniquely identify a project, {{cps}}
 In addition to using a project alias, {{cps-init}} provides a reserved identifier, `_origin`, that always refers to the origin project of the search.
 You can use `_origin` in search expressions to explicitly target the origin project, without having to reference its specific project alias. Refer to [Qualified and unqualified search expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) for detailed examples and to learn more.
 
-## Excluding indices and projects
+## Excluding indices and projects [cps-exclude]
 
 You can exclude specific indices or projects from a {{cps}} by prefixing a pattern with a dash (`-`).
 This enables you to start with a broad search scope and narrow it down by removing specific indices or projects from the results.
@@ -76,10 +76,11 @@ This enables you to start with a broad search scope and narrow it down by removi
 
 Exclusion follows these rules:
 
-* A leading `-` on a pattern signals exclusion. The dash can be placed on the index part or on the project part of an expression, each with different requirements.
-Placing the dash on the **index** part (for example, `linked-project-1:-my-index` or `linked-project-1:-*`) works for any index pattern and can be used on its own.
-Placing the dash on the **project** part (for example, `*,-linked-project-1:*`) requires a preceding inclusion pattern and only works when the index part is the `*` wildcard. For example, `*,-linked-project-1:*` is valid, but `*,-linked-project-1:my-index` is not.
-You cannot prefix both the project and the index with a dash in the same expression (for example, `-linked-project-1:-*` is invalid).
+* A leading `-` on a pattern signals exclusion. You can place the dash on the index part or the project part:
+    * On the **index part** (for example, `linked-project-1:-my-index` or `linked-project-1:-*`): works for any index pattern and can be used on its own.
+    * On the **project part** with a specific index (for example, `-linked-project-1:my-index`): an index-level exclusion, equivalent to `linked-project-1:-my-index`, that can be used on its own.
+    * On the **project part** with the `*` wildcard (for example, `-linked-project-1:*`): a project-level exclusion that removes the entire project and requires a preceding inclusion pattern.
+    * You cannot combine both prefixes (for example, `-linked-project-1:-*` is not valid).
 * An exclusion pattern only affects patterns that appear **before** it in the expression.
 Patterns listed **after** the exclusion are not affected by it (for example, in `*,-*,my-index`, the exclusion `-*` removes everything matched by the first `*`, but `my-index` comes after the exclusion and is still included).
 * You can use multiple exclusion patterns in a single expression.
@@ -94,11 +95,14 @@ The following examples assume an origin project with two linked projects: `linke
 `*,linked-project-1:-my-index`
 :   Searches everything across all projects, then excludes only the `my-index` index on the `linked-project-1` project. All other indices on `linked-project-1` and all indices on the origin project and `linked-project-2` are still included.
 
+`*,-linked-project-1:my-index`
+:   Searches everything across all projects, then excludes only the `my-index` index on the `linked-project-1` project. This is equivalent to `*,linked-project-1:-my-index`.
+
 `*,-my-index*,-logs`
 :   Searches everything, then applies two exclusion patterns. Indices matching `my-index*` and the `logs` index are excluded from the results from all projects.
 
 `*,linked-project-1:-*`
-:   Excludes all indices on the `linked-project-1` project. This is functionally equivalent to `*,-linked-project-1:*`.
+:   Excludes all indices on the `linked-project-1` project. The result is the same as `*,-linked-project-1:*`, but the two differ. `linked-project-1:-*` keeps the project in scope and returns no indices, while `-linked-project-1:*` removes the project and needs a preceding inclusion pattern.
 
 `*,-*`
 :   Matches all indices across all projects, then excludes all of them. The result is an empty scope.
@@ -428,7 +432,26 @@ The index `my-index` must exist in every project, otherwise [the search returns 
 
 ### Project routing examples
 
-In the following example, there is an origin project and a linked project. The origin project contains one index, `my-index`. The linked project contains two indices: `my-index` and `logs`.
+Project routing limits a search to a subset of projects based on their tags, before the search runs. You can route on:
+
+- Predefined tags, such as `_alias`, `_csp`, and `_region`. For the full list, refer to [Tags in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-tags.md).
+- Custom tags that you define in the {{ecloud}} UI.
+
+In an expression, you can:
+
+- Combine tags with the `AND`, `OR`, and `NOT` operators.
+- Group terms with parentheses.
+- Match part of a tag value with a prefix or suffix wildcard (`*`).
+
+A colon (`:`) separates a tag from its value. Tag value matching is case-insensitive, so `_csp:AWS` matches the value `aws`. Tag names are case-sensitive, so use `_csp`, not `_CSP`. The syntax is the same for the `_search` API and {{esql}}.
+
+:::{note}
+You can optionally add the `_project.` prefix to a tag name, for example `_project._csp:aws`. This is the same prefix used to reference tags in queries. In project routing the prefix is optional, so `_csp:aws` and `_project._csp:aws` are equivalent.
+:::
+
+The following examples use an origin project and a linked project. The origin project contains one index, `my-index`. The linked project contains two indices: `my-index` and `logs`.
+
+#### Route on a single tag
 
 The following request searches all indices on projects whose alias starts with "lin".
 
@@ -587,6 +610,69 @@ The request will return a response similar to this:
 
 ::::
 
+#### Combine tags with boolean logic and grouping
+
+Any predefined or custom tag works the same way. The following request routes to projects on Microsoft Azure:
+
+```console
+GET /*/_search
+{
+  "project_routing": "_csp:azure",
+  "query": {
+    "match_all": {}
+  }
+}
+```
+
+You can combine tags with `AND` and `OR`. The following request routes to projects on Amazon Web Services (AWS) in a US region:
+
+```console
+GET /*/_search
+{
+  "project_routing": "_csp:aws AND _region:us*",
+  "query": {
+    "match_all": {}
+  }
+}
+```
+
+You can group terms with parentheses to build more specific rules. The following requests route to AWS projects in a US region, or to any project on Google Cloud. The routing expression is the same for the `_search` API and {{esql}}:
+
+::::{tab-set}
+
+:::{tab-item} _search
+```console
+GET /*/_search
+{
+  "project_routing": "(_region:us-* AND _csp:aws) OR _csp:gcp",
+  "query": {
+    "match_all": {}
+  }
+}
+```
+:::
+
+:::{tab-item} ES|QL
+```console
+GET /_query
+{
+  "query": "SET project_routing=\"(_region:us-* AND _csp:aws) OR _csp:gcp\"; FROM logs | STATS COUNT(*)"
+}
+```
+:::
+
+::::
+
+Value matching is case-insensitive. For example, `_csp:GCP` matches the same projects as `_csp:gcp`.
+
+:::{note}
+Every term in an expression needs a tag name, and every tag must be defined. These expressions fail:
+
+* `_csp:aws OR gcp` fails because the bare term `gcp` has no tag name. Use `_csp:aws OR _csp:gcp` instead.
+* `_foo:bar` fails because `_foo` isn't a defined tag.
+* `NOT _csp:azure` fails because an expression can't be only a negation. To match every project except Azure, include first and then exclude: `_csp:* AND NOT _csp:azure`.
+:::
+
 #### Project routing with named project routing expressions
 
 First, create the named expression:
@@ -598,7 +684,16 @@ PUT /_project_routing/origin-only
 }
 ```
 
-Then, query it:
+Named expressions can hold the same boolean logic and groupings as direct expressions. The following request creates a named expression called `aws-us-only` that routes to AWS projects in a US region:
+
+```console
+PUT /_project_routing/aws-us-only
+{
+  "expression": "_csp:aws AND _region:us*"
+}
+```
+
+Then, query a named expression by referencing its name with an `@` prefix:
 
 ::::{tab-set}
 
@@ -626,6 +721,13 @@ GET /_query
 :::
 
 ::::
+
+:::{note}
+Reference a named expression on its own. You can't combine it with a direct expression or with another named expression. Both of these fail:
+
+* `@aws-us-only OR _csp:gcp` mixes a named expression with a direct expression.
+* `@aws-us-only OR @origin-only` combines two named expressions.
+:::
 
 #### Project routing and qualified expressions
 

@@ -25,3 +25,4 @@ This section describes what those objects are, how you can organize them, and ho
 - [Reports](find-and-organize/reports.md)
 - [Tags](find-and-organize/tags.md)
 - [Finding apps and objects](find-and-organize/find-apps-and-objects.md)
+- [Customize your navigation menu](find-and-organize/customize-navigation.md)
