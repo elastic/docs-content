@@ -33,7 +33,7 @@ Platform skills are available across all deployment types. They cover core capab
 ### Core skills
 
 $$$agent-builder-visualization-creation-skill$$$ `visualization-creation` {applies_to}`stack: ga 9.4+`
-:   Creates standalone or reusable Lens visualizations from index and field context. Use when a user asks for a chart, metric, trend, or breakdown visualization, or wants to update an existing one.
+:   Creates standalone or reusable Lens or Vega-Lite visualizations from index and field context. Use when a user asks for a chart, metric, trend, or breakdown visualization, or wants to update an existing one.
 
     :::{dropdown} Assigned tools
     `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.create_visualization`
@@ -43,7 +43,7 @@ $$$agent-builder-visualization-creation-skill$$$ `visualization-creation` {appli
 $$$agent-builder-graph-creation-skill$$$ `graph-creation` {applies_to}`stack: ga 9.4+`
 :   Creates graph attachments by transforming relationship data into nodes and edges rendered inline in the conversation. Use for topology, dependency, or entity-link visualizations.
 
-$$$agent-builder-dashboard-management-skill$$$ `dashboard-management` {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
+$$$agent-builder-dashboard-management-skill$$$ `dashboard-management` {applies_to}`stack: preview =9.4, ga 9.5+`
 :   Composes and updates in-memory {{kib}} dashboards. Use when a user asks to find, create, or modify a dashboard, add or remove panels, or edit existing panel visualizations.
 
     :::{dropdown} Assigned tools
@@ -170,7 +170,7 @@ $$$agent-builder-workflow-authoring-skill$$$ `workflow-authoring` {applies_to}`s
     **Prerequisites:** [Elastic Workflows](/explore-analyze/workflows.md) enabled in the deployment, with the privileges required to create and run workflows.
 
     :::{dropdown} Behavior in 9.4
-    In 9.4, this skill creates, modifies, and validates Elastic Workflows YAML definitions from natural language input. It covers step types, triggers, Liquid templating, connector integrations, and validation, and validates the generated or modified YAML before proposing the change so the user can accept or decline it. The `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) must be turned on for the skill to appear. **Assigned tools:** lookup tools (`platform.workflows.get_step_definitions`, `platform.workflows.get_trigger_definitions`, `platform.workflows.get_examples`, `platform.workflows.get_connectors`, `platform.workflows.validate_workflow`) and edit tools (`platform.workflows.workflow_set_yaml`, `platform.workflows.workflow_insert_step`, `platform.workflows.workflow_modify_step`, `platform.workflows.workflow_modify_step_property`, `platform.workflows.workflow_modify_property`, `platform.workflows.workflow_delete_step`).
+    In 9.4, this skill creates, modifies, and validates Elastic Workflows YAML definitions from natural language input. It covers step types, triggers, Liquid templating, connector integrations, and validation, and validates the generated or modified YAML before proposing the change so the user can accept or decline it. The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear. **Assigned tools:** lookup tools (`platform.workflows.get_step_definitions`, `platform.workflows.get_trigger_definitions`, `platform.workflows.get_examples`, `platform.workflows.get_connectors`, `platform.workflows.validate_workflow`) and edit tools (`platform.workflows.workflow_set_yaml`, `platform.workflows.workflow_insert_step`, `platform.workflows.workflow_modify_step`, `platform.workflows.workflow_modify_step_property`, `platform.workflows.workflow_modify_property`, `platform.workflows.workflow_delete_step`).
     :::
 
     :::{note}

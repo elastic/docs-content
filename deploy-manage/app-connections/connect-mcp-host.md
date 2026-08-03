@@ -3,7 +3,7 @@ navigation_title: "Connect an MCP host"
 description: "Configure an MCP host to use an OAuth client and complete the authorization flow to establish a connection to Agent Builder."
 type: how-to
 applies_to:
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana
@@ -131,6 +131,10 @@ Most hosts that support OAuth 2.1 accept a similar configuration to Claude. Prov
 
 :::::
 
+:::{note}
+The `mcp-remote` adapter stores OAuth credentials locally on your machine, keyed by MCP server URL. If more than one MCP host uses `mcp-remote` with the same server URL and client ID, those hosts share one app connection. After you complete the authorization flow in the first host, additional hosts that use the same configuration don't prompt you to authorize again.
+:::
+
 ::::::
 
 ::::::{step} Authorize the connection
@@ -189,7 +193,7 @@ The MCP host's local callback server times out if the **Connect and authorize** 
 
 **You need to start fresh with a new connection.**
 
-Consult your MCP host's documentation for how to clear cached OAuth credentials and force a new authorization. Most hosts maintain only one connection for each MCP server URL, so reconfiguring with the same URL will reuse the existing connection unless the cached credentials are cleared.
+Consult your MCP host's documentation for how to clear cached OAuth credentials and force a new authorization. Most hosts maintain only one connection for each MCP server URL, so reconfiguring with the same URL reuses the existing connection unless the cached credentials are cleared.
 
 ## Next steps
 

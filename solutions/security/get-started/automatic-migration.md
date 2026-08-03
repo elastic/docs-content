@@ -14,8 +14,9 @@ products:
 
 # Automatic migration
 
-Automatic Migration helps you quickly migrate Splunk and QRadar assets to {{elastic-sec}}. The following asset types are supported:
+Automatic Migration helps you quickly migrate Microsoft Sentinel, Splunk, and QRadar assets to {{elastic-sec}}. The following asset types are supported:
 
+* {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` Microsoft Sentinel rules
 * {applies_to}`stack: ga 9.4+, preview 9.2-9.3` {applies_to}`serverless: ga` Splunk Classic dashboards (v1.1)
 * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Splunk Dashboard Studio dashboards
 * {applies_to}`stack: preview =9.0, ga 9.1+` {applies_to}`serverless: ga` Splunk rules
@@ -30,6 +31,7 @@ The following table summarizes which assets Automatic Migration can and cannot t
 | Splunk | Dashboard Studio dashboards | Yes |
 | QRadar | Rules | Yes |
 | QRadar | Dashboards | No |
+| Microsoft Sentinel | Rules | Yes |
 
 For rule migrations, if comparable Elastic-authored rules exist, Automatic Migration simplifies onboarding by mapping your rules to them. Otherwise, it creates custom rules and dashboards on the fly so you can verify and edit them instead of writing them from scratch.
 
@@ -88,7 +90,7 @@ Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Spl
 4. Select the migration source and follow the instructions on the flyout to export your assets.
 
    :::{image} /solutions/images/security-siem-migration-1.png
-   :alt: the Upload Splunk SIEM rules flyout
+   :alt: the Upload SIEM rules flyout with migration source dropdown
    :width: 700px
    :screenshot:
    :::
@@ -109,7 +111,7 @@ Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Spl
 
 5. Select your JSON file and click **Upload**. If the file is large, you can separate it into multiple parts and upload them individually to avoid exceeding your LLM's context window.
 
-6. After you upload your assets, Automatic Migration detects whether they use any macros, lookups, reference sets, or MITRE mappings. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later—however, some of your migrated assets will have a `partially translated` status. If you upload them now, you don't have to stay on this page—a notification appears when processing is complete.
+6. After you upload your assets, Automatic Migration detects whether they use any macros, lookups, reference sets, watchlists, or MITRE mappings. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later—however, some of your migrated assets will have a `partially translated` status. If you upload them now, you don't have to stay on this page—a notification appears when processing is complete.
 
 7. Click **Translate** to start the rule translation process. The **Start rules migration** popup appears.
 

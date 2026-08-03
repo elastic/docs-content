@@ -17,7 +17,7 @@ products:
 :::{note}
 :applies_to: stack: preview 9.4+, serverless: preview
 
-The connectors library is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}}.
+The connectors library is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
 The {{agent-builder}} connectors library lets you configure action-based connectors that give agents access to external systems, such as messaging services, cloud functions, and third-party APIs.
@@ -45,6 +45,12 @@ To register a new connector:
 5. Save the connector.
 
 The configured connector appears in the library and is immediately available for your agents to use dynamically.
+
+## Authorize connector access from chat
+
+When an agent needs access to an OAuth connector, the chat pauses and displays an authorization prompt. Select **Authorize** to open the provider's sign-in flow in a new browser tab. After authorization succeeds, return to the chat, where the agent retries the connector call and continues. Select **Deny** to cancel the call.
+
+If authorization fails or the provider does not return you to {{kib}}, close the provider tab and select **Deny** in the chat. Correct the connector or OAuth configuration, then retry your request. To learn more about this prompt, refer to [Authorize a connector](chat.md#authorize-a-connector).
 
 ## Related pages
 
