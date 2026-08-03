@@ -6,11 +6,12 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Elasticsearch configuration
 ---
 
-# {{es}} configuration [k8s-elasticsearch-specification]
+# {{es}} configuration on ECK [k8s-elasticsearch-specification]
 
-This section covers various {{es}} cluster configuration scenarios when using ECK. For configuration topics relevant to both {{es}} and {{kib}}, see the [](./configure-deployments.md).
+This section covers various {{es}} cluster configuration scenarios when using {{eck}}. For configuration topics relevant to both {{es}} and {{kib}}, see the [](./configure-deployments.md).
 
 Before deploying and running ECK in production, review the basic and advanced settings available on this page. These configurations integrate {{es}}, Kubernetes, and ECK operator functionality to help you fine-tune your deployment.
 
