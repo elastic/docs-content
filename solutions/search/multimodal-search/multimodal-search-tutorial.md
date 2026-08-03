@@ -1,6 +1,6 @@
 ---
-navigation_title: Multimodal search with Jina embeddings
-description: Step-by-step tutorial for multimodal search with the semantic field type and Jina embeddings in Elasticsearch, from mapping through indexing to cross-modal queries.
+navigation_title: Tutorial with the semantic field
+description: Index images in a semantic field and search them with text, image, and PDF input using Jina multimodal embeddings in Elasticsearch.
 applies_to:
   stack: planned
   serverless: preview
@@ -9,221 +9,540 @@ products:
   - id: cloud-serverless
 type: tutorial
 ---
+# Build multimodal search with a semantic field [multimodal-search-tutorial]
 
-# Multimodal search with Jina embeddings [multimodal-search-tutorial]
+In this hands-on tutorial, you'll build a small visual archive and search it with natural-language text, another image, or a PDF. It's intended for developers who are new to multimodal search and are comfortable running {{es}} API requests and terminal commands.
 
-Multimodal search lets you retrieve content by meaning across text, images, and other media types in one index. This tutorial walks you through a recommended workflow that uses the [`semantic`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md) field type with [Jina multimodal embedding models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-multimodal-embeddings) on [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
+By the end of this tutorial, you'll be able to:
 
-By the end, you will be able to:
+- Configure a `semantic` field with a multimodal {{infer}} endpoint.
+- Download, encode, and index images with structured metadata.
+- Search the same image field with text, image, and PDF input.
+- Combine semantic similarity with structured filters.
 
-- Map a `semantic` field to a Jina multimodal {{infer}} endpoint
-- Index text and image content that {{es}} embeds automatically
-- Run text and image queries against the same vector space
+For concepts and deployment options, refer to [Multimodal search](../multimodal-search.md).
 
-:::{tip}
-Jina multimodal models are the recommended path for multimodal search in {{es}}. For deployment options (EIS, external {{infer}}, and on-prem) and an overview of the workflow, refer to [Multimodal search](../multimodal-search.md).
+## Before you begin [multimodal-tutorial-before-you-begin]
 
-If you work with text only, use [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) instead. To compare the two field types, refer to [Should I use `semantic_text` or `semantic`?](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md#should-i-use-semantictext-or-semantic).
-:::
+You need:
 
-## How this workflow fits together [multimodal-tutorial-overview]
+- Basic familiarity with {{es}} mappings and search APIs.
+- An {{es}} 9.5 or later deployment, or an {{es}} Serverless project.
+- A license that supports the {{infer}} API.
+- Access to a multimodal `embedding` endpoint. This tutorial uses the preconfigured `.jina-embeddings-v5-omni-small` endpoint through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
+- `curl` and the `base64` command-line utility.
 
-A multimodal embedding model maps different content types into one shared vector space. After you embed catalog items with that model:
+The tutorial uses four NASA-hosted images with visually distinct subjects and useful metadata:
 
-- A text query such as "red running shoes" can return product images
-- An image query can return related product descriptions or similar images
+| Document | Subject | Year | Image source |
+| --- | --- | --- | --- |
+| `apollo-11` | Apollo 11 lunar surface activity | 1969 | [NASA Image and Video Library](https://images.nasa.gov/details/as11-40-5874) |
+| `curiosity` | Curiosity rover on Mars | 2015 | [NASA Jet Propulsion Laboratory](https://www.jpl.nasa.gov/images/pia19808-looking-up-at-mars-rover-curiosity-in-buckskin-selfie/) |
+| `cassini` | Saturn and its rings | 2004 | [NASA Science](https://science.nasa.gov/image-detail/pia05380-saturn-with-rings-16x9/) |
+| `atlantis` | Space Shuttle Atlantis launching | 2009 | [NASA Science](https://science.nasa.gov/image-detail/sts-125-launch-may-11-2009/) |
 
-The `semantic` field type handles embedding generation, text chunking, and vector storage for you. You must provide an {{infer}} endpoint that uses the `embedding` task type. Use the same endpoint for ingest and search so similarity scores stay meaningful.
+NASA should be acknowledged as the source of this material. Refer to the [NASA images and media usage guidelines](https://www.nasa.gov/nasa-brand-center/images-and-media/) before reusing the images outside this example.
 
-This tutorial uses the preconfigured `.jina-embeddings-v5-omni-small` endpoint. For lower cost or smaller deployments, you can substitute `.jina-embeddings-v5-omni-nano` or create your own endpoint for `jina-embeddings-v5-omni-nano`.
+To run the `curl` examples, set your {{es}} URL and API key as environment variables:
 
-## Requirements [multimodal-tutorial-requirements]
-
-- A running {{es}} cluster that supports the `semantic` field type. For the fastest start, [create a serverless project](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md).
-- Access to [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md). EIS is available on {{ech}} and {{serverless-short}}. You can also [connect a self-managed cluster to EIS](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
-- Sample image bytes encoded as a base64 data URI when you try the image examples. Use a small PNG or JPEG from your own files.
-
-:::{tip}
-To run the `curl` examples in this tutorial, set the following environment variables:
-```bash
-export ELASTICSEARCH_URL="your-elasticsearch-url"
-export API_KEY="your-api-key"
+```sh
+export ELASTICSEARCH_URL="https://<DEPLOYMENT_URL>"
+export ELASTICSEARCH_API_KEY="<ELASTICSEARCH_API_KEY>"
 ```
-To generate API keys, search for `API keys` in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md). [Learn more about finding your endpoint and credentials](/solutions/elasticsearch-solution-project/search-connection-details.md).
-:::
 
-## Create the index mapping [multimodal-tutorial-index-mapping]
+## 1. Verify the multimodal inference endpoint [multimodal-tutorial-verify-endpoint]
 
-Create an index with a `semantic` field that points at a Jina multimodal endpoint. Unlike text-only workflows, a `semantic` field has no default {{infer}} endpoint. You must set `inference_id` to an endpoint that uses the `embedding` task type.
+This example uses the preconfigured `.jina-embeddings-v5-omni-small` endpoint. Elastic recommends [Jina multimodal embeddings](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-multimodal-embeddings) for multimodal search.
 
-```console
-PUT multimodal-catalog
+Verify that the endpoint is available to your deployment:
+
+```sh
+curl --fail-with-body --silent --show-error \
+  --request GET \
+  --url "$ELASTICSEARCH_URL/_inference/embedding/.jina-embeddings-v5-omni-small" \
+  --header "Authorization: ApiKey $ELASTICSEARCH_API_KEY"
+```
+
+The endpoint uses the `embedding` task type and supports the text, image, and PDF inputs used in this tutorial.
+
+The response identifies `.jina-embeddings-v5-omni-small` as an `embedding` endpoint. You can now use its ID in a `semantic` field mapping.
+
+If `.jina-embeddings-v5-omni-small` isn't available, configure another `embedding` endpoint that supports text, images, and PDFs, and replace the endpoint ID in the remaining steps.
+
+## 2. Create the image index [multimodal-tutorial-index-mapping]
+
+Create an index with ordinary metadata fields and a `semantic` field named `image`:
+
+```sh
+curl --fail-with-body --silent --show-error \
+  --request PUT \
+  --url "$ELASTICSEARCH_URL/nasa-mission-images" \
+  --header "Authorization: ApiKey $ELASTICSEARCH_API_KEY" \
+  --header "Content-Type: application/json" \
+  --data '
 {
   "mappings": {
     "properties": {
       "title": {
         "type": "keyword"
       },
-      "modality": {
+      "mission": {
         "type": "keyword"
       },
-      "content": {
+      "year": {
+        "type": "integer"
+      },
+      "description": {
+        "type": "text"
+      },
+      "source_url": {
+        "type": "keyword",
+        "index": false
+      },
+      "image": {
         "type": "semantic",
         "inference_id": ".jina-embeddings-v5-omni-small"
       }
     }
   }
-}
+}'
 ```
 
-1. Metadata fields help you filter results after retrieval.
-2. The `semantic` field stores the input and its embeddings.
-3. `.jina-embeddings-v5-omni-small` is the preconfigured EIS endpoint for the Jina omni small model. The endpoint determines which input modalities the field supports.
+The create index request returns `"acknowledged": true`. The `image` field is now configured to use `.jina-embeddings-v5-omni-small` to generate dense vectors.
 
-:::{dropdown} Example response
-```console-result
+## 3. Index the image dataset [multimodal-tutorial-index-images]
+
+The `semantic` field accepts an image as an object containing a Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data). The following shell function downloads and encodes each image before indexing it with its metadata:
+
+```sh
+set -euo pipefail
+
+index_image() {
+  local id="$1"
+  local title="$2"
+  local mission="$3"
+  local year="$4"
+  local description="$5"
+  local image_url="$6"
+  local source_url="$7"
+  local image_data
+
+  image_data=$(curl --fail-with-body --silent --show-error --location "$image_url" \
+    | base64 | tr -d '\n')
+
+  curl --fail-with-body --silent --show-error \
+    --request PUT \
+    --url "$ELASTICSEARCH_URL/nasa-mission-images/_doc/$id" \
+    --header "Authorization: ApiKey $ELASTICSEARCH_API_KEY" \
+    --header "Content-Type: application/json" \
+    --data-binary @- <<JSON
 {
-  "acknowledged": true,
-  "shards_acknowledged": true,
-  "index": "multimodal-catalog"
-}
-```
-:::
-
-:::{note}
-To create a custom endpoint instead of using the preconfigured ID, refer to [Jina multimodal models on EIS](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-omni-getting-started), then set `inference_id` to your endpoint ID.
-:::
-
-## Index text [multimodal-tutorial-index-text]
-
-Index documents with text in the `semantic` field. {{es}} sends the field value to the {{infer}} endpoint, generates embeddings, and stores them.
-
-```console
-POST _bulk
-{ "index": { "_index": "multimodal-catalog", "_id": "text-1" } }
-{ "title": "Trail runner", "modality": "text", "content": "Lightweight red running shoes designed for rocky trails and long distance training." }
-{ "index": { "_index": "multimodal-catalog", "_id": "text-2" } }
-{ "title": "City sneaker", "modality": "text", "content": "Minimal white sneakers for everyday walking and travel." }
-{ "index": { "_index": "multimodal-catalog", "_id": "text-3" } }
-{ "title": "Kitchen guide", "modality": "text", "content": "How to cook ramen noodles with a miso broth and soft boiled eggs." }
-```
-
-When indexing finishes, the embeddings are already stored. You do not need an ingest pipeline or {{infer}} processor.
-
-## Index images [multimodal-tutorial-index-images]
-
-Index image content in the same `semantic` field. Provide non-text input as an object with `type`, `format`, and a base64 data URL in `value`. The multimodal model embeds the image into the same vector space as the text documents.
-
-```console
-PUT multimodal-catalog/_doc/img-1
-{
-  "title": "red-running-shoes.png",
-  "modality": "image",
-  "content": {
+  "title": "$title",
+  "mission": "$mission",
+  "year": $year,
+  "description": "$description",
+  "source_url": "$source_url",
+  "image": {
     "type": "image",
     "format": "base64",
-    "value": "data:image/png;base64,<BASE64_IMAGE_DATA>"
+    "value": "data:image/jpeg;base64,$image_data"
   }
 }
+JSON
+}
+
+index_image \
+  "apollo-11" \
+  "Apollo 11 lunar EVA" \
+  "Apollo 11" \
+  1969 \
+  "Astronaut Buzz Aldrin on the lunar surface beside the United States flag." \
+  "https://images-assets.nasa.gov/image/as11-40-5874/as11-40-5874~medium.jpg" \
+  "https://images.nasa.gov/details/as11-40-5874"
+
+index_image \
+  "curiosity" \
+  "Curiosity rover selfie at Buckskin" \
+  "Mars Science Laboratory" \
+  2015 \
+  "The Curiosity rover on the rocky surface of Mars near Mount Sharp." \
+  "https://images-assets.nasa.gov/image/PIA19808/PIA19808~medium.jpg" \
+  "https://www.jpl.nasa.gov/images/pia19808-looking-up-at-mars-rover-curiosity-in-buckskin-selfie/"
+
+index_image \
+  "cassini" \
+  "Cassini approaches Saturn" \
+  "Cassini-Huygens" \
+  2004 \
+  "A Cassini view of Saturn and its ring system." \
+  "https://science.nasa.gov/wp-content/uploads/2023/05/pia05380-saturn-with-rings-16x9-1.jpg" \
+  "https://science.nasa.gov/image-detail/pia05380-saturn-with-rings-16x9/"
+
+index_image \
+  "atlantis" \
+  "Space Shuttle Atlantis launches" \
+  "STS-125" \
+  2009 \
+  "Space Shuttle Atlantis launches from Kennedy Space Center." \
+  "https://science.nasa.gov/wp-content/uploads/2023/07/27625669004-d61d5df323-o.jpg" \
+  "https://science.nasa.gov/image-detail/sts-125-launch-may-11-2009/"
+
+curl --fail-with-body --silent --show-error \
+  --request POST \
+  --url "$ELASTICSEARCH_URL/nasa-mission-images/_refresh" \
+  --header "Authorization: ApiKey $ELASTICSEARCH_API_KEY"
 ```
 
-Replace `<BASE64_IMAGE_DATA>` with your image bytes. Keep the `data:image/png;base64,` prefix, or use `data:image/jpeg;base64,` for JPEG files.
+The images remain available in `_source`. Generated embeddings are excluded from `_source` by default.
 
-:::{tip}
-The same object shape works for other modalities supported by the model. Set `type` to `audio`, `video`, or `pdf`, and use the matching data URL media type. For more input examples, refer to [Multimodal embedding models on EIS](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-omni-getting-started). Prefer short video clips over long videos so each embedding represents a focused piece of content.
+Verify that all four documents were indexed:
+
+```sh
+curl --fail-with-body --silent --show-error \
+  --request GET \
+  --url "$ELASTICSEARCH_URL/nasa-mission-images/_count" \
+  --header "Authorization: ApiKey $ELASTICSEARCH_API_KEY"
+```
+
+:::{dropdown} Example response
+```json
+{
+  "count": 4
+}
+```
 :::
 
-## Search across modalities [multimodal-tutorial-search]
+A count of `4` confirms that the complete image dataset is ready to search.
 
-You now have text and image embeddings produced by the same model and stored through the same `semantic` field. That shared space is what makes cross-modal search possible.
+## 4. Search the images with text [multimodal-tutorial-text-query]
 
-### Text query [multimodal-tutorial-text-query]
+Run a `match` query against the `image` field using a natural-language description:
 
-Search with a `match` query on the `semantic` field. A text query can retrieve both text documents and images that are close in meaning.
-
-```console
-GET multimodal-catalog/_search
+```sh
+curl --fail-with-body --silent --show-error \
+  --request POST \
+  --url "$ELASTICSEARCH_URL/nasa-mission-images/_search" \
+  --header "Authorization: ApiKey $ELASTICSEARCH_API_KEY" \
+  --header "Content-Type: application/json" \
+  --data '
 {
+  "_source": {
+    "excludes": ["image"]
+  },
   "query": {
     "match": {
-      "content": {
-        "query": "red running shoes for trails"
+      "image": {
+        "query": "a wheeled robot taking a selfie on a rocky red planet"
       }
     }
   }
-}
+}'
 ```
 
-The trail runner text document and the red running shoes image should rank above the ramen guide, even when the query does not share many exact keywords with the indexed content.
+The `_source` exclusion omits the Base64-encoded image value while returning the other source fields. A `match` query on a `semantic` field sends the text to the field's {{infer}} endpoint and compares the resulting embedding with the indexed image embeddings.
 
-### Image query [multimodal-tutorial-image-query]
+The Curiosity document is the highest-ranked result even though its caption is stored in a separate field and the query targets only `image`.
 
-For image-to-image or image-to-text search, use a `knn` query with an `embedding` query vector builder. {{es}} uses the {{infer}} endpoint from the `semantic` field mapping to embed the query image.
-
-```console
-GET multimodal-catalog/_search
+:::{dropdown} Example response
+```json
 {
+  "total": {
+    "value": 4,
+    "relation": "eq"
+  },
+  "max_score": 0.6938014,
+  "hits": [
+    {
+      "_index": "nasa-mission-images",
+      "_id": "curiosity",
+      "_score": 0.6938014,
+      "_source": {
+        "title": "Curiosity rover selfie at Buckskin",
+        "mission": "Mars Science Laboratory",
+        "year": 2015,
+        "description": "The Curiosity rover on the rocky surface of Mars near Mount Sharp.",
+        "source_url": "https://www.jpl.nasa.gov/images/pia19808-looking-up-at-mars-rover-curiosity-in-buckskin-selfie/"
+      }
+    },
+    {
+      "_index": "nasa-mission-images",
+      "_id": "apollo-11",
+      "_score": 0.64529085,
+      "_source": {
+        "title": "Apollo 11 lunar EVA",
+        "mission": "Apollo 11",
+        "year": 1969,
+        "description": "Astronaut Buzz Aldrin on the lunar surface beside the United States flag.",
+        "source_url": "https://images.nasa.gov/details/as11-40-5874"
+      }
+    }
+  ]
+}
+```
+:::
+
+Curiosity ranks first based on the embedding generated from the indexed image. The `description` field is returned as metadata but does not affect this query. Exact scores can vary.
+
+### Filter semantic image search results [multimodal-tutorial-filters]
+
+You can combine semantic image search with structured metadata filters. The following query limits results to images from 2000 or later:
+
+```sh
+curl --fail-with-body --silent --show-error \
+  --request POST \
+  --url "$ELASTICSEARCH_URL/nasa-mission-images/_search" \
+  --header "Authorization: ApiKey $ELASTICSEARCH_API_KEY" \
+  --header "Content-Type: application/json" \
+  --data '
+{
+  "_source": {
+    "excludes": ["image"]
+  },
+  "query": {
+    "bool": {
+      "must": {
+        "match": {
+          "image": {
+            "query": "a spacecraft launching through fire and smoke"
+          }
+        }
+      },
+      "filter": {
+        "range": {
+          "year": {
+            "gte": 2000
+          }
+        }
+      }
+    }
+  }
+}'
+```
+
+The `must` clause performs semantic similarity search and contributes to each result's score. The `filter` clause restricts the matching documents without changing their semantic relevance scores.
+
+The Atlantis launch is the highest-ranked result.
+
+## 5. Search the images with another image [multimodal-tutorial-image-query]
+
+For image-to-image search, use a `knn` query with the `embedding` query vector builder. The following request downloads and encodes [a different Curiosity selfie](https://images.nasa.gov/details/PIA19807) to use as the query image:
+
+```sh
+query_image=$(curl --fail-with-body --silent --show-error --location \
+  "https://images-assets.nasa.gov/image/PIA19807/PIA19807~medium.jpg" \
+  | base64 | tr -d '\n')
+
+curl --fail-with-body --silent --show-error \
+  --request POST \
+  --url "$ELASTICSEARCH_URL/nasa-mission-images/_search" \
+  --header "Authorization: ApiKey $ELASTICSEARCH_API_KEY" \
+  --header "Content-Type: application/json" \
+  --data-binary @- <<JSON
+{
+  "_source": {
+    "excludes": ["image"]
+  },
   "query": {
     "knn": {
-      "field": "content",
-      "k": 5,
-      "num_candidates": 50,
+      "field": "image",
       "query_vector_builder": {
         "embedding": {
           "input": {
             "type": "image",
             "format": "base64",
-            "value": "data:image/png;base64,<BASE64_IMAGE_DATA>"
+            "value": "data:image/jpeg;base64,$query_image"
           }
         }
+      },
+      "k": 3,
+      "num_candidates": 4
+    }
+  }
+}
+JSON
+```
+
+The query searches the embeddings indexed for the `image` field and uses the {{infer}} endpoint from that field's mapping. The `embedding` query vector builder sends the raw image input to the endpoint to generate the query vector. `k` returns the three nearest neighbors. `num_candidates` compares the query vector against four approximate nearest-neighbor candidates per shard.
+
+:::{dropdown} Example response
+```json
+{
+  "total": {
+    "value": 3,
+    "relation": "eq"
+  },
+  "max_score": 0.9901605,
+  "hits": [
+    {
+      "_index": "nasa-mission-images",
+      "_id": "curiosity",
+      "_score": 0.9901605,
+      "_source": {
+        "title": "Curiosity rover selfie at Buckskin",
+        "mission": "Mars Science Laboratory",
+        "year": 2015,
+        "source_url": "https://www.jpl.nasa.gov/images/pia19808-looking-up-at-mars-rover-curiosity-in-buckskin-selfie/"
+      }
+    },
+    {
+      "_index": "nasa-mission-images",
+      "_id": "apollo-11",
+      "_score": 0.9066043,
+      "_source": {
+        "title": "Apollo 11 lunar EVA",
+        "mission": "Apollo 11",
+        "year": 1969,
+        "source_url": "https://images.nasa.gov/details/as11-40-5874"
+      }
+    },
+    {
+      "_index": "nasa-mission-images",
+      "_id": "cassini",
+      "_score": 0.8949027,
+      "_source": {
+        "title": "Cassini approaches Saturn",
+        "mission": "Cassini-Huygens",
+        "year": 2004,
+        "source_url": "https://science.nasa.gov/image-detail/pia05380-saturn-with-rings-16x9/"
       }
     }
-  }
+  ]
 }
 ```
-
-Replace `<BASE64_IMAGE_DATA>` with the image you want to search with.
-
-:::{tip}
-For a fuller image-focused walkthrough with sample NASA images, text, image, and PDF queries, refer to [Build multimodal search with a `semantic` field](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field-quickstart.md).
 :::
 
-## Combine filters with multimodal retrieval [multimodal-tutorial-filters]
+The separately indexed Curiosity selfie ranks first for the query selfie. The query and indexed images are different files, so this result demonstrates similarity search rather than an exact-image match. Exact scores can vary.
 
-Vector similarity alone can return items outside the scope the user can buy or view. Add structured filters on metadata fields such as category, license, or modality.
+## 6. Search the images with a PDF [multimodal-tutorial-pdf-query]
 
-```console
-GET multimodal-catalog/_search
+The `embedding` query vector builder also accepts PDF input. This example uses a one-page [Apollo 11 photography map](https://commons.wikimedia.org/wiki/File:Apollo_11_photo_map.pdf) as the query.
+
+The following request downloads and encodes the PDF before using it as the query:
+
+```sh
+query_pdf=$(curl --fail-with-body --silent --show-error --location \
+  "https://commons.wikimedia.org/wiki/Special:Redirect/file/Apollo_11_photo_map.pdf" \
+  | base64 | tr -d '\n')
+
+curl --fail-with-body --silent --show-error \
+  --request POST \
+  --url "$ELASTICSEARCH_URL/nasa-mission-images/_search" \
+  --header "Authorization: ApiKey $ELASTICSEARCH_API_KEY" \
+  --header "Content-Type: application/json" \
+  --data-binary @- <<JSON
 {
+  "_source": {
+    "excludes": ["image"]
+  },
   "query": {
-    "bool": {
-      "must": [
-        {
-          "match": {
-            "content": {
-              "query": "red running shoes for trails"
-            }
+    "knn": {
+      "field": "image",
+      "query_vector_builder": {
+        "embedding": {
+          "input": {
+            "type": "pdf",
+            "format": "base64",
+            "value": "data:application/pdf;base64,$query_pdf"
           }
         }
-      ],
-      "filter": [
-        {
-          "term": {
-            "modality": "image"
-          }
-        }
-      ]
+      },
+      "k": 4,
+      "num_candidates": 4
     }
   }
 }
+JSON
 ```
 
-This example keeps only image documents while still ranking them by multimodal similarity to the text query.
+The input type tells the multimodal {{infer}} endpoint to process the binary as a PDF. The PDF is supplied as a Base64 data URL and embedded at query time.
+
+:::{dropdown} Example response
+```json
+{
+  "total": {
+    "value": 4,
+    "relation": "eq"
+  },
+  "max_score": 0.80268264,
+  "hits": [
+    {
+      "_index": "nasa-mission-images",
+      "_id": "apollo-11",
+      "_score": 0.80268264,
+      "_source": {
+        "title": "Apollo 11 lunar EVA",
+        "mission": "Apollo 11",
+        "year": 1969,
+        "source_url": "https://images.nasa.gov/details/as11-40-5874"
+      }
+    },
+    {
+      "_index": "nasa-mission-images",
+      "_id": "curiosity",
+      "_score": 0.7965702,
+      "_source": {
+        "title": "Curiosity rover selfie at Buckskin",
+        "mission": "Mars Science Laboratory",
+        "year": 2015,
+        "source_url": "https://www.jpl.nasa.gov/images/pia19808-looking-up-at-mars-rover-curiosity-in-buckskin-selfie/"
+      }
+    },
+    {
+      "_index": "nasa-mission-images",
+      "_id": "cassini",
+      "_score": 0.78309894,
+      "_source": {
+        "title": "Cassini approaches Saturn",
+        "mission": "Cassini-Huygens",
+        "year": 2004,
+        "source_url": "https://science.nasa.gov/image-detail/pia05380-saturn-with-rings-16x9/"
+      }
+    },
+    {
+      "_index": "nasa-mission-images",
+      "_id": "atlantis",
+      "_score": 0.77586085,
+      "_source": {
+        "title": "Space Shuttle Atlantis launches",
+        "mission": "STS-125",
+        "year": 2009,
+        "source_url": "https://science.nasa.gov/image-detail/sts-125-launch-may-11-2009/"
+      }
+    }
+  ]
+}
+```
+:::
+
+The Apollo 11 image ranks first for a separate Apollo 11 PDF. The query targets only the `image` field, so the ordinary metadata fields do not affect the ranking. Exact scores can vary.
+
+This PDF, the text query, the query image, and the indexed images are all embedded into the same vector space by the field's {{infer}} endpoint. The input format changes, but the search target does not.
+
+## 7. Clean up [multimodal-tutorial-clean-up]
+
+Delete the example index:
+
+```sh
+curl --fail-with-body --silent --show-error \
+  --request DELETE \
+  --url "$ELASTICSEARCH_URL/nasa-mission-images" \
+  --header "Authorization: ApiKey $ELASTICSEARCH_API_KEY"
+```
+
+The `.jina-embeddings-v5-omni-small` {{infer}} endpoint is preconfigured and is not deleted.
 
 ## Next steps [multimodal-tutorial-next-steps]
 
-- [Multimodal search](../multimodal-search.md): Concepts, deployment options, and recommended Jina models
-- [`semantic` field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md): Mapping reference, parameters, and limitations
-- [Should I use `semantic_text` or `semantic`?](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md#should-i-use-semantictext-or-semantic): Choose the right inference field type
-- [Jina models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md): Full model catalog and input examples
-- [Optimize dense vector storage](../vector/vector-storage-for-semantic-search.md): Quantization options such as BBQ for large multimodal catalogs
+You now have a `semantic` field that embeds images at index time and accepts text, image, or PDF input at search time. To adapt this tutorial to an application:
+
+- Replace the sample images and metadata with your own visual archive.
+- Add metadata filters that reflect your application's access controls, categories, or date ranges.
+- Adjust `k` and `num_candidates` to balance result quality and query performance for your dataset.
+
+## Related pages [multimodal-tutorial-related]
+
+- [Multimodal search](../multimodal-search.md)
+- [`semantic` field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md)
+- [Jina multimodal embeddings](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-multimodal-embeddings)
+- [{{infer}} endpoints](/explore-analyze/elastic-inference/inference-api.md)
+- [kNN search](../vector/knn.md)

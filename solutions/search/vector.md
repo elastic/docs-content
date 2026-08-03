@@ -166,7 +166,7 @@ The [Semantic search for text](semantic-search.md) section provides managed work
 The [Multimodal search](multimodal-search.md) section covers meaning-based retrieval across text, images, audio, video, and documents.
 
 - [Multimodal search](multimodal-search.md): Concepts, deployment options (EIS, external {{infer}}, on-prem), and recommended Jina models with the `semantic` field type.
-- [Multimodal search with Jina embeddings](multimodal-search/multimodal-search-tutorial.md): End-to-end tutorial for mapping, indexing, and running cross-modal queries.
+- [Build multimodal search with a semantic field](multimodal-search/multimodal-search-tutorial.md): Index images and search them with text, image, and PDF input.
 
 ### Advanced tutorials
 
