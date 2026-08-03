@@ -184,13 +184,16 @@ PUT image-index
 stack: ga 9.5
 ```
 
-Use the `near_real_time` parameter in the top-level `knn` object to control whether approximate kNN search includes vectors from data that was indexed recently but not yet fully prepared for search.
+Use the `near_real_time` parameter in the top-level `knn` object to control whether approximate kNN search includes vectors that have not yet been optimized for search.
 
-When `near_real_time` is `true`, kNN search can include vectors from newly indexed data, even if {{es}} has not finished optimizing them yet. Results may include documents you indexed seconds ago, but search can be slower while optimization is still in progress.
+For approximate kNN, {{es}} stores dense vector values per segment as an [HNSW graph](https://arxiv.org/abs/1603.09320) or as [DiskBBQ](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction) clusters. Building these structures is compute-intensive. Until that work finishes for newly indexed data, those vectors are not yet optimized for approximate kNN search. 
 
-When `near_real_time` is `false`, kNN search skips vectors that are not yet fully optimized. Indexing runs faster on large vector workloads, but documents you just indexed may not appear in kNN results until {{es}} finishes preparing them in the background.
+The default value depends on the [index mode](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting). For indices that use the `standard` mode, `near_real_time` defaults to `true`. For indices that use [`vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) mode, it defaults to `false`. Refer to [Index modes for vector search](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-modes) and [Vector index mode](../vector.md#vector-index-mode) for more information.
 
-The default value depends on the index mode. For indices that use the `standard` mode, `near_real_time` defaults to `true`. For indices that use `vectordb_document` mode, it defaults to `false`.
+When `near_real_time` is `true`, kNN search can include vectors from newly indexed data before optimization finishes. Results can include documents you indexed seconds ago, but search can be slower while optimization is still in progress. Use this when search freshness matters more than indexing throughput, for example interactive workflows where users expect newly indexed documents to appear in kNN results immediately.
+
+When `near_real_time` is `false`, kNN search skips vectors that are not yet fully optimized. This improves indexing throughput for large vector workloads, but newly indexed documents are excluded from kNN search results until background optimization is complete. Use this when you are indexing large volumes of vectors and can tolerate a short delay before those documents become searchable with approximate kNN.
+
 
 The following example overrides the default behavior and enables near-real-time search, so the approximate kNN query can include vectors that were indexed very recently:
 
