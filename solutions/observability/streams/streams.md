@@ -113,7 +113,7 @@ After adding processors, the **Data preview** simulates results, so you can veri
 ::::
 
 ::::{step} Configure retention
-Use the [**Retention**](./configure-retention.md) tab to control how long each stream stores data and manage storage costs. Review storage size, ingestion averages, and tier distribution before choosing a retention method:
+Use the [**Data lifecycle**](./configure-retention.md) tab (**Retention** in earlier versions) to control how long each stream stores data and manage storage costs. Review storage size, ingestion averages, and tier distribution before choosing a retention method:
 
 - **[Inherit retention](./configure-retention.md#streams-configure-retention-steps)**: Use settings from the stream's index template or parent stream.
 - **[Set a retention period](./configure-retention.md#streams-configure-retention-steps)**: Define a minimum number of days before data is deleted.
