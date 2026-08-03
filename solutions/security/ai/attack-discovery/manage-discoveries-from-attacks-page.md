@@ -25,7 +25,21 @@ At the top of the **Attacks** view, overview visualizations summarize activity. 
 :screenshot:
 ::::
 
-Below the summary, the Attacks table lists individual attacks. Expand an attack to see involved entities and steps in the attack chain.
+Below the summary, the Attacks table lists individual attacks. Expand an attack to see involved entities and steps in the attack chain. Open an attack to view its details in a flyout.
+
+### View discovery details in the flyout [attack-discovery-details-flyout]
+
+```{applies_to}
+stack: ga 9.5+
+serverless:
+  security: ga
+```
+
+When you open an attack, its details appear in a flyout. The attack title, status, alert count, assignees, and notes appear in the flyout header. On the **Overview** tab, the discovery information is organized into the following expandable sections:
+
+* **Attack Summary**: Contains the LLM-generated summary of the potential threat and a **Background** section with additional details.
+* **Visualizations**: Contains an **Attack Chain** diagram that maps the attack to [MITRE ATT&CK](https://attack.mitre.org/) tactics. 
+* **Insights**: Contains the **Entities** (related users and hosts) and **Correlation** (related alerts) panels. Select a panel to open a child flyout with full details.
 
 ## Check Attack Discovery runs in Generations [attacks-view-generations]
 
