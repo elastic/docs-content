@@ -37,7 +37,7 @@ This is caused by an {{agent}} change in 9.5.0 that runs Heartbeat under the OTe
 
 Pin Heartbeat back to the process runtime by adding an override to the {{fleet}} agent policy that backs the private location: `{ "agent": { "internal": { "runtime": { "heartbeat": { "default": "process" } } } } }`. The change takes effect on the next policy revision and is fully reversible.
 
-If you are upgrading from 9.4.x, you can apply this override *before* you upgrade to avoid downtime. It has no effect on 9.4.x (Heartbeat already uses the process runtime there), and because the setting lives on the agent policy it is already in effect the moment the agent upgrades to 9.5.0.
+If you are upgrading from 9.4.x, you can apply this override *before* you upgrade to avoid downtime. It has no effect on 9.4.x (Heartbeat already uses the process runtime there). Because the setting lives on the agent policy, it is already in effect the moment the agent upgrades to 9.5.0.
 
 For more information, check [elastic-agent#15968](https://github.com/elastic/elastic-agent/issues/15968).
 ::::
