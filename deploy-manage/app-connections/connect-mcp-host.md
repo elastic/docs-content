@@ -123,6 +123,29 @@ When the `mcp-remote` adapter starts the OAuth flow, it listens for the authoriz
 
 ::::
 
+::::{tab-item} Claude's web interface
+
+Claude's web interface (https://claude.ai) supports OAuth natively, so no additional adapter is required.
+
+To configure Claude's web interface:
+
+1. Log in to https://claude.ai
+2. Open **Settings → Connectors → Add → Add custom connector**.
+2. Enter a name, the URL, and Client ID.
+
+
+   :::{note}
+   Confidential clients also require a Client Secret.
+   :::
+
+3. Click **Add**.
+4. Click **Connect**
+
+When the Claude web interface starts the OAuth flow, it listens for the authorization response at `https://claude.ai/api/mcp/auth_callback`.
+If you get an authorization error, be sure to check that your OAuth Client you created in the previous steps had this redirect URI configured.
+
+::::
+
 ::::{tab-item} Other
 
 Most hosts that support OAuth 2.1 accept a similar configuration to Claude. Provide the `{MCP_SERVER_URL}` and `{CLIENT_ID}` in the format your host requires.
