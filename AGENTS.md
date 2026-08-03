@@ -83,7 +83,6 @@ The **Elastic docs skills** (from <https://github.com/elastic/elastic-docs-skill
 
 | Task | Skill |
 |---|---|
-| Issue to drafted PR, end to end | `accept-docs-quest` |
 | `applies_to` tagging and cumulative docs | `docs-applies-to-tagging` |
 | Content type structure and depth | `docs-content-type-checker` |
 | Style, voice, and grammar | `docs-check-style` |
