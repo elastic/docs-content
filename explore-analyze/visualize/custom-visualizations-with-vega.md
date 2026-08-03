@@ -114,7 +114,7 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
 
 1. Tells {{kib}} to run the query as {{esql}}.
 2. Applies the dashboard filters to the query.
-3. Enables the `?_tstart` and `?_tend` named parameters so the query uses the dashboard time range.
+3. Sets `@timestamp` as the time field for the dashboard time range.
 4. The {{esql}} query. {{kib}} converts the columnar response into the row-based format that **Vega** expects.
 
 The chart shows event counts over time from `kibana_sample_data_logs`. For the full list of {{esql}} `url` parameters, see [Writing {{esql}} queries in Vega](#vega-esql-queries).
@@ -1457,6 +1457,8 @@ If your data has no `@timestamp` field and you don't specify one, the query isn'
 
 Wherever you use `?_tstart` and `?_tend`, {{kib}} replaces them with the start and end of the time range, even if you also set `"%timefield%"`.
 
+Time filtering is separate from `"%context%"`, which applies the dashboard filters.
+
 For example, this metric counts documents within the dashboard time range, with no time configuration in the spec:
 
 ```json
@@ -1502,9 +1504,7 @@ For example, this metric counts documents within the dashboard time range:
 
 :::::
 
-Time filtering works independently of `"%context%"`.
-
-The following example creates a line chart that counts documents over time. It uses `"%context%"` to apply the dashboard filters, `"%timefield%"` to integrate with the dashboard time range, and the `?_tstart` and `?_tend` parameters to bound the histogram buckets to that range. To try it, [install the sample web logs data set](/manage-data/ingest/sample-data.md), open a new custom visualization on a dashboard, and paste the spec:
+The following example creates a line chart of document counts over time. It wires the time range explicitly by setting `"%timefield%"` and filtering with `?_tstart` and `?_tend`, so it behaves the same in every version. It also applies the dashboard filters with `"%context%"` and groups the results into two-hour buckets. To try it, [install the sample web logs data set](/manage-data/ingest/sample-data.md), open a new custom visualization on a dashboard, and paste the spec:
 
 ```json
 {
