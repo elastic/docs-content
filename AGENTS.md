@@ -1,6 +1,6 @@
 # Agent guidance for elastic/docs-content
 
-This is the shared baseline for AI agents working in this repository. Claude Code reads it through `CLAUDE.md`, a symlink to this file. Cursor, Codex, and Copilot read `AGENTS.md` directly. Personal preferences belong in the gitignored `CLAUDE.local.md` or `AGENTS.local.md`, which load in addition to this file.
+This is the shared baseline for AI agents working in this repository. Claude Code reads it through `CLAUDE.md`, a symlink to this file. Cursor, Codex, and Copilot read `AGENTS.md` directly. Personal preferences belong in the gitignored `CLAUDE.local.md` or `AGENTS.local.md`, which load in addition to this file. These are conventions for working in the repo, not instructions to push or open PRs on your own, and they never override your own tool settings, such as an approval-before-push rule.
 
 Keep this file lean: it points to the [`contribute-docs/`](contribute-docs/index.md) guide rather than restating it. Two resources back it up. When the **Elastic docs skills** are installed, reach for the relevant skill first, since it's the fast path. When a skill doesn't fit or you're unsure, the contribution guide has the deeper context, and unlike the skills it's always present in this repo. If this file and the contribution guide ever disagree, the guide wins, so fix this file.
 
@@ -66,7 +66,7 @@ High-signal conventions:
 - Use MyST directives per the [syntax quick reference](contribute-docs/syntax-quick-reference.md). Keep content in prose where it reads naturally, and don't stack admonitions.
 - Write links with the [docs-builder link syntax](https://elastic.github.io/docs-builder/syntax/links/), including the cross-repo `<repo>://` form. Validate them with the `crosslink-validator` skill.
 
-## Before you open a PR
+## When you open a PR
 
 Opening a PR builds a preview automatically. The link appears on the PR and updates within minutes. Before requesting review, check your changes for:
 

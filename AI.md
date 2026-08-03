@@ -1,6 +1,6 @@
 # Contributing to docs with AI
 
-AI tools can help you draft, restructure, and review documentation in this repo. They don't change the bar. If your name is on the PR, you own every word in it.
+AI tools can help you draft, restructure, and review documentation in this repo. They don't change the bar: AI-assisted contributions follow the same [contribution guide](contribute-docs/index.md) as any other change. If your name is on the PR, you own every word in it.
 
 ## Own what you submit
 
