@@ -23,6 +23,25 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+::::{dropdown} Synthetics browser monitors on private locations fail to run on {{agent}} 9.5.0
+
+Applies to: {{stack}} 9.5.0
+
+**Details**
+
+Browser (journey) monitors assigned to a {{fleet}}-managed private location do not run when the private location's {{agent}} is on version 9.5.0. In the Synthetics UI the monitor produces no results, and the agent reports the Synthetics browser component as permanently failed with `missing required field accessing 'heartbeat.monitors.0.schedule'`. Lightweight monitors (HTTP, TCP, and ICMP) on the same private location are not affected, and monitors on Elastic-managed locations are not affected.
+
+This is caused by an {{agent}} change in 9.5.0 that runs Heartbeat under the OTel runtime by default; that runtime rejects the schedule-less data-routing sub-streams (`browser.network` and `browser.screenshot`) that a browser monitor emits.
+
+**Workaround**
+
+Pin Heartbeat back to the process runtime by adding an override to the {{fleet}} agent policy that backs the private location: `{ "agent": { "internal": { "runtime": { "heartbeat": { "default": "process" } } } } }`. The change takes effect on the next policy revision and is fully reversible.
+
+If you are upgrading from 9.4.x, you can apply this override *before* you upgrade to avoid downtime. It has no effect on 9.4.x (Heartbeat already uses the process runtime there), and because the setting lives on the agent policy it is already in effect the moment the agent upgrades to 9.5.0.
+
+For more information, check [elastic-agent#15968](https://github.com/elastic/elastic-agent/issues/15968).
+::::
+
 ::::{dropdown} Upgrading to 9.3.x fails when a rule action contains oversized content
 
 Applies to: {{stack}} 9.3.0, 9.3.1, 9.3.2, 9.3.3, 9.3.4
