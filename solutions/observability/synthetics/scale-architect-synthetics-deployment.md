@@ -34,7 +34,7 @@ stack: removed 9.5+
 serverless: unavailable
 ```
 
-Do not use {{ccs}} ({{ccs-init}}) or {{ccr}} ({{ccr-init}}) to federate Synthetics data across deployments. The Synthetics UI manages monitors and settings as {{kib}} saved objects, which are not shared using {{ccs-init}} or {{ccr-init}}. If you use {{ccs-init}} to query Synthetics data from a remote cluster, monitors appear in the UI but cannot be managed there. Use the {{synthetics-app}} on the cluster where the monitors are defined.
+Do not use {{ccs}} ({{ccs-init}}) or {{ccr}} ({{ccr-init}}) to federate Synthetics data across deployments. The Synthetics UI manages monitors and settings as {{kib}} saved objects. Because these saved objects are not shared using {{ccs-init}} or {{ccr-init}}, the Synthetics UI doesn't show remote monitor data when you configure {{ccs-init}} or {{ccr-init}} directly. Use the {{synthetics-app}} on the cluster where the monitors are defined.
 
 You can, however, use [Dashboards](/explore-analyze/dashboards.md) or [Discover](/explore-analyze/discover.md) with {{ccs-init}} to query `synthetics-*` indices directly.
 

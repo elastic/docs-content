@@ -141,7 +141,7 @@ To configure remote clusters, go to **{{stack-manage-app}} → Remote Clusters**
 
 ### Spaces with access [synthetics-settings-remote-clusters-spaces]
 
-Use the **Spaces** combo box to control which {{kib}} spaces can access these {{ccs-init}} settings. Select one or more specific spaces, or select **All spaces** to make the settings available across your entire deployment. Removing a space makes the settings inaccessible there, meaning that users in that space see default {{ccs-init}} settings instead.
+Use the **Spaces** combo box to control which {{kib}} spaces can access these {{ccs-init}} settings. Select one or more specific spaces, or select **All spaces** to make the settings available across your entire deployment. Removing a space makes these settings inaccessible there, and Synthetics no longer includes monitor data from remote clusters in that space.
 
 ::::{note}
 The **Spaces** field shows the current sharing configuration when you open the tab (your current space by default). Clearing the field and saving leaves that configuration unchanged, meaning it does not remove access from existing spaces. To update which spaces have access, select the new spaces explicitly.
