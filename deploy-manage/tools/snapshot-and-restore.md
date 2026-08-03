@@ -178,7 +178,7 @@ The following table shows whether an index can be restored to a given cluster ve
 | 6.8                   | ✅ ^1^                                   | ✅ ^1^   | ❌      | ✅       | ❌      | ✅  |
 | 7.0–7.1               | ✅ ^1, 2^                                | ✅       | ✅      | ✅       | ✅      | ❌  |
 | 7.2–7.17              | ✅ ^1, 2^                                | ✅       | ✅      | ✅       | ❌      | ❌  |
-| 8.0–8.19              | ✅                                       | ✅       | ✅      | ❌       | ❌      | ❌  |
+| 8.0–8.19              | ✅                                       | ✅ ^3^   | ✅ ^3^  | ❌       | ❌      | ❌  |
 | {{version.stack.base}}–{{version.stack}} | ✅                            | ❌       | ❌      | ❌       | ❌      | ❌  |
 :::
 
@@ -186,6 +186,8 @@ The following table shows whether an index can be restored to a given cluster ve
 ^1^ $$$footnote-1$$$ Supported with [archive indices](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md).
 
 ^2^ $$$footnote-2$$$ Supported with [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md).
+
+^3^ $$$footnote-3$$$ Restoring to a cluster within the same major version is only supported if the target cluster's minor version is greater than or equal to the index creation minor version.
 
 You can’t restore an index to an earlier version of {{es}}. For example, you can’t restore an index created in 8.18.0 to a cluster running 8.15.0.
 
