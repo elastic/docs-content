@@ -33,5 +33,5 @@ Disclose AI assistance even when you've verified everything.
 ## Keep it reviewable
 
 - Re-render the PR description from what the diff actually contains before requesting review.
-- Keep PRs focused and small enough that a reviewer can verify them. Break up a change too large to review.
+- Make small, atomic commits, each a single coherent change, so a reviewer can follow your work.
 - Don't fabricate or auto-generate screenshots. Suggest which ones to add or update and which carry the most value, and add one yourself when a suitable image is provided.
