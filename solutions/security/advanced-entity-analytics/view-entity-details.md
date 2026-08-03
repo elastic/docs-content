@@ -82,18 +82,33 @@ The risk summary table shows the category, score, and number of risk inputs that
 
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` For entities that belong to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md), the section shows both the individual **Entity risk score** and the **Resolution group risk score** — the aggregated score across all linked entities in the group — each with their own score and inputs breakdown.
 
-To expand the entity risk summary section, click **View risk contributions**. The **Risk contributions** tab displays additional details about the entity's risk inputs:
+To expand the entity risk summary section, click **View risk contributions**. The **Risk contributions** tab displays additional details about the entity's risk inputs.
 
-* Non-alert risk inputs and their contribution scores, including: 
-  * Asset criticality level
-  * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Watchlist membership 
-  * {applies_to}`stack: removed 9.4+, ga =9.3, preview 9.1-9.2` Privileged user status
+#### Risk score history [risk-score-history]
+```yaml {applies_to}
+stack: ga 9.5+
+serverless: ga
+```
 
-* The top 10 alerts that contributed to the latest risk scoring calculation, and each alert's contribution score. If more than 10 alerts contributed to the risk scoring calculation, the remaining alerts' aggregate contribution score is displayed below the **Alerts** table.
+Risk scoring recalculates every hour, and every calculation is retained. The expanded entity risk summary opens with a risk score history chart, which shows the entity's score over time so you can identify when its risk posture changed. Dashed reference lines mark the **Low**, **Moderate**, **High**, and **Critical** [risk levels](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#how-is-risk-score-calculated), which helps you spot when the entity crossed a threshold.
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` For entities that belong to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md), each risk input row includes an **Entity ID** column identifying which group member contributed that input.
+To change the time range, use the time filter. Each point on the chart shows the highest risk score recorded for that period.
 
-{applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` If you have [AI Assistant](/solutions/security/ai/ai-assistant.md) set up, you can also ask it to explain how the risk inputs contributed to the entity's risk score and recommend next steps.
+To investigate an earlier score, click its point on the chart. The **Contexts** and **Alerts** tables switch from the latest calculation to the calculation you selected, and a callout confirms which scoring run you're viewing. This allows you to answer questions such as which alerts drove a spike last week, or what an entity's asset criticality level was at the time it was scored.
+
+To return to the latest calculation, click **Back to latest** in the callout, or click the selected point again.
+
+#### Contexts [risk-contexts]
+
+The **Contexts** table shows non-alert risk inputs and their contribution scores, including:
+
+* Asset criticality level
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Watchlist membership 
+* {applies_to}`stack: removed 9.4+, ga =9.3, preview 9.1-9.2` Privileged user status
+
+#### Alerts [risk-alerts]
+
+The **Alerts** table shows the top 10 alerts that contributed to the risk scoring calculation, and each alert's contribution score. If more than 10 alerts contributed to the calculation, the remaining alerts' aggregate contribution score is displayed below the table.
 
 ### Behavioral anomalies [behavioral-anomalies]
 ```yaml {applies_to}
