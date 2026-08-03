@@ -259,6 +259,7 @@ Sometimes, the scope behaves differently:
 
 * **The dashboard restores a saved scope on open.** Some dashboards are configured to [store a {{cps}} scope](/explore-analyze/dashboards/create-dashboard.md). When you open them, the {{cps-init}} scope selector is set to the stored scope. You can still change it during your session.
 * **A panel has a Custom CPS scope badge.** This means the panel uses [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) to query a fixed set of projects. It is not affected when you change the dashboard's scope. Select the badge to view which projects the panel queries.
+* **Query bar and filter value suggestions come from the origin project.** When you type in the query bar or add a filter, the suggested field values reflect only the origin project, regardless of the selected scope. To filter on values from linked projects, enter them manually or use an **Options list** control.
 
 
 ## Full screen mode and maximized panel views [_full_screen_mode_and_maximized_panel_views]
