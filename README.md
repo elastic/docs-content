@@ -43,6 +43,8 @@ Reusable prose lives in `_snippets/` folders and is pulled in with an `include` 
 
 ## Contribute
 
+New to contributing? Start with the [contribution guide](https://www.elastic.co/docs/contribute-docs), which covers our style, content types, and how to [build and preview locally with docs-builder](https://www.elastic.co/docs/contribute-docs/locally).
+
 If you find any bugs in our documentation, or want to request an enhancement, [open an issue](https://github.com/elastic/docs-content/issues). We also welcome contributions in the form of PRs. Before you submit a PR, make sure that you have signed our [Contributor License Agreement](https://www.elastic.co/contributor-agreement/).
 
 We write our docs in markdown. Refer to our [syntax quick reference](https://elastic.co/docs/contribute-docs/syntax-quick-reference) for examples and additional functionality. If you contribute with the help of AI agents or tools, see [`AGENTS.md`](AGENTS.md) and [`AI.md`](AI.md).
