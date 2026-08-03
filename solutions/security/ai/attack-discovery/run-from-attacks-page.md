@@ -20,6 +20,7 @@ To use the **Attacks** view, you need:
 
 * The [Enable alerts and attacks alignment](/solutions/security/get-started/configure-advanced-settings.md#enable-alerts-and-attacks-alignment) advanced setting turned on (only required for {{stack}} 9.4). 
 * The [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on if you want the settings flyout with skill, query, and workflow retrieval.
+* A [configured LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md) that uses a model recommended for Attack Discovery in the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md), unless your subscription or project already includes an [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md).
 * A role with the [index privileges](/solutions/security/ai/attack-discovery/grant-access.md#ad-index-privileges) required to generate and read discoveries, and these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_kibana_privileges) at minimum:
   * **Security → Attack discovery**: `All`
   * **Security → Rules and Exceptions**: `Read`

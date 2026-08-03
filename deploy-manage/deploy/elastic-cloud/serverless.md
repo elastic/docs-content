@@ -80,7 +80,8 @@ A: {{serverless-full}} is available in select AWS, GCP, and Azure regions, with 
 ### Data management
 
 **Q: How can I move data to or from {{serverless-short}} projects?**  
-A: We are working on data migration tools. In the interim, [use Logstash](logstash://reference/index.md) with {{es}} input and output plugins to move data to and from {{serverless-short}} projects.
+A: You can [use Reindex from remote](/manage-data/migrate/migrate-data-using-reindex-api.md) as the most direct and managed
+option. You can also [use Logstash](logstash://reference/index.md) with {{es}} input and output plugins to move data to and from {{serverless-short}} projects.
 
 **Q: Can I request backups or restores for my serverless projects?**  
 A: Request for project backups or restores is currently unsupported, and we are working on data migration tools to better support this.
