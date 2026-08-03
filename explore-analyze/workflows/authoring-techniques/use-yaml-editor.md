@@ -53,9 +53,31 @@ Every workflow execution is either a test run or a production run. Understanding
 | | Test run {icon}`flask` | Production run {icon}`play` |
 |---|---|---|
 | **Purpose** | Try out a workflow or individual step while authoring | Run an enabled workflow for real |
-| **How to start** | Click **Run** {icon}`play` in the workflow editor. | Click **Run** from the workflow list, or let a configured trigger fire. |
+| **How to start** | Click **Run** {icon}`play` in the workflow editor. Refer to [Provide data for a test run](#workflows-supply-test-input) for more information. | Click **Run** from the workflow list, or let a configured trigger fire. |
 | **Scope** | Entire workflow or a single step | Entire workflow |
 | **Execution history** | Saved with a flask ({icon}`flask`) badge so you can filter for test runs. Step-level test runs are not saved in history. ![Alt text](/explore-analyze/images/workflows-test-runs.png "=700x600") | Saved without a badge. Filter the executions list by **production** to see only these runs. ![Alt text](/explore-analyze/images/workflows-filter-prod-runs.png "=700x600") |
 | **Template context** | `execution.isTestRun` resolves to `true`. | `execution.isTestRun` resolves to `false`. |
 
 You can use the `execution.isTestRun` context variable in your workflow YAML to change behavior during testing. For example, you can choose to skip sending a real notification during a test run.
+
+## Provide data for a test run [workflows-supply-test-input]
+
+When you click **Run** {icon}`play` in the editor, the **Test workflow** dialog asks what data to run the workflow against. Choose one of the following:
+
+- **Document**: Use a real document from {{es}}.
+- **Manual**: Type your own JSON.
+- **Historical**: Reuse the data from a previous run. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+
+### Use a document from {{es}} [workflows-supply-test-input-document]
+
+Select **Document**, then search for and pick a document from an {{es}} index. The workflow runs against that document's actual field values, which is useful for confirming your steps behave correctly with real data before you rely on a live trigger.
+
+### Type your own JSON [workflows-supply-test-input-manual]
+
+Select **Manual**, then enter JSON directly in the dialog. This is useful for testing a specific scenario, such as an edge case or a field value that's hard to find in your existing data.
+
+Select **Historical**, then, under **Select execution**, search or pick a previous run from the list. A time-range filter next to the picker defaults to the last week, so you can narrow a long execution history down to the runs you care about. After you select an execution, click **Run** to start a test run using that execution's data.
+
+Reusing data this way is useful when you want to reproduce an issue or validate a workflow change against real data from a prior run, without tracking down the original event or re-entering values by hand.
+
+For [event-driven](/explore-analyze/workflows/triggers/event-driven-triggers.md) workflows, the dialog also includes an **Event** tab where you can pick a real event to test against. Refer to [Test a workflow with a real event](/explore-analyze/workflows/triggers/event-driven-triggers.md#event-driven-triggers-test).

@@ -43,18 +43,9 @@ Every execution begins with a trigger entry that shows how the run started, such
 
 ## View execution history [workflows-execution-history]
 
-To review past runs, select the **Executions** tab, then click each run to see detailed logs. Workflow runs can be `Pending`, `In progress`, `Completed`, or `Failed`. 
+To review past runs, select the **Executions** tab, then click each run to see detailed logs. Workflow runs can be `Pending`, `In progress`, `Completed`, or `Failed`.
 
-## Filter historical executions by time range [workflows-execution-history-time-range]
-
-```{applies_to}
-stack: ga 9.5+
-serverless: ga
-```
-
-**Run again** and **Run step again** replay a past execution instead of triggering a new manual run. They reuse the input and context from an execution you select, which is useful for reproducing an issue or testing a step change against real prior data. The execution picker in these dialogs includes a time-range filter next to the selection list. The filter defaults to the last week through now, so you can narrow a long execution history down to the runs you care about.
-
-When you open replay from a specific execution (for example, by selecting **Run again** or **Run step again** on that execution's details), Kibana anchors the range to it automatically: the end of the range becomes that run's start time, which covers the week leading up to it. If you then adjust the range so the selected execution no longer falls within it, Kibana clears the selection, and you need to choose a new execution before you can submit the replay.
+To start a new test run with data from a past execution, refer to [Provide data for a test run](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md#workflows-supply-test-input).
 
 ## Troubleshoot errors [workflows-troubleshoot-errors]
 
