@@ -29,7 +29,7 @@ From the Workflows page, you can create new workflows, search and filter existin
 
 ### Create a workflow [workflow-create]
 
-Click **Create workflow**. Choose to describe the workflow [using natural language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md) or the [YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md).
+Click **Create workflow** to open the YAML editor with the AI chat sidebar. You can [describe the workflow in natural language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md), write [YAML](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) by hand, or move between the two.
 
 ### Search and filter [workflow-search-filter]
 
