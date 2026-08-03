@@ -64,7 +64,7 @@ High-signal conventions:
 - Bold UI labels and controls, such as **Save**, **Add panel**, and **Settings**.
 - Separate navigation steps with ` → `, as in **Add** → **Controls** → **Variable control**.
 - Use MyST directives per the [syntax quick reference](contribute-docs/syntax-quick-reference.md). Keep content in prose where it reads naturally, and don't stack admonitions.
-- Write links with the [docs-builder link syntax](https://elastic.github.io/docs-builder/syntax/links/), including the cross-repo `<repo>://` form. Validate them with the `crosslink-validator` skill.
+- Write links with the [docs-builder link syntax](https://elastic.github.io/docs-builder/syntax/links/), including the cross-repo `<repo>://` form.
 
 ## When you open a PR
 
@@ -91,7 +91,6 @@ The **Elastic docs skills** (from <https://github.com/elastic/elastic-docs-skill
 | Frontmatter completeness and descriptions | `docs-frontmatter-audit`, `docs-frontmatter-description` |
 | Page opening (H1, intro, requirements) | `docs-page-opening-optimizer` |
 | Code sample validation | `docs-validate-code-samples` |
-| Cross-link validation | `crosslink-validator` |
 | Redirects | `docs-redirects` |
 
 The **elastic-docs MCP**, when available, searches the published corpus, finds related pages, and checks coherence.
