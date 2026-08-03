@@ -1496,7 +1496,7 @@ For example, this metric counts documents within the dashboard time range:
 }
 ```
 
-1. Turns on the `?_tstart` and `?_tend` parameters. Set it to your time field so the spec keeps working in 9.5 and later.
+1. Turns on the `?_tstart` and `?_tend` parameters. Set it to your time field so the spec keeps working in later versions.
 2. Filters with the parameters. {{kib}} replaces `?_tstart` and `?_tend` with the start and end of the dashboard time range.
 ::::
 
