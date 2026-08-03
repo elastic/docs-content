@@ -29,7 +29,7 @@ Applies to: {{stack}} 9.5.0
 
 **Details**
 
-Browser (journey) monitors assigned to a {{fleet}}-managed private location do not run when the private location's {{agent}} is on version 9.5.0. In the Synthetics UI the monitor produces no results, and the agent reports the Synthetics browser component as permanently failed with `missing required field accessing 'heartbeat.monitors.0.schedule'`. Lightweight monitors (HTTP, TCP, and ICMP) on the same private location are not affected, and monitors on Elastic-managed locations are not affected.
+Browser (journey) monitors assigned to a {{fleet}}-managed private location do not run when the private location's {{agent}} is on version 9.5.0. In the Synthetics UI, the monitor produces no results, and the agent reports the Synthetics browser component as permanently failed with `missing required field accessing 'heartbeat.monitors.0.schedule'`. Lightweight monitors (HTTP, TCP, and ICMP) on the same private location and monitors on Elastic-managed locations are not affected.
 
 This is caused by an {{agent}} change in 9.5.0 that runs Heartbeat under the OTel runtime by default; that runtime rejects the schedule-less data-routing sub-streams (`browser.network` and `browser.screenshot`) that a browser monitor emits.
 
