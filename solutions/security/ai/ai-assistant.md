@@ -89,7 +89,7 @@ This opens the **Welcome** chat interface, where you can ask general questions a
 
 You can also chat with AI Assistant from several particular pages in {{elastic-sec}} where you can easily send context-specific data and prompts to AI Assistant.
 
-* [Alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md) or Event details flyout: Click **Chat** while viewing the details of an alert or event.
+* [Alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md) or Event details flyout: Click **Ask AI Assistant** (or **Add to chat**, if [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) is enabled) in the footer while viewing the details of an alert or event.
 * [Detection rules (SIEM)](/solutions/security/detect-and-alert/manage-detection-rules.md): Use AI Assistant to help create or correct rule queries.
 * [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md): Select the **Incompatible fields** tab, then click **Chat**. (This is only available for fields marked red, indicating they’re incompatible).
 
