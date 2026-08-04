@@ -6,6 +6,8 @@ applies_to:
     ess: ga
 products:
   - id: cloud-hosted
+sub:
+  example-phz-dn: "vpce.us-east-1.aws.elastic-cloud.com in AWS, or my-deployment-d53192.kb.privatelink.eastus2.azure.elastic-cloud.com in Azure"
 ---
 
 # Restrictions and known problems [ec-restrictions]

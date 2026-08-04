@@ -51,7 +51,7 @@ The following elements are required in troubleshooting pages:
    - `description`: A brief summary of the page fit for search results and tooltips.
    - `product`: The relevant Elastic product(s) the page relates to.
 3. A clear **title:** A brief description of the problem, written from the user's perspective.
-   - For example: "EDOT Collector doesn't propagate client metadata", "No application-level telemetry visible in {{kib}}", or "Logs are missing after upgrading {{agent}}".
+   - For example: "{{agent}} doesn't propagate client metadata", "No application-level telemetry visible in {{kib}}", or "Logs are missing after upgrading {{agent}}".
 4. A **Symptoms** section: Describe what users can observe when the problem occurs.
    - Focus only on user-visible behavior.
    - Do not explain causes.
@@ -111,5 +111,5 @@ All new troubleshooting pages must be created using [the template](https://githu
 Here are some examples of well-structured troubleshooting pages in the Elastic documentation:
 
 - [No logs, metrics, or traces visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md): Addresses a specific data visibility issue with clear symptoms and resolution steps.
-- [EDOT Collector doesn't propagate client metadata](/troubleshoot/ingest/opentelemetry/edot-collector/metadata.md): Focuses on a specific configuration problem with symptoms and actionable resolution steps.
+- [{{agent}} doesn't propagate client metadata](/troubleshoot/ingest/opentelemetry/edot-collector/metadata.md): Focuses on a specific configuration problem with symptoms and actionable resolution steps.
 - [Troubleshoot common errors in {{es}}](/troubleshoot/elasticsearch/errors.md): An example of an error reference wayfinding page that organizes multiple error-based troubleshooting topics.
