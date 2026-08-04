@@ -13,7 +13,7 @@ reach out to **@elastic/docs** in the related GitHub issue or PR.
 In [elastic.co/docs](https://elastic.co/docs) (Docs V3) we write docs cumulatively. This means that in our Markdown-based docs, there is no longer a new documentation set published with every minor release: the same page stays valid over time and shows version-related evolutions.
 
 :::{important}
-This new behavior starts with the following **versions** of our products: Elastic Stack 9.0, ECE 4.0, ECK 3.0, and even more like EDOT docs. It also includes our unversioned products: Serverless and Elastic Cloud.
+This new behavior starts with the following **versions** of our products: Elastic Stack 9.0, ECE 4.0, ECK 3.0, and even more like {{edot}} docs. It also includes our unversioned products: Serverless and Elastic Cloud.
 
 Nothing changes for our AsciiDoc-based documentation system, that remains published and maintained for the following versions: Elastic Stack until 8.x, ECE until 3.x, ECK until 2.x, and so on.
 :::

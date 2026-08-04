@@ -15,7 +15,7 @@ products:
 
 # Insufficient resources issue with Kube-Stack Helm Chart
 
-The OpenTelemetry Kube-Stack Helm Chart deploys multiple EDOT collectors with varying configurations based on the selected architecture and deployment mode. On larger clusters, the default Kubernetes resource limits might be insufficient.
+The OpenTelemetry Kube-Stack Helm Chart deploys multiple {{agents}} with varying configurations based on the selected architecture and deployment mode. On larger clusters, the default Kubernetes resource limits might be insufficient.
 
 ## Symptoms   
 
