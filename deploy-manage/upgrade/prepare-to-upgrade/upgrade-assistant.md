@@ -18,7 +18,7 @@ The Upgrade Assistant helps you [prepare to upgrade](/deploy-manage/upgrade/prep
 To access the assistant, go to the **Upgrade Assistant** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::{note}
-The Upgrade Assistant relies only on local {{es}} and {{kib}} APIs (see [Deprecations](#_deprecations) below) to detect deprecations and prepare your cluster for upgrade — it doesn't depend on any external service. This means you can use it even in air-gapped environments without internet access.
+The Upgrade Assistant relies only on local {{es}} and {{kib}} APIs to detect deprecations and prepare your cluster for upgrade. It doesn't depend on any external service, so you can use it in air-gapped environments without internet access. For details on the APIs it uses, refer to [Deprecations](#_deprecations).
 ::::
 
 ::::{tip}
