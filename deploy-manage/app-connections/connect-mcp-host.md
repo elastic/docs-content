@@ -82,6 +82,10 @@ Confidential clients must include the client secret in the `--static-oauth-clien
 
 When the `mcp-remote` adapter starts the OAuth flow, it listens for the authorization response at `http://localhost/oauth/callback`. This is one of the default redirect URIs populated in the [MCP client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
 
+:::{note}
+The `mcp-remote` adapter stores OAuth credentials locally on your machine, keyed by MCP server URL. If more than one MCP host uses `mcp-remote` with the same server URL and client ID, those hosts share one app connection. After you complete the authorization flow in the first host, additional hosts that use the same configuration don't prompt you to authorize again.
+:::
+
 The server is now configured. Start a Claude Code session. The OAuth authorization flow triggers automatically on the first use of the server.
 
 ::::
@@ -150,6 +154,11 @@ To configure the Claude desktop app:
 
 When the `mcp-remote` adapter starts the OAuth flow, it listens for the authorization response at `http://localhost/oauth/callback`. This is one of the default redirect URIs populated in the [OAuth client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
 
+:::{note}
+The `mcp-remote` adapter stores OAuth credentials locally on your machine, keyed by MCP server URL. If more than one MCP host uses `mcp-remote` with the same server URL and client ID, those hosts share one app connection. After you complete the authorization flow in the first host, additional hosts that use the same configuration don't prompt you to authorize again.
+:::
+
+
 ::::
 
 ::::{tab-item} Claude web interface
@@ -182,10 +191,6 @@ Most hosts that support OAuth 2.1 accept a similar configuration to Claude. Prov
 ::::
 
 :::::
-
-:::{note}
-The `mcp-remote` adapter stores OAuth credentials locally on your machine, keyed by MCP server URL. If more than one MCP host uses `mcp-remote` with the same server URL and client ID, those hosts share one app connection. After you complete the authorization flow in the first host, additional hosts that use the same configuration don't prompt you to authorize again.
-:::
 
 ::::::
 
