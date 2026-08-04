@@ -190,14 +190,13 @@ ChatGPT assigns a unique callback URL to each app. You won't know this URL until
 
 To connect from ChatGPT:
 
-1. Click your profile, then go to **Settings → Apps**.
-2. Under **Advanced Settings**, enable enable **Developer Mode**.
-3. Create a custom app from **Settings → Apps → Create**.
-4. Enter a name and the MCP server URL, and select **OAuth** as the authentication type.
-5. Under **Registration method**, select **User-Defined OAuth Client**.
-6. Copy the **Callback URL** that ChatGPT displays. This URL is unique to the app and looks like `https://chatgpt.com/connector/oauth/{callback_id}`. Open your [OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) in a separate tab and add this URL as a **Remote** redirect URI.
-7. Return to ChatGPT. Enter the **Client ID** and **Client Secret** from your Elastic OAuth client.
-8. Click **Scan Tools** to start the OAuth flow, then complete the authorization prompt.
+1. Go to **Settings → Security and login** and enable **Developer mode**.
+2. Go to **Settings → Plugins**, then click the plus button to create a new plugin.
+3. Enter a name and the MCP server URL, and select **OAuth** as the authentication type.
+4. Under **Registration method**, select **User-Defined OAuth Client**.
+5. Copy the **Callback URL** that ChatGPT displays. This URL is unique to the app and looks like `https://chatgpt.com/connector/oauth/{callback_id}`. Open your [OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) in a separate tab and add this URL as a **Remote** redirect URI.
+6. Return to ChatGPT. Enter the **Client ID** and **Client Secret** from your Elastic OAuth client.
+7. Click **Scan Tools** to start the OAuth flow, then complete the authorization prompt.
 ::::
 
 ::::{tab-item} Cursor
