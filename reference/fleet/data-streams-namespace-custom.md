@@ -15,6 +15,12 @@ Namespace index templates are {{fleet}}-managed [index templates](/manage-data/d
 
 Use this feature when you want the same custom settings or mappings on every data stream in a specific namespace for a given integration, instead of editing each data stream's `@custom` component template separately.
 
+Setting up namespace index templates involves these steps:
+
+1. Enable namespace index templates for the namespace, in the [UI](#data-streams-namespace-custom-ui) or with the [API](#data-streams-namespace-custom-api).
+2. [Create the `<namespace>@custom` component template](#data-streams-namespace-custom-component) that holds the custom settings and mappings you want applied to every data stream in the namespace.
+3. If you have pre-existing index templates that overlap with the {{fleet}}-managed templates, [resolve the overlapping templates](#data-streams-namespace-custom-conflicts).
+
 ## How namespace index templates work [data-streams-namespace-custom-how]
 
 When you enable namespace index templates for a namespace on an installed integration, {{fleet}} creates one namespace index template for each data stream defined by the integration. The templates are named using the following pattern:
@@ -89,18 +95,7 @@ After you save, {{fleet}} creates the namespace index templates asynchronously. 
 Namespace index templates are shared across all integration policies for that integration and namespace. Enabling or turning them off for one policy updates the opt-in list for the entire integration.
 ::::
 
-## Create the namespace `@custom` component template [data-streams-namespace-custom-component]
-
-1. Find **Index Management** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and open the **Component Templates** tab.
-2. Select **Create component template**.
-3. Name the template using the pattern `<namespace>@custom` (for example, `production@custom`).
-4. Add the index settings, mappings, or aliases you want applied to every data stream in that namespace for opted-in integrations.
-5. Create the component template.
-6. Roll over each affected data stream so new backing indices pick up the changes. For example:
-
-    ```console
-    POST logs-system.application-production/_rollover
-    ```
+After you opt in, [create the `<namespace>@custom` component template](#data-streams-namespace-custom-component) so your customizations take effect.
 
 ## Enable namespace index templates with the API [data-streams-namespace-custom-api]
 
@@ -131,6 +126,21 @@ POST kbn:/api/fleet/epm/packages/_bulk_namespace_customization
 ```
 
 The bulk endpoint is additive and subtractive: `enable` adds namespaces to each package's opt-in list, and `disable` removes them. It does not replace the full list.
+
+Your customizations only apply after you create the `<namespace>@custom` component template.
+
+## Create the namespace `@custom` component template [data-streams-namespace-custom-component]
+
+1. Find **Index Management** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and open the **Component Templates** tab.
+2. Select **Create component template**.
+3. Name the template using the pattern `<namespace>@custom` (for example, `production@custom`).
+4. Add the index settings, mappings, or aliases you want applied to every data stream in that namespace for opted-in integrations.
+5. Create the component template.
+6. Roll over each affected data stream so new backing indices pick up the changes. For example:
+
+    ```console
+    POST logs-system.application-production/_rollover
+    ```
 
 ## Turn off namespace index templates [data-streams-namespace-custom-disable]
 
