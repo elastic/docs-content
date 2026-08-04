@@ -15,8 +15,43 @@ products:
 
 The `inputs` section of the `elastic-agent.yml` file specifies how {{agent}} locates and processes input data.
 
+* [Find the settings available for an input](#elastic-agent-input-configuration-available-settings)
 * [Sample metrics input configuration](#elastic-agent-input-configuration-sample-metrics)
 * [Sample log files input configuration](#elastic-agent-input-configuration-sample-logs)
+
+
+## Find the settings available for an input [elastic-agent-input-configuration-available-settings]
+
+{{agent}} does not define a separate set of settings for each input. Apart from a small number of fields that {{agent}} handles itself, the settings you specify on an input or a stream are passed through unchanged to the underlying collector, such as {{filebeat}} or {{metricbeat}}.
+
+This means you can use any setting documented for the corresponding {{beats}} input or module, even if it doesn't appear in the examples on this page. To find the settings available for an input, look up its `type` in [{{agent}} inputs](/reference/fleet/elastic-agent-inputs-list.md), then follow the link to the {{beats}} documentation for that input or module.
+
+{{agent}} handles the following input fields itself rather than passing them through:
+
+| Setting | Description |
+| --- | --- |
+| `type` | Required. The type of the input. Must match an input listed in [{{agent}} inputs](/reference/fleet/elastic-agent-inputs-list.md). |
+| `id` | A unique ID for the input, used in logging and event metadata. If omitted, it defaults to the input type. |
+| `use_output` | The name of the output to write to. Must match an output defined in the same policy. Defaults to `default`. |
+| `log_level` | The log level for this input. One of `error`, `warn`, `info`, `debug`, or `trace`. |
+
+For example, the {{metricbeat}} [System module](beats://reference/metricbeat/metricbeat-module-system.md) documents a `cpu.metrics` setting, and `period` is a [standard {{metricbeat}} module option](beats://reference/metricbeat/configuration-metricbeat.md). Both can be set directly on a stream:
+
+```yaml
+- type: system/metrics
+  id: unique-system-metrics-id
+  data_stream.namespace: default
+  use_output: default
+  streams:
+    - metricsets:
+        - cpu
+      data_stream.dataset: system.cpu
+      period: 10s <1>
+      cpu.metrics: [percentages, normalized_percentages] <2>
+```
+
+1. How often the metricsets are collected.
+2. Which CPU metrics to report. Supported values are `percentages`, `normalized_percentages`, and `ticks`. Defaults to `[percentages]`.
 
 
 ## Sample metrics input configuration [elastic-agent-input-configuration-sample-metrics]
@@ -47,7 +82,7 @@ By default {{agent}} collects system metrics, such as CPU, memory, network, and 
 2. A unique ID for the input.
 3. A user-defined namespace.
 4. The name of the `output` to use. If not specified, `default` will be used.
-5. The set of enabled module metricsets.Refer to the {{metricbeat}} [System module](beats://reference/metricbeat/metricbeat-module-system.md) for a list of available options. The metricset fields can be configured.
+5. The set of enabled module metricsets. Refer to the {{metricbeat}} [System module](beats://reference/metricbeat/metricbeat-module-system.md) for a list of available options. Any of these options can be set on the stream, as described in [Find the settings available for an input](#elastic-agent-input-configuration-available-settings).
 
 6. A user-defined dataset. It can contain anything that makes sense to signify the source of the data.
 
