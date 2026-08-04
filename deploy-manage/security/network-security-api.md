@@ -61,7 +61,7 @@ There are no specific requirements for other {{serverless-short}} project types,
 
 ## API reference
 
-To learn more about these endpoints, refer to the reference for your deployment type:
+Learn more about these endpoints in the reference for your deployment type:
 
 * [{{ecloud}} API]({{cloud-apis}}group/endpoint-deploymentstrafficfilter)
 * [{{ece}} API]({{ece-apis}}group/endpoint-deploymentstrafficfilter)
@@ -462,7 +462,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 '
 ```
 
-1. To learn how to find the value for `azure_endpoint_name` and `azure_endpoint_guid` for type `azure_private_endpoint`, refer to [Find your private endpoint resource name](private-connectivity-azure.md#ec-find-your-resource-name) and [Find your private endpoint resource ID](private-connectivity-azure.md#ec-find-your-resource-id). This setting is supported only in Azure regions.
+1. To learn how to find the values for `azure_endpoint_name` and `azure_endpoint_guid` for type `azure_private_endpoint`, refer to [Find your private endpoint resource name](private-connectivity-azure.md#ec-find-your-resource-name) and [Find your private endpoint resource ID](private-connectivity-azure.md#ec-find-your-resource-id). This setting is supported only in Azure regions.
 
 :::
 ::::
@@ -497,7 +497,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 '
 ```
 
-1. To find the value for `source` for type `gcp_private_service_connect_endpoint`, check [Find your Private Service Connect connection ID](private-connectivity-gcp.md#ec-find-your-psc-connection-id). This setting is supported only in GCP regions.
+1. To learn how to find the value for `source` for type `gcp_private_service_connect_endpoint`, refer to [Find your Private Service Connect connection ID](private-connectivity-gcp.md#ec-find-your-psc-connection-id). This setting is supported only in GCP regions.
 
 
 ## Update a policy or rule set [update-policy-rs]
