@@ -30,12 +30,12 @@ The entity details flyout includes the following sections:
 
 * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Flyout header, which displays key entity information and allows you to assign asset criticality.
 * [Entity summary](#entity-summary), which allows you to generate an AI summary of the entity.
-* [Entity risk summary](#entity-risk-summary), which displays entity risk data and inputs.
+* [Risk score](#risk-score), which displays entity risk data and inputs.
 * [Behavioral anomalies](#behavioral-anomalies), which shows {{ml}} anomalies detected for the entity, mapped to the MITRE ATT&CK framework.
 * [Visualizations](#visualizations), which shows a graph preview of the entity's connections and relationships.
 * [Resolution](#resolution), which allows you to view and manage the entity's resolution group.
 * [Insights](#insights), which displays vulnerabilities or misconfiguration findings for the entity.
-* [Observed data](#observed-data), which displays entity details.
+* [Observed attributes](#observed-attributes), which displays entity details.
 * [Asset Criticality](#asset-criticality), which allows you to view and assign asset criticality.
 
 
@@ -68,32 +68,52 @@ The summary provides a consolidated view of the entity's security posture, helpi
 If you have [AI Assistant](/solutions/security/ai/ai-assistant.md) or [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) set up, you can select **More actions** ({icon}`boxes_vertical`) → **Ask AI Assistant** or **Add to chat** to continue the conversation about the entity in AI Assistant or Agent Builder.
 ::::
 
-### Entity risk summary
+### Risk score [risk-score]
 
 ::::{admonition} Requirements
-The entity risk summary section is only available if the [risk scoring engine is turned on](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
+This section is only available if the [risk scoring engine is turned on](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
 ::::
 
-The entity risk summary section contains a risk summary visualization and table.
+::::{note}
+:applies_to: stack: ga 9.0-9.3
+In these versions, this section is called **Host risk summary**, **User risk summary**, or **Service risk summary** depending on the entity type.
+::::
 
-The risk summary visualization shows the entity risk score and risk level. Hover over the visualization to display the **Options** menu. Use this menu to inspect the visualization's queries, add it to a new or existing case, save it to your Visualize Library, or open it in Lens for customization.
+The **Risk score** section contains a risk score visualization and table.
 
-The risk summary table shows the category, score, and number of risk inputs that determine the entity risk score. Hover over the table to display the **Inspect** button, which allows you to inspect the table's queries.
+The risk score visualization shows the entity risk score and risk level. Hover over the visualization to display the **Options** menu. Use this menu to inspect the visualization's queries, add it to a new or existing case, save it to your Visualize Library, or open it in Lens for customization.
+
+The risk score table shows the category, score, and number of risk inputs that determine the entity risk score. Hover over the table to display the **Inspect** button, which allows you to inspect the table's queries.
 
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` For entities that belong to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md), the section shows both the individual **Entity risk score** and the **Resolution group risk score** — the aggregated score across all linked entities in the group — each with their own score and inputs breakdown.
 
-To expand the entity risk summary section, click **View risk contributions**. The **Risk contributions** tab displays additional details about the entity's risk inputs:
+Expand the **Risk score** section to access additional details about the entity's risk inputs.
 
-* Non-alert risk inputs and their contribution scores, including: 
-  * Asset criticality level
-  * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Watchlist membership 
-  * {applies_to}`stack: removed 9.4+, ga =9.3, preview 9.1-9.2` Privileged user status
+#### Risk score history [risk-score-history]
+```yaml {applies_to}
+stack: ga 9.5+
+serverless: ga
+```
 
-* The top 10 alerts that contributed to the latest risk scoring calculation, and each alert's contribution score. If more than 10 alerts contributed to the risk scoring calculation, the remaining alerts' aggregate contribution score is displayed below the **Alerts** table.
+Risk scoring recalculates every hour, and every calculation is retained. The risk score history chart shows the entity's score over time so you can identify when its risk posture changed. Dashed reference lines mark the **Low**, **Moderate**, **High**, and **Critical** [risk levels](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#how-is-risk-score-calculated), which helps you spot when the entity crossed a threshold.
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` For entities that belong to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md), each risk input row includes an **Entity ID** column identifying which group member contributed that input.
+To change the time range, use the time filter. Each point on the chart shows the highest risk score recorded for that period.
 
-{applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` If you have [AI Assistant](/solutions/security/ai/ai-assistant.md) set up, you can also ask it to explain how the risk inputs contributed to the entity's risk score and recommend next steps.
+To investigate an earlier score, click its point on the chart. The **Contexts** and **Alerts** tables switch from the latest calculation to the calculation you selected, and a callout confirms which scoring run you're viewing. This allows you to answer questions such as which alerts drove a spike last week, or what an entity's asset criticality level was at the time it was scored.
+
+To return to the latest calculation, click **Back to latest** in the callout, or click the selected point again.
+
+#### Contexts [risk-contexts]
+
+The **Contexts** table shows non-alert risk inputs and their contribution scores, including:
+
+* Asset criticality level
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Watchlist membership 
+* {applies_to}`stack: removed 9.4+, ga =9.3, preview 9.1-9.2` Privileged user status
+
+#### Alerts [risk-alerts]
+
+The **Alerts** table shows the top 10 alerts that contributed to the risk scoring calculation, and each alert's contribution score. If more than 10 alerts contributed to the calculation, the remaining alerts' aggregate contribution score is displayed below the table.
 
 ### Behavioral anomalies [behavioral-anomalies]
 ```yaml {applies_to}
@@ -155,7 +175,12 @@ To add an entity to the group, search by entity name or ID in the **Add entities
 
 The **Insights** section displays [Vulnerabilities Findings](/solutions/security/cloud/findings-page-3.md) for the host or [Misconfiguration Findings](/solutions/security/cloud/findings-page.md) for the user. Click **Vulnerabilities** or **Misconfigurations** to expand the flyout and view this data.
 
-### Observed data
+### Observed attributes
+
+::::{note}
+:applies_to: stack: ga 9.0-9.3
+In these versions, this section is called **Observed data**.
+::::
 
 This section displays details such as the entity ID, when the entity was first and last seen, and the associated IP addresses and operating system.
 

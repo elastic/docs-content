@@ -12,7 +12,7 @@ products:
 
 # Run Attack Discovery [run-attack-discovery]
 
-Pick the path that fits how you work and the {{stack}} version you have. Every option uses the same analysis steps.
+Pick the path that fits how you work and the {{stack}} version you have. Every option uses the same analysis steps. Every option also requires a [configured LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
 | When to use this | Available in | Go to |
 |---|---|---|
