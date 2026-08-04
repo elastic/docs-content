@@ -2,17 +2,10 @@
 navigation_title: Multimodal search
 description: Search images with text and run cross-modal retrieval in Elasticsearch using multimodal embeddings, Jina models, and the semantic field type.
 applies_to:
-  stack: planned
-  serverless: preview
-products:
-  - id: elasticsearch
-  - id: cloud-serverless
-  - id: cloud-hosted
-  - id: cloud-enterprise
-  - id: cloud-kubernetes
-  - id: elastic-stack
+  stack: 
+  serverless:
 ---
-# Multimodal search [multimodal-search]
+# Multimodal search in {{es}} [multimodal-search]
 
 Multimodal search finds results by meaning across more than one content type. Common use cases include text-to-image product search, finding similar images, searching media libraries by natural language, and retrieving screenshots or document pages with text or image queries.
 
@@ -61,24 +54,15 @@ Common multimodal search use cases include:
 
 Compare the multimodal embedding models available with {{es}}:
 
-| Model | Channel | Modalities | Dimensions | Context / input limit | Task type | Best for |
-| --- | --- | --- | --- | --- | --- | --- |
-| [`jina-embeddings-v5-omni-small`](https://jina.ai/models/jina-embeddings-v5-omni-small/) | EIS (also Jina API / marketplaces / on-prem) | Text, image, video, audio, PDF/file | 1024 | Up to 32K tokens | `embedding` | Default multimodal retrieval across media types; preconfigured as `.jina-embeddings-v5-omni-small` |
-| [`jina-embeddings-v5-omni-nano`](https://jina.ai/models/jina-embeddings-v5-omni-nano/) | EIS (also Jina API / marketplaces / on-prem) | Text, image, video, audio, PDF/file | 768 | Up to 8K tokens | `embedding` | Lower-cost / lower-resource multimodal workloads |
-| [`jina-clip-v2`](https://jina.ai/models/jina-clip-v2/) | EIS (also Jina API / marketplaces / on-prem) | Text, image | 1024 | Up to 8K tokens | `embedding` | Focused text↔image search, including multilingual text-to-image |
-| [`jina-embeddings-v4`](https://jina.ai/models/jina-embeddings-v4/) | External JinaAI / marketplaces / on-prem (not on EIS) | Text, image, PDF | 2048 (default; optional `dimensions` via JinaAI service settings) | Up to 32K tokens | `embedding` | External or self-hosted multimodal embeddings when you connect through the JinaAI service |
+:::{include} /explore-analyze/machine-learning/nlp/_snippets/jina-multimodal-embedding-models.md
+:::
 
 For the full Jina catalog, deployment matrix, and input examples, refer to [Jina models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md). For EIS availability by stack version, refer to [Supported models on EIS](/explore-analyze/elastic-inference/eis-supported-models.md).
 
-You can deploy or access Jina multimodal models in these ways:
+:::{include} /explore-analyze/machine-learning/nlp/_snippets/jina-deploy-and-access-options.md
+:::
 
-- **[Elastic {{infer-cap}} Service (EIS)](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-omni-getting-started)**: Elastic hosts the model. Use this when you want managed {{infer}} without provisioning ML nodes.
-- **[Jina API](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-external)**: The model runs on the hosted Jina platform. Use this when you want Jina-hosted {{infer}} outside EIS.
-- **[On-prem](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-on-prem)**: You run the model in Docker on your own infrastructure. Use this for air-gapped, offline, or compliance scenarios.
-
-## Use the `semantic` field type [semantic-field-for-multimodal-search]
-
-The `semantic` field type is the simplest way to run multimodal search in {{es}}. For field parameters, defaults, supported input types, and limitations, refer to the [`semantic` field documentation](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md).
+## The `semantic` field type [semantic-field-for-multimodal-search]
 
 The `semantic` field type simplifies semantic and multimodal search across text, images, audio, video, and PDF files. With a compatible multimodal embedding model, you can search from any supported input type to any other supported input type. The field automatically:
 
@@ -87,29 +71,33 @@ The `semantic` field type simplifies semantic and multimodal search across text,
 - Indexes the generated embeddings using default index options that optimize for common use cases.
 - Searches the embeddings generated for each value or text chunk.
 
+For field parameters, defaults, supported input types, and limitations, refer to the [`semantic` field documentation](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md).
+
 Here's an example using the Jina Embeddings v5 Omni Small endpoint:
 
-```json
+```console
 PUT my-multimodal-index
 {
   "mappings": {
     "properties": {
       "content": {
         "type": "semantic",
-        "inference_id": ".jina-embeddings-v5-omni-small"
+        "inference_id": ".jina-embeddings-v5-omni-small" <1>
       }
     }
   }
 }
 ```
 
-Multiple `semantic` fields can share one {{infer}} endpoint. For example, one field for images and another for descriptions; you can then search either field or both.
-
+1. Required. A `semantic` field has no default {{infer}} endpoint. You must specify an `embedding` endpoint ID.
 
 ## Next steps [multimodal-search-next-steps]
 
 - [Build multimodal search with a `semantic` field](multimodal-search/multimodal-search-tutorial.md): Index images and search them with text, image, and PDF input
-- [`semantic` field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md): Mapping overview and comparison guidance
-- [Jina models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md): Model catalog, deployment options, and input formats
-- [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md): Hosted {{infer}} without managing ML nodes
-- [{{infer}} API](/explore-analyze/elastic-inference/inference-api.md): Create and manage {{infer}} endpoints
+- [`semantic` field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md): Review the mapping reference of the `semantic` field tpye.
+
+## Related pages [multimodal-search-related-pages]
+
+- [Jina models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md): Learn about Jina models, how to deploy them, and how to structure multimodal input payloads.
+- [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md): Learn how to use hosted {{infer}} without managing ML nodes.
+- [{{infer-cap}} API](/explore-analyze/elastic-inference/inference-api.md): Learn how to create and manage {{infer}} endpoints.

@@ -1,5 +1,5 @@
 ---
-navigation_title: Tutorial with the semantic field
+navigation_title: Tutorial: build multimodal search
 description: Index images in a semantic field and search them with text, image, and PDF input using Jina multimodal embeddings in Elasticsearch.
 applies_to:
   stack: planned
@@ -9,7 +9,7 @@ products:
   - id: cloud-serverless
 type: tutorial
 ---
-# Build multimodal search with a semantic field [multimodal-search-tutorial]
+# Quickstart: Build a multimodal search in {{es}} [multimodal-search-tutorial]
 
 In this hands-on tutorial, you'll build a small visual archive and search it with natural-language text, another image, or a PDF. It's intended for developers who are new to multimodal search and are comfortable running {{es}} API requests and terminal commands.
 
@@ -535,7 +535,7 @@ The `.jina-embeddings-v5-omni-small` {{infer}} endpoint is preconfigured and is 
 
 You now have a `semantic` field that embeds images at index time and accepts text, image, or PDF input at search time. To adapt this tutorial to an application:
 
-- Replace the sample images and metadata with your own visual archive.
+- Ingest your own multimedia data
 - Add metadata filters that reflect your application's access controls, categories, or date ranges.
 - Adjust `k` and `num_candidates` to balance result quality and query performance for your dataset.
 
@@ -543,6 +543,6 @@ You now have a `semantic` field that embeds images at index time and accepts tex
 
 - [Multimodal search](../multimodal-search.md)
 - [`semantic` field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md)
-- [Jina multimodal embeddings](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-multimodal-embeddings)
+- [Jina multimodal embedding models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-multimodal-embeddings)
 - [{{infer}} endpoints](/explore-analyze/elastic-inference/inference-api.md)
 - [kNN search](../vector/knn.md)

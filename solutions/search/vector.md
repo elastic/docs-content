@@ -182,10 +182,6 @@ The [Semantic search for text](semantic-search.md) section provides managed work
 - [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md): Generate embeddings using the `semantic_text` field type with built-in defaults for chunking and model management.
 - [Hybrid search with `semantic_text`](hybrid-semantic-text.md): Combine semantic understanding with keyword search for better relevance in real applications.
 - [Semantic search with the Inference API](semantic-search/semantic-search-inference.md): Use custom or external embedding models and control how embeddings are generated.
-- [Semantic search with ELSER](semantic-search/semantic-search-elser-ingest-pipelines.md): Use built-in semantic search with explainable results, without external models.
-- [Using Cohere with Elasticsearch](semantic-search/cohere-es.md): Generate embeddings using Cohere models via the Inference API and combine vector, hybrid search, reranking, and RAG in a single workflow.
-- [Manual dense and sparse workflows](semantic-search/dense-versus-sparse-ingest-pipelines.md): Generate embeddings at ingest time using pipelines and perform semantic or hybrid search with dense or sparse models.
-- [OpenAI-compatible models](semantic-search/using-openai-compatible-models.md): Connect external or local LLMs using the Inference API to generate responses or build RAG workflows.
 
 ### Multimodal search
 
