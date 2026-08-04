@@ -158,7 +158,6 @@ When the `mcp-remote` adapter starts the OAuth flow, it listens for the authoriz
 The `mcp-remote` adapter stores OAuth credentials locally on your machine, keyed by MCP server URL. If more than one MCP host uses `mcp-remote` with the same server URL and client ID, those hosts share one app connection. After you complete the authorization flow in the first host, additional hosts that use the same configuration don't prompt you to authorize again.
 :::
 
-
 ::::
 
 ::::{tab-item} Claude web interface
@@ -181,6 +180,36 @@ To configure Claude's web interface:
 
 When the Claude web interface starts the OAuth flow, it listens for the authorization response at `https://claude.ai/api/mcp/auth_callback`.
 If you get an authorization error, be sure to check that your OAuth Client you created in the previous steps had this redirect URI configured.
+
+::::
+
+::::{tab-item} ChatGPT
+
+ChatGPT's web interface (https://chatgpt.com) supports OAuth natively.
+After connecting an MCP Server via OAuth in the web interface, it also becomes available in the ChatGPT desktop app under **Settings → Plugins → Apps**
+
+To configure ChatGPT:
+
+1. Log in
+2. Enable developer mode at **Settings → Security and login → Developer mode**
+2. Open **Settings → Plugins → Browse plugins**.
+3. Click the **+** button in the top right.
+4. Fill in the form with a name, description, and URL, leaving **Authentication** as `OAuth`
+5. Open the **Advanced OAuth Settings**
+6. Copy the **Callback URL**. You will need to add this to your Kibana OAuth Client as a registered redirect URI.
+7. Enter the Client ID
+
+
+:::{note}
+Confidential clients also require a Client Secret.
+:::
+
+8. On the left, check the box to indicate **I understand and want to continue**.
+9. Click **Create**
+10. Click to sign in
+
+When ChatGPT starts the OAuth flow, it listens for the authorization response at a URL like `https://chatgpt.com/connector/oauth/abc123ABC`, but the URL is different for each plugin.
+If you get an authorization error, be sure to check that your OAuth Client you created in the previous steps had the specific redirect URI for this plugin configured.
 
 ::::
 
