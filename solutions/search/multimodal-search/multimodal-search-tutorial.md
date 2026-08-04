@@ -1,5 +1,5 @@
 ---
-navigation_title: Tutorial: build multimodal search
+navigation_title: "Tutorial: build multimodal search"
 description: Index images in a semantic field and search them with text, image, and PDF input using Jina multimodal embeddings in Elasticsearch.
 applies_to:
   stack: planned
