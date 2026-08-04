@@ -1,5 +1,5 @@
 ---
-navigation_title: Configure data retention
+navigation_title: Configure data lifecycle
 applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+
@@ -17,7 +17,7 @@ products:
 
 # Configure data lifecycle with Streams [streams-configure-retention]
 
-Managing data lifecycle across multiple indexes typically requires configuring {{ilm}} ({{ilm-init}}), data stream lifecycle, index templates, and index settings, each in a different place. Streams replaces this with a single UI so you can control storage and meet regulatory or compliance requirements.
+Managing data lifecycles across multiple indexes typically requires configuring {{ilm}} ({{ilm-init}}), data stream lifecycle, index templates, and index settings, each in a different place. Streams replaces this with a single UI so you can control storage and meet regulatory or compliance requirements.
 
 The **Data lifecycle** tab (**Retention** prior to Stack v9.5) provides a single place to manage lifecycle policies for your streams:
 

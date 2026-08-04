@@ -19,6 +19,6 @@ products:
 * [Jaeger event intake](/solutions/observability/apm/jaeger-event-intake.md)
 
 :::{note}
-For new users, Elastic recommends using the OpenTelemetry path through the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) or [Managed OTLP](opentelemetry://reference/motlp.md) rather than sending data directly to the {{apm-server}}.
+For new users, Elastic recommends using the OpenTelemetry path through [{{agent}}](elastic-agent://reference/edot-collector/index.md) or [Managed OTLP](opentelemetry://reference/motlp.md) rather than sending data directly to the {{apm-server}}.
 :::
 
