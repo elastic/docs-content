@@ -51,7 +51,7 @@ Vector Database costs follow your storage footprint, search resource allocation,
 
 ### Search Power setting [vector-database-billing-search-power-setting]
 
-[Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) reserves search capacity for your project. Start at the default of **100**, measure latency and throughput for your workload, then increase Search Power if you need more capacity. Higher Search Power increases search charges in proportion to the setting and your stored data volume.
+[Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) reserves search capacity for your project. Start at the default of **100**, measure latency and throughput for your workload, then increase Search Power if you need more capacity. Higher Search Power increases search charges in proportion to the setting and your stored data volume. You can increase Search Power up to **1900**.
 
 For high availability, you can increase Search Power to **200**. That setting reserves enough capacity for two full copies of your project data to remain available for low-latency search.
 

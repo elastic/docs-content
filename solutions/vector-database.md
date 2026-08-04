@@ -53,7 +53,7 @@ Both the {{es}} Vector Database and the {{es}} project types support [vector sea
 
 Choose Vector Database when embeddings and similarity search are central to the workload. For those projects, generate embeddings with managed models through the [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) or a third-party inference endpoint; you can't deploy custom ML models for in-cluster inference. 
 
-Choose the [{{es}} project type](/solutions/elasticsearch-solution-project.md) when you need general-purpose data storage and search, including mixed lexical, time series, and analytics workloads, {{kib}} search tooling such as [Playground](/solutions/elasticsearch-solution-project/playground.md), [Query Rules UI](/solutions/elasticsearch-solution-project/query-rules-ui.md), and [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md), or the ability to run custom models on ML nodes. You might also prefer the {{es}} project type if you are an existing {{es}} or OpenSearch user.
+Choose the [{{es}} project type](/solutions/elasticsearch-solution-project.md) when you need general-purpose data storage and search, including mixed lexical, time series, and analytics workloads, {{kib}} search tooling such as [Query Rules UI](/solutions/elasticsearch-solution-project/query-rules-ui.md) and [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md), or the ability to run custom models on ML nodes. You might also prefer the {{es}} project type if you are an existing {{es}} or OpenSearch user.
 
 | Use case | Fit | Why |
 | --- | --- | --- |
