@@ -114,7 +114,7 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
 
 1. Tells {{kib}} to run the query as {{esql}}.
 2. Applies the dashboard filters to the query.
-3. Enables the `?_tstart` and `?_tend` named parameters so the query uses the dashboard time range.
+3. Sets `@timestamp` as the time field for the dashboard time range.
 4. The {{esql}} query. {{kib}} converts the columnar response into the row-based format that **Vega** expects.
 
 The chart shows event counts over time from `kibana_sample_data_logs`. For the full list of {{esql}} `url` parameters, see [Writing {{esql}} queries in Vega](#vega-esql-queries).
@@ -1426,13 +1426,85 @@ The `url` object supports the following parameters:
 | `"%type%"` | Set to `"esql"` to use the {{esql}} parser. |
 | `"query"` | The {{esql}} query to run. Required. |
 | `"%context%"` | When set to `true`, applies the dashboard filters to the query. |
-| `"%timefield%"` | When set, enables the `?_tstart` and `?_tend` named parameters in the query. These parameters are replaced with the start and end of the dashboard time range. |
+| `"%timefield%"` | The timestamp field to use for the dashboard time range. See [Apply the dashboard time range](#vega-esql-time-range). |
 | `"dropNullColumns"` | Defaults to `true`. When `true`, columns that contain only `null` values are excluded from the response. |
 | `"params"` | An array of named parameter objects to substitute into the query. |
 
 The response is converted from the {{esql}} columnar format into the row-based format that **Vega** expects, with one object per row keyed by column name.
 
-The following example creates a metric that counts documents over time, using the dashboard filters and time range through `"%context%"`, `"%timefield%"`, and the `?_tstart` and `?_tend` parameters. To try it, [install the sample web logs data set](/manage-data/ingest/sample-data.md), open a new custom visualization on a dashboard, and paste the spec:
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` **Vega** and **Vega-Lite** panels that use an {{esql}} data source are subject to the {icon}`bolt` [**Fast mode**](../query-filter/languages/esql-kibana.md#approximation-fast-mode) dashboard option. When this option is active on a dashboard, these panels return faster, estimated results for `STATS` aggregations.
+
+
+#### Apply the dashboard time range to {{esql}} data sources [vega-esql-time-range]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+How the dashboard time range reaches an {{esql}} data source depends on your version.
+
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.5+, serverless: ga }
+{{kib}} applies the dashboard time range automatically, the same way it does in Lens and Discover. By default, it looks for and filters on the `@timestamp` field, so no configuration is needed when your time field is named `@timestamp`.
+
+To filter on a different time field, specify it in one of the following ways:
+
+* Set `"%timefield%"` to the field. No `WHERE` clause is required in the query.
+* Compare the field against `?_tstart` and `?_tend` in the query, for example in a `WHERE` clause.
+
+If your data has no `@timestamp` field and you don't specify a different time field, the query isn't filtered by time.
+
+Wherever you use `?_tstart` and `?_tend`, {{kib}} replaces them with the start and end of the time range, even if you also set `"%timefield%"`.
+
+Time filtering is separate from `"%context%"`, which applies the dashboard filters.
+
+For example, this metric counts documents within the dashboard time range, with no time configuration in the spec:
+
+```json
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": {
+      "%type%": "esql",
+      "query": "FROM kibana_sample_data_logs | STATS count = COUNT(*)" <1>
+    }
+  },
+  "mark": { "type": "text", "fontSize": 48 },
+  "encoding": { "text": { "field": "count", "type": "quantitative" } }
+}
+```
+
+1. No `WHERE` clause, `?_tstart` or `?_tend` parameters, or `"%timefield%"` are needed. {{kib}} filters on `@timestamp` automatically.
+::::
+
+::::{applies-item} { stack: ga =9.4 }
+{{kib}} applies the dashboard time range only through the `?_tstart` and `?_tend` parameters. Reference your time field with these parameters in the query, for example in a `WHERE` clause, and set `"%timefield%"` to turn them on. {{kib}} replaces the parameters with the start and end of the time range. Both the parameters and `"%timefield%"` are required.
+
+For example, this metric counts documents within the dashboard time range:
+
+```json
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": {
+      "%type%": "esql",
+      "%timefield%": "@timestamp", <1>
+      "query": "FROM kibana_sample_data_logs | WHERE @timestamp >= ?_tstart AND @timestamp <= ?_tend | STATS count = COUNT(*)" <2>
+    }
+  },
+  "mark": { "type": "text", "fontSize": 48 },
+  "encoding": { "text": { "field": "count", "type": "quantitative" } }
+}
+```
+
+1. Turns on the `?_tstart` and `?_tend` parameters. Set it to your time field so the spec keeps working in later versions.
+2. Filters with the parameters. {{kib}} replaces `?_tstart` and `?_tend` with the start and end of the dashboard time range.
+::::
+
+:::::
+
+The following example creates a line chart of document counts over time. It wires the time range explicitly by setting `"%timefield%"` and filtering with `?_tstart` and `?_tend`, so it behaves the same in every version. It also applies the dashboard filters with `"%context%"` and groups the results into two-hour buckets. To try it, [install the sample web logs data set](/manage-data/ingest/sample-data.md), open a new custom visualization on a dashboard, and paste the spec:
 
 ```json
 {
@@ -1461,8 +1533,6 @@ The following example creates a metric that counts documents over time, using th
   }
 }
 ```
-
-{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` **Vega** and **Vega-Lite** panels that use an {{esql}} data source are subject to the {icon}`bolt` [**Fast mode**](../query-filter/languages/esql-kibana.md#approximation-fast-mode) dashboard option. When this option is active on a dashboard, these panels return faster, estimated results for `STATS` aggregations.
 
 
 #### Access Elastic Map Service files [vega-esmfiles]

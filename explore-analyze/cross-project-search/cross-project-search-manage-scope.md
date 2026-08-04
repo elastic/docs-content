@@ -59,7 +59,7 @@ Not all apps support {{cps}}. The following table shows which apps support the {
 | App | {{cps-init}} scope selector | Query-level overrides |
 | --- | --- | --- |
 | **Agent Builder** | Not available | ES\|QL |
-| **Dashboards** | Editable | Per-panel overrides using ES\|QL visualizations or Maps layer routing. Dashboards can also [store a {{cps}} scope](/explore-analyze/dashboards/using.md#dashboard-cps-scope). |
+| **Dashboards** | Editable | Per-panel overrides using ES\|QL visualizations or Maps layer routing. Dashboards can also [store a {{cps}} scope](/explore-analyze/dashboards/using.md#dashboard-cps-scope). Dashboard controls, such as **Options list** controls, suggest values from all projects in the selected {{cps-init}} scope. |
 | **Dev Tools / Console** | Not available | Full {{cps-init}} through raw API requests, including ES\|QL. The [{{product.painless}} execute API](/explore-analyze/cross-project-search.md#cps-painless-scripting) resolves index names differently. |
 | **Discover** | Editable | ES\|QL |
 | **Lens visualizations** | Editable | ES\|QL visualizations[^cps-badge] |
