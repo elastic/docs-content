@@ -248,13 +248,13 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ## Troubleshooting
 
-Refer to the [Troubleshoot EDOT](opentelemetry://reference/motlp/troubleshooting.md) guide for troubleshooting information for the {{motlp}}.
+Refer to the [Troubleshoot {{edot}}](opentelemetry://reference/motlp/troubleshooting.md) guide for troubleshooting information for the {{motlp}}.
 
 ## Provide feedback
 
 Help improve the Elastic Cloud Managed OTLP Endpoint by sending us feedback in our [discussion forum](https://discuss.elastic.co/c/apm) or [community Slack](https://elasticstack.slack.com/signup#/domain-signup).
 
-For EDOT collector feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
+For {{agent}} feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
 
 ## What's next
 
