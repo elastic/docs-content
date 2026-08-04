@@ -61,6 +61,7 @@ outputs:
 inputs:
   - type: system/metrics <3>
     id: unique-system-metrics-id <4>
+    data_stream.namespace: default
     streams:
       - metricsets:
           - cpu
@@ -70,7 +71,7 @@ inputs:
 1. Inputs write to the output named `default` unless they specify a different one with `use_output`.
 2. The agent needs credentials to write to {{es}}. Refer to [Grant standalone {{agent}}s access to {{es}}](/reference/fleet/grant-access-to-elasticsearch.md) for the required privileges and the steps to create an API key.
 3. The input type. Refer to [{{agent}} inputs](/reference/fleet/elastic-agent-inputs-list.md) for the full list.
-4. Each input must have a unique ID.
+4. Each input must have a unique ID. If omitted, it defaults to the input type.
 
 To collect data that requires an ingest pipeline or dashboards, you also need to install the corresponding integration assets. Refer to [Install standalone {{agent}}s](/reference/fleet/install-standalone-elastic-agent.md) for the full installation procedure.
 

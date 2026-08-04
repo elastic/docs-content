@@ -33,7 +33,8 @@ This means you can use any setting documented for the corresponding {{beats}} in
 | `type` | Required. The type of the input. Must match an input listed in [{{agent}} inputs](/reference/fleet/elastic-agent-inputs-list.md). |
 | `id` | A unique ID for the input, used in logging and event metadata. If omitted, it defaults to the input type. |
 | `use_output` | The name of the output to write to. Must match an output defined in the same policy. Defaults to `default`. |
-| `log_level` | The log level for this input. One of `error`, `warn`, `info`, `debug`, or `trace`. |
+| `log_level` | The log level for this input. One of `error`, `warn`/`warning`, `info`, `debug`, or `trace`. |
+| `policy.revision` | If the overall policy has a `revision` field (inserted by {{fleet}} to track policy changes), its value is copied into the input’s `policy.revision` field. |
 
 For example, the {{metricbeat}} [System module](beats://reference/metricbeat/metricbeat-module-system.md) documents a `cpu.metrics` setting, and `period` is a [standard {{metricbeat}} module option](beats://reference/metricbeat/configuration-metricbeat.md). Both can be set directly on a stream:
 
