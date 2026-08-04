@@ -34,7 +34,8 @@ Workflows include the following flow-control step types. Use this table to under
 | Pause for human input (human-in-the-loop) | [`waitForInput`](#waitforinput) |
 | Pause for approve/reject (human-in-the-loop) | [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` |
 
-Two step types fan work out. Use [`parallel`](#parallel) when the work runs inside the current workflow and you need the results, and [`workflow.executeAsync`](/explore-analyze/workflows/steps/composition.md#workflow-executeasync) when each unit of work should run as its own independent execution that the parent doesn't wait for.
+Use [`parallel`](#parallel) to run independent work inside the current workflow and collect the results. For fan-out across separate workflow executions that the parent doesn't wait for, use [`workflow.executeAsync`](/explore-analyze/workflows/steps/composition.md#workflow-executeasync).
+
 
 ## `if` [if]
 

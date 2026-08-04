@@ -179,7 +179,7 @@ Use `settled` for best-effort enrichment where partial results are useful, and `
 `fail-fast` doesn't cancel branches that are already running. It only stops the step from starting more branches.
 :::
 
-The `parallel` step doesn't accept `on-failure` or `if`. To keep the workflow running when a branch fails, set `mode: settled` and branch on the results in a following step:
+The `parallel` step doesn't accept `on-failure` or `if` as top-level parameters. To keep the workflow running when a branch fails, set `mode: settled` and branch on the results in a following step:
 
 ```yaml
 - name: handle_partial_failure
