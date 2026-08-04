@@ -1446,14 +1446,14 @@ How the dashboard time range reaches an {{esql}} data source depends on your ver
 :::::{applies-switch}
 
 ::::{applies-item} { stack: ga 9.5+, serverless: ga }
-{{kib}} applies the dashboard time range automatically, the same way it does in Lens and Discover. By default, it looks for a field named `@timestamp` in your data and filters on it, so no configuration is needed when your time field has that name.
+{{kib}} applies the dashboard time range automatically, the same way it does in Lens and Discover. By default, it looks for and filters on the `@timestamp` field, so no configuration is needed when your time field is named `@timestamp`.
 
-To filter on a different date field, specify it in one of the following ways:
+To filter on a different time field, specify it in one of the following ways:
 
 * Set `"%timefield%"` to the field. No `WHERE` clause is required in the query.
 * Compare the field against `?_tstart` and `?_tend` in the query, for example in a `WHERE` clause.
 
-If your data has no `@timestamp` field and you don't specify one, the query isn't filtered by time.
+If your data has no `@timestamp` field and you don't specify a different time field, the query isn't filtered by time.
 
 Wherever you use `?_tstart` and `?_tend`, {{kib}} replaces them with the start and end of the time range, even if you also set `"%timefield%"`.
 
