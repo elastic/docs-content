@@ -30,10 +30,13 @@ There are three ways a {{data-source}} ends up in your space:
 
 Not sure whether you already have one? Open the data view menu in **Discover** or **Lens**, or go to the **Data Views** management page: both list every {{data-source}} available in your space.
 
+## Search across clusters, projects, or rolled-up data [management-cross-cluster-search]
+
+To point a data view at another cluster, another project, or a rollup index, refer to [Data view search syntax](data-views/data-view-search-syntax.md).
+
 ## Manage your data views
 
 * [Create a data view](data-views/create-data-view.md)
-* [Data view search syntax](data-views/data-view-search-syntax.md) — reference for {{ccs}}, {{cps}}, and rollup index patterns
 * [Delete a data view](data-views/delete-data-view.md)
 * [Duplicate a data view](data-views/duplicate-data-view.md)
 * [Customize data view fields](data-views/customize-data-view-fields.md) — add runtime or scripted fields, and change how fields are formatted
