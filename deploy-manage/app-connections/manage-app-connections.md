@@ -2,7 +2,7 @@
 description: "Audit and revoke OAuth client connections across an Elastic Cloud organization's serverless projects from a single organization-level view."
 type: how-to
 applies_to:
-  serverless: preview
+  serverless: ga
 products:
   - id: cloud-serverless
 ---
@@ -56,7 +56,6 @@ A connection has one of the following statuses:
 * **Expired**: The connection's refresh window lapsed after 30 days of inactivity. The user must re-authorize to use it again.
 * **Revoked**: The connection was revoked and can no longer be used.
 
-<!-- TODO: confirm retention windows for tech preview. -->
 Revoked connections remain visible for 3 months and revoked clients for 1 year. Expired connections remain visible until re-authorized or removed.
 
 ## View OAuth client details

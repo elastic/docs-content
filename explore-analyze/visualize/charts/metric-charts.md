@@ -140,6 +140,9 @@ The metric visualization now shows the secondary metric as a comparison with a t
 Send the following request to create a metric that counts unique orders for the current period and compares the result to the previous week using a time-shifted formula.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -295,6 +298,9 @@ You can combine progress bars with secondary metrics to show both progress towar
 
 This example creates a metric that shows the current count of users against a target of 2,500, with a progress bar and a weekly comparison badge.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -581,6 +587,9 @@ The following examples show various configuration options that you can use for b
 This example creates a metric that calculates the ratio of successful HTTP requests using a formula with a KQL filter, and adds a fixed target value as a secondary metric.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -727,6 +736,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 This example builds on the previous one by adding a breakdown that splits the success rate into one tile per destination country.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -883,6 +895,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 This example creates a metric that counts page views and compares the current value to the previous week using a time-shifted formula.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
