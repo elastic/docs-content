@@ -86,13 +86,42 @@ The server is now configured. Start a Claude Code session. The OAuth authorizati
 
 ::::
 
-::::{tab-item} Claude Desktop
+::::{tab-item} Claude desktop app
 
-Claude Desktop uses the [mcp-remote](https://www.npmjs.com/package/mcp-remote) adapter to handle OAuth connections.
+**Option 1: Native HTTP transport (recommended)**
 
-To configure Claude Desktop:
+Claude's desktop app supports OAuth natively, so no additional adapter is required.
 
-1. In Claude Desktop, open **Settings → Developer → Edit Config**. This opens `claude_desktop_config.json` in your text editor.
+To configure Claude's desktop app:
+
+1. Start the Claude desktop app and log in.
+2. Open **Settings → Connectors → Add → Add custom connector**.
+2. Enter a name, the URL, and Client ID.
+
+
+:::{note}
+Confidential clients also require a Client Secret.
+:::
+
+3. Click **Add**.
+4. Click **Connect**
+
+When Claude desktop starts the OAuth flow, it expects authorization callback at `https://claude.ai/api/mcp/auth_callback`.
+If you get an authorization error, be sure to check that your OAuth Client you created in the previous steps had this redirect URI configured.
+
+:::{note}
+Some enterprises may restrict adding custom connectors in this way.
+See **Option 2** for an alternative. 
+:::
+
+
+**Option 2: mcp-remote adapter**
+
+Claude's desktop app supports local MCP servers, and can use the [mcp-remote](https://www.npmjs.com/package/mcp-remote) adapter to handle OAuth connections.
+
+To configure the Claude desktop app:
+
+1. In the Claude desktop app, open **Settings → Developer → Edit Config**. This opens `claude_desktop_config.json` in your text editor.
 2. Add your MCP client to the `mcpServers` object:
 
    ```json
@@ -117,13 +146,13 @@ To configure Claude Desktop:
    Confidential clients also require a `client_secret` in the `--static-oauth-client-info` JSON: `{"client_id":"{CLIENT_ID}","client_secret":"{CLIENT_SECRET}"}`.
    :::
 
-3. Save the file and restart Claude Desktop to load the new configuration.
+3. Save the file and restart the Claude desktop app to load the new configuration.
 
 When the `mcp-remote` adapter starts the OAuth flow, it listens for the authorization response at `http://localhost/oauth/callback`. This is one of the default redirect URIs populated in the [OAuth client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
 
 ::::
 
-::::{tab-item} Claude's web interface
+::::{tab-item} Claude web interface
 
 Claude's web interface (https://claude.ai) supports OAuth natively, so no additional adapter is required.
 
