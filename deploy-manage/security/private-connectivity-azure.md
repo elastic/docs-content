@@ -31,7 +31,8 @@ Azure Private Link requires that you also filter traffic to your deployments or 
 To learn how private connection policies impact your deployment or project, refer to [](/deploy-manage/security/network-security-policies.md).
 
 :::{tip}
-{{ech}} and {{serverless-full}} also support [IP filters](/deploy-manage/security/ip-filtering-cloud.md). You can apply both IP filters and private connections to a single {{ecloud}} resource.
+* {{ech}} and {{serverless-full}} also support [IP filters](/deploy-manage/security/ip-filtering-cloud.md). You can apply both IP filters and private connections to a single {{ecloud}} resource.
+* {applies_to}`ech: ga` If you created your deployment through the [Azure Native Service](/deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md), you can also create and link Private Link private connection policies from the Azure portal Traffic Filter page. Refer to [](/deploy-manage/deploy/elastic-cloud/azure-native-isv-service-network-security.md).
 :::
 
 ## Requirements

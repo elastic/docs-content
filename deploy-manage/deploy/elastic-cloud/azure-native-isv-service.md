@@ -281,6 +281,20 @@ Delete the deployment directly from the Azure portal. The delete operation perfo
 $$$azure-integration-delete-resource-group$$$
 If you delete an Azure Resource Group containing {{ecloud}} resources, the latter will be deleted automatically. However, you should not delete the Azure Resource Group containing the first deployment or project that you created. The usage associated with any other Elastic deployment created outside of the first resource group will continue to get reported and charged against this resource group. If you want to stop all charges to this Resource Group, you should delete the individual deployments.
 
+## Network security [azure-native-network-security]
+
+{{ech}} deployments and {{serverless-full}} projects created through the Azure Native Service support [network security policies](/deploy-manage/security/network-security.md), including [IP filters](/deploy-manage/security/ip-filtering-cloud.md) and [Azure Private Link](/deploy-manage/security/private-connectivity-azure.md). You always create private endpoints and DNS records in Azure.
+
+:::{include} _snippets/azure-native-network-security-surfaces.md
+:::
+
+* For Azure portal steps for {{ech}}, refer to [](azure-native-isv-service-network-security.md).
+* For {{serverless-short}} {{ecloud}} Console steps, refer to [](/deploy-manage/security/ip-filtering-cloud.md) and [](/deploy-manage/security/private-connectivity-azure.md).
+
+:::{warning}
+If a network security policy has **Apply to future resources by default** enabled, new Azure Native resources can fail to create. For more information, refer to the [Azure Native Service troubleshooting guide](azure-native-isv-service-troubleshooting.md#azure-integration-deployment-failed-network-security).
+:::
+
 ## Troubleshooting
 
 To troubleshoot issues with the Azure Native Service, refer to [](azure-native-isv-service-troubleshooting.md).
