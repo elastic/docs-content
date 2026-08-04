@@ -29,7 +29,7 @@ A resolution group consists of:
 * **Primary entity**: The authoritative representation of the real-world identity. It receives aggregated risk scores that combine the risk from all linked records in the group. When an entity from an identity provider (Okta, Active Directory, or Entra ID) is linked with a local entity, the IDP entity is preferred as the primary entity.
 * **Alias entities**: Records that point to the primary entity via a `resolved_to` field. In the **Entities** section of the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), alias entities appear nested under their primary entity when the table is grouped by **Resolution** (the default view).
 
-Resolution group relationships are also visible as **Resolved to** connections in the entity details flyout's [Graph View](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) tab.
+Resolution group relationships are also visible as **Resolved to** connections in the entity details flyout's [interactive graph](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations).
 
 ## Automated resolution [entity-resolution-automated]
 
@@ -86,10 +86,4 @@ Bulk unlinking is not available in the UI; use the [Entity store API]({{kib-apis
 
 ### Manage resolution groups from the entity flyout [entity-resolution-flyout]
 
-You can view, add to, and remove entities from a resolution group directly from the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#resolution). The flyout's **Resolution group** tab shows all linked records and lets you search for entities to add, or remove individual aliases.
-
-:::{image} /solutions/images/security-resolution-from-flyout.png
-:alt: Resolution group tab on the entity details flyout
-:screenshot:
-:::
-
+You can view, add to, and remove entities from a resolution group directly from the entity details flyout. Expand the [**Resolution** section](/solutions/security/advanced-entity-analytics/view-entity-details.md#resolution) to view all linked records, search for entities to add, or remove individual aliases.

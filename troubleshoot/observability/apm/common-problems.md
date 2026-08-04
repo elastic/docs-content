@@ -279,7 +279,7 @@ If you don’t see any data in the **Infrastructure** tab for a selected service
 
 ### OTel-instrumented services
 
-For services instrumented with OpenTelemetry, the **Infrastructure** tab exclusively looks for OTel-observed hosts, pods, and containers. If the tab is empty, confirm that the underlying infrastructure is also being observed with OTel (for example, using the EDOT Collector with host metrics enabled). Infrastructure observed only by {{agent}} or {{metricbeat}} doesn't appear for OTel-instrumented services.
+For services instrumented with OpenTelemetry, the **Infrastructure** tab exclusively looks for OTel-observed hosts, pods, and containers. If the tab is empty, confirm that the underlying infrastructure is also being observed with OTel (for example, using {{agent}} with host metrics enabled). Infrastructure observed only by {{agent}} or {{metricbeat}} doesn't appear for OTel-instrumented services.
 
 ### {{product.apm}}-instrumented services
 
