@@ -11,13 +11,13 @@ products:
 
 # Customize data streams with namespace index templates [data-streams-namespace-custom]
 
-Namespace index templates are {{fleet}}-managed index templates scoped to one namespace of an installed integration. When you opt a namespace in, {{fleet}} creates one of these templates for each data stream defined by the integration package, and each template references a `<namespace>@custom` component template that you create and manage.
+Namespace index templates are {{fleet}}-managed [index templates](/manage-data/data-store/templates.md#index-templates) scoped to one namespace of an installed integration. When you opt a namespace in, {{fleet}} creates one of these templates for each data stream defined by the integration, and each template references a `<namespace>@custom` component template that you create and manage.
 
 Use this feature when you want the same custom settings or mappings on every data stream in a specific namespace for a given integration, instead of editing each data stream's `@custom` component template separately.
 
 ## How namespace index templates work [data-streams-namespace-custom-how]
 
-When you enable namespace index templates for a namespace on an installed integration, {{fleet}} creates one namespace index template for each data stream defined by the package. The templates are named using the following pattern:
+When you enable namespace index templates for a namespace on an installed integration, {{fleet}} creates one namespace index template for each data stream defined by the integration. The templates are named using the following pattern:
 
 ```text
 <type>-<dataset>@namespace.<namespace>
@@ -28,7 +28,7 @@ For example, enabling the `production` namespace for the System integration crea
 Each namespace index template is a copy of the integration's base data stream index template, but differs in these ways:
 
 * The `index_patterns` value is scoped to that namespace (for example, `logs-system.application-production*`).
-* The priority is `250`, which is higher than the base template priority of `200`, so {{es}} applies the namespace index template for matching data streams.
+* The priority is the base template priority plus 50: `250` for most integrations (base `200`), or `200` for integrations with `dataset_is_prefix: true` data streams (base `150`). Because this is higher than the base template priority, {{es}} applies the namespace index template for matching data streams. If you change this priority manually, {{fleet}} restores the default the next time the integration's templates are reinstalled or resynchronized.
 * The `composed_of` list includes a `<namespace>@custom` component template (for example, `production@custom`) after the type-level and package-level `@custom` templates, and before the data stream-level `@custom` template.
 
 Example `composed_of` list for `logs-system.application@namespace.production`:
@@ -86,7 +86,7 @@ You can enable namespace index templates from the integration settings, or while
 After you save, {{fleet}} creates the namespace index templates asynchronously. You can confirm they exist on the integration's **Assets** tab, or in the **Index Management** → **Index Templates** list by searching for `@namespace.`.
 
 ::::{important}
-Namespace index templates are shared across all integration policies for that integration package and namespace. Enabling or turning them off for one policy updates the opt-in list for the entire integration package.
+Namespace index templates are shared across all integration policies for that integration and namespace. Enabling or turning them off for one policy updates the opt-in list for the entire integration.
 ::::
 
 ## Create the namespace `@custom` component template [data-streams-namespace-custom-component]
@@ -96,7 +96,7 @@ Namespace index templates are shared across all integration policies for that in
 3. Name the template using the pattern `<namespace>@custom` (for example, `production@custom`).
 4. Add the index settings, mappings, or aliases you want applied to every data stream in that namespace for opted-in integrations.
 5. Create the component template.
-6. Roll over the affected data streams so new backing indices pick up the changes. For example:
+6. Roll over each affected data stream so new backing indices pick up the changes. For example:
 
     ```console
     POST logs-system.application-production/_rollover
@@ -143,7 +143,7 @@ When you remove a namespace from the opt-in list, {{fleet}} deletes the correspo
 
 ## Overlapping index templates [data-streams-namespace-custom-conflicts]
 
-If you previously duplicated a base data stream index template and gave the copy a higher priority, that copy can overlap with the {{fleet}}-managed namespace index template at priority `250`. When you opt a namespace in, {{fleet}} warns you about overlapping templates and what will happen for each one.
+If you previously duplicated a base data stream index template and gave the copy a higher priority, that copy can overlap with the {{fleet}}-managed namespace index template. When you opt a namespace in, {{fleet}} warns you about overlapping templates and what will happen for each one.
 
 For details and resolution steps, refer to [Resolve overlapping index templates for namespace customization](/reference/fleet/data-streams-template-conflicts.md).
 

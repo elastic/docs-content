@@ -23,7 +23,11 @@ The same can happen with any pre-existing index template whose index patterns ma
 
 ## How {{fleet}} detects and reports overlaps [data-streams-template-conflicts-detect]
 
-When you enable namespace index templates for a namespace on an integration, {{fleet}} runs a preflight check for each `(data stream, namespace)` pair. The check uses the {{es}} simulate index API (`POST _index_template/_simulate_index/<index>`) to see which existing template would win for that data stream, then compares priorities with the planned namespace index template (priority `250`).
+When you enable namespace index templates for a namespace on an integration, {{fleet}} runs a preflight check for each `(data stream, namespace)` pair. The check uses the {{es}} simulate index API (`POST _index_template/_simulate_index/<index>`) to see which existing template would win for that data stream, then compares priorities with the planned namespace index template.
+
+::::{note}
+{{fleet}} sets the namespace index template priority to the base template priority plus 50: `250` for most integrations (base `200`), or `200` for integrations with `dataset_is_prefix: true` data streams (base `150`). The examples on this page use `250`; if your integration uses `dataset_is_prefix` data streams, read `200` instead. A user with the `manage_index_templates` privilege can change this priority with the {{es}} index template API, but {{fleet}} restores the default whenever the integration's templates are reinstalled or resynchronized.
+::::
 
 {{fleet}} reports overlaps in the UI before changes are applied, and in API responses as warnings. Each overlap falls into one of these cases:
 
@@ -56,7 +60,7 @@ Use this path when you want `<namespace>@custom` and related {{fleet}} namespace
 4. Confirm the managed templates exist (for example, search index templates for `@namespace.<namespace>`).
 5. Create or update the `<namespace>@custom` component template with the settings you still need. Copy useful settings from your older custom index templates into `<namespace>@custom` or into the data stream `@custom` templates when they should stay data-stream-specific.
 6. Optionally delete or further lower the priority of unused custom index templates that no longer win, if you don't need them as a fallback.
-7. Roll over affected data streams so new backing indices use the managed templates.
+7. Roll over each affected data stream so new backing indices use the managed templates.
 
 ::::{tip}
 If you enabled namespace index templates while a priority-`250` overlap blocked some templates, turn them off for that namespace, adjust those priorities, then enable them again so {{fleet}} can create the missing namespace index templates.
@@ -74,8 +78,8 @@ Use this path when your custom index templates already do what you need.
 
 Use this path only when you understand which template should win for each data stream.
 
-1. Review every overlapping template's priority against `250`. You can't change the priority of the {{fleet}}-managed namespace index template; it's always `250`.
-2. For data streams where your custom template must win, set its priority higher than `250`. For data streams where the {{fleet}}-managed namespace index template must win, set your custom template's priority below `250` (not exactly `250`, which blocks creation), or remove the template.
+1. Review every overlapping template's priority against the namespace index template priority (`250` for most integrations; refer to the preceding note).
+2. For data streams where your custom template must win, set its priority higher than the namespace index template priority. For data streams where the {{fleet}}-managed namespace index template must win, set your custom template's priority lower (but not equal, which blocks creation), or remove the template.
 
    ::::{include} _snippets/change-index-template-priority.md
    ::::
