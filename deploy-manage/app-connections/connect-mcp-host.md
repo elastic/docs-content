@@ -108,10 +108,10 @@ Confidential clients also require a Client Secret.
 :::
 
 3. Click **Add**.
-4. Click **Connect**
+4. Click **Connect**.
 
 When Claude desktop starts the OAuth flow, it expects authorization callback at `https://claude.ai/api/mcp/auth_callback`.
-If you get an authorization error, be sure to check that your OAuth Client you created in the previous steps had this redirect URI configured.
+If you get an authorization error, be sure to check that [the OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) you created includes this redirect URI.
 
 :::{note}
 Some enterprises may restrict adding custom connectors in this way.
@@ -160,26 +160,20 @@ The `mcp-remote` adapter stores OAuth credentials locally on your machine, keyed
 
 ::::
 
-::::{tab-item} Claude web interface
+::::{tab-item} claude.ai
 
 Claude's web interface (https://claude.ai) supports OAuth natively, so no additional adapter is required.
 
-To configure Claude's web interface:
+To connect from claude.ai:
 
-1. Log in to https://claude.ai
-2. Open **Settings → Connectors → Add → Add custom connector**.
-2. Enter a name, the URL, and Client ID.
-
-
-   :::{note}
-   Confidential clients also require a Client Secret.
-   :::
-
-3. Click **Add**.
-4. Click **Connect**
+1. Log in to https://claude.ai.
+2. Click your account menu, and then go to **Settings → Connectors → Add → Add custom connector**.
+3. Enter a name, the URL, and Client ID. Confidential clients also require a Client Secret.
+4. Click **Add**.
+5. Click **Connect**
 
 When the Claude web interface starts the OAuth flow, it listens for the authorization response at `https://claude.ai/api/mcp/auth_callback`.
-If you get an authorization error, be sure to check that your OAuth Client you created in the previous steps had this redirect URI configured.
+If you get an authorization error, be sure to check that [the OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) you created includes this redirect URI.
 
 ::::
 
@@ -188,28 +182,22 @@ If you get an authorization error, be sure to check that your OAuth Client you c
 ChatGPT's web interface (https://chatgpt.com) supports OAuth natively.
 After connecting an MCP Server via OAuth in the web interface, it also becomes available in the ChatGPT desktop app under **Settings → Plugins → Apps**
 
-To configure ChatGPT:
+To connect from ChatGPT:
 
-1. Log in
-2. Enable developer mode at **Settings → Security and login → Developer mode**
-2. Open **Settings → Plugins → Browse plugins**.
-3. Click the **+** button in the top right.
-4. Fill in the form with a name, description, and URL, leaving **Authentication** as `OAuth`
-5. Open the **Advanced OAuth Settings**
-6. Copy the **Callback URL**. You will need to add this to your Kibana OAuth Client as a registered redirect URI.
-7. Enter the Client ID
-
-
-:::{note}
-Confidential clients also require a Client Secret.
-:::
-
-8. On the left, check the box to indicate **I understand and want to continue**.
-9. Click **Create**
-10. Click to sign in
+1. Log in.
+2. Enable developer mode at **Settings → Security and login → Developer mode**.
+3. Open **Settings → Plugins → Browse plugins**.
+4. Click the **+** button in the top right. 
+5. Fill in the form with a name, description, and URL, leaving **Authentication** as `OAuth`. 
+6. Open the **Advanced OAuth Settings**. 
+7. Copy the **Callback URL**. You will need to add this to your Kibana OAuth Client as a registered redirect URI. 
+8. Enter the Client ID. Confidential clients also require a Client Secret. 
+9. On the left, check the box to indicate **I understand and want to continue**. 
+10. Click **Create**. 
+11. Click to sign in.
 
 When ChatGPT starts the OAuth flow, it listens for the authorization response at a URL like `https://chatgpt.com/connector/oauth/abc123ABC`, but the URL is different for each plugin.
-If you get an authorization error, be sure to check that your OAuth Client you created in the previous steps had the specific redirect URI for this plugin configured.
+If you get an authorization error, be sure to check that [the OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) you created includes this redirect URI.
 
 ::::
 
