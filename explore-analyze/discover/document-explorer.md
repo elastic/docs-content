@@ -100,7 +100,7 @@ Change how {{kib}} displays a field.
 
 1. Click the column header for the field, and then select **Edit data view field.**
 2. In the **Edit field** form, change the field name and format.
-   For detailed information on formatting options, refer to [Format data fields](../find-and-organize/data-views.md#managing-fields).
+   For detailed information on formatting options, refer to [Format data fields](../find-and-organize/data-views/field-formatters.md#managing-fields).
 
 
 

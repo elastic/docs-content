@@ -34,7 +34,7 @@ The active {{data-source}} appears under **{{data-source-cap}}** in the upper-ri
 
 :::{note}
 :applies_to: {"stack": "ga 9.2", "serverless": "ga"}
-Some data views are managed by Elastic and cannot be edited. However, you can [duplicate them](/explore-analyze/find-and-organize/data-views.md#duplicate-managed-data-view) and make changes to duplicated versions without affecting managed data views. 
+Some data views are managed by Elastic and cannot be edited. However, you can [duplicate them](/explore-analyze/find-and-organize/data-views/duplicate-data-view.md) and make changes to duplicated versions without affecting managed data views. 
 :::
 
 To learn how to modify the default **Security Default Data View**, refer to [Update default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices).
