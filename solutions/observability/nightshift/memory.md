@@ -12,7 +12,7 @@ products:
 
 Nightshift **Memory** is a persistent knowledge base that agents read before investigating incidents. Rather than rebuilding knowledge from raw telemetry on every [investigation](./investigations.md), Nightshift maintains a curated wiki of facts about your systems with information about services, deployment processes, infrastructure, known failure patterns, and more. Both agents and users can add memory articles, and each added page reduces the need for external queries for the next similar incident.
 
-To review or edit existing memory pages or create new ones, go to **Streams** → **Signficant Events** → **Memory**.
+To review or edit existing memory pages or create new ones, go to **Streams** → **Significant Events** → **Memory**.
 
 ## What memory stores [nightshift-memory-what]
 
@@ -41,7 +41,7 @@ The **Scrape Conversations** workflow reads recent AI Agent conversations. It ex
 
 ### Detect Gaps [nightshift-memory-gap-detection]
 
-The **Detect Gaps** workflow audits the entire knowledge base against required knowledge dimensions and identify what's missing.
+The **Detect Gaps** workflow audits the entire knowledge base against required knowledge dimensions and identifies what's missing.
 
 It checks the following dimensions:
 

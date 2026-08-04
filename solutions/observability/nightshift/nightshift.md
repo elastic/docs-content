@@ -22,7 +22,7 @@ Nightshift works by:
 
 ## Requirements [nightshift-requirements]
 
-- **Enterprise license**: Nightshift requires an active Elastic Enterprise license or trial on {{product.serverless-elasticsearch}}.
+- **Enterprise license**: Nightshift requires an active Elastic Enterprise license or trial on {{serverless-full}}.
 - **Streams**: Your data must be organized in [Streams](/solutions/observability/streams/streams.md). Nightshift attaches to streams and runs the KI extraction and detection pipeline per stream.
 - **Generative AI connector**: A [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md) is required to run KI extraction, rule generation, and investigations.
 
