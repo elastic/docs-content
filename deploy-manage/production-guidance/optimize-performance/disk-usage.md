@@ -78,6 +78,15 @@ Synthetic `_source` requires an [Enterprise subscription](https://www.elastic.co
 ## Disable `_source` [disable-source]
 
 The [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) field stores the original JSON body of the document. If you don't need access to it you can disable it. However, APIs that needs access to `_source` such as update, highlight and reindex won't work.
+## Reduce `_source` storage overhead [disable-source]
+
+The [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) field stores the original JSON body of each document. If disk usage is a concern, you have two options to reduce or eliminate this overhead.
+
+* **Use [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source)**: Synthetic `_source` reconstructs the field at retrieval time instead of storing it on disk, with no additional storage overhead for most common field types. Choose this option if you need to update documents in place, reindex data, or highlight search results.
+
+  Synthetic `_source` requires a [subscription](https://www.elastic.co/pricing). The reconstructed document might differ slightly from the original. Refer to [Synthetic `_source` modifications](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-modifications) for details.
+
+* **Disable `_source` entirely**: Choose this option if you don't need access to the original document body at all. This eliminates storage overhead completely, but APIs that depend on `_source`, including update, reindex, and highlight, stop working.
 
 ## Use `best_compression` [best-compression]
 
