@@ -627,6 +627,7 @@ toc:
               - file: workflows/reference/step-types.md
       - file: workflows/authoring-techniques.md
         children:
+          - file: workflows/authoring-techniques/use-natural-language.md
           - file: workflows/authoring-techniques/use-yaml-editor.md
           - file: workflows/authoring-techniques/anatomy.md
           - file: workflows/authoring-techniques/settings.md
