@@ -14,7 +14,7 @@ products:
 A time slider control filters a dashboard's time-based data to a range that viewers can adjust, and advance or animate backward and forward. It uses the dashboard's [global time filter](../query-filter/filtering.md) as its initial range.
 
 :::{tip}
-:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+:applies_to: {"stack": "ga 9.5"}
 You can also ask [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md) to add a time slider control when it creates or updates a dashboard through chat.
 :::
 

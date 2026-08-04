@@ -86,6 +86,9 @@ toc:
           - file: elasticsearch-solution-project/search-applications/search-application-api.md
           - file: elasticsearch-solution-project/search-applications/search-application-security.md
           - file: elasticsearch-solution-project/search-applications/search-application-client.md
+  - hidden: vector-database.md
+    children:
+      - hidden: vector-database/get-started.md
   - file: observability.md
     children:
       - file: observability/get-started.md
@@ -500,6 +503,11 @@ toc:
           - file: observability/streams/processors/uri-parts.md
           - file: observability/streams/processors/user-agent.md
           - file: observability/streams/processors/manual-pipeline-configuration.md
+        - hidden: observability/streams/significant-events/index.md
+          children:
+            - hidden: observability/streams/significant-events/how-it-works.md
+            - hidden: observability/streams/significant-events/operator-guide.md
+            - hidden: observability/streams/significant-events/knowledge-indicators.md
       - hidden: observability/nightshift/nightshift.md
         children:
           - hidden: observability/nightshift/get-started.md
@@ -596,6 +604,13 @@ toc:
               - file: security/ai/attack-discovery/run-attack-discovery.md
                 children:
                   - file: security/ai/attack-discovery/run-from-attacks-page.md
+                    children:
+                      - file: security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md
+                      - file: security/ai/attack-discovery/manual-runs-from-attacks-page.md
+                      - file: security/ai/attack-discovery/schedule-runs-from-attacks-page.md
+                      - file: security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md
+                  - file: security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md
+                  - file: security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md
                   - file: security/ai/attack-discovery/run-from-attack-discovery-page.md
               - file: security/ai/attack-discovery/triage-attack-discovery-findings.md
               - file: security/ai/attack-discovery/manage-saved-discoveries.md
@@ -653,6 +668,8 @@ toc:
               - file: security/detect-and-alert/write-investigation-guides.md
               - file: security/detect-and-alert/validate-and-test-rules.md
           - file: security/detect-and-alert/manage-detection-rules.md
+            children:
+              - file: security/detect-and-alert/view-rule-changes-history.md
           - file: security/detect-and-alert/monitor-rule-executions.md
             children:
               - file: security/detect-and-alert/fill-rule-gaps.md
