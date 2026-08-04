@@ -354,7 +354,7 @@ To test the connection:
     }
     ```
 
-    The connection is established, and a valid certificate is presented to the client. Elastic responds, in the case of the {{es}} endpoint, with basic information about the cluster.
+    The connection is established, and a valid certificate is presented to the client. In the case of the {{es}} endpoint, Elastic responds with basic information about the cluster.
     :::
     ::::
 
@@ -539,7 +539,7 @@ This means your deployment or project on {{ecloud}} can be in a different region
 1. Set up Private Link Endpoint in region 1 for a deployment or project hosted in region 2.
 
     1. Create your Private Link Endpoint using the service alias for region 2 in the region 1 VNet (let’s call this VNet1).
-    2. Create a Private Hosted Zone for region 2, and associate it with VNet1 similar to the step [Create a Private Link endpoint and DNS](#ec-private-link-azure-dns). Note that you are creating these resources in region 1, VNet1.
+    2. Create a Private Hosted Zone for region 2, and associate it with VNet1 similar to the [Create a Private Link endpoint and DNS](#ec-private-link-azure-dns) step. Note that you are creating these resources in region 1, VNet1.
 
 2. [Create a private connection policy](#create-private-connection-policy) in the region where your deployment or project is hosted, and [associate it](#associate-private-connection-policy) with your deployment or project.
 
@@ -595,7 +595,7 @@ If you want to remove a specific policy from a deployment or project, or delete 
 
 ### Delete a private connection policy [delete-private-connection-policy]
 
-If you need to remove a policy, you must first remove any associations with deployments or projects.
+If you need to delete a policy, you must first remove any associations with deployments or projects.
 
 To delete a policy:
 
