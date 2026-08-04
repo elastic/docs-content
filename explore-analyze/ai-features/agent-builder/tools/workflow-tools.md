@@ -134,4 +134,4 @@ The [`elastic/workflows` GitHub repo](https://github.com/elastic/workflows) cont
 ## Related pages
 * [Tools overview](../tools.md)
 * [Call agents from workflows](../agents-and-workflows.md)
-* [Workflows](/explore-analyze/workflows.md)
+* [Author workflows with natural language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md)

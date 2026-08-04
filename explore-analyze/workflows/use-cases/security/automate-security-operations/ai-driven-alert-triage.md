@@ -23,7 +23,7 @@ If you're new to workflows, complete [Build your first workflow](/explore-analyz
 
 ## Before you begin [workflows-ai-driven-alert-triage-prereqs]
 
-- **Permissions.** `All` on **Analytics > Workflows**, **Security > Cases**, and whatever Agent Builder privilege is required to invoke agents in your space. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+- **Permissions.** `All` on **Analytics → Workflows**, **Security → Cases**, and whatever Agent Builder privilege is required to invoke agents in your space. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 - **Attack Discovery enabled.** Attack Discovery must be running in your {{elastic-sec}} deployment and producing findings. Refer to [Attack Discovery](/solutions/security/ai/attack-discovery/index.md).
 - **Agent Builder agent.** A configured agent in {{agent-builder}} that can reason over security context. Use one of the built-in agents (for example, the Elastic AI Agent) or a [custom agent](/explore-analyze/ai-features/agent-builder/custom-agents.md). The examples use `elastic-ai-agent` as a default. Substitute your agent ID.
 - **Slack connector.** A Slack [connector](/deploy-manage/manage-connectors.md) or webhook URL for notifications.
