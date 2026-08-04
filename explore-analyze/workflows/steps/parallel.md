@@ -146,7 +146,7 @@ The step's output holds one entry per branch in `results`, index-aligned with th
 | Field | Description |
 |---|---|
 | `results[].index` | Zero-based branch position. Always present. |
-| `results[].key` | For static branches, the branch `name`. For dynamic fan-out, the item captured when the step started. |
+| `results[].key` | For static branches, the branch `name`. For dynamic fan-out, the full item value captured when the step started (can be a string or an object). |
 | `results[].status` | `completed`, `failed`, `timed_out`, or `skipped`. |
 | `results[].output` | Output of the last step the branch ran. Present for completed branches. |
 | `results[].error` | Error details for failed and timed-out branches. |

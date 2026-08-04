@@ -136,7 +136,7 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-Run branches at the same time and continue when all of them reach a terminal state. Choose one of two modes: dynamic fan-out (`foreach` plus `steps`) runs the same body once per item in a runtime list, and static branches (`branches`) run a fixed set of named branches that each do different work. A step can't use both.
+Run branches at the same time and continue when every branch reaches a terminal state. Choose one of two modes: dynamic fan-out (`foreach` plus `steps`) runs the same body once per item in a runtime list, and static branches (`branches`) run a fixed set of named branches that each do different work. A step can't use both.
 
 By default, five branches run at once and the first failure stops the step from starting more branches. The step output holds a per-branch result plus aggregate counts.
 
