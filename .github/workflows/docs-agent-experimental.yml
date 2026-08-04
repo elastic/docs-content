@@ -11,7 +11,7 @@ on:
         type: string
 
 permissions:
-  actions: read
+  actions: write
   contents: read
   discussions: write
   issues: write
