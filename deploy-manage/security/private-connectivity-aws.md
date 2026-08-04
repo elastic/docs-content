@@ -212,11 +212,12 @@ This limitation does not apply to [cross-region PrivateLink connections](#ec-aws
 
     1. Create a Private hosted zone.
 
-        For {{ech}}, refer to the **Private hosted zone domain name** column in the [PrivateLink service names and aliases](#ec-private-link-service-names-aliases) table for the name of the zone.
+        Refer to the **Private hosted zone domain name** column in the [PrivateLink service names and aliases](#ec-private-link-service-names-aliases) table for the name of the zone.
 
-        For {{serverless-full}}, to view the service metadata for your selected region, start to [create a new private connection policy](#ec-add-vpc-elastic) for the region and find the **Domain name** in the **Service metadata** dropdown.
+        For example, in `us-east-1`:
 
-        For example, for {{ech}} deployments in `us-east-1`, use `vpce.us-east-1.aws.elastic-cloud.com` as the zone domain name. For {{serverless-full}} deployments in the same region, use `private.us-east-1.aws.elastic.cloud`.
+        * For {{ech}} deployments: Use `{{example-phz-dn}}`.
+        * For {{serverless-short}} projects: Use `{{example-serverless-phz-dn}}`.
 
         Don’t forget to associate the zone with your VPC.
 

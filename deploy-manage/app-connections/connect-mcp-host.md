@@ -15,10 +15,12 @@ products:
 After an OAuth client is [created](create-oauth-client.md), configure your MCP host, usually your AI agent, with the client ID and MCP server URL, then complete the OAuth authorization flow to establish the connection. After completing the setup, your MCP host has an authorized OAuth connection to {{agent-builder}} and can run its tools with your permissions.
 
 This page covers several common MCP hosts:
-* Claude Code CLI, which has native OAuth support
-* Claude Desktop, which uses the `mcp-remote` adapter
-* ChatGPT, which supports OAuth through custom connectors
-* Cursor, which supports OAuth natively for remote MCP servers
+* Claude Code CLI
+* Claude desktop app
+* claude.ai
+* ChatGPT
+* Cursor
+
 
 Other OAuth 2.1 hosts follow the same general pattern, so consult your host's documentation for the specific configuration format.
 
@@ -82,19 +84,51 @@ Replace `{MCP_SERVER_URL}` and `{CLIENT_ID}` with the values for your OAuth clie
 Confidential clients must include the client secret in the `--static-oauth-client-info` JSON: `{"client_id":"{CLIENT_ID}","client_secret":"{CLIENT_SECRET}"}`.
 :::
 
-When the `mcp-remote` adapter starts the OAuth flow, it listens for the authorization response at `http://localhost/oauth/callback`. This is one of the default redirect URIs populated in the [MCP client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
+When the `mcp-remote` adapter starts the OAuth flow, it listens for the authorization response at `http://localhost/oauth/callback`. This is one of the default redirect URIs populated in the [OAuth client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
+
+:::{note}
+The `mcp-remote` adapter stores OAuth credentials locally on your machine, keyed by MCP server URL. If more than one MCP host uses `mcp-remote` with the same server URL and client ID, those hosts share one app connection. After you complete the authorization flow in the first host, additional hosts that use the same configuration don't prompt you to authorize again.
+:::
 
 The server is now configured. Start a Claude Code session. The OAuth authorization flow triggers automatically on the first use of the server.
 
 ::::
 
-::::{tab-item} Claude Desktop
+::::{tab-item} Claude desktop app
 
-Claude Desktop uses the [mcp-remote](https://www.npmjs.com/package/mcp-remote) adapter to handle OAuth connections.
+**Option 1: Native HTTP transport (recommended)**
 
-To configure Claude Desktop:
+The Claude desktop app supports OAuth natively, so no additional adapter is required.
 
-1. In Claude Desktop, open **Settings → Developer → Edit Config**. This opens `claude_desktop_config.json` in your text editor.
+To configure the Claude desktop app:
+
+1. Start the Claude desktop app and log in.
+2. Open **Settings → Connectors → Add → Add custom connector**.
+3. Enter a name, the URL, and Client ID.
+
+
+:::{note}
+Confidential clients also require a Client Secret.
+:::
+
+4. Click **Add**.
+5. Click **Connect**.
+
+When Claude desktop starts the OAuth flow, it expects an authorization callback at `https://claude.ai/api/mcp/auth_callback`.
+If you get an authorization error, check [the OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) you created includes this redirect URI.
+
+:::{note}
+Some enterprises may restrict adding custom connectors in this way.
+See **Option 2** for an alternative. 
+:::
+
+**Option 2: mcp-remote adapter**
+
+The Claude desktop app supports local MCP servers, and can use the [mcp-remote](https://www.npmjs.com/package/mcp-remote) adapter to handle OAuth connections.
+
+To configure the Claude desktop app:
+
+1. In the Claude desktop app, open **Settings → Developer → Edit Config**. This opens `claude_desktop_config.json` in your text editor.
 2. Add your MCP client to the `mcpServers` object:
 
    ```json
@@ -119,9 +153,30 @@ To configure Claude Desktop:
    Confidential clients also require a `client_secret` in the `--static-oauth-client-info` JSON: `{"client_id":"{CLIENT_ID}","client_secret":"{CLIENT_SECRET}"}`.
    :::
 
-3. Save the file and restart Claude Desktop to load the new configuration.
+3. Save the file and restart the Claude desktop app to load the new configuration.
 
 When the `mcp-remote` adapter starts the OAuth flow, it listens for the authorization response at `http://localhost/oauth/callback`. This is one of the default redirect URIs populated in the [OAuth client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
+
+:::{note}
+The `mcp-remote` adapter stores OAuth credentials locally on your machine, keyed by MCP server URL. If more than one MCP host uses `mcp-remote` with the same server URL and client ID, those hosts share one app connection. After you complete the authorization flow in the first host, additional hosts that use the same configuration don't prompt you to authorize again.
+:::
+
+::::
+
+::::{tab-item} claude.ai
+
+The Claude web interface (https://claude.ai) supports OAuth natively, so no additional adapter is required.
+
+To connect from claude.ai:
+
+1. Log in to claude.ai.
+2. Click your account menu, and then go to **Settings → Connectors → Add → Add custom connector**.
+3. Enter a name, the URL, and Client ID. Confidential clients also require a Client Secret.
+4. Click **Add**.
+5. Click **Connect**
+
+When the Claude web interface starts the OAuth flow, it listens for the authorization response at `https://claude.ai/api/mcp/auth_callback`.
+If you get an authorization error, check [the OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) you created includes this redirect URI.
 
 ::::
 
@@ -187,10 +242,6 @@ Most hosts that support OAuth 2.1 accept a similar configuration to Claude. Prov
 
 :::::
 
-:::{note}
-The `mcp-remote` adapter stores OAuth credentials locally on your machine, keyed by MCP server URL. If more than one MCP host uses `mcp-remote` with the same server URL and client ID, those hosts share one app connection. After you complete the authorization flow in the first host, additional hosts that use the same configuration don't prompt you to authorize again.
-:::
-
 ::::::
 
 ::::::{step} Authorize the connection
@@ -199,7 +250,7 @@ The `mcp-remote` adapter stores OAuth credentials locally on your machine, keyed
 The first time your MCP host tries to use the configured server, it opens a browser window and starts the OAuth authorization flow.
 
 :::{note} 
-Some tools might require additional manual steps. For example, Claude Code CLI requires that you type `/mcp` or run `claude mcp login <mcp-server-name>` before the browser window opens.
+Some tools might require additional manual steps. For example, Claude Code CLI requires that you enter `/mcp` or run `claude mcp login <mcp-server-name>` before the browser window opens.
 :::
 
 1. Your browser opens to an {{ecloud}} sign-in page. Sign in with your {{ecloud}} credentials. If you have an active session, you are not prompted to log in again.
