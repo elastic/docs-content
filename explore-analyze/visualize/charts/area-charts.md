@@ -225,6 +225,9 @@ See .github/scripts/verify-lens-api-examples.py for full usage. -->
 Send the following request to create a stacked area chart that shows record counts broken down by geographic destination.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -365,6 +368,9 @@ Visualizing HTTP response codes over time, highlighting the proportion of succes
 
 Send the following request to create a percentage area chart that shows the distribution of HTTP response codes over time.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

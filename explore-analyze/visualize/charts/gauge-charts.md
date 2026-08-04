@@ -103,6 +103,9 @@ Use a gauge to track progress toward a specific target, such as monthly sales go
 This example creates a horizontal bullet gauge that sums order revenue from the eCommerce sample data, providing a quick view of progress toward a sales goal.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -231,6 +234,9 @@ This example shows a gauge with server response time and color-coded health indi
 This example creates a gauge with three color-coded threshold bands so the arc turns green, yellow, or red depending on the average byte count.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -247,7 +253,7 @@ POST kbn://api/visualizations
     "operation": "median",
     "field": "memory",
     "label": "Average response time - last hour",
-    "format": { "type": "duration", "from": "microseconds", "to": "asMilliseconds" },
+    "format": { "type": "duration", "from": "us", "to": "ms" },
     "min": { "operation": "static_value", "value": 0 },
     "max": { "operation": "formula", "formula": "1000000" },
     "title": { "visible": true },
@@ -292,7 +298,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "operation": "median",
     "field": "memory",
     "label": "Average response time - last hour",
-    "format": { "type": "duration", "from": "microseconds", "to": "asMilliseconds" },
+    "format": { "type": "duration", "from": "us", "to": "ms" },
     "min": { "operation": "static_value", "value": 0 },
     "max": { "operation": "formula", "formula": "1000000" },
     "title": { "visible": true },
@@ -451,6 +457,9 @@ The following examples show various configuration options for building impactful
 This example creates a CPU-monitoring gauge with green/yellow/red threshold bands, using `machine.ram` from the logs sample data as a proxy for a CPU-like metric.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -559,6 +568,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 This example creates a full-circle disk utilization gauge with color bands that shift from green to red as usage increases, using `machine.ram` from the logs sample data as a proxy.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

@@ -113,7 +113,7 @@ After adding processors, the **Data preview** simulates results, so you can veri
 ::::
 
 ::::{step} Configure retention
-Use the [**Retention**](./configure-retention.md) tab to control how long each stream stores data and manage storage costs. Review storage size, ingestion averages, and tier distribution before choosing a retention method:
+Use the [**Data lifecycle**](./configure-retention.md) tab (**Retention** in earlier versions) to control how long each stream stores data and manage storage costs. Review storage size, ingestion averages, and tier distribution before choosing a retention method:
 
 - **[Inherit retention](./configure-retention.md#streams-configure-retention-steps)**: Use settings from the stream's index template or parent stream.
 - **[Set a retention period](./configure-retention.md#streams-configure-retention-steps)**: Define a minimum number of days before data is deleted.
@@ -128,3 +128,10 @@ When documents fail during ingestion, Streams preserves them in a [failure store
 
 :::::
 
+- [**Retention**](./configure-retention.md): Manage how your stream retains data and get insight into data ingestion and storage size.
+- [**Partitioning**](./organize-your-data.md): {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview` Route data into child streams.
+- [**Processing**](./parse-and-process.md): Parse and extract information from documents into dedicated fields.
+- [**Schema**](./map-fields.md): Manage field mappings.
+- [**Data quality**](./manage-data-quality.md): Get information about failed and degraded documents in your stream.
+- [**Advanced**](./advanced.md): Review and manually modify underlying {{es}} components of your stream.
+- [**Knowledge Indicators**](./significant-events/knowledge-indicators.md): Automatically extract structured facts about your environment from raw log data.
