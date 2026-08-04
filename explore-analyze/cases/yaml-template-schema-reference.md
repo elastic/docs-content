@@ -22,6 +22,19 @@ Before writing YAML by hand, try the **Actions menu** in the template editor: it
 
 For concepts and step-by-step instructions, refer to [Case templates](manage-case-templates.md), [Create fields in the case field library](create-case-field-library.md), and [Create case templates](create-case-templates.md).
 
+## Limits [case-templates-field-library-limits]
+
+Case templates and field library entries have the following limits:
+
+| Limit | Value |
+|---|---|
+| Templates per solution | 200 |
+| Fields per template | 200 |
+| Template definition (YAML) size | 30,000 characters |
+| Field value or default value size | 30,000 UTF-8 bytes |
+
+These limits apply to new writes only. Existing templates or values that already exceed a limit keep working and can still be edited. If a solution already has 200 templates, you must delete one before you can add another.
+
 ## Template fields
 
 These fields go at the top level of a template's YAML definition and pre-fill matching fields on the case.
