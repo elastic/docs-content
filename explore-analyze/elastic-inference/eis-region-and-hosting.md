@@ -12,13 +12,15 @@ This page lists the {{aws}} and {{gcp}} regions where Elastic {{infer-cap}} Serv
 
 **{{aws}}:**
 
-* `us-east-1` (Virginia)
+* `us-east-1` (Virginia, US)
+* `eu-central-1` (Frankfurt, Germany)
+* `ap-northeast-1` (Tokyo, Japan)
 
 **{{gcp}}:**
 
 * `asia-southeast1` (Singapore)
 * `europe-west1` (Belgium)
-* `us-east4` (Virginia)
+* `us-east4` (Virginia, US)
 
 All {{infer}} requests sent through EIS are routed to the nearest region, regardless of where your {{es}} deployment or {{serverless-short}} project is hosted.
 

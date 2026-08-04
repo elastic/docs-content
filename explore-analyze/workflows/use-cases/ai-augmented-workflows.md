@@ -21,6 +21,7 @@ The integration runs in both directions: a workflow can call an agent as a step,
 
 ## What you can build [workflows-ai-patterns]
 
+- {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` **Create a workflow using natural language.** Describe the automation in the **Workflows** app or in Agent Chat and review the generated YAML before you save. Refer to [Author workflows with natural language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md) and [Create skills and workflows in chat](/explore-analyze/ai-features/agent-builder/chat.md#create-skills-and-workflows-directly-from-chat).
 - **Call an agent from a workflow.** Use the [`ai.agent` step](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) to invoke any agent built in {{agent-builder}}. The agent sees the workflow's data through template variables, performs its reasoning, and returns a response that subsequent steps can act on. Refer to [Call {{agent-builder}} agents from Elastic Workflows](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md) for the full `ai.agent` reference and examples.
 - **Trigger a workflow from an agent.** Create a [workflow tool](/explore-analyze/ai-features/agent-builder/tools/workflow-tools.md) in {{agent-builder}} and assign it to an agent. The agent can then invoke the workflow from a conversation, extracting the needed inputs from the user's message and surfacing the workflow's output in chat.
 - **Classify and route with AI.** Pair [`ai.classify`](/explore-analyze/workflows/steps/ai-steps.md#ai-classify) with [`switch`](/explore-analyze/workflows/steps/switch.md) to send each alert, ticket, or signal down a different branch based on a model's categorization.
@@ -42,6 +43,7 @@ Step-by-step guides for AI-augmented workflows:
 
 ## Learn more
 
+- [Author workflows with natural language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md): Create and edit workflows from a plain-language description.
 - [AI steps reference](/explore-analyze/workflows/steps/ai-steps.md): `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` parameters and output structure.
 - [Composition steps](/explore-analyze/workflows/steps/composition.md): Invoke child workflows and emit outputs.
 - [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md): Pause a workflow for reviewer input.
