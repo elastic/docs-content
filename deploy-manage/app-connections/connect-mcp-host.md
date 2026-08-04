@@ -14,9 +14,11 @@ products:
 
 After an OAuth client is [created](create-oauth-client.md), configure your MCP host, usually your AI agent, with the client ID and MCP server URL, then complete the OAuth authorization flow to establish the connection. After completing the setup, your MCP host has an authorized OAuth connection to {{agent-builder}} and can run its tools with your permissions.
 
-This page covers two common MCP hosts:
-* Claude Code CLI, which has native OAuth support
-* Claude Desktop, which uses the `mcp-remote` adapter
+This page covers several common MCP hosts:
+* Claude Code CLI
+* Claude desktop app
+* claude.ai
+* ChatGPT
 
 Other OAuth 2.1 hosts follow the same general pattern, so consult your host's documentation for the specific configuration format.
 
@@ -80,7 +82,7 @@ Replace `{MCP_SERVER_URL}` and `{CLIENT_ID}` with the values for your OAuth clie
 Confidential clients must include the client secret in the `--static-oauth-client-info` JSON: `{"client_id":"{CLIENT_ID}","client_secret":"{CLIENT_SECRET}"}`.
 :::
 
-When the `mcp-remote` adapter starts the OAuth flow, it listens for the authorization response at `http://localhost/oauth/callback`. This is one of the default redirect URIs populated in the [MCP client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
+When the `mcp-remote` adapter starts the OAuth flow, it listens for the authorization response at `http://localhost/oauth/callback`. This is one of the default redirect URIs populated in the [OAuth client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
 
 :::{note}
 The `mcp-remote` adapter stores OAuth credentials locally on your machine, keyed by MCP server URL. If more than one MCP host uses `mcp-remote` with the same server URL and client ID, those hosts share one app connection. After you complete the authorization flow in the first host, additional hosts that use the same configuration don't prompt you to authorize again.
@@ -94,34 +96,33 @@ The server is now configured. Start a Claude Code session. The OAuth authorizati
 
 **Option 1: Native HTTP transport (recommended)**
 
-Claude's desktop app supports OAuth natively, so no additional adapter is required.
+The Claude desktop app supports OAuth natively, so no additional adapter is required.
 
-To configure Claude's desktop app:
+To configure the Claude desktop app:
 
 1. Start the Claude desktop app and log in.
 2. Open **Settings → Connectors → Add → Add custom connector**.
-2. Enter a name, the URL, and Client ID.
+3. Enter a name, the URL, and Client ID.
 
 
 :::{note}
 Confidential clients also require a Client Secret.
 :::
 
-3. Click **Add**.
-4. Click **Connect**.
+4. Click **Add**.
+5. Click **Connect**.
 
-When Claude desktop starts the OAuth flow, it expects authorization callback at `https://claude.ai/api/mcp/auth_callback`.
-If you get an authorization error, be sure to check that [the OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) you created includes this redirect URI.
+When Claude desktop starts the OAuth flow, it expects an authorization callback at `https://claude.ai/api/mcp/auth_callback`.
+If you get an authorization error, check [the OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) you created includes this redirect URI.
 
 :::{note}
 Some enterprises may restrict adding custom connectors in this way.
 See **Option 2** for an alternative. 
 :::
 
-
 **Option 2: mcp-remote adapter**
 
-Claude's desktop app supports local MCP servers, and can use the [mcp-remote](https://www.npmjs.com/package/mcp-remote) adapter to handle OAuth connections.
+The Claude desktop app supports local MCP servers, and can use the [mcp-remote](https://www.npmjs.com/package/mcp-remote) adapter to handle OAuth connections.
 
 To configure the Claude desktop app:
 
@@ -162,42 +163,42 @@ The `mcp-remote` adapter stores OAuth credentials locally on your machine, keyed
 
 ::::{tab-item} claude.ai
 
-Claude's web interface (https://claude.ai) supports OAuth natively, so no additional adapter is required.
+The Claude web interface (https://claude.ai) supports OAuth natively, so no additional adapter is required.
 
 To connect from claude.ai:
 
-1. Log in to https://claude.ai.
+1. Log in to claude.ai.
 2. Click your account menu, and then go to **Settings → Connectors → Add → Add custom connector**.
 3. Enter a name, the URL, and Client ID. Confidential clients also require a Client Secret.
 4. Click **Add**.
 5. Click **Connect**
 
 When the Claude web interface starts the OAuth flow, it listens for the authorization response at `https://claude.ai/api/mcp/auth_callback`.
-If you get an authorization error, be sure to check that [the OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) you created includes this redirect URI.
+If you get an authorization error, check [the OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) you created includes this redirect URI.
 
 ::::
 
 ::::{tab-item} ChatGPT
 
 ChatGPT's web interface (https://chatgpt.com) supports OAuth natively.
-After connecting an MCP Server via OAuth in the web interface, it also becomes available in the ChatGPT desktop app under **Settings → Plugins → Apps**
+After connecting an MCP server via OAuth in the web interface, it also becomes available in the ChatGPT desktop app under **Settings → Plugins → Apps**.
 
 To connect from ChatGPT:
 
 1. Log in.
 2. Enable developer mode at **Settings → Security and login → Developer mode**.
 3. Open **Settings → Plugins → Browse plugins**.
-4. Click the **+** button in the top right. 
-5. Fill in the form with a name, description, and URL, leaving **Authentication** as `OAuth`. 
-6. Open the **Advanced OAuth Settings**. 
-7. Copy the **Callback URL**. You will need to add this to your Kibana OAuth Client as a registered redirect URI. 
-8. Enter the Client ID. Confidential clients also require a Client Secret. 
-9. On the left, check the box to indicate **I understand and want to continue**. 
-10. Click **Create**. 
+4. Click the **+** button in the top right.
+5. Fill in the form with a name, description, and URL, leaving **Authentication** as `OAuth`.
+6. Open the **Advanced OAuth Settings**.
+7. Copy the **Callback URL**. You will need to add this to your Kibana OAuth client as a registered redirect URI.
+8. Enter the Client ID. Confidential clients also require a Client Secret.
+9. On the left, check the box to indicate **I understand and want to continue**.
+10. Click **Create**.
 11. Click to sign in.
 
 When ChatGPT starts the OAuth flow, it listens for the authorization response at a URL like `https://chatgpt.com/connector/oauth/abc123ABC`, but the URL is different for each plugin.
-If you get an authorization error, be sure to check that [the OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) you created includes this redirect URI.
+If you get an authorization error, check [the OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) you created includes this redirect URI.
 
 ::::
 
@@ -217,7 +218,7 @@ Most hosts that support OAuth 2.1 accept a similar configuration to Claude. Prov
 The first time your MCP host tries to use the configured server, it opens a browser window and starts the OAuth authorization flow.
 
 :::{note} 
-Some tools might require additional manual steps. For example, Claude Code CLI requires that you type `/mcp` or run `claude mcp login <mcp-server-name>` before the browser window opens.
+Some tools might require additional manual steps. For example, Claude Code CLI requires that you enter `/mcp` or run `claude mcp login <mcp-server-name>` before the browser window opens.
 :::
 
 1. Your browser opens to an {{ecloud}} sign-in page. Sign in with your {{ecloud}} credentials. If you have an active session, you are not prompted to log in again.
