@@ -62,7 +62,6 @@ The redirect URI tells the authorization server where to return the user after t
   - Claude Code CLI: `http://localhost/callback`
 - **Remote** — For hosted or cloud-based applications. Enter a single `https://` URL. Plain HTTP is not accepted.
   - claude.ai: `https://claude.ai/api/mcp/auth_callback`
-  - ChatGPT: `https://chatgpt.com/connector/oauth/abc123ABC`
 
 For local clients that need more than one redirect URI, click **Add local URL** to add additional URLs.
 ::::

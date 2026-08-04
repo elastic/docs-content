@@ -18,7 +18,6 @@ This page covers several common MCP hosts:
 * Claude Code CLI
 * Claude desktop app
 * claude.ai
-* ChatGPT
 
 Other OAuth 2.1 hosts follow the same general pattern, so consult your host's documentation for the specific configuration format.
 
@@ -174,30 +173,6 @@ To connect from claude.ai:
 5. Click **Connect**
 
 When the Claude web interface starts the OAuth flow, it listens for the authorization response at `https://claude.ai/api/mcp/auth_callback`.
-If you get an authorization error, check [the OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) you created includes this redirect URI.
-
-::::
-
-::::{tab-item} ChatGPT
-
-ChatGPT's web interface (https://chatgpt.com) supports OAuth natively.
-After connecting an MCP server via OAuth in the web interface, it also becomes available in the ChatGPT desktop app under **Settings → Plugins → Apps**.
-
-To connect from ChatGPT:
-
-1. Log in.
-2. Enable developer mode at **Settings → Security and login → Developer mode**.
-3. Open **Settings → Plugins → Browse plugins**.
-4. Click the **+** button in the top right.
-5. Fill in the form with a name, description, and URL, leaving **Authentication** as `OAuth`.
-6. Open the **Advanced OAuth Settings**.
-7. Copy the **Callback URL**. You will need to add this to your Kibana OAuth client as a registered redirect URI.
-8. Enter the Client ID. Confidential clients also require a Client Secret.
-9. On the left, check the box to indicate **I understand and want to continue**.
-10. Click **Create**.
-11. Click to sign in.
-
-When ChatGPT starts the OAuth flow, it listens for the authorization response at a URL like `https://chatgpt.com/connector/oauth/abc123ABC`, but the URL is different for each plugin.
 If you get an authorization error, check [the OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) you created includes this redirect URI.
 
 ::::
