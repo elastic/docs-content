@@ -25,7 +25,7 @@ The following information reflects our strategic goals, plans and objectives and
 | **Functionality** | {{ech}} | {{serverless-full}} |
 |--------|----------------------|--------------------------|
 | **Management model** | Self-service infrastructure | Fully managed service |
-| **Project organization** | Single deployments with multiple capabilities | Separate projects for Elasticsearch, Observability, and Security |
+| **Project organization** | Single deployments with multiple capabilities | Separate projects for Elasticsearch, Elasticsearch Vector Database, Observability, and Security |
 | **Scaling** | Manual or automated with configuration | Fully automated |
 | **Infrastructure decisions** | User manages capacity | Automatically managed by Elastic |
 | **Pricing model** | Based on provisioned resources | Based on usage |
