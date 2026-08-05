@@ -117,7 +117,9 @@ PUT movies
 }
 ```
 
-Note that in the example above, both `name` and `plot` are still indexed individually in addition to `name_and_plot`, so this adds roughly a third field's worth of index storage. If you only need `name` and `plot` to be searchable through the combined field (for example, you never query them individually), you can avoid this overhead by disabling indexing on the source fields with `"index": false`, keeping only `name_and_plot` indexed for search. See [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) for more on `copy_to` as a way to reduce per-field mapping overhead.
+:::note
+In the previous example, `name` and `plot` are still indexed individually alongside `name_and_plot`, which adds storage overhead for each source field. If you don't need to search those fields individually, you can avoid this by setting `"index": false` on them. See [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) for more on using `copy_to` to reduce per-field mapping overhead.
+:::
 
 ## Pre-index data [_pre_index_data]
 
