@@ -63,7 +63,7 @@ The resulting entity risk scores are stored in the `risk-score.risk-score-<space
     * By default, risk scoring uses the last 30 days of alerts. When turning on risk scoring, you can configure a different date and time range.
     ::::
 
-2. Alert risk scores (`kibana.alert.risk_score`) are aggregated for each entity, with entities identified by their Entity Unique Identifier (EUID) — a stable ID derived from ECS identity fields. Alerts with higher risk scores contribute more than those with lower risk scores. The resulting aggregated risk score is assigned to the **Alerts** category in the entity's [risk summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-risk-summary).
+2. Alert risk scores (`kibana.alert.risk_score`) are aggregated for each entity, with entities identified by their Entity Unique Identifier (EUID) — a stable ID derived from ECS identity fields. Alerts with higher risk scores contribute more than those with lower risk scores. The resulting aggregated risk score is assigned to the **Alerts** category in the entity's [risk score section](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score).
 
 3. The score is then updated based on the following risk inputs:
 
@@ -111,7 +111,7 @@ When an entity belongs to a [resolution group](/solutions/security/advanced-enti
     * By default, risk scoring uses the last 30 days of alerts. When turning on risk scoring, you can configure a different date and time range.
     ::::
 
-2. The engine groups alerts by `host.name`, `user.name`, or `service.name`, and aggregates the individual alert risk scores (`kibana.alert.risk_score`) such that alerts with higher risk scores contribute more than alerts with lower risk scores. The resulting aggregated risk score is assigned to the **Alerts** category in the entity's [risk summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-risk-summary).
+2. The engine groups alerts by `host.name`, `user.name`, or `service.name`, and aggregates the individual alert risk scores (`kibana.alert.risk_score`) such that alerts with higher risk scores contribute more than alerts with lower risk scores. The resulting aggregated risk score is assigned to the **Alerts** category in the entity's [risk summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score).
 
 3. The engine then updates the score based on the following risk inputs:
 

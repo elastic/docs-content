@@ -23,22 +23,19 @@ To use workflows, you must turn on the feature and ensure your role has the appr
 You must also have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 ::::
 
-:::{image} /explore-analyze/images/workflows-page.png
-:alt: A view of Workflows editor
-:screenshot:
-:::
-
 ## Available actions [workflow-available-actions]
 
 From the Workflows page, you can create new workflows, search and filter existing ones, manually trigger workflows, and more.
 
 ### Create a workflow [workflow-create]
 
-Click **Create a new workflow** to open the YAML editor. Refer to [](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) to learn how to use the editor.
+Click **Create workflow** to open the YAML editor with the AI chat sidebar. You can [describe the workflow in natural language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md), write [YAML](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) by hand, or move between the two.
 
 ### Search and filter [workflow-search-filter]
 
 Use the search bar to filter workflows by name, description, or tag. You can also use the **Enabled** filter to only show workflows that are turned on (enabled) or off (disabled), and the **Created By** filter to only show workflows created by the specified user.
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` When the [**Show managed workflows**](kibana://reference/advanced-settings.md#kibana-workflows-settings) advanced setting is turned on and your role can read managed workflows, a **View** filter also appears with **Custom** and **Managed** options. Refer to [Show managed workflows](/explore-analyze/workflows/get-started/setup.md#workflows-managed-visibility) and [Managed workflows](/explore-analyze/workflows/managed-workflows.md).
 
 ### Run a workflow [workflow-run]
 
