@@ -25,7 +25,7 @@ In these versions, the alert details flyout is organized into a right panel, a l
 
 ## Alert details flyout UI [alert-details-flyout-ui]
 
-The alert details flyout opens as a single flyout over the Alerts table. Clicking certain elements in the flyout — such as a rule name, a related alert, or an investigation tool like **Correlations** or **Analyzer** — opens the details in a new flyout that layers on top of the current one. Use the **Back** button or the **History** menu at the top of the flyout to navigate between the flyouts you've opened. To resize the flyout, drag its left edge.
+The alert details flyout opens as a single flyout over the Alerts table. Refer to [Details flyouts](/solutions/security/get-started/elastic-security-ui.md#details-flyouts) for the toolbar controls, footer, and child flyout navigation shared across {{elastic-sec}} flyouts. To resize the flyout, drag its left edge.
 
 ::::{important}
 If you've enabled grouping on the Alerts page, expand a group and select an individual alert to open the flyout.
@@ -37,19 +37,11 @@ An {{kib}} administrator can revert to the previous flyout layout by turning off
 
 ### Header [header]
 
-The header displays key alert information and toolbar actions. Hover over fields on the **Overview** and **Table** tabs to access [inline actions](/solutions/security/get-started/elastic-security-ui.md#inline-actions).
-
-#### Toolbar actions
-
-| Icon | Name | Action |
-|------|------|--------|
-| {icon}`share` | Share alert | Get a shareable URL. Don't copy from the browser address bar. It might include filters or relative time ranges that produce inconsistent results. |
-| {icon}`undo` | Back | Appears after you open a related flyout (for example, a rule or another alert). Click to return to the previous flyout. |
-| {icon}`clock_counter` | History | Appears after you've navigated through more than one flyout. View the flyouts you've opened in this session and click one to jump back to it. |
+The header displays key alert information. Hover over fields on the **Overview** and **Table** tabs to access [inline actions](/solutions/security/get-started/elastic-security-ui.md#inline-actions).
 
 ::::{note}
 :applies_to: stack: ga
-If you've configured [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) in `kibana.yml`, the shareable URL also appears in the `kibana.alert.url` field on the **Table** tab.
+If you've configured [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) in `kibana.yml`, the shareable URL from the header's **Share** action also appears in the `kibana.alert.url` field on the **Table** tab.
 ::::
 
 #### Alert details
@@ -90,10 +82,7 @@ Shows raw JSON. Click **Copy to clipboard** to export.
 
 ### Footer [footer]
 
-At the bottom of the flyout:
-
-* **Ask AI Assistant** (or **Add to chat**, if [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) is enabled): Continue investigating the alert in [AI Assistant](/solutions/security/ai/ai-assistant.md).
-* **Take action**: Opens a menu with more options for interacting with the alert, such as changing its status, adding tags or assignees, adding an exception, isolating a host, running a response action or Osquery, adding a note, or investigating in Timeline.
+Refer to [Details flyouts](/solutions/security/get-started/elastic-security-ui.md#details-flyouts) for the footer's **Ask AI Assistant** and **Take action** controls. For the alert, **Take action** includes options for changing its status, adding tags or assignees, adding an exception, isolating a host, running a response action or Osquery, adding a note, or investigating in Timeline.
 
 ## About [about-section]
 

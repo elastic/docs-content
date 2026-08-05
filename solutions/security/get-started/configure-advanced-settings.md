@@ -142,7 +142,7 @@ serverless: ga
 
 The **Enable new flyout** setting (`securitySolution:enableNewFlyout`) controls whether {{elastic-sec}} uses the new flyout system for document (alert and event), attack, host, user, rule, network, indicator of compromise, misconfigurations, and vulnerabilities details. This setting is turned on by default and requires a page reload to take effect.
 
-Turn this setting off to revert to the previous flyout layout, which uses right, left, and preview panels instead of a single flyout with [child flyouts](/solutions/security/detect-and-alert/view-detection-alert-details.md#alert-details-flyout-ui).
+Turn this setting off to revert to the previous flyout layout, which uses right, left, and preview panels instead of a single flyout with [child flyouts](/solutions/security/get-started/elastic-security-ui.md#details-flyouts).
 
 ## Enable alerts and attacks alignment [enable-alerts-and-attacks-alignment]
 ```{applies_to}
