@@ -41,7 +41,7 @@ Launch the response console from any of the following places in {{elastic-sec}}:
 * Endpoint details flyout → **Take action** → **Respond**
 * Alert details flyout → **Take action** → **Respond**
 * Host details page → **Respond**
-* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` Event details flyout → **Take action** → **Respond** 
+* {applies_to}`stack: ga 9.1` Event details flyout → **Take action** → **Respond** 
 
 To perform an action on the endpoint, enter a [response action command](/solutions/security/endpoint-response-actions.md#response-action-commands) in the input area at the bottom of the console, then press **Return**. Output from the action is displayed in the console.
 
@@ -73,7 +73,7 @@ serverless: ga
 
 ::::{note}
 This response action is supported for:
-* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) and [Microsoft Defender for Endpoint](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions) hosts.
+* {applies_to}`stack: ga 9.5+` [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) and [Microsoft Defender for Endpoint](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions) hosts.
 * {applies_to}`stack: ga 9.2-9.4` Microsoft Defender for Endpoint–enrolled hosts only.
  
 ::::
@@ -221,7 +221,7 @@ Trigger a virtual process or kernel system memory dump on a host. Use this actio
 
 ::::{note}
 This response action is supported for:
-  - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Windows and Linux endpoints
+  - {applies_to}`stack: ga 9.4+` Windows and Linux endpoints
   - {applies_to}`stack: ga =9.3` Windows endpoints only
 ::::
 
@@ -296,7 +296,7 @@ For CrowdStrike, you must include one of the following parameters to identify th
 * `--Raw`: The full script content provided directly as a string.
 * `--CloudFile`: The name of the script stored in a cloud storage location.
 
-   {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` When using this parameter, select from a list of saved custom scripts.
+   {applies_to}`stack: ga 9.1` When using this parameter, select from a list of saved custom scripts.
 
 * `--HostPath`: The absolute or relative file path of the script located on the host machine.
 
