@@ -23,6 +23,10 @@ For the ECK operator, adherence to FIPS 140-2 is ensured by:
 Due to a build configuration issue, ECK operator images published between versions 2.9.0 and 3.3.1 use the standard Go cryptography library instead of BoringCrypto. Standard Go **does not use FIPS 140-2/3 validated cryptographic libraries**. Upgrade to version 3.3.2 or later to get images built using FIPS 140-2/3 validated cryptographic libraries.
 ::::
 
+:::{important}
+The JVM bundled with {{es}} is not configured for FIPS. Which means that, deploying an ECK operator will not make cluster automatically FIPS compliant. [More](https://www.elastic.co/docs/deploy-manage/security/fips-es#:~:text=FIPS%20140%2D3-,Important,-The%20JVM%20bundled)
+:::
+
 ## FIPS compatible installation using Helm [k8s_fips_compliant_installation_using_helm]
 
 Set `image.fips=true` to install a FIPS-enabled version of the ECK Operator. Refer to [Install ECK using the Helm chart](../../../deploy-manage/deploy/cloud-on-k8s/install-using-helm-chart.md) for full Helm installation instructions.
