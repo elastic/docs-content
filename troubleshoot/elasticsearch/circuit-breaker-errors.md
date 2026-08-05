@@ -97,6 +97,8 @@ GET _nodes/stats/breaker
 
 ## Prevent circuit breaker errors [prevent-circuit-breaker-errors]
 
+The following sections describe common causes of circuit breaker errors and how to prevent them.
+
 ### Reduce JVM memory pressure
 
 High JVM memory pressure often causes circuit breaker errors. See [High JVM memory pressure](high-jvm-memory-pressure.md).
