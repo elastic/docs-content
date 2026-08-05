@@ -78,15 +78,15 @@ metrics-system.network-production@custom
 
 ## Step 3: Clone and modify the existing index template [data-streams-ilm-three]
 
-Now that you’ve created a component template, you need to create an index template to apply the changes to the correct data stream. The easiest way to do this is to duplicate and modify the integration’s existing index template.
+Now that you’ve created a component template, you need an index template scoped to the correct data stream and namespace. This scenario duplicates and modifies the integration’s existing index template.
 
-::::{warning}
-* If you duplicate an index template, do not change or remove any managed properties. This may result in problems when upgrading. Cloning the index template of an integration package involves some risk as any changes made to the original index template are not propagated to the cloned version when you upgrade versions. 
-* These steps assume that you want to have a namespace specific ILM policy, which requires index template cloning. Cloning the index template of an integration package involves some risk because any changes made to the original index template as part of package upgrades are not propagated to the cloned version. Check out [Cloning the index template of an integration package](/reference/fleet/integrations-assets-best-practices.md#assets-restrictions-cloning-index-template) for details.
-* If you want to change the ILM policy, the number of shards, or other settings for the data streams of one or more integrations, but **the changes do not need to be specific to a given namespace**, use a `@custom` component template, as described in [Scenario 1](/reference/fleet/data-streams-scenario1.md) and [Scenario 2](/reference/fleet/data-streams-scenario2.md), to avoid the problems mentioned earlier. Check out the [ILM](/reference/fleet/data-streams.md#data-streams-ilm) section for details.
-
+::::{important}
+Duplicating an integration index template is risky: don't change or remove managed properties, and remember that package upgrades don't update your copy. For details, refer to [Cloning the index template of an integration package](/reference/fleet/integrations-assets-best-practices.md#assets-restrictions-cloning-index-template).
 ::::
 
+If your changes don't need to be namespace-specific, use a `@custom` component template instead, as described in [Scenario 1](/reference/fleet/data-streams-scenario1.md) and [Scenario 2](/reference/fleet/data-streams-scenario2.md). For more about {{ilm-init}} with {{fleet}} data streams, refer to [Index lifecycle management ({{ilm-init}})](/reference/fleet/data-streams.md#data-streams-ilm).
+
+{applies_to}`stack: ga 9.5+` If you want the same settings for every data stream in a namespace (not only one data stream), you can use [namespace index templates](/reference/fleet/data-streams-namespace-custom.md) instead of duplicating the integration index template.
 
 1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and open the **Index Templates** tab.
 2. Find the index template you want to clone. The index template will have the `<type>` and `<dataset>` in its name, but not the `<namespace>`. In this case, it’s `metrics-system.network`.

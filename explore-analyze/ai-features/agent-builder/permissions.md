@@ -44,6 +44,7 @@ Grants access to:
 - View tools
 - View skills {applies_to}`stack: ga 9.4+`
 - Access conversations
+- Manage OAuth MCP clients for the [{{agent-builder}} MCP server](mcp-server.md) {applies_to}`serverless: preview`
 
 Instead of `All`, you can pair `Read` with individual sub-features for more granular control over what users can manage:
 
@@ -97,6 +98,19 @@ Tools execute queries against {{es}} indices as the current user. Required privi
 
 Learn more about [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 
+#### Read trace data [read-trace-data]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+{{agent-builder}} can [collect agent traces](collect-traces.md) into your {{es}} deployment. Trace data is stored in the `traces-agent_builder.otel-*` data stream. To read it, a role needs `read` and `view_index_metadata` on that pattern.
+
+Access is granted at the index level. Any user who can read these data streams can read all collected traces, so trace access is not scoped per user. To control who can read traces, configure index privileges through roles in **Stack Management → Roles**.
+
+<!-- RBAC on the local trace index is still settling (search-team#14100). In serverless Search and Observability projects the default roles may already grant broad access to these patterns. Do not document specific default-role behavior until #14100 lands. -->
+
 ## Grant access
 
 You can grant users access to {{agent-builder}} using these methods:
@@ -146,6 +160,12 @@ POST /_security/role/agent-builder-full
 For granular access, pair `feature_agentBuilder.read` with only the sub-feature privileges needed. To learn more, refer to [Kibana privileges](#kib-privileges).
 :::
 
+:::{admonition} Permissions for MCP clients
+:applies_to: {"serverless": "preview"}
+
+Roles also determine what an MCP client can do when it connects to the {{agent-builder}} MCP server through OAuth. The MCP client inherits the permissions of the user who authorizes the connection. To learn more, refer to [OAuth for MCP clients](/deploy-manage/app-connections/oauth-clients.md).
+:::
+
 ### Grant access with API keys
 
 When using the {{agent-builder}} APIs programmatically, authenticate with an API key that includes the required privileges.
@@ -153,7 +173,7 @@ When using the {{agent-builder}} APIs programmatically, authenticate with an API
 Unlike roles, which use UI-friendly feature privilege names like `feature_agentBuilder.all`, API keys use the underlying API privilege names (`read_onechat`, `manage_onechat`). This is because API keys interact directly with the {{kib}} API layer rather than through the UI.
 
 Refer to these pages for API key configuration examples:
-- [MCP server](mcp-server.md#api-key-application-privileges)
+- [MCP server](mcp-server-api-keys.md#api-key-application-privileges)
 - [{{kib}} API](kibana-api.md)
 
 Learn more about [API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).

@@ -15,12 +15,12 @@ on:
 
 permissions:
   actions: read
-  copilot-requests: write
   checks: read
   contents: read
   discussions: write
   issues: write
   pull-requests: write
+  copilot-requests: write
 
 jobs:
   post-menu:
@@ -191,10 +191,10 @@ jobs:
     permissions:
       actions: read
       contents: read
-      copilot-requests: write
       discussions: write
       issues: write
       pull-requests: write
+      copilot-requests: write
     uses: elastic/docs-actions/.github/workflows/gh-aw-docs-review.lock.yml@v1
     with:
       review-scope: repo-wide-markdown

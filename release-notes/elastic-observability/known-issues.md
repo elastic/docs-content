@@ -23,6 +23,23 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+::::{dropdown} Synthetics browser monitors on private locations fail to run on {{agent}} 9.5.0
+
+Applies to: {{stack}} 9.5.0
+
+**Details**
+
+**Do not upgrade private location {{agents}} that run Synthetics browser (journey) monitors to 9.5.0.** Keep those agents on **9.4.x** (for example 9.4.4) and wait for **9.5.1**. It is supported to run an older {{agent}} version (such as 9.4.4) against a 9.5.0 {{stack}}. Lightweight monitors (HTTP, TCP, and ICMP) on the same private location and monitors on Elastic-managed locations are not affected.
+
+On 9.5.0, browser monitors on {{fleet}}-managed private locations fail for two independent {{agent}} defects:
+
+1. **Missing Playwright browser binaries** in the `elastic-agent-complete` image. Journeys fail at launch with `browserType.launch: Executable doesn't exist at .../chromium_headless_shell-<rev>/...`. For more information, check [elastic-agent#15993](https://github.com/elastic/elastic-agent/issues/15993).
+
+2. **OTel Heartbeat runtime** rejects browser monitor config and reports the component as permanently failed with `missing required field accessing 'heartbeat.monitors.0.schedule'`. For more information, check [elastic-agent#15968](https://github.com/elastic/elastic-agent/issues/15968).
+
+Both issues are addressed in 9.5.1. There is no supported workaround on 9.5.0 that restores browser monitors without changing the agent version.
+::::
+
 ::::{dropdown} Upgrading to 9.3.x fails when a rule action contains oversized content
 
 Applies to: {{stack}} 9.3.0, 9.3.1, 9.3.2, 9.3.3, 9.3.4

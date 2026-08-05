@@ -32,13 +32,17 @@ In version 9.4+, [index search tools](tools/index-search-tools.md) support [cros
 
 In previous versions, only [{{esql}} tools](tools/esql-tools.md) support CCS. To search remote clusters, use a custom {{esql}} tool and instruct your agent to query `remote_cluster:index_name`.
 
-### Cross-project search not supported
-
-{{agent-builder}} does not support [cross-project search](/explore-analyze/cross-project-search.md). Agents can only search data within the current project.
-
 ### A2A streaming not supported
 
 The [A2A server](a2a-server.md) does not currently support streaming operations. All agent interactions use the synchronous `message/send` method, which returns a complete response only after task execution completes.
+
+### Human-in-the-loop prompts require an interactive conversation
+
+[Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts) are supported only in interactive {{agent-builder}} conversations. Standalone sub-agent executions, whether foreground or background, cannot collect a response to these prompts, so actions that require confirmation or authorization are declined.
+
+A2A executions behave differently: the action is not declined. Instead, the conversation round remains in the `awaiting_prompt` state, but A2A clients cannot respond to the prompt.
+
+This limitation is separate from the [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step in Workflows, which pauses a workflow execution for reviewer input.
 
 ### {{esql}} limitations
 

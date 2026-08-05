@@ -56,6 +56,31 @@ You should run `make setup` every time you begin work on a contribution, because
 ::::{step} Make your docs changes
 Edit the relevant TypeScript files in the `specification` directory. Use JSDoc comments to describe your API interfaces, following the [guidelines](./guidelines.md). Add or update summaries, descriptions, tags, metadata, links, and examples as needed.
 ::::
+
+::::{step} Format your changes
+```shell
+make spec-format-fix
+```
+Run this command to format your changes according to the standard used in the specification.
+::::
+
+::::{step} Open a pull request
+
+Once you're satisfied with your docs changes:
+1. Create a pull request from a branch on your local clone
+2. Do not include generated files in the PR, including files under `output/` and `docs/examples/languageExamples.json`. CI regenerates these files, and committing them can cause backport jobs to fail.
+3. The CI will generate the output and validate your additions
+4. Once approved, merge your changes and ensure they are backported to the appropriate branches
+::::
+
+:::::
+
+This is everything that is needed to contribute to the spec, as most validation is performed by CI. 
+If you need to preview the changes locally and check how they'll be displayed in Bump, then a few more steps are needed.
+
+## Generate a Bump preview
+
+:::::{stepper}
 ::::{step} Format, generate and validate your changes
 ```shell
 make contrib
@@ -118,14 +143,7 @@ Run these commands to generate short-lived previews:
 bump preview output/openapi/elasticsearch-openapi-docs-final.json # Preview Elasticsearch API docs
 bump preview output/openapi/elasticsearch-serverless-openapi-docs-final.json # Preview Elasticsearch serverless API docs
 ```
-::::
-
-::::{step} Open a pull request
-
-Once you're satisfied with your docs changes:
-1. Create a pull request from a branch on your local clone
-2. The CI will validate your OpenAPI specs
-3. Once approved, merge your changes and ensure they are backported to the appropriate branches
+After generating the previews, make sure files under `output/` and `docs/examples/languageExamples.json` are not included in your pull request. CI regenerates these files.
 ::::
 
 :::::
