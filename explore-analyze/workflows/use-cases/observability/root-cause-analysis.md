@@ -23,7 +23,7 @@ If you're new to workflows, complete [Build your first workflow](/explore-analyz
 
 ## Before you begin [workflows-rca-prereqs]
 
-- **Permissions.** `All` on **Analytics > Workflows**, **Observability > Cases**, and whatever Agent Builder privilege is required to invoke agents in your space. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+- **Permissions.** `All` on **Analytics → Workflows**, **Observability → Cases**, and whatever Agent Builder privilege is required to invoke agents in your space. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 - **Alerting rule.** A configured [observability alerting rule](/solutions/observability/incident-management/alerting.md) that fires on the conditions you want to auto-investigate (metric thresholds, SLO burn rate, anomaly detection, or custom query).
 - **SRE agent.** An {{agent-builder}} agent configured to investigate observability signals. The examples use `elastic-ai-agent` as a default. Substitute your agent ID.
 - **Attach the workflow to the rule.** After saving the workflow, attach it as an action on the alerting rule. Refer to [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md).
@@ -283,5 +283,7 @@ steps:
 - [Observability workflows](/explore-analyze/workflows/use-cases/observability.md): The outcome this workflow supports.
 - [AI steps reference](/explore-analyze/workflows/steps/ai-steps.md): Parameters for `ai.agent` and related AI steps.
 - [{{agent-builder}} for Observability](/solutions/observability/ai/agent-builder-observability.md): How Agent Builder integrates with observability workflows.
+- [{{observability}} incident management](/solutions/observability/incident-management.md): The product surface this workflow automates.
+- [{{observability}} alerting](/solutions/observability/incident-management/alerting.md): How alert triggers fire on {{observability}} rules.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): Full reference for `cases.*` steps.
 - [`elastic/workflows` examples folder](https://github.com/elastic/workflows/tree/main/workflows/examples): More end-to-end examples.

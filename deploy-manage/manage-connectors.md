@@ -12,11 +12,15 @@ products:
 
 # Connectors [connector-management]
 
-This page is about {{kib}} connectors that integrate with services like generative AI model providers or trigger actions in third-party systems. If you’re looking for content connectors that synchronize third-party data into {{es}}, refer to [Connector clients](elasticsearch://reference/search-connectors/index.md).
+{{connectors-ui}} integrate with services like generative AI model providers and trigger actions in third-party systems.
 
 Connectors serve as a central place to store connection information for both Elastic and third-party systems. They enable the linking of actions to rules, which execute as background tasks on the {{kib}} server when rule conditions are met. This allows rules to route actions to various destinations such as log files, ticketing systems, and messaging tools. Different {{kib}} apps may have their own rule types, but they typically share connectors. The **{{connectors-ui}}** provides a central location to view and manage all connectors in the current space. 
 
 You can find the **{{connectors-ui}}** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+:::{note}
+{{connectors-ui}} are not the same as [application connections](/deploy-manage/app-connections.md) or [search connectors](elasticsearch://reference/search-connectors/index.md). Application connections manage OAuth client registration and external access to {{serverless-short}} projects. Search connectors sync data from third-party sources into {{es}}.
+:::
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-connectors
@@ -32,7 +36,7 @@ Access to connectors is granted based on your privileges to alerting-enabled fea
 stack:
 ```
 
-If you're using {{stack}}, use the [action configuration settings](kibana://reference/configuration-reference/alerting-settings.md#action-settings) to customize connector networking configurations, such as proxies, certificates, or TLS settings. You can set configurations that apply to all your connectors or use `xpack.actions.customHostSettings` to set per-host configurations.
+If you're using {{stack}}, use the [action configuration settings](kibana://reference/configuration-reference/alerting-settings.md) to customize connector networking configurations, such as proxies, certificates, or TLS settings. You can set configurations that apply to all your connectors or use `xpack.actions.customHostSettings` to set per-host configurations.
 
 ## Connector list [connectors-list]
 

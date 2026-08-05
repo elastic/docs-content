@@ -166,7 +166,7 @@ For detailed information of available realm settings, see [Kerberos realm settin
 
 ::::{applies-item} { ess:, ece: }
 
-1. Create a [custom bundle](elasticsearch://reference/elasticsearch-plugins/plugin-management.md) that contains your `krb5.conf` and `keytab` files, and add it to your cluster.
+1. Add a custom bundle that contains your `krb5.conf` and `keytab` files to your cluster. For {{ech}}, follow [](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). For {{ece}}, follow [](/deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md).
 
     :::{tip}
     You should use these exact filenames for {{ecloud}} to recognize the file in the bundle.

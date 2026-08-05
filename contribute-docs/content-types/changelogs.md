@@ -1,4 +1,5 @@
 ---
+navigation_title: "Changelogs"
 description: "Guidelines for writing effective release notes content in changelog YAML files for Elastic products."
 ---
 
@@ -255,7 +256,7 @@ Follow these best practices:
 
 - For a breaking change: "Update all queries that use `_all` to use specific field names instead. For example, replace `_all:search_term` with `message:search_term OR title:search_term`".
 - For a deprecation: "Migrate to the new `new_api` endpoint before version 10.0. Update your code to use `POST /api/v2/endpoint` instead of `POST /api/v1/old_endpoint`. View the migration guide for detailed examples."
-- For a known issue: "As a workaround, restart the service after applying the configuration change. This issue will be fixed in the next release".
+- For a known issue: "As a workaround, restart the service after applying the configuration change. This issue will be fixed in the next release."
 
 ## Common anti-patterns
 

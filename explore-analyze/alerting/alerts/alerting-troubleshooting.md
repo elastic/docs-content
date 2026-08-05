@@ -29,6 +29,7 @@ The following debugging tools are available:
 
 * {{kib}} versions 7.10 and above have a [Test connector](testing-connectors.md) UI.
 * {{kib}} versions 7.11 and above include improved Webhook error messages, better overall debug logging for actions and connectors, and Task Manager [diagnostics endpoints](../../../troubleshoot/kibana/task-manager.md#task-manager-diagnosing-root-cause).
+* {applies_to}`stack: ga 9.5` The [rule query inspector](troubleshoot-rule-behavior.md) lets you view the {{es}} request a rule sent during evaluation, confirm the rule is targeting the right data, and investigate rule behavior.
 
 ## Using rules and connectors list for the current state and finding issues [alerting-managment-detail]
 
@@ -54,10 +55,7 @@ The end date is related to the check interval for the rule. You can use this vie
 
 There is a rich set of HTTP endpoints to introspect and manage rules and connectors. One of the HTTP endpoints available for actions is the run connector API. You can use this to “test” an action. For instance, if you have a server log action created, you can run it via curling the endpoint:
 
-::::{tip}
-If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it.
-
-For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
+::::{include} /deploy-manage/_snippets/curl-k-generic.md
 ::::
 
 ```txt

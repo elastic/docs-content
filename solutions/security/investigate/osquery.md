@@ -78,13 +78,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
     To save a single query for future use, click **Save for later** and define the ID, description, and other [details](../../../solutions/security/investigate/osquery.md#osquery-manage-query).
     ::::
 
-7. Review the results and do any of the following:
-
-    * Click **View in Discover** ({icon}`app_discover`) to explore the results in **Discover**.
-    * Click **View in Lens** ({icon}`app_lens`) to navigate to **Lens**, where you can use the drag-and-drop **Lens** editor to create visualizations.
-    * Click **Add to Case** ({icon}`app_cases`) to add the query results to a new or existing case.
-    * Click the view details icon ({icon}`expand`) to examine the query ID and statement.
-    * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Add or remove tags to organize and label the queries for future use.
+7. Review the results. For the actions you can take from the results table, refer to [Examine Osquery results](/solutions/security/investigate/examine-osquery-results.md#investigate-osquery-results).
 
 8. To view more information about the request, such as failures, open the **Status** tab.
 
@@ -374,7 +368,9 @@ Osquery responses include the following information:
 * Everything prefaced with `osquery.` is part of the query response. These fields are not mapped to ECS by default.
 * Results include some ECS fields by default, such as `host.*` and `agent.*`, which provide information about the host that was queried.
 * For live queries, the `action_data.query` is the query that was sent.
-* For scheduled queries in a pack, the `action_id` has the format `pack_<pack-name>_<query-ID>`. You can use this information to look up the query that was run.
+* For scheduled queries in a pack:
+    * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Use `schedule_id` (format: `pack_<pack-name>_<query-ID>`) to look up the query that was run. `action_id` is populated only for live queries. Scheduled responses also include `pack_id`, `response_id`, `schedule_execution_count`, and `planned_schedule_time` for correlation. This behavior requires the Osquery Manager integration v1.23.0 or later.
+    * {applies_to}`stack: ga 9.0-9.3` Use `action_id` (format: `pack_<pack-name>_<query-ID>`) to look up the query that was run.
 * By default, all query results are [snapshot logs](https://osquery.readthedocs.io/en/stable/deployment/logging/#snapshot-logs) that represent a point in time with a set of results, with no [differentials](https://osquery.readthedocs.io/en/stable/deployment/logging/#differential-logs).
 * Osquery data is stored in the `logs-osquery_manager.result-<namespace>` datastream, and the result row data is under the `osquery` property in the document.
 

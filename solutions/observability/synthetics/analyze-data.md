@@ -60,6 +60,12 @@ When you go to an individual monitor’s page, you’ll see much more detail abo
 
 Each individual monitor’s page has three tabs: Overview, History, and Errors.
 
+:::{note}
+:applies_to: {"stack": "ga 9.4+"}
+
+The AI Agent has access to monitor configuration (name, type, schedule, locations, and tags) on all monitor detail tabs. Refer to [Synthetics monitor context](/solutions/observability/ai/agent-builder-observability.md#synthetics-monitor-context) for more information.
+:::
+
 ### Overview [synthetics-analyze-individual-monitors-overview]
 
 The **Overview** tab has information about the monitor availability, duration, and any errors that have occurred since the monitor was created. The *Duration trends* chart displays the timing for each check that was performed in the last 30 days. This visualization helps you to gain insights into how quickly requests resolve by the targeted endpoint and gives you a sense of how frequently a host or endpoint was down.

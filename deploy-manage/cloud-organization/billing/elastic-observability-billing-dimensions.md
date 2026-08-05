@@ -34,8 +34,8 @@ sub:
 
 Your monthly bill is based on the capabilities you use. When you use {{obs-serverless}}, your bill is calculated based on data volume, which has these components:
 
-* **Ingest** — Measured by the number of GB of log/event/info data that you send to your Observability project over the course of a month.
-* **Retention** — Measured by the total amount of ingested data stored in your Observability project.
+* **Ingest** — Measured by the number of GB of data that you send to your Observability project over the course of a month. Metrics data ingested in [time series index mode](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) is priced at 25% of the standard per-GB ingest rate. All other data, including logs and traces, are priced at the standard rate.
+* **Retention** — Measured by the total amount of ingested data stored in your Observability project. Metrics data stored in time series index mode is priced at 25% of the standard per-GB retention rate. All other data, including logs and traces, are priced at the standard rate.
 
 :::{include} _snippets/note-data-volumes-ingest-retention.md
 :::
@@ -55,11 +55,3 @@ Refer to [Serverless billing dimensions](serverless-project-billing-dimensions.m
 ## Elastic Managed LLMs [observability-billing-elastic-managed-llms]
 
 [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to leverage AI-powered search as a service without deploying a model in your serverless project. The models are configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Observability Complete" feature tier. Using Elastic Managed LLMs will use tokens and incur related token-based add-on billing for your serverless project.
-
-## {{cps-cap}} [observability-billing-cps]
-```{applies_to}
-serverless: preview
-```
-
-:::{include} _snippets/cps-billing-obs-sec.md
-:::

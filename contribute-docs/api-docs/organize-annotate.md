@@ -168,7 +168,7 @@ The following extensions are currently used in Elastic OpenAPI documents:
 | `x-feedbackLink` | Adds a link for users to send feedback. [Docs](https://docs.bump.sh/help/publish-documentation/feedback/) |
 | `x-model` | Used to abbreviate deeply nested/recursive API sections (for example, Elasticsearch query DSL). Should include an `externalDocs` link. Currently only applied through overlays. |
 | `x-state` | Indicates lifecycle state (for example, “Technical preview; added in 9.1.0”). Appears next to the operation or property. |
-| `x-topics` | Adds extra pages shown below the introduction. [Docs](https://docs.bump.sh/help/enhance-documentation-content/topics/) |
+| `x-topics` | Adds extra pages after the introduction. [Docs](https://docs.bump.sh/help/enhance-documentation-content/topics/) |
 
 ## Specify API lifecycle status
 
@@ -276,7 +276,7 @@ class Foo {
 :::::
 
 :::{important}
-Because we now only publish API docs for major versions (v8, v9) and not for minor versions (8.1, 8.2, and so on), always include the full version information in your `x-state` labels. For example: "Technical preview; added in 9.1.0".
+Because we now only publish API docs for major versions (v8, v9) and not for minor versions (8.1, 8.2, and so on), always include the full version information in your `x-state` labels. For example: "Technical preview; added in 9.1.0."
 :::
 
 ## Document required permissions

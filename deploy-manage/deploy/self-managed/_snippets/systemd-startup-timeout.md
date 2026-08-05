@@ -9,6 +9,8 @@ Versions of `systemd` prior to 238 do not support the timeout extension mechanis
 [2022-01-31T01:22:31,077][INFO ][o.e.n.Node               ] [instance-0000000123] starting ...
 ...
 [2022-01-31T01:37:15,077][INFO ][o.e.n.Node               ] [instance-0000000123] stopping ...
+[2022-01-31T01:37:15,079][INFO ][o.e.n.Node               ] [instance-0000000123] closing ...
+[2022-01-31T01:37:15,080][INFO ][o.e.n.Node               ] [instance-0000000123] closed
 ```
 
 However the `systemd` logs will report that the startup timed out:
@@ -21,6 +23,6 @@ Jan 31 01:37:15 debian systemd[1]: elasticsearch.service: Failed with result 'ti
 Jan 31 01:37:15 debian systemd[1]: Failed to start Elasticsearch.
 ```
 
-To avoid this, upgrade your `systemd` to at least version 238. You can also temporarily work around the problem by extending the `TimeoutStartSec` parameter.
+To avoid this, upgrade your `systemd` to at least version 238. You can also temporarily work around the problem by extending the `TimeoutStartSec` parameter. If the timeout error persists after upgrading, set `NotifyAccess=all` in your [systemd override configuration](../setting-system-settings.md#systemd).
 
 ::::

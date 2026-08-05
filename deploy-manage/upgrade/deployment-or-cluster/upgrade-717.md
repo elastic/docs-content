@@ -40,10 +40,10 @@ The following sections describe these phases in detail and point to the relevant
 
 Refer to [upgrade paths](/deploy-manage/upgrade.md#upgrade-paths) for more information.
 
-::::{dropdown} Alternative method: Reindex to upgrade
-For basic use cases that do not rely on {{kib}} dashboards or {{stack}} features such as {{ml}}, transforms, {{kib}} alerting, or detection rules, instead of performing two sequential upgrades (7.17 → 8.19 → {{version.stack}}), you can create a new {{version.stack}} cluster or deployment and migrate your data from the 7.17 cluster by reindexing.
+::::{dropdown} Alternative: Migrate data to a new cluster
+For basic use cases that do not rely on {{kib}} dashboards or {{stack}} features such as {{ml}}, transforms, {{kib}} alerting, or detection rules, instead of performing two sequential upgrades (7.17 → 8.19 → {{version.stack}}), you can create a new {{version.stack}} cluster or deployment and migrate your data from the 7.17 cluster.
 
-For detailed guidance on how to plan and execute this method, refer to [Reindex to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md#reindex-to-upgrade).
+For migration methods and detailed guidance, refer to [Migrate your {{es}} data](/manage-data/migrate.md).
 
 It may be suitable when:
 - You prefer to build new infrastructure rather than modify an existing one.

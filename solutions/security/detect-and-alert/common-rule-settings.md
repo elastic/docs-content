@@ -105,11 +105,15 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
 :   Specify the maximum number of alerts the rule can create each time it executes. Default is 100.
 
 ::::{admonition} System-level alert limit
-The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/configuration-reference/alerting-settings.md#alert-settings) acts as a system-level limit on alerts per rule execution, and can supersede a security rule's **Max alerts per run** setting. If a rule's **Max alerts per run** value exceeds `xpack.alerting.rules.run.alerts.max`, the lower system setting takes precedence and the rule will not generate more alerts than it allows.
+The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/configuration-reference/alerting-settings.md) acts as a system-level limit on alerts per rule execution, and can supersede a security rule's **Max alerts per run** setting. If a rule's **Max alerts per run** value exceeds `xpack.alerting.rules.run.alerts.max`, the lower system setting takes precedence and the rule will not generate more alerts than it allows.
 ::::
 
 **MITRE ATT&CK threats** (optional)
 :   Add relevant [MITRE ATT&CK](https://attack.mitre.org/) tactics, techniques, and subtechniques.
+
+    ::::{note}
+    The tactic and technique options here only include the MITRE ATT&CK version currently supported by {{elastic-sec}}. If you're upgrading and existing mappings are affected by a MITRE ATT&CK version change, refer to [Remap detection rules to MITRE ATT&CK v19](/solutions/security/detect-and-alert/remap-mitre-attack.md).
+    ::::
 
 **Reference URLs** (optional)
 :   References to information that is relevant to the rule. For example, links to background information.

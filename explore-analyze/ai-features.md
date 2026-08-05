@@ -53,18 +53,17 @@ This general-purpose API enables you to perform {{infer}} operations using EIS, 
 
 Natural Language Processing (NLP) enables you to analyze natural language data and make predictions.  Elastic offers a range of [built-in NLP models](/explore-analyze/machine-learning/nlp/ml-nlp-built-in-models.md) such as the Elastic-trained [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) or [Jina models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md). You can also [deploy custom NLP models](/explore-analyze/machine-learning/nlp/ml-nlp-overview.md).
 
-### AI-powered search
+### Vector search
 
-[AI-powered search](/solutions/search/ai-search/ai-search.md) helps you find data based on intent and contextual meaning using vector search technology, which uses {{ml}} models to capture meaning in content.
+[Vector search](/solutions/search/vector.md) uses embeddings and similarity matching to find related data in {{es}}. {{ml-cap}} models convert text, images, and other content into vectors. Use cases include recommendations, duplicate detection, fraud and anomaly detection, image similarity, and semantic search.
+
+For direct control over embeddings, field types, and queries, implement dense or sparse vector search with [`dense_vector`](https://www.elastic.co/docs/solutions/search/vector/dense-vector) and [`sparse_vector`](https://www.elastic.co/docs/solutions/search/vector/sparse-vector) field types. Refer to [Vector search in {{es}}](/solutions/search/vector.md) for concepts, field types, and tutorials.
 
 #### Semantic and hybrid search
 
-Depending on your team's technical expertise and requirements, you can choose from two broad paths for implementing semantic search:
+When you want a managed workflow for text—embedding generation, field mapping, and similarity retrieval, use the [semantic search](/solutions/search/semantic-search.md) workflow. Start with the [`semantic_text`](https://www.elastic.co/docs/solutions/search/semantic-search/semantic-search-semantic-text) field type for the simplest setup.
 
-- For a minimal configuration, managed workflow use [semantic_text](https://www.elastic.co/docs/solutions/search/semantic-search/semantic-search-semantic-text).
-- For more control over the implementation details, implement dense or sparse [vector search](https://www.elastic.co/docs/solutions/search/vector) manually.
-
-[Hybrid search](/solutions/search/hybrid-search.md) combines traditional full-text search with AI-powered search for more powerful search experiences that serve a wider range of user needs.
+[Hybrid search](/solutions/search/hybrid-search.md) combines full-text search with vector search in one request so results can match both exact terms and meaning.
 
 ### Semantic re-ranking
 
@@ -89,10 +88,6 @@ The [{{es}}](/solutions/search.md) solution view (or project type in {{serverles
 ### AI assistant for {{es}}
 
 [](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
-
-### Playground
-
-[Playground](/solutions/elasticsearch-solution-project/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](/solutions/search/retrievers-overview.md) syntax with the `_search` endpoint.
 
 ### Model Context Protocol (MCP) servers
 
@@ -126,9 +121,9 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 [Streams](/solutions/observability/streams/streams.md) is an AI-assisted centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data. Streams leverages AI in the following features:
 
 % * [Significant Events](/solutions/observability/streams/management/significant-events.md): Use AI to suggest queries based on your data that find important events in your stream.
-* [Grok processing](/solutions/observability/streams/management/extract/grok.md#streams-grok-patterns): Use AI to generate grok patterns that extract meaningful fields from your data.
-* [Partitioning](/solutions/observability/streams/management/partitioning.md): Use AI to suggest logical groupings and child streams based on your data when using wired streams.
-* [Advanced settings](/solutions/observability/streams/management/advanced.md): Use AI to generate a [stream description](/solutions/observability/streams/management/advanced.md#streams-advanced-description) and a [feature identification](/solutions/observability/streams/management/advanced.md#streams-advanced-features) that other AI features use when generating suggestions.
+* [Grok processing](/solutions/observability/streams/processors/grok.md#streams-grok-patterns): Use AI to generate grok patterns that extract meaningful fields from your data.
+* [Partitioning](/solutions/observability/streams/organize-your-data.md): Use AI to suggest logical groupings and child streams based on your data when using wired streams.
+* [Advanced settings](/solutions/observability/streams/advanced.md): Use AI to generate a [stream description](/solutions/observability/streams/advanced.md#streams-advanced-description) and a [feature identification](/solutions/observability/streams/advanced.md#streams-advanced-features) that other AI features use when generating suggestions.
 
 ### Automatic Import [automatic-import-observability]
 
@@ -145,7 +140,7 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 
 ### Attack Discovery
 
-[Attack Discovery](/solutions/security/ai/attack-discovery.md) uses AI to triage your alerts and identify potential threats. Each "discovery" represents a potential attack and describes relationships among alerts to identify related users and hosts, map alerts to the MITRE ATT&CK matrix, and help identify threat actors.
+[Attack Discovery](/solutions/security/ai/attack-discovery/index.md) uses AI to triage your alerts and identify potential threats. Each "discovery" represents a potential attack and describes relationships among alerts to identify related users and hosts, map alerts to the MITRE ATT&CK matrix, and help identify threat actors.
 
 
 ### Automatic Migration

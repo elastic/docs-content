@@ -41,7 +41,7 @@ Follow these steps to send data to Elastic using the {{motlp}}.
 ::::{applies-item} serverless:
 1. Log in to the {{ecloud}} Console.
 2. Find your project and select **Manage**.
-3. In the **Application endpoints, cluster and component IDs** section, select **Ingest**.
+3. In the **Application endpoints, cluster and component IDs** section, select **OpenTelemetry**.
 4. Copy the endpoint value.
 
 :::{tip}
@@ -61,6 +61,10 @@ Alternatively, from within your project, go to **Add data**, select **Applicatio
 
 ::::::{step} Create an API key
 
+:::{note}
+The {{motlp}} validates API keys using {{product.apm}} application privileges. Index-level privilege scoping is not yet supported, meaning that API keys with custom index-level role descriptors return a `PermissionDenied` error.
+:::
+
 :::::{applies-switch}
 ::::{applies-item} serverless:
 
@@ -72,11 +76,11 @@ Alternatively, from within your project, go to **Add data**, select **Applicatio
     ```json
     {
       "otlp_writer": {
-        "cluster": [],
-        "indices": [
+        "applications": [
           {
-            "names": ["traces-*.otel-*", "metrics-*.otel-*", "logs-*.otel-*"],
-            "privileges": ["auto_configure", "create_doc"]
+            "application": "apm",
+            "resources": ["*"],
+            "privileges": ["event:write"]
           }
         ]
       }
@@ -95,11 +99,11 @@ POST /_security/api_key
   "name": "otlp-writer",
   "role_descriptors": {
     "otlp_writer": {
-      "cluster": [],
-      "indices": [
+      "applications": [
         {
-          "names": ["traces-*.otel-*", "metrics-*.otel-*", "logs-*.otel-*"],
-          "privileges": ["auto_configure", "create_doc"]
+          "application": "apm",
+          "resources": ["*"],
+          "privileges": ["event:write"]
         }
       ]
     }
@@ -107,7 +111,7 @@ POST /_security/api_key
 }
 ```
 :::{note}
-The API key authenticates the OTLP shipper to the {{motlp}} and authorizes writes to the destination {{es}} data streams. The `auto_configure` and `create_doc` privileges are required for all target data streams. The patterns above cover all dataset names for the three OTLP signal types. If you use data streams outside the `*.otel-*` pattern, add the corresponding index patterns to the `names` list.
+The API key authenticates the OTLP shipper to the {{motlp}}. To send data through the endpoint, the API key needs, at minimum, the `event:write` privilege for the `apm` application.
 :::
 :::
 ::::
@@ -121,11 +125,11 @@ The API key authenticates the OTLP shipper to the {{motlp}} and authorizes write
     ```json
     {
       "otlp_writer": {
-        "cluster": [],
-        "indices": [
+        "applications": [
           {
-            "names": ["traces-*.otel-*", "metrics-*.otel-*", "logs-*.otel-*"],
-            "privileges": ["auto_configure", "create_doc"]
+            "application": "apm",
+            "resources": ["*"],
+            "privileges": ["event:write"]
           }
         ]
       }
@@ -144,17 +148,20 @@ POST /_security/api_key
   "name": "otlp-writer",
   "role_descriptors": {
     "otlp_writer": {
-      "cluster": [],
-      "indices": [
+      "applications": [
         {
-          "names": ["traces-*.otel-*", "metrics-*.otel-*", "logs-*.otel-*"],
-          "privileges": ["auto_configure", "create_doc"]
+          "application": "apm",
+          "resources": ["*"],
+          "privileges": ["event:write"]
         }
       ]
     }
   }
 }
 ```
+:::{note}
+The API key authenticates the OTLP shipper to the {{motlp}}. The `event:write` privilege for the `apm` application is the minimum required to send data through the endpoint.
+:::
 :::
 ::::
 :::::
@@ -241,13 +248,13 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ## Troubleshooting
 
-Refer to the [Troubleshoot EDOT](opentelemetry://reference/motlp/troubleshooting.md) guide for troubleshooting information for the {{motlp}}.
+Refer to the [Troubleshoot {{edot}}](opentelemetry://reference/motlp/troubleshooting.md) guide for troubleshooting information for the {{motlp}}.
 
 ## Provide feedback
 
 Help improve the Elastic Cloud Managed OTLP Endpoint by sending us feedback in our [discussion forum](https://discuss.elastic.co/c/apm) or [community Slack](https://elasticstack.slack.com/signup#/domain-signup).
 
-For EDOT collector feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
+For {{agent}} feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
 
 ## What's next
 

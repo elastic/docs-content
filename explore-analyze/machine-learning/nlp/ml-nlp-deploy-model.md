@@ -10,22 +10,24 @@ products:
 
 # Deploy the model in your cluster [ml-nlp-deploy-model]
 
-After you import the model and vocabulary, you can use {{kib}} to view and manage their deployment across your cluster under **{{ml-app}}** > **Model Management**. Alternatively, you can use the [start trained model deployment API]({{es-apis}}operation/operation-ml-start-trained-model-deployment).
+After you import the model and vocabulary, you can use {{kib}} to view and manage their deployment across your cluster under **{{ml-app}}** > **Model Management**. Alternatively, you can use the [start trained model deployment API]({{es-apis}}operation/operation-ml-start-trained-model-deployment). Since eland uses APIs to deploy models, they won't appear in {{kib}} until the saved objects are synchronized. You can follow the prompts in {{kib}}, wait for automatic synchronization, or use the [sync {{ml}} saved objects API]({{kib-apis}}group/endpoint-ml).
 
-You can deploy a model multiple times by assigning a unique deployment ID when starting the deployment.
+You can deploy a model multiple times by assigning a unique deployment ID when starting the deployment. You can optimize your deployment for typical use cases, such as search and ingest. When you optimize for ingest, the throughput will be higher, which increases the number of {{infer}} requests that can be performed in parallel. When you optimize for search, the latency will be lower during search processes. 
 
-You can optimize your deployment for typical use cases, such as search and ingest. When you optimize for ingest, the throughput will be higher, which increases the number of {{infer}} requests that can be performed in parallel. When you optimize for search, the latency will be lower during search processes. When you have dedicated deployments for different purposes, you ensure that the search speed remains unaffected by ingest workloads, and vice versa. Having separate deployments for search and ingest mitigates performance issues resulting from interactions between the two, which can be hard to diagnose.
+Dedicated deployments for search and ingest keep each workload from affecting the other, and avoid performance issues that can be hard to diagnose.
+
+:::{note}
+:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+
+The **Optimize for use case** options (Ingest, Search, Balanced) apply only to embedding models. Rerank models do not include this selector in the deployment modal.
+
+Each deployment will be fine-tuned automatically based on the specific purpose you choose. For Elastic Rerank, you can start or update deployments from the **{{models-app}}** page, or deploy directly using the [{{infer}} API](ml-nlp-rerank.md#ml-nlp-rerank-deploy-steps).
+:::
 
 :::{image} /explore-analyze/images/ml-nlp-deployment-id-elser.png
 :alt: Model deployment on the Trained Models UI.
 :screenshot:
 :::
-
-Each deployment will be fine-tuned automatically based on its specific purpose you choose.
-
-::::{note}
-Since eland uses APIs to deploy the models, you cannot see the models in {{kib}} until the saved objects are synchronized. You can follow the prompts in {{kib}}, wait for automatic synchronization, or use the [sync {{ml}} saved objects API]({{kib-apis}}group/endpoint-ml).
-::::
 
 You can define the resource usage level of the NLP model during model deployment. The resource usage levels behave differently depending on [adaptive resources](../../../deploy-manage/autoscaling/trained-model-autoscaling.md#enabling-autoscaling-through-apis-adaptive-allocations) being enabled or disabled. When adaptive resources are disabled but {{ml}} autoscaling is enabled, vCPU usage of Cloud deployments derived from the Cloud console and functions as follows:
 

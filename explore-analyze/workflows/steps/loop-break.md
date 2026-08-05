@@ -17,6 +17,9 @@ products:
 
 The `loop.break` step exits the innermost enclosing [`foreach`](/explore-analyze/workflows/steps/foreach.md) or [`while`](/explore-analyze/workflows/steps/while.md) loop immediately. Use it to stop iterating once a condition is met, for example when you want to process items until you find the first critical match and then move on.
 
+:::{include} ../_snippets/schema-location-legend.md
+:::
+
 ## Parameters
 
 The `loop.break` step takes no step-specific parameters; only the standard `name` and `type` fields required on every step.

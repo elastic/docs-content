@@ -1,5 +1,6 @@
 ---
 navigation_title: "Syntax quick reference"
+description: "Quick reference for commonly used Markdown syntax elements in Elastic documentation, including directives, metadata, and tagging."
 ---
 
 # Syntax quick reference
@@ -528,7 +529,7 @@ Include icons inline using the `` {icon}`icon-name` `` syntax.
 :open:
 ```markdown
 Click the {icon}`gear` **Settings** icon.
-Status: {icon}`checkCircle` Success | {icon}`warning` Warning | {icon}`error` Error
+Status: {icon}`check_circle` Success | {icon}`warning` Warning | {icon}`error` Error
 ```
 :::
 
@@ -536,7 +537,7 @@ Status: {icon}`checkCircle` Success | {icon}`warning` Warning | {icon}`error` Er
 :open:
 Click the {icon}`gear` **Settings** icon.
 
-Status: {icon}`checkCircle` Success | {icon}`warning` Warning | {icon}`error` Error
+Status: {icon}`check_circle` Success | {icon}`warning` Warning | {icon}`error` Error
 :::
 
 **DOs**<br>

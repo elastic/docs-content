@@ -79,7 +79,7 @@ For the `role_descriptors` object schema, check out the [`/_security/api_key` en
 
 ## Update an API key [api-keys-update-an-api-key]
 
-In **API keys**, click on the name of the key. You can update only **Restrict privileges** and **Include metadata**.
+In **API keys**, click on the name of the key. You can update only **Control security privileges** and **Include metadata**.
 
 ## View and delete API keys [api-keys-view-and-delete-api-keys]
 

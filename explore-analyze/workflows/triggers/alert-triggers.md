@@ -16,10 +16,16 @@ products:
 
 Alert triggers run workflows automatically when detection or alerting rules generate an alert. Use alert triggers for alert enrichment, automated incident response, case creation, or notification routing.
 
+Alert-triggered workflows run with the privileges of the user who last saved the rule. For details, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
+
 When a rule generates an alert that triggers your workflow, the trigger provides rich context data to the workflow through the `event` field.
 
 :::{warning}
 Declaring `type: alert` on a workflow isn't enough to run the workflow when alerts fire. You also have to attach the workflow to the rule's **Actions** using a **Run Workflow** action. Without the attachment, the rule fires alerts but the workflow is never invoked. This is the single most common setup mistake.
+:::
+
+:::{note}
+Alert triggers are different from [alert episode lifecycle triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven). An alert trigger (`type: alert`) runs a workflow when a rule generates an alert, and only when you add the workflow to that rule as an action. Alert episode lifecycle triggers are [event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md) that automatically react to alert episode events (such as an episode being assigned or acknowledged) in the {{alerting-v2-system}}, with no rule action to configure.
 :::
 
 ## Schema [workflows-alert-trigger-schema]
@@ -78,7 +84,7 @@ After creating your workflow, configure your alert rule to trigger it.
 :::
 
 :::{tab-item} Security detection rules
-1. Go to **Detection rules (SIEM)** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to **{{siem-rules-ui}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Find or create the detection rule you want to trigger the workflow.
 3. In the rule settings, under **Actions**, select **Workflows**.
 4. Select your workflow from the dropdown or create a new one. You can only select enabled workflows.

@@ -23,7 +23,7 @@ If you're new to workflows, complete [Build your first workflow](/explore-analyz
 
 ## Before you begin [workflows-alert-triage-with-case-prereqs]
 
-- **Permissions.** `All` privileges for **Analytics > Workflows**, plus `All` on **Security > Cases** in the target space. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+- **Permissions.** `All` privileges for **Analytics → Workflows**, plus `All` on **Security → Cases** in the target space. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 - **Detection rule.** An enabled [detection rule](/solutions/security/detect-and-alert/using-the-rule-ui.md) that generates the kind of alert you want to triage. For this workflow, the rule should produce alerts with `file.hash.sha256`, `host.name`, and `elastic.agent.id` populated.
 - **Attach the workflow to the rule.** After you save the workflow, attach it to the detection rule so the rule invokes the workflow when it fires. Refer to [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md).
 - **Connectors.** A configured VirusTotal connector for the hash lookup, and a Slack [connector](/deploy-manage/manage-connectors.md) for the notification. Note the connector IDs. You'll paste them into the workflow.
@@ -140,7 +140,7 @@ Link the alert that triggered the workflow with `cases.addAlerts`, then attach t
   with:
     case_id: "{{ steps.create_case.output.case.id }}"
     observables:
-      - typeKey: "observable-type-hash-sha256"
+      - typeKey: "observable-type-file-hash"
         value: "{{ event.alerts[0].file.hash.sha256 }}"
       - typeKey: "observable-type-ipv4"
         value: "{{ event.alerts[0].source.ip }}"
@@ -265,7 +265,7 @@ steps:
         with:
           case_id: "{{ steps.create_case.output.case.id }}"
           observables:
-            - typeKey: "observable-type-hash-sha256"
+            - typeKey: "observable-type-file-hash"
               value: "{{ event.alerts[0].file.hash.sha256 }}"
             - typeKey: "observable-type-ipv4"
               value: "{{ event.alerts[0].source.ip }}"
@@ -321,4 +321,6 @@ steps:
 - [Automate security operations](/explore-analyze/workflows/use-cases/security/automate-security-operations.md): The outcomes this workflow supports.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): Reference for every `cases.*` step.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): How retry, fallback, and continue work together.
+- [Triage alerts](/solutions/security/ai/triage-alerts.md): The interactive triage flow this workflow automates.
+- [Security cases](/solutions/security/investigate/security-cases.md): The product surface this workflow drives.
 - [`elastic/workflows` library](https://github.com/elastic/workflows): More security workflow examples.

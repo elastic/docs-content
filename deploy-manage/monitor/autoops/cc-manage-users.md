@@ -16,11 +16,6 @@ Learn how to invite users to your {{ecloud}} organization and give them access t
 
 ## Invite users
 
-:::{note}
-:::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
-:::
-:::
-
 To invite users to your organization and give them access to your cluster:
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co/home).

@@ -17,7 +17,7 @@ products:
 Workflow tools enable agents to trigger [Elastic Workflows](/explore-analyze/workflows.md) directly from a conversation and use their output. This is ideal for offloading tasks from the LLM that require a deterministic, repeatable sequence of actions.
 
 :::{note}
-This page explains how to trigger a workflow in an agent conversation. If you want to use an agent within a workflow step, refer to [Call agents from workflows](../agents-and-workflows.md).
+This page explains how to trigger an existing workflow in an agent conversation. To create a new workflow from Agent Chat, refer to [Create skills and workflows in chat](../chat.md#create-skills-and-workflows-directly-from-chat). If you want to use an agent within a workflow step, refer to [Call agents from workflows](../agents-and-workflows.md).
 :::
 
 ## Prerequisites
@@ -119,12 +119,12 @@ The agent:
 - runs the workflow
 - returns the workflow's final output to the chat
 
-Expand the **Completed reasoning** section to trace the execution steps and inspect the raw workflow output.
+Review the [inline reasoning events](../chat.md#inspect-tool-calls-and-reasoning) to trace the execution steps and inspect the raw workflow output.
 
 :::{image} ../images/agent-builder-workflow-tool.png
 :screenshot:
 :width: 500px
-:alt: Screenshot of reasoning steps of agent builder.
+:alt: Inline reasoning events showing an Agent Builder workflow tool execution.
 :::
 
 ## Examples
@@ -134,4 +134,4 @@ The [`elastic/workflows` GitHub repo](https://github.com/elastic/workflows) cont
 ## Related pages
 * [Tools overview](../tools.md)
 * [Call agents from workflows](../agents-and-workflows.md)
-* [Workflows](/explore-analyze/workflows.md)
+* [Author workflows with natural language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md)

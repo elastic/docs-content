@@ -161,8 +161,8 @@ Elastic Managed LLM
 :   A pre-configured LLM provided by Elastic and powered by the Elastic Inference Service. On {{ech}} and {{serverless-full}}, an Elastic Managed LLM is available out of the box, so {{agent-builder}} works with no additional setup. See [](models.md#default-model-configuration).
 
 $$$enable-elastic-capabilities$$$
-Enable Elastic Capabilities {applies_to}`stack: ga 9.4+`
-:   The toggle on a custom agent's **Settings** tab that opts the agent in to all current and future Elastic-built skills, plugins, and tools. The toggle is off by default. See [](custom-agents.md#enable-elastic-capabilities).
+Elastic capabilities {applies_to}`stack: ga 9.4+`
+:   The toggle on an agent's **Settings** tab that opts the agent in to all current and future Elastic-built [tools](tools/builtin-tools-reference.md), [skills](builtin-skills-reference.md), and plugins. Enabled by default for built-in agents, disabled by default for custom agents. See [](agent-builder-agents.md#elastic-capabilities).
 
 $$$entity-store$$$
 Entity store
@@ -187,6 +187,12 @@ Generative AI connector
 $$$genai-settings$$$
 GenAI Settings {applies_to}`stack: ga 9.4+`
 :   The {{kib}} settings page where you configure the default model and other generative-AI options that affect {{agent-builder}}. See [](models.md#change-the-default-model).
+
+## H
+
+$$$human-in-the-loop$$$
+Human-in-the-loop (HITL)
+:   A pattern where an agent pauses during a conversation and waits for you to respond before it continues. {{agent-builder}} uses human-in-the-loop prompts to request confirmation for some actions, authorize access to external connectors, and ask clarifying questions. See [](chat.md#human-in-the-loop-prompts).
 
 ## I
 
@@ -268,9 +274,13 @@ $$$reasoning$$$
 Reasoning
 :   The iterative process an agent follows to answer a request: analyzing the input, choosing tools, executing them, and incorporating results into a response. Each iteration is a _reasoning step_. See [](agent-builder-agents.md#how-agents-work).
 
+$$$reasoning-events$$$
+Reasoning events {applies_to}`stack: ga 9.5+`
+:   The inline sequence in Agent Chat that shows an agent's reasoning steps, tool calls, tool responses, and final answer in the order they happen. See [](chat.md#inspect-tool-calls-and-reasoning).
+
 $$$reasoning-panel$$$
-Reasoning panel
-:   The expandable section of the chat reply that shows the underlying reasoning steps, tool calls, and tool responses behind an agent's answer. See [](chat.md#inspect-tool-calls-and-reasoning).
+Reasoning panel {applies_to}`stack: removed 9.5`
+:   The pre-9.5 expandable section of the chat reply that showed the reasoning steps, tool calls, and tool responses behind an agent's answer. In 9.5 and later, Agent Chat uses inline reasoning events instead. See [](chat.md#inspect-tool-calls-and-reasoning).
 
 $$$rest-api$$$
 REST API
@@ -338,4 +348,4 @@ Workflow tool {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview
 
 $$$workflows$$$
 Workflows
-:   Elastic's native automation engine for declarative, event-driven automation defined in YAML. {{agent-builder}} integrates with workflows in two directions: agents can trigger workflows through workflow tools, and workflows can call agents through the `ai.agent` and `kibana.request` steps. See [](agents-and-workflows.md#approaches).
+:   Elastic's native automation engine for declarative, event-driven automation defined in YAML. You can use {{agent-builder}} and workflows together in three ways: {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [create workflows from Agent Chat](chat.md#create-skills-and-workflows-directly-from-chat), trigger existing workflows from agents through [workflow tools](tools/workflow-tools.md), and call agents from workflows through the [`ai.agent` and `kibana.request` steps](agents-and-workflows.md#approaches).

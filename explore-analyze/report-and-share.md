@@ -57,33 +57,34 @@ Anonymous users can also access the link if you have configured [Anonymous authe
 For more information on how to configure reporting in {{kib}}, refer to [Configure reporting in {{kib}}](/deploy-manage/kibana-reporting-configuration.md).
 :::
 
-Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads.
+Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads. For dashboard-specific export instructions, refer to [Share and export dashboards](/explore-analyze/dashboards/sharing.md).
 
 * **PDF** {applies_to}`serverless: unavailable` — Generate and download PDF files of dashboards, visualizations, and **Canvas** workpads. PDF reports are a [subscription feature](https://www.elastic.co/subscriptions).
 * **PNG** {applies_to}`serverless: unavailable` — Generate and download PNG files of dashboards and visualizations. PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
-* **CSV Reports** — Generate CSV reports of saved Discover sessions. [Certain limitations apply](/explore-analyze/report-and-share.md#csv-limitations).
+* **CSV Reports** — Generate CSV reports of saved Discover sessions.
 * **CSV Download** — Generate and download CSV files of **Lens** visualizations.
 * **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
-* {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` **Export JSON**: export the JSON source of a dashboard in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
+* {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` **Export JSON**: export the JSON source of a dashboard in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
 
 1. Open the saved Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
 2. Choose a file type for the report.
 
-    * {applies_to}`stack: ga 9.1+` From the toolbar, click the {icon}`download` **Export** icon, then choose a file type. 
-    * {applies_to}`stack: ga =9.0` From the toolbar, click **Share** > **Export** tab, then choose a file type. Note that when you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
+    * {applies_to}`stack: ga 9.1+` From the toolbar, click the {icon}`download` **Export** icon, then choose a file type.
+    * {applies_to}`stack: ga =9.0` From the toolbar, click **Share** → **Export** tab, then choose a file type.
 
-    ::::{note}
-    When you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
-    ::::
+    Some export formats have specific considerations:
 
-    ::::{tip}
+    :::{dropdown} PDF
+    * When a dashboard report includes a data table or Discover session, the PDF includes only the visible data.
+    * For dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
+    * For workpad PDFs, select **Full page layout** to create PDFs without the margins that surround the workpad.
+    * Certain [limitations apply](#pdf-limitations).
+    :::
 
-    Tips for generating PDF reports:
-
-    * If you are creating dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
-    * If you are creating workpad PDFs, select **Full page layout** to create PDFs without margins that surround the workpad.
-    
-    ::::
+    :::{dropdown} CSV
+    * {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When you export a Discover session whose {{esql}} query references a [variable control](/explore-analyze/discover/try-esql.md#add-variable-control), the report uses the values currently selected in the controls. In earlier versions, these exports failed with an unknown query parameter error.
+    * Certain [limitations apply](#csv-limitations).
+    :::
 
 3. Click the button that generates or exports the report. A message appears, indicating that the report is in the export queue.
 
@@ -117,16 +118,16 @@ In the following dashboard, the shareable container is highlighted:
 
 ### CSV report limitations [csv-limitations]
 
-We recommend using CSV reports to export moderate amounts of data only. The feature enables analysis of data in external tools, but it is not intended for bulk export or to backup Elasticsearch data. Report timeout and incomplete data issues are likely if you are exporting data where:
+We recommend using CSV reports to export moderate amounts of data only. The feature enables analysis of data in external tools, but it is not intended for bulk export or to backup Elasticsearch data. The following conditions increase the risk of timeouts or incomplete data:
 
 * More than 250 MB of data is being exported
 * Data is stored on slow storage tiers
 * Any shard needed for the search is unavailable
 * Network latency between nodes is high
-* Cross-cluster search is used
+* Queries use cross-cluster search (CCS) across many indices or remote clusters
 * ES|QL is used and result row count exceeds the limits of ES|QL queries
 
-To work around the limitations, use filters to create multiple smaller reports, or extract the data you need directly with the Elasticsearch APIs.
+For large or long-running exports, use the Elasticsearch APIs directly. They are the recommended path for bulk data extraction. To reduce report size, use filters to create multiple smaller reports.
 
 For more information on using Elasticsearch APIs directly, see [Scroll API]({{es-apis}}operation/operation-scroll), [Point in time API]({{es-apis}}operation/operation-open-point-in-time), [ES|QL](elasticsearch://reference/query-languages/esql/esql-rest.md) or [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](/reference/elasticsearch-clients/index.md).
 
@@ -158,7 +159,7 @@ serverless: unavailable
 ```
 
 * {applies_to}`stack: beta` **Share on a website** — Download and securely share **Canvas** workpads on any website.
-* **Embed code** — Embed fully interactive dashboards as an iframe on web pages.
+* **Embed code** — Embed fully interactive dashboards as an iframe on web pages. Refer to [Embed in a webpage](/explore-analyze/dashboards/sharing.md#embed-dashboard) for detailed instructions.
 
 ::::{note}
 :name: reporting-on-cloud-resource-requirements

@@ -1,3 +1,7 @@
+---
+description: "Quick reference for the applies_to directive syntax used in cumulative Elastic documentation."
+---
+
 # Quick reference
 
 :::{note}

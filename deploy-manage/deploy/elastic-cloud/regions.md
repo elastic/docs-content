@@ -47,12 +47,14 @@ The following Azure regions are currently available for {{serverless-short}} pro
 | Region | Name |
 | :--- | :--- |
 | australiaeast | Australia East (New South Wales) |
+| brazilsouth | Brazil South (Sao Paulo State) |
 | eastus | East US (Virginia) |
 | eastus2 | East US 2 (Virginia) |
 | germanywestcentral | Germany West Central (Frankfurt) |
 | northeurope | North Europe (Ireland) |
 | southeastasia | Southeast Asia (Singapore) |
 | spaincentral | Spain Central (Madrid) |
+| swedencentral | Sweden Central (Gävle) |
 | uaenorth | UAE (Dubai) |
 | westus2 | West US 2 (Washington) |
 
@@ -62,8 +64,10 @@ The following GCP regions are currently available for {{serverless-short}} proje
 
 | Region | Name |
 | :--- | :--- |
+| asia-northeast1 | Japan (Tokyo) |
 | asia-south1 | India (Mumbai) |
 | asia-southeast1 | Singapore (Jurong West) |
+| europe-southwest1 | Spain (Madrid) |
 | europe-west1 | Belgium (St. Ghislain) |
 | europe-west2 | England (London) |
 | europe-west3 | Germany (Frankfurt) |
@@ -75,7 +79,7 @@ The following GCP regions are currently available for {{serverless-short}} proje
 
 ## Marketplaces
 
-When procuring {{ecloud}} through [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-voru33wi6xs7k), [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp?tab=overview), or [GCP Marketplace](https://console.cloud.google.com/marketplace/product/elastic-prod/elastic-cloud), only the regions corresponding to the same cloud service provider can be used. This ensures that you can enjoy the benefits of the marketplace, such as {{ecloud}} contributing towards your spend commitment with cloud providers.
+When procuring {{ecloud}} through [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-voru33wi6xs7k), [Microsoft Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp?tab=overview), or [GCP Marketplace](https://console.cloud.google.com/marketplace/product/elastic-prod/elastic-cloud), only the regions corresponding to the same cloud service provider can be used. This ensures that you can enjoy the benefits of the marketplace, such as {{ecloud}} contributing towards your spend commitment with cloud providers.
 
 You can implement a multi-cloud strategy by creating a separate {{ecloud}} organization, either from another marketplace, or directly at [cloud.elastic.co](https://cloud.elastic.co).
 For example, if you have created a project in `eu-central-1` after signing up on AWS Marketplace, you can provision another project in GCP `europe-west1` by signing up for a second {{ecloud}} organization on GCP Marketplace, using another email address.

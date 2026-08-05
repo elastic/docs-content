@@ -59,6 +59,12 @@ Queries against runtime fields are considered expensive. If [`search.allow_expen
 ::::
 
 
+## Runtime fields in {{esql}} [runtime-esql]
+
+In {{esql}}, runtime fields defined in the index mapping function as regular mapped fields. However, {{esql}} does not support defining new runtime fields at search time. To create computed columns at query time, use the [`EVAL`](elasticsearch://reference/query-languages/esql/commands/eval.md) command instead.
+
+Runtime fields are also different from unmapped fields. For information on how {{esql}} handles fields that don't exist in the mapping, refer to [Unmapped fields](elasticsearch://reference/query-languages/esql/esql-unmapped-fields.md).
+
 
 
 

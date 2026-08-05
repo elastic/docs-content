@@ -135,18 +135,31 @@ The enrich policy executor is a component that manages the executions of all enr
 
 ## Node Settings [ingest-enrich-settings]
 
+```{applies_to}
+serverless: unavailable
+```
+
 The `enrich` processor has node settings for enrich coordinator and enrich policy executor.
 
 The enrich coordinator supports the following node settings:
 
 `enrich.cache_size`
-:   Maximum size of the cache that caches searches for enriching documents. The size can be specified in three units: the raw number of cached searches (for example, `1000`), an absolute size in bytes (for example, `100Mb`), or a percentage of the max heap space of the node (for example, `1%`). Both for the absolute byte size and the percentage of heap space, {{es}} does not guarantee that the enrich cache size will adhere exactly to that maximum, as {{es}} uses the byte size of the serialized search response which is is a good representation of the used space on the heap, but not an exact match. Defaults to `1%`. There is a single cache for all enrich processors in the cluster.
+:   Maximum size of the cache that stores the results of searches used to enrich documents. You can specify the size in three units:
+
+    * A raw number of cached searches, for example `1000`.
+    * An absolute size in bytes, for example `100Mb`.
+    * A percentage of the node's maximum heap space, for example `1%`.
+
+    If you specify an absolute byte size or a heap percentage, {{es}} doesn't guarantee that the cache stays exactly within the configured maximum. The cache size is measured using the byte size of the serialized search response, which is a good approximation of actual heap usage but not an exact match. There is a single cache for all enrich processors in the cluster. Defaults to `1%`.
 
 `enrich.coordinator_proxy.max_concurrent_requests`
 :   Maximum number of concurrent [multi-search requests]({{es-apis}}operation/operation-msearch) to run when enriching documents. Defaults to `8`.
 
 `enrich.coordinator_proxy.max_lookups_per_request`
 :   Maximum number of searches to include in a [multi-search request]({{es-apis}}operation/operation-msearch) when enriching documents. Defaults to `128`.
+
+`enrich.coordinator_proxy.queue_capacity`
+:   Maximum number of enrichment lookups the coordinator can queue while waiting to run them. When the queue is full, {{es}} rejects new enrichment requests with an HTTP 429 error. If bursts of ingest traffic cause 429 errors, increase this value so the node can buffer more lookups. A larger queue uses more memory. Defaults to `max_concurrent_requests * max_lookups_per_request`.
 
 The enrich policy executor supports the following node settings:
 
@@ -160,6 +173,6 @@ The enrich policy executor supports the following node settings:
 :   How often {{es}} checks whether unused enrich indices can be deleted. Defaults to `15m`.
 
 `enrich.max_concurrent_policy_executions`
-:   Maximum number of enrich policies to execute concurrently. Defaults to `50`.
+:   Maximum number of enrich policies to run concurrently. Defaults to `50`.
 
 
