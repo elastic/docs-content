@@ -7,7 +7,7 @@ products:
   - id: cloud-serverless
   - id: kibana
 navigation_title: "CPS scope in project apps"
-description: Learn how to manage cross-project search scope from your project apps using the scope selector, query-level overrides, and space defaults.
+description: Learn how to manage cross-project search scope from your project apps using the scope selector, tag filters, query-level overrides, and space defaults.
 ---
 
 # Managing {{cps}} scope in your project apps [cps-manage-scope]
@@ -22,18 +22,77 @@ When [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md) is enabl
 
 The **{{cps-cap}} ({{cps-init}}) scope** selector ({icon}`cross_project_search`) in your project's header lets you control which linked projects your searches include.
 
-With the {{cps-init}} scope selector, you can select:
+<!-- TODO: screenshot of the scope selector open, showing the project list with toggles and tag filter area -->
 
-* **This project**: Searches only the origin project.
-* **All projects**: Searches the origin project and all linked projects.
+The scope selector lists all linked projects in alphabetical order. The origin project always appears first, labeled **This project**. Each project row shows the project name, project type icon, and any assigned [tags](/explore-analyze/cross-project-search/cross-project-search-tags.md).
 
-:::{tip}
-The scope selector also lists the aliases of all [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), which is useful when you need to reference them in queries or index patterns.
-:::
+From the scope selector, you can:
 
-The scope selector is not editable in every app. Some apps display it as **read-only**, meaning the app uses the space default scope but you cannot change it. Other apps show it as **unavailable**, meaning the app searches only the current project. Refer to [{{cps-cap}} availability by app](#cps-availability) for details.
+* Toggle individual projects on or off to include or exclude them from searches.
+* [Filter the project list by tags](#cps-picker-tag-filters) to find and select projects based on metadata or custom tags.
+* Use the context menu on a project row to **Include only this project** or **Exclude only this project**.
+* Use the **Include all visible** action in the footer to include all projects that match the current filters.
+
+The footer displays the count of included and excluded projects.
+
+The scope selector is not editable in every app. Some apps display it as **read-only**, meaning the app uses the space default scope but you cannot change it. In read-only mode, filter badges are visible but you cannot create, edit, or remove filters. Other apps show it as **unavailable**, meaning the app searches only the current project. Refer to [{{cps-cap}} availability by app](#cps-availability) for details.
 
 When you change the scope during a session, your selection is preserved as you navigate between apps. Admins can configure a [default {{cps}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), which is used when you start a new session.
+
+### Filter projects by tag [cps-picker-tag-filters]
+
+You can narrow the project list in the scope selector by creating tag filters. Tag filters let you find and select projects based on [predefined tags](/explore-analyze/cross-project-search/cross-project-search-tags.md) like `_type`, `_region`, and `_csp`, or custom tags that you define in the {{ecloud}} UI.
+
+To add a tag filter:
+
+1. Open the scope selector and select **Add project tag filter**.
+2. Choose a tag from the **Select a tag** dropdown.
+3. Choose an operator. The default operator is **is**.
+4. If the operator requires a value, choose one or more values from the **Select a value** dropdown.
+5. Select **Apply** to add the filter.
+
+<!-- TODO: verify the exact button label for applying a filter -->
+
+The following filter operators are available:
+
+| Operator | Description |
+| --- | --- |
+| **is** | Matches projects where the tag equals the specified value. |
+| **is not** | Matches projects where the tag does not equal the specified value. |
+| **is one of** | Matches projects where the tag equals any of the specified values. |
+| **is not one of** | Matches projects where the tag does not equal any of the specified values. |
+| **exists** | Matches projects that have the tag, regardless of value. No value selector is shown. |
+| **does not exist** | Matches projects that do not have the tag. No value selector is shown. |
+
+When multiple filters are active, they are combined with AND logic: a project must match all filters to appear in the list.
+
+#### Manage tag filters
+
+Active filters appear as badges below the filter form. You can:
+
+* Select a filter badge to edit its tag, operator, or value.
+* Invert a filter to switch between include and exclude logic.
+* Enable or disable a filter without removing it.
+* Remove a filter to delete it.
+
+#### Quick-filter from project tags
+
+You can create a filter directly from a project's tags. Select the tag count badge on a project row to open a popover listing that project's tags, then select a tag to create a filter for it.
+
+### Include and exclude projects [cps-picker-include-exclude]
+
+You can control which projects are included in your searches independently of tag filters. Each project row has a toggle switch that includes or excludes it.
+
+You can also use the context menu on any project row for quick actions:
+
+* **Include only this project**: Excludes all other visible projects.
+* **Exclude only this project**: Includes all other visible projects except this one.
+
+The scope selector prevents you from excluding every project. The toggle on the last included project is disabled, so at least one project is always included.
+
+If your combination of tag filters and project toggles results in zero included projects, the scope selector displays a warning.
+
+<!-- TODO: verify the exact warning text -->
 
 ## Override {{cps}} scope at the query level [cps-query-overrides]
 
