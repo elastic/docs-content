@@ -17,6 +17,7 @@ products:
 
 Techniques that apply across workflow types, regardless of which outcome you're automating. Use this section when you're building or maintaining a workflow and need guidance on the mechanics.
 
+- [Author with natural language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md): Create and edit workflows by describing what you want in plain language.
 - [Use the YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md): Author and run workflows in the YAML editor in {{kib}}.
 - [Visualize a workflow](/explore-analyze/workflows/authoring-techniques/visualize-workflows.md): View a read-only diagram of a workflow generated from its YAML. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 - [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md): Every top-level field in a workflow definition and the execution lifecycle.
