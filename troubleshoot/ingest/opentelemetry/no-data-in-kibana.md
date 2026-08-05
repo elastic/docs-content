@@ -37,7 +37,7 @@ This issue is typically caused by one or more of the following:
 * Network issues, such as proxy misconfigurations
 * TLS verification failures
 * Misconfigured pipelines or disabled signals
-* The `elasticapmconnector` is misconfigured as a processor, which means that traces flow normally but {{product.apm}} metrics are never produced, so services don't appear in {{kib}} {{product.apm}}. Refer to [{{product.apm}} services missing due to misconfigured `elasticapmconnector`](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md).
+* The `elasticapmconnector` is misconfigured as a processor, which means that traces flow normally but {{product.apm}} metrics are never produced, so services don't appear in {{kib}} {{product.apm}}. Refer to [{{product.apm}} services missing due to misconfigured `elasticapmconnector`](/troubleshoot/ingest/opentelemetry/otel-collector/misconfigured-elasticapm-connector.md).
 * Incomplete setup — to capture all telemetry data, you must use the {{agent}} together with an appropriate EDOT SDK
 
 ## Resolution
@@ -82,7 +82,7 @@ Also look for:
 * TLS handshake failures
 * Invalid character errors, which may indicate proxy or HTML redirect instead of JSON
 
-Increase verbosity using `--log-level=debug` for deeper insights. For more information, refer to [Enable debug logging for the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) or [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+Increase verbosity using `--log-level=debug` for deeper insights. For more information, refer to [Enable debug logging for the {{agent}}](/troubleshoot/ingest/opentelemetry/otel-collector/enable-debug-logging.md) or [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
 ### Test network connectivity
 

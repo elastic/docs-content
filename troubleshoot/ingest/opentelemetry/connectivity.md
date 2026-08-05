@@ -66,7 +66,7 @@ Connectivity errors usually trace back to one of the following issues:
 
 - **Proxy misconfiguration**  
   
-  Proxy environment variables (`HTTP_PROXY`, `HTTPS_PROXY`) might be set correctly but the proxy itself lacks access to Elastic or restricts ports. Refer to [Proxy settings](opentelemetry://reference/edot-collector/config/proxy.md) for more information.
+  Proxy environment variables (`HTTP_PROXY`, `HTTPS_PROXY`) might be set correctly but the proxy itself lacks access to Elastic or restricts ports. Refer to [Proxy settings](elastic-agent://reference/otel-collector/config/proxy.md) for more information.
 
 
 ### Differences between SDK and Collector issues
@@ -151,8 +151,8 @@ If any of these steps fail, the issue is likely caused by network infrastructure
 
 If basic checks and configuration look correct but issues persist, collect more details before escalating:
 
-* Review proxy settings. For more information, refer to [Proxy settings](opentelemetry://reference/edot-collector/config/proxy.md).
+* Review proxy settings. For more information, refer to [Proxy settings](elastic-agent://reference/otel-collector/config/proxy.md).
 
-* If ports are confirmed open but errors persist, [enable debug logging in the SDK](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md) or [in the Collector](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) for more detail.
+* If ports are confirmed open but errors persist, [enable debug logging in the SDK](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md) or [in the Collector](/troubleshoot/ingest/opentelemetry/otel-collector/enable-debug-logging.md) for more detail.
 
 * Contact your network administrator with test results if you suspect firewall restrictions.

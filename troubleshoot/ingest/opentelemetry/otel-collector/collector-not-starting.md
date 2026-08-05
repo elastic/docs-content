@@ -66,7 +66,7 @@ If you're deploying the {{agent}} in a standalone configuration, try to:
    ./otelcol --set=service.telemetry.logs.level=debug
    ```
 
-   This is especially helpful for diagnosing configuration parsing issues or startup errors. For more information on enabling debug logging, refer to [Enable debug logging](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md).
+   This is especially helpful for diagnosing configuration parsing issues or startup errors. For more information on enabling debug logging, refer to [Enable debug logging](/troubleshoot/ingest/opentelemetry/otel-collector/enable-debug-logging.md).
 
 
 * Confirm required components are defined

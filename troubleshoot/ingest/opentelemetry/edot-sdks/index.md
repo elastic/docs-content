@@ -51,7 +51,7 @@ EDOT SDKs are tested and supported only with [{{agent}} Gateway](elastic-agent:/
 
 ## See also
 
-* [{{agent}} troubleshooting](/troubleshoot/ingest/opentelemetry/edot-collector/index.md): For end-to-end issues that may involve both the Collector and SDKs.
+* [{{agent}} troubleshooting](/troubleshoot/ingest/opentelemetry/otel-collector/index.md): For end-to-end issues that may involve both the Collector and SDKs.
 
 * [Troubleshoot {{edot}}](/troubleshoot/ingest/opentelemetry/index.md): Overview of all {{edot}} troubleshooting resources.
 

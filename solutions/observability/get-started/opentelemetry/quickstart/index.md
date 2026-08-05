@@ -41,4 +41,4 @@ Select a guide based on the environment of your target system and your Elastic d
 
 ## Troubleshooting
 
-Having issues with the {{agent}}? Refer to the [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) guide for help.
+Having issues with the {{agent}}? Refer to the [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/otel-collector/index.md) guide for help.

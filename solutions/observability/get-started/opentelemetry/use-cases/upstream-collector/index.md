@@ -132,7 +132,7 @@ The {{edot}} gateway authenticates to {{es}} using an API key.
     :::{note}
     The `elasticapm` connector and processor are required for full {{product.apm}} functionality (service maps, transaction histograms, service-level indicators). You only need them when exporting directly to {{es}}. If you send data to the Managed OTLP endpoint or {{apm-server-or-mis}}, they are not required.
 
-    Refer to [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md) for more information.
+    Refer to [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/otel-collector/misconfigured-elasticapm-connector.md) for more information.
     :::
 
 3. Start the {{edot}} gateway. The {{agent}} is the {{agent}} binary run in `otel` mode, so start it with the `otel` subcommand:
@@ -200,7 +200,7 @@ If no data appears, refer to [No logs, metrics, or traces visible in {{kib}}](/t
 ## Related pages
 
 * [No logs, metrics, or traces visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md)
-* [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md)
+* [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/otel-collector/misconfigured-elasticapm-connector.md)
 * [Attributes and labels](/solutions/observability/apm/opentelemetry/attributes.md)
 * [{{agent}}](elastic-agent://reference/edot-collector/index.md)
 * [Managed OTLP endpoint](opentelemetry://reference/motlp.md)

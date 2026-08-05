@@ -93,7 +93,7 @@ For a complete list of available metrics, refer to the upstream OpenTelemetry me
 * Ensure sufficient CPU and memory for the {{agent}}.
 * Scale vertically (more resources) or horizontally (more replicas) as needed.
 
-For Kubernetes deployments, refer to [Insufficient resources in Kubernetes](/troubleshoot/ingest/opentelemetry/edot-collector/insufficient-resources-kubestack.md) for detailed resource configuration guidance.
+For Kubernetes deployments, refer to [Insufficient resources in Kubernetes](/troubleshoot/ingest/opentelemetry/otel-collector/insufficient-resources-kubestack.md) for detailed resource configuration guidance.
 ::::
 
 ::::{step} Optimize Elasticsearch performance
@@ -109,9 +109,9 @@ Focus tuning efforts on {{es}} performance, Collector resource allocation, and q
 :::
 
 
-For more detailed diagnostics, refer to [Enable debug logging](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) to troubleshoot export failures.
+For more detailed diagnostics, refer to [Enable debug logging](/troubleshoot/ingest/opentelemetry/otel-collector/enable-debug-logging.md) to troubleshoot export failures.
 
 ## Resources
 
 * [Upstream documentation - OpenTelemetry Collector configuration](https://opentelemetry.io/docs/collector/configuration)
-* [Elasticsearch exporter configuration reference](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md)
+* [Elasticsearch exporter configuration reference](elastic-agent://reference/otel-collector/components/elasticsearchexporter.md)
