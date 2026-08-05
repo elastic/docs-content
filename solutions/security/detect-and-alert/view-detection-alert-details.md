@@ -20,7 +20,7 @@ Use the alert details flyout to begin an investigation, open a case, or plan a r
 
 ::::{note}
 :applies_to: stack: ga 9.0-9.4
-In these versions, the alert details flyout is organized into a right panel, a left panel, and preview panels, instead of the single flyout described on this page. Some toolbar actions and navigation described below don't apply.
+In {{stack}} 9.0.x-9.4.x, the alert details flyout is organized into a right panel, a left panel, and preview panels, instead of the single flyout described on this page. Some toolbar actions and navigation described below don't apply.
 ::::
 
 ## Alert details flyout UI [alert-details-flyout-ui]
@@ -209,7 +209,7 @@ The overview displays counts for each correlation type. Click **Correlations** t
 | Cases related to the alert | This alert has been added to one or more cases. | Click a case name to see prior investigation work. Avoid duplicating effort if the alert is already being tracked. |
 | Alerts related by session ID | Other alerts occurred during the same Linux session. | Examine the session timeline to trace an attacker's actions from initial access through their objectives. Requires [Session View data](/solutions/security/investigate/session-view.md#enable-session-view) to be enabled. |
 | Alerts related by process ancestry | Alerts share a parent-child process relationship. | Trace execution chains to understand how a threat propagated. Click **Investigate in timeline** to visualize the process tree. |
-| Attacks related to this alert | This alert is linked to one or more [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) findings. | In the Correlations flyout, review the related attacks table (title, status, and alert count), then click the expand icon ({icon}`expand`) on a row to preview that attack's details. |
+| Attacks related to this alert {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` | This alert is linked to one or more [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) findings. | In the Correlations flyout, review the related attacks table (title, status, and alert count), then click the expand icon ({icon}`expand`) on a row to preview that attack's details. |
 
 ::::{note}
 **Alerts related by process ancestry** requires a [Platinum or higher subscription](https://www.elastic.co/pricing) in {{stack}} or the appropriate [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
