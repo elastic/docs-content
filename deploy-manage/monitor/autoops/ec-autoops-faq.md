@@ -38,6 +38,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [I connected my ECE, ECK, or self-managed cluster to AutoOps during a free trial of {{ecloud}}. What happens after my trial ends?](#trial-ending)
 * [Who has access to AutoOps in my cluster?](#access-autoops)
 * [What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?](#support)
+* [Can I run multiple {{agent}} instances for the same cluster to ensure high availability?](#agent-high-availability)
 
 **Setting up AutoOps for ECE, ECK, or self-managed clusters**
 * [Can I use macOS to set up AutoOps for my ECE, ECK, or self-managed clusters?](#macos-install)
@@ -127,6 +128,9 @@ $$$support$$$ **What kind of support is available to me when using AutoOps for E
 :   Support eligibility is determined by the license of your connected cluster:
 * Platinum and Enterprise licenses: Eligible for [Elastic support](https://support.elastic.co/).
 * Free and open (Basic) licenses: Eligible for community-based support through the [Elastic Stack Community on Slack](https://elasticstack.slack.com/) or the [Monitoring category](https://discuss.elastic.co/c/elastic-stack/monitoring/103) in the Elastic Discuss forum.
+
+$$$agent-high-availability$$$ **Can I run multiple {{agent}} instances for the same cluster to ensure high availability?**
+:   No, high availability configurations for the AutoOps agent are not currently supported. This applies to both active-active setups, where multiple agents collect and ship metrics from the same cluster at the same time, and active-passive setups, where a standby agent automatically takes over if the primary agent fails. Each cluster must be connected through a single, dedicated {{agent}}, and running additional agents against the same cluster can result in duplicate or inconsistent metrics.
 
 ### Setting up AutoOps for ECE, ECK, or self-managed clusters
 
