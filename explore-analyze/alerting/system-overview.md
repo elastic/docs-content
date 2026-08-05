@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: The experimental Kibana alerting system uses ES|QL rules to detect conditions, track problems as alert episodes, and route notifications through reusable action policies.
+description: The experimental Kibana alerting system uses ES|QL rules to detect conditions, then either track problems as alert episodes with notifications or record signals for later analysis.
 ---
 
 # {{alerting-v2-system-cap}} overview [system-overview]
 
-The {{alerting-v2-system}} in {{kib}} watches your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, such as when to open an issue, who should know, and how often to notify them. The system handles the rest.
+The {{alerting-v2-system}} in {{kib}} watches your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, and select whether each match opens a tracked alert episode or records a signal for later analysis. The system handles the rest.
 
 ::::{note}
 In the generally available {{kib}} alerting system, the term **alert** refers to a tracked occurrence of a rule condition. In the {{alerting-v2-system}}, the equivalent concept is called an **alert episode**. The two terms describe similar ideas in different systems and are not interchangeable.
@@ -24,11 +24,15 @@ The {{alerting-v2-system}} separates *detecting* a problem from *acting* on it:
 - **Detecting** - Rules focus purely on what to watch for in your data and on collecting breach and recovery events.
 - **Acting** - Action policies handle who gets notified, when, and how, independently of any rule.
 
-You can build and test detection logic before wiring up any notifications, and update notification routing across all rules in one place without editing the rules themselves.
+:::{image} /explore-analyze/images/detect-act-or-record.png
+:alt: Flowchart showing that after a rule finds a match, it either acts by creating an alert episode and sending a notification, or records a signal with no notification
+:::
+
+This split means you can build and test detection logic before wiring up notifications, record observations without paging anyone, and update notification routing across rules in one place without editing the rules themselves.
 
 ## The four building blocks
 
-The {{alerting-v2-system}} is built around four objects: rules, alert episodes, action policies, and workflows, each with a distinct role.
+That separation is carried out by four objects: rules, alert episodes, action policies, and workflows, each with a distinct role.
 
 ### Rules
 
@@ -71,4 +75,5 @@ For a more detailed explanation of each stage, refer to [How the {{alerting-v2-s
 - **New to the {{alerting-v2-system}}?** [Get started](experimental-alerting-system/get-started.md) walks you through enabling the system, setting up role access, and creating your first rule with a hands-on tutorial.
 - **Wondering what you can detect?** [Rules](experimental-alerting-system/rules.md) shows you how to define what to watch for in {{esql}}, and how to choose and configure the right creation path for your use case.
 - **Curious what happens when something breaks?** [Alerts](experimental-alerting-system/alerts.md) explains how alert episodes track a problem from first detection through recovery, and how to triage them as they come in.
+- **Recording observations without notifying?** [Observe and analyze signals](experimental-alerting-system/observe-and-analyze-signals.md) shows you how to query signals in Discover and build dashboards from it.
 - **Want the right people to know when it matters?** [Notifications and actions](experimental-alerting-system/notifications-actions.md) shows you how workflows and action policies decide who gets notified, and when.
