@@ -1,4 +1,4 @@
-You can deploy or access Jina models in these ways:
+You can access Jina models in these ways:
 
 - **[Elastic {{infer-cap}} Service (EIS)](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-eis-getting-started)**: Elastic hosts the model. Use this when you want managed {{infer}} without provisioning ML nodes.
 - **[Jina API](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-external)**: The model runs on the hosted Jina platform. Use this when you want Jina-hosted {{infer}} outside EIS.
