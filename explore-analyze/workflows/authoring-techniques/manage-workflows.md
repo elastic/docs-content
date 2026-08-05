@@ -40,6 +40,9 @@ Click **Create a new workflow** to open the YAML editor. Refer to [](/explore-an
 
 Use the search bar to filter workflows by name, description, or tag. You can also use the **Enabled** filter to only show workflows that are turned on (enabled) or off (disabled), and the **Created By** filter to only show workflows created by the specified user.
 
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` When the **Show managed workflows** advanced setting is turned on and your role can read managed workflows, a **View** filter also appears with **Custom** and **Managed** options. Refer to [Show managed workflows](/explore-analyze/workflows/get-started/setup.md#workflows-managed-visibility) and [Managed workflows](/explore-analyze/workflows/managed-workflows.md).
+<!-- TODO: After `workflows:ui:showManagedWorkflows` is added to kibana/docs/reference/advanced-settings-space.yml, link **Show managed workflows** to the Advanced Settings reference (kibana://reference/advanced-settings.md). -->
+
 ### Run a workflow [workflow-run]
 
 To instantly run a workflow, click the **Run** icon {icon}`play` for a workflow, or open the **All actions** menu ({icon}`boxes_vertical`) and click **Run**. The workflow manually runs regardless of its specified triggers. To learn about monitoring workflow runs, refer to [](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md).

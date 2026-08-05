@@ -567,6 +567,7 @@ toc:
             children:
               - file: workflows/use-cases/security/automate-security-operations.md
                 children:
+                  - file: workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md
                   - file: workflows/use-cases/security/automate-security-operations/alert-triage-with-case.md
                   - file: workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md
                   - file: workflows/use-cases/security/automate-security-operations/enrich-alert-with-threat-intel.md
@@ -581,6 +582,7 @@ toc:
               - file: workflows/use-cases/ai-augmented-workflows/classify-and-route-alerts.md
       - file: workflows/concepts.md
         children:
+          - file: workflows/managed-workflows.md
           - file: workflows/authorization.md
           - file: workflows/triggers.md
             children:
