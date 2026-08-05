@@ -35,8 +35,7 @@ Click **Create workflow** to open the YAML editor with the AI chat sidebar. You 
 
 Use the search bar to filter workflows by name, description, or tag. You can also use the **Enabled** filter to only show workflows that are turned on (enabled) or off (disabled), and the **Created By** filter to only show workflows created by the specified user.
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` When the **Show managed workflows** advanced setting is turned on and your role can read managed workflows, a **View** filter also appears with **Custom** and **Managed** options. Refer to [Show managed workflows](/explore-analyze/workflows/get-started/setup.md#workflows-managed-visibility) and [Managed workflows](/explore-analyze/workflows/managed-workflows.md).
-<!-- TODO: After `workflows:ui:showManagedWorkflows` is added to kibana/docs/reference/advanced-settings-space.yml, link **Show managed workflows** to the Advanced Settings reference (kibana://reference/advanced-settings.md). -->
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` When the [**Show managed workflows**](kibana://reference/advanced-settings.md#kibana-workflows-settings) advanced setting is turned on and your role can read managed workflows, a **View** filter also appears with **Custom** and **Managed** options. Refer to [Show managed workflows](/explore-analyze/workflows/get-started/setup.md#workflows-managed-visibility) and [Managed workflows](/explore-analyze/workflows/managed-workflows.md).
 
 ### Run a workflow [workflow-run]
 

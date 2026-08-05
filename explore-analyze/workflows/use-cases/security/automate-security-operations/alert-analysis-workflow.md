@@ -18,11 +18,13 @@ products:
 
 The **Alert analysis workflow** is a [managed workflow](/explore-analyze/workflows/managed-workflows.md) for {{elastic-sec}}. When a detection rule that has the workflow attached generates an alert, or when you run the workflow manually, the workflow gathers related context, sends it to an {{agent-builder}} agent, and writes a classification verdict (true positive, false positive, or inconclusive) back to the alert, including confidence and rationale.
 
-Elastic installs the workflow once. It's available in every {{kib}} space, including spaces created later. You configure the workflow per space on the **Alert analysis workflow** settings page.
+Elastic installs a single shared workflow definition that's available in every {{kib}} space, including spaces created later. Elastic maintains the YAML, and you configure how the workflow runs per space on the **Alert analysis workflow** settings page.
 
 ## Before you begin [workflows-alert-analysis-prereqs]
 
-To open and save the **Alert analysis workflow** settings page, you need the following [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md):
+You must have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
+
+To open and save the **Alert analysis workflow** settings page, you also need the following [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md):
 
 - `All` for **Management → Advanced Settings**.
 - `All` for **Security → Rules and Exceptions**.
@@ -30,8 +32,7 @@ To open and save the **Alert analysis workflow** settings page, you need the fol
 
 You also need a configured [AI connector](/deploy-manage/manage-connectors.md) for the agent to call.
 
-To view the managed workflow itself on the **Workflows** page, turn on the **Show managed workflows** advanced setting and grant managed read privileges. Refer to [Show managed workflows](/explore-analyze/workflows/get-started/setup.md#workflows-managed-visibility).
-<!-- TODO: After `workflows:ui:showManagedWorkflows` is added to kibana/docs/reference/advanced-settings-space.yml, link **Show managed workflows** to the Advanced Settings reference (kibana://reference/advanced-settings.md). -->
+To view the managed workflow itself on the **Workflows** page, turn on the [**Show managed workflows**](kibana://reference/advanced-settings.md#kibana-workflows-settings) advanced setting and grant managed read privileges. Refer to [Show managed workflows](/explore-analyze/workflows/get-started/setup.md#workflows-managed-visibility).
 
 
 ## How it works [workflows-alert-analysis-how-it-works]
@@ -42,8 +43,8 @@ For each alert it analyzes, the workflow:
 2. Sends that context to an LLM through {{agent-builder}}.
 3. Writes a started note on the alert's notes, then updates it with a verdict (true positive, false positive, or inconclusive, with confidence and rationale) or an error note if analysis fails.
 4. Adds workflow tags to the alert. The tag prefix is configurable and defaults to `alert-analysis`.
-5. Optionally auto-closes the alert when the verdict is a high-confidence false positive within your configured confidence range.
-6. Optionally creates an {{agent-builder}} conversation and links it from the verdict note.
+5. Auto-closes the alert when the verdict is a high-confidence false positive within the configured confidence range (on by default; range defaults to 0.85–1).
+6. Creates an {{agent-builder}} conversation and links it from the verdict note (on by default).
 
 
 ## Set up the workflow [workflows-alert-analysis-setup]
@@ -66,13 +67,13 @@ Set how the workflow runs in the current space:
 
 | Setting | Description |
 |---------|-------------|
-| **Workflow enabled** | Turns the workflow on or off everywhere it is configured, including for any rules it is attached to. |
+| **Workflow enabled** | Turns the workflow on or off everywhere it is configured, including for any rules it is attached to. Defaults to on. |
 | **AI connector** | The AI connector used to classify alerts. |
 | **Agent** | The {{agent-builder}} agent that analyzes alerts. Defaults to the built-in Elastic AI Agent. The list includes that default plus your custom agents. |
-| **Create conversation** | When on, the agent creates a new conversation for each alert analysis. Turn off to avoid accumulating large numbers of conversations. |
-| **Auto-close alerts classified as false positives** | When on, the workflow automatically closes alerts classified as false positives within the configured confidence range. |
-| **Auto-close minimum confidence score** | Lowest false-positive confidence score (0–1) that can auto-close an alert. Must be lower than the maximum when auto-close is on. |
-| **Auto-close maximum confidence score** | Highest false-positive confidence score (0–1) that can auto-close an alert. |
+| **Create conversation** | When on, the agent creates a new conversation for each alert analysis. Defaults to on. Turn off to avoid accumulating large numbers of conversations. |
+| **Auto-close alerts classified as false positives** | When on, the workflow automatically closes alerts classified as false positives within the configured confidence range. Defaults to on. |
+| **Auto-close minimum confidence score** | Lowest false-positive confidence score (0–1) that can auto-close an alert. Defaults to `0.85`. Must be lower than the maximum when auto-close is on. |
+| **Auto-close maximum confidence score** | Highest false-positive confidence score (0–1) that can auto-close an alert. Defaults to `1`. |
 | **Alert tag prefix** | Prefix for tags the workflow adds to analyzed alerts (default `alert-analysis`). Example: `alert-analysis.classification.false_positive`. The field can't be empty. If you change the prefix, alerts tagged under the old prefix are no longer recognized as already analyzed. |
 
 Click **Save alert analysis workflow settings** to persist changes for the current space.

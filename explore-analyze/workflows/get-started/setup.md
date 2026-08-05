@@ -68,7 +68,7 @@ serverless: ga
 3. Toggle the setting on.
 4. Click **Save changes**.
 
-When the setting is on and your role includes the [managed workflow read privileges](#workflows-managed-privileges), the **Workflows** list shows a **View** filter with **Custom** and **Managed** options. Use it to include managed workflows and their executions alongside your own.
+When the setting is on and your role includes the [managed workflow read privileges](#workflows-managed-privileges), the **Workflows** list shows a **View** filter with **Custom** and **Managed** options. **Custom** shows workflows you author yourself. **Managed** shows Elastic-shipped workflows.
 
 ### Managed workflow privileges [workflows-managed-privileges]
 

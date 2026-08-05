@@ -24,8 +24,7 @@ A *managed workflow* is a workflow definition that Elastic ships and installs au
 | Editing and deleting | YAML is read-only; you can't delete the workflow | Full edit and delete |
 | Typical use | Back product functionality (for example, Security alert analysis) | Custom automation you build |
 
-Managed workflows appear with a **Managed** badge in {{kib}}. By default they are hidden from the Workflows list. To show them, turn on **Show managed workflows** in Advanced Settings and grant the managed workflow read privileges. Refer to [](/explore-analyze/workflows/get-started/setup.md#workflows-managed-visibility) for more information.
-<!-- TODO: After `workflows:ui:showManagedWorkflows` is added to kibana/docs/reference/advanced-settings-space.yml, link **Show managed workflows** to the Advanced Settings reference (kibana://reference/advanced-settings.md). -->
+Managed workflows appear with a **Managed** badge in {{kib}}. By default they are hidden from the Workflows list. To show them, turn on [**Show managed workflows**](kibana://reference/advanced-settings.md#kibana-workflows-settings) in Advanced Settings and grant the managed workflow read privileges. Refer to [](/explore-analyze/workflows/get-started/setup.md#workflows-managed-visibility) for more information.
 
 Configure managed workflows from the settings for the feature that owns them, not by editing their YAML on the **Workflows** page. For example, configure Attack Discovery's managed workflows from [Attack discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md) on the **Attacks** view. You can't edit or delete managed workflow YAML.
 
