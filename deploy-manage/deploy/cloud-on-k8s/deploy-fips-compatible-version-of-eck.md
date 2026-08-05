@@ -24,7 +24,14 @@ Due to a build configuration issue, ECK operator images published between versio
 ::::
 
 :::{important}
-The JVM bundled with {{es}} is not configured for FIPS. Which means that, deploying an ECK operator will not make clusters automatically FIPS compliant. [More](https://www.elastic.co/docs/deploy-manage/security/fips-es#:~:text=FIPS%20140%2D3-,Important,-The%20JVM%20bundled)
+This page covers FIPS compliance for the ECK operator only. Making your managed {{es}} clusters FIPS-compliant requires additional configuration for each {{es}} node, including:
+
+* An external JDK with a FIPS-certified security provider
+* FIPS-compatible TLS and keystore settings
+* FIPS password hashing algorithms
+* `xpack.security.fips_mode.enabled: true`
+
+For full requirements, refer to [FIPS compliance for {{es}}](/deploy-manage/security/fips-es.md).
 :::
 
 ## FIPS compatible installation using Helm [k8s_fips_compliant_installation_using_helm]
