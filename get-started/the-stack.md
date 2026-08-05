@@ -127,7 +127,7 @@ This makes it efficient to pinpoint and fix performance problems quickly.
 :::{include} /manage-data/_snippets/otel.md
 :::
 
-With EDOT, you can use vendor-neutral instrumentation and stream native OTel data such as standardized traces, metrics, and logs without proprietary agents.
+With {{edot}}, you can use vendor-neutral instrumentation and stream native OTel data such as standardized traces, metrics, and logs without proprietary agents.
 
 ### {{beats}} [stack-components-beats]
 

@@ -169,12 +169,7 @@ On the host details and user details pages, you can access the risk score data:
 
 ### Entity details flyouts [entity-details-flyouts]
 
-In the entity details flyouts, you can access the risk score data in the risk summary section:
-
-:::{image} /solutions/images/security-risk-summary.png
-:alt: Host risk data in the Host risk summary section
-:screenshot:
-:::
+In the entity details flyouts, you can access the risk score data in the [risk score](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score) section.
 
 ## Analyze entities over time [historical-entity-analysis]
 ```yaml {applies_to}
