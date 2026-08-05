@@ -43,28 +43,20 @@ stack: ga 9.5+
 serverless: unavailable
 ```
 
-With remote clusters configured in [**{{synthetics-app}} → Settings → Remote clusters**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters), monitor data from remote {{es}} clusters appears in the Synthetics UI alongside your local monitors.
+When you configure {{ccs-init}} in [**{{synthetics-app}} → Settings → Remote clusters**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters), monitors from remote {{es}} clusters appear in the Synthetics UI alongside your local monitors. Remote monitors are identified by a **Remote** badge showing the cluster name, displayed next to the monitor type badge.
 
-### Overview [synthetics-analyze-remote-monitors-overview]
+When remote monitors are present, a **Remote cluster** filter option appears alongside **Type**, **Location**, **Tags**, and **Frequency**. Use it to scope the overview to monitors from one or more specific remote clusters. When a remote cluster filter is active, local monitors are hidden and status counts (for example, Up or Down) reflect only the filtered set. To group monitors by remote cluster, select **Group by → Remote cluster**.
 
-Remote monitors are identified by a **Remote** badge showing the cluster name, displayed next to the monitor type badge.
-
-When remote monitors are present, a **Remote cluster** filter option appears alongside **Type**, **Location**, **Tags**, and **Frequency**. Use it to scope the overview to monitors from one or more specific remote clusters. When a remote cluster filter is active, local monitors are hidden and status counts (for example, Up or Down) reflect only the filtered set.
-
-To group monitors by remote cluster, select **Group by → Remote cluster**.
-
-### Monitor details [synthetics-analyze-remote-monitors-details]
-
-You can open a remote monitor's individual page the same way as a local monitor. The page displays a **Remote** badge showing the cluster name.
-
-Because remote monitors have no local saved object, the following actions are not available:
+You can open a remote monitor's individual page the same way as a local monitor. Because remote monitors have no local saved object, the following actions are not available:
 
 - **Edit monitor**
 - **Enable/Disable**
 - **Delete**
 - **Run test manually**
 
-**Refresh** remains available. To edit, enable/disable, or delete a remote monitor, use the Synthetics UI on the {{kib}} where the monitor is defined.
+:::{tip}
+**Refresh** remains available. If you have monitors from multiple remote clusters, the **Remote** badge shows which {{kib}} instance each monitor comes from. To edit, enable/disable, delete, or run a remote monitor, open the Synthetics UI on the {{kib}} instance where the monitor is defined.
+:::
 
 ## All monitor types [synthetics-analyze-individual-monitors]
 
