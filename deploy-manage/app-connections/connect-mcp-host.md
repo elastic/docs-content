@@ -177,7 +177,7 @@ If you get an authorization error, check [the OAuth client](/deploy-manage/app-c
 ChatGPT supports OAuth natively for custom MCP apps.
 
 :::{important}
-ChatGPT assigns a unique callback URL to each app. You won't know this URL until you start the following app creation flow. You need to add the URL to your [OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) as a Remote redirect URI before you can finish the ChatGPT setup.
+ChatGPT assigns a unique callback URL to each app. You won't know this URL until you start the following app creation flow. You need to add the URL to your [OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) as a remote redirect URI before you can finish the ChatGPT setup.
 :::
 
 To connect from ChatGPT:
