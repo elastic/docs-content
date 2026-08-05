@@ -24,7 +24,7 @@ Due to a build configuration issue, ECK operator images published between versio
 ::::
 
 :::{important}
-The JVM bundled with {{es}} is not configured for FIPS. Which means that, deploying an ECK operator will not make cluster automatically FIPS compliant. [More](https://www.elastic.co/docs/deploy-manage/security/fips-es#:~:text=FIPS%20140%2D3-,Important,-The%20JVM%20bundled)
+The JVM bundled with {{es}} is not configured for FIPS. Which means that, deploying an ECK operator will not make clusters automatically FIPS compliant. [More](https://www.elastic.co/docs/deploy-manage/security/fips-es#:~:text=FIPS%20140%2D3-,Important,-The%20JVM%20bundled)
 :::
 
 ## FIPS compatible installation using Helm [k8s_fips_compliant_installation_using_helm]
