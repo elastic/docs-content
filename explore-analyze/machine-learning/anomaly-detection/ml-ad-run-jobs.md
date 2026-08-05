@@ -164,7 +164,8 @@ The following default scopes apply to jobs created after {{cps-init}} is availab
 Changes to the space default routing do not retroactively affect existing jobs. Each job retains the `project_routing` that was set at creation or last update.
 
 :::{note}
-When setting `project_routing` through the API or JSON editor, {{es}} does not validate the expression at creation time. If the expression matches no linked projects, the job is created successfully but the datafeed fails when it starts. If fields with the same name have different types across linked projects, values that cannot be converted are treated as empty data. <!--[TODO] For resolution steps, refer to [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md).-->
+When setting `project_routing` through the API or JSON editor, {{es}} does not validate the expression at creation time. If the expression matches no linked projects, the job is created successfully but the datafeed fails when it starts. If fields with the same name have different types across linked projects, values that cannot be converted are treated as empty data.
+% TODO: add xref to troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md when PR #7403 merges
 :::
 
 ### Change project scope on an existing job [ml-ad-cps-update]
@@ -176,7 +177,7 @@ Changing project scope affects model accuracy. Expect a significant increase in 
 
 If you need a fundamentally different scope, such as moving from origin-only to flat-world, cloning the job with the new routing and retraining from scratch can be faster than waiting for an existing model to adapt.
 
-<!--[TODO] For recovery steps including model snapshot rollback, refer to [Troubleshoot project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md).-->
+% TODO: add xref to troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md when PR #7403 merges
 :::
 
 {{es}} retains the pre-change model snapshot indefinitely so you can [revert to it](#ml-ad-model-snapshots) if needed. These snapshots are exempt from the default 10-day retention lifecycle and must be deleted manually.
