@@ -1,17 +1,21 @@
 ---
-navigation_title: "Tutorial: build multimodal search"
+navigation_title: "Tutorial: Build multimodal search"
 description: Index images in a semantic field and search them with text, image, and PDF input using Jina multimodal embeddings in Elasticsearch.
 applies_to:
-  stack: planned
+  stack: preview 9.5+
   serverless: preview
 products:
   - id: elasticsearch
   - id: cloud-serverless
 type: tutorial
 ---
-# Quickstart: Build a multimodal search in {{es}} [multimodal-search-tutorial]
+# Tutorial: Build multimodal search in {{es}} [multimodal-search-tutorial]
 
 In this hands-on tutorial, you'll build a small visual archive and search it with natural-language text, another image, or a PDF. It's intended for developers who are new to multimodal search and are comfortable running {{es}} API requests and terminal commands.
+
+:::{important}
+This tutorial uses the `semantic` field type, which is in technical preview and is not recommended for production use. This functionality may be changed or removed in a future release. Features in technical preview are not subject to the support SLA of official GA features.
+:::
 
 By the end of this tutorial, you'll be able to:
 

@@ -100,7 +100,7 @@ The closest vectors are not always the best final ranking. You can boost by popu
 
 Search images, audio, video, or text when your content uses more than one type. For example, search with text to find images, or search with an image to find similar images.
 
-The recommended path uses the [`semantic`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md) field type with [Jina multimodal models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-multimodal-embeddings). For concepts and deployment options, refer to [Multimodal search](../multimodal-search.md). For a full walkthrough, refer to [Build multimodal search with a semantic field](../multimodal-search/multimodal-search-tutorial.md).
+The recommended path uses the [`semantic`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md) field type with [Jina multimodal models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-multimodal-embeddings). For concepts and deployment options, refer to [Multimodal search](../multimodal-search.md). For a hands-on tutorial, refer to [Tutorial: Build multimodal search with a `semantic` field](../multimodal-search/multimodal-search-tutorial.md).
 
 ::::::{stepper}
 :::::{step} Choose and deploy a multimodal model

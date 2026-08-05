@@ -2,8 +2,8 @@
 navigation_title: Multimodal search
 description: Search images with text and run cross-modal retrieval in Elasticsearch using multimodal embeddings, Jina models, and the semantic field type.
 applies_to:
-  stack: 
-  serverless:
+  stack: ga
+  serverless: ga
 ---
 # Multimodal search in {{es}} [multimodal-search]
 
@@ -12,7 +12,7 @@ Multimodal search finds results by meaning across more than one content type. Co
 Multimodal search builds on [vector search](vector.md). A multimodal embedding model maps each supported input into a dense vector so content with similar meaning is nearby in vector space, even when the media types differ.
 
 :::{tip}
-For a hands-on walkthrough, refer to [Build multimodal search with a semantic field](multimodal-search/multimodal-search-tutorial.md).
+For a hands-on tutorial, refer to [Tutorial: Build multimodal search with a `semantic` field](multimodal-search/multimodal-search-tutorial.md).
 :::
 
 ## How it works [how-multimodal-search-works]
@@ -64,6 +64,15 @@ For the full Jina catalog, deployment matrix, and input examples, refer to [Jina
 
 ## The `semantic` field type [semantic-field-for-multimodal-search]
 
+```{applies_to}
+stack: preview 9.5+
+serverless: preview
+```
+
+:::{important}
+The `semantic` field type is in technical preview and is not recommended for production use. This functionality may be changed or removed in a future release. Features in technical preview are not subject to the support SLA of official GA features.
+:::
+
 The `semantic` field type simplifies semantic and multimodal search across text, images, audio, video, and PDF files. With a compatible multimodal embedding model, you can search from any supported input type to any other supported input type. The field automatically:
 
 - Generates embeddings when you index field values, without an ingest pipeline or inference processor.
@@ -93,7 +102,7 @@ PUT my-multimodal-index
 
 ## Next steps [multimodal-search-next-steps]
 
-- [Build multimodal search with a `semantic` field](multimodal-search/multimodal-search-tutorial.md): Index images and search them with text, image, and PDF input
+- [Tutorial: Build multimodal search with a `semantic` field](multimodal-search/multimodal-search-tutorial.md): Index images and search them with text, image, and PDF input
 - [`semantic` field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md): Review the mapping reference of the `semantic` field tpye.
 
 ## Related pages [multimodal-search-related-pages]
