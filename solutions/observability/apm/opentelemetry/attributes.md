@@ -35,9 +35,9 @@ Use the `OTEL_RESOURCE_ATTRIBUTES` environment variable to pass resource attribu
 export OTEL_RESOURCE_ATTRIBUTES=deployment.environment=production
 ```
 
-### Elastic Distribution of OpenTelemetry Collector (EDOT Collector)
+### {{agent}} [elastic-distribution-of-opentelemetry-collector-edot-collector]
 
-Use the [resource processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourceprocessor) to set or apply changes to resource attributes when using the EDOT Collector.
+Use the [resource processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourceprocessor) to set or apply changes to resource attributes when using {{agent}}.
 
 ```yaml
 ...

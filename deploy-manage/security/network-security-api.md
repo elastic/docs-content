@@ -18,7 +18,7 @@ sub:
 
 # Manage network security through the API
 
-This example demonstrates how to use the {{ecloud}} RESTful API, {{ece}} RESTful API, or {{serverless-full}} RESTful API or to manage different types of network security policies and rules. 
+This example demonstrates how to use the {{ecloud}} RESTful API, {{ece}} RESTful API, or {{serverless-full}} RESTful API to manage different types of network security policies and rules. 
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/network-security
@@ -33,7 +33,7 @@ We cover the following examples:
   
 * [Create a private connection policy](#private-connection)  {applies_to}`ess: ga` {applies_to}`serverless: ga`
   * [AWS PrivateLink](#private-connection-policy-aws) {applies_to}`ess: ga` {applies_to}`serverless: ga`
-  * [Azure Private Link](#private-connection-policy-azure)  {applies_to}`ess:`
+  * [Azure Private Link](#private-connection-policy-azure)  {applies_to}`ess: ga` {applies_to}`serverless: ga`
   * [GCP Private Service Connect](#private-connection-policy-gcp)  {applies_to}`ess:`
 
 * [Update a policy or rule set](#update-policy-rs)
@@ -57,14 +57,15 @@ The following requirements apply to the project where you want to apply a networ
 :::{include} _snippets/network-sec-tier-reqs.md
 :::
 
-There are no specific requirements for {{es-serverless}} projects, {{ech}} deployments, or {{ece}} deployments.
+There are no specific requirements for other {{serverless-short}} project types, {{ech}} deployments, or {{ece}} deployments.
 
 ## API reference
 
-To learn more about these endpoints, refer to the reference for your deployment type:
+Learn more about these endpoints in the reference for your deployment type:
 
 * [{{ecloud}} API]({{cloud-apis}}group/endpoint-deploymentstrafficfilter)
 * [{{ece}} API]({{ece-apis}}group/endpoint-deploymentstrafficfilter)
+* [{{serverless-full}} API]({{cloud-serverless-apis}}operation/operation-createtrafficfilter)
 
 
 ## Terminology in the {{ecloud}} console and APIs
@@ -127,7 +128,7 @@ https://api.elastic-cloud.com/api/v1/serverless/traffic-filters \
 
 1. The region is always the same region as the project you want to associate with an IP filter policy. For details, check the [list of available regions](/deploy-manage/deploy/elastic-cloud/regions.md).
 
-2. The type of policy. In the JSON object, we use `ip` for IP filter policies. Currently, only `ip` is supported.
+2. The type of policy. For IP filter policies, set `type` to `ip`.
 :::
 
 :::{applies-item} ess:
@@ -262,18 +263,49 @@ A private connection policy is always required to establish a private connection
 :::
 
 
-### Retrieve PrivateLink region metadata
+### Retrieve PrivateLink region metadata [retrieve-privatelink-region-metadata]
 ```{applies_to}
 serverless:
 ```
 
-To create a private connection, cloud service providers require connectivity metadata, including a service name. For {{serverless-full}}, you can retrieve this metadata from an endpoint, optionally filtered by region.
+To create a private connection, cloud service providers require connectivity metadata, including a service name. For {{serverless-full}}, you can retrieve this metadata from an endpoint, optionally filtered by region or cloud service provider (`csp`).
+
+Filter by cloud service provider, for example `?csp=azure`, or by region using the prefixed region ID, for example `?region=azure-eastus2` or `?region=aws-eu-west-1`.
+
+#### Azure metadata
 
 **Request:**
 
 ```json
 curl \
-  --request GET 'https://api.elastic-cloud.com/api/v1/serverless/traffic-filters/metadata?region=eu-west-1' \
+  --request GET 'https://api.elastic-cloud.com/api/v1/serverless/traffic-filters/metadata?csp=azure' \
+  --header "Authorization: ApiKey $API_KEY"
+```
+
+**Response:**
+
+```json
+{
+  "regions": [
+    {
+      "availability_zones": [],
+      "csp": "azure",
+      "private_hosted_zone_domain_name": "private.eastus2.azure.elastic.cloud",
+      "private_service_name": "eastus2-prod-privatelink-serverless.46552e7f-8404-48e2-8c79-66801ef74a76.eastus2.azure.privatelinkservice",
+      "region": "azure-eastus2",
+      "vpc_service_name": ""
+    }
+  ]
+}
+```
+
+#### AWS metadata
+
+**Request:**
+
+```json
+curl \
+  --request GET 'https://api.elastic-cloud.com/api/v1/serverless/traffic-filters/metadata?region=aws-eu-west-1' \
   --header "Authorization: ApiKey $API_KEY"
 ```
 
@@ -298,13 +330,11 @@ curl \
       ],
       "private_hosted_zone_domain_name": "private.eu-west-1.aws.elastic.cloud",
       "vpc_service_name": "com.amazonaws.vpce.eu-west-1.vpce-svc-0197c33d7deffd2fa",
-      "region": "eu-west-1",
+      "region": "aws-eu-west-1"
     }
   ]
 }
 ```
-
-
 
 ### AWS PrivateLink [private-connection-policy-aws]
 ```{applies_to}
@@ -375,9 +405,40 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 ```{applies_to}
 deployment:
   ess:
+serverless:
 ```
 
 Send a request like the following to create an Azure Private Link private connection policy:
+
+::::{applies-switch}
+
+:::{applies-item} serverless:
+```json
+curl \
+  --request POST 'https://api.elastic-cloud.com/api/v1/serverless/traffic-filters' \
+  --header "Authorization: ApiKey $API_KEY" \
+  --header "Content-Type: application/json" \
+  -d '
+{
+  "name": "Azure Private Link private connection policy (serverless)",
+  "region": "azure-eastus2",
+  "description": "",
+  "type": "private_endpoint",
+  "rules": [
+    {
+      "azure_endpoint_name": "azure-demo",
+      "azure_endpoint_guid": "7c0f05e4-e32b-4b10-a246-7b77f7dcc63c" <1>
+    }
+  ],
+  "include_by_default": false
+}
+'
+```
+
+1. To learn how to find the values for `azure_endpoint_name` and `azure_endpoint_guid` for type `private_endpoint`, refer to [Find your private endpoint resource name](private-connectivity-azure.md#ec-find-your-resource-name) and [Find your private endpoint resource ID](private-connectivity-azure.md#ec-find-your-resource-id). This setting is supported only in Azure regions.
+:::
+
+:::{applies-item} ess:
 
 ```json
 curl -XPOST \
@@ -401,7 +462,10 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 '
 ```
 
-1. To learn how to find the value for `azure_endpoint_name` and `azure_endpoint_guid` for type `azure_private_endpoint`, refer to [Find your private endpoint resource name](private-connectivity-azure.md#ec-find-your-resource-name) and [Find your private endpoint resource ID](private-connectivity-azure.md#ec-find-your-resource-id). This setting is supported only in Azure regions.
+1. To learn how to find the values for `azure_endpoint_name` and `azure_endpoint_guid` for type `azure_private_endpoint`, refer to [Find your private endpoint resource name](private-connectivity-azure.md#ec-find-your-resource-name) and [Find your private endpoint resource ID](private-connectivity-azure.md#ec-find-your-resource-id). This setting is supported only in Azure regions.
+
+:::
+::::
 
 
 ### GCP Private Service Connect [private-connection-policy-gcp]
@@ -433,7 +497,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 '
 ```
 
-1. To find the value for `source` for type `gcp_private_service_connect_endpoint`, check [Find your Private Service Connect connection ID](private-connectivity-gcp.md#ec-find-your-psc-connection-id). This setting is supported only in GCP regions.
+1. To learn how to find the value for `source` for type `gcp_private_service_connect_endpoint`, refer to [Find your Private Service Connect connection ID](private-connectivity-gcp.md#ec-find-your-psc-connection-id). This setting is supported only in GCP regions.
 
 
 ## Update a policy or rule set [update-policy-rs]
@@ -638,7 +702,6 @@ https://api.elastic-cloud.com/api/v1/serverless/projects/elasticsearch/$PROJECT_
 ```
 1. Pass the project type and ID in the URL: `/api/v1/serverless/projects/{project-type}/{project-id}`. The project type is `elasticsearch`, `observability`, or `security`.
 2. `$POLICY_ID`, the policy that you want to remove, is not included in the list.
-:::
 :::
 
 :::{applies-item} ece:
