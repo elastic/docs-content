@@ -174,6 +174,10 @@ The **Resolution** section shows whether the entity belongs to a [resolution gro
 To add an entity to the group, search by entity name or ID in the **Add entities to resolution group** table and click the add icon {icon}`plus_in_circle` next to the entity you want to link. To remove an entity from the group, click **X** {icon}`cross` in the **Actions** column of the **Resolution group** table. Entities must be removed individually.
 
 ### Insights
+```yaml {applies_to}
+stack: ga 9.5+
+serverless: ga
+```
 
 The **Insights** section displays [Vulnerabilities Findings](/solutions/security/cloud/findings-page-3.md) for the host or [Misconfiguration Findings](/solutions/security/cloud/findings-page.md) for the user. Click **Vulnerabilities** or **Misconfigurations** to view this data in a child flyout.
 

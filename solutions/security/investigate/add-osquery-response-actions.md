@@ -94,7 +94,14 @@ If you edited a saved query or query pack that an Osquery Response Action is usi
 
 ## Find query results [find-osquery-response-action-results]
 
-When a rule generates an alert, Osquery automatically collects data on the host. Query results are shown in the [**Response** section](/solutions/security/detect-and-alert/view-detection-alert-details.md#response-overview) on the **Overview** tab of the alert details flyout. Click **Response** to view the query results in a new flyout.
+When a rule generates an alert, Osquery automatically collects data on the host. 
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Query results are shown in the [**Response** section](/solutions/security/detect-and-alert/view-detection-alert-details.md#response-overview) on the **Overview** tab of the alert details flyout. Click **Response** to view the query results in a new flyout.
+
+::::{note}
+:applies_to: stack: ga 9.0-9.4
+In {{stack}} 9.0.x-9.4.x, query results are displayed within the **Response** tab in the left panel of the alert details flyout.
+::::
 
 ::::{note}
 Refer to [Examine Osquery results](/solutions/security/investigate/examine-osquery-results.md) for more information about query results.

@@ -30,6 +30,11 @@ To add or view notes for a specific alert or event, open its details flyout. Ref
 
 You can also click the **Add note** action (![Add note action](/solutions/images/security-create-note-icon.png "title =20x20")) in the Alerts or Events table to open the Notes flyout directly, without first opening the full details flyout. Enter a note into the text box, then click **Add note** to create it. After notes are created, the **Add note** icon displays a notification dot.
 
+::::{note}
+:applies_to: stack: ga 9.0-9.4
+In {{stack}} 9.0.x-9.4.x, the **Add note** action opens the **Notes** tab of the alert or event details flyout instead of a Notes flyout.
+::::
+
 :::{image} /solutions/images/security-new-note-alert-event.png
 :alt: New note added to an alert
 :screenshot:
