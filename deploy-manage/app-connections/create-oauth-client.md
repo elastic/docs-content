@@ -42,7 +42,7 @@ Before you create an OAuth client:
 4. In the **Tools library** workspace, click **Manage MCP**, and then select **Manage MCP clients (OAuth)**. 
 5. Click **Add MCP client**.
 
-You can also get to this page by searching for **Application connections** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md), then navigating to **Manage MCP clients**.
+You can also get to this page by searching for **Application connections** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md), then selecting **Manage MCP clients**.
 ::::
 
 ::::{step} Name the client
@@ -59,9 +59,10 @@ Selecting a logo is cosmetic, and does not pre-configure any settings.
 The redirect URI tells the authorization server where to return the user after they authorize the connection. Select the redirect URI type:
 
 - **Local** — For applications running on your local machine. The redirect URIs are pre-populated with `http://localhost/callback` and `http://localhost/oauth/callback`. Replace or supplement these values to match your Agent's expected callback URL. The authorization server accepts any localhost port, but the path must match exactly. Common values:
-  - Claude Desktop (mcp-remote): `http://localhost/oauth/callback`
-  - Claude Code CLI (native HTTP): `http://localhost/callback`
+  - Claude desktop app: `http://localhost/oauth/callback`
+  - Claude Code CLI: `http://localhost/callback`
 - **Remote** — For hosted or cloud-based applications. Enter a single `https://` URL. Plain HTTP is not accepted.
+  - claude.ai: `https://claude.ai/api/mcp/auth_callback`
 
 For local clients that need more than one redirect URI, click **Add local URL** to add additional URLs.
 ::::
