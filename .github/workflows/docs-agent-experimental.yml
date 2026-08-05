@@ -1,0 +1,29 @@
+name: Docs Agent Experimental
+
+on:
+  issues:
+    types: [labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Issue number to process
+        required: true
+        type: string
+
+permissions:
+  actions: write
+  contents: write
+  discussions: write
+  issues: write
+  pull-requests: write
+  copilot-requests: write
+
+jobs:
+  run:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.label.name == 'docs-agent'
+    uses: elastic/docs-actions/.github/workflows/docs-agent-experimental.lock.yml@v1
+    with:
+      issue_number: ${{ github.event.issue.number || inputs.issue_number }}
+    secrets: inherit
