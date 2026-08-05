@@ -3,7 +3,7 @@ navigation_title: "OAuth for MCP clients"
 description: "OAuth 2.1 lets MCP clients authenticate to the Agent Builder MCP server on behalf of a user, using short-lived tokens instead of static API keys."
 type: overview
 applies_to:
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana

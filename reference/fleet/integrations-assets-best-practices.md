@@ -89,3 +89,5 @@ Additionally, cloning index templates to add or inject additional component temp
 If you want to change the ILM Policy, the number of shards, or other settings for the data streams of one or more integrations, but the changes do not need to be specific to a given namespace, it’s highly  recommended to use the `package@custom` component templates, as described in [Scenario 1](/reference/fleet/data-streams-scenario1.md) and [Scenario 2](/reference/fleet/data-streams-scenario2.md) of the Customize data retention policies tutorial, so as to avoid the problems mentioned above.
 
 If you want to change these settings for the data streams in one or more integrations and the changes **need to be namespace specific**, then you can do so following the steps in [Scenario 3](/reference/fleet/data-streams-scenario3.md) of the Customize data retention policies tutorial, but be aware of the restrictions mentioned above.
+
+{applies_to}`stack: ga 9.5+` As an alternative that does not duplicate the integration index template, you can use [namespace index templates](/reference/fleet/data-streams-namespace-custom.md) for every data stream in the namespace.

@@ -111,7 +111,7 @@ A rule consists of conditions, actions, and a schedule. When conditions are met,
 :::
 
 1. Any time a rule’s conditions are met, an alert is created. This example checks for servers with average CPU > 0.9. Three servers meet the condition, so three alerts are created.
-2. Alerts create actions according to the action frequency, as long as they are not muted or throttled. When actions are created, its properties are filled with actual values. In this example, three actions are created when the threshold is met, and the template string `{{server}}` is replaced with the appropriate server name for each alert.
+2. Alerts create actions according to the action frequency, unless they are snoozed, muted, or throttled. When actions are created, its properties are filled with actual values. In this example, three actions are created when the threshold is met, and the template string `{{server}}` is replaced with the appropriate server name for each alert.
 3. {{kib}} runs the actions, sending notifications by using a third party integration like an email service.
 4. If the third party integration has connection parameters or credentials, {{kib}} fetches these from the appropriate connector.
 
@@ -125,7 +125,7 @@ Functionally, the {{alert-features}} differ in that:
 
 * Scheduled checks are run on {{kib}} instead of {{es}}
 * {{kib}} [rules hide the details of detecting conditions](#alerting-concepts-conditions) through rule types, whereas watches provide low-level control over inputs, conditions, and transformations.
-* {{kib}} rules track and persist the state of each detected condition through alerts. This makes it possible to mute and throttle individual alerts, and detect changes in state such as resolution.
+* {{kib}} rules track and persist the state of each detected condition through alerts. This makes it possible to snooze, mute, and throttle individual alerts, and detect changes in state such as resolution.
 * Actions are linked to alerts. Actions are fired for each occurrence of a detected condition, rather than for the entire rule.
 
 At a higher level, the {{alert-features}} allow rich integrations across use cases like [**APM**](/solutions/observability/apm/index.md), [**Metrics**](/solutions/observability/infra-and-hosts.md), [**Security**](/solutions/security.md), and [**Uptime**](/solutions/observability/uptime/index.md). Prepackaged rule types simplify setup and hide the details of complex, domain-specific detections, while providing a consistent interface across {{kib}}.
