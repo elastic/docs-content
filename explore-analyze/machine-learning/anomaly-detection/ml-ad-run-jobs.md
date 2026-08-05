@@ -226,7 +226,9 @@ To inspect scope programmatically:
 
 For valid `project_routing` values and wildcard syntax, refer to [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
 
-For troubleshooting {{cps}} {{dfeed}} issues, refer to [Troubleshoot {{cps}} {{dfeeds}}](/troubleshoot/elasticsearch/machine-learning-cps.md).
+<!--
+PENDING https://github.com/elastic/docs-content/pull/7403
+For troubleshooting {{cps}} {{dfeed}} issues, refer to [Troubleshoot {{cps}} {{dfeeds}}](/troubleshoot/elasticsearch/machine-learning-cps.md).-->
 
 ## Open the job [ml-ad-open-job]
 
