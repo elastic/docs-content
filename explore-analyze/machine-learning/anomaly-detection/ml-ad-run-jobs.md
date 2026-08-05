@@ -164,7 +164,7 @@ The following default scopes apply to jobs created after {{cps-init}} is availab
 Changes to the space default routing do not retroactively affect existing jobs. Each job retains the `project_routing` that was set at creation or last update.
 
 :::{note}
-When setting `project_routing` through the API or JSON editor, {{es}} does not validate the expression at creation time. If the expression matches no linked projects, the job is created successfully but the datafeed fails when it starts. If fields with the same name have different types across linked projects, values that cannot be converted are treated as empty data.
+When setting `project_routing` through the API or JSON editor, {{es}} does not validate the expression at creation time. If the expression matches no linked projects, the job is created successfully but the datafeed fails when it starts. If fields with the same name have different types across linked projects, values that cannot be converted are treated as empty data. <!--[TODO] For resolution steps, refer to [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md).-->
 :::
 
 ### Change project scope on an existing job [ml-ad-cps-update]
@@ -174,14 +174,15 @@ You can change a job's project scope in {{kib}} or through the API.
 :::{warning}
 Changing project scope affects model accuracy. Expect a significant increase in false positives as the detector encounters unfamiliar data characteristics. During the adaptation period, which can last days or weeks, the model may also miss real anomalies as it learns to model the new data distribution.
 
-If you need a fundamentally different scope (for example, moving from origin-only to flat-world), cloning the job with the new routing and retraining from scratch can be faster than waiting for an existing model to adapt.
+If you need a fundamentally different scope, such as moving from origin-only to flat-world, cloning the job with the new routing and retraining from scratch can be faster than waiting for an existing model to adapt.
+
+<!--[TODO] For recovery steps including model snapshot rollback, refer to [Troubleshoot project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md).-->
 :::
 
 {{es}} retains the pre-change model snapshot indefinitely so you can [revert to it](#ml-ad-model-snapshots) if needed. These snapshots are exempt from the default 10-day retention lifecycle and must be deleted manually.
 
-::::{tab-set}
-
-:::{tab-item} {{kib}}
+:::::{tab-set}
+::::{tab-item} {{kib}}
 
 To change scope for a single job:
 
@@ -191,13 +192,19 @@ To change scope for a single job:
 
 To update scope for multiple jobs at once, select the jobs on the **Anomaly Detection** page and choose **Change project scope** from the bulk action menu. If the selected jobs have different scopes, the selector pre-populates with the space default. Adjust the scope and save to apply the new routing to all selected jobs.
 
-:::
+::::
 
-:::{tab-item} API
+::::{tab-item} API
 
 To change scope through the API:
 
-1. Stop the {{dfeed}} and close the {{anomaly-job}}.
+1. [Stop the {{dfeed}}]({{es-apis}}operation/operation-ml-stop-datafeed) and [close the {{anomaly-job}}]({{es-apis}}operation/operation-ml-close-job).
+
+   ```console
+   POST _ml/datafeeds/{datafeed_id}/_stop
+   POST _ml/anomaly_detectors/{job_id}/_close
+   ```
+
 2. Update the routing expression using the [update {{dfeed}} API]({{es-apis}}operation/operation-ml-update-datafeed):
 
    ```console
@@ -207,9 +214,12 @@ To change scope through the API:
    }
    ```
 
+:::{note}
+The job must have produced at least one model snapshot so {{es}} can retain it as a rollback point. If the job has never run, delete and recreate it with the correct scope instead.
 :::
-
 ::::
+
+:::::
 
 ### Legacy jobs [ml-ad-cps-legacy]
 
@@ -217,7 +227,7 @@ To change scope through the API:
 
 ### Check project scope [ml-ad-cps-monitor]
 
-The **Project scope** column on the **Anomaly Detection** page shows the number of included projects out of the total available (for example, `8/92`). **All** means flat-world search with no routing restriction. Select the value to see the stored routing expression.
+The **Project scope** column on the **Anomaly Detection** page shows the number of included projects out of the total available, (for example, `8/92`). **All** means flat-world search with no routing restriction. Select the value to see the stored routing expression.
 
 To inspect scope programmatically:
 
