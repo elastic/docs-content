@@ -71,6 +71,7 @@ The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.update
 | Multi-way dispatch on a value | [`switch`](/explore-analyze/workflows/steps/switch.md) |
 | Iterate over an array | [`foreach`](/explore-analyze/workflows/steps/foreach.md) |
 | Loop until a condition is false | [`while`](/explore-analyze/workflows/steps/while.md) |
+| Run independent work at the same time and use the results | [`parallel`](/explore-analyze/workflows/steps/parallel.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` |
 | Fan out to independent executions | [`workflow.executeAsync`](/explore-analyze/workflows/steps/composition.md) |
 | Exit or skip a loop iteration | [`loop.break`](/explore-analyze/workflows/steps/loop-break.md), [`loop.continue`](/explore-analyze/workflows/steps/loop-continue.md) |
 | Small conditional on a single step | Step-level `if:` field. Refer to the [Steps overview](/explore-analyze/workflows/steps.md). |
@@ -81,6 +82,7 @@ The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.update
 |---|---|
 | Fixed-duration pause | [`wait`](/explore-analyze/workflows/steps/wait.md) |
 | Pause for human input | [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md). Refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md). |
+| Pause for approve/reject | [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`. Refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md). |
 
 ### Transform data between steps [workflows-choose-transform]
 
