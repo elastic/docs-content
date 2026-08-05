@@ -77,7 +77,7 @@ The [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mappin
 
   Synthetic `_source` requires a [subscription](https://www.elastic.co/pricing). The reconstructed document might differ slightly from the original. Refer to [Synthetic `_source` modifications](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-modifications) for details.
 
-* **Disable `_source` entirely**: Choose this option if you don't need access to the original document body at all. This eliminates storage overhead completely, but APIs that depend on `_source`, including update, reindex, and highlight, stop working.
+* **[Disable `_source` entirely](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#disable-source-field)**: Choose this option if you don't need access to the original document body at all. This eliminates storage overhead completely, but APIs that depend on `_source`, including update, reindex, and highlight, stop working.
 
 ## Use `best_compression` [best-compression]
 
