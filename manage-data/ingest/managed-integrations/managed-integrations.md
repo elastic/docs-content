@@ -4,7 +4,7 @@ mapped_pages:
 description: Elastic Managed integrations let you ingest data from cloud sources into Elastic Cloud with no collectors to deploy or maintain.
 applies_to:
   stack: ga 9.5+, preview 9.0-9.4
-  serverless: preview
+  serverless: ga
 products:
   - id: elastic-agent
   - id: fleet
