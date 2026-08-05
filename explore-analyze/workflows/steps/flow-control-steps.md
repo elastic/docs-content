@@ -27,13 +27,15 @@ Workflows include the following flow-control step types. Use this table to under
 | Iterate over an array | [`foreach`](#foreach) |
 | Loop until a condition is false | [`while`](#while) |
 | Multi-way dispatch on a value | [`switch`](#switch) |
+| Run independent work at the same time | [`parallel`](#parallel) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` |
 | Pause for a fixed duration | [`wait`](#wait) |
 | Exit a loop early | [`loop.break`](#loop-break) |
 | Skip to the next loop iteration | [`loop.continue`](#loop-continue) |
 | Pause for human input (human-in-the-loop) | [`waitForInput`](#waitforinput) |
 | Pause for approve/reject (human-in-the-loop) | [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` |
 
-For fan-out across independent workflow executions, refer to [`workflow.executeAsync`](/explore-analyze/workflows/steps/composition.md#workflow-executeasync) in the composition reference.
+Use [`parallel`](#parallel) to run independent work inside the current workflow and collect the results. For fan-out across separate workflow executions that the parent doesn't wait for, use [`workflow.executeAsync`](/explore-analyze/workflows/steps/composition.md#workflow-executeasync).
+
 
 ## `if` [if]
 
@@ -127,6 +129,44 @@ Multi-way branching. The engine evaluates an expression once and routes to the m
 ```
 
 For the full parameter reference, refer to [Switch step](/explore-analyze/workflows/steps/switch.md).
+
+## `parallel` [parallel]
+
+```{applies_to}
+stack: preview 9.5+
+serverless: preview
+```
+
+Run branches at the same time and continue when every branch reaches a terminal state. Choose one of two modes: dynamic fan-out (`foreach` plus `steps`) runs the same body once per item in a runtime list, and static branches (`branches`) run a fixed set of named branches that each do different work. A step can't use both.
+
+By default, five branches run at once and the first failure stops the step from starting more branches. The step output holds a per-branch result plus aggregate counts.
+
+```yaml
+- name: enrich_file
+  type: parallel
+  mode: settled
+  branch-timeout: "30s"
+  branches:
+    - name: reputation
+      steps:
+        - name: check_reputation
+          type: http
+          with:
+            url: "https://api.example.com/hash/{{ inputs.file_hash }}"
+    - name: internal_sightings
+      steps:
+        - name: search_sightings
+          type: elasticsearch.search
+          with:
+            index: "logs-*"
+            query:
+              term:
+                file.hash.sha256: "{{ inputs.file_hash }}"
+```
+
+A branch body must be a straight-line sequence of steps: no nested `if`, `switch`, `foreach`, or `while`, no `waitForInput` or `waitForApproval`, and no step-level `on-failure` or `timeout`. Use `mode` and `branch-timeout` on the `parallel` step instead, and handle failures in a step that runs after it.
+
+For the full parameter reference, both modes, and the output shape, refer to [Parallel step](/explore-analyze/workflows/steps/parallel.md).
 
 ## `wait` [wait]
 

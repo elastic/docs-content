@@ -16,6 +16,7 @@ products:
 
 * [{{ecloud}}]({{cloud-apis}}) APIs
 * [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs
+* [{{ecloud}} Billing]({{cloud-billing-apis}}) APIs
 * {applies_to}`serverless: ga` Optionally, [{{es}} {{serverless-full}}]({{es-serverless-apis}}) and [{{kib}} {{serverless-full}}]({{kib-serverless-apis}})  APIs
 
 Only **Organization owners** can create and manage API keys. An API key is not tied to the user who created it. When creating a key, you assign it specific roles to control its access to organizational resources, including hosted deployments and serverless projects. If a user leaves the organization, the API keys they have created will still function until they expire.

@@ -10,7 +10,7 @@ products:
 
 # {{agent}} as an OpenTelemetry Collector [elastic-agent-otel-collector]
 
-Starting with version 9.2, {{agent}} runs the [Elastic Distribution of OpenTelemetry (EDOT) Collector](elastic-agent://reference/edot-collector/index.md). Rather than managing separate {{beats}} sub-processes, the agent collects data through an embedded OpenTelemetry (OTel) Collector process, leveraging the extensibility and interoperability of the OTel ecosystem. This architecture brings OTel capabilities while maintaining compatibility with existing {{beats}}-based workflows and integrations.
+Starting with version 9.2, {{agent}} runs an embedded [OTel Collector](elastic-agent://reference/edot-collector/index.md). Rather than managing separate {{beats}} sub-processes, the agent collects data through an embedded OpenTelemetry (OTel) Collector process, leveraging the extensibility and interoperability of the OTel ecosystem. This architecture brings OTel capabilities while maintaining compatibility with existing {{beats}}-based workflows and integrations.
 
 This transition is incremental: in 9.2, agent self-monitoring uses the OTel runtime by default, while data collection inputs will be migrated to run as OTel receivers over subsequent releases. Existing integrations and agent configurations continue to work without disruption.
 
@@ -20,8 +20,8 @@ Previously {{agent}} acted as a supervisor that launched and managed individual 
 
 With the new {{agent}} OTel Collector architecture:
 
-*  {{agent}} embeds the EDOT Collector as its runtime, eliminating the overhead associated with managing separate sub-processes.
-* Instead of running as individual {{beats}} processes, Beat inputs can run inside the EDOT Collector as [Beat receivers](#beat-receivers).
+*  {{agent}} embeds an OTel Collector as its runtime, eliminating the overhead associated with managing separate sub-processes.
+* Instead of running as individual {{beats}} processes, Beat inputs can run inside the OTel Collector as [Beat receivers](#beat-receivers).
 * {{agent}} leverages OTel receivers and pipelines to ingest, process, and export telemetry data in a unified, standard manner within a single OTel Collector process, reducing the agent's footprint.
 * OTel-native receivers and pipelines run in the same Collector alongside Beat receivers.
 * Backward compatibility is preserved: existing {{beats}}-based integrations continue to work through Beat receivers without configuration changes or changes to the collected data.
@@ -38,7 +38,7 @@ The component that implements {{beats}}-based integrations is named `elastic-ote
 
 ## Beat receivers [beat-receivers]
 
-A _Beat receiver_ is a Beat input and its associated processors, wrapped to run as an OTel receiver inside the EDOT Collector. Beat receivers produce the exact same data, formatted according to the [Elastic Common Schema](ecs://reference/index.md) (ECS), as current Beat inputs. Beat receivers don't output data in the OTLP schema.
+A _Beat receiver_ is a Beat input and its associated processors, wrapped to run as an OTel receiver inside the OTel Collector. Beat receivers produce the exact same data, formatted according to the [Elastic Common Schema](ecs://reference/index.md) (ECS), as current Beat inputs. Beat receivers don't output data in the OTLP schema.
 
 When Beat receivers are enabled, {{agent}} automatically translates the relevant parts of its standalone or {{fleet}}-generated `elastic-agent.yml` file into an OTel Collector configuration. 
 
@@ -145,24 +145,24 @@ The same agent policy can include both ECS-based integrations and OpenTelemetry 
 For more details on OpenTelemetry input packages and their configuration, refer to [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md).
 
 :::{tip}
-The same automatic asset deployment applies when using a standalone EDOT Collector: once data is ingested through the collector, it triggers the automatic installation of the relevant OTel assets when available.
+The same automatic asset deployment applies when using standalone {{agent}}: once data is ingested through the collector, it triggers the automatic installation of the relevant OTel assets when available.
 :::
 
 ## Collector type comparison [collector-comparison]
 
-Depending on your environment, you can use {{agent}} (as described on this page), the standalone [EDOT Collector](elastic-agent://reference/edot-collector/index.md), or a third-party OpenTelemetry Collector to send OTel data to Elastic. The following table highlights the differences between these options in terms of management capabilities and feature support:
+Depending on your environment, you can use {{agent}} (as described on this page), standalone [{{agent}}](elastic-agent://reference/edot-collector/index.md) in OTel mode, or a third-party OpenTelemetry Collector to send OTel data to Elastic. The following table highlights the differences between these options in terms of management capabilities and feature support:
 
 | Collector | {{fleet}} central monitoring | {{fleet}} central management | Beat receivers | {{ls}} exporter | {{elastic-defend}} | Cloud Security | Profiler |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | {{agent}} ({{fleet}}-managed) | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") |
 | {{agent}} (standalone) | Planned | ![no](images/red-x.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") |
-| EDOT Collector | Planned | Planned | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") |
+| {{agent}} (OTel mode) | Planned | Planned | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") |
 | Upstream OTel Collector | Planned | Planned | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") |
 
 *Planned* indicates that support is on the roadmap and not yet generally available.
 
 :::{note}
-A standalone {{agent}} can enroll into {{fleet}} in the field if an in-place upgrade to {{fleet}}-managed is required. The standalone EDOT Collector does not support enrollment into {{fleet}}.
+A standalone {{agent}} can enroll into {{fleet}} in the field if an in-place upgrade to {{fleet}}-managed is required. Standalone {{agent}} in OTel mode does not support enrollment into {{fleet}}.
 :::
 
 ## Frequently asked questions [faq]
@@ -176,9 +176,9 @@ Data collected by a Beat receiver is written by the {{es}} exporter. As with tra
 Data collected by an OTel-native receiver follows OpenTelemetry semantic conventions. When this data arrives at the Elastic cluster, it bypasses ingest pipelines and is stored directly in an OTel-specific data stream.
 :::
 
-:::{dropdown} Can you configure Beat receivers in a standalone EDOT Collector?
+:::{dropdown} Can you configure Beat receivers in a standalone {{agent}}?
 
-Yes. To configure Beat receivers in a standalone [EDOT Collector](elastic-agent://reference/edot-collector/index.md), provide a standard OTel Collector configuration and configure Beat receivers manually as `filebeatreceiver` or `metricbeatreceiver`. For example:
+Yes. To configure Beat receivers in a standalone [{{agent}}](elastic-agent://reference/edot-collector/index.md), provide a standard OTel Collector configuration and configure Beat receivers manually as `filebeatreceiver` or `metricbeatreceiver`. For example:
 
 ```yaml
 receivers:
@@ -204,22 +204,22 @@ receivers:
 ```
 :::
 
-:::{dropdown} What are the differences between {{agent}}, the EDOT Collector, and a third-party OpenTelemetry Collector?
+:::{dropdown} What are the differences between {{fleet}}-managed {{agent}}, standalone {{agent}}, and a third-party OpenTelemetry Collector?
 
-The main difference is management support. {{agent}} can be managed by {{fleet}} when you use {{fleet}}-managed deployment. The EDOT Collector does not support {{fleet}} enrollment or central management. Some features, such as {{elastic-defend}}, are only available under {{fleet}} management and cannot be used with the EDOT Collector alone. Refer to the [collector type comparison](#collector-comparison) table for a full breakdown.
+The main difference is management support. {{agent}} can be managed by {{fleet}} when you use {{fleet}}-managed deployment. Standalone {{agent}} in OTel mode does not support {{fleet}} enrollment or central management. Some features, such as {{elastic-defend}}, are only available under {{fleet}} management and cannot be used with standalone {{agent}} alone. Refer to the [collector type comparison](#collector-comparison) table for a full breakdown.
 :::
 
 :::{dropdown} What is the future of {{agent}} in standalone mode?
 
-Standalone {{agent}} use cases can now be addressed using the EDOT Collector. A practical advantage of the standalone {{agent}} today is that it can be upgraded to {{fleet}}-managed in the field without having to reinstall it.
+Standalone {{agent}} use cases can now be addressed using {{agent}} in OTel mode. A practical advantage of the standalone {{agent}} today is that it can be upgraded to {{fleet}}-managed in the field without having to reinstall it.
 :::
 
 :::{dropdown} Can data collected with third-party OTel Collectors trigger the automatic installation of relevant assets?
 
-The automatic asset installation from OTel content packages currently works only for data ingested by an EDOT Collector or {{agent}}. Data ingested with a third-party OpenTelemetry Collector does not trigger automatic asset installation.
+The automatic asset installation from OTel content packages currently works only for data ingested by {{agent}}. Data ingested with a third-party OpenTelemetry Collector does not trigger automatic asset installation.
 :::
 
 :::{dropdown} Will there be a separate operating system support matrix?
 
-No, the [Elastic system support matrix](https://www.elastic.co/support/matrix) does not change. Where Elastic does not provide {{agent}} support for a specific operating system, you can deploy a third-party OpenTelemetry Collector supported by that vendor and send data to Elastic. For example, Red Hat provides an OTel Collector for OpenShift that can be configured to send data to Elastic. The same configuration can also be used with the EDOT Collector on operating systems that Elastic supports.
+No, the [Elastic system support matrix](https://www.elastic.co/support/matrix) does not change. Where Elastic does not provide {{agent}} support for a specific operating system, you can deploy a third-party OpenTelemetry Collector supported by that vendor and send data to Elastic. For example, Red Hat provides an OTel Collector for OpenShift that can be configured to send data to Elastic. The same configuration can also be used with {{agent}} on operating systems that Elastic supports.
 :::
