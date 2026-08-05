@@ -57,7 +57,7 @@ $$$sparse-vectors$$$ Sparse vectors
    - Additional implementation options are available for more complex needs
 2. [**Multimodal search**](multimodal-search.md) extends vector search across text, images, audio, video, and documents:
    - Use the [`semantic`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md) field type with a multimodal `embedding` endpoint
-   - [Jina multimodal models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-multimodal-embeddings) are the recommended starting point
+   - [Jina multimodal models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-multimodal-embeddings) are the recommended models to start with
 3. [**Vector search**](vector.md) gives you direct access to the underlying technology:
    - Manual configuration of dense or sparse vectors
    - Flexibility to bring your own embeddings
