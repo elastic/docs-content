@@ -1,3 +1,5 @@
+
+Docs · MD
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-faq.html
@@ -11,11 +13,11 @@ products:
   - id: cloud-serverless
 navigation_title: FAQ
 ---
-
+ 
 # AutoOps FAQ [ec-autoops-faq]
-
+ 
 Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md), [{{serverless-short}} project](/deploy-manage/monitor/autoops/autoops-for-serverless.md), or [ECE, ECK, or self-managed cluster](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md), find answers to some common questions about it on this page.
-
+ 
 **General AutoOps questions**
 * [What does AutoOps do?](#what-is-autoops)
 * [Is AutoOps available in all deployment types?](#autoops-deployment-types)
@@ -28,7 +30,6 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [Where are AutoOps metrics stored, and does AutoOps affect customer ECU usage?](#autoops-metrics-storage)
 * [Has AutoOps replaced Stack Monitoring?](#autoops-vs-stack-monitoring)
 * [How do I provide feedback about AutoOps?](#feedback)
-
 **Questions about AutoOps for ECE, ECK, or self-managed clusters**
 * [Does AutoOps for ECE, ECK, or self-managed clusters incur additional costs?](#additional-payment)
 * [Does shipping metrics data to {{ecloud}} incur additional costs?](#autoops-metrics-cost)
@@ -38,124 +39,124 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [I connected my ECE, ECK, or self-managed cluster to AutoOps during a free trial of {{ecloud}}. What happens after my trial ends?](#trial-ending)
 * [Who has access to AutoOps in my cluster?](#access-autoops)
 * [What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?](#support)
-
 **Setting up AutoOps for ECE, ECK, or self-managed clusters**
 * [Can I use macOS to set up AutoOps for my ECE, ECK, or self-managed clusters?](#macos-install)
 * [Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?](#elastic-ip-address)
 * [Do I have to install {{agent}} separately for each node in my cluster?](#agent-nodes)
+* [Can I run multiple {{agent}} instances for the same cluster to ensure high availability?](#agent-high-availability)
 * [Do I have to re-run the installation wizard to connect more clusters?](#connect-more-clusters)
-
 **Collected metrics and data in AutoOps for ECE, ECK, or self-managed clusters**
 * [Where are metrics stored in AutoOps for ECE, ECK, or self-managed clusters?](#sm-autoops-metrics-storage)
 * [What information does {{agent}} gather from my cluster?](#extracted-info)
 * [How does AutoOps gather data from my cluster and ensure its security?](#data-gathering)
 * [Can I view the data gathered by {{agent}}?](#data-viewing-config)
-
 ## General AutoOps questions
-
+ 
 $$$what-is-autoops$$$**What does AutoOps do?**
 :   AutoOps for {{es}} simplifies cluster management by providing performance recommendations, resource utilization and cost insights, real-time issue detection, and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and usage patterns, AutoOps provides operational and monitoring recommendations that reduce administration time and hardware costs.
-
+ 
 $$$autoops-deployment-types$$$**Is AutoOps available in all deployment types?**
 :   :::{include} /deploy-manage/monitor/_snippets/autoops-availability.md
 ::: 
-
+ 
 $$$cant-see-autoops$$$**Why can't I see AutoOps in some deployments and projects?**
 :   AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you might not see it if your deployment or project is in a region where AutoOps is not available yet.
-
+ 
 $$$autoops-license$$$**How is AutoOps licensed?**
 :   AutoOps is available for free across all subscription levels and license types in {{ech}} deployments, {{serverless-short}} projects, and ECE, ECK, and self-managed clusters. It does not consume ECUs.
-
+ 
 $$$autoops-monitoring$$$**Does AutoOps monitor the entire {{stack}}?**
 :   AutoOps is currently limited to {{es}} (not {{kib}}, Logstash, or Beats).
-
+ 
 $$$autoops-issue-resolution$$$**Can AutoOps automatically resolve issues?**
 :   AutoOps only analyzes metrics and is a read-only solution.
-
+ 
 $$$autoops-supported-versions$$$**Which versions of {{es}} are supported in AutoOps for {{ech}} and ECE, ECK, and self-managed clusters?**
 :   AutoOps is compatible with [supported {{es}} versions](https://www.elastic.co/support/eol) (7.17.x and above).
-
+ 
 $$$autoops-data-retention$$$**How long does Elastic retain AutoOps data?**
 :   AutoOps has a 10 day retention period.
-
+ 
 $$$autoops-metrics-storage$$$**Where are AutoOps metrics stored, and does AutoOps affect customer ECU usage?**
 :   AutoOps metrics are stored internally within the Elastic infrastructure, not on customer deployments. Using AutoOps does not consume customer ECU.
-
+ 
 $$$autoops-vs-stack-monitoring$$$**Has AutoOps replaced Stack Monitoring?**
 :   Currently, AutoOps has many of the same features as Stack Monitoring as well as several new ones. However, it only provides insights on {{es}} and analyzes metrics, not logs. Read more in [](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
-
+ 
 $$$feedback$$$**How do I provide feedback about AutoOps?**
 :   We value your feedback. Help us improve by posting in our [Slack community](https://elasticstack.slack.com/) or the [Monitoring category](https://discuss.elastic.co/c/elastic-stack/monitoring/103) in the Elastic Discuss forum.
-
+ 
 ## Questions about AutoOps for ECE, ECK, or self-managed clusters
-
+ 
 $$$additional-payment$$$ **Does AutoOps for ECE, ECK, or self-managed clusters incur additional costs?**
 :   In ECE, ECK, and self-managed clusters, AutoOps is available for free across all [self-managed license types](https://www.elastic.co/subscriptions) through [Cloud Connect](/deploy-manage/cloud-connect.md). This does not consume ECUs.
-
+ 
 $$$autoops-metrics-cost$$$ **Does shipping metrics data to {{ecloud}} incur additional costs?**
 :   Elastic does not charge extra for this service, but your cloud service provider (CSP) might. When sending metrics data from your cluster in a CSP region to {{ecloud}}, shipping costs are determined by your agreement with that CSP. 
-
+ 
     When you connect your cluster, you [choose the CSP and region where your data is stored](/deploy-manage/monitor/autoops/cc-autoops-metrics-storage-locations.md).
-
+ 
 $$$deployment-types$$$ **Which deployment types can be connected to AutoOps through Cloud Connect?**
 :   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment, both on-premise and in private cloud environments.
-
+ 
 $$$autoops-air-gapped$$$ **Can I use AutoOps if my environment is air-gapped?**
 :   AutoOps is designed as a cloud service that needs an internet connection to send metrics to {{ecloud}}. However, you can make specific configuration choices to securely use it in your air-gapped environment:
-
+ 
     * **Exclude metrics**: AutoOps only collects [operational metrics](#extracted-info) from your cluster, not the underlying data. You can also choose to [disable the collection of certain types of metrics](../autoops/autoops-disable-metrics-collection.md) by AutoOps.  
     * **Minimize network exposure**: AutoOps does not require broad internet access. You can choose to only [give access to the required port and URLs](../autoops/cc-connect-self-managed-to-autoops.md#firewall-allowlist).  
     * **Inspect gathered data**: You can use the [`autoops_es_debug.yml` configuration file](#data-viewing-config) to view a sample of the data gathered from your cluster before it is sent to {{ecloud}}.
-
+ 
     A locally deployable version of AutoOps is planned for a future release.
-
+ 
 $$$maintenance$$$ **Do I have to do any maintenance when using AutoOps for ECE, ECK, or self-managed clusters?**
 :   AutoOps is a cloud service, so you don't need to upgrade it yourself. However, there are two things to keep in mind:
 * In general, {{agent}} can ship data from connected clusters on any [supported {{es}} version](https://www.elastic.co/support/eol) (7.17.x and above). But we recommend keeping {{agent}} upgraded to the latest version for optimum performance and access to new features and fixes.
 * When using the ECK installation method, make sure your instance of {{agent}} meets the [version requirements](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#prerequisites) for your license type.  
-
 $$$trial-ending$$$ **I connected my ECE, ECK, or self-managed cluster to AutoOps during a free trial of {{ecloud}}. What happens after my trial ends?**
 :   You don't need a paid {{ecloud}} subscription or an active {{ecloud}} trial to keep using AutoOps for ECE, ECK, or self-managed clusters. AutoOps is free across all [self-managed license types](https://www.elastic.co/subscriptions) through Cloud Connect. After your free trial ends, your cluster remains connected and AutoOps continues to process your {{es}} metrics as long as: 
 * You have an [active {{ecloud}} account](../../cloud-organization/billing/add-billing-details.md). Creating an {{ecloud}} account is free and doesn't require a paid subscription.
 * {{agent}} is running and shipping metrics to {{ecloud}}.
-
 $$$access-autoops$$$**Who has access to AutoOps in my cluster?**
 :   :::{include} ../_snippets/access-cloud-connect-autoops.md
     :::
-
+ 
 $$$support$$$ **What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?**
 :   Support eligibility is determined by the license of your connected cluster:
 * Platinum and Enterprise licenses: Eligible for [Elastic support](https://support.elastic.co/).
 * Free and open (Basic) licenses: Eligible for community-based support through the [Elastic Stack Community on Slack](https://elasticstack.slack.com/) or the [Monitoring category](https://discuss.elastic.co/c/elastic-stack/monitoring/103) in the Elastic Discuss forum.
-
 ### Setting up AutoOps for ECE, ECK, or self-managed clusters
-
+ 
 $$$macos-install$$$ **Can I use macOS to install {{agent}} to connect my ECE, ECK, or self-managed cluster to AutoOps?**
 :   No, macOS is not a supported platform for installing {{agent}} and connecting an ECE, ECK, or self-managed cluster to AutoOps. Refer to [Install agent](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#install-agent) for a list of supported platforms. You can use macOS to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
-
+ 
 $$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?**
 :   You might need to define an IP address if your organization’s settings will block the agent from sending out data. 
-
+ 
     To enable IP ranges, {{ecloud}} offers a selection of static IP addresses. All traffic directed to {{ecloud}} deployments, whether originating from the public internet, your private cloud network through the public internet, or your on-premise network through the public internet utilizes Ingress Static IPs as the network destination. 
-
+ 
 :   For more information, refer to [](/deploy-manage/security/elastic-cloud-static-ips.md).
-
+ 
 $$$agent-nodes$$$ **Do I have to install {{agent}} separately for each node in my cluster?**
 :    No, to run AutoOps in your ECE, ECK, or self-managed environment, you only have to install the agent once per cluster.
-
+ 
+$$$agent-high-availability$$$ **Can I run multiple {{agent}} instances for the same cluster to ensure high availability?**
+:   No, high availability configurations for the AutoOps agent are not currently supported. This applies to both active-active setups, where multiple agents collect and ship metrics from the same cluster at the same time, and active-passive setups, where a standby agent automatically takes over if the primary agent fails. Each cluster must be connected through a [single, dedicated {{agent}}](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#select-installation-method), and running additional agents against the same cluster can result in duplicate or inconsistent metrics.
+ 
+    If the agent stops running, metrics collection pauses until the agent is restarted. This only affects monitoring visibility in AutoOps and doesn't impact the cluster itself. To minimize collection gaps, consider running the agent on a platform that can restart it automatically, such as Kubernetes or Docker with a restart policy.
+ 
 $$$connect-more-clusters$$$**Do I have to re-run the installation wizard to connect more clusters?**
 :   Not necessarily. Refer to [Connect additional clusters](../autoops/cc-connect-self-managed-to-autoops.md#connect-additional-clusters) for more information.
-
+ 
 ### Collected metrics and data in AutoOps for ECE, ECK, or self-managed clusters
-
+ 
 $$$sm-autoops-metrics-storage$$$ **Where are metrics stored in AutoOps for ECE, ECK, or self-managed clusters?**
 :   When you connect your cluster, you choose the cloud service provider and region where your metrics are stored.
-
+ 
     For the full list of supported storage locations, refer to [Metrics storage locations](/deploy-manage/monitor/autoops/cc-autoops-metrics-storage-locations.md).
-
+ 
 $$$extracted-info$$$ **What information does {{agent}} gather from my cluster?**
 :   {{agent}} only extracts and sends cluster metrics to {{ecloud}}, not the underlying data within your cluster. The following metrics are collected:
-
+ 
     | API | Description | Collected data |
     | --- | --- | --- |
     | [_cat/shards]({{es-apis}}operation/operation-cat-shards) | Returns detailed information about the shards within the cluster | Shard states, node allocation, index names, sizes, and replica information |
@@ -168,29 +169,29 @@ $$$extracted-info$$$ **What information does {{agent}} gather from my cluster?**
     | [_tasks]({{es-apis}}group/endpoint-tasks) | Displays information about currently running tasks on the cluster | Task descriptions, start times, running nodes, and execution details |
     | [_template]({{es-apis}}operation/operation-indices-get-template) | Retrieves legacy index templates | Similar to composable index templates but in older format |
     | [_resolve/index/*]({{es-apis}}operation/operation-indices-resolve-index) | Resolves index, data stream, and alias names to their current definitions | Mappings between names and underlying data objects |
-
+ 
 $$$data-gathering$$$ **How does AutoOps gather data from my cluster and ensure its security?**
 :   AutoOps gathers data from your cluster using two protocols:
     * **HTTP request**: Made to our Cloud Connected API to register your cluster with {{ecloud}} and gather registration-related data.
     * **OpenTelemetry Protocol (OTLP)**: Used to gather all other operational data.
-
+ 
     Each channel is authenticated using an API key or token to ensure your data's security. The following table offers more details: 
-
+ 
     | Protocol | Data extracted | Port | Authentication method | 
     | --- | --- | --- | --- |
     | HTTP |  Basic cluster information from the `/` endpoint <br><br> License information from the `/_license` endpoint | **443**: standard HTTPS port | Uses an {{ecloud}} API key which is limited for use with Cloud Connect only. |
     | OTLP over HTTP | Operational information | **443**: standard HTTPS port | Uses an AutoOps token which is functionally equivalent to an API key. |
-
+ 
     ::::{note}
     :::{include} ../_snippets/autoops-allowlist-port-and-urls.md
     :::
     ::::
-
+ 
 $$$data-viewing-config$$$**Can I view the data gathered by {{agent}}?**
 :   Yes. AutoOps {{agent}} comes bundled with the `autoops_es_debug.yml` configuration file, which you can use to view a sample of the data gathered from your cluster that would be sent to Elastic Cloud.
-
+ 
     Complete the following steps to view a sample of this data locally:
-
+ 
     1. Follow the steps to [connect to AutoOps](cc-connect-self-managed-to-autoops.md) until you reach the [Install agent](cc-connect-self-managed-to-autoops.md#install-agent) step.
     2. In the **Install agent** step, edit the installation command to replace `autoops_es.yml` with `autoops_es_debug.yml` as shown in the following code block:
     ```json
@@ -201,5 +202,5 @@ $$$data-viewing-config$$$**Can I view the data gathered by {{agent}}?**
     ```json
     docker logs autoops-otel-agent
     ```
-
-
+ 
+ 
