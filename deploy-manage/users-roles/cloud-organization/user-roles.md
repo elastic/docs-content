@@ -55,9 +55,9 @@ There are three categories of roles you can assign to users:
 
 * **Billing admin**: Can manage an organization’s billing details such as credit card information, subscription and invoice history. Cannot manage other organization or deployment details and properties.
 
-* $$$workload-credentials-owner$$$**Workload credentials owner**: Allows the member to manage workload credentials, such as creating, listing, and revoking their own [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md).
+* $$$manage-workload-credentials$$$**Manage workload credentials**: Allows the user to manage workload credentials, such as creating, listing, and revoking their own [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md).
 
-    This role only adds the ability to manage credentials. It does not give the member access to any deployments or projects. To create useful credentials, such as API keys, the member also needs [cloud resource access roles](#ec_instance_access_roles) for the deployments or projects those credentials should cover. Credentials created with this role can only include roles that the member already holds on those resources. Organization owners can still view and revoke all workload credentials in the organization.
+    These permissions only add the ability to manage credentials and is limited by the roles that the user already holds on any resource. It does not give the user access to any deployments or projects. To create useful credentials, such as API keys, the user also needs [cloud resource access roles](#ec_instance_access_roles) for the deployments or projects those credentials should cover.
 
 ### Cloud resource access roles [ec_instance_access_roles]
 
@@ -157,9 +157,9 @@ This list describes the scope of the different roles:
 
 * **Organization owner**: This role is always scoped to administer all deployments, projects and connected clusters.
 * **Billing admin**: This role does not refer to any deployment, project, or connected cluster.
-* **Workload credentials owner**: This role does not refer to any deployment, project, or connected cluster. It allows the member to manage workload credentials scoped to their existing role assignments.
 * **Cloud resource access roles**, including **Admin**: These roles can be scoped to either all deployments or projects, or specific deployments, project types, or projects.
 * **Connected cluster access roles**: These roles can be scoped to either all connected clusters or selected clusters.
+* **Manage workload credentials**: These permissions do not refer to any deployment, project, or connected cluster. They allow the user to manage workload credentials scoped to their existing role assignments.
 
 ## Access options [access]
 ```{applies_to}

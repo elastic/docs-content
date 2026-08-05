@@ -19,12 +19,16 @@ products:
 * [{{ecloud}} Billing]({{cloud-billing-apis}}) APIs
 * {applies_to}`serverless: ga` Optionally, [{{es}} {{serverless-full}}]({{es-serverless-apis}}) and [{{kib}} {{serverless-full}}]({{kib-serverless-apis}})  APIs
 
+:::{admonition} {{es}} and {{kib}} API access
+
+By default, {{ecloud}} API keys provide access to the APIs for managing your organization, deployments, and projects.
+
+{applies_to}`ech:` In {{ech}} deployments, {{ecloud}} API keys do not provide access to {{es}} or {{kib}} APIs. [Learn how to create an {{es}} API key for ECH deployments](elasticsearch-api-keys.md).
+
+{applies_to}`serverless: ga` For {{serverless-full}} projects, you can optionally grant access to {{es}} and {{kib}} APIs when you [assign roles to the API key](#project-access).
+:::
+
 An {{ecloud}} API key belongs to the organization and is not tied to the user who created it. When a key is created, it is assigned specific roles that control its access to organizational resources. If the creator leaves the organization, the API keys they created will still function until they expire or are revoked.
-
-**Organization owners** can create and manage API keys for the organization. They can view and revoke all API keys in the organization. 
-
-Members with the **Workload credentials owner** role can create API keys and can list and revoke only the API keys they created. For more information about the **Workload credentials owner** role, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#workload-credentials-owner).
-
 
 You can have multiple API keys for different purposes, and you can revoke them when you no longer need them. Each organization can have up to 500 active API keys.
 
@@ -32,15 +36,14 @@ You can have multiple API keys for different purposes, and you can revoke them w
 :url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/access-management
 :::
 
-:::{admonition} {{es}} and {{kib}} API access 
-:applies_to: ech:
+## Required permissions
 
-By default, {{ecloud}} API keys provide access to the APIs for managing your organization, deployments, and projects. 
+To create and manage {{ecloud}} API keys, you must be one of the following:
 
-In {{ech}} deployments, {{ecloud}} API keys do not provide access to {{es}} or {{kib}} APIs. [Learn how to create an {{es}} API key for ECH deployments](elasticsearch-api-keys.md).
+* An **Organization owner**: Can create API keys for the organization, and can view and revoke all API keys in the organization.
+* A user who can [**manage workload credentials**](/deploy-manage/users-roles/cloud-organization/user-roles.md#manage-workload-credentials): Can create API keys, and can list and revoke only the API keys they created.
 
-In the case of {{serverless-full}} projects, you can optionally grant access to [{{es}} {{serverless-short}}]({{es-serverless-apis}}) and [{{kib}} {{serverless-short}}]({{kib-serverless-apis}}) APIs when you [assign roles to the API key](#roles).
-:::
+For more information, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles).
 
 ## Create an API key [ec-api-keys]
 
@@ -100,8 +103,6 @@ curl -XPOST \
 
 ## Revoke an API key [ec_revoke_an_api_key]
 
-**Organization owners** can revoke any API key in the organization. Members with the [Workload credentials owner](/deploy-manage/users-roles/cloud-organization/user-roles.md#workload-credentials-owner) role can revoke only the API keys they created.
-
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the navigation menu, select **Organization > API keys**.
 3. Find the key you want to revoke, and click the trash icon under **Actions**.
@@ -122,8 +123,8 @@ You can grant a cloud API key [the same types of roles that you assign to users]
 
 The roles you can assign depend on your privileges:
 
-* **Organization owners** can assign any organization-level roles, cloud resource access roles, and connected cluster access roles.
-* Members with the **Workload credentials owner** role can assign only roles they already hold, on deployments or projects they already have access to.
+* **Organization owners** can assign any roles.
+* Users who can **manage workload credentials** can assign only roles they already hold, on deployments or projects they already have access to.
 
 ### Granting {{es}} and {{kib}} API access [project-access]
 ```{applies_to}
