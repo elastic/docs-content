@@ -91,7 +91,7 @@ With a synchronous run, later steps can branch on the results, including Attack 
 
 ## Work with built-in Attack Discovery workflows [run-ad-workflow-built-in]
 
-Elastic provides [system-managed workflows](/explore-analyze/workflows/managed-workflows.md) that cover retrieval, generation, and validation. Open examples from **Attack discovery settings** with **View example**. You can enable or disable built-in workflows, but you cannot edit or delete them.
+Elastic provides [managed workflows](/explore-analyze/workflows/managed-workflows.md) that cover retrieval, generation, and validation. Open examples from **Attack discovery settings** with **View example**. You can enable or disable built-in workflows, but you cannot edit or delete them.
 
 ## Create custom retrieval and validation workflows [run-ad-workflow-custom]
 
