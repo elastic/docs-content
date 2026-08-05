@@ -117,6 +117,8 @@ PUT movies
 }
 ```
 
+Note that in the example above, both `name` and `plot` are still indexed individually in addition to `name_and_plot`, so this adds roughly a third field's worth of index storage. If you only need `name` and `plot` to be searchable through the combined field (for example, you never query them individually), you can avoid this overhead by disabling indexing on the source fields with `"index": false`, keeping only `name_and_plot` indexed for search. See [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) for more on `copy_to` as a way to reduce per-field mapping overhead.
+
 ## Pre-index data [_pre_index_data]
 
 You should leverage patterns in your queries to optimize the way data is indexed. For instance, if all your documents have a `price` field and most queries run [`range`](elasticsearch://reference/aggregations/search-aggregations-bucket-range-aggregation.md) aggregations on a fixed list of ranges, you could make this aggregation faster by pre-indexing the ranges into the index and using a [`terms`](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) aggregations.
