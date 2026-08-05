@@ -9,19 +9,19 @@ description: Learn which regions host Elastic Inference Service (EIS), how infer
 # Region and hosting [eis-regions]
 
 This page lists the {{aws}} and {{gcp}} regions where Elastic {{infer-cap}} Service (EIS) is available and explains how {{infer}} requests are routed.
-{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` It also explains how to restrict routing with region preferences.
 
 **{{aws}}:**
 
-* `us-east-1` (Virginia, US)
+* `us-east-1` (N. Virginia, US)
 * `eu-central-1` (Frankfurt, Germany)
-* `ap-northeast-1` (Tokyo, Japan)
+* `eu-west-1` (Ireland)
 
 **{{gcp}}:**
 
 * `asia-southeast1` (Singapore)
 * `europe-west1` (Belgium)
-* `us-east4` (Virginia, US)
+* `us-east4` (N. Virginia, US)
+* `us-east5` (Columbus, US)
 
 All {{infer}} requests sent through EIS are routed to the nearest region, regardless of where your {{es}} deployment or {{serverless-short}} project is hosted.
 {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` If you configure [region preferences](#inference-region-preferences), EIS routes only within your allowed geographies or regions.
@@ -65,12 +65,12 @@ After you save a region policy:
   Requested model is not available in the allowed inference regions
   ```
 
-* If you try to save a policy that would deny access to {{infer}} endpoints that are already in use by ingest pipelines or indices, {{es}} rejects the change with a conflict error unless you force the update through the API.
+* If you try to save a policy that would deny access to {{infer}} endpoints that are already in use by ingest pipelines or indices, {{es}} rejects the change with a conflict error.
 
 ### Configure region preferences in Kibana [configure-region-preferences-kibana]
 
-You need privileges that allow managing {{infer}} endpoints.
 To open **Elastic {{infer}}**, you typically need the `Inference Endpoints: all` and `Advanced Settings: read` {{kib}} privileges.
+To load and save region preferences, you also need the `manage_inference` {{es}} cluster privilege.
 
 1. Go to the **Elastic inference** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select **Manage regions**.
@@ -85,6 +85,8 @@ To open **Elastic {{infer}}**, you typically need the `Inference Endpoints: all`
 
    * **Geographies**: Select one or more geographic areas.
    * **Regions**: Expand a geography and select one or more cloud provider regions.
+1. Before you save, open any models you rely on and check **Regions** in the model details.
+   If a model isn't available in your allowed locations, it becomes unavailable after you save.
 1. Select **Save preferences**.
 1. In the confirmation dialog, review your pending allowed geographies or regions.
    Changing the region policy affects all Elastic {{infer-cap}} Service endpoints across all spaces.
@@ -99,16 +101,10 @@ To open **Elastic {{infer}}**, you typically need the `Inference Endpoints: all`
 When the update succeeds, {{kib}} shows the **Region preferences saved** message.
 If the policy would deny access to in-use {{infer}} endpoints, {{kib}} blocks the update and shows **Region policy update blocked**.
 
-:::{note}
-Some models are only available in specific regions.
-Restricting regions might make those models unavailable.
-Open a model's details and check **Regions** before you save a restrictive policy.
-:::
-
 ### Configure region preferences with the API [configure-region-preferences-api]
 
 You can also manage the region policy with the {{es}} Inference APIs.
-These APIs require the `manage_inference` cluster privilege to create or update a policy, and `monitor_inference` to retrieve it.
+These APIs require the `manage_inference` cluster privilege to create, update, or delete a policy, and `monitor_inference` to retrieve it.
 
 To allow specific geographies:
 
@@ -143,16 +139,7 @@ If the new policy would deny access to {{infer}} endpoints that are currently re
 Cannot put the region policy because it would deny access to the following in-use inference endpoints: <endpoint-ids>. Ensure that these inference endpoints are not in use, or use force to ignore this warning and proceed anyway.
 ```
 
-To apply the policy anyway:
-
-```console
-PUT _inference/_region_policy?force=true
-{
-  "region_policy": {
-    "allowed_geos": ["eu"]
-  }
-}
-```
+Resolve the conflict by removing those endpoint references first, or use the `force` parameter on the [create or update inference region policy]({{es-apis}}operation/operation-inference-put-region-policy) API if you intentionally want to apply the policy anyway.
 
 To retrieve the current policy:
 
