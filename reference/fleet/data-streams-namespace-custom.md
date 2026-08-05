@@ -21,6 +21,8 @@ Setting up namespace index templates involves these steps:
 2. [Create the `<namespace>@custom` component template](#data-streams-namespace-custom-component) that holds the custom settings and mappings you want applied to every data stream in the namespace.
 3. If you have pre-existing index templates that overlap with the {{fleet}}-managed templates, [resolve the overlapping templates](#data-streams-namespace-custom-conflicts).
 
+{applies_to}`stack: ga 9.5+` Opting a namespace in also lets you [assign an {{ilm-init}} policy to it](/reference/fleet/data-streams-namespace-ilm.md) from the integration policy editor.
+
 ## How namespace index templates work [data-streams-namespace-custom-how]
 
 When you enable namespace index templates for a namespace on an installed integration, {{fleet}} creates one namespace index template for each data stream defined by the integration. The templates are named using the following pattern:
@@ -55,6 +57,8 @@ Example `composed_of` list for `logs-system.application@namespace.production`:
 ```
 
 Later component templates in this list take precedence when the same setting or mapping key appears more than once. From highest to lowest precedence among the `@custom` templates: `logs-system.application@custom`, then `production@custom`, then `system@custom`, then `logs@custom`.
+
+{applies_to}`stack: ga 9.5+` If you also [assign an {{ilm-init}} policy to the namespace](/reference/fleet/data-streams-namespace-ilm.md), {{fleet}} adds a managed component template named `<type>-<dataset>@namespace.<namespace>` to `composed_of`, between `production@custom` and `logs-system.application@custom`. That template holds only the `index.lifecycle.name` setting.
 
 ::::{note}
 {{fleet}} does not create the `<namespace>@custom` component template. You create and manage that template yourself. Until you create it, the reference in `composed_of` has no effect. The same `<namespace>@custom` template is shared by namespace name across every integration that has that namespace opted in.
@@ -151,6 +155,8 @@ You can remove a namespace from the opt-in list in either of these ways:
 
 When you remove a namespace from the opt-in list, {{fleet}} deletes the corresponding namespace index templates. The `<namespace>@custom` component template is left in place so you can reuse it later.
 
+{applies_to}`stack: ga 9.5+` If an {{ilm-init}} policy was assigned to the namespace, {{fleet}} clears that assignment too. You don't need to clear it before you remove the namespace.
+
 ## Overlapping index templates [data-streams-namespace-custom-conflicts]
 
 If you previously duplicated a base data stream index template and gave the copy a higher priority, that copy can overlap with the {{fleet}}-managed namespace index template. When you opt a namespace in, {{fleet}} warns you about overlapping templates and what will happen for each one.
@@ -159,6 +165,7 @@ For details and resolution steps, refer to [Resolve overlapping index templates 
 
 ## Related pages [data-streams-namespace-custom-related]
 
+* [Assign an {{ilm-init}} policy to an integration namespace](/reference/fleet/data-streams-namespace-ilm.md)
 * [{{agent}} data streams for {{fleet}}](/reference/fleet/data-streams.md)
 * [Edit the {{es}} index template](/reference/fleet/data-streams.md#data-streams-index-templates-edit)
 * [Resolve overlapping index templates for namespace customization](/reference/fleet/data-streams-template-conflicts.md)
