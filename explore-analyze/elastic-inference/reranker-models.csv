@@ -1,5 +1,5 @@
 Author,Name,ID,Model Card,Provider Terms,Input Modalities,Output Modalities,EOL Date,Data Retention Period (Days),Data Used To Train Models?,Inference Regions,Release Status,Stack Version
-Jina,Reranker m0,jina-reranker-m0,,,,,,,,US,Generally Available,9.5
-Jina,Reranker v2,jina-reranker-v2-base-multilingual,[jina-reranker-v2-base-multilingual](https://jina.ai/models/jina-reranker-v2-base-multilingual/),[Elastic Terms](https://www.elastic.co/legal/terms-of-use),Text,Text,,0,No,"US, SG, EU",Generally Available,9.3
-Jina,Reranker v3,jina-reranker-v3,[jina-reranker-v3](https://jina.ai/models/jina-reranker-v3/),[Elastic Terms](https://www.elastic.co/legal/terms-of-use),Text,Text,,0,No,"US, SG, EU",Generally Available,9.3
-Jina,Reranker v3.5,jina-reranker-v3.5,[Jina Reranker 3.5](https://huggingface.co/jinaai/jina-reranker-v3.5),[Elastic Terms](https://www.elastic.co/legal/terms-of-use),Text,Text,,0,No,,Generally Available,9.3
+Jina,Reranker m0,jina-reranker-m0,[Jina Reranker m0](https://jina.ai/models/jina-reranker-m0/),[Elastic Terms](https://www.elastic.co/legal/terms-of-use),"Text, Image",Text,,0,No,US,Generally Available,9.5
+Jina,Reranker v2,jina-reranker-v2-base-multilingual,[jina-reranker-v2-base-multilingual](https://jina.ai/models/jina-reranker-v2-base-multilingual/),[Elastic Terms](https://www.elastic.co/legal/terms-of-use),Text,Text,,0,No,"US, SG, EU, APJ",Generally Available,9.3
+Jina,Reranker v3,jina-reranker-v3,[jina-reranker-v3](https://jina.ai/models/jina-reranker-v3/),[Elastic Terms](https://www.elastic.co/legal/terms-of-use),Text,Text,,0,No,"US, SG, EU, APJ",Generally Available,9.3
+Jina,Reranker v3.5,jina-reranker-v3.5,[Jina Reranker 3.5](https://huggingface.co/jinaai/jina-reranker-v3.5),[Elastic Terms](https://www.elastic.co/legal/terms-of-use),Text,Text,,0,No,"US, SG, EU, APJ",Generally Available,9.3
