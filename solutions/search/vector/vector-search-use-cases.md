@@ -105,7 +105,7 @@ The recommended path uses the [`semantic`](elasticsearch://reference/elasticsear
 ::::::{stepper}
 :::::{step} Choose and deploy a multimodal model
 
-Use a model that supports your media types (text, images, audio, or video). Deploy or access it through EIS, external {{infer}}, or on-prem, then point a `semantic` field at an `embedding` endpoint.
+Use a model that supports your media types (text, images, audio, or video). Deploy or access it through EIS, external {{infer}}, or on-prem, then point a `semantic` field at an `embedding` endpoint that uses your model.
 
 - [Multimodal embedding models](../multimodal-search.md#multimodal-embedding-models)
 
