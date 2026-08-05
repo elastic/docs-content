@@ -96,4 +96,5 @@ After the Template library is enabled, reload the **Workflows** page. It can tak
 ## What's next [workflows-what-next]
 
 - Create and run your first workflow. Refer to [](/explore-analyze/workflows/get-started/build-your-first-workflow.md) to learn more.
+- Create or edit a workflow by describing it in plain language. Refer to [](/explore-analyze/workflows/authoring-techniques/use-natural-language.md) to learn more.
 - Understand how to use the YAML editor in {{kib}} to define and run workflows. Refer to [](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) to learn more.

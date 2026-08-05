@@ -22,3 +22,4 @@ Concept and reference material for the components that make up a workflow defini
 - [Templating engine](/explore-analyze/workflows/templating.md): Liquid templating syntax and custom filters.
 - [Reference](/explore-analyze/workflows/reference.md): Quick-reference pages for the workflow YAML surface. Cheat sheet, A-Z step type index, context variables, and the Liquid filter catalog.
 - [Authorization](/explore-analyze/workflows/authorization.md): Whose privileges authorize a workflow run and what the run's API key can access.
+- [Workflow versions](/explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflows-version-history): Numbered snapshots created on save or restore. Review history, compare diffs, and roll back from the editor.
