@@ -611,6 +611,7 @@ toc:
                   - file: workflows/steps/foreach.md
                   - file: workflows/steps/while.md
                   - file: workflows/steps/switch.md
+                  - file: workflows/steps/parallel.md
                   - file: workflows/steps/wait.md
                   - file: workflows/steps/wait-for-input.md
                   - file: workflows/steps/wait-for-approval.md
@@ -629,6 +630,7 @@ toc:
               - file: workflows/reference/step-types.md
       - file: workflows/authoring-techniques.md
         children:
+          - file: workflows/authoring-techniques/use-natural-language.md
           - file: workflows/authoring-techniques/use-yaml-editor.md
           - file: workflows/authoring-techniques/anatomy.md
           - file: workflows/authoring-techniques/settings.md

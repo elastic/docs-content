@@ -245,6 +245,15 @@ Named values set by `data.set` steps. Global within an execution. Accessed as `v
 
 A declarative YAML automation. The primary unit of work in Elastic Workflows. Refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
 
+### Workflow version [workflows-glossary-workflow-version]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+A numbered snapshot of a workflow definition (`v1`, `v2`, and so on). A new version is created each time you save the workflow or restore a previous version. Distinct from the YAML [`version`](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-version) schema field. Refer to [Version history](/explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflows-version-history).
+
 ### `workflows.failed` [workflows-glossary-workflows-failed]
 
 ```{applies_to}
