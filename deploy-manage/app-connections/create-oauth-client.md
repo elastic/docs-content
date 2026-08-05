@@ -37,9 +37,10 @@ Before you create an OAuth client:
 
 ::::{step} Open the MCP client management page
 1. Find **Agents** in the navigation menu. You can also search for **Agent Builder** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Manage components** at the bottom of the left sidebar, then select **Tools**.
-3. On the tools library page, click **Manage MCP**, and then select **Manage MCP clients (OAuth)**. 
-4. Click **Add MCP client**.
+2. In the secondary navigation, select **Tools**.
+3. In the **Tools** workspace, click **Manage all tools**.
+4. In the **Tools library** workspace, click **Manage MCP**, and then select **Manage MCP clients (OAuth)**. 
+5. Click **Add MCP client**.
 
 You can also get to this page by searching for **Application connections** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md), then selecting **Manage MCP clients**.
 ::::
