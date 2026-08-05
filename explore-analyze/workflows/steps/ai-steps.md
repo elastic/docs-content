@@ -105,10 +105,10 @@ Classify input into one of a fixed set of categories. Optionally includes a rati
 |---|---|---|---|---|
 | `connector-id` | top level | string | No | GenAI connector to use. |
 | `input` | `with` | string, array, or object | Yes | Input to classify. |
-| `categories` | `with` | array of string or object | Yes | Allowed categories. At least one required. Each entry is either a plain category-name string or an object with `name` and `description`. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` |
+| `categories` | `with` | array of string or object | Yes | Allowed categories. At least one required. Each entry is a plain category-name string. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Each entry can also be an object with `name` and `description`. |
 | `instructions` | `with` | string | No | Guidance for the classifier. |
 | `allowMultipleCategories` | `with` | boolean | No | Allow the output to include more than one category. |
-| `fallbackCategory` | `with` | string or object | No | Category returned when the model can't confidently choose. Accepts a plain string or an object with `name` and `description`. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` |
+| `fallbackCategory` | `with` | string or object | No | Category returned when the model can't confidently choose. Accepts a plain string. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Can also accept an object with `name` and `description`. |
 | `includeRationale` | `with` | boolean | No | Include the model's reasoning in the output. |
 | `temperature` | `with` | number (0–1) | No | Model temperature. |
 
