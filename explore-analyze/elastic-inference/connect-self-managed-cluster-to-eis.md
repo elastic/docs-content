@@ -27,7 +27,7 @@ For a full list of EIS-powered features, refer to [AI features powered by EIS](/
 Before you can use EIS with your self-managed cluster, ensure you meet the following requirements:
 
 * Your self-managed cluster is on an [Enterprise self-managed license]({{subscriptions}}) or an [active self-managed trial license](https://cloud.elastic.co/registration)
-* You have an {{ecloud}} account with either an [active Cloud Trial](https://cloud.elastic.co/registration) or [billing information configured](/deploy-manage/cloud-organization/billing/add-billing-details.md)
+* You have an {{ecloud}} account with either an [active Cloud Trial](https://cloud.elastic.co/registration) or [billing information configured](/deploy-manage/cloud-organization/billing/add-billing-details.md). Note that you will not have full access to the model catalog.
 
 ## Set up EIS with Cloud Connect
 
