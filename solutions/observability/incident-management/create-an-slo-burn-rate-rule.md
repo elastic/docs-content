@@ -24,6 +24,9 @@ Choose which SLO to monitor and then define multiple burn rate windows with appr
 :screenshot:
 :::
 
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
+
 ## Requirements
 
 To create SLO burn rate rules, you need the following:
@@ -31,7 +34,7 @@ To create SLO burn rate rules, you need the following:
 - {applies_to}`stack: ga` An [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present, and [SLO access](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
 - {applies_to}`serverless: ga` The **Editor** role or higher is required to create SLOs for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
-### Indices used by this rule
+## Indices used by this rule
 
 This rule queries the SLO Observability SLI and summary indices. The defaults are `.slo-observability.sli*` and `.slo-observability.summary*`. You cannot override these indices on a per-rule basis.
 
