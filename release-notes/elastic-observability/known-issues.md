@@ -29,31 +29,15 @@ Applies to: {{stack}} 9.5.0
 
 **Details**
 
-Browser (journey) monitors assigned to a {{fleet}}-managed private location do not run when the private location's {{agent}} is on version 9.5.0. In the Synthetics UI, the monitor produces no results, and the agent reports the Synthetics browser component as permanently failed with `missing required field accessing 'heartbeat.monitors.0.schedule'`. Lightweight monitors (HTTP, TCP, and ICMP) on the same private location and monitors on Elastic-managed locations are not affected.
+**Do not upgrade private location {{agents}} that run Synthetics browser (journey) monitors to 9.5.0.** Keep those agents on **9.4.x** (for example 9.4.4) and wait for **9.5.1**. It is supported to run an older {{agent}} version (such as 9.4.4) against a 9.5.0 {{stack}}. Lightweight monitors (HTTP, TCP, and ICMP) on the same private location and monitors on Elastic-managed locations are not affected.
 
-This is caused by an {{agent}} change in 9.5.0 that runs Heartbeat under the OTel runtime by default; that runtime rejects the schedule-less data-routing sub-streams (`browser.network` and `browser.screenshot`) that a browser monitor emits.
+On 9.5.0, browser monitors on {{fleet}}-managed private locations fail for two independent {{agent}} defects:
 
-**Workaround**
+1. **Missing Playwright browser binaries** in the `elastic-agent-complete` image. Journeys fail at launch with `browserType.launch: Executable doesn't exist at .../chromium_headless_shell-<rev>/...`. For more information, check [elastic-agent#15993](https://github.com/elastic/elastic-agent/issues/15993).
 
-Pin Heartbeat back to the process runtime on the {{fleet}} agent policy that backs the affected private location:
+2. **OTel Heartbeat runtime** rejects browser monitor config and reports the component as permanently failed with `missing required field accessing 'heartbeat.monitors.0.schedule'`. For more information, check [elastic-agent#15968](https://github.com/elastic/elastic-agent/issues/15968).
 
-1. In {{kib}}, go to **Fleet > Agent policies** and open the agent policy for the private location.
-
-2. On the **Settings** tab, expand **Advanced settings** and locate **Advanced internal YAML settings**.
-
-3. Enter the following, then select **Save changes**:
-
-    ```yaml
-    runtime:
-      heartbeat:
-        default: process
-    ```
-
-This is equivalent to the agent policy override `{ "agent": { "internal": { "runtime": { "heartbeat": { "default": "process" } } } } }` ({{fleet}} stores the field as `advanced_settings.agent_internal`). The change takes effect on the next policy revision and is fully reversible: remove the setting to return Heartbeat to its default runtime.
-
-If you are upgrading from 9.3.x or 9.4.x, you can apply this override *before* you upgrade to avoid downtime. It has no effect on those versions (Heartbeat already uses the process runtime there). Because the setting lives on the agent policy, it is already in effect the moment the agent upgrades to 9.5.0.
-
-For more information, check [elastic-agent#15968](https://github.com/elastic/elastic-agent/issues/15968).
+Both issues are addressed in 9.5.1. There is no supported workaround on 9.5.0 that restores browser monitors without changing the agent version.
 ::::
 
 ::::{dropdown} Upgrading to 9.3.x fails when a rule action contains oversized content
