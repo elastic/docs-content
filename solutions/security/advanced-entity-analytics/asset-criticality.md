@@ -38,6 +38,11 @@ Entities do not have a default asset criticality level. You can either assign as
 
 When you assign, change, or unassign an individual entity’s asset criticality level, that entity’s risk score is immediately recalculated.
 
+:::{tip}
+:applies_to: {stack: ga 9.5+, serverless: ga}
+You can also update an entity's asset criticality conversationally with {{agent-builder}} using the `entity-analytics` [skill](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#security-skills). For example prompts, refer to [Entity risk investigation](/solutions/security/ai/agent-builder/skills-use-cases.md#entity-risk-investigation).
+:::
+
 ::::{note}
 If you assign asset criticality using the file import feature, risk scores are **not** immediately recalculated. However, you can trigger an immediate recalculation by clicking **Recalculate entity risk scores now**. Otherwise, the newly assigned or updated asset criticality levels will be factored in during the next hourly risk scoring calculation.
 ::::
@@ -139,12 +144,6 @@ Risk scoring dynamically factors in an entity’s asset criticality, along with 
 
 To view the impact of asset criticality on an entity’s risk score, follow these steps:
 
-1. Open the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout). The risk summary section shows asset criticality’s contribution to the overall risk score.
-2. Click **View risk contributions** to open the flyout’s left panel.
-3. In the **Risk contributions** section, verify the entity’s criticality level from the time the alert was generated.
-
-:::{image} /solutions/images/security-asset-criticality-impact.png
-:alt: View asset criticality impact on host risk score
-:screenshot:
-:::
-
+1. Open the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout). The risk score section shows asset criticality’s contribution to the overall risk score.
+2. Expand the risk score section to open the flyout’s left panel.
+3. In the **Contexts** section, verify the entity’s criticality level from the time the alert was generated.

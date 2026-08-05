@@ -24,7 +24,7 @@ Use the following table to find the right approach for building your dashboards,
 
 Once you have a dashboard, you can enhance it:
 
-* [Add filter controls](add-controls.md) to let viewers explore the data interactively
+* [Add filter controls](../visualize/add-controls.md) to let viewers explore the data interactively
 * [Add drilldowns](drilldowns.md) to navigate between dashboards or to external URLs
 * [Arrange and resize panels](arrange-panels.md) to optimize its layout
 

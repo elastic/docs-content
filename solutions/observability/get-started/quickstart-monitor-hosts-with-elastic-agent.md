@@ -23,7 +23,7 @@ To scan your host, you’ll run an auto-detection script that downloads and inst
 The script also generates an {{agent}} configuration file that you can use with your existing Infrastructure-as-Code tooling.
 
 :::{tip}
-We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Collector](/solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md) as the preferred way to collect system metrics and logs using OpenTelemetry.
+We recommend using the [{{agent}}](/solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md) as the preferred way to collect system metrics and logs using OpenTelemetry.
 :::
 
 

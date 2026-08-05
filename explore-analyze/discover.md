@@ -54,4 +54,5 @@ The following guides cover additional features you can use in Discover:
 * [Add runtime fields to your {{data-source}}](discover/discover-get-started.md#add-field-in-discover)
 * [Run queries in the background](discover/background-search.md)
 * [Analyze field statistics and patterns](discover/run-pattern-analysis-discover.md)
+* {applies_to}`stack: ga 9.5+` [Detect change points in time series data](discover/detect-change-points.md)
 * [Search for relevance](discover/discover-search-for-relevance.md)
