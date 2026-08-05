@@ -113,7 +113,7 @@ Use a model that supports your media types (text, images, audio, or video). Depl
 
 :::::{step} Create a semantic field mapping and index content
 
-Map a `semantic` field with `inference_id` set to your multimodal endpoint. Index images and other media into that field so Elasticsearch generates embeddings automatically.
+Map a `semantic` field with `inference_id` set to your multimodal endpoint. Index images and other media into that field. Elasticsearch generates and indexes embeddings for your content automatically.
 
 - [Create the image index](../multimodal-search/multimodal-search-tutorial.md#multimodal-tutorial-index-mapping)
 - [Index the image dataset](../multimodal-search/multimodal-search-tutorial.md#multimodal-tutorial-index-images)
