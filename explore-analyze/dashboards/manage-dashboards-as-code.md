@@ -52,7 +52,7 @@ The most portable way to build a panel is to define its visualization with [{{es
 - **Keep the visualization definition inline**, so it lives in the dashboard rather than pointing to a standalone [library visualization](create-dashboards-programmatically.md#lens-visualizations-api) that must already exist, with a matching ID, in the target environment.
 - **Query indices directly**: an {{esql}} query reads from the indices you name in it, so the panel doesn't rely on a separate saved data view that must already exist, with a matching ID, in the target environment.
 
-The result carries no external references, so the dashboard stays fully portable. For a panel that can't use {{esql}}, define it by value and back it with an [ad-hoc data view](../find-and-organize/data-views/create-data-view.md#_create_a_temporary_data_source) to keep it just as self-contained.
+The result carries no external references, so the dashboard stays fully portable. For a panel that can't use {{esql}}, define it by value and back it with an [ad-hoc data view](../find-and-organize/data-views/create-data-view.md#_create_a_temporary_data_source) to keep it self-contained.
 
 ### Assign matching IDs to referenced objects [dashboards-as-code-portability-ids]
 
