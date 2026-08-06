@@ -42,7 +42,7 @@ Maps uses the [{{es}} vector tile search API]({{es-apis}}operation/operation-sea
     * Run `GET myIndexName/_field_caps?fields=myGeoFieldName` in [Console](../../query-filter/tools/console.md), replacing `myIndexName` and `myGeoFieldName` with your index and geospatial field name.
     * Ensure response specifies `type` as `geo_point` or `geo_shape`.
 
-* Verify your geospatial data is correctly mapped in your [data view](../../find-and-organize/data-views.md#managing-fields).
+* Verify your geospatial data is correctly mapped in your [data view](../../find-and-organize/data-views/field-formatters.md).
 
     * Open your data view in [Stack Management](../../../deploy-manage/index.md).
     * Ensure your geospatial field type is `geo_point` or `geo_shape`.

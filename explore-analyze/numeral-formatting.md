@@ -15,7 +15,7 @@ Numeral formatting in {{kib}} is done through a pattern-based syntax. These patt
 Numeral formatting patterns are used in multiple places in {{kib}}, including:
 
 * [Advanced settings](kibana://reference/advanced-settings.md)
-* [Data view formatters](find-and-organize/data-views.md#field-formatters-numeric)
+* [Data view formatters](find-and-organize/data-views/field-formatters.md#field-formatters-numeric)
 * [**TSVB**](visualize/legacy-editors/tsvb.md)
 * [**Canvas**](visualize/canvas.md)
 

@@ -84,7 +84,7 @@ This section explains the general process for setting up cross-cluster search in
         :::
 
         ::::{note}
-        If the rule’s **Source** uses a data view instead of index patterns, you must define the data view for cross-cluster search separately, using the `<remote_cluster_name>:<index_name>` pattern. Refer to [Use data views with cross-cluster search](../../../explore-analyze/find-and-organize/data-views.md#management-cross-cluster-search) for more on defining a data view.
+        If the rule’s **Source** uses a data view instead of index patterns, you must define the data view for cross-cluster search separately, using the `<remote_cluster_name>:<index_name>` pattern. Refer to [Use data views with cross-cluster search](../../../explore-analyze/find-and-organize/data-views/data-view-search-syntax.md#management-cross-cluster-search) for more on defining a data view.
         ::::
 
     3. (Optional) [Preview the rule](using-the-rule-ui.md) to test its expected results.
