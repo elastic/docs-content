@@ -14,11 +14,11 @@ applies_to:
 
 # FIPS mode for Ingest tools [fips-ingest]
 
-{{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, {{auditbeat}}, {{heartbeat}}, {{packetbeat}}, {{winlogbeat}}, and {{apm-server}} are FIPS 140-3 capable. They use Go's native FIPS 140-3 module (`GOFIPS140=v1.0.0`, CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)) for cryptographic operations. Specific components and configurations that fall outside the certified boundary are documented in the limitations sections below.
+{{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} are FIPS 140-3 capable. They use Go's native FIPS 140-3 module (`GOFIPS140=v1.0.0`, CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)) for cryptographic operations. Specific components and configurations that fall outside the certified boundary are documented in the limitations sections below.
 
 ## FIPS-compatible binaries and configuration [fips-binaries]
 
-FIPS compatible binaries for {{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, {{auditbeat}}, {{heartbeat}}, {{packetbeat}}, {{winlogbeat}}, and {{apm-server}} are available for [download](https://www.elastic.co/downloads). Look for the `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product download pages. Look for the `Linux x86_64 (FIPS)` or `Linux aarch64 (FIPS)` platform option on the {{apm-server}} download page.
+FIPS compatible binaries for {{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} are available for [download](https://www.elastic.co/downloads). Look for the `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product download pages for {{agent}} and {{fleet}}, {{filebeat}}, and {{metricbeat}}. Look for the `Linux x86_64 (FIPS)` or `Linux aarch64 (FIPS)` platform option on the {{apm-server}} download page.
 
 :::{important}
 The default configurations provided in the binaries are designed for FIPS-capable operation. Review the limitations below to ensure your full deployment stays within the certified boundary.
@@ -75,22 +75,6 @@ This impacts [Filebeat](beats://reference/filebeat/configuration-kerberos.md), [
 * The [Mongo DB module](beats://reference/metricbeat/metricbeat-module-mongodb.md) is not supported.
 * The [MySQL](beats://reference/metricbeat/metricbeat-module-mysql.md), [PostgreSQL](beats://reference/metricbeat/metricbeat-module-postgresql.md), [MSSQL](beats://reference/metricbeat/metricbeat-module-mssql.md) and [SQL](beats://reference/metricbeat/metricbeat-module-sql.md) modules are not supported.
 * The [Oracle module](beats://reference/metricbeat/metricbeat-module-oracle.md) is not supported.
-
-### Auditbeat [ingest-auditbeat-limitations]
-
-* Certificate-based Azure and AWS identity authentication using PKCS#12 (`.pfx`) files is not supported. Use managed identity, client secrets, or PEM-encoded certificate and key files instead.
-
-### Heartbeat [ingest-heartbeat-limitations]
-
-* Certificate-based Azure and AWS identity authentication using PKCS#12 (`.pfx`) files is not supported. Use managed identity, client secrets, or PEM-encoded certificate and key files instead.
-
-### Packetbeat [ingest-packetbeat-limitations]
-
-* Certificate-based Azure and AWS identity authentication using PKCS#12 (`.pfx`) files is not supported. Use managed identity, client secrets, or PEM-encoded certificate and key files instead.
-
-### Winlogbeat [ingest-winlogbeat-limitations]
-
-* Certificate-based Azure and AWS identity authentication using PKCS#12 (`.pfx`) files is not supported. Use managed identity, client secrets, or PEM-encoded certificate and key files instead.
 
 ### Elastic Agent and Fleet Server [ingest-limitations-agent]
 
