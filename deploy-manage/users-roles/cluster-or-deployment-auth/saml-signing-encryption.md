@@ -17,13 +17,13 @@ The {{stack}} uses X.509 certificates with RSA private keys for SAML cryptograph
 
 Your IdP might require that the {{stack}} have a cryptographic key for signing SAML messages, and that you provide the corresponding signing certificate within the Service Provider configuration (either within the {{stack}} SAML metadata file, or manually configured within the IdP administration interface).
 
-While most IdPs do not expect authentication requests to be signed, it is commonly the case that signatures are required for logout requests. Your IdP will validate these signatures against the signing certificate that has been configured for the {{stack}} Service Provider.
+While most IdPs do not expect authentication requests to be signed, signatures are often required for logout requests. Your IdP validates these signatures against the signing certificate that is configured for the {{stack}} Service Provider.
 
 Encryption certificates are rarely needed, but the {{stack}} supports them for cases where IdPs or local policies mandate their use.
 
 ## Generate certificates and keys [saml-sign-generate-certs]
 
-{{es}} supports certificates and keys in either PEM, PKCS#12 or JKS format. Some Identity Providers are more restrictive in the formats they support, and will require you to provide the certificates as a file in a particular format. You should consult the documentation for your IdP to determine what formats they support.
+{{es}} supports certificates and keys in either PEM, PKCS#12 or JKS format. Some Identity Providers are more restrictive in the formats they support, and require you to provide the certificates as a file in a particular format. You should consult the documentation for your IdP to determine what formats they support.
 
 ### Example: Using `openssl`
 
@@ -44,7 +44,7 @@ Using the [`elasticsearch-certutil` tool](elasticsearch://reference/elasticsearc
 bin/elasticsearch-certutil cert --self-signed --pem --days 1100 --name saml-sign --out saml-sign.zip
 ```
 
-This will do the following:
+This command does the following:
 
 * generate a certificate and key pair (the `cert` subcommand)
 * create the files in PEM format (`--pem` option)
@@ -52,7 +52,7 @@ This will do the following:
 * name the certificate `saml-sign` (`--name` option)
 * save the certificate and key in the `saml-sign.zip` file (`--out` option)
 
-The generated zip archive will contain 3 files:
+The generated zip archive contains three files:
 
 * `saml-sign.crt`, the public certificate to be used for signing
 * `saml-sign.key`, the private key for the certificate
@@ -62,7 +62,7 @@ Encryption certificates can be generated with the same process.
 
 ## Sign outgoing SAML messages [saml-sign-configure]
 
-By default, {{es}} will sign *all* outgoing SAML messages if a signing certificate and key has been configured.
+By default, {{es}} signs *all* outgoing SAML messages if a signing certificate and key has been configured.
 
 :::{tip}
 * In self-managed clusters, file path settings are resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.
@@ -126,11 +126,11 @@ xpack:
 
 ## Configure {{es}} for encrypted messages [saml-encryption-configure]
 
-The {{es}} {{security-features}} support a single key for message decryption. If a key is configured, then {{es}} attempts to use it to decrypt `EncryptedAssertion` and `EncryptedAttribute` elements in Authentication responses, and `EncryptedID` elements in Logout requests.
+{{es}} supports a single key for message decryption. If a key is configured, then {{es}} attempts to use it to decrypt `EncryptedAssertion` and `EncryptedAttribute` elements in Authentication responses, and `EncryptedID` elements in Logout requests.
 
 {{es}} rejects any SAML message that contains an `EncryptedAssertion` that cannot be decrypted.
 
-If an `Assertion` contains both encrypted and plain-text attributes, then failure to decrypt the encrypted attributes will not cause an automatic rejection. Rather, {{es}} processes the available plain-text attributes (and any `EncryptedAttributes` that could be decrypted).
+If an `Assertion` contains both encrypted and plain-text attributes, then failure to decrypt the encrypted attributes does not cause an automatic rejection. Rather, {{es}} processes the available plain-text attributes (and any `EncryptedAttributes` that could be decrypted).
 
 :::{tip}
 * In self-managed clusters, file path settings are resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.

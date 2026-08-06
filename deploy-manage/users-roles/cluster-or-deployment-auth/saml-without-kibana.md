@@ -9,7 +9,7 @@ products:
 
 # SAML without {{kib}} [saml-no-kibana]
 
-The SAML realm in {{es}} is designed to allow users to authenticate to {{kib}} and as such, most of the [SAML SSO guide](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md) makes the assumption that {{kib}} is used. This page describes how a custom web application could use the relevant SAML REST APIs in order to authenticate users to {{es}} with SAML.
+The SAML realm in {{es}} is designed to allow users to authenticate to {{kib}} and as such, most of the [SAML SSO guide](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md) makes the assumption that {{kib}} is used. This page describes how a custom web application can use SAML REST APIs in order to authenticate users to {{es}} with SAML.
 
 ::::{note}
 This page assumes that you are familiar with the SAML 2.0 standard and more specifically with the SAML 2.0 Web Browser Single Sign On profile.

@@ -27,7 +27,7 @@ The {{stack}} supports SAML single sign-on (SSO) into {{kib}}, using {{es}} as a
 
 For a detailed walk-through of how to implement SAML authentication for {{kib}} with Microsoft Entra ID as an identity provider, refer to [Set up SAML with Microsoft Entra ID](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-entra.md).
 
-Because this feature is designed with {{kib}} in mind, most sections of this guide assume {{kib}} is used. To learn how a custom web application could use the SAML REST APIs to authenticate users to {{es}} without {{kib}}, refer to [SAML without {{kib}}](#saml-no-kibana).
+Because this feature is designed with {{kib}} in mind, most sections of this guide assume {{kib}} is used. To learn how a custom web application could use the SAML REST APIs to authenticate users to {{es}} without {{kib}}, refer to [SAML without {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-without-kibana.md).
 
 ::::{note}
 {{stack}} SSO is a [subscription feature](https://www.elastic.co/subscriptions).
@@ -93,7 +93,7 @@ If you're using a self-managed cluster:
 ::::{step} Configure your identity provider
 :anchor: saml-configure-idp
 
-Register the {{stack}} as a SAML service provider in your IdP. The exact steps vary by provider, but you generally need to:
+Register the {{stack}} as a SAML service provider in your IdP. The exact steps vary by provider, but you generally need to do the following:
 
 1. Create a new SAML application or service provider entry in your IdP.
 2. Set the **Assertion Consumer Service (ACS) URL** to your {{kib}} base URL followed by `/api/security/saml/callback` (for example, `https://kibana.example.com/api/security/saml/callback`).
@@ -107,7 +107,7 @@ If your IdP supports SP metadata import, you can generate an SP metadata file af
 :::
 
 :::{note}
-If your IdP requires signed outgoing SAML messages (authentication requests or logout requests), you will also need to provide your {{es}} signing certificate to the IdP at this stage. Refer to [Signing and encryption](#saml-enc-sign) for how to generate certificates and configure signing in {{es}}.
+If your IdP requires signed outgoing SAML messages (authentication requests or logout requests), then you also need to provide your {{es}} signing certificate to the IdP at this stage. Refer to [Signing and encryption](#saml-enc-sign) for how to generate certificates and configure signing in {{es}}.
 :::
 ::::
 
@@ -141,7 +141,7 @@ Configure each setting as follows. For the full list of available settings, refe
     If you want to pass a file path, then review the following:
     * File path settings are resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.
     * If you're using {{ech}} or {{ece}}, then you must upload the file before it can be referenced. For {{ech}}, upload the file [as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). For {{ece}}, follow the equivalent [ECE procedure](/deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md).
-    * If you're using {{eck}}, then install the file as [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+    * If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
     :::
 
 `idp.entity_id`
@@ -151,7 +151,7 @@ Configure each setting as follows. For the full list of available settings, refe
 :   A unique identifier for your {{kib}} instance, expressed as a URI. Must match exactly the entity ID you [configure in your IdP](#saml-configure-idp). The comparison is case-sensitive. We recommend using the {{kib}} base URL.
 
 `sp.acs`
-:   The URL of the Assertion Consumer Service within {{kib}} that receives authentication responses from your IdP, using the HTTP-POST binding. For example, `https://kibana.example.com/api/security/saml/callback`. This URL must be reachable from users' browsers — it does not need to be directly accessible by {{es}} or the IdP. If {{kib}} is behind a reverse proxy, use the public-facing URL.
+:   The URL of the Assertion Consumer Service within {{kib}} that receives authentication responses from your IdP, using the HTTP-POST binding. For example, `https://kibana.example.com/api/security/saml/callback`. This URL must be reachable from users' browsers, but does not need to be directly accessible by {{es}} or the IdP. If {{kib}} is behind a reverse proxy, use the public-facing URL.
 
 `sp.logout`
 :   The URL of the Single Logout service within {{kib}} that receives logout messages from your IdP. For example, `https://kibana.example.com/logout`. Required for [SAML Single Logout](#saml-logout). If not configured, {{es}} refuses all `<LogoutRequest>` messages from the IdP.
@@ -218,7 +218,7 @@ xpack.security.authc.providers:
     order: 1
 ```
 
-Users will see a login selector and can choose their preferred method. Users who log in with basic authentication must have credentials in a configured {{es}} realm (such as native or LDAP).
+When multiple authentication providers are confgired, users see a login selector and can choose their preferred method. Users who log in with basic authentication must have credentials in a configured {{es}} realm such as native or LDAP.
 
 You can also adjust [session timeout settings](/deploy-manage/security/kibana-session-management.md) (`xpack.security.session.idleTimeout` and `xpack.security.session.lifespan`) to match your security requirements.
 
@@ -231,7 +231,7 @@ SAML authentication identifies users to the {{stack}}, but does not automaticall
 
 Role mappings connect SAML user identities to {{es}} roles, but the roles themselves must exist first. You can use built-in roles such as `superuser` or `kibana_admin` for initial testing. For production, create [custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) with appropriate access to your data and [{{kib}} features](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
 
-You can create role mappings in the **Role Mappings** page in {{kib}} or with the [role mapping API]({{es-apis}}operation/operation-security-put-role-mapping). For the general concepts, UI workflow, and rule syntax, refer to [Map external users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md). The examples below show common SAML patterns.
+You can create role mappings in the **Role Mappings** page in {{kib}} or with the [role mapping API]({{es-apis}}operation/operation-security-put-role-mapping). For the general concepts, UI workflow, and rule syntax, refer to [Map external users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md). The following examples show common SAML patterns.
 
 :::{note}
 [Role mapping files](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file) cannot be used for SAML users.
@@ -326,7 +326,7 @@ For available settings, refer to [SAML realm signing settings](elasticsearch://r
 
 ### SAML Single Logout [saml-logout]
 
-The SAML protocol supports Single Logout (SLO), which ends both the {{kib}} session and the IdP session when a user logs out. Support for SLO varies between identity providers. Consult your IdP's documentation to determine what Logout services it offers.
+The SAML protocol supports Single Logout (SLO), which ends both the {{kib}} session and the IdP session when a user logs out. Support for SLO varies between identity providers. Consult your IdP's documentation to determine what logout services it offers.
 
 By default, {{es}} uses SAML SLO when all the following are true:
 * Your IdP metadata includes a `<SingleLogoutService>` with HTTP-Redirect binding
@@ -375,7 +375,7 @@ xpack.security.authc.realms.saml.saml1:
 
 ### Generate SP metadata [saml-sp-metadata]
 
-The SP metadata is an XML document that describes your {{stack}} as a SAML Service Provider. It contains your entity ID, ACS URL, logout URL, and any signing or encryption certificates configured in the realm. Some Identity Providers can import this file to configure the integration automatically, instead of requiring you to enter each value individually when [registering the {{stack}} in your IdP](#saml-configure-idp).
+The SP metadata file is an XML document that describes your {{stack}} as a SAML Service Provider. It contains your entity ID, ACS URL, logout URL, and any signing or encryption certificates configured in the realm. Some Identity Providers can import this file to configure the integration automatically, instead of requiring you to enter each value individually when [registering the {{stack}} in your IdP](#saml-configure-idp).
 
 Once you have [configured a SAML realm in {{es}}](#saml-create-realm), you can generate its SP metadata file using the [SAML service provider metadata API]({{es-apis}}operation/operation-security-saml-service-provider-metadata) or the [`bin/elasticsearch-saml-metadata` command](elasticsearch://reference/elasticsearch/command-line-tools/saml-metadata.md).
 
@@ -429,7 +429,7 @@ Use this configuration when each {{kib}} instance is reached through a different
 
 When instances use different URLs and authenticate against the same {{es}} cluster, each instance requires its own SAML realm. Each realm must have its own unique Entity ID (`sp.entity_id`) and Assertion Consumer Service URL (`sp.acs`), but they can all use the same Identity Provider. In {{kib}}, configure each instance's SAML provider to point to its corresponding realm.
 
-The following is an example of having 3 different {{kib}} instances, 2 of which use the same internal IdP, and another which uses a different IdP.
+The following is an example of settings for a cluster with three different {{kib}} instances, two of which use the same internal IdP, and another which uses a different IdP.
 
 ```yaml
 xpack.security.authc.realms.saml.saml_finance:
@@ -470,4 +470,4 @@ If you're building a custom web application that needs to authenticate users aga
 
 The application acts as an authentication proxy: it drives the SP-initiated or IdP-initiated SSO flow, exchanges the SAML response for an {{es}} access token and refresh token, and uses that token as a `Bearer` credential for subsequent requests.
 
-For the complete implementation guide (including service account setup, SP-initiated and IdP-initiated flows, and logout handling), refer to [SAML without {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-without-kibana.md).
+For the complete implementation guide, including service account setup, SP-initiated and IdP-initiated flows, and logout handling, refer to [SAML without {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-without-kibana.md).
