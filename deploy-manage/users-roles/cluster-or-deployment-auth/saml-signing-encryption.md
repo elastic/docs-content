@@ -9,13 +9,15 @@ products:
 
 # Configure SAML signing and encryption [saml-enc-sign]
 
-The {{stack}} supports generating signed SAML messages (for authentication or logout), verifying signed SAML messages from the IdP (for both authentication and logout) and can process encrypted content.
+This page is a detailed reference for SAML signing and encryption configuration. For the complete SAML SSO configuration, refer to [SAML authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
+
+The {{stack}} supports generating signed SAML authentication and logout messages, verifying signed messages from the IdP, and processing encrypted content.
 
 You can configure {{es}} for signing, encryption or both, using a single key or individual keys.
 
 The {{stack}} uses X.509 certificates with RSA private keys for SAML cryptography. These keys can be generated using any standard SSL tool, including the `elasticsearch-certutil` tool.
 
-Your IdP might require that the {{stack}} have a cryptographic key for signing SAML messages, and that you provide the corresponding signing certificate within the Service Provider configuration (either within the {{stack}} SAML metadata file, or manually configured within the IdP administration interface).
+Your IdP might require that the {{stack}} have a cryptographic key for signing SAML messages, and that you provide the corresponding signing certificate in your Service Provider configuration — either in the {{stack}} SAML metadata file, or manually in the IdP administration interface.
 
 While most IdPs do not expect authentication requests to be signed, signatures are often required for logout requests. Your IdP validates these signatures against the signing certificate that is configured for the {{stack}} Service Provider.
 

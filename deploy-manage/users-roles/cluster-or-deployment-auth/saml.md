@@ -68,11 +68,16 @@ Most IdPs will provide an appropriate metadata file with all the features that t
 * An `<IDPSSODescriptor>` that supports the SAML 2.0 protocol (`urn:oasis:names:tc:SAML:2.0:protocol`)
 * At least one `<KeyDescriptor>` configured for signing (with `use="signing"`, or `use` left unspecified)
 * A `<SingleSignOnService>` with binding of HTTP-Redirect (`urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect`)
-* If you want [Single Logout](#saml-logout): a `<SingleLogoutService>` with binding of HTTP-Redirect
+* If you want [Single Logout](#saml-logout): a `<SingleLogoutService>` with binding of HTTP-Redirect (`urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect`)
 
 All messages from the IdP must be signed. For `<Response>` messages, the signature can be on the response itself or on individual assertions. For `<LogoutRequest>` messages, the signature must be provided as a URL parameter, as required by the `HTTP-Redirect` binding.
 
 ### Prerequisites for self-managed clusters
+
+```{applies_to}
+deployment:
+  self:
+```
 
 If you're using a self-managed cluster:
 
@@ -88,10 +93,16 @@ If you're using a self-managed cluster:
 
 ## Configuration steps
 
+Follow these steps to configure SAML SSO for the {{stack}}.
+
 :::::{stepper}
 
 ::::{step} Configure your identity provider
 :anchor: saml-configure-idp
+
+:::{tip}
+If your IdP supports SP metadata import, you can generate an SP metadata file after [configuring the {{es}} realm](#saml-create-realm) and import it into your IdP to register the {{stack}} as a Service Provider automatically. Refer to [Generate SP metadata](#saml-sp-metadata).
+:::
 
 Register the {{stack}} as a SAML service provider in your IdP. The exact steps vary by provider, but you generally need to do the following:
 
@@ -101,14 +112,7 @@ Register the {{stack}} as a SAML service provider in your IdP. The exact steps v
 4. Set the **logout URL** to your {{kib}} base URL followed by `/logout` if your IdP supports Single Logout (for example, `https://kibana.example.com/logout`).
 5. Identify the user attributes your IdP can include in SAML assertions. Consult your IdP documentation or local admin. This varies between providers. These attribute URIs will be used to configure the attribute mapping in the {{es}} realm.
 6. Note the **IdP metadata URL** or download the metadata file. You will need this for the {{es}} configuration.
-
-:::{tip}
-If your IdP supports SP metadata import, you can generate an SP metadata file after [configuring the {{es}} realm](#saml-create-realm) and import it into your IdP to register the {{stack}} as a Service Provider automatically. Refer to [Generate SP metadata](#saml-sp-metadata).
-:::
-
-:::{note}
-If your IdP requires signed outgoing SAML messages (authentication requests or logout requests), then you also need to provide your {{es}} signing certificate to the IdP at this stage. Refer to [Signing and encryption](#saml-enc-sign) for how to generate certificates and configure signing in {{es}}.
-:::
+7. **Optional:** If your IdP requires signed outgoing SAML messages (authentication requests or logout requests), provide your {{es}} signing certificate to the IdP at this stage. Refer to [Signing and encryption](#saml-enc-sign) for how to generate certificates and configure signing in {{es}}.
 ::::
 
 ::::{step} Create a SAML realm in {{es}}
@@ -130,9 +134,9 @@ xpack.security.authc.realms.saml.saml1:
   attributes.groups: "urn:oid:1.3.6.1.4.1.5923.1.5.1."
 ```
 
-1. Controls realm priority. Assign SSO realms higher order values than password-based realms (native, LDAP). If you're using {{eck}}, set `order` to a value greater than the file realm (default `-100`) and native realm (default `-99`).
+1. Controls realm priority. A lower number means higher priority. Assign SSO realms higher order values than password-based realms (native, LDAP). If you're using {{eck}}, set `order` to a value greater than the file realm (default `-100`) and native realm (default `-99`).
 
-Configure each setting as follows. For the full list of available settings, refer to [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
+The following describes the most commonly used settings for a SAML realm. For the full list of available settings, refer to [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
 
 `idp.metadata.path`
 :   The path or URL to the SAML metadata file for your Identity Provider. A URL is recommended so {{es}} reloads it automatically when it changes.
@@ -218,9 +222,12 @@ xpack.security.authc.providers:
     order: 1
 ```
 
-When multiple authentication providers are confgired, users see a login selector and can choose their preferred method. Users who log in with basic authentication must have credentials in a configured {{es}} realm such as native or LDAP.
+When multiple authentication providers are configured, users see a login selector and can choose their preferred method. Users who log in with basic authentication must have credentials in a configured {{es}} realm such as native or LDAP.
 
-You can also adjust [session timeout settings](/deploy-manage/security/kibana-session-management.md) (`xpack.security.session.idleTimeout` and `xpack.security.session.lifespan`) to match your security requirements.
+You can also configure [session timeout settings](/deploy-manage/security/kibana-session-management.md) per provider to match your security requirements.
+
+% TBD
+% If you want to bypass the login selector for specific clients or routes (for example, automated systems or internal tools), you can place a reverse proxy in front of {{kib}} and configure it to inject a basic authentication header (`Authorization: Basic ...`). If this header is present and valid, {{kib}} authenticates the request directly using basic auth and skips the SAML flow entirely.
 
 ::::
 
@@ -229,7 +236,7 @@ You can also adjust [session timeout settings](/deploy-manage/security/kibana-se
 
 SAML authentication identifies users to the {{stack}}, but does not automatically grant them any access. You must map SAML users to {{es}} roles before they can do anything.
 
-Role mappings connect SAML user identities to {{es}} roles, but the roles themselves must exist first. You can use built-in roles such as `superuser` or `kibana_admin` for initial testing. For production, create [custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) with appropriate access to your data and [{{kib}} features](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
+Role mappings connect SAML user identities to {{es}} roles, but the roles themselves must exist first. You can use built-in roles such as `superuser` or `kibana_admin` for initial testing. For production, create [custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) with appropriate access to your data and [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
 
 You can create role mappings in the **Role Mappings** page in {{kib}} or with the [role mapping API]({{es-apis}}operation/operation-security-put-role-mapping). For the general concepts, UI workflow, and rule syntax, refer to [Map external users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md). The following examples show common SAML patterns.
 
@@ -371,7 +378,7 @@ xpack.security.authc.realms.saml.saml1:
 
 1. This example uses the Entra ID URI for MFA. The exact URI values depend on your IdP. Some standard SAML 2.0 values such as `urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport` are widely supported, but IdP-specific URIs are common. Consult your IdP's documentation.
 
-{{es}} supports only the `exact` comparison method. The Authentication Response must include one of the specified values; otherwise, authentication fails. For more details, refer to [`req_authn_context_class_ref`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
+{{es}} supports only the `exact` comparison method. The Authentication Response must include one of the specified values; otherwise, authentication fails. For more details, refer to `req_authn_context_class_ref` in [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
 
 ### Generate SP metadata [saml-sp-metadata]
 

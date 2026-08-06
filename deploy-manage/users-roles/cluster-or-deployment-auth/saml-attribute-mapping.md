@@ -9,6 +9,8 @@ products:
 
 # Map SAML attributes to {{es}} user properties [saml-attributes-mapping]
 
+This page is a detailed reference for SAML attribute mapping. For the complete SAML SSO configuration, refer to [SAML authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
+
 When a user connects to {{kib}} through your Identity Provider, the Identity Provider supplies a SAML assertion about the user. The assertion contains an *Authentication Statement* indicating that the user has successfully authenticated to the IdP and one or more *Attribute Statements* that include *Attributes* for the user.
 
 These attributes might include information like:
@@ -60,7 +62,7 @@ In general, {{es}} expects that the configured value for an attribute is a URI, 
 :   This uses the SAML `NameID` value (all leading and trailing whitespace removed), but only if the NameID format is `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`. A SAML `NameID` element has an optional `Format` attribute that indicates the semantics of the provided name. It is common for IdPs to be configured with "transient" NameIDs that present a new identifier for each session. Because it is rarely useful to use a transient NameID as part of an attribute mapping, the `nameid:persistent` attribute name can be used as a safety mechanism that will cause an error if you attempt to map from a `NameID` that does not have a persistent value.
 
 :::{note}
-Identity Providers can be either statically configured to release a `NameID` with a specific format, or they can be configured to try to conform with the requirements of the SP. The SP declares its requirements as part of the Authentication Request, using an element which is called the `NameIDPolicy`. If this is needed, you can set the `nameid_format` setting in the SAML realm to request that the IdP releases a `NameID` with a specific format.
+Identity Providers can be either statically configured to release a `NameID` with a specific format, or they can be configured to try to conform with the requirements of the SP. The SP declares its requirements as part of the Authentication Request, using an element which is called the `NameIDPolicy`. If this is needed, you can set the [`nameid_format`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings) setting in the SAML realm to request that the IdP releases a `NameID` with a specific format.
 :::
 
 *friendlyName*
