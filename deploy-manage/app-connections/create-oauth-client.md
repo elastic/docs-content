@@ -58,11 +58,22 @@ Selecting a logo is cosmetic, and does not pre-configure any settings.
 ::::{step} Set the redirect URI
 The redirect URI tells the authorization server where to return the user after they authorize the connection. Select the redirect URI type:
 
-- **Local** — For applications running on your local machine. The redirect URIs are pre-populated with `http://localhost/callback` and `http://localhost/oauth/callback`. Replace or supplement these values to match your Agent's expected callback URL. The authorization server accepts any localhost port, but the path must match exactly. Common values:
+- **Local** — For applications running on your local machine. The redirect URIs are pre-populated with `http://localhost/callback` and `http://localhost/oauth/callback`. Replace or supplement these values to match your Agent's expected callback URL. The authorization server accepts any localhost port, but the path must match exactly. 
+
+  Common values:
   - Claude desktop app: `http://localhost/oauth/callback`
-  - Claude Code CLI: `http://localhost/callback`
+  - Claude Code CLI (native HTTP): `http://localhost/callback`
+  - Cursor (desktop): `http://localhost/callback` (Cursor uses port 8787, which is accepted automatically)
 - **Remote** — For hosted or cloud-based applications. Enter a single `https://` URL. Plain HTTP is not accepted.
+
+  Common values:
   - claude.ai: `https://claude.ai/api/mcp/auth_callback`
+  - Cursor (web/agents): `https://www.cursor.com/agents/mcp/oauth/callback`
+  - ChatGPT: `https://chatgpt.com/connector/oauth/{callback_id}`
+  
+    :::{warning}
+    The ChatGPT callback URL is unique to each app. You must [start the app creation flow first](/deploy-manage/app-connections/connect-mcp-host.md) to get this URL, then return here to add it to your OAuth client.
+    :::
 
 For local clients that need more than one redirect URI, click **Add local URL** to add additional URLs.
 ::::

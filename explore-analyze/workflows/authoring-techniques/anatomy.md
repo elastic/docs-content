@@ -185,6 +185,8 @@ That workflow can be run on demand and also runs hourly automatically. Refer to 
 
 `inputs` declare values the workflow expects at invocation time. They're what the user types in the **Run** modal, or what an API caller provides in the request body.
 
+The trigger defines *when* a workflow runs; inputs define *what values* it accepts at runtime. A manual-triggered workflow typically has explicit inputs the user fills in. An alert-triggered workflow usually has no inputs, because the alert payload arrives as `event` automatically. You can still add inputs if you need values the alert payload doesn't carry.
+
 The location of `inputs` in the YAML depends on your version. On stack 9.4 and earlier, `inputs` sits at the top level of the workflow. From stack 9.5+ and on serverless, new workflows place `inputs` inside the `manual` trigger; existing top-level workflows continue to run.
 
 ::::{applies-switch}
@@ -230,7 +232,8 @@ Inside the workflow, reference them as `{{ inputs.alert_id }}` (the reference fo
 Supported input types are `string`, `number`, `boolean`, `choice` (with an `options` array), and `array` (with optional `minItems` and `maxItems`). `required` defaults to `false`; provide a `default` to give optional inputs a fallback value. The legacy array-of-fields form documented here is being migrated to a JSON Schema form; both are accepted today.
 
 :::{note}
-The trigger defines *when* a workflow runs. Inputs define *what values* it accepts at runtime. A manual-triggered workflow typically has explicit inputs the user fills in. An alert-triggered workflow usually has no inputs, because the alert payload arrives as `event` automatically. You can still add inputs if you need values the alert payload doesn't carry.
+:applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
+A `default` value can be a Liquid expression as well as a literal. For example, `default: "{{ 'now' | date: '%Y-%m-%dT%H:%M:%SZ' }}"` resolves to the current timestamp each time the workflow runs, instead of staying the literal template string. On {{stack}} 9.3–9.4, only literal defaults resolve. A Liquid expression in `default` is passed through as-is.
 :::
 
 ## `consts` — named constants [workflows-anatomy-consts]
