@@ -118,7 +118,7 @@ Because the available connector steps depend on which connectors your deployment
 
 ## Deprecated step types [workflows-deprecated-steps]
 
-These still work in existing workflows but can't be used in new ones. They're hidden from autocomplete and the **Add Action** menu, and the YAML editor shows a deprecation warning with a replacement suggestion on hover. 
+Deprecated step types still work in existing workflows but can't be used in new ones. They're hidden from autocomplete and the **Add Action** menu, and the YAML editor shows a deprecation warning with a replacement suggestion on hover. 
 
 Refer to the [migration guide](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md) for Cases replacement details. For AI connector steps, replace them with [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) (or another [AI step](/explore-analyze/workflows/steps/ai-steps.md) such as `ai.classify`, `ai.summarize`, or `ai.agent` when that better matches the task).
 
