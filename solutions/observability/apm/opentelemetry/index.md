@@ -30,7 +30,7 @@ Other Integrations which are beats-based include dashboards based on ECS data an
 
 Elastic offers several [{{edot}}](opentelemetry://reference/index.md) distributions. Each is a customized version of an OpenTelemetry language SDK and the OpenTelemetry Collector, ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), APM Server, or directly to {{es}}.
 
-:::{include} /solutions/_snippets/edot-reference-arch.md
+:::{include} /solutions/_snippets/otel-reference-arch.md
 :::
 
 ## Integration options [otel-integration-options]

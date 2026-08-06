@@ -92,4 +92,4 @@ To change a running standalone {{agent}} to run as an OTel Collector:
              └─ status: StatusOK
     ```
 
-Host logs and metrics are now being collected and ingested by the {{agent}} service running an OTel Collector instance. For further details about OpenTelemetry Collector components supported by {{agent}}, refer to [Components](elastic-agent://reference/edot-collector/components.md).
+Host logs and metrics are now being collected and ingested by the {{agent}} service running an OTel Collector instance. For further details about OpenTelemetry Collector components supported by {{agent}}, refer to [Components](elastic-agent://reference/otel-collector/components.md).

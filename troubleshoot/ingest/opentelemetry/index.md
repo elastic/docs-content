@@ -17,7 +17,7 @@ Find solutions to common issues in {{edot}} components and SDKs.
 
 ## Component troubleshooting
 
-* [{{agent}} troubleshooting](/troubleshoot/ingest/opentelemetry/edot-collector/index.md): Troubleshoot issues with the {{agent}}, including resource problems, configuration errors, and connectivity issues.
+* [{{agent}} troubleshooting](/troubleshoot/ingest/opentelemetry/otel-collector/index.md): Troubleshoot issues with the {{agent}}, including resource problems, configuration errors, and connectivity issues.
 
 * [EDOT SDKs troubleshooting](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md): Troubleshoot issues with EDOT SDKs for Android, .NET, iOS, Java, Node.js, PHP, and Python.
 

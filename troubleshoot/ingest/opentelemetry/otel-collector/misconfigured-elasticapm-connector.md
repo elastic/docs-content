@@ -73,7 +73,7 @@ service:
       exporters: [elasticsearch/otel]
 ```
 
-For the complete configuration example, refer to [Elastic {{product.apm}} connector](elastic-agent://reference/edot-collector/components/elasticapmconnector.md).
+For the complete configuration example, refer to [Elastic {{product.apm}} connector](elastic-agent://reference/otel-collector/components/elasticapmconnector.md).
 
 :::
 
@@ -85,9 +85,9 @@ Restart the Collector after updating your configuration. Wait a few minutes for 
 
 ::::
 
-If data still doesn't appear, refer to [Enable debug logging](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) to increase Collector verbosity and check for export errors.
+If data still doesn't appear, refer to [Enable debug logging](/troubleshoot/ingest/opentelemetry/otel-collector/enable-debug-logging.md) to increase Collector verbosity and check for export errors.
 
 ## Resources
 
-* [Elastic {{product.apm}} connector reference](elastic-agent://reference/edot-collector/components/elasticapmconnector.md)
+* [Elastic {{product.apm}} connector reference](elastic-agent://reference/otel-collector/components/elasticapmconnector.md)
 * [No logs, metrics, or traces visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md)

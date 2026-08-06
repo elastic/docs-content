@@ -34,7 +34,7 @@ Send application logs to {{es}} using one of the following shipping tools:
 * [{{agent}}](/solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-the-agent) A single agent that can collect logs, metrics, and security data, and protect your hosts. You can use {{fleet}} to manage {{agent}} policies and lifecycles directly from {{kib}}.
 
 :::{tip}
-We recommend using the [{{edot}} Collector](/solutions/observability/logs/stream-any-log-file-using-edot-collector.md) to collect application logs.
+We recommend using the [{{edot}} Collector](/solutions/observability/logs/stream-any-log-file-using-elastic-agent.md) to collect application logs.
 :::
 
 

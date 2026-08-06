@@ -157,7 +157,7 @@ If problems persist:
 
 * Review the [iOS SDK reference documentation](apm-agent-ios://reference/edot-ios/index.md).
 
-* [Enable debug logging for the Collector](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) and [the SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+* [Enable debug logging for the Collector](/troubleshoot/ingest/opentelemetry/otel-collector/enable-debug-logging.md) and [the SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
   ::::{important}
   **Upload your complete debug logs** to a service like [GitHub Gist](https://gist.github.com) so that we can analyze the problem. Logs should include everything from when the application starts up until the first request executes.

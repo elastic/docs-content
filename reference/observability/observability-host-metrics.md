@@ -31,7 +31,7 @@ Refer to the following sections for host metrics and field calculation formulas 
 
 ### OpenTelemetry Collector configuration [open-telemetry-collector-configuration]
 
-By default, the {{product.edot-collector}} uses one of several predefined host metrics configurations based on the `hostmetrics` receiver. Refer to the [default configurations](elastic-agent://reference/edot-collector/config/default-config-standalone.md).
+By default, the {{product.edot-collector}} uses one of several predefined host metrics configurations based on the `hostmetrics` receiver. Refer to the [default configurations](elastic-agent://reference/otel-collector/config/default-config-standalone.md).
 
 If you're using a different Collector distribution or the upstream Contrib Collector, refer to the [System OpenTelemetry Assets](integration-docs://reference/system_otel.md#collector-configuration) documentation.
 

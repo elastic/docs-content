@@ -189,4 +189,4 @@ Disable diagnostic collection when you're done by unsetting the variable or rest
 
 ## Resources
 
-To learn how to enable debug logging for the {{agent}}, refer to [Enable debug logging for {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md).
+To learn how to enable debug logging for the {{agent}}, refer to [Enable debug logging for {{agent}}](/troubleshoot/ingest/opentelemetry/otel-collector/enable-debug-logging.md).
