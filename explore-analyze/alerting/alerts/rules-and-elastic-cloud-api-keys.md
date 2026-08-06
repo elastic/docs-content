@@ -24,9 +24,11 @@ The migration was designed not to interrupt rule execution. Rules that couldn't 
 
 New and edited rules now use {{ecloud}} API keys by default. {{es}} API keys are used as a fallback only when an {{ecloud}} API key isn't available. 
 
-:::{note}
-If you create or update rules through the public APIs using a personal {{es}} API key, those rules won't be automatically migrated to {{ecloud}} API keys. When you interact with those rules through the UI (for example, by editing and saving a rule or using **Update API key** from the rule's action menu) {{kib}} may convert them to {{ecloud}} API keys. Follow any prompts the UI shows during the process.
-:::
+### Find rules that are missing an {{ecloud}} API key [missing-api-key-tag]
+
+A rule can end up running on an {{es}} API key instead of an {{ecloud}} API key at any time, even long after a migration. This typically happens when a rule is created or updated through the public APIs using a personal {{es}} API key rather than through the UI.
+
+To find affected rules, go to **{{stack-manage-app}} > {{rules-ui}}** and check the rule tags. Any rule tagged **Missing Universal Api Key** is still running on an {{es}} API key. To migrate the rule to an {{ecloud}} API key, edit it in the UI (for example, by editing and saving the rule) or select **Update API key** from the rule's action menu. Follow any prompts the UI shows during the process.
 
 ### Check your rules after the migration [post-migration-checklist]
 
@@ -43,9 +45,11 @@ Use the following checklists to confirm your rules are running correctly after t
 :::{dropdown} Within 90 days
 - **Review API key expiration**: If a rule was created or updated through the Kibana API using an {{ecloud}} API key with a defined expiration, the rule is bound to that specific key and its expiration date. When the key expires, the rule stops running. To generate a new key for the rule, select **Update API key** from the rule's action menu.
 
-- **Check rule tags**: On the **{{stack-manage-app}} > {{rules-ui}}** page, review rule tags. Any rule tagged **Missing Elastic Cloud Api Key** is still running on an {{es}} API key. This typically happens when rules were created or updated through the public APIs using a personal {{es}} API key rather than through the UI. Edit the rule in the UI or update its API key to migrate it to an {{ecloud}} API key.
-
 - **Review rules that use custom roles**: If any rules rely on custom roles, confirm those roles still exist and are correctly defined. If a custom role was deleted or changed around the time of migration, affected rules might be silently running with reduced access or might have failed.
+:::
+
+:::{tip}
+Rules can end up missing an {{ecloud}} API key at any time, not only within 90 days of a migration. Refer to [Find rules that are missing an {{ecloud}} API key](#missing-api-key-tag) for an ongoing check you can run at any time.
 :::
 
 ## How rules use {{ecloud}} API keys [rule-behavior-changes]
