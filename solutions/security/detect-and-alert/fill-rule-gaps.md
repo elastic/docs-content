@@ -63,6 +63,12 @@ Within the **Rule Monitoring** tab **Rules** table, several columns provide gap 
 | Last Gap (if any) | {applies_to}`stack: ga 9.0-9.4, removed 9.5` How long the most recent gap lasted. |
 | Unfilled gaps duration | Total duration of remaining unfilled or partially filled gaps. The total can change based on the time range you select (data on gaps older than 90 days is not retained). If a rule has no gaps, the column displays a dash (`––`). |
 
+::::{note}
+An execution can have a **Scheduling delay** while **Unfilled gaps duration** remains empty or `0`. This is expected when catch-up covers the missed period.
+
+Before a gap is recorded, a late run can extend its source search window backward by up to four additional `interval`-sized windows. Only delay beyond that catch-up capacity is recorded as a gap.
+::::
+
 #### Gap fill status [gap-fill-status]
 
 ```yaml {applies_to}
