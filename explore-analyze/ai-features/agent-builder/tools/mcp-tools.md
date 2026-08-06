@@ -17,7 +17,11 @@ products:
 
 # Model Context Protocol (MCP) tools in {{agent-builder}}
 
-Agent Builder MCP tools enable calling a remote [MCP server's](https://modelcontextprotocol.io/docs/learn/server-concepts) tools in your agent [chat](../chat.md). When your agent calls an MCP tool, it executes the associated tool on the MCP server and returns its result.
+Agent Builder MCP tools enable calling a remote [MCP server's](https://modelcontextprotocol.io/docs/learn/server-concepts) tools in your agent [chat](../chat.md). For example, you can import a documentation-lookup tool from an external service so your agent can fetch current library docs during a conversation. When your agent calls an MCP tool, it executes the associated tool on the MCP server and returns its result.
+
+:::{note}
+On this page, {{agent-builder}} acts as the MCP client: your agents connect to an external MCP server to use its tools. To instead let external MCP hosts use your {{agent-builder}} tools, refer to [](../mcp-server.md).
+:::
 
 ## Prerequisites
 

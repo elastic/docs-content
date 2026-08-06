@@ -12,6 +12,10 @@ products:
 
 To quickly find apps and the objects you create, use the search field in the global header. Search suggestions include deep links into applications, allowing you to directly navigate to the views you need most.
 
+:::{tip}
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` You can also reorder the apps in the navigation menu and hide the ones you don't use. Refer to [Customize your navigation menu](/explore-analyze/find-and-organize/customize-navigation.md).
+:::
+
 :::{image} /explore-analyze/images/kibana-app-navigation-search.png
 :alt: Example of searching for apps
 :screenshot:

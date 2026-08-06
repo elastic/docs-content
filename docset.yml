@@ -32,6 +32,10 @@ cta:
 
 exclude:
   - 'README.md'
+  - 'AGENTS.md'
+  - 'AI.md'
+  - 'CLAUDE.md'
+  - 'GEMINI.md'
   - 'changelog/**'
   - 'releases/**'
 
@@ -111,7 +115,6 @@ toc:
   - file: archive.md
   - file: versions.md
   - hidden: 404.md
-  - hidden: _search.md
 
 subs:
   subscriptions:   "https://www.elastic.co/subscriptions"
@@ -119,7 +122,7 @@ subs:
   ech:   "Elastic Cloud Hosted"
   ece:   "Elastic Cloud Enterprise"
   eck:   "Elastic Cloud on Kubernetes"
-  edot:  "Elastic Distribution of OpenTelemetry"
+  edot:  "Elastic OpenTelemetry"
   motlp: "Elastic Cloud Managed OTLP Endpoint"
   serverless-full:   "Elastic Cloud Serverless"
   serverless-short:   "Serverless"
@@ -169,6 +172,8 @@ subs:
   fleet-server:   "Fleet Server"
   integrations-server:   "Integrations Server"
   integrations:   "Integrations"
+  managed-integration:   "Elastic Managed integration"
+  managed-integrations:   "Elastic Managed integrations"
   package-registry:   "Elastic Package Registry"
   artifact-registry:   "Elastic Artifact Registry"
   aws:   "AWS"
@@ -327,3 +332,5 @@ subs:
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"
   fedramp-il5: "FedRAMP IL5"
+release_notes:
+  - product: cloud-serverless

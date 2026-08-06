@@ -1,6 +1,6 @@
 ---
 navigation_title: EDOT Java
-description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry (EDOT) Java agent, covering connectivity, agent identification, and debugging.
+description: Troubleshooting guide for the EDOT Java agent, covering connectivity, agent identification, and debugging.
 applies_to:
   stack:
   serverless:
@@ -13,7 +13,7 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting the EDOT Java agent
+# Troubleshooting the EDOT Java agent [troubleshooting-the-edot-java-agent]
 
 Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](elastic-otel-java://reference/edot-java/supported-technologies.md) for EDOT Java and the OpenTelemetry SDK.
 
@@ -29,8 +29,8 @@ Check from the host, VM, pod, container, or image running the app that connectiv
 
 The following examples use a default URL, `http://127.0.0.1:4318/`, which you should replace with the endpoint you are using:
 
-- OpenTelemetry or EDOT Collector without authentication: `curl -i http://127.0.0.1:4318/v1/traces -X POST -d '{}' -H content-type:application/json`
-- OpenTelemetry or EDOT Collector with API key authentication: `curl -i http://127.0.0.1:4318/v1/traces -X POST -d '{}' -H content-type:application/json -H "Authorization:ApiKey <api_key>"`
+- OpenTelemetry or {{agent}} without authentication: `curl -i http://127.0.0.1:4318/v1/traces -X POST -d '{}' -H content-type:application/json`
+- OpenTelemetry or {{agent}} with API key authentication: `curl -i http://127.0.0.1:4318/v1/traces -X POST -d '{}' -H content-type:application/json -H "Authorization:ApiKey <api_key>"`
 
 The Collector should produce output similar to the following:
 
@@ -125,7 +125,7 @@ In both cases you need to restart the JVM.
 
 You can partially deactivate the agent, or only selectively activate a limited set of instrumentations by following instructions in the [upstream documentation](https://opentelemetry.io/docs/zero-code/java/agent/disable/).
 
-## Check if EDOT is attached to a running JVM
+## Check if {{edot}} is attached to a running JVM [check-if-edot-is-attached-to-a-running-jvm]
 
 There are a few ways you can detect if the agent has been attached to a JVM:
 
@@ -133,7 +133,7 @@ There are a few ways you can detect if the agent has been attached to a JVM:
 - In JVM arguments, Run `ps -ef|grep javaagent`.
 - In environment variables, for example `JAVA_TOOL_OPTIONS`. Check by inspecting the output of `export|grep javaagent`.
 
-## Identify the version of EDOT agent
+## Identify the version of EDOT agent [identify-the-version-of-edot-agent]
 
 When the agent starts, a log message in the standard error provides the agent version: 
 
@@ -157,18 +157,18 @@ Because EDOT Java is a distribution of [OpenTelemetry Java instrumentation](http
 - [Semantic Conventions Java mappings](https://github.com/open-telemetry/semantic-conventions-java)
 - [OpenTelemetry Java Contrib](https://github.com/open-telemetry/opentelemetry-java-contrib)
 
-The versions of those included in EDOT are usually aligned with the OpenTelemetry Java Instrumentation. For reference, check the [EDOT Java release notes](elastic-otel-java://release-notes/index.md) details of versions included in each release.
+The versions of those included in {{edot}} are usually aligned with the OpenTelemetry Java Instrumentation. For reference, check the [EDOT Java release notes](elastic-otel-java://release-notes/index.md) details of versions included in each release.
 
-## When and how to update EDOT
+## When and how to update {{edot}} [when-and-how-to-update-edot]
 
-The general recommendation is to update EDOT agent to the latest version when possible to benefit from:
+The general recommendation is to update the EDOT agent to the latest version when possible to benefit from:
 
 - Bug fixes and technical improvements.
 - Support of new features and instrumentation.
 - Evolution of semantic conventions.
 - Frequent and regular updates usually makes reviewing and handling changes easier.
 
-Updating to the latest EDOT version involves reviewing changes of the included dependencies:
+Updating to the latest {{edot}} version involves reviewing changes of the included dependencies:
 
 - [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 - [OpenTelemetry Java SDK](https://github.com/open-telemetry/opentelemetry-java)
@@ -184,8 +184,8 @@ To implement manual instrumentation, some applications use the OpenTelemetry API
 Updates of the OpenTelemetry API/SDK in the application and the EDOT Java agent can be done independently.
 
 - EDOT Java is backward-compatible with all previous versions of OpenTelemetry API/SDK.
-- Using a more recent version of API/SDK than the one in EDOT should usually work without problem, however to ensure maximum compatibility keeping OpenTelemetry API/SDK version ≤ EDOT OpenTelemetry API/SDK version is recommended.
+- Using a more recent version of API/SDK than the one in {{edot}} should usually work without problem, however to ensure maximum compatibility keeping OpenTelemetry API/SDK version ≤ {{edot}} OpenTelemetry API/SDK version is recommended.
 
 ### How to update
 
-Updating EDOT Java agent is done by replacing the agent binary `.jar` that has been [added during setup](elastic-otel-java://reference/edot-java/setup/index.md).
+Updating the EDOT Java agent is done by replacing the agent binary `.jar` that has been [added during setup](elastic-otel-java://reference/edot-java/setup/index.md).

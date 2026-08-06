@@ -16,6 +16,10 @@ products:
 
 You can extend the built-in tool catalog with your own custom tool definitions. Custom tools offer flexibility in how they interact with your data. This flexibility allows you to create tools that match your specific use cases and data access patterns.
 
+:::{note}
+[Human-in-the-loop confirmation](../chat.md#human-in-the-loop-prompts) is not currently available for custom tools.
+:::
+
 ## Tool types
 
 {{agent-builder}} supports several tool types:
@@ -133,8 +137,10 @@ The set of protected prefixes has expanded across {{stack}} versions. The versio
 - `attachments.*` {applies_to}`stack: ga 9.4+`
 - `filestore.*` {applies_to}`stack: ga 9.4+`
 - `observability.*` {applies_to}`stack: ga 9.3+`
+- `platform.alerting.*` {applies_to}`stack: ga 9.5+`
 - `platform.core.*` {applies_to}`stack: ga 9.2+`
 - `platform.dashboard.*` {applies_to}`stack: ga 9.3+`
+- `platform.sig_events.*` {applies_to}`stack: ga 9.5+`
 - `platform.streams.*` {applies_to}`stack: ga 9.4+`
 - `platform.workflows.*` {applies_to}`stack: ga 9.4+`
 - `search.*` {applies_to}`stack: ga 9.4+`
