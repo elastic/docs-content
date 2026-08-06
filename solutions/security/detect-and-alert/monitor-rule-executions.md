@@ -177,9 +177,9 @@ These flyout metrics are stored only for executions logged on {{stack}} 9.4 or l
 | Scheduling delay | How long after its scheduled start time this run began. It measures queue or wait time before work starts, not missing event time between runs. For gaps in event coverage, use **Gap duration**. | Large delays often point to queue backlog, cluster load, or resource limits rather than a problem inside the rule query itself. |
 
 ::::{note}
-A late rule run can still show a `0` **Gap duration**. Before recording a gap, the rule automatically extends its source search window backward to catch up, up to four additional `interval`-sized windows. A gap is recorded only if the delay exceeds this catch-up capacity.
+A late rule run can still show a `0` **Gap duration**. Before recording a gap, the rule automatically extends its source search window backward by up to four additional `interval`-sized windows. A gap is recorded only if the delay exceeds this catch-up capacity.
 
-For example, with a `5m` interval and `from: now-6m` (1 minute of look-back), delays up to about 26 minutes are fully covered by catch-up. Delays beyond that can still leave uncovered time, which is then recorded as a gap.
+For example, with a `5m` interval and `from: now-6m` (1 minute of look-back), catch-up can cover about 26 minutes of delay: `(4 × 5m) + 6m = 26m`. Delays beyond that can still leave uncovered time, which is then recorded as a gap.
 ::::
 
 #### Execution duration and breakdown
