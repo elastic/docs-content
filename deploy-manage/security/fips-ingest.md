@@ -28,7 +28,7 @@ The default configurations provided in the binaries are designed for FIPS-capabl
 
 ### TLS [ingest-limitations-tls]
 
-Only FIPS 140-3 compliant TLS protocols, ciphers, and curve types are allowed to be used as listed below.
+Only FIPS 140-3 compliant TLS protocols, ciphers, and curve types are allowed to be used as listed in the following section.
 * The supported TLS versions are `TLS v1.2` and `TLS v1.3`.
 * The supported cipher suites are:
   * `TLS v1.2`: `ECDHE-RSA-AES-128-GCM-SHA256`, `ECDHE-RSA-AES-256-GCM-SHA384`, `ECDHE-ECDSA-AES-128-GCM-SHA256`, `ECDHE-ECDSA-AES-256-GCM-SHA384`
@@ -39,7 +39,7 @@ Only FIPS 140-3 compliant TLS protocols, ciphers, and curve types are allowed to
 Support for encrypted private keys is not available, as the cryptographic modules used for decrypting password protected keys are not FIPS validated. If an output or any other component with an SSL key that is password protected is configured, the components will fail to load the key. When running in FIPS mode, you must provide non-encrypted keys.
 Be sure to enforce security in your FIPS environments through other means, such as strict file permissions and access controls on the key file itself, for example.
 
-These TLS related restrictions apply to all components listed above.
+These TLS related restrictions apply to all components listed in the preceding section.
 
 ### General output and input limitations (Kerberos protocol) [ingest-inputoutput-limitations]
 
