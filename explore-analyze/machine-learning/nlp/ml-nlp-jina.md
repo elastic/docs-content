@@ -63,14 +63,15 @@ Text embedding models convert text into vector embeddings for semantic similarit
 
 ### Multimodal embedding models [jina-multimodal-embeddings]
 
-Multimodal embedding models convert text, images, video, audio, and documents such as PDF into vector embeddings in a shared vector space. 
+Multimodal embedding models convert text, images, video, audio, and documents such as PDF into vector embeddings in a shared vector space.
+
+:::{include} _snippets/jina-multimodal-embedding-models.md
+:::
+
+Jina also provides a vision-language model for visual question answering:
 
 | Model | Description | Deployment | Access |
 | --- | --- | --- | --- |
-| [`jina-embeddings-v5-omni-small`](https://jina.ai/models/jina-embeddings-v5-omni-small/) | Multimodal embeddings for text, image, audio, video, and PDF. Accepts multimodal input and produces 1024-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-omni-getting-started), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
-| [`jina-embeddings-v5-omni-nano`](https://jina.ai/models/jina-embeddings-v5-omni-nano/) | Compact multimodal embeddings for edge deployment. Accepts multimodal input and produces 768-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-omni-getting-started), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
-| [`jina-clip-v2`](https://jina.ai/models/jina-clip-v2/) | Multilingual multimodal embeddings for text and image retrieval. Accepts text and image input and produces 1024-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-omni-getting-started), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
-| [`jina-embeddings-v4`](https://jina.ai/models/jina-embeddings-v4/) | Universal multimodal embeddings for text, image, and PDF retrieval. Accepts text, image, and PDF input and produces 2048-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
 | [`jina-vlm`](https://jina.ai/models/jina-vlm/) | Vision-language model for visual question answering. Accepts image and text input and generates text output. Supports input lengths up to 32K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
 
 #### Performance considerations [jina-omni-performance]
@@ -175,11 +176,8 @@ Models run in Docker containers on your own infrastructure. Access them through 
 
 ## Access models [jina-access]
 
-You can access models in the following ways:
-
-* [Elastic {{infer-cap}} Service (EIS)](#jina-eis-getting-started): Call models through managed Elastic {{infer}} endpoints.
-* [Jina API](#jina-external): Call models through the hosted Jina API or through Jina API schemas on-prem.
-* [Cloud marketplace endpoints](#jina-cloud-marketplaces-access): Call models you deployed in your cloud provider account.
+:::{include} _snippets/jina-deploy-and-access-options.md
+:::
 
 ### Elastic {{infer-cap}} Service [jina-eis-getting-started]
 
