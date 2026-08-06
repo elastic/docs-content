@@ -21,7 +21,7 @@ For an overview of {{cps}} concepts, refer to [{{cps-cap}}](/explore-analyze/cro
 {{anomaly-detect-cap}} jobs and transforms also use `project_routing`, but as a stored configuration rather than a per-query parameter. For details, refer to [{{cps-cap}} scope for {{anomaly-jobs}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope).
 :::
 
-### Using the project_routing parameter
+## Using the project_routing parameter
 
 The `project_routing` parameter is available on all {{cps-init}}-enabled endpoints. Refer to the [supported APIs](/explore-analyze/cross-project-search.md#cps-supported-apis) for a full list of endpoints.
 
