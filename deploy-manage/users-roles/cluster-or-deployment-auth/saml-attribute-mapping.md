@@ -105,6 +105,8 @@ The {{es}} SAML realm can be configured to map SAML `attributes` to the followin
 `dn`
 :   *(Optional)* The user's X.500 *Distinguished Name*.
 
+For the full list of `attributes.*` and related settings, including type and configuration details, refer to [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
+
 ## Extract partial values from SAML attributes [saml-attribute-patterns]
 
 An IdP's attribute might contain more information than you want to use within {{es}}. A common example of this is one where the IdP works exclusively with email addresses, but you want the user's `principal` to use the `local-name` part of the email address. For example, if user's email address is `james.wong@staff.example.com`, then you might want their principal to be `james.wong`.
