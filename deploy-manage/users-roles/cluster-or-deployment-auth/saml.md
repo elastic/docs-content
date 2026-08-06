@@ -81,7 +81,7 @@ deployment:
 
 If you're using a self-managed cluster:
 
-* Enable TLS for the {{es}} HTTP interface. SAML requires HTTPS. For more information, see [Encrypt HTTP client communications for {{es}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-http-communication). If you started {{es}} [with security enabled](/deploy-manage/security/self-setup.md), TLS is already enabled.
+* SAML requires the cluster to run in [production mode](/deploy-manage/deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) with HTTPS enabled on the {{es}} HTTP interface. [In most installation scenarios](/deploy-manage/security/self-setup.md), TLS is already enabled. For manual setup steps, refer to [Encrypt HTTP client communications for {{es}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-http-communication).
 * The {{es}} token service must be enabled. It is automatically enabled when TLS is configured on the HTTP interface. You can also enable it explicitly in [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
   ```yaml
   xpack.security.authc.token.enabled: true
@@ -206,7 +206,7 @@ If you run multiple {{kib}} instances connected to the same cluster or deploymen
 
 #### Allow both SAML and basic authentication [saml-kibana-basic]
 
-To let some users (for example, local administrators) log in with a username and password, enable a basic provider alongside SAML:
+To let some users, such as local administrators, log in with a username and password, enable a basic provider alongside SAML:
 
 ```yaml
 xpack.security.authc.providers:
