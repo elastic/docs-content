@@ -18,13 +18,7 @@ products:
 - Users can access only the spaces that they have been granted access to. This access is based on user roles, and a given role can have different permissions per space.
 - In {{stack}} deployments on version 8.16 and later, each space has its own navigation, called solution view.
 
-{{kib}} creates a default space for you. When you create more spaces, users are asked to choose a space when they log in, and can change their current space at any time from the top menu.
-
-:::{image} /deploy-manage/images/kibana-change-space.png
-:alt: Change current space menu
-:screenshot:
-:width: 50%
-:::
+{{kib}} creates a default space for you. To select or switch spaces as an individual user, refer to [Select and switch Kibana spaces](/deploy-manage/choose-and-switch-spaces.md).
 
 You can find the **Spaces** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -32,8 +26,10 @@ The rest of this page explains how to manage spaces and their settings. For info
 
 ## Required permissions [_required_privileges_3]
 
-* {applies_to}`serverless:` `Admin` role or equivalent
-* {applies_to}`stack:` `kibana_admin` or equivalent
+To manage spaces, you need the following role or equivalent privileges for your deployment type:
+
+* {applies_to}`serverless:` `Admin` role
+* {applies_to}`stack:` `kibana_admin`
 
 
 ## Create a space [spaces-managing]
