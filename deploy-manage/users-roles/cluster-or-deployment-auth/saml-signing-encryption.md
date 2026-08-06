@@ -66,10 +66,7 @@ Encryption certificates can be generated with the same process.
 
 By default, {{es}} signs *all* outgoing SAML messages if a signing certificate and key has been configured.
 
-:::{tip}
-* In self-managed clusters, file path settings are resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.
-* If you're using {{ech}} or {{ece}}, then you must upload any certificate or keystore files before they can be referenced in the configuration. For {{ech}}, upload them [as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). For {{ece}}, follow the equivalent [ECE procedure](/deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md). In both cases, you can add the files to your existing SAML bundle.
-* If you're using {{eck}}, then install the files as [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+:::{include} /deploy-manage/_snippets/es-file-path-tip.md
 :::
 
 ::::{tab-set}
@@ -134,10 +131,7 @@ xpack:
 
 If an `Assertion` contains both encrypted and plain-text attributes, then failure to decrypt the encrypted attributes does not cause an automatic rejection. Rather, {{es}} processes the available plain-text attributes (and any `EncryptedAttributes` that could be decrypted).
 
-:::{tip}
-* In self-managed clusters, file path settings are resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.
-* If you're using {{ech}} or {{ece}}, then you must upload any certificate or keystore files before they can be referenced in the configuration. For {{ech}}, upload them [as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). For {{ece}}, follow the equivalent [ECE procedure](/deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md). In both cases, you can add the files to your existing SAML bundle.
-* If you're using {{eck}}, then install the files as [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+:::{include} /deploy-manage/_snippets/es-file-path-tip.md
 :::
 
 ::::{tab-set}
