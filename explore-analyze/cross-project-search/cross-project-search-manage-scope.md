@@ -53,7 +53,7 @@ Each project row has a toggle switch that includes or excludes it from searches.
 
 You can also select all project currently shown in the list by clicking **Include all listed**.
 
-The scope selector prevents you from excluding every project. The toggle on the last included project is disabled, so at least one project is always included.
+The scope selector prevents you from excluding every project. The toggle on the last included project is deactivated, so at least one project is always included.
 
 If your current selection results in zero included projects, the scope selector displays a warning.
 
@@ -67,9 +67,7 @@ To add a tag filter:
 2. Choose a tag from the **Select a tag** dropdown.
 3. Choose an operator. The default operator is **is**.
 4. If the operator requires a value, choose one or more values from the **Select a value** dropdown.
-5. Select **Apply** to add the filter.
-
-<!-- TODO: verify the exact button label for applying a filter -->
+5. Select **Apply** ({icon}`check`) to add the filter.
 
 When multiple filters are active, they are combined with AND logic: a project must match all filters to appear in the list.
 
@@ -79,7 +77,7 @@ Active filters appear as badges below the filter form. You can:
 
 * Select a filter badge to edit its tag, operator, or value.
 * Invert a filter to switch between include and exclude logic.
-* Enable or disable a filter without removing it.
+* Turn off a filter without removing it.
 * Remove a filter to delete it.
 
 To remove all active filters at once, select **Clear project tag filters** in the scope selector.
