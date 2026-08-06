@@ -95,7 +95,7 @@ You can also chat with AI Assistant from several particular pages in {{elastic-s
 
 ::::{note}
 :applies_to: stack: ga 9.0-9.4
-In {{stack}} 9.0.x-9.4.x, click **Chat** while viewing the details of an alert or event, instead of **Ask AI Assistant**.
+In these versions, the **Ask AI Assistant** button is called **Chat**.
 ::::
 
 ::::{note}
