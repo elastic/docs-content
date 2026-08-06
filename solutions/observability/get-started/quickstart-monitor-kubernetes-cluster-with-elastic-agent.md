@@ -18,7 +18,7 @@ cta:
 In this quickstart guide, you'll learn how to create the Kubernetes resources required to monitor your cluster infrastructure by using a single command to download, install, and configure {{agent}} in your Kubernetes cluster.
 
 :::{tip}
-We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Collector](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md) as the preferred way to collect Kubernetes logs, metrics, and application traces using OpenTelemetry.
+We recommend using the [{{agent}}](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md) as the preferred way to collect Kubernetes logs, metrics, and application traces using OpenTelemetry.
 :::
 
 :::{note}
