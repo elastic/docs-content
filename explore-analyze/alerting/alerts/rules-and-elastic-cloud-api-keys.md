@@ -26,9 +26,14 @@ New and edited rules now use {{ecloud}} API keys by default. {{es}} API keys are
 
 ### Find rules that are missing an {{ecloud}} API key [missing-api-key-tag]
 
-A rule can end up running on an {{es}} API key instead of an {{ecloud}} API key at any time, even long after a migration. This typically happens when a rule is created or updated through the public APIs using a personal {{es}} API key rather than through the UI.
+When {{kib}} creates or edits a rule, it generates the rule's API key from the credentials used to make that request. If a rule is created or updated through the public APIs using a personal {{es}} API key rather than through the UI, that {{es}} API key becomes the rule's API key instead of an {{ecloud}} API key.
 
-To find affected rules, go to **{{stack-manage-app}} > {{rules-ui}}** and check the rule tags. Any rule tagged **Missing Universal Api Key** is still running on an {{es}} API key. To migrate the rule to an {{ecloud}} API key, edit it in the UI (for example, by editing and saving the rule) or select **Update API key** from the rule's action menu. Follow any prompts the UI shows during the process.
+To find affected rules, check rule tags on the **Rules** page for your project type:
+
+- **{{observability}} and {{es}} projects**: Find **{{rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+- **Security projects**: Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+Any rule tagged **Missing Universal Api Key** is still running on an {{es}} API key. To migrate the rule to an {{ecloud}} API key, edit it in the UI (for example, by editing and saving the rule) or select **Update API key** from the rule's action menu. Follow any prompts the UI shows during the process.
 
 ### Check your rules after the migration [post-migration-checklist]
 
