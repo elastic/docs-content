@@ -142,7 +142,7 @@ The **Graph** flyout shows the entities involved in the alert and the relationsh
 * **Actor**: The entity that performed the action. {{elastic-sec}} selects a single actor based on the first set of fields that's populated in the alert, in this order: `user.*`, then `host.*`, then `service.*`, then `entity.*`.
 * **Targets**: The entities the action was performed on. {{elastic-sec}} captures all matching target entities from the `user.target.*`, `host.target.*`, `service.target.*`, and `entity.target.*` fields.
 
-In the Graph flyout, you can:
+In the **Graph** flyout, you can:
 
 * Hover over an entity node and click the plus icon {icon}`plus_circle` to open the actions menu, then select **Show entity details**.
 * Hover over the relationship between two entities and click the plus icon {icon}`plus_circle` to open the actions menu, then select **Show related events** or **Show event details**.
