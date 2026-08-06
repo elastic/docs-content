@@ -89,7 +89,7 @@ The risk score table shows the category, score, and number of risk inputs that d
 
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` For entities that belong to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md), the section shows both the individual **Entity risk score** and the **Resolution group risk score** — the aggregated score across all linked entities in the group — each with their own score and inputs breakdown.
 
-Expand the **Risk score** section to access additional details about the entity's risk inputs.
+Open the section's child flyout to access additional details about the entity's risk inputs.
 
 #### Risk score history [risk-score-history]
 ```yaml {applies_to}
