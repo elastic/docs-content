@@ -141,6 +141,24 @@ $$$client-ssl-options$$$
         -----END CERTIFICATE-----
     ```
 
+`ssl.certificate_reload.enabled` $$$ssl.certificate_reload.enabled-client-setting$$$
+:   {applies_to}`stack: ga 9.5+` (boolean) When `true`, {{agent}} periodically re-reads the `ssl.certificate`, `ssl.key`, and `ssl.certificate_authorities` files from disk so that certificate rotations are picked up without a restart. The new certificate is used on the next TLS handshake within one `ssl.certificate_reload.reload_interval`.
+
+    **Default:** `true`
+
+    ::::{note}
+    This setting is also available on 8.19, 9.3, and 9.4 patch releases, but defaults to `false` on those releases for backward compatibility. Set it to `true` to opt in.
+    ::::
+
+`ssl.certificate_reload.reload_interval` $$$ssl.certificate_reload.reload_interval-client-setting$$$
+:   {applies_to}`stack: ga 9.5+` (duration) How often {{agent}} checks for changes to the certificate, key, and CA files on disk. Only used when `ssl.certificate_reload.enabled` is `true`.
+
+    **Default:** `5s`
+
+    ::::{note}
+    This setting is also available on 8.19, 9.3, and 9.4 patch releases.
+    ::::
+
 `ssl.key` $$$ssl.key-client-setting$$$
 :   (string) The client certificate key used for client authentication. Only required if `client_authentication` is configured.
 
@@ -228,6 +246,24 @@ $$$server-ssl-options$$$
         CERTIFICATE CONTENT APPEARS HERE
         -----END CERTIFICATE-----
     ```
+
+`ssl.certificate_reload.enabled` $$$ssl.certificate_reload.enabled-server-setting$$$
+:   {applies_to}`stack: ga 9.5+` (boolean) When `true`, {{agent}} periodically re-reads the `ssl.certificate`, `ssl.key`, and `ssl.certificate_authorities` files from disk so that certificate rotations are picked up without a restart. The new certificate is used on the next TLS handshake within one `ssl.certificate_reload.reload_interval`.
+
+    **Default:** `true`
+
+    ::::{note}
+    This setting is also available on 8.19, 9.3, and 9.4 patch releases, but defaults to `false` on those releases for backward compatibility. Set it to `true` to opt in.
+    ::::
+
+`ssl.certificate_reload.reload_interval` $$$ssl.certificate_reload.reload_interval-server-setting$$$
+:   {applies_to}`stack: ga 9.5+` (duration) How often {{agent}} checks for changes to the certificate, key, and CA files on disk. Only used when `ssl.certificate_reload.enabled` is `true`.
+
+    **Default:** `5s`
+
+    ::::{note}
+    This setting is also available on 8.19, 9.3, and 9.4 patch releases.
+    ::::
 
 `ssl.client_authentication` $$$ssl.client_authentication-server-setting$$$
 :   (string) Configures client authentication. The valid options are:

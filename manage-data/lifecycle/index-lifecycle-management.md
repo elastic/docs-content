@@ -15,7 +15,7 @@ products:
 
 # {{ilm-cap}} ({{ilm-init}}) in {{es}}
 
-{{ilm}} ({{ilm-init}}) automates the management of time-based indices, such as logs and metrics. Using {{ILM-init}} policies, you can streamline index rollover, retention, and deletion to optimize performance, reliability, and storage costs for your data.
+{{ilm-cap}} ({{ilm-init}}) automates the management of time-based indices, such as logs and metrics. Using {{ILM-init}} policies, you can streamline index rollover, retention, and deletion to optimize performance, reliability, and storage costs for your data.
 
 For example, you can use {{ilm-init}} to:
 
@@ -33,9 +33,9 @@ Note the availability of {{ilm-init}} to ensure that it's applicable for your us
 
 * You can use {{ilm-init}} to manage indices and data streams:
 
-    * **Indices:** You use {{ilm-init}} to manage a specific index or set of indices by defining a lifecycle policy and applying it to the indices or an index alias. Each index is then evaluated against its policy and transitions through phases (`hot`, `warm`, `cold`, `frozen`, `delete`) based on pre-defined conditions. This approach allows for more granular control over each index but requires considerably more effort compared to using a data stream, which is our recommended option.
+  * **Indices:** You use {{ilm-init}} to manage a specific index or set of indices by defining a lifecycle policy and applying it to the indices or an index alias. Each index is then evaluated against its policy and transitions through phases (`hot`, `warm`, `cold`, `frozen`, `delete`) based on pre-defined conditions. This approach allows for more granular control over each index but requires considerably more effort compared to using a data stream, which is our recommended option.
 
-    * **Data streams:** A [data stream](/manage-data/data-store/data-streams.md) acts as a layer of abstraction over a set of indices that contain append-only, time series data. You can configure {{ilm-init}} using a data stream as a single named resource, so that rollover and any other configured actions are performed on the data stream's backing indices automatically.
+  * **Data streams:** A [data stream](/manage-data/data-store/data-streams.md) acts as a layer of abstraction over a set of indices that contain append-only, time series data. You can configure {{ilm-init}} using a data stream as a single named resource, so that rollover and any other configured actions are performed on the data stream's backing indices automatically.
 
 * {{ilm-init}} is available for all deployment types on the versioned {{stack}} but is not available for {{es-serverless}}. In a {{serverless-short}} environment, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is available as a data lifecycle option.
 

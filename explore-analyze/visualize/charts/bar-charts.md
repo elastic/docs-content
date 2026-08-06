@@ -3,7 +3,7 @@ navigation_title: Bar charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building bar charts with Kibana Lens in Elastic.
+description: Create bar charts to compare values across categories, display distributions, and show rankings side by side.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -33,9 +33,8 @@ To build a bar chart:
 :::::{stepper}
 
 ::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a bar chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 ::::
 
 ::::{step} Set the visualization to Bar
@@ -77,11 +76,13 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Sort bars by value (ascending or descending) to make comparisons easier, or keep them in alphabetical/chronological order when the sequence matters.
 
 Refer to [](#settings) for a complete list of options.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 ::::
 
 ::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and be able to add it to other dashboards later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 ::::
 
 :::::
@@ -111,10 +112,13 @@ To create a stacked bar chart:
 ![Bar chart with stacking](../../images/stacked-bar-chart.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a stacked bar chart that counts log entries over time and breaks them down by HTTP response code.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -241,10 +245,13 @@ To create an unstacked bar chart:
 ![Bar chart without stacking showing breakdown](../../images/unstacked-bar-chart.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates an unstacked bar chart where each breakdown category renders as a separate bar placed side by side, making individual values straightforward to compare.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -357,23 +364,22 @@ Customize your bar chart to display exactly the information you need, formatted 
 ### Horizontal axis settings [horizontal-axis-options]
 
 **Data**
-:   The dimension that creates your individual bars. Common functions include:
-    - **Top values**: Create bars for the most common values in a field.
-      - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term bars. When multiple fields are selected, each bar represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many top values to display. The default number of values depends on your environment:
-        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-        - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
+:   The dimension that creates your individual bars. It supports the following functions:
+
+    :::{include} ../../_snippets/lens-bucket-top-values.md
+    :::
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
-    - **Date histogram**: Create time-based bars with configurable intervals.
-      - **Field**: Select the date field to use for the time-based grouping.
+    :::{include} ../../_snippets/lens-bucket-date-histogram.md
+    :::
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
-    - **Intervals**: Group data into numerical ranges.
-      - **Field**: Select the numeric field to create intervals from.
-    - **Filters**: Define custom categories using KQL queries.
+    :::{include} ../../_snippets/lens-bucket-intervals.md
+    :::
+    :::{include} ../../_snippets/lens-bucket-filters.md
+    :::
 
 **Appearance**
 :   Define the formatting of the horizontal axis, including:
@@ -398,23 +404,25 @@ Customize your bar chart to display exactly the information you need, formatted 
 ### Breakdown settings [breakdown-options]
 
 **Data**
-:   Split your bars into segments or groups based on another dimension. Each unique value creates its own segment or bar, allowing you to show composition or compare metrics across multiple dimensions. Common functions include:
-    - **Top values**: Create bar segments for the most common values in a field.
-      - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each segment represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many top values to display. The default number of values depends on your environment:
-        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-        - {applies_to}`stack: ga 9.0-9.3` Defaults to 3.
+:   Split your bars into segments or groups based on another dimension. Each unique value creates its own segment or bar, allowing you to show composition or compare metrics across multiple dimensions. It supports the following functions:
+
+    :::{include} ../../_snippets/lens-bucket-top-values.md
+    :::
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
-    - **Date histogram**: Create time-based bars with configurable intervals.
-      - **Field**: Select the date field to use for the time-based grouping.
+    :::{include} ../../_snippets/lens-bucket-date-histogram.md
+    :::
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
-    - **Intervals**: Group data into numerical ranges.
-      - **Field**: Select the numeric field to create intervals from.
-    - **Filters**: Define custom categories using KQL queries.
+    :::{include} ../../_snippets/lens-bucket-intervals.md
+    :::
+    :::{include} ../../_snippets/lens-bucket-filters.md
+    :::
+
+    :::{include} ../../_snippets/lens-collapse-by.md
+    :::
 
 **Appearance**
 :   Define the formatting of the breakdown, including:
@@ -461,29 +469,9 @@ When creating or editing a visualization, you can customize several appearance o
 
 
 #### Legend settings
-Configure elements of your bar chart's legend. Configurable options include:
 
-**Visibility**
-:   Specify whether to automatically show the legend or hide it.
-
-**Position**
-:   Choose to show the legend inside or outside the chart, then pick the side (left, right, top, or bottom) and fine-tune alignment (vertical/horizontal) for grid-style layouts.
-
-**Width**
-:   Set the width of the legend.
-
-**Layout** {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
-:   For legends positioned outside the chart at the top or bottom, choose how series labels are arranged:
-    - **List**: A compact layout that flows series labels to fit the available space. List is the default for new charts when the legend is at the top or bottom.
-    - **Grid**: A table-style layout that aligns series labels and statistics into rows and columns.
-
-    Visualizations created before this setting was introduced keep their previous layout until you change it.
-
-**Statistics**
-:   Choose one or more statistics to show (for example, average, min, max, last value). Lens appends those numbers to every series label so you don't have to hover over the chart to see headline figures.
-
-**Label truncation**
-:   For legends positioned inside the chart, outside on the side, or outside at the top or bottom with the **Grid** layout, choose whether to truncate long series labels and set the maximum number of lines for each label.
+:::{include} ../../_snippets/xy-chart-legend-settings.md
+:::
 
 ## Bar chart examples
 
@@ -512,10 +500,13 @@ The following examples show various configuration options that you can use for b
 ![Stacked bar chart showing traffic per week broken down per region](/explore-analyze/images/weekly-website-traffic-per-region.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a stacked bar chart that tracks page views over time with a custom metric label and breaks them down by the top 9 destination regions.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -642,10 +633,13 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Bar chart with reference line showing traffic per week broken down per region](/explore-analyze/images/request-error-rate-per-host.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a horizontal bar chart with a formula-based metric and a reference line layer that marks the acceptable error threshold.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

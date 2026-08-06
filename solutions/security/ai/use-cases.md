@@ -19,7 +19,7 @@ The guides in this section describe example workflows for AI Assistant and Attac
 * [Identify, investigate, and document threats](/solutions/security/ai/identify-investigate-document-threats.md)
 * [Generate, customize, and learn about {{esql}} queries](/solutions/security/ai/generate-customize-learn-about-esorql-queries.md)
 
-For general information, refer to [AI Assistant](/solutions/security/ai/ai-assistant.md) or [Attack discovery](/solutions/security/ai/attack-discovery.md).
+For general information, refer to [AI Assistant](/solutions/security/ai/ai-assistant.md) or [Attack discovery](/solutions/security/ai/attack-discovery/index.md).
 
 ## Other AI-powered tools
 
@@ -30,5 +30,7 @@ In addition to AI Assistant and Attack Discovery, {{elastic-sec}} provides sever
 * [Automatic Troubleshooting](/solutions/security/manage-elastic-defend/automatic-troubleshooting.md): Helps you quickly check whether your endpoints have third-party AV software installed by analyzing file event logs from your hosts to determine whether antivirus software is present. From there, you can address any incompatibilities to make sure your endpoints are protected.
 
   {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` Helps you detect any issues in {{elastic-defend}} integration policies and suggests remediation steps.
+
+* [Elastic Workflows](/explore-analyze/workflows.md): Automate SOC tasks declaratively in YAML. AI-augmented workflows can classify and route mixed items with `ai.classify`, summarize with `ai.summarize`, and reason over alerts with `ai.agent`. For an example, refer to [Classify and route mixed items with AI](/explore-analyze/workflows/use-cases/ai-augmented-workflows/classify-and-route-alerts.md).
 
 

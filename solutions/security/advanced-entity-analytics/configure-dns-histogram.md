@@ -1,4 +1,5 @@
 ---
+description: Configure the DNS histogram and queries displayed on the Network page in Elastic Security.
 applies_to:
   stack: ga
   serverless:

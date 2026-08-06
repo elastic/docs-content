@@ -62,6 +62,9 @@ Refer to [Pass data and handle errors](/explore-analyze/workflows/authoring-tech
 
 ---
 
+:::{include} ../_snippets/schema-location-legend.md
+:::
+
 ## Variables and mapping
 
 ### `data.set` [data-set]

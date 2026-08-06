@@ -16,31 +16,37 @@ The **Deployment** view (for {{ECH}} deployments) or **Cluster** view (for ECE, 
 
 To get to this view, go to AutoOps in your deployment or cluster and select **Deployment** or **Cluster** from the side navigation.
 
-You can use the **Deployment** or **Cluster** dropdown at the top of the screen to select which deployment or cluster you want to monitor.
+Use the **Deployment** or **Cluster** dropdown at the top of the screen to select which deployment or cluster you want to view, and use the date and time picker to select a time period for the data shown.
 
-## Panels in the Deployment or Cluster view
+## Sections in the Deployment or Cluster view
 
-The **Deployment** or **Cluster** view shows the following panels.
+The **Deployment** or **Cluster** view shows the following information.
 
 ### Events over time [ec-autoops-events-over-time]
 
-The **Events Over Time** panel lists all the recent events the {{es}} cluster has triggered, ordered by criticality. It also displays a color-coded heat map to help understand when and how often a particular event happened. Click on any mosaic to get details about a particular event, such as the specific node, index, or shard affected, event time and duration, and a detailed description of the actions you can take to mitigate that event.
+The **Events over time** panel shows events triggered in the selected deployment or cluster charted across the selected time period. The information is displayed in a color-coded heat map to help you understand when and how often a particular event occurred. 
 
-Refer to [AutoOps events](ec-autoops-events.md) for more details.
+Click on any tile to view a flyout with additional details about the particular event it represents. Refer to [AutoOps events](ec-autoops-events.md) for more details.
 
-### Open Events [ec-autoops-open-events]
+### Open events [ec-autoops-open-events]
 
-The **Open Events** panel lists open events sorted by severity and time. When the conditions that triggered the event no longer exist, the event is automatically set to close and appear in the **Events History** panel. Closing an event does not necessarily indicate that the customer resolved the issue, but rather that AutoOps no longer detects it.
+The **Open events** tab shows open events in the selected deployment or cluster. Select an event to view a flyout with additional details. 
 
-### Events History [ec-events-history]
+When the conditions that triggered the event no longer exist, the event is automatically set to close and appear in the **Event history** tab.
 
-The **Events History** panel lists events that were triggered in the past but are no longer active because of changed conditions. 
+### Event history [ec-events-history]
 
-Let's say your cluster experienced a peak in search rate, triggering a "Too many tasks on queue" event. Now, your cluster is more relaxed in terms of search rate, so this event is no longer an issue, but it was recorded for historical reasons. Like Open Events, Events History is also sorted first by severity and then by time.
+The **Event history** tab shows events in the selected deployment or cluster that were triggered in the past but are now closed because of changed conditions. 
+
+Let's say your cluster experiences a peak in search rate, triggering a "Too many tasks on queue" event. When your cluster comes down from that peak, your search rate relaxes and the event is no longer an issue, but it will appear in the **Event history** tab for your record.
+
+:::{note}
+A closed event doesn't necessarily mean that the issue has been resolved. It means that AutoOps does not currently detect it.
+:::
 
 ### Resources [ec-deployment-resources]
 
-The **Resources** panel provides a quick overview of {{es}} cluster resource usage. The resources are presented based on their respective data tiers and include JVM memory usage, CPU usage, and storage usage over time. You can view essential cluster information such as the {{es}} version, total number of nodes, total number of shards, and total volume of used storage.
+The **Resources** panel provides a quick overview of {{es}} cluster resource usage. The resources are presented based on their respective data tiers and include usage of JVM memory, system memory, CPU, and storage over the selected time period. This panel also offers essential cluster information such as the {{es}} version, total number of nodes, total number of shards, and total volume of used storage.
 
 :::{image} /deploy-manage/images/cloud-autoops-deployment-resources.png
 :screenshot:
@@ -49,12 +55,12 @@ The **Resources** panel provides a quick overview of {{es}} cluster resource usa
 
 ### Performance [ec-deployment-performance]
 
-The **Performance** panel shows the following key performance metrics aggregated at both the cluster level and the selected tier levels:
+The **Performance** panel shows the following key performance metrics across all shards in the deployment or cluster, and within the selected data tiers:
 
-* **Search rate**: The number of search requests executed per second across all shards in the deployment or cluster, as well as within the selected data tiers.
-* **Search latency**: The average latency of search operations across all shards in the deployment or cluster, and within the selected data tiers.
-* **Indexing rate**: The number of documents indexed per second across all shards in the deployment or cluster, as well as within the selected data tiers.
-* **Indexing latency**: The average latency of indexing operations across all shards in the deployment or cluster, and within the selected data tiers.
+* **Search rate**: The number of search requests executed per second.
+* **Search latency**: The average latency of search operations.
+* **Indexing rate**: The number of documents indexed per second.
+* **Indexing latency**: The average latency of indexing operations.
 
 :::{image} /deploy-manage/images/cloud-autoops-deployment-performance.png
 :screenshot:

@@ -15,7 +15,7 @@ products:
 The following types of {{es}} API keys are available:
 
 * **Personal/User** API key: allows external services to access the {{stack}}, including the [{{es}}]({{es-apis}}) and [{{kib}}]({{kib-apis}}) APIs, on behalf of a user.
-* **Cross-cluster** API key: allows other clusters to connect to this cluster.
+* **Cross-cluster** API key: allows other clusters to connect to this cluster for tasks like {{ccs}} and replication. Refer to [](/deploy-manage/remote-clusters.md) for more information.
 * **Managed** API key: created and managed by {{kib}} to run background tasks.
 
 :::{tip}
@@ -64,8 +64,8 @@ From the **Create API key** pane, you can configure your new key:
   1. Choose to create either a user or a cross-cluster API key.
   2. Optionally, set an expiry date. By default the API key will not expire, but it's a good security practice to give the key a limited lifespan.
   3. Configure access:
-      * For a user API key, you can opt to configure access to specific {{es}} APIs and resources by assigning the key with predefined roles or custom privileges. Refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) and the [Create API key]({{es-apis}}operation/operation-security-create-api-key) API documentation to learn more.
-      * For a cross-cluster API key, you can control the indices that other clusters have access to. Refer to the [Create cross-cluster API key]({{es-apis}}operation/operation-security-create-cross-cluster-api-key) API documentation to learn more.
+      * For a user API key, you can opt to configure access to specific {{es}} APIs and resources by assigning the key with predefined roles or custom privileges. Refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) and the [Create API key]({{es-apis}}operation/operation-security-create-api-key) API documentation to learn more.
+      * For a cross-cluster API key, you can control the indices that other clusters have access to. Refer to [](/deploy-manage/remote-clusters.md) and the [Create cross-cluster API key]({{es-apis}}operation/operation-security-create-cross-cluster-api-key) API documentation to learn more.
   4. Add any additional metadata about the API as one or more key-value pairs. Refer to the [Create API key]({{es-apis}}operation/operation-security-create-api-key) API documentation for examples.
 
 :::{tip}

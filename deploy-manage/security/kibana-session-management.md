@@ -36,6 +36,12 @@ You can use `xpack.security.session.lifespan` to configure the maximum session d
 xpack.security.session.lifespan: "7d"
 ```
 
+::::{note}
+You can define session lifespan globally with `xpack.security.session.lifespan`, or per authentication provider with `xpack.security.authc.providers.<provider-type>.<provider-name>.session.lifespan`. For more details, refer to [Valid settings for all authentication providers](kibana://reference/configuration-reference/security-settings.md#authentication-provider-settings).
+
+For example, when using [{{ecloud}} SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md), {{ecloud}} sets a default lifespan of `24h` for the Cloud SSO SAML provider.
+::::
+
 
 ## Session cleanup interval [session-cleanup-interval]
 

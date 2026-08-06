@@ -19,7 +19,7 @@ The operator applies default requests and limits for memory and CPU. They may be
 
 Consider that Kubernetes throttles containers exceeding the CPU limit defined in the `limits` section. Do not set this value too low, or it would affect the performance of your workloads, even if you have enough resources available in the Kubernetes cluster.
 
-Also, to minimize disruption caused by Pod evictions due to resource contention, you can run Pods at the "Guaranteed" QoS level by setting both `requests` and `limits` to the same value.
+Also, to minimize disruption caused by Pod evictions due to resource contention, you can run Pods at the [Guaranteed QoS](https://kubernetes.io/docs/concepts/workloads/pods/pod-qos/#guaranteed) level by setting both `requests` and `limits` to the same value.
 
 
 ## Set compute resources [k8s-compute-resources]
@@ -321,7 +321,7 @@ If `resources` is not defined in the specification of an object, then the operat
 | --- | --- | --- |
 | APM Server | `512Mi` | `512Mi` |
 | {{es}} | `2Gi` | `2Gi` |
-| {{kib}} | `1Gi` | `1Gi` |
+| {{kib}} | {applies_to}`eck: ga 3.4` `2Gi`<br>{applies_to}`eck: ga 3.0-3.3` `1Gi` | {applies_to}`eck: ga 3.4` `2Gi`<br>{applies_to}`eck: ga 3.0-3.3` `1Gi` |
 | Beat | `300Mi` | `300Mi` |
 | Elastic Agent | `400Mi` | `400Mi` |
 | Elastic Maps Server | `200Mi` | `200Mi` |
@@ -330,7 +330,9 @@ If `resources` is not defined in the specification of an object, then the operat
 | AutoOps Agent | `400Mi` | `400Mi` |
 
 ::::{note}
-The default 1 Gi {{kib}} limit is sufficient for core functionality. For Platinum and Enterprise users, we recommend at least 2 Gi of memory for each {{kib}} instance. With less than 2 Gi, you can face service interruptions when using features such as Security detection rules, reporting, workflows, and Agent Builder.
+:applies_to: eck: ga 3.0-3.3
+
+The default 1 Gi {{kib}} memory limit is sufficient for core functionality. However, Platinum and Enterprise features such as Security detection rules, reporting, workflows, and Agent Builder can require additional memory. For these use cases, we recommend increasing the memory limit to at least 2 Gi per {{kib}} instance to avoid service interruptions.
 ::::
 
 If the Kubernetes cluster is configured with [LimitRanges](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/) that enforce a minimum memory constraint, they could interfere with the operator defaults and cause object creation to fail.

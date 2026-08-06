@@ -5,7 +5,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Instructions and best practices for building gauge charts with Kibana Lens in Elastic.
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+description: Create gauge charts to monitor KPIs and track progress toward goals with visual range context.
 ---
 
 # Build gauge charts with {{kib}}
@@ -26,9 +31,8 @@ To build a gauge chart:
 ::::::{stepper}
 
 :::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a gauge chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 :::::
 
 :::::{step} Set the visualization to Gauge
@@ -67,11 +71,13 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Provide clear titles that explain what the gauge measures and what the target value represents.
 
 Refer to [Gauge chart settings](#gauge-chart-settings) to find all configuration options for your gauge chart.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and reuse it later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and offers you to add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 :::::
 
 ::::::
@@ -92,10 +98,13 @@ Use a gauge to track progress toward a specific target, such as monthly sales go
 ![Example Lens gauge chart showing yearly sales goal](/explore-analyze/images/gauge-chart-scenario-goal.png "=75%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a horizontal bullet gauge that sums order revenue from the eCommerce sample data, providing a quick view of progress toward a sales goal.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -220,10 +229,13 @@ This example shows a gauge with server response time and color-coded health indi
 ![Example Lens gauge chart showing average response time in milliseconds](/explore-analyze/images/gauge-chart-scenario-thresholds.png "=50%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a gauge with three color-coded threshold bands so the arc turns green, yellow, or red depending on the average byte count.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -241,7 +253,7 @@ POST kbn://api/visualizations
     "operation": "median",
     "field": "memory",
     "label": "Average response time - last hour",
-    "format": { "type": "duration", "from": "microseconds", "to": "asMilliseconds" },
+    "format": { "type": "duration", "from": "us", "to": "ms" },
     "min": { "operation": "static_value", "value": 0 },
     "max": { "operation": "formula", "formula": "1000000" },
     "title": { "visible": true },
@@ -286,7 +298,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "operation": "median",
     "field": "memory",
     "label": "Average response time - last hour",
-    "format": { "type": "duration", "from": "microseconds", "to": "asMilliseconds" },
+    "format": { "type": "duration", "from": "us", "to": "ms" },
     "min": { "operation": "static_value", "value": 0 },
     "max": { "operation": "formula", "formula": "1000000" },
     "title": { "visible": true },
@@ -440,10 +452,13 @@ The following examples show various configuration options for building impactful
 ![Example Lens gauge chart showing average CPU usage in percent](/explore-analyze/images/gauge-chart-example-cpu.png "=50%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a CPU-monitoring gauge with green/yellow/red threshold bands, using `machine.ram` from the logs sample data as a proxy for a CPU-like metric.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -549,10 +564,13 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Example Lens gauge chart showing disk space utilization in percent](/explore-analyze/images/gauge-chart-example-disk-space.png "=50%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a full-circle disk utilization gauge with color bands that shift from green to red as usage increases, using `machine.ram` from the logs sample data as a proxy.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

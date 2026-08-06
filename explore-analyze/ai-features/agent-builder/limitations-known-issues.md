@@ -26,19 +26,23 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 {{agent-builder}} is automatically enabled on all deployment types as of 9.4. For instructions about enabling {{agent-builder}} in earlier versions, refer to [Get started](get-started.md#access-agent-builder).
 :::
 
-### Cross-cluster search limitations
+### Cross-cluster search support
 
-[Index search tools](tools/index-search-tools.md) do not automatically discover or search indices on remote clusters. However, agents can query remote clusters using [{{esql}}](elasticsearch://reference/query-languages/esql.md) if you explicitly instruct the agent to do so.
+In version 9.4+, [index search tools](tools/index-search-tools.md) support [cross-cluster search (CCS)](/explore-analyze/cross-cluster-search.md). Index search tools only search remote clusters when you explicitly configure a cross-cluster pattern like `remote_cluster:logs-*`. Without a remote pattern, the tool resolves indices locally. To learn how to configure a tool for remote clusters, refer to [Index search tools](tools/index-search-tools.md#common-patterns).
 
-To enable cross-cluster queries, add instructions to your [custom agent](custom-agents.md) or include them in your chat prompt. For example, you could instruct the agent to query `remote_cluster:index_name` when searching for data that resides on a remote cluster. To learn more, refer to [cross-cluster search (CCS)](/explore-analyze/cross-cluster-search.md).
-
-### Cross-project search not supported
-
-{{agent-builder}} does not support [cross-project search](/explore-analyze/cross-project-search.md). Agents can only search data within the current project.
+In previous versions, only [{{esql}} tools](tools/esql-tools.md) support CCS. To search remote clusters, use a custom {{esql}} tool and instruct your agent to query `remote_cluster:index_name`.
 
 ### A2A streaming not supported
 
 The [A2A server](a2a-server.md) does not currently support streaming operations. All agent interactions use the synchronous `message/send` method, which returns a complete response only after task execution completes.
+
+### Human-in-the-loop prompts require an interactive conversation
+
+[Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts) are supported only in interactive {{agent-builder}} conversations. Standalone sub-agent executions, whether foreground or background, cannot collect a response to these prompts, so actions that require confirmation or authorization are declined.
+
+A2A executions behave differently: the action is not declined. Instead, the conversation round remains in the `awaiting_prompt` state, but A2A clients cannot respond to the prompt.
+
+This limitation is separate from the [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step in Workflows, which pauses a workflow execution for reviewer input.
 
 ### {{esql}} limitations
 

@@ -39,7 +39,7 @@ By default, a Discover session stores the query text, filters, and current view 
     2. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
     3. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose whether to also add the session as a panel on a dashboard. Select **New** to create a dashboard, **Existing** to choose one, or **None** to skip. The session is saved to the library in all cases.
 2. Select **Save**.
-3. To reload your search results in **Discover**, select **Open** in the application menu, and select the saved Discover session.
+3. To reload your search results in **Discover**, select **Open session** (or **Open** in earlier versions) in the application menu, and select the saved Discover session.
 
 If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
 
@@ -189,10 +189,9 @@ Use this option to create a single-tab Discover session directly on the dashboar
 
 You need permission to access Discover, and the dashboard must be in **Edit** mode.
 
-1. On the dashboard, select **Add panel** > **New panel**.
-2. In the **Visualizations** group, select {icon}`app_discover` **Discover session**. Discover opens in embedded editor mode.
-3. Configure the session: enter a query, adjust columns, sort, and other view settings as needed.
-4. Select **Save and return** in the application menu to add the configured panel to the dashboard.
+1. From the application menu, add a new **Discover session** panel.
+2. Configure the session: enter a query, adjust columns, sort, and apply other view settings as needed.
+3. Select **Save and return** in the application menu to add the configured panel to the dashboard.
 
 ### Manage Discover session panels on a dashboard [manage-discover-session-panels]
 

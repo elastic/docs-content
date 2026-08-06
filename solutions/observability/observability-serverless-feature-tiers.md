@@ -37,7 +37,7 @@ The following table compares features available in Observability Complete and Ob
 | **[Infrastructure and hosts](/solutions/observability/infra-and-hosts.md)** | ✅ | ❌ |
 | **[APM](/solutions/observability/apm/index.md)** | ✅ | ❌ |
 | **[AI Assistant](/solutions/observability/ai/observability-ai-assistant.md)** including Elastic Managed LLMs | ✅ | ❌ |
-| {applies_to}`serverless: preview` **[Agent Builder](/solutions/observability/ai/agent-builder-observability.md)** | ✅ | ❌ |
+| **[Agent Builder](/solutions/observability/ai/agent-builder-observability.md)** | ✅ | ❌ |
 | **[Custom knowledge bases](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-kb-ui)** | ✅ | ❌ |
 | **[Synthetics testing and browser experience monitoring](/solutions/observability/synthetics/index.md)** | ✅ | ❌ |
 | **[Private connectivity](/deploy-manage/security/private-connectivity.md)** | ✅ | ❌ |
@@ -63,3 +63,13 @@ To access the additional features available in Observability Complete, upgrade y
 1. Next to **Project features**, select **Edit**.
 1. Select **Observability Complete**.
 1. Select **Save** to complete the upgrade.
+
+## Integration availability
+
+In Logs Essentials projects, integration search results only show {{observability}} {{integrations}} that support collecting logs. Search results won't show {{integrations}} that only collect metrics. When editing an integration policy, you can only edit log data streams.
+
+:::{note}
+
+Installing an integration package installs all its assets, including dashboards for both logs and metrics. Metrics-only dashboards are empty because metrics collection is not available in Logs Essentials projects.
+
+:::

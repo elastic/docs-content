@@ -27,11 +27,8 @@ The page was renamed from **Rules** to **{{siem-rules-ui}}** in versions 9.3.1, 
 The following sections explain how to filter rules, edit settings, control execution, export and import rules, and perform bulk operations.
 
 ::::{important}
-
-Rules run in the background using the privileges of the user who last edited them. When you create or modify a rule, {{elastic-sec}} generates an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) that captures a snapshot of your current privileges. If a user without the required privileges (such as index read access) updates a rule, the rule can stop functioning correctly and no longer generate alerts. To fix this, a user with the right privileges needs to either modify the rule or update the API key. To learn more, refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept).
-
+Ensure that only users with the appropriate access edit rules. Refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept) for more details.
 ::::
-
 
 ## Sort and filter the rules list [sort-filter-rules]
 
@@ -137,6 +134,15 @@ If you duplicate the rule and its exceptions, copies of the exceptions are creat
 4. If any selected rules have exceptions, choose how to handle them.
 
 
+## View changes history [view-changes-history-entry]
+
+```{applies_to}
+stack: ga 9.5
+```
+
+Select the **All actions** menu {icon}`boxes_horizontal` on a rule, or select **All actions** on the rule's details page, then select **History** to view a chronological timeline of changes made to the rule, compare revisions, and restore the rule to a previous state. Refer to [View rule changes history](/solutions/security/detect-and-alert/view-rule-changes-history.md) for more details.
+
+
 ## Delete rules [delete-rules]
 
 Delete rules to permanently remove them from your system. This action cannot be undone.
@@ -188,6 +194,10 @@ Before manually running rules, make sure you properly understand and plan for ru
 4. Select **Run** to manually run the rule.
 
 The rule runs over the time range that you selected. All [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) are also activated, except for **Summary of alerts** actions that run at a custom frequency.
+
+:::{tip}
+To run multiple rules on demand from a script, scheduled task, or other automation, use [Elastic Workflows](/explore-analyze/workflows.md). The [Run detection rules on demand](/explore-analyze/workflows/use-cases/security/manage-detection-rules/run-rules-on-demand.md) workflow shows how to iterate over a list of rule IDs and trigger a manual run for each over a configurable lookback window.
+:::
 
 ::::{note}
 Be mindful of the following:

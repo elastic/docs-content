@@ -34,7 +34,7 @@ Quick answers to the issues first-time workflow authors hit most often. Each sec
 **Cause.** One of three common causes:
 
 1. The workflow was disabled (`enabled: false`).
-2. The interval is shorter than 1 minute. 9.4 enforces a minimum of `1m` / `60s`. Pre-9.4 schedules with shorter intervals were auto-migrated on first edit.
+2. The interval is shorter than 1 minute. The minimum interval is `1m` / `60s`; schedules with sub-minute intervals from earlier versions were auto-migrated on first edit.
 3. A `drop` concurrency strategy is skipping new runs while a prior run is still executing.
 
 **Resolution.** Verify the workflow is enabled, check the interval in the YAML editor, and review execution history for `skipped` entries. For concurrency details, refer to [Settings concurrency control](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md).
@@ -238,6 +238,14 @@ condition: "item.severity : 'critical'"
 
 The same applies to the `if` step's `condition`. Refer to [`data.filter`](/explore-analyze/workflows/steps/data.md#data-filter).
 
+### A Liquid template fails with a rendering limit error [workflows-ts-liquid-limits]
+
+**Symptom.** A step that renders a large template — often a `console` report — fails with an error such as `memory alloc limit exceeded`, `parse length limit exceeded`, or `render limit exceeded`.
+
+**Cause.** The templating engine caps the size, render time, and memory of each template render. A template that builds a large string, such as a final report that concatenates thousands of rows, can exceed one of these limits.
+
+**Resolution.** Reduce the size of the rendered output by returning structured data or write results to an index instead of formatting one large string, and move heavy filtering or grouping into [`data.*` steps](/explore-analyze/workflows/steps/data.md). Refer to [Template rendering limits](/explore-analyze/workflows/templating.md#workflows-template-limits).
+
 ## AI steps [workflows-ts-ai]
 
 ### An AI step rejects `connectorId` [workflows-ts-ai-connector-id]
@@ -280,6 +288,37 @@ The same pattern applies to `agent-id` and `inference-id` on AI steps. Refer to 
 ```
 
 Refer to [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize).
+
+### Templated `agent-id` or `connector-id` isn't substituted [workflows-ts-ai-top-level-templating]
+```{applies_to}
+stack: ga 9.3-9.4
+```
+
+**Symptom.** An AI step fails because a referenced resource (for example, an agent or connector) isn't found, even though the value is correctly defined in `consts:`.
+
+**Cause.** Liquid expressions are evaluated only inside the step's `with:` block. On fields outside `with:` (including `agent-id`, `connector-id`, and `inference-id`) the engine sends the text to the runtime as-is. So `agent-id: "{{ consts.agent_id }}"` arrives at the API as the literal text `{{ consts.agent_id }}`, instead of being substituted with the value of `consts.agent_id`.
+
+**Resolution.** Use literal values in top-level fields. For `ai.agent`, drop `connector-id`. The step falls back to the space's **Default AI Connector**. Refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) to configure this setting.
+
+```yaml
+# Not evaluated on 9.3-9.4; resolves on 9.5+
+- type: ai.agent
+  agent-id: "{{ consts.agent_id }}"
+  connector-id: "{{ consts.connector_id }}"
+  with:
+    message: "..."
+
+# Portable: a literal value works on all versions
+- type: ai.agent
+  agent-id: elastic-ai-agent
+  with:
+    message: "..."
+```
+
+:::{note}
+:applies_to: stack: ga 9.5+
+Top-level field templating was fixed, so `agent-id`, `connector-id`, and `inference-id` resolve Liquid expressions like any other field. A literal value still keeps an example portable across all versions. Tracked in [elastic/security-team#17236](https://github.com/elastic/security-team/issues/17236).
+:::
 
 ## Composition [workflows-ts-composition]
 
@@ -343,9 +382,9 @@ settings:
 
 **Cause.** One of:
 
-- `settings.timeout` — the workflow's overall time budget was exceeded.
-- Concurrency with `cancel-in-progress` — a new execution kicked this one out.
-- Operator cancel — someone clicked **Cancel all** in the UI.
+- `settings.timeout` — The workflow's overall time budget was exceeded.
+- Concurrency with `cancel-in-progress` — A new execution kicked this one out.
+- Operator cancel — Someone clicked **Cancel all** in the UI.
 
 **Resolution.** The execution view shows the cancellation reason on the terminal state. Review it and adjust `settings.timeout` or the concurrency strategy if needed.
 
@@ -357,7 +396,7 @@ settings:
 
 **Cause.** Your user role is missing one of the Workflows feature privileges.
 
-**Resolution.** Ensure your role has at least `All` on the **Analytics > Workflows** feature. For finer-grained access, 9.4 introduces seven granular sub-feature privileges: `create`, `read`, `update`, `delete`, `execute`, `readExecution`, and `cancelExecution`. Refer to [Setup](/explore-analyze/workflows/get-started/setup.md).
+**Resolution.** Ensure your role has at least `All` on the **Analytics → Workflows** feature. For finer-grained access, use the sub-feature privileges: `create`, `read`, `update`, `delete`, `execute`, `readExecution`, and `cancelExecution`. Refer to [Setup](/explore-analyze/workflows/get-started/setup.md).
 
 ### Workflows isn't visible in {{kib}} [workflows-ts-ui-missing]
 
@@ -365,7 +404,7 @@ settings:
 
 **Cause.** The `workflows:ui:enabled` advanced setting has been disabled, or the deployment doesn't have the required license or subscription tier.
 
-**Resolution.** In 9.4, `workflows:ui:enabled` defaults to `true`. If it has been explicitly disabled, re-enable it in **Advanced settings**. Confirm the deployment is on a supported tier (Enterprise license on Elastic Cloud Hosted or self-managed, or a Serverless project of the required type). Refer to [Setup](/explore-analyze/workflows/get-started/setup.md).
+**Resolution.** `workflows:ui:enabled` defaults to `true`. If it has been explicitly disabled, re-enable it in **Advanced settings**. Confirm the deployment is on a supported tier (Enterprise license on Elastic Cloud Hosted or self-managed, or a Serverless project of the required type). Refer to [Setup](/explore-analyze/workflows/get-started/setup.md).
 
 ## Still stuck [workflows-ts-still-stuck]
 

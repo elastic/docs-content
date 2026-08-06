@@ -175,4 +175,8 @@ You can add indicator values to the blocklist from the Indicators table or the I
 Refer to [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md) for more information about blocklist entries.
 ::::
 
+## Automate threat-intel enrichment with workflows [indicators-automate-enrichment]
+
+Use [Elastic Workflows](/explore-analyze/workflows.md) to query external threat-intel providers on demand or in response to an alert, attach the result to the alert's case, and gate downstream actions on the reputation score. The [Enrich an alert with threat intelligence](/explore-analyze/workflows/use-cases/security/automate-security-operations/enrich-alert-with-threat-intel.md) workflow shows the pattern using a VirusTotal hash lookup.
+
 

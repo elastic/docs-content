@@ -3,7 +3,7 @@ navigation_title: Metric charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building metric charts with Kibana Lens in Elastic.
+description: Create metric charts to highlight important KPIs with dynamic coloring and trend indicators on dashboards.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -35,9 +35,8 @@ To build a metric chart:
 :::::{stepper}
 
 ::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a metric chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization..
+:::{include} ../../_snippets/access-lens.md
+:::
 ::::
 
 ::::{step} Set the visualization to Metric
@@ -72,11 +71,13 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Use titles and subtitles to explain what the metric shows. "45,234" is a number, but "Active Users" as a title gives it meaning, and "Last 24 hours" as a subtitle makes it unambiguous.
 
 Refer to [](#settings) for a complete list of options.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 ::::
 
 ::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and be able to add it to other dashboards later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 ::::
 
 :::::
@@ -134,10 +135,13 @@ To add trend indicators to your metric visualization:
 The metric visualization now shows the secondary metric as a comparison with a trend indicator.
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 Send the following request to create a metric that counts unique orders for the current period and compares the result to the previous week using a time-shifted formula.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -290,10 +294,13 @@ You can combine progress bars with secondary metrics to show both progress towar
 ::::
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a metric that shows the current count of users against a target of 2,500, with a progress bar and a weekly comparison badge.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -485,18 +492,24 @@ Customize your metric chart to display exactly the information you need, formatt
 ### Breakdown settings [breakdown-options]
 
 **Data**
-:   Split your metric into multiple tiles based on a categorical field. Each unique value creates its own tile, allowing you to compare metrics across regions, products, time periods, or any other dimensions. You can optionally specify the following options:
+:   Split your metric into multiple tiles based on a categorical field. Each unique value creates its own tile, allowing you to compare metrics across regions, products, time periods, or any other dimensions. It supports the following functions:
 
-    - **Number of values**: The number of tiles to show. The default number of values depends on your environment:
-      - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-      - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
-
-      If more values are available for the selected breakdown field, an additional tile named **Other** shows if the **Group remaining values as "Other"** advanced option is on.
-    :::{include} ../../_snippets/lens-rank-by-options.md
+    :::{include} ../../_snippets/lens-bucket-top-values.md
     :::
-    - **Collapse by**: Aggregate values of the various tiles into a single number. Possible aggregation options are `None` (default), `Sum`, `Average`, `Min`, and `Max`.
+      :::{include} ../../_snippets/lens-rank-by-options.md
+      :::
+      :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+      :::
+    :::{include} ../../_snippets/lens-bucket-date-histogram.md
+    :::
+      :::{include} ../../_snippets/lens-histogram-settings.md
+      :::
+    :::{include} ../../_snippets/lens-bucket-intervals.md
+    :::
+    :::{include} ../../_snippets/lens-bucket-filters.md
+    :::
 
-    :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+    :::{include} ../../_snippets/lens-collapse-by.md
     :::
 
 **Appearance**
@@ -539,7 +552,10 @@ When creating or editing a visualization, you can customize several appearance o
 :   Define the **Alignment** of the secondary metric.
 
 **Other**
-:   Choose the **Icon** position.
+:   Configure the icon and layout:
+    - **Icon decoration**: Add an icon to the metric chart.
+    - **Icon position**: Select **Left** or **Right**.
+    - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` **Density**: Select **Compact** for tighter spacing, less padding, and smaller text, or **Default** for more spacing, more padding, and larger text. New metric charts use **Default**. Charts saved before this option was introduced use **Compact** until you change the setting.
 
 
 ## Metric chart examples
@@ -566,10 +582,13 @@ The following examples show various configuration options that you can use for b
 ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a metric that calculates the ratio of successful HTTP requests using a formula with a KQL filter, and adds a fixed target value as a secondary metric.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -713,10 +732,13 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate-top-countries.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example builds on the previous one by adding a breakdown that splits the success rate into one tile per destination country.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -869,10 +891,13 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Metric showing weekly visits with weekly comparison trend](../../images/metric-website-views-weekly-trend-example.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a metric that counts page views and compares the current value to the previous week using a time-shifted formula.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

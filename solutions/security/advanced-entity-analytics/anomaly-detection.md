@@ -1,4 +1,5 @@
 ---
+description: Identify anomalous events and patterns in host and user activity with prebuilt machine learning anomaly detection jobs in Elastic Security.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/machine-learning.html
   - https://www.elastic.co/guide/en/serverless/current/security-machine-learning.html
