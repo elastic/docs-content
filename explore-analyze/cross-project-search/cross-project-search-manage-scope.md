@@ -37,7 +37,7 @@ The footer displays the count of included and excluded projects.
 
 The scope selector is not editable in every app. Some apps display it as **read-only**, meaning the app uses the space default scope but you cannot change it. In read-only mode, filter badges are visible but you cannot create, edit, or remove filters. Other apps show it as **unavailable**, meaning the app searches only the current project. Refer to [{{cps-cap}} availability by app](#cps-availability) for details.
 
-When you change the scope during a session, your selection is preserved as you navigate between apps. Admins can configure a [default {{cps}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), which is used when you start a new session.
+When your scope matches the [space default](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), the scope selector displays a **Using space defaults** indicator. When you change the scope during a session, the indicator disappears and your selection is preserved as you navigate between apps. Starting a new session resets to the space default.
 
 ### Filter projects by tag [cps-picker-tag-filters]
 
