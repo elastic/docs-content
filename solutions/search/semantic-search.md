@@ -20,7 +20,7 @@ This page focuses on the semantic search workflows available in {{es}}. For deta
 
 To understand the infrastructure that powers semantic search and other NLP tasks, including managed services and inference endpoints, see the [Elastic Inference overview](../../explore-analyze/elastic-inference.md) page.
 
-Learn more about use cases for AI-powered search in the [overview](ai-search/ai-search.md) page.
+To explore AI-powered capabilities across the Elastic Stack, refer to [AI-powered features](/explore-analyze/ai-features.md).
 
 ## Overview of semantic search workflows [semantic-search-workflows-overview]
 

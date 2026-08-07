@@ -1,6 +1,6 @@
 ---
 navigation_title: Vector search
-description: An introduction to vector search in Elasticsearch.
+description: Get started with vector search in Elasticsearch using the semantic_text field type. This tutorial walks through indexing documents, generating embeddings automatically, and running your first semantic search query.
 applies_to:
   serverless: all
   stack: all
