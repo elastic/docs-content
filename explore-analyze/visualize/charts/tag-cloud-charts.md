@@ -166,6 +166,9 @@ The following examples show various configuration options for building impactful
 This example creates a tag cloud of the 30 most frequently requested URLs, where tag size reflects how often each URL was accessed.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -262,6 +265,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 This example creates a tag cloud of destination city names from the flights sample data, with the most popular destinations appearing in larger text.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

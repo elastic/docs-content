@@ -221,6 +221,9 @@ See .github/scripts/verify-lens-api-examples.py for full usage. -->
 Send the following request to create a line chart that plots the moving average of RAM, broken down by the top 4 hosts.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -373,6 +376,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 Send the following request to create a line chart that plots the unique count of client IPs over time, with linear interpolation for missing values.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
