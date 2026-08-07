@@ -17,7 +17,7 @@ Use this scenario when an integration collects data into multiple namespaces and
 ::::{tip}
 :applies_to: stack: ga 9.5+
 
-If you want the same {{ilm-init}} policy for **every** data stream an integration produces in a single namespace, [assign the policy from the integration policy editor](/reference/fleet/data-streams-namespace-ilm.md) instead, and let {{fleet}} manage the templates for you.
+If you want the same {{ilm-init}} policy for **every** data stream an integration produces in a single namespace, [apply the policy from the integration policy editor](/reference/fleet/data-streams-namespace-ilm.md) instead, and let {{fleet}} manage the templates for you.
 ::::
 
 In this scenario, you have {{agent}}s collecting system metrics with the System integration in two environments—one with the namespace `development`, and one with `production`.
@@ -89,7 +89,7 @@ Duplicating an integration index template is risky: don't change or remove manag
 
 If your changes don't need to be namespace-specific, use a `@custom` component template instead, as described in [Scenario 1](/reference/fleet/data-streams-scenario1.md) and [Scenario 2](/reference/fleet/data-streams-scenario2.md). For more about {{ilm-init}} with {{fleet}} data streams, refer to [Index lifecycle management ({{ilm-init}})](/reference/fleet/data-streams.md#data-streams-ilm).
 
-{applies_to}`stack: ga 9.5+` If you want the same settings for every data stream in a namespace (not only one data stream), you can use [namespace index templates](/reference/fleet/data-streams-namespace-custom.md) instead of duplicating the integration index template, and [assign the {{ilm-init}} policy](/reference/fleet/data-streams-namespace-ilm.md) from the integration policy editor.
+{applies_to}`stack: ga 9.5+` If you want the same settings for every data stream in a namespace (not only one data stream), you can use [namespace index templates](/reference/fleet/data-streams-namespace-custom.md) instead of duplicating the integration index template, and [apply the {{ilm-init}} policy](/reference/fleet/data-streams-namespace-ilm.md) from the integration policy editor.
 
 1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and open the **Index Templates** tab.
 2. Find the index template you want to clone. The index template will have the `<type>` and `<dataset>` in its name, but not the `<namespace>`. In this case, it’s `metrics-system.network`.

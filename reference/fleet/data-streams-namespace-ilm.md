@@ -1,6 +1,6 @@
 ---
-navigation_title: Assign an ILM policy to a namespace
-description: Assign an index lifecycle management policy to every data stream in one namespace of a Fleet integration, from the integration policy editor or the Fleet API.
+navigation_title: Apply an ILM policy to a namespace
+description: Apply an index lifecycle management policy to every data stream in one namespace of a Fleet integration, from the integration policy editor or the Fleet API.
 applies_to:
   stack: ga 9.5+
   serverless: unavailable
@@ -9,7 +9,7 @@ products:
   - id: elastic-agent
 ---
 
-# Assign an {{ilm-init}} policy to an integration namespace [data-streams-namespace-ilm]
+# Apply an {{ilm-init}} policy to an integration namespace [data-streams-namespace-ilm]
 
 **Data retention settings** in the integration policy editor lets you choose an [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) policy for a namespace, instead of editing component templates by hand. {{fleet}} applies your choice to every data stream the integration defines in that namespace.
 
@@ -22,14 +22,16 @@ The {{ilm-init}} policy is tied to an `(integration, namespace)` pair rather tha
 * You need the `manage_ilm` cluster privilege. {{fleet}} enforces this privilege in the UI and in the API.
 * You can't change **Data retention settings** on a managed integration policy.
 
-## Assign an {{ilm-init}} policy in the UI [data-streams-namespace-ilm-ui]
+## Apply an {{ilm-init}} policy in the UI [data-streams-namespace-ilm-ui]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select the integration you want, then create a new integration policy or select an existing integration policy from the **Integration policies** tab.
+2. Select the integration you want, then:
+   * To create an integration policy, click **Add <integration>**.
+   * To edit an existing one, open the **Integration policies** tab and select the policy.
 3. In the **Integration settings** section, expand **Advanced options**.
 4. In the **Namespace** field, enter the namespace you want a custom {{ilm-init}} policy for.
 5. Turn on **Use dedicated index templates for this namespace**, if it isn't on already.
-6. From **Data retention settings**, select an {{ilm-init}} policy. To use the policy inherited from the integration's base index templates, select **None (use default)**.
+6. From **Data retention settings**, select an {{ilm-init}} policy.
 7. Save the policy.
 
 You can complete these steps in a single pass. You don't need to save the integration policy before you select an {{ilm-init}} policy.
@@ -40,9 +42,9 @@ You can complete these steps in a single pass. You don't need to save the integr
 **Data retention settings** appears only in the integration policy editor. The integration's **Settings** tab manages the namespace opt-in list, but it doesn't include the {{ilm-init}} policy selection.
 ::::
 
-## Assign an {{ilm-init}} policy with the API [data-streams-namespace-ilm-api]
+## Apply an {{ilm-init}} policy with the API [data-streams-namespace-ilm-api]
 
-Use the {{fleet}} update package API to assign an {{ilm-init}} policy to a namespace:
+Use the {{fleet}} update package API to apply an {{ilm-init}} policy to a namespace:
 
 ```console
 PUT kbn:/api/fleet/epm/packages/system
@@ -53,7 +55,7 @@ PUT kbn:/api/fleet/epm/packages/system
 }
 ```
 
-To clear the assignment for a namespace, pass an empty object for it:
+To clear the policy for a namespace, pass an empty object for it:
 
 ```console
 PUT kbn:/api/fleet/epm/packages/system
@@ -103,7 +105,7 @@ Each namespace index template references its component template in `composed_of`
 ]
 ```
 
-Because the data stream-level `@custom` template comes later in the list, it takes precedence. If you set `index.lifecycle.name` in `logs-system.application@custom`, that setting wins over the {{ilm-init}} policy you assign here.
+Because the data stream-level `@custom` template comes later in the list, it takes precedence. If you set `index.lifecycle.name` in `logs-system.application@custom`, that setting wins over the {{ilm-init}} policy you apply here.
 
 {{fleet}} creates a component template for every data stream the integration defines, including data streams that no integration policy has enabled yet. A data stream you enable later uses the same {{ilm-init}} policy.
 
@@ -136,17 +138,17 @@ POST logs-system.application-production/_rollover
 ## Change or clear the {{ilm-init}} policy [data-streams-namespace-ilm-clear]
 
 * To use a different {{ilm-init}} policy, select it in **Data retention settings** on any integration policy that uses that integration and namespace. The change applies to all integration policies for the pair.
-* To stop using a custom {{ilm-init}} policy, select **None (use default)**. {{fleet}} deletes the managed component templates, and the data streams return to the {{ilm-init}} policy defined by the integration's base index templates.
-* If you turn off **Use dedicated index templates for this namespace**, or remove the namespace from **Namespaces with dedicated index templates** on the integration's **Settings** tab, {{fleet}} also clears the {{ilm-init}} policy for that namespace. You don't need to clear it first.
+* To stop using a custom {{ilm-init}} policy while the namespace keeps its dedicated index templates, select **None (use default)**. {{fleet}} deletes the managed component templates, and the data streams return to the {{ilm-init}} policy defined by the integration's base index templates. The `<namespace>@custom` component template and any settings or mappings in it stay in place.
+* If you turn off **Use dedicated index templates for this namespace**, or remove the namespace from **Namespaces with dedicated index templates** on the integration's **Settings** tab, {{fleet}} also clears the {{ilm-init}} policy for that namespace. You don't need to clear it first. This removes the namespace index templates as well, so use **None (use default)** if you want to keep your other namespace-level customizations.
 
 As with any other {{ilm-init}} change, existing backing indices keep the policy they were created with until the data stream rolls over.
 
 ## Limitations [data-streams-namespace-ilm-limitations]
 
-* You can assign only one {{ilm-init}} policy per `(integration, namespace)` pair. Two integration policies that use the same integration and namespace can't use different {{ilm-init}} policies.
+* You can apply only one {{ilm-init}} policy per `(integration, namespace)` pair. Two integration policies that use the same integration and namespace can't use different {{ilm-init}} policies.
 * The {{ilm-init}} policy applies to every data stream the integration defines. To target a single data stream, use [Scenario 2](/reference/fleet/data-streams-scenario2.md) for all namespaces, or [Scenario 3](/reference/fleet/data-streams-scenario3.md) for one namespace.
 * You can select {{ilm-init}} policies only. To use a [data stream lifecycle](/manage-data/lifecycle/data-stream.md) instead, configure it outside of {{fleet}}.
-* An `index.lifecycle.name` setting in a data stream-level `@custom` component template overrides the policy you assign here.
+* An `index.lifecycle.name` setting in a data stream-level `@custom` component template overrides the policy you apply here.
 
 ## Related pages [data-streams-namespace-ilm-related]
 
