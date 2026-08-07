@@ -40,7 +40,7 @@ The scope selector also provides shortcuts to admin settings. Select **Adjust sp
 
 ### Session scope vs. stored scope
 
-In most apps, the scope selector controls the **session scope**: which projects are searched while you work. Your selection is preserved as you navigate between apps, and starting a new session resets to the space default.
+In most apps, the scope selector controls the **session scope**: which projects are searched while you work. Your selection is preserved as you navigate between apps that support the scope selector, and starting a new session resets to the space default.
 
 In some apps, the scope selector sets a **stored scope** on a specific resource instead of the session. For example, in {{ml-app}} Anomaly Detection, the scope selector defines the `project_routing` value saved with each {{anomaly-job}}. Refer to the [availability table](#cps-availability) for details on how each app uses the scope selector.
 
