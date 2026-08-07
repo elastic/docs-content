@@ -26,7 +26,7 @@ You can learn more about an entity (host, user, or service) from the entity deta
 
 ## Entity details flyout
 
-Refer to [Details flyouts](/solutions/security/get-started/elastic-security-ui.md#details-flyouts) for the flyout's shared header controls, footer, and child flyout navigation.
+Refer to [Details flyouts](/solutions/security/get-started/elastic-security-ui.md#details-flyouts) for the toolbar controls, footer, and child flyout navigation shared across {{elastic-sec}} flyouts.
 
 The entity details flyout includes the following sections:
 

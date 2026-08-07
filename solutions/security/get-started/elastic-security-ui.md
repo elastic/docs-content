@@ -102,7 +102,7 @@ Use these controls, which appear at the top of the flyout, to navigate:
 
 Most details flyouts also have a footer with:
 
-* **Ask AI Assistant** (or **Add to chat**, if [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) is enabled): Continue investigating the item in [AI Assistant](/solutions/security/ai/ai-assistant.md).
+* **Ask AI Assistant** or **Add to chat**: Continue investigating the item in [AI Assistant](/solutions/security/ai/ai-assistant.md) or [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md), depending on which chat experience your space uses.
 * **Take action**: Opens a menu with more options for the item, such as adding it to a case, applying tags, or investigating in Timeline. Available actions vary depending on the flyout.
 
 ::::{note}

@@ -20,7 +20,7 @@ Use the alert details flyout to begin an investigation, open a case, or plan a r
 
 ::::{note}
 :applies_to: stack: ga 9.0-9.4
-In {{stack}} 9.0.x-9.4.x, the alert details flyout is organized into a right panel, a left panel, and preview panels, instead of the single flyout described on this page. Some toolbar actions and navigation described below don't apply.
+In {{stack}} 9.0.x-9.4.x, the alert details flyout is organized into a right panel, a left panel, and preview panels, instead of the single flyout described on this page. Some toolbar actions and navigation described in the following sections don't apply.
 ::::
 
 ## Alert details flyout UI [alert-details-flyout-ui]
@@ -54,9 +54,21 @@ The header displays key alert information:
 * **Assignees**: Users assigned to the alert (click the **Add** icon {icon}`plus_circle` to add more)
 * **Notes**: Attached notes (click the **Add** icon {icon}`plus_circle` to add a note)
 
+#### Notes [expanded-notes-view]
+
+Click **Add note** or **View notes** in the header's Notes control to open the Notes flyout. It lists all notes attached to the alert, along with the user who created them and when, and lets you add new notes. When you add a new note, the alert's summary also updates to show how many notes are attached to the alert.
+
+::::{tip}
+Go to the **Notes** [page](/solutions/security/investigate/notes.md#manage-notes) to find notes that were added to other alerts.
+::::
+
 ### View formats [view-formats]
 
 Switch between tabs to view alert data in different formats:
+
+**Overview tab**
+
+The default tab when you open the flyout. Contains the [About](#about-section), [Investigation](#investigation-section), [Visualizations](#visualizations-section), [Insights](#insights-section), and [Response](#response-overview) sections.
 
 **Table tab**
 
@@ -82,7 +94,7 @@ Shows raw JSON. Click **Copy to clipboard** to export.
 
 ### Footer [footer]
 
-Refer to [Details flyouts](/solutions/security/get-started/elastic-security-ui.md#details-flyouts) for the footer's **Ask AI Assistant** and **Take action** controls. For the alert, **Take action** includes options for changing its status, adding tags or assignees, adding an exception, isolating a host, running a response action or Osquery, adding a note, or investigating in Timeline.
+Refer to [Details flyouts](/solutions/security/get-started/elastic-security-ui.md#details-flyouts) for the footer's AI chat and **Take action** controls. For the alert, **Take action** includes options for changing its status, adding tags or assignees, adding an exception, isolating a host, running a response action or Osquery, adding a note, or investigating in Timeline.
 
 ## About [about-section]
 
@@ -241,11 +253,3 @@ The Prevalence flyout displays a table with the following columns:
 ## Response [response-overview]
 
 The **Response** section is on the **Overview** tab. It shows [response actions](/solutions/security/detect-and-alert/using-the-rule-ui.md) that were added to the rule associated with the alert. Click **Response** to display the response action's results in a new flyout.
-
-## Notes [expanded-notes-view]
-
-Click **Add note** or **View notes** in the header's Notes control to open the Notes flyout. It lists all notes attached to the alert, along with the user who created them and when, and lets you add new notes. When you add a new note, the alert's summary also updates to show how many notes are attached to the alert.
-
-::::{tip}
-Go to the **Notes** [page](/solutions/security/investigate/notes.md#manage-notes) to find notes that were added to other alerts.
-::::
