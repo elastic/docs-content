@@ -1,5 +1,8 @@
 ---
 navigation_title: Configure SLO access
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/slo-privileges.html
 products:
