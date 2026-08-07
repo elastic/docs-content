@@ -71,6 +71,12 @@ For best results, set the default {{cps-init}} scope for each space **before** y
 
 Space settings are managed in {{kib}}. 
 
+:::{note}
+The **{{cps-cap}}** panel only appears in the create space and space settings pages for projects on a CPS-eligible pricing tier. Refer to [projects available for linking](/deploy-manage/cross-project-search-config.md#cps-compatibility) for the tier requirements.
+
+If a space already has a non-default project routing setting, for example after a tier downgrade, the panel remains visible so you can reset the scope to **All projects**. After you reset it, the panel no longer appears for that space.
+:::
+
 1. To open space settings, click **Manage spaces** at the top of the **{{cps-cap}}** page. Select the space you want to configure.  
 
 % ::::{important}
