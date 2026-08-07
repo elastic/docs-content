@@ -51,7 +51,7 @@ Each project row has a toggle switch that includes or excludes it from searches.
 * **Include only this project**: Excludes all other projects currently shown in the list.
 * **Exclude only this project**: Includes all other projects currently shown in the list except this one.
 
-You can also select all project currently shown in the list by clicking **Include all listed**.
+You can also select all projects currently shown in the list by clicking **Include all listed**.
 
 The scope selector prevents you from excluding every project. The toggle on the last included project is deactivated, so at least one project is always included.
 
