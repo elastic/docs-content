@@ -348,4 +348,4 @@ Workflow tool {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview
 
 $$$workflows$$$
 Workflows
-:   Elastic's native automation engine for declarative, event-driven automation defined in YAML. {{agent-builder}} integrates with workflows in two directions: agents can trigger workflows through workflow tools, and workflows can call agents through the `ai.agent` and `kibana.request` steps. See [](agents-and-workflows.md#approaches).
+:   Elastic's native automation engine for declarative, event-driven automation defined in YAML. You can use {{agent-builder}} and workflows together in three ways: {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [create workflows from Agent Chat](chat.md#create-skills-and-workflows-directly-from-chat), trigger existing workflows from agents through [workflow tools](tools/workflow-tools.md), and call agents from workflows through the [`ai.agent` and `kibana.request` steps](agents-and-workflows.md#approaches).

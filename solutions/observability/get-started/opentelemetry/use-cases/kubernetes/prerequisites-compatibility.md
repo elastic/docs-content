@@ -1,6 +1,6 @@
 ---
 navigation_title: Prerequisites and compatibility
-description: Prerequisites and compatibility information for monitoring Kubernetes with EDOT.
+description: Prerequisites and compatibility information for monitoring Kubernetes with {{edot}}.
 applies_to:
   stack:
   serverless:
@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Prerequisites and compatibility for Kubernetes observability with EDOT [k8s-edot-prerequisites]
+# Prerequisites and compatibility for Kubernetes observability with {{edot}} [k8s-edot-prerequisites]
 
 Before setting up observability for Kubernetes, make sure you have the following:
 

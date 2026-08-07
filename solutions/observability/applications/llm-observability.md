@@ -43,13 +43,13 @@ Elastic's LLM integrations now support the most widely adopted models, including
 
 Elastic offers specialized OpenTelemetry Protocol (OTLP) tracing for applications leveraging LLM models hosted on Amazon Bedrock, OpenAI, Azure OpenAI, and GCP Vertex AI, providing a detailed view of request flows. This tracing capability captures critical insights, including the specific models used, request duration, errors encountered, token consumption per request, and the interaction between prompts and responses. Ideal for troubleshooting, APM tracing allows you to find exactly where the issue is happening with precision and efficiency in your LLM-powered application.
 
-You can instrument the application with one of the following Elastic Distributions of OpenTelemetry (EDOT):
+You can instrument the application with one of the following {{edot}} SDKs:
 
 - [Python](https://github.com/elastic/elastic-otel-python)
 - [Node.js](https://github.com/elastic/elastic-otel-node)
 - [Java](https://github.com/elastic/elastic-otel-java)
 
-EDOT includes many types of LLM instrumentation. This [table](/solutions/observability/get-started/opentelemetry/use-cases/llms/index.md#supported-technologies) lists the supported technologies.
+{{edot}} includes many types of LLM instrumentation. This [table](/solutions/observability/get-started/opentelemetry/use-cases/llms/index.md#supported-technologies) lists the supported technologies.
 
 ### Getting started
 
