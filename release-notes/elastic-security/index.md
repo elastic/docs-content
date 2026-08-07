@@ -227,10 +227,10 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an error that prevented adding the Osquery Manager integration in custom {{kib}} spaces when a global Osquery pack existed in the Default space [#278498]({{kib-pull}}278498).
 * Fixes intermittent duplicate execution of scheduled Osquery packs by deduplicating concurrent {{fleet}} package-policy writes for package policies shared across multiple agent policies [#278159]({{kib-pull}}278159).
 * Fixes an issue where {{elastic-defend}} WFP firewall anti-tamper rules were not reinstated after a restart when the policy had not changed.
-* Fixes a CPU spin loop in {{elastic-defend}} that could occur when a middlebox (such as Zscaler or a load balancer) dropped a TLS connection to the {{ls}} or {{es}} output with a TCP RST, pinning one CPU core and preventing event delivery until the agent was restarted.
+* Fixes a CPU spin loop in {{elastic-defend}} that could occur when a middlebox (such as Zscaler or a load balancer) dropped a TLS connection to {{ls}} or {{es}}, preventing event delivery until the agent was restarted.
 * Fixes an issue where {{elastic-defend}} immediately retried sending documents when {{es}} failed to ingest them.
-* Fixes {{elastic-defend}} on Windows so TLS handshakes succeed against servers that send a leaf-only certificate chain when the issuing intermediate CA is installed in the Windows Intermediate CA store, matching the behavior of other Elastic components.
-* Fixes an issue in {{elastic-defend}} on Windows where the Windows Intermediate CA store was loaded into OpenSSL's trust anchor store alongside Trusted Root CAs. On hosts with cross-signed CA certificates sharing identical Subject/Issuer distinguished names, this could cause TLS handshake failures with a "certificate chain too long" error against otherwise valid certificate chains.
+* Fixes a TLS handshake failure in {{elastic-defend}} on Windows when a server sends a leaf-only certificate chain and the issuing intermediate CA is installed in the Windows Intermediate CA store.
+* Fixes a TLS handshake failure ("certificate chain too long") in {{elastic-defend}} on Windows with cross-signed CA certificates in the Intermediate CA store.
 * Fixes {{elastic-defend}} notifications not appearing on macOS Sonoma and later.
 * Fixes a resource leak in {{elastic-defend}} Lua libraries.
 * Preserves source and destination details for outbound IPv6 TCP connections in {{elastic-defend}} on Linux.
