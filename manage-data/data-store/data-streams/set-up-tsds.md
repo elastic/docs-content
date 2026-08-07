@@ -1,5 +1,5 @@
 ---
-navigation_title: "Set up a TSDS"
+navigation_title: "Set up a {{tsds-init}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-tsds.html
 applies_to:
@@ -9,29 +9,30 @@ products:
   - id: elasticsearch
 ---
 
-# Set up a time series data stream [set-up-tsds]
+# Set up a {{tsds}} [set-up-tsds]
 
-This page shows you how to manually set up a [time series data stream](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) (TSDS).
+This page shows you how to manually set up a [{{tsds}}](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) ({{tsds-init}}).
 
 ## Before you begin [tsds-prereqs]
 
-- Before you create a time series data stream, review [](../data-streams.md) and [TSDS concepts](time-series-data-stream-tsds.md). You can also try the [quickstart](/manage-data/data-store/data-streams/quickstart-tsds.md) for a hands-on introduction.
+- Before you create a {{tsds}}, review [](../data-streams.md) and [{{tsds-init}} concepts](time-series-data-stream-tsds.md). You can also try the [quickstart](/manage-data/data-store/data-streams/quickstart-tsds.md) for a hands-on introduction.
 - Make sure you have the following permissions:
-    - [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster)
-        - `manage_index_templates` for creating a template to base the TSDS on
-        - {applies_to}`stack: ga` `manage_ilm` if you're using [index lifecycle management](#tsds-ilm-policy)
-    - [Index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) 
-        - `create_doc` and `create_index` for creating or converting a TSDS
-        - `manage` to [roll over](#convert-existing-data-stream-to-tsds) a TSDS
+  - [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster)
+    - `manage_index_templates` for creating a template to base the {{tsds-init}} on
+    - {applies_to}`stack: ga` `manage_ilm` if you're using [{{ilm}}](#tsds-ilm-policy)
+  - [Index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) 
+    - `create_doc` and `create_index` for creating or converting a {{tsds-init}}
+    - `manage` to [roll over](#convert-existing-data-stream-to-tsds) a {{tsds-init}}
+    - `auto_configure` if you choose to turn on past index creation
 
 ::::{note}
 If you're working with OpenTelemetry data, try the [OpenTelemetry quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
 ::::
 
-## Set up a TSDS
+## Set up a {{tsds-init}}
 
 :::::{stepper}
-:::{step} Create an index lifecycle policy (optional)
+::::{step} Create an index lifecycle policy (optional)
 :anchor: tsds-ilm-policy
 
 ```{applies_to}
@@ -39,17 +40,17 @@ stack: ga
 serverless: unavailable
 ```
 
-In most cases, you can use a [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to manage your time series data stream. If you're using [data tiers](/manage-data/lifecycle/data-tiers.md) in {{stack}}, you can use [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md).
+In most cases, you can use a [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to manage your {{tsds}}. If you're using [data tiers](/manage-data/lifecycle/data-tiers.md) in {{stack}}, you can use [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md).
 
-::::{note}
+:::{note}
 :applies_to: {"stack": "ga 9.5"}
 
 {{ilm-init}} isn't required for frozen-tier {{search-snaps}}. Data stream lifecycle can manage them directly. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
-::::
+:::
 
-:::{dropdown} Create an ILM policy
+:::{dropdown} Create an {{ilm-init}} policy
 
-If you're using {{stack}}, {{ilm-init}} can help you manage a time series data stream's backing indices. {{ilm-init}} requires an index lifecycle policy.
+If you're using {{stack}}, {{ilm-init}} can help you manage the {{tsds}} backing indices. {{ilm-init}} requires an index lifecycle policy.
 
 For best results, specify a `max_age` for the `rollover` action in the policy. This ensures the [`timestamp` ranges](/manage-data/data-store/data-streams/time-bound-tsds.md) for the backing indices are consistent. For example, setting a `max_age` of `1d` for the `rollover` action ensures your backing indices consistently contain one day's worth of data.
 
@@ -75,14 +76,14 @@ PUT _ilm/policy/my-weather-sensor-lifecycle-policy
 ```
 
 :::
+::::
 
-
-::::{step} Create an index template 
+::::{step} Create an index template
 :anchor: create-tsds-index-template
 
-The structure of a time series data stream is defined by an index template. Create an index template with the following required elements and settings:
+The structure of a {{tsds}} is defined by an index template. Create an index template with the following required elements and settings:
 
-- **Index patterns:** One or more wildcard patterns matching the name of your TSDS, such as `weather-sensors-*`. For best results, use the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
+- **Index patterns:** One or more wildcard patterns matching the name of your {{tsds-init}}, such as `weather-sensors-*`. For best results, use the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 - **Data stream object:** The template must include `"data_stream": {}`.
 - **Time series mode:** Set `index.mode: time_series`.
 - **Field mappings:** Define at least one dimension field and typically one or more metric fields:
@@ -141,17 +142,18 @@ PUT _index_template/my-weather-sensor-index-template
   }
 }
 ```
+
 1. {{stack}} only
 2. {{stack}} only
 
 :::{important}
 :applies_to: stack: ga
-Without lifecycle management enabled, time series data streams can grow into very large indices that never roll over. This can lead to performance issues. Always configure lifecycle management for {{stack}} production deployments.
+Without lifecycle management enabled, a {{tsds}} can grow into very large indices that never roll over. This can lead to performance issues. Always configure lifecycle management for {{stack}} production deployments.
 :::
 
 :::{dropdown} Component templates (optional)
 
-If you're using component templates with a time series data stream, check the following requirements:
+If you're using component templates with a {{tsds}}, check the following requirements:
 
 - Each component template is valid on its own
 - The `index.routing_path` setting and its referenced dimension fields are defined in the same component template
@@ -160,13 +162,24 @@ If you're using component templates with a time series data stream, check the fo
 
 ::::
 
-::::{step} Create the time series data stream and add data
+::::{step} Turn on past index creation (optional)
+```{applies_to}
+stack: ga 9.5+
+```
+:::{include} /manage-data/_snippets/enable-backfill.md
+:::
+::::
+
+::::{step} Create the {{tsds}} and add data
 :anchor: create-tsds
 
-After creating the index template, you can create a time series data stream by [indexing a document](use-data-stream.md#add-documents-to-a-data-stream). The TSDS is created automatically when you index the first document, as long as the index name matches the index template pattern. You can use a bulk API request or a POST request.
+You can create a {{tsds}} explicitly by using the [create a data stream API]({{es-apis}}operation/operation-indices-create-data-stream) or implicitly by [indexing a document](use-data-stream.md#add-documents-to-a-data-stream).
+The {{tsds-init}} is created automatically when you index the first document, as long as the index name matches the index template pattern.
+You can use a bulk API request or a POST request.
 
 :::{important}
-To test the following `_bulk` example, update the timestamps to within two hours of your current time. Data added to a TSDS must fit the [accepted time range](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-accepted-time-range).
+To test the following `_bulk` example, update the timestamps to within two hours of your current time.
+This update is required because data added to a {{tsds-init}} must fall within an existing backing index's [accepted time range](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-accepted-time-range). The first backing index is sized around creation time using `look_back_time` (default two hours) and `look_ahead_time`.
 :::
 
 ```console
@@ -187,10 +200,12 @@ POST metrics-weather-sensors/_doc
   "humidity": 88.9
 }
 ```
+
+{applies_to}`stack: ga 9.5` If you turned on past index creation, {{es}} creates backing indices automatically as historical documents are added within the eligible write window. For more details, go to [How time-bound indices work](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-accepted-time-range).
 ::::
 
 ::::{step} Verify setup
-To make sure your time series data stream is working, try some GET requests.
+To make sure your {{tsds}} is working, try some GET requests.
 
 View data stream details:
 
@@ -198,7 +213,7 @@ View data stream details:
 GET _data_stream/metrics-prod 
 ```
 
-Check the document count in a time series data stream:
+Check the document count in a {{tsds}}:
 
 ```console
 GET metrics-prod/_count 
@@ -214,15 +229,14 @@ GET metrics-prod/_search
 }
 ```
 
-
 ::::
-
+:::::
 
 ## Advanced setup
 
-### Convert an existing data stream to a TSDS [convert-existing-data-stream-to-tsds]
+### Convert an existing data stream to a {{tsds-init}} [convert-existing-data-stream-to-tsds]
 
-You can convert an existing regular data stream to a TSDS. Follow these steps:
+You can convert an existing regular data stream to a {{tsds-init}}. Follow these steps:
 
 1. Update your existing index template and component templates (if any) to include time series settings. For {{stack}}, configure lifecycle management. 
 2. Use the [rollover API]({{es-apis}}operation/operation-indices-rollover) to manually roll over the existing data stream's write index, to apply the changes you made in step 1:
@@ -232,20 +246,24 @@ POST metrics-weather-sensors/_rollover
 ```
 
 :::{note}
-After the rollover, new backing indices will have time series functionality. Existing backing indices are not affected by the rollover (because their `index.mode` cannot be changed).
+After the rollover, new backing indices will have time series functionality. Existing backing indices are not affected by the rollover because their `index.mode` cannot be changed.
 :::
 
-### Secure a time series data stream [secure-tsds]
+### Secure a {{tsds}} [secure-tsds]
 
-To control access to a TSDS, use [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices). Privileges set on a TSDS also apply to the backing indices.
+To control access to a {{tsds-init}}, use [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices). Privileges set on a {{tsds-init}} also apply to the backing indices.
 
 For an example, refer to [Data stream privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md#data-stream-privileges).
 
+{applies_to}`stack: ga 9.5` Users who write documents that trigger creation of [past backing indices](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-past-index-creation) need the `auto_configure` index privilege on the data stream, in addition to privileges that allow indexing (such as `create_doc` or `index`).
+Users with only the `index` privilege receive a `security_exception` when a write would create a past backing index.
+
 ## Next steps [set-up-tsds-whats-next]
 
-Now that you've set up a time series data stream, you can manage and use it like a regular data stream. For more information, refer to:
+Now that you've set up a {{tsds}}, you can manage and use it like a regular data stream. For more information, refer to:
 
 * [Use a data stream](use-data-stream.md) for indexing and searching
 * [Change data stream settings](modify-data-stream.md#data-streams-change-mappings-and-settings) as needed
 * Query time series data using the {{esql}} [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md)
+* {applies_to}`stack: ga 9.5` [Load historical data into a {{tsds-init}}](/manage-data/data-store/data-streams/load-historical-tsds.md)
 * Use [data stream APIs]({{es-apis}}group/endpoint-data-stream)

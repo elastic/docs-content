@@ -332,5 +332,8 @@ subs:
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"
   fedramp-il5: "FedRAMP IL5"
+  tsds: "time series data stream"
+  tsds-cap: "Time series data stream"
+  tsds-init: "TSDS"
 release_notes:
   - product: cloud-serverless

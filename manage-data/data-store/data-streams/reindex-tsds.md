@@ -21,19 +21,44 @@ To reindex, follow the steps on this page.
 
 :::{note}
 This process only applies to time series data streams without a [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) configuration. To reindex a downsampled data stream, reindex the backing indices individually, then add them to a new, empty data stream.
+
+If the reason for the reindex is a major version upgrade, use the dedicated [reindex legacy backing indices API]({{es-apis}}operation/operation-indices-migrate-reindex) rather than this reindex operation.
 :::
 
 ## Overview
 
 These high-level steps summarize the process of reindexing a time series data stream. Each step is detailed in a later section.
 
-1. Create an index template for the destination data stream
-2. Update the template with temporary settings for reindexing
-3. Run the reindex operation
-4. Revert the temporary index settings
-5. Perform a manual rollover to create a new backing index for incoming data
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.0-9.4, serverless: ga }
+
+1. Create an index template for the destination data stream.
+2. Update the template with temporary settings for reindexing.
+3. Run the reindex operation.
+4. Revert the temporary index settings.
+5. Perform a manual rollover to create a new backing index for incoming data.
+
+:::
+
+:::{applies-item} stack: ga 9.5+
+
+1. Turn on past index creation.
+2. Create an index template for the destination data stream.
+3. Create the destination data stream and run the reindex operation.
+4. Add data stream lifecycle.
+
+:::
+::::
 
 The examples on this page use Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) syntax.
+
+## Turn on past index creation
+```{applies_to}
+stack: ga 9.5+
+```
+:::{include} /manage-data/_snippets/enable-backfill.md
+:::
 
 ## Create the destination index template [tsds-reindex-create-template]
 
@@ -67,7 +92,17 @@ PUT _index_template/my-new-tsds-template
   }
 }
 ```
-## Update the template for reindexing 
+
+:::{note}
+:applies_to: stack: ga 9.5+
+Don't add [data stream lifecycle](/manage-data/lifecycle/data-stream.md) or [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) policy details to the template at this time. That step occurs later.
+:::
+
+## Update the template for reindexing
+```{applies_to}
+stack: ga 9.0-9.4
+serverless: ga
+```
 
 To support the reindexing process, you need to temporarily modify the template:
 
@@ -105,7 +140,11 @@ PUT _index_template/new-tsds-template
 4. Speed up reindexing
 5. Pause ILM
 
-### Create the destination data stream and reindex [tsds-reindex-op]
+## Create the destination data stream and reindex [tsds-reindex-op]
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.0-9.4, serverless: ga }
 
 Run the reindex operation:
 
@@ -122,8 +161,42 @@ POST /_reindex
 }
 ```
 
+:::
+:::{applies-item} stack: ga 9.5+
+
+Create a data stream using the [_data_stream API]({{es-apis}}operation/operation-indices-create-data-stream):
+
+```console
+PUT /_data_stream/new-tsds
+```
+
+The data stream name must match the `index_patterns` in your index template.
+
+When you run the reindex operation, it adds new indices to the destination data stream because you turned on the past index creation feature.
+For example:
+
+```console
+POST /_reindex
+{
+  "source": {
+    "index": "old-tsds"
+  },
+  "dest": {
+    "index": "new-tsds",
+    "op_type": "create"
+  }
+}
+```
+
+You can skip to the [data stream lifecycle](#tsds-lifecycle) step.
+:::
+::::
 
 ## Restore the destination index template [tsds-reindex-restore]
+```{applies_to}
+stack: ga 9.0-9.4
+serverless: ga
+```
 
 After reindexing completes, update the index template again to remove the temporary settings:
 
@@ -154,6 +227,10 @@ PUT _index_template/new-tsds-template
 2. Re-enable ILM
 
 ## Roll over for new data
+```{applies_to}
+stack: ga 9.0-9.4
+serverless: ga
+```
 
 Create a new backing index with a manual rollover request:
 
@@ -162,6 +239,24 @@ POST new-tsds/_rollover/
 ```
 
 The destination data stream is now ready to accept new documents.
+
+## Add data stream lifecycle [tsds-lifecycle]
+```{applies_to}
+stack: ga 9.5+
+```
+
+Add [data stream lifecycle](/manage-data/lifecycle/data-stream.md) settings if you want to use the built-in mechanism for managing data retention, performance, and storage optimization.
+
+<!-- TO-DO: Add example
+For example:
+
+```console
+
+```
+-->
+
+You can also update the index template to add lifecycle details.
+For more details, go to [Set a data stream's lifecycle](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#set-lifecycle).
 
 ## Related resources
 
