@@ -29,7 +29,7 @@ A rule in Signal mode only writes signals. It never opens alert episodes, so act
 
 Alert episodes and signals are both written to `.rule-events` and share many of the same fields, including `data`, which holds the payload from your rule's query. The `type` field tells you which kind of document you're looking at, `signal` or `alert`, so you can filter for one or the other in a query (for example, `WHERE type == "signal"`).
 
-Alert episodes carry three additional fields, prefixed `episode.*`, for tracking lifecycle state (`episode.id`, `episode.status`, `episode.status_count`). Signal documents don't include these, because a signal isn't tracked as an ongoing problem.
+Alert episodes carry three additional fields, prefixed `episode.*`, for tracking lifecycle state (`episode.id`, `episode.status`, `episode.status_count`). Alert episodes track an ongoing problem, so they carry these fields; signals don't.
 
 This table shows the full field list, with the alert-only fields marked.
 

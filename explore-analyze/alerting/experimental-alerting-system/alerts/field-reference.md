@@ -36,7 +36,7 @@ Every rule evaluation writes a document to `.rule-events`. Fields use dot-notati
 | `space_id` | keyword | ✅ | ✅ | {{kib}} space where the rule lives. |
 | `episode.id` | keyword | — | ✅ | ID of the alert episode. |
 | `episode.status` | keyword | — | ✅ | Lifecycle state of the alert episode. Can be one of the following: `inactive`, `pending`, `active`, `recovering`. |
-| `episode.status_count` | long | — | ✅ | Count of consecutive evaluations in the current `episode.status`. Set only for `pending` and `recovering`. |
+| `episode.status_count` | long | — | ✅ | Count of consecutive evaluations in the current `episode.status`. Set only for `pending` or `recovering`. |
 
 ## `.alert-actions` field schema [alert-actions-field-schema]
 

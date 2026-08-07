@@ -19,7 +19,7 @@ In the generally available {{kib}} alerting system, the term **alert** refers to
 
 ## The core idea [core-idea]
 
-The {{alerting-v2-system}} starts with a rule evaluating your data. When the rule _detects_ a match, it either _acts_ on it by creating an alert episode, or _records_ it as a signal.
+The {{alerting-v2-system}} starts with a rule evaluating your data. When the rule _detects_ a match, it either _acts_ on it by creating an alert episode or _records_ it as a signal.
 
 :::{image} /explore-analyze/images/basic-system-flow.png
 :alt: Flowchart showing that after a rule detects a match, it either acts by creating an alert episode or records a signal
@@ -45,7 +45,7 @@ Refer to [Alert episodes](experimental-alerting-system/alerts.md) to learn more.
 
 ### Action policies
 
-An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by evaluating episode eligibility, match conditions, and frequency. Because a policy's configuration determines its scope, one policy can cover alert episodes from a specific rule, multiple rules, or all rules in the space, so you can change notification routing without touching any rule.
+An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by evaluating episode eligibility, match conditions, and frequency. A policy's configuration determines its scope, so one policy can cover alert episodes from a specific rule, multiple rules, or all rules in the space. This means you can change notification routing without touching any rule.
 
 Refer to [Notifications and actions](experimental-alerting-system/notifications-actions.md) to learn more.
 
@@ -57,7 +57,7 @@ Refer to [Connect workflows](experimental-alerting-system/workflows-alerting.md)
 
 ### Signals
 
-In Signal mode, a match is recorded a signal, which is not passed to action policies for evaluation. As signals accumulate, you can query them in Discover, build dashboards from them, or feed them into an Alert mode rule that correlates activity across sources, feeding back into the start of the flow.
+In Signal mode, a match is recorded as a signal, which skips action policy evaluation entirely. As signals accumulate, you can query them in Discover, build dashboards from them, or feed them into an Alert mode rule that correlates activity across sources, feeding back into the start of the flow.
 
 Refer to [Observe and analyze signals](experimental-alerting-system/observe-and-analyze-signals.md) to learn more.
 
@@ -69,10 +69,10 @@ Together, these five objects form two main paths, which diverge based on a rule'
 2. Depending on the rule's mode, the rule acts on the match (Alert mode) or records it (Signal mode):
 
    - **Alert mode**: An alert episode is created. An action policy evaluates the episode and decides whether and when to invoke a workflow.
-   - **Signal mode**: The match is recorded as a signal. Signals are not evaluated by action policies, which also means that workflows are not invoked.
+   - **Signal mode**: The match is recorded as a signal, which skips action policy evaluation and workflow invocation entirely.
 
 :::{image} /explore-analyze/images/detailed-system-flow.png
-:alt: Flowchart showing that after a rule finds a match, it either acts by creating an alert episode that an action policy evaluates and routes to trigger notifications or actions, or records a signal that doesn't trigger notifications or actions
+:alt: Flowchart showing that after a rule finds a match, it either acts by creating an alert episode that an action policy evaluates and routes to trigger notifications or actions or records a signal that doesn't trigger notifications or actions
 :::
 
 ## Get started or go deeper [system-overview-next-steps]
