@@ -14,7 +14,7 @@ description: The experimental Kibana alerting system uses ES|QL rules to detect 
 The {{alerting-v2-system}} in {{kib}} watches your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, and select whether each match opens a tracked alert episode or records a signal for later analysis. The system handles the rest.
 
 ::::{note}
-In the generally available {{kib}} alerting system, the term **alert** refers to a tracked occurrence of a rule condition. In the {{alerting-v2-system}}, the equivalent concept is called an **alert episode**. The two terms describe similar ideas in different systems and are not interchangeable.
+In the generally available {{kib}} alerting system, the term **alert** refers to a tracked occurrence of a rule condition. In the {{alerting-v2-system}}, the equivalent concept is called an **alert episode**. GA alerting APIs, UI, and instructions that reference alerts don't apply to alert episodes, and {{alerting-v2-system}} APIs, UI, and instructions that reference alert episodes don't apply to alerts.
 ::::
 
 ## The core idea [core-idea]
@@ -25,7 +25,7 @@ The {{alerting-v2-system}} starts with a rule evaluating your data. When the rul
 :alt: Flowchart showing that after a rule detects a match, it either acts by creating an alert episode or records a signal
 :::
 
-Because acting and recording are independent, you can test a rule before setting up any notifications, record signals without paging anyone, and update where notifications go for many rules at once, without editing each rule.
+Because acting and recording are independent, you can switch a rule between Signal mode and Alert mode as your needs change, for example, testing a rule in Signal mode before switching it to Alert mode and setting up notifications. Notifications are handled separately from rules by action policies, so you can also update where notifications go for many rules at once, without editing each rule.
 
 ## The building blocks
 
