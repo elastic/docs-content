@@ -19,6 +19,7 @@ redirects:
   'solutions/search/rag/playground-troubleshooting.md': 'solutions/elasticsearch-solution-project/playground-troubleshooting.md'
   'solutions/search/search-applications/search-application-api.md': 'solutions/elasticsearch-solution-project/search-applications/search-application-api.md'
   'solutions/search/search-applications/search-application-security.md': 'solutions/elasticsearch-solution-project/search-applications/search-application-security.md'
+  'solutions/search/ai-search/ai-search.md': 'solutions/search/vector.md'
   'solutions/search/mcp.md':
     to: 'explore-analyze/ai-features.md'
     anchors:
