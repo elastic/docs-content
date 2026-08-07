@@ -279,26 +279,30 @@ The API returns the following:
 }
 ```
 
-:::{note}
-On {{kib}} nodes with more than 8 GB of RAM (for example, {{ech}} or {{ece}} deployments), {{kib}} splits into separate UI nodes and background task nodes. The `_health` endpoint is served by a UI node, which does not execute tasks, so execution-related fields are absent or `null` in the API response.
+### Retrieve health data when {{kib}} uses separate task nodes [task-manager-health-multi-node]
 
-The following fields are only complete on the background task node:
+::::{applies_to}
+deployment:
+  ece: all
+  ech: all
+::::
+
+On {{ech}} and {{ece}} deployments, {{kib}} nodes with more than 8 GB of RAM are split into UI nodes and background task nodes. The `GET api/task_manager/_health` endpoint is served by a UI node. Because UI nodes do not run tasks, several execution-related fields are absent or `null` in the response:
 
 * `stats.capacity_estimation.status` and `stats.capacity_estimation.value.observed.*`
 * `stats.runtime.value.polling.result_frequency_percent_as_number`
 * `stats.runtime.value.execution.duration` (per task type)
 * `stats.runtime.value.drift_by_type`
 
-To confirm which node answered the API, check `kibana_status.json` in the [diagnostic bundle](/troubleshoot/kibana/capturing-diagnostics.md): a UI node's instance name contains `- UI`.
-:::
+To confirm which node answered the request, check `kibana_status.json` in the [diagnostic bundle](/troubleshoot/kibana/capturing-diagnostics.md). A UI node's instance name contains `- UI`.
 
-To get complete Task Manager health data in a split deployment, read the background task node's health log instead of the API:
+To get complete health data, read the background task node's health log instead of the API:
 
-1. Open your deployment's [{{kib}} logs](/deploy-manage/monitor/logging-configuration/kibana-logging.md). How you access them depends on your deployment type.
+1. Open your deployment's [{{kib}} logs](/deploy-manage/monitor/logging-configuration/kibana-logging.md).
 2. Filter by the `task-manager-background-node-health` tag.
 3. Open the most recent hourly entry to get the full health payload.
 
-The background task node logs its health hourly under this tag. When a field such as `stats.workload.value.overdue` appears in both sources, prefer the background node value as the authoritative figure for task-execution health, because each node reports its own view of the workload.
+When a field such as `stats.workload.value.overdue` appears in both sources, the background node value is authoritative for task-execution health because each node reports only its own view of the workload.
 
 ### Evaluate the Configuration [task-manager-health-evaluate-the-configuration]
 
