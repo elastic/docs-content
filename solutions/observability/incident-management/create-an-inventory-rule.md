@@ -41,7 +41,10 @@ To create inventory rules, you need the following:
 - {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#logs-metrics-prereqs).
 - {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
-### Indices used by this rule
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
+
+## Indices used by this rule
 
 This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings, and the metrics indices from the Infrastructure / Metrics Explorer settings. The defaults are `metrics-*` and `metricbeat-*` for metrics; `logs-*-*` and `filebeat-*` for log rate. You cannot override these indices on a per-rule basis.
 

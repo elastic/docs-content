@@ -47,17 +47,13 @@ With Lens, you can create the following visualization types:
 ## Create visualizations with the API [lens-api]
 
 ```{applies_to}
-stack: preview 9.4
-serverless: preview
+stack: ga 9.5+, preview =9.4
+serverless: ga
 ```
 
 You can create and manage Lens visualizations programmatically using the Visualizations API ([stateful](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations), [serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-visualizations)). This is useful for managing visualizations as code, automating their lifecycle, or building tooling around Lens charts.
 
 Visualizations created through this API can be added to dashboards using the Kibana UI or the Dashboards API.
-
-:::{note}
-The Visualizations API is in technical preview and may change in future releases.
-:::
 
 ## Create visualizations [create-the-visualization-panel]
 
@@ -151,8 +147,8 @@ To assign colors to terms in your visualization:
 
 1. Create a visualization using one of the supported types.
 2. Add a categorical field that contains the terms you want to color.
-3. In the field configuration, look for the **Color by value** option:
-   * For data tables: Select **Cell** or **Text**
+3. In the field configuration, look for the **Cell decoration** or **Color by value** (depending on your {{kib}} version) option:
+   * For data tables: Select **Background** or **Cell** (depending on your {{kib}} version), or **Text**
    * For other chart types: This option appears when you have a categorical breakdown
 4. Click the **Edit colors** icon. In the menu that opens, keep **Use legacy palettes** turned off to be able to assign colors to specific terms
 5. Select a color palette from the available options:

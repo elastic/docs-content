@@ -41,7 +41,7 @@ Follow these steps to send data to Elastic using the {{motlp}}.
 ::::{applies-item} serverless:
 1. Log in to the {{ecloud}} Console.
 2. Find your project and select **Manage**.
-3. In the **Application endpoints, cluster and component IDs** section, select **Ingest**.
+3. In the **Application endpoints, cluster and component IDs** section, select **OpenTelemetry**.
 4. Copy the endpoint value.
 
 :::{tip}
@@ -248,13 +248,13 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ## Troubleshooting
 
-Refer to the [Troubleshoot EDOT](opentelemetry://reference/motlp/troubleshooting.md) guide for troubleshooting information for the {{motlp}}.
+Refer to the [Troubleshoot {{edot}}](opentelemetry://reference/motlp/troubleshooting.md) guide for troubleshooting information for the {{motlp}}.
 
 ## Provide feedback
 
 Help improve the Elastic Cloud Managed OTLP Endpoint by sending us feedback in our [discussion forum](https://discuss.elastic.co/c/apm) or [community Slack](https://elasticstack.slack.com/signup#/domain-signup).
 
-For EDOT collector feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
+For {{agent}} feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
 
 ## What's next
 

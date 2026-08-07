@@ -98,6 +98,19 @@ Tools execute queries against {{es}} indices as the current user. Required privi
 
 Learn more about [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 
+#### Read trace data [read-trace-data]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+{{agent-builder}} can [collect agent traces](collect-traces.md) into your {{es}} deployment. Trace data is stored in the `traces-agent_builder.otel-*` data stream. To read it, a role needs `read` and `view_index_metadata` on that pattern.
+
+Access is granted at the index level. Any user who can read these data streams can read all collected traces, so trace access is not scoped per user. To control who can read traces, configure index privileges through roles in **Stack Management → Roles**.
+
+<!-- RBAC on the local trace index is still settling (search-team#14100). In serverless Search and Observability projects the default roles may already grant broad access to these patterns. Do not document specific default-role behavior until #14100 lands. -->
+
 ## Grant access
 
 You can grant users access to {{agent-builder}} using these methods:

@@ -114,10 +114,10 @@ For more examples on acceptable date formats, refer to [Date Math](elasticsearch
 
 ## Filter for documents using wildcards [_filter_for_documents_using_wildcards]
 
-To search for documents matching a pattern, use the wildcard syntax. For example, to find documents where `http.response.status_code` begins with a 4, use the following syntax:
+To search for documents matching a pattern, use the wildcard syntax. Wildcard queries are supported on keyword, text, and wildcard fields, but not on numeric, date, or boolean fields. For example, to find documents where `machine.os` begins with "win", use the following syntax:
 
 ```yaml
-http.response.status_code: 4*
+machine.os: win*
 ```
 
 By default, leading wildcards are not allowed for performance reasons. You can modify this with the [`query:allowLeadingWildcards`](kibana://reference/advanced-settings.md#query-allowleadingwildcards) advanced setting.

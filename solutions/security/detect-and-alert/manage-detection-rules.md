@@ -27,11 +27,8 @@ The page was renamed from **Rules** to **{{siem-rules-ui}}** in versions 9.3.1, 
 The following sections explain how to filter rules, edit settings, control execution, export and import rules, and perform bulk operations.
 
 ::::{important}
-
-Rules run in the background using the privileges of the user who last edited them. When you create or modify a rule, {{elastic-sec}} generates an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) that captures a snapshot of your current privileges. If a user without the required privileges (such as index read access) updates a rule, the rule can stop functioning correctly and no longer generate alerts. To fix this, a user with the right privileges needs to either modify the rule or update the API key. To learn more, refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept).
-
+Ensure that only users with the appropriate access edit rules. Refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept) for more details.
 ::::
-
 
 ## Sort and filter the rules list [sort-filter-rules]
 
@@ -135,6 +132,15 @@ If you duplicate the rule and its exceptions, copies of the exceptions are creat
 2. In the Rules table, select the rules you want to duplicate.
 3. From the **Bulk actions** menu, select **Duplicate**.
 4. If any selected rules have exceptions, choose how to handle them.
+
+
+## View changes history [view-changes-history-entry]
+
+```{applies_to}
+stack: ga 9.5
+```
+
+Select the **All actions** menu {icon}`boxes_horizontal` on a rule, or select **All actions** on the rule's details page, then select **History** to view a chronological timeline of changes made to the rule, compare revisions, and restore the rule to a previous state. Refer to [View rule changes history](/solutions/security/detect-and-alert/view-rule-changes-history.md) for more details.
 
 
 ## Delete rules [delete-rules]

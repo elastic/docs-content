@@ -2,7 +2,7 @@
 navigation_title: "Create an OAuth client"
 description: "Register an OAuth client in Agent Builder to get the credentials and server URL needed to connect an MCP host over OAuth."
 applies_to:
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana
@@ -37,11 +37,12 @@ Before you create an OAuth client:
 
 ::::{step} Open the MCP client management page
 1. Find **Agents** in the navigation menu. You can also search for **Agent Builder** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Manage components** at the bottom of the left sidebar, then select **Tools**.
-3. On the tools library page, click **Manage MCP**, and then select **Manage MCP clients (OAuth)**. 
-4. Click **Add MCP client**.
+2. In the secondary navigation, select **Tools**.
+3. In the **Tools** workspace, click **Manage all tools**.
+4. In the **Tools library** workspace, click **Manage MCP**, and then select **Manage MCP clients (OAuth)**. 
+5. Click **Add MCP client**.
 
-You can also get to this page from **Admin and settings** → **Application connections** → **Manage MCP clients**.
+You can also get to this page by searching for **Application connections** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md), then selecting **Manage MCP clients**.
 ::::
 
 ::::{step} Name the client
@@ -57,10 +58,22 @@ Selecting a logo is cosmetic, and does not pre-configure any settings.
 ::::{step} Set the redirect URI
 The redirect URI tells the authorization server where to return the user after they authorize the connection. Select the redirect URI type:
 
-- **Local** — For applications running on your local machine. The redirect URIs are pre-populated with `http://localhost/callback` and `http://localhost/oauth/callback`. Replace or supplement these values to match your Agent's expected callback URL. The authorization server accepts any localhost port, but the path must match exactly. Common values:
-  - Claude Desktop (mcp-remote): `http://localhost/oauth/callback`
+- **Local** — For applications running on your local machine. The redirect URIs are pre-populated with `http://localhost/callback` and `http://localhost/oauth/callback`. Replace or supplement these values to match your Agent's expected callback URL. The authorization server accepts any localhost port, but the path must match exactly. 
+
+  Common values:
+  - Claude desktop app: `http://localhost/oauth/callback`
   - Claude Code CLI (native HTTP): `http://localhost/callback`
+  - Cursor (desktop): `http://localhost/callback` (Cursor uses port 8787, which is accepted automatically)
 - **Remote** — For hosted or cloud-based applications. Enter a single `https://` URL. Plain HTTP is not accepted.
+
+  Common values:
+  - claude.ai: `https://claude.ai/api/mcp/auth_callback`
+  - Cursor (web/agents): `https://www.cursor.com/agents/mcp/oauth/callback`
+  - ChatGPT: `https://chatgpt.com/connector/oauth/{callback_id}`
+  
+    :::{warning}
+    The ChatGPT callback URL is unique to each app. You must [start the app creation flow first](/deploy-manage/app-connections/connect-mcp-host.md) to get this URL, then return here to add it to your OAuth client.
+    :::
 
 For local clients that need more than one redirect URI, click **Add local URL** to add additional URLs.
 ::::
@@ -84,16 +97,6 @@ The client ID and MCP server URL can be retrieved at any time from the **MCP cli
 ::::
 
 :::::
-
-% todo: endpoint link
-:::{note}
-
-OAuth clients can also be created through the {{kib}} API. To create a client through the API, you must use an {{ecloud}} API key with [Cloud, {{es}}, and {{kib}} API access](/deploy-manage/api-keys/elastic-cloud-api-keys.md#project-access). Creating a client with an API key created directly in {{es}} is not supported. 
-
-Clients created through the API are not visible in the Agent Builder client list in {{kib}}, because they are not owned by a specific user. They appear only in the organization-level [Application connections](manage-app-connections.md) view in the {{ecloud}} Console.
-
-% source: https://elastic.slack.com/archives/C0AH1CA7S3Y/p1780340150585789
-:::
 
 ## Next steps
 

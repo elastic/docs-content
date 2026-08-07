@@ -2,13 +2,16 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/playground-context.html
 applies_to:
-  stack: preview =9.0, beta 9.1+
-  serverless: beta
+  stack: preview =9.0, beta 9.1-9.3, deprecated 9.4+
+  serverless: deprecated
 products:
   - id: kibana
 ---
 
 # Optimize model context [playground-context]
+
+::::{include} /solutions/_snippets/playground-deprecated.md
+::::
 
 Context is the information you provide to the LLM, to optimize the relevance of your query results. Without additional context, an LLM generates results solely based on its training data. In Playground, this additional context is the information contained in your {{es}} indices.
 
