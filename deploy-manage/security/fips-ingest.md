@@ -82,7 +82,7 @@ When you use {{agent}} and {{fleet-server}}, these limitations apply:
 * Some Elastic Integrations are not FIPS compatible, as they depend on functionality that is not supported for FIPS configuration. In general, when using {{agent}} and {{fleet-server}}, the same restrictions listed previously for {{metricbeat}} and {{filebeat}} modules, inputs, and processors apply.
 * Agent upgrade artifact verification uses GPG signature checking, which is outside Go's certified FIPS module boundary.
 
-### Elastic Agent in OpenTelemetry mode (EDOT) [ingest-limitations-edot]
+### {{agent}} in OpenTelemetry mode (EDOT) [ingest-limitations-edot]
 
 When running {{agent}} in [OpenTelemetry mode](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/README.md) (EDOT), these additional limitations apply:
 
