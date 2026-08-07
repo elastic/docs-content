@@ -10,15 +10,15 @@ description: Understand how Elastic Cloud API keys affect rule behavior, ownersh
 
 # Rules and {{ecloud}} API keys in {{serverless-short}}[rules-and-elastic-cloud-api-keys]
 
-In {{serverless-full}} projects, rules authenticate using [{{ecloud}} API keys](../../../deploy-manage/api-keys/elastic-cloud-api-keys.md) rather than [{{es}} API keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md), which are used in Stack deployments and as a fallback in Serverless when an {{ecloud}} API key isn't available.
+In {{serverless-full}} projects, rules authenticate using [{{ecloud}} API keys](../../../deploy-manage/api-keys/elastic-cloud-api-keys.md) rather than [{{es}} API keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md), which are used in Stack deployments and as a fallback in {{serverless-short}} when an {{ecloud}} API key isn't available.
 
 {{kib}} creates an API key when a rule is created or edited, then uses it to authorize execution on every run. {{es}} API keys are scoped to a user's **privileges**, whereas {{ecloud}} API keys are scoped to a snapshot of a user's current **roles**.
 
-Use this page to understand how {{ecloud}} API keys work for Serverless alerting rules and how role changes affect rule access. If your organization was part of Elastic's migration from {{es}} to {{ecloud}} API keys, it also includes a checklist to verify your rules are still running correctly.
+Use this page to understand how {{ecloud}} API keys work for {{serverless-short}} alerting rules and how role changes affect rule access. If your organization was part of Elastic's migration from {{es}} to {{ecloud}} API keys, it also includes a checklist to verify your rules are still running correctly.
 
 ## About the {{ecloud}} API key migration [about-the-migration]
 
-Elastic migrated existing alerting rules in {{serverless-full}} projects from {{es}} API keys to {{ecloud}} API keys in a controlled, phased rollout. In-product notices were shown when your organization was affected.
+Elastic migrated existing alerting rules in {{serverless-short}} projects from {{es}} API keys to {{ecloud}} API keys in a controlled, phased rollout. In-product notices were shown when your organization was affected.
 
 The migration was designed not to interrupt rule execution. Rules that couldn't be migrated automatically (for example, rules with a missing owner or incompatible custom role state) surfaced errors or indicators that require an administrator to fix the rule manually.
 
@@ -40,7 +40,7 @@ Any rule tagged **Missing Universal Api Key** is still running on an {{es}} API 
 Use the following checklists to confirm your rules are running correctly after the migration.
 
 :::{dropdown} Right after migration
-- **Check rule execution status**: Go to **{{stack-manage-app}} > {{rules-ui}}** or your app's rules page and review the last run status for all rules. Investigate any rules showing a failed or warning status before moving on. If you use Elastic Security detection rules, also check for gaps caused by the migration. Refer to [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md) for instructions.
+- **Check rule execution status**: Go to **{{stack-manage-app}} > {{rules-ui}}** or your app's rules page and review the last run status for all rules. Investigate any rules showing a failed or warning status before moving on. If you use {{elastic-sec}} detection rules, also check for gaps caused by the migration. Refer to [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md) for instructions.
 
 - **Resolve migration errors promptly**: If the UI shows an indicator that an {{ecloud}} API key isn't available for a rule, the rule continues to run using an {{es}} API key as a fallback. To create a new {{ecloud}} API key for the rule, open the rule's action menu in the UI and select **Update API key**.
 
@@ -48,13 +48,9 @@ Use the following checklists to confirm your rules are running correctly after t
 :::
 
 :::{dropdown} Within 90 days
-- **Review API key expiration**: If a rule was created or updated through the Kibana API using an {{ecloud}} API key with a defined expiration, the rule is bound to that specific key and its expiration date. When the key expires, the rule stops running. To generate a new key for the rule, select **Update API key** from the rule's action menu.
+- **Review API key expiration**: If a rule was created or updated through the {{kib}} API using an {{ecloud}} API key with a defined expiration, the rule is bound to that specific key and its expiration date. When the key expires, the rule stops running. To generate a new key for the rule, select **Update API key** from the rule's action menu.
 
 - **Review rules that use custom roles**: If any rules rely on custom roles, confirm those roles still exist and are correctly defined. If a custom role was deleted or changed around the time of migration, affected rules might be silently running with reduced access or might have failed.
-:::
-
-:::{tip}
-Rules can end up missing an {{ecloud}} API key at any time, not only within 90 days of a migration. Refer to [Find rules that are missing an {{ecloud}} API key](#missing-api-key-tag) for an ongoing check you can run at any time.
 :::
 
 ## How rules use {{ecloud}} API keys [rule-behavior-changes]
