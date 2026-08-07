@@ -86,3 +86,7 @@ spec:
         - name: elasticsearch-data
           emptyDir: {}
 ```
+
+::::{note}
+Besides the risk of data loss, using `emptyDir` (or another non-PVC volume) for `elasticsearch-data` means ECK cannot determine storage capacity for the {{es}} [Desired Nodes]({{es-apis}}group/endpoint-cluster) API. The Elasticsearch resource then reports `status.conditions` type `ResourcesAwareManagement` as `False`, and ECK attempts to clear Desired Nodes when {{es}} is reachable so an incomplete topology is not kept. That is not specific to mixed PVC and `emptyDir` NodeSets: if any NodeSet lacks a computable storage value from a `volumeClaimTemplates` PVC, Desired Nodes cannot be published for the cluster. ECK still reconciles the Elasticsearch resource (StatefulSets, Pods, and CPU/memory settings) as usual.
+::::
