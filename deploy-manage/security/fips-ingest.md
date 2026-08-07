@@ -76,7 +76,7 @@ This impacts [Filebeat](beats://reference/filebeat/configuration-kerberos.md), [
 * The [MySQL](beats://reference/metricbeat/metricbeat-module-mysql.md), [PostgreSQL](beats://reference/metricbeat/metricbeat-module-postgresql.md), [MSSQL](beats://reference/metricbeat/metricbeat-module-mssql.md) and [SQL](beats://reference/metricbeat/metricbeat-module-sql.md) modules are not supported.
 * The [Oracle module](beats://reference/metricbeat/metricbeat-module-oracle.md) is not supported.
 
-### Elastic Agent and Fleet Server [ingest-limitations-agent]
+### {{agent}} and {{fleet-server}} [ingest-limitations-agent]
 
 When you use {{agent}} and {{fleet-server}}, these limitations apply:
 * Some Elastic Integrations are not FIPS compatible, as they depend on functionality that is not supported for FIPS configuration. In general, when using {{agent}} and {{fleet-server}}, the same restrictions listed previously for {{metricbeat}} and {{filebeat}} modules, inputs, and processors apply.
