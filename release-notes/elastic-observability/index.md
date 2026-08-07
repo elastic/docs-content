@@ -148,6 +148,12 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves accessibility in the {{observability}} UI [#262975]({{kib-pull}}262975).
 * Fixes crashes caused by malformed URLs in plugins; affected pages now attempt automatic recovery [#257245]({{kib-pull}}257245).
 
+## 9.4.5 [elastic-observability-9.4.5-release-notes]
+
+### Fixes [elastic-observability-9.4.5-fixes]
+* Fixes package policy deletions not forwarding the `asyncDeploy` option to agent policy updates, causing deletions to always block on synchronous agent policy recompilation [#282580]({{kib-pull}}282580).
+* Fixes Synthetics monitors to support referencing maintenance windows by name in addition to ID [#282570]({{kib-pull}}282570).
+
 ## 9.4.4 [elastic-observability-9.4.4-release-notes]
 
 ### Features and enhancements [elastic-observability-9.4.4-features-enhancements]
