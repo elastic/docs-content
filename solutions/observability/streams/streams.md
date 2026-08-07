@@ -38,7 +38,6 @@ When an incident occurs, Streams gets you to answers faster. AI-powered detectio
 
 To use Streams, you need the following prerequisites:
 
-- {{serverless-short}}, or an {{stack}} 9.2+ deployment on a self-managed cluster, {{ech}}, {{ece}}, or {{eck}}
 - A [generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md) to use AI features like pipeline suggestion, partition suggestions, and significant events. Any generative AI connector works, including [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md), which requires no external account or API key.
 
     :::{note}
