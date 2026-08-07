@@ -383,6 +383,22 @@ From the **Recent** tab, you can star any queries you want.
 
 In the **Starred** tab, find all the queries you have previously starred.
 
+### Set a default query [esql-kibana-default-query]
+
+{applies_to}`stack: ga 9.6` {applies_to}`serverless: ga` By default, when you switch **Discover** to {{esql}} mode, the query bar populates with a query derived from the selected data source. To override this with your own starting query instead:
+
+1. Go to **Stack Management** → **Advanced Settings** (or **Management** → **Advanced Settings** in {{serverless-short}}).
+2. Search for [**Default ES|QL query for Discover**](kibana://reference/advanced-settings.md#kibana-discover-settings) (`discover:defaultEsqlQuery`).
+3. Enter your default query.
+
+This setting applies only in the space where you set it, and is useful when the query derived from the data source is slow to run, for example, against a large data source.
+
+{{kib}} validates the query for syntax only when you save the setting; it doesn't check whether the query returns results. Once set, the default query populates the query bar each time you open Discover in {{esql}} mode, but it doesn't override a query you already edited or apply when you switch query modes within the same Discover session. If a custom {{esql}} query is already configured elsewhere, such as in a Discover profile provided by your organization, {{kib}} applies defaults in this order of priority:
+
+1. The `discover:defaultEsqlQuery` advanced setting.
+2. A default query configured through a Discover profile.
+3. The query derived from the selected data source.
+
 
 ## Define query settings with `SET` [esql-kibana-set]
 ```{applies_to}
