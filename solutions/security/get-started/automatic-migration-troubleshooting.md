@@ -1,4 +1,7 @@
 ---
+navigation_title: "No integrations for translated rules"
+description: "Fix missing integrations for translated rules in Automatic Migration, caused by the elser_embedding field being bound to the wrong inference endpoint."
+type: troubleshooting
 applies_to:
   stack: preview =9.0, ga 9.1+
   serverless:
@@ -12,71 +15,77 @@ products:
   - id: elastic-stack
 ---
 
-# Troubleshoot Automatic Migration
+# No integrations shown for translated rules
 
-## No integrations found for translated rules (Wrong inference model on the `elser_embedding` field)
+After an Automatic Migration completes, the **Integrations** column on the **Translated rules** page can show no integrations, even when matching integrations exist. This page helps you confirm whether the cause is a misconfigured inference endpoint, and how to fix it.
 
-### Problem description
+## Symptoms
 
-The `.kibana-siem-rule-migrations-integrations` index contains a `semantic_text` field named `elser_embedding` that is intended to use Elastic's ELSER sparse embedding model for semantic search. However, on some deployments the field might be bound to a different embedding model (for example, a Jina dense embedding model with `inference_id: .jina-embeddings-v5-text-small`) instead.
+- The **Integrations** column on the **Translated rules** page shows no integrations for rules that have a matching integration.
+- Semantic search results based on the affected index are inconsistent or empty.
 
-This can cause the following symptom:
+## Diagnosis
 
-- **No integrations found for translated rules** — after completing an automatic migration, the **Integrations** column on the Translated rules page shows no integrations even when they should exist, because integration matching relies on semantic search against this index.
+Integration matching relies on semantic search against the `.kibana-siem-rule-migrations-integrations` index, which stores a `semantic_text` field named `elser_embedding`. That field is intended to use Elastic's ELSER sparse embedding model, but on some deployments it can be bound to a different embedding model instead—for example, a Jina dense embedding model with `inference_id: .jina-embeddings-v5-text-small`.
 
-The root cause is that when the index was created, the ELSER inference endpoint was not available, so Elasticsearch fell back to whichever inference endpoint was configured. The field name `elser_embedding` is a label, but what matters is the `inference_id` baked into the index mapping at creation time. To confirm whether the field is bound to the wrong inference endpoint, refer to [Check the `elser_embedding` inference ID](#verify-elser-inference-id).
+This typically happens because the ELSER inference endpoint wasn't available yet when the index was created, so {{es}} fell back to whichever inference endpoint was configured at the time. The field name `elser_embedding` is only a label—what determines the model actually used is the `inference_id` baked into the index mapping at creation time.
 
-The fix requires re-creating the index with the correct ELSER inference endpoint and re-indexing all documents so their embeddings are regenerated using ELSER.
+To confirm this is the cause, run the following requests in the {{kib}} [Dev Tools Console](/explore-analyze/query-filter/tools/console.md):
 
-### Prerequisites
+1. Check which inference endpoints exist on the cluster:
 
-- ELSER ML model must be available on the cluster.
-- You must have index admin privileges.
-- Make sure no automatic migrations are running. If a migration is running, stop it before starting the reindex process.
+   ```http
+   GET _inference
+   ```
 
----
+   If you only see Jina or other non-ELSER endpoints, ELSER hasn't been deployed on this cluster. Create it in [Step 1](#create-elser-endpoint) of the resolution.
 
-### Step 1 — Verify the problem
+2. Check the `inference_id` for the `elser_embedding` field:
 
-Run the following API requests in [Kibana Dev Tools Console](/explore-analyze/query-filter/tools/console.md).
+   ```http
+   GET .kibana-siem-rule-migrations-integrations/_mapping/field/elser_embedding
+   ```
 
-**1a. Check what inference endpoints are currently configured on the cluster:**
+   If `inference_id` shows `.jina-embeddings-v5-text-small` (or anything other than an ELSER endpoint), the field is misconfigured and the resolution below applies. For example:
 
-```http
-GET _inference
-```
+   ```json
+   "elser_embedding": {
+     "type": "semantic_text",
+     "inference_id": ".jina-embeddings-v5-text-small"
+   }
+   ```
 
-Confirm whether an ELSER endpoint exists. If you only see Jina or other non-ELSER endpoints, ELSER has not been deployed on this cluster and must be created in Step 2.
+   A correctly configured mapping references an ELSER inference endpoint instead, for example:
 
-#### 1b. Check the elser_embedding inference ID [verify-elser-inference-id]
+   ```json
+   "elser_embedding": {
+     "type": "semantic_text",
+     "inference_id": "elser-2-elasticsearch"
+   }
+   ```
 
-```http
-GET .kibana-siem-rule-migrations-integrations/_mapping/field/elser_embedding
-```
+## Resolution
 
-Look for the `inference_id` inside the field mapping. If it shows `.jina-embeddings-v5-text-small` (or anything other than an ELSER endpoint), the field is misconfigured and the remediation steps in this guide are required. For example:
+Recreate the index with the correct ELSER inference endpoint, then reindex all documents so their embeddings are regenerated using ELSER.
 
-```json
-"elser_embedding": {
-  "type": "semantic_text",
-  "inference_id": ".jina-embeddings-v5-text-small"
-}
-```
+Before you start:
 
-The corrected mapping should reference an ELSER inference endpoint, such as:
+- Confirm ELSER is available on your cluster, or be prepared to create it in Step 1.
+- You need index admin privileges.
+- Make sure no automatic migrations are running. If one is running, stop it before you continue.
 
-```json
-"elser_embedding": {
-  "type": "semantic_text",
-  "inference_id": "elser-2-elasticsearch"
-}
-```
+::::{warning}
+This resolution deletes and recreates a {{kib}} system index directly through {{es}} APIs. Take a cluster snapshot before you begin, and contact [Elastic support](/troubleshoot/index.md#contact-us) if you're unsure about any step.
+::::
 
----
+:::::{stepper}
 
-### Step 2 — Create the ELSER inference endpoint
+::::{step} Create the ELSER inference endpoint
+:anchor: create-elser-endpoint
 
-You can create the ELSER inference endpoint with the API request below, or deploy ELSER from the Kibana **Model Management** > **Trained Models** page. For more information, refer to [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md).
+Skip this step if [Diagnosis](#diagnosis) confirmed ELSER is already deployed.
+
+Create the endpoint with the following request, or deploy ELSER from the {{kib}} **Model Management** → **Trained Models** page. For more information, refer to [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md).
 
 ```http
 PUT _inference/sparse_embedding/elser-2-elasticsearch
@@ -94,17 +103,17 @@ PUT _inference/sparse_embedding/elser-2-elasticsearch
 }
 ```
 
-This registers a new ELSER sparse embedding inference endpoint with the ID `elser-2-elasticsearch`. This ID will be referenced in the index mapping. If you deploy ELSER from Kibana instead, use that endpoint ID in the mapping examples below.
+This registers a new ELSER sparse embedding inference endpoint with the ID `elser-2-elasticsearch`, which the following steps reference in the index mapping. If you deploy ELSER from {{kib}} instead, use that endpoint ID in the mapping examples below.
 
-::::{note}
-The inference ID cannot start with a dot (`.`) — that prefix is reserved for system-provisioned endpoints on Elastic Cloud. Use a plain alphanumeric name.
+:::{note}
+The inference ID can't start with a dot (`.`)—that prefix is reserved for system-provisioned endpoints on {{ecloud}}. Use a plain alphanumeric name.
 
-Adjust the adaptive allocation settings and `num_threads` for better throughput during reindex if your cluster has spare ML capacity.
+Adjust the adaptive allocation settings and `num_threads` for better throughput during reindex if your cluster has spare {{ml}} capacity.
+:::
+
 ::::
 
----
-
-### Step 3 — Create a backup index
+::::{step} Create a backup index
 
 ```http
 PUT kibana-siem-rule-migrations-integrations-backup
@@ -135,15 +144,15 @@ PUT kibana-siem-rule-migrations-integrations-backup
 }
 ```
 
-::::{note}
-**Why `dynamic: false`:** ELSER sparse vectors store thousands of unique NLP tokens as sub-fields at index time. With `dynamic: true` (the default), each token becomes a new mapped field, quickly exhausting the `total_fields.limit`. Setting `dynamic: false` prevents these token fields from being added to the mapping while still allowing them to be indexed and searched correctly.
+:::{note}
+**Why `dynamic: false`:** ELSER sparse vectors store thousands of unique NLP tokens as sub-fields at index time. With `dynamic: true` (the default), each token becomes a new mapped field, quickly exhausting `total_fields.limit`. Setting `dynamic: false` keeps those token fields out of the mapping while still allowing them to be indexed and searched correctly.
 
-**Why a backup index first:** The original index cannot have its `inference_id` changed in-place — mappings are immutable for `semantic_text` fields. A backup index lets you validate the reindex succeeded before destroying the original, and it remains available after final verification.
+**Why a backup index first:** The `inference_id` of a `semantic_text` field can't be changed in place—its mapping is immutable. Reindexing into a separate backup index first lets you validate the result before you delete the original, and it remains available as a backup after final verification.
+:::
+
 ::::
 
----
-
-### Step 4 — Reindex into the backup index
+::::{step} Reindex into the backup index
 
 ```http
 POST _reindex?wait_for_completion=false
@@ -157,55 +166,52 @@ POST _reindex?wait_for_completion=false
 }
 ```
 
-::::{note}
-**Why reindex into the backup index first:** The backup index uses the corrected `elser_embedding` mapping. Reindexing the original documents into this index applies the new ELSER inference endpoint before the original index is deleted and recreated.
+This copies the original documents into the backup index, which uses the corrected `elser_embedding` mapping, so their embeddings are regenerated with the new ELSER inference endpoint.
 
-**`wait_for_completion=false`:** Returns a task ID immediately so the reindex runs in the background. Use the task ID in Step 5 to monitor progress.
+`wait_for_completion=false` returns a task ID immediately so the reindex runs in the background. Use that task ID in the next step to monitor progress.
+
 ::::
 
----
-
-### Step 5 — Monitor the reindex task
+::::{step} Monitor the reindex task
 
 ```http
 GET _tasks/<task_id>
 ```
 
-Replace `<task_id>` with the one returned in Step 4.
+Replace `<task_id>` with the one returned in the previous step. Check for:
 
-Check for:
-- `"completed": true` — reindex finished.
-- `"failures": []` — no documents failed.
-- `response.created` should equal `response.total`.
+- `"completed": true`—reindex finished.
+- `"failures": []`—no documents failed.
+- `response.created` equals `response.total`.
 
----
+::::
 
-### Step 6 — Verify document counts match
+::::{step} Verify document counts match
 
 ```http
 GET .kibana-siem-rule-migrations-integrations/_count
 GET kibana-siem-rule-migrations-integrations-backup/_count
 ```
 
-Both counts must be equal before proceeding. If the backup index has fewer documents, check the task failures from Step 5 before continuing.
+Both counts must be equal before you continue. If the backup index has fewer documents, check the task failures from the previous step before proceeding.
 
----
+::::
 
-### Step 7 — Delete the original index
+::::{step} Delete the original index
 
 ```http
 DELETE .kibana-siem-rule-migrations-integrations
 ```
 
-::::{warning}
-This is irreversible. Only proceed if Step 6 confirmed counts match and Step 5 showed zero failures.
+:::{warning}
+This is irreversible. Only proceed if the previous two steps confirmed matching counts and zero failures.
 
-Kibana SIEM rule migration features that depend on this index will be unavailable until Step 9 completes.
+{{kib}} SIEM rule migration features that depend on this index are unavailable until you recreate it in the next step.
+:::
+
 ::::
 
----
-
-### Step 8 — Recreate the original index with the correct mapping
+::::{step} Recreate the original index with the correct mapping
 
 ```http
 PUT .kibana-siem-rule-migrations-integrations
@@ -236,11 +242,11 @@ PUT .kibana-siem-rule-migrations-integrations
 }
 ```
 
-The original index name is hardcoded in Kibana's SIEM rule migration code. The index must exist under its original name. This step recreates it with the correct mapping used for the backup index.
+The index name is hardcoded in {{kib}}'s SIEM rule migration code, so it must exist under its original name. This recreates it using the same corrected mapping as the backup index.
 
----
+::::
 
-### Step 9 — Reindex from the backup index back into the original
+::::{step} Reindex from the backup index back into the original
 
 ```http
 POST _reindex?wait_for_completion=false
@@ -256,35 +262,37 @@ POST _reindex?wait_for_completion=false
 
 The backup index already uses the corrected ELSER mapping, so this is a straight document copy back into the original index name.
 
----
+::::
 
-### Step 10 — Monitor the second reindex task
+::::{step} Monitor the second reindex task
 
 ```http
 GET _tasks/<task_id>
 ```
 
-Replace `<task_id>` with the one returned in Step 9. Apply the same checks as Step 5.
+Replace `<task_id>` with the one returned in the previous step, and apply the same checks as when you monitored the first reindex.
 
----
+::::
 
-### Step 11 — Final verification
+::::{step} Confirm the fix
 
 ```http
 GET .kibana-siem-rule-migrations-integrations/_count
 GET kibana-siem-rule-migrations-integrations-backup/_count
-```
-
-Confirm that both document counts match.
-
----
-
-### Step 12 — Confirm the fix
-
-```http
 GET .kibana-siem-rule-migrations-integrations/_mapping/field/elser_embedding
 ```
 
-The `inference_id` should now show `elser-2-elasticsearch`. If it does, the field is correctly bound to ELSER. Keep `kibana-siem-rule-migrations-integrations-backup` available as a backup after final verification.
+Confirm that both document counts match, and that `inference_id` now shows `elser-2-elasticsearch`. Keep `kibana-siem-rule-migrations-integrations-backup` available as a backup after final verification.
 
----
+::::
+
+:::::
+
+## Resources
+
+- [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md)
+- {{kib}} [Dev Tools Console](/explore-analyze/query-filter/tools/console.md)
+
+:::{tip}
+If you have an [Elastic subscription](https://www.elastic.co/pricing), you can [contact Elastic support](/troubleshoot/index.md#contact-us) for assistance.
+:::
