@@ -10,5 +10,6 @@ toc:
   # The next one should be child of ☝️
   - toc: apm-agents
   - toc: machine-learning
+  - toc: autoops-insights
   - toc: glossary
 
