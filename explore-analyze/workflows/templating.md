@@ -110,8 +110,38 @@ This section covers common patterns for accessing and transforming data in your 
 
 ### Reference inputs [workflows-ref-inputs]
 
-Reference input parameters defined in the workflow using `{{inputs.<input_name>}}`. Inputs are defined at the workflow level and can be provided when the workflow is triggered manually.
+Reference input parameters defined in the workflow using `{{inputs.<input_name>}}`. Inputs are values provided when the workflow is triggered manually.
 
+:::{include} /explore-analyze/workflows/_snippets/inputs-location-by-version.md
+:::
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
+```yaml
+triggers:
+  - type: manual
+    inputs:
+      - name: environment
+        type: string
+        required: true
+        default: "staging"
+      - name: batchSize
+        type: number
+        default: 100
+
+steps:
+  - name: log_config
+    type: console
+    with:
+      message: |
+        Running with:
+        - Environment: {{inputs.environment}}
+        - Batch Size: {{inputs.batchSize}}
+```
+:::
+
+:::{applies-item} stack: preview 9.3, ga =9.4
 ```yaml
 inputs:
   - name: environment
@@ -134,6 +164,9 @@ steps:
         - Environment: {{inputs.environment}}
         - Batch Size: {{inputs.batchSize}}
 ```
+:::
+
+::::
 
 ### Reference outputs [workflows-ref-step-outputs]
 
