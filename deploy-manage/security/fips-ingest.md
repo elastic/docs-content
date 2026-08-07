@@ -98,7 +98,7 @@ If you are using a component not listed here and are unsure whether it is FIPS c
 
 ### Elastic Integrations that are not FIPS compatible [ingest-limitations-integrations]
 
-The following Elastic Integrations (Fleet-managed) use cryptographic implementations outside Go's certified FIPS module boundary for core functionality and **cannot** be used in FIPS environments. For EDOT-specific limitations, see [Elastic Agent in OpenTelemetry mode (EDOT)](#ingest-limitations-edot).
+The following Elastic Integrations (Fleet-managed) use cryptographic implementations outside Go's certified FIPS module boundary for core functionality and **cannot** be used in FIPS environments. For EDOT-specific limitations, refer to [Elastic Agent in OpenTelemetry mode (EDOT)](#ingest-limitations-edot).
 
 - [Azure Logs Integration (v2 preview)](integration-docs://reference/azure/events.md)
 - [Azure Event Hub Input](integration-docs://reference/azure/eventhub.md)
