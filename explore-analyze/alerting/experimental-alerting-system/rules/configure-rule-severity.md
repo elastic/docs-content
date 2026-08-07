@@ -41,7 +41,7 @@ Keep the following in mind when configuring severity.
 - **Unrecognized values are silently ignored** - If the `severity` column contains a value that doesn't match one of the five levels, the alert episode is still created but `severity` is not set. If severity isn't appearing as expected, check the exact string your query is producing.
 - **Severity only applies to breached events** - `recovered` and `no_data` events don't carry a severity value. Action policy matchers that filter by severity only match open episodes.
 - **Severity can change mid-episode** - An alert episode can escalate or de-escalate without reopening. Action policy matching picks up the new value on the next dispatcher cycle. Refer to [Manage severity escalation notifications](../action-policies/severity-escalation.md) for routing examples.
-- **The `severity` field is available in action policy matchers** - Once set, the value is stored on the alert episode and can be used to route episodes by urgency — for example, sending `critical` episodes to an on-call channel while `low` episodes go to a review queue. Refer to [Alert data stream field reference](../alerts/field-reference.md) for the full field reference.
+- **The `severity` field is available in action policy matchers** - Once set, the value is stored on the alert episode and can be used to route episodes by urgency — for example, sending `critical` episodes to an on-call channel while `low` episodes go to a review queue. Refer to [Field reference](../alerts/field-reference.md) for the full field reference.
 
 ## Examples
 
