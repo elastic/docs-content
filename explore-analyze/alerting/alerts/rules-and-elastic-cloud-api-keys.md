@@ -33,7 +33,7 @@ To find affected rules, check rule tags on the **Rules** page for your project t
 - **{{observability}} and {{es}} projects**: Find **{{rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 - **Security projects**: Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-Any rule tagged **Missing Universal Api Key** is still running on an {{es}} API key. To migrate the rule to an {{ecloud}} API key, edit it in the UI (for example, by editing and saving the rule) or select **Update API key** from the rule's action menu. Follow any prompts the UI shows during the process.
+Any rule tagged **Missing Elastic Cloud API Key** is still running on an {{es}} API key. To migrate the rule to an {{ecloud}} API key, edit it in the UI (for example, by editing and saving the rule) or select **Update API key** from the rule's action menu. Follow any prompts the UI shows during the process.
 
 ### Check your rules after the migration [post-migration-checklist]
 
