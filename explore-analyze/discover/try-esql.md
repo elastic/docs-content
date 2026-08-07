@@ -104,6 +104,7 @@ serverless: ga
 When you write a query, the {{esql}} editor includes two interactive browsers that help you find available data sources and field names:
 
 - **Data source browser**: lists the data sources of the following types that you can query: **Alias**, **Index**, **Integration**, **Lookup Index**, **Stream**, and **Timeseries**. The browser supports multi-select: you can add or remove several sources in one session, and sources already present in your query appear preselected. Selections are inserted into the `FROM` or `TS` command and existing sources stay preserved. When the query starts with `TS`, only time series data sources are listed.
+  - {applies_to}`stack: experimental =9.5` {applies_to}`serverless: unavailable` Also lists **External data** sources created as [{{esql}} Data Federation](elasticsearch://reference/query-languages/esql/esql-data-federation.md) datasets.
 - **Fields browser**: lists fields for the data sources currently in your query and lets you insert one field at a time at the cursor position.
 
 :::{note}
