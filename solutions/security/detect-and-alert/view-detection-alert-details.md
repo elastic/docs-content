@@ -135,7 +135,15 @@ The Visualizations section (on the **Overview** tab) shows how the alert unfolde
 | Analyzer preview | Process tree (up to 3 ancestor and 3 descendant levels) | Trace how the process was spawned and what it launched. The {icon}`boxes_horizontal` icon indicates more levels exist. Click to open the **Analyzer** flyout. |
 | Graph preview {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` | A graph of the entities involved in the alert and their relationships | See which entities acted and which were targeted, and how they connect. Click to open the **Graph** flyout. |
 
-From the Analyzer or Session view flyout, select a related process or event to view its details. From the Graph flyout, use **Investigate in Timeline** ({icon}`timeline`) to continue your investigation there.
+From the Analyzer or Session view flyout, select a related process or event to view its details. From the Graph flyout, use **Investigate in Timeline** to continue your investigation there.
+
+### Session view [session-view]
+
+The **Session view** flyout shows the Linux session's process activity in a tree structure, including terminal output and any alerts generated during the session. Refer to [Session View](/solutions/security/investigate/session-view.md) to learn more.
+
+### Analyzer [analyzer-view]
+
+The **Analyzer** flyout shows the full process tree for the alert, including ancestor and descendant processes, and related file, network, and registry events. Refer to [Visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md) to learn more.
 
 ### Graph [graph-view]
 ```yaml {applies_to}
@@ -159,7 +167,7 @@ In the **Graph** flyout, you can:
 * Hover over an entity node and click the plus icon {icon}`plus_circle` to open the actions menu, then select **Show entity details**.
 * Hover over the relationship between two entities and click the plus icon {icon}`plus_circle` to open the actions menu, then select **Show related events** or **Show event details**.
 * Filter the graph using KQL syntax in the search bar. Supported fields include Entity Unique Identifier (EUID) values (for example, `entity.id : "user:alice@example.com"`) and raw ECS identity fields such as `user.id`, `user.email`, or `user.name`.
-* Select **Investigate in Timeline** ({icon}`timeline`) to open the current graph view in Timeline.
+* Select **Investigate in Timeline** to open the current graph view in Timeline.
 
 ## Insights [insights-section]
 
