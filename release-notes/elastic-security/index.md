@@ -44,9 +44,9 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes the alert analysis workflow model selector so it lists external and built-in inference endpoints from the {{agent-builder}} catalog, not only Actions connectors [#282075]({{kib-pull}}282075).
 * Fixes missing audit events when bulk editing rules. Attaching or detaching shared exception lists to detection rules via the **Manage rules** screen now emits per-rule audit write events in the {{kib}} audit log [#281075]({{kib-pull}}281075).
 * Fixes custom workflow steps so {{kib}} API requests are space-prefixed and target the workflow's space instead of the default space [#280986]({{kib-pull}}280986).
-* Fixes a CPU spin loop in {{elastic-defend}} that could occur when a middlebox (such as Zscaler or a load balancer) dropped a TLS connection to the {{ls}} or {{es}} output with a TCP RST, pinning one CPU core and preventing event delivery until the agent was restarted.
-* Fixes {{elastic-defend}} on Windows so TLS handshakes succeed against servers that send a leaf-only certificate chain when the issuing intermediate CA is installed in the Windows Intermediate CA store, matching the behavior of other Elastic components.
-* Fixes an issue in {{elastic-defend}} on Windows where the Windows Intermediate CA store was loaded into OpenSSL's trust anchor store alongside Trusted Root CAs. On hosts with cross-signed CA certificates sharing identical Subject/Issuer distinguished names, this could cause TLS handshake failures with a "certificate chain too long" error against otherwise valid certificate chains.
+* Fixes a CPU spin loop in {{elastic-defend}} that could occur when a middlebox (such as Zscaler or a load balancer) dropped a TLS connection to {{ls}} or {{es}}, preventing event delivery until the agent was restarted.
+* Fixes a TLS handshake failure in {{elastic-defend}} on Windows when a server sends a leaf-only certificate chain and the issuing intermediate CA is installed in the Windows Intermediate CA store.
+* Fixes a TLS handshake failure ("certificate chain too long") in {{elastic-defend}} on Windows with cross-signed CA certificates in the Intermediate CA store.
 * Fixes {{elastic-defend}} notifications not appearing on macOS Sonoma and later.
 * Preserves source and destination details for outbound IPv6 TCP connections in {{elastic-defend}} on Linux.
 * Fixes a resource leak in {{elastic-defend}} Lua libraries.
