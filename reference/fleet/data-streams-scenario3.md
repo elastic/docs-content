@@ -12,18 +12,21 @@ products:
 
 # Scenario 3: Apply an ILM policy with integrations using multiple namespaces [data-streams-scenario3]
 
+Use this scenario when an integration collects data into multiple namespaces and you need a custom {{ilm-init}} policy for a single data stream in one of them. This scenario involves cloning an index template.
+
+::::{tip}
+:applies_to: stack: ga 9.5+
+
+If you want the same {{ilm-init}} policy for **every** data stream an integration produces in a single namespace, [apply the policy from the integration policy editor](/reference/fleet/data-streams-namespace-ilm.md) instead, and let {{fleet}} manage the templates for you.
+::::
 
 In this scenario, you have {{agent}}s collecting system metrics with the System integration in two environments—one with the namespace `development`, and one with `production`.
 
 **Goal:** Customize the {{ilm-init}} policy for the `system.network` data stream in the `production` namespace. Specifically, apply the built-in `90-days-default` {{ilm-init}} policy so that data is deleted after 90 days.
 
-::::{note}
-* This scenario involves cloning an index template. We strongly recommend repeating this procedure on every minor {{stack}} upgrade in order to avoid missing any possible changes to the structure of the managed index template(s) that are shipped with integrations.
-* If you cloned an index template to customize the data retention policy on an {{es}} version prior to 8.13, you must update the index template in the clone to use the `ecs@mappings` component template on {{es}} version 8.13 or later. See [Update index template cloned before {{es}} 8.13](#data-streams-pipeline-update-cloned-template-before-8.13) for the step-by-step instructions.
+We strongly recommend repeating this procedure on every minor {{stack}} upgrade to avoid missing any possible changes to the structure of the managed index template(s) that are shipped with integrations.
 
-::::
-
-
+If you cloned an index template to customize the data retention policy on an {{es}} version prior to 8.13, you must update the index template in the clone to use the `ecs@mappings` component template on {{es}} version 8.13 or later. See [Update index template cloned before {{es}} 8.13](#data-streams-pipeline-update-cloned-template-before-8.13) for the step-by-step instructions.
 
 ## Step 1: View data streams [data-streams-ilm-one]
 
@@ -78,19 +81,19 @@ metrics-system.network-production@custom
 
 ## Step 3: Clone and modify the existing index template [data-streams-ilm-three]
 
-Now that you’ve created a component template, you need to create an index template to apply the changes to the correct data stream. The easiest way to do this is to duplicate and modify the integration’s existing index template.
+Now that you’ve created a component template, you need an index template scoped to the correct data stream and namespace. This scenario duplicates and modifies the integration’s existing index template.
 
-::::{warning}
-* If you duplicate an index template, do not change or remove any managed properties. This may result in problems when upgrading. Cloning the index template of an integration package involves some risk as any changes made to the original index template are not propagated to the cloned version when you upgrade versions. 
-* These steps assume that you want to have a namespace specific ILM policy, which requires index template cloning. Cloning the index template of an integration package involves some risk because any changes made to the original index template as part of package upgrades are not propagated to the cloned version. Check out [Cloning the index template of an integration package](/reference/fleet/integrations-assets-best-practices.md#assets-restrictions-cloning-index-template) for details.
-* If you want to change the ILM policy, the number of shards, or other settings for the data streams of one or more integrations, but **the changes do not need to be specific to a given namespace**, use a `@custom` component template, as described in [Scenario 1](/reference/fleet/data-streams-scenario1.md) and [Scenario 2](/reference/fleet/data-streams-scenario2.md), to avoid the problems mentioned earlier. Check out the [ILM](/reference/fleet/data-streams.md#data-streams-ilm) section for details.
-
+::::{important}
+Duplicating an integration index template is risky: don't change or remove managed properties, and remember that package upgrades don't update your copy. For details, refer to [Cloning the index template of an integration package](/reference/fleet/integrations-assets-best-practices.md#assets-restrictions-cloning-index-template).
 ::::
 
+If your changes don't need to be namespace-specific, use a `@custom` component template instead, as described in [Scenario 1](/reference/fleet/data-streams-scenario1.md) and [Scenario 2](/reference/fleet/data-streams-scenario2.md). For more about {{ilm-init}} with {{fleet}} data streams, refer to [Index lifecycle management ({{ilm-init}})](/reference/fleet/data-streams.md#data-streams-ilm).
+
+{applies_to}`stack: ga 9.5+` If you want the same settings for every data stream in a namespace (not only one data stream), you can use [namespace index templates](/reference/fleet/data-streams-namespace-custom.md) instead of duplicating the integration index template, and [apply the {{ilm-init}} policy](/reference/fleet/data-streams-namespace-ilm.md) from the integration policy editor.
 
 1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and open the **Index Templates** tab.
 2. Find the index template you want to clone. The index template will have the `<type>` and `<dataset>` in its name, but not the `<namespace>`. In this case, it’s `metrics-system.network`.
-3. Select **Actions** > **Clone**.
+3. Select **Actions** → **Clone**.
 4. Set the name of the new index template to `metrics-system.network-production`.
 5. Change the index pattern to include a namespace—in this case, `metrics-system.network-production*`. This ensures the previously created component template is only applied to the `production` namespace.
 6. Set the priority to `250`. This ensures that the new index template takes precedence over other index templates that match the index pattern.
@@ -148,7 +151,7 @@ To update the cloned index template:
 
 1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and open the **Index Templates** tab.
 2. Find the index template you cloned. The index template will have the `<type>` and `<dataset>` in its name.
-3. Select **Manage** > **Edit**.
+3. Select **Manage** → **Edit**.
 4. Select **(2) Component templates**
 5. In the **Search component templates** field, search for `ecs@mappings`.
 6. Click on the **+ (plus)** icon to add the `ecs@mappings` component template.

@@ -105,10 +105,10 @@ Classify input into one of a fixed set of categories. Optionally includes a rati
 |---|---|---|---|---|
 | `connector-id` | top level | string | No | GenAI connector to use. |
 | `input` | `with` | string, array, or object | Yes | Input to classify. |
-| `categories` | `with` | `string[]` | Yes | Allowed categories. At least one required. |
+| `categories` | `with` | array of string or object | Yes | Allowed categories. At least one required. Each entry is a plain category-name string. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Each entry can also be an object with `name` and `description`. |
 | `instructions` | `with` | string | No | Guidance for the classifier. |
 | `allowMultipleCategories` | `with` | boolean | No | Allow the output to include more than one category. |
-| `fallbackCategory` | `with` | string | No | Category returned when the model can't confidently choose. |
+| `fallbackCategory` | `with` | string or object | No | Category returned when the model can't confidently choose. Accepts a plain string. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Can also accept an object with `name` and `description`. |
 | `includeRationale` | `with` | boolean | No | Include the model's reasoning in the output. |
 | `temperature` | `with` | number (0–1) | No | Model temperature. |
 
@@ -116,7 +116,7 @@ Classify input into one of a fixed set of categories. Optionally includes a rati
 
 | Field | Type | Presence |
 |---|---|---|
-| `category` | string | Present when `allowMultipleCategories` is false (default). |
+| `category` | string | Present when `allowMultipleCategories` is false (default). Always the category `name`, even when you define the category as an object. |
 | `categories` | `string[]` | Present when `allowMultipleCategories` is true. |
 | `rationale` | string | Present when `includeRationale` is true. |
 | `metadata` | object | Always. |
@@ -135,6 +135,36 @@ Classify input into one of a fixed set of categories. Optionally includes a rati
 :::{tip}
 Always set `fallbackCategory` in production. Without a fallback, a confused model can fail the step. With one, every invocation produces a usable category you can branch on with a [`switch`](/explore-analyze/workflows/steps/switch.md) or [`if`](/explore-analyze/workflows/steps/if.md).
 :::
+
+### Example: Category descriptions [ai-classify-category-descriptions]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+`categories` and `fallbackCategory` also accept an object with `name` and `description` instead of a plain string. When you supply a description, the step includes it in the classification prompt sent to the model, which improves category selection when categories are closely related or ambiguous. This doesn't affect category names in the output: `category` and `categories` in the step output always contain the category `name`, never the description.
+
+```yaml
+- name: classify_alert
+  type: ai.classify
+  connector-id: "my-bedrock"
+  with:
+    input: "{{ inputs.alert_narrative }}"
+    categories:
+      - name: "Phishing"
+        description: "User-targeted deception to steal credentials or deliver malicious links; no sustained host compromise pattern required."
+      - name: "Malware"
+        description: "Execution of malicious code, ransomware, or clear C2/beaconing on an endpoint."
+      - name: "Credential Access"
+        description: "Brute force, password spraying, or secret dumping without confirmed large outbound data transfer."
+    fallbackCategory:
+      name: "Unknown"
+      description: "Insufficient signal to map confidently to any defined category."
+    includeRationale: true
+```
+
+You can mix plain strings and objects in the same `categories` list: the classifier treats a plain string as a category with no description.
 
 ## `ai.summarize` [ai-summarize]
 

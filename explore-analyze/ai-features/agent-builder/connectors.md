@@ -46,6 +46,12 @@ To register a new connector:
 
 The configured connector appears in the library and is immediately available for your agents to use dynamically.
 
+## Authorize connector access from chat
+
+When an agent needs access to an OAuth connector, the chat pauses and displays an authorization prompt. Select **Authorize** to open the provider's sign-in flow in a new browser tab. After authorization succeeds, return to the chat, where the agent retries the connector call and continues. Select **Deny** to cancel the call.
+
+If authorization fails or the provider does not return you to {{kib}}, close the provider tab and select **Deny** in the chat. Correct the connector or OAuth configuration, then retry your request. To learn more about this prompt, refer to [Authorize a connector](chat.md#authorize-a-connector).
+
 ## Related pages
 
 - [Tools in {{agent-builder}}](tools.md)

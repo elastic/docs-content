@@ -37,6 +37,7 @@ In practice, you add the {{elastic-defend}} integration from the **Integrations*
 | Configure protection and event collection settings | [Configure an integration policy](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md) |
 | Control which users can access {{elastic-defend}} features | [Feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) |
 | Set up endpoints in restricted networks | [Configure offline endpoints and air-gapped environments](/solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md) |
+| Send endpoint data to a remote {{es}} output | [Use {{elastic-defend}} with a remote {{es}} output](/solutions/security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md) |
 | Remove {{agent}} from a host | [Uninstall {{agent}}](/solutions/security/configure-elastic-defend/uninstall-elastic-agent.md) |
 
 ## Next steps
