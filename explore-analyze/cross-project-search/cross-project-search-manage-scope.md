@@ -7,33 +7,84 @@ products:
   - id: cloud-serverless
   - id: kibana
 navigation_title: "CPS scope in project apps"
-description: Learn how to manage cross-project search scope from your project apps using the scope selector, query-level overrides, and space defaults.
+description: Learn how to manage cross-project search scope from your project apps using the scope selector, tag filters, query-level overrides, and space defaults.
 ---
 
-# Managing {{cps}} scope in your project apps [cps-manage-scope]
+# Managing {{cps}} scope in your project apps
 
 When [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md) is enabled and projects are linked, searches initiated from your project's apps run across all linked projects by default. {{kib}} provides several ways to narrow or change this scope:
 
 * **Space default**: Admins [configure a default scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), which applies when you start a new session.
 * **Session scope**: Use the [{{cps-init}} scope selector](#cps-in-kibana) in the project's header to change which projects are searched during your session.
+* **Stored scope**: Some features use the [scope selector](#cps-in-kibana) to set a project routing value that is saved with a specific resource, such as a dashboard, an {{anomaly-job}}, or a transform. The stored scope applies every time that resource runs or opens, independent of the session scope.
 * **Query-level override**: Use project routing or qualified index expressions in individual queries to target specific projects.
 
 ## {{cps-cap}} scope selector [cps-in-kibana]
 
 The **{{cps-cap}} ({{cps-init}}) scope** selector ({icon}`cross_project_search`) in your project's header lets you control which linked projects your searches include.
 
-With the {{cps-init}} scope selector, you can select:
+The scope selector lists all linked projects. The origin project always appears first, labeled **This project**. Each project row shows the project name, project type icon, and any assigned [tags](/explore-analyze/cross-project-search/cross-project-search-tags.md).
 
-* **This project**: Searches only the origin project.
-* **All projects**: Searches the origin project and all linked projects.
+From the scope selector, you can:
 
-:::{tip}
-The scope selector also lists the aliases of all [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), which is useful when you need to reference them in queries or index patterns.
-:::
+* [Toggle individual projects on or off](#cps-picker-include-exclude) to include or exclude them from searches.
+* [Filter the project list by tags](#cps-picker-tag-filters) to find and select projects based on metadata or custom tags.
 
-The scope selector is not editable in every app. Some apps display it as **read-only**, meaning the app uses the space default scope but you cannot change it. Other apps show it as **unavailable**, meaning the app searches only the current project. Refer to [{{cps-cap}} availability by app](#cps-availability) for details.
+The footer displays the count of included and excluded projects.
 
-When you change the scope during a session, your selection is preserved as you navigate between apps. Admins can configure a [default {{cps}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), which is used when you start a new session.
+The scope selector is not editable in every app. Some apps display it as **read-only**, meaning the app uses the space default scope but you cannot change it. In read-only mode, filter badges are visible but you cannot create, edit, or remove filters. Other apps show it as **unavailable**, meaning the app searches only the current project. Refer to [{{cps-cap}} availability by app](#cps-availability) for details.
+
+When the current selection matches the [space default](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), the scope selector displays a **Using space defaults** indicator. When you change the selection, the indicator disappears. To restore the space default at any time, select **Revert to space defaults** in the scope selector.
+
+The scope selector also provides shortcuts to admin settings. Select **Adjust space defaults** to open the space's {{cps-init}} scope configuration, or **Manage cross-project search** to open the [{{cps-init}} management page](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md).
+
+### Session scope vs. stored scope
+
+In most apps, the scope selector controls the **session scope**: which projects are searched while you work. Your selection is preserved as you navigate between apps that support the scope selector, and starting a new session resets to the space default.
+
+In some apps, the scope selector sets a **stored scope** on a specific resource instead of the session. For example, in {{ml-app}} Anomaly Detection, the scope selector defines the `project_routing` value saved with each {{anomaly-job}}. Refer to the [availability table](#cps-availability) for details on how each app uses the scope selector.
+
+### Include and exclude projects [cps-picker-include-exclude]
+
+Each project row has a toggle switch that includes or excludes it from searches. You can also use the context menu on any project row for quick actions:
+
+* **Include only this project**: Excludes all other projects currently shown in the list.
+* **Exclude only this project**: Includes all other projects currently shown in the list except this one.
+
+You can also select all projects currently shown in the list by clicking **Include all visible**.
+
+The scope selector prevents you from excluding every project. The toggle on the last included project is deactivated, so at least one project is always included.
+
+If your current selection results in zero included projects, the scope selector displays a warning.
+
+### Filter projects by tag [cps-picker-tag-filters]
+
+You can narrow the project list in the scope selector by creating tag filters. Tag filters let you find and select projects based on [predefined and custom project tags](/explore-analyze/cross-project-search/cross-project-search-tags.md). Predefined tags include `_type`, `_region`, and `_csp`. You can also filter on [custom tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) that you define in the {{ecloud}} UI.
+
+To add a tag filter:
+
+1. Open the scope selector and select **Add project tag filter**.
+2. Choose a tag from the **Select a tag** dropdown.
+3. Choose an operator. The default operator is **is**.
+4. If the operator requires a value, choose one or more values from the **Select a value** dropdown.
+5. Select **Apply** ({icon}`check`) to add the filter.
+
+When multiple filters are active, they are combined with AND logic: a project must match all filters to appear in the list.
+
+#### Manage tag filters
+
+Active filters appear as badges below the filter form. You can:
+
+* Select a filter badge to edit its tag, operator, or value.
+* Invert a filter to switch between include and exclude logic.
+* Turn off a filter without removing it.
+* Remove a filter to delete it.
+
+To remove all active filters at once, select **Clear project tag filters** in the scope selector.
+
+#### Quick-filter from project tags
+
+You can create a filter directly from a project's tags. Select the tag count badge on a project row to open a popover listing that project's tags, then select a tag to create a filter for it.
 
 ## Override {{cps}} scope at the query level [cps-query-overrides]
 
