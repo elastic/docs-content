@@ -22,6 +22,8 @@ Alerting enables you to define *rules*, which detect complex conditions within d
 All of your alerting rules appear in one list on the **Rules** page. Open the page from **{{stack-manage-app}}** → **Alerts and insights** → **{{rules-ui}}**, or from **Manage rules** (or the equivalent link) in {{observability}}, Discover, or Stack Monitoring. Each of these opens the same **Rules** page, where you can view and manage rules.
 ::::
 
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
 
 ## Required permissions [_required_permissions]
 
