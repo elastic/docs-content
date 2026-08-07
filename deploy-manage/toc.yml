@@ -26,6 +26,7 @@ toc:
                       - file: deploy/elastic-cloud/azure-native-isv-service-logs-metrics.md
                       - file: deploy/elastic-cloud/azure-native-isv-service-network-security.md
                       - file: deploy/elastic-cloud/azure-native-isv-service-troubleshooting.md
+                      - file: deploy/elastic-cloud/azure-native-isv-service-byok.md
                   - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md
                   - file: deploy/elastic-cloud/heroku.md
                     children:
