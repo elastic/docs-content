@@ -4,6 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/slo-privileges.html
 products:
   - id: observability
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 
@@ -35,6 +38,12 @@ To create a role:
 
 1. Open the **Roles** management page by finding it in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. On the **Roles** page, click **Create role**.
+
+::::{warning}
+{{kib}} [spaces](/deploy-manage/manage-spaces.md) control which SLOs users can see. The **SLO** app only shows SLOs that belong to the active space. Spaces do not, however, restrict access to underlying {{es}} indices.
+
+The following roles grant index privileges to `.slo-observability.*`. This allows users with these roles to read SLO data across all spaces using Discover or the {{es}} API. Only grant these index privileges to users who are authorized to read SLO data across all spaces.
+::::
 
 
 ## Create an SLO Editor role [slo-all-access]
