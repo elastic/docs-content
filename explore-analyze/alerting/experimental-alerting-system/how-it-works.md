@@ -15,7 +15,7 @@ This page walks through what happens at each step after a rule runs, and broken 
 
 ## Rule runs in Alert mode [how-alert-mode-works]
 
-In Alert mode, the rule doesn't just record that a condition was found. It opens an alert episode that persists and tracks the problem until the condition clears. Each time the rule runs, it writes a rule event that can advance the episode's lifecycle state. An action policy sits between the episode and your team, deciding whether and when to trigger a workflow.
+In Alert mode, the rule doesn't just record that a condition was found. Each match causes the system to open an alert episode that persists and tracks the problem until the condition clears. Each time the rule runs, it writes a rule event that can advance the episode's lifecycle state. An action policy sits between the episode and your team, deciding whether and when to trigger a workflow.
 
 | Step | Actor | Action |
 |------|-------|--------|
@@ -38,7 +38,7 @@ Steps 4–6 and 8–9 run on a separate background process that polls roughly ev
 An SRE team wants to know when checkout service latency degrades, and notify the on-call team when it does. The team creates an Alert mode rule:
 
 1. The rule runs an {{esql}} query every five minutes, checking p95 checkout service latency.
-2. When p95 exceeds 2 seconds for more than one consecutive check, the rule opens an alert episode.
+2. When p95 exceeds 2 seconds for more than one consecutive check, the system opens an alert episode.
 3. An action policy with a `rule.tags: "checkout"` matcher skips low-severity episodes and sends a Slack message through an on-call workflow.
 
 The engineer investigates, fixes a slow query, and the alert episode recovers automatically.

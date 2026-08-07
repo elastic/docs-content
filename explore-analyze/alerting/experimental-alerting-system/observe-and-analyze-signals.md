@@ -79,7 +79,7 @@ FROM .rule-events
 | WHERE signal_count > 10
 ```
 
-When this Alert mode rule finds a match, it opens an alert episode that action policies can route to a workflow. The underlying Signal mode rule keeps recording without paging anyone on every individual call.
+When this Alert mode rule finds a match, the system opens an alert episode that action policies can route to a workflow. The underlying Signal mode rule keeps recording without paging anyone on every individual call.
 
 :::{tip}
 You can also correlate signals from more than one Signal mode rule in a single Alert mode query, for example combining administrator API call signals with error-rate signals, so neither source pages on its own.

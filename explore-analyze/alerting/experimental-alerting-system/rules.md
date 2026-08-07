@@ -18,7 +18,7 @@ This page explains what rules do, what they don't control, and how to choose a c
 
 On each run, a rule executes an {{esql}} query against your data. Matches are recorded as rule events (`rule_event`), and handled according to the rule's mode, which can be Signal mode or Alert mode. 
 
-In Signal mode, each matching row is stored as a signal document with no alert lifecycle or notifications. In Alert mode, the rule creates and tracks an alert episode for each match. Episodes move through lifecycle states and can trigger notifications through action policies. Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view them.
+In Signal mode, each matching row is stored as a signal document with no alert lifecycle or notifications. In Alert mode, the system creates and tracks an alert episode for each match. Episodes move through lifecycle states and can trigger notifications through action policies. Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view them.
 
 ## What rules don't do 
 

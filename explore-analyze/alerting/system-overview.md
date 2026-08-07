@@ -19,10 +19,10 @@ In the generally available {{kib}} alerting system, the term **alert** refers to
 
 ## The core idea [core-idea]
 
-The {{alerting-v2-system}} starts with a rule evaluating your data. When the rule _detects_ a match, it either _acts_ on it by creating an alert episode or _records_ it as a signal.
+The {{alerting-v2-system}} starts with a rule evaluating your data. When the rule detects a match, either the system acts by creating an alert episode or the rule records the match as a signal.
 
 :::{image} /explore-analyze/images/basic-system-flow.png
-:alt: Flowchart showing that after a rule detects a match, it either acts by creating an alert episode or records a signal
+:alt: Flowchart showing that after a rule detects a match, either the system acts by creating an alert episode or the rule records a signal
 :::
 
 Because acting and recording are independent, you can switch a rule between Signal mode and Alert mode as your needs change, for example, testing a rule in Signal mode before switching it to Alert mode and setting up notifications. Notifications are handled separately from rules by action policies, so you can also update where notifications go for many rules at once, without editing each rule.
