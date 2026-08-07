@@ -20,7 +20,7 @@ Looking for a minimal configuration approach? The `semantic_text` field type pro
 
 Vector search in {{es}} uses vector embeddings to power modern, AI-driven search experiences. With vectorized content, Elasticsearch retrieves results based on meaning and similarity, not just keywords or exact term matches.
 
-Vector search is a core component of most [semantic search](semantic-search.md) workflows, but it can also be used independently for similarity matching use cases. To explore AI-powered capabilities across the Elastic Stack — including the AI Assistant and Elastic Agent Builder — refer to [AI-powered features](/explore-analyze/ai-features.md).
+Vector search is a core component of most [semantic search](semantic-search.md) workflows, but it can also be used independently for similarity matching use cases. To explore AI-powered capabilities across the Elastic Stack, including the AI Assistant and Elastic Agent Builder, refer to [AI-powered features](/explore-analyze/ai-features.md).
 
 This guide focuses on the more manual technical implementations of vector search, outside of the higher-level `semantic_text` workflow.  
 The right approach depends on your requirements, data type, and use case.

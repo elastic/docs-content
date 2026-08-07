@@ -1,5 +1,5 @@
 ---
-description: Compare search approaches in Elasticsearch — full-text search, vector search, semantic search, and hybrid search — and choose the right strategy for your use case.
+description: Compare search approaches in Elasticsearch, including full-text search, vector search, semantic search, and hybrid search, and choose the right strategy for your use case.
 applies_to:
   stack:
   serverless:
