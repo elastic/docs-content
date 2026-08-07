@@ -87,27 +87,23 @@ The **Group by** dimension defines how rectangles are grouped. You can add up to
 **Data**
 :   The **Group by** dimension supports the following functions:
 
-    - **Top values**: Create rectangles for the most common values in a field.
-      - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term groups. When multiple fields are selected, each group represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many top values to display. The default number of values depends on your environment:
-        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-        - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
+    :::{include} ../../_snippets/lens-bucket-top-values.md
+    :::
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
-    - **Date histogram**: Group data into time-based buckets.
-      - **Field**: Select the date field to use for the time-based grouping.
+    :::{include} ../../_snippets/lens-bucket-date-histogram.md
+    :::
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
-    - **Intervals**: Create numeric ranges for continuous data.
-      - **Field**: Select the numeric field to create intervals from.
-      - **Include empty rows**: Include intervals with no matching documents.
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
-    - **Filters**: Define custom KQL filters to create specific groups.
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
+    :::{include} ../../_snippets/lens-bucket-intervals.md
+    :::
+    :::{include} ../../_snippets/lens-bucket-filters.md
+    :::
+
+    :::{include} ../../_snippets/lens-collapse-by.md
+    :::
 
 **Appearance**
 :   - **Name**: Customize the legend label.
@@ -185,10 +181,13 @@ The following examples show various configuration options for building impactful
 ![Treemap showing bytes per file extension](/explore-analyze/images/treemap-example-bytes-per-extension.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a single-level treemap where each rectangle represents a file extension and its size reflects total bandwidth consumed.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -306,10 +305,13 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Treemap showing flights by carrier and destination country](/explore-analyze/images/treemap-example-flights-carrier.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a two-level treemap: the outer rectangles represent airlines and the inner rectangles show destination countries, revealing how each carrier's flight volume is distributed geographically.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -425,10 +427,13 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Treemap showing response status per host](/explore-analyze/images/treemap-example-response-per-host.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example nests KQL-based response status categories inside host rectangles, combining `terms` and `filters` groupings to show both traffic volume and health per host.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

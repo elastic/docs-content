@@ -56,3 +56,8 @@ To collect {{kib}} monitoring data, add a {{kib}} integration to an {{agent}} an
 
 9. Wait a minute or two until incoming data is confirmed.
 10. [View the monitoring data in {{kib}}](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
+
+## Next steps
+
+:::{include} /deploy-manage/monitor/stack-monitoring/_snippets/consumption-next-steps.md
+:::

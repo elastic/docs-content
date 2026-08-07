@@ -15,8 +15,16 @@ products:
 
 Information about outstanding payments, statements, and billing invoices is available from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
+:::{note}
+Billing history is visible only to users with the **Organization owner** or **Billing admin** role.
+:::
+
 To check your billing history:
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the navigation menu, select **Billing > History**.
 4. On the **History** page, select the invoice number for a detailed PDF.
+
+:::{note}
+You can use the [billing history API](https://www.elastic.co/docs/api/doc/cloud-billing/operation/operation-gethistoryv1) to retrieve invoice history programmatically.
+:::

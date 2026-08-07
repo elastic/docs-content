@@ -15,6 +15,7 @@ To install ECE, make sure you prepare your environment with the following softwa
 * [Supported Linux kernel](#ece-linux-kernel)
 * [Linux distributions with compatible Docker versions](#ece-linux-docker)
 * [Free RAM](#ece-free-ram)
+* [Swap considerations](#ece-swap-considerations)
 * [XFS](#ece-xfs)
 * [FIPS compliance](#ece-fips)
 
@@ -70,6 +71,22 @@ ECE requires at least 8GB of free RAM. Check how much free memory you have:
 free -h
 ```
 
+
+## Swap [ece-swap-considerations]
+
+Swap requirements depend on the ECE roles assigned to the host:
+* **Director hosts:** Do not enable swap. Directors run ZooKeeper, and swap can severely degrade ZooKeeper performance. For background, refer to the [ZooKeeper administrator guide](https://zookeeper.apache.org/doc/current/zookeeperAdmin.html).
+* **All other hosts, including allocators:** Enable swap. If the host runs out of memory, the Linux OOM killer can stop a random process. Swap acts as a last-resort safeguard and helps protect ECE service availability.
+
+:::{admonition} Use swap only as an emergency safety net
+A container runtime process, such as Docker or Podman, running on swap can cause allocator failures due to API timeouts. Do not rely on it to overcommit memory or reduce host RAM. Size allocator capacity so the OS does not need swap during normal operation. For allocator capacity planning, refer to [](./ece-manage-capacity.md).
+:::
+
+As a baseline, provision at least 512 MB of swap. A common safeguard is 4 GB of swap for every 32 GB of RAM.
+
+Set `vm.swappiness` to `1` so the kernel uses swap only as a last resort. The OS preparation guides in [](./configure-operating-system.md) include this setting.
+
+How you create swap space depends on your operating system and infrastructure provider. Use your OS or cloud provider documentation to create a swap file or partition.
 
 ## XFS [ece-xfs] 
 

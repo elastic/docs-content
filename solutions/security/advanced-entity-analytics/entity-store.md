@@ -1,4 +1,5 @@
 ---
+description: Reconcile and persist entity metadata from logs, identity providers, and alerts. The entity store powers risk scoring, resolution, and graph visualization.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/entity-store.html
 applies_to:
@@ -12,7 +13,7 @@ products:
 # Entity store [entity-store]
 
 ::::{admonition} Requirements
-To use the entity store, you must have the appropriate privileges. For more information, refer to [Entity risk scoring requirements](/solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md).
+To use the entity store, you must have the appropriate privileges. For more information, refer to [Entity analytics requirements](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md).
 
 ::::
 
@@ -30,7 +31,7 @@ The entity store can hold any entity type observed by {{elastic-sec}}. It allows
 
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) is built on top of the entity store. It links multiple entity records representing the same real-world identity into a resolution group, consolidating their risk scores into a single view.
 
-{applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` [Entity relationships](/solutions/security/advanced-entity-analytics/entity-relationships.md) sourced from the entity store — such as access patterns, dependencies, and resolution links — are visible in the entity details flyout's [Graph View](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) tab. Entities that appear in both the entity store and in raw events are rendered as a single deduplicated node in the graph.
+{applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` [Entity relationships](/solutions/security/advanced-entity-analytics/entity-relationships.md) sourced from the entity store — such as access patterns, dependencies, and resolution links — are visible in the entity details flyout's [interactive graph](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations). Entities that appear in both the entity store and in raw events are rendered as a single deduplicated node in the graph.
 
 When the entity store is enabled, the following resources are created for the active space:
 
@@ -91,7 +92,7 @@ To enable the entity store:
 
 Once you enable the entity store, the **Entities** section appears on the following pages:
 
-* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md)
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md)
 * [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
 
 ## Clear entity store data [clear-entity-store]

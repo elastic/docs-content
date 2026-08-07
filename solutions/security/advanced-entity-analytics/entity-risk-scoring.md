@@ -1,4 +1,5 @@
 ---
+description: Learn how Elastic Security calculates entity risk scores for hosts, users, and services from detection alerts, asset criticality, and watchlist membership.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/entity-risk-scoring.html
   - https://www.elastic.co/guide/en/serverless/current/security-entity-risk-scoring.html
@@ -39,7 +40,7 @@ Entity risk scores are determined by the following risk inputs:
 | --- | --- |
 | [Alerts](../detect-and-alert/manage-detection-alerts.md) | `.alerts-security.alerts-<space-id>` index alias |
 | [Asset criticality level](asset-criticality.md) | `.asset-criticality.asset-criticality-<space-id>` index alias |
-| [Privileged user status](privileged-user-monitoring.md) {applies_to}`stack: removed =9.4, ga =9.3, preview 9.1-9.2` | `.entity_analytics.monitoring.users-<space-id>` index alias |
+| [Privileged user status](privileged-user-monitoring.md) {applies_to}`stack: removed 9.4+, ga =9.3, preview 9.1-9.2` | `.entity_analytics.monitoring.users-<space-id>` index alias |
 :::
 
 :::::
@@ -62,7 +63,7 @@ The resulting entity risk scores are stored in the `risk-score.risk-score-<space
     * By default, risk scoring uses the last 30 days of alerts. When turning on risk scoring, you can configure a different date and time range.
     ::::
 
-2. Alert risk scores (`kibana.alert.risk_score`) are aggregated for each entity, with entities identified by their Entity Unique Identifier (EUID) — a stable ID derived from ECS identity fields. Alerts with higher risk scores contribute more than those with lower risk scores. The resulting aggregated risk score is assigned to the **Alerts** category in the entity's [risk summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-risk-summary).
+2. Alert risk scores (`kibana.alert.risk_score`) are aggregated for each entity, with entities identified by their Entity Unique Identifier (EUID) — a stable ID derived from ECS identity fields. Alerts with higher risk scores contribute more than those with lower risk scores. The resulting aggregated risk score is assigned to the **Alerts** category in the entity's [risk score section](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score).
 
 3. The score is then updated based on the following risk inputs:
 
@@ -110,7 +111,7 @@ When an entity belongs to a [resolution group](/solutions/security/advanced-enti
     * By default, risk scoring uses the last 30 days of alerts. When turning on risk scoring, you can configure a different date and time range.
     ::::
 
-2. The engine groups alerts by `host.name`, `user.name`, or `service.name`, and aggregates the individual alert risk scores (`kibana.alert.risk_score`) such that alerts with higher risk scores contribute more than alerts with lower risk scores. The resulting aggregated risk score is assigned to the **Alerts** category in the entity's [risk summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-risk-summary).
+2. The engine groups alerts by `host.name`, `user.name`, or `service.name`, and aggregates the individual alert risk scores (`kibana.alert.risk_score`) such that alerts with higher risk scores contribute more than alerts with lower risk scores. The resulting aggregated risk score is assigned to the **Alerts** category in the entity's [risk summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score).
 
 3. The engine then updates the score based on the following risk inputs:
 
@@ -147,6 +148,8 @@ When an entity belongs to a [resolution group](/solutions/security/advanced-enti
 :::::
 
 The risk score is updated every hour based on the configured date and time range, which defaults to 30 days. Each update generates a new score, calculated independently of any previous scores.
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Because every calculation is retained, you can [investigate an entity's risk score over time](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) and inspect the risk inputs behind an earlier score.
 
 ### Residual risk score
 

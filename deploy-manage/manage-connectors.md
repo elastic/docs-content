@@ -12,11 +12,15 @@ products:
 
 # Connectors [connector-management]
 
-This page is about {{kib}} connectors that integrate with services like generative AI model providers or trigger actions in third-party systems. If you’re looking for content connectors that synchronize third-party data into {{es}}, refer to [Connector clients](elasticsearch://reference/search-connectors/index.md).
+{{connectors-ui}} integrate with services like generative AI model providers and trigger actions in third-party systems.
 
 Connectors serve as a central place to store connection information for both Elastic and third-party systems. They enable the linking of actions to rules, which execute as background tasks on the {{kib}} server when rule conditions are met. This allows rules to route actions to various destinations such as log files, ticketing systems, and messaging tools. Different {{kib}} apps may have their own rule types, but they typically share connectors. The **{{connectors-ui}}** provides a central location to view and manage all connectors in the current space. 
 
 You can find the **{{connectors-ui}}** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+:::{note}
+{{connectors-ui}} are not the same as [application connections](/deploy-manage/app-connections.md) or [search connectors](elasticsearch://reference/search-connectors/index.md). Application connections manage OAuth client registration and external access to {{serverless-short}} projects. Search connectors sync data from third-party sources into {{es}}.
+:::
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-connectors
@@ -57,7 +61,9 @@ You can delete a connector even if there are still actions referencing it. When 
 
 ## Creating a new connector [creating-new-connector]
 
-New connectors can be created with the **Create connector** button, which guides you to select the type of connector and configure its properties. For a full list of available connectors, see [Available connectors](kibana://reference/connectors-kibana.md).
+Select **Create connector** to open the connector selection flyout, where you choose a connector type and configure its properties. For a full list of available connectors, refer to [Available connectors](kibana://reference/connectors-kibana.md).
+
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Use the **Filter by feature** control to narrow the list to connector types that support specific {{kib}} features, such as **Alerting**, **Cases**, or **Uptime**. Leave the filter empty to show all available connector types. The HTTP connector type is available in the create flyout alongside other connector types.
 
 ::::{note}
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).

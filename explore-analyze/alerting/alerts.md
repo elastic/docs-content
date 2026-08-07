@@ -16,9 +16,15 @@ description: "Overview of Kibana alerting: rules, alerts, actions, connectors, a
 # {{kib}} alerting [alerts]
 
 {{kib}} alerting is the built-in alerting system in {{kib}}. It lets you define rules that check your data on a schedule, create alerts when conditions are met, and trigger actions through connectors (email, Slack, webhooks, and more). It is available on all deployments.
-<!-- TODO: Uncomment when PR #6521 (experimental overview) is merged:
-For the {{alerting-v2}} built on {{esql}}, refer to [{{alerting-v2-cap}}](kibana-alerting-experimental.md).
--->
+
+:::{note}
+:applies_to: {"stack": "experimental 9.5+", "serverless": "experimental"}
+To learn about the {{alerting-v2-system}} built on {{esql}}, refer to the [{{alerting-v2-system-cap}} overview](system-overview.md).
+::::
+
+:::{important}
+In the generally available {{kib}} alerting system, the term **alert** refers to a tracked occurrence of a rule condition. In the {{alerting-v2-system}}, the equivalent concept is called an **alert episode**. The two terms describe similar ideas in different systems and are not interchangeable.
+::::
 
 ## {{rules-ui}} [rules]
 
@@ -126,6 +132,6 @@ A rule consists of conditions, actions, and a schedule. When conditions are met,
 :::
 
 1. Any time a rule’s conditions are met, an alert is created. This example checks for servers with average CPU > 0.9. Three servers meet the condition, so three alerts are created.
-2. Alerts create actions according to the action frequency, as long as they are not muted or throttled. When actions are created, its properties are filled with actual values. In this example, three actions are created when the threshold is met, and the template string `{{server}}` is replaced with the appropriate server name for each alert.
+2. Alerts create actions according to the action frequency, unless they are snoozed, muted, or throttled. When actions are created, its properties are filled with actual values. In this example, three actions are created when the threshold is met, and the template string `{{server}}` is replaced with the appropriate server name for each alert.
 3. {{kib}} runs the actions, sending notifications by using a third party integration like an email service.
 4. If the third party integration has connection parameters or credentials, {{kib}} fetches these from the appropriate connector.

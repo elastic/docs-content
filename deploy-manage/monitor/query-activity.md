@@ -131,3 +131,4 @@ To change this threshold:
 - [](/deploy-manage/monitor/logging-configuration/query-logs.md)
 - [](/deploy-manage/monitor/logging-configuration/slow-logs.md)
 - [](/deploy-manage/production-guidance/optimize-performance/search-speed.md)
+- [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md)
