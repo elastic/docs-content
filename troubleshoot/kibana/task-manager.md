@@ -279,6 +279,31 @@ The API returns the following:
 }
 ```
 
+### Retrieve health data when {{kib}} uses separate task nodes [task-manager-health-multi-node]
+
+::::{applies_to}
+deployment:
+  ece: all
+  ech: all
+::::
+
+On {{ech}} and {{ece}} deployments, {{kib}} nodes with more than 8 GB of RAM are split into UI nodes and background task nodes. The `GET api/task_manager/_health` endpoint is served by a UI node. Because UI nodes do not run tasks, several execution-related fields are absent or `null` in the response:
+
+* `stats.capacity_estimation.status` and `stats.capacity_estimation.value.observed.*`
+* `stats.runtime.value.polling.result_frequency_percent_as_number`
+* `stats.runtime.value.execution.duration` (per task type)
+* `stats.runtime.value.drift_by_type`
+
+To confirm which node answered the request, check `kibana_status.json` in the [diagnostic bundle](/troubleshoot/kibana/capturing-diagnostics.md). A UI node's instance name contains `- UI`.
+
+To get complete health data, read the background task node's health log instead of the API:
+
+1. Open your deployment's [{{kib}} logs](/deploy-manage/monitor/logging-configuration/kibana-logging.md).
+2. Filter by the `task-manager-background-node-health` tag.
+3. Open the most recent hourly entry to get the full health payload.
+
+When a field such as `stats.workload.value.overdue` appears in both sources, the background node value is authoritative for task-execution health because each node reports only its own view of the workload.
+
 ### Evaluate the Configuration [task-manager-health-evaluate-the-configuration]
 
 $$$task-manager-theory-reduced-polling-rate$$$
