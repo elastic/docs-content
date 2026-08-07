@@ -50,17 +50,20 @@ $$$sparse-vectors$$$ Sparse vectors
 
 ### Semantic search and vector search [semantic-search-vs-vector-search]
 
-{{es}} uses vector search as the foundation for semantic search capabilities. You can work with this technology in two ways:
-1. The [**Semantic search**](https://www.elastic.co/docs/solutions/search/semantic-search) section provides managed workflows that use vector search under the hood:
+{{es}} uses vector search as the foundation for semantic and multimodal search. You can work with this technology in several ways:
+
+1. [**Semantic search for text**](semantic-search.md) provides managed workflows for meaning-based text search:
    - The `semantic_text` field type offers the simplest path with automatic embedding generation and model management
-   - Additional implementation options available for more complex needs
-2. [**Vector search**](https://www.elastic.co/docs/solutions/search/vector) gives you direct access to the underlying technology:
+   - Additional implementation options are available for more complex needs
+2. [**Multimodal search**](multimodal-search.md) extends vector search across text, images, audio, video, and documents:
+   - Use the [`semantic`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md) field type with a multimodal `embedding` endpoint
+   - [Jina multimodal models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-multimodal-embeddings) are the recommended models to start with
+3. [**Vector search**](vector.md) gives you direct access to the underlying technology:
    - Manual configuration of dense or sparse vectors
    - Flexibility to bring your own embeddings
    - Direct implementation of vector similarity matching
 
-Once you've implemented either approach, you can combine it with full-text search to create [hybrid search](https://www.elastic.co/docs/solutions/search/hybrid-search) solutions that leverage both meaning-based and keyword-based matching.
-
+Once you've implemented any of these approaches, you can combine them with full-text search to create [hybrid search](hybrid-search.md) solutions that leverage both meaning-based and keyword-based matching.
 
 For a broader view of when each search approach fits your goals, refer to [Search approaches](search-approaches.md).
 
@@ -158,7 +161,7 @@ A {{ml}} model that converts your source data into vector embeddings. The model 
 
 - **[E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md)**: multilingual dense embedding model deployable in {{es}}
 
-- **[Jina models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md)**: dense embedding models (for example, `jina-embeddings-v3`, `jina-embeddings-v5-text-small`) available through [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) (EIS)
+- **[Jina models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md)**: dense embedding models for text and multimodal search (for example, `jina-embeddings-v5-text-small`, `jina-embeddings-v5-omni-small`) available through [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) (EIS)
 
 - The [{{infer}} API](/explore-analyze/elastic-inference/inference-api.md) integrates with third-party embedding services. Examples include [Cohere](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-cohere), [OpenAI](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-openai), [Hugging Face](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-hugging-face), [Amazon Bedrock](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-amazonbedrock), [Azure OpenAI](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-azureopenai), and [Google Vertex AI](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-googlevertexai).
 
@@ -170,17 +173,22 @@ To learn how to configure chunking for the `semantic_text` field type, refer to 
 
 ## Implementation guides and tutorials [vector-search-workflows]
 
-Elasticsearch provides multiple ways to implement vector and semantic search, depending on how much control you need over embedding generation and retrieval.
+Elasticsearch provides multiple ways to implement vector, semantic, and multimodal search, depending on how much control you need over embedding generation and retrieval.
 
-### Semantic search (managed workflows)
+### Semantic search for text (managed workflows)
 
-The [Semantic search](semantic-search.md) section provides managed workflows that use vector search under the hood. These approaches handle embedding generation, chunking, and model management for you, making them the simplest way to get started.
+The [Semantic search for text](semantic-search.md) section provides managed workflows that use vector search under the hood. These approaches handle embedding generation, chunking, and model management for you, making them the simplest way to get started with text.
 
 - [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md): Generate embeddings using the `semantic_text` field type with built-in defaults for chunking and model management.
 - [Hybrid search with `semantic_text`](hybrid-semantic-text.md): Combine semantic understanding with keyword search for better relevance in real applications.
 - [Semantic search with the Inference API](semantic-search/semantic-search-inference.md): Use custom or external embedding models and control how embeddings are generated.
-- [Semantic search with ELSER](semantic-search/semantic-search-elser-ingest-pipelines.md): Use built-in semantic search with explainable results, without external models.
-- [Using Cohere with Elasticsearch](semantic-search/cohere-es.md): Generate embeddings using Cohere models via the Inference API and combine vector, hybrid search, reranking, and RAG in a single workflow.
+
+### Multimodal search
+
+The [Multimodal search](multimodal-search.md) section covers meaning-based retrieval across text, images, audio, video, and documents.
+
+- [Multimodal search](multimodal-search.md): Concepts, deployment options (EIS, external {{infer}}, on-prem), and recommended Jina models with the `semantic` field type.
+- [Tutorial: Build multimodal search with a `semantic` field](multimodal-search/multimodal-search-tutorial.md): Index images and search them with text, image, and PDF input.
 
 ### Advanced tutorials
 
@@ -189,8 +197,6 @@ These guides provide more direct or customizable approaches to working with vect
 - [kNN search in Elasticsearch](vector/knn.md): Perform vector similarity search using the `dense_vector` field type and k-nearest neighbor queries.
 - [Bring your own dense vectors](vector/bring-own-vectors.md): Use this if you already have embeddings and want to index and search them in Elasticsearch.
 - [Sparse vector search in Elasticsearch](vector/sparse-vector.md): Perform semantic search using sparse vectors with the ELSER model and the `sparse_vector` field type.
-- [Manual dense and sparse workflows](vector/dense-versus-sparse-ingest-pipelines.md): Generate embeddings at ingest time using pipelines and perform semantic or hybrid search with dense or sparse models.
-- [OpenAI-compatible models](semantic-search/semantic-search-inference.md#infer-text-embedding-task): Connect external or local LLMs using the Inference API to generate responses or build RAG workflows.
 
 
 
