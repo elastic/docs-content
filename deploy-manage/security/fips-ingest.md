@@ -91,7 +91,7 @@ When running {{agent}} in [OpenTelemetry mode](https://github.com/elastic/elasti
 * **MongoDB receiver**: Not supported in FIPS mode.
 * **MySQL receiver**: Not supported in FIPS mode.
 * **Microsoft SQL Server receiver**: Not supported in FIPS mode.
-* **Kerberos authentication for beat receivers**: Kerberos/GSSAPI authentication for beat receivers (Filebeat receiver, Metricbeat receiver) is not supported.
+* **Kerberos authentication for beat receivers**: Kerberos/GSSAPI authentication for beat receivers ({{filebeat}} receiver, {{metricbeat}} receiver) is not supported.
 * **API key authentication extension**: Not FIPS-compliant. Uses a PBKDF2 implementation outside the certified FIPS module boundary when active.
 
 If you are using a component not listed here and are unsure whether it is FIPS compliant, contact [Elastic Support](https://www.elastic.co/support).
