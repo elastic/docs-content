@@ -468,6 +468,7 @@ toc:
         children:
           - file: alerting/alerts/alerting-getting-started.md
           - file: alerting/alerts/alerting-setup.md
+          - file: alerting/alerts/rules-and-elastic-cloud-api-keys.md
           - file: alerting/alerts/create-manage-rules.md
           - file: alerting/alerts/view-alerts.md
           - file: alerting/alerts/query-alerts.md
@@ -567,6 +568,7 @@ toc:
             children:
               - file: workflows/use-cases/security/automate-security-operations.md
                 children:
+                  - file: workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md
                   - file: workflows/use-cases/security/automate-security-operations/alert-triage-with-case.md
                   - file: workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md
                   - file: workflows/use-cases/security/automate-security-operations/enrich-alert-with-threat-intel.md
@@ -581,6 +583,7 @@ toc:
               - file: workflows/use-cases/ai-augmented-workflows/classify-and-route-alerts.md
       - file: workflows/concepts.md
         children:
+          - file: workflows/managed-workflows.md
           - file: workflows/authorization.md
           - file: workflows/triggers.md
             children:
@@ -609,6 +612,7 @@ toc:
                   - file: workflows/steps/foreach.md
                   - file: workflows/steps/while.md
                   - file: workflows/steps/switch.md
+                  - file: workflows/steps/parallel.md
                   - file: workflows/steps/wait.md
                   - file: workflows/steps/wait-for-input.md
                   - file: workflows/steps/wait-for-approval.md
@@ -627,6 +631,7 @@ toc:
               - file: workflows/reference/step-types.md
       - file: workflows/authoring-techniques.md
         children:
+          - file: workflows/authoring-techniques/use-natural-language.md
           - file: workflows/authoring-techniques/use-yaml-editor.md
           - file: workflows/authoring-techniques/anatomy.md
           - file: workflows/authoring-techniques/settings.md
@@ -639,6 +644,8 @@ toc:
           - file: workflows/authoring-techniques/troubleshooting.md
           - file: workflows/authoring-techniques/migrate-from-9-3.md
       - file: workflows/templates.md
+        children:
+          - file: workflows/templates/start-from-a-template.md
   - file: numeral-formatting.md
   - hidden: explore-and-visualize.md
   - hidden: track-and-respond.md

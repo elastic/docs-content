@@ -14,7 +14,7 @@ products:
 
 ::::{important}
 
-* For the easiest way to perform semantic search in the {{stack}}, refer to the [`semantic_text`](../semantic-search/semantic-search-semantic-text.md) end-to-end tutorial.
+* For the easiest way to perform semantic search in the {{stack}}, refer to the [`semantic_text`](semantic-search-semantic-text.md) end-to-end tutorial.
 * This tutorial predates the [{{infer}} endpoint]({{es-apis}}group/endpoint-inference) and the [`semantic_text` field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). Today there are simpler, higher-level options for semantic search than the ones outlined in this tutorial. The semantic text workflow is the recommended way to perform semantic search for most use cases.
 ::::
 
@@ -43,7 +43,7 @@ Common use cases include:
 
 Sparse embeddings are a practical default when you need explainable results, strong relevance for English text without training a custom model, or semantic search at scale without a dedicated {{ml}} team.
 
-For more detail, refer to [Sparse vector search in {{es}}](sparse-vector.md).
+For more detail, refer to [Sparse vector search in {{es}}](../vector/sparse-vector.md).
 
 #### Dense embeddings [deployed-dense-embeddings]
 
@@ -54,11 +54,11 @@ Common use cases include:
 - [Context engineering for AI agents](/explore-analyze/ai-features/elastic-agent-builder.md): Combine retrieval, tools, and instructions so responses are grounded in your data. [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) provides an out-of-the-box toolkit for this workflow.
 - [Retrieval augmented generation (RAG)](../rag.md): Retrieve document passages that answer a user's question, even when the question and the source text use different words.
 - [Natural language Q&A](/explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md): Match questions like "How do I reset my password?" to FAQ entries, product documentation, or policy pages.
-- [Recommendations and similarity](knn.md): Find related articles, products, or media. For example, you can surface articles like the current one or visually similar product images.
+- [Recommendations and similarity](../vector/knn.md): Find related articles, products, or media. For example, you can surface articles like the current one or visually similar product images.
 
 Dense embeddings are ideal when you care more about the semantic meaning of search terms than exact keyword matches - they excel at retrieving relevant results based on synonyms and paraphrasing of the original query to return results that reflect the user's intensions.
 
-For more detail, refer to [Dense vector search in {{es}}](dense-vector.md).
+For more detail, refer to [Dense vector search in {{es}}](../vector/dense-vector.md).
 
 ::::
 
@@ -87,7 +87,7 @@ Before generating embeddings, prepare your **index mapping**. The mapping depend
 ::::::{tab-item} ELSER
 ELSER outputs token-weight pairs. Use the [`sparse_vector`](elasticsearch://reference/elasticsearch/mapping-reference/sparse-vector.md) field to store them.
 
-To create a mapping for your ELSER index, refer to the [Create the index mapping section](../semantic-search/semantic-search-elser-ingest-pipelines.md#elser-mappings) of the tutorial.
+To create a mapping for your ELSER index, refer to the [Create the index mapping section](semantic-search-elser-ingest-pipelines.md#elser-mappings) of the tutorial.
 Create a mapping with a `sparse_vector` field for the tokens and a `text` field for the source content. For example:
 
 ```console
@@ -232,7 +232,7 @@ GET my-index/_search
 ::::::
 
 ::::::{tab-item} Dense vector models
-Text embeddings produced by dense vector models can be queried using a [kNN search](knn.md#knn-semantic-search). In the `knn` clause, provide the name of the dense vector field, and a `query_vector_builder` clause with the model ID and the query text.
+Text embeddings produced by dense vector models can be queried using a [kNN search](../vector/knn.md#knn-semantic-search). In the `knn` clause, provide the name of the dense vector field, and a `query_vector_builder` clause with the model ID and the query text.
 
 ```console
 GET my-index/_search
