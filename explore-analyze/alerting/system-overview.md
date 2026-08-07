@@ -66,7 +66,7 @@ Refer to [Observe and analyze signals](experimental-alerting-system/observe-and-
 Together, these five objects form two main paths, which diverge based on a rule's mode:
 
 1. A rule evaluates your data and detects a match.
-2. Depending on the rule's mode, the rule acts on the match (Alert mode) or records it (Signal mode):
+2. Depending on the rule's mode, the system acts on the match (Alert mode) or the rule records it (Signal mode):
 
    - **Alert mode**: An alert episode is created. An action policy evaluates the episode and decides whether and when to invoke a workflow.
    - **Signal mode**: The match is recorded as a signal, which skips action policy evaluation and workflow invocation entirely.
