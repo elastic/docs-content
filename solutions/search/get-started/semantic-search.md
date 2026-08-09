@@ -1,6 +1,6 @@
 ---
 navigation_title: Semantic search
-description: Quickstart for semantic search in Elasticsearch with the semantic_text workflow, which uses vector search and embeddings to match documents by meaning.
+description: Get started with semantic search and vector search in Elasticsearch using the semantic_text field type. This tutorial walks through indexing documents, generating embeddings automatically, and running your first semantic search query.
 applies_to:
   serverless: all
   stack: all
