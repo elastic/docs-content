@@ -36,7 +36,7 @@ stack: ga 9.5
 serverless: ga
 ```
 
-Region preferences let administrators restrict where EIS processes {{infer}} requests.
+Region preferences let you restrict where EIS processes {{infer}} requests.
 Use them when your organization needs {{infer}} to stay within approved geographies for compliance or data residency.
 
 You can express preferences in one of two ways:
