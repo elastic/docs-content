@@ -190,6 +190,13 @@ A common pattern is to first perform an initial bulk upload, then make an index 
 * Give {{es}} a large indexing buffer so it can accept more documents before flushing. By default, the [`indices.memory.index_buffer_size`](elasticsearch://reference/elasticsearch/configuration-reference/indexing-buffer-settings.md) is set to 10% of the heap size. With a substantial heap size like 32GB, this is often enough. To allow the full indexing buffer to be used, you should also increase the limit [`index.translog.flush_threshold_size`](elasticsearch://reference/elasticsearch/index-settings/translog.md).
 
 
+## Accelerate indexing with GPU [_use_gpu_accelerated_indexing]
+```{applies_to}
+stack: ga 9.4
+```
+For indexing-heavy workloads on large vector datasets, GPU acceleration can significantly speed up HNSW index construction and reduce the cost of merging segments into larger ones. See [GPU accelerated vector indexing](elasticsearch://reference/elasticsearch/mapping-reference/gpu-vector-indexing.md) for supported configurations and setup.
+
+
 ## Avoid heavy indexing during searches [_avoid_heavy_indexing_during_searches]
 
 Actively indexing documents can have a negative impact on approximate kNN search performance, since indexing threads steal compute resources from search. When indexing and searching at the same time, {{es}} also refreshes frequently, which creates several small segments. This also hurts search performance, since approximate kNN search is slower when there are more segments.

@@ -39,8 +39,6 @@ When the workflow reaches either step, execution pauses in the `WAITING_FOR_INPU
 
 While a HITL step is waiting, the execution status is `WAITING_FOR_INPUT` and the run appears in the execution history with a resume action.
 
-{applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` When [Inbox](#workflows-hitl-inbox) is enabled, the waiting action also appears there.
-
 Timeout behavior depends on the {{stack}} version that you're using:
 
 ::::{applies-switch}
@@ -163,25 +161,11 @@ Downstream steps read the decision from `{{ steps.review.output.response.approve
 
 ## Resume a paused workflow
 
-Resume a paused workflow using any of the following methods. The step resumes on the first response it receives. If the action reaches more than one responder (for example, in a shared Inbox or a Slack channel), only the first response is accepted; the resume token is single-use, so later responses are rejected.
+Resume a paused workflow using any of the following methods. The step resumes on the first response it receives. If the action reaches more than one responder (for example, in a shared Slack channel), only the first response is accepted; the resume token is single-use, so later responses are rejected.
 
 ### From the execution view
 
 Open the workflow execution view in {{kib}}. The paused step renders a form generated from the `schema` (or approve/reject controls for `waitForApproval`). Fill it in, submit, and the workflow resumes.
-
-### From the Inbox app [workflows-hitl-inbox]
-
-```{applies_to}
-stack: preview 9.5+
-serverless: preview
-```
-
-The **Inbox** app is a separate {{kib}} app that lists HITL actions that need a response across all workflows, so responders don't have to open each execution individually. Enable it with `xpack.inbox.enabled: true` in `kibana.yml` (disabled by default). When enabled, open it from the {{kib}} navigation menu.
-
-Inbox splits into:
-
-- **Awaiting response** — Pending `waitForInput` / `waitForApproval` steps. Open the **Respond** flyout to fill in the form (or approve/reject). If the preceding step included a reasoning summary, Inbox shows it to help the responder decide.
-- **History** — A record of actions that were responded to, timed out, or whose workflow was deleted. Each entry includes who responded, their response, the channel, and when it happened.
 
 ### From the API
 
@@ -221,7 +205,7 @@ External links work without a {{kib}} session. Each link includes a short-lived,
 External channels send public, short-lived resume links. Don't use them for destructive, production-impacting, or hard-to-reverse workflows.
 :::
 
-To disable external resume links so that workflows can only be resumed from {{kib}} (the execution view, the Inbox app, or the resume API), set external resume to `false` in `kibana.yml`:
+To disable external resume links so that workflows can only be resumed from {{kib}} (the execution view or the resume API), set external resume to `false` in `kibana.yml`:
 
 ```yaml
 workflowsManagement.hitlExternalResume.enabled: false

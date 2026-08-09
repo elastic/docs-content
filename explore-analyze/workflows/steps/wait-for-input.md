@@ -17,7 +17,7 @@ products:
 
 The `waitForInput` step pauses workflow execution until a human submits input. It's the human-in-the-loop primitive for collecting structured input, such as escalation checkpoints, review steps, and multi-field decisions.
 
-For the end-to-end pattern, including the Inbox app, external Slack delivery, and design guidance, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md). For a fixed approve/reject decision without a custom schema, use [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` instead.
+For the end-to-end pattern, including external Slack delivery and design guidance, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md). For a fixed approve/reject decision without a custom schema, use [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` instead.
 
 :::{include} ../_snippets/schema-location-legend.md
 :::
@@ -30,7 +30,7 @@ For the end-to-end pattern, including the Inbox app, external Slack delivery, an
 | `type` | top level | string | Yes | Must be `waitForInput`. |
 | `timeout` {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | top level | duration | No | How long the step waits for input. Format: number + unit (`ms`/`s`/`m`/`h`/`d`/`w`). Defaults to `72h`. If no one responds before the timeout, the step fails. |
 | `message` | `with` | string | No | Markdown message displayed to the responder. |
-| `schema` | `with` | object | No | JSON Schema that describes the expected input. Renders as a form in the Kibana UI and Inbox **Respond** flyout, and validates the resume payload. If you omit `schema`, the resume accepts any payload. |
+| `schema` | `with` | object | No | JSON Schema that describes the expected input. Renders as a form in the Kibana UI, and validates the resume payload. If you omit `schema`, the resume accepts any payload. |
 | `channels` {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | `with` | object | No | External notification channels that send resume links. Responders can act without signing in to {{kib}}. See [External channels](#external-channels). |
 
 ## External channels [external-channels]
@@ -164,7 +164,7 @@ serverless: preview
 
 ## Related
 
-- [Human-in-the-loop pattern](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md): The full HITL pattern, including Inbox and external resume.
+- [Human-in-the-loop pattern](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md): The full HITL pattern, including external resume.
 - [`waitForApproval` step](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`: Approve/reject without a custom schema.
 - [Flow control steps](/explore-analyze/workflows/steps/flow-control-steps.md): Other flow-control types you'll often combine with `waitForInput`.
 - [If step](/explore-analyze/workflows/steps/if.md): Typical gate around the post-review action.

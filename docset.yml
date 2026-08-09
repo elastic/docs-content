@@ -32,6 +32,10 @@ cta:
 
 exclude:
   - 'README.md'
+  - 'AGENTS.md'
+  - 'AI.md'
+  - 'CLAUDE.md'
+  - 'GEMINI.md'
   - 'changelog/**'
   - 'releases/**'
 

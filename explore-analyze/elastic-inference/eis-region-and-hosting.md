@@ -8,7 +8,7 @@ description: Learn which regions host Elastic Inference Service (EIS), how infer
 
 # Region and hosting [eis-regions]
 
-This page lists the {{aws}} and {{gcp}} regions where Elastic {{infer-cap}} Service (EIS) is available and explains how {{infer}} requests are routed.
+This page lists the {{aws}}, Azure, and {{gcp}} regions where Elastic {{infer-cap}} Service (EIS) is available and explains how {{infer}} requests are routed.
 
 ## Available regions [available-regions]
 
@@ -17,6 +17,10 @@ This page lists the {{aws}} and {{gcp}} regions where Elastic {{infer-cap}} Serv
 * `us-east-1` (N. Virginia, US)
 * `eu-central-1` (Frankfurt, Germany)
 * `eu-west-1` (Ireland)
+
+**Azure:**
+
+* `eastus` (Virginia, US)
 
 **{{gcp}}:**
 
@@ -29,7 +33,7 @@ All {{infer}} requests sent through EIS are routed to the nearest region, regard
 
 {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` If you configure [region preferences](#inference-region-preferences), EIS routes only within your allowed geographies or regions.
 
-Depending on the model being used, request processing may involve Elastic {{infer}} infrastructure and, in some cases, trusted third-party model providers. For example, ELSER and Jina requests are processed entirely within Elastic {{infer}} infrastructure. Other models, such as large language models or third-party embedding models, may involve additional processing by their respective model providers, which can operate in different cloud platforms or regions.
+Depending on the model being used, request processing can involve Elastic {{infer}} infrastructure and, in some cases, trusted third-party model providers. For example, ELSER and Jina requests are processed entirely within Elastic {{infer}} infrastructure. Other models, such as large language models or third-party embedding models, can involve additional processing by their respective model providers, which can operate in different cloud platforms or regions.
 
 ## Inference region preferences [inference-region-preferences]
 
