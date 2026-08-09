@@ -10,6 +10,8 @@ description: Learn which regions host Elastic Inference Service (EIS), how infer
 
 This page lists the {{aws}} and {{gcp}} regions where Elastic {{infer-cap}} Service (EIS) is available and explains how {{infer}} requests are routed.
 
+## Available regions [available-regions]
+
 **{{aws}}:**
 
 * `us-east-1` (N. Virginia, US)
@@ -44,9 +46,6 @@ You can express preferences in one of two ways:
 * **Geographies**: Broader geographic areas, shown as options such as **North America — All available regions**.
 * **Regions**: Specific cloud service provider regions, for example **US East (N. Virginia) - AWS**.
 
-The picker lists only the geographies and regions currently available for your deployment.
-It can show fewer options than the full EIS hosting list on this page.
-
 You must choose either geographies or regions.
 The two modes are mutually exclusive.
 
@@ -68,14 +67,22 @@ After you save a region policy:
 
 * If you try to save a policy that would deny access to {{infer}} endpoints that are already in use by ingest pipelines or indices, {{es}} rejects the change with a conflict error.
 
+:::{important}
+Changing region preferences affects all Elastic {{infer-cap}} Service endpoints across all spaces.
+Before you save, check **Regions** in the details for any models you rely on.
+Models that aren't available in your allowed locations become unavailable.
+:::
+
 ### Configure region preferences in Kibana [configure-region-preferences-kibana]
 
 To open **Elastic {{infer}}**, you typically need the `Inference Endpoints: all` and `Advanced Settings: read` {{kib}} privileges.
 To load and save region preferences, you also need the `manage_inference` {{es}} cluster privilege.
 
+The **Manage region preferences** dialog lists only the geographies and regions currently available for your deployment.
+It can show fewer options than the full EIS hosting list on this page.
+
 1. Go to the **Elastic inference** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select **Manage regions**.
-1. In the **Manage region preferences** dialog, review the callout that some models aren't available in every region.
 
    :::{image} /explore-analyze/images/eis-manage-region-preferences.png
    :alt: Manage region preferences dialog with the Regions tab open
@@ -86,11 +93,8 @@ To load and save region preferences, you also need the `manage_inference` {{es}}
 
    * **Geographies**: Select one or more geographic areas.
    * **Regions**: Expand a geography and select one or more cloud provider regions.
-1. Before you save, open any models you rely on and check **Regions** in the model details.
-   If a model isn't available in your allowed locations, it becomes unavailable after you save.
 1. Select **Save preferences**.
 1. In the confirmation dialog, review your pending allowed geographies or regions.
-   Changing the region policy affects all Elastic {{infer-cap}} Service endpoints across all spaces.
 
    :::{image} /explore-analyze/images/eis-confirm-region-change.png
    :alt: Confirm region change dialog listing pending allowed regions
