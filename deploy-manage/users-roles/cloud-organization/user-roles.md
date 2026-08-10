@@ -41,11 +41,12 @@ Role assignments and resources outside your scope are not visible.
 
 ## Types of roles
 
-There are three categories of roles you can assign to users:
+There are three categories of roles you can assign to users, plus other permissions:
 
 * **Organization-level roles:** These roles apply to the entire organization and are not specific to any resource.
 * **Cloud resource access roles:** These roles are specific to each serverless project or hosted deployment.
 * **Connected cluster access roles:** Grant access to {{ecloud}} services for clusters you connect through [Cloud Connect](/deploy-manage/cloud-connect.md).
+* **Other permissions:** These are organization-level permissions such as [managing workload credentials](#manage-workload-credentials).
 
 ### Organization-level roles [ec_organization_level_roles]
 
@@ -54,10 +55,6 @@ There are three categories of roles you can assign to users:
     Organization owners have full access to {{ecloud}} for the organization. They can manage {{ech}} deployments, {{serverless-full}} projects, and clusters linked through [Cloud Connect](/deploy-manage/cloud-connect.md). They can also manage members, organization settings, billing, and subscription details. Organization owners can create and manage all [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) in the organization.
 
 * **Billing admin**: Can manage an organization’s billing details such as credit card information, subscription and invoice history. Cannot manage other organization or deployment details and properties.
-
-* $$$manage-workload-credentials$$$**Manage workload credentials**: Allows the user to manage workload credentials, such as creating, listing, and revoking their own [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md).
-
-    These permissions only add the ability to manage credentials and is limited by the roles that the user already holds on any resource. It does not give the user access to any deployments or projects. To create useful credentials, such as API keys, the user also needs [cloud resource access roles](#ec_instance_access_roles) for the deployments or projects those credentials should cover.
 
 ### Cloud resource access roles [ec_instance_access_roles]
 
@@ -92,6 +89,14 @@ Users with a connected cluster access role can also view usage and costs, and vi
 :::{note}
 As more services become available for use with [Cloud Connect](/deploy-manage/cloud-connect.md), refer to each service’s documentation for role-specific permissions. The role names in {{ecloud}} remain consistent.
 :::
+
+### Other permissions
+
+Organization-level permissions grant additional capabilities without assigning organization-level, cloud resource access, or connected cluster access roles.
+
+* $$$manage-workload-credentials$$$**Manage workload credentials**: Allows the user to manage workload credentials, such as creating, listing, and revoking their own [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md).
+
+    This permission only adds the ability to manage credentials. It does not give the user access to any deployments or projects. To create useful credentials, such as API keys, the user also needs [cloud resource access roles](#ec_instance_access_roles) for the deployments or projects those credentials should cover. When the user creates a credential, it can only include roles the user holds at creation time on those resources. Organization owners can still view and revoke all workload credentials in the organization.
 
 ## {{ech}} predefined roles [ech-predefined-roles]
 
@@ -159,7 +164,6 @@ This list describes the scope of the different roles:
 * **Billing admin**: This role does not refer to any deployment, project, or connected cluster.
 * **Cloud resource access roles**, including **Admin**: These roles can be scoped to either all deployments or projects, or specific deployments, project types, or projects.
 * **Connected cluster access roles**: These roles can be scoped to either all connected clusters or selected clusters.
-* **Manage workload credentials**: These permissions do not refer to any deployment, project, or connected cluster. They allow the user to manage workload credentials scoped to their existing role assignments.
 
 ## Access options [access]
 ```{applies_to}
