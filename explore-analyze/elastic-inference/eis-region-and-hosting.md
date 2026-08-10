@@ -50,8 +50,7 @@ You can express preferences in one of two ways:
 * **Geographies**: Broader geographic areas, shown as options such as **North America — All available regions**.
 * **Regions**: Specific cloud service provider regions, for example **US East (N. Virginia) - AWS**.
 
-You must choose either geographies or regions.
-The two modes are mutually exclusive.
+You must choose either geographies or regions. The two modes are mutually exclusive.
 
 When no region policy is configured, EIS uses the default nearest-region routing described on this page.
 
