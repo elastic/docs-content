@@ -11,12 +11,12 @@ products:
 
 {{watcher}} provides as set of APIs you can use to manage your watches:
 
-* Use the [create or update watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-put-watch) to add or update watches
-* Use the [get watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-get-watch) to retrieve watches
-* Use the [delete watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-delete-watch) to delete watches
-* Use the [activate watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-activate-watch) to activate watches
-* Use the [deactivate watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-deactivate-watch) to deactivate watches
-* Use the [ack watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-ack-watch) to acknowledge watches
+* Use the [create or update watch API]({{es-apis}}operation/operation-watcher-put-watch) to add or update watches
+* Use the [get watch API]({{es-apis}}operation/operation-watcher-get-watch) to retrieve watches
+* Use the [delete watch API]({{es-apis}}operation/operation-watcher-delete-watch) to delete watches
+* Use the [activate watch API]({{es-apis}}operation/operation-watcher-activate-watch) to activate watches
+* Use the [deactivate watch API]({{es-apis}}operation/operation-watcher-deactivate-watch) to deactivate watches
+* Use the [ack watch API]({{es-apis}}operation/operation-watcher-ack-watch) to acknowledge watches
 
 ## Listing watches [listing-watches]
 

@@ -24,7 +24,7 @@ If an automated {{slm-init}} policy execution is experiencing repeated failures,
 :::::::{tab-set}
 
 ::::::{tab-item} Using {{kib}}
-In {{kib}}, you can view all configured {{slm-init}} policies and review their status and execution history. If the UI does not provide sufficient details about the failure, use the Console to retrieve the [snapshot policy information](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle) with the {{es}} API.
+In {{kib}}, you can view all configured {{slm-init}} policies and review their status and execution history. If the UI does not provide sufficient details about the failure, use the Console to retrieve the [snapshot policy information]({{es-apis}}operation/operation-slm-get-lifecycle) with the {{es}} API.
 
 1. Go to **Snapshot and Restore > Policies** to see the list of configured policies. You can find the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -43,7 +43,7 @@ In {{kib}}, you can view all configured {{slm-init}} policies and review their s
 ::::::{tab-item} Using the {{es}} API
 The following step can be run using either [{{kib}} console](/explore-analyze/query-filter/tools/console.md) or direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
-[Retrieve the affected {{slm-init}} policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle):
+[Retrieve the affected {{slm-init}} policy]({{es-apis}}operation/operation-slm-get-lifecycle):
 
 ```console
 GET _slm/policy/<affected-policy-name>

@@ -1,4 +1,5 @@
 ---
+description: Configure the data displayed on the Network page interactive map in Elastic Security.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/conf-map-ui.html
   - https://www.elastic.co/guide/en/serverless/current/security-conf-map-ui.html

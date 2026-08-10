@@ -30,8 +30,8 @@ For testing, you can use alternatives to Nginx such as [Azure Dev Tunnels](https
 ::::
 
 
-::::{note}
-For information about the performance of open-source models on tasks within {{elastic-sec}}, refer to the [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
+::::{warning}
+Self-managed models work well for [AI Assistant](/solutions/security/ai/ai-assistant.md). For [Attack Discovery](/solutions/security/ai/attack-discovery/index.md), we recommend using one of the models in the [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
 ::::
 
 
@@ -132,7 +132,7 @@ For security reasons, before downloading a model, verify that it is from a trust
 :alt: The LM Studio model selection interface
 :::
 
-In this example we used [`mistralai/Mistral-Nemo-Instruct-2407`](https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407). It has 12B total parameters, a 128,000 token context window, and uses GGUF [quanitization](https://huggingface.co/docs/transformers/main/en/quantization/overview). For more information about model names and format information, refer to the following table.
+In this example we used [`mistralai/Mistral-Nemo-Instruct-2407`](https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407). It has 12B total parameters, a 128,000 token context window, and uses GGUF [quantization](https://huggingface.co/docs/transformers/main/en/quantization/overview). For more information about model names and format information, refer to the following table.
 
 | Model Name | Parameter Size | Tokens/Context Window | Quantization Format |
 | --- | --- | --- | --- |
@@ -193,6 +193,13 @@ You can monitor the performance of the host running LM Studio using Elastic’s 
 
 ## Configure the connector in your Elastic deployment [_configure_the_connector_in_your_elastic_deployment]
 
+::::{important}
+:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
+The OpenAI connector is deprecated and is being progressively removed from the create connector UI. Existing connectors and their rule actions continue to work.
+
+For new AI integrations, use {{es}} {{infer}} endpoints. Migrate existing LLM connectors and related rule actions before the future removal.
+::::
+
 Finally, configure the connector:
 
 1. Log in to your Elastic deployment.
@@ -211,5 +218,5 @@ Finally, configure the connector:
 Setup is now complete. You can use the model you’ve loaded in LM Studio to power Elastic’s generative AI features. You can test a variety of models as you interact with AI Assistant to see what works best without having to update your connector.
 
 ::::{note}
-While local models work well for [AI Assistant](/solutions/security/ai/ai-assistant.md), we recommend you use one of [these models](/solutions/security/ai/large-language-model-performance-matrix.md) for interacting with [Attack discovery](/solutions/security/ai/attack-discovery.md). As local models become more performant over time, this is likely to change.
+Self-managed models are likely to improve over time. As they do, using one for [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) may become more viable. For current guidance, refer to the warning near the top of this page.
 ::::

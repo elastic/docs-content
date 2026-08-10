@@ -3,12 +3,13 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/project-and-management-settings.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-manage-project.html
 applies_to:
-  serverless:
+  serverless: ga
 products:
   - id: cloud-serverless
+navigation_title: Project settings
 ---
 
-# Project settings
+# {{serverless-short}} project settings
 
 Project settings are configurations that apply to your entire project, managed from the {{ecloud}} console. While Elastic [manages many things for you](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md), you can customize the following aspects of your project:
 
@@ -40,8 +41,8 @@ The total volume of search-ready data is the sum of the following:
 1. The volume of non-time series project data
 2. The volume of time series project data included in the Search Boost Window
 
-::::{note}
-Time series data refers to any document in standard indices or data streams that includes the `@timestamp` field. This field must be present for data to be subject to the Search Boost Window setting.
+::::{important}
+Time series data refers to any document in standard indices or data streams that includes a concrete `@timestamp` field. The `@timestamp` field must be an actual mapped field for data to be subject to the Search Boost Window setting. A [field alias](elasticsearch://reference/elasticsearch/mapping-reference/field-alias.md) named `@timestamp` that points to another field does not qualify the data as time series data. Such data is always treated as search-ready and is not governed by the Search Boost Window.
 ::::
 
 Each project type offers different settings that let you adjust the performance and volume of search-ready data, as well as the features available in your projects.
@@ -52,7 +53,7 @@ $$$elasticsearch-manage-project-search-power-settings$$$
 
 | Setting | Description | Project Type |
 | :--- | :--- | :--- |
-| **Search Power** | Search Power controls the speed of searches against your data. With Search Power, you can improve search performance by adding more resources for querying, or you can reduce provisioned resources to cut costs. Choose from three Search Power settings:<br><br>**On-demand:** Autoscales based on data and search load, with a lower minimum baseline for resource use. This flexibility results in more variable query latency and reduced maximum throughput.<br><br>**Performant:** Delivers consistently low latency and autoscales to accommodate moderately high query throughput.<br><br>**High-throughput:** Optimized for high-throughput scenarios, autoscaling to maintain query latency even at very high query volumes.<br> | {{es}} |
+| **Search Power** | Search Power controls the amount of baseline resources kept ready for your data and the maximum amount of resources the system can allocate to your project under high search load.<br><br>Increase **Search Power** to add resources for improved query throughput and performance as load increases. Decrease it to reduce the amount of provisioned resources, which lowers both active search costs and the reduced rate billed during idle periods, at the cost of more variable query latency. The On-demand setting provides the lowest baseline and idle cost.<br><br>Choose from three Search Power settings:<br><br>**On-demand:** Low cost option. Query latency is variable and maximum throughput is limited, particularly during demand spikes.<br><br>**Performant:** Delivers low _average_ query latency with no practical query throughput limits to meet varying demand.<br><br>**High availability:** Maintains consistent low query latency across most search workloads, from steady baseline to peak demand.<br> | {{es}} |
 | **Search Boost Window** | Non-time series data is always considered search-ready. The **Search Boost Window** determines the volume of time series project data that will be considered search-ready.<br><br>Increasing the window results in a bigger portion of time series project data included in the total search-ready data volume.<br> | {{es}} |
 | **Data Retention** | Data retention policies determine how long your project data is retained.<br>In {{serverless-full}} data retention policies are configured through [data streams](../../../manage-data/lifecycle/data-stream.md) and you can [specify different retention periods](../../../manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#set-lifecycle) for specific data streams in your project.<br><br> {{elastic-sec}} has two additional configuration settings that can be configured to manage your data retention.<br><br>**Maximum data retention period**<br><br>When enabled, this setting determines the maximum length of time that data can be retained in any data streams of this project.<br><br>Editing this setting replaces the data retention set for all data streams of the project that have a longer data retention defined. Data older than the new maximum retention period that you set is permanently deleted.<br><br> **Default data retention period**<br><br>When enabled, this setting determines the default retention period that is automatically applied to all data streams in your project that do not have a custom retention period already set.<br> |Elasticsearch<br>Observability<br>Security  |
 | **Project features** | Controls [feature tiers and add-on options](../../../deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons) for your {{elastic-sec}} project. | Security |
@@ -64,7 +65,11 @@ Project features and add-ons control which capabilities are available in your se
 * [{{sec-serverless}} project features](#elastic-sec-project-features)
 * [{{obs-serverless}} project features](#obs-serverless-project-features) 
 
-There are no additional project features or add-ons for {{es-serverless}} projects.
+There are no additional project features and on-demand add-ons for {{es-serverless}} projects.
+
+:::{note}
+In {{serverless-full}}, your organization's {{ecloud}} subscription level controls only the support level you receive, and is not related to the features that you use or have access to. [Learn more about subscriptions](/deploy-manage/license.md).
+:::
 
 ### {{sec-serverless}} project features [elastic-sec-project-features]
 
@@ -76,38 +81,8 @@ For {{sec-serverless}} projects, edit the **Project features** to select a featu
 | **Security Analytics Essentials** | A suite of security analytics, detections, investigations, and collaboration tools. Does not include AI-powered tools. Allows these add-ons:<br>• **Endpoint Protection Essentials**: endpoint protections with {{elastic-defend}}.<br>• **Cloud Protection Essentials**: Cloud native security features.|
 | **Security Analytics Complete** | Everything in **Security Analytics Essentials** and **EASE**, plus advanced features such as entity analytics, threat intelligence, and more. Allows these add-ons:<br><br>• **Endpoint Protection Complete**: Everything in **Endpoint Protection Essentials** plus advanced endpoint detection and response features.<br>• **Cloud Protection Complete**: Everything in **Cloud Protection Essentials** plus advanced cloud security features.|
 
-#### Downgrading the feature tier [elasticsearch-manage-project-downgrading-the-feature-tier]
-
-:::{note}
-You cannot downgrade to EASE from any other feature tier. You can upgrade from EASE to other tiers.
-:::
-
-When you downgrade your Security project features selection from **Security Analytics Complete** to **Security Analytics Essentials**, the following features become unavailable:
-
-* All Entity Analytics features
-* The ability to use certain entity analytics-related integration packages, such as:
-  * Data Exfiltration detection
-  * Lateral Movement detection
-  * Living off the Land Attack detection
-* Intelligence Indicators page
-* External rule action connectors
-* Case connectors
-* Endpoint response actions history
-* Endpoint host isolation exceptions
-* AI Assistant
-* Attack discovery
-
-And, the following data may be permanently deleted:
-
-* AI Assistant conversation history
-* AI Assistant settings
-* Entity Analytics user and host risk scores
-* Entity Analytics asset criticality information
-* Detection rule external connector settings
-* Detection rule response action settings
-
 :::{tip}
-For a full feature comparison, upgrading instructions, and more, refer to [{{product.serverless-security}} feature tiers](/solutions/security/security-serverless-feature-tiers.md).
+For a full feature comparison, upgrading instructions, downgrading information, and more, refer to [{{product.serverless-security}} feature tiers](/solutions/security/security-serverless-feature-tiers.md).
 :::
 
 ### {{obs-serverless}} project features
@@ -125,7 +100,7 @@ For a full feature comparison, upgrading instructions, and more, refer to [{{obs
 
 ## Project tags
 
-Project tags are metadata key-value pairs that help you to categorize and organize your projects.
+Project tags are custom metadata key-value pairs that allow you to categorize and organize your projects. If you're using {{cps}} in {{serverless-full}}, tags also enable [routing searches to specific projects](/explore-analyze/cross-project-search/cross-project-search-tags.md).
 
 * **Predefined tags** are attributes that Elastic assigns automatically to each project, such as project type, cloud service provider, and region. 
 * **Custom tags** are key-value pairs that you define in the {{ecloud}} console or using the API to further categorize and organize your projects.
@@ -150,14 +125,16 @@ You can add custom tags for any piece of metadata that might help you to categor
 * The team or department that uses the project: `dept:finance`, `dept:marketing`, `dept:engineering`
 * The environment type: `env:dev`, `env:staging`, or `env:prod`
 
+Project tags must start with a letter, and can contain only lowercase letters, numbers, hyphens, and underscores.
+
 #### Create custom tags
 
 1. In {{ecloud}}, select your project from the **Serverless projects** panel and click **Manage**.
-2. From the **Overview** page for your project, in the **Tags** section, click **{icon}`plus_in_circle` Add tags**.
+2. From the **Overview** page for your project, in the **Tags** section, click **{icon}`plus_circle` Add tags**.
 3. Add a key and value for your custom tag, and then click **Add**.
 4. When you're finished creating tags, click **Save**.
 
-To remove a custom tag from a project, reopen the tag management drawer by clicking **{icon}`plus_in_circle`  Add tags**.
+To remove a custom tag from a project, reopen the tag management drawer by clicking **{icon}`plus_circle`  Add tags**.
 
 #### Custom tags using the {{serverless-full}} API
 

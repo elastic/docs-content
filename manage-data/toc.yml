@@ -23,6 +23,7 @@ toc:
               - file: data-store/data-streams/advanced-topics-tsds.md
                 children:
                 - file: data-store/data-streams/time-bound-tsds.md
+                - file: data-store/data-streams/metric-temporality.md
                 - file: data-store/data-streams/reindex-tsds.md
                 - file: data-store/data-streams/tsds-ingest-otlp.md
                 - file: data-store/data-streams/tsds-ingest-prometheus-remote-write.md
@@ -33,6 +34,7 @@ toc:
           - file: data-store/data-streams/failure-store.md
             children:
               - file: data-store/data-streams/failure-store-recipes.md
+      - file: data-store/columnar.md
       - file: data-store/mapping.md
         children:
           - file: data-store/mapping/dynamic-mapping.md
@@ -108,10 +110,12 @@ toc:
             children:
               - file: ingest/ingest-reference-architectures/agent-es-airgapped.md
               - file: ingest/ingest-reference-architectures/agent-ls-airgapped.md
-      - file: ingest/agentless/agentless-integrations.md
+      - file: ingest/managed-integrations/managed-integrations.md
         children:
-          - file: ingest/agentless/cloud-connector-deployment.md
-          - file: ingest/agentless/agentless-integrations-faq.md
+          - file: ingest/managed-integrations/enable-managed-integration.md
+          - file: ingest/managed-integrations/cloud-connector-deployment.md
+          - file: ingest/managed-integrations/managed-integrations-faq.md
+      - file: ingest/otlp-endpoint.md
       - file: ingest/sample-data.md
       - file: ingest/upload-data-files.md
       - file: ingest/transform-enrich.md
@@ -134,6 +138,9 @@ toc:
   - file: lifecycle.md
     children:
       - file: lifecycle/data-tiers.md
+        children:
+          - file: lifecycle/data-tiers/manage-data-tiers-ech-ece.md
+          - file: lifecycle/data-tiers/manage-data-tiers-self-managed-eck.md
       - file: lifecycle/index-lifecycle-management.md
         children:
           - file: lifecycle/index-lifecycle-management/index-lifecycle.md
@@ -164,6 +171,7 @@ toc:
           - file: lifecycle/data-stream/tutorial-create-data-stream-with-lifecycle.md
           - file: lifecycle/data-stream/tutorial-update-existing-data-stream.md
           - file: lifecycle/data-stream/tutorial-data-stream-retention.md
+          - file: lifecycle/data-stream/dlm-searchable-snapshots.md
           - file: lifecycle/data-stream/tutorial-migrate-ilm-managed-data-stream-to-data-stream-lifecycle.md
       - file: lifecycle/curator.md
       - file: lifecycle/rollup.md
@@ -176,8 +184,10 @@ toc:
           - file: lifecycle/rollup/migrating-from-rollup-to-downsampling.md
   - file: migrate.md
     children:
-      - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
-      - file: migrate/migrate-internal-indices.md
       - file: migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md
+      - file: migrate/migrate-data-using-reindex-api.md
+        children:
+          - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
       - file: migrate/migrate-with-logstash.md  
+      - file: migrate/migrate-internal-indices.md
   - file: use-case-use-elasticsearch-to-manage-time-series-data.md

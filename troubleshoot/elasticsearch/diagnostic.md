@@ -10,7 +10,6 @@ products:
 
 # Capture {{es}} diagnostics [diagnostic]
 
-
 The {{es}} [Support Diagnostic](https://github.com/elastic/support-diagnostics) tool captures a point-in-time snapshot of cluster statistics and most settings. It works against all {{es}} versions.
 
 This information can be used to troubleshoot problems with your cluster. For examples of issues that you can troubleshoot using Support Diagnostic tool output, refer to [the Elastic blog](https://www.elastic.co/blog/why-does-elastic-support-keep-asking-for-diagnostic-files).
@@ -19,14 +18,31 @@ You can generate diagnostic information using this tool before you contact [Elas
 
 Watch [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthrough of capturing an {{es}} diagnostic.
 
+::::{note}
+:::{include} /troubleshoot/_snippets/diagnostics-privacy.md
+:::
+::::
+
 :::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
-
-
 
 ## Requirements [diagnostic-tool-requirements]
 
 * Java Runtime Environment or Java Development Kit v1.8 or higher
+
+::::{include} /deploy-manage/_snippets/curl-k-generic.md
+::::
+
+
+## Performance and safety [diagnostic-performance-safety]
+
+The Support Diagnostic tool can be run from any directory on the machine. It does not require installation to a specific location, and the only requirement is that the user has read access to the {{es}} artifacts, write access to the chosen output directory, and sufficient disk space for the generated archive.
+
+The calls issued by the Support Diagnostic tool are read-only. It issues only GET requests to {{es}} APIs — primarily `_cat` APIs (such as `/_cat/nodes`, `/_cat/shards`, `/_cat/indices`), cluster and node stats endpoints, and settings endpoints. It does not modify any cluster state, indices, or data. In `local` mode, it also retrieves log files and operating system information directly from disk, which has no impact on the cluster.
+
+On a healthy cluster, the overhead is negligible. On clusters with many indices, a small number of calls such as `/_cluster/state` and `/_stats` may take longer to respond, but they remain read-only and do not trigger any cluster operations such as shard movements or merges.
+
+You can safely run the diagnostic on a production cluster.
 
 
 ## Access the tool [diagnostic-tool-access]
@@ -43,12 +59,12 @@ You can also directly download the `diagnostics-X.X.X-dist.zip` file for the lat
 
 To capture an {{es}} diagnostic:
 
-1. In a terminal, verify that your network and user permissions are sufficient to connect to your {{es}} cluster by polling the cluster’s [health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health).
+1. In a terminal, verify that your network and user permissions are sufficient to connect to your {{es}} cluster by polling the cluster’s [health]({{es-apis}}operation/operation-cluster-health).
 
     For example, with the parameters `host:localhost`, `port:9200`, and `username:elastic`, you’d use the following curl request:
 
     ```sh
-    curl -X GET -k -u elastic -p https://localhost:9200/_cluster/health
+    curl -X GET -u elastic -p https://localhost:9200/_cluster/health
     ```
 
     If you receive a an HTTP 200 `OK` response, then you can proceed to the next step. If you receive a different response code, then [diagnose the issue](#diagnostic-non-200) before proceeding.
@@ -115,7 +131,7 @@ The following are common errors that you might encounter when running the diagno
 
 * `Could not retrieve the {{es}} version due to a system or network error - unable to continue.`
 
-    This indicates that the diagnostic couldn’t run commands against the cluster. Poll the cluster’s health again, and ensure that you’re using the same parameters when you run the dianostic batch or shell file.
+    This indicates that the diagnostic couldn’t run commands against the cluster. Poll the cluster’s health again, and ensure that you’re using the same parameters when you run the diagnostic batch or shell file.
 
 * A `security_exception` that includes `is unauthorized for user`:
 

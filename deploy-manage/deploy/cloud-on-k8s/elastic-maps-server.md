@@ -10,11 +10,6 @@ products:
 
 # Elastic Maps Server [k8s-maps]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
 If you cannot connect to Elastic Maps Service from the {{kib}} server or browser clients, and you are running ECK with an Enterprise license, you can opt to host the service on your Kubernetes cluster. Check also the [Elastic Maps Server documentation.](/explore-analyze/visualize/maps/maps-connect-to-ems.md#elastic-maps-server)
 
 The following sections describe how to customize an Elastic Maps Server deployment to suit your requirements.

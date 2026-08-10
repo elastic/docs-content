@@ -214,7 +214,7 @@ As an alternative to configuring the connection using [`cloud.id` and `cloud.aut
 
 To use an _API key_ to authenticate, leave the comment on the `cloud.auth` line as Filebeat will use an API key instead of the deployment credentials to authenticate.
 
-In the `output.elasticsearch` section of `filebeat.yml`, uncomment the `api_key` line, and add the API key you've created for Filebeat. The format of the value is `id:api_key`, where `id` and `api_key` are the values returned by the [Create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
+In the `output.elasticsearch` section of `filebeat.yml`, uncomment the `api_key` line, and add the API key you've created for Filebeat. The format of the value is `id:api_key`, where `id` and `api_key` are the values returned by the [Create API key API]({{es-apis}}operation/operation-security-create-api-key).
 
 Using the example values returned by the `POST` request we used earlier, the configuration for an API key authentication would look like this:
 

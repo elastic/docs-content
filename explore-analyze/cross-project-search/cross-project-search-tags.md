@@ -8,7 +8,7 @@ description: Learn about project tags in cross-project search (CPS), including p
 navigation_title: "Tags"
 ---
 
-# Using tags to control search [cps-tags]
+# Using tags to control {{cps}} [cps-tags]
 
 You can assign [tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) to projects and use them to control {{cps}} behavior.
 
@@ -102,6 +102,5 @@ For example, the following ES|QL query counts documents per project alias:
 ```console
 FROM logs* METADATA _project._alias | STATS COUNT(*) by _project._alias
 ```
-<!--
-Include a link to the ES|QL CPS tutorial.
--->
+
+You can also refer to [Query across Serverless projects with ES|QL](elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md) for more ES|QL examples.

@@ -67,7 +67,7 @@ To manage roles, log in to {{kib}} and go to **Management > Security > Roles**.
 
 ### Role management API [roles-management-api]
 
-The Role Management APIs enable you to add, update, remove and retrieve roles dynamically. For more information and examples, see [Roles](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security).
+The Role Management APIs enable you to add, update, remove and retrieve roles dynamically. For more information and examples, see [Roles]({{es-apis}}group/endpoint-security).
 
 
 ### File-based role management [roles-management-file]
@@ -118,6 +118,13 @@ The `roles.yml` file is managed locally by the node and is not globally by the c
 A safer approach would be to apply the change on one of the nodes and have the `roles.yml` distributed/copied to all other nodes in the cluster (either manually or using a configuration management system such as Puppet or Chef).
 :::
 :::{applies-item} eck:
+
+ECK supports two complementary approaches for file-based role management, and both can coexist — ECK merges roles from all sources into the same `roles.yml` file:
+
+* Using Kubernetes secrets
+* {applies_to}`eck: ga 3.5` Using the `securityRoles` field in a [`StackConfigPolicy`](/deploy-manage/deploy/cloud-on-k8s/elastic-stack-configuration-policies.md). This approach is best for applying role definitions across multiple {{es}} clusters. Refer to [Define custom Elasticsearch roles through a policy](/deploy-manage/deploy/cloud-on-k8s/elastic-stack-configuration-policies.md#k8s-stack-config-policy-security-roles-example).
+
+#### Define roles using Kubernetes secrets
 
 You can set up file-based role management in {{eck}} by referencing Kubernetes secrets containing the roles specification.
 

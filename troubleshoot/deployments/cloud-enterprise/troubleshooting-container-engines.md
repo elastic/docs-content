@@ -28,7 +28,7 @@ Make sure to use a combination of [Linux operating systems](../../../deploy-mana
 
 While troubleshooting the stability of an {{ece}} host, you may encounter `unhealthy` Docker containers as reported by [`ps`](https://docs.docker.com/reference/cli/docker/container/ls).
 
-System containers reporting unhealthy is infrequent and usually only occurs after an unexpected occurance or issues while performing operating system maintenance. If operating system maintenance does need performed, kindly pivot to our [perform host maintenance guide](../../../deploy-manage/maintenance/ece/perform-ece-hosts-maintenance.md).
+System containers reporting unhealthy is infrequent and usually only occurs after an unexpected occurrence or issues while performing operating system maintenance. If operating system maintenance does need performed, kindly pivot to our [perform host maintenance guide](../../../deploy-manage/maintenance/ece/perform-ece-hosts-maintenance.md).
 
 
 ### Restart deployment instances [ece-troubleshooting-containers-unhealthy-instances]
@@ -44,7 +44,7 @@ This should indicate an issue with the {{es}} configuration rather than any Dock
 
 While troubleshooting `unhealthy` {{ece}} system containers (name prefix `frc-`), *some* may be restarted while others should not.
 
-{{ece}}'s [runners](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-runners) will automatically create or restart missing system containers. If you’re attempting to permanently remove a system container by removing its role from the host, you’d instead [update runner roles](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-runner-roles). If eligible system containers return to an `unhealthy` status after restart, we recommend reviewing their start-up Docker [`logs`](https://docs.docker.com/reference/cli/docker/container/logs/).
+{{ece}}'s [runners]({{ece-apis}}operation/operation-get-runners) will automatically create or restart missing system containers. If you’re attempting to permanently remove a system container by removing its role from the host, you’d instead [update runner roles]({{ece-apis}}operation/operation-set-runner-roles). If eligible system containers return to an `unhealthy` status after restart, we recommend reviewing their start-up Docker [`logs`](https://docs.docker.com/reference/cli/docker/container/logs/).
 
 It is safe to restart the following via Docker [`stop`](https://docs.docker.com/reference/cli/docker/container/stop/) followed by Docker [`rm`](https://docs.docker.com/reference/cli/docker/container/rm/) on:
 

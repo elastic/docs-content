@@ -21,7 +21,7 @@ Follow these steps to check the current {{slm-init}} status, and to stop or rest
 
 ### Get {{slm-init}} status 
 
-To see the current status of the {{slm-init}} service, use the [{{slm-init}} status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-status):
+To see the current status of the {{slm-init}} service, use the [{{slm-init}} status API]({{es-apis}}operation/operation-slm-get-status):
 
 ```console
 GET _slm/status
@@ -39,7 +39,7 @@ Under normal operation, the response shows {{slm-init}} is `RUNNING`:
 
 You can stop {{slm}} to suspend management operations for all snapshots. For example, you might stop {{slm-init}} to prevent it from taking scheduled snapshots during maintenance or when making cluster changes that could be impacted by snapshot operations.
 
-To stop the {{slm-init}} service and pause execution of all lifecycle policies, use the [{{slm-init}} stop API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-stop):
+To stop the {{slm-init}} service and pause execution of all lifecycle policies, use the [{{slm-init}} stop API]({{es-apis}}operation/operation-slm-stop):
 
 ```console
 POST _slm/stop
@@ -73,7 +73,7 @@ The response will look like this:
 
 In the event that automatic {{slm}} is disabled, new backup snapshots will not be created automatically.
 
-To restart the {{slm-init}} service, use the [{{slm-init}} start API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-start).
+To restart the {{slm-init}} service, use the [{{slm-init}} start API]({{es-apis}}operation/operation-slm-start).
 
 ```console
 POST _slm/start

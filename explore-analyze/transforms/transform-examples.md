@@ -29,7 +29,7 @@ This example uses the eCommerce orders sample data set to find the customers who
 :screenshot:
 :::
 
-Alternatively, you can use the [preview transform](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform) and the [create transform API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform).
+Alternatively, you can use the [preview transform]({{es-apis}}operation/operation-transform-preview-transform) and the [create transform API]({{es-apis}}operation/operation-transform-put-transform).
 
 :::::{dropdown} API example
 ```console

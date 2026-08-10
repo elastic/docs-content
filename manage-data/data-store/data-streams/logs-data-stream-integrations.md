@@ -101,8 +101,8 @@ Repeat for each logs dataset in the integration.
 
 To create a `@custom` template for a single integration dataset:
 
-* In an {{stack}} deployment, use the [component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) API.
-* In {{serverless-full}}, use the [component template](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-put-component-template) API.
+* In an {{stack}} deployment, use the [component template]({{es-apis}}operation/operation-cluster-put-component-template) API.
+* In {{serverless-full}}, use the [component template]({{es-serverless-apis}}operation/operation-cluster-put-component-template) API.
 
 Component template names must use the pattern `logs-<integration>.<dataset>@custom`.
 

@@ -11,6 +11,8 @@ description: Create threshold rules to alert when the number of matching events 
 
 # Threshold rules [threshold-rule-type]
 
+## Overview
+
 Threshold rules search your {{es}} indices and generate an alert when the number of events matching a query meets or exceeds a specified threshold within a single rule execution. Optionally, events can be grouped by one or more fields so that each unique combination is evaluated independently.
 
 ### When to use a threshold rule

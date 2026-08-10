@@ -40,7 +40,7 @@ Another option available on Linux systems is to ensure that the sysctl value `vm
 
 ## Enable `bootstrap.memory_lock` [bootstrap-memory_lock]
 
-Another option is to use [mlockall](http://opengroup.org/onlinepubs/007908799/xsh/mlockall.md) on Linux/Unix systems, or [VirtualLock](https://msdn.microsoft.com/en-us/library/windows/desktop/aa366895%28v=vs.85%29.aspx) on Windows, to try to lock the process address space into RAM, preventing any {{es}} heap memory from being swapped out.
+Another option is to use [mlockall](http://opengroup.org/onlinepubs/007908799/xsh/mlockall.html) on Linux/Unix systems, or [VirtualLock](https://msdn.microsoft.com/en-us/library/windows/desktop/aa366895%28v=vs.85%29.aspx) on Windows, to try to lock the process address space into RAM, preventing any {{es}} heap memory from being swapped out.
 
 ::::{note}
 Some platforms still swap off-heap memory when using a memory lock. To prevent off-heap memory swaps, [disable all swap files](#disable-swap-files) instead.

@@ -166,4 +166,4 @@ The destination data stream is now ready to accept new documents.
 ## Related resources
 
 - [Time series data streams overview](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md)
-- [Reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex)
+- [Reindex API]({{es-apis}}operation/operation-reindex)

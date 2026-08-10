@@ -39,7 +39,7 @@ The following categories include the most common settings used to configure stan
 :   Configure the {{agent}} logging output.
 
 [Feature flags](/reference/fleet/elastic-agent-standalone-feature-flags.md)
-:   Configure any experiemental features in {{agent}}. These are disabled by default.
+:   Configure any experimental features in {{agent}}. These are disabled by default.
 
 [Agent download](/reference/fleet/elastic-agent-standalone-download.md)
 :   Specify the location of required artifacts and other settings used for {{agent}} upgrades.

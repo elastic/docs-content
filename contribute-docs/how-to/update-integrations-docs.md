@@ -9,9 +9,13 @@ applies_to:
 
 {{integrations}} documentation lives in the [elastic/integrations](https://github.com/elastic/integrations) repository and follows a specific workflow that differs from other Elastic documentation. Changes to integration docs require updating source files, bumping versions, and waiting for the package to be published to the {{package-registry}} (EPR) before they appear on the docs site.
 
+:::{note}
+Most integrations follow the workflow described on this page. However, some integrations—such as **{{elastic-defend}}**—have separate source repositories and different workflows. Refer to [Special case integrations](#special-case-integrations) for details.
+:::
+
 ## Prerequisites
 
-Before you start, make sure you have:
+Before you start, ensure you have:
 
 - Write access to the [elastic/integrations](https://github.com/elastic/integrations) repository (for Elastic contributors).
 - The [`elastic-package`](https://github.com/elastic/elastic-package) tool installed locally.
@@ -98,13 +102,116 @@ After your PR is merged, changes don't appear immediately on the docs site. The 
 
    > Package {package_name} - {version} containing this change is available at https://epr.elastic.co/package/{package_name}/{version}
 
-2. **Docs sync**: A scheduled job in the [elastic/integration-docs](https://github.com/elastic/integration-docs) repository pulls the latest packages from EPR and opens an automated PR. This job runs once a day.
+2. **Docs sync**: A scheduled job in the `elastic/integration-docs` repository pulls the latest packages from EPR and opens an automated PR. This job runs once a day.
 
 3. **Docs build**: Once the automated PR is merged, changes propagate to the docs site.
 
 :::{tip}
 If you need changes to appear sooner, you can manually trigger the [update-docs workflow](https://github.com/elastic/integration-docs/actions/workflows/run-update-docs.yml) in the integration-docs repository.
 :::
+
+## Special case integrations
+
+Some integrations have documentation source files in repositories other than `elastic/integrations`. These integrations require different workflows.
+
+### {{elastic-defend}}
+
+The [{{elastic-defend}} integration](integration-docs://reference/endpoint.md) (`endpoint`) documentation lives in the [elastic/endpoint-package](https://github.com/elastic/endpoint-package) repository, not `elastic/integrations`.
+
+#### Where to edit
+
+| What you're editing | Repository | File location |
+|---|---|---|
+| Page content (intro, capabilities, field tables) | [elastic/endpoint-package](https://github.com/elastic/endpoint-package) | `doc_templates/endpoint/docs/README.md` |
+| Field schema definitions | [elastic/endpoint-package](https://github.com/elastic/endpoint-package) | `custom_schemas/` directory |
+| Frontmatter (`navigation_title`, `applies_to`) | `elastic/integration-docs` | `docs/reference/endpoint.md` |
+
+:::{important}
+The page content in `integration-docs/docs/reference/endpoint.md` (everything after the frontmatter) is generated and will be overwritten during the next sync. Only edit the frontmatter section directly in this file.
+:::
+
+#### Update {{elastic-defend}} docs
+
+:::{note}
+Before you update these docs, ensure you have installed [Go](https://golang.org/dl/). 
+:::
+
+::::::{stepper}
+
+::::{step} Clone the endpoint-package repository
+
+```bash
+git clone https://github.com/elastic/endpoint-package.git
+cd endpoint-package
+```
+
+::::
+
+::::{step} Create a branch
+
+```bash
+git checkout -b docs-enhancement/my-docs-update
+```
+
+::::
+
+::::{step} Edit the template file
+
+Edit `doc_templates/endpoint/docs/README.md`.
+
+This file uses `{{fields "datastream"}}` placeholders that expand into field tables during the build. Available data streams include `alerts`, `file`, `library`, `network`, `process`, `registry`, `security`, `metadata`, `metrics`, and `policy`.
+
+::::
+
+::::{step} Build the package
+
+Save your changes, then run `make` from the repository root to generate the output file.
+
+```bash
+make
+```
+
+If you encounter build errors related to CGO or missing libraries, try:
+
+```bash
+CGO_ENABLED=0 make
+```
+
+The build generates `package/endpoint/docs/README.md` from your template.
+
+::::
+
+::::{step} Commit both files
+
+Commit both the source template and the generated output:
+
+```bash
+git add doc_templates/endpoint/docs/README.md package/endpoint/docs/README.md
+git commit -m "docs: update Elastic Defend documentation"
+git push -u origin docs-enhancement/my-docs-update
+```
+
+::::
+
+::::{step} Create a PR
+
+Create a PR to the upstream [elastic/endpoint-package](https://github.com/elastic/endpoint-package) repository and request a review from the code owners.
+
+::::
+
+::::::
+
+:::{note}
+There is no local preview available from the `endpoint-package` repository. To verify your changes render correctly, wait until the package flows through EPR to the docs site, or ask a teammate with staging environment access to verify.
+:::
+
+#### After merging
+
+After your PR merges:
+
+1. The package is published to EPR.
+2. A scheduled job in `integration-docs` pulls the updated package and opens an automated PR.
+3. Once the automated PR merges, changes appear on the docs site.
 
 ## Troubleshooting
 
@@ -127,3 +234,12 @@ If you can't find the edit helper check on your PR, ensure your branch name foll
 ### Build failures in integration-docs
 
 Sometimes the automated PR in integration-docs fails due to new integrations that need to be added to `nav.yaml`. These failures block all docs updates until resolved. If you notice this, reach out to the docs team for assistance.
+
+### My changes to integration-docs were overwritten
+
+If you edited a file in `integration-docs/docs/reference/` directly and your changes disappeared, the file is likely generated from another source:
+
+- **For {{elastic-defend}} (`endpoint.md`)**: Edit in [elastic/endpoint-package](https://github.com/elastic/endpoint-package) instead. Refer to [{{elastic-defend}}](#elastic-defend).
+- **For other integrations**: Edit in [elastic/integrations](https://github.com/elastic/integrations). Refer to [Update the docs](#update-the-docs).
+
+The `integration-docs` repository pulls generated content from EPR and adds frontmatter and navigation. Direct edits to generated files will be overwritten on the next sync.

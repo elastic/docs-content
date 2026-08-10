@@ -41,6 +41,12 @@ serverless: unavailable
 
 In most cases, you can use a [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to manage your time series data stream. If you're using [data tiers](/manage-data/lifecycle/data-tiers.md) in {{stack}}, you can use [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md).
 
+::::{note}
+:applies_to: {"stack": "ga 9.5"}
+
+{{ilm-init}} isn't required for frozen-tier {{search-snaps}}. Data stream lifecycle can manage them directly. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
+::::
+
 :::{dropdown} Create an ILM policy
 
 If you're using {{stack}}, {{ilm-init}} can help you manage a time series data stream's backing indices. {{ilm-init}} requires an index lifecycle policy.
@@ -219,7 +225,7 @@ GET metrics-prod/_search
 You can convert an existing regular data stream to a TSDS. Follow these steps:
 
 1. Update your existing index template and component templates (if any) to include time series settings. For {{stack}}, configure lifecycle management. 
-2. Use the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) to manually roll over the existing data stream's write index, to apply the changes you made in step 1:
+2. Use the [rollover API]({{es-apis}}operation/operation-indices-rollover) to manually roll over the existing data stream's write index, to apply the changes you made in step 1:
 
 ```console
 POST metrics-weather-sensors/_rollover
@@ -242,4 +248,4 @@ Now that you've set up a time series data stream, you can manage and use it like
 * [Use a data stream](use-data-stream.md) for indexing and searching
 * [Change data stream settings](modify-data-stream.md#data-streams-change-mappings-and-settings) as needed
 * Query time series data using the {{esql}} [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md)
-* Use [data stream APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-data-stream)
+* Use [data stream APIs]({{es-apis}}group/endpoint-data-stream)

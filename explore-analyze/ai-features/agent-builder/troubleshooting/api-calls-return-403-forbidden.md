@@ -31,5 +31,5 @@ Upgrade to the required subscription or feature tier for your deployment type. T
 
 ## Related pages
 
-- [Get started](../get-started.md#enable-agent-builder)
+- [Get started](../get-started.md#access-agent-builder)
 - [Manage your subscription](/deploy-manage/cloud-organization/billing/manage-subscription.md)

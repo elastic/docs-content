@@ -33,7 +33,7 @@ In {{es}}, this process of writing and opening a new segment is called a *refres
 
 * Waiting for the refresh interval
 * Setting the [?refresh](elasticsearch://reference/elasticsearch/rest-apis/refresh-parameter.md) option
-* Using the [Refresh API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh) to explicitly complete a refresh (`POST _refresh`)
+* Using the [Refresh API]({{es-apis}}operation/operation-indices-refresh) to explicitly complete a refresh (`POST _refresh`)
 
 By default, {{es}} periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds. This is why we say that {{es}} has *near* real-time search: document changes are not visible to search immediately, but will become visible within this timeframe.
 

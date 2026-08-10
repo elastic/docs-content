@@ -63,6 +63,15 @@ This command upgrades the binary. Your agent policy should continue to work, but
 For more command-line options, check the help for the [`upgrade`](/reference/fleet/agent-command-reference.md#elastic-agent-upgrade-command) command.
 
 
+### Windows upgrades from versions earlier than 9.4.0 [upgrade-standalone-windows-registry]
+
+When upgrading an agent from a version earlier than 9.4.0 in [unprivileged mode](/reference/fleet/elastic-agent-unprivileged.md), you might encounter registry permission issues.
+
+The upgraded agent might not have permission to create the Windows Add/Remove Programs registry entry because agent versions earlier than 9.4.0 didn't configure the required access control list (ACL). Additionally, if you originally installed the agent using MSI, a stale MSI entry might remain in the Add/Remove Programs list. 
+
+Run [`elastic-agent windows registry update`](/reference/fleet/agent-command-reference.md#elastic-agent-windows-command) once after the upgrade to create the entry, set the correct permissions, and remove any stale MSI entries.
+
+
 ## Upgrade DEB and RPM installations [upgrade-standalone-deb-rpm]
 
 ::::{note}
@@ -139,7 +148,7 @@ For {{agent}}s installed using DEB or RPM packages, you must use your system's p
 
 The basic upgrade scenario should work for most use cases. However, in an air-gapped environment {{agent}} is not able to access the {{artifact-registry}} at `artifacts.elastic.co` directly.
 
-As an alterative, you can do one of the following:
+As an alternative, you can do one of the following:
 
 * [Configure a proxy server](/reference/fleet/fleet-agent-proxy-support.md) for standalone {{agent}} to access the {{artifact-registry}}.
 * [Host your own artifact registry](/reference/fleet/air-gapped.md#host-artifact-registry) for standalone {{agent}} to access binary downloads.

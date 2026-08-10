@@ -286,3 +286,12 @@ Elastic APM .NET Agent (and likely also other agents which correctly handle the 
 
 We recommend using `trace_continuation_strategy` set to `restart` or `restart_external`, so that the APM .NET Agent will ignore the incoming traceparent header sampling flag.
 
+
+## Broken distributed traces on Google Cloud Run [gcp-cloud-run-broken-distributed-traces]
+
+Services deployed on Google Cloud Run might show transactions as root transactions rather than child spans, and the APM UI might show "incomplete trace" warnings even when the upstream caller is correctly instrumented.
+
+Google Cloud Run's infrastructure intercepts every inbound HTTP request before it reaches the application. It creates a span in Google Cloud Trace and overwrites the W3C `traceparent` header with a new value referencing that GCP-internal span. The Elastic APM .NET agent reads this overwritten header, so all transactions started by the Cloud Run service become children of a GCP-internal span that Elastic APM has no visibility into.
+
+This is infrastructure-level behavior with no opt-out mechanism currently available in Cloud Run. It is tracked in [Google's issue tracker](https://issuetracker.google.com/issues/253419736). There is no workaround available for the Elastic APM .NET agent at this time.
+

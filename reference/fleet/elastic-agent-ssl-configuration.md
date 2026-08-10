@@ -13,15 +13,17 @@ products:
 # Configure SSL/TLS for standalone {{agent}}s [elastic-agent-ssl-configuration]
 
 
-There are a number of SSL configuration settings available depending on whether you are configuring a client, server, or both. See the following tables for available settings:
+Use these settings to configure SSL/TLS for a standalone {{agent}}. The available settings depend on whether {{agent}} acts as a client, a server, or both:
 
-* [Table 7, Common configuration options](#common-ssl-options). These settings are valid in both client and server configurations.
-* [Table 8, Client configuration options](#client-ssl-options)
-* [Table 9, Server configuration options](#server-ssl-options)
+* [Common configuration options](#common-ssl-config-options): Valid in both client and server configurations.
+* [Client configuration options](#client-ssl-config-options): Apply when {{agent}} connects to a server.
+* [Server configuration options](#server-ssl-config-options): Apply when {{agent}} accepts incoming connections.
 
 ::::{tip}
 For more information about using certificates, refer to [Secure connections](/reference/fleet/secure.md).
 ::::
+
+## Common configuration options [common-ssl-config-options]
 
 $$$common-ssl-options$$$
 
@@ -53,7 +55,7 @@ $$$common-ssl-options$$$
     * ECDHE-RSA-AES-128-GCM-SHA256: TLS 1.2 only.
     * ECDHE-RSA-AES-256-CBC-SHA
     * ECDHE-RSA-AES-256-GCM-SHA384: TLS 1.2 only.
-    * ECDHE-RSA-CHACHA20-POLY1205: TLS 1.2 only.
+    * ECDHE-RSA-CHACHA20-POLY1305: TLS 1.2 only.
     * ECDHE-RSA-RC4-128-SHA: Disabled by default. RC4 not recommended.
     * RSA-3DES-CBC3-SHA
     * RSA-AES-128-CBC-SHA
@@ -100,6 +102,8 @@ $$$common-ssl-options$$$
 
     **Default:** `[TLSv1.2, TLSv1.3]`
 
+## Client configuration options [client-ssl-config-options]
+
 $$$client-ssl-options$$$
 
 `ssl.certificate` $$$ssl.certificate-client-setting$$$
@@ -140,6 +144,24 @@ $$$client-ssl-options$$$
         CERTIFICATE CONTENT APPEARS HERE
         -----END CERTIFICATE-----
     ```
+
+`ssl.certificate_reload.enabled` $$$ssl.certificate_reload.enabled-client-setting$$$
+:   {applies_to}`stack: ga 9.5+` (boolean) When `true`, {{agent}} periodically re-reads the `ssl.certificate`, `ssl.key`, and `ssl.certificate_authorities` files from disk so that certificate rotations are picked up without a restart. The new certificate is used on the next TLS handshake within one `ssl.certificate_reload.reload_interval`.
+
+    **Default:** `true`
+
+    ::::{note}
+    This setting is also available on 8.19, 9.3, and 9.4 patch releases, but defaults to `false` on those releases for backward compatibility. Set it to `true` to opt in.
+    ::::
+
+`ssl.certificate_reload.reload_interval` $$$ssl.certificate_reload.reload_interval-client-setting$$$
+:   {applies_to}`stack: ga 9.5+` (duration) How often {{agent}} checks for changes to the certificate, key, and CA files on disk. Only used when `ssl.certificate_reload.enabled` is `true`.
+
+    **Default:** `5s`
+
+    ::::{note}
+    This setting is also available on 8.19, 9.3, and 9.4 patch releases.
+    ::::
 
 `ssl.key` $$$ssl.key-client-setting$$$
 :   (string) The client certificate key used for client authentication. Only required if `client_authentication` is configured.
@@ -188,7 +210,15 @@ $$$client-ssl-options$$$
     ssl.ca_trusted_fingerprint: 3b24d33844d6553...826
     ```
 
+## Server configuration options [server-ssl-config-options]
+
 $$$server-ssl-options$$$
+
+::::{tip}
+:applies_to: serverless: unavailable
+
+The following server configuration options also apply to the {{fleet-server}} HTTPS endpoint. To set them for a {{fleet}}-managed {{fleet-server}}, add them under a `server.ssl` block in the {{fleet-server}} integration policy. For more information, refer to [Configure advanced SSL/TLS settings for {{fleet-server}}](/reference/fleet/secure-connections.md#fleet-server-advanced-ssl-settings).
+::::
 
 `ssl.certificate` $$$ssl.certificate-server-setting$$$
 :   (string) The path to the certificate for SSL server authentication. If the certificate is not specified, startup will fail.
@@ -228,6 +258,24 @@ $$$server-ssl-options$$$
         CERTIFICATE CONTENT APPEARS HERE
         -----END CERTIFICATE-----
     ```
+
+`ssl.certificate_reload.enabled` $$$ssl.certificate_reload.enabled-server-setting$$$
+:   {applies_to}`stack: ga 9.5+` (boolean) When `true`, {{agent}} periodically re-reads the `ssl.certificate`, `ssl.key`, and `ssl.certificate_authorities` files from disk so that certificate rotations are picked up without a restart. The new certificate is used on the next TLS handshake within one `ssl.certificate_reload.reload_interval`.
+
+    **Default:** `true`
+
+    ::::{note}
+    This setting is also available on 8.19, 9.3, and 9.4 patch releases, but defaults to `false` on those releases for backward compatibility. Set it to `true` to opt in.
+    ::::
+
+`ssl.certificate_reload.reload_interval` $$$ssl.certificate_reload.reload_interval-server-setting$$$
+:   {applies_to}`stack: ga 9.5+` (duration) How often {{agent}} checks for changes to the certificate, key, and CA files on disk. Only used when `ssl.certificate_reload.enabled` is `true`.
+
+    **Default:** `5s`
+
+    ::::{note}
+    This setting is also available on 8.19, 9.3, and 9.4 patch releases.
+    ::::
 
 `ssl.client_authentication` $$$ssl.client_authentication-server-setting$$$
 :   (string) Configures client authentication. The valid options are:

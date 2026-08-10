@@ -29,7 +29,7 @@ You should plan your deployment size based on the amount of data you ingest. Mem
 
 During installation, the allocator capacity defaults to 85% of the host physical memory, as the rest is reserved for ECE system services.
 
-To adjust the allocator capacity prior to ECE 3.5.0, you must reinstall ECE on the host with a new value assigned to the `--capacity` parameter. Starting with ECE 3.5.0, you can update the allocator capacity using the [allocator settings ECE API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-allocator-settings). After making this change, you must restart the allocator service for it to take effect.
+To adjust the allocator capacity prior to ECE 3.5.0, you must reinstall ECE on the host with a new value assigned to the `--capacity` parameter. Starting with ECE 3.5.0, you can update the allocator capacity using the [allocator settings ECE API]({{ece-apis}}operation/operation-set-allocator-settings). After making this change, you must restart the allocator service for it to take effect.
 
 ```sh
 curl -X PUT \
@@ -60,6 +60,11 @@ Here are some examples to make Elastic deployments and ECE system services run s
 Note that the recommended reservations above are not guaranteed upper limits, if you measure actual memory usage you may see numbers 0-2GB higher or lower.
 
 These fluctuations should not be a concern in practice. To get actual limits that could be used in alerts, you could add 4GB to the recommended values above.
+
+:::{note}
+Configure swap on ECE allocator hosts unless they also have the director role. For sizing and more guidance, refer to [](./ece-software-prereq.md#ece-swap-considerations).
+:::
+
 
 
 ## CPU quotas [ece-alloc-cpu]
@@ -150,5 +155,4 @@ You can change the value of the disk multiplier at different levels:
 ::::{important}
 The override only persists during the lifecycle of the instance container. If a new container is created, for example during a `grow_and_shrink` plan or a vacate operation, the quota is reset to its default. To increase the storage ratio in a persistent way, [edit the instance configurations](ece-configuring-ece-instance-configurations-edit.md).
 ::::
-
 

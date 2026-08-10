@@ -16,7 +16,7 @@ This section helps you fix issues with {{es}} deployments.
 ## General [troubleshooting-general]
 
 * [](/troubleshoot/elasticsearch/fix-common-cluster-issues.md)
-* [Cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-health_report)
+* [Cluster health API]({{es-apis}}group/endpoint-health_report)
 
 ## Data [troubleshooting-data]
 
@@ -30,12 +30,15 @@ This section helps you fix issues with {{es}} deployments.
 * [](/troubleshoot/elasticsearch/increase-cluster-shard-limit.md)
 * [](/troubleshoot/elasticsearch/corruption-troubleshooting.md)
 * [](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md)
+* [](/troubleshoot/elasticsearch/fix-date-timestamps.md)
 
 ## Management [troubleshooting-management]
 
 * [](/troubleshoot/elasticsearch/start-ilm.md)
 * [](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md)
 * [](/troubleshoot/elasticsearch/file-based-recovery.md)
+* [](/troubleshoot/elasticsearch/troubleshooting-upgrades.md)
+* [](/troubleshoot/elasticsearch/troubleshooting-upgrade-assistant.md)
 
 ## Capacity [troubleshooting-capacity]
 

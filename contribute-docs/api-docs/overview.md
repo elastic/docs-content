@@ -38,10 +38,10 @@ All Elastic API docs follow this general pattern:
 flowchart TD
     A[Source files] --> B[OpenAPI documents]
     B --> C[Published documentation]
-    
-    style A fill:#fff2cc
-    style B fill:#e1d5e7
-    style C fill:#dae8fc
+
+    class A warning
+    class B important
+    class C note
 ```
 
 1. **Source files** can be:
@@ -58,7 +58,7 @@ The Elasticsearch API specification workflow is particularly complex because it 
 
 When adding a new API, Elasticsearch engineers first create a basic spec in the [elasticsearch repo](https://github.com/elastic/elasticsearch/tree/main/rest-api-spec). Those specs are mirrored, and made more robust and detailed in [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification/tree/main/docs).
 
-The generated Schema JSON and OpenAPI documents feed into client libraries (and their docs), the Dev Tools Console, and the [Elasticsearch API reference](https://www.elastic.co/docs/api/doc/elasticsearch/) (including the [Serverless API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/)). Here's how the pipeline works:
+The generated Schema JSON and OpenAPI documents feed into client libraries (and their docs), the Dev Tools Console, and the [Elasticsearch API reference]({{es-apis}}) (including the [Serverless API reference]({{es-serverless-apis}})). Here's how the pipeline works:
 
 ```mermaid
 flowchart TD
@@ -71,16 +71,11 @@ flowchart TD
     C1 -->|published| E["HTML published by Bump.sh"]
     B -->|generated| D[Client libraries]
     B -->|generated| F[REST API spec]
-    
-    style A fill:#fff2cc
-    style F fill:#fff2cc
-    style G fill:#fff2cc
-    style B fill:#d5e8d4
-    style C1 fill:#e1d5e7
-    style C2 fill:#e1d5e7
-    style H fill:#fff2cc
-    style D fill:#dae8fc
-    style E fill:#dae8fc
+
+    class A,F,G,H warning
+    class B success
+    class C1,C2 important
+    class D,E note
 ```
 
 ### Input sources

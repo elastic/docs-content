@@ -12,7 +12,7 @@ products:
 
 **Symptoms:**
 
-* When you use the [nodes info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-info) to retrieve settings for a node, some information is missing.
+* When you use the [nodes info API]({{es-apis}}operation/operation-nodes-info) to retrieve settings for a node, some information is missing.
 
 **Resolution:**
 

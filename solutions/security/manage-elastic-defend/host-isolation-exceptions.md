@@ -32,7 +32,14 @@ Host isolation exceptions support IPv4 addresses, with optional classless inter-
 
 By default, a host isolation exception is recognized globally across all hosts running {{elastic-defend}}. You can also assign a host isolation exception to a specific {{elastic-defend}} integration policy, affecting only the hosts assigned to that policy.
 
-1. Find **Host isolation exceptions** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+## Add a host isolation exception [add-host-isolation-exception]
+
+To add a host isolation exception:
+
+1. Depending on your version, do one of the following:
+   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Go to the **Artifacts** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Host isolation exceptions** tab.
+   * {applies_to}`stack: ga 9.0-9.3` Go to the **Host isolation exceptions** page using the navigation menu or the global search field.
+
 2. Click **Add Host isolation exception**.
 3. Fill in these fields in the **Add Host isolation exception** flyout:
 
@@ -51,15 +58,51 @@ By default, a host isolation exception is recognized globally across all hosts r
 
 5. Click **Add Host isolation exception**. The new exception is added to the **Host isolation exceptions** list.
 
+::::{tip}
+:applies_to: { stack: ga 9.4+, serverless: ga }
+
+To add multiple host isolation exceptions at once, you can import an NDJSON file instead. Refer to [Import and export host isolation exceptions](#import-export-host-isolation-exceptions).
+::::
+
 
 ## View and manage host isolation exceptions [manage-host-isolation-exceptions]
 
-The **Host isolation exceptions** page displays all the host isolation exceptions that have been configured for {{elastic-sec}}. To refine the list, use the search bar to search by name, description, or IP address.
+The **Host isolation exceptions** UI displays all the host isolation exceptions that have been configured for {{elastic-sec}}. To refine the list, use the search bar to search by name, description, or IP address.
 
 :::{image} /solutions/images/security-host-isolation-exceptions-ui.png
 :alt: List of host isolation exceptions
 :screenshot:
 :::
+
+
+### Import and export host isolation exceptions [import-export-host-isolation-exceptions]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+::::{admonition} Requirements
+* To export host isolation exceptions, you need the **Host Isolation Exceptions: Read** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).
+* To import per-policy items, you need the **Host Isolation Exceptions: All** privilege.
+* To import global items, you need the **Host Isolation Exceptions: All** and the **Global artifact management: All** privilege.
+* To import items to a different space, you need the **Global artifact management: All** privilege.
+::::
+
+You can import and export host isolation exceptions as NDJSON files:
+
+- **When the list is empty**: Click **Import host isolation exceptions**.
+- **When the list has entries**: Click the actions menu {icon}`boxes_vertical`, then select **Import host isolation exceptions** or **Export host isolation exceptions**.
+
+::::{note}
+The imported file must be an NDJSON file exported from {{kib}}. Files exported from third-party software are not supported.
+::::
+
+When you import an NDJSON file, the imported host isolation exceptions are appended to your existing entries — existing entries are not removed or overwritten.
+
+Items are processed individually on import — per-policy items that are not visible in the current space are skipped, while the remaining items are imported.
+
+If an imported per-policy item is assigned to a policy that doesn't exist in the current environment, the item is imported with the policy assignment removed.
 
 
 ### Edit a host isolation exception [edit-host-isolation-exception]

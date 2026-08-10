@@ -36,7 +36,7 @@ These functions support the following properties:
 * `over_field_name` (optional)
 * `partition_field_name` (optional)
 
-For more information about those properties, see the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
+For more information about those properties, see the [create {{anomaly-jobs}} API]({{es-apis}}operation/operation-ml-put-job).
 
 ```console
 PUT _ml/anomaly_detectors/example1
@@ -128,7 +128,7 @@ These functions support the following properties:
 * `by_field_name` (optional)
 * `partition_field_name` (optional)
 
-For more information about those properties, see the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
+For more information about those properties, see the [create {{anomaly-jobs}} API]({{es-apis}}operation/operation-ml-put-job).
 
 For example, if you have the following number of events per bucket:
 
@@ -185,7 +185,7 @@ These functions support the following properties:
 * `over_field_name` (optional)
 * `partition_field_name` (optional)
 
-For more information about those properties, see the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
+For more information about those properties, see the [create {{anomaly-jobs}} API]({{es-apis}}operation/operation-ml-put-job).
 
 ```console
 PUT _ml/anomaly_detectors/example6

@@ -91,10 +91,14 @@ kubectl create secret generic eck-license --from-file=my-license-file.json -n el
 kubectl label secret eck-license "license.k8s.elastic.co/scope"=operator -n elastic-system
 ```
 
-After you install a license into ECK, the Enterprise features of the operator are available, like {{es}} autoscaling and support for Elastic Maps Server. All the {{stack}} applications you manage with ECK will have Platinum and Enterprise features enabled.  The [`_license`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get) API reports that individual {{es}} clusters are running under an Enterprise license, and the [elastic-licensing](#k8s-get-usage-data) ConfigMap contains the current license level of the ECK operator. The applications created before you installed the license are upgraded to Platinum or Enterprise features without interruption of service after a short delay.
+After you install a license into ECK, the Enterprise features of the operator are available, like {{es}} autoscaling and support for Elastic Maps Server. All the {{stack}} applications you manage with ECK will have Platinum and Enterprise features enabled.  The [`_license`]({{es-apis}}operation/operation-license-get) API reports that individual {{es}} clusters are running under an Enterprise license, and the [elastic-licensing](#k8s-get-usage-data) ConfigMap contains the current license level of the ECK operator. The applications created before you installed the license are upgraded to Platinum or Enterprise features without interruption of service after a short delay.
 
 ::::{note}
 The {{es}} `_license` API for versions before 8.0.0 reports a Platinum license level for backwards compatibility even if an Enterprise license is installed.
+::::
+
+::::{note}
+Keeping the license secret in the operator's namespace is especially important when [dynamic namespace handling](../deploy/cloud-on-k8s/dynamic-namespace-handling.md) is enabled: the operator's namespace is always in scope, so the license can never be offboarded together with a managed namespace. Refer to [License handling](../deploy/cloud-on-k8s/dynamic-namespace-handling.md#k8s-dynamic-namespace-handling-license) for details.
 ::::
 
 
@@ -104,7 +108,7 @@ The {{es}} `_license` API for versions before 8.0.0 reports a Platinum license l
 Before your current Enterprise license expires, you will receive a new Enterprise license from Elastic (provided that your subscription is valid).
 
 ::::{note}
-You can check the expiry date of your license in the [elastic-licensing](#k8s-get-usage-data) ConfigMap. Enterprise licenses are container licenses that include multiple licenses for individual {{es}} clusters with shorter expiry. Therefore, you get a different expiry in {{kib}} or through the {{es}} [`_license`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get) API. ECK automatically updates the {{es}} cluster licenses until the expiry date of the ECK Enterprise license is reached.
+You can check the expiry date of your license in the [elastic-licensing](#k8s-get-usage-data) ConfigMap. Enterprise licenses are container licenses that include multiple licenses for individual {{es}} clusters with shorter expiry. Therefore, you get a different expiry in {{kib}} or through the {{es}} [`_license`]({{es-apis}}operation/operation-license-get) API. ECK automatically updates the {{es}} cluster licenses until the expiry date of the ECK Enterprise license is reached.
 ::::
 
 ::::{important}

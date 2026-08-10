@@ -129,7 +129,9 @@ The non-ECS fields listed below are beta and subject to change.
 | `kibana.alert.rule.parameters.threat_mapping.*` | Controls which fields will be compared in the indicator and source documents.<br>Type: flattened |
 | `kibana.alert.rule.parameters.threat_query` | Type: flattened |
 | `kibana.alert.rule.parameters.threshold.*` | Type: flattened |
-| `kibana.space_ids` | Type: keyword |
+| `kibana.space_ids` | Space ID(s) of the {{kib}} space where the rule that created this alert runs.<br>Type: keyword |
+| `kibana.cps_scope.expression` {applies_to}`serverless: preview` {applies_to}`stack: unavailable` | The [{{cps}}](/explore-analyze/cross-project-search.md) scope that was in effect when the detection rule generated this alert. Present only when the rule ran with {{cps}} enabled.<br>Type: keyword |
+| `kibana.cps_scope.linked_projects` {applies_to}`serverless: preview` {applies_to}`stack: unavailable` | The linked projects that were in scope when this alert was generated. Each entry includes `id`, `alias`, `type`, and `organization`. Present only when the rule ran with {{cps}} enabled.<br>Type: flattened |
 | `kibana.alert.rule.consumer` | Type: keyword |
 | `kibana.alert.status` | Type: keyword |
 | `kibana.alert.rule.category` | Type: keyword |

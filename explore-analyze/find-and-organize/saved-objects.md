@@ -60,7 +60,7 @@ Granting access to `Saved Objects Management` authorizes users to manage all sav
 
 Use import and export to move objects between different {{kib}} instances. These actions are useful when you have multiple environments for development and production. Import and export also work well when you have a large number of objects to update and want to batch the process.
 
-{{kib}} also provides import and export saved objects APIs for your [Elastic Stack deployments](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) and [serverless projects](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-saved-objects) to automate this process.
+{{kib}} also provides import and export saved objects APIs for your [Elastic Stack deployments]({{kib-apis}}group/endpoint-saved-objects) and [serverless projects]({{kib-serverless-apis}}group/endpoint-saved-objects) to automate this process.
 
 
 ### Import [saved-objects-import]
@@ -170,7 +170,7 @@ When you import a saved object and it is created with a different ID, if 1. it c
 If you are using the saved objects APIs directly, you should be aware of these changes:
 
 ::::{warning}
-Some of the saved objects APIs are deprecated since version 8.7.0. For more information, refer to the [API docs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects)
+Some of the saved objects APIs are deprecated since version 8.7.0. For more information, refer to the [API docs]({{kib-apis}}group/endpoint-saved-objects)
 ::::
 
 

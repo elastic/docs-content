@@ -6,6 +6,80 @@ products:
 
 # {{serverless-full}} breaking changes [elastic-cloud-serverless-breaking-changes]
 
+:::{changelog}
+:type: breaking-change
+:cdn: cloud-serverless
+:dropdowns:
+:link-visibility: keep-links
+:description-visibility: keep-descriptions
+:::
+
+## May 28, 2026 [elastic-cloud-serverless-05282026-breaking]
+
+::::{dropdown} Entity Analytics requires additional index privileges for custom roles
+
+The entity store reads entity data from a new set of indices. Roles that grant access to the Entity Analytics features must now include `read` on the following index patterns:
+
+- `.entities.v2.latest.security_*`
+- `.entities.v2.updates.security_*`
+- `entities-latest-*`
+- `risk-score.risk-score-*`
+- `.entity_analytics.*`
+
+The built-in Security roles have been updated to grant these privileges. Custom roles created against the `v1` index patterns (`.entities.v1.latest.security_*`) are not updated automatically.
+
+**Impact:**
+
+Users assigned a custom role that does not include the index patterns above will see the **Entity Analytics** page load in a degraded state — without entity data and without the standard "insufficient privileges" message. Users assigned built-in Security roles are not affected.
+
+**Action:** If you use custom roles to control access to Entity Analytics, add `read` on the following entity store and risk score index patterns to each affected role:
+
+```yaml
+- names:
+    - ".entities.v2.latest.security_*"
+    - "entities-latest-*"
+    - "risk-score.risk-score-*"
+    - ".entity_analytics.*"
+  privileges:
+    - read
+```
+
+For more information, view [#255800]({{kib-pull}}255800).
+::::
+
+## May 5, 2026 [elastic-cloud-serverless-05052026-breaking]
+
+::::{dropdown} Osquery: Scheduled query results no longer populate action_id
+Osquery scheduled-pack result documents correlate using stable UUIDs (`pack_id` and `schedule_id`) instead of the name-derived `action_id`. `action_id` is no longer populated for scheduled results; it remains populated for live queries. This applies when using the Osquery Manager integration v1.23.0 or later.
+
+**Impact:**
+
+Any dashboard, saved search, detection rule, or ingest pipeline that groups or filters scheduled Osquery results by `action_id` returns no data — including the default dashboards bundled with the Osquery Manager integration. Live query results are unaffected. No data is lost: the underlying result data remains fully queryable through the new fields.
+
+**Action:**
+
+Update any custom (user-authored) dashboards, saved searches, detection rules, and ingest pipelines that reference `action_id` for scheduled results to use `schedule_id` or `pack_id` instead. 
+
+For more information, check [#271572]({{kib-pull}}271572).
+::::
+
+## April 15, 2026 [elastic-cloud-serverless-04152026-breaking]
+
+:::{dropdown} Disables sequence numbers for TSDB indices in release builds
+
+For indices in time series mode, {{es}} trims sequence numbers when they are no longer needed for replication. This reduces storage overhead (for example, a substantial share of space for OpenTelemetry Protocol metrics) and lowers the cost of segment merging.
+
+When sequence numbers are disabled for an index, [optimistic concurrency control](elasticsearch://reference/elasticsearch/rest-apis/optimistic-concurrency-control.md) no longer applies. Index, update, and delete requests that use `if_seq_no` and `if_primary_term` return an error, and searches that request `seq_no_primary_term` receive sentinel values for those fields. `update_by_query` and `delete_by_query` proceed without conflict detection, so concurrent modifications can overwrite documents without version conflict errors. For typical metrics workloads, concurrent updates are uncommon, and the storage savings are often an acceptable tradeoff.
+
+To retain full sequence numbers and optimistic concurrency control, set `index.disable_sequence_numbers` to `false` in your time series index templates.
+
+**Impact:**
+
+Workflows that depend on optimistic concurrency control, sequence numbers in search responses, or conflict detection for `update_by_query` and `delete_by_query` on time series indices might need changes, or you can opt out by setting `index.disable_sequence_numbers` to `false`.
+
+For more information, view [#145737]({{es-pull}}145737).
+:::
+
 ## March 18, 2026 [elastic-cloud-serverless-03182026-breaking]
 
 :::{dropdown} The `_source` field mode is now saved to the template index settings
@@ -95,7 +169,7 @@ Note, because we dont support enabling norms from a disabled state, users will n
 
 **Impact:**
 
-Text fields will no longer be normalized by default in LogsDB and TSDB indicies.
+Text fields will no longer be normalized by default in LogsDB and TSDB indices.
   
 For more information, view [#131317](https://github.com/elastic/elasticsearch/pull/131317).
 :::

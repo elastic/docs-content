@@ -12,7 +12,7 @@ products:
 
 # Configuring a time series data stream for downsampling [running-downsampling]
 
-To downsample a time series data stream (TSDS), you can use index lifecycle management (ILM) or a data stream lifecycle. (You can also use the [downsample API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-downsample) with an individual time series index, but most users don't need to use the API.)
+To downsample a time series data stream (TSDS), you can use index lifecycle management (ILM) or a data stream lifecycle. (You can also use the [downsample API]({{es-apis}}operation/operation-indices-downsample) with an individual time series index, but most users don't need to use the API.)
 
 Before you begin, review [](downsampling-concepts.md).
 
@@ -33,7 +33,7 @@ stack: ga
 serverless: ga
 ```
 
-To downsample a time series using a [data stream lifecycle](/manage-data/lifecycle/data-stream.md), add a [downsampling](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle) section to the data stream lifecycle (for existing data streams) or the index template (for new data streams).
+To downsample a time series using a [data stream lifecycle](/manage-data/lifecycle/data-stream.md), add a [downsampling]({{es-apis}}operation/operation-indices-put-data-lifecycle) section to the data stream lifecycle (for existing data streams) or the index template (for new data streams).
 
 * Set `fixed_interval` to your preferred level of granularity. The original time series data will be aggregated at this interval.
 * Set `after` to the minimum time to wait after an index rollover, before running downsampling.

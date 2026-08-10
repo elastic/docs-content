@@ -1,12 +1,25 @@
 name: "Website issue"
-description: This issue template should only be used when navigating directly from elastic.co.
+description: Report a problem with Elastic documentation when navigating from elastic.co.
 title: "[Website]: "
 labels: ["source:web"]
 body:
   - type: markdown
     attributes:
       value: |
-        Hi 👋. Thanks for taking the time to fill out this issue report! This form will create an issue that Elastic's docs team will triage and prioritize. You can also open a PR instead.
+        Hi 👋. Thanks for taking the time to fill out this issue report!
+        Use this form only for issues with Elastic documentation.
+        This form is not for product bugs, support requests, or feature requests.
+        If the product is not behaving as expected and the docs are accurate, please use the appropriate product or support channel instead — your request will be routed faster that way.
+        This form will create an issue that Elastic's docs team will triage and prioritize.
+        You can also [open a PR](https://elastic.co/docs/contribute-docs/syntax-quick-reference) instead.
+  - type: checkboxes
+    id: docs-only
+    attributes:
+      label: Before you submit
+      description: Confirm that this request is about the documentation itself.
+      options:
+        - label: This issue is about a documentation page, flow, or piece of content.
+          required: true
   - type: dropdown
     attributes:
       label: Type of issue
@@ -20,15 +33,15 @@ body:
   - type: input
     id: link
     attributes:
-      label: What documentation page is affected
-      description: Include a link to the page where you're seeing the problem.
+      label: What documentation page or section is affected
+      description: Include the URL for the page where you are seeing the problem.
     validations:
       required: true
   - type: textarea
     id: related
     attributes:
       label: What happened?
-      description: Describe the issue you're experiencing. Screenshots are valuable too!
+      description: Describe the documentation problem you are seeing. Screenshots are helpful too.
     validations:
       required: true
   - type: textarea

@@ -13,7 +13,7 @@ products:
 # Kafka output [kafka-output]
 
 
-The Kafka output sends events to Apache Kafka.
+The Kafka output sends events to Apache Kafka. Starting in 9.4.0, the Kafka client uses franz-go instead of Sarama, and some options are no longer configurable.
 
 **Compatibility:** This output can connect to Kafka version 0.8.2.0 and later. Older versions might work as well, but are not supported.
 
@@ -279,20 +279,32 @@ You can specify these various other options in the `kafka-output` section of the
 
     **Default:** `10` (seconds)
 
-`bulk_flush_frequency` $$$kafka-bulk_flush_frequency-setting$$$
+`bulk_flush_frequency` $$$kafka-bulk_flush_frequency-setting$$$ {applies_to}`stack: removed 9.4.0+`
 :   (int) Duration to wait before sending bulk Kafka request. `0` is no delay.
 
     **Default:** `0`
+    
+    :::{note}
+    :applies_to: stack: ga 9.4.0+
+    Starting in 9.4.0, the Kafka client uses franz-go, so `bulk_flush_frequency` no longer applies.
+    :::
 
 `bulk_max_size` $$$kafka-bulk_max_size-setting$$$
 :   (int) The maximum number of events to bulk in a single Kafka request.
 
     **Default:** `2048`
 
-`channel_buffer_size` $$$kafka-channel_buffer_size-setting$$$
+`channel_buffer_size` $$$kafka-channel_buffer_size-setting$$$ {applies_to}`stack: removed 9.4.0+`
 :   (int) Per Kafka broker number of messages buffered in output pipeline.
 
     **Default:** `256`
+
+    :::{note}
+    :applies_to: stack: ga 9.4.0+
+    Starting in 9.4.0, the Kafka client uses franz-go, so `channel_buffer_size` no longer applies.
+    :::
+
+    
 
 `codec` $$$kafka-codec-setting$$$
 :   Output codec configuration. You can specify either the `json` or `format` codec. By default the `json` codec is used.
@@ -337,16 +349,22 @@ You can specify these various other options in the `kafka-output` section of the
 
 `metadata` $$$kafka-metadata-setting$$$
 :   Kafka metadata update settings. The metadata contains information about brokers, topics, partition, and active leaders to use for publishing.
+
     `refresh_frequency`
     :   Metadata refresh interval. Defaults to 10 minutes.
 
-    `full`
+    :::{note}
+    :applies_to: stack: ga 9.4.0+
+    Starting in 9.4.0, the Kafka client uses franz-go, so the `full`, `retry.max`, and `retry.backoff` metadata options no longer apply.
+    :::
+
+    `full` {applies_to}`stack: removed 9.4+`
     :   Strategy to use when fetching metadata. When this option is `true`, the client will maintain a full set of metadata for all the available topics. When set to `false` it will only refresh the metadata for the configured topics. The default is false.
 
-    `retry.max`
+    `retry.max` {applies_to}`stack: removed 9.4+`
     :   Total number of metadata update retries. The default is 3.
 
-    `retry.backoff`
+    `retry.backoff` {applies_to}`stack: removed 9.4+`
     :   Waiting time between retries. The default is 250ms.
 
 `required_acks` $$$kafka-required_acks-setting$$$

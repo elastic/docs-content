@@ -74,7 +74,7 @@ To obfuscate the passwords stored in the request body, you can use a series of [
 ### Create a pipeline [_create_a_pipeline]
 
 ::::{tip}
-This tutorial uses the [Ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest), but it’s also possible to create a pipeline using the UI. Open the **Ingest Pipelines** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create pipeline** → **New pipeline**.
+This tutorial uses the [Ingest APIs]({{es-apis}}group/endpoint-ingest), but it’s also possible to create a pipeline using the UI. Open the **Ingest Pipelines** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create pipeline** → **New pipeline**.
 ::::
 
 To start, create a pipeline with a simple description and an empty array of processors:
@@ -150,7 +150,7 @@ Finally, use the [remove processor](elasticsearch://reference/enrich-processor/r
 
 #### Register the pipeline [_register_the_pipeline]
 
-Then put it all together, and use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to register the new pipeline in {{es}}. Name the pipeline `apm_redacted_body_password`:
+Then put it all together, and use the [create or update pipeline API]({{es-apis}}operation/operation-ingest-put-pipeline) to register the new pipeline in {{es}}. Name the pipeline `apm_redacted_body_password`:
 
 ```console
 PUT _ingest/pipeline/apm_redacted_body_password
@@ -193,7 +193,7 @@ PUT _ingest/pipeline/apm_redacted_body_password
 
 ### Test the pipeline [_test_the_pipeline]
 
-Prior to enabling this new pipeline, you can test it with the [simulate pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate). This API allows you to run multiple documents through a pipeline to ensure it is working correctly.
+Prior to enabling this new pipeline, you can test it with the [simulate pipeline API]({{es-apis}}operation/operation-ingest-simulate). This API allows you to run multiple documents through a pipeline to ensure it is working correctly.
 
 The request below simulates running three different documents through the pipeline:
 
@@ -302,7 +302,7 @@ The final step in this process is to call the newly created `apm_redacted_body_p
 
 To match a custom ingest pipeline with a data stream, follow the `<type>-<dataset>@custom` template, or replace `-namespace` with `@custom` in the table above. For example, to target application traces, you’d create a pipeline named `traces-apm@custom`.
 
-Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to register the new pipeline in {{es}}. Name the pipeline `traces-apm@custom`:
+Use the [create or update pipeline API]({{es-apis}}operation/operation-ingest-put-pipeline) to register the new pipeline in {{es}}. Name the pipeline `traces-apm@custom`:
 
 ```console
 PUT _ingest/pipeline/traces-apm@custom

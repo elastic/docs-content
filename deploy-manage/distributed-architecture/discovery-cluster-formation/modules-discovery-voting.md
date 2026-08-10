@@ -46,7 +46,7 @@ It is not so straightforward to automatically remove nodes from the voting confi
 If `cluster.auto_shrink_voting_configuration` is set to `true` (which is the default and recommended value) and there are at least three master-eligible nodes in the cluster, {{es}} remains capable of processing cluster state updates as long as all but one of its master-eligible nodes are healthy.
 ::::
 
-There are situations in which {{es}} might tolerate the loss of multiple nodes, but this is not guaranteed under all sequences of failures. If the `cluster.auto_shrink_voting_configuration` setting is `false`, you must remove departed nodes from the voting configuration manually. Use the [voting exclusions API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-post-voting-config-exclusions) to achieve the desired level of resilience.
+There are situations in which {{es}} might tolerate the loss of multiple nodes, but this is not guaranteed under all sequences of failures. If the `cluster.auto_shrink_voting_configuration` setting is `false`, you must remove departed nodes from the voting configuration manually. Use the [voting exclusions API]({{es-apis}}operation/operation-cluster-post-voting-config-exclusions) to achieve the desired level of resilience.
 
 No matter how it is configured, {{es}} will not suffer from a "split-brain" inconsistency. The `cluster.auto_shrink_voting_configuration` setting affects only its availability in the event of the failure of some of its nodes and the administrative tasks that must be performed as nodes join and leave the cluster.
 

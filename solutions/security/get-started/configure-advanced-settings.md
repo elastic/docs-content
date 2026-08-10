@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/advanced-settings.html
   - https://www.elastic.co/guide/en/serverless/current/security-advanced-settings.html
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -25,8 +25,9 @@ The advanced settings control the behavior of the {{security-app}}, such as:
 * The default {{elastic-sec}} pages refresh time
 * Which IP reputation links appear on [IP detail](/solutions/security/advanced-entity-analytics/network-page.md) pages
 * Whether cross-cluster search (CCS) privilege warnings are displayed
-* Whether related integrations are displayed on the Rules page tables
+* Whether related integrations are displayed on the **{{siem-rules-ui}}** page tables
 * The options provided in the alert tag menu
+* The maximum number of cases the Cases connector can open each time a detection rule runs 
 
 ::::{admonition} Requirements
 Your role must have the appropriate privileges to change advanced settings:
@@ -133,6 +134,50 @@ serverless: removed
 ```
 Turn on the `securitySolution:enableGraphVisualization` setting to integrate the GraphViz visualization into the Alert and Event flyouts for supported event types. When enabled, it appears in the **Visualization** section of the flyout and can be viewed in full-screen mode.
 
+## Enable alerts and attacks alignment [enable-alerts-and-attacks-alignment]
+```{applies_to}
+stack: preview =9.4, ga 9.5+
+serverless:
+  security: ga
+```
+
+The [Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) is a single place to triage Attack Discovery findings alongside their related alerts, next to **Alerts**.
+
+The **Enable alerts and attacks alignment** setting (`securitySolution:enableAlertsAndAttacksAlignment`) controls whether **Attacks** appears in the {{security-app}} navigation. The setting is on by default in {{stack}} 9.5 and off by default in {{stack}} 9.4.
+
+:::{note}
+:applies_to: {"stack": "ga 9.5+", "serverless": {"security": "ga"}}
+On the Elastic AI SOC Engine (EASE) tier, the **Attacks** view is unavailable. Use the dedicated [Attack Discovery page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md) instead.
+:::
+
+## Enable Attack Discovery Workflows [enable-attack-discovery-workflows]
+```{applies_to}
+stack: ga 9.5+
+serverless:
+  security: ga
+```
+Turn on the **Attack Discovery Workflows** advanced setting (`securitySolution:enableAttackDiscoveryWorkflows`) to enable Attack Discovery workflows for the space. When enabled, Attack Discovery uses workflows to collect alerts and run analysis. This turns on flexible alert retrieval on the Attacks view, workflow and {{agent-builder}} triggers, and AI-assisted query editing and troubleshooting. This setting is turned off by default.
+
+When the setting is on, you can:
+
+* Use the **Attack discovery settings** flyout on the [Attacks view](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md) to configure alert retrieval, generation, and validation
+* Run Attack Discovery [from a workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md) or [from {{agent-builder}}](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md)
+* Troubleshoot failed runs with AI from the [**Generations**](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md#attacks-view-generations) control center
+
+Manual, scheduled, and workflow-triggered runs open a new {{agent-builder}} conversation you can view later. Runs started from {{agent-builder}} chat stay in the current conversation.
+
+### How Attack Discovery Workflows affects existing schedules
+
+After you turn the setting on, existing schedules keep their previous configuration until you edit and save them.
+
+If you turn the setting off:
+
+* Schedules that already used the workflow settings stop generating and temporarily disappear from the schedule list. Turn the setting on again to restore them.
+* Manual runs from the Attacks view always follow the setting's current value.
+
+For how to edit schedules after you enable the setting, refer to [Schedule runs from the Attacks view](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md).
+
+
 ## Enable asset inventory
 ```{applies_to}
 stack: preview 9.2
@@ -148,6 +193,15 @@ serverless: preview
 ```
 
 Turn on the `securitySolution:enableCloudConnector` setting to enable Cloud Connector deployment for Elastic's CSPM and Asset Inventory integrations.
+
+## Turn rule changes history on or off [enable-rule-changes-history]
+```{applies_to}
+stack: ga 9.5
+```
+
+The `securitySolution:enableRuleChangesHistory` setting controls whether you can view a chronological [history of changes](/solutions/security/detect-and-alert/view-rule-changes-history.md) made to a detection rule, compare revisions, and restore a rule to a previous state. This setting is turned on by default. You can turn the setting off if you don't need the feature. If you turn it off and later turn it back on, any gap in rule revisions from while it was off isn't filled.
+
+Capturing rule change history might add a small amount of overhead when rules are created or updated.
 
 ## Exclude cold and frozen tier data from analyzer queries [exclude-cold-frozen-tiers]
 
@@ -188,7 +242,7 @@ The `securitySolution:ipReputationLinks` field determines which IP reputation si
 
 **Example**
 
-Adds a link to https://www.dnschecker.org on **IP detail** pages:
+Adds a link to [dnschecker.org](https://www.dnschecker.org) on **IP detail** pages:
 
 ```json
 [
@@ -201,6 +255,11 @@ Adds a link to https://www.dnschecker.org on **IP detail** pages:
 
 ## Configure cross-cluster search privilege warnings [enable-ccs-warning]
 
+```yaml {applies_to}
+stack: ga 9.0-9.3, removed 9.4
+serverless: removed
+```
+
 Each time a detection rule runs using a remote cross-cluster search (CCS) index pattern, it will return a warning saying that the rule may not have the required `read` privileges to the remote index. Because privileges cannot be checked across remote indices, this warning displays even when the rule actually does have `read` privileges to the remote index.
 
 If you’ve ensured that your detection rules have the required privileges across your remote indices, you can use the `securitySolution:enableCcsWarning` setting to disable this warning and reduce noise.
@@ -211,11 +270,11 @@ If you’ve ensured that your detection rules have the required privileges acros
 stack: ga 9.2
 ```
 
-To control whether alert suppression continues after you close a supressed alert during an [active suppression window](/solutions/security/detect-and-alert/alert-suppression.md#security-alert-suppression-impact-close-alerts), configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting. This setting lets you choose whether suppression continues or restarts when the next qualifying alert meets the suppression criteria. The default selection is **Restart suppression**.
+To control whether alert suppression continues after you close a suppressed alert during an [active suppression window](/solutions/security/detect-and-alert/alert-suppression.md#security-alert-suppression-impact-close-alerts), configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting. This setting lets you choose whether suppression continues or restarts when the next qualifying alert meets the suppression criteria. The default selection is **Restart suppression**.
 
-## Show/hide related integrations in Rules page tables [show-related-integrations]
+## Show/hide related integrations on the {{siem-rules-ui}} page [show-related-integrations]
 
-By default, Elastic prebuilt rules in the **Rules** and **Rule Monitoring** tables include a badge showing how many related integrations have been installed. Turn off `securitySolution:showRelatedIntegrations` to hide this in the rules tables (related integrations will still appear on rule details pages).
+By default, Elastic prebuilt rules on the **Installed Rules** and **Rule Monitoring** tabs include a badge showing how many related integrations have been installed. Turn off `securitySolution:showRelatedIntegrations` to hide this in the rules tables (related integrations will still appear on rule details pages).
 
 
 ## Manage alert tag options [manage-alert-tags]
@@ -223,17 +282,31 @@ By default, Elastic prebuilt rules in the **Rules** and **Rule Monitoring** tabl
 The `securitySolution:alertTags` field determines which options display in the alert tag menu. The default alert tag options are `Duplicate`, `False Positive`, and `Further investigation required`. You can update the alert tag menu by editing these options or adding more. To learn more about using alert tags, refer to [Apply and filter alert tags](/solutions/security/detect-and-alert/manage-detection-alerts.md#apply-alert-tags).
 
 
+## Maximum cases created per rule run [max-cases-cases-connector]
+
+```yaml {applies_to}
+stack: ga 9.4
+```
+
+The `cases:maxOpenCasesPerRuleRun` advanced setting sets the upper limit for how many new cases the [Cases connector](/deploy-manage/manage-connectors.md) can open during a single detection rule run. It applies when you add a Cases action to the rule. The default value is 20. The minimum accepted value is 1, the maximum is 1000.
+
+For example, if one rule run creates many alerts and you want a case opened for each alert, you can increase the limit for the `cases:maxOpenCasesPerRuleRun` setting to avoid meeting the per-run limit. Pick a number that works for your team and cluster, but be aware that opening a large batch of cases in a single run might increase load on {{kib}} and {{es}}. 
+
+::::{note}
+The `cases:maxOpenCasesPerRuleRun` setting does not apply to [Attack Discovery](/solutions/security/ai/attack-discovery/index.md). Attack Discovery continues to use its own case-creation limit (20).
+::::
+
 ## Add custom alert closing reasons [custom-alert-closing-reasons]
 ```yaml {applies_to}
 stack: ga 9.4+
 serverless: ga
 ```
 
-The `securitySolution:alertCloseReasons` field determines which custom options appear in the closing reason menu when you close an alert. By default, no custom reasons are defined. You can add your own closing reasons to supplement the predefined options (`Duplicate`, `False positive`, `True positive`, `Benign positive`, and `Other`). Custom reasons must be unique and cannot duplicate the predefined options. To learn more about closing alerts, refer to [Change an alert's status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status).
+The `securitySolution:alertCloseReasons` field determines which custom options appear in the closing reason menu when you close an alert. By default, no custom reasons are defined. You can add your own closing reasons to supplement the predefined options (`Duplicate`, `False positive`, `True positive`, `Benign positive`, and `Other`). Custom reasons must be unique and cannot duplicate the predefined options. To learn more about closing alerts, refer to [Change an alert's status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status) and [Set alert closing reason when closing a case](/solutions/security/investigate/security-cases.md#cases-set-closing-reason).
 
 ## Set the maximum notes limit for alerts and events [max-notes-alerts-events]
 ```yaml {applies_to}
-stack: removed 9.1
+stack: ga 9.0, removed 9.1
 serverless: removed
 ```
 
@@ -279,7 +352,7 @@ stack: removed 9.3, ga 9.1
 serverless: removed
 ```
 
-The `securitySolution:enablePrivilegedUserMonitoring` setting allows you to access the [Entity analytics overview page](/solutions/security/advanced-entity-analytics/overview.md) and the [privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) feature. This setting is turned off by default.
+The `securitySolution:enablePrivilegedUserMonitoring` setting allows you to access the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) and the [privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) feature. This setting is turned off by default.
 
 ## Turn off {{esql}}-based risk scoring
 ```yaml {applies_to}

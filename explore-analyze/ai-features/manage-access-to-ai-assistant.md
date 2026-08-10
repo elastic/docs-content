@@ -11,42 +11,56 @@ products:
 
 # Manage access to AI features
 
-The GenAI Settings page lets you control access to AI-powered features in the following ways:
-
-- Manage which AI connectors are available in your environment. 
-- Enable or disable AI Assistant and other AI-powered features in your environment.
-- {applies_to}`stack: ga 9.2+` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
+The **GenAI Settings** and **Feature Settings** pages let you control the list of models available for each AI feature, turn on token usage tracking, install documentation, and more.
 
 ## Requirements
 
-- To access the **GenAI Settings** page, you need the `Actions and connectors: all` or `Actions and connectors: read` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-- To modify the settings on this page, you need the `Advanced Settings: all` {{kib}} privilege.
+- To access **GenAI Settings**, you need the `Actions and connectors: all` or `Actions and connectors: read` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). 
+- To access **Feature Settings**, you need the `Inference Endpoints: all` and `Advanced Settings: read` {{kib}} privileges.
 
-## The GenAI Settings page
+To modify the settings, you also need the `Advanced Settings: all` {{kib}} privilege.
 
-To manage these settings, go to the **GenAI Settings** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+## GenAI settings
 
-::::{applies-switch}
+Go to the **GenAI Settings** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-:::{applies-item} serverless: ga
+:::::{applies-switch}
 
-![GenAI Settings page for Serverless](/explore-analyze/images/ai-assistant-settings-page-serverless.png "")
-
-The **GenAI Settings** page has the following settings:
-
-- **Default AI Connector**: Click **Manage connectors** to open the **Connectors** page, where you can create or delete AI connectors. To update these settings, you need the `Actions and connectors: all` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-- **AI feature visibility**: Click **Go to Permissions tab** to access the active {{kib}} space's settings page, where you can specify which features each [user role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) has access to in your environment. This includes AI-powered features. 
-
+::::{applies-item} serverless: ga
+:::{image} /explore-analyze/images/genai-settings.png
+:alt: GenAI Settings for Serverless
+:screenshot:
 :::
 
-:::{applies-item} stack: ga 9.2+
+The **GenAI Settings** page has the following settings:
 
-![GenAI Settings page for Stack](/explore-analyze/images/ai-assistant-settings-page.png "")
+- **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+- **Token usage tracking**: Turn on tracking of token usage by AI features.
+- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses.
+::::
+::::{applies-item} stack: ga 9.4+
 
+:::{image} /explore-analyze/images/genai-settings-stack.png
+:alt: GenAI Settings for Stack in 9.4
+:screenshot:
+:::
 
 The **GenAI Settings** page has the following settings:
 
-- **Default AI Connector**: Use this setting to specify which connector is selected by default when you access AI-powered features. Default setting: **No default connector**.
+- **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features.
+- **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+- **Token usage tracking**: {applies_to}`stack: ga 9.5` Turn on tracking of token usage by AI features.
+- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses.
+::::
+::::{applies-item} stack: ga 9.2-9.3
+
+:::{image} /explore-analyze/images/ai-assistant-settings-page.png
+:alt: GenAI Settings page for Stack in 9.2 and 9.3
+:::
+
+The **GenAI Settings** page has the following settings:
+
+- **Default AI Connector**: Use this setting to specify which connector is selected by default when you access AI-powered features. For available connectors and tested models, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Default setting: **No default connector**.
   - If **No default connector** is selected, AI-powered features will default to the connector that was most recently used in your environment.
   - If an **Elastic Managed LLM** or a custom LLM connector is selected, AI-powered features will default to that connector regardless of which connector was used most recently in your environment.
 - **Disallow all other connectors**: When this setting is disabled, whenever you use an AI-powered feature you can select which connector should power it. Enable it to prevent connectors other than the default connector from being used in your space. Default setting: disabled.
@@ -58,7 +72,59 @@ The **GenAI Settings** page has the following settings:
   - **Security AI Assistant in other apps**: The Security AI Assistant appears throughout {{kib}} regardless of solution. The {{obs-ai-assistant}} does not appear anywhere.
   - **Hide all assistants**: Turns off AI Assistant throughout {{kib}}.
 
+::::
+:::::
+
+### Track token usage across AI features
+```{applies_to}
+stack: ga 9.5
+serverless: ga
+```
+
+**Token usage tracking** is off by default. When you turn it on, Elastic records the token counts for each completed request that the AI features in {{kib}} send to an LLM, and makes a managed dashboard available to monitor them.
+
+To start tracking, go to **GenAI Settings** and turn on **Token usage tracking**.
+
+For each request, Elastic records the number of prompt, completion, and total tokens, along with the model, connector, and the feature that made the request.
+
+After you turn on tracking, the managed **[Elastic] Inference Token Usage** dashboard becomes available in the **Dashboards** app. Open it to review usage. It summarizes:
+
+- Total, prompt, and completion tokens, and the total number of requests.
+- Token usage over time, broken down by feature.
+- Token usage by feature and by model.
+
+:::{image} /explore-analyze/images/inference-token-usage-dashboard.png
+:alt: Inference Token Usage dashboard showing token totals, request count, usage over time by feature, and token usage by feature and by model
+:screenshot:
 :::
 
-::::
+:::{tip}
+If you open the dashboard right after turning on tracking and its breakdown panels show an error or no data, reload {{kib}} to refresh the dashboard's fields.
+:::
 
+For per-response token counts and billing details specific to {{agent-builder}}, refer to [Monitor usage and costs for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/monitor-usage.md).
+
+## Feature settings
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+Elastic's AI-powered features can use [EIS](/explore-analyze/elastic-inference/eis.md) and [External Inference](/explore-analyze/elastic-inference/external.md) models, as well as your custom [Generative AI connectors](kibana://reference/connectors-kibana/gen-ai-connectors.md).
+
+To control the models used by each feature, go to **Feature Settings** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+:::{image} /explore-analyze/images/feature-settings.png
+:alt: Feature Settings app
+:screenshot:
+:::
+
+Available actions include:
+
+- Choose a default model.
+- Add a model to a feature's list of assigned models.
+- Copy the list of assigned models across multiple features.
+- Reset all settings to their defaults.
+- Turn off feature-specific assigned models, which means all features can use only the default model.
+
+To change the order of precedence of models for each feature, select and drag items in the list.

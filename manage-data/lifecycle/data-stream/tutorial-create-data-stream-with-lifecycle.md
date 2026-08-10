@@ -13,19 +13,20 @@ products:
 Follow these steps to create an {{es}} data stream with a configured lifecycle. Learn how to set the retention period for your data and to retrieve the lifecycle configuration details.
 
 1. [Create an index template](#create-index-template-with-lifecycle)
-2. [Create a data stream](#create-data-stream-with-lifecycle)
-3. [Retrieve lifecycle information](#retrieve-lifecycle-information)
-
+1. [Create a data stream](#create-data-stream-with-lifecycle)
+1. [Retrieve lifecycle information](#retrieve-lifecycle-information)
 
 ## Create an index template [create-index-template-with-lifecycle]
 
-A data stream requires a matching [index template](../../data-store/templates.md). You can configure the data stream lifecycle by setting the `lifecycle` field in the index template the same as you do for mappings and index settings. You can define an index template that sets a lifecycle as follows:
+A data stream requires a matching [index template](../../data-store/templates.md).
+You can configure the data stream lifecycle by setting the `lifecycle` field in the index template the same as you do for mappings and index settings.
+You can define an index template that sets a lifecycle as follows:
 
 * Include the `data_stream` object to enable data streams.
 * Define the lifecycle in the template section or include a composable template that defines the lifecycle.
 * Use a priority higher than `200` to avoid collisions with built-in templates. See [Avoid index pattern collisions](../../data-store/templates.md#avoid-index-pattern-collisions).
 
-You can use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template).
+You can use the [create index template API]({{es-apis}}operation/operation-indices-put-index-template).
 
 ```console
 PUT _index_template/my-index-template
@@ -43,19 +44,46 @@ PUT _index_template/my-index-template
   }
 }
 ```
+
 1. In this case the index template will be applied to a data stream named `my-data-stream-test`. You can optionally use a wildcard (`*`) in the index pattern to match all data streams created (either manually or using an indexing request) that have a name matching the specified pattern.
+
+:::{tip}
+:applies_to: {"stack": "ga 9.5", "serverless": "unavailable"}
+
+To move older backing indices to the frozen tier automatically, include `frozen_after` in the lifecycle you put on the template. For requirements and how conversion works, refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md). For example:
+
+```console
+PUT _index_template/my-index-template
+{
+  "index_patterns": ["my-data-stream-test"],
+  "data_stream": { },
+  "priority": 500,
+  "template": {
+    "lifecycle": {
+      "data_retention": "365d",
+      "frozen_after": "30d"
+    }
+  },
+  "_meta": {
+    "description": "Template with data stream lifecycle and frozen transitions"
+  }
+}
+```
+
+Confirm that a default snapshot repository is registered before indexing data. Refer to [Manage snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md).
+:::
 
 ## Create a data stream [create-data-stream-with-lifecycle]
 
 You can create a data stream in these ways:
 
-* By manually creating the stream using the [create data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream). The stream’s name must still match one of your template’s index patterns.
+* By manually creating the stream using the [create data stream API]({{es-apis}}operation/operation-indices-create-data-stream). The stream's name must still match one of your template's index patterns.
 
     ```console
     PUT _data_stream/my-data-stream-test
     ```
 
-* By [indexing requests](../../data-store/data-streams/use-data-stream.md#add-documents-to-a-data-stream) that target the stream’s name. This name must match one of your index template’s index patterns.
+* By [indexing requests](../../data-store/data-streams/use-data-stream.md#add-documents-to-a-data-stream) that target the stream's name. This name must match one of your index template's index patterns.
 
     ```console
     PUT my-data-stream-test/_bulk
@@ -70,11 +98,9 @@ You can create a data stream in these ways:
     1. From the upper right, select **Create classic stream**.
     1. Select the index template you want to use, name your stream, and select **Create**.
 
-
-
 ## Retrieve lifecycle information [retrieve-lifecycle-information]
 
-You can use the [get data stream lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-lifecycle) to see the data stream lifecycle of your data stream and the [explain data stream lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle) to see the exact state of each backing index.
+You can use the [get data stream lifecycle API]({{es-apis}}operation/operation-indices-get-data-lifecycle) to see the data stream lifecycle of your data stream and the [explain data stream lifecycle API]({{es-apis}}operation/operation-indices-explain-data-lifecycle) to see the exact state of each backing index.
 
 ```console
 GET _data_stream/my-data-stream-test/_lifecycle
@@ -105,7 +131,7 @@ The result will look like this:
 4. The retention period that will be applied by the data stream lifecycle. This means that the data in this data stream will be kept at least for 7 days. After that {{es}} can delete it at its own discretion.
 
 
-If you want to see more information about how the data stream lifecycle is applied on individual backing indices use the [explain data stream lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle):
+If you want to see more information about how the data stream lifecycle is applied on individual backing indices use the [explain data stream lifecycle API]({{es-apis}}operation/operation-indices-explain-data-lifecycle):
 
 ```console
 GET .ds-my-data-stream-test/_lifecycle/explain
@@ -138,5 +164,3 @@ The result will look like this:
 2. If it is managed by the built-in data stream lifecycle.
 3. Time since the index was created.
 4. The lifecycle configuration that is applied on this backing index.
-
-

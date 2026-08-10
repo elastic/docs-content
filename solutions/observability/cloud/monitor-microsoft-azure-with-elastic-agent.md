@@ -13,7 +13,7 @@ products:
 ::::{note}
 **New to Elastic?** Follow the steps in our [getting started guide](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md) instead of the steps described here. Return to this tutorial after you’ve learned the basics.
 
-**Using the native Azure integration from the marketplace?** Refer to [Monitor Microsoft Azure with the Azure Native ISV Service](monitor-microsoft-azure-with-azure-native-isv-service.md).
+**Using the native Azure integration from the marketplace?** Refer to [Monitor Microsoft Azure with the Azure Native Service](monitor-microsoft-azure-with-azure-native-isv-service.md).
 
 ::::
 

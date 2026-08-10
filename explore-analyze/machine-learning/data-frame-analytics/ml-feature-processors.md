@@ -15,7 +15,7 @@ products:
 
 The feature processors that you defined are the part of the analytics process, when data comes through the aggregation or pipeline, the processors run against the new data. The resulting features are ephemeral; they are not stored in the index. This provides a mechanism to create features that can be used at search and ingest time and don’t take up space in the index.
 
-Refer to the `feature_processors` property of the [Create {{dfanalytics-job}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-data-frame-analytics) to learn more.
+Refer to the `feature_processors` property of the [Create {{dfanalytics-job}} API]({{es-apis}}operation/operation-ml-put-data-frame-analytics) to learn more.
 
 Available feature processors:
 

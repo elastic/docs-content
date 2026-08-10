@@ -1,5 +1,6 @@
 ---
 navigation_title: Deployment options
+description: "Overview of Elastic deployment options including Elastic Cloud, self-managed, and serverless, to help choose the infrastructure model that fits your needs."
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-deploy.html
 products:

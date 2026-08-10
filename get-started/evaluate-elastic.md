@@ -7,7 +7,7 @@ products:
 applies_to:
   serverless:
   deployment:
-    ess: ga
+    ech: ga
 description: Build a successful proof of concept during your Elastic trial. Learn how to define success criteria, choose the right deployment and use case, measure results, and prepare for production.
 ---
 
@@ -149,7 +149,7 @@ With your trial goal defined, follow this framework to build a PoC that demonstr
 
 ### Ingest real data
 
-To build a meaningful PoC, you need real-world data and not just sample datasets.
+To build a meaningful PoC, you need real-world data and not sample datasets.
 
 #### Why real data matters
 
@@ -211,7 +211,7 @@ Once data is flowing, use the trial to validate the features that will determine
 
 ### Build your PoC deliverables
 
-A strong PoC is essential for a good trial. Keep it simple but meaningful.
+A strong PoC is essential for a good trial. Keep it basic but meaningful.
 
 Your PoC should:
 
@@ -320,6 +320,11 @@ When you're ready to move beyond your trial into production:
 2. Review [license documentation](/deploy-manage/license.md) to choose the right tier, and [billing documentation](/deploy-manage/cloud-organization/billing.md) to understand costs.
 3. If moving from trial to production, plan data migration and configuration transfer. Use [Snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md) to preserve your work.
 4. [Contact Elastic Sales](https://www.elastic.co/contact) to discuss your trial results and production requirements.
+
+For deployment-level sizing and platform selection:
+
+- **Hosted deployments:** Compare storage, RAM, and vCPU trade-offs before choosing a profile. Refer to [Hardware profiles](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md) and [instance configuration hardware reference](cloud://reference/cloud-hosted/hardware.md).
+- **{{serverless-short}}:** Review [{{serverless-short}} billing dimensions](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) and use the [{{ech}} and {{serverless-short}} comparison](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md) to choose the best deployment model for your workload.
 
 To retain your {{ech}} deployment or {{serverless-short}} project, refer to [Remove trial limitations](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#remove-trial-limitations) and [Maintain access to your trial projects and data](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-happens-at-the-end-of-the-trial).
 

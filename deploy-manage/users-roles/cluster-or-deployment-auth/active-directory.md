@@ -188,7 +188,7 @@ The `active_directory` realm enables you to map Active Directory users to roles 
 You can map Active Directory groups to roles for your users in the following ways:
 
 * Using the role mappings page in {{kib}}.
-* Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).
+* Using the [role mapping API]({{es-apis}}operation/operation-security-put-role-mapping).
 * Using a role mapping file.
 
 For more information, see [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
@@ -263,7 +263,7 @@ When a user is authenticated using an Active Directory realm, the following prop
 | `ldap_dn` | The distinguished name of the user. |
 | `ldap_groups` | The distinguished name of each of the groups that were                        resolved for the user (regardless of whether those                        groups were mapped to a role). |
 
-This metadata is returned in the [authenticate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate) and can be used with [templated queries](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#templating-role-query) in roles.
+This metadata is returned in the [authenticate API]({{es-apis}}operation/operation-security-authenticate) and can be used with [templated queries](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#templating-role-query) in roles.
 
 Additional metadata can be extracted from the Active Directory server by configuring the `metadata` setting on the Active Directory realm.
 

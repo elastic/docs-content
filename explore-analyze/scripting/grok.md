@@ -90,7 +90,7 @@ PUT /my-index/
 }
 ```
 
-Next, use the [bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to index some log data into `my-index`.
+Next, use the [bulk API]({{es-apis}}operation/operation-bulk) to index some log data into `my-index`.
 
 ```console
 POST /my-index/_bulk?refresh

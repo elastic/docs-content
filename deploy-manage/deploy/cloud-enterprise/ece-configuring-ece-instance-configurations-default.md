@@ -27,3 +27,6 @@ products:
 | `master` | Master | 1 GB | 1, 2, 4, 8, 16, 32, 64 | 4 |
 | `ml` | Machine Learning | 1 GB | 1, 2, 4, 8, 16, 32, 64 | 4 |
 
+::::{note}
+The default 1 GB {{kib}} size is sufficient for core functionality. For Platinum and Enterprise users, we recommend at least 2 GB of RAM for each {{kib}} instance. With less than 2 GB of RAM, you can face service interruptions when using features such as Security detection rules, reporting, workflows, and Agent Builder.
+::::

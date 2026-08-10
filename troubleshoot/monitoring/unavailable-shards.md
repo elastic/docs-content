@@ -55,7 +55,7 @@ You can retrieve information about the status of your cluster, indices, and shar
 
 #### Check cluster health [ec-check-cluster-health]
 
-Use the [Cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health):
+Use the [Cluster health API]({{es-apis}}operation/operation-cluster-health):
 
 ```json
 GET /_cluster/health/
@@ -86,7 +86,7 @@ This command returns the cluster status (green, yellow, or red) and shows the nu
 
 #### Check unhealthy indices [ec-check-unhealthy-indices]
 
-Use the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices) to get the status of individual indices. Specify the `health` parameter to limit the results to a particular status, for example `?v&health=red` or `?v&health=yellow`.
+Use the [cat indices API]({{es-apis}}operation/operation-cat-indices) to get the status of individual indices. Specify the `health` parameter to limit the results to a particular status, for example `?v&health=red` or `?v&health=yellow`.
 
 ```json
 GET /_cat/indices?v&health=red
@@ -104,7 +104,7 @@ For more information, refer to [Fix a red or yellow cluster status](/troubleshoo
 
 #### Check which shards are unassigned [ec-check-which-unassigned-shards]
 
-Use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards):
+Use the [cat shards API]({{es-apis}}operation/operation-cat-shards):
 
 ```json
 GET /_cat/shards/?v
@@ -121,7 +121,7 @@ filebeat-7.9.3-2022.01.07-000015  2   r   UNASSIGNED
 
 #### Check why shards are unassigned [ec-check-why-unassigned-shards]
 
-To understand why shards are unassigned, run the [Cluster allocation explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain).
+To understand why shards are unassigned, run the [Cluster allocation explain API]({{es-apis}}operation/operation-cluster-allocation-explain).
 
 Running the API call `GET _cluster/allocation/explain` retrieves an allocation explanation for unassigned primary shards, or replica shards.
 
@@ -245,7 +245,7 @@ During the routine system maintenance performed by Elastic, it might happen that
 
 Configure an [highly available cluster](/deploy-manage/production-guidance.md) to keep your service running. Also, consider taking the following actions to bring your deployment back to health and recover your data from the snapshot.
 
-* [Close the red indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-close)
+* [Close the red indices]({{es-apis}}operation/operation-indices-close)
 * [Restore the indices](/deploy-manage/tools/snapshot-and-restore.md) from the last successful snapshot
 
 For more information, check also [Designing for resilience](/deploy-manage/production-guidance/availability-and-resilience.md).
@@ -270,7 +270,7 @@ When shards cannot be assigned, due to [data tier allocation](/manage-data/lifec
 **Resolutions**
 
 * Make sure nodes are available in each data tier and have sufficient disk space.
-* [Check the index settings](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices) and ensure shards can be allocated to the expected data tier.
+* [Check the index settings]({{es-apis}}group/endpoint-indices) and ensure shards can be allocated to the expected data tier.
 * Check the [ILM policy](/manage-data/lifecycle/index-lifecycle-management.md) and check for issues with the [allocate action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md).
 * Inspect the [index templates](/manage-data/data-store/templates.md) and check for issues with the index settings.
 
@@ -284,7 +284,7 @@ Unassigned replica shards are often caused by there being fewer eligible data no
 **Resolutions**
 
 * Add more [eligible data nodes or more availability zones](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md) to ensure resiliency.
-* Adjust the `number_of_replicas` [setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) for your indices to the number of eligible data nodes -1.
+* Adjust the `number_of_replicas` [setting]({{es-apis}}operation/operation-indices-put-settings) for your indices to the number of eligible data nodes -1.
 
 
 ### A snapshot issue prevents searchable snapshot indices from being allocated [ec-searchable-snapshot-indices-not-allocated]
@@ -318,7 +318,7 @@ The parameter [`cluster.max_shards_per_node`](elasticsearch://reference/elastics
 
 **Resolutions**
 
-Delete unnecessary indices, add more data nodes, and [avoid oversharding](/deploy-manage/production-guidance/optimize-performance/size-shards.md) as too many shards can overwhelm your cluster. If you cannot take these actions, and you’re confident your changes won’t destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) and retry the action. For more details, check [Troubleshoot shard-related errors](/deploy-manage/production-guidance/optimize-performance/size-shards.md#troubleshoot-shard-related-errors).
+Delete unnecessary indices, add more data nodes, and [avoid oversharding](/deploy-manage/production-guidance/optimize-performance/size-shards.md) as too many shards can overwhelm your cluster. If you cannot take these actions, and you’re confident your changes won’t destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings) and retry the action. For more details, check [Troubleshoot shard-related errors](/deploy-manage/production-guidance/optimize-performance/size-shards.md#troubleshoot-shard-related-errors).
 
 
 ### Maximum retry times exceeded [ec-max-retry-exceeded]
@@ -331,4 +331,4 @@ The cluster will attempt to allocate a shard a few times, before giving up and l
 
 **Resolutions**
 
-Run [`POST /_cluster/reroute?retry_failed=true`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-reroute) API to retry. If it still fails, rerun the [Cluster allocation explain](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) API to diagnose the problem.
+Run [`POST /_cluster/reroute?retry_failed=true`]({{es-apis}}operation/operation-cluster-reroute) API to retry. If it still fails, rerun the [Cluster allocation explain]({{es-apis}}operation/operation-cluster-allocation-explain) API to diagnose the problem.

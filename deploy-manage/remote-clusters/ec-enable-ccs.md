@@ -29,7 +29,7 @@ Refer to [Remote clusters and network security](/deploy-manage/remote-clusters.m
 To use CCS or CCR, your deployments must meet the following criteria:
 
 * The local and remote clusters must run on compatible versions of {{es}}. Review the version compatibility table.
-  
+
   :::{include} _snippets/remote-cluster-certificate-compatibility.md
   :::
 

@@ -1,17 +1,20 @@
 ---
-navigation_title: Playground
+navigation_title: Playground (deprecated)
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-playground.html
   - https://www.elastic.co/guide/en/kibana/current/playground.html
 applies_to:
-  stack: preview =9.0, beta 9.1+
-  serverless: beta
+  stack: preview =9.0, beta 9.1-9.3, deprecated 9.4+
+  serverless: deprecated
 products:
   - id: cloud-serverless
   - id: kibana
 ---
 
 # Playground for RAG [playground]
+
+::::{include} /solutions/_snippets/playground-deprecated.md
+::::
 
 Use Playground to combine your Elasticsearch data with the power of large language models (LLMs) for retrieval augmented generation (RAG). The chat interface translates your natural language questions into {{es}} queries, retrieves the most relevant results from your {{es}} documents, and passes those documents to the LLM to generate tailored responses.
 
@@ -140,7 +143,7 @@ There are many options for ingesting data into {{es}}, including:
 
 * The [Elastic crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html) for web content (**NOTE**: Not yet available in *Serverless*)
 * [Elastic connectors](elasticsearch://reference/search-connectors/index.md) for data synced from third-party sources
-* The {{es}} [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) for JSON documents
+* The {{es}} [Bulk API]({{es-apis}}operation/operation-bulk) for JSON documents
 
     ::::{dropdown} Expand for example
     To add a few documents to an index called `books` run the following in Dev Tools Console:
@@ -243,7 +246,7 @@ Click **⟳ Clear chat** to clear chat history and start a new conversation.
 
 ### View and download Python code [playground-getting-started-view-code]
 
-Select {icon}`export` to view the Python code that powers the chat interface. You can integrate it into your own application, modifying as needed. We currently support two implementation options:
+Select {icon}`external` to view the Python code that powers the chat interface. You can integrate it into your own application, modifying as needed. We currently support two implementation options:
 
 * {{es}} Python Client + LLM provider
 * LangChain + LLM provider

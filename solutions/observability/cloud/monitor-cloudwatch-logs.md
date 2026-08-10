@@ -125,7 +125,7 @@ Take note of the log group name for this Lambda function, as you will need it in
 
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Select **Open Kibana**.
-        3. Open the **API keys** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create API key**.If you are using an API key with **Restrict privileges**, make sure to review the Indices privileges to provide at least `auto_configure` and `write` permissions for the indices you will be using with this delivery stream.
+        3. Open the **API keys** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create API key**. If you are using an API key with **Control security privileges** enabled, make sure to review the Indices privileges to provide at least `auto_configure` and `write` permissions for the indices you will be using with this delivery stream.
 
     * **Content encoding**: To reduce the data transfer costs, use GZIP encoding.
     * **Retry duration**: Determines how long Firehose continues retrying the request in the event of an error. A duration between 60 and 300 seconds should be suitable for most use cases.
@@ -227,7 +227,7 @@ The Firehose delivery stream reports:
 ## Step 5: Visualize your logs in {{kib}} [firehose-cloudwatch-step-five]
 
 :::{image} /solutions/images/observability-firehose-cloudwatch-data-stream.png
-:alt: Vizualize logs in Kibana
+:alt: Visualize logs in Kibana
 :::
 
 With the logs streaming to the Elastic stack, you can now visualize them in {{kib}}.

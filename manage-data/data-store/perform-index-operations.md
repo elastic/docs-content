@@ -17,7 +17,7 @@ $$$manage-indices$$$
 Practicing good index management ensures your data is stored efficiently and cost-effectively. In {{kib}}, the **{{index-manage-app}}** page is where you manage storage resources across your cluster, including [indices](/manage-data/data-store/index-basics.md), [data streams](/manage-data/data-store/data-streams.md), [index and component templates](/manage-data/data-store/templates.md), and [enrich policies](/manage-data/ingest/transform-enrich/data-enrichment.md). Index-specific actions are covered in [Index operations reference](/manage-data/data-store/index-operations-reference.md).
 
 :::{tip}
-All operations available on the **{{index-manage-app}}** page can also be performed using the {{es}} REST API. Refer to [Manage data from the command line](/manage-data/data-store/manage-data-from-the-command-line.md) for examples, or browse the [{{es}} index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices) directly.
+All operations available on the **{{index-manage-app}}** page can also be performed using the {{es}} REST API. Refer to [Manage data from the command line](/manage-data/data-store/manage-data-from-the-command-line.md) for examples, or browse the [{{es}} index APIs]({{es-apis}}group/endpoint-indices) directly.
 :::
 
 ## Required permissions [required-permissions]
@@ -28,7 +28,7 @@ The following [security privileges](elasticsearch://reference/elasticsearch/secu
 * The `view_index_metadata` and `manage` index privileges to view a data stream or index's data.
 * The `manage_index_templates` cluster privilege to manage index templates.
 
-{applies_to}`stack: ga` To add these privileges, go to **{{stack-manage-app}} > Security > Roles** or use the [Create or update roles](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) API.
+{applies_to}`stack: ga` To add these privileges, go to **{{stack-manage-app}} > Security > Roles** or use the [Create or update roles]({{es-apis}}operation/operation-security-put-role) API.
 
 
 {applies_to}`serverless: ga` In {{serverless-full}}, permissions are managed through project custom roles instead of **{{stack-manage-app}} > Security > Roles**. To grant access to **{{index-manage-app}}**, configure the required {{es}} and {{kib}} privileges in a custom role. For step-by-step guidance, refer to [{{serverless-short}} project custom roles](/deploy-manage/users-roles/serverless-custom-roles.md).
@@ -56,7 +56,7 @@ To open the **{{index-manage-app}}** page, use the navigation menu or the [globa
 
 * Turn on **Include hidden indices** to view the full set of indices, including backing indices for data streams.
 
-* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow) or a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps).
+* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index]({{es-apis}}operation/operation-ccr-follow) or a [rollup index]({{es-apis}}operation/operation-rollup-get-rollup-index-caps).
 
 * To view and [manage](/manage-data/data-store/data-streams/manage-data-stream.md) your data streams, including backing indices and retention settings, go to the **Data Streams** tab.
 
@@ -82,7 +82,7 @@ To open the **{{index-manage-app}}** page, use the navigation menu or the [globa
 
 * Turn on **Include hidden indices** to view the full set of indices, including backing indices for [data streams](/manage-data/data-store/data-streams.md).
 
-* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow) or a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps).
+* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index]({{es-apis}}operation/operation-ccr-follow) or a [rollup index]({{es-apis}}operation/operation-rollup-get-rollup-index-caps).
 
 * To view and [manage](/manage-data/data-store/data-streams/manage-data-stream.md) your data streams, including backing indices and retention settings, go to the **Data Streams** tab.
 

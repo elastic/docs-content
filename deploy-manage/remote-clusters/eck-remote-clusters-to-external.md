@@ -228,7 +228,7 @@ If the remote cluster is self-managed (or another ECK cluster within the same Ku
 
 ### Using the {{es}} API [using-api]
 
-To add a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
+To add a remote cluster, use the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings). Configure the following fields:
 
 * **Remote cluster alias**: The cluster alias must match the `<remote-cluster-name>` you configured when [adding the API key in the local cluster's keystore](#configure-local-cluster).
 * **mode**: Use `proxy` mode in almost all cases. `sniff` mode is only applicable when the remote cluster is self-managed and the local cluster can reach the nodes’ publish addresses directly.

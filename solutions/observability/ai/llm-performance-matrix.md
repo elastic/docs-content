@@ -10,7 +10,12 @@ products:
 
 # Large language model performance matrix for {{observability}} [llm-performance-matrix]
 
-This page summarizes internal test results comparing large language models (LLMs) across {{observability}} [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) use cases. These ratings apply equally whether you're using [AI Assistant](/solutions/observability/ai/observability-ai-assistant.md) or [Agent Builder](/solutions/observability/ai/agent-builder-observability.md).
+This page summarizes internal test results comparing large language models (LLMs) across {{observability}} [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) use cases. These ratings only apply if you're using [AI Assistant](/solutions/observability/ai/observability-ai-assistant.md). For Agent Builder, refer to [recommended models](/explore-analyze/ai-features/agent-builder/models.md#recommended-models).
+
+:::{warning}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+The {{obs-ai-assistant}} is deprecated. The [Elastic AI Agent](/explore-analyze/ai-features/elastic-agent-builder.md) is now the default chat experience in {{observability}}. To switch back to the AI Assistant, go to **GenAI settings**.
+:::
 
 **Rating legend**
 

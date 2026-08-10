@@ -23,19 +23,12 @@ products:
 :::{image} /deploy-manage/images/kibana-change-space.png
 :alt: Change current space menu
 :screenshot:
+:width: 50%
 :::
 
 You can find the **Spaces** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-For more info on working with spaces, check out: 
-- [Create a space](#spaces-managing)
-- [Define access to a space](#spaces-control-user-access)
-- [Move saved objects between spaces](#spaces-moving-objects)
-- [Configure a space-level landing page](#spaces-default-route)
-- [Make API calls to a space](#spaces-api-requests)
-- [Delete a space](#_delete_a_space)
-
-Check out [Using Spaces with Fleet](/deploy-manage/manage-spaces-fleet.md) for info on using spaces with {{fleet}} in a space-aware data model.
+The rest of this page explains how to manage spaces and their settings. For information on using spaces with {{fleet}} in a space-aware data model, refer to [](/deploy-manage/manage-spaces-fleet.md).
 
 ## Required permissions [_required_privileges_3]
 
@@ -93,8 +86,8 @@ You can edit all of the space settings you just defined at any time, except for 
 
 Elastic also allows you to manage spaces using APIs:
 
-* {applies_to}`serverless:` [Serverless Spaces API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-spaces-space)
-* {applies_to}`stack:` [Spaces API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-spaces-copy-saved-objects)
+* {applies_to}`serverless:` [Serverless Spaces API]({{kib-serverless-apis}}operation/operation-get-spaces-space)
+* {applies_to}`stack:` [Spaces API]({{kib-apis}}operation/operation-post-spaces-copy-saved-objects)
 
 
 ## Define access to a space [spaces-control-user-access]
@@ -111,11 +104,9 @@ If you're managing an {{stack}} deployment, then you can also assign roles and d
 
 When a role is assigned to *All Spaces*, you can’t remove its access from the space settings. You must instead edit the role to give it more granular access to individual spaces.
 
-
 ## Move saved objects between spaces [spaces-moving-objects]
 
 To move saved objects between spaces, you can [copy objects](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-copy-to-space), or [export and import objects](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-export-objects).
-
 
 ## Customize {{kib}}'s home page [spaces-default-route]
 ```{applies_to}
@@ -139,9 +130,18 @@ You can access the **Advanced Settings** management page in the navigation menu 
 :screenshot:
 :::
 
+## Set a scope for {{cps}} [cps-default-search-scope]
+```{applies_to}
+serverless: preview
+```
+
+If your organization uses [{{cps}}](/explore-analyze/cross-project-search.md) ({{cps-init}}) in {{serverless-full}}, you can set the {{cps-init}} scope for each space. This setting determines the default scope for cross-project searches: origin only, or origin + all linked projects. 
+
+For best results, set the default {{cps-init}} scope for each space **before** you link projects. Refer to [Set the default {{cps-init}} scope for a space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
+
 ## Make API calls to a space [spaces-api-requests]
 
-When you access resources in {{kib}} using the [{{kib}} APIs](https://www.elastic.co/docs/api/doc/kibana/), unless you specify otherwise the API request is directed at the default space. To direct a request at a specific space, indicate that space by adding a `/<space>` element to the request path, directly after the {{kib}} URL.
+When you access resources in {{kib}} using the [{{kib}} APIs]({{kib-apis}}), unless you specify otherwise the API request is directed at the default space. To direct a request at a specific space, indicate that space by adding a `/<space>` element to the request path, directly after the {{kib}} URL.
 
 For example, the following request retrieves a list of saved objects of type `dashboard` in the default {{kib}} space:
 

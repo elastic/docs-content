@@ -465,7 +465,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
 
     3. Put the docker-based allocator you want to replace with a podman allocator in maintenance mode by following the [Enable Maintenance Mode](../../maintenance/ece/enable-maintenance-mode.md) documentation.
 
-        As an alternative, use the [Start maintenance mode](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-start-allocator-maintenance-mode) API.
+        As an alternative, use the [Start maintenance mode]({{ece-apis}}operation/operation-start-allocator-maintenance-mode) API.
 
     4. Move all instances from the Docker allocator to the podman allocator by following the [Move Nodes From Allocators](../../maintenance/ece/move-nodes-instances-from-allocators.md) documentation.
 
@@ -483,12 +483,12 @@ Using Docker or Podman as container runtime is a configuration local to the host
         :alt: Move instances
         :::
 
-        As an alternative, use the [*Move clusters*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-move-clusters) API.
+        As an alternative, use the [*Move clusters*]({{ece-apis}}operation/operation-move-clusters) API.
 
         To identifying the correct target allocator, the following APIs might be helpful:
 
-        * [*Get allocators*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-allocators)
-        * [*Get allocator metadata*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-allocator-metadata)
+        * [*Get allocators*]({{ece-apis}}operation/operation-get-allocators)
+        * [*Get allocator metadata*]({{ece-apis}}operation/operation-get-allocator-metadata)
 
             ```json
             {
@@ -513,14 +513,14 @@ Using Docker or Podman as container runtime is a configuration local to the host
             }
             ```
 
-            1. If allocators are tagged as mentioned in step 7, the metadata section of the [*Get allocators*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-allocators)  API should contain the tag.
+            1. If allocators are tagged as mentioned in step 7, the metadata section of the [*Get allocators*]({{ece-apis}}operation/operation-get-allocators)  API should contain the tag.
 
 
             This information allows you to determine what allocators are running on top of podman (automated way)
 
     5. Remove the Docker allocator by following the [Delete Hosts](../../maintenance/ece/delete-ece-hosts.md) guidelines.
 
-    As an alternative, use the [Delete Runner](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-delete-runner) API.
+    As an alternative, use the [Delete Runner]({{ece-apis}}operation/operation-delete-runner) API.
 
 ::::{note}
 When using Podman, removing an image with the `--force` (`-f`) option not only deletes the image reference but also removes any containers that depend on that image. This behavior differs from Docker, where forced image removal does not automatically remove running or stopped containers. Therefore, avoid using the `--force` (`-f`) option with the `docker rmi` command.

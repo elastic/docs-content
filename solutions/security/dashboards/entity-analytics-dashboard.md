@@ -3,12 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/detection-entity-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-detection-entity-dashboard.html
 applies_to:
-  stack: all
-  serverless:
-    security: all
+  stack: ga 9.0-9.3
 products:
   - id: security
-  - id: cloud-serverless
 ---
 
 # Entity Analytics dashboard
@@ -39,7 +36,7 @@ Displays the total number of critical hosts, critical users, and anomalies. Sele
 ## User Risk Scores [entity-user-risk-scores]
 
 ::::{admonition} Requirements
-To display user risk scores, you must [turn on the risk scoring engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
+To display user risk scores, you must [turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
 
 ::::
 
@@ -65,7 +62,7 @@ For more information about user risk scores, refer to [Entity risk scoring](/sol
 ## Host Risk Scores [entity-host-risk-scores]
 
 ::::{admonition} Requirements
-To display host risk scores, you must [turn on the risk scoring engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
+To display host risk scores, you must [turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
 ::::
 
 
@@ -90,7 +87,7 @@ For more information about host risk scores, refer to [Entity risk scoring](/sol
 ## Service Risk Scores
 
 ::::{admonition} Requirements
-To display service risk scores, you must [turn on the risk scoring engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
+To display service risk scores, you must [turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
 ::::
 
 Displays service risk score data for your environment, including the total number of services, and the five most recently recorded service risk scores, with their associated service names, risk data, and number of detection alerts. Service risk scores are calculated using a weighted sum on a scale of 0 (lowest) to 100 (highest).

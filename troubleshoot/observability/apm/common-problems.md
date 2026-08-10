@@ -84,7 +84,7 @@ If you see requests coming through the {{apm-server}} but they are not accepted 
 
 Another reason for data not showing up is that the agent is not auto-instrumenting something you were expecting, check the [agent documentation](/reference/apm-agents/index.md) for details on what is automatically instrumented.
 
-{{apm-server}} currently relies on {{es}} to create indices that do not exist. As a result, {{es}} must be configured to allow [automatic index creation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) for {{product.apm}} indices.
+{{apm-server}} currently relies on {{es}} to create indices that do not exist. As a result, {{es}} must be configured to allow [automatic index creation]({{es-apis}}operation/operation-create) for {{product.apm}} indices.
 ::::::
 
 :::::::
@@ -113,7 +113,7 @@ The target host might be unreachable or the certificate might not be valid. To f
     ```
 
 2. Verify that the certificate is valid and that the hostname and IP match.
-3. Use OpenSSL to test connectivity to the target server and diagnose problems. Refer to the [OpenSSL documentation](https://www.openssl.org/docs/manmaster/man1/openssl-s_client.md) for more info.
+3. Use OpenSSL to test connectivity to the target server and diagnose problems. Refer to the [OpenSSL documentation](https://www.openssl.org/docs/manmaster/man1/openssl-s_client.html) for more info.
 
 
 ### x509: cannot validate certificate for <IP address> because it doesn’t contain any IP SANs [apm-cannot-validate-certificate]
@@ -279,7 +279,7 @@ If you don’t see any data in the **Infrastructure** tab for a selected service
 
 ### OTel-instrumented services
 
-For services instrumented with OpenTelemetry, the **Infrastructure** tab exclusively looks for OTel-observed hosts, pods, and containers. If the tab is empty, confirm that the underlying infrastructure is also being observed with OTel (for example, using the EDOT Collector with host metrics enabled). Infrastructure observed only by {{agent}} or {{metricbeat}} doesn't appear for OTel-instrumented services.
+For services instrumented with OpenTelemetry, the **Infrastructure** tab exclusively looks for OTel-observed hosts, pods, and containers. If the tab is empty, confirm that the underlying infrastructure is also being observed with OTel (for example, using {{agent}} with host metrics enabled). Infrastructure observed only by {{agent}} or {{metricbeat}} doesn't appear for OTel-instrumented services.
 
 ### {{product.apm}}-instrumented services
 

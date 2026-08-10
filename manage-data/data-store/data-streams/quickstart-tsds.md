@@ -37,7 +37,7 @@ To create a data stream, you need an index template to base it on. The template 
 
 A TSDS uses _dimension_ fields and _metric_ fields. [Dimensions](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension) are used to uniquely identify the time series and are typically based on a descriptive property like `location`.  [Metrics](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-metric) are measurements that change over time.  
 
-Use an [`_index_template` request](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to create a template with two identifying dimension fields and two metric fields for weather measurements:
+Use an [`_index_template` request]({{es-apis}}operation/operation-indices-put-index-template) to create a template with two identifying dimension fields and two metric fields for weather measurements:
 
 ``` console
 PUT _index_template/quickstart-tsds-template  
@@ -87,7 +87,7 @@ You should get a response of `"acknowledged": true` that confirms the template w
 
 In this step, create a new data stream called `quickstart-weather` based on the index template defined in Step 1. You can create the data stream and add documents in a single API call.
 
-Use a [`_bulk` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) request to add multiple documents at once. Make sure to adjust the timestamps to within a few minutes of the current time.
+Use a [`_bulk` API]({{es-apis}}operation/operation-bulk) request to add multiple documents at once. Make sure to adjust the timestamps to within a few minutes of the current time.
 
 % TODO simplify timestamps
 
@@ -207,7 +207,7 @@ If you get an error about timestamp values, check the error response for the val
 ::::
 ::::{step} Run a query
 
-Now that your data stream has some documents, you can use the ES|QL [`_query` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-query) to query the data. This sample aggregation shows the maximum of average temperature per sensor for each location, in hourly buckets.
+Now that your data stream has some documents, you can use the ES|QL [`_query` endpoint]({{es-apis}}operation/operation-esql-query) to query the data. This sample aggregation shows the maximum of average temperature per sensor for each location, in hourly buckets.
 
 ```console
 POST _query
@@ -247,6 +247,6 @@ If you're working with OpenTelemetry (OTLP) or Prometheus data, refer to:
 
 For more information about the APIs used in this quickstart, review the {{es}} API reference documentation:
 
-* [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk)
-* [Index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template)
-* [Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
+* [Bulk API]({{es-apis}}operation/operation-bulk)
+* [Index template API]({{es-apis}}operation/operation-indices-put-index-template)
+* [Search API]({{es-apis}}operation/operation-search)

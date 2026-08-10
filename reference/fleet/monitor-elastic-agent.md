@@ -16,6 +16,7 @@ products:
 * [View agent status overview](#view-agent-status)
 * [View details for an agent](#view-agent-details)
 * [View agent activity](#view-agent-activity)
+* [View the configuration delivered to an agent](#view-agent-configuration)
 * [View agent logs](#view-agent-logs)
 * [Change the logging level](#change-logging-level)
 * [Collect {{agent}} diagnostics](#collect-agent-diagnostics)
@@ -54,7 +55,7 @@ The **Agents** tab in **{{fleet}}** displays a maximum of 10,000 agents, shown o
 | **Unhealthy** | {{agent}}s have errors or are running in a degraded state. An agent will be reported as `unhealthy` as a result of a configuration problem on the host system. For example, an {{agent}} may not have the correct permissions required to run an integration that has been added to the {{agent}} policy. In this case, you may need to investigate and address the situation. |
 | **Orphaned** | For {{agent}}s enrolled in {{elastic-defend}}, the `orphaned` status indicates an error in the communication between the {{agent}} service on the host system and the endpoint security service provided by {{elastic-defend}}. On agents reported as `orphaned`, the {{elastic-defend}} integration is still running and protecting the host. |
 | **Updating** | {{agent}}s are updating the agent policy, updating the binary, or enrolling or unenrolling from {{fleet}}. |
-| **Offline** | {{agent}}s have stayed in an unhealthy status for a period of time. Offline agent’s API keys remain valid. You can still see these {{agent}}s in the {{fleet}} UI and investigate them for further diagnosis if required. |
+| **Offline** | {{agent}}s have stopped checking in with {{fleet-server}} for at least 5 minutes. This offline detection threshold is fixed at 5 minutes and can't be configured. The offline agents' API keys remain valid. You can still see these {{agent}}s in the {{fleet}} UI and investigate them for further diagnosis if required. |
 | **Inactive** | {{agent}}s have been offline for longer than the time set in your [inactivity timeout](/reference/fleet/set-inactivity-timeout.md). These {{agent}}s are valid, but have been removed from the main {{fleet}} UI. |
 | **Unenrolled** | {{agent}}s have been manually unenrolled and their API keys have been removed from the system. You can [unenroll](/reference/fleet/unenroll-elastic-agent.md) an offline {{agent}} using {{agent}} actions if you determine it’s offline and no longer valid.<br>These agents need to re-enroll in {{fleet}} to be operational again. |
 | **Uninstalled** | {{agent}}s have been successfully uninstalled and removed from the host system. |
@@ -115,6 +116,24 @@ On the **Agents** tab, click **Agent activity**. All agent operations are shown,
 :::{image} images/agent-activity.png
 :alt: Agent activity panel
 :screenshot:
+:::
+
+
+## View the configuration delivered to an agent [view-agent-configuration]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+Because the configuration sent to an {{agent}} on a [version-specific agent policy](/reference/fleet/version-specific-agent-policies.md) can differ from the primary policy template, {{fleet}} provides an action to view the rendered YAML delivered to a specific agent.
+
+On the **Agents** tab, from the **Actions** menu for a specific {{agent}} (or from the **Actions** menu on the agent's details page), select **Maintenance and diagnostics → View agent policy**.
+
+The flyout shows the rendered YAML configuration and the revision of the primary policy the agent uses.
+
+:::{note}
+This action is different from the **Actions → View policy** action on the agent policy itself, which shows the primary policy template before {{fleet}} renders it for each agent.
 :::
 
 

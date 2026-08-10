@@ -25,7 +25,7 @@ After deploying {{elastic-defend}}, you can manage your protected endpoints, tun
 | View and monitor protected endpoints | [Endpoints](/solutions/security/manage-elastic-defend/endpoints.md) |
 | Adjust protection settings or event collection | [Policies](/solutions/security/manage-elastic-defend/policies.md) |
 | Reduce false positives from known software | [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md) → [Event filters](/solutions/security/manage-elastic-defend/event-filters.md) |
-| Suppress false positive {{elastic-endpoint}} alerts | [{{elastic-endpoint}} exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) |
+| Suppress false positive {{elastic-endpoint}} alerts | [{{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md) |
 | Block known malicious applications | [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md) |
 | Understand different {{elastic-endpoint}} configuration settings | [Optimize {{elastic-defend}}](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md) |
 | Diagnose problems with {{elastic-defend}} | [Automatic troubleshooting](/solutions/security/manage-elastic-defend/automatic-troubleshooting.md) → [Troubleshoot {{elastic-defend}}](/troubleshoot/security/elastic-defend.md) |
@@ -45,7 +45,7 @@ Exceptions and filters let you tailor {{elastic-defend}} behavior to your enviro
 - [Event filters](/solutions/security/manage-elastic-defend/event-filters.md): Prevent high-volume or low-value endpoint events from being stored in {{es}}, reducing storage costs.
 - [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md): Allow isolated hosts to communicate with specific IP addresses while remaining blocked from the rest of the network.
 - [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md): Prevent specified applications from running on protected hosts, extending {{elastic-defend}}'s list of known-malicious processes.
-- [{{elastic-endpoint}} exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions): Reduce false positives from [endpoint protection rules](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) by preventing {{elastic-endpoint}} from generating alerts.
+- [{{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md): Reduce false positives from [endpoint protection rules](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) by preventing {{elastic-endpoint}} from generating alerts.
 
 ## Protection and security
 

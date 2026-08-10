@@ -1,4 +1,4 @@
-Use the [get index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API to retrieve the configured value for the `index.routing.allocation.include._tier_preference` setting:
+Use the [get index settings]({{es-apis}}operation/operation-indices-get-settings) API to retrieve the configured value for the `index.routing.allocation.include._tier_preference` setting:
 
 ```console
 GET /my-index-000001/_settings/index.routing.allocation.include._tier_preference?flat_settings

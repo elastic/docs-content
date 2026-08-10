@@ -1,5 +1,6 @@
 ---
 navigation_title: Console
+description: Use Console to send Elasticsearch and Kibana API requests, inspect responses, manage request history, and configure editor settings.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/console-kibana.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-api-console.html
@@ -147,6 +148,20 @@ GET /locations/_search
 }
 ```
 
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` You can also embed `${variableName}` inside a longer string value in the request body. The token is substituted in place, so `"frozen_${indexName}"` becomes `"frozen_logs"` when `indexName` is set to `logs`. Variables with an empty string value are substituted as `""`.
+
+```console
+PUT _index_template/${indexName}-template
+{
+  "index_patterns": ["${indexName}-*"],
+  "template": {
+    "aliases": {
+      "frozen_${indexName}": {}
+    }
+  }
+}
+```
+
 
 ### Auto-formatting [auto-formatting]
 
@@ -204,6 +219,58 @@ You can select multiple requests and submit them together. **Console** executes 
 
 
 
+## Filter response output [console-filter-response]
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+A single successful response is required to use response filtering. To filter or transform a response:
+
+1. Run one request, then select **Filter response** in the response panel.
+2. Select a filter mode:
+   * **JQ expression**: Extract or transform values in a JSON response.
+   * **Regular expression**: Match the response line by line. Select **Include** to keep matching lines or **Exclude** to remove them.
+3. Enter an expression, then select **Apply**.
+
+The response panel shows the filtered output. Clear the expression to restore the complete response.
+
+### Use JQ expressions
+
+JQ expressions work only with JSON responses. Console supports these JQ operations:
+
+* Field and array access: `.field`, `.["field-name"]`, `.items[0]`, `.items[-1]`, and `.items[1:3]`
+* Iteration and traversal: `.items[]` for array elements, `.[]` for array elements or object values, optional access such as `.field?`, and recursive descent with `..`
+* Pipelines and filtering: `|` and `select(...)`
+* Comparisons and logic: `==`, `!=`, `<`, `>`, `<=`, `>=`, `and`, `or`, and `not`
+* Value inspection and reshaping: `keys`, `to_entries`, `from_entries`, `[expression]`, and `{key: expression}`
+* String operations: `trim`, `ltrim`, `rtrim`, `startswith("...")`, `endswith("...")`, `ltrimstr("...")`, `rtrimstr("...")`, and `split("...")`
+* Array joining: `join("...")`
+
+For example:
+
+* Return the first search result: `.hits.hits[0]`
+* Return the `_source` object from every search result: `.hits.hits[] | ._source`
+* Return the `_source` objects for search results whose `status` field is `active`: `.hits.hits[] | select(._source.status == "active") | ._source`
+* Return the mappings for every index in a get mapping response: `.[].mappings`
+* List the top-level response fields: `keys`
+
+Select {icon}`question` **Filter expression help** for more examples in Console.
+
+:::{note}
+Console doesn't support the complete JQ language. If an expression uses unsupported syntax, Console displays **Invalid JQ expression** and makes **Apply** unavailable.
+:::
+
+### Use regular expressions
+
+Console treats the expression as a JavaScript regular expression pattern and applies it to each response line independently. Enter the pattern without `/` delimiters or flags. For example:
+
+* Match lines that contain `green` or `yellow`: `green|yellow`
+* Match lines where `count` is the first JSON field after indentation: `^\s*"count"`
+
+Because regular expressions filter the rendered response line by line, the filtered output might be a fragment rather than valid JSON.
+
+
 ## Import and export requests [import-export-console-requests]
 
 You can export requests:
@@ -216,7 +283,7 @@ You can export requests:
 
 * by copying them individually as **curl**, **JavaScript**, or **Python**. To do this, select a request, then open the contextual menu and select **Copy as**. When using this action, requests are copied individually to your clipboard. You can save your favorite language to make the copy action faster the next time you use it.
 
-    When running copied requests from an external environment, you’ll need to add [authentication information](https://www.elastic.co/docs/api/doc/kibana/authentication) to the request.
+    When running copied requests from an external environment, you’ll need to add [authentication information]({{kib-apis}}authentication) to the request.
 
 
 

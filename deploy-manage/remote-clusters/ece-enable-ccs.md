@@ -28,14 +28,14 @@ Refer to [Remote clusters and network security](/deploy-manage/remote-clusters.m
 To use CCS or CCR, your environment must meet the following criteria:
 
 * The local and remote clusters must run on compatible versions of {{es}}. Review the version compatibility table.
-  
+
   :::{include} _snippets/remote-cluster-certificate-compatibility.md
   :::
-  
+
 * ECE proxies must answer TCP requests on the port used by the selected [security model](./security-models.md):
   * `9400` when using TLS certificate–based authentication (deprecated).
   * `9443` when using API key–based authentication.
-  
+
   For details, refer to the [remote cluster security models](./security-models.md) documentation and [ECE networking prerequisites](/deploy-manage/deploy/cloud-enterprise/ece-networking-prereq.md).
 
 * Load balancers must pass through TCP requests on the port that corresponds to the security model:

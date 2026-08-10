@@ -17,7 +17,7 @@ products:
 Workflow tools enable agents to trigger [Elastic Workflows](/explore-analyze/workflows.md) directly from a conversation and use their output. This is ideal for offloading tasks from the LLM that require a deterministic, repeatable sequence of actions.
 
 :::{note}
-This page explains how to trigger a workflow in an agent conversation. If you want to use an agent within a workflow step, refer to [Call agents from workflows](../agents-and-workflows.md).
+This page explains how to trigger an existing workflow in an agent conversation. To create a new workflow from Agent Chat, refer to [Create skills and workflows in chat](../chat.md#create-skills-and-workflows-directly-from-chat). If you want to use an agent within a workflow step, refer to [Call agents from workflows](../agents-and-workflows.md).
 :::
 
 ## Prerequisites
@@ -25,14 +25,29 @@ This page explains how to trigger a workflow in an agent conversation. If you wa
 Before you begin:
 
 * Familiarize yourself with the core concepts of [Elastic Workflows](/explore-analyze/workflows.md).
-* [Set up workflows](/explore-analyze/workflows/setup.md): Enable the Workflows feature and ensure you have the correct privileges to create and run workflows.
+* [Set up workflows](/explore-analyze/workflows/get-started/setup.md): Enable the Workflows feature and ensure you have the correct privileges to create and run workflows.
 * Create at least one workflow.
 
 ## Add a Workflow tool
 
 Follow these steps to configure a workflow tool:
 
-1. Navigate to **Agents > More > View all tools > New tool**.
+1. Navigate to the Tools page and create a new tool:
+
+   :::::{applies-switch}
+
+   ::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+    Click **Manage components** at the bottom of the left sidebar, select **Tools**, then click **+ New tool**.
+   ::::
+
+   ::::{applies-item} { stack: ga =9.3 }
+
+    Go to **Agents > More > View all tools > New tool**.
+
+   ::::
+   
+   :::::
 
   :::{image} ../images/create-new-tool-workflows.png
   :screenshot:
@@ -72,11 +87,28 @@ Once you've created a workflow tool, you must assign it to an agent to make it a
 ### Assign tool to agent
 
 To assign a tool to an agent:
+
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+1. Select the agent from the agent selector in the left sidebar.
+2. Expand the **Customize** accordion and select **Tools**.
+3. Click **Add tool** and select the workflow tool to assign.
+
+::::
+
+::::{applies-item} { stack: ga =9.3 }
+
 1. Navigate to **Agents**.
 2. Select your agent.
-3. Select **More > Edit Agent > Tools**
+3. Select **More > Edit Agent > Tools**.
 4. Assign the workflow tool by selecting the checkbox.
 5. Click **Save**.
+
+::::
+
+:::::
 
 ### Trigger a workflow
 
@@ -87,12 +119,12 @@ The agent:
 - runs the workflow
 - returns the workflow's final output to the chat
 
-Expand the **Completed reasoning** section to trace the execution steps and inspect the raw workflow output.
+Review the [inline reasoning events](../chat.md#inspect-tool-calls-and-reasoning) to trace the execution steps and inspect the raw workflow output.
 
 :::{image} ../images/agent-builder-workflow-tool.png
 :screenshot:
 :width: 500px
-:alt: Screenshot of reasoning steps of agent builder.
+:alt: Inline reasoning events showing an Agent Builder workflow tool execution.
 :::
 
 ## Examples
@@ -102,4 +134,4 @@ The [`elastic/workflows` GitHub repo](https://github.com/elastic/workflows) cont
 ## Related pages
 * [Tools overview](../tools.md)
 * [Call agents from workflows](../agents-and-workflows.md)
-* [Workflows](/explore-analyze/workflows.md)
+* [Author workflows with natural language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md)

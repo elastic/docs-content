@@ -23,6 +23,70 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+::::{dropdown} Synthetics browser monitors on private locations fail to run on {{agent}} 9.5.0
+
+Applies to: {{stack}} 9.5.0
+
+**Details**
+
+**Do not upgrade private location {{agents}} that run Synthetics browser (journey) monitors to 9.5.0.** Keep those agents on **9.4.x** (for example 9.4.4) and wait for **9.5.1**. It is supported to run an older {{agent}} version (such as 9.4.4) against a 9.5.0 {{stack}}. Lightweight monitors (HTTP, TCP, and ICMP) on the same private location and monitors on Elastic-managed locations are not affected.
+
+On 9.5.0, browser monitors on {{fleet}}-managed private locations fail for two independent {{agent}} defects:
+
+1. **Missing Playwright browser binaries** in the `elastic-agent-complete` image. Journeys fail at launch with `browserType.launch: Executable doesn't exist at .../chromium_headless_shell-<rev>/...`. For more information, check [elastic-agent#15993](https://github.com/elastic/elastic-agent/issues/15993).
+
+2. **OTel Heartbeat runtime** rejects browser monitor config and reports the component as permanently failed with `missing required field accessing 'heartbeat.monitors.0.schedule'`. For more information, check [elastic-agent#15968](https://github.com/elastic/elastic-agent/issues/15968).
+
+Both issues are addressed in 9.5.1. There is no supported workaround on 9.5.0 that restores browser monitors without changing the agent version.
+::::
+
+::::{dropdown} Upgrading to 9.3.x fails when a rule action contains oversized content
+
+Applies to: {{stack}} 9.3.0, 9.3.1, 9.3.2, 9.3.3, 9.3.4
+
+**Details**
+
+Upgrading from 9.2.x to 9.3.x can fail if a rule (including Observability alerting rules) has a connector action whose parameter values are larger than 32,766 bytes. Common examples include email message bodies or HTML templates, large webhook payloads, or Slack messages built from verbose templates.
+
+During the upgrade, {{kib}} migrates rule saved objects to a new internal mapping. Any oversized action parameter value causes the migration to abort with an error similar to:
+
+```
+Flattened field [alert.actions.params] contains one immense field whose keyed encoding is longer than the allowed max length of 32766 bytes
+```
+
+**Workaround**
+
+Upgrade to 9.3.5 or 9.4.2.
+
+If the upgrade has failed with this error, identify rules that use connectors with large content (particularly email, webhook, and Slack connectors) and shorten the action parameter values, such as message bodies or HTML templates. Then retry the upgrade.
+
+
+For more information, refer to [#268982](https://github.com/elastic/kibana/issues/268982).
+
+**Resolved**
+
+This issue is resolved in {{stack}} 9.3.5 and 9.4.2.
+
+::::
+
+::::{dropdown} Observability alerts remain active instead of transitioning to recovered
+
+Applies to: {{stack}} 9.2.7, 9.2.8, 9.3.2, 9.3.3
+
+**Details**
+
+Some Observability alerts send recovery notifications (for example, Slack, email, or webhook) but remain `active` in {{kib}} instead of transitioning to `recovered`.
+
+**Action**
+
+Manually untrack stale alerts or upgrade to {{stack}} 9.3.4 or 9.4.0.
+
+**Resolved**
+
+This issue is resolved in {{stack}} 9.3.4 and 9.4.0.
+
+::::
+
 ::::{dropdown} Browser monitors with JavaScript template literals fail on private locations
 Applies to: All {{stack}} versions
 

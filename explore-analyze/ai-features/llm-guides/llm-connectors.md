@@ -23,16 +23,24 @@ Elastic's [AI features](/explore-analyze/ai-features.md) work with the out-of-th
 
 ## Tested models and performance ratings [tested-models]
 
-While connectors let you connect to a wide range of LLMs, model performance varies by solution and use case. Refer to the following performance matrices to find performance information for models tested by Elastic:
+While connectors let you connect to a wide range of LLMs, model performance varies by solution and use case. Refer to the following pages for performance information for models Elastic has tested:
 
 * [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md)
 * [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md)
+* [Recommended models for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/models.md#recommended-models)
 
 :::{note}
-Models that do not appear in these matrices may still work, but Elastic hasn't tested them. We recommend selecting a model with strong ratings for your intended use case.
+Models that do not appear in these resources may still work, but Elastic hasn't tested them for those scenarios. We recommend selecting a model with strong ratings for your intended use case.
 :::
 
 ## Connect to a third-party or self-managed LLM
+
+::::{important}
+:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
+The OpenAI, Amazon Bedrock, Google Gemini, and Elastic {{infer-cap}} connectors are deprecated and are being progressively removed from the create connector UI. Existing connectors and their rule actions continue to work.
+
+For new AI integrations, use {{es}} {{infer}} endpoints. Migrate existing LLM connectors and related rule actions before the future removal.
+::::
 
 Follow these guides to connect to one or more third-party LLM providers:
 

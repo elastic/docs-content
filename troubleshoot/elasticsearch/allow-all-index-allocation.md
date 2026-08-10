@@ -23,7 +23,7 @@ To allow all data to be allocated, follow these steps.
 
 You can run the following steps using either [API console](/explore-analyze/query-filter/tools/console.md) or direct [Elasticsearch API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
-1. Inspect the `index.routing.allocation.enable` [index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) for the index with unassigned shards:
+1. Inspect the `index.routing.allocation.enable` [index setting]({{es-apis}}operation/operation-indices-get-settings) for the index with unassigned shards:
 
     ```console
     GET /my-index-000001/_settings/index.routing.allocation.enable?flat_settings
@@ -43,7 +43,7 @@ You can run the following steps using either [API console](/explore-analyze/quer
 
     1. Represents the current configured value that controls if the index is allowed to be partially or totally allocated.
 
-2. [Change](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) the [configuration](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-routing-allocation-enable-setting) value to allow the index to be fully allocated:
+2. [Change]({{es-apis}}operation/operation-indices-put-settings) the [configuration](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-routing-allocation-enable-setting) value to allow the index to be fully allocated:
 
     ```console
     PUT /my-index-000001/_settings

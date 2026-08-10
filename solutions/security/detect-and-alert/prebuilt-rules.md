@@ -22,6 +22,9 @@ Elastic maintains a library of prebuilt detection rules mapped to the MITRE ATT&
 **[Update prebuilt rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md)**
 :   Apply Elastic's rule updates to keep your detection coverage current. Explains how to review updates, handle modified rules, and resolve conflicts (Enterprise only).
 
+**[Handle deprecated prebuilt rules](/solutions/security/detect-and-alert/manage-detection-rules.md#deprecated-prebuilt-rules)** {applies_to}`stack: ga 9.4+`
+:   Find deprecated prebuilt rules on the {{rules-ui}} page or a rule's details page, then delete them or duplicate and delete them so they are no longer tied to the prebuilt package.
+
 **[Prebuilt rules in air-gapped environments](/solutions/security/detect-and-alert/prebuilt-rules-airgapped.md)**
 :   Install and update prebuilt rules in air-gapped environments without internet access.
 

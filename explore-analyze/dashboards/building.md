@@ -1,24 +1,34 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-dashboards.html
-description: Build powerful Kibana dashboards using visualizations, metrics, text, images, and interactive controls to monitor and analyze your data.
+description: Choose how to create Kibana dashboards — from the UI, programmatically using REST APIs, or using AI-powered tools — and find the right starting point for your workflow.
 applies_to:
   stack: ga
   serverless: ga
 products:
   - id: kibana
+type: overview
 ---
 
 # Building dashboards [create-dashboards]
 
 {{product.kibana}} offers many ways to build powerful dashboards that help you visualize and keep track of the most important information in your {{product.elasticsearch}} data. Combine multiple visualizations, metrics, and interactive elements into a cohesive view that tells your data story and enables rapid decision-making.
 
-You can:
+Use the following table to find the right approach for building your dashboards, then follow the link to get started.
 
-* Create and assemble visualizations such as charts or maps, and enrich them with helpful legends containing key data
-* Extract and show key indicators and metrics to always keep them visible and highlighted
-* Add text, images, and links to help viewers make the most of your dashboard
-* Include additional controls to facilitate filtering and browsing the data
+| Approach | When to use this | What you get |
+|---|---|---|
+| [Create a dashboard from the UI](create-dashboard.md) | Exploring data interactively and assembling dashboards panel by panel | Saved dashboard |
+| [Create dashboards programmatically](create-dashboards-programmatically.md) | Automating deployments, managing dashboards and visualizations as code, CI/CD pipelines | Saved dashboard or visualization |
+| [Create dashboards using AI](create-dashboards-using-ai.md) | Generating dashboards from natural language, or building AI tools that create dashboards | Dashboard through chat that you save when ready, or saved dashboard using the API |
+
+Once you have a dashboard, you can enhance it:
+
+* [Add filter controls](../visualize/add-controls.md) to let viewers explore the data interactively
+* [Add drilldowns](drilldowns.md) to navigate between dashboards or to external URLs
+* [Arrange and resize panels](arrange-panels.md) to optimize its layout
+
+You can also maintain your dashboards after you create them: [organize your collection](managing.md) with search, tags, and favorites, [duplicate](duplicate-dashboards.md) a dashboard to reuse it as a starting point, [import](import-dashboards.md) one from another space, instance, or deployment, or [share or export](sharing.md) it. For repeatable, auditable changes, [manage your dashboards as code](manage-dashboards-as-code.md) to version-control their definitions and deploy them across environments.
 
 ## Requirements [dashboard-minimum-requirements]
 

@@ -40,7 +40,7 @@ You can change the [hardware profile](/deploy-manage/deploy/elastic-cloud/ec-cha
 ::::::
 
 ::::::{applies-item} { self: }
-To increase the data node capacity in your cluster, you can [add more nodes](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) to the cluster and assign the index’s target tier [node role](/manage-data/lifecycle/data-tiers.md#configure-data-tiers-on-premise) to the new nodes, or increase the disk capacity of existing nodes. Disk expansion procedures depend on your operating system and storage infrastructure and are outside the scope of Elastic support. In practice, this is often achieved by [removing a node from the cluster](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) and reinstalling it with a larger disk.
+To increase the data node capacity in your cluster, you can [add more nodes](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) to the cluster and assign the index’s target tier [node role](/manage-data/lifecycle/data-tiers/manage-data-tiers-self-managed-eck.md#configure-data-tier-self-managed) to the new nodes, or increase the disk capacity of existing nodes. Disk expansion procedures depend on your operating system and storage infrastructure and are outside the scope of Elastic support. In practice, this is often achieved by [removing a node from the cluster](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) and reinstalling it with a larger disk.
 
 ::::::
 

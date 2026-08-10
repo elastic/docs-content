@@ -100,7 +100,7 @@ Cumulative layout shift (CLS)
 :   Visual stability. Is content moving around because of `async` resource loading or dynamic content additions? CLS measures these frustrating unexpected layout shifts. To provide a good user experience, Google recommends a CLS score of less than `.1`.[^6^](#footnote-6)
 
 ::::{tip}
-[Beginning in May 2021](https://webmasters.googleblog.com/2020/11/timing-for-page-experience.md), Google will start using Core Web Vitals as part of their ranking algorithm and will open up the opportunity for websites to rank in the "top stories" position without needing to leverage [AMP](https://amp.dev/).[^7^](#footnote-7)
+[Beginning in May 2021](https://webmasters.googleblog.com/2020/11/timing-for-page-experience.html), Google will start using Core Web Vitals as part of their ranking algorithm and will open up the opportunity for websites to rank in the "top stories" position without needing to leverage [AMP](https://amp.dev/).[^7^](#footnote-7)
 ::::
 
 ### Load/view distribution [user-experience-distribution]
@@ -137,4 +137,4 @@ Have a question? Want to leave feedback? Visit the [{{user-experience}} discussi
 ^4^ $$$footnote-4$$$ Source: [web.dev](https://web.dev/lcp/)<br>
 ^5^ $$$footnote-5$$$ Source: [web.dev](https://web.dev/articles/inp)<br>
 ^6^ $$$footnote-6$$$ Source: [web.dev](https://web.dev/cls/)<br>
-^7^ $$$footnote-7$$$ Source: [webmasters.googleblog.com](https://webmasters.googleblog.com/2020/05/evaluating-page-experience.md)<br>
+^7^ $$$footnote-7$$$ Source: [webmasters.googleblog.com](https://webmasters.googleblog.com/2020/05/evaluating-page-experience.html)<br>

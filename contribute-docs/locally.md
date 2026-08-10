@@ -1,3 +1,7 @@
+---
+description: "Set up Elastic documentation repositories locally and learn how to build, preview, and submit documentation changes."
+---
+
 # Contribute locally
 
 This document describes the process to set up Elastic documentation repositories locally, enabling you to contribute effectively.
@@ -73,7 +77,7 @@ If you get a `Permission denied` error, make sure that you aren't trying to run 
    You can optionally specify a specific version to install:
 
    ```powershell
-   $env:DOCS_BUILDER_VERSION = '0.40.0'; iwr -useb https://ela.st/docs-builder-install.ps1 | iex
+   $env:DOCS_BUILDER_VERSION = '0.40.0'; iwr -useb https://ela.st/docs-builder-install-win | iex
    ```
 
    To download and install the binary file manually, refer to [Releases](https://github.com/elastic/docs-builder/releases) on GitHub.

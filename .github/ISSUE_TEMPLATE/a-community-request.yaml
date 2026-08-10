@@ -1,26 +1,28 @@
 name: "Community documentation request"
-description: An issue template for non-Elastic employees to request changes to the documentation.
+description: Request a documentation change as a community contributor.
 title: "[Community]: "
 labels: ["community"]
 body:
   - type: markdown
     attributes:
       value: |
-        This issue template is for non-Elastic employees to request changes to the documentation. **If you are an Elastic employee, please use the internal issue template instead.**
+        This issue template is for non-Elastic employees who want to request a change to Elastic documentation. **If you are an Elastic employee, please use the internal issue template instead.**
         
+        This form is for documentation requests only, not for product bugs, support requests, or feature requests.
+
         This form will create an issue that Elastic's docs team will triage and prioritize. You can also open a PR instead. Thanks for taking the time to fill out this request!
   - type: textarea
     id: link
     attributes:
-      label: What documentation page is affected
-      description: Include a link to the page where you're seeing the problem. Screenshots are also helpful.
+      label: What documentation page or section is affected
+      description: Include the URL for the page where you are seeing the problem. Screenshots are also helpful.
     validations:
       required: true
   - type: textarea
     id: related
     attributes:
-      label: What change would you like to see?
-      description: What's wrong? Why should the docs be changed? What did you expect to see?
+      label: What should change?
+      description: What is wrong with the docs, what did you expect to see, and why should the docs change?
     validations:
       required: true
   - type: textarea

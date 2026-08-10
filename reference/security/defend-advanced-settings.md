@@ -1040,8 +1040,8 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to disable ransomware detection based on canary files, even if ransomware protection is enabled. Ransomware protection will remain effective even when this ransomware detection is disabled.
 
 
-`mac.advanced.ransomware.diagnostic`
-:   Added in 9.2.0.
+`[linux,mac].advanced.ransomware.diagnostic`
+:   Added in 9.2.0 (macOS), 9.4.0 (Linux).
 
     *Enable diagnostic ransomware protection. Default: `true`.*
 
@@ -1124,3 +1124,8 @@ Advanced settings are not recommended for most users. Use them only if you have 
 :   Added in 8.12.0.
 
     *Control how much memory (in MB) should be kept resident in RAM. This setting affects Private Working Set but does not affect the amount of virtual memory requested from the OS (Private Bytes or Commit Charge). If plenty of unused RAM is available, Windows may give {{elastic-endpoint}} more RAM than requested to reduce unnecessary paging and improve performance. If the current {{elastic-defend}} configuration requires regularly touching more than the requested amount of memory, then the Private Working Set will be higher than requested here. The minimum value is 50. Default: `200`.*
+
+`mac.ransomware.mode`
+:   Added in 9.4.0.
+
+    *Enable ransomware protection for macOS. Accepted values are `off`, `detect`, and `prevent`. Default: `off`.*

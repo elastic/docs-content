@@ -1,7 +1,7 @@
 ---
 applies_to:
-  stack: preview 9.3
-  serverless: preview
+  stack: preview 9.3, ga 9.4+
+  serverless: ga
 description: Understand scheduled triggers and how to create and configure them.
 products:
   - id: kibana
@@ -15,6 +15,8 @@ products:
 # Scheduled triggers
 
 Scheduled triggers run workflows automatically at specific times or intervals, without requiring manual intervention. Use scheduled triggers for recurring tasks like reports, data cleanup, or periodic health checks.
+
+Scheduled workflows run with the privileges of the user who last saved the workflow. For details, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
 
 You can configure scheduled triggers using:
 
@@ -36,7 +38,7 @@ triggers:
 
 The supported units are:
 
-* Seconds: `s`  (minimum supported value: `30s`)
+* Seconds: `s`  (minimum supported value: `60s`)
 * Minutes: `m`
 * Hours: `h`
 * Days: `d`
@@ -79,9 +81,21 @@ triggers:
       every: 7d
 ```
 
+:::{important}
+The minimum supported interval is 1 minute (`1m` or `60s`). Schedules shorter than that are rejected at save time. Pre-9.4 schedules with sub-minute intervals are auto-migrated to `1m` on first edit.
+:::
+
 ## RRule-based scheduling
 
 RRule-based scheduling runs a workflow at specific times using recurrence rules. This option supports daily, weekly, and monthly frequencies with timezone awareness.
+
+:::{important}
+Only `DAILY`, `WEEKLY`, and `MONTHLY` `freq` values are supported. `HOURLY`, `YEARLY`, `MINUTELY`, and `SECONDLY` are rejected. For "every hour", use the interval format (`every: "1h"`) instead.
+:::
+
+:::{tip}
+`tzid` defaults to `UTC` if omitted. For any business-hours schedule, set `tzid` explicitly to avoid daylight-saving surprises. You can also set a workflow-wide default with [`settings.timezone`](/explore-analyze/workflows/authoring-techniques/settings.md#workflows-settings-timezone); `rrule.tzid` overrides it when both are set.
+:::
 
 The following example shows the basic syntax for an RRule-based scheduled trigger:
 

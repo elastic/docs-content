@@ -20,7 +20,8 @@ Roles are a collection of privileges that enable users to access project feature
 On this page, you'll learn about how to [manage custom roles in your project](#manage-custom-roles), the types of privileges you can assign, and how to [assign the roles](#assign-custom-roles) that you create.
 
 ::::{note}
-You cannot assign [run as privileges](elasticsearch://reference/elasticsearch/security-privileges.md#_run_as_privilege) in {{serverless-full}} custom roles.
+- You cannot assign [run as privileges](elasticsearch://reference/elasticsearch/security-privileges.md#_run_as_privilege) in {{serverless-full}} custom roles.
+- If your organization uses [cross-project search](/explore-analyze/cross-project-search.md) in {{serverless-short}}, assigned roles continue to apply. Users can work with data from [linked projects](/deploy-manage/cross-project-search-config.md#key-concepts) only if their assigned privileges already allow access to those projects. {applies_to}`serverless: preview` 
 ::::
 
 :::{{admonition}} Custom roles in {{stack}}
@@ -108,5 +109,5 @@ As new features are added to {{serverless-full}}, roles that use the custom opti
 After your roles are set up, the next step to securing access is to assign roles to your users. Click the **Assign roles** link to go to the **Members** tab of the **Organization** page. Learn more in [](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 
 :::{warning}
-When you assign custom roles, you must always select **Cloud Console, {{es}}, and {{kib}}** access for the role to take full effect. If you don't grant this access, the user only has the equivalent of **Viewer** access to the project in the {{ecloud}} console, and can't log in to the project. [Learn more](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).
+When you assign custom roles, you must always select **Cloud Console, {{es}}, and {{kib}}** access for the role to take full effect. If you don't grant this access, the user only has the equivalent of **Viewer** access to the project in the {{ecloud}} console, and can't log in to the project or access project data through {{cps}}. [Learn more](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).
 :::

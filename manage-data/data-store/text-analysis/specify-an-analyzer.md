@@ -22,7 +22,7 @@ The flexibility to specify analyzers at different levels and for different times
 
 In most cases, a simple approach works best: Specify an analyzer for each `text` field, as outlined in [Specify the analyzer for a field](#specify-index-field-analyzer).
 
-This approach works well with {{es}}'s default behavior, letting you use the same analyzer for indexing and search. It also lets you quickly see which analyzer applies to which field using the [get mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping).
+This approach works well with {{es}}'s default behavior, letting you use the same analyzer for indexing and search. It also lets you quickly see which analyzer applies to which field using the [get mapping API]({{es-apis}}operation/operation-indices-get-mapping).
 
 If you don’t typically create mappings for your indices, you can use [index templates](../templates.md) to achieve a similar effect.
 
@@ -43,7 +43,7 @@ If none of these parameters are specified, the [`standard` analyzer](elasticsear
 
 When mapping an index, you can use the [`analyzer`](elasticsearch://reference/elasticsearch/mapping-reference/analyzer.md) mapping parameter to specify an analyzer for each `text` field.
 
-The following [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) request sets the `whitespace` analyzer as the analyzer for the `title` field.
+The following [create index API]({{es-apis}}operation/operation-indices-create) request sets the `whitespace` analyzer as the analyzer for the `title` field.
 
 ```console
 PUT my-index-000001
@@ -64,7 +64,7 @@ PUT my-index-000001
 
 In addition to a field-level analyzer, you can set a fallback analyzer for using the `analysis.analyzer.default` setting.
 
-The following [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) request sets the `simple` analyzer as the fallback analyzer for `my-index-000001`.
+The following [create index API]({{es-apis}}operation/operation-indices-create) request sets the `simple` analyzer as the fallback analyzer for `my-index-000001`.
 
 ```console
 PUT my-index-000001
@@ -106,7 +106,7 @@ If none of these parameters are specified, the [`standard` analyzer](elasticsear
 
 When writing a [full-text query](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md), you can use the `analyzer` parameter to specify a search analyzer. If provided, this overrides any other search analyzers.
 
-The following [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) request sets the `stop` analyzer as the search analyzer for a [`match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) query.
+The following [search API]({{es-apis}}operation/operation-search) request sets the `stop` analyzer as the search analyzer for a [`match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) query.
 
 ```console
 GET my-index-000001/_search
@@ -128,7 +128,7 @@ When mapping an index, you can use the [`search_analyzer`](elasticsearch://refer
 
 If a search analyzer is provided, the index analyzer must also be specified using the `analyzer` parameter.
 
-The following [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) request sets the `simple` analyzer as the search analyzer for the `title` field.
+The following [create index API]({{es-apis}}operation/operation-indices-create) request sets the `simple` analyzer as the search analyzer for the `title` field.
 
 ```console
 PUT my-index-000001
@@ -148,11 +148,11 @@ PUT my-index-000001
 
 ## Specify the default search analyzer for an index [specify-search-default-analyzer]
 
-When [creating an index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create), you can set a default search analyzer using the `analysis.analyzer.default_search` setting.
+When [creating an index]({{es-apis}}operation/operation-indices-create), you can set a default search analyzer using the `analysis.analyzer.default_search` setting.
 
 If a search analyzer is provided, a default index analyzer must also be specified using the `analysis.analyzer.default` setting.
 
-The following  [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) request sets the `whitespace` analyzer as the default search analyzer for the `my-index-000001` index.
+The following  [create index API]({{es-apis}}operation/operation-indices-create) request sets the `whitespace` analyzer as the default search analyzer for the `my-index-000001` index.
 
 ```console
 PUT my-index-000001

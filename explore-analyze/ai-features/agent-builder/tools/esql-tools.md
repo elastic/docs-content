@@ -41,20 +41,20 @@ While agents can generate {{esql}} queries dynamically using [index search tools
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.2-9.3 }
-{{esql}} tools support the following parameter types:
-
-* **String types**: `text`, `keyword`
-* **Numeric types**: `long`, `integer`, `double`, `float`
-* **Other types**: `boolean`, `date`, `object`, `nested`
-:::
-
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
 {{esql}} tools support the following parameter types:
 
 * **Textual types**: `string`
 * **Numeric types**: `integer`, `float`
 * **Other types**: `boolean`, `date`, `array`
+:::
+
+:::{applies-item} { stack: ga 9.2-9.3 }
+{{esql}} tools support the following parameter types:
+
+* **String types**: `text`, `keyword`
+* **Numeric types**: `long`, `integer`, `double`, `float`
+* **Other types**: `boolean`, `date`, `object`, `nested`
 :::
 
 ::::
@@ -88,7 +88,7 @@ stack: ga 9.3
 
 When creating {{esql}} tools via the API, default values for optional parameters are not required. However, they are strongly recommended to prevent query syntax errors when agents don't provide values. Without defaults, optional parameters that agents don't specify will be `null`, which can cause queries to fail.
 
-For details about the {{esql}} tools API, refer to the [API documentation](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-tools).
+For details about the {{esql}} tools API, refer to the [API documentation]({{kib-apis}}operation/operation-post-agent-builder-tools).
 
 ## Query syntax
 

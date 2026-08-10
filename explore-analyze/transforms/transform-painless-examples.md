@@ -98,7 +98,7 @@ You can retrieve the last value in a similar way:
 
 ### Getting top hits by using stored scripts [top-hits-stored-scripts]
 
-You can also use the power of [stored scripts](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-put-script) to get the latest value. Stored scripts are updatable, enable collaboration, and avoid duplication across queries.
+You can also use the power of [stored scripts]({{es-apis}}operation/operation-put-script) to get the latest value. Stored scripts are updatable, enable collaboration, and avoid duplication across queries.
 
 1. Create the stored scripts:
 
@@ -260,7 +260,7 @@ PUT _transform/data_log
 
 1. To define the length of the sessions, we use a bucket script.
 2. The bucket path is a map of script variables and their associated path to the buckets you want to use for the variable. In this particular case, `min` and `max` are variables mapped to `time_frame.gte.value` and `time_frame.lte.value`.
-3. Finally, the script substracts the start date of the session from the end date which results in the duration of the session.
+3. Finally, the script subtracts the start date of the session from the end date which results in the duration of the session.
 
 ## Counting HTTP responses by using scripted metric aggregation [painless-count-http]
 

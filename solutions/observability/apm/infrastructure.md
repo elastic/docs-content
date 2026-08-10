@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-infrastructure.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-infrastructure.html
 applies_to:
-  stack: beta
-  serverless: beta
+  stack: beta 9.0-9.4, ga 9.5+
+  serverless: ga
 products:
   - id: observability
   - id: apm
@@ -38,7 +38,7 @@ For services instrumented with Elastic {{product.apm}}, the tab uses the followi
 
 ## OTel-instrumented services [observability-apm-infrastructure-otel]
 ```{applies_to}
-stack: ga 9.4
+stack: ga 9.4+
 serverless: ga
 ```
 
@@ -46,3 +46,34 @@ For services instrumented with OpenTelemetry, the tab exclusively shows OTel-obs
 
 * **Hosts**: Links to the [**Hosts**](/solutions/observability/infra-and-hosts/analyze-compare-hosts.md) UI, which supports OpenTelemetry and its semantic conventions.
 * **Containers** and **Pods**: Link to [**Metrics** in Discover](/solutions/observability/infra-and-hosts/discover-metrics.md), as the Containers and Pods UIs do not yet support OTel semantic conventions.
+
+::::{important}
+The **Infrastructure** tab assumes you're observing the service and its underlying infrastructure (hosts, pods, containers) using the same schema. The schema is inferred from the {{apm-agent}} name:
+
+**Elastic APM Agent** or **Elastic Agent system integration**: Queries ECS data from Metricbeat or Elastic Agent integrations.
+
+**OTel SDK** or **EDOT SDK**: Queries OpenTelemetry semantic convention (semconv) data from the OTel Collector or {{agent}} (for example, `hostmetricsreceiver.otel`, `kubeletstatsreceiver.otel`, `dockerstatsreceiver.otel`).
+Cross-schema setups show as **N/A**:
+
+- A service instrumented with Elastic APM or Elastic Agent, but running on infrastructure observed only by the OTel Collector.
+- A service instrumented with an OTel or EDOT SDK, but running on infrastructure observed only by Metricbeat or the Elastic Agent system, Kubernetes, or Docker integrations.
+
+To see infrastructure metrics, make sure the service instrumentation and the infrastructure collector use the same schema.
+::::
+
+## Compare metrics in Discover [observability-apm-infrastructure-compare-metrics]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+To compare infrastructure metric trends across all entities a service depends on, select the **Hosts**, **Pods**, or **Containers** tab, then click **Compare metrics in Discover**. This opens the data in Discover, broken down by entity so you can compare trends side by side.
+
+The breakdown field for each resource type:
+
+| Resource | Breakdown field |
+| --- | --- |
+| Hosts | `host.name` |
+| Pods | `k8s.pod.name` |
+| Containers | `container.id` |

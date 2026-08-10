@@ -46,7 +46,7 @@ Self-managed connectors run on your own infrastructure, independent of where you
 
 To learn about setup for self-managed connectors, refer to [Self-managed connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md). To set up an Elastic managed connector:
 
-1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "Content conectors".
+1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "Content connectors".
 1. Click **New Connector**.
 1. Under **Connector**, select your desired data source.
 1. Under **Setup**, select your deployment method. 

@@ -8,10 +8,10 @@ products:
   - id: observability
 ---
 
-# Monitor Microsoft Azure with the Azure Native ISV Service [monitor-azure-native]
+# Monitor Microsoft Azure with the Azure Native Service [monitor-azure-native]
 
 ::::{note}
-The {{ecloud}} Azure Native ISV Service allows you to deploy managed instances of the {{stack}} directly in Azure, through the Azure integrated marketplace. The service includes native capabilities for consolidating Azure logs and metrics in Elastic. For more information, refer to [Azure Native ISV Service](/deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md).
+The {{ecloud}} Azure Native Service allows you to deploy {{ech}} deployments and {{serverless-full}} projects directly in Azure, through the Azure integrated marketplace. The service includes native capabilities for consolidating Azure logs and metrics in Elastic. For more information, refer to [Azure Native Service](/deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md).
 
 **Using {{agent}} to monitor Azure?** Refer to [Monitor Microsoft Azure with {{agent}}](monitor-microsoft-azure-with-elastic-agent.md).
 
@@ -21,12 +21,12 @@ The {{ecloud}} Azure Native ISV Service allows you to deploy managed instances o
 In this tutorial, you’ll learn how to:
 
 * Create an {{es}} resource in the Azure portal.
-* Ingest Azure platform logs using the Azure Native ISV Service.
+* Ingest Azure platform logs using the Azure Native Service.
 * Ingest logs and metrics from your virtual machines.
 * Visualize the logs and metrics in {{kib}}.
 
 ::::{tip}
-The full product name in the Azure integrated marketplace is `Elastic Cloud (Elasticsearch) - An Azure Native ISV Service`.
+The full product name in the Azure integrated marketplace is `Elastic Cloud (Elasticsearch) - An Azure Native Service`.
 ::::
 
 
@@ -38,7 +38,7 @@ These steps will not work if you have an active GCP or AWS deployment in {{eclou
 ::::
 
 
-Microsoft Azure allows you to find, deploy, and manage {{es}} from within the Azure portal. The Azure Native ISV Service makes it faster and easier for you to experience the value of Elastic in your Azure environment. Behind the scenes, this process provisions a marketplace subscription with {{ecloud}}.
+Microsoft Azure allows you to find, deploy, and manage {{es}} from within the Azure portal. The Azure Native Service makes it faster and easier for you to experience the value of Elastic in your Azure environment. Behind the scenes, this process provisions a marketplace subscription with {{ecloud}}.
 
 
 ### Create an {{es}} resource [_create_an_es_resource_2]
@@ -50,7 +50,7 @@ Microsoft Azure allows you to find, deploy, and manage {{es}} from within the Az
 
     ::::
 
-2. In the search bar, enter **Elastic Cloud (Elasticsearch)** and then select **Elastic Cloud (Elasticsearch) – An Azure Native ISV Service**.
+2. In the search bar, enter **Elastic Cloud (Elasticsearch)** and then select **Elastic Cloud (Elasticsearch) – An Azure Native Service**.
 3. Click **Create**.
 4. Enter the **Subscription**, **Resource group**, and the **Resource name**.
 5. Select an {{es}} version.
@@ -79,9 +79,9 @@ Microsoft Azure allows you to find, deploy, and manage {{es}} from within the Az
 10. To look for available data, click **Observability**. There should be no data yet. Next, you’ll ingest logs.
 
 
-## Step 2: Ingest logs by using the Azure Native ISV Service [azure-ingest-logs-native-integration]
+## Step 2: Ingest logs by using the Azure Native Service [azure-ingest-logs-native-integration]
 
-To ingest Azure subscription and resource logs into Elastic, you use the Azure Native ISV Service.
+To ingest Azure subscription and resource logs into Elastic, you use the Azure Native Service.
 
 1. In the Azure portal, go to your {{es}} resource page and click **Ingest logs and metrics from Azure Services**.
 2. Under **Logs**, select both checkboxes to collect subscription activity logs and Azure resource logs. Click **Save**.

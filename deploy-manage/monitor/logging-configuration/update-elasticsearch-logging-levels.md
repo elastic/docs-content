@@ -27,11 +27,11 @@ Do not filter out messages at `INFO` or higher log levels, or else you may not b
 
 Do not enable logging at levels `DEBUG` or `TRACE` unless you are following instructions elsewhere in this manual which call for more detailed logging, or you are an expert user who will be reading the {{es}} source code to determine the meaning of the logs.
 
-Messages are logged by a hierarchy of loggers which matches the hierarchy of Java packages and classes in the [{{es}} source code](https://github.com/elastic/elasticsearch/). Every logger has a corresponding [dynamic setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) which can be used to control the verbosity of its logs. The setting’s name is the fully-qualified name of the package or class, prefixed with `logger.`.
+Messages are logged by a hierarchy of loggers which matches the hierarchy of Java packages and classes in the [{{es}} source code](https://github.com/elastic/elasticsearch/). Every logger has a corresponding [dynamic setting]({{es-apis}}operation/operation-cluster-put-settings) which can be used to control the verbosity of its logs. The setting’s name is the fully-qualified name of the package or class, prefixed with `logger.`.
 
 You can set each logger’s verbosity to the name of a log level, for instance `DEBUG`, which means that messages from this logger at levels up to the specified one will be included in the logs. You can also use the value `OFF` to suppress all messages from the logger.
 
-For example, the `org.elasticsearch.discovery` package contains functionality related to the [discovery](../../distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md) process, and you can control the verbosity of its logs with the `logger.org.elasticsearch.discovery` setting. To enable `DEBUG` logging for this package, use the [Cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) as follows:
+For example, the `org.elasticsearch.discovery` package contains functionality related to the [discovery](../../distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md) process, and you can control the verbosity of its logs with the `logger.org.elasticsearch.discovery` setting. To enable `DEBUG` logging for this package, use the [Cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings) as follows:
 
 ```console
 PUT /_cluster/settings

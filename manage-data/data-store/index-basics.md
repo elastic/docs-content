@@ -24,7 +24,7 @@ This page explains the core parts of an index (_documents_, _mappings_, and _set
 
 In {{serverless-full}}:
 * Shards, replicas, and nodes are fully managed for you. The platform automatically scales resources based on your workload, so you don't need to configure or monitor these details. The shard-related content on this page explains how {{es}} works under the hood.
-* Each project supports up to 15,000 total indices. This limit helps ensure reliable performance and stability. If you need a higher limit, you can [request an increase](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#index-and-resource-limits). For index sizing recommendations, refer to [index sizing guidelines](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-index-size).
+* Each project supports up to 15,000 total indices. This limit helps ensure reliable performance and stability. If you need a higher limit, you can [request an increase](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-index-size). For index sizing recommendations, refer to [index sizing guidelines](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-index-size).
 
 :::
 
@@ -67,7 +67,7 @@ A simple {{es}} document might look like this:
 }
 ```
 1. [Metadata fields](elasticsearch://reference/elasticsearch/mapping-reference/document-metadata-fields.md) are system-managed fields prefixed with an underscore. `_index` identifies which index stores the document and `_id` is the document's unique identifier within that index.
-2. The `_source` field contains the original document body as submitted. The fields inside `_source` are the ones you control through [mappings](#elasticsearch-intro-documents-fields-mappings). You can define these mappings explicitly or have {{es}} create them for you dynamically when your data is ingested.
+2. The `_source` field contains the original document body as submitted. The fields inside `_source` are the ones you control through [mappings](#elasticsearch-intro-documents-fields-mappings). You can define these mappings explicitly or have {{es}} create them for you dynamically when your data is ingested. Some [index modes](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting), such as [columnar](/manage-data/data-store/columnar.md), change how `_source` and field indexes are stored while keeping the same document and query APIs.
 
 ### Mappings and data types [elasticsearch-intro-documents-fields-mappings]
 
@@ -87,7 +87,7 @@ For example, the following mapping defines field types for a few common data typ
 
 ### Settings [index-settings]
 
-Each index has settings that control its storage and performance behavior. Settings are configured when the index is created, either directly in the [create index request](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) or through an [index template](/manage-data/data-store/templates.md). Some index settings can be updated dynamically on a live index.
+Each index has settings that control its storage and performance behavior. Settings are configured when the index is created, either directly in the [create index request]({{es-apis}}operation/operation-indices-create) or through an [index template](/manage-data/data-store/templates.md). Some index settings can be updated dynamically on a live index.
 
 Common settings include:
 

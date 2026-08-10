@@ -23,7 +23,7 @@ Refer to [](/deploy-manage/api-keys.md) to learn how to generate API keys for yo
 
 ### Orchestration APIs
 
-You can use the [{{ece}} RESTful API](https://www.elastic.co/docs/api/doc/cloud-enterprise/) to manage both your {{stack}} deployments and the ECE platform.
+You can use the [{{ece}} RESTful API]({{ece-apis}}) to manage both your {{stack}} deployments and the ECE platform.
 
 Refer to [{{es}} API conventions](cloud://reference/cloud-enterprise/restful-api.md) to learn about headers and request body conventions, and view examples.
 

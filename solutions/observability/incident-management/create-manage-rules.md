@@ -6,28 +6,30 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - id: observability
-  - id: cloud-serverless
+  - id: "observability"
+  - id: "serverless-observability"
 navigation_title: Create and manage rules
+description: Create and manage alerting rules for Elastic Observability applications and SLOs. Define rules that detect conditions across APM, logs, metrics, and infrastructure, and configure actions to trigger when conditions are met.
 ---
 
 # Create and manage rules for Elastic {{observability}} [observability-create-manage-rules]
-
-::::{note}
-
-**For Observability serverless projects**, the **Editor** role or higher is required to create and manage rules for alerting. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-
-::::
-
 
 Alerting enables you to define *rules*, which detect complex conditions within different apps and trigger actions when those conditions are met. Alerting provides a set of built-in connectors and rules for you to use.
 
 ::::{note}
 :applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
 
-All of your alerting rules appear in one list on the **Rules** page. Open the page from **{{stack-manage-app}}** > **Alerts and insights** > **{{rules-ui}}**, or from **Manage rules** (or the equivalent link) in {{observability}}, Discover, or Stack Monitoring. Each of these opens the same **Rules** page, where you can view and manage rules.
+All of your alerting rules appear in one list on the **Rules** page. Open the page from **{{stack-manage-app}}** → **Alerts and insights** → **{{rules-ui}}**, or from **Manage rules** (or the equivalent link) in {{observability}}, Discover, or Stack Monitoring. Each of these opens the same **Rules** page, where you can view and manage rules.
 ::::
 
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
+
+## Required permissions [_required_permissions]
+
+* **Rules**: To create and manage {{observability}} rules, assign `All` privileges for the relevant Observability features, which vary by rule type, for example, APM, Logs, Infrastructure, or Synthetics. Anomaly detection rules also require **Analytics → {{ml-app}}** privileges. For more information, refer to [Alerting security requirements](/explore-analyze/alerting/alerts/alerting-setup.md#alerting-security). {applies_to}`serverless: ga` On serverless, assign the **Editor** role or higher instead. For more information, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+* **Alerts**: To read {{observability}} alerts and perform per-alert actions (such as snooze, unsnooze, and acknowledge) without allowing users to manage rules—assign the **Observability Alerts** feature privilege (`All` for full access, or `Read` for view and snooze state only). Assign this through {{kib}} roles on the {{stack}}, or through a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md) on serverless. For more information, refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
 
 ## Observability rules [observability-create-manage-rules-observability-rules]
 
@@ -133,3 +135,13 @@ You can modify the criteria for changing an alert's status to [flapping state](v
 {applies_to}`stack: ga 9.3+` You can modify the flapping settings for a specific rule while creating or editing it. You can also modify the flapping settings for all rules in your {{kib}} space or {{serverless-short}} project. To do this, go to the **Rules** page (find the **Rules** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)), click **Settings**, then go to the **Alert flapping detection** settings.
 
 {applies_to}`stack: ga 9.0-9.2` You can only modify global flapping settings for your entire {{kib}} space or {{serverless-short}} project.
+
+## {{cps-cap}} scope for rules [observability-cps-scope-for-rules]
+
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+:::{include} /solutions/_snippets/cps-sec-obs-rules.md
+:::

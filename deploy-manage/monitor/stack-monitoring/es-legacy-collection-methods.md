@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/collecting-monitoring-data.html
 applies_to:
   deployment:
-    self: deprecated 7.16.0
+    self: deprecated 7.16, removed 10.0
 products:
   - id: elasticsearch
 ---
@@ -12,8 +12,13 @@ products:
 # Legacy collection methods for self-managed {{es}} [collecting-monitoring-data]
 
 
-::::{admonition} Deprecated in 7.16
-Using the {{es}} Monitoring plugin to collect and ship monitoring data is deprecated. {{agent}} and {{metricbeat}} are the recommended methods for collecting and shipping monitoring data to a monitoring cluster. If you previously configured legacy collection methods, you should migrate to using [{{agent}}](collecting-monitoring-data-with-elastic-agent.md) or [{{metricbeat}}](collecting-monitoring-data-with-metricbeat.md) collection methods.
+::::{warning}
+The {{es}} Monitoring plugin is deprecated and will be removed in 10.0. Choose one of the following replacements to monitor your {{es}} cluster:
+
+* **[AutoOps](../autoops.md)** (recommended): Simplifies cluster management through performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths.
+* **Stack monitoring with [{{agent}}](collecting-monitoring-data-with-elastic-agent.md) or [{{metricbeat}}](collecting-monitoring-data-with-metricbeat.md)**: Collect logs and metrics from {{es}} and ship them to a monitoring cluster for visualization in {{kib}}.
+
+To help you decide, refer to the [AutoOps and Stack Monitoring comparison](../autoops-vs-stack-monitoring.md).
 ::::
 
 
@@ -32,7 +37,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
         ::::
 
 
-        For more information, see [Monitoring settings](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
+        For more information, see [Monitoring settings](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings]({{es-apis}}operation/operation-cluster-put-settings).
 
     2. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the cluster. By default, it is disabled (`false`).
 
@@ -58,7 +63,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
         Alternatively, you can enable this setting in {{kib}}. In the side navigation, click **Monitoring**. If data collection is disabled, you are prompted to turn it on.
 
-        For more information, see [Monitoring settings](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
+        For more information, see [Monitoring settings](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings]({{es-apis}}operation/operation-cluster-put-settings).
 
     3. Optional: Specify which indices you want to monitor.
 
@@ -150,9 +155,5 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
 6. Optional: [Configure the indices that store the monitoring data](../monitoring-data/configuring-data-streamsindices-for-monitoring.md).
 7. [View the monitoring data in {{kib}}](kibana-monitoring-data.md).
-
-
-
-
 
 

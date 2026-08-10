@@ -1,4 +1,7 @@
 ---
+description: "Overview of the Elastic documentation structure, navigation, and applicability badges to help find content relevant to your deployment type and version."
+products:
+  - id: elastic-stack
 applies_to:
   serverless:
   stack:

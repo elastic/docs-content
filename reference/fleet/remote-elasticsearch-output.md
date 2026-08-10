@@ -5,7 +5,7 @@ mapped_pages:
 description: Remote ES output allows you to send agent data to a remote cluster, keeping data separate and independent from the deployment where you use Fleet.
 applies_to:
   stack: ga
-  serverless: unavailable
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -15,7 +15,15 @@ products:
 
 Remote {{es}} outputs allow you to send {{agent}} data to a remote {{es}} cluster. This is especially useful for data that you want to keep separate and independent from the deployment where you use {{fleet}} to manage the {{agent}}s.
 
+Both the management cluster (where you configure {{fleet}}) and the remote cluster (where {{agents}} send data) can be either an {{stack}} deployment or a {{serverless-short}} project. When the remote cluster is a {{serverless-short}} project, some features are not available. Refer to [Limitations](#remote-output-limitations).
+
 A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-output-settings.md) as your management {{es}} cluster.
+
+:::{note}
+:applies_to: {serverless: preview, stack: preview 9.5+}
+
+The remote {{es}} output can also serve as the exporter target for [OpenTelemetry input packages](/reference/fleet/otel-integrations.md) managed by {{fleet}}.
+:::
 
 ## Limitations [remote-output-limitations]
 
@@ -23,7 +31,8 @@ These limitations apply to remote {{es}} output:
 
 * All {{fleet-server}} hosts that are configured for the remote output must be able to reach the remote {{es}} cluster with a service token to generate API keys for the {{agents}} that use the remote output for data ingestion.
 * Using a remote {{es}} output with a target cluster that has [network security](/deploy-manage/security/network-security.md) enabled is not currently supported.
-* Using {{elastic-defend}} when a remote {{es}} output is configured for an {{agent}} is not currently supported.
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` Using {{elastic-defend}} with a remote {{es}} output is only available on {{stack}} deployments from this version. It is not available for previous versions and on {{serverless-short}}. For more information, refer to [Use {{elastic-defend}} with a remote {{es}} output](/solutions/security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md).
+* When the remote {{es}} cluster is a {{serverless-short}} project, [automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md) is not available.
 
 ## Configure the remote output [remote-output-config]
 
@@ -58,7 +67,7 @@ In the **Service Token** field, add a service token to access the remote cluster
 :::{dropdown} Create a service token to access the remote cluster
 :open:
 1. Copy the API request located below the **Service Token** field.
-2. In the remote cluster, open the {{kib}} menu, then go to **Management** → **Dev Tools** in self-managed deployments, or to **Developer tools** in {{ecloud}} deployments.
+2. In the remote cluster, open {{kib}} and go to **Developer tools** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Paste the API request in the console, then run it.
 4. Copy the value for the generated service token.
 5. In the management cluster, paste the value you copied into the **Service Token** field of the remote output configuration.
@@ -75,7 +84,7 @@ Configure SSL certificate authorities if the remote {{es}} cluster uses certific
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.1
+:::{applies-item} { stack: ga 9.1+, serverless: ga }
 
 Expand the **Authentication** section, and in the **Server SSL certificate authorities** field, enter the path to the CA certificate or paste the certificate content directly.
 
@@ -114,7 +123,7 @@ If your remote {{es}} cluster requires mutual TLS (mTLS) authentication, configu
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.1
+:::{applies-item} { stack: ga 9.1+, serverless: ga }
 
 Expand the **Authentication** section to configure mTLS settings:
 
@@ -161,14 +170,14 @@ For more information about TLS configuration options, refer to [One-way and mutu
 1. {applies_to}`stack: ga 9.1` Choose whether integrations should be automatically synchronized on the remote {{es}} cluster. To configure this feature, refer to [Automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md).
 
    :::{note}
-   Automatic integrations synchronization is available only for certain subscription levels. For more information, check **Fleet Multi-Cluster support** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page.
+   Automatic integrations synchronization is available only for certain subscription levels. For more information, check **Fleet Multi-Cluster support** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page. This feature is not available when the remote {{es}} cluster is a {{serverless-short}} project. Refer to [Limitations](#remote-output-limitations).
    :::
 
 2. Choose whether the remote output should be the default for agent integrations or for agent monitoring data. When set as the default, {{agents}} use this output to send data if no other output is set in the [agent policy](/reference/fleet/agent-policy.md).
 
 3. Select the [performance tuning settings](/reference/fleet/es-output-settings.md#es-output-settings-performance-tuning-settings) to optimize {{agent}}s for throughput, scale, or latency, or leave the default `balanced` setting.
 
-4. {applies_to}`stack: preview 9.2` Choose whether {{agents}} using this output should send data to [wired streams](/solutions/observability/streams/streams.md#streams-wired-streams). Using this feature requires additional steps. For more details, refer to [Ship data to streams → {{fleet}}](/solutions/observability/streams/wired-streams.md#streams-wired-streams-ship).
+4. {applies_to}`stack: preview 9.2` Choose whether {{agents}} using this output should send data to [wired streams](/solutions/observability/streams/get-data-in.md#get-data-in-wired). Using this feature requires additional steps. For more details, refer to [Ship data to streams → {{fleet}}](/solutions/observability/streams/get-data-in.md#get-data-in-wired).
 :::::
 
 :::::{step} Configure advanced settings (optional)
@@ -205,7 +214,10 @@ If you have multiple {{fleet-server}} instances, each {{fleet-server}} tests con
 
 ## Set up {{ccs}} to query remote data [set-up-ccs]
 
-In some cases, {{ccs}} (CCS) is required to query data on the remote cluster from the management cluster, such as Osquery queries on {{agents}} that use a remote {{es}} output.
+In some cases, {{ccs}} (CCS) is required to query data on the remote cluster from the management cluster. For example:
+
+* Osquery queries on {{agents}} that use a remote {{es}} output.
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` {{elastic-defend}} endpoint data for {{agents}} that use a remote {{es}} output, so that endpoint management features in {{elastic-sec}} can read data stored on the remote cluster. For more information, refer to [Use {{elastic-defend}} with a remote {{es}} output](/solutions/security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md).
 
 :::{note}
 You don't need to set up {{ccs-init}} for {{agents}} to send data to a remote {{es}} output or for [automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md). Add {{ccs}} only when the management cluster must search data stored on the remote cluster.

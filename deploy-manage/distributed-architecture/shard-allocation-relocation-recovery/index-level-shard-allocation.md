@@ -148,7 +148,7 @@ In the above example:
 * `index_2` will be recovered next because it was created more recently.
 * `index_1` will be recovered last.
 
-This setting accepts an integer, and can be updated on a live index with the [update index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings):
+This setting accepts an integer, and can be updated on a live index with the [update index settings API]({{es-apis}}operation/operation-indices-put-settings):
 
 ```console
 PUT index_4/_settings

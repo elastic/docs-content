@@ -23,7 +23,7 @@ You might need to update your TLS certificates in the following scenarios:
 
 * **Your current node certificates will expire soon.** In this case, you need to generate new certificates for all nodes, using the same CA if it remains valid, or a new CA if the current one is also expiring.
   
-  Use the [SSL certificate](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ssl-certificates) API to check when your certificates are expiring.
+  Use the [SSL certificate]({{es-apis}}operation/operation-ssl-certificates) API to check when your certificates are expiring.
 
   ```console
   GET _ssl/certificates

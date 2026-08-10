@@ -12,96 +12,144 @@ products:
 
 # Configure a SUSE host [ece-configure-hosts-sles12]
 
-The following instructions explain how to prepare your hosts on SUSE Linux Enterprise Server 12 SP5 (SLES 12) or 15 (SLES 15).
-
-* [Install Docker](#ece-install-docker-sles12)
-* [Set up XFS quotas](#ece-xfs-setup-sles12)
-* [Update the configurations settings](#ece-update-config-sles)
-* [Configure the Docker daemon options](#ece-configure-docker-daemon-sles12)
-
-If you want to install {{ece}} (ECE) on your own hosts, the steps for preparing your hosts can take a bit of time. There are two ways you can approach this:
-
-* **Think like a minimalist**: [Install the correct version of Docker](#ece-install-docker-sles12) on hosts that meet the [prerequisites](prepare-environment.md) for ECE, then skip ahead and [install ECE](install.md#install-ece). Be aware that some checks during the installation can fail with this approach, which will mean doing further host preparation work before retrying the installation.
-* **Cover your bases**: If you want to make absolutely sure that your installation of {{ece}} can succeed on hosts that meet the [prerequisites](prepare-environment.md), or if any of the checks during the installation failed previously, run through the full preparation steps in this section and then and [install ECE](install.md#install-ece). You’ll do a bit more work now, but life will be simpler later on.
-
-Regardless of which approach you take, the steps in this section need to be performed on every host that you want to use with ECE.
-
-## Install Docker on SLES [ece-install-docker-sles12]
+This guide explains how to prepare a SUSE Linux Enterprise Server (SLES) host for an {{ece}} (ECE) installation. It covers the operating system configuration required before you install ECE, including Docker installation, XFS quota configuration, and other host-specific settings. The steps on this page target SLES 15 SP4.
 
 ::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
 
+::::{warning}
+SLES 12 SP5 reached general support end of life on **October 31, 2024**. Use SLES 15 or later for new {{ece}} installations, and migrate existing SLES 12 SP5 hosts.
+::::
 
-1. Remove Docker and previously installed podman packages (if previously installed).
+## Prerequisites [ece-configure-host-suse-prerequisites]
+
+Before you begin:
+
+- Identify a supported SLES and Docker version combination in the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Substitute the example versions in this guide with the versions listed there.
+
+- Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) for a list of ports that need to be open. The technical configuration depends on the underlying infrastructure.
+
+- Review the [Users and permissions prerequisites](ece-users-permissions.md) for ECE. The commands in this guide assume that you are logged in as the non-root user that will install and run ECE, referred to throughout this guide as the **ECE user**. We recommend using a dedicated `elastic` user account. If it does not already exist, you can create it in the next section.
+
+- If you use one user to prepare the host and another to install ECE, replace `$USER` with the name of the ECE user in the applicable commands throughout this guide.
+
+## Prepare the user account for ECE [ece-prepare-user-sles]
+
+Follow these steps to configure the user account according to the [Users and permissions prerequisites](ece-users-permissions.md) for ECE hosts.
+
+1. Set up the OS groups and add your user.
+
+    1. Create the `elastic` and `docker` groups if they don't already exist:
+
+        ```sh
+        sudo groupadd elastic
+        sudo groupadd docker
+        ```
+
+    1. Add the user that will install and run ECE to both groups. Use one of the following options:
+
+        * **Create a dedicated user (recommended).** If the user you are currently logged in as is not the user that will install and run ECE, create a dedicated user. The following example creates the recommended `elastic` user and adds it to both groups:
+
+            ```sh
+            sudo useradd -m -g elastic -G docker elastic
+            ```
+
+            ::::{note}
+            If you create a dedicated ECE user, we recommend granting it `sudo` privileges and then logging in or switching to that user before continuing. This allows `$USER` to automatically resolve to the ECE user in the remaining commands.
+
+            Alternatively, you can continue using a different account with `sudo` privileges and replace `$USER` with the name of the ECE user in commands throughout the rest of this guide.
+            ::::
+
+        * **Use the current user.** If your current user will be the ECE user, add it to both groups:
+
+            ```sh
+            sudo usermod -aG elastic,docker $USER
+            ```
+
+1. Verify that the ECE user has a UID and GID of at least 1000:
+
+    ```sh
+    id $USER
+    ```
+
+    The output should show a `uid` and `gid` value of `1000` or higher.
+
+1. Verify that the user's primary group is `elastic`:
+
+    ```sh
+    id -gn $USER
+    ```
+
+    If the command doesn't return `elastic`, find the `elastic` group GID:
+
+    ```sh
+    grep elastic /etc/group
+    ```
+
+    Then set the user's primary group to `elastic`:
+
+    ```sh
+    sudo usermod -g <elastic_group_gid> $USER
+    ```
+
+## Install Docker on SLES [ece-install-docker-sles12]
+
+ECE runs its services in containers, following a [service-oriented architecture](ece-architecture.md). These steps install Docker on SLES using `zypper` and leave the service stopped so it can be configured later.
+
+1. Remove Docker and any previously installed Podman packages:
 
     ```sh
     sudo zypper remove -y docker docker-ce podman podman-remote
     ```
 
-2. Update packages to the latest available versions
+1. Update packages to the latest available versions:
 
     ```sh
     sudo zypper refresh
     sudo zypper update -y
     ```
 
-3. Install Docker and other required packages:
-
-    * For SLES 12:
-
-        ```sh
-        sudo zypper install -y docker=24.0.7_ce-98.109.3
-        ```
-
-    * For SLES 15:
-
-        ```sh
-        sudo zypper install -y curl device-mapper lvm2 net-tools docker=24.0.7_ce-150000.198.2 net-tools
-        ```
-
-4. Disable nscd, as it interferes with Elastic’s services:
+1. List the available Docker versions:
 
     ```sh
-    sudo systemctl stop nscd
-    sudo systemctl disable nscd
+    sudo zypper search -s -t package --match-exact docker
     ```
 
+    Note the version you want to install. Check the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for supported Docker versions for your OS. If the latest available version is compatible, you don't need to specify an explicit version in the next step.
 
-
-## Set up OS groups and user [ece_set_up_os_groups_and_user]
-
-1. If they don’t already exist, create the following OS groups:
+1. Install Docker and other required packages on SLES 15. For example, to install Docker 25:
 
     ```sh
-     sudo groupadd elastic
-     sudo groupadd docker
+    sudo zypper install -y curl device-mapper lvm2 net-tools docker=25.0.6_ce-150000.207.1 <1>
     ```
 
-2. Add the user to these groups:
+    1. Replace `25.0.6_ce-150000.207.1` with the exact package version from the repository listing. Note that zypper does not support wildcards (for example, `docker=25.*`). To install the latest available version, specify `docker` without a version number.
+
+    ::::{tip}
+    If `zypper` reports that the requested Docker version isn't available, make sure the SUSE **Containers Module** is enabled. Refer to the [SUSE documentation](https://documentation.suse.com/) for instructions on adding the upstream Docker repository.
+    ::::
+
+1. Ensure Docker is stopped before continuing. Docker is started later after the daemon configuration is updated:
 
     ```sh
-     sudo usermod -aG elastic,docker $USER
+    sudo systemctl stop docker
     ```
-
-
 
 ## Set up XFS quotas [ece-xfs-setup-sles12]
 
-XFS is required to support disk space quotas for {{es}} data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On SLES 12 and 15, you need to set up an XFS file system and have quotas enabled.
+ECE relies on XFS project quotas to manage disk space for {{es}} data directories. These quotas limit the amount of disk space available to each {{es}} cluster node based on the RAM-to-disk ratio defined by its [instance configuration](deployment-templates.md#ece-getting-started-instance-configurations). For example, the default `data.default` instance configuration uses a 1:32 ratio, allowing 32 GB of disk space for every 1 GB of RAM assigned to a cluster node.
 
-Disk space quotas set a limit on the amount of disk space an {{es}} cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
+To use disk quotas, the file system mounted at `/mnt/data` must be an XFS file system with project quotas enabled. This guide creates a dedicated XFS file system for `/mnt/data`, which is the recommended configuration. If `/mnt/data` already resides on an XFS file system with project quotas enabled, you can skip the file system creation steps.
 
 ::::{note}
-Using LVM, `mdadm`, or a combination of the two for block device management is possible, but the configuration is not covered here, nor is it provided as part of supporting ECE.
+You can use LVM, `mdadm`, or a combination of the two for block device management. However, their configuration is outside the scope of this guide and is not covered by ECE support.
 ::::
-
 
 ::::{important}
-You must use XFS and have quotas enabled on all allocators, otherwise disk usage won’t display correctly.
+You must use XFS and have quotas enabled on all allocators. Otherwise, disk usage won't display correctly.
 ::::
 
-
-**Example:** Set up XFS on a single, pre-partitioned block device named `/dev/xvdg1`. Replace `/dev/xvdg1` in the following example with the corresponding device on your host.
+In the following example, XFS is set up on a single, pre-partitioned block device named `/dev/xvdg1`. Replace `/dev/xvdg1` with the corresponding device on your host.
 
 1. Format the partition:
 
@@ -109,84 +157,96 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     sudo mkfs.xfs /dev/xvdg1
     ```
 
-2. Create the `/mnt/data/` directory as a mount point:
-
-    ```sh
-    sudo install -o $USER -g elastic -d -m 700 /mnt/data
-    ```
-
-3. Add an entry to the `/etc/fstab` file for the new XFS volume. The default filesystem path used by ECE is `/mnt/data`.
+1. Add an entry to the `/etc/fstab` file for the new XFS volume. The default filesystem path used by ECE is `/mnt/data`:
 
     ```sh
     /dev/xvdg1	/mnt/data	xfs	defaults,pquota,prjquota,x-systemd.automount  0 0
     ```
 
-4. Regenerate the mount files:
+## Prepare the data directories [ece-prepare-data-directories-sles]
+
+Prepare the data directories used by {{ece}} and Docker. These steps create the `/mnt/data` and `/mnt/data/docker` directories, mount an XFS file system if applicable, and apply the required ownership and permissions.
+
+1. Create the `/mnt/data` directory if it doesn't already exist. It must be owned by the ECE user and the `elastic` group, and use `700` permissions:
 
     ```sh
-    sudo mount -a
+    sudo install -o $USER -g elastic -d -m 700 /mnt/data
     ```
 
+1. If you configured a dedicated XFS file system in [Set up XFS quotas](#ece-xfs-setup-sles12):
 
+    1. Mount the file system configured in `/etc/fstab`:
 
-## Update the configurations settings [ece-update-config-sles]
+        ```sh
+        sudo mount -a
+        ```
 
-1. Stop the Docker service:
+    1. Set the ownership and permissions for `/mnt/data`:
+
+        Mounting the XFS file system for the first time replaces the original mount point. Reapply the required ownership and permissions to the mounted file system.
+
+        ```sh
+        sudo chown $USER:elastic /mnt/data
+        sudo chmod 700 /mnt/data
+        ```
+
+1. Create the `/mnt/data/docker` directory for Docker storage:
 
     ```sh
-    sudo systemctl stop docker
+    sudo install -o $USER -g elastic -d -m 700 /mnt/data/docker
     ```
 
-2. Enable cgroup accounting for memory and swap space.
+## Configure system settings [ece-update-config-sles]
 
-    1. In the `/etc/default/grub` file, ensure that the `GRUB_CMDLINE_LINUX=` variable includes these values:
+Adjust the host settings required by ECE, including cgroup accounting, kernel parameters, and system limits.
+
+1. Stop the `nscd` service and prevent it from starting automatically. This service can interfere with Elastic services:
+
+    ```sh
+    sudo systemctl stop nscd
+    sudo systemctl disable nscd
+    ```
+
+1. Enable cgroup accounting for memory and swap space:
+
+    1. In the `/etc/default/grub` file, ensure the `GRUB_CMDLINE_LINUX=` variable includes these values:
 
         ```sh
         cgroup_enable=memory swapaccount=1 cgroup.memory=nokmem
         ```
 
-    2. Update your Grub configuration:
+    1. Update your Grub configuration:
 
         ```sh
         sudo update-bootloader
         ```
 
-3. Configure kernel parameters
+1. Configure kernel parameters:
 
     ```sh
     cat <<EOF | sudo tee -a /etc/sysctl.conf
-    # Required by Elasticsearch
-    vm.max_map_count=1048576
-    # enable forwarding so the Docker networking works as expected
-    net.ipv4.ip_forward=1
-    # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
-    # See https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config-tcpretries.html
-    net.ipv4.tcp_retries2=5
-    # Make sure the host doesn't swap too early
-    vm.swappiness=1
+    vm.max_map_count=1048576 <1>
+    net.ipv4.ip_forward=1 <2>
+    net.ipv4.tcp_retries2=5 <3>
+    vm.swappiness=1 <4>
     EOF
     ```
+    1. Required by {{es}}
+    2. Enable IP forwarding so the Docker networking works as expected
+    3. Decrease the maximum number of TCP retransmissions to 5 as recommended for [{{es}} TCP retransmission timeout](/deploy-manage/deploy/self-managed/system-config-tcpretries.md)
+    4. Make sure the host doesn't swap too early
 
     ::::{important}
-    The `net.ipv4.tcp_retries2` setting applies to all TCP connections and affects the reliability of communication with systems other than {{es}} clusters too. If your clusters communicate with external systems over a low quality network then you may need to select a higher value for `net.ipv4.tcp_retries2`.
+    The `net.ipv4.tcp_retries2` setting applies to all TCP connections and also affects the reliability of communication with systems other than {{es}} clusters. If your clusters communicate with external systems over a low quality network, you might need to select a higher value for `net.ipv4.tcp_retries2`.
     ::::
-
 
     1. Apply the settings:
 
         ```sh
         sudo sysctl -p
-        sudo service network restart
         ```
 
-4. Adjust the system limits.
-
-    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the {{ecloud}} hosted offering and should be used for ECE as well.
-
-    ::::{tip}
-    If you are using a user name other than `elastic`, adjust the configuration values accordingly.
-    ::::
-
+1. Adjust the system limits by adding the following configuration values to the `/etc/security/limits.conf` file. If needed, make sure to replace `elastic` with your user name:
 
     ```sh
     *                soft    nofile         1024000
@@ -204,11 +264,78 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     root             soft    memlock        unlimited
     ```
 
-5. NOTE: This step is optional if the Docker registry doesn’t require authentication.
+1. Optional: Tune additional network kernel parameters for production workloads. Create a `70-cloudenterprise.conf` file in `/etc/sysctl.d/` and include these settings:
 
-    Authenticate the `elastic` user to pull images from the Docker registry you use, by creating the file `/home/elastic/.docker/config.json`. This file needs to be owned by the `elastic` user. If you are using a user name other than `elastic`, adjust the path accordingly.
+    ```sh
+    cat <<EOF | sudo tee /etc/sysctl.d/70-cloudenterprise.conf
+    net.ipv4.tcp_max_syn_backlog=65536
+    net.core.somaxconn=32768
+    net.core.netdev_max_backlog=32768
+    net.ipv4.tcp_keepalive_time=1800
+    net.netfilter.nf_conntrack_tcp_timeout_established=7200
+    net.netfilter.nf_conntrack_max=262140
+    EOF
+    ```
 
-    **Example**: In case you use `docker.elastic.co`, the file content looks like as follows:
+    Apply the settings:
+
+    ```sh
+    sudo sysctl --system
+    ```
+
+    :::{note}
+    According to the [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md), {{es}} overrides TCP keepalive settings at the socket level for its own connections:
+    * If system-level values exceed 300 seconds, {{es}} automatically lowers them to 300 seconds.
+    * Values below 300 seconds are used as is.
+
+    For non-{{es}} connections such as the proxy layer, consider reducing the following TCP keepalive parameters to detect stale network sessions and prevent firewalls from dropping silent connections:
+    * `net.ipv4.tcp_keepalive_time`
+    * `net.ipv4.tcp_keepalive_intvl`
+    * `net.ipv4.tcp_keepalive_probes`
+    :::
+
+## Configure the Docker daemon [ece-configure-docker-daemon-sles12]
+
+After you [install Docker](#ece-install-docker-sles12) and [prepare the data directories](#ece-prepare-data-directories-sles), set the Docker daemon options required by ECE, then enable and restart the service to apply them. This configuration points Docker storage to the `/mnt/data/docker` directory created earlier.
+
+1. Edit `/etc/docker/daemon.json` to make sure the following configuration values are present:
+
+    ```json
+    {
+      "storage-driver": "overlay2",
+      "bip":"172.17.42.1/16",
+      "icc": false,
+      "log-driver": "json-file",
+      "log-opts": { <1>
+        "max-size": "500m",
+        "max-file": "10"
+      },
+      "data-root": "/mnt/data/docker",
+      "default-ulimits": { <2>
+        "nofile": {
+          "Name": "nofile",
+          "Hard": 1024000,
+          "Soft": 1024000
+        },
+        "memlock": {
+          "Name": "memlock",
+          "Hard": -1,
+          "Soft": -1
+        },
+        "nproc": {
+          "Name": "nproc",
+          "Hard": -1,
+          "Soft": -1
+        }
+      }
+    }
+    ```
+    1. The `max-size` and `max-file` options configure rotation for the `json-file` logs created by each container. Adjust these values to match your logging requirements.
+    2. The `default-ulimits` setting increases the maximum number of open file descriptors available to Docker containers.
+
+1. Optional: If the Docker registry requires authentication, authenticate the `elastic` user to pull images from it by creating the file `/home/elastic/.docker/config.json`. This file needs to be owned by the `elastic` user. If you are using a user name other than `elastic`, adjust the path accordingly.
+
+    For example, if you use `docker.elastic.co`, the file content looks like this:
 
     ```text
     {
@@ -220,59 +347,13 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     }
     ```
 
-6. If you did not create the mount point earlier (if you did not set up XFS), create the `/mnt/data/` directory as a mount point:
+1. Enable Docker to start on boot:
 
     ```sh
-    sudo install -o $USER -g elastic -d -m 700 /mnt/data
+    sudo systemctl enable docker
     ```
 
-7. If you [set up a new device with XFS](#ece-xfs-setup-sles12) earlier:
-
-    1. Mount the block device (change the device name if you use a different device than `/dev/xvdg1`):
-
-        ```sh
-        sudo mount /dev/xvdg1
-        ```
-
-    2. Set the permissions on the newly mounted device:
-
-        ```sh
-        sudo chown $USER:elastic /mnt/data
-        ```
-
-8. Create the `/mnt/data/docker` directory for the Docker service storage:
-
-    ```sh
-    sudo install -o $USER -g elastic -d -m 700 /mnt/data/docker
-    ```
-
-
-
-## Configure the Docker daemon [ece-configure-docker-daemon-sles12]
-
-1. Edit `/etc/docker/daemon.json`, and make sure that the following configuration values are present:<br>
-
-    ```json
-    {
-      "storage-driver": "overlay2",
-      "bip":"172.17.42.1/16",
-      "icc": false,
-      "log-driver": "json-file",
-      "log-opts": {
-        "max-size": "500m",
-        "max-file": "10"
-      },
-      "data-root": "/mnt/data/docker"
-    }
-    ```
-
-2. The user installing ECE must have a User ID (UID) and Group ID (GID) of 1000 or higher. Make sure that the GID matches the ID of the `elastic`` group created earlier (likely to be 1000). You can set this using the following command:
-
-    ```sh
-    sudo usermod -g <elastic_group_gid> $USER
-    ```
-
-3. Apply the updated Docker daemon configuration:
+1. Apply the updated Docker daemon configuration:
 
    * Reload the Docker daemon configuration:
 
@@ -286,76 +367,119 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
         sudo systemctl restart docker
         ```
 
-   * Enable Docker to start on boot:
+## Verify the host configuration [ece-verify-host-config-sles]
 
-        ```sh
-        sudo systemctl enable docker
-        ```
+After completing the configuration steps in the previous sections, reboot the host and verify that the required system, storage, and Docker configuration has been applied successfully.
 
-4. Recommended: Tune your network settings.
-
-    Create a `70-cloudenterprise.conf` file in the `/etc/sysctl.d/` file path that includes these network settings:
-
-    ```sh
-    cat << SETTINGS | sudo tee /etc/sysctl.d/70-cloudenterprise.conf
-    net.ipv4.tcp_max_syn_backlog=65536
-    net.core.somaxconn=32768
-    net.core.netdev_max_backlog=32768
-    net.ipv4.tcp_keepalive_time=1800
-    net.netfilter.nf_conntrack_tcp_timeout_established=7200
-    net.netfilter.nf_conntrack_max=262140
-    SETTINGS
-    ```
-
-    :::{note}
-    According to [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md), {{es}} overrides TCP keepalive settings at the socket level for its own connections:
-    * If system-level values exceed 300 seconds, {{es}} automatically lowers them to 300 seconds.
-    * Values below 300 seconds are used as-is.
-    
-    For non-{{es}} connections such as the proxy layer, consider reducing the following TCP keepalive parameters to detect stale network sessions and prevent firewalls from dropping silent connections:
-    * `net.ipv4.tcp_keepalive_time`
-    * `net.ipv4.tcp_keepalive_intvl`
-    * `net.ipv4.tcp_keepalive_probes`
-    :::
-
-
-    1. Ensure settings in /etc/sysctl.d/*.conf are applied on boot
-
-        ```sh
-        SCRIPT_LOCATION="/var/lib/cloud/scripts/per-boot/00-load-sysctl-settings"
-        sudo sh -c "cat << EOF > ${SCRIPT_LOCATION}
-        #!/bin/bash
-
-        set -x
-
-        lsmod | grep ip_conntrack || modprobe ip_conntrack
-
-        sysctl --system
-        EOF
-        "
-        sudo chmod +x ${SCRIPT_LOCATION}
-        ```
-
-5. Reboot your system to ensure that all configuration changes take effect:
+1. Reboot your system to ensure that all configuration changes take effect, then log back in as your ECE user:
 
     ```sh
     sudo reboot
     ```
 
-6. If the Docker daemon is not already running, start it:
+1. Verify that the Docker daemon started automatically:
 
     ```sh
-    sudo systemctl start docker
+    sudo systemctl status docker
     ```
 
-7. After rebooting, verify that your Docker settings persist as expected:
+    If Docker is not running, review your Docker installation and daemon configuration.
+
+1. After rebooting, verify your Docker settings:
 
     ```sh
-    sudo docker info | grep Root
+    docker info | grep Root
     ```
 
-    If the command returns `Docker Root Dir: /mnt/data/docker`, then your changes were applied successfully and persist as expected.
+    If the command returns `Docker Root Dir: /mnt/data/docker`, your changes were applied successfully and persist as expected.
 
-    If the command returns `Docker Root Dir: /var/lib/docker`, then you need to troubleshoot the previous configuration steps until the Docker settings are applied successfully before continuing with the installation process. For more information, check [Custom Docker daemon options](https://docs.docker.com/engine/admin/systemd/#/custom-docker-daemon-options) in the Docker documentation.
+    If the command returns `Docker Root Dir: /var/lib/docker`, review [Configure the Docker daemon](#ece-configure-docker-daemon-sles12) to make sure the Docker settings are applied correctly. For more information, check [Custom Docker daemon options](https://docs.docker.com/engine/admin/systemd/#/custom-docker-daemon-options) in the Docker documentation.
 
-8. Repeat these steps on other hosts that you want to use with ECE or follow the steps in the next section to start installing {{ece}}.
+    If the command returns a permission denied error, make sure your user is a member of the `docker` group.
+
+1. Verify that the required kernel parameters are applied:
+
+    ```sh
+    sudo sysctl vm.max_map_count net.ipv4.ip_forward net.ipv4.tcp_retries2 vm.swappiness
+    ```
+
+    The output should include the following values:
+
+    ```sh
+    vm.max_map_count = 1048576
+    net.ipv4.ip_forward = 1
+    net.ipv4.tcp_retries2 = 5
+    vm.swappiness = 1
+    ```
+
+1. Verify that memory cgroup accounting is enabled:
+
+    ```sh
+    cat /proc/cmdline
+    ```
+
+    Verify that the output includes the following kernel parameters:
+
+    ```text
+    cgroup_enable=memory swapaccount=1 cgroup.memory=nokmem
+    ```
+
+1. Verify the limits configured for the ECE user:
+
+    ```sh
+    sudo su - elastic -c 'ulimit -n && ulimit -l && ulimit -u' <1>
+    ```
+    1. Replace `elastic` with your ECE user if you are using a different user name.
+
+    The output should show:
+
+    ```text
+    1024000
+    unlimited
+    unlimited
+    ```
+
+1. Verify default limits applied to Docker containers:
+
+    ```sh
+    docker run --rm alpine sh -c 'ulimit -n && ulimit -l && ulimit -u'
+    ```
+
+    The output should show:
+
+    ```text
+    1024000
+    unlimited
+    unlimited
+    ```
+
+1. Verify that `/mnt/data` is mounted with XFS:
+
+    ```sh
+    findmnt -no TARGET,FSTYPE,OPTIONS /mnt/data
+    ```
+
+    The output should show `/mnt/data` as an `xfs` file system with project quotas enabled. For example:
+
+    ```text
+    /mnt/data xfs    rw,relatime,attr2,inode64,logbufs=8,logbsize=32k,prjquota
+    ```
+
+1. Verify the ownership and permissions of the data directory:
+
+    ```sh
+    stat -c "%U:%G %a %n" /mnt/data
+    ```
+    The output should show that the directory is owned by the ECE user and the `elastic` group, and use `700` permissions:
+
+    ```text
+    elastic:elastic 700 /mnt/data
+    ```
+
+    ::::{note}
+    The `/mnt/data/docker` subdirectory is owned by `root` rather than by the ECE user, because it is managed by the Docker daemon. This is normal and does not indicate a misconfiguration.
+    ::::
+
+## Next steps [ece-configure-host-suse-next-steps]
+
+Repeat these host preparation steps for every host that you want to use with {{ece}}. After preparing and verifying all hosts, continue to [Installation procedures](install-ece-procedures.md) to install {{ece}}.

@@ -24,7 +24,7 @@ This page is handy list of the most important APIs and tools you need to build, 
 | [`_explain`]({{es-apis}}operation/operation-explain) | Provides detailed explanation of how a specific document matches a query with scoring breakdown |
 | [`_count`]({{es-apis}}operation/operation-count) | Returns count of documents matching a query without retrieving results |
 | [`_validate/query`]({{es-apis}}operation/operation-indices-validate-query) | Validates query syntax without executing the search |
-| [`_analyze`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-analyze) | Performs analysis for [full-text search](./full-text.md) on a text string and returns the resulting tokens. |
+| [`_analyze`]({{es-apis}}operation/operation-indices-analyze) | Performs analysis for [full-text search](./full-text.md) on a text string and returns the resulting tokens. |
 
 ### Ingestion & mapping APIs
 
@@ -73,14 +73,6 @@ serverless: ga
 ```
 
 [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure, including an [MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md).
-
-### Playground
-```{applies_to}
-stack: beta
-elasticsearch: beta
-```
-
-[Playground](/solutions/elasticsearch-solution-project/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also useful for testing and debugging your {{es}} queries using the [retrievers](retrievers-overview.md) syntax with the `_search` endpoint.
 
 ### Search UI
 

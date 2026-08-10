@@ -105,7 +105,7 @@ In {{ech}} the following additional limitations apply:
 
 In {{ece}}, the following additional limitations apply:
 
-* In the event that an override is set for the instance size or disk quota multiplier for an instance by means of the [Instance Overrides API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-all-instances-settings-overrides), autoscaling will be effectively disabled. It’s recommended to avoid adjusting the instance size or disk quota multiplier for an instance that uses autoscaling, since the setting prevents autoscaling.
+* In the event that an override is set for the instance size or disk quota multiplier for an instance by means of the [Instance Overrides API]({{ece-apis}}operation/operation-set-all-instances-settings-overrides), autoscaling will be effectively disabled. It’s recommended to avoid adjusting the instance size or disk quota multiplier for an instance that uses autoscaling, since the setting prevents autoscaling.
 
 ## Enable or disable autoscaling[ec-autoscaling-enable]
 
@@ -249,12 +249,15 @@ Although autoscaling can scale some tiers by CPU, the primary measurement of tie
 
 Run this example API request to create a deployment with autoscaling:
 
-::::{applies-switch}
+:::::{applies-switch}
 
-:::{applies-item} ece:
+::::{applies-item} ece:
 
-```sh
-curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
+::::{include} /deploy-manage/_snippets/curl-k-ece.md
+::::
+
+```sh subs=true
+curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
 {
  "name": "my-first-autoscaling-deployment",
  "resources": {
@@ -391,7 +394,7 @@ curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOS
            }
          ],
          "elasticsearch": {
-           "version": "8.13.1"
+           "version": "{{version.stack}}"
          },
          "deployment_template": {
            "id": "default"
@@ -413,14 +416,14 @@ curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOS
            {
              "instance_configuration_id": "kibana",
              "size": {
-               "value": 1024,
+               "value": 2048,
                "resource": "memory"
              },
              "zone_count": 1
            }
          ],
          "kibana": {
-           "version": "8.13.1"
+           "version": "{{version.stack}}"
          }
        }
      }
@@ -442,7 +445,7 @@ curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOS
            }
          ],
          "apm": {
-           "version": "8.13.1"
+           "version": "{{version.stack}}"
          }
        }
      }
@@ -453,11 +456,11 @@ curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOS
 '
 ```
 
-:::
+::::
 
-:::{applies-item} ess:
+::::{applies-item} ess:
 
-```sh
+```sh subs=true
 curl -XPOST \
 -H 'Content-Type: application/json' \
 -H "Authorization: ApiKey $EC_API_KEY" \
@@ -648,7 +651,7 @@ curl -XPOST \
            }
          ],
          "apm": {
-           "version": "7.11.0"
+           "version": "{{version.stack}}"
          }
        },
        "ref_id": "main-apm"
@@ -660,6 +663,6 @@ curl -XPOST \
 '
 ```
 
-:::
-
 ::::
+
+:::::

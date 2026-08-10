@@ -47,7 +47,7 @@ After you've identified the tier that needs more capacity, you can resize your d
 If it is not possible to increase capacity by resizing your deployment, you can reduce the number of replicas of your index data. You achieve this by inspecting the [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) index setting index setting and decreasing the configured value.
 
 
-1. Use the [get index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API to retrieve the configured value for the `index.number_of_replicas` index setting.
+1. Use the [get index settings]({{es-apis}}operation/operation-indices-get-settings) API to retrieve the configured value for the `index.number_of_replicas` index setting.
 
     ```console
     GET /my-index-000001/_settings/index.number_of_replicas
@@ -69,7 +69,7 @@ If it is not possible to increase capacity by resizing your deployment, you can 
 
     1. Represents the currently configured value for the number of replica shards required for the index
 
-1. Use the [`_cat/nodes`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) API to find the number of nodes in the target tier:
+1. Use the [`_cat/nodes`]({{es-apis}}operation/operation-cat-nodes) API to find the number of nodes in the target tier:
 
     ```console
     GET /_cat/nodes?h=node.role
@@ -83,9 +83,9 @@ If it is not possible to increase capacity by resizing your deployment, you can 
     himrst
     ```
 
-    You can count the rows containing the letter representing the target tier to know how many nodes you have. See [Query parameters](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) for details. The example above has two rows containing `h`, so there are two nodes in the hot tier.
+    You can count the rows containing the letter representing the target tier to know how many nodes you have. See [Query parameters]({{es-apis}}operation/operation-cat-nodes) for details. The example above has two rows containing `h`, so there are two nodes in the hot tier.
 
-1. Use the [update index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) API to decrease the value for the total number of replica shards required for this index. As replica shards cannot reside on the same node as primary shards for [high availability](../../deploy-manage/production-guidance/availability-and-resilience.md), the new value needs to be less than or equal to the number of nodes found above minus one. Since the example above found 2 nodes in the hot tier, the maximum value for `index.number_of_replicas` is 1.
+1. Use the [update index settings]({{es-apis}}operation/operation-indices-put-settings) API to decrease the value for the total number of replica shards required for this index. As replica shards cannot reside on the same node as primary shards for [high availability](../../deploy-manage/production-guidance/availability-and-resilience.md), the new value needs to be less than or equal to the number of nodes found above minus one. Since the example above found 2 nodes in the hot tier, the maximum value for `index.number_of_replicas` is 1.
 
     ```console
     PUT /my-index-000001/_settings

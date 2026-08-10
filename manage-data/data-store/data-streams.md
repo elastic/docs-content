@@ -79,15 +79,15 @@ You cannot add new documents to other backing indices, even by sending requests 
 
 You also cannot perform operations on a write index that may hinder indexing, such as:
 
-* [Clone](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clone)
-* [Delete](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete)
-* [Shrink](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink)
-* [Split](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-split)
+* [Clone]({{es-apis}}operation/operation-indices-clone)
+* [Delete]({{es-apis}}operation/operation-indices-delete)
+* [Shrink]({{es-apis}}operation/operation-indices-shrink)
+* [Split]({{es-apis}}operation/operation-indices-split)
 
 
 ## Rollover [data-streams-rollover]
 
-A [rollover](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) creates a new backing index that becomes the stream’s new write index.
+A [rollover]({{es-apis}}operation/operation-indices-rollover) creates a new backing index that becomes the stream’s new write index.
 
 We recommend using [{{ilm-init}}](../lifecycle/index-lifecycle-management.md) to automatically roll over data streams when the write index reaches a specified age or size. If needed, you can also [manually roll over](data-streams/use-data-stream.md#manually-roll-over-a-data-stream) a data stream.
 
@@ -104,7 +104,7 @@ When a backing index is created, the index is named using the following conventi
 
 `<yyyy.MM.dd>` is the backing index’s creation date. Backing indices with a higher generation contain more recent data. For example, the `web-server-logs` data stream has a generation of `34`. The stream’s most recent backing index, created on 7 March 2099, is named `.ds-web-server-logs-2099.03.07-000034`.
 
-Some operations, such as a [shrink](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink) or [restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md), can change a backing index’s name. These name changes do not remove a backing index from its data stream.
+Some operations, such as a [shrink]({{es-apis}}operation/operation-indices-shrink) or [restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md), can change a backing index’s name. These name changes do not remove a backing index from its data stream.
 
 The generation of the data stream can change without a new index being added to the data stream (for example, when an existing backing index is shrunk). This means the backing indices for some generations will never exist. You should not derive any intelligence from the backing indices names.
 

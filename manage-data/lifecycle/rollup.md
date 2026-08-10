@@ -34,7 +34,7 @@ For example, consider the system that’s generating 43 million documents every 
 
 If we compress the 43 million documents into hourly summaries, we can save vast amounts of space. The Rollup feature automates this process of summarizing historical data.
 
-Details about setting up and configuring Rollup are covered in [Create Job API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-put-job).
+Details about setting up and configuring Rollup are covered in [Create Job API]({{es-apis}}operation/operation-rollup-put-job).
 
 
 ## Rollup uses standard Query DSL [_rollup_uses_standard_query_dsl]

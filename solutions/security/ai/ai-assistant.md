@@ -16,6 +16,10 @@ navigation_title: AI Assistant for Security
 
 Elastic AI Assistant for Security helps you interact with your {{elastic-sec}} data and assists with tasks such as alert investigation, incident response, and query generation. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
+:::{important}
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Starting in 9.4, [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) is the default chat experience in {{elastic-sec}}. To continue using AI Assistant, switch chat experiences in **GenAI Settings**. Refer to [Compare Agent Builder and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) for the differences and switching steps.
+:::
+
 :::{image} /solutions/images/security-assistant-basic-view.png
 :alt: Image of AI Assistant chat window
 :width: 75%
@@ -42,13 +46,11 @@ stack: ga 9.2
 serverless: ga
 ```
 
-The [**GenAI settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) page allows you to:
+The [GenAI and Feature Settings](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) pages allow you to:
 
-- Manage which AI connectors are available in your environment.
+- Manage which AI connectors or models are available in your environment.
 - Enable or disable AI Assistant and other AI-powered features in your environment.
 - {applies_to}`stack: ga 9.2+` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
-
-
 
 ## Your data and AI Assistant [data-information]
 
@@ -88,7 +90,7 @@ This opens the **Welcome** chat interface, where you can ask general questions a
 You can also chat with AI Assistant from several particular pages in {{elastic-sec}} where you can easily send context-specific data and prompts to AI Assistant.
 
 * [Alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md) or Event details flyout: Click **Chat** while viewing the details of an alert or event.
-* [Rules page](/solutions/security/detect-and-alert/manage-detection-rules.md): Use AI Assistant to help create or correct rule queries.
+* [Detection rules (SIEM)](/solutions/security/detect-and-alert/manage-detection-rules.md): Use AI Assistant to help create or correct rule queries.
 * [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md): Select the **Incompatible fields** tab, then click **Chat**. (This is only available for fields marked red, indicating they’re incompatible).
 
 ::::{note}

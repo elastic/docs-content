@@ -13,7 +13,7 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting the EDOT Python Agent
+# Troubleshooting the EDOT Python Agent [troubleshooting-the-edot-python-agent]
 
 Use the information on this page to troubleshoot issues using EDOT Python.
 
@@ -25,7 +25,7 @@ As a first step, review the [supported technologies](elastic-otel-python://refer
 
 Follow these recommended actions to make sure that EDOT Python is configured correctly.
 
-### EDOT logging level 
+### EDOT logging level [edot-logging-level] 
 
 ```{applies_to}
 product:
@@ -59,7 +59,7 @@ FastAPI application started with `fastapi dev` requires the reloader to be turne
 
 Flask applications running in debug mode require to turn off the reloader to be traced. Refer to [OpenTelemetry zero code documentation](https://opentelemetry.io/docs/zero-code/python/example/#instrumentation-while-debugging).
 
-## Turn off EDOT
+## Turn off {{edot}} [turn-off-edot]
 
 In the unlikely event EDOT Python causes disruptions to a production application, you can turn it off while you troubleshoot. To turn off the underlying OpenTelemetry SDK, set the `OTEL_SDK_DISABLED` environment variable to `true`.
 
@@ -78,3 +78,15 @@ For some semantic conventions, like HTTP, there is a migration path, but the con
 ## Access or modification of application code
 
 EDOT Python is distributed as a Python package and so must be installed in the same environment as your application. Once it is available in the path, it can auto-instrument your application without changing the application code.
+
+## Issues with binary packages on the Kubernetes Operator
+
+Some EDOT Python dependencies include binary components that depend on both the C library and the Python version used to build them. These dependencies must be compatible with the Docker image used by the instrumented application.
+
+EDOT Python provides a Docker image that includes auto-instrumentation code for both:
+
+- glibc-based distributions (for example, Ubuntu)
+- musl-based distributions (for example, Alpine)
+
+If the provided Docker images don't work in your environment and you encounter errors when loading modules, build a custom Docker image instead.
+You can base your custom Dockerfile on the one used to build the official Docker images available in the [operator directory](https://github.com/elastic/elastic-otel-python/tree/main/operator]) of the EDOT Python repository.

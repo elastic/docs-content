@@ -21,7 +21,7 @@ Follow these steps to create a new SAML application for {{ecloud}} in Okta.
 
 1. In Okta, create a new app integration. select SAML 2.0 as the sign-in method.
 2. Add a name for the application.
-3. In the app visibility section, select the **Do not display appliation icon** options. {{ecloud}} does not support IdP-initiated login.
+3. In the app visibility section, select the **Do not display application icon** options. {{ecloud}} does not support IdP-initiated login.
 
     If you want to create an Okta tile for {{ecloud}}, then set one up using [the Bookmark App integration](https://help.okta.com/en-us/content/topics/apps/apps_bookmark_app.htm) after you have configured SAML SSO.
 

@@ -2,13 +2,16 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/playground-query.html
 applies_to:
-  stack: preview =9.0, beta 9.1+
-  serverless: beta
+  stack: preview =9.0, beta 9.1-9.3, deprecated 9.4+
+  serverless: deprecated
 products:
   - id: kibana
 ---
 
 # View and modify queries [playground-query]
+
+::::{include} /solutions/_snippets/playground-deprecated.md
+::::
 
 Once you've set up your chat interface, you can start chatting with the model. Playground automatically generates {{es}} queries based on your questions, and retrieves the most relevant documents from your {{es}} indices. The Playground UI enables you to view and modify these queries.
 
@@ -40,7 +43,7 @@ Remember that the next step in the workflow is to send the retrieved documents t
 [Troubleshooting](playground-troubleshooting.md) provides tips on how to diagnose and fix relevance issues.
 
 ::::{note}
-Playground uses the [`retriever`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) syntax for {{es}} queries. Retrievers make it easier to compose and test different retrieval strategies in your search pipelines. Refer to [](/solutions/search/retrievers-overview.md) for a high level overview of retrievers.
+Playground uses the [`retriever`]({{es-apis}}operation/operation-search#operation-search-body-application-json-retriever) syntax for {{es}} queries. Retrievers make it easier to compose and test different retrieval strategies in your search pipelines. Refer to [](/solutions/search/retrievers-overview.md) for a high level overview of retrievers.
 
 ::::
 

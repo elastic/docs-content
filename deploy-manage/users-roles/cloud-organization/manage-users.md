@@ -5,7 +5,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-api-organizations.html
 applies_to:
   deployment:
-    ess: ga
+    ech: ga
   serverless: ga
 products:
   - id: cloud-hosted
@@ -20,17 +20,27 @@ You can invite users to join your organization to allow them to interact with al
 
 Alternatively, [configure {{ecloud}} SAML SSO](../../../deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) to enable your organization members to join the {{ecloud}} organization automatically.
 
+An {{ecloud}} account can belong to multiple organizations. However, the user's roles and the resources that they have access to are controlled at the organization level.
+
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/access-management
 :::
 
-::::{note}
-Users can only belong to one organization at a time. If a user that you want to invite already belongs to a different organization, that user first needs to leave their current organization, or to use a different email address. Check [Join an organization from an existing {{ecloud}} account](/cloud-account/join-or-leave-an-organization.md).
-::::
-
 :::{tip}
 If you're using {{ech}}, then you can also manage users and control access [at the deployment level](/deploy-manage/users-roles/cluster-or-deployment-auth.md).
 :::
+
+## Required permissions
+
+* Only **Organization owners** can invite new users to the organization.
+
+* To assign or modify roles for existing members, your permissions must cover the resources affected by the role assignment:
+  - **Organization owners** can manage role assignments for all members in the organization.
+  - Members with the **Admin** role can view and manage role assignments only for deployments or projects within their scope:
+    - Admins scoped to all deployments and projects can manage assignments across all resources.
+    - Admins scoped to specific deployments or projects can manage assignments only for those resources.
+
+For more information about role scopes and permissions, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 
 ## Invite your team [ec-invite-users]
 
@@ -38,24 +48,39 @@ To invite users to your organization:
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the navigation menu, select **Organization** > **Members**.
-4. On the **Members** page, click **Invite members**.
-5. Enter the email addresses of the users you want to invite in the textbox.
+3. On the **Members** page, click **Invite members**.
+4. Enter the email addresses of the users you want to invite in the email field.
 
     To add multiple members, enter the member email addresses, separated by a space.
 
-5. If desired, assign roles to the users so that they automatically get the appropriate permissions when they accept the invitation and sign in to {{ecloud}}.
+5. If desired, assign roles to the users so that they automatically get the appropriate permissions when they accept the invitation and sign in to your organization.
 
-   If you're assigning roles for {{serverless-full}} projects, then you can grant access to all projects of the same type with a unique role, or select individual roles for specific projects. For more details about roles, refer to [](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+    You can grant access to {{ech}} deployments, {{serverless-full}} projects, or connected clusters, either to all resources or scoped to specific ones. For more details, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 
 6. Click **Send invites**.
 
     Invitations to join an organization are sent by email. Invited users have 72 hours to accept the invitation before it expires. If the invite has expired, an admin can resend the invitation.
 
+## Invite users to join additional organizations [invite-additional-orgs]
+
+:::{include} _snippets/invite-additional-orgs.md
+:::
+
 ## Manage existing users
 
-On the **Members** tab of the **Organization** page, you can view the list of current members, including status and role.
+On the **Members** tab of the **Organization** page, you can view the list of current members, including their status, role, and any other organizations that they are members of.
 
 In the **Actions** column, click the three dots to edit a member’s role, or revoke an invite, or remove a member from your organization.
+
+### Reconcile alternative email addresses
+
+:::{include} /deploy-manage/users-roles/cloud-organization/_snippets/reconcile-email.md
+:::
+
+## View your users' organization memberships
+
+:::{include} _snippets/view-org-memberships.md
+:::
 
 ## Manage users through the {{ecloud}} API [ec-api-organizations]
 

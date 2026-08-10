@@ -31,7 +31,7 @@ Disable the agent by setting [`enabled`](apm-agent-php://reference/configuration
 
 ## Disclaimer for `dev_internal_*` configuration options [dev-internal-config-disclaimer]
 
-Configuration options starting with `dev_internal_` should be used only for supportability. It’s recommended to have these options in the configuration for the short periods of time while resolving an issue with the agent. There is no backward compatability guarantee for these options so any one can be changed and/or removed even in a minor or patch release.
+Configuration options starting with `dev_internal_` should be used only for supportability. It’s recommended to have these options in the configuration for the short periods of time while resolving an issue with the agent. There is no backward compatibility guarantee for these options so any one can be changed and/or removed even in a minor or patch release.
 
 
 ## Enable verbose log for backend communication [enable-verbose-log-backend-comm]

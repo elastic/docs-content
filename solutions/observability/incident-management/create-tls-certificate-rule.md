@@ -22,10 +22,22 @@ There are two types of TLS certificate rule:
   Uptime was deprecated in 8.15.0. Use Synthetics instead.
   :::
 
-
 ## Synthetics TLS certificate rule [tls-rule-synthetics]
 
 Within the Synthetics UI, create a **TLS certificate** rule to receive notifications based on errors and outages.
+
+### Requirements
+
+To create Synthetics TLS certificate rules, you need the following:
+
+{applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/synthetics/grant-access-to-secured-resources.md).
+
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
+
+### Indices used by this rule
+
+This rule only queries against `synthetics-*` and that is hardcoded.
 
 
 ### Filters [tls-rule-synthetics-filters]

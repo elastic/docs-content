@@ -80,13 +80,15 @@ Each `StackConfigPolicy` must define the following fields under `spec`:
 
 ### Optional fields
 
-The following fields are optional. They control which {{es}} clusters and {{kib}} instances the policy targets.
+The following fields are optional. They control policy targeting, priority, and variable substitution.
 
 * {applies_to}`eck: ga 3.3+` `weight`: An integer that determines the priority of this policy when multiple policies target the same resource. Refer to [Policy priority and weight](#k8s-stack-config-policy-priority-weight) for details.
 
 * `namespace`: The namespace of the `StackConfigPolicy` resource, used to identify the {{es}} clusters and {{kib}} instances to which the policy applies. If it equals the operator namespace, the policy applies to all namespaces managed by the operator. Otherwise, the policy applies only to the namespace where the policy is defined.
 
 * `resourceSelector`: A [label selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) to identify the {{es}} clusters and {{kib}} instances to which the policy applies in combination with the namespace(s). If `resourceSelector` is not defined, the policy applies to all {{es}} clusters and {{kib}} instances in the namespace(s).
+
+* {applies_to}`eck: ga 3.5` `variablesFrom`: A list of ConfigMaps or Secrets whose keys become substitution variables available as `${VAR}` expressions in the `elasticsearch` and `kibana` spec fields. Refer to [Variable substitution](#k8s-stack-config-policy-variable-substitution) for details.
 
 
 ## {{es}} settings [es-settings]
@@ -98,16 +100,17 @@ The following fields are available under `StackConfigPolicy.spec.elasticsearch`:
 | Policy field | Description | Syntax and schema |
 |---|---|---|
 | `config` | Settings that go into `elasticsearch.yml`. | [Settings map](#syntax-types)<br><br>[{{es}} settings reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md) |
-| `clusterSettings` | Dynamic [cluster settings](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) applied through the cluster settings API. | [Settings map](#syntax-types)<br><br>[Cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) |
+| `clusterSettings` | Dynamic [cluster settings](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) applied through the cluster settings API. | [Settings map](#syntax-types)<br><br>[Cluster settings API]({{es-apis}}operation/operation-cluster-put-settings) |
 | `secureSettings` | Secure settings for the {{es}} keystore. | [List of secrets to add](#syntax-types)<br><br>[{{es}} secure settings](/deploy-manage/security/k8s-secure-settings.md) |
 | `secretMounts` | Mount Kubernetes secrets into {{es}} pods.<br><br>[Specifics for secret mounts](#k8s-stack-config-policy-specifics-secret-mounts) | [List of secrets to mount](#syntax-types) |
-| `snapshotRepositories` | Configure [snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md) for backup and restore.<br><br>[Specifics for snapshot repositories](#k8s-stack-config-policy-specifics-snap-repo) | [Named resources map](#syntax-types)<br><br>[Create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository) |
-| `snapshotLifecyclePolicies` | Configure [snapshot lifecycle policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) to automatically take snapshots and control how long they are retained. | [Named resources map](#syntax-types)<br><br>[SLM API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-put-lifecycle) |
-| `ingestPipelines` | Configure [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to perform common transformations on your data before indexing. | [Named resources map](#syntax-types)<br><br>[Ingest pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) |
-| `indexLifecyclePolicies` | Configure [{{ilm}} policies](/manage-data/lifecycle/index-lifecycle-management.md) to automatically manage the index lifecycle.  | [Named resources map](#syntax-types)<br><br>[ILM API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) |
-| `indexTemplates.composableIndexTemplates` | Configure [index templates](/manage-data/data-store/templates.md#index-templates) to define settings, mappings, and aliases that can be applied automatically to new indices.<br><br>[Specifics for index and component templates](#templates-specifics) | [Named resources map](#syntax-types)<br><br>[Index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) |
-| `indexTemplates.componentTemplates` | Configure [component templates](/manage-data/data-store/templates.md#component-templates), reusable building-blocks to define settings, mappings, and aliases for new indices.<br><br>[Specifics for index and component templates](#templates-specifics) | [Named resources map](#syntax-types)<br><br>[Component template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) |
-| `securityRoleMappings` | Configure [role mappings](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) to associate roles to users based on rules. | [Named resources map](#syntax-types)<br><br>[Role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) |
+| `snapshotRepositories` | Configure [snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md) for backup and restore.<br><br>[Specifics for snapshot repositories](#k8s-stack-config-policy-specifics-snap-repo) | [Named resources map](#syntax-types)<br><br>[Create snapshot repository API]({{es-apis}}operation/operation-snapshot-create-repository) |
+| `snapshotLifecyclePolicies` | Configure [snapshot lifecycle policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) to automatically take snapshots and control how long they are retained. | [Named resources map](#syntax-types)<br><br>[SLM API]({{es-apis}}operation/operation-slm-put-lifecycle) |
+| `ingestPipelines` | Configure [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to perform common transformations on your data before indexing. | [Named resources map](#syntax-types)<br><br>[Ingest pipeline API]({{es-apis}}operation/operation-ingest-put-pipeline) |
+| `indexLifecyclePolicies` | Configure [{{ilm}} policies](/manage-data/lifecycle/index-lifecycle-management.md) to automatically manage the index lifecycle.  | [Named resources map](#syntax-types)<br><br>[ILM API]({{es-apis}}operation/operation-ilm-put-lifecycle) |
+| `indexTemplates.composableIndexTemplates` | Configure [index templates](/manage-data/data-store/templates.md#index-templates) to define settings, mappings, and aliases that can be applied automatically to new indices.<br><br>[Specifics for index and component templates](#templates-specifics) | [Named resources map](#syntax-types)<br><br>[Index template API]({{es-apis}}operation/operation-indices-put-index-template) |
+| `indexTemplates.componentTemplates` | Configure [component templates](/manage-data/data-store/templates.md#component-templates), reusable building-blocks to define settings, mappings, and aliases for new indices.<br><br>[Specifics for index and component templates](#templates-specifics) | [Named resources map](#syntax-types)<br><br>[Component template API]({{es-apis}}operation/operation-cluster-put-component-template) |
+| `securityRoleMappings` | Configure [role mappings](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) to associate roles to users based on rules. | [Named resources map](#syntax-types)<br><br>[Role mapping API]({{es-apis}}operation/operation-security-put-role-mapping) |
+| `securityRoles` {applies_to}`eck: ga 3.5+` | Define custom {{es}} roles that are merged into the [mounted `roles.yml` file](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file).<br><br>[Specifics for security roles](#k8s-stack-config-policy-specifics-security-roles) | [Named resources map](#syntax-types)<br><br>[Security role API]({{es-apis}}operation/operation-security-put-role) |
 
 ### Specifics for secret mounts [k8s-stack-config-policy-specifics-secret-mounts]
 
@@ -151,6 +154,18 @@ spec:
         my-component-template:
           # ...
 ```
+
+### Specifics for security roles [k8s-stack-config-policy-specifics-security-roles]
+```{applies_to}
+deployment:
+  eck: ga 3.5
+```
+
+ECK merges the definitions into [the `roles.yml` file](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file) mounted on each {{es}} pod. ECK creates and manages this file, so no pre-existing `roles.yml` is required. {{es}} reloads that file at runtime, so changes take effect without a pod restart.
+
+`securityRoles` is complementary to [file-based role management using Kubernetes secrets](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file): both can coexist, and ECK merges roles from all sources into the same `roles.yml` file. Use `securityRoles` when you already manage {{es}} or {{kib}} configuration centrally through a `StackConfigPolicy` and want to include role definitions in the same policy, applying them consistently across all targeted clusters.
+
+For an example, refer to [Define custom Elasticsearch roles through a policy](#k8s-stack-config-policy-security-roles-example).
 
 ## {{kib}} settings [kib-settings]
 
@@ -299,6 +314,43 @@ spec:
             settings:
               number_of_shards: 1
           version: 1
+```
+
+### Define custom {{es}} roles through a policy [k8s-stack-config-policy-security-roles-example]
+```{applies_to}
+deployment:
+  eck: ga 3.5
+```
+
+Use `securityRoles` to declaratively define {{es}} roles and apply them across multiple clusters. Roles defined here are merged into `roles.yml` and hot-reloaded by {{es}} without requiring a pod restart.
+
+```yaml
+apiVersion: stackconfigpolicy.k8s.elastic.co/v1alpha1
+kind: StackConfigPolicy
+metadata:
+  name: custom-roles-policy
+spec:
+  resourceSelector:
+    matchLabels:
+      env: production
+  elasticsearch:
+    securityRoles:
+      my-app-reader:
+        cluster:
+          - monitor
+        indices:
+          - names:
+              - logs-*
+            privileges:
+              - read
+              - view_index_metadata
+      my-app-writer:
+        indices:
+          - names:
+              - logs-*
+            privileges:
+              - write
+              - create_index
 ```
 
 ### Configure both {{es}} and {{kib}} through a policy
@@ -458,6 +510,72 @@ spec:
 ```
 
 In this example, clusters labeled with both `env: production` and `tier: critical` have the `production-override-policy` (weight: 100) settings applied, which overwrite the `base-policy` (weight: 0) settings. Other production clusters use only the `base-policy` (weight: 0) settings.
+
+## Variable substitution [k8s-stack-config-policy-variable-substitution]
+```{applies_to}
+deployment:
+  eck: ga 3.5
+```
+
+Use `variablesFrom` to load environment-specific values from ConfigMaps or Secrets. You can then reference those values as `${VAR}` expressions in the policy's `elasticsearch` and `kibana` fields where you need them. Variable substitution lets you reuse a single policy definition across multiple environments without duplicating or hardcoding values.
+
+### Define variable sources
+
+Each entry in `variablesFrom` references a ConfigMap or Secret by `kind` and `name`. Every key in the referenced object becomes an available variable:
+
+```yaml
+spec:
+  variablesFrom:
+    - kind: ConfigMap
+      name: es-tuning
+    - kind: Secret
+      name: es-credentials
+  elasticsearch:
+    clusterSettings:
+      indices.recovery.max_bytes_per_sec: "${RECOVERY_RATE}"
+```
+
+The corresponding ConfigMap:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: es-tuning
+data:
+  RECOVERY_RATE: "200mb"
+```
+
+ECK watches all referenced ConfigMaps and Secrets and automatically reconciles the policy whenever a source is updated.
+
+### Syntax
+
+| Expression | Behavior |
+|---|---|
+| `${VAR}` | Substituted with the value of `VAR` from the sources. If `VAR` is not defined in any source, the expression is left verbatim. This can cause an error downstream if {{es}} or {{kib}} cannot resolve the expression. |
+| `${VAR:-default}` | Substituted with the value of `VAR`, or `default` if `VAR` is not defined. |
+
+Only string-typed fields can be templated. Numeric, boolean, and object fields cannot be substituted because source values are always strings and the target type cannot be inferred.
+
+{{es}}-native variable expressions (such as `${node.name}`) are left verbatim and resolved by {{es}} at runtime — ECK only substitutes keys that are present in a declared source.
+
+### Source precedence and namespace rules
+
+When multiple sources define the same key, the last entry in `variablesFrom` takes precedence.
+
+Sources without an explicit `namespace` field default to the policy's own namespace. To reference a source in a different namespace, set the `namespace` field on the entry — this is only permitted for policies deployed in the operator namespace. Policies in any other namespace must reference sources in their own namespace.
+
+To suppress a reconciliation error when a source does not exist, set `optional: true` on that entry:
+
+```yaml
+spec:
+  variablesFrom:
+    - kind: ConfigMap
+      name: optional-overrides
+      optional: true
+    - kind: Secret
+      name: required-credentials
+```
 
 ## Syntax types used in configuration policy fields [syntax-types]
 

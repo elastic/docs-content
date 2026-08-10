@@ -29,6 +29,11 @@ This page covers the main ways to explore dashboard data: using Kibana Query Lan
 
 This section shows the most common ways for you to filter dashboard data. For more information about {{kib}} and {{es}} filtering capabilities, refer to [](/explore-analyze/query-filter.md).
 
+:::{note}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+When a dashboard includes {{esql}} visualizations or {{esql}}-powered [**Vega** and **Vega-Lite** panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use the `STATS` command, you can turn on {icon}`bolt` **Fast mode** to return faster, estimated results for them. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
+:::
+
 ### Filter dashboards using the KQL query bar [_filter_dashboards_using_the_kql_query_bar]
 
 The query bar lets you build filters using [{{kib}} Query Language (KQL)](../query-filter/languages/kql.md). When typing, it dynamically suggests matching fields, operators, and values to help you get the exact results that you want.
@@ -48,7 +53,7 @@ When working with large datasets, complex KQL queries might cause dashboards to 
 
 Use filter pills to focus in on the specific data you want.
 
-:::{image} /explore-analyze/images/kibana-dashboard_filter_pills_8.15.0.png
+:::{image} /explore-analyze/images/kibana-dashboard-filter-pills.png
 :alt: Filter pills
 :screenshot:
 :width: 500px
@@ -59,9 +64,7 @@ Use filter pills to focus in on the specific data you want.
 
 You can interact with some panel visualizations to explore specific data more in depth. Upon clicking, filter pills are added and applied to the entire dashboard, so that surrounding panels and visualizations also reflect your browsing.
 
-:::{image} /explore-analyze/images/add-filter-pills-8.17.gif
-:alt: Browsing a chart creates a filter dynamically
-:::
+![Browsing a chart creates a filter dynamically](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt83219d7540514a69/69e74978735697c284b920a5/filter-by-interacting.gif)
 
 You can create filter pills by:
 
@@ -70,7 +73,7 @@ You can create filter pills by:
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
-{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields created with {{esql}} commands like `EVAL` do not support filtering.
+{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields, such as those created with {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results, do not support filtering or drilldown actions, because there is no matching field in the underlying index to filter on. When you click a value that comes from a computed field, the filter and drilldown options are not available.
 :::
 
 
@@ -80,6 +83,7 @@ As an alternative to the main query bar, you can filter dashboard data by defini
 
 :::{image} /explore-analyze/images/kibana-dashboard-filter-editor.png
 :alt: Filter editor with 2 conditions
+:screenshot:
 :::
 
 #### Filter pill actions
@@ -94,6 +98,7 @@ The query bar lets you build filters using [{{kib}} Query Language (KQL)](../que
 
 :::{image} /explore-analyze/images/kibana-dashboard-filter-kql.png
 :alt: KQL filter dynamically suggesting values
+:screenshot:
 :width: 400px
 :::
 
@@ -105,11 +110,12 @@ The data visible in a dashboard highly depends on the time range that is applied
 
 #### Apply a global time range to an entire dashboard [_apply_a_global_time_range_to_an_entire_dashboard]
 
-The global time range menu is located right next to the query bar, in the dashboard’s header. With this menu, you can select the time range to apply, and set the frequency for refreshing the dashboard data. Setting the time range is a common action in {{kib}}. Refer to [Set the time range](../query-filter/filtering.md) for more details.
+Use the global time filter next to the query bar in the dashboard header to select a time range and set how often the dashboard data refreshes. Refer to [Set the time range](../query-filter/filtering.md) for details.
 
-:::{image} /explore-analyze/images/kibana-dashboard-global-time-range.png
-:alt: Time range menu with multiple time range suggestions
-:width: 500px
+:::{image} /explore-analyze/images/kibana-date-range-picker.png
+:alt: Time filter showing presets and controls for custom ranges, settings, and saving presets
+:screenshot:
+:width: 250px
 :::
 
 
@@ -130,7 +136,7 @@ To edit it, click the filter. You can then adjust and apply the updated **Time r
 
 ### Use available controls [_use_available_controls]
 
-Dashboard authors can [add various types of additional controls](add-controls.md) to help you filter the data that you want to visualize.
+Dashboard authors can [add various types of additional controls](../visualize/dashboard-controls.md) to help you filter the data that you want to visualize.
 
 
 #### Filter the data with Options list controls [filter-the-data-with-options-list-controls]
@@ -155,9 +161,10 @@ Filter the data with one or more options that you select.
 For *IP address* type fields, you can use CIDR notation (for example, `192.168.1.0/24`) to filter by IP ranges.
 :::
 
-:::{image} /explore-analyze/images/kibana-dashboard_controlsOptionsList.png
+:::{image} /explore-analyze/images/kibana-dashboard-controls-options-list.png
 :alt: Options list control
 :screenshot:
+:width: 50%
 :::
 
 
@@ -172,9 +179,10 @@ Filter the data within a specified range of values.
 
 3. To clear the specified values, click ![The icon to clear all specified values in the Range slider](/explore-analyze/images/kibana-dashboard_controlsClearSelections_8.3.0.png "").
 
-:::{image} /explore-analyze/images/kibana-dashboard_controlsRangeSlider_8.3.0.png
+:::{image} /explore-analyze/images/kibana-dashboard-controls-range-slider.png
 :alt: Range slider control
 :screenshot:
+:width: 50%
 :::
 
 
@@ -188,10 +196,7 @@ Filter the data within a specified range of time.
 4. To animate the data changes over time, click ![The icon to clear all specified values in the Range slider](/explore-analyze/images/kibana-dashboard_timeSliderControl_animate_8.5.0.png "").
 5. To clear the specified values, click ![The icon to clear all specified values in the Range slider](/explore-analyze/images/kibana-dashboard_controlsClearSelections_8.3.0.png "").
 
-:::{image} /explore-analyze/images/dashboard_timeslidercontrol_8.17.0.gif
-:alt: Time slider control
-:screenshot:
-:::
+![Time slider control](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt5a4c08f013babda6/69e74c84e0862680360136cf/time-slider-control.gif)
 
 
 ### View the panel data and requests [download-csv]
@@ -242,22 +247,29 @@ When viewing a dashboard with read-only permissions, certain visualization panel
 3. Select **Cancel** to exit the **Configuration** flyout.
 
 
+### View data from multiple projects [dashboard-cps-scope]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+A dashboard can display data from multiple {{serverless-short}} projects when [{{cps}}](/explore-analyze/cross-project-search.md) is enabled. To check and control which projects are queried, use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header. You can change this scope at any time during your session, and all panels update accordingly. Dashboard controls, such as **Options list** controls, also suggest values from all projects in the selected scope.
+
+Sometimes, the scope behaves differently:
+
+* **The dashboard restores a saved scope on open.** Some dashboards are configured to [store a {{cps}} scope](/explore-analyze/dashboards/create-dashboard.md). When you open them, the {{cps-init}} scope selector is set to the stored scope. You can still change it during your session.
+* **A panel has a Custom CPS scope badge.** This means the panel uses [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) to query a fixed set of projects. It is not affected when you change the dashboard's scope. Select the badge to view which projects the panel queries.
+* **Query bar and filter suggestions come from the origin project only.** As you type a query or filter value, the autocomplete suggests values from the origin project, regardless of the selected scope. Filtering itself still respects the scope, so a value that exists only in a linked project works when you enter it manually. For value suggestions across all projects in scope, use an **Options list** control instead.
+
 
 ## Full screen mode and maximized panel views [_full_screen_mode_and_maximized_panel_views]
 
 You can display dashboards in full screen mode to gain visual space and view or show visualizations without the rest of the {{kib}} interface.
 
-:::{image} /explore-analyze/images/kibana-dashboard-full-screen.png
-:alt: A dashboard in full screen mode
-:::
+To enter full screen mode, make sure the dashboard is in view mode, then open the {icon}`boxes_vertical` additional options menu in the application toolbar and select **Full screen**. Press **Escape** to exit.
 
 If you need to focus on a particular panel, you can maximize it by opening the panel menu and selecting **Maximize**. You can minimize it again the same way.
 
 ::::{tip}
 When sharing a dashboard with a link while a panel is in maximized view, the generated link will also open the dashboard on the same maximized panel view.
 ::::
-
-
-:::{image} /explore-analyze/images/kibana-dashboard-panel-maximized.png
-:alt: A maximized panel in a dashboard
-:::

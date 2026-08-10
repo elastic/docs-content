@@ -1,5 +1,6 @@
 ---
 navigation_title: Tutorial
+description: Follow this tutorial to explore sample data with the Data Visualizer, create anomaly detection jobs, and identify anomalies in Kibana.
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html
 applies_to:
@@ -44,7 +45,7 @@ To get the best results from {{ml}} analytics, you must understand your data. Yo
 
 2. Open **Machine Learning** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 3. Select the **{{data-viz}}** tab.
-4. Click **Select data view** and choose the `kibana_sample_data_logs` {{data-source}}.
+4. Select the `kibana_sample_data_logs` {{data-source}}.
 5. Use the time filter to select a time period that you’re interested in exploring. Alternatively, click **Use full data** to view the full time range of data.
 6. Optional: You can change the random sampling behavior, which affects the number of documents per shard that are used in the {{data-viz}}. You can use automatic random sampling that balances accuracy and speed, manual sampling where you can chose a value for the sampling percentage, or you can turn the feaure off to use the full data set. There is a relatively small number of documents in the {{kib}} sample data, so you can turn random sampling off. For larger data sets, keep in mind that using a large sample size increases query run times and increases the load on the cluster.
 7. Explore the fields in the {{data-viz}}.
@@ -292,7 +293,7 @@ To create a forecast in {{kib}}:
 
 As the job processes more data, you can click the **Forecast** button again and choose to see one of your forecasts overlaid on the actual data. The chart then contains the actual data values, the bounds for the expected values, the anomalies, the forecast data values, and the bounds for the forecast. This combination of actual and forecast data gives you an indication of how well the {{ml-features}} can extrapolate the future behavior of the data.
 
-If you want to see this type of comparison for the {{kib}} sample data, which has a finite number of documents, you can reset the job and analyze only a subset of the data before you create a forecast. For example, reset one of your {{anomaly-jobs}} from the **Job Management** page in {{kib}} or use the [reset {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-reset-job). When you restart the {{dfeed}} for this job, choose a date part way through your sample data as the search end date. By default, the {{dfeed}} stops and the {{anomaly-job}} closes when it reaches that date. Create the forecast. You can then restart the {{dfeed}} to process the remaining data and generate the type of results shown here.
+If you want to see this type of comparison for the {{kib}} sample data, which has a finite number of documents, you can reset the job and analyze only a subset of the data before you create a forecast. For example, reset one of your {{anomaly-jobs}} from the **Job Management** page in {{kib}} or use the [reset {{anomaly-jobs}} API]({{es-apis}}operation/operation-ml-reset-job). When you restart the {{dfeed}} for this job, choose a date part way through your sample data as the search end date. By default, the {{dfeed}} stops and the {{anomaly-job}} closes when it reaches that date. Create the forecast. You can then restart the {{dfeed}} to process the remaining data and generate the type of results shown here.
 
 ::::{tip}
 The {{kib}} sample data sets have timestamps that are relative to when you added the data sets. However, some of these dates are in the future. Therefore, for the purposes of this tutorial, when you restart your {{dfeed}} do not use the **No end time (Real-time search)** option. Specify the appropriate end dates so that it processes all of the data immediately.

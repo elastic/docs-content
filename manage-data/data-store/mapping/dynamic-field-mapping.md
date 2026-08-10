@@ -36,7 +36,7 @@ $$$dynamic-field-mapping-types$$$
 You can disable dynamic mapping, both at the document and at the [`object`](elasticsearch://reference/elasticsearch/mapping-reference/object.md) level. Setting the `dynamic` parameter to `false` ignores new fields, and `strict` rejects the document if {{es}} encounters an unknown field.
 
 ::::{tip}
-Use the [update mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) to update the `dynamic` setting on existing fields.
+Use the [update mapping API]({{es-apis}}operation/operation-indices-put-mapping) to update the `dynamic` setting on existing fields.
 ::::
 
 

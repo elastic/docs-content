@@ -4,7 +4,9 @@ To add the results of your Discover explorations to a dashboard in a way that pr
 
 This method allows you to add the result table of your Discover {{esql}} query to any dashboard.
 
-1. Save the {{esql}} query containing the variable control into a Discover session. If your Discover session contains several tabs, only the first tab will be imported to the dashboard.
+1. Save the {{esql}} query containing the variable control into a Discover session. If your Discover session contains several tabs:
+   - {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` You can choose which tab the panel displays after adding the session to a dashboard.
+   - {applies_to}`stack: ga 9.0-9.3` Only the first tab is imported to the dashboard.
 
 1. Go to **Dashboards** and open or create one.
 
@@ -14,15 +16,23 @@ This method allows you to add the result table of your Discover {{esql}} query t
 
 A new panel appears on the dashboard with the results of the query along with any attached controls.
 
-![Importing Discover session with controls into a dashboard](/explore-analyze/images/import-discover-control-dashboard.png " =40%")
+:::{image} /explore-analyze/images/import-discover-control-dashboard.png
+:alt: Importing Discover session with controls into a dashboard
+:width: 40%
+:screenshot:
+:::
 
-**Method 2: Adding the Discover visualization** {applies_to}`serverless:` {applies_to}`stack: ga 9.3`
+**Method 2: Adding the Discover visualization** {applies_to}`{"stack": "ga 9.3", "serverless": "ga"}`
 
 This method allows you to add the visualization of your Discover {{esql}} query to any dashboard.
 
-1. Next to the Discover visualization, select {icon}`save` **Save visualization**.
+1. Next to the Discover visualization, select {icon}`app_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** in earlier versions).
 
-   ![Importing Discover visualization with controls into a dashboard](/explore-analyze/images/save-discover-viz-to-dashboard.png " =70%")
+   :::{image} /explore-analyze/images/save-discover-viz-to-dashboard.png
+   :alt: Importing Discover visualization with controls into a dashboard
+   :width: 70%
+   :screenshot:
+   :::
 
 1. Select the dashboard to add the visualization to. You can choose an existing dashboard or create one.
 

@@ -33,7 +33,23 @@ If your indices are not highly available (configured with at least one replica),
 
 Refer to [Plan for production](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md) for more information about High Availability (HA) on ECH.
 
+## Check your {{kib}} instance size 
+
+:::{include} /deploy-manage/upgrade/deployment-or-cluster/_snippets/kib-instance-size.md
+:::
+
+[Learn how to edit settings for existing deployments](/deploy-manage/deploy/elastic-cloud/configure.md).
+
+:::{note}
+{{kib}} instances in {{ech}} deployments created in May 2026 or later have 2 GB of RAM by default. 
+Increasing the instance size above 1 GB [affects billing](/deploy-manage/cloud-organization/billing/billing-faq.md#faq-included).
+:::
+
 ## Perform the upgrade [perform-cloud-upgrade]
+
+::::{note}
+The steps in this section focus on upgrading from the {{ecloud}} UI. If you want to perform the upgrade through the API, use the dedicated [Upgrade deployment endpoint]({{cloud-apis}}operation/operation-upgrade-deployment).
+::::
 
 Log in to your {{ecloud}} environment:
 
@@ -52,7 +68,6 @@ To upgrade a deployment:
     ::::{note}
     If any incompatibilities are detected when you attempt to upgrade, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. If there are any issues that would prevent a successful upgrade, the upgrade is blocked. After resolving the issues, return to the **Hosted deployments** page and restart the upgrade. Also check the [release notes](/release-notes/index.md) to stay aware of changes and known issues for the version you're upgrading to.
     ::::
-
 
 Snapshots
 :   To keep your data safe during the upgrade process, a snapshot is taken automatically before any changes are made to your cluster. After a major version upgrade is complete and a snapshot of the upgraded cluster is available, all snapshots taken with the previous major version of {{es}} are stored in the snapshot repository.
