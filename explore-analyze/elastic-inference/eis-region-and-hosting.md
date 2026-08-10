@@ -70,13 +70,13 @@ After you save a region policy:
 
 * If you try to save a policy that would deny access to {{infer}} endpoints that are already in use by ingest pipelines or indices, {{es}} rejects the change with a conflict error.
 
+### Configure region preferences in Kibana [configure-region-preferences-kibana]
+
 :::{important}
 Changing region preferences affects all Elastic {{infer-cap}} Service endpoints across all spaces.
 Before you save, check **Regions** in the details for any models you rely on.
 Models that aren't available in your allowed locations become unavailable.
 :::
-
-### Configure region preferences in Kibana [configure-region-preferences-kibana]
 
 To open **Elastic {{infer}}**, you typically need the `Inference Endpoints: all` and `Advanced Settings: read` {{kib}} privileges.
 To load and save region preferences, you also need the `manage_inference` {{es}} cluster privilege.
