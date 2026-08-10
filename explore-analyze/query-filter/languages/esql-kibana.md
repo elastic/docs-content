@@ -51,14 +51,8 @@ Editor support varies by area. Some areas use the {{esql}} editor described on t
 Every {{esql}} query starts with a [source command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-source-commands) that retrieves data:
 
 - [`FROM`](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-from) allows you to define the data sources to query by specifying data streams, [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md), indices, or aliases.
-- {applies_to}`stack: experimental =9.5` {applies_to}`serverless: unavailable` `FROM` can also target [{{esql}} Data Federation](elasticsearch://reference/query-languages/esql/esql-data-federation.md) datasets, which [query](elasticsearch://reference/query-languages/esql/esql-data-federation-querying.md) data in external storage, such as Amazon S3, without ingesting it into {{es}}.
 - [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) is optimized for querying time series data streams.
 - {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` [`PROMQL`](elasticsearch://reference/query-languages/esql/commands/promql.md) queries time series data through the {{esql}} editor using [Prometheus Query Language (PromQL)](https://prometheus.io/docs/prometheus/latest/querying/basics/) syntax.
-
-:::{tip}
-:applies_to: {"stack": "experimental =9.6", "serverless": "unavailable"}
-**Discover** and **Dashboards** open even without local or remote indices, as long as at least one [{{esql}} Data Federation](elasticsearch://reference/query-languages/esql/esql-data-federation.md) dataset exists in your deployment.
-:::
 
 You can then chain one or more [processing commands](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-processing-commands) using pipe (`|`) characters. For example, [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) filters rows and [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) aggregates data:
 
