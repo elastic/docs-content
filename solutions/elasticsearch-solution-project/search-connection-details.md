@@ -18,10 +18,9 @@ type: how-to
 
 # Find connection details [search-space-connection-details]
 
+To connect a client application or a third-party tool to {{es}}, you need two things: the {{es}} endpoint URL, and credentials that authenticate the request. For secure connections, use an API key.
 
-To connect to your {{es}} deployment, you need your {{es}} endpoint URL. For secure connections, we recommend using an API key for authentication.
-
-The following sections describe how to find your Cloud ID and create API keys in both {{ecloud}} and {{serverless-short}} deployments.
+This guide shows you where to find the endpoint and how to create an API key, then how to confirm that both work.
 
 ## Elastic Cloud and self-hosted deployments [_elastic_cloud_and_self_hosted_deployments]
 
