@@ -244,7 +244,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.4.4-fixes]
 
-* Fixes an issue where opening the rule details flyout for a deleted rule crashed the {{security-app}} when the rule was missing `severity_mapping` or `risk_score_mapping` values [#278545]({{kib-pull}}278545).
 * Fixes an issue where {{kib}} assets from an installed integration package (such as dashboards used by prebuilt detection rules) could remain stale across a {{kib}} upgrade because {{fleet}} never overwrote existing assets on reinstall [#277953]({{kib-pull}}277953).
 * Fixes an issue where the **Source event** link in an alert's **Highlighted fields** section failed to open the document when its source index had been restored (for example, from a cold or frozen tier) and renamed [#277703]({{kib-pull}}277703).
 * Fixes an issue where agents on version-specific policies did not appear in the Osquery agent or policy selector and could not be targeted, causing live queries to fail with a `No agents found for selection` error [#277283]({{kib-pull}}277283).
