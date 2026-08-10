@@ -39,31 +39,14 @@ As of 9.2, new indices exclude vector fields (`dense_vector`, `sparse_vector`, `
 ::::
 
 
-### Recommended: `index.mapping.exclude_source_vectors`
-
-For vector fields specifically, prefer the `index.mapping.exclude_source_vectors` index setting over the generic `excludes` mapping parameter described further down. Vectors excluded through this setting are **rehydrated automatically** for [reindex]({{es-apis}}operation/operation-reindex), [update]({{es-apis}}operation/operation-update), [update by query]({{es-apis}}operation/operation-update-by-query), and recovery, so these operations continue to work as expected even though the vector isn't physically stored in `_source`.
-
-```console
-PUT my-index
-{
-  "settings": {
-    "index.mapping.exclude_source_vectors": true
-  }
-}
+### Exclude and rehydrate automatically
+```{applies_to}
+stack: ga 9.2+
 ```
 
-This is enabled by default for indices created on 9.2+. If you need the original vector values preserved exactly as provided (for example, `double` precision input rather than the internally-stored `float` representation), disable it at index creation time:
+For vector fields specifically, prefer the [`index.mapping.exclude_source_vectors`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) index setting over the generic `excludes` mapping parameter. Vectors excluded through this setting are rehydrated automatically, so reindex, update, and recovery continue to work as expected. To retrieve vector values in a specific search response, use the `fields` option. 
 
-```console
-PUT my-index
-{
-  "settings": {
-    "index.mapping.exclude_source_vectors": false
-  }
-}
-```
-
-To retrieve vector values in a specific search response despite this setting, use the [`fields`]({{es-apis}}operation/operation-search#operation-search-body-application-json-fields) option, or re-enable inclusion in `_source` for that request.
+This setting is enabled by default for indices created on 9.2+. 
 
 ### Alternative: the generic `excludes` mapping parameter
 
