@@ -22,15 +22,28 @@ To connect a client application or a third-party tool to {{es}}, you need two th
 
 This guide shows you where to find the endpoint and how to create an API key, then how to confirm that both work.
 
-## Elastic Cloud and self-hosted deployments [_elastic_cloud_and_self_hosted_deployments]
+## Before you begin [before-you-begin]
 
-### Find your {{es}} endpoint [find-endpoint-cloud-self-managed]
+To create an API key, you need the `manage_api_key` or the `manage_own_api_key` cluster privilege.
 
-Elastic recommends you connect client applications to your cluster using standard URLs.
+## Find your {{es}} endpoint [find-endpoint-cloud-self-managed]
 
-1. Go to the {{ecloud}} home page.
-2. In the main menu, select **Manage this deployment**.
-3. Under the **Applications** list, select **Copy endpoint** next to **{{es}}**.
+::::{applies-switch}
+
+:::{applies-item} { "deployment": { "ech": "ga", "ece": "ga" }, "serverless": "ga" }
+Your endpoint is in the **Connection details** panel in {{kib}}.
+
+1.  Open {{kib}} for your deployment or project. In the {{ecloud}} console, select **Open**.
+2. Open the help menu (![help icon](/deploy-manage/images/help-icon.svg "")), then select **Connection details**.
+3. Copy the **{{es}} endpoint** from the **Endpoints** tab.
+
+:::{tip}
+In the {{es}} solution, the **Getting started** page shows the endpoint directly.
+:::
+
+:::
+
+::::
 
 ### Find your Cloud ID [find-cloud-id-cloud-self-managed]
 
