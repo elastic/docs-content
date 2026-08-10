@@ -81,14 +81,15 @@ Models that aren't available in your allowed locations become unavailable.
 To open **Elastic {{infer}}**, you typically need the `Inference Endpoints: all` and `Advanced Settings: read` {{kib}} privileges.
 To load and save region preferences, you also need the `manage_inference` {{es}} cluster privilege.
 
-The **Manage region preferences** dialog lists only the geographies and regions currently available for your deployment.
+The **Region preferences** dialog lists only the geographies and regions currently available for your deployment.
 It can show fewer options than the full EIS hosting list on this page.
 
-1. Go to the **Elastic inference** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. Select **Manage regions**.
+1. Go to the **Elastic Inference Service** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Select **Region preferences**.
+1. Turn on **Restrict inference to specific locations**.
 
    :::{image} /explore-analyze/images/eis-manage-region-preferences.png
-   :alt: Manage region preferences dialog with the Regions tab open
+   :alt: Region preferences dialog with Restrict inference to specific locations turned on and the Geographies tab open
    :screenshot:
    :::
 
@@ -108,6 +109,18 @@ It can show fewer options than the full EIS hosting list on this page.
 
 When the update succeeds, {{kib}} shows the **Region preferences saved** message.
 If the policy would deny access to in-use {{infer}} endpoints, {{kib}} blocks the update and shows **Region policy update blocked**.
+
+To restore default nearest-region routing:
+
+1. Open **Region preferences**.
+1. Turn off **Restrict inference to specific locations**.
+1. Select **I understand this resets my region preferences** in the **Reset region preferences to default?** dialog.
+1. Select **Reset to default**.
+
+   :::{image} /explore-analyze/images/eis-reset-region-preferences.png
+   :alt: Reset region preferences to default confirmation dialog
+   :screenshot:
+   :::
 
 ### Configure region preferences with the API [configure-region-preferences-api]
 
