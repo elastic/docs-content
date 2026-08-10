@@ -48,7 +48,7 @@ For vector fields specifically, prefer the [`index.mapping.exclude_source_vector
 
 This setting is enabled by default for indices created on 9.2+. 
 
-### Alternative: the generic `excludes` mapping parameter
+### Exclude without rehydration
 
 ::::{note}
 [reindex]({{es-apis}}operation/operation-reindex), [update]({{es-apis}}operation/operation-update), and [update by query]({{es-apis}}operation/operation-update-by-query) operations generally require the `_source` field. Disabling `_source` for a field through the generic `excludes` parameter (unlike `index.mapping.exclude_source_vectors` above) does **not** support rehydration, and might result in unexpected behavior for these operations. For example, reindex might not actually contain the `dense_vector` field in the new index.
