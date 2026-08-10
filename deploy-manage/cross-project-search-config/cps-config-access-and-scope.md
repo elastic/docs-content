@@ -65,7 +65,7 @@ The scope controls which projects receive the search request, while [querying an
 
 You can adjust the {{cps-init}} system-level default scope by setting a narrower {{cps}} scope for each space. This setting determines the default search scope for the space. Users can override both the system-level default and the space-level default by setting their preferred scope when searching, filtering, or running queries. 
 
-The **{{cps-cap}}** panel appears in space settings only when the project is on a tier eligible for {{cps-init}}. Refer to [Projects available for linking](/deploy-manage/cross-project-search-config.md#cps-compatibility) for tier requirements.
+The **{{cps-cap}}** panel in space settings follows the same tier eligibility required to link projects for {{cps-init}}. Refer to [Projects available for linking](/deploy-manage/cross-project-search-config.md#cps-compatibility) for tier requirements. On an ineligible tier, the panel doesn't appear.
 
 :::{tip}
 For best results, set the default {{cps-init}} scope for each space **before** you link projects.
