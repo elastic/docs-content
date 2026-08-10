@@ -1,12 +1,19 @@
 ---
 navigation_title: Find connection details
+description: Find your Elasticsearch endpoint and create an API key so that client applications and tools can connect to your cluster or project.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html
 applies_to:
-  stack:
+  deployment:
+    ech:
+    ece:
+    eck:
+    self:
   serverless:
 products:
   - id: kibana
+  - id: elasticsearch
+type: how-to
 ---
 
 # Find connection details [search-space-connection-details]
