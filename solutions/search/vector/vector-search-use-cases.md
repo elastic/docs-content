@@ -26,7 +26,7 @@ New to vector search? You might want to start with the [managed `semantic_text` 
 
 Choose a search strategy based on the following:
 
-- **Embeddings**: For meaning-based text search, start with [managed workflows](../semantic-search.md) such as [`semantic_text`](../semantic-search/semantic-search-semantic-text.md). When you need full control over models, embeddings, or non-text vectors, configure [vector search](../vector.md) directly. To understand the differences and choose the right approach, refer to [Semantic search and vector search](../vector.md#semantic-search-vs-vector-search).
+- **Embeddings**: For meaning-based text search, start with [managed workflows](../semantic-search.md) such as [`semantic_text`](../semantic-search/semantic-search-semantic-text.md). For search across text and other media, start with [multimodal search](../multimodal-search.md). When you need full control over models, embeddings, or non-text vectors, configure [vector search](../vector.md) directly. To understand the differences and choose the right approach, refer to [Semantic search and vector search](../vector.md#semantic-search-vs-vector-search).
 - **Query interface**: Send requests with the [Search API and Query DSL](../the-search-api.md) or [{{esql}} for search](../esql-for-search.md). Use the same approach at index time and at search time.
 - **Combine strategies**: To rank keyword and vector results together, use [Hybrid search](../hybrid-search.md) or [retrievers](../retrievers-overview.md) in a single Search API request.
 
@@ -100,30 +100,32 @@ The closest vectors are not always the best final ranking. You can boost by popu
 
 Search images, audio, video, or text when your content uses more than one type. For example, search with text to find images, or search with an image to find similar images.
 
-The following steps use the [Inference API](../semantic-search/semantic-search-inference.md) to embed multimodal content. Refer to [How to implement retrieval](#how-to-implement-retrieval) for other embedding approaches.
+The recommended path uses the [`semantic`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md) field type with [Jina multimodal models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-multimodal-embeddings). For concepts and deployment options, refer to [Multimodal search](../multimodal-search.md). For a hands-on tutorial, refer to [Tutorial: Build multimodal search with a `semantic` field](../multimodal-search/multimodal-search-tutorial.md).
 
 ::::::{stepper}
-:::::{step} Create an inference endpoint
+:::::{step} Choose and deploy a multimodal model
 
-Create an endpoint with a model that supports your media types (text, images, audio, or video). Use the `embedding` task type for multimodal models. Use the same endpoint ID when you ingest documents and when you run a search.
+Use a model that supports your media types (text, images, audio, or video). Deploy or access it through EIS, external {{infer}}, or on-prem, then point a `semantic` field at an `embedding` endpoint that uses your model.
 
-- [Create an inference endpoint](../semantic-search/semantic-search-inference.md#infer-text-embedding-task)
-
-:::::
-
-:::::{step} Add an index mapping and ingest pipeline
-
-Define a `dense_vector` field for embeddings and any other fields you need for filters (category, license, date). In the same tutorial, add an ingest pipeline with an inference processor that calls your endpoint, then load your documents so each one is embedded at index time.
-
-- [Create the index mapping](../semantic-search/semantic-search-inference.md#infer-service-mappings)
+- [Multimodal embedding models](../multimodal-search.md#multimodal-embedding-models)
 
 :::::
 
-:::::{step} Run kNN search
+:::::{step} Create a semantic field mapping and index content
 
-Use kNN with a `query_vector_builder` so Elasticsearch embeds the user's query with the same model, then returns the closest vectors. Add a filter on structured fields when you need to limit results by category or other rules. Refer to [How to implement retrieval](#how-to-implement-retrieval) for your query interface and search strategy.
+Map a `semantic` field with `inference_id` set to your multimodal endpoint. Index images and other media into that field. Elasticsearch generates and indexes embeddings for your content automatically.
 
-- [Semantic search with the Inference API](../semantic-search/semantic-search-inference.md#infer-semantic-search)
+- [Create the image index](../multimodal-search/multimodal-search-tutorial.md#multimodal-tutorial-index-mapping)
+- [Index the image dataset](../multimodal-search/multimodal-search-tutorial.md#multimodal-tutorial-index-images)
+
+:::::
+
+:::::{step} Run cross-modal search
+
+Query the `semantic` field with text, image, or PDF input. Add a filter on structured fields when you need to limit results by category or date.
+
+- [Search the images with text](../multimodal-search/multimodal-search-tutorial.md#multimodal-tutorial-text-query)
+- [Search the images with another image](../multimodal-search/multimodal-search-tutorial.md#multimodal-tutorial-image-query)
 
 :::::
 ::::::
