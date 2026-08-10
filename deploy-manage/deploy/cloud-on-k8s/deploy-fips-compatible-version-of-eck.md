@@ -26,10 +26,10 @@ Due to a build configuration issue, ECK operator images published between versio
 :::{important}
 This page covers FIPS compliance for the ECK operator only. Making your managed {{es}} clusters FIPS-compliant requires additional configuration for each {{es}} node, including:
 
-* An external JDK with a FIPS-certified security provider
-* FIPS-compatible TLS and keystore settings
-* FIPS password hashing algorithms
 * `xpack.security.fips_mode.enabled: true`
+* An external JDK with a FIPS-certified security provider
+* FIPS-compatible TLS and keystore settings. On ECK 3.4+ with a compatible {{es}} version, the operator [manages the keystore password automatically](#k8s-fips-keystore-password) when FIPS mode is enabled.
+* FIPS password hashing algorithms
 
 For full requirements, refer to [FIPS compliance for {{es}}](/deploy-manage/security/fips-es.md).
 :::
