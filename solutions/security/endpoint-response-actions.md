@@ -26,6 +26,7 @@ Unless otherwise specified, response actions are supported on all endpoint platf
 
   These are required to perform actions both in the response console and in other areas of the {{security-app}} (such as isolating a host from a detection alert).
 * Users must have the appropriate user role or privileges for at least one response action to access the response console.
+* In addition to the privilege for each response action, users need at least **Read** access to the **Response Actions History** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) to view command output and status in the response console. Without it, running a response action in the console will create the action request, but the user won't be able to monitor its completion or view its results.
 ::::
 
 
