@@ -43,12 +43,31 @@ If your ECK-managed cluster's license is downgraded, you must upgrade {{agent}} 
 
 :::::::{stepper}
 
-::::::{step} Open {{ecloud}}
-Sign up or log in to {{ecloud}} with the following links and follow the prompts onscreen
+::::::{step} Get started
+
+::::{tab-set}
+
+:::{tab-item} {{ecloud}}
+Sign up or log in to {{ecloud}} with the following links and follow the prompts on screen:
 * [For new users](https://cloud.elastic.co/registration?onboarding_service_type=ccm) who don't have an {{ecloud}} account
 * [For existing users](https://cloud.elastic.co/login?redirectTo=%2Fconnect-cluster-services) who already have an {{ecloud}} account
 
-Alternatively, go to the **Cloud Connect** page in your {{kib}} instance using the [search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md) and sign up or log in from there. Then, follow the steps in [Connect through {{kib}}](#connect-through-kibana).
+Alternatively, go to your {{ecloud}} homepage and select **Connect self-managed cluster**.
+:::
+
+:::{tab-item} {{kib}}
+Go to the **Cloud Connect** page in your {{kib}} instance using the [search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md) and sign up or log in to {{ecloud}} from there. Then, follow the steps in [Connect through {{kib}}](#connect-through-kibana).
+
+:::{image} /deploy-manage/images/cloud-connect-eis.png
+:screenshot:
+:alt: Screenshot showing Get started with Cloud Connect page in {{kib}}
+:::
+
+
+:::
+
+::::
+
 ::::::
 
 ::::::{step} Choose how to connect
