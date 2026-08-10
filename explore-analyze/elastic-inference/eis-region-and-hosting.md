@@ -110,7 +110,7 @@ It can show fewer options than the full EIS hosting list on this page.
 When the update succeeds, {{kib}} shows the **Region preferences saved** message.
 If the policy would deny access to in-use {{infer}} endpoints, {{kib}} blocks the update and shows **Region policy update blocked**.
 
-To restore default nearest-region routing:
+#### Restore default nearest-region routing [restore-default-region-preferences]
 
 1. Open **Region preferences**.
 1. Turn off **Restrict inference to specific locations**.
