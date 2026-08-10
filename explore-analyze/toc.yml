@@ -388,6 +388,7 @@ toc:
       - file: find-and-organize/files.md
       - file: find-and-organize/reports.md
       - file: find-and-organize/tags.md
+      - file: find-and-organize/kibana-interface.md
       - file: find-and-organize/find-apps-and-objects.md
       - file: find-and-organize/customize-navigation.md
   - file: report-and-share.md

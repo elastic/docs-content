@@ -10,7 +10,9 @@ products:
 
 # Find apps and objects [kibana-navigation-search]
 
-To quickly find apps and the objects you create, use the search field in the global header. Search suggestions include deep links into applications, allowing you to directly navigate to the views you need most.
+To quickly find apps and the objects you create, use the global search field in the [global header](/explore-analyze/find-and-organize/kibana-interface.md#global-header). Search suggestions include deep links into applications, allowing you to directly navigate to the views you need most.
+
+{applies_to}`stack: ga 9.6` {applies_to}`serverless: ga` In spaces that use a solution view, the global header shows a **Find content...** button that opens the search field in a modal.
 
 :::{tip}
 {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` You can also reorder the apps in the navigation menu and hide the ones you don't use. Refer to [Customize your navigation menu](/explore-analyze/find-and-organize/customize-navigation.md).
@@ -24,7 +26,7 @@ To quickly find apps and the objects you create, use the search field in the glo
 
 You can search for objects by type, name, and tag. To get the most from the search feature, follow these tips:
 
-* Use the keyboard shortcut—**Ctrl**+**/** on Windows and Linux, **Command**+**/** on MacOS—to focus on the input at any time.
+* Use the keyboard shortcut to open the search field at any time: **Ctrl+/** on Windows and Linux, or **Command+/** on macOS.
 * Use the provided syntax keywords.
 
     |     |     |

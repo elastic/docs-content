@@ -73,7 +73,7 @@ The Cloud ID is a connection method specifically supported by Beats and {{ls}}. 
 
 ### Find your Elasticsearch endpoint [find-cloud-id-serverless]
 
-1. Select the Help icon in the top right corner and then select **Connection Details**.
+1. Select the Help icon in the top right corner and then select **Connection details**. You can also select the name of your project in the global header, then select **Connection details**.
 2. Copy the **Elasticsearch endpoint** from the **Endpoints** tab.
 
     :::{image} /solutions/images/kibana-serverless-connection-details.png
@@ -82,7 +82,7 @@ The Cloud ID is a connection method specifically supported by Beats and {{ls}}. 
     :::
 
 ::::{note}
-The **Cloud ID** is also available in the **Connection Details** section. Toggle the **Show Cloud ID** option to view it.
+The **Cloud ID** is also available in the **Connection details** section. Turn on **Show Cloud ID** to view it.
 
 ::::
 

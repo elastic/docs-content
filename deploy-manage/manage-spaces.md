@@ -18,7 +18,12 @@ products:
 - Users can access only the spaces that they have been granted access to. This access is based on user roles, and a given role can have different permissions per space.
 - In {{stack}} deployments on version 8.16 and later, each space has its own navigation, called solution view.
 
-{{kib}} creates a default space for you. When you create more spaces, users are asked to choose a space when they log in, and can change their current space at any time from the top menu.
+{{kib}} creates a default space for you. When you create more spaces, users are asked to choose a space when they log in, and can change their current space at any time from the [global header](/explore-analyze/find-and-organize/kibana-interface.md#global-header).
+
+Where you find the space switcher depends on your version and on the solution view of your current space:
+
+* {applies_to}`stack: ga 9.6` {applies_to}`serverless: ga` In spaces that use a solution view, select the name of your project, deployment, or space in the global header, then select the space you want from **My spaces**.
+* In all other cases, select the avatar of your current space in the global header, then select a space from the **Spaces** menu.
 
 :::{image} /deploy-manage/images/kibana-change-space.png
 :alt: Change current space menu
