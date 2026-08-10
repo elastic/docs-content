@@ -12,117 +12,87 @@ products:
 
 # AutoOps regions [ec-autoops-regions]
 
-A region is where a cloud service provider's data center hosts your deployments or clusters.
+A region is where a cloud service provider's data center hosts your resources. 
 
-::::{note} 
-AutoOps is currently not available in any region for GovCloud customers.
+AutoOps is enabled automatically when your hosted deployment or {{serverless-short}} project is in the following supported regions.
+
+::::{note}
+* AutoOps is not yet available in any region for GovCloud customers. GovCloud availability is coming soon.
+* The [Search AI Lake](/deploy-manage/monitor/autoops/search-ai-lake-view-autoops-serverless.md) view in AutoOps for {{serverless-short}} is available in all regions across AWS, GCP, and Azure.
 ::::
 
-## AutoOps for {{ECH}} regions
+## AWS
 
-[AutoOps for {{ECH}}](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) is supported across all CSPs. It is set up and enabled automatically in the following regions:
+| Region | Name | {{ECH}} | {{serverless-short}} |
+| --- | --- | --- | --- |
+| af-south-1 | Africa (Cape Town) | ✓ | — |
+| ap-east-1 | Asia Pacific (Hong Kong) | ✓ | — |
+| ap-south-1 | Asia Pacific (Mumbai) | ✓ | — |
+| ap-northeast-2 | Asia Pacific (Seoul) | ✓ | — |
+| ap-southeast-1 | Asia Pacific (Singapore) | ✓ | ✓ |
+| ap-southeast-2 | Asia Pacific (Sydney) | ✓ | — |
+| ap-northeast-1 | Asia Pacific (Tokyo) | ✓ | ✓ |
+| ca-central-1 | Canada (Central) | ✓ | — |
+| eu-central-1 | Europe (Frankfurt) | ✓ | ✓ |
+| eu-west-1 | Europe (Ireland) | ✓ | ✓ |
+| eu-west-2 | Europe (London) | ✓ | ✓ |
+| eu-south-1 | Europe (Milan) | ✓ | — |
+| eu-west-3 | Europe (Paris) | ✓ | — |
+| eu-north-1 | Europe (Stockholm) | ✓ | — |
+| eu-central-2 | Europe (Zurich) | ✓ | — |
+| me-south-1 | Middle East (Bahrain) | ✓ | — |
+| sa-east-1 | South America (São Paulo) | ✓ | — |
+| us-east-1 | US East (N. Virginia) | ✓ | ✓ |
+| us-east-2 | US East (Ohio) | ✓ | ✓ |
+| us-west-1 | US West (N. California) | ✓ | — |
+| us-west-2 | US West (Oregon) | ✓ | ✓ |
 
-### AWS
+## GCP
 
-| Region | Name |
-| --- | --- |
-| af-south-1 | Africa (Cape Town) |
-| ap-east-1 | Asia Pacific (Hong Kong) |
-| ap-south-1 | Asia Pacific (Mumbai) |
-| ap-northeast-2 | Asia Pacific (Seoul) |
-| ap-southeast-1 | Asia Pacific (Singapore) |
-| ap-southeast-2 | Asia Pacific (Sydney) |
-| ap-northeast-1 | Asia Pacific (Tokyo) |
-| ca-central-1 | Canada (Central) |
-| eu-central-1 | Europe (Frankfurt) |
-| eu-west-1 | Europe (Ireland) |
-| eu-west-2 | Europe (London) |
-| eu-south-1 | Europe (Milan) |
-| eu-west-3 | Europe (Paris) |
-| eu-north-1 | Europe (Stockholm) |
-| eu-central-2 | Europe (Zurich) |
-| me-south-1 | Middle East (Bahrain) |
-| sa-east-1 | South America (São Paulo) |
-| us-east-1 | US East (N. Virginia) |
-| us-east-2 | US East (Ohio) |
-| us-west-1 | US West (N. California) |
-| us-west-2 | US West (Oregon) |
+| Region | Name | {{ECH}} | {{serverless-short}} |
+| --- | --- | --- | --- |
+| asia-southeast2 | Asia Pacific (Jakarta) | ✓ | — |
+| asia-south1 | Asia Pacific (Mumbai) | ✓ | — |
+| asia-northeast3 | Asia Pacific (Seoul) | ✓ | — |
+| asia-southeast1 | Asia Pacific (Singapore) | ✓ | ✓ |
+| asia-east1 | Asia Pacific (Taiwan) | ✓ | — |
+| asia-northeast1 | Asia Pacific (Tokyo) | ✓ | ✓ |
+| australia-southeast1 | Australia (Sydney) | ✓ | — |
+| europe-west1 | Europe (Belgium) | ✓ | ✓ |
+| europe-north1 | Europe (Finland) | ✓ | — |
+| europe-west3 | Europe (Frankfurt) | ✓ | ✓ |
+| europe-west2 | Europe (London) | ✓ | ✓ |
+| europe-west4 | Europe (Netherlands) | ✓ | ✓ |
+| europe-west9 | Europe (Paris) | ✓ | — |
+| me-central2 | Middle East (Saudi Arabia) | ✓ | — |
+| me-west1 | Middle East (Tel Aviv) | ✓ | — |
+| northamerica-northeast1 | North America (Montreal) | ✓ | — |
+| southamerica-east1 | South America (São Paulo) | ✓ | — |
+| us-central1 | US Central (Iowa) | ✓ | ✓ |
+| us-east4 | US East (N. Virginia) | ✓ | ✓ |
+| us-east1 | US East (S. Carolina) | ✓ | ✓ |
+| us-west1 | US West (Oregon) | ✓ | ✓ |
 
-### GCP
+## Azure
 
-| Region | Name |
-| --- | --- |
-| asia-southeast2 | Asia Pacific (Jakarta) |
-| asia-south1 | Asia Pacific (Mumbai) |
-| asia-northeast3 | Asia Pacific (Seoul) |
-| asia-southeast1 | Asia Pacific (Singapore) |
-| asia-east1 | Asia Pacific (Taiwan) |
-| asia-northeast1 | Asia Pacific (Tokyo) |
-| australia-southeast1 | Australia (Sydney) |
-| europe-west1 | Europe (Belgium) |
-| europe-north1 | Europe (Finland) |
-| europe-west3 | Europe (Frankfurt) |
-| europe-west2 | Europe (London) |
-| europe-west4 | Europe (Netherlands) |
-| europe-west9 | Europe (Paris) |
-| me-central2 | Middle East (Saudi Arabia) |
-| me-west1 | Middle East (Tel Aviv) |
-| northamerica-northeast1 | North America (Montreal) |
-| southamerica-east1 | South America (São Paulo) |
-| us-central1 | US Central (Iowa) |
-| us-east4 | US East (N. Virginia) |
-| us-east1 | US East (S. Carolina) |
-| us-west1 | US West (Oregon) |
-
-### Azure
-
-| Region | Name |
-| --- | --- |
-| australiaeast | Australia East (New South Wales) |
-| brazilsouth | Brazil South (Sao Paulo) |
-| canadacentral | Canada Central (Toronto) |
-| centralindia | Central India (Pune) |
-| centralus | Central US (Iowa) |
-| eastus | East US (Virginia) |
-| eastus2 | East US 2 (Virginia) |
-| francecentral | France Central (Paris) |
-| japaneast | Japan East (Tokyo) |
-| northeurope | North Europe (Ireland) |
-| southafricanorth | South Africa North (Johannesburg) |
-| southcentralus | South Central US (Texas) |
-| southeastasia | Southeast Asia (Singapore) |
-| uksouth | UK South (London) |
-| westeurope | West Europe (Netherlands) |
-| westus2 | West US 2 (Washington) |
-
-## AutoOps for {{serverless-full}} regions
-
-[AutoOps for {{serverless-short}}](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md) is set up and enabled automatically in the following regions for AWS and GCP. The only exception is the **Search AI Lake** view, which is available in all CSP regions across AWS, GCP, and Azure.
-
-### AWS
-
-| Region | Name |
-| --- | --- |
-| ap-southeast-1 | Asia Pacific (Singapore) |
-| ap-northeast-1 | Asia Pacific (Tokyo) |
-| eu-central-1 | Europe (Frankfurt) |
-| eu-west-1 | Europe (Ireland) |
-| eu-west-2 | Europe (London) |
-| us-east-1 | US East (N. Virginia) |
-| us-east-2 | US East (Ohio) |
-| us-west-2 | US West (Oregon) |
-
-### GCP
-
-| Region | Name |
-| --- | --- |
-| asia-southeast1 | Asia Pacific (Singapore) |
-| asia-northeast1 | Asia Pacific (Tokyo) |
-| europe-west1 | Europe (Belgium) |
-| europe-west3 | Europe (Frankfurt) |
-| europe-west2 | Europe (London) |
-| europe-west4 | Europe (Netherlands) |
-| us-central1 | US Central (Iowa) |
-| us-east4 | US East (N. Virginia) |
-| us-east1 | US East (S. Carolina) |
-| us-west1 | US West (Oregon) |
+| Region | Name | {{ECH}} | {{serverless-short}} |
+| --- | --- | --- | --- |
+| australiaeast | Australia East (New South Wales) | ✓ | ✓ |
+| brazilsouth | Brazil South (Sao Paulo) | ✓ | — |
+| canadacentral | Canada Central (Toronto) | ✓ | — |
+| centralindia | Central India (Pune) | ✓ | — |
+| centralus | Central US (Iowa) | ✓ | — |
+| eastus | East US (Virginia) | ✓ | ✓ |
+| eastus2 | East US 2 (Virginia) | ✓ | — |
+| francecentral | France Central (Paris) | ✓ | — |
+| germanywestcentral | Germany West Central (Frankfurt) | — | ✓ |
+| japaneast | Japan East (Tokyo) | ✓ | — |
+| northeurope | North Europe (Ireland) | ✓ | ✓ |
+| southafricanorth | South Africa North (Johannesburg) | ✓ | — |
+| southcentralus | South Central US (Texas) | ✓ | — |
+| southeastasia | Southeast Asia (Singapore) | ✓ | ✓ |
+| spaincentral | Spain Central | — | ✓ |
+| uaenorth | UAE North | — | ✓ |
+| uksouth | UK South (London) | ✓ | — |
+| westeurope | West Europe (Netherlands) | ✓ | — |
+| westus2 | West US 2 (Washington) | ✓ | ✓ |

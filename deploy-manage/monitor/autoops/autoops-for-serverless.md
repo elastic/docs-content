@@ -8,7 +8,7 @@ products:
 
 # AutoOps for {{serverless-full}}
 
-For [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) projects, AutoOps is set up and enabled automatically in all supported [regions](ec-autoops-regions.md#autoops-for-serverless-full-regions). More regions are coming soon. 
+For [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) projects, AutoOps is set up and enabled automatically in all supported [regions](ec-autoops-regions.md). More regions are coming soon. 
 
 ## How AutoOps monitors your {{serverless-short}} project
 
