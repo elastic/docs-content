@@ -20,6 +20,6 @@ To access AutoOps in your {{serverless-short}} project, follow these steps:
 :::
 
 :::{note} 
-AutoOps for {{serverless-full}} is only available in supported [regions](ec-autoops-regions.md), with the exception of the **Search AI Lake** view, which is available in all regions across AWS, GCP, and Azure.
+AutoOps for {{serverless-full}} is only available in supported [regions](ec-autoops-regions.md#autoops-for-serverless-full-regions), with the exception of the **Search AI Lake** view, which is available in all regions across AWS, GCP, and Azure.
 :::
 

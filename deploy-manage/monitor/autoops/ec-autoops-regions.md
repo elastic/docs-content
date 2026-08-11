@@ -14,16 +14,13 @@ products:
 
 A region is where a cloud service provider's data center hosts your resources. 
 
-AutoOps is enabled automatically when your hosted deployment or {{serverless-short}} project is in the following supported regions.
-
 ::::{note}
-* AutoOps is not yet available in any region for GovCloud customers. GovCloud availability is coming soon.
-* The [Search AI Lake](/deploy-manage/monitor/autoops/search-ai-lake-view-autoops-serverless.md) view in AutoOps for {{serverless-short}} is available in all regions across AWS, GCP, and Azure.
+AutoOps is not available in any region for GovCloud customers yet. GovCloud availability is coming soon.
 ::::
 
-::::{tab-set}
+## AutoOps for {{ECH}} regions [autoops-for-ech-regions]
 
-:::{tab-item} {{ECH}}
+[AutoOps for {{ECH}}](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) is set up and enabled automatically in the following regions:
 
 ### AWS
 
@@ -98,9 +95,9 @@ AutoOps is enabled automatically when your hosted deployment or {{serverless-sho
 | westeurope | West Europe (Netherlands) |
 | westus2 | West US 2 (Washington) |
 
-:::
+## AutoOps for {{serverless-full}} regions [autoops-for-serverless-full-regions]
 
-:::{tab-item} {{serverless-short}}
+[AutoOps for {{serverless-short}}](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md) is set up and enabled automatically in the following regions. The only exception is the [Search AI Lake](/deploy-manage/monitor/autoops/search-ai-lake-view-autoops-serverless.md) view, which is available in all regions across AWS, GCP, and Azure.
 
 ### AWS
 
@@ -142,7 +139,3 @@ AutoOps is enabled automatically when your hosted deployment or {{serverless-sho
 | spaincentral | Spain Central |
 | uaenorth | UAE North |
 | westus2 | West US 2 (Washington) |
-
-:::
-
-::::
