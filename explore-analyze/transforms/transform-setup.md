@@ -71,3 +71,66 @@ For more information and {{kib}} security features, see [{{kib}} role management
 [Spaces](../../deploy-manage/manage-spaces.md) enable you to organize your source and destination indices and other saved objects in {{kib}} and to see only the objects that belong to your space. However, a transform is a long running task which is managed on cluster level and therefore not limited in scope to certain spaces. Space awareness can be implemented for a {{data-source}} under **Stack Management > Kibana** which allows privileges to the transform destination index.
 
 To successfully create transforms in {{kib}}, you must be logged into a space where the source indices are visible and the `Data View Management` and `Stack Monitoring` features are visible.
+
+## {{cps-cap}} scope [transform-cps-scope]
+```{applies_to}
+stack: unavailable
+serverless: preview
+```
+
+On {{serverless-full}} with [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md), a transform can read source data from linked projects. Each transform's scope is saved as a `project_routing` value in its `source` configuration and applies every time the transform runs.
+<!-- Dependency (elastic/docs-content#7815): once merged, describe this as a "stored scope" and link to /explore-analyze/cross-project-search/cross-project-search-manage-scope.md#session-scope-vs-stored-scope -->
+For valid routing expressions and wildcard syntax, refer to [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
+
+### Set project scope when you create a transform [transform-cps-create]
+
+When you create a transform in {{kib}}, use the **Project scope** control next to the data view picker to choose which linked projects the transform's source searches. Your selection is saved as the transform's `project_routing` value. For how to include, exclude, and filter projects, refer to the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana).
+
+The following default scopes apply:
+
+* **UI**: Defaults to the space default scope.
+* **API**: Searches the origin project only, unless you set a `project_routing` expression in the transform's `source`.
+* **Clone**: Uses the original transform's `project_routing`.
+
+Changes to the space default scope don't affect existing transforms. Each transform keeps the `project_routing` that was set when it was created or last updated.
+
+### Change project scope on an existing transform [transform-cps-update]
+
+You can change a transform's project scope in {{kib}} or with the API.
+
+:::::{tab-set}
+::::{tab-item} {{kib}}
+1. Open the transform's edit flyout.
+2. Select the **Project scope** control, then adjust which projects to include.
+3. Save your changes.
+
+To change the scope of several transforms at once, select them on the **Transforms** page, then change their project scope from the bulk actions menu.
+::::
+
+::::{tab-item} API
+Set the transform's `source.project_routing` with the [update transform API]({{es-apis}}operation/operation-transform-update-transform):
+
+```console
+POST _transform/{transform_id}/_update
+{
+  "source": {
+    "project_routing": "_alias:production-*"
+  }
+}
+```
+::::
+:::::
+
+### Legacy transforms [transform-cps-legacy]
+
+Transforms created before {{cps-init}} was enabled on the project search the origin project only until you update their `project_routing`. When you change a legacy transform's scope, {{es}} upgrades the transform's credentials to support cross-project access.
+
+### Check project scope [transform-cps-monitor]
+
+The **Project scope** column on the **Transforms** page shows each transform's scope:
+
+* **This project**: The transform searches the origin project only.
+* **All**: The transform searches every linked project.
+* A count such as **5/10**: A custom expression routes the transform to a subset of projects.
+
+Select the value to see the list of included projects. To inspect the stored expression with the API, [`GET _transform/{transform_id}`]({{es-apis}}operation/operation-transform-get-transform) returns the `source.project_routing` value.
