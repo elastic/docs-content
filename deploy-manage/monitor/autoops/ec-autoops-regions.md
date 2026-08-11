@@ -12,7 +12,7 @@ products:
 
 # AutoOps regions [ec-autoops-regions]
 
-A region is where a cloud service provider's data center hosts your resources. 
+A region is where a cloud service provider's data center hosts your deployments or clusters. 
 
 ::::{note}
 AutoOps is not available in any region for GovCloud customers yet. GovCloud availability is coming soon.
