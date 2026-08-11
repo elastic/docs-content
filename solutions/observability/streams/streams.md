@@ -38,39 +38,38 @@ When an incident occurs, Streams gets you to answers faster. AI-powered detectio
 
 To use Streams, you need the following prerequisites:
 
-- {{ech}} ({{stack}} 9.2+) or {{serverless-short}}
 - A [generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md) to use AI features like pipeline suggestion, partition suggestions, and significant events. Any generative AI connector works, including [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md), which requires no external account or API key.
 
     :::{note}
     A {{ml}} node is not required. Streams' AI features use the generative AI connector and do not depend on {{ml}} infrastructure.
     :::
 
-You also need {{kib}} access with the following permissions:
+- {{kib}} access with the following permissions:
 
-::::{applies-switch}
+    ::::{applies-switch}
 
-:::{applies-item} serverless:
-Streams requires one of the following {{serverless-full}} roles:
+    :::{applies-item} serverless:
+    Streams requires one of the following {{serverless-full}} roles:
 
-- Admin: Able to manage all Streams
-- Editor/Viewer: Has limited access to Streams, cannot perform all actions
+    - Admin: Able to manage all Streams
+    - Editor/Viewer: Has limited access to Streams, cannot perform all actions
 
-:::
+    :::
 
-:::{applies-item} stack:
-To manage all streams, you need the following permissions:
+    :::{applies-item} stack:
+    To manage all streams, you need the following permissions:
 
-- **Cluster permissions**: `manage_index_templates`, `manage_ingest_pipelines`, `manage_pipeline`, `read_pipeline`
-- **Data stream level permissions**: `read`, `write`, `create`, `manage`, `monitor`, `manage_data_stream_lifecycle`, `read_failure_store`, `manage_failure_store`, `manage_ilm`.
+    - **Cluster permissions**: `manage_index_templates`, `manage_ingest_pipelines`, `manage_pipeline`, `read_pipeline`
+    - **Data stream level permissions**: `read`, `write`, `create`, `manage`, `monitor`, `manage_data_stream_lifecycle`, `read_failure_store`, `manage_failure_store`, `manage_ilm`.
 
-To view streams, you need the following permissions:
-- **Data stream level**: `read`, `view_index_metadata`, `monitor`
+    To view streams, you need the following permissions:
+    - **Data stream level**: `read`, `view_index_metadata`, `monitor`
 
-For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md).
+    For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md).
 
-:::
+    :::
 
-::::
+    ::::
 
 
 ## Get started with Streams
