@@ -1,5 +1,6 @@
 ---
 navigation_title: Vector search
+description: Learn how vector search works in Elasticsearch, including dense and sparse vectors, embeddings, kNN search, and how to choose between semantic_text and direct vector field configuration.
 applies_to:
   stack:
   serverless:
@@ -65,7 +66,7 @@ $$$sparse-vectors$$$ Sparse vectors
 
 Once you've implemented any of these approaches, you can combine them with full-text search to create [hybrid search](hybrid-search.md) solutions that leverage both meaning-based and keyword-based matching.
 
-For a broader view of when each search approach fits your goals, refer to [Search approaches](search-approaches.md).
+For a broader view of when each search approach fits your goals, refer to [Search approaches](search-approaches.md). To explore AI-powered features across the {{stack}}, including the AI Assistant and {{agent-builder}}, refer to [AI-powered features](/explore-analyze/ai-features.md).
 
 ## Field types and queries [vector-queries-and-field-types]
 
