@@ -545,6 +545,8 @@ When the formatter type is **Audio**, the `{{value}}` template string specifies 
 
 To pass unescaped values directly to the URL, use the `{{rawValue}}` string.
 
+To insert a value into the rison-encoded state of a {{kib}} app URL, for example `query:'{{risonValue}}'`, use the `{{risonValue}}` string. It escapes the value for rison and then URL-encodes it, so characters such as `'` don't break the target URL.
+
 A **Label template** enables you to specify a text string that appears instead of the raw URL. You can use the `{{value}}` template string normally in label templates. You can also use the `{{url}}` template string to display the formatted URL.
 
 
@@ -596,6 +598,8 @@ When the formatter type is **Image**, the `{{value}}` template string specifies 
 When the formatter type is **Audio**, the `{{value}}` template string specifies the name of an audio file at the specified URI.
 
 To pass unescaped values directly to the URL, use the `{{rawValue}}` string.
+
+To insert a value into the rison-encoded state of a {{kib}} app URL, for example `query:'{{risonValue}}'`, use the `{{risonValue}}` string. It escapes the value for rison and then URL-encodes it, so characters such as `'` don't break the target URL.
 
 A **Label template** enables you to specify a text string that appears instead of the raw URL. You can use the `{{value}}` template string normally in label templates. You can also use the `{{url}}` template string to display the formatted URL.
 
@@ -655,6 +659,8 @@ When the formatter type is **Image**, the `{{value}}` template string specifies 
 When the formatter type is **Audio**, the `{{value}}` template string specifies the name of an audio file at the specified URI.
 
 To pass unescaped values directly to the URL, use the `{{rawValue}}` string.
+
+To insert a value into the rison-encoded state of a {{kib}} app URL, for example `query:'{{risonValue}}'`, use the `{{risonValue}}` string. It escapes the value for rison and then URL-encodes it, so characters such as `'` don't break the target URL.
 
 A **Label template** enables you to specify a text string that appears instead of the raw URL. You can use the `{{value}}` template string normally in label templates. You can also use the `{{url}}` template string to display the formatted URL.
 
