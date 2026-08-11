@@ -1,6 +1,6 @@
 ---
 navigation_title: Semantic search
-description: Quickstart for semantic search in Elasticsearch with the semantic_text workflow, which uses vector search and embeddings to match documents by meaning.
+description: Get started with semantic search and vector search in Elasticsearch using the semantic_text field type. This tutorial walks through indexing documents, generating embeddings automatically, and running your first semantic search query.
 applies_to:
   serverless: all
   stack: all
@@ -251,11 +251,12 @@ Each `_score` is a relevance score for this search only. A higher score means th
 - [Semantic search with the {{infer}} API](../semantic-search/semantic-search-inference.md) - Use the {{infer}} API with third-party embedding services (for example Cohere, Hugging Face, or OpenAI) to run semantic search with vector embeddings.
 - [Hybrid search with `semantic_text`](../hybrid-semantic-text.md) - Combine semantic search on `semantic_text` with full-text search on a text field, then merge results using RRF. Vector embeddings are generated and compared automatically.
 - [Semantic search with ELSER](../semantic-search/semantic-search-elser-ingest-pipelines.md) - Use the ELSER model for sparse vector search and semantic retrieval.
-- [Dense and sparse vector ingest pipelines](../vector/dense-versus-sparse-ingest-pipelines.md) - Implement vector search end to end with NLP models deployed in {{es}}: pick dense or sparse, deploy the model, build ingest pipelines, and query—without relying on `semantic_text`.
+- [Dense and sparse vector ingest pipelines](../semantic-search/dense-versus-sparse-ingest-pipelines.md) - Implement vector search end to end with NLP models deployed in {{es}}: pick dense or sparse, deploy the model, build ingest pipelines, and query—without relying on `semantic_text`.
 
 ### Concepts and reference
 
-- [Semantic search](../semantic-search.md) - Compare the three workflows (`semantic_text`, {{infer}} API, or models deployed in-cluster) for meaning-based search and see how they differ in complexity.
+- [Semantic search for text](../semantic-search.md) - Compare the three workflows (`semantic_text`, {{infer}} API, or models deployed in-cluster) for meaning-based text search and see how they differ in complexity.
+- [Multimodal search](../multimodal-search.md) - Search across text, images, audio, video, and documents with Jina multimodal embeddings.
 - [Vector search](../vector.md) - Work directly with `dense_vector` and `sparse_vector` fields, related queries, and manual vector implementations when you need control beyond managed semantic workflows.
 - [Ranking and reranking](../ranking.md) - Structure multi-stage pipelines: initial BM25, vector, or hybrid retrieval, then reranking with stronger models on smaller candidate sets.
 - [Build your search queries](../querying-for-search.md) - Choose Query DSL, {{esql}}, or retrievers on the Search API depending on whether you need classic queries, analytics-style pipes, or composable retrieval pipelines.
