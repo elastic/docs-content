@@ -35,7 +35,8 @@ The speed of kNN search scales linearly with the number of vector dimensions, be
 {{es}} stores the original JSON document that was passed at index time in the [`_source` field](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md). By default, each hit in the search results contains the full document `_source`. When the documents contain high-dimensional `dense_vector` fields, the `_source` can be quite large and expensive to load. This could significantly slow down the speed of kNN search.
 
 ::::{note}
-As of 9.2, new indices exclude vector fields (`dense_vector`, `sparse_vector`, `rank_vector`) from `_source` by default, using the dedicated `index.mapping.exclude_source_vectors` index setting described below. Existing indices are unaffected and continue to store vectors in `_source` as before.
+:applies_to: { "stack": "ga 9.2+" }
+New indices already exclude vector fields from `_source` by default, with automatic rehydration for reindex and recovery operations.
 ::::
 
 
