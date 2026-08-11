@@ -96,16 +96,17 @@ Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] 
 
 ## Create URL drilldowns [create-url-drilldowns]
 
-URL drilldowns enable you to navigate from a dashboard to external websites. Destination URLs can be dynamic, depending on the dashboard context or user interaction with a panel. To create URL drilldowns, you add [variables](/explore-analyze/dashboards/drilldowns.md) to a URL template, which configures the behavior of the drilldown. All panels that you create with the visualization editors support dashboard drilldowns.
+URL drilldowns enable you to navigate from a dashboard to an external website or to another location in {{kib}}. Destination URLs can be dynamic, depending on the dashboard context or user interaction with a panel. To create URL drilldowns, you add [variables](/explore-analyze/dashboards/drilldowns.md) to a URL template, which configures the behavior of the drilldown. All panels that you create with the visualization editors support dashboard drilldowns.
 
 ![Drilldown on pie chart that navigates to Github](/explore-analyze/images/kibana-dashboard_urlDrilldownGoToGitHub_8.3.gif "")
 
 Some panels support multiple interactions, also known as triggers. The [variables](#url-template-variable) you use to create a [URL template](#url-templating-language) depends on the trigger you choose. URL drilldowns support these types of triggers:
 
 * **Single click** — A single data point in the panel.
+* **Table row click** — A row in a table panel.
 * **Range selection** — A range of values in a panel.
 
-For example, **Single click** has `{{event.value}}` and **Range selection** has `{{event.from}}` and `{{event.to}}`.
+For example, **Single click** has `{{event.value}}`, **Table row click** has `{{event.values}}` and `{{event.keys}}`, and **Range selection** has `{{event.from}}` and `{{event.to}}`. For ready-to-use templates, refer to [Example URL templates](#url-template-examples).
 
 {applies_to}`stack: ga 9.4` {applies_to}`serverless:` {{esql}} visualization panels also support URL drilldowns.
 
@@ -148,6 +149,40 @@ For example, if you have a dashboard that shows data from a Github repository, y
 9. In the list of {{kib}} repository issues, verify that the slice value appears.
 
     ![Open ios issues in the elastic/kibana repository on Github](/explore-analyze/images/kibana-dashboard_urlDrilldownGithub_8.3.png "")
+
+### Create a URL drilldown from a table row [_create_a_url_drilldown_from_a_table_row]
+
+Table panels support the **Table row click** trigger, which gives you access to the values in the clicked row through the `event.values` and `event.keys` variables. Use this trigger when you want to pass one or more cell values from a row to an external system, such as a search engine, a ticketing tool, or another web application.
+
+1. Add the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data.
+2. Open the **[Logs] Web Traffic** dashboard, then select **Edit** in the application menu.
+3. Create a table:
+
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the application menu.
+    * {applies_to}`stack: ga 9.0-9.1` Select **Create visualization** in the dashboard toolbar.
+
+4. From the **Chart type** dropdown, select **Table**.
+5. From the **Available fields** list, drag **url.keyword** to the workspace.
+6. Select **Save and return**.
+7. Open the table panel menu, then select **Create drilldown**.
+8. Select **Go to URL**.
+
+    1. Give the drilldown a name. For example, `Search the URL`.
+    2. For the **Trigger**, select **Table row click**.
+    3. In the **Enter URL** field, enter a URL template that uses the clicked row values. For example, to search the first column value on an external site:
+
+        ```bash
+        https://example.com/search?q={{event.values.[0]}}
+        ```
+
+        `{{event.values.[0]}}` is the value of the first column in the clicked row. Use `{{event.values.[1]}}`, `{{event.values.[2]}}`, and so on to access other columns, and `{{event.keys.[0]}}` to access the field name of a column.
+
+    4. Select **Create drilldown**.
+
+9. Save the dashboard.
+10. In the table, select a row to open the drilldown menu, then select **Search the URL** to open the destination URL with the row values applied.
+
+For more templates that pass row, filter, time range, and query values, refer to [Example URL templates](#url-template-examples).
 
 
 
@@ -384,9 +419,61 @@ To ensure that the configured URL drilldown works as expected with your data, yo
 |  | event.key | Field name behind clicked data point |
 |  | event.negate | Boolean, indicating whether clicked data point resulted in negative filter. |
 |  | event.points | Some visualizations have clickable points that emit more than one data point. Use list of data points in case a single value is insufficient.<br><br>Example:<br>`{{json event.points}}`<br>`{{event.points.[0].key}}`<br>`{{event.points.[0].value}}``{{#each event.points}}key=value&{{/each}}`<br>Note:<br>`{{event.value}}` is a shorthand for `{{event.points.[0].value}}`<br>`{{event.key}}` is a shorthand for `{{event.points.[0].key}}` |
-| **Row click** | event.rowIndex | Number, representing the row that was clicked, starting from 0. |
+| **Table row click** | event.rowIndex | Number, representing the row that was clicked, starting from 0. |
 |  | event.values | An array of all cell values for the row on which the action will execute. To access a column value, use `{{event.values.[x]}}`, where `x` represents the column number. |
 |  | event.keys | An array of field names for each column. |
 |  | event.columnNames | An array of column names. |
 | **Range selection** | event.from<br>event.to | `from` and `to` values of the selected range as numbers.<br>Tip: Consider using [date](#helpers) helper for date formatting. |
 |  | event.key | Aggregation field behind the selected range, if available. |
+
+### Example URL templates [url-template-examples]
+
+The following templates show common ways to use `context.panel.*` and `event.*` variables. Adapt them to your own data and target systems. To navigate within {{kib}}, start the template with `{{kibanaUrl}}`. To navigate to an external site, start with the site URL.
+
+**Open Discover with the panel's time range**
+
+Carries the panel's current time picker values into **Discover**:
+
+```bash
+{{kibanaUrl}}/app/discover#/?_g=(time:(from:'{{context.panel.timeRange.from}}',to:'{{context.panel.timeRange.to}}'))
+```
+
+**Open Discover with the panel's filters**
+
+Uses the [rison](#helpers) helper to serialize the panel filters into the format that {{kib}} apps expect:
+
+```bash
+{{kibanaUrl}}/app/discover#/?_a=(filters:{{rison context.panel.filters}})
+```
+
+**Open Discover with the panel's query**
+
+Carries the panel's query string and language:
+
+```bash
+{{kibanaUrl}}/app/discover#/?_a=(query:(language:{{context.panel.query.language}},query:'{{context.panel.query.query}}'))
+```
+
+**Open Discover with the panel's data view**
+
+Uses the data view ID behind the panel:
+
+```bash
+{{kibanaUrl}}/app/discover#/?_a=(index:'{{context.panel.indexPatternId}}')
+```
+
+**Open Discover with the full panel context**
+
+Combines the time range, filters, query, and data view into a single deep link:
+
+```bash
+{{kibanaUrl}}/app/discover#/?_g=(time:(from:'{{context.panel.timeRange.from}}',to:'{{context.panel.timeRange.to}}'))&_a=(columns:!(_source),filters:{{rison context.panel.filters}},index:'{{context.panel.indexPatternId}}',query:(language:{{context.panel.query.language}},query:'{{context.panel.query.query}}'),sort:!())
+```
+
+**Pass a clicked table row value to an external URL**
+
+For a table panel that uses the **Table row click** trigger, pass cell values from the clicked row:
+
+```bash
+https://example.com/search?field={{event.keys.[0]}}&value={{event.values.[0]}}
+```
