@@ -56,9 +56,9 @@ Alternatively, go to your {{ecloud}} homepage and select **Connect self-managed 
 :::
 
 :::{tab-item} {{kib}}
-Go to the **Cloud Connect** page in your {{kib}} instance using the [search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md) and sign up or log in to {{ecloud}} from there. Then, follow the steps in [Connect through {{kib}}](#connect-through-kibana).
+Go to the **Cloud Connect** page in your {{kib}} instance using the [search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md) and sign up or log in to {{ecloud}} from there. Then, follow the steps to [connect through {{kib}}](#connect-through-kibana).
 
-:::{image} /deploy-manage/images/cloud-connect-eis.png
+:::{image} /explore-analyze/images/cloud-connect-eis.png
 :screenshot:
 :alt: Screenshot showing Get started with Cloud Connect page in {{kib}}
 :::
@@ -77,31 +77,15 @@ Go to the **Cloud Connect** page in your {{kib}} instance using the [search bar]
 :alt: Screenshot showing the Connect through Kibana and Install AutoOps agent options
 :::
 
-::::{tab-set}
-
-:::{tab-item} Connect through {{kib}}
+For just AutoOps, click **Install AutoOps agent** to go to the installation wizard directly. Or, click **Connect through {{kib}}** to enable multiple [cloud connected services](/deploy-manage/cloud-connect.md) with an API key.
 
 $$$connect-through-kibana$$$
-If you prefer to use Cloud Connect from your {{kib}} instance, select **Connect through {{kib}}**. This option also allows you to enable multiple [cloud connected services](/deploy-manage/cloud-connect.md) using an API key.
+If you choose **Connect through Kibana**:
 
 1. Copy the Cloud Connect API key that shows up.
 2. In your cluster's {{kib}} instance, go to the **Cloud Connect** page using the [search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Paste your Cloud Connect API key and click **Connect**.
-4. On the **Cloud connected services** page, choose the services you want to enable. For AutoOps, click **Connect** next to AutoOps.
-
-:::{image} /explore-analyze/images/eis-cloud-connect-connect-ui.png
-:screenshot:
-:alt: Cloud connected services page with Connect options
-:::
-
-:::
-
-:::{tab-item} Install AutoOps agent
-To enable only AutoOps, select **Install AutoOps agent**. You will be taken to the installation wizard directly.
-:::
-
-::::
-
+4. On the **Cloud connected services** page, choose the services you want to enable. For AutoOps, click **Connect** next to AutoOps. For other services, refer to [](/deploy-manage/cloud-connect.md).
 ::::::
 
 ::::::{step} Select installation method
