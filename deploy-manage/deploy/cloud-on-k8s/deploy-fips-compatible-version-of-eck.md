@@ -14,10 +14,11 @@ products:
 
 The Federal Information Processing Standard (FIPS) Publication 140-2, (FIPS PUB 140-2), titled "Security Requirements for Cryptographic Modules" is a U.S. government computer security standard used to approve cryptographic modules. Since version 2.6 ECK offers a FIPS-enabled image that is a drop-in replacement for the standard image.
 
-For the ECK operator, adherence to FIPS 140-2 is ensured by:
+For the ECK operator, FIPS compliance is ensured by:
 
 * Using FIPS approved / NIST recommended cryptographic algorithms.
-* Compiling the operator using the [BoringCrypto](https://github.com/golang/go/blob/dev.boringcrypto/README.boringcrypto.md) library for various cryptographic primitives.
+* {applies_to}`eck: ga 3.5` Using Go's native [FIPS 140-3 cryptographic module](https://go.dev/doc/security/fips140). The build pins the Go Cryptographic Module at v1.0.0 ([CMVP Certificate #5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)), which is the certified version regardless of the Go toolchain version used.
+* {applies_to}`eck: before 3.5` Compiling the operator using the [BoringCrypto](https://github.com/golang/go/blob/dev.boringcrypto/README.boringcrypto.md) library for various cryptographic primitives.
 
 ::::{warning}
 Due to a build configuration issue, ECK operator images published between versions 2.9.0 and 3.3.1 use the standard Go cryptography library instead of BoringCrypto. Standard Go **does not use FIPS 140-2/3 validated cryptographic libraries**. Upgrade to version 3.3.2 or later to get images built using FIPS 140-2/3 validated cryptographic libraries.
