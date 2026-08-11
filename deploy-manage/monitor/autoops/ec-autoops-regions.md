@@ -12,15 +12,15 @@ products:
 
 # AutoOps regions [ec-autoops-regions]
 
-A region is where a cloud service provider's data center hosts your deployments or clusters.
+A region is where a cloud service provider's data center hosts your deployments or clusters. 
 
-::::{note} 
-AutoOps is currently not available in any region for GovCloud customers.
+::::{note}
+AutoOps is not available in any region for GovCloud customers yet. GovCloud availability is coming soon.
 ::::
 
-## AutoOps for {{ECH}} regions
+## AutoOps for {{ECH}} regions [autoops-for-ech-regions]
 
-[AutoOps for {{ECH}}](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) is supported across all CSPs. It is set up and enabled automatically in the following regions:
+[AutoOps for {{ECH}}](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) is set up and enabled automatically in the following regions:
 
 ### AWS
 
@@ -95,9 +95,9 @@ AutoOps is currently not available in any region for GovCloud customers.
 | westeurope | West Europe (Netherlands) |
 | westus2 | West US 2 (Washington) |
 
-## AutoOps for {{serverless-full}} regions
+## AutoOps for {{serverless-full}} regions [autoops-for-serverless-full-regions]
 
-[AutoOps for {{serverless-short}}](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md) is set up and enabled automatically in the following regions for AWS and GCP. The only exception is the **Search AI Lake** view, which is available in all CSP regions across AWS, GCP, and Azure.
+[AutoOps for {{serverless-short}}](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md) is set up and enabled automatically in the following regions. The only exception is the [Search AI Lake](/deploy-manage/monitor/autoops/search-ai-lake-view-autoops-serverless.md) view, which is available in all regions across AWS, GCP, and Azure.
 
 ### AWS
 
@@ -126,3 +126,16 @@ AutoOps is currently not available in any region for GovCloud customers.
 | us-east4 | US East (N. Virginia) |
 | us-east1 | US East (S. Carolina) |
 | us-west1 | US West (Oregon) |
+
+### Azure
+
+| Region | Name |
+| --- | --- |
+| australiaeast | Australia East (New South Wales) |
+| eastus | East US (Virginia) |
+| germanywestcentral | Germany West Central (Frankfurt) |
+| northeurope | North Europe (Ireland) |
+| southeastasia | Southeast Asia (Singapore) |
+| spaincentral | Spain Central |
+| uaenorth | UAE North |
+| westus2 | West US 2 (Washington) |
