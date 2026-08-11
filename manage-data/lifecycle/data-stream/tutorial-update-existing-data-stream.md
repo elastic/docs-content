@@ -17,7 +17,9 @@ Follow these steps to configure or remove data stream lifecycle settings for an 
 - [Remove the lifecycle for a data stream](#delete-lifecycle)
 - [Manage data retention on the Streams page](#data-retention-streams)
 
-These steps configure data stream lifecycle settings directly. {applies_to}`stack: ga 9.5+` You can also select an existing {{ilm-init}} policy from the same **Edit data lifecycle** flyout. For the full set of {{ilm-init}} configuration options, refer to the [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md). For a comparison between the two, refer to [](/manage-data/lifecycle.md).
+These steps configure data stream lifecycle settings directly. For the full set of {{ilm-init}} configuration options, refer to the [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md). For a comparison between the two, refer to [](/manage-data/lifecycle.md).
+
+{applies_to}`stack: ga 9.5+` You can also select an existing {{ilm-init}} policy from the same **Edit data lifecycle** flyout used in the steps below.
 
 ## Set a data stream's lifecycle [set-lifecycle]
 
