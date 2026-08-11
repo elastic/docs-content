@@ -30,6 +30,12 @@ You can log security-related events such as authentication failures and refused 
 
 This section describes how to enable and configure audit logging in both {{es}} and {{kib}} for all supported deployment types, including self-managed clusters, {{ech}}, {{ece}} (ECE), and {{eck}} (ECK).
 
+::::{note}
+:applies_to: serverless: preview
+
+For {{serverless-full}}, use [](/deploy-manage/monitor/log-delivery/audit-logs.md) on the project's **Log delivery** page instead of the stack audit logging settings on this page.
+::::
+
 ::::{important}
 In orchestrated deployments, audit logs must be shipped to a monitoring deployment; otherwise, they remain at container level and won't be accessible to users. For details on configuring log forwarding in orchestrated environments, refer to [logging configuration](/deploy-manage/monitor/logging-configuration.md).
 ::::
