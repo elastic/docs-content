@@ -14,7 +14,7 @@ products:
 
 The Federal Information Processing Standard (FIPS) Publication 140-2, (FIPS PUB 140-2), titled "Security Requirements for Cryptographic Modules" is a U.S. government computer security standard used to approve cryptographic modules. Since version 2.6 ECK offers a FIPS-enabled image that is a drop-in replacement for the standard image.
 
-For the ECK operator, FIPS compliance is ensured by:
+For the ECK operator, FIPS compatibility is ensured by:
 
 * Using FIPS approved / NIST recommended cryptographic algorithms.
 * {applies_to}`eck: ga 3.5` Using Go's native [FIPS 140-3 cryptographic module](https://go.dev/doc/security/fips140). The build pins the Go Cryptographic Module at v1.0.0 ([CMVP Certificate #5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)), which is the certified version.
@@ -25,7 +25,7 @@ Due to a build configuration issue, ECK operator images published between versio
 ::::
 
 :::{important}
-This page covers FIPS compliance for the ECK operator only. Making your managed {{es}} clusters FIPS-compliant requires additional configuration for each {{es}} node, including:
+This page covers FIPS compatibility for the ECK operator only. Making your managed {{es}} clusters FIPS-compatible requires additional configuration for each {{es}} node, including:
 
 * `xpack.security.fips_mode.enabled: true`
 * An external JDK with a FIPS-certified security provider
