@@ -147,9 +147,9 @@ On {{serverless-full}} with [{{cps}} ({{cps-init}})](/explore-analyze/cross-proj
 
 When you create or clone a job in {{kib}}, use the **Project scope** control in the job creation wizard to choose which linked projects the job searches.
 
-The scope control appears on the **Select project scope and data source** step. 
+The scope control appears on the **Select project scope and data source** step. Choose the project scope and a data source, then select **Next** to continue.
 
-For advanced jobs, the project scope control is also available on the **Configure {{dfeed}}** step. The scope picker and JSON editor both write to the same `project_routing` field. Changing one updates the other. If the routing expression does not map to a preset, the picker shows **Custom**.
+For advanced jobs, the project scope and data source controls appear together on the **Configure {{dfeed}}** step. The scope selector and JSON editor both write to the same `project_routing` field. Changing one updates the other. If the routing expression does not map to a preset, the scope selector shows **Custom**.
 
 #### Default scope behavior
 
@@ -173,9 +173,9 @@ When setting `project_routing` through the API or JSON editor, {{es}} does not v
 You can change a job's project scope in {{kib}} or through the API.
 
 :::{warning}
-Changing project scope affects model accuracy. Expect a significant increase in false positives as the detector encounters unfamiliar data characteristics. During the adaptation period, which can last days or weeks, the model may also miss real anomalies as it learns to model the new data distribution.
+Changing project scope affects model accuracy. Expect a significant increase in false positives as the detector encounters unfamiliar data characteristics. During the adaptation period, which can last days or weeks, the model might also miss real anomalies as it learns to model the new data distribution.
 
-If you need a fundamentally different scope, such as moving from origin-only to search across all linked projects, cloning the job with the new routing and retraining from scratch can be faster than waiting for an existing model to adapt.
+If you need a fundamentally different scope, such as moving from origin-only to search across all linked projects, creating a copy of the job with the new routing and retraining from scratch can be faster than waiting for an existing model to adapt.
 
 % TODO: add xref to troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md when PR #7403 merges
 :::
@@ -188,10 +188,10 @@ If you need a fundamentally different scope, such as moving from origin-only to 
 To change scope for a single job:
 
 1. Open the job's edit panel and go to the **Datafeed** tab.
-2. Select the **Project scope** control and adjust the routing.
+2. Select the **Project scope** control to open the scope selector, then adjust which projects to include.
 3. Save. {{kib}} automatically stops, updates, and restarts the job.
 
-To update scope for multiple jobs at once, select the jobs on the **Anomaly Detection** page and choose **Change project scope** from the bulk action menu. If the selected jobs have different scopes, the selector pre-populates with the space default. Adjust the scope and save to apply the new routing to all selected jobs.
+To update scope for multiple jobs at once, select the jobs on the **Anomaly Detection** page and choose **Change project scope** from the bulk action menu. The scope selector opens so you can set a shared scope. If the selected jobs have different scopes, the scope selector pre-populates with the space default. Adjust the scope and save to apply the new routing to all selected jobs.
 
 ::::
 
@@ -228,9 +228,9 @@ The job must have produced at least one model snapshot so {{es}} can retain it a
 
 ### Check project scope [ml-ad-cps-monitor]
 
-The **Project scope** column on the **Anomaly Detection** page shows the number of included projects out of the total available, (for example, `8/92`). **All** means flat-world search with no routing restriction. Select the value to see the stored routing expression.
+The **Project scope** column on the **Anomaly Detection** page shows the number of included projects out of the total available (for example, `8/92`). **All** means the job searches all linked projects with no routing restriction. Select the value to see the list of included projects.
 
-To inspect scope programmatically:
+To inspect the stored routing expression programmatically:
 
 * [`GET _ml/datafeeds/{datafeed_id}`]({{es-apis}}operation/operation-ml-get-datafeed) returns the effective `project_routing` value.
 * [`GET _ml/datafeeds/{datafeed_id}/_stats`]({{es-apis}}operation/operation-ml-get-datafeed-stats) includes `remote_cluster_stats` with search counts and status for each linked project.

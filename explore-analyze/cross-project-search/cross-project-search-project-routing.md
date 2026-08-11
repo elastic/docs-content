@@ -18,7 +18,7 @@ Based on the specified tags, {{cps}} determines which projects the query is sent
 For an overview of {{cps}} concepts, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md). For details on available tags, refer to [Tags in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-tags.md).
 
 :::{note}
-{{anomaly-detect-cap}} jobs and transforms also use `project_routing`, but as a stored configuration rather than a per-query parameter. For details, refer to [{{cps-cap}} scope for {{anomaly-jobs}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope).
+{{anomaly-detect-cap}} jobs also use `project_routing`, but as a stored configuration rather than a per-query parameter. For details, refer to [{{cps-cap}} scope for {{anomaly-jobs}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope).
 :::
 
 ## Using the project_routing parameter
