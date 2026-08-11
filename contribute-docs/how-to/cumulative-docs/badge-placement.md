@@ -74,7 +74,7 @@ Do **not** use [inline annotations](https://elastic.github.io/docs-builder/synta
 
 ### Paragraphs [paragraphs]
 
-Use an inline annotation to lead a standalone paragraph when only part of a passage is version- or deployment-specific. Put the badge first in the paragraph, with a blank line separating it from the paragraph before it, so it's unambiguous that the badge scopes only the paragraph it leads.
+Use an inline annotation to lead a standalone paragraph when only part of a passage is version- or deployment-specific. Separate the tagged paragraph from the rest of the content with a blank line, so it's unambiguous that the badge scopes only that paragraph.
 
 ```markdown
 General statement that applies to every version.
@@ -83,14 +83,14 @@ General statement that applies to every version.
 ```
 
 :::{warning}
-Do **not** place the annotation between two sentences of the same paragraph. With no blank line separating it from the preceding sentence, it's ambiguous whether the badge scopes the sentence before it, the sentence after it, or both.
+Do **not** place the annotation between two sentences of the same paragraph. Without a blank line splitting the sentences into separate paragraphs, it's ambiguous which sentence the badge scopes.
 
 ```markdown
 General statement. {applies_to}`stack: ga 9.5+` This sentence only applies starting in Stack 9.5.
 ```
 :::
 
-If the version-specific content can't stand on its own as a separate paragraph, for example because it depends on the sentence before it, follow the guidelines for [lists](#ordered-and-unordered-lists) or use an [admonition](#admonitions) instead.
+If the version-specific content can't stand on its own as a separate paragraph, for example because it's tightly coupled to the surrounding sentence, follow the guidelines for [lists](#ordered-and-unordered-lists) or use an [admonition](#admonitions) instead.
 
 ### Ordered and unordered lists [ordered-and-unordered-lists]
 
