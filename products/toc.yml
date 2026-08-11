@@ -2,4 +2,5 @@ project: 'Products'
 toc:
   - file: elasticsearch/v9.md
   - file: kibana/v9.md
+  - file: logstash.md
 
