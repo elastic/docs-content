@@ -281,12 +281,6 @@ The API returns the following:
 
 ### Retrieve health data when {{kib}} uses separate task nodes [task-manager-health-multi-node]
 
-::::{applies_to}
-deployment:
-  ece: all
-  ech: all
-::::
-
 On {{ech}} and {{ece}} deployments, {{kib}} nodes with more than 8 GB of RAM are split into UI nodes and background task nodes. The `GET api/task_manager/_health` endpoint is served by a UI node. Because UI nodes do not run tasks, several execution-related fields are absent or `null` in the response:
 
 * `stats.capacity_estimation.status` and `stats.capacity_estimation.value.observed.*`
@@ -296,7 +290,7 @@ On {{ech}} and {{ece}} deployments, {{kib}} nodes with more than 8 GB of RAM are
 
 To confirm which node answered the request, check `kibana_status.json` in the [diagnostic bundle](/troubleshoot/kibana/capturing-diagnostics.md). A UI node's instance name contains `- UI`.
 
-To get complete health data, read the background task node's health log instead of the API:
+Because UI nodes do not have visibility into task execution, the health monitoring API can't be used to diagnose task manager issues in these deployments. To get complete health data, read the background task node's health log instead of the API:
 
 1. Open your deployment's [{{kib}} logs](/deploy-manage/monitor/logging-configuration/kibana-logging.md).
 2. Filter by the `task-manager-background-node-health` tag.
