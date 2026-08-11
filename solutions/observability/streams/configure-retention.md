@@ -139,6 +139,8 @@ To follow an existing policy:
 1. Turn off **Inherit from index template** or **parent stream**, if enabled.
 1. Select **{{ilm-init}} policy**, then select a predefined policy from the list.
 
+    Policies managed by Elastic are hidden from the list by default, even if you search for one by name. Starting with {{stack}} version 9.5.1, select the **Managed** filter next to the search field to reveal them. Revealed managed policies show a **Managed** badge. A stream that already follows a managed policy keeps that policy visible in the selector regardless of the filter.
+
 After selecting a policy, you can [configure data lifecycle phases](#streams-configure-data-lifecycle-phases) directly from the **Data lifecycle** tab.
 
 :::

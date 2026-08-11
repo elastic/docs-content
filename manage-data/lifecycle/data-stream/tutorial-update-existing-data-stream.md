@@ -17,15 +17,15 @@ Follow these steps to configure or remove data stream lifecycle settings for an 
 - [Remove the lifecycle for a data stream](#delete-lifecycle)
 - [Manage data retention on the Streams page](#data-retention-streams)
 
-These steps are for data stream lifecycle only. For the steps to configure {{ilm}}, refer to the [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md). For a comparison between the two, refer to [](/manage-data/lifecycle.md).
+These steps configure data stream lifecycle settings directly. {applies_to}`stack: ga 9.5+` You can also select an existing {{ilm-init}} policy from the same **Edit data lifecycle** flyout. For the full set of {{ilm-init}} configuration options, refer to the [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md). For a comparison between the two, refer to [](/manage-data/lifecycle.md).
 
 ## Set a data stream's lifecycle [set-lifecycle]
 
 To add or modify the retention period of your data stream you can use the **{{index-manage-app}}** tools in {{kib}} or the {{es}} [lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle).
 
-:::::{tab-set}
+::::::{tab-set}
 :group: kibana-api
-:::{tab-item} {{kib}}
+:::::{tab-item} {{kib}}
 :sync: kibana
 
 To change the data retention settings for a data stream:
@@ -34,15 +34,39 @@ To change the data retention settings for a data stream:
 1. Open the **Data Streams** tab.
 1. Use the search tool to find the data stream you're looking for.
 1. Select the data stream to view its details.
-1. In the data stream details pane, select **Manage > Edit data retention** to adjust the settings. You can do any of the following:
+1. In the data stream details pane:
+
+    ::::{applies-switch}
+
+    :::{applies-item} stack: ga 9.5+
+
+    Select {icon}`gear` **Actions** → **Edit data lifecycle**. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn off **Inherit lifecycle from index template**, if enabled, and select one of the following lifecycle methods:
+
+    - **Data stream lifecycle**: Select how long to retain your data, in days, hours, minutes, or seconds, or select **Keep data indefinitely** so your data stream is still managed but the data is never deleted. Managing a time series data stream such as for logs or metrics enables {{es}} to better store your data even if you do not use a retention period.
+    - **{{ilm-init}} policy**: Select an existing {{ilm-init}} policy from the list.
+
+        Policies managed by Elastic are hidden from the list by default, even if you search for one by name. Starting with {{stack}} version 9.5.1, select the **Managed** filter next to the search field to reveal them. Revealed managed policies show a **Managed** badge. A data stream that already follows a managed policy keeps that policy visible in the selector regardless of the filter.
+
+    Select **Apply** to save your changes.
+
+    :::
+
+    :::{applies-item} stack: ga 9.0-9.4
+
+    Select **Manage** → **Edit data retention** to adjust the settings. You can do any of the following:
 
     - Select how long to retain your data, in days, hours, minutes, or seconds.
-    - Choose to **Keep data indefinitely**, so that your data will not be deleted. Your data stream is still managed but the data will never be deleted. Managing a time series data stream such as for logs or metrics enables {{es}} to better store your data even if you do not use a retention period.
+    - Select **Keep data indefinitely**, so that your data will not be deleted. Your data stream is still managed but the data will never be deleted. Managing a time series data stream such as for logs or metrics enables {{es}} to better store your data even if you do not use a retention period.
     - Disable **Enable data retention** to turn off data stream lifecycle management for your data stream.
 
     If the data stream is already managed by [{{ilm-init}}](/manage-data/lifecycle/index-lifecycle-management.md), to edit the data retention settings you must edit the associated {{ilm-init}} policy.
-:::
-:::{tab-item} API
+
+    :::
+
+    ::::
+
+:::::
+:::::{tab-item} API
 :sync: api
 
 To change the data retention settings for a data stream:
@@ -66,8 +90,8 @@ To change the data retention settings for a data stream:
     ```
 
     1. The retention period of this data stream is set to 30 days. This means that {{es}} is allowed to delete data that is older than 30 days at its own discretion.
-:::
 :::::
+::::::
 
 The changes in the lifecycle are applied on all backing indices of the data stream.
 
