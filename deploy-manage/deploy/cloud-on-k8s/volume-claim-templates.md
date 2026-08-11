@@ -86,3 +86,9 @@ spec:
         - name: elasticsearch-data
           emptyDir: {}
 ```
+
+::::{note}
+Besides the risk of data loss, `emptyDir` (or any volume that isn't a `volumeClaimTemplates` PVC) prevents ECK from determining the storage capacity of the affected nodes. On {{es}} 8.3 and later, the `Elasticsearch` resource then reports the `ResourcesAwareManagement` condition as `False`.
+
+`ResourcesAwareManagement` indicates whether ECK could compute CPU, memory, and storage for all expected nodes so it can tell {{es}} the intended cluster topology. When the condition is `False`, ECK stops publishing that topology and removes any topology it published earlier. Without it, {{es}} may make less optimal topology-aware decisions. The condition is cluster-wide, so a single nodeSet using `emptyDir` sets it to `False` for the whole cluster. ECK still reconciles the `Elasticsearch` resource (StatefulSets, Pods, and CPU and memory settings) as usual.
+::::
