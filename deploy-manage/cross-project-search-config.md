@@ -64,8 +64,6 @@ To be available for linking, projects must meet the following requirements:
 
 Only compatible projects appear in the [{{cps}} linking wizard](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md#cps-link-projects). If a project you expected to link to is missing from the list, it might not meet the requirements, or you might not have the necessary [permissions](#cps-compatibility) on the project.
 
-The same tier requirement determines whether the **{{cps-cap}}** panel appears in a space's settings. Refer to [Set the default {{cps-init}} scope for a space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
-
 
 ## Plan your {{cps-init}} architecture [cps-arch]
 
