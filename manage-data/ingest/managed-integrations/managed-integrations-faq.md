@@ -54,12 +54,8 @@ Most {{managed-integrations}} are metered at one unit per integration, per hour.
 | CrowdStrike Falcon Intelligence logs | 4 |
 | abuse.ch API | 2 |
 
-For current pricing details, refer to the [Elastic pricing page](https://www.elastic.co/pricing).
+For current pricing details, refer to the [Elastic pricing page](https://www.elastic.co/pricing). 
 
-:::{note}
-:applies_to: stack: preview 9.0-9.4
-In these versions, {{managed-integrations}} are in technical preview and are free on {{ech}}.
-:::
 
 ### What SLAs apply to {{managed-integrations}}? [managed-integrations-faq-slas]
 
