@@ -17,7 +17,7 @@ The Federal Information Processing Standard (FIPS) Publication 140-2, (FIPS PUB 
 For the ECK operator, FIPS compliance is ensured by:
 
 * Using FIPS approved / NIST recommended cryptographic algorithms.
-* {applies_to}`eck: ga 3.5` Using Go's native [FIPS 140-3 cryptographic module](https://go.dev/doc/security/fips140). The build pins the Go Cryptographic Module at v1.0.0 ([CMVP Certificate #5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)), which is the certified version regardless of the Go toolchain version used.
+* {applies_to}`eck: ga 3.5` Using Go's native [FIPS 140-3 cryptographic module](https://go.dev/doc/security/fips140). The build pins the Go Cryptographic Module at v1.0.0 ([CMVP Certificate #5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)), which is the certified version.
 * {applies_to}`eck: deprecated 3.5` Compiling the operator using the [BoringCrypto](https://github.com/golang/go/blob/dev.boringcrypto/README.boringcrypto.md) library for various cryptographic primitives.
 
 ::::{warning}
