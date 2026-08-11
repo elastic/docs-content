@@ -29,6 +29,7 @@ From left to right, the global header holds the following controls.
 | Space switcher | Moves you to another space. |
 | **Find content...** | Opens the global search field in a modal, where you can search for apps and objects. Refer to [Find apps and objects](/explore-analyze/find-and-organize/find-apps-and-objects.md). |
 | {icon}`question` **Help menu** | Opens links to the documentation, to support, and to the connection details of your project or deployment. |
+| AI assistant or agent | Opens the AI assistant or agent of your solution. Its label depends on which one your project or deployment offers. |
 | Your avatar | Opens the user menu, where you can change your appearance and language preferences, customize your navigation menu, and log out. |
 
 ### Space switcher
