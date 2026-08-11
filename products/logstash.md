@@ -1,5 +1,6 @@
 ---
 layout: hub
+description: Logstash documentation. Collect events from any source, transform and enrich them, and ship to Elasticsearch or other destinations.
 ---
 
 :::{hero}

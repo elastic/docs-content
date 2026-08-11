@@ -1,0 +1,48 @@
+# Content for the {whats-new} panel on hub pages, keyed by product.
+#
+# This file lives at the root of the documentation set, alongside changelog.yml and
+# redirects.yml, so a writer edits it without touching the build tool. A hub page renders
+# a panel from it with one line: `:product: <key>`.
+#
+# The directive reads this file from the current documentation set only. It cannot render
+# another repository's panel.
+#
+# Schema targets elastic/docs-builder#3829 (Hub pages 4/4: {whats-new}).
+products:
+  logstash:
+    title: What's new in Logstash
+    id: whats-new
+    intro: Recent Logstash pipeline, performance, and security improvements.
+    release-links:
+      - label: Release notes
+        url: logstash://release-notes/index.md
+    upgrade-link:
+      label: Upgrade guide
+      url: logstash://reference/upgrading-logstash.md
+    items:
+      - title: OTLP metrics export
+        description: Export Logstash monitoring metrics using the OpenTelemetry protocol.
+        link: logstash://reference/monitoring-with-opentelemetry.md
+        date: '9.5'
+        tag: Monitoring
+        featured: true
+      - title: Reactive pipeline recovery
+        description: Pipelines recover automatically after a crash instead of staying down.
+        link: logstash://release-notes/index.md
+        date: '9.4'
+        tag: Pipelines
+      - title: Persistent queue compression
+        description: Compress persistent queue pages with ZSTD to cut disk usage.
+        link: logstash://reference/persistent-queues.md
+        date: '9.2'
+        tag: Performance
+      - title: ES|QL support in the Elasticsearch filter
+        description: Query Elasticsearch from a pipeline filter using ES|QL (technical preview).
+        link: logstash://reference/plugins-filters-elasticsearch.md
+        date: 9.1 preview
+        tag: Query languages
+      - title: JDK 21 required
+        description: 9.4 upgrades to JRuby 10, which requires JDK 21. Update your runtime before upgrading.
+        link: logstash://release-notes/breaking-changes.md
+        date: Upgrade guide
+        tag: Upgrade
