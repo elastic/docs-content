@@ -11,22 +11,27 @@ type: overview
 
 # The {{kib}} interface
 
-Every app opens inside the same {{kib}} layout, so the controls you need stay in the same place as you move between apps:
+{{kib}} uses a standard layout that every app follows, so what you need stays in the same place as you move between apps:
 
-* The **global header** runs across the top of the screen. It holds the controls that apply everywhere, such as the space selector and the global search field.
+* The **global header** runs across the top of the screen and stays the same in every app.
 * The **navigation menu** on the left lists the apps you can open.
 * The **workspace** fills the rest of the screen. Each page opens with an **application menu** that holds the actions available on it.
+
+Two more elements appear as you work:
+
+* A **flyout** slides in from the right of the workspace to show contextual content, such as the details of a table row.
+* {applies_to}`stack: ga 9.4` The **sidebar** is a resizable panel on the right of the screen, where apps such as the AI assistant open beside your work.
 
 This page describes spaces that use a solution view: **Search**, **Observability**, or **Security**. Spaces that use the **Classic** solution view have a different layout. To check or change the solution view of a space, refer to [Spaces](/deploy-manage/manage-spaces.md). In {{serverless-full}}, every project uses a solution view.
 
 ## Global header
 
-The global header holds the following controls.
+The global header holds the following elements.
 
-| Control | What it does |
+| Element | What it does |
 |---|---|
 | {icon}`logo_elastic` logo | Opens the home page of your current space. |
-| Space selector | Moves you to another space. {applies_to}`stack: ga 9.6` On {{ecloud}}, it also opens your other projects or deployments, the **Connection details** of the current one, and **Invite users**. |
+| Space selector | Moves you to another space.<br>{applies_to}`stack: ga 9.6` On {{ecloud}}, it also opens your other projects or deployments, the **Connection details** of the current one, and **Invite users**. |
 | Global search field | Searches for apps and for the objects you created. Refer to [Find apps and objects](/explore-analyze/find-and-organize/find-apps-and-objects.md). |
 | {icon}`question` **Help menu** | Opens links to the documentation, to support, and to the connection details of your project or deployment. |
 | AI assistant or agent | Opens the AI assistant or agent of your solution. Its label depends on which one your project or deployment offers. |
