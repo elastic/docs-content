@@ -20,10 +20,13 @@ products:
 
 {{kib}} creates a default space for you. When you create more spaces, users are asked to choose a space when they log in, and can change their current space at any time from the [global header](/explore-analyze/find-and-organize/kibana-interface.md#global-header).
 
-Where you find the space switcher depends on your version and on the solution view of your current space:
+Where you find the space selector depends on your deployment type and version:
 
-* {applies_to}`stack: ga 9.6` {applies_to}`serverless: ga` In spaces that use a solution view, select the name of your project, deployment, or space in the global header, then select the space you want from **My spaces**.
-* In all other cases, select the avatar of your current space in the global header, then select a space from the **Spaces** menu.
+* {applies_to}`serverless: ga` Select the name of your project in the global header, then select your current space to open **My spaces**.
+* {applies_to}`stack: ga 9.6` In spaces that use a solution view, select the name of your deployment in the global header, then select your current space to open **My spaces**. When the global header shows the name of your current space instead of a deployment name, selecting it opens **My spaces** directly.
+* In all other cases, select the avatar of your current space in the global header to open the **Spaces** menu.
+
+Then select the space you want.
 
 :::{image} /deploy-manage/images/kibana-change-space.png
 :alt: Change current space menu
