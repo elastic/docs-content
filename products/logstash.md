@@ -13,28 +13,25 @@ description: Logstash documentation. Collect events from any source, transform a
 :::
 
 :::{get-started}
-title: Get started in 3 steps
-intro: Install Logstash locally or send events to a free Elastic Cloud trial, then build your first pipeline.
+title: Get started with Logstash
+intro: Download Logstash, create a pipeline, and run it locally.
 steps:
-  - title: Run Logstash
-    options:
-      - label: Run locally
-        description: Install Logstash on your machine (packages or Docker). Prefer this for development, testing pipelines, and full control of the runtime.
-        url: logstash://reference/installing-logstash.md
-        url-label: Install Logstash
-      - label: Try on Cloud
-        # OPEN: Logstash-specific Cloud trial deep-link (Florent/Ziv). Default ES3 project registration is a placeholder.
-        description: Start a free Elastic Cloud trial as your Elasticsearch destination. Prefer this when you want managed Elasticsearch; you still run Logstash as the shipper.
-        url: https://cloud.elastic.co/registration
-        url-label: Start a free trial
+  - title: Download Logstash
+    description: Get the binary for your platform and unzip it. You need a JDK (Java 21) before you run.
+    link: https://www.elastic.co/downloads/logstash
+    link-label: Download Logstash
   - title: Create your first pipeline
-    description: Define inputs, filters, and outputs, then run a simple pipeline end to end.
+    description: Write a config with an input, optional filters, and an output. A common first pipeline is stdin to Elasticsearch and stdout.
     link: logstash://reference/creating-logstash-pipeline.md
     link-label: Create a pipeline
-  - title: Ship to Elasticsearch
-    description: Configure the Elasticsearch output and secure the connection (TLS, API keys).
-    link: logstash://reference/secure-connection.md
-    link-label: Secure your connection
+  - title: Run Logstash
+    description: Start Logstash with your config file from the command line.
+    link: logstash://reference/running-logstash-command-line.md
+    link-label: Run from the command line
+  - title: Parse real logs
+    description: Follow a full example that collects logs, parses fields, and ships them to Elasticsearch.
+    link: logstash://reference/advanced-pipeline.md
+    link-label: Parsing logs tutorial
 :::
 
 :::{whats-new}
@@ -44,31 +41,7 @@ steps:
 ::::{card-group}
 :title: Popular topics
 :id: popular
-:intro: High-demand Logstash topics from documentation search.
-
-:::{link-card}
-title: Grok parsing
-link: logstash://reference/plugins-filters-grok.md
-links:
-  - label: Grok filter plugin
-    url: logstash://reference/plugins-filters-grok.md
-  - label: Grok Debugger
-    url: /explore-analyze/query-filter/tools/grok-debugger.md
-  - label: Grok pattern reference
-    url: /explore-analyze/scripting/grok.md
-:::
-
-:::{link-card}
-title: Install and run
-link: logstash://reference/installing-logstash.md
-links:
-  - label: Installing Logstash
-    url: logstash://reference/installing-logstash.md
-  - label: Docker
-    url: logstash://reference/docker.md
-  - label: Windows
-    url: logstash://reference/running-logstash-windows.md
-:::
+:intro: Logstash has a rich collection of input, filter, codec, and output plugins. Use the Grok filter plugin to parse arbitrary text and structure it.
 
 :::{link-card}
 title: Plugins
@@ -81,26 +54,38 @@ links:
   - label: Output plugins
     url: logstash://reference/output-plugins.md
 :::
+
+:::{link-card}
+title: Grok parsing
+link: logstash://reference/plugins-filters-grok.md
+links:
+  - label: Grok filter plugin
+    url: logstash://reference/plugins-filters-grok.md
+  - label: Grok Debugger
+    url: /explore-analyze/query-filter/tools/grok-debugger.md
+  - label: Grok pattern reference
+    url: /explore-analyze/scripting/grok.md
+:::
 ::::
 
 :::::{explore}
 :id: explore
 :title: Explore Logstash
-:intro: Find Logstash documentation by task, from deploying and building pipelines to securing, troubleshooting, and reference.
+:intro: Explore the Logstash documentation—from installing and building pipelines to parsing, securing, troubleshooting, and more.
 
 ::::{card-group}
 :title: Quick links
 :id: quick-links
 
 :::{link-card}
-title: Releases and APIs
+title: Getting started
 links:
-  - label: Release notes
-    url: logstash://release-notes/index.md
-  - label: Logstash API docs
-    url: https://www.elastic.co/docs/api/doc/logstash
-  - label: Breaking changes
-    url: logstash://release-notes/breaking-changes.md
+  - label: Getting started with Logstash
+    url: logstash://reference/getting-started-with-logstash.md
+  - label: How Logstash works
+    url: logstash://reference/how-logstash-works.md
+  - label: Installing Logstash
+    url: logstash://reference/installing-logstash.md
 :::
 
 :::{link-card}
@@ -127,7 +112,7 @@ links:
 ::::
 
 ::::{card-group}
-:title: Deploy and manage
+:title: Install, Operate, and Configure
 :id: deploy
 
 :::{link-card}
@@ -145,19 +130,6 @@ links:
     url: logstash://reference/running-logstash-windows.md
   - label: Setting up and running
     url: logstash://reference/setting-up-running-logstash.md
-:::
-
-:::{link-card}
-title: Orchestrate
-link: /deploy-manage/deploy/cloud-on-k8s/logstash.md
-description: Run Logstash on Kubernetes with ECK or plain manifests.
-links:
-  - label: Elastic Cloud on Kubernetes (ECK)
-    url: /deploy-manage/deploy/cloud-on-k8s/logstash.md
-  - label: ECK configuration examples
-    url: /deploy-manage/deploy/cloud-on-k8s/configuration-examples-logstash.md
-  - label: Running on Kubernetes
-    url: logstash://reference/running-logstash-kubernetes.md
 :::
 
 :::{link-card}
@@ -257,8 +229,8 @@ links:
 ::::
 
 ::::{card-group}
-:title: Search and analyze
-:id: search
+:title: Parse and transform
+:id: transform
 
 :::{link-card}
 title: Parse unstructured logs
@@ -316,15 +288,6 @@ links:
 :id: security
 
 :::{link-card}
-title: Secrets
-link: logstash://reference/keystore.md
-description: Store credentials and sensitive settings in the Logstash keystore.
-links:
-  - label: Logstash keystore
-    url: logstash://reference/keystore.md
-:::
-
-:::{link-card}
 title: Connect to Elasticsearch
 link: logstash://reference/secure-connection.md
 description: TLS, authentication, and API keys for Elasticsearch and Serverless.
@@ -344,6 +307,15 @@ links:
     url: /reference/fleet/secure-logstash-connections.md
   - label: Filebeat SSL to Logstash
     url: beats://reference/filebeat/configuring-ssl-logstash.md
+:::
+
+:::{link-card}
+title: Secrets
+link: logstash://reference/keystore.md
+description: Store credentials and sensitive settings in the Logstash keystore.
+links:
+  - label: Logstash keystore
+    url: logstash://reference/keystore.md
 :::
 ::::
 
@@ -415,17 +387,6 @@ links:
     url: logstash://reference/configuration-file-structure.md
   - label: Config examples
     url: logstash://reference/config-examples.md
-:::
-
-:::{link-card}
-title: APIs
-link: https://www.elastic.co/docs/api/doc/logstash
-description: Logstash APIs for monitoring and management.
-links:
-  - label: Logstash API docs
-    url: https://www.elastic.co/docs/api/doc/logstash
-  - label: Monitoring
-    url: logstash://reference/monitoring-logstash.md
 :::
 
 :::{link-card}
