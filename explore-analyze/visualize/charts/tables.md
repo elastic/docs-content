@@ -500,7 +500,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
       * **Value format**: `Bytes`
       * **Text alignment**: `Right`
     * **Additional styling**:
-      * **Color by value**: Dynamic coloring to highlight ranges with higher byte transfers
+      * **Cell decoration**: Dynamic coloring to highlight ranges with higher byte transfers
 
 :::::::{dropdown} Create this chart using the API
 :applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
