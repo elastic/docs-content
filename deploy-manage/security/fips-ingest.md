@@ -5,8 +5,6 @@ products:
   - id: beats
   - id: fleet
 applies_to:
-  stack: preview 9.1
-applies_to:
   stack: preview 9.1, ga 9.3+
 ---
 
@@ -46,7 +44,7 @@ These TLS related restrictions apply to {{agent}}, {{fleet}}, {{filebeat}}, {{me
 
 ### General output and input limitations (Kerberos protocol) [ingest-inputoutput-limitations]
 
-The Kerberos protocol is not supported for outputs and inputs in {{filebeat}}, {{metricbeat}}, {{apm-server}}, and {{fleet-server}} configurations. This also restricts the available `sasl.mechanism` for the Kafka output, where only `PLAIN` is supported.
+The Kerberos protocol is not supported for any output or input, which also impacts the available `sasl.mechanism` for the Kafka output where only `PLAIN` is supported.
 
 This impacts [Filebeat](beats://reference/filebeat/configuration-kerberos.md), [Metricbeat](beats://reference/metricbeat/configuration-kerberos.md) and {{apm-server}}, as well as output configurations for {{agent}} with {{fleet-server}}.
 
