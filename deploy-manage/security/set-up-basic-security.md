@@ -89,7 +89,7 @@ Now that you’ve obtained your certificates, you’ll update your cluster to us
 These steps assume that you [generated a CA and certificates](#generate-certificates) using `elasticsearch-certutil`. The `xpack.security.transport.ssl` settings that you need to set differ if you're using a certificate generated with an external CA. Refer to [Transport TLS/SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) for a full list of available settings.
 
 ::::{note}
-{{es}} monitors all files such as certificates, keys, keystores, or truststores that are configured as values of TLS-related node settings. If you update any of these files, such as when your hostnames change or your certificates are due to expire, {{es}} reloads them. The files are polled for changes at a frequency determined by the global {{es}} `resource.reload.interval.high` setting, which defaults to 5 seconds.
+{{es}} monitors all files such as certificates, keys, keystores, or truststores that are configured as values of TLS-related node settings. If you update any of these files, such as when your hostnames change or your certificates are due to expire, {{es}} reloads them. The files are polled for changes at a frequency determined by the global {{es}} `resource.reload.interval.high` setting, which defaults to 5 seconds. Reloading an expired certificate does not cause {{es}} to reject peer connections when the same file is used for both keystore and truststore.
 ::::
 
 
@@ -113,7 +113,7 @@ Complete the following steps **for each node in your cluster**. To join the same
 
     3. Add the following settings to enable internode communication and provide access to the node’s certificate.
 
-        Because you are using the same `elastic-certificates.p12` file on every node in your cluster, set the verification mode to `certificate`:
+        Use the same `elastic-certificates.p12` file on every node in your cluster. This file acts as a cluster-membership key: any node with a copy of the file can join the cluster and will trust other nodes using the same file. Because every node presents the same certificate, set the verification mode to `certificate`:
 
         ```yaml
         xpack.security.transport.ssl.enabled: true
@@ -122,6 +122,10 @@ Complete the following steps **for each node in your cluster**. To join the same
         xpack.security.transport.ssl.keystore.path: elastic-certificates.p12
         xpack.security.transport.ssl.truststore.path: elastic-certificates.p12
         ```
+
+        ::::{note}
+        When the same PKCS#12 file is configured as both the keystore and truststore, peer node certificates in that file are trusted directly. In this configuration, {{es}} does not reject connections from nodes presenting an expired certificate from the same file, even when `verification_mode` is set to `certificate`. Internode communication remains encrypted, and the cluster can continue to operate normally, including restarts and adding new nodes that use the same file. Plan certificate rotation for security hygiene, and refer to [Update security certificates with the same CA](./same-ca.md) when replacing transport certificates.
+        ::::
 
         1. If you want to use hostname verification, set the verification mode to `full`. You should generate a different certificate for each host that matches the DNS or IP address. See the `xpack.security.transport.ssl.verification_mode` parameter in [TLS settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings).
 
