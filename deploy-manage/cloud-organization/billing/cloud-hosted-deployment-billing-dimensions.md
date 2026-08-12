@@ -114,7 +114,5 @@ Synthetic Monitoring browser tests are charged per test run (metered in 60 secon
 
 ## Inference [inference]
 
-[Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is billed based on tokens used with models on EIS. Token charges appear separately from [deployment capacity](#ram-hours), which covers ML nodes running in your deployment.
-
-To learn how token-based pricing works and how to find Inference usage in the {{ecloud}} Console, refer to [EIS pricing](/explore-analyze/elastic-inference/eis.md#pricing).
+[Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is billed separately from [deployment capacity](#ram-hours), which covers ML nodes running in your deployment. For the token-based pricing model and how to find Inference usage in the {{ecloud}} Console, refer to [EIS pricing](/explore-analyze/elastic-inference/eis.md#pricing).
 
