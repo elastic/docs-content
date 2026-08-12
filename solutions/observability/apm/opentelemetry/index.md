@@ -53,9 +53,9 @@ There are several ways to send OpenTelemetry data to Elastic. The right choice d
 
 * **Managed OTLP endpoint** ({{serverless-short}} and {{ech}}): Send OpenTelemetry data directly to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md) without managing your own Collector.
 
-## Why use the Elastic Distributions of OpenTelemetry?
+## Why use {{edot}}?
 
-With an [Elastic Distribution of OpenTelemetry language SDK](opentelemetry://reference/edot-sdks/index.md) you have access to all the features of the OpenTelemetry SDK that it customizes, plus:
+With an [{{edot}} language SDK](opentelemetry://reference/edot-sdks/index.md) you have access to all the features of the OpenTelemetry SDK that it customizes, plus:
 
 * You can get access to SDK improvements and bug fixes contributed by the Elastic team before the changes are available in the OpenTelemetry repositories.
 * The distribution configures the collection of tracing and metrics signals, applying opinionated defaults, such as which sources are collected by default.
@@ -63,12 +63,12 @@ With an [Elastic Distribution of OpenTelemetry language SDK](opentelemetry://ref
 
 To set up OpenTelemetry with Elastic, refer to these guides for each SDK:
 
-* [**Elastic Distribution of OpenTelemetry Java**](elastic-otel-java://reference/edot-java/index.md)
-* [**Elastic Distribution of OpenTelemetry .NET**](elastic-otel-dotnet://reference/edot-dotnet/index.md)
-* [**Elastic Distribution of OpenTelemetry Node.js**](elastic-otel-node://reference/edot-node/index.md)
-* [**Elastic Distribution of OpenTelemetry Python**](elastic-otel-python://reference/edot-python/index.md)
-* [**Elastic Distribution of OpenTelemetry PHP**](elastic-otel-php://reference/edot-php/index.md)
-* [**Elastic Distribution of OpenTelemetry Browser**](elastic-otel-rum-js://reference/edot-browser/index.md)
+* [**{{edot}} Java**](elastic-otel-java://reference/edot-java/index.md)
+* [**{{edot}} .NET**](elastic-otel-dotnet://reference/edot-dotnet/index.md)
+* [**{{edot}} Node.js**](elastic-otel-node://reference/edot-node/index.md)
+* [**{{edot}} Python**](elastic-otel-python://reference/edot-python/index.md)
+* [**{{edot}} PHP**](elastic-otel-php://reference/edot-php/index.md)
+* [**{{edot}} Browser**](elastic-otel-rum-js://reference/edot-browser/index.md)
 
 ::::{important}
 For a complete overview of OpenTelemetry and Elastic, explore [**{{edot}}**](opentelemetry://reference/index.md).

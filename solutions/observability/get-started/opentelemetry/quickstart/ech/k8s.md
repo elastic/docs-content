@@ -17,6 +17,10 @@ products:
 
 Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment with {{ech}} (ECH) to collect host metrics, logs and application traces.
 
+:::{note}
+This quickstart uses {{agent}} with the `elasticsearch` exporter to write directly to {{es}}. For {{ech}} deployments on version 9.0 or later, Elastic recommends using the [Managed OTLP Endpoint](opentelemetry://reference/motlp.md) instead. Refer to [Send OTLP data to {{serverless-full}} or {{ech}}](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) for the recommended setup.
+:::
+
 ## Guided setup
 
 :::{include} ../../_snippets/guided-instructions.md
