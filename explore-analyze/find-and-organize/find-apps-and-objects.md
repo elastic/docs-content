@@ -35,7 +35,7 @@ You can search for objects by type, name, and tag. To get the most from the sear
     | Advanced searches | `tag:(tagname1 or tagname2) my_dashboard_title`<br>`type:lens tag:(tagname1 or tagname2)`<br>`type:(dashboard or canvas-workpad) logs`<br> |
 
 
-This example searches for visualizations with the tag `design` .
+This example searches for dashboards with the tag `Elastic Agent`.
 
 :::{image} /explore-analyze/images/kibana-tags-search.png
 :alt: Example of searching for tags
