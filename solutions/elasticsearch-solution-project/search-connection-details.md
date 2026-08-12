@@ -79,6 +79,7 @@ The Cloud ID is a connection method specifically supported by Beats and {{ls}}. 
     :::{image} /solutions/images/kibana-serverless-connection-details.png
     :alt: serverless connection details
     :screenshot:
+    :width: 50%
     :::
 
 ::::{note}
