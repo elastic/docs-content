@@ -19,8 +19,8 @@ type: overview
 
 Two more elements appear as you work:
 
-* A **flyout** slides in from the right of the workspace to show contextual content, such as the details of a table row.
-* {applies_to}`stack: ga 9.4` The **sidebar** is a resizable panel on the right of the screen, where apps such as the AI assistant open beside your work.
+* A **flyout** slides in from the right of the workspace to show contextual content and options, such as the details of a table row.
+* {applies_to}`stack: ga 9.4` The **sidebar** is a resizable panel on the right of the screen, where apps such as AI Agent open beside your work and persist when you navigate between apps and pages in {{kib}}.
 
 This page describes spaces that use a solution view: **Search**, **Observability**, or **Security**. Spaces that use the **Classic** solution view have a different layout. To check or change the solution view of a space, refer to [Spaces](/deploy-manage/manage-spaces.md). In {{serverless-full}}, every project uses a solution view.
 
@@ -31,15 +31,13 @@ The global header holds the following elements.
 | Element | What it does |
 |---|---|
 | {icon}`logo_elastic` logo | Opens the home page of your current space. |
-| Space selector | Moves you to another space.<br>{applies_to}`stack: ga 9.6` On {{ecloud}}, it also opens your other projects or deployments, the **Connection details** of the current one, and **Invite users**. |
+| Deployment/Project name and space information | Lets you navigate to other deployments or projects, and open any spaces you have access to.  |
 | Global search field | Searches for apps and for the objects you created. Refer to [Find apps and objects](/explore-analyze/find-and-organize/find-apps-and-objects.md). |
 | {icon}`question` **Help menu** | Opens links to the documentation, to support, and to the connection details of your project or deployment. |
 | AI assistant or agent | Opens the AI assistant or agent of your solution. Its label depends on which one your project or deployment offers. |
 | Your avatar | Opens the user menu, where you can change your appearance and language preferences, customize your navigation menu, and log out. |
 
-{applies_to}`stack: ga 9.6` The space selector shows the name of your current space. On {{ecloud}}, it shows the name of your project or deployment instead, and adds the name of your current space when that project or deployment contains more than one space.
 
-For the steps to move between spaces, refer to [Spaces](/deploy-manage/manage-spaces.md).
 
 ## Navigation menu
 
@@ -49,9 +47,8 @@ You can reorder the apps in the menu and hide the ones you don't use. Refer to [
 
 ## Application menu
 
-The application menu sits at the top of the workspace and holds the actions available on the current page. When the actions don't all fit, the remaining ones move under {icon}`ellipsis` **More**.
+The application menu sits at the top of the workspace and holds the actions available on the current page. When the actions don't all fit, the remaining ones move to the {icon}`ellipsis` **More** menu.
 
-{applies_to}`stack: ga 9.6` The application menu also holds the title of the page. On pages that describe a single object, such as a dashboard, selecting the title renames the object. Pages that have a parent page get a back button instead of a breadcrumb trail. Hovering over the back button shows where it leads, and when a page has more than one parent, it opens a menu of destinations.
 
 ## Next steps
 

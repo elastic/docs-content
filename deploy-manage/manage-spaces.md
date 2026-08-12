@@ -26,7 +26,6 @@ Where you find the space selector depends on your deployment type and version:
 * {applies_to}`stack: ga 9.6` In spaces that use a solution view, select the name of your deployment in the global header, then select your current space to open **My spaces**. When the global header shows the name of your current space instead of a deployment name, selecting it opens **My spaces** directly.
 * In all other cases, select the avatar of your current space in the global header to open the **Spaces** menu.
 
-Then select the space you want.
 
 :::{image} /deploy-manage/images/kibana-change-space.png
 :alt: Change current space menu
