@@ -1,13 +1,13 @@
 ---
 navigation_title: Semantic search
-description: Get started with semantic search and vector search in Elasticsearch using the semantic_text field type. This tutorial walks through indexing documents, generating embeddings automatically, and running your first semantic search query.
+description: Step-by-step tutorial to build your first semantic search application in Elasticsearch. Index documents, generate embeddings automatically with the semantic_text field type, and run your first hybrid semantic search query.
 applies_to:
   serverless: all
   stack: all
 products:
   - id: elasticsearch
 ---
-# Get started with semantic search
+# Semantic search quickstart
 
 If you want to get a sense of how semantic search works in {{es}}, this quickstart is for you. You use the [`semantic_text`](../semantic-search/semantic-search-semantic-text.md) workflow, the simplest managed path for semantic search. First, you create an index and store your data in two forms: plain text for keyword matching and semantic representations in `semantic_text` (vector embeddings are generated and compared automatically using [vector search](../vector.md) under the hood). Then you run a hybrid query that combines keyword search with semantic search on those embeddings and merges the results.
 :::{note}
