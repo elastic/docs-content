@@ -2856,4 +2856,4 @@ If you want to continue using your Vector Database project, use the following re
 - [Learn about chunking strategies](/explore-analyze/elastic-inference/inference-api.md#infer-chunking-config): Learn how to split long text for {{infer}} using sentence, word, recursive, or custom chunking.
 - [Tune retrieval with ranking and reranking](/solutions/search/ranking.md): Learn how to improve result ordering with multi-stage ranking and reranking.
 - [Plan quantization and sizing](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization): Learn how quantization reduces vector memory and storage requirements and compare the available quantization types.
-- [Jina multimodal embeddings](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-multimodal-embeddings): Learn how to create embeddings for text and images with Jina models.
+- [Tutorial: Build multimodal search in Elasticsearch](/solutions/search/multimodal-search/multimodal-search-tutorial.md): Learn how to index images and search them with text, image, and PDF input.
