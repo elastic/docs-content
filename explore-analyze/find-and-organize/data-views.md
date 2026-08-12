@@ -545,7 +545,7 @@ When the formatter type is **Audio**, the `{{value}}` template string specifies 
 
 To pass unescaped values directly to the URL, use the `{{rawValue}}` string.
 
-To insert a value into the rison-encoded state of a {{kib}} app URL, for example `query:'{{risonValue}}'`, use the `{{risonValue}}` string. It escapes the value for rison and then URL-encodes it, so characters such as `'` don't break the target URL.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` To insert a value into the [Rison](https://github.com/Nanonid/rison)-encoded state of a {{kib}} app URL, use the `{{risonValue}}` string in the URL template. Place it inside single quotes, for example `query:'{{risonValue}}'`. It escapes the value for Rison, then URL-encodes it, so that values containing `'` or `!` don't break the app state.
 
 A **Label template** enables you to specify a text string that appears instead of the raw URL. You can use the `{{value}}` template string normally in label templates. You can also use the `{{url}}` template string to display the formatted URL.
 
@@ -599,7 +599,7 @@ When the formatter type is **Audio**, the `{{value}}` template string specifies 
 
 To pass unescaped values directly to the URL, use the `{{rawValue}}` string.
 
-To insert a value into the rison-encoded state of a {{kib}} app URL, for example `query:'{{risonValue}}'`, use the `{{risonValue}}` string. It escapes the value for rison and then URL-encodes it, so characters such as `'` don't break the target URL.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` To insert a value into the [Rison](https://github.com/Nanonid/rison)-encoded state of a {{kib}} app URL, use the `{{risonValue}}` string in the URL template. Place it inside single quotes, for example `query:'{{risonValue}}'`. It escapes the value for Rison, then URL-encodes it, so that values containing `'` or `!` don't break the app state.
 
 A **Label template** enables you to specify a text string that appears instead of the raw URL. You can use the `{{value}}` template string normally in label templates. You can also use the `{{url}}` template string to display the formatted URL.
 
@@ -660,7 +660,7 @@ When the formatter type is **Audio**, the `{{value}}` template string specifies 
 
 To pass unescaped values directly to the URL, use the `{{rawValue}}` string.
 
-To insert a value into the rison-encoded state of a {{kib}} app URL, for example `query:'{{risonValue}}'`, use the `{{risonValue}}` string. It escapes the value for rison and then URL-encodes it, so characters such as `'` don't break the target URL.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` To insert a value into the [Rison](https://github.com/Nanonid/rison)-encoded state of a {{kib}} app URL, use the `{{risonValue}}` string in the URL template. Place it inside single quotes, for example `query:'{{risonValue}}'`. It escapes the value for Rison, then URL-encodes it, so that values containing `'` or `!` don't break the app state.
 
 A **Label template** enables you to specify a text string that appears instead of the raw URL. You can use the `{{value}}` template string normally in label templates. You can also use the `{{url}}` template string to display the formatted URL.
 
