@@ -79,7 +79,7 @@ serverless: preview
 ```
 
 On {{serverless-full}} with [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md), a transform can read source data from linked projects. Each transform's scope is saved as a `project_routing` value in its `source` configuration and applies every time the transform runs.
-<!-- Dependency (elastic/docs-content#7815): once merged, describe this as a "stored scope" and link to /explore-analyze/cross-project-search/cross-project-search-manage-scope.md#session-scope-vs-stored-scope -->
+
 For valid routing expressions and wildcard syntax, refer to [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
 
 ### Set project scope when you create a transform [transform-cps-create]
