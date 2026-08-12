@@ -280,20 +280,19 @@ The API returns the following:
 ```
 
 ### Retrieve health data when {{kib}} uses separate task nodes [task-manager-health-multi-node]
-```{applies_to}
-deployment:
-  ece: all
-  ech: all
-```
 
-On {{ech}} and {{ece}} deployments, {{kib}} nodes with more than 8 GB of RAM run [dedicated background task nodes](/deploy-manage/distributed-architecture/kibana-tasks-management.md#task-manager-dedicated-task-nodes): UI nodes serve user requests, and background task nodes run Task Manager tasks. The `GET api/task_manager/_health` endpoint is served by a UI node. Because UI nodes do not run tasks, several execution-related fields are absent or `null` in the response:
+When {{kib}} runs [dedicated background task nodes](/deploy-manage/distributed-architecture/kibana-tasks-management.md#task-manager-dedicated-task-nodes), the `GET api/task_manager/_health` response depends on which node serves the request. Nodes that don't run tasks, such as UI nodes, return a response in which several execution-related fields are absent or `null`:
 
 * `stats.capacity_estimation.status` and `stats.capacity_estimation.value.observed.*`
 * `stats.runtime.value.polling.result_frequency_percent_as_number`
 * `stats.runtime.value.execution.duration` (per task type)
 * `stats.runtime.value.drift_by_type`
 
-Because UI nodes do not have visibility into task execution, the health monitoring API can't be used to diagnose task manager issues in these deployments. To get complete health data, read the background task node's health log instead of the API:
+The same limitation affects data derived from the API, such as [{{kib}} diagnostic bundles](/troubleshoot/kibana/capturing-diagnostics.md).
+
+On {{ech}} and {{ece}} deployments, API requests are always served by a UI node, so the health monitoring API can't be used to diagnose task manager issues. On self-managed and {{eck}} deployments, you can send the request directly to a background task node to get complete data.
+
+On any deployment type, you can also read the background task node's health log instead of the API:
 
 1. Open your deployment's [{{kib}} logs](/deploy-manage/monitor/logging-configuration/kibana-logging.md).
 2. Filter by the `task-manager-background-node-health` tag.

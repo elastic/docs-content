@@ -53,9 +53,9 @@ For detailed troubleshooting guidance, see [Troubleshooting](../../troubleshoot/
 
 Because tasks run on the {{kib}} server, heavy background workloads can compete with user traffic for resources. To avoid this, it is recommended to run background tasks on dedicated {{kib}} nodes:
 
-- On self-managed deployments, set `node.roles: ["background_tasks"]` in [`kibana.yml`](/deploy-manage/stack-settings.md) to dedicate a {{kib}} instance to background tasks.
-- On {{ech}} and {{ece}} deployments, {{kib}} nodes with more than 8 GB of RAM are automatically split into two node types: UI nodes, which serve user requests, and background task nodes, which run Task Manager tasks.
+- On self-managed and {{eck}} deployments, set `node.roles: ["background_tasks"]` in [`kibana.yml`](/deploy-manage/stack-settings.md) to dedicate a {{kib}} instance to background tasks.
+- On {{ech}} and {{ece}} deployments, when {{kib}} is allocated more than 8 GB of RAM, it is automatically split into multiple instances with specialized roles: UI nodes, which serve user requests, and background task nodes, which run Task Manager tasks.
 
 To identify a node's type on {{ech}} and {{ece}} deployments, check the node's instance name in the `kibana_status.json` file included in the [{{kib}} diagnostic bundle](/troubleshoot/kibana/capturing-diagnostics.md). A UI node's instance name contains `- UI`.
 
-On deployments with separate node types, health and monitoring APIs such as `GET api/task_manager/_health` are served by UI nodes, so their responses don't reflect task execution state. To retrieve complete Task Manager health data, refer to [Retrieve health data when {{kib}} uses separate task nodes](/troubleshoot/kibana/task-manager.md#task-manager-health-multi-node).
+On {{ech}} and {{ece}} deployments, API requests, including health and monitoring APIs such as `GET api/task_manager/_health`, are always served by UI nodes, so their responses don't reflect task execution state. On self-managed and {{eck}} deployments, the same applies to any request served by a node without the `background_tasks` role. To retrieve complete Task Manager health data, refer to [Retrieve health data when {{kib}} uses separate task nodes](/troubleshoot/kibana/task-manager.md#task-manager-health-multi-node).
