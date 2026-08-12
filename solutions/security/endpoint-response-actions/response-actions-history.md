@@ -18,6 +18,8 @@ products:
 
 ::::{admonition} Requirement
 You must have the **Response Actions History** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) or the appropriate user role to access this feature.
+
+This privilege is also required to view command output and status when you run [response actions](/solutions/security/endpoint-response-actions.md) in the response console.
 ::::
 
 

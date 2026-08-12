@@ -189,6 +189,16 @@ In the **Schedule** section of the pack, choose how the pack and its queries run
 
 ### View status of scheduled packs [osquery-schedule-status]
 
+:::::{applies-switch}
+
+::::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
+
+To check scheduled pack executions, including their results and status, use the [History](#osquery-view-history) tab.
+
+::::
+
+::::{applies-item} { "stack": "ga 9.0-9.4" }
+
 1. Open the **Packs** tab.
 2. Click a pack name to view the status.
 
@@ -201,6 +211,10 @@ In the **Schedule** section of the pack, choose how the pack and its queries run
 
 3. View scheduled query results in [**Discover**](../../../explore-analyze/discover.md) or the drag-and-drop [**Lens**](../../../explore-analyze/visualize/lens.md) editor.
 
+::::
+
+:::::
+
 ### Filter and duplicate packs
 ```yaml {applies_to}
 stack: ga 9.4+
@@ -208,7 +222,7 @@ serverless: ga
 ```
 The **Packs** tab includes search and filter options to help you find specific packs.
 
-You can duplicate an existing pack by clicking the **Actions** menu next to the pack and selecting **Duplicate pack**. You can also duplicate a pack from its details or edit pages.
+You can duplicate an existing pack by clicking the **Actions** menu next to the pack and selecting **Duplicate pack**. You can also duplicate a pack from its edit page.
 
 ## Save queries [osquery-manage-query]
 
@@ -298,7 +312,7 @@ To modify queries in prebuilt packs, you must first make a copy of the pack.
 
 :::::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
 
-From the **Packs** tab, click the **Actions** menu next to the prebuilt pack and select **Duplicate pack**. You can also duplicate a pack from its details or edit pages. The duplicated pack is fully editable.
+From the **Packs** tab, click the **Actions** menu next to the prebuilt pack and select **Duplicate pack**. You can also duplicate a pack from its edit page. The duplicated pack is fully editable.
 
 :::::
 
