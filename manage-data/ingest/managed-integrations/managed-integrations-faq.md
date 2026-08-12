@@ -124,6 +124,10 @@ serverless: ga
 
 Yes. {{managed-integrations}} support traffic filtering, and no additional configuration is necessary.
 
+### Are {{managed-integrations}} supported in environments with Private Link enabled?
+
+Yes. {{managed-integrations}} are supported with AWS PrivateLink, Azure Private Link, and GCP Private Service Connect across both {{serverless-full}} and {{ech}} deployments.
+
 ## Limits and behavior [managed-integrations-faq-limits]
 
 ### Is there a maximum throughput? [managed-integrations-faq-throughput]
