@@ -86,6 +86,13 @@ Space settings are managed in {{kib}}.
 
 3. Click **Apply changes** to save the scope setting.
 
+A **Specific projects** default is saved as a [project routing expression](/explore-analyze/cross-project-search/cross-project-search-project-routing.md), not a fixed list, so it also applies to projects you link later:
+
+- Projects that match your tag filters are included automatically.
+- Excluding a project individually affects only that project.
+
+To keep future projects out of the default, use a tag filter rather than excluding projects one by one.
+
 ::::{note}
 The default {{cps}} scope is a space setting, not an access control. Users can still set the scope at the query level. You can also [manage user access](#manage-user-and-api-key-access).
 ::::

@@ -86,6 +86,15 @@ To remove all active filters at once, select **Clear project tag filters** in th
 
 You can create a filter directly from a project's tags. Select the tag count badge on a project row to open a popover listing that project's tags, then select a tag to create a filter for it.
 
+### How newly linked projects affect your scope [cps-picker-new-projects]
+
+Your scope is saved as a [project routing expression](/explore-analyze/cross-project-search/cross-project-search-project-routing.md), not a fixed list, so it also applies to projects that are linked later:
+
+* Projects that match your active tag filters are included automatically.
+* Excluding a project individually affects only that project.
+
+To keep future projects out of your scope, use a tag filter rather than excluding projects one by one.
+
 ## Override {{cps}} scope at the query level [cps-query-overrides]
 
 In apps where you write queries, you can define a different {{cps}} scope than the one set in the header's scope selector or the [space-level default](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). This is useful when you want a specific query or dashboard panel to search a different set of projects.
