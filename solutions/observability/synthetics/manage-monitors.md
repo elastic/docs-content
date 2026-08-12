@@ -16,6 +16,10 @@ After you’ve [created a synthetic monitor](/solutions/observability/synthetics
 
 If you’re using {{project-monitors}}, you should also set up a workflow that uses [best practices for managing monitors effectively](/solutions/observability/synthetics/manage-monitors.md#synthetics-projects-best-practices) in a production environment.
 
+::::{note}
+Remote monitors (monitors loaded from remote {{es}} clusters using {{ccs}}) are read-only. **Edit**, **Enable/Disable**, **Delete**, and **Run test manually** actions are not available for them. To manage a remote monitor, use the {{synthetics-app}} on the {{kib}} instance where the monitor is defined. Refer to [Remote monitors](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-remote-monitors) for details.
+::::
+
 ## Update a monitor [manage-monitors-config]
 
 You can update a monitor’s configuration, for example, changing the interval at which the monitor runs a test.
