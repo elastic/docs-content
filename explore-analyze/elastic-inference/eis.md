@@ -217,8 +217,6 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 
 ## Pricing [pricing]
 
-For how Inference fits among {{ech}} billing dimensions, refer to [Cloud Hosted deployment billing dimensions](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md#inference).
-
 All models on EIS incur a charge per million tokens. Certain LLM providers charge different prices depending on the prompt size. The pricing details are available on our [Pricing page](https://cloud.elastic.co/cloud-pricing-table?productType=serverless).
 
 This pricing model differs from the existing [Machine Learning Nodes](https://www.elastic.co/docs/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models), which is billed through VCUs consumed.
