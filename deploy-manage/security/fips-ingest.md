@@ -6,14 +6,18 @@ products:
   - id: fleet
 applies_to:
   stack: preview 9.1
-
+applies_to:
+  stack: preview 9.1, ga 9.3+
 ---
 
 # FIPS mode for Ingest tools [fips-ingest]
 
 {{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} binaries are built and configured to use FIPS 140-2 compliant cryptography.
 
-{applies_to}`stack: ga 9.3+` {{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} binaries are built and configured to use FIPS 140-3 compliant cryptography via Go's native FIPS 140-3 module (`GOFIPS140=v1.0.0`, CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)). This applies to patch versions 9.5.0, 9.4.4, and 9.3.8 and later. Specific components and configurations that fall outside the certified boundary are documented in the [Limitations](#ingest-limitations-all) section.
+{{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} binaries are built and configured to use FIPS-140-compliant cryptography:
+
+* {applies_to}`stack: preview 9.1-9.2` is configured to use FIPS 140-2 compliant cryptography.
+* {applies_to}`stack: ga 9.3+` is configured to use FIPS 140-3 compliant cryptography using Go's native FIPS 140-3 module (`GOFIPS140=v1.0.0`, CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)). Specific components and configurations that fall outside the certified boundary are documented in the [Limitations](#ingest-limitations-all) section.
 
 ## FIPS-compatible binaries and configuration [fips-binaries]
 
@@ -33,7 +37,7 @@ Only FIPS-compliant TLS protocols, ciphers, and curve types are allowed, as defi
   * `TLS v1.2`: `ECDHE-RSA-AES-128-GCM-SHA256`, `ECDHE-RSA-AES-256-GCM-SHA384`, `ECDHE-ECDSA-AES-128-GCM-SHA256`, `ECDHE-ECDSA-AES-256-GCM-SHA384`
   * `TLS v1.3`: `TLS-AES-128-GCM-SHA256`, `TLS-AES-256-GCM-SHA384`
 * The supported curve types are `P-256`, `P-384` and `P-521`.
-* {applies_to}`stack: ga 9.3+` The minimum key length is 2048 bits for RSA keys. EC key size is determined by the curve in use. Refer to the supported curve types listed above.
+* {applies_to}`stack: ga 9.3+` The minimum key length is 2048 bits for RSA keys. EC key size is determined by the curve in use.
 
 Support for encrypted private keys is not available, as the cryptographic modules used for decrypting password protected keys are not FIPS validated. If an output or any other component with an SSL key that is password protected is configured, the components will fail to load the key. When running in FIPS mode, you must provide non-encrypted keys.
 Be sure to enforce security in your FIPS environments through other means, such as strict file permissions and access controls on the key file itself, for example.
@@ -79,7 +83,7 @@ This impacts [Filebeat](beats://reference/filebeat/configuration-kerberos.md), [
 
 When you use {{agent}} and {{fleet-server}}, these limitations apply:
 * Some Elastic Integrations are not FIPS compatible, as they depend on functionality that is not supported for FIPS configuration. In general, when using {{agent}} and {{fleet-server}}, the same restrictions listed previously for {{metricbeat}} and {{filebeat}} modules, inputs, and processors apply.
-* {applies_to}`stack: preview 9.1-9.2` Running {{agent}} in [OpenTelemetry mode](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/README.md) is not yet supported in FIPS mode. This includes all receivers, such as {{filebeat}} Receiver, {{metricbeat}} Receiver, and [Prometheus Receiver](https://www.elastic.co/docs/reference/integrations/prometheus).
+* {applies_to}`stack: preview 9.1-9.2` Running {{agent}} in [OpenTelemetry mode](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/README.md) is not supported in FIPS mode. This includes all receivers, such as {{filebeat}} Receiver, {{metricbeat}} Receiver, and [Prometheus Receiver](https://www.elastic.co/docs/reference/integrations/prometheus).
 * Agent upgrade artifact verification uses GPG signature checking, which is outside the FIPS module boundary.
 
 ### {{agent}} in OpenTelemetry mode (EDOT) [ingest-limitations-edot]
@@ -87,13 +91,14 @@ When you use {{agent}} and {{fleet-server}}, these limitations apply:
 stack: ga 9.3+
 ```
 
-When running {{agent}} in [OpenTelemetry mode](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/README.md) (EDOT), these additional limitations apply. Available from patch versions 9.3.8, 9.4.4, and 9.5.0 and later.
+When running {{agent}} in [OpenTelemetry mode](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/README.md) (EDOT), these additional limitations apply.
 
 * **Azure integrations**: PKCS#12 (`.pfx`) client certificates are not supported for Azure Active Directory authentication. Use client secrets, workload identity, managed identity, or PEM-encoded certificate and key files instead.
 * **Kafka metrics receiver**: SASL GSSAPI (Kerberos) is not supported. SASL SCRAM (SCRAM-SHA-256, SCRAM-SHA-512) is not FIPS-compliant. Use SASL/PLAIN over TLS or mTLS.
-* **MongoDB receiver**: Not supported in FIPS mode.
-* **MySQL receiver**: Not supported in FIPS mode.
-* **Microsoft SQL Server receiver**: Not supported in FIPS mode.
+* The following receivers are not supported in FIPS mode:
+  * **MongoDB receiver**
+  * **MySQL receiver**
+  * **Microsoft SQL Server receiver**
 * **Kerberos authentication for beat receivers**: Kerberos/GSSAPI authentication for beat receivers ({{filebeat}} receiver, {{metricbeat}} receiver) is not supported.
 * **API key authentication extension**: Not FIPS-compliant. Uses a PBKDF2 implementation outside the certified FIPS module boundary when active.
 
@@ -101,7 +106,9 @@ If you are using a component not listed here and are unsure whether it is FIPS c
 
 ### Elastic Integrations that are not FIPS compatible [ingest-limitations-integrations]
 
-The following Elastic Integrations (Fleet-managed) use cryptographic implementations outside Go's certified FIPS module boundary for core functionality and **cannot** be used in FIPS environments, even if combined with other ingest tools that offer FIPS mode. For EDOT-specific limitations, refer to [{{agent}} in OpenTelemetry mode (EDOT)](#ingest-limitations-edot).
+The following Fleet-managed Elastic Integrations use cryptographic implementations outside Go's certified FIPS module boundary for core functionality. These integrations cannot be used in FIPS environments, even if combined with other ingest tools that offer FIPS mode. 
+
+For EDOT-specific limitations, refer to [{{agent}} in OpenTelemetry mode (EDOT)](#ingest-limitations-edot).
 
 - [Azure Logs Integration (v2 preview)](integration-docs://reference/azure/events.md)
 - [Azure Event Hub Input](integration-docs://reference/azure/eventhub.md)
