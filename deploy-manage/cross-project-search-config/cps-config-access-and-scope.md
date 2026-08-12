@@ -81,11 +81,10 @@ Space settings are managed in {{kib}}.
 
 2. In the general space settings, find the **{{cps-cap}}** panel and set the default scope for the space:
    - **All projects:** (default) Searches run across the origin project and all linked projects.
-   - **This project:**  Searches run only against the origin project's data.
+   - **This project:** Searches run only against the origin project's data.
+   - **Specific projects:** Use the [scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) to include or exclude individual projects or filter by [project tags](/explore-analyze/cross-project-search/cross-project-search-tags.md).
 
 3. Click **Apply changes** to save the scope setting.
-
-% (not yet) - **Specific projects:** Select individual linked projects to include in the default scope.
 
 ::::{note}
 The default {{cps}} scope is a space setting, not an access control. Users can still set the scope at the query level. You can also [manage user access](#manage-user-and-api-key-access).
