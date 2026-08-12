@@ -89,6 +89,7 @@ toc:
   - hidden: vector-database.md
     children:
       - hidden: vector-database/get-started.md
+      - hidden: vector-database/vector-full-text-search.md
   - file: observability.md
     children:
       - file: observability/get-started.md
