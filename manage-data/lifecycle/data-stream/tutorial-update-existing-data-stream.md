@@ -61,7 +61,9 @@ To change the data retention settings for a data stream:
         - **Data stream lifecycle**: Configure retention in the **Data phases** panel. The **Hot phase** is always on. Turn on **Delete phase** and set **Delete after** to a duration, in days, hours, minutes, or seconds, to delete data once it reaches that age, or leave it off to keep your data indefinitely. With an Enterprise license and a default snapshot repository configured, you can also turn on **Frozen phase** to move data to a searchable snapshot before it's deleted.
         - **{{ilm-init}} policy**: Select an existing {{ilm-init}} policy from the list.
 
-            Policies managed by Elastic are hidden from the list by default, even if you search for one by name. Starting with {{stack}} version 9.5.1, select the **Managed** filter next to the search field to reveal them. Revealed managed policies show a **Managed** badge. A data stream that already follows a managed policy keeps that policy visible in the selector regardless of the filter.
+            :::{tip}
+            Policies managed by Elastic are hidden from the list by default, even if you search for one by name. Select the **Managed** filter next to the search field to reveal them. Revealed managed policies show a **Managed** badge. A data stream that already follows a managed policy keeps that policy visible in the selector regardless of the filter.
+            :::
 
     1. Select **Apply** to save your changes.
 
