@@ -33,7 +33,7 @@ To use synonyms in {{es}}, follow this workflow:
 
 1. [**Create synonym sets and rules**](#synonyms-store-synonyms): Define which terms are equivalent and how to store your synonym sets.
 2. [**Configure token filters and analyzers**](#synonyms-synonym-token-filters): Set up synonym token filters and add them to your analyzers.
-3. [**Apply synonyms at index or search time**](#synonyms-apply-synonyms): Specify your analyzer in your index mapping.
+3. [**Create an index with your synonym analyzer**](#synonyms-apply-synonyms): Apply your analyzer to an index mapping.
 4. [**Test your analyzer**](#synonyms-test-analyzer): Verify your synonym configuration produces the expected tokens.
 5. [**Search with synonyms**](#synonyms-search-example): Run a search query and confirm synonym expansion works.
 
@@ -170,23 +170,11 @@ Large synonym sets can trigger a memory [circuit breaker](elasticsearch://refere
 Invalid synonym rules can cause errors when applying analyzer changes and can prevent an index from being reopened. Refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md) reference for details.
 ::::
 
-## Step 3: Apply synonyms at index or search time [synonyms-apply-synonyms]
+## Step 3: Create an index with your synonym analyzer [synonyms-apply-synonyms]
 
-Analyzers can be applied at [index time or search time](../../../manage-data/data-store/text-analysis/index-search-analysis.md).
+Synonyms can be applied at [search time or index time](../../../manage-data/data-store/text-analysis/index-search-analysis.md). Search time is recommended because you can update your synonym sets without [reindexing]({{es-apis}}operation/operation-reindex). If token filters are configured with `"updateable": true`, search analyzers can be [reloaded]({{es-apis}}operation/operation-indices-reload-search-analyzers) when you make changes.
 
-You need to decide when to apply your synonyms:
-
-* **Index time**: {applies_to}`serverless: unavailable` Synonyms are applied when the documents are indexed into {{es}}. This is a less flexible alternative, as changes to your synonyms require [reindexing]({{es-apis}}operation/operation-reindex).
-* **Search time**: Synonyms are applied when a search is executed. This is a more flexible approach, which doesn't require reindexing. If token filters are configured with `"updateable": true`, search analyzers can be [reloaded]({{es-apis}}operation/operation-indices-reload-search-analyzers) when you make changes to your synonyms.
-  :::{note}
-  Synonym sets created using the synonyms API or the UI can only be used at search time.
-  :::
-
-You can specify the analyzer that contains your synonym set as a [search time analyzer](../../../manage-data/data-store/text-analysis/specify-an-analyzer.md#specify-search-analyzer) or as an [index time analyzer](../../../manage-data/data-store/text-analysis/specify-an-analyzer.md#specify-index-time-analyzer).
-
-Queries that support synonym expansion include [match](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), [query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md), and [simple_query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-simple-query-string-query.md). These queries support the `auto_generate_synonyms_phrase_query` parameter, which controls how multi-word synonyms are handled at query time.
-
-The following example adds `my_analyzer` as a search analyzer to the `title` field in an index mapping. The filter references a synonym set created through the API or {{kib}} UI.
+The following example creates an index with `my_analyzer` as a search analyzer on the `title` field.
 
 For [file-based synonym sets](#synonyms-store-synonyms-file), use `synonyms_path` instead of `synonyms_set`. {applies_to}`serverless: unavailable`
 
@@ -239,7 +227,9 @@ If your synonym set includes `laptop, notebook` as equivalent terms, the respons
 
 ## Step 5: Search with synonyms [synonyms-search-example]
 
-After you configure synonyms for a field, queries against that field automatically expand to include synonym terms. For example, if `laptop` and `notebook` are configured as equivalent terms and you search for `laptop`, {{es}} also matches documents containing `notebook`.
+After you configure synonyms for a field, queries against that field automatically expand to include synonym terms. Queries that support synonym expansion include [match](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), [query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md), and [simple_query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-simple-query-string-query.md).
+
+For example, if `laptop` and `notebook` are configured as equivalent terms and you search for `laptop`, {{es}} also matches documents containing `notebook`:
 
 ```console
 GET /my-index/_search
