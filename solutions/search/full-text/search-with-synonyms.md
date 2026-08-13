@@ -9,34 +9,25 @@ products:
   - id: elasticsearch
 ---
 
-# Search with synonyms [search-with-synonyms]
+# Set up and search with synonyms in {{es}} [search-with-synonyms]
+
+Synonyms are words or phrases that have the same or similar meaning. When you configure synonyms in {{product.elasticsearch}}, a search for one term automatically matches documents that use an equivalent term. This improves relevance when users express the same concept with different words, makes domain-specific vocabulary more accessible, and handles common misspellings transparently.
+
+This page walks you through defining synonym rules, grouping them into reusable synonym sets, configuring {{product.elasticsearch}} to apply them during text analysis, and verifying that queries return the expanded results you expect.
+
+% TODO: these bundle links do not belong here — migration artifacts kept to avoid broken builds
 
 $$$ece-add-custom-bundle-example-synonyms$$$
-::::{note}
-Learn about [adding custom synonym bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) to your {{ece}} deployment.
-::::
-
-% TODO: these bundle links do not belong here
-
 $$$ece-add-custom-bundle-example-LDA$$$
-
 $$$ece-add-custom-bundle-example-SAML$$$
-
 $$$ece-add-custom-bundle-example-cacerts$$$
-
 $$$ece-add-custom-bundle-example-LDAP$$$
-
-Synonyms are words or phrases that share the same or similar meaning. Searching using synonyms allows you to:
-
-* Improve search relevance by finding relevant documents that use different terms to express the same concept.
-* Make domain-specific vocabulary more user-friendly.
-* Define misspellings and typos to transparently handle common mistakes.
 
 ## Prerequisites
 
 To manage synonym sets using the API or {{kib}} UI, you need the `manage_search_synonyms` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md).
 
-## How synonyms work in Elasticsearch
+## How synonyms work in {{product.elasticsearch}}
 
 To use synonyms in {{es}}, follow this workflow:
 
