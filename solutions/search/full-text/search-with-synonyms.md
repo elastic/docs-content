@@ -148,7 +148,7 @@ This manual syncing and reloading makes this approach less flexible than using t
 You can test your synonyms by adding them directly inline in your token filter definition.
 
 ::::{warning}
-Inline synonyms are not recommended for production usage. A large number of inline synonyms increases cluster size unnecessarily and can lead to performance issues.
+Inline synonyms are not recommended for production usage. Too many inline synonyms increases cluster size unnecessarily and can lead to performance issues.
 ::::
 
 ## Step 2: Configure synonyms token filters and analyzers [synonyms-synonym-token-filters]
@@ -286,7 +286,7 @@ PUT /my-index
 
 ## Search with synonyms in action [synonyms-search-example]
 
-After you configure synonyms for a field, queries against that field automatically expand to include synonym terms. For example, if you define `laptop, notebook` as equivalent synonyms and search for "laptop", {{es}} also matches documents containing "notebook".
+After you configure synonyms for a field, queries against that field automatically expand to include synonym terms. For example, if you define `laptop, notebook` as equivalent synonyms and search for `laptop`, {{es}} also matches documents containing `notebook`.
 
 ```console
 GET /my-index/_search
@@ -299,7 +299,7 @@ GET /my-index/_search
 }
 ```
 
-This query matches documents where the `title` field contains "laptop" or "notebook", because the synonym rule treats them as equivalent.
+This query matches documents where the `title` field contains `laptop` or `notebook`, because the synonym rule treats them as equivalent.
 
 ## Next steps
 
