@@ -48,6 +48,8 @@ This table provides a comparison of features and capabilities included in {{ech}
 | [Elastic AI Assistant for Observability and Search](/solutions/observability/ai/observability-ai-assistant.md), [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) | Yes | Elastic Managed LLM not available | Elastic Managed LLM not available |
 | [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) | Yes | Yes | TBD |
 | [Universal profiling](/solutions/observability/infra-and-hosts/universal-profiling.md) | Yes | No | No |
+| [Watcher](/explore-analyze/alerting/watcher.md) | Yes | Yes | No |
+
 
 ## Get started with FedRAMP [ec-fedramp-get-started]
 

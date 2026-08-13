@@ -14,13 +14,6 @@ products:
 # Create a custom threshold rule [observability-create-custom-threshold-alert-rule]
 
 
-::::{note}
-
-**For Observability serverless projects**, the **Editor** role or higher is required to create a custom threshold rule. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-
-::::
-
-
 Create a custom threshold rule to trigger an alert when an {{obs-serverless}} data type reaches or exceeds a given value.
 
 1. To access this page, select **Alerts** from the main navigation.
@@ -32,6 +25,8 @@ Create a custom threshold rule to trigger an alert when an {{obs-serverless}} da
 :screenshot:
 :::
 
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
 
 ## Define rule data [custom-threshold-scope]
 
@@ -77,6 +72,19 @@ To gather the total number of log documents with a log level of `warn`:
 ### Set the equation and threshold [custom-threshold-equation]
 
 Set an equation using your aggregations. Based on the results of your equation, set a threshold to define when to trigger an alert. The equations use basic math or boolean logic. Refer to the following examples for possible use cases.
+
+### Add a warning threshold [custom-threshold-warning-threshold]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Optionally turn on **Add warning threshold** to set a less severe threshold alongside your critical threshold. Crossing the warning threshold triggers the **Warning** action group. Crossing the critical threshold triggers the **Alert** action group. When you set up actions for the rule, choose which action group each one runs for, so you can send different notifications (or none at all) for warnings versus critical alerts.
+
+For example, you could trigger a warning when average CPU usage goes above 80%, and a critical alert when it goes above 95%.
+
+The alert's severity matches whichever threshold triggered it: `warning` or `critical`. You can use these severity values in [per-alert snooze](/explore-analyze/alerting/alerts/view-alerts.md) conditions to automatically unsnooze an alert when its severity changes.
 
 
 ### Basic math equation [custom-threshold-math-equation]
@@ -237,7 +245,7 @@ For more information on creating connectors, refer to [Connectors](/deploy-manag
 
 
 :::::{dropdown} Action frequency
-After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: `Alert`, `No Data`, or `Recovered`.
+After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: `Alert`, {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` `Warning`, `No Data`, or `Recovered`.
 
 :::{image} /solutions/images/serverless-custom-threshold-run-when.png
 :alt: Configure when a rule is triggered

@@ -92,12 +92,15 @@ Custom index mappings may conflict with the mappings defined by the integration 
 ::::
 
 
-When you install an integration, {{fleet}} creates two default `@custom` component templates:
+When you install an integration, {{fleet}} creates default `@custom` component templates that you can edit:
 
-* A `@custom` component template allowing customization across all documents of a given data stream type, named following the pattern: `<data_stream_type>@custom`.
-* A `@custom` component template for each data stream, named following the pattern: `<name_of_data_stream>@custom`.
+* A type-level `@custom` component template for all documents of a given data stream type, named `<data_stream_type>@custom` (for example, `logs@custom`).
+* A data stream-level `@custom` component template for each data stream, named `<name_of_data_stream>@custom` (for example, `logs-system.application@custom`).
+* {applies_to}`stack: ga 9.1+` A package-level `@custom` component template for the integration, named `<package>@custom` (for example, `system@custom`).
 
-The `@custom` component template specific to a data stream has higher precedence over the data stream type `@custom` component template.
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can also create a `<namespace>@custom` component template and enable [namespace index templates](/reference/fleet/data-streams-namespace-custom.md) so {{fleet}} applies that template to every data stream in the namespace.
+
+In the component template chain, later entries take precedence. Among `@custom` templates, precedence from highest to lowest is: data stream, namespace (when present), package (when present), then data stream type.
 
 You can edit a `@custom` component template to customize your {{es}} indices:
 
@@ -147,6 +150,8 @@ Use the [index lifecycle management](/manage-data/lifecycle/index-lifecycle-mana
 Installed integrations may have one or many associated data streams—each with an associated {{ilm-init}} policy. By default, these data streams use an {{ilm-init}} policy that matches their data type. For example, the data stream `metrics-system.logs-*`, uses the metrics {{ilm-init}} policy as defined in the `metrics-system.logs` index template.
 
 Want to customize your index lifecycle management? See [Tutorials: Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md).
+
+{applies_to}`stack: ga 9.5+` To apply one {{ilm-init}} policy to every data stream an integration produces in a single namespace, you can [apply the policy from the integration policy editor](/reference/fleet/data-streams-namespace-ilm.md) instead of editing templates yourself.
 
 
 ## Ingest pipelines [data-streams-pipelines]

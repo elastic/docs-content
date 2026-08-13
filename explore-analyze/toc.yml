@@ -468,6 +468,7 @@ toc:
         children:
           - file: alerting/alerts/alerting-getting-started.md
           - file: alerting/alerts/alerting-setup.md
+          - file: alerting/alerts/rules-and-elastic-cloud-api-keys.md
           - file: alerting/alerts/create-manage-rules.md
           - file: alerting/alerts/view-alerts.md
           - file: alerting/alerts/query-alerts.md
@@ -567,6 +568,7 @@ toc:
             children:
               - file: workflows/use-cases/security/automate-security-operations.md
                 children:
+                  - file: workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md
                   - file: workflows/use-cases/security/automate-security-operations/alert-triage-with-case.md
                   - file: workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md
                   - file: workflows/use-cases/security/automate-security-operations/enrich-alert-with-threat-intel.md
@@ -581,6 +583,7 @@ toc:
               - file: workflows/use-cases/ai-augmented-workflows/classify-and-route-alerts.md
       - file: workflows/concepts.md
         children:
+          - file: workflows/managed-workflows.md
           - file: workflows/authorization.md
           - file: workflows/triggers.md
             children:
