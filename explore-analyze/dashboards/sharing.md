@@ -143,6 +143,13 @@ serverless: preview
 Export a supported panel's configuration as JSON. The **Export JSON** option is available for **Lens** visualizations, **Links** and **Markdown** panels, and **Options list**, **Range slider**, and **ES|QL** controls.
 
 1. On the dashboard, from the panel menu, select **Export JSON**. When the menu contains an **Export** submenu, select **Export** → **Export JSON** instead.
+
+   :::{image} /explore-analyze/images/dashboard-panel-menu-export-json.png
+   :alt: Dashboard panel menu with the Export JSON option highlighted
+   :screenshot:
+   :width: 90%
+   :::
+
 2. Review the JSON source in the flyout. For a panel linked to the library, the export shows the library reference by default. Turn on **Show full configuration** to export the panel's full configuration instead of its library reference.
 3. Select **Copy to clipboard** to copy the JSON, or **Download JSON** to save it to a file.
 
