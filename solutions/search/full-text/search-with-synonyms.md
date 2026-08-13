@@ -182,32 +182,15 @@ Synonym sets must exist before they can be added to indices. If an index is crea
 
 {{es}} uses synonyms as part of the [analysis process](../../../manage-data/data-store/text-analysis.md). You can use two types of [token filter](elasticsearch://reference/text-analysis/token-filter-reference.md) to include synonyms:
 
-* [Synonym graph](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md): Recommended as it can correctly handle multi-word synonyms.
-* [Synonym](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md): Not recommended if you need to use multi-word synonyms.
+* [Synonym graph](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md): Recommended for search analyzers. Correctly handles multi-word synonyms. This filter is designed for search-time use only.
+* [Synonym](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md): Required for index-time synonyms. Not recommended if you need to use multi-word synonyms.
 
-Check each synonym token filter documentation for configuration details and instructions on adding it to an analyzer.
+Refer to each token filter's reference page for configuration details and instructions on adding it to an analyzer.
 
-:::{note}
-:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
-
-When building the synonyms map, {{es}} checks available heap memory using a circuit breaker to prevent synonym token filters from causing out-of-memory errors when processing large numbers of synonym rules. The circuit breaker trips when more than 95% of heap memory is in use.
-
-The threshold is configurable using the [`indices.breaker.total.limit` parent circuit breaker setting](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker). {applies_to}`serverless: unavailable`
-
-When the circuit breaker trips, the behavior is determined by the `lenient` parameter:
-
-* If `lenient` is `true`, an empty synonyms map is used and the event is logged in the {{es}} logs.
-* If `lenient` is `false`, the affected index enters a red state.
-:::
+{applies_to}`{"stack": "ga 9.4", "serverless": "ga"}` When processing synonym rules, {{es}} uses a [circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) (a memory safety mechanism) to prevent out-of-memory errors. If the circuit breaker trips because heap usage exceeds 95%, the behavior depends on the `lenient` parameter. The `lenient` parameter defaults to the value of `updateable`. When `updateable` is `true` (recommended for search-time synonyms), {{es}} uses an empty synonym map and logs the event. When `lenient` is `false`, the affected index enters a red state. The threshold is configurable using the [`indices.breaker.total.limit` setting](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker). {applies_to}`serverless: unavailable`
 
 ::::{warning}
-Invalid synonym rules can cause errors when applying analyzer changes. For reloadable analyzers, this prevents reloading and applying changes. You must correct errors in the synonym rules and reload the analyzer.
-
-An index with invalid synonym rules cannot be reopened, making it inoperable when:
-
-* A node containing the index starts
-* The index is opened from a closed state
-* A node restart occurs (which reopens the node assigned shards)
+Invalid synonym rules can cause errors when applying analyzer changes and can prevent an index from being reopened. Refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md) reference for details.
 ::::
 
 ## Step 3: Test your analyzer [synonyms-test-analyzer]
