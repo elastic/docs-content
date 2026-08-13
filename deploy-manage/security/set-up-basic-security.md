@@ -124,7 +124,7 @@ Complete the following steps **for each node in your cluster**. To join the same
         ```
 
         ::::{note}
-        When the same PKCS#12 file is configured as both the keystore and truststore, peer node certificates in that file are trusted directly. In this configuration, {{es}} does not reject connections from nodes presenting an expired certificate from the same file, even when `verification_mode` is set to `certificate`. Internode communication remains encrypted, and the cluster can continue to operate normally, including restarts and adding new nodes that use the same file.
+        When the same file is configured as both the keystore and truststore, or when only `keystore.path` is set and {{es}} uses that file as the truststore, peer node certificates in the file are trusted directly. The same behavior applies if a peer's leaf certificate is listed in `xpack.security.transport.ssl.certificate_authorities`. In these configurations, {{es}} does not reject connections from nodes presenting an expired certificate that is directly trusted, regardless of the `verification_mode` setting. Internode communication remains encrypted, and the cluster can continue to operate normally, including restarts and adding new nodes that use the same certificate material.
         ::::
 
         1. If you want to use hostname verification, set the verification mode to `full`. You should generate a different certificate for each host that matches the DNS or IP address. See the `xpack.security.transport.ssl.verification_mode` parameter in [TLS settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings).
