@@ -20,8 +20,6 @@ type: how-to
 
 To connect a client application or a third-party tool to {{es}}, you need two things: the {{es}} endpoint URL, and credentials that authenticate the request. For secure connections, use an API key.
 
-This guide shows you where to find the endpoint and how to create an API key, then how to confirm that both work.
-
 ## Before you begin [before-you-begin]
 
 To create an API key, you need the `manage_api_key` or the `manage_own_api_key` cluster privilege.
@@ -34,11 +32,11 @@ To create an API key, you need the `manage_api_key` or the `manage_own_api_key` 
 Your endpoint is in the **Connection details** panel in {{kib}}.
 
 1. Select **Open** in the {{ecloud}} console to open {{kib}} for your deployment or project.
-2. Open the help menu {icon}`question`, then select **Connection details**.
+2. From the **Help menu** {icon}`question`, select **Connection details**.
 3. Copy the **{{es}} endpoint** from the **Endpoints** tab.
 
 :::{tip}
-In the {{es}} solution, the **Getting started** page shows the endpoint directly.
+When the space uses the **{{es}}** solution view, the **Getting started** page shows the endpoint directly.
 :::
 
 ::::
@@ -56,15 +54,15 @@ If clients reach your cluster through a load balancer, reverse proxy, or ingress
 ::::
 
 ::::{applies-item} {"deployment": {"eck": "ga"}}
-The operator creates a `ClusterIP` service named `<cluster-name>-es-http` on port `9200`, with TLS enabled by default.
+The {{eck}} operator creates a `ClusterIP` service named `<cluster-name>-es-http` on port `9200`, with TLS enabled by default.
 
-From inside the Kubernetes cluster, your endpoint is `https://<cluster-name>-es-http:9200`. List your services to confirm the name:
+From inside the Kubernetes cluster, your endpoint is `https://<cluster-name>-es-http:9200` in the same namespace, or `https://<cluster-name>-es-http.<namespace>.svc:9200` from another namespace. List your services to confirm the name:
 
 ```sh
 kubectl get svc
 ```
 
-To reach the cluster from outside, expose the service and use its external address. Refer to [Access the endpoint](/deploy-manage/deploy/cloud-on-k8s/accessing-services.md#k8s-request-elasticsearch-endpoint) for both cases, including how to retrieve the CA certificate.
+To reach the cluster from outside, expose the service and use its external address. Refer to [Access the endpoint](/deploy-manage/deploy/cloud-on-k8s/accessing-services.md#k8s-request-elasticsearch-endpoint) for both cases, including how to retrieve the certificate authority (CA) certificate.
 ::::
 
 :::::
@@ -78,10 +76,10 @@ deployment:
 serverless: ga
 ```
 
-{{agent}}, {{ls}}, and {{beats}} can use a Cloud ID instead of the endpoint URL. All other clients and tools use the endpoint.
+{{beats}} and {{ls}} can use a Cloud ID instead of the endpoint URL. All other clients and tools use the endpoint.
 
 1. Select **Open** in the {{ecloud}} console to open {{kib}} for your deployment or project.
-2. Open the help menu {icon}`question`, then select **Connection details**.
+2. From the **Help menu** {icon}`question`, select **Connection details**.
 3. Turn on **Show Cloud ID**, then copy the value.
 
 :::{tip}
@@ -96,12 +94,13 @@ To skip {{kib}}, select **Manage** in the {{ecloud}} console and copy the **Clou
 ::::{applies-item} { "deployment": { "ech": "ga", "ece": "ga" }, "serverless": "ga" }
 
 1. Select **Open** in the {{ecloud}} console to open {{kib}} for your deployment or project.
-2. Open the help menu {icon}`question`, then select **Connection details**.
-3. Select the **API key** tab, enter an **API key name**, then select **Create API key**.
-4. Select an **API key format**: **Encoded** for {{es}} REST API requests, or **Beats** or **Logstash** to configure those products.
-5. Copy the key. It isn't available after you close the panel.
+2. From the **Help menu** {icon}`question`, select **Connection details**.
+3. Select the **API key** tab.
+4. In the **API key name** field, enter a name, then select **Create API key**.
+5. Select an **API key format**: **Encoded** for {{es}} REST API requests, or **Beats** or **Logstash** to configure those products.
+6. Copy the key. It isn't available after you close the panel.
 
-Keys created here expire in 90 days and carry your own privileges. To choose an expiry or restrict privileges, select **Manage API keys** and create the key there instead.
+Keys created here expire in 90 days and carry your own privileges. To set an expiration or restrict privileges, select **Manage API keys** and create the key there instead.
 ::::
 
 ::::{applies-item} {"deployment": {"eck": "ga", "self": "ga"}}
@@ -115,7 +114,7 @@ Keys created here don't expire unless you add an expiration date.
 
 :::::
 
-For key types, privileges, and expiry options, refer to [](/deploy-manage/api-keys.md).
+For key types, privileges, and expiration options, refer to [](/deploy-manage/api-keys.md).
 
 ## Test your connection [elasticsearch-get-started-test-connection]
 
