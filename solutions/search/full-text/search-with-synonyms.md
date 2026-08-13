@@ -77,10 +77,12 @@ For details on how `expand` affects synonym rules, refer to the [synonym graph t
 You have multiple options for creating synonym sets and rules.
 
 ::::{note}
-Synonym sets created through the API or the {{kib}} UI can only be used at search time. For index-time synonyms, use a [file-based](#synonyms-store-synonyms-file) or [inline](#synonyms-store-synonyms-inline) approach with the [`synonym` token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md).
+Synonym sets created through the API or the {{kib}} UI can only be used at search time. For index-time synonyms, use a file-based or inline approach with the [`synonym` token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md).
 ::::
 
-### Method 1: {{kib}} UI
+::::::{tab-set}
+
+:::::{tab-item} {{kib}} UI
 
 You can create and manage synonym sets and synonym rules using the {{kib}} user interface.
 
@@ -94,15 +96,23 @@ To create a synonym set using the UI:
    - Add **Explicit rules** by adding multiple terms that map to a single term. For example: `i-pod, i pod => ipod`
 5. Select **Save** to save your rules.
 
-The UI supports the same synonym rule formats as the [file-based approach](#synonyms-store-synonyms-file). Changes made through the UI automatically reload the associated analyzers.
+The UI supports the same synonym rule formats as the file-based approach. Changes made through the UI automatically reload the associated analyzers.
 
-### Method 2: REST API [synonyms-store-synonyms-api]
+:::::
+
+:::::{tab-item} REST API
+
+$$$synonyms-store-synonyms-api$$$
 
 You can use the [synonyms APIs]({{es-apis}}group/endpoint-synonyms) to manage synonym sets. This is the most flexible approach, as it allows you to dynamically define and modify synonym sets. For examples of how to create or update a synonym set with APIs, refer to the [Create or update synonym set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md) page.
 
 Changes to your synonym sets automatically reload the associated analyzers.
 
-### Method 3: File-based [synonyms-store-synonyms-file]
+:::::
+
+:::::{tab-item} File-based
+
+$$$synonyms-store-synonyms-file$$$
 
 ```{applies_to}
 serverless: unavailable
@@ -132,15 +142,23 @@ To update an existing synonym set, upload new files to your cluster. Synonym set
 
 When a synonym set is updated, search analyzers that use it need to be refreshed using the [reload search analyzers API]({{es-apis}}operation/operation-indices-reload-search-analyzers).
 
-This manual syncing and reloading makes this approach less flexible than using the [synonyms API](#synonyms-store-synonyms-api).
+This manual syncing and reloading makes this approach less flexible than using the synonyms API.
 
-### Method 4: Inline [synonyms-store-synonyms-inline]
+:::::
+
+:::::{tab-item} Inline
+
+$$$synonyms-store-synonyms-inline$$$
 
 You can test your synonyms by adding them directly inline in your token filter definition.
 
 ::::{warning}
 Inline synonyms are not recommended for production usage. Too many inline synonyms increases cluster size unnecessarily and can lead to performance issues.
 ::::
+
+:::::
+
+::::::
 
 ## Step 2: Configure synonyms token filters and analyzers [synonyms-synonym-token-filters]
 
