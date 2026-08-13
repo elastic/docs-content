@@ -62,7 +62,7 @@ To change the data retention settings for a data stream:
         - **{{ilm-init}} policy**: Select an existing {{ilm-init}} policy from the list.
 
             :::{tip}
-            Policies managed by Elastic are hidden from the list by default, even if you search for one by name. Select the **Managed** filter next to the search field to reveal them. Revealed managed policies show a **Managed** badge. A data stream that already follows a managed policy keeps that policy visible in the selector regardless of the filter.
+            Policies managed by Elastic are hidden from the list by default, even if you search for one by name. Select the **Managed** filter next to the search field to reveal them.
             :::
 
     1. Select **Apply** to save your changes.
