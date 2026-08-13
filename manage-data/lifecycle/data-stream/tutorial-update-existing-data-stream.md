@@ -19,7 +19,6 @@ Follow these steps to configure or remove data stream lifecycle settings for an 
 
 These steps configure data stream lifecycle settings directly. For the full set of {{ilm-init}} configuration options, refer to the [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md). For a comparison between the two, refer to [](/manage-data/lifecycle.md).
 
-
 ## Set a data stream's lifecycle [set-lifecycle]
 
 To add or modify the retention period of your data stream you can use the **{{index-manage-app}}** tools in {{kib}} or the {{es}} [lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle).
