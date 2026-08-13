@@ -146,11 +146,11 @@ Too many inline synonyms increases cluster size unnecessarily and can lead to pe
 
 :::::
 
+::::::
+
 ::::{warning}
 Synonym sets must exist before you reference them in an index. An index that references a nonexistent synonym set becomes inoperable and must be deleted and re-created, or closed and re-opened.
 ::::
-
-::::::
 
 ## Step 2: Configure synonyms token filters and analyzers [synonyms-synonym-token-filters]
 
