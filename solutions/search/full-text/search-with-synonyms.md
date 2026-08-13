@@ -146,15 +146,15 @@ Too many inline synonyms increases cluster size unnecessarily and can lead to pe
 
 :::::
 
+::::{warning}
+Synonym sets must exist before you reference them in an index. An index that references a nonexistent synonym set becomes inoperable and must be deleted and re-created, or closed and re-opened.
+::::
+
 ::::::
 
 ## Step 2: Configure synonyms token filters and analyzers [synonyms-synonym-token-filters]
 
 Once your synonym sets are created, you can start configuring your token filters and analyzers to use them.
-
-::::{warning}
-Synonym sets must exist before they can be added to indices. If an index is created referencing a nonexistent synonym set, the index remains in a partially created and inoperable state. The only way to recover from this scenario is to ensure the synonym set exists then either delete and re-create the index, or close and re-open the index.
-::::
 
 {{es}} uses synonyms as part of the [analysis process](../../../manage-data/data-store/text-analysis.md). You can use two types of [token filter](elasticsearch://reference/text-analysis/token-filter-reference.md) to include synonyms:
 
