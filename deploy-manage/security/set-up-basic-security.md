@@ -89,7 +89,7 @@ Now that you’ve obtained your certificates, you’ll update your cluster to us
 These steps assume that you [generated a CA and certificates](#generate-certificates) using `elasticsearch-certutil`. The `xpack.security.transport.ssl` settings that you need to set differ if you're using a certificate generated with an external CA. Refer to [Transport TLS/SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) for a full list of available settings.
 
 ::::{note}
-{{es}} monitors all files such as certificates, keys, keystores, or truststores that are configured as values of TLS-related node settings. If you update any of these files, such as when your hostnames change or your certificates are due to expire, {{es}} reloads them. The files are polled for changes at a frequency determined by the global {{es}} `resource.reload.interval.high` setting, which defaults to 5 seconds. Reloading an expired certificate does not cause {{es}} to reject peer connections when the same file is used for both keystore and truststore.
+{{es}} monitors all files such as certificates, keys, keystores, or truststores that are configured as values of TLS-related node settings. If you update any of these files, such as when your hostnames change or your certificates are due to expire, {{es}} reloads them. The files are polled for changes at a frequency determined by the global {{es}} `resource.reload.interval.high` setting, which defaults to 5 seconds.
 ::::
 
 
