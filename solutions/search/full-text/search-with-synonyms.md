@@ -27,7 +27,7 @@ $$$ece-add-custom-bundle-example-LDAP$$$
 
 To manage synonym sets using the API or {{kib}} UI, you need the `manage_search_synonyms` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md).
 
-## How synonyms work in {{product.elasticsearch}}
+## Synonyms workflow overview
 
 To use synonyms in {{es}}, follow this workflow:
 
