@@ -2,7 +2,7 @@
 navigation_title: Osquery manager integration
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/manage-osquery-integration.html
-description: Configure and customize the Osquery Manager integration, including advanced configuration options, custom Osquery versions, and debugging.
+description: Configure and customize the Osquery Manager integration, including advanced configuration options, custom Osquery versions, custom extensions, and debugging.
 applies_to:
   stack: 
   serverless:
@@ -165,6 +165,51 @@ If a platform or architecture is not configured, the bundled Osquery version is 
 
 For complete configuration examples for macOS and Windows, refer to the [osquerybeat.reference.yml](https://github.com/elastic/beats/blob/main/x-pack/osquerybeat/osquerybeat.reference.yml) file.
 
+## Load custom Osquery extensions [osquery-custom-extensions]
+```{applies_to}
+stack: ga 9.5+
+serverless:
+  security: ga
+```
+
+You can load your own Osquery extensions so that custom tables are available to live and scheduled queries. Place the extension binaries on each endpoint, then add their paths to the Advanced **Osquery config**.
+
+::::{warning}
+This feature is **use at your own risk**. Elastic does not develop, validate, or support custom Osquery extensions. You are responsible for their security, maintenance, and stability.
+
+Custom extensions might introduce compatibility or stability issues. Tables provided by these extensions do not autocomplete in the query editor.
+::::
+
+To load custom extensions, add an `elastic_options.extensions` block to the **Osquery config** field. For steps to open this field, refer to [Customize Osquery configuration](#osquery-custom-config).
+
+If the field already contains an `elastic_options` object, for example to [use a custom Osquery version](#osquery-custom-version), add the `extensions` block to that object. Do not replace the existing configuration.
+
+The following example loads extensions from a directory, a specific binary, and a glob pattern:
+
+```json
+{
+   "elastic_options": {
+      "extensions": {
+         "paths": [
+            "/opt/osquery-extensions",
+            "/opt/custom/my_extension.ext",
+            "/opt/vendor/*.ext"
+         ]
+      }
+   }
+}
+```
+
+Configuration options:
+
+* `paths`: (Required) Absolute paths on the endpoint. Each entry can be a directory, a specific extension binary, or a glob pattern (`*`, `?`, or `[ ]`). Directory entries load files that end in `.ext` on Linux and macOS, and `.exe` on Windows.
+* `timeout`: (Optional) The time in seconds that Osquery waits for extensions to register at startup.
+* `require`: (Optional) A list of extension names that Osquery waits for at startup. Queries do not run until these extensions register, or until the timeout elapses. Use this to avoid `no such table` errors when an extension is slow to register.
+
+Binaries must be owned by the user running Osquery and must not be writable by group or others. If a binary is missing, not executable, or does not meet these permission requirements, Osquerybeat skips it and logs a warning.
+
+Paths are resolved when Osquery restarts, which happens when you save a policy change that affects this configuration, or when you restart the {{agent}}. Adding or removing binaries in a configured directory does not reload extensions by itself.
+
 ## Debug issues [_debug_issues]
 
 If you encounter issues with **Osquery Manager**, find the relevant logs for {{agent}} and Osquerybeat in the agent directory. Refer to the [Fleet Installation layout](/reference/fleet/installation-layout.md) to find the log file location for your OS.
@@ -183,3 +228,5 @@ To get more details in the logs, change the agent logging level to debug:
     `agent.logging.level` is updated in `fleet.yml`, and the logging level is changed to `debug`.
 
 If you configured a [custom Osquery version](#osquery-custom-version) and the agent fails to start, check the logs for artifact download or checksum validation errors.
+
+If you configured [custom Osquery extensions](#osquery-custom-extensions) and a table is missing or an extension does not load, check the Osquerybeat logs for skip warnings. You can also [collect {{agent}} diagnostics](/reference/fleet/monitor-elastic-agent.md#collect-agent-diagnostics) and inspect the `osquery_extensions` report.
