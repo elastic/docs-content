@@ -57,7 +57,7 @@ With explicit mappings, the relationship is one-way. In the previous examples:
 
 ### Equivalent mappings
 
-Equivalent synonyms use commas to group interchangeable terms:
+Equivalent mappings use commas to group interchangeable terms:
 
 ```
 ipod, i-pod, i pod
@@ -66,7 +66,7 @@ universe, cosmos
 lol, laughing out loud
 ```
 
-The behavior of equivalent synonyms depends on the `expand` parameter in your token filter configuration:
+The behavior of equivalent mappings depends on the `expand` parameter in your token filter configuration:
 - If `expand=true` (the default): all terms are mapped to each other bidirectionally.
 - If `expand=false`: all terms are mapped to the first term only.
 
@@ -121,7 +121,7 @@ An example of a synonym file:
 i-pod, i pod => ipod
 sea biscuit, sea biscit => seabiscuit
 
-# Equivalent synonyms
+# Equivalent mappings
 ipod, i-pod, i pod
 universe, cosmos
 ```
@@ -277,7 +277,7 @@ PUT /my-index
 
 ## Search with synonyms in action [synonyms-search-example]
 
-After you configure synonyms for a field, queries against that field automatically expand to include synonym terms. For example, if you define `laptop, notebook` as equivalent synonyms and search for `laptop`, {{es}} also matches documents containing `notebook`.
+After you configure synonyms for a field, queries against that field automatically expand to include synonym terms. For example, if `laptop` and `notebook` are configured as equivalent terms and you search for `laptop`, {{es}} also matches documents containing `notebook`.
 
 ```console
 GET /my-index/_search
