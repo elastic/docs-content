@@ -131,10 +131,17 @@ This manual syncing and reloading makes this approach less flexible than using t
 
 $$$synonyms-store-synonyms-inline$$$
 
-You can test your synonyms by adding them directly inline in your token filter definition.
+You can define synonyms directly in your token filter using the `synonyms` parameter. This is useful for testing, but not recommended for production.
+
+```json
+"synonyms_filter": {
+  "type": "synonym_graph",
+  "synonyms": ["laptop, notebook", "i-pod, i pod => ipod"]
+}
+```
 
 ::::{warning}
-Inline synonyms are not recommended for production usage. Too many inline synonyms increases cluster size unnecessarily and can lead to performance issues.
+Too many inline synonyms increases cluster size unnecessarily and can lead to performance issues. For production workloads, use the [API](#synonyms-store-synonyms-api) or a [synonym file](#synonyms-store-synonyms-file) instead.
 ::::
 
 :::::
