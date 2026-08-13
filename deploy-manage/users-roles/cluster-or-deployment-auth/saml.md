@@ -218,12 +218,7 @@ xpack.security.authc.providers:
     order: 1
 ```
 
-When multiple authentication providers are configured, users see a login selector and can choose their preferred method. Users who log in with basic authentication must have credentials in a configured {{es}} realm such as native or LDAP.
-
-You can also configure [session timeout settings](/deploy-manage/security/kibana-session-management.md) per provider to match your security requirements.
-
-% TBD
-% If you want to bypass the login selector for specific clients or routes (for example, automated systems or internal tools), you can place a reverse proxy in front of {{kib}} and configure it to inject a basic authentication header (`Authorization: Basic ...`). If this header is present and valid, {{kib}} authenticates the request directly using basic auth and skips the SAML flow entirely.
+When multiple authentication providers are configured, users view a login selector and can select their preferred method. Users who log in with basic authentication must have credentials in a configured {{es}} realm such as native or LDAP. For more details, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#multiple-authentication-providers).
 
 ::::
 
