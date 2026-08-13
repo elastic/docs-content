@@ -41,11 +41,9 @@ To change the data retention settings for a data stream:
     ::::{applies-item} serverless: ga
 
     1. Select {icon}`gear` **Actions** → **Edit data lifecycle**.
-    1. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn it off, if enabled, and configure retention in the **Data phases** panel.
+    1. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn it off and configure retention in the **Data phases** panel.
     1. Turn on **Delete phase** and set **Delete after** to a duration, in days, hours, minutes, or seconds, to delete data once it reaches that age. Leave **Delete phase** off to keep your data indefinitely.
     1. Select **Apply** to save your changes.
-
-    {{ilm-init}} policies aren't available in {{serverless-short}}, so the **{{ilm-init}} policy** method isn't offered here.
 
     :::{tip}
     Turning off **Inherit lifecycle from index template** sets an explicit lifecycle configuration on the data stream. Selecting **Apply** updates the data stream's existing backing indices right away, not just new ones, and the setting continues to apply to backing indices created later, for example by rollover, until you turn **Inherit lifecycle from index template** back on. This only affects the **Successful data** tab. The **Failed data** tab has its own, separate inheritance setting.
@@ -56,7 +54,7 @@ To change the data retention settings for a data stream:
     ::::{applies-item} stack: ga 9.5+
 
     1. Select {icon}`gear` **Actions** → **Edit data lifecycle**.
-    1. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn it off, if enabled, and select one of the following lifecycle methods:
+    1. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn it off and select one of the following lifecycle methods:
 
         - **Data stream lifecycle**: Configure retention in the **Data phases** panel. The **Hot phase** is always on. Turn on **Delete phase** and set **Delete after** to a duration, in days, hours, minutes, or seconds, to delete data once it reaches that age, or leave it off to keep your data indefinitely. With an Enterprise license and a default snapshot repository configured, you can also turn on **Frozen phase** to move data to a searchable snapshot before it's deleted.
         - **{{ilm-init}} policy**: Select an existing {{ilm-init}} policy from the list.
