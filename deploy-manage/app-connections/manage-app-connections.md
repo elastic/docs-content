@@ -56,7 +56,7 @@ A connection has one of the following statuses:
 * **Expired**: The connection's refresh window lapsed after 30 days of inactivity. The user must re-authorize to use it again.
 * **Revoked**: The connection was revoked and can no longer be used.
 
-Revoked connections remain visible for 3 months and revoked clients for 1 year. Expired connections remain visible until re-authorized or removed.
+Revoked connections remain visible for 90 days and revoked clients for 1 year. Expired connections remain visible until re-authorized or removed.
 
 ## View OAuth client details
 
@@ -79,7 +79,7 @@ To revoke a single connection, click **Revoke** in its row.
 To revoke several connections at once:
 
 1. Select the checkbox for each connection you want to revoke. In grouped view, use **Select all connections for this client** to select every connection under a client, or **Clear selection** to start over.
-2. Click **Revoke *N* connections**.
+2. Click the bulk revoke button, which displays the number of selected connections, for example: **Revoke 9 connections**.
 3. Review the connections in the confirmation dialog, then click **Revoke**.
 
 You can revoke up to 100 connections at a time.
@@ -92,7 +92,7 @@ To revoke an entire OAuth client and all its connections, revoke it from the pro
 
 ## Delete revoked connections
 
-Deleting a revoked connection permanently removes it immediately instead of waiting for the 90-day retention period. This action can't be undone.
+Deleting a revoked connection permanently removes it before the end of the 90-day retention period. This action can't be undone.
 
 To delete a single revoked connection, click **Delete** in its row.
 

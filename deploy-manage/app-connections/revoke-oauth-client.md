@@ -40,14 +40,14 @@ To revoke a single connection:
 
    You can also reach this page from **Agent Builder** → **Tools library** → **Manage MCP** → **Manage MCP clients (OAuth)** by clicking **Manage application connections**.
 2. Find the connection. In **Group by client** view, expand a client row to see its connections. Switch to **List view** to see all connections in a flat list.
-3. Click **Revoke** in the connection's row. Alternatively, select the checkbox next to each connection you want to revoke and click **Revoke *N* connections**.
+3. Click **Revoke** in the connection's row. Alternatively, select the checkbox next to each connection you want to revoke, then click the bulk revoke button, which displays the number of selected connections, for example: **Revoke 9 connections**.
 4. Review the details in the confirmation dialog, then click **Revoke**.
 
 The connection is revoked immediately. The OAuth client stays registered and can accept new connections. Applications can be reconnected at any time by going through the authorization flow again.
 
 ## Delete a connection
 
-Only revoked connections can be deleted. Deleting a connection permanently removes it immediately instead of waiting for the 90-day retention period.
+Only revoked connections can be deleted. Revoked connections otherwise remain visible for 90 days. Deleting a connection permanently removes it before the end of that retention period.
 
 To delete one or more connections:
 
