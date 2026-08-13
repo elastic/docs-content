@@ -23,7 +23,7 @@ In ECE versions earlier than 4.2, Proxy Protocol v2 on HTTP ports `9200` and `92
 
 * Use [direct source IP preservation](./ece-load-balancers.md#ece-client-ip-preservation) instead, if your load balancer can forward connections without replacing the client source address.
 * [Upgrade to ECE 4.2 or later](/deploy-manage/upgrade/orchestrator/upgrade-cloud-enterprise.md), which is the recommended way to use Proxy Protocol v2.
-* Enable Proxy Protocol v2 on your current version by patching the proxy container set directly. Follow [our KB article](https://support.elastic.co/knowledge/8ceb7ead) and contact [Elastic Support](/troubleshoot/index.md#contact-us) for assistance with the procedure.
+* Enable Proxy Protocol v2 on your current version by patching the proxy container set directly. Follow [our KB article](https://ela.st/ece-configure-ppv2-via-containersets-api) and contact [Elastic Support](/troubleshoot/index.md#contact-us) for assistance with the procedure.
 :::
 
 ## Enable Proxy Protocol v2 [ece-proxy-protocol-enable]
@@ -59,6 +59,7 @@ Because `--proxy-protocol-lenient` accepts connections with and without Proxy Pr
 
 ## Verify the configuration [ece-proxy-protocol-verify]
 
+% TBD, review
 % We now verify the runner container set instead of the proxy. If there was manual patching of proxy container set it might be worthy to check the proxy c-set.
 
 The installation script stores the flag values in the runner, as the `PROXY_PROTOCOL_VERSION` and `PROXY_PROTOCOL_LENIENT` variables. The runner propagates them to the proxy container, which uses them for its `CLOUD_HTTP_PROXY_PROTO_VERSION` and `CLOUD_HTTP_PROXY_PROTO_LENIENT` settings. Verify both layers on each host with the proxy role.
@@ -68,7 +69,7 @@ On Docker-based hosts, replace `podman` with `docker` in the following commands.
 1. Confirm that the runner holds the expected values:
 
     ```bash
-    sudo podman exec $(sudo podman ps --format '{{.Names}}' | grep frc-runners-runner) env | grep PROXY_PROTOCOL
+    sudo podman exec frc-runners-runner env | grep PROXY_PROTOCOL
     ```
 
     The output should show the values that you passed to the installation script:
@@ -80,13 +81,24 @@ On Docker-based hosts, replace `podman` with `docker` in the following commands.
 
     A version of `0` and a lenient value of `false` are the defaults, and mean that the flags were not applied on this host.
 
-2. Confirm the effective configuration in the proxy:
+2. Confirm the effective configuration in the proxy container:
 
     ```bash
-    sudo podman exec $(sudo podman ps --format '{{.Names}}' | grep frc-proxies-proxyv2) cat /elastic_cloud_apps/proxyv2/proxy.yaml | grep -A3 proxy_protocol
+    sudo podman exec frc-proxies-proxyv2 env | grep CLOUD_HTTP_PROXY_PROTO
     ```
 
-    The output should reflect the same values:
+    The output should show the propagated values:
+
+    ```text
+    CLOUD_HTTP_PROXY_PROTO_VERSION=2
+    CLOUD_HTTP_PROXY_PROTO_LENIENT=true
+    ```
+
+    You can also verify the parsed configuration in the proxy's runtime config file:
+
+    ```bash
+    sudo podman exec frc-proxies-proxyv2 cat /elastic_cloud_apps/proxyv2/proxy.yaml | grep -A3 proxy_protocol
+    ```
 
     ```yaml
     proxy_protocol:
@@ -95,7 +107,13 @@ On Docker-based hosts, replace `podman` with `docker` in the following commands.
       lenient: true
     ```
 
-After you enable Proxy Protocol v2 on both the load balancer and the proxies, send a test request through the load balancer and confirm that the `client_ip` field in the proxy request logs shows the real client address instead of the load balancer address.
+3. After you enable Proxy Protocol v2 on both the load balancer and the proxies, send a test request through the load balancer and confirm that the `client_ip` field in the proxy request logs shows the real client address instead of the load balancer address:
+
+    ```bash
+    sudo podman exec frc-proxies-proxyv2 tail -10 /app/logs/proxy.requests.log | grep client_ip
+    ```
+
+    On Docker-based hosts, replace `podman` with `docker`. The `client_ip` field should show the real client address (IPv4 or IPv6), not the load balancer address.
 
 ## Related [ece-proxy-protocol-related]
 

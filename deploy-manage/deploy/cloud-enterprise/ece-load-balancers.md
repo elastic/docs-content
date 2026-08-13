@@ -46,7 +46,7 @@ The following table describes the supported load balancer modes for each type of
 
 The ECE proxy must be able to determine the real client IP address for [IP filtering](/deploy-manage/security/ip-filtering-ece.md) and [request logging](/deploy-manage/monitor/orchestrators/ece-proxy-log-fields.md). The mechanism depends on the load balancer mode:
 
-* **`X-Forwarded-For` header** (HTTP/L7 mode): Configure the load balancer to strip inbound `X-Forwarded-For` headers and replace them with the client source IP. This prevents clients from spoofing their IP addresses. Elastic Cloud Enterprise uses `X-Forwarded-For` for logging client IP addresses and, if you have implemented IP filtering, for traffic management.
+* **`X-Forwarded-For` header** (HTTP/L7 mode): Configure the load balancer to strip inbound `X-Forwarded-For` headers and replace them with the client source IP. This prevents clients from spoofing their IP addresses. ECE uses `X-Forwarded-For` for logging client IP addresses and, if you have implemented IP filtering, for traffic management.
 * **Proxy Protocol v2** (TCP/L4 mode): The load balancer prepends client connection metadata that the ECE proxy reads directly. It must be enabled on both the load balancer and the ECE proxies. To enable Proxy Protocol v2 on ECE proxies for deployment traffic on ports `9200` and `9243`, refer to [](./configure-proxy-protocol.md).
 * **Direct source IP preservation**: If the load balancer forwards connections transparently without modifying the source IP, no additional configuration is needed.
 

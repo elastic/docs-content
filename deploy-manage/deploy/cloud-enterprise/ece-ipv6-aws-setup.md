@@ -9,6 +9,8 @@ products:
 
 # Set up IPv6 for ECE on {{aws}}
 
+% TBD - review a bit the structure, verifications are a bit messed up, the entire appendix. Check if links to IPv6 support and PPv2 support generic documents are welcome or not.
+
 This guide provides an end-to-end example for setting up {{ece}} (ECE) on {{aws}} with IPv6 support, including networking, load balancers, and ECE-specific configuration settings. The examples demonstrate one way to achieve IPv6 connectivity; your specific {{aws}} configuration might vary based on your environment and requirements.
 
 :::::{note}
@@ -436,53 +438,59 @@ Both should return `200` or `302` (redirect to login).
 
 ::::
 
-::::{step} Verify IPv6 egress from containers
-:anchor: step-ipv6-egress
+::::{step} Verify your installation
+:anchor: step-verify-installation
 
-:::{note}
-This section is only required if you want ECE to connect to IPv6-only endpoints.
-:::
+1. In the {{aws}} console, check **EC2** → **Target Groups** → **Targets** and confirm all registered targets are healthy.
 
-After ECE is running, verify containers can reach IPv6 endpoints:
+2. Make a request to one of your deployments through the NLB and verify that the `client_ip` field in the proxy logs shows the real client address, not the load balancer address:
 
-```bash subs=true
-# List running containers to find an {{es}} container
-sudo podman ps
+    ```bash
+    sudo podman exec frc-proxies-proxyv2 tail -10 /app/logs/proxy.requests.log | grep client_ip
+    ```
 
-# Test IPv6 connectivity from the {{es}} container (replace <container_id> with actual ID)
-sudo podman exec <container_id> curl -6 -s -o /dev/null -w "%{http_code}" https://ipv6.google.com
-```
+    The `client_ip` field should show the real client address (IPv4 or IPv6), not an internal address such as `10.89.0.1`.
 
-A response of `200` confirms IPv6 egress is working. You can also test from {{kib}} containers using the same approach.
+3. If you enabled IPv6 egress, verify that containers can reach IPv6 endpoints:
 
-:::{dropdown} Optional: test IPv6 egress using {{es}} {{watcher}}
-Run this from any existing deployment to perform a connectivity test using [{{watcher}}](/explore-analyze/alerting/watcher.md):
+    ```bash subs=true
+    # List running containers to find an {{es}} container
+    sudo podman ps
 
-```json
-POST _watcher/watch/_execute
-{
-  "watch": {
-    "trigger": { "schedule": { "interval": "1h" } },
-    "input": {
-      "http": {
-        "request": {
-          "scheme": "https",
-          "host": "ipv6.google.com",
-          "port": 443,
-          "method": "head",
-          "path": "/"
+    # Test IPv6 connectivity from the {{es}} container (replace <container_id> with actual ID)
+    sudo podman exec <container_id> curl -6 -s -o /dev/null -w "%{http_code}" https://ipv6.google.com
+    ```
+
+    A response of `200` confirms IPv6 egress is working. You can also test from {{kib}} containers using the same approach.
+
+    :::{dropdown} Optional: test IPv6 egress using {{es}} {{watcher}}
+    Run this from any existing deployment to perform a connectivity test using [{{watcher}}](/explore-analyze/alerting/watcher.md):
+
+    ```json
+    POST _watcher/watch/_execute
+    {
+      "watch": {
+        "trigger": { "schedule": { "interval": "1h" } },
+        "input": {
+          "http": {
+            "request": {
+              "scheme": "https",
+              "host": "ipv6.google.com",
+              "port": 443,
+              "method": "head",
+              "path": "/"
+            }
+          }
+        },
+        "actions": {
+          "log": {
+            "logging": { "text": "IPv6 test - Status: {{ctx.payload.status}}" }
+          }
         }
       }
-    },
-    "actions": {
-      "log": {
-        "logging": { "text": "IPv6 test - Status: {{ctx.payload.status}}" }
-      }
     }
-  }
-}
-```
-:::
+    ```
+    :::
 
 ::::
 
@@ -491,6 +499,19 @@ POST _watcher/watch/_execute
 ## Troubleshooting
 
 For troubleshooting and verification commands specific to IPv6 integration on {{aws}}, refer to [Troubleshoot IPv6 integration for ECE on {{aws}}](/troubleshoot/deployments/cloud-enterprise/troubleshoot-ipv6-aws-integration.md).
+
+## Related Documentation
+
+- [IPv6 support on ECE](./ece-ipv6-support.md)
+- [Configure Proxy Protocol v2 in the ECE proxies](./configure-proxy-protocol.md)
+- [ECE Hardware requirements](/deploy-manage/deploy/cloud-enterprise/ece-hardware-prereq.md)
+- [Prepare your environment](/deploy-manage/deploy/cloud-enterprise/prepare-environment.md)
+- [Configure a RHEL host](/deploy-manage/deploy/cloud-enterprise/configure-host-rhel.md)
+- [Install ECE](/deploy-manage/deploy/cloud-enterprise/install.md)
+- [ECE installation procedures](/deploy-manage/deploy/cloud-enterprise/install-ece-procedures.md) (memory settings for different deployment sizes)
+- [ECE Load balancers](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md)
+- [Networking prerequisites](/deploy-manage/deploy/cloud-enterprise/ece-networking-prereq.md)
+- [{{aws}} Elastic Load Balancing documentation](https://docs.aws.amazon.com/elasticloadbalancing/)
 
 ## Appendix: Integrate IPv6 in existing ECE installations [existing-installations-summary]
 
@@ -548,7 +569,7 @@ Because these are host-level networking changes, the recommended approach is to 
 This rolling approach reduces platform risk and helps preserve service availability while introducing IPv6 egress support.
 :::
 
-After completing these changes, refer to [Verify IPv6 egress from containers](#step-ipv6-egress) to validate outbound IPv6 connectivity from ECE workloads.
+After completing these changes, refer to [Verify your installation](#step-verify-installation) to validate outbound IPv6 connectivity from ECE workloads.
 
 #### Assign IPv6 addresses to existing EC2 instances
 
@@ -649,75 +670,9 @@ After applying the configuration, verify container IPv6 connectivity using the s
 
 ### Add Proxy Protocol v2 support to an existing installation [reconfigure-proxies]
 
-The recommended and lowest-risk way to enable Proxy Protocol v2 in ECE proxies is to reinstall proxy hosts one by one, using the Proxy Protocol flags described in [Prepare the Host and Install ECE](#step-install-ece), and following the host replacement workflow in [Perform ECE hosts maintenance](/deploy-manage/maintenance/ece/perform-ece-hosts-maintenance.md#ece-perform-host-maintenance-delete-runner).
+To enable Proxy Protocol v2 in an existing ECE installation, reinstall the proxy hosts one at a time with the `--proxy-protocol-version 2` and `--proxy-protocol-lenient` flags, following the [Remove and reinstall](/deploy-manage/maintenance/ece/perform-ece-hosts-maintenance.md#ece-perform-host-maintenance-delete-runner) procedure. Working through hosts one at a time keeps the remaining proxies serving traffic while each one is replaced.
 
-% TBD: Link to KB article when it's done
-Alternatively, you can reconfigure the proxy containers through the Container Sets API. This is an advanced procedure.
-If you plan to follow this path, contact [Elastic Support](/troubleshoot/index.md#contact-us) for guidance. (update: link to KB article pending)
+The `--proxy-protocol-lenient` flag accepts connections both with and without Proxy Protocol headers, which means it is safe to reinstall proxies before the NLB is reconfigured. **Reconfigure the proxies first, and enable Proxy Protocol v2 on the NLB only after every proxy host has been reinstalled.** Enabling it on the NLB first breaks traffic to any proxy that has not yet been reconfigured.
 
-#### Verify ECE proxies configuration
+Once all proxy hosts are reinstalled, enable Proxy Protocol v2 on the NLB target group as described in [Create the proxy NLB](#step-nlb). To verify that the flags are active on each host, refer to [Verify the configuration](./configure-proxy-protocol.md#ece-proxy-protocol-verify).
 
-After reconfiguring the proxies, verify that the proxy container includes the required Proxy Protocol v2 environment variables.
-Run the following command on each ECE host with the proxy role:
-
-```bash
-sudo podman exec $(sudo podman ps --format '{{.Names}}' | grep frc-proxies-proxyv2) env | grep CLOUD_HTTP_PROXY_PROTO
-```
-
-Expected output includes both variables:
-
-```
-CLOUD_HTTP_PROXY_PROTO_VERSION=2
-CLOUD_HTTP_PROXY_PROTO_LENIENT=true
-```
-
-## Final verification
-
-After completing your ingress and optional egress configuration, validate end-to-end behavior:
-
-1. In the {{aws}} console, check **EC2** → **Target Groups** → **Targets** and confirm all registered targets are healthy.
-2. Test NLB health endpoint over IPv4 and IPv6:
-
-    ```bash
-    NLB_DNS="your-nlb-dns-name.elb.region.amazonaws.com"
-
-    # Test IPv4
-    curl -4 -k -s -o /dev/null -w "IPv4: %{http_code}\n" "https://${NLB_DNS}/_health"
-
-    # Test IPv6
-    curl -6 -k -s -o /dev/null -w "IPv6: %{http_code}\n" "https://${NLB_DNS}/_health"
-    ```
-
-Both checks should return `200`.
-
-3. Verify client IP propagation from proxy logs after a test request:
-
-    ```bash
-    PROXY_CONTAINER=$(sudo podman ps --format '{{.Names}}' | grep frc-proxies-proxyv2 | awk 'NR==1')
-    sudo podman exec "$PROXY_CONTAINER" tail -10 /app/logs/proxy.requests.log | grep client_ip
-    ```
-
-    The `client_ip` field should show the real client address (IPv4 or IPv6), not an internal bridge address such as `10.89.0.1`.
-
-4. If you enabled IPv6 egress, verify outbound IPv6 connectivity from both the host and a container:
-
-    ```bash
-    # Host egress check
-    ping6 -c 3 ipv6.google.com
-
-    # Container egress check (replace <container_id>)
-    sudo podman exec <container_id> curl -6 -s -o /dev/null -w "%{http_code}\n" https://ipv6.google.com
-    ```
-
-    The host test should resolve and receive replies. The container test should return `200`.
-
-## Related Documentation
-
-- [ECE Hardware requirements](/deploy-manage/deploy/cloud-enterprise/ece-hardware-prereq.md)
-- [Prepare your environment](/deploy-manage/deploy/cloud-enterprise/prepare-environment.md)
-- [Configure a RHEL host](/deploy-manage/deploy/cloud-enterprise/configure-host-rhel.md)
-- [Install ECE](/deploy-manage/deploy/cloud-enterprise/install.md)
-- [ECE installation procedures](/deploy-manage/deploy/cloud-enterprise/install-ece-procedures.md) (memory settings for different deployment sizes)
-- [ECE Load balancers](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md)
-- [Networking prerequisites](/deploy-manage/deploy/cloud-enterprise/ece-networking-prereq.md)
-- [{{aws}} Elastic Load Balancing documentation](https://docs.aws.amazon.com/elasticloadbalancing/)
