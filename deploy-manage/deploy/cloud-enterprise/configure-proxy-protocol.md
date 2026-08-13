@@ -23,7 +23,7 @@ In ECE versions earlier than 4.2, Proxy Protocol v2 parsing on the {{es}} HTTP p
 
 * Use [direct source IP preservation](./ece-load-balancers.md#ece-client-ip-preservation) instead, if your load balancer can forward connections without replacing the client source address.
 * [Upgrade to ECE 4.2 or later](/deploy-manage/upgrade/orchestrator/upgrade-cloud-enterprise.md), which is the recommended way to use Proxy Protocol v2.
-* Enable Proxy Protocol v2 on your current version by patching the proxy container set directly. Follow KB article XXXX and contact [Elastic Support](/troubleshoot/index.md#contact-us) for assistance with the procedure.
+* Enable Proxy Protocol v2 on your current version by patching the proxy container set directly. Follow [our KB article](https://ela.st/ece-configure-ppv2-via-containersets-api) and contact [Elastic Support](/troubleshoot/index.md#contact-us) for assistance with the procedure.
 :::
 
 ## Enable Proxy Protocol v2 [ece-proxy-protocol-enable]
