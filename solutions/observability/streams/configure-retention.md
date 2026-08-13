@@ -131,9 +131,9 @@ Select an existing {{ilm-init}} policy to automate how data moves through phases
 
 To follow an existing policy:
 
-::::{applies-switch}
+:::::{applies-switch}
 
-:::{applies-item} { "stack": "ga 9.5+" }
+::::{applies-item} { "stack": "ga 9.5+" }
 
 1. Select {icon}`controls` **Edit lifecycle method**.
 1. Turn off **Inherit from index template** or **parent stream**, if enabled.
@@ -145,7 +145,7 @@ To follow an existing policy:
 
 After selecting a policy, you can [configure data lifecycle phases](#streams-configure-data-lifecycle-phases) directly from the **Data lifecycle** tab.
 
-:::
+::::
 
 :::{applies-item} { "stack": "ga 9.1-9.4" }
 
@@ -157,7 +157,7 @@ After selecting a policy, you can [configure data lifecycle phases](#streams-con
 
 :::
 
-::::
+:::::
 
 If the policy you need doesn't exist, refer to [Configure a lifecycle policy](../../../manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) to create one.
 
