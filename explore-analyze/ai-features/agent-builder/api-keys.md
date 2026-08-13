@@ -45,6 +45,11 @@ Before creating an API key:
   2. Use `KIBANA_URL` to call the {{agent-builder}} APIs under `/api/agent_builder`.
   3. `ELASTIC_USERNAME` is the username of the user creating the key. The `curl` examples prompt you for this user's password.
 
+:::{note}
+:applies_to: serverless: unavailable
+The `curl` examples authenticate directly to {{es}} with a username and password. {{serverless-short}} does not support this authentication method, so create the key in Console or the **API keys** UI instead.
+:::
+
 ## Create a read-only client key
 
 The following example creates a key for a client that can use agents and view {{agent-builder}} components, but cannot create, update, or delete them. The key can read data only from indices matching `customer-*`.
@@ -94,6 +99,8 @@ POST /_security/api_key
 :::
 
 :::{tab-item} curl
+
+The command prompts for the password associated with `ELASTIC_USERNAME`.
 
 ```bash
 curl --user "${ELASTIC_USERNAME}" \
@@ -231,6 +238,8 @@ POST /_security/api_key
 
 :::{tab-item} curl
 
+The command prompts for the password associated with `ELASTIC_USERNAME`.
+
 ```bash
 curl --user "${ELASTIC_USERNAME}" \
   -X POST "${ELASTICSEARCH_URL}/_security/api_key" \
@@ -336,6 +345,8 @@ POST /_security/api_key
 
 :::{tab-item} curl
 
+The command prompts for the password associated with `ELASTIC_USERNAME`.
+
 ```bash
 curl --user "${ELASTIC_USERNAME}" \
   -X POST "${ELASTICSEARCH_URL}/_security/api_key" \
@@ -408,4 +419,9 @@ Workflow requests fail
 The create API rejects the role descriptor for a derived key
 :   Authenticate the create request as a user. When the request is authenticated with an API key, {{es}} requires an explicit role descriptor with no privileges.
 
-Learn more about [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md) and [{{agent-builder}} permissions](permissions.md).
+## Related pages
+
+- [](permissions.md)
+- [](kibana-api.md)
+- [](/deploy-manage/api-keys/elasticsearch-api-keys.md)
+- [](/deploy-manage/api-keys/serverless-project-api-keys.md)
