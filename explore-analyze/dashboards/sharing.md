@@ -144,7 +144,7 @@ You can export the configuration of individual elements of a dashboard as JSON. 
 - **Visualizations** (Lens), **Links** and **Markdown** panels
 - Unpinned **Options list**, **Range slider**, and **ES|QL** controls. Pinned controls don't offer the option.
 
-Dashboard-level filters and the global time range affect the data displayed by the panel, but the export excludes them. The export includes filters, queries, and custom time ranges configured in the panel.
+Dashboard-level filters and the global time range affect the data displayed by a panel, but the panel export excludes them. The export includes filters, queries, and custom time ranges configured in a visualization. A control export also includes the control's current selection.
 
 1. On the dashboard, from the panel menu, select **Export JSON**. When the menu contains an **Export** submenu, select **Export** → **Export JSON** instead.
 
