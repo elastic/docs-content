@@ -1,28 +1,23 @@
 ---
 navigation_title: Custom plugins and bundles
+description: Upload custom plugins and configuration bundles so every node in your Elastic Cloud Hosted deployment can use them.
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-bundles.html
 applies_to:
   deployment:
-    ess: ga
+    ech: ga
 products:
   - id: cloud-hosted
 ---
 
 # Upload custom plugins and bundles
 
-::::{note}
-This page applies to {{ech}} deployments only. {{serverless-full}} projects do not support custom plugin or bundle uploads, including dictionary files used for synonyms, stop words, or [language analyzers](elasticsearch://reference/text-analysis/analysis-lang-analyzer.md).
-
-If you use {{serverless-short}} and need to manage synonyms, use the [synonyms APIs]({{es-serverless-apis}}group/endpoint-synonyms) or refer to [Search with synonyms](/solutions/search/full-text/search-with-synonyms.md). For how {{ech}} and Serverless differ on plugins, bundles, and dictionary options, see [Compare {{ech}} and Serverless](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-custom-plugins-and-bundles).
-::::
-
 There are several cases where you might need your own files to be made available to your {{es}} cluster’s nodes:
 
-* Your own custom plugins, or third-party plugins that are not amongst the [officially available plugins](/deploy-manage/deploy/elastic-cloud/add-plugins-provided-with-ech.md).
+* Your own custom plugins, or third-party plugins that are not amongst the [officially available plugins](/deploy-manage/plugins-and-bundles/elastic-cloud/add-plugins-provided-with-ech.md).
 * Custom dictionaries, such as synonyms, stop words, compound words, and so on.
-* Cluster configuration files, such as an Identity Provider metadata file used when you [secure your clusters with SAML](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
+* Cluster configuration files, such as an Identity Provider metadata file used when you [secure your clusters with SAML](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
 
 To facilitate this, we make it possible to upload a ZIP file that contains the files you want to make available. Uploaded files are stored using Amazon’s highly-available S3 service. This is necessary so we do not have to rely on the availability of third-party services, such as the official plugin repository, when provisioning nodes.
 
@@ -32,7 +27,7 @@ Custom plugins and bundles are collectively referred to as extensions.
 
 The selected plugins/bundles are downloaded and provided when a node starts. Changing a plugin does not change it for nodes already running it. Refer to [Replace an extension](#ec-update-bundles-and-plugins).
 
-With great power comes great responsibility: your plugins can extend your deployment with new functionality, but also break it. Be careful. We obviously cannot guarantee that your custom code works.
+Custom plugins can add capabilities to your deployment, but they can also cause failures. Elastic does not guarantee that custom code will work correctly.
 
 ::::{important}
 You cannot edit or delete a custom extension after it has been used in a deployment. To remove it from your deployment, you can disable the extension and update your deployment configuration.
@@ -134,7 +129,7 @@ Creating extensions larger than 200MB must be done through the API. Refer to [Up
 
 After uploading your files, you can enable them when creating a new {{es}} deployment. For existing deployments, enable them from the deployment edit page:
 
-:::{include} _snippets/enable-extensions-on-deployment.md
+:::{include} /deploy-manage/deploy/elastic-cloud/_snippets/enable-extensions-on-deployment.md
 :::
 
 

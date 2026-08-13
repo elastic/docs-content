@@ -136,7 +136,7 @@ You should make sure to:
    * Remove or update deprecated settings and mappings.
    * Review deprecation logs for both {{es}} and {{kib}}.
 
-2. If you use [custom plugins or bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md), make sure they're compatible with the next major release.
+2. If you use [custom plugins or bundles](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md), make sure they're compatible with the next major release.
 
 3. If you use custom-developed applications that are impacted by API-related breaking changes, make the recommended changes to ensure that your applications continue to operate as expected after the upgrade, or, as a temporary solution, you can use [REST API compatibility mode](https://www.elastic.co/guide/en/elasticsearch/reference/8.19/rest-api-compatibility.html) to submit requests to 8.x using the 7.x syntax.
 
@@ -166,7 +166,7 @@ You should make sure to:
    * Remove or update deprecated settings and mappings.
    * Review deprecation logs for both {{es}} and {{kib}}.
 
-2. If you use [custom plugins or bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md), make sure they're compatible with the next major release.
+2. If you use [custom plugins or bundles](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md), make sure they're compatible with the next major release.
 
 3. If you use custom-developed applications that are impacted by API-related breaking changes, make the recommended changes to ensure that your applications continue to operate as expected after the upgrade, or, as a temporary solution, you can use [REST API compatibility mode](https://www.elastic.co/guide/en/elasticsearch/reference/8.19/rest-api-compatibility.html) to submit requests to 8.x using the 7.x syntax.
 
@@ -351,7 +351,7 @@ To prepare your deployment for the upgrade, review the [Prepare to upgrade](/dep
     * [Manage old Transform indices](/deploy-manage/upgrade/prepare-to-upgrade.md#manage-old-transform-indices)
     :::
 
-2. If you use [custom plugins or bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md), make sure they’re compatible with the next major release.
+2. If you use [custom plugins or bundles](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md), make sure they’re compatible with the next major release.
 
 3. If you use custom-developed applications that are impacted by API-related breaking changes, make the recommended changes to ensure that your applications continue to operate as expected after the upgrade, or, as a temporary solution, you can use [REST API compatibility mode](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to submit requests to 9.x using the 8.x syntax.
 
@@ -387,7 +387,7 @@ To prepare your deployment for the upgrade, review the [Prepare to upgrade](/dep
     * [Manage old Transform indices](/deploy-manage/upgrade/prepare-to-upgrade.md#manage-old-transform-indices)
     :::
 
-2. If you use [custom plugins or bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md), make sure they're compatible with the next major release.
+2. If you use [custom plugins or bundles](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md), make sure they're compatible with the next major release.
 
 3. If you use custom-developed applications that are impacted by API-related breaking changes, make the recommended changes to ensure that your applications continue to operate as expected after the upgrade, or, as a temporary solution, you can use [REST API compatibility mode](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to submit requests to 9.x using the 8.x syntax.
 

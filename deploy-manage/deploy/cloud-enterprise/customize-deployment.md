@@ -64,7 +64,7 @@ In the deployment edit page, you can configure the following settings and featur
 
 * Enable additional components, such as [Machine Learning](../../../explore-analyze/machine-learning.md) nodes or an [Integrations server](./manage-integrations-server.md).
 
-* Select **Manage user settings and extensions** at {{es}} level, or **Edit user settings** for other components, to customize the YML configuration settings and plugin extensions. For more details, refer to [](edit-stack-settings.md) and [](./add-plugins.md).
+* Select **Manage user settings and extensions** at {{es}} level, or **Edit user settings** for other components, to customize the YML configuration settings and plugin extensions. For more details, refer to [](edit-stack-settings.md) and [](/deploy-manage/plugins-and-bundles/cloud-enterprise/add-plugins.md).
 
 * Select the **Advanced edit** link at the bottom of the page to access the [](./advanced-cluster-configuration.md) view.
 

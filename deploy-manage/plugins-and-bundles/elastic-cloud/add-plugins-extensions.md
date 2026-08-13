@@ -1,11 +1,12 @@
 ---
-navigation_title: Add plugins and extensions
+navigation_title: "Extend {{ech}}"
+description: Extend Elasticsearch on Elastic Cloud Hosted with provided plugins, custom plugins, or configuration bundles.
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-adding-plugins.html
   - https://www.elastic.co/guide/en/cloud/current/ec-adding-plugins.html
 applies_to:
   deployment:
-    ess: ga
+    ech: ga
 products:
   - id: cloud-hosted
 ---
@@ -13,6 +14,8 @@ products:
 # Add plugins and extensions in {{ech}} [ec-adding-plugins]
 
 On {{ech}}, you extend the core functionality of {{es}} with plugins or bundles. In the {{ecloud}} console and API, both are referred to as extensions.
+
+Refer to [Plugins and bundles](/deploy-manage/plugins-and-bundles.md) for options that apply to other deployment types.
 
 ## Plugins
 
@@ -28,7 +31,7 @@ You can add plugins to a deployment in one of two ways, depending on whether Ela
 
 * [Custom plugins](upload-custom-plugins-bundles.md): When you need to install an official plugin not included with {{ech}}, such as a community-sourced plugin, or [one you write yourself](elasticsearch://extend/index.md), you upload a custom plugin. Uploading custom plugins requires a Gold, Platinum, or Enterprise subscription.
 
-Plugins are not supported for {{kib}}. To learn more, check [Restrictions for {{es}} and {{kib}} plugins](restrictions-known-problems.md#ec-restrictions-plugins).
+Plugins are not supported for {{kib}}. To learn more, check [Restrictions for {{es}} and {{kib}} plugins](/deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md#ec-restrictions-plugins).
 
 ## Bundles
 

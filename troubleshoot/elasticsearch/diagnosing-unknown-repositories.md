@@ -20,8 +20,8 @@ When a snapshot repository is marked as "unknown", it means that an {{es}} node 
 
 Learn more about snapshot and restore plugins: 
 
-* [Available plugins](elasticsearch://reference/elasticsearch-plugins/plugin-management.md)
-* [Installing plugins in self-managed clusters](elasticsearch://reference/elasticsearch-plugins/plugin-management.md)
+* [Plugins and bundles](/deploy-manage/plugins-and-bundles.md)
+* [Installing plugins in self-managed clusters](/deploy-manage/plugins-and-bundles.md#managing-plugins-for-self-managed)
 * [Installing plugins on {{eck}}](/deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md#k8s-install-plugin)
 
 :::{tip}

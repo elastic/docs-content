@@ -12,7 +12,7 @@ products:
 
 $$$ece-add-custom-bundle-example-synonyms$$$
 ::::{note}
-Learn about [adding custom synonym bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) to your {{ece}} deployment.
+Learn about [adding custom synonym bundles](../../../deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md) to your {{ece}} deployment.
 ::::
 
 % TODO: these bundle links do not belong here
@@ -121,7 +121,7 @@ serverless: unavailable
 
 You can store your synonyms set in a file.
 
-Make sure you upload a synonyms set file for all your cluster nodes, to the configuration directory for your {{es}} distribution. If you're using {{ech}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
+Make sure you upload a synonyms set file for all your cluster nodes, to the configuration directory for your {{es}} distribution. If you're using {{ech}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md).
 
 An example of a synonyms file:
 

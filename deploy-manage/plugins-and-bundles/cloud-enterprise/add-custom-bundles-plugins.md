@@ -1,5 +1,6 @@
 ---
-navigation_title: Add custom bundles and plugins
+navigation_title: Custom bundles and plugins
+description: Add custom Elasticsearch plugins and configuration files to ECE deployments by referencing ZIP bundles from a URL.
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-custom-bundle-plugin.html
 applies_to:
@@ -21,7 +22,7 @@ ECE allows you to add custom plugins or external files as bundled ZIP files to y
 
 Follow these steps to configure custom bundles and plugins to your {{es}} clusters, making them available to all {{es}} instances:
 
-* Update your {{es}} cluster using the [advanced configuration editor](../../../deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md):
+* Update your {{es}} cluster using the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md):
   * For bundles, modify the `resources.elasticsearch.plan.elasticsearch.user_bundles` JSON attribute.
   * For plugins, modify the `resources.elasticsearch.plan.elasticsearch.user_plugins` JSON attribute.
 
@@ -38,12 +39,12 @@ Here are some examples of custom bundles you can add:
 
 Custom plugins can include the official {{es}} plugins not provided with {{ece}}, any of the community-sourced plugins, or plugins that you write yourself.
 
-1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
-3. In the left side navigation select **Edit** from your deployment menu, then go to the bottom of the page and select [**Advanced Edit**](../../../deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md).
+3. In the left side navigation select **Edit** from your deployment menu, then go to the bottom of the page and select [**Advanced Edit**](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md).
 4. Within the **Deployment configuration** JSON find the section:
 
     `resources` > `elasticsearch` > `plan` > `elasticsearch`
@@ -87,10 +88,10 @@ Custom plugins can include the official {{es}} plugins not provided with {{ece}}
 
 ## Example: Custom LDAP bundle [ece-add-custom-bundle-example-LDAP]
 
-This example adds a custom LDAP bundle for deployment level role-based access control (RBAC). To set platform level RBAC, check [](../../../deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
+This example adds a custom LDAP bundle for deployment level role-based access control (RBAC). To set platform level RBAC, check [](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
 
-1. Prepare a custom bundle as a ZIP file that contains your keystore file with the private key and certificate inside of a `truststore` folder [in the same way that you would on {{ecloud}}](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). This bundle allows all {{es}} containers to access the same keystore file through your `ssl.truststore` settings.
-2. In the [advanced configuration editor](../../../deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your new {{es}} cluster with the custom bundle you have just created. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example:
+1. Prepare a custom bundle as a ZIP file that contains your keystore file with the private key and certificate inside of a `truststore` folder [in the same way that you would on {{ecloud}}](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md). This bundle allows all {{es}} containers to access the same keystore file through your `ssl.truststore` settings.
+2. In the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your new {{es}} cluster with the custom bundle you have just created. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example:
 
     ```sh
     {
@@ -128,7 +129,7 @@ This example adds a custom LDAP bundle for deployment level role-based access co
 
 ## Example: Custom SAML bundle [ece-add-custom-bundle-example-SAML]
 
-This example adds a custom SAML bundle for deployment level role-based access control (RBAC). To set platform level RBAC, check [](../../../deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
+This example adds a custom SAML bundle for deployment level role-based access control (RBAC). To set platform level RBAC, check [](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
 
 In this example, we assume the Identity Provider does not publish its SAML metadata at an HTTP URL, so we provide it through a custom bundle.
 
@@ -136,7 +137,7 @@ In this example, we assume the Identity Provider does not publish its SAML metad
 
     This bundle will allow all {{es}} containers to access the metadata file.
 
-2. In the [advanced configuration editor](../../../deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example:
+2. In the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example:
 
     ```text
     {
@@ -172,7 +173,7 @@ In this example, we assume the Identity Provider does not publish its SAML metad
           └── metadata.xml
     ```
 
-3. Adjust your `saml` realm configuration accordingly through [](./edit-stack-settings.md):
+3. Adjust your `saml` realm configuration accordingly through [](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md):
 
     ```sh
         idp.metadata.path: /app/config/saml/metadata.xml <1>
@@ -180,7 +181,7 @@ In this example, we assume the Identity Provider does not publish its SAML metad
 
     1. The path to the SAML metadata file that was uploaded
 
-    Refer to [](../../users-roles/cluster-or-deployment-auth/saml.md) for more details on SAML authentication.
+    Refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md) for more details on SAML authentication.
 
 ## Example: Custom JVM trust store bundle [ece-add-custom-bundle-example-cacerts]
 
@@ -239,7 +240,7 @@ To import a JVM trust store:
     A bundle may contain other contents beyond the trust store if you prefer, but we recommend creating separate bundles for different purposes.
     ::::
 
-3. In the [advanced configuration editor](../../../deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example:
+3. In the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example:
 
     ```sh
     {
@@ -264,7 +265,7 @@ To import a JVM trust store:
     1. The URL for the bundle ZIP file must be always available. Make sure you host the plugin artefacts internally in a highly available environment.
     2. Wildcards are allowed here, since the certificates are independent from the {{es}} version.
 
-4. (Optional) If you prefer to use a different file name and/or password for the trust store, you also need to add an additional configuration section to the cluster metadata before adding the bundle. This configuration should be added to the `Elasticsearch cluster data` section of the [advanced configuration](./advanced-cluster-configuration.md) page:
+4. (Optional) If you prefer to use a different file name and/or password for the trust store, you also need to add an additional configuration section to the cluster metadata before adding the bundle. This configuration should be added to the `Elasticsearch cluster data` section of the [advanced configuration](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md) page:
 
     ```sh
       "jvm_trust_store": {
@@ -294,7 +295,7 @@ To import a JVM trust store:
     ```
 
 2. Copy the ZIP file to a webserver that is reachable from any allocator in your environment.
-3. In the [advanced configuration editor](../../../deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example.
+3. In the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example.
 
     ```sh
     {
@@ -344,7 +345,7 @@ To import a JVM trust store:
     ```
 
 2. Copy the ZIP file to a webserver that is reachable from any allocator in your environment.
-3. In the [advanced configuration editor](../../../deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example.
+3. In the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example.
 
     ```sh
     {

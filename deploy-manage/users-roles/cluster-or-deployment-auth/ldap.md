@@ -197,7 +197,7 @@ POST /_security/role_mapping/ldap-superuser <1>
 ### Example: Using a role mapping file
 
 :::{tip}
-If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). If you're using a self-managed cluster, then the file must be present on each node.
+If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). If you're using a self-managed cluster, then the file must be present on each node.
 :::
 
 ```yaml
@@ -273,9 +273,9 @@ See [Load balancing and failover](elasticsearch://reference/elasticsearch/config
 
 To protect the user credentials that are sent for authentication in an LDAP realm, it’s highly recommended to encrypt communications between {{es}} and your LDAP server. Connecting using SSL/TLS ensures that the identity of the LDAP server is authenticated before {{es}} transmits the user credentials and the contents of the connection are encrypted. Clients and nodes that connect using TLS to the LDAP server need to have the LDAP server’s certificate or the server’s root CA certificate installed in their keystore or trust store.
 
-If you're using {{ech}} or {{ece}}, then you must [upload your certificate as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
+If you're using {{ech}} or {{ece}}, then you must [upload your certificate as a custom bundle](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
 
-If you're using {{eck}}, then install the certificate as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+If you're using {{eck}}, then install the certificate as a [custom configuration file](/deploy-manage/plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
 :::{tip}
 

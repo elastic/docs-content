@@ -18,7 +18,7 @@ To start creating {{es}} deployments directly, refer to [](./working-with-deploy
 
 * Add your own [load balancer](./ece-load-balancers.md). Load balancers are user supplied and we do not currently provide configuration steps for you.
 
-* [Add more capacity](/deploy-manage/maintenance/ece/scale-out-installation.md) to your ECE installation, [resize your deployment](./resize-deployment.md), [upgrade to a newer {{es}} version](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md), and [add some plugins](./add-plugins.md).
+* [Add more capacity](/deploy-manage/maintenance/ece/scale-out-installation.md) to your ECE installation, [resize your deployment](./resize-deployment.md), [upgrade to a newer {{es}} version](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md), and [add some plugins](/deploy-manage/plugins-and-bundles/cloud-enterprise/add-plugins-provided-with-ece.md).
 
 * [Configure ECE system deployments](./system-deployments-configuration.md) to ensure a highly available and resilient setup.
 

@@ -152,7 +152,7 @@ You can add files using:
 * **[PersistentVolume populated by an initContainer](#k8s-logstash-ic).** Add a volumeClaimTemplate and a volumeMount to your {{ls}} resource and upload data to that volume, either using an `initContainer`, or direct upload if your Kubernetes provider supports it. You can use the default `logstash-data` volumeClaimTemplate , or a custom one depending on your storage needs.
 * **[Custom Docker image](#k8s-logstash-custom-images).** Use a custom docker image that includes the static content that your Logstash pods will need.
 
-Check out [Custom configuration files and plugins](custom-configuration-files-plugins.md) for more details on which option might be most suitable for you.
+Check out [Add plugins and configuration files in {{eck}}](/deploy-manage/plugins-and-bundles/cloud-on-k8s/manage-plugins.md) for more details on which option might be most suitable for you.
 
 #### Add files using PersistentVolume populated by an initContainer [k8s-logstash-ic]
 

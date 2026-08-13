@@ -38,7 +38,7 @@ Both the folder and file names must correspond to the settings configured in [St
 
 ## Step 2: Upload the zip bundle to your {{ecloud}} account [ec-remote-reindex-step2]
 
-To upload your file, follow the steps in the section [Add your extension](../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md#ec-add-your-plugin). Enter wildcard `*` for **Version** in order to be compatible for all future upgrades, and select `A bundle containing dictionary or script` as **Type**.
+To upload your file, follow the steps in the section [Add your extension](../../deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md#ec-add-your-plugin). Enter wildcard `*` for **Version** in order to be compatible for all future upgrades, and select `A bundle containing dictionary or script` as **Type**.
 
 
 ## Step 3: Create a new {{ech}} deployment [ec-remote-reindex-step3]

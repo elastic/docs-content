@@ -141,8 +141,8 @@ This realm has a few mandatory settings, and a number of optional settings. The 
 
         :::{tip}
         * In self-managed clusters, the specified path is resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.
-        * If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
-        * If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+        * If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
+        * If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
         :::
 
     op.userinfo_endpoint
@@ -317,9 +317,9 @@ OpenID Connect depends on TLS to provide security properties such as encryption 
 
 However, if the issuer of your OP’s certificate is not trusted by the JVM on which {{es}} is running (e.g it uses an organization CA), then you must configure {{es}} to trust that CA.
 
-If you're using {{ech}} or {{ece}}, then you must [upload your certificate as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
+If you're using {{ech}} or {{ece}}, then you must [upload your certificate as a custom bundle](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
 
-If you're using {{eck}}, then install the certificate as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+If you're using {{eck}}, then install the certificate as a [custom configuration file](/deploy-manage/plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
 The following example demonstrates how to trust a CA certificate (`/oidc/company-ca.pem`), which is located within the configuration directory.
 

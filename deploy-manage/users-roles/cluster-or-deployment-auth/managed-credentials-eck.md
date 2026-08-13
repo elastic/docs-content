@@ -123,7 +123,7 @@ Refer to [Native user authentication](/deploy-manage/users-roles/cluster-or-depl
 
 ### External authentication realms
 
-You can also configure external authentication realms such as LDAP, OpenID Connect, or SAML in your ECK deployments by providing the appropriate {{es}} or {{kib}} configuration settings and any required [certificates or configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md).
+You can also configure external authentication realms such as LDAP, OpenID Connect, or SAML in your ECK deployments by providing the appropriate {{es}} or {{kib}} configuration settings and any required [certificates or configuration files](/deploy-manage/plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md).
 
 For more information, refer to [External authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/external-authentication.md).
 
