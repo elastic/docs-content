@@ -144,7 +144,7 @@ serverless: preview
 
 You can export the configuration of individual dashboard elements as API-compatible JSON. The **Export JSON** option is available for:
 
-- Visualizations created with **Lens**
+- Visualizations created with the point-and-click editor or with an {{esql}} query
 - **Links** and **Markdown** panels
 - Unpinned **Options list**, **Range slider**, and **ES|QL** controls
 
