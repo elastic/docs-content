@@ -31,21 +31,26 @@ Synonyms are words or phrases that share the same or similar meaning. Searching 
 * Make domain-specific vocabulary more user-friendly.
 * Define misspellings and typos to transparently handle common mistakes.
 
+## Prerequisites
+
+To manage synonym sets using the API or {{kib}} UI, you need the `manage_search_synonyms` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md).
+
 ## How synonyms work in Elasticsearch
 
 To use synonyms in {{es}}, follow this workflow:
 
-1. **Create synonym sets and rules**: Define which terms are equivalent and where to store your synonym sets.
-2. **Configure analyzers**: Configure your token filters and analyzers to use them.
-3. **Test and apply**: Verify your configuration works correctly.
+1. [**Create synonym sets and rules**](#synonyms-store-synonyms): Define which terms are equivalent and how to store your synonym sets.
+2. [**Configure token filters and analyzers**](#synonyms-synonym-token-filters): Set up synonym token filters and add them to your analyzers.
+3. [**Test your analyzer**](#synonyms-test-analyzer): Verify your synonym configuration produces the expected tokens.
+4. [**Apply synonyms at index or search time**](#synonyms-apply-synonyms): Specify your analyzer in your index mapping.
 
 ## Synonym rule formats
 
 Synonym rules define which terms should be treated as equivalent during search and indexing.
 
-There are two main formats for synonym rules: explicit mappings and equivalent mappings.
+Synonym rules use one of the following formats:
 
-#### Explicit mappings
+### Explicit mappings
 
 Explicit mappings use `=>` to specify exact replacements:
 
@@ -60,7 +65,7 @@ With explicit mappings, the relationship is one-way. In the previous examples:
 
 This is different from equivalent synonyms, which can create bidirectional relationships when `expand=true`.
 
-#### Equivalent mappings
+### Equivalent mappings
 
 Equivalent synonyms use commas to group interchangeable terms:
 
