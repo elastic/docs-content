@@ -360,7 +360,11 @@ The key inherits a point-in-time snapshot of the privileges of the user who crea
 
 ## Use the API key
 
-The create API returns an `encoded` value. Store that value securely and send it in the `Authorization` header:
+Use the `encoded` value returned by the create API to authenticate requests to the {{agent-builder}} APIs. The request URL depends on the {{kib}} space that the key can access.
+
+### Call APIs in the default space
+
+Store the `encoded` value securely, set it as an environment variable, and send it in the `Authorization` header:
 
 ```bash
 export API_KEY="<encoded-api-key>" <1>
@@ -371,7 +375,9 @@ curl -X GET "${KIBANA_URL}/api/agent_builder/tools" \
 
 1. Use the `encoded` value returned by the create API, not the separate `id` or `api_key` values.
 
-For a non-default space, include the space in the request URL and make sure it matches the application privilege resource:
+### Call APIs in a custom space
+
+Include the space identifier in the request URL and make sure it matches the application privilege resource:
 
 ```bash
 curl -X GET "${KIBANA_URL}/s/production/api/agent_builder/tools" \ <1>
