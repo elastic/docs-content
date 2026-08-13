@@ -1138,4 +1138,12 @@ redirects:
         anchors:
           'attacks-next-steps': 'manage-saved-discoveries'
   'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'
-  
+  # related to https://github.com/elastic/docs-content/issues/7709
+  'solutions/elasticsearch-solution-project/search-connection-details.md':
+    to: 'solutions/elasticsearch-solution-project/search-connection-details.md'
+    anchors:
+      '_elastic_cloud_and_self_hosted_deployments': 'find-endpoint-cloud-self-managed'
+      '_serverless_deployments': 'find-endpoint-cloud-self-managed'
+      'find-cloud-id-serverless': 'find-endpoint-cloud-self-managed'
+      'create-an-api-key-serverless': 'create-an-api-key-cloud-self-managed'
+

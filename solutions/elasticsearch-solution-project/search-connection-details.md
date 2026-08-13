@@ -117,37 +117,48 @@ Keys created here don't expire unless you add an expiration date.
 
 For key types, privileges, and expiry options, refer to [](/deploy-manage/api-keys.md).
 
-### Test connection [elasticsearch-get-started-test-connection]
+## Test your connection [elasticsearch-get-started-test-connection]
 
-Use [`curl`](https://curl.se) to verify your connection to {{es}}.
+Verify your endpoint and API key with a request to the {{es}} root endpoint.
 
-In a terminal, assign the {{es}} endpoint and `encoded` API key to the `ES_URL` and `API_KEY` environment variables respectively. `curl` needs access to these values.
+1. In a terminal, assign your endpoint and encoded API key to environment variables:
 
-For example:
+    ```bash
+    export ES_URL="https://a1b2c3d4e5f6.us-central1.gcp.cloud.es.io:443"
+    export API_KEY="ZFZRbF9Jb0JDMEoxaVhoR2pSa3Q6dExwdmJSaldRTHFXWEp4TFFlR19Hdw=="
+    ```
 
-```bash
-export ES_URL="https://dda7de7f1d264286a8fc9741c7741690.es.us-east-1.aws.elastic.cloud:443"
-export API_KEY="ZFZRbF9Jb0JDMEoxaVhoR2pSa3Q6dExwdmJSaldRTHFXWEp4TFFlR19Hdw=="
-```
+2. Send the request:
 
-Next, run the following command to test your connection:
+    ```bash
+    curl "${ES_URL}" -H "Authorization: ApiKey ${API_KEY}"
+    ```
 
-```bash
-curl "${ES_URL}" \
-  -H "Authorization: ApiKey ${API_KEY}" \
-  -H "Content-Type: application/json"
-```
-
-You should receive a response similar to the following:
+A successful response returns your cluster details:
 
 ```json
 {
-  "name" : "serverless",
-  "cluster_name" : "dda7de7f1d264286a8fc9741c7741690",
+  "name" : "instance-0000000000",
+  "cluster_name" : "my-deployment",
   "cluster_uuid" : "ws0IbTBUQfigmYAVMztkZQ",
   "version" : { ... },
   "tagline" : "You Know, for Search"
 }
 ```
 
-Now you’re ready to start adding data to your {{es-serverless}} project.
+:::{note}
+:applies_to: {eck: ga, self: ga}
+If your cluster uses a self-signed certificate, pass your CA certificate with `curl --cacert`. Refer to [Automatic security setup](/deploy-manage/security/self-auto-setup.md) for the certificate location.
+:::
+
+## Next steps
+
+* [Connect a client library](/reference/elasticsearch-clients/index.md) in your language of choice.
+* [Ingest data](/solutions/search/ingest-for-search.md) into your cluster or project.
+* [Build search queries](/solutions/search/querying-for-search.md) against your data.
+
+## Related pages
+
+* [Configure Beats and {{ls}} with a Cloud ID](/deploy-manage/deploy/elastic-cloud/find-cloud-id.md)
+* [Connect to {{es}} on {{ece}}](/deploy-manage/deploy/cloud-enterprise/connect-elasticsearch.md)
+* [Securing HTTP client applications](/deploy-manage/security/httprest-clients-security.md)
