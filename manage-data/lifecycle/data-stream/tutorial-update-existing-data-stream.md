@@ -40,6 +40,16 @@ To change the data retention settings for a data stream:
 
     ::::{applies-switch}
 
+    :::{applies-item} serverless: ga
+
+    Select {icon}`gear` **Actions** → **Edit data lifecycle**. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn off **Inherit lifecycle from index template**, if enabled, and select how long to retain your data, in days, hours, minutes, or seconds, or select **Keep data indefinitely** so your data stream is still managed but the data is never deleted. Managing a time series data stream such as for logs or metrics enables {{es}} to better store your data even if you do not use a retention period.
+
+    {{ilm-init}} policies aren't available in {{serverless-short}}, so the **{{ilm-init}} policy** method isn't offered here.
+
+    Select **Apply** to save your changes.
+
+    :::
+
     :::{applies-item} stack: ga 9.5+
 
     Select {icon}`gear` **Actions** → **Edit data lifecycle**. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn off **Inherit lifecycle from index template**, if enabled, and select one of the following lifecycle methods:
@@ -48,16 +58,6 @@ To change the data retention settings for a data stream:
     - **{{ilm-init}} policy**: Select an existing {{ilm-init}} policy from the list.
 
         Policies managed by Elastic are hidden from the list by default, even if you search for one by name. Starting with {{stack}} version 9.5.1, select the **Managed** filter next to the search field to reveal them. Revealed managed policies show a **Managed** badge. A data stream that already follows a managed policy keeps that policy visible in the selector regardless of the filter.
-
-    Select **Apply** to save your changes.
-
-    :::
-
-    :::{applies-item} serverless: ga
-
-    Select {icon}`gear` **Actions** → **Edit data lifecycle**. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn off **Inherit lifecycle from index template**, if enabled, and select how long to retain your data, in days, hours, minutes, or seconds, or select **Keep data indefinitely** so your data stream is still managed but the data is never deleted. Managing a time series data stream such as for logs or metrics enables {{es}} to better store your data even if you do not use a retention period.
-
-    {{ilm-init}} policies aren't available in {{serverless-short}}, so the **{{ilm-init}} policy** method isn't offered here.
 
     Select **Apply** to save your changes.
 
