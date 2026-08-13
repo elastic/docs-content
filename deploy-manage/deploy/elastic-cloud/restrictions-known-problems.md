@@ -43,6 +43,8 @@ To learn more about the features that are supported by {{ecloud}}, check [{{eclo
 
 * Due to a known issue with the {{stack}}, the upgrade path from 9.1.10 to 9.2.4 is unavailable. Refer to [Elasticsearch known issues](elasticsearch://release-notes/known-issues.md#elasticsearch-9.2.4-known-issues) for more information on the underlying issue.
 
+* Due to a known issue with the {{stack}}, version 9.5.0 is unavailable for new deployments and upgrades. Refer to [Elasticsearch known issues](elasticsearch://release-notes/known-issues.md#elasticsearch-9.5.0-known-issues) for more information on the underlying issue.
+
 
 ## Security [ec-restrictions-security]
 
