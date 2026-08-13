@@ -148,9 +148,9 @@ You can export the configuration of individual dashboard elements as API-compati
 - **Links** and **Markdown** panels
 - Unpinned **Options list**, **Range slider**, and **Variable** controls
 
-:::{tip}
-Pinned controls don't offer the option. Unpin them first.
-:::
+   :::{tip}
+   Pinned controls don't offer the option. Unpin them first.
+   :::
 
 The panel export excludes the filters, query, and time range applied at the dashboard level, even though they affect the data displayed by the panel. It includes filters, queries, and custom time ranges configured in the visualization itself. A control export also includes the control's current selection.
 
