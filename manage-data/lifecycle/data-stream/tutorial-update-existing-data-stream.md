@@ -53,6 +53,16 @@ To change the data retention settings for a data stream:
 
     :::
 
+    :::{applies-item} serverless: ga
+
+    Select {icon}`gear` **Actions** → **Edit data lifecycle**. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn off **Inherit lifecycle from index template**, if enabled, and select how long to retain your data, in days, hours, minutes, or seconds, or select **Keep data indefinitely** so your data stream is still managed but the data is never deleted. Managing a time series data stream such as for logs or metrics enables {{es}} to better store your data even if you do not use a retention period.
+
+    {{ilm-init}} policies aren't available in {{serverless-short}}, so the **{{ilm-init}} policy** method isn't offered here.
+
+    Select **Apply** to save your changes.
+
+    :::
+
     :::{applies-item} stack: ga 9.0-9.4
 
     Select **Manage** → **Edit data retention** to adjust the settings. You can do any of the following:
