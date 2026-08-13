@@ -298,7 +298,7 @@ On any deployment type, you can also read the background task node's health log 
 2. Filter by the `task-manager-background-node-health` tag.
 3. Open the most recent hourly entry to get the full health payload.
 
-When a field such as `stats.workload.value.overdue` appears in both sources, the background node value is authoritative for task-execution health because each node reports only its own view of the workload.
+If a field appears in both sources, treat the background task node's value as authoritative. Only background task nodes execute tasks, so each node reports only its own view of the workload.
 
 ### Evaluate the Configuration [task-manager-health-evaluate-the-configuration]
 
