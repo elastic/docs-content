@@ -146,7 +146,7 @@ You can export the configuration of individual dashboard elements as API-compati
 
 - Visualizations created with the point-and-click editor or with an {{esql}} query
 - **Links** and **Markdown** panels
-- Unpinned **Options list**, **Range slider**, and **ES|QL** controls
+- Unpinned **Options list**, **Range slider**, and **Variable** controls
 
 :::{tip}
 Pinned controls don't offer the option. Unpin them first.
