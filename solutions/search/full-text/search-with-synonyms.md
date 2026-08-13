@@ -38,39 +38,12 @@ To use synonyms in {{es}}, follow this workflow:
 
 ## Synonym rule formats
 
-Synonym rules define which terms should be treated as equivalent during search and indexing.
+Synonym rules define which terms should be treated as equivalent. Each rule uses one of two mapping types:
 
-Synonym rules use one of the following formats:
+- **Explicit mappings** use `=>` to specify one-way replacements (for example, `i-pod, i pod => ipod`).
+- **Equivalent mappings** use commas to group interchangeable terms (for example, `ipod, i-pod, i pod`).
 
-### Explicit mappings
-
-Explicit mappings use `=>` to specify exact replacements:
-
-```
-i-pod, i pod => ipod
-sea biscuit, sea biscit => seabiscuit
-```
-
-With explicit mappings, the relationship is one-way. In the previous examples:
-- `i-pod` and `i pod` are replaced with `ipod`, but `ipod` is not replaced with `i-pod` or `i pod`.
-- `sea biscuit` and `sea biscit` are replaced with `seabiscuit`, but `seabiscuit` is not replaced with `sea biscuit` or `sea biscit`.
-
-### Equivalent mappings
-
-Equivalent mappings use commas to group interchangeable terms:
-
-```
-ipod, i-pod, i pod
-foozball, foosball
-universe, cosmos
-lol, laughing out loud
-```
-
-The behavior of equivalent mappings depends on the `expand` parameter in your token filter configuration:
-- If `expand=true` (the default): all terms are mapped to each other bidirectionally.
-- If `expand=false`: all terms are mapped to the first term only.
-
-For details on how `expand` affects synonym rules, refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md) reference.
+For full format details, including `expand` behavior, WordNet format, and rule merging, refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md) reference.
 
 ## Step 1: Create synonym sets and rules [synonyms-store-synonyms]
 
