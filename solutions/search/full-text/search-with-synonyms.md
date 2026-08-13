@@ -282,3 +282,27 @@ PUT /my-index
 :::
 
 ::::
+
+## Search with synonyms in action [synonyms-search-example]
+
+After you configure synonyms for a field, queries against that field automatically expand to include synonym terms. For example, if you define `laptop, notebook` as equivalent synonyms and search for "laptop", {{es}} also matches documents containing "notebook".
+
+```console
+GET /my-index/_search
+{
+  "query": {
+    "match": {
+      "title": "laptop"
+    }
+  }
+}
+```
+
+This query matches documents where the `title` field contains "laptop" or "notebook", because the synonym rule treats them as equivalent.
+
+## Next steps
+
+* [Create or update synonym set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md): Practical examples of managing synonym sets through the API.
+* [Synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md): Full reference for the recommended synonym token filter.
+* [Synonym token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md): Reference for the standard synonym token filter, required for index-time synonyms.
+* [Text analysis](../../../manage-data/data-store/text-analysis.md): Learn more about analyzers, tokenizers, and token filters.
