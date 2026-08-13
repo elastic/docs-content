@@ -99,7 +99,7 @@ To delete a single revoked connection, click **Delete** in its row.
 To delete several revoked connections at once:
 
 1. Select the checkbox for each revoked connection you want to delete. In grouped view, use **Select all connections for this client** to select every revoked connection under a client, or **Clear selection** to start over.
-2. Click **Delete *N* connections**.
+2. Click the bulk delete button, which displays the number of selected connections, for example: **Delete 9 connections**.
 3. Review the connections in the confirmation dialog, then click **Delete permanently**.
 
 You can delete up to 100 connections at a time.

@@ -53,7 +53,7 @@ To delete one or more connections:
 
 1. In {{kib}}, go to **Admin and settings** → **Application connections**.
 2. Find a revoked connection. In **Group by client** view, expand a client row to see its connections. Switch to **List view** to see all connections in a flat list.
-3. Click **Delete** in the connection's row. Alternatively, select the checkbox next to each revoked connection you want to delete and click **Delete *N* connections**.
+3. Click **Delete** in the connection's row. Alternatively, select the checkbox next to each revoked connection you want to delete, then click the bulk delete button, which displays the number of selected connections, for example: **Delete 9 connections**.
 4. Review the connections in the confirmation dialog, then click **Delete permanently**.
 
 The deleted connections are removed from the list. This action can't be undone. The OAuth client stays registered and can accept new connections.
