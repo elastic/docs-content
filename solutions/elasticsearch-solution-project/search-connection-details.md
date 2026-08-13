@@ -28,9 +28,9 @@ To create an API key, you need the `manage_api_key` or the `manage_own_api_key` 
 
 ## Find your {{es}} endpoint [find-endpoint-cloud-self-managed]
 
-::::{applies-switch}
+:::::{applies-switch}
 
-:::{applies-item} { "deployment": { "ech": "ga", "ece": "ga" }, "serverless": "ga" }
+::::{applies-item} { "deployment": { "ech": "ga", "ece": "ga" }, "serverless": "ga" }
 Your endpoint is in the **Connection details** panel in {{kib}}.
 
 1. Select **Open** in the {{ecloud}} console to open {{kib}} for your deployment or project.
@@ -41,9 +41,33 @@ Your endpoint is in the **Connection details** panel in {{kib}}.
 In the {{es}} solution, the **Getting started** page shows the endpoint directly.
 :::
 
-:::
-
 ::::
+
+::::{applies-item} {"deployment": {"self": "ga"}}
+Your endpoint takes the form `<scheme>://<host>:<port>`. Each part comes from your cluster's HTTP settings:
+
+* **Scheme**: `https` when TLS is enabled on the HTTP layer, and `http` when it isn't. [Automatic security setup](/deploy-manage/security/self-auto-setup.md) enables TLS on a new archive or package installation.
+* **Host**: The address clients use to reach the node, set by [`http.host` or `network.host`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md).
+* **Port**: The HTTP port, set by [`http.port`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md). It defaults to the range `9200-9300`, and a node binds to the first free port in that range.
+
+For example, a single-node cluster from the [local development quickstart](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) runs without TLS on the default port, so its endpoint is `http://localhost:9200`.
+
+If clients reach your cluster through a load balancer, reverse proxy, or ingress, use that address rather than the node address.
+::::
+
+::::{applies-item} {"deployment": {"eck": "ga"}}
+The operator creates a `ClusterIP` service named `<cluster-name>-es-http` on port `9200`, with TLS enabled by default.
+
+From inside the Kubernetes cluster, your endpoint is `https://<cluster-name>-es-http:9200`. List your services to confirm the name:
+
+```sh
+kubectl get svc
+```
+
+To reach the cluster from outside, expose the service and use its external address. Refer to [Access the endpoint](/deploy-manage/deploy/cloud-on-k8s/accessing-services.md#k8s-request-elasticsearch-endpoint) for both cases, including how to retrieve the CA certificate.
+::::
+
+:::::
 
 ### Find your Cloud ID [find-cloud-id-cloud-self-managed]
 
