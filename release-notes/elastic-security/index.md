@@ -27,6 +27,31 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.5.1 [elastic-security-9.5.1-release-notes]
+
+### Features and enhancements [elastic-security-9.5.1-features-enhancements]
+
+* Adds the ability to open a source event from the **Table** tab of the alert details flyout [#282346]({{kib-pull}}282346).
+* Defaults the {{ls}} output port to `5044` in {{elastic-defend}} when no port is provided.
+
+### Fixes [elastic-security-9.5.1-fixes]
+
+* Fixes an issue that allowed index Knowledge Base entries to be created as globally readable without the privilege to manage global entries by sending an empty `users` list [#283195]({{kib-pull}}283195).
+* Fixes an issue where the OpenAI **Other** connector incorrectly re-enabled **Enable PKI Authentication** after saving with the toggle turned off [#282843]({{kib-pull}}282843).
+* Fixes an overlap between the tools header and the close icon in the alert details flyout [#282790]({{kib-pull}}282790).
+* Restores the **Source event** link in the **Highlighted fields** section of the new alert details flyout [#282318]({{kib-pull}}282318).
+* Fixes an issue where the **Source event** link in an alert's **Highlighted fields** section failed to open the document when it lived in a hidden restored or partial index [#282272]({{kib-pull}}282272).
+* Fixes the alert analysis workflow model selector so it lists external and built-in inference endpoints from the {{agent-builder}} catalog, not only Actions connectors [#282075]({{kib-pull}}282075).
+* Fixes missing audit events when bulk editing rules. Attaching or detaching shared exception lists to detection rules via the **Manage rules** screen now emits per-rule audit write events in the {{kib}} audit log [#281075]({{kib-pull}}281075).
+* Fixes custom workflow steps so {{kib}} API requests are space-prefixed and target the workflow's space instead of the default space [#280986]({{kib-pull}}280986).
+* Fixes a CPU spin loop in {{elastic-defend}} that could occur when a middlebox (such as Zscaler or a load balancer) dropped a TLS connection to {{ls}} or {{es}}, preventing event delivery until the agent was restarted.
+* Fixes a TLS handshake failure in {{elastic-defend}} on Windows when a server sends a leaf-only certificate chain and the issuing intermediate CA is installed in the Windows Intermediate CA store.
+* Fixes a TLS handshake failure ("certificate chain too long") in {{elastic-defend}} on Windows with cross-signed CA certificates in the Intermediate CA store.
+* Fixes {{elastic-defend}} notifications not appearing on macOS Sonoma and later.
+* Preserves source and destination details for outbound IPv6 TCP connections in {{elastic-defend}} on Linux.
+* Fixes a resource leak in {{elastic-defend}} Lua libraries.
+
+
 ## 9.5.0 [elastic-security-9.5.0-release-notes]
 
 ### Features and enhancements [elastic-security-9.5.0-features-enhancements]
@@ -207,6 +232,35 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a sharing violation in the `get-file` response action in {{elastic-defend}}.
 
 
+## 9.4.5 [elastic-security-9.4.5-release-notes]
+
+### Features and enhancements [elastic-security-9.4.5-features-enhancements]
+
+* Defaults the {{ls}} output port to `5044` in {{elastic-defend}} when no port is provided.
+
+### Fixes [elastic-security-9.4.5-fixes]
+
+* Fixes an issue that allowed index Knowledge Base entries to be created as globally readable without the privilege to manage global entries by sending an empty `users` list [#283195]({{kib-pull}}283195).
+* Fixes an issue where the OpenAI **Other** connector incorrectly re-enabled **Enable PKI Authentication** after saving with the toggle turned off [#282843]({{kib-pull}}282843).
+* Fixes an issue where the **Source event** link in an alert's **Highlighted fields** section failed to open the document when it lived in a hidden restored or partial index [#282272]({{kib-pull}}282272).
+* Fixes a crash when opening a case whose comment contains a URL with an `&timestamp` query parameter [#282265]({{kib-pull}}282265).
+* Fixes missing audit events when bulk editing rules. Attaching or detaching shared exception lists to detection rules via the **Manage rules** screen now emits per-rule audit write events in the {{kib}} audit log [#281075]({{kib-pull}}281075).
+* Fixes a privilege bypass that allowed users with detection rule privileges to attach {{elastic-defend}} or Osquery response actions through the generic Alerting API without the required Endpoint or Osquery privileges [#280430]({{kib-pull}}280430).
+* Fixes the analyzer alert-hits query so it honors the `securitySolution:excludeColdAndFrozenTiersInAnalyzer` setting, which previously excluded cold and frozen tiers only from other analyzer queries [#278972]({{kib-pull}}278972).
+* Adds a date range picker above the **Alerts related by ancestry** table in the correlations section and bounds the underlying query to it, preventing timeouts on very large indices [#278971]({{kib-pull}}278971).
+* Fixes a crash when opening the rule panel flyout for a deleted rule caused by missing `severity_mapping` or `risk_score_mapping` fields [#278545]({{kib-pull}}278545).
+* Fixes an error that prevented adding the Osquery Manager integration in custom {{kib}} spaces when a global Osquery pack existed in the Default space [#278498]({{kib-pull}}278498).
+* Fixes intermittent duplicate execution of scheduled Osquery packs by deduplicating concurrent {{fleet}} package-policy writes for package policies shared across multiple agent policies [#278159]({{kib-pull}}278159).
+* Fixes an issue where {{elastic-defend}} WFP firewall anti-tamper rules were not reinstated after a restart when the policy had not changed.
+* Fixes a CPU spin loop in {{elastic-defend}} that could occur when a middlebox (such as Zscaler or a load balancer) dropped a TLS connection to {{ls}} or {{es}}, preventing event delivery until the agent was restarted.
+* Fixes an issue where {{elastic-defend}} immediately retried sending documents when {{es}} failed to ingest them.
+* Fixes a TLS handshake failure in {{elastic-defend}} on Windows when a server sends a leaf-only certificate chain and the issuing intermediate CA is installed in the Windows Intermediate CA store.
+* Fixes a TLS handshake failure ("certificate chain too long") in {{elastic-defend}} on Windows with cross-signed CA certificates in the Intermediate CA store.
+* Fixes {{elastic-defend}} notifications not appearing on macOS Sonoma and later.
+* Fixes a resource leak in {{elastic-defend}} Lua libraries.
+* Preserves source and destination details for outbound IPv6 TCP connections in {{elastic-defend}} on Linux.
+
+
 ## 9.4.4 [elastic-security-9.4.4-release-notes]
 
 ### Features and enhancements [elastic-security-9.4.4-features-enhancements]
@@ -215,7 +269,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.4.4-fixes]
 
-* Fixes an issue where opening the rule details flyout for a deleted rule crashed the {{security-app}} when the rule was missing `severity_mapping` or `risk_score_mapping` values [#278545]({{kib-pull}}278545).
 * Fixes an issue where {{kib}} assets from an installed integration package (such as dashboards used by prebuilt detection rules) could remain stale across a {{kib}} upgrade because {{fleet}} never overwrote existing assets on reinstall [#277953]({{kib-pull}}277953).
 * Fixes an issue where the **Source event** link in an alert's **Highlighted fields** section failed to open the document when its source index had been restored (for example, from a cold or frozen tier) and renamed [#277703]({{kib-pull}}277703).
 * Fixes an issue where agents on version-specific policies did not appear in the Osquery agent or policy selector and could not be targeted, causing live queries to fail with a `No agents found for selection` error [#277283]({{kib-pull}}277283).
