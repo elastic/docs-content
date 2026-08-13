@@ -71,26 +71,23 @@ To reach the cluster from outside, expose the service and use its external addre
 
 ### Find your Cloud ID [find-cloud-id-cloud-self-managed]
 
-::::{note}
-The Cloud ID is a connection method specifically supported by Beats and {{ls}}. For all other client applications and third-party tools, use the {{es}} endpoint URL.
-::::
+```{applies_to}
+deployment:
+  ech: ga
+  ece: ga
+serverless: ga
+```
 
-1. Go to the {{ecloud}} home page.
-2. In the main menu, select **Manage this deployment**.
+{{agent}}, {{ls}}, and {{beats}} can use a Cloud ID instead of the endpoint URL. All other clients and tools use the endpoint.
 
-    :::{image} /solutions/images/kibana-manage-deployment.png
-    :alt: manage deployment
-    :screenshot:
-    :::
+1. Select **Open** in the {{ecloud}} console to open {{kib}} for your deployment or project.
+2. Open the help menu {icon}`question`, then select **Connection details**.
+3. Turn on **Show Cloud ID**, then copy the value.
 
-3. The Cloud ID is displayed on the right side of the page.
-
-    :::{image} /solutions/images/kibana-cloud-id.png
-    :alt: cloud id
-    :screenshot:
-    :::
-
-
+:::{tip}
+:applies_to: {ech: ga, ece: ga}
+To skip {{kib}}, select **Manage** in the {{ecloud}} console and copy the **Cloud ID** from the deployment page.
+:::
 
 ### Create an API key [create-an-api-key-cloud-self-managed]
 
