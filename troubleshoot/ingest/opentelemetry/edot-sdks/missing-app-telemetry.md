@@ -15,7 +15,7 @@ products:
 
 # No application-level telemetry visible in Kibana
 
-This page helps you diagnose why application-level telemetry doesn’t appear when using {{edot}} (EDOT) SDKs:
+This page helps you diagnose why application-level telemetry doesn’t appear when using EDOT SDKs:
 
 * [The SDK is turned off (`OTEL_SDK_DISABLED`)](#sdk-disabled)
 * [Auto-instrumentation or SDK initialization runs at the wrong time](#auto-instrumentation-not-attached)
@@ -34,7 +34,7 @@ Use this table to quickly spot the usual causes and fixes.
 | Works locally, not on prod       | Different environment/flags in container or service  | Match prod environment settings and restart |
 | Still unsure                     | Enable debug logging                         | Inspect logs for disabled/unsupported/delayed initialization hints |
 
-### EDOT central configuration toggles at a glance
+### EDOT central configuration toggles at a glance [edot-central-configuration-toggles-at-a-glance]
 
 If you use central configuration using OpAMP, these options can mute or change signals even when local `OTEL_*` looks correct.
 
@@ -112,7 +112,7 @@ Check the following:
 	4. **Webhook and injector logs**: Inspect the Operator and injector webhook logs for errors or skipped injections.
 	5. **Restart and rollout**: After changing the `Instrumentation` or annotations, perform a rollout so containers start with the updated environment variables and startup flags.
 
-	If you use EDOT-specific images or settings, align the Instrumentation configuration with EDOT’s SDK guidance for that language (see links below).
+	If you use {{edot}}-specific images or settings, align the Instrumentation configuration with {{edot}}’s SDK guidance for that language (see links below).
 
 
 * **Start-up mechanism by language**

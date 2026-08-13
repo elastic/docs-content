@@ -4,6 +4,8 @@ redirects:
   # related to https://github.com/elastic/docs-content/issues/7541
   'explore-analyze/query-filter/tools/playground.md': 'explore-analyze/ai-features/elastic-agent-builder.md'
   'solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md': 'solutions/search/full-text/search-with-synonyms.md'
+  'solutions/search/vector/dense-versus-sparse-ingest-pipelines.md': 'solutions/search/semantic-search/dense-versus-sparse-ingest-pipelines.md'
+  'solutions/search/using-openai-compatible-models.md': 'solutions/search/semantic-search/using-openai-compatible-models.md'
   'solutions/elasticsearch-solution-project/full-text/create-update-synonyms-api-example.md': 'solutions/search/full-text/create-update-synonyms-api-example.md'
   'solutions/search/query-rules-ui.md': 'solutions/elasticsearch-solution-project/query-rules-ui.md'
   'solutions/search/search-applications.md': 'solutions/elasticsearch-solution-project/search-applications.md'
@@ -17,6 +19,7 @@ redirects:
   'solutions/search/rag/playground-troubleshooting.md': 'solutions/elasticsearch-solution-project/playground-troubleshooting.md'
   'solutions/search/search-applications/search-application-api.md': 'solutions/elasticsearch-solution-project/search-applications/search-application-api.md'
   'solutions/search/search-applications/search-application-security.md': 'solutions/elasticsearch-solution-project/search-applications/search-application-security.md'
+  'solutions/search/ai-search/ai-search.md': 'solutions/search/vector.md'
   'solutions/search/mcp.md':
     to: 'explore-analyze/ai-features.md'
     anchors:
