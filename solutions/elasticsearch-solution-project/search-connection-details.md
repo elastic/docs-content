@@ -31,9 +31,15 @@ To create an API key, you need the `manage_api_key` or the `manage_own_api_key` 
 ::::{applies-item} { "deployment": { "ech": "ga", "ece": "ga" }, "serverless": "ga" }
 Your endpoint is in the **Connection details** panel in {{kib}}.
 
-1. Select **Open** in the {{ecloud}} console to open {{kib}} for your deployment or project.
+1. Open {{kib}} for your deployment or project.
 2. From the **Help menu** {icon}`question`, select **Connection details**.
 3. Copy the **{{es}} endpoint** from the **Endpoints** tab.
+
+:::{image} /solutions/images/kibana-connection-details-endpoints.png
+:alt: The Connection details panel showing the Elasticsearch endpoint on the Endpoints tab, with the Show Cloud ID toggle and the API key tab
+:screenshot:
+:width: 50%
+:::
 
 :::{tip}
 When the space uses the **{{es}}** solution view, the **Getting started** page shows the endpoint directly.
@@ -78,12 +84,12 @@ serverless: ga
 
 {{beats}} and {{ls}} can use a Cloud ID instead of the endpoint URL. All other clients and tools use the endpoint.
 
-1. Select **Open** in the {{ecloud}} console to open {{kib}} for your deployment or project.
+1. Open {{kib}} for your deployment or project.
 2. From the **Help menu** {icon}`question`, select **Connection details**.
 3. Turn on **Show Cloud ID**, then copy the value.
 
 :::{tip}
-:applies_to: {ech: ga, ece: ga}
+:applies_to: {ech: ga}
 To skip {{kib}}, select **Manage** in the {{ecloud}} console and copy the **Cloud ID** from the deployment page.
 :::
 
@@ -93,7 +99,7 @@ To skip {{kib}}, select **Manage** in the {{ecloud}} console and copy the **Clou
 
 ::::{applies-item} { "deployment": { "ech": "ga", "ece": "ga" }, "serverless": "ga" }
 
-1. Select **Open** in the {{ecloud}} console to open {{kib}} for your deployment or project.
+1. Open {{kib}} for your deployment or project.
 2. From the **Help menu** {icon}`question`, select **Connection details**.
 3. Select the **API key** tab.
 4. In the **API key name** field, enter a name, then select **Create API key**.
