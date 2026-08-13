@@ -59,13 +59,10 @@ To enable IPv6 egress on ECE hosts that run workloads requiring it:
 * Configure the container runtime for dual-stack networking so containers receive IPv6 addresses and can route IPv6 traffic.
 * Configure outbound firewall and routing rules to allow IPv6 traffic to your destinations.
 
-Refer to the host preparation guide for your operating system to configure these requirements before installing ECE:
-
-* [Configure a RHEL host](./configure-host-rhel.md) for Podman-based hosts.
-* [Configure an Ubuntu host](./configure-host-ubuntu.md) or [Configure a SUSE host](./configure-host-suse.md) for Docker-based hosts.
+Refer to [Configure your operating system](./configure-operating-system.md) and complete the optional dual-stack networking steps for your host OS before installing ECE.
 
 ::::{important}
-Enabling IPv6 egress in an installation that is already running requires host-level networking changes and container recreation. The recommended approach is to replace or reinstall ECE hosts one at a time, following [Perform ECE hosts maintenance](/deploy-manage/maintenance/ece/perform-ece-hosts-maintenance.md).
+Enabling IPv6 egress in an installation that is already running requires host-level networking changes and container recreation. The recommended approach is to replace or reinstall ECE hosts one at a time, following the [Remove and reinstall](/deploy-manage/maintenance/ece/perform-ece-hosts-maintenance.md#ece-perform-host-maintenance-delete-runner) procedure.
 ::::
 
 ## Limitations [ece-ipv6-limitations]
