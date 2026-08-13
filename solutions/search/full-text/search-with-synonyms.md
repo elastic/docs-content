@@ -63,8 +63,6 @@ With explicit mappings, the relationship is one-way. In the previous examples:
 - `i-pod` and `i pod` are replaced with `ipod`, but `ipod` is not replaced with `i-pod` or `i pod`.
 - `sea biscuit` and `sea biscit` are replaced with `seabiscuit`, but `seabiscuit` is not replaced with `sea biscuit` or `sea biscit`.
 
-This is different from equivalent synonyms, which can create bidirectional relationships when `expand=true`.
-
 ### Equivalent mappings
 
 Equivalent synonyms use commas to group interchangeable terms:
@@ -77,18 +75,18 @@ lol, laughing out loud
 ```
 
 The behavior of equivalent synonyms depends on the `expand` parameter in your token filter configuration:
-- If `expand=true`: `ipod, i-pod, i pod` creates bidirectional mappings:
-  - `ipod` ↔ `i-pod`
-  - `ipod` ↔ `i pod` 
-  - `i-pod` ↔ `i pod`
-- If `expand=false`: `ipod, i-pod, i pod` maps all terms to the first term as canonical:
-  - `ipod` → `ipod`
-  - `i-pod` → `ipod`
-  - `i pod` → `ipod`
+- If `expand=true` (the default): all terms are mapped to each other bidirectionally.
+- If `expand=false`: all terms are mapped to the first term only.
+
+For details on how `expand` affects synonym rules, refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md) reference.
 
 ## Step 1: Create synonym sets and rules [synonyms-store-synonyms]
 
 You have multiple options for creating synonym sets and rules.
+
+::::{note}
+Synonym sets created through the API or the {{kib}} UI can only be used at search time. For index-time synonyms, use a [file-based](#synonyms-store-synonyms-file) or [inline](#synonyms-store-synonyms-inline) approach with the [`synonym` token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md).
+::::
 
 ### Method 1: {{kib}} UI
 
@@ -122,41 +120,21 @@ You can store your synonym set in a file.
 
 Make sure you upload the synonym set file to all your cluster nodes, in the configuration directory for your {{es}} distribution. If you're using {{ech}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
 
-An example of a synonyms file:
+An example of a synonym file:
 
-```markdown
+```text
 # Blank lines and lines starting with pound are comments.
 
-# Explicit mappings match any token sequence on the left hand side of "=>"
-# and replace with all alternatives on the right hand side.
-# These types of mappings ignore the expand parameter in the schema.
-# Examples:
+# Explicit mappings
 i-pod, i pod => ipod
 sea biscuit, sea biscit => seabiscuit
 
-# Equivalent synonyms may be separated with commas and give
-# no explicit mapping.  In this case the mapping behavior will
-# be taken from the expand parameter in the token filter configuration.
-# This allows the same synonym file to be used in different synonym handling strategies.
-# Examples:
+# Equivalent synonyms
 ipod, i-pod, i pod
-foozball, foosball
 universe, cosmos
-lol, laughing out loud
-
-# If expand==true in the synonym token filter configuration,
-# "ipod, i-pod, i pod" is equivalent to the explicit mapping:
-ipod, i-pod, i pod => ipod, i-pod, i pod
-# If expand==false, "ipod, i-pod, i pod" is equivalent
-# to the explicit mapping:
-ipod, i-pod, i pod => ipod
-
-# Multiple synonym mapping entries are merged.
-foo => foo bar
-foo => baz
-# is equivalent to
-foo => foo bar, baz
 ```
+
+For the full synonym file format specification, including `expand` behavior and rule merging, refer to the [synonym token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md) reference.
 
 To update an existing synonym set, upload new files to your cluster. Synonym set files must be kept in sync on every cluster node.
 
