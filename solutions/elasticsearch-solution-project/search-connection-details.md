@@ -33,8 +33,8 @@ To create an API key, you need the `manage_api_key` or the `manage_own_api_key` 
 :::{applies-item} { "deployment": { "ech": "ga", "ece": "ga" }, "serverless": "ga" }
 Your endpoint is in the **Connection details** panel in {{kib}}.
 
-1.  Open {{kib}} for your deployment or project. In the {{ecloud}} console, select **Open**.
-2. Open the help menu (![help icon](/deploy-manage/images/help-icon.svg "")), then select **Connection details**.
+1. Select **Open** in the {{ecloud}} console to open {{kib}} for your deployment or project.
+2. Open the help menu {icon}`question`, then select **Connection details**.
 3. Copy the **{{es}} endpoint** from the **Endpoints** tab.
 
 :::{tip}
