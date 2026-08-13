@@ -43,7 +43,7 @@ To learn more about the features that are supported by {{ecloud}}, check [{{eclo
 
 * Due to a known issue with the {{stack}}, the upgrade path from 9.1.10 to 9.2.4 is unavailable. Refer to [Elasticsearch known issues](elasticsearch://release-notes/known-issues.md#elasticsearch-9.2.4-known-issues) for more information on the underlying issue.
 
-* Due to a known issue with the {{stack}}, version 9.5.0 is unavailable for new deployments and upgrades. Refer to [Elasticsearch known issues](elasticsearch://release-notes/known-issues.md#elasticsearch-9.5.0-known-issues) for more information on the underlying issue.
+* Due to a known issue, {{es}} 9.5.0 may return incorrect results from searches that exclude values using a `must_not` clause, where the excluded field has doc values enabled but is not indexed for search. Version 9.5.0 is unavailable for new deployments and upgrades. Review [this KB article](https://support.elastic.co/knowledge/00f3a35b) for more guidance on the known issue.
 
 
 ## Security [ec-restrictions-security]
