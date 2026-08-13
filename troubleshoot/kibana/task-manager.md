@@ -281,7 +281,7 @@ The API returns the following:
 
 ### Retrieve health data when {{kib}} uses separate task nodes [task-manager-health-multi-node]
 
-When {{kib}} runs [dedicated background task nodes](/deploy-manage/distributed-architecture/kibana-tasks-management.md#task-manager-dedicated-task-nodes), the `GET api/task_manager/_health` response depends on which node serves the request. Nodes that don't run tasks, such as UI nodes, return a response in which several execution-related fields are absent or `null`:
+When {{kib}} runs [dedicated background task nodes](/deploy-manage/distributed-architecture/kibana-tasks-management.md#task-manager-dedicated-task-nodes), the `GET api/task_manager/_health` response depends on which node serves the request. Background task nodes return the full health information, while nodes that don't run tasks, such as UI nodes, return a response in which several execution-related fields are absent or `null`:
 
 * `stats.capacity_estimation.status` and `stats.capacity_estimation.value.observed.*`
 * `stats.runtime.value.polling.result_frequency_percent_as_number`
