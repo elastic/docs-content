@@ -57,6 +57,8 @@ Synonym sets created through the API or the {{kib}} UI can only be used at searc
 
 :::::{tab-item} {{kib}} UI
 
+$$$synonyms-store-synonyms-kibana$$$
+
 You can create and manage synonym sets and synonym rules using the {{kib}} user interface.
 
 To create a synonym set using the UI:
