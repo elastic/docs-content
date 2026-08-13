@@ -142,6 +142,8 @@ serverless: preview
 
 Export a supported panel's configuration as JSON. The **Export JSON** option is available for **Lens** visualizations, **Links** and **Markdown** panels, and **Options list**, **Range slider**, and **ES|QL** controls.
 
+Dashboard-level filters and the global time range affect the data displayed by the panel, but the export excludes them. The export includes filters, queries, and custom time ranges configured in the panel.
+
 1. On the dashboard, from the panel menu, select **Export JSON**. When the menu contains an **Export** submenu, select **Export** → **Export JSON** instead.
 
    :::{image} /explore-analyze/images/dashboard-panel-menu-export-json.png
