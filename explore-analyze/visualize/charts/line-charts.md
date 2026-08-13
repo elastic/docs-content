@@ -84,6 +84,7 @@ The following query returns one date column and one numeric metric column, a res
 
 ```esql
 FROM kibana_sample_data_logs
+| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
 | STATS requests = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
 ```
 
@@ -517,5 +518,3 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 :::::::
 
 ---
-
-
