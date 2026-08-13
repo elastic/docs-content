@@ -19,6 +19,7 @@ Share a dashboard with others, or export its contents for reporting, backup, or 
 - [Export as PDF or PNG](#export-dashboard-pdf-png): Generate a report file of the dashboard.
 - [Download visualization data as CSV](#download-csv): Download the data from a visualization as a CSV file.
 - [Export JSON](#export-dashboards): Export the dashboard's definition as a JSON file to back it up, move it, or manage it as code.
+- [Export a panel as JSON](#export-panel-json): Export a supported panel's configuration to inspect or save it.
 
 You can also [set whether other users of your space can edit dashboards you own](#manage-dashboard-access).
 
@@ -132,6 +133,20 @@ You can still use the NDJSON export on later versions, but the API-compatible JS
 ::::
 
 :::::
+
+## Export a panel as JSON [export-panel-json]
+```{applies_to}
+stack: unavailable
+serverless: preview
+```
+
+Export a supported panel's configuration as JSON. The **Export JSON** option is available for **Lens** visualizations, **Links** and **Markdown** panels, and **Options list**, **Range slider**, and **ES|QL** controls.
+
+1. On the dashboard, from the panel menu, select **Export JSON**. When the menu contains an **Export** submenu, select **Export** → **Export JSON** instead.
+2. Review the JSON source in the flyout. For a panel linked to the library, the export shows the library reference by default. Turn on **Show full configuration** to export the panel's full configuration instead of its library reference.
+3. Select **Copy to clipboard** to copy the JSON, or **Download JSON** to save it to a file.
+
+A panel export contains only the panel configuration, not a complete dashboard definition. To export the dashboard or open a pre-populated Dashboards API request in Console, use [dashboard JSON export](#export-dashboard-json).
 
 ## Set edit permissions [manage-dashboard-access]
 ```{applies_to}
