@@ -21,7 +21,7 @@ You can create mosaic charts in {{kib}} using [**Lens**](../lens.md).
 
 ![Example Lens mosaic chart showing response status by operating system](/explore-analyze/images/mosaic-chart-example.png)
 
-## Build a mosaic chart
+## Build a mosaic chart with the point-and-click editor [build-a-mosaic-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -76,6 +76,28 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 :::::
 
 ::::::
+
+## Build a mosaic chart with {{esql}} [build-a-mosaic-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+The following query returns two categorical columns and one numeric metric column, a result shape that works for a mosaic chart. It calculates request counts by operating system and response code:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS requests = COUNT(*) BY machine.os.keyword, response.keyword
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Mosaic**.
+3. Assign `machine.os.keyword` to the **Horizontal axis**, `response.keyword` to the **Vertical axis**, and `requests` to **Metric**.
+4. Customize the chart appearance using the [mosaic chart settings](#mosaic-chart-settings).
+5. Select **Apply and close**.
+
+The chart preview shows how response-code proportions vary between operating systems.
 
 ## Mosaic chart settings [mosaic-chart-settings]
 

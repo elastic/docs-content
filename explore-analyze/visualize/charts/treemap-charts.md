@@ -21,7 +21,7 @@ You can create treemap charts in {{kib}} using [**Lens**](../lens.md).
 
 ![Example Lens treemap charts based on sample data](/explore-analyze/images/treemap-example.png)
 
-## Build a treemap chart
+## Build a treemap chart with the point-and-click editor [build-a-treemap-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -75,6 +75,30 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 :::::
 
 ::::::
+
+## Build a treemap chart with {{esql}} [build-a-treemap-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+The following query returns one categorical column and one numeric metric column, a result shape that works for a treemap. It calculates the six file extensions with the most transferred data:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS total_bytes = SUM(bytes) BY extension.keyword
+| SORT total_bytes DESC
+| LIMIT 6
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Treemap**.
+3. Assign `extension.keyword` to **Group by** and `total_bytes` to **Metric**.
+4. Customize the chart appearance using the [treemap chart settings](#treemap-chart-settings).
+5. Select **Apply and close**.
+
+The chart preview shows larger rectangles for file extensions with more transferred data.
 
 ## Treemap chart settings [treemap-chart-settings]
 

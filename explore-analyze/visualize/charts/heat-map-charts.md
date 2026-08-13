@@ -21,7 +21,7 @@ You can create heat map charts in {{kib}} using [**Lens**](../lens.md).
 
 ![Example Lens heat map chart representing temperatures in various cities](/explore-analyze/images/heat-map-chart-example.png)
 
-## Build a heat map chart
+## Build a heat map chart with the point-and-click editor [build-a-heat-map-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -78,6 +78,30 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 :::::
 
 ::::::
+
+## Build a heat map chart with {{esql}} [build-a-heat-map-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+The following query returns two grouping columns and one numeric metric column, a result shape that works for a heat map. It groups request counts by day of the week and hour of the day:
+
+```esql
+FROM kibana_sample_data_logs
+| EVAL hour = DATE_EXTRACT("hour_of_day", @timestamp)
+| EVAL day = DATE_EXTRACT("day_of_week", @timestamp)
+| STATS requests = COUNT(*) BY day, hour
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Heat map**.
+3. Assign `hour` to the **Horizontal axis**, `day` to the **Vertical axis**, and `requests` to **Cell value**.
+4. Customize the chart appearance using the [heat map chart settings](#heat-map-chart-settings).
+5. Select **Apply and close**.
+
+The chart preview uses color intensity to show when the most requests occur.
 
 ## Advanced heat map chart scenarios
 

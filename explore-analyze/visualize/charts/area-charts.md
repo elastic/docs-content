@@ -21,7 +21,7 @@ You can create area charts in {{kib}} using [**Lens**](../lens.md).
 
 ![Example Lens area chart](../../images/kibana-area-chart.png)
 
-## Build an area chart
+## Build an area chart with the point-and-click editor [build-an-area-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -78,6 +78,28 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 :::::
 
 ::::::
+
+## Build an area chart with {{esql}} [build-an-area-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+The following query returns one date column and one numeric metric column, a result shape that works for a time-series area chart. The time buckets adapt to the dashboard time range:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS total_bytes = SUM(bytes) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Area**.
+3. Assign `time_bucket` to the **Horizontal axis** and `total_bytes` to the **Vertical axis**.
+4. Customize the chart appearance using the [area chart settings](#area-chart-settings).
+5. Select **Apply and close**.
+
+The chart preview shows how the volume of transferred data changes over time.
 
 ## Advanced area scenarios
 
@@ -550,5 +572,3 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 
      
-
-

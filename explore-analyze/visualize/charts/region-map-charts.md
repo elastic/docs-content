@@ -21,7 +21,7 @@ You can create region map charts in {{kib}} using [**Lens**](../lens.md).
 
 ![Example Lens region map chart](/explore-analyze/images/region-map-chart-example.png)
 
-## Build a region map chart
+## Build a region map chart with the point-and-click editor [build-a-region-map-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -75,6 +75,29 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 :::::
 
 ::::::
+
+## Build a region map chart with {{esql}} [build-a-region-map-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+The following query returns one region-code column and one numeric metric column, a result shape that works for a region map. It calculates request counts by two-letter country code:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS requests = COUNT(*) BY geo.dest
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Region map**.
+3. Assign `geo.dest` to **Region key** and `requests` to **Metric**.
+4. For the **Region key**, select the **World Countries** boundaries and the `iso2` join field so that the map can match the values returned by `geo.dest`.
+5. Customize the chart appearance using the [region map chart settings](#region-map-chart-settings).
+6. Select **Apply and close**.
+
+The chart preview colors countries by request count. Countries without matching codes appear gray.
 
 ## Region map chart settings [region-map-chart-settings]
 

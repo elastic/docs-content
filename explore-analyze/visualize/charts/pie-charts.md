@@ -21,7 +21,7 @@ You can create pie charts in {{kib}} using [**Lens**](../lens.md).
 
 ![Example Lens pie chart](../../images/kibana-lens-pie-chart.png)
 
-## Build a pie chart
+## Build a pie chart with the point-and-click editor [build-a-pie-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -82,6 +82,30 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 :::::
 
 ::::::
+
+## Build a pie chart with {{esql}} [build-a-pie-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+The following query returns one categorical column and one numeric metric column, a result shape that works for a pie chart. It calculates the six product categories with the most revenue:
+
+```esql
+FROM kibana_sample_data_ecommerce
+| STATS revenue = SUM(taxful_total_price) BY category.keyword
+| SORT revenue DESC
+| LIMIT 6
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Pie**.
+3. Assign `category.keyword` to **Slice by** and `revenue` to **Metric**.
+4. Customize the chart appearance using the [pie chart settings](#pie-chart-settings).
+5. Select **Apply and close**.
+
+The chart preview shows each category's share of the revenue returned by the query.
 
 ## Advanced pie chart scenarios
 

@@ -23,7 +23,7 @@ You can create bar charts in {{kib}} using [**Lens**](../lens.md).
 
 ![Bar chart showing sales by category with different layouts](../../images/stacked-bar-chart.png)
 
-## Build a bar chart
+## Build a bar chart with the point-and-click editor [build-a-bar-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -86,6 +86,30 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 ::::
 
 :::::
+
+## Build a bar chart with {{esql}} [build-a-bar-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+The following query returns one categorical column and one numeric metric column, a result shape that works for a bar chart:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS requests = COUNT(*) BY response.keyword
+| SORT requests DESC
+| LIMIT 10
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Bar**.
+3. Assign `response.keyword` to the **Horizontal axis** and `requests` to the **Vertical axis**.
+4. Customize the chart appearance using the [bar chart settings](#settings).
+5. Select **Apply and close**.
+
+The chart preview shows one bar for each response code. The request count determines the height of each bar.
 
 ## Advanced bar chart scenarios
 

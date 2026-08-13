@@ -23,7 +23,7 @@ You can create waffle charts in {{kib}} using [**Lens**](../lens.md).
 
 ![Example Lens waffle charts showing response status breakdown and OS distribution](/explore-analyze/images/waffle-chart-example.png)
 
-## Build a waffle chart
+## Build a waffle chart with the point-and-click editor [build-a-waffle-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -77,6 +77,30 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 :::::
 
 ::::::
+
+## Build a waffle chart with {{esql}} [build-a-waffle-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+The following query returns one categorical column and one numeric metric column, a result shape that works for a waffle chart. It calculates request counts for the five most common operating systems:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS requests = COUNT(*) BY machine.os.keyword
+| SORT requests DESC
+| LIMIT 5
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Waffle**.
+3. Assign `machine.os.keyword` to **Group by** and `requests` to **Metric**.
+4. Customize the chart appearance using the [waffle chart settings](#waffle-chart-settings).
+5. Select **Apply and close**.
+
+The chart preview shows the relative share of requests from each operating system.
 
 ## Advanced waffle chart scenarios
 

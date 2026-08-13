@@ -24,7 +24,7 @@ You can create tables in {{kib}} using [**Lens**](../lens.md).
 
 ![A table visualization in {{kib}}](/explore-analyze/images/table-charts.png)
 
-## Build a table
+## Build a table with the point-and-click editor [build-a-table]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -86,6 +86,30 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 ::::
 
 :::::
+
+## Build a table with {{esql}} [build-a-table-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+Tables can display grouping columns, metric columns, or both. The following query returns one grouping column and two metric columns:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS requests = COUNT(*), average_bytes = AVG(bytes) BY host.keyword
+| SORT requests DESC
+| LIMIT 10
+```
+
+To build the table:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Table**.
+3. Assign `host.keyword` to **Rows**, and assign `requests` and `average_bytes` to **Metrics**.
+4. Customize the table appearance using the [table settings](#settings).
+5. Select **Apply and close**.
+
+The table preview shows one row per host, ordered by request count.
 
 ## Advanced table scenarios
 

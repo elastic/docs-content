@@ -21,7 +21,7 @@ You can create line charts in {{kib}} using [**Lens**](../lens.md).
 
 ![Example Lens line chart](../../images/kibana-line-new.png)
 
-## Build a line chart
+## Build a line chart with the point-and-click editor [build-a-line-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -74,6 +74,28 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 :::::
 
 ::::::
+
+## Build a line chart with {{esql}} [build-a-line-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+The following query returns one date column and one numeric metric column, a result shape that works for a time-series line chart. The time buckets adapt to the dashboard time range:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS requests = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Line**.
+3. Assign `time_bucket` to the **Horizontal axis** and `requests` to the **Vertical axis**.
+4. Customize the chart appearance using the [line chart settings](#settings).
+5. Select **Apply and close**.
+
+The chart preview shows how the request count changes over time.
 
 ## Advanced line scenarios
 
@@ -495,7 +517,5 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 :::::::
 
 ---
-
-
 
 

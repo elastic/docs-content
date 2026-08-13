@@ -21,7 +21,7 @@ You can create tag cloud charts in {{kib}} using [**Lens**](../lens.md).
 
 ![Example Lens tag cloud chart showing popular search terms](/explore-analyze/images/tag-cloud-chart-example.png)
 
-## Build a tag cloud chart
+## Build a tag cloud chart with the point-and-click editor [build-a-tag-cloud-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -75,6 +75,30 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 :::::
 
 ::::::
+
+## Build a tag cloud chart with {{esql}} [build-a-tag-cloud-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+The following query returns one categorical column and one numeric metric column, a result shape that works for a tag cloud. It calculates the most frequent request paths:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS requests = COUNT(*) BY request.keyword
+| SORT requests DESC
+| LIMIT 30
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Tag cloud**.
+3. Assign `request.keyword` to **Tags** and `requests` to **Metric**.
+4. Customize the chart appearance using the [tag cloud chart settings](#tag-cloud-chart-settings).
+5. Select **Apply and close**.
+
+The chart preview shows larger tags for the request paths with more requests.
 
 ## Tag cloud chart settings [tag-cloud-chart-settings]
 

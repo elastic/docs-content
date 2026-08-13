@@ -25,7 +25,7 @@ You can create metric charts in {{kib}} using [**Lens**](../lens.md).
 
 ![Metric chart representing an SLO with different layouts](../../images/metric-chart.png)
 
-## Build a metric chart
+## Build a metric chart with the point-and-click editor [build-a-metric-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -81,6 +81,28 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 ::::
 
 :::::
+
+## Build a metric chart with {{esql}} [build-a-metric-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+The following query returns one numeric column, a result shape that works for a metric chart. It calculates the total number of requests:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS requests = COUNT(*)
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Metric**.
+3. Assign `requests` to the **Primary metric**.
+4. Customize the chart appearance using the [metric chart settings](#settings).
+5. Select **Apply and close**.
+
+The chart preview shows the request count as a single value.
 
 ## Advanced metric scenarios
 

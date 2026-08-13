@@ -21,7 +21,7 @@ You can create gauge charts in {{kib}} using [**Lens**](../lens.md).
 
 ![Example Lens gauge chart showing RAM consumption averages](/explore-analyze/images/gauge-chart-example.png)
 
-## Build a gauge chart
+## Build a gauge chart with the point-and-click editor [build-a-gauge-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -81,6 +81,29 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 :::::
 
 ::::::
+
+## Build a gauge chart with {{esql}} [build-a-gauge-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+The following query returns one numeric column, a result shape that works for a gauge chart. It calculates the average number of bytes per request:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS average_bytes = AVG(bytes)
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Gauge**.
+3. Assign `average_bytes` to the **Metric** dimension.
+4. Set value ranges that give the metric context.
+5. Customize the chart appearance using the [gauge chart settings](#gauge-chart-settings).
+6. Select **Apply and close**.
+
+The chart preview shows where the average number of bytes falls within the configured ranges.
 
 ## Advanced gauge chart scenarios
 
