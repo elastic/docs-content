@@ -163,7 +163,7 @@ Once your synonym sets are created, you can start configuring your token filters
 
 Refer to each token filter's reference page for configuration details and instructions on adding it to an analyzer. If your analyzer chain includes a [stop token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md#synonym-graph-tokenizer-stop-token-filter), pay attention to ordering. Stop filters placed before or after a synonym filter affect synonym expansion differently.
 
-{applies_to}`{"stack": "ga 9.4", "serverless": "ga"}` Large synonym sets can trigger a memory [circuit breaker](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md#synonym-graph-tokenizer-circuit-breaker). Refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md#synonym-graph-tokenizer-circuit-breaker) reference for details on thresholds and `lenient` behavior.
+Large synonym sets can trigger a memory [circuit breaker](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md#synonym-graph-tokenizer-circuit-breaker). Refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md#synonym-graph-tokenizer-circuit-breaker) reference for details on thresholds and `lenient` behavior.
 
 ::::{warning}
 Invalid synonym rules can cause errors when applying analyzer changes and can prevent an index from being reopened. Refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md) reference for details.
