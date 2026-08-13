@@ -35,6 +35,7 @@ To use synonyms in {{es}}, follow this workflow:
 2. [**Configure token filters and analyzers**](#synonyms-synonym-token-filters): Set up synonym token filters and add them to your analyzers.
 3. [**Apply synonyms at index or search time**](#synonyms-apply-synonyms): Specify your analyzer in your index mapping.
 4. [**Test your analyzer**](#synonyms-test-analyzer): Verify your synonym configuration produces the expected tokens.
+5. [**Search with synonyms**](#synonyms-search-example): Run a search query and confirm synonym expansion works.
 
 ## Synonym rule formats
 
@@ -236,7 +237,7 @@ GET /my-index/_analyze
 
 If your synonym set includes `laptop, notebook` as equivalent terms, the response contains tokens for both `laptop` and `notebook`.
 
-## Search with synonyms in action [synonyms-search-example]
+## Step 5: Search with synonyms [synonyms-search-example]
 
 After you configure synonyms for a field, queries against that field automatically expand to include synonym terms. For example, if `laptop` and `notebook` are configured as equivalent terms and you search for `laptop`, {{es}} also matches documents containing `notebook`.
 
