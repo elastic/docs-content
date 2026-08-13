@@ -42,7 +42,10 @@ Your endpoint is in the **Connection details** panel in {{kib}}.
 :::
 
 :::{tip}
-When the space uses the **{{es}}** solution view, the **Getting started** page shows the endpoint directly.
+
+* When the space uses the **{{es}}** solution view, the **Getting started** page shows the endpoint directly.
+* {applies_to}`serverless: ga` You can also open **Connection details** from the project selector in the header.
+
 :::
 
 ::::
