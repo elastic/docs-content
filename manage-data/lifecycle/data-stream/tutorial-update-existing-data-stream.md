@@ -42,24 +42,26 @@ To change the data retention settings for a data stream:
 
     :::{applies-item} serverless: ga
 
-    Select {icon}`gear` **Actions** → **Edit data lifecycle**. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn off **Inherit lifecycle from index template**, if enabled, and use the **Data phases** panel to configure retention. Turn on **Delete phase** and set **Delete after** to a duration, in days, hours, minutes, or seconds, to delete data once it reaches that age, or leave **Delete phase** off to keep your data indefinitely.
+    1. Select {icon}`gear` **Actions** → **Edit data lifecycle**.
+    1. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn it off, if enabled, and configure retention in the **Data phases** panel. The data stream keeps this configuration even if the index template's lifecycle settings change later, until you turn **Inherit lifecycle from index template** back on.
+    1. Turn on **Delete phase** and set **Delete after** to a duration, in days, hours, minutes, or seconds, to delete data once it reaches that age. Leave **Delete phase** off to keep your data indefinitely.
+    1. Select **Apply** to save your changes.
 
     {{ilm-init}} policies aren't available in {{serverless-short}}, so the **{{ilm-init}} policy** method isn't offered here.
-
-    Select **Apply** to save your changes.
 
     :::
 
     :::{applies-item} stack: ga 9.5+
 
-    Select {icon}`gear` **Actions** → **Edit data lifecycle**. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn off **Inherit lifecycle from index template**, if enabled, and select one of the following lifecycle methods:
+    1. Select {icon}`gear` **Actions** → **Edit data lifecycle**.
+    1. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn it off, if enabled, and select one of the following lifecycle methods. The data stream keeps whichever method you choose even if the index template's lifecycle settings change later, until you turn **Inherit lifecycle from index template** back on.
 
-    - **Data stream lifecycle**: Configure retention using the **Data phases** panel. The **Hot phase** is always on. Turn on **Delete phase** and set **Delete after** to a duration, in days, hours, minutes, or seconds, to delete data once it reaches that age, or leave **Delete phase** off to keep your data indefinitely. With an Enterprise license and a default snapshot repository configured, you can also turn on **Frozen phase** to move data to a searchable snapshot before it's deleted.
-    - **{{ilm-init}} policy**: Select an existing {{ilm-init}} policy from the list.
+        - **Data stream lifecycle**: Configure retention in the **Data phases** panel. The **Hot phase** is always on. Turn on **Delete phase** and set **Delete after** to a duration, in days, hours, minutes, or seconds, to delete data once it reaches that age, or leave it off to keep your data indefinitely. With an Enterprise license and a default snapshot repository configured, you can also turn on **Frozen phase** to move data to a searchable snapshot before it's deleted.
+        - **{{ilm-init}} policy**: Select an existing {{ilm-init}} policy from the list.
 
-        Policies managed by Elastic are hidden from the list by default, even if you search for one by name. Starting with {{stack}} version 9.5.1, select the **Managed** filter next to the search field to reveal them. Revealed managed policies show a **Managed** badge. A data stream that already follows a managed policy keeps that policy visible in the selector regardless of the filter.
+            Policies managed by Elastic are hidden from the list by default, even if you search for one by name. Starting with {{stack}} version 9.5.1, select the **Managed** filter next to the search field to reveal them. Revealed managed policies show a **Managed** badge. A data stream that already follows a managed policy keeps that policy visible in the selector regardless of the filter.
 
-    Select **Apply** to save your changes.
+    1. Select **Apply** to save your changes.
 
     :::
 
