@@ -49,11 +49,11 @@ You can also get to this page by searching for **Application connections** in th
 ::::
 
 ::::{step} Name the client
-Enter a **Client name**. The name is visible to users during the authorization flow, so use something that clearly identifies the application (for example, `Claude Desktop — Engineering`).
+Enter a **Client name** with no more than 128 characters. The name is visible to users during the authorization flow, so use something that clearly identifies the application (for example, `Claude Desktop — Engineering`).
 ::::
 
 ::::{step} Select a client logo
-Optionally set a **Client logo** to identify the application in the list. Use **Select logo** to choose from provided options, or select **Upload logo** to use a custom image.
+Optionally set a **Client logo** to identify the application in the list. Use **Select logo** to choose from provided options, or select **Upload logo** to use a PNG, JPEG, or GIF of up to 192 KB.
 
 Selecting a logo is cosmetic, and does not pre-configure any settings.
 ::::
@@ -78,7 +78,7 @@ The redirect URI tells the authorization server where to return the user after t
     The ChatGPT callback URL is unique to each app. You must [start the app creation flow first](/deploy-manage/app-connections/connect-mcp-host.md) to get this URL, then return here to add it to your OAuth client.
     :::
 
-For local clients that need more than one redirect URI, click **Add local URL** to add additional URLs.
+For local clients that need more than one redirect URI, click **Add local URL** to add up to 20 URLs. Each local or remote redirect URI can contain up to 2,048 characters.
 ::::
 
 ::::{step} Optional: Generate a client secret
@@ -113,9 +113,11 @@ To edit a client:
 4. In the **Tools library** workspace, click **Manage MCP**, and then select **Manage MCP clients (OAuth)**.
 5. Find the client. Click **Actions**, and then click **Edit**.
 6. Edit any of the following fields:
-   - **Name**: Enter a name with no more than 128 characters.
-   - **Client logo (optional)**: Select a provided logo, upload a PNG, JPEG, or GIF of up to 192 KB, or remove the existing logo.
-   - **Redirect URI type**: Select **Local** or **Remote**, and then enter at least one redirect URI. Local clients support up to 20 redirect URIs. Remote clients support one HTTPS redirect URI. Each URI can contain up to 2,048 characters.
+   - **Name**
+   - **Client logo (optional)**: Select a provided logo, upload a custom logo, or remove the existing logo.
+   - **Redirect URI type**: Select **Local** or **Remote**, then add, remove, or edit a redirect URI.
+
+   The edited fields must meet the same requirements described in [Create the client](#create-the-client).
 7. Click **Update**.
 
 {{kib}} returns you to the **MCP clients** page and confirms that the client was updated.
