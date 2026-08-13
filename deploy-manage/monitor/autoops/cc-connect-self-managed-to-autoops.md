@@ -24,7 +24,7 @@ If you have an {{es}} cluster set up for local development or testing, you can c
 :::{include} ../_snippets/cc-autoops-all-licenses.md
 :::
 
-## Before you begin
+## Before you begin [prerequisites]
 
 Ensure your system meets the following requirements before proceeding:
 
