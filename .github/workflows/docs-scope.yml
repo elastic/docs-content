@@ -1,0 +1,24 @@
+name: Docs Scope
+on:
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+  discussions: write
+  issues: write
+  pull-requests: write
+  copilot-requests: write
+
+jobs:
+  run:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (startsWith(github.event.comment.body, '/scope') &&
+       github.event.issue.pull_request == null)
+    uses: elastic/docs-actions/.github/workflows/gh-aw-issue-scope.lock.yml@v1
+    with:
+      project-instructions-path: .github/scope-instructions.md
+    secrets: inherit
