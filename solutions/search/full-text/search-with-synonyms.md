@@ -198,48 +198,9 @@ You can specify the analyzer that contains your synonym set as a [search time an
 
 Queries that support synonym expansion include [match](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), [query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md), and [simple_query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-simple-query-string-query.md). These queries support the `auto_generate_synonyms_phrase_query` parameter, which controls how multi-word synonyms are handled at query time.
 
-The following example adds `my_analyzer` as a search analyzer to the `title` field in an index mapping:
+The following example adds `my_analyzer` as a search analyzer to the `title` field in an index mapping. The filter references a synonym set created through the API or {{kib}} UI.
 
-::::{tab-set}
-
-:::{tab-item} API or UI synonym set
-```console
-PUT /my-index
-{
-  "mappings": {
-    "properties": {
-      "title": {
-        "type": "text",
-        "search_analyzer": "my_analyzer"
-      }
-    }
-  },
-  "settings": {
-    "analysis": {
-      "analyzer": {
-        "my_analyzer": {
-          "tokenizer": "standard",
-          "filter": ["lowercase", "synonyms_filter"]
-        }
-      },
-      "filter": {
-        "synonyms_filter": {
-          "type": "synonym_graph",
-          "synonyms_set": "my-synonym-set",
-          "updateable": true
-        }
-      }
-    }
-  }
-}
-```
-:::
-
-:::{tab-item} File-based synonym set
-
-```{applies_to}
-serverless: unavailable
-```
+For [file-based synonym sets](#synonyms-store-synonyms-file), use `synonyms_path` instead of `synonyms_set`. {applies_to}`serverless: unavailable`
 
 ```console
 PUT /my-index
@@ -263,7 +224,7 @@ PUT /my-index
       "filter": {
         "synonyms_filter": {
           "type": "synonym_graph",
-          "synonyms_path": "analysis/synonym-set.txt",
+          "synonyms_set": "my-synonym-set", <1>
           "updateable": true
         }
       }
@@ -271,9 +232,8 @@ PUT /my-index
   }
 }
 ```
-:::
 
-::::
+1. For file-based synonym sets, replace with `"synonyms_path": "analysis/synonym-set.txt"`.
 
 ## Search with synonyms in action [synonyms-search-example]
 
