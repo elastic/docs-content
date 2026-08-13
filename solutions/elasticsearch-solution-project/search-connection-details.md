@@ -89,56 +89,33 @@ serverless: ga
 To skip {{kib}}, select **Manage** in the {{ecloud}} console and copy the **Cloud ID** from the deployment page.
 :::
 
-### Create an API key [create-an-api-key-cloud-self-managed]
+## Create an API key [create-an-api-key-cloud-self-managed]
 
-1. To navigate to **API keys**, use the [**global search bar**](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+:::::{applies-switch}
 
-    :::{image} /solutions/images/kibana-api-keys-search-bar.png
-    :alt: api keys search bar
-    :screenshot:
-    :::
+::::{applies-item} { "deployment": { "ech": "ga", "ece": "ga" }, "serverless": "ga" }
 
-2. Select **Create API key**.
+1. Select **Open** in the {{ecloud}} console to open {{kib}} for your deployment or project.
+2. Open the help menu {icon}`question`, then select **Connection details**.
+3. Select the **API key** tab, enter an **API key name**, then select **Create API key**.
+4. Select an **API key format**: **Encoded** for {{es}} REST API requests, or **Beats** or **Logstash** to configure those products.
+5. Copy the key. It isn't available after you close the panel.
 
-    :::{image} /solutions/images/kibana-click-create-api-key.png
-    :alt: click create api key
-    :screenshot:
-    :::
-
-3. Enter the API key details, and select **Create API key**.
-4. Copy and securely store the API key, because it only appears once.
-
-
-## Serverless deployments [_serverless_deployments]
-
-### Find your Elasticsearch endpoint [find-cloud-id-serverless]
-
-1. Select the Help icon in the top right corner and then select **Connection Details**.
-2. Copy the **Elasticsearch endpoint** from the **Endpoints** tab.
-
-    :::{image} /solutions/images/kibana-serverless-connection-details.png
-    :alt: serverless connection details
-    :screenshot:
-    :::
-
-::::{note}
-The **Cloud ID** is also available in the **Connection Details** section. Toggle the **Show Cloud ID** option to view it.
-
+Keys created here expire in 90 days and carry your own privileges. To choose an expiry or restrict privileges, select **Manage API keys** and create the key there instead.
 ::::
 
-
-### Create an API key [create-an-api-key-serverless]
-
-1. Go to the serverless project’s home page.
+::::{applies-item} {"deployment": {"eck": "ga", "self": "ga"}}
+1. Go to the **API keys** management page, using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find it.
 2. Select **Create API key**.
+3. Enter a name, then select **Create API key**.
+4. Copy the key. It isn't available after you leave the page.
 
-    :::{image} /solutions/images/kibana-serverless-create-an-api-key.png
-    :alt: serverless create an api key
-    :screenshot:
-    :::
+Keys created here don't expire unless you add an expiration date.
+::::
 
-4. Enter the API key details, and select **Create API key**.
-5. Copy and securely store the API key, because it only appears once.
+:::::
+
+For key types, privileges, and expiry options, refer to [](/deploy-manage/api-keys.md).
 
 ### Test connection [elasticsearch-get-started-test-connection]
 
