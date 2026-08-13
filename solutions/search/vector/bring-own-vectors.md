@@ -32,7 +32,7 @@ When you create vectors (or _vectorize_ your data), you convert complex content 
 In this guide, you’ll use documents that already include dense vector embeddings. To deploy a vector embedding model in {{es}} and generate vectors during ingest and search, refer to the links in [Learn more](#bring-your-own-vectors-learn-more).
 
 ::::{tip}
-This advanced use case uses the `dense_vector` field type for direct control over embeddings and indexing. For a managed workflow using the `semantic_text` field type, refer to [Semantic search](/solutions/search/semantic-search.md). To compare both approaches, refer to [Semantic search and vector search](/solutions/search/vector.md#semantic-search-vs-vector-search).
+This advanced use case uses the `dense_vector` field type for direct control over embeddings and indexing. For a managed workflow using the `semantic_text` field type, refer to [Semantic search for text](/solutions/search/semantic-search.md). To compare both approaches, refer to [Semantic search and vector search](/solutions/search/vector.md#semantic-search-vs-vector-search).
 ::::
 
 :::::{stepper}
@@ -182,6 +182,6 @@ DELETE /amazon-reviews
 
 In these basic examples, we send a raw vector for the query text. In a real-world scenario, you won't know the query text ahead of time. You'll generate query vectors on the fly using the same embedding model that produced the document vectors. For this, deploy a text embedding model in {{es}} and use the[`query_vector_builder` parameter](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#knn-query-top-level-parameters). Alternatively, you can generate vectors client-side and send them directly with the search request.
 
-For an example of using pipelines to generate text embeddings, check out [](/solutions/search/vector/dense-versus-sparse-ingest-pipelines.md).
+For an example of using pipelines to generate text embeddings, check out [](/solutions/search/semantic-search/dense-versus-sparse-ingest-pipelines.md).
 
 To learn more about the search options in {{es}}, such as semantic, full-text, and hybrid, refer to [](/solutions/search/search-approaches.md).

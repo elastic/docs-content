@@ -3,7 +3,7 @@ navigation_title: FAQ
 description: Frequently asked questions about Elastic Managed integrations, including limits, supportability, data residency, and common setup questions.
 applies_to:
   stack: ga 9.5+, preview 9.0-9.4
-  serverless: preview
+  serverless: ga
 products:
   - id: elastic-agent
   - id: fleet
@@ -22,7 +22,7 @@ Frequently asked questions about {{managed-integrations}}.
 
 ### What types of integrations are supported? [managed-integrations-faq-supported]
 
-{{managed-integrations}} are best suited for integrations that pull data from a cloud source through an API at lower volumes. For a complete list, refer to [{{managed-integrations}} quick reference](integration-docs://reference/managed_integrations.md). Elastic continually adds more integrations to this list.
+{{managed-integrations}} are best suited for integrations that pull data from a cloud source through an API at [lower volumes](/manage-data/ingest/managed-integrations/managed-integrations.md#managed-integrations-limits). For a complete list, refer to [{{managed-integrations}} quick reference](integration-docs://reference/managed_integrations.md). Elastic continually adds more integrations to this list.
 
 ### Why aren't some integrations available as {{managed-integrations}}? [managed-integrations-faq-missing]
 
@@ -76,6 +76,33 @@ In these versions, {{managed-integrations}} are in technical preview and are pro
 
 Documents ingested through {{managed-integrations}} are stored in your project or {{ech}} deployment, the same as data ingested by agent-based integrations.
 
+### What are the `agentless-state-*` indices in my cluster? [managed-integrations-faq-state-indices]
+
+Some {{managed-integrations}} keep track of their own collection progress — for example, the point up to which they've already collected data from a source. {{managed-integrations}} store this progress information in your cluster, in indices whose names start with `agentless-state-`. Elastic creates and updates these indices automatically as part of running the integration.
+
+These indices hold only a small amount of internal tracking information, not the data collected from your source. You don't need to create, size, or manage them yourself.
+
+:::{important}
+Treat `agentless-state-*` indices as managed by Elastic. Don't delete, reindex, or otherwise modify them while the related integration is enabled, because doing so can disrupt data collection.
+:::
+
+:::{dropdown} Can I delete `agentless-state-*` indices?
+:open:
+Avoid deleting an `agentless-state-*` index while its integration is enabled. Deleting one doesn't remove any data the integration has already collected into your cluster, but the integration loses track of where it left off. The next time it runs, it starts collecting from its default starting point, which can re-collect recent data and create duplicate documents.
+:::
+
+:::{dropdown} Do I need to back up or snapshot `agentless-state-*` indices?
+:applies_to: serverless: unavailable
+:open:
+No. `agentless-state-*` indices are included in [cluster snapshots](/deploy-manage/tools/snapshot-and-restore.md) by default, so you don't need to do anything to back them up. They aren't required to restore your collected data: if a state index is missing, the integration recreates it and resumes collecting from its default starting point, which can re-collect recent data and create duplicate documents.
+:::
+
+:::{dropdown} Can I apply an {{ilm-cap}} ({{ilm-init}}) policy to `agentless-state-*` indices?
+:applies_to: serverless: unavailable
+:open:
+No. These indices hold current state that's updated in place, not time-based data that ages out. An {{ilm-init}} policy that rolls over or deletes them can interrupt data collection, so leave them unmanaged.
+:::
+
 ### Does my data travel over the public internet? [managed-integrations-faq-public-internet]
 
 Usually not. Data flows from Elastic-managed infrastructure to your cluster over Elastic's internal network. However, if your {{ech}} deployment is in a region that isn't served by {{serverless-full}}, data might traverse the public internet to reach your cluster.
@@ -92,7 +119,7 @@ No. {{managed-integrations}} run on shared infrastructure and don't use a fixed 
 
 ```{applies_to}
 stack: ga 9.5+, preview 9.1+
-serverless: preview
+serverless: ga
 ```
 
 Yes. {{managed-integrations}} support traffic filtering, and no additional configuration is necessary.
@@ -134,7 +161,7 @@ Each integration policy shows the integration's status, so you can check its hea
 
 :::::{applies-switch}
 
-::::{applies-item} {serverless: preview, stack: ga 9.5+}
+::::{applies-item} {serverless: ga, stack: ga 9.5+}
 Each integration's status appears on its **Integration policies** tab in the **{{integrations}}** app.
 
 If an {{managed-integration}} is unhealthy:

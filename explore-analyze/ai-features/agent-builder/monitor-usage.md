@@ -16,9 +16,13 @@ products:
 
 This page covers how to monitor token usage in {{agent-builder}} and understand how usage translates to costs across different deployment types.
 
+For observability beyond token counts, {{agent-builder}} can also collect detailed execution traces into your {{es}} deployment. To turn on trace collection and explore or alert on the data, refer to [Collect agent traces](collect-traces.md).
+
 ## Token usage
 
 When working with {{agent-builder}}, total token usage typically exceeds the visible conversation text. Because {{agent-builder}} uses an agentic framework, a single user request often triggers multiple model calls to process reasoning steps, run tools, and interpret results.
+
+{applies_to}`stack: ga 9.5+` To keep this efficient, {{agent-builder}} automatically routes some of these low-effort operations to a faster, lower-cost model. For details, see [Fast model routing](models.md#fast-model).
 
 Token counts include:
 
@@ -62,6 +66,8 @@ To view the raw JSON response which includes detailed token information, click t
 :width: 900px
 :alt: Screenshot of the JSON raw response modal
 :::
+
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` These counts are specific to each {{agent-builder}} response. To monitor aggregate token usage across all AI features in {{kib}}, turn on token usage tracking and use the managed dashboard. Refer to [Track token usage across AI features](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#track-token-usage-across-ai-features).
 
 ## Execution-based billing
 

@@ -40,7 +40,7 @@ In the role management UI, {{kib}} displays human-readable privilege names. Role
 
 | Feature and UI privilege | Role and API key privilege | Grants |
 | --- | --- | --- |
-| **Agent Builder: Read** | `feature_agentBuilder.read` | Use agents, send chat messages, and view agents, tools, skills, and conversations. |
+| **Agent Builder: Read** | `feature_agentBuilder.read` | Use agents, send chat messages, and view agents, tools, skills, and conversations. On Serverless, also manage OAuth MCP clients for the [{{agent-builder}} MCP server](mcp-server.md). |
 | **Agent Builder: All** | `feature_agentBuilder.all` | Everything granted by **Read**, plus all {{agent-builder}} management privileges. |
 | **Agent Builder > Management: Create and edit agents** | `feature_agentBuilder.manage_agents` | Pair with **Read** to create, update, and delete custom agents without granting other management privileges. |
 | **Agent Builder > Management: Create and edit custom tools** | `feature_agentBuilder.manage_tools` | Pair with **Read** to create, update, and delete custom tools without granting other management privileges. |
@@ -64,6 +64,19 @@ Tools execute {{es}} requests with the privileges of the current user or API key
 
 Learn more about [cluster privileges](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html#privileges-list-cluster) and [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 
+#### Read trace data [read-trace-data]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+{{agent-builder}} can [collect agent traces](collect-traces.md) into your {{es}} deployment. Trace data is stored in the `traces-agent_builder.otel-*` data stream. To read it, a role needs `read` and `view_index_metadata` on that pattern.
+
+Access is granted at the index level. Any user who can read these data streams can read all collected traces, so trace access is not scoped per user. To control who can read traces, configure index privileges through roles in **Stack Management → Roles**.
+
+<!-- RBAC on the local trace index is still settling (search-team#14100). In serverless Search and Observability projects the default roles may already grant broad access to these patterns. Do not document specific default-role behavior until #14100 lands. -->
+
 ### {{kib}} space scope [#space-scope]
 
 Conversations, custom agents, and custom tools are scoped to the current {{kib}} space. Built-in agents are available in all spaces. The default Elastic AI Agent is an exception {applies_to}`stack: ga 9.4+`: it is a persisted, space-aware agent that is automatically created in each space.
@@ -85,6 +98,8 @@ Use [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles
 :::{note}
 When configuring roles in the {{kib}} UI, {{agent-builder}} privileges are currently located under the **Analytics** section, not the {{es}} section.
 :::
+
+On Serverless, roles also determine what an MCP client can do when it connects to the {{agent-builder}} MCP server through OAuth. The client inherits the permissions of the user who authorizes the connection. To learn more, refer to [OAuth for MCP clients](/deploy-manage/app-connections/oauth-clients.md). {applies_to}`serverless: preview`
 
 ### API keys for programmatic clients [#api-keys-for-clients]
 

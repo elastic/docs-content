@@ -17,63 +17,53 @@ products:
 
 # {{agent-builder}} MCP server
 
-The [**Model Context Protocol (MCP) server**](https://modelcontextprotocol.io/docs/getting-started/intro) provides a standardized interface for external clients to access {{agent-builder}} tools.
+The [**Model Context Protocol (MCP) server**](https://modelcontextprotocol.io/docs/getting-started/intro) provides a standardized interface for external MCP hosts to access {{agent-builder}} tools. For example, you can run an {{esql}} query against your data from Claude Desktop without opening {{kib}}.
 
-## MCP server endpoint
+:::{note}
+On this page, {{agent-builder}} acts as the MCP server: external MCP hosts connect to it to use your {{agent-builder}} tools. To instead let your agents use tools hosted on an external MCP server, refer to [](tools/mcp-tools.md).
+:::
 
-The MCP server is available at:
+## MCP server endpoint [mcp-server-endpoint]
+
+The MCP server is available at the following endpoint:
 
 ```
 {KIBANA_URL}/api/agent_builder/mcp
 ```
 
-When using a custom {{kib}} Space, include the space name in the URL:
+When using a custom {{kib}} Space, include the space name in the endpoint path:
 
 ```
 {KIBANA_URL}/s/{SPACE_NAME}/api/agent_builder/mcp
 ```
 
 :::{tip}
-You can copy your MCP server URL directly in the Tools GUI. Refer to [](tools.md#mcp-server-access).
+You can copy your MCP server URL directly in the Tools GUI. Refer to [MCP server access in the Tools GUI](tools.md#mcp-server-access).
 :::
 
-## Configuring MCP clients
+## Authentication and configuration [mcp-server-authentication]
 
-Most MCP clients (such as Claude Desktop, Cursor, VS Code, etc.) have similar configuration patterns. To connect to your Elastic instance, you need to provide your {{kib}} URL and API key in the client's configuration file, typically in the following format:
+External MCP hosts need credentials to reach the MCP server endpoint. The way that you configure your MCP server depends on your authentication method. Choose API keys or OAuth 2.1 based on your deployment type and use case.
 
-```json
-{
-  "mcpServers": {
-    "elastic-agent-builder": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "${KIBANA_URL}/api/agent_builder/mcp",
-        "--header",
-        "Authorization:${AUTH_HEADER}"
-      ],
-      "env": {
-        "KIBANA_URL": "${KIBANA_URL}",
-        "AUTH_HEADER": "ApiKey ${API_KEY}" <1>
-      }
-    }
-  }
-}
-```
+Use one of the following authentication paths:
 
-1. Refer to [Create a read-only client key](api-keys.md#create-a-read-only-client-key).
+- [API key authentication](mcp-server-api-keys.md)
+- [OAuth 2.1 authentication](/deploy-manage/app-connections/oauth-clients.md) using an [application connection](/deploy-manage/app-connections.md) {applies_to}`serverless: ga`
 
-:::{note}
-Set the following environment variables:
+The following table compares the two paths.
 
-```bash
-export KIBANA_URL="your-kibana-url"
-export API_KEY="your-api-key"
-```
+| Consideration | API key | OAuth |
+| --- | --- | --- |
+| Supported platforms | {{stack}} deployments and {{serverless-short}} projects | {{serverless-short}} projects only {applies_to}`serverless: ga` |
+| Best for | Automation, unattended access, and shared machine-to-machine use | Interactive MCP hosts acting on behalf of a person (Claude Desktop, Cursor), including teams that share one client |
+| Multi-user access | One shared key means one shared identity; all callers act with the same permissions | One client registration serves many users. Each person consents separately and gets their own connection, acting with their own permissions and revocable individually |
+| Identity | The key's snapshotted permissions | The consenting user; permissions are the user's live permissions in the project |
+| Credential lifetime | Long-lived until the key expires or is revoked | Short-lived tokens, refreshed automatically unless revoked. Require a new connection if unused for 30+ days. |
+| Setup | Generate a key and add it to the host configuration | Register an MCP client, then consent in the browser |
+| {{agent-builder}} tools through MCP | Full tool catalog, including [Elastic Workflows](/explore-analyze/workflows.md) | Full tool catalog, limited by the [authorizing user's](/deploy-manage/app-connections/connect-mcp-host.md#authorize-connection) permissions |
 
-For a complete API key example, refer to [Create a read-only client key](api-keys.md#create-a-read-only-client-key).
+## Related pages
 
-Tools execute with the scope assigned to the API key. Restrict the key to only the spaces, indices, and data that you want to expose through the MCP server.
-:::
-
-The key must include `feature_agentBuilder.read` for the space in the MCP endpoint URL. Without this application privilege, the MCP endpoint returns `403 Forbidden`.
+- [](programmatic-access.md)
+- [Create API keys for {{agent-builder}} APIs](api-keys.md)
+- [](/deploy-manage/app-connections/oauth-clients.md)

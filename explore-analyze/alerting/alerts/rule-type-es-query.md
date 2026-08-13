@@ -13,7 +13,10 @@ products:
 
 The {{es}} query rule type runs a user-configured query, compares the number of matches to a configured threshold, and schedules actions to run when the threshold condition is met.
 
-In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select the **{{es}} query** rule type then fill in the name and optional tags. An {{es}} query rule can be defined using {{es}} Query Domain Specific Language (DSL), {{es}} Query Language (ES|QL), {{kib}} Query Language (KQL), or Lucene.
+In **{{rules-ui}}**, click **Create rule**. For help navigating to the Rules page, refer to [Create and manage alerting rules](create-manage-rules.md). Select the **{{es}} query** rule type then fill in the name and optional tags. An {{es}} query rule can be defined using {{es}} Query Domain Specific Language (DSL), {{es}} Query Language (ES|QL), {{kib}} Query Language (KQL), or Lucene.
+
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
 
 ## Define the conditions [_define_the_conditions_2]
 
@@ -65,7 +68,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
         :   Specify whether the aggregation is applied over all documents or split into groups using up to four grouping fields. If you choose to use grouping, it’s a [terms](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) or [multi terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-multi-terms-aggregation.md); an alert will be created for each unique set of values when it meets the condition. To limit the number of alerts on high cardinality fields, you must specify the number of groups to check against the threshold. Only the top groups are checked.
 
         Threshold
-        :   Defines a threshold value and a comparison operator  (`is above`, `is above or equals`, `is below`, `is below or equals`, or `is between`). The value calculated by the aggregation is compared to this threshold.
+        :   Defines a threshold value and a comparison operator (`is above`, `is above or equals`, `is below`, `is below or equals`, `is between`, or `is not between`). The value calculated by the aggregation is compared to this threshold. Both range boundaries are inclusive for `is between` and exclusive for `is not between`.
 
     * {applies_to}`stack: ga 9.2` If you use {{esql}}, specify a time field and how to group alerts. 
 
