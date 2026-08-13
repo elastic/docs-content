@@ -92,7 +92,7 @@ To revoke an entire OAuth client and all its connections, revoke it from the pro
 
 ## Delete revoked connections
 
-Deleting a revoked connection permanently removes it before the end of the 90-day retention period. This action can't be undone.
+Deleting a revoked connection permanently removes it immediately instead of waiting for the 90-day retention period. This action can't be undone.
 
 To delete a single revoked connection, click **Delete** in its row.
 

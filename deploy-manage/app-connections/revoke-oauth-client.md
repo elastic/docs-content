@@ -47,7 +47,7 @@ The connection is revoked immediately. The OAuth client stays registered and can
 
 ## Delete a connection
 
-Only revoked connections can be deleted. Revoked connections otherwise remain visible for 90 days. Deleting a connection permanently removes it before the end of that retention period.
+Only revoked connections can be deleted. Revoked connections otherwise remain visible for 90 days. Deleting a connection permanently removes it immediately and can't be undone.
 
 To delete one or more connections:
 
