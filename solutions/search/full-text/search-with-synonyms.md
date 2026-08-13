@@ -61,7 +61,8 @@ $$$synonyms-store-synonyms-kibana$$$
 
 ```{applies_to}
 stack: ga 9.1
-serverless: ga
+serverless:
+  elasticsearch:
 ```
 
 You can create and manage synonym sets and synonym rules using the {{kib}} user interface.
