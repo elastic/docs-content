@@ -5,6 +5,7 @@ applies_to:
     ece:
     eck:
 navigation_title: Connect your cluster
+description: Connect ECE, ECK, or self-managed Elasticsearch clusters to AutoOps through Cloud Connect and learn how to manage them.
 products:
   - id: cloud-kubernetes
   - id: cloud-enterprise
@@ -12,7 +13,7 @@ products:
 
 # Connect your ECE, ECK, or self-managed cluster to AutoOps
 
-To use AutoOps with your ECE, ECK, or self-managed {{es}} cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard then guides you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}.  
+This page explains how to connect your ECE, ECK, or self-managed cluster to AutoOps in {{ecloud}}. Sign in with an {{ecloud}} account or start from {{kib}}, then use the installation wizard to install {{agent}} and ship cluster metrics.
 
 The connection process takes about 10 minutes.
 
@@ -23,13 +24,13 @@ If you have an {{es}} cluster set up for local development or testing, you can c
 :::{include} ../_snippets/cc-autoops-all-licenses.md
 :::
 
-## Prerequisites
+## Before you begin
 
 Ensure your system meets the following requirements before proceeding:
 
-* Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol) (7.17.x and above).
+* Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol) (7.17.x or later).
 * The agent you install for the connection is allowed to send metrics to {{ecloud}}.
-* {applies_to}`eck: ga 3.3` To install {{agent}} using ECK, your ECK operator is on version 3.3.0 and above.
+* {applies_to}`eck: ga 3.3` To install {{agent}} using ECK, your ECK operator is on version 3.3.0 or later.
 * {applies_to}`eck: ga 3.3.1` The instance of {{agent}} you install meets the version requirements for your license type:
   * **Basic license**: 9.2.4 or later.
   * **Enterprise license**: 9.2.1 or later.
@@ -52,11 +53,11 @@ Sign up or log in to {{ecloud}} with the following links and follow the prompts 
 * [For new users](https://cloud.elastic.co/registration?onboarding_service_type=ccm) who don't have an {{ecloud}} account
 * [For existing users](https://cloud.elastic.co/login?redirectTo=%2Fconnect-cluster-services) who already have an {{ecloud}} account
 
-Alternatively, go to your {{ecloud}} homepage and select **Connect self-managed cluster**.
+Alternatively, go to your {{ecloud}} home page and select **Connect self-managed cluster**.
 :::
 
 :::{tab-item} {{kib}}
-Go to the **Cloud Connect** page in your {{kib}} instance using the [search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md) and sign up or log in to {{ecloud}} from there. Then, follow the steps to [connect through {{kib}}](#connect-through-kibana).
+Go to the **Cloud Connect** page in your {{kib}} instance using the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md) and sign up or log in to {{ecloud}} from there. Then, follow the steps to [connect through {{kib}}](#connect-through-kibana).
 
 :::{image} /explore-analyze/images/cloud-connect-eis.png
 :screenshot:
@@ -77,13 +78,14 @@ Go to the **Cloud Connect** page in your {{kib}} instance using the [search bar]
 :alt: Screenshot showing the Connect through Kibana and Install AutoOps agent options
 :::
 
-For just AutoOps, click **Install AutoOps agent** to go to the installation wizard directly. Or, click **Connect through {{kib}}** to enable multiple [cloud connected services](/deploy-manage/cloud-connect.md) with an API key.
+Select **Install AutoOps agent** to enable only AutoOps and open the installation wizard.
+Select **Connect through {{kib}}** to enable multiple cloud connected services with an API key.
 
 $$$connect-through-kibana$$$
-If you choose **Connect through Kibana**:
+If you select **Connect through Kibana**:
 
 1. Copy the Cloud Connect API key that shows up.
-2. In your cluster's {{kib}} instance, go to the **Cloud Connect** page using the [search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. In your cluster's {{kib}} instance, go to the **Cloud Connect** page using the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Paste your Cloud Connect API key and click **Connect**.
 4. On the **Cloud connected services** page, choose the services you want to enable. For AutoOps, click **Connect** next to AutoOps. For other services, refer to [](/deploy-manage/cloud-connect.md).
 ::::::
@@ -118,7 +120,7 @@ To learn more about how AutoOps securely gathers data from your cluster, refer t
 
 Depending on your selected installation method, you have to provide information such as your cluster's endpoint URL, your desired [storage location](cc-autoops-metrics-storage-locations.md), and your preferred authentication method. 
 
-For your authentication method, choose one of the following:
+For your authentication method, select one of the following:
 
 :::::{tab-set}
 :group: api-key-or-basic
@@ -129,7 +131,7 @@ For your authentication method, choose one of the following:
 With this authentication method, you need to create an API key to grant access to your cluster. Complete the following steps:
 
 1. Go to {{kib}} in your {{es}} cluster.
-2. Go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Go to the **API keys** management page in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Select **Create API key**.
 4. In the flyout, enter a name for your key and select **User API key**.
 5. Enable **Control security privileges** and enter the following script:
