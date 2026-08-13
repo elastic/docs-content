@@ -24,9 +24,9 @@ These steps configure data stream lifecycle settings directly. For the full set 
 
 To add or modify the retention period of your data stream you can use the **{{index-manage-app}}** tools in {{kib}} or the {{es}} [lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle).
 
-::::::{tab-set}
+:::::::{tab-set}
 :group: kibana-api
-:::::{tab-item} {{kib}}
+::::::{tab-item} {{kib}}
 :sync: kibana
 
 To change the data retention settings for a data stream:
@@ -37,23 +37,27 @@ To change the data retention settings for a data stream:
 1. Select the data stream to view its details.
 1. In the data stream details pane:
 
-    ::::{applies-switch}
+    :::::{applies-switch}
 
-    :::{applies-item} serverless: ga
+    ::::{applies-item} serverless: ga
 
     1. Select {icon}`gear` **Actions** → **Edit data lifecycle**.
-    1. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn it off, if enabled, and configure retention in the **Data phases** panel. The data stream keeps this configuration even if the index template's lifecycle settings change later, until you turn **Inherit lifecycle from index template** back on.
+    1. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn it off, if enabled, and configure retention in the **Data phases** panel.
     1. Turn on **Delete phase** and set **Delete after** to a duration, in days, hours, minutes, or seconds, to delete data once it reaches that age. Leave **Delete phase** off to keep your data indefinitely.
     1. Select **Apply** to save your changes.
 
     {{ilm-init}} policies aren't available in {{serverless-short}}, so the **{{ilm-init}} policy** method isn't offered here.
 
+    :::{tip}
+    Turning off **Inherit lifecycle from index template** sets an explicit lifecycle configuration on the data stream. Selecting **Apply** updates the data stream's existing backing indices right away, not just new ones, and the setting continues to apply to backing indices created later, for example by rollover, until you turn **Inherit lifecycle from index template** back on. This only affects the **Successful data** tab. The **Failed data** tab has its own, separate inheritance setting.
     :::
 
-    :::{applies-item} stack: ga 9.5+
+    ::::
+
+    ::::{applies-item} stack: ga 9.5+
 
     1. Select {icon}`gear` **Actions** → **Edit data lifecycle**.
-    1. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn it off, if enabled, and select one of the following lifecycle methods. The data stream keeps whichever method you choose even if the index template's lifecycle settings change later, until you turn **Inherit lifecycle from index template** back on.
+    1. To use the lifecycle settings from the data stream's index template, turn on **Inherit lifecycle from index template**. Otherwise, turn it off, if enabled, and select one of the following lifecycle methods:
 
         - **Data stream lifecycle**: Configure retention in the **Data phases** panel. The **Hot phase** is always on. Turn on **Delete phase** and set **Delete after** to a duration, in days, hours, minutes, or seconds, to delete data once it reaches that age, or leave it off to keep your data indefinitely. With an Enterprise license and a default snapshot repository configured, you can also turn on **Frozen phase** to move data to a searchable snapshot before it's deleted.
         - **{{ilm-init}} policy**: Select an existing {{ilm-init}} policy from the list.
@@ -62,7 +66,11 @@ To change the data retention settings for a data stream:
 
     1. Select **Apply** to save your changes.
 
+    :::{tip}
+    Turning off **Inherit lifecycle from index template** sets an explicit lifecycle configuration on the data stream. Selecting **Apply** updates the data stream's existing backing indices right away, not just new ones, and the setting continues to apply to backing indices created later, for example by rollover, until you turn **Inherit lifecycle from index template** back on. This only affects the **Successful data** tab. The **Failed data** tab has its own, separate inheritance setting.
     :::
+
+    ::::
 
     :::{applies-item} stack: ga 9.0-9.4
 
@@ -76,10 +84,10 @@ To change the data retention settings for a data stream:
 
     :::
 
-    ::::
+    :::::
 
-:::::
-:::::{tab-item} API
+::::::
+::::::{tab-item} API
 :sync: api
 
 To change the data retention settings for a data stream:
@@ -103,8 +111,8 @@ To change the data retention settings for a data stream:
     ```
 
     1. The retention period of this data stream is set to 30 days. This means that {{es}} is allowed to delete data that is older than 30 days at its own discretion.
-:::::
 ::::::
+:::::::
 
 The changes in the lifecycle are applied on all backing indices of the data stream.
 
