@@ -33,8 +33,8 @@ To use synonyms in {{es}}, follow this workflow:
 
 1. [**Create synonym sets and rules**](#synonyms-store-synonyms): Define which terms are equivalent and how to store your synonym sets.
 2. [**Configure token filters and analyzers**](#synonyms-synonym-token-filters): Set up synonym token filters and add them to your analyzers.
-3. [**Test your analyzer**](#synonyms-test-analyzer): Verify your synonym configuration produces the expected tokens.
-4. [**Apply synonyms at index or search time**](#synonyms-apply-synonyms): Specify your analyzer in your index mapping.
+3. [**Apply synonyms at index or search time**](#synonyms-apply-synonyms): Specify your analyzer in your index mapping.
+4. [**Test your analyzer**](#synonyms-test-analyzer): Verify your synonym configuration produces the expected tokens.
 
 ## Synonym rule formats
 
@@ -154,26 +154,7 @@ Refer to each token filter's reference page for configuration details and instru
 Invalid synonym rules can cause errors when applying analyzer changes and can prevent an index from being reopened. Refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md) reference for details.
 ::::
 
-## Step 3: Test your analyzer [synonyms-test-analyzer]
-
-You can test an analyzer configuration without modifying your index settings. Use the [analyze API]({{es-apis}}operation/operation-indices-analyze) to test your analyzer chain:
-
-```console
-GET /_analyze
-{
-  "tokenizer": "standard",
-  "filter" : [
-    "lowercase",
-    {
-      "type": "synonym_graph",
-      "synonyms": ["pc => personal computer", "computer, pc, laptop"]
-    }
-  ],
-  "text" : "Check how PC synonyms work"
-}
-```
-
-## Step 4: Apply synonyms at index or search time [synonyms-apply-synonyms]
+## Step 3: Apply synonyms at index or search time [synonyms-apply-synonyms]
 
 Analyzers can be applied at [index time or search time](../../../manage-data/data-store/text-analysis/index-search-analysis.md).
 
@@ -225,6 +206,20 @@ PUT /my-index
 ```
 
 1. For file-based synonym sets, replace with `"synonyms_path": "analysis/synonym-set.txt"`.
+
+## Step 4: Test your analyzer [synonyms-test-analyzer]
+
+After creating your index, use the [analyze API]({{es-apis}}operation/operation-indices-analyze) to verify that your synonym configuration produces the expected tokens:
+
+```console
+GET /my-index/_analyze
+{
+  "analyzer": "my_analyzer",
+  "text": "laptop"
+}
+```
+
+If your synonym set includes `laptop, notebook` as equivalent terms, the response contains tokens for both `laptop` and `notebook`.
 
 ## Search with synonyms in action [synonyms-search-example]
 
