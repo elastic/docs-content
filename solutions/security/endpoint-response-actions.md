@@ -74,8 +74,8 @@ serverless: ga
 
 ::::{note}
 This response action is supported for:
-* {applies_to}`stack: ga 9.5+` [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) and [Microsoft Defender for Endpoint](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions) hosts.
-* {applies_to}`stack: ga 9.2-9.4` {applies_to}`serverless: ga` Microsoft Defender for Endpoint–enrolled hosts only.
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) and [Microsoft Defender for Endpoint](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions) hosts.
+* {applies_to}`stack: ga 9.2-9.4` Microsoft Defender for Endpoint–enrolled hosts only.
  
 ::::
 
@@ -84,6 +84,7 @@ Cancel a pending or in-progress action on the host. This allows you to force-can
 #### {{elastic-defend}} 
 ```yaml {applies_to}
 stack: ga 9.5+
+serverless: ga
 ```
 
 For {{elastic-defend}}, you must include the following parameter to identify the action to cancel:
