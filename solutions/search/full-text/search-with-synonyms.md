@@ -43,7 +43,7 @@ Synonym rules define which terms should be treated as equivalent. Each rule uses
 - **Explicit mappings** use `=>` to specify one-way replacements (for example, `i-pod, i pod => ipod`).
 - **Equivalent mappings** use commas to group interchangeable terms (for example, `ipod, i-pod, i pod`).
 
-For full format details, including `expand` behavior, WordNet format, and rule merging, refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md) reference.
+For full format details, refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md) reference.
 
 ## Step 1: Create synonym sets and rules [synonyms-store-synonyms]
 
