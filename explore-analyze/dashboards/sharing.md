@@ -136,7 +136,7 @@ You can still use the NDJSON export on later versions, but the API-compatible JS
 
 ## Export a panel as JSON [export-panel-json]
 ```{applies_to}
-stack: unavailable
+stack: preview 9.6+
 serverless: preview
 ```
 
