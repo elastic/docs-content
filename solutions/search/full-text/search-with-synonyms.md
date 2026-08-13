@@ -92,11 +92,6 @@ You have multiple options for creating synonym sets and rules.
 
 ### Method 1: {{kib}} UI
 
-```yaml {applies_to}
-serverless: 
-  elasticsearch:
-```
-
 You can create and manage synonym sets and synonym rules using the {{kib}} user interface.
 
 To create a synonym set using the UI:
@@ -240,7 +235,7 @@ Analyzers can be applied at [index time or search time](../../../manage-data/dat
 
 You need to decide when to apply your synonyms:
 
-* **Index time**: Synonyms are applied when the documents are indexed into {{es}}. This is a less flexible alternative, as changes to your synonyms require [reindexing]({{es-apis}}operation/operation-reindex).
+* **Index time**: {applies_to}`serverless: unavailable` Synonyms are applied when the documents are indexed into {{es}}. This is a less flexible alternative, as changes to your synonyms require [reindexing]({{es-apis}}operation/operation-reindex).
 * **Search time**: Synonyms are applied when a search is executed. This is a more flexible approach, which doesn't require reindexing. If token filters are configured with `"updateable": true`, search analyzers can be [reloaded]({{es-apis}}operation/operation-indices-reload-search-analyzers) when you make changes to your synonyms.
   :::{note}
   Synonym sets created using the synonyms API or the UI can only be used at search time.
