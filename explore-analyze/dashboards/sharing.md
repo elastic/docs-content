@@ -89,7 +89,7 @@ For general information about reporting across all {{kib}} apps, including known
 
 ## Download visualization data as CSV [download-csv]
 
-You can download the data displayed in a visualization on a dashboard as a CSV file. The option is available for chart and table visualizations that expose tabular data, typically those created with **Lens**. It does not appear on panel types such as **Markdown**, **Image**, **Link**, or **Maps**.
+You can download the data displayed in a visualization on a dashboard as a CSV file. The option is available for chart and table visualizations that expose tabular data, typically those created with **Lens**. It does not appear on panel types such as **Markdown**, **Image**, **Links**, or **Maps**.
 
 1. On the dashboard, open the panel menu of the visualization.
 2. Select **Download CSV**. The file downloads to your machine.
@@ -97,6 +97,8 @@ You can download the data displayed in a visualization on a dashboard as a CSV f
 ## Export JSON [export-dashboards]
 
 You can export a dashboard's configuration to recreate it in another space or instance, back it up, or version-control it.
+
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To export only a supported panel's configuration, use [panel JSON export](#export-panel-json).
 
 $$$export-dashboard-json$$$ $$$export-ndjson$$$
 
@@ -140,13 +142,17 @@ stack: preview 9.6+
 serverless: preview
 ```
 
-You can export the configuration of individual elements of a dashboard as JSON. The **Export JSON** option is available for:
-- **Visualizations** (Lens), **Links**, and **Markdown** panels.
-- Unpinned **Options list**, **Range slider**, and **ES|QL** controls. Pinned controls don't offer the option.
+You can export the configuration of individual dashboard elements as API-compatible JSON. The **Export JSON** option is available for:
 
-Dashboard-level filters and the global time range affect the data displayed by a panel, but the panel export excludes them. The export includes filters, queries, and custom time ranges configured in a visualization. A control export also includes the control's current selection.
+- Visualizations created with **Lens**
+- **Links** and **Markdown** panels
+- Unpinned **Options list**, **Range slider**, and **ES|QL** controls
 
-1. On the dashboard, from the panel menu, select **Export JSON**. When the menu contains an **Export** submenu, select **Export** → **Export JSON** instead.
+Pinned controls don't offer the option.
+
+The panel export excludes the filters, query, and time range applied at the dashboard level, even though they affect the data displayed by the panel. It includes filters, queries, and custom time ranges configured in the visualization itself. A control export also includes the control's current selection.
+
+1. On the dashboard, from the panel menu, select **Export JSON**.
 
    :::{image} /explore-analyze/images/dashboard-panel-menu-export-json.png
    :alt: Dashboard panel menu with the Export JSON option highlighted
@@ -155,7 +161,7 @@ Dashboard-level filters and the global time range affect the data displayed by a
    :::
 
 2. Review the JSON source in the flyout. For a panel linked to the library, the export shows the library reference by default. Turn on **Show full configuration** to export the panel's full configuration instead of its library reference.
-3. Select **Copy to clipboard** to copy the JSON, or **Download JSON** to save it to a file on your machine.
+3. Select **Copy to clipboard** to copy the JSON, or **Download JSON** to save it to a file on your machine. Confirm that the JSON is available on your clipboard or in your browser's download location.
 
 A panel export contains only the panel configuration, not a complete dashboard definition. To export the dashboard or open a pre-populated Dashboards API request in Console, use [dashboard JSON export](#export-dashboard-json).
 
