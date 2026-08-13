@@ -155,7 +155,7 @@ Dashboard-level filters and the global time range affect the data displayed by t
    :::
 
 2. Review the JSON source in the flyout. For a panel linked to the library, the export shows the library reference by default. Turn on **Show full configuration** to export the panel's full configuration instead of its library reference.
-3. Select **Copy to clipboard** to copy the JSON, or **Download JSON** to save it to a file.
+3. Select **Copy to clipboard** to copy the JSON, or **Download JSON** to save it to a file on your machine.
 
 A panel export contains only the panel configuration, not a complete dashboard definition. To export the dashboard or open a pre-populated Dashboards API request in Console, use [dashboard JSON export](#export-dashboard-json).
 
