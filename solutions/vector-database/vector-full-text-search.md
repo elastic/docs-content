@@ -3,23 +3,25 @@ navigation_title: Vector and full-text search
 description: Step-by-step tutorial for connecting an application to an Elasticsearch Vector Database project, indexing data, and running full-text, semantic, hybrid, and ES|QL searches.
 applies_to:
   serverless: ga
-products:
-  - id: elasticsearch
-  - id: cloud-serverless
-type: tutorial
 ---
 
-# Elasticsearch vector and full-text search in 10 minutes [vector-full-text-search-quickstart]
+# {{es}} vector and full-text search in 10 minutes [vector-full-text-search-quickstart]
 
-Elasticsearch is a search and vector engine that supports full-text, semantic, and hybrid search over your data.
+{{es}} is a search and vector engine that supports full-text, semantic, and hybrid search over your data. This guide uses official {{es}} clients to take you from an empty Vector Database project to real search results in about 10 minutes.
 
-This guide uses official {{es}} clients to take you from an empty Vector Database project to real search results in about 10 minutes. By the end, you have a `books` index, semantic and hybrid search results, an aggregation, and a [complete script](#vector-full-text-search-complete-script) to use in your app.
+Use it if you're new to search in {{es}} or want to experiment with meaning-based retrieval alongside keyword matching. By the end of the tutorial, you:
 
+- Create a Vector Database project and connect an official {{es}} client.
+- Create an index and add sample data.
+- Run semantic and hybrid searches and aggregate the data with {{esql}}.
+
+:::{tip}
 Are you an agent? Use the [elasticsearch-onboarding skill](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-onboarding).
+:::
 
 ## Create a Vector Database project [vector-full-text-search-create-project]
 
-Create a free [Elasticsearch Vector Database project](https://cloud.elastic.co/projects/create/elasticsearch?use_case=vector_search). It's serverless and built for search and vector workloads, so you don't need to size or manage a cluster.
+Create a free [{{es}} Vector Database project](https://cloud.elastic.co/projects/create/elasticsearch?use_case=vector_search). It's serverless and built for search and vector workloads, so you don't need to size or manage a cluster.
 
 The project takes about a minute to start. The **Getting started** page then displays the **Project endpoint** and a generated API key. Copy both values.
 
@@ -121,13 +123,13 @@ For supported .NET versions and other requirements, refer to the [.NET client do
 ::::{tab-item} Java
 :sync: java
 
-```groovy subs=true
+```groovy
 dependencies {
-    implementation "co.elastic.clients:elasticsearch-java:{{version.stack}}"
+    implementation "co.elastic.clients:elasticsearch-java:VERSION"
 }
 ```
 
-For supported Java versions and other requirements, refer to the [Java client documentation](elasticsearch-java://reference/index.md).
+Replace `VERSION` with the version from the [latest Java client release](https://github.com/elastic/elasticsearch-java/releases). For supported Java versions and other requirements, refer to the [Java client documentation](elasticsearch-java://reference/index.md).
 
 ::::
 
@@ -144,7 +146,7 @@ For supported Go versions and other requirements, refer to the [Go client instal
 
 :::::
 
-## Initialize the {{es}} client
+## Initialize the {{es}} client [vector-full-text-search-init-client]
 
 Use the environment variables to create the client and check the connection:
 
@@ -271,7 +273,6 @@ ElasticsearchClient es = ElasticsearchClient.of(b -> b
 );
 
 System.out.println(es.info());
-es.close();
 ```
 
 ::::
@@ -300,6 +301,14 @@ import (
 
 func main() {
 	es, err := elasticsearch.New(
+		elasticsearch.WithAddresses(os.Getenv("ES_URL")),
+		elasticsearch.WithAPIKey(os.Getenv("ES_API_KEY")),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	typed, err := elasticsearch.NewTyped(
 		elasticsearch.WithAddresses(os.Getenv("ES_URL")),
 		elasticsearch.WithAPIKey(os.Getenv("ES_API_KEY")),
 	)
@@ -346,17 +355,12 @@ This response confirms that the client authenticated and connected to your Vecto
 
 ## Create an index and add data [vector-full-text-search-add-data]
 
-Create the `books` index and index five books.
-
-### Create the index
+Create the `books` index, then add sample data.
 
 {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
 
 :::{note}
 [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors. When you search the field, {{es}} embeds your query the same way and matches on meaning. For example, "space rescue" can match "stranded astronaut" with no words in common.
-
-
-
 :::
 
 :::::{tab-set}
@@ -594,9 +598,7 @@ fmt.Println(res.StatusCode == 200)
 
 :::::
 
-### Add the data
-
-Load some data. This example indexes five books in one bulk request:
+Next, index five books in one bulk request:
 
 :::::{tab-set}
 :group: languages
@@ -1087,11 +1089,6 @@ Run a semantic search against the `description` field:
 :sync: python
 
 ```python
-es = Elasticsearch(
-    os.environ["ES_URL"],
-    api_key=os.environ["ES_API_KEY"],
-)
-
 resp = es.search(
     index="books",
     query={
@@ -1116,11 +1113,6 @@ interface Book {
   title: string;
 }
 
-const es = new Client({
-  node: process.env.ES_URL,
-  auth: { apiKey: process.env.ES_API_KEY! },
-});
-
 const resp = await es.search<Book>({
   index: "books",
   query: {
@@ -1142,11 +1134,6 @@ for (const hit of resp.hits.hits) {
 :sync: php
 
 ```php
-$es = ClientBuilder::create()
-    ->setHosts([getenv("ES_URL")])
-    ->setApiKey(getenv("ES_API_KEY"))
-    ->build();
-
 $response = $es->search([
     "index" => "books",
     "body" => [
@@ -1170,11 +1157,6 @@ foreach ($response["hits"]["hits"] as $hit) {
 :sync: ruby
 
 ```ruby
-es = Elasticsearch::Client.new(
-  url: ENV.fetch("ES_URL"),
-  api_key: ENV.fetch("ES_API_KEY")
-)
-
 response = es.search(
   index: "books",
   body: {
@@ -1198,15 +1180,6 @@ end
 :sync: csharp
 
 ```csharp
-var url = Environment.GetEnvironmentVariable("ES_URL")
-    ?? throw new InvalidOperationException("ES_URL is not set.");
-var apiKey = Environment.GetEnvironmentVariable("ES_API_KEY")
-    ?? throw new InvalidOperationException("ES_API_KEY is not set.");
-
-var settings = new ElasticsearchClientSettings(new Uri(url))
-    .Authentication(new ApiKey(apiKey));
-var es = new ElasticsearchClient(settings);
-
 var response = await es.SearchAsync<SearchBook>(s => s
     .Indices("books")
     .Query(q => q
@@ -1241,14 +1214,6 @@ record Book(
     String description
 ) {}
 
-String serverUrl = System.getenv("ES_URL");
-String apiKey = System.getenv("ES_API_KEY");
-
-ElasticsearchClient es = ElasticsearchClient.of(b -> b
-    .host(serverUrl)
-    .apiKey(apiKey)
-);
-
 String query = """
     {
       "query": {
@@ -1269,8 +1234,6 @@ SearchResponse<Book> response = es.search(s -> s
 for (Hit<Book> hit : response.hits().hits()) {
     System.out.println(hit.score() + " " + hit.source().title());
 }
-
-es.close();
 ```
 
 ::::
@@ -1279,16 +1242,7 @@ es.close();
 :sync: go
 
 ```go
-func main() {
-	es, err := elasticsearch.New(
-		elasticsearch.WithAddresses(os.Getenv("ES_URL")),
-		elasticsearch.WithAPIKey(os.Getenv("ES_API_KEY")),
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	query := strings.NewReader(`{
+query := strings.NewReader(`{
 	  "query": {
 	    "semantic": {
 	      "field": "description",
@@ -1324,9 +1278,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	for _, hit := range response.Hits.Hits {
-		fmt.Println(hit.Score, hit.Source.Title)
-	}
+for _, hit := range response.Hits.Hits {
+	fmt.Println(hit.Score, hit.Source.Title)
 }
 ```
 
@@ -1334,7 +1287,7 @@ func main() {
 
 :::::
 
-**Project Hail Mary** ranks first.
+**Project Hail Mary** ranks first because its description includes "A lone astronaut," which is semantically similar to "surviving alone in space" even though the wording differs.
 
 ### Hybrid search [vector-full-text-search-hybrid]
 
@@ -1347,23 +1300,18 @@ Run a hybrid search that uses full-text search on the `title` field and semantic
 :sync: python
 
 ```python
-es = Elasticsearch(
-    os.environ["ES_URL"],
-    api_key=os.environ["ES_API_KEY"],
-)
-
 resp = es.search(
     index="books",
     query={
-        "bool": {
+        "bool": { <1>
             "should": [
                 {
-                    "match": {
+                    "match": { <2>
                         "title": "wind"
                     }
                 },
                 {
-                    "semantic": {
+                    "semantic": { <3>
                         "field": "description",
                         "query": "young magician coming of age",
                     }
@@ -1377,6 +1325,10 @@ for hit in resp["hits"]["hits"]:
     print(hit["_score"], hit["_source"]["title"])
 ```
 
+1. The `bool.should` clauses are optional, but at least one must match. When both clauses match a document, {{es}} adds their scores, which can rank that document higher.
+2. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
+3. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+
 ::::
 
 ::::{tab-item} TypeScript
@@ -1387,23 +1339,18 @@ interface Book {
   title: string;
 }
 
-const es = new Client({
-  node: process.env.ES_URL,
-  auth: { apiKey: process.env.ES_API_KEY! },
-});
-
 const resp = await es.search<Book>({
   index: "books",
   query: {
-    bool: {
+    bool: { <1>
       should: [
         {
-          match: {
+          match: { <2>
             title: "wind",
           },
         },
         {
-          semantic: {
+          semantic: { <3>
             field: "description",
             query: "young magician coming of age",
           },
@@ -1418,30 +1365,29 @@ for (const hit of resp.hits.hits) {
 }
 ```
 
+1. The `bool.should` clauses are optional, but at least one must match. When both clauses match a document, {{es}} adds their scores, which can rank that document higher.
+2. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
+3. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+
 ::::
 
 ::::{tab-item} PHP
 :sync: php
 
 ```php
-$es = ClientBuilder::create()
-    ->setHosts([getenv("ES_URL")])
-    ->setApiKey(getenv("ES_API_KEY"))
-    ->build();
-
 $response = $es->search([
     "index" => "books",
     "body" => [
         "query" => [
-            "bool" => [
+            "bool" => [ <1>
                 "should" => [
                     [
-                        "match" => [
+                        "match" => [ <2>
                             "title" => "wind",
                         ],
                     ],
                     [
-                        "semantic" => [
+                        "semantic" => [ <3>
                             "field" => "description",
                             "query" => "young magician coming of age",
                         ],
@@ -1457,30 +1403,29 @@ foreach ($response["hits"]["hits"] as $hit) {
 }
 ```
 
+1. The `bool.should` clauses are optional, but at least one must match. When both clauses match a document, {{es}} adds their scores, which can rank that document higher.
+2. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
+3. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+
 ::::
 
 ::::{tab-item} Ruby
 :sync: ruby
 
 ```ruby
-es = Elasticsearch::Client.new(
-  url: ENV.fetch("ES_URL"),
-  api_key: ENV.fetch("ES_API_KEY")
-)
-
 response = es.search(
   index: "books",
   body: {
     query: {
-      bool: {
+      bool: { <1>
         should: [
           {
-            match: {
+            match: { <2>
               title: "wind"
             }
           },
           {
-            semantic: {
+            semantic: { <3>
               field: "description",
               query: "young magician coming of age"
             }
@@ -1496,33 +1441,28 @@ response["hits"]["hits"].each do |hit|
 end
 ```
 
+1. The `bool.should` clauses are optional, but at least one must match. When both clauses match a document, {{es}} adds their scores, which can rank that document higher.
+2. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
+3. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+
 ::::
 
 ::::{tab-item} C#/.NET
 :sync: csharp
 
 ```csharp
-var url = Environment.GetEnvironmentVariable("ES_URL")
-    ?? throw new InvalidOperationException("ES_URL is not set.");
-var apiKey = Environment.GetEnvironmentVariable("ES_API_KEY")
-    ?? throw new InvalidOperationException("ES_API_KEY is not set.");
-
-var settings = new ElasticsearchClientSettings(new Uri(url))
-    .Authentication(new ApiKey(apiKey));
-var es = new ElasticsearchClient(settings);
-
 var response = await es.SearchAsync<SearchBook>(s => s
     .Indices("books")
     .Query(q => q
-        .Bool(b => b
+        .Bool(b => b <1>
             .Should(
                 should => should
-                    .Match(match => match
+                    .Match(match => match <2>
                         .Field(book => book.Title)
                         .Query("wind")
                     ),
                 should => should
-                    .Semantic(semantic => semantic
+                    .Semantic(semantic => semantic <3>
                         .Field("description")
                         .Query("young magician coming of age")
                     )
@@ -1541,6 +1481,10 @@ public record SearchBook(
 );
 ```
 
+1. The `bool.should` clauses are optional, but at least one must match. When both clauses match a document, {{es}} adds their scores, which can rank that document higher.
+2. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
+3. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+
 ::::
 
 ::::{tab-item} Java
@@ -1555,26 +1499,18 @@ record Book(
     String description
 ) {}
 
-String serverUrl = System.getenv("ES_URL");
-String apiKey = System.getenv("ES_API_KEY");
-
-ElasticsearchClient es = ElasticsearchClient.of(b -> b
-    .host(serverUrl)
-    .apiKey(apiKey)
-);
-
 String query = """
     {
       "query": {
-        "bool": {
+        "bool": { <1>
           "should": [
             {
-              "match": {
+              "match": { <2>
                 "title": "wind"
               }
             },
             {
-              "semantic": {
+              "semantic": { <3>
                 "field": "description",
                 "query": "young magician coming of age"
               }
@@ -1594,9 +1530,11 @@ SearchResponse<Book> response = es.search(s -> s
 for (Hit<Book> hit : response.hits().hits()) {
     System.out.println(hit.score() + " " + hit.source().title());
 }
-
-es.close();
 ```
+
+1. The `bool.should` clauses are optional, but at least one must match. When both clauses match a document, {{es}} adds their scores, which can rank that document higher.
+2. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
+3. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
 
 ::::
 
@@ -1604,26 +1542,17 @@ es.close();
 :sync: go
 
 ```go
-func main() {
-	es, err := elasticsearch.New(
-		elasticsearch.WithAddresses(os.Getenv("ES_URL")),
-		elasticsearch.WithAPIKey(os.Getenv("ES_API_KEY")),
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	query := strings.NewReader(`{
+query := strings.NewReader(`{
 	  "query": {
-	    "bool": {
+	    "bool": { <1>
 	      "should": [
 	        {
-	          "match": {
+	          "match": { <2>
 	            "title": "wind"
 	          }
 	        },
 	        {
-	          "semantic": {
+	          "semantic": { <3>
 	            "field": "description",
 	            "query": "young magician coming of age"
 	          }
@@ -1660,19 +1589,22 @@ func main() {
 		log.Fatal(err)
 	}
 
-	for _, hit := range response.Hits.Hits {
-		fmt.Println(hit.Score, hit.Source.Title)
-	}
+for _, hit := range response.Hits.Hits {
+	fmt.Println(hit.Score, hit.Source.Title)
 }
 ```
+
+1. The `bool.should` clauses are optional, but at least one must match. When both clauses match a document, {{es}} adds their scores, which can rank that document higher.
+2. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
+3. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
 
 ::::
 
 :::::
 
-The `match` clause scores exact title words and the `semantic` clause scores meaning. **The Name of the Wind** ranks first.
+**The Name of the Wind** ranks first because it matches both clauses, so its full-text and semantic scores combine.
 
-## Aggregate the data with ES|QL [vector-full-text-search-esql]
+## Aggregate the data with {{esql}} [vector-full-text-search-esql]
 
 With [aggregations](/explore-analyze/query-filter/aggregations.md), you can summarize groups of data, such as the number of books released in each decade. Use [{{esql}}](elasticsearch://reference/query-languages/esql.md), a piped query language, to run this aggregation:
 
@@ -1683,11 +1615,6 @@ With [aggregations](/explore-analyze/query-filter/aggregations.md), you can summ
 :sync: python
 
 ```python
-es = Elasticsearch(
-    os.environ["ES_URL"],
-    api_key=os.environ["ES_API_KEY"],
-)
-
 resp = es.esql.query(query="""
     FROM books
     | STATS books = COUNT(*) BY decade = release_year - (release_year % 10)
@@ -1706,11 +1633,6 @@ for row in resp["values"]:
 :sync: typescript
 
 ```typescript
-const es = new Client({
-  node: process.env.ES_URL,
-  auth: { apiKey: process.env.ES_API_KEY! },
-});
-
 const resp = await es.esql.query({
   query: `
     FROM books
@@ -1731,11 +1653,6 @@ for (const [decade, count] of resp.values ?? []) {
 :sync: php
 
 ```php
-$es = ClientBuilder::create()
-    ->setHosts([getenv("ES_URL")])
-    ->setApiKey(getenv("ES_API_KEY"))
-    ->build();
-
 $response = $es->esql()->query([
     "body" => [
         "query" => <<<'ESQL'
@@ -1758,11 +1675,6 @@ foreach ($response["values"] as [$decade, $count]) {
 :sync: ruby
 
 ```ruby
-es = Elasticsearch::Client.new(
-  url: ENV.fetch("ES_URL"),
-  api_key: ENV.fetch("ES_API_KEY")
-)
-
 response = es.esql.query(
   body: {
     query: <<~ESQL
@@ -1785,15 +1697,6 @@ end
 :sync: csharp
 
 ```csharp
-var url = Environment.GetEnvironmentVariable("ES_URL")
-    ?? throw new InvalidOperationException("ES_URL is not set.");
-var apiKey = Environment.GetEnvironmentVariable("ES_API_KEY")
-    ?? throw new InvalidOperationException("ES_API_KEY is not set.");
-
-var settings = new ElasticsearchClientSettings(new Uri(url))
-    .Authentication(new ApiKey(apiKey));
-var es = new ElasticsearchClient(settings);
-
 var response = await es.Esql.QueryAsync(r => r
     .Query("""
         FROM books
@@ -1819,14 +1722,6 @@ foreach (
 :sync: java
 
 ```java
-String serverUrl = System.getenv("ES_URL");
-String apiKey = System.getenv("ES_API_KEY");
-
-ElasticsearchClient es = ElasticsearchClient.of(b -> b
-    .host(serverUrl)
-    .apiKey(apiKey)
-);
-
 String query = """
     FROM books
     | STATS books = COUNT(*) BY decade = release_year - (release_year % 10)
@@ -1847,8 +1742,6 @@ try (BufferedReader reader = new BufferedReader(
         System.out.println(values[0] + "s: " + values[1]);
     });
 }
-
-es.close();
 ```
 
 ::::
@@ -1857,21 +1750,12 @@ es.close();
 :sync: go
 
 ```go
-func main() {
-	es, err := elasticsearch.NewTyped(
-		elasticsearch.WithAddresses(os.Getenv("ES_URL")),
-		elasticsearch.WithAPIKey(os.Getenv("ES_API_KEY")),
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	query := `FROM books
+query := `FROM books
 		| STATS books = COUNT(*) BY decade = release_year - (release_year % 10)
 		| KEEP decade, books
 		| SORT decade ASC`
 
-	response, err := es.Esql.Query().
+response, err := typed.Esql.Query().
 		Query(query).
 		Format(esqlformat.Csv).
 		Do(context.Background())
@@ -1884,9 +1768,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	for _, row := range rows[1:] {
-		fmt.Printf("%ss: %s\n", row[0], row[1])
-	}
+for _, row := range rows[1:] {
+	fmt.Printf("%ss: %s\n", row[0], row[1])
 }
 ```
 
@@ -2849,11 +2732,21 @@ func main() {
 
 ## Next steps [vector-full-text-search-next-steps]
 
-If you want to continue using your Vector Database project, use the following resources to explore more search workflows. To learn how continued usage is billed, refer to [Serverless project billing dimensions](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md). If you don't plan to continue using the project, [delete it](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless) to avoid additional usage charges.
+If you want to continue using your Vector Database project, select a next step based on your goal. 
+
+### Learn the fundamentals
 
 - [Vector search](/solutions/search/vector.md): Learn about vectors, embeddings, vector fields, and similarity search in {{es}}.
-- [Compare Elastic Inference Service models](/explore-analyze/elastic-inference/eis-supported-models.md#embedding-models): Learn about the embedding models available through the Elastic {{infer-cap}} Service and compare their capabilities.
+- [Compare Elastic {{infer-cap}} Service models](/explore-analyze/elastic-inference/eis-supported-models.md#embedding-models): Learn about the embedding models available through the Elastic {{infer-cap}} Service and compare their capabilities.
+
+### Tune search
+
 - [Learn about chunking strategies](/explore-analyze/elastic-inference/inference-api.md#infer-chunking-config): Learn how to split long text for {{infer}} using sentence, word, recursive, or custom chunking.
 - [Tune retrieval with ranking and reranking](/solutions/search/ranking.md): Learn how to improve result ordering with multi-stage ranking and reranking.
 - [Plan quantization and sizing](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization): Learn how quantization reduces vector memory and storage requirements and compare the available quantization types.
-- [Tutorial: Build multimodal search in Elasticsearch](/solutions/search/multimodal-search/multimodal-search-tutorial.md): Learn how to index images and search them with text, image, and PDF input.
+
+### Try another tutorial
+
+- [Build multimodal search in {{es}}](/solutions/search/multimodal-search/multimodal-search-tutorial.md): Learn how to index images and search them with text, image, and PDF input.
+
+To learn how continued usage is billed, refer to [{{serverless-short}} project billing dimensions](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md). If you don't plan to continue using the project, [delete it](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless) to avoid additional usage charges.
