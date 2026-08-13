@@ -55,8 +55,8 @@ sea biscuit, sea biscit => seabiscuit
 ```
 
 With explicit mappings, the relationship is one-way. In the previous examples:
-- `i-pod` and `i pod` will be replaced with `ipod`, but `ipod` will not be replaced with `i-pod` or `i pod`
-- `sea biscuit` and `sea biscit` will be replaced with `seabiscuit`, but `seabiscuit` will not be replaced with `sea biscuit` or `sea biscit`
+- `i-pod` and `i pod` are replaced with `ipod`, but `ipod` is not replaced with `i-pod` or `i pod`.
+- `sea biscuit` and `sea biscit` are replaced with `seabiscuit`, but `seabiscuit` is not replaced with `sea biscuit` or `sea biscit`.
 
 This is different from equivalent synonyms, which can create bidirectional relationships when `expand=true`.
 
@@ -104,14 +104,13 @@ To create a synonym set using the UI:
    - Add **Explicit rules** by adding multiple terms that map to a single term. For example: `i-pod, i pod => ipod`
 5. Select **Save** to save your rules.
 
-The UI supports the same synonym rule formats as the file-based approach. Changes made through the UI will automatically reload the associated analyzers.
+The UI supports the same synonym rule formats as the [file-based approach](#synonyms-store-synonyms-file). Changes made through the UI automatically reload the associated analyzers.
 
 ### Method 2: REST API [synonyms-store-synonyms-api]
 
-You can use the [synonyms APIs]({{es-apis}}group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows you to dynamically define and modify synonyms sets. For examples of how to
-create or update a synonym set with APIs, refer to the [Create or update synonyms set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md) page.
+You can use the [synonyms APIs]({{es-apis}}group/endpoint-synonyms) to manage synonym sets. This is the most flexible approach, as it allows you to dynamically define and modify synonym sets. For examples of how to create or update a synonym set with APIs, refer to the [Create or update synonym set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md) page.
 
-Changes in your synonyms sets will automatically reload the associated analyzers.
+Changes to your synonym sets automatically reload the associated analyzers.
 
 ### Method 3: File-based [synonyms-store-synonyms-file]
 
@@ -119,9 +118,9 @@ Changes in your synonyms sets will automatically reload the associated analyzers
 serverless: unavailable
 ```
 
-You can store your synonyms set in a file.
+You can store your synonym set in a file.
 
-Make sure you upload a synonyms set file for all your cluster nodes, to the configuration directory for your {{es}} distribution. If you're using {{ech}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
+Make sure you upload the synonym set file to all your cluster nodes, in the configuration directory for your {{es}} distribution. If you're using {{ech}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
 
 An example of a synonyms file:
 
@@ -159,11 +158,11 @@ foo => baz
 foo => foo bar, baz
 ```
 
-To update an existing synonyms set, upload new files to your cluster. Synonyms set files must be kept in sync on every cluster node.
+To update an existing synonym set, upload new files to your cluster. Synonym set files must be kept in sync on every cluster node.
 
-When a synonyms set is updated, search analyzers that use it need to be refreshed using the [reload search analyzers API]({{es-apis}}operation/operation-indices-reload-search-analyzers)
+When a synonym set is updated, search analyzers that use it need to be refreshed using the [reload search analyzers API]({{es-apis}}operation/operation-indices-reload-search-analyzers).
 
-This manual syncing and reloading makes this approach less flexible than using the [synonyms API](../../../solutions/search/full-text/search-with-synonyms.md#synonyms-store-synonyms-api).
+This manual syncing and reloading makes this approach less flexible than using the [synonyms API](#synonyms-store-synonyms-api).
 
 ### Method 4: Inline [synonyms-store-synonyms-inline]
 
@@ -175,10 +174,10 @@ Inline synonyms are not recommended for production usage. A large number of inli
 
 ## Step 2: Configure synonyms token filters and analyzers [synonyms-synonym-token-filters]
 
-Once your synonyms sets are created, you can start configuring your token filters and analyzers to use them.
+Once your synonym sets are created, you can start configuring your token filters and analyzers to use them.
 
 ::::{warning}
-Synonyms sets must exist before they can be added to indices. If an index is created referencing a nonexistent synonyms set, the index will remain in a partially created and inoperable state. The only way to recover from this scenario is to ensure the synonyms set exists then either delete and re-create the index, or close and re-open the index.
+Synonym sets must exist before they can be added to indices. If an index is created referencing a nonexistent synonym set, the index remains in a partially created and inoperable state. The only way to recover from this scenario is to ensure the synonym set exists then either delete and re-create the index, or close and re-open the index.
 ::::
 
 {{es}} uses synonyms as part of the [analysis process](../../../manage-data/data-store/text-analysis.md). You can use two types of [token filter](elasticsearch://reference/text-analysis/token-filter-reference.md) to include synonyms:
@@ -239,10 +238,10 @@ You need to decide when to apply your synonyms:
 * **Index time**: Synonyms are applied when the documents are indexed into {{es}}. This is a less flexible alternative, as changes to your synonyms require [reindexing]({{es-apis}}operation/operation-reindex).
 * **Search time**: Synonyms are applied when a search is executed. This is a more flexible approach, which doesn't require reindexing. If token filters are configured with `"updateable": true`, search analyzers can be [reloaded]({{es-apis}}operation/operation-indices-reload-search-analyzers) when you make changes to your synonyms.
   :::{note}
-  Synonyms sets created using the synonyms API or the UI can only be used at search time.
+  Synonym sets created using the synonyms API or the UI can only be used at search time.
   :::
 
-You can specify the analyzer that contains your synonyms set as a [search time analyzer](../../../manage-data/data-store/text-analysis/specify-an-analyzer.md#specify-search-analyzer) or as an [index time analyzer](../../../manage-data/data-store/text-analysis/specify-an-analyzer.md#specify-index-time-analyzer).
+You can specify the analyzer that contains your synonym set as a [search time analyzer](../../../manage-data/data-store/text-analysis/specify-an-analyzer.md#specify-search-analyzer) or as an [index time analyzer](../../../manage-data/data-store/text-analysis/specify-an-analyzer.md#specify-index-time-analyzer).
 
 The following example adds `my_analyzer` as a search analyzer to the `title` field in an index mapping:
 
