@@ -1,6 +1,6 @@
 If you need {{ece}} containers to make outbound connections over IPv6, enable dual-stack networking on the Docker default bridge **before** you install ECE.
 
-1. Ensure IPv6 forwarding is enabled on the host. If you have not already set it with the other kernel parameters, add:
+1. Ensure IPv6 forwarding is enabled on the host. If you have not already set it with the other kernel parameter, add:
 
     ```text
     net.ipv6.conf.all.forwarding=1
@@ -40,3 +40,12 @@ If you need {{ece}} containers to make outbound connections over IPv6, enable du
     ```
 
     The output should include an IPv6 subnet such as `fd00:10:89::/64`.
+
+1. Run a short-lived container and test IPv6 egress:
+
+    ```sh
+    docker run --rm curlimages/curl:latest \
+        -6 -s -o /dev/null -w "%{http_code}\n" https://ipv6.google.com
+    ```
+
+    A response of `200` confirms that containers can reach IPv6 endpoints.

@@ -25,7 +25,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
 
 **Example:** For AWS, allowing traffic between hosts is implemented using security groups.
 
-If you need IPv6 egress from ECE containers, ensure the host has working dual-stack (IPv4 and IPv6) connectivity, and complete the optional Podman dual-stack steps later in this guide.
+{applies_to}`ece: ga 4.2` If you need IPv6 egress from ECE containers, ensure the host has working dual-stack (IPv4 and IPv6) connectivity, and complete the optional Podman dual-stack steps later in this guide.
 
 ::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
@@ -333,6 +333,7 @@ If you need IPv6 egress from ECE containers, ensure the host has working dual-st
     ```
 
     ::::{note}
+    :applies_to: ece: ga 4.2
     If you need IPv6 egress from containers, also add `net.ipv6.conf.all.forwarding=1` to the same `sysctl` configuration.
     ::::
 
@@ -395,7 +396,7 @@ If you need IPv6 egress from ECE containers, ensure the host has working dual-st
     ::::
 
 
-30. Optional: Enable dual-stack networking for IPv6 egress. Complete these steps only if ECE containers must reach IPv6 endpoints. Podman does not support configuring both IPv4 and IPv6 on the built-in default network through `containers.conf`, so create a dual-stack network and set it as the default for new containers.
+30. {applies_to}`ece: ga 4.2` Optional: Enable dual-stack networking for IPv6 egress. Complete these steps only if ECE containers must reach IPv6 endpoints. Podman does not support configuring both IPv4 and IPv6 on the built-in default network through `containers.conf`, so create a dual-stack network and set it as the default for new containers.
 
     1. Create a dual-stack Podman network:
 
@@ -439,7 +440,7 @@ If you need IPv6 egress from ECE containers, ensure the host has working dual-st
         sudo systemctl status podman
         ```
 
-    1. Optional: If you enabled dual-stack networking for IPv6 egress, verify both the default network configuration and outbound IPv6 connectivity from a container:
+    1. {applies_to}`ece: ga 4.2` Optional: If you enabled dual-stack networking for IPv6 egress, verify both the default network configuration and outbound IPv6 connectivity from a container:
 
         1. Confirm that the dual-stack network has both subnets:
 

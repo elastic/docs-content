@@ -29,7 +29,7 @@ Before you begin:
 
 - Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) for a list of ports that need to be open. The technical configuration depends on the underlying infrastructure.
 
-- If you need IPv6 egress from ECE containers, ensure the host has working dual-stack (IPv4 and IPv6) connectivity, and complete the optional Docker dual-stack steps in [Configure the Docker daemon](#ece-configure-docker-daemon-sles12).
+- {applies_to}`ece: ga 4.2` If you need IPv6 egress from ECE containers, ensure the host has working dual-stack (IPv4 and IPv6) connectivity, and complete the optional Docker dual-stack steps in [Configure the Docker daemon](#ece-configure-docker-daemon-sles12).
 
 - Review the [Users and permissions prerequisites](ece-users-permissions.md) for ECE. The commands in this guide assume that you are logged in as the non-root user that will install and run ECE, referred to throughout this guide as the **ECE user**. We recommend using a dedicated `elastic` user account. If it does not already exist, you can create it in the next section.
 
@@ -239,6 +239,7 @@ Adjust the host settings required by ECE, including cgroup accounting, kernel pa
     4. Make sure the host doesn't swap too early
 
     ::::{note}
+    :applies_to: ece: ga 4.2
     If you need IPv6 egress from containers, also add `net.ipv6.conf.all.forwarding=1` to the same `sysctl` configuration.
     ::::
 
@@ -374,6 +375,10 @@ After you [install Docker](#ece-install-docker-sles12) and [prepare the data dir
         ```
 
 ### Optional: Enable dual-stack networking for IPv6 egress
+```{applies_to}
+deployment:
+  ece: ga 4.2
+```
 
 ::::{include} /deploy-manage/deploy/_snippets/ece-docker-ipv6-daemon.md
 ::::
@@ -491,7 +496,7 @@ After completing the configuration steps in the previous sections, reboot the ho
     The `/mnt/data/docker` subdirectory is owned by `root` rather than by the ECE user, because it is managed by the Docker daemon. This is normal and does not indicate a misconfiguration.
     ::::
 
-1. Optional: If you enabled dual-stack networking for IPv6 egress, verify both the default bridge configuration and outbound IPv6 connectivity from a container:
+1. {applies_to}`ece: ga 4.2` Optional: If you enabled dual-stack networking for IPv6 egress, verify both the default bridge configuration and outbound IPv6 connectivity from a container:
 
     1. Confirm that the default bridge has an IPv6 subnet:
 

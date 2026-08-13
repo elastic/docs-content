@@ -16,10 +16,10 @@ The two most common combinations are:
 * **HTTP (L7) mode**: the load balancer sets the `X-Forwarded-For` header with the client source IP.
 * **TCP (L4) mode**: the load balancer sends [Proxy Protocol v2](https://www.haproxy.org/download/2.8/doc/proxy-protocol.txt) metadata, and the ECE proxies must be configured to parse it. This is also the only mechanism that can preserve an [IPv6 client address](./ece-ipv6-support.md).
 
-This page covers the TCP (L4) path: how to enable Proxy Protocol v2 parsing in the ECE proxies for {{es}} HTTP traffic, on ports `9200` and `9243`. This is the only Proxy Protocol configuration that ECE exposes. For the other ports, the client IP mechanism is fixed and only configured on the load balancer side, as described in [Port and mode configuration](./ece-load-balancers.md#ece-load-balancer-ports).
+This page covers the TCP (L4) path: how to enable Proxy Protocol v2 parsing in the ECE proxies for deployments HTTP traffic, on ports `9200` and `9243`. This is the only Proxy Protocol configuration that ECE exposes. For the other ports, the client IP mechanism is fixed and only configured on the load balancer side, as described in [Port and mode configuration](./ece-load-balancers.md#ece-load-balancer-ports).
 
 :::{note}
-In ECE versions earlier than 4.2, Proxy Protocol v2 parsing on the {{es}} HTTP ports is disabled and the installation flags described on this page are not available. If you need the real client address on an earlier version, consider the following options:
+In ECE versions earlier than 4.2, Proxy Protocol v2 on HTTP ports `9200` and `9243` is disabled and the installation flags described on this page are not available. If you need a TCP (L4) load balancer and client IP address preservation on an earlier version, consider the following options:
 
 * Use [direct source IP preservation](./ece-load-balancers.md#ece-client-ip-preservation) instead, if your load balancer can forward connections without replacing the client source address.
 * [Upgrade to ECE 4.2 or later](/deploy-manage/upgrade/orchestrator/upgrade-cloud-enterprise.md), which is the recommended way to use Proxy Protocol v2.
@@ -28,7 +28,7 @@ In ECE versions earlier than 4.2, Proxy Protocol v2 parsing on the {{es}} HTTP p
 
 ## Enable Proxy Protocol v2 [ece-proxy-protocol-enable]
 
-Proxy Protocol v2 for deployment HTTP traffic is configured through the ECE installation script, using the following flags on every host that holds the [proxy role](./ece-roles.md):
+Proxy Protocol v2 for deployment HTTP traffic is configured through the [ECE installation script](cloud://reference/cloud-enterprise/ece-installation-script.md), using the following flags on every host that holds the [proxy role](./ece-roles.md):
 
 | Flag | Description |
 | --- | --- |
@@ -59,18 +59,41 @@ Because `--proxy-protocol-lenient` accepts connections with and without Proxy Pr
 
 ## Verify the configuration [ece-proxy-protocol-verify]
 
-On each host with the proxy role, confirm that the proxy container has the Proxy Protocol environment variables for HTTP traffic:
+% We now verify the runner container set instead of the proxy. If there was manual patching of proxy container set it might be worthy to check the proxy c-set.
 
-```bash
-sudo podman exec $(sudo podman ps --format '{{.Names}}' | grep frc-proxies-proxyv2) env | grep CLOUD_HTTP_PROXY_PROTO
-```
+The installation script stores the flag values in the runner, as the `PROXY_PROTOCOL_VERSION` and `PROXY_PROTOCOL_LENIENT` variables. The runner propagates them to the proxy container, which uses them for its `CLOUD_HTTP_PROXY_PROTO_VERSION` and `CLOUD_HTTP_PROXY_PROTO_LENIENT` settings. Verify both layers on each host with the proxy role.
 
-On Docker-based hosts, replace `podman` with `docker`. The output should include both variables:
+On Docker-based hosts, replace `podman` with `docker` in the following commands.
 
-```text
-CLOUD_HTTP_PROXY_PROTO_VERSION=2
-CLOUD_HTTP_PROXY_PROTO_LENIENT=true
-```
+1. Confirm that the runner holds the expected values:
+
+    ```bash
+    sudo podman exec $(sudo podman ps --format '{{.Names}}' | grep frc-runners-runner) env | grep PROXY_PROTOCOL
+    ```
+
+    The output should show the values that you passed to the installation script:
+
+    ```text
+    PROXY_PROTOCOL_VERSION=2
+    PROXY_PROTOCOL_LENIENT=true
+    ```
+
+    A version of `0` and a lenient value of `false` are the defaults, and mean that the flags were not applied on this host.
+
+2. Confirm the effective configuration in the proxy:
+
+    ```bash
+    sudo podman exec $(sudo podman ps --format '{{.Names}}' | grep frc-proxies-proxyv2) cat /elastic_cloud_apps/proxyv2/proxy.yaml | grep -A3 proxy_protocol
+    ```
+
+    The output should reflect the same values:
+
+    ```yaml
+    proxy_protocol:
+      version: 2
+      read_header_timeout: 5s
+      lenient: true
+    ```
 
 After you enable Proxy Protocol v2 on both the load balancer and the proxies, send a test request through the load balancer and confirm that the `client_ip` field in the proxy request logs shows the real client address instead of the load balancer address.
 
