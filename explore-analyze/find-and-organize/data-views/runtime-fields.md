@@ -30,7 +30,7 @@ Runtime fields created against a data view are not applied to the underlying ind
 1. Go to the **Data Views** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the data view that you want to add the runtime field to, then select **Add field**.
 3. Enter the field **Name**, then select the **Type**.
-4. Select **Set custom label**, then enter the label you want to display where the data view is used, such as **Discover**.
+4. Optionally, turn on **Set custom label**, **Set custom description**, or **Set format**.
 5. Select **Set value**, then define the script. The script must match the **Type**, or the data view fails anywhere it is used.
 6. To help you define the script, use the **Preview**:
 
@@ -38,7 +38,7 @@ Runtime fields created against a data view are not applied to the underlying ind
     * To filter the fields list, enter the keyword in **Filter fields**.
     * To pin frequently used fields to the top of the list, hover over the field, then select ![Icon to pin field to the top of the list](/explore-analyze/images/kibana-stackManagement-indexPatterns-pinRuntimeField-7.15.png "").
 
-7. Select **Create field**.
+7. Select **Save**.
 
 The new field is available anywhere the data view is used, for example in **Discover** or when building a **Lens** visualization.
 
@@ -50,13 +50,13 @@ Try the runtime field examples on your own using the [**Sample web logs**](/expl
 
 ### Return a keyword value [simple-hello-world-example]
 
-Return `Hello World!`:
+Return `Hello World`:
 
 ```text
-emit("Hello World!");
+emit("Hello World");
 ```
 
-![Runtime field with keyword type](/explore-analyze/images/kibana-runtime_field.png "")
+![Create field flyout with a keyword runtime field that emits Hello World](/explore-analyze/images/kibana-runtime_field.png "")
 
 ### Perform a calculation on a single field [perform-a-calculation-on-a-single-field]
 
