@@ -29,10 +29,10 @@ steps:
         description: Start a free Elastic Cloud trial. No local setup needed.
         url: https://cloud.elastic.co/registration
         url-label: Start a free trial
-  - title: Ingest your data into Elasticsearch
-    description: Send documents to Elasticsearch using the APIs, ingest pipelines, connectors, or a language client.
+  - title: Add data in Kibana
+    description: Upload a file, add an integration, or use sample data so you have something to explore.
     link: /manage-data/ingest.md
-    link-label: Ingest your data
+    link-label: See ingest options
   - title: Explore and visualize
     description: Open Discover, then build your first chart and dashboard.
     link: /explore-analyze/kibana-data-exploration-learning-tutorial.md
@@ -130,6 +130,15 @@ links:
 :id: quick-links
 
 :::{link-card}
+title: Find your way around
+links:
+  - label: The Kibana interface
+    url: /explore-analyze/find-and-organize/kibana-interface.md
+  - label: Find apps and objects
+    url: /explore-analyze/find-and-organize/find-apps-and-objects.md
+:::
+
+:::{link-card}
 title: Releases and APIs
 links:
   - label: Release notes
@@ -185,8 +194,10 @@ links:
 :::{link-card}
 title: Managed deployments
 link: /deploy-manage/deploy/elastic-cloud/access-kibana.md
-description: Run Kibana on Elastic Cloud, Kubernetes, or ECE.
+description: Run Kibana on Elastic Cloud, Kubernetes, ECE, or as a serverless project.
 links:
+  - label: Serverless
+    url: /deploy-manage/deploy/elastic-cloud/serverless.md
   - label: Elastic Cloud Hosted
     url: /deploy-manage/deploy/elastic-cloud/access-kibana.md
   - label: Elastic Cloud on Kubernetes (ECK)
@@ -220,6 +231,10 @@ description: Browse documents, filter, and query your indices in real time.
 links:
   - label: Get started with Discover
     url: /explore-analyze/discover/discover-get-started.md
+  - label: Data views
+    url: /explore-analyze/find-and-organize/data-views.md
+  - label: Query with KQL
+    url: /explore-analyze/query-filter/languages/kql.md
   - label: Use ES|QL in Kibana
     url: /explore-analyze/query-filter/languages/esql-kibana.md
 :::
@@ -280,7 +295,7 @@ links:
 :::{link-card}
 title: Chart types
 link: /explore-analyze/visualize/charts/area-charts.md
-description: Chart types available in the visualization editor.
+description: Common chart types in the visualization editor.
 links:
   - label: Area
     url: /explore-analyze/visualize/charts/area-charts.md
@@ -294,20 +309,6 @@ links:
     url: /explore-analyze/visualize/charts/tables.md
   - label: Metric
     url: /explore-analyze/visualize/charts/metric-charts.md
-  - label: Gauge
-    url: /explore-analyze/visualize/charts/gauge-charts.md
-  - label: Heat map
-    url: /explore-analyze/visualize/charts/heat-map-charts.md
-  - label: Treemap
-    url: /explore-analyze/visualize/charts/treemap-charts.md
-  - label: Mosaic
-    url: /explore-analyze/visualize/charts/mosaic-charts.md
-  - label: Waffle
-    url: /explore-analyze/visualize/charts/waffle-charts.md
-  - label: Tag cloud
-    url: /explore-analyze/visualize/charts/tag-cloud-charts.md
-  - label: Region map
-    url: /explore-analyze/visualize/charts/region-map-charts.md
 :::
 
 :::{link-card}
@@ -360,6 +361,17 @@ links:
 ::::{card-group}
 :title: AI and automation
 :id: ai-automation
+
+:::{link-card}
+title: AI Assistant
+link: /explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md
+description: Chat from the Kibana header to build queries, explain errors, and get help in your solution.
+links:
+  - label: AI assistants in Kibana
+    url: /explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md
+  - label: Compare with Agent Builder
+    url: /explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
+:::
 
 :::{link-card}
 title: Agent Builder
@@ -462,10 +474,12 @@ links:
 :::
 
 :::{link-card}
-title: Saved objects
-link: /explore-analyze/find-and-organize/saved-objects.md
-description: Manage dashboards, visualizations, and other Kibana objects, including export, import, and migration across spaces.
+title: Spaces and saved objects
+link: /deploy-manage/manage-spaces.md
+description: Organize work into spaces. Manage dashboards, visualizations, and other Kibana objects, including export, import, and migration.
 links:
+  - label: Spaces
+    url: /deploy-manage/manage-spaces.md
   - label: Manage saved objects
     url: /explore-analyze/find-and-organize/saved-objects.md
   - label: Tags
@@ -479,11 +493,11 @@ links:
 
 :::{link-card}
 title: Console
-link: cloud://reference/cloud-hosted/ec-api-console.md
+link: /explore-analyze/query-filter/tools/console.md
 description: Run Elasticsearch and Kibana API requests interactively, with auto-complete and history.
 links:
   - label: Console overview
-    url: cloud://reference/cloud-hosted/ec-api-console.md
+    url: /explore-analyze/query-filter/tools/console.md
 :::
 
 :::{link-card}
