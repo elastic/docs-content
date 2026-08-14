@@ -387,7 +387,6 @@ toc:
       - file: find-and-organize/data-views.md
         children:
           - file: find-and-organize/data-views/create-data-view.md
-          - file: find-and-organize/data-views/data-view-search-syntax.md
           - file: find-and-organize/data-views/delete-data-view.md
           - file: find-and-organize/data-views/duplicate-data-view.md
           - file: find-and-organize/data-views/customize-data-view-fields.md
