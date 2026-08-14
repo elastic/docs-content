@@ -6,7 +6,7 @@ redirects:
     many:
       - to: 'explore-analyze/find-and-organize/data-views/create-data-view.md'
         anchors:
-          'settings-create-pattern': 'settings-create-pattern'
+          'settings-create-pattern':
           '_create_a_temporary_data_source': '_create_a_temporary_data_source'
           'rollup-data-view': 'rollup-data-view'
           'management-cross-project-search': 'management-cross-project-search'
