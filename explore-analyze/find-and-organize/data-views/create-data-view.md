@@ -42,7 +42,7 @@ Create a {{data-source}} to make your own {{es}} data available in **Discover**,
     * To match several individual sources, enter their names, separated by a comma, with no space after the comma. `filebeat-a,filebeat-b` matches two indices.
     * To exclude a source, use a minus sign (`-`), for example `-test3`.
 
-   For data on another cluster, another project, or a rollup index, refer to [What the index pattern matches](#what-the-index-pattern-matches).
+   For data in another cluster, another project, or a rollup index, refer to [What the index pattern matches](#what-the-index-pattern-matches).
 
 4. Open the **Timestamp field** menu, then select the default field for filtering your data by time.
 
@@ -63,9 +63,9 @@ You can now select your new {{data-source}} from the data view menu in **Discove
 The **Index pattern** field tells the {{data-source}} which names to query. What you enter depends on where the data lives:
 
 * [Data in this cluster or project](#index-pattern-local): wildcards, comma-separated names, or a minus sign to exclude
-* {applies_to}`stack: ga` {applies_to}`serverless: unavailable` [Data on another cluster](#management-cross-cluster-search): `cluster:index` syntax for {{ccs}}
-* {applies_to}`serverless: preview` {applies_to}`stack: unavailable` [Data in another project](#management-cross-project-search): qualified expressions for {{cps}}
-* {applies_to}`stack: deprecated` {applies_to}`serverless: unavailable` [Rolled-up data](#rollup-data-view): one rollup index, or rollup and raw data together
+* [Data in another cluster](#management-cross-cluster-search): `cluster:index` syntax for {{ccs}}
+* [Data in another project](#management-cross-project-search): qualified expressions for {{cps}}
+* [Rolled-up data](#rollup-data-view): one rollup index, or rollup and raw data together
 
 ### Data in this cluster or project [index-pattern-local]
 
@@ -73,10 +73,10 @@ The **Index pattern** field tells the {{data-source}} which names to query. What
 * To match several individual sources, enter their names, separated by a comma, with no space after the comma. `filebeat-a,filebeat-b` matches two indices.
 * To exclude a source, use a minus sign (`-`), for example `-test3`.
 
-### Data on another cluster [management-cross-cluster-search]
+### Data in another cluster [management-cross-cluster-search]
 ```{applies_to}
-serverless: unavailable
 stack: ga
+serverless: unavailable
 ```
 
 If your {{es}} clusters are configured for [{{ccs}}](/explore-analyze/cross-cluster-search.md), you can create a {{data-source}} to search across the clusters of your choosing. Specify data streams, indices, and aliases in a remote cluster using the following syntax:
@@ -134,8 +134,8 @@ To restrict a {{data-source}} to specific projects regardless of the active scop
 
 ### Rolled-up data [rollup-data-view]
 ```{applies_to}
-serverless: unavailable
 stack: deprecated
+serverless: unavailable
 ```
 
 :::{warning}

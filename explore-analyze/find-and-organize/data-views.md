@@ -46,7 +46,7 @@ To customize a managed {{data-source}}, [duplicate it](data-views/duplicate-data
 
 ## Search across clusters, projects, or rolled-up data [management-cross-cluster-search]
 
-To match data on another cluster, another project, or a rollup index, refer to [What the index pattern matches](data-views/create-data-view.md#what-the-index-pattern-matches).
+To match data in another cluster, another project, or a rollup index, refer to [What the index pattern matches](data-views/create-data-view.md#what-the-index-pattern-matches).
 
 ## Work with data views
 
