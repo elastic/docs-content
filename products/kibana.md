@@ -441,7 +441,7 @@ links:
   - label: Integrations
     url: /reference/fleet/manage-integrations.md
   - label: Fleet
-    url: /reference/fleet.md
+    url: /reference/fleet/index.md
   - label: Manage agents
     url: /reference/fleet/manage-elastic-agents-in-fleet.md
   - label: Agent policies

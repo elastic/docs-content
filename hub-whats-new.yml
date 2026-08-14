@@ -113,6 +113,6 @@ products:
         tag: Containers
       - title: Cloud API keys in Elasticsearch plugins
         description: The Elasticsearch input, filter, and output plugins accept Elastic Cloud API keys in the api_key option.
-        link: logstash://reference/plugins-outputs-elasticsearch.md
+        link: logstash-docs-md://lsr/plugins-outputs-elasticsearch.md
         date: '9.5'
         tag: Elasticsearch

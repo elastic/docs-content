@@ -262,11 +262,11 @@ links:
 
 :::{link-card}
 title: Elastic Agent
-link: /reference/fleet.md
+link: /reference/fleet/index.md
 description: A single agent to collect logs, metrics, and traces, managed from Kibana.
 links:
   - label: Fleet and Elastic Agent
-    url: /reference/fleet.md
+    url: /reference/fleet/index.md
   - label: Install Elastic Agent
     url: /reference/fleet/install-elastic-agents.md
 :::

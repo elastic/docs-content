@@ -96,7 +96,7 @@ links:
   - label: Elasticsearch API docs
     url: https://www.elastic.co/docs/api/doc/elasticsearch
   - label: Language clients
-    url: /reference/elasticsearch-clients.md
+    url: /reference/elasticsearch-clients/index.md
 :::
 
 :::{link-card}
@@ -226,7 +226,7 @@ title: Ingestion tools
 link: /manage-data/ingest.md
 links:
   - label: Fleet and Elastic Agent
-    url: /reference/fleet.md
+    url: /reference/fleet/index.md
   - label: Logstash
     url: logstash://reference/index.md
   - label: Beats
@@ -308,12 +308,12 @@ links:
 
 :::{link-card}
 title: APIs, clients, and examples
-link: /reference/elasticsearch-clients.md
+link: /reference/elasticsearch-clients/index.md
 links:
   - label: Elasticsearch API docs
     url: https://www.elastic.co/docs/api/doc/elasticsearch
   - label: Language clients
-    url: /reference/elasticsearch-clients.md
+    url: /reference/elasticsearch-clients/index.md
   - label: REST API examples
     url: elasticsearch://reference/elasticsearch/rest-apis/api-examples.md
 :::

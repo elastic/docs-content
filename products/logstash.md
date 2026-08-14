@@ -48,22 +48,22 @@ steps:
 
 :::{link-card}
 title: Plugins
-link: logstash://reference/input-plugins.md
+link: logstash-docs-md://lsr/input-plugins.md
 links:
   - label: Input plugins
-    url: logstash://reference/input-plugins.md
+    url: logstash-docs-md://lsr/input-plugins.md
   - label: Filter plugins
-    url: logstash://reference/filter-plugins.md
+    url: logstash-docs-md://lsr/filter-plugins.md
   - label: Output plugins
-    url: logstash://reference/output-plugins.md
+    url: logstash-docs-md://lsr/output-plugins.md
 :::
 
 :::{link-card}
 title: Grok parsing
-link: logstash://reference/plugins-filters-grok.md
+link: logstash-docs-md://lsr/plugins-filters-grok.md
 links:
   - label: Grok filter plugin
-    url: logstash://reference/plugins-filters-grok.md
+    url: logstash-docs-md://lsr/plugins-filters-grok.md
   - label: Grok Debugger
     url: /explore-analyze/query-filter/tools/grok-debugger.md
   - label: Grok pattern reference
@@ -108,9 +108,9 @@ links:
   - label: Working with plugins
     url: logstash://reference/working-with-plugins.md
   - label: Input plugins
-    url: logstash://reference/input-plugins.md
+    url: logstash-docs-md://lsr/input-plugins.md
   - label: Output plugins
-    url: logstash://reference/output-plugins.md
+    url: logstash-docs-md://lsr/output-plugins.md
 :::
 ::::
 
@@ -187,15 +187,15 @@ links:
 
 :::{link-card}
 title: Inputs
-link: logstash://reference/input-plugins.md
+link: logstash-docs-md://lsr/input-plugins.md
 description: Collect events from files, beats, agents, JDBC, and more.
 links:
   - label: Input plugins
-    url: logstash://reference/input-plugins.md
+    url: logstash-docs-md://lsr/input-plugins.md
   - label: JDBC input
-    url: logstash://reference/plugins-inputs-jdbc.md
+    url: logstash-docs-md://lsr/plugins-inputs-jdbc.md
   - label: Beats input
-    url: logstash://reference/plugins-inputs-beats.md
+    url: logstash-docs-md://lsr/plugins-inputs-beats.md
   - label: Filebeat → Logstash
     url: beats://reference/filebeat/logstash-output.md
   - label: Elastic Agent → Logstash
@@ -204,13 +204,13 @@ links:
 
 :::{link-card}
 title: Outputs
-link: logstash://reference/output-plugins.md
+link: logstash-docs-md://lsr/output-plugins.md
 description: Send processed events to Elasticsearch and other destinations.
 links:
   - label: Output plugins
-    url: logstash://reference/output-plugins.md
+    url: logstash-docs-md://lsr/output-plugins.md
   - label: Elasticsearch output
-    url: logstash://reference/plugins-outputs-elasticsearch.md
+    url: logstash-docs-md://lsr/plugins-outputs-elasticsearch.md
   - label: Logstash-to-Logstash
     url: logstash://reference/logstash-to-logstash-communications.md
   - label: Logstash → Elasticsearch architecture
@@ -237,13 +237,13 @@ links:
 
 :::{link-card}
 title: Parse unstructured logs
-link: logstash://reference/plugins-filters-grok.md
+link: logstash-docs-md://lsr/plugins-filters-grok.md
 description: Extract fields from log lines with grok, dissect, and pipeline tutorials.
 links:
   - label: Grok filter
-    url: logstash://reference/plugins-filters-grok.md
+    url: logstash-docs-md://lsr/plugins-filters-grok.md
   - label: Dissect filter
-    url: logstash://reference/plugins-filters-dissect.md
+    url: logstash-docs-md://lsr/plugins-filters-dissect.md
   - label: Parsing logs with Logstash
     url: logstash://reference/advanced-pipeline.md
   - label: Field extraction
@@ -263,15 +263,15 @@ links:
 
 :::{link-card}
 title: Filter and enrich
-link: logstash://reference/filter-plugins.md
+link: logstash-docs-md://lsr/filter-plugins.md
 description: Transform events with filters and Elastic Integrations processing.
 links:
   - label: Filter plugins
-    url: logstash://reference/filter-plugins.md
+    url: logstash-docs-md://lsr/filter-plugins.md
   - label: Mutate filter
-    url: logstash://reference/plugins-filters-mutate.md
+    url: logstash-docs-md://lsr/plugins-filters-mutate.md
   - label: Elastic Integration filter
-    url: logstash://reference/plugins-filters-elastic_integration.md
+    url: logstash-docs-md://lsr/plugins-filters-elastic_integration.md
   - label: Transforming data
     url: logstash://reference/transforming-data.md
 :::
@@ -370,13 +370,13 @@ links:
   - label: Working with plugins
     url: logstash://reference/working-with-plugins.md
   - label: Input plugins
-    url: logstash://reference/input-plugins.md
+    url: logstash-docs-md://lsr/input-plugins.md
   - label: Filter plugins
-    url: logstash://reference/filter-plugins.md
+    url: logstash-docs-md://lsr/filter-plugins.md
   - label: Codec plugins
-    url: logstash://reference/codec-plugins.md
+    url: logstash-docs-md://lsr/codec-plugins.md
   - label: Output plugins
-    url: logstash://reference/output-plugins.md
+    url: logstash-docs-md://lsr/output-plugins.md
 :::
 
 :::{link-card}
