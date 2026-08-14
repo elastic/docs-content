@@ -46,7 +46,7 @@ For detailed information on how to use runtime fields with {{es}}, refer to [Run
 
 ## Runtime field examples [runtime-field-examples]
 
-Try the runtime field examples on your own using the [**Sample web logs**](/explore-analyze/index.md#gs-get-data-into-kibana) data.
+Try the runtime field examples on your own using the [**Sample web logs**](/manage-data/ingest/sample-data.md) data.
 
 ### Return a keyword value [simple-hello-world-example]
 
