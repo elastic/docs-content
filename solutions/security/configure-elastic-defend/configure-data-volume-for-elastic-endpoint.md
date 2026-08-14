@@ -22,7 +22,7 @@ Modifying these advanced settings from their defaults will increase the volume o
 ::::
 
 
-Most settings have OS-specific variants, represented by `[linux|mac|windows]` in the names listed below. Use the variant relevant to your hosts' operating system (for example, `windows.advanced.events.deduplicate_network_events` to configure network event deduplication for Windows hosts).
+Most settings have OS-specific variants, represented by `[linux|mac|windows]` in the following settings names. Use the variant relevant to your hosts' operating system (for example, `windows.advanced.events.deduplicate_network_events` to configure network event deduplication for Windows hosts).
 
 
 ## Linux process capabilities [linux-process-capabilities]
@@ -31,7 +31,7 @@ Most settings have OS-specific variants, represented by `[linux|mac|windows]` in
 Requires {{agent}} 8.14.0 or later.
 :::
 
-By default, {{elastic-endpoint}} excludes Linux process capabilities from process events written to {{es}} to reduce data volume. Some detection rules require these capabilities, but malicious behavior detection rules that run within {{elastic-defend}} are unaffected. To include process capabilities in Linux process events, use this advanced setting:
+By default, {{elastic-endpoint}} excludes Linux process capabilities from process events written to {{es}} to reduce data volume. This setting must be enabled for some detection rules. Malicious behavior detection rules that run within {{elastic-defend}} work regardless of its status. To include process capabilities in Linux process events, use this advanced setting:
 
 `linux.advanced.events.enable_caps`
 :   Enter `true` to include Linux process capabilities in process events. Default: `false`.
