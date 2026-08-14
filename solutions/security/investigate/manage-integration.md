@@ -206,7 +206,7 @@ Configuration options:
 * `timeout`: (Optional) The time in seconds that Osquery waits for extensions to register at startup.
 * `require`: (Optional) A list of extension names that Osquery waits for at startup. Queries do not run until these extensions register, or until the timeout elapses. Use this to avoid `no such table` errors when an extension is slow to register.
 
-Binaries must be owned by the user running Osquery and must not be writable by group or others. If a binary is missing, not executable, or does not meet these permission requirements, Osquerybeat skips it and logs a warning.
+Binaries must be owned by the user running Osquery and must not be writable by group or others. Osquerybeat skips a binary and logs a warning if it is missing, not executable, or a symlink. Osquery itself skips binaries that fail the ownership or writability checks. Neither case stops Osquery from starting.
 
 Paths are resolved when Osquery restarts, which happens when you save a policy change that affects this configuration, or when you restart the {{agent}}. Adding or removing binaries in a configured directory does not reload extensions by itself.
 
@@ -229,4 +229,4 @@ To get more details in the logs, change the agent logging level to debug:
 
 If you configured a [custom Osquery version](#osquery-custom-version) and the agent fails to start, check the logs for artifact download or checksum validation errors.
 
-If you configured [custom Osquery extensions](#osquery-custom-extensions) and a table is missing or an extension does not load, check the Osquerybeat logs for skip warnings. You can also [collect {{agent}} diagnostics](/reference/fleet/monitor-elastic-agent.md#collect-agent-diagnostics) and inspect the `osquery_extensions` report.
+If you configured [custom Osquery extensions](#osquery-custom-extensions) and a table is missing or an extension does not load, check the Osquerybeat logs for skip warnings. You can also [collect {{agent}} diagnostics](/reference/fleet/monitor-elastic-agent.md#collect-agent-diagnostics) and inspect `osquery_extensions.json`.
