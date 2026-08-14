@@ -66,7 +66,7 @@ The chart preview updates to show a grid of colored squares. Each color represen
 
 ::::::
 
-## Build a waffle chart with {{esql}} [build-a-waffle-chart-with-esql]
+## Build a waffle chart with an {{esql}} query [build-a-waffle-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

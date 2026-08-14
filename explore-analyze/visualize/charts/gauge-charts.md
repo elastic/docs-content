@@ -67,7 +67,7 @@ The chart preview updates to show a gauge with your metric value positioned with
 
 ::::::
 
-## Build a gauge chart with {{esql}} [build-a-gauge-chart-with-esql]
+## Build a gauge chart with an {{esql}} query [build-a-gauge-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

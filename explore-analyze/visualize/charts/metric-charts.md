@@ -70,7 +70,7 @@ See [](#settings) for all data configuration options for your metric chart.
 
 :::::
 
-## Build a metric chart with {{esql}} [build-a-metric-chart-with-esql]
+## Build a metric chart with an {{esql}} query [build-a-metric-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

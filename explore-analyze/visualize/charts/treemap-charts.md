@@ -61,7 +61,7 @@ The chart preview updates to show rectangles sized by your metric. If you added 
 
 ::::::
 
-## Build a treemap chart with {{esql}} [build-a-treemap-chart-with-esql]
+## Build a treemap chart with an {{esql}} query [build-a-treemap-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

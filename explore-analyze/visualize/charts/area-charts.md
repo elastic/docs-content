@@ -64,7 +64,7 @@ The chart preview updates to show filled areas plotted over time. Each area repr
 
 ::::::
 
-## Build an area chart with {{esql}} [build-an-area-chart-with-esql]
+## Build an area chart with an {{esql}} query [build-an-area-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

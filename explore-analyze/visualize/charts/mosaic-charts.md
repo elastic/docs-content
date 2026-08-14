@@ -62,7 +62,7 @@ The chart preview updates to show a grid of rectangles. Column widths represent 
 
 ::::::
 
-## Build a mosaic chart with {{esql}} [build-a-mosaic-chart-with-esql]
+## Build a mosaic chart with an {{esql}} query [build-a-mosaic-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

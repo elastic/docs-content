@@ -123,7 +123,7 @@ When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have
 
 To target specific projects from within the query, add [`SET project_routing`](elasticsearch://reference/query-languages/esql/directives/set.md) at the beginning of your {{esql}} query. When you do this, the visualization panel displays a **Custom CPS scope** badge on the dashboard, indicating that it uses a different scope than the {{cps-init}} scope selector. Refer to [View data from multiple projects](/explore-analyze/dashboards/using.md#dashboard-cps-scope) for details.
 
-## Build specific chart types with {{esql}} [esql-chart-types]
+## Build specific chart types with an {{esql}} query [esql-chart-types]
 
 An {{esql}} query returns a table. When you use the result to build a visualization, each returned column is available as a chart dimension. Shape the query result to provide the dimensions required by the chart:
 

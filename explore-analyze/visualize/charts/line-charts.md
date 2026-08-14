@@ -64,7 +64,7 @@ The chart preview updates to show one or more lines plotted over time. Each line
 
 ::::::
 
-## Build a line chart with {{esql}} [build-a-line-chart-with-esql]
+## Build a line chart with an {{esql}} query [build-a-line-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

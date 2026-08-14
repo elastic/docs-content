@@ -69,7 +69,7 @@ See [](#settings) for all configuration options for your table.
 
 :::::
 
-## Build a table with {{esql}} [build-a-table-with-esql]
+## Build a table with an {{esql}} query [build-a-table-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

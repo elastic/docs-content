@@ -65,7 +65,7 @@ The chart preview updates to show a pie divided into slices. Each slice represen
 
 ::::::
 
-## Build a pie chart with {{esql}} [build-a-pie-chart-with-esql]
+## Build a pie chart with an {{esql}} query [build-a-pie-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

@@ -64,7 +64,7 @@ The chart preview updates to show a grid of colored cells. Cell colors represent
 
 ::::::
 
-## Build a heat map chart with {{esql}} [build-a-heat-map-chart-with-esql]
+## Build a heat map chart with an {{esql}} query [build-a-heat-map-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

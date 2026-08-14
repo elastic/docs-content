@@ -61,7 +61,7 @@ The chart preview updates to show a map with regions colored by metric value. If
 
 ::::::
 
-## Build a region map chart with {{esql}} [build-a-region-map-chart-with-esql]
+## Build a region map chart with an {{esql}} query [build-a-region-map-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

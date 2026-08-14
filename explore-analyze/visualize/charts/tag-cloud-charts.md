@@ -61,7 +61,7 @@ The chart preview updates to show text labels sized by metric value, with more p
 
 ::::::
 
-## Build a tag cloud chart with {{esql}} [build-a-tag-cloud-chart-with-esql]
+## Build a tag cloud chart with an {{esql}} query [build-a-tag-cloud-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

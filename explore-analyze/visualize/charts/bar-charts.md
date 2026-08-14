@@ -69,7 +69,7 @@ Refer to [](#settings) for all data configuration options for your bar chart.
 
 :::::
 
-## Build a bar chart with {{esql}} [build-a-bar-chart-with-esql]
+## Build a bar chart with an {{esql}} query [build-a-bar-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
