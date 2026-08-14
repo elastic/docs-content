@@ -61,7 +61,9 @@ You can delete a connector even if there are still actions referencing it. When 
 
 ## Creating a new connector [creating-new-connector]
 
-New connectors can be created with the **Create connector** button, which guides you to select the type of connector and configure its properties. For a full list of available connectors, see [Available connectors](kibana://reference/connectors-kibana.md).
+Select **Create connector** to open the connector selection flyout, where you choose a connector type and configure its properties. For a full list of available connectors, refer to [Available connectors](kibana://reference/connectors-kibana.md).
+
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Use the **Filter by feature** control to narrow the list to connector types that support specific {{kib}} features, such as **Alerting**, **Cases**, or **Uptime**. Leave the filter empty to show all available connector types. The HTTP connector type is available in the create flyout alongside other connector types.
 
 ::::{note}
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
