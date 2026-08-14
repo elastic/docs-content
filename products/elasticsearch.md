@@ -1,0 +1,480 @@
+---
+layout: hub
+navigation_title: Elasticsearch
+description: Elasticsearch documentation. Index, search, and analyze data at any scale. Run it as a managed service or in your own environment.
+products:
+  - id: elasticsearch
+---
+
+:::{hero}
+:icon: elasticsearch
+:title: Elasticsearch documentation hub
+:description: The distributed search and analytics engine at the heart of the Elastic platform. Index, search, and analyze data at any scale, build semantic and vector search experiences, and power applications. Run it as a managed service or in your own environment.
+:primary-action: [Get started](#get-started)
+:secondary-action: [What's new](#whats-new)
+:tertiary-action: [Explore Elasticsearch docs](#explore)
+:::
+
+:::{get-started}
+title: Get started in 3 steps
+intro: Start a local development environment or a free Elastic Cloud trial, then run your first queries.
+steps:
+  - title: Run Elasticsearch
+    options:
+      - label: Run locally
+        description: Spin up Elasticsearch on your machine for development with `start-local`.
+        code: curl -fsSL https://elastic.co/start-local | sh
+        language: sh
+      - label: Try on Cloud
+        description: Start a free Elastic Cloud trial. No local setup needed.
+        url: https://cloud.elastic.co/registration
+        url-label: Start a free trial
+  - title: Ingest your data into Elasticsearch
+    description: Send documents to Elasticsearch using the APIs, ingest pipelines, connectors, or a language client.
+    link: /manage-data/ingest.md
+    link-label: Ingest your data
+  - title: Search your data
+    description: Build queries to find, rank, and analyze your documents.
+    link: /solutions/search/querying-for-search.md
+    link-label: Build search queries
+:::
+
+:::{whats-new}
+:product: elasticsearch
+:::
+
+::::{card-group}
+:title: Get hands-on with Elasticsearch
+:id: hands-on
+:intro: New to Elasticsearch? Follow a guided quickstart to index and search your first data set.
+
+:::{link-card}
+title: Search fundamentals
+link: /solutions/search/get-started/index-basics.md
+links:
+  - label: Index and search basics
+    url: /solutions/search/get-started/index-basics.md
+  - label: Build your first query with Python
+    url: /solutions/search/get-started/keyword-search-python.md
+:::
+
+:::{link-card}
+title: Semantic search and ES|QL
+link: /solutions/search/get-started/semantic-search.md
+links:
+  - label: Get started with semantic search
+    url: /solutions/search/get-started/semantic-search.md
+  - label: ES|QL tutorials
+    url: elasticsearch://reference/query-languages/esql/esql-examples.md
+:::
+
+:::{link-card}
+title: Specialized quickstarts
+link: /manage-data/data-store/data-streams/quickstart-tsds.md
+links:
+  - label: Time series data stream basics
+    url: /manage-data/data-store/data-streams/quickstart-tsds.md
+  - label: Browse all quickstarts
+    url: /solutions/search/get-started/quickstarts.md
+:::
+::::
+
+:::::{explore}
+:id: explore
+:title: Explore Elasticsearch
+:intro: Find the Elasticsearch documentation you need, organized by task, from deploying and ingesting to searching, securing, and operating.
+
+::::{card-group}
+:title: Quick links
+:id: quick-links
+
+:::{link-card}
+title: Releases and APIs
+links:
+  - label: Release notes
+    url: elasticsearch://release-notes/index.md
+  - label: Elasticsearch API docs
+    url: https://www.elastic.co/docs/api/doc/elasticsearch
+  - label: Language clients
+    url: /reference/elasticsearch-clients.md
+:::
+
+:::{link-card}
+title: Configuration
+links:
+  - label: Configuration reference
+    url: elasticsearch://reference/elasticsearch/configuration-reference/index.md
+  - label: Index settings
+    url: elasticsearch://reference/elasticsearch/index-settings/index.md
+  - label: Security settings
+    url: elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md
+:::
+
+:::{link-card}
+title: Operations
+links:
+  - label: Upgrade Elasticsearch
+    url: /deploy-manage/upgrade/deployment-or-cluster.md
+  - label: Technical reference
+    url: elasticsearch://reference/elasticsearch/index.md
+:::
+::::
+
+::::{card-group}
+:title: Deploy and manage
+:id: deploy
+
+:::{link-card}
+title: Use Elastic Cloud
+link: /deploy-manage/deploy/elastic-cloud.md
+links:
+  - label: Serverless
+    url: /deploy-manage/deploy/elastic-cloud/serverless.md
+  - label: Elastic Cloud Hosted
+    url: /deploy-manage/deploy/elastic-cloud.md
+:::
+
+:::{link-card}
+title: Deploy with an orchestrator
+link: /deploy-manage/deploy/cloud-on-k8s.md
+links:
+  - label: Elastic Cloud on Kubernetes (ECK)
+    url: /deploy-manage/deploy/cloud-on-k8s.md
+  - label: Elastic Cloud Enterprise (ECE)
+    url: /deploy-manage/deploy/cloud-enterprise.md
+:::
+
+:::{link-card}
+title: Run Elasticsearch yourself
+link: /deploy-manage/deploy/self-managed/installing-elasticsearch.md
+links:
+  - label: Docker
+    url: /deploy-manage/deploy/self-managed/install-elasticsearch-with-docker.md
+  - label: Debian / Ubuntu
+    url: /deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package.md
+  - label: RPM
+    url: /deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md
+  - label: Packages and archives
+    url: /deploy-manage/deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md
+  - label: Configure Elasticsearch
+    url: /deploy-manage/deploy/self-managed/configure-elasticsearch.md
+:::
+
+:::{link-card}
+title: Design and operate
+link: /deploy-manage/distributed-architecture.md
+links:
+  - label: Distributed architecture
+    url: /deploy-manage/distributed-architecture.md
+  - label: Monitor Elasticsearch
+    url: /deploy-manage/monitor.md
+  - label: Upgrade Elasticsearch
+    url: /deploy-manage/upgrade/deployment-or-cluster.md
+:::
+::::
+
+::::{card-group}
+:title: Prepare and index data
+:id: ingest
+
+:::{link-card}
+title: Index data
+link: /manage-data/data-store.md
+links:
+  - label: Index API
+    url: https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-index
+  - label: Bulk API
+    url: https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk
+  - label: Indices and data streams
+    url: /manage-data/data-store.md
+:::
+
+:::{link-card}
+title: Transform and enrich
+link: /manage-data/ingest/transform-enrich/ingest-pipelines.md
+links:
+  - label: Ingest pipelines
+    url: /manage-data/ingest/transform-enrich/ingest-pipelines.md
+  - label: Enrich data
+    url: /manage-data/ingest/transform-enrich/data-enrichment.md
+:::
+
+:::{link-card}
+title: Map fields
+link: /manage-data/data-store/mapping.md
+links:
+  - label: Mappings
+    url: /manage-data/data-store/mapping.md
+  - label: Field types
+    url: elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md
+  - label: Runtime fields
+    url: /manage-data/data-store/mapping/runtime-fields.md
+:::
+
+:::{link-card}
+title: Analyze text
+link: /manage-data/data-store/text-analysis.md
+links:
+  - label: Text analysis
+    url: /manage-data/data-store/text-analysis.md
+  - label: Configure analyzers
+    url: /manage-data/data-store/text-analysis/configure-text-analysis.md
+:::
+
+:::{link-card}
+title: Ingestion tools
+link: /manage-data/ingest.md
+links:
+  - label: Fleet and Elastic Agent
+    url: /reference/fleet.md
+  - label: Logstash
+    url: logstash://reference/index.md
+  - label: Beats
+    url: beats://reference/index.md
+  - label: Elastic Distributions of OpenTelemetry
+    url: opentelemetry://reference/index.md
+:::
+::::
+
+::::{card-group}
+:title: Search and analyze data
+:id: search
+
+:::{link-card}
+title: Search with the Search API
+link: https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search
+links:
+  - label: Search API
+    url: https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search
+  - label: Query DSL
+    url: elasticsearch://reference/query-languages/query-dsl/full-text-queries.md
+  - label: Retrievers
+    url: elasticsearch://reference/elasticsearch/rest-apis/retrievers.md
+  - label: Aggregations
+    url: /explore-analyze/query-filter/aggregations.md
+:::
+
+:::{link-card}
+title: ES|QL
+link: elasticsearch://reference/query-languages/esql/esql-getting-started.md
+links:
+  - label: Get started with ES|QL
+    url: elasticsearch://reference/query-languages/esql/esql-getting-started.md
+  - label: Syntax reference
+    url: elasticsearch://reference/query-languages/esql/esql-syntax-reference.md
+  - label: ES|QL for search
+    url: /solutions/search/esql-for-search.md
+:::
+
+:::{link-card}
+title: Search across clusters and projects
+link: /explore-analyze/cross-cluster-search.md
+links:
+  - label: Cross-cluster search
+    url: /explore-analyze/cross-cluster-search.md
+:::
+::::
+
+::::{card-group}
+:title: Vector database
+:id: vector
+
+:::{link-card}
+title: Semantic and vector search
+link: /solutions/search/semantic-search.md
+links:
+  - label: Semantic search
+    url: /solutions/search/semantic-search.md
+  - label: Vector search
+    url: /solutions/search/vector.md
+  - label: Hybrid search
+    url: /solutions/search/hybrid-search.md
+:::
+
+:::{link-card}
+title: Inference
+link: https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference
+links:
+  - label: Inference API
+    url: https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference
+  - label: Semantic search with inference
+    url: /solutions/search/semantic-search/semantic-search-inference.md
+:::
+::::
+
+::::{card-group}
+:title: Build applications
+:id: build
+
+:::{link-card}
+title: APIs, clients, and examples
+link: /reference/elasticsearch-clients.md
+links:
+  - label: Elasticsearch API docs
+    url: https://www.elastic.co/docs/api/doc/elasticsearch
+  - label: Language clients
+    url: /reference/elasticsearch-clients.md
+  - label: REST API examples
+    url: elasticsearch://reference/elasticsearch/rest-apis/api-examples.md
+:::
+
+:::{link-card}
+title: Painless scripting
+link: /explore-analyze/scripting/modules-scripting-painless.md
+links:
+  - label: Write Painless scripts
+    url: /explore-analyze/scripting/modules-scripting-painless.md
+  - label: Language specification
+    url: elasticsearch://reference/scripting-languages/painless/painless-language-specification.md
+:::
+::::
+
+::::{card-group}
+:title: Manage the data lifecycle
+:id: lifecycle
+
+:::{link-card}
+title: Choose a strategy
+link: /manage-data/lifecycle.md
+links:
+  - label: Data lifecycle overview
+    url: /manage-data/lifecycle.md
+:::
+
+:::{link-card}
+title: Data stream lifecycle
+link: /manage-data/lifecycle/data-stream.md
+links:
+  - label: Data stream lifecycle
+    url: /manage-data/lifecycle/data-stream.md
+:::
+
+:::{link-card}
+title: Index lifecycle management
+link: /manage-data/lifecycle/index-lifecycle-management.md
+links:
+  - label: Index lifecycle management (ILM)
+    url: /manage-data/lifecycle/index-lifecycle-management.md
+:::
+
+:::{link-card}
+title: Back up and restore
+link: /deploy-manage/tools/snapshot-and-restore.md
+links:
+  - label: Snapshot and restore
+    url: /deploy-manage/tools/snapshot-and-restore.md
+:::
+::::
+
+::::{card-group}
+:title: Secure Elasticsearch
+:id: security
+
+:::{link-card}
+title: Encrypt communications
+link: /deploy-manage/security/secure-cluster-communications.md
+links:
+  - label: Secure cluster communications
+    url: /deploy-manage/security/secure-cluster-communications.md
+:::
+
+:::{link-card}
+title: Authenticate
+link: /deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md
+links:
+  - label: User authentication
+    url: /deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md
+:::
+
+:::{link-card}
+title: Authorize access
+link: /deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md
+links:
+  - label: Users and roles
+    url: /deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md
+:::
+
+:::{link-card}
+title: Audit and configure
+link: /deploy-manage/security/logging-configuration/security-event-audit-logging.md
+links:
+  - label: Audit logging
+    url: /deploy-manage/security/logging-configuration/security-event-audit-logging.md
+  - label: Security settings
+    url: elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md
+:::
+::::
+
+::::{card-group}
+:title: Troubleshoot
+:id: troubleshoot
+
+:::{link-card}
+title: Cluster health and availability
+link: /troubleshoot/elasticsearch/clusters.md
+links:
+  - label: Cluster issues
+    url: /troubleshoot/elasticsearch/clusters.md
+:::
+
+:::{link-card}
+title: Indexing and search
+link: /troubleshoot/elasticsearch/troubleshooting-searches.md
+links:
+  - label: Troubleshoot search
+    url: /troubleshoot/elasticsearch/troubleshooting-searches.md
+:::
+
+:::{link-card}
+title: Snapshot and restore
+link: /troubleshoot/elasticsearch/snapshot-and-restore.md
+links:
+  - label: Snapshot problems
+    url: /troubleshoot/elasticsearch/snapshot-and-restore.md
+:::
+
+:::{link-card}
+title: Clients and diagnostics
+link: /troubleshoot/elasticsearch/clients.md
+links:
+  - label: Client problems
+    url: /troubleshoot/elasticsearch/clients.md
+  - label: Capture diagnostics
+    url: /troubleshoot/elasticsearch/diagnostic.md
+:::
+::::
+
+::::{card-group}
+:title: Reference
+:id: reference
+
+:::{link-card}
+title: Complete technical reference
+link: elasticsearch://reference/elasticsearch/index.md
+links:
+  - label: Elasticsearch technical reference
+    url: elasticsearch://reference/elasticsearch/index.md
+  - label: Configuration reference
+    url: elasticsearch://reference/elasticsearch/configuration-reference/index.md
+  - label: Mapping reference
+    url: elasticsearch://reference/elasticsearch/mapping-reference/index.md
+  - label: Aggregations reference
+    url: elasticsearch://reference/aggregations/index.md
+:::
+
+:::{link-card}
+title: APIs and query languages
+link: elasticsearch://reference/elasticsearch/rest-apis/index.md
+links:
+  - label: REST API reference
+    url: elasticsearch://reference/elasticsearch/rest-apis/index.md
+  - label: API conventions
+    url: elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md
+  - label: Query DSL
+    url: elasticsearch://reference/query-languages/query-dsl/full-text-queries.md
+  - label: ES|QL
+    url: elasticsearch://reference/query-languages/esql/esql-getting-started.md
+:::
+::::
+
+:::::
