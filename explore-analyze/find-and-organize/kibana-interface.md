@@ -20,7 +20,7 @@ type: overview
 Two more elements appear as you work:
 
 * A **flyout** slides in from the right of the workspace to show contextual content and options, such as the details of a table row.
-* {applies_to}`stack: ga 9.4` The **sidebar** is a resizable panel on the right of the screen, where apps such as AI Agent open beside your work and persist when you navigate between apps and pages in {{kib}}.
+* {applies_to}`stack: ga 9.4` {applies_to}`serverless: preview` The **sidebar** is a resizable panel on the right of the screen, where apps such as **AI Agent** open beside your work and persist when you navigate between apps and pages in {{kib}}.
 
 This page describes spaces that use a solution view: **Search**, **Observability**, or **Security**. Spaces that use the **Classic** solution view have a different layout. To check or change the solution view of a space, refer to [Spaces](/deploy-manage/manage-spaces.md). In {{serverless-full}}, every project uses a solution view.
 
@@ -38,17 +38,13 @@ The global header holds the following elements.
 | AI assistant or agent | Opens the AI assistant or agent of your solution. Its label depends on which one your project or deployment offers. |
 | Your avatar | Opens the user menu, where you can change your appearance and language preferences, customize your navigation menu, and log out. |
 
-Where you find the space selector depends on your deployment type and version:
-
-* {applies_to}`serverless: ga` Select the name of your project in the global header, then select your current space to open **My spaces**.
-* {applies_to}`stack: ga 9.6` In spaces that use a solution view, select the name of your deployment in the global header, then select your current space to open **My spaces**. When the global header shows the name of your current space instead of a deployment name, selecting it opens **My spaces** directly.
-* In all other cases, select the avatar of your current space in the global header to open the **Spaces** menu.
+Where you find the space selector depends on your deployment type and version. Refer to [Spaces](/deploy-manage/manage-spaces.md) for the steps.
 
 ## Navigation menu
 
 The navigation menu lists the apps of your solution view. When a top-level item contains sub-items, selecting it opens the **secondary navigation** to its right.
 
-You can reorder the apps in the menu and hide the ones you don't use. Refer to [Customize your navigation menu](/explore-analyze/find-and-organize/customize-navigation.md).
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` You can reorder the apps in the menu and hide the ones you don't use. Refer to [Customize your navigation menu](/explore-analyze/find-and-organize/customize-navigation.md).
 
 ## Application menu
 
