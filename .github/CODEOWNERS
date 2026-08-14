@@ -28,7 +28,7 @@
 /products/elasticsearch.md                  @elastic/developer-docs @elastic/admin-docs
 /products/kibana.md                         @elastic/ski-docs @elastic/admin-docs
 /products/logstash.md                       @elastic/ski-docs
-/products/elastic-stack.md                  @elastic/core-docs
+/products/elastic-stack.md                  @elastic/core-docs @elastic/ski-docs
 /hub-whats-new.yml                          @elastic/developer-docs @elastic/ski-docs @elastic/core-docs
 
 /manage-data/                               @elastic/admin-docs
