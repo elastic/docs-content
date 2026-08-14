@@ -1,8 +1,8 @@
 ---
 description: Scripted fields compute values at query time from a Kibana data view. Deprecated in favor of runtime fields and ES|QL.
 applies_to:
-  stack: ga
-  serverless: ga
+  stack: deprecated
+  serverless: unavailable
 products:
   - id: kibana
 ---
