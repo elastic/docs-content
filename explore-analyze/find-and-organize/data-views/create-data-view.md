@@ -9,7 +9,10 @@ products:
 
 # Create a data view
 
-Create a {{data-source}} to make your own {{es}} data available in **Discover**, **Lens**, and other analytics features.
+Create a {{data-source}} to make your own {{es}} data available in **Discover**, **Lens**, and other analytics features. You can save it for the space, or use it without saving:
+
+* [Create the data view](#create-data-view-steps): save it so others in the space can use it
+* [Create a temporary {{data-source}}](#_create_a_temporary_data_source): select **Use without saving** in **Discover** or **Lens**. It isn't visible to others, and it lasts until you change apps or save it
 
 ## Before you begin [create-data-view-prereqs]
 
