@@ -165,7 +165,7 @@ Refer to each token filter's reference page for configuration details and instru
 
 Large synonym sets can trigger a memory [circuit breaker](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md#synonym-graph-tokenizer-circuit-breaker). Refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md#synonym-graph-tokenizer-circuit-breaker) reference for details on thresholds and `lenient` behavior.
 
-::::{warning}
+::::{important}
 Invalid synonym rules can cause errors when applying analyzer changes and can prevent an index from being reopened. Refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md) reference for details.
 ::::
 
