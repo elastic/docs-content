@@ -71,7 +71,7 @@ The chart preview updates to show a grid of colored squares. Each color represen
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-The `BY` clause returns one row for each operating system, while the numeric request count determines its share of the squares. `SORT` and `LIMIT` retain the five most common operating systems:
+A waffle chart needs a categorical column to define its color groups and a numeric metric column to determine each group's share of the squares. In this query, `BY` returns one row for each operating system, `COUNT` provides its metric value, and `SORT` and `LIMIT` retain the five most common operating systems:
 
 ```esql
 FROM kibana_sample_data_logs

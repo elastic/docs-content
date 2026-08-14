@@ -75,7 +75,7 @@ See [](#settings) for all data configuration options for your metric chart.
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-Because `STATS` has no `BY` clause, the following query reduces all matching documents to one row containing the total request count. This provides the single numeric value required by the metric chart:
+A metric chart displays a single numeric metric. In this query, `STATS` has no `BY` clause, so it reduces all matching documents to one row containing the total request count:
 
 ```esql
 FROM kibana_sample_data_logs

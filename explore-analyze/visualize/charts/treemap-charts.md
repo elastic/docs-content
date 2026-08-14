@@ -66,7 +66,7 @@ The chart preview updates to show rectangles sized by your metric. If you added 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-The `BY` clause returns one row for each file extension, while `SUM` provides the numeric value that determines its rectangle size. `SORT` and `LIMIT` retain the six extensions with the most transferred data:
+A treemap needs a categorical column to define its rectangles and a numeric metric column to determine their size. In this query, `BY` returns one row for each file extension, `SUM` provides its total transferred data, and `SORT` and `LIMIT` retain the six extensions with the most transferred data:
 
 ```esql
 FROM kibana_sample_data_logs

@@ -74,7 +74,7 @@ See [](#settings) for all configuration options for your table.
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-The `BY` clause returns one row for each host, while `COUNT` and `AVG` add two numeric metric columns to each row. `SORT` and `LIMIT` retain the ten hosts with the most requests:
+A table can display grouping columns, metric columns, or both. In this query, `BY` returns one row for each host, `COUNT` and `AVG` add two numeric metric columns to each row, and `SORT` and `LIMIT` retain the ten hosts with the most requests:
 
 ```esql
 FROM kibana_sample_data_logs

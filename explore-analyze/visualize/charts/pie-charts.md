@@ -70,7 +70,7 @@ The chart preview updates to show a pie divided into slices. Each slice represen
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-The `BY` clause returns one row for each product category, while `SUM` provides the numeric value that determines its slice size. `SORT` and `LIMIT` retain the six categories with the most revenue:
+A pie chart needs a categorical column to define its slices and a numeric metric column to determine their size. In this query, `BY` returns one row for each product category, `SUM` provides its revenue value, and `SORT` and `LIMIT` retain the six categories with the most revenue:
 
 ```esql
 FROM kibana_sample_data_ecommerce

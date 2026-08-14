@@ -69,7 +69,7 @@ The chart preview updates to show one or more lines plotted over time. Each line
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-The `WHERE` clause applies the dashboard time range, while `BUCKET` divides that range into 50 adaptive time groups. `COUNT` returns one numeric value for each group, providing the time-bucket and metric columns required by the chart:
+A time-series line chart needs a time-bucket column for its horizontal axis and a numeric metric column to plot for each bucket. In this query, `WHERE` applies the dashboard time range, `BUCKET` divides that range into 50 adaptive groups, and `COUNT` returns one metric value for each group:
 
 ```esql
 FROM kibana_sample_data_logs

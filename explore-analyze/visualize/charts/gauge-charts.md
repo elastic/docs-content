@@ -72,7 +72,7 @@ The chart preview updates to show a gauge with your metric value positioned with
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-Because `STATS` has no `BY` clause, the following query reduces all matching documents to one row containing the average number of bytes per request. This provides the single numeric value required by the gauge:
+A gauge chart needs a single numeric metric to position its indicator within the configured range. In this query, `STATS` has no `BY` clause, so it reduces all matching documents to one row containing the average number of bytes per request:
 
 ```esql
 FROM kibana_sample_data_logs
