@@ -4,7 +4,7 @@ applies_to:
   serverless: ga
 products:
   - id: cloud-serverless
-  - id: elasticsearch
+  - id: serverless-vector-database
 description: >-
   Learn how costs for Elasticsearch Vector Database Serverless projects
   are calculated across storage, search, ingest, and infrastructure.

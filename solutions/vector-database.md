@@ -7,8 +7,8 @@ description: >-
   optimized for vector workloads, with vector-tuned defaults, hardware profile,
   inference access, and pricing. It supports semantic and hybrid search.
 products:
-  - id: elasticsearch
   - id: cloud-serverless
+  - id: serverless-vector-database
 ---
 
 # {{es}} Vector Database project overview

@@ -6,8 +6,8 @@ description: >-
 applies_to:
   serverless: ga
 products:
-  - id: elasticsearch
   - id: cloud-serverless
+  - id: serverless-vector-database
 ---
 
 # Get started with the {{es}} Vector Database project type
