@@ -57,9 +57,14 @@ You can now select your new {{data-source}} from the data view menu in **Discove
 
 ## What the index pattern matches [what-the-index-pattern-matches]
 
-The **Index pattern** field tells the {{data-source}} which names to query. What you enter depends on where the data lives.
+The **Index pattern** field tells the {{data-source}} which names to query. What you enter depends on where the data lives:
 
-### Data in this space [index-pattern-local]
+* [Data in this cluster or project](#index-pattern-local): wildcards, comma-separated names, or a minus sign to exclude
+* {applies_to}`stack: ga` {applies_to}`serverless: unavailable` [Data on another cluster](#management-cross-cluster-search): `cluster:index` syntax for {{ccs}}
+* {applies_to}`serverless: preview` {applies_to}`stack: unavailable` [Data in another project](#management-cross-project-search): qualified expressions for {{cps}}
+* {applies_to}`stack: deprecated` {applies_to}`serverless: unavailable` [Rolled-up data](#rollup-data-view): one rollup index, or rollup and raw data together
+
+### Data in this cluster or project [index-pattern-local]
 
 * To match multiple sources, use a wildcard (`*`). `filebeat-*` matches `filebeat-apache-a`, `filebeat-apache-b`, and so on.
 * To match several individual sources, enter their names, separated by a comma, with no space after the comma. `filebeat-a,filebeat-b` matches two indices.
