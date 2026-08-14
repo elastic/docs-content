@@ -72,7 +72,7 @@ The chart preview updates to show a gauge with your metric value positioned with
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-The following query returns one numeric column, a result shape that works for a gauge chart. It calculates the average number of bytes per request:
+Because `STATS` has no `BY` clause, the following query reduces all matching documents to one row containing the average number of bytes per request. This provides the single numeric value required by the gauge:
 
 ```esql
 FROM kibana_sample_data_logs

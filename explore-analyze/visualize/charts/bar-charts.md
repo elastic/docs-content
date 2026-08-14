@@ -74,7 +74,7 @@ Refer to [](#settings) for all data configuration options for your bar chart.
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-The following query returns one categorical column and one numeric metric column, a result shape that works for a bar chart:
+The `BY` clause returns one row for each response code, while `COUNT` provides the numeric value for its bar. `SORT` and `LIMIT` retain the ten response codes with the most requests:
 
 ```esql
 FROM kibana_sample_data_logs

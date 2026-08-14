@@ -69,7 +69,7 @@ The chart preview updates to show filled areas plotted over time. Each area repr
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-The following query returns one date column and one numeric metric column, a result shape that works for a time-series area chart. The time buckets adapt to the dashboard time range:
+The `WHERE` clause applies the dashboard time range, while `BUCKET` divides that range into 50 adaptive time groups. `SUM` returns one numeric value for each group, providing the time-bucket and metric columns required by the chart:
 
 ```esql
 FROM kibana_sample_data_logs

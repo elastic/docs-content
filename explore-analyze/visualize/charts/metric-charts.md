@@ -75,7 +75,7 @@ See [](#settings) for all data configuration options for your metric chart.
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-The following query returns one numeric column, a result shape that works for a metric chart. It calculates the total number of requests:
+Because `STATS` has no `BY` clause, the following query reduces all matching documents to one row containing the total request count. This provides the single numeric value required by the metric chart:
 
 ```esql
 FROM kibana_sample_data_logs

@@ -67,7 +67,7 @@ The chart preview updates to show a grid of rectangles. Column widths represent 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-The following query returns two categorical columns and one numeric metric column, a result shape that works for a mosaic chart. It calculates request counts by operating system and response code:
+The `BY` clause returns one row for each operating system and response code combination. These two grouping columns define the chart axes, while the numeric request count determines the rectangle proportions:
 
 ```esql
 FROM kibana_sample_data_logs

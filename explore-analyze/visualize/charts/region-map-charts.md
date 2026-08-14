@@ -66,7 +66,7 @@ The chart preview updates to show a map with regions colored by metric value. If
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-The following query returns one region-code column and one numeric metric column, a result shape that works for a region map. It calculates request counts by two-letter country code:
+The `BY` clause returns one row for each two-letter country code. The region-code column identifies the map region, while the numeric request count controls its color:
 
 ```esql
 FROM kibana_sample_data_logs

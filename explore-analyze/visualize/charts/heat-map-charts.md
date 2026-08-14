@@ -69,7 +69,7 @@ The chart preview updates to show a grid of colored cells. Cell colors represent
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-The following query returns two grouping columns and one numeric metric column, a result shape that works for a heat map. It groups request counts by day of the week and hour of the day:
+`DATE_EXTRACT` creates hour and day columns from `@timestamp`. `STATS` groups by both columns, returning one row for each day-and-hour combination and a numeric request count that controls the color intensity of its cell:
 
 ```esql
 FROM kibana_sample_data_logs

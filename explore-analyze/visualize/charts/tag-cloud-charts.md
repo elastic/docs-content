@@ -66,7 +66,7 @@ The chart preview updates to show text labels sized by metric value, with more p
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-The following query returns one categorical column and one numeric metric column, a result shape that works for a tag cloud. It calculates the most frequent request paths:
+The `BY` clause returns one row for each request path, while the numeric request count controls its tag size. `SORT` and `LIMIT` retain the 30 most frequent paths:
 
 ```esql
 FROM kibana_sample_data_logs

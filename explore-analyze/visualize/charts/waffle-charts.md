@@ -71,7 +71,7 @@ The chart preview updates to show a grid of colored squares. Each color represen
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
-The following query returns one categorical column and one numeric metric column, a result shape that works for a waffle chart. It calculates request counts for the five most common operating systems:
+The `BY` clause returns one row for each operating system, while the numeric request count determines its share of the squares. `SORT` and `LIMIT` retain the five most common operating systems:
 
 ```esql
 FROM kibana_sample_data_logs
