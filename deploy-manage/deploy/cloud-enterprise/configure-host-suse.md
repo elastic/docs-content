@@ -374,7 +374,7 @@ After you [install Docker](#ece-install-docker-sles12) and [prepare the data dir
         sudo systemctl restart docker
         ```
 
-### Optional: Enable dual-stack networking for IPv6 egress
+### Optional: Enable dual-stack networking for IPv6 egress [ece-suse-ipv6-egress]
 ```{applies_to}
 deployment:
   ece: ga 4.2

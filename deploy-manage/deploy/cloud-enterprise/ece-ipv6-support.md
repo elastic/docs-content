@@ -19,7 +19,7 @@ Ingress and egress are independent capabilities with different infrastructure re
 ECE itself remains an IPv4 platform. IPv6 is supported only for ingress and egress connectivity, and there is no platform-wide IPv6 mode.
 
 :::{note}
-For a complete end-to-end tutorial that implements the concepts and requirements described on this page, refer to [Set up IPv6 for ECE on {{aws}}](./ece-ipv6-aws-setup.md). The tutorial covers dual-stack networking, load balancer configuration, Proxy Protocol v2, container networking, and both new and existing ECE installations.
+For a complete end-to-end tutorial that implements the concepts and requirements described on this page, refer to [Set up IPv6 for ECE on {{aws}}](./ece-ipv6-aws-setup.md). The tutorial covers dual-stack networking, load balancer configuration, Proxy Protocol v2, and container networking. If you are integrating IPv6 into an existing environment, the [appendix](./ece-ipv6-aws-setup.md#existing-installations-summary) lists the required changes for each traffic flow.
 :::
 
 ## IPv6 ingress [ece-ipv6-ingress]
@@ -36,7 +36,7 @@ To enable IPv6 ingress:
   * For deployment traffic (ports `9200` and `9243`), use a TCP (L4) listener and configure Proxy Protocol v2 for client IP preservation.
   * For Cloud UI traffic (ports `12400` and `12443`), use an HTTP (L7) listener and configure it to set the `X-Forwarded-For` header for client IP preservation.
 
-* Enable Proxy Protocol v2 on the ECE proxies by using the `--proxy-protocol-version` and `--proxy-protocol-lenient` flags when running the [installation script](./install.md). To enable it on an existing environment, refer to [Add Proxy Protocol v2 support to an existing installation](./ece-ipv6-aws-setup.md#reconfigure-proxies).
+* Enable Proxy Protocol v2 on the ECE proxies by using the `--proxy-protocol-version` and `--proxy-protocol-lenient` flags when running the [installation script](./install.md). To enable it on an existing environment, refer to [Configure Proxy Protocol v2](./configure-proxy-protocol.md#ece-proxy-protocol-enable).
 
 * Create `AAAA` DNS records that point to the dual-stack load balancer, including the [wildcard DNS record](./ece-wildcard-dns.md) used for deployment endpoints and the records used for administration traffic. Without them, IPv6 clients cannot resolve the endpoints even if the load balancer is dual-stack.
 

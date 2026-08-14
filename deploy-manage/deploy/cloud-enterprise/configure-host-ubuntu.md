@@ -368,7 +368,7 @@ For more information, refer to the [Docker daemon configuration overview](https:
 
 1. Repeat these steps on other hosts that you want to use with {{ece}} or follow the steps in the next section to start installing {{ece}}.
 
-## Optional: Enable dual-stack networking for IPv6 egress
+## Optional: Enable dual-stack networking for IPv6 egress [ece-ubuntu-ipv6-egress]
 ```{applies_to}
 deployment:
   ece: ga 4.2

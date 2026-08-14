@@ -28,33 +28,39 @@ Success criteria:
 
 ## Diagnostic commands
 
+Use the following commands to inspect the state of your ECE proxies, container networking, and connectivity across the IPv6 ingress and egress paths.
+
 ### Check ECE proxy logs for client IPs and errors
+
+Run these commands on each host with the proxy role to verify that Proxy Protocol v2 is active and that client IPs are being preserved:
 
 ```bash
 # List running containers to find the proxy container (look for "frc-proxies-proxyv2")
 sudo podman ps
 
-# View recent proxy request logs - replace <proxy_container_id> with actual ID
+# View recent proxy request logs
 # Look for the "client_ip" field to verify client IP preservation
-sudo podman exec <proxy_container_id> tail -50 /app/logs/proxy.requests.log
+sudo podman exec frc-proxies-proxyv2 tail -50 /app/logs/proxy.requests.log
 
 # View proxy error logs
-sudo podman exec <proxy_container_id> tail -50 /app/logs/proxy.requests.error.log
+sudo podman exec frc-proxies-proxyv2 tail -50 /app/logs/proxy.requests.error.log
 
 # Check proxy protocol configuration
-sudo podman exec <proxy_container_id> cat /elastic_cloud_apps/proxyv2/proxy.yaml | grep -A5 proxy_protocol
+sudo podman exec frc-proxies-proxyv2 grep -A5 proxy_protocol /elastic_cloud_apps/proxyv2/proxy.yaml
 
 # Verify proxy protocol environment variables
-sudo podman exec <proxy_container_id> env | grep -i proxy_proto
+sudo podman exec frc-proxies-proxyv2 env | grep -i proxy_proto
 ```
 
-Expected signals:
+What to look for:
 
 - `proxy.requests.log` shows external client addresses in `client_ip`.
 - Proxy configuration includes Proxy Protocol v2 settings.
 - `proxy.requests.error.log` does not show repeated protocol or upstream connection failures.
 
 ### Check container networking
+
+If you configured IPv6 egress on Podman-based hosts, verify that the dual-stack network is in place and that containers are attached to it:
 
 ```bash
 # List podman networks
@@ -67,12 +73,40 @@ sudo podman network inspect ece-network
 sudo podman inspect <container_id> --format '{{.NetworkSettings.Networks}}'
 ```
 
-Expected signals:
+:::{note}
+This verification applies to Podman-based hosts only. On Docker-based hosts, IPv6 egress is configured through the default bridge in `/etc/docker/daemon.json`, so the `ece-network` network and these commands do not apply.
+:::
+
+What to look for:
 
 - The `ece-network` definition includes both IPv4 and IPv6 ranges.
 - Containers that need outbound IPv6 are attached to `ece-network`.
 
-### Test connectivity
+### Test ingress connectivity
+
+Confirm that the NLB and ALB accept both IPv4 and IPv6 connections:
+
+```bash
+# Test NLB connectivity
+curl -4 -k -v "https://<nlb-dns-name>/_health"
+curl -6 -k -v "https://<nlb-dns-name>/_health"
+
+# Test ALB connectivity (if configured)
+curl -4 -k -v "https://<alb-dns-name>/"
+curl -6 -k -v "https://<alb-dns-name>/"
+```
+
+What to look for:
+
+- NLB commands return `200`. ALB commands return `200` or `302` (redirect to login).
+
+:::{note}
+The `curl -6` commands must be run from a machine with IPv6 connectivity. Running them from an IPv4-only host will fail regardless of the load balancer configuration.
+:::
+
+### Test egress connectivity
+
+Verify that the host and containers can reach IPv6 endpoints:
 
 ```bash
 # Test IPv6 from host
@@ -80,16 +114,12 @@ ping6 -c 3 ipv6.google.com
 
 # Test IPv6 from inside a container
 sudo podman exec <container_id> curl -6 -s -o /dev/null -w "%{http_code}" https://ipv6.google.com
-
-# Test NLB connectivity
-curl -4 -k -v "https://<nlb-dns-name>/"
-curl -6 -k -v "https://<nlb-dns-name>/"
 ```
 
-Expected signals:
+What to look for:
 
-- `curl -4` and `curl -6` to the NLB return an HTTP response (for example `200` or `401`).
-- Container `curl -6` reaches external endpoints successfully when egress is enabled.
+- `ping6` succeeds from the host.
+- Container `curl -6` reaches external endpoints successfully.
 
 ## Identify ECE vs {{aws}} issues
 
