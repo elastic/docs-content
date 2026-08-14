@@ -17,7 +17,12 @@ description: Create mosaic charts to visualize relationships between two categor
 
 Mosaic charts display the relationship between two categorical variables as a grid of rectangles, where both the width and height of each rectangle represent proportions of the data. They are ideal for visualizing how categories combine, showing conditional distributions, and exploring relationships between two dimensions. They work best with a moderate number of categories in each dimension (2-8 each).
 
-You can create mosaic charts in {{kib}} using [**Lens**](../lens.md).
+You can build a mosaic chart in {{kib}} in either of these ways:
+
+- [With the point-and-click editor](#build-a-mosaic-chart)
+- [With an {{esql}} query](#build-a-mosaic-chart-with-esql)
+
+To automate chart or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
 ![Example Lens mosaic chart showing response status by operating system](/explore-analyze/images/mosaic-chart-example.png)
 
@@ -50,26 +55,6 @@ Using the **Visualization type** dropdown, select **Mosaic**.
 The chart preview updates to show a grid of rectangles. Column widths represent the proportion of each horizontal category, and rectangle heights within each column show the distribution of vertical categories.
 :::::
 
-:::::{step} Customize the chart to follow best practices
-Tweak the appearance of the chart to your needs. Consider the following best practices:
-
-**Limit categories**
-:   Keep both dimensions to a maximum of 6-8 categories each. More categories create tiny rectangles that are hard to read.
-
-**Ensure balanced proportions**
-:   Mosaic charts work best when categories have roughly comparable sizes. If one category dominates (for example, one host handling 90% of traffic), the other columns become too narrow to read. In that case, consider using a [bar chart](bar-charts.md) instead.
-
-**Order categories meaningfully**
-:   Arrange categories in a logical order (by size, alphabetically, or by a natural order) to make patterns easier to identify.
-
-**Use color for the vertical dimension**
-:   Colors typically represent the vertical axis categories, making it easier to track how each category appears across columns.
-
-Refer to [Mosaic chart settings](#mosaic-chart-settings) to find all configuration options for your mosaic chart.
-
-For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
-:::::
-
 :::::{step} Save the chart
 :::{include} ../../_snippets/save-visualization.md
 :::
@@ -98,6 +83,24 @@ To build the chart:
 5. Select **Apply and close**.
 
 The chart preview shows how response-code proportions vary between operating systems.
+
+## Apply mosaic chart best practices [mosaic-chart-best-practices]
+
+After building the chart with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
+
+**Limit categories**
+:   Keep both dimensions to a maximum of 6-8 categories each. More categories create tiny rectangles that are hard to read.
+
+**Ensure balanced proportions**
+:   Mosaic charts work best when categories have roughly comparable sizes. If one category dominates (for example, one host handling 90% of traffic), the other columns become too narrow to read. In that case, consider using a [bar chart](bar-charts.md) instead.
+
+**Order categories meaningfully**
+:   Arrange categories in a logical order (by size, alphabetically, or by a natural order) to make patterns easier to identify.
+
+**Use color for the vertical dimension**
+:   Colors typically represent the vertical axis categories, making it easier to track how each category appears across columns.
+
+Refer to [Mosaic chart settings](#mosaic-chart-settings) for all mosaic chart configuration options. For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 
 ## Mosaic chart settings [mosaic-chart-settings]
 

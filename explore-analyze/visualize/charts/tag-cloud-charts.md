@@ -17,7 +17,12 @@ description: Create tag cloud charts to visualize word frequency, show popular c
 
 Tag cloud charts display text labels (tags) where each tag's size represents its frequency or importance. They are ideal for visualizing word frequency, showing popular categories, and providing an at-a-glance summary of text-based data. They work best when the relative prominence of terms matters more than exact values, and are most effective with up to about 50 items.
 
-You can create tag cloud charts in {{kib}} using [**Lens**](../lens.md).
+You can build a tag cloud chart in {{kib}} in either of these ways:
+
+- [With the point-and-click editor](#build-a-tag-cloud-chart)
+- [With an {{esql}} query](#build-a-tag-cloud-chart-with-esql)
+
+To automate chart or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
 ![Example Lens tag cloud chart showing popular search terms](/explore-analyze/images/tag-cloud-chart-example.png)
 
@@ -47,26 +52,6 @@ Using the **Visualization type** dropdown, select **Tag cloud**.
 3. Configure the [**Metric**](#metric-settings) dimension to define the value that determines each tag's size.
 
 The chart preview updates to show text labels sized by metric value, with more prominent tags representing higher values.
-:::::
-
-:::::{step} Customize the chart to follow best practices
-Tweak the appearance of the chart to your needs. Consider the following best practices:
-
-**Limit the number of tags**
-:   Keep your tag cloud to 20-50 tags maximum. Too many tags create visual clutter and make the most important terms hard to identify. If the panel is too small to fit all tags, a warning indicates that some values could not be displayed.
-
-**Use meaningful metrics**
-:   Choose a metric that represents importance or frequency. Count is common, but Sum, Average, or custom formulas can provide different insights.
-
-**Consider orientation**
-:   Multiple orientations (horizontal and angled) create visual interest but can make reading harder. Use single orientation for clarity.
-
-**Choose appropriate colors**
-:   Use colors to add meaning (categories) or keep them neutral to focus attention on size differences.
-
-Refer to [Tag cloud chart settings](#tag-cloud-chart-settings) to find all configuration options for your tag cloud chart.
-
-For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
@@ -99,6 +84,24 @@ To build the chart:
 5. Select **Apply and close**.
 
 The chart preview shows larger tags for the request paths with more requests.
+
+## Apply tag cloud chart best practices [tag-cloud-chart-best-practices]
+
+After building the chart with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
+
+**Limit the number of tags**
+:   Keep your tag cloud to 20-50 tags maximum. Too many tags create visual clutter and make the most important terms hard to identify. If the panel is too small to fit all tags, a warning indicates that some values could not be displayed.
+
+**Use meaningful metrics**
+:   Choose a metric that represents importance or frequency. Count is common, but Sum, Average, or custom formulas can provide different insights.
+
+**Consider orientation**
+:   Multiple orientations (horizontal and angled) create visual interest but can make reading harder. Use single orientation for clarity.
+
+**Choose appropriate colors**
+:   Use colors to add meaning (categories) or keep them neutral to focus attention on size differences.
+
+Refer to [Tag cloud chart settings](#tag-cloud-chart-settings) for all tag cloud chart configuration options. For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 
 ## Tag cloud chart settings [tag-cloud-chart-settings]
 

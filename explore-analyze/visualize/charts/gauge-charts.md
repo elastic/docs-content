@@ -17,7 +17,12 @@ description: Create gauge charts to monitor KPIs and track progress toward goals
 
 Gauge charts display a single value within a defined range, showing how close the value is to a target or threshold. They are ideal for monitoring KPIs, tracking progress toward goals, and highlighting when values fall within acceptable, warning, or critical ranges. Unlike [metric charts](metric-charts.md) that display raw values, gauge charts add range context with known minimum and maximum boundaries.
 
-You can create gauge charts in {{kib}} using [**Lens**](../lens.md).
+You can build a gauge chart in {{kib}} in either of these ways:
+
+- [With the point-and-click editor](#build-a-gauge-chart)
+- [With an {{esql}} query](#build-a-gauge-chart-with-esql)
+
+To automate chart or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
 ![Example Lens gauge chart showing RAM consumption averages](/explore-analyze/images/gauge-chart-example.png)
 
@@ -55,26 +60,6 @@ Each of these optional dimensions can be set as a static number, computed dynami
 The chart preview updates to show a gauge with your metric value positioned within the range. If the gauge appears empty, verify that the selected field contains numeric data for the current time range.
 :::::
 
-:::::{step} Customize the chart to follow best practices
-Tweak the appearance of the chart to your needs. Consider the following best practices:
-
-**Set meaningful bounds**
-:   Define the minimum and maximum values that make sense for your metric. A CPU usage gauge should range from 0 to 100, while a sales target might range from 0 to your quarterly goal.
-
-**Use color bands for thresholds**
-:   Configure color ranges to indicate performance levels. Use green for acceptable values, yellow for warning, and red for critical thresholds.
-
-**Choose the right shape**
-:   Select a gauge shape that fits your dashboard layout. Use **Arc** shapes for traditional gauge appearance, or **Linear** for a more compact horizontal or vertical display.
-
-**Add context with titles**
-:   Provide clear titles that explain what the gauge measures and what the target value represents.
-
-Refer to [Gauge chart settings](#gauge-chart-settings) to find all configuration options for your gauge chart.
-
-For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
-:::::
-
 :::::{step} Save the chart
 :::{include} ../../_snippets/save-visualization.md
 :::
@@ -104,6 +89,24 @@ To build the chart:
 6. Select **Apply and close**.
 
 The chart preview shows where the average number of bytes falls within the configured ranges.
+
+## Apply gauge chart best practices [gauge-chart-best-practices]
+
+After building the chart with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
+
+**Set meaningful bounds**
+:   Define the minimum and maximum values that make sense for your metric. A CPU usage gauge should range from 0 to 100, while a sales target might range from 0 to your quarterly goal.
+
+**Use color bands for thresholds**
+:   Configure color ranges to indicate performance levels. Use green for acceptable values, yellow for warning, and red for critical thresholds.
+
+**Choose the right shape**
+:   Select a gauge shape that fits your dashboard layout. Use **Arc** shapes for traditional gauge appearance, or **Linear** for a more compact horizontal or vertical display.
+
+**Add context with titles**
+:   Provide clear titles that explain what the gauge measures and what the target value represents.
+
+Refer to [Gauge chart settings](#gauge-chart-settings) for all gauge chart configuration options. For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 
 ## Advanced gauge chart scenarios
 

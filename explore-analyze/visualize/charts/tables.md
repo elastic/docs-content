@@ -19,7 +19,12 @@ Tables are versatile visualizations that display your data in rows and columns, 
 
 Tables work with any type of data: numeric values, strings, dates, and more. You can organize data using rows, add metrics to analyze, and optionally split metrics into separate columns to create pivot-style views. Tables offer extensive customization options including sorting, filtering, formatting, and coloring.
 
-You can create tables in {{kib}} using [**Lens**](../lens.md).
+You can build a table in {{kib}} in either of these ways:
+
+- [With the point-and-click editor](#build-a-table)
+- [With an {{esql}} query](#build-a-table-with-esql)
+
+To automate table or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
 
 ![A table visualization in {{kib}}](/explore-analyze/images/table-charts.png)
@@ -57,29 +62,6 @@ The table preview updates to show your metrics as columns. If you added row dime
 See [](#settings) for all configuration options for your table.
 ::::
 
-::::{step} Customize the table to follow best practices
-Tweak the appearance of the table to your needs. Consider the following best practices:
-
-**Make it scannable**
-:   Use consistent formatting and alignment. For example, you can right-align numbers for easier comparison, and left-align text for readability.
-
-**Use color purposefully**
-:   Apply color to values or cells to highlight important data or patterns. Avoid using too many colors that might distract from the data.
-
-**Add context with summary rows**
-:   Use summary rows to show totals, averages, or other aggregate values that help users understand the overall picture.
-
-**Enable interactivity**
-:   Turn on **Directly filter on click** to let users click on values to filter the dashboard or drill down into data.
-
-**Control density**
-:   Adjust table density based on your use case. Use **Compact** for fitting more rows, **Expanded** for better readability.
-
-Refer to [](#settings) for a complete list of options.
-
-For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
-::::
-
 ::::{step} Save the table
 :::{include} ../../_snippets/save-visualization.md
 :::
@@ -110,6 +92,27 @@ To build the table:
 5. Select **Apply and close**.
 
 The table preview shows one row per host, ordered by request count.
+
+## Apply table best practices [table-best-practices]
+
+After building the table with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
+
+**Make it scannable**
+:   Use consistent formatting and alignment. For example, you can right-align numbers for easier comparison, and left-align text for readability.
+
+**Use color purposefully**
+:   Apply color to values or cells to highlight important data or patterns. Avoid using too many colors that might distract from the data.
+
+**Add context with summary rows**
+:   Use summary rows to show totals, averages, or other aggregate values that help users understand the overall picture.
+
+**Enable interactivity**
+:   Turn on **Directly filter on click** to let users click on values to filter the dashboard or drill down into data.
+
+**Control density**
+:   Adjust table density based on your use case. Use **Compact** for fitting more rows, **Expanded** for better readability.
+
+Refer to [Table settings](#settings) for all table configuration options. For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 
 ## Advanced table scenarios
 

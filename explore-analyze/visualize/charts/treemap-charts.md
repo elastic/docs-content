@@ -17,7 +17,12 @@ description: Create treemap charts to visualize hierarchical data, show part-to-
 
 Treemap charts display hierarchical data as nested rectangles, where each rectangle's size represents a quantitative value. They are ideal for showing part-to-whole relationships within hierarchies, comparing relative sizes of categories, and visualizing how data is distributed across multiple levels.
 
-You can create treemap charts in {{kib}} using [**Lens**](../lens.md).
+You can build a treemap chart in {{kib}} in either of these ways:
+
+- [With the point-and-click editor](#build-a-treemap-chart)
+- [With an {{esql}} query](#build-a-treemap-chart-with-esql)
+
+To automate chart or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
 ![Example Lens treemap charts based on sample data](/explore-analyze/images/treemap-example.png)
 
@@ -47,26 +52,6 @@ Using the **Visualization type** dropdown, select **Treemap**.
 3. Configure the [**Metric**](#metric-settings) dimension to define the size of each rectangle.
 
 The chart preview updates to show rectangles sized by your metric. If you added multiple **Group by** dimensions, smaller rectangles appear nested inside the top-level categories.
-:::::
-
-:::::{step} Customize the chart to follow best practices
-Tweak the appearance of the chart to your needs. Consider the following best practices:
-
-**Limit hierarchy depth**
-:   Keep your treemap to 2-3 levels of hierarchy. Deeper nesting becomes difficult to read and interpret.
-
-**Order categories by size**
-:   Arrange rectangles by size (largest first) to make comparisons easier. This is the default behavior in Lens.
-
-**Use color meaningfully**
-:   Apply colors to distinguish top-level categories or to represent an additional metric (such as growth rate or status).
-
-**Ensure readable labels**
-:   Labels are automatically hidden on rectangles that are too small to fit them. If too many labels are missing, reduce the number of categories or increase the panel size.
-
-Refer to [Treemap chart settings](#treemap-chart-settings) to find all configuration options for your treemap chart.
-
-For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
@@ -99,6 +84,24 @@ To build the chart:
 5. Select **Apply and close**.
 
 The chart preview shows larger rectangles for file extensions with more transferred data.
+
+## Apply treemap chart best practices [treemap-chart-best-practices]
+
+After building the chart with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
+
+**Limit hierarchy depth**
+:   Keep your treemap to 2-3 levels of hierarchy. Deeper nesting becomes difficult to read and interpret.
+
+**Order categories by size**
+:   Arrange rectangles by size (largest first) to make comparisons easier. This is the default behavior in Lens.
+
+**Use color meaningfully**
+:   Apply colors to distinguish top-level categories or to represent an additional metric (such as growth rate or status).
+
+**Ensure readable labels**
+:   Labels are automatically hidden on rectangles that are too small to fit them. If too many labels are missing, reduce the number of categories or increase the panel size.
+
+Refer to [Treemap chart settings](#treemap-chart-settings) for all treemap chart configuration options. For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 
 ## Treemap chart settings [treemap-chart-settings]
 

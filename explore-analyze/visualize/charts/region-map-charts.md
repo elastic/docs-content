@@ -17,7 +17,12 @@ description: Create region map charts to visualize geographic distributions, com
 
 Region map charts display data on a geographic map, using colors to represent values for different regions such as countries, states, or provinces. They are ideal for showing geographic distributions, comparing metrics across locations, and identifying regional patterns in your data.
 
-You can create region map charts in {{kib}} using [**Lens**](../lens.md).
+You can build a region map chart in {{kib}} in either of these ways:
+
+- [With the point-and-click editor](#build-a-region-map-chart)
+- [With an {{esql}} query](#build-a-region-map-chart-with-esql)
+
+To automate chart or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
 ![Example Lens region map chart](/explore-analyze/images/region-map-chart-example.png)
 
@@ -49,26 +54,6 @@ Using the **Visualization type** dropdown, select **Region map**.
 The chart preview updates to show a map with regions colored by metric value. If regions appear gray, verify that your field values match the expected geographic codes (such as ISO country codes). Also check that the correct EMS boundaries and join field are selected in the Region key dimension settings.
 :::::
 
-:::::{step} Customize the chart to follow best practices
-Tweak the appearance of the chart to your needs. Consider the following best practices:
-
-**Use appropriate region granularity**
-:   Match the EMS boundaries to your data. For example, use the World Countries boundaries for global data, or a country-specific boundary set for more granular regional analysis.
-
-**Select the correct join field**
-:   Ensure your data values match the selected [join field](#region-key-settings). For example, if your data contains two-letter country codes, select the `iso2` join field.
-
-**Handle missing regions**
-:   Regions with no matching data appear gray. If too many regions are gray, verify that your field values match the selected join field format.
-
-**Consider choropleth best practices**
-:   Region maps are choropleth maps, where color represents data values. Be aware that larger regions can visually dominate, even if their values are smaller.
-
-Refer to [Region map chart settings](#region-map-chart-settings) to find all configuration options for your region map chart.
-
-For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
-:::::
-
 :::::{step} Save the chart
 :::{include} ../../_snippets/save-visualization.md
 :::
@@ -98,6 +83,24 @@ To build the chart:
 6. Select **Apply and close**.
 
 The chart preview colors countries by request count. Countries without matching codes appear gray.
+
+## Apply region map chart best practices [region-map-chart-best-practices]
+
+After building the chart with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
+
+**Use appropriate region granularity**
+:   Match the EMS boundaries to your data. For example, use the World Countries boundaries for global data, or a country-specific boundary set for more granular regional analysis.
+
+**Select the correct join field**
+:   Ensure your data values match the selected [join field](#region-key-settings). For example, if your data contains two-letter country codes, select the `iso2` join field.
+
+**Handle missing regions**
+:   Regions with no matching data appear gray. If too many regions are gray, verify that your field values match the selected join field format.
+
+**Consider choropleth best practices**
+:   Region maps are choropleth maps, where color represents data values. Be aware that larger regions can visually dominate, even if their values are smaller.
+
+Refer to [Region map chart settings](#region-map-chart-settings) for all region map chart configuration options. For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 
 ## Region map chart settings [region-map-chart-settings]
 

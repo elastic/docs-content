@@ -17,7 +17,12 @@ products:
 
 Line charts are ideal for visualizing how metrics evolve over time, spotting seasonal patterns, and detecting spikes or regressions at a glance. Use them for KPIs like response time, error rate, throughput, or utilization, and compare multiple series or previous periods on the same chart. You can create line charts from any numeric data using aggregations (for example, `Average`, `Percentile`, `Counter rate`) or with custom [formulas](../lens.md#lens-formulas).
 
-You can create line charts in {{kib}} using [**Lens**](../lens.md).
+You can build a line chart in {{kib}} in either of these ways:
+
+- [With the point-and-click editor](#build-a-line-chart)
+- [With an {{esql}} query](#build-a-line-chart-with-esql)
+
+To automate chart or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
 ![Example Lens line chart](../../images/kibana-line-new.png)
 
@@ -52,22 +57,6 @@ Optionally:
 The chart preview updates to show one or more lines plotted over time. Each line represents a series, and data points are connected to show trends.
 :::::
 
-:::::{step} Customize the chart to follow best practices
-You can tweak the appearance of your chart by adjusting axes, legends, and series styles from the chart settings. Consider the following best practices:
-
-**Use color wisely**
-:   Assign colors that match your users' expectations and consider your specific context. 
-
-    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Lens automatically applies the **Elastic (line optimized)** palette to line charts, which reorders colors for better contrast between adjacent series. You can override this by manually selecting a different palette.
-
-**Provide context**
-:   Add a legend and descriptive axis titles, or remove them for obvious axes.
-
-For more chart configuration options, go to the [Line chart settings](#settings) section.
-
-For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
-:::::
-
 :::::{step} Save the chart
 :::{include} ../../_snippets/save-visualization.md
 :::
@@ -97,6 +86,20 @@ To build the chart:
 5. Select **Apply and close**.
 
 The chart preview shows how the request count changes over time.
+
+## Apply line chart best practices [line-chart-best-practices]
+
+After building the chart with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
+
+**Use color wisely**
+:   Assign colors that match your users' expectations and consider your specific context.
+
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Lens automatically applies the **Elastic (line optimized)** palette to line charts, which reorders colors for better contrast between adjacent series. You can override this by manually selecting a different palette.
+
+**Provide context**
+:   Add a legend and descriptive axis titles, or remove them for obvious axes.
+
+Refer to [Line chart settings](#settings) for all line chart configuration options. For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 
 ## Advanced line scenarios
 
