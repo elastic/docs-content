@@ -21,13 +21,13 @@ The {{stack}} natively supports the OpenTelemetry protocol (OTLP). This means lo
 To compare approaches and choose the best one for your use case, refer to [OpenTelemetry](/solutions/observability/apm/opentelemetry/index.md).
 
 ::::{important}
-The {{product.edot-collector}} (EDOT Collector) includes additional features and configurations to seamlessly integrate with Elastic. Refer to [EDOT compared to contrib OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md) for a comparison.
+{{product.edot-collector}} includes additional features and configurations to seamlessly integrate with Elastic. Refer to [{{edot}} compared to contrib OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md) for a comparison.
 ::::
 
 :::{note}
 {applies_to}`stack: ga 9.2+`
 
-The EDOT Collector runs embedded inside {{agent}}, sharing a single `elastic-agent.yml` configuration file. If you're running {{agent}} 9.2 or later, refer to [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md) instead of installing a separate Collector binary.
+The OTel Collector runs embedded inside {{agent}}, sharing a single `elastic-agent.yml` configuration file. If you're running {{agent}} 9.2 or later, refer to [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md) instead of installing a separate Collector binary.
 :::
 
 ## Send data from a contrib OpenTelemetry Collector [apm-connect-open-telemetry-collector]
@@ -83,7 +83,7 @@ service:
 2. Use the [memory limiter processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/memorylimiterprocessor/README.md) to prevent out-of-memory failures. For more information, refer to [recommended processors](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md#recommended-processors).
 3. The [debug exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/debugexporter) is helpful for troubleshooting, and supports configurable verbosity levels: `basic` (default), `normal`, and `detailed`.
 4. Elastic endpoint configuration. Elastic supports a ProtoBuf payload via both the OTLP protocol over gRPC transport [(OTLP/gRPC)](https://opentelemetry.io/docs/specs/otlp/#otlpgrpc) and the OTLP protocol over HTTP transport [(OTLP/HTTP)](https://opentelemetry.io/docs/specs/otlp/#otlphttp). To learn more about these exporters, refer to the OpenTelemetry Collector documentation: [OTLP/HTTP Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter) or [OTLP/gRPC exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter). When adding an endpoint to an existing configuration an optional name component can be added, like `otlp/elastic`, to distinguish endpoints as described in the [OpenTelemetry Collector Configuration Basics](https://opentelemetry.io/docs/collector/configuration/#basics).
-5. Hostname and port of the Elastic endpoint. For self-managed, {{ece}}, and {{eck}} deployments, use the address of your [EDOT Collector configured as a gateway](elastic-agent://reference/edot-collector/modes.md) (for example, `edot-collector:4317` for gRPC or `edot-collector:4318` for HTTP). For {{ech}}, use the [Managed OTLP endpoint](opentelemetry://reference/motlp/index.md).
+5. Hostname and port of the Elastic endpoint. For self-managed, {{ece}}, and {{eck}} deployments, use the address of your [{{agent}} configured as a gateway](elastic-agent://reference/edot-collector/modes.md) (for example, `edot-collector:4317` for gRPC or `edot-collector:4318` for HTTP). For {{ech}}, use the [Managed OTLP endpoint](opentelemetry://reference/motlp/index.md).
 6. Credential for Elastic [secret token authorization](/solutions/observability/apm/secret-token.md) (`Authorization: "Bearer a_secret_token"`) or [API key authorization](/solutions/observability/apm/api-keys.md) (`Authorization: "ApiKey an_api_key"`).
 7. Environment-specific configuration parameters can be conveniently passed in as environment variables documented in the [OpenTelemetry Collector environment variables reference](https://opentelemetry.io/docs/collector/configuration/#environment-variables) (for example, `ELASTIC_OTLP_ENDPOINT` and `ELASTIC_SECRET_TOKEN`).
 8. To send OpenTelemetry logs to {{stack}} version 8.0+, declare a `logs` pipeline. {applies_to}`stack: preview`
@@ -179,7 +179,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
 :   Fields that describe the service and the environment that the service runs in. Refer to [attributes](/solutions/observability/apm/opentelemetry/attributes.md) for more information.
 
 `OTEL_EXPORTER_OTLP_ENDPOINT`
-:   Elastic endpoint URL. For self-managed, {{ece}}, and {{eck}} deployments, use the address of your EDOT Collector configured as a gateway or {{apm-server}} OTLP endpoint. For {{ech}}, use the [Managed OTLP endpoint](opentelemetry://reference/motlp/index.md).
+:   Elastic endpoint URL. For self-managed, {{ece}}, and {{eck}} deployments, use the address of your {{agent}} configured as a gateway or {{apm-server}} OTLP endpoint. For {{ech}}, use the [Managed OTLP endpoint](opentelemetry://reference/motlp/index.md).
 
 `OTEL_EXPORTER_OTLP_HEADERS`
 :   Authorization header that includes the Elastic secret token or API key: `"Authorization=Bearer a_secret_token"` or `"Authorization=ApiKey an_api_key"`.
@@ -250,7 +250,7 @@ stack: ga
 ```
 
 :::{note}
-For new users, Elastic recommends sending OpenTelemetry data to the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) or [Managed OTLP endpoint](opentelemetry://reference/motlp.md) instead of to the {{apm-server}}.
+For new users, Elastic recommends sending OpenTelemetry data to [{{agent}}](elastic-agent://reference/edot-collector/index.md) or [Managed OTLP endpoint](opentelemetry://reference/motlp.md) instead of to the {{apm-server}}.
 :::
 
 {{apm-server}} supports both the [OTLP/gRPC](https://opentelemetry.io/docs/specs/otlp/#otlpgrpc) and [OTLP/HTTP](https://opentelemetry.io/docs/specs/otlp/#otlphttp) protocol on the same port as Elastic {{apm-agent}} requests. For ease of setup, use OTLP/HTTP when proxying or load balancing requests to Elastic.
@@ -261,8 +261,8 @@ When using a layer 7 (L7) proxy like {{aws}} ALB, proxy the requests in a way th
 
 Many L7 load balancers handle HTTP and gRPC traffic separately and rely on explicitly defined routes and service configurations to correctly proxy requests. Since {{apm-server}} serves both protocols on the same port, it may not be compatible with some L7 load balancers. For example, to work around this issue in [Ingress NGINX Controller for {{k8s}}](https://github.com/kubernetes/ingress-nginx), either:
 
-* Use the `otlp` exporter in the EDOT collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "GRPC"` on the K8s Ingress object proxying to {{apm-server}}.
-* Use the `otlphttp` exporter in the EDOT collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "HTTP"` (or `"HTTPS"` if {{apm-server}} expects TLS) on the K8s Ingress object proxying to {{apm-server}}.
+* Use the `otlp` exporter in {{agent}}. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "GRPC"` on the K8s Ingress object proxying to {{apm-server}}.
+* Use the `otlphttp` exporter in {{agent}}. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "HTTP"` (or `"HTTPS"` if {{apm-server}} expects TLS) on the K8s Ingress object proxying to {{apm-server}}.
 
 The preferred approach is to deploy a L4 (TCP) load balancer (for example, [NLB](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html) on {{aws}}) in front of {{apm-server}}, which forwards raw TCP traffic transparently without protocol inspection.
 

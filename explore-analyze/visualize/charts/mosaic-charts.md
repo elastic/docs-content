@@ -217,6 +217,9 @@ The following examples show various configuration options for building impactful
 This example creates a mosaic chart where column widths represent OS popularity and the colored rows within each column show the proportion of success, client error, and server error responses.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -368,6 +371,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 This example uses `terms` on both axes to compare product category preferences across continents, revealing how shopping behavior varies by region.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

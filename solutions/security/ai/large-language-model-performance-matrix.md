@@ -13,7 +13,7 @@ products:
 
 # Large language model performance matrix for {{elastic-sec}} [llm-performance-matrix]
 
-This page summarizes internal test results comparing large language models (LLMs) across {{elastic-sec}} [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) and AI-powered feature use cases. The matrix tests each model across [Agent Builder](/solutions/security/ai/agent-builder/agent-builder.md), [Attack Discovery](/solutions/security/ai/attack-discovery/index.md), and [Automatic Migration](/solutions/security/get-started/automatic-migration.md). To learn more about these use cases, refer to [AI-powered features](/explore-analyze/ai-features.md#security-features).
+This page summarizes internal test results comparing large language models (LLMs) across {{elastic-sec}} [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) and AI-powered feature use cases. The matrix tests each model across [Agent Builder](/solutions/security/ai/agent-builder/agent-builder.md), [Attack Discovery](/solutions/security/ai/attack-discovery/index.md), and [Automatic Migration](/solutions/security/get-started/automatic-migration.md). To learn more about these use cases, refer to [AI-powered features](/explore-analyze/ai-features.md#security-features). To learn how these scores are produced, refer to [Benchmarking the Agentic SOC](https://www.elastic.co/security-labs/llm-benchmarking-agentic-soc) on Elastic Security Labs.
 
 ::::{important}
 Higher scores indicate better performance, on a scale of 1 to 10. A score of 10 on a capability means the model met or exceeded all task-specific benchmarks for that capability.
@@ -28,6 +28,8 @@ The matrix uses three top-line capability scores — **Agent Builder**, **Attack
 
 * **Overall Agent Builder Score** is the average of the seven Agent Builder [sub-capabilities](#_agent_builder_sub_capabilities). It summarizes how well a model handles agentic Security work end to end.
 * **Overall Score** is the average of the Agent Builder, Attack Discovery, and Automatic Migration scores. It reflects how a model performs across the breadth of Elastic's AI features rather than any single workflow, and is the default sort for the tables below.
+
+For a full walkthrough of the evaluation framework behind these scores — the synthetic intrusion, deterministic ground truth, trace-level grading, and blind judging — refer to [Benchmarking the Agentic SOC](https://www.elastic.co/security-labs/llm-benchmarking-agentic-soc) on Elastic Security Labs.
 
 ### What each Agent Builder sub-capability measures [_agent_builder_sub_capabilities]
 

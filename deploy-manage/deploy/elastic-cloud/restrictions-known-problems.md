@@ -6,6 +6,8 @@ applies_to:
     ess: ga
 products:
   - id: cloud-hosted
+sub:
+  example-phz-dn: "vpce.us-east-1.aws.elastic-cloud.com in AWS, or my-deployment-d53192.kb.privatelink.eastus2.azure.elastic-cloud.com in Azure"
 ---
 
 # Restrictions and known problems [ec-restrictions]
@@ -36,6 +38,8 @@ For limitations related to logging and monitoring, check the [Restrictions and l
 To learn more about the features that are supported by {{ecloud}}, check [{{ecloud}} Subscriptions](https://www.elastic.co/cloud/elasticsearch-service/subscriptions?page=docs&placement=docs-body).
 
 ## Stack versions [ec-stack-versions]
+
+* Due to a known issue, {{es}} 9.5.0 can return incorrect results from searches that exclude values using a `must_not` clause, where the excluded field has doc values enabled but is not indexed for search. Version 9.5.0 is unavailable for new deployments and upgrades. Review [this KB article](https://support.elastic.co/knowledge/00f3a35b) for more guidance on the known issue.
 
 * Due to a known issue with the {{stack}}, certain upgrade paths to and from version 8.17 are currently blocked or disabled. Review [this KB article](https://support.elastic.co/knowledge/7c3ad709) for more guidance on the known issue. Additionally, review [this KB article](https://support.elastic.co/knowledge/e87d76a5) for detailed information regarding the specific versions affected. 
 
