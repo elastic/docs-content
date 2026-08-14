@@ -9,7 +9,9 @@ products:
 
 # Explore your data with runtime fields [runtime-fields]
 
-Runtime fields are fields that you add to documents after you've ingested your data, evaluated at query time instead of stored in the index. Add one to a data view to define a field for a specific use case, override the returned values from index fields, or work with data before you understand its structure, all without reindexing.
+Runtime fields are fields that you add to documents after you've ingested your data. {{kib}} evaluates them at query time. They are not stored in the index.
+
+Add a runtime field to a data view to define a field for a specific use case, override values returned from index fields, or work with data before you understand its structure, without reindexing.
 
 ::::{warning}
 Runtime fields can impact {{kib}} performance. When you run a query, {{es}} uses the fields you index first to shorten the response time. Index the fields that you commonly search for and filter on, such as `timestamp`, then use runtime fields to limit the number of fields {{es}} uses to calculate values.
@@ -21,7 +23,9 @@ You need the same privileges required to [create a data view](create-data-view.m
 
 ## Add runtime fields [create-runtime-fields]
 
-To add runtime fields to your data views, open the data view you want to change, then define the field values by emitting a single value using the [Painless scripting language](/explore-analyze/scripting/modules-scripting-painless.md). You can also add runtime fields in [**Discover**](/explore-analyze/discover/discover-get-started.md#add-field-in-discover) and [**Lens**](/explore-analyze/visualize/lens.md#change-the-fields).
+Add a runtime field on the data view you want to change by emitting a value with the [Painless scripting language](/explore-analyze/scripting/modules-scripting-painless.md). You can also add runtime fields in [**Discover**](/explore-analyze/discover/discover-get-started.md#add-field-in-discover) and [**Lens**](/explore-analyze/visualize/lens.md#change-the-fields).
+
+Runtime fields created against a data view are not applied to the underlying index mapping in {{es}}.
 
 1. Go to the **Data Views** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the data view that you want to add the runtime field to, then select **Add field**.
@@ -35,10 +39,6 @@ To add runtime fields to your data views, open the data view you want to change,
     * To pin frequently used fields to the top of the list, hover over the field, then select ![Icon to pin field to the top of the list](/explore-analyze/images/kibana-stackManagement-indexPatterns-pinRuntimeField-7.15.png "").
 
 7. Select **Create field**.
-
-:::{warning}
-Runtime fields created against a data view are not applied to the underlying index mapping in {{es}}.
-:::
 
 The new field is available anywhere the data view is used, for example in **Discover** or when building a **Lens** visualization.
 
@@ -84,9 +84,9 @@ emit("");
 
 ### Return multiple fields with a composite runtime field [composite-runtime-field]
 
-A single runtime field can also produce multiple subfields when the type `Composite` is selected. The script editor provides default types that can be customized for each subfields.
+A single runtime field can also produce multiple subfields when you select the `Composite` type. The script editor provides default types that you can customize for each subfield.
 
-Return `keyword` and `double` type subfields. Note that the first argument for `emit` is the name of the subfield.
+Return `keyword` and `double` type subfields. The first argument for `emit` is the name of the subfield.
 
 ```text
 emit('subfield_a', 'Hello');

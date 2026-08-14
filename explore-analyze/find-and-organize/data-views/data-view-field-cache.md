@@ -1,5 +1,5 @@
 ---
-description: How Kibana caches a data view's field list in the browser, and how to force a refresh.
+description: How Kibana caches a data view's field list in the browser, and how to refresh it with the Refresh control.
 applies_to:
   stack: ga
   serverless: ga
@@ -9,9 +9,11 @@ products:
 
 # Data view field cache [data-view-field-cache]
 
-The browser caches {{data-source}} field lists for increased performance. This is particularly impactful for {{data-sources}} with a high field count that span a large number of indices and clusters. The field list is updated every couple of minutes in typical {{kib}} usage. Alternatively, use the refresh button on the {{data-source}} management detail page to get an updated field list. A force reload of {{kib}} has the same effect.
+The browser caches {{data-source}} field lists to improve performance. Caching matters most for {{data-sources}} with a high field count that span many indices and clusters.
 
-The field list might be impacted by changes in indices and user permissions.
+In typical {{kib}} usage, the field list updates every few minutes. To get an updated list immediately, select **Refresh** on the {{data-source}} management detail page. Reloading {{kib}} has the same effect.
+
+The field list might change after updates to indices or user permissions.
 
 ## Related pages
 

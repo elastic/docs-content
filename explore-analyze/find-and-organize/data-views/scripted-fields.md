@@ -15,11 +15,9 @@ products:
 Use [runtime fields](runtime-fields.md) instead of scripted fields. Runtime fields support Painless scripting and provide greater flexibility. You can also use the [Elasticsearch Query Language (ES|QL)](elasticsearch://reference/query-languages/esql.md) to compute values directly at query time.
 ::::
 
-Scripted fields compute data on the fly from the data in your {{es}} indices. The data is shown on the Discover tab as part of the document data, and you can use scripted fields in your visualizations. You query scripted fields with the [{{kib}} query language](/explore-analyze/query-filter/languages/kql.md), and can filter them using the filter bar. The scripted field values are computed at query time, so they aren't indexed and cannot be searched using the {{kib}} default query language.
+Scripted fields compute data on the fly from your {{es}} indices. The values appear in **Discover** as part of the document data. You can use scripted fields in visualizations, query them with the [{{kib}} query language](/explore-analyze/query-filter/languages/kql.md), and filter them in the filter bar. The values are computed at query time, so they aren't indexed and can't be searched using the {{kib}} default query language.
 
-::::{warning}
-Computing data on the fly with scripted fields can be very resource intensive and can have a direct impact on {{kib}} performance. Keep in mind that there's no built-in validation of a scripted field. If your scripts are buggy, you'll get exceptions whenever you try to view the dynamically generated data.
-::::
+Computing scripted fields at query time can be resource intensive and can slow {{kib}}. {{kib}} doesn't validate scripted fields. If a script contains errors, you get exceptions when you view the generated data.
 
 When you define a scripted field in {{kib}}, you have a choice of the [Lucene expressions](/explore-analyze/scripting/modules-scripting-expression.md) or the [Painless](/explore-analyze/scripting/modules-scripting-painless.md) scripting language.
 
@@ -33,11 +31,11 @@ For more information on scripted fields and additional examples, refer to [Using
 
 ## Migrate to runtime fields or {{esql}} queries [migrate-off-scripted-fields]
 
-The following code snippets demonstrate how an example scripted field called `computed_values` on the Kibana Sample Data Logs data view could be migrated to either a runtime field or an {{esql}} query, highlighting the differences between each approach.
+The following examples migrate a scripted field called `computed_values` on the Kibana Sample Data Logs data view to a runtime field and to an {{esql}} query.
 
 ### Scripted field [scripted-field-example]
 
-In the scripted field example, variables are created to track all values the script will need to access or return. Since scripted fields can only return a single value, the created variables must be returned together as an array at the end of the script.
+In the scripted field example, variables track every value the script needs to access or return. Scripted fields can return only a single value, so the variables must be returned together as an array at the end of the script.
 
 ```text
 def hour_of_day = $('@timestamp', ZonedDateTime.parse('1970-01-01T00:00:00Z')).getHour();
@@ -71,7 +69,7 @@ return [time_of_day, response_category];
 
 ### Runtime field [runtime-field-example]
 
-Unlike scripted fields, runtime fields do not need to return a single value and can emit values at any point in the script, which will be combined and returned as a multi-value field. This allows for more flexibility in the script logic and removes the need to manually manage an array of values.
+Unlike scripted fields, runtime fields don't need to return a single value. They can emit values at any point in the script. {{kib}} combines those values and returns them as a multi-value field. That removes the need to manage an array of values yourself.
 
 ```text
 def hour_of_day = $('@timestamp', ZonedDateTime.parse('1970-01-01T00:00:00Z')).getHour();
@@ -101,7 +99,7 @@ else
 
 ### ES|QL query [esql-example]
 
-Alternatively, ES|QL can be used to skip the need for data view management entirely and compute the values you need directly at query time. ES|QL supports computing multiple field values in a single query, using computed values with its rich set of commands and functions, and even aggregations against computed values. This makes it an excellent solution for one-off queries and realtime data analysis.
+Alternatively, you can use {{esql}} to compute the values you need at query time, without managing a data view. {{esql}} can compute multiple field values in a single query, use those values with its commands and functions, and aggregate against them. That approach fits one-off queries and real-time analysis.
 
 ```esql
 FROM kibana_sample_data_logs
@@ -143,10 +141,6 @@ You need the same privileges required to [create a data view](create-data-view.m
 Your change takes effect immediately anywhere the data view is used.
 
 For more information about scripted fields in {{es}}, refer to [Scripting](/explore-analyze/scripting.md).
-
-::::{warning}
-Built-in validation is unsupported for scripted fields. When your scripts contain errors, you receive exceptions when you view the dynamically generated data.
-::::
 
 ## Related pages
 

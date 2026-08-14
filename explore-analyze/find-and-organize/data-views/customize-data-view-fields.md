@@ -1,5 +1,5 @@
 ---
-description: Customize the fields in a Kibana data view by adding runtime or scripted fields and changing how fields are displayed.
+description: Customize fields in a Kibana data view. Add runtime or scripted fields, change how fields are displayed, and refresh the cached field list.
 applies_to:
   stack: ga
   serverless: ga
@@ -9,12 +9,12 @@ products:
 
 # Customize data view fields [managing-data-views]
 
-To customize the fields in your data view, you can add runtime fields to the existing documents, add scripted fields to compute data on the fly, and change how {{kib}} displays the data view fields.
+You can add fields to a data view after ingest, and change how {{kib}} displays existing fields.
 
-* [Explore your data with runtime fields](runtime-fields.md) — add fields after ingestion, evaluated at query time
-* [Manage scripted fields](scripted-fields.md) — deprecated in favor of runtime fields and {{esql}}
-* [Format data view fields](field-formatters.md) — reference for the available field formatters
-* [Data view field cache](data-view-field-cache.md) — how {{kib}} caches field lists in the browser
+* [Explore your data with runtime fields](runtime-fields.md): add fields after ingestion, evaluated at query time
+* [Manage scripted fields](scripted-fields.md): deprecated. Use runtime fields or {{esql}} instead
+* [Format data view fields](field-formatters.md): change how {{kib}} displays field values
+* [Data view field cache](data-view-field-cache.md): how {{kib}} caches field lists in the browser, and how to refresh them
 
 ## Related pages
 
