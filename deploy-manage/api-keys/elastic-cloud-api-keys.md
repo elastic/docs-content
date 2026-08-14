@@ -55,7 +55,7 @@ For more information, refer to [User roles and privileges](/deploy-manage/users-
 4. On the **Create API key** flyout, you can configure your new key:
    1. Add a unique name for the key.
    2. Set the [expiration](#expiration) for the key.
-   3. Assign [roles](#roles).
+   3. Assign [roles](#roles). You can also allow the key to [manage workload credentials](/deploy-manage/users-roles/cloud-organization/user-roles.md#manage-workload-credentials).
 5. Click **Create API key**, copy the generated API key, and store it in a safe place. You can also download the key as a CSV file.
 
 The API key needs to be supplied in the `Authorization` header of a request, in the following format:
