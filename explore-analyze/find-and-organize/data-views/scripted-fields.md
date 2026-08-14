@@ -130,7 +130,7 @@ The ability to create new scripted fields has been removed from the **Data Views
 
 ### Before you begin [scripted-fields-prereqs]
 
-You need the same privileges required to [create a data view](create-data-view.md#create-data-view-prereqs).
+You need a role with the **Data View Management** {{kib}} privilege and the `view_index_metadata` {{es}} privilege. Refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 
 ### Edit or delete a scripted field [update-scripted-field-steps]
 

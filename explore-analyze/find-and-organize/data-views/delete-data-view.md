@@ -17,7 +17,7 @@ Deleting a {{data-source}} breaks all visualizations, saved Discover sessions, a
 
 ## Before you begin [delete-data-view-prereqs]
 
-You need the same privileges required to [create a data view](create-data-view.md#create-data-view-prereqs).
+You need a role with the **Data View Management** {{kib}} privilege and the `view_index_metadata` {{es}} privilege. Refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 
 {applies_to}`stack: ga 9.4` You can't delete [managed data views](../data-views.md#managed-data-views). On the **Data Views** management page, the delete action isn't available for these data views, and they can't be selected for bulk deletion. To use a modified version of a managed data view, [duplicate it](duplicate-data-view.md) instead.
 

@@ -19,7 +19,7 @@ Runtime fields can impact {{kib}} performance. When you run a query, {{es}} uses
 
 ## Before you begin [runtime-fields-prereqs]
 
-You need the same privileges required to [create a data view](create-data-view.md#create-data-view-prereqs).
+You need a role with the **Data View Management** {{kib}} privilege and the `view_index_metadata` {{es}} privilege. Refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 
 ## Add runtime fields [create-runtime-fields]
 

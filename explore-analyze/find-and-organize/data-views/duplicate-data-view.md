@@ -15,7 +15,8 @@ Duplicating a data view creates an editable copy. Use a copy when you want to tr
 
 ## Before you begin [duplicate-data-view-prereqs]
 
-You need the same privileges required to [create a data view](create-data-view.md#create-data-view-prereqs), and an existing data view to duplicate.
+* You need a role with the **Data View Management** {{kib}} privilege and the `view_index_metadata` {{es}} privilege. Refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
+* You need an existing data view to duplicate.
 
 ## Duplicate a data view [duplicate-data-view-steps]
 
