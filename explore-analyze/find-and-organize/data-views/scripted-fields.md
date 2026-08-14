@@ -122,7 +122,7 @@ FROM kibana_sample_data_logs
   | DROP hour_of_day, time_of_day, response_int, response_category
 ```
 
-## Existing scripted fields [update-scripted-field]
+## Manage existing scripted fields [update-scripted-field]
 
 ::::{warning}
 The ability to create new scripted fields has been removed from the **Data Views** management page in 9.0. Existing scripted fields can still be edited or deleted, and the creation UI can be accessed by navigating directly to `/app/management/kibana/dataViews/dataView/{{dataViewId}}/create-field`, but we recommend migrating to runtime fields or ES|QL queries instead to prepare for removal.
