@@ -209,7 +209,7 @@ Include a description when:
 Follow these best practices:
 
 - **Keep it concise**: Use a maximum of 600 characters.
-- **Use third-person present**: Match the [release notes](/contribute-docs/style-guide/formatting.md#release-notes) verb form. Titles stay base-form imperative (*Fix*, *Add*); descriptions do not (*Fixes*, *Adds*, *Enables*, *Improves*, *Updates*, or *Removes* depending on type).
+- **Use third-person present**: Titles stay base-form imperative (*Fix*, *Add*); descriptions do not (*Fixes*, *Adds*, *Enables*, *Improves*, *Updates*, or *Removes* depending on type).
 - **Focus on user value**: Explain what users can do or what problems are solved. Avoid filler such as "This enhancement allows you to..."
 - **Provide context**: Help users understand when or why they would use this.
 - **Include relevant details**: Describe configuration changes, API changes, or behavioral differences.
