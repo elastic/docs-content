@@ -133,4 +133,4 @@ Edit the settings for runtime fields, or remove runtime fields from data views.
 
 * [Data views](../data-views.md)
 * [Customize data view fields](customize-data-view-fields.md)
-* [Manage scripted fields](scripted-fields.md)
+* [Scripted fields](scripted-fields.md)

@@ -1,5 +1,5 @@
 ---
-description: Manage and migrate off scripted fields on a Kibana data view. Deprecated in favor of runtime fields and ES|QL.
+description: Scripted fields compute values at query time from a Kibana data view. Deprecated in favor of runtime fields and ES|QL.
 applies_to:
   stack: ga
   serverless: ga
@@ -7,7 +7,7 @@ products:
   - id: kibana
 ---
 
-# Manage scripted fields
+# Scripted fields
 
 ::::{admonition} Deprecated in 7.13, creation removed in 9.0.
 :class: warning
