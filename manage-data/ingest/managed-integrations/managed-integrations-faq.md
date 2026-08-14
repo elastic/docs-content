@@ -3,7 +3,7 @@ navigation_title: FAQ
 description: Frequently asked questions about Elastic Managed integrations, including limits, supportability, data residency, and common setup questions.
 applies_to:
   stack: ga 9.5+, preview 9.0-9.4
-  serverless: preview
+  serverless: ga
 products:
   - id: elastic-agent
   - id: fleet
@@ -42,11 +42,11 @@ Yes. Data ingested through {{managed-integrations}} lands in your cluster like a
 
 On {{serverless-short}} projects, you can deploy {{managed-integrations}} at no additional cost.
 
-On {{ech}}, each deployed {{managed-integration}} is charged per hour. On the Elastic price list, the unit appears as `[csp].managed-integration`, where `[csp]` is `aws`, `azure`, or `gcp`.
+On {{ech}}, each deployed {{managed-integration}} is charged per integration-hour. On the Elastic price list, the line item appears as `[csp].managed-integration`, where `[csp]` is `aws`, `azure`, or `gcp`.
 
-Most {{managed-integrations}} are metered at one unit per integration, per hour. The following integrations are exceptions:
+Most {{managed-integrations}} are metered at one integration-hour. The following integrations are exceptions:
 
-| Integration | Unit cost (per integration, per hour) |
+| Integration | Integration-hours |
 | --- | :---: |
 | Microsoft Defender XDR Logs | 4 |
 | Microsoft Defender for Endpoint | 4 |
@@ -119,7 +119,7 @@ No. {{managed-integrations}} run on shared infrastructure and don't use a fixed 
 
 ```{applies_to}
 stack: ga 9.5+, preview 9.1+
-serverless: preview
+serverless: ga
 ```
 
 Yes. {{managed-integrations}} support traffic filtering, and no additional configuration is necessary.
@@ -161,7 +161,7 @@ Each integration policy shows the integration's status, so you can check its hea
 
 :::::{applies-switch}
 
-::::{applies-item} {serverless: preview, stack: ga 9.5+}
+::::{applies-item} {serverless: ga, stack: ga 9.5+}
 Each integration's status appears on its **Integration policies** tab in the **{{integrations}}** app.
 
 If an {{managed-integration}} is unhealthy:

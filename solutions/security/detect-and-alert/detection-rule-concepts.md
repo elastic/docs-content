@@ -90,24 +90,19 @@ stack: ga
 serverless: ga
 ```
 
-Rules run in the background using the privileges of the user who last edited them. When you create or modify a rule, {{elastic-sec}} generates an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) that captures a snapshot of your current privileges. The rule uses this API key to:
+{{kib}} uses an API key to authorize rule execution each time a rule runs. The key is used to:
 
 * Execute detection queries against the configured data sources
 * Write alerts to the alerts index
 * Execute actions (send notifications)
 
-This means rules continue running with their editor's privileges, even when that user is not logged in.
+On Stack deployments, {{elastic-sec}} generates an [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) when you create or modify a rule. The key captures a snapshot of your current privileges, and ownership transfers to whoever last edited the rule. This means rules continue running with their editor's privileges, even when that user is not logged in.
 
-::::{important}
-Ensure that only users with the [appropriate access](/solutions/security/detect-and-alert/detections-privileges.md) edit rules.
+In {{serverless-full}} projects, rules use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md). Refer to [Rules and {{ecloud}} API keys in {{serverless-short}}](/explore-analyze/alerting/alerts/rules-and-elastic-cloud-api-keys.md) for details on how this key type affects rule access and behavior.
 
-If a user without the required privileges (such as index read access) updates a rule, the rule can stop functioning correctly and no longer generate alerts. To fix this, a user with the required privileges (such as access to manage rules) must do one of the following:
+### Impact of insufficient user privileges [rule-privilege-impact]
 
-- **Edit and save the rule**: This regenerates the API key with the current user's privileges. Refer to [](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-rules-settings) to learn more.
-- **Update the API key directly**: This allows the rule configuration to remain unchanged. Refer to [](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md#update-api-key) to learn more.
-
-Either action rebinds the rule to a user who has the necessary access.
-::::
+When a user without the [appropriate privileges](/solutions/security/detect-and-alert/detections-privileges.md) edits a rule, the rule can stop functioning correctly and no longer generate alerts. A user with the appropriate privileges must edit and save the rule to regenerate the API key with their credentials and restore access. On {{stack}} deployments, you can also [update the API key directly](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md#update-api-key) without changing the rule configuration.
 
 ## Key terms quick reference
 
@@ -118,7 +113,7 @@ Either action rebinds the rule to a user who has the necessary access.
 :   Records created when a rule's query finds matching events. Each alert represents a potential threat for analysts to investigate.
 
 **API key**
-:   A credential that captures the privileges of the user who last edited a rule. Rules use API keys to execute queries and write alerts.
+:   A credential that rules use to execute queries and write alerts. The key type and ownership model depends on your deployment. Refer to [Elasticsearch API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md) and [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) for details.
 
 **Connectors**
 :   Integrations that connect actions to external services like Slack, {{jira}}, or PagerDuty.
@@ -142,7 +137,7 @@ Either action rebinds the rule to a user who has the necessary access.
 :   The logic that defines what threat behavior or pattern a rule detects. Syntax varies by rule type.
 
 **Rule authorization**
-:   The privilege model that determines what a rule can access. Rules execute using an API key tied to the user who last edited them.
+:   The privilege model that determines what a rule can access. Refer to [Rule authorization](#rule-authorization-concept) for more details.
 
 **Rule type**
 :   The detection method a rule uses (custom query, EQL, threshold, indicator match, new terms, {{esql}}, or {{ml}}).

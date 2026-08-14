@@ -147,8 +147,8 @@ To assign colors to terms in your visualization:
 
 1. Create a visualization using one of the supported types.
 2. Add a categorical field that contains the terms you want to color.
-3. In the field configuration, look for the **Color by value** option:
-   * For data tables: Select **Cell** or **Text**
+3. In the field configuration, look for the **Cell decoration** or **Color by value** (depending on your {{kib}} version) option:
+   * For data tables: Select **Background** or **Cell** (depending on your {{kib}} version), or **Text**
    * For other chart types: This option appears when you have a categorical breakdown
 4. Click the **Edit colors** icon. In the menu that opens, keep **Use legacy palettes** turned off to be able to assign colors to specific terms
 5. Select a color palette from the available options:

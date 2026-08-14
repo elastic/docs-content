@@ -24,6 +24,7 @@ toc:
                   - file: deploy/elastic-cloud/azure-native-isv-service.md
                     children:
                       - file: deploy/elastic-cloud/azure-native-isv-service-logs-metrics.md
+                      - file: deploy/elastic-cloud/azure-native-isv-service-network-security.md
                       - file: deploy/elastic-cloud/azure-native-isv-service-troubleshooting.md
                   - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md
                   - file: deploy/elastic-cloud/heroku.md
@@ -300,6 +301,7 @@ toc:
                   - file: deploy/self-managed/max-number-of-threads.md
                   - file: deploy/self-managed/executable-jna-tmpdir.md
                   - file: deploy/self-managed/system-config-tcpretries.md
+                  - file: deploy/self-managed/system-config-clocks.md
                   - file: deploy/self-managed/bootstrap-checks.md
               - file: deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md
               - file: deploy/self-managed/install-elasticsearch-with-zip-on-windows.md
