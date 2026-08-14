@@ -7,7 +7,7 @@ products:
   - id: kibana
 ---
 
-# Duplicate a data view [duplicate-data-view]
+# Duplicate a data view
 
 Duplicating a data view creates an editable copy. Use a copy when you want to try different field formatting or a different index pattern without affecting the original, or when you need a similar {{data-source}} for another use case.
 

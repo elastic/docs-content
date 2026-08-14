@@ -7,7 +7,7 @@ products:
   - id: kibana
 ---
 
-# Data view field cache [data-view-field-cache]
+# Data view field cache
 
 The browser caches {{data-source}} field lists to improve performance. Caching matters most for {{data-sources}} with a high field count that span many indices and clusters.
 

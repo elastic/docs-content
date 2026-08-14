@@ -7,7 +7,7 @@ products:
   - id: kibana
 ---
 
-# Create a data view [create-data-view]
+# Create a data view
 
 Create a {{data-source}} to make your own {{es}} data available in **Discover**, **Lens**, and other analytics features.
 

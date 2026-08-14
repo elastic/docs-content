@@ -7,7 +7,7 @@ products:
   - id: kibana
 ---
 
-# Delete a data view [delete-data-view]
+# Delete a data view
 
 When you delete a {{data-source}}, you can't recover its field formatters, runtime fields, source filters, or field popularity data. Deleting a {{data-source}} doesn't remove any indices or data documents from {{es}}.
 

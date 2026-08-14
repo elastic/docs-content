@@ -7,7 +7,7 @@ products:
   - id: kibana
 ---
 
-# Manage scripted fields [scripted-fields]
+# Manage scripted fields
 
 ::::{admonition} Deprecated in 7.13, creation removed in 9.0.
 :class: warning

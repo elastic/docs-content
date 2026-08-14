@@ -7,7 +7,7 @@ products:
   - id: kibana
 ---
 
-# Customize data view fields [managing-data-views]
+# Customize data view fields
 
 You can add fields to a data view after ingest, and change how {{kib}} displays existing fields.
 

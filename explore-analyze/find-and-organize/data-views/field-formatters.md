@@ -7,7 +7,7 @@ products:
   - id: kibana
 ---
 
-# Format data view fields [managing-fields]
+# Format data view fields
 
 {{kib}} uses the same field types as {{es}}. Some {{es}} field types are unsupported in {{kib}}. To customize how {{kib}} displays data view fields, use the formatting options.
 

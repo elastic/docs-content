@@ -7,7 +7,7 @@ products:
   - id: kibana
 ---
 
-# Explore your data with runtime fields [runtime-fields]
+# Explore your data with runtime fields
 
 Runtime fields are fields that you add to documents after you've ingested your data. {{kib}} evaluates them at query time. They are not stored in the index.
 
