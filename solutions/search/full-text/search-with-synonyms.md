@@ -141,7 +141,7 @@ You can define synonyms directly in your token filter using the `synonyms` param
 ```
 
 ::::{warning}
-Too many inline synonyms increases cluster size unnecessarily and can lead to performance issues. For production workloads, use the [API](#synonyms-store-synonyms-api) or a [synonym file](#synonyms-store-synonyms-file) instead.
+Too many inline synonyms increases cluster size unnecessarily and can lead to performance issues. For production workloads, use the REST API or file-based approach instead.
 ::::
 
 :::::
