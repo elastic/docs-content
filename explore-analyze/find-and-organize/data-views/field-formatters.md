@@ -23,11 +23,11 @@ For numeric fields, the default field formatters are based on the `meta.unit` fi
 
 ## String field formatters [string-field-formatters]
 
-String fields support the [**String**](#string-transformations) and [**Url**](#url-field-formatter) formatters.
+String fields support the [**String**](#string-transformations) and [`Url`](#url-field-formatter) formatters.
 
 ## Date field formatters [field-formatters-date]
 
-Date fields support the **Date**, [**String**](#string-transformations), and [**Url**](#url-field-formatter) formatters.
+Date fields support the **Date**, [**String**](#string-transformations), and [`Url`](#url-field-formatter) formatters.
 
 The **Date** formatter lets you choose the display format of date stamps using the [moment.js](https://momentjs.com/) standard format definitions.
 
@@ -37,7 +37,7 @@ Geographic point fields support the [**String**](#string-transformations) format
 
 ## Number field formatters [field-formatters-numeric]
 
-Numeric fields support the **Bytes and Bits**, **Color**, **Duration**, **Histogram**, **Number**, **Percentage**, [**String**](#string-transformations), and [**Url**](#url-field-formatter) formatters.
+Numeric fields support the **Bytes and Bits**, **Color**, **Duration**, **Histogram**, **Number**, **Percentage**, [**String**](#string-transformations), and [`Url`](#url-field-formatter) formatters.
 
 The **Bytes and Bits**, **Number**, and **Percentage** formatters let you choose the display formats of numbers in the field using the [Elastic numeral pattern](/explore-analyze/numeral-formatting.md) syntax that {{kib}} maintains.
 
@@ -78,7 +78,7 @@ Supported transformations include:
 
 ## `Url` field formatter [url-field-formatter]
 
-The **Url** field formatter converts the contents of any field that supports it into a link, image, or audio reference.
+The `Url` field formatter converts the contents of any field that supports it into a link, image, or audio reference.
 
 Types:
 
@@ -91,7 +91,7 @@ To customize URL field formats, use templates. A **URL template** adds values to
 For example, when:
 
 * A field contains a user ID
-* A field uses the **Url** field formatter
+* A field uses the `Url` field formatter
 * The URI template is `http://company.net/profiles?user_id={­{{value}}­}`
 
 The resulting URL replaces `{{value}}` with the user ID from the field.
