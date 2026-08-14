@@ -167,7 +167,7 @@ For complete configuration examples for macOS and Windows, refer to the [osquery
 
 ## Load custom Osquery extensions [osquery-custom-extensions]
 ```{applies_to}
-stack: ga 9.5+
+stack: ga 9.6+
 serverless:
   security: ga
 ```
