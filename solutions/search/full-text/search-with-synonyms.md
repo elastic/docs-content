@@ -12,7 +12,7 @@ products:
 
 # Configure synonyms in {{es}} [search-with-synonyms]
 
-Synonyms are words or phrases that have the same or similar meaning. When you configure synonyms in {{product.elasticsearch}}, a search for one term automatically matches documents that use an equivalent term. This improves relevance when users express the same concept with different words, makes domain-specific vocabulary more accessible, and handles common misspellings transparently.
+Synonyms are words or phrases that have the same or similar meaning. When you configure synonyms in {{product.elasticsearch}}, a search for one term automatically matches documents that use an equivalent term. For example, you can define synonym rules to match different terms for the same concept, surface results for domain-specific jargon, or handle common misspellings.
 
 This page walks you through defining synonym rules, grouping them into reusable synonym sets, configuring {{product.elasticsearch}} to apply them during text analysis, and verifying that queries return the expanded results you expect.
 
