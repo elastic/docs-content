@@ -1,4 +1,5 @@
 ---
+navigation_title: Synonyms
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-synonyms.html
 description: Learn how to define synonym sets, configure synonym token filters and analyzers, and apply synonyms at search time or index time in Elasticsearch.
@@ -9,7 +10,7 @@ products:
   - id: elasticsearch
 ---
 
-# Set up and search with synonyms in {{es}} [search-with-synonyms]
+# Configure synonyms in {{es}} [search-with-synonyms]
 
 Synonyms are words or phrases that have the same or similar meaning. When you configure synonyms in {{product.elasticsearch}}, a search for one term automatically matches documents that use an equivalent term. This improves relevance when users express the same concept with different words, makes domain-specific vocabulary more accessible, and handles common misspellings transparently.
 
@@ -50,11 +51,19 @@ For full format details, refer to the [synonym graph token filter](elasticsearch
 
 You have multiple options for creating synonym sets and rules.
 
-::::{note}
 Synonym sets created through the API or the {{kib}} UI can only be used at search time. For index-time synonyms, use a file-based or inline approach with the [`synonym` token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md).
-::::
 
 ::::::{tab-set}
+
+:::::{tab-item} REST API
+
+$$$synonyms-store-synonyms-api$$$
+
+You can use the [synonyms APIs]({{es-apis}}group/endpoint-synonyms) to manage synonym sets. This is the most flexible approach, as it allows you to dynamically define and modify synonym sets. For examples of how to create or update a synonym set with APIs, refer to the [Create or update synonym set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md) page.
+
+Changes to your synonym sets automatically reload the associated analyzers.
+
+:::::
 
 :::::{tab-item} {{kib}} UI
 
@@ -79,16 +88,6 @@ To create a synonym set using the UI:
 5. Select **Save** to save your rules.
 
 The UI supports the same synonym rule formats as the file-based approach. Changes made through the UI automatically reload the associated analyzers.
-
-:::::
-
-:::::{tab-item} REST API
-
-$$$synonyms-store-synonyms-api$$$
-
-You can use the [synonyms APIs]({{es-apis}}group/endpoint-synonyms) to manage synonym sets. This is the most flexible approach, as it allows you to dynamically define and modify synonym sets. For examples of how to create or update a synonym set with APIs, refer to the [Create or update synonym set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md) page.
-
-Changes to your synonym sets automatically reload the associated analyzers.
 
 :::::
 
@@ -174,9 +173,7 @@ Invalid synonym rules can cause errors when applying analyzer changes and can pr
 
 Synonyms can be applied at [search time or index time](../../../manage-data/data-store/text-analysis/index-search-analysis.md). Search time is recommended because you can update your synonym sets without [reindexing]({{es-apis}}operation/operation-reindex). If token filters are configured with `"updateable": true`, search analyzers can be [reloaded]({{es-apis}}operation/operation-indices-reload-search-analyzers) when you make changes.
 
-The following example creates an index with `my_analyzer` as a search analyzer on the `title` field.
-
-For [file-based synonym sets](#synonyms-store-synonyms-file), use `synonyms_path` instead of `synonyms_set`. {applies_to}`serverless: unavailable`
+The following example creates an index with `synonyms_analyzer` as a search analyzer on the `title` field.
 
 ```console
 PUT /my-index
@@ -185,14 +182,14 @@ PUT /my-index
     "properties": {
       "title": {
         "type": "text",
-        "search_analyzer": "my_analyzer"
+        "search_analyzer": "synonyms_analyzer" <2>
       }
     }
   },
   "settings": {
     "analysis": {
       "analyzer": {
-        "my_analyzer": {
+        "synonyms_analyzer": {
           "tokenizer": "standard",
           "filter": ["lowercase", "synonyms_filter"]
         }
@@ -201,7 +198,7 @@ PUT /my-index
         "synonyms_filter": {
           "type": "synonym_graph",
           "synonyms_set": "my-synonym-set", <1>
-          "updateable": true
+          "updateable": true <3>
         }
       }
     }
@@ -209,7 +206,9 @@ PUT /my-index
 }
 ```
 
-1. For file-based synonym sets, replace with `"synonyms_path": "analysis/synonym-set.txt"`.
+1. For [file-based synonym sets](#synonyms-store-synonyms-file), use `"synonyms_path": "analysis/synonym-set.txt"` instead. {applies_to}`serverless: unavailable`
+2. Applies synonyms at search time only, not when indexing documents.
+3. Allows the analyzer to be [reloaded]({{es-apis}}operation/operation-indices-reload-search-analyzers) when synonym sets change, without reindexing.
 
 ## Step 4: Test your analyzer [synonyms-test-analyzer]
 
@@ -218,7 +217,7 @@ After creating your index, use the [analyze API]({{es-apis}}operation/operation-
 ```console
 GET /my-index/_analyze
 {
-  "analyzer": "my_analyzer",
+  "analyzer": "synonyms_analyzer",
   "text": "laptop"
 }
 ```
