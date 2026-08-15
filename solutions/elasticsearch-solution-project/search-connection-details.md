@@ -4,11 +4,7 @@ description: Find your Elasticsearch endpoint and create an API key so that clie
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html
 applies_to:
-  deployment:
-    ech:
-    ece:
-    eck:
-    self:
+  stack:
   serverless:
 products:
   - id: kibana
@@ -85,7 +81,7 @@ deployment:
 serverless: ga
 ```
 
-{{beats}} and {{ls}} can use a Cloud ID instead of the endpoint URL. All other clients and tools use the endpoint.
+[{{beats}}](beats://reference/index.md) and [{{ls}}](logstash://reference/index.md) can use a Cloud ID instead of the endpoint URL. All other clients and tools use the endpoint.
 
 1. Open {{kib}} for your deployment or project.
 2. From the **Help menu** {icon}`question`, select **Connection details**.
