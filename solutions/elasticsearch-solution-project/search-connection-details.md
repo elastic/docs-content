@@ -87,6 +87,12 @@ serverless: ga
 2. From the **Help menu** {icon}`question`, select **Connection details**.
 3. Turn on **Show Cloud ID**, then copy the value.
 
+    :::{image} /solutions/images/kibana-serverless-connection-details.png
+    :alt: serverless connection details
+    :screenshot:
+    :width: 50%
+    :::
+
 :::{tip}
 :applies_to: {ech: ga}
 To skip {{kib}}, select **Manage** in the {{ecloud}} console and copy the **Cloud ID** from the deployment page.

@@ -37,6 +37,27 @@ To get started with your analysis in the Overview tab, you can search for monito
 
 Then click an individual monitor to see some details in a flyout. From there, you can click **Go to monitor** to go to an individual monitor’s page to see more details (as described below).
 
+## Remote monitors [synthetics-analyze-remote-monitors]
+```{applies_to}
+stack: ga 9.5+
+serverless: unavailable
+```
+
+When you configure {{ccs-init}} in [**{{synthetics-app}} → Settings → Remote clusters**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters), monitors from remote {{es}} clusters appear in the Synthetics UI alongside your local monitors. Remote monitors are identified by a **Remote** badge showing the cluster name, displayed next to the monitor type badge.
+
+When remote monitors are present, a **Remote cluster** filter option appears alongside **Type**, **Location**, **Tags**, and **Frequency**. Use it to scope the overview to monitors from one or more specific remote clusters. When a remote cluster filter is active, local monitors are hidden and status counts (for example, Up or Down) reflect only the filtered set. To group monitors by remote cluster, select **Group by → Remote cluster**.
+
+You can open a remote monitor's individual page the same way as a local monitor. Because remote monitors have no local saved object, the following actions are not available:
+
+- **Edit monitor**
+- **Enable/Disable**
+- **Delete**
+- **Run test manually**
+
+:::{tip}
+**Refresh** remains available. If you have monitors from multiple remote clusters, the **Remote** badge shows which {{kib}} instance each monitor comes from. To edit, enable/disable, delete, or run a remote monitor, open the Synthetics UI on the {{kib}} instance where the monitor is defined.
+:::
+
 ## All monitor types [synthetics-analyze-individual-monitors]
 
 When you go to an individual monitor’s page, you’ll see much more detail about the monitor’s performance over time. The details vary by monitor type, but for every monitor at the top of the page you’ll see:
