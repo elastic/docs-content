@@ -383,6 +383,7 @@ toc:
       - file: visualize/manage-panels.md
   - file: find-and-organize.md
     children:
+      - file: find-and-organize/kibana-interface.md
       - file: find-and-organize/data-views.md
       - file: find-and-organize/saved-objects.md
       - file: find-and-organize/files.md
