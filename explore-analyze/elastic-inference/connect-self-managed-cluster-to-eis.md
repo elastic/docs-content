@@ -27,7 +27,7 @@ For a full list of EIS-powered features, refer to [AI features powered by EIS](/
 Before you can use EIS with your self-managed cluster, ensure you meet the following requirements:
 
 * Your self-managed cluster is on an [Enterprise self-managed license]({{subscriptions}}) or an [active self-managed trial license](https://cloud.elastic.co/registration)
-* You have an {{ecloud}} account with either an [active Cloud Trial](https://cloud.elastic.co/registration) or [billing information configured](/deploy-manage/cloud-organization/billing/add-billing-details.md)
+* You have an {{ecloud}} account with either an [active Cloud Trial](https://cloud.elastic.co/registration) or [billing information configured](/deploy-manage/cloud-organization/billing/add-billing-details.md). Note that you will not have full access to the model catalog.
 
 ## Set up EIS with Cloud Connect
 
@@ -165,12 +165,6 @@ To use these models:
 
 - {applies_to}`stack: ga 9.3` You need [{{kib}} connectors](kibana://reference/connectors-kibana.md) (for LLMs) or [{{infer}} endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference). There are preconfigured {{infer}} endpoints for all models. For some LLMs, connectors need to be created manually.
 - {applies_to}`stack: ga 9.4+` Use the preconfigured {{infer}} endpoints or create custom endpoints as described in [](/explore-analyze/elastic-inference/eis.md).
-
-### LLMs 
-
-For Claude 3.7 and Claude 4.5, connectors are preconfigured and ready to be used.
-
-To use other LLMs listed under [Supported models](/explore-analyze/elastic-inference/eis-supported-models.md), you must [create the {{kib}} connectors](kibana://reference/connectors-kibana.md#creating-new-connector) manually. The corresponding {{infer}} endpoints are preconfigured.
 
 ### Embedding and rerank models
 

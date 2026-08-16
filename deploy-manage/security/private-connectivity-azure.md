@@ -103,11 +103,13 @@ Private Link is not available for {{serverless-full}} in the Azure `northeurope`
 | Region | Azure Private Link Service alias | Private hosted zone domain name |
 | --- | --- | --- |
 | australiaeast | australiaeast-prod-privatelink-serverless.274cbc58-219f-481d-bc66-9a7b46d63be8.australiaeast.azure.privatelinkservice | private.australiaeast.azure.elastic.cloud |
+| brazilsouth | brazilsouth-prod-privatelink-serverless.f00d5555-2af2-40ff-81cd-033539a2e2fb.brazilsouth.azure.privatelinkservice | private.brazilsouth.azure.elastic.cloud |
 | eastus | eastus-prod-privatelink-serverless.00ee2891-1e3c-491b-b7cd-a5be7a2a42fc.eastus.azure.privatelinkservice | private.eastus.azure.elastic.cloud |
 | eastus2 | eastus2-prod-privatelink-serverless.46552e7f-8404-48e2-8c79-66801ef74a76.eastus2.azure.privatelinkservice | private.eastus2.azure.elastic.cloud |
 | germanywestcentral | germanywestcentral-prod-privatelink-serverless.bece7bbd-ce63-4728-aeda-ad42238d9d66.germanywestcentral.azure.privatelinkservice | private.germanywestcentral.azure.elastic.cloud |
 | southeastasia | southeastasia-prod-privatelink-serverless.ca3fc3e6-1b18-41a9-adcd-2c4ea7ca342e.southeastasia.azure.privatelinkservice | private.southeastasia.azure.elastic.cloud |
 | spaincentral | spaincentral-prod-privatelink-serverless.66548bb8-1b56-40b6-b679-062db94282a6.spaincentral.azure.privatelinkservice | private.spaincentral.azure.elastic.cloud |
+| swedencentral | swedencentral-prod-privatelink-serverless.06ba5ac0-d96e-42b2-891b-8bb53fb59acb.swedencentral.azure.privatelinkservice | private.swedencentral.azure.elastic.cloud |
 | uaenorth | uaenorth-prod-privatelink-serverless.235f486d-71e1-490d-9bab-49edc5d6a875.uaenorth.azure.privatelinkservice | private.uaenorth.azure.elastic.cloud |
 | westus2 | westus2-prod-privatelink-serverless.f03c3599-2fbc-4cb5-8a79-7cff7a0e2f2c.westus2.azure.privatelinkservice | private.westus2.azure.elastic.cloud |
 
