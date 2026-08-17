@@ -210,8 +210,6 @@ For a [complete list of limitations](/deploy-manage/cross-project-search-config.
 
 To check whether {{cps}} is available in a specific {{kib}} app, refer to the [availability table](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability).
 
-For anomaly detection {{dfeeds}} that search linked projects, see [Troubleshoot cross-project search {{dfeeds}}](/troubleshoot/elasticsearch/machine-learning-cps.md).
-
 ## {{cps-cap}} examples [cps-examples]
 
 The following examples show how {{cps}} resolves index names and routes queries when you use unqualified expressions, qualified expressions, and project routing.
@@ -775,6 +773,3 @@ This request returns an error:
 }
 ```
 
-## Related pages
-
-* [Troubleshoot cross-project search {{dfeeds}}](/troubleshoot/elasticsearch/machine-learning-cps.md): Diagnose and resolve anomaly detection {{dfeeds}} that search across linked projects.
