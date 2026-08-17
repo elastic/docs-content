@@ -152,10 +152,6 @@ If certain log categories aren't relevant to your environment, you can exclude t
 
 Excluded categories don't affect your pillar status calculations, so your health scores reflect only the data sources that matter to your environment.
 
-## Export a report [siem-readiness-export]
-
-Click **Export report** at the top of the page to generate a downloadable report of your current SIEM Readiness status. You can share this report with stakeholders to communicate your security data posture.
-
 ## Create a case [siem-readiness-actions]
 
 Each section of the SIEM Readiness page includes a **Create new case** button. Cases created using this button get pre-populated with data specific to the current finding, such as a list of missing integrations or non-compliant indices with links to relevant resources. You can use these cases to track remediation work or share findings with your team. For more information about cases, refer to [Cases](/solutions/security/investigate/security-cases.md).
