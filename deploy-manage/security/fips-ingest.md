@@ -10,8 +10,6 @@ applies_to:
 
 # FIPS mode for Ingest tools [fips-ingest]
 
-{{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} binaries are built and configured to use FIPS 140-2 compliant cryptography.
-
 {{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} binaries are built and configured to use FIPS-140-compliant cryptography:
 
 * {applies_to}`stack: preview 9.1-9.2` is configured to use FIPS 140-2 compliant cryptography.
