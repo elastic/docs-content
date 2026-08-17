@@ -42,11 +42,11 @@ Yes. Data ingested through {{managed-integrations}} lands in your cluster like a
 
 On {{serverless-short}} projects, you can deploy {{managed-integrations}} at no additional cost.
 
-On {{ech}}, each deployed {{managed-integration}} is charged per hour. On the Elastic price list, the unit appears as `[csp].managed-integration`, where `[csp]` is `aws`, `azure`, or `gcp`.
+On {{ech}}, each deployed {{managed-integration}} is charged per integration-hour. On the Elastic price list, the line item appears as `[csp].managed-integration`, where `[csp]` is `aws`, `azure`, or `gcp`.
 
-Most {{managed-integrations}} are metered at one unit per integration, per hour. The following integrations are exceptions:
+Most {{managed-integrations}} are metered at one integration-hour. The following integrations are exceptions:
 
-| Integration | Unit cost (per integration, per hour) |
+| Integration | Integration-hours |
 | --- | :---: |
 | Microsoft Defender XDR Logs | 4 |
 | Microsoft Defender for Endpoint | 4 |
