@@ -54,7 +54,7 @@ Most {{managed-integrations}} are metered at one unit per integration, per hour.
 | CrowdStrike Falcon Intelligence logs | 4 |
 | abuse.ch API | 2 |
 
-For current pricing details, refer to the [Elastic pricing page](https://www.elastic.co/pricing). Metering {{managed-integrations}} on {{ech}} deployments will commence 1st of September 2026.
+For current pricing details, refer to the [Elastic pricing page](https://www.elastic.co/pricing). Elastic meters {{managed-integrations}} on {{ech}} deployments as of October 1, 2026.
 
 :::{note}
 :applies_to: stack: preview 9.0-9.4
