@@ -10,50 +10,36 @@ products:
 
 # Add plugins and configuration files in {{eck}} [eck-add-plugins-overview]
 
-On {{eck}}, {{es}} runs in Kubernetes pods. Plugins must be present on disk before the main {{es}} container starts. Configuration files such as synonym dictionaries, scripts, or SAML metadata can also be made available in the configuration directory.
+On {{eck}}, {{es}} runs in Kubernetes pods. You can install plugins and make configuration files—such as synonym dictionaries, scripts, or SAML metadata—available in the configuration directory.
 
-{{eck}} does not use *bundles* (the ZIP-based extension workflow in {{ech}} and {{ece}}). Instead, you choose how to supply plugins and configuration files based on whether you need reproducibility, runtime network access, or standard Kubernetes mounts.
-
-Refer to [Plugins and bundles](/deploy-manage/plugins-and-bundles.md) for options that apply to other deployment types.
+Refer to [](/deploy-manage/plugins-and-bundles.md) for options that apply to other deployment types.
 
 ## Choose an approach
 
- Use a custom image or init containers when you need plugins. Prefer ConfigMaps or Secrets when you only need configuration files.
+Plugins must be present on disk before the main {{es}} container starts, so {{eck}} does not use the ZIP *bundle* workflow from {{ech}} and {{ece}}. Pick one of these Kubernetes-native approaches based on whether you need plugins, only configuration files, or both.
 
-### Custom container image
+* [Custom container image](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md): Build from the official Elastic images and install the plugins you need so they are present when the {{es}} container starts. Best when you want reproducible deployments without runtime internet access. You can also include configuration files in the image.
 
-Build a custom image from the official Elastic image with the required plugins and configuration files already included. Refer to [Create a custom image](custom-configuration-files-plugins.md#create-a-custom-image).
+* [Init containers](init-containers-for-plugin-downloads.md): Run `elasticsearch-plugin install` in an init container before {{es}} starts. Easier to try without a registry, but each new node needs network access and redownloads the plugins.
 
-* **Pros**
-  * Deployment is reproducible and reusable.
-  * Does not require internet access at runtime.
-  * Saves bandwidth and is quicker to start.
-* **Cons**
-  * Requires a container registry and build infrastructure to build and host the custom image.
-  * Version upgrades require building a new container image.
+* [ConfigMaps or Secrets](custom-configuration-files-plugins.md): Mount configuration files such as synonym dictionaries, certificates, or SAML metadata into the {{es}} config directory. Use this when you only need files on disk. Mounting a plugin ZIP does not install the plugin.
 
-### Init containers
+The following matrix compares these approaches in more detail.
 
-Run `elasticsearch-plugin install` in an init container before the main {{es}} container starts. Refer to [Init containers for plugin downloads](init-containers-for-plugin-downloads.md).
+:::{table}
+:matrix:
 
-* **Pros**
-  * Simpler to adopt and to upgrade versions.
-* **Cons**
-  * Requires pods to have internet access. When using Istio, see the [Istio note](init-containers-for-plugin-downloads.md#istio-note).
-  * Adding new {{es}} nodes could randomly fail due to network issues or bad configuration.
-  * Each {{es}} node needs to repeat the download, wasting bandwidth and slowing startup.
-  * Deployment manifests are more complicated.
+| Consideration | Custom container image | Init containers | ConfigMaps or Secrets |
+| --- | --- | --- | --- |
+| Best used for | Plugins and optional configuration files included in the image | Plugins installed at pod startup | Configuration files only (dictionaries, certificates, metadata) |
+| Runtime internet | Not required | Required (see also [Istio](init-containers-for-plugin-downloads.md#istio-note)) | Not required |
+| Reproducibility | High: identical image for every deployment | Lower: each node downloads plugins at startup | High: file content is managed as Kubernetes objects |
+| Version upgrades | Build and publish a new image for each {{es}} version | Update the install command or plugin version in the manifest | Update the ConfigMap or Secret |
+| Startup cost | Lower: plugins are already in the image | Higher: each new node downloads plugins again | Lower for file mounts; does not install plugins |
+| Operational overhead | Requires a container registry and build infrastructure | More complex manifests; new nodes can fail due to network or configuration errors | Requires ongoing maintenance of ConfigMaps or Secrets |
+| Installs plugins? | Yes | Yes | No: mounting a plugin ZIP does not run `elasticsearch-plugin install` |
 
-### ConfigMaps or Secrets
-
-Mount configuration files into your {{es}} nodes with volumes and volume mounts. Refer to [Use a volume and volume mount together with a ConfigMap or Secret](custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
-
-* **Pros**
-  * Best choice for injecting configuration files into your {{es}} nodes.
-  * Follows standard Kubernetes methodology to mount files into Pods.
-* **Cons**
-  * Not valid for plugin installation. Mounting plugin ZIP files does not run `elasticsearch-plugin install`, so {{es}} will not load them.
-  * Requires you to maintain the ConfigMaps or Secrets with the content of the files.
+:::
 
 ## {{kib}} plugins
 

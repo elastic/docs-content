@@ -13,7 +13,8 @@ products:
 
 # Add plugins provided with {{ech}} [ec-adding-elastic-plugins]
 
-You can use a variety of [official {{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md) that are compatible with your version of {{es}}. When you upgrade to a new {{es}} version, these plugins are upgraded with the rest of your deployment.
+:::{include} /deploy-manage/plugins-and-bundles/_snippets/provided-plugins-intro.md
+:::
 
 ## Before you begin [ec_before_you_begin_6]
 

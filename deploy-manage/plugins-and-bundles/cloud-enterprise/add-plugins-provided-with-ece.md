@@ -13,7 +13,8 @@ products:
 
 # Add plugins provided with {{ece}} [ece-adding-plugins]
 
-You can use a variety of {{es}} plugins that are compatible with your version of {{es}}. When you upgrade to a new {{es}} version, these plugins are upgraded with the rest of your deployment, unless there are breaking changes.
+:::{include} /deploy-manage/plugins-and-bundles/_snippets/provided-plugins-intro.md
+:::
 
 Different versions of {{es}} support different plugins. If a plugin is listed for your version, you can enable it on the deployment.
 

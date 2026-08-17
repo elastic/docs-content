@@ -10,7 +10,7 @@ products:
   - id: elasticsearch
 ---
 
-# Mandatory plugins [mandatory-plugins]
+# Configure mandatory plugins [mandatory-plugins]
 
 If you rely on certain plugins, you can define mandatory plugins by adding the `plugin.mandatory` setting to `config/elasticsearch.yml`. For example:
 

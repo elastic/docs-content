@@ -13,15 +13,9 @@ products:
 
 # Upload custom plugins and bundles
 
-There are several cases where you might need your own files to be made available to your {{es}} cluster’s nodes:
+Upload a ZIP file when you need a custom or third-party plugin that {{ech}} does not provide, or configuration files such as dictionaries and SAML metadata. In the {{ecloud}} console and API, these uploads are *extensions*.
 
-* Your own custom plugins, or third-party plugins that are not amongst the [officially available plugins](/deploy-manage/plugins-and-bundles/elastic-cloud/add-plugins-provided-with-ech.md).
-* Custom dictionaries, such as synonyms, stop words, compound words, and so on.
-* Cluster configuration files, such as an Identity Provider metadata file used when you [secure your clusters with SAML](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
-
-To facilitate this, we make it possible to upload a ZIP file that contains the files you want to make available. Uploaded files are stored using Amazon’s highly-available S3 service. This is necessary so we do not have to rely on the availability of third-party services, such as the official plugin repository, when provisioning nodes.
-
-Custom plugins and bundles are collectively referred to as extensions.
+Uploaded files are stored in highly available object storage so {{ecloud}} does not depend on third-party services, such as a public plugin repository, when provisioning nodes.
 
 ## Before you begin [ec_before_you_begin_7]
 

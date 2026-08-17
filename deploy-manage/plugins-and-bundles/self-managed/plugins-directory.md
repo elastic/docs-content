@@ -10,7 +10,7 @@ products:
   - id: elasticsearch
 ---
 
-# Plugins directory [_plugins_directory]
+# Find the plugins directory [_plugins_directory]
 
 The default location of the `plugins` directory depends on which package you install:
 

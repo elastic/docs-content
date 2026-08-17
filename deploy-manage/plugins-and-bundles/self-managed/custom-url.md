@@ -10,7 +10,7 @@ products:
   - id: elasticsearch
 ---
 
-# Custom URL or file system [plugin-management-custom-url]
+# Install from a custom URL or file system [plugin-management-custom-url]
 
 A plugin can also be downloaded from a custom location by specifying a URL:
 

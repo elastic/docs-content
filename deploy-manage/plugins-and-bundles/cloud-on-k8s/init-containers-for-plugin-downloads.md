@@ -10,7 +10,7 @@ products:
 navigation_title: Init containers
 ---
 
-# Init containers for plugin downloads [k8s-init-containers-plugin-downloads]
+# Install plugins with init containers [k8s-init-containers-plugin-downloads]
 
 You can install custom plugins before the {{es}} container starts with an `initContainer`. For example:
 

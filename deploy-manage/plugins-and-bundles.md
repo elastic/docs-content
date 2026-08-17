@@ -71,7 +71,7 @@ deployment:
 
 To add plugins to an {{ece}} deployment, refer to:
 
-* [Add plugins and extensions in {{ece}}](/deploy-manage/plugins-and-bundles/cloud-enterprise/add-plugins.md)
+* [Add plugins and bundles in {{ece}}](/deploy-manage/plugins-and-bundles/cloud-enterprise/add-plugins.md)
 * [Add custom bundles and plugins](/deploy-manage/plugins-and-bundles/cloud-enterprise/add-custom-bundles-plugins.md)
 
 Unlike {{ech}}, in certain cases, {{ece}} allows additional {{kib}} plugins by building them into a custom {{kib}} Docker image. Refer to [](/deploy-manage/plugins-and-bundles/cloud-enterprise/ece-include-additional-kibana-plugin.md), for more information.
@@ -97,7 +97,7 @@ deployment:
 
 On {{eck}}, {{es}} runs in Kubernetes pods. Plugins must be present on disk before the main {{es}} container starts. Use one of these approaches:
 
-* [Using a custom container image](/deploy-manage/plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md). You build a custom image from the official Elastic image with the required plugins pre-installed. This option is reproducible, works without internet access at runtime, and starts quickly, but requires a container registry and a new image for each {{es}} version upgrade.
+* [Using a custom container image](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md). You build a custom image from the official Elastic image with the required plugins pre-installed. This option is reproducible, works without internet access at runtime, and starts quickly, but requires a container registry and a new image for each {{es}} version upgrade.
 * [Using init containers](/deploy-manage/plugins-and-bundles/cloud-on-k8s/init-containers-for-plugin-downloads.md). You use an init container to run `elasticsearch-plugin install` before the main {{es}} container starts. This option is easier to get started with, but requires pod internet access and repeats the download on each new node.
 
 ::::{note}

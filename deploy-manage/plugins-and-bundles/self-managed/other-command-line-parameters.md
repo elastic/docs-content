@@ -10,7 +10,7 @@ products:
   - id: elasticsearch
 ---
 
-# Other command line parameters [_other_command_line_parameters]
+# Use other command line parameters [_other_command_line_parameters]
 
 The `elasticsearch-plugin` script supports additional command line parameters.
 
