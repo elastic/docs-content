@@ -161,7 +161,7 @@ The following default scopes apply to jobs created after {{cps-init}} is availab
 
 <!--TO BE CONFIRMED ^^^ -->
 
-Changes to the space default routing do not retroactively affect existing jobs. Each job retains the `project_routing` that was set at creation or last update.
+Changes to the space default routing do not retroactively affect existing jobs. Each job retains the `project_routing` that was set at creation or last update. This keeps the model stable.
 
 :::{note}
 When setting `project_routing` through the API or JSON editor, {{es}} does not validate the expression at creation time. If the expression matches no linked projects, the job is created successfully but the datafeed fails when it starts. If fields with the same name have different types across linked projects, values that cannot be converted are treated as empty data.
