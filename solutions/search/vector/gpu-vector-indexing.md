@@ -1,6 +1,6 @@
 ---
 navigation_title: GPU vector indexing
-description: Accelerate dense vector HNSW index construction with GPU acceleration in Elasticsearch. Covers hardware requirements, Docker setup, monitoring, and troubleshooting.
+description: Accelerate HNSW index construction for dense vectors with GPU acceleration in Elasticsearch, including hardware setup, Docker configuration, monitoring, and troubleshooting.
 applies_to:
   stack: preview 9.3, ga 9.4+
   serverless: unavailable
