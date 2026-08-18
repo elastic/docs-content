@@ -23,7 +23,7 @@ The following settings **must** be considered before going to production:
 * [](/deploy-manage/deploy/self-managed/executable-jna-tmpdir.md): Ensure JNA and native libraries can execute from a temp path that is not mounted `noexec` (Linux only).
 * [](/deploy-manage/deploy/self-managed/system-config-tcpretries.md): Lower `net.ipv4.tcp_retries2` so node and network failures are detected sooner than the Linux default (Linux only).
 * [](/deploy-manage/deploy/self-managed/system-config-clocks.md): Keep system clocks synchronized and free from large discontinuities.
-* [](/deploy-manage/deploy/self-managed/installing-elasticsearch.md#cgroups-version): Elasticsearch versions 8.0.0–8.4.3 and 7.15.1–7.17.6 fail to start on Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html) version 2 with bundled JDK. Upgrade to Elasticsearch 8.5.0 or later to resolve this.
+* [](/deploy-manage/deploy/self-managed/installing-elasticsearch.md#cgroups-version): {{es}} versions 8.0.0–8.4.3 and 7.15.1–7.17.6 fail to start on Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html) version 2 with bundled JDK. Upgrade to {{es}} 8.5.0 or later to resolve this.
 
 ::::{admonition} How these limits are enforced
 This page lists operating system limits you must set before {{es}} serves production traffic. {{es}} verifies many of these expectations through [bootstrap checks](/deploy-manage/deploy/self-managed/bootstrap-checks.md) at node startup. In production mode, a failed check stops the node from starting rather than only logging a warning.
