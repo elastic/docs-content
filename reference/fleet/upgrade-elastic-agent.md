@@ -63,6 +63,7 @@ To upgrade your {{agents}}, go to **Management** → **{{fleet}}** → **Agents*
 | [View upgrade status](#view-upgrade-status) | View the detailed status of an agent upgrade, including upgrade metrics and agent logs. |
 | [Restart an upgrade for a single agent](#restart-upgrade-single) | Restart an upgrade process that has stalled for a single agent. |
 | [Restart an upgrade for multiple agents](#restart-upgrade-multiple) | Do a bulk restart of the upgrade process for a set of agents. |
+| [Roll back an {{agent}} upgrade](#rollback-upgrade-fleet-managed) {applies_to}`stack: ga 9.3+` | Roll back one or more {{agent}}s to the previously installed version. |
 
 With an [Elastic subscription level](https://www.elastic.co/subscriptions) that supports **automatic agent binary upgrades**, you can also configure an automatic upgrade of a percentage of the {{agents}} enrolled in an {{agent}} policy. For more information, refer to [Auto-upgrade agents enrolled in a policy](#auto-upgrade-agents). {applies_to}`stack: ga 9.1.0`
 
