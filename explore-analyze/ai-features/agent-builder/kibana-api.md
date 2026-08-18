@@ -66,6 +66,16 @@ The default space does not require the `/s/default` prefix.
 
 Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automatically uses your current space context and does not require the `/s/<space_name>` prefix.
 
+### Use APIs with data from multiple projects [agent-builder-api-cps]
+```{applies_to}
+stack: unavailable
+serverless: preview
+```
+
+When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), Agent Builder APIs that search your data use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-name>` use the default space.
+
+To override that default, include a `project_routing` expression in the body of the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) or the [send chat message (streaming) API]({{kib-apis}}operation/operation-post-agent-builder-converse-async). The [run a tool API]({{kib-apis}}operation/operation-post-agent-builder-tools-execute) uses the space default and does not accept this field. For routing expression syntax, refer to [](/explore-analyze/cross-project-search/cross-project-search-project-routing.md). For an example, refer to [Chat and conversations](#chat-and-conversations).
+
 ## Available APIs
 
 The following sections provide quick examples for each API endpoint grouped by resource type.
