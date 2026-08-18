@@ -153,7 +153,7 @@ As with any other {{ilm-init}} change, existing backing indices keep the policy 
 ## Related pages [data-streams-namespace-ilm-related]
 
 * [Customize data streams with namespace index templates](/reference/fleet/data-streams-namespace-custom.md)
-* [Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md)
+* [Customize data retention policies for integrations](/reference/fleet/data-streams-ilm-tutorial.md)
 * [Index lifecycle management ({{ilm-init}})](/reference/fleet/data-streams.md#data-streams-ilm)
 * [Create an {{ilm-init}} policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md)
 * [Manage lifecycle policies for integrations data](/manage-data/lifecycle/index-lifecycle-management/manage-lifecycle-integrations-data.md)

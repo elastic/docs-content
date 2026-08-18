@@ -1,4 +1,5 @@
 ---
+navigation_title: Customize data retention policies
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-ilm-tutorial.html
 applies_to:
@@ -9,7 +10,7 @@ products:
   - id: elastic-agent
 ---
 
-# Customize data retention policies [data-streams-ilm-tutorial]
+# Customize data retention policies for integrations [data-streams-ilm-tutorial]
 
 These tutorials explain how to apply a custom {{ilm-init}} policy to an integration’s data stream.
 
