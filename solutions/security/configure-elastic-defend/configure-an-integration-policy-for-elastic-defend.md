@@ -139,7 +139,7 @@ The quarantine folder location varies by operating system:
 * Linux: `.equarantine` at the root of the mount point of the file being quarantined
 * Windows:
     * Quarantined file: `[DriveLetter:]\.equarantine` on the same volume as the original file (for example, `C:\.equarantine`)
-    * Quarantine metadata (`.mdata`) and the quarantine state file: `C:\Program Files\Elastic\Endpoint\state\.equarantine` for files from every volume
+    * Quarantine metadata (`.mdata`): `C:\Program Files\Elastic\Endpoint\state` for files from every volume
 
 To restore a quarantined file to its original state and location, [add an exception](/solutions/security/detect-and-alert/add-manage-exceptions.md) to the rule that identified the file as malicious. If the exception would’ve stopped the rule from identifying the file as malicious, {{elastic-defend}} restores the file.
 
