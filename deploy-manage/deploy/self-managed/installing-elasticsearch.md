@@ -116,7 +116,7 @@ Don't use third-party Java agents that attach to the JVM. Such agents can be har
 
 ### Linux cgroups version [cgroups-version]
 
-Note that Elasticsearch versions 8.0.0–8.4.3 and 7.15.1–7.17.6 fail to start on Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html) version 2 with the bundled JDK. Upgrade to 8.5.0 or later to resolve this. Review [our KB article](https://ela.st/es-may-fail-on-cgroup-v2) for more guidance.
+{{es}} versions 8.0.0–8.4.3 and 7.15.1–7.17.6 fail to start on Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html) version 2 with the bundled JDK. Upgrade to {{es}} 8.5.0 or later to resolve this. Review [our KB article](https://ela.st/es-may-fail-on-cgroup-v2) for more guidance.
 
 ## Third-party dependencies [dependencies-versions]
 
