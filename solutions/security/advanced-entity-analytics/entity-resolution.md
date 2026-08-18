@@ -86,4 +86,4 @@ Bulk unlinking is not available in the UI; use the [Entity store API]({{kib-apis
 
 ### Manage resolution groups from the entity flyout [entity-resolution-flyout]
 
-You can view, add to, and remove entities from a resolution group directly from the entity details flyout. Expand the [**Resolution** section](/solutions/security/advanced-entity-analytics/view-entity-details.md#resolution) to view all linked records, search for entities to add, or remove individual aliases.
+You can view, add to, and remove entities from a resolution group directly from the entity details flyout. Open the [**Resolution** section's](/solutions/security/advanced-entity-analytics/view-entity-details.md#resolution) child flyout to view all linked records, search for entities to add, or remove individual aliases.

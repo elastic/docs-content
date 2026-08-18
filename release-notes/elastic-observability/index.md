@@ -21,6 +21,17 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.5.1 [elastic-observability-9.5.1-release-notes]
+
+### Features and enhancements [elastic-observability-9.5.1-features-enhancements]
+* Shows attached maintenance windows in the Synthetics monitor details panel, resolving each window's ID to a title and linking directly to the **{{maint-windows-app}}** management page [#281853]({{kib-pull}}281853).
+* Adds smooth animated transitions to the Streams **Data lifecycle** phases preview bar when adding, removing, or editing lifecycle phases [#277149]({{kib-pull}}277149).
+* Adds an **Import from another stream** action to the Streams **Data lifecycle** tab, allowing users to copy a lifecycle configuration from another stream [#275948]({{kib-pull}}275948).
+
+### Fixes [elastic-observability-9.5.1-fixes]
+* Fixes an error when downloading agent policies that reuse objects by reference, caused by an `Unresolved alias` YAML serialization error [#280669]({{kib-pull}}280669).
+* Fixes Synthetics remote monitor Cross-Cluster Search queries to correctly scope to the target cluster [#278141]({{kib-pull}}278141).
+
 ## 9.5.0 [elastic-observability-9.5.0-release-notes]
 
 ### Features and enhancements [elastic-observability-9.5.0-features-enhancements]
@@ -147,6 +158,12 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
 * Improves accessibility in the {{observability}} UI [#262975]({{kib-pull}}262975).
 * Fixes crashes caused by malformed URLs in plugins; affected pages now attempt automatic recovery [#257245]({{kib-pull}}257245).
+
+## 9.4.5 [elastic-observability-9.4.5-release-notes]
+
+### Fixes [elastic-observability-9.4.5-fixes]
+* Fixes package policy deletions not forwarding the `asyncDeploy` option to agent policy updates, causing deletions to always block on synchronous agent policy recompilation [#282580]({{kib-pull}}282580).
+* Fixes Synthetics monitors to support referencing maintenance windows by name in addition to ID [#282570]({{kib-pull}}282570).
 
 ## 9.4.4 [elastic-observability-9.4.4-release-notes]
 

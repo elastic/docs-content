@@ -1139,7 +1139,7 @@ redirects:
           'attacks-next-steps': 'manage-saved-discoveries'
   'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'
 
-  # Plugins and bundles hub: move deployment-specific plugin pages under deploy-manage/plugins-and-bundles/
+  # Plugins and bundles hub: move deployment-specific plugin pages under deploy-manage/plugins-and-bundles/ issue: https://github.com/elastic/docs-content-internal/issues/1075
   'deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md': 'deploy-manage/plugins-and-bundles/elastic-cloud/add-plugins-extensions.md'
   'deploy-manage/deploy/elastic-cloud/add-plugins-provided-with-ech.md': 'deploy-manage/plugins-and-bundles/elastic-cloud/add-plugins-provided-with-ech.md'
   'deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md': 'deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md'
@@ -1150,3 +1150,12 @@ redirects:
   'deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md': 'deploy-manage/plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md'
   'deploy-manage/deploy/cloud-on-k8s/init-containers-for-plugin-downloads.md': 'deploy-manage/plugins-and-bundles/cloud-on-k8s/init-containers-for-plugin-downloads.md'
   'deploy-manage/deploy/cloud-on-k8s/k8s-kibana-plugins.md': 'deploy-manage/plugins-and-bundles/cloud-on-k8s/k8s-kibana-plugins.md'
+  # related to https://github.com/elastic/docs-content/issues/7709
+  'solutions/elasticsearch-solution-project/search-connection-details.md':
+    to: 'solutions/elasticsearch-solution-project/search-connection-details.md'
+    anchors:
+      '_elastic_cloud_and_self_hosted_deployments': 'find-endpoint-cloud-self-managed'
+      '_serverless_deployments': 'find-endpoint-cloud-self-managed'
+      'find-cloud-id-serverless': 'find-endpoint-cloud-self-managed'
+      'create-an-api-key-serverless': 'create-an-api-key-cloud-self-managed'
+
