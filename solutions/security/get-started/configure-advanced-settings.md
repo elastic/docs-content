@@ -134,6 +134,16 @@ serverless: removed
 ```
 Turn on the `securitySolution:enableGraphVisualization` setting to integrate the GraphViz visualization into the Alert and Event flyouts for supported event types. When enabled, it appears in the **Visualization** section of the flyout and can be viewed in full-screen mode.
 
+## Enable the new flyout system [enable-new-flyout]
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+The **Enable new flyout** setting (`securitySolution:enableNewFlyout`) controls whether {{elastic-sec}} uses the new flyout system for document (alert and event), attack, host, user, rule, network, indicator of compromise, misconfigurations, and vulnerabilities details. This setting is turned on by default and requires a page reload to take effect.
+
+Turn this setting off to revert to the previous flyout layout, which uses right, left, and preview panels instead of a single flyout with [child flyouts](/solutions/security/get-started/elastic-security-ui.md#details-flyouts).
+
 ## Enable alerts and attacks alignment [enable-alerts-and-attacks-alignment]
 ```{applies_to}
 stack: preview =9.4, ga 9.5+
@@ -215,7 +225,7 @@ stack: removed 9.1
 serverless: removed
 ```
 
-The `securitySolution:enableVisualizationsInFlyout` setting allows you to access the event analyzer and Session View in the **Visualize** [tab](/solutions/security/detect-and-alert/view-detection-alert-details.md#expanded-visualizations-view) on the alert or event details flyout.
+The `securitySolution:enableVisualizationsInFlyout` setting allows you to access the event analyzer and Session View in the **Visualize** tab on the alert or event details flyout. Refer to the current [Visualizations section](/solutions/security/detect-and-alert/view-detection-alert-details.md#visualizations-section) for how these tools are accessed today.
 
 
 ## Change the default search interval and data refresh time [_change_the_default_search_interval_and_data_refresh_time]
