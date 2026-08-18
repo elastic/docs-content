@@ -151,6 +151,8 @@ Installed integrations may have one or many associated data streams—each with 
 
 Want to customize your index lifecycle management? See [Tutorials: Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md).
 
+{applies_to}`stack: ga 9.5+` To apply one {{ilm-init}} policy to every data stream an integration produces in a single namespace, you can [apply the policy from the integration policy editor](/reference/fleet/data-streams-namespace-ilm.md) instead of editing templates yourself.
+
 
 ## Ingest pipelines [data-streams-pipelines]
 
