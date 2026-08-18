@@ -29,7 +29,7 @@ We recommend using kernel 4.15.x or later on Ubuntu.
 To check your kernel version, run `uname -r`.
 
 ::::{note}
-{{ece}} is not supported on Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html) version 2. Additionally, Elasticsearch versions 8.0.0–8.4.3 and 7.15.1–7.17.6 fail to start on hosts using cgroup v2 with the bundled JDK. Refer to [Linux cgroups version](/deploy-manage/deploy/self-managed/installing-elasticsearch.md#cgroups-version) and [our KB article](https://ela.st/es-may-fail-on-cgroup-v2) for more details.
+{{ece}} is not supported on Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html) version 2. Additionally, Elasticsearch versions 8.0.0–8.4.3 and 7.15.1–7.17.6 fail to start on hosts using cgroup v2 with the bundled JDK. Refer to [our KB article](https://ela.st/es-may-fail-on-cgroup-v2) for more details.
 ::::
 
 
