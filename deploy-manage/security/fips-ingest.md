@@ -12,8 +12,11 @@ applies_to:
 
 {{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} binaries are built and configured to use FIPS-140-compliant cryptography:
 
-* {applies_to}`stack: preview 9.1-9.2` is configured to use FIPS 140-2 compliant cryptography.
-* {applies_to}`stack: ga 9.3+` is configured to use FIPS 140-3 compliant cryptography using Go's native FIPS 140-3 module (`GOFIPS140=v1.0.0`, CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)). Specific components and configurations that fall outside the certified boundary are documented in the [Limitations](#ingest-limitations-all) section.
+* {applies_to}`stack: preview 9.1-9.2` FIPS binaries use FIPS 140-2 compliant cryptography.
+* {applies_to}`stack: ga 9.3+` {{filebeat}}, {{metricbeat}}, and {{apm-server}} FIPS binaries use FIPS 140-3 compliant cryptography using Go's native FIPS 140-3 module (`GOFIPS140=v1.0.0`, CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)).
+* {applies_to}`stack: ga 9.5+` {{agent}} and {{fleet-server}} FIPS binaries use the same FIPS 140-3 module. On 9.3 and 9.4, {{agent}} and {{fleet-server}} FIPS binaries continue to use FIPS 140-2 cryptography.
+
+Specific components and configurations that fall outside the certified boundary are documented in the [Limitations](#ingest-limitations-all) section.
 
 ## FIPS-compatible binaries and configuration [fips-binaries]
 
