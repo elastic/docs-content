@@ -10,23 +10,17 @@ products:
 type: how-to
 ---
 
-# Accelerate dense vector indexing with a GPU [gpu-vector-indexing]
+# Accelerate dense vector indexing with a GPU in {{es}} [gpu-vector-indexing]
 
-{{es}} can use graphics processing unit (GPU) acceleration to significantly
-speed up the indexing of dense vectors. GPU indexing is based on the
-[NVIDIA cuVS library](https://developer.nvidia.com/cuvs) and uses the
-parallel processing capabilities of GPUs to accelerate the construction of
-Hierarchical Navigable Small World (HNSW) vector search indexes. GPU
-accelerated vector indexing is particularly beneficial for large-scale vector
-datasets and high-throughput indexing scenarios, freeing up CPU resources for
+GPU indexing in {{es}} builds Hierarchical Navigable Small World (HNSW)
+graphs with the [NVIDIA cuVS library](https://developer.nvidia.com/cuvs).
+Offloading that work to a graphics processing unit (GPU) speeds up dense
+vector ingest on large datasets and frees CPU resources for search and
 other tasks.
 
-This page covers GPU indexing requirements, configuration, Docker setup,
-monitoring, and troubleshooting.
+## Before you begin [gpu-vector-indexing-before-you-begin]
 
-## Before you begin
-
-GPU vector indexing requires the following:
+To use GPU indexing, you need:
 
 * An [Enterprise subscription](https://www.elastic.co/subscriptions)
 * A supported NVIDIA GPU (Ampere architecture or better, compute capability
