@@ -1114,6 +1114,48 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 ::::
 
+**Example:** Scope a chat across projects {applies_to}`serverless: preview`
+
+By default, the [{{cps}}](/explore-analyze/cross-project-search.md) scope is the [default scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-name>` use the {{cps-init}} scope from the default space. 
+
+Include a `project_routing` expression in the body to override the space's {{cps-init}} scope. The `_alias:my_search_project` expression in this example searches only the project with that alias. For routing expression syntax, refer to [](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
+
+This example uses the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse).
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+POST kbn://api/agent_builder/converse
+{
+  "input": "Show recent errors",
+  "agent_id": "elastic-ai-agent",
+  "project_routing": "_alias:my_search_project"
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "input": "Show recent errors",
+       "agent_id": "elastic-ai-agent",
+       "project_routing": "_alias:my_search_project"
+     }'
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
 **Example:** List conversations
 
 This example uses the [list conversations API]({{kib-apis}}operation/operation-get-agent-builder-conversations).

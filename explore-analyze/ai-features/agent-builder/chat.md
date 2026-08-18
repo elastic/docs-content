@@ -90,6 +90,16 @@ Use the model selector to switch the underlying [model](models.md) the agent use
 :screenshot:
 :::
 
+### Chat with data from multiple projects [agent-builder-cps-scope]
+```{applies_to}
+stack: unavailable
+serverless: preview
+```
+
+When you chat with an agent on {{serverless-full}} and you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md), it searches the projects selected in the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header.
+
+You can change the selector at any time. Each new message uses the current selection. Earlier rounds in the conversation keep the results they already returned.
+
 ### Options menu [access-key-actions]
 
 ```{applies_to}
