@@ -12,7 +12,9 @@ navigation_title: Init containers
 
 # Install plugins with init containers [k8s-init-containers-plugin-downloads]
 
-You can install custom plugins before the {{es}} container starts with an `initContainer`. For example:
+Use an init container to run [`elasticsearch-plugin install`](/deploy-manage/plugins-and-bundles/self-managed/install-plugins.md) before the main {{es}} container starts. Each new node repeats the download, so the pods need network access to reach the plugin source.
+
+The following example installs the ICU analysis plugin:
 
 ```yaml
 spec:
@@ -31,17 +33,28 @@ spec:
             bin/elasticsearch-plugin install --batch analysis-icu
 ```
 
-You can also override the {{es}} container image to use your own image with the plugins already installed, as described in [Create custom images](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md). For more information on both options, refer to [Add plugins and configuration files in {{eck}}](manage-plugins.md) and the Kubernetes documentation on [init containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/).
+For more information on how init containers behave in Kubernetes, refer to the [Kubernetes init containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) documentation.
 
-The init container inherits:
+:::{tip}
+You can also override the {{es}} container image to use your own image with the plugins already installed, as described in [Create custom 
+images](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md). For more information, refer to [Add plugins and 
+configuration files in {{eck}}](manage-plugins.md).
+:::
 
-* The image of the main container image, if one is not explicitly set.
-* The volume mounts from the main container unless a volume mount with the same name and mount path is present in the init container definition
+
+## What the init container inherits
+
+Unless you override them, the init container inherits:
+
+* The image of the main {{es}} container, if one is not explicitly set.
+* The volume mounts from the main container, unless a volume mount with the same name and mount path is already defined on the init container.
 * The Pod name and IP address environment variables.
 
 ## Note when using Istio [istio-note]
 
-When using Istio, init containers do **not** have network access, as the Envoy sidecar that provides network connectivity is not started yet. In this scenario, custom containers are the best option. If custom containers are simply not a viable option, then it is possible to adjust the startup command for the {{es}} container itself to run the plugin installation before starting {{es}}, as the following example describes. Note that this approach will require updating the startup command if it changes in the {{es}} image, which could potentially cause failures during upgrades.
+When using Istio, init containers do **not** have network access, because the Envoy sidecar that provides connectivity has not started yet. In this case, prefer a [custom container image](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md).
+
+If using a custom image is not practical, you can run the plugin install in the {{es}} container’s startup command before {{es}} starts. You may need to update that command if the entrypoint in the {{es}} image changes, which can cause failures during upgrades. The following is an example.
 
 ```yaml
 spec:
@@ -63,3 +76,5 @@ spec:
             bin/elasticsearch-plugin install --batch repository-s3
             /bin/tini -- /usr/local/bin/docker-entrypoint.sh
 ```
+
+To compare this approach with a custom image or ConfigMaps, refer to [Add plugins and configuration files in {{eck}}](manage-plugins.md).

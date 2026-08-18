@@ -399,8 +399,8 @@ toc:
               - file: plugins-and-bundles/self-managed/plugins-directory.md
       - file: plugins-and-bundles/cloud-on-k8s/manage-plugins.md
         children:
-          - file: plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md
           - file: plugins-and-bundles/cloud-on-k8s/init-containers-for-plugin-downloads.md
+          - file: plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md
           - file: plugins-and-bundles/cloud-on-k8s/k8s-kibana-plugins.md
   - file: tools.md
     children:

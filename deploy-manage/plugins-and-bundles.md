@@ -101,7 +101,7 @@ On {{eck}}, {{es}} runs in Kubernetes pods. Plugins must be present on disk befo
 * [Using init containers](/deploy-manage/plugins-and-bundles/cloud-on-k8s/init-containers-for-plugin-downloads.md). You use an init container to run `elasticsearch-plugin install` before the main {{es}} container starts. This option is easier to get started with, but requires pod internet access and repeats the download on each new node.
 
 ::::{note}
-You can inject configuration files, such as synonym dictionaries, SAML metadata, or TLS certificates by [mounting them with ConfigMaps or Secrets](/deploy-manage/plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). However, mounting plugin files into a pod does not run `elasticsearch-plugin install`, so {{es}} will not load them at startup. Instead, to install plugins, use a custom container image or init container.
+You can inject configuration files, such as synonym dictionaries, SAML metadata, or TLS certificates by [mounting them with ConfigMaps or Secrets](/deploy-manage/plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). ConfigMaps and Secrets do not install plugins; use a custom container image or init container for that.
 ::::
 
 ## Related resources
