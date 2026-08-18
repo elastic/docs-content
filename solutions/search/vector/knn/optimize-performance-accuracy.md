@@ -35,6 +35,36 @@ When [quantization](elasticsearch://reference/elasticsearch/mapping-reference/de
 * Decrease `rescore_vector.oversample` for faster queries (with a potential accuracy trade-off).
 * For detailed behavior and usage guidance, see [Oversampling and rescoring for quantized vectors](#dense-vector-knn-search-rescoring).
 
+## Near-real-time kNN [near-real-time-knn]
+```{applies_to}
+stack: ga 9.5
+```
+
+Use the `near_real_time` parameter in the top-level `knn` object to control whether approximate kNN search includes vectors that have not yet been optimized for search.
+
+As described in [Indexing considerations for approximate kNN search](approximate-knn.md#knn-indexing-considerations), building the HNSW graph or DiskBBQ clusters for newly indexed data is compute-intensive. Until that work finishes, those vectors are not yet optimized for approximate kNN search.
+
+The default value depends on the [index mode](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting). For indices that use the `standard` mode, `near_real_time` defaults to `true`. For indices that use [`vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) mode, it defaults to `false`. Refer to [Index modes for vector search](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-modes) and [Vector index mode](../../vector.md#vector-index-mode) for more information.
+
+When `near_real_time` is `true`, kNN search can include vectors from newly indexed data before optimization finishes. Results can include documents you indexed seconds ago, but search can be slower while optimization is still in progress. Use this when search freshness matters more than indexing throughput, for example interactive workflows where users expect newly indexed documents to appear in kNN results immediately.
+
+When `near_real_time` is `false`, kNN search skips vectors that are not yet fully optimized. This improves indexing throughput for large vector workloads, but newly indexed documents are excluded from kNN search results until background optimization is complete. Use this when you are indexing large volumes of vectors and can tolerate a short delay before those documents become searchable with approximate kNN.
+
+The following example overrides the default behavior and enables near-real-time search, so the approximate kNN query can include vectors that were indexed very recently:
+
+```console
+POST my-vector-index/_search
+{
+  "knn": {
+    "field": "image-vector",
+    "query_vector": [-5, 9, -12],
+    "k": 10,
+    "num_candidates": 100,
+    "near_real_time": true
+  }
+}
+```
+
 ## Approximate kNN using byte vectors [approximate-knn-using-byte-vectors]
 
 The approximate kNN search API also supports `byte` (int8) value vectors alongside `float` vectors. Use the [`knn` option]({{es-apis}}operation/operation-search#operation-search-body-application-json-knn) to search a `dense_vector` field with [`element_type`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-params) set to `byte` and indexing enabled. Byte vectors reduce memory footprint and can improve cache efficiency for large-scale vector similarity search.

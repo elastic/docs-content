@@ -1,6 +1,6 @@
 ---
-navigation_title: Kubernetes Pods and Docker Containers views empty with EDOT
-description: Learn why the Kubernetes Pods and Docker Containers views in the Infrastructure Inventory are empty when using EDOT, and how to resolve it.
+navigation_title: Kubernetes Pods and Docker Containers views empty with {{edot}}
+description: Learn why the Kubernetes Pods and Docker Containers views in the Infrastructure Inventory are empty when using {{edot}}, and how to resolve it.
 applies_to:
   stack: ga 9.2+
   serverless: ga
@@ -8,9 +8,9 @@ products:
   - id: observability
 ---
 
-# Kubernetes Pods and Docker Containers views empty when using EDOT [kubernetes-pods-docker-containers-empty-otel]
+# Kubernetes Pods and Docker Containers views empty when using {{edot}} [kubernetes-pods-docker-containers-empty-otel]
 
-After configuring the Elastic Distribution of OpenTelemetry (EDOT) Collector to monitor a Kubernetes cluster on version 9.2 or later, several views in the {{kib}} Infrastructure Inventory might appear empty.
+After configuring {{agent}} to monitor a Kubernetes cluster on version 9.2 or later, several views in the {{kib}} Infrastructure Inventory might appear empty.
 
 ## Symptoms [symptoms-kubernetes-pods-docker-containers-empty]
 
@@ -24,9 +24,9 @@ The **Hosts** view (also under **Inventory**) works correctly and displays data.
 
 ## Cause [cause-kubernetes-pods-docker-containers-empty]
 
-This is expected behavior, not a configuration error in the EDOT Collector.
+This is expected behavior, not a configuration error in {{agent}}.
 
-In version 9.2.0, the `inframetrics` processor was removed from the EDOT Collector Helm charts for Kubernetes and on-premises deployments. Without this processor, data shipped by EDOT is no longer compatible with the Kubernetes Pods and Docker Containers views of the Infrastructure UI, which only support Elastic Agent data formats.
+In version 9.2.0, the `inframetrics` processor was removed from the {{agent}} Helm charts for Kubernetes and on-premises deployments. Without this processor, data shipped by {{edot}} is no longer compatible with the Kubernetes Pods and Docker Containers views of the Infrastructure UI, which only support Elastic Agent data formats.
 
 ## Resolution [resolution-kubernetes-pods-docker-containers-empty]
 
@@ -41,7 +41,7 @@ Use one of these methods:
   1. In {{kib}}, click **Add Data** on the Observability home page.
   2. Select **Kubernetes**.
   3. Choose the **OpenTelemetry: Full Observability** guide.
-  4. The wizard automatically installs the [Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md) package and provides the correct configuration steps for the EDOT Collector.
+  4. The wizard automatically installs the [Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md) package and provides the correct configuration steps for {{agent}}.
 
 - **Manual installation**
 
@@ -55,8 +55,8 @@ Use one of these methods:
 2. In the search bar, type `OTEL`.
 3. Select the **[OTEL][Metrics Kubernetes] Cluster Overview** dashboard to view your cluster's performance.
 
-For a full end-to-end setup guide, refer to [Quickstart: Unified Kubernetes Observability with EDOT](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md).
+For a full end-to-end setup guide, refer to [Quickstart: Unified Kubernetes Observability with {{edot}}](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md).
 
 ## Workaround [workaround-kubernetes-pods-docker-containers-empty]
 
-You can re-add the `inframetrics` processor as it was configured in versions 9.1.x YAML and Helm charts for the EDOT Kubernetes use case. This is not recommended — the future-proof solution is to use the OpenTelemetry Assets dashboards.
+You can re-add the `inframetrics` processor as it was configured in versions 9.1.x YAML and Helm charts for the {{edot}} Kubernetes use case. This is not recommended — the future-proof solution is to use the OpenTelemetry Assets dashboards.

@@ -49,3 +49,7 @@ Changing a library field updates the definition for templates that reference it.
 To share a template with another space or deployment, or to back it up, export it from the **Templates** page. To add templates from an exported file, select **Import**, upload the file, then select which templates to add to the current space.
 
 Import and export apply to templates only. Field library entries aren't included. If a template references reusable fields, those fields must already exist in the destination field library (with matching `name` values) before or after you import the template.
+
+:::{note}
+Each solution allows up to 200 templates. Refer to [Limits](yaml-template-schema-reference.md#case-templates-field-library-limits) for this and other template and field library size limits.
+:::
