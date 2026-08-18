@@ -22,6 +22,7 @@ The following settings **must** be considered before going to production:
 * [](/deploy-manage/deploy/self-managed/file-descriptors.md): Raise open file handles to at least `65,535` (Linux and macOS only).
 * [](/deploy-manage/deploy/self-managed/executable-jna-tmpdir.md): Ensure JNA and native libraries can execute from a temp path that is not mounted `noexec` (Linux only).
 * [](/deploy-manage/deploy/self-managed/system-config-tcpretries.md): Lower `net.ipv4.tcp_retries2` so node and network failures are detected sooner than the Linux default (Linux only).
+* [](/deploy-manage/deploy/self-managed/system-config-clocks.md): Keep system clocks synchronized and free from large discontinuities.
 
 ::::{admonition} How these limits are enforced
 This page lists operating system limits you must set before {{es}} serves production traffic. {{es}} verifies many of these expectations through [bootstrap checks](/deploy-manage/deploy/self-managed/bootstrap-checks.md) at node startup. In production mode, a failed check stops the node from starting rather than only logging a warning.
