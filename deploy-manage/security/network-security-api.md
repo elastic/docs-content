@@ -718,6 +718,14 @@ https://api.elastic-cloud.com/api/v1/serverless/projects/elasticsearch?traffic_f
 ```
 1. Pass the project type in the URL: `/api/v1/serverless/projects/{project-type}`. Repeat the request for each project type you use, for example `elasticsearch` or `security`.
 
+To review the policies attached to every project of a given type, omit `traffic_filter`:
+
+```json
+curl \
+-H "Authorization: ApiKey $API_KEY" \
+https://api.elastic-cloud.com/api/v1/serverless/projects/elasticsearch
+```
+
 The list response includes a `traffic_filters` array on every project. The following example shows only the fields that identify associated policies:
 
 ```json
@@ -735,8 +743,6 @@ The list response includes a `traffic_filters` array on every project. The follo
   ]
 }
 ```
-
-To review the policies attached to every project of a given type, omit `traffic_filter` from the request.
 :::
 
 :::{applies-item} ece:
