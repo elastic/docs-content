@@ -10,7 +10,7 @@ products:
 type: how-to
 ---
 
-# GPU accelerated vector indexing [gpu-vector-indexing]
+# Accelerate dense vector indexing with a GPU [gpu-vector-indexing]
 
 {{es}} can use graphics processing unit (GPU) acceleration to significantly
 speed up the indexing of dense vectors. GPU indexing is based on the
@@ -21,7 +21,10 @@ accelerated vector indexing is particularly beneficial for large-scale vector
 datasets and high-throughput indexing scenarios, freeing up CPU resources for
 other tasks.
 
-## Requirements
+This page covers GPU indexing requirements, configuration, Docker setup,
+monitoring, and troubleshooting.
+
+## Before you begin
 
 GPU vector indexing requires the following:
 
@@ -38,7 +41,6 @@ GPU vector indexing requires the following:
 * Supported platform: Linux x86_64 only, Java 22 or later
 * Supported dense vector configurations: `hnsw` and `int8_hnsw`; `float`
   element type only
-
 
 ## Configuration
 
@@ -89,6 +91,7 @@ docker run \
 ```
 
 ## Monitoring
+
 ```{applies_to}
 stack: ga 9.3.2
 ```
@@ -125,6 +128,7 @@ GET _xpack/usage?filter_path=gpu_vector_indexing
 5. Per-node GPU details including type, memory, enabled status, and build count.
 
 ## Troubleshooting
+
 By default, {{es}} uses GPU indexing for supported vector types if a
 compatible GPU and required libraries are detected.
 Check server logs for messages indicating whether {{es}} has detected a GPU.
@@ -168,3 +172,16 @@ check the following:
   * Storage speed also matters. The GPU can process lots of data, so use storage that can keep up. Avoid network-attached storage, and prefer fast NVMe.
 * Monitor CPU usage to confirm work is offloaded to the GPU.
 * Monitor GPU usage (for example, with `nvidia-smi`).
+
+## Next steps
+
+- [Index dense vectors and run kNN search](knn.md)
+- [Tune approximate kNN search](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for indexing and query performance
+- [Bring your own dense vectors](bring-own-vectors.md) if you already have embeddings
+
+## Related pages
+
+- [GPU vector indexing settings](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#gpu-vector-indexing-settings)
+- [`dense_vector` field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md)
+- [Dense vector search](dense-vector.md)
+- [Vector search in Elasticsearch](../vector.md)
