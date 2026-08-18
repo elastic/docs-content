@@ -33,8 +33,8 @@ GPU vector indexing requires the following:
   [Elastic support matrix](https://www.elastic.co/support/matrix) for
   supported CUDA and cuVS versions.
 * `LD_LIBRARY_PATH` environment variable configured to include the cuVS
-  libraries path and its dependencies (CUDA, rmm, etc.)
-* Supported platform: Linux x86_64 only, Java 22 or higher
+  libraries path and its dependencies (CUDA, rmm, and so on)
+* Supported platform: Linux x86_64 only, Java 22 or later
 * Supported dense vector configurations: `hnsw` and `int8_hnsw`; `float`
   element type only
 
@@ -118,7 +118,7 @@ GET _xpack/usage?filter_path=gpu_vector_indexing
 }
 ```
 1. Whether the current license permits GPU indexing.
-2. Whether at least one node has GPU hardware configured and has not disabled it via `vectors.indexing.use_gpu=false`.
+2. Whether at least one node has GPU hardware configured and has not turned it off via `vectors.indexing.use_gpu=false`.
 3. Total number of GPU index builds across the cluster.
 4. Number of data nodes with GPU support.
 5. Per-node GPU details including type, memory, enabled status, and build count.
@@ -142,16 +142,16 @@ libraries, or an incompatible GPU.
 
 To enforce GPU indexing, set `vectors.indexing.use_gpu: true` in
 `elasticsearch.yml`.
-The node will fail to start if GPU indexing is not available, e.g. if a GPU
-is not detected by {{es}}, or if the runtime is not supported, or if the
-necessary dependencies are not correctly configured, etc.
+The node will fail to start if GPU indexing is not available. For example, if
+a GPU is not detected by {{es}}, if the runtime is not supported, or if the
+necessary dependencies are not correctly configured.
 
 If the node fails to start, check:
 * A supported NVIDIA GPU is present
 * CUDA runtime libraries and drivers are installed (check with `nvidia-smi`)
 * `LD_LIBRARY_PATH` includes paths to the cuVS libraries and to their
-  dependencies (e.g. CUDA)
-* Supported platform: Linux x86_64 with Java 22 or higher
+  dependencies (for example, CUDA)
+* Supported platform: Linux x86_64 with Java 22 or later
 
 
 ### Performance not improved with GPU indexing
@@ -168,10 +168,10 @@ improvement, check the following:
      Check network speed and client performance. Use multiple clients if
      needed.
    * JSON parsing could dominate the computation: use base64 encoded vectors
-     as opposed to json arrays
+     as opposed to JSON arrays
    * Storage speed is also important: as the GPU is able to process lots of
      data, you need a storage solution that is able to keep up. Avoid using
      network attached storage, and prefer fast NVMe to extract the most
      performance
 * Consider monitoring CPU usage to demonstrate offloading to GPU
-* Consider monitoring GPU usage (e.g. with `nvidia-smi`)
+* Consider monitoring GPU usage (for example, with `nvidia-smi`)
