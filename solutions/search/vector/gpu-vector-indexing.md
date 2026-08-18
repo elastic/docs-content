@@ -12,13 +12,14 @@ type: how-to
 
 # GPU accelerated vector indexing [gpu-vector-indexing]
 
-{{es}} can use GPU acceleration to significantly speed up the indexing of
-dense vectors. GPU indexing is based on the
-[Nvidia cuVS library](https://developer.nvidia.com/cuvs) and leverages the
-parallel processing capabilities of graphics processing units to accelerate
-the construction of HNSW vector search indexes. GPU accelerated vector
-indexing is particularly beneficial for large-scale vector datasets and
-high-throughput indexing scenarios, freeing up CPU resources for other tasks.
+{{es}} can use graphics processing unit (GPU) acceleration to significantly
+speed up the indexing of dense vectors. GPU indexing is based on the
+[NVIDIA cuVS library](https://developer.nvidia.com/cuvs) and uses the
+parallel processing capabilities of GPUs to accelerate the construction of
+Hierarchical Navigable Small World (HNSW) vector search indexes. GPU
+accelerated vector indexing is particularly beneficial for large-scale vector
+datasets and high-throughput indexing scenarios, freeing up CPU resources for
+other tasks.
 
 ## Requirements
 
@@ -26,8 +27,8 @@ GPU vector indexing requires the following:
 
 * An [Enterprise subscription](https://www.elastic.co/subscriptions)
 * A supported NVIDIA GPU (Ampere architecture or better, compute capability
-  \>= 8.0) with a minimum 8GB of GPU memory
-* GPU driver, CUDA and
+  \>= 8.0) with a minimum 8 GB of GPU memory
+* GPU driver, CUDA, and
   [cuVS runtime libraries](https://docs.rapids.ai/api/cuvs/stable/build/)
   installed on the node. Refer to the
   [Elastic support matrix](https://www.elastic.co/support/matrix) for
@@ -41,13 +42,13 @@ GPU vector indexing requires the following:
 
 ## Configuration
 
-GPU vector indexing is controlled by the
+The
 [`vectors.indexing.use_gpu`](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#gpu-vector-indexing-settings)
-node-level setting.
+node-level setting controls GPU vector indexing.
 
 ## Elasticsearch Docker image with GPU support
 
-An example Dockerfile is provided that extends the official {{es}} Docker image
+You can extend the official {{es}} Docker image with this example Dockerfile
 to add the dependencies required for GPU support.
 
 ::::{warning}
@@ -60,7 +61,7 @@ like our official Docker images.
 :::
 ::::
 
-### Requirements
+### Host requirements
 
 The host machine running the Docker container needs
 [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
@@ -118,7 +119,7 @@ GET _xpack/usage?filter_path=gpu_vector_indexing
 }
 ```
 1. Whether the current license permits GPU indexing.
-2. Whether at least one node has GPU hardware configured and has not turned it off via `vectors.indexing.use_gpu=false`.
+2. Whether at least one node has GPU hardware configured and has not turned it off through `vectors.indexing.use_gpu=false`.
 3. Total number of GPU index builds across the cluster.
 4. Number of data nodes with GPU support.
 5. Per-node GPU details including type, memory, enabled status, and build count.
@@ -128,13 +129,13 @@ By default, {{es}} uses GPU indexing for supported vector types if a
 compatible GPU and required libraries are detected.
 Check server logs for messages indicating whether {{es}} has detected a GPU.
 
-If you see a message like the following, a GPU was successfully detected and
-GPU indexing will be used:
+If the following message appears, a GPU was successfully detected and
+GPU indexing is used:
 ```
 [o.e.x.g.GPUSupport ] [elasticsearch-0] Found compatible GPU [NVIDIA L4] (id: [0])
 ```
-If you don't see this message, look for warning messages explaining why GPU
-indexing is not being used, such as an unsupported environment, missing
+If this message doesn't appear, check for warning messages explaining why GPU
+indexing isn't being used, such as an unsupported environment, missing
 libraries, or an incompatible GPU.
 
 
@@ -142,9 +143,9 @@ libraries, or an incompatible GPU.
 
 To enforce GPU indexing, set `vectors.indexing.use_gpu: true` in
 `elasticsearch.yml`.
-The node will fail to start if GPU indexing is not available. For example, if
-a GPU is not detected by {{es}}, if the runtime is not supported, or if the
-necessary dependencies are not correctly configured.
+The node fails to start if GPU indexing isn't available. For example, if
+a GPU isn't detected by {{es}}, if the runtime isn't supported, or if the
+necessary dependencies aren't correctly configured.
 
 If the node fails to start, check:
 * A supported NVIDIA GPU is present
@@ -156,22 +157,14 @@ If the node fails to start, check:
 
 ### Performance not improved with GPU indexing
 
-If you are sure that GPU indexing is enabled but don't see performance
-improvement, check the following:
+If you're sure that GPU indexing is enabled but performance doesn't improve,
+check the following:
 
-* Ensure supported vector index types and element type are used
-* Ensure the dataset is large enough to benefit from GPU acceleration
-* Check if there are different bottlenecks affecting the indexing process:
-  using GPU indexing accelerates the HNSW graph building, but speedups can be
-  limited by other factors.
-   * Indexing throughput depends on how fast you can get data into {{es}}.
-     Check network speed and client performance. Use multiple clients if
-     needed.
-   * JSON parsing could dominate the computation: use base64 encoded vectors
-     as opposed to JSON arrays
-   * Storage speed is also important: as the GPU is able to process lots of
-     data, you need a storage solution that is able to keep up. Avoid using
-     network attached storage, and prefer fast NVMe to extract the most
-     performance
-* Consider monitoring CPU usage to demonstrate offloading to GPU
-* Consider monitoring GPU usage (for example, with `nvidia-smi`)
+* Use supported vector index types and the `float` element type.
+* Use a dataset large enough to benefit from GPU acceleration.
+* Check for other bottlenecks. GPU indexing accelerates HNSW graph building, but other factors can limit speedups.
+  * Indexing throughput depends on how fast you can get data into {{es}}. Check network speed and client performance. Use multiple clients if needed.
+  * JSON parsing can dominate the computation. Use base64 encoded vectors instead of JSON arrays.
+  * Storage speed also matters. The GPU can process lots of data, so use storage that can keep up. Avoid network-attached storage, and prefer fast NVMe.
+* Monitor CPU usage to confirm work is offloaded to the GPU.
+* Monitor GPU usage (for example, with `nvidia-smi`).
