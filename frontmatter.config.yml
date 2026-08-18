@@ -3,6 +3,7 @@ valid_items:
     type: string
     valid_values:
       - archive
+      - hub
       - landing-page
       - not-found
   - key: navigation_title

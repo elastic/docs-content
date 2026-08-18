@@ -67,6 +67,7 @@ exclude:
   - 'README.md'
   - 'AGENTS.md'
   - 'AI.md'
+  - '.agents/**'
   - 'CLAUDE.md'
   - 'GEMINI.md'
   - 'changelog/**'
@@ -135,6 +136,7 @@ cross_links:
 toc:
   - file: index.md
   - toc: get-started
+  - toc: products
   - toc: solutions
   - toc: manage-data
   - toc: explore-analyze
