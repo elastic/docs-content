@@ -1,14 +1,14 @@
 ---
-navigation_title: Build search queries
-description: Construct approximate kNN queries in Elasticsearch for filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds.
+navigation_title: Examples of using approximate kNN
+description: Examples of using approximate kNN in Elasticsearch search queries for filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds.
 applies_to:
   stack:
   serverless:
 ---
 
-# Build approximate kNN search queries [build-approximate-knn-queries]
+# Examples of using approximate kNN in search queries [build-approximate-knn-queries]
 
-This page shows how to construct approximate kNN queries for common retrieval patterns, including filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds. 
+This page provides examples of using approximate kNN in search queries for common retrieval patterns, including filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds. 
 
 
 ## Perform semantic search [knn-semantic-search]
@@ -140,6 +140,20 @@ To avoid significant performance drawbacks, Lucene implements the following stra
 
 Use multiple kNN fields when your documents store more than one vector representation and you want to rank results by similarity across all of them in a single request. For example, you might search an image embedding and a title embedding together to surface documents that are both visually and semantically relevant.
 
+These examples add a second vector field, `title-vector`, to the `image-index` mapping created in [Approximate kNN search](approximate-knn.md#approximate-knn-example):
+
+```console
+PUT image-index/_mapping
+{
+  "properties": {
+    "title-vector": {
+      "type": "dense_vector",
+      "similarity": "l2_norm"
+    }
+  }
+}
+```
+
 In addition to *hybrid retrieval*, you can search more than one kNN vector field in a single request:
 
 ```console
@@ -228,11 +242,11 @@ In this data set, the only document with `file-type = png` has the vector `[42, 
 
 ## Resources
 
-- [Approximate kNN search](approximate-knn.md): Learn how to map, index, and run a basic approximate kNN search, including indexing considerations and limitations.
+- [Approximate kNN search](approximate-knn.md): Learn how to map, index, and run a basic approximate kNN search, including indexing considerations.
 - [Nested kNN search](nested-knn-search.md): Learn how to run approximate kNN search on nested vectors for passage retrieval, filtering, inner hits, and chunked content.
 - [Optimize performance and accuracy](optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
 - [kNN search on {{es}}](../knn.md): Explore common use cases, prerequisites for kNN search, and a comparison of approximate and exact kNN methods.
-- [Exact kNN search](exact-knn.md): Learn how to run exact brute-force kNN search with `script_score` queries for small datasets or precise scoring.
+- [Exact kNN search](exact-knn.md): Learn how to run exact brute-force kNN search for small datasets or precise scoring.
 - [Hybrid search with `semantic_text`](../../hybrid-semantic-text.md): Follow a step-by-step tutorial for combining lexical and semantic search with reciprocal rank fusion.
 - [Vector search in {{es}}](../../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
 - [Knn query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.

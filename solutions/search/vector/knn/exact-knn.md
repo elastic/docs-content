@@ -1,6 +1,6 @@
 ---
 navigation_title: Exact kNN search
-description: Run exact brute-force k-nearest neighbor (kNN) vector search in Elasticsearch using script_score queries for small datasets or precise scoring.
+description: Run exact brute-force k-nearest neighbor (kNN) vector search in Elasticsearch for small datasets or precise scoring.
 applies_to:
   stack:
   serverless:
@@ -8,7 +8,7 @@ applies_to:
 
 # Exact kNN search [exact-knn]
 
-Exact kNN search computes similarity between the query vector and every matching document, so results are fully accurate but latency increases with corpus size. Use it for small datasets, pre-filtered subsets, or when you need precise scoring without approximate indexing. For most production workloads, prefer [Approximate kNN search](approximate-knn.md). 
+Exact kNN search computes similarity between the query vector and every matching document, so results are fully accurate but latency increases with corpus size. Use it for small datasets, pre-filtered subsets, or when you need precise scoring without approximate indexing. For most production workloads, prefer [Approximate kNN search](approximate-knn.md).
 
 To run an exact kNN search, use a `script_score` query with a vector function.
 
@@ -81,7 +81,7 @@ To run an exact kNN search, use a `script_score` query with a vector function.
 ## Resources
 
 - [Approximate kNN search](approximate-knn.md): Learn how to map, index, and run fast, scalable approximate kNN search for most production workloads.
-- [Build search queries](build-search-queries.md): Learn how to construct approximate kNN queries for filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds.
+- [Examples of using approximate kNN in search queries](build-search-queries.md): See examples of using approximate kNN for filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds.
 - [Nested kNN search](nested-knn-search.md): Learn how to run approximate kNN search on nested vectors for passage retrieval, filtering, inner hits, and chunked content.
 - [Optimize performance and accuracy](optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
 - [kNN search on {{es}}](../knn.md): Explore common use cases, prerequisites for kNN search, and a comparison of approximate and exact kNN methods.

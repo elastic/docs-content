@@ -10,7 +10,7 @@ applies_to:
 
 Nested kNN search lets you find the most relevant passage or chunk inside long documents by storing a separate vector for each nested section and returning parent documents ranked by their best match. This approach is useful when a single document is too long to embed as one vector, such as when a support portal needs to surface the most relevant paragraph from a long troubleshooting guide in response to a user question.
 
-This page covers when to use nested kNN search, a basic mapping and query example, filtering, inner hits, and chunked content retrieval. For other approximate kNN query patterns, refer to [Build search queries](build-search-queries.md).
+This page covers when to use nested kNN search, a basic mapping and query example, filtering, inner hits, and chunked content retrieval. For other approximate kNN query examples, refer to [Examples of using approximate kNN in search queries](build-search-queries.md).
 
 ## Run a basic nested kNN search [nested-knn-basic-example]
 
@@ -658,11 +658,11 @@ The `inner_hits` block returns the most relevant paragraphs within each top-leve
 
 ## Resources
 
-- [Approximate kNN search](approximate-knn.md): Learn how to map, index, and run a basic approximate kNN search, including indexing considerations and limitations.
-- [Build search queries](build-search-queries.md): Learn how to construct approximate kNN queries for filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds.
+- [Approximate kNN search](approximate-knn.md): Learn how to map, index, and run a basic approximate kNN search, including indexing considerations.
+- [Examples of using approximate kNN in search queries](build-search-queries.md): See examples of using approximate kNN for filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds.
 - [Optimize performance and accuracy](optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
 - [kNN search on {{es}}](../knn.md): Explore common use cases, prerequisites for kNN search, and a comparison of approximate and exact kNN methods.
-- [Exact kNN search](exact-knn.md): Learn how to run exact brute-force kNN search with `script_score` queries for small datasets or precise scoring.
+- [Exact kNN search](exact-knn.md): Learn how to run exact brute-force kNN search for small datasets or precise scoring.
 - [Retrieval augmented generation (RAG)](../../rag.md): Learn how to retrieve relevant passages and combine them with generative AI models.
 - [Semantic search with `semantic_text`](../../semantic-search/semantic-search-semantic-text.md): Use managed semantic search when you do not need to store passage vectors in nested fields yourself.
 - [Vector search in {{es}}](../../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
