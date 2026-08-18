@@ -36,7 +36,7 @@ Only FIPS-compliant TLS protocols, ciphers, and curve types are allowed, as defi
   * `TLS v1.2`: `ECDHE-RSA-AES-128-GCM-SHA256`, `ECDHE-RSA-AES-256-GCM-SHA384`, `ECDHE-ECDSA-AES-128-GCM-SHA256`, `ECDHE-ECDSA-AES-256-GCM-SHA384`
   * `TLS v1.3`: `TLS-AES-128-GCM-SHA256`, `TLS-AES-256-GCM-SHA384`
 * The supported curve types are `P-256`, `P-384` and `P-521`.
-* {applies_to}`stack: ga 9.3+` The minimum key length is 2048 bits for RSA keys. EC key size is determined by the curve in use.
+* The minimum key length is 2048 bits for RSA keys. EC key size is determined by the curve in use.
 
 Support for encrypted private keys is not available, as the cryptographic modules used for decrypting password protected keys are not FIPS validated. If an output or any other component with an SSL key that is password protected is configured, the components will fail to load the key. When running in FIPS mode, you must provide non-encrypted keys.
 Be sure to enforce security in your FIPS environments through other means, such as strict file permissions and access controls on the key file itself, for example.
@@ -94,6 +94,9 @@ When running {{agent}} in [OpenTelemetry mode](https://github.com/elastic/elasti
 
 * **Azure integrations**: PKCS#12 (`.pfx`) client certificates are not supported for Azure Active Directory authentication. Use client secrets, workload identity, managed identity, or PEM-encoded certificate and key files instead.
 * **Kafka metrics receiver**: SASL GSSAPI (Kerberos) is not supported. SASL SCRAM (SCRAM-SHA-256, SCRAM-SHA-512) is not FIPS-compliant. Use SASL/PLAIN over TLS or mTLS.
+* The following components are not included in FIPS builds:
+  * **Prometheus receiver**
+  * **Kafka receiver** and **Kafka exporter**
 * The following receivers are not supported in FIPS mode:
   * **MongoDB receiver**
   * **MySQL receiver**
