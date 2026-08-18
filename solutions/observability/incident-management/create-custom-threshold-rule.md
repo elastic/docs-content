@@ -14,13 +14,6 @@ products:
 # Create a custom threshold rule [observability-create-custom-threshold-alert-rule]
 
 
-::::{note}
-
-**For Observability serverless projects**, the **Editor** role or higher is required to create a custom threshold rule. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-
-::::
-
-
 Create a custom threshold rule to trigger an alert when an {{obs-serverless}} data type reaches or exceeds a given value.
 
 1. To access this page, select **Alerts** from the main navigation.
@@ -32,6 +25,8 @@ Create a custom threshold rule to trigger an alert when an {{obs-serverless}} da
 :screenshot:
 :::
 
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
 
 ## Define rule data [custom-threshold-scope]
 
