@@ -96,9 +96,9 @@ stack: unavailable
 serverless: preview
 ```
 
-When you chat with an agent on {{serverless-full}} and you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md), it searches the projects selected in the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header.
+  When your projects are [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md), an agent searches the projects selected in the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header.
 
-You can change the selector at any time. Each new message uses the current selection. Earlier rounds in the conversation keep the results they already returned.
+  You can change the selector at any time. Each new message uses the current selection. Earlier messages in the conversation keep the results they already returned.
 
 ### Options menu [access-key-actions]
 
