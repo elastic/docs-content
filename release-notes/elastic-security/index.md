@@ -251,6 +251,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a crash when opening the rule panel flyout for a deleted rule caused by missing `severity_mapping` or `risk_score_mapping` fields [#278545]({{kib-pull}}278545).
 * Fixes an error that prevented adding the Osquery Manager integration in custom {{kib}} spaces when a global Osquery pack existed in the Default space [#278498]({{kib-pull}}278498).
 * Fixes intermittent duplicate execution of scheduled Osquery packs by deduplicating concurrent {{fleet}} package-policy writes for package policies shared across multiple agent policies [#278159]({{kib-pull}}278159).
+* Fixes an issue where entity store extraction tasks generated oversized HTTP requests that could crash {{kib}} on deployments with a large number of indices [#279529]({{kib-pull}}279529).
 * Fixes an issue where {{elastic-defend}} WFP firewall anti-tamper rules were not reinstated after a restart when the policy had not changed.
 * Fixes a CPU spin loop in {{elastic-defend}} that could occur when a middlebox (such as Zscaler or a load balancer) dropped a TLS connection to {{ls}} or {{es}}, preventing event delivery until the agent was restarted.
 * Fixes an issue where {{elastic-defend}} immediately retried sending documents when {{es}} failed to ingest them.
