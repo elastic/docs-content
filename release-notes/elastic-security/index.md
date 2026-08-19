@@ -45,6 +45,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where Automatic Migration rules with a **Partially translated** status did not update to **Translated** after you used **Update missing index pattern** [#278431]({{kib-pull}}278431).
 * Fixes an issue where generating threat hunting leads failed when the number of candidate entities was very large [#275970]({{kib-pull}}275970).
 * Fixes an {{agent}} upgrade failure caused by a failed {{elastic-defend}} `verify` command. Affected endpoints logged `Unable to start endpoint to check version: exit status 2, try install` every 30 seconds.
+* Fixes alert suppression creating duplicate alerts instead of updating existing ones when the alert source data uses a nested field structure [#282192]({{kib-pull}}282192).
 * Improves `memory-dump` response actions in {{elastic-defend}} on Windows. Live kernel dumps can include user-space memory when the {{elastic-endpoint}} driver is loaded. Raw memory dumps and live kernel dumps handle cancellation, service shutdown, timeouts, and unavailable-driver cases more reliably.
 * Fixes {{elastic-defend}} on Linux to report DNS event sources as unsupported on kprobe-based kernels.
 * Updates a `curl` dependency in {{elastic-defend}} to resolve [CVE-2024-8096](https://github.com/advisories/GHSA-gv3v-x3f3-7fxm).
