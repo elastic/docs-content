@@ -28,8 +28,8 @@ For certain features you’ll need to use a slightly different procedure to mana
 
 How you apply an ILM policy depends on the data streams you want it to cover. Choose the approach that matches your use case.
 
-* **[Apply an ILM policy to all data streams across all namespaces](/reference/fleet/data-streams-scenario1.md)**: Edit the `logs@custom` or `metrics@custom` component template, so the policy covers every integration. Repeat separately for logs and for metrics.
-* **[Apply an ILM policy to specific data streams across all namespaces](/reference/fleet/data-streams-scenario2.md)**: Edit one data stream's own `@custom` component template, leaving the integration's other data streams untouched.
+* **[Apply an ILM policy to all data streams across all namespaces](/reference/fleet/data-streams-scenario1.md)**: Edit the `logs@custom` or `metrics@custom` component template, so the policy covers every {{fleet}} `logs-*` or `metrics-*` data stream. Repeat separately for logs and for metrics.
+* **[Apply an ILM policy to specific data streams across all namespaces](/reference/fleet/data-streams-scenario2.md)**: Edit a data stream's own `@custom` component template, leaving the integration's other data streams untouched.
 * **[Apply an ILM policy to one data stream in one namespace](/reference/fleet/data-streams-scenario3.md)**: Clone the integration's index template and scope the copy to a single namespace. This is the heaviest option, because you take on maintaining the cloned template.
 
   {applies_to}`stack: ga 9.5+` For shared settings across every data stream in a namespace, refer to [Customize data streams with namespace index templates](/reference/fleet/data-streams-namespace-custom.md).
