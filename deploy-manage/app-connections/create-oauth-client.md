@@ -49,11 +49,11 @@ You can also get to this page by searching for **Application connections** in th
 ::::
 
 ::::{step} Name the client
-Enter a **Client name** with no more than 128 characters. The name is visible to users during the authorization flow, so use something that clearly identifies the application (for example, `Claude Desktop — Engineering`).
+Enter a **Client name**. The name is visible to users during the authorization flow, so use something that clearly identifies the application (for example, `Claude Desktop — Engineering`).
 ::::
 
 ::::{step} Select a client logo
-Optionally set a **Client logo** to identify the application in the list. Use **Select logo** to choose from provided options, or select **Upload logo** to use a PNG, JPEG, or GIF of up to 192 KB.
+Optionally set a **Client logo** to identify the application in the list. Use **Select logo** to choose from provided options, or select **Upload logo** to use a custom image.
 
 Selecting a logo is cosmetic, and does not pre-configure any settings.
 ::::
@@ -78,7 +78,7 @@ The redirect URI tells the authorization server where to return the user after t
     The ChatGPT callback URL is unique to each app. You must [start the app creation flow first](/deploy-manage/app-connections/connect-mcp-host.md) to get this URL, then return here to add it to your OAuth client.
     :::
 
-For local clients that need more than one redirect URI, click **Add local URL** to add up to 20 URLs. Each local or remote redirect URI can contain up to 2,048 characters.
+For local clients that need more than one redirect URI, click **Add local URL** to add additional URLs.
 ::::
 
 ::::{step} Optional: Generate a client secret

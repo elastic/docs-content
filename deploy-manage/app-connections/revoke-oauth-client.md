@@ -81,7 +81,7 @@ To delete an OAuth client:
 
 1. In {{kib}}, go to **Agent Builder** → **Tools library**, click **Manage MCP**, and select **Manage MCP clients (OAuth)**.
 2. Find the revoked client. Click **Actions**, and then click **Delete**.
-3. In the **Delete [client name]?** dialog, review the warning, then click **Delete**.
+3. In the **Delete [client name]?** dialog, type the client name to confirm, then click **Delete**.
 
 The client is permanently removed from the **MCP clients** page.
 
