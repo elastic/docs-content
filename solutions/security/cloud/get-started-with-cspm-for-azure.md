@@ -31,13 +31,13 @@ This page explains how to get started monitoring the security posture of your cl
 
 You can set up CSPM for Azure by enrolling an Azure organization (management group) containing multiple subscriptions, or by enrolling a single subscription. Either way, first add the CSPM integration, then enable cloud account access. 
 
-The following deployment technologies are available: {{managed-integration}} (agentless) and agent-based. 
+The following deployment technologies are available: {{managed-integration}} and agent-based. 
 
 * [{{managed-integration}} deployment](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
 * [Agent-based deployment](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
 
 
-## {{managed-integration}} (agentless) deployment [cspm-azure-agentless]
+## {{managed-integration}} deployment [cspm-azure-agentless]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.
@@ -54,7 +54,7 @@ The following deployment technologies are available: {{managed-integration}} (ag
     * {applies_to}`stack: ga 9.0-9.4` Select **Agentless**.
 8. Next, you’ll need to authenticate to Azure. The following methods are available:
     
-    * Option 1: [Federated Identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md), also called a cloud connector (recommended). {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`  
+    * {applies_to}`{serverless: preview, stack: preview 9.2}` Option 1: [Federated Identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md), also called a cloud connector (recommended).
       * {applies_to}`{serverless: preview, stack: preview 9.4+}` Select **Federated Identity**. To reuse an existing identity, select the **Existing Identity** tab, then select the identity's name. To create a new identity, on the **New Identity** tab, enter a **Federated Identity Name**, then expand the **Steps to create Managed User Identity in Azure** section. Complete the instructions, then enter the resulting `Client ID` and `Tenant ID` in {{kib}}, and enter the `Elastic Cloud Connector ID` output in the **Federated Identity ID** field.
       * {applies_to}`stack: preview 9.2-9.3` Select **Cloud Connectors**. Under **New Connection**, enter a **Cloud Connector Name**, then expand the **Steps to create Managed User Identity in Azure** section. Complete the instructions to generate a `Client ID`, `Tenant ID`, and `Cloud Connector ID`, then enter them in {{kib}}.
     

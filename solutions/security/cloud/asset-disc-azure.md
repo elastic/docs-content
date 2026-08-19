@@ -31,13 +31,13 @@ This page explains how to set up the Cloud Asset Discovery integration to invent
 
 You can set up Cloud Asset Discovery for Azure by enrolling an Azure organization (management group) containing multiple subscriptions, or by enrolling a single subscription. Either way, you will first add the Cloud Asset Discovery integration, then enable cloud account access. 
 
-Two deployment technologies are available: {{managed-integration}} (agentless) and agent-based. 
+Two deployment technologies are available: {{managed-integration}} and agent-based. 
 
 * [{{managed-integration}} deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. 
 * [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
 
 
-## {{managed-integration}} (agentless) deployment [cad-azure-agentless]
+## {{managed-integration}} deployment [cad-azure-agentless]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for and select `Cloud asset discovery`.
@@ -49,7 +49,7 @@ Two deployment technologies are available: {{managed-integration}} (agentless) a
     * {applies_to}`stack: preview 9.1-9.4` Select **Agentless**.
 7. Next, you’ll need to authenticate to Azure. The following methods are available:
     
-    * Option 1: [Federated Identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md), also called a cloud connector (recommended). {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`  
+    * {applies_to}`{serverless: preview, stack: preview 9.2}` Option 1: [Federated Identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md), also called a cloud connector (recommended).
       * {applies_to}`{serverless: preview, stack: preview 9.4+}` Select **Federated Identity**. To reuse an existing identity, select the **Existing Identity** tab, then select the identity's name. To create a new identity, on the **New Identity** tab, enter a **Federated Identity Name**, then expand the **Steps to create Managed User Identity in Azure** section. Complete the instructions, then enter the resulting `Client ID` and `Tenant ID` in {{kib}}, and enter the `Elastic Cloud Connector ID` output in the **Federated Identity ID** field.
       * {applies_to}`stack: preview 9.2-9.3` Select **Cloud Connectors**. Under **New Connection**, enter a **Cloud Connector Name**, then expand the **Steps to create Managed User Identity in Azure** section. Complete the instructions to generate a `Client ID`, `Tenant ID`, and `Cloud Connector ID`, then enter them in {{kib}}.
     
