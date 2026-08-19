@@ -18,6 +18,8 @@ products:
 
 Cloud connector authentication for {{managed-integrations}} reduces the administrative burden of authenticating to third-party cloud service providers by eliminating the need to keep track of credentials such as API keys or passwords. Cloud connectors provide a reusable, secure-by-default means of authentication, helping you to manage deployments with many integrations collecting data from multiple cloud security providers.
 
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` In the {{kib}} UI, cloud connectors are labeled **Federated Identity**.
+
 ## Integrations that support cloud connector deployment
 
 Cloud connector authentication currently supports deployments of Elastic's Cloud Security Posture Management (CSPM) and Asset Discovery integrations to AWS and Azure. For deployment instructions, refer to:
@@ -38,11 +40,14 @@ stack: preview 9.3+
 
 Cloud connector names help you keep track of each connector's purpose and reuse it appropriately. For example, you could name two AWS connectors `aws-prod` and `aws-testing`. 
 
-When you create a new cloud connector you must name it. When you're deploying an integration with a cloud connector, if you select **Existing connection** a dropdown menu with the names of existing cloud connectors appears. 
+When you create a new cloud connector you must name it:
 
-To rename a connector, go to the **Existing connection** dropdown menu and click the **Edit** button next to its name, then enter a new name.
+- {applies_to}`{serverless: preview, stack: preview 9.4+}` Enter the name in the **Federated Identity Name** field. When you're deploying an integration, select the **Existing Identity** tab to reuse an existing cloud connector by name.
+- {applies_to}`stack: preview =9.3` Enter the name in the **Cloud Connector Name** field. When you're deploying an integration, if you select **Existing Connection**, a dropdown menu with the names of existing cloud connectors appears.
 
-Because cloud connector names were introduced with {{stack}} version 9.3, cloud connectors created in earlier versions have default names:
+To rename a connector, go to the tab that lists existing connectors and click the **Edit** button next to the connector's name, then enter a new name.
 
-  - For AWS cloud connectors: `Cloud Connector RoleARN`.
-  - For Azure cloud connectors: `Cloud Connector ID`. 
+Because cloud connector names were introduced with {{stack}} version 9.3, cloud connectors created in earlier versions are named automatically:
+
+  - AWS cloud connectors use their role ARN as the name.
+  - Azure cloud connectors use their cloud connector ID as the name.

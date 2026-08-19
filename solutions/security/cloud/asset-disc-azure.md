@@ -31,24 +31,27 @@ This page explains how to set up the Cloud Asset Discovery integration to invent
 
 You can set up Cloud Asset Discovery for Azure by enrolling an Azure organization (management group) containing multiple subscriptions, or by enrolling a single subscription. Either way, you will first add the Cloud Asset Discovery integration, then enable cloud account access. 
 
-Two deployment technologies are available: agentless and agent-based. 
+Two deployment technologies are available: {{managed-integration}} (agentless) and agent-based. 
 
-* [Agentless deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. 
+* [{{managed-integration}} deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. 
 * [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
 
 
-## Agentless deployment [cad-azure-agentless]
+## {{managed-integration}} (agentless) deployment [cad-azure-agentless]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for and select `Cloud asset discovery`.
 3. Click **Add Cloud Asset Discovery**.
 4. Select **Azure**, then either **Azure Organization** to onboard your whole organization, or **Single Subscription** to onboard an individual subscription.
 5. Give your integration a name that matches the purpose or team of the Azure subscription/organization you want to monitor, for example, `dev-azure-account`.
-6. In **Deployment options**, select **Agentless**.
+6. In **Deployment options**, select the deployment mode:
+    * {applies_to}`{serverless: preview, stack: preview 9.5+}` Select **Elastic Managed Integration**.
+    * {applies_to}`stack: preview 9.1-9.4` Select **Agentless**.
 7. Next, you’ll need to authenticate to Azure. The following methods are available:
     
-    * Option 1: [Cloud connector](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md) (recommended). {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`  
-      Under **New connection**, enter a **Cloud Connector Name**, then expand the **Steps to create Managed User Identity in Azure** section. Complete the instructions to generate a `Client ID`, `Tenant ID`, and `Cloud Connector ID`, then enter them in {{kib}}.
+    * Option 1: [Federated Identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md), also called a cloud connector (recommended). {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`  
+      * {applies_to}`{serverless: preview, stack: preview 9.4+}` Select **Federated Identity**. To reuse an existing identity, select the **Existing Identity** tab, then select the identity's name. To create a new identity, on the **New Identity** tab, enter a **Federated Identity Name**, then expand the **Steps to create Managed User Identity in Azure** section. Complete the instructions, then enter the resulting `Client ID` and `Tenant ID` in {{kib}}, and enter the `Elastic Cloud Connector ID` output in the **Federated Identity ID** field.
+      * {applies_to}`stack: preview 9.2-9.3` Select **Cloud Connectors**. Under **New Connection**, enter a **Cloud Connector Name**, then expand the **Steps to create Managed User Identity in Azure** section. Complete the instructions to generate a `Client ID`, `Tenant ID`, and `Cloud Connector ID`, then enter them in {{kib}}.
     
     * Option 2: Azure Client ID with Client Secret. Provide a **Client ID**, **Tenant ID**, and **Client Secret**. To learn how to generate them, refer to [Service principal with client secret](/solutions/security/cloud/asset-disc-azure.md#cad-azure-client-secret).
 8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
