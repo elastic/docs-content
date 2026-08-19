@@ -57,7 +57,7 @@ Follow these steps to map `dense_vector` fields, index embeddings, and run a bas
     }
     ```
 
-2. Index your data with embeddings.  
+2. Index your data with embeddings. If you don't have vectors yet, refer to [Bring your own dense vectors](../bring-own-vectors.md) for options on generating or sourcing them.
 
     ```console
     POST image-index/_bulk?refresh=true
