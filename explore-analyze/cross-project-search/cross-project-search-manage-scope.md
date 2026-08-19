@@ -40,9 +40,13 @@ The scope selector also provides shortcuts to admin settings. Select **Adjust sp
 
 ### Session scope vs. stored scope
 
-In most apps, the scope selector controls the **session scope**: which projects are searched while you work. Your selection is preserved as you navigate between apps that support the scope selector, and starting a new session resets to the space default.
+Sometimes, you might want to change which projects are included in your results as you work. Other times, you want to set the project scope and persist it with a resource to keep inputs consistent. Session scope and stored scope are how apps make that happen. The behavior follows the app.
 
-In some apps, the scope selector sets a **stored scope** on a specific resource instead of the session. For example, in {{ml-app}} Anomaly Detection, the scope selector defines the `project_routing` value saved with each {{anomaly-job}}. Refer to the [availability table](#cps-availability) for details on how each app uses the scope selector.
+Most apps use **session scope**. Session scope is which projects are searched while you work. You set it with the scope selector in the project header. Your selection is preserved as you navigate between apps that support the selector. Starting a new session resets to the space default. Session scope is used by most apps.
+
+Some apps use **stored scope**. Stored scope is saved with a resource and applies every time that resource runs or opens. Some apps, such as [Dashboards](/explore-analyze/dashboards.md), save a snapshot of the scope currently set in the header selector. Others use a separate selector on the create or edit form, such as [{{ml}} {{anomaly-jobs}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md). 
+
+Refer to the [availability table](#cps-availability) for how each app uses scope.
 
 ### Include and exclude projects [cps-picker-include-exclude]
 
