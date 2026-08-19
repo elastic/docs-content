@@ -90,7 +90,9 @@ To stabilize {{kib}} until we resolve the issue, we recommend temporarily disabl
    * **Self-managed**: Remove the setting from `kibana.yml`, save your change, and restart {{kib}}.
 
 
-We will update this page with instructions on how to enable the feature again once versions with a fix are available.
+**Resolved**<br>
+
+Resolved in {{stack}} 9.4.5.
 
 :::
 
