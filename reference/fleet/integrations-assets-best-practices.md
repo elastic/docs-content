@@ -86,8 +86,8 @@ When you clone the index template of an integration package, this involves risk 
 
 Additionally, cloning index templates to add or inject additional component templates cannot be tested by Elastic, so we cannot guarantee that the template will work in future releases.
 
-If you want to change the ILM Policy, the number of shards, or other settings for the data streams of one or more integrations, but the changes do not need to be specific to a given namespace, it’s highly recommended to use the `package@custom` component templates, as described in [Apply an ILM policy to all data streams across all namespaces](/reference/fleet/data-streams-scenario1.md) and [Apply an ILM policy to specific data streams across all namespaces](/reference/fleet/data-streams-scenario2.md), so as to avoid the problems described earlier on this page.
+If you want to change the ILM Policy, the number of shards, or other settings for the data streams of one or more integrations, but the changes do not need to be specific to a given namespace, it's highly recommended to use the `package@custom` component templates, as described in [](/reference/fleet/data-streams-scenario1.md) and [](/reference/fleet/data-streams-scenario2.md), so as to avoid the problems described earlier on this page.
 
-If you want to change these settings for the data streams in one or more integrations and the changes **need to be namespace specific**, then you can do so following the steps in [Apply an ILM policy to one data stream in one namespace](/reference/fleet/data-streams-scenario3.md), but be aware of the restrictions mentioned above.
+If you want to change these settings for the data streams in one or more integrations and the changes **need to be namespace specific**, then you can do so following the steps in [](/reference/fleet/data-streams-scenario3.md), but be aware of the restrictions mentioned above.
 
 {applies_to}`stack: ga 9.5+` As an alternative that does not duplicate the integration index template, you can use [namespace index templates](/reference/fleet/data-streams-namespace-custom.md) for every data stream in the namespace.
