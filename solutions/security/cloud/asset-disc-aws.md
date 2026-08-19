@@ -51,9 +51,9 @@ Two deployment technologies are available: {{managed-integration}} and agent-bas
       * {applies_to}`{serverless: preview, stack: preview 9.4+}` Select **Federated Identity**. To reuse an existing identity, select the **Existing Identity** tab, then select the identity's name. To create a new identity, on the **New Identity** tab, enter a **Federated Identity Name**, then expand the **Steps to assume role** section. Complete the instructions to generate a `Role ARN` and `External ID`; enter them in {{kib}}.
       * {applies_to}`stack: preview 9.2-9.3` Select **Cloud Connectors**. To use a pre-existing cloud connector for this deployment, select the **Existing Connection** tab, then select the cloud connector's name. To use a new cloud connector, under **New Connection**, enter a **Cloud Connector Name**, then expand the **Steps to assume role** section. Complete the instructions to generate a `Role ARN` and `External ID`; enter them in {{kib}}.
       
-      ::::{important}
-      {applies_to}`stack: removed 9.3`{applies_to}`serverless: removed` To use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
-      ::::
+        ::::{note}
+        {applies_to}`stack: removed 9.3`{applies_to}`serverless: removed` On Elastic Stack version 9.3 and earlier, to use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
+        ::::
 
     * Option 2: Direct access keys/CloudFormation. For **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
 
