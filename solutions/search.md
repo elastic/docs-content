@@ -42,7 +42,7 @@ The following subjects are covered in this section:
 |-------|-------------|
 | [**Get started**](/solutions/search/get-started.md) | Create deployments, connect to {{es}}, and run your first searches |
 | [**Ingest data**](/solutions/search/ingest-for-search.md) |  Learn about options for getting data into {{es}} for search use cases | 
-| [**Search approaches**](/solutions/search/search-approaches.md) | Compare search techniques available in {{es}}, including full-text, vector, semantic, and hybrid search |
+| [**Search approaches**](/solutions/search/search-approaches.md) | Compare search techniques available in {{es}}, including full-text, vector, and hybrid search |
 | [**Build your queries**](/solutions/search/querying-for-search.md) | Implement your search approaches using specific query languages |
 | [**Ranking and reranking**](/solutions/search/ranking.md) | Control result ordering and relevance |
 | [**RAG**](/solutions/search/rag.md) | Learn about tools for retrieval augmented generation with {{es}}|
