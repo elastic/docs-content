@@ -39,6 +39,8 @@ The SLOs settings are specific to your {{kib}} [space](/deploy-manage/manage-spa
 
 Federated views allow you to view SLOs from remote {{es}} clusters alongside the local SLOs on the SLO listing page of your {{kib}} instance. This enables a centralized overview cluster where you can monitor SLOs across your entire fleet within the same {{kib}} space.
 
+{applies_to}`serverless: preview` Federated views use {{ccs}}. They are not available for {{cps}} on {{serverless-full}}. On {{serverless-full}}, you cannot browse SLOs defined on linked projects. Each SLO stores its own [project scope](/solutions/observability/incident-management/create-an-slo.md#slo-cps-scope). Refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md#obs-cps-slos).
+
 :::{important}
 Before configuring SLOs, ensure that:
 - {{es}} Cross-Cluster Search (CCS) is properly set up between the overview cluster and the remote clusters.
