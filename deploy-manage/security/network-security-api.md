@@ -702,7 +702,7 @@ curl \
 https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets?include_associations=true
 ```
 
-Each ruleset in the response includes an `associations` array and a `total_associations` count only when `include_associations` is `true`. You can also pass `include_associations=true` when you retrieve a single ruleset by ID: `/api/v1/deployments/traffic-filter/rulesets/$POLICY_ID?include_associations=true`.
+Each rule set in the response includes an `associations` array and a `total_associations` count only when `include_associations` is `true`. You can also pass `include_associations=true` when you retrieve a single ruleset by ID: `/api/v1/deployments/traffic-filter/rulesets/$POLICY_ID?include_associations=true`.
 :::
 
 :::{applies-item} serverless:
