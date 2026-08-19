@@ -31,7 +31,7 @@ Before proceeding with the upgrade, review the [Plan your upgrade](/deploy-manag
 
 Additionally, review the [Restrictions and known problems](../deploy/elastic-cloud/restrictions-known-problems.md) section to gain a comprehensive understanding of the known issues in {{ech}}. 
 
-If you’re still running {{stack}} version 7.17 or earlier, refer to the [Upgrade from 7.17 guide](/deploy-manage/upgrade/deployment-or-cluster/upgrade-717.md) for detailed guidance on planning and executing the upgrade to the latest {{version.stack}} release.
+If you're still running {{stack}} version 7.17 or earlier, refer to the [Upgrade from 7.17 guide](/deploy-manage/upgrade/deployment-or-cluster/upgrade-717.md) for detailed guidance on planning and executing the upgrade to the latest {{version.stack}} release.
 
 ## Out-of-order releases [out-of-order-releases]
 
@@ -42,15 +42,24 @@ Elastic maintains several minor versions of {{es}} at the same time. This means 
 
 If you are currently running a version with a lower version number but a later release date than {{version.stack}}, wait for a newer release before upgrading.
 
+:::{admonition} Unblocking an out-of-order upgrade
+If you've already upgraded to a version with a later release date — for example, 8.19.20 released after 9.3.8 — you're blocked from upgrading to the earlier-released target version. Managed deployments ({{ech}}, {{ece}}, {{eck}}) can unblock by:
+
+1. Creating a new deployment at the target version.
+2. Restoring your data from a snapshot.
+
+The release date check does not apply to snapshot restore. When restoring across major versions, follow [Move {{kib}} configuration and saved objects across major versions](/deploy-manage/tools/snapshot-and-restore.md#move-kibana-config-saved-objects) to avoid compatibility issues with Kibana feature data.
+:::
+
 Additionally, upgrading from a release candidate build, such as 9.0.0-rc1, is unsupported. Use pre-releases only for testing in a temporary environment.
 
 ## Upgrade methods
 
-If you’re using Elastic-managed infrastructure, use the following options:
+If you're using Elastic-managed infrastructure, use the following options:
 
 * [Upgrade on {{ech}}](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ech.md)
 
-If you’re using self-managed infrastructure - either on-prem or public cloud - use the following options:
+If you're using self-managed infrastructure - either on-prem or public cloud - use the following options:
 
 * [Upgrade the {{stack}} on a self-managed cluster](/deploy-manage/upgrade/deployment-or-cluster/self-managed.md)
 * [Upgrade your deployment on {{ece}} (ECE)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md)
