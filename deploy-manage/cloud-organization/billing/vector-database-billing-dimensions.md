@@ -17,7 +17,7 @@ description: >-
 Your monthly bill is calculated based on these components:
 
 * **Storage** - Measured by the total amount of data stored in your project, in GB.
-* **Search** - Measured by reserved search capacity for your stored data. Capacity is controlled by your project's [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) setting and scales with how much data you store.
+* **Search** - Measured by reserved search capacity for your stored data. Capacity is controlled by your project's [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) setting and scales with your project's active storage.
 * **Ingest** - Measured by the volume of data you ingest into your project over the course of a month, in GB.
 * **Infrastructure fee** - A recurring project fee. Usage is metered by the hour for as long as the project exists, so a full month looks like a flat monthly charge and partial months are pro-rated.
 
@@ -33,7 +33,9 @@ You are charged per GB of data stored in the project. Storage charges apply for 
 
 Search charges cover the search capacity reserved for your stored data. All stored data is searchable by default, which means it actively contributes to Search charges.
 
-[Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) determines how much capacity is reserved. At Search Power **100**, enough capacity is reserved so that 100% of your project data remains available for low-latency search. Higher Search Power values reserve more capacity in proportion to that baseline: for example, **200** reserves about twice as much as **100**.
+Search charges scale with [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) and your project's active storage. Active storage is the volume of data used as the basis for Search billing. For billing, active storage has a 16 GB minimum: if your project stores less than 16 GB, Search charges still use 16 GB as the storage basis.
+
+At Search Power **100**, enough capacity is reserved so that 100% of your project data remains available for low-latency search. Higher Search Power values reserve more capacity in proportion to that baseline: for example, **200** reserves about twice as much as **100**.
 
 Increasing Search Power reserves more capacity and raises search charges. Running more queries does not increase search charges. For current rates, refer to the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless).
 
@@ -53,7 +55,7 @@ Vector Database costs follow your storage footprint, search resource allocation,
 
 ### Search Power setting [vector-database-billing-search-power-setting]
 
-[Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) reserves search capacity for your project. Start at the default of **100**, measure latency and throughput for your workload, then increase Search Power if you need more capacity. You increase Search Power in increments of 100. Higher Search Power increases search charges in proportion to the setting and your stored data volume. You can increase Search Power up to **1900**.
+[Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) reserves search capacity for your project. Start at the default of **100**, measure latency and throughput for your workload, then increase Search Power if you need more capacity. You increase Search Power in increments of 100. Higher Search Power increases search charges in proportion to the setting and your active storage. You can increase Search Power up to **1900**.
 
 For high availability, you can increase Search Power to **200**. That setting reserves enough capacity for two full copies of your project data to remain available for low-latency search.
 
