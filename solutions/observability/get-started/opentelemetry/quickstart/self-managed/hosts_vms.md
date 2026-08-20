@@ -30,7 +30,7 @@ Follow these steps to deploy the {{agent}} and EDOT SDKs.
 
 :::::{step} Download the {{agent}}
 
-[Download the {{agent}}](elastic-agent://reference/edot-collector/download.md) for your operating system, extract the archive and move to the extracted directory.
+[Download the {{agent}}](elastic-agent://reference/otel-collector/download.md) for your operating system, extract the archive and move to the extracted directory.
 :::::
 
 :::::{step} Configure the {{agent}}

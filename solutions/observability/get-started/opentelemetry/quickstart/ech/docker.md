@@ -30,7 +30,7 @@ Follow these steps to deploy the {{agent}} and EDOT SDKs in Docker with ECH.
 
 ::::{step} Create the config file
 
-Create the `otel-collector-config.yml` file with your {{agent}} configuration. Refer to the [configuration reference](elastic-agent://reference/edot-collector/config/default-config-standalone.md).
+Create the `otel-collector-config.yml` file with your {{agent}} configuration. Refer to the [configuration reference](elastic-agent://reference/otel-collector/config/default-config-standalone.md).
 ::::
 
 ::::{step} Retrieve your settings

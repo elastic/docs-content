@@ -79,7 +79,7 @@ If you're deploying the {{agent}} in a standalone configuration, try to:
    
    * **For managed OTLP endpoint**: use relevant receivers and export using the `otlp` exporter
    
-   Refer to [Default configuration of the {{agent}} (Standalone)](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for full examples for each use case.
+   Refer to [Default configuration of the {{agent}} (Standalone)](elastic-agent://reference/otel-collector/config/default-config-standalone.md) for full examples for each use case.
 
 
 * Check for port conflicts

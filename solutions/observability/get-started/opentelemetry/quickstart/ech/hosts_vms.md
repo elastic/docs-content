@@ -30,7 +30,7 @@ Follow these steps to deploy the {{agent}} and EDOT SDKs with ECH.
 
 :::::{step} Download the {{agent}}
 
-[Download the {{agent}}](elastic-agent://reference/edot-collector/download.md) for your operating system, extract the file, and change directory to the extracted files.
+[Download the {{agent}}](elastic-agent://reference/otel-collector/download.md) for your operating system, extract the file, and change directory to the extracted files.
 
 :::::
 
