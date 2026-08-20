@@ -30,21 +30,21 @@ The following table shows how each {{observability}} app behaves with {{cps-init
 
 ## {{cps-cap}} scope selector in {{observability}} apps [obs-cps-scope-selector]
 
-Most apps that support {{cps-init}} use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header. You use it to choose which linked projects your searches include during your session. In {{observability}}, that includes APM and Infrastructure, as well as platform apps like Discover, Dashboards, and Lens.
+APM and Infrastructure use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header, as do platform apps like Discover, Dashboards, and Lens.
 
-Some apps store scope on the resource instead of using the header selector. When you [create an SLO](/solutions/observability/incident-management/create-an-slo.md#slo-cps-scope), use **Project scope** to choose which linked projects the SLO monitors. That stored scope applies every time the SLO's transform runs.
+When you [create an SLO](/solutions/observability/incident-management/create-an-slo.md#slo-cps-scope), specify an SLO-specific **Project scope** to choose which linked projects the SLO monitors.
 
 For other {{observability}}-specific apps, the scope selector is not available. This means:
 
 * Those apps operate in their default scope, which varies by app (refer to [{{observability}} app compatibility](#obs-cps-compatibility)).
 * The scope you select in platform apps like Discover does not carry over to {{observability}} apps that don't support it.
-* Data volumes might change when switching between Discover (which shows cross-project data by default) and an {{observability}} app (which is scoped to the origin project) for the same index pattern.
+* Data volumes might change when switching between Discover (which shows cross-project data by default) and those {{observability}} app (which is scoped to the origin project) for the same index pattern.
 
 To learn how to use the scope selector to include or exclude linked projects, refer to [Managing {{cps}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md).
 
 ## Navigating between Discover and {{observability}} apps [obs-cps-discover-navigation]
 
-When {{cps-init}} is enabled, Discover shows documents from all linked projects by default, unless the space-level default scope has been changed. {{observability}} apps may not have the same scope, which can lead to differences when navigating between them.
+When {{cps-init}} is enabled, Discover shows documents from all linked projects by default, unless the space-level default scope has been changed. {{observability}} apps might not have the same scope, which can lead to differences when navigating between them.
 
 ### Discover to Streams
 
@@ -60,9 +60,9 @@ The following known issues and limitations apply to {{cps-init}} in {{observabil
 
 ### Rules data scope inconsistency [obs-cps-rules-scope]
 
-SLO burn rate rules query only origin project data, even when the underlying data view (for example, `logs-*`) returns cross-project data in Discover. This means Discover and rules may show different results for the same data view.
+SLO burn rate rules query the SLO's [SLI and summary indices](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md#indices-used-by-this-rule), not the SLO's source data view. Those indices reflect the **Project scope** stored on the SLO. Discover uses the session scope on that source data view. If those scopes differ, Discover can show more or fewer documents than the rule evaluates.
 
-{{ml-cap}} rules are not available in {{cps-init}}.
+{{ml-cap}} rules don't support {{cps}}. They search data in the origin project only.
 
 ### SLO visibility [obs-cps-slo-remote]
 

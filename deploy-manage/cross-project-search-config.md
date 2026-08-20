@@ -136,8 +136,8 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 {{observability}} apps have partial {{cps-init}} support. For example:
 
-* APM and Infrastructure use the header scope selector.
-* SLOs store project scope on each SLO.
+* APM and Infrastructure use session scope.
+* SLOs use stored scope.
 * Streams, Synthetics, and alerts remain scoped to the origin project.
 
 For specific app details, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md).

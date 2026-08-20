@@ -41,8 +41,6 @@ In addition to these key concepts related to SLO functionality, see [Understandi
 
 From the SLO overview, you can see all of your SLOs and a quick summary of what’s happening in each one.
 
-{applies_to}`serverless: preview` The overview lists SLOs defined in this project. An SLO can still monitor linked projects if you set [**Project scope**](/solutions/observability/incident-management/create-an-slo.md#slo-cps-scope).
-
 :::{image} /solutions/images/observability-slo-dashboard.png
 :alt: Dashboard showing list of SLOs
 :screenshot:
