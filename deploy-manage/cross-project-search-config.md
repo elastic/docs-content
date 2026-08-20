@@ -134,7 +134,11 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 ### Elastic {{observability}} apps
 
-{{observability}} apps have partial {{cps-init}} support. APM and Infrastructure use the header scope selector. SLOs store project scope on each SLO. Other {{observability}} apps remain scoped to the origin project.
+{{observability}} apps have partial {{cps-init}} support. For example:
+
+* APM and Infrastructure use the header scope selector.
+* SLOs store project scope on each SLO.
+* Streams, Synthetics, and alerts remain scoped to the origin project.
 
 For specific app details, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md).
 

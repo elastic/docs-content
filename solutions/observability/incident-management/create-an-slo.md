@@ -46,7 +46,7 @@ From here, complete the following steps:
 
 From the **Choose the SLI type** dropdown, select the type of SLI to use.
 
-{applies_to}`serverless: preview` To monitor linked projects as part of this SLO, you can also set the [**Project scope**](#slo-cps-scope).
+{applies_to}`serverless: preview` When your project has [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), you can also set the [**Project scope**](#slo-cps-scope) to choose which of them the SLO monitors.
 
 The type of SLI to use depends on the location of your data:
 
@@ -228,9 +228,9 @@ stack: unavailable
 serverless: preview
 ```
 
-Use **Project scope** to select which linked projects the SLO monitors. This control opens the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana).
+Use the **Project scope** control to choose which linked projects the SLO monitors. This control opens the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) for the SLO.
 
-The control appears when at least one project is linked. New SLOs default to **This project**. Editing an SLO restores the stored scope.
+The control appears when at least one project is linked. New SLOs default to **This project**.
 
 :::{note}
 :applies_to: stack: ga 9.4

@@ -39,7 +39,7 @@ In addition to these key concepts related to SLO functionality, see [Understandi
 
 ## SLO overview [slo-in-elastic]
 
-From the SLO overview, you can see all your SLOs and a quick summary of what’s happening in each one.
+From the SLO overview, you can see all of your SLOs and a quick summary of what’s happening in each one.
 
 :::{image} /solutions/images/observability-slo-dashboard.png
 :alt: Dashboard showing list of SLOs
