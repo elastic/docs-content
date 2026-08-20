@@ -17,7 +17,7 @@ The {{es}} Vector Database {{serverless-short}} project type is optimized for ve
 
 [Vector search](/solutions/search/vector.md) uses the same query APIs in both project types.
 
-Use it when embeddings and similarity search are central to your application, for example RAG, recommendations, [semantic search](/solutions/search/semantic-search.md), [hybrid search](/solutions/search/hybrid-search.md), or multimodal search.
+Use it when embeddings and similarity search are central to your application, for example RAG, recommendations, [semantic search](/solutions/search/semantic-search.md), [hybrid search](/solutions/search/hybrid-search.md), or [multimodal search](/solutions/search/multimodal-search.md).
 
 ## What you get
 
@@ -39,7 +39,7 @@ The Vector Database project type favors workloads where you ingest and embed dat
 
 ### Access to {{infer}}
 
-Vector Database projects are set up for embedding workflows: generate vectors in {{es}} with managed models (for example through `semantic_text`), or store vectors you create yourself and attach the same model at query time. In-product setup guides walk through both paths.
+Vector Database projects are set up for embedding workloads: use managed workflows with [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) or [`semantic`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md) fields to generate embeddings in {{es}}, or [bring your own vectors](/solutions/search/vector/bring-own-vectors.md) and search them with a [kNN query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md). In-product setup guides walk through both paths.
 
 ### Pricing designed for vector workloads
 
@@ -51,7 +51,7 @@ Billing uses storage, search, ingest, and infrastructure, rather than the comput
 
 Both the {{es}} Vector Database and the {{es}} project types support [vector search](/solutions/search/vector.md).
 
-Choose Vector Database when embeddings and similarity search are central to the workload. For those projects, generate embeddings with managed models through the [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) or a third-party inference endpoint; you can't deploy custom ML models for in-cluster inference. 
+Choose Vector Database when embeddings and similarity search are central to the workload. For those projects, generate embeddings with managed models through the [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) or a [third-party inference endpoint](/explore-analyze/elastic-inference/external.md); you can't deploy custom ML models for in-cluster inference. 
 
 Choose the [{{es}} project type](/solutions/elasticsearch-solution-project.md) when you need general-purpose data storage and search, including mixed lexical, time series, and analytics workloads, {{kib}} search tooling such as [Query Rules UI](/solutions/elasticsearch-solution-project/query-rules-ui.md) and [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md), or the ability to run custom models on ML nodes. You might also prefer the {{es}} project type if you are an existing {{es}} or OpenSearch user.
 
@@ -66,7 +66,7 @@ Choose the [{{es}} project type](/solutions/elasticsearch-solution-project.md) w
 | Log, event, or other time series search | Prefer the {{es}} project | General-purpose defaults suit write-heavy, frequently updated time series data |
 
 :::{note}
-Vector Database projects use vector index mode only. Time series (tsdb) and LogsDB index modes are not supported; use the {{es}} project type for those workloads. Data streams are supported when their backing indices use vector index mode.
+Vector Database projects use [vector index mode](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) only. [Time series index mode](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) and [LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md) are not supported. Use the Elasticsearch project type for those workloads. Data streams are supported when their backing indices use vector index mode.
 :::
 
 ## Get started
@@ -76,9 +76,7 @@ Ready to try the Vector Database project type? Follow [Get started](https://gith
 
 ## Related pages
 
-* [Vector search in {{es}}](/solutions/search/vector.md)
-* [Vector search use cases](/solutions/search/vector/vector-search-use-cases.md)
-* [Semantic search](/solutions/search/semantic-search.md)
-* [{{es}} solution overview](/solutions/elasticsearch-solution-project.md)
-* [Search use case documentation](/solutions/search.md)
-* [{{es-serverless}} API documentation]({{es-serverless-apis}})
+* [Search use case](/solutions/search.md): Explore {{es}} search capabilities available across all deployment types, including Vector Database projects.
+* [Vector search in {{es}}](/solutions/search/vector.md): Learn how vector search works, including vectors, embeddings, field types, and similarity search.
+* [Vector search use cases](/solutions/search/vector/vector-search-use-cases.md): Explore common vector search applications and implementation guidance.
+* [{{es-serverless}} API documentation]({{es-serverless-apis}}): Find API endpoints, request parameters, and response schemas supported by serverless projects.

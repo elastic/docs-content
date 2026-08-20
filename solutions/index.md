@@ -21,9 +21,11 @@ Elastic helps you build applications for three main use cases: search, observabi
 
 ## Choose your path
 
+[Search use case](/solutions/search.md) covers the core {{es}} search features available across all deployment types, solutions, and project types. Use the table below to choose a solution or project type when you need solution UIs or a dedicated {{serverless-full}} project type.
+
 | Your use case | What to use | Description |
 | --- | --- | --- |
-| Building search-powered applications | 1. [Core search capabilities](/solutions/search.md)<br><br> 2. [Elasticsearch solution](/solutions/elasticsearch-solution-project.md)<br><br> 3. [{{es}} Vector Database](/solutions/vector-database.md) {applies_to}`serverless: preview` | 1. Core {{es}} search features available across all deployment types, solutions, and project types<br><br>2. Additional UI tools that complement the core search features<br><br>3. Dedicated {{serverless-full}} project type for AI-powered retrieval (RAG, recommendations, semantic and hybrid search) with vector-tuned defaults |
+| Building search-powered applications | 1. [Elasticsearch solution](/solutions/elasticsearch-solution-project.md)<br><br> 2. [{{es}} Vector Database](/solutions/vector-database.md) {applies_to}`serverless: preview` | 1. Additional UI tools that complement the core search features<br><br>2. Dedicated {{serverless-full}} project type for AI-powered retrieval (RAG, recommendations, semantic and hybrid search) with vector-tuned defaults |
 | Monitoring applications or infrastructure | [Observability solution](/solutions/observability.md) | Monitor and troubleshoot with logs, metrics, and traces |
 | Protecting against threats | [Security solution](/solutions/security.md) | Detect and respond to security threats |
 
