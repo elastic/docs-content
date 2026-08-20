@@ -99,6 +99,8 @@ These cards include the following information:
 
 You can also view the resources associated with a specific policy by clicking on the links in the **Protected resources** column of the policy list.
 
+To review protected resources through the API, refer to [](network-security-api.md#find-associated-resources).
+
 
 ## View rejected requests
 
