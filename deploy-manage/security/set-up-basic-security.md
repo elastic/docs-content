@@ -124,6 +124,10 @@ Complete the following steps **for each node in your cluster**. To join the same
         ```
 
         1. If you want to use hostname verification, set the verification mode to `full`. You should generate a different certificate for each host that matches the DNS or IP address. See the `xpack.security.transport.ssl.verification_mode` parameter in [TLS settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings).
+        
+        ::::{note}
+        When the same file is configured as both the keystore and truststore, peer node certificates in the file are trusted directly. {{es}} does not reject connections from nodes presenting an expired certificate that is directly trusted, regardless of the `verification_mode` setting. Internode communication remains encrypted, and the cluster can continue to operate normally, including restarts and adding new nodes that use the same certificate material.
+        ::::
 
 3. If you entered a password when creating the node certificate, run the following commands to store the password in the {{es}} keystore:
 
