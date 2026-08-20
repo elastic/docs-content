@@ -30,6 +30,8 @@ The following table shows how each {{observability}} app behaves with {{cps-init
 
 ## {{cps-cap}} scope selector in {{observability}} apps [obs-cps-scope-selector]
 
+How you set project scope depends on the app.
+
 APM and Infrastructure use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header, as do platform apps like Discover, Dashboards, and Lens.
 
 When you [create an SLO](/solutions/observability/incident-management/create-an-slo.md#slo-cps-scope), specify an SLO-specific **Project scope** to choose which linked projects the SLO monitors.
