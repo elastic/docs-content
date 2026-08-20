@@ -43,7 +43,7 @@ Vector Database projects are set up for embedding workloads: use managed workflo
 
 ### Pricing designed for vector workloads
 
-Similar to other {{serverless-full}} projects, Elastic manages the infrastructure, scaling, and upgrades. You create a project, get an endpoint, and start indexing and querying without sizing nodes for vector RAM yourself.
+Similar to other {{serverless-full}} projects, Elastic manages the infrastructure, scaling, and upgrades. You create a project, get an endpoint, and start indexing and querying without sizing nodes for vector RAM yourself. Each project can store up to 1 TB of data.
 
 Billing uses storage, search, ingest, and infrastructure, rather than the compute-based VCU model used by {{es-serverless}} projects. Refer to [{{es}} Vector Database billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md) for details.
 

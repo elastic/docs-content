@@ -27,7 +27,7 @@ For current rates, refer to the [Cloud Pricing Table](https://cloud.elastic.co/c
 
 ## Storage [vector-database-billing-storage]
 
-You are charged per GB of data stored in the project. Storage charges apply for as long as the data remains in the project.
+You are charged per GB of data stored in the project. Storage charges apply for as long as the data remains in the project. Each Vector Database project can store up to 1 TB of data.
 
 ## Search [vector-database-billing-search]
 

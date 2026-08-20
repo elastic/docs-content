@@ -175,8 +175,9 @@ The following limits apply to {{serverless-full}} projects and organizations:
 | :--- | :--- | :--- |
 | Number of indices per project | 15,000 | Yes |
 | Number of projects per organization | 500 | Yes |
+| Data size per {{es}} Vector Database project | 1 TB | No |
 
-These limits are adjustable and can be increased by request. To request a limit increase, [open a support case](/troubleshoot/index.md#contact-us), and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
+Limits marked as adjustable can be increased by request. To request a limit increase, [open a support case](/troubleshoot/index.md#contact-us), and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
 
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 
