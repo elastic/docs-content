@@ -143,6 +143,8 @@ serverless: preview
 
 On {{serverless-full}} with [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md), {{anomaly-jobs}} can search data across linked projects. Each job's scope is controlled by the `project_routing` field on its {{dfeed}}.
 
+That scope applies when the job runs. It is not passed to **Discover** or any other links [opened from the results](ml-ad-view-results.md).
+
 ### Set project scope when creating a job [ml-ad-cps-create]
 
 When you create or clone a job in {{kib}}, use the **Project scope** control in the job creation wizard to choose which linked projects the job searches.
@@ -158,8 +160,6 @@ The following default scopes apply to jobs created after {{cps-init}} is availab
 * **UI:** Defaults to the space default routing expression, or all linked projects if no space default is configured.
 * **API:** Not space-aware. Defaults to all linked projects unless you specify a `project_routing` expression or a qualified index expression.
 * **Clone:** Initializes to the original job's `project_routing`. If the original has no stored routing, for example, in the case of a job created before {{cps-init}} was enabled on the project, the clone uses the space default.
-
-<!--TO BE CONFIRMED ^^^ -->
 
 Changes to the space default routing do not retroactively affect existing jobs. Each job retains the `project_routing` that was set at creation or last update. This keeps the model stable.
 
