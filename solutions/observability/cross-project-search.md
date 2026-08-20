@@ -40,7 +40,7 @@ For other {{observability}}-specific apps, the scope selector is not available. 
 * The scope you select in platform apps like Discover does not carry over to {{observability}} apps that don't support it.
 * Data volumes might change when switching between Discover (which shows cross-project data by default) and an {{observability}} app (which is scoped to the origin project) for the same index pattern.
 
-For to learn how to use the scope selector to include or exclude linked projects, refer to [Managing {{cps}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md).
+To learn how to use the scope selector to include or exclude linked projects, refer to [Managing {{cps}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md).
 
 ## Navigating between Discover and {{observability}} apps [obs-cps-discover-navigation]
 
@@ -67,10 +67,6 @@ SLO burn rate rules query only origin project data, even when the underlying dat
 ### SLO visibility [obs-cps-slo-remote]
 
 Only origin SLOs are visible, even when connected to a linked project. To monitor SLO breaches across {{es}} projects, create SLOs in this project and [scope them](/solutions/observability/incident-management/create-an-slo.md#slo-cps-scope) to linked projects.
-
-### No default data views in origin projects [obs-cps-no-data-views]
-
-In a {{cps-init}} origin project, Discover might show no data even when linked projects contain data due to missing data views in the origin project.
 
 ### Alerts are origin only [obs-cps-overview-alerts]
 
