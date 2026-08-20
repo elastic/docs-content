@@ -42,33 +42,11 @@ From here, complete the following steps:
 
 ::::
 
-## Cross-project search scope [slo-cps-scope]
-```{applies_to}
-stack: unavailable
-serverless: preview
-```
-
-On {{serverless-full}}, an SLO can read source data from projects that are [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) to yours through [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md).
-
-An SLO's scope is stored with the SLO and applies every time the SLO's transform runs. Changing the scope rebuilds the transform. For routing expression syntax, refer to [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md). For how this differs from the header scope selector, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md#obs-cps-slos).
-
-### Set an SLO's scope [slo-cps-set]
-
-When you create or edit an SLO in {{kib}}, use the **Project scope** control to select which linked projects the SLO searches. This control opens the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana).
-
-The control appears when {{cps}} is enabled, the project is on the Complete feature tier, and at least one project is linked.
-
-New SLOs default to **This project**. Editing an SLO restores the stored scope.
-
-To set scope through the API, include a `projectRoutings` value in `settings` on the [create SLO]({{kib-apis}}operation/operation-createsloop) or [update SLO]({{kib-apis}}operation/operation-updatesloop) API. If you omit `projectRoutings`, the SLO searches only the origin project.
-
-### Check an SLO's scope [slo-cps-check]
-
-The SLO details page shows the saved project scope in **Settings**.
-
-The SLO overview lists only SLOs defined in this project. You cannot browse SLOs that were created on linked projects.
-
 ## Define your SLI [define-sli]
+
+From the **Choose the SLI type** dropdown, select the type of SLI to use.
+
+{applies_to}`serverless: preview` To monitor linked projects as part of this SLO, you can also set the [**Project scope**](#slo-cps-scope).
 
 The type of SLI to use depends on the location of your data:
 
@@ -77,7 +55,6 @@ The type of SLI to use depends on the location of your data:
 * [Custom metric](/solutions/observability/incident-management/create-an-slo.md#custom-metric): Create an SLI to define custom equations from metric fields in your indices.
 * [Histogram metric](/solutions/observability/incident-management/create-an-slo.md#histogram-metric): Create an SLI based on histogram metrics.
 * [APM latency and APM availability](/solutions/observability/incident-management/create-an-slo.md#apm-latency-and-availability): Create an SLI based on services using application performance monitoring (APM).
-
 
 ### Custom KQL [custom-kql]
 
@@ -245,7 +222,20 @@ Synthetics availability SLIs are automatically grouped by monitor and location.
 
 ::::
 
+### Project scope [slo-cps-scope]
+```{applies_to}
+stack: unavailable
+serverless: preview
+```
 
+Use **Project scope** to select which linked projects the SLO monitors. This control opens the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana).
+
+The control appears when at least one project is linked. New SLOs default to **This project**. Editing an SLO restores the stored scope.
+
+:::{note}
+:applies_to: stack: ga 9.4
+On {{stack}}, an SLO can monitor only a single cluster. To monitor SLO breaches across {{es}} clusters, [view SLOs defined on remote clusters](/solutions/observability/incident-management/configure-slo-settings.md#observability-configure-slo-settings-federated-view).
+:::
 
 ## Set your objectives [set-slo]
 
