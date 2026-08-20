@@ -22,5 +22,3 @@ Use the following command to retrieve the password for `transport.p12`:
 ```sh
 bin/elasticsearch-keystore show xpack.security.transport.ssl.keystore.secure_password
 ```
-
-Security auto-configuration sets `certs/transport.p12` as both the transport keystore and truststore on each node. Auto-generated transport certificates have a long validity period and are unlikely to expire under normal operation. To add nodes, use an [enrollment token](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md#_enroll_nodes_in_an_existing_cluster_5) rather than copying `transport.p12` between nodes. For manual transport TLS setup and certificate expiry behavior when the same PKCS#12 file is shared across all nodes, refer to [Set up transport TLS](/deploy-manage/security/set-up-basic-security.md).
