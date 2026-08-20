@@ -247,6 +247,12 @@ After you create your VPC endpoint and DNS entries, check that you are able to r
 ::::{applies-item} ess: ga
 :::{include} _snippets/private-url-struct.md
 :::
+
+:::{note}
+The Cloud ID for your deployment encodes the public (non-PrivateLink) endpoint domain. Do not use URLs derived from the Cloud ID for PrivateLink connections — they will not match the TLS certificate served at the PrivateLink endpoint and the connection will fail with a certificate hostname mismatch. Always construct your private URL manually as shown above.
+
+<!-- TODO: Add KB link once published: For more details, refer to [KB_TITLE](KB_URL). -->
+:::
 ::::
 ::::{applies-item} serverless: ga
 :::{include} _snippets/private-url-struct-serverless.md
