@@ -60,7 +60,10 @@ To learn more, refer to [General purpose and vector optimized projects](dense-ve
 
 - **Exact, brute-force kNN**
   - Best for small datasets, pre-filtered subsets, or when you need precise scoring without approximate indexing.
-  - Uses a [`script_score` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) with a vector function to compute similarity against each matching document.
+  - Scores every matching document to find the nearest neighbors across the complete set of matches, rather than selecting from an approximate candidate set.
+  - Supports two query methods:
+    - The [`dense_vector` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-dense-vector-query.md) for standard exact vector scoring.
+    - The [`script_score` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) when you need a custom scoring calculation.
   - Refer to [Exact kNN search](knn/exact-knn.md) for search examples.
 
 Approximate kNN offers low latency and good accuracy, while exact kNN guarantees accurate results but does not scale well for large datasets. With exact kNN, every matching document must be scanned to compute the vector function, which can result in slow search speeds. However, you can improve latency by filtering your data to a small subset of documents.
@@ -74,4 +77,3 @@ Approximate kNN offers low latency and good accuracy, while exact kNN guarantees
 - [Exact kNN search](knn/exact-knn.md): Learn how to run exact brute-force kNN search for small datasets or precise scoring.
 - [Vector search in {{es}}](../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
 - [Knn query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.
-
