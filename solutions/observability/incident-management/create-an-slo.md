@@ -228,9 +228,11 @@ stack: unavailable
 serverless: preview
 ```
 
+On {{serverless-full}}, an SLO can monitor source data from projects that are [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md). The SLO does not use the header {{cps-init}} scope selector.
+
 Use the **Project scope** control to choose which linked projects the SLO monitors. This control opens the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) for the SLO.
 
-The control appears when at least one project is linked. New SLOs default to **This project**.
+The control appears when at least one project is linked. You can select **This project**, **All projects**, or a subset. New SLOs default to **This project**. That scope is stored on the SLO and applies every time the SLO's transform runs.
 
 :::{note}
 :applies_to: stack: ga 9.4
