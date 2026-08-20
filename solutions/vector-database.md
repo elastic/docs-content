@@ -71,7 +71,8 @@ Vector Database projects use vector index mode only. Time series (tsdb) and Logs
 
 ## Get started
 
-Ready to try the Vector Database project type? Follow [Get started](/solutions/vector-database/get-started.md) to create a project, ingest embeddings, and run your first searches.
+<!-- TODO: After https://github.com/elastic/docs-content/pull/7923 merges, replace the dummy link below with /solutions/vector-database/vector-full-text-search.md -->
+Ready to try the Vector Database project type? Follow [Get started](https://github.com/solutions/vector-database/get-started.md) to create a project and learn about the different methods you can ingest embeddings and run search queries.
 
 ## Related pages
 

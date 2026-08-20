@@ -12,12 +12,15 @@ products:
 
 # Get started with the {{es}} Vector Database project type
 
-The {{es}} Vector Database project type on {{serverless-full}} is built for AI-powered vector retrieval. Use this guide to create a project, add embeddings, and run similarity or semantic searches from your application.
+The {{es}} Vector Database project type on {{serverless-full}} is built for AI-powered vector retrieval. Use this guide to create a project and learn about the different methods you can ingest embeddings and run search queries.
+
+<!-- TODO: After https://github.com/elastic/docs-content/pull/7923 merges, replace the dummy link below with /solutions/vector-database/vector-full-text-search.md -->
+To try a hands-on tutorial where you connect a client, index sample data, and run semantic, hybrid, and ES|QL searches, refer to [Elasticsearch vector and full-text search in 10 minutes](https://github.com/solutions/vector-database/get-started.md).
 
 :::{note}
 Not sure whether this project type is right for you? Refer to [When to use this project type](/solutions/vector-database.md#when-to-use-this-project-type).
 
-If you're looking for an introduction to the {{stack}} or the {{es}} product, go to [](/get-started/index.md) or [](/manage-data/data-store.md).
+If you're looking for an introduction to the {{stack}} or the {{es}} product, refer to [](/get-started/index.md) or [](/manage-data/data-store.md).
 :::
 
 ::::::{stepper}
@@ -52,6 +55,9 @@ The following setup guides are available in {{kib}}:
 | Generate embeddings from your content | You want {{es}} to create embeddings for you | Ingest content into a `semantic_text` field, then run a semantic or hybrid query |
 | Store your existing embeddings | You already have vectors from your own model | Index pre-generated embeddings into a `dense_vector` field, then run a semantic or hybrid query |
 
+<!-- TODO: After https://github.com/elastic/docs-content/pull/7923 merges, replace the dummy link below with /solutions/vector-database/vector-full-text-search.md -->
+Alternatively, you can also use the [Elasticsearch vector and full-text search in 10 minutes](https://github.com/solutions/vector-database/get-started.md) quickstart to connect a client, index sample data, and run semantic, hybrid, and ES|QL searches.
+
 You can also skip the setup guide and continue with the steps below.
 :::::
 
@@ -59,13 +65,13 @@ You can also skip the setup guide and continue with the steps below.
 Use the approach that matches how you create embeddings.
 
 ::::{dropdown} Generate embeddings from your content
-You can generate embeddings as part of the ingestion workflow instead of creating them in advance.
+You can generate embeddings as part of the ingestion workflow instead of creating them in advance. Choose the field type that matches your content:
 
-For text content, the recommended approach is to map the target field as [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). When you ingest documents, {{es}} uses the configured {{infer}} endpoint to generate and store embeddings automatically. You can check which models are used by default and learn how to change them in [Configure {{infer}} endpoints documentation](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
-
-For more control over the {{infer}} and ingestion workflow, you can also generate embeddings with an {{infer}} processor in an ingest pipeline and store them in a vector field. For more information, see [](/solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md).
-
-To walk through mapping a `semantic_text` field, ingesting sample content, and running a hybrid query, follow the [semantic search quickstart](/solutions/search/get-started/semantic-search.md).
+* **Text-only content:** Map the target field as [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). When you ingest documents, {{es}} uses the configured {{infer}} endpoint to generate and store embeddings automatically.
+  <!-- TODO: After https://github.com/elastic/docs-content/pull/7923 merges, replace the dummy link below with /solutions/vector-database/vector-full-text-search.md -->
+  To walk through this workflow, follow [Elasticsearch vector and full-text search in 10 minutes](https://github.com/solutions/vector-database/vector-full-text-search.md).
+* **Multimodal content:** Map the target field as [`semantic`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md). Use this field type when you need to search across text, images, or other media with a multimodal model.
+  To walk through this workflow, follow [Tutorial: Build multimodal search with a `semantic` field](/solutions/search/multimodal-search/multimodal-search-tutorial.md).
 ::::
 
 ::::{dropdown} Store your existing embeddings
@@ -74,18 +80,11 @@ Create an index with a [`dense_vector`](elasticsearch://reference/elasticsearch/
 To walk through indexing sample embeddings and running a kNN search, follow [Bring your own dense vectors to {{es}}](/solutions/search/vector/bring-own-vectors.md).
 ::::
 
-Use a language [client](/reference/elasticsearch-clients/index.md) or the [Bulk]({{es-serverless-apis}}operation/operation-bulk) API to load data. If you're not ready to use your own content, follow the [semantic search quickstart](/solutions/search/get-started/semantic-search.md).
 :::::
 
 :::::{step} Search your data
-Match your query to the vector field type in your mapping. For details on which queries each field type supports, see [Field types and queries](/solutions/search/vector.md#vector-queries-and-field-types).
+The search query type you can use depends on the vector field type you want to search. For an overview of field types and the queries you can use with each, refer to [Field types and queries](/solutions/search/vector.md#vector-queries-and-field-types).
 
-To walk through common patterns, refer to the following pages:
-
-* [kNN search in {{es}}](/solutions/search/vector/knn.md)
-* [Hybrid search](/solutions/search/hybrid-search.md)
-
-For more query options, see [Querying for search](/solutions/search/querying-for-search.md) and the [{{es-serverless}} API documentation]({{es-serverless-apis}}).
 :::::
 ::::::
 
