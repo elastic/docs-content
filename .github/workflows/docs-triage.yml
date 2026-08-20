@@ -38,7 +38,7 @@ jobs:
     if: >-
       github.event_name == 'workflow_dispatch' ||
       startsWith(github.event.comment.body, '/triage')
-    uses: elastic/docs-actions/.github/workflows/gh-aw-issue-triage.lock.yml@main
+    uses: elastic/docs-actions/.github/workflows/gh-aw-issue-triage.lock.yml@v1
     with:
       additional-instructions: |
         ## Team Ownership Mapping
