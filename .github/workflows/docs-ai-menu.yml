@@ -145,9 +145,29 @@ jobs:
               statusOverrides,
             });
 
+  exchange:
+    name: Exchange OIDC token for proxy token
+    needs: [evaluate-trigger]
+    if: needs.evaluate-trigger.outputs.triage_triggered == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    outputs:
+      token: ${{ steps.get.outputs.token }}
+    steps:
+      - id: get
+        env:
+          PROXY_URL: https://ke4jawr4344mwdive254dtcp6a0woaza.lambda-url.eu-west-1.on.aws
+        run: |
+          set -euo pipefail
+          oidc=$(curl -sSf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=openrouter-proxy" | jq -r .value)
+          token=$(curl -sSf -X POST -H "Authorization: Bearer $oidc" "$PROXY_URL/token" | jq -r .token)
+          echo "token=$token" >> "$GITHUB_OUTPUT"
+
   run-docs-triage:
     name: Docs AI / triage
-    needs: [evaluate-trigger]
+    needs: [evaluate-trigger, exchange]
     if: needs.evaluate-trigger.outputs.triage_triggered == 'true'
     permissions:
       actions: read
@@ -175,7 +195,10 @@ jobs:
         **Shared ownership**: Some paths have shared ownership (e.g., `/explore-analyze/machine-learning/` is shared by Developer and Experience). Pick the team whose keywords best match the issue content.
         **Internal projects**: If the issue seems related to an internal documentation project, initiative, or content strategy effort, apply `Team:Projects`.
         **Fallback**: If you genuinely cannot determine the owning team, apply `cross-team` so the issue stays visible to all teams.
-    secrets: inherit
+    secrets:
+      CODEX_API_KEY: ${{ needs.exchange.outputs.token }}
+      GH_AW_GITHUB_TOKEN: ${{ secrets.GH_AW_GITHUB_TOKEN }}
+      GH_AW_GITHUB_MCP_SERVER_TOKEN: ${{ secrets.GH_AW_GITHUB_MCP_SERVER_TOKEN }}
 
   run-docs-issue-scope:
     name: Docs AI / issue scope
