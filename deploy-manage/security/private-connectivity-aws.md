@@ -249,9 +249,7 @@ After you create your VPC endpoint and DNS entries, check that you are able to r
 :::
 
 :::{note}
-The Cloud ID for your deployment encodes the public (non-PrivateLink) endpoint domain. Do not use URLs derived from the Cloud ID for PrivateLink connections — they will not match the TLS certificate served at the PrivateLink endpoint and the connection will fail with a certificate hostname mismatch. Always construct your private URL manually as shown above.
-
-<!-- TODO: Add KB link once published: For more details, refer to [KB_TITLE](KB_URL). -->
+The Cloud ID for your deployment encodes the public (non-PrivateLink) endpoint domain. Do not use URLs derived from the Cloud ID for PrivateLink connections — they will not match the TLS certificate served at the PrivateLink endpoint and the connection will fail with a certificate hostname mismatch. Always construct your private URL manually as shown above. Review [our KB article](https://ela.st/avoid-using-cloudid-for-privatelink-deployment) for more guidance.
 :::
 ::::
 ::::{applies-item} serverless: ga
