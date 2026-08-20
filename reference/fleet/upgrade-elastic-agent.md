@@ -63,6 +63,7 @@ To upgrade your {{agents}}, go to **Management** → **{{fleet}}** → **Agents*
 | [View upgrade status](#view-upgrade-status) | View the detailed status of an agent upgrade, including upgrade metrics and agent logs. |
 | [Restart an upgrade for a single agent](#restart-upgrade-single) | Restart an upgrade process that has stalled for a single agent. |
 | [Restart an upgrade for multiple agents](#restart-upgrade-multiple) | Do a bulk restart of the upgrade process for a set of agents. |
+| [Roll back an {{agent}} upgrade](#rollback-upgrade-fleet-managed) {applies_to}`stack: ga 9.3+` | Roll back one or more {{agent}}s to the previously installed version. |
 
 With an [Elastic subscription level](https://www.elastic.co/subscriptions) that supports **automatic agent binary upgrades**, you can also configure an automatic upgrade of a percentage of the {{agents}} enrolled in an {{agent}} policy. For more information, refer to [Auto-upgrade agents enrolled in a policy](#auto-upgrade-agents). {applies_to}`stack: ga 9.1.0`
 
@@ -235,6 +236,7 @@ When the upgrade process for multiple agents has been detected to have stalled, 
 
 ```{applies_to}
 stack: ga 9.1.0
+serverless: ga
 ```
 
 ::::{note}
@@ -277,6 +279,7 @@ On self-managed and cloud deployments of {{stack}}, you can configure the defaul
 xpack.fleet.autoUpgrades.taskInterval: 15m <1>
 xpack.fleet.autoUpgrades.retryDelays: ['5m', '10m', '20m'] <2>
 ```
+
 1. The time interval at which the auto-upgrade task should run. Defaults to `30m`.
 2. Array indicating how much time should pass before a failed auto-upgrade is retried. The array's length indicates the maximum number of retries. Defaults to `['30m', '1h', '2h', '4h', '8h', '16h', '24h']`.
 
@@ -310,7 +313,7 @@ If you have installed and enrolled {{agent}} using either a DEB (for a Debian-ba
 For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md).
 
 
-### Upgrade a DEB {{agent}} installation: [_upgrade_a_deb_agent_installation]
+### Upgrade a DEB {{agent}} installation [_upgrade_a_deb_agent_installation]
 
 1. Download the {{agent}} Debian install package for the release that you want to upgrade to:
 
@@ -327,7 +330,7 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
 3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent is unavailable because {{fleet}}-managed upgrades are not supported for this package type.
 
 
-### Upgrade an RPM {{agent}} installation: [_upgrade_an_rpm_agent_installation]
+### Upgrade an RPM {{agent}} installation [_upgrade_an_rpm_agent_installation]
 
 1. Download the {{agent}} RPM install package for the release that you want to upgrade to:
 
@@ -343,7 +346,7 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
 
 3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent is unavailable because {{fleet}}-managed upgrades are not supported for this package type.
 
-## Roll back an Elastic Agent upgrade for Fleet-managed agents [rollback-upgrade-fleet-managed]
+## Roll back an {{agent}} upgrade for {{fleet}}-managed agents [rollback-upgrade-fleet-managed]
 
 ```{applies_to}
 stack: ga 9.3.0+
@@ -354,19 +357,20 @@ serverless: ga
 The manual rollback feature for {{agent}} is available only for some [Elastic subscription levels]({{subscriptions}}).
 :::
 
-The manual rollback feature for {{agent}} gives you the ability to roll back to the previously installed version if the install artifacts are still available on disk, typically seven days after the upgrade. 
+The manual rollback feature for {{agent}} gives you the ability to roll back to the previously installed version if the install artifacts are still available on disk, typically seven days after the upgrade.
 
 To roll back one or more {{agent}} upgrades:
+
 1. Go to the **Actions** menu.
 2. Select **Upgrade management**, and then select **Roll back** for a single agent, or **Roll back upgrade for N agents** for multiple agents.
 
 For a single agent, the roll back menu item appears only if a valid, non-expired rollback is available.
-For multiple agents, the roll back menu item is always enabled, and reports errors for agents that did not have a valid rollback available. 
 
+For multiple agents, the roll back menu item is always enabled, and reports errors for agents that did not have a valid rollback available.
 
-### Limitations for manual rollback [rollback-upgrade-fleet-managed]
+### Limitations for manual rollback [rollback-upgrade-fleet-managed-limitations]
 
-These limitations apply for the manual rollback feature: 
+These limitations apply for the manual rollback feature:
 
 * Rollback is limited to the version running _before_ the upgrade. Both the previously and currently running versions must be 9.3.0 or later for this functionality to be available.
 * Data required for the rollback is stored on disk for seven days, which can impact available disk space.
@@ -374,11 +378,9 @@ These limitations apply for the manual rollback feature:
 * Manual rollback is not available for system-managed packages such as DEB and RPM.
 * Some data might be re-ingested after rollback.
 
-#### Possible errors [rollback-upgrade-fleet-managed]
+### Possible errors [rollback-upgrade-fleet-managed-errors]
 
-If no version is available on disk to rollback to, you get an error.
-This situation can happen if:
+If no version is available on disk to rollback to, you get an error. This can happen if:
 
-- the version you upgraded from is earlier than 9.3.0, as the feature is not supported for earlier versions. 
-
-- the rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space. 
+* The version you upgraded from is earlier than 9.3.0, as the feature is not supported for earlier versions.
+* The rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space.
