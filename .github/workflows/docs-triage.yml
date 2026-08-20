@@ -59,6 +59,5 @@ jobs:
         **Fallback**: If you genuinely cannot determine the owning team, apply `cross-team` so the issue stays visible to all teams.
     secrets:
       CODEX_API_KEY: ${{ needs.exchange.outputs.token }}
-      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
       GH_AW_GITHUB_TOKEN: ${{ secrets.GH_AW_GITHUB_TOKEN }}
       GH_AW_GITHUB_MCP_SERVER_TOKEN: ${{ secrets.GH_AW_GITHUB_MCP_SERVER_TOKEN }}
