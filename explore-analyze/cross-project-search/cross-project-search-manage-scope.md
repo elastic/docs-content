@@ -21,7 +21,7 @@ When [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md) is enabl
 
 ## {{cps-cap}} scope selector [cps-in-kibana]
 
-The **{{cps-cap}} ({{cps-init}}) scope** selector ({icon}`cross_project_search`) in your project's header lets you control which linked projects your searches include.
+The **{{cps-cap}} ({{cps-init}}) scope** selector ({icon}`cross_project_search`) lets you choose which linked projects to include. It appears in the project header, or on the resource you are creating or editing.
 
 The scope selector lists all linked projects, narrowed by any active [tag filters](#cps-picker-tag-filters). The origin project always appears first, labeled **This project**. Each project row shows the project name, project type icon, and any assigned [tags](/explore-analyze/cross-project-search/cross-project-search-tags.md).
 
