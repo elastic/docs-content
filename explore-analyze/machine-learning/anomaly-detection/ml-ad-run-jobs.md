@@ -175,7 +175,7 @@ You can change a job's project scope in {{kib}} or through the API.
 :::{warning}
 Changing project scope affects model accuracy. Expect a significant increase in false positives as the detector encounters unfamiliar data characteristics. During the adaptation period, which can last days or weeks, the model might also miss real anomalies as it learns to model the new data distribution.
 
-If you need a fundamentally different scope, such as moving from origin-only to search across all linked projects, creating a copy of the job with the new routing and retraining from scratch can be faster than waiting for an existing model to adapt.
+If you need a fundamentally different scope, such as moving from origin-only to search across all linked projects, creating a copy of the job with the new routing and retraining it from scratch can be faster than waiting for an existing model to adapt.
 
 % TODO: add xref to troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md when PR #7403 merges
 :::
