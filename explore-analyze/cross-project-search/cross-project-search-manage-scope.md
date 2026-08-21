@@ -102,7 +102,7 @@ Your scope is saved as a [project routing expression](/explore-analyze/cross-pro
 To keep future projects out of your scope, use a tag filter rather than excluding projects one by one.
 
 :::{note}
-When you use a tag filter, , changing a project's [custom tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) can include or exclude that project from your selected scope without the scope being edited.
+When you use a tag filter, changing a project's [custom tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) can include or exclude that project from your selected scope without the scope being edited.
 :::
 
 ## Override {{cps}} scope at the query level [cps-query-overrides]
