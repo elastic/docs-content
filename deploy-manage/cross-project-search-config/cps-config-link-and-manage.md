@@ -56,6 +56,10 @@ On the origin project's **{{cps-cap}}** page, you can reconfigure {{cps}} as nee
 - **Unlink projects:** Remove connections by [unlinking projects](#cps-unlink-projects).
 - **Open space settings in {{kib}}:**  Click **Manage spaces** to set or adjust the default [{{cps-init}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space.
 
+::::{warning}
+{{anomaly-jobs-cap}} store the projects selected at save time. Linking or unlinking a project does not change that stored scope. If the job still includes an unlinked project, it can fail. Refer to [{{cps-cap}} scope](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope).
+::::
+
 ## Unlink projects [cps-unlink-projects]
 
 To remove a linked project from the current {{cps-init}} configuration, navigate to the **{{cps-cap}}** page. Select the checkbox next to the projects you want to disconnect, then click **Unlink**.

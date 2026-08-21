@@ -161,7 +161,13 @@ The following default scopes apply to jobs created after {{cps-init}} is availab
 * **API:** Not space-aware. Defaults to all linked projects unless you specify a `project_routing` expression or a qualified index expression.
 * **Clone:** Initializes to the original job's `project_routing`. If the original has no stored routing, for example, in the case of a job created before {{cps-init}} was enabled on the project, the clone uses the space default.
 
-Changes to the space default routing do not retroactively affect existing jobs. Each job retains the `project_routing` that was set at creation or last update. This keeps the model stable.
+Changes to the space default routing do not retroactively affect existing jobs. Each job retains the `project_routing` that was set at creation or last update. This keeps the model stable. 
+
+[Linking or unlinking projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) in {{ecloud}} also does not change a job's stored scope. If the job still includes an unlinked project, the {{dfeed}} can fail.
+<!--
+PENDING https://github.com/elastic/docs-content/pull/7403
+Refer to [Troubleshoot {{cps}} {{dfeeds}}](/troubleshoot/elasticsearch/machine-learning-cps.md) for more information.
+-->
 
 :::{note}
 When setting `project_routing` through the API or JSON editor, {{es}} does not validate the expression at creation time. If the expression matches no linked projects, the job is created successfully but the datafeed fails when it starts. If fields with the same name have different types across linked projects, values that cannot be converted are treated as empty data.
@@ -229,6 +235,12 @@ The job must have produced at least one model snapshot so {{es}} can retain it a
 ### Check project scope [ml-ad-cps-monitor]
 
 The **Project scope** column on the **Anomaly Detection** page shows the number of included projects out of the total available (for example, `8/92`). **All** means the job searches all linked projects with no routing restriction. Select the value to see the list of included projects.
+
+The parsed count comes from the routing expression text, not from resolving which aliases actually match at runtime. 
+
+:::{note}
+A single wildcard expression like `_alias:production-*` shows `1`, even if it matches several linked projects at runtime.
+:::
 
 To inspect the stored routing expression programmatically:
 
