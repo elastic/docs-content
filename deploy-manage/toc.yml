@@ -364,6 +364,7 @@ toc:
               - file: production-guidance/availability-and-resilience/resilience-in-small-clusters.md
               - file: production-guidance/availability-and-resilience/resilience-in-larger-clusters.md
               - file: production-guidance/availability-and-resilience/resilience-in-ech.md
+              - file: production-guidance/availability-and-resilience/resilience-in-serverless.md
           - file: production-guidance/scaling-considerations.md
           - file: production-guidance/optimize-performance.md
             children:
