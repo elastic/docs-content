@@ -164,7 +164,7 @@ For indices and data streams you own and control, a compatible restore usually m
 
 Use snapshot restore to recover or move data you own. Do not use it as a substitute for upgrading {{stack}} features. Follow the normal upgrade path for {{kib}} and other feature states.
 
-The following table shows whether an index can be restored to a given cluster version. Find your index’s creation version in the left column and your cluster version (which is the restore target version) across the top. For example, an index created in 6.8 can be restored to a {{version.stack.base}}–{{version.stack}} cluster (✅) but not to a 7.0–7.1 cluster (❌).
+The following table shows whether an index can be restored to a given cluster version. Note that within a supported version range, you still cannot restore an index to an earlier minor version. Find your index’s creation version in the left column and your cluster version (which is the restore target version) across the top. For example, an index created in 6.8 can be restored to a {{version.stack.base}}–{{version.stack}} cluster (✅) but not to a 7.0–7.1 cluster (❌).
 
 :::{table}
 :widths: 3-2-1-2-2-1-1
@@ -187,7 +187,7 @@ The following table shows whether an index can be restored to a given cluster ve
 
 ^2^ $$$footnote-2$$$ Supported with [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md).
 
-You can’t restore an index to an earlier version of {{es}}. For example, you can’t restore an index created in 8.18.0 to a cluster running 8.15.0.
+In the table above, a ✅ within a version range does not mean you can restore an index to any cluster version in that range, because a snapshot can be restored only to the same or a newer {{es}} version. For example, you can’t restore an index created in 8.18.0 to a cluster running 8.15.0.
 
 
 #### Restoring incompatible indices
