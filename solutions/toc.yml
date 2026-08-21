@@ -106,6 +106,7 @@ toc:
               - file: observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md
               - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
               - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
+          - file: observability/get-started/opentelemetry/start-with-otel.md
           - file: observability/get-started/opentelemetry/quickstart/index.md
             children:
               - file: observability/get-started/opentelemetry/custom-metrics-quickstart.md
