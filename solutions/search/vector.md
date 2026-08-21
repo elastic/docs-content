@@ -150,7 +150,7 @@ PUT my-vector-index
 
 Refer to [General index settings](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting) to learn what index mode does and which options are available. For the default values used by vector index mode, refer to [Index modes for vector search](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-modes).
 
-With `vectordb_document` mode, approximate kNN search defaults to `near_real_time: false`. Refer to [Near-real-time kNN](vector/knn.md#near-real-time-knn) for details and how to override that default.
+With `vectordb_document` mode, approximate kNN search defaults to `near_real_time: false`. Refer to [Near-real-time kNN](vector/knn/optimize-performance-accuracy.md#near-real-time-knn) for details and how to override that default.
 
 ## Vector embedding models
 
@@ -195,7 +195,7 @@ The [Multimodal search](multimodal-search.md) section covers meaning-based retri
 
 These guides provide more direct or customizable approaches to working with vector search:
 
-- [kNN search in Elasticsearch](vector/knn.md): Perform vector similarity search using the `dense_vector` field type and k-nearest neighbor queries.
+- [kNN search on Elasticsearch](vector/knn.md): Perform vector similarity search using the `dense_vector` field type and k-nearest neighbor queries.
 - [Bring your own dense vectors](vector/bring-own-vectors.md): Use this if you already have embeddings and want to index and search them in Elasticsearch.
 - [Sparse vector search in Elasticsearch](vector/sparse-vector.md): Perform semantic search using sparse vectors with the ELSER model and the `sparse_vector` field type.
 
