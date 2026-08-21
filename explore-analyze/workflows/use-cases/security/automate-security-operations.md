@@ -29,6 +29,7 @@ The following patterns map directly to workflow building blocks:
 - **Enrich alerts with external context.** Use [HTTP actions](/explore-analyze/workflows/steps/external-systems-apps.md) to pull data from threat intelligence APIs, CMDBs, or identity providers, then write the enriched record back to {{es}} or into the case body.
 - **Investigate with AI assistance.** [AI steps](/explore-analyze/workflows/steps/ai-steps.md) let a workflow classify alerts with `ai.classify`, summarize evidence with `ai.summarize`, or invoke an {{agent-builder}} agent with `ai.agent`.
 - **Gate destructive actions on human approval.** Use [human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) with the `waitForInput` step to pause for analyst confirmation before the workflow isolates a host or blocks a user.
+- {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental` **Auto-triage alerts as true or false positives.** Configure the managed [Alert analysis workflow](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md) to analyze alert context with AI, write verdicts to notes and tags, and optionally auto-close high-confidence false positives.
 
 ## How-to guides [workflows-security-how-tos]
 
@@ -40,6 +41,8 @@ Step-by-step guides for building the most common security automation workflows:
 
 ## Learn more
 
+- [Managed workflows](/explore-analyze/workflows/managed-workflows.md): Elastic-shipped workflows that power product features.
+- [Alert analysis workflow](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md): Configure the managed workflow for AI alert classification.
 - [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md): Configure a detection or alerting rule to invoke a workflow.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): 27 step types for working with {{elastic-sec}} cases.
 - [{{kib}} action steps](/explore-analyze/workflows/steps/kibana.md): Reference for alert-management and other {{kib}} API actions.

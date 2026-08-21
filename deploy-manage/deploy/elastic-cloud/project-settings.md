@@ -65,7 +65,7 @@ Project features and add-ons control which capabilities are available in your se
 * [{{sec-serverless}} project features](#elastic-sec-project-features)
 * [{{obs-serverless}} project features](#obs-serverless-project-features) 
 
-There are no additional project features or add-ons for {{es-serverless}} projects.
+There are no additional project features and on-demand add-ons for {{es-serverless}} projects.
 
 :::{note}
 In {{serverless-full}}, your organization's {{ecloud}} subscription level controls only the support level you receive, and is not related to the features that you use or have access to. [Learn more about subscriptions](/deploy-manage/license.md).

@@ -67,7 +67,7 @@ A simple {{es}} document might look like this:
 }
 ```
 1. [Metadata fields](elasticsearch://reference/elasticsearch/mapping-reference/document-metadata-fields.md) are system-managed fields prefixed with an underscore. `_index` identifies which index stores the document and `_id` is the document's unique identifier within that index.
-2. The `_source` field contains the original document body as submitted. The fields inside `_source` are the ones you control through [mappings](#elasticsearch-intro-documents-fields-mappings). You can define these mappings explicitly or have {{es}} create them for you dynamically when your data is ingested.
+2. The `_source` field contains the original document body as submitted. The fields inside `_source` are the ones you control through [mappings](#elasticsearch-intro-documents-fields-mappings). You can define these mappings explicitly or have {{es}} create them for you dynamically when your data is ingested. Some [index modes](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting), such as [columnar](/manage-data/data-store/columnar.md), change how `_source` and field indexes are stored while keeping the same document and query APIs.
 
 ### Mappings and data types [elasticsearch-intro-documents-fields-mappings]
 
