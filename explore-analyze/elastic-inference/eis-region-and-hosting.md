@@ -14,9 +14,11 @@ This page lists the {{aws}}, Azure, and {{gcp}} regions where Elastic {{infer-ca
 
 **{{aws}}:**
 
-* `us-east-1` (N. Virginia, US)
+* `ap-northeast-1` (Tokyo)
 * `eu-central-1` (Frankfurt, Germany)
-* `eu-west-1` (Ireland)
+* `eu-west-2` (London)
+* `us-east-1` (N. Virginia, US)
+* `us-west-2` (Oregon, US)
 
 **Azure:**
 
@@ -27,7 +29,6 @@ This page lists the {{aws}}, Azure, and {{gcp}} regions where Elastic {{infer-ca
 * `asia-southeast1` (Singapore)
 * `europe-west1` (Belgium)
 * `us-east4` (N. Virginia, US)
-* `us-east5` (Columbus, US)
 
 All {{infer}} requests sent through EIS are routed to the nearest region, regardless of where your {{es}} deployment or {{serverless-short}} project is hosted.
 
