@@ -40,7 +40,7 @@ For other {{observability}}-specific apps, the scope selector is not available. 
 
 * Those apps operate in their default scope, which varies by app (refer to [{{observability}} app compatibility](#obs-cps-compatibility)).
 * The scope you select in platform apps like Discover does not carry over to {{observability}} apps that don't support it.
-* Data volumes might change when switching between Discover (which shows cross-project data by default) and those {{observability}} app (which is scoped to the origin project) for the same index pattern.
+* Data volumes might change when switching between Discover (which shows cross-project data by default) and features in the {{observability}} app (which is scoped to the origin project) for the same index pattern.
 
 To learn how to use the scope selector to include or exclude linked projects, refer to [Managing {{cps}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md).
 
