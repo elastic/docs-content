@@ -64,7 +64,9 @@ The following known issues and limitations apply to {{cps-init}} in {{observabil
 
 SLO burn rate rules query the SLO's [SLI and summary indices](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md#indices-used-by-this-rule), not the SLO's source data view. Those indices reflect the **Project scope** stored on the SLO. Discover uses the session scope on that source data view. If those scopes differ, Discover can show more or fewer documents than the rule evaluates.
 
-{{ml-cap}} rules query the {{anomaly-job}}'s results, not the job's source data. Those results reflect the **Project scope** stored on the [job](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-create).
+{{ml-cap}} rules query the {{anomaly-job}}'s results, not the job's source data. Those results reflect the **Project scope** stored on the [job](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md).
+
+<!--Update to anchor #ml-ad-cps-create after https://github.com/elastic/docs-content/pull/7814 ships-->
 
 ### SLO visibility [obs-cps-slo-remote]
 
