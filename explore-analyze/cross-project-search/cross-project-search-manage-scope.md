@@ -46,6 +46,8 @@ Most apps use **session scope**. Session scope is which projects are searched wh
 
 Some apps use **stored scope**. Stored scope is saved with a resource and applies every time that resource runs or opens. Some apps, such as [Dashboards](/explore-analyze/dashboards.md), save a snapshot of the scope currently set in the header selector. Others use a separate selector on the create or edit form, such as [{{ml}} {{anomaly-jobs}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md). 
 
+In apps where you write queries, you can still [override that scope at the query level](#cps-query-overrides).
+
 Refer to the [availability table](#cps-availability) for how each app uses scope.
 
 ### Include and exclude projects [cps-picker-include-exclude]
