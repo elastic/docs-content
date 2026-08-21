@@ -187,7 +187,7 @@ The following table shows whether an index can be restored to a given cluster ve
 
 ^2^ $$$footnote-2$$$ Supported with [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md).
 
-You can’t restore an index to an earlier version of {{es}}. For example, you can’t restore an index created in 8.18.0 to a cluster running 8.15.0.
+In the table above, a ✅ within a version range does not mean you can restore an index to any cluster version in that range, because a snapshot can be restored only to the same or a newer {{es}} version. For example, you can’t restore an index created in 8.18.0 to a cluster running 8.15.0.
 
 
 #### Restoring incompatible indices
