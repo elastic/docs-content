@@ -142,6 +142,11 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     EOF
     ```
 
+    ::::{note}
+    :applies_to: ece: ga 4.2
+    If you need IPv6 egress from containers, also add `net.ipv6.conf.all.forwarding=1` to the same `sysctl` configuration.
+    ::::
+
     ::::{important}
     The `net.ipv4.tcp_retries2` setting applies to all TCP connections and affects the reliability of communication with systems other than {{es}} clusters too. If your clusters communicate with external systems over a low quality network then you may need to select a higher value for `net.ipv4.tcp_retries2`.
     ::::
@@ -362,3 +367,13 @@ For more information, refer to the [Docker daemon configuration overview](https:
     If the command returns `Docker Root Dir: /var/lib/docker`, then you need to troubleshoot the previous configuration steps until the Docker settings are applied successfully before continuing with the installation process. For more information, check [Docker daemon configuration](https://docs.docker.com/engine/daemon/) in the Docker documentation.
 
 1. Repeat these steps on other hosts that you want to use with {{ece}} or follow the steps in the next section to start installing {{ece}}.
+
+## Optional: Enable dual-stack networking for IPv6 egress [ece-ubuntu-ipv6-egress]
+```{applies_to}
+deployment:
+  ece: ga 4.2
+```
+
+::::{include} /deploy-manage/deploy/_snippets/ece-docker-ipv6-daemon.md
+::::
+

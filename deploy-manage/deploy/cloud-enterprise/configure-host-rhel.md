@@ -25,6 +25,8 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
 
 **Example:** For AWS, allowing traffic between hosts is implemented using security groups.
 
+{applies_to}`ece: ga 4.2` If you need IPv6 egress from ECE containers, ensure the host has working dual-stack (IPv4 and IPv6) connectivity, and complete the optional Podman dual-stack steps later in this guide.
+
 ::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
 
@@ -330,6 +332,11 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     EOF
     ```
 
+    ::::{note}
+    :applies_to: ece: ga 4.2
+    If you need IPv6 egress from containers, also add `net.ipv6.conf.all.forwarding=1` to the same `sysctl` configuration.
+    ::::
+
     :::{note}
     According to [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md), {{es}} overrides TCP keepalive settings at the socket level for its own connections:
     * If system-level values exceed 300 seconds, {{es}} automatically lowers them to 300 seconds.
@@ -389,15 +396,65 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     ::::
 
 
-30. Restart the podman service by running this command:
+30. {applies_to}`ece: ga 4.2` Optional: Enable dual-stack networking for IPv6 egress. Complete these steps only if ECE containers must reach IPv6 endpoints. Podman does not support configuring both IPv4 and IPv6 on the built-in default network through `containers.conf`, so create a dual-stack network and set it as the default for new containers.
+
+    1. Create a dual-stack Podman network:
+
+        ```sh
+        sudo podman network create \
+          --subnet 10.89.0.0/24 \
+          --subnet fd00:10:89::/64 \
+          --ipv6 \
+          ece-network
+        ```
+
+        ::::{note}
+        Choose IPv4 and IPv6 subnets that do not overlap with other networks in your environment. These values are local to each host, so the same subnets can be reused across ECE hosts.
+        ::::
+
+    1. Set the dual-stack network as the default for new containers. Open `/etc/containers/containers.conf` and, in the `[network]` section, set `default_network`. If the file or section does not exist yet, create it. On RHEL 9 and Rocky Linux 9, merge this setting with the existing `network_backend="cni"` configuration rather than creating a duplicate `[network]` section:
+
+        ```text
+        [network]
+        default_network = "ece-network"
+        ```
+
+31. Restart the podman service by running this command:
 
     ```sh
     sudo systemctl daemon-reload
     sudo systemctl restart podman
     ```
 
-31. Reboot the RHEL host.
+32. Reboot the RHEL host.
 
     ```sh
     sudo reboot
     ```
+
+33. After rebooting, verify the host configuration.
+
+    1. Confirm that Podman is running:
+
+        ```sh
+        sudo systemctl status podman
+        ```
+
+    1. {applies_to}`ece: ga 4.2` Optional: If you enabled dual-stack networking for IPv6 egress, verify both the default network configuration and outbound IPv6 connectivity from a container:
+
+        1. Confirm that the dual-stack network has both subnets:
+
+            ```sh
+            sudo podman network inspect ece-network --format '{{json .Subnets}}'
+            ```
+
+            The output should include both the IPv4 (`10.89.0.0/24`) and IPv6 (`fd00:10:89::/64`) subnets.
+
+        1. Run a short-lived container and test IPv6 egress:
+
+            ```sh
+            sudo podman run --rm curlimages/curl:latest \
+              -6 -s -o /dev/null -w "%{http_code}\n" https://ipv6.google.com
+            ```
+
+            A response of `200` confirms that containers can reach IPv6 endpoints.
