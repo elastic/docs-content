@@ -98,7 +98,7 @@ When you use a tag filter, changing a project's [custom tags](/deploy-manage/dep
 :::
 
 ::::{note}
-The default {{cps}} scope is a space setting, not an access control. Users can still set the scope at the query level. You can also [manage user access](#manage-user-and-api-key-access).
+The default {{cps}} scope is a space setting, not an access control. Depending on the app, users can still change scope with the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) or at the query level. You can also [manage user access](#manage-user-and-api-key-access).
 ::::
 
 ## Next steps
