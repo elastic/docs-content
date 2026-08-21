@@ -91,11 +91,7 @@ A **Specific projects** default is saved as a [project routing expression](/expl
 - Projects that match your tag filters are included automatically.
 - Excluding a project individually affects only that project.
 
-To keep future projects out of the default, use a tag filter rather than excluding projects one by one.
-
-:::{note}
-When you use a tag filter, changing a project's [custom tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) can include or exclude that project from the default, without editing the space setting.
-:::
+To keep future projects out of the default, use a tag filter rather than excluding projects one by one. When you use a tag filter, changing a project's [custom tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) can include or exclude that project from the default, without editing the space setting.
 
 ::::{note}
 The default {{cps}} scope is a space setting, not an access control. Depending on the app, users can still change scope with the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) or at the query level. You can also [manage user access](#manage-user-and-api-key-access).
