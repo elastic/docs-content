@@ -44,7 +44,7 @@ In Serverless, Elastic automatically manages:
 * Resource utilization and monitoring
 * High availability and disaster recovery strategies
 
-Because Elastic fully manages sharding, several shard-related operations, including custom routing, are not supported. You can't set a `routing` value on document or search requests, and you can't create indexes that require routing with the [`_routing` field](elasticsearch://reference/elasticsearch/mapping-reference/mapping-routing-field.md). This applies to all {{serverless-short}} project types.
+Because Elastic fully manages sharding, several shard-related operations, including custom routing, are not supported. You can't set a `routing` value on document or search requests, and you can't create indices that require routing with the [`_routing` field](elasticsearch://reference/elasticsearch/mapping-reference/mapping-routing-field.md). This applies to all {{serverless-short}} project types.
 
 ## Compare features [elasticsearch-differences-serverless-infrastructure-management]
 
