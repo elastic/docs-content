@@ -476,7 +476,7 @@ POST kbn:/api/data_views/data_view
 :::
 
 ::::{tip}
-You may want to tweak this Data View to adjust the field names and number or date formatting to your personal preferences. These settings are honored by the Maps application in the tooltips and other UI elements. Check [Format data fields](../../find-and-organize/data-views.md#managing-fields) for more details.
+You might want to tweak this Data View to adjust the field names and number or date formatting to your personal preferences. These settings are honored by the Maps application in the tooltips and other UI elements. Check [Format data fields](../../find-and-organize/data-views/field-formatters.md) for more details.
 ::::
 
 
