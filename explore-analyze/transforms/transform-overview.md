@@ -92,7 +92,10 @@ The default scope depends on how you create the transform:
 * **With Clone**: Keeps the original transform's scope.
 * **Through the API, or before {{cps-init}} was available**: Searches only the origin project until you set `project_routing`.
 
-To change the scope later, edit the transform in {{kib}}, select multiple transforms and use **Change project scope**, or use the [update transform API]({{es-apis}}operation/operation-transform-update-transform).
+To change the scope later:
+* Edit the transform in {{kib}}.
+* Select transforms and choose **Change project scope**.
+* Use the [update transform API]({{es-apis}}operation/operation-transform-update-transform).
 
 ### Check a transform's scope [transform-cps-column]
 

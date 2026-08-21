@@ -30,7 +30,7 @@ products:
    :::
 
    ::::{tip}
-   On {{serverless-full}}, when your project has [linked projects](/explore-analyze/cross-project-search.md), use the **Project scope** control next to the data view picker to choose which of them the transform searches. Refer to [Cross-project search scope](transform-overview.md#transform-cps-scope).
+   On {{serverless-full}}, when your project has [linked projects](/explore-analyze/cross-project-search.md), use the **Project scope** control next to the data view picker to choose which linked projects the transform searches. Refer to [Cross-project search scope](transform-overview.md#transform-cps-scope).
    ::::
 
    Group the data by customer ID and add one or more aggregations to learn more about each customer’s orders. For example, let’s calculate the sum of products they purchased, the total price of their purchases, the maximum number of products that they purchased in a single order, and their total number of orders. We’ll accomplish this by using the [`sum` aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-sum-aggregation.md) on the `total_quantity` and `taxless_total_price` fields, the [`max` aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-max-aggregation.md) on the `total_quantity` field, and the [`cardinality` aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-cardinality-aggregation.md) on the `order_id` field:
