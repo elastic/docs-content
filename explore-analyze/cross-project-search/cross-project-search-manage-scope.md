@@ -99,6 +99,10 @@ Your scope is saved as a [project routing expression](/explore-analyze/cross-pro
 
 To keep future projects out of your scope, use a tag filter rather than excluding projects one by one.
 
+:::{note}
+When you use a tag filter, , changing a project's [custom tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) can include or exclude that project from your selected scope without the scope being edited.
+:::
+
 ## Override {{cps}} scope at the query level [cps-query-overrides]
 
 In apps where you write queries, you can define a different {{cps}} scope than the one set in the header's scope selector or the [space-level default](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). This is useful when you want a specific query or dashboard panel to search a different set of projects.
