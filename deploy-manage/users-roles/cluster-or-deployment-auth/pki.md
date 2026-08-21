@@ -127,7 +127,7 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
       ```
 
       :::{tip}
-      If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+      If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
       If you're using a self-managed cluster, then the file must be present on each node.
       :::
@@ -172,7 +172,7 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
     2. The distinguished name (DN) of a PKI user.
 
     :::{tip}
-    If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+    If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
     If you're using a self-managed cluster, then the file must be present on each node.
     :::

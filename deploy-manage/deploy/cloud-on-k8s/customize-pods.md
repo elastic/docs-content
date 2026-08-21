@@ -103,7 +103,7 @@ spec:
 
 ## More examples [k8s_more_examples_2] 
 
-* [Init containers for plugin downloads](init-containers-for-plugin-downloads.md)
+* [Init containers for plugin downloads](/deploy-manage/plugins-and-bundles/cloud-on-k8s/init-containers-for-plugin-downloads.md)
 * [*Manage compute resources*](manage-compute-resources.md)
 
 For further information:

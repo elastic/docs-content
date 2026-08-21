@@ -43,7 +43,7 @@ Most {{ech}} features are also available in FedRAMP authorized Cloud offerings. 
 | [Synthetic monitoring](/solutions/observability/synthetics/index.md) | Yes | No | No |
 | [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) | Yes | No | No |
 | [Managed OTLP Endpoint (mOTLP)](opentelemetry://reference/motlp.md) | Yes | No | No |
-| [Custom bundles and plugins](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) | Yes | Yes | No |
+| [Custom bundles and plugins](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md) | Yes | Yes | No |
 | [Elastic AI Assistant for Observability and Search](/solutions/observability/ai/observability-ai-assistant.md), [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) | Yes | Elastic Managed LLM not available | Elastic Managed LLM not available |
 | [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) | Yes | Yes | TBD |
 | [Universal profiling](/solutions/observability/infra-and-hosts/universal-profiling.md) | Yes | No | No |

@@ -10,8 +10,8 @@ products:
 
 # Add plugins [modules-plugins]
 
-Plugins are a way to enhance the basic {{es}} functionality in a custom manner. They range from adding custom mapping types, custom analyzers (in a more built in fashion), custom script engines, custom discovery and more.
+Plugins enhance core {{es}} functionality with custom analyzers, discovery providers, scripting engines, and more.
 
-For information about selecting and installing plugins, see [{{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md).
+To install and manage plugins on a self-managed cluster, refer to [Manage plugins on self-managed deployments](/deploy-manage/plugins-and-bundles/self-managed/manage-plugins.md). For other deployment types, refer to [Plugins and bundles](/deploy-manage/plugins-and-bundles.md).
 
-For information about developing your own plugin, see [Create {{es}} plugins](elasticsearch://extend/index.md).
+For the catalog of official plugins, refer to [{{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md). To develop your own plugin, refer to [Create {{es}} plugins](elasticsearch://extend/index.md).

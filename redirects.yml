@@ -1138,6 +1138,18 @@ redirects:
         anchors:
           'attacks-next-steps': 'manage-saved-discoveries'
   'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'
+
+  # Plugins and bundles hub: move deployment-specific plugin pages under deploy-manage/plugins-and-bundles/ issue: https://github.com/elastic/docs-content-internal/issues/1075
+  'deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md': 'deploy-manage/plugins-and-bundles/elastic-cloud/add-plugins-extensions.md'
+  'deploy-manage/deploy/elastic-cloud/add-plugins-provided-with-ech.md': 'deploy-manage/plugins-and-bundles/elastic-cloud/add-plugins-provided-with-ech.md'
+  'deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md': 'deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md'
+  'deploy-manage/deploy/elastic-cloud/manage-plugins-extensions-through-api.md': 'deploy-manage/plugins-and-bundles/elastic-cloud/manage-plugins-extensions-through-api.md'
+  'deploy-manage/deploy/cloud-enterprise/add-plugins.md': 'deploy-manage/plugins-and-bundles/cloud-enterprise/add-plugins.md'
+  'deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md': 'deploy-manage/plugins-and-bundles/cloud-enterprise/add-custom-bundles-plugins.md'
+  'deploy-manage/deploy/cloud-enterprise/ece-include-additional-kibana-plugin.md': 'deploy-manage/plugins-and-bundles/cloud-enterprise/ece-include-additional-kibana-plugin.md'
+  'deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md': 'deploy-manage/plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md'
+  'deploy-manage/deploy/cloud-on-k8s/init-containers-for-plugin-downloads.md': 'deploy-manage/plugins-and-bundles/cloud-on-k8s/init-containers-for-plugin-downloads.md'
+  'deploy-manage/deploy/cloud-on-k8s/k8s-kibana-plugins.md': 'deploy-manage/plugins-and-bundles/cloud-on-k8s/k8s-kibana-plugins.md'
   # related to https://github.com/elastic/docs-content/issues/7709
   'solutions/elasticsearch-solution-project/search-connection-details.md':
     to: 'solutions/elasticsearch-solution-project/search-connection-details.md'

@@ -59,11 +59,6 @@ toc:
                           - file: deploy/elastic-cloud/change-hardware.md
                       - file: deploy/elastic-cloud/ec-customize-deployment-components.md
                       - file: deploy/elastic-cloud/edit-stack-settings.md
-                      - file: deploy/elastic-cloud/add-plugins-extensions.md
-                        children:
-                          - file: deploy/elastic-cloud/add-plugins-provided-with-ech.md
-                          - file: deploy/elastic-cloud/upload-custom-plugins-bundles.md
-                          - file: deploy/elastic-cloud/manage-plugins-extensions-through-api.md
                       - file: deploy/elastic-cloud/custom-endpoint-aliases.md
                   - file: deploy/elastic-cloud/manage-integrations-server.md
                     children:
@@ -144,7 +139,6 @@ toc:
                   - file: deploy/cloud-enterprise/configure-allocator-affinity.md
                   - file: deploy/cloud-enterprise/change-allocator-disconnect-timeout.md
                   - file: deploy/cloud-enterprise/manage-elastic-stack-versions.md
-                  - file: deploy/cloud-enterprise/ece-include-additional-kibana-plugin.md
           - file: deploy/cloud-enterprise/log-into-cloud-ui.md
           - file: deploy/cloud-enterprise/working-with-deployments.md
             children:
@@ -162,8 +156,6 @@ toc:
                       - file: deploy/cloud-enterprise/edit-stack-settings-apm.md
                       - file: deploy/cloud-enterprise/edit-stack-settings-enterprise.md
                   - file: deploy/cloud-enterprise/resize-deployment.md
-                  - file: deploy/cloud-enterprise/add-plugins.md
-                  - file: deploy/cloud-enterprise/add-custom-bundles-plugins.md
                   - file: deploy/cloud-enterprise/ece-regional-deployment-aliases.md
                   - file: deploy/cloud-enterprise/resource-overrides.md
                   - file: deploy/cloud-enterprise/advanced-cluster-configuration.md
@@ -223,8 +215,6 @@ toc:
                       - file: deploy/cloud-on-k8s/volume-claim-templates.md
                       - file: deploy/cloud-on-k8s/virtual-memory.md
                       - file: deploy/cloud-on-k8s/settings-managed-by-eck.md
-                      - file: deploy/cloud-on-k8s/custom-configuration-files-plugins.md
-                      - file: deploy/cloud-on-k8s/init-containers-for-plugin-downloads.md
                       - file: deploy/cloud-on-k8s/update-strategy.md
                       - file: deploy/cloud-on-k8s/pod-disruption-budget.md
                       - file: deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md
@@ -236,7 +226,6 @@ toc:
                     children:
                       - file: deploy/cloud-on-k8s/k8s-kibana-es.md
                       - file: deploy/cloud-on-k8s/k8s-kibana-advanced-configuration.md
-                      - file: deploy/cloud-on-k8s/k8s-kibana-plugins.md
                   - file: deploy/cloud-on-k8s/customize-pods.md
                   - file: deploy/cloud-on-k8s/propagate-labels-annotations.md
                   - file: deploy/cloud-on-k8s/k8s-pause-orchestration.md
@@ -386,6 +375,34 @@ toc:
       - file: reference-architectures/hotfrozen-high-availability.md
       - file: reference-architectures/genai-search-high-availability.md
   - file: stack-settings.md
+  - file: plugins-and-bundles.md
+    children:
+      - file: plugins-and-bundles/elastic-cloud/add-plugins-extensions.md
+        children:
+          - file: plugins-and-bundles/elastic-cloud/add-plugins-provided-with-ech.md
+          - file: plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md
+          - file: plugins-and-bundles/elastic-cloud/manage-plugins-extensions-through-api.md
+      - file: plugins-and-bundles/cloud-enterprise/add-plugins.md
+        children:
+          - file: plugins-and-bundles/cloud-enterprise/add-plugins-provided-with-ece.md
+          - file: plugins-and-bundles/cloud-enterprise/add-custom-bundles-plugins.md
+          - file: plugins-and-bundles/cloud-enterprise/ece-include-additional-kibana-plugin.md
+      - file: plugins-and-bundles/self-managed/manage-plugins.md
+        children:
+          - file: plugins-and-bundles/self-managed/manage-plugins-using-configuration-file.md
+          - file: plugins-and-bundles/self-managed/install-plugins.md
+            children:
+              - file: plugins-and-bundles/self-managed/custom-url.md
+              - file: plugins-and-bundles/self-managed/install-multiple-plugins.md
+              - file: plugins-and-bundles/self-managed/mandatory-plugins.md
+              - file: plugins-and-bundles/self-managed/list-remove-update.md
+              - file: plugins-and-bundles/self-managed/other-command-line-parameters.md
+              - file: plugins-and-bundles/self-managed/plugins-directory.md
+      - file: plugins-and-bundles/cloud-on-k8s/manage-plugins.md
+        children:
+          - file: plugins-and-bundles/cloud-on-k8s/init-containers-for-plugin-downloads.md
+          - file: plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md
+          - file: plugins-and-bundles/cloud-on-k8s/k8s-kibana-plugins.md
   - file: tools.md
     children:
       - file: tools/snapshot-and-restore.md

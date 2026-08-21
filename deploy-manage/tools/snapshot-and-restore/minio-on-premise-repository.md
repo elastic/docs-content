@@ -124,7 +124,7 @@ Refer to the [{{es}} S3 plugin details](/deploy-manage/tools/snapshot-and-restor
 
 #### Add S3 repository plugin (only for {{es}} 7.x)
 
-For {{es}} clusters in version 7.x you must add the S3 repository plugin to your cluster. Refer to [Managing plugins for ECE](elasticsearch://reference/elasticsearch-plugins/plugin-management.md#managing-plugins-for-ece) for more details.
+For {{es}} clusters in version 7.x you must add the S3 repository plugin to your cluster. Refer to [Managing plugins for {{ece}}](/deploy-manage/plugins-and-bundles.md#managing-plugins-for-ece) for more details.
 
 ::::{note}
 For versions 8.0 and later, {{es}} has built-in support for AWS S3 repositories; no repository plugin is needed.

@@ -130,7 +130,7 @@ Refer to the [Istio documentation](https://istio.io/docs/tasks/security/authenti
 
 #### Using init containers with Istio CNI [k8s-service-mesh-istio-cni]
 
-There are [known issues with init containers](https://istio.io/docs/setup/additional-setup/cni/#compatibility-with-application-init-containers) when Istio CNI is configured. If you use init containers to [install {{es}} plugins](init-containers-for-plugin-downloads.md) or perform other initialization tasks that require network access, they may fail due to outbound traffic being blocked by the CNI plugin. To work around this issue, explicitly allow the external ports used by the init containers.
+There are [known issues with init containers](https://istio.io/docs/setup/additional-setup/cni/#compatibility-with-application-init-containers) when Istio CNI is configured. If you use init containers to [install {{es}} plugins](/deploy-manage/plugins-and-bundles/cloud-on-k8s/init-containers-for-plugin-downloads.md) or perform other initialization tasks that require network access, they may fail due to outbound traffic being blocked by the CNI plugin. To work around this issue, explicitly allow the external ports used by the init containers.
 
 To install plugins using an init container, use a manifest similar to the following:
 

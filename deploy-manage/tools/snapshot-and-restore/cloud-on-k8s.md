@@ -504,7 +504,7 @@ spec:
 
 ### Install a snapshot repository plugin [k8s-install-plugin]
 
-If you are running a version of {{es}} before 8.0 or you need a snapshot repository plugin that is not already pre-installed you have to install the plugin yourself. To install the snapshot repository plugin, you can either use a [custom image](../../deploy/cloud-on-k8s/create-custom-images.md) or [add your own init container](../../deploy/cloud-on-k8s/init-containers-for-plugin-downloads.md) which installs the plugin when the Pod is created.
+If you are running a version of {{es}} before 8.0 or you need a snapshot repository plugin that is not already pre-installed you have to install the plugin yourself. To install the snapshot repository plugin, you can either use a [custom image](../../deploy/cloud-on-k8s/create-custom-images.md) or [add your own init container](/deploy-manage/plugins-and-bundles/cloud-on-k8s/init-containers-for-plugin-downloads.md) which installs the plugin when the Pod is created.
 
 To use your own custom image with all necessary plugins pre-installed, use an {{es}} resource like the following:
 

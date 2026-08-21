@@ -17,7 +17,7 @@ If you already looked at the [{{es}} on ECK](elasticsearch-configuration.md) doc
 * [Customize the product configuration](#k8s-kibana-configuration)
 * [Manage HTTP settings](/deploy-manage/security/k8s-https-settings.md#k8s-kibana-http-configuration)
 * [Use secure settings](../../security/k8s-secure-settings.md)
-* [Install {{kib}} plugins](k8s-kibana-plugins.md)
+* [Install {{kib}} plugins](/deploy-manage/plugins-and-bundles/cloud-on-k8s/k8s-kibana-plugins.md)
 
 ## Pod configuration [k8s-kibana-pod-configuration]
 

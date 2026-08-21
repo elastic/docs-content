@@ -116,9 +116,9 @@ To learn about the properties that you can include in a role mapping resource, r
 Refer to [Realm-specific details](#_realm_specific_details) for examples of mapping roles using the role mapping file.
 
 :::{tip}
-If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
+If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
 
-If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
 If you're using a self-managed cluster, then the file must be present on each node. Tools like Puppet or Chef can help with this.
 :::
