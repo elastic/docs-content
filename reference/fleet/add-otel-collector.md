@@ -172,7 +172,7 @@ Choose how to provide an {{es}} API key for the `elasticsearch/otel` exporter:
 
    ::::
 
-2. Paste or merge the configuration into your OTel Collector configuration file (for example, `otel.yaml`).
+2. Paste or merge the configuration into your OTel Collector configuration file (for example, `otel-opamp.yaml`).
 3. Make sure every environment-variable placeholder in the configuration resolves at runtime:
    - `${API_KEY}`: replace it with your encoded {{es}} API key value, or set the `API_KEY` environment variable before starting or restarting the collector.
    - `${env:HOSTNAME}`: make sure `HOSTNAME` is set in the collector's runtime environment, or replace the placeholder with a static identifier.
@@ -180,9 +180,31 @@ Choose how to provide an {{es}} API key for the `elasticsearch/otel` exporter:
 
 :::::
 
+:::::{step} Start the collector
+
+Run the appropriate command for your collector type, pointing to the configuration file you saved in the previous step:
+
+::::{tab-set}
+
+:::{tab-item} Elastic Distribution of OTel Collector
+```shell
+./otelcol --config ./otel-opamp.yaml
+```
+:::
+
+:::{tab-item} OTel Contrib Collector
+```shell
+./otelcol-contrib --config ./otel-opamp.yaml
+```
+:::
+
+::::
+
+:::::
+
 :::::{step} Verify the collector connection
 
-1. Start or restart your OTel Collector with the applied configuration.
+1. Confirm the collector started without errors in its output.
 2. Return to the {{fleet}} UI. The flyout displays a confirmation message when your collector successfully connects.
 3. Your OTel Collector now appears in the **Agents** list.
 
