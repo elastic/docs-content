@@ -25,9 +25,10 @@ There are differences between {{es-serverless}} and {{ech}}. Learn more in [Comp
 
 ## Get started
 
-Elastic provides three serverless solutions available on {{ecloud}}. Follow these guides to get started with your serverless project:
+Elastic provides four serverless project types available on {{ecloud}}. Follow these guides to get started with your serverless project:
 
-* **[{{es-serverless}}](/solutions/search/get-started.md)**: Build powerful applications and search experiences using a rich ecosystem of vector search capabilities, APIs, and libraries.
+* **[{{es-serverless}}](/solutions/search/get-started.md)**: Build powerful, scalable search and analytics applications across structured data, logs, metrics, documents, and vectors as part of a broader {{stack}}.
+* **[{{es}} Vector Database](/solutions/vector-database/get-started.md)**: Build embedding-driven workloads such as semantic search, RAG, and AI-powered retrieval. Built-in models and vector-optimized defaults mean less configuration and faster time to production.
 * **[{{obs-serverless}}](../../../solutions/observability/get-started.md)**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
 * **[{{sec-serverless}}](../../../solutions/security/get-started.md#create-sec-serverless-project)**: Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
 

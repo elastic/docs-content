@@ -22,6 +22,7 @@ Specific prices can be found in the [Cloud Pricing Table](https://cloud.elastic.
 To learn about billing dimensions for specific offerings, refer to:
 
 * [](elasticsearch-billing-dimensions.md)
+* [](vector-database-billing-dimensions.md)
 * [](elastic-observability-billing-dimensions.md)
 * [](security-billing-dimensions.md)
 
