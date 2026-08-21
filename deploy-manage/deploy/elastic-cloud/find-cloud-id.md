@@ -20,6 +20,10 @@ The Cloud ID works by assigning a unique ID to your hosted {{es}} cluster on {{e
 
 You include your Cloud ID along with your {{ecloud}} user credentials (defined in `cloud.auth`) when you run Beats or Logstash locally, and then let {{ecloud}} handle all of the remaining connection details to send the data to your hosted cluster on {{ecloud}} safely and securely.
 
+:::{note}
+The Cloud ID encodes the public (non-PrivateLink) endpoint domain for your deployment. If you are connecting over AWS PrivateLink, do not use the Cloud ID to derive your endpoint URL. Refer to [Private connectivity with AWS PrivateLink](/deploy-manage/security/private-connectivity-aws.md).
+:::
+
 :::{image} /deploy-manage/images/cloud-ec-ce-cloud-id.png
 :alt: The Cloud ID and `elastic` user information shown when you create a deployment
 :::
