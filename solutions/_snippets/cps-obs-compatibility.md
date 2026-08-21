@@ -4,6 +4,7 @@
 | **Infrastructure** (Inventory, Hosts) | Available (scope selector available) |
 | **Observability Overview** (Hosts, Log Events, Service Inventory) | Not available |
 | **SLOs** | Available (scope stored on the SLO) |
-| **Rules** (Custom Threshold, SLO Burn Rate) | Read-only |
+| **Alerts** | [This project's alerts only](#obs-cps-overview-alerts) |
+| **Rules** (Custom Threshold) | Read-only |
 | **Synthetics** (monitors, TLS Certificates) | Not available |
 | **Streams** | Not available |
