@@ -8,7 +8,7 @@ description: Learn which regions host Elastic Inference Service (EIS), how infer
 
 # Region and hosting [eis-regions]
 
-This page lists the {{aws}}, Azure, and {{gcp}} regions where Elastic {{infer-cap}} Service (EIS) is available and explains how {{infer}} requests are routed.
+EIS is available to all Elastic customers in all regions. This page lists the {{aws}}, Azure, and {{gcp}} regions where Elastic {{infer-cap}} Service (EIS) is currently deployed and explains how {{infer}} requests are routed.
 
 ## Available regions [available-regions]
 
