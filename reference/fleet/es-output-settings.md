@@ -147,7 +147,7 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.5.2+ }
+:::{applies-item} { stack: ga 9.5.2+, serverless: ga }
 | Configuration | Balanced | Optimized for Throughput | Optimized for Scale | Optimized for Latency |
 | --- | --- | --- | --- | --- |
 | `bulk_max_size` | 1600 | 1600 | 1600 | 50 |
