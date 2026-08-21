@@ -67,6 +67,10 @@ If your current selection results in zero included projects, the scope selector 
 
 You can narrow the project list in the scope selector by creating tag filters. Tag filters let you find and select projects based on [predefined and custom project tags](/explore-analyze/cross-project-search/cross-project-search-tags.md). Predefined tags include `_type`, `_region`, and `_csp`. You can also filter on [custom tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) that you define in the {{ecloud}} UI.
 
+:::{note}
+When you use a filter by custom tags, [changing the custom tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) on a project can include or exclude that project from your selected scope without the scope being edited.
+:::
+
 To add a tag filter:
 
 1. Open the scope selector and select **Add project tag filter**.
@@ -101,9 +105,6 @@ Your scope is saved as a [project routing expression](/explore-analyze/cross-pro
 
 To keep future projects out of your scope, use a tag filter rather than excluding projects one by one.
 
-:::{note}
-When you use a tag filter, changing a project's [custom tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) can include or exclude that project from your selected scope without the scope being edited.
-:::
 
 ## Override {{cps}} scope at the query level [cps-query-overrides]
 
