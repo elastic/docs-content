@@ -30,7 +30,7 @@ Follow these steps to deploy the {{agent}} and EDOT SDKs with ECH.
 
 :::::{step} Download the {{agent}}
 
-[Download the {{agent}}](elastic-agent://reference/edot-collector/download.md) for your operating system, extract the file, and change directory to the extracted files.
+[Download the {{agent}}](elastic-agent://reference/otel-collector/download.md) for your operating system, extract the file, and change directory to the extracted files.
 
 :::::
 
@@ -143,4 +143,4 @@ Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 
 ## Troubleshooting
 
-Having issues with {{edot}}? Refer to the [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.
+Having issues with {{edot}}? Refer to the [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/otel-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.

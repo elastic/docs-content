@@ -148,17 +148,17 @@ toc:
       # - file: ingest/enterprise-search/crawls.md
       - file: ingest/opentelemetry/index.md
         children:
-          - file: ingest/opentelemetry/edot-collector/index.md
+          - file: ingest/opentelemetry/otel-collector/index.md
             children:
-              - file: ingest/opentelemetry/edot-collector/collector-oomkilled.md
-              - file: ingest/opentelemetry/edot-collector/insufficient-resources-kubestack.md
-              - file: ingest/opentelemetry/edot-collector/metadata.md
-              - file: ingest/opentelemetry/edot-collector/enable-debug-logging.md
-              - file: ingest/opentelemetry/edot-collector/collector-not-starting.md
-              - file: ingest/opentelemetry/edot-collector/misconfigured-sampling-collector.md
-              - file: ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md
-              - file: ingest/opentelemetry/edot-collector/trace-export-errors.md
-              - file: ingest/opentelemetry/edot-collector/c2c-resourceexhausted.md
+              - file: ingest/opentelemetry/otel-collector/collector-oomkilled.md
+              - file: ingest/opentelemetry/otel-collector/insufficient-resources-kubestack.md
+              - file: ingest/opentelemetry/otel-collector/metadata.md
+              - file: ingest/opentelemetry/otel-collector/enable-debug-logging.md
+              - file: ingest/opentelemetry/otel-collector/collector-not-starting.md
+              - file: ingest/opentelemetry/otel-collector/misconfigured-sampling-collector.md
+              - file: ingest/opentelemetry/otel-collector/misconfigured-elasticapm-connector.md
+              - file: ingest/opentelemetry/otel-collector/trace-export-errors.md
+              - file: ingest/opentelemetry/otel-collector/c2c-resourceexhausted.md
           - file: ingest/opentelemetry/edot-sdks/index.md
             children:
               - file: ingest/opentelemetry/edot-sdks/android/index.md

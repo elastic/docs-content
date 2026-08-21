@@ -1138,6 +1138,21 @@ redirects:
         anchors:
           'attacks-next-steps': 'manage-saved-discoveries'
   'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'
+
+  # Phase 4 EDOT slug renames
+  'troubleshoot/ingest/opentelemetry/edot-collector/index.md': 'troubleshoot/ingest/opentelemetry/otel-collector/index.md'
+  'troubleshoot/ingest/opentelemetry/edot-collector/collector-oomkilled.md': 'troubleshoot/ingest/opentelemetry/otel-collector/collector-oomkilled.md'
+  'troubleshoot/ingest/opentelemetry/edot-collector/insufficient-resources-kubestack.md': 'troubleshoot/ingest/opentelemetry/otel-collector/insufficient-resources-kubestack.md'
+  'troubleshoot/ingest/opentelemetry/edot-collector/metadata.md': 'troubleshoot/ingest/opentelemetry/otel-collector/metadata.md'
+  'troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md': 'troubleshoot/ingest/opentelemetry/otel-collector/enable-debug-logging.md'
+  'troubleshoot/ingest/opentelemetry/edot-collector/collector-not-starting.md': 'troubleshoot/ingest/opentelemetry/otel-collector/collector-not-starting.md'
+  'troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-sampling-collector.md': 'troubleshoot/ingest/opentelemetry/otel-collector/misconfigured-sampling-collector.md'
+  'troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md': 'troubleshoot/ingest/opentelemetry/otel-collector/misconfigured-elasticapm-connector.md'
+  'troubleshoot/ingest/opentelemetry/edot-collector/trace-export-errors.md': 'troubleshoot/ingest/opentelemetry/otel-collector/trace-export-errors.md'
+  'troubleshoot/ingest/opentelemetry/edot-collector/c2c-resourceexhausted.md': 'troubleshoot/ingest/opentelemetry/otel-collector/c2c-resourceexhausted.md'
+  'solutions/observability/logs/stream-any-log-file-using-edot-collector.md': 'solutions/observability/logs/stream-any-log-file-using-elastic-agent.md'
+  'solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md': 'solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-opentelemetry.md'
+
   # related to https://github.com/elastic/docs-content/issues/7709
   'solutions/elasticsearch-solution-project/search-connection-details.md':
     to: 'solutions/elasticsearch-solution-project/search-connection-details.md'
@@ -1146,4 +1161,3 @@ redirects:
       '_serverless_deployments': 'find-endpoint-cloud-self-managed'
       'find-cloud-id-serverless': 'find-endpoint-cloud-self-managed'
       'create-an-api-key-serverless': 'create-an-api-key-cloud-self-managed'
-

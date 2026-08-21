@@ -25,7 +25,7 @@ Elastic also provides the [EDOT Browser](elastic-otel-rum-js://reference/edot-br
 
 ## Before you begin [before-you-begin]
 
-You need an OTLP endpoint to ingest data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, [create](/solutions/observability/get-started.md) an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md). If you own a self-hosted stack or your deployment does not have the {{motlp}}, configure [{{agent}} in Gateway mode](https://www.elastic.co/docs/reference/edot-collector/modes#edot-collector-as-gateway).
+You need an OTLP endpoint to ingest data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, [create](/solutions/observability/get-started.md) an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md). If you own a self-hosted stack or your deployment does not have the {{motlp}}, configure [{{agent}} in Gateway mode](elastic-agent://reference/otel-collector/modes.md#edot-collector-as-gateway).
 
 After you have prepared the OTLP endpoint, set up a reverse proxy to forward the telemetry from your web application origin to the Collector. You need a reverse proxy for the following reasons:
 

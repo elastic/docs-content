@@ -30,7 +30,7 @@ Follow these steps to deploy the {{agent}} and EDOT SDKs in Docker.
 
 ::::{step} Create the config file
 
-Create the `otel-collector-config.yml` file with your {{agent}} configuration. Refer to the [configuration reference](elastic-agent://reference/edot-collector/config/default-config-standalone.md).
+Create the `otel-collector-config.yml` file with your {{agent}} configuration. Refer to the [configuration reference](elastic-agent://reference/otel-collector/config/default-config-standalone.md).
 ::::
 
 ::::{step} Retrieve your settings
@@ -124,4 +124,4 @@ Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 
 ## Troubleshooting
 
-Having issues with {{edot}}? Refer to the [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.
+Having issues with {{edot}}? Refer to the [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/otel-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.

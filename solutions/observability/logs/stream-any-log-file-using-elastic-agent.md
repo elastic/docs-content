@@ -350,7 +350,7 @@ If you're not seeing your log files in the UI, verify the following:
 * The OTLP endpoint URL is correct and accessible.
 * The Collector is running without errors (check the console output).
 
-If you're still running into issues, see [{{agent}} troubleshooting](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Configure {{agent}}](elastic-agent://reference/edot-collector/config/index.md).
+If you're still running into issues, see [{{agent}} troubleshooting](/troubleshoot/ingest/opentelemetry/otel-collector/index.md) and [Configure {{agent}}](elastic-agent://reference/otel-collector/config/index.md).
 
 ## Next steps [logs-stream-edot-next-steps]
 

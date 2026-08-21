@@ -42,7 +42,7 @@ When the integration policy for the input package is created, {{fleet}} creates 
 
 On the OpenTelemetry input package's **Configs** page, you can view a generated sample configuration, which you can use as a starting point to set up the integration on a standalone {{agent}}. 
 
-This is a partial configuration because it doesn't include an exporter component. OpenTelemetry input packages support sending data using the {{es}} output. For more information on setting up the exporter, refer to [{{es}} exporter](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md).
+This is a partial configuration because it doesn't include an exporter component. OpenTelemetry input packages support sending data using the {{es}} output. For more information on setting up the exporter, refer to [{{es}} exporter](elastic-agent://reference/otel-collector/components/elasticsearchexporter.md).
 
 :::{note}
 :applies_to: {serverless: preview, stack: preview 9.5+}

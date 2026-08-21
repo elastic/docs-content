@@ -111,5 +111,5 @@ All new troubleshooting pages must be created using [the template](https://githu
 Here are some examples of well-structured troubleshooting pages in the Elastic documentation:
 
 - [No logs, metrics, or traces visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md): Addresses a specific data visibility issue with clear symptoms and resolution steps.
-- [{{agent}} doesn't propagate client metadata](/troubleshoot/ingest/opentelemetry/edot-collector/metadata.md): Focuses on a specific configuration problem with symptoms and actionable resolution steps.
+- [{{agent}} doesn't propagate client metadata](/troubleshoot/ingest/opentelemetry/otel-collector/metadata.md): Focuses on a specific configuration problem with symptoms and actionable resolution steps.
 - [Troubleshoot common errors in {{es}}](/troubleshoot/elasticsearch/errors.md): An example of an error reference wayfinding page that organizes multiple error-based troubleshooting topics.

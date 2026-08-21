@@ -55,7 +55,7 @@ Use one of these methods:
 2. In the search bar, type `OTEL`.
 3. Select the **[OTEL][Metrics Kubernetes] Cluster Overview** dashboard to view your cluster's performance.
 
-For a full end-to-end setup guide, refer to [Quickstart: Unified Kubernetes Observability with {{edot}}](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md).
+For a full end-to-end setup guide, refer to [Quickstart: Unified Kubernetes Observability with {{edot}}](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-opentelemetry.md).
 
 ## Workaround [workaround-kubernetes-pods-docker-containers-empty]
 

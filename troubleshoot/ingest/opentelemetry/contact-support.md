@@ -48,7 +48,7 @@ To help Elastic Support investigate the problem efficiently, please include the 
 
 ### Deployment context
 
-* Are you using a [standalone {{agent}}](elastic-agent://reference/edot-collector/config/default-config-standalone.md) or [Kubernetes](elastic-agent://reference/edot-collector/config/default-config-k8s.md)?
+* Are you using a [standalone {{agent}}](elastic-agent://reference/otel-collector/config/default-config-standalone.md) or [Kubernetes](elastic-agent://reference/otel-collector/config/default-config-k8s.md)?
 * If applicable, include:
   * Helm chart version and values (for Kubernetes)
   * Container image version
@@ -77,7 +77,7 @@ To help Elastic Support investigate the problem efficiently, please include the 
 
 ### Logs and diagnostics
 
-* Recent Collector logs with relevant errors or warning messages. For guidance on enabling debug logging, refer to [Enable debug logging for the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) or [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+* Recent Collector logs with relevant errors or warning messages. For guidance on enabling debug logging, refer to [Enable debug logging for the {{agent}}](/troubleshoot/ingest/opentelemetry/otel-collector/enable-debug-logging.md) or [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 * Output from:
 
   ```bash
