@@ -115,7 +115,7 @@ In apps where you write queries, you can define a different {{cps}} scope than t
 
 There are two main mechanisms:
 
-* **[Project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md)**: Use a `project_routing` parameter to limit which projects a query runs against. In {{esql}}, use [`SET project_routing`](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-cps) at the beginning of your query. Project routing is evaluated before query execution, so excluded projects are never queried.
+* **[Project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md)**: Use a `project_routing` parameter to limit which projects a query runs against. In {{esql}}, use [`SET project_routing`](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-cps) at the beginning of your query. `SET project_routing` overrides the space default, the header selection, and any dashboard-stored scope for that query. Project routing is evaluated before query execution, so excluded projects are never queried.
 * **[Qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions)**: Prefix an index name with a project alias to target a specific project, for example `my_project:logs-*`. Qualified expressions work in index patterns and query source commands.
 
 For example, to search only a specific linked project from Discover, start your {{esql}} query with:
