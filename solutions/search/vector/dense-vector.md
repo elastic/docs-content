@@ -34,6 +34,7 @@ To implement dense vector search in {{es}}, you need both an index configuration
      - Refer to the [overview of NLP model options](../semantic-search.md#using-nlp-models)
    - Or [bring your own embeddings](bring-own-vectors.md)
      - Store them using the `dense_vector` field type
+   - {applies_to}`stack: preview 9.3, ga 9.4+` {applies_to}`serverless: unavailable` Optionally [accelerate HNSW indexing with a GPU](gpu-vector-indexing.md)
 
 2. **Query the index with k-NN search**
    - Use the [`knn` query](knn.md) to retrieve results based on vector similarity
