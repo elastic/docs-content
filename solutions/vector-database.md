@@ -23,9 +23,19 @@ Use it when embeddings and similarity search are central to your application, fo
 
 A Vector Database project gives you {{serverless-full}} operations with defaults and project settings aimed at embedding storage, {{infer}}, and similarity or hybrid search.
 
+### Vectors plus the full mapping surface
+
+Alongside embeddings, you can use the standard {{es}} [field types](/manage-data/data-store/mapping.md) in the same documents, including `keyword`, `text`, numeric types, `date`, `boolean`, geo fields, `nested`, and more. Combine similarity search with [filters](/solutions/search/vector/knn.md#knn-search-filter-example) on that metadata using Query DSL queries such as `bool`, `range`, and `terms`. Combining vectors and structured fields in one engine is an advantage over a typical dedicated vector store.
+
 ### Vector-optimized defaults and hardware profile
 
-Indices in a Vector Database project use the [`index.mode: vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) vector index mode automatically. It applies storage, indexing, and merge defaults tuned for similarity search on dense vectors, so you get efficient embedding storage and approximate [kNN](/solutions/search/vector/knn.md) search without configuring each setting yourself. The project hardware profile is also tuned for vector workloads.
+Indices in a Vector Database project use the [`index.mode: vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) vector index mode automatically. It applies storage, indexing, and merge defaults tuned for similarity search on dense vectors, so you get efficient embedding storage and approximate [kNN](/solutions/search/vector/knn.md) search without configuring each setting yourself.
+
+Index-level vector tuning is managed for you. You can balance search capacity, latency, and cost by adjusting [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) settings.
+
+The project hardware profile is also tuned for vector workloads.
+
+Vectors are stored compressed. If you retrieve a stored vector, the values may differ slightly from what you indexed. For example, `3.0` might read back as `2.9953578`. That difference comes from compression and is expected; it does not mean your data is corrupted.
 
 :::{tip}
 On other [deployment types](/deploy-manage/deploy.md), you can set the vector index mode explicitly when you create an index.
@@ -33,9 +43,7 @@ On other [deployment types](/deploy-manage/deploy.md), you can set the vector in
 
 ### Built for vector query patterns
 
-The Vector Database project type favors workloads where you ingest and embed data, then serve similarity or hybrid queries repeatedly. Aggressive segment merging improves recall and query speed for relatively stable corpora, which is a common pattern for knowledge bases, product catalogs with semantic search, and RAG document stores.
-
-<!-- Fact-check: confirm messaging around merge behavior and guidance for high-churn ingest (e.g. logs) before publish. -->
+The Vector Database project type favors workloads where you ingest and embed data, then serve similarity or hybrid queries repeatedly. Aggressive segment merging improves query speed for relatively stable corpora, which is a common pattern for knowledge bases, product catalogs with semantic search, and RAG document stores.
 
 ### Access to {{infer}}
 
@@ -51,7 +59,7 @@ Billing uses storage, search, ingest, and infrastructure, rather than the comput
 
 Both the {{es}} Vector Database and the {{es}} project types support [vector search](/solutions/search/vector.md).
 
-Choose Vector Database when embeddings and similarity search are central to the workload. For those projects, generate embeddings with managed models through the [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) or a [third-party inference endpoint](/explore-analyze/elastic-inference/external.md); you can't deploy custom ML models for in-cluster inference. 
+Choose Vector Database when embeddings and similarity search are central to the workload, especially when you also need structured metadata and filters in the same index rather than a dedicated vector store plus a separate search system. For those projects, generate embeddings with managed models through the [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) or a [third-party inference endpoint](/explore-analyze/elastic-inference/external.md); you can't deploy custom ML models for in-cluster inference.
 
 Choose the [{{es}} project type](/solutions/elasticsearch-solution-project.md) when you need general-purpose data storage and search, including mixed lexical, time series, and analytics workloads, {{kib}} search tooling such as [Query Rules UI](/solutions/elasticsearch-solution-project/query-rules-ui.md) and [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md), or the ability to run custom models on ML nodes. You might also prefer the {{es}} project type if you are an existing {{es}} or OpenSearch user.
 

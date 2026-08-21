@@ -72,6 +72,11 @@ You can generate embeddings as part of the ingestion workflow instead of creatin
   To walk through this workflow, follow [Elasticsearch vector and full-text search in 10 minutes](https://github.com/solutions/vector-database/vector-full-text-search.md).
 * **Multimodal content:** Map the target field as [`semantic`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md). Use this field type when you need to search across text, images, or other media with a multimodal model.
   To walk through this workflow, follow [Tutorial: Build multimodal search with a `semantic` field](/solutions/search/multimodal-search/multimodal-search-tutorial.md).
+
+:::{tip}
+You can include metadata fields in the same [mapping](/manage-data/data-store/mapping.md) as your embeddings, then filter on them when you search.
+:::
+
 ::::
 
 ::::{dropdown} Store your existing embeddings
@@ -83,8 +88,7 @@ To walk through indexing sample embeddings and running a kNN search, follow [Bri
 :::::
 
 :::::{step} Search your data
-The search query type you can use depends on the vector field type you want to search. For an overview of field types and the queries you can use with each, refer to [Field types and queries](/solutions/search/vector.md#vector-queries-and-field-types).
-
+The search query type you can use depends on the vector field type you want to search. For an overview of field types and the queries you can use with each, refer to [Field types and queries](/solutions/search/vector.md#vector-queries-and-field-types). You can also combine vector queries with [filters](/solutions/search/vector/knn.md#knn-search-filter-example) on metadata fields in the same request.
 :::::
 ::::::
 
