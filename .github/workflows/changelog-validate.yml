@@ -2,7 +2,9 @@ name: changelog-validate
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened, edited, labeled, unlabeled]
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'docs/changelog/**'
 
 permissions: {}
 
