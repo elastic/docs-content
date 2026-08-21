@@ -122,7 +122,14 @@ redirects:
   'solutions/observability/apps/observe-lambda-functions.md': 'solutions/observability/apm/observe-lambda-functions.md'
   'solutions/observability/apps/integrate-with-machine-learning.md': 'solutions/observability/apm/machine-learning.md'
   'solutions/observability/apps/apm-agent-explorer.md': 'solutions/observability/apm/apm-agent-explorer.md'
-  'solutions/observability/apps/applications-ui-settings.md': 'solutions/observability/apm/applications-ui-settings.md'
+  'solutions/observability/apps/applications-ui-settings.md':
+    to: 'kibana://docs/reference/advanced-settings.md'
+    anchors:
+      '': 'observability-advanced-settings'
+  'solutions/observability/apm/applications-ui-settings.md':
+    to: 'kibana://docs/reference/advanced-settings.md'
+    anchors:
+      '': 'observability-advanced-settings'
   'solutions/observability/apps/act-on-data.md': 'solutions/observability/apm/act-on-data.md'
   'solutions/observability/apps/create-apm-rules-alerts.md': 'solutions/observability/apm/create-apm-rules-alerts.md'
   'solutions/observability/apps/create-custom-links.md': 'solutions/observability/apm/create-custom-links.md'

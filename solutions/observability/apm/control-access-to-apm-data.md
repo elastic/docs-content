@@ -10,6 +10,15 @@ products:
 
 # Control access to APM data [apm-spaces]
 
+## APM index settings [apm-index-settings]
+```{applies_to}
+stack: ga
+```
+
+The Applications UI uses {{data-sources}} to query {{product.apm}} indices. To change the default {{product.apm}} indices, open the Applications UI and go to **Settings** → **Indices**. Settings configured in the UI take precedence over those set in `kibana.yml`.
+
+{{product.apm}} index settings are [{{kib}} Spaces](/deploy-manage/manage-spaces.md)-aware — changes apply only to the currently enabled space. The guide below shows how to use this to separate data by service environment.
+
 Starting in version 8.2.0, the Applications UI is [Kibana space](/deploy-manage/manage-spaces.md) aware. This allows you to separate your data—and access to that data—by team, use case, service environment, or any other filter that you choose.
 
 To take advantage of this feature, your APM data needs to be written to different data streams. One way to accomplish this is with different namespaces. For example, you can send production data to an APM integration with a namespace of `production`, while sending staging data to a different APM integration with a namespace of `staging`.

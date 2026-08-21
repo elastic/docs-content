@@ -208,7 +208,6 @@ toc:
                       - file: observability/apm/observe-lambda-functions.md
                   - file: observability/apm/machine-learning.md
                   - file: observability/apm/apm-agent-explorer.md
-                  - file: observability/apm/applications-ui-settings.md
               - file: observability/apm/act-on-data.md
                 children:
                   - file: observability/apm/create-apm-rules-alerts.md
