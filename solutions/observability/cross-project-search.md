@@ -12,7 +12,7 @@ description: Learn how cross-project search (CPS) works in Elastic Observability
 
 [{{cps-cap}} ({{cps-init}})](/explore-analyze/cross-project-search.md) lets you run a single search request across multiple {{serverless-short}} projects. When your observability data is split across projects to organize ownership, use cases, or environments, {{cps}} lets you query all that data from a single origin project without searching each project individually.
 
-When projects are linked, platform apps like Discover and Dashboards automatically include data from all linked projects. {{observability}} apps have varying levels of {{cps-init}} support. Some apps show cross-project data automatically; others remain scoped to the origin project. {{cps-cap}} is unavailable for Logs Essentials projects.
+When projects are linked, platform apps like Discover and Dashboards automatically include data from all linked projects. {{observability}} apps have partial {{cps-init}} support. Some apps show cross-project data automatically; others remain scoped to the origin project. {{cps-cap}} is unavailable for Logs Essentials projects.
 
 For full details on {{cps-init}} concepts, configuration, and search syntax, refer to:
 
@@ -22,7 +22,7 @@ For full details on {{cps-init}} concepts, configuration, and search syntax, ref
 
 ## {{observability}} app compatibility [obs-cps-compatibility]
 
-The following table shows how each {{observability}} app behaves with {{cps-init}} at technical preview.
+The following table shows how each {{observability}} app behaves with {{cps-init}}.
 
 ::::{include} /solutions/_snippets/cps-obs-compatibility.md
 ::::
@@ -30,19 +30,23 @@ The following table shows how each {{observability}} app behaves with {{cps-init
 
 ## {{cps-cap}} scope selector in {{observability}} apps [obs-cps-scope-selector]
 
-The **{{cps-init}} scope** selector ({icon}`cross_project_search`) in the project header lets you search **This project** or **All projects**. It is available in platform apps like Discover, Dashboards, and Lens, as well as in APM and Infrastructure apps.
+How you set project scope depends on the app.
+
+APM and Infrastructure use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header, as do platform apps like Discover, Dashboards, and Lens.
+
+When you [create an SLO](/solutions/observability/incident-management/create-an-slo.md#slo-cps-scope), specify an SLO-specific **Project scope** to choose which linked projects the SLO monitors.
 
 For other {{observability}}-specific apps, the scope selector is not available. This means:
 
 * Those apps operate in their default scope, which varies by app (refer to [{{observability}} app compatibility](#obs-cps-compatibility)).
 * The scope you select in platform apps like Discover does not carry over to {{observability}} apps that don't support it.
-* Data volumes might change when switching between Discover (which shows cross-project data by default) and an {{observability}} app (which is scoped to the origin project) for the same index pattern.
+* Data volumes might change when switching between Discover (which shows cross-project data by default) and features in the {{observability}} app (which is scoped to the origin project) for the same index pattern.
 
-For apps where the scope selector is available, refer to [Managing {{cps}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md).
+To learn how to use the scope selector to include or exclude linked projects, refer to [Managing {{cps}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md).
 
 ## Navigating between Discover and {{observability}} apps [obs-cps-discover-navigation]
 
-When {{cps-init}} is enabled, Discover shows documents from all linked projects by default, unless the space-level default scope has been changed. {{observability}} apps may not have the same scope, which can lead to differences when navigating between them.
+When {{cps-init}} is enabled, Discover shows documents from all linked projects by default, unless the space-level default scope has been changed. {{observability}} apps might not have the same scope, which can lead to differences when navigating between them.
 
 ### Discover to Streams
 
@@ -58,21 +62,15 @@ The following known issues and limitations apply to {{cps-init}} in {{observabil
 
 ### Rules data scope inconsistency [obs-cps-rules-scope]
 
-SLO burn rate rules query only origin project data, even when the underlying data view (for example, `logs-*`) returns cross-project data in Discover. This means Discover and rules may show different results for the same data view.
+SLO burn rate rules query the SLO's [SLI and summary indices](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md#indices-used-by-this-rule), not the SLO's source data view. Those indices reflect the **Project scope** stored on the SLO. Discover uses the session scope on that source data view. If those scopes differ, Discover can show more or fewer documents than the rule evaluates.
 
-{{ml-cap}} rules are not available in {{cps-init}}.
+{{ml-cap}} rules query the {{anomaly-job}}'s results, not the job's source data. Those results reflect the **Project scope** stored on the [job](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md).
+
+<!--Update to anchor #ml-ad-cps-create after https://github.com/elastic/docs-content/pull/7814 ships-->
 
 ### SLO visibility [obs-cps-slo-remote]
 
-Only origin SLOs are visible, even when connected to a linked project.
-
-Tracking: [kibana#252955](https://github.com/elastic/kibana/issues/252955)
-
-### No default data views in origin projects [obs-cps-no-data-views]
-
-In a {{cps-init}} origin project, Discover may show no data even when linked projects contain data due to missing data views in the origin project.
-
-Tracking: [kibana#260930](https://github.com/elastic/kibana/issues/260930)
+Only origin SLOs are visible, even when connected to a linked project. To monitor SLO breaches across {{es}} projects, create SLOs in this project and [scope them](/solutions/observability/incident-management/create-an-slo.md#slo-cps-scope) to linked projects.
 
 ### Alerts are origin only [obs-cps-overview-alerts]
 
