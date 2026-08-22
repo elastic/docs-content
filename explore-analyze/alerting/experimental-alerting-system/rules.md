@@ -18,13 +18,13 @@ This page explains what rules do, what they don't control, and how to choose a c
 
 On each run, a rule executes an {{esql}} query against your data. Matches are recorded as rule events (`rule_event`), and handled according to the rule's mode, which can be Signal mode or Alert mode. 
 
-In Signal mode, each matching row is stored as a signal document with no alert lifecycle or notifications. In Alert mode, the rule creates and tracks an alert episode for each match. Episodes move through lifecycle states and can trigger notifications through action policies. Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view them.
+In Signal mode, each matching row is stored as a signal document with no alert lifecycle or notifications. In Alert mode, the system creates and tracks an alert episode for each match. Episodes move through lifecycle states and can trigger notifications through action policies. Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view them.
 
 ## What rules don't do 
 
 Rules only define *what* to detect. They don't control notifications, who gets notified, or when. That's the job of action policies, which are global objects scoped to your space that match alert episodes from any rule. A rule has no say in which action policies pick it up.
 
-This separation means you can build and test a rule without anyone getting paged, update notification routing without touching the rule, and have multiple action policies respond to the same rule independently.
+This separation means you can update notification routing without touching a rule, and have multiple action policies respond to the same rule independently.
 
 ## What to do next with rules [rules-next-steps]
 
@@ -36,6 +36,7 @@ From here, you can create, configure, and manage rules, and review what they've 
 - [Review rule execution history](rules/review-rule-execution-history.md): Monitor rule execution outcomes across all rules in a space.
 - [{{esql}} query patterns](rules/esql-query-patterns.md): Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.
 - [Rule events](rules/rule-event-field-reference.md): Understand the documents rules write to `.rule-events`.
+- [Observe and analyze signals](observe-and-analyze-signals.md): Query Signal mode output in Discover and correlate signals with Alert mode rules.
 
 :::{important} - How to use the {{alerting-v2-system}} documentation
 Because the {{alerting-v2-system}} is still evolving, its UI can change before general availability. Rather than pointing to an exact button or menu, the documentation focuses on the underlying concepts and behavior. If something doesn't match what you see in the {{kib}} UI, look for the closest equivalent instead. The concepts and behaviors described in the documentation still apply.

@@ -451,6 +451,7 @@ toc:
                   - file: alerting/experimental-alerting-system/alerts/investigate-alert-episodes.md
               - file: alerting/experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md
               - file: alerting/experimental-alerting-system/alerts/field-reference.md
+          - file: alerting/experimental-alerting-system/observe-and-analyze-signals.md
           - file: alerting/experimental-alerting-system/notifications-actions.md
             children:
               - file: alerting/experimental-alerting-system/workflows-alerting.md
