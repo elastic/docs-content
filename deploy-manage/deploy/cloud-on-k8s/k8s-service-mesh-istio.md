@@ -69,6 +69,25 @@ As the default `failurePolicy` of the webhook is `Ignore`, the operator continue
 ECK has a fallback validation mechanism that reports validation failures as events associated with the relevant resource ({{eck_resources_list}}) that must be manually discovered by running `kubectl describe`. For example, to find the validation errors in an {{es}} resource named `quickstart`, you can run `kubectl describe elasticsearch quickstart`.
 
 
+### Exclude the {{es}} HTTP port from operator outbound proxying [k8s-service-mesh-istio-operator-exclude-9200]
+
+The ECK operator polls each {{es}} pod's `_cluster/health` endpoint (port 9200) on a 10-second tick. When this traffic is routed through the operator's Istio sidecar, a transient stale endpoint (an {{es}} pod whose IP hasn't yet been removed from Envoy's upstream cluster cache) can cause the health check to fail with a `503 Service Unavailable`. The observer then records an `Unknown` cluster health state, which sets `esReachable=false` and blocks rolling upgrades until the next observation tick.
+
+To avoid this, exclude the {{es}} HTTP port from the operator's outbound proxying by adding the following annotation to the operator's `StatefulSet` pod template:
+
+```yaml
+[...]
+spec:
+  template:
+    metadata:
+      annotations:
+        traffic.sidecar.istio.io/excludeOutboundPorts: "9200"
+[...]
+```
+
+With this annotation, the operator's health-check traffic bypasses the Istio sidecar on the operator pod and connects directly to {{es}} pods. The inbound Istio sidecar on each {{es}} pod still intercepts the connection. Application-layer TLS (using the {{es}} self-signed certificate enabled by default) continues to protect the connection.
+
+
 ## Connect {{stack}} applications to the Istio service mesh [k8s-service-mesh-istio-stack-connection]
 
 This section assumes that you are deploying ECK custom resources to a namespace that has [automatic sidecar injection](https://istio.io/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection) enabled.
