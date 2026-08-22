@@ -40,7 +40,9 @@ Any rule tagged **Missing Elastic Cloud API Key** is still running on an {{es}} 
 Use the following checklists to confirm your rules are running correctly after the migration.
 
 :::{dropdown} Right after migration
-- **Check rule execution status**: Go to **{{stack-manage-app}} > {{rules-ui}}** or your app's rules page and review the last run status for all rules. Investigate any rules showing a failed or warning status before moving on. If you use {{elastic-sec}} detection rules, also check for gaps caused by the migration. Refer to [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md) for instructions.
+- **Check rule execution status**: Go to the rules page for your project type and review the last run status for all rules. Investigate any rules showing a failed or warning status before moving on.
+    - **{{observability}} and {{es}} projects**: Find **{{rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+    - **Security projects**: Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Also check for gaps caused by the migration. Refer to [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md) for instructions.
 
 - **Resolve migration errors promptly**: If the UI shows an indicator that an {{ecloud}} API key isn't available for a rule, the rule continues to run using an {{es}} API key as a fallback. To create a new {{ecloud}} API key for the rule, open the rule's action menu in the UI and select **Update API key**.
 
