@@ -4,7 +4,7 @@ applies_to:
   stack: unavailable
 products:
   - id: security
-description: Learn how detection rules work with cross-project search to query data across linked projects.
+description: Learn which projects detection rules search under cross-project search, where their alerts are stored, which API key they need, and how alert limits apply.
 ---
 
 # {{cps-cap}} and detection rules [sec-rules-cross-project-search]
@@ -13,6 +13,34 @@ description: Learn how detection rules work with cross-project search to query d
 :::
 
 If your data spans ECH, ECE, ECK, or self-managed clusters rather than linked {{serverless-short}} projects, refer to [{{ccs-cap}} and detection rules](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md) instead.
+
+## Which projects a rule searches and where alerts are stored [cps-rules-scope-and-alerts]
+
+A rule that runs on the origin project queries the origin project and every linked project in the rule's scope. The rule writes every alert it generates to the origin project, no matter which project the matching events came from.
+
+This lets one project hold your detections and your analysts' alert triage while the data stays in the projects that produce it. It also means the origin project's **Alerts** page shows every alert your origin project rules generated, but not every alert in your organization. Rules that run independently on a linked project write their alerts to that project, and the origin project's **Alerts** page doesn't read them.
+
+To confirm which projects a rule covered when it created an alert, use the {{cps-init}} scope fields described in [{{cps-cap}} context in alerts and the event log](#cps-context-in-alerts).
+
+## Which API key a rule needs to reach linked projects [cps-rules-api-key]
+
+A rule runs with the API key of the user who created or last updated it, so that key determines which projects the rule can resolve indices in. Only [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) authenticate across project boundaries. [{{es}} API keys](/deploy-manage/api-keys/serverless-project-api-keys.md) are scoped to a single project and return results from the origin project only.
+
+Rules that you create or edit in the UI get an {{ecloud}} API key. A rule created or updated through the API with an {{es}} API key keeps that key, which makes the rule origin-scoped. Such a rule resolves no linked project indices, and if the origin project has no matching indices either, the rule skips execution and reports this warning:
+
+```txt
+Unable to find matching indices for rule <rule name>. This warning will persist until one of the following occurs: a matching index is created or the rule is disabled.
+```
+
+Plan for this when you migrate rules from another environment or create rules through automation. To move a rule to an {{ecloud}} API key, open the rule's actions menu {icon}`boxes_horizontal` on the **{{siem-rules-ui}}** page and select **Update API key**, or edit and save the rule in the UI.
+
+Rules still running on an {{es}} API key are tagged **Missing {{ecloud}} API Key** on the **{{siem-rules-ui}}** page. For more about how this key type affects rule access, refer to [Rules and {{ecloud}} API keys in {{serverless-short}}](/explore-analyze/alerting/alerts/rules-and-elastic-cloud-api-keys.md).
+
+## How the alert limit applies across linked projects [cps-rules-max-alerts]
+
+The **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) limits the number of alerts a rule creates in a single execution. Under {{cps}}, that cap covers the combined results from the origin project and all linked projects in the rule's scope rather than each project separately. The default is 100.
+
+A rule that stayed comfortably under the limit on a single project can reach it once you link projects, which leaves matches without alerts. Review the limit for rules that run across a broad scope, and consider [narrowing the scope with project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) instead of raising the limit.
 
 ## {{cps-cap}} context in alerts and the event log [cps-context-in-alerts]
 
