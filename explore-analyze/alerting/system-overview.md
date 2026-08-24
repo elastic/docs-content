@@ -19,10 +19,10 @@ In the generally available {{kib}} alerting system, the term **alert** refers to
 
 ## The core idea [core-idea]
 
-The {{alerting-v2-system}} starts with a rule evaluating your data. When the rule detects a match, either the system acts by creating an alert episode or the rule records the match as a signal.
+The {{alerting-v2-system}} starts with a rule evaluating your data. When the rule detects a match, it either creates an alert episode or records the match as a signal.
 
 :::{image} /explore-analyze/images/basic-system-flow.png
-:alt: Flowchart showing that after a rule detects a match, either the system acts by creating an alert episode or the rule records a signal
+:alt: Flowchart showing that after a rule detects a match, it either creates an alert episode or records a signal
 :::
 
 Because acting and recording are independent, you can switch a rule between Signal mode and Alert mode as your needs change, for example, testing a rule in Signal mode before switching it to Alert mode and setting up notifications. Notifications are handled separately from rules by action policies, so you can also update where notifications go for many rules at once, without editing each rule.
@@ -60,7 +60,7 @@ Refer to [Connect workflows](experimental-alerting-system/workflows-alerting.md)
 Together, these building blocks form two main paths, which diverge based on a rule's mode:
 
 1. A rule evaluates your data and detects a match.
-2. Depending on the rule's mode, the system acts on the match (Alert mode) or the rule records it (Signal mode):
+2. Depending on the rule's mode, the rule acts on the match (Alert mode) or records it (Signal mode):
 
    - **Alert mode**: An alert episode is created. An action policy evaluates the episode and decides whether and when to invoke a workflow.
    - **Signal mode**: The match is recorded as a signal, which skips action policy evaluation and workflow invocation entirely.
