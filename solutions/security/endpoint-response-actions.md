@@ -26,6 +26,7 @@ Unless otherwise specified, response actions are supported on all endpoint platf
 
   These are required to perform actions both in the response console and in other areas of the {{security-app}} (such as isolating a host from a detection alert).
 * Users must have the appropriate user role or privileges for at least one response action to access the response console.
+* In addition to the privilege for each response action, users need at least **Read** access to the **Response Actions History** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) to view command output and status in the response console. Without it, running a response action in the console will create the action request, but the user won't be able to monitor its completion or view its results.
 ::::
 
 
@@ -73,8 +74,8 @@ serverless: ga
 
 ::::{note}
 This response action is supported for:
-* {applies_to}`stack: ga 9.5+` [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) and [Microsoft Defender for Endpoint](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions) hosts.
-* {applies_to}`stack: ga 9.2-9.4` {applies_to}`serverless: ga` Microsoft Defender for Endpoint–enrolled hosts only.
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) and [Microsoft Defender for Endpoint](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions) hosts.
+* {applies_to}`stack: ga 9.2-9.4` Microsoft Defender for Endpoint–enrolled hosts only.
  
 ::::
 
@@ -83,6 +84,7 @@ Cancel a pending or in-progress action on the host. This allows you to force-can
 #### {{elastic-defend}} 
 ```yaml {applies_to}
 stack: ga 9.5+
+serverless: ga
 ```
 
 For {{elastic-defend}}, you must include the following parameter to identify the action to cancel:

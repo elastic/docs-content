@@ -383,6 +383,7 @@ toc:
       - file: visualize/manage-panels.md
   - file: find-and-organize.md
     children:
+      - file: find-and-organize/kibana-interface.md
       - file: find-and-organize/data-views.md
       - file: find-and-organize/saved-objects.md
       - file: find-and-organize/files.md
@@ -468,6 +469,7 @@ toc:
         children:
           - file: alerting/alerts/alerting-getting-started.md
           - file: alerting/alerts/alerting-setup.md
+          - file: alerting/alerts/rules-and-elastic-cloud-api-keys.md
           - file: alerting/alerts/create-manage-rules.md
           - file: alerting/alerts/view-alerts.md
           - file: alerting/alerts/query-alerts.md
