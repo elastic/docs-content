@@ -33,10 +33,11 @@ The Alerts page is your central hub for triaging and investigating detection ale
 | View alert details | Click the **View details** icon {icon}`expand` in the Alerts table |
 | Filter by rule | Use KQL: `kibana.alert.rule.name: "Rule Name"` |
 | Filter by time | Use the date/time picker (default: last 24 hours) |
-| Change alert status | Click the **More actions** icon {icon}`boxes_horizontal` > select status, or use bulk selection |
-| Add to case | Click the **More actions** icon {icon}`boxes_horizontal` > **Add to case** |
+| Change alert status | Click the **More actions** icon {icon}`boxes_horizontal` → select status, or use bulk selection |
+| Add to case | Click the **More actions** icon {icon}`boxes_horizontal` → **Add to case** |
+| Add to chat {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Select alerts → **Selected *x* alerts** → **Add to chat**. Requires {{agent-builder}}. |
 | Investigate in Timeline | Click **Investigate in timeline** icon {icon}`timeline` |
-| Add exception | Click the **More actions** icon {icon}`boxes_horizontal` > **Add exception** |
+| Add exception | Click the **More actions** icon {icon}`boxes_horizontal` → **Add exception** |
 | CSV export {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | In the toolbar, select the option to export to CSV. Requires [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access). |
 
 
@@ -69,7 +70,7 @@ Hover over any value in the Alerts table to see inline actions. Click the expand
 
 ### View rule-specific alerts
 
-Go to **Rules** > **{{siem-rules-ui}}**, then select a rule name. The rule details page shows all alerts from that rule, including alerts from previous rule revisions.
+Go to **Rules** → **{{siem-rules-ui}}**, then select a rule name. The rule details page shows all alerts from that rule, including alerts from previous rule revisions.
 
 
 ## Edit drop-down filter controls [drop-down-filter-controls]
@@ -83,9 +84,9 @@ Customize the filter controls above the Alerts table. By default, you can filter
 
 | Action | How to do it |
 |--------|--------------|
-| Edit controls | Click {icon}`boxes_horizontal` next to controls > **Edit Controls** |
+| Edit controls | Click {icon}`boxes_horizontal` next to controls → **Edit Controls** |
 | Reorder | Drag controls by their handle |
-| Remove | Hover over control > click **Remove control** |
+| Remove | Hover over control → click **Remove control** |
 | Add | Click **Add Controls** (maximum 4) |
 | Save changes | Click **Save pending changes** |
 
@@ -106,7 +107,7 @@ Group alerts by up to three fields, such as rule name, host, user, source IP, or
 
 | Action | How to do it |
 |--------|--------------|
-| Group alerts | Click **Group alerts by** > select field(s) |
+| Group alerts | Click **Group alerts by** → select field(s) |
 | Expand a group | Click the group name or expand icon |
 | Bulk action on group | Click **Take actions** menu on the group row |
 
@@ -144,6 +145,7 @@ Access actions from the **More actions** (**…**) menu in the Alerts table, or 
 |--------|-------------|
 | [Change status](#detection-alert-status) | Mark as open, acknowledged, or closed |
 | [Add to case](/explore-analyze/cases/attach-objects-to-cases.md) | Attach alert to a new or existing case |
+| {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [Add to chat](#add-alerts-to-chat) | Send up to 100 selected alerts to {{agent-builder}} for triage |
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Run a workflow from an alert](#run-workflow-from-alert) | Run an Elastic workflow for on-demand response or investigation |
 | [Add rule exception](#add-exception-from-alerts) | Prevent rule from generating similar alerts |
 | [Add {{elastic-endpoint}} exception](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md) | Prevent {{elastic-endpoint}} alerts for specific conditions |
@@ -169,10 +171,10 @@ Alert statuses track investigation progress:
 
 | Scope | How to do it |
 |-------|--------------|
-| Single alert | **More actions** icon {icon}`boxes_horizontal` > select status |
-| Multiple alerts | Select alerts > **Selected *x* alerts** > select status |
-| Grouped alerts | **Take actions** menu on group row > select status |
-| From flyout | **Take action** > select status |
+| Single alert | **More actions** icon {icon}`boxes_horizontal` → select status |
+| Multiple alerts | Select alerts → **Selected *x* alerts** → select status |
+| Grouped alerts | **Take actions** menu on group row → select status |
+| From flyout | **Take action** → select status |
 
 :::{image} /solutions/images/security-alert-change-status.png
 :alt: Bulk action menu with multiple alerts selected
@@ -205,6 +207,23 @@ The closing reason is stored in `kibana.alert.workflow_reason` and can be used f
 
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` You can also set an alert closing reason when you [close an {{elastic-sec}} case with sync enabled](/solutions/security/investigate/security-cases.md#cases-set-closing-reason).
 
+### Add alerts to chat [add-alerts-to-chat]
+```yaml {applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Send selected alerts to an [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) conversation so the agent can help you triage them. The action appears when {{agent-builder}} is enabled and the Agent chat experience is selected.
+
+| Scope | How to do it |
+|-------|--------------|
+| Single alert | **More actions** ({icon}`boxes_vertical`) in the alert's row → **Add to chat**, or **Add to chat** in the alert details flyout |
+| Multiple alerts | Select up to 100 alerts → **Selected *x* alerts** → **Add to chat** |
+
+::::{note}
+**Add to chat** isn't available when you use **Select all N** (query mode). Select alerts individually instead.
+::::
+
 ### Run a workflow from an alert [run-workflow-from-alert]
 ```yaml {applies_to}
 stack: ga 9.4+
@@ -230,11 +249,11 @@ Tags help organize alerts into filterable categories.
 
 | Task | How to do it |
 |------|--------------|
-| Tag single alert | **More actions** icon {icon}`boxes_horizontal` > **Apply alert tags** |
-| Tag multiple alerts | Select alerts > **Selected *x* alerts** > **Apply alert tags** |
-| Tag from flyout | **Take action** > **Apply alert tags** |
+| Tag single alert | **More actions** icon {icon}`boxes_horizontal` → **Apply alert tags** |
+| Tag multiple alerts | Select alerts → **Selected *x* alerts** → **Apply alert tags** |
+| Tag from flyout | **Take action** → **Apply alert tags** |
 | Filter by tag | KQL: `kibana.alert.workflow_tags: "False Positive"` |
-| Show tags column | **Fields** > add `kibana.alert.workflow_tags` |
+| Show tags column | **Fields** → add `kibana.alert.workflow_tags` |
 | Manage tag options | [Configure `securitySolution:alertTags`](/solutions/security/get-started/configure-advanced-settings.md#manage-alert-tags) |
 
 
@@ -248,11 +267,11 @@ Users are not notified when assigned or unassigned.
 
 | Task | How to do it |
 |------|--------------|
-| Assign to single alert | **More actions** icon {icon}`boxes_horizontal` > **Assign alert** > select users |
-| Assign to multiple alerts | Select alerts > **Selected *x* alerts** > **Assign alert** |
-| Assign from flyout | **Take action** > **Assign alert**, or click the assign icon at top |
-| Unassign all users | **More actions** icon {icon}`boxes_horizontal` > **Unassign alert** |
-| Show assignees column | **Fields** > add `kibana.alert.workflow_assignee_ids` |
+| Assign to single alert | **More actions** icon {icon}`boxes_horizontal` → **Assign alert** → select users |
+| Assign to multiple alerts | Select alerts → **Selected *x* alerts** → **Assign alert** |
+| Assign from flyout | **Take action** → **Assign alert**, or click the assign icon at top |
+| Unassign all users | **More actions** icon {icon}`boxes_horizontal` → **Unassign alert** |
+| Show assignees column | **Fields** → add `kibana.alert.workflow_assignee_ids` |
 | Filter by assignee | Click **Assignees** filter above table |
 
 :::{image} /solutions/images/security-alert-assigned-alerts.png
@@ -267,16 +286,16 @@ Create an [exception](/solutions/security/detect-and-alert/rule-exceptions.md) t
 
 | Location | How to do it |
 |----------|--------------|
-| Alerts table | **More actions** icon {icon}`boxes_horizontal` > **Add exception** |
-| Alert details flyout | **Take action** > **Add rule exception** |
+| Alerts table | **More actions** icon {icon}`boxes_horizontal` → **Add exception** |
+| Alert details flyout | **Take action** → **Add rule exception** |
 
 
 ### Investigate in Timeline [signals-to-timelines]
 
 | Scope | How to do it |
 |-------|--------------|
-| Single alert | Click **Investigate in timeline** button in table, or **Take action** > **Investigate in timeline** |
-| Multiple alerts | Select alerts (up to 2,000) > **Selected *x* alerts** > **Investigate in timeline** |
+| Single alert | Click **Investigate in timeline** button in table, or **Take action** → **Investigate in timeline** |
+| Multiple alerts | Select alerts (up to 2,000) → **Selected *x* alerts** → **Investigate in timeline** |
 
 :::{image} /solutions/images/security-timeline-button.png
 :alt: Investigate in timeline button

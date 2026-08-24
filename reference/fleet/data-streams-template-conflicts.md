@@ -93,4 +93,4 @@ Leaving overlapping templates at priority `250` or higher means some or all name
 * [Customize data streams with namespace index templates](/reference/fleet/data-streams-namespace-custom.md)
 * [Edit the {{es}} index template](/reference/fleet/data-streams.md#data-streams-index-templates-edit)
 * [Best practices for copying an integration index template](/reference/fleet/integrations-assets-best-practices.md#assets-restrictions-cloning-index-template)
-* [Tutorials: Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md)
+* [Customize data retention policies for integrations](/reference/fleet/data-streams-ilm-tutorial.md)
