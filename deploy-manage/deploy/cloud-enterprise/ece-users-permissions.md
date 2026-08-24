@@ -31,5 +31,5 @@ For ECE installation with Podman, the user does not need to be added to the `doc
 ::::
 
 ::::{note}
-While the ECE installer user must be non-root (UID ≥ 1000), the ECE platform containers (`frc-*`: runner, allocator, director, and ZooKeeper) run as `root` (UID 0) internally. This is an architectural requirement, not a misconfiguration. ECE-managed data containers (Elasticsearch, Kibana) run as UID 1000 (non-root) since Elasticsearch 8.0.
+While the ECE installer user must be non-root (UID ≥ 1000), the [ECE service containers](ece-architecture.md#ece-service-containers) run as `root` (UID 0) internally. This is an architectural requirement. Elastic Stack containers ({{es}}, {{kib}}) run as UID 1000 (non-root) since {{es}} 8.0.
 ::::
