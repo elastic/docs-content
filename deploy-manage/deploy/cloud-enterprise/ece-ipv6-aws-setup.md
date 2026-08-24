@@ -118,15 +118,23 @@ Follow these steps in the {{aws}} console to create a new VPC or configure an ex
 4. **Route Tables** → Select the route table for your subnets → **Edit routes**
    - Add route: Destination `::/0` → Target: Your Internet Gateway
 
-5. **Security Groups** → Select or create a security group → **Edit inbound rules**
-   - Add the following rules for both IPv4 (`0.0.0.0/0`) and IPv6 (`::/0`). These rules cover basic external access for a single-node test environment. For production multi-node deployments, refer to [Networking prerequisites](./ece-networking-prereq.md) for the full list of required ports, including inter-node traffic.
+5. **Security Groups** → Create two security groups.
+
+   Create a load balancer security group. This controls internet access to the NLB and ALB. Attach it to the NLB and ALB:
 
    | Port | Protocol | Purpose |
    |------|----------|---------|
-   | 22 | TCP | SSH access |
-   | 443 | TCP | NLB/ALB ingress |
-   | 9243 | TCP | ECE proxy (direct access) |
-   | 12443 | TCP | Admin Console (direct access) |
+   | 443 | TCP | Public HTTPS from `0.0.0.0/0` and `::/0` |
+
+   Create an instance security group. This controls access to the ECE host. Attach it to your ECE hosts:
+
+   | Port | Protocol | Purpose |
+   |------|----------|---------|
+   | 22 | TCP | SSH from your IP address |
+   | 9243 | TCP | ECE proxy from the load balancer security group |
+   | 12443 | TCP | Admin Console from the load balancer security group, or from your IP while you install |
+
+   For production multi-node deployments, refer to [Networking prerequisites](./ece-networking-prereq.md) for the full list of required ports, including inter-node traffic.
 
 ::::
 
@@ -156,7 +164,7 @@ This tutorial uses a single-host deployment for simplicity and testing purposes.
    - **VPC**: Select your dual-stack VPC
    - **Subnet**: Select a subnet with IPv6 enabled
    - **Auto-assign public IP**: Enable
-   - **Security group**: Select your security group with IPv6 rules
+   - **Security group**: Select the instance security group
 
 6. **Advanced network configuration** (click **Edit**):
    - **IPv4 address**: Assigned by {{aws}}
@@ -288,7 +296,7 @@ This configuration follows the requirements described in the [ECE load balancers
     - **VPC**: Select your dual-stack VPC
     - **Availability Zones**: Enable the availability zones where your ECE proxies run. The NLB needs a subnet in each AZ that has an ECE proxy.
 
-5. **Security groups**: Select a security group that allows inbound TCP 443 from `0.0.0.0/0` and `::/0` (do not use the default security group)
+5. **Security groups**: Select the load balancer security group. Do not use the default security group.
 
 6. **Listeners and routing**:
     - Delete the default TCP:80 listener
@@ -397,7 +405,7 @@ ALBs require subnets in at least two availability zones. If you only have one su
    - **VPC**: Select your dual-stack VPC
    - **Availability Zones**: Select at least **two** subnets in different AZs (required for ALB)
 
-5. **Security groups**: Select your security group
+5. **Security groups**: Select the load balancer security group
 
 6. **Listeners and routing**:
    - Delete the default HTTP:80 listener
@@ -533,7 +541,7 @@ The following requirements apply when integrating IPv6 into an existing ECE inst
 | **Subnets** | Dual-stack subnets (IPv4 + IPv6) in at least two Availability Zones (required for Application Load Balancers) |
 | **Internet Gateway** | Attached to the VPC with routes for both `0.0.0.0/0` and `::/0` |
 | **Route Tables** | IPv4 and IPv6 routes to the Internet Gateway |
-| **Security Groups** | Inbound rules allowing traffic on ports `443`, `9243`, and `12443` for both `0.0.0.0/0` and `::/0` |
+| **Security Groups** | Load balancer security group allows 443 from `0.0.0.0/0` and `::/0`. Instance security group allows 9243 and 12443 from the load balancer, not from the internet. |
 | **EC2 instances** | ECE hosts running in dual-stack subnets (required only for IPv6 egress) |
 
 :::{note}
