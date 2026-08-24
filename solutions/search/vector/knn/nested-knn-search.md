@@ -78,7 +78,7 @@ POST passage_vectors/_bulk?refresh=true
 { "full_text": "number one paragraph number two paragraph", "creation_time": "2020-05-04", "paragraph": [ { "vector": [ 1.2, 4.5 ], "text": "number one paragraph", "paragraph_id": "1", "language": "EN" }, { "vector": [ -1, 42 ], "text": "number two paragraph", "paragraph_id": "2", "language": "EN" }] , "metadata": [ { "key": "author", "value": "Jane Austen" }, { "key": "source", "value": "Financial" } ] }
 ```
 
-The query will seem very similar to a typical kNN search:
+The query uses the same structure as a typical kNN search:
 
 ```console
 POST passage_vectors/_search
@@ -147,7 +147,7 @@ Note that even with 4 total nested vectors, the response still returns two docum
 ```
 
 
-## Filtering in nested KNN search [nested-knn-search-filtering]
+## Filtering in nested kNN search [nested-knn-search-filtering]
 
 Use filters in nested kNN search when you want the most similar passages, but only from documents or chunks that match specific criteria. For example, you might search for relevant paragraphs in documents created in a date range, written in a particular language, or authored by a specific person.
 
@@ -155,7 +155,7 @@ Add a `filter` to your `knn` clause to apply these restrictions during the searc
 
 To ensure correct results, each individual filter must target either:
 
-* Top-level metadata 
+* Top-level metadata
 * `nested` metadata {applies_to}`stack: ga 9.2`
   :::{note}
   A single `knn` search can include multiple filters: some over top-level metadata and others over nested metadata.
@@ -315,7 +315,7 @@ POST passage_vectors/_search
 }
 ```
 
-Now the result will contain the nearest found paragraph when searching.
+The response now includes an `inner_hits` section with the nearest matching passage for each parent document.
 
 ```console-result
 {
@@ -429,7 +429,7 @@ Now the result will contain the nearest found paragraph when searching.
 
 ## Chunked content retrieval [nested-knn-search-chunked-content]
 
-The patterns on this page apply directly to chunked content retrieval. Whether you chunk documents into paragraphs, sections, or other structures, the approach is the same: store each chunk's vector in a `nested` field and use `inner_hits` to return the most relevant chunk per document. If you use [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) fields, chunking and embedding are handled automatically. For custom models, use the [basic nested kNN example](#nested-knn-basic-example) and [inner hits](#nested-knn-search-inner-hits) patterns shown above.
+The patterns on this page apply directly to chunked content retrieval. Whether you chunk documents into paragraphs, sections, or other structures, the approach is the same: store each chunk's vector in a `nested` field and use `inner_hits` to return the most relevant chunk per document. If you use [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) fields, chunking and embedding are handled automatically. Use nested `dense_vector` fields when you need control over the chunking strategy, the embedding model, or chunk-level metadata filtering. For custom models, use the [basic nested kNN example](#nested-knn-basic-example) and [inner hits](#nested-knn-search-inner-hits) patterns shown above.
 
 ## Related pages
 
