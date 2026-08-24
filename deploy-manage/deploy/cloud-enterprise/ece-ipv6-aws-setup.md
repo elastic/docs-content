@@ -607,21 +607,21 @@ To support IPv6 egress in an existing IPv4 ECE environment, you must update both
 
 3. Configure Podman dual-stack network for IPv6
 
-    On existing ECE hosts that were prepared without IPv6, create a dual-stack network in Podman, and configure it as the default network for future containers:
+    On existing ECE hosts that were prepared without IPv6, create a dual-stack network in Podman, and set it as the default for future containers:
 
     ```bash
-    # Create a dual-stack network
     sudo podman network create \
       --subnet 10.89.0.0/24 \
       --subnet fd00:10:89::/64 \
       --ipv6 \
       ece-network
+    ```
 
-    # Set as default for future containers
-    sudo tee -a /etc/containers/containers.conf > /dev/null <<'EOF'
+    Then open `/etc/containers/containers.conf` and, in the `[network]` section, set `default_network`. If the file or section does not exist yet, create it. On RHEL 9 and Rocky Linux 9, merge this setting with the existing `network_backend="cni"` configuration rather than creating a duplicate `[network]` section:
+
+    ```text
     [network]
     default_network = "ece-network"
-    EOF
     ```
 
     This is the same dual-stack network configuration described in [Configure a RHEL host](/deploy-manage/deploy/cloud-enterprise/configure-host-rhel.md) for new ECE hosts.
