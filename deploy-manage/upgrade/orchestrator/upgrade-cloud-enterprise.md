@@ -25,6 +25,10 @@ Before initiating the ECE upgrade process, review the [Support matrix](https://w
 During the upgrade window, there might be a short period of time during which you run a combination of versions that is not explicitly supported. For example, if you are on ECE 3.5 with Docker version 18.09 on SLES 12 and plan to upgrade to ECE 3.8 on the same OS, you will need to upgrade Docker to version 24.0 or 25.0 first. In this case, and only during your upgrade window, we will support the mixed OS and container engine versions. In general, this won’t be a problem. However, should anything become a blocker for the upgrade, [reach out to support for help](/troubleshoot/index.md#contact-us).
 :::
 
+::::{important}
+When moving SLES 15 hosts to **SP7**, check the Docker major before you upgrade the OS. SLES 15 SP7 commonly ships Docker newer than 25. ECE 4.0 and 4.1 accept only Docker 25 on SLES 15; ECE 4.2.0 also accepts Docker 29. Upgrade ECE to 4.2.0 before installing Docker 29, or pin Docker 25 until ECE is on 4.2.0. The installer rejects Docker 26, 27, and 28 on SLES 15.
+::::
+
 ## The upgrade version matrix [ece-upgrade-version-matrix]
 
 The following table shows the recommended upgrade paths from older {{ece}} versions to {{version.ece}}.

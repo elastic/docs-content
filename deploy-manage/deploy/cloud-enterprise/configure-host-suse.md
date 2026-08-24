@@ -12,7 +12,7 @@ products:
 
 # Configure a SUSE host [ece-configure-hosts-sles12]
 
-This guide explains how to prepare a SUSE Linux Enterprise Server (SLES) host for an {{ece}} (ECE) installation. It covers the operating system configuration required before you install ECE, including Docker installation, XFS quota configuration, and other host-specific settings. The steps on this page target SLES 15 SP4.
+This guide explains how to prepare a SUSE Linux Enterprise Server (SLES) host for an {{ece}} (ECE) installation. It covers the operating system configuration required before you install ECE, including Docker installation, XFS quota configuration, and other host-specific settings. The steps on this page target **SLES 15 SP7**. They also apply to earlier SLES 15 service packs (SP4 and later) that use a supported Docker major.
 
 ::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
@@ -115,15 +115,22 @@ ECE runs its services in containers, following a [service-oriented architecture]
     sudo zypper search -s -t package --match-exact docker
     ```
 
-    Note the version you want to install. Check the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for supported Docker versions for your OS. If the latest available version is compatible, you don't need to specify an explicit version in the next step.
+    Note the version you want to install. On SLES 15, the ECE installer allows only these Docker majors:
 
-1. Install Docker and other required packages on SLES 15. For example, to install Docker 25:
+    | ECE version | Supported Docker majors on SLES 15 |
+    | --- | --- |
+    | 4.2.0 and later | 25 or 29 |
+    | 4.0 and 4.1 | 25 only |
+
+    Docker 26, 27, and 28 are rejected even on ECE 4.2.0. Also check the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). If the latest available version is a supported major for your ECE version, you don't need to specify an explicit version in the next step.
+
+1. Install Docker and other required packages on SLES 15. For a new ECE 4.2.0 installation, prefer a Docker **29** package from the listing. For ECE 4.0 or 4.1, pin a Docker **25** package. For example, to install Docker 25:
 
     ```sh
     sudo zypper install -y curl device-mapper lvm2 net-tools docker=25.0.6_ce-150000.207.1 <1>
     ```
 
-    1. Replace `25.0.6_ce-150000.207.1` with the exact package version from the repository listing. Note that zypper does not support wildcards (for example, `docker=25.*`). To install the latest available version, specify `docker` without a version number.
+    1. Replace `25.0.6_ce-150000.207.1` with the exact package version from the repository listing (a `29.*` string for ECE 4.2.0, or a `25.*` string for ECE 4.0/4.1). Note that zypper does not support wildcards (for example, `docker=25.*`). To install the latest available version, specify `docker` without a version number — only do that when the latest major is one ECE accepts.
 
     ::::{tip}
     If `zypper` reports that the requested Docker version isn't available, make sure the SUSE **Containers Module** is enabled. Refer to the [SUSE documentation](https://documentation.suse.com/) for instructions on adding the upstream Docker repository.
