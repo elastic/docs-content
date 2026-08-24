@@ -18,7 +18,7 @@ For setup and architecture details, refer to [Setting up IPv6 for ECE on {{aws}}
 Use this page to troubleshoot the following traffic flows:
 
 - **IPv6 ingress for deployment traffic**: Clients to deployments through {{aws}} Network Load Balancer (NLB) and ECE proxies.
-- **IPv6 ingress for admin console UI traffic**: Clients to admin console endpoints through {{aws}} Application Load Balancer (ALB).
+- **IPv6 ingress for Cloud UI traffic**: Clients to Cloud UI endpoints through {{aws}} Application Load Balancer (ALB).
 - **IPv6 egress**: Outbound IPv6 from containers.
 
 Success criteria:
@@ -141,11 +141,11 @@ What to look for:
 | Connection timeouts | Verify the proxies are healthy, and check security group rules for ports 443 and 9243. The NLB needs a subnet in each AZ that has an ECE proxy. |
 | NLB using wrong security group | Ensure NLB uses a security group allowing inbound 443 (not the default VPC security group). |
 
-## Admin Console ALB issues
+## Cloud UI ALB issues
 
 | Issue | Solution |
 |-------|----------|
-| Health checks failing | Verify Admin Console is running (`sudo podman ps \| grep admin`). Health check needs HTTPS, path `/`, success codes `200-399`. |
+| Health checks failing | Verify the Cloud UI is running (`sudo podman ps \| grep admin`). Health check needs HTTPS, path `/`, success codes `200-399`. |
 | 502 Bad Gateway | Security group must allow ALB to reach port 12443 on the instance. |
 | Certificate errors | Ensure ACM certificate matches your domain. |
 | IPv6 connections failing | Check ALB has `IpAddressType: dualstack` and security groups allow 443 from `::/0`. |

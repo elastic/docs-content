@@ -23,7 +23,7 @@ This guide covers two distinct IPv6 traffic flows, ingress and egress, which can
 
 - **IPv6 ingress (client connectivity)**: Enables IPv4 and IPv6 clients to access ECE endpoints through {{aws}} load balancers. When combined with [IP filtering rules](/deploy-manage/security/ip-filtering-ece.md), this also lets you apply network security policies to IPv6 client addresses. This includes:
   - **Deployment traffic**: Client access to {{es}} and {{kib}} through a dual-stack Network Load Balancer (NLB) and [Proxy Protocol v2](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/edit-target-group-attributes.html#proxy-protocol) used for [client IP propagation](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/edit-target-group-attributes.html#client-ip-preservation).
-  - **Control plane traffic**: Optional access to the ECE Admin Console through a dual-stack Application Load Balancer (ALB).
+  - **Control plane traffic**: Optional access to the Cloud UI through a dual-stack Application Load Balancer (ALB).
 
   ::::{note}
   For IPv6 ingress, the {{aws}} load balancers accept IPv6 traffic and forward it to ECE hosts over IPv4. ECE hosts can remain IPv4-only, which makes this approach suitable for existing installations.
@@ -47,7 +47,7 @@ The following diagram illustrates an IPv6 architecture with ingress and egress s
                     ▼                                         ▼
      ┌──────────────────────────┐          ┌──────────────────────────┐
      │   Dual-Stack NLB         │          │   Dual-Stack ALB         │
-     │   (Proxy - port 443)     │          │   (Admin - port 443)     │
+     │   (Proxy - port 443)     │          │   (Cloud UI - port 443)  │
      │   Proxy Protocol v2      │          │   TLS termination        │
      └────────────┬─────────────┘          └────────────┬─────────────┘
                   │ :9243                               │ :12443
@@ -55,9 +55,9 @@ The following diagram illustrates an IPv6 architecture with ingress and egress s
      ┌──────────────────────────────────────────────────────────────┐
      │                      ECE Host (RHEL)                         │
      │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐   │
-     │  │ ECE Proxy   │  │ Admin       │  │ Elasticsearch/Kibana│   │
-     │  │ :9243       │  │ Console     │  │ (deployments)       │   │
-     │  │             │  │ :12443      │  │                     │   │
+     │  │ ECE Proxy   │  │ Cloud UI    │  │ Elasticsearch/Kibana│   │
+     │  │ :9243       │  │ :12443      │  │ (deployments)       │   │
+     │  │             │  │             │  │                     │   │
      │  └─────────────┘  └─────────────┘  └─────────────────────┘   │
      │                                                              │
      │  ┌────────────────────────────────────────────────────────┐  │
@@ -72,7 +72,7 @@ In this architecture, deployment traffic enters through the NLB over IPv4/IPv6 o
 Outbound traffic (IPv6 egress) originates directly from ECE hosts and is routed through the configured network gateways.
 
 ::::{note}
-The ALB for port 12443 is optional and only required to enable IPv6 access to the ECE Admin Console.
+The ALB for port 12443 is optional and only required to enable IPv6 access to the Cloud UI.
 
 Dual-stack ECE hosts are required for IPv6 egress. IPv6 ingress alone does not require IPv6 configuration on the hosts.
 ::::
@@ -132,7 +132,7 @@ Follow these steps in the {{aws}} console to create a new VPC or configure an ex
    |------|----------|---------|
    | 22 | TCP | SSH from your IP address |
    | 9243 | TCP | ECE proxy from the load balancer security group |
-   | 12443 | TCP | Admin Console from the load balancer security group, or from your IP while you install |
+   | 12443 | TCP | Cloud UI from the load balancer security group, or from your IP while you install |
 
    For production multi-node deployments, refer to [Networking prerequisites](./ece-networking-prereq.md) for the full list of required ports, including inter-node traffic.
 
@@ -231,7 +231,7 @@ IPv6 ingress through {{aws}} load balancers does not require dual-stack containe
     The `--memory-settings` shown in the example are for **example/testing purposes only**. For production deployments, refer to [ECE installation procedures](/deploy-manage/deploy/cloud-enterprise/install-ece-procedures.md) for recommended memory settings based on your deployment size (small/medium/large).
     :::
 
-1. After installation completes on the first node, note the Admin Console URL and credentials displayed.
+1. After installation completes on the first node, note the Cloud UI URL and credentials displayed.
 
 ::::
 
@@ -327,9 +327,9 @@ Both commands should return `200`. If IPv6 returns an error, verify that the NLB
 ::::{step} (Optional) Create the control plane ALB
 :anchor: step-alb
 
-If you need IPv6 access to the ECE Admin Console, create an Application Load Balancer (ALB).
+If you need IPv6 access to the Cloud UI, create an Application Load Balancer (ALB).
 
-This configuration follows the requirements described in the [ECE load balancers](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) documentation for admin console traffic.
+This configuration follows the requirements described in the [ECE load balancers](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) documentation for Cloud UI traffic.
 
 ### ALB prerequisites
 
@@ -421,7 +421,7 @@ ALBs require subnets in at least two availability zones. If you only have one su
 
 8. Note the ALB **DNS name**
 
-### Verify Admin Console ALB
+### Verify Cloud UI ALB
 
 After the ALB is active, confirm it accepts both IPv4 and IPv6 connections:
 
@@ -516,7 +516,7 @@ For troubleshooting and verification commands specific to IPv6 integration on {{
 
 This appendix focuses on existing ECE environments that are currently IPv4-only and explains how to introduce IPv6 for both inbound (ingress) and outbound (egress) traffic.
 
-- **IPv6 ingress**: Enable IPv6 client access to deployments and optionally to the admin console.
+- **IPv6 ingress**: Enable IPv6 client access to deployments and optionally to the Cloud UI.
 - **IPv6 egress**: Enable outbound IPv6 connectivity from ECE containers.
 
 The infrastructure examples are specific to {{aws}}. Other cloud providers might require different load balancer configurations and are not covered here.
@@ -554,7 +554,7 @@ To enable IPv6 ingress in an existing IPv4 ECE environment, complete the followi
 
 1. Configure ECE proxies to parse Proxy Protocol v2 headers by reinstalling your proxy hosts one at a time with the `--proxy-protocol-version 2` and `--proxy-protocol-lenient` flags. This is required for client IP propagation through the NLB. Refer to [Configure Proxy Protocol v2](./configure-proxy-protocol.md#ece-proxy-protocol-enable) for details.
 1. Configure a dual-stack NLB for deployment traffic ({{es}}/{{kib}}). Refer to [Create the proxy NLB for deployment traffic](#step-nlb).
-1. Optionally, configure a dual-stack ALB for admin console UI traffic. Refer to [Create the control plane ALB - Optional](#step-alb).
+1. Optionally, configure a dual-stack ALB for Cloud UI traffic. Refer to [Create the control plane ALB - Optional](#step-alb).
 
 ### IPv6 egress in existing IPv4 environments
 
