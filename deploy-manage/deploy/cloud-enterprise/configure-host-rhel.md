@@ -48,7 +48,7 @@ Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (E
 
     ::::
 
-2. Remove Docker and previously installed podman packages (if previously installed).
+2. Remove Docker and previously installed Podman packages (if previously installed).
 
     ```sh
     sudo dnf remove docker docker-ce podman podman-remote containerd.io
@@ -137,7 +137,7 @@ Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (E
         [...]
         ```
 
-6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
+6. If Podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
 
     Example:
 
@@ -239,7 +239,7 @@ Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (E
     graphroot = "/mnt/data/docker"
     ```
 
-17. Enable podman so that itself and running containers start automatically after a reboot:
+17. Enable Podman so that itself and running containers start automatically after a reboot:
 
     ```sh
     sudo systemctl enable podman.service
@@ -418,7 +418,7 @@ Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (E
         default_network = "ece-network"
         ```
 
-31. Restart the podman service:
+31. Restart the Podman service:
 
     ```sh
     sudo systemctl daemon-reload

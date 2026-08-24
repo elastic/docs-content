@@ -57,7 +57,7 @@ To enable Proxy Protocol v2 in an existing installation, reinstall the proxies o
 
 Because `--proxy-protocol-lenient` accepts connections with and without Proxy Protocol headers, reconfigure the proxies first and enable Proxy Protocol v2 on the load balancer only after every proxy has been reinstalled. Enabling it on the load balancer first breaks traffic to the proxies that are not reconfigured yet.
 
-As an alternative to reinstalling, you can patch the proxy container set directly using [our KB article](https://ela.st/ece-configure-ppv2-via-containersets-api). Contact [Elastic Support](/troubleshoot/index.md#contact-us) for assistance with that procedure. Note that configuration applied through direct container set patching may be overwritten during an ECE upgrade, so the reinstall approach is recommended for long-term stability.
+As an alternative to reinstalling, you can patch the proxy container set directly using [our KB article](https://ela.st/ece-configure-ppv2-via-containersets-api). Contact [Elastic Support](/troubleshoot/index.md#contact-us) for assistance with that procedure. Note that configuration applied through direct container set patching might be overwritten during an ECE upgrade, so the reinstall approach is recommended for long-term stability.
 
 ## Verify the configuration [ece-proxy-protocol-verify]
 
