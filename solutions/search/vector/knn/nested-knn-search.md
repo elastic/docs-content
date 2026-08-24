@@ -10,7 +10,7 @@ applies_to:
 
 Nested kNN search lets you find the most relevant passage or chunk inside long documents by storing a separate vector for each nested section and returning parent documents ranked by their best match. This approach is useful when a single document is too long to embed as one vector, such as when a support portal needs to surface the most relevant paragraph from a long troubleshooting guide in response to a user question.
 
-This page covers when to use nested kNN search, a basic mapping and query example, filtering, inner hits, and chunked content retrieval. For other approximate kNN query examples, refer to [Examples of using approximate kNN in search queries](build-search-queries.md).
+This page covers a basic mapping and query example, filtering, inner hits, and chunked content retrieval. For other approximate kNN query examples, refer to [Examples of using approximate kNN in search queries](build-search-queries.md).
 
 ## Run a basic nested kNN search [nested-knn-basic-example]
 
@@ -185,42 +185,7 @@ POST passage_vectors/_search
 }
 ```
 
-With the top-level `creation_time` filter applied, only one document falls within the specified range.
-
-```console-result
-{
-    "took": 4,
-    "timed_out": false,
-    "_shards": {
-        "total": 1,
-        "successful": 1,
-        "skipped": 0,
-        "failed": 0
-    },
-    "hits": {
-        "total": {
-            "value": 1,
-            "relation": "eq"
-        },
-        "max_score": 1.0,
-        "hits": [
-            {
-                "_index": "passage_vectors",
-                "_id": "1",
-                "_score": 1.0,
-                "fields": {
-                    "creation_time": [
-                        "2019-05-04T00:00:00.000Z"
-                    ],
-                    "full_text": [
-                        "first paragraph another paragraph"
-                    ]
-                }
-            }
-        ]
-    }
-}
-```
+With the top-level `creation_time` filter applied, only document `1` falls within the specified range, so the response contains a single hit.
 
 ## Filtering on nested metadata [nested-knn-search-filtering-nested-metatadata]
 ```{applies_to}
@@ -272,7 +237,7 @@ POST passage_vectors/_search
 }
 ```
 
-## Filtering by sibling nested fields in nested KNN search [nested-knn-search-filtering-sibling]
+## Filtering by sibling nested fields [nested-knn-search-filtering-sibling]
 ```{applies_to}
 stack: ga 9.2
 ```
@@ -280,6 +245,10 @@ stack: ga 9.2
 Filter by sibling nested fields when passage vectors and the metadata you want to filter on live in separate nested structures within the same document. For example, you might search `paragraph.vector` for similar passages but only in documents whose `metadata` nested field lists a specific author or source.
 
 Use a `nested` query in the `filter` clause to target the sibling nested field, such as `metadata.key` and `metadata.value`.
+
+:::{important}
+Sibling nested field filtering is only supported with the **top-level `knn` section** shown in the examples on this page. It does not work when using a [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md) inside a `nested` query. Retrieving `inner_hits` when filtering on sibling nested fields is also not supported.
+:::
 
 ```console
 POST passage_vectors/_search
@@ -308,10 +277,6 @@ POST passage_vectors/_search
     }
 }
 ```
-
-:::{note}
-Retrieving "inner_hits" when filtering on sibling nested fields is not supported.
-:::
 
 ## Nested kNN search with inner hits [nested-knn-search-inner-hits]
 
@@ -462,209 +427,14 @@ Now the result will contain the nearest found paragraph when searching.
 }
 ```
 
-## Search with nested vectors for chunked content [nested-knn-search-chunked-content]
+## Chunked content retrieval [nested-knn-search-chunked-content]
 
-Use nested kNN search with `dense_vector` fields and `inner_hits` in {{es}} to retrieve the most relevant passages from structured, chunked documents.
+The patterns on this page apply directly to chunked content retrieval. Whether you chunk documents into paragraphs, sections, or other structures, the approach is the same: store each chunk's vector in a `nested` field and use `inner_hits` to return the most relevant chunk per document. If you use [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) fields, chunking and embedding are handled automatically. For custom models, use the [basic nested kNN example](#nested-knn-basic-example) and [inner hits](#nested-knn-search-inner-hits) patterns shown above.
 
-This approach is ideal when you:
-
-* Chunk your content into paragraphs, sections, or other nested structures.
-* Want to retrieve only the most relevant nested section of each matching document.
-* Generate your own vectors with a custom model instead of relying on the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field provided by Elastic's semantic search capability.
-
-### Create the index mapping
-
-This example creates an index that stores a vector at the top level for the document title and multiple vectors inside a nested field for individual paragraphs.
-
-
-```console
-PUT nested_vector_index
-{
-  "mappings": {
-    "properties": {
-      "paragraphs": {
-        "type": "nested",
-        "properties": {
-          "text": {
-            "type": "text"
-          },
-          "vector": {
-            "type": "dense_vector",
-            "dims": 2,
-            "index_options": {
-              "type": "hnsw"
-            }
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-### Index the documents
-
-Add example documents with vectors for each paragraph.
-
-```console
-POST _bulk
-{ "index": { "_index": "nested_vector_index", "_id": "1" } }
-{ "paragraphs": [ { "text": "First paragraph", "vector": [0.5, 0.4] }, { "text": "Second paragraph", "vector": [0.3, 0.8] } ] }
-{ "index": { "_index": "nested_vector_index", "_id": "2" } }
-{ "paragraphs": [ { "text": "Another one", "vector": [0.1, 0.9] } ] }
-```
-
-### Run the search query
-
-This example searches for documents with relevant paragraph vectors.
-
-```console
-POST nested_vector_index/_search
-{
-  "_source": false,
-  "knn": {
-    "field": "paragraphs.vector",
-    "query_vector": [0.5, 0.4],
-    "k": 2,
-    "num_candidates": 10,
-    "inner_hits": {
-      "size": 2,
-      "name": "top_passages",
-      "_source": false,
-      "fields": ["paragraphs.text"]
-    }
-  }
-}
-```
-
-The `inner_hits` block returns the most relevant paragraphs within each top-level document. Use the `size` parameter to control how many matches are returned. If your query includes multiple kNN clauses, set a unique `name` for each clause to avoid naming conflicts in the response.
-
-```json
-{
-  "took": 4,
-  "timed_out": false,
-  "_shards": {
-    "total": 1,
-    "successful": 1,
-    "skipped": 0,
-    "failed": 0
-  },
-  "hits": { 
-    "total": { 
-      "value": 2, <1>
-      "relation": "eq"
-    }, 
-    "max_score": 1,
-    "hits": [ 
-      {
-        "_index": "nested_vector_index",
-        "_id": "1",
-        "_score": 1, <2>
-        "inner_hits": { <3>
-          "top_passages": {
-            "hits": {
-              "total": {
-                "value": 2,
-                "relation": "eq"
-              },
-              "max_score": 1,
-              "hits": [
-                {
-                  "_index": "nested_vector_index",
-                  "_id": "1",
-                  "_nested": {
-                    "field": "paragraphs",
-                    "offset": 0
-                  },
-                  "_score": 1,
-                  "fields": {
-                    "paragraphs": [
-                      {
-                        "text": [
-                          "First paragraph" <4>
-                        ]
-                      }
-                    ]
-                  }
-                },
-                {
-                  "_index": "nested_vector_index",
-                  "_id": "1",
-                  "_nested": {
-                    "field": "paragraphs",
-                    "offset": 1
-                  },
-                  "_score": 0.92955077,
-                  "fields": {
-                    "paragraphs": [
-                      {
-                        "text": [
-                          "Second paragraph"
-                        ]
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
-          }
-        }
-      },
-      {
-        "_index": "nested_vector_index",
-        "_id": "2",
-        "_score": 0.8535534,
-        "inner_hits": {
-          "top_passages": {
-            "hits": {
-              "total": {
-                "value": 1,
-                "relation": "eq"
-              },
-              "max_score": 0.8535534,
-              "hits": [
-                {
-                  "_index": "nested_vector_index",
-                  "_id": "2",
-                  "_nested": {
-                    "field": "paragraphs",
-                    "offset": 0
-                  },
-                  "_score": 0.8535534,
-                  "fields": {
-                    "paragraphs": [
-                      {
-                        "text": [
-                          "Another one"
-                        ]
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
-          }
-        }
-      }
-    ]
-  }
-}
-```
-
-1. Two documents matched the query.
-2. Document score, based on its most relevant paragraph.
-3. Matching paragraphs appear in the `inner_hits` section.
-4. Actual paragraph text that matched the query.
-
-## Resources
+## Related pages
 
 - [Approximate kNN search](approximate-knn.md): Learn how to map, index, and run a basic approximate kNN search, including indexing considerations.
-- [Examples of using approximate kNN in search queries](build-search-queries.md): See examples of using approximate kNN for filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds.
-- [Optimize performance and accuracy](optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
-- [kNN search on {{es}}](../knn.md): Explore common use cases, prerequisites for kNN search, and a comparison of approximate and exact kNN methods.
-- [Exact kNN search](exact-knn.md): Learn how to run exact brute-force kNN search for small datasets or precise scoring.
-- [Retrieval augmented generation (RAG)](../../rag.md): Learn how to retrieve relevant passages and combine them with generative AI models.
+- [Optimize performance and accuracy](optimize-performance-accuracy.md): Tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
+- [Exact kNN search](exact-knn.md): Run exact brute-force kNN search for small datasets or precise scoring.
+- [Retrieval augmented generation (RAG)](../../rag.md): Retrieve relevant passages and combine them with generative AI models.
 - [Semantic search with `semantic_text`](../../semantic-search/semantic-search-semantic-text.md): Use managed semantic search when you do not need to store passage vectors in nested fields yourself.
-- [Vector search in {{es}}](../../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
-- [Retrieve inner hits](elasticsearch://reference/elasticsearch/rest-apis/retrieve-inner-hits.md): API reference for `inner_hits` options used to return matching nested passages.
-- [Knn query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.
