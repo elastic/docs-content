@@ -27,7 +27,7 @@ The {{alerting-v2-system}} starts with a rule evaluating your data. When the rul
 
 Because acting and recording are independent, you can switch a rule between Signal mode and Alert mode as your needs change, for example, testing a rule in Signal mode before switching it to Alert mode and setting up notifications. Notifications are handled separately by action policies, so you can update where notifications are sent for multiple rules without editing each rule individually.
 
-## The four building blocks
+## The building blocks
 
 The {{alerting-v2-system}} is built around five objects: rules, alert episodes, signals, action policies, and workflows, each with a distinct role.
 
