@@ -210,9 +210,9 @@ If you get an error about timestamp values, check the error response for the val
 Now that your data stream has some documents, you can use the ES|QL [`_query` endpoint]({{es-apis}}operation/operation-esql-query) to query the data. This sample aggregation shows the maximum of average temperature per sensor for each location, in hourly buckets.
 
 ```console
-POST _query
+POST _query?format=txt
 {
-  query: "TS quickstart-weather | STATS max(avg_over_time(temperature) BY location, TBUCKET(1h)"
+  "query": "TS quickstart-weather | STATS max(avg_over_time(temperature)) BY location, TBUCKET(1h)"
 }
 ```
 
