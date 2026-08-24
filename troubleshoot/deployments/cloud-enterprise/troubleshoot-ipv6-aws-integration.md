@@ -123,7 +123,7 @@ What to look for:
 
 ## Identify ECE vs {{aws}} issues
 
-| Symptom | Likely Cause | Where to Check |
+| Symptom | Likely cause | Where to check |
 |---------|--------------|----------------|
 | Connection hangs before reaching ECE | {{aws}}: Security group, NLB config, or routing | {{aws}} Console: NLB target health, security groups, route tables |
 | Connection reaches ECE but returns error | ECE: Proxy configuration or deployment issue | ECE proxy logs (`proxy.requests.error.log`) |
