@@ -40,8 +40,8 @@ Instead, use a separate historical {{tsds-init}} without lifecycle, load the dat
 :::::{stepper}
 ::::{step} Create an index template for the historical data stream
 
-Use the same mappings as your live {{tsds-init}}, but don't attach a lifecycle policy in the template.
-For example:
+Use the same mappings as your live {{tsds-init}}, but don't include a lifecycle policy in the template.
+For example, use the [create index template]({{es-apis}}operation/operation-indices-put-index-template) API:
 
 ```console
 PUT _index_template/metrics-historical
@@ -68,7 +68,7 @@ PUT _index_template/metrics-historical
 ::::{step} Create the historical data stream
 
 Create a data stream with a name that matches the pattern in the index template.
-For example:
+For example, use the [create a data stream]({{es-apis}}operation/operation-indices-create-data-stream) API:
 
 ```console
 PUT _data_stream/metrics-historical-2024
@@ -90,7 +90,7 @@ Each batch should fit within available disk space at indexing time.
 ::::{step} Add data stream lifecycle
 
 When the load is complete, add a [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to the historical data stream.
-For example:
+For example, use the [update data stream lifecycles]({{es-apis}}operation/operation-indices-put-data-lifecycle) API:
 
 ```console
 PUT _data_stream/metrics-historical-2024/_lifecycle
@@ -113,7 +113,7 @@ If you include `data_retention` settings, data stream lifecycle deletes expired 
 ::::{step} Query across both data streams
 
 Query both streams with a wildcard pattern or a [data stream alias](/manage-data/data-store/aliases.md).
-For example:
+For example,  use the [search]({{es-apis}}operation/operation-search) API:
 
 ```console
 GET metrics-*/_search
