@@ -590,26 +590,24 @@ The goal of our release notes is to provide clear, scannable, and actionable inf
 
 Follow these general guidelines: 
 
-* To maintain an immediate and professional tone, every entry must start with a present-tense active verb (for example, _Adds_, _Fixes_, _Updates_, _Enhances_, _Removes_).
+* To maintain an immediate and professional tone, every entry must start with a present-tense active verb (for example, _Add_, _Fix_, _Update_, _Enhance_, _Remove_).
 * Focus on the "what" and the "why." Avoid filler phrases like, "The system now allows you to..."
-* Bold all specific page titles, buttons, icon names, modal/dialog titles, API names, and column names. For a comprehensive list, refer to our [guidance on using bold text](#bold-strong). 
+<!-- TBD: This is currently inconsistent and we've therefore omitted it from AI skills
+* Bold all specific page titles, buttons, icon names, modal/dialog titles, API names, and column names. For a comprehensive list, refer to our [guidance on using bold text](#bold-strong).
+-->
 * Use monospace formatting for file paths, parameters, field or CLI commands. For a comprehensive list, refer to our [guidance on using monospace text](#monospace-code). 
   
 :::{dropdown} Release note examples
-  ✔️ **Do**: Adds a search bar to the **Dashboard** page.
+  ✔️ **Do**: Add a search bar to the Dashboard page
 
-  ✔️ **Do**: Adds a **View in Discover** link to APM rule-based alert details to view related documents in Discover.  
+  ✔️ **Do**: Add a "View in Discover" link to APM rule-based alert details to view related documents in Discover
 
-  ✔️ **Do**: Adds the `xpack.productDocBase.artifactRepositoryProxyUrl` setting to `kibana.yml`.
+  ✔️ **Do**: Add the `xpack.productDocBase.artifactRepositoryProxyUrl` setting to `kibana.yml`
 
-  ✔️ Adds support for `doc_values` to text fields. 
+  ✔️ **Do**: Add support for `doc_values` to text fields
 
-  ❌ **Don't**: From the action menu (...), click the **Delete** button to delete the job. 
-
-  ❌ **Don't**: Now there's an auto-push option for case connectors, enabling automatic case 
-  synchronization.
+  ❌ **Don't**: Now there's an auto-push option for case connectors, enabling automatic case synchronization
 :::
-
 
 ## Redaction of sensitive information
 
