@@ -25,7 +25,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
 
 **Example:** For AWS, allowing traffic between hosts is implemented using security groups.
 
-{applies_to}`ece: ga 4.2` If you need IPv6 egress from ECE containers, ensure the host has working dual-stack (IPv4 and IPv6) connectivity, and complete the optional Podman dual-stack steps later in this guide.
+{applies_to}`ece: ga 4.2` If you need IPv6 egress from ECE containers, ensure the host has working dual-stack (IPv4 and IPv6) connectivity, and complete the optional Podman dual-stack steps [later in this guide](#ece-rhel-ipv6-egress).
 
 ::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
@@ -395,7 +395,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     If the `[containers]` section already exists in the file, merge the `default_ulimits` setting into it rather than creating a duplicate section.
     ::::
 
-
+$$$ece-rhel-ipv6-egress$$$
 30. {applies_to}`ece: ga 4.2` Optional: Enable dual-stack networking for IPv6 egress. Complete these steps only if ECE containers must reach IPv6 endpoints. Podman does not support configuring both IPv4 and IPv6 on the built-in default network through `containers.conf`, so create a dual-stack network and set it as the default for new containers.
 
     1. Create a dual-stack Podman network:

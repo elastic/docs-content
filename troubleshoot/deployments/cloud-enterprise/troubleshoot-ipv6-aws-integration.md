@@ -135,10 +135,10 @@ What to look for:
 
 | Issue | Solution |
 |-------|----------|
-| Health checks failing | Ensure `--proxy-protocol-lenient` was used during ECE install. Health checks must use TCP, not HTTP. |
+| Health checks failing | Ensure `--proxy-protocol-lenient` was used during ECE install.|
 | Client IPs not preserved | Verify Proxy Protocol v2 is enabled on the target group. Check proxy logs show external IPs for `request_source: external`. |
 | IPv6 connections failing | Check NLB has `IpAddressType: dualstack`, security groups allow `::/0`, and route tables have IPv6 routes to IGW. |
-| Connection timeouts | Verify target health, security group rules for ports 443 and 9243. Ensure NLB is in the same subnet as the EC2 instance. |
+| Connection timeouts | Verify the proxies are healthy, and check security group rules for ports 443 and 9243. The NLB needs a subnet in each AZ that has an ECE proxy. |
 | NLB using wrong security group | Ensure NLB uses a security group allowing inbound 443 (not the default VPC security group). |
 
 ## Admin Console ALB issues

@@ -48,10 +48,10 @@ Make sure you have completed all prerequisites and environment preparations desc
 ::::{include} /deploy-manage/_snippets/curl-k-ece.md
 ::::
 
+## Installation steps [ece_installation_steps]
+
 ::::{include} /deploy-manage/deploy/_snippets/ece-proxy-protocol-install-note.md
 ::::
-
-## Installation steps [ece_installation_steps]
 
 1. Install {{ece}} on the first host to start a new installation with your first availability zone. This first host holds all roles to help bootstrap the rest of the installation.
 

@@ -286,7 +286,7 @@ This configuration follows the requirements described in the [ECE load balancers
 
 4. **Network mapping**:
     - **VPC**: Select your dual-stack VPC
-    - **Availability Zones**: Select the same subnet where your ECE instance is running (the NLB must be in the same subnet as the target instance)
+    - **Availability Zones**: Enable the availability zones where your ECE proxies run. The NLB needs a subnet in each AZ that has an ECE proxy.
 
 5. **Security groups**: Select a security group that allows inbound TCP 443 from `0.0.0.0/0` and `::/0` (do not use the default security group)
 

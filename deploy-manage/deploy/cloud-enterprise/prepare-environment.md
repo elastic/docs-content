@@ -26,7 +26,6 @@ These prerequisites are critical to establish a supported ECE configuration. Usi
 * [Software prerequisites](ece-software-prereq.md)
 * [System configuration prerequisites](ece-sysconfig.md)
 * [Networking prerequisites](ece-networking-prereq.md)
-* [IPv6 support](ece-ipv6-support.md) {applies_to}`ece: ga 4.2` - Review to what extent ECE can be integrated into dual-stack networks
 * [Users and permissions prerequisites](ece-users-permissions.md)
 
 ## Best practices and recommendations [ece-prepare-recommendations]

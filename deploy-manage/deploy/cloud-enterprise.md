@@ -61,7 +61,6 @@ The section covers the following tasks:
 
 * Learn about [](./cloud-enterprise/tools-apis.md) that you can use with ECE
 
-
 Other sections of the documentation provide guidance on additional important tasks related to ECE:
 
 * Platform security and management:
