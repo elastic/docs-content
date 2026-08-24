@@ -51,7 +51,7 @@ Refer to [Notifications and actions](experimental-alerting-system/notifications-
 
 ### Workflows
 
-A workflow is what actually sends the notification or runs the automation, for example, posting to Slack, sending an email, calling a webhook. It's the last stop on the Act path, invoked in one of two ways: an action policy routes an alert episode to it based on match conditions and frequency, or an alert episode's lifecycle triggers invoke it immediately in response to a specific event, such as when the episode is activated or assigned.
+A workflow is what actually sends the notification or runs the automation, for example, posting to Slack, sending an email, calling a webhook. An action policy can invoke it, or a lifecycle trigger can invoke it immediately when the episode is activated or assigned.
 
 Refer to [Connect workflows](experimental-alerting-system/workflows-alerting.md) to learn more.
 
