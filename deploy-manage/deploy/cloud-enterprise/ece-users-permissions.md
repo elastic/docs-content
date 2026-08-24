@@ -30,4 +30,6 @@ In this example, the user `elastic` with a UID and GID of 1000 belongs to both t
 For ECE installation with Podman, the user does not need to be added to the `docker` group. Instead, the user must be added to the `podman` group.
 ::::
 
-
+::::{note}
+While the ECE installer user must be non-root (UID ≥ 1000), the ECE platform containers (`frc-*`: runner, allocator, director, and ZooKeeper) run as `root` (UID 0) internally. This is an architectural requirement, not a misconfiguration. ECE-managed data containers (Elasticsearch, Kibana) run as UID 1000 (non-root) since Elasticsearch 8.0.
+::::
