@@ -18,6 +18,9 @@ Use the steps on this page to prepare an Ubuntu server for {{ece}} (ECE): instal
 * [Set up XFS quotas](#ece-xfs-setup-ubuntu)
 * [Update the configurations settings](#ece-update-config-ubuntu)
 * [Configure the Docker daemon options](#ece-configure-docker-daemon-ubuntu)
+* [Verify the host configuration](#ece-verify-host-config-ubuntu)
+
+{applies_to}`ece: ga 4.2` If you need IPv6 egress from ECE containers, ensure the host has working dual-stack (IPv4 and IPv6) connectivity, and complete the optional Docker dual-stack steps in [Configure the Docker daemon options](#ece-ubuntu-ipv6-egress).
 
 
 ## Install Docker on Ubuntu [ece-install-docker-ubuntu]
@@ -350,6 +353,19 @@ For more information, refer to the [Docker daemon configuration overview](https:
     echo "containerd.io hold" | sudo dpkg --set-selections
     ```
 
+### Optional: Enable dual-stack networking for IPv6 egress [ece-ubuntu-ipv6-egress]
+```{applies_to}
+deployment:
+  ece: ga 4.2
+```
+
+::::{include} /deploy-manage/deploy/_snippets/ece-docker-ipv6-daemon.md
+::::
+
+## Verify the host configuration [ece-verify-host-config-ubuntu]
+
+After you finish the configuration steps, reboot the host and confirm that the Docker settings persist.
+
 1. Reboot your system to ensure that all configuration changes take effect:
 
     ```sh
@@ -367,13 +383,4 @@ For more information, refer to the [Docker daemon configuration overview](https:
     If the command returns `Docker Root Dir: /var/lib/docker`, then you need to troubleshoot the previous configuration steps until the Docker settings are applied successfully before continuing with the installation process. For more information, check [Docker daemon configuration](https://docs.docker.com/engine/daemon/) in the Docker documentation.
 
 1. Repeat these steps on other hosts that you want to use with {{ece}} or follow the steps in the next section to start installing {{ece}}.
-
-## Optional: Enable dual-stack networking for IPv6 egress [ece-ubuntu-ipv6-egress]
-```{applies_to}
-deployment:
-  ece: ga 4.2
-```
-
-::::{include} /deploy-manage/deploy/_snippets/ece-docker-ipv6-daemon.md
-::::
 
