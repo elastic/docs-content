@@ -109,8 +109,8 @@ Follow these steps in the {{aws}} console to create a new VPC or configure an ex
 
 2. **Subnets** → Select each subnet → **Actions** → **Edit IPv6 CIDRs**
    - Click **Add IPv6 CIDR**
-   - Enter a unique subnet suffix (for example, `00`, `01`, `02`)
-   - This creates a `/64` IPv6 subnet from your VPC's `/56` block
+   - Choose the **VPC CIDR block**
+   - Edit the **Subnet CIDR block**. The console pre-fills an IPv6 CIDR, for example `2a05:d018:xxx:xx00::/64`. Replace the suffix so each subnet is unique, for example `00`, `01`, `02`
 
 3. **Subnets** → Select each subnet → **Actions** → **Edit subnet settings**
    - Enable **Auto-assign IPv6 address**
@@ -354,7 +354,9 @@ ALBs require subnets in at least two availability zones. If you only have one su
 3. Click **Create subnet**
 4. **Add IPv6 to the new subnet:**
    - Select the new subnet → **Actions → Edit IPv6 CIDRs**
-   - Add an IPv6 CIDR with a unique suffix (for example, `2a05:d018:xxx:xx20::/64`)
+   - Click **Add IPv6 CIDR**
+   - Choose the **VPC CIDR block**
+   - Edit the **Subnet CIDR block**. The console pre-fills an IPv6 CIDR, for example `2a05:d018:xxx:xx00::/64`. Replace the suffix with one that is not already in use, for example `20`
 5. **Associate with route table:**
    - Go to **VPC → Route Tables** → select your route table
    - **Subnet associations → Edit** → Add the new subnet
