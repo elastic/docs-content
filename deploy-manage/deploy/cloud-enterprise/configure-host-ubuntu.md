@@ -127,23 +127,22 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
         sudo update-grub
         ```
 
-3. Configure kernel parameters
+3. Configure kernel parameters:
 
     ```sh
     cat <<EOF | sudo tee -a /etc/sysctl.conf
-    # Required by Elasticsearch
-    vm.max_map_count=1048576
-    # enable forwarding so the Docker networking works as expected
-    net.ipv4.ip_forward=1
-    # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
-    # See https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config-tcpretries.html
-    net.ipv4.tcp_retries2=5
+    vm.max_map_count=1048576 <1>
+    net.ipv4.ip_forward=1 <2>
+    net.ipv4.tcp_retries2=5 <3>
     net.netfilter.nf_conntrack_tcp_timeout_established=7200
     net.netfilter.nf_conntrack_max=262140
-    # Make sure the host doesn't swap too early
-    vm.swappiness=1
+    vm.swappiness=1 <4>
     EOF
     ```
+    1. This setting is required by {{es}}.
+    2. Enable forwarding so the Docker networking works as expected.
+    3. Decrease the maximum number of TCP retransmissions to 5 as recommended for {{es}} TCP retransmission timeout. [Learn more](/deploy-manage/deploy/self-managed/system-config-tcpretries.md).
+    4. Set to 1 to prevent the host from swapping too early.
 
     ::::{note}
     :applies_to: ece: ga 4.2
