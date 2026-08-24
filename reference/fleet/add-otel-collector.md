@@ -172,7 +172,7 @@ Choose how to provide an {{es}} API key for the `elasticsearch/otel` exporter:
 
    ::::
 
-2. Paste or merge the configuration into your OTel Collector configuration file (for example, `otel-opamp.yaml`).
+2. Paste or merge the configuration into your OTel Collector configuration file (for example, `otel.yaml`).
 3. Make sure every environment-variable placeholder in the configuration resolves at runtime:
    - `${API_KEY}`: replace it with your encoded {{es}} API key value, or set the `API_KEY` environment variable before starting or restarting the collector.
    - `${env:HOSTNAME}`: make sure `HOSTNAME` is set in the collector's runtime environment, or replace the placeholder with a static identifier.
@@ -186,7 +186,7 @@ Run the appropriate command for your collector type, pointing to the configurati
 
 ::::{tab-set}
 
-:::{tab-item} Elastic Distribution of OTel Collector
+:::{tab-item} Elastic Agent in OTel mode
 ```shell
 ./otelcol --config ./otel-opamp.yaml
 ```
