@@ -27,9 +27,9 @@ The {{alerting-v2-system}} starts with a rule evaluating your data. When the rul
 
 Because acting and recording are independent, you can switch a rule between Signal mode and Alert mode as your needs change, for example, testing a rule in Signal mode before switching it to Alert mode and setting up notifications. Notifications are handled separately from rules by action policies, so you can also update where notifications go for many rules at once, without editing each rule.
 
-## The building blocks
+## The four building blocks
 
-The {{alerting-v2-system}} is built from five objects: rules, alert episodes, action policies, workflows, and signals. A rule is the starting point, and its mode determines how the rule handles matches.
+The {{alerting-v2-system}} is built around four objects: rules, alert episodes, action policies, and workflows, each with a distinct role.
 
 ### Rules
 
@@ -55,15 +55,9 @@ A workflow is what actually sends the notification or runs the automation, for e
 
 Refer to [Connect workflows](experimental-alerting-system/workflows-alerting.md) to learn more.
 
-### Signals
-
-In Signal mode, a match is recorded as a signal, which skips action policy evaluation entirely. As signals accumulate, you can query them in Discover, build dashboards from them, or feed them into an Alert mode rule that correlates activity across sources, feeding back into the start of the flow.
-
-Refer to [Observe and analyze signals](experimental-alerting-system/observe-and-analyze-signals.md) to learn more.
-
 ## How the pieces fit together [how-pieces-fit-together]
 
-Together, these five objects form two main paths, which diverge based on a rule's mode:
+Together, these building blocks form two main paths, which diverge based on a rule's mode:
 
 1. A rule evaluates your data and detects a match.
 2. Depending on the rule's mode, the system acts on the match (Alert mode) or the rule records it (Signal mode):
@@ -80,5 +74,4 @@ Together, these five objects form two main paths, which diverge based on a rule'
 - **New to the {{alerting-v2-system}}?** [Get started](experimental-alerting-system/get-started.md) walks you through enabling the system, setting up role access, and creating your first rule with a hands-on tutorial.
 - **Wondering what you can detect?** [Rules](experimental-alerting-system/rules.md) shows you how to define what to watch for in {{esql}}, and how to choose and configure the right creation path for your use case.
 - **Curious what happens when something breaks?** [Alerts](experimental-alerting-system/alerts.md) explains how alert episodes track a problem from first detection through recovery, and how to triage them as they come in.
-- **Recording observations without notifying?** [Observe and analyze signals](experimental-alerting-system/observe-and-analyze-signals.md) shows you how to query signals in Discover and build dashboards from it.
 - **Want the right people to know when it matters?** [Notifications and actions](experimental-alerting-system/notifications-actions.md) shows you how workflows and action policies decide who gets notified, and when.
