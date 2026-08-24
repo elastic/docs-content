@@ -45,7 +45,7 @@ Every execution begins with a trigger entry that shows how the run started, such
 
 To review past runs, select the **Executions** tab, then click each run to see detailed logs. Workflow runs can be `Pending`, `In progress`, `Completed`, or `Failed`.
 
-To start a new test run with data from a past execution, refer to [Reuse data from a previous run](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md#workflows-supply-test-input-historical). When you open the test dialog from a specific run, the historical time-range filter is anchored to that execution so it stays in the list.
+To start a new test run with data from a past execution, open the workflow in the editor and follow [Reuse data from a previous run](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md#workflows-supply-test-input-historical). After a run from the editor finishes, you can also click the **Run again** icon {icon}`refresh` in the execution panel to open the **Test workflow** dialog with that run already selected.
 
 ## Troubleshoot errors [workflows-troubleshoot-errors]
 

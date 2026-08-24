@@ -68,6 +68,10 @@ When you click **Run** {icon}`play` in the editor, the **Test workflow** dialog 
 - **Manual**: Type your own JSON.
 - **Historical**: Reuse the data from a previous run. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
 
+For [event-driven](/explore-analyze/workflows/triggers/event-driven-triggers.md) workflows, the dialog also includes an **Event** tab where you can pick a real event to test against. Refer to [Test a workflow with a real event](/explore-analyze/workflows/triggers/event-driven-triggers.md#event-driven-triggers-test). {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+
+For [alert-triggered](/explore-analyze/workflows/triggers/alert-triggers.md) workflows, the dialog includes an **Alert** tab where you can pick a real alert to test against.
+
 ### Use a document from {{es}} [workflows-supply-test-input-document]
 
 Select **Document**, then search for and pick a document from an {{es}} index. The workflow runs against that document's actual field values, which is useful for confirming your steps behave correctly with real data before you rely on a live trigger.
@@ -78,12 +82,19 @@ Select **Manual**, then enter JSON directly in the dialog. This is useful for te
 
 ### Reuse data from a previous run [workflows-supply-test-input-historical]
 
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
 Select **Historical**, then, under **Select execution**, search or pick a previous run from the list. A time-range filter next to the picker defaults to the last week, so you can narrow a long execution history down to the runs you care about.
 
-If you open the dialog from a specific past execution, the time range is anchored to that run. The end of the range is the execution's start time, and the start of the range is one week earlier. That keeps the selected run in the list. If you change the time range so the selected execution falls outside it, the selection clears and **Run** stays unavailable until you pick another execution.
+After a run from the editor finishes, click the **Run again** icon {icon}`refresh` next to **Done** in the execution panel. The **Test workflow** dialog opens on the **Historical** tab with that run selected. The time range uses the execution's start time as the end of the range and a start one week earlier, so the selected run stays in the list.
+
+If you select a run from the **Executions** tab, click **Run** in the editor and select **Historical**.
+
+If you change the time range so the selected execution falls outside it, the selection clears and **Run** stays unavailable until you pick another execution.
 
 After you select an execution, click **Run** to start a test run using that execution's data.
 
 Reusing data this way is useful when you want to reproduce an issue or validate a workflow change against real data from a prior run, without tracking down the original event or re-entering values by hand.
-
-For [event-driven](/explore-analyze/workflows/triggers/event-driven-triggers.md) workflows, the dialog also includes an **Event** tab where you can pick a real event to test against. Refer to [Test a workflow with a real event](/explore-analyze/workflows/triggers/event-driven-triggers.md#event-driven-triggers-test). For [alert-triggered](/explore-analyze/workflows/triggers/alert-triggers.md) workflows, the dialog includes an **Alert** tab where you can pick a real alert to test against.
