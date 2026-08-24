@@ -181,7 +181,7 @@ ping6 -c 3 ipv6.google.com
 
 ::::
 
-::::{step} Prepare the Host and Install ECE
+::::{step} Prepare the host and install ECE
 :anchor: step-install-ece
 
 This step covers a single-node ECE installation. For multi-node deployments, follow the same host preparation steps on each node and refer to the [ECE installation procedures](/deploy-manage/deploy/cloud-enterprise/install-ece-procedures.md) for the full installation sequence.
@@ -492,7 +492,7 @@ After completing your configuration, confirm end-to-end behavior with the follow
 
 For troubleshooting and verification commands specific to IPv6 integration on {{aws}}, refer to [Troubleshoot IPv6 integration for ECE on {{aws}}](/troubleshoot/deployments/cloud-enterprise/troubleshoot-ipv6-aws-integration.md).
 
-## Related Documentation
+## Related documentation
 
 - [IPv6 support on ECE](./ece-ipv6-support.md)
 - [Configure Proxy Protocol v2 in the ECE proxies](./configure-proxy-protocol.md)

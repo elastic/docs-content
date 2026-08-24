@@ -16,7 +16,7 @@ The two most common combinations are:
 * **HTTP (L7) mode**: the load balancer sets the `X-Forwarded-For` header with the client source IP.
 * **TCP (L4) mode**: the load balancer sends [Proxy Protocol v2](https://www.haproxy.org/download/2.8/doc/proxy-protocol.txt) metadata, and the ECE proxies must be configured to parse it. This is also the only mechanism that can preserve an [IPv6 client address](./ece-ipv6-support.md).
 
-This page covers the TCP (L4) path: how to enable Proxy Protocol v2 parsing in the ECE proxies for deployments HTTP traffic, on ports `9200` and `9243`. This is the only Proxy Protocol configuration that ECE exposes. For the other ports, the client IP mechanism is fixed and only configured on the load balancer side, as described in [Port and mode configuration](./ece-load-balancers.md#ece-load-balancer-ports).
+This page covers the TCP (L4) path: how to enable Proxy Protocol v2 parsing in the ECE proxies for deployment HTTP traffic, on ports `9200` and `9243`. This is the only Proxy Protocol configuration that ECE exposes. For the other ports, the client IP mechanism is fixed and only configured on the load balancer side, as described in [Port and mode configuration](./ece-load-balancers.md#ece-load-balancer-ports).
 
 :::{note}
 In ECE versions earlier than 4.2, Proxy Protocol v2 on HTTP ports `9200` and `9243` is disabled and the installation flags described on this page are not available. If you need a TCP (L4) load balancer and client IP address preservation on an earlier version, consider the following options:
