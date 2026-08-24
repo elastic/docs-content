@@ -429,7 +429,7 @@ The response now includes an `inner_hits` section with the nearest matching pass
 
 ## Chunked content retrieval [nested-knn-search-chunked-content]
 
-The patterns on this page apply directly to chunked content retrieval. Whether you chunk documents into paragraphs, sections, or other structures, the approach is the same: store each chunk's vector in a `nested` field and use `inner_hits` to return the most relevant chunk per document. If you use [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) fields, chunking and embedding are handled automatically. Use nested `dense_vector` fields when you need control over the chunking strategy, the embedding model, or chunk-level metadata filtering. For custom models, use the [basic nested kNN example](#nested-knn-basic-example) and [inner hits](#nested-knn-search-inner-hits) patterns shown above.
+The patterns on this page apply directly to chunked content retrieval. Whether you chunk documents into paragraphs, sections, or other structures, the approach is the same: store each chunk's vector in a `nested` field and use `inner_hits` to return the most relevant chunk per document. If you use [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) fields, chunking and embedding are handled automatically. Use nested `dense_vector` fields when you need control over the chunking strategy, the embedding model, or chunk-level metadata filtering. For custom models, use the [basic nested kNN example](#nested-knn-basic-example) and [inner hits](#nested-knn-search-inner-hits) patterns on this page.
 
 ## Resources
 
