@@ -11,7 +11,7 @@ products:
 
 This guide provides an end-to-end example for setting up {{ece}} (ECE) on {{aws}} with IPv6 support, including networking, load balancers, and ECE-specific configuration settings.
 
-The examples demonstrate one way to achieve IPv6 connectivity. Your {{aws}} configuration might vary depending on your environment and requirements, and other cloud providers might require different load balancer configurations and are not covered here. For an overview of IPv6 capabilities and requirements on ECE, refer to [IPv6 support on ECE](./ece-ipv6-support.md).
+The examples demonstrate one way to achieve IPv6 connectivity. Your {{aws}} configuration might vary depending on your environment and requirements, Other cloud providers might require different load balancer configurations and are not covered here. For an overview of IPv6 capabilities and requirements on ECE, refer to [](./ece-ipv6-support.md).
 
 :::::{note}
 This tutorial focuses on new environment setups. If you are working with an existing ECE installation, refer to [Appendix: Integrate IPv6 in existing ECE installations](#existing-installations-summary) to understand the required actions and additional infrastructure changes.
@@ -89,7 +89,7 @@ To create a new environment using this tutorial, you need:
 If you are enabling IPv6 in an existing ECE environment, refer to [Appendix: Integrate IPv6 in existing ECE installations](#existing-installations-summary) for the corresponding requirements.
 ::::
 
-For detailed ECE host and infrastructure requirements, refer to [Prepare your environment](/deploy-manage/deploy/cloud-enterprise/prepare-environment.md) and [Networking prerequisites](/deploy-manage/deploy/cloud-enterprise/ece-networking-prereq.md).
+For detailed ECE host and infrastructure requirements, refer to [](/deploy-manage/deploy/cloud-enterprise/prepare-environment.md) and [](/deploy-manage/deploy/cloud-enterprise/ece-networking-prereq.md).
 
 The examples of this guide use Podman. For Docker-based hosts, replace `podman` with `docker` in all commands. The {{aws}} console steps shown are examples. For details on {{aws}}-specific configuration options, refer to the [{{aws}} documentation](https://docs.aws.amazon.com/).
 
@@ -102,23 +102,25 @@ The examples of this guide use Podman. For Docker-based hosts, replace `podman` 
 
 Follow these steps in the {{aws}} console to create a new VPC or configure an existing one to enable IPv6 support:
 
-1. **VPC** → **Your VPCs** → Select your VPC (or create new) → **Actions** → **Edit CIDRs**
+1. Go to **VPC** → **Your VPCs**, select your VPC (or create new), then click **Actions** → **Edit CIDRs**.
    - Click **Add new IPv6 CIDR**
    - Select **Amazon-provided IPv6 CIDR block**
    - Click **Select CIDR**
 
-2. **Subnets** → Select each subnet → **Actions** → **Edit IPv6 CIDRs**
+2. Go to **Subnets**, select each subnet, then click **Actions** → **Edit IPv6 CIDRs**.
    - Click **Add IPv6 CIDR**
    - Choose the **VPC CIDR block**
    - Edit the **Subnet CIDR block**. The console pre-fills an IPv6 CIDR, for example `2a05:d018:xxx:xx00::/64`. Replace the suffix so each subnet is unique, for example `00`, `01`, `02`
 
-3. **Subnets** → Select each subnet → **Actions** → **Edit subnet settings**
-   - Enable **Auto-assign IPv6 address**
+3. Go to **Subnets**, select each subnet, then click **Actions** → **Edit subnet settings**.
+  
+  Enable **Auto-assign IPv6 address**
 
-4. **Route Tables** → Select the route table for your subnets → **Edit routes**
-   - Add route: Destination `::/0` → Target: Your Internet Gateway
+1. Go to **Route Tables**, select the route table for your subnets, then click **Edit routes**.
+  
+  Add a route: Destination `::/0` → Target: Your Internet Gateway
 
-5. **Security Groups** → Create two security groups.
+1. Go to **Security Groups** and create two security groups.
 
    Create a load balancer security group. This controls internet access to the NLB and ALB. Attach it to the NLB and ALB:
 
@@ -134,7 +136,7 @@ Follow these steps in the {{aws}} console to create a new VPC or configure an ex
    | 9243 | TCP | ECE proxy from the load balancer security group |
    | 12443 | TCP | Cloud UI from the load balancer security group, or from your IP while you install |
 
-   For production multi-node deployments, refer to [Networking prerequisites](./ece-networking-prereq.md) for the full list of required ports, including inter-node traffic.
+   For production multi-node deployments, refer to [](./ece-networking-prereq.md) for the full list of required ports, including inter-node traffic.
 
 ::::
 
@@ -144,10 +146,10 @@ Follow these steps in the {{aws}} console to create a new VPC or configure an ex
 Create one or more RHEL instances to host ECE:
 
 :::{note}
-This tutorial uses a single-host deployment for simplicity and testing purposes. For production environments, you should deploy multiple hosts across availability zones to ensure high availability and resilience. Refer to [Identify the deployment scenario](/deploy-manage/deploy/cloud-enterprise/identify-deployment-scenario.md) for guidance on recommended architectures.
+This tutorial uses a single-host deployment for simplicity and testing purposes. For production environments, you should deploy multiple hosts across availability zones to ensure high availability and resilience. Refer to [](/deploy-manage/deploy/cloud-enterprise/identify-deployment-scenario.md) for guidance on recommended architectures.
 :::
 
-1. **EC2** → **Launch Instance**
+1. Go to **EC2** → **Launch Instance**.
 
 2. **Name and AMI**:
    - Name: `ece-ipv6-host`
@@ -168,7 +170,7 @@ This tutorial uses a single-host deployment for simplicity and testing purposes.
 
 6. **Advanced network configuration** (click **Edit**):
    - **IPv4 address**: Assigned by {{aws}}
-   - **IPv6 address**: Select "Assigned from CIDR" (your subnet's IPv6 range)
+   - **IPv6 address**: Select **Assigned from CIDR** (your subnet's IPv6 range)
    - **IPv6 prefix**: Leave unchecked
 
 7. **Storage**: Add at least 200GB for `/mnt/data` (ECE data directory)
@@ -192,13 +194,13 @@ ping6 -c 3 ipv6.google.com
 ::::{step} Prepare the host and install ECE
 :anchor: step-install-ece
 
-This step covers a single-node ECE installation. For multi-node deployments, follow the same host preparation steps on each node and refer to the [ECE installation procedures](/deploy-manage/deploy/cloud-enterprise/install-ece-procedures.md) for the full installation sequence.
+This step covers a single-node ECE installation. For multi-node deployments, follow the same host preparation steps on each node and refer to the [](/deploy-manage/deploy/cloud-enterprise/install-ece-procedures.md) for the full installation sequence.
 
 ### Prepare the ECE host
 
-Prepare the host according to the official ECE documentation: [Prepare your environment](/deploy-manage/deploy/cloud-enterprise/prepare-environment.md).
+[Prepare the host](/deploy-manage/deploy/cloud-enterprise/prepare-environment.md) according to the steps for your operating system.
 
-For RHEL hosts, follow [Configure a RHEL host](/deploy-manage/deploy/cloud-enterprise/configure-host-rhel.md). If you need IPv6 egress, that guide includes an optional step to create a dedicated dual-stack Podman network with IPv6 support. Complete it **before** you install ECE.
+For RHEL hosts, follow [](/deploy-manage/deploy/cloud-enterprise/configure-host-rhel.md). If you need IPv6 egress, that guide includes an optional step to create a dedicated dual-stack Podman network with IPv6 support. Complete it before you install ECE.
 
 :::{note}
 IPv6 ingress through {{aws}} load balancers does not require dual-stack container networking on the ECE hosts. Dual-stack Podman or Docker configuration is required only for IPv6 egress.
@@ -228,10 +230,10 @@ IPv6 ingress through {{aws}} load balancers does not require dual-stack containe
     For a full list of installation parameters, refer to [elastic-cloud-enterprise.sh install](cloud://reference/cloud-enterprise/ece-installation-script.md).
 
     :::{note}
-    The `--memory-settings` shown in the example are for **example/testing purposes only**. For production deployments, refer to [ECE installation procedures](/deploy-manage/deploy/cloud-enterprise/install-ece-procedures.md) for recommended memory settings based on your deployment size (small/medium/large).
+    The `--memory-settings` shown in the example are for **example/testing purposes only**. For production deployments, refer to [](/deploy-manage/deploy/cloud-enterprise/install-ece-procedures.md) for recommended memory settings based on your deployment size (small/medium/large).
     :::
 
-1. After installation completes on the first node, note the Cloud UI URL and credentials displayed.
+2. After installation completes on the first node, note the Cloud UI URL and credentials displayed.
 
 ::::
 
@@ -244,11 +246,11 @@ The Network Load Balancer (NLB) provides IPv6 and IPv4 ingress for {{es}} and {{
 In this architecture (IPv6 ingress to IPv4 targets), [{{aws}} client IP preservation](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/edit-target-group-attributes.html#client-ip-preservation) at the IP level is not available, so the original client address is propagated using [Proxy Protocol v2](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/edit-target-group-attributes.html#proxy-protocol).
 :::
 
-This configuration follows the requirements described in the [ECE load balancers](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) documentation.
+This configuration follows the requirements described in [](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md).
 
 ### Create the ECE proxies target group
 
-1. Navigate to **EC2** → **Target Groups** → **Create target group**
+1. Go to **EC2** → **Target Groups** → **Create target group**
 
 2. **Basic configuration**:
     - **Target type**: Instances
@@ -283,7 +285,7 @@ This configuration follows the requirements described in the [ECE load balancers
 
 ### Create the dual-stack NLB
 
-1. Navigate to **EC2** → **Load Balancers** → **Create Load Balancer**
+1. Go to **EC2** → **Load Balancers** → **Create Load Balancer**
 
 2. Select **Network Load Balancer**
 
@@ -329,14 +331,14 @@ Both commands should return `200`. If IPv6 returns an error, verify that the NLB
 
 If you need IPv6 access to the Cloud UI, create an Application Load Balancer (ALB).
 
-This configuration follows the requirements described in the [ECE load balancers](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) documentation for Cloud UI traffic.
+This configuration follows the requirements described in [](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) for Cloud UI traffic.
 
 ### ALB prerequisites
 
 Application Load Balancers require an ACM certificate and subnets in at least two availability zones.
 
 **ACM Certificate:**
-1. Navigate to **Certificate Manager** → **Request certificate**
+1. Go to **Certificate Manager** → **Request certificate**
 2. Request a public certificate for your domain
 3. Complete domain validation
 4. Note the certificate ARN
@@ -364,7 +366,7 @@ ALBs require subnets in at least two availability zones. If you only have one su
 
 ### Create the ECE coordinators target group
 
-1. Navigate to **EC2** → **Target Groups** → **Create target group**
+1. Go to **EC2** → **Target Groups** → **Create target group**
 
 2. **Basic configuration**:
    - **Target type**: Instances
@@ -394,7 +396,7 @@ ALBs require subnets in at least two availability zones. If you only have one su
 
 ### Create the dual-stack ALB
 
-1. Navigate to **EC2** → **Load Balancers** → **Create Load Balancer**
+1. Go to **EC2** → **Load Balancers** → **Create Load Balancer**
 
 2. Select **Application Load Balancer**
 
@@ -504,14 +506,14 @@ For troubleshooting and verification commands specific to IPv6 integration on {{
 
 ## Related documentation
 
-- [IPv6 support on ECE](./ece-ipv6-support.md)
-- [Configure Proxy Protocol v2 in the ECE proxies](./configure-proxy-protocol.md)
-- [ECE Hardware requirements](/deploy-manage/deploy/cloud-enterprise/ece-hardware-prereq.md)
-- [Prepare your environment](/deploy-manage/deploy/cloud-enterprise/prepare-environment.md)
-- [Configure a RHEL host](/deploy-manage/deploy/cloud-enterprise/configure-host-rhel.md)
-- [ECE installation procedures](/deploy-manage/deploy/cloud-enterprise/install-ece-procedures.md)
-- [ECE Load balancers](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md)
-- [Networking prerequisites](/deploy-manage/deploy/cloud-enterprise/ece-networking-prereq.md)
+- [](./ece-ipv6-support.md)
+- [](./configure-proxy-protocol.md)
+- [](/deploy-manage/deploy/cloud-enterprise/ece-hardware-prereq.md)
+- [](/deploy-manage/deploy/cloud-enterprise/prepare-environment.md)
+- [](/deploy-manage/deploy/cloud-enterprise/configure-host-rhel.md)
+- [](/deploy-manage/deploy/cloud-enterprise/install-ece-procedures.md)
+- [](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md)
+- [](/deploy-manage/deploy/cloud-enterprise/ece-networking-prereq.md)
 - [{{aws}} Elastic Load Balancing documentation](https://docs.aws.amazon.com/elasticloadbalancing/)
 
 ## Appendix: Integrate IPv6 in existing ECE installations [existing-installations-summary]
@@ -624,10 +626,10 @@ To support IPv6 egress in an existing IPv4 ECE environment, you must update both
     default_network = "ece-network"
     ```
 
-    This is the same dual-stack network configuration described in [Configure a RHEL host](/deploy-manage/deploy/cloud-enterprise/configure-host-rhel.md) for new ECE hosts.
+    This is the same dual-stack network configuration described in [](/deploy-manage/deploy/cloud-enterprise/configure-host-rhel.md) for new ECE hosts.
 
     :::{note}
-    For Docker-based hosts, the approach is different: instead of creating a new network, you enable IPv6 on the default bridge by modifying `/etc/docker/daemon.json`. Refer to [Configure an Ubuntu host](/deploy-manage/deploy/cloud-enterprise/configure-host-ubuntu.md#ece-ubuntu-ipv6-egress) or [Configure a SUSE host](/deploy-manage/deploy/cloud-enterprise/configure-host-suse.md#ece-suse-ipv6-egress) for the Docker-specific procedure.
+    For Docker-based hosts, the approach is different: instead of creating a new network, you enable IPv6 on the default bridge by modifying `/etc/docker/daemon.json`. Refer to [](/deploy-manage/deploy/cloud-enterprise/configure-host-ubuntu.md#ece-ubuntu-ipv6-egress) or [](/deploy-manage/deploy/cloud-enterprise/configure-host-suse.md#ece-suse-ipv6-egress) for the Docker-specific procedure.
     :::
 
 4. Attach running containers to the new network
