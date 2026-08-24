@@ -87,8 +87,8 @@ toc:
                   - file: deploy/cloud-enterprise/ece-sysconfig.md
                   - file: deploy/cloud-enterprise/ece-networking-prereq.md
                   - file: deploy/cloud-enterprise/ece-ipv6-support.md
-                  children:
-                    - file: deploy/cloud-enterprise/ece-ipv6-aws-setup.md
+                    children:
+                      - file: deploy/cloud-enterprise/ece-ipv6-aws-setup.md
                   - file: deploy/cloud-enterprise/ece-users-permissions.md
                   - file: deploy/cloud-enterprise/ece-ha.md
                   - file: deploy/cloud-enterprise/ece-roles.md
