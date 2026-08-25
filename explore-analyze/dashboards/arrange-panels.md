@@ -94,11 +94,13 @@ serverless: ga
 
 Each dashboard enforces the following limits:
 
-- Up to 100 top-level items (panels, including unpinned controls, and sections combined)
-- Up to 100 panels inside each section
-- Up to 100 [pinned controls](add-controls.md)
+- Up to 1,000 top-level items (panels, including unpinned controls, and sections combined)
+- Up to 1,000 panels inside each section
+- Up to 100 [pinned controls](../visualize/dashboard-controls.md#pinned-unpinned-controls)
 
-These limits are independent of each other. For example, a single dashboard can have 100 pinned controls, 100 sections at the top level, and 100 panels inside each of those sections.
+These limits are independent of each other. For example, a single dashboard can have 100 pinned controls, 1,000 sections at the top level, and 1,000 panels inside each of those sections.
+
+When you create or update a dashboard with the [Dashboards API](create-dashboards-programmatically.md), an additional combined limit applies: the total number of panels, sections, and pinned controls can't exceed 1,000. Requests that exceed this limit are rejected with a validation error.
 
 ## Arrange panels in collapsible sections [collapsible-sections]
 ```{applies_to}
@@ -125,7 +127,7 @@ Users viewing the dashboard will find the section in the same state as when you 
 :::{note} 
 :applies_to: stack: ga 9.4
 
-**Filter controls and sections**: Controls placed inside a collapsible section apply their filters only to panels within that section. Controls placed outside sections, or [pinned to the dashboard header](add-controls.md), have global scope and filter all relevant panels on the dashboard. Refer to [Add filter controls](add-controls.md) for more on pinned and unpinned controls.
+**Filter controls and sections**: Controls placed inside a collapsible section apply their filters only to panels within that section. Controls placed outside sections, or [pinned to the top of the dashboard](../visualize/dashboard-controls.md), have global scope and filter all relevant panels on the dashboard.
 :::
 
 ![Collapsible sections](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt8c368aecdd095010/685e8fcb9c34ed3c353812a5/collapsible_panels.gif)

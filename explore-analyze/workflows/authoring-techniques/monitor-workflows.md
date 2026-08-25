@@ -32,6 +32,15 @@ When a workflow runs, the execution panel displays:
 - **Timestamps**: The duration of each step.
 - **Expandable details**: Click any step to examine details such as input parameters, output data, and execution timelines.
 
+## See what triggered a run [workflows-execution-trigger-source]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Every execution begins with a trigger entry that shows how the run started, such as a manual run, a schedule, an alert, or an event. Expand this entry to see the input the workflow received, including the full event payload for [event-driven](/explore-analyze/workflows/triggers/event-driven-triggers.md) runs. This lets you trace an execution back to the event or action that started it, which is especially useful when workflows react to one another through event-driven triggers.
+
 ## View execution history [workflows-execution-history]
 
 To review past runs, select the **Executions** tab, then click each run to see detailed logs. Workflow runs can be `Pending`, `In progress`, `Completed`, or `Failed`. 

@@ -1,4 +1,5 @@
 ---
+navigation_title: Manage through API
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-plugins-guide.html
 applies_to:

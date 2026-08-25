@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html
+description: Send Fleet API requests with the Kibana Console or cURL. Reference examples cover agent policies, integration policies, enrollment tokens, agent listing, KQL filters, and manual rollback.
 applies_to:
   stack: ga
   serverless: ga
@@ -11,16 +12,26 @@ products:
 
 # Kibana Fleet APIs [fleet-api-docs]
 
-You can find details for all available {{fleet}} API endpoints in the [Kibana API docs]({{kib-apis}}). For {{serverless-full}} projects, check the [Kibana Serverless API docs]({{kib-serverless-apis}}).
+This page provides cURL and {{kib}} Console examples for commonly used {{fleet}} APIs, including agent policies, integration policies, enrollment tokens, agent listing, KQL filtering, and agent rollback.
 
-In this section, we provide examples of some commonly used {{fleet}} APIs.
+For full endpoint specifications, parameters, and response schemas, refer to the [Kibana API docs]({{kib-apis}}). For {{serverless-full}} projects, use the [Kibana Serverless API docs]({{kib-serverless-apis}}).
+
+
+## Before you begin [fleet-api-before-you-begin]
+
+You'll need:
+
+* A running {{kib}} deployment or {{serverless-full}} project with {{fleet}} available
+* The {{kib}} host URL for your deployment (for example, `https://my-kibana-host:9243`)
+* Authentication credentials for {{kib}} API requests. API key authentication is recommended. For details, refer to [Authentication]({{kib-apis}}authentication).
+* A {{kib}} user with the required {{fleet}} and {{integrations}} privileges. For details, refer to [Roles and privileges](/reference/fleet/fleet-roles-privileges.md).
 
 
 ## Using the Console [using-the-console]
 
 You can run {{fleet}} API requests through the {{kib}} Console.
 
-1. Open the {{kib}} menu and go to **Management → Dev Tools**.
+1. To open **Console**, find **Dev Tools** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In your request, prepend your {{fleet}} API endpoint with `kbn:`, for example:
 
     ```sh
@@ -28,17 +39,12 @@ You can run {{fleet}} API requests through the {{kib}} Console.
     ```
 
 
-For more detail about using the {{kib}} Console refer to [Run API requests](/explore-analyze/query-filter/tools/console.md).
-
-
-## Authentication [authentication]
-
-Authentication is required to send {{fleet}} API requests. For more information, refer to [Authentication]({{kib-apis}}authentication).
+For more details about using the {{kib}} Console, refer to [Run API requests](/explore-analyze/query-filter/tools/console.md).
 
 
 ## Create agent policy [create-agent-policy-api]
 
-To create a new agent policy in {{fleet}}, call `POST /api/fleet/agent_policies`.
+To create an agent policy in {{fleet}}, call `POST /api/fleet/agent_policies`.
 
 This cURL example creates an agent policy called `Agent policy 1` in the default namespace.
 
@@ -96,7 +102,7 @@ Example response:
 }
 ```
 
-1. Make a note of the policy ID. You’ll need the policy ID to add integration policies.
+1. Note the policy ID. You need it to add integration policies.
 
 
 
@@ -109,7 +115,7 @@ You can use the {{fleet}} API to [Create and customize an {{elastic-defend}} pol
 ::::
 
 
-This cURL example creates an integration policy for Nginx and adds it to the agent policy created in the previous example:
+This cURL example creates an integration policy for Nginx and adds it to the agent policy you created in [Create agent policy](#create-agent-policy-api):
 
 ```shell
 curl --request POST \
@@ -414,10 +420,10 @@ Example response (formatted for readability):
 
 ## List all {{agents}} [list-agents-api]
 
-Use the [Get agents API]({{kib-apis}}operation/operation-get-fleet-agents) to retrieve a list of currently enrolled {{agents}}:
+Use the [Get agents API]({{kib-apis}}operation/operation-get-fleet-agents) to retrieve a list of enrolled {{agents}}:
 
 ```shell
-curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents
+curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents'
 ```
 
 By default, a maximum of 10,000 agents are returned, with 20 agents listed per page.
@@ -461,24 +467,51 @@ curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents?perPage=10000&se
 ```
 
 
+## Filter results with KQL [filter-results-with-kql]
+
+The following {{fleet}} list endpoints accept a `kuery` query parameter that takes a [{{kib}} Query Language (KQL)](elasticsearch://reference/query-languages/kql.md) string to filter results: agents (`GET /api/fleet/agents`), agent policies (`GET /api/fleet/agent_policies`), package policies (`GET /api/fleet/package_policies`), and enrollment tokens (`GET /api/fleet/enrollment_api_keys`). To check whether another endpoint accepts `kuery`, refer to its parameters in the [Kibana API docs]({{kib-apis}}).
+
+**Agents and enrollment tokens** are stored in {{es}} system indices. Reference fields directly, with no prefix. This cURL example returns only the online agents:
+
+```shell
+curl --request GET \
+  --url 'https://my-kibana-host:9243/api/fleet/agents?kuery=status:online' \
+  --header 'Authorization: ApiKey yourbase64encodedkey' \
+  --header 'kbn-xsrf: xx'
+```
+
+**Agent policies and package policies** are stored as saved objects. When a field path contains a dot, prefix it with the saved object type so the query parser reads it as a field name and not as a type. This cURL example returns only the package policies for the `nginx` integration:
+
+```shell
+curl --request GET \
+  --url 'https://my-kibana-host:9243/api/fleet/package_policies?kuery=ingest-package-policies.package.name:nginx' \
+  --header 'Authorization: ApiKey yourbase64encodedkey' \
+  --header 'kbn-xsrf: xx'
+```
+
+::::{tip}
+If a query returns a `400`, the field needs a saved object type prefix. When the error is a `KQLSyntaxError` about a missing key, it names the saved object index pattern to use as the prefix (for example `ingest-agent-policies.name`). When the error is `This type <x> is not allowed`, no pattern is named, so prefix the field with the endpoint's saved object type (for example `ingest-package-policies.package.name`).
+::::
+
+For the full query syntax, including wildcards, ranges, and boolean operators, refer to [{{kib}} Query Language (KQL)](elasticsearch://reference/query-languages/kql.md).
+
+
 ## Manually roll back an {{agent}} upgrade [agent-rollback-api]
 ```{applies_to}
 stack: ga 9.3+
 ```
 
-The manual rollback feature for {{agent}} gives you the ability to roll back to the previously installed version if the install artifacts are still available on disk--typically seven days after the upgrade. 
+The manual rollback feature for {{agent}} lets you roll back to the previously installed version if the install artifacts are still available on disk (typically seven days after the upgrade).
 
-To roll back a single agent:
-   :Call `POST /api/fleet/agents/{agentID}/rollback`.
+To roll back a single agent, call `POST /api/fleet/agents/{agentID}/rollback`.
 
-To roll back multiple agents:
-   :Call `POST /api/fleet/agents/bulk_rollback`.
+To roll back multiple agents, call `POST /api/fleet/agents/bulk_rollback`.
 
 ### Limitations for manual rollback [rollback-limitations-api]
 
-These limitations apply for the manual rollback feature: 
+These limitations apply for the manual rollback feature:
 
-* Rollback is limited to the version running _before_ the upgrade. Both the previously and currently running versions must be 9.3.0 or later for this functionality to be available.
+* Rollback is limited to the version running _before_ the upgrade. Both the pre-upgrade and post-upgrade versions must be 9.3.0 or later for this functionality to be available.
 * Data required for the rollback is stored on disk for seven days, which can impact available disk space.
 * Rollback must be performed within seven days of the upgrade. Rollback data is automatically cleaned up after seven days and becomes unavailable.
 * Manual rollback is not available for system-managed packages such as DEB and RPM.
@@ -489,6 +522,24 @@ These limitations apply for the manual rollback feature:
 If no version is available on disk to rollback to, you get an error.
 This situation can happen if:
 
-- the version you upgraded from is earlier than 9.3.0, as the feature is not supported for earlier versions. 
+- The version you upgraded from is earlier than 9.3.0, as the feature is not supported for earlier versions.
 
-- the rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space. 
+- The rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space.
+
+
+## Next steps [fleet-api-next-steps]
+
+After you create agent and integration policies with the API:
+
+* [Enroll {{agents}}](/reference/fleet/fleet-enrollment-tokens.md) using enrollment tokens from your agent policy
+* [Manage {{agents}} in {{fleet}}](/reference/fleet/manage-elastic-agents-in-fleet.md) to monitor status and policy assignments
+* [Create an agent policy without using the UI](/reference/fleet/create-policy-no-ui.md) for automation use cases
+
+
+## Related pages [fleet-api-related-pages]
+
+* [Kibana API docs]({{kib-apis}})
+* [Run API requests](/explore-analyze/query-filter/tools/console.md)
+* [Roles and privileges](/reference/fleet/fleet-roles-privileges.md)
+* [Grant standalone {{agents}} access to {{es}}](/reference/fleet/grant-access-to-elasticsearch.md)
+* [{{kib}} Query Language (KQL)](elasticsearch://reference/query-languages/kql.md)

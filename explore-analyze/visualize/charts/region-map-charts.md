@@ -5,7 +5,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Instructions and best practices for building region map charts with Kibana Lens in Elastic.
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+description: Create region map charts to visualize geographic distributions, compare metrics across locations, and identify regional patterns.
 ---
 
 # Build region map charts with {{kib}}
@@ -26,9 +31,8 @@ To build a region map chart:
 ::::::{stepper}
 
 :::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a region map chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 :::::
 
 :::::{step} Set the visualization to Region map
@@ -66,8 +70,8 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 :::::
 
 :::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and reuse it later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 :::::
 
 ::::::
@@ -139,10 +143,13 @@ The following examples show various configuration options for building impactful
 ![Region map showing website traffic by destination country](/explore-analyze/images/region-map-example-traffic.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a choropleth map that colors countries by request count, using the `geo.dest` field which contains two-letter ISO country codes.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -245,10 +252,13 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Region map showing customer distribution by country](/explore-analyze/images/region-map-example-customers.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example colors countries by the number of unique customers rather than total orders, giving a clearer picture of market reach per region.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -347,10 +357,13 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Region map showing average ticket price by destination country](/explore-analyze/images/region-map-example-ticket-price.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example maps average flight ticket prices by destination country, highlighting which regions have the most expensive flights.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

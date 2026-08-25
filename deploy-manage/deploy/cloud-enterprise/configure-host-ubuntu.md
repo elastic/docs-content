@@ -12,17 +12,20 @@ products:
 
 # Configure an Ubuntu host [ece-configure-hosts-ubuntu]
 
-The following instructions show you how to prepare your hosts on Ubuntu.
+Use the steps on this page to prepare an Ubuntu server for {{ece}} (ECE): install and configure Docker, set up an XFS volume for ECE data, tune kernel and systemd parameters for production workloads, and pin the Docker version to prevent unattended upgrades.
 
 * [Install Docker](#ece-install-docker-ubuntu)
 * [Set up XFS quotas](#ece-xfs-setup-ubuntu)
 * [Update the configurations settings](#ece-update-config-ubuntu)
 * [Configure the Docker daemon options](#ece-configure-docker-daemon-ubuntu)
+* [Verify the host configuration](#ece-verify-host-config-ubuntu)
+
+{applies_to}`ece: ga 4.2` If you need IPv6 egress from ECE containers, ensure the host has working dual-stack (IPv4 and IPv6) connectivity, and complete the optional Docker dual-stack steps in [Configure the Docker daemon options](#ece-ubuntu-ipv6-egress).
 
 
 ## Install Docker on Ubuntu [ece-install-docker-ubuntu]
 
-Install a compatible Docker version on Ubuntu.
+Install a compatible Docker version on Ubuntu using `apt`.
 
 ::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
@@ -49,7 +52,7 @@ Install a compatible Docker version on Ubuntu.
       $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     ```
 
-4. Install the correct version of the `docker-ce` package. The following is an example of installing Docker 27.0. If you decide to install a different Docker version, make sure to replace with the desired version in the commands below.
+4. Install the correct version of the `docker-ce` package. The following command is an example of installing Docker 27.0. To install a different Docker version, replace 27.0 with your preferred version from the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise).
 
     ```sh
     sudo apt update && sudo apt install -y docker-ce=5:27.0.* docker-ce-cli=5:27.0.* containerd.io
@@ -124,23 +127,27 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
         sudo update-grub
         ```
 
-3. Configure kernel parameters
+3. Configure kernel parameters:
 
     ```sh
     cat <<EOF | sudo tee -a /etc/sysctl.conf
-    # Required by Elasticsearch
-    vm.max_map_count=1048576
-    # enable forwarding so the Docker networking works as expected
-    net.ipv4.ip_forward=1
-    # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
-    # See https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config-tcpretries.html
-    net.ipv4.tcp_retries2=5
+    vm.max_map_count=1048576 <1>
+    net.ipv4.ip_forward=1 <2>
+    net.ipv4.tcp_retries2=5 <3>
     net.netfilter.nf_conntrack_tcp_timeout_established=7200
     net.netfilter.nf_conntrack_max=262140
-    # Make sure the host doesn't swap too early
-    vm.swappiness=1
+    vm.swappiness=1 <4>
     EOF
     ```
+    1. This setting is required by {{es}}.
+    2. Enable forwarding so the Docker networking works as expected.
+    3. Decrease the maximum number of TCP retransmissions to 5 as recommended for {{es}} TCP retransmission timeout. [Learn more](/deploy-manage/deploy/self-managed/system-config-tcpretries.md).
+    4. Set to 1 to prevent the host from swapping too early.
+
+    ::::{note}
+    :applies_to: ece: ga 4.2
+    If you need IPv6 egress from containers, also add `net.ipv6.conf.all.forwarding=1` to the same `sysctl` configuration.
+    ::::
 
     ::::{important}
     The `net.ipv4.tcp_retries2` setting applies to all TCP connections and affects the reliability of communication with systems other than {{es}} clusters too. If your clusters communicate with external systems over a low quality network then you may need to select a higher value for `net.ipv4.tcp_retries2`.
@@ -197,7 +204,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
     Authenticate the `elastic` user to pull images from the Docker registry you use, by creating the file `/home/elastic/.docker/config.json`. This file needs to be owned by the `elastic` user. If you are using a user name other than `elastic`, adjust the path accordingly.
 
-    **Example**: In case you use `docker.elastic.co`, the file content looks like as follows:
+    **Example**: If you use `docker.elastic.co`, the file content looks like this:
 
     ```text
     {
@@ -345,6 +352,19 @@ For more information, refer to the [Docker daemon configuration overview](https:
     echo "containerd.io hold" | sudo dpkg --set-selections
     ```
 
+### Optional: Enable dual-stack networking for IPv6 egress [ece-ubuntu-ipv6-egress]
+```{applies_to}
+deployment:
+  ece: ga 4.2
+```
+
+::::{include} /deploy-manage/deploy/_snippets/ece-docker-ipv6-daemon.md
+::::
+
+## Verify the host configuration [ece-verify-host-config-ubuntu]
+
+After you finish the configuration steps, reboot the host and confirm that the Docker settings persist.
+
 1. Reboot your system to ensure that all configuration changes take effect:
 
     ```sh
@@ -362,3 +382,4 @@ For more information, refer to the [Docker daemon configuration overview](https:
     If the command returns `Docker Root Dir: /var/lib/docker`, then you need to troubleshoot the previous configuration steps until the Docker settings are applied successfully before continuing with the installation process. For more information, check [Docker daemon configuration](https://docs.docker.com/engine/daemon/) in the Docker documentation.
 
 1. Repeat these steps on other hosts that you want to use with {{ece}} or follow the steps in the next section to start installing {{ece}}.
+

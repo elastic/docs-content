@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/es-ui-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-ui.html
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -77,9 +77,44 @@ Inline actions include the following (some actions are unavailable in some conte
 * **Copy to Clipboard**: Copy the selected field-value pair to paste elsewhere.
 
 
+## Details flyouts [details-flyouts]
+
+```yaml {applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Throughout the {{security-app}}, clicking an alert, event, attack, host, user, or other item opens its details in a flyout over the current page.
+
+From within a details flyout, selecting certain elements (such as a rule name, a related entity, or an investigation tool like **Correlations** or **Analyzer**) opens a **child flyout** that layers on top of the current one, instead of expanding or replacing it.
+
+::::{note}
+You might see the term "tools flyout" used elsewhere to describe this pattern. That's internal engineering terminology; this documentation uses **child flyout** instead.
+::::
+
+Use these controls, which appear at the top of the flyout, to navigate:
+
+| Icon | Name | Action |
+|------|------|--------|
+| {icon}`share` | Share | Available on some flyouts, such as alert, event, and attack details. Copies a shareable URL. Don't copy from the browser address bar, since it might include filters or relative time ranges that produce inconsistent results. |
+| {icon}`undo` | Back | Appears after you open a child flyout. Select to return to the previous flyout. |
+| {icon}`clock_counter` | History | Appears after you've navigated through more than one flyout. View the flyouts you've opened in this session and select one to jump back to it. |
+
+Most details flyouts also have a footer with:
+
+* **Ask AI Assistant** or **Add to chat**: Continue investigating the item in [AI Assistant](/solutions/security/ai/ai-assistant.md) or [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md), depending on which chat experience your space uses.
+* **Take action**: Opens a menu with more options for the item, such as adding it to a case, applying tags, or investigating in Timeline. Available actions vary depending on the flyout.
+
+::::{note}
+:applies_to: stack: ga 9.0-9.4
+In these versions, some details flyouts are organized into a right panel, a left panel, and preview panels, instead of the single flyout with child flyouts described here.
+::::
+
 ## {{security-app}} pages [_security_app_pages]
 
 The {{security-app}} contains the following pages that enable analysts to view, analyze, and manage security data.
+
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` You can reorder these items in the navigation menu, or hide the ones you don't use. Refer to [Customize your navigation menu](/explore-analyze/find-and-organize/customize-navigation.md).
 
 ### Discover [security-ui-discover]
 
@@ -117,14 +152,16 @@ Expand this section to access the following pages:
 ### Detections [_detections]
 
 ```yaml {applies_to}
-stack: preview 9.4
-serverless: preview
+stack: preview =9.4, ga 9.5+
+serverless: ga
 ```
 
 Expand this section to access the following pages:
 
 * [Alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md): View and manage detection alerts to monitor activity within your network.
-* [Attacks](/solutions/security/ai/attacks-page.md): View and triage correlated attack chains alongside their associated alerts.
+* [Attacks](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md): View and triage correlated attack chains alongside their associated alerts.
+
+Open **Attacks** at **Detections** → **Views** → **Attacks**.
 
 Refer to [Detections and alerts](/solutions/security/detect-and-alert.md) for more information.
 
@@ -150,7 +187,7 @@ Create and manage workflows that automate tasks such as incident response, case 
 
 ### Attack discovery
 
-Use large language models (LLMs) to analyze alerts in your environment and identify threats. Refer to [](/solutions/security/ai/attack-discovery.md) for more information.
+Use large language models (LLMs) to analyze alerts in your environment and identify threats. Refer to [](/solutions/security/ai/attack-discovery/index.md) for more information.
 
 
 ### Assets [security-ui-assets]
@@ -189,8 +226,8 @@ To access this section, turn on the `securitySolution:enablePrivilegedUserMonito
 
 Expand this section to access the following pages:
 
-- [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md): Access a comprehensive overview of entity risk scores and anomalies identified by prebuilt {{anomaly-jobs}}.
-- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md): Set up your privileged users and monitor their activities to identify suspicious behavior.
+- [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md): Access a comprehensive overview of entity risk scores and anomalies identified by prebuilt {{anomaly-jobs}}.
+- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activities.md): Set up your privileged users and monitor their activities to identify suspicious behavior.
 
 
 ### Explore [_explore] 

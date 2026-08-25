@@ -25,6 +25,9 @@ All {{kib}} actions are automatically authenticated using the permissions or API
 The detection alert step type IDs use **PascalCase**, not lowercase or snake_case: `kibana.SetAlertsStatus`, `kibana.SetAlertTags`. The editor rejects lowercase variants. This is the most common authoring surprise on the {{kib}} namespace.
 :::
 
+:::{include} ../_snippets/schema-location-legend.md
+:::
+
 ## Step types
 
 - [`kibana.SetAlertsStatus`](#kibana-setalertsstatus): Change the status of one or more detection alerts.
@@ -33,6 +36,10 @@ The detection alert step type IDs use **PascalCase**, not lowercase or snake_cas
 - [Deprecated Case aliases](#deprecated-aliases): Use [`cases.*`](/explore-analyze/workflows/steps/cases.md) instead.
 
 ---
+
+:::{tip}
+For new workflows, prefer the [`security.setAlertStatus`](/explore-analyze/workflows/steps/alert-triage.md#security-setalertstatus) and [`security.setAlertTags`](/explore-analyze/workflows/steps/alert-triage.md#security-setalerttags) steps over `kibana.SetAlertsStatus` and `kibana.SetAlertTags`. These live alongside equivalent attack-triage steps (`security.setAttackStatus`, `security.assignAttack`, `security.setAttackTags`) under [Security action steps](/explore-analyze/workflows/steps/security.md), which is the preferred path for alert and attack triage going forward.
+:::
 
 ## `kibana.SetAlertsStatus` [kibana-setalertsstatus]
 
@@ -135,6 +142,7 @@ Refer to [Migrate workflows from 9.3 to 9.4](/explore-analyze/workflows/authorin
 
 ## Related
 
+- [Security action steps](/explore-analyze/workflows/steps/security.md): Named `security.*` steps for {{elastic-sec}}, including [Alert triage](/explore-analyze/workflows/steps/alert-triage.md) and [Attack triage](/explore-analyze/workflows/steps/attack-triage.md) for status, assignee, and tag management.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): 27 step types for working with cases. Use these instead of the deprecated Case aliases above.
 - [Streams action steps](/explore-analyze/workflows/steps/streams.md): Observability Streams operations.
 - [Elasticsearch action steps](/explore-analyze/workflows/steps/elasticsearch.md): For {{es}} API calls.

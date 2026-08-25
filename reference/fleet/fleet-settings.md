@@ -190,17 +190,18 @@ To enable automatic deletion of unenrolled agents:
 1. Go to **{{fleet}}** > **Settings**.
 2. In the **Advanced Settings** section, enable the **Delete unenrolled agents** option.
 
-### Show agentless resources [show-agentless-resources-setting]
+### Show {{managed-integration}} resources [show-agentless-resources-setting]
+
 ```{applies_to}
-stack: ga 9.1.6
-serverless: ga
+serverless: unavailable
+stack: preview 9.1-9.4
 ```
 
-If you have [agentless integrations](/manage-data/ingest/agentless/agentless-integrations.md) deployed, you can enable the **Show agentless resources** option to display agentless agents and policies in {{fleet}} for inspection and diagnostics purposes. This setting is stored locally, and it's only visible to you.
+If you have [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md) deployed, you can enable the **Show agentless resources** option to display the Managed integration collectors and the Managed integration policies in {{fleet}} for inspection and diagnostics purposes. This setting is stored locally, and it's only visible to you.
 
-To display agentless resources in the agent and agent policy lists:
+To display {{managed-integration}} resources in the agent and agent policy lists:
 
 1. Go to **{{fleet}}** > **Settings**.
 2. In the **Advanced Settings** section, enable **Show agentless resources**.
 
-You can [view and request diagnostics](/troubleshoot/ingest/fleet/diagnostics.md#agent-diagnostics-collect) for agentless agents, but you cannot upgrade, unenroll, or reassign them.
+You can [view and request diagnostics](/troubleshoot/ingest/fleet/diagnostics.md#agent-diagnostics-collect) for Managed integration collectors, but you cannot upgrade, unenroll, or reassign them.

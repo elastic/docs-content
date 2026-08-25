@@ -41,14 +41,21 @@ For detailed examples of implementing SAML SSO using common identity providers, 
 
 ## Prerequisites [ec_prerequisites_4]
 
-* This functionality requires an [Enterprise subscription](https://www.elastic.co/subscriptions/cloud).
 * You must have a SAML 2.0 compatible identity provider.
+* Eligibility for organization-level SAML SSO varies by resource type, rather than being a single, organization-wide entitlement:
+
+    * **{{ech}}**: Requires an [Enterprise subscription](https://www.elastic.co/subscriptions/cloud).
+    * **{{serverless-full}}**: Included at no additional cost, on any tier across all project types.
+    * **ECK, ECE, and self-managed clusters connected through [Cloud Connect](/deploy-manage/cloud-connect.md)**: Each connected cluster qualifies individually based on its license. A cluster with a Platinum or Enterprise license is eligible, with no paid {{ecloud}} subscription required. Clusters on lower tiers, such as Basic, are not eligible, even if other eligible clusters are connected to the same organization.
+
+    Eligibility is assessed independently for each resource type, so meeting the requirement for one does not grant entitlement to another. For example, an organization with both a {{serverless-full}} project and an {{ech}} deployment on a Standard subscription can use organization-level SAML SSO with the Serverless project, where it is included, but the {{ech}} deployment remains ineligible until the organization upgrades to an Enterprise subscription.
 
 
 ## Risks and considerations [ec_risks_and_considerations]
 
 Before you configure SAML SSO, familiarize yourself with the following risks and considerations:
 
+* The {{ecloud}} SAML SSO organization-level configuration only supports one IdP at a time. If you need multiple IdPs, consider using separate organizations. Review [](/deploy-manage/cloud-organization/manage-multiple-organizations.md) for more guidance.
 * You can claim up to 10 domains. Claiming a domain also enables SSO for all of its subdomains.
 * Actions taken on the IdP are not automatically reflected in {{ecloud}}. For example, if you remove a user from your IdP, they are not removed from the {{ecloud}} organization and their active sessions are not invalidated.
 

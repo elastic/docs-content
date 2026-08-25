@@ -1,4 +1,5 @@
 ---
+description: Define groups of important entities, such as executives or critical hosts, and factor watchlist membership into entity risk scoring in Elastic Security.
 applies_to:
   stack: ga 9.4+
   serverless:
@@ -24,7 +25,7 @@ A **Privileged Users** watchlist is available by default. It automatically pulls
 
 ## Risk weighting [watchlists-risk-weighting]
 
-Each watchlist has a configurable risk weighting that influences the risk scores of its members. When an entity belongs to a watchlist, the risk scoring engine applies the watchlist's risk weighting using a Bayesian update — either increasing or decreasing the alert-based risk score depending on the configured weight.
+Each watchlist has a configurable risk weighting that influences the risk scores of its members. When an entity belongs to a watchlist, the risk score maintainer applies the watchlist's risk weighting using a Bayesian update — either increasing or decreasing the alert-based risk score depending on the configured weight.
 
 For example, assigning a higher risk weighting to a watchlist of executives means that suspicious activity involving those users scores higher and surfaces sooner during investigations.
 
@@ -42,7 +43,7 @@ To create a watchlist:
 4. Enter a name and, optionally, a description.
 5. Set a **Risk Score Weighting** using the slider.
 6. Under **Rule Based Data Sources**, define which entities belong to this watchlist:
-   * **Entity Store**: Filter existing entities in the entity store using KQL syntax.
+   * **Entity Store**: Filter existing entities in the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) using KQL syntax.
    * **IndexPattern**: Select an index pattern, apply a KQL filter, and choose the field used to identify entities.
 7. Click **Save**.
 
@@ -52,6 +53,11 @@ An entity can belong to more than one watchlist.
 
 The **Watchlists** tab displays all watchlists in the current {{kib}} space. You can edit and delete individual watchlists using the icons in the relevant watchlist row.
 
+:::{tip}
+:applies_to: {stack: ga 9.5+, serverless: ga}
+You can also manage watchlists conversationally with {{agent-builder}} using the `manage-watchlists` [skill](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#security-skills). For example prompts, refer to [Watchlist management](/solutions/security/ai/agent-builder/skills-use-cases.md#watchlist-management).
+:::
+
 :::{image} /solutions/images/security-watchlists.png
 :alt: The Watchlists tab on the Entity analytics management page
 :screenshot:
@@ -59,7 +65,7 @@ The **Watchlists** tab displays all watchlists in the current {{kib}} space. You
 
 ## Filter entities by watchlist [watchlists-filter]
 
-On the [Entity analytics page](/solutions/security/advanced-entity-analytics/overview.md), you can filter the **Entities** section by watchlist membership to focus on the entities most relevant to your investigation.
+On the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), you can filter the **Entities** section by watchlist membership to focus on the entities most relevant to your investigation.
 
 ## Known limitations [watchlists-limitations]
 

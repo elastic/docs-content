@@ -29,6 +29,11 @@ This page covers the main ways to explore dashboard data: using Kibana Query Lan
 
 This section shows the most common ways for you to filter dashboard data. For more information about {{kib}} and {{es}} filtering capabilities, refer to [](/explore-analyze/query-filter.md).
 
+:::{note}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+When a dashboard includes {{esql}} visualizations or {{esql}}-powered [**Vega** and **Vega-Lite** panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use the `STATS` command, you can turn on {icon}`bolt` **Fast mode** to return faster, estimated results for them. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
+:::
+
 ### Filter dashboards using the KQL query bar [_filter_dashboards_using_the_kql_query_bar]
 
 The query bar lets you build filters using [{{kib}} Query Language (KQL)](../query-filter/languages/kql.md). When typing, it dynamically suggests matching fields, operators, and values to help you get the exact results that you want.
@@ -105,12 +110,12 @@ The data visible in a dashboard highly depends on the time range that is applied
 
 #### Apply a global time range to an entire dashboard [_apply_a_global_time_range_to_an_entire_dashboard]
 
-The global time range menu is located right next to the query bar, in the dashboard’s header. With this menu, you can select the time range to apply, and set the frequency for refreshing the dashboard data. Setting the time range is a common action in {{kib}}. Refer to [Set the time range](../query-filter/filtering.md) for more details.
+Use the global time filter next to the query bar in the dashboard header to select a time range and set how often the dashboard data refreshes. Refer to [Set the time range](../query-filter/filtering.md) for details.
 
-:::{image} /explore-analyze/images/kibana-dashboard-global-time-range.png
-:alt: Time range menu with multiple time range suggestions
+:::{image} /explore-analyze/images/kibana-date-range-picker.png
+:alt: Time filter showing presets and controls for custom ranges, settings, and saving presets
 :screenshot:
-:width: 500px
+:width: 250px
 :::
 
 
@@ -131,7 +136,7 @@ To edit it, click the filter. You can then adjust and apply the updated **Time r
 
 ### Use available controls [_use_available_controls]
 
-Dashboard authors can [add various types of additional controls](add-controls.md) to help you filter the data that you want to visualize.
+Dashboard authors can [add various types of additional controls](../visualize/dashboard-controls.md) to help you filter the data that you want to visualize.
 
 
 #### Filter the data with Options list controls [filter-the-data-with-options-list-controls]
@@ -248,12 +253,13 @@ serverless: preview
 stack: unavailable
 ```
 
-A dashboard can display data from multiple {{serverless-short}} projects when [{{cps}}](/explore-analyze/cross-project-search.md) is enabled. To check and control which projects are queried, use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header. You can change this scope at any time during your session, and all panels update accordingly.
+A dashboard can display data from multiple {{serverless-short}} projects when [{{cps}}](/explore-analyze/cross-project-search.md) is enabled. To check and control which projects are queried, use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header. You can change this scope at any time during your session, and all panels update accordingly. Dashboard controls, such as **Options list** controls, also suggest values from all projects in the selected scope.
 
 Sometimes, the scope behaves differently:
 
 * **The dashboard restores a saved scope on open.** Some dashboards are configured to [store a {{cps}} scope](/explore-analyze/dashboards/create-dashboard.md). When you open them, the {{cps-init}} scope selector is set to the stored scope. You can still change it during your session.
 * **A panel has a Custom CPS scope badge.** This means the panel uses [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) to query a fixed set of projects. It is not affected when you change the dashboard's scope. Select the badge to view which projects the panel queries.
+* **Query bar and filter suggestions come from the origin project only.** As you type a query or filter value, the autocomplete suggests values from the origin project, regardless of the selected scope. Filtering itself still respects the scope, so a value that exists only in a linked project works when you enter it manually. For value suggestions across all projects in scope, use an **Options list** control instead.
 
 
 ## Full screen mode and maximized panel views [_full_screen_mode_and_maximized_panel_views]

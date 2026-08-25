@@ -17,6 +17,9 @@ products:
 
 The `switch` step evaluates an expression once and compares its value against each case's `match` field in order, then dispatches to the first matching case and executes its `steps`. Use it for multi-way branching where an `if` chain would be awkward (for example, routing by alert category, severity tier, or environment name).
 
+:::{include} ../_snippets/schema-location-legend.md
+:::
+
 ## Parameters
 
 | Parameter | Location | Type | Required | Description |

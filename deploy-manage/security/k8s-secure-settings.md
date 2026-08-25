@@ -13,11 +13,15 @@ products:
 
 With the help of ECK operator, you can specify {{es}} and {{kib}} [secure settings](/deploy-manage/security/secure-settings.md) to your deployments through [Kubernetes secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
 
-The secrets should contain a key-value pair for each secure setting you want to add. ECK automatically injects these settings into the keystore on each {{es}} or {{kib}} Pod before it starts. The ECK operator continues to watch the secrets for changes and will update the {{es}} or {{kib}} keystores when it detects a change.
+The secrets should contain a key-value pair for each secure setting you want to add. ECK watches the referenced secrets for changes and delivers them to your {{es}} or {{kib}} Pods. By default, each update triggers a rolling restart of the affected Pods to repopulate the keystore.
 
-To allow the operator to inject the settings into the application, you must reference your secrets in the `spec.secureSettings` field of your {{es}} or {{kib}} object definition. Next, you’ll find examples for both {{es}} and {{kib}}.
+You also can opt in to [updating secure settings without a restart](#k8s-es-secure-settings-hot-reload).
 
-## {{es}} basic usage [k8s_basic_usage]
+## {{es}} secure settings [k8s-es-secure-settings]
+
+Reference one or more Kubernetes secrets from `spec.secureSettings` so ECK can inject secure settings into your {{es}} Pods. You can [add secrets to the resource](#k8s_basic_usage), [map secret keys to keystore setting names](#k8s_projection_of_secret_keys_to_specific_paths), and [update secure settings without a rolling restart](#k8s-es-secure-settings-hot-reload).
+
+### Reference secrets in the Elasticsearch resource [k8s_basic_usage]
 
 It is possible to reference several secrets:
 
@@ -56,7 +60,7 @@ stringData:
 Note that by default [Kubernetes secrets](https://kubernetes.io/docs/concepts/configuration/secret/) are expecting the value to be base64 encoded unless under a `stringData` field.
 ::::
 
-### Projection of secret keys to specific paths [k8s_projection_of_secret_keys_to_specific_paths]
+### Project secret keys to specific paths [k8s_projection_of_secret_keys_to_specific_paths]
 
 You can export a subset of secret keys and also project keys to specific paths using the `entries`, `key` and `path` fields:
 
@@ -127,6 +131,40 @@ stringData:
       "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/your-bucket@your-project-id.iam.gserviceaccount.com"
     }
 ```
+
+### Update secure settings without a restart [k8s-es-secure-settings-hot-reload]
+```{applies_to}
+deployment:
+  eck: ga 3.5+
+```
+
+By default, every change to a `spec.secureSettings` source secret triggers a rolling restart of the {{es}} cluster because the keystore init container must re-run to repopulate the keystore. For {{es}} 9.5 and later, ECK supports an opt-in file-based delivery mechanism that eliminates this restart: secrets are written into the {{es}} file-based settings path and {{es}} reloads them in place when the file changes.
+
+To enable file-based delivery, add the following annotation to your {{es}} resource:
+
+```yaml subs=true
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: quickstart
+  annotations:
+    eck.k8s.elastic.co/file-based-secure-settings: "true"
+spec:
+  version: {{version.stack}}
+  nodeSets:
+  - name: default
+    count: 3
+  secureSettings:
+  - secretName: s3-credentials
+```
+
+When the annotation is set and the cluster is running {{es}} 9.5+, ECK delivers all `spec.secureSettings` entries through {{es}} file-based settings instead of the keystore init container. Updating a source secret no longer triggers a rolling restart. Instead, {{es}} applies the updated credentials in place on each node. Note that enabling or disabling the annotation itself causes a one-time rolling restart, because it changes the Pod template by adding or removing the keystore init container.
+
+When the annotation is absent or the cluster is running {{es}} earlier than 9.5, the existing keystore init container path is used unchanged.
+
+::::{important}
+Only use this annotation when all entries in `spec.secureSettings` are [reloadable settings](/deploy-manage/security/secure-settings.md#reloadable-secure-settings). Settings that must be present in the keystore at startup, such as OIDC `client_secret`, SAML key passphrases, and `xpack.watcher.encryption_key`, will cause {{es}} to fail to start if the keystore is absent.
+::::
 
 ## {{kib}} secure settings [k8s-kibana-secure-settings]
 

@@ -57,33 +57,34 @@ Anonymous users can also access the link if you have configured [Anonymous authe
 For more information on how to configure reporting in {{kib}}, refer to [Configure reporting in {{kib}}](/deploy-manage/kibana-reporting-configuration.md).
 :::
 
-Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads.
+Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads. For dashboard-specific export instructions, refer to [Share and export dashboards](/explore-analyze/dashboards/sharing.md).
 
 * **PDF** {applies_to}`serverless: unavailable` — Generate and download PDF files of dashboards, visualizations, and **Canvas** workpads. PDF reports are a [subscription feature](https://www.elastic.co/subscriptions).
 * **PNG** {applies_to}`serverless: unavailable` — Generate and download PNG files of dashboards and visualizations. PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
-* **CSV Reports** — Generate CSV reports of saved Discover sessions. [Certain limitations apply](/explore-analyze/report-and-share.md#csv-limitations).
+* **CSV Reports** — Generate CSV reports of saved Discover sessions.
 * **CSV Download** — Generate and download CSV files of **Lens** visualizations.
 * **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
-* {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` **Export JSON**: export the JSON source of a dashboard in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
+* {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` **Export JSON**: export the JSON source of a dashboard in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
 
 1. Open the saved Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
 2. Choose a file type for the report.
 
-    * {applies_to}`stack: ga 9.1+` From the toolbar, click the {icon}`download` **Export** icon, then choose a file type. 
-    * {applies_to}`stack: ga =9.0` From the toolbar, click **Share** > **Export** tab, then choose a file type. Note that when you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
+    * {applies_to}`stack: ga 9.1+` From the toolbar, click the {icon}`download` **Export** icon, then choose a file type.
+    * {applies_to}`stack: ga =9.0` From the toolbar, click **Share** → **Export** tab, then choose a file type.
 
-    ::::{note}
-    When you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
-    ::::
+    Some export formats have specific considerations:
 
-    ::::{tip}
+    :::{dropdown} PDF
+    * When a dashboard report includes a data table or Discover session, the PDF includes only the visible data.
+    * For dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
+    * For workpad PDFs, select **Full page layout** to create PDFs without the margins that surround the workpad.
+    * Certain [limitations apply](#pdf-limitations).
+    :::
 
-    Tips for generating PDF reports:
-
-    * If you are creating dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
-    * If you are creating workpad PDFs, select **Full page layout** to create PDFs without margins that surround the workpad.
-    
-    ::::
+    :::{dropdown} CSV
+    * {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When you export a Discover session whose {{esql}} query references a [variable control](/explore-analyze/discover/try-esql.md#add-variable-control), the report uses the values currently selected in the controls. In earlier versions, these exports failed with an unknown query parameter error.
+    * Certain [limitations apply](#csv-limitations).
+    :::
 
 3. Click the button that generates or exports the report. A message appears, indicating that the report is in the export queue.
 
@@ -158,7 +159,7 @@ serverless: unavailable
 ```
 
 * {applies_to}`stack: beta` **Share on a website** — Download and securely share **Canvas** workpads on any website.
-* **Embed code** — Embed fully interactive dashboards as an iframe on web pages.
+* **Embed code** — Embed fully interactive dashboards as an iframe on web pages. Refer to [Embed in a webpage](/explore-analyze/dashboards/sharing.md#embed-dashboard) for detailed instructions.
 
 ::::{note}
 :name: reporting-on-cloud-resource-requirements

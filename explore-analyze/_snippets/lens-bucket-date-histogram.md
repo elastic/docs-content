@@ -1,0 +1,2 @@
+- **Date histogram**: Group data into time-based buckets.
+  - **Field**: Select the date field to use for the time-based grouping.

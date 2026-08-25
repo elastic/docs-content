@@ -3,7 +3,14 @@ navigation_title: Pie charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building pie and donut charts with Kibana Lens in Elastic.
+description: Create pie and donut charts to illustrate relative prevalence of categorical data and display proportional relationships.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Build pie charts with {{kib}}
@@ -24,9 +31,8 @@ To build a pie chart:
 ::::::{stepper}
 
 :::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a pie chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 :::::
 
 :::::{step} Set the visualization to Pie
@@ -71,8 +77,8 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 :::::
 
 :::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and reuse it later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 :::::
 
 ::::::
@@ -91,10 +97,13 @@ Donut charts are pie charts with a hollow center. The empty space can provide a 
 ![Setting the donut hole size in Pie chart Style settings](/explore-analyze/images/pie-chart-donut.png "50%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a donut chart sliced by the top 5 log tag values, with raw counts shown inside each slice.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -221,10 +230,10 @@ This is useful when:
 This example uses the **Kibana Sample Data Logs** data set and groups requests by file extension to approximate resource usage: `.zip` files map to processing time, `.gz` files map to bandwidth, and `.rpm` files map to memory usage.
 
 1. Create a **Pie** chart and remove any existing **Slice by** dimension.
-2. Open **Layer settings**:
-   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` Select {icon}`app_management` **Layer settings**.
+2. Open the layer settings:
+   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` Select {icon}`gear` **Settings**/**Layer settings**.
    * {applies_to}`stack: ga 9.0-9.2` Select {icon}`boxes_vertical`, then select **Layer settings**.
-3. Select **Multiple metrics**, then close the **Layer settings** menu.
+3. Select **Multiple metrics**, then close the layer settings menu.
 4. Add metrics for each resource type:
 
    | Slice | Metric configuration | Filter |
@@ -242,10 +251,13 @@ This example uses the **Kibana Sample Data Logs** data set and groups requests b
 This example demonstrates the core value of multiple metrics: using KQL filters on each metric to compare distinct categories. Unlike **Slice by**, which splits a single metric by category values, multiple metrics lets you define completely custom groupings — even those that don't exist as a field in your data.
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example uses multiple metrics mode (no `group_by`) where each metric counts documents matching a specific file extension, with each metric assigned a static color.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -384,10 +396,13 @@ The resulting chart shows the 3 most common hosts, with all remaining hosts comb
 ![Pie chart showing top 3 hosts with remaining hosts grouped as Other](/explore-analyze/images/pie-chart-group-as-other.png)
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example shows the top 3 hosts as individual slices and groups all remaining hosts into an "Other" slice using the `other_bucket` option.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -482,34 +497,23 @@ The **Slice by** dimension defines how your pie is divided into segments. You ca
 **Data**
 :   The **Slice by** dimension supports the following functions:
 
-    - **Top values**: Create slices for the most common values in a field.
-      - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term slices. When multiple fields are selected, each slice represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many top values to display. The default number of values depends on your environment:
-        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-        - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
+    :::{include} ../../_snippets/lens-bucket-top-values.md
+    :::
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
-    - **Date histogram**: Group data into time-based buckets (useful for showing time-based composition). Configure the time interval and how to handle date formatting.
-      - **Field**: Select the date field to use for the time-based grouping.
+    :::{include} ../../_snippets/lens-bucket-date-histogram.md
+    :::
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
-    - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets. You can define the interval granularity or specify custom ranges.
-      - **Field**: Select the numeric field to create intervals from.
-      - **Include empty rows**: Include intervals with no matching documents. On by default.
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
-      :::{dropdown} How does interval granularity work?
-      Interval granularity divides the field into evenly spaced intervals based on the minimum and maximum values for the field.
-      
-      The size of the interval is a "nice" value. When the granularity of the slider changes, the interval stays the same when the "nice" interval is the same. The minimum granularity is 1, and the maximum value is histogram:maxBars. To change the maximum granularity, go to Advanced settings.
-      
-      Intervals are incremented by 10, 5 or 2. For example, an interval can be `100` or `0.2`.
-      :::
-    - **Filters**: Define custom KQL filters to create specific slices. Each filter creates one slice in the chart.
-      - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
+    :::{include} ../../_snippets/lens-bucket-intervals.md
+    :::
+    :::{include} ../../_snippets/lens-bucket-filters.md
+    :::
+
+    :::{include} ../../_snippets/lens-collapse-by.md
+    :::
 
 **Appearance**
 :   Configure slice-level options:
@@ -608,10 +612,13 @@ The following examples show various configuration options for building impactful
 ![Donut chart with traffic by sources](/explore-analyze/images/pie-chart-example-traffic-by-source.png "=60%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example uses formula-based metrics to count visits from specific referrer domains, producing one slice per traffic source without a `group_by` dimension.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -742,10 +749,13 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Pie chart with revenue by product category](/explore-analyze/images/pie-chart-example-revenue-by-product-category.png "=60%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a pie chart that sums revenue per product category from the eCommerce sample data, showing each category's share of total revenue.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -860,10 +870,13 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Donut chart with distribution of errors by type](/explore-analyze/images/pie-chart-example-response-distribution.png "=60%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example uses the `filters` grouping operation to define custom slices based on HTTP response code ranges, rather than relying on field values directly.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

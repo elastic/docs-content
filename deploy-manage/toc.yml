@@ -15,6 +15,7 @@ toc:
             children:
               - file: deploy/elastic-cloud/subscribe-from-marketplace.md
                 children:
+                  - file: deploy/elastic-cloud/marketplace-trial-upgrade.md
                   - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-aws-marketplace.md
                   - hidden: deploy/elastic-cloud/complete-registration-of-an-annual-subscription-on-aws-marketplace.md
                   - hidden: deploy/elastic-cloud/azure-marketplace-pricing.md
@@ -23,6 +24,7 @@ toc:
                   - file: deploy/elastic-cloud/azure-native-isv-service.md
                     children:
                       - file: deploy/elastic-cloud/azure-native-isv-service-logs-metrics.md
+                      - file: deploy/elastic-cloud/azure-native-isv-service-network-security.md
                       - file: deploy/elastic-cloud/azure-native-isv-service-troubleshooting.md
                   - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md
                   - file: deploy/elastic-cloud/heroku.md
@@ -59,6 +61,7 @@ toc:
                       - file: deploy/elastic-cloud/edit-stack-settings.md
                       - file: deploy/elastic-cloud/add-plugins-extensions.md
                         children:
+                          - file: deploy/elastic-cloud/add-plugins-provided-with-ech.md
                           - file: deploy/elastic-cloud/upload-custom-plugins-bundles.md
                           - file: deploy/elastic-cloud/manage-plugins-extensions-through-api.md
                       - file: deploy/elastic-cloud/custom-endpoint-aliases.md
@@ -83,6 +86,9 @@ toc:
                   - file: deploy/cloud-enterprise/ece-software-prereq.md
                   - file: deploy/cloud-enterprise/ece-sysconfig.md
                   - file: deploy/cloud-enterprise/ece-networking-prereq.md
+                  - file: deploy/cloud-enterprise/ece-ipv6-support.md
+                    children:
+                      - file: deploy/cloud-enterprise/ece-ipv6-aws-setup.md
                   - file: deploy/cloud-enterprise/ece-users-permissions.md
                   - file: deploy/cloud-enterprise/ece-ha.md
                   - file: deploy/cloud-enterprise/ece-roles.md
@@ -137,6 +143,7 @@ toc:
                   - file: deploy/cloud-enterprise/change-ece-api-url.md
                   - file: deploy/cloud-enterprise/change-endpoint-urls.md
                   - file: deploy/cloud-enterprise/enable-custom-endpoint-aliases.md
+                  - file: deploy/cloud-enterprise/configure-proxy-protocol.md
                   - file: deploy/cloud-enterprise/ece-manage-capacity.md
                   - file: deploy/cloud-enterprise/configure-allocator-affinity.md
                   - file: deploy/cloud-enterprise/change-allocator-disconnect-timeout.md
@@ -195,6 +202,7 @@ toc:
               - file: deploy/cloud-on-k8s/configure.md
                 children:
                   - file: deploy/cloud-on-k8s/configure-eck.md
+                  - file: deploy/cloud-on-k8s/dynamic-namespace-handling.md
                   - file: deploy/cloud-on-k8s/configure-validating-webhook.md
                   - file: deploy/cloud-on-k8s/restrict-cross-namespace-resource-associations.md
                   - file: deploy/cloud-on-k8s/service-meshes.md
@@ -235,6 +243,7 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-kibana-plugins.md
                   - file: deploy/cloud-on-k8s/customize-pods.md
                   - file: deploy/cloud-on-k8s/propagate-labels-annotations.md
+                  - file: deploy/cloud-on-k8s/k8s-pause-orchestration.md
                   - file: deploy/cloud-on-k8s/manage-compute-resources.md
                   - file: deploy/cloud-on-k8s/recipes.md
                   - file: deploy/cloud-on-k8s/connect-to-external-elastic-resources.md
@@ -296,6 +305,7 @@ toc:
                   - file: deploy/self-managed/max-number-of-threads.md
                   - file: deploy/self-managed/executable-jna-tmpdir.md
                   - file: deploy/self-managed/system-config-tcpretries.md
+                  - file: deploy/self-managed/system-config-clocks.md
                   - file: deploy/self-managed/bootstrap-checks.md
               - file: deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md
               - file: deploy/self-managed/install-elasticsearch-with-zip-on-windows.md
@@ -504,6 +514,7 @@ toc:
                   - file: security/k8s-https-settings.md
                   - file: security/k8s-transport-settings.md
                   - file: security/k8s-es-client-certificate-auth.md
+                  - file: security/k8s-fleet-server-client-certificate-auth.md
               - file: security/external-ca-transport.md
           - file: security/network-security.md
             children:
@@ -648,6 +659,14 @@ toc:
       - file: api-keys/serverless-project-api-keys.md
       - file: api-keys/elastic-cloud-api-keys.md
       - file: api-keys/elastic-cloud-enterprise-api-keys.md
+  - file: app-connections.md
+    children:
+      - file: app-connections/oauth-clients.md
+        children:
+          - file: app-connections/create-oauth-client.md
+          - file: app-connections/connect-mcp-host.md
+          - file: app-connections/revoke-oauth-client.md
+      - file: app-connections/manage-app-connections.md
   - file: manage-connectors.md
   - file: remote-clusters.md
     children:
@@ -701,6 +720,7 @@ toc:
           - file: monitor/autoops/cc-autoops-as-cloud-connected.md
             children:
               - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
+              - file: monitor/autoops/cc-autoops-metrics-storage-locations.md
               - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
               - file: monitor/autoops/autoops-sm-custom-certification.md
               - file: monitor/autoops/autoops-disable-metrics-collection.md
@@ -798,7 +818,7 @@ toc:
   - file: kibana-custom-branding.md
   - file: cloud-organization.md
     children:
-      - hidden: cloud-organization/manage-multiple-organizations.md
+      - file: cloud-organization/manage-multiple-organizations.md
       - file: cloud-organization/billing.md
         children:
           - file: cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md

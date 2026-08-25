@@ -15,7 +15,7 @@ products:
 
 ::::{important}
 
-**For Observability serverless projects**, The **Editor** role or higher is required to create SLOs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the [**SLO Editor** custom role](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md#slo-all-access) is required to create SLOs.
 
 **For Elastic Stack**, to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present, and [SLO access](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
 
@@ -185,6 +185,21 @@ When defining either an APM latency or APM availability SLI, set the following f
 * **Threshold (APM latency only):** The latency threshold in milliseconds (ms) to consider the request as good.
 * **Query filter:** An optional query filter on the APM data.
 
+#### Explore SLO events [apm-latency-slo-explore-events]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+After creating an {{product.apm}} latency or {{product.apm}} availability SLO, you can explore the underlying events directly from the SLO detail page:
+
+* **Open in {{product.apm}} or Discover**: In the **Historical SLI** section, click **Open** to access **In {{product.apm}}** or **Traces in Discover** links and view the SLI events in context.
+
+* **View events in Discover**: In the **Good vs bad events** section, click **View events** to open the trace data in Discover. Use the **Event type** control to filter by **Good**, **Bad**, or **All** events.
+
+* **Service fields shown as source**: The `service.name`, `service.environment`, `transaction.type`, and `transaction.name` fields are displayed in the **Source** row at the top of the SLO detail page, making it easy to identify exactly which service and transaction the SLO is tracking.
+
 
 ### Synthetics availability [synthetics-availability-sli]
 
@@ -259,3 +274,9 @@ After you’ve created your SLO, you can monitor it from the *SLOs* page in Obse
 :alt: Using the Add panel button to add an SLO Overview widget to a dashboard
 :screenshot:
 :::
+
+## Next steps [slo-create-next-steps]
+
+* [Create an SLO burn rate rule](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md)
+* [Triage SLO burn rate breaches](/solutions/observability/incident-management/triage-slo-burn-rate-breaches.md)
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` [Create a composite SLO](/solutions/observability/incident-management/create-a-composite-slo.md)

@@ -1,8 +1,8 @@
 ---
 navigation_title: "Prometheus remote write endpoint"
 applies_to:
-  stack: preview
-  serverless: preview
+  stack: preview =9.4, ga 9.5+
+  serverless: ga
 products:
   - id: elasticsearch
 ---
@@ -13,6 +13,10 @@ In addition to the ingestion of metrics data through the bulk API,
 {{es}} offers an endpoint that natively supports the [Prometheus remote write protocol](https://prometheus.io/docs/concepts/remote_write_spec/).
 
 The endpoint is available under `/_prometheus/api/v1/write`.
+
+:::{note}
+If you are using {{serverless-full}}, use [managed inputs](opentelemetry://reference/motlp/prometheus-remote-write.md) to send Prometheus metrics instead. Managed inputs are the recommended ingestion path for {{ecloud}} deployments and provide durable buffering, unified authentication, and back-pressure handling.
+:::
 
 ## Overview
 

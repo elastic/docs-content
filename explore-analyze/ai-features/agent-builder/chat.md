@@ -150,34 +150,205 @@ Use the chat history panel to access previous conversations.
 :width: 450px
 :::
 
+### Pin conversations
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Pin conversations that you want to access quickly. Pinned conversations appear in the **Pinned** section above **Chats** and remain pinned after you reload the page.
+
+You can pin or unpin a conversation in either of the following ways:
+
+- Drag the conversation from **Chats** to **Pinned** to pin it. Drag it back to **Chats** to unpin it.
+- Click the **Open conversation menu** icon {icon}`boxes_vertical`, then select **Pin** or **Unpin**.
+
+:::{image} images/pinned-conversations.gif
+:screenshot:
+:alt: Animated Agent Builder sidebar showing a conversation dragged from Chats to Pinned and the Unpin action in the conversation menu
+:width: 450px
+:::
+
+### Track conversation status
+
+The chat history panel shows the status of each conversation at a glance, so you can keep track of what your agents are doing across conversations:
+
+| Icon | Status | Meaning |
+|------|--------|---------|
+| ![In progress spinner](images/agent-builder-status-in-progress.svg "=20x20") | **In progress** | The agent is generating a response. |
+| ![Awaiting your input icon](images/agent-builder-status-awaiting.svg "=20x20") | **Awaiting your input** | The agent paused and needs you to respond before it can continue, for example to answer a [human-in-the-loop prompt](#human-in-the-loop-prompts). |
+| ![Unread icon](images/agent-builder-status-unread.svg "=20x20") | **Unread** | The agent finished responding in a conversation you weren't viewing. |
+| ![Error icon](images/agent-builder-status-error.svg "=20x20") | **Error** | The agent stopped because of an error. |
+
+For example, the following chat history panel shows one conversation in progress and another with unread activity:
+
+:::{image} images/agent-builder-conversation-status.png
+:screenshot:
+:alt: Chat history panel showing conversation status indicators, including In progress and Unread
+:width: 450px
+:::
+
+Conversations run independently, so you can work in several at the same time: start an agent in one conversation, switch to another while the first keeps working, and come back later without interrupting either one. New conversations appear in the panel as soon as you start them, before the agent finishes its first response.
+
 ### Inspect tool calls and reasoning
 
-Expand the **Reasoning** section to see how the agent handles your request. This provides a detailed breakdown of the agent's reasoning steps, the tool calls it makes, and the responses it receives. The agent runs tools in a loop until it achieves its goal or [exceeds the maximum conversation length](limitations-known-issues.md#conversation-length-exceeded).
+::::{note}
+:applies_to: stack: ga 9.5+, serverless: ga
+
+Inline reasoning events replace the [Reasoning panel](glossary.md#reasoning-panel).
+::::
+
+Agent responses show reasoning, tool calls, tool results, and the final response inline as a single sequence. Events appear in the order they happen, so you can follow how the agent handles your request in context. The agent runs tools in a loop until it achieves its goal or [exceeds the maximum conversation length](limitations-known-issues.md#conversation-length-exceeded).
 
 :::{image} images/reasoning-steps.png
 :screenshot:
-:alt: Reasoning panel showing tool calls and execution steps
+:alt: Inline reasoning events showing tool calls and execution steps in Agent Chat
 :width: 650px
 :::
 
-Select **Inspect response** to view detailed information about individual tool calls and responses.
+Tool call events show whether a tool is still running or has returned a response. Expand a tool call to inspect **Parameters sent** and **Response returned**. Some results render inline; other results provide **View JSON** or **View execution** links for more detail.
 
-Select **View JSON** to view the full raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
+After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
-### Review and confirm agent changes
+### View traces for a conversation round [view-traces]
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Each conversation round can record OpenTelemetry traces of how the agent ran. To inspect them, select the **View Trace** icon ({icon}`apm_trace`) on the round. A **Trace** flyout opens with a waterfall of the round's spans, including model calls and tool calls.
+
+The flyout is titled with the trace id and reports the span count and total duration. Each row in the waterfall shows the span's kind and duration, and model calls also show their input and output token counts.
+
+Select a span to open its details, including its generative AI attributes and any captured input and output. Message content appears only when the matching [trace privacy settings](collect-traces.md#trace-privacy-settings) are on. Otherwise the span reports that no input or output data is available.
+
+The **View Trace** icon appears only when trace collection is enabled and the conversation round has a trace. If trace collection is off, or the round produced no trace, the icon does not appear.
+
+To learn how traces are collected, configured, and secured, refer to [Collect agent traces](collect-traces.md).
+
+### Human-in-the-loop prompts
 ```{applies_to}
 stack: ga 9.4+
 ```
 
-You control every write operation an agent performs. Whenever an agent proposes to create, update, or delete a resource, the chat pauses and presents a preview before anything takes effect. The preview format and available actions depend on the skill the agent is using.
+At certain points an agent pauses and hands control back to you before it continues. This pattern is known as human-in-the-loop (HITL). While a conversation is paused this way, it shows an **Awaiting your input** status in the [chat history panel](#track-conversation-status).
 
-No changes are applied until you explicitly confirm or dismiss.
+{{agent-builder}} uses different prompts depending on why the agent needs your input:
+
+| Prompt | When it appears | Available responses |
+| --- | --- | --- |
+| Tool confirmation | An Elastic-built tool or skill requires approval before it performs an action | Confirm the action or deny it |
+| Connector authorization {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | An external connector needs access to continue | Authorize access or deny it |
+| Clarifying question {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | The agent needs more information to continue | Answer or skip the question |
+
+HITL prompts do not replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
+
+#### Confirm a change
+
+Some Elastic-built tools and skills pause for confirmation before performing consequential actions. When confirmation is required, the chat presents a preview before the action takes effect. The preview format and available responses depend on the tool or skill. Review the preview, then confirm the action to proceed or deny it to cancel.
+
+For example, when an agent updates a workflow, it shows the proposed change as a diff and waits for you to review it before applying:
 
 :::{image} images/agent-builder-preview-changes.png
 :screenshot:
 :alt: Preview panel showing proposed changes from an agent action before they are applied.
 :width: 700px
 :::
+
+The Streams management skill also previews the proposed configuration when it creates a stream:
+
+:::{image} images/agent-builder-confirm-create-stream.png
+:screenshot:
+:alt: Confirmation prompt previewing a new logs.otel.checkout stream and its routing condition
+:width: 700px
+:::
+
+For irreversible actions, the prompt highlights the consequences before you proceed:
+
+:::{image} images/agent-builder-confirm-delete-stream.png
+:screenshot:
+:alt: Confirmation prompt warning that the logs.otel.checkout stream and its data will be permanently deleted
+:width: 700px
+:::
+
+#### Authorize a connector
+```{applies_to}
+stack: preview 9.5+
+serverless: preview
+```
+
+When an agent uses a [connector](connectors.md) to reach an external service that requires authorization, the chat pauses so you can grant access. Select **Authorize** to complete the sign-in flow for the connector, or **Deny** to decline. After you authorize, the agent retries the tool call and continues.
+
+For example, an agent that needs to read your Notion workspace pauses until you authorize the connector:
+
+:::{image} images/agent-builder-authorization-prompt.png
+:screenshot:
+:alt: Authorization prompt with Authorize and Deny buttons
+:width: 650px
+:::
+
+#### Answer a clarifying question
+```{applies_to}
+stack: preview 9.5+
+serverless: preview
+```
+
+When your request is ambiguous, an agent can pause and ask you up to five multiple-choice questions instead of guessing. For each question, select one of the options, or choose the custom option and type your own answer. Some questions let you select more than one option. To move on without answering, select **Skip question**.
+
+When there's more than one question, use **Back** and **Continue** to move between them, then select **Submit** on the last question. After you respond, the agent resumes. The agent's questions and your answers stay in the conversation, so you can revisit what was asked and how you responded.
+
+For example, before creating a dashboard the agent might ask which sample data set to use:
+
+:::{image} images/agent-builder-clarifying-question.png
+:screenshot:
+:alt: Clarifying question prompt showing multiple-choice options, a custom answer field, and a Skip question button
+:width: 650px
+:::
+
+## Create skills and workflows in chat [create-skills-and-workflows-directly-from-chat]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+In addition to answering questions and analyzing data, agents can help you create reusable skills and Elastic Workflows without leaving the conversation. Describe what you want to build in natural language:
+
+- **Skills**: For example, "Create a skill that handles production alerts using our incident runbook."
+- **Workflows**: For example, "Create a workflow that checks for failed payments every five minutes and sends a Slack notification."
+
+Creating a resource from chat is a [human-in-the-loop](#human-in-the-loop-prompts) process:
+
+1. The agent gathers the requirements from your request. If important information is missing or ambiguous, it pauses to ask [clarifying questions](#answer-a-clarifying-question).
+2. The agent generates a draft and presents it in the conversation. You can review the configuration and ask for changes in natural language.
+3. When the draft is ready, confirm creation from the preview:
+   - For skills, select **Create skill**.
+   - For workflows, select **Preview**, review the definition, then select **Save**. If you are replacing an existing workflow, select **Override**.
+
+   The resource is not created until you complete this step.
+
+When you create a workflow, include details such as its trigger, inputs, data sources, conditions, and connectors. The agent asks for any missing information, generates and validates the workflow YAML, and shows the proposed changes for you to review. You can continue refining the draft in the conversation before you open the preview.
+
+For example, the following response includes the generated workflow definition and a summary of its trigger and steps. Select **Preview** to review and save the workflow:
+
+:::{image} images/create-workflow-from-chat.png
+:screenshot:
+:alt: Agent Chat showing a workflow request, generated YAML diff, workflow summary, and Preview button
+:width: 720px
+:::
+
+For example, the following preview shows a skill draft that you can review before selecting **Create skill**:
+
+:::{image} images/create-skill-from-chat.png
+:screenshot:
+:alt: Skill draft in Agent Chat showing its description, instructions preview, associated tool references, and a Create skill button
+:width: 750px
+:::
+
+You need the same privileges that are required to create the resource in its management UI. For resource-specific fields, limitations, and alternative creation methods, refer to:
+
+- [Create and manage custom skills](custom-skills.md#create-a-skill-from-chat)
+- [Create and manage workflows](/explore-analyze/workflows.md)
 
 ## Customize your agent [customize-your-agent]
 
@@ -197,7 +368,7 @@ The **Customize** accordion in the left sidebar provides agent-scoped configurat
 :   Lists the plugins assigned to the current agent. Each plugin bundles a set of related skills that install together. To assign a plugin, click **Add plugins**. To view and manage all plugins, click **Manage all plugins**. 
 
 :::{note}
-The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}}.
+The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
 **Tools**
@@ -226,14 +397,14 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
 :   View and install plugins across the deployment. Install a plugin from a URL or by uploading a ZIP file. Each plugin bundles related skills that you can assign to agents.
 
 :::{note}
-The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}}.
+The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
 **Connectors** {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
 :   View and manage the agent builder connectors library, which gives agents access to external data sources and systems. 
 
 :::{note}
-The **Connectors** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}}.
+The **Connectors** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
 **Tools**

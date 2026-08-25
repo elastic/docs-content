@@ -1,25 +1,25 @@
 ---
-navigation_title: Migrate Elastic Cloud Hosted data to Serverless with Logstash
+navigation_title: Migrate data using Logstash
 applies_to:
   serverless:
   deployment:
-    ess: ga
+    serverless: ga
 products:
   - id: elasticsearch
   - id: logstash
   - id: cloud-hosted
 ---
 
-# Migrate {{ech}} data to {{serverless-full}} with {{ls}} [migrate-with-ls]
+# Migrate {{es}} data using {{ls}} [migrate-with-ls]
 
 [{{ls}}](logstash://reference/index.md) is a data collection engine that uses a large ecosystem of [plugins](logstash-docs-md://lsr/index.md) to collect, process, and forward data from a variety of sources to a variety of destinations. Here we focus on using the [Elasticsearch input](logstash-docs-md://lsr/plugins-inputs-elasticsearch.md) plugin to read from your {{ech}} deployment, and the [Elasticsearch output](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md) plugin to write to your {{{serverless-full}} project.
 
 Familiarity with {{ech}}, {{es}}, and {{ls}} is helpful, but not required. 
 
 :::{admonition} Basic migration
-This guide focuses on a basic data migration scenario for moving static data from an {{ech}} deployment to a {{serverless-full}} project. 
+This guide focuses on migrating static data from an {{ech}} deployment to a {{serverless-full}} project. 
 
-The Elasticsearch input plugin offers [additional configuration options](#additional-config) that can support more advanced use cases and migrations. More information about those options is available near the end of this topic. 
+The Elasticsearch input plugin offers [additional configuration options](#additional-config) that can support more advanced use cases and migrations between other deployment types. More information about those options is available near the end of this topic. 
 :::
 
 ## Prerequisites [migrate-prereqs]

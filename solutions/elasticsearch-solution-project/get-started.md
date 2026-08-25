@@ -15,7 +15,7 @@ description: To try out an Elasticsearch project or solution, pick your deployme
 
 # Get started with the {{es}} solution/project type
 
-This solution provides specialized UI tools, such as Agent Builder, Playground, and the Query Rules UI, to help you build and test search experiences faster. These tools build on top of the core [search capabilities](/solutions/search.md) available across all deployment types. If you only need core search features without these additional tools, start with the [search use case](/solutions/search/get-started.md) instead.
+This solution provides specialized UI tools, such as Agent Builder and the Query Rules UI, to help you build and test search experiences faster. These tools build on top of the core [search capabilities](/solutions/search.md) available across all deployment types. If you only need core search features without these additional tools, start with the [search use case](/solutions/search/get-started.md) instead.
 
 :::{note}
 If you're looking for an introduction to the {{stack}} or the {{es}} product, go to [](/get-started/index.md) or [](/manage-data/data-store.md).
@@ -57,7 +57,7 @@ Get hands-on experience with {{es}} using guided tutorials that walk you through
 
 - [**Index and search basics**](/solutions/search/get-started/index-basics.md): Learn how to create indices, add documents, and perform searches
 - [**Keyword search with Python**](/solutions/search/get-started/keyword-search-python.md): Build your first search query with Python
-- [**Semantic search**](/solutions/search/get-started/semantic-search.md): Implement semantic search using embeddings
+- [**Semantic search**](/solutions/search/get-started/semantic-search.md): Implement semantic search with vector embeddings using the `semantic_text` workflow
 :::::
 
 :::::{step} Identify your search goals

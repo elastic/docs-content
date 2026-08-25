@@ -576,7 +576,7 @@ spec:
   podTemplate:
     spec:
       containers:
-      - name: logtash
+      - name: logstash
         env:
         - name: LS_JAVA_OPTS
           value: "-Xmx2g -Xms2g"

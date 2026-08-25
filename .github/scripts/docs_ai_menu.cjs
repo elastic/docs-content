@@ -7,7 +7,7 @@ const WORKFLOW_CONFIG = {
     marker: '<!-- docs-ai-menu:triage -->',
   },
   issueScope: {
-    label: 'Scope the docs work ([`docs-issue-scope`](https://github.com/elastic/docs-actions/blob/main/.github/workflows/gh-aw-docs-issue-scope.md)).',
+    label: 'Scope the docs work ([`docs-scope`](https://github.com/elastic/docs-actions/blob/main/.github/workflows/gh-aw-issue-scope.md)).',
     marker: '<!-- docs-ai-menu:issue-scope -->',
   },
 };

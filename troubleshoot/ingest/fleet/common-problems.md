@@ -73,7 +73,7 @@ We have collected the most common known problems and listed them here. If your p
 * [Internal telemetry metrics don't appear in {{kib}}](#otel-internal-telemetry-missing)
 * [TLS handshake errors when exporting telemetry](#otel-tls-handshake-errors)
 * [Authentication errors when exporting to {{es}}](#otel-auth-errors-elasticsearch)
-* [EDOT Collector fails to start with permission denied error](#edot-collector-permission-denied)
+* [{{agent}} fails to start with permission denied error](#edot-collector-permission-denied)
 * [TLS certificate verification errors when connecting to Fleet Server](#otel-tls-cert-errors-fleet-server)
 
 ---
@@ -905,11 +905,11 @@ The {{es}} exporter requires proper authentication and permissions:
 
 3. Restart the collector and verify that data flows without authentication errors.
 
-### EDOT Collector fails to start with permission denied error [edot-collector-permission-denied]
+### {{agent}} fails to start with permission denied error [edot-collector-permission-denied]
 
 **Symptoms**
 
-When running the EDOT Collector standalone, you see:
+When running {{agent}} standalone, you see:
 
 ```
 error creating listener: listen unix /tmp/elastic-agent/...: bind: permission denied
@@ -1028,7 +1028,7 @@ In {{ecloud}}, after [upgrading](/reference/fleet/upgrade-integration.md) {{flee
       --url <kibana_url>/internal/fleet/reset_preconfigured_agent_policies/policy-elastic-agent-on-cloud \
       --header 'content-type: application/json' \
       --header 'kbn-xsrf: xyz' \
-      --header 'elastic-api-version: 1'
+      --header 'elastic-api-version: 2023-10-31'
     ```
 
 2. Force unenroll the agent stuck in `Updating`:

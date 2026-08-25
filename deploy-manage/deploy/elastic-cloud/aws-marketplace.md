@@ -8,6 +8,7 @@ applies_to:
 navigation_title: AWS Marketplace
 products:
   - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # {{ecloud}} from AWS Marketplace [ec-billing-aws]
@@ -21,10 +22,11 @@ The free trial includes provisioning of a single deployment and you are not char
 
 You can subscribe to {{ecloud}} directly from the AWS Marketplace. You then have the convenience of viewing your {{ecloud}} subscription as part of your AWS bill, and you do not have to supply any additional billing information to Elastic.
 
+If you already have an {{ecloud}} trial, you can [upgrade it to an AWS Marketplace subscription](marketplace-trial-upgrade.md) instead of creating a new account.
+
 Some differences exist when you subscribe to {{ecloud}} through the AWS Marketplace:
 
 * Billing starts automatically after the 7-day trial period.
-* Previous {{ecloud}} accounts cannot be converted to use the AWS Marketplace. If you already have an account, you must use a different email address when you sign up for a subscription through the AWS Marketplace.
 * Pricing is based on the AWS region, the size of your deployment, as well as some other parameters such as data transfer out, data transfer internode, snapshot storage, and snapshot APIs. For more details, check [Billing Dimensions](../../cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md).
 * The consolidated charges for your {{ecloud}} subscription display in the AWS Marketplace billing console. It can take a day or two before new charges show up.
 * Regardless of where your deployment is hosted (visible in the {{ecloud}} console), the AWS Marketplace charges for all AWS regions are metered in US East (Northern Virginia). As a result, US East (Northern Virginia) is listed as the region in the AWS Marketplace console.
@@ -43,8 +45,8 @@ Elastic provides different [subscription levels](https://www.elastic.co/subscrip
 
 Note the following items before you subscribe:
 
-* You cannot use an email address that already has an {{ecloud}} account. If you want to use the same account email address with AWS Marketplace billing, you must first change the email address on your existing account before setting up your new AWS Marketplace subscription. For instructions on how to change your email address in {{ecloud}}, check [update your email address](../../../cloud-account/update-your-email-address.md).
-* If you want to manage deployments on the existing {{ecloud}} account with your AWS MP billing account, you must migrate your deployments over to the new MP billing account. To migrate, use a [custom repository](../../tools/snapshot-and-restore/elastic-cloud-hosted.md) to take a snapshot and then restore that snapshot to a new deployment under your AWS Marketplace account.
+* Each AWS billing account supports one {{ecloud}} subscription, which maps to one {{ecloud}} organization. If you need multiple organizations (for example, separate production and development environments), use separate AWS accounts.
+* If you want to migrate deployments from an existing non-marketplace organization into your AWS Marketplace organization, use a [custom repository](../../tools/snapshot-and-restore/elastic-cloud-hosted.md) to take a snapshot and then restore it to a new deployment under your AWS Marketplace organization.
 
 
 ## Subscribe to {{ecloud}} through the AWS Marketplace [ec_subscribe_to_elasticsearch_service_through_the_aws_marketplace]
@@ -56,7 +58,7 @@ To subscribe to {{ecloud}} through the AWS Marketplace:
 3. Follow the steps displayed to complete the signup process.
 
     1. Ensure that you have the necessary AWS permissions required to complete a marketplace transaction.
-    2. Create a new {{ecloud}} account. This account is linked to your AWS Marketplace subscription.
+    2. Create a new {{ecloud}} account or log in with an existing account. This account is linked to your AWS Marketplace subscription.
     3. (Optional) Use the {{ecloud}} CloudFormation template to quickly get started with Elastic. The template deploys the {{stack}} in your {{ecloud}} account, and also provisions the {{agent}} on a new EC2 instance in your AWS environment.
     4. Navigate to {{ecloud}} to continue.
 
@@ -79,7 +81,7 @@ This section describes some scenarios that you may experience onboarding onto th
 
 This occurs when you attempt to sign up to the marketplace offer using an email address that already exists in {{ecloud}}, such as part of a trial account. You have a few options:
 
-* **Change the email address of your previous {{ecloud}} account** - Log in to your existing {{ecloud}} account and change the email address. Once changed, navigate back to the AWS console to finish setting up your marketplace subscription.
+* **Sign in with your existing account** - Choose to sign in instead of signing up. You can then upgrade an existing trial organization to your AWS Marketplace subscription or create a new organization. [Learn more](marketplace-trial-upgrade.md#ec-marketplace-trial-upgrade-aws-gcp).
 * **Sign up using a different email address** - Sign up to {{ecloud}} using a different email address.
 
 
@@ -88,7 +90,6 @@ This occurs when you attempt to sign up to the marketplace offer using an email 
 If the {{ecloud}} login page displays when coming from the AWS console, then an {{ecloud}} account is already connected to your marketplace subscription. Log into {{ecloud}} with that account to continue. If you can’t remember your password, use the **Forgot password?** link to reset your password.
 
 If you can’t remember which email address you used to sign up to {{ecloud}}, or you need more help, contact `support@elastic.co`.
-
 
 ### When I try to configure an account from the AWS console I get an error that an active AWS subscription already exists. [ec-awsmp-account-collision03]
 

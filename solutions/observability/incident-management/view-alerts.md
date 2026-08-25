@@ -4,45 +4,44 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/view-observability-alerts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-view-alerts.html
 applies_to:
-  stack: all
-  serverless:
-    observability: all
+  stack: ga
+  serverless: ga
 products:
-  - id: observability
-  - id: cloud-serverless
+  - id: "observability"
+  - id: "serverless-observability"
+description: Filter, investigate, and manage Elastic Observability alerts from the Alerts page. Acknowledge or snooze active alerts, organize with tags and cases, review related alerts, and clean up alert indices.
 ---
 
-# View and manage alerts in Elastic Observability [observability-view-alerts]
-
-::::{note}
-
-**For Observability serverless projects**, the **Editor** role or higher is required to perform this task. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-
-::::
+# View and manage alerts in Elastic {{observability}} [observability-view-alerts]
 
 
-You can track and manage alerts for your applications and SLOs from the **Alerts** page. You can filter this view by alert status or time period, or search for specific alerts using KQL. Manage your alerts by adding them to cases or viewing them within the respective UIs.
-
-% Stateful only for the following note
-
-::::{note}
-You can centrally manage rules from the [{{kib}} Management UI](/explore-analyze/alerting/alerts/create-manage-rules.md) that provides a set of built-in [rule types](/explore-analyze/alerting/alerts/rule-types.md) and [connectors](/deploy-manage/manage-connectors.md) for you to use. Click **Manage Rules**.
-::::
+The **Alerts** page provides a central view of all alerts across your Elastic {{observability}} applications and SLOs. Use it to investigate why an alert fired, review related alerts, manage alert statuses, and take action, from snoozing or acknowledging individual alerts to organizing them with tags and cases.
 
 :::{image} /solutions/images/serverless-observability-alerts-view.png
 :alt: Alerts page
 :screenshot:
 :::
 
+## Required permissions [_required_permissions]
 
-## Filter alerts [observability-view-alerts-filter-alerts]
+To view {{observability}} alerts and perform per-alert actions such as snooze, unsnooze, and acknowledge, assign the **Observability Alerts** feature privilege (`All` for full access, or `Read` for view and snooze state only). Assign this through {{kib}} roles on the {{stack}}, or through a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md) on serverless. For more information, refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
 
-To help you get started with your analysis faster, use the KQL bar to create structured queries using [{{kib}} Query Language](/explore-analyze/query-filter/languages/kql.md).
+## Filter and customize the alerts table [observability-view-alerts-work-with-table]
 
-You can use the time filter to define a specific date and time range. By default, this filter is set to search for the last 15 minutes.
+Use the KQL bar to search for specific alerts using [{{kib}} Query Language](/explore-analyze/query-filter/languages/kql.md), or use the time range picker and status filter buttons below it to narrow alerts by time period or status (active, recovered, or untracked).
 
-You can also filter by alert status using the buttons below the KQL bar. By default, this filter is set to **Show all** alerts, but you can filter to show only active, recovered or untracked alerts.
+Use the toolbar buttons in the upper-left to control which columns appear and how the table is sorted:
 
+* **Columns**: Reorder the columns.
+* **x fields sorted**: Sort the table by one or more columns.
+* **Fields**: Select the fields to display in the table.
+
+You can also use the toolbar buttons in the upper-right to customize the display options or view the table in full-screen mode.
+
+::::{note}
+:applies_to: {"stack": "ga 9.5"}
+If a rule generated unexpected alerts or failed to generate alerts when you expected it to, use the rule query inspector to examine the underlying {{es}} query and the data the rule evaluated. For more details, refer to [Troubleshoot rule behavior with the rule query inspector](/explore-analyze/alerting/alerts/troubleshoot-rule-behavior.md).
+::::
 
 ## View alert details [observability-view-alerts-view-alert-details]
 
@@ -65,21 +64,38 @@ To view the alert in the app that triggered it:
 * From the alert detail flyout, click **View in app**.
 * From the Alerts table, click the {icon}`eye` icon.
 
+### {{product.apm}} alert detail pages [observability-view-alerts-apm-detail]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Alert detail pages for {{product.apm}} rules include additional context to help you diagnose problems quickly:
+
+* **RED metric charts**: Latency, throughput, and failed transaction rate charts are shown on the alert detail page, letting you check the service performance around the time the alert fired.
+* **Service map**: When the affected service is included in a service map with {{anomaly-detect}} enabled, the service map is also embedded on the alert detail page so you can see connected services and identify whether the issue is isolated or affecting upstream or downstream dependencies.
+
+For **{{product.apm}} anomaly** alerts specifically, the alert detail page also includes:
+
+* A severity-colored callout with a title in the format **{Severity} {{product.apm}} anomaly detected - {Detector}** (for example, "Warning {{product.apm}} anomaly detected - Latency"). The callout color reflects the anomaly severity: critical anomalies appear in red, major and minor anomalies in yellow, and warning anomalies in blue. For a full description of severity colors, refer to [Anomaly score colors](/solutions/observability/apm/service-map.md#service-maps-legend-anomaly-colors).
+* An anomaly badge on the specific RED metric chart where the anomaly was detected. For example, the badge appears on the **Latency** chart for a latency anomaly:
+
+:::{image} /solutions/images/observability-apm-alert-detail-anomaly.png
+:alt: APM anomaly alert detail page showing RED metric charts for latency, throughput, and failed transaction rate, with a Major anomaly badge on the Latency chart
+:screenshot:
+:::
+
 ## Review related alerts [observability-view-alerts-find-related-alerts]
 ```{applies_to}
-stack: ga 9.1 
+stack: ga 9.1+
 ```
 
 Check related alerts to find other alerts that might be related to the same incident. You can add these alerts to a case and investigate them as a group instead of analyzing them individually.
 
 To find related alerts, go to the **Related alerts** tab from an alert's details page. Within the table, alerts are ordered from most to least relevant. To only view alerts that were created around the same time as the current alert (+/- 30 minutes), apply the **Triggered around the same time** filter.
 
-The relevancy of alerts is determined by how closely they match the current alert and other similiarites that they might share:
-
-1. Alerts in the space are filtered down to only include alerts that were created about one day before or after the current alert. 
-2. Data from the new subset of alerts is compared against the current alert to identify matching values and similarities. Data such as the time at which alerts were generated or recovered, tags added to the alerts, group values, and more are evaluated.
-3. Alerts are scored based on how closely they match the current alert. Alerts with a score above a certain threshold are considered relevant and are included in the list of related alerts.
-
+Alerts are ranked by how closely they match the current alert based on timing, tags, group values, and other shared attributes.
 
 ## Understand alert statuses [observability-view-alerts-understand-statuses]
 
@@ -90,7 +106,7 @@ There are four common alert statuses:
 
 `flapping`
 
-:   The alert switched repeatedly between active and recovered states. If actions are configured to run when its status changes, they are suppressed. Refer to [Configure alert flapping](/explore-analyze/alerting/alerts/create-manage-rules.md#defining-rules-flapping-details) to learn more about configuring alert flapping for rules.
+:   The alert switched repeatedly between active and recovered states. If actions are configured to run when its status changes, they don't run. Refer to [Configure alert flapping](/explore-analyze/alerting/alerts/create-manage-rules.md#defining-rules-flapping-details) to learn more about configuring alert flapping for rules.
 
 `recovered`
 :   The conditions for the rule are no longer met. If the rule has [recovery actions](../../../explore-analyze/alerting/alerts/create-manage-rules.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. Recovery actions only run if the rule's conditions aren't met during the current rule execution, but were in the previous one. 
@@ -107,48 +123,47 @@ There are four common alert statuses:
 `untracked`
 :   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the Alerts table, click the action menu ({icon}`boxes_vertical`) to expand the **More actions** menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated and the alert's status can no longer be changed. You can choose to move active alerts to this state when you disable or delete rules.
 
-## Mute alerts [observability-view-alerts-mute-alerts]
-
-If an alert is active or flapping, you can mute it to temporarily suppress future actions. While muted, the alert's status will continue to update but rule actions won't run. All future alerts with the same alert ID will also be muted. You can mute alerts in the following ways:
-
-::::{applies-switch}
-
-:::{applies-item} stack: ga 9.3+
-You can mute individual alerts or multiple ones:
-
-- Mute individual alerts: Find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), open the action menu ({icon}`boxes_vertical`) for the appropriate alert, then select **Mute**.
-- Bulk-mute alerts: Select one or more alerts from the **Alerts** management page, click **Selected _x_ alerts** at the upper-left above the table, then select **Mute selected**. Select the **Unmute selected** option to unmute alerts. Muted alerts display the icon {icon}`bell_slash` in the Alerts table.
-:::
-
-:::{applies-item} stack: ga 9.0-9.2
-You can only mute individual alerts. To mute an alert, find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), click the action menu icon {icon}`boxes_vertical` for the appropriate alert, then select **Mute**.
-:::
-
-::::
-
-::::{note}
-
-To permanently suppress an alert's actions, open the actions menu for the appropriate alert, then select **Mark as untracked**. In this case, the alert's status is no longer updated and actions are no longer run. These changes are only applied to the alert that you untracked and cannot be reverted. Future alerts with the same alert ID are unaffected.
-
-To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#observability-create-manage-rules-snooze-and-disable-rules).
-::::
-
 ## Acknowledge alerts [observability-view-alerts-acknowledge-alerts]
 
 ```{applies_to}
 stack: ga 9.4+
-serverless: ga
 ```
 
 Acknowledge an alert to explicitly indicate that someone is investigating it. Acknowledged alerts have their `kibana.alert.workflow_status` set to `acknowledged`, which displays a badge in the alert lifecycle status cell.
 
-Acknowledging an alert does not suppress future notifications or affect rule recovery. The alert continues to update its status normally.
+Acknowledging an alert does not stop future notifications or affect rule recovery. The alert continues to update its status normally.
 
 To acknowledge an alert, go to the Alerts table, click the action menu {icon}`boxes_vertical` for the appropriate alert, then select **Acknowledge**. To revert the acknowledgment, from the action menu, select **Unacknowledge**.
 
 ::::{tip}
 To filter for acknowledged alerts in the Alerts table, enter `kibana.alert.workflow_status : "acknowledged"` in the KQL bar.
 ::::
+
+## Snooze alerts [observability-view-alerts-snooze-alerts]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Snooze an active alert to stop that alert's actions, like email or Slack notifications, from running. Actions resume when you unsnooze it, the snooze expires, or an unsnooze condition is met. For snooze options, unsnooze conditions, and how to snooze or unsnooze an alert, refer to [Snooze alerts](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts).
+
+To affect the behavior of the rule rather than individual alerts, refer to [Snooze and disable rules](create-manage-rules.md#observability-create-manage-rules-snooze-and-disable-rules) instead.
+
+::::{note}
+:applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
+
+**Snooze** replaces the **Mute** action in {{stack}} 9.5+ and {{serverless-short}}. If you previously muted an alert, either in an earlier {{stack}} version or before {{serverless-short}} added per-alert snooze, it now appears as snoozed indefinitely in the UI. Select **Unsnooze** to resume alert actions.
+::::
+
+## Mute alerts [observability-view-alerts-mute-alerts]
+
+```{applies_to}
+stack: ga 9.0-9.4
+serverless: unavailable
+```
+
+If an alert is active or flapping, you can mute it to temporarily stop future actions. For mute options and how to mute or unmute an alert, refer to [Mute alerts](/explore-analyze/alerting/alerts/view-alerts.md#mute-alerts).
 
 ## Apply and filter alert tags [observability-view-alerts-tag-alerts]
 
@@ -178,28 +193,12 @@ To apply or remove alert tags on individual alerts:
 
 To apply or remove alert tags on multiple alerts, select the alerts you want to change, then click **Selected *x* alerts** at the upper-left above the table. Click **Edit alert tags**, select or unselect tags, then click **Save selection**.
 
-## Customize the alerts table [observability-view-alerts-customize-the-alerts-table]
-
-Use the toolbar buttons in the upper-left of the alerts table to customize the columns you want displayed:
-
-* **Columns**: Reorder the columns.
-* **x fields sorted**: Sort the table by one or more columns.
-* **Fields**: Select the fields to display in the table.
-
-For example, click **Fields** and choose the `Maintenance Windows` field. If an alert was affected by a maintenance window, its identifier appears in the new column. For more information about their impact on alert notifications, refer to [{{maint-windows-cap}}](/explore-analyze/alerting/alerts/maintenance-windows.md).
-
-You can also use the toolbar buttons in the upper-right to customize the display options or view the table in full-screen mode.
-
-
-## Add alerts to cases [observability-view-alerts-add-alerts-to-cases]
-
-From the Alerts table, you can add one or more alerts to a case. For detailed instructions, refer to [Attach objects to cases](/explore-analyze/cases/attach-objects-to-cases.md#add-case-alerts).
+To add one or more alerts to a case for tracking and collaboration, refer to [Attach objects to cases](/explore-analyze/cases/attach-objects-to-cases.md#add-case-alerts).
 
 ## Clean up alerts [clean-up-alerts-obs]
 
 ```{applies_to}
 stack: ga 9.4+, preview 9.1-9.3
-serverless: ga
 ```
 
 Manage the size of alert indices in your space by clearing out alerts that are older or infrequently accessed. You can do this by [running an alert cleanup task](../../../explore-analyze/alerting/alerts/view-alerts.md#clean-up-alerts), which deletes alerts according to the criteria that you define.

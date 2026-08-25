@@ -191,3 +191,32 @@ The operator can be started using any of the following methods to achieve the sa
 ```sh
 LOG_VERBOSITY=2 METRICS_PORT=6060 NAMESPACES="ns1,ns2,ns3" ./elastic-operator manager
 ```
+
+## Reduce operator memory usage with label-based discovery
+
+```{applies_to}
+  eck: ga 3.5
+```
+
+In clusters with many user-managed `Secret`, `Service`, or `ConfigMap` resources, the operator cache can consume significant memory because it watches all resources of these types by default. The `restrict-watched-resources` flag narrows the cache to only resources carrying the `eck.k8s.elastic.co/watched=true` label, reducing both memory footprint and API server load.
+
+Starting with ECK 3.5, the operator stamps `eck.k8s.elastic.co/watched=true` on every `Secret`, `Service`, and `ConfigMap` it creates or reconciles.
+
+::::{important}
+Do not enable `restrict-watched-resources` immediately after upgrading to ECK 3.5. Wait until the operator has completed at least one full reconcile cycle for all ECK-managed resources so they all carry the label. Enabling the flag before that makes any unlabeled ECK-managed resources invisible to the operator's cache, which can break your deployments.
+::::
+
+To enable label-based discovery using the Helm chart, set the following in your values file:
+
+```yaml
+config:
+  restrictWatchedResources: true
+```
+
+To enable it using the `elastic-operator` ConfigMap, add the following setting to the existing `eck.yaml` configuration:
+
+```yaml
+data:
+  eck.yaml: |-
+    restrict-watched-resources: true
+```
