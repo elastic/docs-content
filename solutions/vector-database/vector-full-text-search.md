@@ -252,7 +252,7 @@ dependencies {
 }
 
 application {
-    mainClass = "quickstart.Main"
+    mainClass = "quickstart.App"
 }
 ```
 
@@ -384,14 +384,14 @@ Console.WriteLine(response.Version.Number);
 ::::{tab-item} Java
 :sync: java
 
-Replace the contents of `src/main/java/quickstart/Main.java` with the following code and save the file:
+Replace the contents of `src/main/java/quickstart/App.java` with the following code and save the file:
 
 ```java
 package quickstart;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 
-public class Main {
+public class App {
     public static void main(String[] args) throws Exception {
         String serverUrl = System.getenv("ES_URL");
         String apiKey = System.getenv("ES_API_KEY");
@@ -757,7 +757,7 @@ await es.Indices.CreateAsync<Book>("books", c => c
 ::::{tab-item} Java
 :sync: java
 
-Replace the contents of `src/main/java/quickstart/Main.java` with the following code and save the file:
+Replace the contents of `src/main/java/quickstart/App.java` with the following code and save the file:
 
 ```java
 package quickstart;
@@ -768,7 +768,7 @@ import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch._types.Refresh;
 import co.elastic.clients.elasticsearch.core.BulkRequest;
 
-public class Main {
+public class App {
     public static void main(String[] args) throws Exception {
         ElasticsearchClient es = ElasticsearchClient.of(b -> b
             .host(System.getenv("ES_URL"))
@@ -1577,7 +1577,7 @@ public record SearchBook(
 ::::{tab-item} Java
 :sync: java
 
-Replace the contents of `src/main/java/quickstart/Main.java` with the following code and save the file:
+Replace the contents of `src/main/java/quickstart/App.java` with the following code and save the file:
 
 ```java
 package quickstart;
@@ -1588,7 +1588,7 @@ import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 
-public class Main {
+public class App {
 record Book(
     String id,
     String title,
@@ -2036,7 +2036,7 @@ public record SearchBook(
 ::::{tab-item} Java
 :sync: java
 
-Replace the contents of `src/main/java/quickstart/Main.java` with the following code and save the file:
+Replace the contents of `src/main/java/quickstart/App.java` with the following code and save the file:
 
 ```java
 package quickstart;
@@ -2047,7 +2047,7 @@ import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 
-public class Main {
+public class App {
 record Book(
     String id,
     String title,
@@ -2445,7 +2445,7 @@ foreach (
 ::::{tab-item} Java
 :sync: java
 
-Replace the contents of `src/main/java/quickstart/Main.java` with the following code and save the file:
+Replace the contents of `src/main/java/quickstart/App.java` with the following code and save the file:
 
 ```java
 package quickstart;
@@ -2457,7 +2457,7 @@ import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch.esql.EsqlFormat;
 import co.elastic.clients.transport.endpoints.BinaryResponse;
 
-public class Main {
+public class App {
     public static void main(String[] args) throws Exception {
         ElasticsearchClient es = ElasticsearchClient.of(b -> b
             .host(System.getenv("ES_URL"))
@@ -3239,7 +3239,7 @@ dotnet run
 ::::{tab-item} Java
 :sync: java
 
-1. Open `src/main/java/quickstart/Main.java`.
+1. Open `src/main/java/quickstart/App.java`.
 2. Open the following dropdown, replace the file contents with the code, and save it.
 
 :::{dropdown} Complete runnable script
@@ -3260,7 +3260,7 @@ import co.elastic.clients.elasticsearch.core.search.Hit;
 import co.elastic.clients.elasticsearch.esql.EsqlFormat;
 import co.elastic.clients.transport.endpoints.BinaryResponse;
 
-public class Main {
+public class App {
     record Book(
         String title,
         String author,
