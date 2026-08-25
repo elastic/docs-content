@@ -25,10 +25,6 @@ Before initiating the ECE upgrade process, review the [Support matrix](https://w
 During the upgrade window, there might be a short period of time during which you run a combination of versions that is not explicitly supported. For example, if you are on ECE 3.5 with Docker version 18.09 on SLES 12 and plan to upgrade to ECE 3.8 on the same OS, you will need to upgrade Docker to version 24.0 or 25.0 first. In this case, and only during your upgrade window, we will support the mixed OS and container engine versions. In general, this won’t be a problem. However, should anything become a blocker for the upgrade, [reach out to support for help](/troubleshoot/index.md#contact-us).
 :::
 
-::::{important}
-When you upgrade the host OS (for example SLES 15 to a newer service pack), confirm the Docker version that ships with it is listed for your current ECE version in the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). If it isn't, pin a listed Docker version until you upgrade ECE, or upgrade ECE first.
-::::
-
 ## The upgrade version matrix [ece-upgrade-version-matrix]
 
 The following table shows the recommended upgrade paths from older {{ece}} versions to {{version.ece}}.
