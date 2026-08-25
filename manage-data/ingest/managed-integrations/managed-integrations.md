@@ -24,7 +24,7 @@ To enable an {{managed-integration}} in {{kib}}, refer to [Enable an {{managed-i
 
 :::{important}
 :applies_to: stack: preview 9.0-9.4
-{{managed-integrations}} are a technical preview feature. The design and code are less mature than GA features, and Elastic provides them as-is with no warranties. The support SLA for GA features doesn't apply. There are no additional costs for {{managed-integrations}} during technical preview.
+In these versions, {{managed-integrations}} are in technical preview. The design and code are less mature than GA features, and Elastic provides them as-is with no warranties. The support SLA for GA features doesn't apply. There are no additional costs for {{managed-integrations}} during technical preview.
 :::
 
 ## Key benefits [managed-integrations-benefits]
