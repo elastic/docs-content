@@ -102,7 +102,7 @@ Use the [bulk API]({{es-apis}}operation/operation-bulk) to add multiple document
 ```console
 PUT quickstart-weather/_bulk
 { "create":{ } }
-{ "@timestamp": "2026-08-17T15:27:00Z", "sensor_id": "STATION-0001", "location": "base", "temperature": 26.7, "humidity": 49.9 } <1>
+{ "@timestamp": "2026-08-17T15:27:00Z", "sensor_id": "STATION-0001", "location": "base", "temperature": 26.7, "humidity": 49.9 }
 { "create":{ } }
 { "@timestamp": "2026-08-17T15:28:00Z", "sensor_id": "STATION-0002", "location": "base", "temperature": 27.2, "humidity": 50.1 }
 { "create":{ } }
@@ -112,8 +112,6 @@ PUT quickstart-weather/_bulk
 { "create":{ } }
 { "@timestamp": "2026-08-17T15:36:00Z", "sensor_id": "STATION-0005", "location": "satellite", "temperature": 32.3, "humidity": 87.5 }
 ```
-
-1. Set each `@timestamp` to within a few minutes of the current time.
 
 A successful request returns `"errors": false` and a `create` item for each document.
 
