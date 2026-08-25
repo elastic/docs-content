@@ -234,10 +234,6 @@ Use the **Project scope** control to choose which linked projects the SLO monito
 
 The control appears when at least one project is linked. You can select **This project**, **All projects**, or a subset. New SLOs default to **This project**. That scope is stored on the SLO and applies every time the SLO's transform runs.
 
-:::{note}
-:applies_to: stack: ga 9.4
-On {{stack}}, an SLO can monitor only a single cluster. To monitor SLO breaches across {{es}} clusters, [view SLOs defined on remote clusters](/solutions/observability/incident-management/configure-slo-settings.md#observability-configure-slo-settings-federated-view).
-:::
 
 ## Set your objectives [set-slo]
 
