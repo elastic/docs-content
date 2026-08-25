@@ -12,7 +12,11 @@ products:
 
 The first host you install ECE on initially requires the ports for all roles to be open, which includes the ports for the coordinator, allocator, director, and proxy roles. After you have brought up your initial ECE installation, only the ports for the roles that the initial host continues to hold need to remain open. Before installing a host, make sure that ports 20000, 21000, and 22000 are open for the installation script checks. Port 2375 will also be utilized on each host you install ECE on for internal Docker communication.
 
-For versions 2.4.0 and 2.4.1, IPv6 should remain enabled on any host with the Proxy role. In 2.4.2 and later, IPv6 can be disabled.
+:::::{note}
+The port requirements in this page apply independently of the IP family. In a dual-stack environment, the inbound ports listed here still receive IPv4 traffic, because client traffic reaches the ECE hosts over IPv4. Allow IPv6 in your firewalls, security controls, and routing policies for outbound traffic if you need IPv6 egress.
+
+{applies_to}`ece: ga 4.2` To learn to what extent ECE can be integrated into dual-stack networks, refer to [IPv6 support](./ece-ipv6-support.md).
+:::::
 
 * [Inbound traffic](#ece-inbound)
 * [Outbound traffic](#ece-outbound)
@@ -68,6 +72,7 @@ Open these ports for outbound traffic:
 Outbound traffic must also permit connections to the [snapshot repositories](../../tools/snapshot-and-restore/cloud-enterprise.md) you intend to use. Ports depend on the snapshot repository type. Refer to the external supported providers to confirm the exact list of ports.
 ::::
 
+{applies_to}`ece: ga 4.2` If IPv6 egress is required, host and container networking must also be configured accordingly, with dual-stack interfaces and container runtime IPv6 support. Refer to [IPv6 egress](./ece-ipv6-support.md#ece-ipv6-egress).
 
 ## Container communication on the same host [ece-container-communication-on-same-host]
 
