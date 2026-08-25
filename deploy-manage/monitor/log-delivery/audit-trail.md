@@ -7,9 +7,9 @@ products:
   - id: cloud-serverless
 ---
 
-# Audit trail log delivery [serverless-audit-log-delivery]
+# Audit trail log delivery
 
-Audit trail is the first log type available for [log delivery](/deploy-manage/monitor/log-delivery.md) in {{serverless-full}}. Enabling it delivers audit logs to your selected destination project so you can track organization actions throughout the source project.
+Audit trail is the first log type available for [log delivery](/deploy-manage/monitor/log-delivery.md) in {{serverless-full}}. Enabling it delivers audit logs to your selected destination project so you can track and investigate organization actions in the source project.
 
 ## What's included
 
@@ -17,6 +17,18 @@ An audit trail includes the following events:
 
 * **{{ecloud}} and organization administration:** Sign-in, membership, IAM, and project settings where applicable
 * **Project activity:** {{es}} and {{kib}} on the project — index, template, and pipeline lifecycle; data searches, reads, and writes; {{kib}} saved-object and UI access.
+
+### Why deliver an audit trail
+
+Delivering an audit trail into a project lets you investigate end-to-end activity in one place. For example, you can:
+
+* Trace failed or successful sign-ins for a user
+* Review membership, IAM, or project-admin changes
+* Investigate access denied on an index pattern
+* Track create, update, or delete actions on indices, templates, or pipelines
+* Detect changes or deletions of {{kib}} saved objects such as detection rules
+* Determine who searched a sensitive index
+* Follow one user journey across `service.name` values for the same `user.name` and time window
 
 ## Set up delivery for audit trail
 
@@ -47,11 +59,11 @@ The following table describes which ignore filters are available for the audit t
 
 | Name | When to select | Approx. volume cut |
 | --- | --- | --- |
-| Ignore data searches and reads | Select to cut the highest-volume events on search-heavy projects. Do not select if you need evidence of who searched or read data (for example, HIPAA or PCI). <br>On by default. | ~50–70% |
+| Ignore data searches and reads | Select to exclude the highest-volume events on search-heavy projects. Do not select if you need evidence of who searched or read data (for example, HIPAA or PCI). <br>On by default. | ~50–70% |
 | Ignore data writes | Select when you want configuration and object-change evidence without ingest and bulk write volume. | ~5–15% |
 | Ignore successful sign-ins | Select for SOC or minimal profiles that focus on failures. Do not select if you need successful sign-in accountability. Applies to authentication events in the unified audit trail, including {{ecloud}} and organization signals when present. | ~5–15% |
 | Ignore routine user and role checks | Select for SOC or minimal profiles that focus on failures. Do not select if you need IAM accountability. Applies to IAM-related events in the unified audit trail, including {{ecloud}} and organization signals when present. | ~2–5% |
-| Ignore UI requests | Select to drop read-only UI navigation noise. Saved-object mutations are still delivered. <br>On by default. | ~10–20% |
+| Ignore UI requests | Select to exclude read-only UI navigation noise. Saved-object mutations are still delivered. <br>On by default. | ~10–20% |
 
 ### Recommended usage
 
@@ -79,45 +91,25 @@ These starting points are **not legal advice**. Validate retention, scope, and e
 | SOX (ITGC) | Compliance or Admin and configuration | — |
 | Dev / test | Minimal | Enable all ignore filters |
 
-## Explore audit trail [explore-audit-trail]
+## Explore delivered logs
 
-Explore delivered audit trail data in the **destination** project (which may be the same as the source).
+Explore delivered audit trail logs in the following locations on your destination project:
 
-### Where logs land
-
-| Data stream | Contents |
+| Data stream or index pattern | Contents |
 | --- | --- |
 | `logs-serverless.audit.otel-elastic_cloud` | Project-level audit logs ({{es}}, {{kib}}, and {{ecloud}} project signals) |
 | `logs-org.audit.otel-elastic_cloud` | Organization-level audit logs (administration, configuration, billing, and similar) |
-| `logs-*.audit.otel-*` | Catch-all index pattern |
+| `logs-*.audit.otel-*` | All audit logs |
 
-All of these belong to the same audit trail delivery category — one enablement on log delivery.
+Use Discover or {{esql}} to investigate these logs. Useful fields to query on include:
 
-Filter and correlate across producers with fields such as `project.id`, `project.name`, `organization.id`, `user.*`, and `service.name`. Producers include values such as `serverless-elasticsearch` and `serverless-kibana`, plus control-plane service names when present. Audit events use `log.type: audit`.
+* `@timestamp`
+* `user.*`
+* `event.action` / `event.category` / `event.type` / `event.outcome`
+* `source.ip`
+* `project.id`
+* `organization.id`
+* `service.name`
+* Producer-specific fields
 
-### Curated UI
-
-A curated Audit Logs experience in {{elastic-sec}} is intended to present the unified trail (not separate {{ecloud}} versus project apps). Until that UI is available in your project, use **Discover** or {{esql}} across the audit data streams.
-
-### What to investigate
-
-Useful filters include `@timestamp`, `user.*`, `event.action` / `event.category` / `event.type` / `event.outcome`, `source.ip`, `project.id`, `organization.id`, `service.name`, and producer-specific fields.
-
-Typical investigations:
-
-* Organization sign-in → project access → index or saved-object changes
-* Access denied on an index pattern
-* IAM or membership changes
-* Data reads or writes (only if the corresponding ignore filters are off)
-
-To check volume and retention impact, use [AutoOps](/deploy-manage/monitor/autoops/autoops-for-serverless.md) on the destination for per–data-stream ingest rate and storage retained.
-
-### Recipes
-
-* Failed or successful sign-ins for a user ({{ecloud}} and organization portion of audit trail).
-* Membership, IAM, or project-admin changes.
-* Access denied on an index pattern (project activity).
-* Index, template, or pipeline create, update, or delete.
-* {{kib}} saved-object change or delete (for example, detection rules).
-* Who searched a sensitive index — only if **Ignore data searches and reads** is off.
-* One user journey across `service.name` values for the same `user.name` and time window.
+Additionally, use [AutoOps](/deploy-manage/monitor/autoops/autoops-for-serverless.md) on the destination project to monitor your ingest rate and storage retained.
