@@ -29,17 +29,17 @@ EDOT SDKs and {{agent}} in OTel mode require {{stack}} 8.16 or later for basic c
 
 Refer to [{{agent}} and {{stack}} compatibility](opentelemetry://reference/compatibility/collectors.md) for the full matrix.
 
-## Decide what to send [start-with-otel-what-to-send]
+## What you want to observe [start-with-otel-what-to-send]
 
-Identify what you want to observe before picking a setup:
+Your setup depends on the telemetry you collect:
 
 * **Application telemetry** (traces, metrics, and logs from your code): use an EDOT language SDK. It auto-instruments your application with zero or minimal code changes.
 * **Infrastructure telemetry** (host metrics, logs, {{k8s}} signals): use {{agent}} to collect system-level data from your hosts, containers, or cluster.
 * **Both application and infrastructure telemetry**: most production setups collect application and infrastructure telemetry together. You can run an EDOT SDK and {{agent}} on the same host.
 
-## Choose your ingestion path [start-with-otel-ingestion-path]
+## Your Elastic deployment [start-with-otel-ingestion-path]
 
-The right ingestion path depends on your Elastic deployment type. Select your deployment to see the recommended setup.
+The recommended ingestion path depends on your Elastic deployment type. Select your deployment to see the recommended setup.
 
 ::::{important}
 Regardless of your deployment, do not point EDOT SDKs directly at the {{product.apm-server}} OpenTelemetry intake endpoint, as this configuration is [not supported](opentelemetry://reference/edot-sdks/index.md). EDOT SDKs work only when sending data through {{agent}} or the {{motlp}}.
@@ -66,12 +66,12 @@ Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpo
 
 ::::{applies-item} ess:
 
-**Send data to the {{motlp}}** (requires {{ech}} deployment version 9.0 or later).
+**Send data to the {{motlp}}.**
 
 The {{motlp}} is GA on {{ech}}. For application telemetry only, send directly from your EDOT SDK or any OTLP-compatible exporter to the endpoint, with no {{agent}} required. For infrastructure telemetry, run {{agent}} on your hosts or cluster and configure it to export to the {{motlp}} using the OTLP exporter.
 
 :::{note}
-The current {{ech}} quickstarts use a different path: an {{agent}} running on a host and writing directly to {{es}} using the `elasticsearch` exporter. This alternative works and is documented, but Elastic recommends the {{motlp}} path for new setups on {{ech}} 9.0+.
+The current {{ech}} quickstarts use a different path: an {{agent}} running on a host and writing directly to {{es}} using the `elasticsearch` exporter. This alternative works, but for new setups, use the mOTLP path. For more information, refer to [Send OTLP data to the {{motlp}}](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md).
 :::
 
 Before committing to this path, note these {{motlp}} limitations:
@@ -93,7 +93,7 @@ The {{motlp}} is not available for self-managed Elastic, ECE, or ECK deployments
 
 * Exposes an OTLP endpoint that edge collectors, EDOT SDKs, and other OTLP sources send data to.
 * {applies_to}`edot_collector: ga 9.2+` Runs the `elasticapm` processor to enrich trace data with attributes the {{product.observability}} UIs rely on. 
-* {applies_to}`edot_collector: ga 8.18-8.19` Runs the `elastictrace` processor to enrich trace data with attributes.
+* Runs the `elastictrace` processor to enrich trace data with attributes.
 * Runs the `elasticapm` connector to generate pre-aggregated {{product.apm}} metrics from traces.
 * Routes telemetry to the correct data streams and writes to {{es}} using the `elasticsearch` exporter in the `otel` mapping mode.
 
@@ -104,9 +104,9 @@ Refer to [{{agent}} modes](elastic-agent://reference/edot-collector/modes.md) an
 
 :::::
 
-## Pick your quickstart [start-with-otel-quickstarts]
+## Quickstart for your environment [start-with-otel-quickstarts]
 
-Once you know your ingestion path, select the quickstart for your environment:
+Use the quickstart that matches your deployment and environment:
 
 | Deployment model | Kubernetes | Docker | Hosts or VMs |
 |---|---|---|---|
@@ -114,7 +114,7 @@ Once you know your ingestion path, select the quickstart for your environment:
 | {{serverless-full}} | [K8s on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md) | [Docker on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md) | [Hosts on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md) |
 | {{ech}} | [K8s on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/k8s.md) | [Docker on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/docker.md) | [Hosts on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/hosts_vms.md) |
 
-To send OTLP data directly to {{serverless-full}} or {{ech}} (9.0+) without running {{agent}}, follow [Send OTLP data to the {{motlp}}](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md).
+To send OTLP data directly to {{serverless-full}} or {{ech}} without running {{agent}}, follow [Send OTLP data to the {{motlp}}](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md).
 
 ## Instrument your applications [start-with-otel-sdks]
 
@@ -137,7 +137,7 @@ Available EDOT SDKs (all GA unless noted):
 
 For languages without an EDOT SDK (Go, C++, Ruby, and others), you can use the [contrib OpenTelemetry SDKs](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md). These work with Elastic over OTLP but receive community support only.
 
-## Things to know before you go live [start-with-otel-caveats]
+## Known limitations [start-with-otel-caveats]
 
 ### Use the OTLP exporter at the edge [start-with-otel-otlp-exporter]
 
@@ -150,7 +150,7 @@ Configure your EDOT SDKs and edge {{agent}} instances to use the OTLP exporter. 
 * **Real user monitoring (RUM)**: OTel-native RUM data is not yet available for production use. EDOT Browser is in Technical Preview. For production RUM, use the [classic Elastic {{product.apm}} browser agent](apm-agent-rum-js://reference/index.md).
 * **Universal Profiling**: Only available with classic Elastic ingestion, and not through OTel-native data.
 * **Existing ECS integrations and dashboards**: Many prebuilt integrations and dashboards use ECS-formatted data and may not work with OpenTelemetry semantic conventions without customization. Install OpenTelemetry content packs from the {{kib}} {{integrations}} UI (search for `otel`) to get OTel-compatible dashboards.
-* **Tail-based sampling (TBS)**: {{edot}} does not provide managed TBS. The {{motlp}} has no TBS support, so you have to configure sampling at the edge before sending. You can configure self-managed TBS, with caveats, in:
+* **Tail-based sampling (TBS)**: {{edot}} does not provide managed TBS. The {{motlp}} has no TBS support, so you have to configure sampling at the edge before sending. You can configure self-managed TBS, with [some caveats](opentelemetry://reference/compatibility/limitations.md#tail-based-sampling-tbs), in:
   * {applies_to}`edot_collector: preview 9.2+` {{agent}}
   * Any OTel-compatible Collector
 * **Centrally managed log processing**: Elastic doesn't provide curated, centralized {{es}} ingest pipelines for OTel-native data. Process logs in the Collector instead, or define your own ingest pipeline. For dotted field names in user-defined pipelines, you can:
