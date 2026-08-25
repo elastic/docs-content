@@ -29,6 +29,8 @@ Before you begin:
 
 - Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) for a list of ports that need to be open. The technical configuration depends on the underlying infrastructure.
 
+- {applies_to}`ece: ga 4.2` If you need IPv6 egress from ECE containers, ensure the host has working dual-stack (IPv4 and IPv6) connectivity, and complete the optional Docker dual-stack steps in [Configure the Docker daemon](#ece-configure-docker-daemon-sles12).
+
 - Review the [Users and permissions prerequisites](ece-users-permissions.md) for ECE. The commands in this guide assume that you are logged in as the non-root user that will install and run ECE, referred to throughout this guide as the **ECE user**. We recommend using a dedicated `elastic` user account. If it does not already exist, you can create it in the next section.
 
 - If you use one user to prepare the host and another to install ECE, replace `$USER` with the name of the ECE user in the applicable commands throughout this guide.
@@ -236,6 +238,11 @@ Adjust the host settings required by ECE, including cgroup accounting, kernel pa
     3. Decrease the maximum number of TCP retransmissions to 5 as recommended for [{{es}} TCP retransmission timeout](/deploy-manage/deploy/self-managed/system-config-tcpretries.md)
     4. Make sure the host doesn't swap too early
 
+    ::::{note}
+    :applies_to: ece: ga 4.2
+    If you need IPv6 egress from containers, also add `net.ipv6.conf.all.forwarding=1` to the same `sysctl` configuration.
+    ::::
+
     ::::{important}
     The `net.ipv4.tcp_retries2` setting applies to all TCP connections and also affects the reliability of communication with systems other than {{es}} clusters. If your clusters communicate with external systems over a low quality network, you might need to select a higher value for `net.ipv4.tcp_retries2`.
     ::::
@@ -367,6 +374,15 @@ After you [install Docker](#ece-install-docker-sles12) and [prepare the data dir
         sudo systemctl restart docker
         ```
 
+### Optional: Enable dual-stack networking for IPv6 egress [ece-suse-ipv6-egress]
+```{applies_to}
+deployment:
+  ece: ga 4.2
+```
+
+::::{include} /deploy-manage/deploy/_snippets/ece-docker-ipv6-daemon.md
+::::
+
 ## Verify the host configuration [ece-verify-host-config-sles]
 
 After completing the configuration steps in the previous sections, reboot the host and verify that the required system, storage, and Docker configuration has been applied successfully.
@@ -479,6 +495,25 @@ After completing the configuration steps in the previous sections, reboot the ho
     ::::{note}
     The `/mnt/data/docker` subdirectory is owned by `root` rather than by the ECE user, because it is managed by the Docker daemon. This is normal and does not indicate a misconfiguration.
     ::::
+
+1. {applies_to}`ece: ga 4.2` Optional: If you enabled dual-stack networking for IPv6 egress, verify both the default bridge configuration and outbound IPv6 connectivity from a container:
+
+    1. Confirm that the default bridge has an IPv6 subnet:
+
+        ```sh
+        docker network inspect bridge --format '{{json .IPAM.Config}}'
+        ```
+
+        The output should include an IPv6 subnet such as `fd00:10:89::/64`.
+
+    1. Run a short-lived container and test IPv6 egress:
+
+        ```sh
+        docker run --rm curlimages/curl:latest \
+          -6 -s -o /dev/null -w "%{http_code}\n" https://ipv6.google.com
+        ```
+
+        A response of `200` confirms that containers can reach IPv6 endpoints.
 
 ## Next steps [ece-configure-host-suse-next-steps]
 
