@@ -8,5 +8,5 @@ Usage is metered and charged based on the following factors:
 For current rates, refer to the [Elastic Cloud Pricing](https://cloud.elastic.co/cloud-pricing-table) page. You can also create a [Serverless estimate](https://cloud.elastic.co/pricing/serverless).
 
 :::{note}
-Billing begins on September 1, 2026. Until then, there are no separate {{cps}} charges.
+Billing begins on September 16, 2026. Until then, there are no separate {{cps}} charges.
 :::
