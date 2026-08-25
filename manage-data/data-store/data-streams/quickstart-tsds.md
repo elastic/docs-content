@@ -97,7 +97,7 @@ The response includes `"acknowledged": true`, which confirms the template was cr
 
 In this step, create a new data stream called `quickstart-weather` based on the index template defined in Step 1. You can create the data stream and add documents in a single API call.
 
-Use the [bulk API]({{es-apis}}operation/operation-bulk) to add multiple documents at once:
+Use the [bulk API]({{es-apis}}operation/operation-bulk) to add multiple documents at once. Before you run the request, set each `@timestamp` to within a few minutes of the current time:
 
 ```console
 PUT quickstart-weather/_bulk
@@ -113,7 +113,7 @@ PUT quickstart-weather/_bulk
 { "@timestamp": "2026-08-17T15:36:00Z", "sensor_id": "STATION-0005", "location": "satellite", "temperature": 32.3, "humidity": 87.5 }
 ```
 
-1. Replace these timestamps with values within a few minutes of the current time.
+1. Set each `@timestamp` to within a few minutes of the current time.
 
 A successful request returns `"errors": false` and a `create` item for each document.
 
