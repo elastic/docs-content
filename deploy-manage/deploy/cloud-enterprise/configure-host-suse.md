@@ -12,7 +12,9 @@ products:
 
 # Configure a SUSE host [ece-configure-hosts-sles12]
 
-This guide explains how to prepare a SUSE Linux Enterprise Server (SLES) host for an {{ece}} (ECE) installation. It covers the operating system configuration required before you install ECE, including Docker installation, XFS quota configuration, and other host-specific settings. The steps on this page target **SLES 15 SP7**. They also apply to earlier SLES 15 service packs (SP4 and later) that use a supported Docker major.
+This guide explains how to prepare a SUSE Linux Enterprise Server (SLES) host for an {{ece}} (ECE) installation. It covers the operating system configuration required before you install ECE, including Docker installation, XFS quota configuration, and other host-specific settings. 
+
+The steps on this page target **SLES 15 SP7**. They also apply to earlier SLES 15 service packs (SP4 and later) that use a supported Docker major.
 
 ::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
