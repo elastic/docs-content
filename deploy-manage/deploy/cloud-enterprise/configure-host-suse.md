@@ -12,7 +12,9 @@ products:
 
 # Configure a SUSE host [ece-configure-hosts-sles12]
 
-This guide explains how to prepare a SUSE Linux Enterprise Server (SLES) host for an {{ece}} (ECE) installation. It covers the operating system configuration required before you install ECE, including Docker installation, XFS quota configuration, and other host-specific settings. The steps on this page target SLES 15 SP4.
+This guide explains how to prepare a SUSE Linux Enterprise Server (SLES) host for an {{ece}} (ECE) installation. It covers the operating system configuration required before you install ECE, including Docker installation, XFS quota configuration, and other host-specific settings.
+
+The steps on this page target **SLES 15 SP7**. They also apply to earlier SLES 15 service packs (SP4 and later) that use a Docker version listed in the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise).
 
 ::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
@@ -117,9 +119,9 @@ ECE runs its services in containers, following a [service-oriented architecture]
     sudo zypper search -s -t package --match-exact docker
     ```
 
-    Note the version you want to install. Check the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for supported Docker versions for your OS. If the latest available version is compatible, you don't need to specify an explicit version in the next step.
+    Note the version you want to install. Check the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for supported Docker versions for your OS and ECE version. If the latest available version is listed there, you don't need to specify an explicit version in the next step.
 
-1. Install Docker and other required packages on SLES 15. For example, to install Docker 25:
+1. Install Docker and other required packages on SLES 15. To pin a specific version from the listing, pass it to `zypper`. For example:
 
     ```sh
     sudo zypper install -y curl device-mapper lvm2 net-tools docker=25.0.6_ce-150000.207.1 <1>
