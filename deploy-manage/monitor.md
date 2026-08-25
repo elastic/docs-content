@@ -123,15 +123,15 @@ Learn how to enable monitoring of your orchestrator:
 Elastic monitors [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) service metrics and performance as part of [our shared responsibility](https://www.elastic.co/cloud/shared-responsibility). We provide service availability information on our [service status page](/deploy-manage/cloud-organization/service-status.md).
 :::
 
+## Logging
+
+You can configure several types of logs in {{stack}} that can help you to gain insight into {{stack}} operations, diagnose issues, and track certain types of events. [Learn about the types of logs available, where to find them, and how to configure them](/deploy-manage/monitor/logging-configuration.md).
+
+For {{serverless-full}}, use [](/deploy-manage/monitor/log-delivery.md) instead of stack logging and monitoring to deliver logs to your projects.
+
 ## Log delivery
 ```{applies_to}
 serverless: preview
 ```
 
-For {{serverless-full}} projects, [](/deploy-manage/monitor/log-delivery.md) lets you ship selected log types — starting with audit trail — to a {{sec-serverless}} or {{obs-serverless}} project in your organization, including across regions. Configure destinations and ignore filters from project **Settings → Log delivery**.
-
-## Logging
-
-You can configure several types of logs in {{stack}} that can help you to gain insight into {{stack}} operations, diagnose issues, and track certain types of events. [Learn about the types of logs available, where to find them, and how to configure them](/deploy-manage/monitor/logging-configuration.md).
-
-For {{serverless-full}}, use [](/deploy-manage/monitor/log-delivery.md) instead of stack logging and monitoring to deliver audit trail logs into a project you control.
+For {{serverless-full}} projects, [](/deploy-manage/monitor/log-delivery.md) lets you ship selected log types to a {{sec-serverless}} or {{obs-serverless}} project in your organization. Audit trail is the first log type available for delivery.
