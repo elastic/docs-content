@@ -99,7 +99,7 @@ The matrix of officially supported operating systems and JVMs is available in th
 
 {{es}} is built using Java, and includes a bundled version of [OpenJDK](https://openjdk.java.net) within each distribution. We strongly recommend using the bundled JVM in all installations of {{es}}.
 
-The bundled JVM is treated the same as any other dependency of {{es}} in terms of support and maintenance. This means that Elastic takes responsibility for keeping it up to date, and reacts to security issues and bug reports as needed to address vulnerabilities and other bugs in {{es}}. Elastic’s support of the bundled JVM is subject to Elastic’s [support policy](https://www.elastic.co/support_policy) and [end-of-life schedule](https://www.elastic.co/support/eol) and is independent of the support policy and end-of-life schedule offered by the original supplier of the JVM. Elastic does not support using the bundled JVM for purposes other than running {{es}}.
+The bundled JVM is treated the same as any other dependency of {{es}} in terms of support and maintenance. This means that Elastic takes responsibility for keeping it up to date, and reacts to security issues and bug reports as needed to address vulnerabilities and other bugs in {{es}}. Elastic's support of the bundled JVM is subject to Elastic's [support policy](https://www.elastic.co/support_policy) and [end-of-life schedule](https://www.elastic.co/support/eol) and is independent of the support policy and end-of-life schedule offered by the original supplier of the JVM. Elastic does not support using the bundled JVM for purposes other than running {{es}}.
 
 ::::{tip}
 {{es}} uses only a subset of the features offered by the JVM. Bugs and security issues in the bundled JVM often relate to features that {{es}} does not use. Such issues do not apply to {{es}}. Elastic analyzes reports of security vulnerabilities in all its dependencies, including in the bundled JVM, and will issue an [Elastic Security Advisory](https://github.com/elastic/.github/blob/main/SECURITY.md) if such an advisory is needed.
@@ -111,8 +111,9 @@ If you decide to run {{es}} using a version of Java that is different from the b
 To use your own version of Java, set the `ES_JAVA_HOME` environment variable to the path to your own JVM installation. The bundled JVM is located within the `jdk` subdirectory of the {{es}} home directory. You may remove this directory if using your own JVM.
 
 :::{warning}
-Don’t use third-party Java agents that attach to the JVM. Such agents can be harmful to {{es}} stability and performance. In some cases they may cause nodes to freeze, crash, or fail to start up, or to lose or corrupt your data.
+Don't use third-party Java agents that attach to the JVM. Such agents can be harmful to {{es}} stability and performance. In some cases they may cause nodes to freeze, crash, or fail to start up, or to lose or corrupt your data.
 :::
+
 
 ## Third-party dependencies [dependencies-versions]
 
