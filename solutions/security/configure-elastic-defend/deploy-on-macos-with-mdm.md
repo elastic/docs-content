@@ -17,7 +17,7 @@ products:
 
 To silently install and deploy {{elastic-defend}}, you need to configure a mobile device management (MDM) profile for {{elastic-endpoint}}—the installed component that performs {{elastic-defend}}'s threat monitoring and prevention. This allows you to pre-approve the {{elastic-endpoint}} system extension and grant Full Disk Access to all the necessary components.
 
-This page explains how to deploy {{elastic-defend}} silently using Jamf.
+This page explains how to deploy {{elastic-defend}} silently using Jamf. First, [configure a Jamf MDM profile](#configure-jamf-profile) for {{elastic-endpoint}}. For macOS Ventura (13) and later, also [configure Managed Login Items](#managed-login-items-jamf) in a separate profile to prevent users from disabling {{agent}} in Login Items.
 
 
 ## Configure a Jamf MDM profile [configure-jamf-profile]
@@ -153,3 +153,27 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 :::
 
 After you complete these steps, generate the mobile configuration profile and install it onto the macOS machines. Once the profile is installed, {{elastic-defend}} can be deployed without the need for user interaction.
+
+## Configure Managed Login Items [managed-login-items-jamf]
+
+On macOS Ventura (13) and later, users can disable {{agent}} in **System Settings** → **General** → **Login Items**. That stops {{agent}} and can make the host appear offline.
+
+To prevent this, create a separate configuration profile with a **Managed Login Items** payload, and deploy it only to macOS 13 and later. If you install this payload on an earlier macOS version and later upgrade the Mac, the payload might not take effect.
+
+1. Create a new configuration profile, then select the **Managed Login Items** payload.
+2. Add a rule with the following details:
+
+    1. From the **Rule Type** dropdown, select **Label**.
+    2. Under **Rule Value**, enter `co.elastic.elastic-agent`.
+
+3. Add a second rule with the following details:
+
+    1. From the **Rule Type** dropdown, select **Label**.
+    2. Under **Rule Value**, enter `co.elastic.endpoint`.
+
+4. Save the configuration.
+5. Deploy this configuration profile only to hosts running macOS Ventura (13) or later.
+
+::::{important}
+Use the **Label** rule type. Other rule types, such as **Bundle Identifier**, **Bundle Identifier Prefix**, and **Team Identifier**, do not prevent users from disabling {{agent}} in **Login Items**.
+::::
