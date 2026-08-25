@@ -13,7 +13,7 @@ Use it if you're new to search in {{es}} or want to experiment with meaning-base
 
 You can use this guide in two ways:
 
-- **Progressive steps:** Follow the guide from the beginning. Each progressive step is a standalone program. Save each example in a new source file using the suggested filename. This approach includes detailed explanations and lets you run and verify each example independently as you learn.
+- **Progressive steps:** Follow the guide from the beginning. This approach includes detailed explanations and lets you run and verify each example independently as you learn.
 - **Complete runnable script:** Use the [complete runnable script](#vector-full-text-search-complete-script) to run all operations from one file and get results quickly.
 
 :::{tip}
