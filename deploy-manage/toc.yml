@@ -86,6 +86,9 @@ toc:
                   - file: deploy/cloud-enterprise/ece-software-prereq.md
                   - file: deploy/cloud-enterprise/ece-sysconfig.md
                   - file: deploy/cloud-enterprise/ece-networking-prereq.md
+                  - file: deploy/cloud-enterprise/ece-ipv6-support.md
+                    children:
+                      - file: deploy/cloud-enterprise/ece-ipv6-aws-setup.md
                   - file: deploy/cloud-enterprise/ece-users-permissions.md
                   - file: deploy/cloud-enterprise/ece-ha.md
                   - file: deploy/cloud-enterprise/ece-roles.md
@@ -140,6 +143,7 @@ toc:
                   - file: deploy/cloud-enterprise/change-ece-api-url.md
                   - file: deploy/cloud-enterprise/change-endpoint-urls.md
                   - file: deploy/cloud-enterprise/enable-custom-endpoint-aliases.md
+                  - file: deploy/cloud-enterprise/configure-proxy-protocol.md
                   - file: deploy/cloud-enterprise/ece-manage-capacity.md
                   - file: deploy/cloud-enterprise/configure-allocator-affinity.md
                   - file: deploy/cloud-enterprise/change-allocator-disconnect-timeout.md
