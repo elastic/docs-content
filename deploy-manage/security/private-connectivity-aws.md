@@ -77,6 +77,8 @@ When using AWS PrivateLink, the following limitations apply:
 
 ```{include} _snippets/private-connectivity-limitations-ech.md
 ```
+```{include} _snippets/aws-privatelink-cloud-id-limitation.md
+```
 
 ## PrivateLink service names and aliases [ec-private-link-service-names-aliases]
 
@@ -246,10 +248,6 @@ After you create your VPC endpoint and DNS entries, check that you are able to r
 :::::{applies-switch}
 ::::{applies-item} ess: ga
 :::{include} _snippets/private-url-struct.md
-:::
-
-:::{note}
-The Cloud ID for your deployment encodes the public (non-PrivateLink) endpoint domain. Do not use URLs derived from the Cloud ID for PrivateLink connections, as they will not match the TLS certificate served at the PrivateLink endpoint and the connection will fail with a certificate hostname mismatch. Refer to the private URL structure in the preceding include. Review [our KB article](https://ela.st/avoid-using-cloudid-for-privatelink-deployment) for more guidance.
 :::
 ::::
 ::::{applies-item} serverless: ga
