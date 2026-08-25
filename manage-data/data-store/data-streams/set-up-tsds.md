@@ -144,7 +144,7 @@ PUT _index_template/my-weather-sensor-index-template
 ```
 
 1. {{stack}} only
-2. {{stack}} only, enabled by default in serverless
+2. {{stack}} only, enabled by default in {{serverless-short}}
 
 :::{important}
 :applies_to: stack: ga
