@@ -22,23 +22,32 @@ This lets one project hold your detections and your analysts' alert triage while
 
 To confirm which projects a rule covered when it created an alert, use the {{cps-init}} scope fields described in [{{cps-cap}} context in alerts and the event log](#cps-context-in-alerts).
 
-## Which API key a rule needs to reach linked projects [cps-rules-api-key]
+## Which API key a rule needs for {{cps}} [cps-rules-api-key]
 
-A rule runs with the API key of the user who created or last updated it, so that key determines which projects the rule can resolve indices in. Only [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) authenticate across project boundaries. [{{es}} API keys](/deploy-manage/api-keys/serverless-project-api-keys.md) are scoped to a single project and return results from the origin project only.
+A rule runs with the API key of the user who created or last updated it. That key determines which projects the rule can search.
 
-Rules that you create or edit in the UI get an {{ecloud}} API key. A rule created or updated through the API with an {{es}} API key keeps that key, which makes the rule origin-scoped. Such a rule resolves no linked project indices, and if the origin project has no matching indices either, the rule skips execution and reports this warning:
+For {{cps}}, the rule must use an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md), which can authenticate across project boundaries. When you create or edit a rule in the UI while signed in as an {{ecloud}} organization member, the rule gets an {{ecloud}} API key.
 
-```txt
-Unable to find matching indices for rule <rule name>. This warning will persist until one of the following occurs: a matching index is created or the rule is disabled.
-```
+[{{es}} API keys](/deploy-manage/api-keys/serverless-project-api-keys.md) are scoped to a single project and return results from the origin project only. The same limit applies to users who exist only on the project, rather than as {{ecloud}} organization members.
 
-Plan for this when you migrate rules from another environment or create rules through automation. To move a rule to an {{ecloud}} API key, open the rule's actions menu {icon}`boxes_horizontal` on the **{{siem-rules-ui}}** page and select **Update API key**, or edit and save the rule in the UI.
+### When a rule searches the origin project only [cps-rules-origin-only-key]
+
+A rule created or updated through the API with an {{es}} API key, or last saved by a user who exists only on the project, keeps that credential. It then can't search linked projects:
+
+- If the origin project has no matching indices, the rule doesn't run and its last-run status shows a warning.
+- If those patterns exist on the origin, the rule still runs and reports success, but it searches the origin only. There's no warning for that.
+
+Plan for this when you migrate rules from another environment or create rules through automation.
+
+### Switch a rule to an {{ecloud}} API key [cps-rules-update-api-key]
+
+To move a rule to an {{ecloud}} API key, open the rule's actions menu {icon}`boxes_horizontal` on the **{{siem-rules-ui}}** page and select **Update API key**, or edit and save the rule in the UI while signed in as an {{ecloud}} organization member.
 
 Rules still running on an {{es}} API key are tagged **Missing {{ecloud}} API Key** on the **{{siem-rules-ui}}** page. For more about how this key type affects rule access, refer to [Rules and {{ecloud}} API keys in {{serverless-short}}](/explore-analyze/alerting/alerts/rules-and-elastic-cloud-api-keys.md).
 
 ## How the alert limit applies across linked projects [cps-rules-max-alerts]
 
-The **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) limits the number of alerts a rule creates in a single execution. Under {{cps}}, that cap covers the combined results from the origin project and all linked projects in the rule's scope rather than each project separately. The default is 100.
+The **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) limits the number of alerts a rule creates in a single execution. Under {{cps}}, that limit covers the combined results from the origin project and all linked projects in the rule's scope rather than each project separately. The default is 100.
 
 A rule that stayed comfortably under the limit on a single project can reach it once you link projects, which leaves matches without alerts. Review the limit for rules that run across a broad scope, and consider [narrowing the scope with project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) instead of raising the limit.
 
