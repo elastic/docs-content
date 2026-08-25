@@ -21,6 +21,13 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.5.2 [elastic-observability-9.5.2-release-notes]
+
+### Fixes [elastic-observability-9.5.2-fixes]
+* Fixes the metric threshold rule form silently showing no conditions when the source configuration request is slow or fails, instead of showing a loading or error state [#280121]({{kib-pull}}280121).
+* Fixes the {{product.apm}} agent configuration tutorial page exposing the APM Server secret token to users without APM write permissions [#283942]({{kib-pull}}283942).
+* Fixes an error loading maintenance window status on the Synthetics monitors overview for users with read-only access [#281894]({{kib-pull}}281894).
+
 ## 9.5.1 [elastic-observability-9.5.1-release-notes]
 
 ### Features and enhancements [elastic-observability-9.5.1-features-enhancements]
