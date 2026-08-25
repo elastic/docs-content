@@ -26,7 +26,7 @@ During the upgrade window, there might be a short period of time during which yo
 :::
 
 ::::{important}
-When moving SLES 15 hosts to **SP7**, check the Docker major before you upgrade the OS. SLES 15 SP7 commonly ships Docker newer than 25. ECE 4.0 and 4.1 accept only Docker 25 on SLES 15; ECE 4.2.0 also accepts Docker 29. Upgrade ECE to 4.2.0 before installing Docker 29, or pin Docker 25 until ECE is on 4.2.0. The installer rejects Docker 26, 27, and 28 on SLES 15.
+When you upgrade the host OS (for example SLES 15 to a newer service pack), confirm the Docker version that ships with it is listed for your current ECE version in the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). If it isn't, pin a listed Docker version until you upgrade ECE, or upgrade ECE first.
 ::::
 
 ## The upgrade version matrix [ece-upgrade-version-matrix]
