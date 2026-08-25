@@ -180,9 +180,31 @@ Choose how to provide an {{es}} API key for the `elasticsearch/otel` exporter:
 
 :::::
 
+:::::{step} Start the collector
+
+Run the appropriate command for your collector type, pointing to the configuration file you saved in the previous step:
+
+::::{tab-set}
+
+:::{tab-item} Elastic Agent in OTel mode
+```shell
+./otelcol --config ./otel-opamp.yaml
+```
+:::
+
+:::{tab-item} OTel Contrib Collector
+```shell
+./otelcol-contrib --config ./otel-opamp.yaml
+```
+:::
+
+::::
+
+:::::
+
 :::::{step} Verify the collector connection
 
-1. Start or restart your OTel Collector with the applied configuration.
+1. Confirm the collector started without errors in its output.
 2. Return to the {{fleet}} UI. The flyout displays a confirmation message when your collector successfully connects.
 3. Your OTel Collector now appears in the **Agents** list.
 
