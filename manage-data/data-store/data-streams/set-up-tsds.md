@@ -144,7 +144,7 @@ PUT _index_template/my-weather-sensor-index-template
 ```
 
 1. {{stack}} only
-2. {{stack}} only
+2. {{stack}} only, enabled by default in serverless
 
 :::{important}
 :applies_to: stack: ga
@@ -187,7 +187,6 @@ The {{tsds-init}} is created automatically as long as the index name in your API
 :::{important}
 To add data to your data stream with the following bulk API request or POST request, you must update the timestamps to within two hours of your current time.
 Data added to a {{tsds-init}} must fit the [accepted time range](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-accepted-time-range).
-The first backing index is sized around creation time using `look_back_time` (default two hours) and `look_ahead_time`.
 
 {applies_to}`stack: ga 9.5` If you turned on past index creation, {{es}} creates backing indices automatically as historical documents are added within the eligible write window. For more details, go to [How time-bound indices work](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-accepted-time-range).
 :::
