@@ -37,27 +37,6 @@ To get started with your analysis in the Overview tab, you can search for monito
 
 Then click an individual monitor to see some details in a flyout. From there, you can click **Go to monitor** to go to an individual monitor’s page to see more details (as described below).
 
-## Remote monitors [synthetics-analyze-remote-monitors]
-```{applies_to}
-stack: ga 9.5+
-serverless: unavailable
-```
-
-When you configure {{ccs-init}} in [**{{synthetics-app}} → Settings → Remote clusters**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters), monitors from remote {{es}} clusters appear in the Synthetics UI alongside your local monitors. Remote monitors are identified by a **Remote** badge showing the cluster name, displayed next to the monitor type badge.
-
-When remote monitors are present, a **Remote cluster** filter option appears alongside **Type**, **Location**, **Tags**, and **Frequency**. Use it to scope the overview to monitors from one or more specific remote clusters. When a remote cluster filter is active, local monitors are hidden and status counts (for example, Up or Down) reflect only the filtered set. To group monitors by remote cluster, select **Group by → Remote cluster**.
-
-You can open a remote monitor's individual page the same way as a local monitor. Because remote monitors have no local saved object, the following actions are not available:
-
-- **Edit monitor**
-- **Enable/Disable**
-- **Delete**
-- **Run test manually**
-
-:::{tip}
-**Refresh** remains available. If you have monitors from multiple remote clusters, the **Remote** badge shows which {{kib}} instance each monitor comes from. To edit, enable/disable, delete, or run a remote monitor, open the Synthetics UI on the {{kib}} instance where the monitor is defined.
-:::
-
 ## All monitor types [synthetics-analyze-individual-monitors]
 
 When you go to an individual monitor’s page, you’ll see much more detail about the monitor’s performance over time. The details vary by monitor type, but for every monitor at the top of the page you’ll see:
@@ -267,3 +246,47 @@ Without leaving the waterfall chart, you can view data points relating to each r
 For additional analysis, whether to check the content of a CSS file or to view a specific image, click the ![External link icon](/solutions/images/observability-popout.svg "") icon located beside each resource, to view its content in a new tab.
 
 You can also navigate between steps and checks at the top of the page to view the corresponding waterfall charts.
+
+## Monitors from linked projects [synthetics-analyze-linked-monitors]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md) is enabled and projects are linked, the Synthetics **Overview**, monitor details, certificates, errors, and journeys pages use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header. Select **All projects** or a linked project to include monitor data from those projects. Scope also follows any [space default](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). If your organization has only one project, the selector is hidden.
+
+Monitors from linked projects appear alongside monitors from the origin project and show a **Linked** badge next to the monitor type. When they are present, a **Linked project** filter appears alongside **Type**, **Location**, **Tags**, and **Frequency**. Use it to scope the overview to monitors from one or more linked projects. When that filter is active, monitors from the origin project are hidden and status counts reflect only the filtered set. To group monitors by linked project, select **Group by → Linked project**.
+
+You can open a monitor from a linked project the same way as a monitor from the origin project. The details page shows a **Linked project monitor** callout. Click **View on linked project** when the linked project's {{kib}} URL is available. Because these monitors have no local saved object, the following actions are not available:
+
+- **Edit monitor**
+- **Enable/Disable**
+- **Delete**
+- **Run test manually**
+
+:::{tip}
+**Refresh** remains available. The **Linked** badge shows which linked project each monitor comes from. To edit, enable/disable, delete, or run a monitor from a linked project, open the Synthetics UI on the project where the monitor is defined.
+:::
+
+Creating, editing, and deleting monitors stays in the origin project. On **Create monitor**, **Edit monitor**, **Settings**, and **Management**, the scope selector is unavailable and Synthetics searches the origin project only.
+
+## Remote monitors [synthetics-analyze-remote-monitors]
+```{applies_to}
+stack: ga 9.5+
+serverless: unavailable
+```
+
+When you configure {{ccs-init}} in [**{{synthetics-app}} → Settings → Remote clusters**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters), monitors from remote {{es}} clusters appear in the Synthetics UI alongside your local monitors. Remote monitors are identified by a **Remote** badge showing the cluster name, displayed next to the monitor type badge.
+
+When remote monitors are present, a **Remote cluster** filter option appears alongside **Type**, **Location**, **Tags**, and **Frequency**. Use it to scope the overview to monitors from one or more specific remote clusters. When a remote cluster filter is active, local monitors are hidden and status counts (for example, Up or Down) reflect only the filtered set. To group monitors by remote cluster, select **Group by → Remote cluster**.
+
+You can open a remote monitor's individual page the same way as a local monitor. Because remote monitors have no local saved object, the following actions are not available:
+
+- **Edit monitor**
+- **Enable/Disable**
+- **Delete**
+- **Run test manually**
+
+:::{tip}
+**Refresh** remains available. If you have monitors from multiple remote clusters, the **Remote** badge shows which {{kib}} instance each monitor comes from. To edit, enable/disable, delete, or run a remote monitor, open the Synthetics UI on the {{kib}} instance where the monitor is defined.
+:::

@@ -116,6 +116,14 @@ In a serverless project, to create a Project API key you must be logged in as a 
 - The **Elastic managed locations enabled** toggle controls whether your Synthetics monitors are permitted to run from Elastic's globally distributed, cloud-hosted testing infrastructure. If enabled, the key can push monitors to both Elastic-managed and private locations. If disabled, the key is restricted to private locations only.
 - The **Spaces** menu allows you to select the space where your API keys are available.
 
+## Cross-project search [synthetics-settings-cps]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+The **Remote clusters** tab is not available on {{serverless-full}}. To include monitors from linked projects, use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header. On this **Settings** page, the selector is unavailable and Synthetics stays scoped to the origin project. Refer to [Monitors from linked projects](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-linked-monitors).
+
 ## Remote clusters [synthetics-settings-remote-clusters]
 ```{applies_to}
 stack: ga 9.5+

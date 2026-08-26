@@ -9,12 +9,22 @@ applies_to:
 products:
   - id: observability
   - id: cloud-serverless
-description: Advanced guidance for scaling and designing Elastic Synthetics deployments, including cross-cluster search support, tagging strategies, and custom dashboards.
+description: Advanced guidance for scaling and designing Elastic Synthetics deployments, including cross-project and cross-cluster search support, tagging strategies, and custom dashboards.
 ---
 
 # Scale and architect a Synthetics deployment [synthetics-scale-and-architect]
 
 Use these advanced considerations when you use the {{synthetics-app}} for large and complex use cases.
+
+## View monitor data from linked projects [synthetics-cps-settings]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+On {{serverless-full}}, include monitors from linked projects with the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header.
+
+Monitors from linked projects are read-only in this project. Create, edit, and delete them in the project where they are defined. Refer to [Monitors from linked projects](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-linked-monitors).
 
 ## View monitor data from remote clusters [synthetics-ccs-settings]
 ```{applies_to}
