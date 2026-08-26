@@ -34,7 +34,7 @@ The following tags are predefined:
 * `_id`: the project identifier
 * `_organization`: the organization identifier
 * `_region`: the Cloud region where the project is located
-* `_type`: the project type (Observability, Search, Security)
+* `_type`: the project type ({{product.elasticsearch}}, {{es}} Vector Database, {{product.observability}}, or {{product.security}})
 
 Predefined tags always start with an underscore `_`.
 
