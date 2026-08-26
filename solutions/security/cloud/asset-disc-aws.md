@@ -43,17 +43,43 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 4. Select **AWS**, then either **AWS Organization** to onboard multiple accounts, or **Single Account** to onboard an individual account.
 5. Give your integration a name that matches the purpose or team of the AWS account/organization you want to monitor, for example, `dev-aws-account`.
 6. In **Deployment options**, select the deployment mode:
-    * {applies_to}`{serverless: preview, stack: preview 9.5+}` Select **Elastic Managed Integration**.
-    * {applies_to}`stack: preview 9.1-9.4` Select **Agentless**.
+
+    :::{include} _snippets/deployment-options-asset-disc.md
+    :::
+
 7. Next, you’ll need to authenticate to AWS. The following methods are available:
 
-    * {applies_to}`{serverless: preview, stack: preview 9.2}` Option 1: [Federated Identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md), also called a cloud connector (recommended).
-      * {applies_to}`{serverless: preview, stack: preview 9.4+}` Select **Federated Identity**. To reuse an existing identity, select the **Existing Identity** tab, then select the identity's name. To create a new identity, on the **New Identity** tab, enter a **Federated Identity Name**, then expand the **Steps to assume role** section. Complete the instructions to generate a `Role ARN` and `External ID`; enter them in {{kib}}.
-      * {applies_to}`stack: preview 9.2-9.3` Select **Cloud Connectors**. To use a pre-existing cloud connector for this deployment, select the **Existing Connection** tab, then select the cloud connector's name. To use a new cloud connector, under **New Connection**, enter a **Cloud Connector Name**, then expand the **Steps to assume role** section. Complete the instructions to generate a `Role ARN` and `External ID`; enter them in {{kib}}.
-      
-        ::::{note}
-        {applies_to}`stack: removed 9.3`{applies_to}`serverless: removed` On Elastic Stack version 9.3 and earlier, to use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
-        ::::
+    * Option 1 (recommended): [Federated Identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md), also called a cloud connector in earlier versions:
+
+      :::::{applies-switch}
+
+      ::::{applies-item} { "serverless": "preview", "stack": "preview 9.4+" }
+      1. Select **Federated Identity**.
+      2. To reuse an existing identity, select the **Existing Identity** tab, then select the identity's name.
+
+         To create a new identity:
+
+         1. On the **New Identity** tab, enter a **Federated Identity Name**.
+         2. Expand the **Steps to assume role** section and complete the instructions to generate a `Role ARN` and `External ID`.
+         3. Enter the values in the respective fields in {{kib}}.
+      ::::
+
+      ::::{applies-item} { "stack": "preview 9.2-9.3" }
+      1. Select **Cloud Connectors**.
+      2. To use a pre-existing cloud connector for this deployment, select the **Existing Connection** tab, then select the cloud connector's name.
+
+         To use a new cloud connector:
+
+         1. Under **New Connection**, enter a **Cloud Connector Name**.
+         2. Expand the **Steps to assume role** section and complete the instructions to generate a `Role ARN` and `External ID`.
+         3. Enter the values in the respective fields in {{kib}}.
+
+      :::{note}
+      {applies_to}`stack: removed 9.3`{applies_to}`serverless: removed` On Elastic Stack version 9.3 and earlier, to use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
+      :::
+      ::::
+
+      :::::
 
     * Option 2: Direct access keys/CloudFormation. For **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
 

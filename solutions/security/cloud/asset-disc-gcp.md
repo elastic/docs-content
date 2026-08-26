@@ -44,8 +44,10 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 4. Select **GCP**, then either **GCP Organization** to onboard your whole organization, or **Single Project** to onboard an individual account.
 5. Give your integration a name that matches the purpose or team of the GCP subscription/organization you want to monitor, for example, `dev-gcp-account`.
 6. In **Deployment options**, select the deployment mode:
-    * {applies_to}`{serverless: preview, stack: preview 9.5+}` Select **Elastic Managed Integration**.
-    * {applies_to}`stack: preview 9.1-9.4` Select **Agentless**.
+
+    :::{include} _snippets/deployment-options-asset-disc.md
+    :::
+
 7. Next, you’ll need to authenticate to GCP. Expand the **Steps to Generate GCP Account Credentials** section, then follow the instructions that appear to automatically create the necessary credentials using Google Cloud Shell.
 8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
