@@ -60,10 +60,10 @@ Snooze operates at the series level, not the alert episode level. If you snooze 
 
 ## What to do next with alerts [alerts-next-steps]
 
-From here, you can view, manage, and query alert episode data.
+From here, you can view, manage, and query alert episode data. If your rules run in Signal mode instead, refer to [Observe and analyze signals](observe-and-analyze-signals.md).
 
 - [View and manage alerts](alerts/view-and-manage-alerts.md): Open the alert episodes table, triage active episodes, and acknowledge, snooze, or resolve them.
-- [Alert data model](alerts/alert-data-model.md): Understand how the system stores alert data, including the signal versus alert distinction and the two underlying data streams.
+- [Rule event data model](alerts/rule-event-data-model.md): Understand how alert episodes and signals share `.rule-events` and how they differ.
 - [Query {{alerting-v2-system}} alert history in Discover](alerts/query-alerts-and-signals-in-discover.md): Use {{esql}} to query `.rule-events` and `.alert-actions` for exploratory analysis and dashboards.
 
 :::{important} - How to use the {{alerting-v2-system}} documentation

@@ -5,42 +5,42 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Find field schemas for the .rule-events and .alert-actions data streams in the experimental alerting system. Covers evaluation event fields, triage action fields, and all action_type values."
+description: "Find field schemas for the .rule-events and .alert-actions data streams in the experimental alerting system. Covers shared signal and alert fields, alert-only episode fields, and all action_type values."
 ---
 
-# Alert data stream field reference [field-reference]
+# Rule event and alert action field reference [field-reference]
 
-This page is a field reference for the {{alerting-v2-system}}. It documents the fields written to the two data streams that back alert history and triage data:
+This page is a field reference for the {{alerting-v2-system}}. It documents the fields written to the two data streams that back rule output and triage data:
 
-- **`.rule-events` field schema**: Fields written to the rule evaluation stream, including which fields are only present on alert documents.
+- **`.rule-events` field schema**: Fields written for every rule evaluation. Alert episodes and signals share this stream and most fields. The `episode.*` fields appear only on alert documents.
 - **`.alert-actions` field schema**: Fields written when a user or the system acts on an episode, including all `action_type` values.
 
-Use this page when writing {{esql}} queries in Discover, interpreting alert UI state, or aligning API payloads with stored data. For query examples, refer to [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md). For triage controls in the UI, refer to [View and manage alerts](view-and-manage-alerts.md).
+Use this page when writing {{esql}} queries in Discover, interpreting alert UI state, or aligning API payloads with stored data. For how the shared schema works conceptually, refer to [Rule event data model](rule-event-data-model.md). For signal query examples, refer to [Observe and analyze signals](../observe-and-analyze-signals.md). For episode and triage query examples, refer to [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md). For triage controls in the UI, refer to [View and manage alerts](view-and-manage-alerts.md).
 
 ## `.rule-events` field schema [rule-events-field-schema]
 
 Every rule evaluation writes a document to `.rule-events`. Fields use dot-notation for nested objects. The `episode.*` fields are only present on documents with `type: alert`.
 
-| Field | Type | Description |
-|---|---|---|
-| `@timestamp` | date | When the evaluation ran. |
-| `scheduled_timestamp` | date | The scheduled time for this evaluation. |
-| `rule.id` | keyword | ID of the rule that produced this event. |
-| `rule.version` | long | Version of the rule at evaluation time. |
-| `group_hash` | keyword | Identifies the series this event belongs to. |
-| `status` | keyword | Outcome of a single evaluation row, independent of episode lifecycle. Can be one of the following: `breached`, `recovered`, `no_data`. |
-| `type` | keyword | Whether this document is a signal or an alert episode. Can be one of the following: `signal`, `alert`. |
-| `severity` | keyword | Severity level assigned by the rule. Can be one of the following: `info`, `low`, `medium`, `high`, `critical`. |
-| `episode.id` | keyword | ID of the alert episode. Only present on `type: alert` documents. |
-| `episode.status` | keyword | Lifecycle state of the alert episode. Only present on `type: alert` documents. Can be one of the following: `inactive`, `pending`, `active`, `recovering`. |
-| `episode.status_count` | long | Count of consecutive evaluations in the current `episode.status`. Set only for `pending` and `recovering`. |
-| `data` | flattened | Rule-defined payload from the source query. |
-| `source` | keyword | Source that produced the event. |
-| `space_id` | keyword | {{kib}} space where the rule lives. |
+| Field | Type | Signal | Alert episode | Description |
+|---|---|---|---|---|
+| `@timestamp` | date | ✅ | ✅ | When {{kib}} wrote this document. |
+| `scheduled_timestamp` | date | ✅ | ✅ | The scheduled start time for this rule run. |
+| `rule.id` | keyword | ✅ | ✅ | ID of the rule that produced this event. |
+| `rule.version` | long | ✅ | ✅ | Version of the rule at evaluation time. |
+| `group_hash` | keyword | ✅ | ✅ | Identifies the series this event belongs to. |
+| `status` | keyword | ✅ | ✅ | Outcome of a single evaluation row, independent of episode lifecycle. Signals are always `breached`. Alert events can be `breached`, `recovered`, or `no_data`. |
+| `type` | keyword | ✅ | ✅ | Whether this document is a signal or an alert episode. Can be one of the following: `signal`, `alert`. |
+| `severity` | keyword | ✅ | ✅ | Optional. Set on `breached` events when the query emits a recognized value. Can be one of the following: `info`, `low`, `medium`, `high`, `critical`. Not set on `recovered` or `no_data` events. |
+| `data` | flattened | ✅ | ✅ | Rule-defined payload from the source query. |
+| `source` | keyword | ✅ | ✅ | Source that produced the event. |
+| `space_id` | keyword | ✅ | ✅ | {{kib}} space where the rule lives. |
+| `episode.id` | keyword | — | ✅ | ID of the alert episode. |
+| `episode.status` | keyword | — | ✅ | Lifecycle state of the alert episode. Can be one of the following: `inactive`, `pending`, `active`, `recovering`. |
+| `episode.status_count` | long | — | ✅ | Count of consecutive evaluations in the current `episode.status`. Set only for `pending` or `recovering`. |
 
 ## `.alert-actions` field schema [alert-actions-field-schema]
 
-When a user or the system records an action on an alert episode, {{kib}} writes a document to `.alert-actions`. Use this stream for triage history, operational metrics such as mean time to acknowledge (MTTA), and auditing.
+When a user or the system records an action on an alert episode, {{kib}} writes a document to `.alert-actions`. Use this stream for triage history, operational metrics such as mean time to acknowledge (MTTA), and auditing. Signal documents never produce `.alert-actions` rows.
 
 | Field | Type | Description |
 |---|---|---|

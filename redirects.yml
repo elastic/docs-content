@@ -781,7 +781,13 @@ redirects:
     anchors:
       '': 'alert-actions'
 
-# Related to cases and alerting documentation restructuring
+# Related to renaming Alert data model to Rule event data model
+  'explore-analyze/alerting/experimental-alerting-system/alerts/alert-data-model.md':
+    to: 'explore-analyze/alerting/experimental-alerting-system/alerts/rule-event-data-model.md'
+    anchors:
+      'alert-data-model':
+
+  # Related to cases and alerting documentation restructuring
   # Main pages
   'explore-analyze/alerts-cases.md': 'explore-analyze/alerting.md'
   'explore-analyze/alerts-cases/cases.md': 'explore-analyze/cases.md'
