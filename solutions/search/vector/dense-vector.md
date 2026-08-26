@@ -21,6 +21,10 @@ Dense vectors use neural embeddings to represent semantic meaning. They translat
 - Performing image and multimedia similarity search
 - Delivering content-based recommendations
 
+:::{tip}
+If you're using {{serverless-full}}, the [{{es}} Vector Database project type](/solutions/vector-database.md) is recommended when embeddings and similarity search are central to your application.
+:::
+
 ## Working with dense vectors in {{es}}
 
 :::{tip}
@@ -38,18 +42,27 @@ To implement dense vector search in {{es}}, you need both an index configuration
 2. **Query the index with k-NN search**
    - Use the [`knn` query](knn.md) to retrieve results based on vector similarity
 
-### Profiles for {{es-serverless}} projects [vector-profiles]
+### Choose a {{serverless-short}} project configuration [vector-profiles]
 ```{applies_to}
 serverless:
 ```
 
-When you use the [API]({{cloud-serverless-apis}}operation/operation-createelasticsearchproject) to create an {{es-serverless}} project, you can choose between two profiles: `general_purpose` and `vector`.
-These profiles apply to the {{es}} project type and are separate from the [{{es}} Vector Database project type](/solutions/vector-database.md). Vector Database projects use [`index.mode: vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) automatically, and index-level vector tuning is managed for you.
+The available configuration depends on your project type.
 
-The general purpose profile is recommended for most search use cases, including full text search, sparse vectors, and dense vectors that use compression such as BBQ.
-The vector profile is recommended only when your use case is based on uncompressed dense vectors with high dimensionality.
+:::::{tab-set}
+::::{tab-item} {{es}} project
+When you use the [API]({{cloud-serverless-apis}}operation/operation-createelasticsearchproject) to create an {{es-serverless}} project, select one of two `optimized_for` profiles:
 
-For more information about how the profile affects virtual compute unit (VCU) allocation and costs, refer to [](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md).
+* `general_purpose`: Recommended for most search use cases, including full-text search, sparse vectors, and dense vectors that use compression such as BBQ.
+* `vector`: Recommended only for uncompressed, high-dimensional dense vectors.
+
+For information about how the profile affects virtual compute unit (VCU) allocation and costs, refer to [](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md).
+::::
+
+::::{tab-item} {{es}} Vector Database project
+Vector Database projects don't use an `optimized_for` profile. Indices use [`index.mode: vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) automatically.
+::::
+:::::
 
 ## Better Binary Quantization (BBQ) [bbq]
 
