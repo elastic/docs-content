@@ -6,7 +6,7 @@
     Rules run with the API key of the user who created or last updated them, so they need an {{ecloud}} API key to search across linked projects. For details, refer to [{{cps-cap}} and detection rules](/solutions/security/detect-and-alert/cross-project-search-detection-rules.md).
     :::
 
-- **{{ml-cap}}:** {{anomaly-detect-cap}} job {{dfeeds}} and transforms can read data from linked projects. Jobs and results live on the origin project. {{ml-cap}} rules alert on those origin results, including anomalies produced from linked-project data.
+- **{{ml-cap}}:** {{anomaly-detect-cap}} job {{dfeeds}} can [read data from linked projects](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope). Jobs and results are stored on the origin project. {{ml-cap}} rules alert on those stored results, including anomalies produced from linked-project data.
 - **Timeline:** Tables display documents from linked projects. Actions that don't apply to documents in linked projects are disabled.
 - **Alert, event, and attack flyouts:** Flyouts render correctly for documents from linked projects. Documents in linked projects are clearly identified, and actions that don't apply to these documents are hidden or disabled. Investigate in Timeline remains available. Session View is not available for documents from linked projects.
 - **Explore page:** Host, network, and user exploration searches follow the {{cps-init}} scope configured for the space, so they can return events from linked projects.
