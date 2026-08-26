@@ -31,7 +31,7 @@ This page explains how to set up the Cloud Asset Discovery integration to invent
 
 You can set up Cloud Asset Discovery for GCP either by enrolling a single project, or by enrolling an organization containing multiple projects. Either way, you need to first add the integration, then enable cloud account access. 
 
-Two deployment technologies are available: {{managed-integration}} and agent-based. 
+Two deployment options are available: {{managed-integration}} and agent-based. 
 
 * [{{managed-integration}} deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. 
 * [Agent-based deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.

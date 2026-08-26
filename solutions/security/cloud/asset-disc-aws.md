@@ -30,7 +30,7 @@ This page explains how to set up the Cloud Asset Discovery integration to invent
 
 You can set up Cloud Asset Discovery for AWS either by enrolling a single cloud account, or by enrolling an organization containing multiple accounts. Either way, first you will add the integration, then enable cloud account access. 
 
-Two deployment technologies are available: {{managed-integration}} and agent-based. 
+Two deployment options are available: {{managed-integration}} and agent-based. 
 
 * [{{managed-integration}} deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. 
 * [Agent-based deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.

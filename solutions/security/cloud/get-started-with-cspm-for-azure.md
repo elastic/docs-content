@@ -31,7 +31,7 @@ This page explains how to get started monitoring the security posture of your cl
 
 You can set up CSPM for Azure by enrolling an Azure organization (management group) containing multiple subscriptions, or by enrolling a single subscription. Either way, first add the CSPM integration, then enable cloud account access. 
 
-The following deployment technologies are available: {{managed-integration}} and agent-based. 
+The following deployment options are available: {{managed-integration}} and agent-based. 
 
 * [{{managed-integration}} deployment](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
 * [Agent-based deployment](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
