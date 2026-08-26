@@ -96,7 +96,7 @@ Built-in tools and agents always appear under their real names. Anonymized names
 User data is the exception to that pattern. Every other setting anonymizes a value in place, keeping the same field. The user fields swap instead. When **Include user data in traces** is off, the username is dropped and the user ID is replaced by a stable hash in `attributes.user.hash`. When the setting is on, `attributes.user.id` and `attributes.user.name` are recorded and `attributes.user.hash` is absent. Account for that if you build dashboards that group by user.
 :::
 
-On {{ech}} and {{serverless-full}}, `attributes.user.name` holds the numeric {{ecloud}} user ID rather than a readable username, and `attributes.user.id` holds the user profile ID. To resolve a name, correlate `attributes.user.id` against the [user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile).
+For users who sign in with {{ecloud}} SSO, as is standard on {{ech}} and {{serverless-full}}, `attributes.user.name` holds the numeric {{ecloud}} user ID rather than a readable username. `attributes.user.id` holds the user profile ID in all cases. To resolve a readable identity, look up `attributes.user.id` with the [user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile) and read `user.full_name` or `user.email` from the response.
 
 Changing a privacy setting affects only traces recorded after the change. Existing traces are not rewritten. {{agent-builder}} refreshes these settings every 30 seconds, so allow up to that long for a change to take effect, then run a new conversation round to see it.
 

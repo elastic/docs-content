@@ -138,7 +138,7 @@ To select that span, filter on `span.name LIKE "invoke_agent *"` and `attributes
 
 When the caller has no user profile, as is the case for some API key authentication, there is no `attributes.user.id` and therefore no `attributes.user.hash`. Those rounds are still traced, but they fall outside any per-user breakdown.
 
-On {{ech}} and {{serverless-full}}, `attributes.user.name` holds the numeric {{ecloud}} user ID rather than a readable username. To resolve a display name, correlate `attributes.user.id` against the [user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile).
+For users who sign in with {{ecloud}} SSO, as is standard on {{ech}} and {{serverless-full}}, `attributes.user.name` holds the numeric {{ecloud}} user ID rather than a readable username. To resolve a display name, look up `attributes.user.id` with the [user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile) and read `user.full_name` or `user.email` from the response.
 
 To break token usage down by user, combine spans from the same trace. Token counts are recorded on the model call spans, not on the conversation round span that carries the user fields, so a query over a single span kind returns no token totals. Both span kinds share the same `trace_id` and `attributes.gen_ai.conversation.id`, so use one of those to correlate them.
 
