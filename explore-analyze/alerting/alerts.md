@@ -19,7 +19,7 @@ description: "Overview of Kibana alerting: rules, alerts, actions, connectors, a
 
 :::{note}
 :applies_to: {"stack": "experimental 9.5+", "serverless": "experimental"}
-Looking for the {{alerting-v2-system}} built on {{esql}}? That system can open tracked [alert episodes](experimental-alerting-system/alerts.md) or [record signals](experimental-alerting-system/observe-and-analyze-signals.md) for later analysis. Start with the [{{alerting-v2-system-cap}} overview](system-overview.md).
+Looking for the {{alerting-v2-system}} built on {{esql}}? That system can open tracked [alert episodes](experimental-alerting-system/alerts.md) or [record signals](experimental-alerting-system/alerts/query-signals.md) for later analysis. Start with the [{{alerting-v2-system-cap}} overview](system-overview.md).
 ::::
 
 :::{important}

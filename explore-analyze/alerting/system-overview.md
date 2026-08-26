@@ -47,6 +47,8 @@ Refer to [Alert episodes](experimental-alerting-system/alerts.md) to learn more.
 
 In Signal mode, a match is recorded as a signal, which skips action policy evaluation entirely. As signals accumulate, you can query them in Discover, build dashboards from them, or feed them into an Alert mode rule that correlates activity across sources, feeding back into the start of the flow.
 
+Refer to [Query signals](experimental-alerting-system/alerts/query-signals.md) to learn more.
+
 ### Action policies
 
 An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by evaluating episode eligibility, match conditions, and frequency. A policy's configuration determines its scope, so one policy can cover alert episodes from a specific rule, multiple rules, or all rules in the space. This means you can change notification routing without touching any rule.

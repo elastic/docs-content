@@ -15,7 +15,7 @@ This page is a field reference for the {{alerting-v2-system}}. It documents the 
 - **`.rule-events` field schema**: Fields written for every rule evaluation. Alert episodes and signals share this stream and most fields. The `episode.*` fields appear only on alert documents.
 - **`.alert-actions` field schema**: Fields written when a user or the system acts on an episode, including all `action_type` values.
 
-Use this page when writing {{esql}} queries in Discover, interpreting alert UI state, or aligning API payloads with stored data. For how the shared schema works conceptually, refer to [Rule event data model](rule-event-data-model.md). For signal query examples, refer to [Observe and analyze signals](../observe-and-analyze-signals.md). For episode and triage query examples, refer to [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md). For triage controls in the UI, refer to [View and manage alerts](view-and-manage-alerts.md).
+Use this page when writing {{esql}} queries in Discover, interpreting alert UI state, or aligning API payloads with stored data. For how the shared schema works conceptually, refer to [Rule event data model](rule-event-data-model.md). For signal query examples, refer to [Query signals](query-signals.md). For episode and triage query examples, refer to [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md). For triage controls in the UI, refer to [View and manage alerts](view-and-manage-alerts.md).
 
 ## `.rule-events` field schema [rule-events-field-schema]
 

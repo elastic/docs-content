@@ -1,5 +1,5 @@
 ---
-navigation_title: Observe and analyze signals
+navigation_title: Query signals
 applies_to:
   stack: experimental 9.5+
   serverless: experimental
@@ -8,7 +8,7 @@ products:
 description: "Query Signal mode rule events with ES|QL in Discover. Filter by rule, build dashboards from detection history, and correlate signals with Alert mode rules in the experimental alerting system."
 ---
 
-# Observe and analyze signals in the {{alerting-v2-system}} [observe-and-analyze-signals]
+# Query {{alerting-v2-system}} signals in Discover [query-signals-discover]
 
 When a rule runs in Signal mode, it writes each match to `.rule-events` as a signal. Signals don't open alert episodes or trigger notifications. Use them to build detection history, investigate incidents in Discover, create dashboards, or feed follow-on Alert mode rules that correlate activity across sources.
 
@@ -16,9 +16,9 @@ This page shows how to query signals, which fields matter most, and how to turn 
 
 ## Before you begin
 
-- You have at least one rule running in [Signal mode](rules/configure-rule-mode.md).
-- Your role can query `.rule-events` in Discover. For privilege details, refer to [Configure access](get-started/configure-access.md#alerting-data-investigation-privileges).
-- You've added `.rule-events` as a data view. If you haven't, follow the steps in [Before you begin](alerts/query-alerts-and-signals-in-discover.md#add-data-views-before-begin) on the alert history page, using the `.ds-.rule-events-*` index pattern.
+- You have at least one rule running in [Signal mode](../rules/configure-rule-mode.md).
+- Your role can query `.rule-events` in Discover. For privilege details, refer to [Configure access](../get-started/configure-access.md#alerting-data-investigation-privileges).
+- You've added `.rule-events` as a data view. If you haven't, follow the steps in [Before you begin](query-alerts-and-signals-in-discover.md#add-data-views-before-begin) on the alert history page, using the `.ds-.rule-events-*` index pattern.
 
 ## Key fields for signal queries [signal-key-fields]
 
@@ -34,9 +34,9 @@ Alert episodes and signals share the `.rule-events` data stream and most of the 
 | `severity` | Optional. Set when the query emits a recognized `severity` column value. |
 | `data` | Rule-defined payload from the source query. Useful for investigation and dashboards. |
 
-For the full field list, refer to [Field reference](alerts/field-reference.md#rule-events-field-schema). For how the shared schema works conceptually, refer to [Rule event data model](alerts/rule-event-data-model.md).
+For the full field list, refer to [Field reference](field-reference.md#rule-events-field-schema). For how the shared schema works conceptually, refer to [Rule event data model](rule-event-data-model.md).
 
-## Query signals in Discover [query-signals-discover]
+## Common signal queries [common-signal-queries]
 
 Open **Discover**, select your `.rule-events` data view, and run {{esql}} against the stream. The following examples cover common signal workflows.
 
@@ -97,7 +97,7 @@ Because `.rule-events` is append-only, dashboards show the full history retained
 
 ## Related pages
 
-- [Rule mode](rules/configure-rule-mode.md): When to use Signal mode versus Alert mode.
-- [Rule event data model](alerts/rule-event-data-model.md): Shared `.rule-events` schema for signals and alert episodes.
-- [Query {{alerting-v2-system}} alert history in Discover](alerts/query-alerts-and-signals-in-discover.md): Episode lifecycle, triage history, and incident-tracing queries.
-- [How the {{alerting-v2-system}} works](how-it-works.md#how-signal-mode-works): End-to-end Signal mode walkthrough.
+- [Rule mode](../rules/configure-rule-mode.md): When to use Signal mode versus Alert mode.
+- [Rule event data model](rule-event-data-model.md): Shared `.rule-events` schema for signals and alert episodes.
+- [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Episode lifecycle, triage history, and incident-tracing queries.
+- [How the {{alerting-v2-system}} works](../how-it-works.md#how-signal-mode-works): End-to-end Signal mode walkthrough.

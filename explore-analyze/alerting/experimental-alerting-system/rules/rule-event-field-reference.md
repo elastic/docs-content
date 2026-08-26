@@ -34,12 +34,12 @@ FROM .rule-events
 | SORT @timestamp ASC
 ```
 
-For signal-focused query examples, refer to [Observe and analyze signals](../observe-and-analyze-signals.md). For lifecycle replay and incident tracing, refer to [Query alert history in Discover](../alerts/query-alerts-and-signals-in-discover.md).
+For signal-focused query examples, refer to [Query signals](../alerts/query-signals.md). For lifecycle replay and incident tracing, refer to [Query alert history in Discover](../alerts/query-alerts-and-signals-in-discover.md).
 :::
 
 ## Related pages
 
 - [{{esql}} query](configure-rule-query.md): How the base query and alert condition shape what's written to `.rule-events`.
 - [Rules](../rules.md): What rules do and how they fit into the broader {{alerting-v2-system}}.
-- [Observe and analyze signals](../observe-and-analyze-signals.md): Query Signal mode output in Discover and correlate signals with Alert mode rules.
+- [Query signals](../alerts/query-signals.md): Query Signal mode output in Discover and correlate signals with Alert mode rules.
 - [View and manage alerts](../alerts/view-and-manage-alerts.md): Where lifecycle-tracked episodes appear in the UI, with triage actions and episode details.

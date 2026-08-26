@@ -42,5 +42,5 @@ For the full field list, including field types and which fields apply to signals
 
 ## Related pages
 
-- [Observe and analyze signals](../observe-and-analyze-signals.md): Query examples against signals.
+- [Query signals](query-signals.md): Query examples against signals.
 - [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Episode lifecycle and triage queries.
