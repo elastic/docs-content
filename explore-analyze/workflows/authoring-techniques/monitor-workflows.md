@@ -55,8 +55,6 @@ To review past runs, select the **Executions** tab, then select each run to see 
 - **Timed out**: The run exceeded its workflow timeout.
 - **Skipped**: The run was discarded because another execution was already in flight.
 
-    {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` A run can also be skipped when a concurrency queue is full.
-
 To start a new test run with data from a past execution, open the workflow in the editor and follow [Reuse data from a previous run](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md#workflows-supply-test-input-historical). After a run from the editor finishes, you can also click the **Run again** icon {icon}`refresh` in the execution panel to open the **Test workflow** dialog with that run already selected.
 
 ## Troubleshoot errors [workflows-troubleshoot-errors]
