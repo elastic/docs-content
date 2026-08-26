@@ -16,7 +16,7 @@ products:
 
 # Start using OpenTelemetry with Elastic [start-with-otel]
 
-This guide helps you choose the right setup for your environment so you can start sending metrics, logs, and traces to Elastic using {{edot}}.
+This guide helps you choose the right setup for your environment so you can start sending metrics, logs, and traces to Elastic using {{edot}}. {{edot}} is Elastic's fully supported, pre-configured distribution of the upstream OpenTelemetry tools, optimized for Elastic ingest and analysis.
 
 ## Before you begin [start-with-otel-prereqs]
 
@@ -58,7 +58,6 @@ For infrastructure telemetry (host metrics, logs, {{k8s}}), run {{agent}} on you
 Before committing to this path, note these {{motlp}} limitations:
 
 * Tail-based sampling (TBS) is not available. Configure head-based sampling at the edge before sending data.
-* The endpoint drops histograms with cumulative temporality. Use delta temporality or add the `cumulativetodelta` processor at the edge.
 * Universal Profiling is not available.
 
 Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
@@ -77,7 +76,6 @@ The current {{ech}} quickstarts use a different path: an {{agent}} running on a 
 Before committing to this path, note these {{motlp}} limitations:
 
 * Tail-based sampling (TBS) is not available. Configure head-based sampling at the edge before sending data.
-* The endpoint drops histograms with cumulative temporality. Use delta temporality or add the `cumulativetodelta` processor at the edge.
 * Universal Profiling is not available.
 
 Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
@@ -92,8 +90,8 @@ The {{motlp}} is not available for self-managed Elastic, ECE, or ECK deployments
 {{agent}} running as a gateway is required for full {{product.apm}} functionality. It:
 
 * Exposes an OTLP endpoint that edge collectors, EDOT SDKs, and other OTLP sources send data to.
-* {applies_to}`edot_collector: ga 9.2+` Runs the `elasticapm` processor to enrich trace data with attributes the {{product.observability}} UIs rely on. 
-* Runs the `elastictrace` processor to enrich trace data with attributes.
+* {applies_to}`edot_collector: ga 9.2+` Runs the `elasticapm` processor to enrich trace data with attributes the {{product.observability}} UIs rely on.
+* {applies_to}`edot_collector: ga 9.0-9.1` Runs the `elastictrace` processor to enrich trace data with attributes.
 * Runs the `elasticapm` connector to generate pre-aggregated {{product.apm}} metrics from traces.
 * Routes telemetry to the correct data streams and writes to {{es}} using the `elasticsearch` exporter in the `otel` mapping mode.
 
@@ -147,7 +145,7 @@ Configure your EDOT SDKs and edge {{agent}} instances to use the OTLP exporter. 
 
 {{edot}} covers most core {{observability}} use cases, but the following scenarios still work better with classic Elastic ingestion:
 
-* **Real user monitoring (RUM)**: OTel-native RUM data is not yet available for production use. EDOT Browser is in Technical Preview. For production RUM, use the [classic Elastic {{product.apm}} browser agent](apm-agent-rum-js://reference/index.md).
+* **Web real user monitoring (RUM)**: OTel-native RUM data is not yet available for production use. EDOT Browser is in Technical Preview. For production RUM, use the [classic Elastic {{product.apm}} browser agent](apm-agent-rum-js://reference/index.md).
 * **Universal Profiling**: Only available with classic Elastic ingestion, and not through OTel-native data.
 * **Existing ECS integrations and dashboards**: Many prebuilt integrations and dashboards use ECS-formatted data and may not work with OpenTelemetry semantic conventions without customization. Install OpenTelemetry content packs from the {{kib}} {{integrations}} UI (search for `otel`) to get OTel-compatible dashboards.
 * **Tail-based sampling (TBS)**: {{edot}} does not provide managed TBS. The {{motlp}} has no TBS support, so you have to configure sampling at the edge before sending. You can configure self-managed TBS, with [some caveats](opentelemetry://reference/compatibility/limitations.md#tail-based-sampling-tbs), in:
