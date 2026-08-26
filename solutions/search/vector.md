@@ -22,6 +22,10 @@ For common vector search use cases and how to apply them, refer to [Vector searc
 
 Vector search stores embeddings and retrieves the most similar vectors to a query. {{es}} functions as a [vector database](#vector-database): it scales embedding storage and similarity search while combining that with full-text search, filters, and aggregations in one engine. This page explains the core concepts and terminology you need before working with vector search in {{es}}.
 
+:::{note}
+On {{serverless-full}}, Vector Database is a separate project type and does not use an `optimized_for` profile. New user-created indices in Vector Database projects use [`index.mode: vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) automatically.
+:::
+
 ## Core concepts [vectors-and-embeddings]
 
 $$$vector-database$$$ Vector database
