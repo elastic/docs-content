@@ -15,7 +15,7 @@ This page is a field reference for the {{alerting-v2-system}}. It documents the 
 - **`.rule-events` field schema**: Fields written for every rule evaluation. Alert episodes and signals share this stream and most fields. The `episode.*` fields appear only on alert documents.
 - **`.alert-actions` field schema**: Fields written when a user or the system acts on an episode, including all `action_type` values.
 
-Use this page when writing {{esql}} queries in Discover, interpreting alert UI state, or aligning API payloads with stored data. For how the shared schema works conceptually, refer to [Rule event data model](alert-data-model.md). For signal query examples, refer to [Observe and analyze signals](../observe-and-analyze-signals.md). For episode and triage query examples, refer to [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md). For triage controls in the UI, refer to [View and manage alerts](view-and-manage-alerts.md).
+Use this page when writing {{esql}} queries in Discover, interpreting alert UI state, or aligning API payloads with stored data. For how the shared schema works conceptually, refer to [Rule event data model](rule-event-data-model.md). For signal query examples, refer to [Observe and analyze signals](../observe-and-analyze-signals.md). For episode and triage query examples, refer to [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md). For triage controls in the UI, refer to [View and manage alerts](view-and-manage-alerts.md).
 
 ## `.rule-events` field schema [rule-events-field-schema]
 
@@ -23,14 +23,14 @@ Every rule evaluation writes a document to `.rule-events`. Fields use dot-notati
 
 | Field | Type | Signal | Alert episode | Description |
 |---|---|---|---|---|
-| `@timestamp` | date | ✅ | ✅ | When the evaluation ran. |
-| `scheduled_timestamp` | date | ✅ | ✅ | The scheduled time for this evaluation. |
+| `@timestamp` | date | ✅ | ✅ | When {{kib}} wrote this document. |
+| `scheduled_timestamp` | date | ✅ | ✅ | The scheduled start time for this rule run. |
 | `rule.id` | keyword | ✅ | ✅ | ID of the rule that produced this event. |
 | `rule.version` | long | ✅ | ✅ | Version of the rule at evaluation time. |
 | `group_hash` | keyword | ✅ | ✅ | Identifies the series this event belongs to. |
-| `status` | keyword | ✅ | ✅ | Outcome of a single evaluation row, independent of episode lifecycle. Can be one of the following: `breached`, `recovered`, `no_data`. |
+| `status` | keyword | ✅ | ✅ | Outcome of a single evaluation row, independent of episode lifecycle. Signals are always `breached`. Alert events can be `breached`, `recovered`, or `no_data`. |
 | `type` | keyword | ✅ | ✅ | Whether this document is a signal or an alert episode. Can be one of the following: `signal`, `alert`. |
-| `severity` | keyword | ✅ | ✅ | Severity level assigned by the rule. Can be one of the following: `info`, `low`, `medium`, `high`, `critical`. |
+| `severity` | keyword | ✅ | ✅ | Optional. Set on `breached` events when the query emits a recognized value. Can be one of the following: `info`, `low`, `medium`, `high`, `critical`. Not set on `recovered` or `no_data` events. |
 | `data` | flattened | ✅ | ✅ | Rule-defined payload from the source query. |
 | `source` | keyword | ✅ | ✅ | Source that produced the event. |
 | `space_id` | keyword | ✅ | ✅ | {{kib}} space where the rule lives. |

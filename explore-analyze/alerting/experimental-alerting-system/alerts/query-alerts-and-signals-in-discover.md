@@ -90,7 +90,7 @@ FROM .rule-events
 
 ### Identify evaluation gaps [identify-no-data]
 
-`no_data` rows appear when the rule finds no matching data during an evaluation cycle. A cluster of these can indicate a data pipeline issue or a misconfigured rule.
+`no_data` rows appear when an Alert mode rule with [no-data handling](../rules/configure-no-data-handling.md) configured finds no matching data during an evaluation cycle. Signal-mode rules don't write `no_data` events. A cluster of these rows can indicate a data pipeline issue or a misconfigured rule.
 
 ```esql
 FROM .rule-events

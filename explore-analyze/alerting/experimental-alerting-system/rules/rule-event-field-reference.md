@@ -10,7 +10,7 @@ description: "How the experimental alerting system in Kibana writes rule events 
 
 # Rule events in {{alerting-v2-system}} [rule-reference]
 
-This page explains the two types of documents the {{alerting-v2-system}} writes to `.rule-events` and how the data stream behaves, so you can write {{esql}} queries against `.rule-events` with confidence, for example, to replay an episode's history, investigate a signal, or build dashboards from rule output. Alert episodes and signals share this data stream and most fields. For the full field comparison, refer to [Rule event data model](../alerts/alert-data-model.md). For the complete field schemas, refer to [Field reference](../alerts/field-reference.md).
+This page explains the two types of documents the {{alerting-v2-system}} writes to `.rule-events` and how the data stream behaves, so you can write {{esql}} queries against `.rule-events` with confidence, for example, to replay an episode's history, investigate a signal, or build dashboards from rule output. Alert episodes and signals share this data stream and most fields. For how the shared schema works conceptually, refer to [Rule event data model](../alerts/rule-event-data-model.md). For the complete field list, refer to [Field reference](../alerts/field-reference.md#rule-events-field-schema).
 
 :::{important}
 The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle through [index lifecycle management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md). Older backing indices are deleted automatically when the retention window expires. Do not change mappings or index settings for these streams yourself.

@@ -27,14 +27,14 @@ Alert episodes and signals share the `.rule-events` data stream and most of the 
 | Field | Why it matters for signals |
 |---|---|
 | `type` | Filter with `type == "signal"` to exclude alert episode documents. |
-| `@timestamp` | When the evaluation ran. Use for time ranges and sorting. |
+| `@timestamp` | When {{kib}} wrote the document. Use for time ranges and sorting. |
 | `rule.id` | Scope results to one Signal mode rule. |
-| `status` | Outcome of the evaluation (`breached`, `recovered`, or `no_data`). |
+| `status` | Always `breached` for signals. Signal-mode rules don't write `recovered` or `no_data`. |
 | `group_hash` | Identifies the series the signal belongs to when the rule uses grouping. |
-| `severity` | Severity assigned by the rule, if configured. |
+| `severity` | Optional. Set when the query emits a recognized `severity` column value. |
 | `data` | Rule-defined payload from the source query. Useful for investigation and dashboards. |
 
-For the full shared field list and the alert-only `episode.*` fields, refer to [Rule event data model](alerts/alert-data-model.md).
+For the full field list, refer to [Field reference](alerts/field-reference.md#rule-events-field-schema). For how the shared schema works conceptually, refer to [Rule event data model](alerts/rule-event-data-model.md).
 
 ## Query signals in Discover [query-signals-discover]
 
@@ -98,6 +98,6 @@ Because `.rule-events` is append-only, dashboards show the full history retained
 ## Related pages
 
 - [Rule mode](rules/configure-rule-mode.md): When to use Signal mode versus Alert mode.
-- [Rule event data model](alerts/alert-data-model.md): Shared `.rule-events` schema for signals and alert episodes.
+- [Rule event data model](alerts/rule-event-data-model.md): Shared `.rule-events` schema for signals and alert episodes.
 - [Query {{alerting-v2-system}} alert history in Discover](alerts/query-alerts-and-signals-in-discover.md): Episode lifecycle, triage history, and incident-tracing queries.
 - [How the {{alerting-v2-system}} works](how-it-works.md#how-signal-mode-works): End-to-end Signal mode walkthrough.
