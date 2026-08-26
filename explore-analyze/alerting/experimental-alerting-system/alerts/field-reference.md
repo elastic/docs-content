@@ -10,16 +10,16 @@ description: "Find field schemas for the .rule-events and .alert-actions data st
 
 # Alert data stream field reference [field-reference]
 
-This page is a field reference for the {{alerting-v2-system}}. It documents the fields written to the two data streams that back alert history and triage data:
+This page is a field reference for the {{alerting-v2-system}}. It documents the fields written to the two data streams that back rule output and triage data:
 
-- **`.rule-events` field schema**: Fields written to the rule evaluation stream, including which fields are only present on alert documents.
+- **`.rule-events` field schema**: Fields written for every rule evaluation. Signal and alert rule events share this stream and most fields. The `episode.*` fields appear only on `type: alert` events.
 - **`.alert-actions` field schema**: Fields written when a user or the system acts on an episode, including all `action_type` values.
 
-Use this page when writing {{esql}} queries in Discover, interpreting alert UI state, or aligning API payloads with stored data. For query examples, refer to [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md). For triage controls in the UI, refer to [View and manage alerts](view-and-manage-alerts.md).
+Use this page when writing {{esql}} queries in Discover, interpreting alert UI state, or aligning API payloads with stored data. For how the shared schema works conceptually, refer to [Alert data model](alert-data-model.md). For query examples, refer to [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md). For triage controls in the UI, refer to [View and manage alerts](view-and-manage-alerts.md).
 
 ## `.rule-events` field schema [rule-events-field-schema]
 
-Every rule evaluation writes a document to `.rule-events`. Fields use dot-notation for nested objects. The `episode.*` fields are only present on documents with `type: alert`.
+{{kib}} writes one document to `.rule-events` per result row, per rule run. Fields use dot-notation for nested objects. The `episode.*` fields are only present on documents with `type: alert`.
 
 | Field | Type | Description |
 |---|---|---|
@@ -29,7 +29,7 @@ Every rule evaluation writes a document to `.rule-events`. Fields use dot-notati
 | `rule.version` | long | Version of the rule at evaluation time. |
 | `group_hash` | keyword | Identifies the series this event belongs to. |
 | `status` | keyword | Outcome of a single evaluation row, independent of episode lifecycle. Can be one of the following: `breached`, `recovered`, `no_data`. |
-| `type` | keyword | Whether this document is a signal or an alert episode. Can be one of the following: `signal`, `alert`. |
+| `type` | keyword | Whether this document is a signal or an alert event. Can be one of the following: `signal`, `alert`. |
 | `severity` | keyword | Severity level assigned by the rule. Can be one of the following: `info`, `low`, `medium`, `high`, `critical`. |
 | `episode.id` | keyword | ID of the alert episode. Only present on `type: alert` documents. |
 | `episode.status` | keyword | Lifecycle state of the alert episode. Only present on `type: alert` documents. Can be one of the following: `inactive`, `pending`, `active`, `recovering`. |
