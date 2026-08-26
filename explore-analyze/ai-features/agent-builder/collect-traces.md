@@ -126,7 +126,7 @@ Two limits apply to the conversation title:
 - It is recorded only for runs that create or continue a saved conversation. Chats always save, and so do runs through the conversation APIs. The [`ai.agent` workflow step](agents-and-workflows.md#use-ai-agent-workflow-step) is the exception: unless it creates a conversation or continues an existing one, nothing is saved and the run has no title attribute.
 - Renaming a conversation does not update titles already recorded. Rounds recorded before the rename keep the old title, and the new one appears from the next round onward. A conversation's rounds share the same `attributes.gen_ai.conversation.id`, so to find the current title, take the title from its most recent round.
 
-Anonymization also rewrites the span name, not just the attributes. A custom agent's round appears as `invoke_agent custom` rather than `invoke_agent <your agent name>`, and a custom tool call appears as `execute_tool custom`. Filters that match on a real name in `span.name` return nothing while the names are anonymized.
+Anonymization also rewrites the span name, not only the attributes. A custom agent's round appears as `invoke_agent custom` rather than `invoke_agent <your agent name>`, and a custom tool call appears as `execute_tool custom`. Filters that match on a real name in `span.name` return nothing while the names are anonymized.
 
 Anyone who can read the trace data stream can read this content, so review [Grant access to trace data](#grant-access-to-trace-data) before you turn these settings on. For the field-level details, refer to [Message content attributes](agent-traces-dashboard.md#message-content-attributes).
 
