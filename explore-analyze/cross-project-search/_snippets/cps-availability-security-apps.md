@@ -7,7 +7,7 @@
     :::
 
 - **{{ml-cap}}:** {{anomaly-detect-cap}} job {{dfeeds}} and transforms can read data from linked projects. Jobs and results live on the origin project. {{ml-cap}} rules alert on those origin results, including anomalies produced from linked-project data.
-- **Timeline:** Tables display documents from linked projects. Actions that don't apply to remote documents are disabled.
+- **Timeline:** Tables display documents from linked projects. Actions that don't apply to documents in linked projects are disabled.
 - **Alert, event, and attack flyouts:** Flyouts render correctly for documents from linked projects. Documents in linked projects are clearly identified, and actions that don't apply to these documents are hidden or disabled. Investigate in Timeline remains available. Session View is not available for documents from linked projects.
 - **Explore page:** Host, network, and user exploration searches follow the {{cps-init}} scope configured for the space, so they can return events from linked projects.
 - **Overview page:** The event widgets on the Security Overview page follow the {{cps-init}} scope configured for the space. The alert widgets show origin project alerts only.
