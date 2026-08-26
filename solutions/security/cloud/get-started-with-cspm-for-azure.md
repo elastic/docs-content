@@ -33,8 +33,8 @@ You can set up CSPM for Azure by enrolling an Azure organization (management gro
 
 The following deployment options are available: {{managed-integration}} and agent-based. 
 
-* [{{managed-integration}} deployment](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
-* [Agent-based deployment](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
+* The [{{managed-integration}} deployment](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-agentless) allows you to collect cloud posture data without having to manage the infrastructure that collects it.
+* The [Agent-based deployment](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
 
 
 ## {{managed-integration}} deployment [cspm-azure-agentless]

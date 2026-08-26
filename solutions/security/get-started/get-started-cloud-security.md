@@ -29,7 +29,7 @@ To add the CSPM integration:
 2. Select **Cloud Security Posture Management (CSPM)**, then click Add **Cloud Security Posture Management (CSPM)**. The integration configuration page displays. 
 3. For this guide, we'll be using a single AWS account. Select these options in the **Configure integration** section. 
 4. Give the integration a name and enter an optional description. 
-5. Next, choose your deployment option. An agent-based deployment requires you to deploy and manage {{agent}} in the cloud account you want to monitor, whereas an {{managed-integration}} deployment allows you to collect cloud posture data without managing the {{agent}} deployment in your cloud. For simplicity, select the Elastic-managed option:
+5. Next, choose your deployment option. An agent-based deployment requires you to deploy and manage {{agent}} in the cloud account you want to monitor, whereas an {{managed-integration}} deployment allows you to collect cloud posture data without managing the infrastructure that collects it. For a faster onboarding, select the Elastic-managed option:
    * {applies_to}`{serverless: ga, stack: ga 9.5+}` Select **Elastic Managed Integration**.
    * {applies_to}`stack: ga 9.0-9.4` Select **Agentless**.
 6. Next, in the **Setup Access** section, choose your preferred authentication method—direct access keys (recommended) or temporary keys. For this guide, we'll use direct access keys. 

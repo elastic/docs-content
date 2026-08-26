@@ -32,8 +32,8 @@ You can set up Cloud Asset Discovery for AWS either by enrolling a single cloud 
 
 Two deployment options are available: {{managed-integration}} and agent-based. 
 
-* [{{managed-integration}} deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. 
-* [Agent-based deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
+* The [{{managed-integration}} deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agentless) allows you to collect cloud posture data without having to manage the infrastructure that collects it.
+* The [Agent-based deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
 
 ## {{managed-integration}} deployment [cad-aws-agentless]
 
