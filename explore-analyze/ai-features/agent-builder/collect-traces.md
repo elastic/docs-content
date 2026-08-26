@@ -77,7 +77,7 @@ To change what is captured, expand **Advanced privacy settings** in the **Agent 
 
 :::{image} images/agent-builder-traces-privacy-settings.png
 :screenshot:
-:alt: The expanded Advanced privacy settings, showing seven toggles for including sensitive content in traces, all turned off
+:alt: The expanded Advanced privacy settings, showing seven toggles for including sensitive content in traces
 :::
 
 | Setting | Setting ID | Effect when enabled |
@@ -86,9 +86,9 @@ To change what is captured, expand **Advanced privacy settings** in the **Agent 
 | **Include LLM responses in traces** | `agentBuilder:tracing:includeLlmResponses` | Captures agent responses. |
 | **Include tool call details in traces** | `agentBuilder:tracing:includeToolDetails` | Captures tool call arguments and results. |
 | **Include system prompt in traces** | `agentBuilder:tracing:includeSystemPrompt` | Captures agent instructions. |
-| **Include real tool, agent, and conversation names in traces** {applies_to}`stack: ga 9.6+`<br>**Include real tool and agent names in traces** {applies_to}`stack: ga 9.5, removed 9.6` | `agentBuilder:tracing:includeRealNames` | Records real tool, agent, and workflow names instead of anonymized values, and keeps the full tool definitions and descriptions. Also records the conversation title {applies_to}`stack: ga 9.6+`. |
+| **Include real tool, agent, and conversation names in traces** {applies_to}`{stack: ga 9.6+, serverless: ga}`<br>**Include real tool and agent names in traces** {applies_to}`stack: ga =9.5` | `agentBuilder:tracing:includeRealNames` | Records real tool, agent, and workflow names instead of anonymized values, and keeps the full tool definitions and descriptions.<br><br>{applies_to}`{stack: ga 9.6+, serverless: ga}` Also records the conversation title. |
 | **Include real conversation and workflow IDs in traces** | `agentBuilder:tracing:includeRealIds` | Records real conversation and workflow IDs instead of anonymized values. Also controls the agent ID and the workflow execution ID, which the setting name does not mention. |
-| **Include user data in traces** {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | `agentBuilder:tracing:includeUserData` | Records the real user ID and username of the person who ran the agent, instead of a hash alone. |
+| **Include user data in traces** {applies_to}`{stack: ga 9.6+, serverless: ga}` | `agentBuilder:tracing:includeUserData` | Records the real user ID and username of the person who ran the agent, instead of a hash alone. |
 
 :::{note}
 Built-in tools and agents always appear under their real names. Anonymized names are replaced with the literal value `custom`, so every custom tool, agent, and workflow shares one value and you cannot tell them apart by name. Anonymized IDs are different: they are replaced with a stable hash, so you can still group and correlate traces by conversation or agent ID. A real conversation ID is a UUID, and an anonymized one is a 16-character hash, so you can tell at a glance which you are looking at. An anonymized custom agent ID keeps a `custom-` prefix, as in `custom-10a91bfdfac987f2`.
@@ -98,21 +98,21 @@ User data is the exception to that pattern. Every other setting anonymizes a val
 
 On {{ech}} and {{serverless-full}}, `attributes.user.name` holds the numeric {{ecloud}} user ID rather than a readable username, and `attributes.user.id` holds the user profile ID. To resolve a name, correlate `attributes.user.id` against the [user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile).
 
-Changing a privacy setting affects only traces recorded after the change. Existing traces are not rewritten, so start a new conversation to see the effect.
+Changing a privacy setting affects only traces recorded after the change. Existing traces are not rewritten. {{agent-builder}} refreshes these settings every 30 seconds, so allow up to that long for a change to take effect, then run a new conversation round to see it.
 
 Content is stored across different span types:
 - **`chat` spans**: Store prompts, responses, and the system prompt in the `attributes.gen_ai.input.messages`, `attributes.gen_ai.output.messages`, and `attributes.gen_ai.system_instructions` attributes.
 - **`execute_tool` spans**: Store tool call details in `attributes.gen_ai.tool.call.arguments` and `attributes.gen_ai.tool.call.result`.
-- **The conversation round span** {applies_to}`stack: ga 9.6+`: Stores the conversation title and the user identity. Exactly one span per conversation round carries these, the root `invoke_agent` span. The nested agent, model, and tool spans do not.
+- **The conversation round span** {applies_to}`{stack: ga 9.6+, serverless: ga}`: Stores the conversation title and the user identity. Only the root `invoke_agent` span carries these, one per conversation round. The nested agent, model, and tool spans do not.
 
-To find that root span, filter on `attributes.kibana.inference.root`, which is `true` on the root span and `false` on every other span in the trace:
+To select that span, combine a span name prefix with the span kind:
 
 ```esql
 FROM traces-agent_builder.otel-*
-| WHERE attributes.kibana.inference.root == true
+| WHERE span.name LIKE "invoke_agent *" AND attributes.elastic.inference.span.kind == "CHAIN"
 ```
 
-Filtering on `attributes.elastic.inference.span.kind == "CHAIN"` alone is not enough. The internal `generate_title` span is also a `CHAIN` span, and it carries neither the title nor the user fields.
+Both conditions are needed. The name prefix on its own also matches the nested agent execution spans, and `CHAIN` on its own also matches the internal `generate_title` span, which carries neither the title nor the user fields. Anonymized names do not break the filter, because an anonymized round is still named `invoke_agent custom`.
 
 | Attribute | Required setting |
 |---|---|
@@ -124,7 +124,7 @@ Filtering on `attributes.elastic.inference.span.kind == "CHAIN"` alone is not en
 Two limits apply to the conversation title:
 
 - It is recorded only for runs that create or continue a saved conversation. Chats always save, and so do runs through the conversation APIs. The [`ai.agent` workflow step](agents-and-workflows.md#use-ai-agent-workflow-step) is the exception: unless it creates a conversation or continues an existing one, nothing is saved and the run has no title attribute.
-- Renaming a conversation does not update titles already recorded. Rounds recorded before the rename keep the old title, and the new one appears from the next round onward. A conversation's rounds share a `attributes.gen_ai.conversation.id`, so to find the current title, take the title from its most recent round.
+- Renaming a conversation does not update titles already recorded. Rounds recorded before the rename keep the old title, and the new one appears from the next round onward. A conversation's rounds share the same `attributes.gen_ai.conversation.id`, so to find the current title, take the title from its most recent round.
 
 Anonymization also rewrites the span name, not just the attributes. A custom agent's round appears as `invoke_agent custom` rather than `invoke_agent <your agent name>`, and a custom tool call appears as `execute_tool custom`. Filters that match on a real name in `span.name` return nothing while the names are anonymized.
 
@@ -136,7 +136,7 @@ Trace data is stored in the `traces-agent_builder.otel-*` data stream. To read i
 
 Access is granted at the index level. Any user who can read these data streams can read all collected traces, so trace access is not scoped per user. To control who can read traces, configure index privileges through roles in **Stack Management → Roles**.
 
-When **Include user data in traces** is on {applies_to}`stack: ga 9.6+`, traces identify the person who ran each agent. Anyone who can read the data stream can see which user ran which conversation, so review this section before you turn that setting on.
+{applies_to}`{stack: ga 9.6+, serverless: ga}` When **Include user data in traces** is on, traces identify the person who ran each agent. Anyone who can read the data stream can see which user ran which conversation, so review this section before you turn that setting on.
 
 For the full privilege model, including {{kib}} feature and cluster privileges, refer to [Permissions and access control](permissions.md#read-trace-data).
 
