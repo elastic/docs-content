@@ -11,17 +11,17 @@ description: A detailed walkthrough of how Alert mode and Signal mode rules proc
 
 # How the {{alerting-v2-system}} works [how-it-works]
 
-This page walks through what happens at each step after a rule runs, and broken down by mode. Use it to understand how the different components of the {{alerting-v2-system}} interact.
+This page walks through what happens after a rule runs, broken down by mode. Both paths start the same way: the rule writes [rule events](rules/rule-event-field-reference.md) to `.rule-events`. That's one immutable document per matching result row, per run. The rule's mode determines what happens next.
 
 ## Rule runs in Alert mode [how-alert-mode-works]
 
-In Alert mode, the rule doesn't just record that a condition was found. Each match causes the rule to open an alert episode that persists and tracks the problem until the condition clears. Each time the rule runs, it writes a rule event that can advance the episode's lifecycle state. An action policy sits between the episode and your team, deciding whether and when to trigger a workflow.
+In Alert mode, each match is a `type: alert` rule event with `episode.*` fields. Events that share the same `episode.id` form an alert episode that tracks the problem until the condition clears. Each later run writes a new rule event that can advance the episode's lifecycle state. An action policy sits between the episode and your team, deciding whether and when to trigger a workflow.
 
 | Step | Actor | Action |
 |------|-------|--------|
 | 1 | Rule | Runs on schedule and evaluates {{esql}} against your data |
-| 2 | Rule | Query returns results → A rule event is written to `.rule-events` |
-| 3 | Rule | Creates an alert episode and sets its initial state to `pending`; episode advances to `active` once the activation threshold is met |
+| 2 | Rule | Query returns results → Writes a `type: alert` rule event to `.rule-events` |
+| 3 | Rule | Groups the event into an alert episode (`pending`); the episode advances to `active` once the activation threshold is met |
 | 4 | Action policy | Evaluates the episode against its conditions (checks for episode eligibility, match conditions, and frequency) |
 | 5 | Action policy | If conditions are met, triggers a workflow |
 | 6 | Workflow | Sends notification or runs automation |
@@ -45,12 +45,12 @@ The engineer investigates, fixes a slow query, and the alert episode recovers au
 
 ## Rule runs in Signal mode [how-signal-mode-works]
 
-In Signal mode, the rule acts purely as a data producer. Each time the rule runs and its query returns results, it writes a rule event to `.rule-events` and stops. Signals accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to Alert mode rules that detect correlated activity across multiple signals. For query examples, dashboards, and correlation patterns, refer to [Observe and analyze signals](observe-and-analyze-signals.md).
+In Signal mode, the rule acts purely as a data producer. Each match is a `type: signal` rule event. {{kib}} writes it to `.rule-events` and stops. Signals accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to Alert mode rules that detect correlated activity across multiple signals. For query examples, dashboards, and correlation patterns, refer to [Observe and analyze signals](observe-and-analyze-signals.md).
 
 | Step | Actor | Action |
 |------|-------|--------|
 | 1 | Rule | Runs on schedule and evaluates {{esql}} against your data |
-| 2 | Rule | Query returns results → Writes a rule event (signal) to `.rule-events` |
+| 2 | Rule | Query returns results → Writes a `type: signal` rule event to `.rule-events` |
 | 3 | Rule | Signal is immediately queryable in Discover, dashboards, and {{esql}} |
 
 No alert episode is opened. No action policy evaluates the result. No notification is sent.
@@ -60,7 +60,7 @@ No alert episode is opened. No action policy evaluates the result. No notificati
 A security team wants to track calls to a rarely-used administrator API endpoint, but individual calls aren't suspicious enough to page anyone. To start collecting data without generating noise, the team creates a Signal mode rule:
 
 1. The rule runs an {{esql}} query on a schedule, checking for calls to the administrator API endpoint.
-2. Each time the query returns results, the rule writes a signal to `.rule-events`.
+2. Each time the query returns results, the rule writes a `type: signal` rule event to `.rule-events`.
 3. The signals accumulate silently and are immediately queryable in Discover.
 
 After a few weeks, the accumulated signals become useful in two ways. The team can write an Alert mode rule that combines admin API calls with other signals (such as a spike in error rates) to catch correlated activity that neither signal would surface on its own. When an outage happens, the team can query the signal history as evidence directly in Discover, without reconstructing the original query or worrying that the source data has become stale.
@@ -69,5 +69,6 @@ After a few weeks, the accumulated signals become useful in two ways. The team c
 
 - [Get started](get-started.md): Enable the {{alerting-v2-system}} and create your first rule.
 - [Rules](rules.md): What rules do, what they don't control, and how to choose a creation path.
+- [Rule events](rules/rule-event-field-reference.md): The immutable documents every rule writes, and how they become signals or alert episodes.
 - [Observe and analyze signals](observe-and-analyze-signals.md): Query Signal mode output in Discover and correlate signals with Alert mode rules.
 - [Notifications and actions](notifications-actions.md): Set up workflows and action policies to notify your team when a rule detects a problem.

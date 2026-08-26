@@ -10,7 +10,7 @@ description: "Alert episodes in the experimental alerting system track a problem
 
 # Alerts in the {{alerting-v2-system-cap}} [alerts]
 
-In the {{alerting-v2-system}}, the system tracks alerts as **alert episodes**, which represent the full lifecycle of a problem (from first detection through recovery) rather than a single point-in-time event. 
+In the {{alerting-v2-system}}, the system tracks alerts as **alert episodes**. An episode is a collection of `type: alert` [rule events](rules/rule-event-field-reference.md) that share the same `episode.id`. It represents the full lifecycle of a problem (from first detection through recovery) rather than a single point-in-time event. 
 
 This page explains the core concepts you need to work with the {{alerting-v2-system}}: how alert episodes move through lifecycle states, and how series group episodes over time for the same monitored subject.
 

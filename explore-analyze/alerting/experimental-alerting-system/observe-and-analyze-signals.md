@@ -10,7 +10,7 @@ description: "Query Signal mode rule output from .rule-events in Discover, filte
 
 # Observe and analyze signals in the {{alerting-v2-system}} [observe-and-analyze-signals]
 
-When a rule runs in Signal mode, it writes each match to `.rule-events` as a signal. Signals don't open alert episodes or trigger notifications. Use them to build detection history, investigate incidents in Discover, create dashboards, or feed follow-on Alert mode rules that correlate activity across sources.
+When a rule runs in Signal mode, it writes each match to `.rule-events` as a `type: signal` [rule event](rules/rule-event-field-reference.md). Signals don't open alert episodes or trigger notifications. Use them to build detection history, investigate incidents in Discover, create dashboards, or feed follow-on Alert mode rules that correlate activity across sources.
 
 This page shows how to query signals, which fields matter most, and how to turn signal history into Discover sessions and dashboards.
 

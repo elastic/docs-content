@@ -5,28 +5,33 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How the experimental alerting system in Kibana writes rule events to .rule-events: signal and alert document types, shared base fields, episode fields, and the append-only data stream behavior."
+description: "How Kibana records rule matches as rule events in the experimental alerting system, and how Signal mode and Alert mode use those events."
 ---
 
-# Rule events in {{alerting-v2-system}} [rule-reference]
+# Rule events in the {{alerting-v2-system}} [rule-reference]
 
-This page explains the two types of documents the {{alerting-v2-system}} writes to `.rule-events` and how the data stream behaves, so you can write {{esql}} queries against `.rule-events` with confidence, for example, to replay an episode's history, investigate a signal, or build dashboards from rule output. Alert episodes and signals share this data stream and most fields. For how the shared schema works conceptually, refer to [Rule event data model](../alerts/rule-event-data-model.md). For the complete field list, refer to [Field reference](../alerts/field-reference.md#rule-events-field-schema).
+When a rule's query finds a match, {{kib}} records it as a rule event in `.rule-events`. One run can write several events if the query returns more than one matching row. {{kib}} never overwrites a rule event. Each later run adds new events, so you can look back at every match the rule found.
+
+This page explains what a rule event is and how Signal mode and Alert mode use those events. For how the shared schema works conceptually, refer to [Rule event data model](../alerts/rule-event-data-model.md). For the complete field list, refer to [Field reference](../alerts/field-reference.md#rule-events-field-schema).
 
 :::{important}
 The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle through [index lifecycle management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md). Older backing indices are deleted automatically when the retention window expires. Do not change mappings or index settings for these streams yourself.
 :::
 
-## Rule event documents
+## How rule events connect to signals and alert episodes [rule-events-signals-episodes]
 
-Each time a rule evaluates, {{kib}} writes one document per matched series to `.rule-events`. The `type` field determines the document kind:
+The rule's mode determines what happens after {{kib}} writes the event. Both kinds share `.rule-events` and most fields. The `type` field is `signal` or `alert`.
 
-- **`signal`** - A point-in-time record that the query matched. Useful for querying history or chaining into follow-on rules. Signal documents don't include `episode.*` fields.
-- **`alert`** - A lifecycle-tracked episode visible on the **Alerts** page, including its episode details and triage actions. Alert documents include `episode.*` fields and represent a breach that stays open until the condition clears.
+- **Signal mode**: Each match is a `type: signal` rule event. That event is the whole output. It has no `episode.*` fields, doesn't open an alert episode, and doesn't trigger notifications. Query these events in Discover, build dashboards from them, or feed them into a follow-on Alert mode rule. Refer to [Observe and analyze signals](../observe-and-analyze-signals.md).
+- **Alert mode**: Each match is a `type: alert` rule event with `episode.*` fields. An [alert episode](../alerts.md) is the grouping of those events that share the same `episode.id` as the problem moves through `pending`, `active`, `recovering`, and `inactive`. Action policies evaluate the episode, not each individual event.
 
-Both kinds share base fields. Only `alert` documents add episode fields that carry the lifecycle state for the matched series.
+Alert mode rules also write new rule events when a series recovers or reports no data. Those events still belong to the episode and can move it to `recovering` or `inactive`.
 
-:::{note}
-The `.rule-events` data stream is append-only. A new document is written on every rule evaluation. Existing documents are never updated. Each document is a snapshot of that moment. The `episode.status` field records the lifecycle stage the episode was in at that evaluation. To view the full history of an episode, query `.rule-events` filtered by `episode.id`, for example:
+## Append-only history [rule-events-append-only]
+
+The `.rule-events` data stream is append-only. {{kib}} writes a new document on every rule evaluation that produces a result. Existing documents are never updated. Each document is a snapshot of that moment.
+
+For an alert episode, `episode.status` records the lifecycle stage at that evaluation. To see the full history of an episode, query `.rule-events` filtered by `episode.id`:
 
 ```esql
 FROM .rule-events
@@ -35,11 +40,11 @@ FROM .rule-events
 ```
 
 For signal-focused query examples, refer to [Observe and analyze signals](../observe-and-analyze-signals.md). For lifecycle replay and incident tracing, refer to [Query alert history in Discover](../alerts/query-alerts-and-signals-in-discover.md).
-:::
 
 ## Related pages
 
 - [{{esql}} query](configure-rule-query.md): How the base query and alert condition shape what's written to `.rule-events`.
 - [Rules](../rules.md): What rules do and how they fit into the broader {{alerting-v2-system}}.
+- [How the {{alerting-v2-system}} works](../how-it-works.md): End-to-end Alert mode and Signal mode walkthroughs, both starting from a rule event.
 - [Observe and analyze signals](../observe-and-analyze-signals.md): Query Signal mode output in Discover and correlate signals with Alert mode rules.
 - [View and manage alerts](../alerts/view-and-manage-alerts.md): Where lifecycle-tracked episodes appear in the UI, with triage actions and episode details.
