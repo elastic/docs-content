@@ -32,7 +32,7 @@ The following table shows how each {{observability}} app behaves with {{cps-init
 
 How you set project scope depends on the app.
 
-APM and Infrastructure use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header, as do platform apps like Discover, Dashboards, and Lens.
+APM, Infrastructure, and Synthetics use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header, as do platform apps like Discover, Dashboards, and Lens.
 
 When you [create an SLO](/solutions/observability/incident-management/create-an-slo.md#slo-cps-scope), specify an SLO-specific **Project scope** to choose which linked projects the SLO monitors.
 
@@ -68,6 +68,8 @@ SLO burn rate rules query the SLO's [SLI and summary indices](/solutions/observa
 
 <!--Update to anchor #ml-ad-cps-create after https://github.com/elastic/docs-content/pull/7814 ships-->
 
+Synthetics status and TLS rules query origin-project monitors only, even when the scope selector includes linked projects.
+
 ### SLO visibility [obs-cps-slo-remote]
 
 Only origin SLOs are visible, even when connected to a linked project. To monitor SLO breaches across {{es}} projects, create SLOs in this project and [scope them](/solutions/observability/incident-management/create-an-slo.md#slo-cps-scope) to linked projects.
@@ -75,7 +77,3 @@ Only origin SLOs are visible, even when connected to a linked project. To monito
 ### Alerts are origin only [obs-cps-overview-alerts]
 
 **Alerts** are from the origin project only, even when rules are configured to act on cross-project data.
-
-### Synthetics is not available in {{cps-init}} [obs-cps-synthetics]
-
-Synthetics monitors and TLS certificates are bound to saved objects and remain scoped to the origin project. Monitors from linked projects do not appear in the Synthetics UI of the origin project.
