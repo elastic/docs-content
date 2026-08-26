@@ -11,11 +11,6 @@ applies_to:
 
 Use it if you're new to search in {{es}} or want to experiment with meaning-based retrieval alongside keyword matching.
 
-You can use this guide in two ways:
-
-- **Progressive steps:** Follow the guide from the beginning. This approach includes detailed explanations and lets you run and verify each example independently as you learn.
-- **Complete runnable script:** Use the [complete runnable script](#vector-full-text-search-complete-script) to run all operations from one file and get results quickly.
-
 :::{tip}
 Are you an agent? Use the [elasticsearch-onboarding skill](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-onboarding).
 :::
