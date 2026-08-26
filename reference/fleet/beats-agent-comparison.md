@@ -73,7 +73,7 @@ The following table shows the outputs supported by {{agent}}:
 
 | {{beats}} configuration | {{agent}} support |
 | --- | --- |
-| Modules ([{{filebeat}}](beats://reference/filebeat/configuration-filebeat-modules.md), [{{metricbeat}}](beats://reference/metricbeat/configuration-metricbeat.md)) | Supported through integrations. Standalone {{agent}} also accepts module settings directly on an input. Refer to [Find the settings available for an input](elastic-agent-input-configuration.md#elastic-agent-input-configuration-available-settings). |
+| Modules ([{{filebeat}}](beats://reference/filebeat/configuration-filebeat-modules.md), [{{metricbeat}}](beats://reference/metricbeat/configuration-metricbeat.md)) | Supported through integrations. Standalone {{agent}} also accepts module settings on an input or its streams. Refer to [Find the settings available for an input](elastic-agent-input-configuration.md#elastic-agent-input-configuration-available-settings). |
 | [Input setting overrides](beats://reference/filebeat/advanced-settings.md) | Not configurable. Set to default values. |
 | [General settings](beats://reference/filebeat/configuration-general-options.md) | Many of these global settings are now internal to the agent and should not be modified. |
 | [Project paths](beats://reference/filebeat/configuration-path.md) | {{agent}} configures these paths to provide a simpler and more streamlined configuration experience. |
