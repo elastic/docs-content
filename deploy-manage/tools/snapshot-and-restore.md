@@ -142,7 +142,7 @@ A snapshot copies segments from an index’s primary shards. When you start a sn
 
 Once a snapshot begins copying a shard’s segments, {{es}} won’t move the shard to another node, even if rebalancing or shard allocation settings would typically trigger reallocation. {{es}} will only move the shard after the snapshot finishes copying the shard’s data.
 
-If a shard is currently being restored from another snapshot when a new snapshot starts, {{es}} waits for the restore to complete before copying that shard’s segments. When `partial` is set to `true` in the snapshot request, however, {{es}} skips the shard instead of waiting, allowing the snapshot to make progress even when some shards are unavailable. The resulting snapshot is marked as partial and does not contain data for the skipped shard.
+{applies_to}`stack: ga 9.6.0+` {applies_to}`serverless: ga` If a shard is currently being restored from another snapshot when a new snapshot starts, {{es}} waits for the restore to complete before copying that shard’s segments. When `partial` is set to `true` in the snapshot request, however, {{es}} skips the shard instead of waiting, allowing the snapshot to make progress even when some shards are unavailable. The resulting snapshot is marked as partial and does not contain data for the skipped shard.
 
 ### Snapshot start and stop times
 
