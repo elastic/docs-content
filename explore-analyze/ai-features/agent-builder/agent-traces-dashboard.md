@@ -110,11 +110,36 @@ These fields contain the details the dashboard aggregates. Generative AI attribu
 | `attributes.gen_ai.provider.name` | Model provider |
 | `attributes.gen_ai.agent.id` | Agent identifier |
 | `attributes.gen_ai.conversation.id` | Conversation identifier |
+| `attributes.elastic.conversation.title` {applies_to}`stack: ga 9.6+` | Conversation title. Present on the root conversation round span only, and only when **Include real tool, agent, and conversation names in traces** is on. This is an Elastic field rather than an OpenTelemetry one, so it is not covered by the generative AI semantic conventions |
+| `attributes.kibana.inference.root` | `true` on the root conversation round span, `false` on every other span in the trace. Use it to select one span per round |
 | `attributes.elastic.inference.span.kind` | The kind of work a span represents:<br>- `LLM` on `chat` spans<br>- `TOOL` on `execute_tool` spans<br>- `CHAIN` or `AGENT` on `invoke_agent` spans, where `CHAIN` is a conversation round and `AGENT` is an agent execution.<br><br>Internal spans such as `generate_title` also use `CHAIN`, so combine this field with a `span.name` filter instead of using it on its own |
-| `name` | Span name. On `execute_tool` spans it is `execute_tool <tool-id>`, for example `execute_tool platform.core.list_indices`. For the bare tool id, use `attributes.gen_ai.tool.name` |
+| `name` | Span name. On `execute_tool` spans it is `execute_tool <tool-id>`, for example `execute_tool platform.core.list_indices`. For the bare tool id, use `attributes.gen_ai.tool.name`.<br><br>Names in this field are anonymized along with the attributes. While **Include real tool, agent, and conversation names in traces** is off, a custom agent or tool appears as `invoke_agent custom` or `execute_tool custom`, so filters that match a real name return nothing |
 | `duration` | Span duration in nanoseconds (root field). Divide by 1,000,000,000 for seconds |
 | `status.code` | Span status, for example `Error` (root field) |
 | `@timestamp` | When the span started |
+
+### User attributes [user-attributes]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Traces record who ran each agent. These fields appear on the root conversation round span only, so join on `trace_id` to attribute nested spans to a user.
+
+Use `attributes.kibana.inference.root == true` to select that span. It is `true` on the root span and `false` everywhere else. Filtering on `attributes.elastic.inference.span.kind == "CHAIN"` alone returns the internal `generate_title` span as well, which carries none of these fields.
+
+| Field | Description | Required setting |
+|---|---|---|
+| `attributes.user.id` | User profile ID | **Include user data in traces** |
+| `attributes.user.name` | Username | **Include user data in traces** |
+| `attributes.user.hash` | Stable hash of the user ID, used for correlation when the real identity is withheld. Present only when the setting is off | None |
+
+`attributes.user.hash` is stable for a given user across conversations, so you can break trace data down per user without recording anyone's identity. Group by `attributes.user.hash` to build per-user token or latency dashboards while leaving **Include user data in traces** off. Turn the setting on only when you need to attribute activity to a named person.
+
+On {{ech}} and {{serverless-full}}, `attributes.user.name` holds the numeric {{ecloud}} user ID rather than a readable username. To resolve a display name, correlate `attributes.user.id` against the user profile API.
+
+To break token usage down by user, aggregate across span kinds. Token counts are recorded on the model call spans, not on the conversation round span that carries the user fields, so a single-span query returns nothing. Rolling token usage up onto the agent span is tracked in a Kibana enhancement request with no target version.
 
 ### Message content attributes [message-content-attributes]
 
