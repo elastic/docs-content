@@ -96,30 +96,14 @@ Built-in tools and agents always appear under their real names. Anonymized names
 User data is the exception to that pattern. Every other setting anonymizes a value in place, keeping the same field. The user fields swap instead. When **Include user data in traces** is off, the username is dropped and the user ID is replaced by a stable hash in `attributes.user.hash`. When the setting is on, `attributes.user.id` and `attributes.user.name` are recorded and `attributes.user.hash` is absent. Account for that if you build dashboards that group by user.
 :::
 
-For users who sign in with {{ecloud}} SSO, as is standard on {{ech}} and {{serverless-full}}, `attributes.user.name` holds the numeric {{ecloud}} user ID rather than a readable username. `attributes.user.id` holds the user profile ID in all cases. To resolve a readable identity, look up `attributes.user.id` with the [user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile) and read `user.full_name` or `user.email` from the response.
+On {{ech}} and {{serverless-full}}, the username recorded for a user who signs in with {{ecloud}} SSO is a numeric {{ecloud}} user ID rather than a readable name. For the field details and how to resolve a display name, refer to [User attributes](agent-traces-dashboard.md#user-attributes).
 
 Changing a privacy setting affects only traces recorded after the change. Existing traces are not rewritten. {{agent-builder}} refreshes these settings every 30 seconds, so allow up to that long for a change to take effect, then run a new conversation round to see it.
 
 Content is stored across different span types:
 - **`chat` spans**: Store prompts, responses, and the system prompt in the `attributes.gen_ai.input.messages`, `attributes.gen_ai.output.messages`, and `attributes.gen_ai.system_instructions` attributes.
 - **`execute_tool` spans**: Store tool call details in `attributes.gen_ai.tool.call.arguments` and `attributes.gen_ai.tool.call.result`.
-- **The conversation round span** {applies_to}`{stack: ga 9.6+, serverless: ga}`: Stores the conversation title and the user identity. Only the root `invoke_agent` span carries these, one per conversation round. The nested agent, model, and tool spans do not.
-
-To select that span, combine a span name prefix with the span kind:
-
-```esql
-FROM traces-agent_builder.otel-*
-| WHERE span.name LIKE "invoke_agent *" AND attributes.elastic.inference.span.kind == "CHAIN"
-```
-
-Both conditions are needed. The name prefix on its own also matches the nested agent execution spans, and `CHAIN` on its own also matches the internal `generate_title` span, which carries neither the title nor the user fields. Anonymized names do not break the filter, because an anonymized round is still named `invoke_agent custom`.
-
-| Attribute | Required setting |
-|---|---|
-| `attributes.elastic.conversation.title` | **Include real tool, agent, and conversation names in traces** |
-| `attributes.user.id` | **Include user data in traces** |
-| `attributes.user.name` | **Include user data in traces** |
-| `attributes.user.hash` | Present only when **Include user data in traces** is off |
+- **The conversation round span** {applies_to}`{stack: ga 9.6+, serverless: ga}`: Stores the conversation title and the user identity. Only the root `invoke_agent` span carries these, one per conversation round. The nested agent, model, and tool spans do not. For the field names, the settings each one depends on, and how to select that span, refer to [User attributes](agent-traces-dashboard.md#user-attributes).
 
 Two limits apply to the conversation title:
 

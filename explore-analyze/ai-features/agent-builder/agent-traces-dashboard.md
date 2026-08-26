@@ -126,7 +126,14 @@ serverless: ga
 
 Traces record who ran each agent. These fields appear on the root conversation round span only, so join on `trace_id` to attribute nested spans to a user.
 
-To select that span, filter on `span.name LIKE "invoke_agent *"` and `attributes.elastic.inference.span.kind == "CHAIN"` together, as the [span types](#span-types) table describes. Neither condition is enough on its own: the name prefix also matches the nested agent execution spans, and `CHAIN` also matches the internal `generate_title` span, which carries none of these fields.
+To select that span, combine a span name prefix with the span kind:
+
+```esql
+FROM traces-agent_builder.otel-*
+| WHERE span.name LIKE "invoke_agent *" AND attributes.elastic.inference.span.kind == "CHAIN"
+```
+
+Both conditions are needed. The name prefix on its own also matches the nested agent execution spans, and `CHAIN` on its own also matches the internal `generate_title` span, which carries none of these fields. Anonymized names do not break the filter, because an anonymized round is still named `invoke_agent custom`.
 
 | Field | Description | Required setting |
 |---|---|---|
