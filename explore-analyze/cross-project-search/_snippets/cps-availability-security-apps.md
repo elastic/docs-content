@@ -21,3 +21,5 @@ The following features remain scoped to the origin project:
 - **Alerts:** The Alerts page doesn't display alerts that a linked project generated on its own. Origin project rules write the alerts they create from linked project data to the origin project, so those alerts do appear here.
 - **Cases:** Cases are stored in the origin project. You can't attach an alert or event from a linked project to a case.
 - **Attack Discovery:** AI-generated attack discoveries are based on alerts from the origin project only.
+- **Value report:** The **Value report** page reflects data from the origin project only.
+- **SIEM Readiness:** SIEM Readiness assesses the data posture of the origin project only.
