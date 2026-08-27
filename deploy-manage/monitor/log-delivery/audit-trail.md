@@ -15,8 +15,8 @@ Audit trail is the first log type available for [log delivery](/deploy-manage/mo
 
 An audit trail includes the following events:
 
-* **{{ecloud}} and organization administration:** Sign-in, membership, IAM, and project settings where applicable
-* **Project activity:** {{es}} and {{kib}} on the project — index, template, and pipeline lifecycle; data searches, reads, and writes; {{kib}} saved-object and UI access.
+* **{{ecloud}} and organization administration:** Sign-in, membership, IAM, and project settings
+* **Project activity:** {{es}} and {{kib}} activity including index, template, and pipeline lifecycle, data searches, reads, and writes, and UI access.
 
 ### Why deliver an audit trail
 
@@ -43,7 +43,7 @@ You must have the **Admin** or **Editor** [role](/deploy-manage/users-roles/clou
 1. On your {{ecloud}} homepage, find the project that should be the source of your log deliveries and select **Manage**.
 2. From the navigation menu, select **Log delivery**.
 3. For **Audit trail**, complete the following fields.
-    * In the **Destination** column, select one or more {{sec-serverless}} or {{obs-serverless}} projects to receive the logs.
+    * In the **Destination** column, select a {{sec-serverless}} or {{obs-serverless}} project to receive the logs.
       :::{tip}
       We recommend selecting an {{sec-serverless}} project as the destination for your audit trail.
       :::
@@ -55,41 +55,39 @@ You must have the **Admin** or **Editor** [role](/deploy-manage/users-roles/clou
 
 Apply ignore filters to exclude certain events from being delivered. Refer to [](/deploy-manage/monitor/log-delivery.md#ignore-filters) to learn more about their impact on your delivery volume and bill.
 
-The following table describes which ignore filters are available for the audit trail log type, when to select them, and how much they reduce your delivery volume.
+The following table describes which ignore filters are available for the audit trail log type and when to select them.
 
-| Name | When to select | Approx. volume cut |
-| --- | --- | --- |
-| Ignore data searches and reads | Select to exclude the highest-volume events on search-heavy projects. Do not select if you need evidence of who searched or read data (for example, HIPAA or PCI). <br>On by default. | ~50–70% |
-| Ignore data writes | Select when you want configuration and object-change evidence without ingest and bulk write volume. | ~5–15% |
-| Ignore successful sign-ins | Select for SOC or minimal profiles that focus on failures. Do not select if you need successful sign-in accountability. Applies to authentication events in the unified audit trail, including {{ecloud}} and organization signals when present. | ~5–15% |
-| Ignore routine user and role checks | Select for SOC or minimal profiles that focus on failures. Do not select if you need IAM accountability. Applies to IAM-related events in the unified audit trail, including {{ecloud}} and organization signals when present. | ~2–5% |
-| Ignore UI requests | Select to exclude read-only UI navigation noise. Saved-object mutations are still delivered. <br>On by default. | ~10–20% |
+| Name | When to select |
+| --- | --- |
+| Ignore data searches and reads | Select to exclude the highest-volume events on search-heavy projects. Do not select if you need evidence of who searched or read data. |
+| Ignore data writes | Select when you want configuration and object-change evidence without ingest and bulk write volume. |
+| Ignore successful sign-ins | Select for security operations or minimal profiles that focus on failures. Do not select if you need successful sign-in accountability. Applies to authentication events in the audit trail, including {{ecloud}} and organization signals when present. |
+| Ignore routine user and role checks | Select for security operations or minimal profiles that focus on failures. Do not select if you need IAM accountability. Applies to IAM-related events in the audit trail, including {{ecloud}} and organization signals when present. |
+| Ignore UI requests | Select to exclude read-only UI navigation noise. Saved object mutations are still delivered. |
 
-### Recommended usage
+### Ignore filter combinations
 
-| Combination | Ignore filters to select | Est. volume | Typical use |
-| --- | --- | --- | --- |
-| Balanced (UI default) | Data reads, UI views | Moderate | General production |
-| Full audit trail | (none) | Full | Forensics / maximum end-to-end evidence |
-| Compliance (changes and sign-ins) | Data reads | Elevated | Change accountability without search noise |
-| Security events only | Data reads, UI views, successful authentications | Low | Failure-oriented monitoring |
-| Admin and configuration | Data reads, UI views, data writes | Low | ITGC / change management |
-| Minimal | All five | Minimal | Dev / sandbox |
+In the following table, find the recommended combination of filters to select for typical use cases.
 
-:::{note}
-For **Security events only**, successful sign-ins are ignored when that filter is on, so the Security column is failure-oriented. Security and Admin columns include {{ecloud}} and organization signals when those events are present in the delivered trail.
-:::
+| Typical use | Ignore filters to select |
+| --- | --- |
+| General production | • Ignore data searches and reads<br>• Ignore UI requests |
+| Maximum end-to-end evidence | (none) |
+| Change accountability without search noise | • Ignore data searches and reads |
+| Failure-oriented monitoring | • Ignore data searches and reads<br>• Ignore UI requests<br>• Ignore successful sign-ins |
+| Change management | • Ignore data searches and reads<br>• Ignore UI requests<br>• Ignore data writes |
+| Dev or sandbox | • Ignore data searches and reads<br>• Ignore data writes<br>• Ignore successful sign-ins<br>• Ignore routine user and role checks<br>• Ignore UI requests |
 
-#### Compliance starting points
+### Compliance starting points
 
 These starting points are **not legal advice**. Validate retention, scope, and evidence requirements with your compliance team.
 
 | Need | Start from | Important |
 | --- | --- | --- |
-| HIPAA / PCI (data access evidence) | Full audit trail | Do not enable **Ignore data searches and reads** |
-| GDPR (accountability) | Balanced or Compliance | Enable the data-reads ignore unless access proof is required |
-| SOX (ITGC) | Compliance or Admin and configuration | — |
-| Dev / test | Minimal | Enable all ignore filters |
+| HIPAA / PCI (data access evidence) | Forensics / maximum end-to-end evidence | Do not enable **Ignore data searches and reads** |
+| GDPR (accountability) | General production or Change accountability without search noise | Enable the data-reads ignore unless access proof is required |
+| SOX (ITGC) | Change accountability without search noise or ITGC / change management | — |
+| Dev / test | Dev / sandbox | Enable all ignore filters |
 
 ## Explore delivered logs
 

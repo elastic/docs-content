@@ -1,5 +1,5 @@
 ---
-navigation_title: Log delivery
+navigation_title: Serverless log delivery
 description: Ship selected log types from any Elastic Cloud Serverless project to a Security or Observability project in your organization.
 applies_to:
   serverless: preview
@@ -23,11 +23,11 @@ With log delivery, you can:
 
 The **source** is the {{serverless-short}} project that produces the logs. You configure log delivery here. Any project type ({{es-serverless}}, {{sec-serverless}}, or {{obs-serverless}}) can be a source. 
 
-The **destination** is the {{serverless-short}} project that receives and stores the delivered logs. You can choose multiple destinations for each log type. Destinations must be {{sec-serverless}} or {{obs-serverless}} projects in the same organization.
+The **destination** is the {{serverless-short}} project that receives and stores the delivered logs. Destinations must be {{sec-serverless}} or {{obs-serverless}} projects in the same organization.
 
 You can use the same project as both source and destination. The destination can be in a different cloud provider region than the source, however, cross-region delivery can incur data transfer charges. Refer to [Billing and usage](#billing-and-usage).
 
-Logs are encrypted while moving from your source project to the destination project(s) and while they are stored on the destination.
+Logs are encrypted while moving from your source project to the destination project and while they are stored on the destination.
 
 ### Ignore filters
 
