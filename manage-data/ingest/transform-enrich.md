@@ -41,6 +41,8 @@ You can also perform transforms on existing {{es}} indices to pivot data into a 
 
 :   If you're ingesting using {{agent}} with Elastic {{integrations}}, you can use the {{ls}} [`elastic_integration filter`](logstash://reference/index.md) and other [{{ls}} filters](logstash-docs-md://lsr/filter-plugins.md) to [extend Elastic integrations](logstash://reference/using-logstash-with-elastic-integrations.md) by transforming data before it goes to {{es}}.
 
+:   You can also use {{ls}} to [split one event into multiple documents](transform-enrich/split-events-into-multiple-documents.md), which isn't possible with {{agent}} processors or {{es}} ingest pipelines.
+
 Ingest lag
 :   Calculate the time it takes for data to travel from its source to {{es}}. This is key for monitoring performance and finding bottlenecks in your data pipelines. Learn how in [Calculate ingest lag](https://www.elastic.co/blog/calculating-ingest-lag-and-storing-ingest-time-in-elasticsearch-to-improve-observability).
 

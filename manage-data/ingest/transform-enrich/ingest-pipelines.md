@@ -14,6 +14,10 @@ products:
 
 A pipeline consists of a series of configurable tasks called [processors](elasticsearch://reference/enrich-processor/index.md). Each processor runs sequentially, making specific changes to incoming documents. After the processors have run, {{es}} adds the transformed documents to your data stream or index.
 
+::::{note}
+Ingest pipelines process documents individually: one document in, one document out. They can't split one incoming document into multiple documents. The [`split` processor](elasticsearch://reference/enrich-processor/split-processor.md) splits a field value into an array within the same document. If you need to index each element of an incoming event as its own document, refer to [Split an event into multiple documents](split-events-into-multiple-documents.md).
+::::
+
 :::{image} /manage-data/images/elasticsearch-reference-ingest-process.svg
 :alt: Ingest pipeline diagram
 :::

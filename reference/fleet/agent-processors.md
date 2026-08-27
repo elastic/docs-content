@@ -87,6 +87,7 @@ You can define processors that apply to a specific input defined in the configur
 Processors have the following limitations.
 
 * Cannot enrich events with data from {{es}} or other custom data sources.
+* Cannot split a single event into multiple documents. Refer to [Split an event into multiple documents](/manage-data/ingest/transform-enrich/split-events-into-multiple-documents.md) for supported options.
 * Cannot process data after it’s been converted to the Elastic Common Schema (ECS) because the conversion is performed by {{es}} ingest pipelines. This means that your processor configuration cannot refer to fields that are created by ingest pipelines or {{ls}} because those fields are created *after* the processor runs, not before.
 * May break integration ingest pipelines in {{es}} if the user-defined processing removes or alters fields expected by ingest pipelines.
 * If you create new fields using processors, you are responsible for setting up field mappings in the `*-@custom` component template and making sure the new mappings are aligned with ECS.
@@ -101,6 +102,7 @@ The {{stack}} provides several options for processing data collected by {{agent}
 | Sanitize or enrich raw data at the source | Use an {{agent}} processor |
 | Convert data to ECS, normalize field data, or enrich incoming data | Use [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md#pipelines-for-fleet-elastic-agent) |
 | Define or alter the schema at query time | Use [runtime fields](/manage-data/data-store/mapping/runtime-fields.md) |
+| Split one event into multiple documents | Refer to [Split an event into multiple documents](/manage-data/ingest/transform-enrich/split-events-into-multiple-documents.md) |
 | Do something else with your data | Use [Logstash plugins](logstash-docs-md://lsr/filter-plugins.md) |
 
 
