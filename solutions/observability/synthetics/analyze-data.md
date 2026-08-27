@@ -253,7 +253,7 @@ serverless: preview
 stack: unavailable
 ```
 
-When [projects are linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), the Synthetics **Overview**, monitor details, certificates, errors, and journeys pages use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header. Select **All projects** or a linked project to include monitor data from those projects. Scope also follows any [space default](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
+When [projects are linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), the Synthetics **Overview**, monitor details, certificates, errors, and journeys pages use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header. Select **All projects** or a linked project to include monitor data from those projects.
 
 Monitors from linked projects appear alongside monitors from the origin project and show a **Linked** badge next to the monitor type. When they are present, a **Linked project** filter appears alongside **Type**, **Location**, **Tags**, and **Frequency**. Use it to scope the overview to monitors from one or more linked projects. When that filter is active, monitors from the origin project are hidden and status counts reflect only the filtered set. To group monitors by linked project, select **Group by → Linked project**.
 
