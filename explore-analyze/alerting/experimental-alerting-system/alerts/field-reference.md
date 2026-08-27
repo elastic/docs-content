@@ -15,7 +15,7 @@ This page is a field reference for the {{alerting-v2-system}}. It documents the 
 - **`.rule-events` field schema**: Fields written for every rule evaluation. Alert episodes and signals share this stream and most fields. The `episode.*` fields appear only on alert documents.
 - **`.alert-actions` field schema**: Fields written when a user or the system acts on an episode, including all `action_type` values.
 
-Use this page when writing {{esql}} queries in Discover, interpreting alert UI state, or aligning API payloads with stored data. For how the shared schema works conceptually, refer to [Rule event data model](rule-event-data-model.md). For signal query examples, refer to [Query signals](query-signals.md). For episode and triage query examples, refer to [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md). For triage controls in the UI, refer to [View and manage alerts](view-and-manage-alerts.md).
+Use these schemas when writing {{esql}} queries in Discover, interpreting alert UI state, or aligning API payloads with stored data.
 
 ## `.rule-events` field schema [rule-events-field-schema]
 
@@ -80,3 +80,11 @@ Every `.alert-actions` document has an `action_type` that identifies what happen
 | `notified` | system | Workflow invoked |
 | `suppress` | system | Notification throttled by the frequency limit |
 | `unmatched` | system | No action policy matched the episode |
+
+## Related pages
+
+- [Rule event data model](rule-event-data-model.md): How alert episodes and signals share `.rule-events`.
+- [Query signals](query-signals.md): Signal query examples in Discover.
+- [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Episode and triage query examples.
+- [View and manage alerts](view-and-manage-alerts.md): Monitor and filter alert episodes in the UI.
+- [Triage alert episodes](triage-alert-episodes.md): UI actions that write `.alert-actions` documents.
