@@ -70,7 +70,7 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 
          To use a new cloud connector:
 
-         1. Under **New Connection**, enter a **Cloud Connector Name**.
+         1. On the **New Connection** tab, enter a **Cloud Connector Name**.
          2. Expand the **Steps to assume role** section and complete the instructions to generate a `Role ARN` and `External ID`.
          3. Enter the values in the respective fields in {{kib}}.
 
