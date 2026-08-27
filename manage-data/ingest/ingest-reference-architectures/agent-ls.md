@@ -16,7 +16,7 @@ products:
 :::
 
 Ingest models
-:   Use {{ls}} between {{agent}} and {{es}} for advanced use cases such as enrichment, [event splitting](/manage-data/ingest/transform-enrich/split-events-into-multiple-documents.md), buffering, network bridging, and sending data to multiple endpoints.
+:    {{agent}} to {{es}} using {{ls}} for advanced use cases such as enrichment, [event splitting](/manage-data/ingest/transform-enrich/split-events-into-multiple-documents.md), buffering, network bridging, and sending data to multiple endpoints.
 
 
 ## {{agent}} to {{ls}} to {{es}} architectures [agent-ls-flavors]
