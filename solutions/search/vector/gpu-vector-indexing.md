@@ -28,7 +28,7 @@ To use GPU indexing, you need:
 * GPU driver, CUDA, and
   [cuVS runtime libraries](https://docs.rapids.ai/api/cuvs/stable/build/)
   installed on the node. Refer to the
-  [Elastic support matrix](https://www.elastic.co/support/matrix) for
+  [Elastic support matrix](https://www.elastic.co/support/matrix#vector-indexing) for
   supported CUDA and cuVS versions.
 * `LD_LIBRARY_PATH` environment variable configured to include the cuVS
   libraries path and its dependencies (CUDA, rmm, and so on)
@@ -51,6 +51,11 @@ to add the dependencies required for GPU support.
 This Dockerfile serves as an example implementation, and is not fully supported
 like our official Docker images.
 ::::
+
+This example is configured for {{es}} 9.5. To use a different {{es}} version,
+update both `ELASTICSEARCH_VERSION` and `CUVS_VERSION` to a supported
+combination from the
+[Elastic support matrix](https://www.elastic.co/support/matrix#vector-indexing).
 
 ::::{dropdown} Example Dockerfile
 :::{include} _snippets/docker-gpu-indexing.md
@@ -135,6 +140,21 @@ GPU indexing is used:
 If this message doesn't appear, check for warning messages explaining why GPU
 indexing isn't being used, such as an unsupported environment, missing
 libraries, or an incompatible GPU.
+
+
+### cuVS runtime version mismatch
+
+If the cuVS runtime library is older than the `cuvs-java` library bundled with
+{{es}}, you see a warning similar to the following:
+
+```
+GPU based vector indexing is not supported on this platform; Cannot create JDKProvider:
+Version mismatch: outdated libcuvs_c (libcuvs_c [25.12.0], cuvs-java version [26.02.0])
+```
+
+Install a cuVS runtime version that's supported for your {{es}} version. Refer
+to the
+[Elastic support matrix](https://www.elastic.co/support/matrix#vector-indexing).
 
 
 ### Node fails to start with `vectors.indexing.use_gpu: true`
