@@ -56,7 +56,7 @@ Two deployment technologies are available: {{managed-integration}} and agent-bas
       ::::{applies-switch}
 
       :::{applies-item} { "serverless": "preview", "stack": "preview 9.4+" }
-      1. Select **Federated Identity**.
+      1. In the **Preferred method** dropdown, select **Federated Identity**.
       2. To reuse an existing identity, select the **Existing Identity** tab, then select the identity's name.
 
          To create a new identity:
