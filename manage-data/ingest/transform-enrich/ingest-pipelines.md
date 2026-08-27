@@ -14,10 +14,6 @@ products:
 
 A pipeline consists of a series of configurable tasks called [processors](elasticsearch://reference/enrich-processor/index.md). Each processor runs sequentially, making specific changes to incoming documents. After the processors have run, {{es}} adds the transformed documents to your data stream or index.
 
-::::{note}
-Ingest pipelines process each document individually: a pipeline can transform or drop a document, but it can't split one incoming document into multiple documents. The [`split` processor](elasticsearch://reference/enrich-processor/split-processor.md) splits a field value into an array within the same document. If you need to index each element of an incoming event as its own document, refer to [Split an event into multiple documents](split-events-into-multiple-documents.md).
-::::
-
 :::{image} /manage-data/images/elasticsearch-reference-ingest-process.svg
 :alt: Ingest pipeline diagram
 :::
@@ -1037,3 +1033,12 @@ Use the [node stats]({{es-apis}}operation/operation-nodes-stats) API to get glob
 ```console
 GET _nodes/stats/ingest?filter_path=nodes.*.ingest
 ```
+
+
+## Limitations [ingest-pipeline-limitations]
+
+Ingest pipelines operate on one document at a time, as the document is indexed. This model has a few consequences:
+
+* A pipeline can transform or drop a document, but it can't split one incoming document into multiple documents. The [`split` processor](elasticsearch://reference/enrich-processor/split-processor.md) splits a field value into an array within the same document. To index each element of an incoming event as its own document, refer to [Split an event into multiple documents](split-events-into-multiple-documents.md).
+* A pipeline can't read from or aggregate across other indexed documents. The exception is the [enrich processor](data-enrichment.md), which looks up data from an enrich index.
+* A pipeline runs only when a document is indexed, and doesn't change documents that are already indexed. To run a pipeline on existing documents, [reindex]({{es-apis}}operation/operation-reindex) them into a new index with the pipeline, or run an [update by query]({{es-apis}}operation/operation-update-by-query) with the pipeline.
