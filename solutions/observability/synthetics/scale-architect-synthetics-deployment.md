@@ -22,9 +22,11 @@ serverless: preview
 stack: unavailable
 ```
 
-On {{serverless-full}}, include monitors from linked projects with the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header.
+On {{serverless-full}}, you can view monitor data from linked projects alongside monitors from the origin project, directly in the Synthetics UI.
 
-Monitors from linked projects are read-only in this project. Create, edit, and delete them in the project where they are defined. Refer to [Monitors from linked projects](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-linked-monitors).
+This view is read-only, meaning Synthetics builds it from monitor check data when you load the page. Monitor definitions stay as saved objects on the project where they were created. To create, edit, or delete those monitors, manage them directly in the Synthetics UI on that project.
+
+To include these monitors, [link projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md). Refer to [Monitors from linked projects](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-linked-monitors) for details.
 
 ## View monitor data from remote clusters [synthetics-ccs-settings]
 ```{applies_to}
