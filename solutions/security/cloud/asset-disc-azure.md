@@ -33,8 +33,8 @@ You can set up Cloud Asset Discovery for Azure by enrolling an Azure organizatio
 
 Two deployment technologies are available: {{managed-integration}} and agent-based. 
 
-* [{{managed-integration}} deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. 
-* [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
+* The [{{managed-integration}} deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the infrastructure that collects it. 
+* The [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
 
 
 ## {{managed-integration}} deployment [cad-azure-agentless]
