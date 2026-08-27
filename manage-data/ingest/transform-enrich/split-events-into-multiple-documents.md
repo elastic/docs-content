@@ -51,7 +51,7 @@ Splitting multiplies your document count. An event with hundreds of array elemen
 
 * A [{{ls}} instance](logstash://reference/index.md) that your {{agent}}s can reach.
 * {{agent}}s [configured to output to {{ls}}](/reference/fleet/logstash-output.md).
-* If you use the `elastic_integration` filter: an active Elastic Enterprise subscription, and credentials with the `monitor`, `read_pipeline`, and `manage_index_templates` privileges on your {{es}} cluster. Refer to the [plugin documentation](logstash-docs-md://lsr/plugins-filters-elastic_integration.md) for details.
+* If you use the `elastic_integration` filter: the required [subscription](https://www.elastic.co/subscriptions), and credentials with the `monitor`, `read_pipeline`, and `manage_index_templates` privileges on your {{es}} cluster. Refer to the [plugin documentation](logstash-docs-md://lsr/plugins-filters-elastic_integration.md) for details.
 
 ### Example pipeline
 
