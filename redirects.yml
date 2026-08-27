@@ -123,11 +123,11 @@ redirects:
   'solutions/observability/apps/integrate-with-machine-learning.md': 'solutions/observability/apm/machine-learning.md'
   'solutions/observability/apps/apm-agent-explorer.md': 'solutions/observability/apm/apm-agent-explorer.md'
   'solutions/observability/apps/applications-ui-settings.md':
-    to: 'kibana://docs/reference/advanced-settings.md'
+    to: 'kibana://reference/advanced-settings.md'
     anchors:
       '': 'observability-advanced-settings'
   'solutions/observability/apm/applications-ui-settings.md':
-    to: 'kibana://docs/reference/advanced-settings.md'
+    to: 'kibana://reference/advanced-settings.md'
     anchors:
       '': 'observability-advanced-settings'
   'solutions/observability/apps/act-on-data.md': 'solutions/observability/apm/act-on-data.md'
