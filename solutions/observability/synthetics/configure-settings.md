@@ -116,14 +116,6 @@ In a serverless project, to create a Project API key you must be logged in as a 
 - The **Elastic managed locations enabled** toggle controls whether your Synthetics monitors are permitted to run from Elastic's globally distributed, cloud-hosted testing infrastructure. If enabled, the key can push monitors to both Elastic-managed and private locations. If disabled, the key is restricted to private locations only.
 - The **Spaces** menu allows you to select the space where your API keys are available.
 
-## Cross-project search [synthetics-settings-cps]
-```{applies_to}
-serverless: preview
-stack: unavailable
-```
-
-The **Remote clusters** tab is not available on {{serverless-full}}. To include monitors from linked projects, use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header. On this **Settings** page, the selector is unavailable and Synthetics stays scoped to the origin project. Refer to [Monitors from linked projects](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-linked-monitors).
-
 ## Remote clusters [synthetics-settings-remote-clusters]
 ```{applies_to}
 stack: ga 9.5+
@@ -136,6 +128,11 @@ These settings are stored as a single shared configuration — one per deploymen
 
 ::::{note}
 To edit these settings, you must have the **All** privilege for the **Synthetics and Uptime** feature in **{{stack-manage-app}} → Roles → {{kib}} privileges → {{observability}}**. Users with only the **Read** privilege see the form as read-only.
+::::
+
+::::{admonition} View monitors from linked projects
+:applies_to: serverless: preview
+On {{serverless-full}}, after you [link projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), you can view monitors from those projects without any additional configuration. Refer to [Monitors from linked projects](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-linked-monitors).
 ::::
 
 ### Source settings [synthetics-settings-remote-clusters-source]
