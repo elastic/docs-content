@@ -19,7 +19,9 @@ products:
 Federated identity authentication for {{managed-integrations}} reduces the administrative burden of authenticating to third-party cloud service providers by eliminating the need to keep track of credentials such as API keys or passwords. Federated identities provide a reusable, secure-by-default means of authentication, helping you to manage deployments with many integrations collecting data from multiple cloud providers.
 
 :::{note}
-{applies_to}`stack: preview 9.2-9.3` In {{stack}} versions 9.2 and 9.3, federated identities are called cloud connectors, and appear in the {{kib}} UI as **Cloud Connectors**.
+:applies_to: stack: preview 9.2-9.3
+
+In {{stack}} versions 9.2 and 9.3, federated identities are called cloud connectors, and appear in the {{kib}} UI as **Cloud Connectors**.
 :::
 
 ## Integrations that support federated identity authentication

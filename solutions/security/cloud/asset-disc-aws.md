@@ -54,7 +54,7 @@ Two deployment options are available: {{managed-integration}} and agent-based.
       :::::{applies-switch}
 
       ::::{applies-item} { "serverless": "preview", "stack": "preview 9.4+" }
-      1. Select **Federated Identity**.
+      1. In the **Preferred method** dropdown, select **Federated Identity**.
       2. To reuse an existing identity, select the **Existing Identity** tab, then select the identity's name.
 
          To create a new identity:
@@ -65,7 +65,7 @@ Two deployment options are available: {{managed-integration}} and agent-based.
       ::::
 
       ::::{applies-item} { "stack": "preview 9.2-9.3" }
-      1. Select **Cloud Connectors**.
+      1. In the **Preferred method** dropdown, select **Cloud Connectors**.
       2. To use a pre-existing cloud connector for this deployment, select the **Existing Connection** tab, then select the cloud connector's name.
 
          To use a new cloud connector:
@@ -75,13 +75,17 @@ Two deployment options are available: {{managed-integration}} and agent-based.
          3. Enter the values in the respective fields in {{kib}}.
 
       :::{note}
-      {applies_to}`stack: removed 9.3`{applies_to}`serverless: removed` On Elastic Stack version 9.3 and earlier, to use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
+      :applies_to: { serverless: removed, stack: removed 9.3 } 
+      
+      On Elastic Stack version 9.3 and earlier, to use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
       :::
       ::::
 
       :::::
 
-    * Option 2: Direct access keys/CloudFormation. For **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
+    * Option 2: Direct access keys/CloudFormation.
+       1. In the **Preferred method** dropdown, select **Direct access keys**.
+       2. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
 
        ::::{note}
        If you don’t want to monitor every account in your organization, specify which to monitor using the `OrganizationalUnitIDs` field that appears after you click **Launch CloudFormation**.
