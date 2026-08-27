@@ -12,14 +12,14 @@ description: Split one incoming event into multiple Elasticsearch documents, eit
 
 Sometimes a single incoming event contains multiple records. For example, an API response or a batched TCP payload might hold an array of items, and you want to index each item as its own document in {{es}}.
 
-{{agent}} processors and {{es}} ingest pipelines transform events one-to-one: one event in, one document out. They can't generate multiple documents from a single event. In particular, the {{es}} [`split` processor](elasticsearch://reference/enrich-processor/split-processor.md) splits a field value into an array within the same document. It doesn't create new documents.
+{{agent}} processors and {{es}} ingest pipelines process each event individually: they can transform or drop an event, but they can't generate multiple documents from a single event. In particular, the {{es}} [`split` processor](elasticsearch://reference/enrich-processor/split-processor.md) splits a field value into an array within the same document. It doesn't create new documents.
 
 To split one event into multiple documents, you have two options:
 
 * [Split events at collection time](#split-events-at-collection-time), if your data source's input supports it.
 * [Split events with {{ls}}](#split-events-with-logstash), for everything else.
 
-Most data sources don't need splitting. Standard Elastic integrations already deliver one document per record. Splitting mainly matters for custom and input-only integrations, such as a Custom TCP integration that receives batched JSON payloads.
+Most data sources don't need splitting. Elastic {{integrations}} are designed to deliver one document per record. Splitting mainly matters for custom and input-only integrations, such as a Custom TCP Logs integration that receives batched JSON payloads.
 
 ## Splitting compared to rerouting
 
@@ -32,7 +32,7 @@ Some {{agent}} and {{filebeat}} inputs can split an incoming payload into separa
 For example:
 
 * The [Custom API integration](integration-docs://reference/httpjson.md) and the underlying [HTTP JSON input](beats://reference/filebeat/filebeat-input-httpjson.md) can split API responses into separate events with the `response.split` setting.
-* The [CEL Custom API integration](integration-docs://reference/cel.md) can emit multiple events per request when the CEL program returns a list of events.
+* The [CEL Custom API input integration](integration-docs://reference/cel.md) can emit multiple events per request when the CEL program returns a list of events.
 * The [AWS S3 input](beats://reference/filebeat/filebeat-input-aws-s3.md) can create one event per element of a JSON array with the `expand_event_list_from_field` setting.
 
 Check your input's reference documentation for similar settings before adding {{ls}} to your ingest path.
@@ -87,4 +87,4 @@ output {
 
 1. The [`elastic_integration` filter](logstash-docs-md://lsr/plugins-filters-elastic_integration.md) runs the event's integration ingest pipeline inside {{ls}}. It must be the first filter in the pipeline. If your data doesn't flow through an integration, omit this filter.
 2. The [`split` filter](logstash-docs-md://lsr/plugins-filters-split.md) creates one copy of the event per element of the `items` array. Each copy becomes its own document. If the array arrives as an unparsed string, parse it first, for example with the [`json` filter](logstash-docs-md://lsr/plugins-filters-json.md), before splitting.
-3. Elastic integrations require data streams and ECS-compatible output, so set `data_stream => true` and `ecs_compatibility` to `v1` or `v8` in the [`elasticsearch` output](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md).
+3. Elastic integrations are designed to work with data streams and ECS-compatible output, so set `data_stream => true` and `ecs_compatibility` to `v1` or `v8` in the [`elasticsearch` output](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md).
