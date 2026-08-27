@@ -18,7 +18,7 @@ In {{serverless-full}}, Elastic manages all infrastructure resilience automatica
 * Data durability does not depend on in-cluster shard replication. A node failure has no impact on data that has already been written — the data exists independently of the compute layer.
 * Elastic automatically retains recovery data for each project to support emergency data recovery scenarios.
 
-To learn more about the stateless architecture underpinning {{serverless-short}}, refer to [Elastic's serverless architecture](https://www.elastic.co/blog/elastic-serverless-architecture).
+To learn more about the stateless architecture underpinning {{serverless-short}}, refer to [Elastic's serverless architecture](https://www.elastic.co/search-labs/blog/stateless-your-new-state-of-find-with-elasticsearch).
 
 The stateless architecture introduces a higher baseline write latency compared to {{ech}}, as writes are batched before being committed to object storage. Refer to [Compare {{ech}} and Serverless](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md) for details on write performance characteristics.
 
