@@ -78,15 +78,19 @@ Two deployment technologies are available: {{managed-integration}} and agent-bas
          2. Expand the **Steps to assume role** section and complete the instructions to generate a `Role ARN` and `External ID`.
          3. Enter the values in the respective fields in {{kib}}.
 
-      :::{important}
-      {applies_to}`stack: removed 9.3`{applies_to}`serverless: removed` To use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
+      :::{note}
+      :applies_to: { serverless: removed, stack: removed 9.3 } 
+      
+      On Elastic Stack version 9.3 and earlier, to use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
       :::
       ::::
 
       :::::
 
 
-    * Option 2: Direct access keys/CloudFormation. For **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the instructions to automatically create the necessary credentials using CloudFormation.
+    * Option 2: Direct access keys/CloudFormation.
+       1. In the **Preferred method** dropdown, select **Direct access keys**.
+       2. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
 
        ::::{note}
        If you don’t want to monitor every account in your organization, specify which to monitor using the `OrganizationalUnitIDs` field that appears after you click **Launch CloudFormation**.

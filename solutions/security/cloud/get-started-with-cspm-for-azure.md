@@ -61,7 +61,7 @@ The following deployment options are available: {{managed-integration}} and agen
       ::::{applies-switch}
 
       :::{applies-item} { "serverless": "preview", "stack": "preview 9.4+" }
-      1. Select **Federated Identity**.
+      1. In the **Preferred method** dropdown, select **Federated Identity**.
       2. To reuse an existing identity, select the **Existing Identity** tab, then select the identity's name.
 
          To create a new identity:
@@ -72,7 +72,7 @@ The following deployment options are available: {{managed-integration}} and agen
       :::
 
       :::{applies-item} { "stack": "preview 9.2-9.3" }
-      1. Select **Cloud Connectors**.
+      1. In the **Preferred method** dropdown, select **Cloud Connectors**.
       2. To reuse an existing cloud connector, select the **Existing Connection** tab, then select the cloud connector's name.
 
          To create a new cloud connector:
