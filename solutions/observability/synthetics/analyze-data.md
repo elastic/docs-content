@@ -13,7 +13,7 @@ products:
 
 # Analyze data from synthetic monitors
 
-The Synthetics UI gives you a high-level overview of your service’s availability and allows you to dig into details to diagnose what caused downtime.
+The Synthetics UI gives you a high-level overview of your service’s availability and allows you to dig into details to diagnose what caused downtime. You can view monitor data from the current cluster or {{serverless-short}} project, as well as from [remote clusters](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-remote-monitors) or [linked projects](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-linked-monitors).
 
 ## Overview [synthetics-analyze-overview]
 
@@ -253,7 +253,7 @@ serverless: preview
 stack: unavailable
 ```
 
-When [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md) is enabled and projects are linked, the Synthetics **Overview**, monitor details, certificates, errors, and journeys pages use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header. Select **All projects** or a linked project to include monitor data from those projects. Scope also follows any [space default](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). If your organization has only one project, the selector is hidden.
+When [projects are linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), the Synthetics **Overview**, monitor details, certificates, errors, and journeys pages use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header. Select **All projects** or a linked project to include monitor data from those projects. Scope also follows any [space default](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
 
 Monitors from linked projects appear alongside monitors from the origin project and show a **Linked** badge next to the monitor type. When they are present, a **Linked project** filter appears alongside **Type**, **Location**, **Tags**, and **Frequency**. Use it to scope the overview to monitors from one or more linked projects. When that filter is active, monitors from the origin project are hidden and status counts reflect only the filtered set. To group monitors by linked project, select **Group by → Linked project**.
 
