@@ -30,11 +30,6 @@ To create synthetic monitor status rules, you need the following:
 
 This rule only queries against `synthetics-*` and that is hardcoded.
 
-:::{note}
-:applies_to: serverless: preview
-This rule queries monitors in the origin project only. Monitors from linked projects in the Synthetics UI are not evaluated.
-:::
-
 ## Filters [observability-monitor-status-alert-filters]
 
 The **Filter by** section controls the scope of the rule. The rule will only check monitors that match the filters defined in this section. In this example, the rule will only alert on `browser` monitors located in `Asia/Pacific - Japan`.
