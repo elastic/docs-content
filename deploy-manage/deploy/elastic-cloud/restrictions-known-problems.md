@@ -104,6 +104,8 @@ $$$ec-restrictions-network-security-kibana-sso$$$
 
 ```{include} /deploy-manage/security/_snippets/private-connectivity-limitations-ech.md
 ```
+```{include} /deploy-manage/security/_snippets/aws-privatelink-cloud-id-limitation.md
+```
 
 ## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-network-security-watcher]
 

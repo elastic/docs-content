@@ -37,7 +37,7 @@ The active {{data-source}} appears under **{{data-source-cap}}** in the upper-ri
 Some data views are managed by Elastic and cannot be edited. However, you can [duplicate them](/explore-analyze/find-and-organize/data-views.md#duplicate-managed-data-view) and make changes to duplicated versions without affecting managed data views. 
 :::
 
-To learn how to modify the default **Security Default Data View**, refer to [Update default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices).
+To learn how to modify the default **Security Default Data View**, refer to [](#default-data-view-security).
 
 To learn how to modify, create, or delete another {{data-source}} refer to [{{kib}} {{data-sources-cap}}](/explore-analyze/find-and-organize/data-views.md).
 
@@ -51,7 +51,7 @@ You cannot update the data view for the Alerts page. This includes referencing a
 
 ## The default {{data-source}} [default-data-view-security]
 
-The default {{data-source}} is defined by the `securitySolution:defaultIndex` setting, which you can modify in [advanced settings](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices).
+The default {{data-source}} is defined by the `securitySolution:defaultIndex` setting, which you can modify in [advanced settings](kibana://reference/advanced-settings.md#kibana-siem-settings).
 ::::{note}
 If you modify this view directly in the Edit data view UI, the changes will not persist.
 ::::
