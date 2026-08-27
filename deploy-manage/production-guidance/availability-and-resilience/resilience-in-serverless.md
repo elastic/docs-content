@@ -16,7 +16,9 @@ In {{serverless-full}}, Elastic manages all infrastructure resilience automatica
 
 * Object storage is replicated across multiple physical locations within a region by the underlying cloud provider, independently of compute node health.
 * Data durability does not depend on in-cluster shard replication. A node failure has no impact on data that has already been written — the data exists independently of the compute layer.
-* Elastic automatically retains recovery data for each project to support emergency data recovery scenarios.
+* The {{es}} storage engine is continuously updated, so {{serverless-short}} users always benefit from the latest search performance and capabilities. In the extremely rare event that an {{es}} software error affects the quality of stored data, the service is able to roll back any resulting corruption with a one-hour Recovery Point Objective (RPO).
+
+When a client receives a successful write response from {{es}}, the data has been durably persisted to the relevant cloud service provider's regionally-resilient object storage — [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html), [Google Cloud Storage](https://cloud.google.com/storage/docs/consistency), or [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy). For detailed information on the durability and recoverability guarantees of these stores, refer to their respective documentation. From the perspective of {{es}}, the Recovery Point Objective (RPO) for data loss in events such as node failures or even an availability zone outage is zero.
 
 To learn more about the stateless architecture underpinning {{serverless-short}}, refer to [Elastic's serverless architecture](https://www.elastic.co/search-labs/blog/stateless-your-new-state-of-find-with-elasticsearch).
 
@@ -32,8 +34,6 @@ The stateless architecture introduces a higher baseline write latency compared t
 Elastic maintains a service level agreement (SLA) for {{serverless-short}} project availability. Refer to the [Elastic Cloud Serverless Service Level Agreement](https://www.elastic.co/agreements/sla-elastic-cloud-serverless) for details.
 
 ## Data recovery [resilience-serverless-data-recovery]
-
-Elastic retains recovery data for each {{serverless-short}} project. In the event of data loss caused by an infrastructure failure, Elastic can use this to restore your project to a previous state.
 
 {{serverless-short}} does not currently offer a self-service recovery workflow for data loss resulting from user-initiated operations, such as accidental index deletion or bulk document removal. If you experience this type of data loss, [contact Elastic Support](/troubleshoot/index.md#contact-us) to discuss your options.
 
