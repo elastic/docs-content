@@ -49,10 +49,8 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 :::
 
 7. In **Deployment options**, select the deployment mode:
-
-    :::{include} _snippets/deployment-options-cspm.md
-    :::
-
+    * {applies_to}`{serverless: ga, stack: ga 9.5+}` Select **Elastic Managed Integration**.
+    * {applies_to}`stack: preview 9.0-9.4` Select **Agentless**.
 8. Next, you’ll need to authenticate to GCP. Expand the **Steps to Generate GCP Account Credentials** section, then follow the instructions that appear to automatically create the necessary credentials using Google Cloud Shell.
 9. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 

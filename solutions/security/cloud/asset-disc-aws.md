@@ -43,10 +43,8 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 4. Select **AWS**, then either **AWS Organization** to onboard multiple accounts, or **Single Account** to onboard an individual account.
 5. Give your integration a name that matches the purpose or team of the AWS account/organization you want to monitor, for example, `dev-aws-account`.
 6. In **Deployment options**, select the deployment mode:
-
-    :::{include} _snippets/deployment-options-asset-disc.md
-    :::
-
+    * {applies_to}`{serverless: preview, stack: preview 9.5+}` Select **Elastic Managed Integration**.
+    * {applies_to}`stack: preview 9.1-9.4` Select **Agentless**.
 7. Next, you’ll need to authenticate to AWS. The following methods are available:
 
     * Option 1 (recommended): [Federated Identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md), also called a cloud connector in earlier versions:

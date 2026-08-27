@@ -45,10 +45,8 @@ Two deployment technologies are available: {{managed-integration}} and agent-bas
 4. Select **Azure**, then either **Azure Organization** to onboard your whole organization, or **Single Subscription** to onboard an individual subscription.
 5. Give your integration a name that matches the purpose or team of the Azure subscription/organization you want to monitor, for example, `dev-azure-account`.
 6. In **Deployment options**, select the deployment mode:
-
-    :::{include} _snippets/deployment-options-asset-disc.md
-    :::
-
+    * {applies_to}`{serverless: preview, stack: preview 9.5+}` Select **Elastic Managed Integration**.
+    * {applies_to}`stack: preview 9.1-9.4` Select **Agentless**.
 7. Next, you’ll need to authenticate to Azure. The following methods are available:
     
     * Option 1 (recommended): [Federated Identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md), also called a cloud connector in earlier versions:

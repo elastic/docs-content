@@ -47,10 +47,8 @@ Two deployment technologies are available: {{managed-integration}} and agent-bas
 :::
 
 7. In **Deployment options**, select the deployment mode:
-
-    :::{include} _snippets/deployment-options-cspm.md
-    :::
-
+    * {applies_to}`{serverless: ga, stack: ga 9.5+}` Select **Elastic Managed Integration**.
+    * {applies_to}`stack: preview 9.0-9.4` Select **Agentless**.
 8. Next, you’ll need to authenticate to AWS. The following methods are available:
 
     * Option 1 (recommended): [Federated Identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md), also called a cloud connector in earlier versions:
