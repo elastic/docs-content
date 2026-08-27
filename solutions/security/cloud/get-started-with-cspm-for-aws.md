@@ -69,7 +69,7 @@ Two deployment technologies are available: {{managed-integration}} and agent-bas
       ::::
 
       ::::{applies-item} { "stack": "preview 9.2-9.3" }
-      1. Select **Cloud Connectors**.
+      1. In the **Preferred method** dropdown, select **Cloud Connectors**.
       2. To use a pre-existing cloud connector for this deployment, select the **Existing Connection** tab, then select the cloud connector's name.
 
          To use a new cloud connector:
