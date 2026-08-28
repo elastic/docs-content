@@ -16,7 +16,7 @@ This page covers trade-offs among search speed, recall, indexing cost, vector st
 
 To gather results, the kNN API first finds a `num_candidates` number of approximate neighbors per shard, computes similarity to the query vector, selects the top `k` per shard, and merges them into the global top `k` nearest neighbors.
 
-For HNSW indices, `num_candidates` is the main search-time speed/accuracy control:
+For HNSW indices, `num_candidates` is the main search-time control for balancing speed and accuracy:
 
 * Increase `num_candidates` to improve recall and accuracy (at the cost of higher latency).
 * Decrease `num_candidates` for faster queries (with a potential accuracy trade-off).
