@@ -18,7 +18,7 @@ These four fields are required on every rule, regardless of format or mode. The 
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `kind` | string | `alert` or `signal` | Whether the rule tracks ongoing episodes (`alert`) or records point-in-time observations (`signal`). |
+| `kind` | string | `alert` or `signal` | Whether the rule tracks ongoing episodes (`alert`) or records point-in-time observations (`signal`). Set when the rule is created and can't be modified when editing the rule. |
 | `metadata.name` | string | Any string | The name of the rule. Max 256 characters. |
 | `schedule.every` | duration | Any duration string | How often the rule runs. For example: `5s`, `1m`, `5m`. Minimum interval applies. |
 | `query.format` | string | `composed` or `standalone` | The query structure the rule uses. `standalone` means each condition (breach, recovery, no-data) is a separate, self-contained ES\|QL query. `composed` means you write one base query and each condition is a pipe segment appended to it. The UI always creates `standalone` rules. |

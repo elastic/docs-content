@@ -24,7 +24,7 @@ A rule event is the record of one result from one rule run. {{kib}} writes one e
 
 Most events come from a matching row (`status: breached`). When {{kib}} tracks an alert episode, it can also write events when the condition clears (`status: recovered`) or when the query finds no data (`status: no_data`). {{kib}} writes those events the same way: one new document, never an overwrite.
 
-`type` on a rule event records what this run wrote (`signal` or `alert`). `kind` on the rule is how you configured it (Signal mode or Alert mode). For how `kind` is set, refer to [Rule mode](configure-rule-mode.md).
+Each event has a `type` of `signal` or `alert`, matching the `kind` you set when you created the rule. For how `kind` is set, refer to [Rule mode](configure-rule-mode.md).
 
 ## How Signal mode and Alert mode use rule events [rule-events-by-mode]
 

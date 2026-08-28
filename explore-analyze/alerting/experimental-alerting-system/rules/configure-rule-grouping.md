@@ -12,7 +12,7 @@ description: "Configure rule grouping in the experimental alerting system to tra
 
 Rule grouping is an optional setting in the {{alerting-v2-system}} that lets a single rule track multiple things independently. For example, a rule monitoring CPU usage across hosts can produce a separate alert series for each host, rather than one alert for everything combined.
 
-In Alert mode, each group becomes its own alert episode with an independent lifecycle. One group can be active while another has recovered, and notifications apply per episode, not across all groups combined. Snooze state is also per series. Snoozing one group does not affect other groups tracked by the same rule.
+When matches are grouped into alert episodes, each group becomes its own episode with an independent lifecycle. One group can be active while another has recovered, and notifications apply per episode, not across all groups combined. Snooze state is also per series. Snoozing one group doesn't affect other groups tracked by the same rule.
 
 ## When to configure grouping [grouping-when-to-use]
 

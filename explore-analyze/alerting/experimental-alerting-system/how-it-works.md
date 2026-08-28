@@ -35,7 +35,7 @@ Steps 4–6 and 8–9 run on a separate background process that polls roughly ev
 
 ### Example: Latency monitoring
 
-An SRE team wants to know when checkout service latency degrades, and notify the on-call team when it does. The team creates a rule in Alert mode:
+An SRE team wants to know when checkout service latency degrades, and notify the on-call team when it does. The team creates a rule that groups matches into an alert episode:
 
 1. The rule runs an {{esql}} query every five minutes, checking p95 checkout service latency.
 2. When p95 exceeds 2 seconds for more than one consecutive check, those events form an alert episode.
@@ -55,7 +55,7 @@ The engineer investigates, fixes a slow query, and the alert episode recovers au
 
 ### Example: Tracking administrator API calls
 
-A security team wants to track calls to a rarely-used administrator API endpoint, but individual calls aren't suspicious enough to page anyone. To start collecting data without generating noise, the team creates a rule in Signal mode:
+A security team wants to track calls to a rarely-used administrator API endpoint, but individual calls aren't suspicious enough to page anyone. To start collecting data without generating noise, the team creates a rule that records signals:
 
 1. The rule runs an {{esql}} query on a schedule, checking for calls to the administrator API endpoint.
 2. Each time the query returns results, {{kib}} writes a rule event (`type: signal`) to `.rule-events`.

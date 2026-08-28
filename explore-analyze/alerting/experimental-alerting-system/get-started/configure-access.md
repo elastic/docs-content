@@ -126,6 +126,6 @@ For `.rule-events` and `.alert-actions`, {{es}} `read` access is bundled into th
 
 With access configured, you're ready to:
 
-- [Create a rule](../rules/create-a-rule.md): Write the {{esql}} query that defines what to detect, choose Signal or Alert mode, and configure grouping and thresholds.
+- [Create a rule](../rules/create-a-rule.md): Write the {{esql}} query that defines what to detect, set whether matches are grouped into an episode, and configure grouping and thresholds.
 - [Set up workflows](../notifications-actions.md): Configure the automation objects that deliver notifications — email, Slack, webhook, and so on.
 - [Create action policies](../action-policies/create-configure-action-policy.md): Define who gets notified, how often, and under what conditions.

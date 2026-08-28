@@ -10,7 +10,7 @@ description: "How rule mode determines whether Kibana groups matching rows into 
 
 # Rule mode in the {{alerting-v2-system}} [rule-mode]
 
-Rule mode is a required setting for rules in the {{alerting-v2-system}}. It determines whether {{kib}} groups each [rule event](rule-event-field-reference.md) into an alert episode or leaves it as a signal for later analysis. Rule mode is set by the rule creation method. Some [creation paths](create-a-rule.md) only support one mode.
+Rule mode is a required setting for rules in the {{alerting-v2-system}}. It determines whether {{kib}} groups each [rule event](rule-event-field-reference.md) into an alert episode or leaves it as a signal for later analysis. It's set by the rule creation method. Some [creation paths](create-a-rule.md) only support one mode.
 
 | Mode | `kind` value | Behavior |
 | --- | --- | --- |
@@ -19,39 +19,41 @@ Rule mode is a required setting for rules in the {{alerting-v2-system}}. It dete
 
 Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view and triage alert episodes.
 
-If you're editing YAML directly, rule mode maps to the `kind` field on the rule. `kind` configures the rule. `type` on each rule event records what {{kib}} wrote for that run.
+In YAML, this setting is the `kind` field on the rule. `kind` configures the rule. `type` on each rule event records what {{kib}} wrote for that run. Set `kind` when you create the rule. You can't change it later in the UI or in YAML. If you need the other mode, create another rule.
 
-## When to use each rule mode [rule-mode-when-to-use]
+## When to use each [rule-mode-when-to-use]
 
-Signal mode is the right fit when:
+Record matches as signals when:
 
-* You are writing a new detection query and want to verify it produces the expected matches before notifying anyone.
+* You're writing a new detection query and want to record matches without notifying anyone.
 * You need to build detection history in `.rule-events` without generating alert noise or triggering notifications.
 
-Signal mode is **not** the right fit when:
+Recording matches as signals is **not** the right fit when:
 
-* You need to track how long a condition has been active or how it transitions between states. Signal mode does not create episodes or lifecycle state.
-* You need notifications when a condition fires. Switch to Alert mode and attach an action policy.
+* You need to track how long a condition has been active or how it transitions between states. Signals don't create episodes or lifecycle state.
+* You need notifications when a condition fires. Create a rule that groups matches into an alert episode and attach an action policy.
 
-Alert mode is the right fit when:
+Group matches into alert episodes when:
 
 * The rule is production-ready and each breach should be tracked as a distinct alert episode that opens, can escalate, and closes when the condition clears.
 * Alert episodes from the rule should be available for triage, acknowledgment, or escalation.
 * You want to attach action policies to route notifications when alert episodes open, escalate, or recover.
 
-Alert mode is **not** the right fit when:
+Grouping matches into episodes is **not** the right fit when:
 
-* The rule's query is still being tuned and generating alert episodes would create noise for on-call teams. Use Signal mode to validate first, then switch.
+* You're still tuning the rule's query, and generating alert episodes creates noise for on-call teams. Preview the query in the [query sandbox](create-esql-rule.md#rule-builder-query-sandbox), then create it when the query is ready. To keep recording matches without episodes, create a separate rule that records signals.
 
 ## Examples
 
 ### Build detection history before enabling alert episodes
 
-You're writing a new detection query and want to verify it produces the results you expect before anyone gets paged. Create the rule in Signal mode so matches are recorded in `.rule-events` and you can inspect them in Discover without opening any alert episodes or triggering notifications. Once the matches look correct, edit the rule and switch it to Alert mode.
+You're writing a new detection query and want to verify it produces the results you expect before anyone gets paged. Preview the query in the [query sandbox](create-esql-rule.md#rule-builder-query-sandbox) or in Discover, then create the rule in the mode you want to keep.
+
+To record matches without opening episodes or triggering notifications, use Signal. Inspect those signals in Discover. If you want tracked episodes for the same detection, create a separate rule that opens episodes. You can reuse the same query, or write a follow-on query that reads the signals from `.rule-events`. For the follow-on pattern, refer to [Correlate signals in a follow-on rule](../alerts/query-signals.md#correlate-signals-alert-rule).
 
 ### Route critical episodes to an on-call workflow
 
-You have a checkout service error rate rule and want on-call engineers notified when it fires. Create the rule in Alert mode so each breach opens a tracked episode that action policies can route to a notification channel. The rule's episodes appear on the **Alerts** page and are visible to any action policy whose KQL matcher matches the episode fields.
+You have a checkout service error rate rule and want on-call engineers notified when it fires. Create the rule so each breach opens a tracked episode that action policies can route to a notification channel. The rule's episodes appear on the **Alerts** page and are visible to any action policy whose KQL matcher matches the episode fields.
 
 ## Related pages
 
