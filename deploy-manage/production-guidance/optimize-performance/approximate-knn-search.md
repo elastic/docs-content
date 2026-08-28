@@ -70,25 +70,13 @@ DiskBBQ is a clustering algorithm which can scale efficiently often on less memo
 
 A `dense_vector` field stores more than the values you index. On disk, {{es}} keeps the raw vectors (for rescoring and reindex), any quantized copy used for approximate search, and the search structure (an HNSW graph, or DiskBBQ centroids and clusters). Off-heap RAM is only the working set that must stay in the operating system's filesystem cache, which is separate from the Java heap.
 
-The next sections cover what must stay in RAM, which Lucene files those are, and how to estimate their size.
-
-### What must stay in RAM [_what_must_stay_in_ram]
-
-Which files you count depends on the index type:
-
-- `flat`: the raw vectors.
-- `hnsw`: the raw vectors and the graph.
-- `int8_flat` / `int4_flat` / `bbq_flat`: the quantized codes only. Raw vectors stay on disk.
-- `int8_hnsw` / `int4_hnsw` / `bbq_hnsw`: the quantized codes and the graph. Raw vectors stay on disk.
-- `bbq_disk` (DiskBBQ): all centroids. Extra headroom to cache about 5–10% of the posting lists is a good target. Raw vectors stay on disk, and only clusters a query touches are paged in.
-
-{{es}} stores those structures as Lucene files. [Vector files](#vector-files-off-heap-ram) maps each structure to a file. [Estimate off-heap RAM](#_estimate_off_heap_ram) sizes the files you must keep in cache.
+The next sections list the Lucene files that make up a `dense_vector` field, then estimate the off-heap RAM for the files that must stay in cache.
 
 ### Vector files [vector-files-off-heap-ram]
 
 Each structure is a Lucene file (also reported under `off_heap.*_size_bytes` in [index stats]({{es-apis}}operation/operation-indices-stats)). Metadata files (`.vem`, `.vemf`, `.vemq`, `.vemb`) are small and you do not need to preload them.
 
-The **Off-heap RAM** column is whether that file is part of the working set in [What must stay in RAM](#_what_must_stay_in_ram):
+The **Off-heap RAM** column is whether that file is part of the working set you size in [Estimate off-heap RAM](#_estimate_off_heap_ram):
 
 - **Yes**: must stay in the filesystem cache. Include it in the RAM estimate.
 - **Partial**: optional headroom; only touched parts are paged in.
@@ -133,27 +121,64 @@ stack: ga 9.3+
 
 ### Estimate off-heap RAM [_estimate_off_heap_ram]
 
-Add up the files marked **Yes** in [Vector files](#vector-files-off-heap-ram). That is two parts:
+Disk and off-heap RAM are two different numbers, and they can differ by a lot. Disk is every structure persisted for the field. Off-heap RAM is the working set that must stay in the operating system's filesystem cache for fast, stable query latency. Vector data is memory-mapped, so it lives in the OS page cache, separate from the Java heap.
 
-1. **Vector data** — `.vec` with no quantization, or `.veq` / `.veb` with quantization. Use the table.
-2. **Index structure** — the HNSW graph (`.vex`), or DiskBBQ centroids (`.cenivf`) plus optional cluster headroom (`.clivf`).
+Provision at least the off-heap RAM figure per copy, plus headroom. Once the working set no longer fits in cache, queries start reading from disk and latency climbs sharply. For quantized indices the raw vectors stay on disk (read only for optional rescoring), so they count toward disk but not toward the required off-heap RAM.
 
-Here are estimates for different element types and quantization levels (vector data only):
+**What should stay in RAM, by index type:**
 
-| `element_type` | `quantization` | Vector data in RAM |
+- `flat`: the raw vectors.
+- `hnsw`: the raw vectors and the graph.
+- `int8_flat` / `int4_flat` / `bbq_flat`: the quantized codes only.
+- `int8_hnsw` / `int4_hnsw` / `bbq_hnsw`: the quantized codes and the graph.
+- `bbq_disk` (DiskBBQ): all centroids. Extra headroom to cache about 5–10% of the posting lists is a good target; the rest of the postings and the raw vectors stay on disk. This is why DiskBBQ can serve far more vectors per GiB of RAM.
+
+Those structures are the files marked **Yes** (and **Partial** for DiskBBQ cluster headroom) in [Vector files](#vector-files-off-heap-ram).
+
+#### Vector data in RAM
+
+The amount of vector data held in off-heap RAM depends on the `element_type` and `quantization`. When quantization is enabled, only the smaller quantized vectors need to be in RAM. The raw vectors are accessed from disk only during rescoring.
+
+| `element_type` | `quantization` | RAM per vector |
 | --- | --- | --- |
-| `float` | none | `num_vectors * num_dimensions * 4` |
-| `float` | `int8` | `num_vectors * (num_dimensions + 16)` |
-| `float` | `int4` | `num_vectors * (⌈num_dimensions / 2⌉ + 16)` |
-| `float` | `bbq` | `num_vectors * (⌈num_dimensions / 64⌉ × 8 + 14)` |
-| `bfloat16` | none | `num_vectors * num_dimensions * 2` |
-| `bfloat16` | `int8` | `num_vectors * (num_dimensions + 16)` |
-| `bfloat16` | `int4` | `num_vectors * (⌈num_dimensions / 2⌉ + 16)` |
-| `bfloat16` | `bbq` | `num_vectors * (⌈num_dimensions / 64⌉ × 8 + 14)` |
-| `byte` | none | `num_vectors * num_dimensions` |
-| `bit` | none | `num_vectors * (⌈num_dimensions / 8⌉)` |
+| `float` | none | `num_dimensions × 4` |
+| `float` | `int8` | `num_dimensions + 16` |
+| `float` | `int4` | `⌈num_dimensions / 2⌉ + 16` |
+| `float` | `bbq` | `⌈num_dimensions / 64⌉ × 8 + 14` |
+| `bfloat16` | none | `num_dimensions × 2` |
+| `bfloat16` | `int8` | `num_dimensions + 16` |
+| `bfloat16` | `int4` | `⌈num_dimensions / 2⌉ + 16` |
+| `bfloat16` | `bbq` | `⌈num_dimensions / 64⌉ × 8 + 14` |
+| `byte` | none | `num_dimensions` |
+| `bit` | none | `⌈num_dimensions / 8⌉` |
 
-**HNSW:** add the graph: `num_vectors × 4 × m` (default `m` is `16`).
+```{math}
+\begin{align*}
+vector\ RAM = num\_vectors \times RAM\ per\ vector
+\end{align*}
+```
+
+#### Index structure in RAM
+
+::::{tab-set}
+
+:::{tab-item} HNSW
+
+The HNSW graph must be fully loaded in memory for efficient search. The default value for `m` is `16`.
+
+```{math}
+\begin{align*}
+HNSW\ RAM = num\_vectors \times 4 \times m
+\end{align*}
+```
+
+Total off-heap RAM for HNSW:
+
+```{math}
+\begin{align*}
+total\ RAM = vector\ RAM + HNSW\ RAM
+\end{align*}
+```
 
 Example with unquantized `hnsw`, `element_type: float`, `m` set to `16`, and `1,000,000` vectors of `1024` dimensions:
 
@@ -166,14 +191,40 @@ estimated\ bytes &= (1,000,000 \times 4 \times 16) + (1,000,000 \times 4 \times 
 \end{align*}
 ```
 
-**DiskBBQ:** required RAM is the centroid bytes. Extra headroom of about 5–10% of the cluster bytes is a good target. Use the centroid and cluster formulas in [Index structure on disk](#_index_structure_on_disk).
+:::
+
+:::{tab-item} Flat
+
+The flat index has no graph structure. Only vector data needs to be in RAM.
 
 ```{math}
 \begin{align*}
-required\ bytes &= estimated\ centroid\ bytes \\
-with\ headroom &\approx estimated\ centroid\ bytes + 0.05 \times estimated\ cluster\ bytes
+total\ RAM = vector\ RAM
 \end{align*}
 ```
+
+:::
+
+:::{tab-item} DiskBBQ
+
+```{applies_to}
+stack: ga 9.3+
+```
+
+DiskBBQ keeps all centroids resident. Extra headroom to cache about 5–10% of the posting lists (cluster vectors) is a good target. Use the centroid and cluster formulas in [Index structure on disk](#_index_structure_on_disk).
+
+```{math}
+\begin{align*}
+required\ RAM &= centroid\ bytes \\
+with\ headroom &\approx centroid\ bytes + 0.05 \times cluster\ bytes
+\end{align*}
+```
+
+Start with all centroids plus about 5% of the posting lists in RAM and tune based on benchmark results. The useful fraction depends on your query patterns: queries that access overlapping clusters benefit from caching more.
+
+:::
+
+::::
 
 Data nodes should also leave a buffer for other ways that RAM is needed. For example your index might also include text fields and numerics, which also benefit from using filesystem cache. Run benchmarks with your dataset to confirm there is enough memory for good search performance. Nightly examples include the [`so_vector`](https://elasticsearch-benchmarks.elastic.co/#tracks/so_vector) and [`dense_vector`](https://elasticsearch-benchmarks.elastic.co/#tracks/dense_vector) tracks.
 
