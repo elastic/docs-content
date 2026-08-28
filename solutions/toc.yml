@@ -585,7 +585,6 @@ toc:
               - file: security/get-started/spaces-defend-faq.md
           - file: security/get-started/data-views-elastic-security.md
           - file: security/get-started/create-runtime-fields-in-elastic-security.md
-          - file: security/get-started/configure-advanced-settings.md
           - file: security/get-started/siem-readiness.md
       - file: security/esql-for-security.md
         children:
