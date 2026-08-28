@@ -195,6 +195,7 @@ These guides provide more direct or customizable approaches to working with vect
 
 - [kNN search in Elasticsearch](vector/knn.md): Perform vector similarity search using the `dense_vector` field type and k-nearest neighbor queries.
 - [Bring your own dense vectors](vector/bring-own-vectors.md): Use this if you already have embeddings and want to index and search them in Elasticsearch.
+- {applies_to}`stack: preview 9.3, ga 9.4+` {applies_to}`serverless: unavailable` [GPU accelerated vector indexing](vector/gpu-vector-indexing.md): Speed up HNSW index construction on nodes with compatible NVIDIA GPUs.
 - [Sparse vector search in Elasticsearch](vector/sparse-vector.md): Perform semantic search using sparse vectors with the ELSER model and the `sparse_vector` field type.
 
 
