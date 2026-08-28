@@ -134,9 +134,9 @@ PUT my-vector-index
 }
 ```
 
-In this mode, {{es}} encodes vectors as `bfloat16` to halve raw vector storage, excludes vector values from `_source`, preloads vector index files into the filesystem cache, and tunes merging for vector data. Approximate kNN search also defaults to `near_real_time: false`, so newly indexed vectors become searchable only after background optimization finishes.
+In this mode, {{es}} encodes vectors as `bfloat16` to halve raw vector storage, excludes vector values from `_source`, preloads vector index files into the filesystem cache, and tunes merging for vector data.
 
-Refer to [Index modes for vector search](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-modes) for the full list of applied settings, and to [Near-real-time kNN](optimize-performance-accuracy.md#near-real-time-knn) to override the search freshness default.
+Refer to [Index modes for vector search](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-modes) for the full list of applied settings.
 
 ## Resources
 
