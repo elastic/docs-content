@@ -46,6 +46,7 @@ toc:
                   - file: search/vector/knn.md
                   - file: search/vector/bring-own-vectors.md
                   - file: search/vector/vector-storage-for-semantic-search.md
+                  - file: search/vector/gpu-vector-indexing.md
               - file: search/vector/sparse-vector.md
           - file: search/hybrid-search.md
             children:
@@ -208,7 +209,6 @@ toc:
                       - file: observability/apm/observe-lambda-functions.md
                   - file: observability/apm/machine-learning.md
                   - file: observability/apm/apm-agent-explorer.md
-                  - file: observability/apm/applications-ui-settings.md
               - file: observability/apm/act-on-data.md
                 children:
                   - file: observability/apm/create-apm-rules-alerts.md
@@ -585,7 +585,6 @@ toc:
               - file: security/get-started/spaces-defend-faq.md
           - file: security/get-started/data-views-elastic-security.md
           - file: security/get-started/create-runtime-fields-in-elastic-security.md
-          - file: security/get-started/configure-advanced-settings.md
           - file: security/get-started/siem-readiness.md
       - file: security/esql-for-security.md
         children:
