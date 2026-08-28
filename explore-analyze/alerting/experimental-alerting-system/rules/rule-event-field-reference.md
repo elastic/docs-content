@@ -26,22 +26,22 @@ Most events come from a matching row (`status: breached`). When {{kib}} tracks a
 
 Each event has a `type` of `signal` or `alert`, matching the `kind` you set when you created the rule. For how `kind` is set, refer to [Rule mode](configure-rule-mode.md).
 
-## How Signal mode and Alert mode use rule events [rule-events-by-mode]
+## How `type` relates to signals and episodes [rule-events-by-mode]
 
-| Mode | What {{kib}} writes | What you work with |
+| `type` | What {{kib}} writes | What you work with |
 | --- | --- | --- |
-| Signal | A rule event with `type: signal`. No `episode.*` fields. | The signal, queryable in Discover. |
-| Alert | A rule event with `type: alert` and `episode.*` fields. | An alert episode: the grouping of events that share an `episode.id`, visible on the **Alerts** page. |
+| `signal` | A rule event with no `episode.*` fields. | The signal, queryable in Discover. |
+| `alert` | A rule event with `episode.*` fields. | An alert episode: the grouping of events that share an `episode.id`, visible on the **Alerts** page. |
 
-### Signal mode
+### Events that stay as signals
 
 {{kib}} writes a rule event with `type: signal`. Action policies evaluate alert episodes only, so these events never reach the **Alerts** page, a policy, or a workflow. They accumulate in `.rule-events` and are queryable in Discover.
 
 For query examples, refer to [Query signals](../alerts/query-signals.md).
 
-### Alert mode
+### Events that belong to an episode
 
-In Alert mode, the event carries `episode.id`, `episode.status`, and `episode.status_count`. An **alert episode** is the grouping of those events that share an `episode.id`.
+Events with `type: alert` carry `episode.id`, `episode.status`, and `episode.status_count`. An **alert episode** is the grouping of those events that share an `episode.id`.
 
 The first event opens the episode. Later events from later runs advance it through lifecycle states until the condition clears. Because events are never overwritten, `episode.status` on a given event is the lifecycle stage at that evaluation, not a live field that {{kib}} updates later. To replay an episode, query every event with that `episode.id`.
 
