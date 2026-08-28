@@ -6,7 +6,7 @@ applies_to:
   serverless:
 ---
 
-# Optimize performance and accuracy [optimize-knn-performance-accuracy]
+# Optimize approximate kNN search performance and accuracy [optimize-knn-performance-accuracy]
 
 Approximate kNN search balances query speed, result quality, and resource use, and small configuration changes can have a large impact on latency, recall, and storage costs in production.
 
