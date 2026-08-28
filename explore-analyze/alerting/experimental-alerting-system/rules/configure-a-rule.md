@@ -14,7 +14,7 @@ Rules in the {{alerting-v2-system}} have three required settings and several opt
 
 | Setting | Description | Required |
 | --- | --- | --- |
-| [Rule mode](configure-rule-mode.md) | Can be Signal or Alert. Controls whether matching rows generate signal documents or tracked alert episodes. | Required |
+| [Rule mode](configure-rule-mode.md) | Can be Signal or Alert. Controls whether matching rows are written as signal events or as alert events that form tracked episodes. | Required |
 | [{{esql}} query](configure-rule-query.md) | The detection logic and the parameters available in query expressions. | Required |
 | [Schedule and lookback](configure-rule-schedule.md) | How often the rule evaluates and how far back the query looks. Schedule is required; lookback is optional but strongly recommended. | Strongly reccomended |
 | [Severity](configure-rule-severity.md) | Assign severity levels to alert episodes using a `severity` column in query output. | Optional |

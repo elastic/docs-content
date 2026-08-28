@@ -10,7 +10,7 @@ description: "Query Signal mode rule events with ES|QL in Discover. Filter by ru
 
 # Query {{alerting-v2-system}} signals in Discover [query-signals-discover]
 
-When a rule runs in Signal mode, it writes each match to `.rule-events` as a signal. Signals don't open alert episodes or trigger notifications. Use them to build detection history, investigate incidents in Discover, create dashboards, or feed follow-on Alert mode rules that correlate activity across sources.
+When a rule runs in Signal mode, it writes each match to `.rule-events` as a rule event with `type: signal`. That event is the signal. Signals don't open alert episodes or trigger notifications. Use them to build detection history, investigate incidents in Discover, create dashboards, or feed follow-on Alert mode rules that correlate activity across sources.
 
 This page shows how to query signals, which fields matter most, and how to turn signal history into Discover sessions and dashboards.
 
@@ -22,11 +22,11 @@ This page shows how to query signals, which fields matter most, and how to turn 
 
 ## Key fields for signal queries [signal-key-fields]
 
-Alert episodes and signals share the `.rule-events` data stream and most of the same fields. Use `type` to filter for signals only. Signal documents don't include `episode.*` fields.
+Alert-mode and Signal-mode rules both write to `.rule-events` and share most of the same fields. Use `type` to filter for signals only. Signal events don't include `episode.*` fields.
 
 | Field | Why it matters for signals |
 |---|---|
-| `type` | Filter with `type == "signal"` to exclude alert episode documents. |
+| `type` | Filter with `type == "signal"` to exclude Alert-mode rule events. |
 | `@timestamp` | When {{kib}} wrote the document. Use for time ranges and sorting. |
 | `rule.id` | Scope results to one Signal mode rule. |
 | `status` | Always `breached` for signals. Signal-mode rules don't write `recovered` or `no_data`. |
@@ -42,7 +42,7 @@ Open **Discover**, select your `.rule-events` data view, and run {{esql}} agains
 
 ### List recent signals [basic-signal-query]
 
-Returns the most recent signal documents across all Signal mode rules.
+Returns the most recent Signal-mode rule events across all Signal mode rules.
 
 ```esql
 FROM .rule-events
@@ -98,6 +98,7 @@ Because `.rule-events` is append-only, dashboards show the full history retained
 ## Related pages
 
 - [Rule mode](../rules/configure-rule-mode.md): When to use Signal mode versus Alert mode.
-- [Rule event data model](rule-event-data-model.md): Shared `.rule-events` schema for signals and alert episodes.
+- [Rule events](../rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how a signal relates to an Alert-mode event.
+- [Rule event data model](rule-event-data-model.md): Shared `.rule-events` schema for Signal-mode and Alert-mode events.
 - [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Episode lifecycle, triage history, and incident-tracing queries.
 - [How the {{alerting-v2-system}} works](../how-it-works.md#how-signal-mode-works): End-to-end Signal mode walkthrough.

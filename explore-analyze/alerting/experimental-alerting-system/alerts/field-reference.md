@@ -5,23 +5,23 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Find field schemas for the .rule-events and .alert-actions data streams in the experimental alerting system. Covers shared signal and alert fields, alert-only episode fields, and all action_type values."
+description: "Find field schemas for the .rule-events and .alert-actions data streams in the experimental alerting system. Covers shared signal and alert event fields, alert-only episode fields, and all action_type values."
 ---
 
 # Rule event and alert action field reference [field-reference]
 
 This page is a field reference for the {{alerting-v2-system}}. It documents the fields written to the two data streams that back rule output and triage data:
 
-- **`.rule-events` field schema**: Fields written for every rule evaluation. Alert episodes and signals share this stream and most fields. The `episode.*` fields appear only on alert documents.
+- **`.rule-events` field schema**: Fields written on each [rule event](../rules/rule-event-field-reference.md). Signal-mode and Alert-mode events share this stream and most fields. The `episode.*` fields appear only on events with `type: alert`.
 - **`.alert-actions` field schema**: Fields written when a user or the system acts on an episode, including all `action_type` values.
 
 Use these schemas when writing {{esql}} queries in Discover, interpreting alert UI state, or aligning API payloads with stored data.
 
 ## `.rule-events` field schema [rule-events-field-schema]
 
-Every rule evaluation writes a document to `.rule-events`. Fields use dot-notation for nested objects. The `episode.*` fields are only present on documents with `type: alert`.
+{{kib}} writes one rule event per matching row, per run, to `.rule-events`. Alert-mode rules can also write `recovered` and `no_data` events. Fields use dot-notation for nested objects. The `episode.*` fields are only present on events with `type: alert`. Those events belong to an episode. They aren't episode documents.
 
-| Field | Type | Signal | Alert episode | Description |
+| Field | Type | Signal | Alert | Description |
 |---|---|---|---|---|
 | `@timestamp` | date | ✅ | ✅ | When {{kib}} wrote this document. |
 | `scheduled_timestamp` | date | ✅ | ✅ | The scheduled start time for this rule run. |
@@ -29,18 +29,18 @@ Every rule evaluation writes a document to `.rule-events`. Fields use dot-notati
 | `rule.version` | long | ✅ | ✅ | Version of the rule at evaluation time. |
 | `group_hash` | keyword | ✅ | ✅ | Identifies the series this event belongs to. |
 | `status` | keyword | ✅ | ✅ | Outcome of a single evaluation row, independent of episode lifecycle. Signals are always `breached`. Alert events can be `breached`, `recovered`, or `no_data`. |
-| `type` | keyword | ✅ | ✅ | Whether this document is a signal or an alert episode. Can be one of the following: `signal`, `alert`. |
+| `type` | keyword | ✅ | ✅ | Whether this rule event is a signal or an alert. Can be one of the following: `signal`, `alert`. |
 | `severity` | keyword | ✅ | ✅ | Optional. Set on `breached` events when the query emits a recognized value. Can be one of the following: `info`, `low`, `medium`, `high`, `critical`. Not set on `recovered` or `no_data` events. |
 | `data` | flattened | ✅ | ✅ | Rule-defined payload from the source query. |
 | `source` | keyword | ✅ | ✅ | Source that produced the event. |
 | `space_id` | keyword | ✅ | ✅ | {{kib}} space where the rule lives. |
-| `episode.id` | keyword | — | ✅ | ID of the alert episode. |
-| `episode.status` | keyword | — | ✅ | Lifecycle state of the alert episode. Can be one of the following: `inactive`, `pending`, `active`, `recovering`. |
+| `episode.id` | keyword | — | ✅ | ID of the alert episode this event belongs to. Events that share this value are the same episode. |
+| `episode.status` | keyword | — | ✅ | Lifecycle state of the alert episode at this evaluation. Can be one of the following: `inactive`, `pending`, `active`, `recovering`. |
 | `episode.status_count` | long | — | ✅ | Count of consecutive evaluations in the current `episode.status`. Set only for `pending` or `recovering`. |
 
 ## `.alert-actions` field schema [alert-actions-field-schema]
 
-When a user or the system records an action on an alert episode, {{kib}} writes a document to `.alert-actions`. Use this stream for triage history, operational metrics such as mean time to acknowledge (MTTA), and auditing. Signal documents never produce `.alert-actions` rows.
+When a user or the system records an action on an alert episode, {{kib}} writes a document to `.alert-actions`. Use this stream for triage history, operational metrics such as mean time to acknowledge (MTTA), and auditing. Signal-mode rule events never produce `.alert-actions` rows.
 
 | Field | Type | Description |
 |---|---|---|
@@ -83,7 +83,8 @@ Every `.alert-actions` document has an `action_type` that identifies what happen
 
 ## Related pages
 
-- [Rule event data model](rule-event-data-model.md): How alert episodes and signals share `.rule-events`.
+- [Rule events](../rules/rule-event-field-reference.md): What a rule event is and how it connects to signals and alert episodes.
+- [Rule event data model](rule-event-data-model.md): How Signal-mode and Alert-mode events share `.rule-events`.
 - [Query signals](query-signals.md): Signal query examples in Discover.
 - [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Episode and triage query examples.
 - [View and manage alerts](view-and-manage-alerts.md): Monitor and filter alert episodes in the UI.

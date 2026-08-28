@@ -5,42 +5,43 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Alert episodes and signals share .rule-events and most fields in the experimental alerting system. Alert documents add episode lifecycle fields, and triage actions are written to .alert-actions."
+description: "Alert episodes and signals share .rule-events in the experimental alerting system. Alert-mode events add episode lifecycle fields, and triage actions are written to .alert-actions."
 ---
 
 # Rule event data model in the {{alerting-v2-system}} [rule-event-data-model]
 
-This page explains what the {{alerting-v2-system}} writes, where it writes it, and how alert episode and signal documents relate.
+Alert episodes and signals aren't separate document types. {{kib}} writes **rule events** to `.rule-events`. This page covers where that data lives, which fields each mode uses, and where triage actions go. For what a rule event is and how it connects to both modes, refer to [Rule events](../rules/rule-event-field-reference.md).
 
-## How rule mode determines what gets written [how-rule-mode-determines-output]
+## How rule mode shapes each event [how-rule-mode-determines-output]
 
-Every time a rule finds a match, it writes a document to `.rule-events`. Whether that document is a signal or an alert depends on the rule's mode. Both document kinds share the same data stream and most of the same fields.
+Every time a rule finds a match, it writes a rule event to `.rule-events`. The rule's mode sets the event's `type`:
 
-| Type | What it is | When it's created |
+| `type` | Mode | What the event represents |
 | --- | --- | --- |
-| Signal | A point-in-time record that the query matched (`type: signal`). | Rules in Signal mode |
-| Alert | A lifecycle-tracked episode with `type: alert` and `episode.*` fields. | Rules in Alert mode |
+| `signal` | Signal | The whole output. This event is the signal. |
+| `alert` | Alert | One evaluation in an alert episode. The episode is the grouping of events that share an `episode.id`. |
 
 :::{note}
-A rule in Signal mode only writes signals. It never opens alert episodes, so action policies have nothing to match against.
+A rule in Signal mode only writes `type: signal` events. It never opens alert episodes, so action policies have nothing to match against.
 :::
 
 ## Shared index and schema [shared-index-and-schema]
 
-Alert episodes and signals are both written to `.rule-events` and share many of the same fields, including `data`, which holds the payload from your rule's query. The `type` field tells you which kind of document you're looking at, `signal` or `alert`, so you can filter for one or the other in a query (for example, `WHERE type == "signal"`).
+Both modes write to `.rule-events` and share many of the same fields, including `data`, which holds the payload from your rule's query. The `type` field tells you whether the event is a signal or an alert, so you can filter for one or the other (for example, `WHERE type == "signal"`).
 
-Alert episodes carry three additional fields, prefixed `episode.*`, for tracking lifecycle state (`episode.id`, `episode.status`, `episode.status_count`). Alert episodes track an ongoing problem, so they carry these fields.
+Only `type: alert` events carry the `episode.*` fields that track lifecycle state (`episode.id`, `episode.status`, `episode.status_count`). Query those events by `episode.id` to replay an episode. Signal events don't include episode fields.
 
-For the full field list, including field types and which fields apply to signals versus alert events, refer to [Field reference](field-reference.md#rule-events-field-schema).
+For the full field list, including field types and which fields apply to Signal-mode versus Alert-mode events, refer to [Field reference](field-reference.md#rule-events-field-schema).
 
 ## How {{kib}} records evaluation and triage data [how-kib-records-evaluation-triage-data]
 
-{{kib}} writes rule output to the following append-only data streams, both managed through ILM and queryable with {{esql}} in Discover:
+{{kib}} writes rule output to the following append-only data streams, both managed through [index lifecycle management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md) and queryable with {{esql}} in Discover:
 
-- **`.rule-events`** - {{kib}} writes one document for each rule evaluation and never overwrites them. This stream holds both signals and alert episode evaluations.
+- **`.rule-events`** - {{kib}} writes one rule event per matching row, per run, and never overwrites them. Alert-mode rules can also write `recovered` and `no_data` events. This stream holds both Signal-mode and Alert-mode events.
 - **`.alert-actions`** - Records every triage action taken on an episode (for example, acknowledge, snooze, and resolve). Only alert episodes produce documents here.
 
 ## Related pages
 
+- [Rule events](../rules/rule-event-field-reference.md): What a rule event is and how it connects to signals and alert episodes.
 - [Query signals](query-signals.md): Query examples against signals.
 - [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Episode lifecycle and triage queries.

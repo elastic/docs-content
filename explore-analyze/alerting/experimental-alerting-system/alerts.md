@@ -10,7 +10,7 @@ description: "Alert episodes in the experimental alerting system track a problem
 
 # Alerts in the {{alerting-v2-system-cap}} [alerts]
 
-In the {{alerting-v2-system}}, the system tracks alerts as **alert episodes**, which represent the full lifecycle of a problem (from first detection through recovery) rather than a single point-in-time event. 
+In the {{alerting-v2-system}}, the system tracks alerts as **alert episodes**, which represent the full lifecycle of a problem (from first detection through recovery) rather than a single point-in-time event. An episode isn't a separate document. {{kib}} writes a [rule event](rules/rule-event-field-reference.md) for each matching row, and the episode is the grouping of those events that share an `episode.id`.
 
 This page explains the core concepts you need to work with the {{alerting-v2-system}}: how alert episodes move through lifecycle states, and how series group episodes over time for the same monitored subject.
 
@@ -63,7 +63,8 @@ Snooze operates at the series level, not the alert episode level. If you snooze 
 From here, you can view, manage, and query alert episode data, and query Signal mode output in Discover.
 
 - [View and manage alerts](alerts/view-and-manage-alerts.md): Open the alert episodes table, triage active episodes, and acknowledge, snooze, or resolve them.
-- [Rule event data model](alerts/rule-event-data-model.md): Understand how alert episodes and signals share `.rule-events` and how they differ.
+- [Rule events](rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how Alert-mode events form an episode.
+- [Rule event data model](alerts/rule-event-data-model.md): Where rule events are stored and how they differ by mode.
 - [Query {{alerting-v2-system}} alert history in Discover](alerts/query-alerts-and-signals-in-discover.md): Use {{esql}} to query `.rule-events` and `.alert-actions` for exploratory analysis and dashboards.
 - [Query signals](alerts/query-signals.md): Query Signal mode output in Discover and correlate signals with Alert mode rules.
 

@@ -5,19 +5,21 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How rule mode determines whether detections produce signal documents or tracked alert episodes in the experimental alerting system, and when to use each."
+description: "How rule mode determines whether matching rows are written as signal events or as alert events that form tracked episodes in the experimental alerting system, and when to use each."
 ---
 
 # Rule mode in the {{alerting-v2-system}} [rule-mode]
 
-Rule mode is a required setting for rules in the {{alerting-v2-system}}. It determines what the rule produces when the detection query finds a match. Rule mode is set by the rule creation method. Some [creation paths](create-a-rule.md) only support one mode. If you're editing YAML directly, this maps to the `kind` field.
+Rule mode is a required setting for rules in the {{alerting-v2-system}}. It determines what each [rule event](rule-event-field-reference.md) means when the detection query finds a match. Rule mode is set by the rule creation method. Some [creation paths](create-a-rule.md) only support one mode.
 
 | Mode | `kind` value | Behavior |
 | --- | --- | --- |
-| Signal | `signal` | Records each matching row as a signal document. No alert episodes, no notifications. |
-| Alert | `alert` | Creates an alert episode for each matching row. Episodes are tracked through lifecycle states, appear on the **Alerts** page, and can be routed to notifications by action policies. |
+| Signal | `signal` | Writes a rule event with `type: signal` for each matching row. No alert episodes, no notifications. |
+| Alert | `alert` | Writes a rule event with `type: alert` and `episode.*` fields for each matching row. Events that share an `episode.id` form an alert episode. Episodes are tracked through lifecycle states, appear on the **Alerts** page, and can be routed to notifications by action policies. |
 
 Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view and triage alert episodes.
+
+If you're editing YAML directly, rule mode maps to the `kind` field on the rule. That `kind` field isn't the same as the `type` field on rule events: `kind` configures the rule, and `type` records what the run wrote.
 
 ## When to use each rule mode [rule-mode-when-to-use]
 
@@ -34,7 +36,7 @@ Signal mode is **not** the right fit when:
 Alert mode is the right fit when:
 
 * The rule is production-ready and each breach should be tracked as a distinct alert episode that opens, can escalate, and closes when the condition clears.
-* Alert episodes from the rule should be available for be triage, acknowledgment, or escalation.
+* Alert episodes from the rule should be available for triage, acknowledgment, or escalation.
 * You want to attach action policies to route notifications when alert episodes open, escalate, or recover.
 
 Alert mode is **not** the right fit when:
@@ -56,4 +58,5 @@ You have a checkout service error rate rule and want on-call engineers notified 
 - [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
 - [Create a rule](create-a-rule.md): Compare rule creation paths and choose the one that fits your workflow.
 - [Query signals](../alerts/query-signals.md): Query Signal mode output in Discover, build dashboards, and correlate signals with Alert mode rules.
-- [Rule event data model](../alerts/rule-event-data-model.md): Shared `.rule-events` schema for signals and alert episodes.
+- [Rule events](rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how `type` relates to rule `kind`.
+- [Rule event data model](../alerts/rule-event-data-model.md): Shared `.rule-events` schema for Signal-mode and Alert-mode events.

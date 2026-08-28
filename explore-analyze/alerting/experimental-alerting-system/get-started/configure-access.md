@@ -118,7 +118,7 @@ For `.rule-events` and `.alert-actions`, {{es}} `read` access is bundled into th
 
 | Data source | What it stores | How to grant access |
 |---|---|---|
-| `.rule-events` | A record for every rule evaluation; one document per result row per run | Automatic with **Alerts: All** or **Alerts: Read**. If access is missing, grant `read` using a custom role as a fallback. |
+| `.rule-events` | One [rule event](../rules/rule-event-field-reference.md) per matching row, per run | Automatic with **Alerts: All** or **Alerts: Read**. If access is missing, grant `read` using a custom role as a fallback. |
 | `.alert-actions` | User-triggered triage records (acknowledge, snooze, resolve, assign) and system-written dispatcher records. For all `action_type` values, refer to the [field reference](../alerts/field-reference.md). | Automatic with **Alerts: All** or **Alerts: Read**. If access is missing, grant `read` using a custom role as a fallback. |
 | `.kibana-event-log-*` | Action policy dispatch outcomes written by the dispatcher: `dispatched`, `throttled`, and `unmatched` | Custom role with `read` index privilege. Not covered by the automatic grant. |
 

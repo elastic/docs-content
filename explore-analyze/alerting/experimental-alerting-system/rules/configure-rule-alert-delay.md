@@ -22,7 +22,7 @@ Configure alert delay when:
 Leave alert delay set to Immediate when:
 
 * Any single breach warrants immediate attention and you cannot tolerate the added latency of waiting for consecutive evaluations.
-* The rule is in Signal mode. Alert delay only applies to Alert-mode rules and has no effect on signal document output.
+* The rule is in Signal mode. Alert delay only applies to Alert-mode rules and has no effect on Signal-mode rule events.
 
 ## Alert delay modes
 

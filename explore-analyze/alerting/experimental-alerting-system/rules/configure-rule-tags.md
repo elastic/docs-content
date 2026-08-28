@@ -30,7 +30,7 @@ Configure a runbook when:
 
 Skip tags and runbooks when:
 
-* The rule is in Signal mode. Tags and runbooks are Alert-mode-only artifacts and have no effect on signal document output.
+* The rule is in Signal mode. Tags and runbooks are Alert-mode-only artifacts and have no effect on Signal-mode rule events.
 * The rule is experimental or not yet part of a monitored production system.
 
 ## Examples
