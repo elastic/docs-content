@@ -46,7 +46,7 @@ For more details on data view options, refer to [Data views](../../../find-and-o
 
 ## Query episode and signal history [query-episode-signal-history]
 
-Each matching row of a rule run produces one [rule event](../rules/rule-event-field-reference.md) in `.rule-events`. {{kib}} never overwrites these events, which means you can reconstruct the full history of any episode by querying all events that share the same `episode.id`. The following sections provide example queries for common scenarios.
+{{kib}} writes one [rule event](../rules/rule-event-field-reference.md) to `.rule-events` for each matching row of a scheduled rule run. {{kib}} never overwrites these events, which means you can reconstruct the full history of any episode by querying all events that share the same `episode.id`. The following sections provide example queries for common scenarios.
 
 ### Reconstruct the lifecycle of a specific episode [replay-episode]
 

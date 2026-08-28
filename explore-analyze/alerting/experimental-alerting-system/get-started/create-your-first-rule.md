@@ -11,7 +11,7 @@ description: "Step-by-step tutorial for creating an ES|QL rule in the experiment
 
 # Create a rule and observe the alert lifecycle [create-first-rule]
 
-In this tutorial, you'll use the {{alerting-v2-system}} to detect a real-world performance problem and watch what happens next. You'll see how the system decides when a condition is serious enough to open an alert, how it tracks that alert over time, and how it closes automatically when things return to normal, without any manual intervention.
+In this tutorial, you'll use the {{alerting-v2-system}} to detect a real-world performance problem and watch what happens next. You'll see how the system decides when a condition is serious enough to open an alert episode, how it tracks that episode over time, and how it closes automatically when things return to normal, without any manual intervention.
 
 Here's what you'll do:
 

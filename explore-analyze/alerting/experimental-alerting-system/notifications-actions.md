@@ -10,7 +10,7 @@ description: "How to set up notifications and actions for rules in the experimen
 
 # Notifications and actions for the {{alerting-v2-system}} [notifications-actions]
 
-{{rules-ui}} in the {{alerting-v2-system}} don't send notifications directly. Instead, they produce alert episodes, and you use workflows and action policies to decide what happens next. For an explanation of how these two connect at runtime, refer to [Connect workflows](workflows-alerting.md).
+{{rules-ui}} in the {{alerting-v2-system}} don't send notifications directly. When {{kib}} tracks matches as alert episodes, you use action policies and workflows to decide whether and when to notify. Signals skip action policy evaluation and workflow invocation. For an explanation of how action policies and workflows connect at runtime, refer to [Connect workflows](workflows-alerting.md).
 
 :::{note}
 To use workflows, your role must have the appropriate privileges and your subscription must include workflows. Refer to the subscription page for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}}/self-managed]({{subscriptions}}) for a breakdown of available features by tier.

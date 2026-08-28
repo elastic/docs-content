@@ -10,7 +10,7 @@ description: "Rule events are the append-only documents Kibana writes to .rule-e
 
 # Rule events in the {{alerting-v2-system}} [rule-reference]
 
-When a rule finds a match, {{kib}} writes a **rule event** to `.rule-events`. Each matching row in a run becomes its own event, and {{kib}} never overwrites those events. Signal mode and Alert mode both begin from this same document. The rule's mode decides what the event means: in Signal mode the event is a signal, and in Alert mode it belongs to an alert episode.
+When a scheduled rule run finds a match, {{kib}} writes a **rule event** to `.rule-events`. Each matching row in a run becomes its own event, and {{kib}} never overwrites those events. Signal mode and Alert mode both begin from this same document. Based on the rule's mode, {{kib}} either records the event as a signal or tracks it as an alert episode.
 
 Use this page to query `.rule-events` with confidence: replay an episode's history, investigate a signal, or build dashboards from rule output. For the stored schema, refer to [Rule event data model](../alerts/rule-event-data-model.md). For the complete field list, refer to [Field reference](../alerts/field-reference.md#rule-events-field-schema).
 
@@ -22,7 +22,7 @@ The `.rule-events` and `.alert-actions` data streams are [system indices](/refer
 
 A rule event is the record of one result from one rule run. {{kib}} writes one event per matching row, per run, to `.rule-events`. It never updates those events in place. Each event is a snapshot of that moment: the rule that produced it, the payload from your query (`data`), and a `type` of `signal` or `alert`.
 
-Most events come from a matching row (`status: breached`). Alert-mode rules can also write events when the condition clears (`status: recovered`) or when the query finds no data (`status: no_data`). The rule writes those events the same way: one new document, never an overwrite.
+Most events come from a matching row (`status: breached`). For Alert-mode rules, {{kib}} can also write events when the condition clears (`status: recovered`) or when the query finds no data (`status: no_data`). {{kib}} writes those events the same way: one new document, never an overwrite.
 
 The `type` field on a rule event isn't the same as the `kind` field on the rule. `kind` is how you configure the rule (Signal mode or Alert mode). `type` is what that run wrote. For how `kind` is set, refer to [Rule mode](configure-rule-mode.md).
 
@@ -35,7 +35,7 @@ The `type` field on a rule event isn't the same as the `kind` field on the rule.
 
 ### Signal mode
 
-In Signal mode, the rule event is the whole output. {{kib}} writes it and stops. Signals don't open an episode, don't appear on the **Alerts** page, and don't trigger notifications. They accumulate in `.rule-events` and are queryable in Discover.
+In Signal mode, the rule event is the whole output. {{kib}} writes it and stops. Signals don't open an episode, don't appear on the **Alerts** page, and skip action policy evaluation and workflow invocation. They accumulate in `.rule-events` and are queryable in Discover.
 
 For query examples, refer to [Query signals](../alerts/query-signals.md).
 
@@ -49,7 +49,7 @@ Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore
 
 ## Query the append-only stream [query-rule-events]
 
-The `.rule-events` data stream is append-only. The rule writes a new document on every matching row of every run. Existing documents are never updated. To view the full history of an episode, query `.rule-events` filtered by `episode.id`:
+The `.rule-events` data stream is append-only. {{kib}} writes a new document on every matching row of every run. Existing documents are never updated. To view the full history of an episode, query `.rule-events` filtered by `episode.id`:
 
 ```esql
 FROM .rule-events
@@ -63,6 +63,6 @@ For signal-focused query examples, refer to [Query signals](../alerts/query-sign
 
 - [{{esql}} query](configure-rule-query.md): How the base query and alert condition shape what's written to `.rule-events`.
 - [Rules](../rules.md): What rules do and how they fit into the broader {{alerting-v2-system}}.
-- [Rule mode](configure-rule-mode.md): How Signal mode and Alert mode decide what each rule event means.
+- [Rule mode](configure-rule-mode.md): How Signal mode and Alert mode determine whether {{kib}} records each rule event as a signal or tracks it as an alert episode.
 - [Query signals](../alerts/query-signals.md): Query Signal mode output in Discover and correlate signals with Alert mode rules.
 - [View and manage alerts](../alerts/view-and-manage-alerts.md): Where lifecycle-tracked episodes appear in the UI, with triage actions and episode details.

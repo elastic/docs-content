@@ -8,9 +8,9 @@ products:
 description: "Query Signal mode rule events with ES|QL in Discover. Filter by rule, build dashboards from detection history, and correlate signals with Alert mode rules in the experimental alerting system."
 ---
 
-# Query {{alerting-v2-system}} signals in Discover [query-signals-discover]
+# Query {{alerting-v2-system}} signals in Discover [query-signals-discover] 
 
-When a rule runs in Signal mode, it writes each match to `.rule-events` as a rule event with `type: signal`. That event is the signal. Signals don't open alert episodes or trigger notifications. Use them to build detection history, investigate incidents in Discover, create dashboards, or feed follow-on Alert mode rules that correlate activity across sources.
+When a Signal mode rule runs on its schedule, {{kib}} writes each match to `.rule-events` as a rule event with `type: signal`. That event is the signal. Signals don't open alert episodes and they skip action policy evaluation and workflow invocation. Use them to build detection history, investigate incidents in Discover, create dashboards, or feed follow-on Alert mode rules that correlate activity across sources.
 
 This page shows how to query signals, which fields matter most, and how to turn signal history into Discover sessions and dashboards.
 
@@ -79,7 +79,7 @@ FROM .rule-events
 | WHERE signal_count > 10
 ```
 
-When this Alert mode rule finds a match, the system opens an alert episode that action policies can route to a workflow. The underlying Signal mode rule keeps recording without paging anyone on every individual call.
+When this Alert mode rule finds a match, {{kib}} tracks the event as an alert episode. An action policy can evaluate the episode and invoke a workflow. The underlying Signal mode rule keeps recording without paging anyone on every individual call.
 
 :::{tip}
 You can also correlate signals from more than one Signal mode rule in a single Alert mode query, for example combining administrator API call signals with error-rate signals, so neither source pages on its own.

@@ -10,16 +10,16 @@ description: "How rule mode determines whether matching rows are written as sign
 
 # Rule mode in the {{alerting-v2-system}} [rule-mode]
 
-Rule mode is a required setting for rules in the {{alerting-v2-system}}. It determines what each [rule event](rule-event-field-reference.md) means when the detection query finds a match. Rule mode is set by the rule creation method. Some [creation paths](create-a-rule.md) only support one mode.
+Rule mode is a required setting for rules in the {{alerting-v2-system}}. It determines whether {{kib}} records each [rule event](rule-event-field-reference.md) as a signal or tracks it as an alert episode. Rule mode is set by the rule creation method. Some [creation paths](create-a-rule.md) only support one mode.
 
 | Mode | `kind` value | Behavior |
 | --- | --- | --- |
-| Signal | `signal` | Writes a rule event with `type: signal` for each matching row. No alert episodes, no notifications. |
-| Alert | `alert` | Writes a rule event with `type: alert` and `episode.*` fields for each matching row. Events that share an `episode.id` form an alert episode. Episodes are tracked through lifecycle states, appear on the **Alerts** page, and can be routed to notifications by action policies. |
+| Signal | `signal` | {{kib}} writes a rule event with `type: signal` for each matching row. No alert episodes, no notifications. |
+| Alert | `alert` | {{kib}} writes a rule event with `type: alert` and `episode.*` fields for each matching row. Events that share an `episode.id` form an alert episode. Episodes are tracked through lifecycle states, appear on the **Alerts** page, and can be routed to notifications by action policies. |
 
 Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view and triage alert episodes.
 
-If you're editing YAML directly, rule mode maps to the `kind` field on the rule. That `kind` field isn't the same as the `type` field on rule events: `kind` configures the rule, and `type` records what the run wrote.
+If you're editing YAML directly, rule mode maps to the `kind` field on the rule. That `kind` field isn't the same as the `type` field on rule events: `kind` configures the rule, and `type` records what {{kib}} wrote for that run.
 
 ## When to use each rule mode [rule-mode-when-to-use]
 
@@ -41,11 +41,11 @@ Alert mode is the right fit when:
 
 Alert mode is **not** the right fit when:
 
-* The rule's query is still being tuned and generating alerts would create noise for on-call teams. Use Signal mode to validate first, then switch.
+* The rule's query is still being tuned and generating alert episodes would create noise for on-call teams. Use Signal mode to validate first, then switch.
 
 ## Examples
 
-### Build detection history before enabling alerts
+### Build detection history before enabling alert episodes
 
 You're writing a new detection query and want to verify it produces the results you expect before anyone gets paged. Create the rule in Signal mode so matches are recorded in `.rule-events` and you can inspect them in Discover without opening any alert episodes or triggering notifications. Once the matches look correct, edit the rule and switch it to Alert mode.
 

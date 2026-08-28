@@ -10,7 +10,7 @@ description: "Alert episodes in the experimental alerting system track a problem
 
 # Alerts in the {{alerting-v2-system-cap}} [alerts]
 
-In the {{alerting-v2-system}}, the system tracks alerts as **alert episodes**, which represent the full lifecycle of a problem (from first detection through recovery) rather than a single point-in-time event. An episode isn't a separate document. {{kib}} writes a [rule event](rules/rule-event-field-reference.md) for each matching row, and the episode is the grouping of those events that share an `episode.id`.
+In the {{alerting-v2-system}}, {{kib}} tracks each problem as an **alert episode**, which represents the full lifecycle of a condition (from first detection through recovery) rather than a single point-in-time event. An episode isn't a separate document. {{kib}} writes a [rule event](rules/rule-event-field-reference.md) for each matching row, and the episode is the grouping of those events that share an `episode.id`.
 
 This page explains the core concepts you need to work with the {{alerting-v2-system}}: how alert episodes move through lifecycle states, and how series group episodes over time for the same monitored subject.
 
@@ -24,18 +24,18 @@ inactive → pending → active → recovering → inactive
 
 | State | What it means |
 | --- | --- |
-| Inactive | Problem fully resolved. You get a recovery notification. |
-| Pending | Errors detected, but the system is waiting to confirm it's a real problem before fully alerting. |
-| Active | Problem confirmed and ongoing. This is when you get notified. |
+| Inactive | Problem fully resolved. An action policy can invoke a workflow to send a recovery notification. |
+| Pending | Errors detected, but the system is waiting to confirm it's a real problem before the episode becomes active. |
+| Active | Problem confirmed and ongoing. An action policy can evaluate the episode and invoke a workflow. |
 | Recovering | Errors have stopped, but the system is waiting to confirm it's truly resolved. |
 
 :::{dropdown} Example: A checkout-latency episode moving through all four states
-A checkout-latency rule runs every 5 minutes. It has an activation threshold of 2 consecutive breaches and a recovery threshold of 2 consecutive clears. The episode opens only after consecutive breaches meet the activation threshold and closes only after consecutive clears meet the recovery threshold. The system waits for confirmation in both directions.
+A checkout-latency rule runs every 5 minutes. It has an activation threshold of 2 consecutive breaches and a recovery threshold of 2 consecutive clears. The episode opens only after consecutive breaches meet the activation threshold and closes only after consecutive clears meet the recovery threshold. The system waits for confirmation in both directions. An action policy matches this rule's episodes and invokes a workflow that notifies on-call when the episode becomes `active` and when it recovers.
 
 1. **14:00**: Routine check. p95 is within budget. No episode exists yet. The series is `inactive`.
-2. **14:05**: p95 jumps to 3.1s. The rule detects the first breach, creates the episode in `pending`, and starts counting consecutive breaches.
-3. **14:10**: p95 is still elevated. The second consecutive breach meets the activation threshold. The episode moves from `pending` to `active`. The system pages the engineer.
-4. **14:10–14:45**: Every evaluation finds high latency. The episode stays `active`. The rule doesn't create new episodes. One episode tracks one problem, no matter how many times the rule evaluates while the condition holds.
+2. **14:05**: p95 jumps to 3.1s. The rule detects the first breach. {{kib}} writes a rule event, opens the episode in `pending`, and starts counting consecutive breaches.
+3. **14:10**: p95 is still elevated. The second consecutive breach meets the activation threshold. The episode moves from `pending` to `active`. The action policy invokes the workflow, which pages the engineer.
+4. **14:10–14:45**: Every evaluation finds high latency. The episode stays `active`. {{kib}} doesn't open new episodes. One episode tracks one problem, no matter how many times the rule evaluates while the condition holds.
 5. **14:50**: p95 drops back under 2s. The first clean check moves the episode from `active` to `recovering`. The system starts counting consecutive clears.
 6. **14:55**: A second consecutive clear meets the recovery threshold. The episode moves from `recovering` to `inactive`. The engineer receives a recovery notification.
 

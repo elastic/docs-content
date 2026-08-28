@@ -19,13 +19,13 @@ In the generally available {{kib}} alerting system, the term **alert** refers to
 
 ## The core idea [core-idea]
 
-The {{alerting-v2-system}} starts with a rule evaluating your data. When the rule detects a match, {{kib}} writes a rule event. The rule's mode decides what that event means. In Alert mode, events that share an episode identifier form a tracked alert episode. In Signal mode, the event is a signal for later analysis.
+The {{alerting-v2-system}} starts with a rule evaluating your data on a schedule. When the rule detects a match, {{kib}} writes a rule event. The rule's configuration determines whether those events become a tracked alert episode or are recorded as signals for later analysis.
 
 :::{image} /explore-analyze/images/basic-system-flow.png
 :alt: Flowchart showing that after a rule detects a match, it either creates an alert episode or records a signal
 :::
 
-Because acting and recording are independent, you can switch a rule between these modes as your needs change. For example, you can test a rule in Signal mode before switching it to Alert mode and setting up notifications. Notifications are handled separately by action policies, so you can update where notifications are sent for multiple rules without editing each rule individually.
+Because acting and recording are independent, you can change that configuration as your needs change. For example, you can record matches as signals first, then switch to alert episodes when you're ready to notify. Notifications are handled separately by action policies, so you can update where notifications are sent for multiple rules without editing each rule individually.
 
 ## The building blocks
 
@@ -33,19 +33,19 @@ The {{alerting-v2-system}} is built around five objects: rules, alert episodes, 
 
 ### Rules
 
-A rule defines what to watch for in your data and how often to check. It runs in one of two modes: Alert mode or Signal mode. On each run, the rule writes matches as [rule events](experimental-alerting-system/rules/rule-event-field-reference.md). The rule's mode decides how to handle those events. In Alert mode, the events form an alert episode. In Signal mode, each event is a signal.
+A rule defines what to watch for in your data and how often to check. On each run, {{kib}} writes matches as [rule events](experimental-alerting-system/rules/rule-event-field-reference.md). The rule's configuration determines whether those events become a tracked alert episode or are recorded as signals.
 
 Refer to [Rules](experimental-alerting-system/rules.md) to learn more.
 
 ### Alert episodes
 
-In Alert mode, rule events that share an episode identifier form one alert episode per problem. The episode moves through states (pending, active, recovering, inactive), giving you one lifecycle to triage rather than a separate item per rule check. Alert episodes are passed to action policies for evaluation.
+An alert episode tracks one problem and moves through states (pending, active, recovering, inactive), giving you one lifecycle to triage rather than a separate item per rule check. Alert episodes are passed to action policies for evaluation.
 
 Refer to [Alert episodes](experimental-alerting-system/alerts.md) to learn more.
 
 ### Signals
 
-In Signal mode, each rule event is a signal, which skips action policy evaluation entirely. As signals accumulate, you can query them in Discover, build dashboards from them, or feed them into an Alert mode rule that correlates activity across sources, feeding back into the start of the flow.
+A signal is a rule event that skips action policy evaluation entirely. As signals accumulate, you can query them in Discover, build dashboards from them, or feed them into another rule that correlates activity across sources, feeding back into the start of the flow.
 
 Refer to [Query signals](experimental-alerting-system/alerts/query-signals.md) to learn more.
 
@@ -63,13 +63,15 @@ Refer to [Connect workflows](experimental-alerting-system/workflows-alerting.md)
 
 ## How the pieces fit together [how-pieces-fit-together]
 
-Together, these building blocks form two main paths, which diverge based on a rule's mode:
+Together, these building blocks form two main paths, which diverge based on the rule's configuration:
 
-1. A rule evaluates your data and detects a match. {{kib}} writes a rule event.
-2. Depending on the rule's mode, that event is handled as an alert or as a signal:
+1. A rule evaluates your data on a schedule and detects a match.
+2. {{kib}} writes the match as a rule event.
+3. Based on the rule's configuration, {{kib}} either tracks the event as an alert episode or records it as a signal:
 
-   - **Alert mode**: The event belongs to an alert episode. An action policy evaluates the episode and decides whether and when to invoke a workflow.
-   - **Signal mode**: The event is a signal, which skips action policy evaluation and workflow invocation entirely.
+   * **Alert episode** - An action policy evaluates the episode and decides whether and when to invoke a workflow. The workflow sends the notification or runs the automation.
+
+   * **Signal** - The event is recorded for later analysis and skips action policy evaluation and workflow invocation. You can query signals, build dashboards from them, or feed them into another rule.
 
 :::{image} /explore-analyze/images/detailed-system-flow.png
 :alt: Flowchart showing that after a rule finds a match, it either acts by creating an alert episode that an action policy evaluates and routes to trigger notifications or actions or records a signal that doesn't trigger notifications or actions
