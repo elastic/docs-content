@@ -283,7 +283,7 @@ POST image-index/_search
 This example will:
 
 * Search using approximate kNN for the top 100 candidates.
-* Rescore the top 20 candidates (`oversample * k`) per shard using the original, non quantized vectors.
+* Rescore the top 20 candidates (`oversample * k`) per shard using the original, non-quantized vectors.
 * Return the top 10 (`k`) rescored candidates.
 * Merge the rescored candidates from all shards, and return the top 10 (`k`) results.
 
