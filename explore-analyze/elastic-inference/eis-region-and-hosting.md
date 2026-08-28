@@ -29,7 +29,7 @@ This page lists the {{aws}}, Azure, and {{gcp}} regions where Elastic {{infer-ca
 * `us-east4` (N. Virginia, US)
 * `us-east5` (Columbus, US)
 
-All {{infer}} requests sent through EIS are routed to the nearest region, regardless of where your {{es}} deployment or {{serverless-short}} project is hosted.
+All {{infer}} requests sent through EIS are routed to the nearest region, regardless of where your {{es}} deployment or {{serverless-short}} project is hosted. For deployments and projects in an EU region, we will route to the nearest EIS presence in an EU region.
 
 {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` If you configure [region preferences](#inference-region-preferences), EIS routes only within your allowed geographies or regions.
 
