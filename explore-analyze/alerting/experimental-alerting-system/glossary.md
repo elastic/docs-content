@@ -35,13 +35,13 @@ These terms appear throughout the {{alerting-v2-system}} docs. If a term is uncl
 :   The definition of what to watch for in your data, how often to check, and what counts as a match. A rule runs on a schedule. {{kib}} writes [rule events](rules/rule-event-field-reference.md) when the query finds a match. The rule's configuration determines whether those events are grouped into alert episodes. To learn more, refer to [Rules](rules.md).
 
 **Rule event**
-:   A record {{kib}} writes to `.rule-events` when a rule finds a match: one event per matching row, per run. {{kib}} never overwrites these events. Events that are part of an alert episode have `type: alert` and `episode.*` fields. The UI and the `type` field call other events **signals** (`type: signal`). To learn more, refer to [Rule events](rules/rule-event-field-reference.md).
+:   A record {{kib}} writes to `.rule-events` when a rule finds a match: one event per matching row, per run. {{kib}} never overwrites these events. Events that are part of an alert episode have `type: alert` and `episode.*` fields. Events that aren't part of an episode have `type: signal` and stay in `.rule-events`. To learn more, refer to [Rule events](rules/rule-event-field-reference.md).
 
 **Severity**
 :   A label attached to alert episodes to indicate urgency. Severity is available as a filter in action policies so critical episodes can be routed differently from low-priority ones. To learn more, refer to [Configure rule severity](rules/configure-rule-severity.md).
 
 **Signal**
-:   A [rule event](rules/rule-event-field-reference.md) with `type: signal`. These events stay in `.rule-events` and are queryable in Discover. Action policies evaluate alert episodes only, so a signal never reaches a policy or a workflow. To learn more, refer to [Query signals](alerts/query-signals.md) and [Rule mode](rules/configure-rule-mode.md).
+:   A [rule event](rules/rule-event-field-reference.md) with `type: signal`. These events stay in `.rule-events` and are queryable in Discover. Action policies evaluate alert episodes only, so these events never reach a policy or a workflow. To learn more, refer to [Query signals](alerts/query-signals.md) and [Rule mode](rules/configure-rule-mode.md).
 
 **Threshold**
 :   The condition a rule uses to decide when something is worth alerting on, including how many times the condition must be met before an alert episode opens or closes. To learn more, refer to [Alert delay](rules/configure-rule-alert-delay.md) and [Recovery condition](rules/configure-rule-recovery.md).

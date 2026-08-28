@@ -30,7 +30,7 @@ Configure a runbook when:
 
 Skip tags and runbooks when:
 
-* The rule writes signals instead of grouping matches into an episode. Tags and runbooks have no effect on those events.
+* The rule records matches without grouping them into an episode.
 * The rule is experimental or not yet part of a monitored production system.
 
 ## Examples

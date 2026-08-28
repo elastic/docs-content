@@ -24,12 +24,12 @@ Use these pages to create a rule, change its settings, or review what it has det
 
 - [Create a rule](rules/create-a-rule.md): Compare creation paths and choose the one that fits your workflow.
 - [Configure a rule](rules/configure-a-rule.md): Set the schedule, grouping, alert delay, recovery condition, and no-data behavior.
-- [Rule mode](rules/configure-rule-mode.md): Set whether matches are grouped into an alert episode or left as signals.
+- [Rule mode](rules/configure-rule-mode.md): Set whether matches are grouped into an alert episode or remain available for later analysis.
 - [View and manage rules](rules/view-manage-rules.md): Enable, disable, clone, delete, and bulk-manage rules from the **Rules** page.
 - [Review rule execution history](rules/review-rule-execution-history.md): Monitor rule execution outcomes across all rules in a space.
 - [{{esql}} query patterns](rules/esql-query-patterns.md): Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.
-- [Rule events](rules/rule-event-field-reference.md): Understand the documents {{kib}} writes to `.rule-events`, and how they relate to signals and alert episodes.
-- [Query signals](alerts/query-signals.md): Query signals in Discover and use them as input to a rule that opens an episode.
+- [Rule events](rules/rule-event-field-reference.md): Understand the documents {{kib}} writes to `.rule-events`, and how `type` relates to episodes.
+- [Query signals](alerts/query-signals.md): Query events with `type: signal` in Discover and use them as input to a rule that opens an episode.
 
 :::{important} - How to use the {{alerting-v2-system}} documentation
 Because the {{alerting-v2-system}} is still evolving, its UI can change before general availability. Rather than pointing to an exact button or menu, the documentation focuses on the underlying concepts and behavior. If something doesn't match what you see in the {{kib}} UI, look for the closest equivalent instead. The concepts and behaviors described in the documentation still apply.

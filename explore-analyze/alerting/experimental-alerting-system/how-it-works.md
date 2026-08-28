@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: A detailed walkthrough of how a rule's configuration determines whether matches are grouped into an alert episode or left as signals, and how those paths drive action policies and notifications.
+description: A detailed walkthrough of how a rule's configuration determines whether matches are grouped into an alert episode or remain available for later analysis, and how those paths drive action policies and notifications.
 ---
 
 # How the {{alerting-v2-system}} works [how-it-works]
@@ -43,9 +43,9 @@ An SRE team wants to know when checkout service latency degrades, and notify the
 
 The engineer investigates, fixes a slow query, and the alert episode recovers automatically.
 
-## Rule writes signals for later analysis [how-signal-mode-works]
+## Rule writes events for later analysis [how-signal-mode-works]
 
-{{kib}} writes a rule event (`type: signal`) to `.rule-events` for each match. That event is the signal. Action policies evaluate alert episodes only, so the event never reaches a policy or a workflow. Signals accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to a follow-on rule that groups matches into an episode. In the UI, set this configuration with [Rule mode](rules/configure-rule-mode.md) (**Signal**). For query examples, dashboards, and correlation patterns, refer to [Query signals](alerts/query-signals.md).
+{{kib}} writes a rule event (`type: signal`) to `.rule-events` for each match. Action policies evaluate alert episodes only, so the event never reaches a policy or a workflow. Those events accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to a follow-on rule that groups matches into an episode. In the UI, set this configuration with [Rule mode](rules/configure-rule-mode.md). For query examples, dashboards, and correlation patterns, refer to [Query signals](alerts/query-signals.md).
 
 | Step | Actor | Action |
 |------|-------|--------|
@@ -55,18 +55,18 @@ The engineer investigates, fixes a slow query, and the alert episode recovers au
 
 ### Example: Tracking administrator API calls
 
-A security team wants to track calls to a rarely-used administrator API endpoint, but individual calls aren't suspicious enough to page anyone. To start collecting data without generating noise, the team creates a rule that records signals:
+A security team wants to track calls to a rarely-used administrator API endpoint, but individual calls aren't suspicious enough to page anyone. To start collecting data without generating noise, the team creates a rule that records rule events:
 
 1. The rule runs an {{esql}} query on a schedule, checking for calls to the administrator API endpoint.
 2. Each time the query returns results, {{kib}} writes a rule event (`type: signal`) to `.rule-events`.
-3. The signals accumulate silently and are immediately queryable in Discover.
+3. The events accumulate silently and are immediately queryable in Discover.
 
-After a few weeks, the accumulated signals become useful in two ways. The team can write a follow-on rule that groups matches into an episode and combines admin API calls with other signals (such as a spike in error rates) to catch correlated activity that neither signal would surface on its own. When an outage happens, the team can query the signal history as evidence directly in Discover, without reconstructing the original query or worrying that the source data has become stale.
+After a few weeks, the accumulated events become useful in two ways. The team can write a follow-on rule that groups matches into an episode and combines admin API calls with other events (such as a spike in error rates) to catch correlated activity that neither source would surface on its own. When an outage happens, the team can query that history as evidence directly in Discover, without reconstructing the original query or worrying that the source data has become stale.
 
 ## Related pages
 
 - [Get started](get-started.md): Enable the {{alerting-v2-system}} and create your first rule.
 - [Rules](rules.md): What rules do, what they don't control, and how to choose a creation path.
-- [Rule events](rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how those events relate to signals and alert episodes.
-- [Query signals](alerts/query-signals.md): Query signals in Discover and use them as input to a rule that opens an episode.
+- [Rule events](rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how those events relate to alert episodes.
+- [Query signals](alerts/query-signals.md): Query events with `type: signal` in Discover and use them as input to a rule that opens an episode.
 - [Notifications and actions](notifications-actions.md): Set up workflows and action policies to notify your team when an alert episode matches.

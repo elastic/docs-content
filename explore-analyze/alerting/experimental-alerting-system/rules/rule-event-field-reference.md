@@ -5,14 +5,14 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Rule events are the append-only documents Kibana writes to .rule-events for every matching row. Use them to replay alert episodes, investigate signals, and build dashboards in the experimental alerting system."
+description: "Rule events are the append-only documents Kibana writes to .rule-events for every matching row. Use them to replay alert episodes, investigate events that aren't part of an episode, and build dashboards in the experimental alerting system."
 ---
 
 # Rule events in the {{alerting-v2-system}} [rule-reference]
 
-When a rule finds a match, {{kib}} writes a **rule event** to `.rule-events`. Each matching row in a run becomes its own event, and {{kib}} never overwrites those events. The rule's configuration determines whether that event is grouped into an alert episode. The UI and the `type` field call events that aren't part of an episode **signals**.
+When a rule finds a match, {{kib}} writes a **rule event** to `.rule-events`. Each matching row in a run becomes its own event, and {{kib}} never overwrites those events. The rule's configuration determines whether that event is grouped into an alert episode. Events that aren't part of an episode have `type: signal`.
 
-Use this page to query `.rule-events` with confidence: replay an episode's history, investigate signals, or build dashboards from rule output. For the stored schema, refer to [Rule event data model](../alerts/rule-event-data-model.md). For the complete field list, refer to [Field reference](../alerts/field-reference.md#rule-events-field-schema).
+Use this page to query `.rule-events` with confidence: replay an episode's history, investigate events with `type: signal`, or build dashboards from rule output. For the stored schema, refer to [Rule event data model](../alerts/rule-event-data-model.md). For the complete field list, refer to [Field reference](../alerts/field-reference.md#rule-events-field-schema).
 
 :::{important}
 The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle through [index lifecycle management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md). Older backing indices are deleted automatically when the retention window expires. Do not change mappings or index settings for these streams yourself.
@@ -26,14 +26,14 @@ Most events come from a matching row (`status: breached`). When {{kib}} tracks a
 
 Each event has a `type` of `signal` or `alert`, matching the `kind` you set when you created the rule. For how `kind` is set, refer to [Rule mode](configure-rule-mode.md).
 
-## How `type` relates to signals and episodes [rule-events-by-mode]
+## How `type` relates to episodes [rule-events-by-mode]
 
 | `type` | What {{kib}} writes | What you work with |
 | --- | --- | --- |
-| `signal` | A rule event with no `episode.*` fields. | The signal, queryable in Discover. |
+| `signal` | A rule event with no `episode.*` fields. | Queryable in Discover. |
 | `alert` | A rule event with `episode.*` fields. | An alert episode: the grouping of events that share an `episode.id`, visible on the **Alerts** page. |
 
-### Events that stay as signals
+### Events with `type: signal`
 
 {{kib}} writes a rule event with `type: signal`. Action policies evaluate alert episodes only, so these events never reach the **Alerts** page, a policy, or a workflow. They accumulate in `.rule-events` and are queryable in Discover.
 
@@ -57,12 +57,12 @@ FROM .rule-events
 | SORT @timestamp ASC
 ```
 
-For signal-focused query examples, refer to [Query signals](../alerts/query-signals.md). For lifecycle replay and incident tracing, refer to [Query alert history in Discover](../alerts/query-alerts-and-signals-in-discover.md).
+For query examples for events with `type: signal`, refer to [Query signals](../alerts/query-signals.md). For lifecycle replay and incident tracing, refer to [Query alert history in Discover](../alerts/query-alerts-and-signals-in-discover.md).
 
 ## Related pages
 
 - [{{esql}} query](configure-rule-query.md): How the base query and alert condition shape what's written to `.rule-events`.
 - [Rules](../rules.md): What rules do and how they fit into the broader {{alerting-v2-system}}.
-- [Rule mode](configure-rule-mode.md): How Rule mode determines whether {{kib}} groups each rule event into an alert episode or leaves it as a signal.
-- [Query signals](../alerts/query-signals.md): Query signals in Discover and use them as input to a rule that opens an episode.
+- [Rule mode](configure-rule-mode.md): How Rule mode determines whether {{kib}} groups each rule event into an alert episode or keeps it available for later analysis.
+- [Query signals](../alerts/query-signals.md): Query events with `type: signal` in Discover and use them as input to a rule that opens an episode.
 - [View and manage alerts](../alerts/view-and-manage-alerts.md): Where lifecycle-tracked episodes appear in the UI, with triage actions and episode details.

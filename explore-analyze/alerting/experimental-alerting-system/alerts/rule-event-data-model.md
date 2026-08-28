@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "The experimental alerting system stores signals and events that belong to an alert episode in .rule-events. Episode lifecycle fields apply only to type alert. Triage actions go to .alert-actions." 
+description: "The experimental alerting system stores rule events in .rule-events. Episode lifecycle fields apply only to type alert. Triage actions go to .alert-actions." 
 ---
 
 # Rule event data model in the {{alerting-v2-system}} [rule-event-data-model]
@@ -18,7 +18,7 @@ Every time a rule finds a match, {{kib}} writes a rule event to `.rule-events`. 
 
 | `type` | What the event represents |
 | --- | --- |
-| `signal` | A **signal**. Queryable in Discover for later analysis. |
+| `signal` | Queryable in Discover for later analysis. No `episode.*` fields. |
 | `alert` | One evaluation in an alert episode. The episode is the grouping of events that share an `episode.id`. |
 
 :::{note}
@@ -27,21 +27,21 @@ Action policies only evaluate alert episodes, so events with `type: signal` neve
 
 ## Shared index and schema [shared-index-and-schema]
 
-Signals and events that belong to an alert episode share `.rule-events` and many of the same fields, including `data`, the payload from your rule's query. Filter with `WHERE type == "signal"` or `WHERE type == "alert"`.
+Events with `type: signal` and events that belong to an alert episode share `.rule-events` and many of the same fields, including `data`, the payload from your rule's query. Filter with `WHERE type == "signal"` or `WHERE type == "alert"`.
 
-Only `type: alert` events carry the `episode.*` fields that track lifecycle state (`episode.id`, `episode.status`, `episode.status_count`). Query those events by `episode.id` to replay an episode. Signal events don't include episode fields.
+Only `type: alert` events carry the `episode.*` fields that track lifecycle state (`episode.id`, `episode.status`, `episode.status_count`). Query those events by `episode.id` to replay an episode. Events with `type: signal` don't include episode fields.
 
-For the full field list, including field types and which fields apply to signals versus events that belong to an alert episode, refer to [Field reference](field-reference.md#rule-events-field-schema).
+For the full field list, including field types and which fields apply to events with `type: signal` versus events that belong to an alert episode, refer to [Field reference](field-reference.md#rule-events-field-schema).
 
 ## How {{kib}} records evaluation and triage data [how-kib-records-evaluation-triage-data]
 
 {{kib}} writes rule output to the following append-only data streams, both managed through [index lifecycle management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md) and queryable with {{esql}} in Discover:
 
-- **`.rule-events`** - {{kib}} writes one rule event per matching row, per run, and never overwrites them. When {{kib}} tracks an alert episode, it can also write `recovered` and `no_data` events. This stream holds signals (events with `type: signal`) and events that belong to an alert episode (`type: alert`).
+- **`.rule-events`** - {{kib}} writes one rule event per matching row, per run, and never overwrites them. When {{kib}} tracks an alert episode, it can also write `recovered` and `no_data` events. This stream holds events with `type: signal` and events that belong to an alert episode (`type: alert`).
 - **`.alert-actions`** - Records every triage action taken on an episode (for example, acknowledge, snooze, and resolve). Only alert episodes produce documents here.
 
 ## Related pages
 
-- [Rule events](../rules/rule-event-field-reference.md): What a rule event is and how it connects to signals and alert episodes.
-- [Query signals](query-signals.md): Query examples against signals.
+- [Rule events](../rules/rule-event-field-reference.md): What a rule event is and how it connects to alert episodes.
+- [Query signals](query-signals.md): Query examples for events with `type: signal`.
 - [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Episode lifecycle and triage queries.

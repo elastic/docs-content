@@ -19,10 +19,10 @@ Configure alert delay when:
 * The metric being monitored fluctuates and a single breach doesn't reflect a real state change. Examples include CPU usage that briefly spikes during process startup or a connection pool that crosses the threshold on alternating evaluations.
 * The cost or urgency of a notification is high enough that you need confidence the condition is sustained before alerting on it.
 
-Leave alert delay set to Immediate when:
+Leave alert delay set to **Immediate** when:
 
 * Any single breach warrants immediate attention and you cannot tolerate the added latency of waiting for consecutive evaluations.
-* The rule writes signals instead of grouping matches into an episode. Alert delay has no effect on those events.
+* The rule records matches without grouping them into an episode.
 
 ## Alert delay modes
 
