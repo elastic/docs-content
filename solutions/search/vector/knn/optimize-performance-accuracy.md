@@ -380,7 +380,7 @@ POST /my-index/_search
 ```
 
 1. The number of results to return
-2. The `knn` query to perform the initial search, this is executed per-shard
+2. The `knn` query to perform the initial search, this is run per-shard
 3. The number of candidates to use for the initial approximate `knn` search. This will search using the quantized vectors and return the top 20 candidates per shard to then be scored
 4. The script to score the results. Script score will interact directly with the originally provided float32 vector.
 
