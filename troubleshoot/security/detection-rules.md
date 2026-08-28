@@ -246,7 +246,7 @@ For example, say an event occurred at 10:00 but wasn’t ingested into {{es}} un
 :applies_to: {stack: ga 9.4+, serverless: ga}
 
 
-If detection rules are not creating expected alerts or appear to be missing data, the **Include data stream namespaces in rule execution** [advanced setting](../../solutions/security/get-started/configure-advanced-settings.md#included-data-stream-namespaces-rule-execution) might be limiting which documents are searched. When configured, only events with a matching `data_stream.namespace` value are queried by all rules in the {{kib}} space.
+If detection rules are not creating expected alerts or appear to be missing data, the `securitySolution:includedDataStreamNamespacesForRuleExecution` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings) might be limiting which documents are searched. When configured, only events with a matching `data_stream.namespace` value are queried by all rules in the {{kib}} space.
 
 To verify:
 

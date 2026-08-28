@@ -17,7 +17,7 @@ products:
 
 If indicator data is not appearing in the Indicators table after you installed a threat intelligence integration:
 
-* Verify that the index storing indicator documents is included in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices) (`securitySolution:defaultIndex`). The index storing indicator documents will differ based on the way you’re collecting indicator data:
+* Verify that the index storing indicator documents is included in the default {{elastic-sec}} indices ([`securitySolution:defaultIndex`](kibana://reference/advanced-settings.md#kibana-siem-settings)). The index storing indicator documents will differ based on the way you’re collecting indicator data:
 
     * **{{agent}} integrations** - `logs_ti*`
     * **{{filebeat}} integrations** - `filebeat-*`
