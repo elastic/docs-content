@@ -79,7 +79,7 @@ Without these privileges, the integrations badge may not appear or may not refle
 :::
 
 ::::{tip}
-You can hide the **integrations** badge in the Rules tables by turning off the `securitySolution:showRelatedIntegrations` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#show-related-integrations).
+You can hide the **integrations** badge in the Rules tables by turning off the `securitySolution:showRelatedIntegrations` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 ::::
 
 
