@@ -117,7 +117,7 @@ The approximate kNN search API supports `byte` (int8) value vectors alongside `f
     ```
 
 
-*Note*: In addition to the standard byte array, one can also provide a hex-encoded string value for the `query_vector` param. As an example, the search request above can also be expressed as follows, which would yield the same results
+*Note*: In addition to the standard byte array, you can also provide a hex-encoded string value for the `query_vector` parameter. As an example, the preceding search request can also be expressed as follows, which would yield the same results:
 
 ```console
 POST byte-image-index/_search
