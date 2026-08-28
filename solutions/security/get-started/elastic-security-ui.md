@@ -221,7 +221,7 @@ serverless: ga
 
 :::{admonition} Requirements
 :applies_to: {stack: removed 9.3, serverless: removed}
-To access this section, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
+To access this section, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 :::
 
 Expand this section to access the following pages:
