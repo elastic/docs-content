@@ -88,7 +88,7 @@ POST image-index/_search
 
 This search finds the global top `k = 5` vector matches, combines them with the matches from the `match` query, and finally returns the 10 top-scoring results. The `knn` and `query` matches are combined through a disjunction, as if you took a boolean *or* between them. The top `k` vector results represent the global nearest neighbors across all index shards.
 
-The score of each result is the sum of the `knn` and `query` scores. You can specify a `boost` value to give a weight to each score in the sum. In the preceding example, the scores will be calculated as
+The score of each result is the sum of the `knn` and `query` scores. You can specify a `boost` value to give a weight to each score in the sum. In the preceding example, the scores will be calculated as follows:
 
 ```
 score = 0.9 * match_score + 0.1 * knn_score
