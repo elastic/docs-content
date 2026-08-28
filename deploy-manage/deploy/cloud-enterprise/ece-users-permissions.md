@@ -27,7 +27,7 @@ uid=1000(elastic) gid=1000(elastic) groups=1000(elastic),
 In this example, the user `elastic` with a UID and GID of 1000 belongs to both the `sudo` and the `docker` groups.
 
 :::{admonition} ECE service containers run as root
-While the ECE installer user must be non-root (UID ≥ 1000), the [ECE service containers](ece-architecture.md#ece-service-containers) run as `root` (UID 0) internally. This is an architectural requirement. Elastic Stack containers run as UID 1000 (non-root) since {{es}} 8.0.
+While the ECE installer user must be non-root (UID ≥ 1000), the [ECE service containers](ece-architecture.md#ece-service-containers) run as `root` (UID 0) internally. This is an architectural requirement. Elastic Stack containers run as UID 1000 (non-root).
 :::
 
 ::::{note} 
