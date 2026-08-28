@@ -68,7 +68,7 @@ For each entity type (hosts, users, and services):
 ::::{applies-switch}
 
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
-The entity store is automatically enabled when you [turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md#_turn_on_the_latest_risk_engine).
+The entity store is enabled when you [turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md#_turn_on_the_latest_risk_engine).
 
 :::{note}
 * If you've upgraded from a previous version, and the entity store was installed in any space, it's automatically migrated after the upgrade. Your existing index data is retained.
