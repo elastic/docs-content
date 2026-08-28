@@ -30,7 +30,7 @@ The following table shows how each {{observability}} app behaves with {{cps-init
 
 ## {{cps-cap}} scope selector in {{observability}} apps [obs-cps-scope-selector]
 
-The **{{cps-init}} scope** selector ({icon}`cross_project_search`) in the project header lets you search **This project** or **All projects**. It is available in platform apps like Discover, Dashboards, and Lens, as well as in APM and Infrastructure apps.
+The **{{cps-init}} [scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana)** ({icon}`cross_project_search`) in the project header lets you control which linked projects your searches include. It is available in platform apps like Discover, Dashboards, and Lens, as well as in APM and Infrastructure apps.
 
 For other {{observability}}-specific apps, the scope selector is not available. This means:
 
