@@ -44,7 +44,7 @@ Grants access to:
 - View tools
 - View skills {applies_to}`stack: ga 9.4+`
 - Access conversations
-- Manage OAuth MCP clients for the [{{agent-builder}} MCP server](mcp-server.md) {applies_to}`serverless: preview`
+- Manage OAuth MCP clients for the [{{agent-builder}} MCP server](mcp-server.md) {applies_to}`serverless: ga`
 
 Instead of `All`, you can pair `Read` with individual sub-features for more granular control over what users can manage:
 
@@ -161,7 +161,7 @@ For granular access, pair `feature_agentBuilder.read` with only the sub-feature 
 :::
 
 :::{admonition} Permissions for MCP clients
-:applies_to: {"serverless": "preview"}
+:applies_to: {"serverless": "ga"}
 
 Roles also determine what an MCP client can do when it connects to the {{agent-builder}} MCP server through OAuth. The MCP client inherits the permissions of the user who authorizes the connection. To learn more, refer to [OAuth for MCP clients](/deploy-manage/app-connections/oauth-clients.md).
 :::
