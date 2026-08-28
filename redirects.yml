@@ -1138,4 +1138,6 @@ redirects:
         anchors:
           'attacks-next-steps': 'manage-saved-discoveries'
   'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'
-  
+
+  # Related to https://github.com/elastic/docs-content/pull/7977
+  'solutions/security/get-started/siem-readiness.md': '!solutions/security/get-started.md'
