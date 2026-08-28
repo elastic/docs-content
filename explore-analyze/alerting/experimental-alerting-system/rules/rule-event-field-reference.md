@@ -22,7 +22,7 @@ The `.rule-events` and `.alert-actions` data streams are [system indices](/refer
 
 A rule event is the record of one result from one rule run. {{kib}} writes one event per matching row, per run, to `.rule-events`. It never updates those events in place. Each event is a snapshot of that moment: the rule that produced it, the payload from your query (`data`), and a `type` of `signal` or `alert`.
 
-Most events come from a matching row (`status: breached`). For Alert-mode rules, {{kib}} can also write events when the condition clears (`status: recovered`) or when the query finds no data (`status: no_data`). {{kib}} writes those events the same way: one new document, never an overwrite.
+Most events come from a matching row (`status: breached`). When {{kib}} tracks an alert episode, it can also write events when the condition clears (`status: recovered`) or when the query finds no data (`status: no_data`). {{kib}} writes those events the same way: one new document, never an overwrite.
 
 `type` on a rule event records what this run wrote (`signal` or `alert`). `kind` on the rule is how you configured it (Signal mode or Alert mode). For how `kind` is set, refer to [Rule mode](configure-rule-mode.md).
 
@@ -64,5 +64,5 @@ For signal-focused query examples, refer to [Query signals](../alerts/query-sign
 - [{{esql}} query](configure-rule-query.md): How the base query and alert condition shape what's written to `.rule-events`.
 - [Rules](../rules.md): What rules do and how they fit into the broader {{alerting-v2-system}}.
 - [Rule mode](configure-rule-mode.md): How Signal mode and Alert mode determine whether {{kib}} records each rule event as a signal or tracks it as an alert episode.
-- [Query signals](../alerts/query-signals.md): Query Signal mode output in Discover and correlate signals with Alert mode rules.
+- [Query signals](../alerts/query-signals.md): Query signals in Discover and use them as input to a rule that opens an episode.
 - [View and manage alerts](../alerts/view-and-manage-alerts.md): Where lifecycle-tracked episodes appear in the UI, with triage actions and episode details.

@@ -5,31 +5,29 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Query Signal mode rule events with ES|QL in Discover. Filter by rule, build dashboards from detection history, and correlate signals with Alert mode rules in the experimental alerting system."
+description: "Query signals with ES|QL in Discover. Filter by rule, build dashboards from detection history, and use signals as input to a rule that opens an episode."
 ---
 
 # Query {{alerting-v2-system}} signals in Discover [query-signals-discover] 
 
-When a Signal mode rule runs on its schedule, {{kib}} writes each match to `.rule-events` as a rule event with `type: signal`. That event is the signal. Signals don't open alert episodes and they skip action policy evaluation and workflow invocation. Use them to build detection history, investigate incidents in Discover, create dashboards, or feed follow-on Alert mode rules that correlate activity across sources.
-
-This page shows how to query signals, which fields matter most, and how to turn signal history into Discover sessions and dashboards.
+Use {{esql}} in Discover to query signals in `.rule-events`. This page covers the fields to filter on, example queries, and how to save that history as a Discover session or dashboard.
 
 ## Before you begin
 
-- You have at least one rule running in [Signal mode](../rules/configure-rule-mode.md).
+- You have at least one rule that writes signals. For how that is set, refer to [Rule mode](../rules/configure-rule-mode.md).
 - Your role can query `.rule-events` in Discover. For privilege details, refer to [Configure access](../get-started/configure-access.md#alerting-data-investigation-privileges).
 - You've added `.rule-events` as a data view. If you haven't, follow the steps in [Before you begin](query-alerts-and-signals-in-discover.md#add-data-views-before-begin) on the alert history page, using the `.ds-.rule-events-*` index pattern.
 
 ## Key fields for signal queries [signal-key-fields]
 
-Alert-mode and Signal-mode rules both write to `.rule-events` and share most of the same fields. Use `type` to filter for signals only. Signal events don't include `episode.*` fields.
+These fields matter most when you query `.rule-events` for signals. Filter with `type == "signal"`.
 
 | Field | Why it matters for signals |
 |---|---|
-| `type` | Filter with `type == "signal"` to exclude Alert-mode rule events. |
+| `type` | Filter with `type == "signal"` to exclude events that belong to an alert episode. |
 | `@timestamp` | When {{kib}} wrote the document. Use for time ranges and sorting. |
-| `rule.id` | Scope results to one Signal mode rule. |
-| `status` | Always `breached` for signals. Signal-mode rules don't write `recovered` or `no_data`. |
+| `rule.id` | Scope results to one rule. |
+| `status` | Always `breached` for signals. These events don't include `recovered` or `no_data`. |
 | `group_hash` | Identifies the series the signal belongs to when the rule uses grouping. |
 | `severity` | Optional. Set when the query emits a recognized `severity` column value. |
 | `data` | Rule-defined payload from the source query. Useful for investigation and dashboards. |
@@ -42,7 +40,7 @@ Open **Discover**, select your `.rule-events` data view, and run {{esql}} agains
 
 ### List recent signals [basic-signal-query]
 
-Returns the most recent Signal-mode rule events across all Signal mode rules.
+Returns the most recent events with `type: signal`.
 
 ```esql
 FROM .rule-events
@@ -63,11 +61,11 @@ FROM .rule-events
 | KEEP @timestamp, status, severity, group_hash, data
 ```
 
-### Correlate signals in an Alert mode rule [correlate-signals-alert-rule]
+### Correlate signals in a follow-on rule [correlate-signals-alert-rule]
 
-Signal mode is useful on its own for investigation, and as input to an Alert mode rule that watches accumulated signals. For example, a Signal mode rule records administrator API calls. A separate Alert mode rule queries those signals and opens an episode only when call volume spikes.
+Signals are useful for investigation, and as input to a rule that watches accumulated signals and groups matches into an episode. For example, one rule records administrator API calls. A separate rule queries those signals and opens an episode only when call volume spikes.
 
-Create an Alert mode rule whose query reads from `.rule-events`, filters to the Signal mode rule's output, and applies a threshold:
+Create a rule whose query reads from `.rule-events`, filters to the first rule's signals, and applies a threshold:
 
 ```esql
 FROM .rule-events
@@ -79,10 +77,10 @@ FROM .rule-events
 | WHERE signal_count > 10
 ```
 
-When this Alert mode rule finds a match, {{kib}} tracks the event as an alert episode. An action policy can evaluate the episode and invoke a workflow. The underlying Signal mode rule keeps recording without paging anyone on every individual call.
+When this follow-on rule finds a match, {{kib}} tracks the event as an alert episode. An action policy can evaluate the episode and invoke a workflow. The first rule keeps recording without paging anyone on every individual call.
 
 :::{tip}
-You can also correlate signals from more than one Signal mode rule in a single Alert mode query, for example combining administrator API call signals with error-rate signals, so neither source pages on its own.
+You can also correlate signals from more than one rule in a single query, for example combining administrator API call signals with error-rate signals, so neither source pages on its own.
 :::
 
 ## Build a Discover session or dashboard from signals [signals-dashboards]
@@ -97,8 +95,8 @@ Because `.rule-events` is append-only, dashboards show the full history retained
 
 ## Related pages
 
-- [Rule mode](../rules/configure-rule-mode.md): When to use Signal mode versus Alert mode.
-- [Rule events](../rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how a signal relates to an Alert-mode event.
-- [Rule event data model](rule-event-data-model.md): Shared `.rule-events` schema for Signal-mode and Alert-mode events.
+- [Rule mode](../rules/configure-rule-mode.md): How configuration determines whether matches are written as signals or grouped into an episode.
+- [Rule events](../rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how a signal relates to an event in an episode.
+- [Rule event data model](rule-event-data-model.md): Shared `.rule-events` schema for `signal` and `alert` events.
 - [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Episode lifecycle, triage history, and incident-tracing queries.
-- [How the {{alerting-v2-system}} works](../how-it-works.md#how-signal-mode-works): End-to-end Signal mode walkthrough.
+- [How the {{alerting-v2-system}} works](../how-it-works.md#how-signal-mode-works): End-to-end walkthrough of the signal path.

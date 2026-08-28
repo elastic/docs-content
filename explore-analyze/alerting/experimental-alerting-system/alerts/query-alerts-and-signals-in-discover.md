@@ -12,7 +12,7 @@ description: "Use ES|QL in Discover to replay incidents, audit triage actions, a
 
 Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**. The **Alerts** page shows current episode state. Discover lets you go further and replay how an incident unfolded, view who acknowledged or snoozed it, measure time-to-acknowledge trends, or correlate alert history with other data in your environment.
 
-For Signal mode output specifically, including basic signal queries and correlating signals with Alert mode rules, refer to [Query signals](query-signals.md).
+For signals, including basic queries and using them as input to a rule that opens an episode, refer to [Query signals](query-signals.md).
 
 Use the following table to jump to the query you need:
 
@@ -90,7 +90,7 @@ FROM .rule-events
 
 ### Identify evaluation gaps [identify-no-data]
 
-`no_data` rows appear when an Alert mode rule with [no-data handling](../rules/configure-no-data-handling.md) configured finds no matching data during an evaluation cycle. Signal-mode rules don't write `no_data` events. A cluster of these rows can indicate a data pipeline issue or a misconfigured rule.
+`no_data` rows appear when a rule with [no-data handling](../rules/configure-no-data-handling.md) configured finds no matching data during an evaluation cycle. Events with `type: signal` don't include `no_data`. A cluster of these rows can indicate a data pipeline issue or a misconfigured rule.
 
 ```esql
 FROM .rule-events

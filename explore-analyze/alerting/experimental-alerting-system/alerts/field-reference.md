@@ -12,7 +12,7 @@ description: "Find field schemas for the .rule-events and .alert-actions data st
 
 This page is a field reference for the {{alerting-v2-system}}. It documents the fields written to the two data streams that back rule output and triage data:
 
-- **`.rule-events` field schema**: Fields written on each [rule event](../rules/rule-event-field-reference.md). Signals and events that belong to alert episodes share this stream and most fields. The `episode.*` fields appear only on events with `type: alert`.
+- **`.rule-events` field schema**: Fields written on each [rule event](../rules/rule-event-field-reference.md). All rule events share this stream and most fields. The `episode.*` fields appear only on events grouped into an alert episode (`type: alert`).
 - **`.alert-actions` field schema**: Fields written when a user or the system acts on an episode, including all `action_type` values.
 
 Use these schemas when writing {{esql}} queries in Discover, interpreting alert UI state, or aligning API payloads with stored data.

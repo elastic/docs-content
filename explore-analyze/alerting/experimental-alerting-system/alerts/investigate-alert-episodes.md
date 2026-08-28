@@ -32,7 +32,7 @@ When a rule includes multiple threshold conditions:
 - Conditions that compare the **same metric** appear together, with each threshold represented separately.
 - Conditions that compare **different metrics** appear in separate views, one for each metric.
 
-This chart appears only for alert-mode rules whose query contains extractable threshold comparisons.
+This chart appears only for rules that group matches into an episode and whose query contains extractable threshold comparisons.
 
 The episode timeline shows its full duration as a horizontal bar, from when it was triggered to its most recent evaluation or close time.
 

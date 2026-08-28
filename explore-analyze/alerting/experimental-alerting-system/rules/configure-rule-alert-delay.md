@@ -5,12 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Configure alert delay for Alert-mode rules in the experimental alerting system to reduce noise from brief spikes before opening an episode."
+description: "Configure alert delay for rules that group matches into an episode, to reduce noise from brief spikes before the episode opens."
 ---
 
 # Alert delay in the {{alerting-v2-system}} (Alert mode only) [alert-delay]
 
-Alert delay is an optional setting for Alert-mode rules in the {{alerting-v2-system}}. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change. In YAML, this corresponds to the `state_transition.pending_*` fields.
+Alert delay is an optional setting for rules that group matches into an alert episode. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change. In YAML, this corresponds to the `state_transition.pending_*` fields.
 
 ## When to configure alert delay [alert-delay-when-to-use]
 
@@ -22,7 +22,7 @@ Configure alert delay when:
 Leave alert delay set to Immediate when:
 
 * Any single breach warrants immediate attention and you cannot tolerate the added latency of waiting for consecutive evaluations.
-* The rule is in Signal mode. Alert delay only applies to Alert-mode rules and has no effect on Signal-mode rule events.
+* The rule writes signals instead of grouping matches into an episode. Alert delay has no effect on those events.
 
 ## Alert delay modes
 

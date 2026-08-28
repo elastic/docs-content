@@ -5,12 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Add tags and runbooks to Alert-mode rules in the experimental alerting system for filtering and investigation context."
+description: "Add tags and runbooks to rules that group matches into an episode, for filtering and investigation context."
 ---
 
 # Tags and runbooks in the {{alerting-v2-system}} (Alert mode only) [tags-investigation]
 
-Tags and runbooks are optional artifacts for Alert-mode rules in the {{alerting-v2-system}}.
+Tags and runbooks are optional artifacts for rules that group matches into an alert episode.
 
 - **Tags**: Free-form labels for filtering and organization. A rule can have up to 20 tags, each up to 128 characters.
 - **Runbooks**: An investigation guide stored with the rule so responders have context when alerts are generated.
@@ -30,7 +30,7 @@ Configure a runbook when:
 
 Skip tags and runbooks when:
 
-* The rule is in Signal mode. Tags and runbooks are Alert-mode-only artifacts and have no effect on Signal-mode rule events.
+* The rule writes signals instead of grouping matches into an episode. Tags and runbooks have no effect on those events.
 * The rule is experimental or not yet part of a monitored production system.
 
 ## Examples

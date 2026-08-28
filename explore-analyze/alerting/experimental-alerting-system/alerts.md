@@ -60,13 +60,13 @@ Snooze operates at the series level, not the alert episode level. If you snooze 
 
 ## What to do next with alerts [alerts-next-steps]
 
-From here, you can view, manage, and query alert episode data, and query Signal mode output in Discover.
+From here, you can view, manage, and query alert episode data, and query signals in Discover.
 
 - [View and manage alerts](alerts/view-and-manage-alerts.md): Open the alert episodes table, triage active episodes, and acknowledge, snooze, or resolve them.
-- [Rule events](rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how Alert-mode events form an episode.
-- [Rule event data model](alerts/rule-event-data-model.md): Where rule events are stored and how they differ by mode.
+- [Rule events](rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how those events form an episode.
+- [Rule event data model](alerts/rule-event-data-model.md): Where rule events are stored and how they differ by `type`.
 - [Query {{alerting-v2-system}} alert history in Discover](alerts/query-alerts-and-signals-in-discover.md): Use {{esql}} to query `.rule-events` and `.alert-actions` for exploratory analysis and dashboards.
-- [Query signals](alerts/query-signals.md): Query Signal mode output in Discover and correlate signals with Alert mode rules.
+- [Query signals](alerts/query-signals.md): Query signals in Discover and use them as input to a rule that opens an episode.
 
 :::{important} - How to use the {{alerting-v2-system}} documentation
 Because the {{alerting-v2-system}} is still evolving, its UI can change before general availability. Rather than pointing to an exact button or menu, the documentation focuses on the underlying concepts and behavior. If something doesn't match what you see in the {{kib}} UI, look for the closest equivalent instead. The concepts and behaviors described in the documentation still apply.

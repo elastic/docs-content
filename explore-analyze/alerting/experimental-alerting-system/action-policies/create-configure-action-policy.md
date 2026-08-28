@@ -14,9 +14,9 @@ In the {{alerting-v2-system}}, an action policy determines which alert episodes 
 
 This page covers how to configure an action policy's match conditions, grouping, frequency, and workflow destinations. For a quicker setup, you can also create a basic action policy directly while creating a rule, as described in [Select workflows to invoke](#policy-destinations).
 
-## Alert mode requirement [policy-alert-mode]
+## Alert episode requirement [policy-alert-mode]
 
-Action policies only apply to alert episodes from rules running in Alert mode. Rules running in Signal mode produce signals rather than alert episodes, so they aren't evaluated by action policies.
+Action policies evaluate only alert episodes. Rules whose matches aren't grouped into an episode never reach a policy.
 
 ## Add tags to categorize the action policy [policy-tags]
 
