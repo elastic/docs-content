@@ -303,7 +303,7 @@ The following sections provide additional ways of rescoring:
 
 #### Use the `rescore` section for top-level kNN search [dense-vector-knn-search-rescoring-rescore-section]
 
-You can use this option when you don’t want to rescore on each shard, but on the top results from all shards.
+You can use this option when you want to rescore on the top results from all shards rather than on each shard.
 
 Use the [rescore section](elasticsearch://reference/elasticsearch/rest-apis/filter-search-results.md#rescore) in the `_search` request to rescore the top results from a kNN search.
 
