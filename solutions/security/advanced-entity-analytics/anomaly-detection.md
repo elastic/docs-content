@@ -97,7 +97,7 @@ To view the **Anomalies** table  and **Max Anomaly Score By Job** details, the u
 :::
 
 ::::{note}
-To adjust the `score` threshold that determines which anomalies are shown, you can modify the `securitySolution:defaultAnomalyScore` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md).
+To adjust the `score` threshold that determines which anomalies are shown, you can modify the `securitySolution:defaultAnomalyScore` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 ::::
 
 In the **Anomalies** table, you can add entity details, like the entity or any associated influencers, into Timeline.
