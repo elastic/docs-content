@@ -140,32 +140,31 @@ If you want to provide `float` vectors but still get the memory savings of `byte
 The default index type for `float` vectors is either `bbq_hnsw` or `int8_hnsw`, depending on your product version and vector dimensions. Other element types, such as `byte`, default to plain `hnsw` with no quantization. Refer to [Dense vector field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md).
 ::::
 
-You can use the default quantization strategy or specify an index option.
-For example, use `int8_hnsw`:
+1. Create an index. You can use the default quantization strategy or specify an index option. This example uses `int8_hnsw`:
 
-```console
-PUT quantized-image-index
-{
-  "mappings": {
-    "properties": {
-      "image-vector": {
-        "type": "dense_vector",
-        "element_type": "float",
-        "dims": 2,
-        "index": true,
-        "index_options": {
-          "type": "int8_hnsw"
+    ```console
+    PUT quantized-image-index
+    {
+      "mappings": {
+        "properties": {
+          "image-vector": {
+            "type": "dense_vector",
+            "element_type": "float",
+            "dims": 2,
+            "index": true,
+            "index_options": {
+              "type": "int8_hnsw"
+            }
+          },
+          "title": {
+            "type": "text"
+          }
         }
-      },
-      "title": {
-        "type": "text"
       }
     }
-  }
-}
-```
+    ```
 
-1. Index your `float` vectors.
+2. Index your `float` vectors.
 
     ```console
     POST quantized-image-index/_bulk?refresh=true
@@ -177,7 +176,7 @@ PUT quantized-image-index
     { "image-vector": [1.2, 0.1], "title": "full moon" }
     ```
 
-2. Run the search using the [`knn` option]({{es-apis}}operation/operation-search#operation-search-body-application-json-knn). When searching, the `float` vector is automatically quantized to a `byte` vector.
+3. Run the search using the [`knn` option]({{es-apis}}operation/operation-search#operation-search-body-application-json-knn). When searching, the `float` vector is automatically quantized to a `byte` vector.
 
     ```console
     POST quantized-image-index/_search
