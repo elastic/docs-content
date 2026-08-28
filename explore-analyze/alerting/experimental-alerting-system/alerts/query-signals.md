@@ -16,7 +16,8 @@ Use {{esql}} in Discover to query signals in `.rule-events`. This page covers th
 
 - You have at least one rule that writes signals. For how that is set, refer to [Rule mode](../rules/configure-rule-mode.md).
 - Your role can query `.rule-events` in Discover. For privilege details, refer to [Configure access](../get-started/configure-access.md#alerting-data-investigation-privileges).
-- You've added `.rule-events` as a data view. If you haven't, follow the steps in [Before you begin](query-alerts-and-signals-in-discover.md#add-data-views-before-begin) on the alert history page, using the `.ds-.rule-events-*` index pattern.
+
+The examples on this page use {{esql}} (`FROM .rule-events`). You don't need a data view for those queries. If you query `.rule-events` with KQL instead, add it as a data view first. Follow the steps in [Before you begin](query-alerts-and-signals-in-discover.md#add-data-views-before-begin) on the alert history page, using the `.ds-.rule-events-*` index pattern.
 
 ## Key fields for signal queries [signal-key-fields]
 
@@ -36,7 +37,7 @@ For the full field list, refer to [Field reference](field-reference.md#rule-even
 
 ## Common signal queries [common-signal-queries]
 
-Open **Discover**, select your `.rule-events` data view, and run {{esql}} against the stream. The following examples cover common signal workflows.
+Open **Discover** and run {{esql}} against `.rule-events`. The following examples cover common signal workflows.
 
 ### List recent signals [basic-signal-query]
 
@@ -63,7 +64,7 @@ FROM .rule-events
 
 ### Correlate signals in a follow-on rule [correlate-signals-alert-rule]
 
-Signals are useful for investigation, and as input to a rule that watches accumulated signals and groups matches into an episode. For example, one rule records administrator API calls. A separate rule queries those signals and opens an episode only when call volume spikes.
+Signals are useful for investigation, and as input to a rule that watches accumulated signals and groups matches into an episode. For example, one rule records administrator API calls. A separate rule queries those signals and groups matches into an episode only when call volume spikes.
 
 Create a rule whose query reads from `.rule-events`, filters to the first rule's signals, and applies a threshold:
 
@@ -77,7 +78,7 @@ FROM .rule-events
 | WHERE signal_count > 10
 ```
 
-When this follow-on rule finds a match, {{kib}} tracks the event as an alert episode. An action policy can evaluate the episode and invoke a workflow. The first rule keeps recording without paging anyone on every individual call.
+When this follow-on rule finds a match, {{kib}} writes a rule event and groups it into an alert episode. An action policy can evaluate the episode and invoke a workflow. The first rule keeps recording without paging anyone on every individual call.
 
 :::{tip}
 You can also correlate signals from more than one rule in a single query, for example combining administrator API call signals with error-rate signals, so neither source pages on its own.
@@ -95,8 +96,8 @@ Because `.rule-events` is append-only, dashboards show the full history retained
 
 ## Related pages
 
-- [Rule mode](../rules/configure-rule-mode.md): How configuration determines whether matches are written as signals or grouped into an episode.
+- [Rule mode](../rules/configure-rule-mode.md): How configuration determines whether {{kib}} groups matches into an alert episode or leaves them as signals.
 - [Rule events](../rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how a signal relates to an event in an episode.
 - [Rule event data model](rule-event-data-model.md): Shared `.rule-events` schema for `signal` and `alert` events.
 - [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Episode lifecycle, triage history, and incident-tracing queries.
-- [How the {{alerting-v2-system}} works](../how-it-works.md#how-signal-mode-works): End-to-end walkthrough of the signal path.
+- [How the {{alerting-v2-system}} works](../how-it-works.md#how-signal-mode-works): End-to-end walkthrough of the path where a rule writes signals for later analysis.

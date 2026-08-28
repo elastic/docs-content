@@ -5,21 +5,21 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Find field schemas for the .rule-events and .alert-actions data streams in the experimental alerting system. Covers shared signal and alert-episode event fields, episode-only fields, and all action_type values."
+description: "Query experimental alerting data in Discover with .rule-events and .alert-actions field schemas. Reference tables list shared rule event fields, episode-only fields, and all action_type values."
 ---
 
 # Rule event and alert action field reference [field-reference]
 
 This page is a field reference for the {{alerting-v2-system}}. It documents the fields written to the two data streams that back rule output and triage data:
 
-- **`.rule-events` field schema**: Fields written on each [rule event](../rules/rule-event-field-reference.md). All rule events share this stream and most fields. The `episode.*` fields appear only on events grouped into an alert episode (`type: alert`).
+- **`.rule-events` field schema**: Fields written on each [rule event](../rules/rule-event-field-reference.md). Signals (events with `type: signal`) and events that belong to an alert episode (`type: alert`) share this stream and most fields. The `episode.*` fields appear only on events with `type: alert`.
 - **`.alert-actions` field schema**: Fields written when a user or the system acts on an episode, including all `action_type` values.
 
 Use these schemas when writing {{esql}} queries in Discover, interpreting alert UI state, or aligning API payloads with stored data.
 
 ## `.rule-events` field schema [rule-events-field-schema]
 
-{{kib}} writes one rule event per matching row, per run, to `.rule-events`. When {{kib}} tracks an alert episode, it can also write `recovered` and `no_data` events. Fields use dot-notation for nested objects. The `episode.*` fields are only present on events with `type: alert`. Those events belong to an episode.
+{{kib}} writes one rule event per matching row, per run, to `.rule-events`. When {{kib}} tracks an alert episode, it can also write `recovered` and `no_data` events. Fields use dot-notation for nested objects. The `episode.*` fields are only present on events that belong to an alert episode (`type: alert`).
 
 The **`signal`** and **`alert`** columns show which `type` values include the field.
 
@@ -86,7 +86,7 @@ Every `.alert-actions` document has an `action_type` that identifies what happen
 ## Related pages
 
 - [Rule events](../rules/rule-event-field-reference.md): What a rule event is and how it connects to signals and alert episodes.
-- [Rule event data model](rule-event-data-model.md): How signals and alert-episode events share `.rule-events`.
+- [Rule event data model](rule-event-data-model.md): How signals (events with `type: signal`) and events that belong to an alert episode (`type: alert`) share `.rule-events`.
 - [Query signals](query-signals.md): Signal query examples in Discover.
 - [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Episode and triage query examples.
 - [View and manage alerts](view-and-manage-alerts.md): Monitor and filter alert episodes in the UI.

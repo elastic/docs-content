@@ -10,28 +10,21 @@ description: "Rules in the experimental alerting system define what to detect us
 
 # Rules in the {{alerting-v2-system}} [rules]
 
-A rule is where the {{alerting-v2-system}} starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. Alert episodes, action policies, and notifications all flow from the rule events a rule produces. 
+A rule is where the {{alerting-v2-system}} starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. On each scheduled run, {{kib}} writes each matching row as a [rule event](rules/rule-event-field-reference.md) to `.rule-events`. Those events are never overwritten. Alert episodes, action policies, and notifications all flow from those events.
 
-This page explains what rules do, what they don't control, and how to choose a creation path.
+## Rules don't control notifications [rules-dont-control-notifications]
 
-## What rules do [detection-and-notification]
-
-On each scheduled run, a rule executes an {{esql}} query against your data. {{kib}} records matches as [rule events](rules/rule-event-field-reference.md): one event per matching row, per run, written to `.rule-events`. {{kib}} never overwrites those events. The rule's mode, Signal or Alert, is the configuration that determines whether {{kib}} records those events as signals or tracks them as an alert episode.
-
-In Signal mode, each event is a signal (`type: signal`) with no alert lifecycle or notifications. In Alert mode, each event is `type: alert` and carries `episode.*` fields. Events that share an `episode.id` form an alert episode. Episodes move through lifecycle states. An action policy can evaluate an episode and invoke a workflow to send a notification. Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view them.
-
-## What rules don't do 
-
-Rules only define *what* to detect. They don't control notifications, who gets notified, or when. That's the job of action policies, which are global objects scoped to your space that match alert episodes from any rule. A rule has no say in which action policies pick it up.
+Rules only define *what* to detect. They don't control notifications, who gets notified, or when. That's the job of action policies, which are global objects scoped to your space that match alert episodes from any rule. 
 
 This separation means you can update notification routing without touching a rule, and have multiple action policies respond to the same rule independently.
 
-## What to do next with rules [rules-next-steps]
+## Create, configure, and manage rules [rules-next-steps]
 
-From here, you can create, configure, and manage rules, and review what they've detected.
+Use these pages to create a rule, change its settings, or review what it has detected.
 
 - [Create a rule](rules/create-a-rule.md): Compare creation paths and choose the one that fits your workflow.
 - [Configure a rule](rules/configure-a-rule.md): Set the schedule, grouping, alert delay, recovery condition, and no-data behavior.
+- [Rule mode](rules/configure-rule-mode.md): Set whether matches are grouped into an alert episode or left as signals.
 - [View and manage rules](rules/view-manage-rules.md): Enable, disable, clone, delete, and bulk-manage rules from the **Rules** page.
 - [Review rule execution history](rules/review-rule-execution-history.md): Monitor rule execution outcomes across all rules in a space.
 - [{{esql}} query patterns](rules/esql-query-patterns.md): Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.

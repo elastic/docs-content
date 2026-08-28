@@ -11,17 +11,17 @@ description: A detailed walkthrough of how a rule's configuration determines whe
 
 # How the {{alerting-v2-system}} works [how-it-works]
 
-This page walks through what happens at each step after a rule runs on its schedule. Both paths begin the same way: {{kib}} writes a [rule event](rules/rule-event-field-reference.md) for each matching row. The walkthroughs below use Signal mode and Alert mode. Use this page to understand how the different components of the {{alerting-v2-system}} interact.
+This page walks through what happens at each step after a rule runs on its schedule. Both paths begin the same way: {{kib}} writes a [rule event](rules/rule-event-field-reference.md) for each matching row. The rule's configuration determines whether those events are grouped into an alert episode. In the UI, that setting is [Rule mode](rules/configure-rule-mode.md). Use this page to understand how the different components of the {{alerting-v2-system}} interact.
 
-## Rule runs in Alert mode [how-alert-mode-works]
+## Rule groups matches into an alert episode [how-alert-mode-works]
 
-In Alert mode, {{kib}} writes each match as a rule event (`type: alert`) with `episode.*` fields. Events that share an `episode.id` form an alert episode, which persists and tracks the problem until the condition clears. Each new event can advance the episode's lifecycle state. An action policy sits between the episode and a workflow, deciding whether and when to invoke it.
+When matches are grouped into an alert episode, {{kib}} writes each match as a rule event (`type: alert`) with `episode.*` fields. Events that share an `episode.id` form the episode, which persists and tracks the problem until the condition clears. Each new event can advance the episode's lifecycle state. An action policy sits between the episode and a workflow, deciding whether and when to invoke it. In the UI, set this configuration with [Rule mode](rules/configure-rule-mode.md) (**Alert**).
 
 | Step | Actor | Action |
 |------|-------|--------|
 | 1 | Rule | Runs on schedule and evaluates {{esql}} against your data |
 | 2 | {{kib}} | Query returns results → Writes one rule event per matching row to `.rule-events` (`type: alert`) |
-| 3 | {{kib}} | Tracks the event as an alert episode. Events that share an `episode.id` form the episode. The episode opens in `pending` and advances to `active` once the activation threshold is met |
+| 3 | {{kib}} | Groups the event into an alert episode. Events that share an `episode.id` form the episode. The episode opens in `pending` and advances to `active` once the activation threshold is met |
 | 4 | Action policy | Evaluates the episode against its conditions (checks for episode eligibility, match conditions, and frequency) |
 | 5 | Action policy | If conditions are met, invokes a workflow |
 | 6 | Workflow | Sends notification or runs automation |
@@ -33,7 +33,7 @@ In Alert mode, {{kib}} writes each match as a rule event (`type: alert`) with `e
 Steps 4–6 and 8–9 run on a separate background process that polls roughly every 5 seconds. Action policy evaluation is not triggered synchronously by the rule's own execution. There is always at least one dispatcher polling cycle between a rule run and any resulting notification.
 :::
 
-### Example: Latency monitoring in Alert mode
+### Example: Latency monitoring
 
 An SRE team wants to know when checkout service latency degrades, and notify the on-call team when it does. The team creates a rule in Alert mode:
 
@@ -43,17 +43,17 @@ An SRE team wants to know when checkout service latency degrades, and notify the
 
 The engineer investigates, fixes a slow query, and the alert episode recovers automatically.
 
-## Rule runs in Signal mode [how-signal-mode-works]
+## Rule writes signals for later analysis [how-signal-mode-works]
 
-In Signal mode, each time the rule runs on its schedule and its query returns results, {{kib}} writes a rule event (`type: signal`) to `.rule-events`. That event is the signal. Signals accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to a follow-on rule that groups matches into an episode. For query examples, dashboards, and correlation patterns, refer to [Query signals](alerts/query-signals.md).
+{{kib}} writes a rule event (`type: signal`) to `.rule-events` for each match. That event is the signal. Action policies evaluate alert episodes only, so the event never reaches a policy or a workflow. Signals accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to a follow-on rule that groups matches into an episode. In the UI, set this configuration with [Rule mode](rules/configure-rule-mode.md) (**Signal**). For query examples, dashboards, and correlation patterns, refer to [Query signals](alerts/query-signals.md).
 
 | Step | Actor | Action |
 |------|-------|--------|
 | 1 | Rule | Runs on schedule and evaluates {{esql}} against your data |
 | 2 | {{kib}} | Query returns results → Writes one rule event per matching row to `.rule-events` (`type: signal`) |
-| 3 | {{kib}} | Records the event as a signal. The event is immediately queryable in Discover, dashboards, and {{esql}} |
+| 3 | {{kib}} | Leaves the event available for later analysis. Action policies evaluate alert episodes only, so this event never reaches a policy or a workflow |
 
-### Example: Tracking administrator API calls in Signal mode
+### Example: Tracking administrator API calls
 
 A security team wants to track calls to a rarely-used administrator API endpoint, but individual calls aren't suspicious enough to page anyone. To start collecting data without generating noise, the team creates a rule in Signal mode:
 

@@ -35,7 +35,7 @@ Most events come from a matching row (`status: breached`). When {{kib}} tracks a
 
 ### Signal mode
 
-In Signal mode, {{kib}} writes a rule event with `type: signal`. Signals skip the **Alerts** page, action policy evaluation, and workflow invocation. They accumulate in `.rule-events` and are queryable in Discover.
+{{kib}} writes a rule event with `type: signal`. Action policies evaluate alert episodes only, so these events never reach the **Alerts** page, a policy, or a workflow. They accumulate in `.rule-events` and are queryable in Discover.
 
 For query examples, refer to [Query signals](../alerts/query-signals.md).
 
@@ -63,6 +63,6 @@ For signal-focused query examples, refer to [Query signals](../alerts/query-sign
 
 - [{{esql}} query](configure-rule-query.md): How the base query and alert condition shape what's written to `.rule-events`.
 - [Rules](../rules.md): What rules do and how they fit into the broader {{alerting-v2-system}}.
-- [Rule mode](configure-rule-mode.md): How Signal mode and Alert mode determine whether {{kib}} records each rule event as a signal or tracks it as an alert episode.
+- [Rule mode](configure-rule-mode.md): How Rule mode determines whether {{kib}} groups each rule event into an alert episode or leaves it as a signal.
 - [Query signals](../alerts/query-signals.md): Query signals in Discover and use them as input to a rule that opens an episode.
 - [View and manage alerts](../alerts/view-and-manage-alerts.md): Where lifecycle-tracked episodes appear in the UI, with triage actions and episode details.

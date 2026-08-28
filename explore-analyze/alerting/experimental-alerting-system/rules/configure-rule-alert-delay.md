@@ -1,5 +1,5 @@
 ---
-navigation_title: Alert delay (Alert mode only)
+navigation_title: Alert delay (alert episodes only)
 applies_to:
   stack: experimental 9.5+
   serverless: experimental
@@ -8,7 +8,7 @@ products:
 description: "Configure alert delay for rules that group matches into an episode, to reduce noise from brief spikes before the episode opens."
 ---
 
-# Alert delay in the {{alerting-v2-system}} (Alert mode only) [alert-delay]
+# Alert delay in the {{alerting-v2-system}} [alert-delay]
 
 Alert delay is an optional setting for rules that group matches into an alert episode. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change. In YAML, this corresponds to the `state_transition.pending_*` fields.
 

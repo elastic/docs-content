@@ -1,5 +1,5 @@
 ---
-navigation_title: Tags and runbooks (Alert mode only)
+navigation_title: Tags and runbooks (alert episodes only)
 applies_to:
   stack: experimental 9.5+
   serverless: experimental
@@ -8,7 +8,7 @@ products:
 description: "Add tags and runbooks to rules that group matches into an episode, for filtering and investigation context."
 ---
 
-# Tags and runbooks in the {{alerting-v2-system}} (Alert mode only) [tags-investigation]
+# Tags and runbooks in the {{alerting-v2-system}} [tags-investigation]
 
 Tags and runbooks are optional artifacts for rules that group matches into an alert episode.
 

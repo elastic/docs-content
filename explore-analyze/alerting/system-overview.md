@@ -19,12 +19,12 @@ In the generally available {{kib}} alerting system, the term **alert** refers to
 
 ## The core idea [core-idea]
 
-The {{alerting-v2-system}} starts with a rule evaluating your data on a schedule. When the rule detects a match, {{kib}} writes a rule event. The rule's configuration determines whether those events are grouped into an alert episode. Events that aren't part of an episode remain available for later analysis. 
+The {{alerting-v2-system}} starts with a rule evaluating your data on a schedule. When the rule detects a match, {{kib}} writes a rule event to `.rule-events`. The rule's configuration determines whether those events are grouped into an alert episode. Events that aren't part of an episode remain available for later analysis as signals. 
 
 You can change your rule's configuration as your needs change, including whether matches become alert episodes.
 
 :::{image} /explore-analyze/images/basic-system-flow.png
-:alt: Flowchart showing that after a rule detects a match, it either creates an alert episode or records a signal
+:alt: Flowchart showing a rule detecting a match, Kibana writing a rule event, then either grouping that event into an alert episode or leaving it with no episode for later analysis
 :::
 
 ## The building blocks
@@ -71,10 +71,10 @@ Together, these building blocks form two main paths, which diverge based on the 
 
    * **Alert episode** - {{kib}} groups the event into an episode. An action policy evaluates the episode and can invoke a workflow, which sends the notification or runs the automation.
 
-   * **No episode** - The event remains available for later analysis. You can query it, build dashboards, or feed it into another rule. Action policies evaluate only alert episodes, so this event never reaches a policy or a workflow.
+   * **No episode** - The event remains available for later analysis as a signal. You can query it, build dashboards, or feed it into another rule. Action policies evaluate alert episodes only, so this event never reaches a policy or a workflow.
 
 :::{image} /explore-analyze/images/detailed-system-flow.png
-:alt: Flowchart showing that after a rule finds a match, it either acts by creating an alert episode that an action policy evaluates and routes to trigger notifications or actions or records a signal that doesn't trigger notifications or actions
+:alt: Flowchart showing a rule detecting a match, Kibana writing a rule event, then either grouping the event into an alert episode that an action policy can route to a workflow, or leaving the event with no episode for later analysis
 :::
 
 ## Get started or go deeper [system-overview-next-steps]

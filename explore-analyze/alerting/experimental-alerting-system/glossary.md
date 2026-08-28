@@ -41,7 +41,7 @@ These terms appear throughout the {{alerting-v2-system}} docs. If a term is uncl
 :   A label attached to alert episodes to indicate urgency. Severity is available as a filter in action policies so critical episodes can be routed differently from low-priority ones. To learn more, refer to [Configure rule severity](rules/configure-rule-severity.md).
 
 **Signal**
-:   A [rule event](rules/rule-event-field-reference.md) with `type: signal`. These events stay in `.rule-events` and are queryable in Discover. They skip action policy evaluation and workflow invocation. To learn more, refer to [Query signals](alerts/query-signals.md) and [Rule mode](rules/configure-rule-mode.md).
+:   A [rule event](rules/rule-event-field-reference.md) with `type: signal`. These events stay in `.rule-events` and are queryable in Discover. Action policies evaluate alert episodes only, so a signal never reaches a policy or a workflow. To learn more, refer to [Query signals](alerts/query-signals.md) and [Rule mode](rules/configure-rule-mode.md).
 
 **Threshold**
 :   The condition a rule uses to decide when something is worth alerting on, including how many times the condition must be met before an alert episode opens or closes. To learn more, refer to [Alert delay](rules/configure-rule-alert-delay.md) and [Recovery condition](rules/configure-rule-recovery.md).

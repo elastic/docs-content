@@ -5,12 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How rule mode determines whether matching rows are written as signal events or as alert events that form tracked episodes in the experimental alerting system, and when to use each."
+description: "How rule mode determines whether Kibana groups matching rows into an alert episode or leaves them as signals for later analysis, and when to use each."
 ---
 
 # Rule mode in the {{alerting-v2-system}} [rule-mode]
 
-Rule mode is a required setting for rules in the {{alerting-v2-system}}. It determines whether {{kib}} records each [rule event](rule-event-field-reference.md) as a signal or tracks it as an alert episode. Rule mode is set by the rule creation method. Some [creation paths](create-a-rule.md) only support one mode.
+Rule mode is a required setting for rules in the {{alerting-v2-system}}. It determines whether {{kib}} groups each [rule event](rule-event-field-reference.md) into an alert episode or leaves it as a signal for later analysis. Rule mode is set by the rule creation method. Some [creation paths](create-a-rule.md) only support one mode.
 
 | Mode | `kind` value | Behavior |
 | --- | --- | --- |
