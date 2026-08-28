@@ -133,7 +133,7 @@ In approximate kNN search with an HNSW index, applying filters can decrease perf
 
 To avoid significant performance drawbacks, Lucene implements the following strategies per segment:
 
-* If the filtered document count is less than or equal to num_candidates, the search bypasses the HNSW graph and uses a brute force search on the filtered documents.
+* If the filtered document count is less than or equal to `num_candidates`, the search bypasses the HNSW graph and uses a brute force search on the filtered documents.
 * While exploring the HNSW graph, if the number of nodes explored exceeds the number of documents that satisfy the filter, the search will stop exploring the graph and switch to a brute force search over the filtered documents.
 
 ## Search multiple kNN fields [_search_multiple_knn_fields]
