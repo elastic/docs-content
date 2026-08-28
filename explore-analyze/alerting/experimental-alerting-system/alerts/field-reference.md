@@ -19,7 +19,7 @@ Use these schemas when writing {{esql}} queries in Discover, interpreting alert 
 
 ## `.rule-events` field schema [rule-events-field-schema]
 
-{{kib}} writes one rule event per matching row, per run, to `.rule-events`. When {{kib}} tracks an alert episode, it can also write `recovered` and `no_data` events. Fields use dot-notation for nested objects. The `episode.*` fields are only present on events with `type: alert`. Those events belong to an episode. They aren't episode documents.
+{{kib}} writes one rule event per matching row, per run, to `.rule-events`. When {{kib}} tracks an alert episode, it can also write `recovered` and `no_data` events. Fields use dot-notation for nested objects. The `episode.*` fields are only present on events with `type: alert`. Those events belong to an episode.
 
 The **`signal`** and **`alert`** columns show which `type` values include the field.
 

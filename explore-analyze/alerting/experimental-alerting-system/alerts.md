@@ -10,7 +10,7 @@ description: "Alert episodes in the experimental alerting system track a problem
 
 # Alerts in the {{alerting-v2-system-cap}} [alerts]
 
-In the {{alerting-v2-system}}, {{kib}} tracks each problem as an **alert episode**, which represents the full lifecycle of a condition (from first detection through recovery) rather than a single point-in-time event. An episode isn't a separate document. {{kib}} writes a [rule event](rules/rule-event-field-reference.md) for each matching row, and the episode is the grouping of those events that share an `episode.id`.
+In the {{alerting-v2-system}}, {{kib}} tracks each problem as an **alert episode**, the full lifecycle of a condition from first detection through recovery. {{kib}} writes a [rule event](rules/rule-event-field-reference.md) for each matching row, and the episode is the grouping of those events that share an `episode.id`.
 
 This page explains the core concepts you need to work with the {{alerting-v2-system}}: how alert episodes move through lifecycle states, and how series group episodes over time for the same monitored subject.
 

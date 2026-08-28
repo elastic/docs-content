@@ -19,7 +19,7 @@ Rule mode is a required setting for rules in the {{alerting-v2-system}}. It dete
 
 Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view and triage alert episodes.
 
-If you're editing YAML directly, rule mode maps to the `kind` field on the rule. That `kind` field isn't the same as the `type` field on rule events: `kind` configures the rule, and `type` records what {{kib}} wrote for that run.
+If you're editing YAML directly, rule mode maps to the `kind` field on the rule. `kind` configures the rule. `type` on each rule event records what {{kib}} wrote for that run.
 
 ## When to use each rule mode [rule-mode-when-to-use]
 

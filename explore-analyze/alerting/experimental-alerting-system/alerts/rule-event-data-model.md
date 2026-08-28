@@ -5,29 +5,29 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Alert episodes and signals share .rule-events in the experimental alerting system. Events with type: alert add episode lifecycle fields, and triage actions are written to .alert-actions."
+description: "Alert episodes and rule events share .rule-events in the experimental alerting system. Events with type: alert add episode lifecycle fields, and triage actions are written to .alert-actions."
 ---
 
 # Rule event data model in the {{alerting-v2-system}} [rule-event-data-model]
 
-Alert episodes and signals aren't separate document types. {{kib}} writes **rule events** to `.rule-events`. This page covers where that data lives, which fields each `type` uses, and where triage actions go. For what a rule event is and how it connects to signals and alert episodes, refer to [Rule events](../rules/rule-event-field-reference.md).
+{{kib}} writes **rule events** to `.rule-events`. An alert episode is the grouping of those events that share an `episode.id`. This page covers where that data lives, which fields each `type` uses, and where triage actions go. For what a rule event is and how it connects to alert episodes, refer to [Rule events](../rules/rule-event-field-reference.md).
 
-## How `type` differs on each event [how-rule-mode-determines-output]
+## What `type` records on each event [how-rule-mode-determines-output]
 
 Every time a rule finds a match, {{kib}} writes a rule event to `.rule-events`. The event's `type` is either `signal` or `alert`:
 
 | `type` | What the event represents |
 | --- | --- |
-| `signal` | The whole output. This event is the signal. |
+| `signal` | A **signal**. Queryable in Discover for later analysis. |
 | `alert` | One evaluation in an alert episode. The episode is the grouping of events that share an `episode.id`. |
 
 :::{note}
-When {{kib}} records a match as a signal, it only writes `type: signal` events. Those events never open alert episodes, so action policies have nothing to match against.
+Events with `type: signal` never open alert episodes, so action policies have nothing to match against.
 :::
 
 ## Shared index and schema [shared-index-and-schema]
 
-Signals and events that belong to alert episodes both go to `.rule-events` and share many of the same fields, including `data`, which holds the payload from your rule's query. The `type` field tells you whether the event is a signal or part of an alert episode, so you can filter for one or the other (for example, `WHERE type == "signal"`).
+Events with `type: signal` and events that belong to alert episodes both go to `.rule-events` and share many of the same fields, including `data`, which holds the payload from your rule's query. The `type` field tells you whether the event is part of an alert episode, so you can filter for one or the other (for example, `WHERE type == "signal"`).
 
 Only `type: alert` events carry the `episode.*` fields that track lifecycle state (`episode.id`, `episode.status`, `episode.status_count`). Query those events by `episode.id` to replay an episode. Signal events don't include episode fields.
 

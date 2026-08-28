@@ -45,15 +45,13 @@ The engineer investigates, fixes a slow query, and the alert episode recovers au
 
 ## Rule runs in Signal mode [how-signal-mode-works]
 
-In Signal mode, {{kib}} records matches and stops. Each time the rule runs on its schedule and its query returns results, {{kib}} writes a rule event (`type: signal`) to `.rule-events`. That event is the signal. Signals accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to Alert mode rules that detect correlated activity across multiple signals. For query examples, dashboards, and correlation patterns, refer to [Query signals](alerts/query-signals.md).
+In Signal mode, each time the rule runs on its schedule and its query returns results, {{kib}} writes a rule event (`type: signal`) to `.rule-events`. That event is the signal. Signals accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to Alert mode rules that detect correlated activity across multiple signals. For query examples, dashboards, and correlation patterns, refer to [Query signals](alerts/query-signals.md).
 
 | Step | Actor | Action |
 |------|-------|--------|
 | 1 | Rule | Runs on schedule and evaluates {{esql}} against your data |
 | 2 | {{kib}} | Query returns results → Writes one rule event per matching row to `.rule-events` (`type: signal`) |
-| 3 | {{kib}} | Records the event as a signal. No episode, no action policy, no workflow. The event is immediately queryable in Discover, dashboards, and {{esql}} |
-
-No alert episode is opened. No action policy evaluates the result. No notification is sent.
+| 3 | {{kib}} | Records the event as a signal. The event is immediately queryable in Discover, dashboards, and {{esql}} |
 
 ### Example: Tracking administrator API calls in Signal mode
 

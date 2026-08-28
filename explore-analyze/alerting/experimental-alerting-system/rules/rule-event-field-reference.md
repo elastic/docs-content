@@ -10,9 +10,9 @@ description: "Rule events are the append-only documents Kibana writes to .rule-e
 
 # Rule events in the {{alerting-v2-system}} [rule-reference]
 
-When a scheduled rule run finds a match, {{kib}} writes a **rule event** to `.rule-events`. Each matching row in a run becomes its own event, and {{kib}} never overwrites those events. Signal mode and Alert mode both begin from this same document. Based on the rule's mode, {{kib}} either records the event as a signal or tracks it as an alert episode.
+When a rule finds a match, {{kib}} writes a **rule event** to `.rule-events`. Each matching row in a run becomes its own event, and {{kib}} never overwrites those events. The rule's configuration determines whether that event is grouped into an alert episode. The UI and the `type` field call events that aren't part of an episode **signals**.
 
-Use this page to query `.rule-events` with confidence: replay an episode's history, investigate a signal, or build dashboards from rule output. For the stored schema, refer to [Rule event data model](../alerts/rule-event-data-model.md). For the complete field list, refer to [Field reference](../alerts/field-reference.md#rule-events-field-schema).
+Use this page to query `.rule-events` with confidence: replay an episode's history, investigate signals, or build dashboards from rule output. For the stored schema, refer to [Rule event data model](../alerts/rule-event-data-model.md). For the complete field list, refer to [Field reference](../alerts/field-reference.md#rule-events-field-schema).
 
 :::{important}
 The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle through [index lifecycle management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md). Older backing indices are deleted automatically when the retention window expires. Do not change mappings or index settings for these streams yourself.
@@ -24,24 +24,24 @@ A rule event is the record of one result from one rule run. {{kib}} writes one e
 
 Most events come from a matching row (`status: breached`). For Alert-mode rules, {{kib}} can also write events when the condition clears (`status: recovered`) or when the query finds no data (`status: no_data`). {{kib}} writes those events the same way: one new document, never an overwrite.
 
-The `type` field on a rule event isn't the same as the `kind` field on the rule. `kind` is how you configure the rule (Signal mode or Alert mode). `type` is what that run wrote. For how `kind` is set, refer to [Rule mode](configure-rule-mode.md).
+`type` on a rule event records what this run wrote (`signal` or `alert`). `kind` on the rule is how you configured it (Signal mode or Alert mode). For how `kind` is set, refer to [Rule mode](configure-rule-mode.md).
 
 ## How Signal mode and Alert mode use rule events [rule-events-by-mode]
 
 | Mode | What {{kib}} writes | What you work with |
 | --- | --- | --- |
-| Signal | A rule event with `type: signal`. No `episode.*` fields. | The event itself. That event is the signal. |
+| Signal | A rule event with `type: signal`. No `episode.*` fields. | The signal, queryable in Discover. |
 | Alert | A rule event with `type: alert` and `episode.*` fields. | An alert episode: the grouping of events that share an `episode.id`, visible on the **Alerts** page. |
 
 ### Signal mode
 
-In Signal mode, the rule event is the whole output. {{kib}} writes it and stops. Signals don't open an episode, don't appear on the **Alerts** page, and skip action policy evaluation and workflow invocation. They accumulate in `.rule-events` and are queryable in Discover.
+In Signal mode, {{kib}} writes a rule event with `type: signal`. Signals skip the **Alerts** page, action policy evaluation, and workflow invocation. They accumulate in `.rule-events` and are queryable in Discover.
 
 For query examples, refer to [Query signals](../alerts/query-signals.md).
 
 ### Alert mode
 
-In Alert mode, the rule event isn't the episode. The event carries `episode.id`, `episode.status`, and `episode.status_count`. An **alert episode** is the grouping of those events that share an `episode.id`. There's no separate episode document type.
+In Alert mode, the event carries `episode.id`, `episode.status`, and `episode.status_count`. An **alert episode** is the grouping of those events that share an `episode.id`.
 
 The first event opens the episode. Later events from later runs advance it through lifecycle states until the condition clears. Because events are never overwritten, `episode.status` on a given event is the lifecycle stage at that evaluation, not a live field that {{kib}} updates later. To replay an episode, query every event with that `episode.id`.
 

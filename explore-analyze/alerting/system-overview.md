@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: The experimental Kibana alerting system writes each match as a rule event, then either tracks those events as an alert episode with notifications or records them as signals for later analysis.
+description: The experimental Kibana alerting system writes each match as a rule event, then either groups those events into an alert episode with notifications or leaves them available for later analysis.
 ---
 
 # {{alerting-v2-system-cap}} overview [system-overview]
@@ -19,45 +19,45 @@ In the generally available {{kib}} alerting system, the term **alert** refers to
 
 ## The core idea [core-idea]
 
-The {{alerting-v2-system}} starts with a rule evaluating your data on a schedule. When the rule detects a match, {{kib}} writes a rule event. The rule's configuration determines whether those events become a tracked alert episode or are recorded as signals for later analysis.
+The {{alerting-v2-system}} starts with a rule evaluating your data on a schedule. When the rule detects a match, {{kib}} writes a rule event. The rule's configuration determines whether those events are grouped into an alert episode. Events that aren't part of an episode remain available for later analysis. 
+
+You can change your rule's configuration as your needs change, including whether matches become alert episodes.
 
 :::{image} /explore-analyze/images/basic-system-flow.png
 :alt: Flowchart showing that after a rule detects a match, it either creates an alert episode or records a signal
 :::
 
-Because acting and recording are independent, you can change that configuration as your needs change. For example, you can record matches as signals first, then switch to alert episodes when you're ready to notify. Notifications are handled separately by action policies, so you can update where notifications are sent for multiple rules without editing each rule individually.
-
 ## The building blocks
 
-The {{alerting-v2-system}} is built around five objects: rules, alert episodes, signals, action policies, and workflows, each with a distinct role.
+The {{alerting-v2-system}} is built around five objects: rules, rule events, alert episodes, action policies, and workflows, each with a distinct role.
 
 ### Rules
 
-A rule defines what to watch for in your data and how often to check. On each run, {{kib}} writes matches as [rule events](experimental-alerting-system/rules/rule-event-field-reference.md). The rule's configuration determines whether those events become a tracked alert episode or are recorded as signals.
+A rule defines what to watch for in your data and how often to check. On each run, {{kib}} writes matches as [rule events](experimental-alerting-system/rules/rule-event-field-reference.md).
 
 Refer to [Rules](experimental-alerting-system/rules.md) to learn more.
 
+### Rule events
+
+A rule event is the document {{kib}} writes to `.rule-events` for each match. The rule's configuration determines whether those events are grouped into an alert episode.
+
+Refer to [Rule events](experimental-alerting-system/rules/rule-event-field-reference.md) and [Query signals](experimental-alerting-system/alerts/query-signals.md) to learn more.
+
 ### Alert episodes
 
-An alert episode tracks one problem and moves through states (pending, active, recovering, inactive), giving you one lifecycle to triage rather than a separate item per rule check. Alert episodes are passed to action policies for evaluation.
+An alert episode tracks one problem from first detection through recovery, so you triage one lifecycle per problem.
 
 Refer to [Alert episodes](experimental-alerting-system/alerts.md) to learn more.
 
-### Signals
-
-A signal is a rule event that skips action policy evaluation entirely. As signals accumulate, you can query them in Discover, build dashboards from them, or feed them into another rule that correlates activity across sources, feeding back into the start of the flow.
-
-Refer to [Query signals](experimental-alerting-system/alerts/query-signals.md) to learn more.
-
 ### Action policies
 
-An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by evaluating episode eligibility, match conditions, and frequency. A policy's configuration determines its scope, so one policy can cover alert episodes from a specific rule, multiple rules, or all rules in the space. This means you can change notification routing without touching any rule.
+An action policy decides whether and when to invoke a workflow for an alert episode. Notifications are configured on the policy, not on the rule, so you can update where they're sent without editing each rule.
 
 Refer to [Notifications and actions](experimental-alerting-system/notifications-actions.md) to learn more.
 
 ### Workflows
 
-A workflow is what actually sends the notification or runs the automation, for example, posting to Slack, sending an email, calling a webhook. An action policy can invoke it, or a lifecycle trigger can invoke it immediately when the episode is activated or assigned.
+A workflow sends the notification or runs the automation, for example posting to Slack, sending an email, or calling a webhook.
 
 Refer to [Connect workflows](experimental-alerting-system/workflows-alerting.md) to learn more.
 
@@ -66,12 +66,12 @@ Refer to [Connect workflows](experimental-alerting-system/workflows-alerting.md)
 Together, these building blocks form two main paths, which diverge based on the rule's configuration:
 
 1. A rule evaluates your data on a schedule and detects a match.
-2. {{kib}} writes the match as a rule event.
-3. Based on the rule's configuration, {{kib}} either tracks the event as an alert episode or records it as a signal:
+2. {{kib}} writes the match as a rule event to `.rule-events`.
+3. The rule's configuration determines the next step:
 
-   * **Alert episode** - An action policy evaluates the episode and decides whether and when to invoke a workflow. The workflow sends the notification or runs the automation.
+   * **Alert episode** - {{kib}} groups the event into an episode. An action policy evaluates the episode and can invoke a workflow, which sends the notification or runs the automation.
 
-   * **Signal** - The event is recorded for later analysis and skips action policy evaluation and workflow invocation. You can query signals, build dashboards from them, or feed them into another rule.
+   * **No episode** - The event remains available for later analysis. You can query it, build dashboards, or feed it into another rule. Action policies evaluate only alert episodes, so this event never reaches a policy or a workflow.
 
 :::{image} /explore-analyze/images/detailed-system-flow.png
 :alt: Flowchart showing that after a rule finds a match, it either acts by creating an alert episode that an action policy evaluates and routes to trigger notifications or actions or records a signal that doesn't trigger notifications or actions

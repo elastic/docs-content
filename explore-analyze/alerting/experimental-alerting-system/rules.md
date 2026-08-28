@@ -5,12 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Rules in the experimental alerting system define what to detect using ES|QL. Each match is written as a rule event, then handled as a signal or as part of an alert episode."
+description: "Rules in the experimental alerting system define what to detect using ES|QL. Each match is written as a rule event. The rule's configuration determines whether those events are grouped into an alert episode."
 ---
 
 # Rules in the {{alerting-v2-system}} [rules]
 
-A rule is where the {{alerting-v2-system}} starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. Alert episodes, signals, action policies, and notifications all flow from what a rule detects. 
+A rule is where the {{alerting-v2-system}} starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. Alert episodes, action policies, and notifications all flow from the rule events a rule produces. 
 
 This page explains what rules do, what they don't control, and how to choose a creation path.
 
