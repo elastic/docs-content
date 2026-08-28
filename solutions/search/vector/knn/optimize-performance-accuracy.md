@@ -67,7 +67,7 @@ POST my-vector-index/_search
 
 ## Approximate kNN using byte vectors [approximate-knn-using-byte-vectors]
 
-The approximate kNN search API also supports `byte` (int8) value vectors alongside `float` vectors. Use the [`knn` option]({{es-apis}}operation/operation-search#operation-search-body-application-json-knn) to search a `dense_vector` field with [`element_type`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-params) set to `byte` and indexing enabled. Byte vectors reduce memory footprint and can improve cache efficiency for large-scale vector similarity search.
+The approximate kNN search API supports `byte` (int8) value vectors alongside `float` vectors. Use the [`knn` option]({{es-apis}}operation/operation-search#operation-search-body-application-json-knn) to search a `dense_vector` field with [`element_type`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-params) set to `byte` and indexing enabled. Byte vectors reduce memory footprint and can improve cache efficiency for large-scale vector similarity search.
 
 1. Explicitly map one or more `dense_vector` fields with [`element_type`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-params) set to `byte` and indexing enabled.
 
