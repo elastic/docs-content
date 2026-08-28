@@ -21,8 +21,6 @@ In the generally available {{kib}} alerting system, the term **alert** refers to
 
 The {{alerting-v2-system}} starts with a rule evaluating your data on a schedule. When the rule detects a match, {{kib}} writes a rule event to `.rule-events`. The rule's configuration determines whether those events are grouped into an alert episode. Events that aren't part of an episode remain available for later analysis as signals. 
 
-You can change your rule's configuration as your needs change, including whether matches become alert episodes.
-
 :::{image} /explore-analyze/images/basic-system-flow.png
 :alt: Flowchart showing a rule detecting a match, Kibana writing a rule event, then either grouping that event into an alert episode or leaving it with no episode for later analysis
 :::

@@ -15,7 +15,7 @@ This page walks through what happens at each step after a rule runs on its sched
 
 ## Rule groups matches into an alert episode [how-alert-mode-works]
 
-When matches are grouped into an alert episode, {{kib}} writes each match as a rule event (`type: alert`) with `episode.*` fields. Events that share an `episode.id` form the episode, which persists and tracks the problem until the condition clears. Each new event can advance the episode's lifecycle state. An action policy sits between the episode and a workflow, deciding whether and when to invoke it. In the UI, set this configuration with [Rule mode](rules/configure-rule-mode.md) (**Alert**).
+When matches are grouped into an alert episode, {{kib}} writes each match as a rule event (`type: alert`) with `episode.*` fields. Events that share an `episode.id` form the episode, which persists and tracks the problem until the condition clears. Each new event can advance the episode's lifecycle state. An action policy sits between the episode and a workflow, deciding whether and when to invoke it. In the UI, set this configuration with [Rule mode](rules/configure-rule-mode.md).
 
 | Step | Actor | Action |
 |------|-------|--------|
