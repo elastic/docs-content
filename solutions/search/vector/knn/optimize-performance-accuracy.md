@@ -29,7 +29,7 @@ For DiskBBQ (`bbq_disk`) indices, you can also use `visit_percentage` to control
 
 When a search targets both HNSW and DiskBBQ indices, use `visit_percentage` with `num_candidates` to tune performance and recall across both index types.
 
-When [quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) is involved, `rescore_vector` is an additional speed/accuracy tuning tool. It reranks a larger candidate set using original vectors after approximate retrieval.
+When [quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) is involved, `rescore_vector` is an additional tool for tuning the speed-accuracy tradeoff. It reranks a larger candidate set using original vectors after approximate retrieval.
 
 * Increase `rescore_vector.oversample` to improve accuracy (at the cost of higher latency).
 * Decrease `rescore_vector.oversample` for faster queries (with a potential accuracy trade-off).
