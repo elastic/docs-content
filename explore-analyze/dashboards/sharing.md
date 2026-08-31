@@ -19,7 +19,7 @@ Share a dashboard with others, or export its contents for reporting, backup, or 
 - [Export as PDF or PNG](#export-dashboard-pdf-png): Generate a report file of the dashboard.
 - [Download visualization data as CSV](#download-csv): Download the data from a visualization as a CSV file.
 - [Export JSON](#export-dashboards): Export the dashboard's definition as a JSON file to back it up, move it, or manage it as code.
-- [Export a panel as JSON](#export-panel-json): Export a supported panel's configuration to inspect or save it.
+- [Export a panel as JSON](#export-panel-json): Export a supported panel's configuration without exporting the whole dashboard.
 
 You can also [set whether other users of your space can edit dashboards you own](#manage-dashboard-access).
 
@@ -142,11 +142,13 @@ stack: preview 9.6+
 serverless: preview
 ```
 
-You can export the configuration of individual dashboard elements as API-compatible JSON. The **Export JSON** option is available for:
+You can export the configuration of individual dashboard elements as API-compatible JSON. Use this when you need one panel's definition without exporting the rest of the dashboard. You can inspect the JSON, or copy it into a [Dashboards API](create-dashboards-programmatically.md) request to add that panel to another dashboard.
 
-- Visualizations created with the point-and-click editor or with an {{esql}} query
-- **Links** and **Markdown** panels
-- Unpinned **Options list**, **Range slider**, and **Variable** controls
+The **Export JSON** option is available for:
+
+- Visualizations created with the [point-and-click editor](../visualize/lens.md) or with an [{{esql}} query](../visualize/esorql.md)
+- [**Links**](../visualize/link-panels.md) and [**Markdown**](../visualize/text-panels.md) panels
+- Unpinned [**Options list**](../visualize/dashboard-controls.md#control-types), [**Range slider**](../visualize/dashboard-controls.md#control-types), and [**Variable**](../visualize/add-variable-controls.md) controls
 
    :::{tip}
    Pinned controls don't offer the option. Unpin them first.
