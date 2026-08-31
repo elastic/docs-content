@@ -77,7 +77,7 @@ The observed sampling rate reflects what actually reached {{es}}, and not necess
 
   With [head-based sampling](/solutions/observability/apm/transaction-sampling.md), the sampling decision happens at the root service and is propagated to downstream services through distributed tracing headers. Configuring a sampling rate on a non-root service has no effect, as it will always respect the upstream decision.
 
-  Non-sampled transactions are not sent to {{apm-server}} at all, so they don't appear in storage. The exception is the RUM JS Agent, which always sends transaction events regardless of whether they are sampled.
+  Non-sampled transactions are not sent to {{apm-server}}, so they don't appear in storage. The exception is the RUM JS Agent, which always sends transaction events regardless of whether they are sampled.
 
   On low-throughput services, the observed rate might be a less precise approximation of the configured rate because the representative value used to scale sampled transactions can introduce statistical error.
 
