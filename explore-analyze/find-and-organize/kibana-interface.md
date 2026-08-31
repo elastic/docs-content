@@ -38,7 +38,7 @@ The global header holds the following elements.
 | AI assistant or agent | Opens the AI assistant or agent of your solution. Its label depends on which one your project or deployment offers. |
 | Your avatar | Opens the user menu, where you can change your appearance and language preferences, customize your navigation menu, and log out. |
 
-Where you find the space selector depends on your deployment type and version. Refer to [Spaces](/deploy-manage/manage-spaces.md) for the steps.
+Where you find the space selector depends on your deployment type and version. Refer to [Select and switch Kibana spaces](/deploy-manage/choose-and-switch-spaces.md) for the steps.
 
 ## Navigation menu
 
@@ -55,4 +55,4 @@ The application menu sits at the top of the workspace and holds the actions avai
 
 * To open an app or find an object you created, refer to [Find apps and objects](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 * To change which apps appear in the navigation menu, refer to [Customize your navigation menu](/explore-analyze/find-and-organize/customize-navigation.md).
-* To switch to another space or create one, refer to [Spaces](/deploy-manage/manage-spaces.md).
+* To switch to another space, refer to [Select and switch Kibana spaces](/deploy-manage/choose-and-switch-spaces.md). To create one, refer to [Spaces](/deploy-manage/manage-spaces.md).
