@@ -32,11 +32,13 @@ The *control plane* of ECE include the following management services:
 * Acts as a message bus for communication between the services.
 * Talks to ECE components using STunnel.
 * Stores the state of the ECE installation and the state of all deployments running in ECE.
+* Runs on hosts with the [`director` role](assign-roles-to-hosts.md).
 
 **Director**
 
 * Manages the ZK data store and signs the CSRs (certificate signing requests) for internal clients that want to communicate with ZooKeeper.
 * Maintains the stunnels used by ZooKeeper for communication and establishes quorum when new ZooKeeper nodes are created.
+* Runs on hosts with the [`director` role](assign-roles-to-hosts.md).
 
 **Constructor**
 
@@ -45,14 +47,16 @@ The *control plane* of ECE include the following management services:
 * Assigns cluster nodes to allocators.
 * Maximizes the utilization of underlying allocators to reduce the need to spin up extra hardware for new deployments.
 * Places cluster nodes and instances within different availability zones to ensure that the deployment can survive any downtime of a whole zone. You can designate these availability zones when you install ECE.
+* Runs on hosts with the [`coordinator` role](assign-roles-to-hosts.md).
 
 **Cloud UI and API**
 
-Provide web and API access for administrators to manage and monitor the ECE installation.
+Provide web and API access for administrators to manage and monitor the ECE installation. These services run on hosts with the [`coordinator` role](assign-roles-to-hosts.md).
 
 
 ## Proxies [ece_proxies]
 
+* Run on hosts with the [`proxy` role](assign-roles-to-hosts.md).
 * Handle user requests, mapping deployment IDs that are passed in request URLs for the container to the actual {{es}} cluster nodes and other instances. The association of deployment IDs to a container is stored in ZooKeeper, cached by the proxies. In the event of ZooKeeper downtime, the platform can still service the requests to existing deployments by using the cache.
 * Keep track of the state and availability of zones, if you have a highly available {{es}} cluster. If one of the zones goes down, the proxy will not route any requests there.
 * Help with no-downtime scaling and upgrades. Before performing an upgrade, a snapshot is taken, and data is migrated to the new nodes. When the migration is complete, a proxy switches the traffic to the new nodes and disconnects the old ones.
@@ -61,6 +65,7 @@ Provide web and API access for administrators to manage and monitor the ECE inst
 
 ## Allocators [ece-architecture-allocators]
 
+* Run on hosts with the [`allocator` role](assign-roles-to-hosts.md).
 * Run on all the machines that host {{es}} nodes and {{kib}} instances.
 * Control the lifecycle of cluster nodes by:
 
@@ -103,10 +108,10 @@ ECE service containers run as `root` (UID 0). This is an architectural requireme
 | `frc-allocators-allocator`                        | Allocator     | Manages container lifecycle for {{stack}} application instances, such as {{es}} and {{kib}}. |
 | `frc-allocator-metricbeats-allocator-metricbeat`  | Allocator     | Collects metrics from the {{stack}} containers running in the allocator. |
 | `frc-container-task-services-container-task-service` | Allocator  | Supports autoscaling and tracks feature usage. |
-| `frc-admin-consoles-admin-console`                | Controller    | Backend service for the ECE UI that handles API requests. |
-| `frc-blueprints-blueprint`                        | Controller    | Coordinates container startup by providing configuration data to runners based on their role and token. |
-| `frc-cloud-uis-cloud-ui`                          | Controller    | Web frontend for the ECE UI, served to users in the browser. |
-| `frc-constructors-constructor`                    | Controller    | Schedules and coordinates deployment changes; assigns instances to allocators and balances zones. |
+| `frc-admin-consoles-admin-console`                | Coordinator   | Backend service for the ECE UI that handles API requests. |
+| `frc-blueprints-blueprint`                        | Coordinator   | Coordinates container startup by providing configuration data to runners based on their role and token. |
+| `frc-cloud-uis-cloud-ui`                          | Coordinator   | Web frontend for the ECE UI, served to users in the browser. |
+| `frc-constructors-constructor`                    | Coordinator   | Schedules and coordinates deployment changes; assigns instances to allocators and balances zones. |
 | `frc-directors-director`                          | Director      | Coordinates the ZooKeeper cluster by ensuring there's a quorum; maintains stunnel configuration and certificates. |
 | `frc-zookeeper-servers-zookeeper`                 | Director      | Consistent distributed data store used to track ECE state and coordinate communication between services. |
 | `frc-proxies-proxyv2`                             | Proxy         | Routes user traffic to the {{stack}} deployments. |
