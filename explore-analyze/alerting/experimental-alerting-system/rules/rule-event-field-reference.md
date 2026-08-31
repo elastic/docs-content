@@ -26,20 +26,20 @@ Most events come from a matching row (`status: breached`). When {{kib}} tracks a
 
 Each event has a `type` of `signal` or `alert`, matching the `kind` you set when you created the rule. For how `kind` is set, refer to [Rule mode](configure-rule-mode.md).
 
-## How `type` relates to episodes [rule-events-by-mode]
+## Which events are grouped into an episode [rule-events-by-mode]
 
 | `type` | What {{kib}} writes | What you work with |
 | --- | --- | --- |
 | `signal` | A rule event with no `episode.*` fields. | Queryable in Discover. |
 | `alert` | A rule event with `episode.*` fields. | An alert episode: the grouping of events that share an `episode.id`, visible on the **Alerts** page. |
 
-### Events with `type: signal`
+### Events that stay available for later analysis (`type: signal`)
 
 {{kib}} writes a rule event with `type: signal`. Action policies evaluate alert episodes only, so these events never reach the **Alerts** page, a policy, or a workflow. They accumulate in `.rule-events` and are queryable in Discover.
 
 For query examples, refer to [Query signals](../alerts/query-signals.md).
 
-### Events that belong to an episode
+### Events that form an alert episode (`type: alert`)
 
 Events with `type: alert` carry `episode.id`, `episode.status`, and `episode.status_count`. An **alert episode** is the grouping of those events that share an `episode.id`.
 
@@ -47,7 +47,7 @@ The first event opens the episode. Later events from later runs advance it throu
 
 Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view the current state of each episode.
 
-## Query the append-only stream [query-rule-events]
+## Query `.rule-events` to replay an episode [query-rule-events]
 
 The `.rule-events` data stream is append-only. {{kib}} writes a new document on every matching row of every run. Existing documents are never updated. To view the full history of an episode, query `.rule-events` filtered by `episode.id`:
 

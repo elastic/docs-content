@@ -15,12 +15,15 @@ description: Compare Kibana alerting, the experimental ES|QL-based alerting syst
 
 Elastic offers three alerting systems, each suited to different use cases and workflows. For production, use {{kib}} alerting. The {{alerting-v2-system}} is available to try, but it isn't ready for production use. Use this page to compare them by goal, feature, and availability.
 
+:::{note}
+{{elastic-sec}} has its own detection rules, separate from these three systems. For threat detection, refer to [Detections and alerts](/solutions/security/detect-and-alert.md).
+:::
+
 ## Select by use case
 
 | Goal | Suggested system | Availability |
 |---|---|---|
 | Monitor metrics, logs, or uptime with ready-made rules and no query language | [{{kib}} alerting](alerts.md) | {applies_to}`stack: ga` {applies_to}`serverless: ga` |
-| Use rules built for {{elastic-sec}}, {{observability}}, APM, or Maps | [{{kib}} alerting](alerts.md) | {applies_to}`stack: ga` {applies_to}`serverless: ga` |
 | Write {{esql}} to define exactly what to detect and what data each rule event carries | [{{alerting-v2-system-cap}}](system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
 | Record detections as rule events for later analysis without opening episodes or sending notifications | [{{alerting-v2-system-cap}}](system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
 | Query rule event history in Discover or build dashboards from rule event data | [{{alerting-v2-system-cap}}](system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |

@@ -10,13 +10,13 @@ description: "Overview of configurable rule settings in the experimental alertin
 
 # Configure a rule in the {{alerting-v2-system}} [rule-settings]
 
-Rules in the {{alerting-v2-system}} have three required settings and several optional ones. Start with the required settings in order. Only add optional settings once the detection logic is validated, for example by previewing results in the [query sandbox](create-esql-rule.md#rule-builder-query-sandbox) when writing {{esql}} directly. The following table links to a dedicated page for each setting with field descriptions, accepted values, and guidance on when to configure it.
+Rules in the {{alerting-v2-system}} have required settings and several optional ones. Start with the required settings, then add optional settings after you've validated the detection logic, for example by previewing results in the [query sandbox](create-esql-rule.md#rule-builder-query-sandbox) when writing {{esql}} directly. The following table links to a dedicated page for each setting, with field descriptions, accepted values, and when to configure it.
 
 | Setting | Description | Required |
 | --- | --- | --- |
 | [Rule mode](configure-rule-mode.md) | Controls whether matching rows are grouped into an alert episode or remain available for later analysis. | Required |
 | [{{esql}} query](configure-rule-query.md) | The detection logic and the parameters available in query expressions. | Required |
-| [Schedule and lookback](configure-rule-schedule.md) | How often the rule evaluates and how far back the query looks. Schedule is required; lookback is optional but strongly recommended. | Strongly reccomended |
+| [Schedule and lookback](configure-rule-schedule.md) | How often the rule evaluates and how far back the query looks. Schedule is required; lookback is optional but strongly recommended. | Strongly recommended |
 | [Severity](configure-rule-severity.md) | Assign severity levels to alert episodes using a `severity` column in query output. | Optional |
 | [Grouping](configure-rule-grouping.md) | Track multiple subjects (hosts, services, users) as independent alert series in one rule. | Optional |
 | [Alert delay](configure-rule-alert-delay.md) | Reduce noise with delay modes for opening alert episodes. Only when matches are grouped into an episode. | Optional |
