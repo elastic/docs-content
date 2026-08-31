@@ -82,6 +82,8 @@ FROM kibana_sample_data_logs
 | STATS requests = COUNT(*)
 ```
 
+To show a distribution statistic instead of a count, replace `COUNT(*)` with [`PERCENTILE(bytes, 95)`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/percentile.md).
+
 To build the chart:
 
 1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.

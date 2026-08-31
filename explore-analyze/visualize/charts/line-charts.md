@@ -55,6 +55,8 @@ Optionally:
    - You can click the **Add layer** icon {icon}`plus_square` to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
 
 The chart preview updates to show one or more lines plotted over time. Each line represents a series, and data points are connected to show trends.
+
+Refer to [](#settings) for all data configuration options for your line chart.
 :::::
 
 :::::{step} Save the chart
@@ -76,6 +78,10 @@ FROM kibana_sample_data_logs
 | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
 | STATS requests = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
 ```
+
+If your time field isn't named `@timestamp`, replace `@timestamp` with that field in both `WHERE` and `BUCKET` so the dashboard time range applies.
+
+{applies_to}`stack: preview 9.2-9.3, ga 9.4+` If you query a [time series data stream](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md), start with the [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) command instead of `FROM`.
 
 To build the chart:
 

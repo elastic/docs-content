@@ -55,6 +55,8 @@ Optionally:
    - You can click the **Add layer** icon {icon}`plus_square` to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
 
 The chart preview updates to show filled areas plotted over time. Each area represents a series, with the filled region emphasizing the volume of data.
+
+Refer to [](#area-chart-settings) for all data configuration options for your area chart.
 :::::
 
 :::::{step} Save the chart
@@ -76,6 +78,8 @@ FROM kibana_sample_data_logs
 | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
 | STATS total_bytes = SUM(bytes) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
 ```
+
+If your time field isn't named `@timestamp`, replace `@timestamp` with that field in both `WHERE` and `BUCKET` so the dashboard time range applies.
 
 To build the chart:
 
