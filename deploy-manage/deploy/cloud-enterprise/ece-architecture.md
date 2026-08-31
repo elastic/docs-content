@@ -88,7 +88,11 @@ Services are deployed as Docker containers, which simplifies the operational eff
 
 ## ECE service containers by host role [ece-service-containers]
 
-Each {{ece}} service runs as a dedicated container. These containers are automatically deployed based on the roles assigned to each ECE host. The following table lists the containers on ECE hosts, along with the host roles that include each container:
+Each {{ece}} service runs as a dedicated container. These containers are automatically deployed based on the roles assigned to each ECE host. The following table lists the containers on ECE hosts, along with the host roles that include each container.
+
+:::{note}
+ECE service containers run as `root` (UID 0). This is an architectural requirement and is not configurable: the containers interact directly with the Docker or Podman socket and perform privileged operations, including cgroup management and resource allocation. {{stack}} containers, such as {{es}} and {{kib}}, run as a non-root user (UID ≥ 1000).
+:::
 
 | Container                                         | Host roles    | Description |
 |---|---|---|

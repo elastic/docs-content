@@ -183,13 +183,13 @@ This rule matches file creation events against threat intelligence by both SHA-2
 The following settings appear in the **Define rule** section when creating an indicator match rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
 **Source**
-:   The index patterns or {{data-source}} that store your source event documents. Prepopulated with indices from the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices) advanced setting.
+:   The index patterns or {{data-source}} that store your source event documents. Prepopulated with indices from the [`securitySolution:defaultIndex`](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting.
 
 **Custom query**
 :   The query and filters used to retrieve source event documents. Field values in matching documents are compared against indicator values according to the threat mapping. Defaults to `*:*` (all documents).
 
 **Indicator index patterns**
-:   The index patterns that store threat indicator documents. Prepopulated with indices from the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) advanced setting.
+:   The index patterns that store threat indicator documents. Prepopulated with indices from the [`securitySolution:defaultThreatIndex`](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting.
 
 **Indicator index query**
 :   The query used to retrieve indicator documents. Defaults to `@timestamp > "now-30d/d"`, which searches for indicators ingested in the past 30 days.
