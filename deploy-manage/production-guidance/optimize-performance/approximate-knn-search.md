@@ -70,11 +70,11 @@ DiskBBQ is a clustering algorithm which can scale efficiently often on less memo
 
 A `dense_vector` field stores more than the values you index. On disk, {{es}} keeps the raw vectors (for rescoring and reindex), any quantized copy used for approximate search, and the search structure (an HNSW graph, or DiskBBQ centroids and clusters). Off-heap RAM is only the working set that must stay in the operating system's filesystem cache, which is separate from the Java heap.
 
-Use the calculator to estimate disk and off-heap RAM. [Vector files](#vector-files-off-heap-ram) and the formulas explain what those totals include.
+Use the calculator for disk and off-heap RAM totals. [Vector files](#vector-files-off-heap-ram) explains which Lucene files those totals include.
 
 ### Vector sizing calculator [vector-sizing-calculator]
 
-Use this calculator to estimate disk and off-heap RAM for a `dense_vector` field. The RAM total is the working set that must stay in the filesystem cache. Disk includes every persisted structure, including raw vectors that stay on disk when you use quantization.
+The RAM total is the working set that must stay in the filesystem cache. Disk includes every persisted structure, including raw vectors that stay on disk when you use quantization.
 
 :::{vector-sizing-calculator}
 :::
