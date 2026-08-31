@@ -107,5 +107,3 @@ Each {{ece}} service runs as a dedicated container. These containers are automat
 | `frc-zookeeper-servers-zookeeper`                 | Director      | Consistent distributed data store used to track ECE state and coordinate communication between services. |
 | `frc-proxies-proxyv2`                             | Proxy         | Routes user traffic to the {{stack}} deployments. |
 | `frc-proxies-route-server`                        | Proxy         | Manages the routing tables used by the proxy service. |
-
-ECE service containers run as `root` (UID 0) internally. This is an architectural requirement: the containers interact directly with the Docker or Podman socket and perform privileged operations, including cgroup management and resource allocation. {{stack}} containers, such as {{es}} and {{kib}}, run as a non-root user (UID ≥ 1000).
