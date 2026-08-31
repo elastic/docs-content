@@ -42,10 +42,10 @@ If you can access only one space, {{kib}} opens it.
 If you can access more than one space, {{kib}} does one of the following:
 
 - {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` {{kib}} can remember the space you last used and open it. If {{kib}} has no remembered space, or you no longer have access to it, {{kib}} asks you to select a space. A direct link to a {{kib}} app or object opens that destination. It does not send you to the remembered space.
-- {applies_to}`stack: ga =9.5` On self-managed deployments and on {{ece}} and {{eck}}, {{kib}} can remember the space you last used and open it. If {{kib}} has no remembered space, or you no longer have access to it, {{kib}} asks you to select a space. A direct link to a {{kib}} app or object opens that destination. It does not send you to the remembered space.
+- {applies_to}`stack: ga =9.5` The behavior depends on your deployment type:
+  - On self-managed deployments, {{ece}}, and {{eck}}, {{kib}} can remember the space you last used and open it. If {{kib}} has no remembered space, or you no longer have access to it, {{kib}} asks you to select a space. A direct link to a {{kib}} app or object opens that destination. It does not send you to the remembered space.
+  - On {{ecloud}}, {{kib}} asks you to select a space. It does not persist your last space. The **Spaces preferences** user menu item is not available.
 - {applies_to}`stack: ga 9.0-9.4` {{kib}} asks you to select a space.
-
-{applies_to}`stack: ga =9.5` On {{ecloud}}, {{kib}} asks you to select a space. It does not persist your last space.
 
 ## Change whether Kibana remembers your last space [remember-last-selected-space]
 ```{applies_to}
@@ -55,21 +55,18 @@ serverless: ga
 
 This personal preference is on by default. It controls whether {{kib}} opens your last space when you log in.
 
-:::{note}
-:applies_to: stack: ga =9.5
-On {{ecloud}}, {{kib}} does not persist your last space. The **Spaces preferences** user menu item is not available.
-:::
-
 ### On {{ecloud}} and serverless
 ```{applies_to}
 ech: ga
 serverless: ga
 ```
 
-1. Open the user menu from the header.
-2. Select **Spaces preferences**.
-3. Turn **Remember last selected space** on or off.
-4. Select **Save**.
+{applies_to}`stack: ga =9.5` On {{ecloud}}, {{kib}} does not persist your last space. The **Spaces preferences** user menu item is not available.
+
+1. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Open the user menu from the header.
+2. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Select **Spaces preferences**.
+3. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Turn **Remember last selected space** on or off.
+4. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Select **Save**.
 
 ### On self-managed, {{ece}}, and {{eck}}
 ```{applies_to}

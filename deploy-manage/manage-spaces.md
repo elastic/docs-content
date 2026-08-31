@@ -2,6 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-spaces.html
   - https://www.elastic.co/guide/en/serverless/current/spaces.html
+navigation_title: Kibana Spaces
 applies_to:
   stack: ga
   serverless: ga
@@ -10,7 +11,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Spaces [xpack-spaces]
+# Manage {{kib}} Spaces [xpack-spaces]
 
 **Spaces** let you organize your content and users according to your needs.
 
