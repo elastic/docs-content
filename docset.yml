@@ -4,6 +4,39 @@ max_toc_depth: 2
 features:
   primary-nav: true
 
+# API Explorer (staging only). This block is consumed by docs-builder when the
+# assembler-api-explorer feature flag is enabled (staging today). Production and
+# other environments ignore these declarations until the rollout completes.
+api:
+  # CloudFront remote specs — mirror https://d29hkgsdo66d1n.cloudfront.net/index.json.
+  # No local spec files: each key fetches remotely on serve/build. Paths: /api/<key>/
+  elasticsearch:
+    - spec: elasticsearch.json
+      product: elasticsearch
+      repository: elastic/elasticsearch-specification
+  elasticsearch-serverless:
+    - spec: elasticsearch-serverless.json
+      product: serverless-elasticsearch
+      repository: elastic/elasticsearch-specification
+  kibana:
+    - spec: kibana.yaml
+      product: kibana
+      repository: elastic/kibana
+      children:
+        - file: kibana-api-overview.md
+  kibana-serverless:
+    - spec: kibana-serverless.yaml
+      product: kibana
+      repository: elastic/kibana
+  cloud-connect:
+    - spec: cloud-connect.yml
+      product: ess
+      repository: elastic/cloud-connected-api
+  cloud-serverless:
+    - spec: elastic-cloud-serverless.yml
+      product: cloud-serverless
+      repository: elastic/serverless-api-specification
+
 cta:
   monitor-kubernetes:
     button:
@@ -324,10 +357,10 @@ subs:
   intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
-  kube-stack-version: 0.12.4
+  kube-stack-version: 0.16.0
   helm-version: 3.21.0
-  ece-docker-images-8: 8.19.16
-  ece-docker-images-9: 9.3.5
+  ece-docker-images-8: 8.19.20
+  ece-docker-images-9: 9.5.2
   search-platform: "Search AI Platform"
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"
