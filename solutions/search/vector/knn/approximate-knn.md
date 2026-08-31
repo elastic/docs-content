@@ -124,6 +124,10 @@ Quantization comes at the expense of recall, which you can compensate for by [ov
 For guidance on choosing and tuning these settings, refer to the [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md). When defining your `dense_vector` mapping, use [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) to set these parameters.
 
 ## Vector index mode [approximate-knn-vector-index-mode]
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
 
 If an index is used primarily for vector search, create it with the `vectordb_document` [index mode](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting) to get defaults tuned for vector workloads:
 
