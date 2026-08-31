@@ -38,7 +38,7 @@ When the current selection matches the [space default](/deploy-manage/cross-proj
 
 The scope selector also provides shortcuts to admin settings. Select **Adjust space defaults** to open the space's {{cps-init}} scope configuration, or **Manage cross-project search** to open the [{{cps-init}} management page](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md).
 
-### Session scope vs. stored scope
+### Session scope versus stored scope
 
 Sometimes, you might want to change which projects are included in your results as you work. Other times, you want to set the project scope and persist it with a resource to keep inputs consistent. Session scope and stored scope are how apps make that happen. The behavior follows the app.
 
@@ -79,7 +79,7 @@ To add a tag filter:
 4. If the operator requires a value, choose one or more values from the **Select a value** dropdown.
 5. Select **Apply** ({icon}`check`) to add the filter.
 
-When multiple filters are active, they are combined with AND logic: a project must match all filters to appear in the list.
+When multiple filters are active, they are combined with `AND` logic: a project must match all filters to appear in the list.
 
 #### Manage tag filters
 
