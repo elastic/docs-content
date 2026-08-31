@@ -488,9 +488,9 @@ POST /my-index/_search
 
 ## Resources [knn-optimize-resources]
 
-- [Approximate kNN search](approximate-knn.md): Map, index, and run a basic approximate kNN search, including indexing considerations.
-- [Tune approximate kNN search](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md): Production sizing, memory, indexing, and cluster configuration for approximate kNN search.
-- [kNN search on {{es}}](../knn.md): Common use cases, prerequisites, and a comparison of approximate and exact kNN methods.
-- [`dense_vector` field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md): Vector mapping options, including `index_options` and quantization settings.
+- [Approximate kNN search](approximate-knn.md): Learn how to map, index, and query `dense_vector` fields for fast, scalable approximate kNN search.
+- [Tune approximate kNN search](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md): Production guidance for vector memory, node sizing, indexing, filesystem cache, and on-disk rescoring.
+- [kNN search on {{es}}](../knn.md): Explore common use cases, prerequisites for kNN search, and a comparison of approximate and exact kNN methods.
+- [`dense_vector` field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md): API reference for vector field mapping, including `index`, `similarity`, `index_options`, and quantization parameters.
 - [Auto-calibration for `bbq_disk`](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md#bbq-auto-calibration): How DiskBBQ selects quantization and oversampling per merged segment.
-- [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): Parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.
+- [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.

@@ -433,8 +433,8 @@ The patterns on this page apply directly to chunked content retrieval. Whether y
 
 ## Resources
 
-- [Approximate kNN search](approximate-knn.md): Learn how to map, index, and run a basic approximate kNN search, including indexing considerations.
-- [Optimize performance and accuracy](optimize-performance-accuracy.md): Tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
-- [Exact kNN search](exact-knn.md): Run exact brute-force kNN search for small datasets or precise scoring.
+- [Approximate kNN search](approximate-knn.md): Learn how to map, index, and query `dense_vector` fields for fast, scalable approximate kNN search.
+- [Optimize performance and accuracy](optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
+- [Exact kNN search](exact-knn.md): Learn how to run exact brute-force kNN search for small datasets or precise scoring.
 - [Retrieval augmented generation (RAG)](../../rag.md): Retrieve relevant passages and combine them with generative AI models.
 - [Semantic search with `semantic_text`](../../semantic-search/semantic-search-semantic-text.md): Use managed semantic search when you do not need to store passage vectors in nested fields yourself.

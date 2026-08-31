@@ -1,5 +1,5 @@
 ---
-navigation_title: kNN search on Elasticsearch
+navigation_title: kNN search in Elasticsearch
 description: Find semantically similar documents using k-nearest neighbor (kNN) vector search in Elasticsearch.
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/knn-search.html
@@ -9,7 +9,7 @@ applies_to:
   serverless:
 ---
 
-# kNN search on {{es}} [knn-search]
+# kNN search in {{es}} [knn-search]
 
 A *k-nearest neighbor* (kNN) search finds the *k* nearest vectors to a query vector using a similarity metric such as cosine or L2 norm. In {{es}}, kNN is the primary way to query [`dense_vector`](dense-vector.md) fields after you store embeddings.
 
@@ -76,4 +76,4 @@ Approximate kNN offers low latency and good accuracy, while exact kNN guarantees
 - [Optimize performance and accuracy](knn/optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
 - [Exact kNN search](knn/exact-knn.md): Learn how to run exact brute-force kNN search for small datasets or precise scoring.
 - [Vector search in {{es}}](../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
-- [Knn query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.
+- [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.

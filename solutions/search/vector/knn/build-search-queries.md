@@ -23,9 +23,9 @@ Under the hood, the text embedding NLP model converts your input query string (p
 
 To perform semantic search:
 
-- You need an index that contains dense vector representations of the input data to search against.
-- You must use the same text embedding model for search that you used to create the document vectors.
-- The text embedding NLP model deployment must be started.
+- Your index must contain dense vector representations of the input data.
+- Use the same text embedding model for search that generated the document vectors.
+- Start the text embedding model deployment before running the query.
 
 Reference the deployed text embedding model or the model deployment in the `query_vector_builder` object, and provide the search string as `model_text`:
 
@@ -86,7 +86,7 @@ POST image-index/_search
 }
 ```
 
-This search finds the global top `k = 5` vector matches, combines them with the matches from the `match` query, and finally returns the 10 top-scoring results. The `knn` and `query` matches are combined through a disjunction, as if you took a boolean *or* between them. The top `k` vector results represent the global nearest neighbors across all index shards.
+This search finds the global top `k = 5` vector matches, combines them with the matches from the `match` query, and finally returns the 10 top-scoring results. The `knn` and `query` matches are combined through a disjunction, as if you took a boolean or between them. The top `k` vector results represent the global nearest neighbors across all index shards.
 
 The score of each result is the sum of the `knn` and `query` scores. You can specify a `boost` value to give a weight to each score in the sum. In the preceding example, the scores will be calculated as follows:
 
@@ -242,11 +242,11 @@ In this data set, the only document with `file-type = png` has the vector `[42, 
 
 ## Resources
 
-- [Approximate kNN search](approximate-knn.md): Learn how to map, index, and run a basic approximate kNN search, including indexing considerations.
+- [Approximate kNN search](approximate-knn.md): Learn how to map, index, and query `dense_vector` fields for fast, scalable approximate kNN search.
 - [Nested kNN search](nested-knn-search.md): Learn how to run approximate kNN search on nested vectors for passage retrieval, filtering, inner hits, and chunked content.
 - [Optimize performance and accuracy](optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
 - [kNN search on {{es}}](../knn.md): Explore common use cases, prerequisites for kNN search, and a comparison of approximate and exact kNN methods.
 - [Exact kNN search](exact-knn.md): Learn how to run exact brute-force kNN search for small datasets or precise scoring.
 - [Hybrid search with `semantic_text`](../../hybrid-semantic-text.md): Follow a step-by-step tutorial for combining lexical and semantic search with reciprocal rank fusion.
 - [Vector search in {{es}}](../../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
-- [Knn query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.
+- [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.

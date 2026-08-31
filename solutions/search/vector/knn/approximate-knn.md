@@ -8,7 +8,7 @@ applies_to:
 
 # Approximate kNN search
 
-Approximate kNN search uses graph-based or clustered index structures to find similar vectors quickly at scale. Use it for most production workloads where low latency matters more than perfect recall. This page covers approximate kNN search methods, a basic example, mapping defaults, indexing considerations, and vector index mode.
+Approximate kNN search uses graph-based or clustered index structures to find similar vectors quickly at scale. Use it for most production workloads where you need low latency at scale. This page covers approximate kNN search methods, a basic example, mapping defaults, indexing considerations, and vector index mode.
 
 ::::{tip}
 If you use `semantic_text` fields, query them with a [`match` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) for the simplest approach, or use the [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#knn-query-with-semantic-text) when you need more control over the search.
@@ -112,12 +112,16 @@ Approximate kNN works without any explicit mapping options. Unless you set them,
 | `similarity` | `cosine`, except for `bit` vectors, which use `l2_norm` |
 | `index_options.type` | `float` and `bfloat16` vectors are quantized automatically, using BBQ where available and `int8_hnsw` for low-dimensional vectors. `byte` and `bit` vectors are not quantized. |
 
-The last one matters most: by default your `float` vectors are quantized, which is what keeps memory use manageable at scale. Refer to [Default quantization types](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for how the default is chosen, and to [Optimize performance and accuracy](optimize-performance-accuracy.md) if you need to override it.
+The `index_options.type` default is particularly important: by default your `float` vectors are quantized, which is what keeps memory use manageable at scale. Refer to [Default quantization types](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for how the default is chosen, and to [Optimize performance and accuracy](optimize-performance-accuracy.md) if you need to override it.
 
 ## Indexing considerations for approximate kNN search [knn-indexing-considerations]
 
 
-For approximate kNN, {{es}} indexes dense vector values as an [HNSW graph](https://arxiv.org/abs/1603.09320) or as clusters using [DiskBBQ](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction). Building these structures is compute-intensive. [GPU-accelerated vector indexing](elasticsearch://reference/elasticsearch/mapping-reference/gpu-vector-indexing.md) is also supported. To reduce memory use and speed up vector distance calculations, {{es}} also [quantizes](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) vectors. Quantization comes at the expense of recall, which you can compensate for by [oversampling and rescoring](optimize-performance-accuracy.md#dense-vector-knn-search-rescoring) more vectors. The `hnsw` and `bbq_disk` types each come with their own settings to balance recall, indexing speed, and vector search speed. For guidance on choosing and tuning these settings, refer to the [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md). When defining your `dense_vector` mapping, use [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) to set these parameters.
+For approximate kNN, {{es}} indexes dense vector values as an [HNSW graph](https://arxiv.org/abs/1603.09320) or as clusters using [DiskBBQ](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction). Building these structures is compute-intensive. [GPU-accelerated vector indexing](elasticsearch://reference/elasticsearch/mapping-reference/gpu-vector-indexing.md) is also supported. To reduce memory use and speed up vector distance calculations, {{es}} also [quantizes](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) vectors.
+
+Quantization comes at the expense of recall, which you can compensate for by [oversampling and rescoring](optimize-performance-accuracy.md#dense-vector-knn-search-rescoring) more vectors. The `hnsw` and `bbq_disk` types each come with their own settings to balance recall, indexing speed, and vector search speed.
+
+For guidance on choosing and tuning these settings, refer to the [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md). When defining your `dense_vector` mapping, use [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) to set these parameters.
 
 ## Vector index mode [approximate-knn-vector-index-mode]
 
@@ -144,6 +148,6 @@ Refer to [Index modes for vector search](elasticsearch://reference/elasticsearch
 - [Examples of using approximate kNN in search queries](build-search-queries.md): See examples of using approximate kNN for filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds.
 - [Nested kNN search](nested-knn-search.md): Learn how to run approximate kNN search on nested vectors for passage retrieval, filtering, inner hits, and chunked content.
 - [Optimize performance and accuracy](optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
-- [Tune approximate kNN search](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md): Production guidance on vector memory footprint, node sizing, filesystem cache warm-up, GPU-accelerated indexing, and on-disk rescoring.
-- [`dense_vector` field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md): API reference for vector field mapping, including `similarity`, `index_options`, and quantization parameters.
+- [Tune approximate kNN search](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md): Production guidance for vector memory, node sizing, indexing, filesystem cache, and on-disk rescoring.
+- [`dense_vector` field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md): API reference for vector field mapping, including `index`, `similarity`, `index_options`, and quantization parameters.
 - [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.
