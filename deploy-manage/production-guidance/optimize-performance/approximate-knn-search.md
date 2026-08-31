@@ -60,7 +60,7 @@ You can also disable storing `dense_vector` fields in the `_source` through the 
 
 Another option is to use  [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source).
 
-## Ensure data nodes have enough memory [_ensure_data_nodes_have_enough_memory]
+## Ensure data nodes have enough capacity [_ensure_data_nodes_have_enough_memory]
 
 {{es}} uses either the Hierarchical Navigable Small World ([HNSW](https://arxiv.org/abs/1603.09320)) algorithm or the Disk Better Binary Quantization ([DiskBBQ](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) algorithm for approximate kNN search.
 
@@ -70,13 +70,22 @@ DiskBBQ is a clustering algorithm which can scale efficiently often on less memo
 
 A `dense_vector` field stores more than the values you index. On disk, {{es}} keeps the raw vectors (for rescoring and reindex), any quantized copy used for approximate search, and the search structure (an HNSW graph, or DiskBBQ centroids and clusters). Off-heap RAM is only the working set that must stay in the operating system's filesystem cache, which is separate from the Java heap.
 
-The next sections list the Lucene files that make up a `dense_vector` field, then estimate the off-heap RAM for the files that must stay in cache.
+Use the calculator to estimate disk and off-heap RAM. [Vector files](#vector-files-off-heap-ram) and the formulas explain what those totals include.
+
+### Vector sizing calculator [vector-sizing-calculator]
+
+Use this calculator to estimate disk and off-heap RAM for a `dense_vector` field. The RAM total is the working set that must stay in the filesystem cache. Disk includes every persisted structure, including raw vectors that stay on disk when you use quantization.
+
+:::{vector-sizing-calculator}
+:::
+
+These estimates are a planning baseline. Real usage depends on your data, indexing settings, query patterns, merges, deletes, and rescoring options. [Vector files](#vector-files-off-heap-ram) lists the Lucene files behind the totals. [Estimate off-heap RAM](#_estimate_off_heap_ram) and [Estimate disk usage](#_estimate_disk_usage) show the formulas.
 
 ### Vector files [vector-files-off-heap-ram]
 
 Each structure is a Lucene file (also reported under `off_heap.*_size_bytes` in [index stats]({{es-apis}}operation/operation-indices-stats)). Metadata files (`.vem`, `.vemf`, `.vemq`, `.vemb`) are small and you do not need to preload them.
 
-The **Off-heap RAM** column is whether that file is part of the working set you size in [Estimate off-heap RAM](#_estimate_off_heap_ram):
+The **Off-heap RAM** column is whether that file is part of the working set you size in the [calculator](#vector-sizing-calculator) and in [Estimate off-heap RAM](#_estimate_off_heap_ram):
 
 - **Yes**: must stay in the filesystem cache. Include it in the RAM estimate.
 - **Partial**: optional headroom; only touched parts are paged in.
