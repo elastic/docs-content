@@ -12,7 +12,7 @@ products:
 
 # Quickstart for Docker on {{product.cloud-hosted}}
 
-Learn how to set up the {{agent}} and EDOT SDKs in a Docker environment with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/motlp.md) — the recommended ingestion path for ECH.
+Learn how to set up the {{agent}} and EDOT SDKs in a Docker environment with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/motlp.md), which is the recommended ingestion path for ECH.
 
 ## Guided setup
 
@@ -26,13 +26,33 @@ Learn how to set up the {{agent}} and EDOT SDKs in a Docker environment with {{e
 
 ## Manual installation
 
-Follow these steps to deploy the {{agent}} and EDOT SDKs in Docker with ECH.
+Follow these steps to deploy the {{agent}} and EDOT SDKs in Docker with ECH:
 
 :::::{stepper}
 
 ::::{step} Create the config file
 
-Create an `otel-collector-config.yml` file with your {{agent}} configuration for the {{motlp}}. Refer to the [configuration reference](elastic-agent://reference/edot-collector/config/default-config-standalone.md).
+Create an {{agent}} configuration file for the {{motlp}}. This example uses the filename `otel-collector-config.yml`.
+
+Start from the [logs, metrics, and traces sample for the {{motlp}}](https://github.com/elastic/elastic-agent/blob/v{{version.edot_collector}}/internal/edot/samples/linux/managed_otlp/logs_metrics_traces.yml). The sample is written for a host process, so adapt it for the Compose mounts in this quickstart:
+
+1. In `file_log/platformlogs`, set `include` to `[/hostfs/var/log/*.log]`.
+2. In `hostmetrics/system`, set `root_path: /hostfs`.
+3. Add a `docker_stats` receiver and a pipeline that exports those metrics:
+
+   ```yaml
+   receivers:
+     docker_stats: {}
+
+   service:
+     pipelines:
+       metrics/docker:
+         receivers: [docker_stats]
+         processors: [resourcedetection]
+         exporters: [otlp_grpc/ingest_metrics_traces]
+   ```
+
+Keep the other receivers, processors, exporters, and pipelines from the sample. For details about the pipelines, refer to [Using the Managed OTLP Endpoint](elastic-agent://reference/edot-collector/config/default-config-standalone.md#using-the-managed-otlp-endpoint).
 
 ::::
 
@@ -41,11 +61,15 @@ Create an `otel-collector-config.yml` file with your {{agent}} configuration for
 **Find your endpoint**
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co/).
-2. From the home page, find your deployment in **Hosted deployments**, and select **Manage**.
+2. Find your deployment in **Hosted deployments**, and select **Manage**.
 3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP**.
 4. Copy the public endpoint value.
 
 **Create an API key**
+
+:::{note}
+The {{motlp}} validates API keys using {{product.apm}} application privileges. Index-level privilege scoping is not yet supported, meaning that API keys with custom index-level role descriptors return a `PermissionDenied` error.
+:::
 
 :::{dropdown} Using {{kib}}
 1. Go to **{{stack-manage-app}}** → **API keys**.
@@ -97,7 +121,7 @@ The `event:write` privilege for the `apm` application is the minimum required to
 
 ::::{step} Create the .env file
 
-Create a `.env` file with the following content. Replace the placeholder values with your {{ecloud}} credentials:
+Create a `.env` file with the following content. Replace the placeholders with your {{ecloud}} credentials and the path to the configuration file you created:
 
 ```bash subs=true
 HOST_FILESYSTEM=/
@@ -127,7 +151,7 @@ services:
    restart: unless-stopped
    command: ["--config", "/etc/otelcol-config.yml" ]
    network_mode: host
-   user: 0:0
+   user: "0:0"
    volumes:
      - ${HOST_FILESYSTEM}:/hostfs:ro
      - ${DOCKER_SOCK}:/var/run/docker.sock:ro
@@ -187,12 +211,32 @@ Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 
 ## Using the `elasticsearch` exporter
 
-If you need to write telemetry directly to {{es}} — for example, for pipeline customizations not yet supported through {{motlp}} — use the following `.env` and compose configuration instead.
+If you need to write telemetry directly to {{es}} (for example, for pipeline customizations not yet supported through {{motlp}}), use a different Collector configuration, `.env` file, and compose file.
+
+Start from the [logs, metrics, and traces sample for direct ingestion into {{es}}](https://github.com/elastic/elastic-agent/blob/v{{version.edot_collector}}/internal/edot/samples/linux/logs_metrics_traces.yml). The sample is written for a host process, so adapt it for the Compose mounts in this quickstart:
+
+1. In `file_log/platformlogs`, set `include` to `[/hostfs/var/log/*.log]`.
+2. In `hostmetrics/system`, set `root_path: /hostfs`.
+3. Add a `docker_stats` receiver and a pipeline that exports those metrics:
+
+   ```yaml
+   receivers:
+     docker_stats: {}
+
+   service:
+     pipelines:
+       metrics/docker:
+         receivers: [docker_stats]
+         processors: [resourcedetection]
+         exporters: [elasticsearch/otel]
+   ```
+
+Keep the other receivers, processors, exporters, and pipelines from the sample. For details about the pipelines, refer to [Direct ingestion into {{es}}](elastic-agent://reference/edot-collector/config/default-config-standalone.md#direct-ingestion-into-elasticsearch).
 
 :::{include} ../../_snippets/retrieve-credentials.md
 :::
 
-Create a `.env` file with your {{es}} endpoint and credentials:
+Create a `.env` file with your {{es}} endpoint, credentials, and the path to the configuration file:
 
 ```bash subs=true
 HOST_FILESYSTEM=/
@@ -218,7 +262,7 @@ services:
    restart: unless-stopped
    command: ["--config", "/etc/otelcol-config.yml" ]
    network_mode: host
-   user: 0:0
+   user: "0:0"
    volumes:
      - ${HOST_FILESYSTEM}:/hostfs:ro
      - ${DOCKER_SOCK}:/var/run/docker.sock:ro
@@ -245,6 +289,6 @@ Exporting failed. Dropping data.
 "Unauthenticated desc = ApiKey prefix not found"
 ```
 
-Format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a Collector or SDK.
+For a Collector, format the header as `"Authorization": "ApiKey <api-key>"`. For an SDK, format it as `"Authorization=ApiKey <api-key>"`.
 
 For additional troubleshooting, refer to [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md).

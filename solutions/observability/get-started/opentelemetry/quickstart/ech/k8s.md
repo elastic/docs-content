@@ -10,9 +10,9 @@ products:
   - id: edot-collector
 ---
 
-# Quickstart for Kubernetes on Elastic Cloud Hosted
+# Quickstart for Kubernetes on {{product.cloud-hosted}}
 
-Learn how to set up the {{agent}} and EDOT SDKs in a {{k8s}} environment with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/motlp.md) — the recommended ingestion path for ECH.
+Learn how to set up the {{agent}} and EDOT SDKs in a {{k8s}} environment with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/motlp.md), which is the recommended ingestion path for ECH.
 
 ## Guided setup
 
@@ -26,7 +26,7 @@ Learn how to set up the {{agent}} and EDOT SDKs in a {{k8s}} environment with {{
 
 ## Manual installation
 
-Follow these steps to deploy the {{agent}} and EDOT SDKs in {{k8s}} with ECH.
+Follow these steps to deploy the {{agent}} and EDOT SDKs in {{k8s}} with ECH:
 
 :::::{stepper}
 
@@ -45,11 +45,15 @@ helm repo add open-telemetry "https://open-telemetry.github.io/opentelemetry-hel
 **Find your endpoint**
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co/).
-2. From the home page, find your deployment in **Hosted deployments**, and select **Manage**.
+2. Find your deployment in **Hosted deployments**, and select **Manage**.
 3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP**.
 4. Copy the public endpoint value.
 
 **Create an API key**
+
+:::{note}
+The {{motlp}} validates API keys using {{product.apm}} application privileges. Index-level privilege scoping is not yet supported, meaning that API keys with custom index-level role descriptors return a `PermissionDenied` error.
+:::
 
 :::{dropdown} Using {{kib}}
 1. Go to **{{stack-manage-app}}** → **API keys**.
@@ -130,6 +134,8 @@ helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
 
 The Operator provides a deployment of the {{agent}} and configuration environment variables. This allows SDKs and instrumentation to send data to the {{agent}} without further configuration.
 
+For details about the pipelines, refer to [Managed OTLP Endpoint](elastic-agent://reference/edot-collector/config/default-config-k8s.md#managed-otlp-endpoint).
+
 ::::
 
 ::::{step} Auto-instrument applications
@@ -162,7 +168,7 @@ Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 
 ## Using the `elasticsearch` exporter
 
-If you need to write telemetry directly to {{es}} — for example, for pipeline customizations not yet supported through {{motlp}} — use the following configuration instead.
+If you need to write telemetry directly to {{es}} (for example, for pipeline customizations not yet supported through {{motlp}}), use the following configuration instead.
 
 Create the secret with your {{es}} endpoint:
 
@@ -183,6 +189,8 @@ helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
 --version '{{kube-stack-version}}'
 ```
 
+For details about the pipelines, refer to [Direct ingestion into {{es}}](elastic-agent://reference/edot-collector/config/default-config-k8s.md#direct-ingestion-into-elasticsearch).
+
 ## Troubleshooting
 
 The following issues might occur.
@@ -197,6 +205,6 @@ Exporting failed. Dropping data.
 "Unauthenticated desc = ApiKey prefix not found"
 ```
 
-Format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a Collector or SDK.
+For a Collector, format the header as `"Authorization": "ApiKey <api-key>"`. For an SDK, format it as `"Authorization=ApiKey <api-key>"`.
 
 For additional troubleshooting, refer to [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md).

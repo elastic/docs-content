@@ -10,9 +10,9 @@ products:
   - id: edot-collector
 ---
 
-# Quickstart for hosts and VMs on Elastic Cloud Hosted
+# Quickstart for hosts and VMs on {{product.cloud-hosted}}
 
-Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/motlp.md) — the recommended ingestion path for ECH.
+Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/motlp.md), which is the recommended ingestion path for ECH.
 
 ## Guided setup
 
@@ -26,7 +26,7 @@ Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{ech}} (E
 
 ## Manual installation
 
-Follow these steps to deploy the {{agent}} and EDOT SDKs with ECH.
+Follow these steps to deploy the {{agent}} and EDOT SDKs with ECH:
 
 ::::::{stepper}
 
@@ -41,11 +41,15 @@ Follow these steps to deploy the {{agent}} and EDOT SDKs with ECH.
 **Find your endpoint**
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co/).
-2. From the home page, find your deployment in **Hosted deployments**, and select **Manage**.
+2. Find your deployment in **Hosted deployments**, and select **Manage**.
 3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP**.
 4. Copy the public endpoint value.
 
 **Create an API key**
+
+:::{note}
+The {{motlp}} validates API keys using {{product.apm}} application privileges. Index-level privilege scoping is not yet supported, meaning that API keys with custom index-level role descriptors return a `PermissionDenied` error.
+:::
 
 :::{dropdown} Using {{kib}}
 1. Go to **{{stack-manage-app}}** → **API keys**.
@@ -140,7 +144,7 @@ $content | Set-Content .\otel.yml
 :::
 ::::
 
-For more details, refer to the [configuration reference](elastic-agent://reference/edot-collector/config/default-config-standalone.md).
+For details about the pipelines, refer to [Using the Managed OTLP Endpoint](elastic-agent://reference/edot-collector/config/default-config-standalone.md#using-the-managed-otlp-endpoint).
 
 :::::
 
@@ -164,7 +168,7 @@ sudo ./otelcol --config otel.yml
 ::::
 
 :::{note}
-By default, the Collector opens ports `4317` and `4318` to receive application data from locally running OTel SDKs.
+By default, the Collector opens ports `4317` and `4318` to receive application data from locally running EDOT SDKs.
 :::
 
 :::::
@@ -194,7 +198,7 @@ Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 
 ## Using the `elasticsearch` exporter
 
-If you need to write telemetry directly to {{es}} using the `elasticsearch` exporter — for example, for pipeline customizations not yet supported through {{motlp}} — follow these steps.
+If you need to write telemetry directly to {{es}} using the `elasticsearch` exporter (for example, for pipeline customizations not yet supported through {{motlp}}), follow these steps.
 
 :::{include} ../../_snippets/retrieve-credentials.md
 :::
@@ -242,6 +246,8 @@ $content | Set-Content .\otel.yml
 :::
 ::::
 
+For details about the pipelines, refer to [Direct ingestion into {{es}}](elastic-agent://reference/edot-collector/config/default-config-standalone.md#direct-ingestion-into-elasticsearch).
+
 ## Troubleshooting
 
 The following issues might occur.
@@ -256,6 +262,6 @@ Exporting failed. Dropping data.
 "Unauthenticated desc = ApiKey prefix not found"
 ```
 
-Format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a Collector or SDK.
+For a Collector, format the header as `"Authorization": "ApiKey <api-key>"`. For an SDK, format it as `"Authorization=ApiKey <api-key>"`.
 
 For additional troubleshooting, refer to [Troubleshooting common issues with the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md).
