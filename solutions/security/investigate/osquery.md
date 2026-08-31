@@ -248,6 +248,8 @@ To save a query:
             {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` This frequency applies when the query is added to a pack that uses an **Interval** schedule. If the pack uses a **Date & time** schedule, the query inherits the [pack schedule](#osquery-set-pack-schedule) instead.
         * The minimum [version of Osquery](https://github.com/osquery/osquery/releases) required to run the query.
         * The operating system required to run the query. For information about supported platforms per table, refer to the [Osquery schema](https://osquery.io/schema).
+     
+    * All query results are [snapshot logs](https://osquery.readthedocs.io/en/stable/deployment/logging/#snapshot-logs) that represent a point in time with a set of results, with no [differentials]  (https://osquery.readthedocs.io/en/stable/deployment/logging/#differential-logs).
 
 3. Click **Test configuration** to test the query and any mapped fields:
 
