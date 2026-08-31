@@ -122,7 +122,14 @@ redirects:
   'solutions/observability/apps/observe-lambda-functions.md': 'solutions/observability/apm/observe-lambda-functions.md'
   'solutions/observability/apps/integrate-with-machine-learning.md': 'solutions/observability/apm/machine-learning.md'
   'solutions/observability/apps/apm-agent-explorer.md': 'solutions/observability/apm/apm-agent-explorer.md'
-  'solutions/observability/apps/applications-ui-settings.md': 'solutions/observability/apm/applications-ui-settings.md'
+  'solutions/observability/apps/applications-ui-settings.md':
+    to: 'kibana://reference/advanced-settings.md'
+    anchors:
+      '': 'observability-advanced-settings'
+  'solutions/observability/apm/applications-ui-settings.md':
+    to: 'kibana://reference/advanced-settings.md'
+    anchors:
+      '': 'observability-advanced-settings'
   'solutions/observability/apps/act-on-data.md': 'solutions/observability/apm/act-on-data.md'
   'solutions/observability/apps/create-apm-rules-alerts.md': 'solutions/observability/apm/create-apm-rules-alerts.md'
   'solutions/observability/apps/create-custom-links.md': 'solutions/observability/apm/create-custom-links.md'
@@ -652,6 +659,45 @@ redirects:
       'create-sec-serverless-project':
   'solutions/security/elastic-security-serverless.md': 'solutions/security.md'
 
+# Related to https://github.com/elastic/docs-content-internal/issues/1633
+  'solutions/security/get-started/configure-advanced-settings.md':
+    to: 'kibana://reference/advanced-settings.md'
+    anchors:
+      '': 'kibana-siem-settings'
+      'access-privileged-user-monitoring': 'kibana-siem-settings'
+      'custom-alert-closing-reasons': 'kibana-siem-settings'
+      'enable-alerts-and-attacks-alignment': 'kibana-siem-settings'
+      'enable-asset-inventory': 'kibana-siem-settings'
+      'enable-attack-discovery-workflows': 'kibana-siem-settings'
+      'enable-ccs-warning': 'kibana-siem-settings'
+      'enable-cloud-connector-deployment': 'kibana-siem-settings'
+      'enable-graph-visualization': 'kibana-siem-settings'
+      'enable-new-flyout': 'kibana-siem-settings'
+      'enable-rule-changes-history': 'kibana-siem-settings'
+      'exclude-cold-frozen-data-rule-executions': 'kibana-siem-settings'
+      'exclude-cold-frozen-tiers': 'kibana-siem-settings'
+      'how-attack-discovery-workflows-affects-existing-schedules': 'kibana-siem-settings'
+      'included-data-stream-namespaces-rule-execution': 'kibana-siem-settings'
+      'ip-reputation-links': 'kibana-siem-settings'
+      'manage-alert-tags': 'kibana-siem-settings'
+      'max-cases-cases-connector': 'kibana-cases-settings'
+      'max-notes-alerts-events': 'kibana-siem-settings'
+      'security-advanced-settings': 'kibana-siem-settings'
+      'security-advanced-settings-access-advanced-settings': 'kibana-settings-reference'
+      'show-related-integrations': 'kibana-siem-settings'
+      'suppression-window-behavior': 'kibana-siem-settings'
+      'turn-off-esql-based-risk-scoring': 'kibana-siem-settings'
+      'update-sec-indices': 'kibana-siem-settings'
+      'update-threat-intel-indices': 'kibana-siem-settings'
+      'visualizations-in-flyout': 'kibana-siem-settings'
+      '_change_the_default_search_interval_and_data_refresh_time': 'kibana-siem-settings'
+      '_modify_news_feed_settings': 'kibana-siem-settings'
+      '_set_machine_learning_score_threshold': 'kibana-siem-settings'
+    many:
+      - to: 'kibana://reference/configuration-reference/telemetry-settings.md'
+        anchors:
+          'telemetry-settings':
+
 # Related to https://github.com/elastic/docs-content/pull/3808
   'solutions/observability/get-started/other-tutorials/add-data-from-splunk.md': 'solutions/observability/get-started.md'
 
@@ -1138,4 +1184,12 @@ redirects:
         anchors:
           'attacks-next-steps': 'manage-saved-discoveries'
   'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'
-  
+  # related to https://github.com/elastic/docs-content/issues/7709
+  'solutions/elasticsearch-solution-project/search-connection-details.md':
+    to: 'solutions/elasticsearch-solution-project/search-connection-details.md'
+    anchors:
+      '_elastic_cloud_and_self_hosted_deployments': 'find-endpoint-cloud-self-managed'
+      '_serverless_deployments': 'find-endpoint-cloud-self-managed'
+      'find-cloud-id-serverless': 'find-endpoint-cloud-self-managed'
+      'create-an-api-key-serverless': 'create-an-api-key-cloud-self-managed'
+

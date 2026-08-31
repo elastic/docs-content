@@ -179,37 +179,6 @@ PUT image-index
 }
 ```
 
-### Near-real-time kNN [near-real-time-knn]
-```{applies_to}
-stack: ga 9.5
-```
-
-Use the `near_real_time` parameter in the top-level `knn` object to control whether approximate kNN search includes vectors that have not yet been optimized for search.
-
-For approximate kNN, {{es}} stores dense vector values per segment as an [HNSW graph](https://arxiv.org/abs/1603.09320) or as [DiskBBQ](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction) clusters. Building these structures is compute-intensive. Until that work finishes for newly indexed data, those vectors are not yet optimized for approximate kNN search. 
-
-The default value depends on the [index mode](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting). For indices that use the `standard` mode, `near_real_time` defaults to `true`. For indices that use [`vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) mode, it defaults to `false`. Refer to [Index modes for vector search](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-modes) and [Vector index mode](../vector.md#vector-index-mode) for more information.
-
-When `near_real_time` is `true`, kNN search can include vectors from newly indexed data before optimization finishes. Results can include documents you indexed seconds ago, but search can be slower while optimization is still in progress. Use this when search freshness matters more than indexing throughput, for example interactive workflows where users expect newly indexed documents to appear in kNN results immediately.
-
-When `near_real_time` is `false`, kNN search skips vectors that are not yet fully optimized. This improves indexing throughput for large vector workloads, but newly indexed documents are excluded from kNN search results until background optimization is complete. Use this when you are indexing large volumes of vectors and can tolerate a short delay before those documents become searchable with approximate kNN.
-
-
-The following example overrides the default behavior and enables near-real-time search, so the approximate kNN query can include vectors that were indexed very recently:
-
-```console
-POST my-vector-index/_search
-{
-  "knn": {
-    "field": "image-vector",
-    "query_vector": [-5, 9, -12],
-    "k": 10,
-    "num_candidates": 100,
-    "near_real_time": true
-  }
-}
-```
-
 ### Tune approximate kNN for speed or accuracy [tune-approximate-knn-for-speed-accuracy]
 
 To gather results, the kNN API first finds a `num_candidates` number of approximate neighbors per shard, computes similarity to the query vector, selects the top `k` per shard, and merges them into the global top `k` nearest neighbors.

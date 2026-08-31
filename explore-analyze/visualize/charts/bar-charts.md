@@ -19,11 +19,16 @@ Bar charts are one of the most versatile and widely used visualizations for comp
 
 They work with any type of data: numeric values, counts, averages, or calculations. You can compare sales by region, track errors by service, analyze user engagement by feature, or rank products by revenue. Using bar charts, you can display data horizontally or vertically, stacked to show part-to-whole relationships, or grouped to compare multiple metrics side by side.
 
-You can create bar charts in {{kib}} using [**Lens**](../lens.md).
+You can build a bar chart in {{kib}} in either of these ways:
+
+- [With the point-and-click editor](#build-a-bar-chart)
+- [With an {{esql}} query](#build-a-bar-chart-with-esql)
+
+To automate chart or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
 ![Bar chart showing sales by category with different layouts](../../images/stacked-bar-chart.png)
 
-## Build a bar chart
+## Build a bar chart with the point-and-click editor [build-a-bar-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -57,8 +62,40 @@ The chart preview updates to show bars representing your data. If you added a br
 Refer to [](#settings) for all data configuration options for your bar chart.
 ::::
 
-::::{step} Customize the chart to follow best practices
-Tweak the appearance of the chart to your needs. Consider the following best practices:
+::::{step} Save the chart
+:::{include} ../../_snippets/save-visualization.md
+:::
+::::
+
+:::::
+
+## Build a bar chart with an {{esql}} query [build-a-bar-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+A bar chart needs a categorical column to identify each bar and a numeric metric column to determine its length. In this query, `BY` returns one row for each response code, `COUNT` provides its metric value, and `SORT` and `LIMIT` retain the ten response codes with the most requests:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS requests = COUNT(*) BY response.keyword
+| SORT requests DESC
+| LIMIT 10
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Bar**.
+3. Assign `response.keyword` to the **Horizontal axis** and `requests` to the **Vertical axis**.
+4. Customize the chart appearance using the [bar chart settings](#settings).
+5. Select **Apply and close**.
+
+The chart preview shows one bar for each response code. The request count determines the height of each bar.
+
+## Apply bar chart best practices [bar-chart-best-practices]
+
+After building the chart with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
 
 **Select appropriate orientation**
 :   Use vertical bars for time-based data and horizontal bars when category labels are long or you have many categories to display.
@@ -75,17 +112,7 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 **Sort meaningfully**
 :   Sort bars by value (ascending or descending) to make comparisons easier, or keep them in alphabetical/chronological order when the sequence matters.
 
-Refer to [](#settings) for a complete list of options.
-
-For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
-::::
-
-::::{step} Save the chart
-:::{include} ../../_snippets/save-visualization.md
-:::
-::::
-
-:::::
+Refer to [Bar chart settings](#settings) for all bar chart configuration options. For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 
 ## Advanced bar chart scenarios
 
