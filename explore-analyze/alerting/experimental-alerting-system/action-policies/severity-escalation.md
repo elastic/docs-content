@@ -10,7 +10,7 @@ description: "How to manage notifications when alert episode severity changes in
 
 # Manage severity escalation notifications for the {{alerting-v2-system}} [severity-escalation]
 
-Not every severity change fires a notification. The outcome depends on whether the action policy has already matched the episode and which frequency option you've selected.
+Use this page to control when a workflow runs as an episode's severity changes, including first-time matches, duplicate invocations, and de-escalation. Not every severity change invokes a workflow. The outcome depends on whether the action policy has already matched the episode and which frequency option you've selected.
 
 ## Notify when an episode escalates into a new severity threshold
 

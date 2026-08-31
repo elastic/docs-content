@@ -12,6 +12,8 @@ description: "How rule mode determines whether Kibana groups matching rows into 
 
 Rule mode is a required setting for rules in the {{alerting-v2-system}}. It determines whether {{kib}} groups each [rule event](rule-event-field-reference.md) into an alert episode or keeps it available for later analysis. It's set by the rule creation method. Some [creation paths](create-a-rule.md) only support one mode.
 
+Use this page to choose a mode when you create a rule, and to understand what each mode writes to `.rule-events`.
+
 | Mode | `kind` value | Behavior |
 | --- | --- | --- |
 | Signal | `signal` | {{kib}} writes a rule event with `type: signal` for each matching row. No alert episodes, no notifications. |

@@ -10,7 +10,7 @@ description: "How to set up notifications and actions for rules in the experimen
 
 # Notifications and actions for the {{alerting-v2-system}} [notifications-actions]
 
-Action policies invoke workflows, which send notifications for alert episodes. Rule events that aren't part of an alert episode (`type: signal`) stay in `.rule-events`. Both action policies and lifecycle triggers require an alert episode. For an explanation of how action policies and workflows connect at runtime, refer to [Connect workflows](workflows-alerting.md).
+Use this page to set up notifications and actions for alert episodes. Build a workflow that sends a notification or runs automation, then create an action policy that invokes it. Rule events that aren't part of an alert episode (`type: signal`) stay in `.rule-events`. Both action policies and lifecycle triggers require an alert episode. For how those connections work at runtime, refer to [Connect workflows](workflows-alerting.md).
 
 :::{note}
 To use workflows, your role must have the appropriate privileges and your subscription must include workflows. Refer to the subscription page for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}}/self-managed]({{subscriptions}}) for a breakdown of available features by tier.

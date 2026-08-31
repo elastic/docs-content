@@ -12,6 +12,8 @@ description: "Rules in the experimental alerting system define what to detect us
 
 A rule is where the {{alerting-v2-system}} starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. On each scheduled run, {{kib}} writes each matching row as a [rule event](rules/rule-event-field-reference.md) to `.rule-events`. Those events are never overwritten. Alert episodes (and any notifications) come from events that are grouped into an episode.
 
+Use this page to understand what a rule does, why notifications are sent by workflows on action policies rather than on the rule, and to find the right path to create, configure, or manage a rule.
+
 ## Workflows on action policies send notifications [rules-dont-control-notifications]
 
 Rules define *what* to detect. Action policies match alert episodes from any rule and decide whether and when to invoke a workflow. The workflow sends the notification.

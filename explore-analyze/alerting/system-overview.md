@@ -13,6 +13,8 @@ description: The experimental Kibana alerting system writes each match as a rule
 
 The {{alerting-v2-system}} in {{kib}} evaluates your {{es}} data on a schedule. You define the conditions that matter. {{kib}} writes each match as a rule event. Configuration determines whether those events are tracked as alert episodes (and can notify) or stay available for later analysis.
 
+This page introduces the five objects in the system and how they connect. Use it to decide where to go next. For a step-by-step walkthrough after a rule runs, refer to [How it works](experimental-alerting-system/how-it-works.md).
+
 ::::{note}
 In the generally available {{kib}} alerting system, the term **alert** refers to a tracked occurrence of a rule condition. In the {{alerting-v2-system}}, the equivalent concept is called an **alert episode**. Each system's APIs, UI, and instructions apply only to that system's concepts.
 ::::

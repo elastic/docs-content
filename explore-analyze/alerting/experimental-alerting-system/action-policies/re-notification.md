@@ -10,6 +10,8 @@ description: "How to configure action policies so a workflow re-notifies when an
 
 # Re-notify for persistently active episodes in the {{alerting-v2-system}} [re-notification]
 
+Use this page to configure an action policy so a workflow keeps running while an episode stays active without a status change.
+
 The `On status change` frequency option invokes a workflow once for each status transition, for example when an episode activates or resolves. This is efficient for reducing noise from rules in the {{alerting-v2-system}}, but a persistently active episode that only changes in severity doesn't cause another invocation.
 
 To re-notify for episodes that stay active without a status change, use a time-based throttle.
