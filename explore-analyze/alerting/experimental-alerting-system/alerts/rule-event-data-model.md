@@ -22,7 +22,7 @@ Every time a rule finds a match, {{kib}} writes a rule event to `.rule-events`. 
 | `alert` | One evaluation in an alert episode. The episode is the grouping of events that share an `episode.id`. |
 
 :::{note}
-Action policies only evaluate alert episodes, so events with `type: signal` never reach a policy or a workflow.
+Rule events with `type: signal` stay in `.rule-events`. They don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers.
 :::
 
 ## Shared index and schema [shared-index-and-schema]

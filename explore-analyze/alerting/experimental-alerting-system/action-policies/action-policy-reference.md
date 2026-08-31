@@ -30,17 +30,17 @@ Use these fields in the **Match conditions** expression to filter which alert ep
 
 ## Notify per options [action-policy-notification-grouping]
 
-Controls how the action policy batches matching episodes before sending a notification.
+Controls how the action policy batches matching episodes before invoking a workflow.
 
 | Option | Description | When to use |
 |---|---|---|
-| Episode | The action policy sends one notification for each alert episode, independently of other episodes. Default selection. | You need issue-level visibility and want to handle each problem separately. |
-| Group | The action policy bundles alert episodes that share the same value for a specified `data.*` field into one notification for each unique value. Each unique value forms a **notification group**. | A rule produces many related alert episodes, such as one for each service or host, and you want to reduce noise by batching them into shared notifications. |
-| Digest | The action policy combines all matching alert episodes into a single notification, regardless of what they have in common. | You want a single periodic summary of everything that matched, rather than individual alert episodes. |
+| Episode | The action policy invokes a workflow once for each alert episode, independently of other episodes. Default selection. | You need issue-level visibility and want to handle each problem separately. |
+| Group | The action policy bundles alert episodes that share the same value for a specified `data.*` field into one workflow invocation for each unique value. Each unique value forms a **notification group**. | A rule produces many related alert episodes, such as one for each service or host, and you want to reduce noise by batching them into shared notifications. |
+| Digest | The action policy combines all matching alert episodes into a single workflow invocation, regardless of what they have in common. | You want a single periodic summary of everything that matched, rather than individual alert episodes. |
 
 ## Frequency [action-policy-throttle-strategies]
 
-Frequency controls how often the action policy fires for a given alert episode or notification group. The available options depend on the **Notify per** setting. Not all options are valid for all modes.
+Frequency controls how often the action policy can invoke a workflow for a given alert episode or notification group. The available options depend on the **Notify per** setting. Not all options are valid for all modes.
 
 :::{note}
 The `.alert-actions` data stream records a throttled notification as `suppress`, not `throttled`. This is the same event described as `throttled` in the action policy execution history and event log; the two streams just use different vocabulary. For the full mapping, refer to [Event-log outcomes and .alert-actions action types](review-action-policy-execution-history.md#outcome-vocab-mapping).
@@ -48,10 +48,10 @@ The `.alert-actions` data stream records a throttled notification as `suppress`,
 
 | Option | Description | When to use |
 |---|---|---|
-| On status change | Notifies when the alert episode status changes, for example from active to recovering. One notification for each transition. | You only need to know when something breaks and when it's resolved. Use this when you trust your ticketing or incident workflow to track ongoing issues. |
-| On status change + repeat at interval | Notifies on status change, then resends notifications at a regular interval while the alert episode remains in the same status. | You want status change notifications plus periodic reminders that a problem is still unresolved, in case it has been missed or pushed aside. |
+| On status change | Invokes a workflow when the alert episode status changes, for example from active to recovering. One notification for each transition. | You only need to know when something breaks and when it's resolved. Use this when you trust your ticketing or incident workflow to track ongoing issues. |
+| On status change + repeat at interval | Invokes a workflow on status change, then repeats at a regular interval while the alert episode remains in the same status. | You want status change notifications plus periodic reminders that a problem is still unresolved, in case it has been missed or pushed aside. |
 | At most once every… | Limits notifications at one for each alert episode or notification group within the chosen interval, regardless of rule frequency. | You want to limit notification volume for noisy rules without missing new or ongoing issues. |
-| Every evaluation | Notifies on every rule evaluation. Can be noisy. Use sparingly and only with infrequent rule schedules. | You need a full audit trail of every evaluation, or the rule runs infrequently enough that noise isn't a concern. |
+| Every evaluation | Invokes a workflow on every rule evaluation. Can be noisy. Use sparingly and only with infrequent rule schedules. | You need a full audit trail of every evaluation, or the rule runs infrequently enough that noise isn't a concern. |
 
 ### Frequency options for Episode [action-policy-frequency-episode]
 
@@ -59,10 +59,10 @@ Available frequency options when you set **Notify per** to **Episode**.
 
 | Option | Description | Example |
 |---|---|---|
-| On status change | Notifies once when the alert episode opens and once when it recovers. No repeat notifications while it remains active. | A host goes down at 9:00am → one notification. Recovers at 11:00am → one notification. No notifications between them. |
+| On status change | Invokes a workflow once when the alert episode opens and once when it recovers. No repeat notifications while it remains active. | A host goes down at 9:00am → one notification. Recovers at 11:00am → one notification. No notifications between them. |
 | On status change + repeat at interval | Same as On status change, but also sends a reminder at a set interval while the alert episode is still active. | A host goes down at 9:00am → notification. With a 1h repeat: reminder at 10:00am, 11:00am. Recovers at 11:30am → notification. |
 | At most once every… | Limits notifications at one for the episode within the chosen interval, regardless of severity or status changes. Use to re-notify for an episode that stays active without a status change. Refer to [Re-notify for persistently active episodes](re-notification.md). | A critical episode stays open for 3 hours. With a 1h limit, you get a notification when it opens and again every hour it remains open. |
-| Every evaluation | Fires on every rule evaluation, regardless of status. Can be noisy on frequent rule schedules. Avoid in production. | A rule running every 5 minutes with one active alert episode produces up to 288 notifications a day. |
+| Every evaluation | Invokes a workflow on every rule evaluation, regardless of status. Can be noisy on frequent rule schedules. Avoid in production. | A rule running every 5 minutes with one active alert episode produces up to 288 notifications a day. |
 
 ### Frequency options for Group [action-policy-frequency-group]
 
@@ -70,8 +70,8 @@ Available frequency options when you set **Notify per** to **Group**.
 
 | Option | Description | Example |
 |---|---|---|
-| At most once every… | Limits how often each notification group can notify, regardless of how many alert episodes match or how often the rule runs. | 10 alert episodes share `data.host.name: "web-01"`. With a 1h limit, you get at most one notification an hour for that notification group. |
-| Every evaluation | Fires on every rule evaluation for each unique value in the group-by field. Still noisy on frequent rule schedules. | A rule running every 10 minutes with 5 unique host values produces up to 6 notifications an hour for each host. |
+| At most once every… | Limits how often each notification group can invoke a workflow, regardless of how many alert episodes match or how often the rule runs. | 10 alert episodes share `data.host.name: "web-01"`. With a 1h limit, you get at most one notification an hour for that notification group. |
+| Every evaluation | Invokes a workflow on every rule evaluation for each unique value in the group-by field. Still noisy on frequent rule schedules. | A rule running every 10 minutes with 5 unique host values produces up to 6 notifications an hour for each host. |
 
 ### Frequency options for Digest [action-policy-frequency-digest]
 
@@ -80,7 +80,7 @@ Available frequency options when you set **Notify per** to **Digest**.
 | Option | Description | Example |
 |---|---|---|
 | At most once every… (default) | Limits digest delivery to at most one bundled summary within the chosen interval, regardless of how often the rule runs. | A rule running every 5 minutes with a 1h digest interval sends one bundled summary an hour containing all matching alert episodes from that period. |
-| Every evaluation | Fires on every rule run, bundling all matching alert episodes into one message. Can be noisy on frequent rule schedules. | A rule running every 30 minutes with 20 matching alert episodes produces one summary every 30 minutes containing all 20. |
+| Every evaluation | Invokes a workflow on every rule run, bundling all matching alert episodes into one message. Can be noisy on frequent rule schedules. | A rule running every 30 minutes with 20 matching alert episodes produces one summary every 30 minutes containing all 20. |
 
 ## Related pages
 

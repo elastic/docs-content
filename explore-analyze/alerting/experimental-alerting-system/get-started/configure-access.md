@@ -73,11 +73,11 @@ Granting **Alerts: All** or **Alerts: Read** also gives the role direct Elastics
 
 ## Configure notifications [alerting-notifications-privileges]
 
-These privileges control who can set up the action policies and workflows that route alert episode notifications.
+These privileges control who can set up the action policies that invoke workflows and the workflows that send notifications.
 
 ### Action policies [action-policy-management]
 
-The **Action Policies** privilege controls who can manage the action policies that route alert episode notifications.
+The **Action Policies** privilege controls who can manage the action policies that invoke workflows for alert episodes.
 
 | Level | What you can do |
 |---|---|
@@ -90,7 +90,7 @@ Having **Action Policies: All** does not include the ability to create or edit r
 
 ### Workflows [alerting-workflows-access]
 
-Action policies route notifications through workflows. The **Workflows** privilege is set under **Analytics > Workflows** in {{kib}} role management. To create or manage action policies, your role also needs access to the workflows they reference.
+Action policies invoke workflows, which send notifications. The **Workflows** privilege is set under **Analytics > Workflows** in {{kib}} role management. To create or manage action policies, your role also needs access to the workflows they reference.
 
 | Level | What you can do |
 |---|---|
@@ -128,4 +128,4 @@ With access configured, you're ready to:
 
 - [Create a rule](../rules/create-a-rule.md): Write the {{esql}} query that defines what to detect, set whether matches are grouped into an episode, and configure grouping and thresholds.
 - [Set up workflows](../notifications-actions.md): Configure the automation objects that deliver notifications — email, Slack, webhook, and so on.
-- [Create action policies](../action-policies/create-configure-action-policy.md): Define who gets notified, how often, and under what conditions.
+- [Create action policies](../action-policies/create-configure-action-policy.md): Define which episodes invoke a workflow, how often, and under what conditions.

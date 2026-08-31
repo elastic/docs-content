@@ -15,7 +15,7 @@ Rule mode is a required setting for rules in the {{alerting-v2-system}}. It dete
 | Mode | `kind` value | Behavior |
 | --- | --- | --- |
 | Signal | `signal` | {{kib}} writes a rule event with `type: signal` for each matching row. No alert episodes, no notifications. |
-| Alert | `alert` | {{kib}} writes a rule event with `type: alert` and `episode.*` fields for each matching row. Events that share an `episode.id` form an alert episode. Episodes are tracked through lifecycle states, appear on the **Alerts** page, and can be routed to notifications by action policies. |
+| Alert | `alert` | {{kib}} writes a rule event with `type: alert` and `episode.*` fields for each matching row. Events that share an `episode.id` form an alert episode. Episodes are tracked through lifecycle states, appear on the **Alerts** page, and can be routed to workflows by action policies. |
 
 Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view and triage alert episodes.
 
@@ -37,7 +37,7 @@ Group matches into alert episodes when:
 
 * The rule is production-ready and each breach should be tracked as a distinct alert episode that opens, can escalate, and closes when the condition clears.
 * Alert episodes from the rule should be available for triage, acknowledgment, or escalation.
-* You want to attach action policies to route notifications when alert episodes open, escalate, or recover.
+* You want to attach action policies to invoke workflows when alert episodes open, escalate, or recover.
 
 Grouping matches into episodes is **not** the right fit when:
 
@@ -53,7 +53,7 @@ To record matches without opening episodes or triggering notifications, create a
 
 ### Route critical episodes to an on-call workflow
 
-You have a checkout service error rate rule and want on-call engineers notified when it fires. Create the rule so each breach opens a tracked episode that action policies can route to a notification channel. The rule's episodes appear on the **Alerts** page and are visible to any action policy whose KQL matcher matches the episode fields.
+You have a checkout service error rate rule and want on-call engineers notified when it fires. Create the rule so each breach opens a tracked episode that action policies can route to a workflow. The rule's episodes appear on the **Alerts** page and are visible to any action policy whose KQL matcher matches the episode fields.
 
 ## Related pages
 

@@ -20,7 +20,7 @@ Configure grouping when:
 
 * Your {{esql}} query uses a `BY` clause to aggregate across multiple subjects such as hosts, services, or users, and you want each subject to have an independent alert lifecycle.
 * You need to track that one host has recovered while another is still breaching, rather than treating all subjects as a single combined series.
-* You want action policy notifications to apply per subject rather than firing once for the entire rule.
+* You want action policies to invoke a workflow per subject rather than once for the entire rule.
 
 Skip grouping when:
 

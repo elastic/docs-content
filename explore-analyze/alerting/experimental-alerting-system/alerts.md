@@ -32,7 +32,7 @@ inactive → pending → active → recovering → inactive
 :::{dropdown} Example: A checkout-latency episode moving through all four states
 A checkout-latency rule runs every 5 minutes. It has an activation threshold of 2 consecutive breaches and a recovery threshold of 2 consecutive clears. The episode opens only after consecutive breaches meet the activation threshold and closes only after consecutive clears meet the recovery threshold. The system waits for confirmation in both directions. An action policy matches this rule's episodes and invokes a workflow that notifies on-call when the episode becomes `active` and when it recovers.
 
-1. **14:00**: Routine check. p95 is within budget. No episode exists yet. The series is `inactive`.
+1. **14:00**: Routine check. p95 is within budget. No episode yet. The series is `inactive`.
 2. **14:05**: p95 jumps to 3.1s. The rule detects the first breach. {{kib}} writes a rule event, opens the episode in `pending`, and starts counting consecutive breaches.
 3. **14:10**: p95 is still elevated. The second consecutive breach meets the activation threshold. The episode moves from `pending` to `active`. The action policy invokes the workflow, which pages the engineer.
 4. **14:10–14:45**: Every evaluation finds high latency. The episode stays `active`. {{kib}} doesn't open new episodes. One episode tracks one problem, no matter how many times the rule evaluates while the condition holds.
@@ -45,7 +45,7 @@ A checkout-latency rule runs every 5 minutes. It has an activation threshold of 
 - **`pending` is the confirmation gate on the way in.** Without it, a brief latency spike at 14:05 opens and immediately closes an episode, creating noise. The threshold filters that out.
 - **`active` is the steady state of an ongoing problem.** The episode accumulates evaluations without branching, covering the entire outage from first confirmation to first clear.
 - **`recovering` is the confirmation gate on the way out.** Without it, a single good evaluation at 14:50 closes the episode, even if latency bounces back up at 14:55. The threshold prevents premature resolution.
-- **`inactive` again signals confirmed recovery.** The episode closes and the recovery notification fires only after the condition has cleared consistently.
+- **`inactive` again marks confirmed recovery.** The episode closes and the recovery notification fires only after the condition has cleared consistently.
 :::
 
 ## Alert episodes exist within a series [series-overview]

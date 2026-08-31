@@ -429,4 +429,4 @@ By completing this tutorial, you learned:
 
 - **Ready to manage the rule you just created?** [View and manage rules](../rules/view-manage-rules.md) shows you how to enable, disable, clone, and bulk-manage rules from the **Rules** page.
 - **Want to explore more configuration options?** [Configure a rule](../rules/configure-a-rule.md) covers grouping, tags, no-data handling, and more.
-- **Ready to notify your team the next time an episode opens?** [Notifications and actions](../notifications-actions.md) shows you how workflows and action policies decide who gets notified, and when.
+- **Ready to notify your team the next time an episode opens?** [Notifications and actions](../notifications-actions.md) shows you how action policies decide when to invoke a workflow, and how workflows send the notification.

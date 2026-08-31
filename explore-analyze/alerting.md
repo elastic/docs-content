@@ -42,7 +42,7 @@ stack: ga
 serverless: ga
 ```
 
-{{kib}} alerting gives you ready-made rule types that work with applications such as APM, metrics, security, and uptime monitoring. You set conditions on a schedule you choose and send notifications through common channels (email, chat apps, webhooks, on-call tools, and more). Setup uses forms and clear steps, so you do not need to learn a query language first. It is a strong fit when you want broad coverage out of the box.
+{{kib}} alerting gives you ready-made rule types that work with applications such as APM, metrics, and uptime monitoring. You set conditions on a schedule you choose and send notifications through common channels (email, chat apps, webhooks, on-call tools, and more). Setup uses forms and clear steps, so you do not need to learn a query language first. It is a strong fit when you want broad coverage out of the box.
 
 [Get started with {{kib}} alerting →](alerting/alerts.md)
 

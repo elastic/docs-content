@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: A detailed walkthrough of how a rule's configuration determines whether matches are grouped into an alert episode or remain available for later analysis, and how those paths drive action policies and notifications.
+description: A detailed walkthrough of how a rule's configuration determines whether matches are grouped into an alert episode or remain available for later analysis, and how those paths drive action policies and workflows.
 ---
 
 # How the {{alerting-v2-system}} works [how-it-works]
@@ -21,7 +21,7 @@ When matches are grouped into an alert episode, {{kib}} writes each match as a r
 |------|-------|--------|
 | 1 | Rule | Runs on schedule and evaluates {{esql}} against your data |
 | 2 | {{kib}} | Query returns results → Writes one rule event per matching row to `.rule-events` (`type: alert`) |
-| 3 | {{kib}} | Groups the event into an alert episode. Events that share an `episode.id` form the episode. The episode opens in `pending` and advances to `active` once the activation threshold is met |
+| 3 | {{kib}} | Groups the event into an alert episode. The episode opens in `pending` and advances to `active` once the activation threshold is met |
 | 4 | Action policy | Evaluates the episode against its conditions (checks for episode eligibility, match conditions, and frequency) |
 | 5 | Action policy | If conditions are met, invokes a workflow |
 | 6 | Workflow | Sends notification or runs automation |
@@ -38,24 +38,24 @@ Steps 4–6 and 8–9 run on a separate background process that polls roughly ev
 An SRE team wants to know when checkout service latency degrades, and notify the on-call team when it does. The team creates a rule that groups matches into an alert episode:
 
 1. The rule runs an {{esql}} query every five minutes, checking p95 checkout service latency.
-2. When p95 exceeds 2 seconds for more than one consecutive check, those events form an alert episode.
-3. An action policy with a `rule.tags: "checkout"` matcher skips low-severity episodes and invokes an on-call workflow that sends a Slack message.
+2. When p95 exceeds 2 seconds for two consecutive checks, those events form an alert episode.
+3. An action policy with a `rule.tags: "checkout"` matcher invokes an on-call workflow that sends a Slack message.
 
 The engineer investigates, fixes a slow query, and the alert episode recovers automatically.
 
 ## Rule writes events for later analysis [how-signal-mode-works]
 
-{{kib}} writes a rule event (`type: signal`) to `.rule-events` for each match. Action policies evaluate alert episodes only, so the event never reaches a policy or a workflow. Those events accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to a follow-on rule that groups matches into an episode. In the UI, set this configuration with [Rule mode](rules/configure-rule-mode.md). For query examples, dashboards, and correlation patterns, refer to [Query signals](alerts/query-signals.md).
+{{kib}} writes a rule event (`type: signal`) to `.rule-events` for each match. These events stay in `.rule-events`. They don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers. They accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to a follow-on rule that groups matches into an episode. In the UI, set this configuration with [Rule mode](rules/configure-rule-mode.md). For query examples, dashboards, and correlation patterns, refer to [Query signals](alerts/query-signals.md).
 
 | Step | Actor | Action |
 |------|-------|--------|
 | 1 | Rule | Runs on schedule and evaluates {{esql}} against your data |
 | 2 | {{kib}} | Query returns results → Writes one rule event per matching row to `.rule-events` (`type: signal`) |
-| 3 | {{kib}} | Leaves the event available for later analysis. Action policies evaluate alert episodes only, so this event never reaches a policy or a workflow |
+| 3 | {{kib}} | Keeps the event available for later analysis. It doesn't go to a policy or workflow |
 
 ### Example: Tracking administrator API calls
 
-A security team wants to track calls to a rarely-used administrator API endpoint, but individual calls aren't suspicious enough to page anyone. To start collecting data without generating noise, the team creates a rule that records rule events:
+A security team wants to track calls to a rarely-used administrator API endpoint, but individual calls aren't suspicious enough to page anyone. To start collecting data without generating noise, the team creates a rule that records matches without grouping them into an episode:
 
 1. The rule runs an {{esql}} query on a schedule, checking for calls to the administrator API endpoint.
 2. Each time the query returns results, {{kib}} writes a rule event (`type: signal`) to `.rule-events`.
@@ -66,7 +66,7 @@ After a few weeks, the accumulated events become useful in two ways. The team ca
 ## Related pages
 
 - [Get started](get-started.md): Enable the {{alerting-v2-system}} and create your first rule.
-- [Rules](rules.md): What rules do, what they don't control, and how to choose a creation path.
+- [Rules](rules.md): What rules detect, how action policies invoke workflows, and how to choose a creation path.
 - [Rule events](rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how those events relate to alert episodes.
 - [Query signals](alerts/query-signals.md): Query events with `type: signal` in Discover and use them as input to a rule that opens an episode.
-- [Notifications and actions](notifications-actions.md): Set up workflows and action policies to notify your team when an alert episode matches.
+- [Notifications and actions](notifications-actions.md): Set up action policies that invoke workflows, which send a notification or run automation when an alert episode matches.

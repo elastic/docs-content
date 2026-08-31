@@ -35,7 +35,7 @@ Each event has a `type` of `signal` or `alert`, matching the `kind` you set when
 
 ### Events that stay available for later analysis (`type: signal`)
 
-{{kib}} writes a rule event with `type: signal`. Action policies evaluate alert episodes only, so these events never reach the **Alerts** page, a policy, or a workflow. They accumulate in `.rule-events` and are queryable in Discover.
+{{kib}} writes a rule event with `type: signal`. These events stay in `.rule-events`. They don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers. They are queryable in Discover.
 
 For query examples, refer to [Query signals](../alerts/query-signals.md).
 
