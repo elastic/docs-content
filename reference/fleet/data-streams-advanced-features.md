@@ -21,7 +21,7 @@ products:
 These features can be enabled and disabled for {{fleet}}-managed data streams by using the index template API and a few key settings. In versions 8.17.0 and later, synthetic `_source` is available only for certain [Elastic subscription levels](https://www.elastic.co/subscriptions).
 
 ::::{note}
-If you are already making use of `@custom` component templates for ingest or retention customization (as shown for example in [Tutorial: Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md)), exercise care to ensure you don’t overwrite your customizations when making these requests.
+If you are already making use of `@custom` component templates for ingest or retention customization (for example, as shown in [](/reference/fleet/data-streams-ilm-tutorial.md)), exercise care to ensure you don’t overwrite your customizations when making these requests.
 ::::
 
 

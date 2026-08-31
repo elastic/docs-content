@@ -40,7 +40,7 @@ serverless: ga
 
 If **Sync alert status** is on, closing the case opens the **Select alert close reason** popup, where you can choose how attached detection alerts are closed. You can close the attached alerts without a reason, or specify an alert closing reason. 
 
-The available options match the [closing reasons from the **Alerts** page](/solutions/security/detect-and-alert/manage-detection-alerts.md#closing-reasons), including any [custom closing reasons](/solutions/security/get-started/configure-advanced-settings.md#custom-alert-closing-reasons) defined in advanced settings.
+The available options match the [closing reasons from the **Alerts** page](/solutions/security/detect-and-alert/manage-detection-alerts.md#closing-reasons), including any custom closing reasons defined in the `securitySolution:detectionsCloseReasons` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 
 Alerts that are already closed keep their existing reason; only open and acknowledged attached alerts are updated.
 
