@@ -21,11 +21,16 @@ They work with any numeric data: plain numbers, percentages, or calculations lik
 You can also display strings by using the `Last value` aggregation function that picks up the last document, sorted by timestamp, in the current time frame.
 
 
-You can create metric charts in {{kib}} using [**Lens**](../lens.md).
+You can build a metric chart in {{kib}} in either of these ways:
+
+- [With the point-and-click editor](#build-a-metric-chart)
+- [With an {{esql}} query](#build-a-metric-chart-with-esql)
+
+To automate chart or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
 ![Metric chart representing an SLO with different layouts](../../images/metric-chart.png)
 
-## Build a metric chart
+## Build a metric chart with the point-and-click editor [build-a-metric-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -58,8 +63,40 @@ The chart preview updates to show a large numeric value. If you added a secondar
 See [](#settings) for all data configuration options for your metric chart.
 ::::
 
-::::{step} Customize the chart to follow best practices
-Tweak the appearance of the chart to your needs. Consider the following best practices:
+::::{step} Save the chart
+:::{include} ../../_snippets/save-visualization.md
+:::
+::::
+
+:::::
+
+## Build a metric chart with an {{esql}} query [build-a-metric-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+A metric chart displays a single numeric metric. In this query, `STATS` has no `BY` clause, so it reduces all matching documents to one row containing the total request count:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS requests = COUNT(*)
+```
+
+To show a distribution statistic instead of a count, replace `COUNT(*)` with [`PERCENTILE(bytes, 95)`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/percentile.md).
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Metric**.
+3. Assign `requests` to the **Primary metric**.
+4. Customize the chart appearance using the [metric chart settings](#settings).
+5. Select **Apply and close**.
+
+The chart preview shows the request count as a single value.
+
+## Apply metric chart best practices [metric-chart-best-practices]
+
+After building the chart with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
 
 **Use color wisely**
 :   Assign colors that match your users' expectations and consider your specific context.
@@ -70,17 +107,7 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 **Provide context**
 :   Use titles and subtitles to explain what the metric shows. "45,234" is a number, but "Active Users" as a title gives it meaning, and "Last 24 hours" as a subtitle makes it unambiguous.
 
-Refer to [](#settings) for a complete list of options.
-
-For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
-::::
-
-::::{step} Save the chart
-:::{include} ../../_snippets/save-visualization.md
-:::
-::::
-
-:::::
+Refer to [Metric chart settings](#settings) for all metric chart configuration options. For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 
 ## Advanced metric scenarios
 
