@@ -50,11 +50,17 @@ The API supports any panel type that has a defined schema:
 - {applies_to}`stack: ga 9.5` APM service map
 - {applies_to}`stack: ga 9.5` Machine learning and AIOps panels: single metric viewer, anomaly swim lane, anomaly charts, log rate analysis, change point detection, pattern analysis, and field statistics table
 
+Visualizations, Discover sessions, and Markdown panels can be stored inline or linked from a library item.
+
+{applies_to}`stack: ga 9.5` Links panels can also be stored inline or linked from a library item.
+
+Other panel types are inline only.
+
 Panel types without a defined schema, such as Maps, aren't supported yet and return an error on write.
 
 Dashboard requests are subject to [panel limits](arrange-panels.md#dashboard-panel-limits): up to 1,000 top-level items (panels and sections combined), 1,000 panels per section, and 100 pinned controls. The total number of panels, sections, and pinned controls across the dashboard also can't exceed 1,000. Requests that exceed these limits are rejected with a validation error.
 
-Refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) for the full request schema, panel types, and authentication requirements. For panel sizing and layout guidance when specifying grid coordinates by hand, refer to [Organize dashboard panels](arrange-panels.md#dashboard-grid-layout).
+Refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#description/introduction) for the full request schema, which panel types each version supports, and authentication requirements. For panel sizing and layout guidance when specifying grid coordinates by hand, refer to [Organize dashboard panels](arrange-panels.md#dashboard-grid-layout).
 
 ## Visualizations API [lens-visualizations-api]
 ```{applies_to}
