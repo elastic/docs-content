@@ -79,7 +79,7 @@ FROM kibana_sample_data_logs
 | STATS requests = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
 ```
 
-If your time field isn't named `@timestamp`, replace `@timestamp` with that field in both `WHERE` and `BUCKET` so the dashboard time range applies.
+If your time field isn't named `@timestamp`, replace `@timestamp` with that field in both `WHERE` and `BUCKET` so the dashboard time range applies. Refer to [](../../query-filter/languages/esql-kibana.md#_custom_time_parameters).
 
 {applies_to}`stack: preview 9.2-9.3, ga 9.4+` If you query a [time series data stream](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md), start with the [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) command instead of `FROM`.
 

@@ -79,7 +79,7 @@ FROM kibana_sample_data_logs
 | STATS total_bytes = SUM(bytes) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
 ```
 
-If your time field isn't named `@timestamp`, replace `@timestamp` with that field in both `WHERE` and `BUCKET` so the dashboard time range applies.
+If your time field isn't named `@timestamp`, replace `@timestamp` with that field in both `WHERE` and `BUCKET` so the dashboard time range applies. Refer to [](../../query-filter/languages/esql-kibana.md#_custom_time_parameters).
 
 To build the chart:
 
