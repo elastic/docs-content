@@ -38,6 +38,7 @@ We cover the following examples:
 
 * [Update a policy or rule set](#update-policy-rs)
 * [Associate a policy or rule set with a project or deployment](#associate-policy-rs-with-deployment)
+* [Find the resources associated with a policy or rule set](#find-associated-resources)
 * [Remove a policy or rule set from a project or deployment](#delete-policy-rs-association-with-deployment)
 * [Delete a policy or rule set](#delete-policy-rs)
 
@@ -661,6 +662,124 @@ https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULE
 ```
 ::::
 :::::
+
+
+## Find the resources associated with a policy or rule set [find-associated-resources]
+
+Send a request like the following to find which deployments or projects a policy or rule set protects.
+
+::::{applies-switch}
+
+:::{applies-item} ech:
+
+To list the deployments associated with a specific policy:
+
+```json
+curl \
+-H "Authorization: ApiKey $API_KEY" \
+https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets/$POLICY_ID/associations
+```
+
+A successful response includes each associated deployment and the total number of associations. `total_associations` counts every association, including deployments you don't have permission to view.
+
+```json
+{
+  "associations" : [
+    {
+      "entity_type" : "deployment",
+      "id" : "a8c854b1ff854d46a4e0ad5cb82ab9a9"
+    }
+  ],
+  "total_associations" : 1
+}
+```
+
+To list every policy and its associated deployments, add `include_associations=true` to the ruleset list request:
+
+```json
+curl \
+-H "Authorization: ApiKey $API_KEY" \
+https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets?include_associations=true
+```
+
+Each rule set in the response includes an `associations` array and a `total_associations` count only when `include_associations` is `true`. You can also pass `include_associations=true` when you retrieve a single ruleset by ID: `/api/v1/deployments/traffic-filter/rulesets/$POLICY_ID?include_associations=true`.
+:::
+
+:::{applies-item} serverless:
+
+On {{serverless-full}}, policy associations are stored on the project. The traffic filter endpoints do not return the projects a policy protects.
+
+To list only the projects associated with a policy, pass the policy ID as `traffic_filter` on the project list request:
+
+```json
+curl \
+-H "Authorization: ApiKey $API_KEY" \
+https://api.elastic-cloud.com/api/v1/serverless/projects/elasticsearch?traffic_filter=$POLICY_ID <1>
+```
+1. Pass the project type in the URL: `/api/v1/serverless/projects/{project-type}`. Repeat the request for each project type you use, for example `elasticsearch` or `security`.
+
+To review the policies attached to every project of a given type, omit `traffic_filter`:
+
+```json
+curl \
+-H "Authorization: ApiKey $API_KEY" \
+https://api.elastic-cloud.com/api/v1/serverless/projects/elasticsearch
+```
+
+The list response includes a `traffic_filters` array on every project. The following example shows only the fields that identify associated policies:
+
+```json
+{
+  "items" : [
+    {
+      "id" : "c7a1b2d3e4f5a6b7c8d9e0f1a2b3c4d5",
+      "name" : "My Elasticsearch project",
+      "traffic_filters" : [
+        {
+          "id" : "5470a0010ebf437bb9294ea9fcba0ba0"
+        }
+      ]
+    }
+  ]
+}
+```
+:::
+
+:::{applies-item} ece:
+
+To list the deployments associated with a specific rule set:
+
+```json
+curl \
+-H "Authorization: ApiKey $API_KEY" \
+https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULESET_ID/associations
+```
+
+A successful response includes each associated deployment and the total number of associations. `total_associations` counts every association, including deployments you don't have permission to view.
+
+```json
+{
+  "associations" : [
+    {
+      "entity_type" : "deployment",
+      "id" : "a8c854b1ff854d46a4e0ad5cb82ab9a9"
+    }
+  ],
+  "total_associations" : 1
+}
+```
+
+To list every rule set and its associated deployments, add `include_associations=true` to the rule set list request:
+
+```json
+curl \
+-H "Authorization: ApiKey $API_KEY" \
+https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets?include_associations=true
+```
+
+Each rule set in the response includes an `associations` array and a `total_associations` count only when `include_associations` is `true`. You can also pass `include_associations=true` when you retrieve a single rule set by ID: `/api/v1/deployments/traffic-filter/rulesets/$RULESET_ID?include_associations=true`.
+:::
+::::
 
 
 ## Remove a policy or rule set from a project or deployment [delete-policy-rs-association-with-deployment]
