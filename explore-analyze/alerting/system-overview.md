@@ -11,7 +11,7 @@ description: The experimental Kibana alerting system writes each match as a rule
 
 # {{alerting-v2-system-cap}} overview [system-overview]
 
-The {{alerting-v2-system}} in {{kib}} evaluates your {{es}} data on a schedule. You define the conditions that matter. {{kib}} writes each match as a rule event. Configuration determines whether those events are tracked as alert episodes (and can notify) or stay available for later analysis.
+The {{alerting-v2-system}} in {{kib}} watches your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, and the system handles detection, tracking, and notification from there.
 
 This page introduces the five objects in the system and how they connect. Use it to decide where to go next. For a step-by-step walkthrough after a rule runs, refer to [How it works](experimental-alerting-system/how-it-works.md).
 
@@ -21,7 +21,7 @@ In the generally available {{kib}} alerting system, the term **alert** refers to
 
 ## The core idea [core-idea]
 
-When a rule finds a match, {{kib}} writes a rule event to `.rule-events`. What happens next depends on the rule's configuration.
+The {{alerting-v2-system}} starts with a rule evaluating your data on a schedule. When the rule detects a match, {{kib}} writes a rule event to `.rule-events`. The rule's configuration determines whether those events are grouped into an alert episode and can notify. Events that aren't part of an episode remain available for later analysis. 
 
 :::{image} /explore-analyze/images/basic-system-flow.png
 :alt: Flowchart showing a rule detecting a match, Kibana writing a rule event, then either grouping that event into an alert episode or keeping it with no episode for later analysis
@@ -29,7 +29,7 @@ When a rule finds a match, {{kib}} writes a rule event to `.rule-events`. What h
 
 ## The building blocks
 
-The {{alerting-v2-system}} is built around five objects: rules, rule events, alert episodes, action policies, and workflows, each with a distinct role.
+The flowchart is the big picture. The five objects in this section are the pieces you'll create and configure: rules, rule events, alert episodes, action policies, and workflows.
 
 ### Rules
 
@@ -63,19 +63,17 @@ Refer to [Connect workflows](experimental-alerting-system/workflows-alerting.md)
 
 ## How the pieces fit together [how-pieces-fit-together]
 
-Together, these building blocks form two main paths, which diverge based on the rule's configuration:
-
-1. A rule evaluates your data on a schedule and detects a match.
-2. {{kib}} writes the match as a rule event to `.rule-events`.
-3. The rule's configuration determines the next step:
-
-   * **Alert episode** - {{kib}} groups the event into an episode. An action policy evaluates the episode and can invoke a workflow, which sends the notification or runs the automation.
-
-   * **No episode** - The event stays in `.rule-events` for later analysis. You can [query it in Discover](experimental-alerting-system/alerts/query-signals.md), build dashboards, or feed it into another rule. Rule events that aren't part of an alert episode (`type: signal`) don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers.
+The following diagram is a more detailed version of the same flow. It places the five objects on that path so you can see how they connect.
 
 :::{image} /explore-analyze/images/detailed-system-flow.png
 :alt: Flowchart showing a rule detecting a match, Kibana writing a rule event, then either grouping the event into an alert episode that an action policy can route to a workflow, or keeping the event with no episode for later analysis
 :::
+
+Every match still becomes a rule event. From there, the rule's configuration determines the next step:
+
+* **Alert episode** - {{kib}} groups the event into an episode. An action policy evaluates the episode and can invoke a workflow, which sends the notification or runs the automation.
+
+* **No episode** - The event stays in `.rule-events` for later analysis. You can [query it in Discover](experimental-alerting-system/alerts/query-signals.md), build dashboards, or feed it into another rule. Rule events that aren't part of an alert episode (`type: signal`) don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers.
 
 ## Get started or go deeper [system-overview-next-steps]
 
