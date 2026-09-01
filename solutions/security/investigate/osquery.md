@@ -423,6 +423,30 @@ Osquery responses include the following information:
 * By default, all query results are [snapshot logs](https://osquery.readthedocs.io/en/stable/deployment/logging/#snapshot-logs) that represent a point in time with a set of results, with no [differentials](https://osquery.readthedocs.io/en/stable/deployment/logging/#differential-logs).
 * Osquery data is stored in the `logs-osquery_manager.result-<namespace>` datastream, and the result row data is under the `osquery` property in the document.
 
+### View results from a remote {{es}} output [osquery-remote-output-ccs]
+```{applies_to}
+stack: ga 9.4+
+serverless: unavailable
+```
 
+You can run Osquery against {{agents}} that send data to a [remote {{es}} output](/reference/fleet/remote-elasticsearch-output.md), and view those results in Osquery on the local cluster. Live queries, query history, and scheduled pack results all include responses from those {{agents}}.
 
+This uses two separate connections:
+
+* **Remote {{es}} output:** {{agents}} send query results to the remote cluster.
+* **{{ccs-cap}} ({{ccs-init}}):** the local cluster searches those results so they appear in Osquery.
+
+To set this up, complete the following steps:
+
+1. Create a remote {{es}} output and assign it to the {{agent}} policy that includes Osquery Manager. Refer to [Remote {{es}} output](/reference/fleet/remote-elasticsearch-output.md).
+2. On the local cluster, add the remote cluster. Follow [Set up {{ccs}} to query remote data](/reference/fleet/remote-elasticsearch-output.md#set-up-ccs).
+3. Confirm that the local cluster is connected to the remote cluster. On the local cluster, go to **{{dev-tools-app}}**, then run:
+
+    ```console
+    GET /_remote/info
+    ```
+
+    At least one remote cluster must show `"connected" : true`. Osquery includes remote results only when a remote cluster is connected. For more details, refer to the [remote cluster info API]({{es-apis}}operation/operation-cluster-remote-info).
+
+After the remote cluster connects, wait 60 seconds, then run a query. The results table and history include responses from {{agents}} that use the remote output.
 
