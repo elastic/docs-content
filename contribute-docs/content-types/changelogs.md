@@ -37,7 +37,7 @@ Each changelog file describes a single change and includes metadata such as the 
 
 :::{important}
 The creation of release notes from changelogs and all the layout and formatting of that content is handled automatically by Elastic Docs.
-For technical details, refer to [Create and bundle changelogs](https://elastic.github.io/docs-builder/contribute/changelog/).
+For technical details, including the commands that create these files, refer to [Create and bundle changelogs](https://elastic.github.io/docs-builder/contribute/changelog/).
 
 Focus on creating clear, accurate content in the changelogs rather than worrying about how it will appear in the final documentation.
 :::
@@ -51,9 +51,14 @@ Focus on creating clear, accurate content in the changelogs rather than worrying
 
 Every changelog must include the following elements:
 
-1. **Products**: The Elastic products affected by the change. Where possible, include a target release version or date and the lifecycle (for example, preview, beta, or GA).
+1. **Products**: The Elastic products affected by the change. Where possible, include the lifecycle (for example, preview, beta, or GA).
 1. **Type**: The type of change. For guidance, go to [Choose the changelog type](#changelog-types).
 1. **Title**: A short, user-facing summary. In general, limit it to 80 characters. For examples, go to [Write effective titles](#changelog-titles).
+
+Also include one of the following:
+
+- If it is associated with a pull request, add `prs`. In this case `products[].versions` is unnecessary since the changelog tooling calculates that information when PRs are included in a release.
+- If it is not associated with a pull request, add `products[].versions` as the list of concrete version numbers or release dates (for example, `[9.3.0, 9.4.0]`) that it applies to. This case is typical when it's a known issue or security changelog.
 
 ### Optional elements
 
@@ -61,7 +66,7 @@ Consider including the following elements when they add value:
 
 - **Description**: Additional information about the change (maximum 600 characters). For guidance, go to [Write effective descriptions](#changelog-descriptions).
 - **Areas**: The components, features, or product areas affected by the change (for example, "{{esql}}" or "{{ml-app}}").
-- **Issues** and **prs**: The numbers or URLs for the related issues and pull requests.
+- **Issues**: The numbers or URLs for related issues.
 - **Feature-id**: If you want to be able to track changelogs associated with a specific feature flag or filter them out of the documentation, add a unique identifier.
 
 The following elements apply to specific types of changes:
@@ -121,7 +126,8 @@ Feature
 
 Known issue
 :   Use `known-issue` for problems that are not fixed in the release but are actively being worked on.
-:   Include information about all affected versions and contexts.
+:   Include information about all affected contexts.
+:   When the advisory is not tied to a pull request, list affected versions in `products[].versions`.
 :   Optionally include `impact` and `action` fields (with workaround steps).
 :   Examples include defects or limitations that might impact implementation.
 
@@ -138,6 +144,7 @@ Regression
 
 Security
 :   Use `security` for security advisories about vulnerabilities.
+:   When the advisory is not tied to a pull request, list affected versions in `products[].versions`.
 :   Follow security team guidelines for disclosure of sensitive information.
 :   Examples include security patches and vulnerability disclosures.
 
