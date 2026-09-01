@@ -21,6 +21,24 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.5.2 [elastic-observability-9.5.2-release-notes]
+
+### Fixes [elastic-observability-9.5.2-fixes]
+* Fixes the metric threshold rule form silently showing no conditions when the source configuration request is slow or fails, instead of showing a loading or error state [#280121]({{kib-pull}}280121).
+* Fixes the {{product.apm}} agent configuration tutorial page exposing the APM Server secret token to users without APM write permissions [#283942]({{kib-pull}}283942).
+* Fixes an error loading maintenance window status on the Synthetics monitors overview for users with read-only access [#281894]({{kib-pull}}281894).
+
+## 9.5.1 [elastic-observability-9.5.1-release-notes]
+
+### Features and enhancements [elastic-observability-9.5.1-features-enhancements]
+* Shows attached maintenance windows in the Synthetics monitor details panel, resolving each window's ID to a title and linking directly to the **{{maint-windows-app}}** management page [#281853]({{kib-pull}}281853).
+* Adds smooth animated transitions to the Streams **Data lifecycle** phases preview bar when adding, removing, or editing lifecycle phases [#277149]({{kib-pull}}277149).
+* Adds an **Import from another stream** action to the Streams **Data lifecycle** tab, allowing users to copy a lifecycle configuration from another stream [#275948]({{kib-pull}}275948).
+
+### Fixes [elastic-observability-9.5.1-fixes]
+* Fixes an error when downloading agent policies that reuse objects by reference, caused by an `Unresolved alias` YAML serialization error [#280669]({{kib-pull}}280669).
+* Fixes Synthetics remote monitor Cross-Cluster Search queries to correctly scope to the target cluster [#278141]({{kib-pull}}278141).
+
 ## 9.5.0 [elastic-observability-9.5.0-release-notes]
 
 ### Features and enhancements [elastic-observability-9.5.0-features-enhancements]
@@ -147,6 +165,31 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
 * Improves accessibility in the {{observability}} UI [#262975]({{kib-pull}}262975).
 * Fixes crashes caused by malformed URLs in plugins; affected pages now attempt automatic recovery [#257245]({{kib-pull}}257245).
+
+## 9.4.6 [elastic-observability-9.4.6-release-notes]
+
+### Fixes [elastic-observability-9.4.6-fixes]
+* Fixes package and integration policy validation to reject namespace values that contain only whitespace [#286385]({{kib-pull}}286385).
+* Fixes the **Agents** table **Host** column sort producing incorrect ordering [#286383]({{kib-pull}}286383).
+* Fixes YAML configuration fields in the **Configure integration** screen displaying without a visible border [#286360]({{kib-pull}}286360).
+* Fixes the agent status change task failing on large deployments [#286324]({{kib-pull}}286324).
+* Fixes {{fleet}} agent API keys receiving excessive cluster privileges declared in package manifests [#286084]({{kib-pull}}286084).
+* Fixes the {{fleet}} Kafka output **Dynamic Topic** field silently mangling multi-field format strings such as `%{[data_stream.type]}-%{[data_stream.namespace]}` [#285581]({{kib-pull}}285581).
+* Fixes the automatic integrations synchronization task issuing broad {{es}} searches on every scheduled run when Cross-Cluster Replication is not configured [#285526]({{kib-pull}}285526).
+* Fixes {{fleet}} agent API handlers not enforcing {{kib}} Space boundaries [#284936]({{kib-pull}}284936).
+* Fixes Cribl integration routing pipeline `dataId` values not being validated and sanitized before being written to the ingest pipeline [#284863]({{kib-pull}}284863).
+* Fixes `inputs_for_versions` not being backfilled on package policies after a {{kib}} minor version upgrade [#284710]({{kib-pull}}284710).
+* Fixes Custom Threshold rules using the rate aggregation to correctly fire when a monitored counter increases from `0` to any positive value [#283973]({{kib-pull}}283973).
+* Fixes Agentless flows failing to locate agents enrolled on version-specific policies [#283434]({{kib-pull}}283434).
+* Fixes {{fleet}} failures affecting agents on version-specific policies [#283071]({{kib-pull}}283071).
+* Fixes bulk integration upgrades installing the bundled version instead of the latest registry version [#282829]({{kib-pull}}282829).
+* Fixes package policy bulk creation storing secret variable values inline on the saved object instead of writing them to the secrets index [#282213]({{kib-pull}}282213).
+
+## 9.4.5 [elastic-observability-9.4.5-release-notes]
+
+### Fixes [elastic-observability-9.4.5-fixes]
+* Fixes package policy deletions not forwarding the `asyncDeploy` option to agent policy updates, causing deletions to always block on synchronous agent policy recompilation [#282580]({{kib-pull}}282580).
+* Fixes Synthetics monitors to support referencing maintenance windows by name in addition to ID [#282570]({{kib-pull}}282570).
 
 ## 9.4.4 [elastic-observability-9.4.4-release-notes]
 
