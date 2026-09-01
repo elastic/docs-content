@@ -65,5 +65,5 @@ You can send metrics to Elastic with a minimal change to your existing Prometheu
 If you use Grafana, you can also point it at {{es}} as a Prometheus data source and run your existing PromQL dashboards and alerts without rewriting them.
 
 - [Prometheus remote write endpoint](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md)
-- [Use {{es}} as a Prometheus data source in Grafana](/reference/query-languages/promql/promql-grafana.md)
-- [PromQL in {{es}}](/reference/query-languages/promql/functions.md)
+- [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md)
+- [PromQL in {{es}}](elasticsearch://reference/query-languages/promql/functions.md)

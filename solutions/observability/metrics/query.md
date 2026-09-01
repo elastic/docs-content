@@ -24,7 +24,7 @@ Elastic supports two first-class query experiences for metrics: {{esql}} and Pro
 Use [{{esql}} with time-series (TS) mode](/solutions/observability/metrics/query-with-esql-ts.md). TS mode operates efficiently on TSDS columnar storage and handles per-series aggregation correctly.
 
 **Prometheus or Grafana workflows:**
-Use [PromQL](/reference/query-languages/promql/functions.md). Works against both Prometheus remote write and OTLP-ingested metrics, but metric names are schema-dependent.
+Use [PromQL](elasticsearch://reference/query-languages/promql/functions.md). Works against both Prometheus remote write and OTLP-ingested metrics, but metric names are schema-dependent.
 ::::
 
 ::::{applies-item} serverless:
@@ -32,7 +32,7 @@ Use [PromQL](/reference/query-languages/promql/functions.md). Works against both
 Use [{{esql}} with time-series (TS) mode](/solutions/observability/metrics/query-with-esql-ts.md).
 
 **Prometheus or Grafana workflows:**
-Use [PromQL](/reference/query-languages/promql/functions.md). Works against both Prometheus remote write and OTLP-ingested metrics.
+Use [PromQL](elasticsearch://reference/query-languages/promql/functions.md). Works against both Prometheus remote write and OTLP-ingested metrics.
 ::::
 
 :::::
@@ -49,9 +49,9 @@ Use [PromQL](/reference/query-languages/promql/functions.md). Works against both
 
 If you sent metrics to Elastic using Prometheus remote write or OTLP, you can query them using PromQL directly in {{es}}. This lets you reuse existing Prometheus queries and alerting rules without rewriting them. If you use Grafana, you can point it at {{es}} as a Prometheus data source.
 
-- [PromQL functions reference](/reference/query-languages/promql/functions.md)
-- [Use {{es}} as a Prometheus data source in Grafana](/reference/query-languages/promql/promql-grafana.md)
-- [PromQL limitations in {{es}}](/reference/query-languages/promql/promql-limitations.md)
+- [PromQL functions reference](elasticsearch://reference/query-languages/promql/functions.md)
+- [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md)
+- [PromQL limitations in {{es}}](elasticsearch://reference/query-languages/promql/promql-limitations.md)
 
 ## Related [metrics-query-related]
 

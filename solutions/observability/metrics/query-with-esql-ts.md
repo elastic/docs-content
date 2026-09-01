@@ -28,6 +28,6 @@ Use {{esql}} time-series functions when:
 
 ## Related [metrics-query-esql-ts-related]
 
-- [{{esql}} overview](/reference/query-languages/esql/index.md)
+- [{{esql}} overview](elasticsearch://reference/query-languages/esql.md)
 - [Query metrics](/solutions/observability/metrics/query.md)
 - [Manage metrics storage](/solutions/observability/metrics/manage-storage.md)

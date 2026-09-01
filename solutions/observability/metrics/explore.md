@@ -40,7 +40,7 @@ Build dashboards in {{kib}} Lens to track metrics over time, compare resources, 
 
 If you use Grafana, you can point it at {{es}} as a Prometheus data source and run your existing PromQL dashboards without rewriting them.
 
-Refer to [Use {{es}} as a Prometheus data source in Grafana](/reference/query-languages/promql/promql-grafana.md).
+Refer to [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md).
 
 ## Related [metrics-explore-related]
 
