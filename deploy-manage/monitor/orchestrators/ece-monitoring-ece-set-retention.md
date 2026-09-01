@@ -47,14 +47,13 @@ deployment:
   ece: ga 4.1+
 ```
 
-Create a component template with a reserved name to apply custom retention that remains in place after ECE upgrades.
+You can customize logs and metrics retention using a component template with a reserved name.
 
 Each index template in the `logging-and-metrics` cluster includes a `composed_of` array that references these reserved names. If you create a matching component template, {{es}} merges its settings into new backing indices. The names do not include a version tag, so they continue to match after an ECE upgrade.
 
 ```{note}
-This functionality is only available in ECE 4.1.1 and higher.
+This method is only available in ECE 4.1.1 or later.
 ```
-
 
 The following component template names are reserved for customization. Define only the templates that match the scope you need:
 
