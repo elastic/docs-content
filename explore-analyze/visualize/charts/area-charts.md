@@ -71,6 +71,8 @@ Refer to [](#area-chart-settings) for all data configuration options for your ar
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
+For a dashboard walkthrough with eCommerce sample data, refer to [Create a dashboard with time series charts](../../dashboards/create-dashboard-of-panels-with-ecommerce-data.md).
+
 A time-series area chart needs a time-bucket column for its horizontal axis and a numeric metric column for the height of the filled area. In this query, `WHERE` applies the dashboard time range, `BUCKET` divides that range into 50 adaptive groups, and `SUM` returns one metric value for each group:
 
 ```esql

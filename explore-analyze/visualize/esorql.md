@@ -135,6 +135,12 @@ An {{esql}} query returns a table. When you use the result to build a visualizat
 
 The chart type determines the combination of columns you need. Open a page from the [visualization types](lens.md#lens-visualization-types) list to find an {{esql}} query pattern and learn how to assign its result columns to the chart dimensions.
 
+### Time series charts [esql-time-series-charts]
+
+To create time series charts with {{esql}}, return a time-bucket column and a numeric metric column. Then follow the [line chart](charts/line-charts.md#build-a-line-chart-with-esql) or [area chart](charts/area-charts.md#build-an-area-chart-with-esql) query pattern.
+
+For a dashboard walkthrough with eCommerce sample data, refer to [Create a dashboard with time series charts](../dashboards/create-dashboard-of-panels-with-ecommerce-data.md).
+
 ## Add drilldowns to an {{esql}} visualization [esql-viz-drilldowns]
 ```{applies_to}
 stack: ga 9.4

@@ -71,6 +71,8 @@ Refer to [](#settings) for all data configuration options for your line chart.
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
 
+For a dashboard walkthrough with eCommerce sample data, refer to [Create a dashboard with time series charts](../../dashboards/create-dashboard-of-panels-with-ecommerce-data.md).
+
 A time-series line chart needs a time-bucket column for its horizontal axis and a numeric metric column to plot for each bucket. In this query, `WHERE` applies the dashboard time range, `BUCKET` divides that range into 50 adaptive groups, and `COUNT` returns one metric value for each group:
 
 ```esql
