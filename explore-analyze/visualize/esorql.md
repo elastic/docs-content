@@ -135,6 +135,11 @@ An {{esql}} query returns a table. When you use the result to build a visualizat
 
 The chart type determines the combination of columns you need. Open a page from the [visualization types](lens.md#lens-visualization-types) list to find an {{esql}} query pattern and learn how to assign its result columns to the chart dimensions.
 
+## Compare current versus previous period with time shift [esql-viz-time-shift]
+
+:::{include} _snippets/esql-time-shift.md
+:::
+
 ## Add drilldowns to an {{esql}} visualization [esql-viz-drilldowns]
 ```{applies_to}
 stack: ga 9.4
