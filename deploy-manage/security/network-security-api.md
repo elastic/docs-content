@@ -18,7 +18,7 @@ sub:
 
 # Manage network security through the API
 
-This example demonstrates how to use the {{ecloud}} RESTful API, {{ece}} RESTful API, or {{serverless-full}} RESTful API or to manage different types of network security policies and rules. 
+This example demonstrates how to use the {{ecloud}} RESTful API, {{ece}} RESTful API, or {{serverless-full}} RESTful API to manage different types of network security policies and rules. 
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/network-security
@@ -33,11 +33,12 @@ We cover the following examples:
   
 * [Create a private connection policy](#private-connection)  {applies_to}`ess: ga` {applies_to}`serverless: ga`
   * [AWS PrivateLink](#private-connection-policy-aws) {applies_to}`ess: ga` {applies_to}`serverless: ga`
-  * [Azure Private Link](#private-connection-policy-azure)  {applies_to}`ess:`
+  * [Azure Private Link](#private-connection-policy-azure)  {applies_to}`ess: ga` {applies_to}`serverless: ga`
   * [GCP Private Service Connect](#private-connection-policy-gcp)  {applies_to}`ess:`
 
 * [Update a policy or rule set](#update-policy-rs)
 * [Associate a policy or rule set with a project or deployment](#associate-policy-rs-with-deployment)
+* [Find the resources associated with a policy or rule set](#find-associated-resources)
 * [Remove a policy or rule set from a project or deployment](#delete-policy-rs-association-with-deployment)
 * [Delete a policy or rule set](#delete-policy-rs)
 
@@ -57,14 +58,15 @@ The following requirements apply to the project where you want to apply a networ
 :::{include} _snippets/network-sec-tier-reqs.md
 :::
 
-There are no specific requirements for {{es-serverless}} projects, {{ech}} deployments, or {{ece}} deployments.
+There are no specific requirements for other {{serverless-short}} project types, {{ech}} deployments, or {{ece}} deployments.
 
 ## API reference
 
-To learn more about these endpoints, refer to the reference for your deployment type:
+Learn more about these endpoints in the reference for your deployment type:
 
 * [{{ecloud}} API]({{cloud-apis}}group/endpoint-deploymentstrafficfilter)
 * [{{ece}} API]({{ece-apis}}group/endpoint-deploymentstrafficfilter)
+* [{{serverless-full}} API]({{cloud-serverless-apis}}operation/operation-createtrafficfilter)
 
 
 ## Terminology in the {{ecloud}} console and APIs
@@ -127,7 +129,7 @@ https://api.elastic-cloud.com/api/v1/serverless/traffic-filters \
 
 1. The region is always the same region as the project you want to associate with an IP filter policy. For details, check the [list of available regions](/deploy-manage/deploy/elastic-cloud/regions.md).
 
-2. The type of policy. In the JSON object, we use `ip` for IP filter policies. Currently, only `ip` is supported.
+2. The type of policy. For IP filter policies, set `type` to `ip`.
 :::
 
 :::{applies-item} ess:
@@ -262,18 +264,49 @@ A private connection policy is always required to establish a private connection
 :::
 
 
-### Retrieve PrivateLink region metadata
+### Retrieve PrivateLink region metadata [retrieve-privatelink-region-metadata]
 ```{applies_to}
 serverless:
 ```
 
-To create a private connection, cloud service providers require connectivity metadata, including a service name. For {{serverless-full}}, you can retrieve this metadata from an endpoint, optionally filtered by region.
+To create a private connection, cloud service providers require connectivity metadata, including a service name. For {{serverless-full}}, you can retrieve this metadata from an endpoint, optionally filtered by region or cloud service provider (`csp`).
+
+Filter by cloud service provider, for example `?csp=azure`, or by region using the prefixed region ID, for example `?region=azure-eastus2` or `?region=aws-eu-west-1`.
+
+#### Azure metadata
 
 **Request:**
 
 ```json
 curl \
-  --request GET 'https://api.elastic-cloud.com/api/v1/serverless/traffic-filters/metadata?region=eu-west-1' \
+  --request GET 'https://api.elastic-cloud.com/api/v1/serverless/traffic-filters/metadata?csp=azure' \
+  --header "Authorization: ApiKey $API_KEY"
+```
+
+**Response:**
+
+```json
+{
+  "regions": [
+    {
+      "availability_zones": [],
+      "csp": "azure",
+      "private_hosted_zone_domain_name": "private.eastus2.azure.elastic.cloud",
+      "private_service_name": "eastus2-prod-privatelink-serverless.46552e7f-8404-48e2-8c79-66801ef74a76.eastus2.azure.privatelinkservice",
+      "region": "azure-eastus2",
+      "vpc_service_name": ""
+    }
+  ]
+}
+```
+
+#### AWS metadata
+
+**Request:**
+
+```json
+curl \
+  --request GET 'https://api.elastic-cloud.com/api/v1/serverless/traffic-filters/metadata?region=aws-eu-west-1' \
   --header "Authorization: ApiKey $API_KEY"
 ```
 
@@ -298,13 +331,11 @@ curl \
       ],
       "private_hosted_zone_domain_name": "private.eu-west-1.aws.elastic.cloud",
       "vpc_service_name": "com.amazonaws.vpce.eu-west-1.vpce-svc-0197c33d7deffd2fa",
-      "region": "eu-west-1",
+      "region": "aws-eu-west-1"
     }
   ]
 }
 ```
-
-
 
 ### AWS PrivateLink [private-connection-policy-aws]
 ```{applies_to}
@@ -375,9 +406,40 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 ```{applies_to}
 deployment:
   ess:
+serverless:
 ```
 
 Send a request like the following to create an Azure Private Link private connection policy:
+
+::::{applies-switch}
+
+:::{applies-item} serverless:
+```json
+curl \
+  --request POST 'https://api.elastic-cloud.com/api/v1/serverless/traffic-filters' \
+  --header "Authorization: ApiKey $API_KEY" \
+  --header "Content-Type: application/json" \
+  -d '
+{
+  "name": "Azure Private Link private connection policy (serverless)",
+  "region": "azure-eastus2",
+  "description": "",
+  "type": "private_endpoint",
+  "rules": [
+    {
+      "azure_endpoint_name": "azure-demo",
+      "azure_endpoint_guid": "7c0f05e4-e32b-4b10-a246-7b77f7dcc63c" <1>
+    }
+  ],
+  "include_by_default": false
+}
+'
+```
+
+1. To learn how to find the values for `azure_endpoint_name` and `azure_endpoint_guid` for type `private_endpoint`, refer to [Find your private endpoint resource name](private-connectivity-azure.md#ec-find-your-resource-name) and [Find your private endpoint resource ID](private-connectivity-azure.md#ec-find-your-resource-id). This setting is supported only in Azure regions.
+:::
+
+:::{applies-item} ess:
 
 ```json
 curl -XPOST \
@@ -401,7 +463,10 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 '
 ```
 
-1. To learn how to find the value for `azure_endpoint_name` and `azure_endpoint_guid` for type `azure_private_endpoint`, refer to [Find your private endpoint resource name](private-connectivity-azure.md#ec-find-your-resource-name) and [Find your private endpoint resource ID](private-connectivity-azure.md#ec-find-your-resource-id). This setting is supported only in Azure regions.
+1. To learn how to find the values for `azure_endpoint_name` and `azure_endpoint_guid` for type `azure_private_endpoint`, refer to [Find your private endpoint resource name](private-connectivity-azure.md#ec-find-your-resource-name) and [Find your private endpoint resource ID](private-connectivity-azure.md#ec-find-your-resource-id). This setting is supported only in Azure regions.
+
+:::
+::::
 
 
 ### GCP Private Service Connect [private-connection-policy-gcp]
@@ -433,7 +498,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 '
 ```
 
-1. To find the value for `source` for type `gcp_private_service_connect_endpoint`, check [Find your Private Service Connect connection ID](private-connectivity-gcp.md#ec-find-your-psc-connection-id). This setting is supported only in GCP regions.
+1. To learn how to find the value for `source` for type `gcp_private_service_connect_endpoint`, refer to [Find your Private Service Connect connection ID](private-connectivity-gcp.md#ec-find-your-psc-connection-id). This setting is supported only in GCP regions.
 
 
 ## Update a policy or rule set [update-policy-rs]
@@ -599,6 +664,124 @@ https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULE
 :::::
 
 
+## Find the resources associated with a policy or rule set [find-associated-resources]
+
+Send a request like the following to find which deployments or projects a policy or rule set protects.
+
+::::{applies-switch}
+
+:::{applies-item} ech:
+
+To list the deployments associated with a specific policy:
+
+```json
+curl \
+-H "Authorization: ApiKey $API_KEY" \
+https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets/$POLICY_ID/associations
+```
+
+A successful response includes each associated deployment and the total number of associations. `total_associations` counts every association, including deployments you don't have permission to view.
+
+```json
+{
+  "associations" : [
+    {
+      "entity_type" : "deployment",
+      "id" : "a8c854b1ff854d46a4e0ad5cb82ab9a9"
+    }
+  ],
+  "total_associations" : 1
+}
+```
+
+To list every policy and its associated deployments, add `include_associations=true` to the ruleset list request:
+
+```json
+curl \
+-H "Authorization: ApiKey $API_KEY" \
+https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets?include_associations=true
+```
+
+Each rule set in the response includes an `associations` array and a `total_associations` count only when `include_associations` is `true`. You can also pass `include_associations=true` when you retrieve a single ruleset by ID: `/api/v1/deployments/traffic-filter/rulesets/$POLICY_ID?include_associations=true`.
+:::
+
+:::{applies-item} serverless:
+
+On {{serverless-full}}, policy associations are stored on the project. The traffic filter endpoints do not return the projects a policy protects.
+
+To list only the projects associated with a policy, pass the policy ID as `traffic_filter` on the project list request:
+
+```json
+curl \
+-H "Authorization: ApiKey $API_KEY" \
+https://api.elastic-cloud.com/api/v1/serverless/projects/elasticsearch?traffic_filter=$POLICY_ID <1>
+```
+1. Pass the project type in the URL: `/api/v1/serverless/projects/{project-type}`. Repeat the request for each project type you use, for example `elasticsearch` or `security`.
+
+To review the policies attached to every project of a given type, omit `traffic_filter`:
+
+```json
+curl \
+-H "Authorization: ApiKey $API_KEY" \
+https://api.elastic-cloud.com/api/v1/serverless/projects/elasticsearch
+```
+
+The list response includes a `traffic_filters` array on every project. The following example shows only the fields that identify associated policies:
+
+```json
+{
+  "items" : [
+    {
+      "id" : "c7a1b2d3e4f5a6b7c8d9e0f1a2b3c4d5",
+      "name" : "My Elasticsearch project",
+      "traffic_filters" : [
+        {
+          "id" : "5470a0010ebf437bb9294ea9fcba0ba0"
+        }
+      ]
+    }
+  ]
+}
+```
+:::
+
+:::{applies-item} ece:
+
+To list the deployments associated with a specific rule set:
+
+```json
+curl \
+-H "Authorization: ApiKey $API_KEY" \
+https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULESET_ID/associations
+```
+
+A successful response includes each associated deployment and the total number of associations. `total_associations` counts every association, including deployments you don't have permission to view.
+
+```json
+{
+  "associations" : [
+    {
+      "entity_type" : "deployment",
+      "id" : "a8c854b1ff854d46a4e0ad5cb82ab9a9"
+    }
+  ],
+  "total_associations" : 1
+}
+```
+
+To list every rule set and its associated deployments, add `include_associations=true` to the rule set list request:
+
+```json
+curl \
+-H "Authorization: ApiKey $API_KEY" \
+https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets?include_associations=true
+```
+
+Each rule set in the response includes an `associations` array and a `total_associations` count only when `include_associations` is `true`. You can also pass `include_associations=true` when you retrieve a single rule set by ID: `/api/v1/deployments/traffic-filter/rulesets/$RULESET_ID?include_associations=true`.
+:::
+::::
+
+
 ## Remove a policy or rule set from a project or deployment [delete-policy-rs-association-with-deployment]
 
 Send a request like the following to remove a policy or rule set from a project or deployment.
@@ -638,7 +821,6 @@ https://api.elastic-cloud.com/api/v1/serverless/projects/elasticsearch/$PROJECT_
 ```
 1. Pass the project type and ID in the URL: `/api/v1/serverless/projects/{project-type}/{project-id}`. The project type is `elasticsearch`, `observability`, or `security`.
 2. `$POLICY_ID`, the policy that you want to remove, is not included in the list.
-:::
 :::
 
 :::{applies-item} ece:

@@ -4,6 +4,8 @@ redirects:
   # related to https://github.com/elastic/docs-content/issues/7541
   'explore-analyze/query-filter/tools/playground.md': 'explore-analyze/ai-features/elastic-agent-builder.md'
   'solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md': 'solutions/search/full-text/search-with-synonyms.md'
+  'solutions/search/vector/dense-versus-sparse-ingest-pipelines.md': 'solutions/search/semantic-search/dense-versus-sparse-ingest-pipelines.md'
+  'solutions/search/using-openai-compatible-models.md': 'solutions/search/semantic-search/using-openai-compatible-models.md'
   'solutions/elasticsearch-solution-project/full-text/create-update-synonyms-api-example.md': 'solutions/search/full-text/create-update-synonyms-api-example.md'
   'solutions/search/query-rules-ui.md': 'solutions/elasticsearch-solution-project/query-rules-ui.md'
   'solutions/search/search-applications.md': 'solutions/elasticsearch-solution-project/search-applications.md'
@@ -17,6 +19,7 @@ redirects:
   'solutions/search/rag/playground-troubleshooting.md': 'solutions/elasticsearch-solution-project/playground-troubleshooting.md'
   'solutions/search/search-applications/search-application-api.md': 'solutions/elasticsearch-solution-project/search-applications/search-application-api.md'
   'solutions/search/search-applications/search-application-security.md': 'solutions/elasticsearch-solution-project/search-applications/search-application-security.md'
+  'solutions/search/ai-search/ai-search.md': 'solutions/search/vector.md'
   'solutions/search/mcp.md':
     to: 'explore-analyze/ai-features.md'
     anchors:
@@ -55,11 +58,12 @@ redirects:
   'solutions/observability/streams/management/extract/set.md': 'solutions/observability/streams/processors/set.md'
   'solutions/observability/streams/management/extract/trim.md': 'solutions/observability/streams/processors/trim.md'
   'solutions/observability/streams/management/extract/uppercase.md': 'solutions/observability/streams/processors/uppercase.md'
-  'solutions/observability/streams/management/knowledge-indicators.md': 'solutions/observability/streams/knowledge-indicators.md'
+  'solutions/observability/streams/management/knowledge-indicators.md': 'solutions/observability/streams/significant-events/knowledge-indicators.md'
   'solutions/observability/streams/management/partitioning.md': 'solutions/observability/streams/organize-your-data.md'
   'solutions/observability/streams/management/retention.md': 'solutions/observability/streams/configure-retention.md'
   'solutions/observability/streams/management/schema.md': 'solutions/observability/streams/map-fields.md'
-  'solutions/observability/streams/management/significant-events.md': 'solutions/observability/streams/knowledge-indicators.md'
+  'solutions/observability/streams/management/significant-events.md': 'solutions/observability/streams/significant-events/knowledge-indicators.md'
+  'solutions/observability/streams/knowledge-indicators.md': 'solutions/observability/streams/significant-events/knowledge-indicators.md'
   'solutions/observability/streams/management/streamlang.md': 'solutions/observability/streams/streamlang.md'
 
   # Related to https://github.com/elastic/docs-content/pull/1069
@@ -118,7 +122,14 @@ redirects:
   'solutions/observability/apps/observe-lambda-functions.md': 'solutions/observability/apm/observe-lambda-functions.md'
   'solutions/observability/apps/integrate-with-machine-learning.md': 'solutions/observability/apm/machine-learning.md'
   'solutions/observability/apps/apm-agent-explorer.md': 'solutions/observability/apm/apm-agent-explorer.md'
-  'solutions/observability/apps/applications-ui-settings.md': 'solutions/observability/apm/applications-ui-settings.md'
+  'solutions/observability/apps/applications-ui-settings.md':
+    to: 'kibana://reference/advanced-settings.md'
+    anchors:
+      '': 'observability-advanced-settings'
+  'solutions/observability/apm/applications-ui-settings.md':
+    to: 'kibana://reference/advanced-settings.md'
+    anchors:
+      '': 'observability-advanced-settings'
   'solutions/observability/apps/act-on-data.md': 'solutions/observability/apm/act-on-data.md'
   'solutions/observability/apps/create-apm-rules-alerts.md': 'solutions/observability/apm/create-apm-rules-alerts.md'
   'solutions/observability/apps/create-custom-links.md': 'solutions/observability/apm/create-custom-links.md'
@@ -648,6 +659,45 @@ redirects:
       'create-sec-serverless-project':
   'solutions/security/elastic-security-serverless.md': 'solutions/security.md'
 
+# Related to https://github.com/elastic/docs-content-internal/issues/1633
+  'solutions/security/get-started/configure-advanced-settings.md':
+    to: 'kibana://reference/advanced-settings.md'
+    anchors:
+      '': 'kibana-siem-settings'
+      'access-privileged-user-monitoring': 'kibana-siem-settings'
+      'custom-alert-closing-reasons': 'kibana-siem-settings'
+      'enable-alerts-and-attacks-alignment': 'kibana-siem-settings'
+      'enable-asset-inventory': 'kibana-siem-settings'
+      'enable-attack-discovery-workflows': 'kibana-siem-settings'
+      'enable-ccs-warning': 'kibana-siem-settings'
+      'enable-cloud-connector-deployment': 'kibana-siem-settings'
+      'enable-graph-visualization': 'kibana-siem-settings'
+      'enable-new-flyout': 'kibana-siem-settings'
+      'enable-rule-changes-history': 'kibana-siem-settings'
+      'exclude-cold-frozen-data-rule-executions': 'kibana-siem-settings'
+      'exclude-cold-frozen-tiers': 'kibana-siem-settings'
+      'how-attack-discovery-workflows-affects-existing-schedules': 'kibana-siem-settings'
+      'included-data-stream-namespaces-rule-execution': 'kibana-siem-settings'
+      'ip-reputation-links': 'kibana-siem-settings'
+      'manage-alert-tags': 'kibana-siem-settings'
+      'max-cases-cases-connector': 'kibana-cases-settings'
+      'max-notes-alerts-events': 'kibana-siem-settings'
+      'security-advanced-settings': 'kibana-siem-settings'
+      'security-advanced-settings-access-advanced-settings': 'kibana-settings-reference'
+      'show-related-integrations': 'kibana-siem-settings'
+      'suppression-window-behavior': 'kibana-siem-settings'
+      'turn-off-esql-based-risk-scoring': 'kibana-siem-settings'
+      'update-sec-indices': 'kibana-siem-settings'
+      'update-threat-intel-indices': 'kibana-siem-settings'
+      'visualizations-in-flyout': 'kibana-siem-settings'
+      '_change_the_default_search_interval_and_data_refresh_time': 'kibana-siem-settings'
+      '_modify_news_feed_settings': 'kibana-siem-settings'
+      '_set_machine_learning_score_threshold': 'kibana-siem-settings'
+    many:
+      - to: 'kibana://reference/configuration-reference/telemetry-settings.md'
+        anchors:
+          'telemetry-settings':
+
 # Related to https://github.com/elastic/docs-content/pull/3808
   'solutions/observability/get-started/other-tutorials/add-data-from-splunk.md': 'solutions/observability/get-started.md'
 
@@ -789,7 +839,34 @@ redirects:
   'explore-analyze/alerts-cases/cases/manage-cases.md': 'explore-analyze/cases/manage-cases.md'
   'explore-analyze/alerts-cases/cases/manage-cases-settings.md': 'explore-analyze/cases/configure-case-settings.md'
   'explore-analyze/cases/manage-cases-settings.md': 'explore-analyze/cases/configure-case-settings.md'
-  'explore-analyze/alerts-cases/cases/cases-as-data.md': 'explore-analyze/cases/cases-as-data.md'
+  'explore-analyze/alerts-cases/cases/cases-as-data.md':
+    to: 'explore-analyze/cases/case-analytics.md'
+    anchors: '!'
+    many:
+      - to: 'explore-analyze/cases/control-case-access.md'
+        anchors:
+          'case-analytics-indices-privs': 'give-analytics-access'
+      - to: 'explore-analyze/cases/case-analytics-indices.md'
+        anchors:
+          'create-manage-case-analytics-indices': 'case-analytics-indices'
+          'case-analytics-indices-names': 'case-analytics-indices'
+      - to: 'explore-analyze/cases/explore-case-data.md'
+        anchors:
+          'explore-case-data': 'explore-case-analytics'
+  'explore-analyze/cases/cases-as-data.md':
+    to: 'explore-analyze/cases/case-analytics.md'
+    anchors: '!'
+    many:
+      - to: 'explore-analyze/cases/control-case-access.md'
+        anchors:
+          'case-analytics-indices-privs': 'give-analytics-access'
+      - to: 'explore-analyze/cases/case-analytics-indices.md'
+        anchors:
+          'create-manage-case-analytics-indices': 'case-analytics-indices'
+          'case-analytics-indices-names': 'case-analytics-indices'
+      - to: 'explore-analyze/cases/explore-case-data.md'
+        anchors:
+          'explore-case-data': 'explore-case-analytics'
   'explore-analyze/cases/setup-cases.md': 'explore-analyze/cases/control-case-access.md'
   'explore-analyze/cases/configure-case-access.md': 'explore-analyze/cases/control-case-access.md'
   'explore-analyze/cases/find-share-cases.md': 'explore-analyze/cases/search-share-cases.md'
@@ -1107,3 +1184,12 @@ redirects:
         anchors:
           'attacks-next-steps': 'manage-saved-discoveries'
   'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'
+  # related to https://github.com/elastic/docs-content/issues/7709
+  'solutions/elasticsearch-solution-project/search-connection-details.md':
+    to: 'solutions/elasticsearch-solution-project/search-connection-details.md'
+    anchors:
+      '_elastic_cloud_and_self_hosted_deployments': 'find-endpoint-cloud-self-managed'
+      '_serverless_deployments': 'find-endpoint-cloud-self-managed'
+      'find-cloud-id-serverless': 'find-endpoint-cloud-self-managed'
+      'create-an-api-key-serverless': 'create-an-api-key-cloud-self-managed'
+

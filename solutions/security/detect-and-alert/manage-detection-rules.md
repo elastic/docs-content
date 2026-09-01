@@ -27,11 +27,8 @@ The page was renamed from **Rules** to **{{siem-rules-ui}}** in versions 9.3.1, 
 The following sections explain how to filter rules, edit settings, control execution, export and import rules, and perform bulk operations.
 
 ::::{important}
-
-Rules run in the background using the privileges of the user who last edited them. When you create or modify a rule, {{elastic-sec}} generates an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) that captures a snapshot of your current privileges. If a user without the required privileges (such as index read access) updates a rule, the rule can stop functioning correctly and no longer generate alerts. To fix this, a user with the right privileges needs to either modify the rule or update the API key. To learn more, refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept).
-
+Ensure that only users with the appropriate access edit rules. Refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept) for more details.
 ::::
-
 
 ## Sort and filter the rules list [sort-filter-rules]
 
@@ -82,7 +79,7 @@ Use bulk editing to update settings on multiple rules simultaneously. Rules that
 
     * **Index patterns**: Add or delete the index patterns used by all selected rules.
     * **Tags**: Add or delete tags on all selected rules.
-    * **Custom highlighted fields**: Add custom highlighted fields on all selected rules. You can choose any fields that are available in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices), or enter field names from other indices. To overwrite a rule's current set of custom highlighted fields, select the **Overwrite all selected rules' custom highlighted fields** option, then click **Save**.
+    * **Custom highlighted fields**: Add custom highlighted fields on all selected rules. You can choose any fields that are available in the default {{elastic-sec}} indices ([securitySolution:defaultIndex](kibana://reference/advanced-settings.md#kibana-siem-settings)), or enter field names from other indices. To overwrite a rule's current set of custom highlighted fields, select the **Overwrite all selected rules' custom highlighted fields** option, then click **Save**.
     * **Add rule actions**: Add [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) on all selected rules. If you add multiple rule actions, you can specify an action frequency for each of them. To overwrite the frequency of existing rule actions, select the option to **Overwrite all selected rules actions**. Keep in mind that rule actions won't run during a [maintenance window](/explore-analyze/alerting/alerts/maintenance-windows.md) or while the rule is [snoozed](#snooze-rule-actions); they'll resume after the maintenance window or snooze period ends.
     * **Update rule schedules**: Update the [schedules](/solutions/security/detect-and-alert/common-rule-settings.md#rule-schedule) and look-back times on all selected rules.
     * **Apply Timeline template**: Apply a specified [Timeline template](/solutions/security/investigate/timeline-templates.md) to the selected rules. You can also choose **None** to remove Timeline templates from the selected rules.

@@ -2,7 +2,7 @@
 navigation_title: "Built-in tools"
 description: "Reference of all built-in tools available in Elastic Agent Builder."
 applies_to:
-  stack: 
+  stack:
   serverless:
 products:
   - id: elasticsearch
@@ -81,8 +81,8 @@ These platform core tools let agents run and track [Elastic Workflows](/explore-
 `platform.core.resume_workflow_execution` {applies_to}`stack: ga 9.4+`
 :   Resumes an [Elastic Workflows](/explore-analyze/workflows.md) execution that is paused at a [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step, providing the reviewer's input to the workflow so it can continue.
 
-`platform.core.generate_workflow` {applies_to}`stack: preview 9.5`
-:   Generates or updates an [Elastic Workflows](/explore-analyze/workflows.md) definition from a natural language description, delegating to a specialized workflow-authoring agent that knows workflow syntax, step types, and available connectors.
+`platform.core.generate_workflow` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+:   Generates or updates an [Elastic Workflows](/explore-analyze/workflows.md) definition from a natural language description, delegating to a specialized workflow-authoring agent that knows workflow syntax, step types, and available connectors. This tool powers [workflow creation from Agent Chat](../chat.md#create-skills-and-workflows-directly-from-chat).
 
 `platform.core.execute_workflow` {applies_to}`stack: preview 9.5`
 :   Executes an [Elastic Workflows](/explore-analyze/workflows.md) definition, given a saved workflow ID, inline YAML for an ephemeral run, or a workflow YAML attachment.
@@ -230,9 +230,9 @@ The following streams tools were available in 9.4 and were removed in 9.5:
 stack: preview 9.5
 ```
 
-Significant events tools search, create, and manage [significant events](/solutions/observability/streams/knowledge-indicators.md) and Knowledge Indicators for [Streams](/solutions/observability/streams/streams.md).
+Significant events tools search, create, and manage significant events and [Knowledge Indicators](/solutions/observability/streams/significant-events/knowledge-indicators.md) for [Streams](/solutions/observability/streams/streams.md).
 
-**Prerequisites:** Significant events require an [Enterprise license](https://www.elastic.co/subscriptions) and must be enabled for the deployment through the `observability:streamsEnableSignificantEvents` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings).
+**Prerequisites:** Significant events require an [Enterprise license](https://www.elastic.co/subscriptions).
 
 `platform.sig_events.ki_search` {applies_to}`stack: preview 9.5`
 :   Searches Knowledge Indicators (both feature-based and query-based) derived from streams data to enrich context for a target stream, service, or group of streams.

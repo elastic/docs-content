@@ -74,6 +74,7 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`elasticsearch.request`](/explore-analyze/workflows/steps/elasticsearch.md#generic-request-actions) | {{es}} | Generic {{es}} API escape hatch. |
 | [`elasticsearch.search`](/explore-analyze/workflows/steps/elasticsearch.md#named-actions) | {{es}} | Run a search. |
 | [`elasticsearch.update`](/explore-analyze/workflows/steps/elasticsearch.md#named-actions) | {{es}} | Update one document. |
+| [`entityStore.updateAssetCriticality`](/explore-analyze/workflows/steps/entity-store.md#entitystore-updateassetcriticality) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | Entity store | Set or remove an entity's asset criticality, and optionally recalculate its risk score. |
 | [`foreach`](/explore-analyze/workflows/steps/foreach.md) | Flow control | Iterate over a collection. |
 | [`http`](/explore-analyze/workflows/steps/external-systems-apps.md#http-actions) | HTTP and console | Call any external HTTP API. |
 | [`if`](/explore-analyze/workflows/steps/if.md) | Flow control | Conditional branching. |
@@ -85,6 +86,7 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`kibana.streams.list`](/explore-analyze/workflows/steps/streams.md#kibana-streams-list) | Streams (tech preview) | List available streams. |
 | [`loop.break`](/explore-analyze/workflows/steps/loop-break.md) | Flow control | Exit the innermost loop. |
 | [`loop.continue`](/explore-analyze/workflows/steps/loop-continue.md) | Flow control | Skip to the next iteration. |
+| [`parallel`](/explore-analyze/workflows/steps/parallel.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | Flow control | Run branches concurrently and collect a per-branch result. |
 | [`security.assignAlert`](/explore-analyze/workflows/steps/alert-triage.md#security-assignalert) | Security | Assign or unassign users on one or more alerts. |
 | [`security.assignAttack`](/explore-analyze/workflows/steps/attack-triage.md#security-assignattack) | Security | Assign or unassign users on one or more attacks. |
 | [`security.disableRule`](/explore-analyze/workflows/steps/detection-rules.md#security-disablerule) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Security | Disable one or more detection rules by rule-ID list or KQL query, with partial-failure reporting. |
@@ -95,6 +97,7 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`security.setAttackTags`](/explore-analyze/workflows/steps/attack-triage.md#security-setattacktags) | Security | Add or remove tags on one or more attacks. |
 | [`switch`](/explore-analyze/workflows/steps/switch.md) | Flow control | Multi-way dispatch. |
 | [`wait`](/explore-analyze/workflows/steps/wait.md) | Flow control | Pause for a fixed duration. |
+| [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | Flow control | Pause for approve/reject (human-in-the-loop). |
 | [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) | Flow control | Pause for human input (human-in-the-loop). |
 | [`while`](/explore-analyze/workflows/steps/while.md) | Flow control | Loop while a condition holds. |
 | [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute) | Composition (tech preview) | Run a child workflow synchronously. |
@@ -115,7 +118,9 @@ Because the available connector steps depend on which connectors your deployment
 
 ## Deprecated step types [workflows-deprecated-steps]
 
-These still work in existing workflows but can't be used in new ones. Refer to the [migration guide](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md) for full replacement details.
+Deprecated step types still work in existing workflows but can't be used in new ones. They're hidden from autocomplete and the **Add Action** menu, and the YAML editor shows a deprecation warning with a replacement suggestion on hover. 
+
+Refer to the [migration guide](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md) for Cases replacement details. For AI connector steps, replace them with [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) (or another [AI step](/explore-analyze/workflows/steps/ai-steps.md) such as `ai.classify`, `ai.summarize`, or `ai.agent` when that better matches the task).
 
 | Deprecated | Replacement |
 |---|---|
@@ -123,6 +128,10 @@ These still work in existing workflows but can't be used in new ones. Refer to t
 | `kibana.getCaseDefaultSpace` | [`cases.getCase`](/explore-analyze/workflows/steps/cases.md#cases-getcase) |
 | `kibana.updateCaseDefaultSpace` | [`cases.updateCase`](/explore-analyze/workflows/steps/cases.md#cases-updatecase) |
 | `kibana.addCaseCommentDefaultSpace` | [`cases.addComment`](/explore-analyze/workflows/steps/cases.md#cases-addcomment) |
+| `inference.*` | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) |
+| `bedrock.*` | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) |
+| `gen-ai.*` | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) |
+| `gemini.*` | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) |
 
 ## Related [workflows-step-types-related]
 
