@@ -11,7 +11,9 @@ type: how-to
 
 # Select and switch Kibana spaces
 
-The spaces you can open depend on your roles. Switching spaces does not change your permissions.
+Switch between the spaces your roles allow. Switching spaces does not change your permissions.
+
+You can also set whether {{kib}} opens your last space when you log in.
 
 ## Before you begin
 
@@ -26,7 +28,7 @@ You can open only the spaces that your roles grant access to.
    * In all other cases, select the avatar of your current space in the global header to open the **Spaces** menu.
 
    :::{image} /deploy-manage/images/kibana-change-space.png
-   :alt: Change current space menu
+   :alt: The My spaces menu in the global header
    :screenshot:
    :width: 50%
    :::
