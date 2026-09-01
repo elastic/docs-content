@@ -23,7 +23,7 @@ You might need to adjust the retention period for one of the following reasons:
 Before increasing retention, ensure the `logging-and-metrics` system deployment has sufficient resources and disk capacity. Longer retention increases storage usage and cluster workload, and can result in a busy or overloaded cluster if the deployment is not scaled appropriately. Refer to [ECE system deployments configuration](/deploy-manage/deploy/cloud-enterprise/system-deployments-configuration.md) for more information.
 ::::
 
-To customize the retention period, create a new {{ilm-init}} policy with the required settings and apply it to the target data streams. On ECE 4.1.1 or later, apply it through a [component template](#customize-retention-component-templates), which is the recommended approach. On earlier versions, you can [clone the relevant index template](#customize-retention-index-templates) and configure it to use your custom {{ilm-init}} policy, though this requires repeating the procedure after upgrades that change template names.
+To customize the retention period, create a new {{ilm-init}} policy with the required settings and apply it to the target data streams. On ECE 4.1.1 or later, [apply it through a component template](#customize-retention-component-templates), which is the recommended approach. On earlier versions, you can [clone the relevant index template](#customize-retention-index-templates) and configure it to use your custom {{ilm-init}} policy, though this requires repeating the procedure after upgrades that change template names.
 
 ## Available index templates [available-templates]
 
@@ -44,12 +44,19 @@ Index templates and data streams include a `<version>` tag as part of their name
 ## Customize retention using component templates [customize-retention-component-templates]
 ```{applies_to}
 deployment:
-  ece: ga 4.2+
+  ece: ga 4.1+
 ```
 
-Starting from ECE 4.1.1, each index template in the `logging-and-metrics` cluster includes a `composed_of` array that references a set of reserved component template names. If you create a component template with one of these names, {{es}} merges its settings into new backing indices automatically. Because these names do not include a version tag, the customization persists across ECE upgrades without any additional action.
+Create a component template with a reserved name to apply custom retention that remains in place after ECE upgrades.
 
-The following component template names are reserved for customization. Define only the one that matches the scope you need:
+Each index template in the `logging-and-metrics` cluster includes a `composed_of` array that references these reserved names. If you create a matching component template, {{es}} merges its settings into new backing indices. The names do not include a version tag, so they continue to match after an ECE upgrade.
+
+```{note}
+This functionality is only available in ECE 4.1.1 and higher.
+```
+
+
+The following component template names are reserved for customization. Define only the templates that match the scope you need:
 
 | Component template | Applies to |
 |---|---|
