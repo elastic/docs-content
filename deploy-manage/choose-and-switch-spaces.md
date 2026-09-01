@@ -33,7 +33,7 @@ You can open only the spaces that your roles grant access to.
 
 2. Select the space you want to open.
 
-The header shows the space you opened.
+The selected space opens. It's visible in the header.
 
 ## Understand what happens when you log in
 
@@ -56,7 +56,7 @@ serverless: ga
 This personal preference is on by default. It controls whether {{kib}} opens your last space when you log in.
 
 :::{note}
-:applies_to: stack: ga =9.5
+:applies_to: ech:
 On {{ecloud}}, {{kib}} does not persist your last space. The **Spaces preferences** user menu item is not available.
 :::
 
@@ -69,12 +69,7 @@ On {{ecloud}}, {{kib}} does not persist your last space. The **Spaces preference
 
 3. Turn **Remember last selected space** on or off.
 
-   * {applies_to}`self: ga` {applies_to}`ece: ga` {applies_to}`eck: ga` The control is in **Spaces preferences** or **Space Configuration** (depending on your {{stack}} version).
-
-4. Save your changes. The button label depends on your deployment:
-
-   * {applies_to}`ech: ga` {applies_to}`serverless: ga` Select **Save**.
-   * {applies_to}`self: ga` {applies_to}`ece: ga` {applies_to}`eck: ga` Select **Save changes**.
+4. Save your changes.
 
 The next time you log in, {{kib}} follows this preference. If the preference is off and you can access more than one space, {{kib}} shows the space selector.
 
