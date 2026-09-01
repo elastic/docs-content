@@ -8,15 +8,17 @@ description: Learn which regions host Elastic Inference Service (EIS), how infer
 
 # Region and hosting [eis-regions]
 
-This page lists the {{aws}}, Azure, and {{gcp}} regions where Elastic {{infer-cap}} Service (EIS) is available and explains how {{infer}} requests are routed.
+EIS is available to all Elastic customers in all regions on Elastic Cloud Serverless, Hosted, and Cloud-Connect. This page lists the {{aws}}, Azure, and {{gcp}} regions where Elastic {{infer-cap}} Service (EIS) is currently deployed and explains how {{infer}} requests are routed.
 
 ## Available regions [available-regions]
 
 **{{aws}}:**
 
-* `us-east-1` (N. Virginia, US)
+* `ap-northeast-1` (Tokyo)
 * `eu-central-1` (Frankfurt, Germany)
-* `eu-west-1` (Ireland)
+* `eu-west-2` (London)
+* `us-east-1` (N. Virginia, US)
+* `us-west-2` (Oregon, US)
 
 **Azure:**
 
@@ -27,9 +29,8 @@ This page lists the {{aws}}, Azure, and {{gcp}} regions where Elastic {{infer-ca
 * `asia-southeast1` (Singapore)
 * `europe-west1` (Belgium)
 * `us-east4` (N. Virginia, US)
-* `us-east5` (Columbus, US)
 
-All {{infer}} requests sent through EIS are routed to the nearest region, regardless of where your {{es}} deployment or {{serverless-short}} project is hosted.
+All {{infer}} requests sent through EIS are routed to the nearest region, regardless of where your {{es}} deployment or {{serverless-short}} project is hosted. For deployments and projects in an EU region, we will route to the nearest EIS presence in an EU region.
 
 {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` If you configure [region preferences](#inference-region-preferences), EIS routes only within your allowed geographies or regions.
 
