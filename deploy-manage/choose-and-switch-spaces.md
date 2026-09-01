@@ -24,7 +24,7 @@ You can open only the spaces that your roles grant access to.
 1. Open the space selector from the [global header](/explore-analyze/find-and-organize/kibana-interface.md#global-header). Where you find it depends on your deployment type and version:
 
    * {applies_to}`serverless: ga` Select the name of your project in the global header, then select your current space to open **My spaces**.
-   * {applies_to}`stack: ga 9.6` In spaces that use a solution view, select the name of your deployment in the global header, then select your current space to open **My spaces**. When the global header shows the name of your current space instead of a deployment name, selecting it opens **My spaces** directly.
+   * {applies_to}`stack: ga 9.6+` In spaces that use a solution view, select the name of your deployment in the global header, then select your current space to open **My spaces**. When the global header shows the name of your current space instead of a deployment name, selecting it opens **My spaces** directly.
    * In all other cases, select the avatar of your current space in the global header to open the **Spaces** menu.
 
    :::{image} /deploy-manage/images/kibana-change-space.png
