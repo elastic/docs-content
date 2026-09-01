@@ -23,4 +23,4 @@ Before configuring BYOK, you need an RSA key in Azure Key Vault and the necessar
 
 1. In the Azure portal, navigate to your deployment's overview page.
 2. Select the **Advanced Settings** link to open the {{ecloud}} console.
-3. Follow the steps in [Encrypt an existing deployment with your key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md#ec_encrypt_an_existing_deployment_with_a_customer_managed_key).
+3. Follow the steps in [Encrypt an existing deployment with your key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md#ec_encrypt_an_existing_deployment_with_a_customer_managed_key) to configure your deployment to use your key.
