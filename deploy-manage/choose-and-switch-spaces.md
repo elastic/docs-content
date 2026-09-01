@@ -53,12 +53,15 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-This personal preference is on by default. It controls whether {{kib}} opens your last space when you log in.
+:::{admonition} Requirements
+This preference is available on:
 
-:::{note}
-:applies_to: ech:
-On {{ecloud}}, {{kib}} does not persist your last space. The **Spaces preferences** user menu item is not available.
+* {applies_to}`serverless: ga` {{serverless-full}} projects
+* {applies_to}`stack: ga 9.6+` Self-managed deployments, {{ece}}, {{eck}}, and {{ecloud}}
+* {applies_to}`stack: ga =9.5` Self-managed deployments, {{ece}}, and {{eck}}. It is not available on {{ecloud}}.
 :::
+
+This personal preference is on by default. It controls whether {{kib}} opens your last space when you log in.
 
 1. Open the user menu from the header.
 
