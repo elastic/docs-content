@@ -75,7 +75,7 @@ To customize the retention period:
 
 1. [Create a new {{ilm-init}} policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) with the required retention settings.
 
-2. Create a [component template](/manage-data/data-store/templates.md) using the name that matches your target scope, and set `index.lifecycle.name` to the {{ilm-init}} policy you created. You can do this from {{kib}} **Index Management → Component templates**, or from the [{{kib}} Console](/explore-analyze/query-filter/tools/console.md). For example, to apply a custom {{ilm-init}} policy to all `cluster-logs` data streams:
+2. [Create a component template](/manage-data/data-store/templates.md#component-templates) using the name that matches your target scope, and set `index.lifecycle.name` to the {{ilm-init}} policy you created. You can do this from {{kib}} **Index Management → Component templates**, or from the [{{kib}} Console](/explore-analyze/query-filter/tools/console.md). For example, to apply a custom {{ilm-init}} policy to all `cluster-logs` data streams:
 
     ```console
     PUT _component_template/cluster-logs@custom
