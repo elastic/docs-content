@@ -12,12 +12,6 @@ products:
 
 You can configure several types of logs in {{stack}} that can help you to gain insight into {{stack}} operations, diagnose issues, and track certain types of events.
 
-::::{note}
-:applies_to: serverless: preview
-
-For {{serverless-full}}, ship audit trail and future log types with [](/deploy-manage/monitor/log-delivery.md). The logging configuration options on this page apply to {{stack}} deployments, not to {{serverless-short}} log delivery.
-::::
-
 The following logging features are available:
 
 ## For {{es}} [extra-logging-features-elasticsearch]

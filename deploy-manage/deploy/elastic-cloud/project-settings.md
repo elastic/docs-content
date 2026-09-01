@@ -17,7 +17,7 @@ Project settings are configurations that apply to your entire project, managed f
 - **[Project features and add-ons](#project-features-add-ons)**: Select feature tiers and enable add-ons for your project type.
 - **[Project tags](#project-tags)**: Add custom tags to categorize and organize your projects alongside predefined tags.
 - **[Connection aliases](#elasticsearch-manage-project-connection-aliases)**: Use predictable, human-readable URLs for your projects that you can share easily.
-- {applies_to}`serverless: preview` **[Log delivery](/deploy-manage/monitor/log-delivery.md)**: Ship selected log types to a {{sec-serverless}} or {{obs-serverless}} project in your organization.
+<!-- Hidden for private preview - {applies_to}`serverless: preview` **[Log delivery](/deploy-manage/monitor/serverless-log-delivery.md)**: Ship selected log types to a {{sec-serverless}} or {{obs-serverless}} project in your organization. -->
 
 To manage these settings:
 

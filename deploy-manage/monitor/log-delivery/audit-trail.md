@@ -9,7 +9,7 @@ products:
 
 # Audit trail log delivery
 
-Audit trail is the first log type available for [log delivery](/deploy-manage/monitor/log-delivery.md) in {{serverless-full}}. Enabling it delivers audit logs to your selected destination project so you can track and investigate organization actions in the source project.
+Audit trail is the first log type available for [log delivery](/deploy-manage/monitor/serverless-log-delivery.md) in {{serverless-full}}. Enabling it delivers audit logs to your selected destination project so you can track and investigate organization actions in the source project.
 
 ## What's included
 
@@ -45,7 +45,7 @@ You must have the **Admin** or **Editor** [role](/deploy-manage/users-roles/clou
 3. For **Audit trail**, complete the following fields.
     * In the **Destination** column, select a {{sec-serverless}} or {{obs-serverless}} project to receive the logs.
       :::{tip}
-      We recommend selecting an {{sec-serverless}} project as the destination for your audit trail.
+      Since audit logs are security data, we recommend selecting a {{sec-serverless}} project as the destination for your audit trail.
       :::
     * Choose [ignore filters](#audit-trail-ignore-filters) to exclude certain events before delivery. Leave the list empty only if you want to deliver all events for that log type.
     * Switch the toggle to **Enabled**.
@@ -53,7 +53,7 @@ You must have the **Admin** or **Editor** [role](/deploy-manage/users-roles/clou
 
 ## Audit trail ignore filters
 
-Apply ignore filters to exclude certain events from being delivered. Refer to [](/deploy-manage/monitor/log-delivery.md#ignore-filters) to learn more about their impact on your delivery volume and bill.
+Apply ignore filters to exclude certain events from being delivered. Refer to [](/deploy-manage/monitor/serverless-log-delivery.md#ignore-filters) to learn more about their impact on your delivery volume and bill.
 
 The following table describes which ignore filters are available for the audit trail log type and when to select them.
 
