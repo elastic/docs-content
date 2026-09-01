@@ -25,7 +25,7 @@ products:
 
 The *control plane* of ECE include the following management services:
 
-**ZooKeeper**
+### ZooKeeper
 
 * [ZooKeeper](http://zookeeper.apache.org/) is a distributed, strongly consistent data store.
 * Holds essential information for ECE components: Proxy routing tables, memory capacity advertised by the allocators, changes committed through Admin Console, and so on.
@@ -34,13 +34,13 @@ The *control plane* of ECE include the following management services:
 * Stores the state of the ECE installation and the state of all deployments running in ECE.
 * Runs on hosts with the [`director` role](assign-roles-to-hosts.md).
 
-**Director**
+### Director
 
 * Manages the ZK data store and signs the CSRs (certificate signing requests) for internal clients that want to communicate with ZooKeeper.
 * Maintains the stunnels used by ZooKeeper for communication and establishes quorum when new ZooKeeper nodes are created.
 * Runs on hosts with the [`director` role](assign-roles-to-hosts.md).
 
-**Constructor**
+### Constructor
 
 * Works like a scheduler that monitors requests from the Admin console.
 * Determines what needs to be changed, and writes the changes to ZooKeeper nodes monitored by the allocators.
@@ -49,31 +49,30 @@ The *control plane* of ECE include the following management services:
 * Places cluster nodes and instances within different availability zones to ensure that the deployment can survive any downtime of a whole zone. You can designate these availability zones when you install ECE.
 * Runs on hosts with the [`coordinator` role](assign-roles-to-hosts.md), shown as **Controller** in the Cloud UI.
 
-**Cloud UI and API**
+### Cloud UI and API
 
-Provide web and API access for administrators to manage and monitor the ECE installation. These services run on hosts with the [`coordinator` role](assign-roles-to-hosts.md), shown as **Controller** in the Cloud UI.
+* Provide web and API access for administrators to manage and monitor the ECE installation.
+* Run on hosts with the [`coordinator` role](assign-roles-to-hosts.md), shown as **Controller** in the Cloud UI.
 
 
 ## Proxies [ece_proxies]
 
-* Run on hosts with the [`proxy` role](assign-roles-to-hosts.md).
 * Handle user requests, mapping deployment IDs that are passed in request URLs for the container to the actual {{es}} cluster nodes and other instances. The association of deployment IDs to a container is stored in ZooKeeper, cached by the proxies. In the event of ZooKeeper downtime, the platform can still service the requests to existing deployments by using the cache.
 * Keep track of the state and availability of zones, if you have a highly available {{es}} cluster. If one of the zones goes down, the proxy will not route any requests there.
 * Help with no-downtime scaling and upgrades. Before performing an upgrade, a snapshot is taken, and data is migrated to the new nodes. When the migration is complete, a proxy switches the traffic to the new nodes and disconnects the old ones.
 * Multiple proxies are usually configured behind a load balancer to ensure that the system remains available.
-
+* Run on hosts with the [`proxy` role](assign-roles-to-hosts.md).
 
 ## Allocators [ece-architecture-allocators]
 
-* Run on hosts with the [`allocator` role](assign-roles-to-hosts.md).
-* Run on all the machines that host {{es}} nodes and {{kib}} instances.
-* Control the lifecycle of cluster nodes by:
+* Manage the lifecycle of {{stack}} application instances, such as {{es}} cluster nodes and {{kib}} instances, by:
 
-    * Creating new containers and starting {{es}} nodes when requested
-    * Restarting a node if it becomes unresponsive
-    * Removing a node if it is no longer needed
+    * Creating and starting new instances when requested
+    * Restarting an instance if it becomes unresponsive
+    * Removing an instance when it is no longer needed
 
 * Advertise the memory capacity of the underlying host machine to ZooKeeper so that the Constructor can make an informed decision on where to deploy.
+* Run on hosts with the [`allocator` role](assign-roles-to-hosts.md).
 
 ## Services as Docker containers [ece-containerization]
 
@@ -99,6 +98,8 @@ Each {{ece}} service runs as a dedicated container. These containers are automat
 ECE service containers run as `root` (UID 0). This is an architectural requirement and is not configurable: the containers interact directly with the Docker or Podman socket and perform privileged operations, including cgroup management and resource allocation. {{stack}} containers, such as {{es}} and {{kib}}, run as a non-root user (UID ≥ 1000).
 :::
 
+:::{table}
+:widths: 5-3-4
 | Container                                         | Host roles    | Description |
 |---|---|---|
 | `frc-runners-runner`                              | All roles     | Runs on every ECE host and provides a supervisor service to deploy and manage containers based on the host's assigned roles, ensuring required containers are started at the proper version. |
@@ -116,3 +117,4 @@ ECE service containers run as `root` (UID 0). This is an architectural requireme
 | `frc-zookeeper-servers-zookeeper`                 | Director      | Consistent distributed data store used to track ECE state and coordinate communication between services. |
 | `frc-proxies-proxyv2`                             | Proxy         | Routes user traffic to the {{stack}} deployments. |
 | `frc-proxies-route-server`                        | Proxy         | Manages the routing tables used by the proxy service. |
+:::
