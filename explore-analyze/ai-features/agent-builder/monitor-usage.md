@@ -1,6 +1,6 @@
 ---
 navigation_title: "Monitor usage and costs"
-description: "Understand how Agent Builder calculates token usage, monitor conversation costs, and learn how execution-based billing works on Elastic Cloud Serverless."
+description: "Understand how Agent Builder calculates token usage, monitor conversation costs, and learn how execution-based billing works on Elastic Cloud."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -9,6 +9,7 @@ products:
   - id: kibana
   - id: observability
   - id: security
+  - id: cloud-hosted
   - id: cloud-serverless
 ---
 
@@ -99,7 +100,11 @@ For general pricing information, refer to [Elastic pricing](https://www.elastic.
 
 ### {{ech}}
 
-{{agent-builder}} and [Workflows](/explore-analyze/workflows.md) on {{ech}} are currently under promotional pricing and available at no additional charge.
+On {{ech}}, {{agent-builder}} usage is billed based on executions. Each completed interaction with an agent counts as at least one execution. Interactions that use more than 50,000 input tokens count as additional executions in 50,000-token increments. If the agent encounters an error and does not return a response, no executions are metered.
+
+The first 10,000 {{agent-builder}} executions each month are included. Additional executions are billed at the published tiered rates.
+
+When an agent invokes a [workflow](/explore-analyze/workflows.md), the workflow execution is metered separately. Refer to the [Hosted add-ons pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=stack_hosted&group=addons&dimension=executions) for current rates and tier breakpoints.
 
 ### Self-managed
 

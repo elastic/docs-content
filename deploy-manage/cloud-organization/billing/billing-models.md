@@ -55,12 +55,14 @@ Consumption-based billing
 Resource-based pricing
 :   You are charged for the actual computing resources you use: capacity (consisting of RAM and CPU plus disk allowance), data transfer, and snapshot storage. This normalizes billing dimensions across different use cases (for example, the number of agents for APM, the number of hosts for Security, the volume of data ingest for Observability, and so on) making it easy to compare and aggregate costs.
 
+    Workflow executions and Agent Builder executions are separate usage-based billing dimensions.
+
 Elastic Consumption Unit (ECU)
-:   An ECU is a unit of aggregate consumption across multiple resources over time.
+:   An ECU is a unit of aggregate consumption across multiple billing dimensions over time.
 
-    Each type of computing resource (capacity, data transfer, and snapshot) that you consume has its own unit of measure. For example, capacity is measured in GB-hour, data transfer in GB, snapshot storage in GB-month and snapshot API requests in thousands of requests.
+    Each billing dimension has its own unit of measure. For example, capacity is measured in GB-hours, data transfer in GB, snapshot storage in GB-months or API requests, and Workflows and Agent Builder usage in executions.
 
-    In order to aggregate consumption across different resource types, all resources are priced in ECU. ECU has a fixed exchange rate to fiat currency of 1 ECU = $1.00.
+    In order to aggregate consumption across different billing dimensions, all usage is priced in ECU. ECU has a fixed exchange rate to fiat currency of 1 ECU = $1.00.
 
     Check [Elastic Consumption Units](/deploy-manage/cloud-organization/billing/ecu.md) for more details.
 

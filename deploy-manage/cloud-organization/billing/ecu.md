@@ -11,7 +11,7 @@ products:
 
 # Elastic Consumption Units [ec-billing-ecu]
 
-All {{ecloud}} usage is metered and billed in Elastic Consumption Units (ECU). An Elastic Consumption Unit is a unit of measure for {{ecloud}} resources (capacity, data transfer, or snapshot storage).
+All {{ecloud}} usage is metered and billed in Elastic Consumption Units (ECU). An Elastic Consumption Unit is a unit of measure for {{ecloud}} usage, including capacity, data transfer, snapshot storage, Workflow executions, and Agent Builder executions.
 
 The nominal value of one Elastic Consumption Unit is $1.00. You can use our [{{ech}} pricing calculator](https://cloud.elastic.co/pricing) or our [public pricing table](https://ela.st/esspricelist) to estimate your costs in USD, and then apply the conversion rate of 1 ECU = $1.00 to calculate the ECU equivalent.
 
@@ -39,7 +39,7 @@ Credits
 :   The quantity of Elastic Consumption Units purchased through an order line and used to cover your consumption.
 
 Usage
-:   Your {{ecloud}} resource consumption quantified in ECU. Resources consumed include capacity (RAM-hours), data transfer (data inter-node and data out), and snapshot storage (storage size or snapshot API calls). These three consumption types are generally known as [billing dimensions](../../../deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md).
+:   Your {{ecloud}} usage quantified in ECU. Usage can include capacity (RAM-hours), data transfer (data inter-node and data out), snapshot storage (storage size or snapshot API calls), Workflow executions, and Agent Builder executions. These consumption types are generally known as [billing dimensions](../../../deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md).
 
 Remaining balance
 :   The quantity of ECU remaining on an order line. This is calculated as the original amount of credits purchased minus the credits used so far.
