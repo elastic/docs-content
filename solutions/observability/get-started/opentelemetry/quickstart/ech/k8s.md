@@ -49,10 +49,6 @@ helm repo add open-telemetry "https://open-telemetry.github.io/opentelemetry-hel
 3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP**.
 4. Copy the public endpoint value.
 
-:::{tip}
-Alternatively, from within {{product.observability}}, go to **Add data** and follow the guided setup for your environment. The wizard generates install commands pre-configured with your {{motlp}} endpoint and API key — if you use the guided setup, you can skip the remaining steps in this section.
-:::
-
 **Create an API key**
 
 :::{note}
