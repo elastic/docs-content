@@ -511,14 +511,18 @@ On the **Infrastructure inventory** page, you can switch between different views
 
 For more on using the Inventory page, refer to [View infrastructure metrics by resource type](view-infrastructure-metrics-by-resource-type.md).
 
-On the **Metrics Explorer** page, you can group and analyze metrics for the resources that you are monitoring.
+You can also explore and group metrics for monitored resources in {{kib}} Discover.
 
 :::{image} /solutions/images/observability-monitor-k8s-metrics-explorer.png
 :alt: Metrics dashboard that shows CPU usage for Kubernetes pods
 :screenshot:
 :::
 
-For more on using the **Metrics Explorer** page, refer to [Explore infrastructure metrics over time](explore-infrastructure-metrics-over-time.md).
+:::{note}
+The **Metrics Explorer** page shown above is deprecated in 9.4+. Use [Explore metrics data with Discover](discover-metrics.md) instead.
+:::
+
+For more on exploring metrics in Discover, refer to [Explore metrics data with Discover](discover-metrics.md).
 
 
 ### View Kubernetes logs [monitor-k8s-explore-logs]

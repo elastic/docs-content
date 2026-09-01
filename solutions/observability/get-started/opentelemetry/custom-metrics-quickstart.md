@@ -131,8 +131,8 @@ input("Sending metrics periodically... press Enter to stop")
 
 In {{kib}}:
 
-1. Go to **Infrastructure** > **Metrics Explorer**.
-2. Search for `custom.temperature`.
+1. Go to **{{product.observability}}** > **Metrics**.
+2. Or open the **Discover** app and filter by your {{data-source}} to search for `custom.temperature`.
 3. Visualize or aggregate the metric data.
 ::::
 
@@ -144,7 +144,7 @@ You've successfully set up a minimal OTLP metrics pipeline with the {{agent}}. Y
 
 Now you can:
 
-- Use **Metrics Explorer** to create custom visualizations and dashboards
+- Use **Discover** or the **Metrics** UI to create custom visualizations and dashboards
 - Set up alerts based on your custom metrics
 - Aggregate and analyze metric trends over time
 
