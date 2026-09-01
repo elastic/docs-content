@@ -105,15 +105,17 @@ Several fields are available for you to view logs based on key details, such as 
 
 | Field | Description | Example value |
 | --- | --- | --- |
-| `service.id` | The ID of the deployment that generated the log | `6ff525333d2844539663f3b1da6c04b6` |
-| `service.name` | The name of the deployment that generated the log. For APM and Fleet Server, this also reflects the component itself | `My Production Deployment`, or `apm-server` / `fleet-server` on those instances |
+| `service.id` | The ID of the deployment that generated the log. This is the most reliable field for identifying the source deployment, it's populated consistently across every component and log category | `6ff525333d2844539663f3b1da6c04b6` |
+| `service.name` | The name of the deployment or component that generated the log. Coverage varies by component: not populated for some {{es}} log categories (for example, audit and GC logs), and reflects the specific component rather than the deployment name for APM and Fleet Server | `My Production Deployment`, or `apm-server` / `fleet-server` on those instances |
 | `cloud.availability_zone` | The availability zone in which the instance that generated the log is deployed | `ap-northeast-1d` |
 | `service.node.name` | The ID of the instance that generated the log | `instance-0000000008` |
-| `service.type` | The type of instance that generated the log | `elasticsearch` |
+| `service.type` | The type of instance that generated the log. Can hold more than one value on a single log entry, for example an instance running both Elastic Agent and Fleet Server may log `[agent, fleet-server]` | `elasticsearch` |
 | `service.version` | The version of the stack resource that generated the log | `9.0.0` |
 | `event.dataset` | The logging category for the instance that generated the log | `elasticsearch.server` |
 
 `service.type` narrows results to a component (for example, all {{es}} logs), but it won't distinguish between server logs, audit logs, slow logs, and GC logs from that same component. Use `event.dataset` alongside it to filter down to a specific log category, this matters most on a busy cluster or one with audit logging enabled, where server logs can otherwise bury what you're looking for.
+
+If you need to filter to a specific deployment reliably across all components and log categories, use `service.id` rather than `service.name`, since `service.name` isn't consistently populated for every {{es}} log category and takes on component-specific values for APM and Fleet Server rather than the deployment name.
 
 ## Logging features [extra-logging-features]
 
@@ -159,7 +161,7 @@ Enabling log collection also supports collecting and indexing the following type
 The `*` indicates that we also index the archived files of each type of log.
 
 :::{note}
-APM, Fleet Server, and general Elastic Agent activity all share `event.dataset: agent.log`, since APM runs as an Elastic Agent-managed component rather than a standalone service. To filter to one of these specifically, use `service.name` instead (for example, `apm-server` or `fleet-server`).
+APM, Fleet Server, and general Elastic Agent activity all share `event.dataset: agent.log`, since APM runs as an Elastic Agent-managed component rather than a standalone service. To filter to one of these specifically, use `service.name` instead (for example, `apm-server` or `fleet-server`). On these logs, `service.type` and `service.name` can each hold multiple values on a single entry, for example `service.type: [agent, fleet-server]`, reflecting that one instance can run more than one component.
 :::
 
 Check the respective product documentation for more information about the logging capabilities of each product.
