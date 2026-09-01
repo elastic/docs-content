@@ -166,6 +166,25 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves accessibility in the {{observability}} UI [#262975]({{kib-pull}}262975).
 * Fixes crashes caused by malformed URLs in plugins; affected pages now attempt automatic recovery [#257245]({{kib-pull}}257245).
 
+## 9.4.6 [elastic-observability-9.4.6-release-notes]
+
+### Fixes [elastic-observability-9.4.6-fixes]
+* Fixes package and integration policy validation to reject namespace values that contain only whitespace [#286385]({{kib-pull}}286385).
+* Fixes the **Agents** table **Host** column sort producing incorrect ordering [#286383]({{kib-pull}}286383).
+* Fixes YAML configuration fields in the **Configure integration** screen displaying without a visible border [#286360]({{kib-pull}}286360).
+* Fixes the agent status change task failing on large deployments [#286324]({{kib-pull}}286324).
+* Fixes {{fleet}} agent API keys receiving excessive cluster privileges declared in package manifests [#286084]({{kib-pull}}286084).
+* Fixes the {{fleet}} Kafka output **Dynamic Topic** field silently mangling multi-field format strings such as `%{[data_stream.type]}-%{[data_stream.namespace]}` [#285581]({{kib-pull}}285581).
+* Fixes the automatic integrations synchronization task issuing broad {{es}} searches on every scheduled run when Cross-Cluster Replication is not configured [#285526]({{kib-pull}}285526).
+* Fixes {{fleet}} agent API handlers not enforcing {{kib}} Space boundaries [#284936]({{kib-pull}}284936).
+* Fixes Cribl integration routing pipeline `dataId` values not being validated and sanitized before being written to the ingest pipeline [#284863]({{kib-pull}}284863).
+* Fixes `inputs_for_versions` not being backfilled on package policies after a {{kib}} minor version upgrade [#284710]({{kib-pull}}284710).
+* Fixes Custom Threshold rules using the rate aggregation to correctly fire when a monitored counter increases from `0` to any positive value [#283973]({{kib-pull}}283973).
+* Fixes Agentless flows failing to locate agents enrolled on version-specific policies [#283434]({{kib-pull}}283434).
+* Fixes {{fleet}} failures affecting agents on version-specific policies [#283071]({{kib-pull}}283071).
+* Fixes bulk integration upgrades installing the bundled version instead of the latest registry version [#282829]({{kib-pull}}282829).
+* Fixes package policy bulk creation storing secret variable values inline on the saved object instead of writing them to the secrets index [#282213]({{kib-pull}}282213).
+
 ## 9.4.5 [elastic-observability-9.4.5-release-notes]
 
 ### Fixes [elastic-observability-9.4.5-fixes]

@@ -66,6 +66,16 @@ The default space does not require the `/s/default` prefix.
 
 Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automatically uses your current space context and does not require the `/s/<space_name>` prefix.
 
+### Use APIs with data from multiple projects [agent-builder-api-cps]
+```{applies_to}
+stack: unavailable
+serverless: preview
+```
+
+  When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), {{agent-builder}} APIs that search your data use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-name>` use the default space.
+
+To override that default, include a `project_routing` expression in the body of the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) or the [send chat message (streaming) API]({{kib-apis}}operation/operation-post-agent-builder-converse-async). The [run a tool API]({{kib-apis}}operation/operation-post-agent-builder-tools-execute) uses the space default and does not accept this field. For routing expression syntax, refer to [](/explore-analyze/cross-project-search/cross-project-search-project-routing.md). For an example, refer to [Chat and conversations](#chat-and-conversations).
+
 ## Available APIs
 
 The following sections provide quick examples for each API endpoint grouped by resource type.
@@ -1107,6 +1117,48 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
        "input": "What is Elasticsearch?",
        "agent_id": "elastic-ai-agent",
        "inference_id": "my-inference-endpoint-id"}'
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
+**Example:** Scope a chat across projects {applies_to}`serverless: preview`
+
+By default, the [{{cps}}](/explore-analyze/cross-project-search.md) scope is the [default scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-name>` use the {{cps-init}} scope from the default space. 
+
+Include a `project_routing` expression in the body to override the space's {{cps-init}} scope. The `_alias:my_search_project` expression in this example searches only the project with that alias. For routing expression syntax, refer to [](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
+
+This example uses the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse).
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+POST kbn://api/agent_builder/converse
+{
+  "input": "Show recent errors",
+  "agent_id": "elastic-ai-agent",
+  "project_routing": "_alias:my_search_project"
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "input": "Show recent errors",
+       "agent_id": "elastic-ai-agent",
+       "project_routing": "_alias:my_search_project"
+     }'
 ```
 :::{include} _snippets/spaces-api-note.md
 :::

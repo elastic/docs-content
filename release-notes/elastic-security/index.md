@@ -256,6 +256,30 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a partial-write bug so {{elastic-defend}} correctly sends data to a {{ls}} output when the kernel TCP send buffer is full, resolving premature connection failures.
 * Fixes a sharing violation in the `get-file` response action in {{elastic-defend}}.
 
+## 9.4.6 [elastic-security-9.4.6-release-notes]
+
+### Features and enhancements [elastic-security-9.4.6-features-enhancements]
+
+* Adds **Destination IP** as a built-in **Group alerts by** option on the alerts table, and includes aggregatable IP fields in the **Custom field** picker [#284769]({{kib-pull}}284769).
+* Improves {{elastic-defend}} logs for a down output connection, including the remaining backoff time.
+
+### Fixes [elastic-security-9.4.6-fixes]
+
+* Fixes a vertical alignment issue in the **Entities** section of the alert details flyout [#286952]({{kib-pull}}286952).
+* Fixes an issue where previously applied filters on the **Notes** page were not shown in the filter controls after navigating away and returning, even though the filters were still active [#286574]({{kib-pull}}286574).
+* Fixes an issue where the detection rule `PATCH` API silently reset `max_signals` to `100` when the field was omitted from the request [#286518]({{kib-pull}}286518).
+* Fixes an issue where Google Gemini 3.x models rejected requests that included tools with unconstrained string parameters [#286302]({{kib-pull}}286302).
+* Fixes an issue where detection rule exception items that use **IP range** value lists with more than 200 dash-notation entries were dropped during rule execution [#285178]({{kib-pull}}285178).
+* Fixes an issue that allowed index Knowledge Base entries to be created as globally readable without the privilege to manage global entries by sending an empty `users` list [#283195]({{kib-pull}}283195).
+* Fixes an issue where the OpenAI **Other** connector incorrectly re-enabled **Enable PKI Authentication** after saving with the toggle turned off [#282843]({{kib-pull}}282843).
+* Fixes an issue where new {{elastic-defend}} policies on Platinum licenses enabled **Device Control** by default, even though that feature requires an Enterprise license. Affected policies blocked USB storage and later policy saves failed [#282133]({{kib-pull}}282133).
+* Fixes an {{agent}} upgrade failure caused by a failed {{elastic-defend}} `verify` command. Affected endpoints logged `Unable to start endpoint to check version: exit status 2, try install` every 30 seconds.
+* Fixes {{elastic-defend}} on Linux to report DNS event sources as unsupported on kprobe-based kernels.
+* Updates a `curl` dependency in {{elastic-defend}} to resolve [CVE-2024-8096](https://github.com/advisories/GHSA-gv3v-x3f3-7fxm).
+* Updates an OpenSSL dependency in {{elastic-defend}} to resolve multiple CVEs, including [CVE-2026-34182](https://github.com/advisories/GHSA-f9v2-4w9p-2cwc) and [CVE-2025-66199](https://github.com/advisories/GHSA-5888-36j9-c92p).
+* Updates a `zlib` dependency in {{elastic-defend}} to resolve [CVE-2026-27171](https://github.com/advisories/GHSA-h858-mf2m-8jf4).
+* Fixes a deadlock between {{elastic-defend}} malware protection and SSSD on Active Directory-joined Linux hosts that could stall process executions and disable malware protection with the message `Disabled due to potential system deadlock`.
+* Fixes an issue where {{elastic-defend}} on Linux intermittently failed to enable event collection on hosts with a large number of active network connections.
 
 ## 9.4.5 [elastic-security-9.4.5-release-notes]
 
@@ -265,8 +289,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.4.5-fixes]
 
-* Fixes an issue that allowed index Knowledge Base entries to be created as globally readable without the privilege to manage global entries by sending an empty `users` list [#283195]({{kib-pull}}283195).
-* Fixes an issue where the OpenAI **Other** connector incorrectly re-enabled **Enable PKI Authentication** after saving with the toggle turned off [#282843]({{kib-pull}}282843).
 * Fixes an issue where the **Source event** link in an alert's **Highlighted fields** section failed to open the document when it lived in a hidden restored or partial index [#282272]({{kib-pull}}282272).
 * Fixes a crash when opening a case whose comment contains a URL with an `&timestamp` query parameter [#282265]({{kib-pull}}282265).
 * Fixes missing audit events when bulk editing rules. Attaching or detaching shared exception lists to detection rules via the **Manage rules** screen now emits per-rule audit write events in the {{kib}} audit log [#281075]({{kib-pull}}281075).
