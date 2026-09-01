@@ -1,0 +1,15 @@
+name: changelog-validate
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited, labeled, unlabeled]
+
+permissions: {}
+
+jobs:
+  validate:
+    permissions:
+      contents: read
+    uses: elastic/docs-actions/.github/workflows/changelog-validate.yml@v1
+    with:
+      config: changelog.yml
