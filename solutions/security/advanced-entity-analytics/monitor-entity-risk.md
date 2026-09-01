@@ -26,7 +26,7 @@ The **Entity analytics** page provides a centralized workspace for investigating
   * `read` for `entities-latest-<space-id>`, `.entities.v2.latest.security_<space-id>-*`, and `risk-score.risk-score-<space-id>`
   * **Read** for the **Management → Saved Objects Management** feature 
 * {applies_to}`serverless: ga` If you're using a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md), make sure it grants `read` access to all the required index patterns.
-* {applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
+* {applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 :::
 
 To access the page:
