@@ -265,7 +265,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.4.6-fixes]
 
-* Fixes an issue where uploading a large sample log file in Automatic Import failed. Uploads now send at most 1000 samples and show a warning when additional lines are omitted [#287165]({{kib-pull}}287165).
 * Fixes a vertical alignment issue in the **Entities** section of the alert details flyout [#286952]({{kib-pull}}286952).
 * Fixes an issue where previously applied filters on the **Notes** page were not shown in the filter controls after navigating away and returning, even though the filters were still active [#286574]({{kib-pull}}286574).
 * Fixes an issue where the detection rule `PATCH` API silently reset `max_signals` to `100` when the field was omitted from the request [#286518]({{kib-pull}}286518).
