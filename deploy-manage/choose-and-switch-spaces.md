@@ -44,7 +44,7 @@ If you can access more than one space, {{kib}} does one of the following:
 - {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` {{kib}} can remember the space you last used and open it. If {{kib}} has no remembered space, or you no longer have access to it, {{kib}} asks you to select a space. A direct link to a {{kib}} app or object opens that destination. It does not send you to the remembered space.
 - {applies_to}`stack: ga =9.5` The behavior depends on your deployment type:
   - On self-managed deployments, {{ece}}, and {{eck}}, {{kib}} can remember the space you last used and open it. If {{kib}} has no remembered space, or you no longer have access to it, {{kib}} asks you to select a space. A direct link to a {{kib}} app or object opens that destination. It does not send you to the remembered space.
-  - On {{ecloud}}, {{kib}} asks you to select a space. It does not persist your last space. The **Spaces preferences** user menu item is not available.
+  - On {{ech}}, {{kib}} asks you to select a space. It does not persist your last space. The **Spaces preferences** user menu item is not available.
 - {applies_to}`stack: ga 9.0-9.4` {{kib}} asks you to select a space.
 
 ## Change whether Kibana remembers your last space [remember-last-selected-space]
@@ -57,8 +57,8 @@ serverless: ga
 This preference is available on:
 
 * {applies_to}`serverless: ga` {{serverless-full}} projects
-* {applies_to}`stack: ga 9.6+` Self-managed deployments, {{ece}}, {{eck}}, and {{ecloud}}
-* {applies_to}`stack: ga =9.5` Self-managed deployments, {{ece}}, and {{eck}}. It is not available on {{ecloud}}.
+* {applies_to}`stack: ga 9.6+` Self-managed deployments, {{ece}}, {{eck}}, and {{ech}}
+* {applies_to}`stack: ga =9.5` Self-managed deployments, {{ece}}, and {{eck}}. It is not available on {{ech}}.
 :::
 
 This personal preference is on by default. It controls whether {{kib}} opens your last space when you log in.
