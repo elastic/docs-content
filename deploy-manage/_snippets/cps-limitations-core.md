@@ -1,5 +1,6 @@
 - **Maximum of 100 linked projects:** Each origin project can have up to 100 linked projects. A linked project can be associated with any number of origin projects.
 - **System indices:** Indices such as `.security` and `.fleet-*` are excluded from {{cps}} results by design.
-- **{{anomaly-detect-cap}} and transforms:** During technical preview, ML {{anomaly-jobs}} and transforms are not supported with {{cps-init}}. They continue to run on origin project data only.
+- **{{anomaly-detect-cap}}:** During technical preview, ML {{anomaly-jobs}} are not supported with {{cps-init}}. They continue to run on origin project data only.
+- **Transforms:** Transforms created before {{cps-init}} was enabled default to origin-only scope and must be manually updated to search linked projects.
 - **{{dfanalytics-jobs-cap}}:** {{dfanalytics-jobs}} are not supported with {{cps-init}}. They continue to run on origin project data only.
 - For {{esql}} limitations specific to {{cps-init}}, refer to [ES|QL with {{cps}}](elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md#limitations).
