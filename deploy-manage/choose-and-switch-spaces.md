@@ -55,30 +55,26 @@ serverless: ga
 
 This personal preference is on by default. It controls whether {{kib}} opens your last space when you log in.
 
-### On {{ecloud}} and serverless
-```{applies_to}
-ech: ga
-serverless: ga
-```
-
-{applies_to}`stack: ga =9.5` On {{ecloud}}, {{kib}} does not persist your last space. The **Spaces preferences** user menu item is not available.
-
-1. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Open the user menu from the header.
-2. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Select **Spaces preferences**.
-3. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Turn **Remember last selected space** on or off.
-4. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Select **Save**.
-
-### On self-managed, {{ece}}, and {{eck}}
-```{applies_to}
-self: ga
-ece: ga
-eck: ga
-```
+:::{note}
+:applies_to: stack: ga =9.5
+On {{ecloud}}, {{kib}} does not persist your last space. The **Spaces preferences** user menu item is not available.
+:::
 
 1. Open the user menu from the header.
-2. Select **Edit profile**.
-3. In **Spaces preferences** or **Space Configuration** (depending on your {{stack}} version), turn **Remember last selected space** on or off.
-4. Select **Save changes**.
+
+2. Open the space preference settings. The menu item depends on your deployment:
+
+   * {applies_to}`ech: ga` {applies_to}`serverless: ga` Select **Spaces preferences**.
+   * {applies_to}`self: ga` {applies_to}`ece: ga` {applies_to}`eck: ga` Select **Edit profile**.
+
+3. Turn **Remember last selected space** on or off.
+
+   * {applies_to}`self: ga` {applies_to}`ece: ga` {applies_to}`eck: ga` The control is in **Spaces preferences** or **Space Configuration** (depending on your {{stack}} version).
+
+4. Save your changes. The button label depends on your deployment:
+
+   * {applies_to}`ech: ga` {applies_to}`serverless: ga` Select **Save**.
+   * {applies_to}`self: ga` {applies_to}`ece: ga` {applies_to}`eck: ga` Select **Save changes**.
 
 The next time you log in, {{kib}} follows this preference. If the preference is off and you can access more than one space, {{kib}} shows the space selector.
 
