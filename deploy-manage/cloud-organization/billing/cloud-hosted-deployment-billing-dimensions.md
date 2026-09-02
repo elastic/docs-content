@@ -121,7 +121,7 @@ Synthetic Monitoring browser tests are charged per test run (metered in 60 secon
 
 ## Workflow executions [workflow-executions]
 
-{{ech}} bills [Workflows](/explore-analyze/workflows.md) based on workflow executions. Each workflow run counts as one execution. The first 10,000 workflow executions across the {{ech}} deployments in an {{ecloud}} organization each month are included.
+{{ech}} bills [workflows](/explore-analyze/workflows.md) based on workflow executions. Each workflow run counts as one execution. The first 10,000 workflow executions across the {{ech}} deployments in an {{ecloud}} organization each month are included.
 
 For metering details, including how unsuccessful and skipped runs are handled, refer to [Monitor workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-billing). For current billing amounts, refer to the [Hosted add-ons pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=stack_hosted&group=addons&dimension=executions).
 
