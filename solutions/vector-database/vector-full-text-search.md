@@ -15,101 +15,15 @@ Use it if you're new to search in {{es}} or want to experiment with meaning-base
 Are you an agent? Use the [elasticsearch-onboarding skill](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-onboarding).
 :::
 
-## Set up your local project [vector-full-text-search-local-project]
-
-Create a directory for the example and initialize a project for your language. Continue using this directory and terminal session throughout the tutorial.
-
-::::::{tab-set}
-:group: languages
-
-:::::{tab-item} Python
-:sync: python
-
-```bash
-mkdir elastic-quickstart-python
-cd elastic-quickstart-python
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-On Windows PowerShell, activate the virtual environment with `.venv\Scripts\Activate.ps1`.
-
-:::::
-
-:::::{tab-item} TypeScript
-:sync: typescript
-
-```bash
-mkdir elastic-quickstart-typescript
-cd elastic-quickstart-typescript
-npm init --yes
-npm pkg set type=module
-```
-
-:::::
-
-:::::{tab-item} PHP
-:sync: php
-
-```bash
-mkdir elastic-quickstart-php
-cd elastic-quickstart-php
-composer init --no-interaction
-```
-
-:::::
-
-:::::{tab-item} Ruby
-:sync: ruby
-
-```bash
-mkdir elastic-quickstart-ruby
-cd elastic-quickstart-ruby
-bundle init
-```
-
-:::::
-
-:::::{tab-item} C#/.NET
-:sync: csharp
-
-```bash
-mkdir elastic-quickstart-dotnet
-cd elastic-quickstart-dotnet
-dotnet new console
-```
-
-:::::
-
-:::::{tab-item} Java
-:sync: java
-
-```bash
-mkdir elastic-quickstart-java
-cd elastic-quickstart-java
-gradle init --type java-application --dsl groovy --project-name elastic-quickstart --package quickstart --no-split-project --java-version 17 --use-defaults
-```
-
-:::::
-
-:::::{tab-item} Go
-:sync: go
-
-```bash
-mkdir elastic-quickstart-go
-cd elastic-quickstart-go
-go mod init elastic-quickstart
-```
-
-:::::
-
-::::::
-
 ## Create a Vector Database project [vector-full-text-search-create-project]
 
 Create a free [{{es}} Vector Database project](https://cloud.elastic.co/projects/create/elasticsearch?use_case=vector_search). It's serverless and built for search and vector workloads, so you don't need to size or manage a cluster.
 
 The project takes about a minute to start. The **Getting started** page then displays the **Project endpoint** and a generated API key. Copy both values.
+
+:::{tip}
+You can also find the **Project endpoint** and API keys on the **Home** page. To find the **Home** page, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select **Connection details** ![Connection details icon](/solutions/images/connection-details-icon.svg "") to view your endpoint and manage API keys.
+:::
 
 ## Connect to your project [vector-full-text-search-connect]
 
@@ -122,58 +36,29 @@ Set the project endpoint and API key as environment variables:
 :sync: macos-linux
 
 ```bash
-export ES_URL="https://YOUR-PROJECT.es.REGION.aws.elastic.cloud:443"
+export ES_URL="<YOUR_PROJECT_URL>" <1>
 export ES_API_KEY="YOUR_API_KEY"
 ```
 
+1. For example, `https://my-project.es.us-east-1.aws.elastic.cloud:443`.
+
 ::::
 
 ::::{tab-item} Windows PowerShell
 :sync: windows-powershell
 
 ```powershell
-$Env:ES_URL = "https://YOUR-PROJECT.es.REGION.aws.elastic.cloud:443"
+$Env:ES_URL = "<YOUR_PROJECT_URL>" <1>
 $Env:ES_API_KEY = "YOUR_API_KEY"
 ```
 
-::::
-
-:::::
-
-::::::{dropdown} Verify the connection
-
-Send a request to the project endpoint using the API key:
-
-:::::{tab-set}
-:group: operating-systems
-
-::::{tab-item} macOS and Linux
-:sync: macos-linux
-
-```bash
-curl "$ES_URL" \
-  -H "Authorization: ApiKey $ES_API_KEY"
-```
-
-::::
-
-::::{tab-item} Windows PowerShell
-:sync: windows-powershell
-
-```powershell
-curl.exe "$Env:ES_URL" `
-  -H "Authorization: ApiKey $Env:ES_API_KEY"
-```
+1. For example, `https://my-project.es.us-east-1.aws.elastic.cloud:443`.
 
 ::::
 
 :::::
 
-A successful response contains information about your {{es}} project and its version. A `401` error means the API key is incorrect. A timeout means the URL is incorrect or unreachable.
-
-::::::
-
-## Install an {{es}} client [vector-full-text-search-install-sdk]
+## Install and initialize an {{es}} client [vector-full-text-search-install-sdk]
 
 Install the client for your language. For a list of available clients, refer to [{{es}} clients](/reference/elasticsearch-clients/index.md).
 
@@ -268,9 +153,8 @@ For supported Go versions and other requirements, refer to the [Go client instal
 
 :::::
 
-## Initialize the client [vector-full-text-search-init-client]
-
-Initialize the client and retrieve information about your {{es}} project:
+$$$vector-full-text-search-init-client$$$
+After installation, initialize the client and retrieve information about your {{es}} project:
 
 :::::{tab-set}
 :group: languages
@@ -579,10 +463,6 @@ A `401` error means the API key is incorrect. A timeout means the URL is incorre
 
 Follow these steps to create the `books` index and index the sample data.
 
-:::{note}
-[`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
-:::
-
 :::::{tab-set}
 :group: languages
 
@@ -613,7 +493,10 @@ es.indices.create(
 ```
 
 1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
-2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+2. [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors. <br>
+In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints). <br> <br>
+
+
 
 ::::
 
@@ -644,6 +527,10 @@ await es.indices.create({
 
 1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
 2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+
+:::{note}
+[`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
+:::
 
 ::::
 
@@ -681,6 +568,10 @@ $es->indices()->create([
 1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
 2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
 
+:::{note}
+[`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
+:::
+
 ::::
 
 ::::{tab-item} Ruby
@@ -712,6 +603,10 @@ es.indices.create(
 
 1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
 2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+
+:::{note}
+[`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
+:::
 
 ::::
 
@@ -746,6 +641,10 @@ await es.Indices.CreateAsync<Book>("books", c => c
 
 1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
 2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+
+:::{note}
+[`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
+:::
 
 ::::
 
@@ -788,6 +687,10 @@ es.indices().create(c -> c
 
 1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
 2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+
+:::{note}
+[`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
+:::
 
 ::::
 
@@ -844,6 +747,10 @@ createResponse.Body.Close()
 
 1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
 2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+
+:::{note}
+[`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
+:::
 
 ::::
 
@@ -1380,10 +1287,6 @@ The count is `5`.
 ::::
 
 :::::
-
-:::{tip}
-If you want to experiment with a larger dataset, use the [1,000-book sample dataset](https://elastic.co/sample-data/books-1k.json).
-:::
 
 ## Run search [vector-full-text-search-search]
 
@@ -2630,6 +2533,7 @@ As an alternative to the progressive files, the complete example combines everyt
 
 1. [Connect to your project](#vector-full-text-search-connect) and set `ES_URL` and `ES_API_KEY`.
 2. [Install the client](#vector-full-text-search-install-sdk) for your language.
+3. Select your language and follow the steps to run the complete example.
 
 :::::{tab-set}
 :group: languages

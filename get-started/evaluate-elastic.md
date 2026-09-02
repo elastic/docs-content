@@ -177,7 +177,7 @@ Once data is flowing, use the trial to validate the features that will determine
 
 | Feature | Why it matters | How to try it |
 |---------|----------------|---------------|
-| Vector search and hybrid search | Combine semantic understanding with keyword precision | [Semantic search quickstart](/solutions/search/get-started/semantic-search.md) |
+| Vector search and hybrid search | Combine semantic understanding with keyword precision | [Vector and full-text search quickstart](/solutions/vector-database/vector-full-text-search.md) |
 | Relevance tuning | Ensure users find the most relevant results | [Query rules](/solutions/elasticsearch-solution-project/query-rules-ui.md) |
 | Search analytics | Understand what users search for and what they find | [Search relevance](/solutions/search/full-text/search-relevance.md) |
 | Performance at scale | Validate response times with production-like volumes | Index a representative dataset and benchmark queries |
@@ -270,7 +270,7 @@ Follow the steps in [](/solutions/search/get-started.md), which include:
   3. Build basic search queries and test relevance.
 
 For targeted learning paths, go to [](/solutions/search/get-started/quickstarts.md).
-In particular, [Index and search basics](/solutions/search/get-started/index-basics.md) and [Semantic search](/solutions/search/get-started/semantic-search.md).
+In particular, [Index and search basics](/solutions/search/get-started/index-basics.md) and [Vector and full-text search](/solutions/vector-database/vector-full-text-search.md).
 :::
 
 :::{tab-item} Observability
