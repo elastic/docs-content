@@ -114,4 +114,4 @@ This billing model doesn't apply to {{ech}} [FedRAMP authorized Cloud offerings]
 
 ### Self-managed
 
-{{agent-builder}} and [Workflows](/explore-analyze/workflows.md) on self-managed deployments are currently under promotional pricing and available at no additional charge. {{agent-builder}} is included with the Enterprise license tier.
+{{agent-builder}} and [workflows](/explore-analyze/workflows.md) on self-managed deployments are currently under promotional pricing and available at no additional charge. {{agent-builder}} is included with the Enterprise license tier.
