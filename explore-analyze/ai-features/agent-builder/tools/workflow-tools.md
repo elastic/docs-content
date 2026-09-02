@@ -49,6 +49,7 @@ Follow these steps to configure a workflow tool:
    
    :::::
 
+  <!-- RESOLVED 2026-08-31. Recaptured on QA ECH 9.6.0 showing the "Require user confirmation" select. Replaced the 2026-01-28 image, which predated kibana#281896. -->
   :::{image} ../images/create-new-tool-workflows.png
   :screenshot:
   :width: 900px
@@ -79,6 +80,22 @@ The Workflow tools have the following configuration settings:
   
   **Labels** (Optional)
   :   Tags used to organize and filter tools within the {{agent-builder}} UI.
+
+  **Require user confirmation** (Optional) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+  :   Controls whether the agent asks you to approve a tool call before it runs. Select **Never** to run without a prompt, **Once** to prompt the first time the agent calls the tool in a conversation, or **Always** to prompt on every call. The default is **Never**.
+  :   With **Once**, your response applies to every later call to the tool in the same conversation, whether you confirmed or denied the action. This includes retries after a failed call.
+  :   Confirmation applies only when an agent calls the tool. Refer to [Human-in-the-loop prompts](../chat.md#human-in-the-loop-prompts).
+
+<!-- RESOLVED 2026-08-31 by test B1 on QA ECH 9.6.0. A workflow tool with Require user confirmation set to Always DOES prompt: card titled "Permission to call tool", body 'Agent wants to call tool "<toolId>". Do you want to proceed?', buttons Deny and Allow. This refutes Pierre Gayvallet in #agent-builder on 2026-08-26 ("the execute_workflow tool of the agent, or a user tool of type `workflow`, do not, afaik, trigger confirmation prompt no", hedged twice): https://elastic.slack.com/archives/C08LX7YSHU2/p1787768859700779 . He was also recommending workflow tools to customers as an HITL bypass, so that advice is now stale -- worth telling him separately. -->
+
+<!-- RESOLVED 2026-09-01 by test B2 on QA ECH 9.6.0 (Kibana 9.6.0), run over the public converse API, which accepts prompts: { <promptId>: { allow: bool } }. All four sub-tests passed, so the "Once" wording stands as written. (a) Prompt on the first call, none on the second in the same conversation; the prompt ID was `tools.<toolId>.confirmation` with no toolCallId suffix, which is the `once` mechanism. (b) A DENIAL is reused: the second call got no prompt and was declined again, tool result "The user chose not to proceed with this action." both times. (c) The retry claim -- previously untested at every level in kibana -- HOLDS: one approval, then three tool calls in a single turn (original plus two retries after a forced failure), zero re-prompts. The failure was forced by repointing the tool's ES|QL query at a missing index. (d) A new conversation prompted again. Also validated: Always re-prompts on every call (distinct prompt ID per tool call, suffixed with the toolCallId) and Never never prompts. Note for reviewers: the quoted string is the tool RESULT the model receives, not literal chat text -- the user sees the model's paraphrase. We do not quote it, so nothing to change. -->
+
+
+<!-- RESOLVED 2026-08-31 by test B1. UI strings confirmed character for character on QA ECH 9.6.0: label "Require user confirmation", help text "Sets the policy for when the agent should require user confirmation before executing the tool.", options Never / Once / Always. The fresh-create-form default is now confirmed too: confirmation_policy_select.tsx renders `value={value ?? 'never'}`, and on the QA 9.6.0 cluster a tool created via POST /api/agent_builder/tools with no `confirmation` field came back as { askUser: 'never' }. "The default is Never" is correct. -->
+
+<!-- [TODO-CHECK] NOT ADDED, pre-existing gap found during B1. The form has a "Workflow execution" group containing a "Wait until the workflow completes" checkbox, help text "If checked, the tool waits until the workflow completes (up to 120s) and returns the results. If unchecked, the workflow runs in the background and you can ask the agent to check the execution status." That checkbox is absent from the Configuration list below. The 120s matches WAIT_FOR_COMPLETION_TIMEOUT_SEC = 120 in the kibana source. Out of scope for #1610 -- decide whether to fold it in or open a separate issue. -->
+
+<!-- [TODO-CHECK] Field order, low priority. In the form, Require user confirmation is the LAST field of the Type/Configuration block, immediately above Tool ID. The list below places it last, after Labels. The existing list was already not in form order, so this is a consistency question for review rather than an error. -->
 
 ## Call workflows from chat
 

@@ -38,11 +38,22 @@ The [A2A server](a2a-server.md) does not currently support streaming operations.
 
 ### Human-in-the-loop prompts require an interactive conversation
 
-[Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts) are supported only in interactive {{agent-builder}} conversations. Standalone sub-agent executions, whether foreground or background, cannot collect a response to these prompts, so actions that require confirmation or authorization are declined.
+[Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts) are supported only in interactive {{agent-builder}} conversations. Sub-agent executions cannot collect a response to these prompts, whether the sub-agent runs in the foreground or the background, so actions that require confirmation or authorization are declined.
+
+The sub-agent run itself does not fail. The tool call returns an error result and the sub-agent continues, so a sub-agent can report the declined action in its output.
 
 A2A executions behave differently: the action is not declined. Instead, the conversation round remains in the `awaiting_prompt` state, but A2A clients cannot respond to the prompt.
 
 This limitation is separate from the [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step in Workflows, which pauses a workflow execution for reviewer input.
+
+<!-- RESOLVED 2026-08-31, no test needed. Changed "Standalone sub-agent executions" to "Sub-agent executions" because kibana#284458 (merged 2026-08-21) added persistent sub-agents. Re-verified at HEAD: sub_agent_executor.ts passes interactive: { enabled: false } on all three spawn paths -- executeSubAgent (AgentExecutionMode.standalone), createSubAgent and sendToSubAgent (both AgentExecutionMode.conversation). Dropping "Standalone" is correct. -->
+
+<!-- [TODO-CHECK] The "run does not fail, tool returns an error result" paragraph is code-verified (run_tool.ts returns createErrorResult('Agent running in non-interactive mode, user input not available - execution was declined') and graph.ts routes to checkBackgroundWork rather than handleToolInterrupt) and Slack-verified (Pierre, 2026-08-18: https://elastic.slack.com/archives/C0A2RUHDJCB/p1787062493362269). No test asserts it. Note Dennis Tismenko described the same behaviour on 2026-08-26 as destructive calls that "will currently just fail", which reads differently -- worth one confirmation that "the run continues" is the right framing for users. B5 was attempted on QA ECH 9.6.0 on 2026-09-01 and could NOT be run: the cluster exposes no sub-agent tools, so experimentalFeatures.subagents is off, and it is not settable through the API on a Cloud deployment. Per the plan this falls back to the code-verified wording plus one confirmation message to Pierre. -->
+
+<!-- [TODO-CHECK] Sub-agents are gated behind experimentalFeatures.subagents in register_internal_tools.ts and cannot spawn further sub-agents. This page does not mention the flag. Decide whether that belongs here or in a separate issue. -->
+
+<!-- [TODO-CHECK] Wording deliberately avoids saying non-interactive runs are ALWAYS declined. kibana#287627 (opened 2026-08-27, not merged) adds approvals.auto_approved_apis, which lets a caller pre-approve destructive APIs for a non-interactive run including sub-agents. Revisit this section when it lands. -->
+
 
 ### {{esql}} limitations
 
@@ -110,7 +121,6 @@ On 9.2 deployments, the **Copy your MCP server URL** button does not include the
 **Workaround:** Manually add `/s/<space-name>` to the URL. For example: `https://<deployment>/s/<space-name>/api/agent_builder/mcp`
 
 For more information about {{agent-builder}} and Spaces, refer to [Permissions and access control](permissions.md#working-with-spaces).
-
 
 ## Related pages
 

@@ -16,9 +16,20 @@ products:
 
 You can extend the built-in tool catalog with your own custom tool definitions. Custom tools offer flexibility in how they interact with your data. This flexibility allows you to create tools that match your specific use cases and data access patterns.
 
+<!-- [TODO-CHECK] serverless badge below is still INFERRED. Evidence for: kibana#281896 modifies oas_docs/output/kibana.serverless.yaml; Agent Builder ships to serverless from main; and checked 2026-09-01, confirmation_policy_select.tsx and both configuration_fields files that render it have NO serverless, license or feature-flag gate of any kind, so nothing in the code argues against it. Still needs the B4 look at a serverless project before merge -- no serverless cluster was available for the 2026-09-01 session. -->
 :::{note}
-[Human-in-the-loop confirmation](../chat.md#human-in-the-loop-prompts) is not currently available for custom tools.
+[Human-in-the-loop confirmation](../chat.md#human-in-the-loop-prompts) is available for custom tools. You can configure it in the UI for [workflow tools](workflow-tools.md) and [MCP tools](mcp-tools.md), or through the [Tools API](../tools.md#tools-api) for any custom tool type. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+
+Confirmation applies only when an agent calls the tool. Direct calls through the [Tools API](../tools.md#tools-api) are not subject to confirmation, and confirmation prompts cannot be answered in [sub-agent executions](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+
+If you set a confirmation policy on an {{esql}} or index search tool through the API, the agent applies it, but the setting does not appear when you open the tool in the UI. To check or change the policy for these tool types, use the API.
 :::
+
+<!-- RESOLVED 2026-09-01 by test B3 on QA ECH 9.6.0 (Kibana 9.6.0). The "any custom tool type" clause is now cluster-verified, not just code-traced. An ES|QL tool created with {"confirmation":{"askUser":"always"}} was accepted, round-tripped on GET, and DID prompt when an agent called it (status awaiting_prompt, prompt ID tools.<toolId>.confirmation.<toolCallId>). All four editable types accept and persist confirmation: esql, index_search, workflow, mcp -- and prompting was observed on esql, workflow and mcp. Two boundaries worth keeping in mind: builtin tools REJECT it ("Tool platform.core.execute_esql is read-only and can't be updated"), so "custom tools" is the correct scope; and PUT preserves an existing confirmation when the field is omitted. The _execute bypass was also confirmed: POST /api/agent_builder/tools/_execute on the same always-confirm tool returned results immediately with no prompt and no awaiting_prompt, which is the source === 'user' path in run_tool.ts. -->
+
+<!-- The UI-invisibility caution above is source-verified at HEAD 2026-09-01: ConfirmationPolicySelect has exactly four references in kibana -- its own definition, mcp_configuration_fields.tsx, workflow_configuration_fields.tsx and a Scout page object. esql_configuration_fields.tsx and index_search_configuration_fields.tsx both exist and neither renders it, so the omission is real rather than a file-naming artefact. Worth raising with @TattdCodeMonkey as a possible UI gap; if it is fixed in 9.6 the caution should come back out. -->
+
+<!-- RESOLVED 2026-09-01. D1 anchor check passed: a full `docs-builder` run reported 0 errors with no agent-builder diagnostics, so ../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation resolves and the inline {applies_to} roles on definition-list terms render. -->
 
 ## Tool types
 
@@ -78,7 +89,6 @@ To create a custom tool in the UI:
 ## Create custom tools with API
 
 You can also create and manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).
-
 
 ## Test your tools
 
