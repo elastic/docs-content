@@ -74,7 +74,7 @@ These steps write the template by hand. To generate it instead, select **Generat
 
    You can switch between the template and the query until the column names match.
 
-   If the flyout reports that the query isn't connected to the dashboard time filter, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters. Refer to [Connect the panel to the time filter](#custom-panels-time-filter).
+   If the flyout reports that the query isn't connected to the dashboard time filter, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters on your time field. Refer to [Connect the panel to the time filter](#custom-panels-time-filter).
 
 6. Select **Run preview** to render your draft in the panel without saving it.
 7. Select **Apply and close**.
@@ -178,7 +178,7 @@ A panel without a query renders the same content regardless of the dashboard sta
 
 ### Connect the panel to the time filter [custom-panels-time-filter]
 
-When the queried indices have a default time field, the dashboard time filter applies to the query automatically. When {{kib}} can't detect a time field, the **Data source (ES|QL)** section of the flyout shows a hint. In that case, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters so the query follows the time filter:
+When the queried indices have a field named `@timestamp`, the dashboard time filter applies to the query automatically. For any other time field, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters so the query follows the time filter. When a query has neither, the **Data source (ES|QL)** section of the flyout shows a hint:
 
 ```esql
 FROM my-index
