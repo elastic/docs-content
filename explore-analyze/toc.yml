@@ -322,6 +322,7 @@ toc:
           - file: visualize/charts/treemap-charts.md
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
+      - file: visualize/custom-panels.md
       - file: visualize/text-panels.md
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
