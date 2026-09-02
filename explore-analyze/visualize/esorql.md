@@ -135,11 +135,30 @@ An {{esql}} query returns a table. When you use the result to build a visualizat
 
 The chart type determines the combination of columns you need. Open a page from the [visualization types](lens.md#lens-visualization-types) list to find an {{esql}} query pattern and learn how to assign its result columns to the chart dimensions.
 
-### Time series charts [esql-time-series-charts]
+### Build time series charts [esql-time-series-charts]
 
-To create time series charts with {{esql}}, start with a time-bucket column and a numeric metric column. Then use the query pattern for a [line chart](charts/line-charts.md#build-a-line-chart-with-esql) or [area chart](charts/area-charts.md#build-an-area-chart-with-esql).
+A time series chart plots a metric over time. The query must return a time-bucket column for the **Horizontal axis** and a numeric metric column for the **Vertical axis**.
 
-For a dashboard walkthrough with eCommerce sample data, see [Create a dashboard with time series charts](../dashboards/create-dashboard-of-panels-with-ecommerce-data.md).
+In this query, `WHERE` applies the dashboard time range, `BUCKET` divides that range into 50 groups, and `COUNT` returns one value for each group:
+
+```esql
+FROM kibana_sample_data_logs
+| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
+| STATS requests = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+```
+
+If your time field isn't named `@timestamp`, replace `@timestamp` with that field in both `WHERE` and `BUCKET`. Refer to [](../query-filter/languages/esql-kibana.md#_custom_time_parameters).
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Line** or **Area**.
+3. Assign `time_bucket` to the **Horizontal axis** and `requests` to the **Vertical axis**.
+4. Select **Apply and close**.
+
+The chart preview shows how the request count changes over time.
+
+For more query patterns and chart settings, refer to [Build a line chart with an {{esql}} query](charts/line-charts.md#build-a-line-chart-with-esql) and [Build an area chart with an {{esql}} query](charts/area-charts.md#build-an-area-chart-with-esql).
 
 ## Add drilldowns to an {{esql}} visualization [esql-viz-drilldowns]
 ```{applies_to}
