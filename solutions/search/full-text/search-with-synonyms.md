@@ -179,7 +179,7 @@ Refer to each token filter's reference page for configuration details and instru
 {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Large synonym sets can trigger a memory [circuit breaker](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md#synonym-graph-tokenizer-circuit-breaker). Refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md#synonym-graph-tokenizer-circuit-breaker) reference for thresholds and `lenient` behavior.
 
 ::::{important}
-Invalid synonym rules can cause errors when applying analyzer changes and can prevent an index from being reopened. Refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md) reference for details.
+When `lenient` is `false`, invalid synonym rules cause errors: analyzer changes fail to apply, and an index with invalid rules cannot be reopened. `lenient` defaults to the value of `updateable`. Refer to [Synonyms and `stop` token filters](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md#synonym-graph-tokenizer-stop-token-filter) for details.
 ::::
 
 ## Step 3: Create an index with your synonym analyzer [synonyms-apply-synonyms]
