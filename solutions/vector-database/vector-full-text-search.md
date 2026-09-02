@@ -292,10 +292,62 @@ func main() {
 
 ## Create an index and add data [vector-full-text-search-add-data]
 
-Use the initialized client to create the `books` index and add the sample data.
+Create the `books` index and add the sample data.
 
 :::::{tab-set}
 :group: languages
+
+::::{tab-item} Console
+:sync: console
+
+```console
+PUT books
+{
+  "mappings": {
+    "properties": { <1>
+      "description": {
+        "type": "semantic_text" <2>
+      }
+    }
+  }
+}
+```
+
+1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
+2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+
+:::{note}
+[`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
+:::
+
+::::
+
+::::{tab-item} curl
+:sync: curl
+
+```bash
+curl -X PUT "$ES_URL/books" \
+  -H "Authorization: ApiKey $ES_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "mappings": {
+      "properties": { <1>
+        "description": {
+          "type": "semantic_text" <2>
+        }
+      }
+    }
+  }'
+```
+
+1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
+2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+
+:::{note}
+[`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
+:::
+
+::::
 
 ::::{tab-item} Python
 :sync: python
@@ -491,6 +543,48 @@ Next, index five books in one bulk request:
 
 :::::{tab-set}
 :group: languages
+
+::::{tab-item} Console
+:sync: console
+
+```console
+POST books/_bulk?refresh=wait_for
+{ "index": {} }
+{ "title": "The Left Hand of Darkness", "author": "Ursula K. Le Guin", "release_year": 1969, "description": "An envoy visits an icy planet whose people have no fixed gender, feeling out politics and friendship across a deep cultural gap." }
+{ "index": {} }
+{ "title": "Project Hail Mary", "author": "Andy Weir", "release_year": 2021, "description": "A lone astronaut wakes with amnesia on a spaceship and has to stop a disaster that threatens all life on Earth." }
+{ "index": {} }
+{ "title": "The Name of the Wind", "author": "Patrick Rothfuss", "release_year": 2007, "description": "A gifted young musician and magician tells the story of his rise from orphan to legend." }
+{ "index": {} }
+{ "title": "Klara and the Sun", "author": "Kazuo Ishiguro", "release_year": 2021, "description": "An artificial friend watches human love and loneliness while hoping a child will pick her." }
+{ "index": {} }
+{ "title": "Dune", "author": "Frank Herbert", "release_year": 1965, "description": "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power." }
+```
+
+::::
+
+::::{tab-item} curl
+:sync: curl
+
+```bash
+curl -X POST "$ES_URL/books/_bulk?refresh=wait_for" \
+  -H "Authorization: ApiKey $ES_API_KEY" \
+  -H "Content-Type: application/x-ndjson" \
+  --data-binary @- <<'EOF'
+{ "index": {} }
+{ "title": "The Left Hand of Darkness", "author": "Ursula K. Le Guin", "release_year": 1969, "description": "An envoy visits an icy planet whose people have no fixed gender, feeling out politics and friendship across a deep cultural gap." }
+{ "index": {} }
+{ "title": "Project Hail Mary", "author": "Andy Weir", "release_year": 2021, "description": "A lone astronaut wakes with amnesia on a spaceship and has to stop a disaster that threatens all life on Earth." }
+{ "index": {} }
+{ "title": "The Name of the Wind", "author": "Patrick Rothfuss", "release_year": 2007, "description": "A gifted young musician and magician tells the story of his rise from orphan to legend." }
+{ "index": {} }
+{ "title": "Klara and the Sun", "author": "Kazuo Ishiguro", "release_year": 2021, "description": "An artificial friend watches human love and loneliness while hoping a child will pick her." }
+{ "index": {} }
+{ "title": "Dune", "author": "Frank Herbert", "release_year": 1965, "description": "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power." }
+EOF
+```
+
+::::
 
 ::::{tab-item} Python
 :sync: python
@@ -882,6 +976,42 @@ Run a semantic search against the `description` field:
 :::::{tab-set}
 :group: languages
 
+::::{tab-item} Console
+:sync: console
+
+```console
+GET books/_search
+{
+  "query": {
+    "semantic": {
+      "field": "description",
+      "query": "surviving alone in space"
+    }
+  }
+}
+```
+
+::::
+
+::::{tab-item} curl
+:sync: curl
+
+```bash
+curl -X GET "$ES_URL/books/_search" \
+  -H "Authorization: ApiKey $ES_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": {
+      "semantic": {
+        "field": "description",
+        "query": "surviving alone in space"
+      }
+    }
+  }'
+```
+
+::::
+
 ::::{tab-item} Python
 :sync: python
 
@@ -1092,6 +1222,70 @@ Run a hybrid search that uses full-text search on the `title` field and semantic
 
 :::::{tab-set}
 :group: languages
+
+::::{tab-item} Console
+:sync: console
+
+```console
+GET books/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": { <1>
+            "title": "wind"
+          }
+        },
+        {
+          "semantic": { <2>
+            "field": "description",
+            "query": "young magician coming of age"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
+2. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+
+::::
+
+::::{tab-item} curl
+:sync: curl
+
+```bash
+curl -X GET "$ES_URL/books/_search" \
+  -H "Authorization: ApiKey $ES_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": {
+      "bool": {
+        "should": [
+          {
+            "match": { <1>
+              "title": "wind"
+            }
+          },
+          {
+            "semantic": { <2>
+              "field": "description",
+              "query": "young magician coming of age"
+            }
+          }
+        ]
+      }
+    }
+  }'
+```
+
+1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
+2. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+
+::::
 
 ::::{tab-item} Python
 :sync: python
@@ -1393,6 +1587,37 @@ With [aggregations](/explore-analyze/query-filter/aggregations.md), you can summ
 
 :::::{tab-set}
 :group: languages
+
+::::{tab-item} Console
+:sync: console
+
+```console
+POST _query
+{
+  "query": """
+    FROM books
+    | STATS books = COUNT(*) BY decade = release_year - (release_year % 10)
+    | KEEP decade, books
+    | SORT decade ASC
+  """
+}
+```
+
+::::
+
+::::{tab-item} curl
+:sync: curl
+
+```bash
+curl -X POST "$ES_URL/_query" \
+  -H "Authorization: ApiKey $ES_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "FROM books | STATS books = COUNT(*) BY decade = release_year - (release_year % 10) | KEEP decade, books | SORT decade ASC"
+  }'
+```
+
+::::
 
 ::::{tab-item} Python
 :sync: python
