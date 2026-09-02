@@ -59,9 +59,22 @@ Synonym sets created through the API or the {{kib}} UI can only be used at searc
 
 $$$synonyms-store-synonyms-api$$$
 
-You can use the [synonyms APIs]({{es-apis}}group/endpoint-synonyms) to manage synonym sets. This is the most flexible approach, as it allows you to dynamically define and modify synonym sets. For examples of how to create or update a synonym set with APIs, refer to the [Create or update synonym set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md) page.
+You can use the [synonyms APIs]({{es-apis}}group/endpoint-synonyms) to manage synonym sets. This is the most flexible approach, as it allows you to dynamically define and modify synonym sets.
+The following example creates a synonym set named `my-synonym-set`. Later steps on this page use this set.
 
-Changes to your synonym sets automatically reload the associated analyzers.
+```console
+PUT _synonyms/my-synonym-set
+{
+  "synonyms_set": [
+    {
+      "id": "laptop-synonyms",
+      "synonyms": "laptop, notebook"
+    }
+  ]
+}
+```
+
+Changes to your synonym sets automatically reload the associated analyzers. For more examples, including rule validation and analyzer reloading, refer to [Create or update synonym set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md).
 
 :::::
 
