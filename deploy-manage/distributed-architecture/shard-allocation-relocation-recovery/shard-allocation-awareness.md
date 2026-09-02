@@ -77,7 +77,7 @@ To enable shard allocation awareness:
 
     :::{tip}
     :applies_to: eck:
-    When configuring awareness manually, you are responsible for keeping the {{k8s}} node scheduling and the {{es}} node attributes consistent. Using [ECK zone awareness](/deploy-manage/deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md#k8s-zone-awareness) (ECK 3.4+) handles both layers automatically and is the recommended approach. For complete examples of both approaches, refer to [Advanced {{es}} node scheduling](/deploy-manage/deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md#k8s-tsc-zone).
+    When configuring awareness manually, you are responsible for keeping the {{k8s}} node scheduling and the {{es}} node attributes consistent. Using [ECK zone awareness](/deploy-manage/deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md#k8s-zone-awareness) (ECK 3.4+) handles both layers automatically and is the recommended approach. For complete examples of both approaches, refer to [Advanced {{es}} node scheduling](/deploy-manage/deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md#k8s-availability-zone-awareness).
     :::
 
 With this example configuration, if you start two nodes with `node.attr.rack_id` set to `rack_one` and create an index with 5 primary shards and 1 replica of each primary, all primaries and replicas are allocated across the two nodes. Because both nodes share the same rack, awareness cannot separate shard copies across racks yet. That separation happens when you add nodes in a second rack.
