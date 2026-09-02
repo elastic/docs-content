@@ -24,7 +24,7 @@ $$$panels-editors$$$
 |  | [Maps](visualize/maps.md) | Create beautiful displays of your geographical data |
 |  | [Alerts](visualize/alert-panels.md) | View Observability or Security alerts in your dashboard |
 |  | [Vega or custom visualizations](visualize/custom-visualizations-with-vega.md) | Use Vega to create new types of visualizations |
-|  | [Custom panels](visualize/custom-panels.md) {applies_to}`stack: preview 9.6+` | Build a panel from an HTML, CSS, and Liquid template with an optional {{esql}} query. Generate it with {{agent-builder}} chat or write it yourself. |
+|  | [Custom panels](visualize/custom-panels.md) {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | Build a panel from an HTML, CSS, and Liquid template with an optional {{esql}} query. Generate it with {{agent-builder}} chat or write it yourself. |
 |  | | |
 | Annotations and navigation | [Collapsible sections](dashboards/arrange-panels.md#collapsible-sections) | Organize your dashboard into sections that can be collapsed and save loading time |
 |  | [Markdown text](visualize/text-panels.md) | Add context to your dashboard with markdown-based **text** |

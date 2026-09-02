@@ -3,6 +3,7 @@ navigation_title: Custom panels
 description: Add custom panels to Kibana dashboards from HTML, CSS, and Liquid templates with optional ES|QL data. Generate them with Agent Builder chat or write them yourself.
 applies_to:
   stack: preview 9.6+
+  serverless: preview
 products:
   - id: kibana
 ---

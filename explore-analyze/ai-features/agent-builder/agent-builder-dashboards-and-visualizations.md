@@ -136,7 +136,7 @@ Agents can create and manage the following panel types:
 | Markdown panels | Text panels for notes, headings, and other context. |
 | Collapsible sections | Grouped panels that readers can expand or collapse. |
 | [Filter controls](/explore-analyze/visualize/dashboard-controls.md) {applies_to}`stack: ga 9.5` | Interactive filters that appear above the dashboard and let users filter data without editing queries. The agent can add and remove **Options list**, **Range slider**, and **Time slider** controls, and can proactively add **Options list** controls for useful categorical fields such as service or host names. A dashboard can contain only one **Time slider** control. |
-| [Custom panels](/explore-analyze/visualize/custom-panels.md) {applies_to}`stack: preview 9.6+` | HTML and CSS layouts that Lens and Vega-Lite can't express, such as status boards, KPI scorecards with colored badges, or panels that mix text with live {{esql}} data. The agent creates a custom panel only when no other panel type fits, or when you ask for a custom or HTML panel. To change an existing custom panel through chat, open it on the dashboard and select **Refine with chat**. |
+| [Custom panels](/explore-analyze/visualize/custom-panels.md) {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | HTML and CSS layouts that Lens and Vega-Lite can't express, such as status boards, KPI scorecards with colored badges, or panels that mix text with live {{esql}} data. The agent creates a custom panel only when no other panel type fits, or when you ask for a custom or HTML panel. To change an existing custom panel through chat, open it on the dashboard and select **Refine with chat**. |
 
 ## Related pages
 

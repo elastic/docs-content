@@ -38,7 +38,7 @@ Use {{agent-builder}} when you want to:
 
 {{agent-builder}} generates ES|QL-powered visualizations, [Vega-Lite visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md), markdown panels, collapsible sections, and interactive [filter controls](/explore-analyze/visualize/dashboard-controls.md).
 
-{applies_to}`stack: preview 9.6+` Agents can also create [custom panels](/explore-analyze/visualize/custom-panels.md) from an HTML template and an optional {{esql}} query, for layouts that other panel types can't express.
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Agents can also create [custom panels](/explore-analyze/visualize/custom-panels.md) from an HTML template and an optional {{esql}} query, for layouts that other panel types can't express.
 
 Refer to [Chat with {{agent-builder}} agents](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md).
 
