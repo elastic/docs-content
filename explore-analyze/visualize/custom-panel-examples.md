@@ -12,13 +12,13 @@ products:
 
 Each example on this page shows what a [custom panel](custom-panels.md) can do that other panel types can't, with the query and the template that produce it. Two of them were generated with {{agent-builder}} chat and include the prompt.
 
-To try an example, add a custom panel to a dashboard, paste the query into **Data source (ES|QL)** and the template into **Template (HTML)**, then select **Run preview**. The queries use the [sample data sets](/manage-data/ingest/sample-data.md) named in each example. The screenshots use the dark theme. Templates that use the theme properties render in the light theme as well.
+To try an example, [add a custom panel from the dashboard](custom-panels.md#custom-panels-create-from-dashboard), paste the query into **Data source (ES|QL)** and the template into **Template (HTML)**, then select **Run preview**. The queries use the [sample data sets](/manage-data/ingest/sample-data.md) named in each example. The screenshots use the dark theme. Templates that use the theme properties render in the light theme as well.
 
 You can change any template, whether generated or hand-written, as long as it follows the [LiquidJS syntax](https://liquidjs.com/tutorials/intro-to-liquid.html). Edit it in the flyout, or ask {{agent-builder}} to refine it. Templates that use the `--cc-color-*` theme properties follow the {{kib}} theme.
 
 ## Sankey diagram [custom-panel-examples-sankey]
 
-A chart type that isn't available in Visualizations and is complex to build as a Vega visualization. This panel maps the six busiest destination countries in the web logs to the response codes they received. The ribbon thickness follows the count, the right column is colored by status class, and hovering a ribbon shows its value with a CSS-only tooltip. Sample data: **Sample web logs**.
+A chart type that isn't available in Visualizations and is complex to build as a Vega visualization. This panel maps the six busiest destination countries in the web logs to the response codes they received. The ribbon thickness follows the count, the response codes are colored by class (2xx, 4xx, 5xx), and hovering a ribbon shows its value with a CSS-only tooltip. Sample data: **Sample web logs**.
 
 :::{image} /explore-analyze/images/custom-panels-example-sankey.png
 :alt: Sankey diagram with colored ribbons flowing from six destination countries to three response codes

@@ -28,7 +28,7 @@ To add custom panels to a dashboard, you need:
 
 ## When to use a custom panel [custom-panels-when-to-use]
 
-Start with the panel type that fits your data, and reach for a custom panel only when none of them does:
+Use the panel type that fits your data, and choose a custom panel only when none of the standard types does:
 
 - For standard charts such as time series, bar, pie, metric, or tables, use [Visualizations](lens.md), with or without an [{{esql}} query](esorql.md).
 - For scatter plots, small multiples, or layered charts, use [Vega](custom-visualizations-with-vega.md).
@@ -89,14 +89,14 @@ The panel now shows your content. If it has a query, change the dashboard time r
 
 ### Start from a conversation [custom-panels-create-with-chat]
 
-1. Open [{{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/chat.md). If you open the chat from a dashboard, that dashboard is attached to the conversation automatically.
+1. Open [{{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/chat.md). If you open the chat from a dashboard, that dashboard is attached to the conversation and the agent adds the panel to it. Otherwise, the agent creates a new dashboard for the panel.
 2. Describe the panel you want. The agent chooses the panel type and uses a custom panel only when a standard visualization doesn't fit. If you want a custom panel, say so in the prompt by asking for a custom panel or an HTML panel. For example:
 
    - "Create a custom panel with a health status card for each host."
    - "Create an HTML banner with an animated image."
    - "Create a custom panel that shows how data flows across the services."
 
-3. Review the result. When the panel needs live data, the agent writes the {{esql}} query, samples its results, and generates a template that matches the returned columns. The panel renders in the dashboard preview.
+3. Review the result. When the panel needs live data, the agent writes the {{esql}} query, samples its results, and generates a template that matches the returned columns. The panel renders on the dashboard, or in the dashboard preview of the conversation.
 
    :::{image} /explore-analyze/images/custom-panels-sankey-chat.png
    :alt: Dashboard with a Sankey diagram custom panel next to the Agent Builder conversation that created it
@@ -115,7 +115,9 @@ For saving, previewing, and syncing agent-created dashboards, refer to [Dashboar
 
 2. Change the template, the query, or both. Use **Preview data** to check the query results and **Run preview** to render your draft in the panel.
 
-   If you change only the query, {{kib}} fills the existing template with the new results. Make sure the column names in the template match the new query output. If the query or the template is invalid, the panel shows **Failed to render panel** with the {{esql}} or Liquid error. Select **Preview data** before you apply to catch query errors early. For a template that chat generated, paste the error into the conversation and the agent corrects the template.
+   If you change only the query, {{kib}} fills the existing template with the new results. Make sure the column names in the template match the new query output.
+
+   If the query or the template is invalid, the panel shows **Failed to render panel** with the {{esql}} or Liquid error. Select **Preview data** before you apply to catch query errors early. For a template that chat generated, paste the error into the conversation and the agent corrects the template.
 
 3. Select **Apply and close**, then save the dashboard.
 
@@ -142,7 +144,7 @@ A template is HTML with inline CSS in `<style>` tags. When the panel has a query
 | `rows` | One object per result row. Access a column by its exact name in brackets, for example `row["total_revenue"]`. Each column resolves to an object with `.value`, the raw cell value, and `.pct`, the value as a percentage from 0 to 100 of that column's maximum across all rows. `.pct` is set for numeric columns only and is useful for bar widths. |
 | `max` | The maximum value of each numeric column, keyed by exact column name, for example `max["total_revenue"]`. |
 
-The following template renders one bar per row, with the bar width proportional to the column maximum:
+The following template renders one bar per row for a query that returns `category` and `revenue` columns. The bar width is proportional to the column maximum:
 
 ```html
 <style>
@@ -198,7 +200,7 @@ A panel without a query renders the same content regardless of the dashboard sta
 
 ### Connect the panel to the time filter [custom-panels-time-filter]
 
-When the queried indices have a field named `@timestamp`, the dashboard time filter applies to the query automatically. For any other time field, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters so the query follows the time filter. When a query has neither, the **Data source (ES|QL)** section of the flyout shows a hint:
+When the queried indices have a field named `@timestamp`, the dashboard time filter applies to the query automatically. For any other time field, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters so the query follows the time filter. When a query has neither, the **Data source (ES|QL)** section of the flyout shows a hint. The following query follows the time filter through `my_date_field`:
 
 ```esql
 FROM my-index
