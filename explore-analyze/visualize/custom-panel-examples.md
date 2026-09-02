@@ -738,7 +738,7 @@ FROM kibana_sample_data_logs
     <b>{{ row["countries"].value }}</b> countries and moved <b>{{ row["mb"].value }} MB</b> of data.
     <b>{{ row["errors"].value }}</b> requests failed, of which <b>{{ row["server_errors"].value }}</b> were
     server errors (5xx). Server errors are the signal to watch, because they point to backend problems
-    rather than client mistakes.
+    rather than client errors.
   </div>
   <div class="score">
     <div class="label">Availability</div>
