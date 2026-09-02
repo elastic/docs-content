@@ -11,7 +11,7 @@ type: how-to
 
 # Custom panels for {{kib}} dashboards [custom-panels]
 
-With a custom panel, you add layouts to a {{kib}} dashboard that other panel types can't produce: status boards, scorecards with colored badges, branded banners, or blocks that mix text with live values. You describe the panel in {{agent-builder}} chat, or write the HTML and CSS template yourself. To show live data, add an {{esql}} query and place its results in the template with [Liquid](https://liquidjs.com/) tags.
+With a custom panel, you add layouts to a {{kib}} dashboard that other panel types can't produce: status boards, scorecards with colored badges, branded banners, or blocks that mix text with live values. You describe the panel in {{agent-builder}} chat, or write the HTML and CSS template yourself. To show live data, add an {{esql}} query and place its results in the template with [Liquid](https://liquidjs.com/) tags, a template syntax for inserting values into HTML.
 
 :::{image} /explore-analyze/images/custom-panels-dashboard.png
 :alt: Dashboard made of custom panels with a shared brand style: a banner with a logo, an hourly traffic chart, two bar lists, a response health summary, and a content types table
@@ -79,6 +79,9 @@ A custom panel needs a template and, to show live data, an {{esql}} query. You c
    If the flyout reports that the query isn't connected to the dashboard time filter, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters on your time field. Refer to [Connect the panel to the time filter](#custom-panels-time-filter).
 
 6. Select **Run preview** to render your draft in the panel without saving it.
+
+   If the query or the template is invalid, the panel shows **Failed to render panel** with the {{esql}} or Liquid error.
+
 7. Select **Apply and close**.
 
    If you select **Cancel** instead, {{kib}} removes the new panel.
@@ -89,7 +92,7 @@ The panel now shows your content. If it has a query, change the dashboard time r
 
 ### Start from a conversation [custom-panels-create-with-chat]
 
-1. Open [{{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/chat.md). If you open the chat from a dashboard, that dashboard is attached to the conversation and the agent adds the panel to it. Otherwise, the agent creates a new dashboard for the panel.
+1. Open [{{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/chat.md). To add the panel to an existing dashboard, open that dashboard first and select the **AI Agent** button in the header bar, which opens the [chat sidebar](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode) with the dashboard attached. From a conversation without a dashboard, the agent creates a new dashboard for the panel.
 2. Describe the panel you want. The agent chooses the panel type and uses a custom panel only when a standard visualization doesn't fit. If you want a custom panel, say so in the prompt by asking for a custom panel or an HTML panel. For example:
 
    - "Create a custom panel with a health status card for each host."
