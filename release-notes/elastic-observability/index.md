@@ -38,7 +38,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Hides the version-specific policy indicator icon in {{fleet}} for agents that are fully compatible with the current policy template [#287504]({{kib-pull}}287504).
 * Fixes the {{fleet}} integration policy edit page displaying the wrong credential method for policies created before a package introduced variable groups [#287389]({{kib-pull}}287389).
 * Fixes {{fleet}} API key invalidation exceeding the {{es}} `max_result_window` limit by chunking large invalidation batches [#287252]({{kib-pull}}287252).
-* Fixes cross-rule `missingGroups` state contamination in custom threshold rules caused by a shared mutable constant [#287151]({{kib-pull}}287151).
 * Improves {{fleet}} outputs fetching performance on {{fleet}} setup and Integrations UI page load [#287113]({{kib-pull}}287113).
 * Fixes stale version-specific `.fleet-policies` documents not being deleted after policy updates [#287095]({{kib-pull}}287095).
 * Fixes `PUT /api/fleet/managed_integrations/{id}` returning 404 and `DELETE` silently succeeding without removing the backing agentless deployment for policies created before the agent-policy/package-policy same-ID invariant was introduced [#287011]({{kib-pull}}287011).
