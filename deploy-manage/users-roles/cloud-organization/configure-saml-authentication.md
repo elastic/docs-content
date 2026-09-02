@@ -86,7 +86,7 @@ For example, if you claim `example.com`, users with email addresses like `user@t
 
 You must have authority to modify your domain’s DNS records and be a member of the **Organization owner** role in {{ecloud}} to complete this step.
 
-1. Open your organization’s [**Security**](https://cloud.elastic.co/account/idp) tab.
+1. From the navigation menu, select **Organization** → [**SSO**](https://cloud.elastic.co/account/idp).
 2. In the **Domains** section, click **Add domain**.
 3. In the **Domain name** field, enter the domain that you want to claim and then click **Generate verification code**.
 4. In the DNS provider settings for your domain, add a new TXT record with the name `_elastic_domain_challenge` and the verification code as the value.
@@ -131,7 +131,7 @@ Create a new SAML 2 application in your IdP.
 
 Add the information that you collected to {{ecloud}}.
 
-1. Open your organization’s [**Security**](https://cloud.elastic.co/account/idp) tab.
+1. From the navigation menu, select **Organization** → [**SSO**](https://cloud.elastic.co/account/idp).
 2. In the **User authentication** section, click **Configure SSO**.
 3. Fill the following fields:
 
@@ -198,14 +198,14 @@ If you turn on enforcement, you will be unable to access {{ecloud}} if your IdP 
 
 To protect your account from being accidentally locked out when this option is enabled, we validate that you are authenticated SSO with the latest applied configuration before enabling enforcement.
 
-1. Open your organization’s [**Security**](https://cloud.elastic.co/account/idp) tab.
+1. From the navigation menu, select **Organization** → [**SSO**](https://cloud.elastic.co/account/idp).
 2. In the **User authentication** section, click **Edit**.
 3. Toggle the **Enforce SAML SSO** option on to enable enforcement.
 
 
 ### Disable enforcement [ec_disable_enforcement]
 
-1. Open your organization’s [**Security**](https://cloud.elastic.co/account/idp) tab.
+1. From the navigation menu, select **Organization** → [**SSO**](https://cloud.elastic.co/account/idp).
 2. In the **User authentication** section, click **Edit**.
 3. Toggle the **Enforce SAML SSO** option off to disable enforcement.
 
@@ -239,7 +239,7 @@ To allow for role mapping verification, SSO must be configured and enabled for y
 
 ### Create a role mapping
 
-1. Open your organization’s [**Security**](https://cloud.elastic.co/account/idp) tab.
+1. From the navigation menu, select **Organization** → [**SSO**](https://cloud.elastic.co/account/idp).
 2. In the **Role mappings** section, click **Create role mapping**.
 3. Add a name for the role mapping. The name helps to identify the role mapping to other members, and must be unique.
 4. Click to configure the roles that you want to assign to users who meet the mapping rules, click **Add roles** and then select the roles. For more information, refer to [*User roles and privileges*](user-roles.md).
@@ -281,7 +281,7 @@ If you're logged in to {{ecloud}} through a method other than SAML SSO, then you
 
 If SSO enforcement is enabled, then you must disable SSO enforcement before you disable SSO.
 
-1. Open your organization’s [**Security**](https://cloud.elastic.co/account/idp) tab.
+1. From the navigation menu, select **Organization** → [**SSO**](https://cloud.elastic.co/account/idp).
 2. In the **User authentication** section, click **Edit**.
 3. Click **Disable SAML SSO**.
 

@@ -47,7 +47,7 @@ For more information about role scopes and permissions, refer to [User roles and
 To invite users to your organization:
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From the navigation menu, select **Organization** > **Members**.
+2. From the navigation menu, select **Organization** → **Members**.
 3. On the **Members** page, click **Invite members**.
 4. Enter the email addresses of the users you want to invite in the email field.
 
@@ -68,7 +68,7 @@ To invite users to your organization:
 
 ## Manage existing users
 
-On the **Members** tab of the **Organization** page, you can view the list of current members, including their status, role, and any other organizations that they are members of.
+On the **Members** page, you can view the list of current members, including their status, role, and any other organizations that they are members of.
 
 In the **Actions** column, click the three dots to edit a member’s role, or revoke an invite, or remove a member from your organization.
 

@@ -48,10 +48,10 @@ One possible cause of a resource creation failure is the default network securit
 Follow these steps to resolve the problem:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Go to the [Network security page](https://cloud.elastic.co/access-security/network-security).
+2. Go to **Organization** → **Security** → [**Network security**](https://cloud.elastic.co/access-security/network-security).
 3. Edit the policy and disable the **Apply to future resources by default** option.
 4. In Azure, create a new {{ecloud}} resource.
-5. After the deployment has been created successfully, go back to the [Network security page](https://cloud.elastic.co/access-security/network-security) in {{ecloud}} and re-enable the **Apply to future resources by default** option.
+5. After the deployment has been created successfully, go back to **Organization** → **Security** → [**Network security**](https://cloud.elastic.co/access-security/network-security) in {{ecloud}} and re-enable the **Apply to future resources by default** option.
 
 If your resource still does not create successfully, [contact the Elastic Support Team](#azure-integration-support) for assistance.
 
