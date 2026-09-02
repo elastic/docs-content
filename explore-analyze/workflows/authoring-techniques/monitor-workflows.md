@@ -31,7 +31,7 @@ deployment:
   ech: ga
 ```
 
-On {{ech}}, [Workflows](/explore-analyze/workflows.md) is billed based on workflow executions. Each workflow run counts as one execution, including runs that fail, are canceled, or time out. Runs skipped by concurrency controls are not metered.
+On {{ech}}, [workflows](/explore-analyze/workflows.md) is billed based on workflow executions. Each workflow run counts as one execution, including runs that fail, are canceled, or time out. Runs skipped by concurrency controls are not metered.
 
 The first 10,000 workflow executions across the {{ech}} deployments in an {{ecloud}} organization each month are included. Additional executions are billed according to the published amounts.
 
