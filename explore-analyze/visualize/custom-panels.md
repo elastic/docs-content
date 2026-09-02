@@ -110,7 +110,7 @@ You can hand a new or existing panel to {{agent-builder}} instead of writing the
    A new conversation opens with the panel attached as **Custom content panel**.
 
 2. Describe the panel or the change you want. The agent updates the template, the query, or both, and the panel on the dashboard updates when the answer completes.
-3. Select **Preview** on a version card to apply that version to the panel. Each answer adds a card for the new version, so you can move back and forth between versions. Keep the dashboard open while you do this.
+3. To go back to an earlier version, select **Preview** on the card of that answer. Each answer adds a card for its version, and the newest version is already applied to the panel. Keep the dashboard open while you do this.
 4. Save the dashboard to keep the result.
 
 The panel shows the version you applied last, and that version is what the dashboard saves.
