@@ -44,7 +44,7 @@ To create a watchlist:
 5. Set a **Risk Score Weighting** using the slider.
 6. Under **Rule Based Data Sources**, define which entities belong to this watchlist:
    * **Entity Store**: Filter existing entities in the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) using KQL syntax.
-   * **IndexPattern**: Select an index pattern, apply a KQL filter, and choose the field used to identify entities.
+   * **IndexPattern**: Select an index pattern, apply a KQL filter, and choose the field used to identify entities. The index pattern must include a `@timestamp` field, otherwise no entities are synced from that source.
 7. Click **Save**.
 
 An entity can belong to more than one watchlist.
