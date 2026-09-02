@@ -129,7 +129,7 @@ Not all apps support {{cps}}. The following table shows which apps support the {
 
 | App | {{cps-init}} scope selector | Query-level overrides |
 | --- | --- | --- |
-| **Agent Builder** | Not available | ES\|QL |
+| **Agent Builder** | Editable | ES\|QL |
 | **Dashboards** | Editable | Per-panel overrides using ES\|QL visualizations or Maps layer routing. Dashboards can also [store a {{cps}} scope](/explore-analyze/dashboards/using.md#dashboard-cps-scope). Dashboard controls, such as **Options list** controls, suggest values from all projects in the selected {{cps-init}} scope. |
 | **Dev Tools / Console** | Not available | Full {{cps-init}} through raw API requests, including ES\|QL. The [{{product.painless}} execute API](/explore-analyze/cross-project-search.md#cps-painless-scripting) resolves index names differently. |
 | **Discover** | Editable | ES\|QL |
@@ -139,9 +139,10 @@ Not all apps support {{cps}}. The following table shows which apps support the {
 | **{{ml-app}} {{data-viz}}** | Editable | ES\|QL |
 | **{{rules-ui}} and alerts** | Read-only | ES\|QL rules support `SET project_routing`. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects.|
 | **Streams** | Not available | ES\|QL |
+| **Transforms** | Editable | [`project_routing`](/explore-analyze/transforms/transform-overview.md#transform-cps-scope) defined on each transform. |
 | **Vega** | Editable | Project routing in Vega specs |
 
-The header's {{cps-init}} scope selector is not available in other apps, including Transforms, Canvas, and object listing pages.
+The header's {{cps-init}} scope selector is not available in other apps, including Canvas and object listing pages.
 
 [^cps-badge]: When a visualization panel uses a query-level override, it displays a **Custom CPS scope** badge on dashboards to indicate that it uses a different scope than the {{cps-init}} scope selector.
 
