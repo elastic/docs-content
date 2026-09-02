@@ -268,7 +268,7 @@ For supported Go versions and other requirements, refer to the [Go client instal
 
 :::::
 
-## Initialize the {{es}} client [vector-full-text-search-init-client]
+## Initialize the client [vector-full-text-search-init-client]
 
 Initialize the client and retrieve information about your {{es}} project:
 
