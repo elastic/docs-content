@@ -90,11 +90,11 @@ The panel now shows your content. If it has a query, change the dashboard time r
 ### Start from a conversation [custom-panels-create-with-chat]
 
 1. Open [{{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/chat.md). If you open the chat from a dashboard, that dashboard is attached to the conversation automatically.
-2. Describe the panel you want. To force the panel type, ask for a custom or HTML panel. For example:
+2. Describe the panel you want. The agent chooses the panel type and uses a custom panel only when a standard visualization doesn't fit. If you want a custom panel, say so in the prompt by asking for a custom panel or an HTML panel. For example:
 
-   - "Create a health status card for each host."
-   - "Create a banner with an animated image."
-   - "Show how data flows across the services."
+   - "Create a custom panel with a health status card for each host."
+   - "Create an HTML banner with an animated image."
+   - "Create a custom panel that shows how data flows across the services."
 
 3. Review the result. When the panel needs live data, the agent writes the {{esql}} query, samples its results, and generates a template that matches the returned columns. The panel renders in the dashboard preview.
 
