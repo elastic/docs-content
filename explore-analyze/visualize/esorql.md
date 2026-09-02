@@ -152,7 +152,7 @@ If your time field isn't named `@timestamp`, replace `@timestamp` with that fiel
 To build the chart:
 
 1. [Create an {{esql}} visualization](#_create_from_dashboard) and run the query.
-2. Set the visualization type to **Line**, **Area**, or **Bar**.
+2. Set the visualization type to a chart type compatible with time series, typically **Line**, **Area**, or **Bar**.
 3. Assign `time_bucket` to the **Horizontal axis** and `requests` to the **Vertical axis**.
 4. Select **Apply and close**.
 
