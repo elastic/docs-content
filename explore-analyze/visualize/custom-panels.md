@@ -158,61 +158,7 @@ Keep the following in mind when you write templates:
 - A column that the query doesn't return has no value. Its `.value` and `.pct` render as empty strings, and filters such as `round` turn it into `0`. If the panel shows zeros or full-width bars after a query change, check the column names in the template.
 - Missing rows are not an error. Check `rows.size` to render an empty state.
 
-### Status board with live data [custom-panels-example-status-board]
-
-This example builds one card per product category from the [sample eCommerce data](/manage-data/ingest/sample-data.md), with revenue, order count, a bar relative to the best category, and a badge that changes with the revenue. The query connects to the time filter through `?_tstart` and `?_tend`.
-
-Query:
-
-```esql
-FROM kibana_sample_data_ecommerce
-| WHERE order_date >= ?_tstart AND order_date < ?_tend
-| STATS revenue = SUM(taxful_total_price), orders = COUNT(*) BY category
-| SORT revenue DESC
-```
-
-Template:
-
-```html
-<style>
-  body { margin: 0; padding: 12px; font-family: Inter, system-ui, sans-serif; color: var(--cc-color-text); background: var(--cc-color-background); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
-  .card { background: var(--cc-color-surface); border-radius: 8px; padding: 12px; }
-  .name { font-size: 13px; opacity: 0.8; margin-bottom: 4px; }
-  .value { font-size: 22px; font-weight: 600; }
-  .orders { font-size: 12px; opacity: 0.7; }
-  .badge { display: inline-block; margin-top: 8px; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; color: #fff; }
-  .ok { background: var(--cc-color-accent); }
-  .warn { background: var(--cc-color-warning); color: #000; }
-  .bad { background: var(--cc-color-danger); }
-  .track { height: 6px; background: var(--cc-color-border); border-radius: 3px; margin-top: 8px; overflow: hidden; }
-  .fill { height: 100%; background: var(--cc-color-primary); }
-  .empty { opacity: 0.6; padding: 12px; }
-</style>
-{% if rows.size == 0 %}
-  <div class="empty">No orders in the selected time range.</div>
-{% endif %}
-<div class="grid">
-{% for row in rows %}
-  {% assign revenue = row["revenue"].value %}
-  <div class="card">
-    <div class="name">{{ row["category"].value }}</div>
-    <div class="value">${{ revenue | round: 0 }}</div>
-    <div class="orders">{{ row["orders"].value }} orders</div>
-    <div class="track"><div class="fill" style="width: {{ row["revenue"].pct }}%"></div></div>
-    {% if revenue >= 30000 %}
-      <span class="badge ok">Healthy</span>
-    {% elsif revenue >= 20000 %}
-      <span class="badge warn">Watch</span>
-    {% else %}
-      <span class="badge bad">Low</span>
-    {% endif %}
-  </div>
-{% endfor %}
-</div>
-```
-
-Sample data timestamps are relative to the installation time, so the revenue per category, and therefore the badges, depend on when you installed the data set and on the selected time range.
+For complete templates with their queries and screenshots, refer to [Custom panel examples](custom-panel-examples.md).
 
 ### Match the {{kib}} theme [custom-panels-theme]
 
@@ -268,6 +214,7 @@ Custom panels render in a sandbox that protects the dashboard and your browser:
 
 ## Related pages [custom-panels-related-pages]
 
+- [Custom panel examples](custom-panel-examples.md): complete templates with their queries and screenshots
 - [Panels and visualizations](../visualize.md): all panel types you can add to a dashboard
 - [Dashboards and visualizations in {{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md)
 - [Create dashboards using AI](/explore-analyze/dashboards/create-dashboards-using-ai.md)

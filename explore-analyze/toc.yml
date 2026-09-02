@@ -323,6 +323,8 @@ toc:
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
       - file: visualize/custom-panels.md
+        children:
+          - file: visualize/custom-panel-examples.md
       - file: visualize/text-panels.md
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
