@@ -13,11 +13,6 @@ type: how-to
 
 With a custom panel, you add layouts to a {{kib}} dashboard that other panel types can't produce: status boards, scorecards with colored badges, branded banners, or blocks that mix text with live values. You describe the panel in {{agent-builder}} chat, or write the HTML and CSS template yourself. To show live data, add an {{esql}} query and place its results in the template with [Liquid](https://liquidjs.com/) tags.
 
-:::{image} /explore-analyze/images/custom-panels-themed-dashboard.png
-:alt: Top of a dashboard built from custom panels: a banner with a logo, a narrative summary with a health score, and four KPI tiles
-:screenshot:
-:::
-
 ## Requirements [custom-panels-requirements]
 
 To add custom panels to a dashboard, you need:
@@ -81,9 +76,8 @@ These steps write the template by hand. To generate it instead, select **Generat
    {{kib}} adds an empty panel and opens the **Create custom panel** flyout.
 
    :::{image} /explore-analyze/images/custom-panels-create-flyout.png
-   :alt: Create custom panel flyout with an empty Template (HTML) editor, the Generate with chat button, and the collapsed Data source (ES|QL) section
+   :alt: Dashboard in edit mode with an empty custom panel that reads Create your custom panel, next to the Create custom panel flyout with the Template (HTML) editor and the Data source (ES|QL) section
    :screenshot:
-   :width: 60%
    :::
 
 4. In **Template (HTML)**, enter your template. For the syntax, refer to [Write a template](#custom-panels-write-a-template).
