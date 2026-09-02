@@ -29,7 +29,8 @@ Start with the panel type that fits your data, and reach for a custom panel only
 - For scatter plots, small multiples, or layered charts, use [Vega](custom-visualizations-with-vega.md).
 - For text without data, use a [Markdown text panel](text-panels.md).
 - For any other layout that HTML and CSS can express, use a custom panel. For example:
-  - Charts that Lens doesn't offer and that are hard to build in Vega, such as flowcharts or Sankey diagrams.
+  - Charts that Lens doesn't offer and that are hard to build in Vega, such as flowcharts, Sankey diagrams, or Gantt charts.
+  - Tables with conditional formatting, where a cell or row changes color when a value crosses a threshold.
   - Banners with your logo or brand colors. Place the logo as inline SVG in the template and it travels with the dashboard when you export it to another space or deployment. Uploaded [image panels](image-panels.md) lose their files on export.
   - Summary cards that combine several metrics, with badges, thresholds, or short explanations next to the values.
 
