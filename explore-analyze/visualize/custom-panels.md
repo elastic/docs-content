@@ -71,6 +71,8 @@ For saving, previewing, and syncing agent-created dashboards, refer to [Dashboar
 
 4. Optional: to show live data, expand **Data source (ES|QL)** and enter a query. Select **Preview data** to check the returned columns. The preview shows the first rows of the result.
 
+   You can switch between the template and the query until the column names match.
+
    If the flyout reports that the query isn't connected to the dashboard time filter, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters. Refer to [Connect the panel to the time filter](#custom-panels-time-filter).
 
 5. Select **Run preview** to render your draft in the panel without saving it.
@@ -157,6 +159,8 @@ Keep the following in mind when you write templates:
 | `--cc-color-warning` | Warning states |
 | `--cc-color-danger` | Error and danger states |
 | `--cc-color-border` | Borders |
+
+There is no dedicated property for a healthy or success state. For a three-state status board, pick one of the accent properties for the healthy state, or set your own color.
 
 ## Dashboard interactions [custom-panels-dashboard-interactions]
 
