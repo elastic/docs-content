@@ -10,7 +10,7 @@ products:
 
 # Custom panels [custom-panels]
 
-With a custom panel, you add layouts to a dashboard that other panel types can't produce: status boards, scorecards with colored badges, banners with illustrations, or blocks that mix text with live values. You describe the panel in {{agent-builder}} chat, or write the HTML and CSS template yourself.
+With a custom panel, you add layouts to a dashboard that other panel types can't produce: status boards, scorecards with colored badges, flowcharts and Sankey diagrams, branded banners, or blocks that mix text with live values. You describe the panel in {{agent-builder}} chat, or write the HTML and CSS template yourself.
 
 To show live data, add an {{esql}} query and place its results in the template with [Liquid](https://liquidjs.com/) tags. {{kib}} runs the query each time the panel renders and fills the template with the results. The panel follows the dashboard time filter, queries, filters, and controls like any other {{esql}} panel.
 
@@ -29,7 +29,10 @@ Start with the panel type that fits your data, and reach for a custom panel only
 - For standard charts such as time series, bar, pie, metric, or tables, use [Lens](lens.md), with or without an [{{esql}} query](esorql.md).
 - For scatter plots, small multiples, or layered charts, use [Vega](custom-visualizations-with-vega.md).
 - For text without data, use a [Markdown text panel](text-panels.md).
-- For any other layout that HTML and CSS can express, use a custom panel.
+- For any other layout that HTML and CSS can express, use a custom panel. For example:
+  - Charts that Lens and Vega don't offer or make hard to build, such as flowcharts or Sankey diagrams.
+  - Banners with your logo or brand colors. Place the logo as inline SVG in the template and it travels with the dashboard when you export it to another space or deployment. Uploaded [image panels](image-panels.md) lose their files on export.
+  - Summary cards that combine several metrics, with badges, thresholds, or short explanations next to the values.
 
 When you ask {{agent-builder}} to build a dashboard, the agent follows the same order. It creates a custom panel only when nothing else fits, or when you explicitly ask for a custom or HTML panel.
 
