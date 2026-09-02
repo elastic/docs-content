@@ -397,7 +397,7 @@ A dashboard header with a logo, a title, and an animated mascot. The logo is an 
 :::
 
 :::{dropdown} Template
-{{agent-builder}} generated this template. It uses fixed colors instead of the theme properties, so the banner looks the same in the light and dark themes.
+This template uses fixed colors instead of the theme properties, so the banner looks the same in the light and dark themes.
 
 ```html
 <!DOCTYPE html>
