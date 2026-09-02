@@ -135,7 +135,7 @@ An {{esql}} query returns a table. When you use the result to build a visualizat
 
 The chart type determines the combination of columns you need. Open a page from the [visualization types](lens.md#lens-visualization-types) list to find an {{esql}} query pattern and learn how to assign its result columns to the chart dimensions.
 
-### Build time series charts [esql-time-series-charts]
+## Build time series charts with {{esql}} [esql-time-series-charts]
 
 A time series chart plots a metric over time. The query must return a time-bucket column for the **Horizontal axis** and a numeric metric column for the **Vertical axis**.
 
