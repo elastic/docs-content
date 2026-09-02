@@ -1,5 +1,5 @@
 ---
-navigation_title: Scenario 4
+navigation_title: Custom integrations
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-scenario4.html
 applies_to:
@@ -10,7 +10,7 @@ products:
   - id: elastic-agent
 ---
 
-# Scenario 4: Apply an ILM policy to all data streams in a custom integration [data-streams-scenario4]
+# Apply an ILM policy to all data streams in a custom integration [data-streams-scenario4]
 
 If you’ve created a custom integration package, you can apply a single ILM policy to all its data streams using a shared `@custom` component template. This eliminates the need to configure each data stream individually.
 
