@@ -15,7 +15,7 @@ Learn how to create time series visualizations and build a dashboard that tracks
 
 When you're done, you'll have a complete dashboard showing sales trends, revenue patterns, and customer behavior over time.
 
-You can also create time series charts with an {{esql}} query. Follow the [line chart](../visualize/charts/line-charts.md#build-a-line-chart-with-esql) or [area chart](../visualize/charts/area-charts.md#build-an-area-chart-with-esql) query pattern. Query the `kibana_sample_data_ecommerce` index. Use the `order_date` time field instead of `@timestamp`. To open the query editor from a dashboard, refer to [Create from dashboard](../visualize/esorql.md#_create_from_dashboard).
+You can also create time series charts with an {{esql}} query. Start with the query pattern for a [line chart](../visualize/charts/line-charts.md#build-a-line-chart-with-esql) or [area chart](../visualize/charts/area-charts.md#build-an-area-chart-with-esql). Use the `kibana_sample_data_ecommerce` index and replace `@timestamp` with its `order_date` time field. For instructions on opening the query editor from a dashboard, see [Create from dashboard](../visualize/esorql.md#_create_from_dashboard).
 
 :::{image} /explore-analyze/images/kibana-lens_timeSeriesDataTutorialDashboard_8.3.png
 :alt: Final dashboard with eCommerce sample data

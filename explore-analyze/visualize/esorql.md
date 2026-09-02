@@ -137,9 +137,9 @@ The chart type determines the combination of columns you need. Open a page from 
 
 ### Time series charts [esql-time-series-charts]
 
-To create time series charts with {{esql}}, return a time-bucket column and a numeric metric column. Then follow the [line chart](charts/line-charts.md#build-a-line-chart-with-esql) or [area chart](charts/area-charts.md#build-an-area-chart-with-esql) query pattern.
+To create time series charts with {{esql}}, start with a time-bucket column and a numeric metric column. Then use the query pattern for a [line chart](charts/line-charts.md#build-a-line-chart-with-esql) or [area chart](charts/area-charts.md#build-an-area-chart-with-esql).
 
-For a dashboard walkthrough with eCommerce sample data, refer to [Create a dashboard with time series charts](../dashboards/create-dashboard-of-panels-with-ecommerce-data.md).
+For a dashboard walkthrough with eCommerce sample data, see [Create a dashboard with time series charts](../dashboards/create-dashboard-of-panels-with-ecommerce-data.md).
 
 ## Add drilldowns to an {{esql}} visualization [esql-viz-drilldowns]
 ```{applies_to}
