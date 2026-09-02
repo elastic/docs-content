@@ -50,7 +50,44 @@ A custom panel stores two things:
 
 When chat generates a panel, it writes the template once, at creation or edit time. Rendering never calls the model again, so the panel loads as fast as any other {{esql}} panel. Templates render in a sandbox that blocks scripts and external resources. For details, refer to [Limitations](#custom-panels-limitations).
 
-## Create a custom panel with chat [custom-panels-create-with-chat]
+## Create a custom panel [custom-panels-create]
+
+A custom panel needs a template and, to show live data, an {{esql}} query. You can write the template yourself or generate it with {{agent-builder}}. Start from the dashboard to add the panel where you want it and work in the flyout. Start from a conversation to let the agent build the panel, or a whole dashboard, for you.
+
+### Start from the dashboard [custom-panels-create-from-dashboard]
+
+1. Open your dashboard in **Edit** mode.
+2. Select **Add** in the application menu and, if required, **New panel**.
+3. Select **Custom**.
+
+   {{kib}} adds an empty panel and opens the **Create custom panel** flyout.
+
+   :::{image} /explore-analyze/images/custom-panels-create-flyout.png
+   :alt: Dashboard in edit mode with an empty custom panel that reads Create your custom panel, next to the Create custom panel flyout with the Template (HTML) editor and the Data source (ES|QL) section
+   :screenshot:
+   :::
+
+4. Provide the template in one of two ways:
+
+   - Enter it in **Template (HTML)**. For the syntax, refer to [Write a template](#custom-panels-write-a-template).
+   - Select **Generate with chat** and describe the panel. The flyout closes, the empty panel stays on the dashboard, and a new conversation opens with the panel attached. When the answer completes, the panel shows the generated template and, when the panel needs live data, its query. The remaining steps apply when you enter the template yourself. To adjust a generated panel, refer to [Refine a custom panel with chat](#custom-panels-refine-with-chat).
+
+5. Optional: to show live data, expand **Data source (ES|QL)** and enter a query. Select **Preview data** to check the returned columns. The preview shows the first rows of the result.
+
+   You can switch between the template and the query until the column names match.
+
+   If the flyout reports that the query isn't connected to the dashboard time filter, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters on your time field. Refer to [Connect the panel to the time filter](#custom-panels-time-filter).
+
+6. Select **Run preview** to render your draft in the panel without saving it.
+7. Select **Apply and close**.
+
+   If you select **Cancel** instead, {{kib}} removes the new panel.
+
+8. Save the dashboard.
+
+The panel now shows your content. If it has a query, change the dashboard time range to confirm that the content updates.
+
+### Start from a conversation [custom-panels-create-with-chat]
 
 1. Open [{{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/chat.md). If you open the chat from a dashboard, that dashboard is attached to the conversation automatically.
 2. Describe the panel you want. To force the panel type, ask for a custom or HTML panel. For example:
@@ -70,37 +107,6 @@ When chat generates a panel, it writes the template once, at creation or edit ti
 
 For saving, previewing, and syncing agent-created dashboards, refer to [Dashboards and visualizations in {{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md).
 
-## Create a custom panel from the dashboard [custom-panels-create-from-dashboard]
-
-These steps write the template by hand. To generate it instead, select **Generate with chat** in the flyout and follow [Generate or refine a custom panel with chat](#custom-panels-refine-with-chat).
-
-1. Open your dashboard in **Edit** mode.
-2. Select **Add** in the application menu and, if required, **New panel**.
-3. Select **Custom**.
-
-   {{kib}} adds an empty panel and opens the **Create custom panel** flyout.
-
-   :::{image} /explore-analyze/images/custom-panels-create-flyout.png
-   :alt: Dashboard in edit mode with an empty custom panel that reads Create your custom panel, next to the Create custom panel flyout with the Template (HTML) editor and the Data source (ES|QL) section
-   :screenshot:
-   :::
-
-4. In **Template (HTML)**, enter your template. For the syntax, refer to [Write a template](#custom-panels-write-a-template).
-5. Optional: to show live data, expand **Data source (ES|QL)** and enter a query. Select **Preview data** to check the returned columns. The preview shows the first rows of the result.
-
-   You can switch between the template and the query until the column names match.
-
-   If the flyout reports that the query isn't connected to the dashboard time filter, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters on your time field. Refer to [Connect the panel to the time filter](#custom-panels-time-filter).
-
-6. Select **Run preview** to render your draft in the panel without saving it.
-7. Select **Apply and close**.
-
-   If you select **Cancel** instead, {{kib}} removes the new panel.
-
-8. Save the dashboard.
-
-The panel now shows your content. If it has a query, change the dashboard time range to confirm that the content updates.
-
 ## Edit a custom panel [custom-panels-edit]
 
 1. In **Edit** mode, hover over the panel and select {icon}`pencil` **Edit Custom content configuration**.
@@ -117,17 +123,13 @@ The panel shows the updated content. If you changed the query, change the dashbo
 
 To reuse a template in another panel, select the {icon}`copy` **Copy template** button in the editor to copy it to your clipboard.
 
-## Generate or refine a custom panel with chat [custom-panels-refine-with-chat]
+## Refine a custom panel with chat [custom-panels-refine-with-chat]
 
-You can hand a new or existing panel to {{agent-builder}} instead of writing the template yourself:
+When a panel is attached to a conversation, the agent can change its template and query, and each answer keeps a version you can go back to. To attach a panel, select **Refine with chat** in the **Edit custom panel** flyout. On an empty panel, the button reads **Generate with chat**. A new conversation opens with the panel attached as **Custom content panel**.
 
-1. In the **Edit custom panel** flyout, select **Refine with chat**. On an empty panel, the button reads **Generate with chat**. If you already selected it while adding the panel, skip this step.
-
-   A new conversation opens with the panel attached as **Custom content panel**.
-
-2. Describe the panel or the change you want. The agent updates the template, the query, or both, and the panel on the dashboard updates when the answer completes.
-3. To go back to an earlier version, select **Preview** on the card of that answer. Each answer adds a card for its version, and the newest version is already applied to the panel. Keep the dashboard open while you do this.
-4. Save the dashboard to keep the result.
+1. Describe the panel or the change you want. The agent updates the template, the query, or both, and the panel on the dashboard updates when the answer completes.
+2. To go back to an earlier version, select **Preview** on the card of that answer. Each answer adds a card for its version, and the newest version is already applied to the panel. Keep the dashboard open while you do this.
+3. Save the dashboard to keep the result.
 
 The panel shows the version you applied last, and that version is what the dashboard saves.
 
