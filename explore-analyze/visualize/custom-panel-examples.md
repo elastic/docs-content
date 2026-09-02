@@ -18,7 +18,7 @@ Generated templates can be long. They are meant to be generated and refined in c
 
 ## Sankey diagram [custom-panel-examples-sankey]
 
-A chart that Lens doesn't offer and that is hard to build in Vega. This panel maps the six busiest destination countries in the web logs to the response codes they received. The ribbon thickness follows the count, the right column is colored by status class, and hovering a ribbon shows its value with a CSS-only tooltip. Sample data: **Sample web logs**.
+A chart type that isn't available in Visualizations and is complex to build as a Vega visualization. This panel maps the six busiest destination countries in the web logs to the response codes they received. The ribbon thickness follows the count, the right column is colored by status class, and hovering a ribbon shows its value with a CSS-only tooltip. Sample data: **Sample web logs**.
 
 :::{image} /explore-analyze/images/custom-panels-example-sankey.png
 :alt: Sankey diagram with colored ribbons flowing from six destination countries to three response codes
@@ -26,7 +26,7 @@ A chart that Lens doesn't offer and that is hard to build in Vega. This panel ma
 :::
 
 :::{dropdown} Prompt
-{{agent-builder}} generated the panel from **Generate with chat** in two rounds after this prompt: one to fix a Liquid syntax error that the panel reported, and one to color the right column by status class.
+{{agent-builder}} generated the panel from **Generate with chat** with this prompt.
 
 ```text
 Create a custom HTML panel with a Sankey diagram of web traffic from kibana_sample_data_logs: left column = top 6 destination countries (geo.dest), right column = response code (response.keyword). Use an ES|QL query with STATS COUNT(*) BY geo.dest, response.keyword so the diagram follows the dashboard time filter. Draw ribbons as inline SVG paths whose thickness is proportional to the count.
