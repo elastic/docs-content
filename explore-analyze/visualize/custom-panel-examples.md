@@ -699,6 +699,7 @@ A paragraph that reads like a report, with live values in bold, next to an avail
 :::{image} /explore-analyze/images/custom-panels-example-summary.png
 :alt: Paragraph summarizing requests, countries, data volume, and failures next to an availability score of 96.8% labeled Degraded
 :screenshot:
+:width: 75%
 :::
 
 :::{dropdown} Query
