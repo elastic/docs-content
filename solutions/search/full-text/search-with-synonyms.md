@@ -83,7 +83,7 @@ Changes to your synonym sets automatically reload the associated analyzers. For 
 $$$synonyms-store-synonyms-kibana$$$
 
 ```{applies_to}
-stack: ga 9.1
+stack: ga
 serverless:
   elasticsearch:
 ```
