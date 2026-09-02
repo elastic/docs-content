@@ -147,7 +147,7 @@ Keep the following in mind when you write templates:
 - A column that the query doesn't return has no value. Its `.value` and `.pct` render as empty strings, and filters such as `round` turn it into `0`. If the panel shows zeros or full-width bars after a query change, check the column names in the template.
 - Missing rows are not an error. Check `rows.size` to render an empty state.
 
-### Example: status board with live data [custom-panels-example-status-board]
+### Status board with live data [custom-panels-example-status-board]
 
 This example builds one card per product category from the [sample eCommerce data](/manage-data/ingest/sample-data.md), with revenue, order count, a bar relative to the best category, and a badge that changes with the revenue. The query connects to the time filter through `?_tstart` and `?_tend`.
 
