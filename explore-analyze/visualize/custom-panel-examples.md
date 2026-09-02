@@ -21,7 +21,7 @@ Generated templates can be long. They are meant to be generated and refined in c
 A chart that Lens doesn't offer and that is hard to build in Vega. This panel maps the six busiest destination countries in the web logs to the response codes they received. The ribbon thickness follows the count, the right column is colored by status class, and hovering a ribbon shows its value with a CSS-only tooltip. Sample data: **Sample web logs**.
 
 :::{image} /explore-analyze/images/custom-panels-example-sankey.png
-:alt: Sankey diagram with six countries on the left, three response codes on the right, and colored ribbons between them
+:alt: Sankey diagram with colored ribbons flowing from six destination countries to three response codes
 :screenshot:
 :::
 
