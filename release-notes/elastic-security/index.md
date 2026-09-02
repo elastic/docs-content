@@ -31,7 +31,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Features and enhancements [elastic-security-9.5.3-features-enhancements]
 
-* Adds the `--raw` option to the `memory-dump` response action for {{elastic-defend}} hosts running {{agent}} 9.5.2 or later [#287713]({{kib-pull}}287713).
+* Adds the `--raw` option to the `memory-dump` response action for {{elastic-defend}} Windows hosts running {{agent}} 9.5.2 or later [#287713]({{kib-pull}}287713).
 * Adds **Destination IP** as a built-in **Group alerts by** option on the alerts table, and includes aggregatable IP fields in the **Custom field** picker [#284769]({{kib-pull}}284769).
 
 ### Fixes [elastic-security-9.5.3-fixes]
