@@ -235,11 +235,20 @@ GET /my-index/_analyze
 }
 ```
 
-If your synonym set includes `laptop, notebook` as equivalent terms, the response contains tokens for both `laptop` and `notebook`.
+The response contains tokens for both `laptop` and `notebook`, because `my-synonym-set` defines them as equivalent terms.
 
 ## Step 5: Search with synonyms [synonyms-search-example]
 
 After you configure synonyms for a field, queries against that field automatically expand to include synonym terms. Queries that support synonym expansion include [match](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), [query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md), and [simple_query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-simple-query-string-query.md).
+
+Index a document so the search has something to match:
+
+```console
+POST /my-index/_doc?refresh=true
+{
+  "title": "Lightweight notebook for travel"
+}
+```
 
 For example, if `laptop` and `notebook` are configured as equivalent terms and you search for `laptop`, {{es}} also matches documents containing `notebook`:
 
@@ -254,7 +263,7 @@ GET /my-index/_search
 }
 ```
 
-This query matches documents where the `title` field contains `laptop` or `notebook`, because the synonym rule treats them as equivalent.
+The response includes the document, even though its `title` never contains the word `laptop`: `synonyms_analyzer` expanded the query term to `notebook` at search time.
 
 ## Next steps
 
