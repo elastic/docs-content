@@ -35,7 +35,7 @@ You can open only the spaces that your roles grant access to.
 
 2. Select the space you want to open.
 
-The selected space opens. It's visible in the header.
+The selected space opens.
 
 ## Understand what happens when you log in
 
