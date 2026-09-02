@@ -154,7 +154,7 @@ You can define synonyms directly in your token filter using the `synonyms` param
 ```
 
 ::::{warning}
-Too many inline synonyms increases cluster size unnecessarily and can lead to performance issues. For production workloads, use the REST API or file-based approach instead.
+A large number of inline synonyms increases cluster size unnecessarily and can lead to performance issues. For production workloads, use the REST API or file-based approach instead.
 ::::
 
 :::::
@@ -165,7 +165,7 @@ Too many inline synonyms increases cluster size unnecessarily and can lead to pe
 Synonym sets must exist before you reference them in an index. An index that references a nonexistent synonym set becomes inoperable and must be deleted and re-created, or closed and re-opened.
 ::::
 
-## Step 2: Configure synonyms token filters and analyzers [synonyms-synonym-token-filters]
+## Step 2: Configure synonym token filters and analyzers [synonyms-synonym-token-filters]
 
 Once your synonym sets are created, you can start configuring your token filters and analyzers to use them.
 
@@ -221,7 +221,7 @@ PUT /my-index
 
 1. For [file-based synonym sets](#synonyms-store-synonyms-file), use `"synonyms_path": "analysis/synonym-set.txt"` instead. {applies_to}`serverless: unavailable`
 2. Applies synonyms at search time only, not when indexing documents.
-3. Allows the analyzer to be [reloaded]({{es-apis}}operation/operation-indices-reload-search-analyzers) when synonym sets change, without reindexing.
+3. Required when you use `synonyms_set`: synonym sets can only be loaded into search-time analyzers. It also lets you [reload]({{es-apis}}operation/operation-indices-reload-search-analyzers) the analyzer when the set changes, without reindexing.
 
 ## Step 4: Test your analyzer [synonyms-test-analyzer]
 
