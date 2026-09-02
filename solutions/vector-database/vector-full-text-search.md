@@ -173,7 +173,7 @@ A successful response contains information about your {{es}} project and its ver
 
 ::::::
 
-## Install a client [vector-full-text-search-install-sdk]
+## Install an {{es}} client [vector-full-text-search-install-sdk]
 
 Install the client for your language. For a list of available clients, refer to [{{es}} clients](/reference/elasticsearch-clients/index.md).
 
