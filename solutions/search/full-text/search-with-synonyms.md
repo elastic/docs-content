@@ -263,7 +263,7 @@ GET /my-index/_search
 }
 ```
 
-The response includes the document, even though its `title` never contains the word `laptop`: `synonyms_analyzer` expanded the query term to `notebook` at search time.
+The response includes the document, even though its `title` doesn't contain the word `laptop`: `synonyms_analyzer` expanded the query term to `notebook` at search time.
 
 ## Next steps
 
