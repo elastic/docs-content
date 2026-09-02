@@ -104,7 +104,7 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
 **Max alerts per run** (optional)
 :   Specify the maximum number of alerts the rule can create each time it executes. Default is 100.
 
-    {applies_to}`serverless: preview` When {{cps}} is enabled, this limit covers the combined results from every project the rule queries in that run, rather than each project separately. By default, that's the space-level scope, unless you override it in the query. Refer to [{{cps-cap}} and detection rules](/solutions/security/detect-and-alert/cross-project-search-detection-rules.md#cps-rules-max-alerts).
+    {applies_to}`serverless: preview` When {{cps}} is enabled, this limit is shared across every project the rule searched, not applied separately to each project. A query-level override (`SET project_routing` or a qualified index expression) changes which projects that execution searches. The limit still applies once. Refer to [{{cps-cap}} and detection rules](/solutions/security/detect-and-alert/cross-project-search-detection-rules.md#cps-rules-max-alerts).
 
 ::::{admonition} System-level alert limit
 The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/configuration-reference/alerting-settings.md) acts as a system-level limit on alerts per rule execution, and can supersede a security rule's **Max alerts per run** setting. If a rule's **Max alerts per run** value exceeds `xpack.alerting.rules.run.alerts.max`, the lower system setting takes precedence and the rule will not generate more alerts than it allows.
