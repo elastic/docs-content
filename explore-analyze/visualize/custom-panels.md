@@ -87,7 +87,7 @@ The panel now shows your content. If it has a query, change the dashboard time r
 
 ## Edit a custom panel [custom-panels-edit]
 
-1. In **Edit** mode, open the {icon}`boxes_vertical` panel menu and select **Edit Custom content configuration**.
+1. In **Edit** mode, hover over the panel and select {icon}`pencil` **Edit Custom content configuration**.
 
    The **Edit custom panel** flyout opens with the current template and query.
 
