@@ -10,11 +10,11 @@ products:
 
 # Custom panel examples [custom-panel-examples]
 
-Each example on this page shows what a [custom panel](custom-panels.md) can do that other panel types can't, with the query and the template that produce it. Two of them were generated with {{agent-builder}} chat and include the prompt. The other three are short enough to write by hand.
+Each example on this page shows what a [custom panel](custom-panels.md) can do that other panel types can't, with the query and the template that produce it. Two of them were generated with {{agent-builder}} chat and include the prompt.
 
 To try an example, add a custom panel to a dashboard, paste the query into **Data source (ES|QL)** and the template into **Template (HTML)**, then select **Run preview**. The queries use the [sample data sets](/manage-data/ingest/sample-data.md) named in each example. The screenshots use the dark theme. Templates that use the theme properties render in the light theme as well.
 
-Generated templates can be long. They are meant to be generated and refined in chat, not typed. Hand-written templates use the `--cc-color-*` theme properties so they follow the {{kib}} theme.
+Templates that use the `--cc-color-*` theme properties follow the {{kib}} theme. To change a generated template, refine it in chat or edit it in the flyout.
 
 ## Sankey diagram [custom-panel-examples-sankey]
 
@@ -42,7 +42,7 @@ FROM kibana_sample_data_logs
 :::
 
 :::{dropdown} Template
-The template groups the rows by country and picks the top six in Liquid, because {{esql}} can't return both the country totals and the country-to-response pairs in one result. That is why it is long.
+The query returns one row per country and response code. The template computes the country totals and selects the top six countries in Liquid.
 
 ```html
 <style>
@@ -397,7 +397,7 @@ A dashboard header with a logo, a title, and an animated mascot. The logo is an 
 :::
 
 :::{dropdown} Template
-{{agent-builder}} generated this template. It fixes its own dark colors instead of using the theme properties, which is a reasonable choice for a brand banner that must look the same in both themes.
+{{agent-builder}} generated this template. It uses fixed colors instead of the theme properties, so the banner looks the same in the light and dark themes.
 
 ```html
 <!DOCTYPE html>
