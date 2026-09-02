@@ -55,7 +55,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes Cribl routing pipeline `dataId` handling by sanitizing and validating values before writing them into the routing ingest pipeline [#284863]({{kib-pull}}284863).
 * Fixes the Agent Builder research agent re-asking clarifying questions that the user had already answered earlier in the same session [#284800]({{kib-pull}}284800).
 * Fixes `inputs_for_versions` not being backfilled after a {{kib}} minor version upgrade, which caused version-specific agent inputs to be missing from compiled agent policies [#284710]({{kib-pull}}284710).
-* Fixes the rate aggregation in custom threshold rules not firing when a counter increases from 0 to a positive value [#283973]({{kib-pull}}283973).
 * Fixes Synthetics global parameters shared across all spaces being dropped from private location monitor configurations during all-spaces sync [#282575]({{kib-pull}}282575).
 
 ## 9.5.2 [elastic-observability-9.5.2-release-notes]
