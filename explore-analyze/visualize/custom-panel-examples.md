@@ -10,7 +10,7 @@ products:
 
 # Custom panel examples [custom-panel-examples]
 
-Each example on this page shows what a [custom panel](custom-panels.md) can do that other panel types can't, with the query and the template that produce it. Two of them were generated with {{agent-builder}} chat. The other three are short enough to write by hand.
+Each example on this page shows what a [custom panel](custom-panels.md) can do that other panel types can't, with the query and the template that produce it. Two of them were generated with {{agent-builder}} chat and include the prompt. The other three are short enough to write by hand.
 
 To try an example, add a custom panel to a dashboard, paste the query into **Data source (ES|QL)** and the template into **Template (HTML)**, then select **Run preview**. The queries use the [sample data sets](/manage-data/ingest/sample-data.md) named in each example. The screenshots use the dark theme. Templates that use the theme properties render in the light theme as well.
 
@@ -20,28 +20,30 @@ Generated templates can be long. They are meant to be generated and refined in c
 
 A chart that Lens doesn't offer and that is hard to build in Vega. This panel maps the six busiest destination countries in the web logs to the response codes they received. The ribbon thickness follows the count, the right column is colored by status class, and hovering a ribbon shows its value with a CSS-only tooltip. Sample data: **Sample web logs**.
 
-{{agent-builder}} generated this panel from **Generate with chat** in two rounds after the prompt: one to fix a Liquid syntax error that the panel reported, and one to color the right column by status class.
-
-Prompt:
-
-> Create a custom HTML panel with a Sankey diagram of web traffic from kibana_sample_data_logs: left column = top 6 destination countries (geo.dest), right column = response code (response.keyword). Use an ES|QL query with STATS COUNT(*) BY geo.dest, response.keyword so the diagram follows the dashboard time filter. Draw ribbons as inline SVG paths whose thickness is proportional to the count.
-
 :::{image} /explore-analyze/images/custom-panels-example-sankey.png
 :alt: Sankey diagram with six countries on the left, three response codes on the right, and colored ribbons between them
 :screenshot:
 :::
 
-Query:
+:::{dropdown} Prompt
+{{agent-builder}} generated the panel from **Generate with chat** in two rounds after this prompt: one to fix a Liquid syntax error that the panel reported, and one to color the right column by status class.
 
+```text
+Create a custom HTML panel with a Sankey diagram of web traffic from kibana_sample_data_logs: left column = top 6 destination countries (geo.dest), right column = response code (response.keyword). Use an ES|QL query with STATS COUNT(*) BY geo.dest, response.keyword so the diagram follows the dashboard time filter. Draw ribbons as inline SVG paths whose thickness is proportional to the count.
+```
+:::
+
+:::{dropdown} Query
 ```esql
 FROM kibana_sample_data_logs
 | STATS count = COUNT(*) BY geo.dest, response.keyword
 | SORT count DESC
 ```
-
-The template groups the rows by country and picks the top six in Liquid, because {{esql}} can't return both the country totals and the country-to-response pairs in one result. That is why it is long.
+:::
 
 :::{dropdown} Template
+The template groups the rows by country and picks the top six in Liquid, because {{esql}} can't return both the country totals and the country-to-response pairs in one result. That is why it is long.
+
 ```html
 <style>
   body {
@@ -389,14 +391,14 @@ The template groups the rows by country and picks the top six in Liquid, because
 
 A dashboard header with a logo, a title, and an animated mascot. The logo is an inline SVG path, so it travels with the dashboard when you export it. CSS animations run inside the panel. Sample data: none, the panel has no query.
 
-{{agent-builder}} generated this panel. It fixes its own dark colors instead of using the theme properties, which is a reasonable choice for a brand banner that must look the same in both themes.
-
 :::{image} /explore-analyze/images/custom-panels-example-banner.png
 :alt: Dark banner with the Elastic logo, the title Sample logs ops center, and an animated elk mascot
 :screenshot:
 :::
 
 :::{dropdown} Template
+{{agent-builder}} generated this template. It fixes its own dark colors instead of using the theme properties, which is a reasonable choice for a brand banner that must look the same in both themes.
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -635,8 +637,7 @@ Six metrics from one query, split into two views that the reader switches with t
 :screenshot:
 :::
 
-Query:
-
+:::{dropdown} Query
 ```esql
 FROM kibana_sample_data_logs
 | WHERE @timestamp >= ?_tstart AND @timestamp < ?_tend
@@ -651,9 +652,9 @@ FROM kibana_sample_data_logs
        avg_kb = ROUND(avg_bytes / 1024.0, 1),
        max_kb = ROUND(max_bytes / 1024.0, 1)
 ```
+:::
 
-Template:
-
+:::{dropdown} Template
 ```html
 <style>
   body { margin: 0; padding: 12px; font-family: Inter, system-ui, sans-serif; color: var(--cc-color-text); background: var(--cc-color-background); }
@@ -689,6 +690,7 @@ Template:
 </div>
 {% endfor %}
 ```
+:::
 
 ## Narrative summary [custom-panel-examples-summary]
 
@@ -699,8 +701,7 @@ A paragraph that reads like a report, with live values in bold, next to an avail
 :screenshot:
 :::
 
-Query:
-
+:::{dropdown} Query
 ```esql
 FROM kibana_sample_data_logs
 | WHERE @timestamp >= ?_tstart AND @timestamp < ?_tend
@@ -712,9 +713,9 @@ FROM kibana_sample_data_logs
 | EVAL availability = ROUND((requests - server_errors) * 100.0 / requests, 1),
        mb = ROUND(bytes / 1048576.0, 1)
 ```
+:::
 
-Template:
-
+:::{dropdown} Template
 ```html
 <style>
   body { margin: 0; padding: 16px; font-family: Inter, system-ui, sans-serif; color: var(--cc-color-text); background: var(--cc-color-background); }
@@ -749,6 +750,7 @@ Template:
 </div>
 {% endfor %}
 ```
+:::
 
 ## Status board [custom-panel-examples-status-board]
 
@@ -759,7 +761,8 @@ One card per product category, with revenue, order count, a bar relative to the 
 :screenshot:
 :::
 
-Query:
+:::{dropdown} Query
+Sample data timestamps are relative to the installation time, so the revenue per category, and therefore the badges, depend on when you installed the data set and on the selected time range.
 
 ```esql
 FROM kibana_sample_data_ecommerce
@@ -767,9 +770,9 @@ FROM kibana_sample_data_ecommerce
 | STATS revenue = SUM(taxful_total_price), orders = COUNT(*) BY category
 | SORT revenue DESC
 ```
+:::
 
-Template:
-
+:::{dropdown} Template
 ```html
 <style>
   body { margin: 0; padding: 12px; font-family: Inter, system-ui, sans-serif; color: var(--cc-color-text); background: var(--cc-color-background); }
@@ -808,8 +811,7 @@ Template:
 {% endfor %}
 </div>
 ```
-
-Sample data timestamps are relative to the installation time, so the revenue per category, and therefore the badges, depend on when you installed the data set and on the selected time range.
+:::
 
 ## Related pages [custom-panel-examples-related-pages]
 
