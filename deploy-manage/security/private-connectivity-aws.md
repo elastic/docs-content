@@ -522,8 +522,47 @@ To access the deployment or project:
 
 ### AWS PrivateLink and Fleet
 
+:::::{applies-switch}
+
+::::{applies-item} ech: ga
 :::{include} _snippets/private-connection-fleet.md
 :::
+::::
+
+::::{applies-item} serverless: ga
+When a private connection is set up for your project, {{fleet}} adds two entries that can route {{agent}} traffic over AWS PrivateLink:
+
+* A {{fleet-server}} host named **Private Fleet Server**, listed in the **Fleet server hosts** section.
+* An {{es}} output named **Private Elasticsearch Output**, listed in the **Outputs** section.
+
+Both entries appear on the **Fleet** → **Settings** page with an **AWS PrivateLink** badge, and they point to the private endpoints of your project. Elastic manages their names and URLs, so you can't change them. Neither entry is used until you select it, either as the default for all agent policies or in an individual policy.
+
+To send data from all agent policies over the private connection:
+
+1. Go to **Fleet** → **Settings**.
+2. In the **Fleet server hosts** section, select **Edit** for **Private Fleet Server**, then select **Make this Fleet server the default one**.
+3. In the **Outputs** section, select **Edit** for **Private Elasticsearch Output**, then select **Make this output the default for agent integrations**. To also send agent monitoring data over the private connection, select **Make this output the default for agent monitoring**.
+4. Save your changes.
+
+To send data from a single agent policy over the private connection, and leave the remaining policies on the public endpoints:
+
+1. Go to **Fleet** → **Agent policies**, then select the policy you want to change.
+2. On the **Settings** tab, set **Fleet Server** to **Private Fleet Server**.
+3. Set **Output for integrations** and, optionally, **Output for agent monitoring** to **Private Elasticsearch Output**.
+4. Save your changes.
+
+A selection made in an agent policy takes precedence over the defaults on the **Settings** page.
+
+If the private connection is later removed from your project, {{fleet}} makes the public {{fleet-server}} host and output the default again, and deletes the private entries. Agent policies that used a private entry switch back to the default, so {{agents}} aren't left pointing at an unreachable URL.
+
+:::{admonition} Limitations
+* You can't change the performance tuning preset on **Private Elasticsearch Output**. It uses the default **Balanced** preset.
+* You can't create another {{es}} output that points to the private endpoint. Only the output that {{fleet}} adds can use that URL.
+* {{managed-integrations}} don't use the private endpoints. Elastic runs their collectors and writes the data to your project over Elastic's internal network. For more information, refer to [Security and data residency](/manage-data/ingest/managed-integrations/managed-integrations.md#managed-integrations-data-security).
+:::
+::::
+
+:::::
 
 ## Setting up a cross-region PrivateLink connection [ec-aws-inter-region-private-link]
 
