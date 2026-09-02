@@ -188,6 +188,8 @@ You can grant users access to {{agent-builder}} using these methods:
 [Roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) are {{es}} security constructs that bundle together {{kib}} feature privileges and {{es}} privileges. To grant users access to {{agent-builder}}, create a role that includes the required privileges.
 
 :::{note}
+:applies_to: elasticsearch:
+
 When configuring roles in the {{kib}} UI, {{agent-builder}} privileges appear under **Analytics**. In {{serverless-short}} {{es}} projects, they appear under **{{es}}**.
 :::
 
