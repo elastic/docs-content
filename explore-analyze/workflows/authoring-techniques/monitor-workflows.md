@@ -25,7 +25,6 @@ You must also have the appropriate subscription. Refer to the subscription page 
 
 ## Execution-based billing [workflows-execution-billing]
 
-<!-- Needs confirmation: `stack: ga 9.5+` follows the comment that usage emission starts in 9.5. That is still waiting on @talboren. If billing applies to every Hosted version that already has Agent Builder or Workflows, those version tags should be dropped. -->
 ```{applies_to}
 stack: ga 9.5+
 deployment:
@@ -34,9 +33,9 @@ deployment:
 
 On {{ech}}, [Workflows](/explore-analyze/workflows.md) is billed based on workflow executions. Each workflow run counts as one execution, including runs that fail, are canceled, or time out. Runs skipped by concurrency controls are not metered.
 
-The first 10,000 workflow executions each month are included. Additional executions are billed at the published tiered rates.
+The first 10,000 workflow executions across the {{ech}} deployments in an {{ecloud}} organization each month are included. Additional executions are billed according to the published amounts.
 
-When a workflow invokes an agent, the {{agent-builder}} execution is metered separately. Refer to the [Hosted add-ons pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=stack_hosted&group=addons&dimension=executions) for current rates and tier breakpoints.
+When a workflow invokes an agent, the {{agent-builder}} execution is metered separately. Refer to the [Hosted add-ons pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=stack_hosted&group=addons&dimension=executions) for current billing amounts.
 
 This billing model doesn't apply to {{ech}} [FedRAMP authorized Cloud offerings](/deploy-manage/deploy/elastic-cloud/fedramp.md), which remain under promotional pricing.
 

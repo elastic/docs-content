@@ -17,7 +17,7 @@ The nominal value of one Elastic Consumption Unit is $1.00. You can use our [{{e
 
 Your monthly usage statement is issued in ECU, though it also includes the currency equivalent of your consumption. The **Usage** page in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) also shows usage information in ECU.
 
-For current {{ech}} rates and tier breakpoints for workflow executions and {{agent-builder}} executions, refer to the [Hosted add-ons pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=stack_hosted&group=addons&dimension=executions).
+For current {{ech}} billing amounts for workflow executions and {{agent-builder}} executions, refer to the [Hosted add-ons pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=stack_hosted&group=addons&dimension=executions).
 
 ## Contractual information and quoting [ec_contractual_information_and_quoting]
 
