@@ -112,6 +112,6 @@ When an agent invokes a [workflow](/explore-analyze/workflows.md), the workflow 
 
 This billing model doesn't apply to {{ech}} [FedRAMP authorized Cloud offerings](/deploy-manage/deploy/elastic-cloud/fedramp.md), which remain under promotional pricing.
 
-### Self-managed
+### Self-managed, {{eck}}, and {{ece}}
 
 {{agent-builder}} and [workflows](/explore-analyze/workflows.md) on self-managed deployments are currently under promotional pricing and available at no additional charge. {{agent-builder}} is included with the Enterprise license tier.
