@@ -104,7 +104,7 @@ The panel now shows your content. If it has a query, change the dashboard time r
 
 2. Change the template, the query, or both. Use **Preview data** to check the query results and **Run preview** to render your draft in the panel.
 
-   If you change only the query, {{kib}} fills the existing template with the new results. Make sure the column names in the template match the new query output. If the query itself is invalid, the panel shows **Failed to render panel** with the {{esql}} error. Select **Preview data** before you apply to catch query errors early.
+   If you change only the query, {{kib}} fills the existing template with the new results. Make sure the column names in the template match the new query output. If the query or the template is invalid, the panel shows **Failed to render panel** with the {{esql}} or Liquid error. Select **Preview data** before you apply to catch query errors early. For a template that chat generated, paste the error into the conversation and the agent corrects the template.
 
 3. Select **Apply and close**, then save the dashboard.
 
