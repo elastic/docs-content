@@ -144,7 +144,7 @@ The following template renders one bar per row, with the bar width proportional 
 Keep the following in mind when you write templates:
 
 - Grouping, sorting, and aggregation must happen in the {{esql}} query, for example with `STATS ... BY`. The template receives the rows exactly as the query returns them.
-- A column that the query doesn't return renders as an empty string.
+- A column that the query doesn't return has no value. Its `.value` and `.pct` render as empty strings, and filters such as `round` turn it into `0`. If the panel shows zeros or full-width bars after a query change, check the column names in the template.
 - Missing rows are not an error. Check `rows.size` to render an empty state.
 
 ### Match the {{kib}} theme [custom-panels-theme]
