@@ -154,7 +154,7 @@ For supported Go versions and other requirements, refer to the [Go client instal
 :::::
 
 $$$vector-full-text-search-init-client$$$
-After installation, initialize the client and retrieve information about your {{es}} project:
+After installation, initialize the client:
 
 :::::{tab-set}
 :group: languages
@@ -162,26 +162,20 @@ After installation, initialize the client and retrieve information about your {{
 ::::{tab-item} Python
 :sync: python
 
-Save the following example as `initialize-client.py`:
-
 ```python
 import os
-from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch, helpers
 
 es = Elasticsearch(
     os.environ["ES_URL"],
     api_key=os.environ["ES_API_KEY"],
 )
-
-print(es.info())
 ```
 
 ::::
 
 ::::{tab-item} TypeScript
 :sync: typescript
-
-Save the following example as `initialize-client.ts`:
 
 ```typescript
 import { Client } from "@elastic/elasticsearch";
@@ -190,16 +184,12 @@ const es = new Client({
   node: process.env.ES_URL,
   auth: { apiKey: process.env.ES_API_KEY! },
 });
-
-console.log(await es.info());
 ```
 
 ::::
 
 ::::{tab-item} PHP
 :sync: php
-
-Save the following example as `initialize-client.php`:
 
 ```php
 <?php
@@ -212,16 +202,12 @@ $es = ClientBuilder::create()
     ->setHosts([getenv("ES_URL")])
     ->setApiKey(getenv("ES_API_KEY"))
     ->build();
-
-print_r($es->info()->asArray());
 ```
 
 ::::
 
 ::::{tab-item} Ruby
 :sync: ruby
-
-Save the following example as `initialize-client.rb`:
 
 ```ruby
 require "elasticsearch"
@@ -230,16 +216,12 @@ es = Elasticsearch::Client.new(
   url: ENV.fetch("ES_URL"),
   api_key: ENV.fetch("ES_API_KEY")
 )
-
-puts es.info
 ```
 
 ::::
 
 ::::{tab-item} C#/.NET
 :sync: csharp
-
-Replace the contents of `Program.cs` with the following code and save the file:
 
 ```csharp
 using Elastic.Clients.Elasticsearch;
@@ -253,17 +235,12 @@ var apiKey = Environment.GetEnvironmentVariable("ES_API_KEY")
 var settings = new ElasticsearchClientSettings(new Uri(url))
     .Authentication(new ApiKey(apiKey));
 var es = new ElasticsearchClient(settings);
-
-var response = await es.InfoAsync();
-Console.WriteLine(response.Version.Number);
 ```
 
 ::::
 
 ::::{tab-item} Java
 :sync: java
-
-Replace the contents of `src/main/java/quickstart/App.java` with the following code and save the file:
 
 ```java
 package quickstart;
@@ -279,10 +256,6 @@ public class App {
             .host(serverUrl)
             .apiKey(apiKey)
         );
-
-        var response = es.info();
-        System.out.println(response.version().number());
-        es.close();
     }
 }
 ```
@@ -292,14 +265,10 @@ public class App {
 ::::{tab-item} Go
 :sync: go
 
-Save the following example as `initialize-client.go`:
-
 ```go
 package main
 
 import (
-	"encoding/json"
-	"fmt"
 	"log"
 	"os"
 
@@ -314,26 +283,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	res, err := es.Info()
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer res.Body.Close()
-	if res.IsError() {
-		log.Fatal(res)
-	}
-
-	var info struct {
-		ClusterName string `json:"cluster_name"`
-		Version     struct {
-			Number string `json:"number"`
-		} `json:"version"`
-	}
-	if err := json.NewDecoder(res.Body).Decode(&info); err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("%s %s\n", info.ClusterName, info.Version.Number)
 }
 ```
 
@@ -341,127 +290,9 @@ func main() {
 
 :::::
 
-:::::::{dropdown} Verify the connection
-Run the standalone initialization file:
-
-::::::{tab-set}
-:group: languages
-
-:::::{tab-item} Python
-:sync: python
-
-```bash
-python initialize-client.py
-```
-
-A successful response contains project and version information similar to the sanitized example.
-
-```text
-{'cluster_name': 'YOUR-PROJECT', 'version': {'number': 'VERSION'}, ...}
-```
-
-:::::
-
-:::::{tab-item} TypeScript
-:sync: typescript
-
-```bash
-npx tsx initialize-client.ts
-```
-
-A successful response contains project and version information similar to the sanitized example.
-
-```text
-{ cluster_name: 'YOUR-PROJECT', version: { number: 'VERSION' }, ... }
-```
-
-:::::
-
-:::::{tab-item} PHP
-:sync: php
-
-```bash
-php initialize-client.php
-```
-
-A successful response contains project and version information similar to the sanitized example.
-
-```text
-[cluster_name] => YOUR-PROJECT
-[version] => Array ([number] => VERSION)
-```
-
-:::::
-
-:::::{tab-item} Ruby
-:sync: ruby
-
-```bash
-bundle exec ruby initialize-client.rb
-```
-
-A successful response contains project and version information similar to the sanitized example.
-
-```text
-{"cluster_name"=>"YOUR-PROJECT", "version"=>{"number"=>"VERSION"}, ...}
-```
-
-:::::
-
-:::::{tab-item} C#/.NET
-:sync: csharp
-
-```bash
-dotnet run
-```
-
-A successful response contains project and version information similar to the sanitized example.
-
-```text
-VERSION
-```
-
-:::::
-
-:::::{tab-item} Java
-:sync: java
-
-```bash
-gradle run
-```
-
-A successful response contains project and version information similar to the sanitized example.
-
-```text
-VERSION
-```
-
-:::::
-
-:::::{tab-item} Go
-:sync: go
-
-```bash
-go run initialize-client.go
-```
-
-A successful response contains project and version information similar to the sanitized example.
-
-```text
-YOUR-PROJECT VERSION
-```
-
-:::::
-
-::::::
-
-A `401` error means the API key is incorrect. A timeout means the URL is incorrect or unreachable.
-
-:::::::
-
 ## Create an index and add data [vector-full-text-search-add-data]
 
-Follow these steps to create the `books` index and index the sample data.
+Use the initialized client to create the `books` index and add the sample data.
 
 :::::{tab-set}
 :group: languages
@@ -469,17 +300,7 @@ Follow these steps to create the `books` index and index the sample data.
 ::::{tab-item} Python
 :sync: python
 
-Save the following example as `index-data.py`:
-
 ```python
-import os
-from elasticsearch import Elasticsearch, helpers
-
-es = Elasticsearch(
-    os.environ["ES_URL"],
-    api_key=os.environ["ES_API_KEY"],
-)
-
 es.indices.create(
     index="books",
     mappings={
@@ -503,16 +324,7 @@ In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsear
 ::::{tab-item} TypeScript
 :sync: typescript
 
-Save the following example as `index-data.ts`:
-
 ```typescript
-import { Client } from "@elastic/elasticsearch";
-
-const es = new Client({
-  node: process.env.ES_URL,
-  auth: { apiKey: process.env.ES_API_KEY! },
-});
-
 await es.indices.create({
   index: "books",
   mappings: {
@@ -537,20 +349,7 @@ await es.indices.create({
 ::::{tab-item} PHP
 :sync: php
 
-Save the following example as `index-data.php`:
-
 ```php
-<?php
-
-require __DIR__ . "/vendor/autoload.php";
-
-use Elastic\Elasticsearch\ClientBuilder;
-
-$es = ClientBuilder::create()
-    ->setHosts([getenv("ES_URL")])
-    ->setApiKey(getenv("ES_API_KEY"))
-    ->build();
-
 $es->indices()->create([
     "index" => "books",
     "body" => [
@@ -577,16 +376,7 @@ $es->indices()->create([
 ::::{tab-item} Ruby
 :sync: ruby
 
-Save the following example as `index-data.rb`:
-
 ```ruby
-require "elasticsearch"
-
-es = Elasticsearch::Client.new(
-  url: ENV.fetch("ES_URL"),
-  api_key: ENV.fetch("ES_API_KEY")
-)
-
 es.indices.create(
   index: "books",
   body: {
@@ -613,23 +403,7 @@ es.indices.create(
 ::::{tab-item} C#/.NET
 :sync: csharp
 
-Replace the contents of `Program.cs` with the following code and save the file:
-
 ```csharp
-using System.Text.Json.Serialization;
-using Elastic.Clients.Elasticsearch;
-using Elastic.Clients.Elasticsearch.Core.Bulk;
-using Elastic.Transport;
-
-var url = Environment.GetEnvironmentVariable("ES_URL")
-    ?? throw new InvalidOperationException("ES_URL is not set.");
-var apiKey = Environment.GetEnvironmentVariable("ES_API_KEY")
-    ?? throw new InvalidOperationException("ES_API_KEY is not set.");
-
-var settings = new ElasticsearchClientSettings(new Uri(url))
-    .Authentication(new ApiKey(apiKey));
-var es = new ElasticsearchClient(settings);
-
 await es.Indices.CreateAsync<Book>("books", c => c
     .Mappings(m => m
         .Properties(p => p <1>
@@ -651,24 +425,7 @@ await es.Indices.CreateAsync<Book>("books", c => c
 ::::{tab-item} Java
 :sync: java
 
-Replace the contents of `src/main/java/quickstart/App.java` with the following code and save the file:
-
 ```java
-package quickstart;
-
-import java.io.StringReader;
-
-import co.elastic.clients.elasticsearch.ElasticsearchClient;
-import co.elastic.clients.elasticsearch._types.Refresh;
-import co.elastic.clients.elasticsearch.core.BulkRequest;
-
-public class App {
-    public static void main(String[] args) throws Exception {
-        ElasticsearchClient es = ElasticsearchClient.of(b -> b
-            .host(System.getenv("ES_URL"))
-            .apiKey(System.getenv("ES_API_KEY"))
-        );
-
 es.indices().create(c -> c
     .index("books")
     .withJson(new StringReader("""
@@ -697,33 +454,7 @@ es.indices().create(c -> c
 ::::{tab-item} Go
 :sync: go
 
-Save the following example as `index-data.go`:
-
 ```go
-package main
-
-import (
-	"bytes"
-	"context"
-	"encoding/json"
-	"fmt"
-	"log"
-	"os"
-	"strings"
-
-	"github.com/elastic/go-elasticsearch/v9"
-	"github.com/elastic/go-elasticsearch/v9/esutil"
-)
-
-func main() {
-	es, err := elasticsearch.New(
-		elasticsearch.WithAddresses(os.Getenv("ES_URL")),
-		elasticsearch.WithAPIKey(os.Getenv("ES_API_KEY")),
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
-
 createResponse, err := es.Indices.Create(
 	"books",
 	es.Indices.Create.WithBody(strings.NewReader(`{
@@ -756,7 +487,7 @@ createResponse.Body.Close()
 
 :::::
 
-Next, add the following code to the same source file to index five books in one bulk request:
+Next, index five books in one bulk request:
 
 :::::{tab-set}
 :group: languages
@@ -780,25 +511,6 @@ books = [
 
 helpers.bulk(es, ({"_index": "books", "_source": b} for b in books), refresh="wait_for")
 ```
-
-:::{dropdown} Verify the indexed data
-
-Add the following check immediately after the bulk indexing code:
-
-```python
-response = es.count(index="books")
-print(response["count"])
-```
-
-Save the source file, then run it:
-
-```bash
-python index-data.py
-```
-
-The count is `5`.
-
-:::
 
 ::::
 
@@ -847,25 +559,6 @@ await es.bulk({
   ]),
 });
 ```
-
-:::{dropdown} Verify the indexed data
-
-Add the following check immediately after the bulk indexing code:
-
-```typescript
-const response = await es.count({ index: "books" });
-console.log(response.count);
-```
-
-Save the source file, then run it:
-
-```bash
-npx tsx index-data.ts
-```
-
-The count is `5`.
-
-:::
 
 ::::
 
@@ -922,25 +615,6 @@ $es->bulk([
 ]);
 ```
 
-:::{dropdown} Verify the indexed data
-
-Add the following check immediately after the bulk indexing code:
-
-```php
-$response = $es->count(["index" => "books"]);
-echo $response["count"] . "\n";
-```
-
-Save the source file, then run it:
-
-```bash
-php index-data.php
-```
-
-The count is `5`.
-
-:::
-
 ::::
 
 ::::{tab-item} Ruby
@@ -992,25 +666,6 @@ es.bulk(
   refresh: "wait_for"
 )
 ```
-
-:::{dropdown} Verify the indexed data
-
-Add the following check immediately after the bulk indexing code:
-
-```ruby
-response = es.count(index: "books")
-puts response["count"]
-```
-
-Save the source file, then run it:
-
-```bash
-bundle exec ruby index-data.rb
-```
-
-The count is `5`.
-
-:::
 
 ::::
 
@@ -1066,15 +721,6 @@ await es.BulkAsync(new BulkRequest
     Refresh = Refresh.WaitFor,
     Operations = operations
 });
-```
-
-:::{dropdown} Verify the indexed data
-
-Add the following check immediately after the bulk indexing code:
-
-```csharp
-var response = await es.CountAsync(new CountRequest("books"));
-Console.WriteLine(response.Count);
 
 public record Book(
     string Title,
@@ -1083,16 +729,6 @@ public record Book(
     string Description
 );
 ```
-
-Save the source file, then run it:
-
-```bash
-dotnet run
-```
-
-The count is `5`.
-
-:::
 
 ::::
 
@@ -1154,28 +790,6 @@ for (Book book : books) {
 
 es.bulk(bulk.build());
 ```
-
-:::{dropdown} Verify the indexed data
-
-Add the following check immediately after the bulk indexing code:
-
-```java
-var response = es.count(c -> c.index("books"));
-System.out.println(response.count());
-        es.close();
-    }
-}
-```
-
-Save the source file, then run it:
-
-```bash
-gradle run
-```
-
-The count is `5`.
-
-:::
 
 ::::
 
@@ -1253,37 +867,6 @@ if err := indexer.Close(ctx); err != nil {
 }
 ```
 
-:::{dropdown} Verify the indexed data
-
-Add the following check immediately after the bulk indexing code:
-
-```go
-res, err := es.Count(es.Count.WithIndex("books"))
-if err != nil {
-	panic(err)
-}
-defer res.Body.Close()
-
-var response struct {
-	Count int `json:"count"`
-}
-if err := json.NewDecoder(res.Body).Decode(&response); err != nil {
-	panic(err)
-}
-fmt.Println(response.Count)
-}
-```
-
-Save the source file, then run it:
-
-```bash
-go run index-data.go
-```
-
-The count is `5`.
-
-:::
-
 ::::
 
 :::::
@@ -1302,17 +885,7 @@ Run a semantic search against the `description` field:
 ::::{tab-item} Python
 :sync: python
 
-Save the following example as `semantic-search.py`:
-
 ```python
-import os
-from elasticsearch import Elasticsearch
-
-es = Elasticsearch(
-    os.environ["ES_URL"],
-    api_key=os.environ["ES_API_KEY"],
-)
-
 resp = es.search(
     index="books",
     query={
@@ -1332,16 +905,7 @@ for hit in resp["hits"]["hits"]:
 ::::{tab-item} TypeScript
 :sync: typescript
 
-Save the following example as `semantic-search.ts`:
-
 ```typescript
-import { Client } from "@elastic/elasticsearch";
-
-const es = new Client({
-  node: process.env.ES_URL,
-  auth: { apiKey: process.env.ES_API_KEY! },
-});
-
 interface Book {
   title: string;
 }
@@ -1366,20 +930,7 @@ for (const hit of resp.hits.hits) {
 ::::{tab-item} PHP
 :sync: php
 
-Save the following example as `semantic-search.php`:
-
 ```php
-<?php
-
-require __DIR__ . "/vendor/autoload.php";
-
-use Elastic\Elasticsearch\ClientBuilder;
-
-$es = ClientBuilder::create()
-    ->setHosts([getenv("ES_URL")])
-    ->setApiKey(getenv("ES_API_KEY"))
-    ->build();
-
 $response = $es->search([
     "index" => "books",
     "body" => [
@@ -1402,16 +953,7 @@ foreach ($response["hits"]["hits"] as $hit) {
 ::::{tab-item} Ruby
 :sync: ruby
 
-Save the following example as `semantic-search.rb`:
-
 ```ruby
-require "elasticsearch"
-
-es = Elasticsearch::Client.new(
-  url: ENV.fetch("ES_URL"),
-  api_key: ENV.fetch("ES_API_KEY")
-)
-
 response = es.search(
   index: "books",
   body: {
@@ -1434,22 +976,7 @@ end
 ::::{tab-item} C#/.NET
 :sync: csharp
 
-Replace the contents of `Program.cs` with the following code and save the file:
-
 ```csharp
-using System.Text.Json.Serialization;
-using Elastic.Clients.Elasticsearch;
-using Elastic.Transport;
-
-var url = Environment.GetEnvironmentVariable("ES_URL")
-    ?? throw new InvalidOperationException("ES_URL is not set.");
-var apiKey = Environment.GetEnvironmentVariable("ES_API_KEY")
-    ?? throw new InvalidOperationException("ES_API_KEY is not set.");
-
-var settings = new ElasticsearchClientSettings(new Uri(url))
-    .Authentication(new ApiKey(apiKey));
-var es = new ElasticsearchClient(settings);
-
 var response = await es.SearchAsync<SearchBook>(s => s
     .Indices("books")
     .Query(q => q
@@ -1475,32 +1002,7 @@ public record SearchBook(
 ::::{tab-item} Java
 :sync: java
 
-Replace the contents of `src/main/java/quickstart/App.java` with the following code and save the file:
-
 ```java
-package quickstart;
-
-import java.io.StringReader;
-
-import co.elastic.clients.elasticsearch.ElasticsearchClient;
-import co.elastic.clients.elasticsearch.core.SearchResponse;
-import co.elastic.clients.elasticsearch.core.search.Hit;
-
-public class App {
-record Book(
-    String id,
-    String title,
-    String author,
-    int release_year,
-    String description
-) {}
-
-public static void main(String[] args) throws Exception {
-ElasticsearchClient es = ElasticsearchClient.of(b -> b
-    .host(System.getenv("ES_URL"))
-    .apiKey(System.getenv("ES_API_KEY"))
-);
-
 String query = """
     {
       "query": {
@@ -1521,9 +1023,6 @@ SearchResponse<Book> response = es.search(s -> s
 for (Hit<Book> hit : response.hits().hits()) {
     System.out.println(hit.score() + " " + hit.source().title());
 }
-es.close();
-    }
-}
 ```
 
 ::::
@@ -1531,31 +1030,7 @@ es.close();
 ::::{tab-item} Go
 :sync: go
 
-Save the following example as `semantic-search.go`:
-
 ```go
-package main
-
-import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"log"
-	"os"
-	"strings"
-
-	"github.com/elastic/go-elasticsearch/v9"
-)
-
-func main() {
-	es, err := elasticsearch.New(
-		elasticsearch.WithAddresses(os.Getenv("ES_URL")),
-		elasticsearch.WithAPIKey(os.Getenv("ES_API_KEY")),
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
-
 query := strings.NewReader(`{
 	  "query": {
 	    "semantic": {
@@ -1595,84 +1070,13 @@ query := strings.NewReader(`{
 for _, hit := range response.Hits.Hits {
 	fmt.Println(hit.Score, hit.Source.Title)
 }
-}
 ```
 
 ::::
 
 :::::
 
-::::::{dropdown} Verify the semantic search
-Run the file for your language:
-
-:::::{tab-set}
-:group: languages
-
-::::{tab-item} Python
-:sync: python
-
-```bash
-python semantic-search.py
-```
-
-::::
-
-::::{tab-item} TypeScript
-:sync: typescript
-
-```bash
-npx tsx semantic-search.ts
-```
-
-::::
-
-::::{tab-item} PHP
-:sync: php
-
-```bash
-php semantic-search.php
-```
-
-::::
-
-::::{tab-item} Ruby
-:sync: ruby
-
-```bash
-bundle exec ruby semantic-search.rb
-```
-
-::::
-
-::::{tab-item} C#/.NET
-:sync: csharp
-
-```bash
-dotnet run
-```
-
-::::
-
-::::{tab-item} Java
-:sync: java
-
-```bash
-gradle run
-```
-
-::::
-
-::::{tab-item} Go
-:sync: go
-
-```bash
-go run semantic-search.go
-```
-
-::::
-
-:::::
-
+:::{dropdown} Example output
 The first result is:
 
 ```text
@@ -1680,7 +1084,7 @@ SCORE Project Hail Mary
 ```
 
 **Project Hail Mary** ranks first because its description includes "A lone astronaut," which is semantically similar to "surviving alone in space" even though the wording differs.
-::::::
+:::
 
 ### Hybrid search [vector-full-text-search-hybrid]
 
@@ -1692,17 +1096,7 @@ Run a hybrid search that uses full-text search on the `title` field and semantic
 ::::{tab-item} Python
 :sync: python
 
-Save the following example as `hybrid-search.py`:
-
 ```python
-import os
-from elasticsearch import Elasticsearch
-
-es = Elasticsearch(
-    os.environ["ES_URL"],
-    api_key=os.environ["ES_API_KEY"],
-)
-
 resp = es.search(
     index="books",
     query={
@@ -1736,20 +1130,7 @@ for hit in resp["hits"]["hits"]:
 ::::{tab-item} TypeScript
 :sync: typescript
 
-Save the following example as `hybrid-search.ts`:
-
 ```typescript
-import { Client } from "@elastic/elasticsearch";
-
-const es = new Client({
-  node: process.env.ES_URL,
-  auth: { apiKey: process.env.ES_API_KEY! },
-});
-
-interface Book {
-  title: string;
-}
-
 const resp = await es.search<Book>({
   index: "books",
   query: {
@@ -1784,20 +1165,7 @@ for (const hit of resp.hits.hits) {
 ::::{tab-item} PHP
 :sync: php
 
-Save the following example as `hybrid-search.php`:
-
 ```php
-<?php
-
-require __DIR__ . "/vendor/autoload.php";
-
-use Elastic\Elasticsearch\ClientBuilder;
-
-$es = ClientBuilder::create()
-    ->setHosts([getenv("ES_URL")])
-    ->setApiKey(getenv("ES_API_KEY"))
-    ->build();
-
 $response = $es->search([
     "index" => "books",
     "body" => [
@@ -1834,16 +1202,7 @@ foreach ($response["hits"]["hits"] as $hit) {
 ::::{tab-item} Ruby
 :sync: ruby
 
-Save the following example as `hybrid-search.rb`:
-
 ```ruby
-require "elasticsearch"
-
-es = Elasticsearch::Client.new(
-  url: ENV.fetch("ES_URL"),
-  api_key: ENV.fetch("ES_API_KEY")
-)
-
 response = es.search(
   index: "books",
   body: {
@@ -1880,22 +1239,7 @@ end
 ::::{tab-item} C#/.NET
 :sync: csharp
 
-Replace the contents of `Program.cs` with the following code and save the file:
-
 ```csharp
-using System.Text.Json.Serialization;
-using Elastic.Clients.Elasticsearch;
-using Elastic.Transport;
-
-var url = Environment.GetEnvironmentVariable("ES_URL")
-    ?? throw new InvalidOperationException("ES_URL is not set.");
-var apiKey = Environment.GetEnvironmentVariable("ES_API_KEY")
-    ?? throw new InvalidOperationException("ES_API_KEY is not set.");
-
-var settings = new ElasticsearchClientSettings(new Uri(url))
-    .Authentication(new ApiKey(apiKey));
-var es = new ElasticsearchClient(settings);
-
 var response = await es.SearchAsync<SearchBook>(s => s
     .Indices("books")
     .Query(q => q
@@ -1921,9 +1265,6 @@ foreach (var hit in response.Hits)
     Console.WriteLine($"{hit.Score} {hit.Source?.Title}");
 }
 
-public record SearchBook(
-    [property: JsonPropertyName("title")] string Title
-);
 ```
 
 1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
@@ -1934,32 +1275,7 @@ public record SearchBook(
 ::::{tab-item} Java
 :sync: java
 
-Replace the contents of `src/main/java/quickstart/App.java` with the following code and save the file:
-
 ```java
-package quickstart;
-
-import java.io.StringReader;
-
-import co.elastic.clients.elasticsearch.ElasticsearchClient;
-import co.elastic.clients.elasticsearch.core.SearchResponse;
-import co.elastic.clients.elasticsearch.core.search.Hit;
-
-public class App {
-record Book(
-    String id,
-    String title,
-    String author,
-    int release_year,
-    String description
-) {}
-
-public static void main(String[] args) throws Exception {
-ElasticsearchClient es = ElasticsearchClient.of(b -> b
-    .host(System.getenv("ES_URL"))
-    .apiKey(System.getenv("ES_API_KEY"))
-);
-
 String query = """
     {
       "query": {
@@ -1991,9 +1307,6 @@ SearchResponse<Book> response = es.search(s -> s
 for (Hit<Book> hit : response.hits().hits()) {
     System.out.println(hit.score() + " " + hit.source().title());
 }
-es.close();
-    }
-}
 ```
 
 1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
@@ -2004,31 +1317,7 @@ es.close();
 ::::{tab-item} Go
 :sync: go
 
-Save the following example as `hybrid-search.go`:
-
 ```go
-package main
-
-import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"log"
-	"os"
-	"strings"
-
-	"github.com/elastic/go-elasticsearch/v9"
-)
-
-func main() {
-	es, err := elasticsearch.New(
-		elasticsearch.WithAddresses(os.Getenv("ES_URL")),
-		elasticsearch.WithAPIKey(os.Getenv("ES_API_KEY")),
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
-
 query := strings.NewReader(`{
 	  "query": {
 	    "bool": {
@@ -2079,7 +1368,6 @@ query := strings.NewReader(`{
 for _, hit := range response.Hits.Hits {
 	fmt.Println(hit.Score, hit.Source.Title)
 }
-}
 ```
 
 1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
@@ -2089,77 +1377,7 @@ for _, hit := range response.Hits.Hits {
 
 :::::
 
-::::::{dropdown} Verify the hybrid search
-Run the file for your language:
-
-:::::{tab-set}
-:group: languages
-
-::::{tab-item} Python
-:sync: python
-
-```bash
-python hybrid-search.py
-```
-
-::::
-
-::::{tab-item} TypeScript
-:sync: typescript
-
-```bash
-npx tsx hybrid-search.ts
-```
-
-::::
-
-::::{tab-item} PHP
-:sync: php
-
-```bash
-php hybrid-search.php
-```
-
-::::
-
-::::{tab-item} Ruby
-:sync: ruby
-
-```bash
-bundle exec ruby hybrid-search.rb
-```
-
-::::
-
-::::{tab-item} C#/.NET
-:sync: csharp
-
-```bash
-dotnet run
-```
-
-::::
-
-::::{tab-item} Java
-:sync: java
-
-```bash
-gradle run
-```
-
-::::
-
-::::{tab-item} Go
-:sync: go
-
-```bash
-go run hybrid-search.go
-```
-
-::::
-
-:::::
-
+:::{dropdown} Example output
 The first result is:
 
 ```text
@@ -2167,7 +1385,7 @@ SCORE The Name of the Wind
 ```
 
 **The Name of the Wind** ranks first because its title matches `wind`, and its description of a gifted young magician's rise from orphan to legend is semantically similar to `young magician coming of age`. Because the book matches both clauses, its full-text and semantic scores combine.
-::::::
+:::
 
 ## Aggregate the data with {{esql}} [vector-full-text-search-esql]
 
@@ -2179,17 +1397,7 @@ With [aggregations](/explore-analyze/query-filter/aggregations.md), you can summ
 ::::{tab-item} Python
 :sync: python
 
-Save the following example as `aggregate-data.py`:
-
 ```python
-import os
-from elasticsearch import Elasticsearch
-
-es = Elasticsearch(
-    os.environ["ES_URL"],
-    api_key=os.environ["ES_API_KEY"],
-)
-
 resp = es.esql.query(query="""
     FROM books
     | STATS books = COUNT(*) BY decade = release_year - (release_year % 10)
@@ -2207,16 +1415,7 @@ for row in resp["values"]:
 ::::{tab-item} TypeScript
 :sync: typescript
 
-Save the following example as `aggregate-data.ts`:
-
 ```typescript
-import { Client } from "@elastic/elasticsearch";
-
-const es = new Client({
-  node: process.env.ES_URL,
-  auth: { apiKey: process.env.ES_API_KEY! },
-});
-
 const resp = await es.esql.query({
   query: `
     FROM books
@@ -2236,20 +1435,7 @@ for (const [decade, count] of resp.values ?? []) {
 ::::{tab-item} PHP
 :sync: php
 
-Save the following example as `aggregate-data.php`:
-
 ```php
-<?php
-
-require __DIR__ . "/vendor/autoload.php";
-
-use Elastic\Elasticsearch\ClientBuilder;
-
-$es = ClientBuilder::create()
-    ->setHosts([getenv("ES_URL")])
-    ->setApiKey(getenv("ES_API_KEY"))
-    ->build();
-
 $response = $es->esql()->query([
     "body" => [
         "query" => <<<'ESQL'
@@ -2271,16 +1457,7 @@ foreach ($response["values"] as [$decade, $count]) {
 ::::{tab-item} Ruby
 :sync: ruby
 
-Save the following example as `aggregate-data.rb`:
-
 ```ruby
-require "elasticsearch"
-
-es = Elasticsearch::Client.new(
-  url: ENV.fetch("ES_URL"),
-  api_key: ENV.fetch("ES_API_KEY")
-)
-
 response = es.esql.query(
   body: {
     query: <<~ESQL
@@ -2302,23 +1479,7 @@ end
 ::::{tab-item} C#/.NET
 :sync: csharp
 
-Replace the contents of `Program.cs` with the following code and save the file:
-
 ```csharp
-using System.Text.Json;
-using Elastic.Clients.Elasticsearch;
-using Elastic.Clients.Elasticsearch.Esql;
-using Elastic.Transport;
-
-var url = Environment.GetEnvironmentVariable("ES_URL")
-    ?? throw new InvalidOperationException("ES_URL is not set.");
-var apiKey = Environment.GetEnvironmentVariable("ES_API_KEY")
-    ?? throw new InvalidOperationException("ES_API_KEY is not set.");
-
-var settings = new ElasticsearchClientSettings(new Uri(url))
-    .Authentication(new ApiKey(apiKey));
-var es = new ElasticsearchClient(settings);
-
 var response = await es.Esql.QueryAsync(r => r
     .Query("""
         FROM books
@@ -2343,25 +1504,7 @@ foreach (
 ::::{tab-item} Java
 :sync: java
 
-Replace the contents of `src/main/java/quickstart/App.java` with the following code and save the file:
-
 ```java
-package quickstart;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
-import co.elastic.clients.elasticsearch.ElasticsearchClient;
-import co.elastic.clients.elasticsearch.esql.EsqlFormat;
-import co.elastic.clients.transport.endpoints.BinaryResponse;
-
-public class App {
-    public static void main(String[] args) throws Exception {
-        ElasticsearchClient es = ElasticsearchClient.of(b -> b
-            .host(System.getenv("ES_URL"))
-            .apiKey(System.getenv("ES_API_KEY"))
-        );
-
 String query = """
     FROM books
     | STATS books = COUNT(*) BY decade = release_year - (release_year % 10)
@@ -2382,9 +1525,6 @@ try (BufferedReader reader = new BufferedReader(
         System.out.println(values[0] + "s: " + values[1]);
     });
 }
-        es.close();
-    }
-}
 ```
 
 ::::
@@ -2392,31 +1532,14 @@ try (BufferedReader reader = new BufferedReader(
 ::::{tab-item} Go
 :sync: go
 
-Save the following example as `aggregate-data.go`:
-
 ```go
-package main
-
-import (
-	"bytes"
-	"context"
-	"encoding/csv"
-	"fmt"
-	"log"
-	"os"
-
-	"github.com/elastic/go-elasticsearch/v9"
-	"github.com/elastic/go-elasticsearch/v9/typedapi/types/enums/esqlformat"
+typed, err := elasticsearch.NewTyped(
+	elasticsearch.WithAddresses(os.Getenv("ES_URL")),
+	elasticsearch.WithAPIKey(os.Getenv("ES_API_KEY")),
 )
-
-func main() {
-	typed, err := elasticsearch.NewTyped(
-		elasticsearch.WithAddresses(os.Getenv("ES_URL")),
-		elasticsearch.WithAPIKey(os.Getenv("ES_API_KEY")),
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
+if err != nil {
+	log.Fatal(err)
+}
 
 query := `FROM books
 		| STATS books = COUNT(*) BY decade = release_year - (release_year % 10)
@@ -2439,84 +1562,13 @@ response, err := typed.Esql.Query().
 for _, row := range rows[1:] {
 	fmt.Printf("%ss: %s\n", row[0], row[1])
 }
-}
 ```
 
 ::::
 
 :::::
 
-::::::{dropdown} Verify the aggregation
-Run the file for your language:
-
-:::::{tab-set}
-:group: languages
-
-::::{tab-item} Python
-:sync: python
-
-```bash
-python aggregate-data.py
-```
-
-::::
-
-::::{tab-item} TypeScript
-:sync: typescript
-
-```bash
-npx tsx aggregate-data.ts
-```
-
-::::
-
-::::{tab-item} PHP
-:sync: php
-
-```bash
-php aggregate-data.php
-```
-
-::::
-
-::::{tab-item} Ruby
-:sync: ruby
-
-```bash
-bundle exec ruby aggregate-data.rb
-```
-
-::::
-
-::::{tab-item} C#/.NET
-:sync: csharp
-
-```bash
-dotnet run
-```
-
-::::
-
-::::{tab-item} Java
-:sync: java
-
-```bash
-gradle run
-```
-
-::::
-
-::::{tab-item} Go
-:sync: go
-
-```bash
-go run aggregate-data.go
-```
-
-::::
-
-:::::
-
+:::{dropdown} Example output
 The output contains one row per decade:
 
 ```text
@@ -2524,25 +1576,20 @@ The output contains one row per decade:
 2000s: 1
 2020s: 2
 ```
-
-::::::
+:::
 
 ## Complete runnable script [vector-full-text-search-complete-script]
 
-As an alternative to the progressive files, the complete example combines everything in one file.
-
-1. [Connect to your project](#vector-full-text-search-connect) and set `ES_URL` and `ES_API_KEY`.
-2. [Install the client](#vector-full-text-search-install-sdk) for your language.
-3. Select your language and follow the steps to run the complete example.
+1. [Create a Vector Database project](#vector-full-text-search-create-project).
+2. [Connect to your project](#vector-full-text-search-connect).
+3. [Install and initialize the client](#vector-full-text-search-install-sdk) for your language.
+4. Select your language, expand the complete script, and run it.
 
 :::::{tab-set}
 :group: languages
 
 ::::{tab-item} Python
 :sync: python
-
-1. Create a file, for example `quickstart.py`.
-2. Open the following dropdown, insert the code into the file, and save it.
 
 :::{dropdown} Complete runnable script
 
@@ -2578,7 +1625,7 @@ resp = es.search(
     index="books-complete",
     query={"semantic": {"field": "description", "query": "surviving alone in space"}},
 )
-print("Semantic:")
+print("=== Semantic search results ===")
 for hit in resp["hits"]["hits"]:
     print(" ", hit["_score"], hit["_source"]["title"])
 
@@ -2590,7 +1637,7 @@ resp = es.search(
         {"semantic": {"field": "description", "query": "young magician coming of age"}},
     ]}},
 )
-print("\nHybrid:")
+print("\n=== Hybrid search results ===")
 for hit in resp["hits"]["hits"]:
     print(" ", hit["_score"], hit["_source"]["title"])
 
@@ -2603,25 +1650,17 @@ resp = es.esql.query(query="""
 """)
 
 cols = {c["name"]: i for i, c in enumerate(resp["columns"])}
+print("\n=== Books by decade ===")
 for row in resp["values"]:
     print(f"{row[cols['decade']]}s: {row[cols['books']]}")
 ```
 
 :::
 
-3. Run the file:
-
-```bash
-python quickstart.py
-```
-
 ::::
 
 ::::{tab-item} TypeScript
 :sync: typescript
-
-1. Create a file, for example `quickstart.ts`.
-2. Open the following dropdown, insert the code into the file, and save it.
 
 :::{dropdown} Complete runnable script
 
@@ -2667,7 +1706,7 @@ let resp = await es.search<Book>({
   index: "books-complete",
   query: { semantic: { field: "description", query: "surviving alone in space" } },
 });
-console.log("Semantic:");
+console.log("=== Semantic search results ===");
 for (const hit of resp.hits.hits) {
   console.log(" ", hit._score, hit._source?.title);
 }
@@ -2680,7 +1719,7 @@ resp = await es.search<Book>({
     { semantic: { field: "description", query: "young magician coming of age" } },
   ] } },
 });
-console.log("\nHybrid:");
+console.log("\n=== Hybrid search results ===");
 for (const hit of resp.hits.hits) {
   console.log(" ", hit._score, hit._source?.title);
 }
@@ -2692,24 +1731,15 @@ const agg = await es.esql.query({ query: `
   | KEEP decade, books
   | SORT decade ASC
 ` });
-console.log("\nBy decade:", agg.values);
+console.log("\n=== Books by decade ===", agg.values);
 ```
 
 :::
-
-3. Run the file:
-
-```bash
-npx tsx quickstart.ts
-```
 
 ::::
 
 ::::{tab-item} PHP
 :sync: php
-
-1. Create a file, for example `quickstart.php`.
-2. Open the following dropdown, insert the code into the file, and save it.
 
 :::{dropdown} Complete runnable script
 
@@ -2793,7 +1823,7 @@ $response = $es->search([
         ],
     ],
 ]);
-echo "Semantic:\n";
+echo "=== Semantic search results ===\n";
 foreach ($response["hits"]["hits"] as $hit) {
     echo "  " . $hit["_score"] . " " . $hit["_source"]["title"] . "\n";
 }
@@ -2814,7 +1844,7 @@ $response = $es->search([
         ],
     ],
 ]);
-echo "\nHybrid:\n";
+echo "\n=== Hybrid search results ===\n";
 foreach ($response["hits"]["hits"] as $hit) {
     echo "  " . $hit["_score"] . " " . $hit["_source"]["title"] . "\n";
 }
@@ -2829,7 +1859,7 @@ $response = $es->esql()->query([
             ESQL,
     ],
 ]);
-echo "\nBy decade:\n";
+echo "\n=== Books by decade ===\n";
 foreach ($response["values"] as [$decade, $count]) {
     echo "  " . $decade . "s: " . $count . "\n";
 }
@@ -2837,19 +1867,10 @@ foreach ($response["values"] as [$decade, $count]) {
 
 :::
 
-3. Run the file:
-
-```bash
-php quickstart.php
-```
-
 ::::
 
 ::::{tab-item} Ruby
 :sync: ruby
-
-1. Create a file, for example `quickstart.rb`.
-2. Open the following dropdown, insert the code into the file, and save it.
 
 :::{dropdown} Complete runnable script
 
@@ -2926,7 +1947,7 @@ response = es.search(
     }
   }
 )
-puts "Semantic:"
+puts "=== Semantic search results ==="
 response["hits"]["hits"].each do |hit|
   puts "  #{hit["_score"]} #{hit["_source"]["title"]}"
 end
@@ -2949,7 +1970,7 @@ response = es.search(
     }
   }
 )
-puts "\nHybrid:"
+puts "\n=== Hybrid search results ==="
 response["hits"]["hits"].each do |hit|
   puts "  #{hit["_score"]} #{hit["_source"]["title"]}"
 end
@@ -2964,7 +1985,7 @@ response = es.esql.query(
     ESQL
   }
 )
-puts "\nBy decade:"
+puts "\n=== Books by decade ==="
 response["values"].each do |decade, count|
   puts "  #{decade}s: #{count}"
 end
@@ -2972,19 +1993,10 @@ end
 
 :::
 
-3. Run the file:
-
-```bash
-bundle exec ruby quickstart.rb
-```
-
 ::::
 
 ::::{tab-item} C#/.NET
 :sync: csharp
-
-1. Open `Program.cs`.
-2. Open the following dropdown, replace the file contents with the code, and save it.
 
 :::{dropdown} Complete runnable script
 
@@ -3070,7 +2082,7 @@ var response = await es.SearchAsync<Book>(s => s
         )
     )
 );
-Console.WriteLine("Semantic:");
+Console.WriteLine("=== Semantic search results ===");
 foreach (var hit in response.Hits)
 {
     Console.WriteLine($"  {hit.Score} {hit.Source?.Title}");
@@ -3095,7 +2107,7 @@ response = await es.SearchAsync<Book>(s => s
         )
     )
 );
-Console.WriteLine("\nHybrid:");
+Console.WriteLine("\n=== Hybrid search results ===");
 foreach (var hit in response.Hits)
 {
     Console.WriteLine($"  {hit.Score} {hit.Source?.Title}");
@@ -3111,7 +2123,7 @@ var aggregation = await es.Esql.QueryAsync(r => r
     .Format(EsqlFormat.Json)
 );
 using var result = JsonDocument.Parse(aggregation.Body);
-Console.WriteLine("\nBy decade:");
+Console.WriteLine("\n=== Books by decade ===");
 foreach (var row in result.RootElement.GetProperty("values").EnumerateArray())
 {
     Console.WriteLine($"  {row[0]}s: {row[1]}");
@@ -3127,19 +2139,10 @@ public record Book(
 
 :::
 
-3. Run the file:
-
-```bash
-dotnet run
-```
-
 ::::
 
 ::::{tab-item} Java
 :sync: java
-
-1. Open `src/main/java/quickstart/App.java`.
-2. Open the following dropdown, replace the file contents with the code, and save it.
 
 :::{dropdown} Complete runnable script
 
@@ -3248,7 +2251,7 @@ public class App {
                 .withJson(new StringReader(semanticQuery)),
             Book.class
         );
-        System.out.println("Semantic:");
+        System.out.println("=== Semantic search results ===");
         for (Hit<Book> hit : response.hits().hits()) {
             System.out.println("  " + hit.score() + " " + hit.source().title());
         }
@@ -3279,7 +2282,7 @@ public class App {
                 .withJson(new StringReader(hybridQuery)),
             Book.class
         );
-        System.out.println("\nHybrid:");
+        System.out.println("\n=== Hybrid search results ===");
         for (Hit<Book> hit : response.hits().hits()) {
             System.out.println("  " + hit.score() + " " + hit.source().title());
         }
@@ -3294,7 +2297,7 @@ public class App {
             .query(esql)
             .format(EsqlFormat.Csv)
         );
-        System.out.println("\nBy decade:");
+        System.out.println("\n=== Books by decade ===");
         try (BufferedReader reader = new BufferedReader(
             new InputStreamReader(aggregation.content())
         )) {
@@ -3311,19 +2314,10 @@ public class App {
 
 :::
 
-3. Run the file:
-
-```bash
-gradle run
-```
-
 ::::
 
 ::::{tab-item} Go
 :sync: go
-
-1. Create a file, for example `quickstart.go`.
-2. Open the following dropdown, insert the code into the file, and save it.
 
 :::{dropdown} Complete runnable script
 
@@ -3465,7 +2459,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Semantic:")
+	fmt.Println("=== Semantic search results ===")
 	printSearch(es, `{
 	  "query": {
 	    "semantic": {
@@ -3475,7 +2469,7 @@ func main() {
 	  }
 	}`)
 
-	fmt.Println("\nHybrid:")
+	fmt.Println("\n=== Hybrid search results ===")
 	printSearch(es, `{
 	  "query": {
 	    "bool": {
@@ -3518,7 +2512,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("\nBy decade:")
+	fmt.Println("\n=== Books by decade ===")
 	for _, row := range rows[1:] {
 		fmt.Printf("  %ss: %s\n", row[0], row[1])
 	}
@@ -3526,12 +2520,6 @@ func main() {
 ```
 
 :::
-
-3. Run the file:
-
-```bash
-go run quickstart.go
-```
 
 ::::
 
