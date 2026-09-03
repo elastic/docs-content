@@ -52,13 +52,13 @@ Get hands-on experience with {{es}} using guided tutorials that walk you through
 
 - [**Index and search basics**](/solutions/search/get-started/index-basics.md): Learn how to create indices, add documents, and perform searches
 - [**Keyword search with Python**](/solutions/search/get-started/keyword-search-python.md): Build your first search query with Python
-- [**Vector and full-text search**](/solutions/vector-database/vector-full-text-search.md): Connect an application to a Vector Database project, index data, and run full-text, semantic, and hybrid searches
+- [**Semantic search**](/solutions/search/get-started/semantic-search.md): Implement semantic search with vector embeddings using the `semantic_text` workflow
 :::::
 :::::{step} Identify your search goals
 Depending on your use case, you can choose multiple [search approaches](/solutions/search/search-approaches.md), for example full-text and semantic search.
 Each approach affects your options for storing and querying your data.
 
-If you're unsure which approaches match your goals, you can try them out with sample data. For example, try the [vector and full-text search quickstart](/solutions/vector-database/vector-full-text-search.md).
+If you're unsure which approaches match your goals, you can try them out with sample data. For example, [](/solutions/search/get-started/semantic-search.md).
 
 If you prefer to ingest your data first and transform or reindex it as needed later, skip to the next step.
 :::::

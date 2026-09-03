@@ -15,7 +15,7 @@ products:
 # Vector search in {{es}}
 
 :::{tip}
-New to vector and semantic search? Start with [{{es}} vector and full-text search in 10 minutes](/solutions/vector-database/vector-full-text-search.md), which uses a Vector Database project and the managed `semantic_text` workflow.
+New to vector search? Start with [{{es}} vector and full-text search in 10 minutes](/solutions/vector-database/vector-full-text-search.md), which uses a [Vector Database project](/solutions/vector-database.md) and the managed `semantic_text` workflow.
 
 For common vector search use cases and how to apply them, refer to [Vector search use cases](vector/vector-search-use-cases.md).
 :::
