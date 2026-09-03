@@ -21,6 +21,42 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+
+## 9.5.3 [elastic-observability-9.5.3-release-notes]
+
+
+### Features and enhancements [elastic-observability-9.5.3-features-enhancements]
+* Adds a confirmation modal in Synthetics **Alerting defaults** settings when disabling an active default status or TLS rule. Custom synthetics rules are not affected [#287914]({{kib-pull}}287914).
+
+
+### Fixes [elastic-observability-9.5.3-fixes]
+* Fixes YAML conversion for {{fleet}} agent policies whose advanced YAML settings field contains only comments, preventing agents from being stuck on outdated policies [#288430]({{kib-pull}}288430).
+* Relabels the top-level **Alerting** privilege section in **Roles** to **Alerting V2** and marks each Alerting V2 sub-privilege as experimental [#288163]({{kib-pull}}288163).
+* Fixes stale `secret_references` accumulating in {{fleet}} package policies after credential rotation [#287642]({{kib-pull}}287642).
+* Fixes agentless orphan cleanup deleting unrelated non-agentless package policies [#287571]({{kib-pull}}287571).
+* Extends `data_stream.dataset` validation to all package types in the {{fleet}} policy editor, not only `type: input` packages [#287557]({{kib-pull}}287557).
+* Hides the version-specific policy indicator icon in {{fleet}} for agents that are fully compatible with the current policy template [#287504]({{kib-pull}}287504).
+* Fixes the {{fleet}} integration policy edit page displaying the wrong credential method for policies created before a package introduced variable groups [#287389]({{kib-pull}}287389).
+* Fixes {{fleet}} API key invalidation exceeding the {{es}} `max_result_window` limit by chunking large invalidation batches [#287252]({{kib-pull}}287252).
+* Improves {{fleet}} outputs fetching performance on {{fleet}} setup and Integrations UI page load [#287113]({{kib-pull}}287113).
+* Fixes stale version-specific `.fleet-policies` documents not being deleted after policy updates [#287095]({{kib-pull}}287095).
+* Fixes `PUT /api/fleet/managed_integrations/{id}` returning 404 and `DELETE` silently succeeding without removing the backing agentless deployment for policies created before the agent-policy/package-policy same-ID invariant was introduced [#287011]({{kib-pull}}287011).
+* Fixes agentless Entity Analytics integration policies (Okta, Active Directory, Microsoft Entra ID) incorrectly showing `0.00/s` throughput and linking to empty data streams in the {{fleet}} UI [#286758]({{kib-pull}}286758).
+* Fixes the tooltip shown for CPU and Memory metrics on offline agents in the {{fleet}} **Agents** list and **Agent Details** page [#286386]({{kib-pull}}286386).
+* Rejects whitespace-only namespace values in {{fleet}} package and integration policies to prevent silent ingestion failures caused by empty index names [#286385]({{kib-pull}}286385).
+* Fixes sorting the {{fleet}} **Agents** table by the **Host** column to use the `hostname.keyword` sub-field instead of the analyzed text field [#286383]({{kib-pull}}286383).
+* Adds a visible border to YAML-type variable fields in the {{fleet}} **Configure integration** form for visual consistency with other field types [#286360]({{kib-pull}}286360).
+* Prevents `agent-status-change-task` failures by narrowing the {{es}} query to only the required fields and capping the number of agents processed per task run at 50,000 [#286324]({{kib-pull}}286324).
+* Adds an allow list for cluster privileges declared in package manifests, mirroring the existing filter applied to index privileges [#286084]({{kib-pull}}286084).
+* Fixes the {{fleet}} Kafka output **Dynamic Topic** field double-wrapping multi-field format strings [#285581]({{kib-pull}}285581).
+* Fixes the automatic integrations synchronization task issuing an unnecessary full-cluster {{es}} search every five minutes when no {{ccr-init}} follower index is configured [#285526]({{kib-pull}}285526).
+* Warns in Synthetics when a private location's {{agent}} version predates Maintenance Window support (8.19.x), so operators know monitors on that location will not honor active maintenance windows [#285327]({{kib-pull}}285327).
+* Fixes space awareness in {{fleet}} agents API handlers to correctly scope agent operations to the requesting {{kib}} space [#284936]({{kib-pull}}284936).
+* Fixes Cribl routing pipeline `dataId` handling by sanitizing and validating values before writing them into the routing ingest pipeline [#284863]({{kib-pull}}284863).
+* Fixes the Agent Builder research agent re-asking clarifying questions that the user had already answered earlier in the same session [#284800]({{kib-pull}}284800).
+* Fixes `inputs_for_versions` not being backfilled after a {{kib}} minor version upgrade, which caused version-specific agent inputs to be missing from compiled agent policies [#284710]({{kib-pull}}284710).
+* Fixes Synthetics global parameters shared across all spaces being dropped from private location monitor configurations during all-spaces sync [#282575]({{kib-pull}}282575).
+
 ## 9.5.2 [elastic-observability-9.5.2-release-notes]
 
 ### Fixes [elastic-observability-9.5.2-fixes]
