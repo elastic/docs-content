@@ -58,7 +58,13 @@ A custom panel needs a template and, to show live data, an {{esql}} query. You c
 
 1. Open your dashboard in **Edit** mode.
 2. Select **Add** in the application menu.
-3. Select **Custom**.
+3. Select **Custom** under **Other visualizations**.
+
+   :::{image} /explore-analyze/images/custom-panels-add-flyout.png
+   :alt: Add to dashboard flyout with the Custom entry highlighted under Other visualizations
+   :screenshot:
+   :width: 50%
+   :::
 
    {{kib}} adds an empty panel and opens the **Create custom panel** flyout.
 
