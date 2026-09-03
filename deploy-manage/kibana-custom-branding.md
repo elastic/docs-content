@@ -15,7 +15,7 @@ description: Replace the default Elastic branding in Kibana with your own logo, 
 
 # Customize {{kib}} branding
 
-Replace the default Elastic logo, organization name, and favicon with your own custom assets. Changes apply globally to all spaces.
+Replace the default Elastic logo, organization name, and more with your own custom assets. Changes apply globally to all spaces.
 
 ## Before you begin
 
