@@ -8,7 +8,7 @@ description: Compare cross-project search (CPS) and cross-cluster search (CCS) s
 navigation_title: "Compare with CCS"
 ---
 
-# {{cps-cap}} compared to {{ccs}} [cps-compared-to-ccs]
+# {{cps-cap}} compared to {{ccs}}
 
 {{cps-cap}} (CPS) is the {{serverless-full}} equivalent of [{{ccs}}](/explore-analyze/cross-cluster-search.md) (CCS). 
 
@@ -60,8 +60,8 @@ For full examples, refer to the [examples](#examples) section.
 | [Search all](#ex-search-all) | `GET my-index,*:my-index/_search` | `GET my-index/_search` (default) |
 | [Exclude one](#ex-exclude) | `GET *:my-index,-cluster_one:*/_search` | `GET *,-linked_project:*/_search` |
 | [Route by metadata](#ex-route-tags) | Not available | `project_routing` |
-| [Identify origin in responses](#ex-identify-origin) | `(local)` | `_origin` |
-| [Identify remote/linked in responses](#ex-identify-origin) | `cluster_one:my-index` | `linked_project:my-index` |
+| [Identify origin in responses](#ex-identify-origin) | `(local)` in `_clusters`; no prefix in `_index` | `_origin` in `_clusters`; no prefix in `_index` |
+| [Identify remote/linked in responses](#ex-identify-origin) | `cluster_one:my-index` in `_index` | `linked_project:my-index` in `_index` |
 
 ### ES|QL
 
@@ -72,7 +72,7 @@ For full examples, refer to the [examples](#examples) section.
 | [Search all](#ex-search-all) | `FROM my-index,cluster_one:my-index` | `FROM my-index` (default) |
 | [Exclude one](#ex-exclude) | `FROM *:my-index,-cluster_one:*` | `FROM *,-linked_project:*` |
 | [Route by metadata](#ex-route-tags) | Not available | `SET project_routing` |
-| [Identify origin in responses](#ex-identify-origin) | `(local)` in `METADATA _index` | `_origin` in `METADATA _index` |
+| [Identify origin in responses](#ex-identify-origin) | No prefix in `METADATA _index` | No prefix in `METADATA _index` |
 | [Identify remote/linked in responses](#ex-identify-origin) | `cluster_one:my-index` in `METADATA _index` | `linked_project:my-index` in `METADATA _index` |
 
 ## Examples
@@ -222,12 +222,12 @@ Prefix the cluster name with `-` and use `*` in the index position. You can chai
 
 **`_search`**
 ```console
-GET *:my-index,-cluster_one:*,-cluster_two:*/_search
+GET my-index,*:my-index,-cluster_one:*,-cluster_two:*/_search
 ```
 
 **ES|QL**
 ```esql
-FROM *:my-index,-cluster_one:*,-cluster_two:*
+FROM my-index,*:my-index,-cluster_one:*,-cluster_two:*
 | LIMIT 10
 ```
 :::
@@ -238,12 +238,12 @@ Use the same `-` prefix with the project alias. An exclusion pattern requires a 
 
 **`_search`**
 ```console
-GET *,-linked_project:*,-staging_project:*/_search
+GET my-index,-linked_project:*,-staging_project:*/_search
 ```
 
 **ES|QL**
 ```esql
-FROM *,-linked_project:*,-staging_project:*
+FROM my-index,-linked_project:*,-staging_project:*
 | LIMIT 10
 ```
 :::
@@ -276,7 +276,8 @@ Example response:
       { "_index": "my-index", "_id": "1", "_source": { "message": "local doc" } },
       { "_index": "cluster_one:my-index", "_id": "2", "_source": { "message": "remote doc" } }
     ]
-  }
+  },
+  ...
 }
 ```
 
@@ -323,7 +324,8 @@ Example response:
       { "_index": "my-index", "_id": "1", "_source": { "message": "origin doc" } },
       { "_index": "linked_project:my-index", "_id": "2", "_source": { "message": "linked doc" } }
     ]
-  }
+  },
+  ...
 }
 ```
 
