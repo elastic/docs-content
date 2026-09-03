@@ -24,7 +24,7 @@ In Signal mode, each matching row is stored as a signal document with no alert l
 
 Rules only define *what* to detect. They don't control notifications, who gets notified, or when. That's the job of action policies, which are global objects scoped to your space that match alert episodes from any rule. A rule has no say in which action policies pick it up.
 
-This separation means you can build and test a rule without anyone getting paged, update notification routing without touching the rule, and have multiple action policies respond to the same rule independently.
+This separation means you can update notification routing without touching a rule, and have multiple action policies respond to the same rule independently.
 
 ## What to do next with rules [rules-next-steps]
 
