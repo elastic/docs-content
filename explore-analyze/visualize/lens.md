@@ -264,6 +264,8 @@ These are examples of common formulas:
 
 Compare your real-time data to the results that are offset by a time increment. For example, you can compare the real-time percentage of a user CPU time spent to the results offset by one hour.
 
+To apply a time shift in an {{esql}} visualization, refer to [Compare current versus previous period with time shift](esorql.md#esql-viz-time-shift).
+
 1. In the layer pane, click the field you want to offset.
 2. Click **Advanced**.
 3. In the **Time shift** field, enter the time offset increment.
