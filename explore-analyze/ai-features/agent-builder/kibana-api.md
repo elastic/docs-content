@@ -1166,6 +1166,62 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 ::::
 
+**Example:** Create a conversation {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+
+This example uses the [create a conversation API]({{kib-apis}}operation/operation-post-agent-builder-conversations).
+
+Every field is optional. If you omit `agent_id`, the conversation uses the default Elastic AI Agent. If you omit `title`, the conversation is named `New conversation`. If you omit `access_control`, the conversation is private to you.
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+POST kbn://api/agent_builder/conversations
+{
+  "agent_id": "elastic-ai-agent"
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X POST "${KIBANA_URL}/api/agent_builder/conversations" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{"agent_id": "elastic-ai-agent"}'
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
+The response includes the conversation's `access_control` and your `permissions` on it:
+
+```json
+{
+  "id": "8e5fd2c3-04d7-4b1a-b295-5d486afd8584",
+  "agent_id": "elastic-ai-agent",
+  "title": "New conversation",
+  "access_control": {
+    "access_mode": "private",
+    "entries": []
+  },
+  "permissions": {
+    "rename": true,
+    "delete": true,
+    "update_access_control": true
+  }
+}
+```
+
+To share the conversation at creation time, include an `access_control` object with the same shape
+as the [update conversation access control](#update-conversation-access-control) example.
+
 **Example:** List conversations
 
 This example uses the [list conversations API]({{kib-apis}}operation/operation-get-agent-builder-conversations).
@@ -1244,6 +1300,77 @@ curl -X DELETE "${KIBANA_URL}/api/agent_builder/conversations/{conversation_id}"
 :::
 
 ::::
+
+**Example:** Update conversation access control $$$update-conversation-access-control$$$ {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+
+This example uses the [update conversation access control API]({{kib-apis}}operation/operation-put-agent-builder-conversations-conversation-id-access-control).
+
+Share a conversation with specific users, or make it readable by anyone who can access its agent. Only the conversation owner can call this endpoint. To learn what members can do, refer to [Conversation access control](permissions.md#conversation-access-control).
+
+Each request replaces the entire access control. To stop sharing, send `private` with an empty `entries` list.
+
+The `id` of each entry is a {{kib}} user profile ID, not a username.
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+PUT kbn://api/agent_builder/conversations/{conversation_id}/access_control
+{
+  "access_mode": "private",
+  "entries": [
+    {
+      "type": "user",
+      "id": "<USER_PROFILE_UID>",
+      "role": "member"
+    }
+  ]
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X PUT "${KIBANA_URL}/api/agent_builder/conversations/{conversation_id}/access_control" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "access_mode": "private",
+       "entries": [
+         {"type": "user", "id": "<USER_PROFILE_UID>", "role": "member"}
+       ]
+     }'
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
+To make a conversation readable by anyone who can access its agent, set `access_mode` to `public` and send an empty `entries` list:
+
+```console
+PUT kbn://api/agent_builder/conversations/{conversation_id}/access_control
+{
+  "access_mode": "public",
+  "entries": []
+}
+```
+
+Keep these constraints in mind:
+
+- `entries` is required. Send an empty list when `access_mode` is `public`, or to unshare.
+- `entries` must be empty when `access_mode` is `public`.
+- A conversation can have at most 100 members.
+- Each user can appear only once. Repeated IDs are rejected.
+- `member` is the only supported role, and `user` is the only supported entry type.
+- An entry that names the owner is accepted but not stored.
+- Entry IDs are not validated. An ID that does not match a real user profile is stored and simply never grants access to anyone.
+- If you do not own the conversation, the request fails with a `404` error rather than a permissions error.
 
 ### Get A2A agent card configuration
 
