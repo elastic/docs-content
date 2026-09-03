@@ -14,7 +14,7 @@ type: how-to
 With a custom panel, you add layouts to a {{kib}} dashboard that other panel types can't produce: status boards, scorecards with colored badges, branded banners, or blocks that mix text with live values. You describe the panel in {{agent-builder}} chat, or write the HTML and CSS template yourself. To show live data, add an {{esql}} query and place its results in the template with [Liquid](https://liquidjs.com/) tags, a template syntax for inserting values into HTML.
 
 :::{image} /explore-analyze/images/custom-panels-dashboard.png
-:alt: Dashboard made of custom panels with a shared brand style: a banner with a logo, an hourly traffic chart, two bar lists, a response health summary, and a content types table
+:alt: Dashboard made of custom panels: a banner with a logo and a mascot, a narrative summary with a health score, four KPI tiles, a Sankey diagram, and two status lists
 :screenshot:
 :::
 
