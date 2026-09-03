@@ -22,7 +22,7 @@ If you are looking for a user interface for {{es}} and your data, head on over t
 
 On the **Overview** page for your new cluster in the Cloud UI, copy the {{es}} endpoint URL under **Endpoints**.
 
-These examples use the `elastic` user. If you didn’t copy down the password for the `elastic` user, you can [reset the password](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md).
+These examples use the `elastic` user. If you didn’t copy down the password for the `elastic` user, you can [reset the password](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
 
 To use these examples, you also need to have the [curl](http://curl.haxx.se/) command installed.
 
