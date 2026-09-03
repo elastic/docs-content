@@ -62,7 +62,7 @@ You can upload files, analyze their fields and metrics, and import their data in
 
     ::::
 
-{applies_to}`stack: ga` {applies_to}`serverless: unavailable` To change the file size limit, edit [`fileUpload:maxFileSize`](kibana://reference/advanced-settings.md#kibana-general-settings) in **Advanced Settings**. The 60 MB limit for PDF and office files does not change.
+{applies_to}`stack: ga` {applies_to}`serverless: unavailable` To change the 500 MB file size limit, edit [`fileUpload:maxFileSize`](kibana://reference/advanced-settings.md#kibana-general-settings) in **Advanced Settings**. The 60 MB limit for PDF and office files does not change.
 
 After the uploaded data is imported into the specified {{es}} index, you can start exploring it. For more details, refer to [Explore and analyze](/explore-analyze/index.md).
 
