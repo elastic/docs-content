@@ -18,6 +18,8 @@ An audit trail includes the following events:
 * **{{ecloud}} and organization administration:** Sign-in, membership, IAM, and project settings
 * **Project activity:** {{es}} and {{kib}} activity including index, template, and pipeline lifecycle, data searches, reads, and writes, and UI access.
 
+Audit trail delivery is applicable to {{serverless-short}} projects, so {{ech}} fields like `node.*` and `host.*` are not included.
+
 ### Why deliver an audit trail
 
 Delivering an audit trail into a project lets you investigate end-to-end activity in one place. For example, you can:
