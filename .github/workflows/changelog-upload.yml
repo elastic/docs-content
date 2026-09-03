@@ -1,0 +1,17 @@
+name: changelog-upload
+
+on:
+  push:
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  upload:
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: read
+    uses: elastic/docs-actions/.github/workflows/changelog-upload.yml@v1
+    with:
+      config: changelog.yml

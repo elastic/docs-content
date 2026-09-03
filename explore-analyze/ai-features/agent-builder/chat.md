@@ -90,6 +90,16 @@ Use the model selector to switch the underlying [model](models.md) the agent use
 :screenshot:
 :::
 
+### Chat with data from multiple projects [agent-builder-cps-scope]
+```{applies_to}
+stack: unavailable
+serverless: preview
+```
+
+  When your projects are [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md), an agent searches the projects selected in the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header.
+
+  You can change the selector at any time. Each new message uses the current selection. Earlier messages in the conversation keep the results they already returned.
+
 ### Options menu [access-key-actions]
 
 ```{applies_to}
@@ -147,6 +157,25 @@ Use the chat history panel to access previous conversations.
 :::{image} images/agent-builder-chat-history.png
 :screenshot:
 :alt: Search chats panel with search field and conversation list
+:width: 450px
+:::
+
+### Pin conversations
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Pin conversations that you want to access quickly. Pinned conversations appear in the **Pinned** section above **Chats** and remain pinned after you reload the page.
+
+You can pin or unpin a conversation in either of the following ways:
+
+- Drag the conversation from **Chats** to **Pinned** to pin it. Drag it back to **Chats** to unpin it.
+- Click the **Open conversation menu** icon {icon}`boxes_vertical`, then select **Pin** or **Unpin**.
+
+:::{image} images/pinned-conversations.gif
+:screenshot:
+:alt: Animated Agent Builder sidebar showing a conversation dragged from Chats to Pinned and the Unpin action in the conversation menu
 :width: 450px
 :::
 

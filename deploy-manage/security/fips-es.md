@@ -2,6 +2,7 @@
 applies_to:
   deployment:
     self: ga
+    eck: ga
 products:
   - id: elasticsearch
 ---
@@ -25,7 +26,9 @@ Compliance with FIPS 140-2 or FIPS 140-3 requires using only FIPS approved / NIS
 
 
 :::{note}
-If you are running {{es}} through {{eck}}, refer to [ECK FIPS compatibility](/deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md).
+If you are running {{es}} through {{eck}}, you also need a FIPS-compliant ECK operator. Refer to [](/deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md) for operator installation instructions.
+
+On ECK, deliver the configuration described on this page through custom {{es}} container images or `podTemplate` overrides. For example, build a custom {{es}} container image with the FIPS security provider JARs and set it with `spec.image`, and set JVM properties through the `podTemplate` environment or a custom `jvm.options` file.
 :::
 
 ## Configuring {{es}} for FIPS [_configuring_es_for_fips_140_2]
