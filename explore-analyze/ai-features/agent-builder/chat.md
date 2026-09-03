@@ -237,9 +237,9 @@ The **View Trace** icon appears only when trace collection is enabled and the co
 To learn how traces are collected, configured, and secured, refer to [Collect agent traces](collect-traces.md).
 
 ### Human-in-the-loop prompts
-<!-- [TODO-CHECK] NOT CHANGED. This applies_to block has no serverless line, unlike every other section on this page. Almost certainly an omission rather than a real gap, but confirm HITL prompts work on a serverless project before adding `serverless: ga`. Out of scope for #1610 strictly speaking -- either fix it here or split it out. -->
 ```{applies_to}
 stack: ga 9.4+
+serverless: ga
 ```
 
 At certain points an agent pauses and hands control back to you before it continues. This pattern is known as human-in-the-loop (HITL). While a conversation is paused this way, it shows an **Awaiting your input** status in the [chat history panel](#track-conversation-status).
@@ -256,20 +256,16 @@ HITL prompts do not replace role-based access control or grant additional privil
 
 HITL prompts require an interactive conversation. They cannot be answered in sub-agent executions. Refer to [Human-in-the-loop prompts require an interactive conversation](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
-<!-- Deliberately NOT adding a sub-agent row to the table above. That behaviour is already documented in limitations-known-issues.md (added by Liam in elastic/docs-content#7550, merged 2026-07-24, a month before the Slack thread that prompted this). A row would duplicate it. Pointer added instead. -->
-
 #### Confirm a change
 
 Some tools and skills pause for confirmation before performing consequential actions. Select **Allow** to proceed or **Deny** to cancel.
 
-Elastic-built tools and skills decide for themselves when to request confirmation. For [custom tools](tools/custom-tools.md), you choose when confirmation is required by setting **Require user confirmation** on the tool. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+Elastic-built tools and skills decide for themselves when to request confirmation. For [custom tools](tools/custom-tools.md), you choose when confirmation is required by setting **Require user confirmation** to **Never**, **Once**, or **Always**. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 
 What the prompt shows depends on the tool:
 
 * Some Elastic-built tools and skills preview the change before it takes effect. The preview format depends on the tool or skill. Review the preview, then allow the action to proceed or deny it to cancel.
 * Other tools, including all custom tools, show a generic prompt that names the tool and asks whether to proceed. The prompt identifies the tool by its ID and does not show the parameters that the agent passes to it, so give custom tools descriptive IDs.
-
-<!-- [TODO-CHECK] Judgement call in the table row above, worth a reviewer's eye rather than a cluster. I removed "Elastic-built" instead of badging the cell, because the generic sentence stays true for 9.4 and 9.5 (Elastic-built tools are tools) and the version detail now lives in the badged paragraph here. The alternative is an {applies-switch} in the table cell, which reads badly. Check against docs-applies-to-tagging. The Allow/Deny wording in that cell IS cluster-verified (2026-08-31) -- server i18n sends confirmText "Allow" and cancelText "Deny". Note the client-side FALLBACK labels are "Approve" and "Confirmation required"; those never appear for tool confirmation, so do not document them. -->
 
 For example, a custom tool that cancels an order asks for permission before it runs. The prompt names the tool but not the order:
 
@@ -278,10 +274,6 @@ For example, a custom tool that cancels an order asks for permission before it r
 :alt: Generic confirmation prompt asking permission to call the tool ecommerce.cancel_order, with Deny and Allow buttons
 :width: 700px
 :::
-
-<!-- RESOLVED 2026-08-31. Image added, captured on QA ECH 9.6.0. One thing to eyeball before the PR: the alt text and the sentence above both name ecommerce.cancel_order. If the tool ID visible in the screenshot differs, update both to match. -->
-
-<!-- Why the two styles differ, for reviewers: there is ONE confirmation component (round_prompt/confirmation_prompt.tsx). What varies is whether the tool supplies a `confirmation.getConfirmation` callback at registration, which lets it set a custom title, a markdown body and its own button labels. Eight Elastic-built tools opt in (streams update_stream / delete_stream / create_partition, significant events, context engine save_automation, evals). `getConfirmation` is a server-side registration field, so CUSTOM tools cannot opt in and always get the generic prompt from createToolConfirmationPrompt, which interpolates tool.id and nothing else. -->
 
 For example, when an agent updates a workflow, it shows the proposed change as a diff and waits for you to review it before applying:
 
