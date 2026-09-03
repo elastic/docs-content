@@ -9,6 +9,10 @@ products:
 
 # Prometheus remote write endpoint
 
+:::{tip}
+If you're using Prometheus remote write as part of an observability metrics setup, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md) for the full picture, including how this fits alongside OpenTelemetry and {{agent}} integrations.
+:::
+
 In addition to the ingestion of metrics data through the bulk API,
 {{es}} offers an endpoint that natively supports the [Prometheus remote write protocol](https://prometheus.io/docs/concepts/remote_write_spec/).
 

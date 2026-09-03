@@ -1403,7 +1403,7 @@ Let’s look at the `process_files_open_files` metric. This should be a rather s
 
     You will only see data from a single shipper. Still, the moment you are running several services and the ability to group this per Kubernetes pod or host enables you to spot hosts with elevated CPU or memory consumption.
 
-7. Click **Metrics Explorer**, you can start exploring your data for specific hosts or the CPU usage across your nodes.
+7. Use **Discover** or the **Metrics** UI to explore your data for specific hosts or the CPU usage across your nodes. (The **Metrics Explorer** page referenced in the screenshot below is deprecated in 9.4+.)
 
     ![Metrics UI Log Counter](/solutions/images/observability-monitor-java-app-metrics-ui-prometheus-event-counter.png "")
 
