@@ -2,7 +2,7 @@
 navigation_title: Vector and full-text search
 description: Step-by-step tutorial for connecting an application to an Elasticsearch Vector Database project, indexing data, and running full-text, semantic, hybrid, and ES|QL searches.
 applies_to:
-  serverless: ga
+  vectordb: ga
 ---
 
 # {{es}} vector and full-text search in 10 minutes [vector-full-text-search-quickstart]
