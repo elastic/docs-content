@@ -10,7 +10,7 @@ products:
 
 # Custom panel examples [custom-panel-examples]
 
-Each example on this page shows what a [custom panel](custom-panels.md) can do that other panel types can't, with the query and the template that produce it. Two of them were generated with {{agent-builder}} chat and include the prompt.
+Each example on this page shows what a [custom panel](custom-panels.md) can do that other panel types can't, with the query and the template that produce it. Three of them were generated with {{agent-builder}} chat and include the prompt.
 
 To try an example, [add a custom panel from the dashboard](custom-panels.md#custom-panels-create-from-dashboard), paste the query into **Data source (ES|QL)** and the template into **Template (HTML)**, then select **Run preview**. The queries use the [sample data sets](/manage-data/ingest/sample-data.md) named in each example. The screenshots use the dark theme. Templates that use the theme properties render in the light theme as well.
 
@@ -382,6 +382,315 @@ The query returns one row per country and response code. The template computes t
   {% endfor %}
 
 </svg>
+</div>
+{% endif %}
+```
+:::
+
+## Flowchart [custom-panel-examples-flowchart]
+
+Web traffic drawn as four stages, from source country through host and destination country to response code. The dashed connections come from the query, are colored by response class, and show the request count in a tooltip when you hover them. Data: web server logs in a `logstash*` index with `geo.src`, `host`, `geo.dest`, and `response` fields.
+
+:::{image} /explore-analyze/images/custom-panels-example-flowchart.png
+:alt: Flowchart with four columns of boxes for source countries, hosts, destination countries, and response codes, connected by dashed curved lines
+:screenshot:
+:::
+
+:::{dropdown} Prompt
+{{agent-builder}} generated the panel from **Generate with chat** with this prompt.
+
+```text
+Add a flowchart panel showing how the data is flowing in logstash* and add a tooltip when hovering the lines to see number of requests.
+```
+:::
+
+:::{dropdown} Query
+To run the example on the **Sample web logs** instead, use `FROM kibana_sample_data_logs` and replace `response` with `response.keyword` in the query and in the template.
+
+```esql
+FROM logstash*
+| STATS count = COUNT(*) BY geo.src, host.keyword, geo.dest, response
+| SORT count DESC
+| LIMIT 50
+```
+:::
+
+:::{dropdown} Template
+The boxes are fixed in the template, with the countries, hosts, and response codes the agent found in the data. Only the connections between them come from the query rows. The tooltips use the SVG `title` element, which needs no JavaScript.
+
+```html
+<style>
+  body {
+    margin: 0;
+    padding: 16px;
+    box-sizing: border-box;
+    font-family: Inter, system-ui, sans-serif;
+    color: var(--cc-color-text);
+    background: var(--cc-color-background);
+  }
+  .flow-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .stage-labels {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 24px;
+    margin-bottom: 8px;
+  }
+  .stage-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--cc-color-accent);
+    text-align: center;
+    flex: 1;
+  }
+  .flow-svg {
+    width: 100%;
+    height: 420px;
+    display: block;
+  }
+  .node-rect {
+    rx: 8;
+    ry: 8;
+    stroke-width: 1.5;
+  }
+  .node-label {
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    fill: var(--cc-color-text);
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none;
+  }
+  .node-sublabel {
+    font-family: inherit;
+    font-size: 9px;
+    fill: var(--cc-color-text);
+    opacity: 0.6;
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none;
+  }
+  .connection-path {
+    fill: none;
+    stroke-width: 1.5;
+    opacity: 0.35;
+    stroke-dasharray: 6 4;
+    stroke-dashoffset: 0;
+    animation: flowDash 2s linear infinite;
+  }
+  .connection-path:hover {
+    opacity: 0.85;
+    stroke-width: 2.5;
+    transition: opacity 150ms cubic-bezier(.32, .72, 0, 1), stroke-width 150ms cubic-bezier(.32, .72, 0, 1);
+  }
+  @keyframes flowDash {
+    to {
+      stroke-dashoffset: -20;
+    }
+  }
+  .stage-col-bg {
+    rx: 12;
+    ry: 12;
+  }
+  .tooltip-group .tooltip-box {
+    opacity: 0;
+    transition: opacity 150ms cubic-bezier(.32, .72, 0, 1);
+    pointer-events: none;
+  }
+  .tooltip-group:hover .tooltip-box {
+    opacity: 1;
+  }
+  .node-group {
+    cursor: default;
+  }
+  .glow-0 { filter: drop-shadow(0 0 4px var(--cc-color-primary)); }
+  .glow-1 { filter: drop-shadow(0 0 4px var(--cc-color-accent-2)); }
+  .glow-2 { filter: drop-shadow(0 0 4px var(--cc-color-accent)); }
+  .glow-3 { filter: drop-shadow(0 0 4px color-mix(in srgb, var(--cc-color-primary) 55%, var(--cc-color-accent))); }
+  .glow-4 { filter: drop-shadow(0 0 4px color-mix(in srgb, var(--cc-color-accent-2) 55%, var(--cc-color-accent))); }
+  .glow-danger { filter: drop-shadow(0 0 4px var(--cc-color-danger)); }
+  .glow-warning { filter: drop-shadow(0 0 4px var(--cc-color-warning)); }
+  .glow-accent { filter: drop-shadow(0 0 4px var(--cc-color-accent)); }
+</style>
+{% if rows.size == 0 %}
+<div style="display:flex;align-items:center;justify-content:center;height:300px;color:var(--cc-color-text);opacity:0.5;font-size:0.875rem;">
+  No data available
+</div>
+{% else %}
+<div class="flow-container">
+  <div class="stage-labels">
+    <span class="stage-label">Source Countries</span>
+    <span class="stage-label">Hosts</span>
+    <span class="stage-label">Dest Countries</span>
+    <span class="stage-label">Response Codes</span>
+  </div>
+  <svg class="flow-svg" viewBox="0 0 1000 420" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <linearGradient id="col-bg-grad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="var(--cc-color-surface)" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="var(--cc-color-surface)" stop-opacity="0.3"/>
+      </linearGradient>
+      <linearGradient id="conn-grad-01" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="var(--cc-color-primary)"/>
+        <stop offset="100%" stop-color="var(--cc-color-accent-2)"/>
+      </linearGradient>
+      <linearGradient id="conn-grad-12" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="var(--cc-color-accent-2)"/>
+        <stop offset="100%" stop-color="var(--cc-color-accent)"/>
+      </linearGradient>
+      <linearGradient id="conn-grad-2g" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="var(--cc-color-accent)"/>
+        <stop offset="100%" stop-color="var(--cc-color-accent)"/>
+      </linearGradient>
+      <linearGradient id="conn-grad-2w" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="var(--cc-color-accent)"/>
+        <stop offset="100%" stop-color="var(--cc-color-warning)"/>
+      </linearGradient>
+      <linearGradient id="conn-grad-2d" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="var(--cc-color-accent)"/>
+        <stop offset="100%" stop-color="var(--cc-color-danger)"/>
+      </linearGradient>
+    </defs>
+    <!-- Column backgrounds -->
+    <rect class="stage-col-bg" x="20" y="10" width="210" height="400" fill="url(#col-bg-grad)" stroke="var(--cc-color-border)" stroke-width="0.5"/>
+    <rect class="stage-col-bg" x="270" y="10" width="210" height="400" fill="url(#col-bg-grad)" stroke="var(--cc-color-border)" stroke-width="0.5"/>
+    <rect class="stage-col-bg" x="520" y="10" width="210" height="400" fill="url(#col-bg-grad)" stroke="var(--cc-color-border)" stroke-width="0.5"/>
+    <rect class="stage-col-bg" x="770" y="10" width="210" height="400" fill="url(#col-bg-grad)" stroke="var(--cc-color-border)" stroke-width="0.5"/>
+    <!-- ========== STAGE 1: Source Countries ========== -->
+    <g class="node-group glow-0">
+      <rect class="node-rect" x="60" y="60" width="130" height="50" fill="var(--cc-color-surface)" stroke="var(--cc-color-primary)"/>
+      <text class="node-label" x="125" y="80">CN</text>
+      <text class="node-sublabel" x="125" y="97">China</text>
+    </g>
+    <g class="node-group glow-1">
+      <rect class="node-rect" x="60" y="170" width="130" height="50" fill="var(--cc-color-surface)" stroke="var(--cc-color-accent-2)"/>
+      <text class="node-label" x="125" y="190">IN</text>
+      <text class="node-sublabel" x="125" y="207">India</text>
+    </g>
+    <g class="node-group glow-2">
+      <rect class="node-rect" x="60" y="280" width="130" height="50" fill="var(--cc-color-surface)" stroke="var(--cc-color-accent)"/>
+      <text class="node-label" x="125" y="300">US</text>
+      <text class="node-sublabel" x="125" y="317">United States</text>
+    </g>
+    <!-- ========== STAGE 2: Hosts ========== -->
+    <g class="node-group glow-3">
+      <rect class="node-rect" x="300" y="100" width="150" height="50" fill="var(--cc-color-surface)" stroke="color-mix(in srgb, var(--cc-color-primary) 55%, var(--cc-color-accent))"/>
+      <text class="node-label" x="375" y="120" font-size="10">media-for-the-</text>
+      <text class="node-label" x="375" y="137" font-size="10">masses</text>
+    </g>
+    <g class="node-group glow-4">
+      <rect class="node-rect" x="300" y="230" width="150" height="50" fill="var(--cc-color-surface)" stroke="color-mix(in srgb, var(--cc-color-accent-2) 55%, var(--cc-color-accent))"/>
+      <text class="node-label" x="375" y="250">cdn</text>
+      <text class="node-sublabel" x="375" y="267">glb.nist.gov</text>
+    </g>
+    <!-- ========== STAGE 3: Dest Countries ========== -->
+    <g class="node-group glow-0">
+      <rect class="node-rect" x="555" y="60" width="130" height="50" fill="var(--cc-color-surface)" stroke="var(--cc-color-primary)"/>
+      <text class="node-label" x="620" y="80">CN</text>
+      <text class="node-sublabel" x="620" y="97">China</text>
+    </g>
+    <g class="node-group glow-1">
+      <rect class="node-rect" x="555" y="170" width="130" height="50" fill="var(--cc-color-surface)" stroke="var(--cc-color-accent-2)"/>
+      <text class="node-label" x="620" y="190">IN</text>
+      <text class="node-sublabel" x="620" y="207">India</text>
+    </g>
+    <g class="node-group glow-2">
+      <rect class="node-rect" x="555" y="280" width="130" height="50" fill="var(--cc-color-surface)" stroke="var(--cc-color-accent)"/>
+      <text class="node-label" x="620" y="300">US</text>
+      <text class="node-sublabel" x="620" y="317">United States</text>
+    </g>
+    <!-- ========== STAGE 4: Response Codes ========== -->
+    <g class="node-group glow-accent">
+      <rect class="node-rect" x="810" y="60" width="130" height="50" fill="var(--cc-color-surface)" stroke="var(--cc-color-accent)"/>
+      <text class="node-label" x="875" y="80" fill="var(--cc-color-accent)">200</text>
+      <text class="node-sublabel" x="875" y="97">OK</text>
+    </g>
+    <g class="node-group glow-warning">
+      <rect class="node-rect" x="810" y="170" width="130" height="50" fill="var(--cc-color-surface)" stroke="var(--cc-color-warning)"/>
+      <text class="node-label" x="875" y="190" fill="var(--cc-color-warning)">404</text>
+      <text class="node-sublabel" x="875" y="207">Not Found</text>
+    </g>
+    <g class="node-group glow-danger">
+      <rect class="node-rect" x="810" y="280" width="130" height="50" fill="var(--cc-color-surface)" stroke="var(--cc-color-danger)"/>
+      <text class="node-label" x="875" y="300" fill="var(--cc-color-danger)">503</text>
+      <text class="node-sublabel" x="875" y="317">Service Unavailable</text>
+    </g>
+    <!-- ========== CONNECTIONS (data-driven) ========== -->
+    {% for row in rows %}
+      {% if row["geo.src"].value == "CN" %}
+        {% assign srcY = 85 %}
+      {% elsif row["geo.src"].value == "IN" %}
+        {% assign srcY = 195 %}
+      {% else %}
+        {% assign srcY = 305 %}
+      {% endif %}
+      {% assign hostStr = row["host.keyword"].value | slice: 0, 5 %}
+      {% if hostStr == "media" %}
+        {% assign hostY = 125 %}
+      {% else %}
+        {% assign hostY = 255 %}
+      {% endif %}
+      {% if row["geo.dest"].value == "CN" %}
+        {% assign destY = 85 %}
+      {% elsif row["geo.dest"].value == "IN" %}
+        {% assign destY = 195 %}
+      {% else %}
+        {% assign destY = 305 %}
+      {% endif %}
+      {% assign respVal = row["response"].value | plus: 0 %}
+      {% if respVal == 200 %}
+        {% assign respY = 85 %}
+        {% assign respGrad = "url(#conn-grad-2g)" %}
+      {% elsif respVal == 404 %}
+        {% assign respY = 195 %}
+        {% assign respGrad = "url(#conn-grad-2w)" %}
+      {% else %}
+        {% assign respY = 305 %}
+        {% assign respGrad = "url(#conn-grad-2d)" %}
+      {% endif %}
+      <g class="tooltip-group">
+        <path class="connection-path" d="M 190 {{ srcY }} C 230 {{ srcY }}, 260 {{ hostY }}, 300 {{ hostY }}" stroke="url(#conn-grad-01)">
+          <title>{{ row["geo.src"].value }} → {{ row["host.keyword"].value }}: {{ row["count"].value }} requests</title>
+        </path>
+      </g>
+      <g class="tooltip-group">
+        <path class="connection-path" d="M 450 {{ hostY }} C 490 {{ hostY }}, 520 {{ destY }}, 555 {{ destY }}" stroke="url(#conn-grad-12)">
+          <title>{{ row["host.keyword"].value }} → {{ row["geo.dest"].value }}: {{ row["count"].value }} requests</title>
+        </path>
+      </g>
+      <g class="tooltip-group">
+        <path class="connection-path" d="M 685 {{ destY }} C 730 {{ destY }}, 770 {{ respY }}, 810 {{ respY }}" stroke="{{ respGrad }}">
+          <title>{{ row["geo.dest"].value }} → {{ row["response"].value }}: {{ row["count"].value }} requests</title>
+        </path>
+      </g>
+    {% endfor %}
+    <circle cx="240" cy="120" r="2" fill="var(--cc-color-primary)" opacity="0.4"/>
+    <circle cx="500" cy="180" r="2" fill="var(--cc-color-accent-2)" opacity="0.4"/>
+    <circle cx="750" cy="100" r="2" fill="var(--cc-color-accent)" opacity="0.4"/>
+  </svg>
+  <!-- Legend -->
+  <div style="display:flex; gap:16px; justify-content:center; margin-top:12px; flex-wrap:wrap;">
+    <div style="display:flex; align-items:center; gap:4px; font-size:0.75rem;">
+      <svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="var(--cc-color-accent)" opacity="0.8"/></svg>
+      <span>200 OK</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:4px; font-size:0.75rem;">
+      <svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="var(--cc-color-warning)" opacity="0.8"/></svg>
+      <span>404 Not Found</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:4px; font-size:0.75rem;">
+      <svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="var(--cc-color-danger)" opacity="0.8"/></svg>
+      <span>503 Unavailable</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:4px; font-size:0.75rem; opacity:0.6;">
+      <span>Hover lines for request counts</span>
+    </div>
+  </div>
 </div>
 {% endif %}
 ```
