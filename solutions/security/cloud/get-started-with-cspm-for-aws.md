@@ -29,10 +29,10 @@ This page explains how to start monitoring the security posture of your cloud as
 
 You can set up CSPM for AWS either by enrolling a single cloud account, or by enrolling an organization containing multiple accounts. Either way, you must first add the CSPM integration, then enable cloud account access. 
 
-Two deployment technologies are available: {{managed-integration}} and agent-based. 
+Two deployment options are available: {{managed-integration}} and agent-based. 
 
-* [{{managed-integration}} deployment](/solutions/security/cloud/get-started-with-cspm-for-aws.md#cspm-aws-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
-* [Agent-based deployment](/solutions/security/cloud/get-started-with-cspm-for-aws.md#cspm-aws-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
+* The [{{managed-integration}} deployment](/solutions/security/cloud/get-started-with-cspm-for-aws.md#cspm-aws-agentless) allows you to collect cloud posture data without having to manage the infrastructure that collects it. 
+* The [Agent-based deployment](/solutions/security/cloud/get-started-with-cspm-for-aws.md#cspm-aws-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
 
 ## {{managed-integration}} deployment [cspm-aws-agentless]
 
@@ -79,7 +79,7 @@ Two deployment technologies are available: {{managed-integration}} and agent-bas
       :::{note}
       :applies_to: { serverless: removed, stack: removed 9.3 } 
       
-      On Elastic Stack version 9.3 and earlier, to use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
+      On {{stack}} versions earlier than 9.3, to use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
       :::
       ::::
 

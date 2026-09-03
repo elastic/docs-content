@@ -75,7 +75,7 @@ Two deployment options are available: {{managed-integration}} and agent-based.
       :::{note}
       :applies_to: { serverless: removed, stack: removed 9.3 } 
       
-      On Elastic Stack version 9.3 and earlier, to use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
+      On {{stack}} versions earlier than 9.3, to use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
       :::
       ::::
 

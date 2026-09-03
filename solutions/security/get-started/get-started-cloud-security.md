@@ -31,7 +31,7 @@ To add the CSPM integration:
 4. Give the integration a name and enter an optional description. 
 5. Next, choose your deployment option. An agent-based deployment requires you to deploy and manage {{agent}} in the cloud account you want to monitor, whereas an {{managed-integration}} deployment allows you to collect cloud posture data without managing the infrastructure that collects it. For a faster onboarding, select the Elastic-managed option:
    * {applies_to}`{serverless: ga, stack: ga 9.5+}` Select **Elastic Managed Integration**.
-   * {applies_to}`stack: ga 9.0-9.4` Select **Agentless**.
+   * {applies_to}`stack: preview 9.0-9.4` Select **Agentless**.
 6. Next, in the **Setup Access** section, choose your preferred authentication method—direct access keys (recommended) or temporary keys. For this guide, we'll use direct access keys. 
 7. Expand the Steps to Generate AWS Account Credentials, and follow the instructions. 
 8. Once you've generated an access key ID and secret access key and pasted the credentials, click **Save and continue** to complete deployment. Your data should start to appear within a few minutes.
