@@ -23,7 +23,7 @@ With a custom panel, you add layouts to a {{kib}} dashboard that other panel typ
 To add custom panels to a dashboard, you need:
 
 - **All** privilege for the **Dashboard** feature in {{kib}}.
-- [{{agent-builder}} set up](/explore-analyze/ai-features/agent-builder/get-started.md) in your deployment, if you want to generate or refine panels with chat. Without it, you can still write templates yourself.
+- [{{agent-builder}} set up](/explore-analyze/ai-features/agent-builder/get-started.md) in your deployment or project, if you want to generate or refine panels with chat. Without it, you can still write templates yourself.
 - Data that you can query with {{esql}}, if you want the panel to show live values. If you're new to {{esql}}, refer to [Use {{esql}} in the {{kib}} UI](/explore-analyze/query-filter/languages/esql-kibana.md).
 
 ## When to use a custom panel [custom-panels-when-to-use]
@@ -80,7 +80,6 @@ A custom panel needs a template and, to show live data, an {{esql}} query. You c
 
 5. If you chose to provide the template and the query manually, select **Preview data** to check the returned columns. The preview shows the first rows of the result.
 
-   You can switch between the template and the query until the column names match.
 
    If the flyout reports that the query isn't connected to the dashboard time filter, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters on your time field. Refer to [Connect the panel to the time filter](#custom-panels-time-filter).
 
@@ -114,7 +113,7 @@ The panel now shows your content. If it has a query, change the dashboard time r
    :screenshot:
    :::
 
-4. Save the dashboard, or keep chatting to change the panel.
+4. Save the dashboard, or keep chatting to the agent to change the panel.
 
 For saving, previewing, and syncing agent-created dashboards, refer to [Dashboards and visualizations in {{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md).
 
@@ -128,7 +127,7 @@ For saving, previewing, and syncing agent-created dashboards, refer to [Dashboar
 
    If you change only the query, {{kib}} fills the existing template with the new results. Make sure the column names in the template match the new query output.
 
-   If the query or the template is invalid, the panel shows **Failed to render panel** with the {{esql}} or Liquid error. Select **Preview data** before you apply to catch query errors early. For a template that chat generated, paste the error into the conversation and the agent corrects the template.
+   If the query or the template is invalid, the panel shows **Failed to render panel** with the {{esql}} or Liquid error. Select **Preview data** before you apply to catch query errors early. For a chat-generated template, paste the error into the conversation and the agent corrects the template.
 
 3. Select **Apply and close**, then save the dashboard.
 
@@ -200,7 +199,7 @@ There is no dedicated property for a healthy or success state. For a three-state
 
 ## Dashboard interactions [custom-panels-dashboard-interactions]
 
-When a custom panel has a query, it responds to the dashboard like other {{esql}} panels:
+When a custom panel has a query, it responds to filters and options active on the dashboard like other {{esql}} panels:
 
 - The time filter. Refer to [Connect the panel to the time filter](#custom-panels-time-filter).
 - The query bar and filter pills. The query fields are also available for suggestions in the query bar and filter editor.

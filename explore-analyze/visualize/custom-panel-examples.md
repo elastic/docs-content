@@ -389,7 +389,7 @@ The query returns one row per country and response code. The template computes t
 
 ## Flowchart [custom-panel-examples-flowchart]
 
-Web traffic drawn as four stages, from source country through host and destination country to response code. The dashed connections come from the query, are colored by response class, and show the request count in a tooltip when you hover them. Data: web server logs in a `logstash*` index with `geo.src`, `host`, `geo.dest`, and `response` fields.
+Web traffic drawn as four stages, from source country through host and destination country to response code. The dashed connections come from the query, are colored by response class, and show the request count in a tooltip when you hover over them. Data: web server logs in a `logstash*` index with `geo.src`, `host`, `geo.dest`, and `response` fields.
 
 :::{image} /explore-analyze/images/custom-panels-example-flowchart.png
 :alt: Flowchart with four columns of boxes for source countries, hosts, destination countries, and response codes, connected by dashed curved lines
@@ -400,7 +400,7 @@ Web traffic drawn as four stages, from source country through host and destinati
 {{agent-builder}} generated the panel from **Generate with chat** with this prompt.
 
 ```text
-Add a flowchart panel showing how the data is flowing in logstash* and add a tooltip when hovering the lines to see number of requests.
+Add a flowchart panel showing how the data is flowing in logstash* and add a tooltip when hovering over the lines to see number of requests.
 ```
 :::
 
