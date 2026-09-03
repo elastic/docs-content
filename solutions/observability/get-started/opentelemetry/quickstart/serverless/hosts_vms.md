@@ -1,6 +1,6 @@
 ---
 navigation_title: Hosts and VMs
-description: Step-by-step guide for setting up the {{agent}} and SDKs on Elastic Cloud Serverless to collect host metrics, logs, and application traces via OTLP.
+description: Step-by-step guide for setting up Elastic Agent and EDOT SDKs on Elastic Cloud Serverless to collect host metrics, logs, and application traces using OTLP.
 applies_to:
   stack:
   serverless:
@@ -126,7 +126,8 @@ Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`ht
 
 :::::{step} Explore your data
 
-Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+:::{include} ../../_snippets/explore-your-data.md
+:::
 
 :::::
 ::::::

@@ -1,5 +1,6 @@
 ---
-description: Learn how to use the Elastic Cloud Managed OTLP Endpoint to send logs, metrics, and traces to Elastic Serverless and Elastic Cloud Hosted.
+navigation_title: Send OTLP data to Elastic Cloud
+description: Configure the Managed OTLP Endpoint to send logs, metrics, and traces from any OTLP-compatible collector or SDK to Elastic Serverless or Elastic Cloud Hosted.
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-native-otlp.html
 applies_to:
@@ -11,7 +12,9 @@ products:
   - id: observability
 ---
 
-# Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted
+# Send OTLP data to Elastic Serverless or Elastic Cloud Hosted
+
+Use this guide if you have an existing OTLP-compatible collector or SDK and want to send data directly to Elastic using the {{motlp}} endpoint — without switching to {{edot}}.
 
 You can send OpenTelemetry data to Elastic Serverless and Elastic Cloud Hosted using the {{motlp}} endpoint.
 

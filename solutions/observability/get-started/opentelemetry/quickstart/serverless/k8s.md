@@ -1,6 +1,6 @@
 ---
 navigation_title: Kubernetes
-description: Step-by-step guide for setting up the {{agent}} and SDKs in a Kubernetes environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces.
+description: Step-by-step guide for setting up Elastic Agent and EDOT SDKs in a Kubernetes environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces.
 applies_to:
   stack:
   serverless:
@@ -86,7 +86,8 @@ For languages where auto-instrumentation is not available, manually instrument y
 
 ::::{step} Explore your data
 
-Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+:::{include} ../../_snippets/explore-your-data.md
+:::
 
 ::::
 
