@@ -12,7 +12,7 @@ navigation_title: "Cross-project search"
 ::::{include} /deploy-manage/_snippets/cps-definition.md
 ::::
 
-{{cps-cap}} is the {{serverless-short}} equivalent of [{{ccs}}](/explore-analyze/cross-cluster-search.md), with a few differences and enhancements:
+{{cps-cap}} is the {{serverless-short}} equivalent of [{{ccs}}](/explore-analyze/cross-cluster-search.md), with a few differences and enhancements. For a side-by-side syntax comparison, refer to [](/explore-analyze/cross-project-search/cps-compared-to-ccs.md).
 
 * Setting up {{cps}} doesn't require an understanding of your deployment architecture or complex security configurations.
 * Permissions stay consistent across projects, and you can always adjust scope and access as needed.
@@ -144,3 +144,4 @@ After you configure {{cps}} and link projects, users can start searching across 
 
 - [{{cps-cap}} overview](/explore-analyze/cross-project-search.md): Learn how to build queries in a {{cps-init}} context, including how to restrict search scope.
 - [](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): Learn how {{cps-init}} works with compatible {{kib}} apps, including how to adjust search scope.
+- [](/explore-analyze/cross-project-search/cps-compared-to-ccs.md): Compare {{cps-init}} and {{ccs}} query syntax, behavior, and scope control side by side.
