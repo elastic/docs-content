@@ -134,7 +134,7 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 ### Elastic {{observability}} apps
 
-{{observability}} apps have limited {{cps-init}} support. The scope selector is not available in {{observability}} apps, and most apps remain scoped to the origin project.
+{{observability}} apps have limited {{cps-init}} support. APM, Infrastructure, and Synthetics use the scope selector. Most other apps remain scoped to the origin project.
 
 For specific app details, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md).
 
