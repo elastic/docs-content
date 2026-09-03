@@ -10,9 +10,9 @@ navigation_title: "Compare with CCS"
 
 # {{cps-cap}} compared to {{ccs}}
 
-{{cps-cap}} (CPS) is the {{serverless-full}} equivalent of [{{ccs}}](/explore-analyze/cross-cluster-search.md) (CCS). 
+{{cps-cap}} (CPS) is the {{serverless-full}} counterpart to [{{ccs}}](/explore-analyze/cross-cluster-search.md) (CCS). 
 
-Both features let you search data across multiple environments from a single request, but the query syntax, default scope, and configuration requirements are different.
+Both features let you search data across multiple deployments from a single request, but the query syntax, default scope, and configuration requirements are different.
 
 This page highlights the key differences and shows side-by-side query examples to help you transition from CCS to CPS.
 
@@ -81,7 +81,7 @@ The following examples compare equivalent tasks in CCS and CPS. The CCS examples
 
 ### Search the local cluster or origin project only [ex-local-origin]
 
-Restrict a query to a single environment without including results from remote clusters or linked projects. Use this when you need to isolate results to one environment, for example when debugging a local issue.
+Restrict a query to a single cluster or project without including results from remote clusters or linked projects. Use this when you need to isolate results to one cluster or project, for example when debugging a local issue.
 
 ::::{tab-set}
 :group: ccs-cps
@@ -122,7 +122,7 @@ FROM _origin:my-index
 
 ### Search one remote cluster or linked project [ex-one-remote]
 
-Target a specific remote cluster or linked project. Use this when you want to check data from a single environment without pulling in results from other clusters or projects.
+Target a specific remote cluster or linked project. Use this when you want to check data from a single cluster or project without pulling in results from others.
 
 ::::{tab-set}
 :group: ccs-cps
@@ -163,7 +163,7 @@ FROM linked_project:my-index
 
 ### Search local and all remotes, or all projects [ex-search-all]
 
-Search an index across every available environment at once. Use this when you want to correlate data from all clusters or projects, for example during a cross-environment incident investigation.
+Search an index across every available cluster or project at once. Use this when you want to correlate data from all clusters or projects, for example during an incident investigation that spans multiple clusters or projects.
 
 ::::{tab-set}
 :group: ccs-cps
@@ -211,7 +211,7 @@ FROM my-index
 
 ### Exclude clusters or projects [ex-exclude]
 
-Search broadly but skip one or more clusters or projects. Use this when you need results from most environments but want to leave some out, for example to exclude development or staging projects. In CPS, because all projects are searched by default, you only need to specify what to skip.
+Search broadly but skip one or more clusters or projects. Use this when you need results from most clusters or projects but want to leave some out, for example to exclude development or staging projects. In CPS, because all projects are searched by default, you only need to specify what to skip.
 
 ::::{tab-set}
 :group: ccs-cps
@@ -252,7 +252,7 @@ FROM my-index,-linked_project:*,-staging_project:*
 
 ### Identify where a document came from [ex-identify-origin]
 
-Determine which cluster or project returned a specific document. Use this when you want to trace a result back to its source across multiple environments.
+Determine which cluster or project returned a specific document. Use this when you want to trace a result back to its source when searching across multiple clusters or projects.
 
 In both CCS and CPS, the `_index` field in the response indicates where each document originated.
 
