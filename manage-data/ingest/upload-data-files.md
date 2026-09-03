@@ -16,7 +16,7 @@ You can upload files, analyze their fields and metrics, and import their data in
 
 1. Open the **Integrations** page using the global search field, then search for **Upload a file** using the integrations search field.
 
-2. Click **Upload a file** to open the {{data-viz}}.
+2. Select **Upload a file** to open the {{data-viz}}.
 
 3. Depending on your version and deployment:
 
@@ -24,7 +24,7 @@ You can upload files, analyze their fields and metrics, and import their data in
 
     :::{applies-item} stack: ga 9.0.0-9.1.8
 
-    1. Drag a file into the upload area or click **Select or drag and drop a file** to choose a file from your computer.
+    1. Drag a file into the upload area or select **Select or drag and drop a file** to choose a file from your computer.
 
         You can upload different file formats for analysis with the {{data-viz}}.
 
@@ -34,27 +34,35 @@ You can upload files, analyze their fields and metrics, and import their data in
 
         After you upload a file, you can inspect its data and make any necessary changes before importing it.
 
-    2. Click **Import**.
+    2. Select **Import**.
 
-    3. Enter a name for the index where the data will be stored, then click **Import** again to complete the process.
+    3. Enter a name for the index where the data will be stored, then select **Import** again to complete the process.
 
     :::
 
     :::{applies-item} { "stack": "ga 9.2", "serverless": "ga" }
 
-    1. Choose whether to import the data to a new index or to an existing one.
-    2. Enter a name for the new index or select an existing index from the dropdown.
-    3. Drag one or more files into the upload area or click **Select or drag and drop a file** to choose files from your computer.
+    1. Select **New index** or **Existing index**.
+    2. Enter a name for the new index, or select an existing index from the dropdown.
+    3. Drag one or more files into the upload area, or select **Select or drag and drop files**.
 
-       The supported file formats are PDF, TXT, CSV, log files and NDJSON.
+       The supported file formats are:
+         * CSV, TSV, NDJSON, log files (up to 500 MB)
+         * PDF, TXT, RTF, ODF, Microsoft Office files (up to 60 MB)
 
        After you upload your files, you can inspect the data and make any necessary changes before importing it.
 
-    4. Click **Import** to complete the process.
+       {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga` To stop analysis of a file, select **Remove file**.
+
+    4. Select **Import**.
+
+       {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga` While the import is in progress, select **Cancel** to stop it.
 
     :::
 
     ::::
+
+{applies_to}`stack: ga` {applies_to}`serverless: unavailable` To change the 500 MB file size limit, edit [`fileUpload:maxFileSize`](kibana://reference/advanced-settings.md#kibana-general-settings) in **Advanced Settings**. The 60 MB limit for PDF and office files does not change.
 
 After the uploaded data is imported into the specified {{es}} index, you can start exploring it. For more details, refer to [Explore and analyze](/explore-analyze/index.md).
 
