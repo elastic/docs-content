@@ -23,11 +23,14 @@ You'll need:
 
 ## Remove a collector
 
-1. In {{kib}}, go to **Fleet** → **Agents**.
+1. In {{kib}}, enter **Fleet** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Fleet / Agents**.
 2. To remove a single collector, select **Remove collector** from its **Actions** menu, then confirm.
-3. To remove several collectors at once, select them in the **Agents** list, then choose **Remove N collectors** from the bulk actions menu, where *N* is the number of selected collectors, and confirm.
 
-Removing a collector removes it from the **Agents** list only. It doesn't stop the collector process, and its enrollment credentials stay valid, so a collector that's still running can reconnect and reappear in the list. To stop a collector from reporting to {{fleet}}, remove the `opamp` extension from its configuration and restart it.
+   To remove several collectors at once, select them in the **Agents** list, then choose **Remove N collectors** from the bulk actions menu, where *N* is the number of selected collectors, and confirm.
+
+Removing a collector removes it from the **Agents** list only. It doesn't stop the collector process, and its enrollment credentials stay valid, so a collector that's still running can reconnect and reappear in the list.
+
+To stop a collector from reporting to {{fleet}}, remove the `opamp` extension from its configuration and restart it.
 
 ## Related pages
 

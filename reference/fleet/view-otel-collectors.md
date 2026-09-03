@@ -50,9 +50,9 @@ The collector's details page shows a **Collector (OpAMP)** badge next to the hos
 
 The **Collector details** tab contains three sections:
 
-1. A [visualization of the collector's pipelines](#visualize-the-collector-pipeline).
-2. A panel with **Health**, **Info**, and **Config** tabs, covering [health](#check-collector-health), [metadata](#review-collector-metadata), and the [effective configuration](#view-the-effective-configuration).
-3. An [**Error patterns**](#investigate-error-patterns) table.
+* A [visualization of the collector's pipelines](#visualize-the-collector-pipeline).
+* A panel with **Health**, **Info**, and **Config** tabs, covering [health](#check-collector-health), [metadata](#review-collector-metadata), and the [effective configuration](#view-the-effective-configuration).
+* An [**Error patterns**](#investigate-error-patterns) table.
 
 :::
 
@@ -167,6 +167,8 @@ Depending on the selected component, the panel has up to three tabs.
 
 ### Health
 
+This tab shows the component's reported health data.
+
 | Field | Description |
 |-------|-------------|
 | **Status** | The component's health state: **Healthy**, **Unhealthy**, or **Unknown**. |
@@ -178,7 +180,7 @@ Depending on the selected component, the panel has up to three tabs.
 
 This tab is available for receivers, processors, and exporters. It isn't available for connectors, or when you select a whole pipeline.
 
-Metrics come from the collector's own telemetry, so this tab shows **No metrics data available** unless you've [added internal telemetry](/reference/fleet/add-otel-collector-internal-telemetry.md) to the collector.
+Metrics come from the collector's own telemetry, so this tab shows **No metrics data available** unless [internal telemetry](/reference/fleet/add-otel-collector-internal-telemetry.md) is enabled on the collector.
 
 Select a time range of **5m**, **15m**, or **1h**. Depending on the component type, up to three groups of charts are shown:
 
@@ -188,7 +190,7 @@ Select a time range of **5m**, **15m**, or **1h**. Depending on the component ty
 
 ### Config
 
-Displays the component's own configuration as YAML, which you can copy. For receivers, processors, exporters, and connectors, a **View component documentation** link opens the upstream OpenTelemetry documentation for that component type.
+This tab displays the component's own configuration as YAML, which you can copy. For receivers, processors, exporters, and connectors, a **View component documentation** link opens the upstream OpenTelemetry documentation for that component type.
 
 When you select a whole pipeline, this tab shows the pipeline's wiring instead: its receivers, processors, and exporters.
 
@@ -276,12 +278,12 @@ serverless: preview
 
 The **Error patterns** table at the bottom of the **Collector details** tab groups similar error and warning messages from the collector's own logs, so you can spot recurring problems without reading through every log line.
 
-The table stays empty unless you've [added internal telemetry](/reference/fleet/add-otel-collector-internal-telemetry.md) to the collector. When internal telemetry is enabled and no matching messages exist, it reports that no error patterns were found in the selected time range. Logs recorded before the collector enrolled aren't included, so patterns from an earlier enrollment on the same host don't appear.
+The table stays empty unless [internal telemetry](/reference/fleet/add-otel-collector-internal-telemetry.md) is enabled. When no matching messages exist, the table reports that no error patterns were found in the selected time range. Logs recorded before the collector is added in {{fleet}} aren't included.
 
 Use the controls to change what's shown:
 
 * Select a time range of **Last 5 minutes**, **Last 1 hour** (the default), **Last 1 day**, or **Last 1 week**.
-* Switch between **Errors ({count})** and **Warnings ({count})**. **Errors** covers the `error` and `fatal` log levels, and **Warnings** covers `warn` and `warning`.
+* Switch between **Errors** and **Warnings**. **Errors** covers the `error` and `fatal` log levels, and **Warnings** covers `warn` and `warning`.
 * Sort by **Most frequent** or **Most recent**.
 
 A summary next to the heading reports the number of patterns for the selected level, followed by the combined number of matching logs across both levels for the time range.
