@@ -24,6 +24,12 @@ You include your Cloud ID along with your {{ecloud}} user credentials (defined i
 :alt: The Cloud ID and `elastic` user information shown when you create a deployment
 :::
 
+:::{warning}
+If your deployment is protected by an AWS PrivateLink VPC filter, you can't use Cloud ID, set as `cloud.id` in Beats and `cloud_id` in Logstash. The Cloud ID encodes the public {{es}} endpoint, which is not available after the filter is associated. 
+
+As a workaround, [find the private {{es}} URL](/deploy-manage/security/private-connectivity-aws.md#ec-access-the-deployment-over-private-link), then connect using that URL and an API key. For examples, refer to the [Beats](beats://reference/metricbeat/configure-cloud-id.md) and [Logstash](logstash://reference/connecting-to-cloud.md) documentation.
+:::
+
 
 ## What are Beats and Logstash? [ec_what_are_beats_and_logstash]
 
