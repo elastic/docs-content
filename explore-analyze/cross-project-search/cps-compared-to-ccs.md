@@ -10,7 +10,7 @@ navigation_title: "Compare with CCS"
 
 # {{cps-cap}} compared to {{ccs}}
 
-{{cps-cap}} (CPS) is the {{serverless-full}} counterpart to [{{ccs}}](/explore-analyze/cross-cluster-search.md) (CCS). 
+{{cps-cap}} (CPS) provides {{serverless-full}} with cross-project search capabilities similar to [{{ccs}}](/explore-analyze/cross-cluster-search.md) (CCS). 
 
 Both features let you search data across multiple deployments from a single request, but the query syntax, default scope, and configuration requirements are different.
 

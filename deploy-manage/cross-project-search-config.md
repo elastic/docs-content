@@ -12,7 +12,7 @@ navigation_title: "Cross-project search"
 ::::{include} /deploy-manage/_snippets/cps-definition.md
 ::::
 
-{{cps-cap}} is the {{serverless-short}} counterpart to [{{ccs}}](/explore-analyze/cross-cluster-search.md), with a few differences and enhancements. For a side-by-side syntax comparison, refer to [](/explore-analyze/cross-project-search/cps-compared-to-ccs.md).
+{{cps-cap}} provides {{serverless-short}} with cross-project search capabilities similar to [{{ccs}}](/explore-analyze/cross-cluster-search.md), with a few differences and enhancements. For a side-by-side syntax comparison, refer to [](/explore-analyze/cross-project-search/cps-compared-to-ccs.md).
 
 * Setting up {{cps}} doesn't require an understanding of your deployment architecture or complex security configurations.
 * Permissions stay consistent across projects, and you can always adjust scope and access as needed.
