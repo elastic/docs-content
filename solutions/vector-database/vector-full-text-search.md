@@ -1,6 +1,6 @@
 ---
 navigation_title: Vector and full-text search
-description: Step-by-step tutorial for connecting an application to an Elasticsearch Vector Database project, indexing data, and running full-text, semantic, hybrid, and ES|QL searches.
+description: Step-by-step tutorial for connecting an application to an Elasticsearch Vector Database project, indexing data, and running semantic, hybrid, and ES|QL searches.
 applies_to:
   vectordb: ga
 ---
@@ -21,9 +21,8 @@ Create a free [{{es}} Vector Database project](https://cloud.elastic.co/projects
 
 The project takes about a minute to start. The **Getting started** page then displays the **Project endpoint** and a generated API key. Copy both values.
 
-:::{tip}
 You can also find the **Project endpoint** and API keys on the **Home** page. To find the **Home** page, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select **Connection details** ![Connection details icon](/solutions/images/connection-details-icon.svg "") to view your endpoint and manage API keys.
-:::
+
 
 ## Connect to your project [vector-full-text-search-connect]
 
@@ -297,58 +296,6 @@ Create the `books` index and add the sample data.
 :::::{tab-set}
 :group: languages
 
-::::{tab-item} Console
-:sync: console
-
-```console
-PUT books
-{
-  "mappings": {
-    "properties": { <1>
-      "description": {
-        "type": "semantic_text" <2>
-      }
-    }
-  }
-}
-```
-
-1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
-2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
-
-:::{note}
-[`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
-:::
-
-::::
-
-::::{tab-item} curl
-:sync: curl
-
-```bash
-curl -X PUT "$ES_URL/books" \
-  -H "Authorization: ApiKey $ES_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "mappings": {
-      "properties": { <1>
-        "description": {
-          "type": "semantic_text" <2>
-        }
-      }
-    }
-  }'
-```
-
-1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
-2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
-
-:::{note}
-[`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
-:::
-
-::::
-
 ::::{tab-item} Python
 :sync: python
 
@@ -367,7 +314,7 @@ es.indices.create(
 
 1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
 2. [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors. <br>
-In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints). <br> <br>
+In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models. <br> <br>
 
 
 
@@ -390,7 +337,7 @@ await es.indices.create({
 ```
 
 1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
-2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models.
 
 :::{note}
 [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
@@ -417,7 +364,7 @@ $es->indices()->create([
 ```
 
 1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
-2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models.
 
 :::{note}
 [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
@@ -444,7 +391,7 @@ es.indices.create(
 ```
 
 1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
-2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models.
 
 :::{note}
 [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
@@ -466,7 +413,7 @@ await es.Indices.CreateAsync<Book>("books", c => c
 ```
 
 1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
-2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models.
 
 :::{note}
 [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
@@ -495,7 +442,7 @@ es.indices().create(c -> c
 ```
 
 1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
-2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models.
 
 :::{note}
 [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
@@ -529,7 +476,56 @@ createResponse.Body.Close()
 ```
 
 1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
-2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. To use custom models, refer to [Configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models.
+
+:::{note}
+[`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
+:::
+
+::::
+
+::::{tab-item} Console
+:sync: console
+
+```console
+PUT books
+{
+  "mappings": {
+    "properties": { <1>
+      "description": {
+        "type": "semantic_text" <2>
+      }
+    }
+  }
+}
+```
+
+1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
+2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models. <br>
+[`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
+
+::::
+
+::::{tab-item} curl
+:sync: curl
+
+```bash
+curl -X PUT "$ES_URL/books" \
+  -H "Authorization: ApiKey $ES_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "mappings": {
+      "properties": { <1>
+        "description": {
+          "type": "semantic_text" <2>
+        }
+      }
+    }
+  }'
+```
+
+1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning.
+2. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). The model used by this endpoint is multilingual, so you can index and search text in multiple languages. You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models.
 
 :::{note}
 [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors.
@@ -543,48 +539,6 @@ Next, index five books in one bulk request:
 
 :::::{tab-set}
 :group: languages
-
-::::{tab-item} Console
-:sync: console
-
-```console
-POST books/_bulk?refresh=wait_for
-{ "index": {} }
-{ "title": "The Left Hand of Darkness", "author": "Ursula K. Le Guin", "release_year": 1969, "description": "An envoy visits an icy planet whose people have no fixed gender, feeling out politics and friendship across a deep cultural gap." }
-{ "index": {} }
-{ "title": "Project Hail Mary", "author": "Andy Weir", "release_year": 2021, "description": "A lone astronaut wakes with amnesia on a spaceship and has to stop a disaster that threatens all life on Earth." }
-{ "index": {} }
-{ "title": "The Name of the Wind", "author": "Patrick Rothfuss", "release_year": 2007, "description": "A gifted young musician and magician tells the story of his rise from orphan to legend." }
-{ "index": {} }
-{ "title": "Klara and the Sun", "author": "Kazuo Ishiguro", "release_year": 2021, "description": "An artificial friend watches human love and loneliness while hoping a child will pick her." }
-{ "index": {} }
-{ "title": "Dune", "author": "Frank Herbert", "release_year": 1965, "description": "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power." }
-```
-
-::::
-
-::::{tab-item} curl
-:sync: curl
-
-```bash
-curl -X POST "$ES_URL/books/_bulk?refresh=wait_for" \
-  -H "Authorization: ApiKey $ES_API_KEY" \
-  -H "Content-Type: application/x-ndjson" \
-  --data-binary @- <<'EOF'
-{ "index": {} }
-{ "title": "The Left Hand of Darkness", "author": "Ursula K. Le Guin", "release_year": 1969, "description": "An envoy visits an icy planet whose people have no fixed gender, feeling out politics and friendship across a deep cultural gap." }
-{ "index": {} }
-{ "title": "Project Hail Mary", "author": "Andy Weir", "release_year": 2021, "description": "A lone astronaut wakes with amnesia on a spaceship and has to stop a disaster that threatens all life on Earth." }
-{ "index": {} }
-{ "title": "The Name of the Wind", "author": "Patrick Rothfuss", "release_year": 2007, "description": "A gifted young musician and magician tells the story of his rise from orphan to legend." }
-{ "index": {} }
-{ "title": "Klara and the Sun", "author": "Kazuo Ishiguro", "release_year": 2021, "description": "An artificial friend watches human love and loneliness while hoping a child will pick her." }
-{ "index": {} }
-{ "title": "Dune", "author": "Frank Herbert", "release_year": 1965, "description": "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power." }
-EOF
-```
-
-::::
 
 ::::{tab-item} Python
 :sync: python
@@ -963,6 +917,48 @@ if err := indexer.Close(ctx); err != nil {
 
 ::::
 
+::::{tab-item} Console
+:sync: console
+
+```console
+POST books/_bulk?refresh=wait_for
+{ "index": {} }
+{ "title": "The Left Hand of Darkness", "author": "Ursula K. Le Guin", "release_year": 1969, "description": "An envoy visits an icy planet whose people have no fixed gender, feeling out politics and friendship across a deep cultural gap." }
+{ "index": {} }
+{ "title": "Project Hail Mary", "author": "Andy Weir", "release_year": 2021, "description": "A lone astronaut wakes with amnesia on a spaceship and has to stop a disaster that threatens all life on Earth." }
+{ "index": {} }
+{ "title": "The Name of the Wind", "author": "Patrick Rothfuss", "release_year": 2007, "description": "A gifted young musician and magician tells the story of his rise from orphan to legend." }
+{ "index": {} }
+{ "title": "Klara and the Sun", "author": "Kazuo Ishiguro", "release_year": 2021, "description": "An artificial friend watches human love and loneliness while hoping a child will pick her." }
+{ "index": {} }
+{ "title": "Dune", "author": "Frank Herbert", "release_year": 1965, "description": "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power." }
+```
+
+::::
+
+::::{tab-item} curl
+:sync: curl
+
+```bash
+curl -X POST "$ES_URL/books/_bulk?refresh=wait_for" \
+  -H "Authorization: ApiKey $ES_API_KEY" \
+  -H "Content-Type: application/x-ndjson" \
+  --data-binary @- <<'EOF'
+{ "index": {} }
+{ "title": "The Left Hand of Darkness", "author": "Ursula K. Le Guin", "release_year": 1969, "description": "An envoy visits an icy planet whose people have no fixed gender, feeling out politics and friendship across a deep cultural gap." }
+{ "index": {} }
+{ "title": "Project Hail Mary", "author": "Andy Weir", "release_year": 2021, "description": "A lone astronaut wakes with amnesia on a spaceship and has to stop a disaster that threatens all life on Earth." }
+{ "index": {} }
+{ "title": "The Name of the Wind", "author": "Patrick Rothfuss", "release_year": 2007, "description": "A gifted young musician and magician tells the story of his rise from orphan to legend." }
+{ "index": {} }
+{ "title": "Klara and the Sun", "author": "Kazuo Ishiguro", "release_year": 2021, "description": "An artificial friend watches human love and loneliness while hoping a child will pick her." }
+{ "index": {} }
+{ "title": "Dune", "author": "Frank Herbert", "release_year": 1965, "description": "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power." }
+EOF
+```
+
+::::
+
 :::::
 
 ## Run search [vector-full-text-search-search]
@@ -975,42 +971,6 @@ Run a semantic search against the `description` field:
 
 :::::{tab-set}
 :group: languages
-
-::::{tab-item} Console
-:sync: console
-
-```console
-GET books/_search
-{
-  "query": {
-    "semantic": {
-      "field": "description",
-      "query": "surviving alone in space"
-    }
-  }
-}
-```
-
-::::
-
-::::{tab-item} curl
-:sync: curl
-
-```bash
-curl -X GET "$ES_URL/books/_search" \
-  -H "Authorization: ApiKey $ES_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "query": {
-      "semantic": {
-        "field": "description",
-        "query": "surviving alone in space"
-      }
-    }
-  }'
-```
-
-::::
 
 ::::{tab-item} Python
 :sync: python
@@ -1204,6 +1164,42 @@ for _, hit := range response.Hits.Hits {
 
 ::::
 
+::::{tab-item} Console
+:sync: console
+
+```console
+GET books/_search
+{
+  "query": {
+    "semantic": {
+      "field": "description",
+      "query": "surviving alone in space"
+    }
+  }
+}
+```
+
+::::
+
+::::{tab-item} curl
+:sync: curl
+
+```bash
+curl -X GET "$ES_URL/books/_search" \
+  -H "Authorization: ApiKey $ES_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": {
+      "semantic": {
+        "field": "description",
+        "query": "surviving alone in space"
+      }
+    }
+  }'
+```
+
+::::
+
 :::::
 
 :::{dropdown} Example output
@@ -1222,70 +1218,6 @@ Run a hybrid search that uses full-text search on the `title` field and semantic
 
 :::::{tab-set}
 :group: languages
-
-::::{tab-item} Console
-:sync: console
-
-```console
-GET books/_search
-{
-  "query": {
-    "bool": {
-      "should": [
-        {
-          "match": { <1>
-            "title": "wind"
-          }
-        },
-        {
-          "semantic": { <2>
-            "field": "description",
-            "query": "young magician coming of age"
-          }
-        }
-      ]
-    }
-  }
-}
-```
-
-1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
-2. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
-
-::::
-
-::::{tab-item} curl
-:sync: curl
-
-```bash
-curl -X GET "$ES_URL/books/_search" \
-  -H "Authorization: ApiKey $ES_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "query": {
-      "bool": {
-        "should": [
-          {
-            "match": { <1>
-              "title": "wind"
-            }
-          },
-          {
-            "semantic": { <2>
-              "field": "description",
-              "query": "young magician coming of age"
-            }
-          }
-        ]
-      }
-    }
-  }'
-```
-
-1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
-2. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
-
-::::
 
 ::::{tab-item} Python
 :sync: python
@@ -1569,6 +1501,70 @@ for _, hit := range response.Hits.Hits {
 
 ::::
 
+::::{tab-item} Console
+:sync: console
+
+```console
+GET books/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": { <1>
+            "title": "wind"
+          }
+        },
+        {
+          "semantic": { <2>
+            "field": "description",
+            "query": "young magician coming of age"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
+2. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+
+::::
+
+::::{tab-item} curl
+:sync: curl
+
+```bash
+curl -X GET "$ES_URL/books/_search" \
+  -H "Authorization: ApiKey $ES_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": {
+      "bool": {
+        "should": [
+          {
+            "match": { <1>
+              "title": "wind"
+            }
+          },
+          {
+            "semantic": { <2>
+              "field": "description",
+              "query": "young magician coming of age"
+            }
+          }
+        ]
+      }
+    }
+  }'
+```
+
+1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
+2. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+
+::::
+
 :::::
 
 :::{dropdown} Example output
@@ -1587,37 +1583,6 @@ With [aggregations](/explore-analyze/query-filter/aggregations.md), you can summ
 
 :::::{tab-set}
 :group: languages
-
-::::{tab-item} Console
-:sync: console
-
-```console
-POST _query
-{
-  "query": """
-    FROM books
-    | STATS books = COUNT(*) BY decade = release_year - (release_year % 10)
-    | KEEP decade, books
-    | SORT decade ASC
-  """
-}
-```
-
-::::
-
-::::{tab-item} curl
-:sync: curl
-
-```bash
-curl -X POST "$ES_URL/_query" \
-  -H "Authorization: ApiKey $ES_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "query": "FROM books | STATS books = COUNT(*) BY decade = release_year - (release_year % 10) | KEEP decade, books | SORT decade ASC"
-  }'
-```
-
-::::
 
 ::::{tab-item} Python
 :sync: python
@@ -1787,6 +1752,37 @@ response, err := typed.Esql.Query().
 for _, row := range rows[1:] {
 	fmt.Printf("%ss: %s\n", row[0], row[1])
 }
+```
+
+::::
+
+::::{tab-item} Console
+:sync: console
+
+```console
+POST _query
+{
+  "query": """
+    FROM books
+    | STATS books = COUNT(*) BY decade = release_year - (release_year % 10)
+    | KEEP decade, books
+    | SORT decade ASC
+  """
+}
+```
+
+::::
+
+::::{tab-item} curl
+:sync: curl
+
+```bash
+curl -X POST "$ES_URL/_query" \
+  -H "Authorization: ApiKey $ES_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "FROM books | STATS books = COUNT(*) BY decade = release_year - (release_year % 10) | KEEP decade, books | SORT decade ASC"
+  }'
 ```
 
 ::::
