@@ -25,7 +25,7 @@ You might want to change the configuration of your deployment to:
 * Enable [autoscaling](../../../deploy-manage/autoscaling.md) so that the available resources for deployment components, such as data tiers and machine learning nodes, adjust automatically as the demands on them change over time.
 * Enable high availability, also known as fault tolerance, by adjusting the number of data center availability zones that parts of your deployment run on.
 * Upgrade to new versions of {{es}}. You can upgrade from one major version to another, such as from 6.8.23 to 7.17.27, or from one minor version to another, such as 6.1 to 6.2. You can’t downgrade versions.
-* Change what plugins are available on your {{es}} cluster.
+* Change what plugins are available on your {{es}} cluster. Refer to [Plugins and bundles](/deploy-manage/plugins-and-bundles.md).
 
 With the exception of major version upgrades for {{stack}} products, {{ech}} can perform configuration changes without having to interrupt your deployment. You can continue searching and indexing. The changes can also be done in bulk. For example: in one action, you can add more memory, upgrade, adjust the number of {{es}} plugins and adjust the number of availability zones.
 

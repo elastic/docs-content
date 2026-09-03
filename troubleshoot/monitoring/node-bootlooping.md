@@ -138,7 +138,7 @@ deployment:
   ece: ga
 ```
 
-During the process of applying a configuration change, {{ecloud}} checks to determine if any [uploaded custom plugins or bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) are expired.
+During the process of applying a configuration change, {{ecloud}} checks to determine if any [uploaded custom plugins or bundles](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md) are expired.
 
 Problematic plugins produce oscillating {{es}} start-up logs like the following:
 

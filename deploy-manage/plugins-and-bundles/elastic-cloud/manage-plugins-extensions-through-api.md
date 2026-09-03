@@ -1,5 +1,6 @@
 ---
 navigation_title: Manage through API
+description: Create, update, enable, and delete Elastic Cloud Hosted plugins and bundles programmatically with the API.
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-plugins-guide.html
 applies_to:

@@ -97,7 +97,7 @@ For more information, refer to [Edit your user settings](edit-stack-settings.md)
 
 Lists the official plugins available for your selected {{es}} version, as well as any custom plugins and user bundles with dictionaries or scripts.
 
-When selecting a plugin from this list you get a version that has been tested with the chosen {{es}} version. The main difference between selecting a plugin from this list and uploading the same plugin as a custom extension is in who decides the version used. To learn more, check [*Add plugins and extensions*](add-plugins-extensions.md).
+When selecting a plugin from this list you get a version that has been tested with the chosen {{es}} version. The main difference between selecting a plugin from this list and uploading the same plugin as a custom extension is in who decides the version used. To learn more, check [*Add plugins and extensions*](/deploy-manage/plugins-and-bundles/elastic-cloud/add-plugins-extensions.md).
 
 The reason we do not list the version chosen on this page is because we reserve the option to change it when necessary. That said, we will not force a cluster restart for a simple plugin upgrade unless there are severe issues with the current version. In most cases, plugin upgrades are applied lazily, in other words when something else forces a restart like you changing the plan or {{es}} runs out of memory.
 

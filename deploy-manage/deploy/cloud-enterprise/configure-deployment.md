@@ -18,8 +18,8 @@ You can modify your deployment to adjust resources, enable additional features, 
 * [](./customize-deployment.md): Learn how to change your deployment architecture, configure resources, autoscaling, data tiers, and other {{stack}} components, from the **Edit** deployment view.
 * [](./edit-stack-settings.md): Add, remove, or update {{es}} or {{kib}} YML configuration settings.
 * [](./resize-deployment.md): Learn how to scale a deployment, including important considerations, and a practical example.
-* [](./add-plugins.md): Enable or disable plugins from the list of available extensions in ECE.
-* [](./add-custom-bundles-plugins.md): Add custom plugins or external configuration files to your {{es}} instances.
+* [](/deploy-manage/plugins-and-bundles/cloud-enterprise/add-plugins-provided-with-ece.md): Enable or disable plugins from the list of available extensions in ECE.
+* [](/deploy-manage/plugins-and-bundles/cloud-enterprise/add-custom-bundles-plugins.md): Add custom plugins or external configuration files to your {{es}} instances.
 * [](./ece-regional-deployment-aliases.md): Configure custom aliases to create predictable and human-readable URLs for your {{stack}} components, making them easier to share and use.
 * [](./resource-overrides.md): Temporary extend cluster capacity to improve stability.
 

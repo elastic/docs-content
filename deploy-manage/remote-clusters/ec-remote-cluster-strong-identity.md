@@ -39,7 +39,7 @@ cluster.remote.<my_remote_cluster>.signing.key: "node.key" <1>
 ```
 1. Replace `<my_remote_cluster>` with your remote cluster alias.
 
-If you use your own certificates, upload the certificate and key files [as a ZIP bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) and reference them in the settings:
+If you use your own certificates, upload the certificate and key files [as a ZIP bundle](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md) and reference them in the settings:
 
 ```yaml
 cluster.remote.<my_remote_cluster>.signing.certificate: "/app/config/<bundle-zip-directory>/<signing-cert.crt>" <1>
@@ -65,9 +65,9 @@ The certificate and key used by the local cluster to sign cross-cluster requests
     * If the local cluster uses the default transport certificates, but the remote cluster belongs to a different {{ecloud}} provider or region, you must download the local cluster transport CA and upload it to the remote deployment as a bundle. To do that:
       1. Open your deployment management page in the Elastic Cloud UI and go to **Security**.
       1. Under **CA certificates**, select the download icon to save the CA into a local file.
-      1. Add the CA certificate [as a ZIP bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) in your remote deployment, and reference the file in the `cluster.remote.signing.certificate_authorities` setting.
+      1. Add the CA certificate [as a ZIP bundle](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md) in your remote deployment, and reference the file in the `cluster.remote.signing.certificate_authorities` setting.
 
-    * If you use custom certificates in the local cluster, upload the associated CA to the remote cluster [as a ZIP bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md), and reference the file in the `cluster.remote.signing.certificate_authorities` setting.
+    * If you use custom certificates in the local cluster, upload the associated CA to the remote cluster [as a ZIP bundle](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md), and reference the file in the `cluster.remote.signing.certificate_authorities` setting.
 
 1. When creating the cross-cluster API key on the remote cluster, you must specify a `certificate_identity` pattern that matches the Distinguished Name (DN) of the certificate used by the local cluster.
 

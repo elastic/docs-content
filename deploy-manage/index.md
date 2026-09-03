@@ -45,6 +45,8 @@ Learn how to design and deploy a production-ready Elastic environment.
 * [](/deploy-manage/distributed-architecture.md): Learn about the architecture of {{es}} and {{kib}}, and how Elastic stores and retrieves data and executes tasks in clusters with multiple nodes.
 * [](/deploy-manage/production-guidance.md): Review tips and guidance that you can use to design a production environment that matches your workloads, policies, and deployment needs.
 * [](/deploy-manage/reference-architectures.md): Explore blueprints for deploying clusters tailored to different use cases.
+* [](/deploy-manage/stack-settings.md): Customize {{es}}, {{kib}}, and other {{stack}} settings for your deployment type.
+* [](/deploy-manage/plugins-and-bundles.md): Add {{es}} plugins and configuration bundles across {{ech}}, {{ece}}, {{eck}}, and self-managed deployments.
 * [](/deploy-manage/tools.md): Learn about the tools available to safeguard data, ensure continuous availability, and maintain resilience in your {{es}} environment.
 * [](/deploy-manage/autoscaling.md): Learn how to configure your [orchestrated](/deploy-manage/deploy.md#about-orchestration) deployment to scale based on policies and cluster signals. Applies to {{ech}}, {{ece}}, and {{eck}} deployments.
 * [](/deploy-manage/cloud-connect.md): Learn how to use {{ecloud}} services in your self-hosted environment.

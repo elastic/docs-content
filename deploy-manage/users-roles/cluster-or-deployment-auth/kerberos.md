@@ -166,7 +166,7 @@ For detailed information of available realm settings, see [Kerberos realm settin
 
 ::::{applies-item} { ess:, ece: }
 
-1. Add a custom bundle that contains your `krb5.conf` and `keytab` files to your cluster. For {{ech}}, follow [](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). For {{ece}}, follow [](/deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md).
+1. Add a custom bundle that contains your `krb5.conf` and `keytab` files to your cluster. For {{ech}}, follow [](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md). For {{ece}}, follow [](/deploy-manage/plugins-and-bundles/cloud-enterprise/add-custom-bundles-plugins.md).
 
     :::{tip}
     You should use these exact filenames for {{ecloud}} to recognize the file in the bundle.
@@ -188,7 +188,7 @@ For detailed information of available realm settings, see [Kerberos realm settin
 
 ::::{applies-item} eck:
 
-1. Install your `krb5.conf` and `keytab` files as a [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). Mount them in a sub-directory of the main config directory, for example `/usr/share/elasticsearch/config/kerberos`, and use a `Secret` instead of a `ConfigMap` to store the information.
+1. Install your `krb5.conf` and `keytab` files as a [custom configuration files](/deploy-manage/plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). Mount them in a sub-directory of the main config directory, for example `/usr/share/elasticsearch/config/kerberos`, and use a `Secret` instead of a `ConfigMap` to store the information.
 
 2. Configure the JVM to find the Kerberos configuration file.
 

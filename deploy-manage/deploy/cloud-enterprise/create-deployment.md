@@ -39,7 +39,7 @@ To create a deployment in ECE:
         Restoring a snapshot can help with major version upgrades by creating a separate, non-production deployment where you can test, for example. Or, make life easier for your developers by providing them with a development environment that is populated with real data.
     ::::
 
-6. Select **Advanced settings** if you want to configure [autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md), adjust resources, [select plugins](./add-plugins.md), or customize [data tiers](/manage-data/lifecycle/data-tiers.md). Refer to [Customize your deployment](../../../deploy-manage/deploy/cloud-enterprise/customize-deployment.md) for more details on the available options.
+6. Select **Advanced settings** if you want to configure [autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md), adjust resources, [select plugins](/deploy-manage/plugins-and-bundles/cloud-enterprise/add-plugins-provided-with-ece.md), or customize [data tiers](/manage-data/lifecycle/data-tiers.md). Refer to [Customize your deployment](../../../deploy-manage/deploy/cloud-enterprise/customize-deployment.md) for more details on the available options.
 
 7. Select **Create deployment**. It takes a few minutes before your deployment gets created.
 
