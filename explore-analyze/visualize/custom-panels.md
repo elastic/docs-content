@@ -67,7 +67,7 @@ A custom panel needs a template and, to show live data, an {{esql}} query. You c
    :screenshot:
    :::
 
-4. Provide the template in one of two ways:
+4. Provide the template and, optionally, the {{esql}} query that returns the data required by the template. You have several options to define these elements:
 
    - Manually. For the template syntax, refer to [Write a template](#custom-panels-write-a-template). For the {{esql}} query, refer to [](/explore-analyze/query-filter/languages/esql-kibana.md).
    - Using AI. Select **Generate with chat** and describe the panel. The agent generates a template and, when using live data, the associated {{esql}} query. Refer to [Start from a conversation](#custom-panels-create-with-chat) if you'd prefer to follow this method.
