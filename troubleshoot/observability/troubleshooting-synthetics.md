@@ -151,11 +151,11 @@ To fix this you can either:
 stack: all
 ```
 
-After a stack upgrade, lightweight or browser-based monitors that run infrequently may appear in a pending state in the Synthetics app.
+After a stack upgrade, lightweight or browser-based monitors that run infrequently might appear in a pending state in the Synthetics app.
 
 This happens because the mapping for the field `observer.geo.name` changed from type `wildcard` to `keyword`. Backing indices created before the upgrade retain the old mapping, so new documents fail to index until the data stream rolls over.
 
-Monitors that run frequently resolve on their own, since their data streams hit the normal rollover thresholds quickly. Infrequently run monitors may take much longer.
+Monitors that run frequently resolve on their own, since their data streams hit the normal rollover thresholds quickly. Infrequently run monitors might take much longer.
 
 To fix this, manually roll over the affected data streams:
 
