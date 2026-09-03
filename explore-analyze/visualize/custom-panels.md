@@ -119,7 +119,7 @@ For saving, previewing, and syncing agent-created dashboards, refer to [Dashboar
 
 ## Edit a custom panel [custom-panels-edit]
 
-1. In **Edit** mode, hover over the panel and select {icon}`pencil` **Edit Custom content configuration**.
+1. In **Edit** mode, hover over the panel and select {icon}`pencil` **Edit Custom panel configuration**.
 
    The **Edit custom panel** flyout opens with the current template and query.
 
@@ -137,7 +137,7 @@ To reuse a template in another panel, select the {icon}`copy` **Copy template** 
 
 ## Refine a custom panel with chat [custom-panels-refine-with-chat]
 
-When a panel is attached to a conversation, the agent can change its template and query, and each answer keeps a version you can go back to. To attach a panel, select **Refine with chat** in the **Edit custom panel** flyout. On an empty panel, the button reads **Generate with chat**. A new conversation opens with the panel attached as **Custom content panel**.
+When a panel is attached to a conversation, the agent can change its template and query, and each answer keeps a version you can go back to. To attach a panel, select **Refine with chat** in the **Edit custom panel** flyout. On an empty panel, the button reads **Generate with chat**. A new conversation opens with the panel attached as **Custom panel**.
 
 1. Describe the panel or the change you want. The agent updates the template, the query, or both, and the panel on the dashboard updates when the answer completes.
 2. To go back to an earlier version, select **Preview** on the card of that answer. Each answer adds a card for its version, and the newest version is already applied to the panel. Keep the dashboard open while you do this.
