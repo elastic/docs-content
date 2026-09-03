@@ -69,7 +69,7 @@ A custom panel needs a template and, to show live data, an {{esql}} query. You c
 
 4. Provide the template and, optionally, the {{esql}} query that returns the data required by the template. You have several options to define these elements:
 
-   - Manually. For the template syntax, refer to [Write a template](#custom-panels-write-a-template). For the {{esql}} query, refer to [](/explore-analyze/query-filter/languages/esql-kibana.md).
+   - Manually, in **Template (HTML)** and **Data source (ES|QL)**. For the template syntax, refer to [Write a template](#custom-panels-write-a-template). For the {{esql}} query, refer to [](/explore-analyze/query-filter/languages/esql-kibana.md).
    - Using AI. Select **Generate with chat** and describe the panel. The agent generates a template and, when using live data, the associated {{esql}} query. Refer to [Start from a conversation](#custom-panels-create-with-chat) if you'd prefer to follow this method.
 
 5. If you chose to provide the template and the query manually, select **Preview data** to check the returned columns. The preview shows the first rows of the result.
@@ -94,7 +94,7 @@ The panel now shows your content. If it has a query, change the dashboard time r
 
 1. Open [{{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/chat.md). To add the panel to an existing dashboard, open that dashboard first and select **AI Agent** in the header, which opens the [chat sidebar](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode) with the dashboard attached. From a conversation without a dashboard, the agent creates a new dashboard for the panel.
 
-   You can also select **Add** -> **Custom** -> **Generate from chat** from an existing dashboard.
+   You can also select **Add** → **Custom** → **Generate with chat** from an existing dashboard.
 2. Describe the panel you want. The agent chooses the panel type and uses a custom panel only when a standard visualization doesn't fit. If you want a custom panel, say so in the prompt by asking for a custom panel or an HTML panel. For example:
 
    - "Create a custom panel with a health status card for each host."
