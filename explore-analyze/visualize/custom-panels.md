@@ -34,8 +34,8 @@ Use the panel type that fits your data, and choose a custom panel only when none
 - For scatter plots, small multiples, or layered charts, use [Vega](custom-visualizations-with-vega.md).
 - For text without data, use a [Markdown text panel](text-panels.md).
 - For any other layout that HTML and CSS can express, use a custom panel. For example:
-  - Chart types that aren't available in Visualizations and are complex to build as Vega visualizations, such as flowcharts, Sankey diagrams, or Gantt charts.
-  - Tables with conditional formatting, where a cell or row changes color when a value crosses a threshold.
+  - Chart types that aren't available in regular {{kib}} visualizations and are complex to build with Vega, such as flowcharts, Sankey diagrams, or Gantt charts.
+  - Tables with conditional formatting more advanced than regular {{kib}} visualization options.
   - Banners with your logo or brand colors. Place the logo as inline SVG in the template and it travels with the dashboard when you export it to another space or deployment. Uploaded [image panels](image-panels.md) lose their files on export.
   - Summary cards that combine several metrics, with badges, thresholds, or CSS-only tabs that switch between views.
 
@@ -57,7 +57,7 @@ A custom panel needs a template and, to show live data, an {{esql}} query. You c
 ### Start from the dashboard [custom-panels-create-from-dashboard]
 
 1. Open your dashboard in **Edit** mode.
-2. Select **Add** in the application menu and, if required, **New panel**.
+2. Select **Add** in the application menu.
 3. Select **Custom**.
 
    {{kib}} adds an empty panel and opens the **Create custom panel** flyout.
@@ -69,10 +69,10 @@ A custom panel needs a template and, to show live data, an {{esql}} query. You c
 
 4. Provide the template in one of two ways:
 
-   - Enter it in **Template (HTML)**. For the syntax, refer to [Write a template](#custom-panels-write-a-template).
-   - Select **Generate with chat** and describe the panel. The flyout closes, the empty panel stays on the dashboard, and a new conversation opens with the panel attached. When the answer completes, the panel shows the generated template and, when the panel needs live data, its query. The remaining steps apply when you enter the template yourself. To adjust a generated panel, refer to [Refine a custom panel with chat](#custom-panels-refine-with-chat).
+   - Manually. For the template syntax, refer to [Write a template](#custom-panels-write-a-template). For the {{esql}} query, refer to [](/explore-analyze/query-filter/languages/esql-kibana.md).
+   - Using AI. Select **Generate with chat** and describe the panel. The agent generates a template and, when using live data, the associated {{esql}} query. Refer to [Start from a conversation](#custom-panels-create-with-chat) if you'd prefer to follow this method.
 
-5. Optional: to show live data, expand **Data source (ES|QL)** and enter a query. Select **Preview data** to check the returned columns. The preview shows the first rows of the result.
+5. If you chose to provide the template and the query manually, select **Preview data** to check the returned columns. The preview shows the first rows of the result.
 
    You can switch between the template and the query until the column names match.
 
@@ -92,7 +92,9 @@ The panel now shows your content. If it has a query, change the dashboard time r
 
 ### Start from a conversation [custom-panels-create-with-chat]
 
-1. Open [{{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/chat.md). To add the panel to an existing dashboard, open that dashboard first and select the **AI Agent** button in the header bar, which opens the [chat sidebar](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode) with the dashboard attached. From a conversation without a dashboard, the agent creates a new dashboard for the panel.
+1. Open [{{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/chat.md). To add the panel to an existing dashboard, open that dashboard first and select **AI Agent** in the header, which opens the [chat sidebar](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode) with the dashboard attached. From a conversation without a dashboard, the agent creates a new dashboard for the panel.
+
+   You can also select **Add** -> **Custom** -> **Generate from chat** from an existing dashboard.
 2. Describe the panel you want. The agent chooses the panel type and uses a custom panel only when a standard visualization doesn't fit. If you want a custom panel, say so in the prompt by asking for a custom panel or an HTML panel. For example:
 
    - "Create a custom panel with a health status card for each host."
