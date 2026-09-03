@@ -67,7 +67,7 @@ Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpo
 
 **Send data to the {{motlp}}.**
 
-The {{motlp}} is GA on {{ech}}. For application telemetry only, send directly from your EDOT SDK or any OTLP-compatible exporter to the endpoint, with no {{agent}} required. For infrastructure telemetry, run {{agent}} on your hosts or cluster and configure it to export to the {{motlp}} using the OTLP exporter.
+The {{motlp}} is GA on {{ech}} and {{serverless-short}}. For application telemetry only, send directly from your EDOT SDK or any OTLP-compatible exporter to the endpoint, with no {{agent}} required. For infrastructure telemetry, run {{agent}} on your hosts or cluster and configure it to export to the {{motlp}} using the OTLP exporter.
 
 :::{note}
 The current {{ech}} quickstarts use a different path: an {{agent}} running on a host and writing directly to {{es}} using the `elasticsearch` exporter. This alternative works, but for new setups, use the mOTLP path. For more information, refer to [Send OTLP data to the {{motlp}}](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md).
