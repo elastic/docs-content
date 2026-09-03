@@ -51,10 +51,7 @@ Types within the same family do not trigger a warning (for example `long` in one
 
 Standardize the conflicting field to a compatible type in every linked project. Update index templates or reindex where needed.
 
-When mappings cannot be aligned immediately, narrow `project_routing` to projects with a consistent schema. For routing syntax and stale-alias problems, see [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md).
-
-:::{include} /troubleshoot/_snippets/cps-ml-update-preconditions.md
-:::
+When mappings cannot be aligned immediately, narrow `project_routing` to projects with a consistent schema. For routing syntax and stale-alias problems, see [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md). Before you change scope, review [Before you update](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md#before-you-update).
 
 ```console
 POST _ml/datafeeds/{datafeed_id}/_update
@@ -85,7 +82,7 @@ For the time field, only `date` and `date_nanos` are treated as compatible.
 
 Standardize the time field to a compatible type in every linked project (use `date` with a consistent format, or `date_nanos` everywhere). Update index templates or reindex where needed.
 
-To exclude a conflicting project immediately, narrow `project_routing` as shown in the optional-field section above.
+To exclude a conflicting project immediately, narrow `project_routing` as shown in [Optional-field warnings after scope change](#optional-field-warnings-after-scope-change).
 
 ### Verify
 
@@ -123,11 +120,11 @@ GET _origin:logs-*/_field_caps?fields=@timestamp,status&include_unmapped
 GET prod-us:logs-*/_field_caps?fields=@timestamp,status&include_unmapped
 ```
 
-Use the `_origin:` qualifier for the origin project and the linked project's alias for remote projects. In each response, inspect the field entry's type keys and compare them across calls using the compatibility families above.
+Use the `_origin:` qualifier for the origin project and the linked project's alias for linked projects. In each response, inspect the field entry's type keys and compare them across calls using the compatibility families in [Optional-field warnings after scope change](#optional-field-warnings-after-scope-change).
 
 ### Fix
 
-Align mappings across projects as described in the sections above.
+Align mappings across projects as described in [Optional-field warnings after scope change](#optional-field-warnings-after-scope-change) and [Required time-field fail-fast](#required-time-field-fail-fast).
 
 After mappings stabilize:
 

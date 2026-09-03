@@ -30,7 +30,7 @@ Datafeed is encountering errors extracting data: [1] remote clusters out of [3] 
 
 The bracketed skip and total counts vary with how many linked projects are in scope. The wrapped text is the message thrown when any linked project is skipped during the search.
 
-Inspect `remote_cluster_stats` via [get datafeed stats]({{es-apis}}operation/operation-ml-get-datafeed-stats).
+Inspect `remote_cluster_stats` using [get datafeed stats]({{es-apis}}operation/operation-ml-get-datafeed-stats).
 
 During an active skip outage, `skipped_clusters` can remain `0` while skip errors repeat in job messages because extraction aborts before stats are updated.
 
@@ -56,16 +56,13 @@ Example excerpt (field names and structure match the stats API, values vary):
 
 For routing or stale alias problems, see [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md).
 
-An internal cloud API key problem can also stop cross-project searches. The distinguishing signal is a credential-specific message in job messages, for example an authentication failure on the internal cloud API key or a forbidden response while using that key, rather than the skip summary above. See [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md).
+An internal cloud API key problem can also stop cross-project searches. The distinguishing signal is a credential-specific message in job messages, for example an authentication failure on the internal cloud API key or a forbidden response while using that key, rather than a skip summary. See [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md).
 
 ### Fix
 
 If the linked project was removed or never linked, re-establish it in [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), then wait for the next extraction cycle or restart the {{dfeed}}.
 
-When a project stays unreachable and you need the {{dfeed}} to keep producing results from the remaining scope, narrow `project_routing` to an `_alias:` expression that excludes the unavailable project:
-
-:::{include} /troubleshoot/_snippets/cps-ml-update-preconditions.md
-:::
+When a project stays unreachable and you need the {{dfeed}} to keep producing results from the remaining scope, narrow `project_routing` to an `_alias:` expression that excludes the unavailable project. Before you change scope, review [Before you update](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md#before-you-update).
 
 ```console
 POST _ml/datafeeds/{datafeed_id}/_update
