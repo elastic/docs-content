@@ -23,7 +23,7 @@ Operational contacts can only receive operational notifications, such as out-of-
 To update billing and operational contacts, or set an email address for monitoring alerts:
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From the navigation menu, select **Organization** → **Contacts**.
+2. From the navigation menu, select **Organization** > **Contacts**.
 3. On the **Contacts** page, specify your new contacts.
   
 You can specify multiple email addresses for each category. They become effective immediately and no further confirmation of the email addresses is required.

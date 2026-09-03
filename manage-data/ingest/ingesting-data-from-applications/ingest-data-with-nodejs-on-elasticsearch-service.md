@@ -103,7 +103,7 @@ To connect to, stream data to, and issue queries, you need to think about authen
 
 ### Basic authentication [ec_basic_authentication]
 
-For basic authentication, use the same deployment credentials (`username` and `password` parameters) and Cloud ID you copied down earlier when you created your deployment. (If you did not save the password, you can [reset the password](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md) .)
+For basic authentication, use the same deployment credentials (`username` and `password` parameters) and Cloud ID you copied down earlier when you created your deployment. (If you did not save the password, you can [reset it](../../../deploy-manage/users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md).)
 
 
 ## Create a sample application [ec_create_a_sample_application]

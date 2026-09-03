@@ -50,7 +50,7 @@ For more information, refer to [User roles and privileges](/deploy-manage/users-
 ::::{tab-set}
 :::{tab-item} Using the {{ecloud}} Console
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From the navigation menu, select **Organization** → **API keys**.
+2. From the navigation menu, select **Organization** > **API keys**.
 3. Click **Create API key**.
 4. On the **Create API key** flyout, you can configure your new key:
    1. Add a unique name for the key.
@@ -104,7 +104,7 @@ curl -XPOST \
 ## Revoke an API key [ec_revoke_an_api_key]
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From the navigation menu, select **Organization** → **API keys**.
+2. From the navigation menu, select **Organization** > **API keys**.
 3. Find the key you want to revoke, and click the trash icon under **Actions**.
    
 ## API key expiration [expiration]
