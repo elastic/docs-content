@@ -385,6 +385,16 @@ toc:
     children:
       - file: find-and-organize/kibana-interface.md
       - file: find-and-organize/data-views.md
+        children:
+          - file: find-and-organize/data-views/create-data-view.md
+          - file: find-and-organize/data-views/delete-data-view.md
+          - file: find-and-organize/data-views/duplicate-data-view.md
+          - file: find-and-organize/data-views/customize-data-view-fields.md
+            children:
+              - file: find-and-organize/data-views/runtime-fields.md
+              - file: find-and-organize/data-views/scripted-fields.md
+              - file: find-and-organize/data-views/field-formatters.md
+              - file: find-and-organize/data-views/data-view-field-cache.md
       - file: find-and-organize/saved-objects.md
       - file: find-and-organize/files.md
       - file: find-and-organize/reports.md
