@@ -23,6 +23,22 @@ To use workflows, you must turn on the feature and ensure your role has the appr
 You must also have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 ::::
 
+## Execution-based billing [workflows-execution-billing]
+
+```{applies_to}
+stack: ga 9.5+
+deployment:
+  ech: ga
+```
+
+On {{ech}}, [workflows](/explore-analyze/workflows.md) is billed based on workflow executions. Each workflow run counts as one execution, including runs that fail, are canceled, or time out. Runs skipped by concurrency controls are not metered.
+
+The first 10,000 workflow executions across the {{ech}} deployments in an {{ecloud}} organization each month are included. Additional executions are billed according to the published amounts.
+
+When a workflow invokes an agent, the {{agent-builder}} execution is metered separately. Refer to the [Hosted add-ons pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=stack_hosted&group=addons&dimension=executions) for current billing amounts.
+
+This billing model doesn't apply to {{ech}} [FedRAMP authorized Cloud offerings](/deploy-manage/deploy/elastic-cloud/fedramp.md), which remain under promotional pricing.
+
 ## Monitor execution [workflows-monitor-execution]
 
 When a workflow runs, the execution panel displays:

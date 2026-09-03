@@ -1,6 +1,8 @@
 ---
+navigation_title: Synonyms
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-synonyms.html
+description: Learn how to define synonym sets, configure synonym token filters and analyzers, and apply synonyms at search time or index time in Elasticsearch.
 applies_to:
   stack:
   serverless:
@@ -8,87 +10,81 @@ products:
   - id: elasticsearch
 ---
 
-# Search with synonyms [search-with-synonyms]
+# Configure synonyms in {{es}} [search-with-synonyms]
+
+Synonyms are words or phrases that have the same or similar meaning. When you configure synonyms in {{product.elasticsearch}}, a search for one term automatically matches documents that use an equivalent term. For example, you can define synonym rules to match different terms for the same concept, surface results for domain-specific jargon, or handle common misspellings.
+
+This page walks you through defining synonym rules, grouping them into reusable synonym sets, configuring {{product.elasticsearch}} to apply them during text analysis, and verifying that queries return the expanded results you expect.
+
+% TODO: these bundle links do not belong here — migration artifacts kept to avoid broken builds
 
 $$$ece-add-custom-bundle-example-synonyms$$$
-::::{note}
-Learn about [adding custom synonym bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) to your {{ece}} deployment.
-::::
-
-% TODO: these bundle links do not belong here
-
 $$$ece-add-custom-bundle-example-LDA$$$
-
 $$$ece-add-custom-bundle-example-SAML$$$
-
 $$$ece-add-custom-bundle-example-cacerts$$$
-
 $$$ece-add-custom-bundle-example-LDAP$$$
 
-Synonyms are words or phrases that share the same or similar meaning. Searching using synonyms allows you to:
+## Prerequisites
 
-* Improve search relevance by finding relevant documents that use different terms to express the same concept.
-* Make domain-specific vocabulary more user-friendly.
-* Define misspellings and typos to transparently handle common mistakes.
+To manage synonym sets using the API or {{kib}} UI, you need the `manage_search_synonyms` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md).
 
-## How synonyms work in Elasticsearch
+## Synonyms workflow overview
 
 To use synonyms in {{es}}, follow this workflow:
 
-1. **Create synonym sets and rules**: Define which terms are equivalent and where to store your synonym sets.
-2. **Configure analyzers**: Configure your token filters and analyzers to use them.
-3. **Test and apply**: Verify your configuration works correctly.
+1. [**Create synonym sets and rules**](#synonyms-store-synonyms): Define which terms are equivalent and how to store your synonym sets.
+2. [**Configure token filters and analyzers**](#synonyms-synonym-token-filters): Set up synonym token filters and add them to your analyzers.
+3. [**Create an index with your synonym analyzer**](#synonyms-apply-synonyms): Apply your analyzer to an index mapping.
+4. [**Test your analyzer**](#synonyms-test-analyzer): Verify your synonym configuration produces the expected tokens.
+5. [**Search with synonyms**](#synonyms-search-example): Run a search query and confirm synonym expansion works.
 
 ## Synonym rule formats
 
-Synonym rules define which terms should be treated as equivalent during search and indexing.
+Synonym rules define which terms should be treated as equivalent. Each rule uses one of two mapping types:
 
-There are two main formats for synonym rules: explicit mappings and equivalent mappings.
+- **Explicit mappings** use `=>` to specify one-way replacements (for example, `i-pod, i pod => ipod`).
+- **Equivalent mappings** use commas to group interchangeable terms (for example, `ipod, i-pod, i pod`).
 
-#### Explicit mappings
-
-Explicit mappings use `=>` to specify exact replacements:
-
-```
-i-pod, i pod => ipod
-sea biscuit, sea biscit => seabiscuit
-```
-
-With explicit mappings, the relationship is one-way. In the previous examples:
-- `i-pod` and `i pod` will be replaced with `ipod`, but `ipod` will not be replaced with `i-pod` or `i pod`
-- `sea biscuit` and `sea biscit` will be replaced with `seabiscuit`, but `seabiscuit` will not be replaced with `sea biscuit` or `sea biscit`
-
-This is different from equivalent synonyms, which can create bidirectional relationships when `expand=true`.
-
-#### Equivalent mappings
-
-Equivalent synonyms use commas to group interchangeable terms:
-
-```
-ipod, i-pod, i pod
-foozball, foosball
-universe, cosmos
-lol, laughing out loud
-```
-
-The behavior of equivalent synonyms depends on the `expand` parameter in your token filter configuration:
-- If `expand=true`: `ipod, i-pod, i pod` creates bidirectional mappings:
-  - `ipod` ↔ `i-pod`
-  - `ipod` ↔ `i pod` 
-  - `i-pod` ↔ `i pod`
-- If `expand=false`: `ipod, i-pod, i pod` maps all terms to the first term as canonical:
-  - `ipod` → `ipod`
-  - `i-pod` → `ipod`
-  - `i pod` → `ipod`
+For full format details, refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md) reference.
 
 ## Step 1: Create synonym sets and rules [synonyms-store-synonyms]
 
 You have multiple options for creating synonym sets and rules.
 
-### Method 1: {{kib}} UI
+Synonym sets created through the API or the {{kib}} UI can only be used at search time. For index-time synonyms, use a file-based or inline approach with the [`synonym` token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md).
 
-```yaml {applies_to}
-serverless: 
+::::::{tab-set}
+
+:::::{tab-item} REST API
+
+$$$synonyms-store-synonyms-api$$$
+
+You can use the [synonyms APIs]({{es-apis}}group/endpoint-synonyms) to manage synonym sets. This is the most flexible approach, as it allows you to dynamically define and modify synonym sets.
+The following example creates a synonym set named `my-synonym-set`. Later steps on this page use this set.
+
+```console
+PUT _synonyms/my-synonym-set
+{
+  "synonyms_set": [
+    {
+      "id": "laptop-synonyms",
+      "synonyms": "laptop, notebook"
+    }
+  ]
+}
+```
+
+Changes to your synonym sets automatically reload the associated analyzers. For more examples, including rule validation and analyzer reloading, refer to [Create or update synonym set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md).
+
+:::::
+
+:::::{tab-item} {{kib}} UI
+
+$$$synonyms-store-synonyms-kibana$$$
+
+```{applies_to}
+stack: ga
+serverless:
   elasticsearch:
 ```
 
@@ -104,176 +100,174 @@ To create a synonym set using the UI:
    - Add **Explicit rules** by adding multiple terms that map to a single term. For example: `i-pod, i pod => ipod`
 5. Select **Save** to save your rules.
 
-The UI supports the same synonym rule formats as the file-based approach. Changes made through the UI will automatically reload the associated analyzers.
+The UI supports the same synonym rule formats as the file-based approach. Changes made through the UI automatically reload the associated analyzers.
 
-### Method 2: REST API [synonyms-store-synonyms-api]
+:::::
 
-You can use the [synonyms APIs]({{es-apis}}group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows you to dynamically define and modify synonyms sets. For examples of how to
-create or update a synonym set with APIs, refer to the [Create or update synonyms set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md) page.
+:::::{tab-item} File-based
 
-Changes in your synonyms sets will automatically reload the associated analyzers.
-
-### Method 3: File-based [synonyms-store-synonyms-file]
+$$$synonyms-store-synonyms-file$$$
 
 ```{applies_to}
 serverless: unavailable
 ```
 
-You can store your synonyms set in a file.
+You can store your synonym set in a file.
 
-Make sure you upload a synonyms set file for all your cluster nodes, to the configuration directory for your {{es}} distribution. If you're using {{ech}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
+Make sure you upload the synonym set file to all your cluster nodes, in the configuration directory for your {{es}} distribution. If you're using {{ech}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
 
-An example of a synonyms file:
+An example of a synonym file:
 
-```markdown
+```text
 # Blank lines and lines starting with pound are comments.
 
-# Explicit mappings match any token sequence on the left hand side of "=>"
-# and replace with all alternatives on the right hand side.
-# These types of mappings ignore the expand parameter in the schema.
-# Examples:
+# Explicit mappings
 i-pod, i pod => ipod
 sea biscuit, sea biscit => seabiscuit
 
-# Equivalent synonyms may be separated with commas and give
-# no explicit mapping.  In this case the mapping behavior will
-# be taken from the expand parameter in the token filter configuration.
-# This allows the same synonym file to be used in different synonym handling strategies.
-# Examples:
+# Equivalent mappings
 ipod, i-pod, i pod
-foozball, foosball
 universe, cosmos
-lol, laughing out loud
-
-# If expand==true in the synonym token filter configuration,
-# "ipod, i-pod, i pod" is equivalent to the explicit mapping:
-ipod, i-pod, i pod => ipod, i-pod, i pod
-# If expand==false, "ipod, i-pod, i pod" is equivalent
-# to the explicit mapping:
-ipod, i-pod, i pod => ipod
-
-# Multiple synonym mapping entries are merged.
-foo => foo bar
-foo => baz
-# is equivalent to
-foo => foo bar, baz
 ```
 
-To update an existing synonyms set, upload new files to your cluster. Synonyms set files must be kept in sync on every cluster node.
+For the full synonym file format specification, including `expand` behavior and rule merging, refer to the [synonym token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md) reference.
 
-When a synonyms set is updated, search analyzers that use it need to be refreshed using the [reload search analyzers API]({{es-apis}}operation/operation-indices-reload-search-analyzers)
+To update an existing synonym set, upload new files to your cluster. Synonym set files must be kept in sync on every cluster node.
 
-This manual syncing and reloading makes this approach less flexible than using the [synonyms API](../../../solutions/search/full-text/search-with-synonyms.md#synonyms-store-synonyms-api).
+When a synonym set is updated, search analyzers that use it need to be refreshed using the [reload search analyzers API]({{es-apis}}operation/operation-indices-reload-search-analyzers).
 
-### Method 4: Inline [synonyms-store-synonyms-inline]
+This manual syncing and reloading makes this approach less flexible than using the synonyms API.
 
-You can test your synonyms by adding them directly inline in your token filter definition.
+:::::
 
-::::{warning}
-Inline synonyms are not recommended for production usage. A large number of inline synonyms increases cluster size unnecessarily and can lead to performance issues.
-::::
+:::::{tab-item} Inline
 
-## Step 2: Configure synonyms token filters and analyzers [synonyms-synonym-token-filters]
+$$$synonyms-store-synonyms-inline$$$
 
-Once your synonyms sets are created, you can start configuring your token filters and analyzers to use them.
+You can define synonyms directly in your token filter using the `synonyms` parameter. This is useful for testing, but not recommended for production.
 
-::::{warning}
-Synonyms sets must exist before they can be added to indices. If an index is created referencing a nonexistent synonyms set, the index will remain in a partially created and inoperable state. The only way to recover from this scenario is to ensure the synonyms set exists then either delete and re-create the index, or close and re-open the index.
-::::
-
-{{es}} uses synonyms as part of the [analysis process](../../../manage-data/data-store/text-analysis.md). You can use two types of [token filter](elasticsearch://reference/text-analysis/token-filter-reference.md) to include synonyms:
-
-* [Synonym graph](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md): Recommended as it can correctly handle multi-word synonyms.
-* [Synonym](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md): Not recommended if you need to use multi-word synonyms.
-
-Check each synonym token filter documentation for configuration details and instructions on adding it to an analyzer.
-
-:::{note}
-:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
-
-When building the synonyms map, {{es}} checks available heap memory using a circuit breaker to prevent synonym token filters from causing out-of-memory errors when processing large numbers of synonym rules. The circuit breaker trips when more than 95% of heap memory is in use.
-
-The threshold is configurable using the [`indices.breaker.total.limit` parent circuit breaker setting](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker). {applies_to}`serverless: unavailable`
-
-When the circuit breaker trips, the behavior is determined by the `lenient` parameter:
-
-* If `lenient` is `true`, an empty synonyms map is used and the event is logged in the {{es}} logs.
-* If `lenient` is `false`, the affected index enters a red state.
-:::
-
-::::{warning}
-Invalid synonym rules can cause errors when applying analyzer changes. For reloadable analyzers, this prevents reloading and applying changes. You must correct errors in the synonym rules and reload the analyzer.
-
-An index with invalid synonym rules cannot be reopened, making it inoperable when:
-
-* A node containing the index starts
-* The index is opened from a closed state
-* A node restart occurs (which reopens the node assigned shards)
-::::
-
-## Step 3: Test your analyzer [synonyms-test-analyzer]
-
-You can test an analyzer configuration without modifying your index settings. Use the [analyze API]({{es-apis}}operation/operation-indices-analyze) to test your analyzer chain:
-
-```console
-GET /_analyze
-{
-  "tokenizer": "standard",
-  "filter" : [
-    "lowercase",
-    {
-      "type": "synonym_graph",
-      "synonyms": ["pc => personal computer", "computer, pc, laptop"]
-    }
-  ],
-  "text" : "Check how PC synonyms work"
+```json
+"synonyms_filter": {
+  "type": "synonym_graph",
+  "synonyms": ["laptop, notebook", "i-pod, i pod => ipod"]
 }
 ```
 
-## Step 4: Apply synonyms at index or search time [synonyms-apply-synonyms]
+::::{warning}
+A large number of inline synonyms increases cluster size unnecessarily and can lead to performance issues. For production workloads, use the REST API or file-based approach instead.
+::::
 
-Analyzers can be applied at [index time or search time](../../../manage-data/data-store/text-analysis/index-search-analysis.md).
+:::::
 
-You need to decide when to apply your synonyms:
+::::::
 
-* **Index time**: Synonyms are applied when the documents are indexed into {{es}}. This is a less flexible alternative, as changes to your synonyms require [reindexing]({{es-apis}}operation/operation-reindex).
-* **Search time**: Synonyms are applied when a search is executed. This is a more flexible approach, which doesn't require reindexing. If token filters are configured with `"updateable": true`, search analyzers can be [reloaded]({{es-apis}}operation/operation-indices-reload-search-analyzers) when you make changes to your synonyms.
-  :::{note}
-  Synonyms sets created using the synonyms API or the UI can only be used at search time.
-  :::
+::::{warning}
+Synonym sets must exist before you reference them in an index. An index that references a nonexistent synonym set becomes inoperable and must be deleted and re-created, or closed and re-opened.
+::::
 
-You can specify the analyzer that contains your synonyms set as a [search time analyzer](../../../manage-data/data-store/text-analysis/specify-an-analyzer.md#specify-search-analyzer) or as an [index time analyzer](../../../manage-data/data-store/text-analysis/specify-an-analyzer.md#specify-index-time-analyzer).
+## Step 2: Configure synonym token filters and analyzers [synonyms-synonym-token-filters]
 
-The following example adds `my_analyzer` as a search analyzer to the `title` field in an index mapping:
+Once your synonym sets are created, you can start configuring your token filters and analyzers to use them.
 
-```JSON
+{{es}} uses synonyms as part of the [analysis process](../../../manage-data/data-store/text-analysis.md). You can use two types of [token filter](elasticsearch://reference/text-analysis/token-filter-reference.md) to include synonyms:
+
+* [Synonym graph](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md): Recommended for search analyzers. Correctly handles multi-word synonyms. This filter is designed for search-time use only.
+* [Synonym](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md): Required for index-time synonyms. Not recommended if you need to use multi-word synonyms.
+
+Refer to each token filter's reference page for configuration details and instructions on adding it to an analyzer. If your analyzer chain includes a [stop token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md#synonym-graph-tokenizer-stop-token-filter), pay attention to ordering. Stop filters placed before or after a synonym filter affect synonym expansion differently.
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Large synonym sets can trigger a memory [circuit breaker](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md#synonym-graph-tokenizer-circuit-breaker). Refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md#synonym-graph-tokenizer-circuit-breaker) reference for thresholds and `lenient` behavior.
+
+::::{important}
+When `lenient` is `false`, invalid synonym rules cause errors: analyzer changes fail to apply, and an index with invalid rules cannot be reopened. `lenient` defaults to the value of `updateable`. Refer to [Synonyms and `stop` token filters](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md#synonym-graph-tokenizer-stop-token-filter) for details.
+::::
+
+## Step 3: Create an index with your synonym analyzer [synonyms-apply-synonyms]
+
+Synonyms can be applied at [search time or index time](../../../manage-data/data-store/text-analysis/index-search-analysis.md). Search time is recommended because you can update your synonym sets without [reindexing]({{es-apis}}operation/operation-reindex). If token filters are configured with `"updateable": true`, search analyzers can be [reloaded]({{es-apis}}operation/operation-indices-reload-search-analyzers) when you make changes.
+
+The following example creates an index with `synonyms_analyzer` as a search analyzer on the `title` field.
+
+```console
+PUT /my-index
 {
   "mappings": {
     "properties": {
       "title": {
         "type": "text",
-        "search_analyzer": "my_analyzer"
+        "search_analyzer": "synonyms_analyzer" <2>
       }
     }
   },
   "settings": {
     "analysis": {
       "analyzer": {
-        "my_analyzer": {
-          "tokenizer": "whitespace",
-          "filter": [
-            "synonyms_filter"
-          ]
+        "synonyms_analyzer": {
+          "tokenizer": "standard",
+          "filter": ["lowercase", "synonyms_filter"]
         }
       },
       "filter": {
         "synonyms_filter": {
-          "type": "synonym",
-          "synonyms_path": "analysis/synonym-set.txt",
-          "updateable": true
+          "type": "synonym_graph",
+          "synonyms_set": "my-synonym-set", <1>
+          "updateable": true <3>
         }
       }
     }
   }
 }
 ```
+
+1. For [file-based synonym sets](#synonyms-store-synonyms-file), use `"synonyms_path": "analysis/synonym-set.txt"` instead. {applies_to}`serverless: unavailable`
+2. Applies synonyms at search time only, not when indexing documents.
+3. Required when you use `synonyms_set`: synonym sets can only be loaded into search-time analyzers. It also lets you [reload]({{es-apis}}operation/operation-indices-reload-search-analyzers) the analyzer when the set changes, without reindexing.
+
+## Step 4: Test your analyzer [synonyms-test-analyzer]
+
+After creating your index, use the [analyze API]({{es-apis}}operation/operation-indices-analyze) to verify that your synonym configuration produces the expected tokens:
+
+```console
+GET /my-index/_analyze
+{
+  "analyzer": "synonyms_analyzer",
+  "text": "laptop"
+}
+```
+
+The response contains tokens for both `laptop` and `notebook`, because `my-synonym-set` defines them as equivalent terms.
+
+## Step 5: Search with synonyms [synonyms-search-example]
+
+After you configure synonyms for a field, queries against that field automatically expand to include synonym terms. Queries that support synonym expansion include [match](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), [query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md), and [simple_query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-simple-query-string-query.md).
+
+Index a document so the search has something to match:
+
+```console
+POST /my-index/_doc?refresh=true
+{
+  "title": "Lightweight notebook for travel"
+}
+```
+
+For example, if `laptop` and `notebook` are configured as equivalent terms and you search for `laptop`, {{es}} also matches documents containing `notebook`:
+
+```console
+GET /my-index/_search
+{
+  "query": {
+    "match": {
+      "title": "laptop"
+    }
+  }
+}
+```
+
+The response includes the document, even though its `title` doesn't contain the word `laptop`: `synonyms_analyzer` expanded the query term to `notebook` at search time.
+
+## Next steps
+
+* [Create or update synonym set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md): Practical examples of managing synonym sets through the API.
+* [Synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md): Full reference for the recommended synonym token filter.
+* [Synonym token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md): Reference for the standard synonym token filter, required for index-time synonyms.
+* [Text analysis](../../../manage-data/data-store/text-analysis.md): Learn more about analyzers, tokenizers, and token filters.
