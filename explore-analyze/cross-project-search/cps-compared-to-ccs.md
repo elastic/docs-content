@@ -58,7 +58,7 @@ For full examples, refer to the [examples](#examples) section.
 | [Search local/origin only](#ex-local-origin) | `GET my-index/_search` | `GET _origin:my-index/_search` |
 | [Search one remote/linked](#ex-one-remote) | `GET cluster_one:my-index/_search` | `GET linked_project:my-index/_search` |
 | [Search all](#ex-search-all) | `GET my-index,*:my-index/_search` | `GET my-index/_search` (default) |
-| [Exclude one](#ex-exclude) | `GET *:my-index,-cluster_one:*/_search` | `GET *,-linked_project:*/_search` |
+| [Exclude one](#ex-exclude) | `GET my-index,*:my-index,-cluster_one:*/_search` | `GET my-index,-linked_project:*/_search` |
 | [Route by metadata](#ex-route-tags) | Not available | `project_routing` |
 | [Identify origin in responses](#ex-identify-origin) | `(local)` in `_clusters`; no prefix in `_index` | `_origin` in `_clusters`; no prefix in `_index` |
 | [Identify remote/linked in responses](#ex-identify-origin) | `cluster_one:my-index` in `_index` | `linked_project:my-index` in `_index` |
@@ -70,7 +70,7 @@ For full examples, refer to the [examples](#examples) section.
 | [Search local/origin only](#ex-local-origin) | `FROM my-index` | `FROM _origin:my-index` |
 | [Search one remote/linked](#ex-one-remote) | `FROM cluster_one:my-index` | `FROM linked_project:my-index` |
 | [Search all](#ex-search-all) | `FROM my-index,cluster_one:my-index` | `FROM my-index` (default) |
-| [Exclude one](#ex-exclude) | `FROM *:my-index,-cluster_one:*` | `FROM *,-linked_project:*` |
+| [Exclude one](#ex-exclude) | `FROM my-index,*:my-index,-cluster_one:*` | `FROM my-index,-linked_project:*` |
 | [Route by metadata](#ex-route-tags) | Not available | `SET project_routing` |
 | [Identify origin in responses](#ex-identify-origin) | No prefix in `METADATA _index` | No prefix in `METADATA _index` |
 | [Identify remote/linked in responses](#ex-identify-origin) | `cluster_one:my-index` in `METADATA _index` | `linked_project:my-index` in `METADATA _index` |
