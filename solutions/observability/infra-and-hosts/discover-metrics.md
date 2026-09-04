@@ -73,7 +73,7 @@ Use the search function to find and visualize specific metric data:
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Sorting options:
 
 - **Alphabetically** (default)
-- **Recently explored**: Metrics you've used a chart action on, such as **View details** or **Copy to dashboard**, appear first, most recent first.
+- **Recently explored**: Metrics you've interacted with, for example through **View details** or **Copy to dashboard**, appear first, most recent first.
 
 **Break down metrics by dimensions**
 
