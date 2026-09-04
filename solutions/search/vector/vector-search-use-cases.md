@@ -19,7 +19,7 @@ Sometimes [full-text search](../full-text.md) alone is not enough. Machine learn
 This page describes common vector search use cases and how to implement them.
 
 :::{tip}
-New to vector search? You might want to start with the [managed `semantic_text` workflow](../get-started/semantic-search.md).
+New to vector search? Start with [{{es}} vector and full-text search in 10 minutes](/solutions/vector-database/vector-full-text-search.md), which uses a [Vector Database project](/solutions/vector-database.md) and the managed `semantic_text` workflow.
 :::
 
 ## How to implement retrieval [how-to-implement-retrieval]
