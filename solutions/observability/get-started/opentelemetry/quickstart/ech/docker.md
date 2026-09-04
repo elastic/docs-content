@@ -19,6 +19,8 @@ Learn how to set up the {{agent}} and EDOT SDKs in a Docker environment with {{e
 :::{include} ../../_snippets/guided-instructions.md
 :::
 
+If you need to manage credentials manually, for example, to use them in automation or to configure multiple environments, follow the steps below.
+
 ## Prerequisites
 
 - An {{ech}} deployment running version 9.0 or later.
@@ -52,69 +54,13 @@ Start from the [logs, metrics, and traces sample for the {{motlp}}](https://gith
          exporters: [otlp_grpc/ingest_metrics_traces]
    ```
 
-Keep the other receivers, processors, exporters, and pipelines from the sample. For details about the pipelines, refer to [Using the Managed OTLP Endpoint](elastic-agent://reference/edot-collector/config/default-config-standalone.md#using-the-managed-otlp-endpoint).
+Keep the other receivers, processors, exporters, and pipelines from the sample. The result is a Docker-specific configuration, as the adaptations replace host paths with `/hostfs` mount paths and add Docker metrics collection. For details about the pipelines, refer to [Using the Managed OTLP Endpoint](elastic-agent://reference/edot-collector/config/default-config-standalone.md#using-the-managed-otlp-endpoint).
 
 ::::
 
 ::::{step} Find your endpoint and create an API key
 
-**Find your endpoint**
-
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co/).
-2. Find your deployment in **Hosted deployments**, and select **Manage**.
-3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP**.
-4. Copy the public endpoint value.
-
-**Create an API key**
-
-:::{note}
-The {{motlp}} validates API keys using {{product.apm}} application privileges. Index-level privilege scoping is not yet supported, meaning that API keys with custom index-level role descriptors return a `PermissionDenied` error.
-:::
-
-:::{dropdown} Using {{kib}}
-1. Go to **{{stack-manage-app}}** → **API keys**.
-2. Click **Create API key**, enter a name, and enable **Control security privileges**.
-3. In the role descriptors box, enter the following:
-
-   ```json
-   {
-     "otlp_writer": {
-       "applications": [
-         {
-           "application": "apm",
-           "resources": ["*"],
-           "privileges": ["event:write"]
-         }
-       ]
-     }
-   }
-   ```
-
-4. Click **Create API key** and copy the encoded value.
-:::
-
-:::{dropdown} Using the {{es}} API
-Use the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) API:
-
-```console
-POST /_security/api_key
-{
-  "name": "otlp-writer",
-  "role_descriptors": {
-    "otlp_writer": {
-      "applications": [
-        {
-          "application": "apm",
-          "resources": ["*"],
-          "privileges": ["event:write"]
-        }
-      ]
-    }
-  }
-}
-```
-
-The `event:write` privilege for the `apm` application is the minimum required to send data through the {{motlp}}.
+:::{include} ../../_snippets/retrieve-credentials-ech-motlp.md
 :::
 
 ::::
@@ -211,7 +157,7 @@ Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 
 ## Using the `elasticsearch` exporter
 
-If you need to write telemetry directly to {{es}} (for example, for pipeline customizations not yet supported through {{motlp}}), use a different Collector configuration, `.env` file, and compose file.
+If you need to write telemetry directly to {{es}} (for example, for pipeline customizations not yet supported through {{motlp}}), use a different Collector configuration, `.env` file, and compose file. For a full list of features and limitations that apply to each path, refer to [Elastic features available with {{edot}}](opentelemetry://reference/compatibility/features.md).
 
 Start from the [logs, metrics, and traces sample for direct ingestion into {{es}}](https://github.com/elastic/elastic-agent/blob/v{{version.edot_collector}}/internal/edot/samples/linux/logs_metrics_traces.yml). The sample is written for a host process, so adapt it for the Compose mounts in this quickstart:
 
@@ -281,7 +227,7 @@ The following issues might occur.
 
 ### API key prefix not found
 
-The following error is due to an improperly formatted API key:
+The following error is due to an improperly formatted API key, and typically occurs when credentials are configured manually:
 
 ```txt
 Exporting failed. Dropping data.
