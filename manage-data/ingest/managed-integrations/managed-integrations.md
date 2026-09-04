@@ -82,7 +82,7 @@ For service issues or to request diagnostics, contact [Elastic Support](https://
 ## Next steps [managed-integrations-next-steps]
 
 * [Enable an {{managed-integration}}](/manage-data/ingest/managed-integrations/enable-managed-integration.md) in {{kib}} to start collecting data from a cloud source.
-* [Authenticate {{managed-integrations}} using cloud connectors](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md) to avoid managing API keys directly.
+* [Authenticate {{managed-integrations}} using a federated identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md) to avoid managing API keys directly.
 
 ## Related pages [managed-integrations-related]
 
