@@ -73,11 +73,7 @@ Use the search function to find and visualize specific metric data:
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Use **Sort** to change the order of metrics in the grid.
 
 - **Alphabetically** (default)
-- **Recently explored**: Metrics you've already used a chart action on appear first, most recent first. Metrics you haven't explored stay in alphabetical order after those.
-
-**Recently explored** records a metric when you use a chart action such as **View details**, **Explore**, **Inspect**, **Copy to dashboard**, or **Add to case**. The sort direction control is unavailable for this option because the order is always most recent first.
-
-Your sort selection is kept if you reload the page.
+- **Recently explored**: Metrics you've used a chart action on, such as **View details** or **Copy to dashboard**, appear first, most recent first.
 
 **Break down metrics by dimensions**
 
