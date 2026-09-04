@@ -151,3 +151,6 @@ Want to get up and running with {{fleet}} and {{agent}} quickly? Read our gettin
 
 * [Get started with logs and metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md)
 * [Get started with APM](/solutions/observability/apm/get-started.md)
+
+:::{related-learning} elastic-agent
+:::
