@@ -70,10 +70,10 @@ Use the search function to find and visualize specific metric data:
 
 **Sort the metrics grid**
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Use **Sort** to change the order of metrics in the grid. By default, metrics are sorted **Alphabetically** from A to Z.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Use **Sort** to change the order of metrics in the grid.
 
-- **Alphabetically**: Order metrics by name. Select **Sort descending** {icon}`sort_descending` to reverse the order (Z to A).
-- **Recently explored**: Move metrics you've already worked with to the front of the grid, most recent first. Metrics you haven't explored stay in alphabetical order after those.
+- **Alphabetically** (default)
+- **Recently explored**: Metrics you've already used a chart action on appear first, most recent first. Metrics you haven't explored stay in alphabetical order after those.
 
 **Recently explored** records a metric when you use a chart action such as **View details**, **Explore**, **Inspect**, **Copy to dashboard**, or **Add to case**. The sort direction control is unavailable for this option because the order is always most recent first.
 
