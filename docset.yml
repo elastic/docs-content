@@ -286,6 +286,7 @@ subs:
   anomaly-detect:   "anomaly detection"
   anomaly-detect-cap:   "Anomaly detection"
   anomaly-job:   "anomaly detection job"
+  anomaly-job-cap:   "Anomaly detection job"
   anomaly-jobs:   "anomaly detection jobs"
   anomaly-jobs-cap:   "Anomaly detection jobs"
   dataframe:   "data frame"
