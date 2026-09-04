@@ -143,7 +143,7 @@ curl --user "${ELASTIC_USERNAME}" \
 
 :::{tab-item} API keys UI
 
-1. Open the **API keys** management page and select **Create API key**.
+1. Go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Create API key**.
 2. Enter a name and expiration for the key.
 3. Enable **Control security privileges**.
 4. Paste the following role descriptor into the editor, then create the key:
