@@ -40,6 +40,7 @@ You can perform a variety of actions in the **Integrations** app in {{kib}}. Som
 | [Add an integration to an {{agent}} policy](/reference/fleet/add-integration-to-policy.md) | Configure an integration for a specific use case and add it to an {{agent}} policy. |
 | [View integration policies](/reference/fleet/view-integration-policies.md) | View the integration policies created for a specific integration. |
 | [Edit or delete an integration policy](/reference/fleet/edit-delete-integration-policy.md) | Change settings or delete the integration policy. |
+| [Reduce the number of integration policies](/reference/fleet/scale-integration-policies.md) | Use one integration policy for many hosts instead of creating a policy for each one. |
 | [Install and uninstall integration assets](/reference/fleet/install-uninstall-integration-assets.md) | Install, uninstall, and reinstall integration assets in {{kib}}. |
 | [View integration assets](/reference/fleet/view-integration-assets.md) | View the {{kib}} assets installed for a specific integration. |
 | [Upgrade an integration](/reference/fleet/upgrade-integration.md) | Upgrade an integration to the latest version. |
