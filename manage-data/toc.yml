@@ -127,6 +127,7 @@ toc:
               - file: ingest/transform-enrich/readable-maintainable-ingest-pipelines.md
               - file: ingest/transform-enrich/error-handling.md
           - file: ingest/transform-enrich/logstash-pipelines.md
+          - file: ingest/transform-enrich/split-events-into-multiple-documents.md
           - file: ingest/transform-enrich/data-enrichment.md
             children:
               - file: ingest/transform-enrich/set-up-an-enrich-processor.md
