@@ -225,51 +225,112 @@ To make binaries available in an air-gapped environment, you can host your own c
 
 1. Create a custom artifact registry in a location accessible to your {{agent}}s:
 
-    1. Download the latest release artifacts from the public {{artifact-registry}} at `https://artifacts.elastic.co/downloads/`. For example, the following cURL commands download all the artifacts that may be needed to upgrade {{agent}}s running on Linux x86_64. You may replace `x86_64` with `arm64` for the ARM64 version. The exact list depends on which integrations you’re using.  Make sure to also download the corresponding sha512, and PGP Signature (.asc) files for each binary.  These are used for file integrity validations during installations and upgrades.
+    1. Download the latest release artifacts from the public {{artifact-registry}} at `https://artifacts.elastic.co/downloads/`. The required artifacts depend on which integrations you’re using and which operating systems your {{agent}}s run on. Make sure to also download the corresponding `.sha512` and PGP signature (`.asc`) files for each binary, as these are used for file integrity validation during installation and upgrade.
 
-        ```shell subs=true
-        curl -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/osquerybeat/osquerybeat-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/osquerybeat/osquerybeat-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/osquerybeat/osquerybeat-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/cloudbeat/cloudbeat-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/cloudbeat/cloudbeat-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/cloudbeat/cloudbeat-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/endpoint-dev/endpoint-security-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/endpoint-dev/endpoint-security-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/endpoint-dev/endpoint-security-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/fleet-server/fleet-server-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/fleet-server/fleet-server-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/fleet-server/fleet-server-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-host-agent-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-host-agent-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-host-agent-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{{version.stack}}-linux-x86_64.tar.gz.asc
+        To generate the full set of `curl` commands for all supported architectures and package types, save the following script and run it with your stack version as the argument:
+
+        ```shell
+        #!/bin/sh
+
+        VERSION="${1:-9.0.0}"
+
+        ARCHITECTURES="linux-x86_64 linux-arm64 windows-x86_64 darwin-x86_64 darwin-aarch64"
+
+        COMPONENTS="apm-server apm-server
+        auditbeat beats/auditbeat
+        elastic-agent beats/elastic-agent
+        filebeat beats/filebeat
+        heartbeat beats/heartbeat
+        metricbeat beats/metricbeat
+        osquerybeat beats/osquerybeat
+        packetbeat beats/packetbeat
+        cloudbeat cloudbeat
+        endpoint-security endpoint-dev
+        fleet-server fleet-server
+        pf-host-agent prodfiler
+        pf-elastic-collector prodfiler
+        pf-elastic-symbolizer prodfiler"
+
+        WINDOWS_EXCLUSIONS="apm-server osquerybeat fleet-server pf-host-agent pf-elastic-collector pf-elastic-symbolizer cloudbeat endpoint-security"
+        DEB_EXCLUSIONS="fleet-server endpoint-security osquerybeat cloudbeat"
+        RPM_EXCLUSIONS="fleet-server endpoint-security osquerybeat cloudbeat"
+        DARWIN_EXCLUSIONS="pf-host-agent pf-elastic-symbolizer pf-elastic-collector cloudbeat apm-server"
+
+        for ARCH in $ARCHITECTURES; do
+          echo "# Architecture: $ARCH"
+
+          echo "$COMPONENTS" | while read COMPONENT PATH; do
+            SKIP=no
+            case "$ARCH" in
+              windows-*)
+                for EXCL in $WINDOWS_EXCLUSIONS; do
+                  [ "$COMPONENT" = "$EXCL" ] && SKIP=yes && break
+                done
+                ;;
+              darwin-*)
+                for EXCL in $DARWIN_EXCLUSIONS; do
+                  [ "$COMPONENT" = "$EXCL" ] && SKIP=yes && break
+                done
+                ;;
+            esac
+            [ "$SKIP" = "yes" ] && continue
+
+            BASE_URL="https://artifacts.elastic.co/downloads/${PATH}"
+
+            case "$ARCH" in
+              windows-*)
+                FILE="${COMPONENT}-${VERSION}-${ARCH}.msi"
+                echo "curl -O ${BASE_URL}/${FILE}"
+                echo "curl -O ${BASE_URL}/${FILE}.sha512"
+                echo "curl -O ${BASE_URL}/${FILE}.asc"
+                ;;
+              darwin-*)
+                FILE="${COMPONENT}-${VERSION}-${ARCH}.tar.gz"
+                echo "curl -O ${BASE_URL}/${FILE}"
+                echo "curl -O ${BASE_URL}/${FILE}.sha512"
+                echo "curl -O ${BASE_URL}/${FILE}.asc"
+                ;;
+              linux-*)
+                FILE_TAR="${COMPONENT}-${VERSION}-${ARCH}.tar.gz"
+                echo "curl -O ${BASE_URL}/${FILE_TAR}"
+                echo "curl -O ${BASE_URL}/${FILE_TAR}.sha512"
+                echo "curl -O ${BASE_URL}/${FILE_TAR}.asc"
+
+                SKIP_DEB=no
+                for EXCL in $DEB_EXCLUSIONS; do
+                  [ "$COMPONENT" = "$EXCL" ] && SKIP_DEB=yes && break
+                done
+                [ "$SKIP_DEB" != "yes" ] && {
+                  case "$ARCH" in
+                    linux-x86_64) DEB_ARCH="amd64" ;;
+                    linux-arm64)  DEB_ARCH="arm64" ;;
+                  esac
+                  FILE_DEB="${COMPONENT}-${VERSION}-${DEB_ARCH}.deb"
+                  echo "curl -O ${BASE_URL}/${FILE_DEB}"
+                  echo "curl -O ${BASE_URL}/${FILE_DEB}.sha512"
+                  echo "curl -O ${BASE_URL}/${FILE_DEB}.asc"
+                }
+
+                SKIP_RPM=no
+                for EXCL in $RPM_EXCLUSIONS; do
+                  [ "$COMPONENT" = "$EXCL" ] && SKIP_RPM=yes && break
+                done
+                [ "$SKIP_RPM" != "yes" ] && {
+                  case "$ARCH" in
+                    linux-x86_64) RPM_ARCH="x86_64" ;;
+                    linux-arm64)  RPM_ARCH="aarch64" ;;
+                  esac
+                  FILE_RPM="${COMPONENT}-${VERSION}-${RPM_ARCH}.rpm"
+                  echo "curl -O ${BASE_URL}/${FILE_RPM}"
+                  echo "curl -O ${BASE_URL}/${FILE_RPM}.sha512"
+                  echo "curl -O ${BASE_URL}/${FILE_RPM}.asc"
+                }
+                ;;
+            esac
+          done
+
+          echo
+        done
         ```
 
     2. On your HTTP file server, group the artifacts into directories and sub-directories that follow the same convention used by the {{artifact-registry}}:
