@@ -1192,4 +1192,5 @@ redirects:
       '_serverless_deployments': 'find-endpoint-cloud-self-managed'
       'find-cloud-id-serverless': 'find-endpoint-cloud-self-managed'
       'create-an-api-key-serverless': 'create-an-api-key-cloud-self-managed'
-
+  # Related to https://github.com/elastic/docs-content/pull/7977
+  'solutions/security/get-started/siem-readiness.md': '!solutions/security/get-started.md'
