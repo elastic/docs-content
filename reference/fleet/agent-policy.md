@@ -462,6 +462,10 @@ A single instance of {{fleet}} supports a maximum of 1000 {{agent}} policies. If
 
 If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), the maximum supported number of {{agent}} policies is 500.
 
+To stay within these limits, group agents by role rather than creating a policy for each host. Refer to [](/reference/fleet/scale-integration-policies.md).
+
 ## Scaling limitations of integration package policies [integration-policies-scale-limitations]
 
 A single {{agent}} policy supports a maximum of 10,000 integration package policies.
+
+If you're approaching this limit because you've created one integration policy per host, you can usually consolidate them into a single policy. Refer to [](/reference/fleet/scale-integration-policies.md).
