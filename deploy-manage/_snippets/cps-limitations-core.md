@@ -1,6 +1,5 @@
-- **Maximum of 20 linked projects:** Each origin project can have up to 20 linked projects. A linked project can be associated with any number of origin projects.
+- **Maximum of 100 linked projects:** Each origin project can have up to 100 linked projects. A linked project can be associated with any number of origin projects.
 - **System indices:** Indices such as `.security` and `.fleet-*` are excluded from {{cps}} results by design.
-- **New projects only:** During technical preview, only newly created projects can function as origin projects.
 - **{{anomaly-detect-cap}}:** During technical preview, ML {{anomaly-jobs}} are not supported with {{cps-init}}. They continue to run on origin project data only.
 - **Transforms:** Transforms created before {{cps-init}} was enabled default to origin-only scope and must be manually updated to search linked projects.
 - **{{dfanalytics-jobs-cap}}:** {{dfanalytics-jobs}} are not supported with {{cps-init}}. They continue to run on origin project data only.
