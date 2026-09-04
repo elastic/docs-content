@@ -8,11 +8,11 @@ description: Compare cross-project search (CPS) and cross-cluster search (CCS) s
 navigation_title: "Compare with CCS"
 ---
 
-# {{cps-cap}} compared to {{ccs}}
+# Compare {{cps-cap}} and {{ccs}}
 
 {{cps-cap}} (CPS) provides {{serverless-full}} with cross-project search capabilities similar to [{{ccs}}](/explore-analyze/cross-cluster-search.md) (CCS). 
 
-Both features let you search data across multiple deployments from a single request, but the query syntax, default scope, and configuration requirements are different.
+Both features let you search data across multiple deployments from a single request, but the query syntax, default scope, and configuration requirements are different. In general, CPS reduces setup overhead and simplifies queries by searching all linked projects by default.
 
 This page highlights the key differences and shows side-by-side query examples to help you transition from CCS to CPS.
 
@@ -420,3 +420,12 @@ FROM logs-*
 :::
 
 ::::
+
+## Learn more about {{serverless-short}}
+
+If you're evaluating {{serverless-full}}, refer to the following resources: 
+
+* [](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md): Learn more about the differences between {{serverless-full}} and other {{es}} offerings.
+* [](/deploy-manage/deploy/elastic-cloud/serverless.md): An introduction to {{serverless-full}} and its features.
+* [Start a free trial](https://cloud.elastic.co/serverless-registration): Explore the product with a free trial of {{serverless-full}}.
+* [](/manage-data/migrate.md): Learn about options for migrating between {{es}} deployment types, including how to migrate to {{serverless-full}}.
