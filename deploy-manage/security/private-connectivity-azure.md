@@ -232,7 +232,7 @@ The Private Link connection will be approved automatically after the private con
     Private connection policies are bound to a single resource type and region, and can be assigned only to resources with the same resource type and in the same region. If you want to associate a policy with multiple resource types or resources in multiple regions, then you have to recreate the policy for all applicable resource types and regions.
     :::
 6.  Under **Connectivity**, select **PrivateLink**.
-7.  Enter your private endpoint **Resource name** and **Resource ID**. When applied to a deployment or project, this information will be used to filter traffic.
+7.  Enter your private endpoint **Resource name** and **Resource ID**. When applied to a deployment or project, this information will be used to filter traffic. You can select **Add description** to add an optional description that helps you identify the filter later.
 
     :::{tip}
     You can apply multiple policies to a single deployment or project. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
