@@ -24,7 +24,7 @@ Common symptoms include no results or origin-only results, slower extraction aft
 
 Open **Machine Learning → Anomaly Detection** and review the **Project scope** column. Each cell shows a parsed count out of the total project count (origin plus linked projects). For example, `2/5` means the expression targets 2 projects out of 5 available.
 
-The parsed count comes from the routing expression text, not from which aliases match at runtime. Select the value in the **Project scope** column to see the expression stored on the {{dfeed}}.
+The parsed count comes from the routing expression text, not from which aliases match at runtime. To view the routing expression, open the job, go to the **Datafeed** tab, and check **Project scope**, or call `GET _ml/datafeeds/{datafeed_id}`.
 
 A single wildcard expression like `_alias:production-*` shows `1`, even if it matches several linked projects at runtime.
 
@@ -78,7 +78,7 @@ Update routing to a valid `_alias:` expression, or link the missing project in [
 
 ### Verify
 
-* The **Project scope** column shows the intended parsed/total count and popover expression.
+* The **Project scope** column shows the intended parsed/total count.
 * `GET _ml/datafeeds/{datafeed_id}` returns the expected `project_routing` value.
 * `GET _ml/datafeeds/{datafeed_id}/_stats` shows successful extraction cycles.
 
@@ -96,7 +96,7 @@ Narrow `project_routing` to the projects you need. Stop the {{dfeed}} and close 
 
 ### Verify
 
-* The **Project scope** column shows the intended parsed/total count and popover expression.
+* The **Project scope** column shows the intended parsed/total count.
 * `GET _ml/datafeeds/{datafeed_id}/_stats` shows `remote_cluster_stats` listing only the intended projects.
 * Extraction cycle duration returns to expected levels.
 
