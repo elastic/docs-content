@@ -46,7 +46,6 @@ Before creating an API key:
   3. `ELASTIC_USERNAME` is the username of the user creating the key. The `curl` examples prompt you for this user's password.
 
 :::{note}
-:applies_to: serverless: unavailable
 The `curl` examples authenticate directly to {{es}} with a username and password. {{serverless-short}} does not support this authentication method, so create the key in Console or the **API keys** UI instead.
 :::
 
@@ -191,9 +190,11 @@ Remove privileges that the client does not need:
 - Add `feature_workflowsManagement.workflow_execute` if any agent uses a [workflow tool](tools/workflow-tools.md). Read access lets an agent reference a workflow; running one requires the execute privilege.
 - Remove `monitor_inference` if agents and tools do not call the {{es}} Inference API.
 
-## Create a key that can manage agents, tools, skills, and workflows
+## Create a management client key
 
 The following example allows a client to manage {{agent-builder}} components and workflows while keeping the underlying index access read-only.
+
+{applies_to}`stack: ga 9.4+` `feature_agentBuilder.all` also grants skills management.
 
 ::::{tab-set}
 
