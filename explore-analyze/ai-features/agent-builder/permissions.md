@@ -40,11 +40,11 @@ In the role management UI, {{kib}} displays human-readable privilege names. Role
 
 | Feature and UI privilege | Role and API key privilege | Grants |
 | --- | --- | --- |
-| **Agent Builder: Read** | `feature_agentBuilder.read` | Use agents, send chat messages, and view agents, tools, skills, and conversations. On Serverless, also manage OAuth MCP clients for the [{{agent-builder}} MCP server](mcp-server.md). |
+| **Agent Builder: Read** | `feature_agentBuilder.read` | Use agents, send chat messages, and view agents, tools, and conversations.<br>{applies_to}`stack: ga 9.4+` Also view skills.<br>On Serverless, also manage OAuth MCP clients for the [{{agent-builder}} MCP server](mcp-server.md). |
 | **Agent Builder: All** | `feature_agentBuilder.all` | Everything granted by **Read**, plus all {{agent-builder}} management privileges. |
-| **Agent Builder > Management: Create and edit agents** | `feature_agentBuilder.manage_agents` | Pair with **Read** to create, update, and delete custom agents without granting other management privileges. |
-| **Agent Builder > Management: Create and edit custom tools** | `feature_agentBuilder.manage_tools` | Pair with **Read** to create, update, and delete custom tools without granting other management privileges. |
-| **Agent Builder > Management: Create and edit skills** | `feature_agentBuilder.manage_skills` | Pair with **Read** to create, update, and delete custom skills without granting other management privileges. |
+| **Agent Builder > Management: Create and edit agents** {applies_to}`stack: ga 9.4+` | `feature_agentBuilder.manage_agents` | Pair with **Read** to create, update, and delete custom agents without granting other management privileges. |
+| **Agent Builder > Management: Create and edit custom tools** {applies_to}`stack: ga 9.4+` | `feature_agentBuilder.manage_tools` | Pair with **Read** to create, update, and delete custom tools without granting other management privileges. |
+| **Agent Builder > Management: Create and edit skills** {applies_to}`stack: ga 9.4+` | `feature_agentBuilder.manage_skills` | Pair with **Read** to create, update, and delete custom skills without granting other management privileges. |
 | **Actions and Connectors: Read** | `feature_actions.read` | Use agents that access {{kib}} connectors. |
 | **Workflows: Read** | `feature_workflowsManagement.read` | Read workflows and workflow execution information. |
 | **Workflows > Workflows Actions: Execute** | `feature_workflowsManagement.workflow_execute` | Run workflows. Also include **Workflows: Read** when the user or client must inspect workflows. |
