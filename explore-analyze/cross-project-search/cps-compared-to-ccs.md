@@ -8,7 +8,7 @@ description: Compare cross-project search (CPS) and cross-cluster search (CCS) s
 navigation_title: "Compare with CCS"
 ---
 
-# Compare {{cps-cap}} and {{ccs}}
+# Compare {{cps}} and {{ccs}}
 
 {{cps-cap}} (CPS) provides {{serverless-full}} with cross-project search capabilities similar to [{{ccs}}](/explore-analyze/cross-cluster-search.md) (CCS). 
 
