@@ -155,13 +155,13 @@ To remove a network security policy or rule set association from your deployment
 
 ::::::{applies-item} ess:
 
-You can remove associations from your deployments directly from the policy settings or from the deployment security page.
+You can remove associations from your deployments directly from the policy settings or from the deployment **Network security** page.
 
-#### From your deployment security page
+#### From your deployment
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Hosted deployments** page, select your deployment.
-3. Select the **Security** tab on the left-hand side menu bar.
-4. Under **Network security**, find the security policy you want to disconnect.
+3. From the navigation menu, select **Network security**.
+4. Find the security policy you want to disconnect.
 5. Under **Actions**, click the **Delete** icon.
 
 #### From the network security policy settings

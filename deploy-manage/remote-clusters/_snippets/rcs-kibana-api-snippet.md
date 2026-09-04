@@ -20,7 +20,7 @@ To add a remote cluster in {{kib}}:
 
       When using API key authentication, this alias must match the **Remote cluster name** you configured when [adding the API key](#configure-local-cluster) in the Cloud UI.
 
-    * **Remote address**: This value can be found on the **Security** page of the {{remote_type}} deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters** section.
+    * **Remote address**: This value can be found on the **Remote connections** page of the {{remote_type}} deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters** section.
 
       ::::{note}
       If you’re using API keys as security model, change the port to `9443`.
@@ -29,7 +29,7 @@ To add a remote cluster in {{kib}}:
     * **Configure advanced options** (optional): Expand this section if you need to customize additional settings.
       * **TLS server name**: Specify a value if the certificate presented by the remote cluster is signed for a different name than the remote address.
 
-        This value can be found on the **Security** page of the {{remote_type}} deployment you want to use as a remote. Copy the **Server name** from the **Remote cluster parameters** section.
+        This value can be found on the **Remote connections** page of the {{remote_type}} deployment you want to use as a remote. Copy the **Server name** from the **Remote cluster parameters** section.
 
       * **Socket connections**: Define the number of connections to open with the remote cluster.
 

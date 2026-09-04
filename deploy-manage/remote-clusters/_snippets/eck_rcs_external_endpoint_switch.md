@@ -6,11 +6,11 @@ This snippet is in use in the following locations:
 :::::::{applies-switch}
 
 ::::::{applies-item} ess:
-Obtain the endpoint from the **Security** page of the ECH deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters** section, and replace its port with `9443`, which is the port used by the remote cluster server interface.
+Obtain the endpoint from the **Remote connections** page of the ECH deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters** section, and replace its port with `9443`, which is the port used by the remote cluster server interface.
 ::::::
 
 ::::::{applies-item} ece:
-Obtain the endpoint from the **Security** page of the ECE deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters**, and replace its port with `9443`, which is the port used by the remote cluster server interface.
+Obtain the endpoint from the **Remote connections** page of the ECE deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters**, and replace its port with `9443`, which is the port used by the remote cluster server interface.
 ::::::
 
 ::::::{applies-item} self:

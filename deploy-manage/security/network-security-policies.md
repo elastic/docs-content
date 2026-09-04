@@ -72,9 +72,9 @@ Network security policies are listed on the page. From this page, you can view a
 :::{applies-item} ess:
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Hosted deployments** page, select your deployment.
-3. Select the **Security** tab on the left-hand side menu bar.
+3. From the navigation menu, select **Network security**.
 
-Network security policies are listed under **Network security**. From this section, you can view and remove existing policies and attach new policies.
+Network security policies are listed on the page. From this page, you can view and remove existing policies and attach new policies.
 :::
 ::::
 

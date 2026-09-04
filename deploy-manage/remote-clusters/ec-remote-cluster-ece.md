@@ -79,19 +79,22 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 
 A deployment can be configured to trust all or specific deployments in a remote ECE environment:
 
-1. Access the **Security** page of the deployment you want to use for cross-cluster operations.
-2. Select **Remote Connections > Add trusted environment** and choose **{{ece}}**. Then click **Next**.
-3. Select **Certificates** as authentication mechanism and click **Next**.
-4. Enter the environment ID of the ECE environment. You can find it under Platform > Trust Management in your ECE administration UI.
-5. Upload the Certificate Authority of the ECE environment. You can download it from Platform > Trust Management in your ECE administration UI.
-6. Choose one of following options to configure the level of trust with the ECE environment:
+1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
+
+    On the **Hosted deployments** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+2. From the navigation menu, select **Remote connections**.
+3. Select **Add trusted environment** and choose **{{ece}}**. Then click **Next**.
+4. Select **Certificates** as authentication mechanism and click **Next**.
+5. Enter the environment ID of the ECE environment. You can find it under Platform > Trust Management in your ECE administration UI.
+6. Upload the Certificate Authority of the ECE environment. You can download it from Platform > Trust Management in your ECE administration UI.
+7. Choose one of following options to configure the level of trust with the ECE environment:
 
     * **All deployments** - This deployment trusts all deployments in the ECE environment, including new deployments when they are created.
     * **Specific deployments** - Specify which of the existing deployments you want to trust in the ECE environment. The full {{es}} cluster ID must be entered for each remote cluster. The {{es}} `Cluster ID` can be found in the deployment overview page under **Applications**.
 
-7. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Security** page.
-8. Select **Create trust** to complete the configuration.
-9. Configure the corresponding deployments of the ECE environment to [trust this deployment](/deploy-manage/remote-clusters/ece-remote-cluster-ece-ess.md#ece-trust-ec). You will only be able to connect two deployments successfully when both of them trust each other.
+8. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Remote connections** page.
+9. Select **Create trust** to complete the configuration.
+10. Configure the corresponding deployments of the ECE environment to [trust this deployment](/deploy-manage/remote-clusters/ece-remote-cluster-ece-ess.md#ece-trust-ec). You will only be able to connect two deployments successfully when both of them trust each other.
 
 ::::{note}
 The environment ID and cluster IDs must be entered fully and correctly. For security reasons, verification of the IDs is not possible. If cross-environment trust does not appear to be working, double-checking the IDs is a good place to start.
