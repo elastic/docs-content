@@ -136,3 +136,6 @@ Now that you understand index fundamentals, explore these pages for hands-on tas
 * [](/manage-data/data-store/data-streams/manage-data-stream.md): Create, monitor, and manage data streams and their backing indices.
 * [](/manage-data/ingest/transform-enrich/data-enrichment.md): Set up enrich policies to add data from existing indices to incoming documents.
 * [](/manage-data/data-store/manage-data-from-the-command-line.md): Index, update, retrieve, search, and delete documents using the {{es}} REST API.
+
+:::{related-learning} index-basics
+:::
