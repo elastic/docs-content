@@ -70,7 +70,6 @@ Use the search function to find and visualize specific metric data:
 
 ### Sort the metrics grid
 ```{applies_to}
-serverless: ga
 stack: ga 9.6+
 ```
 
