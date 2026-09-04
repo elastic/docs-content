@@ -45,7 +45,7 @@ For optional fields, {{es}} groups types into analytical families and warns when
 | Geo shape | `geo_shape` |
 | Object/nested | `object`, `nested` |
 
-Types within the same family do not trigger a warning (for example `long` in one project and `integer` in another). Types from different families do (for example `keyword` and `long`). If any type is outside these families, {{es}} suppresses the optional-field warning.
+Types within the same family do not trigger a warning (for example `long` in one project and `integer` in another). Types from different families do (for example `keyword` and `long`). If any type is outside these families, {{es}} does not warn for that field.
 
 ### Fix
 
@@ -72,7 +72,7 @@ Job messages no longer report optional-field conflict warnings. `_field_caps` sh
 
 ### What you see
 
-Fail-fast when {{es}} builds the extractor (start or preview). The {{dfeed}} does not run:
+The {{dfeed}} fails immediately when {{es}} builds the extractor (at start or preview time):
 
 ```txt
 Cannot run datafeed [my-datafeed]: required time field [@timestamp] has conflicting types across projects in scope: date in [prod-us], long in [prod-eu]. Fix mappings so [@timestamp] uses the same type in every project in scope, or exclude the conflicting project(s) via project_routing.
@@ -99,7 +99,7 @@ Index templates, ingest pipelines, or explicit mapping updates in one linked pro
 * Job messages report a new extraction error even though routing and credentials are unchanged.
 * The {{dfeed}} fails to start or preview after a restart because the time field now conflicts at extractor build time.
 
-Optional-field conflict warnings and time-field project exclusions appear only when {{es}} re-checks field capabilities after project scope stabilizes (for example after a project is linked or `project_routing` changes), not from a mapping change by itself. When that recheck runs, you might also see an optional-field conflict warning or a project-exclusion message for the time field.
+Optional-field conflict warnings and time-field project exclusions appear only when {{es}} re-checks field capabilities after project scope stabilizes (for example after a project is linked or `project_routing` changes), not from a mapping change by itself.
 
 Mid-run project exclusion after a scope change:
 
@@ -135,7 +135,9 @@ After mappings stabilize:
 3. Preview the {{dfeed}} and confirm data returns from every project still in scope.
 4. Start the {{dfeed}}.
 
-Before rolling out breaking mapping changes to projects in an active {{anomaly-job}}'s scope, close the job so {{es}} retains a model snapshot. If detection quality degrades after the change, revert using the procedure in [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md).
+::::{tip}
+Before rolling out breaking mapping changes to projects in an active {{anomaly-job}}'s scope, close the job so {{es}} retains a model snapshot. If detection quality degrades after the change, revert using the procedure in [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md#scope-changed-and-model-is-reacting).
+::::
 
 ### Verify
 

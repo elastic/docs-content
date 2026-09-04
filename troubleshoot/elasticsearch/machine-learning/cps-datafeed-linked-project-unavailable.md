@@ -11,7 +11,7 @@ products:
 
 # Troubleshoot linked project unavailable
 
-When a linked project in the {{dfeed}}'s scope is **skipped** during a search cycle, {{es}} fails the entire extraction cycle instead of continuing on the remaining projects. Partial cross-project results could produce spurious anomalies, so the cycle produces no data, the error is audited, and the {{dfeed}} retries on its next scheduled cycle. You see repeated extraction errors in job messages and gaps in results for the affected time buckets until every project in scope is reachable again or you narrow `project_routing`. A hard cluster failure (status `FAILED`, not `SKIPPED`) surfaces through the ordinary search-failure path with different job message text.
+When a linked project in the {{dfeed}}'s scope is **skipped** during a search cycle, {{es}} fails the entire extraction cycle instead of continuing on the remaining projects. Partial cross-project results could produce misleading anomalies, so the cycle produces no data. The error is audited and the {{dfeed}} retries on its next scheduled cycle. You see repeated extraction errors in job messages and gaps in results for the affected time buckets until every project in scope is reachable again, or you narrow `project_routing`. A hard cluster failure with status `FAILED` rather than `SKIPPED` surfaces through the ordinary search-failure path with different job message text.
 
 ## Where to look
 
@@ -22,7 +22,7 @@ When a linked project in the {{dfeed}}'s scope is **skipped** during a search cy
 
 ### What you see
 
-Skipped or failed linked projects surface in the {{anomaly-job}}'s **Job messages** tab (or `.ml-notifications-*`). The outer audit entry wraps the skip summary as its cause:
+Skipped or failed linked projects surface in the {{anomaly-job}}'s **Job messages** tab or `.ml-notifications-*`. The outer audit entry wraps the skip summary as its cause:
 
 ```txt
 Datafeed is encountering errors extracting data: [1] remote clusters out of [3] were skipped when performing datafeed search
@@ -34,9 +34,7 @@ Inspect `remote_cluster_stats` using [get datafeed stats]({{es-apis}}operation/o
 
 During an active skip outage, `skipped_clusters` can remain `0` while skip errors repeat in job messages because extraction aborts before stats are updated.
 
-After cycles complete successfully, compare `per_cluster_consecutive_skips` and `availability_ratio` with `project_routing` from `GET _ml/datafeeds/{datafeed_id}` and linked projects from `GET /_project/tags` or the Cloud console.
-
-Example excerpt (field names and structure match the stats API, values vary):
+After cycles complete successfully, compare `per_cluster_consecutive_skips` and `availability_ratio` with `project_routing` from `GET _ml/datafeeds/{datafeed_id}` and linked projects from `GET /_project/tags` or the Cloud console. Field names and structure match the stats API, but values vary with your configuration:
 
 ```json
 "remote_cluster_stats": {
@@ -87,11 +85,11 @@ After a long period with no ingested data, you might also see:
 Datafeed has started retrieving data again
 ```
 
-Each failed extraction cycle leaves a gap in the time series the {{anomaly-job}} analyzes. If a project stays out of scope for an extended period (whether because of outages or because you narrowed routing), the model adapts to the changed data distribution. See [Changing project scope](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md) for rollback options.
+Each failed extraction cycle leaves a gap in the time series the {{anomaly-job}} analyzes. If a project stays out of scope for an extended period, whether because of outages or because you narrowed routing, the model adapts to the changed data distribution. See [Scope changed and model is reacting](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md#scope-changed-and-model-is-reacting) for rollback options.
 
 ### Verify
 
-Job messages should stop reporting new extraction errors for the skip cause. After at least one successful completed cycle, `remote_cluster_stats` should show `skipped_clusters` at `0` and no non-zero entries in `per_cluster_consecutive_skips`.
+Job messages stop reporting new extraction errors for the skip cause. After at least one successful completed cycle, `remote_cluster_stats` shows `skipped_clusters` at `0` and no non-zero entries in `per_cluster_consecutive_skips`.
 
 ### When to contact support
 

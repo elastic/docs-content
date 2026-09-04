@@ -11,7 +11,7 @@ products:
 
 # Troubleshoot cloud credential problems
 
-A {{cps}} {{dfeed}} stores an internal cloud API key so periodic searches can read linked projects on your behalf. {{es}} mints that key only when a cloud-authenticated caller creates or updates the {{dfeed}}, not during a scheduled extraction cycle. Failures fall into three paths covered on this page: the key could not be created, an existing key no longer authorizes search, or the key was cleared or never minted.
+A {{cps}} {{dfeed}} stores an internal cloud API key so periodic searches can read linked projects on your behalf. {{es}} mints that key only when you create or update the {{dfeed}} in {{kib}}, or through the API with an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md), not during a scheduled extraction cycle. Failures fall into three paths covered on this page: the key could not be created, an existing key no longer authorizes search, or the key was cleared or never minted.
 
 ## Where to look
 
@@ -54,9 +54,7 @@ Routing that matches no linked project is reported separately. See [Project scop
 
 ### Fix
 
-Resolve missing index privileges, routing that matches nothing, or other probe errors before retrying create or update. Sign in to {{kib}} or call the API as a cloud-authenticated user: a {{ecloud}} session or cloud-managed credential, not a stack API key alone.
-
-Use {{kib}} signed in to {{ecloud}} or an API client with cloud-managed authentication. Non-cloud-authenticated callers clear the internal key instead of minting or re-keying it.
+Resolve missing index privileges, routing that matches nothing, or other probe errors before retrying create or update. Retry in {{kib}}, or through the API with an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md). [{{es}} API keys](/deploy-manage/api-keys/serverless-project-api-keys.md) are scoped to a single project. They cannot mint or re-key the internal credential, and they clear it instead.
 
 ### Verify
 
@@ -95,9 +93,9 @@ POST _ml/datafeeds/my-datafeed/_update
 }
 ```
 
-Replace `my-datafeed` with your {{dfeed}} id. `_force_rekeying` requires cloud authentication; operator basic-auth updates return a validation error.
+Replace `my-datafeed` with your {{dfeed}} id. Call `_force_rekeying` from Console while signed in to {{kib}}, or through the API with an {{ecloud}} API key. {{es}} API keys return a validation error.
 
-{{es}} also re-keys automatically when a cloud-authenticated update changes the cross-project search surface: `project_routing`, `indices`, or `indices_options`. A no-op update without `_force_rekeying` does not replace an existing key.
+{{es}} also re-keys automatically when you change the cross-project search surface from {{kib}}, or through the API with an {{ecloud}} API key: `project_routing`, `indices`, or `indices_options`. A no-op update without `_force_rekeying` does not replace an existing key.
 
 ### Verify
 
@@ -114,22 +112,16 @@ After re-keying, {{es}} best-effort revokes the old key. If revocation fails, jo
 
 ### What you see
 
-When `authorization.cloud_api_key.id` is missing, distinguish two cases:
+When `authorization.cloud_api_key.id` is missing, one of two things happened:
 
-* **Credential cleared**: job messages record `Internal cloud API key cleared on datafeed update with non-cloud credentials` after a non-cloud-authenticated update removed a stored key.
-* **Never minted**: the {{dfeed}} was created or last updated without cloud authentication, so no key was ever stored and no CLEARED message appears. Job messages lack `Internal cloud API key minted for cross-project datafeed`.
+* **Credential cleared**: job messages record `Internal cloud API key cleared on datafeed update with non-cloud credentials` after an update that used an {{es}} API key or other non-{{ecloud}} credential removed a stored key.
+* **Never minted**: the {{dfeed}} was created or last updated outside {{kib}} without an {{ecloud}} API key, so no key was ever stored and the cleared-key message never appears. Job messages lack `Internal cloud API key minted for cross-project datafeed`.
 
-When a caller that is **not** cloud-authenticated updates a {{dfeed}} that still has a stored internal key, {{es}} clears the credential instead of re-keying it:
-
-```txt
-Internal cloud API key cleared on datafeed update with non-cloud credentials
-```
-
-After clearing, `GET _ml/datafeeds/{datafeed_id}` omits `authorization.cloud_api_key.id`. Cross-project portions of the search fail until a cloud-authenticated update mints a new key.
+After clearing, `GET _ml/datafeeds/{datafeed_id}` omits `authorization.cloud_api_key.id`. Cross-project portions of the search fail until you update the {{dfeed}} in {{kib}}, or through the API with an {{ecloud}} API key.
 
 ### Fix
 
-Issue a cloud-authenticated update. When the credential was cleared, a cloud-authenticated update mints a new key even if the configuration is unchanged.
+Update the {{dfeed}} in {{kib}}, or through the API with an {{ecloud}} API key. When the credential was cleared, that update mints a new key even if the configuration is unchanged.
 
 ### Verify
 
@@ -137,7 +129,7 @@ Issue a cloud-authenticated update. When the credential was cleared, a cloud-aut
 
 ### When to contact support
 
-If a cloud-authenticated force re-key or surface-changing update completes but cross-project search still fails, contact [Elastic support](/troubleshoot/index.md#contact-us) with:
+If a force re-key or surface-changing update in {{kib}}, or through the API with an {{ecloud}} API key, completes but cross-project search still fails, contact [Elastic support](/troubleshoot/index.md#contact-us) with:
 
 * Origin project id
 * {{anomaly-job}} and {{dfeed}} ids
