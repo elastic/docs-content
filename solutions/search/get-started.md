@@ -32,7 +32,10 @@ For simplicity and speed, try out {{serverless-full}}:
 :::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
 :::
 
-If you're not sure which project type to choose, select the **{{es}}** project type. This project type provides core {{es}} search capabilities along with additional UI tools to help you build search-powered applications faster.
+Select the project type that matches your workload:
+
+* Select [{{es}} Vector Database](/solutions/vector-database.md) when embeddings and similarity search are central to your application, including semantic search, hybrid search, RAG, and recommendations.
+* Select the [{{es}} project type](/solutions/elasticsearch-solution-project.md) for general-purpose data storage and search, including mixed lexical, time series, and analytics workloads.
 
 When your project is created, you're ready to move on to the next step and to start creating indices, adding data, and performing searches.
 ::::

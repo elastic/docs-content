@@ -15,6 +15,8 @@ products:
 # Vector search in {{es}}
 
 :::{tip}
+If you're using {{serverless-full}}, the [{{es}} Vector Database project type](/solutions/vector-database.md) is recommended when embeddings and similarity search are central to your application.
+
 New to semantic search? Start with the [semantic search quickstart](get-started/semantic-search.md), which uses the managed `semantic_text` workflow.
 
 For common vector search use cases and how to apply them, refer to [Vector search use cases](vector/vector-search-use-cases.md).
