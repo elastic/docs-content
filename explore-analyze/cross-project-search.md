@@ -27,7 +27,7 @@ For details on how search, tags, and project routing work in {{cps-init}}, refer
 * [Manage {{cps-init}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): Control which projects are searched as you work in Discover, Dashboards, and other {{kib}} apps.
 
 :::{note}
-Cross-project search is available for {{serverless-full}} projects only. For other deployment types, refer to [](/explore-analyze/cross-cluster-search.md).
+Cross-project search is available for {{serverless-full}} projects only. For other deployment types, refer to [](/explore-analyze/cross-cluster-search.md). To compare the two, refer to [](/explore-analyze/cross-project-search/cps-compared-to-ccs.md).
 :::
 
 ## {{cps-cap}} as the default behavior for linked projects
