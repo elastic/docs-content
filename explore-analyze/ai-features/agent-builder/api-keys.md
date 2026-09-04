@@ -190,9 +190,9 @@ Remove privileges that the client does not need:
 - Add `feature_workflowsManagement.workflow_execute` if any agent uses a [workflow tool](tools/workflow-tools.md). Read access lets an agent reference a workflow; running one requires the execute privilege.
 - Remove `monitor_inference` if agents and tools do not call the {{es}} Inference API.
 
-## Create a management client key
+## Create a key with management access
 
-The following example allows a client to manage {{agent-builder}} components and workflows while keeping the underlying index access read-only.
+This example allows a client to manage {{agent-builder}} components and workflows while keeping index access read-only.
 
 {applies_to}`stack: ga 9.4+` `feature_agentBuilder.all` also grants skills management.
 
