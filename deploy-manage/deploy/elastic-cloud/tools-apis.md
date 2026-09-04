@@ -110,7 +110,7 @@ serverless: unavailable
 
 ### Email service limits
 
-The following quotas apply to {{ech}} deployments and {{serverless-full}} projects when using the Elastic email service. Only the sending quota differs between the two:
+The following quotas apply to {{ech}} deployments and {{serverless-full}} projects when using the Elastic email service:
 
 * Email sending quota:
     * {applies_to}`serverless: ga` 150 emails per 15 minute period.
