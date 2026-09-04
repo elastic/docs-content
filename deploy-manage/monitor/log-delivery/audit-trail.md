@@ -9,7 +9,7 @@ products:
 
 # Audit trail log delivery
 
-Audit trail is the first log type available for [log delivery](/deploy-manage/monitor/serverless-log-delivery.md) in {{serverless-full}}. Enabling it delivers audit logs to your selected destination project so you can track and investigate organization actions in the source project.
+Audit trail is the first log type available for [log delivery](/deploy-manage/monitor/log-delivery.md) in {{serverless-full}}. Enabling it delivers audit logs to your selected destination project so you can track and investigate organization actions in the source project.
 
 ## What's included
 
@@ -55,7 +55,7 @@ You must have the **Admin** or **Editor** [role](/deploy-manage/users-roles/clou
 
 ### Audit trail ignore filters
 
-Apply ignore filters to exclude certain events from being delivered. Refer to [](/deploy-manage/monitor/serverless-log-delivery.md#ignore-filters) to learn more about their impact on your delivery volume and bill.
+Apply ignore filters to exclude certain events from being delivered. Refer to [](/deploy-manage/monitor/log-delivery.md#ignore-filters) to learn more about their impact on your delivery volume and bill.
 
 The following table describes which ignore filters are available for the audit trail log type and when to select them.
 

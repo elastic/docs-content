@@ -7,7 +7,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Log delivery in {{serverless-full}} [serverless-log-delivery]
+# Log delivery in {{serverless-full}} [log-delivery]
 
 Log delivery lets you ship selected log types from any {{serverless-full}} project to any {{sec-serverless}} or {{obs-serverless}} project in your organization.
 
@@ -50,4 +50,4 @@ Log delivery usage is metered. Cost is proportional to the volume of the deliver
 
 ## Log types
 
-[Audit trail](/deploy-manage/monitor/serverless-log-delivery/audit-trail.md) is the first log type available for delivery. More log types are coming soon.
+[Audit trail](/deploy-manage/monitor/log-delivery/audit-trail.md) is the first log type available for delivery. More log types are coming soon.
