@@ -261,4 +261,3 @@ If you are upgrading your cluster, you can use the following request to close al
 ```console
 POST _ml/anomaly_detectors/_all/_close
 ```
-

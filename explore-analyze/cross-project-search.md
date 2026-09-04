@@ -772,4 +772,3 @@ This request returns an error:
   "status": 404
 }
 ```
-

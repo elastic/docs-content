@@ -170,4 +170,3 @@ DELETE _project_routing/origin-only
 ::::{note}
 When using the `_project_routing` API to create, retrieve, or delete expressions, do not prefix the expression name with `@`. The `@` prefix is required only when referencing a named expression in the `project_routing` parameter of API endpoints that support it.
 ::::
-
