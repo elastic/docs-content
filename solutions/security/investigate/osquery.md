@@ -433,10 +433,10 @@ You can run Osquery against {{agents}} that send data to a [remote {{es}} output
 
 This uses two separate connections:
 
-* **Remote {{es}} output:** {{agents}} send query results to the remote cluster.
-* **{{ccs-cap}} ({{ccs-init}}):** the local cluster searches those results so they appear in Osquery.
+* **Remote {{es}} output:** {{agents}} send query results from the queried hosts to the remote cluster.
+* **{{ccs-cap}} ({{ccs-init}}):** The local cluster reads those query results back from the remote cluster.
 
-To set this up, complete the following steps:
+To set up the connections, complete the following steps:
 
 1. Create a remote {{es}} output and assign it to the {{agent}} policy that includes Osquery Manager. Refer to [Remote {{es}} output](/reference/fleet/remote-elasticsearch-output.md).
 2. On the local cluster, add the remote cluster. Follow [Set up {{ccs}} to query remote data](/reference/fleet/remote-elasticsearch-output.md#set-up-ccs).
