@@ -68,6 +68,14 @@ Use the search function to find and visualize specific metric data:
 :screenshot:
 :::
 
+**Change default aggregations**
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` You can change the default aggregation for each metric type:
+
+- **Counter**: Average, Sum (default), Minimum, Maximum
+- **Gauge**: Average (default), Sum, Minimum, Maximum
+- **Histogram**: 50th percentile, 75th percentile, 90th percentile, 95th percentile (default), 99th percentile
+
 **Break down metrics by dimensions**
 
 Break down your metrics by dimensions to find metrics that contain those dimensions and identify which values in those dimensions contribute the most to each metric.
