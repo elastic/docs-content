@@ -14,7 +14,7 @@ description: "Get started with the experimental alerting system in Kibana: revie
 Use the following guides to get the {{alerting-v2-system}} running in your space, set up role access for your team, and create your first rule.
 
 - [Set up the {{alerting-v2-system}}](get-started/setup.md): Review requirements, enable the `alerting:v2:enabled` advanced setting, and confirm the system is accessible in your space.
-- [Configure access](get-started/configure-access.md): Set up a role with the {{kib}} feature privileges needed to create rules, triage alerts, and query alert data.
+- [Configure access](get-started/configure-access.md): Set up a role with the {{kib}} feature privileges needed to create rules, triage alert episodes, and query alert episode data.
 - [Create your first rule](get-started/create-your-first-rule.md): A hands-on tutorial that walks you through loading sample data, creating a rule, and observing the alert lifecycle from breach through automatic recovery.
 
 ## Explore the documentation [explore-documentation]
@@ -23,7 +23,7 @@ Once you're comfortable with the basics, use the following pages as your entry p
 
 - [Rules](rules.md) shows you how to define what to detect in {{esql}}, and how to choose and configure the right creation path for your use case.
 - [Alerts](alerts.md) explains how alert episodes track a problem from first detection through recovery, and how to triage them as they come in.
-- [Notifications and actions](notifications-actions.md) shows you how to connect workflows and action policies so the right people hear about the right problems, at the right time.
+- [Notifications and actions](notifications-actions.md) shows you how action policies invoke workflows so the right people hear about the right problems, at the right time.
 
 :::{important} - How to use the {{alerting-v2-system}} documentation
 Because the {{alerting-v2-system}} is still evolving, its UI can change before general availability. Rather than pointing to an exact button or menu, the documentation focuses on the underlying concepts and behavior. If something doesn't match what you see in the {{kib}} UI, look for the closest equivalent instead. The concepts and behaviors described in the documentation still apply.

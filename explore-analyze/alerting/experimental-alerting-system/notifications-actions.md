@@ -5,12 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How to set up notifications and actions for rules in the experimental alerting system using workflows and action policies."
+description: "How to set up notifications and actions for rules in the experimental alerting system. Action policies invoke workflows, which send the notification."
 ---
 
 # Notifications and actions for the {{alerting-v2-system}} [notifications-actions]
 
-{{rules-ui}} in the {{alerting-v2-system}} don't send notifications directly. Instead, they produce alert episodes, and you use workflows and action policies to decide what happens next. For an explanation of how these two connect at runtime, refer to [Connect workflows](workflows-alerting.md).
+Use this page to set up notifications and actions for alert episodes. Build a workflow that sends a notification or runs automation, then create an action policy that invokes it. Rule events that aren't part of an alert episode (`type: signal`) stay in `.rule-events`. Both action policies and lifecycle triggers require an alert episode. For how those connections work at runtime, refer to [Connect workflows](workflows-alerting.md).
 
 :::{note}
 To use workflows, your role must have the appropriate privileges and your subscription must include workflows. Refer to the subscription page for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}}/self-managed]({{subscriptions}}) for a breakdown of available features by tier.

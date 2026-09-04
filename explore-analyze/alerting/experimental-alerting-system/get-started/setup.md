@@ -17,7 +17,7 @@ This page covers what you need before using the {{alerting-v2-system}}, and how 
 
 - **Data in Elasticsearch**: Rules can only detect conditions in data that already exists. Make sure the indices or data streams your rules will query are populated before creating rules. Refer to [Ingest your data](/manage-data/ingest.md) for options.
 - **A space selected**: Rules, action policies, and the privileges that control them are all space-scoped. Decide which space you'll work in before setting things up. Refer to [Manage spaces](/deploy-manage/manage-spaces.md) to create or switch spaces.
-- **Connectors configured** (required for notifications): Action policies send notifications through workflows, which require at least one [connector](/deploy-manage/manage-connectors.md), for example, Slack, email, or PagerDuty.
+- **Connectors configured** (required for notifications): Workflows send notifications and require at least one [connector](/deploy-manage/manage-connectors.md), for example, Slack, email, or PagerDuty. Action policies invoke those workflows.
 - **Enterprise license** (Stack deployments only, required for notifications): Workflows-based notifications require an Enterprise license. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers. {applies_to}`stack: ga 9.5+`
 
 ## Turn on the system [alerting-setup-turn-on]

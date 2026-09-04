@@ -12,6 +12,8 @@ description: "How action policies gate alert episodes through eligibility checks
 
 An action policy is the gating layer between an alert episode and a workflow in the {{alerting-v2-system}}. It decides whether and when to invoke a workflow by running the alert episode through a sequence of gates, and a workflow runs only once the episode clears every gate.
 
+This page explains why action policies are separate from rules, the gates an episode must pass, and how the dispatcher evaluates them.
+
 ## Why action policies are separate from rules [policies-separate-from-rules]
 
 Action policies are independent of rules. A single action policy can cover alert episodes from many rules, so an action policy matching `severity: "critical"` applies regardless of which rule produced the alert episode. You can create a rule without any action policy, which is useful for testing detection logic before wiring up notifications. You can also update notification routing later without touching the rule.
@@ -43,7 +45,7 @@ For each enabled action policy that is not snoozed, the dispatcher works through
 | 5 | Invoke the configured workflows, on the dispatcher's next polling cycle (roughly every 5 seconds). |
 
 :::{tip}
-If an action policy already matched an episode, a severity change does not re-trigger it. A severity change can still cause a different action policy to match for the first time and fire a notification. For details and examples, refer to [Manage severity escalation notifications](severity-escalation.md).
+If an action policy already matched an episode, a severity change does not re-trigger it. A severity change can still cause a different action policy to match for the first time and invoke a workflow. For details and examples, refer to [Manage severity escalation notifications](severity-escalation.md).
 :::
 
 ## Related pages

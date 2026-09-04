@@ -10,15 +10,15 @@ description: "How workflows connect to the experimental alerting system through 
 
 # Connect workflows to the {{alerting-v2-system}} [connect-workflows]
 
-[Workflows](../../workflows.md) are the delivery layer that defines what happens when the {{alerting-v2-system}} takes an action, such as sending a message, calling a webhook, or triggering an automation. Workflows are what allow your team's incident response tools to connect with the {{alerting-v2-system}}.
+[Workflows](../../workflows.md) are the delivery layer that defines what happens when the {{alerting-v2-system}} takes an action, such as sending a message, calling a webhook, or triggering an automation. Workflows connect the alerting system to your incident-response tools.
 
 This page covers how action policies drive workflow invocations at runtime, the available alert episode lifecycle triggers, and when to use each pathway.
 
 ## How the alerting system connects to workflows [connection-pathways]
 
-The {{alerting-v2-system}} connects to workflows through two pathways.
+The {{alerting-v2-system}} connects to workflows through two pathways. Both require an alert episode.
 
-- **Action Policies** - Action policies evaluate active alert episodes on a continuous schedule and invoke workflows based on match conditions and frequency settings.
+- **Action Policies** - Action policies evaluate eligible alert episodes on a continuous schedule and invoke workflows based on match conditions and frequency settings.
 - **Alert episode lifecycle triggers** - Workflows are invoked when a specific event occurs on an alert episode, such as when the alert episode is activated, assigned, or deactivated.
 
 ### Action policies [action-policy-driven-workflows]

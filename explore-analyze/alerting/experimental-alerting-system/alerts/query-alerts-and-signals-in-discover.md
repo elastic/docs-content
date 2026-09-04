@@ -12,6 +12,8 @@ description: "Use ES|QL in Discover to replay incidents, audit triage actions, a
 
 Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**. The **Alerts** page shows current episode state. Discover lets you go further and replay how an incident unfolded, view who acknowledged or snoozed it, measure time-to-acknowledge trends, or correlate alert history with other data in your environment.
 
+For events with `type: signal`, including basic queries and using them as input to a rule that opens an episode, refer to [Query signals](query-signals.md).
+
 Use the following table to jump to the query you need:
 
 | Query | What it returns | Stream |
@@ -42,9 +44,9 @@ Before you can query alert history in Discover, add the alert data streams as da
 
 For more details on data view options, refer to [Data views](../../../find-and-organize/data-views.md).
 
-## Query episode and signal history [query-episode-signal-history]
+## Query episode history [query-episode-signal-history]
 
-Each rule evaluation produces one document in `.rule-events`. {{kib}} never overwrites these documents, which means you can reconstruct the full history of any episode by querying all documents that share the same `episode.id`. The following sections provide example queries for common scenarios.
+{{kib}} writes one [rule event](../rules/rule-event-field-reference.md) to `.rule-events` for each matching row of a scheduled rule run. {{kib}} never overwrites these events, which means you can reconstruct the full history of any episode by querying all events that share the same `episode.id`. The following sections provide example queries for common scenarios.
 
 ### Reconstruct the lifecycle of a specific episode [replay-episode]
 
@@ -88,7 +90,7 @@ FROM .rule-events
 
 ### Identify evaluation gaps [identify-no-data]
 
-`no_data` rows appear when the rule finds no matching data during an evaluation cycle. A cluster of these can indicate a data pipeline issue or a misconfigured rule.
+`no_data` rows appear when a rule with [no-data handling](../rules/configure-no-data-handling.md) configured finds no matching data during an evaluation cycle. Events with `type: signal` don't include `no_data`. A cluster of these rows can indicate a data pipeline issue or a misconfigured rule.
 
 ```esql
 FROM .rule-events
@@ -185,7 +187,7 @@ If you need to join both streams in a single query, use `LOOKUP JOIN`. This requ
 
 ```esql
 FROM .rule-events
-// Only include rows that belong to an alert episode (signals have no episode.id)
+// Only include rows that belong to an alert episode (events with type: signal have no episode.id)
 | WHERE episode.id IS NOT NULL
 // Rename to match the join key naming convention in .alert-actions
 | EVAL episode_id = episode.id
