@@ -57,7 +57,7 @@ When the metrics profile is active, the documents table is collapsed by default 
 All metrics in the grid have data. If a metric appears empty, it's likely a counter metric where the scrape interval is smaller than the bucket size. To view the data, either expand the time range or click Explore for that metric and reduce the number of buckets in the query.
 :::
 
-With your data loaded, use the metrics charts to:
+With your data loaded, use the metrics grid to:
 
 **Search for specific metrics**
 
@@ -67,6 +67,11 @@ Use the search function to find and visualize specific metric data:
 :alt: Screenshot of searching for a specific metric.
 :screenshot:
 :::
+
+**Sort the metrics grid** {applies_to}`stack: ga 9.6+`
+:   You can change the order of metrics in the grid:
+    - **Alphabetically** (default)
+    - **Recently explored**: Metrics you've interacted with, for example through View details or Copy to dashboard, appear first, most recent first.
 
 **Break down metrics by dimensions**
 
