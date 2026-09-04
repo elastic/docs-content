@@ -7,7 +7,7 @@ applies_to:
 
 # {{es}} vector and full-text search in 10 minutes [vector-full-text-search-quickstart]
 
-{{es}} is a search and vector engine that supports full-text, semantic, and hybrid search over your data. This guide uses official {{es}} clients to take you from an empty Vector Database project to real search results in about 10 minutes.
+{{es}} is a search and vector engine that supports full-text, semantic, and hybrid search over your data. This guide uses official {{es}} clients to take you from an empty Vector Database project to real search results in less than 10 minutes.
 
 Use it if you're new to search in {{es}} or want to experiment with meaning-based retrieval alongside keyword matching.
 
