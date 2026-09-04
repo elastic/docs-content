@@ -42,7 +42,7 @@ The following sections describe how CCS and CPS differ in availability, setup, q
 :   In CCS, searching for an index that doesn't exist on a cluster returns an error unless `ignore_unavailable` is set to `true`. In CPS, unqualified expressions succeed as long as the target resource exists in at least one searched project. Projects that don't have the resource are silently skipped, which means queries work without error even when projects have different index sets. Qualified expressions behave like CCS: if you target a specific project and the resource is missing, the request returns an error. For details, refer to [Search in CPS](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions).
 
 **Selecting which clusters or projects to search**
-:   In CCS, you select which clusters to search by listing cluster names or using wildcards on cluster names in the index expression. CPS introduces [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md), which selects projects based on project metadata, including project aliases, cloud provider, region, and custom tags. Project routing supports boolean logic (`AND`, `OR`, `NOT`), grouping with parentheses, and reusable [named expressions](/explore-analyze/cross-project-search/cross-project-search-project-routing.md#named-routing-expressions). Routing is evaluated before the query runs, so excluded projects are never searched.
+:   In CCS, you select which clusters to search by listing cluster names or using wildcards on cluster names in the index expression. CPS introduces [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md), which selects projects based on project metadata, including project aliases, cloud provider, region, and custom tags. Project routing supports boolean logic (`AND`, `OR`, `NOT`), grouping with parentheses, and reusable [named expressions](/explore-analyze/cross-project-search/cross-project-search-project-routing.md#named-routing-expressions). Routing is evaluated before the query runs, so excluded projects are never searched. CPS also provides a [scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in {{kib}} apps for controlling which projects are searched without modifying queries.
 
 ## Syntax comparison quick reference
 
@@ -353,6 +353,8 @@ Example results:
 }
 ```
 
+You can also use [project tags](/explore-analyze/cross-project-search/cross-project-search-tags.md) like `_project._alias` in `METADATA` (ES|QL) or `fields` (`_search`) to identify the source project directly, without parsing the `_index` prefix.
+
 :::
 
 ::::
@@ -361,9 +363,36 @@ Example results:
 
 Route a query to a subset of projects based on project metadata like cloud provider, region, or custom tags, rather than using the index expression alone. This capability is new in CPS and has no CCS equivalent.
 
+::::{tab-set}
+:group: ccs-cps
+
+:::{tab-item} CCS
+:sync: ccs
 In CCS, you select clusters by naming them in the index expression.
 
+**`_search`**
+```console
+GET cluster_one:logs-*,cluster_two:logs-*/_search
+```
+
+**ES|QL**
+```esql
+FROM cluster_one:logs-*,cluster_two:logs-*
+| STATS COUNT(*) BY service.name
+```
+:::
+
+:::{tab-item} CPS
+:sync: cps
 In CPS, use `project_routing` to select projects dynamically. Project routing supports boolean logic (`AND`, `OR`, `NOT`) and wildcards.
+
+**`_search`**
+```console
+GET logs-*/_search
+{
+  "project_routing": "_csp:aws AND _region:us*"
+}
+```
 
 **ES|QL**
 ```esql
@@ -372,25 +401,7 @@ FROM logs-*
 | STATS COUNT(*) BY service.name
 ```
 
-**`_query` API**
-
-Or pass `project_routing` in the request body:
-```console
-POST /_query
-{
-  "query": "FROM logs-* | STATS COUNT(*) BY service.name",
-  "project_routing": "_csp:aws AND _region:us*"
-}
-```
-
-You can also define reusable [named expressions](/explore-analyze/cross-project-search/cross-project-search-project-routing.md#named-routing-expressions) and reference them with the `@` prefix. For example, if you save the routing expression above as `us-aws`, you can reference it in any query:
-
-**ES|QL**
-```esql
-SET project_routing="@us-aws";
-FROM logs-*
-| STATS COUNT(*) BY service.name
-```
+You can also define reusable [named expressions](/explore-analyze/cross-project-search/cross-project-search-project-routing.md#named-routing-expressions) and reference them with the `@` prefix:
 
 **`_search`**
 ```console
@@ -399,5 +410,15 @@ GET logs-*/_search
   "project_routing": "@us-aws"
 }
 ```
+
+**ES|QL**
+```esql
+SET project_routing="@us-aws";
+FROM logs-*
+| STATS COUNT(*) BY service.name
+```
+:::
+
+::::
 
 For more on project routing, refer to [](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
