@@ -109,8 +109,8 @@ Select specific values to focus on within the dimension. You can select up to 10
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` You can change the default aggregation for each metric type:
 
-- **Counter**: Average, Sum (default), Minimum, Maximum
-- **Gauge**: Average (default), Sum, Minimum, Maximum
+- **Counter**: average, sum (default), minimum, maximum
+- **Gauge**: average (default), sum, minimum, maximum
 - **Histogram**: 50th percentile, 75th percentile, 90th percentile, 95th percentile (default), 99th percentile
 
 **View metric charts in full screen**
