@@ -49,7 +49,7 @@ You must have the **Admin** or **Editor** [role](/deploy-manage/users-roles/clou
       :::{tip}
       Since audit logs are security data, we recommend selecting a {{sec-serverless}} project as the destination for your audit trail.
       :::
-    * Choose [ignore filters](#audit-trail-ignore-filters) to exclude certain events before delivery. Leave the list empty only if you want to deliver all events for that log type.
+    * Select [ignore filters](#audit-trail-ignore-filters) to exclude certain events before delivery. Leave the list empty only if you want to deliver all events for that log type.
     * Switch the toggle to **Enabled**.
 4. Select **Save**.
 
