@@ -62,6 +62,14 @@ The following table compares the two paths.
 | Setup | Generate a key and add it to the host configuration | Register an MCP client, then consent in the browser |
 | {{agent-builder}} tools through MCP | Full tool catalog, including [Elastic Workflows](/explore-analyze/workflows.md) | Full tool catalog, limited by the [authorizing user's](/deploy-manage/app-connections/connect-mcp-host.md#authorize-connection) permissions |
 
+## Use tools with data from multiple projects [agent-builder-mcp-cps]
+```{applies_to}
+stack: unavailable
+serverless: preview
+```
+
+When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), tool calls use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the MCP URL. Requests without `/s/<space-name>` use the default space.
+
 ## Related pages
 
 - [](programmatic-access.md)
