@@ -188,6 +188,7 @@ Remove privileges that the client does not need:
 
 - Remove `feature_actions.read` if agents do not use {{kib}} connectors.
 - Remove `feature_workflowsManagement.read` if agents do not interact with workflows.
+- Add `feature_workflowsManagement.workflow_execute` if any agent uses a [workflow tool](tools/workflow-tools.md). Read access lets an agent reference a workflow; running one requires the execute privilege.
 - Remove `monitor_inference` if agents and tools do not call the {{es}} Inference API.
 
 ## Create a key that can manage agents, tools, skills, and workflows
