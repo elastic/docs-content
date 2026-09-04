@@ -63,6 +63,24 @@ The `add_cloud_metadata` processor supports SSL options to configure the http cl
 For more information, refer to [SSL/TLS](/reference/fleet/elastic-agent-ssl-configuration.md), specifically the settings under [Table 7, Common configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#common-ssl-options) and [Table 8, Client configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#client-ssl-options).
 
 
+### Control Azure credential selection
+
+```{applies_to}
+stack: ga 9.1.7+
+serverless: ga
+```
+
+After the Azure provider detects an Azure VM, the processor automatically makes a best-effort Azure Resource Manager lookup for the AKS cluster name and ID. These fields are optional, but the processor attempts the lookup even when the VM is not an AKS node. Because inputs that collect logs and metrics enable this processor by default, the lookup can occur without an explicit processor configuration.
+
+If `TENANT_ID`, `CLIENT_ID`, and `CLIENT_SECRET` are all present, the processor uses an explicit client secret. Otherwise, it uses the Azure SDK for Go `DefaultAzureCredential` chain. On Windows, development-focused credentials in the bundled default chain may start Azure CLI, Azure Developer CLI, or, when present, Azure PowerShell. `AzurePowerShellCredential`, when included, invokes PowerShell with an encoded command.
+
+In production, you can exclude development credentials by setting `AZURE_TOKEN_CREDENTIALS=prod` in the {{agent}} process environment and restarting {{agent}}. This setting retains `EnvironmentCredential`, `WorkloadIdentityCredential`, and `ManagedIdentityCredential`. For details, refer to Microsoft's guidance on [excluding a credential type category](https://learn.microsoft.com/en-us/azure/developer/go/sdk/authentication/credential-chains#exclude-a-credential-type-category). On Windows, follow the [Windows service environment procedure](/reference/fleet/host-proxy-env-vars.md#where-to-set-proxy-env-vars) to set the variable and restart {{agent}}.
+
+::::{note}
+`AZURE_TOKEN_CREDENTIALS` applies process-wide to components that use `DefaultAzureCredential`. It does not disable Azure metadata collection or the AKS lookup, and a retained credential can still make Azure Resource Manager requests. Excluding `azure` from the processor's `providers` setting is broader because it also removes basic Azure VM metadata.
+::::
+
+
 ## Provider-specific metadata examples [provider-specific-examples]
 
 The following sections show examples for each of the supported providers.
