@@ -39,6 +39,8 @@ To learn more about the features that are supported by {{ecloud}}, check [{{eclo
 
 ## Stack versions [ec-stack-versions]
 
+* Due to a known issue, {{es}} 9.5.0, 9.5.1, and 9.5.2 can fail to replicate some bulk index operations to replica shards when a node holding a primary shard crosses its indexing pressure limit. Version 9.5.2 is unavailable for new deployments and upgrades. Refer to [Elasticsearch known issues](elasticsearch://release-notes/known-issues.md#elasticsearch-9.5.2-known-issues) for more information on the underlying issue.
+
 * Due to a known issue, {{es}} 9.5.0 and 9.5.1 can return incorrect results from searches that exclude values using a `must_not` clause, where the excluded field has doc values enabled but is not indexed for search. Versions 9.5.0 and 9.5.1 are unavailable for new deployments and upgrades. Review [this KB article](https://support.elastic.co/knowledge/00f3a35b) for more guidance on the known issue.
 
 * Due to a known issue with the {{stack}}, certain upgrade paths to and from version 8.17 are currently blocked or disabled. Review [this KB article](https://support.elastic.co/knowledge/7c3ad709) for more guidance on the known issue. Additionally, review [this KB article](https://support.elastic.co/knowledge/e87d76a5) for detailed information regarding the specific versions affected. 
