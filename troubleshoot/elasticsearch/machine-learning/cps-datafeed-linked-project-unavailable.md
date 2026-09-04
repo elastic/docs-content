@@ -62,9 +62,11 @@ An internal cloud API key problem can also stop cross-project searches. The dist
 
 If the linked project was removed or never linked, re-establish it in [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), then wait for the next extraction cycle or restart the {{dfeed}}.
 
-When a project stays unreachable and you need the {{dfeed}} to keep producing results from the remaining scope, narrow `project_routing` to an `_alias:` expression that excludes the unavailable project. Before you change scope, review [Before you update](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md#before-you-update).
+When a project stays unreachable and you need the {{dfeed}} to keep producing results from the remaining scope, narrow `project_routing` to an `_alias:` expression that excludes the unavailable project. Stop the {{dfeed}} and close the {{anomaly-job}} before running this update.
 
 ```console
+POST _ml/datafeeds/{datafeed_id}/_stop
+POST _ml/anomaly_detectors/{job_id}/_close
 POST _ml/datafeeds/{datafeed_id}/_update
 {
   "project_routing": "_alias:production-*"

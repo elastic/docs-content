@@ -51,9 +51,11 @@ Types within the same family do not trigger a warning (for example `long` in one
 
 Standardize the conflicting field to a compatible type in every linked project. Update index templates or reindex where needed.
 
-When mappings cannot be aligned immediately, narrow `project_routing` to projects with a consistent schema. For routing syntax and stale-alias problems, see [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md). Before you change scope, review [Before you update](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md#before-you-update).
+When mappings cannot be aligned immediately, narrow `project_routing` to projects with a consistent schema. For routing syntax and stale-alias problems, see [Project scope problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md). Stop the {{dfeed}} and close the {{anomaly-job}} before running this update.
 
 ```console
+POST _ml/datafeeds/{datafeed_id}/_stop
+POST _ml/anomaly_detectors/{job_id}/_close
 POST _ml/datafeeds/{datafeed_id}/_update
 {
   "project_routing": "_alias:prod-us"
