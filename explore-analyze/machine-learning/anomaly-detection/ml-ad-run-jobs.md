@@ -126,12 +126,130 @@ You can associate only one {{dfeed}} with each {{anomaly-job}}. The {{dfeed}} co
 
 {{dfeeds-cap}} can also aggregate data before sending it to the {{anomaly-job}}. There are some limitations, however, and aggregations should generally be used only for low cardinality data. See [Aggregating data for faster performance](ml-configuring-aggregation.md).
 
+On {{serverless-full}} with [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md), the {{dfeed}}'s `project_routing` field controls which linked projects are searched. See [{{cps-cap}} scope](#ml-ad-cps-scope).
+
 ::::{important}
 When the {{es}} {{security-features}} are enabled, a {{dfeed}} stores the roles of the user who created or updated the {{dfeed}} at that time. This means that if those roles are updated, the {{dfeed}} subsequently runs with the new permissions that are associated with the roles. However, if the user’s roles are adjusted after creating or updating the {{dfeed}}, the {{dfeed}} continues to run with the permissions that were associated with the original roles.
 
 One way to update the roles that are stored within the {{dfeed}} without changing any other settings is to submit an empty JSON document ({}) to the [update {{dfeed}} API]({{es-apis}}operation/operation-ml-update-datafeed).
 
 ::::
+
+## {{cps-cap}} scope [ml-ad-cps-scope]
+```{applies_to}
+stack: unavailable
+serverless: preview
+```
+
+On {{serverless-full}} with [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md), {{anomaly-jobs}} can search data across linked projects. Each job's scope is controlled by the `project_routing` field on its {{dfeed}}.
+
+That scope applies when the job runs. It is not passed to **Discover** or any other links [opened from the results](ml-ad-view-results.md).
+
+### Set project scope when creating a job [ml-ad-cps-create]
+
+When you create or clone a job in {{kib}}, use the **Project scope** control in the job creation wizard to choose which linked projects the job searches.
+
+The scope control appears on the **Select data view or saved Discover session** step. Choose the project scope, then select a data view or saved Discover session to continue.
+
+For advanced jobs, the project scope and data source controls appear together on the **Configure {{dfeed}}** step. The scope selector and JSON editor both write to the same `project_routing` field. Changing one updates the other. If the routing expression does not map to a preset, the scope selector shows **Custom**.
+
+#### Default scope behavior
+
+The following default scopes apply to jobs created after {{cps-init}} is available on the project:
+
+* **UI:** Defaults to the space default routing expression, or all linked projects if no space default is configured.
+* **API:** Not space-aware. Defaults to all linked projects unless you specify a `project_routing` expression or a qualified index expression.
+* **Clone:** Initializes to the original job's `project_routing`. If the original has no stored routing, for example, in the case of a job created before {{cps-init}} was enabled on the project, the clone uses the space default.
+
+Changes to the space default routing do not retroactively affect existing jobs. Each job retains the `project_routing` that was set at creation or last update. This keeps the model stable. 
+
+[Linking or unlinking projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) in {{ecloud}} also does not change a job's stored scope. If the job still includes an unlinked project, the {{dfeed}} can fail.
+<!--
+PENDING https://github.com/elastic/docs-content/pull/7403
+Refer to [Troubleshoot {{cps}} {{dfeeds}}](/troubleshoot/elasticsearch/machine-learning-cps.md) for more information.
+-->
+
+:::{note}
+When setting `project_routing` through the API or JSON editor, {{es}} does not validate the expression at creation time. If the expression matches no linked projects, the job is created successfully but the datafeed fails when it starts. If fields with the same name have different types across linked projects, values that cannot be converted are treated as empty data.
+% TODO: add xref to troubleshoot/elasticsearch/machine-learning/cps-datafeed-project-scope.md when PR #7403 merges
+:::
+
+### Change project scope on an existing job [ml-ad-cps-update]
+
+You can change a job's project scope in {{kib}} or through the API.
+
+:::{warning}
+Changing project scope affects model accuracy. Expect a significant increase in false positives as the detector encounters unfamiliar data characteristics. During the adaptation period, which can last days or weeks, the model might also miss real anomalies as it learns to model the new data distribution.
+
+If you need a fundamentally different scope, such as moving from origin-only to search across all linked projects, creating a copy of the job configuration with the new routing and retraining it from scratch can be faster than waiting for an existing model to adapt.
+
+% TODO: add xref to troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md when PR #7403 merges
+:::
+
+{{es}} retains the pre-change model snapshot indefinitely so you can [revert to it](#ml-ad-model-snapshots) if needed. These snapshots are exempt from the default 10-day retention lifecycle and must be deleted manually.
+
+:::::{tab-set}
+::::{tab-item} {{kib}}
+
+To change scope for a single job:
+
+1. Stop the job if it is running.
+1. Open the job's edit panel and go to the **Datafeed** tab.
+2. Select the **Project scope** control to open the scope selector, then adjust which projects to include.
+3. Save, then restart the job.
+
+To update scope for multiple jobs at once, select the jobs on the **Anomaly Detection** page and choose **Change project scope** from the bulk action menu. The scope selector opens so you can set a shared scope. If the selected jobs have different scopes, the scope selector pre-populates with the space default. Adjust the scope and save to apply the new routing to all selected jobs. Running jobs are automatically stopped, updated, and restarted.
+
+::::
+
+::::{tab-item} API
+
+To change scope through the API:
+
+1. [Stop the {{dfeed}}]({{es-apis}}operation/operation-ml-stop-datafeed) and [close the {{anomaly-job}}]({{es-apis}}operation/operation-ml-close-job).
+
+   ```console
+   POST _ml/datafeeds/{datafeed_id}/_stop
+   POST _ml/anomaly_detectors/{job_id}/_close
+   ```
+
+2. Update the routing expression using the [update {{dfeed}} API]({{es-apis}}operation/operation-ml-update-datafeed):
+
+   ```console
+   POST _ml/datafeeds/{datafeed_id}/_update
+   {
+     "project_routing": "_alias:production-*"
+   }
+   ```
+
+::::
+
+:::::
+
+### Legacy jobs [ml-ad-cps-legacy]
+
+{{anomaly-jobs-cap}} created before {{cps-init}} was enabled on the project default to origin-only scope (`_alias:_origin`). They continue searching only the local project until you update their `project_routing`. When you change the scope of a legacy job, {{es}} automatically upgrades the job's credentials to support cross-project access.
+
+### Check project scope [ml-ad-cps-monitor]
+
+The **Project scope** column on the **Anomaly Detection** page shows the number of included projects out of the total available (for example, `8/92`). **All** means the job searches all linked projects with no routing restriction. Select the value to see the list of included projects.
+
+The parsed count comes from the routing expression text, not from resolving which aliases actually match at runtime. 
+
+:::{note}
+A single wildcard expression like `_alias:production-*` shows `1`, even if it matches several linked projects at runtime.
+:::
+
+To inspect the stored routing expression programmatically:
+
+* [`GET _ml/datafeeds/{datafeed_id}`]({{es-apis}}operation/operation-ml-get-datafeed) returns the effective `project_routing` value.
+* [`GET _ml/datafeeds/{datafeed_id}/_stats`]({{es-apis}}operation/operation-ml-get-datafeed-stats) includes `remote_cluster_stats` with search counts and status for each linked project.
+
+For valid `project_routing` values and wildcard syntax, refer to [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
+
+<!--
+PENDING https://github.com/elastic/docs-content/pull/7403
+For troubleshooting {{cps}} {{dfeed}} issues, refer to [Troubleshoot {{cps}} {{dfeeds}}](/troubleshoot/elasticsearch/machine-learning-cps.md).-->
 
 ## Open the job [ml-ad-open-job]
 
@@ -161,7 +279,7 @@ If you need to handle recurring seasonal clock changes instead of one-off events
 
 ::::{note}
 
-* You must identify scheduled events before your {{anomaly-job}} analyzes the data for that time period. Machine learning results are not updated retroactively.
+* You must identify scheduled events before your {{anomaly-job}} analyzes the data for that time period. {{ml-cap}} results are not updated retroactively.
 * If your iCalendar file contains recurring events, only the first occurrence is imported.
 * [Bucket results](/explore-analyze/machine-learning/anomaly-detection/ml-ad-view-results.md#ml-ad-bucket-results) are generated during scheduled events but they have an anomaly score of zero.
 * If you use long or frequent scheduled events, it might take longer for the {{ml}} analytics to learn to model your data and some anomalous behavior might be missed.
