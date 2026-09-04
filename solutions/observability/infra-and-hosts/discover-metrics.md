@@ -69,11 +69,9 @@ Use the search function to find and visualize specific metric data:
 :::
 
 **Sort the metrics grid** {applies_to}`stack: ga 9.6+`
-
-You can change the order of metrics in the grid:
-
-- **Alphabetically** (default)
-- **Recently explored**: Metrics you've interacted with, for example through View details or Copy to dashboard, appear first, most recent first.
+:   You can change the order of metrics in the grid:
+    - **Alphabetically** (default)
+    - **Recently explored**: Metrics you've interacted with, for example through View details or Copy to dashboard, appear first, most recent first.
 
 **Break down metrics by dimensions**
 
