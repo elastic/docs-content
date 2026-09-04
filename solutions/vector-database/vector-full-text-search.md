@@ -1574,7 +1574,7 @@ The first result is:
 SCORE The Name of the Wind
 ```
 
-**The Name of the Wind** ranks first because its title matches `wind`, and its description of a gifted young magician's rise from orphan to legend is semantically similar to `young magician coming of age`. Because the book matches both clauses, its full-text and semantic scores combine.
+**The Name of the Wind** ranks first because its description of a gifted young magician's rise from orphan to legend is semantically similar to `young magician coming of age`.
 :::
 
 ## Aggregate the data with {{esql}} [vector-full-text-search-esql]
