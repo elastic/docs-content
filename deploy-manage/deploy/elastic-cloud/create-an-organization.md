@@ -34,11 +34,12 @@ A deployment lets you explore Elastic solutions for Search, Observability, and S
 
 For more information, check the [{{ech}} documentation](cloud-hosted.md).
 
-**Three {{serverless-short}} projects**
+**Four {{serverless-short}} project types**
 
 {{serverless-short}} projects package {{stack}} features by type of solution:
 
 * [{{es}}](../../../solutions/search.md)
+* [{{es}} Vector Database](/solutions/vector-database.md)
 * [Observability](../../../solutions/observability.md)
 * [Security](../../../solutions/security.md)
 

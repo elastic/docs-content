@@ -90,9 +90,9 @@ toc:
           - file: elasticsearch-solution-project/search-applications/search-application-api.md
           - file: elasticsearch-solution-project/search-applications/search-application-security.md
           - file: elasticsearch-solution-project/search-applications/search-application-client.md
-  - hidden: vector-database.md
+  - file: vector-database.md
     children:
-      - hidden: vector-database/get-started.md
+      - file: vector-database/get-started.md
   - file: observability.md
     children:
       - file: observability/get-started.md
