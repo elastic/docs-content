@@ -106,12 +106,10 @@ Select specific values to focus on within the dimension. You can select up to 10
 :::::
 
 **Change how metrics are aggregated** {applies_to}`stack: ga 9.6+`
-
-You can change the default aggregation for each metric type:
-
-- **Counter**: average, sum (default), minimum, and maximum
-- **Gauge**: average (default), sum, minimum, and maximum
-- **Histogram**: 50th percentile, 75th percentile, 90th percentile, 95th percentile (default), and 99th percentile
+:   You can change the default aggregation for each metric type:
+    - **Counter**: average, sum (default), minimum, and maximum
+    - **Gauge**: average (default), sum, minimum, and maximum
+    - **Histogram**: 50th percentile, 75th percentile, 90th percentile, 95th percentile (default), and 99th percentile
 
 **View metric charts in full screen**
 
