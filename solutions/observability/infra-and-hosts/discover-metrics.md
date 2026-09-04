@@ -76,7 +76,7 @@ stack: ga 9.6+
 You can change the order of metrics in the grid:
 
 - **Alphabetically** (default)
-- **Recently explored**: Metrics you've interacted with, for example through **View details** or **Copy to dashboard**, appear first, most recent first.
+- **Recently explored**: Metrics you've interacted with, for example through View details or Copy to dashboard, appear first, most recent first.
 
 **Break down metrics by dimensions**
 
