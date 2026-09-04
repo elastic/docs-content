@@ -228,17 +228,3 @@ If the API key has been encoded correctly, you’ll see a response similar to th
    }
 }
 ```
-
-You can then use the APM Server CLI to verify that the API key has the requested privileges:
-
-```sh
-apm-server apikey verify --credentials R25yVVQzUUI3eVpiU054S0VUNmQ6UmhIS2lzVG1RMWFQQ0hDX1RQd092dw==
-```
-
-If the API key has the requested privileges, the response will look similar to this:
-
-```console-result
-Authorized for privilege "config_agent:read"...:  Yes
-Authorized for privilege "event:write"...:        Yes
-Authorized for privilege "sourcemap:write"...:    Yes
-```
