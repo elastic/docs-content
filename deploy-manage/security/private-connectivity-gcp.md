@@ -202,9 +202,9 @@ Create a new private connection policy.
     Private connection policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
 6. Under **Connectivity**, select **PrivateLink**.
-7. Optional: Under **VPC filter**, enter your Private Service Connect endpoint connection ID. You should only specify a Private Service Connect endpoint connection ID if you want to filter traffic to your deployment. 
+7. Optional: Under **VPC filter**, enter your Private Service Connect endpoint connection ID. You should only specify a Private Service Connect endpoint connection ID if you want to filter traffic to your deployment. For each VPC filter, you can select **Add description** to add an optional description that helps you identify the filter later.
     
-    If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
+    If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between GCP and Elastic in the applicable region.
     
     :::{tip}
     You can apply multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
