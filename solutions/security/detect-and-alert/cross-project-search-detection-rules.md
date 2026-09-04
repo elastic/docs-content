@@ -4,7 +4,7 @@ applies_to:
   stack: unavailable
 products:
   - id: security
-description: Learn how detection rules work with cross-project search to query data across linked projects.
+description: With cross-project search, origin detection rules query linked projects, write alerts on the origin, and apply the max-alerts limit across the combined scope.
 ---
 
 # {{cps-cap}} and detection rules [sec-rules-cross-project-search]
@@ -13,6 +13,33 @@ description: Learn how detection rules work with cross-project search to query d
 :::
 
 If your data spans ECH, ECE, ECK, or self-managed clusters rather than linked {{serverless-short}} projects, refer to [{{ccs-cap}} and detection rules](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md) instead.
+
+## Where detection alerts are stored [cps-rules-scope-and-alerts]
+
+The rule writes every alert it generates to the origin project, no matter which project the matching events came from.
+
+This lets one project hold your detections and your analysts' alert triage while the data stays in the projects that produce it. It also means the origin project's **Alerts** page shows every alert your origin project rules generated, but not every alert in your organization. Rules that run independently on a linked project write their alerts to that project, and the origin project's **Alerts** page doesn't read them.
+
+To confirm which projects a rule covered when it created an alert, use the {{cps-init}} scope fields described in [{{cps-cap}} context in alerts and the event log](#cps-context-in-alerts).
+
+## Which linked projects a rule can access [cps-rules-api-key]
+
+Detection rules use the same API key model as other {{serverless-short}} alerting rules. The rule can search only the linked projects the user who last saved it can access. For how keys are created, how role changes apply, and how to update a key, refer to [](/explore-analyze/alerting/alerts/rules-and-elastic-cloud-api-keys.md).
+
+### When a rule searches the origin project only [cps-rules-origin-only-key]
+
+If you create or update a rule through the API with an {{es}} API key, the rule keeps that credential and searches the origin project only:
+
+- If the origin project has no matching indices, the rule doesn't run and its last-run status shows a warning.
+- If those patterns exist on the origin, the rule still runs and reports success. The last-run status doesn't indicate that linked projects were skipped.
+
+Plan for this when you migrate rules from another environment or create rules through automation. Rules still running on an {{es}} API key are tagged **Missing {{ecloud}} API Key** on the **{{siem-rules-ui}}** page.
+
+## How the alert limit applies across linked projects [cps-rules-max-alerts]
+
+The **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) limits the number of alerts a rule creates in a single execution. Under {{cps}}, that limit covers the combined results from every project the rule queries in that run, rather than each project separately. By default, the rule queries the origin project and all linked projects in the space-level scope. The default limit is 100.
+
+A rule that stayed under the limit on a single project can reach the limit after you link projects, which leaves matching events without alerts. Review the limit for rules that run across a broad scope. To search fewer projects, add [`SET project_routing`](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) at the start of the **{{esql}} query**, or enter a [qualified index expression](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) in **Index patterns**, instead of raising the limit.
 
 ## {{cps-cap}} context in alerts and the event log [cps-context-in-alerts]
 
