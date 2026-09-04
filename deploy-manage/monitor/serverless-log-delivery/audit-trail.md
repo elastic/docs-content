@@ -15,8 +15,8 @@ Audit trail is the first log type available for [log delivery](/deploy-manage/mo
 
 An audit trail includes the following events:
 
-* **{{ecloud}} and organization administration:** Sign-in, membership, IAM, and project settings
-* **Project activity:** {{es}} and {{kib}} activity including index, template, and pipeline lifecycle, data searches, reads, and writes, and UI access.
+* **{{ecloud}} and organization administration:** Sign-ins; membership and IAM; and project settings.
+* **Project activity:** {{es}} and {{kib}} activity, including index, template, and pipeline lifecycle; data searches, reads, and writes; and UI access.
 
 Audit trail delivery is applicable to {{serverless-short}} projects, so {{ech}} fields like `node.*` and `host.*` are not included.
 
@@ -30,11 +30,11 @@ Delivering an audit trail into a project lets you investigate end-to-end activit
 * Track create, update, or delete actions on indices, templates, or pipelines
 * Detect changes or deletions of {{kib}} saved objects such as detection rules
 * Determine who searched a sensitive index
-* Follow one user journey across `service.name` values for the same `user.name` and time window
+* Follow a user journey across `service.name` values for the same `user.name` and time window
 
 ## Set up delivery for audit trail
 
-Complete the following steps to configure log delivery in your project.
+Complete the following steps to configure audit trail log delivery in your project.
 
 ### Before you begin
 
@@ -45,7 +45,7 @@ You must have the **Admin** or **Editor** [role](/deploy-manage/users-roles/clou
 1. On your {{ecloud}} homepage, find the project that should be the source of your log deliveries and select **Manage**.
 2. From the navigation menu, select **Log delivery**.
 3. For **Audit trail**, complete the following fields.
-    * In the **Destination** column, select a {{sec-serverless}} or {{obs-serverless}} project to receive the logs.
+    * In the **Destination** column, select an {{sec-serverless}} or {{obs-serverless}} project to receive the logs.
       :::{tip}
       Since audit logs are security data, we recommend selecting a {{sec-serverless}} project as the destination for your audit trail.
       :::
@@ -53,7 +53,7 @@ You must have the **Admin** or **Editor** [role](/deploy-manage/users-roles/clou
     * Switch the toggle to **Enabled**.
 4. Select **Save**.
 
-## Audit trail ignore filters
+### Audit trail ignore filters
 
 Apply ignore filters to exclude certain events from being delivered. Refer to [](/deploy-manage/monitor/serverless-log-delivery.md#ignore-filters) to learn more about their impact on your delivery volume and bill.
 
@@ -67,29 +67,18 @@ The following table describes which ignore filters are available for the audit t
 | Ignore routine user and role checks | Select for security operations or minimal profiles that focus on failures. Do not select if you need IAM accountability. Applies to IAM-related events in the audit trail, including {{ecloud}} and organization signals when present. |
 | Ignore UI requests | Select to exclude read-only UI navigation noise. Saved object mutations are still delivered. |
 
-### Ignore filter combinations
+#### Ignore filter combinations
 
 In the following table, find the recommended combination of filters to select for typical use cases.
 
 | Typical use | Ignore filters to select |
 | --- | --- |
 | General production | • Ignore data searches and reads<br>• Ignore UI requests |
-| Maximum end-to-end evidence | (none) |
 | Change accountability without search noise | • Ignore data searches and reads |
 | Failure-oriented monitoring | • Ignore data searches and reads<br>• Ignore UI requests<br>• Ignore successful sign-ins |
 | Change management | • Ignore data searches and reads<br>• Ignore UI requests<br>• Ignore data writes |
-| Dev or sandbox | • Ignore data searches and reads<br>• Ignore data writes<br>• Ignore successful sign-ins<br>• Ignore routine user and role checks<br>• Ignore UI requests |
-
-### Compliance starting points
-
-These starting points are **not legal advice**. Validate retention, scope, and evidence requirements with your compliance team.
-
-| Need | Start from | Important |
-| --- | --- | --- |
-| HIPAA / PCI (data access evidence) | Forensics / maximum end-to-end evidence | Do not enable **Ignore data searches and reads** |
-| GDPR (accountability) | General production or Change accountability without search noise | Enable the data-reads ignore unless access proof is required |
-| SOX (ITGC) | Change accountability without search noise or ITGC / change management | — |
-| Dev / test | Dev / sandbox | Enable all ignore filters |
+| Dev or sandbox | All |
+| Maximum end-to-end evidence | None |
 
 ## Explore delivered logs
 
@@ -99,17 +88,17 @@ Use Discover or {{esql}} to explore delivered audit trail logs in the following 
 
 | Data stream or index pattern | Contents |
 | --- | --- |
-| `logs-serverless.audit.otel-elastic_cloud` | Project-level audit logs ({{es}}, {{kib}}, and {{ecloud}} project signals) |
-| `logs-org.audit.otel-elastic_cloud` | Organization-level audit logs (administration, configuration, billing, and similar) |
 | `logs-*.audit.otel-*` | All audit logs |
+| `logs-org.audit.otel-elastic_cloud` | Organization-level audit logs (administration, configuration, billing, and similar) |
+| `logs-serverless.audit.otel-elastic_cloud` | Project-level audit logs ({{es}}, {{kib}}, and {{ecloud}} project signals) |
 
 :::{warning}
 Restrict who can access these locations in your destination project, because logs might include user identifiers and client IPs.
-::: 
+:::
 
 ### Example queries
 
-Explore the following examples of what you can investigate with your delivered audit logs. Each query is run against `logs-*.audit.otel-*` in Discover.
+Explore the following examples of what you can investigate with your delivered audit logs. Run each query against `logs-*.audit.otel-*` in Discover.
 
 #### Failed or denied activity
 
@@ -119,16 +108,6 @@ FROM logs-*.audit.otel-*
 | KEEP @timestamp, user.name, user.id, event.action, event.outcome, source.ip, project.id, service.name
 | SORT @timestamp DESC
 | LIMIT 100
-```
-
-#### Who is changing configuration and objects
-
-```esql
-FROM logs-*.audit.otel-*
-| WHERE event.type IN ("creation", "change", "deletion")
-| STATS events = COUNT(*) BY user.name, event.action, service.name
-| SORT events DESC
-| LIMIT 20
 ```
 
 #### {{kib}} and saved-object changes
@@ -156,9 +135,19 @@ FROM logs-*.audit.otel-*
 | LIMIT 100
 ```
 
+#### Who is changing configuration and objects
+
+```esql
+FROM logs-*.audit.otel-*
+| WHERE event.type IN ("creation", "change", "deletion")
+| STATS events = COUNT(*) BY user.name, event.action, service.name
+| SORT events DESC
+| LIMIT 20
+```
+
 #### Who searched a sensitive index
 
-This query requires **Ignore data searches and reads** to be off. Replace `<INDEX_PATTERN>` with the index or pattern to watch.
+Do not select the **Ignore data searches and reads** filter for this query. Replace `<INDEX_PATTERN>` with the index or pattern to watch.
 
 ```esql
 FROM logs-*.audit.otel-*
