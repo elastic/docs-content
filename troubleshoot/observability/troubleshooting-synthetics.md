@@ -23,7 +23,6 @@ For debugging synthetic tests locally, you can set an environment variable, `DEB
 
 ## Common issues [synthetics-troubleshooting-common-issues]
 
-
 ### Monitors stopped running after upgrading to 8.8.0 or above [synthetics-troubleshooting-missing-api-key]
 ```yaml {applies_to}
 stack: all
@@ -145,6 +144,24 @@ To fix this you can either:
 
 * Ask an administrator with a [setup role](/solutions/observability/synthetics/setup-role.md) to update [`Synthetics and Uptime` sub-feature privileges](/solutions/observability/synthetics/writer-role.md#disable-managed-locations) for the role you’re currently assigned or assign you a role that allows using Elastic’s global managed infrastructure.
 * Use a [Private Location](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#monitor-via-private-agent).
+
+
+### Monitors stuck in pending state after stack upgrade
+```yaml {applies_to}
+stack: all
+```
+
+After a stack upgrade, lightweight or browser-based monitors that run infrequently might appear in a pending state in the Synthetics app.
+
+This happens because the mapping for the field `observer.geo.name` changed from type `wildcard` to `keyword`. Backing indices created before the upgrade retain the old mapping, so new documents fail to index until the data stream rolls over.
+
+Monitors that run frequently resolve on their own, since their data streams hit the normal rollover thresholds quickly. Infrequently run monitors might take much longer.
+
+To fix this, manually roll over the affected data streams:
+
+1. Identify all Synthetics related datastreams: `GET /_data_stream/synthetics-*?filter_path=data_streams.name`;
+2. Rollover each one of them with: `POST <data stream name>/_rollover`
+ 
 
 
 ## Get help [synthetics-troubleshooting-get-help]
