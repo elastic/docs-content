@@ -94,7 +94,8 @@ The update succeeds without HTTP `409` or `400`. `GET _ml/datafeeds/{datafeed_id
 
 ### What you see
 
-When you [bulk update](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-update) multiple jobs, the bulk update might not be completely successful.
+% TODO: link to ml-ad-run-jobs.md#ml-ad-cps-update when PR #7814 merges
+When you [bulk update](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) multiple jobs, the bulk update might not be completely successful.
 
 Failed jobs display the job id and a cross icon ({icon}`cross`). To learn why a job failed, open **Job messages** for that job or retry the update through the API and read the error response.
 

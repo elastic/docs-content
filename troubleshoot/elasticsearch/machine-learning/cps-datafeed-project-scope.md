@@ -73,7 +73,8 @@ A `project_routing` value that matches nothing is deferred to run time only when
 
 ### Fix
 
-Update routing to a valid `_alias:` expression, or link the missing project in [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md). For step-by-step guidance on setting scope in {{kib}} or through the API, see [Change the project scope of an anomaly detection job](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-update).
+Update routing to a valid `_alias:` expression, or link the missing project in [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md). For step-by-step guidance on setting scope in {{kib}} or through the API, see [Change the project scope of an anomaly detection job](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md).
+% TODO: link to ml-ad-run-jobs.md#ml-ad-cps-update when PR #7814 merges
 
 ### Verify
 
@@ -90,7 +91,8 @@ Update routing to a valid `_alias:` expression, or link the missing project in [
 
 ### Fix
 
-Narrow `project_routing` to the projects you need. See [Change the project scope of an anomaly detection job](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-update) for how to set **Project scope** in {{kib}} or update routing through the API. Before you change scope, review [Before you update](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md#before-you-update).
+Narrow `project_routing` to the projects you need. See [Change the project scope of an anomaly detection job](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) for how to set **Project scope** in {{kib}} or update routing through the API. Before you change scope, review [Before you update](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md#before-you-update).
+% TODO: link to ml-ad-run-jobs.md#ml-ad-cps-update when PR #7814 merges
 
 ### Verify
 
@@ -108,7 +110,8 @@ Narrow `project_routing` to the projects you need. See [Change the project scope
 
 ### Fix
 
-When `indices` contains a qualified `project:index` pattern, update both `project_routing` and the qualified index reference after a rename or unlink. See [Change the project scope of an anomaly detection job](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-update).
+When `indices` contains a qualified `project:index` pattern, update both `project_routing` and the qualified index reference after a rename or unlink. See [Change the project scope of an anomaly detection job](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md).
+% TODO: link to ml-ad-run-jobs.md#ml-ad-cps-update when PR #7814 merges
 
 Changing `indices` also changes the cross-project search surface, which can re-key the internal cloud API key. See [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md).
 
