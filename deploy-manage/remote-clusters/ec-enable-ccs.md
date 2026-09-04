@@ -33,7 +33,7 @@ To use CCS or CCR, your deployments must meet the following criteria:
   :::{include} _snippets/remote-cluster-certificate-compatibility.md
   :::
 
-* If your deployment was created before February 2021, the **Remote clusters** page in {{kib}} must be enabled manually from the **Security** page of your deployment, by selecting **Enable CCR** under **Trust management**.
+* If your deployment was created before February 2021, the **Remote clusters** page in {{kib}} must be enabled manually from **Security** > **Remote connections** on your deployment, by selecting **Enable CCR** under **Trust management**.
 
 ## Set up remote clusters with {{ech}}
 

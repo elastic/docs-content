@@ -104,22 +104,23 @@ To configure trust in the ECH deployment:
 
 2. Update the trust settings for the {{ech}} deployment:
 
-    1. From the **Security** menu, select **Remote Connections > Add trusted environment**, choose **Self-managed**, and click **Next**.
+    1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
+    2. From the navigation menu, select **Remote connections**. Select **Add trusted environment**, choose **Self-managed**, and click **Next**.
 
-    2. Select **Certificates** as the authentication mechanism and click **Next**.
+    3. Select **Certificates** as the authentication mechanism and click **Next**.
 
-    3. In **Add trusted CA certificate**, upload the `eck-ca.crt` file retrieved in the previous step.
+    4. In **Add trusted CA certificate**, upload the `eck-ca.crt` file retrieved in the previous step.
 
-    4. In **Select trusted clusters**, configure the following:
+    5. In **Select trusted clusters**, configure the following:
         * Select **Trust clusters whose Common Name follows the Elastic pattern**.
         * For **Scope ID**, enter `<kubernetes-namespace>.es.local`, replacing `<kubernetes-namespace>` with the namespace of your ECK cluster.
         * In **Trust**, select **All deployments**.
 
-    5. In **Name the environment**, enter a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Security** page.
+    6. In **Name the environment**, enter a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Remote connections** page.
 
-    6. Select **Create trust** to complete the configuration.
+    7. Select **Create trust** to complete the configuration.
 
-    7. On the confirmation screen, when prompted **Have you already set up trust from the other environment?**, select **No, I have NOT set up trust from the other environment yet**. Download both the ECH deployment CA certificate and the `trust.yml` file. These files can also be retrieved from the **Security** page of the deployment. You’ll use these files to configure trust in the ECK deployment.
+    8. On the confirmation screen, when prompted **Have you already set up trust from the other environment?**, select **No, I have NOT set up trust from the other environment yet**. Download both the ECH deployment CA certificate and the `trust.yml` file. These files can also be retrieved from **Security** > **Remote connections** on the deployment. You’ll use these files to configure trust in the ECK deployment.
 
 #### Update the downloaded `trust.yml` file for ECK compatibility
 

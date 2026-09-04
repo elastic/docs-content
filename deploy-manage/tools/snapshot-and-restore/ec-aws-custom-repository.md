@@ -59,8 +59,8 @@ For a full list of settings that are supported for your S3 bucket, refer to [S3 
 You can use the {{es}} keystore to store the credentials to access your AWS account.
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Navigate to the **Security** page of the deployment you wish to configure.
-3. Locate **{{es}} keystore** and select **Add settings**.
+2. Click **Manage** on the deployment you want to configure and from the navigation menu, go to **Elasticsearch keystore**.
+3. Select **Add settings**.
 4. With **Type** set to **Single string**, add the following keys and their values:
 
     * `s3.client.secondary.access_key`

@@ -1,6 +1,6 @@
 A deployment can be configured to trust all or specific deployments in any environment:
 
-1. From the **Security** page, select **Remote Connections > Add trusted environment** and choose **Self-managed**. Then click **Next**.
+1. From the deployment's navigation menu, go to **Remote connections**. Select **Add trusted environment** and choose **Self-managed**. Then click **Next**.
 
 2. Select **Certificates** as authentication mechanism and click **Next**.
 
@@ -22,7 +22,7 @@ A deployment can be configured to trust all or specific deployments in any envir
         If your self-managed cluster certificates do not include `otherName`, you must reissue them. To generate compatible certificates, refer to [Optional: reissue self-managed node certificates](#self-reissue-certs).
         ::::
 
-5. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Security** page.
+5. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Remote connections** page.
 
 6. Select **Create trust** to complete the configuration.
 

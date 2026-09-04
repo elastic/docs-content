@@ -64,7 +64,7 @@ To configure strong identity verification together with API key authentication f
 ::::::{tab-item} TLS certificate (deprecated)
 ### Set the default trust with other clusters in the same {{ecloud}} organization [ec_set_the_default_trust_with_other_clusters_in_the_same_elasticsearch_service_organization]
 
-To configure this behavior in [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body), go to **Security** > **Trust management** from the navigation menu. The **Trust all deployments** option is switched on by default. You can keep it switched on or switch it off.
+To configure this behavior in [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body), go to **Remote connections** > **Trust management** from the navigation menu. The **Trust all deployments** option is switched on by default. You can keep it switched on or switch it off.
 
 * When **Trust all deployments** is switched on - All deployments trust all other deployments in the same organization, including new deployments when they are created. If you keep this setting switched on, you can jump to [Connect to the remote cluster](/deploy-manage/remote-clusters/ec-remote-cluster-same-ess.md#ec_connect_to_the_remote_cluster) to finalize the CCS or CCR configuration.
 * When **Trust all deployments** is switched off - New deployments won’t trust any other deployments. Instead, you can configure trust for each of them in their security settings, as described in the next section.
@@ -84,7 +84,7 @@ If your organization’s deployments already trust each other by default, you ca
 1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
     On the **Hosted deployments** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-2. From the navigation menu, select **Access and Security** > **Security**.
+2. From the navigation menu, select **Remote connections**.
 3. Under **Trusted environments**, edit the one labeled as your organization.
 3. Choose one of following options to configure the level of trust on each of your deployments:
 
