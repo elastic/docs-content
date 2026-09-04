@@ -26,7 +26,7 @@ Two columns behave differently for collectors than for {{agents}}:
 
 You can narrow the Agents list to only display OTel Collectors in two ways:
 
-* From the **Tags** filter, select the tag that matches your collectors.
+* From the **Tags** filter, select a tag. Every collector is automatically tagged with its service name, plus any tags you added when creating the collector group.
 * From the **Agent policies** filter, select **OpAMP**. {{fleet}} creates this managed policy automatically when you add your first collector, and enrolls every collector into it. The policy is hidden from the **Agent policies** tab, but you can still use it to filter the list.
 
 Each collector is automatically tagged with its service name. This is the **Service name** you set when you added the collector, which defaults to a slug of the collector group display name, such as `otel-collector-group`. {{agent}} running in OTel mode reports `elastic-otel-collector`. Any labels you enter in the **Tags** field are added as extra tags.
@@ -60,13 +60,13 @@ The **Collector details** tab contains three sections:
 
 The **Agent details** tab has two columns: an **Overview** panel with the collector's [metadata](#review-collector-metadata) and a [**Component health**](#check-collector-health) panel.
 
+The **Diagnostics** and **Settings** tabs don't apply to a collector, and are removed in 9.5.
+
 :::
 
 ::::
 
 A collector also has a **Logs** tab, but it doesn't return data. To review a collector's logs, make sure [internal telemetry](/reference/fleet/add-otel-collector-internal-telemetry.md) is enabled and [confirm the data is flowing](/reference/fleet/add-otel-collector-internal-telemetry.md#verify-internal-telemetry-is-flowing) in {{kib}}.
-
-{applies_to}`stack: preview =9.4` The **Diagnostics** and **Settings** tabs don't apply to a collector, and are removed in 9.5.
 
 ## Visualize the collector pipeline
 
@@ -196,14 +196,11 @@ When you select a whole pipeline, this tab shows the pipeline's wiring instead: 
 
 ## Review collector metadata
 
-To view a collector's metadata:
-
-* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` Open the **Info** tab of the collector details panel.
-* {applies_to}`stack: preview =9.4` Refer to the **Overview** panel on the **Agent details** tab.
-
 ::::{applies-switch}
 
 :::{applies-item} { stack: preview 9.5+, serverless: preview }
+
+Open the **Info** tab of the collector details panel to view the collector's metadata:
 
 | Field | Description |
 |-------|-------------|
@@ -228,6 +225,8 @@ To view a collector's metadata:
 :::
 
 :::{applies-item} { stack: preview =9.4 }
+
+Refer to the **Overview** panel on the **Agent details** tab for the collector's metadata:
 
 | Field | Description |
 |-------|-------------|
