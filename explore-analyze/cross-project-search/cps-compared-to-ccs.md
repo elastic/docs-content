@@ -353,7 +353,7 @@ Example results:
 }
 ```
 
-You can also use [project tags](/explore-analyze/cross-project-search/cross-project-search-tags.md) like `_project._alias` in `METADATA` (ES|QL) or `fields` (`_search`) to identify the source project directly, without parsing the `_index` prefix.
+You can also use [project tags](/explore-analyze/cross-project-search/cross-project-search-tags.md#tag-queries) like `_project._alias` in `METADATA` (ES|QL) or `fields` (`_search`) to identify the source project directly, without parsing the `_index` prefix.
 
 :::
 
@@ -368,7 +368,7 @@ Route a query to a subset of projects based on project metadata like cloud provi
 
 :::{tab-item} CCS
 :sync: ccs
-In CCS, you select clusters by naming them in the index expression.
+In CCS, you select clusters by naming them in the index expression. You can't route queries based on cluster metadata.
 
 **`_search`**
 ```console
@@ -384,7 +384,7 @@ FROM cluster_one:logs-*,cluster_two:logs-*
 
 :::{tab-item} CPS
 :sync: cps
-In CPS, use `project_routing` to select projects dynamically. Project routing supports boolean logic (`AND`, `OR`, `NOT`) and wildcards.
+In CPS, use [`project_routing`](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) to select projects dynamically. Project routing supports boolean logic (`AND`, `OR`, `NOT`) and wildcards.
 
 **`_search`**
 ```console
@@ -420,5 +420,3 @@ FROM logs-*
 :::
 
 ::::
-
-For more on project routing, refer to [](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
