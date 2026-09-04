@@ -58,13 +58,13 @@ The **Collector details** tab contains three sections:
 
 :::{applies-item} { stack: preview =9.4 }
 
-The **Agent details** tab has two columns: an **Overview** panel with the collector's [metadata](#review-collector-metadata), and a [**Component health**](#check-collector-health) panel.
+The **Agent details** tab has two columns: an **Overview** panel with the collector's [metadata](#review-collector-metadata) and a [**Component health**](#check-collector-health) panel.
 
 :::
 
 ::::
 
-A collector also has a **Logs** tab, but it doesn't return data. To review a collector's own logs, make sure [internal telemetry](/reference/fleet/add-otel-collector-internal-telemetry.md) is enabled and [confirm the data is flowing](/reference/fleet/add-otel-collector-internal-telemetry.md#verify-internal-telemetry-is-flowing) in {{kib}}.
+A collector also has a **Logs** tab, but it doesn't return data. To review a collector's logs, make sure [internal telemetry](/reference/fleet/add-otel-collector-internal-telemetry.md) is enabled and [confirm the data is flowing](/reference/fleet/add-otel-collector-internal-telemetry.md#verify-internal-telemetry-is-flowing) in {{kib}}.
 
 {applies_to}`stack: preview =9.4` The **Diagnostics** and **Settings** tabs don't apply to a collector, and are removed in 9.5.
 
@@ -84,7 +84,7 @@ The graph is built from the collector's effective configuration, so it renders e
 Use the **Pipeline** selector to choose which pipelines to display:
 
 * **All pipelines** displays every pipeline in the configuration.
-* When a signal type has more than one pipeline, an option for that signal appears, labeled with its pipeline count, such as **All metrics (2 pipelines)**.
+* When a signal type has more than one pipeline, the selector includes an option for that signal, labeled with its pipeline count, such as **All metrics (2 pipelines)**.
 * Individual pipelines are listed last, by their configuration ID, such as `logs`, `metrics`, or `metrics/host`.
 
 If the configuration defines no pipelines, the graph is replaced by a **No pipelines configured** message.
@@ -276,7 +276,7 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-The **Error patterns** table at the bottom of the **Collector details** tab groups similar error and warning messages from the collector's own logs, so you can spot recurring problems without reading through every log line.
+The **Error patterns** table at the bottom of the **Collector details** tab groups similar error and warning messages from the collector's logs, so you can spot recurring problems without reading through every log line.
 
 The table stays empty unless [internal telemetry](/reference/fleet/add-otel-collector-internal-telemetry.md) is enabled. When no matching messages exist, the table reports that no error patterns were found in the selected time range. Logs recorded before the collector is added in {{fleet}} aren't included.
 
