@@ -10,7 +10,7 @@ products:
 
 # Explore metrics data with Discover in {{kib}}
 
-**Discover** offers a dedicated experience for exploring metrics data. When **Discover** recognizes metrics data, it enables specific features and default behaviors to optimize your data exploration. Metrics-specific exploration in Discover automatically generates a grid of charts showing available metrics from your data. Use this view to quickly search, sort, and filter metrics, break metrics down by dimensions, review the ES|QL query that generates the charts, and add metrics to dashboards with a single click.
+**Discover** offers a dedicated experience for exploring metrics data. When **Discover** recognizes metrics data, it enables specific features and default behaviors to optimize your data exploration. Metrics-specific exploration in Discover automatically generates a grid of charts showing available metrics from your data. Use this view to quickly search and filter metrics, break metrics down by dimensions, review the ES|QL query that generates the charts, and add metrics to dashboards with a single click.
 
 If you're just getting started with **Discover** and want to learn its main principles, you should get familiar with the [default experience](../../../explore-analyze/discover.md).
 
@@ -56,8 +56,6 @@ When the metrics profile is active, the documents table is collapsed by default 
 :::{important}
 All metrics in the grid have data. If a metric appears empty, it's likely a counter metric where the scrape interval is smaller than the bucket size. To view the data, either expand the time range or click Explore for that metric and reduce the number of buckets in the query.
 :::
-
-Once the metrics grid loads, you can search, sort, and break down the metrics it shows.
 
 **Search for specific metrics**
 
