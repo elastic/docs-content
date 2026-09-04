@@ -10,7 +10,7 @@ products:
 
 # Explore metrics data with Discover in {{kib}}
 
-**Discover** offers a dedicated experience for exploring metrics data. When **Discover** recognizes metrics data, it enables specific features and default behaviors to optimize your data exploration. Metrics-specific exploration in Discover automatically generates a grid of charts showing available metrics from your data. Use this view to quickly search and filter metrics, break metrics down by dimensions, review the ES|QL query that generates the charts, and add metrics to dashboards with a single click.
+**Discover** offers a dedicated experience for exploring metrics data. When **Discover** recognizes metrics data, it enables specific features and default behaviors to optimize your data exploration. Metrics-specific exploration in Discover automatically generates a grid of charts showing available metrics from your data. Use this view to quickly search, sort, and filter metrics, break metrics down by dimensions, review the ES|QL query that generates the charts, and add metrics to dashboards with a single click.
 
 If you're just getting started with **Discover** and want to learn its main principles, you should get familiar with the [default experience](../../../explore-analyze/discover.md).
 
@@ -57,7 +57,7 @@ When the metrics profile is active, the documents table is collapsed by default 
 All metrics in the grid have data. If a metric appears empty, it's likely a counter metric where the scrape interval is smaller than the bucket size. To view the data, either expand the time range or click Explore for that metric and reduce the number of buckets in the query.
 :::
 
-With your data loaded, use the metrics charts to:
+Once the metrics grid loads, you can search, sort, and break down the metrics it shows.
 
 **Search for specific metrics**
 
@@ -67,6 +67,17 @@ Use the search function to find and visualize specific metric data:
 :alt: Screenshot of searching for a specific metric.
 :screenshot:
 :::
+
+**Sort the metrics grid**
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Use **Sort** to change the order of metrics in the grid. By default, metrics are sorted **Alphabetically** from A to Z.
+
+- **Alphabetically**: Order metrics by name. Select **Sort descending** {icon}`sort_descending` to reverse the order (Z to A).
+- **Recently explored**: Move metrics you've already worked with to the front of the grid, most recent first. Metrics you haven't explored stay in alphabetical order after those.
+
+**Recently explored** records a metric when you use a chart action such as **View details**, **Explore**, **Inspect**, **Copy to dashboard**, or **Add to case**. The sort direction control is unavailable for this option because the order is always most recent first.
+
+Your sort selection is kept if you reload the page.
 
 **Break down metrics by dimensions**
 
