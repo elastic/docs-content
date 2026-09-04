@@ -47,8 +47,7 @@ curl -X GET "${KIBANA_URL}/api/agent_builder/tools" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::{tip}
-To generate API keys, search for `API keys` in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-[Learn more](/solutions/elasticsearch-solution-project/search-connection-details.md).
+Need an API key? Refer to [Create API keys for {{agent-builder}} APIs](api-keys.md) for complete read-only and management examples.
 :::
 
 ### Working with spaces
