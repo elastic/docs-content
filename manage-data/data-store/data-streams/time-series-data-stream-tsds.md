@@ -48,7 +48,7 @@ Dimension fields often correspond to characteristics of the items you're measuri
 
 :::{tip}
 {{es}} uses dimensions and timestamps to generate time series document `_id` values. Two documents with the same dimensions and timestamp are considered duplicates. Duplicates are rejected during ingestion with a `409 Conflict` status.
-::: 
+:::
 
 To mark a field as a dimension, set the Boolean `time_series_dimension` mapping parameter to `true`. The following field types support the `time_series_dimension` parameter:
 
@@ -96,10 +96,12 @@ A time series data stream works like a regular data stream, with some key differ
   * One or more [metric fields](#time-series-metric)
   * An auto-generated document `_id` (custom `_id` values are not supported)
 * **Backing indices:** A TSDS uses [time-bound indices](/manage-data/data-store/data-streams/time-bound-tsds.md) to store data from the same time period in the same backing index.
+
+  {applies_to}`stack: ga 9.5` When past index creation is turned on, {{es}} can create missing past backing indices on demand in TSDS.
 * **Dimension-based routing:** The routing logic uses dimension fields to map all data points of a time series to the same shard, improving storage efficiency and query performance. Duplicate data points are rejected.
 * **Sorting:** A TSDS uses internal [index sorting](elasticsearch://reference/elasticsearch/index-settings/sorting.md) to order shard segments by `_tsid` and `@timestamp`, for better compression. Time series data streams do not use `index.sort.*` settings.
 * **Source field:** A TSDS uses [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source), and as a result is subject to some [restrictions](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-restrictions) and [modifications](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-modifications) applied to the `_source` field.
-* {applies_to}`stack: ga 9.3` **Doc values skippers:** A TSDS enables [docvalue skippers](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md#doc-values-skippers) on its `_tsid`, `@timestamp`, [dimension](#time-series-dimension), and [metric](#time-series-metric) fields. Because `tsid` and `@timestamp` are part of the index sort, the skippers allow \{\{es}} to avoid building backing indexes for these fields, meaning lower disk usage and faster ingest speed.
+* {applies_to}`stack: ga 9.3` **Doc values skippers:** A TSDS enables [docvalue skippers](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md#doc-values-skippers) on its `_tsid`, `@timestamp`, [dimension](#time-series-dimension), and [metric](#time-series-metric) fields. Because `tsid` and `@timestamp` are part of the index sort, the skippers allow {{es}} to avoid building backing indexes for these fields, meaning lower disk usage and faster ingest speed.
 * {applies_to}`stack: ga 9.4` **Sequence numbers are disabled:** A TSDS [disables sequence numbers](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-disable-sequence-numbers) by default to substantially improve storage efficiency (up to 2x). 
 
   When sequence numbers are disabled, [optimistic concurrency control](elasticsearch://reference/elasticsearch/rest-apis/optimistic-concurrency-control.md) gets disabled, causing [update-by-query]({{es-apis}}/operation/operation-update-by-query) and [delete-by-query]({{es-apis}}/operation/operation-delete-by-query) operations to execute with weaker consistency. These capabilities are normally not relevant for time series workloads, but if you need them for your application, you can restore sequence numbers by setting `index.disable_sequence_numbers: false` in the index template of the relevant TSDS.
@@ -118,4 +120,5 @@ You can use the {{esql}} [`TS` command](elasticsearch://reference/query-language
 * [Ingest data using the OpenTelemetry Protocol (OTLP)](/manage-data/data-store/data-streams/tsds-ingest-otlp.md)
 * [Ingest data using Prometheus remote write](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md)
 * Learn about [metric temporality](/manage-data/data-store/data-streams/metric-temporality.md) (delta versus cumulative)
+* {applies_to}`stack: ga 9.5` [Load historical data into a TSDS](/manage-data/data-store/data-streams/load-historical-tsds.md)
 * Learn about [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) to reduce storage footprint
