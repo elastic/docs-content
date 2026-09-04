@@ -87,6 +87,70 @@ When calling the {{agent-builder}} APIs or MCP server in a custom space, include
 
 Learn more about [{{kib}} Spaces](/deploy-manage/manage-spaces.md).
 
+## Conversation access control [conversation-access-control]
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+The {{kib}} privileges described above control who can use {{agent-builder}} at all. Individual conversations have a second layer of access control on top of that, so the owner of a conversation can decide who else can read it.
+
+Conversations are private by default. Only the user who created a conversation, its owner, can see it.
+
+### Access modes
+
+An owner can put a conversation into one of two access modes:
+
+- `private`: only the owner and the users listed as members can read and continue the conversation. This is the default.
+- `public`: any user who can access the conversation's agent can read and continue it. Public conversations also appear in those users' conversation lists.
+
+Members apply to private conversations only. A public conversation cannot have members.
+
+A conversation belongs to the {{kib}} space it was created in. Sharing does not make it visible from another space.
+
+### The member role
+
+Users you share a conversation with are added as members. `member` is the only available role. It grants two things:
+
+- Read the conversation, including its full history.
+- Continue the conversation by sending new messages.
+
+Members cannot rename the conversation, delete it, or change who it is shared with.
+
+You can share with individual users only. Granting access to an {{es}} role is not supported.
+
+Members are identified by their {{kib}} user profile ID, not by username. A user who has never logged in to {{kib}} has no profile and cannot be added.
+
+### Who can do what
+
+| Action | Owner | Member | Other users |
+| --- | --- | --- | --- |
+| Read and continue | Yes | Yes | Only if the conversation is public |
+| Rename | Yes | No | No |
+| Delete | Yes | No | No |
+| Change sharing | Yes | No | No |
+
+A user with full cluster privileges, such as a superuser, can also rename or delete a `public` conversation they do not own. This does not extend to `private` conversations, even ones shared with them, and it never includes changing who a conversation is shared with.
+
+### Sharing does not bypass privileges
+
+Sharing a conversation grants access to that conversation only. It does not grant any privilege the user does not already have.
+
+A member still needs:
+
+- The `agentBuilder` {{kib}} `Read` privilege.
+- Access to the agent the conversation uses.
+- Access to the space the conversation belongs to.
+
+Access to the agent is checked every time a conversation is read, and this applies to the owner as well. If anyone loses access to a conversation's agent, or the agent is deleted, the conversation stops being readable for them and disappears from their conversation list.
+
+Managing sharing needs only the `Read` privilege plus ownership. There is no separate sharing privilege, and no write privilege is involved.
+
+When a user cannot access a conversation, {{agent-builder}} reports it as not found rather than as a permissions error. This is deliberate, so that users cannot detect the existence of conversations they cannot read.
+
+To share a conversation, use the [{{kib}} API](kibana-api.md#update-conversation-access-control).
+
 ## Configure access
 
 After choosing privileges and space scope, assign them based on who or what needs access.
@@ -96,7 +160,9 @@ After choosing privileges and space scope, assign them based on who or what need
 Use [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) to bundle the required {{kib}} feature privileges and {{es}} privileges, then assign the roles to users. In the role management UI, choose the required space and feature privileges under **Kibana privileges**, and limit index privileges to the data the users need.
 
 :::{note}
-When configuring roles in the {{kib}} UI, {{agent-builder}} privileges are currently located under the **Analytics** section, not the {{es}} section.
+:applies_to: elasticsearch:
+
+When configuring roles in the {{kib}} UI, {{agent-builder}} privileges appear under **Analytics**. In {{serverless-short}} {{es}} projects, they appear under **{{es}}**.
 :::
 
 On Serverless, roles also determine what an MCP client can do when it connects to the {{agent-builder}} MCP server through OAuth. The client inherits the permissions of the user who authorizes the connection. To learn more, refer to [OAuth for MCP clients](/deploy-manage/app-connections/oauth-clients.md). {applies_to}`serverless: ga`
