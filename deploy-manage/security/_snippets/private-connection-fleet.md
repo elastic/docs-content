@@ -1,4 +1,4 @@
-In {{ech}} deployments, if you are using {{service-name}} together with {{fleet}}, and enrolling the {{agent}} with a private connection URL, you need to configure {{fleet-server}} to use and propagate the {{service-name}} URL by updating the **Fleet server hosts** field in the **Fleet settings** section of {{kib}}. Otherwise, {{agent}} will reset to use a default address instead of the {{service-name}} URL. 
+If you are using {{service-name}} together with {{fleet}}, and enrolling the {{agent}} with a private connection URL, you need to configure {{fleet-server}} to use and propagate the {{service-name}} URL by updating the **Fleet server hosts** field in the **Fleet settings** section of {{kib}}. Otherwise, {{agent}} will reset to use a default address instead of the {{service-name}} URL. 
 
 The URL needs to follow this pattern: 
 
