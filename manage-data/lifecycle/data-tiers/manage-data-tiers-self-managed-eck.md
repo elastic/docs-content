@@ -302,9 +302,9 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
    ::::
 
    ::::{applies-item} eck:
-   If an `ElasticsearchAutoscaler` policy manages the `nodeSet`, remove the matching policy before removing the `nodeSet` or setting its `count` to `0`. Otherwise, autoscaling might change the `nodeSet` count while you complete this procedure. Refer to [Autoscaling in ECK](/deploy-manage/autoscaling/autoscaling-in-eck.md).
+   Remove every `nodeSet` associated with the tier from your {{es}} manifest, or set each `count` to `0`. If an `ElasticsearchAutoscaler` policy manages any of these `nodeSet`s, remove the matching policy before applying this change. Otherwise, autoscaling might change the `nodeSet` counts while you complete this procedure. Refer to [Autoscaling in ECK](/deploy-manage/autoscaling/autoscaling-in-eck.md).
 
-   Remove the `nodeSet` from your {{es}} manifest, or set its `count` to `0`. If you skipped the manual vacate, {{eck}} migrates the remaining data before safely stopping the pods.
+   If you skipped the manual vacate, {{eck}} migrates the remaining data before safely stopping the pods.
    ::::
 
    :::::
@@ -457,9 +457,9 @@ The [{{ilm-init}} `searchable_snapshot` action](elasticsearch://reference/elasti
    ::::
 
    ::::{applies-item} eck:
-   If an `ElasticsearchAutoscaler` policy manages the `nodeSet`, remove the matching policy before removing the `nodeSet` or setting its `count` to `0`. Otherwise, autoscaling might change the `nodeSet` count while you complete this procedure. Refer to [Autoscaling in ECK](/deploy-manage/autoscaling/autoscaling-in-eck.md).
+   Remove every `nodeSet` associated with the tier from your {{es}} manifest, or set each `count` to `0`. If an `ElasticsearchAutoscaler` policy manages any of these `nodeSet`s, remove the matching policy before applying this change. Otherwise, autoscaling might change the `nodeSet` counts while you complete this procedure. Refer to [Autoscaling in ECK](/deploy-manage/autoscaling/autoscaling-in-eck.md).
 
-   Remove the `nodeSet` from your {{es}} manifest, or set its `count` to `0`. {{eck}} safely drains and stops the pods.
+   {{eck}} safely drains and stops the pods.
    ::::
 
    :::::
