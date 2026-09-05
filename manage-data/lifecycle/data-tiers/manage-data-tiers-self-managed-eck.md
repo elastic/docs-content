@@ -90,6 +90,8 @@ Before proceeding:
 
    :::{tip}
    For {{eck}}, also identify every `nodeSet` in your {{es}} manifest that has the `data_*` role associated with the tier you want to remove.
+
+   If an `ElasticsearchAutoscaler` policy manages any of these `nodeSet`s, remove the matching policy before removing the tier or setting its `count` to `0`. Otherwise, autoscaling might change the `nodeSet` count while you complete this procedure. Refer to [Autoscaling in ECK](/deploy-manage/autoscaling/autoscaling-in-eck.md).
    :::
 
 1. Check whether the tier you are removing holds regular indices, [{{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), or both. Use the guidance for the tier you are removing:
