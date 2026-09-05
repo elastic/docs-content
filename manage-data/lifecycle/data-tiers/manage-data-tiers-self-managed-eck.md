@@ -150,7 +150,7 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
 
 1. Check and update index allocation rules.
 
-   {{ilm-init}} and manual index configurations use different methods to control shard placement. For every index that has shards on the nodes you are removing, check its allocation settings and apply the relevant substeps:
+   {{ilm-init}} and manual index configurations use different [index-level shard allocation filters](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) to control shard placement. For every index that has shards on the nodes you are removing, check its allocation settings and apply the relevant substeps:
 
    ```sh
    GET /my-index/_settings
@@ -158,7 +158,7 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
 
    1. $$$update-tier-allocation-rules-self-managed$$$ `_tier_preference` based rules.
 
-      Modern {{ilm-init}} policies use `index.routing.allocation.include._tier_preference` to express shard placement as an ordered list of preferred tiers. Indices using this method have settings similar to the following example:
+      Data tier-based {{ilm-init}} policies use `index.routing.allocation.include._tier_preference` to express shard placement as an ordered list of preferred tiers. Indices using this method have settings similar to the following example:
 
       ```sh
       {
@@ -401,13 +401,11 @@ The [{{ilm-init}} `searchable_snapshot` action](elasticsearch://reference/elasti
    POST /_snapshot/<snapshot_repository_name>/<searchable_snapshot_name>/_restore <1>
    {
      "indices": "*", <2>
-     "ignore_index_settings": [
-       "index.lifecycle.name",
-       "index.lifecycle.rollover_alias"
-     ],
      "index_settings": {
        "index.routing.allocation.include._tier_preference": "<data_tiers>", <3>
-       "index.number_of_replicas": 1 <4>
+       "index.number_of_replicas": 1, <4>
+       "index.lifecycle.name": null,
+       "index.lifecycle.rollover_alias": null
      }
    }
    ```
