@@ -85,11 +85,6 @@ The Workflow tools have the following configuration settings:
   :   With **Once**, your response applies to every later call to the tool in the same conversation, whether you confirmed or denied the action. This includes retries after a failed call.
   :   Confirmation applies only when an agent calls the tool. Refer to [Human-in-the-loop prompts](../chat.md#human-in-the-loop-prompts).
 
-
-<!-- [TODO-CHECK] SCOPE DECISION, pre-existing gap found during B1. The form has a field group the Configuration list above does not mention. Strings re-verified verbatim at kibana HEAD 056473990ad7 on 2026-09-03 (form/i18n.ts, workflow key): group label "Workflow execution", checkbox label "Wait until the workflow completes", help text "If checked, the tool waits until the workflow completes (up to 120s) and returns the results. If unchecked, the workflow runs in the background and you can ask the agent to check the execution status." The 120s matches WAIT_FOR_COMPLETION_TIMEOUT_SEC = 120 in agent-builder-common/tools/types/workflow.ts. Out of scope for #1610 -- decide whether to fold it in or open a separate issue. If folded in, the entry would sit between Inputs and Require user confirmation to match form order. -->
-
-<!-- [TODO-CHECK] FIELD ORDER, low priority, decide with the item above. Form order re-verified at kibana HEAD 056473990ad7 on 2026-09-03 (workflow_configuration_fields.tsx renders WorkflowPicker, then the wait-for-completion checkbox, then ConfirmationPolicySelect), so Require user confirmation IS the last field of the Configuration block. The list above places it last too, but after Labels, and the list was already not in form order before this PR. Consistency question for review rather than an error. -->
-
 ## Call workflows from chat
 
 Once you've created a workflow tool, you must assign it to an agent to make it available in chat.

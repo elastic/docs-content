@@ -986,8 +986,6 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 Set `allow` to `false` to deny the action. This request resumes the existing conversation round. It does not start a new user turn. To learn about the prompt types shown in chat, refer to [Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts).
 
-<!-- [TODO-CHECK] Only "Elastic-built" was dropped from the intro sentence above, to match the chat.md change. Two things NOT added, decide whether they belong in a tutorial: (1) the `confirmation` field on POST /api/agent_builder/tools, shape { askUser: 'once' | 'always' | 'never' }, default never -- this tutorial creates a custom ES|QL tool, and the API accepts confirmation for ES|QL tools even though the UI does not expose it, so an example here would be the natural home IF eng confirms that is intentional; (2) that POST /api/agent_builder/tools/_execute bypasses confirmation entirely (source === 'user' in run_tool.ts), already documented at tools.md#tools-api. Leaning towards leaving both out to keep the tutorial linear. UPDATE 2026-09-01: B3 has now settled the factual half of this. Confirmation on an ES|QL tool is accepted, persisted AND enforced on QA ECH 9.6.0, and _execute does bypass it (verified: returned results immediately, no prompt, no awaiting_prompt). So both additions would be accurate; whether they belong in a linear tutorial is still a reviewer call (C4). If (1) is added, pair it with the UI-invisibility caution now in custom-tools.md, since this tutorial creates exactly the tool type that has no UI control. -->
-
 
 :::{tip}
 For real-time chat responses, use the [streaming converse API]({{kib-apis}}operation/operation-post-agent-builder-converse-async) instead.

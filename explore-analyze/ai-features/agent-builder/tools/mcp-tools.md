@@ -35,10 +35,9 @@ You can import MCP tools individually or in bulk.
 
 Once you've set up an MCP connector, click **+ New tool** on the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) page and select the **MCP** tool type.
 
-<!-- [TODO-SC] STILL OUTSTANDING -- this is the last piece of test B6 and needs a 9.6 or serverless cluster to recapture. The image was last updated 2026-01-20, six months before kibana#281896 (merged 2026-07-31) added the "Require user confirmation" select to the MCP tool Configuration panel, so it does not show the control. Re-verified at kibana HEAD 056473990ad7 on 2026-09-03: mcp_configuration_fields.tsx renders <ConfirmationPolicySelect /> at line 74, at the bottom of the panel and OUTSIDE the isCreatingTool branch (that branch only swaps McpEditableFields for McpReadOnlyFields inside the panel), so the control appears on both the create form and the tool detail view. Match the existing 800px width and crop so the page does not reflow. Do NOT recapture mcp-bulkimport-config-example.png -- the bulk import flow has no confirmation control. -->
 :::{image} ../images/mcp-createnewtool-config-example.png
 :screenshot:
-:alt: Example configuration for a new MCP tool with the Context7 MCP server.
+:alt: Example configuration for a new MCP tool with the Context7 MCP server, including the Require user confirmation policy set to Never.
 :width: 800px
 :::
 
@@ -58,9 +57,6 @@ Require user confirmation (Optional) {applies_to}`stack: ga 9.6+` {applies_to}`s
 :   Confirmation applies only when an agent calls the tool. Refer to [Human-in-the-loop prompts](../chat.md#human-in-the-loop-prompts).
 
 Once you select a tool, the `Tool ID` and `Description` fields automatically populate with the tool name and description provided by the MCP server.
-
-
-<!-- [TODO-CHECK] TERM STYLE, decision only -- now settled which page is wrong. Checked 2026-09-03: THIS page is the one that diverges. Its definition-list terms are bare plain text UI labels (MCP Server, Tool, Require user confirmation, Tools to import, Namespace), and style-guide/ui-writing.md:21 says "Use **bold** for component names and match the capitalization as it appears in the UI." workflow-tools.md bolds its six terms and is correct. The other two tools pages that look unbolded are NOT comparable: index-search-tools.md (`pattern`, `row_limit`) and builtin-tools-reference.md (`platform.core.*`) use code font for API identifiers and tool IDs, which is right for those. So the fix is to bold all six terms on this page -- five are pre-existing, one is new in this PR. CLAUDE.md leans towards fixing ("when content obviously diverges from the documented best practices, prefer fixing or improving it over matching the divergence"); the alternative is to leave it and raise in review. Decide before the PR. -->
 
 ### Bulk import MCP tools
 

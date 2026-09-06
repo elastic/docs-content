@@ -46,8 +46,6 @@ A2A executions behave differently: the action is not declined. Instead, the conv
 
 This limitation is separate from the [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step in Workflows, which pauses a workflow execution for reviewer input.
 
-<!-- [TODO-CHECK] SCOPE DECISION, the only thing left on this page. Sub-agents are experimental and cannot nest, and this page says neither. Facts verified at kibana HEAD 056473990ad7 on 2026-09-03: (1) the gate is the `agentBuilder:experimentalFeatures` uiSetting ("Elastic Agent Builder: Experimental Features", default false, readonly: false so users CAN turn it on), read in runner.ts:311 as `subagents: experimentalEnabled` and applied in register_internal_tools.ts:133; (2) nesting is blocked by `canSpawnSubagents = executionMode !== standalone && !parentExecutionId` (register_internal_tools.ts:106), so a sub-agent, which always carries a parentExecutionId, cannot spawn another. Decide whether this belongs here or in a separate issue -- suggestion stands that it is a separate issue, since sub-agent docs barely exist today (only a passing mention in prompt-engineering.md:49). -->
-
 
 ### {{esql}} limitations
 
