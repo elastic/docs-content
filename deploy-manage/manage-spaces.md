@@ -2,6 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-spaces.html
   - https://www.elastic.co/guide/en/serverless/current/spaces.html
+navigation_title: Kibana Spaces
 applies_to:
   stack: ga
   serverless: ga
@@ -10,7 +11,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Spaces [xpack-spaces]
+# Manage {{kib}} Spaces [xpack-spaces]
 
 **Spaces** let you organize your content and users according to your needs.
 
@@ -18,20 +19,7 @@ products:
 - Users can access only the spaces that they have been granted access to. This access is based on user roles, and a given role can have different permissions per space.
 - In {{stack}} deployments on version 8.16 and later, each space has its own navigation, called solution view.
 
-{{kib}} creates a default space for you. When you create more spaces, users are asked to choose a space when they log in, and can change their current space at any time from the [global header](/explore-analyze/find-and-organize/kibana-interface.md#global-header).
-
-Where you find the space selector depends on your deployment type and version:
-
-* {applies_to}`serverless: ga` Select the name of your project in the global header, then select your current space to open **My spaces**.
-* {applies_to}`stack: ga 9.6` In spaces that use a solution view, select the name of your deployment in the global header, then select your current space to open **My spaces**. When the global header shows the name of your current space instead of a deployment name, selecting it opens **My spaces** directly.
-* In all other cases, select the avatar of your current space in the global header to open the **Spaces** menu.
-
-
-:::{image} /deploy-manage/images/kibana-change-space.png
-:alt: Change current space menu
-:screenshot:
-:width: 50%
-:::
+{{kib}} creates a default space for you. To select or switch spaces as an individual user, refer to [Select and switch Kibana spaces](/deploy-manage/choose-and-switch-spaces.md).
 
 You can find the **Spaces** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -39,8 +27,10 @@ The rest of this page explains how to manage spaces and their settings. For info
 
 ## Required permissions [_required_privileges_3]
 
-* {applies_to}`serverless:` `Admin` role or equivalent
-* {applies_to}`stack:` `kibana_admin` or equivalent
+To manage spaces, you need the following role or equivalent privileges for your deployment type:
+
+* {applies_to}`serverless:` `Admin` role
+* {applies_to}`stack:` `kibana_admin`
 
 
 ## Create a space [spaces-managing]

@@ -49,4 +49,4 @@ Organizations are groupings of {{ecloud}} resources and associated settings. As 
 
 ## Customize your interface
 
-Some account features also let you set personal preferences and customize the interface, such as [using dark mode](dark-mode.md) in your projects and deployments.
+Some account features also let you set personal preferences and customize the interface, such as [using dark mode](dark-mode.md) and [whether Kibana remembers your last space](/deploy-manage/choose-and-switch-spaces.md#remember-last-selected-space) in your projects and deployments.

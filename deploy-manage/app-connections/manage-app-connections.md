@@ -1,5 +1,5 @@
 ---
-description: "Audit and revoke OAuth client connections across an Elastic Cloud organization's serverless projects from a single organization-level view."
+description: "Audit, revoke, and delete OAuth client connections across an Elastic Cloud organization's serverless projects from a single organization-level view."
 type: how-to
 applies_to:
   serverless: ga
@@ -9,7 +9,7 @@ products:
 
 # Manage application connections
 
-The **Application connections** page in the {{ecloud}} Console gives organization administrators a single place to audit and revoke [OAuth client](oauth-clients.md) connections that members of your organization have authorized across their {{serverless-short}} projects.
+The **Application connections** page in the {{ecloud}} Console gives organization administrators a single place to audit, revoke, and delete [OAuth client](oauth-clients.md) connections that members of your organization have authorized across their {{serverless-short}} projects.
 
 To create an OAuth client or connect an MCP host such as Claude Desktop, refer to [](oauth-clients.md). This page covers organization-level management only.
 
@@ -18,7 +18,7 @@ To create an OAuth client or connect an MCP host such as Claude Desktop, refer t
 Before you manage application connections:
 
 * You have access to the {{ecloud}} Console for your organization. To open the page, go to **Organization** → **Security settings** → **Application connections**.
-* Your role determines what you can see and revoke:
+* Your role determines what you can view, revoke, and delete:
   * **Organization owners** see every application connection in the organization.
   * Other users see connections for the projects they administer, plus any connections they authorized themselves.
 
@@ -56,7 +56,7 @@ A connection has one of the following statuses:
 * **Expired**: The connection's refresh window lapsed after 30 days of inactivity. The user must re-authorize to use it again.
 * **Revoked**: The connection was revoked and can no longer be used.
 
-Revoked connections remain visible for 3 months and revoked clients for 1 year. Expired connections remain visible until re-authorized or removed.
+Revoked connections remain visible for 90 days and revoked clients for 1 year. Expired connections remain visible until re-authorized or removed.
 
 ## View OAuth client details
 
@@ -79,8 +79,8 @@ To revoke a single connection, click **Revoke** in its row.
 To revoke several connections at once:
 
 1. Select the checkbox for each connection you want to revoke. In grouped view, use **Select all connections for this client** to select every connection under a client, or **Clear selection** to start over.
-2. Click **Revoke *N* connections**.
-3. Review the connections in the confirmation dialog, then click **Revoke access**.
+2. Click the bulk revoke button, which displays the number of selected connections, for example: **Revoke 9 connections**.
+3. Review the connections in the confirmation dialog, then click **Revoke**.
 
 You can revoke up to 100 connections at a time.
 
@@ -88,7 +88,21 @@ You can revoke up to 100 connections at a time.
 Removing a user from your identity provider does **not** automatically revoke that user's connections. When a user leaves, revoke their connections here to cut off access.
 :::
 
-To revoke an entire OAuth client and all its connections, the client's creator removes it from the project's Agent Builder client management in Kibana. Refer to [](revoke-oauth-client.md).
+To revoke an entire OAuth client and all its connections, revoke it from the project's Agent Builder client management in {{kib}}. Refer to [](revoke-oauth-client.md).
+
+## Delete revoked connections
+
+Deleting a revoked connection permanently removes it immediately instead of waiting for the 90-day retention period. This action can't be undone.
+
+To delete a single revoked connection, click **Delete** in its row.
+
+To delete several revoked connections at once:
+
+1. Select the checkbox for each revoked connection you want to delete. In grouped view, use **Select all connections for this client** to select every revoked connection under a client, or **Clear selection** to start over.
+2. Click the bulk delete button, which displays the number of selected connections, for example: **Delete 9 connections**.
+3. Review the connections in the confirmation dialog, then click **Delete permanently**.
+
+You can delete up to 100 connections at a time.
 
 ## Next steps
 
