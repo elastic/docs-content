@@ -17,7 +17,7 @@ Create a {{data-source}} to make your own {{es}} data available in **Discover**,
 ## Before you begin [create-data-view-prereqs]
 
 * You need a role with the **Data View Management** {{kib}} privilege and the `view_index_metadata` {{es}} privilege. Refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
-* If a **Read only** badge appears, you don't have sufficient privileges to create or save {{data-sources}}. The create control is unavailable.
+* If a **Read only** badge appears, you don't have sufficient privileges to create or save {{data-sources}}. The create control is also unavailable.
 * You need data already indexed into {{es}}. Some workflows create a {{data-source}} for you automatically instead. Refer to [How data views are created](../data-views.md#data-views-how-you-get-one).
 
 ## Create the data view [create-data-view-steps]
@@ -125,7 +125,7 @@ serverless: preview
 stack: unavailable
 ```
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), the {{data-source}} creation form previews matching indices from linked projects based on the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana). The {{data-source}} itself doesn't store the scope. When you query the {{data-source}}, results come from whichever linked projects the active {{cps}} scope includes at that time.
+After you [link projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), the {{data-source}} creation form previews matching indices from those projects based on the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana). The {{data-source}} itself doesn't store the scope. When you query the {{data-source}}, results come from whichever linked projects the active {{cps}} scope includes at that time.
 
 To restrict a {{data-source}} to specific projects regardless of the active scope, you can:
 
