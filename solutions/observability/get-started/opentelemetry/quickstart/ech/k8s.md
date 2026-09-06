@@ -19,7 +19,7 @@ Learn how to set up the {{agent}} and EDOT SDKs in a {{k8s}} environment with {{
 :::{include} ../../_snippets/guided-instructions.md
 :::
 
-If you need to manage credentials manually, for example, to use them in automation or to configure multiple environments, follow the steps below.
+If you need to manage credentials manually, for example, to use them in automation or to configure multiple environments, follow the steps in the Manual installation section.
 
 ## Prerequisites
 
