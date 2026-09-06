@@ -254,26 +254,18 @@ At certain points an agent pauses and hands control back to you before it contin
 
 HITL prompts do not replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
 
-HITL prompts require an interactive conversation. They cannot be answered in sub-agent executions. Refer to [Human-in-the-loop prompts require an interactive conversation](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+HITL prompts require an interactive conversation, so [sub-agent executions cannot answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 #### Confirm a change
 
-Some tools and skills pause for confirmation before performing consequential actions.
+Some tools and skills pause for confirmation before they perform consequential actions. Elastic-built tools and skills decide for themselves when to ask.
 
-Elastic-built tools and skills decide for themselves when to request confirmation. For [custom tools](tools/custom-tools.md), you choose when confirmation is required by setting **Require user confirmation** to **Never**, **Once**, or **Always**. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+For [custom tools](tools/custom-tools.md), you decide when the agent asks: set **Require user confirmation** to **Never**, **Once**, or **Always**. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 
 What the prompt shows depends on the tool:
 
-* Some Elastic-built tools and skills preview the change before it takes effect. The preview format and the button labels depend on the tool or skill: a prompt to delete a stream offers **Delete permanently**, and a prompt to create one offers **Create stream**. Review the preview, then confirm the action to proceed or deny it to cancel.
-* Other tools, including all custom tools, show a generic prompt that names the tool and asks whether to proceed. Select **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and does not show the parameters that the agent passes to it, so give custom tools descriptive IDs.
-
-For example, a custom tool that cancels an order asks for permission before it runs. The prompt names the tool but not the order:
-
-:::{image} images/agent-builder-tool-confirmation-prompt.png
-:screenshot:
-:alt: Generic confirmation prompt asking permission to call the tool ecommerce.cancel_order, with Deny and Allow buttons
-:width: 700px
-:::
+* Some Elastic-built tools and skills preview the change before it takes effect. The preview format and the button labels depend on the tool or skill: a prompt to delete a [stream](/solutions/observability/streams/streams.md) offers **Delete permanently**, and a prompt to create one offers **Create stream**. Review the preview, then confirm the action to proceed or deny it to cancel.
+* Other tools, including all custom tools, show a generic prompt that names the tool and asks whether to proceed. Select **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and does not show the parameters that the agent passes to it, so give custom tools [descriptive IDs](tools/custom-tools.md#naming-conventions).
 
 For example, when an agent updates a workflow, it shows the proposed change as a diff and waits for you to review it before applying:
 
@@ -296,6 +288,14 @@ For irreversible actions, the prompt highlights the consequences before you proc
 :::{image} images/agent-builder-confirm-delete-stream.png
 :screenshot:
 :alt: Confirmation prompt warning that the logs.otel.checkout stream and its data will be permanently deleted
+:width: 700px
+:::
+
+Custom tools show the generic prompt instead. Here, a tool that cancels an order asks for permission before it runs. The prompt names the tool but not the order:
+
+:::{image} images/agent-builder-tool-confirmation-prompt.png
+:screenshot:
+:alt: Generic confirmation prompt asking permission to call the tool ecommerce.cancel_order, with Deny and Allow buttons
 :width: 700px
 :::
 

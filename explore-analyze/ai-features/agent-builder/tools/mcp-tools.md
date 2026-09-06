@@ -50,11 +50,11 @@ MCP Server
 
 Tool
 :   The specific tool on MCP server to create an Agent Builder MCP tool for.
-:   Once you select a tool, the **Tool ID** and **Description** fields automatically populate with the tool name and description provided by the MCP server.
+:   After you select a tool, the **Tool ID** and **Description** fields automatically populate with the tool name and description provided by the MCP server.
 
 Require user confirmation (Optional) {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
 :   Controls whether the agent asks you to approve a tool call before it runs. Select **Never** to run without a prompt, **Once** to prompt the first time the agent calls the tool in a conversation, or **Always** to prompt on every call. The default is **Never**.
-:   With **Once**, your response applies to every later call to the tool in the same conversation, whether you confirmed or denied the action. This includes retries after a failed call.
+:   With **Once**, your response applies to every later call to the tool in the same conversation, whether you confirmed or denied the action, including retries after a failed call.
 :   Confirmation applies only when an agent calls the tool. Refer to [Human-in-the-loop prompts](../chat.md#human-in-the-loop-prompts).
 
 ### Bulk import MCP tools
@@ -88,7 +88,7 @@ After clicking **Import tools**, Agent Builder creates an MCP tool for each sele
 
 Each tool's ID is generated as `namespace.tool-name` (for example, `context7.resolve-library-id`), and descriptions are populated automatically from the MCP server.
 
-Bulk import does not set a confirmation policy, so each imported tool starts with **Require user confirmation** set to **Never**. To require confirmation for an imported tool, edit the tool after import. {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+Bulk import does not configure confirmation, so each imported tool starts with **Require user confirmation** set to **Never**. To require confirmation for an imported tool, edit it after import. {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
 
 ## How MCP tool calls work
 
