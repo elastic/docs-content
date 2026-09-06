@@ -17,11 +17,7 @@ products:
 You can extend the built-in tool catalog with your own custom tool definitions. Custom tools offer flexibility in how they interact with your data. This flexibility allows you to create tools that match your specific use cases and data access patterns.
 
 :::{note}
-[Human-in-the-loop confirmation](../chat.md#human-in-the-loop-prompts) is available for custom tools. You can configure it in the UI for [workflow tools](workflow-tools.md) and [MCP tools](mcp-tools.md), or through the [Tools API](../tools.md#tools-api) for any custom tool type. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-
-Confirmation applies only when an agent calls the tool. Direct calls through the [Tools API](../tools.md#tools-api) are not subject to confirmation, and confirmation prompts cannot be answered in [sub-agent executions](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
-
-If you set a confirmation policy on an {{esql}} or index search tool through the API, the agent applies it, but the setting does not appear when you open the tool in the UI. To check or change the policy for these tool types, use the API.
+[Human-in-the-loop confirmation](../chat.md#human-in-the-loop-prompts) is available for custom tools. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` You can configure it in the UI for [workflow tools](workflow-tools.md) and [MCP tools](mcp-tools.md), or through the [Tools API](../tools.md#tools-api) for any custom tool type. Confirmation applies only when an agent calls the tool: direct calls through the Tools API are not subject to confirmation, and confirmation prompts cannot be answered in [sub-agent executions](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation). If you set a confirmation policy on an {{esql}} or index search tool through the API, the agent applies it, but the setting does not appear when you open the tool in the UI. To check or change the policy for these tool types, use the API. The policy is the tool's `confirmation.askUser` property, which accepts `never`, `once`, or `always`, and a request that retrieves the tool returns its current value.
 :::
 
 ## Tool types
@@ -82,6 +78,7 @@ To create a custom tool in the UI:
 ## Create custom tools with API
 
 You can also create and manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).
+
 
 ## Test your tools
 

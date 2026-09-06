@@ -935,7 +935,8 @@ When an agent calls a tool that requires your confirmation, the response has an 
       {
         "type": "confirmation",
         "id": "<PROMPT_ID>",
-        "title": "Confirm this action"
+        "title": "Permission to call tool",
+        "message": "Agent wants to call tool \"<TOOL_ID>\". Do you want to proceed?"
       }
     ]
   }
@@ -985,7 +986,6 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 ::::
 
 Set `allow` to `false` to deny the action. This request resumes the existing conversation round. It does not start a new user turn. To learn about the prompt types shown in chat, refer to [Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts).
-
 
 :::{tip}
 For real-time chat responses, use the [streaming converse API]({{kib-apis}}operation/operation-post-agent-builder-converse-async) instead.

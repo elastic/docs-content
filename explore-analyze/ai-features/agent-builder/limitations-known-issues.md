@@ -46,7 +46,6 @@ A2A executions behave differently: the action is not declined. Instead, the conv
 
 This limitation is separate from the [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step in Workflows, which pauses a workflow execution for reviewer input.
 
-
 ### {{esql}} limitations
 
 {{esql}} tools are subject to the current limitations of the [{{esql}} language](elasticsearch://reference/query-languages/esql.md).
@@ -113,6 +112,7 @@ On 9.2 deployments, the **Copy your MCP server URL** button does not include the
 **Workaround:** Manually add `/s/<space-name>` to the URL. For example: `https://<deployment>/s/<space-name>/api/agent_builder/mcp`
 
 For more information about {{agent-builder}} and Spaces, refer to [Permissions and access control](permissions.md#working-with-spaces).
+
 
 ## Related pages
 

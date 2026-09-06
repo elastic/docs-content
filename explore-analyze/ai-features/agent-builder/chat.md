@@ -248,7 +248,7 @@ At certain points an agent pauses and hands control back to you before it contin
 
 | Prompt | When it appears | Available responses |
 | --- | --- | --- |
-| Tool confirmation | A tool or skill requires approval before it performs an action | Select **Allow** or **Deny** |
+| Tool confirmation | A tool or skill requires approval before it performs an action | Confirm the action or deny it |
 | Connector authorization {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | An external connector needs access to continue | Authorize access or deny it |
 | Clarifying question {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | The agent needs more information to continue | Answer or skip the question |
 
@@ -258,14 +258,14 @@ HITL prompts require an interactive conversation. They cannot be answered in sub
 
 #### Confirm a change
 
-Some tools and skills pause for confirmation before performing consequential actions. Select **Allow** to proceed or **Deny** to cancel.
+Some tools and skills pause for confirmation before performing consequential actions.
 
 Elastic-built tools and skills decide for themselves when to request confirmation. For [custom tools](tools/custom-tools.md), you choose when confirmation is required by setting **Require user confirmation** to **Never**, **Once**, or **Always**. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 
 What the prompt shows depends on the tool:
 
-* Some Elastic-built tools and skills preview the change before it takes effect. The preview format depends on the tool or skill. Review the preview, then allow the action to proceed or deny it to cancel.
-* Other tools, including all custom tools, show a generic prompt that names the tool and asks whether to proceed. The prompt identifies the tool by its ID and does not show the parameters that the agent passes to it, so give custom tools descriptive IDs.
+* Some Elastic-built tools and skills preview the change before it takes effect. The preview format and the button labels depend on the tool or skill: a prompt to delete a stream offers **Delete permanently**, and a prompt to create one offers **Create stream**. Review the preview, then confirm the action to proceed or deny it to cancel.
+* Other tools, including all custom tools, show a generic prompt that names the tool and asks whether to proceed. Select **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and does not show the parameters that the agent passes to it, so give custom tools descriptive IDs.
 
 For example, a custom tool that cancels an order asks for permission before it runs. The prompt names the tool but not the order:
 
