@@ -18,7 +18,7 @@ If you are using {{serverless-full}}, use [managed inputs](opentelemetry://refer
 :::
 
 :::{tip}
-If you're using Prometheus remote write as part of an observability metrics setup, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md#ingest-using-prometheus-remote-write-metrics-ingest-prometheus) for the full picture, including how this fits alongside OpenTelemetry and {{agent}} integrations.
+If you're using Prometheus remote write as part of an observability metrics setup, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md#metrics-ingest-prometheus) for the full picture, including how this fits alongside OpenTelemetry and {{agent}} integrations.
 :::
 
 ## Overview
