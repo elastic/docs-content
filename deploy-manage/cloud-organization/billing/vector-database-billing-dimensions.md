@@ -31,11 +31,11 @@ You are charged per GB of data stored in the project. Storage charges apply for 
 
 ## Search [vector-database-billing-search]
 
-Search charges cover the search capacity reserved for your stored data. All stored data is searchable by default, which means it actively contributes to Search charges.
+Search charges are based on the search capacity reserved for your stored data. All stored data is searchable by default, which means it actively contributes to search charges.
 
-Search charges scale with [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) and your project's active storage. Active storage is the volume of data used as the basis for Search billing. For billing, active storage has a 16 GB minimum: if your project stores less than 16 GB, Search charges still use 16 GB as the storage basis.
+Search charges scale with [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) and your project's active storage. Active storage is the volume of data used as the basis for search billing. For billing, active storage has a 16 GB minimum: if your project stores less than 16 GB, search charges still use 16 GB as the storage basis.
 
-At Search Power **100**, enough capacity is reserved so that 100% of your project data remains available for low-latency search. Higher Search Power values reserve more capacity in proportion to that baseline: for example, **200** reserves about twice as much as **100**.
+At Search Power **100**, capacity is reserved to keep the project's full dataset available for low-latency search. Increasing Search Power does not increase the amount of data covered. Instead, it reserves additional search capacity for the same dataset, which can improve performance for higher query concurrency or more demanding search workloads.
 
 Increasing Search Power reserves more capacity and raises search charges. Running more queries does not increase search charges. For current rates, refer to the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless).
 
@@ -63,4 +63,4 @@ For high availability, you can increase Search Power to **200**. That setting re
 
 Shared {{serverless-short}} add-ons such as [data out](serverless-project-billing-dimensions.md#general-serverless-billing-data-out) and [support](serverless-project-billing-dimensions.md#general-serverless-billing-support) may also appear on your bill. Refer to [](serverless-project-billing-dimensions.md).
 
-If you use {{cps}}, additional charges may apply when the feature becomes generally available. For how those charges are calculated, refer to [ {{cps}} Billing](/deploy-manage/cross-project-search-config.md#cps-billing).
+If you use {{cps}}, additional charges may apply when the feature becomes generally available. For how those charges are calculated, refer to [{{cps}} billing](/deploy-manage/cross-project-search-config.md#cps-billing).

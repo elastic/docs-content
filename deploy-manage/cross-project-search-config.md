@@ -77,11 +77,11 @@ In this architecture, you create a new, empty project and link existing projects
 
 ```mermaid
 flowchart TB
-    O["Overview project<br/>Origin (empty hub)"]
-    O --> S["Security project<br/>Linked (data)"]
-    O --> Obs["Observability project<br/>Linked (data)"]
-    O --> E["Elasticsearch project<br/>Linked (data)"]
-    O --> V["{{vectordb}} project<br/>Linked (data)"]
+    O["<b>Overview project</b><br/>Origin (empty hub)"]:::tip
+    O --> S["<b>Security project</b><br/>Linked (data)"]:::plain
+    O --> Obs["<b>Observability project</b><br/>Linked (data)"]:::plain
+    O --> E["<b>Elasticsearch project</b><br/>Linked (data)"]:::plain
+    O --> V["<b>Vector Database project</b><br/>Linked (data)"]:::plain
 ```
 
 Searches run from the overview project across all linked projects. Linked projects operate independently and are not linked to each other. You can link any combination of compatible projects.

@@ -25,7 +25,7 @@ There are differences between {{es-serverless}} and {{ech}}. Learn more in [Comp
 
 ## Get started
 
-Elastic provides four serverless project types available on {{ecloud}}. Follow these guides to get started with your serverless project:
+Elastic provides four serverless project types on {{ecloud}}. {{es}}, Observability, and Security projects correspond to the same [solutions](/solutions/index.md) available on stateful deployments; {{es}} {{vectordb}} is an additional {{serverless-short}}-only project type. Follow these guides to get started with your serverless project:
 
 * **[{{es-serverless}}](/solutions/search/get-started.md)**: Build powerful, scalable search and analytics applications across structured data, logs, metrics, documents, and vectors as part of a broader {{stack}}.
 * **[{{es}} {{vectordb}}](/solutions/vector-database/get-started.md)**: Build embedding-driven workloads such as semantic search, RAG, and AI-powered retrieval. Built-in models and vector-optimized defaults mean less configuration and faster time to production.
