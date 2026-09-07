@@ -115,7 +115,7 @@ Predefined tags are attributes that Elastic assigns automatically to each projec
 * `_id`: the project identifier
 * `_organization`: the organization identifier
 * `_region`: the Cloud region where the project is located
-* `_type`: the project type (Observability, Search, or Security)
+* `_type`: the project type ({{es}}, {{vectordb}}, Observability, or Security)
 
 Predefined tags always start with an underscore `_`.
 
