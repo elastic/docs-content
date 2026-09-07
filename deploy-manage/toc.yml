@@ -26,6 +26,7 @@ toc:
                       - file: deploy/elastic-cloud/azure-native-isv-service-logs-metrics.md
                       - file: deploy/elastic-cloud/azure-native-isv-service-network-security.md
                       - file: deploy/elastic-cloud/azure-native-isv-service-troubleshooting.md
+                      - file: deploy/elastic-cloud/azure-native-isv-service-byok.md
                   - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md
                   - file: deploy/elastic-cloud/heroku.md
                     children:
@@ -652,6 +653,7 @@ toc:
               - file: users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md
   - file: manage-spaces.md
     children:
+      - file: choose-and-switch-spaces.md
       - file: manage-spaces-fleet.md
   - file: api-keys.md
     children:

@@ -357,7 +357,7 @@ subs:
   intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
-  kube-stack-version: 0.12.4
+  kube-stack-version: 0.16.0
   helm-version: 3.21.0
   ece-docker-images-8: 8.19.20
   ece-docker-images-9: 9.5.2
