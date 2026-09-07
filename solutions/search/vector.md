@@ -14,15 +14,13 @@ products:
 ---
 # Vector search in {{es}}
 
-:::{tip}
-If you're using {{serverless-full}}, the [{{es}} Vector Database project type](/solutions/vector-database.md) is recommended when embeddings and similarity search are central to your application.
-
-New to semantic search? Start with the [semantic search quickstart](get-started/semantic-search.md), which uses the managed `semantic_text` workflow.
-
-For common vector search use cases and how to apply them, refer to [Vector search use cases](vector/vector-search-use-cases.md).
-:::
-
 Vector search stores embeddings and retrieves the most similar vectors to a query. {{es}} functions as a [vector database](#vector-database): it scales embedding storage and similarity search while combining that with full-text search, filters, and aggregations in one engine. This page explains the core concepts and terminology you need before working with vector search in {{es}}.
+
+## Get started with vector search [vector-search-get-started]
+
+- To select a {{serverless-short}} project configuration, [compare the available options](get-started.md#serverless-project-configuration).
+- If you're new to semantic search, start with the [semantic search quickstart](get-started/semantic-search.md), which uses the managed `semantic_text` workflow.
+- To explore common applications and implementation approaches, refer to [Vector search use cases](vector/vector-search-use-cases.md).
 
 ## Core concepts [vectors-and-embeddings]
 

@@ -23,7 +23,7 @@ In this introduction to [vector search](/solutions/search/vector.md), you’ll s
   
 To learn about role-based access control, check out [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 
-To learn about {{es-serverless}} project profiles, refer to [](dense-vector.md#vector-profiles).
+To compare {{serverless-short}} project configurations, refer to [Choose a Serverless project configuration](../get-started.md#serverless-project-configuration).
 
 ## Create a vector database
 

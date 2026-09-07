@@ -26,21 +26,41 @@ This skill guides users through search concepts and helps create a working searc
 :::::{step} Choose your deployment type
 
 Elastic provides several self-managed and Elastic-managed options.
-For simplicity and speed, try out {{serverless-full}}:
+
+To get started, choose one of these options:
+
+- [Create a {{serverless-short}} project](#create-serverless-project).
+- [Create a local development installation](#create-local-development-installation).
+
+### Create a Serverless project [create-serverless-project]
+
+```{applies_to}
+serverless:
+```
+
+For simplicity and speed, use {{serverless-full}}.
+
+$$$serverless-project-configuration$$$
+#### Choose a Serverless project configuration
+
+Select the {{serverless-short}} project configuration that matches your workload:
+
+| Project configuration | Recommended for | Configuration |
+| --- | --- | --- |
+| [{{es}} project](/solutions/elasticsearch-solution-project.md) with `optimized_for: general_purpose` | Most search use cases, including full-text search, compressed vectors, and mixed workloads | Available when you create a project with the [API]({{cloud-serverless-apis}}operation/operation-createelasticsearchproject) |
+| [{{es}} project](/solutions/elasticsearch-solution-project.md) with `optimized_for: vector` | Uncompressed, high-dimensional dense vectors | Available when you create a project with the [API]({{cloud-serverless-apis}}operation/operation-createelasticsearchproject) |
+| [{{es}} Vector Database project](/solutions/vector-database.md) | Embeddings and similarity search, including semantic and hybrid search, RAG, and recommendations | No `optimized_for` profile; indices automatically use [`index.mode: vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) |
 
 ::::{dropdown} Create a serverless project
 :::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
 :::
 
-Select the project type that matches your workload:
-
-* Select [{{es}} Vector Database](/solutions/vector-database.md) when embeddings and similarity search are central to your application, including semantic search, hybrid search, RAG, and recommendations.
-* Select the [{{es}} project type](/solutions/elasticsearch-solution-project.md) for general-purpose data storage and search, including mixed lexical, time series, and analytics workloads.
-
 When your project is created, you're ready to move on to the next step and to start creating indices, adding data, and performing searches.
 ::::
 
-Alternatively, create a [local development installation](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) in Docker:
+### Create a local development installation [create-local-development-installation]
+
+Create a [local development installation](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) in Docker:
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
