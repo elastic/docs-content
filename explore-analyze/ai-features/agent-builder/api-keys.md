@@ -33,6 +33,7 @@ Before creating an API key:
 - Identify the index patterns that agents and tools need to query. Replace `customer-*` in the examples with your own patterns.
 - Determine whether agents use {{es}} inference endpoints, {{kib}} connectors, or workflows. These features require additional privileges.
 - Refer to the [privilege reference](permissions.md#privilege-reference) for the exact privilege names to use in a role descriptor.
+- After you create the key, copy and securely store its `encoded` value. You cannot retrieve it later.
 - If you're using `curl`, set the {{es}} URL, {{kib}} URL, and username:
 
   ```bash
