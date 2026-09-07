@@ -1039,9 +1039,13 @@ redirects:
           'create-custom-eis': 'add-endpoint'
 
   # https://github.com/elastic/docs-content/pull/6582
+  # https://github.com/elastic/docs-content-internal/issues/1609
   'explore-analyze/ai-features/agent-builder/custom-agents.md':
     to: 'explore-analyze/ai-features/agent-builder/custom-agents.md'
     many:
+      - to: 'explore-analyze/ai-features/agent-builder/custom-agents.md'
+        anchors:
+          'visibility-settings': 'access-control-settings'
       - to: 'explore-analyze/ai-features/agent-builder/agent-builder-agents.md'
         anchors:
           'enable-elastic-capabilities': 'elastic-capabilities'

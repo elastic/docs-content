@@ -105,14 +105,21 @@ For details, refer to [Pre-execution workflows](agents-and-workflows.md#pre-exec
 
 :::::
 
-:::::{step} Set visibility
+:::::{step} Set access control
 ```{applies_to}
 stack: ga 9.4+
 ```
 
-Configure the **Visibility** for your agent in the **Organization** section. Visibility controls who can view and edit the agent. The default setting is **Public**.
+Configure **Access control** for your agent in the **Organization** section. Access control determines who can view and edit the agent.
 
-For more information, refer to [Visibility settings](#visibility-settings). You can also configure [per-agent access controls](#per-agent-access-controls) for more granular control.
+{applies_to}`stack: ga =9.4` This setting is labeled **Visibility**.
+
+New agents get one of these levels by default:
+
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Private**: only you and administrators can view and edit the agent until you grant access to someone else.
+* {applies_to}`stack: ga 9.4-9.5` **Public**: anyone in the space can view and edit the agent.
+
+For more information, refer to [Access control settings](#access-control-settings). You can also configure [per-agent access controls](#per-agent-access-controls) for more granular control.
 
 :::::
 
@@ -191,15 +198,15 @@ From the **Agents** page, you can perform various actions on custom agents:
 These management options apply only to custom agents and the Elastic AI Agent {applies_to}`stack: ga 9.4+`. Other built-in agents can only be chatted with or cloned, not edited or deleted.
 :::
 
-## Visibility settings
+## Access control settings [access-control-settings]
 
 ```{applies_to}
 stack: ga 9.4+
 ```
 
-Control who can view and edit your agent by configuring its visibility. To change visibility, edit the agent and scroll to the **Organization** section.
+Control who can view and edit your agent by configuring its access control level. To change the level, edit the agent and go to the **Organization** section.
 
-Every agent has one of three visibility levels:
+Every agent has one of three access control levels:
 
 **Public**
 :   Anyone can view and edit.
@@ -210,10 +217,15 @@ Every agent has one of three visibility levels:
 **Private**
 :   Only the owner or an administrator can view and edit.
 
-:::{image} images/agent-visibility-levels.png
-:alt: Agent visibility dropdown showing Public, Shared, and Private.
+:::{image} images/agent-access-control-levels.png
+:screenshot:
+:alt: The access control menu with the Private, Shared, and Public levels.
 :width: 700px
 :::
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For **Private** and **Shared** agents, you can also grant access to individual users. Refer to [Per-agent access controls](#per-agent-access-controls).
+
+Existing agents keep the access control level they already have. Built-in agents, including the **Elastic AI Agent**, are always accessible to everyone who can use {{agent-builder}}.
 
 ### Per-agent access controls
 
@@ -222,18 +234,18 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-In addition to the three visibility levels, you can configure access controls for individual users on a per-agent basis. This allows you to grant specific users view or edit access to an agent, giving you more granular control over who can interact with and modify your agents.
+In addition to the three access control levels, you can configure access controls for individual users on a per-agent basis. This allows you to grant specific users view or edit access to an agent, giving you more granular control over who can interact with and modify your agents.
 
 To configure per-agent access controls:
 
-1. Edit the agent and scroll to the **Organization** section.
-2. Select a base visibility level.
+1. Edit the agent and go to the **Organization** section.
+2. Select a base access control level.
 3. Add individual users and assign each one a **View** or **Edit** access level.
 
-Users you add to the access list can interact with the agent according to the access level you assign, regardless of the base visibility setting. For example, you can set an agent to **Private** and then grant specific users view or edit access.
+Users you add to the access list can interact with the agent according to the access level you assign, regardless of the base access control level. For example, you can set an agent to **Private** and then grant specific users view or edit access.
 
 ::::{note}
-Per-agent access controls only apply to **Private** and **Shared** agents. Any user in your organization can view and use a **Public** agent.
+Per-agent access controls only apply to **Private** and **Shared** agents. Any user in the space can view and use a **Public** agent.
 ::::
 
 ## Best practices for custom agents

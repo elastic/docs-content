@@ -32,6 +32,11 @@ $$$a2a-server$$$
 A2A server
 :   The {{agent-builder}} endpoint that exposes agents to external A2A clients. Use it to integrate {{agent-builder}} agents with third-party agent frameworks. See [](a2a-server.md).
 
+$$$access-control$$$
+$$$visibility$$$
+Access control
+:   A custom agent's sharing setting that controls who can view and edit it. Levels are **Public** (anyone can view and edit), **Shared** (anyone can view, but only the owner and administrators can edit), and **Private** (only the owner and administrators). See [](custom-agents.md#access-control-settings).
+
 $$$agent$$$
 Agent
 :   A capability that iteratively uses a large language model (LLM), system context, and a set of tools and skills to complete a task. Each agent translates a user's natural language request into a sequence of tool calls and reasoning steps to answer questions, take actions, or support workflows. {{agent-builder}} ships with built-in agents and lets you create custom agents. See [](agent-builder-agents.md#how-agents-work).
@@ -118,7 +123,7 @@ Conversation history
 
 $$$custom-agent$$$
 Custom agent
-:   An agent you create with your own system prompt, tools, skills, and visibility settings. Custom agents are space-aware and exist only in the {{kib}} space where they were created. See [](custom-agents.md#create-a-custom-agent).
+:   An agent you create with your own system prompt, tools, skills, and access control settings. Custom agents are space-aware and exist only in the {{kib}} space where they were created. See [](custom-agents.md#create-a-custom-agent).
 
 $$$custom-instructions$$$
 Custom instructions
@@ -333,12 +338,6 @@ Token
 $$$tool$$$
 Tool
 :   A modular function an agent can call to search, retrieve, or manipulate {{es}} data. Tools are the primary mechanism for grounding agent capabilities in your data. {{agent-builder}} provides built-in tools; you can also create custom tools of four types: {{esql}}, index search, MCP, and workflow. See [](tools.md#how-agents-use-tools).
-
-## V
-
-$$$visibility$$$
-Visibility
-:   A custom agent's sharing setting that controls who can see and edit it. Options are **Public** (anyone in the space), **Shared** (anyone can view; only owners and admins can edit), and **Private** (only owners and admins). See [](custom-agents.md#visibility-settings).
 
 ## W
 

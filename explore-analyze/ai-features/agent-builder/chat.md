@@ -398,7 +398,7 @@ stack: ga 9.4+
 The **Manage components** link at the bottom of the left sidebar exits the single-agent view. It provides an overview of all agents, skills, plugins, connectors, and tools available across the deployment.
 
 **Agents**
-:   View all agents in the deployment. The list displays each agent's name, visibility badge (**Public**, **Shared**, or **Read-only**), and any custom labels. From this page, you can create new agents, edit existing ones, or start a chat.
+:   View all agents in the deployment. The list displays each agent's name and access control level (**Private**, **Shared**, or **Public**), a **Read-only** badge for built-in agents, and any custom labels. From this page, you can create new agents, edit existing ones, or start a chat.
 
 **Skills**
 :   View and manage all skills available in the deployment. Create new skills or edit existing ones.

@@ -751,6 +751,8 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/agents" \
 
 ::::
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` If you omit `access_control`, the agent is private to you.
+
 **Example:** Get an agent by ID
 
 This example uses the [get an agent by ID API]({{kib-apis}}operation/operation-get-agent-builder-agents-id).
