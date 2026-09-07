@@ -1,5 +1,14 @@
 **Find your endpoint**
 
+The easiest way to get your endpoint and API key is from the **Add data** screen in {{kib}}:
+
+1. Go to **Add data**.
+2. In the **Connect directly to the endpoint** section, select the **OpenTelemetry** tab.
+3. Copy the **Endpoint** value.
+4. Click **Create key** to generate an API key with the required privileges.
+
+Alternatively, retrieve the endpoint from the {{ecloud}} Console and create an API key manually:
+
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co/).
 2. Find your deployment in **Hosted deployments**, and select **Manage**.
 3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP**.

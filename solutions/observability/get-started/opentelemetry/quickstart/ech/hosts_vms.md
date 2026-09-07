@@ -14,17 +14,17 @@ products:
 
 Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/motlp.md), which is the recommended ingestion path for ECH.
 
+## Prerequisites
+
+- An {{ech}} deployment running version 9.0 or later.
+- The host or VM running a supported operating system (Linux, macOS, or Windows).
+
 ## Guided setup
 
 :::{include} ../../_snippets/guided-instructions.md
 :::
 
 If you need to manage credentials manually, for example, to use them in automation or to configure multiple environments, follow the steps in the Manual installation section.
-
-## Prerequisites
-
-- An {{ech}} deployment running version 9.0 or later.
-- The host or VM running a supported operating system (Linux, macOS, or Windows).
 
 ## Manual installation
 
