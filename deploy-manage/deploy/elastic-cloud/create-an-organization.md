@@ -39,7 +39,7 @@ For more information, check the [{{ech}} documentation](cloud-hosted.md).
 {{serverless-short}} projects package {{stack}} features by type of solution:
 
 * [{{es}}](../../../solutions/search.md)
-* [{{es}} Vector Database](/solutions/vector-database.md)
+* [{{es}} {{vectordb}}](/solutions/vector-database.md)
 * [Observability](../../../solutions/observability.md)
 * [Security](../../../solutions/security.md)
 

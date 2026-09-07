@@ -1,7 +1,7 @@
 ---
 navigation_title: Get started
 description: >-
-  Create an Elasticsearch Vector Database project on Elastic Cloud Serverless,
+  Create an {{es}} {{vectordb}} project on Elastic Cloud Serverless,
   ingest embeddings, and run your first vector or semantic searches.
 applies_to:
   serverless: ga
@@ -10,9 +10,9 @@ products:
   - id: serverless-vector-database
 ---
 
-# Get started with the {{es}} Vector Database project type
+# Get started with the {{es}} {{vectordb}} project type
 
-The {{es}} Vector Database project type on {{serverless-full}} is built for AI-powered vector retrieval. Use this guide to create a project and learn about the different methods you can ingest embeddings and run search queries.
+The {{es}} {{vectordb}} project type on {{serverless-full}} is built for AI-powered vector retrieval. Use this guide to create a project and learn about the different methods you can ingest embeddings and run search queries.
 
 <!-- TODO: After https://github.com/elastic/docs-content/pull/7923 merges, replace the dummy link below with /solutions/vector-database/vector-full-text-search.md -->
 To try a hands-on tutorial where you connect a client, index sample data, and run semantic, hybrid, and ES|QL searches, refer to [Elasticsearch vector and full-text search in 10 minutes](https://github.com/solutions/vector-database/get-started.md).
@@ -24,14 +24,14 @@ If you're looking for an introduction to the {{stack}} or the {{es}} product, re
 :::
 
 ::::::{stepper}
-:::::{step} Create an {{es}} Vector Database {{serverless-short}} project
+:::::{step} Create an {{es}} {{vectordb}} {{serverless-short}} project
 
 There are two options to create serverless projects:
 
 * If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For more information about {{ecloud}} trials, check out [Trial information](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial).
 * If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login) and do the following:
   1. Select **Create project** from the **Serverless projects** panel.
-  2. Select **Next** from the **Vector Database** panel.
+  2. Select **Next** from the **{{vectordb}}** panel.
   3. Name your project.
   4. Select a cloud provider and region. For available regions, refer to [Regions](/deploy-manage/deploy/elastic-cloud/regions.md).
   5. Select **Create project**. It takes a few minutes to create your project.
@@ -46,7 +46,7 @@ After you've created your project, note the {{es}} endpoint and API key from the
 
 :::::{step} (Optional) Follow the in-product setup guides
 
-When you create a new Vector Database project, the **Set up your Elasticsearch Vector Database** page includes two guided paths you can follow. Each path walks you through ingest and then search examples, with sample scripts you can run in a client of your choosing or run the examples directly in the Console.
+When you create a new {{vectordb}} project, the **Set up your {{es}} {{vectordb}}** page includes two guided paths you can follow. Each path walks you through ingest and then search examples, with sample scripts you can run in a client of your choosing or run the examples directly in the Console.
 
 The following setup guides are available in {{kib}}:
 
@@ -101,5 +101,5 @@ After you've learned how to ingest embeddings and return relevant results, dig d
 * [RAG](/solutions/search/rag.md): Patterns for grounding LLMs on retrieved context
 * [Vector search use cases](/solutions/search/vector/vector-search-use-cases.md): RAG, recommendations, multimodal search, and more
 * [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) and [billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md): Balance latency and cost for your project
-* [{{es}} Vector Database overview](/solutions/vector-database.md): When to choose this project type versus the general-purpose {{es}} project
+* [{{es}} {{vectordb}} overview](/solutions/vector-database.md): When to choose this project type versus the general-purpose {{es}} project
 * [{{es}} solution](/solutions/elasticsearch-solution-project.md): General-purpose project type and search application UI tools

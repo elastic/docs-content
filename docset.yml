@@ -162,6 +162,7 @@ subs:
   es-serverless:   "Elasticsearch Serverless"
   obs-serverless:   "Elastic Observability Serverless"
   sec-serverless:   "Elastic Security Serverless"
+  vectordb:   "Vector Database"
   apm-app:   "APM app"
   uptime-app:   "Uptime app"
   synthetics-app:   "Synthetics app"

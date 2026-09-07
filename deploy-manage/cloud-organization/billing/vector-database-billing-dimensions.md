@@ -1,18 +1,18 @@
 ---
-navigation_title: Vector Database projects
+navigation_title: "{{vectordb}} projects"
 applies_to:
   serverless: ga
 products:
   - id: cloud-serverless
   - id: serverless-vector-database
 description: >-
-  Learn how costs for Elasticsearch Vector Database Serverless projects
+  Learn how costs for {{es}} {{vectordb}} Serverless projects
   are calculated across storage, search, ingest, and infrastructure.
 ---
 
-# {{es}} Vector Database billing dimensions [vector-database-billing]
+# {{es}} {{vectordb}} billing dimensions [vector-database-billing]
 
-{{es}} Vector Database projects on {{serverless-full}} are priced based on consumption across storage, search, ingest, and infrastructure.
+{{es}} {{vectordb}} projects on {{serverless-full}} are priced based on consumption across storage, search, ingest, and infrastructure.
 
 Your monthly bill is calculated based on these components:
 
@@ -23,11 +23,11 @@ Your monthly bill is calculated based on these components:
 
 For current rates, refer to the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless) or the [{{serverless-full}} pricing](https://www.elastic.co/pricing/serverless) pages.
 
-<!-- Fact-check: add a dedicated Vector Database pricing URL when marketing publishes one. -->
+<!-- Fact-check: add a dedicated {{vectordb}} pricing URL when marketing publishes one. -->
 
 ## Storage [vector-database-billing-storage]
 
-You are charged per GB of data stored in the project. Storage charges apply for as long as the data remains in the project. Each Vector Database project can store up to 1 TB of data.
+You are charged per GB of data stored in the project. Storage charges apply for as long as the data remains in the project. Each {{vectordb}} project can store up to 1 TB of data.
 
 ## Search [vector-database-billing-search]
 
@@ -49,9 +49,9 @@ You are billed an infrastructure fee for as long as the project exists. Elastic 
 
 There is no separate control to pause or make a project unavailable. To stop infrastructure charges, [delete the project](/deploy-manage/uninstall/delete-a-cloud-deployment.md).
 
-## Managing Vector Database costs [vector-database-billing-managing-costs]
+## Managing {{vectordb}} costs [vector-database-billing-managing-costs]
 
-Vector Database costs follow your storage footprint, search resource allocation, ingest volume, and the infrastructure fee for the time your project exists. To balance performance with spend, adjust the controls described in this section.
+{{vectordb}} costs follow your storage footprint, search resource allocation, ingest volume, and the infrastructure fee for the time your project exists. To balance performance with spend, adjust the controls described in this section.
 
 ### Search Power setting [vector-database-billing-search-power-setting]
 
