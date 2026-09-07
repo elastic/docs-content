@@ -29,7 +29,8 @@ You can upload files, analyze their fields and metrics, and import their data in
         You can upload different file formats for analysis with the {{data-viz}}.
 
         The supported file formats are:
-          * CSV, TSV, NDJSON, log files (up to 500 MB)
+          * CSV, TSV, NDJSON, log files
+            * Up to 500 MB by default
           * PDF, TXT, RTF, ODF, Microsoft Office files (up to 60 MB)
 
         After you upload a file, you can inspect its data and make any necessary changes before importing it.
@@ -47,7 +48,9 @@ You can upload files, analyze their fields and metrics, and import their data in
     3. Drag one or more files into the upload area, or select **Select or drag and drop files**.
 
        The supported file formats are:
-         * CSV, TSV, NDJSON, log files (up to 500 MB)
+         * CSV, TSV, NDJSON, log files
+           * {applies_to}`stack: ga` Up to 500 MB by default
+           * {applies_to}`serverless: ga` Up to 500 MB
          * PDF, TXT, RTF, ODF, Microsoft Office files (up to 60 MB)
 
        After you upload your files, you can inspect the data and make any necessary changes before importing it.
