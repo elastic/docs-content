@@ -69,6 +69,7 @@ You can generate embeddings as part of the ingestion workflow instead of creatin
 
 * **Text-only content:** Map the target field as [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). When you ingest documents, {{es}} uses the configured {{infer}} endpoint to generate and store embeddings automatically.
   <!-- TODO: After https://github.com/elastic/docs-content/pull/7923 merges, replace the dummy link below with /solutions/vector-database/vector-full-text-search.md -->
+
   To walk through this workflow, follow [Elasticsearch vector and full-text search in 10 minutes](https://github.com/solutions/vector-database/vector-full-text-search.md).
 * **Multimodal content:** Map the target field as [`semantic`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md). Use this field type when you need to search across text, images, or other media with a multimodal model.
   To walk through this workflow, follow [Tutorial: Build multimodal search with a `semantic` field](/solutions/search/multimodal-search/multimodal-search-tutorial.md).
@@ -88,7 +89,7 @@ To walk through indexing sample embeddings and running a kNN search, follow [Bri
 :::::
 
 :::::{step} Search your data
-The search query type you can use depends on the vector field type you want to search. For an overview of field types and the queries you can use with each, refer to [Field types and queries](/solutions/search/vector.md#vector-queries-and-field-types). You can also combine vector queries with [filters](/solutions/search/vector/knn.md#knn-search-filter-example) on metadata fields in the same request.
+The search query type you can use depends on the vector field type you want to search. For an overview of field types and the queries you can use with each, refer to [Vector field types and queries](/solutions/search/vector.md#vector-queries-and-field-types). You can also combine vector queries with [filters](/solutions/search/vector/knn.md#knn-search-filter-example) on metadata fields in the same request.
 :::::
 ::::::
 
@@ -102,4 +103,3 @@ After you've learned how to ingest embeddings and return relevant results, dig d
 * [Vector search use cases](/solutions/search/vector/vector-search-use-cases.md): RAG, recommendations, multimodal search, and more
 * [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) and [billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md): Balance latency and cost for your project
 * [{{es}} {{vectordb}} overview](/solutions/vector-database.md): When to choose this project type versus the general-purpose {{es}} project
-* [{{es}} solution](/solutions/elasticsearch-solution-project.md): General-purpose project type and search application UI tools
