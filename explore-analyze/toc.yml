@@ -193,6 +193,7 @@ toc:
       - file: cross-project-search/cross-project-search-tags.md
       - file: cross-project-search/cross-project-search-project-routing.md
       - file: cross-project-search/cross-project-search-manage-scope.md
+      - file: cross-project-search/cps-compared-to-ccs.md
       - title: "CPS in ES|QL"
         crosslink: elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md
   - file: ai-features.md
