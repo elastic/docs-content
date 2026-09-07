@@ -44,9 +44,7 @@ File formats supported up to 60 MB:
 * Rich text (RTF)
 * Open Document Format (ODF)
 
-The **{{data-viz}}** identifies the file format and field mappings, and you can import the data into an {{es}} index. To upload files, refer to [Upload data files](/manage-data/ingest/upload-data-files.md).
-
-{applies_to}`stack: ga` {applies_to}`serverless: unavailable` To change the 500 MB file size limit, refer to [`fileUpload:maxFileSize`](kibana://reference/advanced-settings.md#kibana-general-settings) in **Advanced Settings**. The 60 MB limit for PDF and office files does not change.
+The **{{data-viz}}** identifies the file format and field mappings, and you can import the data into an {{es}} index. To upload files, refer to [Upload data files](/manage-data/ingest/upload-data-files.md). To change the default file size limit, refer to [`fileUpload:maxFileSize`](kibana://reference/advanced-settings.md#kibana-general-settings) in **Advanced Settings**.
 
 If {{stack-security-features}} are enabled, users must have the necessary privileges to use {{ml-features}}. Refer to [Set up {{ml-features}}](setting-up-machine-learning.md#setup-privileges).
 
