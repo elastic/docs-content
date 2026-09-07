@@ -372,6 +372,19 @@ Enter a name and expiration for the key, leave **Control security privileges** d
 
 The key inherits a point-in-time snapshot of the privileges of the user who creates it. It is an administrator key only when the owner has administrator privileges.
 
+## Update an API key
+
+If troubleshooting shows that a key is missing privileges, update it instead of creating another key:
+
+- In {{kib}}, go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click the key name, update **Control security privileges**, and save your changes.
+- To use the {{es}} API, send `PUT /_security/api_key/<api-key-id>` with the complete updated `role_descriptors` object. Authenticate as the user who owns the key; API key credentials cannot authenticate this request. The user needs at least the `manage_own_api_key` cluster privilege.
+
+:::{warning}
+When you include `role_descriptors`, the update replaces the key's assigned role descriptors instead of merging the changes. Include every privilege that the key must retain. Do not submit an empty `role_descriptors` object, because the key would inherit all privileges of its owner.
+:::
+
+Expired or invalidated keys cannot be updated. To learn about updating a key's expiration or metadata, refer to [Update an API key](/deploy-manage/api-keys/elasticsearch-api-keys.md#update-api-key) and the [update API key API]({{es-apis}}operation/operation-security-update-api-key).
+
 ## Use the API key
 
 Use the `encoded` value of the API key to authenticate requests to the {{agent-builder}} APIs. The request URL depends on the {{kib}} space that the key can access.
@@ -391,24 +404,24 @@ curl -X GET "${KIBANA_URL}/api/agent_builder/tools" \
 
 ### Call APIs in a custom space
 
-Include the space identifier in the request URL and make sure it matches the application privilege resource:
+When you create a key for a custom space, set the role descriptor's application privilege resource to that space. For a key with `"resources": ["space:production"]`, use the same space identifier in the request URL. To change an existing key's space access, [update the key](#update-an-api-key).
 
 ```bash
 curl -X GET "${KIBANA_URL}/s/production/api/agent_builder/tools" \ <1>
   -H "Authorization: ApiKey ${API_KEY}"
 ```
 
-1. The space identifier in the URL must match the role descriptor resource. In this example, the role descriptor must use `"resources": ["space:production"]`.
+1. The `production` space in the URL must match `space:production` in the key's role descriptor.
 
 ## Troubleshoot API keys
 
-The following list pairs common API key symptoms with checks or changes that can resolve them.
+The following list pairs common API key symptoms with checks or changes that can resolve them. If a key is missing privileges, [update its role descriptors](#update-an-api-key).
 
 `401 Unauthorized`
 :   Make sure the header uses the `encoded` value returned by the create API, not the separate `id` or `api_key` fields.
 
 `403 Forbidden`
-:   Check that the key has the required {{kib}} application privileges and that the space in the URL matches the `resources` value. Also make sure the key owner had the privilege when the key was created.
+:   Check that the key has the required {{kib}} application privileges and that the space in the URL matches the `resources` value. Also make sure the key owner has the privileges assigned to the key. If privileges are missing, [update the key](#update-an-api-key).
 
 An agent or tool cannot find data
 :   Check the index patterns and make sure the key has both `read` and `view_index_metadata` for the required indices.
