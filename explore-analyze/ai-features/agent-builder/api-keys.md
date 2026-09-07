@@ -373,7 +373,7 @@ The key inherits a point-in-time snapshot of the privileges of the user who crea
 
 ## Use the API key
 
-Use the `encoded` value returned by the create API to authenticate requests to the {{agent-builder}} APIs. The request URL depends on the {{kib}} space that the key can access.
+Use the `encoded` value of the API key to authenticate requests to the {{agent-builder}} APIs. The request URL depends on the {{kib}} space that the key can access.
 
 ### Call APIs in the default space
 
@@ -386,7 +386,7 @@ curl -X GET "${KIBANA_URL}/api/agent_builder/tools" \
   -H "Authorization: ApiKey ${API_KEY}"
 ```
 
-1. Use the `encoded` value returned by the create API, not the separate `id` or `api_key` values.
+1. Use the `encoded` value returned when you created the API key, not the separate `id` or `api_key` values.
 
 ### Call APIs in a custom space
 
@@ -407,7 +407,7 @@ The following list pairs common API key symptoms with checks or changes that can
 :   Make sure the header uses the `encoded` value returned by the create API, not the separate `id` or `api_key` fields.
 
 `403 Forbidden`
-:   Check that the key has the required {{kib}} application privilege and that the space in the URL matches the `resources` value. Also make sure the key owner had the privilege when the key was created.
+:   Check that the key has the required {{kib}} application privileges and that the space in the URL matches the `resources` value. Also make sure the key owner had the privilege when the key was created.
 
 An agent or tool cannot find data
 :   Check the index patterns and make sure the key has both `read` and `view_index_metadata` for the required indices.
