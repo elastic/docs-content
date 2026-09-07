@@ -79,7 +79,9 @@ Access is granted at the index level. Any user who can read these data streams c
 
 ### {{kib}} space scope [#space-scope]
 
-Conversations, custom agents, and custom tools are scoped to the current {{kib}} space. Built-in agents are available in all spaces. The default Elastic AI Agent is an exception {applies_to}`stack: ga 9.4+`: it is a persisted, space-aware agent that is automatically created in each space.
+Conversations, custom agents, and custom tools are scoped to the current {{kib}} space. Built-in agents are available in all spaces.
+
+{applies_to}`stack: ga 9.4+` The default Elastic AI Agent is an exception: it is a persisted, space-aware agent that is automatically created in each space.
 
 In a role or API key descriptor, specify the space in the application privilege resource. For example, use `"resources": ["space:production"]` for the `production` space. Users and API keys cannot access resources in spaces outside their assigned resources.
 
