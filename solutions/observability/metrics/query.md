@@ -13,14 +13,14 @@ products:
 
 # Query metrics [metrics-query]
 
-Elastic supports two first-class query experiences for metrics: {{esql}} and PromQL. Use the one that matches how your metrics were ingested and what you're trying to do. Cross-schema analysis happens at query time — no normalization at ingest is required.
+Elastic supports two query experiences for metrics: {{esql}} and PromQL. Use the one that matches how your metrics were ingested and what you're trying to do. Since cross-schema analysis happens at query time, no normalization at ingest is required.
 
 ## Which query language to use [metrics-query-which]
 
 :::::{applies-switch}
 
 ::::{applies-item} stack:
-**OTel-ingested or Prometheus remote write metrics — time-series queries (counters, rates, time buckets):**
+**Time-series queries for OTel-ingested or Prometheus remote write metrics (counters, rates, time buckets):**
 Use [{{esql}} with time-series (TS) mode](/solutions/observability/metrics/query-with-esql-ts.md). TS mode operates efficiently on TSDS columnar storage and handles per-series aggregation correctly.
 
 **Prometheus or Grafana workflows:**
@@ -28,7 +28,7 @@ Use [PromQL](elasticsearch://reference/query-languages/promql/functions.md). Wor
 ::::
 
 ::::{applies-item} serverless:
-**OTel-ingested or Prometheus remote write metrics — time-series queries (counters, rates, time buckets):**
+**Time-series queries for OTel-ingested or Prometheus remote write metrics (counters, rates, time buckets):**
 Use [{{esql}} with time-series (TS) mode](/solutions/observability/metrics/query-with-esql-ts.md).
 
 **Prometheus or Grafana workflows:**
@@ -39,19 +39,19 @@ Use [PromQL](elasticsearch://reference/query-languages/promql/functions.md). Wor
 
 ## {{esql}} for metrics [metrics-query-esql]
 
-{{esql}} is the recommended choice for ad hoc analysis, time-series aggregations, and building dashboards in {{kib}}. For metrics stored as TSDS, use {{esql}} time-series mode for counters, rates, and per-series aggregation.
+{{esql}} is the recommended choice for ad hoc analysis, time-series aggregations, and building dashboards in {{kib}}. For metrics stored as TSDS, use {{esql}} time-series mode. TS mode works on TSDS columnar storage and computes rates, averages, and other per-series aggregations over time windows. Refer to [Query metrics with {{esql}} TS mode](/solutions/observability/metrics/query-with-esql-ts.md) for more information.
 
-- [Query metrics with {{esql}} TS mode](/solutions/observability/metrics/query-with-esql-ts.md)
-- [Query downsampled data](/manage-data/data-store/data-streams/query-downsampled-data.md)
-- [Explore metrics data with Discover in {{kib}}](/solutions/observability/infra-and-hosts/discover-metrics.md)
+When a TSDS is downsampled, you can still query the coarser buckets with {{esql}}. The `TS` command is optimized for a mix of raw and downsampled backing indices. Refer to [Query downsampled data](/manage-data/data-store/data-streams/query-downsampled-data.md) for more information.
+
+{applies_to}`stack: ga 9.4+` In Discover, run a `TS` query in {{esql}} mode to open a chart grid of available metrics. You can search, filter, break metrics down by dimension, and add charts to a dashboard. Refer to [Explore metrics data with Discover in {{kib}}](/solutions/observability/infra-and-hosts/discover-metrics.md) for more information.
 
 ## PromQL for metrics [metrics-query-promql]
 
-If you sent metrics to Elastic using Prometheus remote write or OTLP, you can query them using PromQL directly in {{es}}. This lets you reuse existing Prometheus queries and alerting rules without rewriting them. If you use Grafana, you can point it at {{es}} as a Prometheus data source.
+If you send metrics to Elastic with Prometheus remote write or OTLP, you can query them with PromQL in {{es}}. You can reuse existing Prometheus queries and alerting rules as long as they use supported PromQL.
 
-- [PromQL functions reference](elasticsearch://reference/query-languages/promql/functions.md)
-- [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md)
-- [PromQL limitations in {{es}}](elasticsearch://reference/query-languages/promql/promql-limitations.md)
+{{es}} implements a subset of PromQL functions for rates, range aggregations, and math. Some constructs are not evaluated yet and return a client error. Refer to [PromQL functions](elasticsearch://reference/query-languages/promql/functions.md) for the function list, and [PromQL limitations](elasticsearch://reference/query-languages/promql/promql-limitations.md) for unsupported constructs and differences from upstream Prometheus.
+
+If you use Grafana, point its built-in Prometheus data source at the {{es}} `/_prometheus/` API. Grafana treats {{es}} like any other Prometheus backend: dashboard panels, autocompletion, and template variables run PromQL against metrics in {{es}}. Refer to [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md) for more information.
 
 ## Related [metrics-query-related]
 

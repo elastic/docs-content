@@ -13,13 +13,25 @@ products:
 
 # Explore metrics [metrics-explore]
 
-After your metrics are flowing into Elastic, use these tools to explore, visualize, and act on them. The primary explore experience is metrics data in Discover — the old Metrics Explorer is deprecated.
+After your metrics are flowing into Elastic, use these tools to explore, visualize, and act on them.
 
 ## Explore metrics in Discover [metrics-explore-discover]
-
+```{applies_to}
+stack: ga 9.4+
+```
 Use Discover in {{kib}} to explore time-series metrics data, apply filters, and run {{esql}} queries against your metrics. This is the recommended path for interactive exploration.
 
-[Explore metrics data with Discover in {{kib}}](/solutions/observability/infra-and-hosts/discover-metrics.md)
+Refer to [Explore metrics data with Discover in {{kib}}](/solutions/observability/infra-and-hosts/discover-metrics.md) for more information.
+
+## Explore metrics in Metrics Explorer [metrics-explore-metrics-explorer]
+```{applies_to}
+stack: deprecated 9.4+, ga 9.0-9.3
+serverless: unavailable
+```
+
+Use **Metrics Explorer** to create time-series visualizations of your metrics, chart them against related metrics, and break them down by the field of your choice.
+
+Refer to [Explore infrastructure metrics over time](/solutions/observability/infra-and-hosts/explore-infrastructure-metrics-over-time.md) for more information.
 
 ## Infrastructure views [metrics-explore-infra]
 

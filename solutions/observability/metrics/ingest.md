@@ -13,11 +13,11 @@ products:
 
 # Ingest metrics [metrics-ingest]
 
-Elastic supports multiple ingestion paths for metrics. {{edot}} is the recommended path for new setups. {{agent}} integrations are recommended for existing Elastic deployments.
+Elastic supports multiple ingestion paths for metrics. {{edot}} is the recommended path, except for the use cases listed in [Know when to keep using classic Elastic components](/solutions/observability/get-started/opentelemetry/start-with-otel.md#start-with-otel-when-classic).
 
 ## Ingest with {{edot}} (recommended) [metrics-ingest-otlp]
 
-{{edot}} is the recommended distribution. Any compliant OTLP client is first-class.
+{{edot}} is the recommended distribution. You can also send metrics with any OTLP-compliant client.
 
 :::::{applies-switch}
 
@@ -48,7 +48,7 @@ Refer to [Managed OTLP endpoint](opentelemetry://reference/managed-inputs/manage
 
 The Managed OTLP endpoint is not available for self-managed {{stack}}, {{ece}} (ECE), or {{eck}} (ECK) deployments. Run {{agent}} in OTel mode as a gateway: it exposes an OTLP endpoint that your EDOT SDKs and edge collectors send data to, and forwards the data to {{es}}.
 
-For {{stack}} 9.2 and later, you can also send OTLP data directly to the {{es}} OTLP endpoint. Refer to [{{es}} OTLP/HTTP ingest endpoint](/manage-data/ingest/otlp-endpoint.md).
+{applies_to}`stack: ga 9.2+` You can also send OTLP data directly to the {{es}} OTLP endpoint. Refer to [{{es}} OTLP/HTTP ingest endpoint](/manage-data/ingest/otlp-endpoint.md).
 
 Refer to [{{agent}} modes](elastic-agent://reference/edot-collector/modes.md) for setup instructions.
 ::::
@@ -60,24 +60,24 @@ Refer to [{{agent}} modes](elastic-agent://reference/edot-collector/modes.md) fo
 - [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md)
 - [Managed OTLP endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md)
 - [{{agent}} modes](elastic-agent://reference/edot-collector/modes.md)
-- [Metric temporality](/manage-data/data-store/data-streams/metric-temporality.md) — cumulative vs delta behavior for counters and histograms
+- [Metric temporality](/manage-data/data-store/data-streams/metric-temporality.md) — cumulative versus delta behavior for counters and histograms
 
 ## Ingest with {{agent}} integrations [metrics-ingest-agent-integrations]
 
-Use {{agent}} integrations to collect metrics from specific infrastructure components and services — for example, system metrics from hosts, {{k8s}} cluster metrics, or metrics from nginx, PostgreSQL, or Redis. Integrations use {{product.ecs}} (ECS) field naming conventions.
+Use {{agent}} integrations to collect metrics from specific infrastructure components and services. For example, system metrics from hosts, {{k8s}} cluster metrics, or metrics from nginx, PostgreSQL, or Redis. {{integrations}} use {{product.ecs}} (ECS) field naming conventions.
 
-Use this path when you already have {{agent}} deployed, when you need out-of-box dashboards for specific technologies, or when you want to keep existing ECS-schema data unchanged.
+Use this path when your use case is listed in the {{edot}} limitations, for example, when you need existing ECS integrations and dashboards to keep working without customization.
 
 - [Get started with system metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md)
 - Browse available integrations in the [{{integrations}} catalog](https://www.elastic.co/integrations)
 
 ## Ingest using Prometheus remote write [metrics-ingest-prometheus]
 
-Send metrics from Prometheus to {{es}} using the Prometheus remote write protocol. Add a `remote_write` target to your `prometheus.yml` — your existing scrape configs continue to work unchanged.
+Send metrics from Prometheus to {{es}} using the Prometheus remote write protocol. Add a `remote_write` target to your `prometheus.yml` to make your existing scrape configurations continue to work unchanged.
 
 This path is useful when you want to try Elastic without changing your Prometheus setup, or as part of a gradual migration.
 
-- [Prometheus remote write endpoint](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md)
+Refer to [Prometheus remote write endpoint](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) for more information.
 
 ## Related [metrics-ingest-related]
 

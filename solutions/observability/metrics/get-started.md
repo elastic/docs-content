@@ -13,7 +13,7 @@ products:
 
 # Get started with metrics [metrics-get-started]
 
-The fastest path to getting metrics into Elastic is to follow an {{edot}} quickstart for your deployment type and environment. Each quickstart sets up the full {{edot}} stack — logs, metrics, and traces.
+The fastest path to getting metrics into Elastic is to follow an {{edot}} quickstart for your deployment type and environment. Each quickstart sets up the full {{edot}} stack for collecting logs, metrics, and traces.
 
 Select the quickstart that matches your deployment type and environment:
 
@@ -27,6 +27,6 @@ For **custom application metrics**, follow the dedicated guide: [Ingest custom m
 
 ## What's next [metrics-get-started-next]
 
-- **Plan your data model**: Before adding more sources, read [Plan your metrics setup](/solutions/observability/metrics/plan-your-setup.md) to understand the OTel schema versus ECS choice and what it means for metric names, dashboards, and queries.
-- **Add more sources**: See [Ingest metrics](/solutions/observability/metrics/ingest.md) for the full set of ingest options, including {{agent}} integrations and Prometheus remote write.
-- **Explore your data**: See [Explore metrics](/solutions/observability/metrics/explore.md) to start building dashboards and visualizations.
+- **Plan your data model**: Before adding more sources, refer to [Plan your metrics setup](/solutions/observability/metrics/plan-your-setup.md) to understand the OTel schema versus ECS choice and what it means for metric names, dashboards, and queries.
+- **Add more sources**: Refer to [Ingest metrics](/solutions/observability/metrics/ingest.md) for the full set of ingest options, including {{agent}} integrations and Prometheus remote write.
+- **Explore your data**: Refer to [Explore metrics](/solutions/observability/metrics/explore.md) to start building dashboards and visualizations.

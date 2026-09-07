@@ -13,10 +13,6 @@ products:
 
 # Query metrics with {{esql}} and time-series functions [metrics-query-esql-ts]
 
-:::{note}
-This page is a stub. Detailed {{esql}} time-series query guidance is coming soon.
-:::
-
 {{esql}} provides time-series functions designed for metrics stored in TSDS (Time Series Data Streams). These functions handle the ordered, columnar structure of time-series data natively, making aggregations like `RATE`, `AVERAGE`, and `MAX` over time windows more efficient than equivalent aggregations on regular indices.
 
 ## When to use time-series functions [metrics-query-esql-ts-when]
