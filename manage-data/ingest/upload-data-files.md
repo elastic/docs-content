@@ -41,7 +41,7 @@ You can upload files, analyze their fields and metrics, and import their data in
 
     :::
 
-    :::{applies-item} { "stack": "ga 9.2", "serverless": "ga" }
+    :::{applies-item} { "serverless": "ga", "stack": "ga 9.2" }
 
     1. Select **New index** or **Existing index**.
     2. Enter a name for the new index, or select an existing index from the dropdown.
@@ -49,17 +49,17 @@ You can upload files, analyze their fields and metrics, and import their data in
 
        The supported file formats are:
          * CSV, TSV, NDJSON, log files
-           * {applies_to}`stack: ga` Up to 500 MB by default
            * {applies_to}`serverless: ga` Up to 500 MB
+           * {applies_to}`stack: ga` Up to 500 MB by default
          * PDF, TXT, RTF, ODF, Microsoft Office files (up to 60 MB)
 
        After you upload your files, you can inspect the data and make any necessary changes before importing it.
 
-       {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga` To stop analysis of a file, select **Remove file**.
+       {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` To stop analysis of a file, select **Remove file**.
 
     4. Select **Import**.
 
-       {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga` While the import is in progress, select **Cancel** to stop it.
+       {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` While the import is in progress, select **Cancel** to stop it.
 
     :::
 
