@@ -19,7 +19,16 @@ products:
 * [{{ecloud}} Billing]({{cloud-billing-apis}}) APIs
 * {applies_to}`serverless: ga` Optionally, [{{es}} {{serverless-full}}]({{es-serverless-apis}}) and [{{kib}} {{serverless-full}}]({{kib-serverless-apis}})  APIs
 
-Only **Organization owners** can create and manage API keys. An API key is not tied to the user who created it. When creating a key, you assign it specific roles to control its access to organizational resources, including hosted deployments and serverless projects. If a user leaves the organization, the API keys they have created will still function until they expire.
+:::{admonition} {{es}} and {{kib}} API access
+
+By default, {{ecloud}} API keys provide access to the APIs for managing your organization, deployments, and projects.
+
+{applies_to}`ech:` In {{ech}} deployments, {{ecloud}} API keys do not provide access to {{es}} or {{kib}} APIs. [Learn how to create an {{es}} API key for ECH deployments](elasticsearch-api-keys.md).
+
+{applies_to}`serverless: ga` For {{serverless-full}} projects, you can optionally grant access to {{es}} and {{kib}} APIs when you [assign roles to the API key](#project-access).
+:::
+
+An {{ecloud}} API key belongs to the organization and is not tied to the user who created it. When a key is created, it is assigned specific roles that control its access to organizational resources. If the creator leaves the organization, the API keys they created will still function until they expire or are revoked.
 
 You can have multiple API keys for different purposes, and you can revoke them when you no longer need them. Each organization can have up to 500 active API keys.
 
@@ -27,15 +36,14 @@ You can have multiple API keys for different purposes, and you can revoke them w
 :url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/access-management
 :::
 
-:::{admonition} {{es}} and {{kib}} API access 
-:applies_to: ech:
+## Required permissions
 
-By default, {{ecloud}} API keys provide access to the APIs for managing your organization, deployments, and projects. 
+To create and manage {{ecloud}} API keys, you must be one of the following:
 
-In {{ech}} deployments, {{ecloud}} API keys do not provide access to {{es}} or {{kib}} APIs. [Learn how to create an {{es}} API key for ECH deployments](elasticsearch-api-keys.md).
+* An **Organization owner**: Can create API keys for the organization, and can view and revoke all API keys in the organization.
+* A user who can [**manage workload credentials**](/deploy-manage/users-roles/cloud-organization/user-roles.md#manage-workload-credentials): Can create API keys, and can list and revoke only the API keys they created.
 
-In the case of {{serverless-full}} projects, you can optionally grant access to [{{es}} {{serverless-short}}]({{es-serverless-apis}}) and [{{kib}} {{serverless-short}}]({{kib-serverless-apis}}) APIs when you [assign roles to the API key](#roles).
-:::
+For more information, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles).
 
 ## Create an API key [ec-api-keys]
 
@@ -47,7 +55,7 @@ In the case of {{serverless-full}} projects, you can optionally grant access to 
 4. On the **Create API key** flyout, you can configure your new key:
    1. Add a unique name for the key.
    2. Set the [expiration](#expiration) for the key.
-   3. Assign [roles](#roles).
+   3. Assign [roles](#roles). You can also allow the key to [manage workload credentials](/deploy-manage/users-roles/cloud-organization/user-roles.md#manage-workload-credentials).
 5. Click **Create API key**, copy the generated API key, and store it in a safe place. You can also download the key as a CSV file.
 
 The API key needs to be supplied in the `Authorization` header of a request, in the following format:
@@ -112,6 +120,11 @@ When an API key expires, it is automatically removed from the **API keys** tab.
 Roles grant an API key specific privileges for your {{ecloud}} organization and resources.
 
 You can grant a cloud API key [the same types of roles that you assign to users](/deploy-manage/users-roles/cloud-organization/user-roles.md#types-of-roles): organization-level roles, cloud resource access roles, and connected cluster access roles.
+
+The roles you can assign depend on your privileges:
+
+* **Organization owners** can assign any roles.
+* Users who can **manage workload credentials** can assign only roles they already hold, on deployments or projects they already have access to.
 
 ### Granting {{es}} and {{kib}} API access [project-access]
 ```{applies_to}

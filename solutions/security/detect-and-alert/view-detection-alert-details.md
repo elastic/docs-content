@@ -32,7 +32,7 @@ If you've enabled grouping on the Alerts page, expand a group and select an indi
 ::::
 
 ::::{tip}
-An {{kib}} administrator can revert to the previous flyout layout by turning off the **Enable new flyout** advanced setting. Refer to [Enable the new flyout system](/solutions/security/get-started/configure-advanced-settings.md#enable-new-flyout).
+A {{kib}} administrator can revert to the previous flyout layout by turning off the `securitySolution:enableNewFlyout` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 ::::
 
 ### Header [header]
@@ -200,7 +200,7 @@ The flyout organizes matches into two sections:
 | Fields enriched with threat intelligence | Indicators found by scanning alert fields against your threat intelligence indices. Applies to any rule type. | Check if known malicious IPs, hashes, or URLs appear in the alert. Use the date picker to adjust the search time frame, or click **Inspect** to view the query. |
 
 ::::{note}
-This flyout queries the threat intelligence indices defined in [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices).
+This flyout queries the threat intelligence indices defined in [`securitySolution:defaultThreatIndex`](kibana://reference/advanced-settings.md#kibana-siem-settings).
 ::::
 
 {{elastic-sec}} checks the following alert fields for matches against your threat intelligence data:

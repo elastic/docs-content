@@ -25,6 +25,10 @@ For information about supported operating systems, refer to the [Elastic Support
 | **Disk space** | 1 GB |
 | **Resident set size (RSS) memory** | 500 MB |
 
+::::{note}
+{{elastic-endpoint}} writes log files on the host. These logs rotate automatically and are not configurable. Each file can grow to 25 MB, and {{elastic-endpoint}} keeps up to 4 files.
+::::
+
 ## SSL/TLS certificate requirements [ssl-tls-cert-requirements]
 
 ::::{applies-switch}

@@ -13,6 +13,10 @@ products:
 
 Installing ECE on multiple hosts with your own registry server is simpler, because you do not have to load the Docker images on each host.
 
+::::{admonition} ECE service containers run as root
+[ECE service containers](ece-architecture.md#ece-service-containers) run as `root` (UID 0) because they interact directly with the Docker or Podman socket and perform privileged operations such as cgroup management and resource allocation. If your private registry or image scanner rejects images that run as the root user, add an exception for `elastic-cloud-enterprise`.
+::::
+
 1. Set up your private Docker registry. To learn more, check [Deploy a registry server](https://docs.docker.com/registry/deploying/).
 
     ::::{tip}

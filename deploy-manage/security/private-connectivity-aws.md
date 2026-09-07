@@ -77,6 +77,8 @@ When using AWS PrivateLink, the following limitations apply:
 
 ```{include} _snippets/private-connectivity-limitations-ech.md
 ```
+```{include} _snippets/aws-privatelink-cloud-id-limitation.md
+```
 
 ## PrivateLink service names and aliases [ec-private-link-service-names-aliases]
 

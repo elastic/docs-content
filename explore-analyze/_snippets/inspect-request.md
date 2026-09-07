@@ -6,16 +6,12 @@ The request **Inspector** is available in **Discover** and for all **Dashboards*
       - {applies_to}`stack: ga 9.0-9.3` Select **Inspect** from the application menu.
    - If you're in **Dashboards**, open the panel menu and select **Inspect**.
 1. Open the **View** dropdown, then select **Requests**.
-1. Several tabs with different information can appear, depending on nature of the request:
+1. Several tabs with different information can appear, depending on nature of the request and your deployment type:
    :::{tip}
    Some visualizations rely on several requests. From the dropdown, select the request you want to inspect. 
    :::
     * **Statistics**: Provides general information and statistics about the request. For example, you can check if the number of hits and query time match your expectations. If not, this can indicate an issue with the request used to build the visualization.
-    * **Clusters and shards**: Lists the {{es}} clusters and shards queried to fetch the data, including for [{{ccs}}](/explore-analyze/cross-cluster-search.md) and [{{cps}}](/explore-analyze/cross-project-search.md) queries. Use this tab to verify that the request ran correctly.
-
-      :::{note}
-      This tab is not available for Vega visualizations.
-      :::
-      
+    * {applies_to}`stack:` **Clusters and shards**: Lists the {{es}} clusters and shards queried to fetch the data, including for [{{ccs}}](/explore-analyze/cross-cluster-search.md) queries. Use this tab to verify that the request ran correctly. This tab is not available for Vega visualizations.
+    * {applies_to}`serverless:` **Projects**: Lists the projects queried to fetch the data. If the request searched only the origin project, that is the only project listed. If it searched across linked projects with [{{cps}}](/explore-analyze/cross-project-search.md), each participating project is listed. Use this tab to verify that the request ran correctly. This tab is not available for Vega visualizations.
     * **Request**: Provides a full view of the visualization's request, which you can copy or **Open in Console** to refine, if needed.
     * **Response**: Provides a full view of the response returned by the request.

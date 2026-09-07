@@ -46,6 +46,7 @@ toc:
                   - file: search/vector/knn.md
                   - file: search/vector/bring-own-vectors.md
                   - file: search/vector/vector-storage-for-semantic-search.md
+                  - file: search/vector/gpu-vector-indexing.md
               - file: search/vector/sparse-vector.md
           - file: search/hybrid-search.md
             children:
@@ -106,6 +107,7 @@ toc:
               - file: observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md
               - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
               - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
+          - file: observability/get-started/opentelemetry/start-with-otel.md
           - file: observability/get-started/opentelemetry/quickstart/index.md
             children:
               - file: observability/get-started/opentelemetry/custom-metrics-quickstart.md
@@ -208,7 +210,6 @@ toc:
                       - file: observability/apm/observe-lambda-functions.md
                   - file: observability/apm/machine-learning.md
                   - file: observability/apm/apm-agent-explorer.md
-                  - file: observability/apm/applications-ui-settings.md
               - file: observability/apm/act-on-data.md
                 children:
                   - file: observability/apm/create-apm-rules-alerts.md
@@ -585,7 +586,6 @@ toc:
               - file: security/get-started/spaces-defend-faq.md
           - file: security/get-started/data-views-elastic-security.md
           - file: security/get-started/create-runtime-fields-in-elastic-security.md
-          - file: security/get-started/configure-advanced-settings.md
           - file: security/get-started/siem-readiness.md
       - file: security/esql-for-security.md
         children:
