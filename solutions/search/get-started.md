@@ -32,7 +32,9 @@ To get started, choose one of these options:
 - [Create a {{serverless-short}} project](#create-serverless-project).
 - [Create a local development installation](#create-local-development-installation).
 
-### Create a Serverless project [create-serverless-project]
+Check out the full list of [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type) to learn more.
+
+### Create a {{serverless-short}} project [create-serverless-project]
 
 ```{applies_to}
 serverless:
@@ -41,15 +43,20 @@ serverless:
 For simplicity and speed, use {{serverless-full}}.
 
 $$$serverless-project-configuration$$$
-#### Choose a Serverless project configuration
+#### Choose a {{serverless-short}} project configuration
 
-Select the {{serverless-short}} project configuration that matches your workload:
+Use the following decision tree to choose between an [{{es}} project](/solutions/elasticsearch-solution-project.md) and an [{{es}} Vector Database project](/solutions/vector-database.md):
 
-| Project configuration | Recommended for | Configuration |
-| --- | --- | --- |
-| [{{es}} project](/solutions/elasticsearch-solution-project.md) with `optimized_for: general_purpose` | Most search use cases, including full-text search, compressed vectors, and mixed workloads | Available when you create a project with the [API]({{cloud-serverless-apis}}operation/operation-createelasticsearchproject) |
-| [{{es}} project](/solutions/elasticsearch-solution-project.md) with `optimized_for: vector` | Uncompressed, high-dimensional dense vectors | Available when you create a project with the [API]({{cloud-serverless-apis}}operation/operation-createelasticsearchproject) |
-| [{{es}} Vector Database project](/solutions/vector-database.md) | Embeddings and similarity search, including semantic and hybrid search, RAG, and recommendations | No `optimized_for` profile; indices automatically use [`index.mode: vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) |
+![Decision tree for choosing a {{serverless-short}} project configuration based on required capabilities and whether vector search is fundamental to the application.](/solutions/images/serverless-vector-project-selection.jpg)
+
+##### Choose an {{es}} project profile
+
+If you choose an {{es}} project and create it with the [API]({{cloud-serverless-apis}}operation/operation-createelasticsearchproject), select an `optimized_for` profile:
+
+- `general_purpose`: Recommended for most search use cases, including compressed vectors.
+- `vector`: Recommended for uncompressed, high-dimensional dense vectors.
+
+These profiles don't apply to Vector Database projects.
 
 ::::{dropdown} Create a serverless project
 :::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
@@ -66,7 +73,6 @@ Create a [local development installation](/deploy-manage/deploy/self-managed/loc
 curl -fsSL https://elastic.co/start-local | sh
 ```
 
-Check out the full list of [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type) to learn more.
 :::::
 
 :::::{step} (Optional) Try out a quickstart
