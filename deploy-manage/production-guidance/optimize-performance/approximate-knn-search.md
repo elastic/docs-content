@@ -85,7 +85,7 @@ These estimates are a planning baseline. Real usage depends on your data, indexi
 
 Each structure is a Lucene file (also reported under `off_heap.*_size_bytes` in [index stats]({{es-apis}}operation/operation-indices-stats)). Metadata files (`.vem`, `.vemf`, `.vemq`, `.vemb`) are small and you do not need to preload them.
 
-The **Off-heap RAM** column is whether that file is part of the working set you size in the [calculator](#vector-sizing-calculator) and in [Estimate off-heap RAM](#_estimate_off_heap_ram):
+The **Off-heap RAM** column indicates whether that file is part of the working set you size in the [calculator](#vector-sizing-calculator) and in [Estimate off-heap RAM](#_estimate_off_heap_ram):
 
 - **Yes**: must stay in the filesystem cache. Include it in the RAM estimate.
 - **Partial**: optional headroom; only touched parts are paged in.
@@ -142,7 +142,7 @@ Provision at least the off-heap RAM figure per copy, plus headroom. Once the wor
 - `int8_hnsw` / `int4_hnsw` / `bbq_hnsw`: the quantized codes and the graph.
 - `bbq_disk` (DiskBBQ): all centroids. Extra headroom to cache about 5–10% of the posting lists is a good target; the rest of the postings and the raw vectors stay on disk. This is why DiskBBQ can serve far more vectors per GiB of RAM.
 
-Those structures are the files marked **Yes** (and **Partial** for DiskBBQ cluster headroom) in [Vector files](#vector-files-off-heap-ram).
+The files that contain these in-memory structures are marked **Yes** in [Vector files](#vector-files-off-heap-ram). For DiskBBQ, **Partial** indicates the recommended headroom for caching posting lists.
 
 #### Vector data in RAM
 
@@ -235,7 +235,7 @@ Start with all centroids plus about 5% of the posting lists in RAM and tune base
 
 ::::
 
-Data nodes should also leave a buffer for other ways that RAM is needed. For example your index might also include text fields and numerics, which also benefit from using filesystem cache. Run benchmarks with your dataset to confirm there is enough memory for good search performance. Nightly examples include the [`so_vector`](https://elasticsearch-benchmarks.elastic.co/#tracks/so_vector) and [`dense_vector`](https://elasticsearch-benchmarks.elastic.co/#tracks/dense_vector) tracks.
+Data nodes should also leave a buffer for other ways that RAM is needed. For example your index might include text fields and numerics, which also benefit from using filesystem cache. Run benchmarks with your dataset to confirm there is enough memory for good search performance. Nightly examples include the [`so_vector`](https://elasticsearch-benchmarks.elastic.co/#tracks/so_vector) and [`dense_vector`](https://elasticsearch-benchmarks.elastic.co/#tracks/dense_vector) tracks.
 
 ### Estimate disk usage [_estimate_disk_usage]
 
