@@ -42,23 +42,28 @@ serverless:
 
 For simplicity and speed, use {{serverless-full}}.
 
+::::{dropdown} Create a serverless project
 $$$serverless-project-configuration$$$
 #### Choose a {{serverless-short}} project configuration
 
-Use the following decision tree to choose between an [{{es}} project](/solutions/elasticsearch-solution-project.md) and an [{{es}} Vector Database project](/solutions/vector-database.md):
+Both [{{es}} projects](/solutions/elasticsearch-solution-project.md) and [{{es}} Vector Database projects](/solutions/vector-database.md) support vector search and use the same query APIs.
 
-![Decision tree for choosing a {{serverless-short}} project configuration based on required capabilities and whether vector search is fundamental to the application.](/solutions/images/serverless-vector-project-selection.jpg)
+| Project type | When to choose |
+| --- | --- |
+| [{{es}} project](/solutions/elasticsearch-solution-project.md) | For general-purpose data storage and search, including mixed lexical, time series, and analytics workloads, or when you need to run custom models on {{ml}} nodes |
+| [{{es}} Vector Database project](/solutions/vector-database.md) | When embeddings and similarity search are central to your workload, such as RAG, recommendations, semantic search, hybrid search, or multimodal search |
 
 ##### Choose an {{es}} project profile
 
 If you choose an {{es}} project and create it with the [API]({{cloud-serverless-apis}}operation/operation-createelasticsearchproject), select an `optimized_for` profile:
 
-- `general_purpose`: Recommended for most search use cases, including compressed vectors.
-- `vector`: Recommended for uncompressed, high-dimensional dense vectors.
+| Profile | When to choose |
+| --- | --- |
+| `general_purpose` | For most search use cases, including compressed vectors |
+| `vector` | For uncompressed, high-dimensional dense vector workloads |
 
-These profiles don't apply to Vector Database projects.
+Vector Database projects don't use an `optimized_for` profile.
 
-::::{dropdown} Create a serverless project
 :::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
 :::
 
