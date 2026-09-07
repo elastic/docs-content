@@ -2,7 +2,6 @@
 navigation_title: "Prometheus remote write endpoint"
 applies_to:
   stack: preview =9.4, ga 9.5+
-  serverless: ga
 products:
   - id: elasticsearch
 ---
@@ -111,6 +110,10 @@ remote_write:
 This sends data to the `metrics-infrastructure.prometheus-production` data stream.
 
 ### Route by labels
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
 
 You can also route individual time series to different data streams by attaching `data_stream_dataset` and `data_stream_namespace` labels to each time series. These labels take precedence over the URL path when set and allow a single remote write endpoint to fan out metrics to multiple data streams.
 
