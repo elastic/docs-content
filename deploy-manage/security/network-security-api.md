@@ -21,7 +21,7 @@ sub:
 This example demonstrates how to use the {{ecloud}} RESTful API, {{ece}} RESTful API, or {{serverless-full}} RESTful API to manage different types of network security policies and rules. 
 
 :::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/network-security
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/provisioning
 :::
 
 We cover the following examples:

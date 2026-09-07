@@ -27,11 +27,6 @@ To manage API keys in {{kib}}, go to the **API keys** management page in the nav
 
 ![API Keys UI](/deploy-manage/images/kibana-api-keys.png "")
 
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-authn
-:::
-
-
 ## Security privileges [api-keys-security-privileges]
 
 * To use API keys in {{kib}}, you must have the `manage_security`, `manage_api_key`, or the `manage_own_api_key` cluster privileges.

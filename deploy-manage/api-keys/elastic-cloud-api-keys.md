@@ -33,7 +33,7 @@ An {{ecloud}} API key belongs to the organization and is not tied to the user wh
 You can have multiple API keys for different purposes, and you can revoke them when you no longer need them. Each organization can have up to 500 active API keys.
 
 :::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/access-management
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/onboarding
 :::
 
 ## Required permissions

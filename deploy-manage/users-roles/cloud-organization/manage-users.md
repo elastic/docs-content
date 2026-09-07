@@ -23,7 +23,7 @@ Alternatively, [configure {{ecloud}} SAML SSO](../../../deploy-manage/users-role
 An {{ecloud}} account can belong to multiple organizations. However, the user's roles and the resources that they have access to are controlled at the organization level.
 
 :::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/access-management
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/onboarding
 :::
 
 :::{tip}

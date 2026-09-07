@@ -23,7 +23,7 @@ Built-in agents are immutable and cannot be edited. To customize agent behavior,
 Custom agents are space-aware: they are only available in the [{{kib}} space](/deploy-manage/manage-spaces.md) where they were created. In contrast, built-in agents are available across all spaces.
 
 :::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/agent-builder
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-agent-builder
 :::
 
 ## Create a custom agent
