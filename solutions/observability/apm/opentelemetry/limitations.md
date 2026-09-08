@@ -14,6 +14,19 @@ products:
 
 # OpenTelemetry limitations in Elastic APM [apm-open-telemetry-known-limitations]
 
+## Data format and compatibility with the `.apm` OTLP intake [apm-open-telemetry-data-format]
+
+When sending OTLP data to {{apm-server-or-mis}} using its built-in OTLP endpoint (the `.apm` path), your data is **translated to ECS format** before storage. This is different from the {{motlp}} and {{agent}} in OTel mode, which store data in OTel-native format.
+
+Consequences of the ECS translation:
+
+* **Custom attributes**: Unmapped span and transaction attributes are stored under `labels.*` (strings) or `numeric_labels.*` (numbers), with dots replaced by underscores. For example, `order.id` becomes `labels.order_id`. On OTel-native paths, they are stored under `attributes.order.id`, with dots preserved.
+* **Dashboards and content packs**: OpenTelemetry content packs, which provide OTel-compatible dashboards, are not applicable to ECS-translated data. Use prebuilt ECS-based integrations and dashboards, or the classic {{product.apm}} UI.
+* **Ingest pipelines**: ECS-translated data passes through {{es}} ingest pipelines in the usual way. OTel-native data bypasses ingest pipelines.
+* **EDOT SDK support**: EDOT SDKs are not supported with the {{apm-server-or-mis}} OTLP intake. Use the {{motlp}} or {{agent}} in OTel mode instead.
+
+For a detailed comparison and guidance on choosing your ingest path, refer to [How your ingest path determines the data format](opentelemetry://reference/compatibility/data-streams.md#ingest-path-data-format).
+
 ## OpenTelemetry traces [apm-open-telemetry-traces-limitations]
 
 * Traces of applications using `messaging` semantics might be wrongly displayed as `transactions` in the Applications UI, while they should be considered `spans` (see issue [#7001](https://github.com/elastic/apm-server/issues/7001)).

@@ -28,7 +28,7 @@ In the Kibana Integrations UI, search for `otel` to find and install available i
 Other Integrations which are beats-based include dashboards based on ECS data and are not compatible with OpenTelemetry semantic conventions.
 :::
 
-Elastic offers several [{{edot}}](opentelemetry://reference/index.md) distributions. Each is a customized version of an OpenTelemetry language SDK and the OpenTelemetry Collector, ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), APM Server, or directly to {{es}}.
+Elastic offers several [{{edot}}](opentelemetry://reference/index.md) distributions. Each is a customized version of an OpenTelemetry language SDK and the OpenTelemetry Collector, ready to send data to the [{{motlp}}](opentelemetry://reference/motlp.md), {{apm-server-or-mis}}, or directly to {{es}}. **The destination you choose affects the format your data is stored in.** For details, refer to [How your ingest path determines the data format](opentelemetry://reference/compatibility/data-streams.md#ingest-path-data-format).
 
 :::{include} /solutions/_snippets/edot-reference-arch.md
 :::
@@ -45,13 +45,14 @@ There are several ways to send OpenTelemetry data to Elastic. The right choice d
 
 ### Collect, process, and export data
 
-* **OTel Collector in {{agent}}** {applies_to}`stack: ga 9.2+`: The OTel Collector runs embedded inside {{agent}}, sharing a single `elastic-agent.yml` configuration file. No separate Collector installation is needed. Refer to [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md) for more information.
-* **Standalone {{agent}}**: Run {{agent}} independently as its own process. Refer to [{{agent}}](elastic-agent://reference/edot-collector/index.md) for more information.
+* **OTel Collector in {{agent}}** {applies_to}`stack: ga 9.2+`: The OTel Collector runs embedded inside {{agent}}, sharing a single `elastic-agent.yml` configuration file. No separate Collector installation is needed. Data is stored in **OTel-native format** by default. Refer to [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md) for more information.
+* **Standalone {{agent}}**: Run {{agent}} independently as its own process. Data is stored in **OTel-native format** by default. Refer to [{{agent}}](elastic-agent://reference/edot-collector/index.md) for more information.
 * **Upstream `otelcol-contrib` Collector**: Use the community-built Collector to forward data to {{agent}} or directly to {{apm-server-or-mis}} using OTLP. Useful for a vendor-neutral pipeline or fanning out to multiple observability backends, but it's community-supported only. Refer to [Contrib OpenTelemetry Collectors and language SDKs](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md) for more information.
 
 ### Send data directly
 
-* **Managed OTLP endpoint** ({{serverless-short}} and {{ech}}): Send OpenTelemetry data directly to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md) without managing your own Collector.
+* **{{motlp}}** ({{serverless-short}} and {{ech}}): Send OpenTelemetry data directly to the [{{motlp}}](opentelemetry://reference/motlp.md) without managing your own Collector. Data is stored in **OTel-native format**.
+* **{{apm-server-or-mis}} OTLP intake** (legacy): Send OTLP data directly to {{apm-server-or-mis}} using its built-in OTLP endpoint. Data is **translated to ECS format** before storage. This path is not recommended for new users, and EDOT SDKs are not supported here. For details on the format difference, refer to [How your ingest path determines the data format](opentelemetry://reference/compatibility/data-streams.md#ingest-path-data-format).
 
 ## Why use the Elastic Distributions of OpenTelemetry?
 
