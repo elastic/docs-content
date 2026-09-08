@@ -4,7 +4,7 @@ description: Migrate from classic Elastic APM agents or Beats-based data collect
 applies_to:
   stack:
   serverless:
-    observability: ga
+    observability:
   product:
     edot_collector: ga
 products:
@@ -18,11 +18,22 @@ products:
 
 This guide helps you move from classic Elastic {{product.apm}} agents, {{beats}}, or {{agent}} to OpenTelemetry-based collection with {{edot}}. Use it to replace classic {{product.apm}} agents, shift log and metric collection to OpenTelemetry, and plan for the data model changes that affect dashboards and queries.
 
-If you're setting up {{product.observability}} for the first time with OpenTelemetry, refer to [Start with OpenTelemetry](start-with-otel.md) instead.
+If you're setting up {{product.observability}} for the first time with OpenTelemetry, refer to [Start using OpenTelemetry with Elastic](start-with-otel.md) instead.
 
 ## Before you begin [switch-to-otel-before]
 
-Review what you gain, what you trade off, and how the data model changes before you replace agents or collection.
+Review the version requirements, what you gain, what you trade off, and how the data model changes before you replace agents or collection.
+
+### Version requirements [switch-to-otel-versions]
+
+EDOT SDKs and {{agent}} in OTel mode require {{stack}} 8.16 or later for basic compatibility. For a supported configuration, use:
+
+* {{stack}} 9.x, or
+* {{stack}} 8.18 or 8.19 with {{agent}} version 9.x. You have to keep your configuration aligned to your Stack version, not the {{agent}} 9.x defaults.
+
+{{serverless-full}} has no version requirements. On {{ech}}, the {{motlp}} requires a deployment version 9.0 or later.
+
+Refer to [{{agent}} and {{stack}} compatibility](opentelemetry://reference/compatibility/collectors.md) for the full matrix.
 
 ### What you gain [switch-to-otel-gain]
 
@@ -40,12 +51,12 @@ Not every feature from the classic stack is available with {{edot}} yet. Review 
 | Feature | Status | Notes |
 |---|---|---|
 | Real User Monitoring (RUM) / Browser | Preview {applies_to}`edot_browser: preview` | For production RUM, continue using the classic Elastic {{product.apm}} browser agent. |
-| Universal Profiling | Not available | Use the classic {{agent}}. |
+| Universal Profiling | Not available | Only supported with classic Elastic ingestion (using the classic {{agent}}). |
 | Span compression | Not available | |
-| Breakdown metrics | Not available | The **Service → Metrics** views that depend on these metrics won't populate. |
+| Breakdown metrics | Not available | The **Time spent by span type** chart on the transaction views doesn't populate. |
 | Managed tail-based sampling | Not available | {applies_to}`edot_collector: preview 9.2+` You can run TBS in a self-managed {{agent}} in OTel mode or any OTel-compatible Collector, with reduced metric accuracy, service map coverage, and SLO precision. Refer to [Limitations](opentelemetry://reference/compatibility/limitations.md#tail-based-sampling-tbs). |
 | Language runtime metrics | Available with changes | Metric names and attributes change. Existing dashboards built on classic metric names need updates. |
-| Central and dynamic configuration | Partial | Central configuration uses OpAMP. Changing settings at runtime is not supported. |
+| Central and dynamic configuration | Partial {applies_to}`stack: preview 9.1+` {applies_to}`serverless: unavailable` | [Central configuration](opentelemetry://reference/central-configuration.md) manages a limited set of EDOT SDK settings from {{kib}} and propagates changes at runtime through OpAMP. EDOT .NET applies changes at startup. Settings from classic {{apm-agent}} central configuration don't carry over. |
 | Centralized log parsing using ingest pipelines | Not available | Process logs in the Collector instead. Refer to [Limitations](opentelemetry://reference/compatibility/limitations.md#centralized-parsing-and-processing-of-data). |
 | Agent health and overhead metrics | Not available | Metrics such as `agent.events.*` have no equivalent. |
 
@@ -54,7 +65,7 @@ Not every feature from the classic stack is available with {{edot}} yet. Review 
 Consider waiting if:
 
 - You need production real user monitoring. EDOT Browser is in technical preview.
-- You depend on breakdown metrics to power your **Service → Metrics** views.
+- You depend on breakdown metrics to power the **Time spent by span type** chart on your transaction views.
 - You need managed tail-based sampling without additional operational complexity.
 - You have many custom dashboards or alerts built on classic {{product.apm}} field names (`labels.*`, `numeric_labels.*`) and can't absorb the query update work yet.
 
@@ -78,17 +89,23 @@ Replace each classic {{apm-agent}} with the corresponding EDOT SDK. Dedicated mi
 | Language | Migration guide | Key caveats |
 |---|---|---|
 | Java | [Migrate to EDOT Java](elastic-otel-java://reference/edot-java/migration.md) | Breakdown metrics, span compression, and remote attach not available. JVM runtime metric names changed. LDAP client instrumentation missing. Micrometer off by default. |
-| Python | [Migrate to EDOT Python](elastic-otel-python://reference/edot-python/migration.md) | Breakdown metrics and span compression not available. Custom {{aws}} Lambda layer not available. Several libraries missing (aiobotocore, Sanic, pyodbc, and others). No structlog integration. |
+| Python | [Migrate to EDOT Python](elastic-otel-python://reference/edot-python/migration.md) | Breakdown metrics and span compression not available. Custom {{aws}} Lambda layer not available. Several libraries missing (`aiobotocore`, `Sanic`, `pyodbc`, and others). No structlog integration. |
 | Node.js | [Migrate to EDOT Node.js](elastic-otel-node://reference/edot-node/migration.md) | Requires Node.js ^18.19.0 \|\| >=20.6.0 (classic agent supports >=14.17.0). No built-in {{aws}} Lambda or Azure Functions instrumentation. Span compression not available. |
-| .NET | [Migrate to EDOT .NET](elastic-otel-dotnet://reference/edot-dotnet/migration.md) | Stacktrace capture and span compression not available. Dynamic configuration not available. Central configuration available since EDOT .NET 1.4.0 (technical preview). |
+| .NET | [Migrate to EDOT .NET](elastic-otel-dotnet://reference/edot-dotnet/migration.md) | Stacktrace capture and span compression not available. Central configuration available since EDOT .NET 1.4.0; configuration changes apply at startup, not at runtime. |
 | PHP | [Migrate to EDOT PHP](elastic-otel-php://reference/edot-php/migration.md) | Span compression, breakdown metrics, `capture_errors`, and `sanitize_field_names` not available. |
 | iOS | No dedicated guide | Use the [EDOT iOS](apm-agent-ios://reference/edot-ios/index.md) setup docs to replace the classic Elastic iOS {{apm-agent}}. |
 | Android | No dedicated guide | Use the [EDOT Android](apm-agent-android://reference/edot-android/index.md) setup docs to replace the classic Elastic Android {{apm-agent}}. |
 | Browser / RUM | No dedicated guide | {applies_to}`edot_browser: preview` Use the [EDOT Browser](elastic-otel-rum-js://reference/edot-browser/index.md) setup docs. For production RUM, continue using the [classic Elastic {{product.apm}} browser agent](apm-agent-rum-js://reference/index.md). |
 
+### If you use contrib OpenTelemetry SDKs or Jaeger [switch-to-otel-upstream]
+
+If your applications already use contrib (upstream) OpenTelemetry SDKs that send data to the {{apm-server}} OTLP intake, you don't need to change your instrumentation. That intake is a legacy path: point your OTLP exporter at the {{motlp}} or an {{agent}} gateway instead, as described in [Ingestion path change](#switch-to-otel-ingestion). You can optionally move to the corresponding EDOT SDK to get Elastic support and opinionated defaults.
+
+If you send traces through the deprecated [Jaeger integration](../../apm/ingest/jaeger.md), migrate your applications to OpenTelemetry SDKs. Jaeger clients are deprecated upstream in favor of OpenTelemetry.
+
 ### Configuration changes that apply to all languages [switch-to-otel-common-config]
 
-Regardless of language, every EDOT SDK uses the same OpenTelemetry environment variables to replace the classic {{apm-agent}}'s connection and identity settings.
+EDOT SDKs use standard OpenTelemetry environment variables to replace the classic {{apm-agent}}'s connection and identity settings. Most mappings are the same in every language. Exceptions are called out in the table:
 
 | Classic {{apm-agent}} setting | OpenTelemetry equivalent |
 |---|---|
@@ -101,7 +118,7 @@ Regardless of language, every EDOT SDK uses the same OpenTelemetry environment v
 | `global_labels` | `OTEL_RESOURCE_ATTRIBUTES=key1=value1,key2=value2` |
 | `hostname` | `OTEL_RESOURCE_ATTRIBUTES=host.name=<hostname>` |
 | `service_node_name` / `serviceNodeName` | `OTEL_RESOURCE_ATTRIBUTES=service.instance.id=<id>` |
-| `enabled` / `active` | `OTEL_SDK_DISABLED` — set to `true` to turn the SDK off (`enabled=false` / `active=false`) |
+| `enabled` / `active` | `OTEL_SDK_DISABLED` — set to `true` to turn the SDK off (`enabled=false` / `active=false`). Applies to Python and Node.js. Java uses `OTEL_JAVAAGENT_ENABLED=false`; PHP uses `OTEL_PHP_ENABLED=false`. |
 
 For detailed configuration mappings, refer to your language's migration guide.
 
@@ -109,8 +126,8 @@ For detailed configuration mappings, refer to your language's migration guide.
 
 Classic {{product.apm}} agents send data directly to {{apm-server}}. EDOT SDKs use OTLP and must send data to one of these endpoints:
 
-- **{{serverless-full}}**: Set `OTEL_EXPORTER_OTLP_ENDPOINT` to the Managed OTLP endpoint for your {{serverless-short}} project. Refer to [{{motlp}}](opentelemetry://reference/motlp.md) for endpoint details.
-- **{{ech}}**: Set `OTEL_EXPORTER_OTLP_ENDPOINT` to the Managed OTLP endpoint for your deployment. {{agent}} is not required for application telemetry. Refer to [{{motlp}}](opentelemetry://reference/motlp.md) for endpoint details.
+- **{{serverless-full}}**: Set `OTEL_EXPORTER_OTLP_ENDPOINT` to the Managed OTLP endpoint for your {{serverless-short}} project. You can copy the endpoint and generate a pre-configured API key from your project's **Add data** wizard. Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for details.
+- **{{ech}}**: Set `OTEL_EXPORTER_OTLP_ENDPOINT` to the Managed OTLP endpoint for your deployment (requires version 9.0 or later). {{agent}} is not required for application telemetry. You can copy the endpoint from the **Application endpoints, cluster and component IDs** section of your deployment in the {{ecloud}} Console. Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for details.
 - **Self-managed, ECE, or ECK**: Deploy {{agent}} in OTel mode as a [gateway](elastic-agent://reference/edot-collector/modes.md), then set `OTEL_EXPORTER_OTLP_ENDPOINT` to the gateway's OTLP receiver address.
 
 :::{important}
@@ -121,7 +138,7 @@ If you previously used unmapped resource attributes that {{apm-server}} stored u
 
 ## Migrate log and metric collection [switch-to-otel-collection]
 
-How you switch logs and metrics depends on whether you collect with {{fleet}}-managed {{agent}}, {{beats}}, or {{agent}} in OTel mode.
+How you switch logs and metrics depends on whether you collect with {{fleet}}-managed {{agent}}, standalone {{agent}}, {{beats}}, or {{agent}} in OTel mode.
 
 ### If you use {{agent}} ({{fleet}}-managed) [switch-to-otel-fleet]
 
@@ -141,7 +158,9 @@ For OTel-native collection through {{agent}} integrations (preview), refer to [C
 
 {{beats}} ({{filebeat}}, {{metricbeat}}, and others) are not replaced by {{agent}} in OTel mode in a single step. The recommended path is to migrate from {{beats}} to {{fleet}}-managed {{agent}}, which then uses Beat receivers internally. This preserves your existing data structure and integrations while positioning you to adopt OTel-native receivers incrementally.
 
-If you're on standalone {{agent}} and want to switch to OTel-native receivers, refer to [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md) for standalone configuration options.
+### If you use standalone {{agent}} [switch-to-otel-standalone]
+
+If you run standalone {{agent}} (not {{fleet}}-managed) and want to switch to OTel-native receivers, refer to [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md) for standalone configuration options. You can migrate incrementally: a single `elastic-agent.yml` can run your existing Beat-based inputs alongside OTel-native pipelines.
 
 ### If you already run {{agent}} in OTel mode [switch-to-otel-collector-migration]
 
@@ -151,13 +170,20 @@ If you're already running {{agent}} in OTel mode (formerly the standalone EDOT C
 
 After migration, confirm that data is flowing correctly and that key views in {{kib}} are working as expected.
 
+If a migrated service keeps the same service name (`OTEL_SERVICE_NAME` matching the previous `service.name`), it appears as the same service in the Applications UI, and its history spans both instrumentation periods.
+
+:::{note}
+:applies_to: {"stack": "ga 9.3+", "serverless": "ga"}
+The service's **Metrics** tab shows callouts when it detects an instrumentation change or overlapping classic and OpenTelemetry data in the selected time range. Refer to [Instrumentation changes during migration](../../apm/metrics-ui.md#instrumentation-change).
+:::
+
 :::::{stepper}
 
 ::::{step} Check signal ingestion
 
-1. In {{kib}}, go to **{{product.observability}} → Applications → Services** (or use the global search to find **Services**) and confirm your service appears.
+1. In {{kib}}, go to **{{product.observability}} → Applications → Service inventory** (or use the global search to find **Service inventory**) and confirm your service appears.
 2. Open the service and verify that traces, metrics, and logs are present in each tab.
-3. Check the **Service** → **Metrics** tab for runtime metrics. Metric names have changed. For example, for Java, `jvm.memory.heap.used` is now `jvm.memory.used` with a `jvm.memory.type = heap` attribute filter.
+3. Check the service's **Metrics** tab for runtime metrics. Metric names have changed. For example, for Java, `jvm.memory.heap.used` is now `jvm.memory.used` with a `jvm.memory.type = heap` attribute filter.
 
 ::::
 
@@ -174,6 +200,8 @@ If you have alerts or SLOs based on request volume, error rates, or metric thres
 ::::
 
 :::::
+
+If data is missing, refer to [Troubleshoot {{edot}}](/troubleshoot/ingest/opentelemetry/index.md).
 
 ## After the migration [switch-to-otel-after]
 
@@ -217,6 +245,12 @@ If you were previously sending OTel data directly to {{apm-server}} (not support
 
 ::::
 
+::::{step} Decommission {{apm-server}} when nothing depends on it
+
+Keep {{apm-server}} or the {{fleet}}-managed {{product.apm}} integration running while any classic {{apm-agent}} still sends data to it, including the classic browser agent if you kept it for production RUM. After the last classic agent is gone, remove the {{product.apm}} integration from your {{fleet}} policies or shut down your standalone {{apm-server}}.
+
+::::
+
 :::::
 
 ## Related pages [switch-to-otel-related]
@@ -226,4 +260,5 @@ If you were previously sending OTel data directly to {{apm-server}} (not support
 - [OpenTelemetry data streams compared to classic {{product.apm}}](opentelemetry://reference/compatibility/data-streams.md) — how field names and storage structures differ
 - [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md) — {{fleet}}-managed and standalone OTel collection architecture
 - [{{agent}} in OpenTelemetry mode](elastic-agent://reference/edot-collector/index.md) — setup and configuration
-- [Managed OTLP endpoint](opentelemetry://reference/motlp.md) — {{serverless-short}} and {{ech}} ingestion reference
+- [Managed OTLP endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) — {{serverless-short}} and {{ech}} ingestion reference
+- [Troubleshoot {{edot}}](/troubleshoot/ingest/opentelemetry/index.md) — troubleshooting for EDOT SDKs and {{agent}} in OTel mode
