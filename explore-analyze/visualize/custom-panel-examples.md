@@ -14,7 +14,7 @@ Each example on this page shows what a [custom panel](custom-panels.md) can do t
 
 To try an example, [add a custom panel from the dashboard](custom-panels.md#custom-panels-create-from-dashboard), paste the query into **Data source (ES|QL)** and the template into **Template (HTML)**, then select **Run preview**. The queries use the [sample data sets](/manage-data/ingest/sample-data.md) named in each example. The screenshots use the dark theme. Templates that use the theme properties render in the light theme as well.
 
-You can change any template, whether generated or hand-written, as long as it follows the [LiquidJS syntax](https://liquidjs.com/tutorials/intro-to-liquid.html). Edit it in the flyout, or ask {{agent-builder}} to refine it. Templates that use the `--cc-color-*` theme properties follow the {{kib}} theme.
+You can change any template, whether generated or hand-written, as long as it follows the [LiquidJS syntax](https://liquidjs.com/tutorials/intro-to-liquid.html). Edit it in the flyout, or ask {{agent-builder}} to refine it. Templates that use the [theme CSS properties](custom-panels.md#custom-panels-theme) follow the {{kib}} theme.
 
 ## Sankey diagram [custom-panel-examples-sankey]
 

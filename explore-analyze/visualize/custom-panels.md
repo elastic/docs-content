@@ -158,8 +158,8 @@ The following template renders one bar per row for a query that returns `categor
 
 ```html
 <style>
-  .row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
-  .bar { height: 16px; background: var(--cc-color-primary); }
+  .row { display: flex; align-items: center; gap: var(--cc-space-s); margin-bottom: var(--cc-space-xs); }
+  .bar { height: var(--cc-space-l); background: var(--cc-color-primary); }
 </style>
 {% if rows.size == 0 %}<p>No data for the selected time range.</p>{% endif %}
 {% for row in rows %}
@@ -181,19 +181,34 @@ For complete templates with their queries and screenshots, refer to [Custom pane
 
 ### Match the {{kib}} theme [custom-panels-theme]
 
-{{kib}} injects the following CSS custom properties into every custom panel. Use them instead of hard-coded colors so the panel follows the light or dark theme without reloading its data.
+{{kib}} injects the following CSS custom properties into every custom panel. Use them instead of hard-coded colors, spacing, fonts, and motion so the panel follows the light or dark theme without reloading its data.
+
+{{kib}} also applies a baseline body style: the theme font, padding, text color, and background. Your CSS can override that baseline, except the body background, which always follows the theme. If the browser requests reduced motion, the panel disables animations and transitions.
 
 | Property | Use for |
 | --- | --- |
 | `--cc-color-text` | Text |
 | `--cc-color-background` | Panel background |
 | `--cc-color-surface` | Card and container backgrounds |
-| `--cc-color-primary` | Primary accent |
-| `--cc-color-accent` | Secondary accent |
-| `--cc-color-accent-2` | Additional accent |
+| `--cc-color-primary` | Primary accent for UI emphasis |
+| `--cc-color-accent` | Secondary accent for UI emphasis |
+| `--cc-color-accent-2` | Additional accent for UI emphasis |
 | `--cc-color-warning` | Warning states |
 | `--cc-color-danger` | Error and danger states |
 | `--cc-color-border` | Borders |
+| `--cc-space-xs` | Extra-small spacing |
+| `--cc-space-s` | Small spacing |
+| `--cc-space-m` | Medium spacing |
+| `--cc-space-l` | Large spacing |
+| `--cc-space-xl` | Extra-large spacing |
+| `--cc-radius` | Corner rounding for cards and containers |
+| `--cc-radius-s` | Corner rounding for small elements such as badges |
+| `--cc-font-family` | Font family |
+| `--cc-motion-fast` | Fast animation duration |
+| `--cc-motion-normal` | Normal animation duration |
+| `--cc-motion-slow` | Slow animation duration |
+| `--cc-ease` | Animation easing |
+| `--cc-vis-0` to `--cc-vis-9` | Chart series colors, in order. This is the colorblind-safe visualization palette. Don't use the accent colors for data series. |
 
 There is no dedicated property for a healthy or success state. For a three-state status board, pick one of the accent properties for the healthy state, or set your own color.
 
