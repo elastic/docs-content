@@ -1,7 +1,7 @@
 ---
 navigation_title: Get started
 description: >-
-  Create an {{es}} {{vectordb}} project on Elastic Cloud Serverless,
+  Create an Elasticseaarch Vector Database project on Elastic Cloud Serverless,
   ingest embeddings, and run your first vector or semantic searches.
 applies_to:
   vectordb: ga

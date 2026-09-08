@@ -6,7 +6,7 @@ products:
   - id: cloud-serverless
   - id: serverless-vector-database
 description: >-
-  Learn how costs for {{es}} {{vectordb}} Serverless projects
+  Learn how costs for Elasticsearch Vector Database Serverless projects
   are calculated across storage, search, ingest, and infrastructure.
 ---
 

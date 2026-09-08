@@ -4,7 +4,7 @@ applies_to:
   serverless: ga
   stack: unavailable
 description: >-
-  The {{es}} {{vectordb}} project type on Elastic Cloud Serverless is
+  The Elasticsearch Vector Database project type on Elastic Cloud Serverless is
   optimized for vector workloads, with vector-tuned defaults, hardware profile,
   inference access, and pricing. It supports semantic and hybrid search.
 products:
