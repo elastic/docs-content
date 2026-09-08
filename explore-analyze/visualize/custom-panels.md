@@ -202,6 +202,7 @@ There is no dedicated property for a healthy or success state. For a three-state
 When a custom panel has a query, it responds to filters and options active on the dashboard like other {{esql}} panels:
 
 - The time filter. Refer to [Connect the panel to the time filter](#custom-panels-time-filter).
+- A custom time range for this panel. Hover over the panel, select {icon}`gear` **Settings**, and turn on **Apply custom time range**. For the full procedure, refer to [Apply a custom time range to a panel](/explore-analyze/dashboards/using.md#_apply_a_custom_time_range_to_a_panel).
 - The query bar and filter pills. The query fields are also available for suggestions in the query bar and filter editor.
 - [Controls](dashboard-controls.md), including [{{esql}} variable controls](add-variable-controls.md).
 - [Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle) for approximate `STATS` results.
@@ -210,7 +211,7 @@ A panel without a query renders the same content regardless of the dashboard sta
 
 ### Connect the panel to the time filter [custom-panels-time-filter]
 
-When the queried indices have a field named `@timestamp`, the dashboard time filter applies to the query automatically. For any other time field, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters so the query follows the time filter. When a query has neither, the **Data source (ES|QL)** section of the flyout shows a hint. The following query follows the time filter through `my_date_field`:
+When the queried indices have a field named `@timestamp`, the dashboard time filter applies to the query automatically. For any other time field, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters so the query follows the time filter. If you generate the query with chat, the agent can include these parameters. When a query has neither, the **Data source (ES|QL)** section of the flyout shows a hint. The following query follows the time filter through `my_date_field`:
 
 ```esql
 FROM my-index
