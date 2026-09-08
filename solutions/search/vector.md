@@ -16,6 +16,9 @@ products:
 
 Vector search stores embeddings and retrieves the most similar vectors to a query. {{es}} functions as a [vector database](#vector-database): it scales embedding storage and similarity search while combining that with full-text search, filters, and aggregations in one engine. This page explains the core concepts and terminology you need before working with vector search in {{es}}.
 
+:::{tip}
+New to vector search? Start with [{{es}} vector and full-text search in 10 minutes](/solutions/vector-database/vector-full-text-search.md), which uses a [Vector Database project](/solutions/vector-database.md) and the managed `semantic_text` workflow.
+
 ## Get started with vector search [vector-search-get-started]
 
 - To select a {{serverless-short}} project type, [compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type).
