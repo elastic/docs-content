@@ -53,6 +53,9 @@ Following is the full list of available packs containing {{stack}} versions. Not
 | Stack pack download link | Minimum required ECE version |
 | --- | --- |
 | [{{es}}, {{kib}}, and APM stack pack: 9.5.3](https://download.elastic.co/cloud-enterprise/versions/9.5.3.zip) | ECE 4.0.0 | Kibana requires 2GB instance
+| {{es}}, {{kib}}, and APM stack pack: 9.5.2 | ECE 4.0.0 | Unavailable due to a known issue. Review [this KB article](https://support.elastic.co/knowledge/c56aad67). Kibana requires 2GB instance
+| {{es}}, {{kib}}, and APM stack pack: 9.5.1 | ECE 4.0.0 | Unavailable due to a known issue. Review [this KB article](https://support.elastic.co/knowledge/c56aad67). Kibana requires 2GB instance
+| {{es}}, {{kib}}, and APM stack pack: 9.5.0 | ECE 4.0.0 | Unavailable due to a known issue. Review [this KB article](https://support.elastic.co/knowledge/c56aad67). Kibana requires 2GB instance
 | [{{es}}, {{kib}}, and APM stack pack: 9.4.6](https://download.elastic.co/cloud-enterprise/versions/9.4.6.zip) | ECE 4.0.0 | Kibana requires 2GB instance
 | [{{es}}, {{kib}}, and APM stack pack: 9.4.5](https://download.elastic.co/cloud-enterprise/versions/9.4.5.zip) | ECE 4.0.0 | Kibana requires 2GB instance
 | [{{es}}, {{kib}}, and APM stack pack: 9.4.4](https://download.elastic.co/cloud-enterprise/versions/9.4.4.zip) | ECE 4.0.0 | Kibana requires 2GB instance
