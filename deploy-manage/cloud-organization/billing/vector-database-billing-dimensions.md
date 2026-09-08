@@ -21,9 +21,7 @@ Your monthly bill is calculated based on these components:
 * **Ingest** - Measured by the volume of data you ingest into your project over the course of a month, in GB.
 * **Infrastructure fee** - A recurring project fee. Usage is metered by the hour for as long as the project exists, so a full month looks like a flat monthly charge and partial months are pro-rated.
 
-For current rates, refer to the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless) or the [{{serverless-full}} pricing](https://www.elastic.co/pricing/serverless) pages.
-
-<!-- Fact-check: add a dedicated {{vectordb}} pricing URL when marketing publishes one. -->
+For current rates, refer to the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless) or the [{{serverless-full}} pricing](https://cloud.elastic.co/pricing/serverless?s=vectordb) pages.
 
 ## Storage [vector-database-billing-storage]
 
