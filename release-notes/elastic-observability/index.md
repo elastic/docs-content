@@ -21,6 +21,21 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+
+## 9.5.3 [elastic-observability-9.5.3-release-notes]
+
+
+### Features and enhancements [elastic-observability-9.5.3-features-enhancements]
+* Adds a confirmation modal in Synthetics **Alerting defaults** settings when disabling an active default status or TLS rule. Custom synthetics rules are not affected [#287914]({{kib-pull}}287914).
+
+### Fixes [elastic-observability-9.5.3-fixes]
+* Fixes SLO dashboard embeddable panels (**SLO Overview**, **SLO Alerts**, **Error Budget**, and **Burn Rate**) not rendering when the `observability:enableInspectEsQueries` advanced setting is enabled or when {{kib}} runs in dev mode [#286626]({{kib-pull}}286626).
+* Fixes a 500 error when hovering over AWS RDS instances in the **Infrastructure Inventory** map tooltip, caused by unquoted ARN identifiers containing `:` characters being misinterpreted as KQL field-value separators [#288209]({{kib-pull}}288209).
+* Relabels the top-level **Alerting** privilege section in **Roles** to **Alerting V2** and marks each Alerting V2 sub-privilege as experimental [#288163]({{kib-pull}}288163).
+* Warns in Synthetics when a private location's {{agent}} version predates Maintenance Window support (8.19.x), so operators know monitors on that location will not honor active maintenance windows [#285327]({{kib-pull}}285327).
+* Fixes the Agent Builder research agent re-asking clarifying questions that the user had already answered earlier in the same session [#284800]({{kib-pull}}284800).
+* Fixes Synthetics global parameters shared across all spaces being dropped from private location monitor configurations during all-spaces sync [#282575]({{kib-pull}}282575).
+
 ## 9.5.2 [elastic-observability-9.5.2-release-notes]
 
 ### Fixes [elastic-observability-9.5.2-fixes]
