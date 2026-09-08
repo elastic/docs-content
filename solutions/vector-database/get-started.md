@@ -14,8 +14,7 @@ products:
 
 The {{es}} {{vectordb}} project type on {{serverless-full}} is built for AI-powered vector retrieval. Use this guide to create a project and learn about the different methods you can ingest embeddings and run search queries.
 
-<!-- TODO: After https://github.com/elastic/docs-content/pull/7923 merges, replace the dummy link below with /solutions/vector-database/vector-full-text-search.md -->
-To try a hands-on tutorial where you connect a client, index sample data, and run semantic, hybrid, and ES|QL searches, refer to [Elasticsearch vector and full-text search in 10 minutes](https://github.com/solutions/vector-database/get-started.md).
+To try a hands-on tutorial where you connect a client, index sample data, and run semantic, hybrid, and ES|QL searches, refer to [](/solutions/vector-database/vector-full-text-search.md).
 
 :::{note}
 Not sure whether this project type is right for you? Refer to [When to use this project type](/solutions/vector-database.md#when-to-use-this-project-type).
@@ -55,8 +54,7 @@ The following setup guides are available in {{kib}}:
 | Generate embeddings from your content | You want {{es}} to create embeddings for you | Ingest content into a `semantic_text` field, then run a semantic or hybrid query |
 | Store your existing embeddings | You already have vectors from your own model | Index pre-generated embeddings into a `dense_vector` field, then run a semantic or hybrid query |
 
-<!-- TODO: After https://github.com/elastic/docs-content/pull/7923 merges, replace the dummy link below with /solutions/vector-database/vector-full-text-search.md -->
-Alternatively, you can also use the [Elasticsearch vector and full-text search in 10 minutes](https://github.com/solutions/vector-database/get-started.md) quickstart to connect a client, index sample data, and run semantic, hybrid, and ES|QL searches.
+Alternatively, you can also use the [](/solutions/vector-database/vector-full-text-search.md) quickstart to connect a client, index sample data, and run semantic, hybrid, and ES|QL searches.
 
 You can also skip the setup guide and continue with the steps below.
 :::::
@@ -68,9 +66,7 @@ Use the approach that matches how you create embeddings.
 You can generate embeddings as part of the ingestion workflow instead of creating them in advance. Choose the field type that matches your content:
 
 * **Text-only content:** Map the target field as [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). When you ingest documents, {{es}} uses the configured {{infer}} endpoint to generate and store embeddings automatically.
-  <!-- TODO: After https://github.com/elastic/docs-content/pull/7923 merges, replace the dummy link below with /solutions/vector-database/vector-full-text-search.md -->
-
-  To walk through this workflow, follow [Elasticsearch vector and full-text search in 10 minutes](https://github.com/solutions/vector-database/vector-full-text-search.md).
+  To walk through this workflow, follow [](/solutions/vector-database/vector-full-text-search.md).
 * **Multimodal content:** Map the target field as [`semantic`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md). Use this field type when you need to search across text, images, or other media with a multimodal model.
   To walk through this workflow, follow [Tutorial: Build multimodal search with a `semantic` field](/solutions/search/multimodal-search/multimodal-search-tutorial.md).
 

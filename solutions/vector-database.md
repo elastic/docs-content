@@ -77,8 +77,9 @@ Choose the [{{es}} project type](/solutions/elasticsearch-solution-project.md) w
 
 ## Get started
 
-<!-- TODO: After https://github.com/elastic/docs-content/pull/7923 merges, replace the dummy link below with /solutions/vector-database/vector-full-text-search.md -->
-Ready to try the {{vectordb}} project type? Follow [Get started](https://github.com/solutions/vector-database/get-started.md) to create a project and learn about the different methods you can ingest embeddings and run search queries.
+Ready to try the {{vectordb}} project type? For a hands-on, step-by-step walkthrough with a client, sample data, and semantic, hybrid, and ES|QL searches, follow [](/solutions/vector-database/vector-full-text-search.md).
+
+For an overview of creating a project and the ingest and search options available, refer to [](/solutions/vector-database/get-started.md).
 
 ## Learn more about using vector search
 
