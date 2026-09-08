@@ -160,7 +160,7 @@ Monitors that run frequently resolve on their own, since their data streams hit 
 To fix this, manually roll over the affected data streams:
 
 1. Identify all Synthetics related data streams: `GET /_data_stream/synthetics-*?filter_path=data_streams.name`.
-2. Rollover each one of them with: `POST <data stream name>/_rollover`
+2. Rollover each one of them with: `POST <data stream name>/_rollover`.
  
 
 
