@@ -200,7 +200,7 @@ When closing alerts, you can specify a reason:
 
 ::::{tip}
 :applies_to: {stack: ga 9.4+, serverless: ga}
-You can add your own closing reason options by updating the `securitySolution:alertCloseReasons` advanced setting. Refer to [Add custom alert closing reasons](/solutions/security/get-started/configure-advanced-settings.md#custom-alert-closing-reasons) for more information.
+You can add your own closing reason options by updating the [`securitySolution:alertCloseReasons`](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting.
 ::::
 
 The closing reason is stored in `kibana.alert.workflow_reason` and can be used for filtering. Reopening an alert removes this field.
@@ -254,7 +254,7 @@ Tags help organize alerts into filterable categories.
 | Tag from flyout | **Take action** → **Apply alert tags** |
 | Filter by tag | KQL: `kibana.alert.workflow_tags: "False Positive"` |
 | Show tags column | **Fields** → add `kibana.alert.workflow_tags` |
-| Manage tag options | [Configure `securitySolution:alertTags`](/solutions/security/get-started/configure-advanced-settings.md#manage-alert-tags) |
+| Manage tag options | [Configure `securitySolution:alertTags`](kibana://reference/advanced-settings.md#kibana-siem-settings) |
 
 
 ### Assign users to alerts [assign-users-to-alerts]

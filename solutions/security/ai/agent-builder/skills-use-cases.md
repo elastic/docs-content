@@ -153,7 +153,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-**Enable:** `attack-discovery-generator` (requires [`securitySolution:enableAttackDiscoveryWorkflows`](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows))
+**Enable:** `attack-discovery-generator` (requires [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://reference/advanced-settings.md#kibana-siem-settings))
 
 Use this skill when you are investigating in chat and want {{agent-builder}} to run Attack Discovery as part of answering you. The skill gathers and cross-checks evidence from other Security skills, then runs the same Attack Discovery analysis used by manual, scheduled, and workflow triggers. Chat runs stay in the current conversation. For the full conversational flow, including in-chat reports, detection gap closure, and privacy, refer to [Run Attack Discovery from {{agent-builder}}](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md).
 

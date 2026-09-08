@@ -14,13 +14,16 @@ products:
 ---
 # Vector search in {{es}}
 
-:::{tip}
-New to semantic search? Start with the [semantic search quickstart](get-started/semantic-search.md), which uses the managed `semantic_text` workflow.
-
-For common vector search use cases and how to apply them, refer to [Vector search use cases](vector/vector-search-use-cases.md).
-:::
-
 Vector search stores embeddings and retrieves the most similar vectors to a query. {{es}} functions as a [vector database](#vector-database): it scales embedding storage and similarity search while combining that with full-text search, filters, and aggregations in one engine. This page explains the core concepts and terminology you need before working with vector search in {{es}}.
+
+:::{tip}
+New to vector search? Start with [{{es}} vector and full-text search in 10 minutes](/solutions/vector-database/vector-full-text-search.md), which uses a [Vector Database project](/solutions/vector-database.md) and the managed `semantic_text` workflow.
+
+## Get started with vector search [vector-search-get-started]
+
+- To select a {{serverless-short}} project type, [compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type).
+- If you're new to semantic search, start with the [semantic search quickstart](get-started/semantic-search.md), which uses the managed `semantic_text` workflow.
+- To explore common applications and implementation approaches, refer to [Vector search use cases](vector/vector-search-use-cases.md).
 
 ## Core concepts [vectors-and-embeddings]
 
@@ -195,6 +198,7 @@ These guides provide more direct or customizable approaches to working with vect
 
 - [kNN search in Elasticsearch](vector/knn.md): Perform vector similarity search using the `dense_vector` field type and k-nearest neighbor queries.
 - [Bring your own dense vectors](vector/bring-own-vectors.md): Use this if you already have embeddings and want to index and search them in Elasticsearch.
+- {applies_to}`stack: preview 9.3, ga 9.4+` {applies_to}`serverless: unavailable` [GPU accelerated vector indexing](vector/gpu-vector-indexing.md): Speed up HNSW index construction on nodes with compatible NVIDIA GPUs.
 - [Sparse vector search in Elasticsearch](vector/sparse-vector.md): Perform semantic search using sparse vectors with the ELSER model and the `sparse_vector` field type.
 
 
