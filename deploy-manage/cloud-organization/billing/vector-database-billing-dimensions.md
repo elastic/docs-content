@@ -1,7 +1,7 @@
 ---
 navigation_title: "{{vectordb}} projects"
 applies_to:
-  serverless: ga
+  vectordb: ga
 products:
   - id: cloud-serverless
   - id: serverless-vector-database

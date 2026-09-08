@@ -4,7 +4,7 @@ description: >-
   Create an {{es}} {{vectordb}} project on Elastic Cloud Serverless,
   ingest embeddings, and run your first vector or semantic searches.
 applies_to:
-  serverless: ga
+  vectordb: ga
 products:
   - id: cloud-serverless
   - id: serverless-vector-database

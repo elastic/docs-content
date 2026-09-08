@@ -2,6 +2,7 @@
 navigation_title: "{{vectordb}} project"
 applies_to:
   serverless: ga
+  stack: unavailable
 description: >-
   The {{es}} {{vectordb}} project type on Elastic Cloud Serverless is
   optimized for vector workloads, with vector-tuned defaults, hardware profile,
