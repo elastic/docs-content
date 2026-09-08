@@ -244,8 +244,6 @@ Red Hat Enterprise Linux 8, 9, and 10, along with Rocky Linux 8 and 9, run {{ece
 
 16. As a sudoers user, add the following two lines to section `[storage]` in the file `/etc/containers/storage.conf`. Verify that those parameters are only defined once. Either remove or comment out potentially existing parameters.
 
-    If `/etc/containers/storage.conf` does not exist, copy it from `/usr/share/containers/storage.conf` first (for example, `sudo cp /usr/share/containers/storage.conf /etc/containers/storage.conf`). On RHEL 10, this file is typically not present in `/etc/containers/` until you copy it after installing Podman.
-
     ::::{note}
     Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Otherwise the ECE installer script needs to be adjusted.
     ::::
