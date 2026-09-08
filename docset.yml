@@ -14,28 +14,51 @@ api:
     - spec: elasticsearch.json
       product: elasticsearch
       repository: elastic/elasticsearch-specification
+      catalog:
+        categories:
+          - self
+          - ece
+          - ess
   elasticsearch-serverless:
     - spec: elasticsearch-serverless.json
       product: serverless-elasticsearch
       repository: elastic/elasticsearch-specification
+      catalog:
+        categories:
+          - serverless
   kibana:
     - spec: kibana.yaml
       product: kibana
       repository: elastic/kibana
       children:
         - file: kibana-api-overview.md
+      catalog:
+        categories:
+          - self
+          - ece
+          - ess
   kibana-serverless:
     - spec: kibana-serverless.yaml
       product: kibana
       repository: elastic/kibana
+      catalog:
+        categories:
+          - serverless
   cloud-connect:
     - spec: cloud-connect.yml
       product: ess
       repository: elastic/cloud-connected-api
+      catalog:
+        categories:
+          - self
+          - ece
   cloud-serverless:
     - spec: elastic-cloud-serverless.yml
       product: cloud-serverless
       repository: elastic/serverless-api-specification
+      catalog:
+        categories:
+          - serverless
 
 cta:
   monitor-kubernetes:
