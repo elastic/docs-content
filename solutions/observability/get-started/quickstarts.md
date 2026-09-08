@@ -18,7 +18,7 @@ Our quickstarts reduce your time-to-value by offering a fast path to ingest and 
 * Auto-detection of logs and metrics for monitoring hosts
 * Quick access to related dashboards and visualizations
 
-## {{edot}} quickstarts (recommended) [_otel-quickstarts]
+## {{edot}} quickstarts [_otel-quickstarts]
 
 The recommended path for new setups. Select a guide based on your deployment model and environment:
 
