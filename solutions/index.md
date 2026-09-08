@@ -21,7 +21,7 @@ Elastic helps you build applications for three main use cases: search, observabi
 
 ## Choose your path
 
-Use the table below to choose a solution or project type when you need solution UIs or a dedicated {{serverless-full}} project type. Core {{es}} search features that apply across deployment types are covered in [](/solutions/search.md).
+Use the following table to choose a solution or project type when you need solution UIs or a dedicated {{serverless-full}} project type. Core {{es}} search features that apply across deployment types are covered in [](/solutions/search.md).
 
 | Your use case | What to use | Description |
 | --- | --- | --- |

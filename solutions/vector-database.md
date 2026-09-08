@@ -10,6 +10,7 @@ description: >-
 products:
   - id: cloud-serverless
   - id: serverless-vector-database
+type: overview
 ---
 
 # {{es}} {{vectordb}} project overview
