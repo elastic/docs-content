@@ -81,6 +81,7 @@ For supported Python versions and other requirements, refer to the [Python clien
 ```bash
 npm install @elastic/elasticsearch
 npm install --save-dev typescript tsx
+npm pkg set type=module
 ```
 
 For supported Node.js versions and other requirements, refer to the [JavaScript client documentation](elasticsearch-js://reference/index.md).
@@ -223,7 +224,11 @@ es = Elasticsearch::Client.new(
 :sync: csharp
 
 ```csharp
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Elastic.Clients.Elasticsearch;
+using Elastic.Clients.Elasticsearch.Core.Bulk;
+using Elastic.Clients.Elasticsearch.Esql;
 using Elastic.Transport;
 
 var url = Environment.GetEnvironmentVariable("ES_URL")
@@ -244,7 +249,17 @@ var es = new ElasticsearchClient(settings);
 ```java
 package quickstart;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
+import co.elastic.clients.elasticsearch._types.Refresh;
+import co.elastic.clients.elasticsearch.core.BulkRequest;
+import co.elastic.clients.elasticsearch.core.SearchResponse;
+import co.elastic.clients.elasticsearch.core.search.Hit;
+import co.elastic.clients.elasticsearch.esql.EsqlFormat;
+import co.elastic.clients.transport.endpoints.BinaryResponse;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -837,6 +852,7 @@ for (Book book : books) {
 }
 
 es.bulk(bulk.build());
+es.close();
 ```
 
 ::::
@@ -1113,6 +1129,8 @@ SearchResponse<Book> response = es.search(s -> s
 for (Hit<Book> hit : response.hits().hits()) {
     System.out.println(hit.score() + " " + hit.source().title());
 }
+
+es.close();
 ```
 
 ::::
@@ -1391,6 +1409,9 @@ foreach (var hit in response.Hits)
     Console.WriteLine($"{hit.Score} {hit.Source?.Title}");
 }
 
+public record SearchBook(
+    [property: JsonPropertyName("title")] string Title
+);
 ```
 
 1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
@@ -1433,6 +1454,8 @@ SearchResponse<Book> response = es.search(s -> s
 for (Hit<Book> hit : response.hits().hits()) {
     System.out.println(hit.score() + " " + hit.source().title());
 }
+
+es.close();
 ```
 
 1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
@@ -1715,6 +1738,8 @@ try (BufferedReader reader = new BufferedReader(
         System.out.println(values[0] + "s: " + values[1]);
     });
 }
+
+es.close();
 ```
 
 ::::
