@@ -12,14 +12,16 @@ products:
 
 # Configure a RHEL host [ece-configure-hosts-rhel-centos]
 
-Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (ECE) on Podman rather than Docker. Use these steps to install and configure Podman, and to apply the SELinux, XFS, and kernel tuning that ECE expects on RHEL-compatible distributions.
+Red Hat Enterprise Linux 8, 9, and 10, along with Rocky Linux 8 and 9, run {{ece}} (ECE) on Podman rather than Docker. Use these steps to install and configure Podman, and to apply the SELinux, XFS, and kernel tuning that ECE expects on RHEL-compatible distributions.
 
 * [Prerequisites](#ece-prerequisites-rhel8)
 * [Install Podman and configure the host](#ece-configure-hosts-rhel8-podman)
 
 ## Prerequisites [ece-prerequisites-rhel8]
 
-* Follow your internal guidelines to create a RHEL 8 (the version must be >= 8.5), RHEL 9, Rocky Linux 8, or Rocky Linux 9 server or VM in your environment.
+* Follow your internal guidelines to create a RHEL 8 (the version must be >= 8.5), RHEL 9, RHEL 10, Rocky Linux 8, or Rocky Linux 9 server or VM in your environment.
+
+    {applies_to}`ece: ga 4.2` RHEL 10 is supported with Podman 5 only. Do not install Podman 4 on RHEL 10, and do not follow the RHEL 9 CNI networking steps on RHEL 10.
 
 * Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) for a list of ports that need to be open. The technical configuration depends on the underlying infrastructure. For example, for AWS, allowing traffic between hosts is implemented using security groups.
 
@@ -46,6 +48,7 @@ Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (E
     sudo dnf -y install containernetworking-plugins
     ```
 
+    Do not install `containernetworking-plugins` on RHEL 10. That package is not available, and ECE on RHEL 10 uses Podman's default Netavark backend instead of CNI.
     ::::
 
 2. Remove Docker and previously installed Podman packages (if previously installed).
@@ -74,6 +77,11 @@ Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (E
         ```
 
 4. Install Podman:
+
+    ::::{note}
+    :applies_to: ece: ga 4.2
+    RHEL 10 supports Podman 5 only. Use the Podman 5 steps in this section. Podman 4 is not a supported combination on RHEL 10.
+    ::::
 
     * For Podman 4:
 
@@ -122,20 +130,27 @@ Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (E
             sudo dnf versionlock list
             ```
 
-5. For RHEL 9 and Rocky Linux 9 only: Switch the network stack from Netavark to CNI.
+5. Configure the Podman network backend. The required backend depends on the OS version:
 
-    1. If the `/etc/containers/containers.conf` file does not exist, copy the `/usr/share/containers/containers.conf` file to the `/etc/containers/` directory (for example, using `cp /usr/share/containers/containers.conf /etc/containers/`).
-    2. Open the `/etc/containers/containers.conf` file. Navigate to the **network** section and make sure that the **network_backend** setting is set to `cni`.
-    3. Reboot the system (`reboot`).
-    4. Check that the network stack has changed to `cni`: <br>
+    * For RHEL 9 and Rocky Linux 9 only: Switch the network stack from Netavark to CNI.
 
-        ```sh
-        cat /etc/containers/containers.conf
-        [...]
-        [network]
-        network_backend="cni"
-        [...]
-        ```
+        1. If the `/etc/containers/containers.conf` file does not exist, copy the `/usr/share/containers/containers.conf` file to the `/etc/containers/` directory (for example, using `cp /usr/share/containers/containers.conf /etc/containers/`).
+        2. Open the `/etc/containers/containers.conf` file. Navigate to the **network** section and make sure that the **network_backend** setting is set to `cni`.
+        3. Reboot the system (`reboot`).
+        4. Check that the network stack has changed to `cni`: <br>
+
+            ```sh
+            cat /etc/containers/containers.conf
+            [...]
+            [network]
+            network_backend="cni"
+            [...]
+            ```
+
+    * {applies_to}`ece: ga 4.2` For RHEL 10: Keep the default Netavark backend. Do not install `containernetworking-plugins` and do not set `network_backend=cni`.
+
+        1. If the `/etc/containers/containers.conf` file does not exist, copy the `/usr/share/containers/containers.conf` file to the `/etc/containers/` directory (for example, using `cp /usr/share/containers/containers.conf /etc/containers/`).
+        2. If the file contains a `network_backend` setting (for example a leftover `cni` pin), remove that line so Podman uses the RHEL 10 default (Netavark).
 
 6. If Podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
 
@@ -228,6 +243,8 @@ Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (E
     ```
 
 16. As a sudoers user, add the following two lines to section `[storage]` in the file `/etc/containers/storage.conf`. Verify that those parameters are only defined once. Either remove or comment out potentially existing parameters.
+
+    If `/etc/containers/storage.conf` does not exist, copy it from `/usr/share/containers/storage.conf` first (for example, `sudo cp /usr/share/containers/storage.conf /etc/containers/storage.conf`). On RHEL 10, this file is typically not present in `/etc/containers/` until you copy it after installing Podman.
 
     ::::{note}
     Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Otherwise the ECE installer script needs to be adjusted.
@@ -412,6 +429,8 @@ Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (E
     2. Set the dual-stack network as the default for new containers. Open `/etc/containers/containers.conf` and, in the `[network]` section, set `default_network`. If the file or section does not exist yet, create it.
 
         On RHEL 9 and Rocky Linux 9, merge this setting with the existing `network_backend="cni"` configuration rather than creating a duplicate `[network]` section.
+
+        {applies_to}`ece: ga 4.2` On RHEL 10, do not add `network_backend`. Leave that setting unset so Podman continues to use Netavark.
 
         ```text
         [network]
