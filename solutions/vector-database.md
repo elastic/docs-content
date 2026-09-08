@@ -27,7 +27,7 @@ Like any {{es}} index, you can store embeddings alongside standard [field types]
 
 ### Vector-optimized defaults and hardware profile
 
-Indices use the [`index.mode: vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) vector index mode automatically. It applies storage, indexing, and merge defaults tuned for similarity search on dense vectors, so you get efficient embedding storage and approximate [kNN](/solutions/search/vector/knn.md) search without configuring each setting yourself.
+Indices use the [`index.mode: vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) vector index mode automatically. It applies storage, indexing, and merge defaults tuned for similarity search on dense vectors, so you get efficient embedding storage and approximate [kNN](/solutions/search/vector/knn.md) search without configuring each setting yourself. This is the only index mode supported in this project.
 
 Index-level vector tuning is managed for you. You can balance search capacity, latency, and cost by adjusting [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) settings.
 
@@ -37,11 +37,11 @@ Vectors are stored compressed to reduce storage size. If [`_source`](elasticsear
 
 ### Vector query patterns
 
-The {{vectordb}} project type favors workloads where you ingest and embed data, then serve similarity or hybrid queries repeatedly. Aggressive segment merging improves query speed for relatively stable corpora, which is a common pattern for knowledge bases, product catalogs with semantic search, and RAG document stores.
+The {{vectordb}} project type favors workloads where you ingest and embed data, then serve similarity or hybrid queries repeatedly. Aggressive segment merging improves query speed for data that changes infrequently, which is a common pattern for knowledge bases, product catalogs with semantic search, and RAG document stores.
 
 ### Access to {{infer}}
 
-{{vectordb}} projects are set up for embedding workloads: use managed workflows with [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) or [`semantic`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md) fields to generate embeddings in {{es}}, or [bring your own vectors](/solutions/search/vector/bring-own-vectors.md) and search them with a [kNN query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md). In-product setup guides walk through both paths.
+{{vectordb}} projects are set up for embedding workloads: use managed workflows with [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) or [`semantic`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-field.md) fields to generate embeddings in {{es}}, or [bring your own vectors](/solutions/search/vector/bring-own-vectors.md) and search them with a [kNN query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md).
 
 ### Pricing designed for vector workloads
 
@@ -51,13 +51,13 @@ Similar to other {{serverless-full}} projects, Elastic manages the infrastructur
 You can check your dataset size with the [Get index information]({{es-serverless-apis}}operation/operation-cat-indices) API.
 :::
 
-Billing uses storage, search, ingest, and infrastructure, rather than the compute-based VCU model used by {{es-serverless}} projects. Refer to [{{es}} {{vectordb}} billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md) for details.
+Billing is based on storage, search, ingest, and infrastructure, rather than the compute-based VCU model used by {{es-serverless}} projects. That means costs follow how much you store and the search capacity you reserve with Search Power, not fluctuating compute or query volume, which is a better fit for embedding data you query often. Refer to [{{es}} {{vectordb}} billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md) for details.
 
 ## When to use this project type
 
-Both the {{es}} {{vectordb}} and the {{es}} project types support [vector search](/solutions/search/vector.md).
+Both the {{es}} {{vectordb}} and the {{es}} project types support [vector search](/solutions/search/vector.md). {{vectordb}} gives you the full power of the core {{es}} capabilities (the same query APIs, mappings, filters, and hybrid or semantic retrieval) with defaults, hardware, and pricing tuned for embedding-driven workloads.
 
-Choose {{vectordb}} when embeddings and similarity search are central to the workload, especially when you also need structured metadata and filters in the same index rather than a dedicated vector store plus a separate search system. For those projects, generate embeddings with managed models through the [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) or a [third-party inference endpoint](/explore-analyze/elastic-inference/external.md); you can't deploy custom ML models for in-cluster inference.
+Choose {{vectordb}} when embeddings and similarity search are the primary workload, and you don't need extra features like time series data support, search application management, or custom ML nodes.
 
 Choose the [{{es}} project type](/solutions/elasticsearch-solution-project.md) when you need general-purpose data storage and search, including mixed lexical, time series, and analytics workloads, {{kib}} search tooling such as [Query Rules UI](/solutions/elasticsearch-solution-project/query-rules-ui.md) and [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md), or the ability to run custom models on ML nodes. You might also prefer the {{es}} project type if you are an existing {{es}} or OpenSearch user.
 
@@ -72,7 +72,7 @@ Choose the [{{es}} project type](/solutions/elasticsearch-solution-project.md) w
 | Log, event, or other time series search | Prefer the {{es}} project | General-purpose defaults suit write-heavy, frequently updated time series data. |
 
 :::{note}
-{{vectordb}} projects use [vector index mode](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) only. [Time series index mode](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) and [LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md) are not supported. Use the Elasticsearch project type for those workloads. Data streams are supported when their backing indices use vector index mode.
+{{vectordb}} projects only support the [vector index mode](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode). [Time series index mode](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) and [LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md) are not supported. Use the Elasticsearch project type for those workloads. Data streams are supported when their backing indices use vector index mode.
 :::
 
 ## Get started

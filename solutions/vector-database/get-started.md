@@ -46,7 +46,7 @@ After you've created your project, note the {{es}} endpoint and API key from the
 
 :::::{step} (Optional) Follow the in-product setup guides
 
-When you create a new {{vectordb}} project, the **Set up your {{es}} {{vectordb}}** page includes two guided paths you can follow. Each path walks you through ingest and then search examples, with sample scripts you can run in a client of your choosing or run the examples directly in the Console.
+When you create a new {{vectordb}} project, the **Set up your {{es}} {{vectordb}}** page includes two guided paths you can follow. Each path walks you through ingest and then search examples, with sample scripts you can run in a client of your choosing or run the examples directly in the Dev Tools Console.
 
 The following setup guides are available in {{kib}}:
 
