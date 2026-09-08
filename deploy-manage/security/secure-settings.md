@@ -64,7 +64,7 @@ The instructions below cover how to manage {{es}} keystore settings for each dep
 ::::{applies-item} { ess:, ece: }
 
 % ### ECE and ECH
-You can manage {{es}} secure settings in the **Security > {{es}} keystore** section of your deployment page in the {{ecloud}} Console or ECE Cloud UI.
+You can manage {{es}} secure settings on the **Elasticsearch keystore** page in the {{ecloud}} Console or ECE Cloud UI.
 
 If a feature requires both standard `elasticsearch.yml` settings and secure settings, configure the secure settings first. Updating standard settings can trigger a cluster rolling restart, and if the required secure settings are not yet in place, the nodes may fail to start. In contrast, adding secure settings does not trigger a restart.
 
@@ -87,8 +87,8 @@ Add settings and secret values to the keystore.
 
     On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
-3. From your deployment menu, select **Security**.
-4. Locate **{{es}} keystore** and select **Add settings**.
+3. From your deployment menu, select **Elasticsearch keystore**.
+4. Select **Add settings**.
 5. On the **Create setting** window, select the secret **Type**.
 6. Configure the settings, then select **Save**.
 
@@ -105,7 +105,7 @@ When your secure settings are no longer needed, delete them from the keystore.
 
     On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
-3. From your deployment menu, select **Security**.
+3. From your deployment menu, select **Elasticsearch keystore**.
 4. From the **Existing keystores** list, use the delete icon next to setting that you want to delete.
 5. On the **Confirm to delete** window, select **Confirm**.
 ::::

@@ -63,15 +63,16 @@ If network security filters are applied to the remote cluster on {{ecloud}}, the
 
 A deployment can be configured to trust all or specific deployments from an organization in [{{ecloud}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md):
 
-1. From the **Security** menu, select **Remote Connections > Add trusted environment** and select **{{ecloud}} Organization**.
-2. Enter the organization ID (which can be found near the organization name).
-3. Upload the Certificate Authorities of the deployments you want to trust. These can be downloaded from the **Security** page of each deployment (not only the current CA, but also future certificates in case they are expiring soon since they are periodically rotated). Deployments from the same region are signed by the same CA, so you will only need to upload one for each region.
-4. Choose one of following options to configure the level of trust with the Organization:
+1. Go to **Security** > **Remote connections** on the deployment.
+2. Select **Add trusted environment** and select **{{ecloud}} Organization**.
+3. Enter the organization ID (which can be found near the organization name).
+4. Upload the Certificate Authorities of the deployments you want to trust. These can be downloaded from the **Remote connections** page of each deployment (not only the current CA, but also future certificates in case they are expiring soon since they are periodically rotated). Deployments from the same region are signed by the same CA, so you will only need to upload one for each region.
+5. Choose one of following options to configure the level of trust with the Organization:
 
     * All deployments - This deployment trusts all deployments in the organization in the regions whose certificate authorities have been uploaded, including new deployments when they are created.
     * Specific deployments - Specify which of the existing deployments you want to trust from this organization. The full {{es}} cluster ID must be entered for each remote cluster. The {{es}} `Cluster ID` can be found in the deployment overview page under **Applications**.
 
-5. Configure the deployment in {{ecloud}} to [trust this deployment](/deploy-manage/remote-clusters/ec-remote-cluster-ece.md#ec-trust-ece), so that both deployments are configured to trust each other.
+6. Configure the deployment in {{ecloud}} to [trust this deployment](/deploy-manage/remote-clusters/ec-remote-cluster-ece.md#ec-trust-ece), so that both deployments are configured to trust each other.
 
 Note that the organization ID and cluster IDs must be entered fully and correctly. For security reasons, no verification of the IDs is possible. If cross-environment trust does not appear to be working, double-checking the IDs is a good place to start.
 

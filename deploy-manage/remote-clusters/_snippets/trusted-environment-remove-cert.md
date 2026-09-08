@@ -4,7 +4,7 @@ By removing a trusted environment, this deployment will no longer be able to est
 With this method, you can only remove trusted environments relying exclusively on certificates. To remove remote connections that use API keys for authentication, refer to [Change a cross-cluster API key used for a remote connection](#edit-remove-trusted-environment-api-key).
 ::::
 
-1. Go to the deployment's **Security** page.
+1. Click **Manage** on the deployment and from the navigation menu, go to **Remote connections**.
 2. In the list of trusted environments, locate the one you want to remove.
 3. Remove it using the corresponding `delete` icon.
 

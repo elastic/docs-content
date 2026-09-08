@@ -66,17 +66,21 @@ To configure strong identity verification together with API key authentication f
 
 A deployment can be configured to trust all or specific deployments in another {{ech}} [organization](../users-roles/cloud-organization.md). To add cross-organization trust:
 
-1. From the **Security** page, select **Remote Connections > Add trusted environment** and select **{{ecloud}}**. Then click **Next**.
-2. Select **Certificates** as authentication mechanism and click **Next**.
-3. Enter the ID of the deployment’s organization which you want to establish trust with. You can find that ID on the **Organization** page. It is usually made of 10 digits.
-4. Choose one of following options to configure the level of trust with the other organization:
+1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
+
+    On the **Hosted deployments** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+2. From the navigation menu, select **Remote connections**.
+3. Select **Add trusted environment** and select **{{ecloud}}**. Then click **Next**.
+4. Select **Certificates** as authentication mechanism and click **Next**.
+5. Enter the ID of the deployment’s organization which you want to establish trust with. You can find that ID on the **Organization** page. It is usually made of 10 digits.
+6. Choose one of following options to configure the level of trust with the other organization:
 
     * **All deployments** - This deployment trusts all deployments in the other organization, including new deployments when they are created.
     * **Specific deployments** - Specify which of the existing deployments you want to trust in the other organization. The full {{es}} cluster ID must be entered for each remote cluster. The {{es}} `Cluster ID` can be found in the deployment overview page under **Applications**.
 
-5. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Security** page.
-6. Select **Create trust** to complete the configuration.
-7. Repeat these steps from each of the deployments you want to use for CCS or CCR in both organizations. You will only be able to connect two deployments successfully when both of them trust each other.
+7. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Remote connections** page.
+8. Select **Create trust** to complete the configuration.
+9. Repeat these steps from each of the deployments you want to use for CCS or CCR in both organizations. You will only be able to connect two deployments successfully when both of them trust each other.
 
 ::::{note}
 The organization ID and cluster IDs must be entered fully and correctly. For security reasons, verification of the IDs is not possible. If cross-organization trust does not appear to be working, double-checking the IDs is a good place to start.

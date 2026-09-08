@@ -454,8 +454,8 @@ The deployment is now created and encrypted using the specified key. Future snap
 
 ### Encrypt an existing deployment with your key [ec_encrypt_an_existing_deployment_with_a_customer_managed_key]
 
-1. Go to your deployment's **Security** page.
-2. Under **Encryption at rest**, select **Manage encryption key**.
+1. From your deployment's navigation menu, go to **Encryption at rest**.
+2. Select **Manage customer key**.
 3. Enter your key identifier (the ARN for {{aws}}, the key identifier for Azure, or the resource ID for Google Cloud) and save your changes.
 
 {{ecloud}} then applies a plan change to encrypt your deployment's data and snapshots with your key. This plan change happens without downtime.
@@ -476,7 +476,7 @@ Keep these considerations in mind when adding a customer-managed key to an exist
 
 ## Verify your deployment encryption
 
-You can check that your hosted deployment is correctly encrypted with the key you specified. To do that, go to the deployment’s **Security** page and select **Manage encryption key** in **Encryption at rest**.
+You can check that your hosted deployment is correctly encrypted with the key you specified. To do that, select **Manage** on your deployment and go to **Encryption at rest** > **Manage customer key**.
 
 ## Rotate a customer-managed key [rotate-a-customer-managed-key]
 

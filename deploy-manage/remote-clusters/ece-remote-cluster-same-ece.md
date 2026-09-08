@@ -82,7 +82,7 @@ By default, any deployment that you or your users create trusts all other deploy
 
 If your organization’s deployments already trust each other by default, you can skip this section. If that’s not the case, follow these steps to configure which are the specific deployments that should be trusted.
 
-1. Go to the **Security** page of your deployment.
+1. Select **Manage** on your deployment and from the navigation menu, go to **Remote connections**.
 2. From the list of existing trust configurations, edit the one labeled as your organization.
 3. Choose one of following options to configure the level of trust on each of your deployments:
 

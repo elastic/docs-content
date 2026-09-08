@@ -41,8 +41,8 @@ Follow the Google Cloud Storage documentation to [create a GCS bucket](https://c
 Create an entry for the GCS client in the {{es}} keystore:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Navigate to the **Security** page of the deployment you wish to configure.
-3. Locate **{{es}} keystore** and select **Add settings**.
+2. Click **Manage** on the deployment you want to configure and from the navigation menu, go to **Elasticsearch keystore**.
+3. Select **Add settings**.
 4. Enter the **Setting name** `gcs.client.secondary.credentials_file`.
 5. With **Type** set to **JSON block / file**, add your [GCS service account key JSON file](#ec-gcs-service-account-key).
 6. Select **Save**.

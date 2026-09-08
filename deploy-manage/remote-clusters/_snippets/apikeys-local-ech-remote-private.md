@@ -10,8 +10,8 @@ It requires remote_type substitution to be defined
 2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
     On the **Hosted deployments** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-3. From the navigation menu, select **Access and Security** > **Security**.
-4. Select **Remote Connections > Add trusted environment** and choose **{{remote_type}}**. Then click **Next**.
+3. From the navigation menu, select **Remote connections**.
+4. Select **Add trusted environment** and choose **{{remote_type}}**. Then click **Next**.
 5. Select **API keys** as authentication mechanism and click **Next**.
 6. When asked whether the Certificate Authority (CA) of the remote environment’s proxy or load-balancing infrastructure is public, select **No, it is private**.
 7. Add the API key:
@@ -25,7 +25,7 @@ It requires remote_type substitution to be defined
     3. Repeat these steps for each API key you want to add. For example, if you want to use several clusters of the remote environment for CCR or CCS.
 
 8. Add the CA certificate of the remote environment.
-9. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment's **Security** page.
+9. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment's **Remote connections** page.
 10. Select **Create trust** to complete the configuration.
 11. Restart the local deployment to reload the new settings. To do that, go to the deployment's main page, locate the **Actions** menu, and select **Restart {{es}}**.
 

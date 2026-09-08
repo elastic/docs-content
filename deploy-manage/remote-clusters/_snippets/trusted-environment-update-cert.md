@@ -1,4 +1,4 @@
-1. Go to the deployment's **Security** page.
+1. Click **Manage** on the deployment and from the navigation menu, go to **Remote connections**.
 2. In the list of trusted environments, locate the one you want to edit.
 3. Open its details by selecting the `Edit` icon.
 

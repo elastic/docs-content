@@ -101,8 +101,8 @@ To check the current set of stored settings:
 
 * For {{ech}} or {{ece}}:
 
-  1. Open the deployment **Security** page.
-  2. In the **{{es}} keystore** section, check the **Security keys** list. The list is shown only if you currently have settings configured in the keystore.
+  1. From your deployment's navigation menu, go to **Elasticsearch keystore**.
+  2. Check the **Security keys** list. The list is shown only if you currently have settings configured in the keystore.
 
 * For {{eck}}, check your [secure settings](/deploy-manage/security/k8s-secure-settings.md).
 

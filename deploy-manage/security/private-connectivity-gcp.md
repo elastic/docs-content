@@ -302,7 +302,7 @@ You can edit a policy's name, description, VPC endpoint ID, and more.
 4. Click **Update** to save your changes.
 
 :::{tip}
-You can also edit network security policies from your deployment's **Security** page or your project's **Network security** page.
+You can also edit network security policies from the **Network security** page in your deployment or project.
 :::
 
 
@@ -315,8 +315,9 @@ If you want to remove a specific policy from a deployment, or delete the policy,
 1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-2. On the **Security** page, under **Network security**, find the policy that you want to disconnect. 
-3. Under **Actions**, click the **Delete** icon.
+2. From the navigation menu, select **Network security**.
+3. Find the policy that you want to disconnect. 
+4. Under **Actions**, click the **Delete** icon.
 
 #### From the policy settings
 

@@ -63,7 +63,7 @@ The certificate and key used by the local cluster to sign cross-cluster requests
     * If the local cluster uses the default transport certificates, and both the local and remote clusters belong to the same cloud provided and region on {{ecloud}}, you can use the `internal_tls_ca.crt` file that already exist in your cluster. No additional upload is required.
 
     * If the local cluster uses the default transport certificates, but the remote cluster belongs to a different {{ecloud}} provider or region, you must download the local cluster transport CA and upload it to the remote deployment as a bundle. To do that:
-      1. Open your deployment management page in the Elastic Cloud UI and go to **Security**.
+      1. Open your deployment management page in the Elastic Cloud UI and go to **Remote connections**.
       1. Under **CA certificates**, select the download icon to save the CA into a local file.
       1. Add the CA certificate [as a ZIP bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) in your remote deployment, and reference the file in the `cluster.remote.signing.certificate_authorities` setting.
 

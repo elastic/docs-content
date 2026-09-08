@@ -104,7 +104,7 @@ When using TLS certificates-based authentication, the first step is to establish
     * Use the certificate file saved in the first step.
     * Select the {{ecloud}} pattern and enter `default.es.local` for the `Scope ID`.
 
-2. Select `Save` and then download the CA Certificate and `trust.yml` file. These files can also be retrieved in the `Security` page of the deployment. You will use these files in the next set of steps.
+2. Select `Save` and then download the CA Certificate and `trust.yml` file. These files can also be retrieved from the **Remote connections** page on the deployment. You will use these files in the next set of steps.
 
 
 #### Establish trust in the ECK cluster [ece_establish_trust_in_the_eck_cluster]

@@ -28,8 +28,8 @@ Follow the Microsoft documentation to [set up an Azure storage account](https://
 Create an entry for the Azure client in the {{es}} keystore:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Navigate to the **Security** page of the deployment you wish to configure.
-3. Locate **{{es}} keystore** and select **Add settings**.
+2. Click **Manage** on the deployment you want to configure and from the navigation menu, go to **Elasticsearch keystore**.
+3. Select **Add settings**.
 4. With **Type** set to **Single string**, add the following keys and their values:
 
     * `azure.client.secondary.account`

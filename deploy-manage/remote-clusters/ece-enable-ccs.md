@@ -44,7 +44,7 @@ To use CCS or CCR, your environment must meet the following criteria:
 
   For configuration details, refer to the [ECE load balancer requirements](../deploy/cloud-enterprise/ece-load-balancers.md).
 
-* If your deployment was created before ECE version `2.9.0`, the Remote clusters page in {{kib}} must be enabled manually from the **Security** page of your deployment, by selecting **Enable CCR** under **Trust management**.
+* If your deployment was created before ECE version `2.9.0`, the Remote clusters page in {{kib}} must be enabled manually from the **Remote connections** page on your deployment, by selecting **Enable CCR** under **Trust management**.
 
 ::::{note}
 System deployments cannot be used as remote clusters or have remote clusters.

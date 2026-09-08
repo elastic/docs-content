@@ -562,7 +562,7 @@ You can edit a policy's name, description, resource name, Private Endpoint filte
 4. Click **Update** to save your changes.
 
 :::{tip}
-You can also edit private connection policies from your deployment or project's **Security** page or your project's **Network security** page.
+You can also edit private connection policies from the **Network security** page in your deployment or project.
 :::
 
 ### Remove a private connection policy from your deployment or project [remove-private-connection-policy]
@@ -576,8 +576,9 @@ If you want to remove a specific policy from a deployment or project, or delete 
 1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-2. On the **Security** page, under **Network security**, find the policy that you want to disconnect.
-3. Under **Actions**, click the **Delete** icon.
+2. From the navigation menu, select **Network security**.
+3. Find the policy that you want to disconnect.
+4. Under **Actions**, click the **Delete** icon.
 :::
 :::{applies-item} serverless: ga
 1. Find your project on the home page or on the **Serverless projects** page, then select **Manage** to access its settings menus.

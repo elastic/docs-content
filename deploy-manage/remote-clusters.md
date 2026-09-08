@@ -120,7 +120,7 @@ The following table summarizes the supported connection paths:
 | {{ech}} deployment | Self-managed cluster in your network | Outbound from Elastic over the public internet to your cluster's endpoint. Allow the connection with IP-based rules on your side. | **No.** {{ech}} deployments can't create private endpoints for customer networks. |
 
 ::::{warning}
-Don't use a private connection hostname (for example, `*.vpce.{region}.aws.elastic-cloud.com` or your Azure private hosted zone domain) as the `proxy_address` for a remote cluster connection between two {{ech}} deployments. The connection fails with a DNS resolution error (for example, `unknown host` or `UnknownHostException` in the {{es}} logs) because the hostname is not resolvable from Elastic-managed networks. Use the public proxy address from the remote deployment's **Security** page instead.
+Don't use a private connection hostname (for example, `*.vpce.{region}.aws.elastic-cloud.com` or your Azure private hosted zone domain) as the `proxy_address` for a remote cluster connection between two {{ech}} deployments. The connection fails with a DNS resolution error (for example, `unknown host` or `UnknownHostException` in the {{es}} logs) because the hostname is not resolvable from Elastic-managed networks. Use the public proxy address from the remote deployment's **Remote connections** page instead.
 ::::
 
 ::::{tip}

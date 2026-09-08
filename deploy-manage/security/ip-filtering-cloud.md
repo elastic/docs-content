@@ -108,8 +108,8 @@ You can apply multiple policies to a single deployment or project. For {{ech}} d
 1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
     On the **Hosted deployments** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-2. From the navigation menu, select **Access and Security** > **Security**.
-3. Under **Network security**, select **Apply policies** > **IP filter**.
+2. From the navigation menu, select **Network security**.
+3. Select **Apply policies** > **IP filter**.
 4. Choose the IP filter you want to apply and select **Apply**.
 :::
 ::::
@@ -143,8 +143,8 @@ If you want to a specific IP filter from a deployment or project, or delete the 
 1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
     On the **Hosted deployments** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-2. From the navigation menu, select **Access and Security** > **Security**.
-3. Under **Network security**, find the IP filter that you want to disconnect. 
+2. From the navigation menu, select **Network security**.
+3. Find the IP filter that you want to disconnect. 
 4. Under **Actions**, click the **Delete** icon.
 :::
 ::::
@@ -167,7 +167,7 @@ You can edit an IP filter's name or description, change the allowed traffic sour
 4. Click **Update** to save your changes.
 
 :::{tip}
-You can also edit IP filters from your deployment's **Security** page or your project's **Network security** page.
+You can also edit IP filters from the **Network security** page in your deployment or cluster.
 :::
 
 ## Delete an IP filter
