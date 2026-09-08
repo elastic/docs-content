@@ -13,7 +13,7 @@ type: overview
 
 # Get started with the {{es}} {{vectordb}} project type
 
-The {{es}} {{vectordb}} project type on {{serverless-full}} is built for AI-powered vector retrieval. Use this guide to create a project and learn about the different methods you can ingest embeddings and run search queries.
+The {{es}} {{vectordb}} project type on {{serverless-full}} is built for AI-powered vector retrieval. Use this guide to create a project and learn about the different methods to ingest embeddings and run search queries.
 
 To try a hands-on tutorial where you connect a client, index sample data, and run semantic, hybrid, and ES|QL searches, refer to [](/solutions/vector-database/vector-full-text-search.md).
 
@@ -57,7 +57,7 @@ The following setup guides are available in {{kib}}:
 
 Alternatively, you can also use the [](/solutions/vector-database/vector-full-text-search.md) quickstart to connect a client, index sample data, and run semantic, hybrid, and ES|QL searches.
 
-You can also skip the setup guide and continue with the steps below.
+You can also skip the setup guide and continue with the following steps.
 :::::
 
 :::::{step} Ingest your data
