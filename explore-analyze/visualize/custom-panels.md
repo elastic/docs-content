@@ -216,7 +216,6 @@ There is no dedicated property for a healthy or success state. For a three-state
 When a custom panel has a query, it responds to filters and options active on the dashboard like other {{esql}} panels:
 
 - The time filter. Refer to [Connect the panel to the time filter](#custom-panels-time-filter).
-- A custom time range for this panel. Hover over the panel, select {icon}`gear` **Settings**, and turn on **Apply custom time range**. For the full procedure, refer to [Apply a custom time range to a panel](/explore-analyze/dashboards/using.md#_apply_a_custom_time_range_to_a_panel).
 - The query bar and filter pills. The query fields are also available for suggestions in the query bar and filter editor.
 - [Controls](dashboard-controls.md), including [{{esql}} variable controls](add-variable-controls.md).
 - [Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle) for approximate `STATS` results.
@@ -234,6 +233,8 @@ FROM my-index
 ```
 
 For details, refer to [Custom time parameters](/explore-analyze/query-filter/languages/esql-kibana.md#_custom_time_parameters).
+
+To use a time range for this panel only, hover over the panel, select {icon}`gear` **Settings**, and turn on **Apply custom time range**. The query still needs `@timestamp` or the `?_tstart` and `?_tend` parameters. For the full procedure, refer to [Apply a custom time range to a panel](/explore-analyze/dashboards/using.md#_apply_a_custom_time_range_to_a_panel).
 
 ## Limitations [custom-panels-limitations]
 
