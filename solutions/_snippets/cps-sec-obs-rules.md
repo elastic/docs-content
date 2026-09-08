@@ -6,7 +6,7 @@ You can't select a {{cps}} scope for an individual rule in the header. These rul
 
 - **{{esql}} rules:** Add [`SET project_routing`](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) at the start of the rule query to override the space-level scope.
 - **Rules that use index patterns:** Use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) in the index pattern to target specific projects.
-- **{{ml-cap}} rules:** These rules alert on {{anomaly-detect}} results stored on the origin project. {{anomaly-jobs-cap}} can read linked-project data; jobs and results stay on the origin.
+- **{{ml-cap}} rules:** These rules alert on {{anomaly-detect}} job results, so the job's scope determines what the rule can detect. To control which projects the job searches, set [`project_routing`](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) on the job's {{dfeed}}.
 
 <!-- TODO: After https://github.com/elastic/docs-content/pull/7814 merges, restore the link on "can read linked-project data" to /explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope. -->
 
