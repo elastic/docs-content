@@ -57,8 +57,6 @@ There is no separate control to pause or make a project unavailable. To stop inf
 
 [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) reserves search capacity for your project. Start at the default of **100**, measure latency and throughput for your workload, then increase Search Power if you need more capacity. You increase Search Power in increments of 100. Higher Search Power increases search charges in proportion to the setting and your active storage. You can increase Search Power up to **1900**.
 
-For high availability, you can increase Search Power to **200**. That setting reserves enough capacity for two full copies of your project data to remain available for low-latency search.
-
 ## Related billing dimensions [vector-database-billing-related]
 
 Shared {{serverless-short}} add-ons such as [data out](serverless-project-billing-dimensions.md#general-serverless-billing-data-out) and [support](serverless-project-billing-dimensions.md#general-serverless-billing-support) may also appear on your bill. Refer to [](serverless-project-billing-dimensions.md).
