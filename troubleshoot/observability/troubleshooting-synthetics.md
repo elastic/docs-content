@@ -147,9 +147,6 @@ To fix this you can either:
 
 
 ### Monitors stuck in pending state after stack upgrade
-```yaml {applies_to}
-stack: all
-```
 
 After a stack upgrade, lightweight or browser-based monitors that run infrequently might appear in a pending state in the Synthetics app.
 
