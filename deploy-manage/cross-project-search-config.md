@@ -137,9 +137,17 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 ### {{elastic-sec}} apps
 
+The following limitations apply to {{elastic-sec}} apps. For how each app uses {{cps-init}}, including the scope selector and query-level overrides, refer to [{{cps-cap}} support in {{elastic-sec}} apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability-security).
 
-:::{include} /explore-analyze/cross-project-search/_snippets/cps-availability-security-apps.md
-:::
+- **Alert, event, and attack flyouts:** Session View isn't available for documents from linked projects. Some actions are hidden or disabled.
+- **Alerts:** The Alerts page doesn't show alerts that a linked project generated independently. Only alerts created by origin project rules appear.
+- **Attack Discovery:** Discoveries are based on origin project alerts only. Alerts from linked projects aren't included.
+- **Cases:** You can't attach an alert or event from a linked project to a case.
+- **{{elastic-defend}} and Osquery:** Policies, artifacts, response actions, and Osquery saved queries and packs can't be shared or managed across linked projects.
+- **Entity store:** A host that appears in more than one project isn't combined into a single entity at the origin. Risk scoring runs on the origin project only.
+- **{{ml-cap}} rules:** {{ml-cap}} rules don't use the space-level {{cps}} scope. They use the scope of the underlying {{anomaly-detect}} job's {{dfeed}}, which might differ from the space default.
+- **SIEM Readiness and Value report:** These features don't include data from linked projects.
+- **Timeline:** Some actions are disabled for documents from linked projects.
 
 ### Elastic {{observability}} apps
 
