@@ -852,7 +852,6 @@ for (Book book : books) {
 }
 
 es.bulk(bulk.build());
-es.close();
 ```
 
 ::::
@@ -1129,8 +1128,6 @@ SearchResponse<Book> response = es.search(s -> s
 for (Hit<Book> hit : response.hits().hits()) {
     System.out.println(hit.score() + " " + hit.source().title());
 }
-
-es.close();
 ```
 
 ::::
@@ -1408,10 +1405,6 @@ foreach (var hit in response.Hits)
 {
     Console.WriteLine($"{hit.Score} {hit.Source?.Title}");
 }
-
-public record SearchBook(
-    [property: JsonPropertyName("title")] string Title
-);
 ```
 
 1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
@@ -1454,8 +1447,6 @@ SearchResponse<Book> response = es.search(s -> s
 for (Hit<Book> hit : response.hits().hits()) {
     System.out.println(hit.score() + " " + hit.source().title());
 }
-
-es.close();
 ```
 
 1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
@@ -1738,8 +1729,6 @@ try (BufferedReader reader = new BufferedReader(
         System.out.println(values[0] + "s: " + values[1]);
     });
 }
-
-es.close();
 ```
 
 ::::
