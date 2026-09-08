@@ -21,7 +21,7 @@ Dense vectors use neural embeddings to represent semantic meaning. They translat
 - Performing image and multimedia similarity search
 - Delivering content-based recommendations
 
-If you're using {{serverless-full}}, [compare the available project configurations](../get-started.md#serverless-project-configuration) before implementing dense vector search.
+If you're using {{serverless-full}}, [compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type) before implementing dense vector search.
 
 ## Working with dense vectors in {{es}}
 

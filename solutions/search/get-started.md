@@ -53,21 +53,10 @@ Both [{{es}} projects](/solutions/elasticsearch-solution-project.md) and [{{es}}
 | [{{es}} project](/solutions/elasticsearch-solution-project.md) | For general-purpose data storage and search, including mixed lexical, time series, and analytics workloads, or when you need to run custom models on {{ml}} nodes |
 | [{{es}} Vector Database project](/solutions/vector-database.md) | When embeddings and similarity search are central to your workload, such as RAG, recommendations, semantic search, hybrid search, or multimodal search |
 
-##### Choose an {{es}} project profile
+There are two options to create a serverless project:
 
-If you choose an {{es}} project and create it with the [API]({{cloud-serverless-apis}}operation/operation-createelasticsearchproject), select an `optimized_for` profile:
-
-| Profile | When to choose |
-| --- | --- |
-| `general_purpose` | For most search use cases, including compressed vectors |
-| `vector` | For uncompressed, high-dimensional dense vector workloads |
-
-Vector Database projects don't use an `optimized_for` profile.
-
-:::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
-:::
-
-When your project is created, you're ready to move on to the next step and to start creating indices, adding data, and performing searches.
+* If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration) to create a serverless project. For more information about {{ecloud}} trials, refer to [Trial features](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial).
+* If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login). On the home page, you can create a serverless project. You need the `admin` predefined role or an equivalent custom role to create projects. Refer to [](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 ::::
 
 ### Create a local development installation [create-local-development-installation]

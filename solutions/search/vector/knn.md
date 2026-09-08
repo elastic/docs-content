@@ -45,7 +45,7 @@ To run a kNN search in {{es}}:
   * `create`, `index`, or `write` to add data
   * `read` to search the index
 
-If you're using {{serverless-full}}, [compare the available project configurations](../get-started.md#serverless-project-configuration) before implementing kNN search.
+If you're using {{serverless-full}}, [compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type) before implementing kNN search.
 
 ## kNN search methods [knn-methods]
 
