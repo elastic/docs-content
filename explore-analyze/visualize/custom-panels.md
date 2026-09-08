@@ -78,8 +78,7 @@ A custom panel needs a template and, to show live data, an {{esql}} query. You c
    - Manually, in **Template (HTML)** and **Data source (ES|QL)**. For the template syntax, refer to [Write a template](#custom-panels-write-a-template). For the {{esql}} query, refer to [](/explore-analyze/query-filter/languages/esql-kibana.md).
    - Using AI. Select **Generate with chat** and describe the panel. The flyout closes and a conversation opens with the panel attached. When the answer completes, the panel shows the generated template and, for live data, its query. Save the dashboard, or refer to [Refine a custom panel with chat](#custom-panels-refine-with-chat) to adjust the result.
 
-5. If you chose to provide the template and the query manually, select **Preview data** to check the returned columns. The preview shows the first rows of the result.
-
+5. If you chose to provide the template and the query manually, select **Preview data** to check the returned columns. The preview shows up to five rows and shortens long cell values. Hover over a shortened cell to see the full value.
 
    If the flyout reports that the query isn't connected to the dashboard time filter, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters on your time field. Refer to [Connect the panel to the time filter](#custom-panels-time-filter).
 
