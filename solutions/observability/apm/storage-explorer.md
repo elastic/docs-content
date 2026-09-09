@@ -10,7 +10,7 @@ products:
 
 # Storage Explorer [apm-storage-explorer]
 
-Analyze your APM data and manage costs with **storage explorer**. For example, analyze the storage footprint of each of your services to see which are producing large amounts of data—then change the sample rate of a service to lower the amount of data ingested. Or, expand the time filter to visualize data trends over time so that you can better forecast and prepare for future storage needs.
+Analyze your APM data and manage costs with **storage explorer**. For example, analyze the storage footprint of each of your services to see which are producing large amounts of data, then change the sample rate of a service to lower the amount of data ingested. Or, expand the time filter to visualize data trends over time so that you can better forecast and prepare for future storage needs.
 
 :::{image} /solutions/images/observability-storage-explorer-overview.png
 :alt: APM Storage Explorer
@@ -38,7 +38,7 @@ The service size chart displays the estimated size of each service over time. Ex
 The service statistics table provides detailed information on each service:
 
 * A list of **service environments**.
-* The **sampling rate**. This value is calculated by dividing the number of sampled transactions by total throughput. It might differ from the configured sampling rate for two reasons: with head-based sampling, the initial service makes the sampling decision, and with tail-based sampling, granular policies allow you to set multiple sample rates.
+* The **sampling rate**. This is the observed sampling rate, which is the number of sampled transactions divided by total throughput. It is based on documents that actually reached {{es}}. It can differ from your configured rate. Refer to [Why the observed sampling rate might differ](#why-the-observed-sampling-rate-might-differ) for more information.
 * The estimated **size on disk**. This storage size includes both primary and replica shards and is calculated by prorating the total size of your indices by the service’s document count divided by the total number of documents.
 * Number of **transactions**, **spans**, **errors**, and **metrics** — doc count and size on disk.
 
@@ -64,6 +64,33 @@ To reduce the number of system, runtime, and application metrics, tune the APM a
 ### Reduce the number of errors [_reduce_the_number_of_errors]
 
 To reduce the number of errors a service generate, work with your developers to change how exceptions are handled in your code.
+
+### Why the observed sampling rate might differ [why-the-observed-sampling-rate-might-differ]
+
+The observed sampling rate reflects what actually reached {{es}}, and not necessarily what you configured. Several factors can cause a difference:
+
+* **Errors are never sampled**
+
+  Errors are always stored regardless of your sampling configuration. If a service generates a high volume of errors, the observed rate will be higher than the configured sampling rate.
+
+* **Head-based sampling**
+
+  With [head-based sampling](/solutions/observability/apm/transaction-sampling.md), the sampling decision happens at the root service and is propagated to downstream services through distributed tracing headers. Configuring a sampling rate on a non-root service has no effect, as it will always respect the upstream decision.
+
+  Non-sampled transactions are not sent to {{apm-server}}, so they don't appear in storage. The exception is the RUM JS Agent, which always sends transaction events regardless of whether they are sampled.
+
+  On low-throughput services, the observed rate might be a less precise approximation of the configured rate because the representative value used to scale sampled transactions can introduce statistical error.
+
+* **Tail-based sampling**
+
+  With [tail-based sampling](/solutions/observability/apm/apm-server/tail-based-sampling.md), {{apm-server}} buffers events locally before making the sampling decision. If the local buffer reaches its storage limit, {{apm-server}} either sends all buffered events (raising the observed rate) or drops them (lowering the observed rate), depending on how overflow is configured.
+
+* **Third-party tracing headers**
+
+  If a gateway or third-party service injects distributed tracing headers that include a sampling decision before the request reaches your root service, {{apm-agent}}s respect those headers instead of the configured rate. You can override this behavior using the [trace continuation strategies](/solutions/observability/apm/transaction-sampling.md#_trace_continuation_strategies_with_distributed_tracing) settings in your {{apm-agent}}.
+
+
+For the best approximation of your configured sampling rate, filter the time range to a period when your sampling settings were stable and your service was not experiencing an unusually high error rate.
 
 ## Privileges [_privileges]
 
