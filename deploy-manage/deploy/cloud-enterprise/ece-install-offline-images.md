@@ -25,6 +25,10 @@ The first table contains the stack versions shipped with the current {{version.e
 | docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-9}} |
 | docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-9}} |
 
+:::{important}
+{{stack}} versions 9.5.0, 9.5.1, and 9.5.2 are unavailable due to a known issue. {{ece}} 4.2.0 includes 9.5.2 Docker images so you can complete the installation. After {{ece}} is running, add the 9.5.3 stack pack and Docker images from the [most recent list](#ece-recent-download-list) and use 9.5.3 for new deployments. Review [the related KB article](https://ela.st/es-v95-replication-bug).
+:::
+
 $$$ece-all-stacks$$$Additional {{stack}} versions are available as Docker images that you can use with ECE. For offline installations, you need to download both the {{stack}} pack and the Docker images for the same version.
 
 To learn more about adding the stack pack to ECE, check [Manage {{stack}} Versions](manage-elastic-stack-versions.md).
