@@ -85,7 +85,7 @@ In this section, you'll find the following information:
 * How to [access AutoOps in your {{serverless-short}} project](access-autoops-for-serverless.md).
 * How to use the [Search Tier view](search-tier-view-autoops-serverless.md) to observe the impact of search performance on your use of search VCUs.
 * How to use the [Indexing Tier view](indexing-tier-view-autoops-serverless.md) to observe how indexing performance influences your use of ingest VCUs.
-* How to use the [Search AI Lake view](search-ai-lake-view-autoops-serverless.md) to drill down into your storage-related usage.
+* How to use the [Storage Tier view](storage-tier-view-autoops-serverless.md) to drill down into your storage-related usage.
 
 :::{tip}
 Refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md) for answers to frequently asked questions about AutoOps.

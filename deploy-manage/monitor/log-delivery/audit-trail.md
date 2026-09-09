@@ -82,7 +82,7 @@ In the following table, find the recommended combination of filters to select fo
 
 ## Explore delivered logs
 
-Use [AutoOps](/deploy-manage/monitor/autoops/autoops-for-serverless.md) on the destination project to monitor your ingest rate and storage retained.
+Use the AutoOps [Storage Tier](/deploy-manage/monitor/autoops/storage-tier-view-autoops-serverless.md) view on the destination project to monitor your ingest rate and storage retained.
 
 Use Discover or {{esql}} to explore delivered audit trail logs in the following locations on your destination project:
 

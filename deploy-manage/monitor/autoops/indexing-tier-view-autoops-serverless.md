@@ -2,6 +2,7 @@
 applies_to:
   serverless:
     elasticsearch: ga
+    vectordb: ga
 navigation_title: Indexing Tier view
 products:
   - id: cloud-serverless
@@ -9,7 +10,7 @@ products:
 
 # Indexing Tier view in AutoOps for {{serverless-short}}
 
-The **Indexing Tier** view in AutoOps for {{serverless-short}} provides visibility into the consumption of ingest VCUs, which are a type of [compute billing dimension](/deploy-manage/monitor/autoops/autoops-for-serverless.md#compute-billing-dimensions) for {{es}} projects. This view helps you understand how indexing activities and performance contribute to your ingest VCU consumption and, as a result, your project's bill. 
+The **Indexing Tier** view in AutoOps for {{serverless-short}} provides visibility into the consumption of ingest VCUs, which are a type of [compute billing dimension](/deploy-manage/monitor/autoops/autoops-for-serverless.md#compute-billing-dimensions). This view helps you understand how indexing activities and performance contribute to your ingest VCU consumption and, as a result, your project's bill. 
 
 This view provides both high-level project summaries and detailed index-level and data stream-level breakdowns. 
 
@@ -28,6 +29,9 @@ Use the following features to explore this view:
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
 * Select **custom time windows** to explore usage and performance data up to the last 10 days. For time periods up to 72 hours, the data on the chart is displayed per hour. For time periods greater than 72 hours, the data is displayed per day.
 * Explore different **visualizations** presenting the trend of ingest VCU usage over time and how it compares to the performance of the indexing tier in terms of indexing rate and latency.
+  :::{note}
+  The **Ingest VCUs** chart depicting usage does not appear for {{vectordb}} projects. 
+  :::
 * Gain insights from the **performance charts** depicting indexing rate and latency trends to understand why your VCU consumption might fluctuate over time.
 
 ## Index and data stream-level insights

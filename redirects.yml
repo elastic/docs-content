@@ -386,6 +386,9 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/2639
   'deploy-manage/monitor/autoops/ec-autoops-dismiss-event.md': 'deploy-manage/monitor/autoops/ec-autoops-events.md'
 
+# Related to
+  'deploy-manage/monitor/autoops/search-ai-lake-view-autoops-serverless.md': 'deploy-manage/monitor/autoops/storage-tier-view-autoops-serverless.md'
+
 # Related to https://github.com/elastic/docs-content/pull/2245/
   'solutions/search/elasticsearch-basics-quickstart.md': 'solutions/search/get-started/index-basics.md'
 
