@@ -35,7 +35,7 @@ Select your deployment type below to see what's available and how implementation
 | **Communication** | TLS (HTTP layer) | Fully managed | Automatically configured by Elastic |
 | | TLS (Transport layer) | Fully managed | Automatically configured by Elastic |
 | **Network** | IP filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-cloud.md) |
-| | Private connectivity and VPC filtering | Configurable | [](/deploy-manage/security/private-connectivity.md) (AWS PrivateLink only) |
+| | Private connectivity and VPC filtering | Configurable | [](/deploy-manage/security/private-connectivity.md) (AWS PrivateLink and Azure Private Link only) |
 | | Kubernetes network policies | N/A |  |
 | | Published static IPs (ingress and egress) | N/A | Not offered as Elastic-published ranges for {{serverless-short}}. Use [private connectivity](/deploy-manage/security/private-connectivity.md) where supported. |
 | **Data** | Encryption at rest | Fully managed | Automatically encrypted by Elastic |

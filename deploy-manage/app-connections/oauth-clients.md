@@ -3,7 +3,7 @@ navigation_title: "OAuth for MCP clients"
 description: "OAuth 2.1 lets MCP clients authenticate to the Agent Builder MCP server on behalf of a user, using short-lived tokens instead of static API keys."
 type: overview
 applies_to:
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana
@@ -67,12 +67,12 @@ Access tokens are short-lived and refreshed automatically in the background, so 
 
 Use the following pages to create and manage OAuth access for MCP clients:
 
-- [](create-oauth-client.md): Register a client in {{agent-builder}} and get the client ID and MCP server URL your MCP host needs.
+- [](create-oauth-client.md): Register a client in {{agent-builder}} and get the client ID and MCP server URL your MCP host needs, or edit an existing client's name, logo, or redirect URIs.
 - [](connect-mcp-host.md): Configure your MCP host with those values and complete browser authorization.
-- [](revoke-oauth-client.md): Remove access for a single connection or an entire client at the project level.
+- [](revoke-oauth-client.md): Revoke a connection or client to cut off access, or permanently delete a revoked connection or client.
 
 ## Related pages
 
-- [](manage-app-connections.md): Audit and revoke connections across your organization's {{serverless-short}} projects in the {{ecloud}} Console.
+- [](manage-app-connections.md): Audit, revoke, and delete connections across your organization's {{serverless-short}} projects in the {{ecloud}} Console.
 - [](/explore-analyze/ai-features/agent-builder/mcp-server.md): Configure the {{agent-builder}} MCP server and compare authentication methods.
 - [](/deploy-manage/api-keys.md): Authenticate to the MCP server with API keys instead of OAuth.

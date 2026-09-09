@@ -1,5 +1,5 @@
 ---
-navigation_title: Attack Discovery page
+navigation_title: Run from Attack Discovery page
 description: "Generate Attack Discovery findings manually on demand or automatically on a recurring schedule, directly from the Attack Discovery page."
 applies_to:
   stack: ga
@@ -49,7 +49,12 @@ The next time you run Attack Discovery it will be able to analyze the selected f
 
 ## Generate discoveries manually [attack-discovery-generate-discoveries]
 
-You'll need to select an LLM connector before you can analyze alerts. 
+You'll need to select an LLM connector before you can analyze alerts. If your subscription or project includes [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md), one may already be available with no setup required. Otherwise, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md) to add one.
+
+:::{note}
+We recommend using one of the models in the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) for Attack Discovery.
+:::
+
 
 To get started:
 
@@ -57,11 +62,6 @@ To get started:
 2. Do one of the following:
    - {applies_to}`stack: ga 9.1+` Click the settings icon next to the **Run** button, then in the settings menu, select an existing connector from the dropdown menu, or add a new one.
    - {applies_to}`stack: ga =9.0` Select an existing connector from the dropdown menu, or add a new one.
-
-   :::{admonition} Recommended models
-   While Attack Discovery is compatible with many different models, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) to see which models perform best.
-
-   :::
 
 3. Once you've selected a connector, do one of the following to start the analysis:
    - {applies_to}`stack: ga 9.1+` Click **Save and run**.

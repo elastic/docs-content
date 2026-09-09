@@ -16,6 +16,15 @@ After you’ve [created a synthetic monitor](/solutions/observability/synthetics
 
 If you’re using {{project-monitors}}, you should also set up a workflow that uses [best practices for managing monitors effectively](/solutions/observability/synthetics/manage-monitors.md#synthetics-projects-best-practices) in a production environment.
 
+::::{note}
+This page lists only monitors defined in the current cluster or {{serverless-short}} project. To change a monitor that isn't listed, open the Synthetics UI on the cluster or project where the monitor is defined.
+
+For more information, refer to the following topics:
+
+* {applies_to}`stack: ga 9.5+` [Remote monitors](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-remote-monitors).
+* {applies_to}`serverless: preview` [Monitors from linked projects](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-linked-monitors).
+::::
+
 ## Update a monitor [manage-monitors-config]
 
 You can update a monitor’s configuration, for example, changing the interval at which the monitor runs a test.

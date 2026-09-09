@@ -193,6 +193,7 @@ toc:
       - file: cross-project-search/cross-project-search-tags.md
       - file: cross-project-search/cross-project-search-project-routing.md
       - file: cross-project-search/cross-project-search-manage-scope.md
+      - file: cross-project-search/cps-compared-to-ccs.md
       - title: "CPS in ES|QL"
         crosslink: elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md
   - file: ai-features.md
@@ -245,6 +246,8 @@ toc:
               - file: ai-features/agent-builder/agent-traces-dashboard.md
               - file: ai-features/agent-builder/create-alerts.md
           - file: ai-features/agent-builder/permissions.md
+            children:
+              - file: ai-features/agent-builder/api-keys.md
           - file: ai-features/agent-builder/troubleshooting.md
             children:
               - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
@@ -258,6 +261,7 @@ toc:
           - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md
+      - hidden: ai-features/context-engine.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/agent-skills.md
       - file: ai-features/llm-guides/llm-connectors.md
@@ -322,6 +326,9 @@ toc:
           - file: visualize/charts/treemap-charts.md
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
+      - file: visualize/custom-panels.md
+        children:
+          - file: visualize/custom-panel-examples.md
       - file: visualize/text-panels.md
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
@@ -383,6 +390,7 @@ toc:
       - file: visualize/manage-panels.md
   - file: find-and-organize.md
     children:
+      - file: find-and-organize/kibana-interface.md
       - file: find-and-organize/data-views.md
       - file: find-and-organize/saved-objects.md
       - file: find-and-organize/files.md
@@ -468,6 +476,7 @@ toc:
         children:
           - file: alerting/alerts/alerting-getting-started.md
           - file: alerting/alerts/alerting-setup.md
+          - file: alerting/alerts/rules-and-elastic-cloud-api-keys.md
           - file: alerting/alerts/create-manage-rules.md
           - file: alerting/alerts/view-alerts.md
           - file: alerting/alerts/query-alerts.md
@@ -567,6 +576,7 @@ toc:
             children:
               - file: workflows/use-cases/security/automate-security-operations.md
                 children:
+                  - file: workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md
                   - file: workflows/use-cases/security/automate-security-operations/alert-triage-with-case.md
                   - file: workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md
                   - file: workflows/use-cases/security/automate-security-operations/enrich-alert-with-threat-intel.md
@@ -581,6 +591,7 @@ toc:
               - file: workflows/use-cases/ai-augmented-workflows/classify-and-route-alerts.md
       - file: workflows/concepts.md
         children:
+          - file: workflows/managed-workflows.md
           - file: workflows/authorization.md
           - file: workflows/triggers.md
             children:
@@ -609,6 +620,7 @@ toc:
                   - file: workflows/steps/foreach.md
                   - file: workflows/steps/while.md
                   - file: workflows/steps/switch.md
+                  - file: workflows/steps/parallel.md
                   - file: workflows/steps/wait.md
                   - file: workflows/steps/wait-for-input.md
                   - file: workflows/steps/wait-for-approval.md
@@ -627,6 +639,7 @@ toc:
               - file: workflows/reference/step-types.md
       - file: workflows/authoring-techniques.md
         children:
+          - file: workflows/authoring-techniques/use-natural-language.md
           - file: workflows/authoring-techniques/use-yaml-editor.md
           - file: workflows/authoring-techniques/anatomy.md
           - file: workflows/authoring-techniques/settings.md
@@ -639,6 +652,8 @@ toc:
           - file: workflows/authoring-techniques/troubleshooting.md
           - file: workflows/authoring-techniques/migrate-from-9-3.md
       - file: workflows/templates.md
+        children:
+          - file: workflows/templates/start-from-a-template.md
   - file: numeral-formatting.md
   - hidden: explore-and-visualize.md
   - hidden: track-and-respond.md

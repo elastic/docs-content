@@ -4,7 +4,7 @@ mapped_pages:
 description: Elastic Managed integrations let you ingest data from cloud sources into Elastic Cloud with no collectors to deploy or maintain.
 applies_to:
   stack: ga 9.5+, preview 9.0-9.4
-  serverless: preview
+  serverless: ga
 products:
   - id: elastic-agent
   - id: fleet
@@ -21,11 +21,6 @@ type: overview
 {{managed-integrations}} let you ingest data from cloud sources into Elastic without deploying or maintaining any collectors yourself. Elastic runs the collectors for you and writes the data directly to your cluster, so you can focus on the data rather than on the infrastructure that collects it. {{managed-integrations}} are available on {{serverless-full}} and {{ech}} deployments.
 
 To enable an {{managed-integration}} in {{kib}}, refer to [Enable an {{managed-integration}}](/manage-data/ingest/managed-integrations/enable-managed-integration.md).
-
-:::{important}
-:applies_to: stack: preview 9.0-9.4
-{{managed-integrations}} are a technical preview feature. The design and code are less mature than GA features, and Elastic provides them as-is with no warranties. The support SLA for GA features doesn't apply. There are no additional costs for {{managed-integrations}} during technical preview.
-:::
 
 ## Key benefits [managed-integrations-benefits]
 

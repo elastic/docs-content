@@ -39,7 +39,9 @@ For more information on alerting concepts and the types of rules and connectors 
 
 ## Required permissions [_required_permissions]
 
-Access to rules is granted based on your {{alert-features}} privileges. For more information, go to [Security](alerting-setup.md#alerting-security).
+* **Rules**: To create and manage rules, you need the appropriate feature privileges for the app that owns the rule type, for example, {{observability}} features for Observability rules, or {{ml-app}} for anomaly detection rules. For more information, go to [Security](alerting-setup.md#alerting-security). {applies_to}`serverless: ga` On serverless, assign the **Editor** role or higher instead. For more information, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+* **Alerts**: To read alerts and perform per-alert actions (such as snooze, unsnooze, and acknowledge) without allowing users to manage rules—assign the **Stack Alerts** or **Observability Alerts** feature privilege, depending on which alerts page you use (`All` for full access, or `Read` for view and snooze state only). Assign this through {{kib}} roles on the {{stack}}, or through a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md) on serverless. For details, refer to [Give access to triage alerts without managing rules](alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
 
 ## {{cps-cap}} scope for rules [cps-scope-for-rules]
 ```{applies_to}

@@ -27,7 +27,10 @@ To create failed transaction rate threshold rules, you need the following:
 - {applies_to}`stack: ga` An [appropriate license](https://www.elastic.co/subscriptions).
 - {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
-### Indices used by this rule
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
+
+## Indices used by this rule
 
 This rule queries the Metrics indices from APM indices settings (when `xpack.apm.searchAggregatedTransactions` is different from never) or Transaction indices from APM indices settings. The default index patterns are `metrics-apm*`, `apm-*`, and `metrics-*.otel-*`. You cannot override these indices on a per-rule basis.
 

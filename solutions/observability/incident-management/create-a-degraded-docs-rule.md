@@ -10,13 +10,6 @@ applies_to:
 
 # Create a degraded docs rule [degraded-docs-alert]
 
-::::{note}
-
-Users need the **Data Set Quality** role with the **Manage rules** privilege or the **Editor** role or higher to create degraded docs rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
-
-::::
-
-
 Based on the data found on the [**Data Set Quality**](../data-set-quality-monitoring.md) page, you can create a rule to notify you when the percentage of degraded documents for a specific data view has exceeded a value over a specific time period.
 
 :::{image} /solutions/images/observability-degraded-docs-rule.png
@@ -36,6 +29,13 @@ You can also access this rule from the **Data Set Quality** page:
 1. Select a data set name from the data set table.
 1. Select **Actions** in the upper-right corner of the page.
 1. Select **Create rule**.
+
+## Requirements
+
+Users need the **Data Set Quality** role with the **Manage rules** privilege or the **Editor** role or higher to create degraded docs rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
+
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
 
 ## Define the conditions [degraded-docs-rule-conditions]
 

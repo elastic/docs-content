@@ -54,6 +54,7 @@ $$$elasticsearch-manage-project-search-power-settings$$$
 | Setting | Description | Project Type |
 | :--- | :--- | :--- |
 | **Search Power** | Search Power controls the amount of baseline resources kept ready for your data and the maximum amount of resources the system can allocate to your project under high search load.<br><br>Increase **Search Power** to add resources for improved query throughput and performance as load increases. Decrease it to reduce the amount of provisioned resources, which lowers both active search costs and the reduced rate billed during idle periods, at the cost of more variable query latency. The On-demand setting provides the lowest baseline and idle cost.<br><br>Choose from three Search Power settings:<br><br>**On-demand:** Low cost option. Query latency is variable and maximum throughput is limited, particularly during demand spikes.<br><br>**Performant:** Delivers low _average_ query latency with no practical query throughput limits to meet varying demand.<br><br>**High availability:** Maintains consistent low query latency across most search workloads, from steady baseline to peak demand.<br> | {{es}} |
+| **Search Power** | Search Power reserves search capacity for your project. Unlike {{es}} projects, capacity is not scaled automatically based on query load.<br><br>The default value is **100**, which reserves enough capacity to keep the project's entire data set available for low-latency search. You can increase Search Power in increments of 100 to reserve additional capacity for the same data set, which can improve performance for higher query concurrency or more demanding search loads. Higher values reserve proportionally more capacity: for example, **200** reserves about twice the capacity of **100**. You can increase Search Power up to **1900**.<br> | {{es}} {{vectordb}} |
 | **Search Boost Window** | Non-time series data is always considered search-ready. The **Search Boost Window** determines the volume of time series project data that will be considered search-ready.<br><br>Increasing the window results in a bigger portion of time series project data included in the total search-ready data volume.<br> | {{es}} |
 | **Data Retention** | Data retention policies determine how long your project data is retained.<br>In {{serverless-full}} data retention policies are configured through [data streams](../../../manage-data/lifecycle/data-stream.md) and you can [specify different retention periods](../../../manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#set-lifecycle) for specific data streams in your project.<br><br> {{elastic-sec}} has two additional configuration settings that can be configured to manage your data retention.<br><br>**Maximum data retention period**<br><br>When enabled, this setting determines the maximum length of time that data can be retained in any data streams of this project.<br><br>Editing this setting replaces the data retention set for all data streams of the project that have a longer data retention defined. Data older than the new maximum retention period that you set is permanently deleted.<br><br> **Default data retention period**<br><br>When enabled, this setting determines the default retention period that is automatically applied to all data streams in your project that do not have a custom retention period already set.<br> |Elasticsearch<br>Observability<br>Security  |
 | **Project features** | Controls [feature tiers and add-on options](../../../deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons) for your {{elastic-sec}} project. | Security |
@@ -65,7 +66,7 @@ Project features and add-ons control which capabilities are available in your se
 * [{{sec-serverless}} project features](#elastic-sec-project-features)
 * [{{obs-serverless}} project features](#obs-serverless-project-features) 
 
-There are no additional project features or add-ons for {{es-serverless}} projects.
+There are no additional project features and on-demand add-ons for {{es-serverless}} projects.
 
 :::{note}
 In {{serverless-full}}, your organization's {{ecloud}} subscription level controls only the support level you receive, and is not related to the features that you use or have access to. [Learn more about subscriptions](/deploy-manage/license.md).
@@ -114,7 +115,7 @@ Predefined tags are attributes that Elastic assigns automatically to each projec
 * `_id`: the project identifier
 * `_organization`: the organization identifier
 * `_region`: the Cloud region where the project is located
-* `_type`: the project type (Observability, Search, or Security)
+* `_type`: the project type (`elasticsearch`, `vectordb`, `observability`, or `security`)
 
 Predefined tags always start with an underscore `_`.
 

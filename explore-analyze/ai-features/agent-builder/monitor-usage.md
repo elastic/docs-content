@@ -1,6 +1,6 @@
 ---
 navigation_title: "Monitor usage and costs"
-description: "Understand how Agent Builder calculates token usage, monitor conversation costs, and learn how execution-based billing works on Elastic Cloud Serverless."
+description: "Understand how Agent Builder calculates token usage, monitor conversation costs, and learn how execution-based billing works on Elastic Cloud."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -9,6 +9,7 @@ products:
   - id: kibana
   - id: observability
   - id: security
+  - id: cloud-hosted
   - id: cloud-serverless
 ---
 
@@ -67,6 +68,8 @@ To view the raw JSON response which includes detailed token information, click t
 :alt: Screenshot of the JSON raw response modal
 :::
 
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` These counts are specific to each {{agent-builder}} response. To monitor aggregate token usage across all AI features in {{kib}}, turn on token usage tracking and use the managed dashboard. Refer to [Track token usage across AI features](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#track-token-usage-across-ai-features).
+
 ## Execution-based billing
 
 How {{agent-builder}} usage is billed depends on your deployment type.
@@ -97,8 +100,18 @@ For general pricing information, refer to [Elastic pricing](https://www.elastic.
 
 ### {{ech}}
 
-{{agent-builder}} and [Workflows](/explore-analyze/workflows.md) on {{ech}} are currently under promotional pricing and available at no additional charge.
+```{applies_to}
+stack: ga 9.5+
+```
 
-### Self-managed
+On {{ech}}, {{agent-builder}} usage is billed based on executions. Each completed interaction with an agent counts as at least one execution. Interactions that use more than 50,000 input tokens count as additional executions in 50,000-token increments. If the agent encounters an error and does not return a response, no executions are metered.
 
-{{agent-builder}} and [Workflows](/explore-analyze/workflows.md) on self-managed deployments are currently under promotional pricing and available at no additional charge. {{agent-builder}} is included with the Enterprise license tier.
+The first 10,000 {{agent-builder}} executions across the {{ech}} deployments in an {{ecloud}} organization each month are included. Additional executions are billed according to the published amounts.
+
+When an agent invokes a [workflow](/explore-analyze/workflows.md), the workflow execution is metered separately. Refer to the [Hosted add-ons pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=stack_hosted&group=addons&dimension=executions) for current billing amounts.
+
+This billing model doesn't apply to {{ech}} [FedRAMP authorized Cloud offerings](/deploy-manage/deploy/elastic-cloud/fedramp.md), which remain under promotional pricing.
+
+### Self-managed, {{eck}}, and {{ece}}
+
+{{agent-builder}} and [workflows](/explore-analyze/workflows.md) on self-managed deployments are currently under promotional pricing and available at no additional charge. {{agent-builder}} is included with the Enterprise license tier.

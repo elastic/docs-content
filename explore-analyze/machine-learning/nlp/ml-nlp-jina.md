@@ -63,14 +63,15 @@ Text embedding models convert text into vector embeddings for semantic similarit
 
 ### Multimodal embedding models [jina-multimodal-embeddings]
 
-Multimodal embedding models convert text, images, video, audio, and documents such as PDF into vector embeddings in a shared vector space. 
+Multimodal embedding models convert text, images, video, audio, and documents such as PDF into vector embeddings in a shared vector space.
+
+:::{include} _snippets/jina-multimodal-embedding-models.md
+:::
+
+Jina also provides a vision-language model for visual question answering:
 
 | Model | Description | Deployment | Access |
 | --- | --- | --- | --- |
-| [`jina-embeddings-v5-omni-small`](https://jina.ai/models/jina-embeddings-v5-omni-small/) | Multimodal embeddings for text, image, audio, video, and PDF. Accepts multimodal input and produces 1024-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-omni-getting-started), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
-| [`jina-embeddings-v5-omni-nano`](https://jina.ai/models/jina-embeddings-v5-omni-nano/) | Compact multimodal embeddings for edge deployment. Accepts multimodal input and produces 768-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-omni-getting-started), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
-| [`jina-clip-v2`](https://jina.ai/models/jina-clip-v2/) | Multilingual multimodal embeddings for text and image retrieval. Accepts text and image input and produces 1024-dimensional vector embeddings. Supports input lengths up to 8K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [EIS](#jina-omni-getting-started), [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
-| [`jina-embeddings-v4`](https://jina.ai/models/jina-embeddings-v4/) | Universal multimodal embeddings for text, image, and PDF retrieval. Accepts text, image, and PDF input and produces 2048-dimensional vector embeddings. Supports input lengths up to 32K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
 | [`jina-vlm`](https://jina.ai/models/jina-vlm/) | Vision-language model for visual question answering. Accepts image and text input and generates text output. Supports input lengths up to 32K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
 
 #### Performance considerations [jina-omni-performance]
@@ -175,11 +176,8 @@ Models run in Docker containers on your own infrastructure. Access them through 
 
 ## Access models [jina-access]
 
-You can access models in the following ways:
-
-* [Elastic {{infer-cap}} Service (EIS)](#jina-eis-getting-started): Call models through managed Elastic {{infer}} endpoints.
-* [Jina API](#jina-external): Call models through the hosted Jina API or through Jina API schemas on-prem.
-* [Cloud marketplace endpoints](#jina-cloud-marketplaces-access): Call models you deployed in your cloud provider account.
+:::{include} _snippets/jina-deploy-and-access-options.md
+:::
 
 ### Elastic {{infer-cap}} Service [jina-eis-getting-started]
 
@@ -814,9 +812,11 @@ With [Jina on-prem](https://github.com/jina-ai/jina-on-prem), you run Jina model
 
 To pull, transfer, and run a prebuilt Docker image, refer to the [Jina on-prem Quick Start](https://github.com/jina-ai/jina-on-prem/wiki/Quick-Start).
 
-For supported text embedding models, you can connect {{es}} to the local server through {{infer}} endpoints that call the APIs exposed by the container. For the models that support this {{es}} integration today, refer to the [model overview](#jina-model-overview) tables.
+For supported text embedding and reranking models, you can connect {{es}} to the local server through {{infer}} endpoints that call the APIs exposed by the container. For the models that support this {{es}} integration, refer to the [model overview](#jina-model-overview) tables.
 
-Create a `text_embedding` endpoint:
+##### Text embedding [jina-on-prem-text-embedding]
+
+Create a `text_embedding` endpoint with the `openai` service type so {{es}} sends OpenAI-compatible embedding requests to the Jina on-prem `/v1/embeddings` API:
 
 ```console
 PUT _inference/text_embedding/jina-embed
@@ -830,17 +830,53 @@ PUT _inference/text_embedding/jina-embed
 }
 ```
 
-1. Use the `openai` service type so {{es}} sends OpenAI-compatible `text_embedding` requests. 
+1. Use the `openai` service type so {{es}} sends OpenAI-compatible `text_embedding` requests.
 2. Point `url` to the `/v1/embeddings` endpoint on your Jina on-prem host.
 3. Set `model_id` to the embedding model running in the container.
-4. This field is required by the {{es}} {{infer}} API but is not used by Jina on-prem. Specify any placeholder string, such as not-needed.
+4. This field is required by the {{es}} {{infer}} API but is not used by Jina on-prem. Specify any placeholder string, such as `not-needed`.
 
 You can reference the `inference_id` of this endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, {{infer}} processors, or search queries.
+
+##### Rerank [jina-on-prem-rerank]
+
+Create a `rerank` endpoint with the [`custom`]({{es-apis}}operation/operation-inference-put-custom) service so {{es}} can call the Jina on-prem `/v1/rerank` API:
+
+```console
+PUT _inference/rerank/jina-on-prem-reranker-v2-custom
+{
+  "service": "custom", 
+  "service_settings": {
+    "url": "http://rerank-host:8084/v1/rerank", <1>
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "request": """
+    {
+      "model": "jina-reranker-v2-base-multilingual",
+      "query": ${query},
+      "documents": ${input}
+    }
+    """, <2>
+    "response": { <3>
+      "json_parser": {
+        "relevance_score": "$.results[*].relevance_score",
+        "reranked_index": "$.results[*].index"
+      }
+    }
+  }
+}
+```
+
+1. Set `url` to the `/v1/rerank` endpoint exposed by the Jina on-prem container.
+2. Define the JSON body that Elasticsearch sends to Jina for each reranking request. `model` identifies the model running in the container. At inference time, Elasticsearch replaces `${query}` with the search query and `${input}` with the documents to rerank.
+3. Define how Elasticsearch extracts the reranking results from the Jina response. `relevance_score` reads the score assigned to each document, and `reranked_index` reads the document's original position in the input list.
+
+You can reference the `inference_id` of this endpoint in `rerank` {{infer}} tasks or in a [`text_similarity_reranker`](/solutions/search/ranking/semantic-reranking.md) retriever.
 
 You can also call any model running in a Jina on-prem container directly from your application or preprocessing pipeline through the Jina API, without creating an {{es}} {{infer}} endpoint. For request formats and supported API schemas, refer to the [Jina on-prem API reference](https://github.com/jina-ai/jina-on-prem/wiki/API-Reference).
 
 ::::{note}
-Currently, only text embedding models have a native {{es}} {{infer}} integration on-prem. For other models, call the Jina API exposed by the on-prem container, then send the results to {{es}} for indexing or search.
+For models other than text embedding and reranking, call the Jina API exposed by the on-prem container, then send the results to {{es}} for indexing or search.
 ::::
 
 ### Cloud marketplace endpoints [jina-cloud-marketplaces-access]

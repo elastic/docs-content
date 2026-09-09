@@ -1,6 +1,6 @@
 ---
 navigation_title: Collector sampling issues
-description: Learn how to troubleshoot missing or incomplete traces in the EDOT Collector caused by sampling configuration.
+description: Learn how to troubleshoot missing or incomplete traces in the Elastic Agent caused by sampling configuration.
 applies_to:
   serverless: ga
   product:

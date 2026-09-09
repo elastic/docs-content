@@ -48,13 +48,13 @@ External MCP hosts need credentials to reach the MCP server endpoint. The way th
 Use one of the following authentication paths:
 
 - [API key authentication](mcp-server-api-keys.md)
-- [OAuth 2.1 authentication](/deploy-manage/app-connections/oauth-clients.md) using an [application connection](/deploy-manage/app-connections.md) {applies_to}`serverless: preview`
+- [OAuth 2.1 authentication](/deploy-manage/app-connections/oauth-clients.md) using an [application connection](/deploy-manage/app-connections.md) {applies_to}`serverless: ga`
 
 The following table compares the two paths.
 
 | Consideration | API key | OAuth |
 | --- | --- | --- |
-| Supported platforms | {{stack}} deployments and {{serverless-short}} projects | {{serverless-short}} projects only {applies_to}`serverless: preview` |
+| Supported platforms | {{stack}} deployments and {{serverless-short}} projects | {{serverless-short}} projects only {applies_to}`serverless: ga` |
 | Best for | Automation, unattended access, and shared machine-to-machine use | Interactive MCP hosts acting on behalf of a person (Claude Desktop, Cursor), including teams that share one client |
 | Multi-user access | One shared key means one shared identity; all callers act with the same permissions | One client registration serves many users. Each person consents separately and gets their own connection, acting with their own permissions and revocable individually |
 | Identity | The key's snapshotted permissions | The consenting user; permissions are the user's live permissions in the project |
@@ -62,7 +62,16 @@ The following table compares the two paths.
 | Setup | Generate a key and add it to the host configuration | Register an MCP client, then consent in the browser |
 | {{agent-builder}} tools through MCP | Full tool catalog, including [Elastic Workflows](/explore-analyze/workflows.md) | Full tool catalog, limited by the [authorizing user's](/deploy-manage/app-connections/connect-mcp-host.md#authorize-connection) permissions |
 
+## Use tools with data from multiple projects [agent-builder-mcp-cps]
+```{applies_to}
+stack: unavailable
+serverless: preview
+```
+
+When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), tool calls use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the MCP URL. Requests without `/s/<space-name>` use the default space.
+
 ## Related pages
 
 - [](programmatic-access.md)
+- [Create API keys for {{agent-builder}} APIs](api-keys.md)
 - [](/deploy-manage/app-connections/oauth-clients.md)

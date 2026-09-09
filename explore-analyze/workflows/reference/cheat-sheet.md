@@ -100,6 +100,7 @@ Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/wo
 | Call a service | `<connector>.<action>` (for example, `slack.postMessage`, `jira.createIssue`) |
 | Branch | `if`, `switch` |
 | Loop | `foreach`, `while`, `loop.break`, `loop.continue` |
+| Run independent work at the same time | `parallel` |
 | Fan out to independent executions | `workflow.executeAsync` (tech preview) |
 | Pause | `wait`, `waitForInput` |
 | Transform data | `data.filter`, `data.map`, `data.aggregate`, `data.parseJson`, `data.regexExtract` |

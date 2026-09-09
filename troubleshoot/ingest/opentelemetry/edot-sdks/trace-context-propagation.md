@@ -45,7 +45,7 @@ If you are still in a mixed environment, you might observe one or more of the fo
 - Downstream spans start new traces instead of continuing the existing one.
 - Traces appear split or uncorrelated in the UI.
 - Parent–child relationships are missing when traffic crosses between:
-  - OpenTelemetry-instrumented services (including EDOT-based and contrib OpenTelemetry SDKs) and Elastic {{product.apm}} agents
+  - OpenTelemetry-instrumented services (including {{edot}}-based and contrib OpenTelemetry SDKs) and Elastic {{product.apm}} agents
   - Elastic {{product.apm}} agents that support W3C Trace Context and older, pre-W3C agents in the same call chain
 
 ## Causes
@@ -82,10 +82,10 @@ Elastic {{product.apm}} agents expose a trace continuation strategy that control
 The `restart_external` strategy is useful when a contrib service propagates W3C headers but sends its traces to a different backend, which otherwise results in missing or misleading parent transactions.
 
 :::{note}
-This trace continuation behavior is specific to Elastic {{product.apm}} agents. There is currently no equivalent feature in OpenTelemetry or EDOT.
+This trace continuation behavior is specific to Elastic {{product.apm}} agents. There is currently no equivalent feature in OpenTelemetry or {{edot}}.
 :::
 
-### Workaround for OpenTelemetry / EDOT
+### Workaround for OpenTelemetry / {{edot}} [workaround-for-opentelemetry-edot]
 
 If you need to force a downstream OpenTelemetry-instrumented service to start a new trace independently:
 

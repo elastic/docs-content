@@ -13,11 +13,11 @@ products:
   - id: edot-collector
 ---
 
-# LLM observability with EDOT
+# LLM observability with {{edot}} [llm-observability-with-edot]
 
 Applications make more and more use of Generative Artificial Intelligence (GenAI). Telemetry data in terms of spans, metrics and logs when communicating with the GenAI APIs becomes more and more important to operate the application in production and understand the application's behavior and health state.
 
-Elastic currently supports LLM observability through the Elastic Distributions of Opentelemetry (EDOT). The EDOT Java, EDOT Node.js, and EDOT Python distributions support LLM observability as a tech preview.
+Elastic currently supports LLM observability through the {{edot}}. The EDOT Java, EDOT Node.js, and EDOT Python distributions support LLM observability as a tech preview.
 
 ## Supported technologies
 
@@ -33,7 +33,7 @@ See the [Supported Technologies section in the corresponding EDOT SDK](opentelem
 
 ## Quickstart
 
-Follow these steps to instrument LLMs using EDOT.
+Follow these steps to instrument LLMs using {{edot}}.
 
 ### Instrument your LLM application
 

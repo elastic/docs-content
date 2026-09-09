@@ -54,3 +54,4 @@ Refer to the following pages for more information on Significant Events:
 - [Operator guide](./operator-guide.md): Learn more about system impact, cost drivers, and operational procedures
 - [How Significant Events works](./how-it-works.md): Understand how Significant Events processes data, what runs where, and how to trace results across the system
 - [Knowledge Indicators](./knowledge-indicators.md): Get an in-depth overview of how KIs work
+- [Nightshift](../../nightshift/nightshift.md): Use the Nightshift UI to triage and investigate Significant Events

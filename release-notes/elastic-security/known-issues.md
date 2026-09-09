@@ -31,7 +31,7 @@ On {{stack}} 9.4.4, {{elastic-sec}} deployments with a large number of indices c
 
 
 **Workaround**<br>
-To stabilize {{kib}} until we resolve the issue, we recommend temporarily disabling the Entity store feature:
+To stabilize {{kib}}, we recommend temporarily disabling the Entity store feature:
 
 1. Block the entity store tasks from running by applying this setting:
 
@@ -90,7 +90,9 @@ To stabilize {{kib}} until we resolve the issue, we recommend temporarily disabl
    * **Self-managed**: Remove the setting from `kibana.yml`, save your change, and restart {{kib}}.
 
 
-We will update this page with instructions on how to enable the feature again once versions with a fix are available.
+**Resolved**<br>
+
+Resolved in {{stack}} 9.4.5.
 
 :::
 

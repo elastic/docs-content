@@ -59,6 +59,7 @@ Available actions include:
 - View endpoint details
 - Copy the inference endpoint ID
 - Delete endpoints
+- {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Region preferences](eis-region-and-hosting.md#inference-region-preferences) for where EIS processes {{infer}} requests
 
 ## Add endpoints [add-endpoint]
 

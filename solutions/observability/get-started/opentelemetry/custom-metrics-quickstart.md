@@ -1,6 +1,6 @@
 ---
-navigation_title: Ingest custom metrics with EDOT
-description: Learn how to send custom metrics to Elastic using EDOT and OTLP. This lightweight quickstart covers the minimal setup to ingest and validate metrics in Elastic Observability.
+navigation_title: Ingest custom metrics with {{edot}}
+description: Learn how to send custom metrics to Elastic using {{edot}} and OTLP. This lightweight quickstart covers the minimal setup to ingest and validate metrics in Elastic Observability.
 applies_to:
   stack:
   serverless:
@@ -14,18 +14,18 @@ products:
   - id: edot-collector
 ---
 
-# Quickstart: Ingest custom metrics with EDOT
+# Quickstart: Ingest custom metrics with {{edot}} [quickstart-ingest-custom-metrics-with-edot]
 
-Use this quickstart to send custom metrics to Elastic using the Elastic Distribution of the OpenTelemetry Collector (EDOT).
+Use this quickstart to send custom metrics to Elastic using the {{agent}}.
 
-You’ll install a lightweight EDOT Collector, configure a minimal Open Telemetry Protocol (OTLP) metrics pipeline, and verify the data in {{product.observability}}.
+You’ll install a lightweight {{agent}}, configure a minimal Open Telemetry Protocol (OTLP) metrics pipeline, and verify the data in {{product.observability}}.
 
 ## Prerequisites
 
 - An Elastic deployment ({{serverless-short}}, {{ech}}, or self-managed)
 - An {{observability}} project {{kib}} instance
 - Permissions to create API keys
-- A system to run the EDOT Collector (Docker, host, or VM)
+- A system to run the {{agent}} (Docker, host, or VM)
 - Optional: An application that emits OpenTelemetry metrics
 
 :::::{stepper}
@@ -39,7 +39,7 @@ In your {{product.observability}} deployment:
 3. Note your deployment's OTLP ingest endpoint.
 ::::
 
-::::{step} Run the EDOT Collector with a minimal metrics pipeline
+::::{step} Run the {{agent}} with a minimal metrics pipeline
 
 Update the `collector-config.yaml` file with the following Collector configuration to receive OTLP metrics and export them to Elastic:
 
@@ -140,7 +140,7 @@ In {{kib}}:
 
 ## Explore your metrics
 
-You've successfully set up a minimal OTLP metrics pipeline with the EDOT Collector. Your custom metrics are flowing into {{product.observability}} and can be visualized in {{kib}}.
+You've successfully set up a minimal OTLP metrics pipeline with the {{agent}}. Your custom metrics are flowing into {{product.observability}} and can be visualized in {{kib}}.
 
 Now you can:
 
@@ -155,4 +155,4 @@ You can expand your metrics collection setup in several ways:
 - Add more receivers to collect additional metrics
 - Configure the same Collector to send logs and traces alongside metrics
 
-To learn more, refer to the [Elastic Distribution of the OpenTelemetry Collector documentation](elastic-agent://reference/edot-collector/index.md).
+To learn more, refer to the [{{agent}} documentation](elastic-agent://reference/edot-collector/index.md).

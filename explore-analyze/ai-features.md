@@ -1,5 +1,6 @@
 ---
 navigation_title: AI-powered features
+description: Explore AI-powered features in the Elastic Stack, including Elastic Agent Builder, and machine learning tools for search, observability, and security workflows.
 applies_to:
   stack: ga
   serverless: ga

@@ -6,6 +6,8 @@ Alternatively, a user or key can be granted organization-level roles that grant 
 
 Permissions are always evaluated per project. It does not matter whether you query that project from its own endpoint or from an origin project linked through {{cps-init}}: the same role assignments apply.
 
+{{cps-cap}} features in {{kib}}, such as the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana), require the [`read_project_routing` cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster). When you create [custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) for users who search across projects, grant the `read_project_routing` cluster privilege alongside the `read` index privilege.
+
 ::::{admonition} Use {{ecloud}} API keys for {{cps-init}}
 For {{cps}}, you must use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md), which can authenticate across project boundaries. 
 

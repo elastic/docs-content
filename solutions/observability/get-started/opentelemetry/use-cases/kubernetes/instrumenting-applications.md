@@ -13,9 +13,9 @@ products:
   - id: edot-collector
 ---
 
-# Instrument applications with EDOT SDKs on Kubernetes
+# Instrument applications with EDOT SDKs on Kubernetes [instrument-applications-with-edot-sdks-on-kubernetes]
 
-The [Elastic Distributions of OpenTelemetry (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md) cover multiple languages. Read on to learn how to instrument applications for APM in a Kubernetes environment for all supported languages.
+The [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md) cover multiple languages. Read on to learn how to instrument applications for APM in a Kubernetes environment for all supported languages.
 
 In Kubernetes environments with the OpenTelemetry Operator, [automatic or zero-code instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/) simplifies the instrumentation process by injecting and configuring instrumentation libraries into the targeted Pods.
 
@@ -25,7 +25,7 @@ On the other hand, manual instrumentation with OpenTelemetry allows you to custo
 
 Before starting with application auto-instrumentation, ensure the following prerequisites are in place for proper setup:
 
-- Install the OpenTelemetry operator and EDOT collectors following the [quickstart guide](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
+- Install the OpenTelemetry operator and {{edot}} collectors following the [quickstart guide](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
 - Ensure a valid `kind: Instrumentation` object exists in the cluster.
 
 ## Auto-instrumentation basics
@@ -42,7 +42,7 @@ opentelemetry-operator-system   elastic-instrumentation   5d20h   http://opentel
 
 The `Instrumentation` object stores important parameters:
 
-- The exporter endpoint represents the destination for the traces, in this case the HTTP receiver configured in the EDOT DaemonSet Collector. That endpoint has to be reachable by the Pods being instrumented.
+- The exporter endpoint represents the destination for the traces, in this case the HTTP receiver configured in the {{edot}} DaemonSet Collector. That endpoint has to be reachable by the Pods being instrumented.
 
    ```yaml
    exporter:
@@ -277,7 +277,7 @@ When troubleshooting auto-instrumentation issues in a Kubernetes environment wit
 
 ## Migrate from the Elastic APM Attacher for Kubernetes
 
-While the Elastic APM Attacher for Kubernetes only supports the Elastic APM application agents, the OpenTelemetry operator can support both the Elastic APM application agents and the EDOT agents. The OpenTelemetry operator has more features and is being actively developed.
+While the Elastic APM Attacher for Kubernetes only supports the Elastic APM application agents, the OpenTelemetry operator can support both the Elastic APM application agents and the {{edot}} agents. The OpenTelemetry operator has more features and is being actively developed.
 
 Migrating from the Elastic APM Attacher for Kubernetes consists of the following steps:
 

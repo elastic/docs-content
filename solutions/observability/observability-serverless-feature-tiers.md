@@ -63,3 +63,13 @@ To access the additional features available in Observability Complete, upgrade y
 1. Next to **Project features**, select **Edit**.
 1. Select **Observability Complete**.
 1. Select **Save** to complete the upgrade.
+
+## Integration availability
+
+In Logs Essentials projects, integration search results only show {{observability}} {{integrations}} that support collecting logs. Search results won't show {{integrations}} that only collect metrics. When editing an integration policy, you can only edit log data streams.
+
+:::{note}
+
+Installing an integration package installs all its assets, including dashboards for both logs and metrics. Metrics-only dashboards are empty because metrics collection is not available in Logs Essentials projects.
+
+:::

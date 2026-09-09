@@ -26,6 +26,7 @@ Unless otherwise specified, response actions are supported on all endpoint platf
 
   These are required to perform actions both in the response console and in other areas of the {{security-app}} (such as isolating a host from a detection alert).
 * Users must have the appropriate user role or privileges for at least one response action to access the response console.
+* In addition to the privilege for each response action, users need at least **Read** access to the **Response Actions History** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) to view command output and status in the response console. Without it, running a response action in the console will create the action request, but the user won't be able to monitor its completion or view its results.
 ::::
 
 
@@ -55,6 +56,7 @@ Some response actions may take a few seconds to complete. Once you enter a comma
 Activity in the response console is persistent, so you can navigate away from the page and any pending actions you’ve submitted will continue to run. To confirm that an action completed, return to the response console to view the console output or check the [response actions history](/solutions/security/endpoint-response-actions.md#actions-log).
 
 ::::{important}
+:applies_to: stack: ga 9.0-9.1
 Once you submit a response action, you can’t cancel it, even if the action is pending for an offline host.
 ::::
 
@@ -66,19 +68,56 @@ The following response action commands are available in the response console.
 
 ### `cancel` [cancel]
 ```yaml {applies_to}
-stack: ga 9.2
+stack: ga 9.2+
 serverless: ga
 ```
 
 ::::{note}
-This response action is supported only for [Microsoft Defender for Endpoint–enrolled hosts](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions).
+This response action is supported for:
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) and [Microsoft Defender for Endpoint](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions) hosts.
+* {applies_to}`stack: ga 9.2-9.4` Microsoft Defender for Endpoint–enrolled hosts only.
+ 
 ::::
 
-Cancel an ongoing action on the host. This allows you to force-cancel actions that are stuck in a pending state, unblocking further use of the response console.
+Cancel a pending or in-progress action on the host. This allows you to force-cancel actions that were misfired or are taking too long, unblocking further use of the response console.
 
-You must include the following parameter to identify the action to cancel:
+#### {{elastic-defend}} 
+```yaml {applies_to}
+stack: ga 9.5+
+serverless: ga
+```
 
-* `--action`: The response action to cancel. Select from a list of pending actions.
+For {{elastic-defend}}, you must include the following parameter to identify the action to cancel:
+
+* `--action`: The response action to cancel. Select from a list of pending or in-progress actions.
+
+You can also use this optional parameter:
+
+* `--force`: Forcefully cancel an in-progress action.
+
+::::{note}
+For {{elastic-defend}}, only the following response actions can be canceled:
+* `execute`
+* `get-file`
+* `memory-dump`
+* `runscript`
+* `scan`
+* `upload`
+::::
+
+Required role or privilege: `cancel` doesn't have its own required role or privilege. To use it, you must have the same role or privilege that's required for the action you're canceling. For example, canceling a `runscript` action requires the **Execute Operations** privilege.
+
+Example: `cancel --action="action-123-456-789" --force --comment="Force-canceling a script that is still running"`
+
+#### Microsoft Defender for Endpoint
+```yaml {applies_to}
+stack: ga 9.2+
+serverless: ga
+```
+
+For Microsoft Defender for Endpoint, you must include the following parameter to identify the action to cancel:
+
+* `--action`: The response action to cancel. Select from a list of pending or in-progress actions.
 
 Required role or privilege: `cancel` doesn't have its own required role or privilege. To use it, you must have the same role or privilege that's required for the action you're canceling. For example, canceling a `runscript` action requires the **Execute Operations** privilege.
 
@@ -179,7 +218,7 @@ stack: ga 9.3+
 serverless: ga
 ```
 
-Trigger a virtual process or kernel system memory dump on a host. Use this action to capture volatile artifacts—such as in-memory malware, credentials, and injected payloads—for advanced forensic analysis.
+Trigger a memory dump on a host. Use this action to capture volatile artifacts—such as in-memory malware, credentials, and injected payloads—for advanced forensic analysis.
 
 ::::{note}
 This response action is supported for:
@@ -193,12 +232,17 @@ Use one of the following parameters to specify the type of memory dump:
 
 * `--kernel`: Generate a kernel-level memory dump. No other arguments are required when using this parameter.
   ::::{note}
-  Kernel memory dumps are only supported on Windows endpoints.
+  Kernel memory dumps are only supported on Windows endpoints. The host must have free disk space of at least twice the system's working set (the amount of physical memory in use).
   ::::
 
 * `--process`: Generate a process-level memory dump. When using this parameter, you must also include one of the following to identify the process:
     * `--pid`: The process ID (PID) of the process to dump.
     * `--entityId`: The entity ID of the process to dump.
+
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` `--raw`: Generate a raw dump of the host's physical memory. No other arguments are required when using this parameter.
+  ::::{note}
+  Raw memory dumps are only supported on Windows endpoints running {{agent}} 9.5.2 or later. The host must have free disk space of at least twice its physical RAM.
+  ::::
 
 Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
 
@@ -209,6 +253,8 @@ Examples:
 `memory-dump --process --entityId="jshks0fhksh"`
 
 `memory-dump --kernel --comment "Dumping kernel memory for investigation"`
+
+`memory-dump --raw --comment "Dumping raw memory for investigation"`
 
 
 ### `processes` [processes]

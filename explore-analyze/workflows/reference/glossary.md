@@ -147,6 +147,17 @@ A runtime parameter of a workflow. Declared under the `manual` trigger on 9.5+ a
 
 The template language used to reference context variables inside workflow YAML. The engine evaluates expressions like `{{ inputs.name }}` and `${{ steps.fetch.output }}` at runtime. Refer to [Templating engine](/explore-analyze/workflows/templating.md).
 
+## M [workflows-glossary-m]
+
+### Managed workflow [workflows-glossary-managed-workflow]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+A workflow definition that Elastic ships and installs automatically to power product functionality. Distinct from workflows you author. Appears with a **Managed** badge. Refer to [Managed workflows](/explore-analyze/workflows/managed-workflows.md).
+
 ## N-O [workflows-glossary-n-o]
 
 ### Observable [workflows-glossary-observable]
@@ -165,7 +176,7 @@ Either the data a step produces (accessed through `steps.<name>.output`), or a t
 
 ### RBAC [workflows-glossary-rbac]
 
-Role-based access control. {{kib}}'s privilege system. Workflows defines seven sub-feature privileges (`create`, `read`, `update`, `delete`, `execute`, `readExecution`, `cancelExecution`). Refer to [Set up Workflows](/explore-analyze/workflows/get-started/setup.md).
+Role-based access control. {{kib}}'s privilege system. Workflows defines sub-feature privileges for authoring and running workflows, plus managed-workflow privileges (**Read managed workflows**, **Read managed workflow execution**, **Update managed workflows**). Refer to [Set up Workflows](/explore-analyze/workflows/get-started/setup.md).
 
 ### Resume [workflows-glossary-resume]
 
@@ -233,6 +244,15 @@ Named values set by `data.set` steps. Global within an execution. Accessed as `v
 ### Workflow [workflows-glossary-workflow]
 
 A declarative YAML automation. The primary unit of work in Elastic Workflows. Refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
+
+### Workflow version [workflows-glossary-workflow-version]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+A numbered snapshot of a workflow definition (`v1`, `v2`, and so on). A new version is created each time you save the workflow or restore a previous version. Distinct from the YAML [`version`](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-version) schema field. Refer to [Version history](/explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflows-version-history).
 
 ### `workflows.failed` [workflows-glossary-workflows-failed]
 

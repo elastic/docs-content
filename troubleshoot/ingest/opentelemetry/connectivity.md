@@ -1,6 +1,6 @@
 ---
 navigation_title: Connectivity issues
-description: Troubleshoot connectivity issues between EDOT SDKs, the EDOT Collector, and Elastic.
+description: Troubleshoot connectivity issues between EDOT SDKs, the Elastic Agent, and Elastic.
 applies_to:
   serverless: ga
   product:
@@ -11,9 +11,9 @@ products:
   - id: edot-sdk
 ---
 
-# Connectivity issues with EDOT
+# Connectivity issues with {{edot}} [connectivity-issues-with-edot]
 
-Connectivity problems occur when the EDOT SDKs or the EDOT Collector can't reach Elastic. Even with correct proxy settings, network restrictions such as blocked ports or firewalls can prevent data from flowing.
+Connectivity problems occur when the EDOT SDKs or the {{agent}} can't reach Elastic. Even with correct proxy settings, network restrictions such as blocked ports or firewalls can prevent data from flowing.
 
 ## Symptoms
 

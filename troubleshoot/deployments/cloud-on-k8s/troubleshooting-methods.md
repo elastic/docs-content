@@ -180,11 +180,33 @@ kubectl annotate elasticsearch quickstart eck.k8s.elastic.co/es-client-timeout=6
 
 ## Exclude resources from reconciliation [k8s-exclude-resource]
 
-For debugging purposes, you might want to temporarily prevent ECK from modifying Kubernetes resources belonging to a particular Elastic Stack resource. To do this, annotate the Elastic object with `eck.k8s.elastic.co/managed=false`. This annotation can be added to any of the following types of objects:
+For debugging purposes, you might want to temporarily prevent ECK from modifying Kubernetes resources belonging to a particular Elastic Stack resource.
+
+:::::{applies-switch}
+
+::::{applies-item} eck: ga 3.5+
+Use [pause orchestration](/deploy-manage/deploy/cloud-on-k8s/k8s-pause-orchestration.md), which stops spec-driven changes while ECK continues essential maintenance tasks. The annotation is supported on all ECK-managed resource types.
+
+```yaml
+metadata:
+  annotations:
+    eck.k8s.elastic.co/pause-orchestration: "true"
+```
+
+Or in one line:
+
+```sh
+kubectl annotate elasticsearch quickstart eck.k8s.elastic.co/pause-orchestration=true --overwrite
+```
+::::
+
+::::{applies-item} eck: ga 3.0-3.4
+Use the `eck.k8s.elastic.co/managed` annotation. This annotation can be added to any of the following types of objects:
 
 * Elasticsearch
 * Kibana
 * ApmServer
+
 
 ```yaml
 metadata:
@@ -197,6 +219,9 @@ Or in one line:
 ```sh
 kubectl annotate elasticsearch quickstart --overwrite eck.k8s.elastic.co/managed=false
 ```
+::::
+
+:::::
 
 
 ## Get Kubernetes events [k8s-get-k8s-events]

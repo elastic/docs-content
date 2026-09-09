@@ -132,6 +132,6 @@ A rule consists of conditions, actions, and a schedule. When conditions are met,
 :::
 
 1. Any time a rule’s conditions are met, an alert is created. This example checks for servers with average CPU > 0.9. Three servers meet the condition, so three alerts are created.
-2. Alerts create actions according to the action frequency, as long as they are not muted or throttled. When actions are created, its properties are filled with actual values. In this example, three actions are created when the threshold is met, and the template string `{{server}}` is replaced with the appropriate server name for each alert.
+2. Alerts create actions according to the action frequency, unless they are snoozed, muted, or throttled. When actions are created, its properties are filled with actual values. In this example, three actions are created when the threshold is met, and the template string `{{server}}` is replaced with the appropriate server name for each alert.
 3. {{kib}} runs the actions, sending notifications by using a third party integration like an email service.
 4. If the third party integration has connection parameters or credentials, {{kib}} fetches these from the appropriate connector.

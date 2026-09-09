@@ -24,7 +24,13 @@ There are types of filters are available for filtering by IP address or CIDR blo
 * **Ingress or inbound IP filters**: These restrict access to your deployments from a set of IP addresses or CIDR blocks. These filters are available through the UI.
 * **Egress or outbound IP filters**: These restrict the set of IP addresses or CIDR blocks accessible from your deployment. These might be used to restrict access to a certain region or service. This feature is currently only available through the [Traffic Filtering API](/deploy-manage/security/network-security-api.md). {applies_to}`ess: beta` {applies_to}`serverless: unavailable` 
 
-Follow the step described here to set up ingress or inbound IP filters through the {{ecloud}} Console.
+Follow the steps described here to set up ingress or inbound IP filters through the {{ecloud}} Console.
+
+:::{tip}
+applies_to: ech: ga
+
+If you created your deployment through the [Azure Native Service](/deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md), you can also create and link IP filters from the Azure portal Traffic Filter page. Refer to [](/deploy-manage/deploy/elastic-cloud/azure-native-isv-service-network-security.md).
+:::
 
 To learn how IP filters work together, and alongside [private connection policies](private-connectivity.md), refer to [](/deploy-manage/security/network-security-policies.md).
 
@@ -45,7 +51,7 @@ The following requirements apply to the project where you want to apply an IP fi
 :::{include} _snippets/network-sec-tier-reqs.md
 :::
 
-There are no specific requirements for {{es-serverless}} projects or {{ech}} deployments.
+There are no specific requirements for other {{serverless-short}} project types or {{ech}} deployments.
 
 ## Limitations
 ```{applies_to}
@@ -72,7 +78,7 @@ To create an IP filter:
 5. Select the cloud provider and region for the IP filter. 
 6. Add a meaningful name and description for the IP filter.
 7. Under **Access control**, select whether the IP filter should be applied to ingress or egress traffic. Currently, only ingress traffic filters are supported.
-8. Add one or more allowed sources using IPv4, or a range of addresses with CIDR.
+8. Add one or more allowed sources using IPv4, or a range of addresses with CIDR. For each source, select **Add description** to add an optional description that helps you identify the source later.
 9.  Optional: Under **Apply to resources**, associate the new filter with one or more deployments or projects. After you associate the  IP filter with a deployment or project, it starts filtering traffic.
 10.  To automatically attach this IP filter to new deployments or projects, select **Apply to future resources by default**.
 11.  Click **Create**.

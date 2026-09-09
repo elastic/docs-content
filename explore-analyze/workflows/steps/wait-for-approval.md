@@ -15,7 +15,7 @@ products:
 
 # waitForApproval [workflows-waitforapproval-step]
 
-The `waitForApproval` step pauses workflow execution until a human approves or rejects the request. Use it when the decision is yes or no. The step returns `approved: true` or `false` and renders approve/reject controls in {{kib}} and in external notifications. Approvers respond from the workflow execution view, the [Inbox app](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md#workflows-hitl-inbox), or an external notification.
+The `waitForApproval` step pauses workflow execution until a human approves or rejects the request. Use it when the decision is yes or no. The step returns `approved: true` or `false` and renders approve/reject controls in {{kib}} and in external notifications. Approvers respond from the workflow execution view or an external notification.
 
 For free-form or multi-field input, use [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) instead. For the end-to-end human-in-the-loop pattern, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md).
 
@@ -101,7 +101,7 @@ While waiting for a response, the step stays in the `WAITING_FOR_INPUT` state. H
 
 ## Related
 
-- [Human-in-the-loop pattern](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md): Inbox, external resume, and design guidance.
+- [Human-in-the-loop pattern](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md): External resume and design guidance.
 - [`waitForInput` step](/explore-analyze/workflows/steps/wait-for-input.md): Collect structured input with a custom JSON Schema.
 - [Flow control steps](/explore-analyze/workflows/steps/flow-control-steps.md): Other flow-control types you'll often combine with approval gates.
 - [If step](/explore-analyze/workflows/steps/if.md): Typical gate around the post-approval action.
