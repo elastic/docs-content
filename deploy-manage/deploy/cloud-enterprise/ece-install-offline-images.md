@@ -14,6 +14,10 @@ Versions of the {{stack}}, containing {{es}}, {{kib}}, and other products, are a
 
 The first table contains the stack versions shipped with the current {{version.ece}} version of {{ece}}. You can also check the [most recent stack packs and Docker images](#ece-recent-download-list), which might have released after the current version of ECE, as well as the [full list of available stack packs and Docker images](#ece-full-download-list).
 
+:::{important}
+{{stack}} versions 9.5.0, 9.5.1, and 9.5.2 are unavailable due to a known issue. {{ece}} 4.2.0 includes 9.5.2 Docker images so you can complete the installation. After {{ece}} is running, add the 9.5.3 stack pack and Docker images from the [most recent list](#ece-recent-download-list) and use 9.5.3 for new deployments. Review [the related KB article](https://ela.st/es-v95-replication-bug).
+:::
+
 | Docker images included with {{ece}} {{version.ece}} |
 | --- |
 | docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}} |
@@ -24,10 +28,6 @@ The first table contains the stack versions shipped with the current {{version.e
 | docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-9}} |
 | docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-9}} |
 | docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-9}} |
-
-:::{important}
-{{stack}} versions 9.5.0, 9.5.1, and 9.5.2 are unavailable due to a known issue. {{ece}} 4.2.0 includes 9.5.2 Docker images so you can complete the installation. After {{ece}} is running, add the 9.5.3 stack pack and Docker images from the [most recent list](#ece-recent-download-list) and use 9.5.3 for new deployments. Review [the related KB article](https://ela.st/es-v95-replication-bug).
-:::
 
 $$$ece-all-stacks$$$Additional {{stack}} versions are available as Docker images that you can use with ECE. For offline installations, you need to download both the {{stack}} pack and the Docker images for the same version.
 
