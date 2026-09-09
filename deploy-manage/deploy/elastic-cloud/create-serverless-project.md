@@ -12,7 +12,7 @@ products:
 :::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
 :::
 
-Choose the type of project that matches your needs to get started with our solution guides:
+Choose the type of project that matches your needs to get started with our solution guides.
 
 ![elasticsearch](../../images/64x64_Color_elasticsearch-logo-color-64px.png "elasticsearch =30") **Elasticsearch**  
 Build custom search-powered applications with {{es}}.  
