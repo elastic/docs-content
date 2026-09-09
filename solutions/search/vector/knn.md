@@ -44,10 +44,7 @@ To run a kNN search in {{es}}:
   - `create`, `index`, or `write` to add data
   - `read` to search the index
 
-:::{tip}
-The default type of {{es-serverless}} project is suitable for this use case unless you plan to use uncompressed dense vectors (`int4` or `int8` quantization strategies) with high dimensionality.
-To learn more, refer to [General purpose and vector optimized projects](dense-vector.md#vector-profiles).
-:::
+If you're using {{serverless-full}}, [compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type) before implementing kNN search.
 
 ## kNN search methods [knn-methods]
 
