@@ -261,7 +261,7 @@ toc:
           - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md
-      - hidden: ai-features/context-engine/context-engine.md
+      - hidden: ai-features/context-engine.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/agent-skills.md
       - file: ai-features/llm-guides/llm-connectors.md
