@@ -14,6 +14,10 @@ Versions of the {{stack}}, containing {{es}}, {{kib}}, and other products, are a
 
 The first table contains the stack versions shipped with the current {{version.ece}} version of {{ece}}. You can also check the [most recent stack packs and Docker images](#ece-recent-download-list), which might have released after the current version of ECE, as well as the [full list of available stack packs and Docker images](#ece-full-download-list).
 
+:::{important}
+{{stack}} versions 9.5.0, 9.5.1, and 9.5.2 are unavailable [due to a known issue](https://ela.st/es-v95-replication-bug). {{ece}} 4.2.0 includes 9.5.2 Docker images. After {{ece}} is running, add the 9.5.3 stack pack and Docker images from the [most recent list](#ece-recent-download-list) and use 9.5.3 for new deployments.
+:::
+
 | Docker images included with {{ece}} {{version.ece}} |
 | --- |
 | docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}} |
