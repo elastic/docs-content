@@ -130,6 +130,11 @@ These settings are stored as a single shared configuration — one per deploymen
 To edit these settings, you must have the **All** privilege for the **Synthetics and Uptime** feature in **{{stack-manage-app}} → Roles → {{kib}} privileges → {{observability}}**. Users with only the **Read** privilege see the form as read-only.
 ::::
 
+::::{admonition} View monitors from linked projects
+:applies_to: serverless: preview
+On {{serverless-full}}, after you [link projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), you can view monitors from those projects without any additional configuration. Refer to [Monitors from linked projects](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-linked-monitors).
+::::
+
 ### Source settings [synthetics-settings-remote-clusters-source]
 
 Use the **Use all remote clusters** toggle or **Select remote clusters** combo box to control which remote clusters Synthetics queries:

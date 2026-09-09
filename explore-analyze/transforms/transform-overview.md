@@ -71,3 +71,38 @@ If you prefer to spread out the impact on your cluster (at the cost of a slower 
 ```
 documents_processed / search_time_in_ms * 1000
 ```
+
+## Source data from linked projects [transform-cps-scope]
+```{applies_to}
+stack: unavailable
+serverless: preview
+```
+
+On {{serverless-full}}, a transform can read source data from projects that are linked to yours through [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md).
+
+A transform's scope is stored as a `project_routing` value in its `source` configuration and applies every time the transform runs. For routing expression syntax, refer to [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
+
+### Set a transform's scope [transform-cps-set]
+
+When you create a transform in {{kib}}, use the **Project scope** control next to the data view picker to choose which linked projects the transform searches. This control opens a [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) for the transform.
+
+The default scope depends on how you create the transform:
+
+* **In {{kib}}**: Uses your space's default scope.
+* **With Clone**: Keeps the original transform's scope.
+* **Through the API, or before {{cps-init}} was available**: Searches only the origin project until you set `project_routing`.
+
+To change the scope later:
+* Edit the transform in {{kib}}.
+* Select transforms and choose **Change project scope**.
+* Use the [update transform API]({{es-apis}}operation/operation-transform-update-transform).
+
+### Check a transform's scope [transform-cps-column]
+
+The **Transforms** management page shows each transform's scope in the **Project scope** column:
+
+* **This project**: Searches the origin project only, either because only the origin project is specified, or because no `project_routing` is specified.
+* **All**: Searches every linked project.
+* A count such as **5/10**: Searches a custom subset of projects. This might or might not include the origin project.
+
+Select the value to see the list of included projects.
