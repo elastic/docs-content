@@ -58,7 +58,7 @@ During technical preview, only newly created projects can be origin projects for
 To be available for linking, projects must meet the following requirements:
 
 - The origin project and all linked projects must be in the same {{ecloud}} organization.
-- You can link any combination of {{product.elasticsearch}}, {{product.observability}}, and {{product.security}} projects in the same organization.
+- You can link any combination of {{product.elasticsearch}}, {{es}} {{vectordb}}, {{product.observability}}, and {{product.security}} projects in the same organization.
 - Projects can be linked across cloud providers and regions. For example, a project in GCP `us-east4` can be linked to a project in AWS `eu-central-1` without any additional configuration.
 - {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. Projects on the **Essentials** tier are not compatible with {{cps}}.
 
@@ -75,7 +75,16 @@ For most deployments, we recommend creating a dedicated **overview project** tha
 
 In this architecture, you create a new, empty project and link existing projects to it. You run all cross-project searches from the new overview project, while your actual active projects continue to operate independently. The linked ("spoke") projects are not linked to each other.
 
-![Overview project architecture for cross-project search](images/serverless-cross-project-search-arch.svg)
+```mermaid
+flowchart TB
+    O["<b>Overview project</b><br/>Origin (empty hub)"]:::tip
+    O --> S["<b>Security project</b><br/>Linked (data)"]:::plain
+    O --> Obs["<b>Observability project</b><br/>Linked (data)"]:::plain
+    O --> E["<b>Elasticsearch project</b><br/>Linked (data)"]:::plain
+    O --> V["<b>Vector Database project</b><br/>Linked (data)"]:::plain
+```
+
+Searches run from the overview project across all linked projects. Linked projects operate independently and are not linked to each other. You can link any combination of compatible projects.
 
 The overview project becomes a central point for broad searches, dashboards, and investigations, without affecting your existing setup.
 

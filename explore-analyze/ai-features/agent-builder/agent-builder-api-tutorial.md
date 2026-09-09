@@ -39,7 +39,7 @@ To build a custom agent with {{agent-builder}} APIs, you need the following:
 
 - Access to the feature in {{kib}}. Refer to [](get-started.md)
 - [Permission](permissions.md) to create indices and use {{agent-builder}}
-  - A {{kib}} API key for authentication if you're using `curl`
+- A [{{agent-builder}} API key](api-keys.md) for authentication if you're using `curl`
   :::{note}
   Set the required environment variables to simplify running `curl` commands:
   ```bash
