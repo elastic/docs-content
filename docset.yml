@@ -14,28 +14,51 @@ api:
     - spec: elasticsearch.json
       product: elasticsearch
       repository: elastic/elasticsearch-specification
+      catalog:
+        categories:
+          - self
+          - ece
+          - ess
   elasticsearch-serverless:
     - spec: elasticsearch-serverless.json
       product: serverless-elasticsearch
       repository: elastic/elasticsearch-specification
+      catalog:
+        categories:
+          - serverless
   kibana:
     - spec: kibana.yaml
       product: kibana
       repository: elastic/kibana
       children:
         - file: kibana-api-overview.md
+      catalog:
+        categories:
+          - self
+          - ece
+          - ess
   kibana-serverless:
     - spec: kibana-serverless.yaml
       product: kibana
       repository: elastic/kibana
+      catalog:
+        categories:
+          - serverless
   cloud-connect:
     - spec: cloud-connect.yml
       product: ess
       repository: elastic/cloud-connected-api
+      catalog:
+        categories:
+          - self
+          - ece
   cloud-serverless:
     - spec: elastic-cloud-serverless.yml
       product: cloud-serverless
       repository: elastic/serverless-api-specification
+      catalog:
+        categories:
+          - serverless
 
 cta:
   monitor-kubernetes:
@@ -162,6 +185,7 @@ subs:
   es-serverless:   "Elasticsearch Serverless"
   obs-serverless:   "Elastic Observability Serverless"
   sec-serverless:   "Elastic Security Serverless"
+  vectordb:   "Vector Database"
   apm-app:   "APM app"
   uptime-app:   "Uptime app"
   synthetics-app:   "Synthetics app"
@@ -357,10 +381,10 @@ subs:
   intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
-  kube-stack-version: 0.12.4
+  kube-stack-version: 0.16.0
   helm-version: 3.21.0
-  ece-docker-images-8: 8.19.16
-  ece-docker-images-9: 9.3.5
+  ece-docker-images-8: 8.19.20
+  ece-docker-images-9: 9.5.2
   search-platform: "Search AI Platform"
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"

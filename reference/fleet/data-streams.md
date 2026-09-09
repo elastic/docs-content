@@ -149,7 +149,7 @@ Use the [index lifecycle management](/manage-data/lifecycle/index-lifecycle-mana
 
 Installed integrations may have one or many associated data streams—each with an associated {{ilm-init}} policy. By default, these data streams use an {{ilm-init}} policy that matches their data type. For example, the data stream `metrics-system.logs-*`, uses the metrics {{ilm-init}} policy as defined in the `metrics-system.logs` index template.
 
-Want to customize your index lifecycle management? See [Tutorials: Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md).
+Want to customize your index lifecycle management? Check [](/reference/fleet/data-streams-ilm-tutorial.md).
 
 {applies_to}`stack: ga 9.5+` To apply one {{ilm-init}} policy to every data stream an integration produces in a single namespace, you can [apply the policy from the integration policy editor](/reference/fleet/data-streams-namespace-ilm.md) instead of editing templates yourself.
 
@@ -271,4 +271,4 @@ Refer to the breaking change in the 8.12.0 Release Notes for more detail and wor
 ::::
 
 
-See [Tutorial: Transform data with custom ingest pipelines](/reference/fleet/data-streams-pipeline-tutorial.md) to get started.
+Refer to [](/reference/fleet/data-streams-pipeline-tutorial.md) to get started.

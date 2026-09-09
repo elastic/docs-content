@@ -14,7 +14,7 @@ An action policy is the gating layer between an alert episode and a workflow in 
 
 ## Why action policies are separate from rules [policies-separate-from-rules]
 
-Action policies are independent of rules. A single action policy can cover alert episodes from many rules, so an action policy matching `severity: "critical"` applies regardless of which rule produced the alert episode. You can also update notification routing without touching any rule, and you can create rules without any action policy, which is useful for testing detection logic before wiring up notifications.
+Action policies are independent of rules. A single action policy can cover alert episodes from many rules, so an action policy matching `severity: "critical"` applies regardless of which rule produced the alert episode. You can create a rule without any action policy, which is useful for testing detection logic before wiring up notifications. You can also update notification routing later without touching the rule.
 
 To scope an action policy to one rule, use a matcher expression, for example `rule.id: "my-rule-id"`.
 

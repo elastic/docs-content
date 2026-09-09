@@ -1,5 +1,5 @@
 ---
-navigation_title: Scenario 3
+navigation_title: One data stream, one namespace
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-scenario3.html
 applies_to:
@@ -10,7 +10,7 @@ products:
   - id: elastic-agent
 ---
 
-# Scenario 3: Apply an ILM policy with integrations using multiple namespaces [data-streams-scenario3]
+# Apply an ILM policy to one data stream in one namespace [data-streams-scenario3]
 
 Use this scenario when an integration collects data into multiple namespaces and you need a custom {{ilm-init}} policy for a single data stream in one of them. This scenario involves cloning an index template.
 
@@ -87,7 +87,7 @@ Now that you’ve created a component template, you need an index template scope
 Duplicating an integration index template is risky: don't change or remove managed properties, and remember that package upgrades don't update your copy. For details, refer to [Cloning the index template of an integration package](/reference/fleet/integrations-assets-best-practices.md#assets-restrictions-cloning-index-template).
 ::::
 
-If your changes don't need to be namespace-specific, use a `@custom` component template instead, as described in [Scenario 1](/reference/fleet/data-streams-scenario1.md) and [Scenario 2](/reference/fleet/data-streams-scenario2.md). For more about {{ilm-init}} with {{fleet}} data streams, refer to [Index lifecycle management ({{ilm-init}})](/reference/fleet/data-streams.md#data-streams-ilm).
+If your changes don't need to be namespace-specific, use a `@custom` component template instead, as described in [Apply an ILM policy to all data streams across all namespaces](/reference/fleet/data-streams-scenario1.md) and [Apply an ILM policy to specific data streams across all namespaces](/reference/fleet/data-streams-scenario2.md). For more about {{ilm-init}} with {{fleet}} data streams, refer to [Index lifecycle management ({{ilm-init}})](/reference/fleet/data-streams.md#data-streams-ilm).
 
 {applies_to}`stack: ga 9.5+` If you want the same settings for every data stream in a namespace (not only one data stream), you can use [namespace index templates](/reference/fleet/data-streams-namespace-custom.md) instead of duplicating the integration index template, and [apply the {{ilm-init}} policy](/reference/fleet/data-streams-namespace-ilm.md) from the integration policy editor.
 

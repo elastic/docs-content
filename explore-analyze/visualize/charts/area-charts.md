@@ -17,11 +17,16 @@ products:
 
 Area charts are line charts with the area below the line filled in with a certain color or texture. Area charts work with numeric metrics over the horizontal axis (typically time) and are ideal to display quantitative values over an interval or time period, to show trends for time series like traffic, CPU, revenue, or error rates.
 
-You can create area charts in {{kib}} using [**Lens**](../lens.md).
+You can build an area chart in {{kib}} in either of these ways:
+
+- [With the point-and-click editor](#build-an-area-chart)
+- [With an {{esql}} query](#build-an-area-chart-with-esql)
+
+To automate chart or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
 ![Example Lens area chart](../../images/kibana-area-chart.png)
 
-## Build an area chart
+## Build an area chart with the point-and-click editor [build-an-area-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -50,12 +55,47 @@ Optionally:
    - You can click the **Add layer** icon {icon}`plus_square` to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
 
 The chart preview updates to show filled areas plotted over time. Each area represents a series, with the filled region emphasizing the volume of data.
+
+Refer to [](#area-chart-settings) for all data configuration options for your area chart.
 :::::
 
-:::::{step} Customize the chart to follow best practices
-Tweak the appearance of the chart to your needs. Consider the following best practices:
+:::::{step} Save the chart
+:::{include} ../../_snippets/save-visualization.md
+:::
+:::::
 
-**Choose the right stack mode**
+::::::
+
+## Build an area chart with an {{esql}} query [build-an-area-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+A time-series area chart needs a time-bucket column for its horizontal axis and a numeric metric column for the height of the filled area. In this query, `WHERE` applies the dashboard time range, `BUCKET` divides that range into 50 adaptive groups, and `SUM` returns one metric value for each group:
+
+```esql
+FROM kibana_sample_data_logs
+| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
+| STATS total_bytes = SUM(bytes) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+```
+
+If your time field isn't named `@timestamp`, replace `@timestamp` with that field in both `WHERE` and `BUCKET` so the dashboard time range applies. Refer to [](../../query-filter/languages/esql-kibana.md#_custom_time_parameters).
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Area**.
+3. Assign `time_bucket` to the **Horizontal axis** and `total_bytes` to the **Vertical axis**.
+4. Customize the chart appearance using the [area chart settings](#area-chart-settings).
+5. Select **Apply and close**.
+
+The chart preview shows how the volume of transferred data changes over time.
+
+## Apply area chart best practices [area-chart-best-practices]
+
+After building the chart with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
+
+**Select the appropriate stack mode**
 :   Use **Stacked** to show contribution to a whole, **Percentage** for normalized representation of values, or **Unstacked** when absolute trends matter more than composition. For a practical use case, check how to [show composition with stacked and 100% stacked areas](#area-stacking).
 
 **Handle gaps and noise**
@@ -67,17 +107,7 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 **Label clearly**
 :   Provide a descriptive title and axis labels that clearly communicate what the chart shows. For example, mention the metric being visualized ("Average Response Time") and reference the time period when relevant ("Dec 8-16, 2025").
 
-Refer to [Area chart settings](#area-chart-settings) to find all configuration options for your area chart.
-
-For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
-:::::
-
-:::::{step} Save the chart
-:::{include} ../../_snippets/save-visualization.md
-:::
-:::::
-
-::::::
+Refer to [Area chart settings](#area-chart-settings) for all area chart configuration options. For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 
 ## Advanced area scenarios
 
@@ -550,5 +580,3 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 
      
-
-

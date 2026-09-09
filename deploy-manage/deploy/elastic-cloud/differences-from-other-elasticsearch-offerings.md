@@ -25,7 +25,7 @@ The following information reflects our strategic goals, plans and objectives and
 | **Functionality** | {{ech}} | {{serverless-full}} |
 |--------|----------------------|--------------------------|
 | **Management model** | Self-service infrastructure | Fully managed service |
-| **Project organization** | Single deployments with multiple capabilities | Separate projects for Elasticsearch, Observability, and Security |
+| **Project organization** | Single deployments with multiple capabilities | Separate projects for {{es}}, {{es}} {{vectordb}}, Observability, and Security |
 | **Scaling** | Manual or automated with configuration | Fully automated |
 | **Infrastructure decisions** | User manages capacity | Automatically managed by Elastic |
 | **Pricing model** | Based on provisioned resources | Based on usage |
@@ -43,6 +43,8 @@ In Serverless, Elastic automatically manages:
 * Shard distribution and replication
 * Resource utilization and monitoring
 * High availability and disaster recovery strategies
+
+Because Elastic fully manages sharding, several shard-related operations, including custom routing, are not supported. You can't set a `routing` value on document or search requests, and you can't create indices that require routing with the [`_routing` field](elasticsearch://reference/elasticsearch/mapping-reference/mapping-routing-field.md). This applies to all {{serverless-short}} project types.
 
 ## Compare features [elasticsearch-differences-serverless-infrastructure-management]
 
@@ -92,6 +94,7 @@ This table compares Elasticsearch capabilities between {{ech}} deployments and S
 | [**Bulk indexing**](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#_use_bulk_requests) |  ✅ | ✅ | The baseline write latency in {{serverless-short}} is 200ms [^1^](#footnote-1) |
 | [**Cross-cluster replication**](/deploy-manage/tools/cross-cluster-replication.md) | ✅ | **Planned** | Anticipated in a future release |
 | [**Cross-cluster search**](/explore-analyze/cross-cluster-search.md) | ✅ | **Tech preview** | As [cross-project search](/deploy-manage/cross-project-search-config.md) |
+| **Custom routing ([`_routing`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-routing-field.md))** | ✅ | ❌ | Elastic fully manages sharding in {{serverless-short}}, so you can't set custom `routing` values or require routing on an index. |
 | **Data lifecycle management** | - [ILM](/manage-data/lifecycle/index-lifecycle-management.md) <br>- [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) | [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) only | - No data tiers in Serverless <br>- Optimized for common lifecycle management needs |
 | **Elastic connectors (for search)** | ❌ (Managed connectors discontinued with Enterprise Search in 9.0) | Self-managed only | - Managed connectors not available <br>- Use [**self-managed connectors**](elasticsearch://reference/search-connectors/self-managed-connectors.md) |
 | [**Elasticsearch for Apache Hadoop**](https://www.elastic.co/elasticsearch/hadoop) | ✅ | ❌ | Not available in Serverless |
@@ -175,8 +178,9 @@ The following limits apply to {{serverless-full}} projects and organizations:
 | :--- | :--- | :--- |
 | Number of indices per project | 15,000 | Yes |
 | Number of projects per organization | 500 | Yes |
+| Data size per {{es}} {{vectordb}} project | 1 TB | No |
 
-These limits are adjustable and can be increased by request. To request a limit increase, [open a support case](/troubleshoot/index.md#contact-us), and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
+Limits marked as adjustable can be increased by request. To request a limit increase, [open a support case](/troubleshoot/index.md#contact-us), and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
 
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 

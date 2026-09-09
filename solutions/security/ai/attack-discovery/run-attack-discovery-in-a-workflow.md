@@ -22,7 +22,7 @@ For chat-based investigation, use [Run Attack Discovery from {{agent-builder}}](
 
 To run Attack Discovery from a workflow, you need:
 
-* The [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) advanced setting turned on.
+* The [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting turned on.
 * A [configured LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md), unless your subscription or project already includes an Elastic Managed LLM.
 * A role with the [index privileges](/solutions/security/ai/attack-discovery/grant-access.md#ad-index-privileges) required to generate and read discoveries, and these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_kibana_privileges) at minimum:
   * **Security → Attack discovery**: `All`
