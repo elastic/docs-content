@@ -218,7 +218,7 @@ stack: ga 9.3+
 serverless: ga
 ```
 
-Trigger a virtual process or kernel system memory dump on a host. Use this action to capture volatile artifacts—such as in-memory malware, credentials, and injected payloads—for advanced forensic analysis.
+Trigger a memory dump on a host. Use this action to capture volatile artifacts—such as in-memory malware, credentials, and injected payloads—for advanced forensic analysis.
 
 ::::{note}
 This response action is supported for:
@@ -232,12 +232,17 @@ Use one of the following parameters to specify the type of memory dump:
 
 * `--kernel`: Generate a kernel-level memory dump. No other arguments are required when using this parameter.
   ::::{note}
-  Kernel memory dumps are only supported on Windows endpoints.
+  Kernel memory dumps are only supported on Windows endpoints. The host must have free disk space of at least twice the system's working set (the amount of physical memory in use).
   ::::
 
 * `--process`: Generate a process-level memory dump. When using this parameter, you must also include one of the following to identify the process:
     * `--pid`: The process ID (PID) of the process to dump.
     * `--entityId`: The entity ID of the process to dump.
+
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` `--raw`: Generate a raw dump of the host's physical memory. No other arguments are required when using this parameter.
+  ::::{note}
+  Raw memory dumps are only supported on Windows endpoints running {{agent}} 9.5.2 or later. The host must have free disk space of at least twice its physical RAM.
+  ::::
 
 Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
 
@@ -248,6 +253,8 @@ Examples:
 `memory-dump --process --entityId="jshks0fhksh"`
 
 `memory-dump --kernel --comment "Dumping kernel memory for investigation"`
+
+`memory-dump --raw --comment "Dumping raw memory for investigation"`
 
 
 ### `processes` [processes]
