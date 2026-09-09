@@ -205,6 +205,26 @@ Downsampling is available in the Hot, Warm, and Cold phases and only applies to 
 
 For more information, refer to [Downsampling concepts](../../../manage-data/data-store/data-streams/downsampling-concepts.md).
 
+## Import lifecycle settings from another stream [streams-import-lifecycle]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Instead of configuring a new lifecycle, you can import the lifecycle settings from another stream. Importing copies both the stream's data lifecycle and its [failed data lifecycle](#streams-configure-failure-store-retention) and replaces the target stream's current settings.
+
+To import lifecycle settings:
+
+1. On the **Data lifecycle** tab, open the **More actions** menu and select **Import from another stream**.
+1. Find the source stream by searching for the stream name, or use the **Method** filter to show only streams that use a **Data stream lifecycle** or an **{{ilm-init}} policy**. Each stream in the list shows a summary of its lifecycle settings for successful and failed data.
+1. {applies_to}`serverless: unavailable` Optional: For streams that follow an {{ilm-init}} policy, select {icon}`inspect` to review the policy's phases before importing.
+1. Select the source stream and select **Apply**, then confirm that you want to override the target stream's current settings.
+
+:::{note}
+If you don't have `read_failure_store` privileges for a stream, it won't be available as source streams.
+:::
+
 ## Set failed data lifecycle [streams-configure-failure-store-retention]
 
 When a document fails to be ingested because of a processor error or a mapping conflict, Streams writes it to the [failure store](../../../manage-data/data-store/data-streams/failure-store.md) instead of dropping it. This lets you inspect what went wrong and fix issues using the actual failing documents, rather than losing data silently.
@@ -215,7 +235,7 @@ When a document fails to be ingested because of a processor error or a mapping c
 
 1. Under **Failed data**, select {icon}`controls` **Edit failed data lifecycle**.
 1. Turn off **Inherit lifecycle from index template** or **parent stream** if enabled.
-1. From the **Data stream lifecycle** panel, select **Add **Add delete phase**.
+1. From the **Data stream lifecycle** panel, select **Add delete phase**.
 1. Set the delete phase to the number of days you want to retain data and select **Apply**.
 
 :::
