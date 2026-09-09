@@ -40,7 +40,7 @@ Follow these steps to create a new SAML application for {{ecloud}} in Okta.
 
 [Register the IdP with {{ecloud}}](configure-saml-authentication.md#ec-saml-sso-register-idp).
 
-1. Open your organization’s [**Security**](https://cloud.elastic.co/account/idp) tab.
+1. From the navigation menu, select **Organization** → [**SSO**](https://cloud.elastic.co/account/idp).
 2. In the **User authentication** section, click **Configure SSO**.
 3. Fill the following fields:
 
