@@ -44,7 +44,6 @@ Start with the symptom that best matches what you see:
 
 If you already have an error or audit string from **Job messages**, the API, or {{kib}}, use this index:
 
-% TODO: point the CPS migration row at ml-ad-run-jobs.md#ml-ad-cps-legacy when PR #7814 merges
 
 | Message (substring match) | Page |
 | --- | --- |
@@ -52,7 +51,7 @@ If you already have an error or audit string from **Job messages**, the API, or 
 | `remote clusters out of` / `were skipped when performing datafeed search` | [Linked project unavailable](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-linked-project-unavailable.md) |
 | `Cannot update project_routing` / `while its status is started` | [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md) |
 | `Rollback model snapshot` retained before `project_routing` scope change | [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md) |
-| `CPS migration: project_routing defaulted` | [](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) |
+| `CPS migration: project_routing defaulted` | [](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-legacy) |
 | `Datafeed search scope changed` / `Elevated anomaly scores detected after search scope change` | [Project scope changes](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-scope-change.md) |
 | `Internal cloud API key` / `Datafeed search probe failed` / `User lacks the required permissions` | [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md) |
 | `Failed to revoke internal cloud API key` | [Cloud credential problems](/troubleshoot/elasticsearch/machine-learning/cps-datafeed-credentials.md) |
