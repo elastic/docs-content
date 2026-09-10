@@ -35,7 +35,7 @@ A2A server
 $$$access-control$$$
 $$$visibility$$$
 Access control
-:   A custom agent's sharing setting that controls who can view and edit it. Levels are **Public** (anyone can view and edit), **Shared** (anyone can view, but only the owner and administrators can edit), and **Private** (only the owner and administrators). See [](custom-agents.md#access-control-settings).
+:   A custom agent's sharing setting that controls who can view and edit it. The levels, from least to most restrictive, are **Public**, **Shared**, and **Private**. {applies_to}`stack: ga =9.4` This setting is labeled **Visibility**. See [](custom-agents.md#access-control-settings).
 
 $$$agent$$$
 Agent

@@ -229,7 +229,9 @@ Every agent has one of three access control levels:
 
 On a **Public** agent, being able to edit doesn't include deleting the agent or changing its access control level. At every level, only the owner or an administrator can do either, and for everyone else the access control setting is read-only. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` A user you grant the **Manager** access level can also delete the agent and change its level. To grant access to individual users, refer to [Per-agent access controls](#per-agent-access-controls).
 
-Existing agents keep the access control level they already have. Built-in agents have no access control level: they're always available to everyone who can use {{agent-builder}}. The **Elastic AI Agent** is **Public**, and its level can't be changed, even by an administrator.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Changing the default doesn't affect agents that already exist: they keep the level they have. Agents created before this setting existed are **Public**.
+
+Built-in agents have no access control level: they're always available to everyone who can use {{agent-builder}}. The **Elastic AI Agent** is **Public**, and its level can't be changed, even by an administrator.
 
 ### Per-agent access controls
 
@@ -238,18 +240,29 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-In addition to the three access control levels, you can configure access controls for individual users on a per-agent basis. This allows you to grant specific users view or edit access to an agent, giving you more granular control over who can interact with and modify your agents.
+In addition to the three access control levels, you can grant individual users access to a specific agent. Use this when the base level is too broad or too narrow for a particular person.
 
 To configure per-agent access controls:
 
-1. Edit the agent and go to the **Organization** section.
+1. Edit the agent and go to the **Organization** section. You can also select **Manage access** for the agent on the **Agents** page.
 2. Select a base access control level.
 3. Add individual users and assign each one an access level.
 
-Users you add to the access list can interact with the agent according to the access level you assign, regardless of the base access control level. For example, you can set an agent to **Private** and then let specific users view or edit it.
+The access levels are:
+
+**User**
+:   Can find, view, and run the agent.
+
+**Editor**
+:   Everything a **User** can do, plus editing the agent's configuration.
+
+**Manager**
+:   Everything an **Editor** can do, plus deleting the agent and managing who has access to it.
+
+Users you add can interact with the agent according to the level you assign, regardless of the base access control level. For example, you can set an agent to **Private** and then give one colleague **Editor** access.
 
 ::::{note}
-Per-agent access controls apply to agents at any access control level, including **Public**. What changes is the set of access levels you can assign: on **Public** and **Shared** agents, the view-only level isn't offered, because anyone in the space can already view and use the agent.
+Per-agent access controls apply to agents at any access control level, including **Public**. What changes is the set of levels you can assign: on **Public** and **Shared** agents, **User** isn't offered, because anyone in the space can already find and run the agent.
 ::::
 
 ## Best practices for custom agents
