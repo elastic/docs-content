@@ -38,7 +38,7 @@ In both cases, the result is a copy of your data set where each data point is an
 
 The {{ml-features}} that are available vary by project type:
 
-* {{es-serverless}} projects have trained models.
+* {{es-serverless}} projects have {{anomaly-jobs}}, {{dfanalytics-jobs}}, and trained models.
 * {{observability}} projects have {{anomaly-jobs}}.
 * {{elastic-sec}} projects have {{anomaly-jobs}}, {{dfanalytics-jobs}}, and trained models.
 

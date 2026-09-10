@@ -35,7 +35,7 @@ The dashboard groups its panels into four areas:
 - **Token Usage & Cost**: Input and output tokens by model, and LLM request counts by model and provider.
 - **Conversation Volume & Latency**: How many conversation rounds ran and how long they took, including average, 95th percentile, and maximum duration.
 - **Agent Execution**: How often each agent ran and how long it took, broken down by agent.
-- **Tool Call Frequency & Errors**: How often tools were called, their success and error rates, average tool duration, and the most-used tools.
+- **Tool Call Frequency & Errors**: How often tools were called, their success and error rates, average tool duration, and the most-used tools. This section is collapsed when you install the dashboard, so expand it to see the panels.
 
 When trace data is flowing, the dashboard looks like this:
 
@@ -48,7 +48,7 @@ When trace data is flowing, the dashboard looks like this:
 
 Before you install the dashboard:
 
-- Make sure trace collection is on for the space and the setting is saved. It is on by default. The **Install Dashboard** button appears only after trace collection is enabled and saved. For details, refer to [Collect agent traces](collect-traces.md).
+- Make sure trace collection is on for the space. It is on by default, so the **Install Dashboard** button is normally available straight away. If you have just changed the setting, save it first, because the button is hidden while the change is unsaved. For details, refer to [Collect agent traces](collect-traces.md).
 - Make sure you can read the trace data, otherwise the panels have no data to show. For the required privileges, refer to [Read trace data](permissions.md#read-trace-data).
 - Make sure you can manage {{kib}} advanced settings. Installing and uninstalling the dashboard requires this privilege.
 - Install the dashboard in each {{kib}} space where you want it. It is not shared across spaces.
@@ -57,7 +57,7 @@ Before you install the dashboard:
 
 The overview dashboard is not installed automatically. Install it once per {{kib}} space.
 
-1. Go to **Management → GenAI Settings**.
+1. Go to **{{stack-manage-app}}** → **GenAI Settings**.
 2. In the **Agent Builder Traces** section, confirm that **Collect conversation traces** is on and saved.
 3. Select **Install Dashboard**.
 
@@ -85,7 +85,7 @@ Because the original is managed, Elastic can ship improvements to it without ove
 
 The dashboard panels are [ES|QL](elasticsearch://reference/query-languages/esql.md) queries over your trace data. To build your own visualizations in [Dashboards](/explore-analyze/dashboards.md), [Lens](/explore-analyze/visualize/lens.md), or [Discover](/explore-analyze/discover.md), query the trace data stream and filter by span type and attribute.
 
-The dashboard's panels query span data from the `traces-agent_builder.otel-*` data stream, where each document is a span. The dashboard identifies the kind of work a span represents from its `span.name`, and reads generative AI details from the span attributes. For the trace data stream and the read privileges, refer to [Read trace data](permissions.md#read-trace-data).
+The dashboard's panels query span data from the `traces-agent_builder.otel-*` data stream, where each document is a [span](https://opentelemetry.io/docs/concepts/signals/traces/#spans) (a record of a single operation or unit of work in a trace). The dashboard identifies the kind of work a span represents from its `span.name`, and reads generative AI details from the span attributes. For the trace data stream and the read privileges, refer to [Read trace data](permissions.md#read-trace-data).
 
 ### Span types
 
@@ -100,7 +100,7 @@ Each document is a span. Filter on the `span.name` field to select a kind of age
 
 ### Generative AI attributes
 
-These fields carry the details the dashboard aggregates. Generative AI attributes use the `attributes.` prefix.
+These fields contain the details the dashboard aggregates. Generative AI attributes use the `attributes.` prefix.
 
 | Field | Description |
 |---|---|
@@ -109,17 +109,66 @@ These fields carry the details the dashboard aggregates. Generative AI attribute
 | `attributes.gen_ai.request.model` | Model name |
 | `attributes.gen_ai.provider.name` | Model provider |
 | `attributes.gen_ai.agent.id` | Agent identifier |
-| `attributes.elastic.inference.span.kind` | On `invoke_agent` spans, separates conversation rounds (`CHAIN`) from agent executions (`AGENT`) |
+| `attributes.gen_ai.conversation.id` | Conversation identifier |
+| `attributes.elastic.inference.span.kind` | The kind of work a span represents:<br>- `LLM` on `chat` spans<br>- `TOOL` on `execute_tool` spans<br>- `CHAIN` or `AGENT` on `invoke_agent` spans, where `CHAIN` is a conversation round and `AGENT` is an agent execution.<br><br>Internal spans such as `generate_title` also use `CHAIN`, so combine this field with a `span.name` filter instead of using it on its own |
 | `name` | Span name. On `execute_tool` spans it is `execute_tool <tool-id>`, for example `execute_tool platform.core.list_indices`. For the bare tool id, use `attributes.gen_ai.tool.name` |
 | `duration` | Span duration in nanoseconds (root field). Divide by 1,000,000,000 for seconds |
 | `status.code` | Span status, for example `Error` (root field) |
 | `@timestamp` | When the span started |
 
+### Message content attributes [message-content-attributes]
+
+The dashboard does not use these fields, but you can query them yourself. When an administrator opts in to capturing conversation content, prompts, responses, and tool call content are stored in the following attributes. Each one depends on a [trace privacy setting](collect-traces.md#trace-privacy-settings), and all of those settings are off by default.
+
+| Field | Span | Description | Required setting(s) |
+|---|---|---|---|
+| `attributes.gen_ai.input.messages` | `chat` | Chat history sent to the model, as a series of user, assistant, and tool turns | **Include user prompts in traces** for the user turns, **Include LLM responses in traces** for the assistant turns, and **Include tool call details in traces** for the tool turns |
+| `attributes.gen_ai.output.messages` | `chat` | Model responses | **Include LLM responses in traces** |
+| `attributes.gen_ai.system_instructions` | `chat` | System prompt | **Include system prompt in traces** |
+| `attributes.gen_ai.tool.call.arguments` | `execute_tool` | Arguments passed to the tool | **Include tool call details in traces** |
+| `attributes.gen_ai.tool.call.result` | `execute_tool` | Value the tool returned | **Include tool call details in traces** |
+
+#### Privacy settings and missing content
+
+Any turn that a privacy setting excludes is dropped from `attributes.gen_ai.input.messages`. When all three of the settings that govern it are off, the field is an empty array (`[]`). Filter those rows out, as the following example does. 
+
+Note that:
+- The `attributes.gen_ai.tool.call.id` field on the `execute_tool` spans is not affected by the privacy settings (though it is absent when a tool call has no id).
+- The **Include tool call details in traces** setting reaches further than the tool turns. When it is off, tool calls are also removed from the assistant turns that remain in both `attributes.gen_ai.input.messages` and `attributes.gen_ai.output.messages`, so an assistant turn keeps its text but not the call it made.
+
+#### Other content attributes
+
+Spans also contain other content-bearing attributes:
+- The `chat` spans record the definitions of the tools offered to the model in `attributes.gen_ai.tool.definitions` (including each tool's description and parameter schema).
+- The `execute_tool` spans record the tool's own description in `attributes.gen_ai.tool.description`.
+
+#### JSON payload structure
+
+Each content field holds a JSON string rather than indexed text, following the [OpenTelemetry semantic conventions for generative AI](https://github.com/open-telemetry/semantic-conventions-genai):
+- The message attributes hold an array of `{"role": ..., "parts": [...]}` objects, where each part is a `text`, `tool_call`, or `tool_call_response` item.
+- `attributes.gen_ai.system_instructions` holds an array of `{"type": ..., "content": ...}` objects.
+
+#### Handling large content fields
+
+These content fields are `keyword` fields with `ignore_above` set to `1024`. A value longer than 1024 characters is not indexed, and {{esql}} returns it as `null` even though the full value is stored in the document. System prompts, model responses, and any chat history that contains a tool result routinely pass 1024 characters, so treat {{esql}} as dependable only for short values here.
+
+**Reading full content**
+
+To read the full content, request the document with [{{es}} search](/solutions/search/querying-for-search.md) instead of {{esql}}, and ask for `_source`. The `fields` option applies the same limit and returns nothing.
+
+**Finding affected spans**
+
+To find the affected spans in the first place, use the `_ignored` metadata field, which lists the fields on a document that were not indexed. For these attributes, that means the value passed the length limit. It is available both on search hits and in {{esql}}, as shown in [Example queries](#example-queries).
+
+**Tool arguments and results**
+
+Tool arguments and results are also recorded on the `execute_tool` spans, in `attributes.gen_ai.tool.call.arguments` and `attributes.gen_ai.tool.call.result`. Each of those holds one tool call rather than the whole conversation, so it is less likely to pass the limit, though a large tool result still can. Prefer them when you query tool activity with {{esql}}.
+
 ### Example queries
 
 Use these as starting points, and test them on your own data. They query one space. Replace `default` in `traces-agent_builder.otel-default` with your space id. To query across all spaces at once, use the `traces-agent_builder.otel-*` wildcard, which combines data from every space.
 
-Total input and output tokens by model and provider:
+#### View total input and output tokens by model and provider
 
 ```esql
 FROM traces-agent_builder.otel-default
@@ -132,7 +181,7 @@ FROM traces-agent_builder.otel-default
 | SORT input_tokens DESC
 ```
 
-Tool calls and errors by tool:
+#### Find tool calls and errors by tool
 
 ```esql
 FROM traces-agent_builder.otel-default
@@ -143,6 +192,33 @@ FROM traces-agent_builder.otel-default
   BY tool = name
 | SORT calls DESC
 ```
+
+#### Retrieve recent captured user prompts
+
+Requires **Include user prompts in traces**:
+
+```esql
+FROM traces-agent_builder.otel-default
+| WHERE span.name LIKE "chat *"
+| WHERE attributes.gen_ai.input.messages != "[]"
+| SORT @timestamp DESC
+| LIMIT 20
+| KEEP @timestamp, attributes.gen_ai.input.messages
+```
+
+This returns only the messages that are short enough to be indexed. Anything over 1024 characters is `null` here and does not match the filter, so use a search request for those, as described in [Message content attributes](#message-content-attributes).
+
+#### Find spans whose captured chat history was too long to index
+
+```esql
+FROM traces-agent_builder.otel-default METADATA _ignored
+| WHERE _ignored == "attributes.gen_ai.input.messages"
+| SORT @timestamp DESC
+| LIMIT 20
+| KEEP @timestamp, name, _ignored
+```
+
+The `_ignored` column lists every field on the span that was dropped, so you can see at a glance which content is only available through a search request.
 
 ## Related pages
 

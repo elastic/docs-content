@@ -31,9 +31,10 @@ You can also use queries to filter and search the transactions shown on this pag
 
 ## Trace explorer [trace-explorer]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
+```{applies_to}
+stack: preview =9.0, deprecated 9.1+
+serverless: unavailable
+```
 
 **Trace explorer** is an experimental top-level search tool that allows you to query your traces using [{{kib}} Query Language (KQL)](/explore-analyze/query-filter/languages/kql.md) or [Event Query Language (EQL)](/explore-analyze/query-filter/languages/eql.md).
 

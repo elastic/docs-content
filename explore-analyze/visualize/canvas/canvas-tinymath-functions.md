@@ -16,6 +16,11 @@ Most of the functions accept arrays and apply JavaScript Math methods to each el
 
 Any function can be wrapped by another function as long as the return type of the inner function matches the acceptable parameter type of the outer function.
 
+:::{note}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+A TinyMath expression can contain up to 20 levels of parenthesis nesting and up to 1,000 characters. Expressions that exceed either limit are rejected before they're parsed. Typical expressions stay well within both limits.
+:::
+
 
 ## abs( a ) [_abs_a] 
 

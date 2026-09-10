@@ -25,9 +25,10 @@ There are differences between {{es-serverless}} and {{ech}}. Learn more in [Comp
 
 ## Get started
 
-Elastic provides three serverless solutions available on {{ecloud}}. Follow these guides to get started with your serverless project:
+Elastic provides four serverless project types on {{ecloud}}. {{es}}, Observability, and Security projects correspond to the same [solutions](/solutions/index.md) available on stateful deployments; {{es}} {{vectordb}} is an additional {{serverless-short}}-only project type. Follow these guides to get started with your serverless project:
 
-* **[{{es-serverless}}](/solutions/search/get-started.md)**: Build powerful applications and search experiences using a rich ecosystem of vector search capabilities, APIs, and libraries.
+* **[{{es-serverless}}](/solutions/search/get-started.md)**: Build powerful, scalable search and analytics applications across structured data, logs, metrics, documents, and vectors as part of a broader {{stack}}.
+* **[{{es}} {{vectordb}}](/solutions/vector-database/get-started.md)**: Build embedding-driven workloads such as semantic search, RAG, and AI-powered retrieval. Built-in models and vector-optimized defaults mean less configuration and faster time to production.
 * **[{{obs-serverless}}](../../../solutions/observability/get-started.md)**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
 * **[{{sec-serverless}}](../../../solutions/security/get-started.md#create-sec-serverless-project)**: Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
 
@@ -80,7 +81,8 @@ A: {{serverless-full}} is available in select AWS, GCP, and Azure regions, with 
 ### Data management
 
 **Q: How can I move data to or from {{serverless-short}} projects?**  
-A: We are working on data migration tools. In the interim, [use Logstash](logstash://reference/index.md) with {{es}} input and output plugins to move data to and from {{serverless-short}} projects.
+A: You can [use Reindex from remote](/manage-data/migrate/migrate-data-using-reindex-api.md) as the most direct and managed
+option. You can also [use Logstash](logstash://reference/index.md) with {{es}} input and output plugins to move data to and from {{serverless-short}} projects.
 
 **Q: Can I request backups or restores for my serverless projects?**  
 A: Request for project backups or restores is currently unsupported, and we are working on data migration tools to better support this.

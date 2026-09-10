@@ -2,7 +2,7 @@
 description: Enable an Elastic Managed integration in Kibana to ingest data from a cloud source. Elastic provisions and manages the collector for you.
 applies_to:
   stack: ga 9.5+, preview 9.0-9.4
-  serverless: preview
+  serverless: ga
 products:
   - id: elastic-agent
   - id: fleet
@@ -37,7 +37,7 @@ To find which {{product.integrations}} can run as {{managed-integrations}} in {{
 
 ::::{applies-switch}
 
-:::{applies-item} {serverless: preview, stack: ga 9.5+}
+:::{applies-item} {serverless: ga, stack: ga 9.5+}
 1. In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Open the **Setup method** filter and select **Managed Integration**.
 :::
@@ -62,7 +62,7 @@ For a complete list of integrations that can run as {{managed-integrations}}, re
 2. Select **Add `<integration>`**.
 3. Provide the credentials and any other required configuration for the source.
 4. Choose the deployment mode:
-   - {applies_to}`{serverless: preview, stack: ga 9.5+}` In the **Deployment** section, select **Elastic Managed Integration**.
+   - {applies_to}`{serverless: ga, stack: ga 9.5+}` In the **Deployment** section, select **Elastic Managed Integration**.
    - {applies_to}`{stack: preview 9.0-9.4}` In the **Deployment options** section, select **Agentless**.
 5. Select **Save and continue**.
 

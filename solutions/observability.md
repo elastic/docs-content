@@ -25,7 +25,7 @@ The {{observability}} reference documentation is available in the [Elastic refer
 
 You can also browse reference documentation for the following components:
 
-- [Elastic Distributions of OpenTelemetry (EDOT)](opentelemetry://reference/index.md)
+- [{{edot}}](opentelemetry://reference/index.md)
 - [Fleet and Elastic Agent](/reference/fleet/index.md)
 - [Elastic APM](/reference/apm/observability/apm.md)
 - [Elastic APM agents](/reference/apm-agents/index.md)

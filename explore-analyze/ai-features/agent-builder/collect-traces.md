@@ -16,6 +16,18 @@ products:
 
 {{agent-builder}} can collect agent execution traces into your {{es}} deployment. Traces record how each agent round runs, including model calls, tool calls, latency, and token usage, so you can monitor agent activity, debug behavior, and build dashboards on the data.
 
+## Where to view traces
+
+Traces are stored in {{es}}, but you do not have to query the data stream to read them. {{agent-builder}} gives you three ways to work with collected traces:
+
+| To do this | Use |
+|---|---|
+| Debug a single agent response, step by step | The **View Trace** waterfall on a conversation round in [Agent Chat](chat.md#view-traces) |
+| Monitor token usage, latency, and tool errors across all agents | The [prebuilt overview dashboard](agent-traces-dashboard.md) |
+| Ask questions about trace data in natural language | The [built-in traces skill](builtin-skills-reference.md#agent-builder-traces-skill) |
+
+You can also explore the raw spans yourself in [Discover](/explore-analyze/discover.md) or with [ES|QL](elasticsearch://reference/query-languages/esql.md), as described in [Build dashboards on trace data](#build-dashboards-on-trace-data).
+
 ## How trace collection works
 
 When an agent runs, {{agent-builder}} records the run as OpenTelemetry (OTel) traces. Each trace covers one conversation round. A trace is made up of spans that map to the work the agent did, such as model calls and tool calls.
@@ -24,7 +36,7 @@ Trace collection is space-aware. Each {{kib}} space writes its traces to its own
 
 {{agent-builder}} ingests this data into managed OpenTelemetry data streams in your {{es}} deployment. Execution spans, such as model calls and tool calls, are stored in `traces-agent_builder.otel-*`, with their timings, token usage, model, and status.
 
-When you opt in to capturing conversation content, that content is stored on the `chat` spans in `traces-agent_builder.otel-*` as attributes, covering user prompts, agent responses, system prompts, and tool call details. Content is captured only when you enable it in [Trace privacy settings](#trace-privacy-settings).
+When you opt in to capturing conversation content, that content is stored as span attributes in `traces-agent_builder.otel-*`. The `chat` spans contain the chat history, the model responses, and the system prompt, and the `execute_tool` spans contain the arguments and results of each tool call. Content is captured only when you enable it in [Trace privacy settings](#trace-privacy-settings).
 
 These data streams are OTel-compatible and use the standard OTel index templates, so they inherit the mappings, settings, and data lifecycle that {{es}} maintains for OTel data.
 
@@ -38,13 +50,13 @@ Each trace is a set of spans that follow a run from the overall conversation rou
 - Each model call.
 - Each tool call.
 
-Spans follow [OpenTelemetry semantic conventions for generative AI](https://github.com/open-telemetry/semantic-conventions-genai) (currently experimental) and carry generative AI attributes for the model, the provider, and token usage. Use them to break down usage and latency by model, agent, or tool. For the exact fields and the prebuilt visualizations that use them, refer to [Build dashboards on trace data](#build-dashboards-on-trace-data).
+Spans follow [OpenTelemetry semantic conventions for generative AI](https://github.com/open-telemetry/semantic-conventions-genai) (currently experimental) and contain generative AI attributes for the model, the provider, and token usage. Use them to break down usage and latency by model, agent, or tool. For the exact fields and the prebuilt visualizations that use them, refer to [Build dashboards on trace data](#build-dashboards-on-trace-data).
 
 By default, traces record structural metadata only. Conversation content such as prompts and responses is excluded unless an administrator opts in. For details, refer to [Trace privacy settings](#trace-privacy-settings).
 
 ## Enable and configure trace collection
 
-Trace collection is on by default. To manage it, go to **Management → GenAI Settings** and open the **Agent Builder Traces** section.
+Trace collection is on by default. To manage it, go to **{{stack-manage-app}}** → **GenAI Settings** and open the **Agent Builder Traces** section.
 
 :::{image} images/agent-builder-traces-settings.png
 :screenshot:
@@ -68,18 +80,24 @@ To change what is captured, expand **Advanced privacy settings** in the **Agent 
 :alt: The expanded Advanced privacy settings, showing six toggles for including sensitive content in traces, all turned off
 :::
 
-| Setting | Effect when enabled |
-|---|---|
-| **Include user prompts in traces** | Captures user messages. |
-| **Include LLM responses in traces** | Captures agent responses. |
-| **Include tool call details in traces** | Captures tool call arguments and results. |
-| **Include system prompt in traces** | Captures agent instructions. |
-| **Include real tool and agent names in traces** | Records real tool and agent names instead of anonymized values. |
-| **Include real conversation and workflow IDs in traces** | Records real conversation and workflow IDs instead of anonymized values. |
+| Setting | Setting ID | Effect when enabled |
+|---|---|---|
+| **Include user prompts in traces** | `agentBuilder:tracing:includeUserPrompts` | Captures user messages. |
+| **Include LLM responses in traces** | `agentBuilder:tracing:includeLlmResponses` | Captures agent responses. |
+| **Include tool call details in traces** | `agentBuilder:tracing:includeToolDetails` | Captures tool call arguments and results. |
+| **Include system prompt in traces** | `agentBuilder:tracing:includeSystemPrompt` | Captures agent instructions. |
+| **Include real tool and agent names in traces** | `agentBuilder:tracing:includeRealNames` | Records real tool and agent names instead of anonymized values. |
+| **Include real conversation and workflow IDs in traces** | `agentBuilder:tracing:includeRealIds` | Records real conversation and workflow IDs instead of anonymized values. |
 
 :::{note}
-Built-in tools and agents always appear under their real names. When a value is anonymized, {{agent-builder}} uses a stable identifier, so you can still group and correlate traces without exposing names or IDs.
+Built-in tools and agents always appear under their real names. Anonymized names are replaced with the literal value `custom`, so every custom tool, agent, and workflow shares one value and you cannot tell them apart by name. Anonymized IDs are different: they are replaced with a stable hash, so you can still group and correlate traces by conversation or agent ID.
 :::
+
+Content is stored across different span types:
+- **`chat` spans**: Store prompts, responses, and the system prompt in the `attributes.gen_ai.input.messages`, `attributes.gen_ai.output.messages`, and `attributes.gen_ai.system_instructions` attributes.
+- **`execute_tool` spans**: Store tool call details in `attributes.gen_ai.tool.call.arguments` and `attributes.gen_ai.tool.call.result`.
+
+Anyone who can read the trace data stream can read this content, so review [Grant access to trace data](#grant-access-to-trace-data) before you turn these settings on. For the field-level details, refer to [Message content attributes](agent-traces-dashboard.md#message-content-attributes).
 
 ## Grant access to trace data
 
@@ -93,11 +111,7 @@ For the full privilege model, including {{kib}} feature and cluster privileges, 
 
 When trace collection is on, {{agent-builder}} provides a prebuilt overview dashboard for agent activity and token usage. You install or reinstall it per space from the **Agent Builder Traces** settings section. For what each panel shows and the full span and attribute reference, refer to [Agent Builder traces overview dashboard](agent-traces-dashboard.md).
 
-Because traces are stored in regular data streams, you can also build your own visualizations with [Dashboards](/explore-analyze/dashboards.md) and [Lens](/explore-analyze/visualize/lens.md), or query the data with [ES|QL](elasticsearch://reference/query-languages/esql.md). To explore traces in natural language, use the [built-in traces skill](builtin-skills-reference.md).
-
-## View traces for a conversation round
-
-In [Agent Chat](chat.md), you can open the trace waterfall for a single conversation round. The button appears only when trace collection is enabled and the round has a trace.
+Because traces are stored in regular data streams, you can also build your own visualizations with [Dashboards](/explore-analyze/dashboards.md) and [Lens](/explore-analyze/visualize/lens.md), or query the data with [ES|QL](elasticsearch://reference/query-languages/esql.md). To explore traces in natural language, use the [built-in traces skill](builtin-skills-reference.md#agent-builder-traces-skill).
 
 ## Related pages
 

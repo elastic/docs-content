@@ -32,6 +32,7 @@ The following table lists some important concepts related to SLOs:
 | **SLO** | The target you set for your SLI. It specifies the level of performance you expect from your service over a period of time. |
 | **Error budget** | The amount of time that your SLI can fail to meet the SLO target before it violates your SLO. |
 | **Burn rate** | The rate at which your service consumes your error budget. |
+| **Composite SLO** | {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` An aggregation of multiple SLOs into a single health indicator using a weighted average. Use composite SLOs to track reliability at the system or platform level. |
 
 In addition to these key concepts related to SLO functionality, see [Understanding SLO internals](/troubleshoot/observability/troubleshoot-service-level-objectives-slos.md#slo-understanding-slos) for more information on how SLOs work and their relationship with other system components, such as [{{es}} Transforms](/explore-analyze/transforms.md).
 
@@ -85,7 +86,7 @@ There are also options to sort and group the SLOs displayed in the overview:
 
 ## SLO dashboard panels [observability-slos-slo-dashboard-panels]
 
-SLO data is also available as Dashboard *panels*. Panels allow you to curate custom data views and visualizations to bring clarity to your data.
+SLO data is also available as Dashboard *panels*. Panels allow you to curate custom {{data-sources}} and visualizations to bring clarity to your data.
 
 Available SLO panels include:
 
@@ -112,6 +113,7 @@ Get started using SLOs to measure your service performance:
 
 * [Configure SLO access](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md)
 * [Create an SLO](/solutions/observability/incident-management/create-an-slo.md)
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` [Create a composite SLO](/solutions/observability/incident-management/create-a-composite-slo.md)
 * [SLO burn rate](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md)
 * [View alerts](/solutions/observability/incident-management/view-alerts.md)
 * [SLO burn rate breaches](/solutions/observability/incident-management/triage-slo-burn-rate-breaches.md)

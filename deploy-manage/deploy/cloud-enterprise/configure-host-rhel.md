@@ -19,11 +19,11 @@ Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (E
 
 ## Prerequisites [ece-prerequisites-rhel8]
 
-Follow your internal guidelines to create a RHEL 8 (the version must be >= 8.5), RHEL 9, Rocky Linux 8, or Rocky Linux 9 server or VM in your environment.
+* Follow your internal guidelines to create a RHEL 8 (the version must be >= 8.5), RHEL 9, Rocky Linux 8, or Rocky Linux 9 server or VM in your environment.
 
-Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) for a list of ports that need to be open. The technical configuration depends on the underlying infrastructure.
+* Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) for a list of ports that need to be open. The technical configuration depends on the underlying infrastructure. For example, for AWS, allowing traffic between hosts is implemented using security groups.
 
-**Example:** For AWS, allowing traffic between hosts is implemented using security groups.
+* {applies_to}`ece: ga 4.2` If you need IPv6 egress from ECE containers, ensure the host has working dual-stack (IPv4 and IPv6) connectivity, and complete the optional Podman dual-stack steps [later in this guide](#ece-rhel-ipv6-egress).
 
 ::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
@@ -48,7 +48,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
 
     ::::
 
-2. Remove Docker and previously installed podman packages (if previously installed).
+2. Remove Docker and previously installed Podman packages (if previously installed).
 
     ```sh
     sudo dnf remove docker docker-ce podman podman-remote containerd.io
@@ -75,7 +75,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
 
 4. Install Podman:
 
-    * For Podman 4
+    * For Podman 4:
 
         * Install the latest available version `4.*` using dnf.
 
@@ -97,7 +97,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
             sudo dnf versionlock list
             ```
 
-    * For Podman 5
+    * For Podman 5:
 
         * Install the latest available version `5.*` using dnf.
 
@@ -122,10 +122,10 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
             sudo dnf versionlock list
             ```
 
-5. [This step is for RHEL 9 and Rocky Linux 9 only] Switch the network stack from Netavark to CNI:
+5. For RHEL 9 and Rocky Linux 9 only: Switch the network stack from Netavark to CNI.
 
-    1. If the */etc/containers/containers.conf* file does not exist, copy the */usr/share/containers/containers.conf* file to the */etc/containers/* directory (for example, using `cp /usr/share/containers/containers.conf /etc/containers/`).
-    2. Open the */etc/containers/containers.conf* file. Navigate to the **network** section and make sure that the **network_backend** setting is set to `cni`.
+    1. If the `/etc/containers/containers.conf` file does not exist, copy the `/usr/share/containers/containers.conf` file to the `/etc/containers/` directory (for example, using `cp /usr/share/containers/containers.conf /etc/containers/`).
+    2. Open the `/etc/containers/containers.conf` file. Navigate to the **network** section and make sure that the **network_backend** setting is set to `cni`.
     3. Reboot the system (`reboot`).
     4. Check that the network stack has changed to `cni`: <br>
 
@@ -137,7 +137,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
         [...]
         ```
 
-6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
+6. If Podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
 
     Example:
 
@@ -146,13 +146,13 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     env = ["HTTP_PROXY=http://<PROXY_IP>:<PROXY_PORT>", "HTTPS_PROXY=http://<PROXY_IP>:<PROXY_PORT>"]
     ```
 
-7. Reload systemd configuration
+7. Reload systemd configuration:
 
     ```sh
     sudo systemctl daemon-reload
     ```
 
-8. Create OS groups, if they do not exist yet
+8. Create OS groups, if they do not exist yet:
 
     Reference: [Users and permissions](ece-users-permissions.md)
 
@@ -161,7 +161,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     sudo groupadd podman
     ```
 
-9. Add user `elastic` to the `podman` group
+9. Add user `elastic` to the `podman` group:
 
     Reference: [Users and permissions](ece-users-permissions.md)
 
@@ -169,7 +169,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     sudo useradd -g "elastic" -G "podman" elastic
     ```
 
-10. As a sudoers user, add the following line to /etc/sudoers.d/99-ece-users
+10. As a sudoers user, add the following line to `/etc/sudoers.d/99-ece-users`:
 
     Reference: [Users and permissions](ece-users-permissions.md)
 
@@ -177,13 +177,13 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     elastic ALL=(ALL) NOPASSWD:ALL
     ```
 
-11. Add the required options to the kernel boot arguments
+11. Add the required options to the kernel boot arguments:
 
     ```sh
     sudo /sbin/grubby --update-kernel=ALL --args='cgroup_enable=memory cgroup.memory=nokmem swapaccount=1'
     ```
 
-12. Create the directory
+12. Create the directory:
 
     ```sh
     sudo mkdir -p /etc/systemd/system/podman.socket.d
@@ -214,14 +214,14 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     sudo chmod 0644 /etc/systemd/system/podman.socket.d/podman.conf
     ```
 
-14. As a sudoers user, create the (text) file `/usr/bin/docker` with the following content. Verify that the regular double quotes in the text file are used (ASCII code Hex 22)
+14. As a sudoers user, create the (text) file `/usr/bin/docker` with the following content. Verify that the regular double quotes in the text file are used (ASCII code Hex 22):
 
     ```text
     #!/bin/bash
     podman-remote --url unix:///var/run/docker.sock "$@"
     ```
 
-15. Set the file permissions on `/usr/bin/docker`
+15. Set the file permissions on `/usr/bin/docker`:
 
     ```sh
     sudo chmod 0755 /usr/bin/docker
@@ -239,7 +239,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     graphroot = "/mnt/data/docker"
     ```
 
-17. Enable podman so that itself and running containers start automatically after a reboot
+17. Enable Podman so that itself and running containers start automatically after a reboot:
 
     ```sh
     sudo systemctl enable podman.service
@@ -254,13 +254,13 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     echo "overlay" | sudo tee -a /etc/modules-load.d/overlay.conf
     ```
 
-19. Format the additional data partition
+19. Format the additional data partition:
 
     ```sh
     sudo mkfs.xfs /dev/nvme1n1
     ```
 
-20. Create the `/mnt/data/` directory used as a mount point
+20. Create the `/mnt/data/` directory used as a mount point:
 
     ```sh
     sudo install -o elastic -g elastic -d -m 700 /mnt/data
@@ -277,21 +277,21 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     /dev/nvme1n1	/mnt/data	xfs	defaults,nofail,x-systemd.automount,prjquota,pquota  0 2
     ```
 
-22. Restart the local-fs target
+22. Restart the local-fs target:
 
     ```sh
     sudo systemctl daemon-reload
     sudo systemctl restart local-fs.target
     ```
 
-23. Set the permissions on the newly mounted device
+23. Set the permissions on the newly mounted device:
 
     ```sh
     ls /mnt/data
     sudo chown elastic:elastic /mnt/data
     ```
 
-24. Create the `/mnt/data/docker` directory for the Docker service storage
+24. Create the `/mnt/data/docker` directory for the Docker service storage:
 
     ::::{note}
     Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Otherwise the ECE installer script needs to be adjusted.
@@ -312,23 +312,27 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     If FirewallD does not exist on your VM, you can skip this step.
     ::::
 
-26. Configure kernel parameters
+26. Configure kernel parameters:
 
     ```sh
     cat <<EOF | sudo tee -a /etc/sysctl.conf
-    # Required by Elasticsearch
-    vm.max_map_count=1048576
-    # enable forwarding so the Docker networking works as expected
-    net.ipv4.ip_forward=1
-    # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
-    # See https://www.elastic.co/docs/deploy-manage/deploy/self-managed/system-config-tcpretries
-    net.ipv4.tcp_retries2=5
+    vm.max_map_count=1048576 <1>
+    net.ipv4.ip_forward=1 <2>
+    net.ipv4.tcp_retries2=5 <3>
     net.netfilter.nf_conntrack_tcp_timeout_established=7200
     net.netfilter.nf_conntrack_max=262140
-    # Make sure the host doesn't swap too early
-    vm.swappiness=1
+    vm.swappiness=1 <4>
     EOF
     ```
+    1. This setting is required by {{es}}.
+    2. Enable forwarding so the Docker networking works as expected.
+    3. Decrease the maximum number of TCP retransmissions to 5 as recommended for {{es}} TCP retransmission timeout. [Learn more](/deploy-manage/deploy/self-managed/system-config-tcpretries.md).
+    4. Set to 1 to prevent the host from swapping too early.
+
+    ::::{note}
+    :applies_to: ece: ga 4.2
+    If you need IPv6 egress from containers, also add `net.ipv6.conf.all.forwarding=1` to the same `sysctl` configuration.
+    ::::
 
     :::{note}
     According to [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md), {{es}} overrides TCP keepalive settings at the socket level for its own connections:
@@ -343,7 +347,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
 
 
 
-27. Apply the new sysctl settings
+27. Apply the new sysctl settings:
 
     ```sh
     sudo sysctl -p
@@ -389,15 +393,67 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     ::::
 
 
-30. Restart the podman service by running this command:
+30. $$$ece-rhel-ipv6-egress$$$ {applies_to}`ece: ga 4.2` Optional: Enable dual-stack networking for IPv6 egress. Complete these steps only if ECE containers must reach IPv6 endpoints. Podman does not support configuring both IPv4 and IPv6 on the built-in default network through `containers.conf`, so create a dual-stack network and set it as the default for new containers.
+
+    1. Create a dual-stack Podman network:
+
+        ```sh
+        sudo podman network create \
+          --subnet 10.89.0.0/24 \
+          --subnet fd00:10:89::/64 \
+          --ipv6 \
+          ece-network
+        ```
+
+        ::::{note}
+        Choose IPv4 and IPv6 subnets that do not overlap with other networks in your environment. These values are local to each host, so the same subnets can be reused across ECE hosts.
+        ::::
+
+    2. Set the dual-stack network as the default for new containers. Open `/etc/containers/containers.conf` and, in the `[network]` section, set `default_network`. If the file or section does not exist yet, create it.
+
+        On RHEL 9 and Rocky Linux 9, merge this setting with the existing `network_backend="cni"` configuration rather than creating a duplicate `[network]` section.
+
+        ```text
+        [network]
+        default_network = "ece-network"
+        ```
+
+31. Restart the Podman service:
 
     ```sh
     sudo systemctl daemon-reload
     sudo systemctl restart podman
     ```
 
-31. Reboot the RHEL host.
+32. Reboot the RHEL host:
 
     ```sh
     sudo reboot
     ```
+
+33. After rebooting, verify the host configuration.
+
+    1. Confirm that Podman is running:
+
+        ```sh
+        sudo systemctl status podman
+        ```
+
+    2. {applies_to}`ece: ga 4.2` Optional: If you enabled dual-stack networking for IPv6 egress, verify both the default network configuration and outbound IPv6 connectivity from a container:
+
+        1. Confirm that the dual-stack network has both subnets:
+
+            ```sh
+            sudo podman network inspect ece-network --format '{{json .Subnets}}'
+            ```
+
+            The output should include both the IPv4 (`10.89.0.0/24`) and IPv6 (`fd00:10:89::/64`) subnets.
+
+        2. Run a short-lived container and test IPv6 egress:
+
+            ```sh
+            sudo podman run --rm curlimages/curl:latest \
+              -6 -s -o /dev/null -w "%{http_code}\n" https://ipv6.google.com
+            ```
+
+            A response of `200` confirms that containers can reach IPv6 endpoints.

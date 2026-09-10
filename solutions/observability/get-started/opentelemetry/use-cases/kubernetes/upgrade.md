@@ -1,6 +1,6 @@
 ---
 navigation_title: Upgrade
-description: Instructions for upgrading the EDOT Helm chart release for Kubernetes monitoring.
+description: Instructions for upgrading the {{edot}} Helm chart release for Kubernetes monitoring.
 applies_to:
   stack:
   serverless:
@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Upgrade the EDOT Kubernetes Helm chart release [k8s-edot-upgrade]
+# Upgrade the {{edot}} Kubernetes Helm chart release [k8s-edot-upgrade]
 
 :::{note}
 Before upgrading or updating the release configuration, refer to the [compatibility matrix](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/prerequisites-compatibility.md#compatibility-matrix) for a list of supported versions and [customizing configuration](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md) for a list of supported configurable parameters.

@@ -17,7 +17,7 @@ To get started, select the services and environments you want to configure. The 
 
 ## Precedence [_precedence]
 
-Configurations set from the Applications UI take precedence over configurations set locally in each EDOT SDK. If the EDOT Collector is offline, reports an error, or is slow to respond, EDOT SDKs use local defaults until they’re able to update the configuration.
+Configurations set from the Applications UI take precedence over configurations set locally in each EDOT SDK. If {{agent}} is offline, reports an error, or is slow to respond, EDOT SDKs use local defaults until they’re able to update the configuration.
 
 ## Supported configurations [_supported_configurations]
 
@@ -38,8 +38,8 @@ Supported configurations are also tagged with the ![dynamic config](/solutions/i
 
 EDOT SDK configuration is an optional feature. To activate it, refer to [EDOT SDK Central Configuration](/solutions/observability/apm/opentelemetry/edot-sdks-central-configuration.md).
 
-Refer to the [EDOT reference](opentelemetry://reference/central-configuration.md) to learn how to activate central configuration for EDOT SDKs.
+Refer to the [{{edot}} reference](opentelemetry://reference/central-configuration.md) to learn how to activate central configuration for EDOT SDKs.
 
 ::::{note}
-You can't configure APM agents through the EDOT Collector. Use APM Server for that purpose. Refer to [Configure APM agent configuration](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md) for more details.
+You can't configure APM agents through {{agent}}. Use APM Server for that purpose. Refer to [Configure APM agent configuration](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md) for more details.
 ::::

@@ -35,8 +35,9 @@ There are several actions you can take on alerts in the alerts panel. Under **Ac
 - **View rule details**: Open the details page for the rule that created the alert.
 - **View alert details**: Open the alert details flyout.
 - (**Active** rules only) **Mark as untracked**: Change the alert's status from **Active** to **Untracked**.
-- (**Active** rules only) **Mute**: Mute alerts from the associated rule.
-- (**Active** rules only) **Mark as acknowledged**: Set the alert to [**acknowledged**](https://www.elastic.co/docs/explore-analyze/alerting/alerts/view-alerts#acknowledge-alerts) {applies_to}`stack: ga 9.4+`
+- (**Active** rules only) **Snooze**: [Snooze](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts) the alert to stop its actions from running. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` 
+- (**Active** rules only) **Mute**: Mute alerts from the associated rule. {applies_to}`stack: ga 9.0-9.4` {applies_to}`serverless: unavailable`
+- (**Active** rules only) **Mark as acknowledged**: Set the alert to [**acknowledged**](/explore-analyze/alerting/alerts/view-alerts.md#acknowledge-alerts) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`
 
 ## Edit an alerts panel
 

@@ -16,7 +16,9 @@ description: Create Markdown investigation guides with Timeline and Osquery butt
 
 Investigation guides are Markdown documents attached to detection rules that help analysts triage, analyze, and respond to alerts. A well-written guide reduces mean time to respond by giving analysts the context and queries they need without leaving the alert details flyout.
 
-You author an investigation guide in the **Investigation guide** Markdown editor, which is available in the rule's [advanced settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) (under the **About** step when creating a rule, or the **About** tab when editing one). The guide renders in the **Investigation** tab of the alert details flyout whenever an analyst opens an alert produced by that rule.
+You author an investigation guide in the **Investigation guide** Markdown editor, which is available in the rule's [advanced settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) (under the **About** step when creating a rule, or the **About** tab when editing one). 
+
+Whenever an analyst opens an alert produced by that rule, the guide is available from the [Investigation section](/solutions/security/detect-and-alert/view-detection-alert-details.md#investigation-section) on the **Overview** tab of the alert details flyout.
 
 :::{image} /solutions/images/security-ig-alert-flyout.png
 :alt: Alert details flyout with investigation guide
@@ -229,7 +231,8 @@ You can embed Osquery buttons that let analysts run live queries against {{agent
 
 ### Run an Osquery from an investigation guide [run-osquery-from-ig]
 
-1. Open an alert's details flyout and go to the **Investigation** tab.
+1. Open an alert's details flyout, then click **Show investigation guide** in the [Investigation section](/solutions/security/detect-and-alert/view-detection-alert-details.md#investigation-section) on the **Overview** tab.
+
 2. Click the Osquery button. The **Run Osquery** pane opens with the **Query** field autofilled.
 
     1. Select one or more {{agent}}s or groups to query. Start typing in the search field to get suggestions for {{agent}}s by name, ID, platform, and policy.

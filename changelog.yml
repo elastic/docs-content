@@ -16,7 +16,7 @@
 #   issue     — use the issue number (e.g., 67890.yaml).
 #   timestamp — use a Unix timestamp with a title slug (e.g., 1735689600-fix-search.yaml). Default.
 # Can be overridden per invocation with --use-pr-number or --use-issue-number CLI flags.
-filename: timestamp
+filename: pr
 
 # Products configuration (optional)
 # If not specified, all products from products.yml are allowed (including those
@@ -209,8 +209,6 @@ bundle:
   directory: docs/changelog
   # Output directory for bundled changelog files
   output_directory: docs/releases
-  # Whether to resolve (copy contents) by default
-  resolve: true
   # Optional: default description text for bundles. Supports {version}, {lifecycle}, {owner}, and {repo} placeholders.
   # Use YAML literal block scalar (|) for multiline descriptions.
   # description: |
@@ -231,7 +229,7 @@ bundle:
     - elastic/roadmap
   # Optional: control auto-population of release-date for all profiles by default.
   # When true (default), auto-populate release dates. Profiles can override this setting.
-  release_dates: false
+  release_dates: true
 
   # Named bundle profiles for different release scenarios.
   # Profiles can be used with both 'changelog bundle' and 'changelog remove':

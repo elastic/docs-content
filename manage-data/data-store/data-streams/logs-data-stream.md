@@ -16,6 +16,11 @@ Logs data streams are created when the `index.mode` in the relevant template is 
 
 Logsdb index mode is enabled by default for logs in {{serverless-full}}, and for new logs data streams in {{stack}} 9.0 and later.
 
+:::{note}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+For a fully columnar logs storage profile, you can set `index.mode` to `logsdb_columnar` instead. To learn when to choose that mode, refer to [](/manage-data/data-store/columnar.md).
+:::
+
 ## Availability of logsdb index mode [logsdb-availability]
 
 Logsdb index mode is automatically enabled for the following data streams:

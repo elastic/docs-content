@@ -72,6 +72,30 @@ The rule type also affects the privileges that are required. For example, to vie
 
 ::::
 
+### Give access to triage alerts without managing rules [_give_access_to_triage_alerts_without_managing_rules]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+To let users read alerts and perform per-alert actions such as [snooze](view-alerts.md), unsnooze, and [acknowledge](view-alerts.md#acknowledge-alerts), assign one or both of the following feature privileges. These privileges do not include rule management.
+
+**{{kib}} privileges**
+
+* **Management → Stack Alerts**:
+  * `All`: Read {{stack-manage-app}} alerts and perform per-alert actions across {{stack-manage-app}} rule types (for example, the {{es}} query, index threshold, geo-containment, transform health, {{ml}} anomaly detection, and custom threshold rule types).
+  * `Read`: Read {{stack-manage-app}} alerts and their snooze state.
+* **Observability → Observability Alerts**:
+  * `All`: Read {{observability}} alerts and perform per-alert actions across {{observability}} rule types (for example, the APM, infrastructure, logs, SLO burn rate, Synthetics, and custom threshold rule types).
+  * `Read`: Read {{observability}} alerts and their snooze state.
+
+Some rule types, such as {{es}} query, custom threshold, and {{ml}} anomaly detection, can appear on both the **Stack Alerts** and **Observability Alerts** pages. Grant the privilege that matches the alerts page your users work from, or grant both when they need access in each context.
+
+:::{note}
+These privileges don't grant permission to create, edit, enable, disable, or delete rules. To manage rules, users still need the appropriate **{{stack-rules-feature}}** or {{observability}} feature privileges described earlier on this page. On both alerts pages, viewing rule stats, rule name links, and the **View rule details** action requires rule-read authorization in addition to these alert privileges.
+:::
+
 ### Give view-only access to alerts in **Discover** or **Dashboards** [_give_view_only_access_to_alerts_in_discover_or_dashboards]
 
 **{{kib}} privileges**
@@ -93,19 +117,20 @@ For more information on configuring roles that provide access to features, go to
 
 ### API keys [alerting-authorization]
 
-Rules are authorized using an API key. Its credentials are used to run all background tasks associated with the rule, including condition checks like {{es}} queries and triggered actions.
+Rules use an API key to authorize all background tasks, including condition checks like {{es}} queries and triggered actions. The key type depends on your deployment — Stack deployments use [{{es}} API keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md), and Serverless projects use [{{ecloud}} API keys](rules-and-elastic-cloud-api-keys.md).
 
-When you create a rule in {{kib}}, an API key is created that captures a snapshot of your privileges. Likewise when you update a rule, the API key is updated with a snapshot of your privileges at the time of the edit.
+On Stack deployments, when you create a rule in {{kib}}, an {{es}} API key is created that captures a snapshot of your privileges. Likewise when you update a rule, the API key is updated with a snapshot of your privileges at the time of the edit.
+
+On {{serverless-short}} projects, a key is also created automatically when you create or save a rule, scoped to your roles at that time. For details on how {{ecloud}} API keys affect rule behavior, refer to [Rules and {{ecloud}} API keys in {{serverless-short}}](rules-and-elastic-cloud-api-keys.md).
 
 When you disable a rule, it retains the associated API key which is reused when the rule is enabled. If the API key is missing when you enable the rule, a new key is generated that has your current security privileges. When you import a rule, you must enable it before you can use it and a new API key is generated at that time.
 
 You can generate a new API key at any time in **{{stack-manage-app}} > {{rules-ui}}** or in the rule details page by selecting **Update API key** in the actions menu.
 
-If you manage your rules by using {{kib}} APIs, they support support both key- and token-based authentication as described in [Authentication]({{kib-apis}}authentication). To use key-based authentication, create API keys and use them in the header of your API calls as described in [API Keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md). To use token-based authentication, provide a username and password; an API key that matches the current privileges of the user is created automatically. In both cases, the API key is subsequently associated with the rule and used when it runs.
+If you manage your rules by using {{kib}} APIs, they support both key and token-based authentication as described in [Authentication]({{kib-apis}}authentication). To use key-based authentication, create {{es}} API keys and use them in the header of your API calls as described in [{{es}} API keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md). To use token-based authentication, provide a username and password. An API key that matches the current privileges of the user is created automatically. In both cases, the API key is subsequently associated with the rule and used when it runs.
 
 ::::{important}
 If a rule requires certain privileges, such as index privileges, to run and a user without those privileges updates the rule, the rule will no longer function. Conversely, if a user with greater or administrator privileges modifies the rule, it will begin running with increased privileges. The same behavior occurs when you change the API key in the header of your API calls.
-
 ::::
 
 ### Restrict actions [alerting-restricting-actions]

@@ -24,6 +24,10 @@ When a rule generates an alert that triggers your workflow, the trigger provides
 Declaring `type: alert` on a workflow isn't enough to run the workflow when alerts fire. You also have to attach the workflow to the rule's **Actions** using a **Run Workflow** action. Without the attachment, the rule fires alerts but the workflow is never invoked. This is the single most common setup mistake.
 :::
 
+:::{note}
+Alert triggers are different from [alert episode lifecycle triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven). An alert trigger (`type: alert`) runs a workflow when a rule generates an alert, and only when you add the workflow to that rule as an action. Alert episode lifecycle triggers are [event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md) that automatically react to alert episode events (such as an episode being assigned or acknowledged) in the {{alerting-v2-system}}, with no rule action to configure.
+:::
+
 ## Schema [workflows-alert-trigger-schema]
 
 | Parameter | Type | Required | Description |

@@ -23,7 +23,7 @@ If you're new to workflows, complete [Build your first workflow](/explore-analyz
 
 ## Before you begin [workflows-classify-route-prereqs]
 
-- **Permissions.** `All` on **Analytics > Workflows**. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+- **Permissions.** `All` on **Analytics → Workflows**. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 - **AI connector.** A configured LLM connector (Azure OpenAI, OpenAI, Anthropic, or Bedrock). Refer to [Connectors](/deploy-manage/manage-connectors.md). Note the connector ID.
 - **A set of items to classify.** For this walkthrough, the workflow generates sample items with `ai.prompt`. In production, you'd read items from an alert trigger (`event.alerts`), an Elasticsearch search, or an upstream workflow.
 

@@ -15,7 +15,7 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % ## Next version [elastic-observability-nextversion-breaking-changes]
 % **Release date:** Month day, year
 
-% ::::{dropdown} Title of breaking change 
+% ::::{dropdown} Title of breaking change
 % Description of the breaking change.
 % For more information, check [PR #](PR link).
 

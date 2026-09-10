@@ -24,7 +24,9 @@ toc:
                   - file: deploy/elastic-cloud/azure-native-isv-service.md
                     children:
                       - file: deploy/elastic-cloud/azure-native-isv-service-logs-metrics.md
+                      - file: deploy/elastic-cloud/azure-native-isv-service-network-security.md
                       - file: deploy/elastic-cloud/azure-native-isv-service-troubleshooting.md
+                      - file: deploy/elastic-cloud/azure-native-isv-service-byok.md
                   - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md
                   - file: deploy/elastic-cloud/heroku.md
                     children:
@@ -85,6 +87,9 @@ toc:
                   - file: deploy/cloud-enterprise/ece-software-prereq.md
                   - file: deploy/cloud-enterprise/ece-sysconfig.md
                   - file: deploy/cloud-enterprise/ece-networking-prereq.md
+                  - file: deploy/cloud-enterprise/ece-ipv6-support.md
+                    children:
+                      - file: deploy/cloud-enterprise/ece-ipv6-aws-setup.md
                   - file: deploy/cloud-enterprise/ece-users-permissions.md
                   - file: deploy/cloud-enterprise/ece-ha.md
                   - file: deploy/cloud-enterprise/ece-roles.md
@@ -139,6 +144,7 @@ toc:
                   - file: deploy/cloud-enterprise/change-ece-api-url.md
                   - file: deploy/cloud-enterprise/change-endpoint-urls.md
                   - file: deploy/cloud-enterprise/enable-custom-endpoint-aliases.md
+                  - file: deploy/cloud-enterprise/configure-proxy-protocol.md
                   - file: deploy/cloud-enterprise/ece-manage-capacity.md
                   - file: deploy/cloud-enterprise/configure-allocator-affinity.md
                   - file: deploy/cloud-enterprise/change-allocator-disconnect-timeout.md
@@ -197,6 +203,7 @@ toc:
               - file: deploy/cloud-on-k8s/configure.md
                 children:
                   - file: deploy/cloud-on-k8s/configure-eck.md
+                  - file: deploy/cloud-on-k8s/dynamic-namespace-handling.md
                   - file: deploy/cloud-on-k8s/configure-validating-webhook.md
                   - file: deploy/cloud-on-k8s/restrict-cross-namespace-resource-associations.md
                   - file: deploy/cloud-on-k8s/service-meshes.md
@@ -237,6 +244,7 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-kibana-plugins.md
                   - file: deploy/cloud-on-k8s/customize-pods.md
                   - file: deploy/cloud-on-k8s/propagate-labels-annotations.md
+                  - file: deploy/cloud-on-k8s/k8s-pause-orchestration.md
                   - file: deploy/cloud-on-k8s/manage-compute-resources.md
                   - file: deploy/cloud-on-k8s/recipes.md
                   - file: deploy/cloud-on-k8s/connect-to-external-elastic-resources.md
@@ -298,6 +306,7 @@ toc:
                   - file: deploy/self-managed/max-number-of-threads.md
                   - file: deploy/self-managed/executable-jna-tmpdir.md
                   - file: deploy/self-managed/system-config-tcpretries.md
+                  - file: deploy/self-managed/system-config-clocks.md
                   - file: deploy/self-managed/bootstrap-checks.md
               - file: deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md
               - file: deploy/self-managed/install-elasticsearch-with-zip-on-windows.md
@@ -506,6 +515,7 @@ toc:
                   - file: security/k8s-https-settings.md
                   - file: security/k8s-transport-settings.md
                   - file: security/k8s-es-client-certificate-auth.md
+                  - file: security/k8s-fleet-server-client-certificate-auth.md
               - file: security/external-ca-transport.md
           - file: security/network-security.md
             children:
@@ -643,6 +653,7 @@ toc:
               - file: users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md
   - file: manage-spaces.md
     children:
+      - file: choose-and-switch-spaces.md
       - file: manage-spaces-fleet.md
   - file: api-keys.md
     children:
@@ -805,6 +816,8 @@ toc:
               - file: monitor/logging-configuration/kib-advanced-logging.md
                 children:
                   - file: monitor/logging-configuration/kibana-log-settings-examples.md
+      - hidden: monitor/log-delivery.md
+      - hidden: monitor/log-delivery/audit-trail.md
   - file: kibana-reporting-configuration.md
   - file: kibana-custom-branding.md
   - file: cloud-organization.md
@@ -816,6 +829,7 @@ toc:
           - file: cloud-organization/billing/serverless-project-billing-dimensions.md
             children:
               - file: cloud-organization/billing/elasticsearch-billing-dimensions.md
+              - file: cloud-organization/billing/vector-database-billing-dimensions.md
               - file: cloud-organization/billing/elastic-observability-billing-dimensions.md
               - file: cloud-organization/billing/security-billing-dimensions.md
           - file: cloud-organization/billing/billing-models.md

@@ -15,13 +15,13 @@ This page walks through what happens at each step after a rule runs, and broken 
 
 ## Rule runs in Alert mode [how-alert-mode-works]
 
-In Alert mode, the rule doesn't just record that a condition was found. It opens an alert episode that persists and tracks the problem until the condition clears. Each time the rule runs, it writes a rule event that can advance the episode's lifecycle state. An action policy sits between the episode and your team, deciding whether and when to trigger a workflow.
+In Alert mode, the rule doesn't just record that a condition was found. Each match causes the rule to open an alert episode that persists and tracks the problem until the condition clears. Each time the rule runs, it writes a rule event that can advance the episode's lifecycle state. An action policy sits between the episode and your team, deciding whether and when to trigger a workflow.
 
 | Step | Actor | Action |
 |------|-------|--------|
 | 1 | Rule | Runs on schedule and evaluates {{esql}} against your data |
 | 2 | Rule | Query returns results → A rule event is written to `.rule-events` |
-| 3 | System | Creates an alert episode and sets its initial state to `pending`; episode advances to `active` once the activation threshold is met |
+| 3 | Rule | Creates an alert episode and sets its initial state to `pending`; episode advances to `active` once the activation threshold is met |
 | 4 | Action policy | Evaluates the episode against its conditions (checks for episode eligibility, match conditions, and frequency) |
 | 5 | Action policy | If conditions are met, triggers a workflow |
 | 6 | Workflow | Sends notification or runs automation |
@@ -51,7 +51,7 @@ In Signal mode, the rule acts purely as a data producer. Each time the rule runs
 |------|-------|--------|
 | 1 | Rule | Runs on schedule and evaluates {{esql}} against your data |
 | 2 | Rule | Query returns results → Writes a rule event (signal) to `.rule-events` |
-| 3 | System | Signal is immediately queryable in Discover, dashboards, and {{esql}} |
+| 3 | Rule | Signal is immediately queryable in Discover, dashboards, and {{esql}} |
 
 No alert episode is opened. No action policy evaluates the result. No notification is sent.
 

@@ -17,11 +17,16 @@ products:
 
 Pie charts display parts of a whole as slices, where each slice represents a value and its size represents its prevalence. Pie charts are ideal for illustrating the relative prevalence of categorical data, and for displaying percentage or proportional data. They work best with a **maximum of 6 slices** and when proportions are around 25%, 50%, or 75%, as these are easiest to perceive accurately. For more than 6 categories, precise comparisons, or negative values, consider using [bar charts](bar-charts.md) instead. For comparing similarly-sized proportions or displaying percentages as discrete units, consider using [waffle charts](waffle-charts.md).
 
-You can create pie charts in {{kib}} using [**Lens**](../lens.md).
+You can build a pie chart in {{kib}} in either of these ways:
+
+- [With the point-and-click editor](#build-a-pie-chart)
+- [With an {{esql}} query](#build-a-pie-chart-with-esql)
+
+To automate chart or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
 ![Example Lens pie chart](../../images/kibana-lens-pie-chart.png)
 
-## Build a pie chart
+## Build a pie chart with the point-and-click editor [build-a-pie-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -53,8 +58,40 @@ Optionally:
 The chart preview updates to show a pie divided into slices. Each slice represents a category value, and its size reflects the metric proportion. If you added multiple **Slice by** dimensions, inner and outer rings appear to show the hierarchy.
 :::::
 
-:::::{step} Customize the chart to follow best practices
-Tweak the appearance of the chart to your needs. Consider the following best practices:
+:::::{step} Save the chart
+:::{include} ../../_snippets/save-visualization.md
+:::
+:::::
+
+::::::
+
+## Build a pie chart with an {{esql}} query [build-a-pie-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+A pie chart needs a categorical column to define its slices and a numeric metric column to determine their size. In this query, `BY` returns one row for each product category, `SUM` provides its revenue value, and `SORT` and `LIMIT` retain the six categories with the most revenue:
+
+```esql
+FROM kibana_sample_data_ecommerce
+| STATS revenue = SUM(taxful_total_price) BY category.keyword
+| SORT revenue DESC
+| LIMIT 6
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Pie**.
+3. Assign `category.keyword` to **Slice by** and `revenue` to **Metric**.
+4. Customize the chart appearance using the [pie chart settings](#pie-chart-settings).
+5. Select **Apply and close**.
+
+The chart preview shows each category's share of the revenue returned by the query.
+
+## Apply pie chart best practices [pie-chart-best-practices]
+
+After building the chart with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
 
 **Limit the number of slices**
 :   Keep your pie chart to a maximum of 6 slices. If you have more categories, consider [grouping smaller values into an "Other" category](#other-category) or using a different visualization type.
@@ -71,17 +108,7 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 **Label clearly**
 :   Keep labels inside or close to slices when possible. For charts with many small slices or long labels, use the legend instead.
 
-Refer to [Pie chart settings](#pie-chart-settings) to find all configuration options for your pie chart.
-
-For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
-:::::
-
-:::::{step} Save the chart
-:::{include} ../../_snippets/save-visualization.md
-:::
-:::::
-
-::::::
+Refer to [Pie chart settings](#pie-chart-settings) for all pie chart configuration options. For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 
 ## Advanced pie chart scenarios
 
@@ -101,6 +128,9 @@ Donut charts are pie charts with a hollow center. The empty space can provide a 
 
 This example creates a donut chart sliced by the top 5 log tag values, with raw counts shown inside each slice.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -253,6 +283,9 @@ This example demonstrates the core value of multiple metrics: using KQL filters 
 This example uses multiple metrics mode (no `group_by`) where each metric counts documents matching a specific file extension, with each metric assigned a static color.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -394,6 +427,9 @@ The resulting chart shows the 3 most common hosts, with all remaining hosts comb
 
 This example shows the top 3 hosts as individual slices and groups all remaining hosts into an "Other" slice using the `other_bucket` option.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -608,6 +644,9 @@ The following examples show various configuration options for building impactful
 This example uses formula-based metrics to count visits from specific referrer domains, producing one slice per traffic source without a `group_by` dimension.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -742,6 +781,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 This example creates a pie chart that sums revenue per product category from the eCommerce sample data, showing each category's share of total revenue.
 
 
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
+
 :::::{tab-set}
 
 ::::{tab-item} Console
@@ -859,6 +901,9 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 This example uses the `filters` grouping operation to define custom slices based on HTTP response code ranges, rather than relying on field values directly.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

@@ -15,7 +15,7 @@ products:
 
 # Contact support
 
-In some cases, you may unable to resolve an issue with the Elastic Distributions of OpenTelemetry (EDOT) using the troubleshooting guides.
+In some cases, you may unable to resolve an issue with {{edot}} using the troubleshooting guides.
 
 If you have an [Elastic subscription](https://www.elastic.co/pricing), you can contact Elastic support for assistance. You can reach us in the following ways:
 
@@ -48,14 +48,14 @@ To help Elastic Support investigate the problem efficiently, please include the 
 
 ### Deployment context
 
-* Are you using a [standalone EDOT Collector](elastic-agent://reference/edot-collector/config/default-config-standalone.md) or [Kubernetes](elastic-agent://reference/edot-collector/config/default-config-k8s.md)?
+* Are you using a [standalone {{agent}}](elastic-agent://reference/edot-collector/config/default-config-standalone.md) or [Kubernetes](elastic-agent://reference/edot-collector/config/default-config-k8s.md)?
 * If applicable, include:
   * Helm chart version and values (for Kubernetes)
   * Container image version
 
 ### Configuration
 
-* Your full or partial EDOT Collector configuration file or files, redacted as needed
+* Your full or partial {{agent}} configuration file or files, redacted as needed
 * Environment variables that may affect telemetry
 * Any overrides or runtime flags, such as `--log-level=debug` or `--config` path
 * To enable debug logging in Kubernetes environments using the Helm chart, set the log level explicitly with:
@@ -67,7 +67,7 @@ To help Elastic Support investigate the problem efficiently, please include the 
       - "--log-level=debug"
   ```
 
-  In Kubernetes environments with multiple EDOT Collector pods, be sure to collect logs and configuration from all instances. You can use `kubectl` to list and inspect each:
+  In Kubernetes environments with multiple {{agent}} pods, be sure to collect logs and configuration from all instances. You can use `kubectl` to list and inspect each:
 
   ```sh
   kubectl get pods -l app=edot-collector
@@ -77,7 +77,7 @@ To help Elastic Support investigate the problem efficiently, please include the 
 
 ### Logs and diagnostics
 
-* Recent Collector logs with relevant errors or warning messages. For guidance on enabling debug logging, refer to [Enable debug logging for the EDOT Collector](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) or [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+* Recent Collector logs with relevant errors or warning messages. For guidance on enabling debug logging, refer to [Enable debug logging for the {{agent}}](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) or [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 * Output from:
 
   ```bash

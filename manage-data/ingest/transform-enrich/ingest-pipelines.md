@@ -251,7 +251,7 @@ output.elasticsearch:
 
 {{agent}} integrations ship with default ingest pipelines that preprocess and enrich data before indexing. [{{fleet}}](/reference/fleet/index.md) applies these pipelines using [index templates](../../data-store/templates.md) that include [pipeline index settings](ingest-pipelines.md#set-default-pipeline). {{es}} matches these templates to your {{fleet}} data streams based on the [stream’s naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 
-Each default integration pipeline calls a nonexistent, unversioned `*@custom` ingest pipeline. If unaltered, this pipeline call has no effect on your data. However, you can modify this call to create custom pipelines for integrations that persist across upgrades. Refer to [Tutorial: Transform data with custom ingest pipelines](/reference/fleet/data-streams-pipeline-tutorial.md) to learn more.
+Each default integration pipeline calls a nonexistent, unversioned `*@custom` ingest pipeline. If unaltered, this pipeline call has no effect on your data. However, you can modify this call to create custom pipelines for integrations that persist across upgrades. Refer to [](/reference/fleet/data-streams-pipeline-tutorial.md) to learn more.
 
 {{fleet}} doesn’t provide a default ingest pipeline for the **Custom logs** integration, but you can specify a pipeline for this integration using an [index template](ingest-pipelines.md#pipeline-custom-logs-index-template) or a [custom configuration](ingest-pipelines.md#pipeline-custom-logs-configuration).
 
@@ -1033,3 +1033,12 @@ Use the [node stats]({{es-apis}}operation/operation-nodes-stats) API to get glob
 ```console
 GET _nodes/stats/ingest?filter_path=nodes.*.ingest
 ```
+
+
+## Limitations [ingest-pipeline-limitations]
+
+Ingest pipelines operate on one document at a time, as the document is indexed. This model has a few consequences:
+
+* A pipeline can transform or drop a document, but it can't split one incoming document into multiple documents. The [`split` processor](elasticsearch://reference/enrich-processor/split-processor.md) splits a field value into an array within the same document. To index each element of an incoming event as its own document, refer to [Split an event into multiple documents](split-events-into-multiple-documents.md).
+* A pipeline can't read from or aggregate across other indexed documents. The exception is the [enrich processor](data-enrichment.md), which looks up data from an enrich index.
+* A pipeline runs only when a document is indexed, and doesn't change documents that are already indexed. To run a pipeline on existing documents, [reindex]({{es-apis}}operation/operation-reindex) them into a new index with the pipeline, or run an [update by query]({{es-apis}}operation/operation-update-by-query) with the pipeline.

@@ -33,9 +33,9 @@ inactive → pending → active → recovering → inactive
 A checkout-latency rule runs every 5 minutes. It has an activation threshold of 2 consecutive breaches and a recovery threshold of 2 consecutive clears. The episode opens only after consecutive breaches meet the activation threshold and closes only after consecutive clears meet the recovery threshold. The system waits for confirmation in both directions.
 
 1. **14:00**: Routine check. p95 is within budget. No episode exists yet. The series is `inactive`.
-2. **14:05**: p95 jumps to 3.1s. The rule detects the first breach. The system creates the episode in `pending` and starts counting consecutive breaches.
+2. **14:05**: p95 jumps to 3.1s. The rule detects the first breach, creates the episode in `pending`, and starts counting consecutive breaches.
 3. **14:10**: p95 is still elevated. The second consecutive breach meets the activation threshold. The episode moves from `pending` to `active`. The system pages the engineer.
-4. **14:10–14:45**: Every evaluation finds high latency. The episode stays `active`. The system doesn't create new episodes. One episode tracks one problem, no matter how many times the rule evaluates while the condition holds.
+4. **14:10–14:45**: Every evaluation finds high latency. The episode stays `active`. The rule doesn't create new episodes. One episode tracks one problem, no matter how many times the rule evaluates while the condition holds.
 5. **14:50**: p95 drops back under 2s. The first clean check moves the episode from `active` to `recovering`. The system starts counting consecutive clears.
 6. **14:55**: A second consecutive clear meets the recovery threshold. The episode moves from `recovering` to `inactive`. The engineer receives a recovery notification.
 

@@ -40,7 +40,7 @@ To create a template:
 2. On the **Fields** tab, define case defaults and the fields to pre-fill. Use the **Actions menu** to insert scaffolding for a new field, [reference a reusable field](#case-templates-field-ref) from your field library, or add validation and conditional logic. The preview pane updates in real time so you can see how fields look and behave before saving. Refer to the [YAML schema reference](yaml-template-schema-reference.md) for the full set of supported keys.
 
    :::{note}
-   A template can have up to 200 custom fields.
+   A template can have up to 200 custom fields. Refer to [Limits](yaml-template-schema-reference.md#case-templates-field-library-limits) for this and other template and field library size limits.
    :::
 
 3. On the **Configuration** tab, enter a template name. Optionally add a description, tags, case settings (**Sync alerts** and **Extract observables**), and an external connector. 

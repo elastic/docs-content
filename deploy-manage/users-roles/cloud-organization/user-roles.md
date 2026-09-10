@@ -30,7 +30,7 @@ To edit the roles assigned to a user:
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the navigation menu, select **Organization** > **Members**.
-3. Select the user on the **Members** tab of the **Organization** page.
+3. Select the user.
 4. Click **Edit** to change the user's roles.
 
 :::{note}
@@ -41,17 +41,18 @@ Role assignments and resources outside your scope are not visible.
 
 ## Types of roles
 
-There are three categories of roles you can assign to users:
+There are three categories of roles you can assign to users, plus other permissions:
 
 * **Organization-level roles:** These roles apply to the entire organization and are not specific to any resource.
 * **Cloud resource access roles:** These roles are specific to each serverless project or hosted deployment.
 * **Connected cluster access roles:** Grant access to {{ecloud}} services for clusters you connect through [Cloud Connect](/deploy-manage/cloud-connect.md).
+* **Other permissions:** These are organization-level permissions such as [managing workload credentials](#manage-workload-credentials).
 
 ### Organization-level roles [ec_organization_level_roles]
 
 * **Organization owner**: This role is assigned by default to the user who created the organization.
 
-    Organization owners have full access to {{ecloud}} for the organization. They can manage {{ech}} deployments, {{serverless-full}} projects, and clusters linked through [Cloud Connect](/deploy-manage/cloud-connect.md). They can also manage members, organization settings, billing, and subscription details.
+    Organization owners have full access to {{ecloud}} for the organization. They can manage {{ech}} deployments, {{serverless-full}} projects, and clusters linked through [Cloud Connect](/deploy-manage/cloud-connect.md). They can also manage members, organization settings, billing, and subscription details. Organization owners can create and manage all [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) in the organization.
 
 * **Billing admin**: Can manage an organization’s billing details such as credit card information, subscription and invoice history. Cannot manage other organization or deployment details and properties.
 
@@ -88,6 +89,14 @@ Users with a connected cluster access role can also view usage and costs, and vi
 :::{note}
 As more services become available for use with [Cloud Connect](/deploy-manage/cloud-connect.md), refer to each service’s documentation for role-specific permissions. The role names in {{ecloud}} remain consistent.
 :::
+
+### Other permissions
+
+Organization-level permissions grant additional capabilities without assigning organization-level, cloud resource access, or connected cluster access roles.
+
+* $$$manage-workload-credentials$$$**Manage workload credentials**: Allows the user to manage workload credentials, such as creating, listing, and revoking their own [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md).
+
+    This permission only adds the ability to manage credentials. It does not give the user access to any deployments or projects. To create useful credentials, such as API keys, the user also needs [cloud resource access roles](#ec_instance_access_roles) for the deployments or projects those credentials should cover. When the user creates a credential, it can only include roles the user holds at creation time on those resources. Organization owners can still view and revoke all workload credentials in the organization.
 
 ## {{ech}} predefined roles [ech-predefined-roles]
 
@@ -130,9 +139,9 @@ You can optionally [create custom roles in a project](/deploy-manage/users-roles
 
 | Role name | {{ecloud}} access | Project access | Availability |
 | --- | --- | --- | --- |
-| Admin | Has full access to project management, properties, and security privileges. | Superuser role privileges | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
-| Developer | Manage project settings. | Creates API keys, indices, data streams, adds connectors, and builds visualizations. | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md) |
-| Viewer | Has read-only access to project details. | Has read-only access to project data and features. | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Admin | Has full access to project management, properties, and security privileges. | Superuser role privileges | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{vectordb}}](/deploy-manage/images/serverless-vectordb-badge.svg "")](../../../solutions/vector-database.md)[![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Developer | Manage project settings. | Creates API keys, indices, data streams, adds connectors, and builds visualizations. | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{vectordb}}](/deploy-manage/images/serverless-vectordb-badge.svg "")](../../../solutions/vector-database.md) |
+| Viewer | Has read-only access to project details. | Has read-only access to project data and features. | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{vectordb}}](/deploy-manage/images/serverless-vectordb-badge.svg "")](../../../solutions/vector-database.md)[![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
 | Editor | Configures all {{observability}} or Security projects. | Has read-only access to data indices. Has full access to all project features. | [![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
 | Tier 1 analyst | Viewer | Ideal for initial alert triage. General read access, can create dashboards and visualizations. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
 | Tier 2 analyst | Viewer | Ideal for alert triage and beginning the investigation process. Can create cases. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
@@ -175,7 +184,7 @@ When **Cloud Console, {{es}}, and {{kib}}** access is not granted, roles that ar
 
 * If you select the **Admin** role, the user is able configure project settings and network security in {{ecloud}}, but can't log in to the relevant projects as superuser.
 * Several predefined roles that are intended for project users, such as the Security **Tier 1 analyst** role, can view the relevant projects on the {{ecloud}} Console home page, but can't open the project to view their dashboards and visualizations.
-* [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) always require **Cloud Console, {{es}}, and {{kib}}** access. Without it, users have only **Viewer** access in the {{ecloud}} Console, and can't log in to the project.
+* [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) always require **Cloud Console, {{es}}, and {{kib}}** access. Without it, custom roles are replaced with the predefined **Viewer** role, and users can't log in to the project.
 
 {applies_to}`serverless: preview` If your organization uses [{{cps}}](/deploy-manage/cross-project-search-config.md), the roles assigned to a user determine what data they can access across linked projects. Users can only see data from a linked project if their role on that project grants the necessary privileges. Refer to [Manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access).
 

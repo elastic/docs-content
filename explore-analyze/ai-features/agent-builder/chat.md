@@ -90,6 +90,16 @@ Use the model selector to switch the underlying [model](models.md) the agent use
 :screenshot:
 :::
 
+### Chat with data from multiple projects [agent-builder-cps-scope]
+```{applies_to}
+stack: unavailable
+serverless: preview
+```
+
+  When your projects are [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md), an agent searches the projects selected in the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header.
+
+  You can change the selector at any time. Each new message uses the current selection. Earlier messages in the conversation keep the results they already returned.
+
 ### Options menu [access-key-actions]
 
 ```{applies_to}
@@ -150,6 +160,25 @@ Use the chat history panel to access previous conversations.
 :width: 450px
 :::
 
+### Pin conversations
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Pin conversations that you want to access quickly. Pinned conversations appear in the **Pinned** section above **Chats** and remain pinned after you reload the page.
+
+You can pin or unpin a conversation in either of the following ways:
+
+- Drag the conversation from **Chats** to **Pinned** to pin it. Drag it back to **Chats** to unpin it.
+- Click the **Open conversation menu** icon {icon}`boxes_vertical`, then select **Pin** or **Unpin**.
+
+:::{image} images/pinned-conversations.gif
+:screenshot:
+:alt: Animated Agent Builder sidebar showing a conversation dragged from Chats to Pinned and the Unpin action in the conversation menu
+:width: 450px
+:::
+
 ### Track conversation status
 
 The chat history panel shows the status of each conversation at a glance, so you can keep track of what your agents are doing across conversations:
@@ -191,13 +220,17 @@ Tool call events show whether a tool is still running or has returned a response
 
 After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
-### View traces for a conversation round
+### View traces for a conversation round [view-traces]
 ```{applies_to}
 stack: ga 9.5+
 serverless: ga
 ```
 
 Each conversation round can record OpenTelemetry traces of how the agent ran. To inspect them, select the **View Trace** icon ({icon}`apm_trace`) on the round. A **Trace** flyout opens with a waterfall of the round's spans, including model calls and tool calls.
+
+The flyout is titled with the trace id and reports the span count and total duration. Each row in the waterfall shows the span's kind and duration, and model calls also show their input and output token counts.
+
+Select a span to open its details, including its generative AI attributes and any captured input and output. Message content appears only when the matching [trace privacy settings](collect-traces.md#trace-privacy-settings) are on. Otherwise the span reports that no input or output data is available.
 
 The **View Trace** icon appears only when trace collection is enabled and the conversation round has a trace. If trace collection is off, or the round produced no trace, the icon does not appear.
 

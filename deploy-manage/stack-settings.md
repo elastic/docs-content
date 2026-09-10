@@ -109,9 +109,9 @@ The method and location where you can update your {{stack}} settings depends on 
 
 #### Elasticsearch (`elasticsearch.yml`)
 
-Most settings can be changed on a running cluster using the [Cluster update settings]({{es-apis}}operation/operation-cluster-put-settings) API.
+Most settings can be changed on a running cluster using the [Cluster update settings]({{es-apis}}operation/operation-cluster-put-settings) API, while others must be configured statically in `elasticsearch.yml` and require a cluster restart. To learn more, refer to [Dynamic and static {{es}} settings](#static-dynamic).
 
-You can also set {{es}} settings in `elasticsearch.yml`.  Some settings require a cluster restart. To learn more, refer to [Dynamic and static {{es}} settings](#static-dynamic).
+In a multi-node cluster, `elasticsearch.yml` settings must be applied across all relevant nodes.
 
 To learn more about configuring {{es}} in a self-managed environment, refer to [](/deploy-manage/deploy/self-managed/configure-elasticsearch.md).
 

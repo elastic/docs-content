@@ -233,8 +233,8 @@ This following sections provide more information about how to configure and use 
 
 * [System indices](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#system-indices)
 * [Machine learning jobs](../../explore-analyze/machine-learning.md)
-* [index templates](../../manage-data/data-store/templates.md)
-* [{{ilm-cap}}](../../manage-data/lifecycle/index-lifecycle-management.md) and [{{slm}}]({{es-apis}}group/endpoint-slm) polices
+* [Index templates](../../manage-data/data-store/templates.md)
+* [{{ilm-cap}}](../../manage-data/lifecycle/index-lifecycle-management.md) and [{{slm}}]({{es-apis}}group/endpoint-slm) policies
 * [User permissions and role mappings](../users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md)
 * [Snapshot repository settings](snapshot-and-restore/self-managed.md)
 * [Cluster settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md)

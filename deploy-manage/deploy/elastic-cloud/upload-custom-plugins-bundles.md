@@ -115,7 +115,7 @@ You must upload your files before you can apply them to your cluster configurati
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the navigation menu, select **Extensions**.
-3. Click **Upload extension**.
+3. Click **Create extension**.
 4. Complete the extension fields, including the {{es}} version.
 
     * Plugins must use full version notation down to the patch level, such as `7.10.1`. You cannot use wildcards. This version notation should match the version in your plugin’s plugin descriptor file. For classic plugins, it should also match the target deployment version.

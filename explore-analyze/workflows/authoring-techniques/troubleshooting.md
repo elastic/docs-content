@@ -298,7 +298,7 @@ stack: ga 9.3-9.4
 
 **Cause.** Liquid expressions are evaluated only inside the step's `with:` block. On fields outside `with:` (including `agent-id`, `connector-id`, and `inference-id`) the engine sends the text to the runtime as-is. So `agent-id: "{{ consts.agent_id }}"` arrives at the API as the literal text `{{ consts.agent_id }}`, instead of being substituted with the value of `consts.agent_id`.
 
-**Resolution.** Use literal values in top-level fields. For `ai.agent`, drop `connector-id`. The step falls back to the space's **Default AI Connector**. Refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) to configure this setting. For fields that need templating, place them inside `with:` in snake-case (for example, `conversation_id`).
+**Resolution.** Use literal values in top-level fields. For `ai.agent`, drop `connector-id`. The step falls back to the space's **Default AI Connector**. Refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) to configure this setting.
 
 ```yaml
 # Not evaluated on 9.3-9.4; resolves on 9.5+
@@ -316,7 +316,7 @@ stack: ga 9.3-9.4
 ```
 
 :::{note}
-:applies_to: stack: ga 9.5
+:applies_to: stack: ga 9.5+
 Top-level field templating was fixed, so `agent-id`, `connector-id`, and `inference-id` resolve Liquid expressions like any other field. A literal value still keeps an example portable across all versions. Tracked in [elastic/security-team#17236](https://github.com/elastic/security-team/issues/17236).
 :::
 
@@ -396,7 +396,7 @@ settings:
 
 **Cause.** Your user role is missing one of the Workflows feature privileges.
 
-**Resolution.** Ensure your role has at least `All` on the **Analytics > Workflows** feature. For finer-grained access, use the sub-feature privileges: `create`, `read`, `update`, `delete`, `execute`, `readExecution`, and `cancelExecution`. Refer to [Setup](/explore-analyze/workflows/get-started/setup.md).
+**Resolution.** Ensure your role has at least `All` on the **Analytics → Workflows** feature. For finer-grained access, use the sub-feature privileges: `create`, `read`, `update`, `delete`, `execute`, `readExecution`, and `cancelExecution`. Refer to [Setup](/explore-analyze/workflows/get-started/setup.md).
 
 ### Workflows isn't visible in {{kib}} [workflows-ts-ui-missing]
 

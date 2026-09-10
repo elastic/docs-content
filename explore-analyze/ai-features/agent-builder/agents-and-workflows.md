@@ -20,7 +20,7 @@ Elastic Workflows and {{agent-builder}} combine deterministic automation with co
 
 There are three ways to use {{agent-builder}} and workflows together:
 
-* **Create workflows from Agent Chat** {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`: Describe the automation you want in natural language, refine the generated draft, then open **Preview** and select **Save** to create it. Refer to [Create skills and workflows in chat](chat.md#create-skills-and-workflows-directly-from-chat).
+* **Create workflows from Agent Chat**: Create and edit workflows by describing what you want [in plain language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md). {{kib}} generates and updates the workflow YAML for you, so you can quickly build without memorizing step types or Liquid syntax. 
 * **Use workflows from agents:** Trigger an existing workflow from a conversation with a [workflow tool](./tools/workflow-tools.md), or assign [pre-execution workflows](#pre-execution-workflows) that run before the agent starts reasoning.
 * **Use agents from workflows:** Invoke an agent from a workflow with the [`ai.agent` step](#use-ai-agent-workflow-step). For advanced API operations, use the [`kibana.request` step](#use-kibana-request-workflow-step).
 
@@ -170,5 +170,5 @@ The [`elastic/workflows` GitHub repo](https://github.com/elastic/workflows) cont
 ## Related pages
 * [Tools overview](./tools.md)
 * [Workflow tools](../agent-builder/tools/workflow-tools.md)
-* [Workflows](/explore-analyze/workflows.md)
+* [Author workflows with natural language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md)
 * [Agent Builder API]({{kib-apis}}group/endpoint-agent-builder)

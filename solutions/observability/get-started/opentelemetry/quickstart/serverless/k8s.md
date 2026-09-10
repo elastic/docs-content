@@ -1,6 +1,6 @@
 ---
 navigation_title: Kubernetes
-description: Step-by-step guide for setting up the EDOT Collector and SDKs in a Kubernetes environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces.
+description: Step-by-step guide for setting up the {{agent}} and SDKs in a Kubernetes environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces.
 applies_to:
   stack:
   serverless:
@@ -15,7 +15,7 @@ products:
 
 # Quickstart for Kubernetes on Elastic Cloud Serverless
 
-Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment with {{serverless-full}} to collect host metrics, logs and application traces.
+Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment with {{serverless-full}} to collect host metrics, logs and application traces.
 
 ## Guided setup
 
@@ -28,7 +28,7 @@ To use the OpenTelemetry Kube Stack Chart, you need Helm version 3.9+ up to and 
 
 ## Manual installation
 
-Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Kubernetes.
+Follow these steps to deploy the {{agent}} and EDOT SDKs in Kubernetes.
 
 :::::{stepper}
 
@@ -68,7 +68,7 @@ helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
 --version '{{kube-stack-version}}'
 ```
 
-The Operator provides a deployment of the EDOT Collector and configuration environment variables. This allows SDKs and instrumentation to send data to the EDOT Collector without further configuration.
+The Operator provides a deployment of the {{agent}} and configuration environment variables. This allows SDKs and instrumentation to send data to the {{agent}} without further configuration.
 ::::
 
 ::::{step} Auto-instrument applications

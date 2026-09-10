@@ -1,4 +1,5 @@
 ---
+navigation_title: Semantic search for text
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-reference-semantic-search.html
@@ -8,17 +9,18 @@ applies_to:
 products:
   - id: elasticsearch
   - id: cloud-serverless
+description: Semantic search for text in Elasticsearch using NLP models and vector embeddings, including semantic_text and Inference API workflows.
 ---
 
-# Semantic search [semantic-search]
+# Semantic search for text [semantic-search]
 
 :::{note}
-This page focuses on the semantic search workflows available in {{es}}. For detailed information about lower-level vector search implementations, refer to [vector search](vector.md).
+This page focuses on semantic search for text in {{es}}. For multimodal search across text, images, audio, video, and documents, refer to [Multimodal search](multimodal-search.md). For detailed information about lower-level vector search implementations, refer to [vector search](vector.md).
 :::
 
-Semantic search uses [{{nlp}} (NLP)](/explore-analyze/machine-learning/nlp.md) models and [vector search](vector.md) to find results based on meaning, not just keywords. This page covers the managed workflows available in {{es}} for implementing semantic search.
+Semantic search uses [{{nlp}} (NLP)](/explore-analyze/machine-learning/nlp.md) models and [vector search](vector.md) to find results based on meaning, not just keywords. This page covers the managed workflows available in {{es}} for implementing semantic search on text.
 
-For the foundational concepts behind vector search, refer to [Vector search in {{es}}](vector.md). To compare semantic search with lower-level vector search and decide which path fits your project, refer to [Semantic search and vector search](vector.md#semantic-search-vs-vector-search). To understand the infrastructure that powers semantic search and other NLP tasks, including managed services and {{infer}} endpoints, refer to the [Elastic {{infer-cap}} overview](../../explore-analyze/elastic-inference.md) page.
+For the foundational concepts behind vector search, refer to [Vector search in {{es}}](vector.md). To compare semantic search with lower-level vector search and decide which path fits your project, refer to [Semantic search and vector search](vector.md#semantic-search-vs-vector-search). To understand the infrastructure that powers semantic search and other NLP tasks, including managed services and {{infer}} endpoints, refer to the [Elastic {{infer-cap}} overview](../../explore-analyze/elastic-inference.md) page. To explore AI-powered features across the {{stack}}, refer to [AI-powered features](/explore-analyze/ai-features.md).
 
 ## Overview of semantic search workflows [semantic-search-workflows-overview]
 
@@ -52,7 +54,7 @@ For an end-to-end tutorial, refer to [Semantic search with the {{infer}} API](se
 
 You can also deploy NLP in {{es}} manually, without using an {{infer}} endpoint. This is the most complex and labor intensive workflow for performing semantic search in the {{stack}}. You need to select an NLP model from the [list of supported dense and sparse vector models](../../explore-analyze/machine-learning/nlp/ml-nlp-model-ref.md#ml-nlp-model-ref-text-embedding), deploy it using the Eland client, create an index mapping, and set up a suitable ingest pipeline to start ingesting and querying data.
 
-For an end-to-end tutorial, refer to [Semantic search with a model deployed in {{es}}](vector/dense-versus-sparse-ingest-pipelines.md).
+For an end-to-end tutorial, refer to [Semantic search with a model deployed in {{es}}](semantic-search/dense-versus-sparse-ingest-pipelines.md).
 
 ::::{tip}
 Refer to [vector queries and field types](vector.md#vector-queries-and-field-types) for a quick reference overview. To reduce the memory footprint of dense vector embeddings, refer to [Optimizing vector storage](vector/vector-storage-for-semantic-search.md).
