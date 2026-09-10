@@ -755,7 +755,7 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/agents" \
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` If you omit `access_control`, the agent is private: only you and administrators can view and edit it.
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can't grant individual users access when you create an agent. Any access entries you include are ignored. To add them, call `PUT /api/agent_builder/agents/{id}/access_control` after the agent exists.
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can't grant individual users access when you create an agent. On create, `access_control` accepts only `access_mode`, and including `entries` returns a validation error. To grant access, call `PUT /api/agent_builder/agents/{id}/access_control` after the agent exists.
 
 **Example:** Get an agent by ID
 

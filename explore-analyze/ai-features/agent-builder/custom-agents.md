@@ -217,7 +217,7 @@ Every agent has one of three access control levels:
 :   Anyone can view. Only the owner or an administrator can edit. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` People you grant access to can also edit.
 
 **Private**
-:   Only the owner or an administrator can view and edit. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` People you grant access to can also view and edit.
+:   Only the owner or an administrator can view and edit. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` People you grant access to can also view it, and edit it if you give them **Editor** or **Manager**.
 
 :::{image} images/agent-access-control-levels.png
 :screenshot:
@@ -227,7 +227,13 @@ Every agent has one of three access control levels:
 
 {applies_to}`stack: ga =9.4` This setting is labeled **Visibility**.
 
-On a **Public** agent, being able to edit doesn't include deleting the agent or changing its access control level. At every level, only the owner or an administrator can do either, and for everyone else the access control setting is read-only. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` A user you grant the **Manager** access level can also delete the agent and change its level. To grant access to individual users, refer to [Per-agent access controls](#per-agent-access-controls).
+Changing an agent's access control level is restricted at every level: only the owner or an administrator can do it, and for everyone else the setting is read-only. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` A user you grant the **Manager** access level can also change it.
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Deleting an agent is restricted the same way. On a **Public** agent, being able to edit doesn't include deleting it: only the owner, an administrator, or a **Manager** grantee can.
+
+{applies_to}`stack: ga =9.4` Anyone who can edit an agent can also delete it, which on a **Public** agent means anyone.
+
+To grant access to individual users, refer to [Per-agent access controls](#per-agent-access-controls).
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Changing the default doesn't affect agents that already exist: they keep the level they have. Agents created before this setting existed are **Public**.
 
@@ -259,7 +265,7 @@ The access levels are:
 **Manager**
 :   Everything an **Editor** can do, plus deleting the agent and managing who has access to it.
 
-Users you add can interact with the agent according to the level you assign, regardless of the base access control level. For example, you can set an agent to **Private** and then give one colleague **Editor** access.
+Users you add can interact with the agent according to the level you assign or the base access control level, whichever grants more. Adding a user can only increase their access, never reduce it. For example, you can set an agent to **Private** and then give one colleague **Editor** access.
 
 ::::{note}
 Per-agent access controls apply to agents at any access control level, including **Public**. What changes is the set of levels you can assign: on **Public** and **Shared** agents, **User** isn't offered, because anyone in the space can already find and run the agent.
