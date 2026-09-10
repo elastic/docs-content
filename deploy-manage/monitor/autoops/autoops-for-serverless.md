@@ -60,9 +60,9 @@ Given that 1 search VCU = [$0.09/hour](https://www.elastic.co/pricing/serverless
 
 ### Storage billing dimensions
 
-On [Observability](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md) and [Security](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md) {{serverless-short}} projects, one storage-related billing dimension is called the **Ingest rate**, which represents the volume of data (in GB) ingested per unit of time.
+On {{serverless-short}} [Observability](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md), [Security](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md), and [{{vectordb}}](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md) projects, one storage-related billing dimension is called the **Ingest rate**, which represents the volume of data (in GB) ingested per unit of time.
 
-On all [{{es}}](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md), [Observability](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md), and [Security](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md) {{serverless-short}} projects, the main storage-related billing dimension is called **Storage retained** or **Retention**, and it represents the total volume of data (in GB prorated over a month) retained in your project.
+On all {{serverless-short}} projects, the main storage-related billing dimension is called **Storage retained** or **Retention**, and it represents the total volume of data (in GB prorated over a month) retained in your project.
 
 :::{admonition} Example: How ingest rate and storage retained billing is calculated
 Let’s say you ingest 1TB of data into your Observability project.
@@ -83,8 +83,8 @@ The following features are coming soon to AutoOps for {{serverless-short}}:
 In this section, you'll find the following information:
 
 * How to [access AutoOps in your {{serverless-short}} project](access-autoops-for-serverless.md).
-* How to use the [Search Tier view](search-tier-view-autoops-serverless.md) to observe the impact of search performance on your use of search VCUs.
-* How to use the [Indexing Tier view](indexing-tier-view-autoops-serverless.md) to observe how indexing performance influences your use of ingest VCUs.
+* How to use the [Search Tier view](search-tier-view-autoops-serverless.md) to observe your search activities and performance.
+* How to use the [Indexing Tier view](indexing-tier-view-autoops-serverless.md) to observe your indexing activities and performance.
 * How to use the [Storage Tier view](storage-tier-view-autoops-serverless.md) to drill down into your storage-related usage.
 
 :::{tip}

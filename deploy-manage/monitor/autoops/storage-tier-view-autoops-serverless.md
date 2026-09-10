@@ -16,14 +16,13 @@ To get to this view, [access AutoOps](/deploy-manage/monitor/autoops/access-auto
 
 ## Project-level insights
 
-{applies_to}`observability:` {applies_to}`security:` {applies_to}`vectordb:` On the **Storage Tier** page, the top half of the page offers project-level insights into the ingest rate and storage retained usage metrics over a selected time period.
+On the **Storage Tier** page, the top half of the page offers project-level insights into the ingest rate and storage retained usage metrics over a selected time period.
 
 :::{image} /deploy-manage/images/storage-tier-project-level-features.png
 :screenshot:
 :alt: Screenshot showing the features in the top half of the Storage Tier page
 :::
 
-Use the following features to explore this view:
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
 * Select **custom time windows** to explore usage and performance data up to the last 10 days. The charted data is bucketed per day except when you select a period of up to 72 hours, when it is bucketed per hour.
 
@@ -31,7 +30,7 @@ Use the following features to explore this view:
 
 ## Index and data-stream level insights
 
-{applies_to}`observability:` {applies_to}`security:` {applies_to}`vectordb:` The bottom half of the page offers a more granular breakdown table of index-level and data stream-level insights into ingest rate and storage retained metrics. 
+The bottom half of the page offers a more granular breakdown table of index-level and data stream-level insights into ingest rate and storage retained metrics. 
 
 :::{image} /deploy-manage/images/search-ai-lake-breakdown-table.png
 :screenshot:

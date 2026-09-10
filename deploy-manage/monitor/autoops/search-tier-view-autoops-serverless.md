@@ -2,6 +2,7 @@
 applies_to:
   serverless:
     elasticsearch: ga
+    vectordb: ga
 navigation_title: Search Tier view
 products:
   - id: cloud-serverless
@@ -9,9 +10,7 @@ products:
 
 # Search Tier view in AutoOps for {{serverless-short}}
 
-The **Search Tier** view in AutoOps for {{serverless-short}} provides visibility into the consumption of search VCUs, which are a type of [compute billing dimension](/deploy-manage/monitor/autoops/autoops-for-serverless.md#compute-billing-dimensions). This view helps you understand how search activities and performance contribute to your search VCU consumption and, as a result, your project's bill. 
-
-This view provides both high-level project summaries and detailed index-level and data stream-level breakdowns. 
+The **Search Tier** view in AutoOps for {{serverless-short}} provides visibility into your search activities and performance. This view helps you understand how search rate and latency change over time, with both high-level project summaries and detailed index-level and data stream-level breakdowns.
 
 To get to the **Search Tier** view, [access AutoOps](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md) in your project and then select **Search Tier** from the navigation menu.
 
@@ -21,15 +20,21 @@ On the **Search Tier** page, the top half of the page offers general insights at
 
 :::{image} /deploy-manage/images/search-tier-project-level-features.png
 :screenshot:
-:alt: Screenshot showing the features in the top half of the Search Tier page
+:alt: Screenshot showing the features in the top half of the Search Tier page for an {{es-serverless}} project
 :::
 
 Use the following features to explore this view:
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
 * Select **custom time windows** to explore usage and performance data up to the last 10 days. For time periods up to 72 hours, the data on the chart is displayed per hour. For time periods greater than 72 hours, the data is displayed per day.
-* Explore different **visualizations** presenting the trend of search VCU usage over time and how it compares to the performance of the search tier in terms of search rate and latency.
-* View the **annotations** overlaying the search VCUs usage chart to understand when the search power and boost window changed during the selected time period and how that might have affected the autoscaling of your project (and consequently your VCU consumption). 
-* Gain insights from the **performance charts** depicting search rate and search latency trends to understand why your VCU consumption might fluctuate over time. 
+* Gain insights from **performance charts** depicting search rate and latency trends over time.
+* {applies_to}`elasticsearch:` Explore the **Search VCUs** chart to understand the trend of Search VCU usage over time. Use the **annotations** overlaying this chart to understand when the search power and boost window changed during the selected time period and how that might have affected the autoscaling of your project (and consequently your VCU consumption). 
+* {applies_to}`vectordb:` Explore the **Reserved search capacity** chart to see your project's search capacity over time. Use the **annotations** overlaying this chart to understand when **Search Power** changed during the selected time period, with exact timestamps. 
+* {applies_to}`vectordb:` View your project's **Uptime** for the selected time period and the current **Search Power** to track their effect on the search and infrastructure [billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md). 
+
+:::{image} /deploy-manage/images/search-tier-project-level-features-vectordb.png
+:screenshot:
+:alt: Screenshot showing the features in the top half of the Search Tier page for an {{es-serverless}} project
+:::
 
 ## Index and data stream-level insights
  
@@ -57,6 +62,9 @@ This table is interactive and can be:
 * paginated to handle large sets of indices or data streams.
 
 ## Factors affecting search VCU consumption
+```{applies_to}
+elasticsearch: ga
+```
 The **Search Tier** view shows you how many search VCUs are consumed in your project and how your usage changes over time. This section explains the possible factors behind these changes so you can adjust them to manage your consumption. 
 
 The consumption of search VCUs is directly related to autoscaling. When your project is upscaled, more VCUs are consumed, and when your project is downscaled, fewer VCUs are consumed. 
