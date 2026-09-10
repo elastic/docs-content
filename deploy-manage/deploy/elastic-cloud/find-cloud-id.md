@@ -50,7 +50,7 @@ To use the Cloud ID, you need:
     * The unique Cloud ID for your deployment, available from the deployment overview page.
     * A user ID and password that has permission to send data to your cluster.
 
-        In our examples, we use the `elastic` superuser that every {{es}} cluster comes with. The password for the `elastic` user is provided when you create a deployment (and can also be [reset](../../users-roles/cluster-or-deployment-auth/built-in-users.md) if you forget it). On a production system, you should adapt these examples by creating a user that can write to and access only the minimally required indices. For each Beat, review the specific feature and role table, similar to the one in [Metricbeat](beats://reference/metricbeat/feature-roles.md) documentation.
+        In our examples, we use the `elastic` superuser that every {{es}} cluster comes with. The password for the `elastic` user is provided when you create a deployment (and can also be [reset](../../users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md) if you forget it). On a production system, you should adapt these examples by creating a user that can write to and access only the minimally required indices. For each Beat, review the specific feature and role table, similar to the one in [Metricbeat](beats://reference/metricbeat/feature-roles.md) documentation.
 
 
 
