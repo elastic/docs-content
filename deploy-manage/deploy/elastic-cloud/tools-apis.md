@@ -110,9 +110,11 @@ serverless: unavailable
 
 ### Email service limits
 
-The following quotas apply to both {{ech}} deployments and {{serverless-full}} projects when using the Elastic email service:
+The following quotas apply to {{ech}} deployments and {{serverless-full}} projects when using the Elastic email service:
 
-* Email sending quota: 500 emails per 15 minute period.
+* Email sending quota:
+    * {applies_to}`serverless: ga` 150 emails per 15 minute period.
+    * {applies_to}`ech: ga` 500 emails per 15 minute period.
 * Maximum number of recipients per message: 30 recipients per email (To, CC, and BCC all count as recipients).
 * Maximum message size (including attachments): 10 MB per message (after Base64 encoding).
 * The email-sender can't be customized (Any custom `From:` header will be removed).
