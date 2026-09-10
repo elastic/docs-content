@@ -1046,6 +1046,7 @@ redirects:
       - to: 'explore-analyze/ai-features/agent-builder/custom-agents.md'
         anchors:
           'visibility-settings': 'access-control-settings'
+          'set-visibility': 'set-access-control'
       - to: 'explore-analyze/ai-features/agent-builder/agent-builder-agents.md'
         anchors:
           'enable-elastic-capabilities': 'elastic-capabilities'
