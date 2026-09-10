@@ -1403,11 +1403,26 @@ Let’s look at the `process_files_open_files` metric. This should be a rather s
 
     You will only see data from a single shipper. Still, the moment you are running several services and the ability to group this per Kubernetes pod or host enables you to spot hosts with elevated CPU or memory consumption.
 
-7. Click **Metrics Explorer**, you can start exploring your data for specific hosts or the CPU usage across your nodes.
+7. Explore your data for specific hosts or the CPU usage across your nodes.
 
-    ![Metrics UI Log Counter](/solutions/images/observability-monitor-java-app-metrics-ui-prometheus-event-counter.png "")
+:::::{applies-switch}
 
-    This is an area chart of the total events counter the Javalin app emits. It’s rising because there is a component polling an endpoint that, in turn, produces another log message. The steeper peek was due to sending more requests. But where is the sudden drop-off coming from? A JVM restart. As those metrics are not persisted, they reset on a JVM restart. With that in mind, it’s often better to log the `rate` instead of the `counter` field.
+::::{applies-item} stack: ga 9.4+
+Use **Discover** to explore your metrics. Refer to [Explore metrics data with Discover](/solutions/observability/infra-and-hosts/discover-metrics.md) for more information.
+::::
+
+::::{applies-item} stack: deprecated 9.4+, ga 9.0-9.3
+Open **Metrics Explorer**.
+
+:::{image} /solutions/images/observability-monitor-java-app-metrics-ui-prometheus-event-counter.png
+:alt: Area chart of the total events counter in Metrics Explorer
+:screenshot:
+:::
+
+This is an area chart of the total events counter the Javalin app emits. It’s rising because there is a component polling an endpoint that, in turn, produces another log message. The steeper peek was due to sending more requests. But where is the sudden drop-off coming from? A JVM restart. As those metrics are not persisted, they reset on a JVM restart. With that in mind, it’s often better to log the `rate` instead of the `counter` field.
+::::
+
+:::::
 
 ## Step 7: Instrument the application [_step_7_instrument_the_application]
 
