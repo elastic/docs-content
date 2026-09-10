@@ -105,7 +105,7 @@ Select specific values to focus on within the dimension. You can select up to 10
 
 :::::
 
-**Change how metrics are aggregated** {applies_to}`stack: ga 9.6+`
+**Change how metrics are aggregated** {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 :   You can change the default aggregation for each metric type:
     - **Counter**: average, sum (default), minimum, and maximum
     - **Gauge**: average (default), sum, minimum, and maximum
