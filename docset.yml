@@ -48,10 +48,6 @@ api:
     - spec: cloud-connect.yml
       product: ess
       repository: elastic/cloud-connected-api
-      catalog:
-        categories:
-          - self
-          - ece
   cloud-serverless:
     - spec: elastic-cloud-serverless.yml
       product: cloud-serverless
@@ -59,6 +55,13 @@ api:
       catalog:
         categories:
           - serverless
+  logstash:
+    - spec: logstash.yaml
+      product: logstash
+      repository: elastic/logstash
+      catalog:
+        categories:
+          - self
 
 cta:
   monitor-kubernetes:
