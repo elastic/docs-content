@@ -1140,6 +1140,13 @@ redirects:
     anchors:
       'managed-integrations-content':
 
+  # Fleet: folded the environment variables stub into the integration policy scaling guide
+  # related to https://github.com/elastic/docs-content/issues/2166
+  'reference/fleet/fleet-agent-environment-variables.md':
+    to: 'reference/fleet/scale-integration-policies.md'
+    anchors:
+      'fleet-agent-environment-variables': 'reuse-one-integration-policy-with-variables'
+
   # Jina on-prem deployment content moved back to ml-nlp-jina.md
   'explore-analyze/machine-learning/nlp/ml-nlp-jina-on-prem.md':
     to: 'explore-analyze/machine-learning/nlp/ml-nlp-jina.md'
