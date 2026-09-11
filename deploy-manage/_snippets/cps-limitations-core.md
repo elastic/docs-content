@@ -4,4 +4,5 @@
 - **{{anomaly-detect-cap}}:** {{anomaly-jobs}} created before {{cps-init}} was enabled default to origin-only scope (`_alias:_origin`) and must be manually updated to search linked projects.
 - **Transforms:** Transforms created before {{cps-init}} was enabled default to origin-only scope and must be manually updated to search linked projects.
 - **{{dfanalytics-jobs-cap}}:** {{dfanalytics-jobs}} are not supported with {{cps-init}}. They continue to run on origin project data only.
+- **{{product.painless}} scripting:** The [{{product.painless}} execute API](/explore-analyze/cross-project-search.md#cps-painless-scripting) does not search across linked projects. It resolves index names against the origin project only.
 - For {{esql}} limitations specific to {{cps-init}}, refer to [ES|QL with {{cps}}](elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md#limitations).
