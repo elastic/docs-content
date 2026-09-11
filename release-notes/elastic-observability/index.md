@@ -21,6 +21,16 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.5.4 [elastic-observability-9.5.4-release-notes]
+
+### Features and enhancements [elastic-observability-9.5.4-features-enhancements]
+* Adds a **Can run tests manually** sub-feature privilege to Synthetics, allowing read-only users to trigger on-demand tests for existing monitors without monitor write access [#282149]({{kib-pull}}282149).
+
+### Fixes [elastic-observability-9.5.4-fixes]
+* Fixes the AI Assistant **Help me understand this alert** action hanging when alerts lack entity context by skipping unscoped log rate and log category analyses [#290244]({{kib-pull}}290244).
+* Fixes Custom threshold and Metric threshold rules so grouped alerts stay active when **If there is no data** is set to **Do nothing** [#289623]({{kib-pull}}289623).
+* Fixes Alerting V2 rules not saving when all tags are removed, causing the previous tags to reappear when the rule is reopened [#288962]({{kib-pull}}288962).
+* Relabels the top-level **Alerting** privilege section in **Roles** to **Alerting V2** and marks each Alerting V2 sub-privilege as experimental [#288163]({{kib-pull}}288163).
 
 ## 9.5.3 [elastic-observability-9.5.3-release-notes]
 
