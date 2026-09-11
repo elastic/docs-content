@@ -27,6 +27,26 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.5.4 [elastic-security-9.5.4-release-notes]
+
+### Features and enhancements [elastic-security-9.5.4-features-enhancements]
+
+* Adds an {{elastic-defend}} advanced policy setting to enable additional vulnerable driver abuse mitigation, which provides further safeguards and enrichment for driver loads [#288529]({{kib-pull}}288529).
+
+### Fixes [elastic-security-9.5.4-fixes]
+
+* Fixes bulk closing all matching alerts so they are updated when the filter uses a {{data-source}} runtime field. Previously the action reported 0 updated alerts [#288946]({{kib-pull}}288946).
+* Fixes an issue where the entity summary in the entity details flyout failed to persist when the entity metadata data stream was missing [#288199]({{kib-pull}}288199).
+* Fixes process node labels in the visual event analyzer so they show the process name from the analyzed event time, not a later executable name from the same process [#287934]({{kib-pull}}287934).
+* Fixes the Timeline **Correlation** tab so it shows a warning when EQL results are incomplete because shards timed out or failed [#287933]({{kib-pull}}287933).
+* Fixes detection rules so they retry with a smaller page size instead of failing when an event search response is too large [#287916]({{kib-pull}}287916).
+* Fixes the alert analysis workflow settings page so it loads without a Workflows privilege, instead of staying on a loading spinner [#287708]({{kib-pull}}287708).
+* Fixes the count label in Security donut charts so it's vertically centered [#286900]({{kib-pull}}286900).
+* Fixes macOS updates that failed when {{elastic-defend}} **Device Control** was enabled. Also adds a warning log about potential misuse of the `filter_images` advanced policy setting.
+* Fixes false malicious behavior detection alerts in {{elastic-defend}} caused by process ID reuse after a process exits.
+* Increases the {{elastic-defend}} event buffer size.
+* Updates a `c-ares` dependency in {{elastic-defend}} on Linux to resolve [CVE-2024-25629](https://github.com/c-ares/c-ares/security/advisories/GHSA-mg26-v6qh-x48q). The gRPC-bundled `c-ares` snapshot (~1.19) is unchanged and is tracked separately pending a gRPC version upgrade.
+
 ## 9.5.3 [elastic-security-9.5.3-release-notes]
 
 ### Features and enhancements [elastic-security-9.5.3-features-enhancements]
@@ -36,9 +56,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.5.3-fixes]
 
-* Fixes an issue where the entity summary in the entity details flyout failed to persist when the entity metadata data stream was missing [#288199]({{kib-pull}}288199).
 * Fixes validation of boolean flag arguments in the response console so flags that must not take a value are rejected when a value is provided [#288124]({{kib-pull}}288124).
-* Fixes the Timeline **Correlation** tab so it shows a warning when EQL results are incomplete because shards timed out or failed [#287933]({{kib-pull}}287933).
 * Fixes the alert analysis workflow so notes are written in the same space as the alert, instead of always in the default space [#287438]({{kib-pull}}287438).
 * Fixes an issue where uploading a large sample log file in Automatic Import failed. Uploads now send at most 1000 samples and show a warning when additional lines are omitted [#287165]({{kib-pull}}287165).
 * Fixes scheduled Osquery packs that recorded every run as **Execution #0**. Affected packs are repaired on upgrade. Existing packs jump from `0` to a non-zero execution count on their first run after upgrade [#287023]({{kib-pull}}287023).
