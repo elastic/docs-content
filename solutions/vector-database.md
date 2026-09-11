@@ -59,7 +59,7 @@ Billing is based on storage, search, ingest, and infrastructure, rather than the
 
 ## When to use this project type
 
-Both the {{es}} {{vectordb}} project type and the {{es}} solution support [vector search](/solutions/search/vector.md). {{vectordb}} gives you the full power of the core {{es}} capabilities: The same query APIs, mappings, filters, and hybrid or semantic retrieval. 
+Both the {{es}} {{vectordb}} project type and the {{es}} solution support [vector search](/solutions/search/vector.md). {{vectordb}} gives you the full power of the core {{es}} capabilities: the same query APIs, mappings, filters, and hybrid or semantic retrieval. 
 
 It uses a vector-tuned default configuration, a hardware profile suited to embeddings, streamlined access to {{infer}}, and a pricing model built for vector storage and search.
 
