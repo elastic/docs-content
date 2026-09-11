@@ -17,7 +17,7 @@ Application connections let users authorize external applications to act on thei
 
 Currently, only MCP clients for the [](/explore-analyze/ai-features/agent-builder/mcp-server.md) are supported. For that use case, OAuth 2.1 replaces static API keys when you need multi-user, delegated access. OAuth tokens are accepted only by the MCP server endpoint.
 
-The sections below describe tasks for registering MCP clients, connecting hosts, revoking access, and managing connections at the project or organization level.
+The sections below describe tasks for registering and editing MCP clients, connecting hosts, revoking access, deleting revoked clients and connections, and managing connections at the project or organization level.
 
 :::{note}
 Application connections are not the same as [{{kib}} connectors](/deploy-manage/manage-connectors.md) or [search connectors](elasticsearch://reference/search-connectors/index.md). {{kib}} connectors store credentials so {{kib}} can send actions to external systems. Search connectors sync data from third-party sources into {{es}}. Application connections allow external systems access to your {{serverless-short}} projects.
@@ -31,5 +31,5 @@ To choose between an application connection or API keys to authorize external ap
 
 Use the following pages to set up and manage application connections for MCP clients:
 
-- [](app-connections/oauth-clients.md): Set up and manage OAuth access for MCP clients, including registering clients, connecting hosts, and revoking access at the project level.
-- [](app-connections/manage-app-connections.md): Audit and revoke authorized connections across your organization's {{serverless-short}} projects in the {{ecloud}} Console.
+- [](app-connections/oauth-clients.md): Set up and manage OAuth access for MCP clients, including registering and editing clients, connecting hosts, revoking access, and deleting revoked clients and connections at the project level.
+- [](app-connections/manage-app-connections.md): Audit, revoke, and delete authorized connections across your organization's {{serverless-short}} projects in the {{ecloud}} Console.

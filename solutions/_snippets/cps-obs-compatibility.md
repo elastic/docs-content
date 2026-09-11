@@ -6,5 +6,5 @@
 | **Observability AI Assistant** | Not available |
 | **SLOs** | Not available |
 | **Rules** (Custom Threshold, SLO Burn Rate) | Read-only |
-| **Synthetics** (monitors, TLS Certificates) | Not available |
+| **Synthetics** (monitors, TLS Certificates) | Available (scope selector available; view monitors from linked projects) |
 | **Streams** | Not available |

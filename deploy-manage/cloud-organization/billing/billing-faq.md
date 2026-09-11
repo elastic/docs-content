@@ -19,7 +19,7 @@ This frequently-asked-questions list answers some of your more common questions 
 * [How do I view previous invoices, statements, and billing history?](#faq-history)
 * [How can I change who receives invoices, statements, and billing notifications?](#faq-notify)
 * [What are the available payment methods on {{ecloud}}?](#faq-payment)
-* [Why can't I use my India-issued card for monthly payments?](#faq-india-card-payments)
+* [Why can't I use my card for monthly recurring payments?](#faq-recurring-payment-rejected)
 * [Who can I contact for more information?](#faq-contact)
 * [Why is my credit card charged?](#faq-charge)
 * [When is my credit card charged?](#faq-when)
@@ -71,8 +71,8 @@ $$$faq-notify$$$How can I change who receives invoices, statements, and billing 
 $$$faq-payment$$$What are the available payment methods on {{ecloud}}?
 :   For month-to-month payments only credit cards are accepted. We also allow payments by bank transfer for annual subscriptions.
 
-$$$faq-india-card-payments$$$Why can't I use my India-issued card for monthly payments?
-:   Some India-issued cards cannot be used for recurring monthly payments because of local recurring-payment requirements. If your card is not accepted, you can:
+$$$faq-recurring-payment-rejected$$$Why can't I use my card for monthly recurring payments?
+:   Some cards cannot be used for recurring monthly payments. If you see an error when saving your card, you can:
 
     * Subscribe through [AWS Marketplace](/deploy-manage/deploy/elastic-cloud/aws-marketplace.md), [Google Cloud Marketplace](/deploy-manage/deploy/elastic-cloud/google-cloud-platform-marketplace.md), or [Azure Marketplace](/deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md).
     * [Contact Elastic](https://www.elastic.co/cloud/contact) about an annual prepaid contract.

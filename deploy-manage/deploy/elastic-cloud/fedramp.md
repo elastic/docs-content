@@ -47,8 +47,7 @@ Most {{ech}} features are also available in FedRAMP authorized Cloud offerings. 
 | [Elastic AI Assistant for Observability and Search](/solutions/observability/ai/observability-ai-assistant.md), [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) | Yes | Elastic Managed LLM not available | Elastic Managed LLM not available |
 | [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) | Yes | Yes | TBD |
 | [Universal profiling](/solutions/observability/infra-and-hosts/universal-profiling.md) | Yes | No | No |
-| [Watcher](/explore-analyze/alerting/watcher.md) | Yes | Yes | No |
-
+| [Multiple organization membership](/deploy-manage/cloud-organization/manage-multiple-organizations.md) | Yes | Yes | Yes, with [limitations](#ec-fedramp-multi-org) |
 
 ## Get started with FedRAMP [ec-fedramp-get-started]
 
@@ -82,7 +81,13 @@ The {{elastic-defend}} integration that runs on hosts being protected has variou
 
 **Applies to:** {{fedramp-high}}
 
-Custom plugins are currently not supported in {{fedramp-high}} deployments. 
+Custom plugins are currently not supported in {{fedramp-high}} deployments.
+
+### Multiple organization membership [ec-fedramp-multi-org]
+
+**Applies to:** {{fedramp-high}}
+
+[Multiple organization membership](/deploy-manage/cloud-organization/manage-multiple-organizations.md) is supported in {{fedramp-high}}, but users cannot create organizations themselves. An Elastic administrator must set up organizations on behalf of customers.
 
 ## FedRAMP FAQ [ec-fedramp-faq]
 

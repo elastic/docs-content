@@ -189,9 +189,7 @@ To configure {{metricbeat}} you need the {{es}} cluster details.
 
     ![{{ecloud}} deployment](/solutions/images/observability-monitor-azure-kibana-deployment.png "")
 
-3. Click **Security** and then click **Reset password**. Confirm, and copy the password. Keep it safe as you will use it later.
-
-    ![{{ecloud}} security](/solutions/images/observability-monitor-azure-kibana-security.png "")
+3. On the deployment **Overview** page, click **Actions** and then click **Reset password**. Confirm, and copy the password. Keep it safe as you will use it later.
 :::
 
 :::{applies-item} serverless: ga

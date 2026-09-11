@@ -18,7 +18,7 @@ description: Watch your data and respond to conditions automatically with Elasti
 
 Elastic alerting helps you watch your data and respond when something needs attention, whether that is a metric crossing a limit, an asset leaving an area on a map, or an unusual pattern in your time series. You set the conditions and how people should be notified. Elastic runs the checks for you.
 
-Elastic offers three alerting systems. For most new projects and projects on the most recent {{kib}} versions, the {{alerting-v2-system}} is the recommended system. If you're not sure which fits your situation, refer to [Compare alerting systems](alerting/compare-alerting-systems.md).
+Elastic offers three alerting systems. For production, use {{kib}} alerting. The {{alerting-v2-system}} is available to try, but it isn't ready for production use. If you're not sure which fits your situation, refer to [Compare alerting systems](alerting/compare-alerting-systems.md).
 
 ## {{alerting-v2-system-cap}}
 
@@ -56,7 +56,7 @@ serverless: unavailable
 Watcher is for unusual or highly tailored setups where you need scripts, chained steps, or close control over {{es}} APIs. It does not use the main {{kib}} rules UI used by {{kib}} alerting. It is available on the {{stack}} only, not in {{serverless-full}}.
 
 :::{tip}
-For most teams, {{kib}} alerting or the {{alerting-v2-system}} is easier to adopt than Watcher. Both work within {{kib}}'s rules UI and don't require writing {{es}} watch definitions.
+For most teams, {{kib}} alerting is easier to adopt than Watcher. Both {{kib}} alerting and the {{alerting-v2-system}} work within {{kib}}'s rules UI and don't require writing {{es}} watch definitions.
 :::
 
 [Get started with Watcher →](alerting/watcher.md)

@@ -40,6 +40,13 @@ For most time series data use-cases, a data stream will be a good fit. However, 
 
 Keep in mind that some features such as [Time Series Data Streams (TSDS)](../data-store/data-streams/time-series-data-stream-tsds.md) and [data stream lifecycles](../lifecycle/data-stream.md) require a data stream.
 
+:::{note}
+:applies_to: {"vectordb": "ga"}
+{{vectordb}} projects support data streams when backing indices use the [vector index mode](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode).
+
+[LogsDB](data-streams/logs-data-stream.md) and [time series (TSDS)](data-streams/time-series-data-stream-tsds.md) index modes are not available in {{vectordb}}; use an {{es}}, Observability, or Security project type for those workloads.
+:::
+
 
 ## Backing indices [backing-indices]
 

@@ -74,6 +74,8 @@ Choose how to provide an {{es}} API key for the `elasticsearch/otel` exporter:
 * **Create one in the flyout**: Click **Create API key**. {{fleet}} creates an API key with default privileges and substitutes it for `${API_KEY}` in the generated configuration.
 * **Use an existing key**: Skip this action in the flyout, and replace `${API_KEY}` manually after copying the configuration in the next step. The key must have `create_index`, `write`, and `auto_configure` index privileges on `metrics-*`, `logs-*`, and `traces-*` data streams.
 
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` If your deployment sends data through the [{{motlp}}](opentelemetry://reference/motlp.md), this step asks for a managed OTLP API key instead. Replace `${API_KEY}` in the `Authorization` header rather than the `api_key` field, and note that the generated configuration exports through an `otlp/managed` exporter instead of `elasticsearch/otel`.
+
 :::::
 
 :::::{step} Apply the configuration
@@ -186,7 +188,7 @@ Run the appropriate command for your collector type, pointing to the configurati
 
 ::::{tab-set}
 
-:::{tab-item} Elastic Agent in OTel mode
+:::{tab-item} Elastic Agent
 ```shell
 ./otelcol --config ./otel-opamp.yaml
 ```
@@ -200,13 +202,15 @@ Run the appropriate command for your collector type, pointing to the configurati
 
 ::::
 
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` The flyout shows the same commands. Select **Elastic Agent** or **OTel Contrib Collector** and the command updates to match your choice.
+
 :::::
 
 :::::{step} Verify the collector connection
 
 1. Confirm the collector started without errors in its output.
 2. Return to the {{fleet}} UI. The flyout displays a confirmation message when your collector successfully connects.
-3. Your OTel Collector now appears in the **Agents** list.
+3. Your OTel Collector now appears in the **Agents** list. To go straight there, click **View connected collectors**.
 
 :::::
 ::::::
@@ -271,4 +275,6 @@ Using `insecure_skip_verify: true` skips TLS certificate verification and makes 
 ## Related pages
 
 * [Monitor OpenTelemetry Collectors in Fleet](/reference/fleet/monitor-otel-collectors.md)
+* [View OTel Collectors in Fleet](/reference/fleet/view-otel-collectors.md)
+* [Remove an OTel Collector from Fleet](/reference/fleet/remove-otel-collector.md)
 * [Troubleshoot OTel Collectors in Fleet](/troubleshoot/ingest/fleet/common-problems.md#opentelemetry-collectors-in-fleet)
