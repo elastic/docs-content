@@ -396,22 +396,6 @@ $$$agent-builder-security-entity-risk-score-tool$$$
 `security.dismiss_lead` {applies_to}`stack: preview 9.5`
 :   Dismisses an AI-generated threat hunting lead by ID, marking it as triaged.
 
-### SIEM readiness tools
-
-SIEM readiness tools assess [SIEM readiness](/solutions/security/get-started/siem-readiness.md) across four dimensions: coverage, quality, continuity, and retention.
-
-`security.siem_readiness.get_coverage` {applies_to}`stack: preview 9.5`
-:   Retrieves SIEM data coverage health across the SIEM data categories (endpoint, identity, network, cloud, and application/SaaS), including document counts, detection-rule presence, health status, and findings.
-
-`security.siem_readiness.get_quality` {applies_to}`stack: preview 9.5`
-:   Retrieves SIEM data quality health based on ECS compatibility check results, including incompatible field mappings, health status, and findings. Requires a prior Data Quality dashboard run.
-
-`security.siem_readiness.get_continuity` {applies_to}`stack: preview 9.5`
-:   Retrieves SIEM ingest pipeline continuity health, including active pipelines, failure rates, silent data streams, and volume drops.
-
-`security.siem_readiness.get_retention` {applies_to}`stack: preview 9.5`
-:   Retrieves SIEM data retention health, including data streams and indices with retention configuration, retention days, and compliance status.
-
 ### PCI compliance tools
 ```{applies_to}
 stack: preview 9.5
