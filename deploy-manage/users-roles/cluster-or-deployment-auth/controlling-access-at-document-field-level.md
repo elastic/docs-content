@@ -209,6 +209,9 @@ You can access the following information through the `_user` variable:
 | `_user.email` | If specified, the email of the current authenticated user. |
 | `_user.roles` | If associated, a list of the role names of the current authenticated user. |
 | `_user.metadata` | If specified, a hash holding custom metadata of the current authenticated user. |
+| `_user.applications` | A map from application name to the list of resource strings the user holds application privileges on. Use `{{#toJson}}_user.applications.myapp{{/toJson}}` to render a specific application's resources as a JSON array. Application names containing a dot (for example, `kibana-.kibana`) cannot be navigated using Mustache dot-notation; use `_user.application_resources` instead. Not populated for API key authenticated users. |
+| `_user.application_resources` | A flat, sorted list of all resource strings the user holds application privileges on, across all applications. Use `{{#toJson}}_user.application_resources{{/toJson}}` to render as a JSON array. Works regardless of application name. Not populated for API key authenticated users. |
+| `_user.application_privileges` | A flat, sorted list of `<resource>\|<action>` tokens representing the user's resource-scoped application privileges. Use this when a DLS query must enforce both a resource and an action together. Use `{{#toJson}}_user.application_privileges{{/toJson}}` to render as a JSON array. Resource and action strings must not contain the `\|` character. Not populated for API key authenticated users. |
 
 You can also access custom user metadata. For example, if you maintain a `group_id` in your user metadata, you can apply document level security based on the `group.id` field in your documents:
 
@@ -295,6 +298,94 @@ Add the following query in the **Granted documents query** field:
 
 ::::
 :::::
+
+You can also filter documents based on the application privilege resources granted to the authenticated user. This is useful when access to documents is scoped by application-level resources such as spaces. The `_user.application_resources` field contains a flat list of all resource strings the user holds application privileges on, across all applications.
+
+For example, the following role grants read access only to documents whose `spaces` field contains at least one of the application resources the user holds:
+
+:::::{tab-set}
+:group: field-document
+::::{tab-item} API
+:sync: api
+
+```console
+POST /_security/role/app_reader
+{
+  "indices": [
+    {
+      "names": [ "app-docs" ],
+      "privileges": [ "read" ],
+      "query": {
+        "template": {
+          "source": "{ \"terms\": { \"spaces\": {{#toJson}}_user.application_resources{{/toJson}} }}"
+        }
+      }
+    }
+  ]
+}
+```
+::::
+
+::::{tab-item} {{kib}}
+:sync: kibana
+Add the following query in the **Granted documents query** field:
+
+```JSON
+{
+  "template": {
+    "source": "{ \"terms\": { \"spaces\": {{#toJson}}_user.application_resources{{/toJson}} }}"
+  }
+}
+```
+::::
+:::::
+
+The application resources are populated from the user's granted application privileges. For example, if a user holds the `space_access` privilege on resource `space:marketing` for application `myapp`, then `_user.application_resources` includes `space:marketing`.
+
+When the application name does not contain a dot, you can also access resources for a specific application using `_user.applications.<appname>`. For example, `{{#toJson}}_user.applications.myapp{{/toJson}}` renders only the resources for `myapp`. Application names that contain a dot (such as `kibana-.kibana`) cannot be navigated this way due to Mustache dot-notation parsing; use `_user.application_resources` instead.
+
+If you need to enforce both the resource and the action together — for example, to ensure a user has a specific privilege type on a specific space — use `_user.application_privileges`. Each entry is a `<resource>|<action>` token. The following example filters documents by matching a composite `space_privileges` field on the index side:
+
+:::::{tab-set}
+:group: field-document
+::::{tab-item} API
+:sync: api
+
+```console
+POST /_security/role/app_privilege_reader
+{
+  "indices": [
+    {
+      "names": [ "app-docs" ],
+      "privileges": [ "read" ],
+      "query": {
+        "template": {
+          "source": "{ \"terms\": { \"space_privileges\": {{#toJson}}_user.application_privileges{{/toJson}} }}"
+        }
+      }
+    }
+  ]
+}
+```
+::::
+
+::::{tab-item} {{kib}}
+:sync: kibana
+Add the following query in the **Granted documents query** field:
+
+```JSON
+{
+  "template": {
+    "source": "{ \"terms\": { \"space_privileges\": {{#toJson}}_user.application_privileges{{/toJson}} }}"
+  }
+}
+```
+::::
+:::::
+
+::::{note}
+`_user.application_resources` and `_user.application_privileges` are not populated for users authenticating via API keys, because API key roles do not support enumerating application privileges.
+::::
 
 ### Pre-processing documents to add security details [set-security-user-processor]
 
