@@ -32,6 +32,8 @@ redirects:
   'reference/observability/fields-and-object-schemas/logs-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
   'reference/observability/fields-and-object-schemas/metrics-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
   'solutions/observability/infra-and-hosts/universal-profiling-issues.md': 'release-notes/elastic-observability/index.md'
+  'solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md': 'solutions/observability/get-started/opentelemetry/quickstart/index.md'
+  'solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md': 'solutions/observability/get-started/opentelemetry/quickstart/index.md'
 
   # Related to https://github.com/elastic/docs-content/pull/7062
   'solutions/observability/streams/wired-streams.md': 'solutions/observability/streams/get-data-in.md'

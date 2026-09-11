@@ -1,6 +1,6 @@
 ---
 navigation_title: Kubernetes
-description: Step-by-step guide for setting up the {{agent}} and SDKs in a Kubernetes environment with Elastic Cloud Hosted to collect metrics, logs, and traces.
+description: Step-by-step guide for setting up Elastic Agent and EDOT SDKs in a Kubernetes environment with Elastic Cloud Hosted to collect metrics, logs, and traces.
 applies_to:
   stack:
   serverless:
@@ -94,7 +94,8 @@ Install the **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kub
 
 ::::{step} Explore your data
 
-Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+:::{include} ../../_snippets/explore-your-data.md
+:::
 
 ::::
 :::::

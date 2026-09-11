@@ -1,6 +1,6 @@
 ---
 navigation_title: Hosts and VMs
-description: Learn how to set up the {{agent}} and EDOT SDKs with Elastic Cloud Hosted to collect host metrics, logs and application traces.
+description: Learn how to set up Elastic Agent and EDOT SDKs with Elastic Cloud Hosted to collect host metrics, logs, and application traces.
 applies_to:
   stack:
   deployment:
@@ -136,7 +136,8 @@ Install the **[System OpenTelemetry Assets](integration-docs://reference/system_
 
 :::::{step} Explore your data
 
-Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+:::{include} ../../_snippets/explore-your-data.md
+:::
 
 :::::
 ::::::

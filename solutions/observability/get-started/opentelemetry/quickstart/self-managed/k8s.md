@@ -1,6 +1,6 @@
 ---
 navigation_title: Kubernetes
-description: Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment to collect host metrics, logs and application traces.
+description: Learn how to set up Elastic Agent and EDOT SDKs in a Kubernetes environment to collect host metrics, logs, and application traces.
 applies_to:
   stack:
   serverless:
@@ -87,7 +87,8 @@ Install the **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kub
 
 ::::{step} Explore your data
 
-Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+:::{include} ../../_snippets/explore-your-data.md
+:::
 
 ::::
 :::::
