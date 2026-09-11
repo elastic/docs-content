@@ -72,6 +72,7 @@ Elastic manages the installation and configuration of the monitoring agent for y
 - Enabling logging and monitoring increases the resource consumption of the deployment. For production systems, we recommend sizing deployments with logging and monitoring enabled to at least 4 GB of RAM on each {{es}} instance.
 - Enabling logging and monitoring can trigger a plan change on your deployment. You can monitor the plan change progress from the deployment's **Activity** page.
 
+
 :::{tip}
 The monitoring deployment and production deployment must be on the same major version, cloud provider, and region.
 :::
@@ -104,12 +105,17 @@ Several fields are available for you to view logs based on key details, such as 
 
 | Field | Description | Example value |
 | --- | --- | --- |
-| `service.id` | The ID of the deployment that generated the log | `6ff525333d2844539663f3b1da6c04b6` |
-| `service.name` | The name of the deployment that generated the log | `My Production Deployment` |
+| `service.id` | The ID of the deployment that generated the log. This is the most reliable field for identifying the source deployment, it's populated consistently across every component and log category | `6ff525333d2844539663f3b1da6c04b6` |
+| `service.name` | The name of the deployment or component that generated the log. Coverage varies by component: not populated for some {{es}} log categories (for example, audit and GC logs), and reflects the specific component rather than the deployment name for APM and Fleet Server | `My Production Deployment`, or `apm-server` / `fleet-server` on those instances |
 | `cloud.availability_zone` | The availability zone in which the instance that generated the log is deployed | `ap-northeast-1d` |
 | `service.node.name` | The ID of the instance that generated the log | `instance-0000000008` |
-| `service.type` | The type of instance that generated the log | `elasticsearch` |
+| `service.type` | The type of instance that generated the log. Can hold more than one value on a single log entry, for example an instance running both Elastic Agent and Fleet Server may log `[agent, fleet-server]` | `elasticsearch` |
 | `service.version` | The version of the stack resource that generated the log | `9.0.0` |
+| `event.dataset` | The logging category for the instance that generated the log | `elasticsearch.server` |
+
+`service.type` narrows results to a component (for example, all {{es}} logs), but it won't distinguish between server logs, audit logs, slow logs, and GC logs from that same component. Use `event.dataset` alongside it to filter down to a specific log category, this matters most on a busy cluster or one with audit logging enabled, where server logs can otherwise bury what you're looking for.
+
+If you need to filter to a specific deployment reliably across all components and log categories, use `service.id` rather than `service.name`, since `service.name` isn't consistently populated for every {{es}} log category and takes on component-specific values for APM and Fleet Server rather than the deployment name.
 
 ## Logging features [extra-logging-features]
 
@@ -118,16 +124,23 @@ When shipping logs to a monitoring deployment there are more logging features av
 
 ### For {{es}} [extra-logging-features-elasticsearch]
 
-* [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
-* [Slow query and index logging](/deploy-manage/monitor/logging-configuration/slow-logs.md) - helps find and debug slow queries and indexing
-* Verbose logging - helps debug stack issues by increasing component logs
+Standard {{es}} logs use `event.dataset: elasticsearch.server`. Enabling the following features adds further log categories:
+
+* [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment (`event.dataset: elasticsearch.audit`)
+* [Slow query and index logging](/deploy-manage/monitor/logging-configuration/slow-logs.md) - helps find and debug slow queries and indexing (`event.dataset: elasticsearch.index_search_slowlog` for search, `elasticsearch.index_indexing_slowlog` for indexing)
+* Verbose logging - helps debug stack issues by increasing component logs (still `event.dataset: elasticsearch.server`, just more entries)
+* [Deprecation logging](/deploy-manage/monitor/logging-configuration/elasticsearch-deprecation-logs.md) - surfaces use of deprecated features ahead of upgrades, collected by default (`event.dataset: elasticsearch.deprecation`)
+* GC logging - helps diagnose JVM garbage collection pauses, collected by default (`event.dataset: elasticsearch.gc`)
+
 
 After you’ve enabled log delivery on your deployment, you can [add the {{es}} user settings](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md) to enable these features.
 
 
 ### For {{kib}} [extra-logging-features-kibana]
 
-* [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
+Standard {{kib}} logs use `event.dataset: kibana.log`.
+
+* [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment (`event.dataset: kibana.audit`)
 
 After you’ve enabled log delivery on your deployment, you can [add the {{kib}} user settings](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md) to enable this feature.
 
@@ -146,6 +159,10 @@ Enabling log collection also supports collecting and indexing the following type
 * `elastic-agent-json.log-*`
 
 The `*` indicates that we also index the archived files of each type of log.
+
+:::{note}
+APM, Fleet Server, and general Elastic Agent activity all share `event.dataset: agent.log`, since APM runs as an Elastic Agent-managed component rather than a standalone service. To filter to one of these specifically, use `service.name` instead (for example, `apm-server` or `fleet-server`). On these logs, `service.type` and `service.name` can each hold multiple values on a single entry, for example `service.type: [agent, fleet-server]`, reflecting that one instance can run more than one component.
+:::
 
 Check the respective product documentation for more information about the logging capabilities of each product.
 
