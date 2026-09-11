@@ -1,6 +1,54 @@
 redirects:
   # related to https://github.com/elastic/docs-content/pull/4251
   'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
+  # related to https://github.com/elastic/docs-content/issues/7502
+  'explore-analyze/find-and-organize/data-views.md':
+    many:
+      - to: 'explore-analyze/find-and-organize/data-views/create-data-view.md'
+        anchors:
+          'settings-create-pattern':
+          'data-views-read-only-access': 'create-data-view-prereqs'
+          '_create_a_temporary_data_source': '_create_a_temporary_data_source'
+          'rollup-data-view': 'rollup-data-view'
+          'management-cross-project-search': 'management-cross-project-search'
+      - to: 'explore-analyze/find-and-organize/data-views/delete-data-view.md'
+        anchors:
+          'delete-data-view':
+      - to: 'explore-analyze/find-and-organize/data-views/duplicate-data-view.md'
+        anchors:
+          'duplicate-managed-data-view':
+      - to: 'explore-analyze/find-and-organize/data-views/customize-data-view-fields.md'
+        anchors:
+          'managing-data-views':
+      - to: 'explore-analyze/find-and-organize/data-views/runtime-fields.md'
+        anchors:
+          'runtime-fields':
+          'create-runtime-fields': 'create-runtime-fields'
+          'runtime-field-examples': 'runtime-field-examples'
+          'simple-hello-world-example': 'simple-hello-world-example'
+          'perform-a-calculation-on-a-single-field': 'perform-a-calculation-on-a-single-field'
+          'return-substring': 'return-substring'
+          'composite-runtime-field': 'composite-runtime-field'
+          'replace-nulls-with-blanks': 'replace-nulls-with-blanks'
+          'manage-runtime-fields': 'manage-runtime-fields'
+      - to: 'explore-analyze/find-and-organize/data-views/scripted-fields.md'
+        anchors:
+          'scripted-fields':
+          'migrate-off-scripted-fields': 'migrate-off-scripted-fields'
+          'scripted-field-example': 'scripted-field-example'
+          'runtime-field-example': 'runtime-field-example'
+          'esql-example': 'esql-example'
+          'update-scripted-field': 'update-scripted-field'
+      - to: 'explore-analyze/find-and-organize/data-views/field-formatters.md'
+        anchors:
+          'managing-fields':
+          'string-field-formatters': 'string-field-formatters'
+          'field-formatters-date': 'field-formatters-date'
+          'field-formatters-geopoint': 'field-formatters-geopoint'
+          'field-formatters-numeric': 'field-formatters-numeric'
+      - to: 'explore-analyze/find-and-organize/data-views/data-view-field-cache.md'
+        anchors:
+          'data-view-field-cache':
   # related to https://github.com/elastic/docs-content/issues/7541
   'explore-analyze/query-filter/tools/playground.md': 'explore-analyze/ai-features/elastic-agent-builder.md'
   'solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md': 'solutions/search/full-text/search-with-synonyms.md'

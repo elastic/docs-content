@@ -52,14 +52,14 @@ The most portable way to build a panel is to define its visualization with [{{es
 - **Keep the visualization definition inline**, so it lives in the dashboard rather than pointing to a standalone [library visualization](create-dashboards-programmatically.md#lens-visualizations-api) that must already exist, with a matching ID, in the target environment.
 - **Query indices directly**: an {{esql}} query reads from the indices you name in it, so the panel doesn't rely on a separate saved data view that must already exist, with a matching ID, in the target environment.
 
-The result carries no external references, so the dashboard stays fully portable. For a panel that can't use {{esql}}, define it by value and back it with an [ad-hoc data view](../find-and-organize/data-views.md#_create_a_temporary_data_source) to keep it just as self-contained.
+The result carries no external references, so the dashboard stays fully portable. For a panel that can't use {{esql}}, define it by value and back it with an [ad-hoc data view](../find-and-organize/data-views/create-data-view.md#_create_a_temporary_data_source) to keep it self-contained.
 
 ### Assign matching IDs to referenced objects [dashboards-as-code-portability-ids]
 
 If you keep references to saved objects, give each object the same ID in every environment so the references always resolve:
 
 - **Dashboards and library visualizations**: create them with the [Dashboards API](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) and [Visualizations API](https://elastic.github.io/dashboards-api-spec/visualizations#tag/Visualizations) using `PUT` (upsert) with a chosen ID (`PUT /api/dashboards/{id}` or `PUT /api/visualizations/{id}`), rather than `POST`, which generates a new ID each time. Because the exported definition already contains these IDs, re-importing it with `PUT` recreates the same objects, with the same IDs, in the target environment.
-- **Data views**: create them with a chosen ID, either through the [Data Views API]({{kib-apis}}operation/operation-createdataviewdefaultw) by passing an `id` in the POST request, or in the UI by [setting a **Custom data view ID**](../find-and-organize/data-views.md#settings-create-pattern). Use human-readable IDs, such as `logs-prod`, so they are easy to reuse and recognize.
+- **Data views**: create them with a chosen ID, either through the [Data Views API]({{kib-apis}}operation/operation-createdataviewdefaultw) by passing an `id` in the POST request, or in the UI by [setting a **Custom data view ID**](../find-and-organize/data-views/create-data-view.md). Use human-readable IDs, such as `logs-prod`, so they are easy to reuse and recognize.
 
 Regardless of the approach, to deploy a dashboard to a different space within the same cluster, include the destination space's ID in the request URL. The [JSON export flow](sharing.md#export-dashboard-json) can open a pre-populated request in {{kib}} Dev Tools Console, where you set the destination space before sending it.
 

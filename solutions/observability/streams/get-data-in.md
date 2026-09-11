@@ -178,7 +178,7 @@ After configuring your data source, confirm data is appearing in Discover.
 
 For wired streams, you first need to make the index pattern available:
 
-1. Manually [create a {{data-source}}](../../../explore-analyze/find-and-organize/data-views.md#settings-create-pattern) for the wired streams index pattern (`logs,logs.*`).
+1. Manually [create a {{data-source}}](../../../explore-analyze/find-and-organize/data-views/create-data-view.md) for the wired streams index pattern (`logs,logs.*`).
 1. Add the wired streams index pattern (`logs,logs.*`) to the `observability:logSources` {{kib}} advanced setting, which you can open from the navigation menu or by using the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 Once data appears in Discover, you're ready to start organizing, parsing, and configuring retention for your streams.
