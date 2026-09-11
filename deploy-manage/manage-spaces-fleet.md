@@ -26,7 +26,9 @@ To use space awareness with {{fleet}}:
 
 ## Enable space awareness in Fleet [spaces-fleet-enable]
 
-You must enable space awareness for deployments upgraded to 9.1.0 or later. Space awareness requires a one-time migration that copies your existing {{fleet}} data into a new, space-aware model. Previous data is preserved in snapshots in case you need to roll back.
+You must enable space awareness for deployments upgraded to 9.1.0 or later. Space awareness requires a one-time, irreversible migration. Fleet reads the legacy agent and package policy saved objects, then creates new space-aware versions with the same IDs and attributes. There is no supported rollback path for this migration.
+
+If your deployment uses [reusable integration policies](/reference/fleet/agent-policy.md#add-integration), agent policies that use them cannot be moved to a different space after migration.
 
 To enable space awareness in upgraded deployments:
 
