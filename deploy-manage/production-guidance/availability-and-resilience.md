@@ -3,6 +3,7 @@ navigation_title: Design for resilience
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-design.html
 applies_to:
+  serverless:
   deployment:
     ess: all
     ece: all
@@ -64,6 +65,8 @@ The following pages give some recommendations for building resilient clusters of
 * [Resilience in larger clusters](availability-and-resilience/resilience-in-larger-clusters.md)
 
 In addition, [Resilience in {{ech}} and {{ece}} deployments](./availability-and-resilience/resilience-in-ech.md) outlines how ECH and ECE orchestrators implement resilience, and offers guidance to ensure your deployments follow best practices.
+
+[Resilience in {{serverless-full}}](./availability-and-resilience/resilience-in-serverless.md) also describes how the Serverless platform handles durability, availability, and recovery automatically.
 
 ## Client traffic distribution
 
