@@ -285,6 +285,23 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a partial-write bug so {{elastic-defend}} correctly sends data to a {{ls}} output when the kernel TCP send buffer is full, resolving premature connection failures.
 * Fixes a sharing violation in the `get-file` response action in {{elastic-defend}}.
 
+## 9.4.7 [elastic-security-9.4.7-release-notes]
+
+### Fixes [elastic-security-9.4.7-fixes]
+
+* Fixes bulk closing all matching alerts so they are updated when the filter uses a {{data-source}} runtime field. Previously the action reported 0 updated alerts [#288946]({{kib-pull}}288946).
+* Fixes process node labels in the visual event analyzer so they show the process name from the analyzed event time, not a later executable name from the same process [#287934]({{kib-pull}}287934).
+* Fixes the Timeline **Correlation** tab so it shows a warning when EQL results are incomplete because shards timed out or failed [#287933]({{kib-pull}}287933).
+* Fixes detection rules so they retry with a smaller page size instead of failing when an event search response is too large [#287916]({{kib-pull}}287916).
+* Fixes an issue where uploading a large sample log file in Automatic Import failed. Uploads now send at most 1000 samples and show a warning when additional lines are omitted [#287165]({{kib-pull}}287165).
+* Fixes an issue where Google Gemini 3.x models rejected requests that included tools with unconstrained string parameters [#286302]({{kib-pull}}286302).
+* Fixes an issue where generating threat hunting leads failed when the number of candidate entities was very large [#275970]({{kib-pull}}275970).
+* Fixes macOS updates that failed when {{elastic-defend}} **Device Control** was enabled. Also adds a warning log about potential misuse of the `filter_images` advanced policy setting.
+* Reduces {{elastic-defend}} CPU usage and lock contention during network cache cleanup on Linux, preventing event enrichment stalls at high connection counts.
+* Fixes false malicious behavior detection alerts in {{elastic-defend}} caused by process ID reuse after a process exits.
+* Increases the {{elastic-defend}} event buffer size.
+* Updates a `c-ares` dependency in {{elastic-defend}} on Linux to resolve [CVE-2024-25629](https://github.com/c-ares/c-ares/security/advisories/GHSA-mg26-v6qh-x48q). The gRPC-bundled `c-ares` snapshot (~1.19) is unchanged and is tracked separately pending a gRPC version upgrade.
+
 ## 9.4.6 [elastic-security-9.4.6-release-notes]
 
 ### Features and enhancements [elastic-security-9.4.6-features-enhancements]
@@ -297,7 +314,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a vertical alignment issue in the **Entities** section of the alert details flyout [#286952]({{kib-pull}}286952).
 * Fixes an issue where previously applied filters on the **Notes** page were not shown in the filter controls after navigating away and returning, even though the filters were still active [#286574]({{kib-pull}}286574).
 * Fixes an issue where the detection rule `PATCH` API silently reset `max_signals` to `100` when the field was omitted from the request [#286518]({{kib-pull}}286518).
-* Fixes an issue where Google Gemini 3.x models rejected requests that included tools with unconstrained string parameters [#286302]({{kib-pull}}286302).
 * Fixes an issue where detection rule exception items that use **IP range** value lists with more than 200 dash-notation entries were dropped during rule execution [#285178]({{kib-pull}}285178).
 * Fixes an issue that allowed index Knowledge Base entries to be created as globally readable without the privilege to manage global entries by sending an empty `users` list [#283195]({{kib-pull}}283195).
 * Fixes an issue where the OpenAI **Other** connector incorrectly re-enabled **Enable PKI Authentication** after saving with the toggle turned off [#282843]({{kib-pull}}282843).
