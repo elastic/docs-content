@@ -18,6 +18,8 @@ products:
 
 This guide helps you choose the right setup for your environment so you can start sending metrics, logs, and traces to Elastic using {{edot}}. {{edot}} is Elastic's fully supported, pre-configured distribution of the upstream OpenTelemetry tools, optimized for Elastic ingest and analysis.
 
+If you already use classic Elastic {{product.apm}} agents, {{beats}}, or {{agent}} and want to move to OpenTelemetry, refer to [Switch to OpenTelemetry](switch-to-otel.md) instead.
+
 ## Before you begin [start-with-otel-prereqs]
 
 EDOT SDKs and {{agent}} in OTel mode require {{stack}} 8.16 or later for basic compatibility. For a supported configuration, use:
