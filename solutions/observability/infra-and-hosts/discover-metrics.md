@@ -57,7 +57,7 @@ When the metrics profile is active, the documents table is collapsed by default 
 All metrics in the grid have data. If a metric appears empty, it's likely a counter metric where the scrape interval is smaller than the bucket size. To view the data, either expand the time range or click Explore for that metric and reduce the number of buckets in the query.
 :::
 
-With your data loaded, use the metrics charts to:
+With your data loaded, use the metrics grid to:
 
 **Search for specific metrics**
 
@@ -67,6 +67,11 @@ Use the search function to find and visualize specific metric data:
 :alt: Screenshot of searching for a specific metric.
 :screenshot:
 :::
+
+**Sort the metrics grid** {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Choose a sort order for the metrics grid:
+    - **Alphabetically** (default)
+    - **Recently explored**: Metrics you've interacted with, for example through **View details** or **Copy to dashboard**, appear first, the most recent first.
 
 **Break down metrics by dimensions**
 
@@ -84,7 +89,7 @@ Only fields mapped as dimensions in a [time series data stream](https://www.elas
 
 :::::{applies-switch}
 
-::::{applies-item} stack: ga 9.4+
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
 You can filter the view to focus on specific values in two ways:
 
 - **Click a chart value**: After you break down by one or more dimensions, hover over a chart and click the value you want to filter by. This adds the corresponding dimension-value pairs to your query and updates the metrics view to show only metrics with those dimension values.
