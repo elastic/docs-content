@@ -6,7 +6,7 @@ Keep this file lean: it points to the [`contribute-docs/`](contribute-docs/index
 
 ## About this repo
 
-This is the source for the narrative user documentation published at <https://www.elastic.co/docs/>, built by [docs-builder](https://elastic.github.io/docs-builder/) from MyST Markdown. For the products and versions it covers, what belongs here versus in the code repos, and the repo layout, see the [README](README.md).
+This is the source for the narrative user documentation published at <https://www.elastic.co/docs/>, built by [docs-builder](https://elastic.github.io/docs-builder/) from MyST Markdown. For the products and versions it covers, what belongs here versus in the code repos, and the repo layout, see the [README](README.md). Product hub pages live in [`products/`](products/) (`layout: hub`). Refresh their What's new cards with the `docs-hub-whats-new` skill.
 
 ## Core principles
 
@@ -55,6 +55,7 @@ The **Elastic docs skills** (from <https://github.com/elastic/elastic-docs-skill
 | Page opening (H1, intro, requirements) | `docs-page-opening-optimizer` |
 | Code sample validation | `docs-validate-code-samples` |
 | Redirects | `docs-redirects` |
+| Refresh hub What's new cards | `docs-hub-whats-new` |
 
 The **elastic-docs MCP**, when available, searches the published corpus, finds related pages, and checks coherence.
 

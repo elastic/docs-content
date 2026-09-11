@@ -1,0 +1,118 @@
+# Content for the {whats-new} panel on hub pages, keyed by product.
+#
+# This file lives at the root of the documentation set, alongside changelog.yml and
+# redirects.yml. A hub page renders a panel from it with one line: `:product: <key>`.
+#
+# Schema: https://elastic.github.io/docs-builder/syntax/whats-new/
+# Refresh with the docs-hub-whats-new skill. Source the cards from the published
+# release notes and the official what's-new blog, not from changelog YAML.
+
+products:
+  elasticsearch:
+    title: What's new in Elasticsearch
+    id: whats-new
+    intro: Highlights from the latest Elasticsearch release.
+    release-links:
+      - label: Release notes
+        url: elasticsearch://release-notes/index.md
+    upgrade-link:
+      label: Upgrade Elasticsearch
+      url: /deploy-manage/upgrade/deployment-or-cluster.md
+    items:
+      - title: Columnar index mode
+        description: Store each field once in a column store, with no inverted index by default, for a smaller footprint. Technical preview.
+        link: /manage-data/data-store/columnar.md
+        date: '9.5'
+        tag: Storage
+        featured: true
+      - title: VectorDB index mode
+        description: Apply vector-search defaults with a single index setting.
+        link: /solutions/search/vector.md#vector-index-mode
+        date: '9.5'
+        tag: Vector search
+      - title: Native Prometheus and PromQL
+        description: Query Prometheus metrics with PromQL in Elasticsearch, generally available.
+        link: elasticsearch://reference/query-languages/promql.md
+        date: '9.5'
+        tag: Metrics
+      - title: DLM frozen tier
+        description: Move aging data stream backing indices to the frozen tier as searchable snapshots, without an ILM policy.
+        link: /manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md
+        date: '9.5'
+        tag: Data lifecycle
+      - title: Flattened fields in ES|QL
+        description: Query flattened fields and extract sub-fields with FIELD_EXTRACT. Technical preview.
+        link: elasticsearch://reference/elasticsearch/mapping-reference/flattened.md
+        date: '9.5'
+        tag: ES|QL
+
+  kibana:
+    title: What's new in Kibana
+    id: whats-new
+    intro: Highlights from the latest Kibana release.
+    release-links:
+      - label: Release notes
+        url: kibana://release-notes/index.md
+    upgrade-link:
+      label: Upgrade Kibana
+      url: /deploy-manage/upgrade/deployment-or-cluster/kibana.md
+    items:
+      - title: Dashboards and Visualizations APIs
+        description: Create, update, and manage dashboards and visualizations in code. Generally available.
+        link: /explore-analyze/dashboards/create-dashboards-programmatically.md
+        date: '9.5'
+        tag: Dashboards
+        featured: true
+      - title: Dashboards in Agent Builder chat
+        description: Build dashboards from chat, create skills, and add dashboard controls without leaving the conversation. Generally available.
+        link: /explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md
+        date: '9.5'
+        tag: Agent Builder
+      - title: Fast mode for ES|QL STATS
+        description: Run eligible STATS queries in Discover and Dashboards on a sampled dataset, then extrapolate to full scale.
+        link: elasticsearch://reference/query-languages/esql/esql-query-approximation.md
+        date: '9.5'
+        tag: ES|QL
+      - title: Workflows version history
+        description: Every save records a version you can compare and restore. Generally available.
+        link: /explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflows-version-history
+        date: '9.5'
+        tag: Workflows
+      - title: Case analytics
+        description: Analyze cases, activity, and attachments through dedicated indices and a prebuilt Case Analytics data view.
+        link: /explore-analyze/cases/case-analytics.md
+        date: '9.5'
+        tag: Cases
+
+  logstash:
+    title: What's new in Logstash
+    id: whats-new
+    intro: Highlights from the latest Logstash release.
+    release-links:
+      - label: Release notes
+        url: logstash://release-notes/index.md
+    upgrade-link:
+      label: Upgrade Logstash
+      url: logstash://reference/upgrading-logstash.md
+    items:
+      - title: OTLP metrics export
+        description: Export Logstash monitoring metrics to any OpenTelemetry-compatible endpoint. Technical preview.
+        link: logstash://reference/monitoring-with-opentelemetry.md
+        date: '9.5'
+        tag: Monitoring
+        featured: true
+      - title: TLS certificate auto-reload
+        description: Pipelines reload when TLS certificates rotate on disk, without a full pipeline restart.
+        link: logstash://reference/reloading-config.md
+        date: '9.5'
+        tag: Security
+      - title: cgroup v2 awareness
+        description: Read resource limits from cgroup v2 as well as v1, for modern Linux hosts and Kubernetes.
+        link: logstash://release-notes/index.md
+        date: '9.5'
+        tag: Containers
+      - title: Cloud API keys in Elasticsearch plugins
+        description: The Elasticsearch input, filter, and output plugins accept Elastic Cloud API keys in the api_key option.
+        link: logstash-docs-md://lsr/plugins-outputs-elasticsearch.md
+        date: '9.5'
+        tag: Elasticsearch
