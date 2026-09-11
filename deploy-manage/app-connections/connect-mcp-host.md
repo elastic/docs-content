@@ -265,7 +265,7 @@ This step is optional. To ensure that the connection is registered in {{kib}}, y
 
 In {{kib}}, go to **Agent Builder** → **Tools library**, click **Manage MCP**, and select **Manage MCP clients (OAuth)** to confirm the connection count for your client has increased. If you don't see it within a minute of authorizing, refresh the page.
 
-You can also check your connection in the {{ecloud}} Console at **Organization** → **Security settings** → **Application connections**.
+You can also check your connection in the {{ecloud}} Console at **Organization** → **Application connections**.
 
 :::::::
 

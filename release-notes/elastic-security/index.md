@@ -27,11 +27,40 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.5.3 [elastic-security-9.5.3-release-notes]
+
+### Features and enhancements [elastic-security-9.5.3-features-enhancements]
+
+* Adds the `--raw` option to the `memory-dump` response action for {{elastic-defend}} Windows hosts running {{agent}} 9.5.2 or later [#287713]({{kib-pull}}287713).
+* Adds **Destination IP** as a built-in **Group alerts by** option on the alerts table, and includes aggregatable IP fields in the **Custom field** picker [#284769]({{kib-pull}}284769).
+
+### Fixes [elastic-security-9.5.3-fixes]
+
+* Fixes an issue where the entity summary in the entity details flyout failed to persist when the entity metadata data stream was missing [#288199]({{kib-pull}}288199).
+* Fixes validation of boolean flag arguments in the response console so flags that must not take a value are rejected when a value is provided [#288124]({{kib-pull}}288124).
+* Fixes the Timeline **Correlation** tab so it shows a warning when EQL results are incomplete because shards timed out or failed [#287933]({{kib-pull}}287933).
+* Fixes the alert analysis workflow so notes are written in the same space as the alert, instead of always in the default space [#287438]({{kib-pull}}287438).
+* Fixes an issue where uploading a large sample log file in Automatic Import failed. Uploads now send at most 1000 samples and show a warning when additional lines are omitted [#287165]({{kib-pull}}287165).
+* Fixes scheduled Osquery packs that recorded every run as **Execution #0**. Affected packs are repaired on upgrade. Existing packs jump from `0` to a non-zero execution count on their first run after upgrade [#287023]({{kib-pull}}287023).
+* Fixes a vertical alignment issue in the **Entities** section of the alert details flyout [#286952]({{kib-pull}}286952).
+* Fixes an issue where alert rule names in the Cases activity feed displayed as **Unknown rule** when expanding a collapsed entry that contained many alert attachments [#286890]({{kib-pull}}286890).
+* Fixes scheduled Osquery executions on the **History** and execution details pages so agent counts show distinct agents, not response documents [#286879]({{kib-pull}}286879).
+* Fixes an issue where previously applied filters on the **Notes** page were not shown in the filter controls after navigating away and returning, even though the filters were still active [#286574]({{kib-pull}}286574).
+* Fixes an issue where the detection rule `PATCH` API silently reset `max_signals` to `100` when the field was omitted from the request [#286518]({{kib-pull}}286518).
+* Fixes a crash in the alert details flyout when a MITRE ATT&CK mapping is missing a tactic, technique, or sub-technique [#286382]({{kib-pull}}286382).
+* Fixes an issue where Google Gemini 3.x models rejected requests that included tools with unconstrained string parameters [#286302]({{kib-pull}}286302).
+* Fixes an issue where detection rule exception items that use **IP range** value lists with more than 200 dash-notation entries were dropped during rule execution [#285178]({{kib-pull}}285178).
+* Fixes the Osquery agent picker so it no longer fails when many {{agent}} policies are present [#284900]({{kib-pull}}284900).
+* Fixes legacy hash-based dashboard links in markdown panels, such as those on Osquery prebuilt dashboards, so they open the target dashboard [#283697]({{kib-pull}}283697).
+* Enforces required global fields when creating a case through the API or a workflow, and accepts `extended_fields` on the public and workflow case create and update APIs [#283350]({{kib-pull}}283350).
+* Fixes a deadlock between {{elastic-defend}} malware protection and SSSD on Active Directory-joined Linux hosts that could stall process executions and disable malware protection with the message `Disabled due to potential system deadlock`.
+* Fixes an issue where {{elastic-defend}} on Linux intermittently failed to enable event collection on hosts with a large number of active network connections.
+* Reduces {{elastic-defend}} CPU usage and lock contention during network cache cleanup on Linux, preventing event enrichment stalls at high connection counts.
+
 ## 9.5.2 [elastic-security-9.5.2-release-notes]
 
 ### Features and enhancements [elastic-security-9.5.2-features-enhancements]
 
-* Adds **Destination IP** as a built-in **Group alerts by** option on the alerts table, and includes aggregatable IP fields in the **Custom field** picker [#284769]({{kib-pull}}284769).
 * Improves {{elastic-defend}} logs for a down output connection, including the remaining backoff time.
 
 ### Fixes [elastic-security-9.5.2-fixes]

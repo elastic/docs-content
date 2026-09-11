@@ -102,6 +102,7 @@ toc:
     children:
       - file: add-otel-collector.md
       - file: view-otel-collectors.md
+      - file: remove-otel-collector.md
       - file: add-otel-collector-internal-telemetry.md
   - file: configure-standalone-elastic-agents.md
     children:

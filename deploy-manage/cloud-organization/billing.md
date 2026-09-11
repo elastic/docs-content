@@ -23,6 +23,7 @@ Elastic charges a recurring fee for using our offerings on {{ecloud}}. In this s
 * [](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md)
 * [](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md)
   * [](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md)
+  * [](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md)
   * [](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
   * [](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md)
 

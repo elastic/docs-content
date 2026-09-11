@@ -1,7 +1,7 @@
 ---
 applies_to:
   deployment:
-    ess: preview
+    ess: ga
 products:
   - id: cloud-hosted
 navigation_title: Customer-managed encryption keys

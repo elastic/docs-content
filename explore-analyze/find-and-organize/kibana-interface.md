@@ -31,14 +31,13 @@ The global header holds the following elements.
 | Element | What it does |
 |---|---|
 | {icon}`logo_elastic` logo | Opens the home page of your current space. |
-| Deployment/Project name and space information | Lets you navigate to other deployments or projects, and open any spaces you have access to.  |
+| Deployment/Project name and space information | Lets you navigate to other deployments or projects. |
+| Space selector | Switch between the spaces your roles allow. Where you find it depends on your deployment type and version. Refer to [Select and switch Kibana spaces](/deploy-manage/choose-and-switch-spaces.md) for the steps. |
 | {icon}`cross_project_search` {{cps-cap}} scope selector | {applies_to}`stack: unavailable` {applies_to}`serverless: preview` Sets which linked projects your searches include. It appears only when other projects are linked to yours. Refer to [{{cps-cap}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana). |
 | Global search field | Searches for apps and for the objects you created. Refer to [Find apps and objects](/explore-analyze/find-and-organize/find-apps-and-objects.md). |
 | {icon}`question` **Help menu** | Opens links to the documentation, to support, and to the connection details of your project or deployment. |
 | AI assistant or agent | Opens the AI assistant or agent of your solution. Its label depends on which one your project or deployment offers. |
 | Your avatar | Opens the user menu, where you can change your appearance and language preferences, customize your navigation menu, and log out. |
-
-Where you find the space selector depends on your deployment type and version. Refer to [Spaces](/deploy-manage/manage-spaces.md) for the steps.
 
 ## Navigation menu
 
@@ -55,4 +54,4 @@ The application menu sits at the top of the workspace and holds the actions avai
 
 * To open an app or find an object you created, refer to [Find apps and objects](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 * To change which apps appear in the navigation menu, refer to [Customize your navigation menu](/explore-analyze/find-and-organize/customize-navigation.md).
-* To switch to another space or create one, refer to [Spaces](/deploy-manage/manage-spaces.md).
+* To switch to another space, refer to [Select and switch Kibana spaces](/deploy-manage/choose-and-switch-spaces.md). To create one, refer to [Spaces](/deploy-manage/manage-spaces.md).

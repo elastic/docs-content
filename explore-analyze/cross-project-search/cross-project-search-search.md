@@ -17,7 +17,7 @@ This page explains how search works in {{cps-init}}, including:
 * how search options such as `ignore_unavailable` and `allow_no_indices` behave in {{cps-init}}
 * common edge cases and examples involving mixed qualified and unqualified expressions
 
-For an overview of {{cps}} concepts such as origin projects, linked projects, and project aliases, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md).
+For an overview of {{cps}} concepts such as origin projects, linked projects, and project aliases, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md). If you're coming from an {{stack}} environment where you used {{ccs}}, refer to [](/explore-analyze/cross-project-search/cps-compared-to-ccs.md) for a side-by-side syntax comparison.
 
 ## {{cps-init}} search model
 
