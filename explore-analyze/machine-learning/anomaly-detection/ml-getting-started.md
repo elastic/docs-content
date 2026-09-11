@@ -165,6 +165,9 @@ For each anomaly, you can see key details such as the time, the actual and expec
 
 In the **Actions** column, there are additional options, such as **Raw data** which generates a query for the relevant documents in **Discover**. You can optionally add more links in the actions menu with [custom URLs](ml-configuring-url.md).
 
+::::{include} _snippets/ml-ad-cps-results-links.md
+::::
+
 By default, the table contains all anomalies that have a severity of "warning" or higher in the selected section of the timeline. If you are only interested in critical anomalies, for example, you can change the severity threshold for this table.
 
 The **Anomaly explanation** section gives you further insights about each anomaly, such as its type and impact, to make it easier to interpret the job results.

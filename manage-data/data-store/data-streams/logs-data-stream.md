@@ -3,7 +3,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/logs-data-stream.html
 applies_to:
   stack: ga 9.0+
-  serverless: ga
+  serverless:
+    elasticsearch: ga
+    observability: ga
+    security: ga
+    vectordb: unavailable
 products:
   - id: elasticsearch
 ---
@@ -14,18 +18,18 @@ Logs data streams store log data more efficiently. In benchmarks, logsdb index m
 
 Logs data streams are created when the `index.mode` in the relevant template is set to `logsdb`, either automatically or manually.
 
-Logsdb index mode is enabled by default for logs in {{serverless-full}}, and for new logs data streams in {{stack}} 9.0 and later.
+Logsdb index mode is enabled by default for logs in {{es}}, Observability, and Security {{serverless-short}} projects, and for new logs data streams in {{stack}} 9.0 and later.
 
 :::{note}
 :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
-For a fully columnar logs storage profile, you can set `index.mode` to `logsdb_columnar` instead. To learn when to choose that mode, refer to [](/manage-data/data-store/columnar.md).
+{applies_to}`vectordb: unavailable` For a fully columnar logs storage profile, you can set `index.mode` to `logsdb_columnar` instead. To learn when to choose that mode, refer to [](/manage-data/data-store/columnar.md).
 :::
 
 ## Availability of logsdb index mode [logsdb-availability]
 
 Logsdb index mode is automatically enabled for the following data streams:
 
-- **{{serverless-full}}:** Logsdb mode is automatically set on new and existing data streams with names matching the `logs-*-*` pattern.
+- **{{es}}, Observability, and Security {{serverless-short}} projects:** Logsdb mode is automatically set on new and existing data streams with names matching the `logs-*-*` pattern.
 - **{{stack}}:** Automatic logsdb mode depends on your version and configuration:
   - As of {{es}} version 9.0, logsdb mode is automatically set on **new** data streams with names matching the `logs-*-*` pattern.
   - In clusters that were upgraded from 8.x to 9.x:

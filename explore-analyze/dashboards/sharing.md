@@ -19,6 +19,7 @@ Share a dashboard with others, or export its contents for reporting, backup, or 
 - [Export as PDF or PNG](#export-dashboard-pdf-png): Generate a report file of the dashboard.
 - [Download visualization data as CSV](#download-csv): Download the data from a visualization as a CSV file.
 - [Export JSON](#export-dashboards): Export the dashboard's definition as a JSON file to back it up, move it, or manage it as code.
+- [Export a panel as JSON](#export-panel-json): Export a supported panel's configuration without exporting the whole dashboard.
 
 You can also [set whether other users of your space can edit dashboards you own](#manage-dashboard-access).
 
@@ -88,7 +89,7 @@ For general information about reporting across all {{kib}} apps, including known
 
 ## Download visualization data as CSV [download-csv]
 
-You can download the data displayed in a visualization on a dashboard as a CSV file. The option is available for chart and table visualizations that expose tabular data, typically those created with **Lens**. It does not appear on panel types such as **Markdown**, **Image**, **Link**, or **Maps**.
+You can download the data displayed in a visualization on a dashboard as a CSV file. The option is available for chart and table visualizations that expose tabular data, typically those created with **Lens**. It does not appear on panel types such as **Markdown**, **Image**, **Links**, or **Maps**.
 
 1. On the dashboard, open the panel menu of the visualization.
 2. Select **Download CSV**. The file downloads to your machine.
@@ -96,6 +97,8 @@ You can download the data displayed in a visualization on a dashboard as a CSV f
 ## Export JSON [export-dashboards]
 
 You can export a dashboard's configuration to recreate it in another space or instance, back it up, or version-control it.
+
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To export only a supported panel's configuration, use [panel JSON export](#export-panel-json).
 
 $$$export-dashboard-json$$$ $$$export-ndjson$$$
 
@@ -132,6 +135,39 @@ You can still use the NDJSON export on later versions, but the API-compatible JS
 ::::
 
 :::::
+
+## Export a panel as JSON [export-panel-json]
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+You can export the configuration of individual dashboard elements as API-compatible JSON. Use this when you need one panel's definition without exporting the rest of the dashboard. You can inspect the JSON, or copy it into a [Dashboards API](create-dashboards-programmatically.md) request to add that panel to another dashboard.
+
+The **Export JSON** option is available for:
+
+- Visualizations created with the [point-and-click editor](../visualize/lens.md) or with an [{{esql}} query](../visualize/esorql.md)
+- [**Links**](../visualize/link-panels.md) and [**Markdown**](../visualize/text-panels.md) panels
+- Unpinned [**Options list**](../visualize/dashboard-controls.md#control-types), [**Range slider**](../visualize/dashboard-controls.md#control-types), and [**Variable**](../visualize/add-variable-controls.md) controls
+
+   :::{tip}
+   Pinned controls don't offer the option. Unpin them first.
+   :::
+
+The panel export excludes the filters, query, and time range applied at the dashboard level, even though they affect the data displayed by the panel. It includes filters, queries, and custom time ranges configured in the visualization itself. A control export also includes the control's current selection.
+
+1. On the dashboard, from the panel menu, select **Export JSON**.
+
+   :::{image} /explore-analyze/images/dashboard-panel-menu-export-json.png
+   :alt: Dashboard panel menu with the Export JSON option highlighted
+   :screenshot:
+   :width: 90%
+   :::
+
+2. Review the JSON source in the flyout. For a panel linked to the library, the export shows the library reference by default. Turn on **Show full configuration** to export the panel's full configuration instead of its library reference.
+3. Select **Copy to clipboard** to copy the JSON, or **Download JSON** to save it to a file on your machine. Confirm that the JSON is available on your clipboard or in your browser's download location.
+
+A panel export contains only the panel configuration, not a complete dashboard definition. To export the dashboard or open a pre-populated Dashboards API request in Console, use [dashboard JSON export](#export-dashboard-json).
 
 ## Set edit permissions [manage-dashboard-access]
 ```{applies_to}

@@ -48,10 +48,6 @@ api:
     - spec: cloud-connect.yml
       product: ess
       repository: elastic/cloud-connected-api
-      catalog:
-        categories:
-          - self
-          - ece
   cloud-serverless:
     - spec: elastic-cloud-serverless.yml
       product: cloud-serverless
@@ -59,6 +55,13 @@ api:
       catalog:
         categories:
           - serverless
+  logstash:
+    - spec: logstash.yaml
+      product: logstash
+      repository: elastic/logstash
+      catalog:
+        categories:
+          - self
 
 cta:
   monitor-kubernetes:
@@ -310,6 +313,7 @@ subs:
   anomaly-detect:   "anomaly detection"
   anomaly-detect-cap:   "Anomaly detection"
   anomaly-job:   "anomaly detection job"
+  anomaly-job-cap:   "Anomaly detection job"
   anomaly-jobs:   "anomaly detection jobs"
   anomaly-jobs-cap:   "Anomaly detection jobs"
   dataframe:   "data frame"
