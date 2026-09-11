@@ -158,4 +158,4 @@ serverless: preview
 stack: unavailable
 ```
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled, alerting rules query linked projects using the space-level scope. For how that scope works and which rule types can override it, refer to [{{cps-cap}} scope for rules](/explore-analyze/alerting/alerts/create-manage-rules.md#cps-scope-for-rules).
+When other projects are linked to the current project for [{{cps}}](/explore-analyze/cross-project-search.md), alerting rule queries use the scope defined in the settings of the space they run from. For how that scope works and which rule types can override it, refer to [{{cps-cap}} scope for rules](/explore-analyze/alerting/alerts/create-manage-rules.md#cps-scope-for-rules).
