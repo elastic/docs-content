@@ -15,7 +15,7 @@ description: Find privilege requirements, predefined roles, and the authorizatio
 
 Learn about the access requirements for detection features, including:
 
-- **Privilege requirements**: Cluster, index, and {{kib}} privileges that your role needs to enable detections, manage rules, view and edit alerts, and more
+- **Privilege requirements**: Cluster, index, and {{kib}} privileges that your role needs to enable detections, manage rules, view and edit alerts, and more. For {{kib}} **Rules and Exceptions** sub-feature privileges, refer to [Rules and Exceptions sub-feature privileges](/solutions/security/get-started/security-kibana-privileges.md#rules-and-exceptions-sub-feature-privileges).
 - **Predefined {{serverless-full}} roles**: {{serverless-short}} roles with detection privileges
 - **Authorization model**: How rule authorization works across Stack and {{serverless-full}} deployments, and what each API key model means for privilege inheritance
 

@@ -575,6 +575,7 @@ toc:
               - file: security/get-started/get-started-endpoint-security.md
               - file: security/get-started/get-started-cloud-security.md
           - file: security/get-started/elastic-security-requirements.md
+          - file: security/get-started/security-kibana-privileges.md
           - file: security/get-started/elastic-security-ui.md
           - file: security/get-started/ingest-data-to-elastic-security.md
             children:
