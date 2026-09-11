@@ -68,22 +68,70 @@ For more information about adaptive allocations and resources, refer to the [tra
 
 ## Configuring chunking [infer-chunking-config]
 
-{{infer-cap}} endpoints have a limit on the amount of text they can process at once, determined by the model's input capacity. Chunking is the process of splitting the input text into pieces that remain within these limits.
-It occurs when ingesting documents into [`semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). Chunking also helps produce sections that are digestible for humans. Returning a long document in search results is less useful than providing the most relevant chunk of text.
+Chunking is the process of splitting input text into smaller pieces, which is typically required in these situations:
 
-Each chunk will include the text subpassage and the corresponding embedding generated from it.
+* When sending input text to an {{infer}} endpoint. These endpoints have a limit on the amount of text they can ingest at once, determined by the model's input capacity. Splitting text into several chunks helps meet these limits, particularly when documents are ingested into [`semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). 
+* When showing search results to a human. In general, a human is only interested in a specific piece of text that answers their search query. As such, returning a chunk containing the answer to the query is more effective compared to returning a long document.
+
+:::{note}
+
+All chunks always include the text subpassage to which they belong and the corresponding embedding.
+
+:::
 
 By default, documents are split into sentences and grouped in sections up to 250 words with 1 sentence overlap so that each chunk shares a sentence with the previous chunk. Overlapping ensures continuity and prevents vital contextual information in the input text from being lost by a hard break.
 
-{{es}} uses the [ICU4J](https://unicode-org.github.io/icu-docs/) library to detect word and sentence boundaries for chunking. [Word boundaries](https://unicode-org.github.io/icu/userguide/boundaryanalysis/#word-boundary) are identified by following a series of rules, which include detecting the presence of a whitespace character. For written languages that do not use whitespace, such as Chinese or Japanese, dictionary lookups are used to detect word boundaries.
+{{es}} uses the [ICU4J](https://unicode-org.github.io/icu/userguide/icu4j/) library to detect word and sentence boundaries for chunking. [Word boundaries](https://unicode-org.github.io/icu/userguide/boundaryanalysis/#word-boundary) are identified by following a series of rules, which include detecting the presence of a whitespace character. For written languages that do not use whitespace, such as Chinese or Japanese, dictionary lookups are used to detect word boundaries.
 
 ### Chunking strategies
 
-Several strategies are available for chunking:
+You can use the following strategies to chunk text. For a quick reference on how these strategies differ, consult the below table.
+
+| Strategy | How it works | When to use | When not to use |
+|---|---|---|---|
+| [`sentence`](#sentence) | Splits at sentence boundaries | Building RAG systems on structured text | Splitting unpunctuated text |
+| [`word`](#word) | Splits on individual words | Splitting logs and/or chats | When chunks have to be shown to a human |
+| [`recursive`](#recursive) + [`plaintext`](#plaintext) | Splits on paragraph breaks | Splitting plain text with clear paragraphs (e.g., books) | Splitting one-line text scraped from raw HTML |
+| [`recursive`](#recursive) + [`markdown`](#markdown) | Splits at Markdown headings and other separators | Ingesting documentation and knowledge bases | Splitting non-Markdown text |
+| [`recursive`](#recursive) + [custom separators](#custom-separators) | Splits on regular expression patterns you define, applied in order | Ingesting AsciiDoc | Splitting Markdown or plain text |
+| [`none`](#none) | Does not split text (pre-chunking is possible) | Consuming short text, where chunking is unnecessary | Any use case when exceeding a model's input capacity is possible |
+
 
 #### `sentence`
 
 The `sentence` strategy splits the input text at sentence boundaries. Each chunk contains one or more complete sentences ensuring that the integrity of sentence-level context is preserved, except when a sentence causes a chunk to exceed a word count of `max_chunk_size`, in which case it will be split across chunks. The `sentence_overlap` option defines the number of sentences from the previous chunk to include in the current chunk which is either `0` or `1`.
+
+::::{admonition} Example of chunking
+
+:::{dropdown} Complete example with `max_chunk_size: 20` 
+
+Text:
+
+```
+S1  Elasticsearch stores data in indices.        (5 words)
+S2  Each index is divided into shards.           (6)
+S3  Shards are distributed across nodes.         (5)
+S4  This distribution enables horizontal scaling.(5)
+S5  Replicas provide redundancy.                 (3)
+```
+
+With `sentence_overlap: 0`:
+
+```
+Chunk 1: S1 S2 S3          (16 words)
+Chunk 2: S4 S5             (8 words)
+```
+
+With `sentence_overlap: 1`:
+
+```
+Chunk 1: S1 S2 S3          (16 words)
+Chunk 2: S3 S4 S5          (13 words)
+```
+
+:::
+
+::::
 
 The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and configures the chunking behavior with the `sentence` strategy.
 
@@ -109,6 +157,42 @@ The default chunking strategy is `sentence`.
 #### `word`
 
 The `word` strategy splits the input text on individual words up to the `max_chunk_size` limit. The `overlap` option is the number of words from the previous chunk to include in the current chunk.
+
+::::{admonition} Example of chunking
+
+:::{dropdown} Complete example with `max_chunk_size: 20` 
+
+Text:
+
+```
+1 Elasticsearch        7 index        13 are           19 enables
+2 stores          8 is           14 distributed   20 horizontal
+3 data            9 divided      15 across        21 scaling.
+4 in             10 into         16 nodes.        22 Replicas
+5 indices.       11 shards.      17 This          23 provide
+6 Each           12 Shards       18 distribution  24 redundancy.
+```
+
+With `overlap: 0`:
+
+```
+Chunk 1: words 1–20   Elasticsearch stores data in indices. Each index is divided
+                      into shards. Shards are distributed across nodes. This
+                      distribution enables horizontal
+Chunk 2: words 21–24  scaling. Replicas provide redundancy.
+```
+
+With `overlap: 5`:
+
+```
+Chunk 1: words 1–20   ...This distribution enables horizontal
+Chunk 2: words 16–24  nodes. This distribution enables horizontal scaling.
+                      Replicas provide redundancy.
+```
+
+:::
+
+::::
 
 The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and configures the chunking behavior with the `word` strategy, setting a maximum of 120 words per chunk and an overlap of 40 words between chunks.
 
@@ -156,6 +240,33 @@ The `plaintext` separator group splits text at paragraph boundaries, first attem
 
 :::
 
+::::{admonition} Example of chunking
+
+:::{dropdown} Complete example with `max_chunk_size: 20` 
+
+Text:
+
+```
+Elasticsearch stores data in indices. Each index is divided into shards.      (11 words)
+                                                                              ← \n\n
+Shards are distributed across nodes. This distribution enables horizontal
+scaling.                                                                      (10 words)
+                                                                              ← \n\n
+Replicas provide redundancy.                                                  (3 words)
+```
+
+Chunks:
+
+```
+Chunk 1: Elasticsearch stores data in indices. Each index is divided into shards.
+Chunk 2: Shards are distributed across nodes. This distribution enables horizontal scaling.
+Chunk 3: Replicas provide redundancy.
+```
+
+:::
+
+::::
+
 The following example configures chunking with the `recursive` strategy using the `plaintext` separator group and a maximum of 200 words per chunk.
 
 ```console
@@ -192,6 +303,40 @@ The `markdown` separator group splits text based on Markdown structural elements
 
 :::
 
+::::{admonition} Example of chunking
+
+:::{dropdown} Complete example with `max_chunk_size: 20` 
+
+Text:
+
+```
+# Elasticsearch
+
+## Storage
+
+Elasticsearch stores data in indices. Each index is divided into shards.
+
+## Distribution
+
+Shards are distributed across nodes. This distribution enables horizontal scaling.
+
+## Redundancy
+
+Replicas provide redundancy.
+```
+
+Chunks:
+
+```
+Chunk 1: ## Storage / Elasticsearch stores data in indices. Each index is divided into shards.
+Chunk 2: ## Distribution / Shards are distributed across nodes. This distribution enables horizontal scaling.
+Chunk 3: ## Redundancy / Replicas provide redundancy.
+```
+
+:::
+
+::::
+
 The following example configures chunking with the `recursive` strategy using the `markdown` separator group and a maximum of 200 words per chunk.
 
 ```console
@@ -213,7 +358,56 @@ PUT _inference/sparse_embedding/recursive_markdown_chunks
 
 ##### Custom separators
 
-If the [predefined separator groups](#separator-groups) don't meet your needs, you can define custom separators using regular expressions. The following example configures chunking with the `recursive` strategy using a custom list of separators to split text into chunks of up to 180 words.
+If the [predefined separator groups](#separator-groups) don't meet your needs, you can define custom separators using regular expressions. 
+
+::::{admonition} Example of chunking
+
+:::{dropdown} Complete example with `max_chunk_size: 20`
+
+Separators:
+
+```json
+"separators": [
+  "^(#{1,6})\\s",
+  "\\n\\n",
+  "\\n[-*]\\s",
+  "\\n\\d+\\.\\s",
+  "\\n"
+]
+```
+
+Text:
+
+```
+# Elasticsearch
+
+Data is stored in indices.
+
+## Shards
+
+- Each index is divided into shards.
+- Shards are distributed across nodes.
+- This distribution enables horizontal scaling.
+
+## Replicas
+
+Replicas provide redundancy.
+```
+
+Chunks:
+
+```
+Chunk 1: # Elasticsearch / Data is stored in indices.               (6 words)
+Chunk 2: ## Shards / - Each index... (three bullet points)          (17 words)
+Chunk 3: ## Replicas / Replicas provide redundancy.                 (4 words)
+```
+
+:::
+
+::::
+
+
+The following example configures chunking with the `recursive` strategy using a custom list of separators to split text into chunks of up to 180 words.
 
 ```console
 PUT _inference/sparse_embedding/recursive_custom_chunks
