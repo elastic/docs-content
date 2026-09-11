@@ -34,6 +34,7 @@ Refer to [](/deploy-manage/api-keys/elasticsearch-api-keys.md) to learn how to g
 
 ## Tools
 
+* {applies_to}`self: preview` [Elastic CLI](cli://index.md): Interact with {{es}} and {{kib}} APIs from a single command-line interface.
 * [{{es}} command line tools](elasticsearch://reference/elasticsearch/command-line-tools/index.md): Utilities for configuring security and performing other tasks from the command line.
 * [{{kib}} command line tools](kibana://reference/commands.md): Utilities for performing security and connectivity related tasks for {{kib}} from the command line.
 * [{{es}} Support Diagnostic tool](/troubleshoot/elasticsearch/diagnostic.md): Captures a point-in-time snapshot of cluster statistics and most {{es}} settings for troubleshooting purposes.

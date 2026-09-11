@@ -33,6 +33,11 @@ The available APIs are grouped by project type:
 - APIs for [Observability projects]({{cloud-serverless-apis}}group/endpoint-observability-projects)
 - APIs for [Security projects]({{cloud-serverless-apis}}group/endpoint-security-projects)
 
+:::{tip}
+:applies_to: serverless: preview
+For a command-line workflow, use the [Elastic CLI](cli://index.md) to run supported project operations. When you create a project, the `--save-as` option stores the returned endpoints and credentials in a named context instead of printing the credentials to standard output.
+:::
+
 ## Set up an API key [general-manage-project-with-api-set-up-api-key]
 
 To create and manage projects with the {{serverless-full}} API, you must authenticate your requests with an {{ecloud}} API key.
