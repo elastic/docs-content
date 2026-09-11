@@ -116,7 +116,7 @@ If you use a version before 5.0 or if your deployment didn’t include a {{kib}}
 ::::
 
 
-Selecting **Open** will log you in to {{kib}} using single sign-on (SSO). For versions older than 7.9.2, you need to log in to {{kib}} with the `elastic` superuser. The password was provided when you created your deployment or [can be reset](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
+Selecting **Open** will log you in to {{kib}} using single sign-on (SSO). For versions older than 7.9.2, you need to log in to {{kib}} with the `elastic` superuser. The password was provided when you created your deployment or [can be reset](../../users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md).
 
 In production systems, you might need to control what {{es}} data users can access through {{kib}}. Refer to [Securing your deployment](../../users-roles/cluster-or-deployment-auth.md) to learn more.
 
@@ -129,7 +129,7 @@ Refer to [Manage your Integrations Server](manage-integrations-server.md) to lea
 
 ## Security [ec_security]
 
-Here, you can configure features that keep your deployment secure: reset the password for the `elastic` user, set up network security, and add settings to the {{es}} keystore. You can also set up remote connections to other deployments.
+Here, you can configure features that keep your deployment secure: set up network security, add settings to the {{es}} keystore, and set up remote connections to other deployments.
 
 
 ## Actions [ec_actions]

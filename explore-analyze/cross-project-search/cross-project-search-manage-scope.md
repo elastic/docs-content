@@ -16,7 +16,7 @@ When [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md) is enabl
 
 * **Space default**: Admins [configure a default scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), which applies when you start a new session.
 * **Session scope**: Use the [{{cps-init}} scope selector](#cps-in-kibana) in the project's header to change which projects are searched during your session.
-* **Stored scope**: Some features use the [scope selector](#cps-in-kibana) to set a project routing value that is saved with a specific resource, such as a dashboard. The stored scope applies every time that resource runs or opens, independent of the session scope.
+* **Stored scope**: Some features use the [scope selector](#cps-in-kibana) to set a project routing value that is saved with a specific resource, such as a dashboard, an {{anomaly-job}}, or a transform. The stored scope applies every time that resource runs or opens, independent of the session scope.
 * **Query-level override**: Use project routing or qualified index expressions in individual queries to target specific projects.
 
 ## {{cps-cap}} scope selector [cps-in-kibana]
@@ -38,13 +38,13 @@ When the current selection matches the [space default](/deploy-manage/cross-proj
 
 The scope selector also provides shortcuts to admin settings. Select **Adjust space defaults** to open the space's {{cps-init}} scope configuration, or **Manage cross-project search** to open the [{{cps-init}} management page](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md).
 
-### Session scope vs. stored scope
+### Session scope versus stored scope
 
 Sometimes, you might want to change which projects are included in your results as you work. Other times, you want to set the project scope and persist it with a resource to keep inputs consistent. Session scope and stored scope are how apps make that happen. The behavior follows the app.
 
 Most apps use **session scope**. Session scope is which projects are searched while you work. You set it with the scope selector in the project header. Your selection is preserved as you navigate between apps that support the selector. Starting a new session resets to the space default. Session scope is used by most apps.
 
-Some apps use **stored scope**. Stored scope is saved with a resource and applies every time that resource runs or opens. Some apps, such as [Dashboards](/explore-analyze/dashboards.md), save a snapshot of the scope currently set in the header selector.
+Some apps use **stored scope**. Stored scope is saved with a resource and applies every time that resource runs or opens. Some apps, such as [Dashboards](/explore-analyze/dashboards.md), save a snapshot of the scope currently set in the header selector. Others use a separate selector on the create or edit form, such as [{{ml}} {{anomaly-jobs}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope).
 
 In apps where you write queries, you can still [override that scope at the query level](#cps-query-overrides).
 
@@ -79,7 +79,7 @@ To add a tag filter:
 4. If the operator requires a value, choose one or more values from the **Select a value** dropdown.
 5. Select **Apply** ({icon}`check`) to add the filter.
 
-When multiple filters are active, they are combined with AND logic: a project must match all filters to appear in the list.
+When multiple filters are active, they are combined with `AND` logic: a project must match all filters to appear in the list.
 
 #### Manage tag filters
 
@@ -106,6 +106,8 @@ In most cases, your scope is saved as a [project routing expression](/explore-an
 
 To keep future projects out of your scope, use a tag filter rather than excluding projects one by one.
 
+Certain apps, such as {{anomaly-jobs}} and transforms, do not include newly linked projects automatically. They store a fixed list of the projects selected at save time. Linking a new project or changing a project's custom tags does not update that list until you edit the resource. This increases stability of inputs for these resource types. Refer to the [availability table](#cps-availability) for how each app uses project scope.
+
 ## Override {{cps}} scope at the query level [cps-query-overrides]
 
 In apps where you write queries, you can define a different {{cps}} scope than the one set in the header's scope selector or the [space-level default](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). This is useful when you want a specific query or dashboard panel to search a different set of projects.
@@ -129,25 +131,27 @@ Not all apps support {{cps}}. The following table shows which apps support the {
 
 | App | {{cps-init}} scope selector | Query-level overrides |
 | --- | --- | --- |
-| **Agent Builder** | Not available | ES\|QL |
+| **Agent Builder** | Editable | ES\|QL |
 | **Dashboards** | Editable | Per-panel overrides using ES\|QL visualizations or Maps layer routing. Dashboards can also [store a {{cps}} scope](/explore-analyze/dashboards/using.md#dashboard-cps-scope). Dashboard controls, such as **Options list** controls, suggest values from all projects in the selected {{cps-init}} scope. |
 | **Dev Tools / Console** | Not available | Full {{cps-init}} through raw API requests, including ES\|QL. The [{{product.painless}} execute API](/explore-analyze/cross-project-search.md#cps-painless-scripting) resolves index names differently. |
 | **Discover** | Editable | ES\|QL |
 | **Lens visualizations** | Editable | ES\|QL visualizations[^cps-badge] |
 | **Maps** | Editable | Layer-level [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) for vector layers and joins |
+| **{{ml-app}} Anomaly Detection** | Editable | [`project_routing`](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope) defined on each job. |
 | **{{ml-app}} AIOps Labs** | Editable | Not available |
 | **{{ml-app}} {{data-viz}}** | Editable | ES\|QL |
 | **{{rules-ui}} and alerts** | Read-only | ES\|QL rules support `SET project_routing`. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects.|
 | **Streams** | Not available | ES\|QL |
+| **Transforms** | Editable | [`project_routing`](/explore-analyze/transforms/transform-overview.md#transform-cps-scope) defined on each transform. |
 | **Vega** | Editable | Project routing in Vega specs |
 
-The header's {{cps-init}} scope selector is not available in other apps, including Transforms, Canvas, and object listing pages.
+The header's {{cps-init}} scope selector is not available in other apps, including Canvas and object listing pages.
 
 [^cps-badge]: When a visualization panel uses a query-level override, it displays a **Custom CPS scope** badge on dashboards to indicate that it uses a different scope than the {{cps-init}} scope selector.
 
 ### {{cps-cap}} availability in Elastic {{observability}} apps [cps-availability-observability]
 
-{{observability}} apps have limited {{cps-init}} support. The scope selector is not available in {{observability}} apps, and most apps remain scoped to the origin project. The following table shows how each {{observability}} app behaves with {{cps-init}}:
+{{observability}} apps have limited {{cps-init}} support. The following table shows how each {{observability}} app behaves with {{cps-init}}:
 
 ::::{include} /solutions/_snippets/cps-obs-compatibility.md
 ::::

@@ -13,6 +13,10 @@ products:
 
 To perform an offline installation without a private Docker registry, you have to download the required Docker images on each host.
 
+:::{important}
+{{stack}} versions 9.5.0, 9.5.1, and 9.5.2 are unavailable [due to a known issue](https://ela.st/es-v95-replication-bug). {{ece}} 4.2.0 includes 9.5.2 images. After {{ece}} is running, pull the 9.5.3 images listed on [Available Docker images](ece-install-offline-images.md#ece-recent-download-list) and use that stack pack for new deployments.
+:::
+
 1. On an internet-connected host with Docker installed, download the Docker images required by the {{ece}} version you want to install. Refer to [available docker images](ece-install-offline-images.md) for more information.
 
     For example, for {{ece}} {{version.ece}} and the {{stack}} versions it includes, you need:
