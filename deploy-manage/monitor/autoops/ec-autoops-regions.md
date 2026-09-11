@@ -97,7 +97,7 @@ AutoOps is not available in any region for GovCloud customers yet. GovCloud avai
 
 ## AutoOps for {{serverless-full}} regions [autoops-for-serverless-full-regions]
 
-[AutoOps for {{serverless-short}}](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md) is set up and enabled automatically in the following regions. The only exception is the [Search AI Lake](/deploy-manage/monitor/autoops/search-ai-lake-view-autoops-serverless.md) view, which is available in all regions across AWS, GCP, and Azure.
+[AutoOps for {{serverless-short}}](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md) is set up and enabled automatically in the following regions. The only exception is the [Storage Tier](/deploy-manage/monitor/autoops/storage-tier-view-autoops-serverless.md) view, which is available in all regions across AWS, GCP, and Azure.
 
 ### AWS
 

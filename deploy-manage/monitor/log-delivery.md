@@ -46,7 +46,7 @@ Log delivery usage is metered. Cost is proportional to the volume of the deliver
 * Usage depends on the combination of source project, log type, and destination project you select. Adjust these combinations to see which ones drive higher volume.
 * Data transfer charges depend on the combination of source and destination projects. For example, same-project delivery does not incur transfer charges, but delivery to a different project in a different region does. Consider this in your configuration.
 * Ignore filters exclude events *before* delivery. Use them to reduce the volume of delivered data.
-* Ingestion and retention of delivered data is billed on the destination project. For exact rates, refer to [{{sec-serverless}} pricing](https://www.elastic.co/pricing/serverless-security) and [{{obs-serverless}} pricing](https://www.elastic.co/pricing/serverless-observability). Use [AutoOps](/deploy-manage/monitor/autoops/autoops-for-serverless.md) on your destination project to monitor your ingest rate and storage retained, and adjust accordingly.
+* Ingestion and retention of delivered data is billed on the destination project. For exact rates, refer to [{{sec-serverless}} pricing](https://www.elastic.co/pricing/serverless-security) and [{{obs-serverless}} pricing](https://www.elastic.co/pricing/serverless-observability). Use the AutoOps [Storage Tier](/deploy-manage/monitor/autoops/storage-tier-view-autoops-serverless.md) view on your destination project to monitor your ingest rate and storage retained, and adjust accordingly.
 
 ## Log types
 
