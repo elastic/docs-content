@@ -1113,7 +1113,7 @@ POST _tasks/<task_id>/_cancel
 
 ## Semantic search [infer-semantic-search]
 
-After the data set has been enriched with the embeddings, you can query the data using [semantic search](../vector/knn.md#knn-semantic-search). In case of dense vector models, pass a `query_vector_builder` to the k-nearest neighbor (kNN) vector search API, and provide the query text and the model you have used to create the embeddings. In case of a sparse vector model like ELSER, use a `sparse_vector` query, and provide the query text with the model you have used to create the embeddings.
+After the data set has been enriched with the embeddings, you can query the data using [semantic search](../vector/knn/build-search-queries.md#knn-semantic-search). In case of dense vector models, pass a `query_vector_builder` to the k-nearest neighbor (kNN) vector search API, and provide the query text and the model you have used to create the embeddings. In case of a sparse vector model like ELSER, use a `sparse_vector` query, and provide the query text with the model you have used to create the embeddings.
 
 ::::{note}
 If you cancelled the reindexing process, you run the query only a part of the data which affects the quality of your results.
