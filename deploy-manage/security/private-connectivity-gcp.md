@@ -256,6 +256,8 @@ Use the alias you’ve set up as CNAME A record to access your deployment.
 :::{include} _snippets/private-url-struct.md
 :::
 
+{{ech}} supports ports `443` and `9243` for Elasticsearch and Kibana traffic. Remote cluster traffic for cross-cluster search and cross-cluster replication uses port `9400` with the TLS certificate based security model, or `9443` with the API key based model. Refer to [Connection paths and private connectivity](/deploy-manage/remote-clusters.md#remote-clusters-connection-paths) for the supported combinations.
+
 To access the deployment:
 
 1. If needed, find the endpoint of an application in your deployment:
