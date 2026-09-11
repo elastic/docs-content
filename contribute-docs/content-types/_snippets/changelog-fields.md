@@ -1,4 +1,3 @@
-
 ```yaml
 ##### Required fields #####
 title:
@@ -12,7 +11,7 @@ type:
 # For the acceptable values, refer to https://github.com/elastic/docs-builder/blob/main/src/Elastic.Documentation/ChangelogEntryType.cs
 products:
 
-# A required array of objects that denote the affected products and their target release.
+# A required array of objects that denote the affected products.
 
     - product:
 
@@ -20,12 +19,12 @@ products:
       # filters, and categorization.
       # Refer to https://github.com/elastic/docs-builder/blob/main/config/products.yml for the acceptable values.
       
-      target:
+      versions:
 
-      # An optional string that facilitates pre-release doc previews.
-      # For products with version releases, it contains the target version number (V.R.M).
-      # For products with date releases, it contains the target release date
-      # or the date the PR was merged.
+      # A list of concrete release versions this changelog applies to.
+      # Required when the changelog is not tied to a pull request.
+      # Omit when `prs` attaches the change to a release.
+      # Example: [9.3.0, 9.4.0]
 
       lifecycle:
 
