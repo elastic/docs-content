@@ -29,8 +29,6 @@ jobs:
           "Team:Ingest":      "1034",
           "Team:Experience":  "1034",
           "Team:SKI":         "1034",
-          "Team:Admin":       "1927",
-          "Team:Developer":   "726",
           "Team:DocsEng":     "1625",
           "Team:Platform":    "1232",
           "Team:Projects":    "1415",
