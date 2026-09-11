@@ -1,7 +1,11 @@
 ---
 applies_to:
   stack: ga 9.0+
-  serverless: ga
+  serverless:
+    elasticsearch: ga
+    observability: ga
+    security: ga
+    vectordb: unavailable
 products:
   - id: elasticsearch
 ---
