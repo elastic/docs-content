@@ -27,6 +27,7 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 * To view information about the stream’s backing indices, click the number in the **Indices** column.
 * A value in the **Data retention** column indicates that the data stream is managed by a data stream lifecycle policy. This value is the time period for which your data is guaranteed to be stored. Data older than this period can be deleted by {{es}} at a later time.
 * To modify the data retention value, select a data stream, open the **Manage**  menu, and click **Edit data retention**. On {{stack}}, this action is only available if your data stream is managed by a [data stream lifecycle](/manage-data/lifecycle/data-stream.md).
+* {applies_to}`serverless: ga` If your project has a maximum retention period configured, the **Edit data retention** flyout shows the maximum below the retention field and won't let you save a longer value. To learn how default and maximum retention are applied, refer to [Data stream retention](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md).
 
 ## Manage data streams on the Streams page [manage-data-streams-with-streams]
 ```{applies_to}

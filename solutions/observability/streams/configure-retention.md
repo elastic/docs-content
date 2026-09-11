@@ -107,6 +107,8 @@ To set a specific lifecycle period:
 1. From the **Data stream lifecycle** panel, select **Add data phase** → **Delete phase**.
 1. Set the delete phase to the number of days you want to retain data and select **Apply**.
 
+{applies_to}`serverless: ga` If your project has a maximum retention period configured, the **Edit delete phase** flyout shows the maximum below the input and won't let you apply a longer period. If a default retention period is configured, the flyout pre-fills it and you can return to it with **Restore default**. To learn how default and maximum retention are applied, refer to [Data stream retention](../../../manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md).
+
 To define a global default lifecycle policy for serverless projects, refer to [project settings](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 :::
 
