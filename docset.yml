@@ -14,20 +14,36 @@ api:
     - spec: elasticsearch.json
       product: elasticsearch
       repository: elastic/elasticsearch-specification
+      catalog:
+        categories:
+          - self
+          - ece
+          - ess
   elasticsearch-serverless:
     - spec: elasticsearch-serverless.json
       product: serverless-elasticsearch
       repository: elastic/elasticsearch-specification
+      catalog:
+        categories:
+          - serverless
   kibana:
     - spec: kibana.yaml
       product: kibana
       repository: elastic/kibana
       children:
         - file: kibana-api-overview.md
+      catalog:
+        categories:
+          - self
+          - ece
+          - ess
   kibana-serverless:
     - spec: kibana-serverless.yaml
       product: kibana
       repository: elastic/kibana
+      catalog:
+        categories:
+          - serverless
   cloud-connect:
     - spec: cloud-connect.yml
       product: ess
@@ -36,6 +52,16 @@ api:
     - spec: elastic-cloud-serverless.yml
       product: cloud-serverless
       repository: elastic/serverless-api-specification
+      catalog:
+        categories:
+          - serverless
+  logstash:
+    - spec: logstash.yaml
+      product: logstash
+      repository: elastic/logstash
+      catalog:
+        categories:
+          - self
 
 cta:
   monitor-kubernetes:
@@ -164,6 +190,7 @@ subs:
   es-serverless:   "Elasticsearch Serverless"
   obs-serverless:   "Elastic Observability Serverless"
   sec-serverless:   "Elastic Security Serverless"
+  vectordb:   "Vector Database"
   apm-app:   "APM app"
   uptime-app:   "Uptime app"
   synthetics-app:   "Synthetics app"
@@ -288,6 +315,7 @@ subs:
   anomaly-detect:   "anomaly detection"
   anomaly-detect-cap:   "Anomaly detection"
   anomaly-job:   "anomaly detection job"
+  anomaly-job-cap:   "Anomaly detection job"
   anomaly-jobs:   "anomaly detection jobs"
   anomaly-jobs-cap:   "Anomaly detection jobs"
   dataframe:   "data frame"

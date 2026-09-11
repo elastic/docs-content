@@ -2,7 +2,11 @@
 navigation_title: "Metric temporality"
 applies_to:
   stack: ga 9.5
-  serverless: ga
+  serverless:
+    elasticsearch: ga
+    observability: ga
+    security: ga
+    vectordb: unavailable
 description: Learn how cumulative and delta metric temporality work in Elasticsearch time series data streams, and how to configure it for queries and downsampling.
 products:
   - id: elasticsearch
