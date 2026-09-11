@@ -5,39 +5,40 @@ applies_to:
 products:
   - id: fleet
   - id: elastic-agent
-navigation_title: Alerting rule templates
+navigation_title: Integration alerting templates
 ---
 
-# Alerting rule templates [alerting-rule-templates]
+# Create rules from integration alerting templates  [alerting-rule-templates]
 
-Alerting rule templates are out-of-the-box alert definitions that come bundled with [Elastic integrations](integration-docs://reference/index.md), enabling users to quickly set up monitoring without writing queries from scratch. 
+Alerting rule templates are out-of-the-box alert definitions that come bundled with [Elastic integrations](integration-docs://reference/index.md), enabling users to quickly set up monitoring without writing queries from scratch. Not all integrations include alerting templates.
 
-Templates help you start monitoring in minutes by providing curated {{esql}} queries and recommended thresholds tailored to each integration. 
+Templates help you start monitoring in minutes by providing curated {{esql}} queries and recommended thresholds tailored to each integration.
 
-After the integration is installed, these templates are automatically available in Kibana's alerting interface with a prefilled rule creation form that you can adapt to your needs.
+After the integration is installed, these templates are automatically available in {{kib}}'s alerting interface with a prefilled rule creation form that you can adapt to your needs.
 
-Although these templates are managed by Elastic, any alert created from them is owned by the customer and will not be modified by Elastic, even if the templates change.
+Although these templates are managed by Elastic, the customer owns any alert created from them and won't be modified, even if the templates change.
 
 :::{important}
 Although the alerts can be used as provided, threshold values should always be evaluated in the context of your specific environment. Depending on how you adjust the thresholds, you might either generate too many alerts or fail to generate alerts when expected.
 :::
 
 ## Prerequisites
-	
-- Install or upgrade to the latest version of the integration that includes alerting rule templates.
+
 - Ensure the data collection is enabled for the metrics or events that you plan to use.
-- {{stack}} 9.2.1 or later (9.4.0 or later for the **Alerting** tab and **Idle data streams** template).
-- Appropriate {{kib}} role privileges to create and manage rules.
+- Appropriate [{{kib}} role privileges](../../explore-analyze/alerting/alerts/alerting-setup.md) to create and manage rules.
 
 ## How to use the Alerting rule templates
 
-Alerting rule templates come with recommended, pre-populated values. To use them:
+Alerting rule templates come with recommended, pre-populated values. Templates are available from the integration page or the **{{rules-ui}}** page (open from the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
 
-1. In {{kib}}, go to **{{manage-app}}** > **{{integrations}}**.
+**From an integration:**
+
+1. In {{kib}}, go to **Data management** > **{{integrations}}** or search for Integrations using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
 1. Find and open the integration.
 1. On the integration page, select the **Alerting** tab to view all available alerting rule templates for that integration.
 
     :::{note}
+    {applies_to}`stack: ga 9.4`
     The **Alerting** tab is available for all integrations starting in version 9.4.0. In earlier versions, alerting rule templates are located in the **Assets** tab.
     :::
 
@@ -53,6 +54,12 @@ Alerting rule templates come with recommended, pre-populated values. To use them
 
 To update a rule you created from a template, go to the **Rules** page, open the action menu {icon}`boxes_vertical` for the rule, and select **Edit rule**.
 
+**From the {{rules-ui}}:**
+
+1. In {{kib}}, go to **Data management** > **Rules** or search for Rules using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
+2. Click **Create rule**, then select the **Template** tab.
+3. Choose a template from the list, review the pre-filled settings, and click **Create rule** to save and enable it. .
+
 The preconfigured defaults include:
 
 - **{{esql}} query**
@@ -63,7 +70,7 @@ The preconfigured defaults include:
 :   The length of time the rule analyzes for data (for example, the last 5 minutes).
 - **Rule schedule**
 :   How frequently the rule checks alert conditions (for example, every minute).
-- **Alert delay (alert suppression)**
+- **Alert delay**
 :   The number of consecutive runs for which conditions must be met before an alert is created.
 
 For details about fields in the Create rule form and how the rule evaluates data, refer to the [{{es}} query rule type](/explore-analyze/alerting/alerts/rule-type-es-query.md).
@@ -75,7 +82,7 @@ stack: ga 9.4
 serverless: ga
 ```
 
-Starting in version 9.4.0, all integrations include a dynamically generated **Idle data streams** template. This template generates an alert if no data is written to any of the integration's data stream patterns within a specified time period (the default is 24 hours). Note that Idle data streams are not generated for input-only packages. 
+All integrations include a dynamically generated **Idle data streams** template. This template generates an alert if no data is written to any of the integration's data stream patterns within a specified time period (the default is 24 hours). Note that Idle data streams are not generated for input-only packages.
 
 Use this template to detect data collection issues early, such as:
 
@@ -94,6 +101,14 @@ The Idle data streams template:
 :::{note}
 The Idle data streams template monitors all data stream patterns defined by the integration. You can customize the query to monitor specific data streams based on your environment.
 :::
+
+## {{agent}} status change data stream
+
+```{applies_to}
+stack: ga 9.3+
+```
+
+Alerting rule templates use the `logs-elastic_agent.status_change` data stream, which contains agent status changes (for example, `online`, `offline`, `updating`, `unenrolled`). For more information, refer to [Monitor Elastic Agents](/reference/fleet/monitor-elastic-agent.md#fleet-alerting).
 
 ## Reinstall alerting assets
 
