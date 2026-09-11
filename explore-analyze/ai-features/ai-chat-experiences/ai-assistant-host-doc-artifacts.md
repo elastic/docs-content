@@ -20,7 +20,7 @@ This page walks you through hosting those ZIP files, configuring the repository 
 
 Use this list to figure out the best deployment and hosting setup for your environment, then go to the [Deploy the repository](#deploy-the-knowledge-base-artifact-repository) section for detailed steps.
 
-* **S3-compatible bucket**: You store the artifact ZIP files in an S3-compatible bucket over HTTPS and the bucket exposes a normal object listing at the repository root, so {{kib}} can discover the ZIPs without you maintaining a separate listing XML file (unlike the CDN option).
+* **S3-compatible bucket**: You store the artifact ZIP files in an S3-compatible bucket over HTTPS and publish an `index.xml` listing file at the bucket root so {{kib}} can discover the ZIPs.
 * **CDN**: You serve the ZIP files through a CDN and publish S3-style listing XML yourself, served as the folder’s default document or directory index.
 * **Local files on the {{kib}} host** {applies_to}`self: ga 9.1+`: The ZIP files exist only on the {{kib}} host filesystem and you configure a `file://` repository URL.
 
@@ -59,17 +59,44 @@ Download the ZIP files from [kibana-knowledge-base-artifacts.elastic.co](https:/
 
 ::::{step} Upload the ZIP files to your bucket
 
-Configure the bucket root so its listing matches `https://kibana-knowledge-base-artifacts.elastic.co/` and lists all ZIPs. Over HTTPS, use S3-style listing from a compatible bucket.
+Upload all ZIP files to the bucket root so they share a single HTTPS base path. You add the listing XML in the next step.
+
+::::
+
+::::{step} Create and upload the `index.xml` listing file
+
+{{kib}} requires an `index.xml` file at the bucket root to discover which artifacts are available. Without it, {{kib}} fails silently and cannot load any artifacts.
+
+Upload `index.xml` to the bucket root alongside the ZIP files:
+
+```xml subs=true
+<ListBucketResult>
+    <Name>kibana-ai-assistant-kb-artifacts</Name>
+    <IsTruncated>false</IsTruncated>
+    <Contents>
+        <Key>kb-product-doc-elasticsearch-{{versionMajor}}.{{versionMinor}}.zip</Key>
+    </Contents>
+    <Contents>
+        <Key>kb-product-doc-kibana-{{versionMajor}}.{{versionMinor}}.zip</Key>
+    </Contents>
+    <Contents>
+        <Key>kb-product-doc-observability-{{versionMajor}}.{{versionMinor}}.zip</Key>
+    </Contents>
+    <Contents>
+        <Key>kb-product-doc-security-{{versionMajor}}.{{versionMinor}}.zip</Key>
+    </Contents>
+</ListBucketResult>
+```
 
 :::{important}
-For S3-compatible storage, a single HTTPS repository root must expose the bucket’s list response (the same S3-style listing {{kib}} would get from `ListObjects`-style APIs) and the object keys at that same root. **Do not** rely on a separate path for the ZIPs. Object key names must match the ZIP file names from the previous step so each listing entry resolves to a downloadable file.
+Each `<Key>` must match a real ZIP file name at the bucket root. Upload `index.xml` to the same root path as the ZIP files. **Do not** place the listing or the ZIPs in a subdirectory.
 :::
 
 ::::
 
 ::::{step} Set the repository URL in {{kib}}
 
-In `kibana.yml`, set [`xpack.productDocBase.artifactRepositoryUrl`](kibana://reference/configuration-reference/ai-assistant-settings.md) to the bucket root’s HTTPS URL (the base that serves both the listing and the ZIPs). **Do not** point it at a subdirectory of that root.
+In `kibana.yml`, set [`xpack.productDocBase.artifactRepositoryUrl`](kibana://reference/configuration-reference/ai-assistant-settings.md) to the bucket root’s HTTPS URL (the base that serves both `index.xml` and the ZIPs). **Do not** point it at a subdirectory of that root.
 
 ```yaml
 # Replace with your bucket’s HTTPS base URL (repository root only)
@@ -132,23 +159,23 @@ Put all ZIP files in one folder on the CDN origin (or backing storage) so they s
 
 ::::{step} Create and upload the bucket listing
 
-Copy the template, set each `<Key>` to your real file names and minor version (for example, if {{kib}} is 9.2, replace `9.1` in the example with `9.2` everywhere in the keys).
+Copy the template and upload it as the folder's index document:
 
-```xml
+```xml subs=true
 <ListBucketResult>
     <Name>kibana-ai-assistant-kb-artifacts</Name>
     <IsTruncated>false</IsTruncated>
     <Contents>
-        <Key>kb-product-doc-elasticsearch-9.1.zip</Key>
+        <Key>kb-product-doc-elasticsearch-{{versionMajor}}.{{versionMinor}}.zip</Key>
     </Contents>
     <Contents>
-        <Key>kb-product-doc-kibana-9.1.zip</Key>
+        <Key>kb-product-doc-kibana-{{versionMajor}}.{{versionMinor}}.zip</Key>
     </Contents>
     <Contents>
-        <Key>kb-product-doc-observability-9.1.zip</Key>
+        <Key>kb-product-doc-observability-{{versionMajor}}.{{versionMinor}}.zip</Key>
     </Contents>
     <Contents>
-        <Key>kb-product-doc-security-9.1.zip</Key>
+        <Key>kb-product-doc-security-{{versionMajor}}.{{versionMinor}}.zip</Key>
     </Contents>
 </ListBucketResult>
 ```
@@ -222,12 +249,50 @@ Download the ZIP files from [kibana-knowledge-base-artifacts.elastic.co](https:/
 
 ::::
 
+::::{step} Create the `index.xml` listing file
+
+{{kib}} requires an `index.xml` file in the same directory as the ZIP files to discover which artifacts are available. Without it, {{kib}} fails silently and cannot load any artifacts.
+
+Save the following as `index.xml` in the same directory as the ZIP files:
+
+```xml subs=true
+<ListBucketResult>
+    <Name>kibana-ai-assistant-kb-artifacts</Name>
+    <IsTruncated>false</IsTruncated>
+    <Contents>
+        <Key>kb-product-doc-elasticsearch-{{versionMajor}}.{{versionMinor}}.zip</Key>
+    </Contents>
+    <Contents>
+        <Key>kb-product-doc-kibana-{{versionMajor}}.{{versionMinor}}.zip</Key>
+    </Contents>
+    <Contents>
+        <Key>kb-product-doc-observability-{{versionMajor}}.{{versionMinor}}.zip</Key>
+    </Contents>
+    <Contents>
+        <Key>kb-product-doc-security-{{versionMajor}}.{{versionMinor}}.zip</Key>
+    </Contents>
+</ListBucketResult>
+```
+
+After adding `index.xml`, the directory should look like this:
+
+```text subs=true
+/path/to/artifacts/
+├── index.xml
+├── kb-product-doc-elasticsearch-{{versionMajor}}.{{versionMinor}}.zip
+├── kb-product-doc-kibana-{{versionMajor}}.{{versionMinor}}.zip
+├── kb-product-doc-observability-{{versionMajor}}.{{versionMinor}}.zip
+└── kb-product-doc-security-{{versionMajor}}.{{versionMinor}}.zip
+```
+
+::::
+
 ::::{step} Set the repository URL in {{kib}}
 
 Set [`xpack.productDocBase.artifactRepositoryUrl`](kibana://reference/configuration-reference/ai-assistant-settings.md) to the `file://` URL of that directory.
 
 :::{important}
-With a `file://` repository, the directory must sit on the {{kib}} host, or on storage mounted there. It must also be readable by the user that runs {{kib}}. Use the `file://` URL of the folder that directly contains the ZIPs. **Do not** point at a parent directory. File names must stay exactly as in the previous step, or {{kib}} won’t pick up the ZIP files.
+With a `file://` repository, the directory must sit on the {{kib}} host, or on storage mounted there. The directory must contain the ZIP files and the `index.xml` listing from the previous step, and all files must be readable by the user that runs {{kib}}. Use the `file://` URL of the folder that directly contains the ZIPs. **Do not** point at a parent directory. File names must stay exactly as in the previous step, or {{kib}} won’t pick up the ZIP files.
 :::
 
 ::::
