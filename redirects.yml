@@ -1188,6 +1188,11 @@ redirects:
   'solutions/elasticsearch-solution-project/search-connection-details.md':
     to: 'solutions/elasticsearch-solution-project/search-connection-details.md'
     anchors:
+      'before-you-begin': 'before-you-begin'
+      'find-endpoint-cloud-self-managed': 'find-endpoint-cloud-self-managed'
+      'find-cloud-id-cloud-self-managed': 'find-cloud-id-cloud-self-managed'
+      'create-an-api-key-cloud-self-managed': 'create-an-api-key-cloud-self-managed'
+      'elasticsearch-get-started-test-connection': 'elasticsearch-get-started-test-connection'
       '_elastic_cloud_and_self_hosted_deployments': 'find-endpoint-cloud-self-managed'
       '_serverless_deployments': 'find-endpoint-cloud-self-managed'
       'find-cloud-id-serverless': 'find-endpoint-cloud-self-managed'
