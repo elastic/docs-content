@@ -15,13 +15,15 @@ type: overview
 
 # {{es}} {{vectordb}} project overview
 
-The {{es}} {{vectordb}} {{serverless-short}} project type is optimized for vector workloads. Compared with the general-purpose [{{es}} project type](/solutions/elasticsearch-solution-project.md), it uses a vector-tuned default configuration, a hardware profile suited to embeddings, streamlined access to {{infer}}, and a pricing model built for vector storage and search.
+The {{es}} {{vectordb}} project type is Elastic's solution for vector workloads, available on {{serverless-full}}. 
 
-Use the {{vectordb}} project type when embeddings and similarity search are central to your application, for example [RAG](/solutions/search/rag.md), [recommendations](/solutions/search/vector/vector-search-use-cases.md#discovery-and-recommendations), [semantic search](/solutions/search/semantic-search.md), [hybrid search](/solutions/search/hybrid-search.md), or [multimodal search](/solutions/search/multimodal-search.md).
+With its [optimized configuration and pricing](#what-you-get), it is best suited when embeddings and similarity search are central to your application, for example RAG, recommendations, semantic search, hybrid search, or multimodal search. 
+
+Refer to the [When to use this project type](#when-to-use-this-project-type) section of this page for more information.
 
 ## What you get
 
-A {{vectordb}} project gives you the same {{es}} vector search capabilities as other project types, plus {{serverless-full}} defaults and project settings aimed at embedding storage, {{infer}}, and similarity or hybrid search.
+{{vectordb}} projects offer a vector-optimized version of {{es}}. The following lists the main characteristics of {{vectordb}} projects:
 
 ### Vectors and structured data in one index
 
@@ -57,21 +59,24 @@ Billing is based on storage, search, ingest, and infrastructure, rather than the
 
 ## When to use this project type
 
-Both the {{es}} {{vectordb}} and the {{es}} project types support [vector search](/solutions/search/vector.md). {{vectordb}} gives you the full power of the core {{es}} capabilities (the same query APIs, mappings, filters, and hybrid or semantic retrieval) with targeted defaults, hardware, and pricing tuned for embedding-driven workloads.
+Both the {{es}} {{vectordb}} project type and the {{es}} solution support [vector search](/solutions/search/vector.md). {{vectordb}} gives you the full power of the core {{es}} capabilities: The same query APIs, mappings, filters, and hybrid or semantic retrieval. 
+
+It uses a vector-tuned default configuration, a hardware profile suited to embeddings, streamlined access to {{infer}}, and a pricing model built for vector storage and search.
 
 Choose {{vectordb}} when embeddings and similarity search are the primary workload, and you don't need extra features like time series data support, search application management, or custom ML nodes.
 
-Choose the [{{es}} project type](/solutions/elasticsearch-solution-project.md) when you need general-purpose data storage and search, including mixed lexical, time series, and analytics workloads, {{kib}} search tooling such as [Query Rules UI](/solutions/elasticsearch-solution-project/query-rules-ui.md), or the ability to run custom models on ML nodes. You might also prefer the {{es}} project type if you are an existing {{es}} or OpenSearch user.
+Choose the [{{es}} solution](/solutions/elasticsearch-solution-project.md) when you need general-purpose data storage and search, including mixed lexical, time series, and analytics workloads, {{kib}} search tooling such as [Query Rules UI](/solutions/elasticsearch-solution-project/query-rules-ui.md), or the ability to run custom models on ML nodes. You might also prefer the {{es}} solution if you are an existing {{es}} or OpenSearch user.
 
-| Use case | Fit | Why |
+| Use case | Best solution | Why |
 | --- | --- | --- |
-| [RAG and question answering](/solutions/search/vector/vector-search-use-cases.md#rag-and-question-answering-on-your-own-data) | Strong | Retrieve passages from documents, wikis, tickets, or knowledge bases and pass them to an LLM. Hybrid search combines semantic similarity with keyword matching when queries mix natural language with exact terms, IDs, or product names. |
-| [Discovery and recommendations](/solutions/search/vector/vector-search-use-cases.md#discovery-and-recommendations) | Strong | Find related products, articles, or other items by similarity when keywords alone are not enough. Use hybrid ranking when you also need lexical or attribute matches in the same result set. |
-| [Multimodal search](/solutions/search/vector/vector-search-use-cases.md#multimodal-search) | Strong | Search across images, audio, video, or text with embeddings from a multimodal model. |
-| [Duplicate detection, fraud, and anomaly detection](/solutions/search/vector/vector-search-use-cases.md#duplicate-detection-fraud-and-anomaly-detection) | Strong | Compare embeddings to find near-duplicates, suspicious matches, or unusual patterns at scale. |
-| [Long-term memory for LLMs](/solutions/search/vector/vector-search-use-cases.md#long-term-memory-for-llms) | Strong | Store facts, chat turns, or summaries so an assistant can retrieve relevant past context by meaning, optionally combined with keyword filters on metadata. |
-| Full-text or keyword search without vectors | Prefer the {{es}} project | General-purpose defaults suit lexical search, filters, and document-centric analytics. |
-| Log, event, or other time series search | Prefer the {{es}} project | General-purpose defaults suit write-heavy, frequently updated time series data. |
+| [RAG and question answering](/solutions/search/vector/vector-search-use-cases.md#rag-and-question-answering-on-your-own-data) | {{vectordb}} project | Retrieve passages from documents, wikis, tickets, or knowledge bases and pass them to an LLM. Hybrid search combines semantic similarity with keyword matching when queries mix natural language with exact terms, IDs, or product names. |
+| [Discovery and recommendations](/solutions/search/vector/vector-search-use-cases.md#discovery-and-recommendations) | {{vectordb}} project | Find related products, articles, or other items by similarity when keywords alone are not enough. Use hybrid ranking when you also need lexical or attribute matches in the same result set. |
+| [Multimodal search](/solutions/search/vector/vector-search-use-cases.md#multimodal-search) | {{vectordb}} project | Search across images, audio, video, or text with embeddings from a multimodal model. |
+| [Duplicate detection, fraud, and anomaly detection](/solutions/search/vector/vector-search-use-cases.md#duplicate-detection-fraud-and-anomaly-detection) | {{vectordb}} project | Compare embeddings to find near-duplicates, suspicious matches, or unusual patterns at scale. |
+| [Long-term memory for LLMs](/solutions/search/vector/vector-search-use-cases.md#long-term-memory-for-llms) | {{vectordb}} project | Store facts, chat turns, or summaries so an assistant can retrieve relevant past context by meaning, optionally combined with keyword filters on metadata. |
+| Full-text or keyword search without vectors | [{{es}} solution](/solutions/elasticsearch-solution-project.md) | General-purpose defaults suit lexical search, filters, and document-centric analytics. |
+| Log, event, or other time series search | [{{es}} solution](/solutions/elasticsearch-solution-project.md) | General-purpose defaults suit write-heavy, frequently updated time series data. |
+| Mixed search and analytics | [{{es}} solution](/solutions/elasticsearch-solution-project.md) | General-purpose defaults suit workloads that combine search with analytics or time series data. |
 
 :::{note}
 {{vectordb}} projects only support the [vector index mode](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode). [Time series index mode](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) and [LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md) are not supported. Use the Elasticsearch project type for those workloads. Data streams are supported when their backing indices use vector index mode.

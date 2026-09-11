@@ -15,7 +15,9 @@ description: To try out an Elasticsearch project or solution, pick your deployme
 
 # Get started with the {{es}} solution/project type
 
-This solution provides specialized UI tools, such as Agent Builder and the Query Rules UI, to help you build and test search experiences faster. These tools build on top of the core [search capabilities](/solutions/search.md) available across all deployment types. If you only need core search features without these additional tools, start with the [search use case](/solutions/search/get-started.md) instead.
+This solution includes the tools and applications you need to implement [search use cases](/solutions/search.md), plus {{kib}} applications for data exploration and analytics.
+
+If you're building RAG, or most of your queries are similarity or hybrid search on embeddings, consider the [{{es}} {{vectordb}} project type](/solutions/vector-database.md) instead.
 
 :::{note}
 If you're looking for an introduction to the {{stack}} or the {{es}} product, go to [](/get-started/index.md) or [](/manage-data/data-store.md).
@@ -90,7 +92,7 @@ Each decision builds on the previous ones, offering flexibility to mix and match
 
 :::::{step} Explore solution features
 
-The {{es}} solution provides additional UI tools on top of the core {{es}} capabilities, to help you build search-powered applications:
+The {{es}} solution includes these {{kib}} applications:
 
 - [**AI onboarding**](/solutions/elasticsearch-solution-project/ai-onboarding.md): Build a working search experience through a guided, AI-powered workflow.
 - [**Agent Builder**](/explore-analyze/ai-features/elastic-agent-builder.md): Create AI agents that interact with your {{es}} data
