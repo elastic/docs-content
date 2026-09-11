@@ -15,6 +15,7 @@ toc:
           - file: search/search-pipelines.md
       - file: search/search-approaches.md
         children:
+          - file: search/choose-retrieval-strategy.md
           - file: search/full-text.md
             children:
               - file: search/full-text/how-full-text-works.md
