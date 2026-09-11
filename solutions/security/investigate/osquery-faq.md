@@ -36,7 +36,20 @@ The [Osquery `.help` command](https://osquery.readthedocs.io/en/stable/introduct
 
 ## Can I use Osquery extensions in {{kib}}? [osquery-extensions]
 
-Osquery Manager does not currently support [Osquery extensions](https://osquery.readthedocs.io/en/stable/deployment/extensions/).
+::::{applies-switch}
+:::{applies-item} { "stack": "ga 9.6+", "serverless": "ga" }
+
+Yes, you can load custom [Osquery extensions](https://osquery.readthedocs.io/en/stable/deployment/extensions/) through the Osquery Manager integration so that custom tables are available to live and scheduled queries.
+
+Elastic does not develop, validate, or support these extensions, and their tables do not autocomplete in the query editor. For configuration steps, refer to [Load custom Osquery extensions](manage-integration.md#osquery-custom-extensions).
+
+:::
+:::{applies-item} stack: ga 9.0-9.5
+
+Osquery Manager does not support [Osquery extensions](https://osquery.readthedocs.io/en/stable/deployment/extensions/).
+
+:::
+::::
 
 
 ## Can I  do File Integrity Monitoring (FIM)? [osquery-fim]
