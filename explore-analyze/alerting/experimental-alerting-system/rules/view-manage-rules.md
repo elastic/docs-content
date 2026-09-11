@@ -34,7 +34,7 @@ Use the flyout when you want to confirm a rule is healthy or take a quick action
 
 The rule details page is organized into tabs that let you review a rule's configuration and activity history.
 
-- **Overview** (Alert mode only): Shows a color-coded alert activity timeline per series, with summary statistics (episodes started, recovered, still open, and median duration) and a link to view matching episodes on the **Alerts** page.
+- **Overview** (only when matches are grouped into an episode): Shows a color-coded alert activity timeline per series, with summary statistics (episodes started, recovered, still open, and median duration) and a link to view matching episodes on the **Alerts** page.
 - **Conditions**: The rule's base query, alert condition, schedule, lookback, grouping, and recovery settings.
 - **Runbook**: The rule's investigation guide, if one has been added. Use it to document steps for diagnosing or responding to alerts produced by this rule.
 

@@ -15,15 +15,18 @@ description: Compare Kibana alerting, the experimental ES|QL-based alerting syst
 
 Elastic offers three alerting systems, each suited to different use cases and workflows. For production, use {{kib}} alerting. The {{alerting-v2-system}} is available to try, but it isn't ready for production use. Use this page to compare them by goal, feature, and availability.
 
+:::{note}
+{{elastic-sec}} has its own detection rules, separate from these three systems. For threat detection, refer to [Detections and alerts](/solutions/security/detect-and-alert.md).
+:::
+
 ## Select by use case
 
 | Goal | Suggested system | Availability |
 |---|---|---|
 | Monitor metrics, logs, or uptime with ready-made rules and no query language | [{{kib}} alerting](alerts.md) | {applies_to}`stack: ga` {applies_to}`serverless: ga` |
-| Use rules built for {{elastic-sec}}, {{observability}}, APM, or Maps | [{{kib}} alerting](alerts.md) | {applies_to}`stack: ga` {applies_to}`serverless: ga` |
-| Write {{esql}} to define exactly what to detect and what data each alert episode or signal carries | [{{alerting-v2-system-cap}}](system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
-| Record detections as signals for later analysis without opening episodes or sending notifications | [{{alerting-v2-system-cap}}](system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
-| Query alert and signal history in Discover or build dashboards from rule event data | [{{alerting-v2-system-cap}}](system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Write {{esql}} to define exactly what to detect and what data each rule event carries | [{{alerting-v2-system-cap}}](system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Record matches as rule events for later analysis without opening episodes or sending notifications | [{{alerting-v2-system-cap}}](system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Query rule event history in Discover or build dashboards from rule event data | [{{alerting-v2-system-cap}}](system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
 | Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-cap}}](system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
 | Build highly custom notification logic with reusable, configurable workflows | [{{alerting-v2-system-cap}}](system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
 | Build highly custom logic with scripting and chained inputs | [Watcher](watcher.md) | {applies_to}`stack: ga` {applies_to}`serverless: unavailable` |
@@ -32,10 +35,10 @@ Elastic offers three alerting systems, each suited to different use cases and wo
 
 | | {{kib}} alerting | {{alerting-v2-system-cap}} | Watcher |
 |---|---|---|---|
-| **Best for** | Teams using built-in rule types with form-based setup | Teams that need full control over detection and notification routing | Custom alerting logic requiring scripting |
+| **Best for** | Teams using built-in rule types with form-based setup | Teams that need control over detection, and over notification routing when matches are grouped into episodes | Custom alerting logic requiring scripting |
 | **Rule definition** | Select a rule type and fill in parameters | [Write an {{esql}} query](experimental-alerting-system/rules/configure-rule-query.md) or use a rule builder with form-based setup | Write a JSON watch definition |
-| **Alert and signal data** | In-place updates, limited query support | Append-only [rule events](experimental-alerting-system/alerts/alert-data-model.md) for alert episodes and signals, [queryable with {{esql}} in Discover](experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md) | Watch history index |
-| **Notifications** | Configured per action on each rule | [Centralized action policies](experimental-alerting-system/notifications-actions.md), reusable across rules; supports action-level throttling and conditions | Action-level throttling and conditions |
+| **How matches are stored** | In-place updates, limited query support | Append-only [rule events](experimental-alerting-system/alerts/rule-event-data-model.md), [queryable with {{esql}} in Discover](experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md) | Watch history index |
+| **Notifications** | Configured per action on each rule | [Action policies](experimental-alerting-system/notifications-actions.md) invoke reusable workflows, which send the notification; policies support throttling and conditions | Action-level throttling and conditions |
 | **Noise reduction** | Snooze per rule or per alert, maintenance windows | Per-episode acknowledge or deactivate, per-series snooze, maintenance windows, match condition routing in [action policies](experimental-alerting-system/action-policies/reduce-notification-noise.md) | Action conditions and throttling |
 | **Available on {{serverless-full}}** | Yes | Yes, {applies_to}`serverless: experimental` | No |
 | **Available on {{stack}}** | Yes | Yes, {applies_to}`stack: experimental 9.5+` | Yes |

@@ -5,37 +5,29 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Rules in the experimental alerting system define what to detect using ES|QL. Evaluation runs on a schedule and alerts, action policies, and notifications flow from rule detections."
+description: "Rules in the experimental alerting system define what to detect using ES|QL. Each match is written as a rule event. The rule's configuration determines whether those events are grouped into an alert episode."
 ---
 
 # Rules in the {{alerting-v2-system}} [rules]
 
-A rule is where the {{alerting-v2-system}} starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. Alerts, action policies, and notifications all flow from what a rule detects. 
+A rule is where the {{alerting-v2-system}} starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. On each scheduled run, {{kib}} writes each matching row as a [rule event](rules/rule-event-field-reference.md) to `.rule-events`. Those events are never overwritten. Alert episodes (and any notifications) come from events that are grouped into an episode.
 
-This page explains what rules do, what they don't control, and how to choose a creation path.
+Use this page to understand what a rule does, why notifications are sent by workflows on action policies rather than on the rule, and to find the right path to create, configure, or manage a rule.
 
-## What rules do [detection-and-notification]
+## Workflows on action policies send notifications [rules-dont-control-notifications]
 
-On each run, a rule executes an {{esql}} query against your data. Matches are recorded as rule events (`rule_event`), and handled according to the rule's mode, which can be Signal mode or Alert mode. 
+Rules define *what* to detect. Action policies match alert episodes from any rule and decide whether and when to invoke a workflow. The workflow sends the notification.
 
-In Signal mode, each matching row is stored as a signal document with no alert lifecycle or notifications. In Alert mode, the rule creates and tracks an alert episode for each match. Episodes move through lifecycle states and can trigger notifications through action policies. Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view them.
+This separation means you can update how episodes are routed to workflows without touching a rule, and have multiple action policies respond to the same rule independently.
 
-## What rules don't do 
+## Create, configure, and manage rules [rules-next-steps]
 
-Rules only define *what* to detect. They don't control notifications, who gets notified, or when. That's the job of action policies, which are global objects scoped to your space that match alert episodes from any rule. A rule has no say in which action policies pick it up.
-
-This separation means you can update notification routing without touching a rule, and have multiple action policies respond to the same rule independently.
-
-## What to do next with rules [rules-next-steps]
-
-From here, you can create, configure, and manage rules, and review what they've detected.
+Use these pages to create a rule, change its settings, or manage existing rules.
 
 - [Create a rule](rules/create-a-rule.md): Compare creation paths and choose the one that fits your workflow.
 - [Configure a rule](rules/configure-a-rule.md): Set the schedule, grouping, alert delay, recovery condition, and no-data behavior.
+- [Rule mode](rules/configure-rule-mode.md): Set whether matches are grouped into an alert episode or remain available for later analysis.
 - [View and manage rules](rules/view-manage-rules.md): Enable, disable, clone, delete, and bulk-manage rules from the **Rules** page.
-- [Review rule execution history](rules/review-rule-execution-history.md): Monitor rule execution outcomes across all rules in a space.
-- [{{esql}} query patterns](rules/esql-query-patterns.md): Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.
-- [Rule events](rules/rule-event-field-reference.md): Understand the documents rules write to `.rule-events`.
 
 :::{important} - How to use the {{alerting-v2-system}} documentation
 Because the {{alerting-v2-system}} is still evolving, its UI can change before general availability. Rather than pointing to an exact button or menu, the documentation focuses on the underlying concepts and behavior. If something doesn't match what you see in the {{kib}} UI, look for the closest equivalent instead. The concepts and behaviors described in the documentation still apply.

@@ -11,7 +11,7 @@ description: "Step-by-step tutorial for creating an ES|QL rule in the experiment
 
 # Create a rule and observe the alert lifecycle [create-first-rule]
 
-In this tutorial, you'll use the {{alerting-v2-system}} to detect a real-world performance problem and watch what happens next. You'll see how the system decides when a condition is serious enough to open an alert, how it tracks that alert over time, and how it closes automatically when things return to normal, without any manual intervention.
+In this tutorial, you'll use the {{alerting-v2-system}} to detect a real-world performance problem and watch what happens next. You'll see how the system decides when a condition is serious enough to open an alert episode, how it tracks that episode over time, and how it closes automatically when things return to normal, without any manual intervention.
 
 Here's what you'll do:
 
@@ -429,4 +429,4 @@ By completing this tutorial, you learned:
 
 - **Ready to manage the rule you just created?** [View and manage rules](../rules/view-manage-rules.md) shows you how to enable, disable, clone, and bulk-manage rules from the **Rules** page.
 - **Want to explore more configuration options?** [Configure a rule](../rules/configure-a-rule.md) covers grouping, tags, no-data handling, and more.
-- **Ready to notify your team the next time an episode opens?** [Notifications and actions](../notifications-actions.md) shows you how workflows and action policies decide who gets notified, and when.
+- **Ready to notify your team the next time an episode opens?** [Notifications and actions](../notifications-actions.md) shows you how action policies decide when to invoke a workflow, and how workflows send the notification.

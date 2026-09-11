@@ -10,7 +10,7 @@ description: "How to route alert episodes to different workflows based on severi
 
 # Route alert episodes by severity in the {{alerting-v2-system}} [route-by-severity]
 
-When your rules in the {{alerting-v2-system}} produce alert episodes at different severity levels, you can route them to different workflows by creating separate action policies that are scoped to specific severity values using match conditions.
+Use this page to send critical and non-critical episodes to different workflows by scoping one action policy per severity.
 
 For example, you might page an on-call team for critical episodes while sending lower-severity episodes to a Slack channel for async review.
 

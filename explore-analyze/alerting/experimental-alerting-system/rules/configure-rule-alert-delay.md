@@ -1,16 +1,16 @@
 ---
-navigation_title: Alert delay (Alert mode only)
+navigation_title: Alert delay (alert episodes only)
 applies_to:
   stack: experimental 9.5+
   serverless: experimental
 products:
   - id: kibana
-description: "Configure alert delay for Alert-mode rules in the experimental alerting system to reduce noise from brief spikes before opening an episode."
+description: "Configure alert delay for rules that group matches into an episode, to reduce noise from brief spikes before the episode opens."
 ---
 
-# Alert delay in the {{alerting-v2-system}} (Alert mode only) [alert-delay]
+# Alert delay in the {{alerting-v2-system}} [alert-delay]
 
-Alert delay is an optional setting for Alert-mode rules in the {{alerting-v2-system}}. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change. In YAML, this corresponds to the `state_transition.pending_*` fields.
+Alert delay is an optional setting for rules that group matches into an alert episode. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change. In YAML, this corresponds to the `state_transition.pending_*` fields.
 
 ## When to configure alert delay [alert-delay-when-to-use]
 
@@ -19,10 +19,10 @@ Configure alert delay when:
 * The metric being monitored fluctuates and a single breach doesn't reflect a real state change. Examples include CPU usage that briefly spikes during process startup or a connection pool that crosses the threshold on alternating evaluations.
 * The cost or urgency of a notification is high enough that you need confidence the condition is sustained before alerting on it.
 
-Leave alert delay set to Immediate when:
+Leave alert delay set to **Immediate** when:
 
 * Any single breach warrants immediate attention and you cannot tolerate the added latency of waiting for consecutive evaluations.
-* The rule is in Signal mode. Alert delay only applies to Alert-mode rules and has no effect on signal document output.
+* The rule records matches without grouping them into an episode.
 
 ## Alert delay modes
 

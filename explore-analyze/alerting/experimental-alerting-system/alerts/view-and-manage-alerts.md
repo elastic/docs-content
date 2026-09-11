@@ -10,8 +10,7 @@ description: "Monitor alert episodes in the experimental alerting system using K
 
 # View and manage alerts in the {{alerting-v2-system}} [view-manage-alerts]
 
-Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**. When a rule in the {{alerting-v2-system}} detects a problem, the **Alerts** page gives you health summaries and filtering tools to understand what's happening. 
-
+Use the **Alerts** page to monitor episodes with KPI panels, a histogram, and filters. Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**.
 
 For triage actions (acknowledge, snooze, resolve, activate, and tag), refer to [Triage alert episodes](triage-alert-episodes.md). For episode lifecycle history, related episodes, and assignment, refer to [Investigate alert episodes](investigate-alert-episodes.md).
 

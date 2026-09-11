@@ -27,7 +27,7 @@ stack: experimental 9.5+
 serverless: experimental
 ```
 
-The {{alerting-v2-system}} is built on {{esql}}. You write the query that defines what to watch for, choose whether matches open tracked alert episodes or are recorded as signals, and control notifications through action policies that handle routing, frequency, and notification batching. The {{alerting-v2-system}} also adds alert episode lifecycle tracking, per-series snooze, queryable signal history, and rules that can correlate signals for escalation. It is a strong fit when you want full control over what data travels with each detection and how your team is notified.
+The {{alerting-v2-system}} is built on {{esql}}. You write the query that defines what to watch for, choose whether matches are grouped into alert episodes, and control notifications through action policies that handle routing, frequency, and notification batching. The {{alerting-v2-system}} also adds alert episode lifecycle tracking, per-series snooze, queryable rule event history, and rules that can correlate those events for escalation. It is a strong fit when you want full control over what data travels with each detection and how your team is notified.
 
 :::{note}
 The {{alerting-v2-system}} runs next to {{kib}} alerting on {{serverless-full}} and {{stack}} 9.5 and later. You don't have to move everything at once. You can copy or rebuild rules when you're ready, and your existing {{kib}} alerting rules won't be affected.
@@ -42,7 +42,7 @@ stack: ga
 serverless: ga
 ```
 
-{{kib}} alerting gives you ready-made rule types that work with applications such as APM, metrics, security, and uptime monitoring. You set conditions on a schedule you choose and send notifications through common channels (email, chat apps, webhooks, on-call tools, and more). Setup uses forms and clear steps, so you do not need to learn a query language first. It is a strong fit when you want broad coverage out of the box.
+{{kib}} alerting gives you ready-made rule types that work with applications such as APM, metrics, and uptime monitoring. You set conditions on a schedule you choose and send notifications through common channels (email, chat apps, webhooks, on-call tools, and more). Setup uses forms and clear steps, so you do not need to learn a query language first. It is a strong fit when you want broad coverage out of the box.
 
 [Get started with {{kib}} alerting →](alerting/alerts.md)
 
