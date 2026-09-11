@@ -19,6 +19,25 @@ One-page reference. Bookmark this.
 
 ## Workflow anatomy [workflows-cheat-anatomy]
 
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
+```yaml
+name: my-workflow
+description: ...
+enabled: true
+tags: [team, domain]
+version: "1"
+
+triggers: [ ... ]        # required; inputs nest under the manual trigger
+consts: { ... }          # optional
+outputs: [ ... ]         # required only for composed workflows
+settings: { ... }        # optional
+steps: [ ... ]           # required
+```
+:::
+
+:::{applies-item} stack: preview 9.3, ga =9.4
 ```yaml
 name: my-workflow
 description: ...
@@ -33,8 +52,11 @@ outputs: [ ... ]         # required only for composed workflows
 settings: { ... }        # optional
 steps: [ ... ]           # required
 ```
+:::
 
-Full reference: [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
+::::
+
+For the full anatomy reference covering every top-level field, the execution lifecycle, and both `inputs` placements, refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs).
 
 ## Triggers [workflows-cheat-triggers]
 
