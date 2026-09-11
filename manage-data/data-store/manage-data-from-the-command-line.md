@@ -20,6 +20,11 @@ If you are looking for a user interface for {{es}} and your data, head on over t
 
 ## Before you begin [before-you-begin]
 
+:::{tip}
+:applies_to: { stack: preview, serverless: preview }
+For a command-line workflow that reuses connection and authentication settings, use the [Elastic CLI](cli://index.md) to run supported {{es}} API operations. The CLI supports the indexing, bulk, retrieval, search, update, and delete operations in this guide.
+:::
+
 On the **Overview** page for your new cluster in the Cloud UI, copy the {{es}} endpoint URL under **Endpoints**.
 
 These examples use the `elastic` user. If you didn’t copy down the password for the `elastic` user, you can [reset the password](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).

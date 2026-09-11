@@ -35,7 +35,7 @@ The available APIs are grouped by project type:
 
 :::{tip}
 :applies_to: serverless: preview
-For a command-line workflow, use the [Elastic CLI](cli://index.md) to run supported project operations. When you create a project, the `--save-as` option stores the returned endpoints and credentials in a named context instead of printing the credentials to standard output.
+For a command-line workflow, use the [Elastic CLI](cli://index.md) to run supported project operations. For an example of how to connect the CLI to {{ecloud}} and manage projects, follow [Connect to {{ecloud}} with the Elastic CLI](cli://cli/manage-elastic-cloud.md).
 :::
 
 ## Set up an API key [general-manage-project-with-api-set-up-api-key]
