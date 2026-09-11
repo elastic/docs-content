@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
 navigation_title: Solutions overview
-description: "Overview of Elastic's three search-powered solutions—Elasticsearch, Elastic Observability, and Elastic Security—with guidance on choosing the right one."
+description: "Overview of Elastic's four search-powered solutions—Elasticsearch, Elasticsearch Vector Database, Elastic Observability, and Elastic Security—with guidance on choosing the right one."
 products:
   - id: elasticsearch
 applies_to:
@@ -17,7 +17,8 @@ Whether you're building a search experience, monitoring your infrastructure, or 
 
 | Your need | Recommended solution | Best for |
 |-----------|-------------------|----------|
-| Build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights| [{{es}}](/solutions/elasticsearch-solution-project.md)<br>• [Get started](/solutions/elasticsearch-solution-project/get-started.md)| Developers, architects, data engineers |
+| Build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights across structured data, logs, metrics, documents, and vectors | [{{es}}](/solutions/elasticsearch-solution-project.md)<br>• [Get started](/solutions/elasticsearch-solution-project/get-started.md)| Developers, architects, data engineers |
+| Build embedding-driven workloads such as semantic search, RAG, and AI-powered retrieval | [{{es}} {{vectordb}}](/solutions/vector-database.md) {applies_to}`stack: unavailable`<br>• [Get started](/solutions/vector-database/get-started.md) | Developers, architects, data engineers |
 | Observe and monitor system health and performance, or send telemetry data | [Elastic {{observability}}](/solutions/observability.md)<br>• [Get started](/solutions/observability/get-started.md) | DevOps, SREs, IT operations |
 | Monitor data for anomalous activity, detect, prevent, and respond to security incidents | [{{elastic-sec}}](/solutions/security.md)<br>• [Get started](/solutions/security/get-started.md)| SOC teams, security analysts, IT security admins |
 

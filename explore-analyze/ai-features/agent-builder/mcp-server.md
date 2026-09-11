@@ -73,4 +73,5 @@ When you have projects [linked](/deploy-manage/cross-project-search-config/cps-c
 ## Related pages
 
 - [](programmatic-access.md)
+- [Create API keys for {{agent-builder}} APIs](api-keys.md)
 - [](/deploy-manage/app-connections/oauth-clients.md)
