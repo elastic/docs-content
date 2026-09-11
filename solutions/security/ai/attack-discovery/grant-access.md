@@ -26,22 +26,7 @@ Your role needs these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or
 | {applies_to}`stack: ga 9.1-9.3` | `All` for **Security > Attack discovery**, and at least `Read` for **Security > Rules, Alerts, and Exceptions** |
 | {applies_to}`stack: ga =9.0` | `All` for **Security > Attack discovery** |
 
-
-### Schedules sub-feature privilege [ad-schedules-privilege]
-
-```{applies_to}
-stack: ga 9.1+
-serverless:
-  security: ga
-```
-
-**Attack discovery** includes a **Schedules** sub-feature privilege:
-
-| UI label | What it controls |
-|---|---|
-| **Schedules → Allow changes** | Create, edit, enable, disable, or delete Attack discovery schedules |
-
-Selecting `All` for **Attack discovery** includes **Allow changes**. To run Attack Discovery without managing schedules, turn on **Customize sub-feature privileges** and clear **Allow changes**.
+For details on Attack discovery sub-feature privileges, refer to [Attack discovery sub-feature privileges](/solutions/security/get-started/security-kibana-privileges.md#attack-discovery-sub-feature-privileges).
 
 ## Index privileges [ad-index-privileges]
 
@@ -85,7 +70,7 @@ When you turn on [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://re
 |---|---|
 | Monitor runs in **Generations** and open workflow execution details | `read` for **Analytics → Workflows** |
 | Generate discoveries (manual or scheduled) | `read` and `execute` for **Analytics → Workflows** |
-| Create, edit, or enable schedules | `read` and `execute` for **Analytics → Workflows**, plus [**Schedules** → **Allow changes**](#ad-schedules-privilege) |
-| Deactivate or delete schedules | [**Schedules** → **Allow changes**](#ad-schedules-privilege) only |
+| Create, edit, or enable schedules | `read` and `execute` for **Analytics → Workflows**, plus [**Schedules** → **Allow changes**](/solutions/security/get-started/security-kibana-privileges.md#attack-discovery-sub-feature-privileges) |
+| Deactivate or delete schedules | [**Schedules** → **Allow changes**](/solutions/security/get-started/security-kibana-privileges.md#attack-discovery-sub-feature-privileges) only |
 
 Granting `All` for **Analytics → Workflows** includes `read` and `execute`. For finer-grained access, use Workflows [sub-feature privileges](/explore-analyze/workflows/get-started/setup.md#workflows-role-access).
