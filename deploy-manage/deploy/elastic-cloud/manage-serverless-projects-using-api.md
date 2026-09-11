@@ -33,6 +33,11 @@ The available APIs are grouped by project type:
 - APIs for [Observability projects]({{cloud-serverless-apis}}group/endpoint-observability-projects)
 - APIs for [Security projects]({{cloud-serverless-apis}}group/endpoint-security-projects)
 
+:::{tip}
+:applies_to: serverless: preview
+For a command-line workflow, use the [Elastic CLI](cli://index.md) to run supported project operations. For an example of how to connect the CLI to {{ecloud}} and manage projects, follow [Connect to {{ecloud}} with the Elastic CLI](cli://cli/manage-elastic-cloud.md).
+:::
+
 ## Set up an API key [general-manage-project-with-api-set-up-api-key]
 
 To create and manage projects with the {{serverless-full}} API, you must authenticate your requests with an {{ecloud}} API key.
