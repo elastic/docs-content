@@ -11,13 +11,18 @@ products:
   - id: cloud-serverless
   - id: kibana
 navigation_title: Elasticsearch solution
+description: >-
+  Use the Elasticsearch solution to build search applications and to run
+  search, analytics, and time series data together. It includes Kibana tools
+  such as Agent Builder, Synonyms, and Query Rules.
+type: overview
 ---
 
 # {{es}} solution overview
 
-The {{es}} solution and serverless project type provide specialized UI tools that help you build search-powered applications faster. These tools build on top of core {{es}} [search capabilities](/solutions/search.md) that are available across all deployment types, solutions, and project types.
+The {{es}} solution is for building search applications, and for keeping search, analytics, and time series data together. On {{serverless-full}}, you create it as a project. On {{ech}}, {{ece}}, {{eck}}, and self-managed clusters, it is a solution view in {{kib}}.
 
-These UI affordances are exclusive to the {{es}} solution and serverless project type.
+This solution includes the tools and applications you need to implement [search use cases](/solutions/search.md), plus {{kib}} applications for data exploration and analytics.
 
 ::::{tip}
 Not sure which deployment type is right for you? Use the following resources to help you decide:
@@ -27,10 +32,15 @@ Not sure which deployment type is right for you? Use the following resources to 
   - Compare pricing models between [{{ech}}](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md) and [Serverless](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md)
 ::::
 
+## When to use this solution
+
+Use this solution when you need search together with analytics or time series data, or tools such as Agent Builder, Synonyms, and Query Rules.
+
+If you're building [RAG](/solutions/search/rag.md), or most of your queries are similarity or hybrid search on embeddings, use the [{{es}} {{vectordb}} project type](/solutions/vector-database.md#when-to-use-this-project-type) instead. {{vectordb}} is available on {{serverless-short}} only. Both use the same {{es}} engine and query APIs.
 
 ## Features and tools
 
-The {{es}} solution provides the following specialized UI tools and features to help you build search-powered applications faster:
+The {{es}} solution includes these {{kib}} applications:
 
 ### Agent Builder
 
@@ -52,6 +62,7 @@ For a deeper understanding of search concepts and techniques, refer to the [Sear
 
 ## Related pages
 
+* [{{es}} {{vectordb}} project overview](/solutions/vector-database.md)
 * [Search use case documentation](/solutions/search.md)
 * [{{es}} reference documentation](elasticsearch://reference/elasticsearch/index.md)
 * [{{es}} API documentation]({{es-apis}})
