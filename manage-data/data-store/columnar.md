@@ -3,7 +3,11 @@ navigation_title: Columnar storage
 description: Learn when to use columnar index mode to store data once for analytics and search with a smaller storage footprint.
 applies_to:
   stack: preview 9.5
-  serverless: preview
+  serverless:
+    elasticsearch: preview
+    observability: preview
+    security: preview
+    vectordb: unavailable
 products:
   - id: elasticsearch
 ---
@@ -16,6 +20,10 @@ This strategy can reduce storage cost for high-volume, analytics-heavy data whil
 
 Columnar mode ships alongside existing index modes such as `standard`, [`logsdb`](/manage-data/data-store/data-streams/logs-data-stream.md), and [`time_series`](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md).
 You choose it per index (or in a template) at creation time; you can't change the mode after the index has been created.
+
+:::{note}
+Columnar index mode is not available in {{vectordb}} projects, which only support [vector index mode](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode). Use an {{es}} project for columnar workloads. For details, refer to [when to use this project type](/solutions/vector-database.md#when-to-use-this-project-type).
+:::
 
 This page explains what columnar index mode is, when to use it, and how it fits with the rest of the {{es}} data store.
 For enablement steps, sorting, `_source` modes, and limitations, refer to [Columnar index mode](elasticsearch://reference/elasticsearch/columnar/index.md) in the {{es}} reference.

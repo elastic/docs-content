@@ -31,19 +31,21 @@ This page explains how to set up the Cloud Asset Discovery integration to invent
 
 You can set up Cloud Asset Discovery for GCP either by enrolling a single project, or by enrolling an organization containing multiple projects. Either way, you need to first add the integration, then enable cloud account access. 
 
-Two deployment technologies are available: agentless and agent-based. 
+Two deployment options are available: {{managed-integration}} and agent-based. 
 
-* [Agentless deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. 
-* [Agent-based deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
+* The [{{managed-integration}} deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agentless) allows you to collect cloud posture data without having to manage the infrastructure that collects it.
+* The [Agent-based deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
 
-## Agentless deployment [cad-gcp-agentless]
+## {{managed-integration}} deployment [cad-gcp-agentless]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for and select `Cloud asset discovery`.
 3. Click **Add Cloud Asset Discovery**.
 4. Select **GCP**, then either **GCP Organization** to onboard your whole organization, or **Single Project** to onboard an individual account.
 5. Give your integration a name that matches the purpose or team of the GCP subscription/organization you want to monitor, for example, `dev-gcp-account`.
-6. In **Deployment options**, select **Agentless**.
+6. In **Deployment options**, select the deployment mode:
+    * {applies_to}`{serverless: preview, stack: preview 9.5+}` Select **Elastic Managed Integration**.
+    * {applies_to}`stack: preview 9.1-9.4` Select **Agentless**.
 7. Next, you’ll need to authenticate to GCP. Expand the **Steps to Generate GCP Account Credentials** section, then follow the instructions that appear to automatically create the necessary credentials using Google Cloud Shell.
 8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 

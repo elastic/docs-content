@@ -69,7 +69,7 @@ For a complete list of integrations that can run as {{managed-integrations}}, re
 Within a few minutes, data from the source appears in the integration's data streams in your cluster.
 
 :::{tip}
-For integrations that authenticate to a cloud provider, you can use [cloud connector authentication](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md) to avoid managing API keys directly.
+For integrations that authenticate to a cloud provider, you can use [federated identity authentication](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md) to avoid managing API keys directly.
 :::
 
 ## Next steps [enable-managed-integration-next-steps]
