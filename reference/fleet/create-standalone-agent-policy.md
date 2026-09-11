@@ -49,7 +49,13 @@ You don’t need {{fleet}} to perform the following steps, but on self-managed c
 7. (Optional) To add more integrations to the agent policy, click **Add {{agent}} later** and go back to the **Integrations** page. Repeat the previous steps for each integration.
 8. When you’re done adding integrations, in the popup window, click **Add {{agent}} to your hosts** to open the **Add agent** flyout.
 9. Click **Run standalone** and follow the in-product instructions to download {{agent}} (if you haven’t already).
+     
 10. Click **Download Policy** to download the policy file.
+::::{important}
+ If you haven't yet created an [API key for your standalone Elastic Agent](/reference/fleet/grant-access-to-elasticsearch.md), click **Create API key**. Kibana generates the key and adds it to the policy file.
+
+If you already created an API key, add it manually to the `output` section of `elastic-agent.yml`.
+::::
 
     :::{image} images/download-agent-policy.png
     :alt: Add data screen with option to download the default agent policy
