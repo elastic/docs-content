@@ -16,6 +16,10 @@ For update workflows, the deployments API also provides dedicated operations for
 
 If you haven’t created an API key yet, then refer to [](../../api-keys/elastic-cloud-api-keys.md).
 
+:::{tip}
+:applies_to: ech: preview
+For a command-line workflow, use the [Elastic CLI](cli://index.md) to run supported deployment operations without constructing HTTP requests with `curl`.
+:::
 
 ## Common operations with dedicated endpoints [ec_common_operations_with_dedicated_endpoints]
 

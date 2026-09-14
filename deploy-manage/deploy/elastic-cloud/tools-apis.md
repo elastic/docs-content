@@ -77,6 +77,17 @@ The following APIs are available for {{ech}} users:
 :::{include} /deploy-manage/deploy/_snippets/other-apis.md
 :::
 
+## Manage Elastic APIs with the Elastic CLI
+```{applies_to}
+deployment:
+  ech: preview
+serverless: preview
+```
+
+The Elastic CLI provides a single command-line interface for {{es}}, {{kib}}, and {{ecloud}} APIs. Use it to interact with {{es}} and {{kib}} in {{ech}} deployments and {{serverless-full}} projects, or to manage deployments and projects through the {{ecloud}} API.
+
+Refer to the [Elastic CLI documentation](cli://index.md) to install the CLI, configure a Cloud connection, and run example operations. Not all Elastic APIs are available as CLI commands.
+
 ## {{ecloud}} API console
 ```{applies_to}
 deployment:
