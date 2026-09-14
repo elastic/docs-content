@@ -85,9 +85,6 @@ Every `.alert-actions` document has an `action_type` that identifies what happen
 
 ## Related pages
 
-- [Rule events](../rules/rule-event-field-reference.md): What a rule event is and how it connects to alert episodes.
-- [Rule event data model](rule-event-data-model.md): How events with `type: signal` and events that belong to an alert episode (`type: alert`) share `.rule-events`.
+- [How {{kib}} stores rule events](rule-event-data-model.md): How events with `type: signal` and events with `type: alert` share `.rule-events`.
 - [Query signals](query-signals.md): Query examples for events with `type: signal` in Discover.
 - [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Alert episode and triage query examples.
-- [View and manage alerts](view-and-manage-alerts.md): Monitor and filter alert episodes in the UI.
-- [Triage alert episodes](triage-alert-episodes.md): UI actions that write `.alert-actions` documents.

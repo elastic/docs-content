@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Query rule events with type signal using ES|QL in Discover. Filter by rule, build dashboards from detection history, and use them as input to a rule that opens an alert episode."
+description: "Use ES|QL in Discover to query signal events in the experimental alerting system. Filter .rule-events by rule, build dashboards from detection history, and use them as input to a follow-on rule."
 ---
 
 # Use Discover to query {{alerting-v2-system}} rule events [query-rule-events-discover]
@@ -33,7 +33,7 @@ These fields matter most when you query `.rule-events`. Filter with `type == "si
 | `severity` | Optional. Set when the query emits a recognized `severity` column value. |
 | `data` | Rule-defined payload from the source query. Useful for investigation and dashboards. |
 
-For the full field list, refer to [Field reference](field-reference.md#rule-events-field-schema). For how the shared schema works conceptually, refer to [Rule event data model](rule-event-data-model.md).
+For the full field list, refer to [Field reference](field-reference.md#rule-events-field-schema). For how the shared schema works conceptually, refer to [How {{kib}} stores rule events](rule-event-data-model.md).
 
 ## Common queries [common-signal-queries]
 
@@ -97,7 +97,4 @@ Because `.rule-events` is append-only, dashboards show the full history retained
 ## Related pages
 
 - [Rule mode](../rules/configure-rule-mode.md): How configuration determines whether {{kib}} opens an alert episode or keeps matches available for later analysis.
-- [Rule events](../rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how `type` relates to rule `kind`.
-- [Rule event data model](rule-event-data-model.md): Shared `.rule-events` schema for `signal` and `alert` events.
 - [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Alert episode lifecycle, triage history, and incident-tracing queries.
-- [How the {{alerting-v2-system}} works](../how-it-works.md#how-signal-mode-works): End-to-end walkthrough of the path where a rule writes events with `type: signal` for later analysis.

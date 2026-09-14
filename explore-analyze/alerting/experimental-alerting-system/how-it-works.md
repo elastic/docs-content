@@ -67,6 +67,4 @@ After a few weeks, the accumulated events become useful in two ways. The team ca
 
 - [Get started](get-started.md): Enable the {{alerting-v2-system}} and create your first rule.
 - [Rules](rules.md): What rules detect, how action policies invoke workflows, and how to choose a creation path.
-- [Rule events](rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how those events relate to alert episodes.
-- [Query signals](alerts/query-signals.md): Query events with `type: signal` in Discover and use them as input to a rule that opens an alert episode.
-- [Notifications and actions](notifications-actions.md): Set up action policies that invoke workflows, which send a notification or run automation when an alert episode matches.
+- [Notifications and actions](notifications-actions.md): Set up action policies that invoke workflows when an alert episode matches.

@@ -60,7 +60,5 @@ You have a checkout service error rate rule and want on-call engineers notified 
 ## Related pages
 
 - [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
-- [Create a rule](create-a-rule.md): Compare rule creation paths and choose the one that fits your workflow.
 - [Query signals](../alerts/query-signals.md): Query events with `type: signal` in Discover, build dashboards, and use them as input to a rule that opens an alert episode.
 - [Rule events](rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how `type` relates to rule `kind`.
-- [Rule event data model](../alerts/rule-event-data-model.md): Shared `.rule-events` schema for `signal` and `alert` events.
