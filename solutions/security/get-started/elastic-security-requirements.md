@@ -43,7 +43,7 @@ Changes might be required if your nodes have customized roles. When updating nod
 
 To use {{elastic-sec}}, your role must have at least:
 
-* `Read` privilege for the `Security` feature in the [space](/deploy-manage/manage-spaces.md). This grants you `Read` access to all features in {{elastic-sec}} except cases. You need additional [minimum privileges](/explore-analyze/cases/control-case-access.md) to use cases.
+* **Read** for the **Security** privilege in the [space](/deploy-manage/manage-spaces.md). This grants read access to the {{elastic-sec}} features that don't have a privilege of their own. Other features, such as cases and detection rules, have their own privileges. For the full list, refer to [Security {{kib}} privileges](/solutions/security/get-started/security-kibana-privileges.md).
 * `Read` and `view_index_metadata` privileges for all {{elastic-sec}} indices, such as `filebeat-*`, `packetbeat-*`, `logs-*`, and `endgame-*` indices.
 
 ::::{note}
