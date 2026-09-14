@@ -32,16 +32,20 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Features and enhancements [elastic-security-9.5.4-features-enhancements]
 
 * Adds an {{elastic-defend}} advanced policy setting to enable additional vulnerable driver abuse mitigation, which provides further safeguards and enrichment for driver loads [#288529]({{kib-pull}}288529).
+* Adds the ability for Agent Builder to find case templates by name [#287744]({{kib-pull}}287744).
 
 ### Fixes [elastic-security-9.5.4-fixes]
 
 * Fixes bulk closing all matching alerts so they are updated when the filter uses a {{data-source}} runtime field. Previously the action reported 0 updated alerts [#288946]({{kib-pull}}288946).
+* Fixes the alert details flyout so each source event in an EQL sequence opens the correct document, instead of the wrong index or a "**"Cannot find document" error [#288541]({{kib-pull}}288541).
+* Fixes the **Source event** link in the alert details flyout's **Highlighted fields** section so it opens the document when it lives on a cross-cluster remote or outside the Security {{data-source}} [#288336]({{kib-pull}}288336).
 * Fixes an issue where the entity summary in the entity details flyout failed to persist when the entity metadata data stream was missing [#288199]({{kib-pull}}288199).
 * Fixes process node labels in the visual event analyzer so they show the process name from the analyzed event time, not a later executable name from the same process [#287934]({{kib-pull}}287934).
 * Fixes the Timeline **Correlation** tab so it shows a warning when EQL results are incomplete because shards timed out or failed [#287933]({{kib-pull}}287933).
 * Fixes detection rules so they retry with a smaller page size instead of failing when an event search response is too large [#287916]({{kib-pull}}287916).
 * Fixes the alert analysis workflow settings page so it loads without a Workflows privilege, instead of staying on a loading spinner [#287708]({{kib-pull}}287708).
 * Fixes the count label in Security donut charts so it's vertically centered [#286900]({{kib-pull}}286900).
+* Keeps the Agent Builder `security.alerts` tool scoped to the current {{kib}} space [#276488]({{kib-pull}}276488).
 * Fixes {{elastic-defend}} Device Control blocking macOS system updates from completing. Also adds a warning log about potential misuse of the filter_images advanced policy setting.
 * Fixes false malicious behavior detection alerts in {{elastic-defend}} caused by process ID reuse after a process exits.
 * Increases the {{elastic-defend}} event buffer size.
