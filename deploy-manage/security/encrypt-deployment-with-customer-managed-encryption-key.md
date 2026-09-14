@@ -483,6 +483,8 @@ Encrypting an existing deployment uses a dedicated endpoint. You can't add a cus
 
     A successful request returns `"accepted": true`.
 
+If you send the same key again for a deployment that is already configured with that key, the request succeeds but no new plan change starts.
+
 The endpoint returns an error in the following cases:
 
 * `409` if the deployment is already encrypted with a different customer-managed key.
