@@ -12,7 +12,7 @@ navigation_title: "Cross-project search"
 ::::{include} /deploy-manage/_snippets/cps-definition.md
 ::::
 
-{{cps-cap}} is the {{serverless-short}} equivalent of [{{ccs}}](/explore-analyze/cross-cluster-search.md), with a few differences and enhancements:
+{{cps-cap}} provides {{serverless-short}} with cross-project search capabilities similar to [{{ccs}}](/explore-analyze/cross-cluster-search.md), with a few differences and enhancements. For a side-by-side syntax comparison, refer to [](/explore-analyze/cross-project-search/cps-compared-to-ccs.md).
 
 * Setting up {{cps}} doesn't require an understanding of your deployment architecture or complex security configurations.
 * Permissions stay consistent across projects, and you can always adjust scope and access as needed.
@@ -53,7 +53,7 @@ Before you configure {{cps}}, review these prerequisites and best practices:
 To be available for linking, projects must meet the following requirements:
 
 - The origin project and all linked projects must be in the same {{ecloud}} organization.
-- You can link any combination of {{product.elasticsearch}}, {{product.observability}}, and {{product.security}} projects in the same organization.
+- You can link any combination of {{product.elasticsearch}}, {{es}} {{vectordb}}, {{product.observability}}, and {{product.security}} projects in the same organization.
 - Projects can be linked across cloud providers and regions. For example, a project in GCP `us-east4` can be linked to a project in AWS `eu-central-1` without any additional configuration.
 - {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. Projects on the **Essentials** tier are not compatible with {{cps}}.
 
@@ -70,7 +70,16 @@ For most deployments, we recommend creating a dedicated **overview project** tha
 
 In this architecture, you create a new, empty project and link existing projects to it. You run all cross-project searches from the new overview project, while your actual active projects continue to operate independently. The linked ("spoke") projects are not linked to each other.
 
-![Overview project architecture for cross-project search](images/serverless-cross-project-search-arch.svg)
+```mermaid
+flowchart TB
+    O["<b>Overview project</b><br/>Origin (empty hub)"]:::tip
+    O --> S["<b>Security project</b><br/>Linked (data)"]:::plain
+    O --> Obs["<b>Observability project</b><br/>Linked (data)"]:::plain
+    O --> E["<b>Elasticsearch project</b><br/>Linked (data)"]:::plain
+    O --> V["<b>Vector Database project</b><br/>Linked (data)"]:::plain
+```
+
+Searches run from the overview project across all linked projects. Linked projects operate independently and are not linked to each other. You can link any combination of compatible projects.
 
 The overview project becomes a central point for broad searches, dashboards, and investigations, without affecting your existing setup.
 
@@ -123,13 +132,21 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 ### {{elastic-sec}} apps
 
+The following limitations apply to {{elastic-sec}} apps. For how each app uses {{cps-init}}, including the scope selector and query-level overrides, refer to [{{cps-cap}} support in {{elastic-sec}} apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability-security).
 
-:::{include} /explore-analyze/cross-project-search/_snippets/cps-availability-security-apps.md
-:::
+- **Alert, event, and attack flyouts:** Session View isn't available for documents from linked projects. Some actions are hidden or disabled.
+- **Alerts:** The Alerts page doesn't show alerts that a linked project generated independently. Only alerts created by origin project rules appear.
+- **Attack Discovery:** Discoveries are based on origin project alerts only. Alerts from linked projects aren't included.
+- **Cases:** You can't attach an alert or event from a linked project to a case.
+- **{{elastic-defend}} and Osquery:** Policies, artifacts, response actions, and Osquery saved queries and packs can't be shared or managed across linked projects.
+- **Entity store:** A host that appears in more than one project isn't combined into a single entity at the origin. Risk scoring runs on the origin project only.
+- **{{ml-cap}} rules:** {{ml-cap}} rules don't use the space-level {{cps}} scope. They use the scope of the underlying {{anomaly-detect}} job's {{dfeed}}, which might differ from the space default.
+- **SIEM Readiness and Value report:** These features don't include data from linked projects.
+- **Timeline:** Some actions are disabled for documents from linked projects.
 
 ### Elastic {{observability}} apps
 
-{{observability}} apps have limited {{cps-init}} support. The scope selector is not available in {{observability}} apps, and most apps remain scoped to the origin project.
+{{observability}} apps have limited {{cps-init}} support. APM, Infrastructure, and Synthetics use the scope selector. Most other apps remain scoped to the origin project.
 
 For specific app details, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md).
 
@@ -139,3 +156,4 @@ After you configure {{cps}} and link projects, users can start searching across 
 
 - [{{cps-cap}} overview](/explore-analyze/cross-project-search.md): Learn how to build queries in a {{cps-init}} context, including how to restrict search scope.
 - [](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): Learn how {{cps-init}} works with compatible {{kib}} apps, including how to adjust search scope.
+- [](/explore-analyze/cross-project-search/cps-compared-to-ccs.md): Compare {{cps-init}} and {{ccs}} query syntax, behavior, and scope control side by side.
