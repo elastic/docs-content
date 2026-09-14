@@ -4,6 +4,7 @@
   * `security`: Applies to Serverless [security projects](https://www.elastic.co/docs/solutions/security/get-started#create-sec-serverless-project).
   * `elasticsearch`: Applies to Serverless [search projects](https://www.elastic.co/docs/solutions/search/serverless-elasticsearch-get-started).
   * `observability`: Applies to Serverless [observability projects](https://www.elastic.co/docs/solutions/observability/get-started).
+  * `vectordb`: Applies to Serverless [vector database projects](https://www.elastic.co/docs/solutions/vector-database).
 * `stack`: Applies to the [Elastic Stack](https://www.elastic.co/docs/get-started/the-stack) including any Elastic Stack components.
 * `deployment`: Applies to some deployment type(s).
   * `ece`: Applies to [Elastic Cloud Enterprise](https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise) deployments.

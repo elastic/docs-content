@@ -816,6 +816,8 @@ toc:
               - file: monitor/logging-configuration/kib-advanced-logging.md
                 children:
                   - file: monitor/logging-configuration/kibana-log-settings-examples.md
+      - hidden: monitor/log-delivery.md
+      - hidden: monitor/log-delivery/audit-trail.md
   - file: kibana-reporting-configuration.md
   - file: kibana-custom-branding.md
   - file: cloud-organization.md
@@ -827,6 +829,7 @@ toc:
           - file: cloud-organization/billing/serverless-project-billing-dimensions.md
             children:
               - file: cloud-organization/billing/elasticsearch-billing-dimensions.md
+              - file: cloud-organization/billing/vector-database-billing-dimensions.md
               - file: cloud-organization/billing/elastic-observability-billing-dimensions.md
               - file: cloud-organization/billing/security-billing-dimensions.md
           - file: cloud-organization/billing/billing-models.md
