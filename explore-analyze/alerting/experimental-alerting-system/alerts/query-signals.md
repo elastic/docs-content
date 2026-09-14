@@ -5,12 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Query rule events with type signal using ES|QL in Discover. Filter by rule, build dashboards from detection history, and use them as input to a rule that opens an episode."
+description: "Query rule events with type signal using ES|QL in Discover. Filter by rule, build dashboards from detection history, and use them as input to a rule that opens an alert episode."
 ---
 
 # Use Discover to query {{alerting-v2-system}} rule events [query-rule-events-discover]
 
-Events with `type: signal` aren't grouped into episodes, so they don't appear on the **Alerts** page. In **Discover**, filter `.rule-events` to those events to review detection history, save it for investigations, or use it as input to a rule that opens an episode.
+Events with `type: signal` don't belong to an [alert episode](../alerts.md), so they don't appear on the **Alerts** page. In **Discover**, filter `.rule-events` to those events to review detection history, save it for investigations, or use it as input to a rule that opens an alert episode.
 
 ## Before you begin
 
@@ -64,7 +64,7 @@ FROM .rule-events
 
 ### Correlate events in a follow-on rule [correlate-signals-alert-rule]
 
-Events with `type: signal` are useful for investigation, and as input to a rule that watches accumulated events and groups matches into an episode. For example, one rule records administrator API calls. A separate rule queries those events and groups matches into an episode only when call volume spikes.
+Events with `type: signal` are useful for investigation, and as input to a rule that watches accumulated events and opens an alert episode. For example, one rule records administrator API calls. A separate rule queries those events and opens an alert episode only when call volume spikes.
 
 Create a rule whose query reads from `.rule-events`, filters to the first rule's events with `type: signal`, and applies a threshold:
 
@@ -78,7 +78,7 @@ FROM .rule-events
 | WHERE event_count > 10
 ```
 
-When this follow-on rule finds a match, {{kib}} writes a rule event and groups it into an alert episode. An action policy can evaluate the episode and invoke a workflow. The first rule keeps recording without paging anyone on every individual call.
+When this follow-on rule finds a match, {{kib}} writes a rule event and opens an alert episode. An action policy can evaluate the alert episode and invoke a workflow. The first rule keeps recording without paging anyone on every individual call.
 
 :::{tip}
 You can also correlate events from more than one rule in a single query, for example combining administrator API call events with error-rate events, so neither source pages on its own.
@@ -96,8 +96,8 @@ Because `.rule-events` is append-only, dashboards show the full history retained
 
 ## Related pages
 
-- [Rule mode](../rules/configure-rule-mode.md): How configuration determines whether {{kib}} groups matches into an alert episode or keeps them available for later analysis.
-- [Rule events](../rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how `type` relates to episodes.
+- [Rule mode](../rules/configure-rule-mode.md): How configuration determines whether {{kib}} opens an alert episode or keeps matches available for later analysis.
+- [Rule events](../rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how `type` relates to alert episodes.
 - [Rule event data model](rule-event-data-model.md): Shared `.rule-events` schema for `signal` and `alert` events.
-- [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Episode lifecycle, triage history, and incident-tracing queries.
+- [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Alert episode lifecycle, triage history, and incident-tracing queries.
 - [How the {{alerting-v2-system}} works](../how-it-works.md#how-signal-mode-works): End-to-end walkthrough of the path where a rule writes events with `type: signal` for later analysis.
