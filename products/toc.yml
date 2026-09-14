@@ -1,3 +1,6 @@
+# Intended nav once the hubs are ready to plug in. Not loaded until
+# docset.yml has `- toc: products` again. There is no products/index.md,
+# so the first file becomes the section parent in the left nav.
 project: 'Products'
 toc:
   - file: elastic-stack.md
