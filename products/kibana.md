@@ -250,37 +250,16 @@ links:
     url: /explore-analyze/dashboards/building.md
   - label: Organize panels and sections
     url: /explore-analyze/dashboards/arrange-panels.md
+  - label: Panel types
+    url: /explore-analyze/visualize.md
   - label: Share and export
     url: /explore-analyze/dashboards/sharing.md
 :::
 
 :::{link-card}
-title: Panel types
-link: /explore-analyze/visualize/lens.md
-description: The panel types you can add to a dashboard.
-links:
-  - label: Visualizations
-    url: /explore-analyze/visualize/lens.md
-  - label: Maps
-    url: /explore-analyze/visualize/maps.md
-  - label: Controls
-    url: /explore-analyze/visualize/dashboard-controls.md
-  - label: Text
-    url: /explore-analyze/visualize/text-panels.md
-  - label: Images
-    url: /explore-analyze/visualize/image-panels.md
-  - label: Links
-    url: /explore-analyze/visualize/link-panels.md
-  - label: Sections
-    url: /explore-analyze/dashboards/arrange-panels.md
-  - label: Alerts
-    url: /explore-analyze/visualize/alert-panels.md
-:::
-
-:::{link-card}
-title: Build visualizations
-link: /explore-analyze/visualize/lens.md
-description: Create charts and visual panels using the drag-and-drop editor, query mode (ES|QL), Vega, or Maps.
+title: Visualizations
+link: /explore-analyze/visualize.md
+description: Create charts and visual panels with the drag-and-drop editor, ES|QL, Vega, or Maps.
 links:
   - label: Visualization editor (drag-and-drop)
     url: /explore-analyze/visualize/lens.md
@@ -290,36 +269,6 @@ links:
     url: /explore-analyze/visualize/custom-visualizations-with-vega.md
   - label: Maps
     url: /explore-analyze/visualize/maps.md
-:::
-
-:::{link-card}
-title: Chart types
-link: /explore-analyze/visualize/charts/area-charts.md
-description: Common chart types in the visualization editor.
-links:
-  - label: Area
-    url: /explore-analyze/visualize/charts/area-charts.md
-  - label: Bar
-    url: /explore-analyze/visualize/charts/bar-charts.md
-  - label: Line
-    url: /explore-analyze/visualize/charts/line-charts.md
-  - label: Pie
-    url: /explore-analyze/visualize/charts/pie-charts.md
-  - label: Table
-    url: /explore-analyze/visualize/charts/tables.md
-  - label: Metric
-    url: /explore-analyze/visualize/charts/metric-charts.md
-:::
-
-:::{link-card}
-title: Reporting and sharing
-link: /deploy-manage/kibana-reporting-configuration.md
-description: Generate PDF, PNG, and CSV exports. Share dashboards with links or embeds.
-links:
-  - label: Configure reporting
-    url: /deploy-manage/kibana-reporting-configuration.md
-  - label: Share dashboards
-    url: /explore-analyze/dashboards/sharing.md
 :::
 ::::
 
