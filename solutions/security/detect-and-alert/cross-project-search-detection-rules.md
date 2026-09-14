@@ -22,9 +22,7 @@ To confirm which projects a rule covered when it created an alert, use the {{cps
 
 ## API keys and linked-project access [cps-rules-api-key]
 
-The [space-level {{cps}} scope](/explore-analyze/alerting/alerts/create-manage-rules.md#cps-scope-for-rules) and any query-level override determine which projects a rule searches. Within that scope, the rule can search only the linked projects the user who last saved it can access.
-
-Detection rules use the same API key model as other {{serverless-short}} alerting rules. For how keys are created, how role changes apply, and how to update a key, refer to [](/explore-analyze/alerting/alerts/rules-and-elastic-cloud-api-keys.md).
+Within the rule's [{{cps}} scope](/explore-analyze/alerting/alerts/create-manage-rules.md#cps-scope-for-rules), it can search only the linked projects the user who last saved it can access. For how keys are created, how role changes apply, and how to update a key, refer to [](/explore-analyze/alerting/alerts/rules-and-elastic-cloud-api-keys.md).
 
 ### When a rule searches the origin project only [cps-rules-origin-only-key]
 
