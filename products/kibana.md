@@ -378,6 +378,47 @@ links:
 ::::
 
 ::::{card-group}
+:title: Query data in Kibana
+:id: query-data
+
+:::{link-card}
+title: Query languages
+link: /explore-analyze/query-filter/languages.md
+description: Languages you can use in Kibana to search, filter, and analyze Elasticsearch data.
+links:
+  - label: Query languages overview
+    url: /explore-analyze/query-filter/languages.md
+  - label: Kibana Query Language (KQL)
+    url: /explore-analyze/query-filter/languages/kql.md
+  - label: ES|QL
+    url: /explore-analyze/query-filter/languages/esql-kibana.md
+  - label: Query DSL
+    url: /explore-analyze/query-filter/languages/querydsl.md
+  - label: Lucene query syntax
+    url: /explore-analyze/query-filter/languages/lucene-query-syntax.md
+  - label: EQL
+    url: /explore-analyze/query-filter/languages/eql.md
+  - label: Elasticsearch SQL
+    url: /explore-analyze/query-filter/languages/sql.md
+:::
+
+:::{link-card}
+title: Developer tools
+link: /explore-analyze/query-filter/tools.md
+description: Run API requests, profile queries, and debug patterns and scripts from Kibana.
+links:
+  - label: Console
+    url: /explore-analyze/query-filter/tools/console.md
+  - label: Search Profiler
+    url: /explore-analyze/query-filter/tools/search-profiler.md
+  - label: Grok Debugger
+    url: /explore-analyze/query-filter/tools/grok-debugger.md
+  - label: Painless Lab
+    url: /explore-analyze/scripting/painless-lab.md
+:::
+::::
+
+::::{card-group}
 :title: Stack management
 :id: stack-management
 
@@ -433,48 +474,6 @@ links:
     url: /explore-analyze/find-and-organize/saved-objects.md
   - label: Tags
     url: /explore-analyze/find-and-organize/tags.md
-:::
-::::
-
-::::{card-group}
-:title: Developer tools
-:id: developer-tools
-
-:::{link-card}
-title: Console
-link: /explore-analyze/query-filter/tools/console.md
-description: Run Elasticsearch and Kibana API requests interactively, with auto-complete and history.
-links:
-  - label: Console overview
-    url: /explore-analyze/query-filter/tools/console.md
-:::
-
-:::{link-card}
-title: Query and script tools
-link: /explore-analyze/query-filter/tools/search-profiler.md
-description: Profile queries, test patterns, and debug scripts.
-links:
-  - label: Search Profiler
-    url: /explore-analyze/query-filter/tools/search-profiler.md
-  - label: Grok Debugger
-    url: /explore-analyze/query-filter/tools/grok-debugger.md
-  - label: Painless Lab
-    url: /explore-analyze/scripting/painless-lab.md
-:::
-
-:::{link-card}
-title: APIs and plugins
-link: https://www.elastic.co/docs/api/doc/kibana
-description: REST API, plugins, and CLI commands for extending Kibana.
-links:
-  - label: Kibana REST API
-    url: https://www.elastic.co/docs/api/doc/kibana
-  - label: Kibana serverless API
-    url: https://www.elastic.co/docs/api/doc/serverless-kibana
-  - label: Plugins
-    url: kibana://reference/kibana-plugins.md
-  - label: kibana-setup command
-    url: kibana://reference/commands/kibana-setup.md
 :::
 ::::
 
