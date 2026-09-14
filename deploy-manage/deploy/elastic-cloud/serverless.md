@@ -23,14 +23,29 @@ Serverless projects use the core components of the {{stack}}, such as {{es}} and
 There are differences between {{es-serverless}} and {{ech}}. Learn more in [Compare {{ech}} and {{es-serverless}}](../elastic-cloud.md#general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud).
 :::
 
-## Get started
+## Get started [get-started]
 
-Elastic provides four serverless project types on {{ecloud}}. {{es}}, Observability, and Security projects correspond to the same [solutions](/solutions/index.md) available on stateful deployments; {{es}} {{vectordb}} is an additional {{serverless-short}}-only project type. Follow these guides to get started with your serverless project:
+Elastic provides four serverless project types on {{ecloud}}. {{es}}, Observability, and Security projects correspond to the same [solutions](/solutions/index.md) available on stateful deployments; {{es}} {{vectordb}} is an additional {{serverless-short}}-only project type.
 
-* **[{{es-serverless}}](/solutions/search/get-started.md)**: Build powerful, scalable search and analytics applications across structured data, logs, metrics, documents, and vectors as part of a broader {{stack}}.
-* **[{{es}} {{vectordb}}](/solutions/vector-database/get-started.md)**: Build embedding-driven workloads such as semantic search, RAG, and AI-powered retrieval. Built-in models and vector-optimized defaults mean less configuration and faster time to production.
-* **[{{obs-serverless}}](../../../solutions/observability/get-started.md)**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
-* **[{{sec-serverless}}](../../../solutions/security/get-started.md#create-sec-serverless-project)**: Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
+Choose a type that matches your use case, then [create a serverless project](create-serverless-project.md).
+
+### Explore the solution docs
+
+If you're deciding which project type to create, these guides describe typical workflows for each one.
+
+![elasticsearch](../../images/64x64_Color_elasticsearch-logo-color-64px.png "elasticsearch =30") **[{{es-serverless}}](/solutions/elasticsearch-solution-project/get-started.md)**  
+Build powerful, scalable search and analytics applications across structured data, logs, metrics, documents, and vectors as part of a broader {{stack}}.
+
+![vectordatabase](../../images/64x64_Color_vectordb-logo-color-64px.png "vectordatabase =30") **[{{es}} {{vectordb}}](/solutions/vector-database/get-started.md)**  
+Build embedding-driven workloads such as semantic search, RAG, and AI-powered retrieval. Built-in models and vector-optimized defaults mean less configuration and faster time to production.
+
+![observability](../../images/64x64_Color_observability-logo-color-64px.png "observability =30") **[{{obs-serverless}}](/solutions/observability/get-started.md)**  
+Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
+
+![security](../../images/64x64_Color_security-logo-color-64px.png "security =30") **[{{sec-serverless}}](/solutions/security/get-started.md)**  
+Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
+
+### Learn about {{serverless-short}} concepts
 
 Afterwards, you can:
 
