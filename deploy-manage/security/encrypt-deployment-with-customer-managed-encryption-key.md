@@ -497,7 +497,9 @@ Once you set a customer-managed key on a deployment, you cannot edit or remove i
 
 #### Track the encryption progress
 
-In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), follow the plan change on your deployment's **Activity** page.
+In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), your deployment's **Overview** page shows a **Configuration change in progress** banner while re-encryption runs. The banner reports how far along it is, for example `3/8 instances complete, 5/8 remaining`. How long re-encryption takes depends on the size of your data and the {{stack}} version you're running. Individual instances are marked **Encrypted** as they complete.
+
+To see the underlying plan steps, select **View activity** in the banner, or go to the deployment's **Activity** page. Note that the plan change isn't labeled as a key migration there, so the **Overview** banner is the better place to watch progress.
 
 From the API, get the deployment and check `metadata.byok_migration_in_progress`:
 
