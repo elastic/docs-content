@@ -131,9 +131,16 @@ input("Sending metrics periodically... press Enter to stop")
 
 In {{kib}}:
 
-1. Go to **{{product.observability}}** > **Metrics**.
-2. Or open the **Discover** app and filter by your {{data-source}} to search for `custom.temperature`.
-3. Visualize or aggregate the metric data.
+1. Open **Discover** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select {icon}`code` **{{esql}}** to switch to {{esql}} mode, then run a `TS` query to select your metrics data:
+
+    ```esql
+    TS metrics-*
+    ```
+
+3. Search the chart grid for `custom.temperature`, then break the metric down by dimension or add its chart to a dashboard.
+
+For more on exploring metrics in **Discover**, refer to [Explore metrics data with Discover in {{kib}}](/solutions/observability/infra-and-hosts/discover-metrics.md).
 ::::
 
 :::::
@@ -144,7 +151,7 @@ You've successfully set up a minimal OTLP metrics pipeline with the {{agent}}. Y
 
 Now you can:
 
-- Use **Discover** or the **Metrics** UI to create custom visualizations and dashboards
+- Use **Discover** to add visualizations to existing dashboards or create new dashboards.
 - Set up alerts based on your custom metrics
 - Aggregate and analyze metric trends over time
 

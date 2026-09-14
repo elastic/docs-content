@@ -15,52 +15,34 @@ products:
 
 Elastic lets you ingest, store, query, and visualize metrics from any source. Whether you're consolidating a Prometheus or Datadog stack, collecting infrastructure metrics, or sending custom application metrics, Elastic supports OpenTelemetry, Prometheus remote write, and {{agent}} integrations from a single platform.
 
-## What do you want to do? [metrics-intent]
+## Send metrics to Elastic [metrics-send]
 
-| I want to | Go to |
-|---|---|
-| Start sending metrics to Elastic | [Get started with metrics](/solutions/observability/metrics/get-started.md) |
-| Move my existing Prometheus or Datadog stack to Elastic | [Migrate to Elastic metrics](/solutions/observability/metrics/migrate.md) |
-| Understand my ingest options in detail | [Ingest metrics](/solutions/observability/metrics/ingest.md) |
-| Query metrics already in Elastic | [Query metrics](/solutions/observability/metrics/query.md) |
-| Explore and visualize metrics | [Explore metrics](/solutions/observability/metrics/explore.md) |
-| Control storage costs and retention | [Manage metrics storage](/solutions/observability/metrics/manage-storage.md) |
+[Get started with metrics](/solutions/observability/metrics/get-started.md)
+:   Get data flowing quickly using an {{edot}} quickstart for your deployment type and environment. Start here if you're evaluating Elastic or want a working pipeline before you commit to a data model.
 
-## Recommended ingestion path [metrics-ingestion-path]
+[Migrate to Elastic metrics](/solutions/observability/metrics/migrate.md)
+:   Move an existing Prometheus or Datadog stack to Elastic. Because Elastic accepts OTLP and Prometheus remote write, you can run both systems side by side and migrate gradually.
 
-The recommended ingestion path depends on your Elastic deployment type.
+[Ingest metrics](/solutions/observability/metrics/ingest.md)
+:   Compare every ingest path in detail: {{edot}} and OTLP, Prometheus remote write, and {{agent}} integrations, including which path is recommended for your deployment type.
 
-:::::{applies-switch}
+[Plan your metrics setup](/solutions/observability/metrics/plan-your-setup.md)
+:   Choose between the OpenTelemetry and ECS data models before you scale up, and understand what that choice means for field names, dashboards, and queries.
 
-::::{applies-item} serverless:
-**Send metrics to the Managed OTLP endpoint.**
+## Work with metrics already in Elastic [metrics-work-with]
 
-The Managed OTLP endpoint is GA for {{serverless-full}} {{observability}} projects. For application metrics, point your EDOT SDK or any OTLP-compatible exporter directly at the endpoint — no {{agent}} required. For infrastructure metrics (host, {{k8s}}), run {{agent}} in OTel mode on your hosts or cluster and configure it to export data to the endpoint using the OTLP exporter.
+[Query metrics](/solutions/observability/metrics/query.md)
+:   Query metrics with {{esql}} time-series mode for counters, rates, and per-series aggregations, or with PromQL to reuse existing Prometheus queries and alerting rules.
 
-Refer to [Managed OTLP endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for configuration details and limitations.
-::::
+[Explore metrics](/solutions/observability/metrics/explore.md)
+:   Explore and visualize metrics in Discover, the Infrastructure UI, {{kib}} dashboards, or Grafana.
 
-::::{applies-item} ech:
-**Send metrics to the Managed OTLP endpoint.**
-
-The Managed OTLP endpoint is GA on {{ech}}. For application metrics, point your EDOT SDK or any OTLP-compatible exporter directly at the endpoint — no {{agent}} required. For infrastructure metrics, run {{agent}} in OTel mode on your hosts or cluster and configure it to export using the OTLP exporter.
-
-Refer to [Managed OTLP endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for configuration details and limitations.
-::::
-
-::::{applies-item} self:
-**Run {{agent}} in OTel mode as a gateway.**
-
-The Managed OTLP endpoint is not available for self-managed {{stack}}, {{ece}} (ECE), or {{eck}} (ECK) deployments. Run {{agent}} in OTel mode as a gateway to expose an OTLP endpoint that your edge collectors and EDOT SDKs send data to.
-
-Refer to [{{agent}} modes](elastic-agent://reference/edot-collector/modes.md) for setup instructions.
-::::
-
-:::::
+[Manage metrics storage](/solutions/observability/metrics/manage-storage.md)
+:   Control storage costs and retention using time series data streams (TSDS), downsampling, cardinality management, and lifecycle policies.
 
 ## Already using Prometheus? [metrics-prometheus-users]
 
-You can send metrics to Elastic with a minimal change to your existing Prometheus setup — no full migration required. Add a `remote_write` target to your `prometheus.yml` pointing at {{es}}, and your existing scrape configs continue to work unchanged.
+You can send metrics to Elastic with a minimal change to your existing Prometheus setup, without a full migration. Add a `remote_write` target to your `prometheus.yml` pointing at {{es}}, and your existing scrape configs continue to work unchanged.
 
 If you use Grafana, you can also point it at {{es}} as a Prometheus data source and run your existing PromQL dashboards and alerts without rewriting them.
 

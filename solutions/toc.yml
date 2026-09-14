@@ -452,12 +452,8 @@ toc:
           - file: observability/metrics/ingest.md
           - file: observability/metrics/migrate.md
           - file: observability/metrics/query.md
-            children:
-              - file: observability/metrics/query-with-esql-ts.md
           - file: observability/metrics/explore.md
           - file: observability/metrics/manage-storage.md
-            children:
-              - file: observability/metrics/cardinality-dimensions.md
       - file: observability/logs.md
         children:
           - file: observability/logs/get-started-with-system-logs.md

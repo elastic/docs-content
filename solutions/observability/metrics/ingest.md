@@ -43,7 +43,7 @@ The Managed OTLP endpoint is GA on {{ech}}.
 Refer to [Managed OTLP endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for authentication, endpoint URL, and protocol details.
 ::::
 
-::::{applies-item} self:
+::::{applies-item} { self:, ece:, eck: }
 **Run {{agent}} in OTel mode as a gateway.**
 
 The Managed OTLP endpoint is not available for self-managed {{stack}}, {{ece}} (ECE), or {{eck}} (ECK) deployments. Run {{agent}} in OTel mode as a gateway: it exposes an OTLP endpoint that your EDOT SDKs and edge collectors send data to, and forwards the data to {{es}}.
@@ -60,7 +60,7 @@ Refer to [{{agent}} modes](elastic-agent://reference/edot-collector/modes.md) fo
 - [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md)
 - [Managed OTLP endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md)
 - [{{agent}} modes](elastic-agent://reference/edot-collector/modes.md)
-- [Metric temporality](/manage-data/data-store/data-streams/metric-temporality.md) — cumulative versus delta behavior for counters and histograms
+- [Metric temporality](/manage-data/data-store/data-streams/metric-temporality.md): cumulative versus delta behavior for counters and histograms
 
 ## Ingest with {{agent}} integrations [metrics-ingest-agent-integrations]
 

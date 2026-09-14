@@ -18,28 +18,19 @@ After your metrics are flowing into Elastic, use these tools to explore, visuali
 ## Explore metrics in Discover [metrics-explore-discover]
 ```{applies_to}
 stack: ga 9.4+
+serverless: ga
 ```
 Use Discover in {{kib}} to explore time-series metrics data, apply filters, and run {{esql}} queries against your metrics. This is the recommended path for interactive exploration.
 
 Refer to [Explore metrics data with Discover in {{kib}}](/solutions/observability/infra-and-hosts/discover-metrics.md) for more information.
 
-## Explore metrics in Metrics Explorer [metrics-explore-metrics-explorer]
-```{applies_to}
-stack: deprecated 9.4+, ga 9.0-9.3
-serverless: unavailable
-```
-
-Use **Metrics Explorer** to create time-series visualizations of your metrics, chart them against related metrics, and break them down by the field of your choice.
-
-Refer to [Explore infrastructure metrics over time](/solutions/observability/infra-and-hosts/explore-infrastructure-metrics-over-time.md) for more information.
-
 ## Infrastructure views [metrics-explore-infra]
 
 These views give you a resource-centric perspective on your infrastructure, with metrics-driven health and performance indicators:
 
-- [View infrastructure metrics by resource type](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md) — the Inventory view, organized by resource groupings
-- [Analyze infrastructure and host metrics](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) — the Hosts page with a {{kib}} Lens visualization
-- [Detect metric anomalies](/solutions/observability/infra-and-hosts/detect-metric-anomalies.md) — {{ml-cap}}-powered {{anomaly-detect}} for memory usage and network traffic
+- [View infrastructure metrics by resource type](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md): the Inventory view, organized by resource groupings
+- [Analyze infrastructure and host metrics](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md): the Hosts page with a {{kib}} Lens visualization
+- [Detect metric anomalies](/solutions/observability/infra-and-hosts/detect-metric-anomalies.md): {{ml-cap}}-powered {{anomaly-detect}} for memory usage and network traffic
 
 ## Dashboards [metrics-explore-dashboards]
 
@@ -53,6 +44,20 @@ Build dashboards in {{kib}} Lens to track metrics over time, compare resources, 
 If you use Grafana, you can point it at {{es}} as a Prometheus data source and run your existing PromQL dashboards without rewriting them.
 
 Refer to [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md).
+
+## Metrics Explorer [metrics-explore-metrics-explorer]
+```{applies_to}
+stack: deprecated 9.4+, ga 9.0-9.3
+serverless: unavailable
+```
+
+Use **Metrics Explorer** to create time-series visualizations of your metrics, chart them against related metrics, and break them down by the field of your choice.
+
+:::{note}
+Metrics Explorer is deprecated as of 9.4. Use [metrics exploration in Discover](/solutions/observability/infra-and-hosts/discover-metrics.md) instead.
+:::
+
+Refer to [Explore infrastructure metrics over time](/solutions/observability/infra-and-hosts/explore-infrastructure-metrics-over-time.md) for more information.
 
 ## Related [metrics-explore-related]
 

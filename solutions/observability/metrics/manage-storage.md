@@ -26,6 +26,7 @@ Refer to [Time series data streams](/manage-data/data-store/data-streams/time-se
 ## Metric temporality [metrics-manage-storage-temporality]
 ```{applies_to}
 stack: ga 9.5+
+serverless: ga
 ```
 
 When counters and histograms live in a TSDS, temporality is how each sample relates to the last one. Cumulative values are running totals since the process started. Delta values are the change since the previous sample. {{es}} needs the same temporality your producer uses. If they do not match, rates, aggregations, and downsampling can be wrong.
@@ -40,13 +41,13 @@ You typically turn it on in an {{ilm-init}} policy or a data stream lifecycle, n
 
 Refer to [Downsampling a time series data stream](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) for more information, including how to configure downsampling and query downsampled data.
 
-## Cardinality management [metrics-manage-storage-cardinality]
+## Cardinality and dimensions [metrics-manage-storage-cardinality]
 
-Cardinality is the number of unique dimension combinations on a metric. A request-count metric labeled with `host`, `region`, and `status_code` can produce `hosts × regions × status_codes` separate time series. Each series uses storage and query cost, so an extra high-cardinality label can grow a data stream far faster than extra samples on an existing series.
+Cardinality is the number of unique dimension combinations on a metric. A request-count metric labeled with `host`, `region`, and `status_code` can produce `hosts × regions × status_codes` separate time series. Each series uses storage and query cost, so an extra high-cardinality label can grow a data stream far faster than extra samples on an existing series. High cardinality is a common cause of unexpected storage growth and slow queries.
 
 TSDS tracks dimension combinations explicitly, which stores high-cardinality data more efficiently than a regular data stream and also makes a cardinality problem easier to see.
 
-Refer to [Cardinality and dimensions in Elastic metrics](/solutions/observability/metrics/cardinality-dimensions.md) for more information.
+Refer to [Dimensions](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension) for how {{es}} defines and limits dimension fields.
 
 ## Retention [metrics-manage-storage-retention]
 
