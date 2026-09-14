@@ -34,7 +34,10 @@ Schema: [what's new directive](https://elastic.github.io/docs-builder/syntax/wha
 For each of `elasticsearch`, `kibana`, and `logstash`:
 
 - Keep `id: whats-new` so the hub hero can jump to the panel.
-- One `release-links` entry pointing at that product's release notes.
+- Add two `release-links` entries when the product has a stack stream and a serverless stream:
+  - Stack minor label (for example `9.5`) pointing at that minor's `.0` heading, for example `kibana://release-notes/index.md#kibana-9.5.0-release-notes`.
+  - `Serverless` pointing at `/release-notes/elastic-cloud-serverless/index.md`.
+- If the product has only a stack stream, one `release-links` entry is enough.
 - One `upgrade-link` pointing at that product's upgrade page.
 - Four or five `items`. Mark **one** item `featured: true`.
 - `date` is the minor version, for example `9.5`.

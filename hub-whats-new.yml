@@ -13,8 +13,10 @@ products:
     id: whats-new
     intro: Highlights from the latest Elasticsearch release.
     release-links:
-      - label: Release notes
-        url: elasticsearch://release-notes/index.md
+      - label: '9.5'
+        url: elasticsearch://release-notes/index.md#elasticsearch-9.5.0-release-notes
+      - label: Serverless
+        url: /release-notes/elastic-cloud-serverless/index.md
     upgrade-link:
       label: Upgrade Elasticsearch
       url: /deploy-manage/upgrade/deployment-or-cluster.md
@@ -51,8 +53,10 @@ products:
     id: whats-new
     intro: Highlights from the latest Kibana release.
     release-links:
-      - label: Release notes
-        url: kibana://release-notes/index.md
+      - label: '9.5'
+        url: kibana://release-notes/index.md#kibana-9.5.0-release-notes
+      - label: Serverless
+        url: /release-notes/elastic-cloud-serverless/index.md
     upgrade-link:
       label: Upgrade Kibana
       url: /deploy-manage/upgrade/deployment-or-cluster/kibana.md
@@ -89,8 +93,8 @@ products:
     id: whats-new
     intro: Highlights from the latest Logstash release.
     release-links:
-      - label: Release notes
-        url: logstash://release-notes/index.md
+      - label: '9.5'
+        url: logstash://release-notes/index.md#logstash-9.5.0-release-notes
     upgrade-link:
       label: Upgrade Logstash
       url: logstash://reference/upgrading-logstash.md
