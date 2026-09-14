@@ -15,6 +15,11 @@ products:
 
 Osquery provides relevant, timely data that you can use to better understand and monitor your environment. When you run queries, results are indexed and displayed the Results table, which you can filter, sort, and interact with.
 
+:::{note}
+:applies_to: {"stack": "ga 9.4+", "serverless": "unavailable"}
+To include results from {{agents}} that use a remote {{es}} output, refer to [View results from a remote {{es}} output](/solutions/security/investigate/osquery.md#osquery-remote-output-ccs).
+:::
+
 
 ## Results table [osquery-result-types]
 

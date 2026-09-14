@@ -34,7 +34,7 @@ From here, complete the following steps:
 3. [Describe your SLO](/solutions/observability/incident-management/create-an-slo.md#slo-describe).
 
 :::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/observability/manage-slos
+:url: https://github.com/elastic/agent-skills@observability-service-reliability
 :::
 
 ::::{note}

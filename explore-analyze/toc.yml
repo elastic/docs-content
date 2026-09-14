@@ -261,6 +261,7 @@ toc:
           - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md
+      - hidden: ai-features/context-engine.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/agent-skills.md
       - file: ai-features/llm-guides/llm-connectors.md
@@ -325,6 +326,9 @@ toc:
           - file: visualize/charts/treemap-charts.md
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
+      - file: visualize/custom-panels.md
+        children:
+          - file: visualize/custom-panel-examples.md
       - file: visualize/text-panels.md
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md

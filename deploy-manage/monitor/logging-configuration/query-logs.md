@@ -22,6 +22,10 @@ The following query types are supported:
 - `sql`: [SQL](elasticsearch://reference/query-languages/sql.md) queries
 - `promql`: [PromQL API](elasticsearch://reference/query-languages/promql/promql-http-api.md) queries {applies_to}`stack: ga 9.6`
 
+:::{note}
+On ECE, query logging requires version 4.2 or later.
+:::
+
 ## When to use query logging
 
 Query logging helps you answer questions like:
@@ -100,7 +104,12 @@ ECK clusters automatically collect from the `*_querylog.json` path using the def
 
 :::::
 
-:::::{applies-item} { self:, ece: }
+:::::{applies-item} { self:, ece: ga 4.2 }
+
+:::{note}
+
+On ECE, query logging requires version 4.2 or later.
+:::
 
 To set up query logging on self-managed or ECE clusters:
 

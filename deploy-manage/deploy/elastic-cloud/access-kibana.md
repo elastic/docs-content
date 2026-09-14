@@ -47,7 +47,7 @@ To access {{kib}}:
 4. Log into {{kib}}. Single sign-on (SSO) is enabled between your Cloud account and the {{kib}} instance. If you’re logged in already, then {{kib}} opens without requiring you to log in again. However, if your token has expired, choose from one of these methods to log in:
 
     * Select **Login with Cloud**. You’ll need to log in with your Cloud account credentials and then you’ll be redirected to {{kib}}.
-    * Log in with the `elastic` superuser. The password was provided when you created your cluster or [can be reset](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
+    * Log in with the `elastic` superuser. The password was provided when you created your cluster or [can be reset](../../../deploy-manage/users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md).
     * Log in with any users you created in {{kib}} already.
 
 

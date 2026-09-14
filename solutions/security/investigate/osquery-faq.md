@@ -55,3 +55,13 @@ When a new [version of Osquery is released](https://github.com/osquery/osquery/r
 
 To check what Osquery version is installed on an Elastic Agent, you can run `SELECT version FROM osquery_info;` as a live query in {{kib}}. The `version` in the response is the Osquery version installed on the agent.
 
+## Why don't I see Osquery results from agents that use a remote {{es}} output? [osquery-remote-output-results]
+```{applies_to}
+stack: ga 9.4+
+serverless: unavailable
+```
+
+Query results from those agents are stored on the remote cluster. Osquery on the local cluster includes them only when {{ccs}} is set up and the remote cluster is connected.
+
+To set this up, refer to [View results from a remote {{es}} output](/solutions/security/investigate/osquery.md#osquery-remote-output-ccs). After the remote cluster connects, wait 60 seconds, then run the query again.
+
