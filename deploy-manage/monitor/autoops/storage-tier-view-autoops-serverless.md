@@ -1,7 +1,7 @@
 ---
 applies_to:
   serverless:
-navigation_title: Storage tier view
+navigation_title: Storage Tier view
 products:
   - id: cloud-serverless
 ---
@@ -9,8 +9,6 @@ products:
 # Storage Tier view in AutoOps for {{serverless-short}}
 
 The **Storage Tier** view in AutoOps for {{serverless-short}} provides visibility into the key [storage billing dimensions](/deploy-manage/monitor/autoops/autoops-for-serverless.md#storage-billing-dimensions) that drive the costs of your {{serverless-short}} projects. This view helps you understand how ingest and storage activities contribute to your storage usage costs with both high-level summaries and detailed index-level and data stream-level breakdowns.
-
-The **Storage Tier** view is available in all regions across AWS, Azure, and GCP.
 
 To get to this view, [access AutoOps](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md) in your project and then select **Storage Tier** from the navigation menu.
 

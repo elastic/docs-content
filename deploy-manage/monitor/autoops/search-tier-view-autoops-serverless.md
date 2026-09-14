@@ -33,7 +33,7 @@ Use the following features to explore this view:
 
 :::{image} /deploy-manage/images/search-tier-project-level-features-vectordb.png
 :screenshot:
-:alt: Screenshot showing the features in the top half of the Search Tier page for an {{es-serverless}} project
+:alt: Screenshot showing the features in the top half of the Search Tier page for a {{vectordb}} {{serverless-short}} project
 :::
 
 ## Index and data stream-level insights
