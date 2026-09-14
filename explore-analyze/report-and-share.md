@@ -61,10 +61,26 @@ Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboa
 
 * **PDF** {applies_to}`serverless: unavailable` — Generate and download PDF files of dashboards, visualizations, and **Canvas** workpads. PDF reports are a [subscription feature](https://www.elastic.co/subscriptions).
 * **PNG** {applies_to}`serverless: unavailable` — Generate and download PNG files of dashboards and visualizations. PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
-* **CSV Reports** — Generate CSV reports of saved Discover sessions.
-* **CSV Download** — Generate and download CSV files of **Lens** visualizations.
+* **CSV Reports** — Generate CSV reports of saved Discover sessions. On {{serverless-full}}, you can also [schedule](report-and-share/automating-report-generation.md#schedule-report-generation) Discover CSV reports.
+* **CSV Download** — Generate and download CSV files of **Lens** visualizations. Scheduling Lens CSV reports is not supported.
 * **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
 * {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` **Export JSON**: export the JSON source of a dashboard in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
+
+### Serverless availability [reporting-serverless-availability]
+```{applies_to}
+serverless: ga
+```
+
+On {{serverless-full}}, reporting support depends on the surface and export type:
+
+| Surface | Generate | Schedule |
+| --- | --- | --- |
+| Discover CSV | Yes | Yes |
+| Lens CSV | Download only | No |
+| Dashboard, Lens, and visualization PDF or PNG | No | No |
+| Dashboard JSON | Yes | n/a |
+
+Compared with {{ech}}, Serverless does not generate or schedule dashboard PDF or PNG reports.
 
 1. Open the saved Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
 2. Choose a file type for the report.
