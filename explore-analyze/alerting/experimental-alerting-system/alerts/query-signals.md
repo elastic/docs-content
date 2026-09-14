@@ -8,13 +8,13 @@ products:
 description: "Query rule events with type signal using ES|QL in Discover. Filter by rule, build dashboards from detection history, and use them as input to a rule that opens an episode."
 ---
 
-# Query {{alerting-v2-system}} signals in Discover [query-signals-discover] 
+# Use Discover to query {{alerting-v2-system}} rule events [query-rule-events-discover]
 
-Use {{esql}} in Discover to query `.rule-events` for events with `type: signal`. This page covers the fields to filter on, example queries, and how to save that history as a Discover session or dashboard.
+Events with `type: signal` aren't grouped into episodes, so they don't appear on the **Alerts** page. In **Discover**, filter `.rule-events` to those events to review detection history, save it for investigations, or use it as input to a rule that opens an episode.
 
 ## Before you begin
 
-- You have at least one rule that writes events with `type: signal`. For how that is set, refer to [Rule mode](../rules/configure-rule-mode.md).
+- You have events with `type: signal` in `.rule-events` to query.
 - Your role can query `.rule-events` in Discover. For privilege details, refer to [Configure access](../get-started/configure-access.md#alerting-data-investigation-privileges).
 
 The examples on this page use {{esql}} (`FROM .rule-events`). You don't need a data view for those queries. If you query `.rule-events` with KQL instead, add it as a data view first. Follow the steps in [Before you begin](query-alerts-and-signals-in-discover.md#add-data-views-before-begin) on the alert history page, using the `.ds-.rule-events-*` index pattern.
