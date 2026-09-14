@@ -1,6 +1,6 @@
 ---
 navigation_title: Docker
-description: Step-by-step guide for setting up the {{agent}} and SDKs in a Docker environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces.
+description: Step-by-step guide for setting up Elastic Agent and EDOT SDKs in a Docker environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces.
 applies_to:
   stack:
   serverless:
@@ -124,7 +124,8 @@ Install the **[Docker OpenTelemetry Assets](integration-docs://reference/docker_
 
 ::::{step} Explore your data
 
-Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+:::{include} ../../_snippets/explore-your-data.md
+:::
 
 ::::
 :::::
