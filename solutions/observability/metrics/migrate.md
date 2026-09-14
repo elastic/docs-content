@@ -49,7 +49,7 @@ To query those metrics with PromQL in Elastic, refer to [PromQL in {{es}}](elast
 
 ## Datadog migration [metrics-migrate-datadog]
 
-Elastic does not yet provide a dedicated Datadog migration guide. In the meantime, if your Datadog agents already export OpenTelemetry data, you can point them at Elastic using the OTLP paths described in [Ingest metrics](/solutions/observability/metrics/ingest.md).
+If your Datadog agents already export OpenTelemetry data, you can point them at Elastic using the OTLP paths described in [Ingest metrics](/solutions/observability/metrics/ingest.md).
 
 ## Related [metrics-migrate-related]
 

@@ -50,6 +50,4 @@ Once metrics are arriving from multiple sources, build the views and queries you
 
 ## Step 5: Manage storage and retention [metrics-get-started-storage]
 
-Metrics volume grows faster than most teams expect, and cardinality is the usual cause. Before your setup becomes production-critical, set up downsampling and retention so storage costs stay predictable.
-
-Refer to [Manage metrics storage](/solutions/observability/metrics/manage-storage.md).
+Metrics volume grows faster than most teams expect, and cardinality is the usual cause. Before your setup becomes production-critical, set up downsampling and retention so storage costs stay predictable. Refer to [Manage metrics storage](/solutions/observability/metrics/manage-storage.md) for more information.

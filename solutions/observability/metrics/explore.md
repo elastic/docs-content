@@ -53,10 +53,6 @@ serverless: unavailable
 
 Use **Metrics Explorer** to create time-series visualizations of your metrics, chart them against related metrics, and break them down by the field of your choice.
 
-:::{note}
-Metrics Explorer is deprecated as of 9.4. Use [metrics exploration in Discover](/solutions/observability/infra-and-hosts/discover-metrics.md) instead.
-:::
-
 Refer to [Explore infrastructure metrics over time](/solutions/observability/infra-and-hosts/explore-infrastructure-metrics-over-time.md) for more information.
 
 ## Related [metrics-explore-related]
