@@ -1,6 +1,6 @@
 ---
 applies_to:
-  serverless: preview
+  serverless: ga
   stack: unavailable
 products:
   - id: security

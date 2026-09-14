@@ -1,7 +1,7 @@
 ---
 applies_to:
   stack: unavailable
-  serverless: preview
+  serverless: ga
 type: overview
 products:
   - id: cloud-serverless

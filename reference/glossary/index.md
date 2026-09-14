@@ -168,7 +168,7 @@ $$$glossary-ccr$$$ {{ccr}} (CCR)
 $$$glossary-ccs$$$ {{ccs}} (CCS)
 :   Searches [data streams](/reference/glossary/index.md#glossary-data-stream) and [indices](/reference/glossary/index.md#glossary-index) on [remote clusters](/reference/glossary/index.md#glossary-remote-cluster) from a [local cluster](/reference/glossary/index.md#glossary-local-cluster). See [Search across clusters](/explore-analyze/cross-cluster-search.md).
 
-$$$glossary-cps$$$ {{cps}} ({{cps-init}}) {applies_to}`serverless: preview`
+$$$glossary-cps$$$ {{cps}} ({{cps-init}}) {applies_to}`serverless: ga`
 :   Searches across multiple {{serverless-full}} [linked projects](/reference/glossary/index.md#glossary-linked-project) from a single [origin project](/reference/glossary/index.md#glossary-origin-project). See [{{cps-cap}}](/explore-analyze/cross-project-search.md).
 
 $$$CRD$$$CRD

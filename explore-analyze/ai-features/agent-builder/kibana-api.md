@@ -1123,7 +1123,7 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 ::::
 
-**Example:** Scope a chat across projects {applies_to}`serverless: preview`
+**Example:** Scope a chat across projects {applies_to}`serverless: ga`
 
 By default, the [{{cps}}](/explore-analyze/cross-project-search.md) scope is the [default scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-name>` use the {{cps-init}} scope from the default space. 
 

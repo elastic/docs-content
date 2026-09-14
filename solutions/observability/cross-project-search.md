@@ -1,7 +1,7 @@
 ---
 applies_to:
   stack: unavailable
-  serverless: preview
+  serverless: ga
 products:
   - id: observability
 navigation_title: "Cross-project search"
