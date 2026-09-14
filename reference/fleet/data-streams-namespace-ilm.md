@@ -146,14 +146,14 @@ As with any other {{ilm-init}} change, existing backing indices keep the policy 
 ## Limitations [data-streams-namespace-ilm-limitations]
 
 * You can apply only one {{ilm-init}} policy per `(integration, namespace)` pair. Two integration policies that use the same integration and namespace can't use different {{ilm-init}} policies.
-* The {{ilm-init}} policy applies to every data stream the integration defines. To target a single data stream, use [Scenario 2](/reference/fleet/data-streams-scenario2.md) for all namespaces, or [Scenario 3](/reference/fleet/data-streams-scenario3.md) for one namespace.
+* The {{ilm-init}} policy applies to every data stream the integration defines. To target a single data stream, apply the policy to [specific data streams across all namespaces](/reference/fleet/data-streams-scenario2.md), or to [one data stream in one namespace](/reference/fleet/data-streams-scenario3.md).
 * You can select {{ilm-init}} policies only. To use a [data stream lifecycle](/manage-data/lifecycle/data-stream.md) instead, configure it outside of {{fleet}}.
 * An `index.lifecycle.name` setting in a data stream-level `@custom` component template overrides the policy you apply here.
 
 ## Related pages [data-streams-namespace-ilm-related]
 
 * [Customize data streams with namespace index templates](/reference/fleet/data-streams-namespace-custom.md)
-* [Tutorials: Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md)
+* [Customize data retention policies for integrations](/reference/fleet/data-streams-ilm-tutorial.md)
 * [Index lifecycle management ({{ilm-init}})](/reference/fleet/data-streams.md#data-streams-ilm)
 * [Create an {{ilm-init}} policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md)
 * [Manage lifecycle policies for integrations data](/manage-data/lifecycle/index-lifecycle-management/manage-lifecycle-integrations-data.md)

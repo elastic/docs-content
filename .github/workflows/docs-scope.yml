@@ -1,4 +1,4 @@
-name: Docs Issue Scope
+name: Docs Scope
 on:
   issue_comment:
     types: [created]
@@ -16,6 +16,9 @@ jobs:
   run:
     if: >-
       github.event_name == 'workflow_dispatch' ||
-      startsWith(github.event.comment.body, '/docs-issue-scope')
-    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-issue-scope.lock.yml@v1
+      (startsWith(github.event.comment.body, '/scope') &&
+       github.event.issue.pull_request == null)
+    uses: elastic/docs-actions/.github/workflows/gh-aw-issue-scope.lock.yml@v1
+    with:
+      project-instructions-path: .github/scope-instructions.md
     secrets: inherit

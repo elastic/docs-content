@@ -60,4 +60,4 @@ To find Synthetics data streams:
 
 ::::
 
-Then, you can refer to [Tutorial: Customize data retention for integrations](/reference/fleet/data-streams-ilm-tutorial.md) to learn how to apply a custom {{ilm-init}} policy to the browser data streams.
+Then, you can refer to [](/reference/fleet/data-streams-ilm-tutorial.md) to learn how to apply a custom {{ilm-init}} policy to the browser data streams.

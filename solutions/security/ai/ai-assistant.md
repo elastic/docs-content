@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/security-assistant.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-assistant.html
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -89,9 +89,14 @@ This opens the **Welcome** chat interface, where you can ask general questions a
 
 You can also chat with AI Assistant from several particular pages in {{elastic-sec}} where you can easily send context-specific data and prompts to AI Assistant.
 
-* [Alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md) or Event details flyout: Click **Chat** while viewing the details of an alert or event.
+* [Alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md) or Event details flyout: Click **Ask AI Assistant** in the footer while viewing the details of an alert or event.
 * [Detection rules (SIEM)](/solutions/security/detect-and-alert/manage-detection-rules.md): Use AI Assistant to help create or correct rule queries.
 * [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md): Select the **Incompatible fields** tab, then click **Chat**. (This is only available for fields marked red, indicating they’re incompatible).
+
+::::{note}
+:applies_to: stack: ga 9.0-9.4
+In these versions, the **Ask AI Assistant** button is called **Chat**.
+::::
 
 ::::{note}
 Each user’s chat history (up to the 99 most recent conversations) and custom Quick Prompts are automatically saved, so you can leave {{elastic-sec}} and return to a conversation later. Chat history appears to the left of the AI Assistant chat window, and on the **Conversations** tab of the **AI Assistant settings** menu. To access the settings menu, use the global search field to search for "AI Assistant for Security" or open the menu in the upper-right of the AI Assistant chat window.

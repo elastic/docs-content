@@ -64,7 +64,7 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
       ```yaml
       bulk_max_size: 1600
       worker: 1
-      queue.mem.events: 3200
+      queue.mem.events: 6400
       queue.mem.flush.min_events: 1600
       queue.mem.flush.timeout: 10s
       compression_level: 1
@@ -145,6 +145,21 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 
 ## Performance tuning settings [es-output-settings-performance-tuning-settings]
 
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.5.2+, serverless: ga }
+| Configuration | Balanced | Optimized for Throughput | Optimized for Scale | Optimized for Latency |
+| --- | --- | --- | --- | --- |
+| `bulk_max_size` | 1600 | 1600 | 1600 | 50 |
+| `worker` | 1 | 4 | 1 | 1 |
+| `queue.mem.events` | 6400 | 25600 | 6400 | 4100 |
+| `queue.mem.flush.min_events` | 1600 | 1600 | 1600 | 2050 |
+| `queue.mem.flush.timeout` | 10 | 5 | 20 | 1 |
+| `compression_level` | 1 | 1 | 1 | 1 |
+| `idle_connection_timeout` | 3 | 15 | 1 | 60 |
+:::
+
+:::{applies-item} { stack: ga 8.12-9.5.1 }
 | Configuration | Balanced | Optimized for Throughput | Optimized for Scale | Optimized for Latency |
 | --- | --- | --- | --- | --- |
 | `bulk_max_size` | 1600 | 1600 | 1600 | 50 |
@@ -154,6 +169,9 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 | `queue.mem.flush.timeout` | 10 | 5 | 20 | 1 |
 | `compression_level` | 1 | 1 | 1 | 1 |
 | `idle_connection_timeout` | 3 | 15 | 1 | 60 |
+:::
+
+::::
 
 For descriptions of each setting, refer to [Advanced YAML configuration](#es-output-settings-yaml-config). For the  `queue.mem.events`, `queue.mem.flush.min_events` and `queue.mem.flush.timeout` settings, refer to the [internal queue configuration settings](beats://reference/filebeat/configuring-internal-queue.md) in the {{filebeat}} documentation.
 

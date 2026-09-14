@@ -1,0 +1,19 @@
+name: changelog-submit
+
+on:
+  workflow_run:
+    workflows: [changelog-validate]
+    types: [completed]
+
+permissions: {}
+
+jobs:
+  submit:
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+      packages: read
+    uses: elastic/docs-actions/.github/workflows/changelog-submit.yml@v1
+    with:
+      config: changelog.yml

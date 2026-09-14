@@ -210,7 +210,7 @@ A common pattern is to first perform an initial bulk upload, then make an index 
 ```{applies_to}
 stack: ga 9.4
 ```
-For indexing-heavy workloads on large vector datasets, GPU acceleration can significantly speed up HNSW index construction and reduce the cost of merging segments into larger ones. See [GPU accelerated vector indexing](elasticsearch://reference/elasticsearch/mapping-reference/gpu-vector-indexing.md) for supported configurations and setup.
+For indexing-heavy workloads on large vector datasets, GPU acceleration can significantly speed up HNSW index construction and reduce the cost of merging segments into larger ones. See [GPU accelerated vector indexing](/solutions/search/vector/gpu-vector-indexing.md) for supported configurations and setup.
 
 
 ## Avoid heavy indexing during searches [_avoid_heavy_indexing_during_searches]

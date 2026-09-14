@@ -35,7 +35,7 @@ serverless:
   security: ga
 ```
 
-When you open an attack, its details appear in a flyout. The attack title, status, alert count, assignees, and notes appear in the flyout header. On the **Overview** tab, the discovery information is organized into the following expandable sections:
+When you open an attack, its details appear in a flyout. The attack title, status, alert count, assignees, and notes appear in the flyout header. Refer to [Details flyouts](/solutions/security/get-started/elastic-security-ui.md#details-flyouts) for the toolbar controls, footer, and child flyout navigation shared across {{elastic-sec}} flyouts. On the **Overview** tab, the discovery information is organized into the following expandable sections:
 
 * **Attack Summary**: Contains the LLM-generated summary of the potential threat and a **Background** section with additional details.
 * **Visualizations**: Contains an **Attack Chain** diagram that maps the attack to [MITRE ATT&CK](https://attack.mitre.org/) tactics. 

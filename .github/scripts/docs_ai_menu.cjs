@@ -6,17 +6,13 @@ const WORKFLOW_CONFIG = {
     label: 'Triage ([`docs-triage`](https://github.com/elastic/docs-actions/blob/main/.github/workflows/gh-aw-issue-triage.md)).',
     marker: '<!-- docs-ai-menu:triage -->',
   },
-  size: {
-    label: 'Size the work ([`docs-size`](https://github.com/elastic/docs-actions/blob/main/.github/workflows/gh-aw-issue-size.md)).',
-    marker: '<!-- docs-ai-menu:size -->',
-  },
   issueScope: {
-    label: 'Scope the docs work ([`docs-issue-scope`](https://github.com/elastic/docs-actions/blob/main/.github/workflows/gh-aw-docs-issue-scope.md)).',
+    label: 'Scope the docs work ([`docs-scope`](https://github.com/elastic/docs-actions/blob/main/.github/workflows/gh-aw-issue-scope.md)).',
     marker: '<!-- docs-ai-menu:issue-scope -->',
   },
 };
 
-const WORKFLOW_ORDER = ['triage', 'size', 'issueScope'];
+const WORKFLOW_ORDER = ['triage', 'issueScope'];
 
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');

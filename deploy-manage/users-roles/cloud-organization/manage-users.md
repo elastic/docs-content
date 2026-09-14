@@ -23,7 +23,7 @@ Alternatively, [configure {{ecloud}} SAML SSO](../../../deploy-manage/users-role
 An {{ecloud}} account can belong to multiple organizations. However, the user's roles and the resources that they have access to are controlled at the organization level.
 
 :::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/access-management
+:url: https://github.com/elastic/agent-skills@cloud-onboarding
 :::
 
 :::{tip}
@@ -55,7 +55,7 @@ To invite users to your organization:
 
 5. If desired, assign roles to the users so that they automatically get the appropriate permissions when they accept the invitation and sign in to your organization.
 
-    You can grant access to {{ech}} deployments, {{serverless-full}} projects, or connected clusters, either to all resources or scoped to specific ones. For more details, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+    You can grant access to {{ech}} deployments, {{serverless-full}} projects, or connected clusters, either to all resources or scoped to specific ones. You can also allow the user you invite to [**manage workload credentials**](/deploy-manage/users-roles/cloud-organization/user-roles.md#manage-workload-credentials), such as creating and managing their own [API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md).
 
 6. Click **Send invites**.
 
@@ -68,7 +68,7 @@ To invite users to your organization:
 
 ## Manage existing users
 
-On the **Members** tab of the **Organization** page, you can view the list of current members, including their status, role, and any other organizations that they are members of.
+On the **Members** page, you can view the list of current members, including their status, role, and any other organizations that they are members of.
 
 In the **Actions** column, click the three dots to edit a member’s role, or revoke an invite, or remove a member from your organization.
 

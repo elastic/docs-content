@@ -279,6 +279,27 @@ The API returns the following:
 }
 ```
 
+### Retrieve health data when {{kib}} uses separate task nodes [task-manager-health-multi-node]
+
+When {{kib}} runs [dedicated background task nodes](/deploy-manage/distributed-architecture/kibana-tasks-management.md#task-manager-dedicated-task-nodes), the `GET api/task_manager/_health` response depends on which node serves the request. Background task nodes return the full health information, while nodes that don't run tasks, such as UI nodes, return a response in which several execution-related fields are absent or `null`:
+
+* `stats.capacity_estimation.status` and `stats.capacity_estimation.value.observed.*`
+* `stats.runtime.value.polling.result_frequency_percent_as_number`
+* `stats.runtime.value.execution.duration` (per task type)
+* `stats.runtime.value.drift_by_type`
+
+The same limitation affects data derived from the API, such as [{{kib}} diagnostic bundles](/troubleshoot/kibana/capturing-diagnostics.md).
+
+On {{ech}} and {{ece}} deployments, API requests are always served by a UI node, so the health monitoring API can't be used to diagnose task manager issues. On self-managed and {{eck}} deployments, you can send the request directly to a background task node to get complete data.
+
+On any deployment type, you can also read the background task node's health log instead of the API:
+
+1. Open your deployment's [{{kib}} logs](/deploy-manage/monitor/logging-configuration/kibana-logging.md).
+2. Filter by the `task-manager-background-node-health` tag.
+3. Open the most recent hourly entry to get the full health payload.
+
+If a field appears in both sources, treat the background task node's value as authoritative. Only background task nodes execute tasks, so each node reports only its own view of the workload.
+
 ### Evaluate the Configuration [task-manager-health-evaluate-the-configuration]
 
 $$$task-manager-theory-reduced-polling-rate$$$

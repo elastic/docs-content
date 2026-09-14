@@ -1,5 +1,5 @@
 ---
-navigation_title: Scenario 2
+navigation_title: Specific data streams, all namespaces
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-scenario2.html
 applies_to:
@@ -10,7 +10,7 @@ products:
   - id: elastic-agent
 ---
 
-# Scenario 2: Apply an ILM policy to specific data streams generated from Fleet integrations across all namespaces [data-streams-scenario2]
+# Apply an ILM policy to specific data streams across all namespaces [data-streams-scenario2]
 
 
 Mappings and settings for data streams can be customized through the creation of `*@custom` component templates, which are referenced by the index templates created by each integration. The easiest way to configure a custom index lifecycle policy per data stream is to edit this template.
