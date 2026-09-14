@@ -454,15 +454,60 @@ The deployment is now created and encrypted using the specified key. Future snap
 
 ### Encrypt an existing deployment with your key [ec_encrypt_an_existing_deployment_with_a_customer_managed_key]
 
+You can add a customer-managed key to a deployment that is already running, from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) or from the {{ecloud}} API.
+
+**Using the {{ecloud}} Console**
+
 1. Go to your deployment's **Security** page.
 2. Under **Encryption at rest**, select **Manage encryption key**.
 3. Enter your key identifier (the ARN for {{aws}}, the key identifier for Azure, or the resource ID for Google Cloud) and save your changes.
+
+**Using the API**
+
+Encrypting an existing deployment uses a dedicated endpoint. You can't add a customer-managed key by updating a deployment's settings.
+
+1. [Get a valid {{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with the **Organization owner** role, or the **Admin** or **Editor** role on the deployment. The **Viewer** role and billing-only roles can't perform this operation.
+2. Send your key identifier to the `byok-migration` endpoint for your deployment. For example:
+
+    ```bash
+    curl -XPOST \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: ApiKey <replace with encoded API key>" \
+    "https://api.elastic-cloud.com/api/v1/deployments/<replace with deployment ID>/byok-migration" \
+    -d '
+    {
+      "key_resource_path": "<replace with your key ARN, Azure key identifier, or Google Cloud resource ID>"
+    }
+    '
+    ```
+
+    A successful request returns `"accepted": true`.
+
+The endpoint returns an error in the following cases:
+
+* `409` if the deployment is already encrypted with a different customer-managed key.
+* `409` if another plan is already pending on the deployment. Wait for that plan to finish, then retry.
+* `400` if the key can't be reached, or isn't valid for the deployment's cloud provider.
 
 {{ecloud}} then applies a plan change to encrypt your deployment's data and snapshots with your key. This plan change happens without downtime.
 
 ::::{note}
 Once you set a customer-managed key on a deployment, you cannot edit or remove it. Once encryption begins, you cannot undo it or switch to a different key. The ability to change or remove a customer-managed key will be supported on {{ech}} in the future.
 ::::
+
+#### Track the encryption progress
+
+In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), follow the plan change on your deployment's **Activity** page.
+
+From the API, get the deployment and check `metadata.byok_migration_in_progress`:
+
+```bash
+curl -XGET \
+-H "Authorization: ApiKey <replace with encoded API key>" \
+"https://api.elastic-cloud.com/api/v1/deployments/<replace with deployment ID>?show_plans=true&show_settings=true"
+```
+
+While encryption is running, `metadata.byok_migration_in_progress` is `true`. When it finishes, that field is `false` and `settings.byok.key_resource_path` holds your key identifier.
 
 #### Considerations for existing deployments
 
@@ -524,6 +569,12 @@ In a future release of {{ecloud}}, you will be able to:
 
 
 ## Troubleshooting [ec-encrypt-with-cmek-troubleshooting]
+
+**My request to encrypt an existing deployment failed with a conflict error. Why?**
+
+{{ecloud}} can only start the encryption plan change when no other plan is pending on the deployment. If you change your deployment's configuration and then add a customer-managed key straight afterwards, or if you run the operation across several deployments in a script, your request can arrive while an earlier plan is still running. Wait for the pending plan to finish, then retry.
+
+A conflict is also returned when the deployment is already encrypted with a different customer-managed key. A customer-managed key can't be changed once it's set, so in that case the operation won't succeed. Refer to [Encrypt an existing deployment with your key](#ec_encrypt_an_existing_deployment_with_a_customer_managed_key).
 
 **My deployment became inaccessible. What’s causing this?**
 
