@@ -37,7 +37,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Fixes [elastic-security-9.5.4-fixes]
 
 * Fixes bulk closing all matching alerts so they are updated when the filter uses a {{data-source}} runtime field. Previously the action reported 0 updated alerts [#288946]({{kib-pull}}288946).
-* Fixes the alert details flyout so each source event in an EQL sequence opens the correct document, instead of the wrong index or a "**"Cannot find document" error [#288541]({{kib-pull}}288541).
+* Fixes the alert details flyout so each source event in an EQL sequence opens the correct document, instead of the wrong index or a "Cannot find document" error [#288541]({{kib-pull}}288541).
 * Fixes the **Source event** link in the alert details flyout's **Highlighted fields** section so it opens the document when it lives on a cross-cluster remote or outside the Security {{data-source}} [#288336]({{kib-pull}}288336).
 * Fixes an issue where the entity summary in the entity details flyout failed to persist when the entity metadata data stream was missing [#288199]({{kib-pull}}288199).
 * Fixes process node labels in the visual event analyzer so they show the process name from the analyzed event time, not a later executable name from the same process [#287934]({{kib-pull}}287934).
