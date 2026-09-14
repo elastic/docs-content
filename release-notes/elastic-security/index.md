@@ -43,7 +43,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes the alert analysis workflow settings page so it loads without a Workflows privilege, instead of staying on a loading spinner [#287708]({{kib-pull}}287708).
 * Fixes the count label in Security donut charts so it's vertically centered [#286900]({{kib-pull}}286900).
 * Fixes {{elastic-defend}} Device Control blocking macOS system updates from completing. Also adds a warning log about potential misuse of the filter_images advanced policy setting.
-* ```
 * Fixes false malicious behavior detection alerts in {{elastic-defend}} caused by process ID reuse after a process exits.
 * Increases the {{elastic-defend}} event buffer size.
 * Updates a `c-ares` dependency in {{elastic-defend}} on Linux to resolve [CVE-2024-25629](https://github.com/c-ares/c-ares/security/advisories/GHSA-mg26-v6qh-x48q). The gRPC-bundled `c-ares` snapshot (~1.19) is unchanged and is tracked separately pending a gRPC version upgrade.
