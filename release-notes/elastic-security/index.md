@@ -296,7 +296,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where uploading a large sample log file in Automatic Import failed. Uploads now send at most 1000 samples and show a warning when additional lines are omitted [#287165]({{kib-pull}}287165).
 * Fixes an issue where Google Gemini 3.x models rejected requests that included tools with unconstrained string parameters [#286302]({{kib-pull}}286302).
 * Fixes an issue where generating threat hunting leads failed when the number of candidate entities was very large [#275970]({{kib-pull}}275970).
-* Fixes macOS updates that failed when {{elastic-defend}} **Device Control** was enabled. Also adds a warning log about potential misuse of the `filter_images` advanced policy setting.
+* Fixes {{elastic-defend}} Device Control blocking macOS system updates from completing. Also adds a warning log about potential misuse of the filter_images advanced policy setting.
 * Reduces {{elastic-defend}} CPU usage and lock contention during network cache cleanup on Linux, preventing event enrichment stalls at high connection counts.
 * Fixes false malicious behavior detection alerts in {{elastic-defend}} caused by process ID reuse after a process exits.
 * Increases the {{elastic-defend}} event buffer size.
