@@ -115,7 +115,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-Assigning `All` on `Rules` grants the full set of rule actions by default (create, edit, delete, enable, disable, and the rest). **Customize sub-feature privileges** lets you turn off specific actions for a role. For example, you can remove one capability for the role (such as enabling or disabling rules) while still granting the role access to other actions that `All` provides. 
+Assigning `All` on `Rules` grants the full set of rule actions by default (create, edit, delete, enable, disable, and the rest). **Customize sub-feature privileges** lets you turn off [specific actions](/solutions/security/get-started/security-kibana-privileges.md#rules-and-exceptions-sub-feature-privileges) for a role. For example, you can remove one capability for the role (such as enabling or disabling rules) while still granting the role access to other actions that `All` provides. 
 
 The following table illustrates this by comparing the default setup with a customized role.
 
