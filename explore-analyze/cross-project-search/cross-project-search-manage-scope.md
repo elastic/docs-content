@@ -163,8 +163,6 @@ For specific app details, refer to [{{cps-cap}} in {{observability}}](/solutions
 
 {{elastic-sec}} apps have partial {{cps-init}} support. The following table shows, for each app, whether the {{cps-init}} scope selector is available and whether you can override that scope in a query. **Read-only** means the app uses the [space default](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) and you can't change it from the header.
 
-<!-- TODO: After https://github.com/elastic/docs-content/pull/7814 merges, restore the link on "{{ml-cap}}" "read data from linked projects" to /explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope. -->
-
 | App | {{cps-init}} scope selector | Query-level overrides |
 | --- | --- | --- |
 | **Alert, event, and attack flyouts** | Read-only | Not available |
@@ -191,8 +189,8 @@ Some apps have additional {{cps-init}} behavior:
 - **Detection rules:** {{esql}} rules support `SET project_routing`. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions). Origin rules write alerts to the origin project. The **Max alerts per run** limit applies across the projects the rule queries. A rule searches only the linked projects the user who last saved it can access. For details, refer to [{{cps-cap}} and detection rules](/solutions/security/detect-and-alert/cross-project-search-detection-rules.md).
 - **{{elastic-defend}} and Osquery:** The **Endpoints** page, host details, **Response actions history**, and Osquery query results include data from linked projects. Policies, artifacts, response action dispatch, and Osquery saved queries and packs stay per project because they're managed through Fleet.
 - **Entity store:** Origin profiles include entities from every linked project. Each project still builds its own store, and risk scoring stays on the origin project. A host that appears in more than one project isn't combined into a single entity at the origin.
-- **{{ml-cap}}:** {{anomaly-detect-cap}} job {{dfeeds}} can read data from linked projects. Jobs and results are stored on the origin project. {{ml-cap}} rules alert on those stored results, including anomalies produced from linked-project data.
-- **Timeline:** Tables display documents from linked projects. Actions that don't apply to documents in linked projects are disabled.
+- **{{ml-cap}}:** {{anomaly-detect-cap}} job {{dfeeds}} can [read data from linked projects](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope). Jobs and results are stored on the origin project. {{ml-cap}} rules alert on those stored results, including anomalies produced from linked-project data. Prebuilt jobs started from **ML job settings** search all linked projects; they don't use the space default.
+- **Timeline:** Uses the space default {{cps}} scope. Tables display documents from linked projects. Actions that don't apply to documents in linked projects are disabled.
 
 ## Related pages
 
