@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Configure alert delay for rules that group matches into an episode, to reduce noise from brief spikes before the episode opens."
+description: "Configure alert delay for rules that group matches into an alert episode, to reduce noise from brief spikes before the alert episode opens."
 ---
 
 # Alert delay in the {{alerting-v2-system}} [alert-delay]
@@ -22,7 +22,7 @@ Configure alert delay when:
 Leave alert delay set to **Immediate** when:
 
 * Any single breach warrants immediate attention and you cannot tolerate the added latency of waiting for consecutive evaluations.
-* The rule records matches without grouping them into an episode.
+* The rule records matches without grouping them into an alert episode.
 
 ## Alert delay modes
 
@@ -46,17 +46,17 @@ In the YAML rule schema, these fields are prefixed with `state_transition.`. For
 | `pending_timeframe` | duration | Any duration string | How long the condition must remain breached before the alert episode opens. Appears as **Active for** in Duration mode. |
 | `pending_operator` | string | `AND` or `OR` | When both `pending_count` and `pending_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
 
-You can combine Breaches and Duration by setting both `pending_count` and `pending_timeframe`. Use `pending_operator: AND` to require both conditions before the episode opens, or `pending_operator: OR` if either condition alone is enough.
+You can combine Breaches and Duration by setting both `pending_count` and `pending_timeframe`. Use `pending_operator: AND` to require both conditions before the alert episode opens, or `pending_operator: OR` if either condition alone is enough.
 
 :::{note}
-Looking for the equivalent delay before an episode closes? Refer to [Recovery condition](configure-rule-recovery.md#recovery-delay).
+Looking for the equivalent delay before an alert episode closes? Refer to [Recovery condition](configure-rule-recovery.md#recovery-delay).
 :::
 
 ## Examples
 
 ### Ignore brief CPU spikes
 
-Create a rule that monitors CPU usage and runs every minute. A single high reading is often a process starting up. Set `pending_count` to `3` so the rule requires 3 consecutive breaches before opening an episode, meaning the condition has been true for at least 3 minutes. This filters out noise without losing real signals.
+Create a rule that monitors CPU usage and runs every minute. A single high reading is often a process starting up. Set `pending_count` to `3` so the rule requires 3 consecutive breaches before opening an alert episode, meaning the condition has been true for at least 3 minutes. This filters out noise without losing real signals.
 
 ### Require sustained breach before escalating
 
@@ -65,4 +65,4 @@ Create a rule that monitors a payment error rate. Brief spikes happen during dep
 ## Related pages
 
 - [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
-- [Recovery condition](configure-rule-recovery.md#recovery-delay): The equivalent delay before an episode closes.
+- [Recovery condition](configure-rule-recovery.md#recovery-delay): The equivalent delay before an alert episode closes.

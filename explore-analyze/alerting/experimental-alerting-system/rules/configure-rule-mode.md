@@ -16,8 +16,8 @@ Use this page to choose a mode when you create a rule, and to understand what ea
 
 | Mode | `kind` value | Behavior |
 | --- | --- | --- |
-| Signal | `signal` | {{kib}} writes a rule event with `type: signal` for each matching row. No alert episodes, no notifications. |
-| Alert | `alert` | {{kib}} writes a rule event with `type: alert` and `episode.*` fields for each matching row. The alert episode's ID is `episode.id`. Alert episodes are tracked through lifecycle states, appear on the **Alerts** page, and can be routed to workflows by action policies. |
+| Signal | `signal` | {{kib}} writes a rule event with `type: signal` for each matching row. These events stay in `.rule-events` for later analysis. They don't appear on **Alerts** and don't trigger notifications. |
+| Alert | `alert` | {{kib}} writes a rule event with `type: alert` and `episode.*` fields for each matching row. Events that share `episode.id` belong to the same [alert episode](../alerts.md). Alert episodes are tracked through lifecycle states, appear on the **Alerts** page, and can be routed to workflows by action policies. |
 
 Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view and triage alert episodes.
 

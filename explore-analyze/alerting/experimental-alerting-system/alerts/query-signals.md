@@ -1,5 +1,5 @@
 ---
-navigation_title: Query signals
+navigation_title: Query rule events
 applies_to:
   stack: experimental 9.5+
   serverless: experimental
@@ -21,11 +21,11 @@ The examples on this page use {{esql}} (`FROM .rule-events`). You don't need a d
 
 ## Key fields for these queries [signal-key-fields]
 
-These fields matter most when you query `.rule-events`. Filter with `type == "signal"` to exclude events that belong to an alert episode.
+These fields matter most when you query `.rule-events`. Filter with `type == "signal"` to exclude events with `type: alert`.
 
 | Field | Why it matters |
 |---|---|
-| `type` | Filter with `type == "signal"` to exclude events that belong to an alert episode. |
+| `type` | Filter with `type == "signal"` to exclude events with `type: alert`. |
 | `@timestamp` | When {{kib}} wrote the document. Use for time ranges and sorting. |
 | `rule.id` | Scope results to one rule. |
 | `status` | Always `breached` for events with `type: signal`. These events don't include `recovered` or `no_data`. |
@@ -78,7 +78,7 @@ FROM .rule-events
 | WHERE event_count > 10
 ```
 
-When this follow-on rule finds a match, {{kib}} writes a rule event and opens an alert episode. An action policy can evaluate the alert episode and invoke a workflow. The first rule keeps recording without paging anyone on every individual call.
+When this follow-on rule finds a match, {{kib}} writes a rule event with `type: alert`. An action policy can evaluate the alert episode and invoke a workflow. The first rule keeps recording without paging anyone on every individual call.
 
 :::{tip}
 You can also correlate events from more than one rule in a single query, for example combining administrator API call events with error-rate events, so neither source pages on its own.
@@ -97,7 +97,7 @@ Because `.rule-events` is append-only, dashboards show the full history retained
 ## Related pages
 
 - [Rule mode](../rules/configure-rule-mode.md): How configuration determines whether {{kib}} opens an alert episode or keeps matches available for later analysis.
-- [Rule events](../rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how `type` relates to alert episodes.
+- [Rule events](../rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how `type` relates to rule `kind`.
 - [Rule event data model](rule-event-data-model.md): Shared `.rule-events` schema for `signal` and `alert` events.
 - [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Alert episode lifecycle, triage history, and incident-tracing queries.
 - [How the {{alerting-v2-system}} works](../how-it-works.md#how-signal-mode-works): End-to-end walkthrough of the path where a rule writes events with `type: signal` for later analysis.

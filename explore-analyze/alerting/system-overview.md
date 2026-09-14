@@ -21,7 +21,7 @@ In the generally available {{kib}} alerting system, the term **alert** refers to
 
 ## The core idea [core-idea]
 
-The {{alerting-v2-system}} starts with a rule evaluating your data on a schedule. When the rule detects a match, {{kib}} writes a rule event to `.rule-events`. The rule's configuration determines whether those events are grouped into an alert episode and can notify. Events that aren't part of an episode remain available for later analysis. 
+The {{alerting-v2-system}} starts with a rule evaluating your data on a schedule. When the rule detects a match, {{kib}} writes a rule event to `.rule-events`. The rule's configuration determines whether those events are grouped into an [alert episode](experimental-alerting-system/alerts.md) and can notify. Events that aren't part of an alert episode remain available for later analysis.
 
 :::{image} /explore-analyze/images/basic-system-flow.png
 :alt: Flowchart showing a rule detecting a match, Kibana writing a rule event, then either grouping that event into an alert episode or keeping it with no episode for later analysis
@@ -45,9 +45,9 @@ Refer to [Rule events](experimental-alerting-system/rules/rule-event-field-refer
 
 ### Alert episodes
 
-An alert episode tracks one problem from first detection through recovery, so you triage one lifecycle per problem.
+An [alert episode](experimental-alerting-system/alerts.md) tracks one problem from first detection through recovery, so you triage one lifecycle per problem.
 
-Refer to [Alert episodes](experimental-alerting-system/alerts.md) to learn more.
+Refer to [Alerts](experimental-alerting-system/alerts.md) to learn more.
 
 ### Action policies
 
@@ -71,7 +71,7 @@ The following diagram is a more detailed version of the same flow. It places the
 
 Every match still becomes a rule event. From there, the rule's configuration determines the next step:
 
-* **Alert episode** - {{kib}} groups the event into an episode. An action policy evaluates the episode and can invoke a workflow, which sends the notification or runs the automation.
+* **Alert episode** - {{kib}} groups the event into an [alert episode](experimental-alerting-system/alerts.md). An action policy evaluates the alert episode and can invoke a workflow, which sends the notification or runs the automation.
 
 * **No episode** - The event stays in `.rule-events` for later analysis. You can [query it in Discover](experimental-alerting-system/alerts/query-signals.md), build dashboards, or feed it into another rule. Rule events that aren't part of an alert episode (`type: signal`) don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers.
 

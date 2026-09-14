@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Add tags and runbooks to rules that group matches into an episode, for filtering and investigation context."
+description: "Add tags and runbooks to rules that group matches into an alert episode, for filtering and investigation context."
 ---
 
 # Tags and runbooks in the {{alerting-v2-system}} [tags-investigation]
@@ -19,8 +19,8 @@ Tags and runbooks are optional artifacts for rules that group matches into an al
 
 Configure tags when:
 
-* You want to filter episodes by team, environment, or severity tier on the **Alerts** page (find **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**) without writing a custom KQL query each time.
-* You are using action policies and want to match episodes by ownership or category rather than by rule name. Tags are inherited by alert episodes, so any tag you add to a rule is available as a KQL matcher in action policies.
+* You want to filter alert episodes by team, environment, or severity tier on the **Alerts** page (find **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**) without writing a custom KQL query each time.
+* You are using action policies and want to match alert episodes by ownership or category rather than by rule name. Tags are inherited by alert episodes, so any tag you add to a rule is available as a KQL matcher in action policies.
 * You manage many rules and need a consistent labeling scheme to track which team owns which alerts.
 
 Configure a runbook when:
@@ -30,7 +30,7 @@ Configure a runbook when:
 
 Skip tags and runbooks when:
 
-* The rule records matches without grouping them into an episode.
+* The rule records matches without grouping them into an alert episode.
 * The rule is experimental or not yet part of a monitored production system.
 
 ## Examples
@@ -43,7 +43,7 @@ Tags let you filter alerts by team, environment, or severity tier. For a checkou
 - `env:production`
 - `sev:p1`
 
-On-call engineers can then narrow the **Alerts** page to rules their team owns without scanning every active episode.
+On-call engineers can then narrow the **Alerts** page to rules their team owns without scanning every active alert episode.
 
 ### Add a runbook with triage steps
 
@@ -63,4 +63,4 @@ Triage steps:
 
 - [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
 - [View and manage rules](view-manage-rules.md): Filter the rules list by tag and view a rule's runbook from the rule details page.
-- [View and manage alerts](../alerts/view-and-manage-alerts.md): Filter the **Alerts** page by tag to narrow episodes to your team's rules.
+- [View and manage alerts](../alerts/view-and-manage-alerts.md): Filter the **Alerts** page by tag to narrow alert episodes to your team's rules.

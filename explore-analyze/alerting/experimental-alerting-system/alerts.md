@@ -10,7 +10,7 @@ description: "Alert episodes in the experimental alerting system track a problem
 
 # Alerts in the {{alerting-v2-system-cap}} [alerts]
 
-In the {{alerting-v2-system}}, {{kib}} tracks each problem as an **alert episode**, the full lifecycle of a condition from first detection through recovery. {{kib}} writes a [rule event](rules/rule-event-field-reference.md) for each matching row. An alert episode is the grouping of those events that share the alert episode's ID, `episode.id`.
+In the {{alerting-v2-system}}, {{kib}} tracks each problem as an **alert episode**: the grouping of [rule events](rules/rule-event-field-reference.md) that share `episode.id`, from first detection through recovery.
 
 This page explains the core concepts you need to work with the {{alerting-v2-system}}: how alert episodes move through lifecycle states, and how series group alert episodes over time for the same monitored subject.
 
@@ -66,7 +66,7 @@ From here, you can view, manage, and query alert episode data, and query `.rule-
 - [Rule events](rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how those events belong to an alert episode.
 - [Rule event data model](alerts/rule-event-data-model.md): Where rule events are stored and how they differ by `type`.
 - [Query {{alerting-v2-system}} alert history in Discover](alerts/query-alerts-and-signals-in-discover.md): Use {{esql}} to query `.rule-events` and `.alert-actions` for exploratory analysis and dashboards.
-- [Query signals](alerts/query-signals.md): Query events with `type: signal` in Discover and use them as input to a rule that opens an alert episode.
+- [Query signals](alerts/query-signals.md): Query events with `type: signal` in Discover and use them as input to a follow-on rule that opens an alert episode.
 
 :::{important} - How to use the {{alerting-v2-system}} documentation
 Because the {{alerting-v2-system}} is still evolving, its UI can change before general availability. Rather than pointing to an exact button or menu, the documentation focuses on the underlying concepts and behavior. If something doesn't match what you see in the {{kib}} UI, look for the closest equivalent instead. The concepts and behaviors described in the documentation still apply.

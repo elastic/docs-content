@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Query experimental alerting data in Discover with .rule-events and .alert-actions field schemas. Reference tables list shared rule event fields, episode-only fields, and all action_type values."
+description: "Query experimental alerting data in Discover with .rule-events and .alert-actions field schemas. Reference tables list shared rule event fields, episode.* fields, and all action_type values."
 ---
 
 # Rule event and alert action field reference [field-reference]
@@ -13,7 +13,7 @@ description: "Query experimental alerting data in Discover with .rule-events and
 This page is a field reference for the {{alerting-v2-system}}. It documents the fields written to the two data streams that back rule output and triage data:
 
 - **`.rule-events` field schema**: Fields written on each [rule event](../rules/rule-event-field-reference.md). Events with `type: signal` and events that belong to an alert episode (`type: alert`) share this stream and most fields. The `episode.*` fields appear only on events with `type: alert`.
-- **`.alert-actions` field schema**: Fields written when a user or the system acts on an episode, including all `action_type` values.
+- **`.alert-actions` field schema**: Fields written when a user or the system acts on an alert episode, including all `action_type` values.
 
 Use these schemas when writing {{esql}} queries in Discover, interpreting alert UI state, or aligning API payloads with stored data.
 
@@ -30,13 +30,13 @@ The **`signal`** and **`alert`** columns show which `type` values include the fi
 | `rule.id` | keyword | ✅ | ✅ | ID of the rule that produced this event. |
 | `rule.version` | long | ✅ | ✅ | Version of the rule at evaluation time. |
 | `group_hash` | keyword | ✅ | ✅ | Identifies the series this event belongs to. |
-| `status` | keyword | ✅ | ✅ | Outcome of a single evaluation row, independent of episode lifecycle. Events with `type: signal` are always `breached`. Events with `type: alert` can be `breached`, `recovered`, or `no_data`. |
-| `type` | keyword | ✅ | ✅ | Event kind: `signal` (not part of an episode) or `alert` (part of an alert episode). |
+| `status` | keyword | ✅ | ✅ | Outcome of a single evaluation row, independent of alert episode lifecycle. Events with `type: signal` are always `breached`. Events with `type: alert` can be `breached`, `recovered`, or `no_data`. |
+| `type` | keyword | ✅ | ✅ | Event kind: `signal` (not part of an alert episode) or `alert` (part of an alert episode). |
 | `severity` | keyword | ✅ | ✅ | Optional. Set on `breached` events when the query emits a recognized value. Can be one of the following: `info`, `low`, `medium`, `high`, `critical`. Not set on `recovered` or `no_data` events. |
 | `data` | flattened | ✅ | ✅ | Rule-defined payload from the source query. |
 | `source` | keyword | ✅ | ✅ | Source that produced the event. |
 | `space_id` | keyword | ✅ | ✅ | {{kib}} space where the rule lives. |
-| `episode.id` | keyword | — | ✅ | ID of the alert episode this event belongs to. Events that share this value are the same episode. |
+| `episode.id` | keyword | — | ✅ | ID of the alert episode this event belongs to. Events that share this value are the same alert episode. |
 | `episode.status` | keyword | — | ✅ | Lifecycle state of the alert episode at this evaluation. Can be one of the following: `inactive`, `pending`, `active`, `recovering`. |
 | `episode.status_count` | long | — | ✅ | Count of consecutive evaluations in the current `episode.status`. Set only for `pending` or `recovering`. |
 
@@ -48,15 +48,15 @@ When a user or the system records an action on an alert episode, {{kib}} writes 
 |---|---|---|
 | `@timestamp` | date | When {{kib}} wrote this action document. |
 | `episode_id` | keyword | ID of the alert episode. |
-| `episode_status` | keyword | Lifecycle state of the episode at the time of this action. Can be one of the following: `inactive`, `pending`, `active`, `recovering`. |
+| `episode_status` | keyword | Lifecycle state of the alert episode at the time of this action. Can be one of the following: `inactive`, `pending`, `active`, `recovering`. |
 | `rule_id` | keyword | ID of the rule that owns the alert episode. |
-| `group_hash` | keyword | Identifies the series the episode belongs to. |
+| `group_hash` | keyword | Identifies the series the alert episode belongs to. |
 | `action_type` | keyword | Identifies what happened and who initiated it. For more information, refer to [Action type values](#action-type-values). |
 | `actor` | keyword | User who performed the action. Null for system-written action types. |
 | `assignee_uid` | keyword | Target user for `assign` actions. |
 | `last_series_event_timestamp` | date | Timestamp of the most recent event in the series, as of when this action occurred. |
 | `expiry` | date | When the snooze expires. Only set for `snooze` actions. |
-| `action_group_id` | keyword | The action group the episode belonged to at the time of this action. |
+| `action_group_id` | keyword | The action group the alert episode belonged to at the time of this action. |
 | `source` | keyword | Source that triggered the action. |
 | `tags` | keyword[] | Tag values written by `tag` actions. |
 | `reason` | text | Reason provided for `activate` or `deactivate` actions. |
@@ -68,26 +68,26 @@ Every `.alert-actions` document has an `action_type` that identifies what happen
 
 | Value | Written by | What happened |
 |---|---|---|
-| `ack` | user | Acknowledged the episode |
+| `ack` | user | Acknowledged the alert episode |
 | `unack` | user | Removed the acknowledgment |
 | `assign` | user | Assigned to a user (`assignee_uid`) |
 | `tag` | user | Added tags |
 | `snooze` | user | Snoozed until `expiry` |
 | `unsnooze` | user | Removed the snooze |
-| `activate` | user | Manually activated the episode |
-| `deactivate` | user | Manually deactivated the episode, resuming automatic recovery without closing it |
-| `resolve` | user | Closed the episode |
-| `unresolve` | user | Reopened a resolved episode |
-| `fire` | system | Episode opened or continued |
+| `activate` | user | Manually activated the alert episode |
+| `deactivate` | user | Manually deactivated the alert episode, resuming automatic recovery without closing it |
+| `resolve` | user | Closed the alert episode |
+| `unresolve` | user | Reopened a resolved alert episode |
+| `fire` | system | Alert episode opened or continued |
 | `notified` | system | Workflow invoked |
 | `suppress` | system | Notification throttled by the frequency limit |
-| `unmatched` | system | No action policy matched the episode |
+| `unmatched` | system | No action policy matched the alert episode |
 
 ## Related pages
 
 - [Rule events](../rules/rule-event-field-reference.md): What a rule event is and how it connects to alert episodes.
 - [Rule event data model](rule-event-data-model.md): How events with `type: signal` and events that belong to an alert episode (`type: alert`) share `.rule-events`.
 - [Query signals](query-signals.md): Query examples for events with `type: signal` in Discover.
-- [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Episode and triage query examples.
+- [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Alert episode and triage query examples.
 - [View and manage alerts](view-and-manage-alerts.md): Monitor and filter alert episodes in the UI.
 - [Triage alert episodes](triage-alert-episodes.md): UI actions that write `.alert-actions` documents.

@@ -18,23 +18,23 @@ Use these fields in the **Match conditions** expression to filter which alert ep
 
 | Field | Description | Example |
 |---|---|---|
-| `episode_id` | Unique identifier of the alert episode. | `episode_id: "ep-001"` <br> Match a specific episode by ID. |
-| `episode_status` | Current lifecycle status of the alert episode. One of `inactive`, `pending`, `active`, or `recovering`. | `episode_status: "active"` <br> Match only active episodes. |
-| `severity` | Current severity level. One of `info`, `low`, `medium`, `high`, or `critical`. Populated when the rule's {{esql}} query includes a `severity` column. Not set during recovery; severity-scoped matchers only match open episodes. Severity can change mid-episode without reopening it — action policy matching picks up the new value on the next dispatcher cycle. For how to configure severity in a rule, refer to [Severity](../rules/configure-rule-severity.md). | `severity: "critical" OR severity: "high"` <br> Route high-priority episodes to a dedicated workflow. |
-| `group_hash` | Stable hash identifying the alert series the episode belongs to. | `group_hash: "abc123"` <br> Match all episodes in a specific alert series. |
-| `last_event_timestamp` | ISO 8601 timestamp of the most recent event recorded for the episode. | `last_event_timestamp > "2026-01-01"` <br> Match episodes with activity after a specific date. |
-| `rule.id` | Unique identifier of the rule that generated the episode. | `rule.id: "rule-001"` <br> Match episodes from one specific rule. |
-| `rule.name` | Display name of the rule. | `rule.name: "High CPU"` <br> Match episodes from rules with this display name. |
-| `rule.tags` | Tags attached to the rule. | `rule.tags: "payment-service"` <br> Match episodes from all rules with this tag. |
-| `data.*` | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard fields in this table. | `data.host.name: "web-01"` <br> Match episodes from a specific host in a host-based rule. |
+| `episode_id` | Unique identifier of the alert episode. | `episode_id: "ep-001"` <br> Match a specific alert episode by ID. |
+| `episode_status` | Current lifecycle status of the alert episode. One of `inactive`, `pending`, `active`, or `recovering`. | `episode_status: "active"` <br> Match only active alert episodes. |
+| `severity` | Current severity level. One of `info`, `low`, `medium`, `high`, or `critical`. Populated when the rule's {{esql}} query includes a `severity` column. Not set during recovery; severity-scoped matchers only match open alert episodes. Severity can change during an alert episode without reopening it — action policy matching picks up the new value on the next dispatcher cycle. For how to configure severity in a rule, refer to [Severity](../rules/configure-rule-severity.md). | `severity: "critical" OR severity: "high"` <br> Route high-priority alert episodes to a dedicated workflow. |
+| `group_hash` | Stable hash identifying the alert series the alert episode belongs to. | `group_hash: "abc123"` <br> Match all alert episodes in a specific alert series. |
+| `last_event_timestamp` | ISO 8601 timestamp of the most recent event recorded for the alert episode. | `last_event_timestamp > "2026-01-01"` <br> Match alert episodes with activity after a specific date. |
+| `rule.id` | Unique identifier of the rule that generated the alert episode. | `rule.id: "rule-001"` <br> Match alert episodes from one specific rule. |
+| `rule.name` | Display name of the rule. | `rule.name: "High CPU"` <br> Match alert episodes from rules with this display name. |
+| `rule.tags` | Tags attached to the rule. | `rule.tags: "payment-service"` <br> Match alert episodes from all rules with this tag. |
+| `data.*` | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard fields in this table. | `data.host.name: "web-01"` <br> Match alert episodes from a specific host in a host-based rule. |
 
 ## Notify per options [action-policy-notification-grouping]
 
-Controls how the action policy batches matching episodes before invoking a workflow.
+Controls how the action policy batches matching alert episodes before invoking a workflow.
 
 | Option | Description | When to use |
 |---|---|---|
-| Episode | The action policy invokes a workflow once for each alert episode, independently of other episodes. Default selection. | You need issue-level visibility and want to handle each problem separately. |
+| Episode | The action policy invokes a workflow once for each alert episode, independently of other alert episodes. Default selection. | You need issue-level visibility and want to handle each problem separately. |
 | Group | The action policy bundles alert episodes that share the same value for a specified `data.*` field into one workflow invocation for each unique value. Each unique value forms a **notification group**. | A rule produces many related alert episodes, such as one for each service or host, and you want to reduce noise by batching them into shared notifications. |
 | Digest | The action policy combines all matching alert episodes into a single workflow invocation, regardless of what they have in common. | You want a single periodic summary of everything that matched, rather than individual alert episodes. |
 
@@ -61,7 +61,7 @@ Available frequency options when you set **Notify per** to **Episode**.
 |---|---|---|
 | On status change | Invokes a workflow once when the alert episode opens and once when it recovers. No repeat notifications while it remains active. | A host goes down at 9:00am → one notification. Recovers at 11:00am → one notification. No notifications between them. |
 | On status change + repeat at interval | Same as On status change, but also sends a reminder at a set interval while the alert episode is still active. | A host goes down at 9:00am → notification. With a 1h repeat: reminder at 10:00am, 11:00am. Recovers at 11:30am → notification. |
-| At most once every… | Limits notifications at one for the episode within the chosen interval, regardless of severity or status changes. Use to re-notify for an episode that stays active without a status change. Refer to [Re-notify for persistently active episodes](re-notification.md). | A critical episode stays open for 3 hours. With a 1h limit, you get a notification when it opens and again every hour it remains open. |
+| At most once every… | Limits notifications at one for the alert episode within the chosen interval, regardless of severity or status changes. Use to re-notify for an alert episode that stays active without a status change. Refer to [Re-notify for persistently active alert episodes](re-notification.md). | A critical alert episode stays open for 3 hours. With a 1h limit, you get a notification when it opens and again every hour it remains open. |
 | Every evaluation | Invokes a workflow on every rule evaluation, regardless of status. Can be noisy on frequent rule schedules. Avoid in production. | A rule running every 5 minutes with one active alert episode produces up to 288 notifications a day. |
 
 ### Frequency options for Group [action-policy-frequency-group]

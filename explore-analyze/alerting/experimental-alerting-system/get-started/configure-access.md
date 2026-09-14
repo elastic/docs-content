@@ -97,9 +97,9 @@ Action policies invoke workflows, which send notifications. The **Workflows** pr
 | **All** | Create and edit workflows; view and select existing workflows in action policies |
 | **Read** | View and select existing workflows in action policies |
 
-## Query rule output and episode data [alerting-data-investigation-privileges]
+## Query rule output and alert episode data [alerting-data-investigation-privileges]
 
-The {{alerting-v2-system}} writes rule output and episode data to three queryable data sources. To query them in Discover using {{esql}}, your role needs {{kib}} feature access and {{es}} index access.
+The {{alerting-v2-system}} writes rule output and alert episode data to three queryable data sources. To query them in Discover using {{esql}}, your role needs {{kib}} feature access and {{es}} index access.
 
 ### {{kib}} feature access
 
@@ -126,6 +126,6 @@ For `.rule-events` and `.alert-actions`, {{es}} `read` access is bundled into th
 
 With access configured, you're ready to:
 
-- [Create a rule](../rules/create-a-rule.md): Write the {{esql}} query that defines what to detect, set whether matches are grouped into an episode, and configure grouping and thresholds.
+- [Create a rule](../rules/create-a-rule.md): Write the {{esql}} query that defines what to detect, set whether matches are grouped into an alert episode, and configure grouping and thresholds.
 - [Set up workflows](../notifications-actions.md): Configure the automation objects that deliver notifications — email, Slack, webhook, and so on.
-- [Create action policies](../action-policies/create-configure-action-policy.md): Define which episodes invoke a workflow, how often, and under what conditions.
+- [Create action policies](../action-policies/create-configure-action-policy.md): Define which alert episodes invoke a workflow, how often, and under what conditions.
