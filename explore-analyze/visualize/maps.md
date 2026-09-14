@@ -77,7 +77,7 @@ Check out [Search geographic data](../../explore-analyze/visualize/maps/maps-sea
 
 ### Search across linked projects [maps-cps]
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 
