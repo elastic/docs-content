@@ -39,7 +39,7 @@ Create a {{data-source}} to make your own {{es}} data available in **Discover**,
    If you have a high number of matching sources, not all of them might show:
 
     * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The preview can show up to 10,000 sources.
-    * {applies_to}`stack: ga 8.19-9.5` The preview can show up to 100 sources.
+    * {applies_to}`stack: ga 9.0-9.5` The preview can show up to 100 sources.
 
    ![Create data view](/explore-analyze/images/kibana-create-data-view.png "")
 
