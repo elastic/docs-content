@@ -117,7 +117,7 @@ Make sure to also review the [search performance impacts](#cps-search-performanc
 
 ## Search performance impacts [cps-search-performance]
 
-When you search across linked projects, each query coordinates across multiple projects before returning results. This adds a small amount of latency compared to searching a single project. Individual queries that include a linked project can add up to 30 ms of additional latency (P99).
+When you search across linked projects, each query coordinates across multiple projects before returning results. This adds a small amount of latency compared to searching a single project. The overhead is generally measured in milliseconds and depends on factors like response size and query complexity.
 
 Queries that cross region or cloud provider boundaries have higher latency due to network distance.
 
