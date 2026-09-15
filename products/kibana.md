@@ -136,14 +136,23 @@ links:
 :::
 
 :::{link-card}
-title: Releases and APIs
+title: Release notes
 links:
-  - label: Release notes
+  - label: Kibana
     url: kibana://release-notes/index.md
-  - label: Kibana API docs
-    url: https://www.elastic.co/docs/api/doc/kibana
+  - label: Serverless
+    url: /release-notes/elastic-cloud-serverless/index.md
   - label: Breaking changes
     url: kibana://release-notes/breaking-changes.md
+:::
+
+:::{link-card}
+title: APIs
+links:
+  - label: Kibana API
+    url: https://www.elastic.co/docs/api/doc/kibana
+  - label: Serverless Kibana API
+    url: https://www.elastic.co/docs/api/doc/serverless-kibana
 :::
 
 :::{link-card}
@@ -155,15 +164,6 @@ links:
     url: kibana://reference/advanced-settings.md
   - label: Security settings
     url: kibana://reference/configuration-reference/security-settings.md
-:::
-
-:::{link-card}
-title: Operations
-links:
-  - label: Upgrade Kibana
-    url: /deploy-manage/upgrade/deployment-or-cluster/kibana.md
-  - label: Run in production
-    url: /deploy-manage/production-guidance/kibana-in-production-environments.md
 :::
 ::::
 
