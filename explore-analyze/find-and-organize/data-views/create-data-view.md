@@ -36,10 +36,11 @@ Create a {{data-source}} to make your own {{es}} data available in **Discover**,
 2. In the **Name** field, enter a name for the {{data-source}}.
 3. In the **Index pattern** field, enter a pattern. {{kib}} looks for the names of indices, data streams, and aliases that match your input. You can view all available sources or only the sources that the data view targets.
 
-   ![Create data view](/explore-analyze/images/kibana-create-data-view.png "")
-
     * {applies_to}`stack: ga 8.19-9.5` The preview can show up to 100 sources.
     * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The preview can show up to 10,000 sources.
+
+   ![Create data view](/explore-analyze/images/kibana-create-data-view.png "")
+
     * To match multiple sources, use a wildcard (`*`). `filebeat-*` matches `filebeat-apache-a`, `filebeat-apache-b`, and so on.
     * To match several individual sources, enter their names, separated by a comma, with no space after the comma. `filebeat-a,filebeat-b` matches two indices.
     * To exclude a source, use a minus sign (`-`), for example `-test3`.
