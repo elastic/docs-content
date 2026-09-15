@@ -1198,3 +1198,13 @@ redirects:
       'find-cloud-id-serverless': 'find-endpoint-cloud-self-managed'
       'create-an-api-key-serverless': 'create-an-api-key-cloud-self-managed'
 
+  # Move Elastic Cloud Serverless FAQ to a child page
+  'deploy-manage/deploy/elastic-cloud/serverless.md':
+    many:
+    - to: 'deploy-manage/deploy/elastic-cloud/serverless-faq.md'
+      anchors:
+        'general-what-is-serverless-elastic-answers-to-common-serverless-questions':
+    - to: 'deploy-manage/cloud-organization/service-status.md'
+      anchors:
+        'general-serverless-status':
+

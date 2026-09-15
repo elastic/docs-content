@@ -5,27 +5,34 @@ applies_to:
   serverless:
 products:
   - id: cloud-serverless
+navigation_title: Create a serverless project
+type: how-to
 ---
 
-# Create a serverless project [serverless-get-started]
+# Create an {{serverless-full}} project [serverless-get-started]
 
 :::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
 :::
 
-Choose the type of project that matches your needs to get started with our solution guides.
+## Before you begin
 
-![elasticsearch](../../images/64x64_Color_elasticsearch-logo-color-64px.png "elasticsearch =30") **Elasticsearch**  
-Build custom search-powered applications with {{es}}.  
-[**View guide →**](/solutions/search/get-started.md)
+Decide which project type you might need before you create the project. You'll select a type during setup. To match a type to your use case, review this [project comparison table](/solutions/index.md#choose-your-path).
 
-![vectordatabase](../../images/64x64_Color_vectordb-logo-color-64px.png "vectordatabase =30") **{{es}} {{vectordb}}**  
-Build vector-centric applications for semantic search, RAG, or AI retrieval, with built-in inference and vector-optimized defaults.  
-[**View guide →**](/solutions/vector-database/get-started.md)
+Although you can't convert the project to a different type later, you can [delete a project](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless) and create another one.
 
-![observability](../../images/64x64_Color_observability-logo-color-64px.png "observability =30") **Observability**  
-Monitor applications and systems with Elastic Observability.  
-[**View guide →**](/solutions/observability/get-started.md)
+## Create a project in the {{ecloud}} console [create-project-console]
 
-![security](../../images/64x64_Color_security-logo-color-64px.png "security =30") **Security**  
-Detect, investigate, and respond to threats with Elastic Security.  
-[**View guide →**](/solutions/security/get-started.md#create-sec-serverless-project)
+The steps to create a {{serverless-short}} project are the same regardless of which project type you select.
+
+1. On the {{ecloud}} home page, find the **Serverless projects** panel and select **Create project**.
+2. Select a project type that matches your use case, then select **Next**. If you're not sure which type to choose, refer to our [project type comparison](serverless.md#get-started).
+3. Enter a name for your project.
+4. Select a cloud provider and region. For available regions, refer to [](/deploy-manage/deploy/elastic-cloud/regions.md).
+
+    Depending on the project type, you can also configure additional settings, such as a feature tier. For more information, review the [settings available for each project type](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+5. Select **Create project**. It takes a few minutes to create your project.
+6. When the project is ready, select **Continue** to open it. You might need to log in to {{ecloud}} again.
+
+:::{include} /deploy-manage/deploy/_snippets/serverless-kibana-blank-page.md
+:::
+
