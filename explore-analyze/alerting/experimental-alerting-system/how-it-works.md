@@ -38,7 +38,7 @@ Steps 4–6 and 8–9 run on a separate background process that polls roughly ev
 An SRE team wants to know when checkout service latency degrades, and notify the on-call team when it does. The team creates a rule that opens an alert episode:
 
 1. The rule runs an {{esql}} query every five minutes, checking p95 checkout service latency.
-2. When p95 exceeds 2 seconds for two consecutive checks, those events belong to an alert episode.
+2. The first check where p95 exceeds 2 seconds opens an alert episode in `pending`. A second consecutive breach moves it to `active`.
 3. An action policy with a `rule.tags: "checkout"` matcher invokes an on-call workflow that sends a Slack message.
 
 The engineer investigates, fixes a slow query, and the alert episode recovers automatically.
