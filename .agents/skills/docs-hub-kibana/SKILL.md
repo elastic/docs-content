@@ -57,7 +57,7 @@ Solutions intro: "Solutions are packages of Elastic capabilities optimized for c
 
 Elasticsearch card: Overview, Get started, Agent Builder, Query rules, Content connectors. Do not link Playground. It is deprecated in 9.4+ and on Serverless.
 
-Icons: only keys in docs-builder `ProductIcons` (`elasticsearch`, `kibana`, `observability`, `security`, `vectordb`). `vectordb` is the EUI `logoVectorDB` mark (docs-builder PR that adds it). Do not invent or hand-draw a logo. The icon will not render in preview until that docs-builder change is in the builder the preview uses.
+Icons: only keys in docs-builder `ProductIcons` (`elasticsearch`, `kibana`, `observability`, `security`, `vectordb`). `vectordb` is the EUI `logoVectorDB` mark. Do not invent or hand-draw a logo.
 
 ## Card titles and links
 
