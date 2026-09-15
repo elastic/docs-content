@@ -16,8 +16,7 @@ products:
 :::
 
 :::{get-started}
-title: Get started in 3 steps
-intro: Spin up Elasticsearch and Kibana, connect your data, and start exploring in minutes.
+title: Get started with Kibana
 steps:
   - title: Run Elasticsearch and Kibana
     options:
