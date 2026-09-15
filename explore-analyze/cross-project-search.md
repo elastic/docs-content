@@ -1,7 +1,7 @@
 ---
 applies_to:
   stack: unavailable
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
 description: Learn how cross-project search (CPS) enables you to search across multiple Serverless projects from a single request.

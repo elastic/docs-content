@@ -18,7 +18,7 @@ Most users don't need these pages during initial setup. Review them if any of th
 **[{{ccs-cap}} and detection rules](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md)** {applies_to}`stack: ga`
 :   Relevant if your data is spread across multiple {{es}} clusters and you need detection rules on one cluster to query indices on another. Covers establishing trust between clusters, remote cluster connections, and how to reference remote indices in rule index patterns.
 
-**[{{cps-cap}} and detection rules](/solutions/security/detect-and-alert/cross-project-search-detection-rules.md)** {applies_to}`serverless: preview`
+**[{{cps-cap}} and detection rules](/solutions/security/detect-and-alert/cross-project-search-detection-rules.md)** {applies_to}`serverless: ga`
 :   Relevant if you use {{cps}} to query data across linked {{serverless-short}} projects. Explains which projects a rule searches, where its alerts are stored, and how the alert limit applies across them.
 
 **[Using logsdb index mode with {{elastic-sec}}](/solutions/security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md)**
