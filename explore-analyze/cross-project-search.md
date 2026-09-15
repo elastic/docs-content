@@ -35,6 +35,8 @@ Cross-project search is available for {{serverless-full}} projects only. For oth
 ::::{include} /explore-analyze/cross-project-search/_snippets/cps-default-search-behavior.md
 ::::
 
+Searching across linked projects adds a small amount of latency compared to searching a single project. For details, refer to [{{cps-init}} search performance impacts](/deploy-manage/cross-project-search-config.md#cps-search-performance).
+
 ## Project linking
 
 In {{serverless-short}}, projects can be linked together. Projects can be linked across cloud providers and regions.

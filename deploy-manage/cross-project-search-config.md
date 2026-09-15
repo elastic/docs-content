@@ -108,12 +108,18 @@ After reviewing the architecture patterns, you can configure {{cps-init}} scope 
 1. [Manage user access and programmatic access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): Confirm user roles in both the origin and linked projects, as well as roles granted to [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md#roles) that will be used with {{cps}}.
 1. [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md): Link projects in the {{ecloud}} UI, manage linked projects, and unlink projects.
 
-Make sure to also review the [feature impacts](#cps-feature-impacts) and [limitations](#cps-limitations) of {{cps-init}}.
+Make sure to also review the [search performance impacts](#cps-search-performance), [feature impacts](#cps-feature-impacts), and [limitations](#cps-limitations) of {{cps-init}}.
 
 ## Billing [cps-billing]
 
 ::::{include} /deploy-manage/_snippets/cps-billing.md
 ::::
+
+## Search performance impacts [cps-search-performance]
+
+When you search across linked projects, each query coordinates across multiple projects before returning results. This adds a small amount of latency compared to searching a single project. The overhead is generally measured in milliseconds and depends on factors like response size and query complexity.
+
+Queries that cross region or cloud provider boundaries have higher latency due to network distance.
 
 ## Feature impacts [cps-feature-impacts]
 

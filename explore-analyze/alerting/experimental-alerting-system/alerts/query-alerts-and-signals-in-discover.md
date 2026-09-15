@@ -10,19 +10,21 @@ description: "Use ES|QL in Discover to replay incidents, audit triage actions, a
 
 # Query {{alerting-v2-system}} alert history in Discover [query-alert-history-discover]
 
-Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**. The **Alerts** page shows current episode state. Discover lets you go further and replay how an incident unfolded, view who acknowledged or snoozed it, measure time-to-acknowledge trends, or correlate alert history with other data in your environment.
+Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**. The **Alerts** page shows current alert episode state. Discover lets you go further and replay how an incident unfolded, view who acknowledged or snoozed it, measure time-to-acknowledge trends, or correlate alert history with other data in your environment.
+
+For events with `type: signal`, including basic queries and using them as input to a rule that opens an alert episode, refer to [Query rule events](query-signals.md).
 
 Use the following table to jump to the query you need:
 
 | Query | What it returns | Stream |
 |---|---|---|
-| [Reconstruct the lifecycle of a specific episode](#replay-episode) | Every evaluation for one episode, in chronological order | `.rule-events` |
-| [Find all currently active episodes](#find-active-episodes) | One row per episode currently in `active` state | `.rule-events` |
+| [Reconstruct the lifecycle of a specific alert episode](#replay-episode) | Every evaluation for one alert episode, in chronological order | `.rule-events` |
+| [Find all currently active alert episodes](#find-active-episodes) | One row per alert episode currently in `active` state | `.rule-events` |
 | [List all breaches for a specific rule](#list-rule-breaches) | Every evaluation where a rule's condition was met | `.rule-events` |
 | [Identify evaluation gaps](#identify-no-data) | Recent `no_data` rows that may point to a pipeline issue | `.rule-events` |
-| [View the full triage history for an episode](#full-triage-history) | Every action taken on one episode, in chronological order | `.alert-actions` |
-| [Find all acknowledgments in a time window](#find-acknowledgments) | Every acknowledgment action across all episodes | `.alert-actions` |
-| [Check episode assignment state](#check-assignments) | Every assignment action and who it was assigned to | `.alert-actions` |
+| [View the full triage history for an alert episode](#full-triage-history) | Every action taken on one alert episode, in chronological order | `.alert-actions` |
+| [Find all acknowledgments in a time window](#find-acknowledgments) | Every acknowledgment action across all alert episodes | `.alert-actions` |
+| [Check alert episode assignment state](#check-assignments) | Every assignment action and who it was assigned to | `.alert-actions` |
 | [Audit dispatcher outcomes for a rule](#audit-dispatcher-outcomes) | Notified, suppressed, and unmatched outcomes for a rule | `.alert-actions` |
 | [Find snoozed series](#find-snoozed-series) | Active and historical snoozes, including who set them and when they expire | `.alert-actions` |
 | [Trace the full story of an incident](#trace-incident) | Both streams filtered or joined together for a complete incident timeline | Both |
@@ -42,17 +44,17 @@ Before you can query alert history in Discover, add the alert data streams as da
 
 For more details on data view options, refer to [Data views](../../../find-and-organize/data-views.md).
 
-## Query episode and signal history [query-episode-signal-history]
+## Query alert episode history [query-episode-signal-history]
 
-Each rule evaluation produces one document in `.rule-events`. {{kib}} never overwrites these documents, which means you can reconstruct the full history of any episode by querying all documents that share the same `episode.id`. The following sections provide example queries for common scenarios.
+{{kib}} writes one [rule event](../rules/rule-event-field-reference.md) to `.rule-events` for each matching row of a scheduled rule run. {{kib}} never overwrites these events, which means you can reconstruct the full history of any alert episode by querying all events that share the same `episode.id`. The following sections provide example queries for common scenarios.
 
-### Reconstruct the lifecycle of a specific episode [replay-episode]
+### Reconstruct the lifecycle of a specific alert episode [replay-episode]
 
-Use the episode's `episode.id` to pull all of its evaluations in chronological order. This shows exactly how that one episode moved through its lifecycle states from open to close, without mixing in other episodes from the same series.
+Use the alert episode's `episode.id` to pull all of its evaluations in chronological order. This shows exactly how that one alert episode moved through its lifecycle states from open to close, without mixing in other alert episodes from the same series.
 
 ```esql
 FROM .rule-events
-// Scope to a single episode by its ID
+// Scope to a single alert episode by its ID
 | WHERE episode.id == "<episode-id>"
 // Sort oldest-first to read the progression forward in time
 | SORT @timestamp ASC
@@ -60,17 +62,17 @@ FROM .rule-events
 | KEEP @timestamp, status, episode.id, episode.status, episode.status_count
 ```
 
-To pull evaluations across every episode in a series instead, filter by `group_hash` in place of `episode.id`.
+To pull evaluations across every alert episode in a series instead, filter by `group_hash` in place of `episode.id`.
 
-### Find all currently active episodes [find-active-episodes]
+### Find all currently active alert episodes [find-active-episodes]
 
-Returns one row for each episode currently in `active` state, along with the timestamp of its most recent evaluation.
+Returns one row for each alert episode currently in `active` state, along with the timestamp of its most recent evaluation.
 
 ```esql
 FROM .rule-events
-// Only include rows where the episode lifecycle state is active
+// Only include rows where the alert episode lifecycle state is active
 | WHERE episode.status == "active"
-// Deduplicate to one row per episode, showing the most recent evaluation
+// Deduplicate to one row per alert episode, showing the most recent evaluation
 | STATS latest = MAX(@timestamp) BY episode.id, group_hash
 ```
 
@@ -88,7 +90,7 @@ FROM .rule-events
 
 ### Identify evaluation gaps [identify-no-data]
 
-`no_data` rows appear when the rule finds no matching data during an evaluation cycle. A cluster of these can indicate a data pipeline issue or a misconfigured rule.
+`no_data` rows appear when a rule with [no-data handling](../rules/configure-no-data-handling.md) configured finds no matching data during an evaluation cycle. Events with `type: signal` don't include `no_data`. A cluster of these rows can indicate a data pipeline issue or a misconfigured rule.
 
 ```esql
 FROM .rule-events
@@ -100,15 +102,15 @@ FROM .rule-events
 
 ## Query triage and action history [query-triage-action-history]
 
-{{kib}} writes one document to `.alert-actions` for every action a user or the system takes on an episode. Use it to audit who did what, measure acknowledgment response times, or check current snooze and assignment state. The following sections provide example queries for common scenarios.
+{{kib}} writes one document to `.alert-actions` for every action a user or the system takes on an alert episode. Use it to audit who did what, measure acknowledgment response times, or check current snooze and assignment state. The following sections provide example queries for common scenarios.
 
-### View the full triage history for an episode [full-triage-history]
+### View the full triage history for an alert episode [full-triage-history]
 
-Returns all actions recorded for a single episode in chronological order. Use this to see the complete response sequence: who acknowledged it, whether a user snoozed it, and how it was eventually resolved.
+Returns all actions recorded for a single alert episode in chronological order. Use this to see the complete response sequence: who acknowledged it, whether a user snoozed it, and how it was eventually resolved.
 
 ```esql
 FROM .alert-actions
-// Scope to a single episode by its ID
+// Scope to a single alert episode by its ID
 | WHERE episode_id == "<episode-id>"
 // Sort oldest-first to read the response sequence forward in time
 | SORT @timestamp ASC
@@ -118,7 +120,7 @@ FROM .alert-actions
 
 ### Find all acknowledgments in a time window [find-acknowledgments]
 
-Returns every acknowledgment action across all episodes. Useful for tracking team response activity or measuring time-to-acknowledge trends.
+Returns every acknowledgment action across all alert episodes. Useful for tracking team response activity or measuring time-to-acknowledge trends.
 
 ```esql
 FROM .alert-actions
@@ -127,21 +129,21 @@ FROM .alert-actions
 | SORT @timestamp DESC
 ```
 
-### Check episode assignment state [check-assignments]
+### Check alert episode assignment state [check-assignments]
 
-Returns all assign actions, showing which episodes carry an assignment and to whom. Use this to audit ownership or find unacknowledged handoffs.
+Returns all assign actions, showing which alert episodes carry an assignment and to whom. Use this to audit ownership or find unacknowledged handoffs.
 
 ```esql
 FROM .alert-actions
 // Filter to assignment actions only
 | WHERE action_type == "assign"
-// Return the fields that identify the episode, who assigned it, and the target user
+// Return the fields that identify the alert episode, who assigned it, and the target user
 | KEEP @timestamp, episode_id, actor, assignee_uid
 ```
 
 ### Audit dispatcher outcomes for a rule [audit-dispatcher-outcomes]
 
-Returns all dispatcher decisions for a rule, covering episodes that were notified, suppressed due to throttling, or didn't match to any action policy.
+Returns all dispatcher decisions for a rule, covering alert episodes that were notified, suppressed due to throttling, or didn't match to any action policy.
 
 ```esql
 FROM .alert-actions
@@ -167,7 +169,7 @@ FROM .alert-actions
 To get the complete picture of an incident, filter both streams by the same identifier. Both streams share `group_hash` as a flat keyword, making it the most reliable join key. `episode.id` in `.rule-events` and `episode_id` in `.alert-actions` hold the same value but use different naming conventions: dot-notation in `.rule-events` and flat snake_case in `.alert-actions`.
 
 :::{note}
-Filter by `episode_id` to return user actions (`ack`, `assign`, `deactivate`, and similar) and notifications for one episode. Dispatcher-level entries might be missing because system-written action types (`fire`, `suppress`, `unmatched`, `notified`) key to `group_hash` and might not carry an `episode_id`. Filter by `group_hash` to include the complete dispatcher history.
+Filter by `episode_id` to return user actions (`ack`, `assign`, `deactivate`, and similar) and notifications for one alert episode. Dispatcher-level entries might be missing because system-written action types (`fire`, `suppress`, `unmatched`, `notified`) key to `group_hash` and might not carry an `episode_id`. Filter by `group_hash` to include the complete dispatcher history.
 :::
 
 1. Run a `.rule-events` query to find the `episode.id` or `group_hash` you care about.
@@ -185,7 +187,7 @@ If you need to join both streams in a single query, use `LOOKUP JOIN`. This requ
 
 ```esql
 FROM .rule-events
-// Only include rows that belong to an alert episode (signals have no episode.id)
+// Only include rows that belong to an alert episode (events with type: signal have no episode.id)
 | WHERE episode.id IS NOT NULL
 // Rename to match the join key naming convention in .alert-actions
 | EVAL episode_id = episode.id
