@@ -46,7 +46,7 @@ steps:
 :title: Solutions
 :id: solutions
 :variant: solutions
-:intro: Start from a solution when you want a guided path for search, observability, security, or vector search. Vector Database is available on Serverless only.
+:intro: Solutions are packages of Elastic capabilities optimized for certain use cases.
 
 :::{link-card}
 title: Elasticsearch
@@ -61,19 +61,14 @@ links:
     url: /explore-analyze/ai-features/elastic-agent-builder.md
   - label: Playground
     url: /solutions/elasticsearch-solution-project/playground.md
-  - label: Vector search
-    url: /solutions/search/vector.md
   - label: Content connectors
     url: elasticsearch://reference/search-connectors/index.md
-  - label: Semantic search
-    url: /solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md
 :::
 
 :::{link-card}
 title: Vector Database
 icon: vectordb
 variant: es
-description: A Serverless project type for embeddings, RAG, and similarity search.
 links:
   - label: Overview
     url: /solutions/vector-database.md
@@ -96,18 +91,12 @@ links:
     url: /solutions/observability.md
   - label: Get started
     url: /solutions/observability/get-started.md
-  - label: Agent Builder
-    url: /solutions/observability/ai/agent-builder-observability.md
   - label: APM
     url: /solutions/observability/apm/index.md
   - label: Logs
     url: /solutions/observability/logs.md
   - label: Infrastructure
     url: /solutions/observability/infra-and-hosts.md
-  - label: Synthetics
-    url: /solutions/observability/synthetics/get-started.md
-  - label: SLOs
-    url: /solutions/observability/incident-management/service-level-objectives-slos.md
 :::
 
 :::{link-card}
@@ -119,18 +108,12 @@ links:
     url: /solutions/security.md
   - label: Get started
     url: /solutions/security/get-started.md
-  - label: Agent Builder
-    url: /solutions/security/ai/agent-builder/agent-builder.md
   - label: SIEM
     url: /solutions/security/get-started/get-started-detect-with-siem.md
   - label: Detection rules
     url: /solutions/security/detect-and-alert/manage-detection-rules.md
   - label: Elastic Defend
     url: /solutions/security/configure-elastic-defend.md
-  - label: Cloud security
-    url: /solutions/security/cloud.md
-  - label: Cases
-    url: /solutions/security/investigate/security-cases.md
 :::
 ::::
 

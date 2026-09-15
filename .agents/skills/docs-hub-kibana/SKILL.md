@@ -51,11 +51,11 @@ Visual experiments for this block live in docs-builder, not in this file.
 
 Card order: Elasticsearch, Vector Database, Observability, Security.
 
-Vector Database is a fourth solution, Serverless only. Place it next to Elasticsearch. `{link-card}` has no `applies_to` field. Put the Serverless limit in the section intro and in a short card description.
+Vector Database is a fourth solution, Serverless only. Place it next to Elasticsearch. `{link-card}` has no `applies_to` field.
 
-Solution cards may list more links than Explore cards. Still drop a link that is not a first-stop entry.
+Solutions intro: "Solutions are packages of Elastic capabilities optimized for certain use cases." Do not add a description on Vector Database when the other solution cards have none. Match solution card link counts instead.
 
-Icons: only keys that exist in docs-builder `ProductIcons` (`elasticsearch`, `kibana`, `observability`, `security`). `icon: vectordb` is reserved for when that SVG ships. Do not invent or hand-draw a logo.
+Icons: only keys in docs-builder `ProductIcons` (`elasticsearch`, `kibana`, `observability`, `security`, `vectordb`). `vectordb` is the EUI `logoVectorDB` mark. Do not invent or hand-draw a logo.
 
 ## Card titles and links
 
