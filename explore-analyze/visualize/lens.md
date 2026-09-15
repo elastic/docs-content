@@ -116,7 +116,7 @@ When you can create a visualization, you can change the fields list to display a
 
 If the fields list is empty, change the [time filter](../query-filter/filtering.md).
 
-For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views.md#runtime-fields).
+For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views/runtime-fields.md).
 
 ### Assign colors to terms [assign-colors-to-terms]
 ```{applies_to}
