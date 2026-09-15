@@ -230,48 +230,58 @@ links:
 title: Discover
 description: Browse documents, filter, and query your indices in real time.
 links:
+  - label: Discover overview
+    url: /explore-analyze/discover.md
   - label: Get started with Discover
     url: /explore-analyze/discover/discover-get-started.md
   - label: Data views
     url: /explore-analyze/find-and-organize/data-views.md
   - label: Query with KQL
     url: /explore-analyze/query-filter/languages/kql.md
-  - label: Use ES|QL in Kibana
-    url: /explore-analyze/query-filter/languages/esql-kibana.md
 :::
 
 :::{link-card}
 title: Dashboards
-description: Build interactive dashboards that combine visualizations, controls, and context.
+description: Combine visualizations, controls, and context in an interactive view.
 links:
   - label: Dashboards overview
     url: /explore-analyze/dashboards.md
+  - label: Get started with Dashboards
+    url: /explore-analyze/dashboards/tutorials.md
   - label: Ways to create a dashboard
     url: /explore-analyze/dashboards/building.md
-  - label: Organize panels and sections
-    url: /explore-analyze/dashboards/arrange-panels.md
   - label: Add controls
     url: /explore-analyze/visualize/dashboard-controls.md
-  - label: Share and export
-    url: /explore-analyze/dashboards/sharing.md
 :::
 
 :::{link-card}
 title: Visualizations
-description: Create charts and visual panels with the drag-and-drop editor, ES|QL, Vega, Maps, or a custom HTML panel.
+description: Create charts and visual panels with Lens, ES|QL, Vega, Maps, or a custom HTML panel.
 links:
-  - label: Panels and visualizations
+  - label: Visualizations overview
     url: /explore-analyze/visualize.md
-  - label: Visualization editor (drag-and-drop)
+  - label: Lens
     url: /explore-analyze/visualize/lens.md
-  - label: Query mode (ES|QL)
+  - label: ES|QL charts
     url: /explore-analyze/visualize/esorql.md
-  - label: Vega
-    url: /explore-analyze/visualize/custom-visualizations-with-vega.md
-  - label: Maps
-    url: /explore-analyze/visualize/maps.md
   - label: Custom panels
     url: /explore-analyze/visualize/custom-panels.md
+  - label: Maps
+    url: /explore-analyze/visualize/maps.md
+:::
+
+:::{link-card}
+title: Machine learning
+description: Detect anomalies, forecast trends, and run data frame analytics.
+links:
+  - label: Machine learning overview
+    url: /explore-analyze/machine-learning/machine-learning-in-kibana.md
+  - label: Get started with Machine learning
+    url: /explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md
+  - label: Anomaly detection
+    url: /explore-analyze/machine-learning/anomaly-detection.md
+  - label: Data frame analytics
+    url: /explore-analyze/machine-learning/data-frame-analytics.md
 :::
 ::::
 
@@ -280,33 +290,33 @@ links:
 :id: alerting
 
 :::{link-card}
-title: Alerting and rules
-description: Detect important changes and notify people or trigger actions.
+title: Kibana alerting
+description: Detect conditions with built-in rule types and send notifications through connectors.
 links:
-  - label: Get started
+  - label: Kibana alerting overview
+    url: /explore-analyze/alerting/alerts.md
+  - label: Get started with Kibana alerting
     url: /explore-analyze/alerting/alerts/alerting-getting-started.md
   - label: Create and manage rules
     url: /explore-analyze/alerting/alerts/create-manage-rules.md
-  - label: Performance and scaling
-    url: /deploy-manage/production-guidance/kibana-alerting-production-considerations.md
+  - label: Alerting connectors
+    url: kibana://reference/connectors-kibana/alerting-cases-connectors.md
 :::
 
 :::{link-card}
-title: Alerting connectors
-description: Send alerts and case updates to external incident-management tools.
+title: Alerting V2
+description: Watch data with ES|QL rules, track alert episodes, and route notifications with action policies.
 links:
-  - label: Connector types
-    url: kibana://reference/connectors-kibana/alerting-cases-connectors.md
-  - label: Jira
-    url: kibana://reference/connectors-kibana/jira-action-type.md
-  - label: ServiceNow ITSM
-    url: kibana://reference/connectors-kibana/servicenow-action-type.md
-  - label: PagerDuty
-    url: kibana://reference/connectors-kibana/pagerduty-action-type.md
-  - label: Slack
-    url: kibana://reference/connectors-kibana/slack-action-type.md
-  - label: Webhook
-    url: kibana://reference/connectors-kibana/webhook-action-type.md
+  - label: Alerting V2 overview
+    url: /explore-analyze/alerting/system-overview.md
+  - label: Get started with Alerting V2
+    url: /explore-analyze/alerting/experimental-alerting-system/get-started.md
+  - label: Rules
+    url: /explore-analyze/alerting/experimental-alerting-system/rules.md
+  - label: Alert episodes
+    url: /explore-analyze/alerting/experimental-alerting-system/alerts.md
+  - label: Action policies
+    url: /explore-analyze/alerting/experimental-alerting-system/action-policies/about-action-policies.md
 :::
 ::::
 
@@ -315,67 +325,57 @@ links:
 :id: ai-automation
 
 :::{link-card}
-title: AI Assistant
-description: Chat from the Kibana header to build queries, explain errors, and get help in your solution.
-links:
-  - label: AI assistants in Kibana
-    url: /explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md
-  - label: Compare with Agent Builder
-    url: /explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
-:::
-
-:::{link-card}
 title: Agent Builder
 description: Build custom AI agents that reason over your Elasticsearch data using LLMs and tools.
 links:
-  - label: Overview
+  - label: Agent Builder overview
     url: /explore-analyze/ai-features/elastic-agent-builder.md
+  - label: Get started with Agent Builder
+    url: /explore-analyze/ai-features/agent-builder/get-started.md
   - label: Agents
     url: /explore-analyze/ai-features/agent-builder/agent-builder-agents.md
   - label: Custom tools
     url: /explore-analyze/ai-features/agent-builder/tools/custom-tools.md
-  - label: Programmatic access (MCP, A2A, API)
-    url: /explore-analyze/ai-features/agent-builder/programmatic-access.md
-  - label: 'Tutorial: build a custom agent'
-    url: /explore-analyze/ai-features/agent-builder/agent-builder-api-tutorial.md
-:::
-
-:::{link-card}
-title: Gen-AI connectors
-description: Wire Kibana up to LLM providers for use in Agent Builder, alerting summaries, and AI Assistant features.
-links:
-  - label: Connector types
-    url: kibana://reference/connectors-kibana/gen-ai-connectors.md
-  - label: OpenAI
-    url: kibana://reference/connectors-kibana/openai-action-type.md
-  - label: Amazon Bedrock
-    url: kibana://reference/connectors-kibana/bedrock-action-type.md
-  - label: Google Gemini
-    url: kibana://reference/connectors-kibana/gemini-action-type.md
 :::
 
 :::{link-card}
 title: Workflows
 description: Automate tasks with sequences that chain Kibana actions, HTTP calls, and AI agents.
 links:
-  - label: Overview
+  - label: Workflows overview
     url: /explore-analyze/workflows.md
-  - label: Get started
+  - label: Get started with Workflows
     url: /explore-analyze/workflows/get-started.md
   - label: Kibana action steps
     url: /explore-analyze/workflows/steps/kibana.md
-  - label: Call agents from workflows
+  - label: Call agents
     url: /explore-analyze/ai-features/agent-builder/agents-and-workflows.md
 :::
 
 :::{link-card}
-title: Machine learning
-description: Detect anomalies, forecast trends, and run data frame analytics.
+title: AI Agent chat
+description: Chat with agents from the Kibana header to ask questions and take action on your data.
 links:
-  - label: Machine learning in Kibana
-    url: /explore-analyze/machine-learning/machine-learning-in-kibana.md
-  - label: Anomaly detection job wizards
-    url: /reference/machine-learning/supplied-anomaly-detection-configurations.md
+  - label: AI Agent chat overview
+    url: /explore-analyze/ai-features/agent-builder/chat.md
+  - label: Chat UI modes
+    url: /explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md
+  - label: Agents
+    url: /explore-analyze/ai-features/agent-builder/agent-builder-agents.md
+:::
+
+:::{link-card}
+title: Context connectors
+description: Give agents access to external data and tools, such as Slack and GitHub.
+links:
+  - label: Context connectors overview
+    url: kibana://reference/connectors-kibana.md
+  - label: Slack
+    url: kibana://reference/connectors-kibana/slack-v2-action-type.md
+  - label: GitHub
+    url: kibana://reference/connectors-kibana/github-action-type.md
+  - label: Google Drive
+    url: kibana://reference/connectors-kibana/google-drive-action-type.md
 :::
 ::::
 
