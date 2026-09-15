@@ -26,7 +26,6 @@ The steps to create a {{serverless-short}} project are the same regardless of wh
 5. Select **Create project**. It takes a few minutes to create your project.
 6. When the project is ready, select **Continue** to open it. You might need to log in to {{ecloud}} again.
 
-:::{tip} 
-If {{kib}} loads as a blank page, check that your firewall, proxy, or secure web gateway allows access to `kibana.estccdn.com` and `cloud.elastic.co`. For the full list of required domains, refer to [Browser access requirements](/deploy-manage/deploy/elastic-cloud.md#browser-access).
+:::{include} /deploy-manage/deploy/_snippets/serverless-kibana-blank-page.md
 :::
 

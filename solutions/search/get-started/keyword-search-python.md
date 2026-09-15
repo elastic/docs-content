@@ -32,6 +32,9 @@ You can optionally edit the project settings, such as the [region](/deploy-manag
 
 To add the sample data in subsequent steps, you must have a `developer` or `admin` predefined role or an equivalent custom role.
 To learn about role-based access control, go to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
+
+:::{include} /deploy-manage/deploy/_snippets/serverless-kibana-blank-page.md
+:::
 ::::
 ::::{step} Create an index
 
