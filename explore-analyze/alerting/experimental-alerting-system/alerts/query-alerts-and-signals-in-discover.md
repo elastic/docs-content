@@ -12,7 +12,7 @@ description: "Use ES|QL in Discover to replay incidents, audit triage actions, a
 
 Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**. The **Alerts** page shows current alert episode state. Discover lets you go further and replay how an incident unfolded, view who acknowledged or snoozed it, measure time-to-acknowledge trends, or correlate alert history with other data in your environment.
 
-For events with `type: signal`, including basic queries and using them as input to a rule that opens an alert episode, refer to [Query signals](query-signals.md).
+For events with `type: signal`, including basic queries and using them as input to a rule that opens an alert episode, refer to [Query rule events](query-signals.md).
 
 Use the following table to jump to the query you need:
 

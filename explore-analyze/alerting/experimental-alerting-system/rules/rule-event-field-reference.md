@@ -35,7 +35,7 @@ Most events come from a matching row (`status: breached`). When {{kib}} tracks a
 
 {{kib}} writes a rule event with `type: signal`. These events stay in `.rule-events`. They don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers. They are queryable in Discover.
 
-For query examples, refer to [Query signals](../alerts/query-signals.md).
+For query examples, refer to [Query rule events](../alerts/query-signals.md).
 
 ### Events with `type: alert`
 
@@ -55,9 +55,9 @@ FROM .rule-events
 | SORT @timestamp ASC
 ```
 
-For query examples for events with `type: signal`, refer to [Query signals](../alerts/query-signals.md). For lifecycle replay and incident tracing, refer to [Query alert history in Discover](../alerts/query-alerts-and-signals-in-discover.md).
+For query examples for events with `type: signal`, refer to [Query rule events](../alerts/query-signals.md). For lifecycle replay and incident tracing, refer to [Query alert history in Discover](../alerts/query-alerts-and-signals-in-discover.md).
 
 ## Related pages
 
 - [Rule mode](configure-rule-mode.md): How Rule mode determines whether {{kib}} groups each rule event into an alert episode or keeps it available for later analysis.
-- [Query signals](../alerts/query-signals.md): Query events with `type: signal` in Discover and use them as input to a rule that opens an alert episode.
+- [Query rule events](../alerts/query-signals.md): Query events with `type: signal` in Discover and use them as input to a rule that opens an alert episode.

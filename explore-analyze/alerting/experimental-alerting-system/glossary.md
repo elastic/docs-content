@@ -41,7 +41,7 @@ These terms appear throughout the {{alerting-v2-system}} docs. If a term is uncl
 :   A label stored on rule events when the query emits a recognized value. Action policies use it only for alert episodes, so critical alert episodes can be routed differently from low-priority ones. To learn more, refer to [Configure rule severity](rules/configure-rule-severity.md).
 
 **Signal**
-:   A [rule event](rules/rule-event-field-reference.md) with `type: signal`. These events stay in `.rule-events`. They don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers. To learn more, refer to [Query signals](alerts/query-signals.md) and [Rule mode](rules/configure-rule-mode.md).
+:   A [rule event](rules/rule-event-field-reference.md) with `type: signal`. These events stay in `.rule-events`. They don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers. To learn more, refer to [Query rule events](alerts/query-signals.md) and [Rule mode](rules/configure-rule-mode.md).
 
 **Threshold**
 :   The condition a rule uses to decide when something is worth alerting on, including how many times the condition must be met before an alert episode opens or closes. To learn more, refer to [Alert delay](rules/configure-rule-alert-delay.md) and [Recovery condition](rules/configure-rule-recovery.md).

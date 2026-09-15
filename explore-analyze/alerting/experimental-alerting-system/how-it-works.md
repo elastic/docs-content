@@ -45,7 +45,7 @@ The engineer investigates, fixes a slow query, and the alert episode recovers au
 
 ## Rule writes events for later analysis [how-signal-mode-works]
 
-{{kib}} writes a rule event (`type: signal`) to `.rule-events` for each match. These events stay in `.rule-events`. They don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers. They accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to a follow-on rule that opens an alert episode. For query examples, dashboards, and correlation patterns, refer to [Query signals](alerts/query-signals.md).
+{{kib}} writes a rule event (`type: signal`) to `.rule-events` for each match. These events stay in `.rule-events`. They don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers. They accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to a follow-on rule that opens an alert episode. For query examples, dashboards, and correlation patterns, refer to [Query rule events](alerts/query-signals.md).
 
 | Step | Actor | Action |
 |------|-------|--------|
