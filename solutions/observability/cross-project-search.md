@@ -30,7 +30,7 @@ The following table shows how each {{observability}} app behaves with {{cps-init
 
 ## {{cps-cap}} scope selector in {{observability}} apps [obs-cps-scope-selector]
 
-The **{{cps-init}} [scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana)** ({icon}`cross_project_search`) in the project header lets you control which linked projects your searches include. It is available in platform apps like Discover, Dashboards, and Lens, as well as in APM and Infrastructure apps.
+The **{{cps-init}} [scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana)** ({icon}`cross_project_search`) in the project header lets you control which linked projects your searches include. It is available in platform apps like Discover, Dashboards, and Lens, as well as in APM, Infrastructure, and Synthetics apps.
 
 For other {{observability}}-specific apps, the scope selector is not available. This means:
 
@@ -62,6 +62,8 @@ SLO burn rate rules query only origin project data, even when the underlying dat
 
 {{ml-cap}} rules are not available in {{cps-init}}.
 
+Synthetics status and TLS rules query origin-project monitors only, even when the scope selector includes linked projects.
+
 ### SLO visibility [obs-cps-slo-remote]
 
 Only origin SLOs are visible, even when connected to a linked project.
@@ -77,7 +79,3 @@ Tracking: [kibana#260930](https://github.com/elastic/kibana/issues/260930)
 ### Alerts are origin only [obs-cps-overview-alerts]
 
 **Alerts** are from the origin project only, even when rules are configured to act on cross-project data.
-
-### Synthetics is not available in {{cps-init}} [obs-cps-synthetics]
-
-Synthetics monitors and TLS certificates are bound to saved objects and remain scoped to the origin project. Monitors from linked projects do not appear in the Synthetics UI of the origin project.

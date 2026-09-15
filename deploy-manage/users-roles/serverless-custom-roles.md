@@ -106,7 +106,7 @@ As new features are added to {{serverless-full}}, roles that use the custom opti
 
 ## Assign custom roles
 
-After your roles are set up, the next step to securing access is to assign roles to your users. Click the **Assign roles** link to go to the **Members** tab of the **Organization** page. Learn more in [](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+After your roles are set up, the next step to securing access is to assign roles to your users. Click the **Assign roles** link to go to **Organization** > **Members**. Learn more in [](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 
 :::{warning}
 When you assign custom roles, you must always select **Cloud Console, {{es}}, and {{kib}}** access for the role to take full effect. If you don't grant this access, custom roles are replaced with the predefined **Viewer** role. Users can't log in to the project or access project data through {{cps}}. [Learn more](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).

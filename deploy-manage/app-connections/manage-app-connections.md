@@ -17,7 +17,7 @@ To create an OAuth client or connect an MCP host such as Claude Desktop, refer t
 
 Before you manage application connections:
 
-* You have access to the {{ecloud}} Console for your organization. To open the page, go to **Organization** → **Security settings** → **Application connections**.
+* You have access to the {{ecloud}} Console for your organization. To open the page, go to **Organization** → **Application connections**.
 * Your role determines what you can view, revoke, and delete:
   * **Organization owners** see every application connection in the organization.
   * Other users see connections for the projects they administer, plus any connections they authorized themselves.
