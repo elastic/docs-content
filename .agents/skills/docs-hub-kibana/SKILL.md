@@ -53,7 +53,7 @@ Card order: Elasticsearch, Vector Database, Observability, Security.
 
 Vector Database is a fourth solution, Serverless only. Place it next to Elasticsearch. `{link-card}` has no `applies_to` field.
 
-Solutions intro: "Solutions are packages of Elastic capabilities optimized for certain use cases." Do not add a description on one solution card when the others have none. Match solution card link counts instead. Current target is five links each.
+Solutions intro: "Solutions are packages of Elastic capabilities optimized for certain use cases. All solutions include the core storage, querying, and analytics capabilities of Elasticsearch and Kibana." Do not add a description on one solution card when the others have none. Match solution card link counts instead. Current target is five links each.
 
 Elasticsearch card: Overview, Get started, Agent Builder, Query rules, Content connectors. Do not link Playground. It is deprecated in 9.4+ and on Serverless.
 
