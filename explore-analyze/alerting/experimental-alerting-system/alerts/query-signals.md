@@ -19,7 +19,7 @@ Events with `type: signal` don't belong to an [alert episode](../alerts.md), so 
 
 ## Key fields for these queries [signal-key-fields]
 
-These fields matter most when you query `.rule-events`. Filter with `type == "signal"` to exclude events with `type: alert`.
+These fields matter most when you query `.rule-events`.
 
 | Field | Why it matters |
 |---|---|
