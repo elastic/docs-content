@@ -497,6 +497,7 @@ The endpoint returns an error in the following cases:
 * `409` if another plan is already pending on the deployment. Wait for that plan to finish, then retry.
 * `400` if the key can't be reached, or isn't valid for the deployment's cloud provider.
 * `400` with `byok_migration.ilm_policy_conflict` if an ILM policy uses the `found-snapshots` repository in a cold or frozen phase. Update those policies, then retry.
+* `500` with `byok_migration.ilm_policy_check_failed` if {{ecloud}} could not read the deployment's ILM policies to run that check. No plan change starts, and the request is safe to retry.
 
 {{ecloud}} then applies a plan change to encrypt your deployment's data and snapshots with your key. This plan change happens without downtime.
 
