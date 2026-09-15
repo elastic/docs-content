@@ -7,6 +7,7 @@ applies_to:
   serverless:
 products:
   - id: cloud-serverless
+type: overview
 ---
 
 # {{serverless-full}}
@@ -21,6 +22,26 @@ Serverless projects use the core components of the {{stack}}, such as {{es}} and
 
 :::{note}
 There are differences between {{es-serverless}} and {{ech}}. Learn more in [Compare {{ech}} and {{es-serverless}}](../elastic-cloud.md#general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud).
+:::
+
+
+## Benefits of serverless projects [_benefits_of_serverless_projects]
+
+**Management free:** Elastic manages the underlying Elastic cluster, so you can focus on your data. With serverless projects, Elastic is responsible for automatic upgrades, data backups, and business continuity.
+
+**Autoscaled:** To meet your performance requirements, the system automatically adjusts to your workloads. For example, when you have a short-term spike on the data you ingest, more resources are allocated for that period of time. When the spike is over, the system uses less resources, without any action on your end. Some project-level limits apply to ensure performance and stability, including a [limit on the number of indices per project](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-index-size) that can be adjusted by request.
+
+**Optimized data storage:** Your data is stored in cost-efficient, general storage. A cache layer is available on top of the general storage for recent and frequently queried data that provides faster search speed. The size of the cache layer and the volume of data it holds depend on [settings](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) that you can configure for each project.
+
+**Dedicated experiences:** All serverless solutions are built on the Elastic Search Platform and include the core capabilities of the {{stack}}. They also each offer a distinct experience and specific capabilities that help you focus on your data, goals, and use cases.
+
+**Pay per usage:** Each serverless project type includes product-specific and usage-based pricing.
+
+**Data and performance control**. Control your project data and query performance against your project data.
+  * **Data:** Choose the data you want to ingest and the method to ingest it. By default, data is stored indefinitely in your project, and you define the retention settings for your data streams.
+  * **Performance:** For granular control over costs and query performance against your project data, serverless projects come with a set of predefined settings you can edit.
+
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
 ## Get started [get-started]
@@ -45,38 +66,18 @@ Monitor your own platforms and services using powerful machine learning and anal
 ![security](../../images/64x64_Color_security-logo-color-64px.png "security =30") **[{{sec-serverless}}](/solutions/security/get-started.md)**  
 Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
 
-### Learn about {{serverless-short}} concepts
-
-Afterwards, you can:
-
-* Learn about the [cloud organization](../../cloud-organization.md) that is the umbrella for all of your {{ecloud}} resources, users, and account settings.
-* Learn about how {{es-serverless}} is [billed](../../cloud-organization/billing/serverless-project-billing-dimensions.md).
-* Learn how to [create an API key](../../api-keys/serverless-project-api-keys.md). This key provides access to the API that enables you to manage your deployments.
-* Learn how manage [users and roles](../../users-roles/cloud-organization.md) in your {{es-serverless}} deployment.
-* Learn more about {{serverless-full}} in [our blog](https://www.elastic.co/blog/elastic-cloud-serverless).
-* Find answers to common questions in the [{{serverless-full}} FAQ](serverless-faq.md).
-
-## Benefits of serverless projects [_benefits_of_serverless_projects]
-
-**Management free:** Elastic manages the underlying Elastic cluster, so you can focus on your data. With serverless projects, Elastic is responsible for automatic upgrades, data backups, and business continuity.
-
-**Autoscaled:** To meet your performance requirements, the system automatically adjusts to your workloads. For example, when you have a short-term spike on the data you ingest, more resources are allocated for that period of time. When the spike is over, the system uses less resources, without any action on your end. Some project-level limits apply to ensure performance and stability, including a [limit on the number of indices per project](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-index-size) that can be adjusted by request.
-
-**Optimized data storage:** Your data is stored in cost-efficient, general storage. A cache layer is available on top of the general storage for recent and frequently queried data that provides faster search speed. The size of the cache layer and the volume of data it holds depend on [settings](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) that you can configure for each project.
-
-**Dedicated experiences:** All serverless solutions are built on the Elastic Search Platform and include the core capabilities of the {{stack}}. They also each offer a distinct experience and specific capabilities that help you focus on your data, goals, and use cases.
-
-**Pay per usage:** Each serverless project type includes product-specific and usage-based pricing.
-
-**Data and performance control**. Control your project data and query performance against your project data.
-  * **Data:** Choose the data you want to ingest and the method to ingest it. By default, data is stored indefinitely in your project, and you define the retention settings for your data streams.
-  * **Performance:** For granular control over costs and query performance against your project data, serverless projects come with a set of predefined settings you can edit.
-
-:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
-:::
-
 ## Monitor serverless status [general-serverless-status]
 
 Serverless projects run on cloud platforms, which may undergo changes in availability. When availability changes, Elastic makes sure to provide you with a current service status.
 
 To learn more about serverless status, see [Service status](../../cloud-organization/service-status.md).
+
+## What's next
+
+* [Create a serverless project](create-serverless-project.md): After you decide on a project type, create a project in the {{ecloud}} console.
+* [Learn about your Cloud organization](../../cloud-organization.md): Understand how your projects, members, and account settings are grouped under one {{ecloud}} organization.
+* [Serverless billing dimensions](../../cloud-organization/billing/serverless-project-billing-dimensions.md): See what you're charged for so you can estimate cost and control usage.
+* [Serverless project API keys](../../api-keys/serverless-project-api-keys.md): Learn how to authenticate applications and automation against your project's APIs.
+* [Cloud organization users](../../users-roles/cloud-organization.md): Learn how user access works in your organization, including user invitations, roles, and SSO.
+* [{{serverless-full}} FAQ](serverless-faq.md): Answers on pricing, regions, backups, and converting between project types.
+* [{{serverless-full}} blog](https://www.elastic.co/blog/elastic-cloud-serverless): More background on the product and architecture.

@@ -6,6 +6,7 @@ applies_to:
 products:
   - id: cloud-serverless
 navigation_title: Create a serverless project
+type: how-to
 ---
 
 # Create an {{serverless-full}} project [serverless-get-started]
