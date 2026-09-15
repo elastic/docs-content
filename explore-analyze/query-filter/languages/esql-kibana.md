@@ -498,6 +498,9 @@ Where it applies depends on the context:
 
 **Fast mode** is preserved when you save or share a dashboard.
 
+{applies_to}`stack: preview 9.6+`
+**Fast mode** is also preserved when you save and reopen a Discover session in {{esql}} mode. Refer to [Save a Discover session](/explore-analyze/discover/save-open-search.md#_save_a_discover_session).
+
 To override the toggle for a single query, use the [`SET approximation`](#esql-kibana-approximation) directive.
 
 ### Use the `SET approximation` directive [esql-kibana-approximation]
