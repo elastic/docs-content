@@ -32,7 +32,9 @@ Not sure if {{fleet-server}} is running? Refer to [What is {{fleet-server}}?](/r
 
 On self-managed clusters, you must specify one or more URLs.
 
-On {{ecloud}}, this field is populated automatically. If you are using Azure Private Link, GCP Private Service Connect, or AWS PrivateLink and enrolling the {{agent}} with a private link URL, ensure that this setting is configured. Otherwise, {{agent}} will reset to use a default address instead of the private link URL.
+On {{ecloud}}, this field is populated automatically. On {{ech}} deployments, if you are using Azure Private Link, GCP Private Service Connect, or AWS PrivateLink and enrolling the {{agent}} with a private link URL, ensure that this setting is configured. Otherwise, {{agent}} will reset to use a default address instead of the private link URL.
+
+{applies_to}`serverless: ga` If an AWS PrivateLink connection is set up for your project, {{fleet}} adds a **Private Fleet Server** host that points to your private endpoint. Select it to send agent traffic over the private connection. Refer to [AWS PrivateLink and {{fleet}}](/deploy-manage/security/private-connectivity-aws.md#aws-privatelink-and-fleet).
 
 ::::{note}
 If a URL is specified without a port, {{kib}} sets the port to `80` (http) or `443` (https).
@@ -67,13 +69,12 @@ When a {{fleet-server}} is added or removed from the list, all agent policies ar
 
 Add or edit output settings to specify where {{agent}}s send data. {{agent}}s use the default output if you don’t select an output in the agent policy.
 
-::::{tip}
-If your [Elastic subscription level](https://www.elastic.co/subscriptions) supports **per integration output assignment**, you can configure {{agent}} to [send data to different outputs for different integration policies](/reference/fleet/integration-level-outputs.md).
-::::
+The {{ecloud}} internal output is locked, so you can't edit it. It handles internal routing to reduce external network charges when you use the {{ecloud}} agent policy, and it provides visibility for troubleshooting on {{ece}}.
 
+{applies_to}`serverless: ga` If an AWS PrivateLink connection is set up for your project, {{fleet}} adds a **Private Elasticsearch Output** that points to your private endpoint. Refer to [AWS PrivateLink and {{fleet}}](/deploy-manage/security/private-connectivity-aws.md#aws-privatelink-and-fleet).
 
 ::::{note}
-The {{ecloud}} internal output is locked and cannot be edited. This output is used for internal routing to reduce external network charges when using the {{ecloud}} agent policy. It also provides visibility for troubleshooting on {{ece}}.
+If your [Elastic subscription level](https://www.elastic.co/subscriptions) supports **per integration output assignment**, you can configure {{agent}} to [send data to different outputs for different integration policies](/reference/fleet/integration-level-outputs.md).
 ::::
 
 
