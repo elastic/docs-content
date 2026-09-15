@@ -59,7 +59,7 @@ products:
         url: /release-notes/elastic-cloud-serverless/index.md
     upgrade-link:
       label: Upgrade Kibana
-      url: /deploy-manage/upgrade/deployment-or-cluster/kibana.md
+      url: /deploy-manage/upgrade/deployment-or-cluster.md
     items:
       - title: Dashboards and Visualizations APIs
         description: Create, update, and manage dashboards and visualizations in code. Generally available.

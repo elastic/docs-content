@@ -38,7 +38,7 @@ For each of `elasticsearch`, `kibana`, and `logstash`:
   - Stack minor label (for example `9.5`) pointing at that minor's `.0` heading, for example `kibana://release-notes/index.md#kibana-9.5.0-release-notes`.
   - `Serverless` pointing at `/release-notes/elastic-cloud-serverless/index.md`.
 - If the product has only a stack stream, one `release-links` entry is enough.
-- One `upgrade-link` pointing at that product's upgrade page.
+- One `upgrade-link` pointing at that product's upgrade page. For Kibana, use `/deploy-manage/upgrade/deployment-or-cluster.md` (all deployment types), not the self-managed Kibana upgrade page. The label can still be `Upgrade Kibana`.
 - Four or five `items`. Mark **one** item `featured: true`.
 - `date` is the minor version, for example `9.5`.
 - `tag` is a short category (Storage, Dashboards, Monitoring).

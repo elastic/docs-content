@@ -212,7 +212,7 @@ links:
   - label: Run in production
     url: /deploy-manage/production-guidance/kibana-in-production-environments.md
   - label: Upgrade Kibana
-    url: /deploy-manage/upgrade/deployment-or-cluster/kibana.md
+    url: /deploy-manage/upgrade/deployment-or-cluster.md
   - label: Logging
     url: /deploy-manage/monitor/logging-configuration/kibana-logging.md
 :::

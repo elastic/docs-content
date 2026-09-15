@@ -86,7 +86,7 @@ Do not add a link only to even the count. Leave a card short when it has only tw
 
 ## Section rules
 
-**Deploy.** Order: Managed on Elastic Cloud, Self-orchestrated (ECK, ECE), Self-managed, Maintain and monitor. Self-managed is Install, Docker, and Configure. Do not list every OS package.
+**Deploy.** Order: Managed on Elastic Cloud, Self-orchestrated (ECK, ECE), Self-managed, Maintain and monitor. Self-managed is Install, Docker, and Configure. Do not list every OS package. **Upgrade Kibana** links to `/deploy-manage/upgrade/deployment-or-cluster.md` (all deployment types). Do not use `/deploy-manage/upgrade/deployment-or-cluster/kibana.md`. That page is self-managed only.
 
 **Alerting.** Three cards: Kibana alerting (classic), Alerting V2, Alerting connectors.
 
