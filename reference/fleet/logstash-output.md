@@ -83,6 +83,37 @@ output {
 
 For more information about configuring {{ls}}, refer to [Configuring {{ls}}](logstash://reference/creating-logstash-pipeline.md) and [{{agent}} input plugin](logstash-docs-md://lsr/plugins-inputs-elastic_agent.md).
 
+## Use a single {{es}} output [logstash-output-single-es-output]
+
+The preceding pipeline example branches on `[@metadata][_id]` so that integrations that set a document ID keep it, while integrations that don't still ingest correctly. That approach requires two nearly identical `elasticsearch` output blocks. Events are split across those outputs, so bulk request sizes can vary and ingestion throughput can drop.
+
+On {{ls}} 8.12.0 or later ({{es}} output plugin 11.21.0 or later), you can keep a single {{es}} output by copying any present `[@metadata][_id]` into `[@metadata][_ingest_document][id]`. The {{es}} output plugin reads that field when it builds each bulk request. The `mutate` `copy` is a no-op when `[@metadata][_id]` is absent, so you don't need the conditional.
+
+```yaml
+filter {
+  mutate {
+    copy => { "[@metadata][_id]" => "[@metadata][_ingest_document][id]" }
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => ["http://localhost:9200"]
+    # cloud_id => "..."
+    api_key => "<api_key>"
+    data_stream => true
+    ssl_enabled => true
+    ssl_certificate_authorities => "<elasticsearch_ca_path>"
+    manage_template => false
+  }
+}
+```
+
+`[@metadata][_ingest_document][id]` is read internally by the {{es}} output plugin and is not part of that plugin's documented configuration surface. Keep two things in mind when you use it:
+
+* Don't also set `document_id` on the output. An explicit `document_id` overrides the metadata field.
+* If your pipeline also uses the [`elastic_integration` filter](logstash-docs-md://lsr/plugins-filters-elastic_integration.md), add the `mutate` after that filter. The filter replaces the whole `[@metadata][_ingest_document]` map, so an earlier `copy` is discarded.
+
 ## {{ls}} output configuration settings [_ls_output_configuration_settings]
 
 The `logstash` output supports the following settings, grouped by category. Many of these settings have sensible defaults that allow you to run {{agent}} with minimal configuration.
