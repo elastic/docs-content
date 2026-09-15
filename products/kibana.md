@@ -133,6 +133,8 @@ links:
     url: /explore-analyze/find-and-organize/kibana-interface.md
   - label: Find apps and objects
     url: /explore-analyze/find-and-organize/find-apps-and-objects.md
+  - label: Customize navigation
+    url: /explore-analyze/find-and-organize/customize-navigation.md
 :::
 
 :::{link-card}
@@ -199,12 +201,6 @@ links:
     url: /deploy-manage/deploy/self-managed/install-kibana.md
   - label: Docker
     url: /deploy-manage/deploy/self-managed/install-kibana-with-docker.md
-  - label: Debian / Ubuntu
-    url: /deploy-manage/deploy/self-managed/install-kibana-with-debian-package.md
-  - label: RPM
-    url: /deploy-manage/deploy/self-managed/install-kibana-with-rpm.md
-  - label: Windows
-    url: /deploy-manage/deploy/self-managed/install-kibana-on-windows.md
   - label: Configure (kibana.yml)
     url: /deploy-manage/deploy/self-managed/configure-kibana.md
 :::
@@ -236,13 +232,11 @@ links:
     url: /manage-data/data-store/data-streams/manage-data-stream.md
   - label: Transforms
     url: /explore-analyze/transforms/transform-setup.md
-  - label: Task management
-    url: /deploy-manage/distributed-architecture/kibana-tasks-management.md
 :::
 
 :::{link-card}
 title: Integrations and Fleet
-description: Browse and install integrations, deploy and manage Elastic Agents, and run Osquery, all from Kibana.
+description: Browse and install integrations, then deploy and manage Elastic Agents from Kibana.
 links:
   - label: Integrations
     url: /reference/fleet/manage-integrations.md
@@ -250,10 +244,6 @@ links:
     url: /reference/fleet/index.md
   - label: Manage agents
     url: /reference/fleet/manage-elastic-agents-in-fleet.md
-  - label: Agent policies
-    url: /reference/fleet/agent-policy.md
-  - label: Osquery manager
-    url: /solutions/security/investigate/osquery.md
 :::
 
 :::{link-card}
@@ -264,6 +254,8 @@ links:
     url: /deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md
   - label: Configure Stack Monitoring
     url: /deploy-manage/monitor/stack-monitoring.md
+  - label: Stack monitoring alerts
+    url: /deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md
 :::
 
 :::{link-card}
@@ -317,7 +309,7 @@ links:
 
 :::{link-card}
 title: Visualizations
-description: Create charts and visual panels with Lens, ES|QL, Vega, Maps, or a custom HTML panel.
+description: Create charts and visual panels with Lens, ES|QL, Vega, or a custom HTML panel.
 links:
   - label: Visualizations overview
     url: /explore-analyze/visualize.md
@@ -329,8 +321,6 @@ links:
     url: /explore-analyze/visualize/custom-visualizations-with-vega.md
   - label: Custom panels
     url: /explore-analyze/visualize/custom-panels.md
-  - label: Maps
-    url: /explore-analyze/visualize/maps.md
 :::
 
 :::{link-card}
@@ -345,6 +335,8 @@ links:
     url: /explore-analyze/machine-learning/anomaly-detection.md
   - label: Data frame analytics
     url: /explore-analyze/machine-learning/data-frame-analytics.md
+  - label: NLP
+    url: /explore-analyze/machine-learning/nlp.md
 :::
 ::::
 
@@ -362,11 +354,13 @@ links:
     url: /explore-analyze/alerting/alerts/alerting-getting-started.md
   - label: Create and manage rules
     url: /explore-analyze/alerting/alerts/create-manage-rules.md
+  - label: View alerts
+    url: /explore-analyze/alerting/alerts/view-alerts.md
 :::
 
 :::{link-card}
 title: Alerting V2
-description: Watch data with ES|QL rules, track alert episodes, and route notifications with action policies.
+description: Watch data with ES|QL rules, track alert episodes, and send notifications.
 links:
   - label: Alerting V2 overview
     url: /explore-analyze/alerting/system-overview.md
@@ -376,8 +370,6 @@ links:
     url: /explore-analyze/alerting/experimental-alerting-system/rules.md
   - label: Alert episodes
     url: /explore-analyze/alerting/experimental-alerting-system/alerts.md
-  - label: Action policies
-    url: /explore-analyze/alerting/experimental-alerting-system/action-policies/about-action-policies.md
 :::
 
 :::{link-card}
@@ -425,8 +417,6 @@ links:
     url: /explore-analyze/workflows/use-cases.md
   - label: Triggers
     url: /explore-analyze/workflows/triggers.md
-  - label: Steps
-    url: /explore-analyze/workflows/steps.md
 :::
 
 :::{link-card}
@@ -437,6 +427,10 @@ links:
     url: /explore-analyze/ai-features/agent-builder/chat.md
   - label: Get started with Agent Builder
     url: /explore-analyze/ai-features/agent-builder/get-started.md
+  - label: Build dashboards in chat
+    url: /explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md
+  - label: Chat UI modes
+    url: /explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md
 :::
 
 :::{link-card}
@@ -470,10 +464,6 @@ links:
     url: /explore-analyze/query-filter/languages/esql-kibana.md
   - label: Query DSL
     url: /explore-analyze/query-filter/languages/querydsl.md
-  - label: Lucene query syntax
-    url: /explore-analyze/query-filter/languages/lucene-query-syntax.md
-  - label: EQL
-    url: /explore-analyze/query-filter/languages/eql.md
   - label: Elasticsearch SQL
     url: /explore-analyze/query-filter/languages/sql.md
 :::
@@ -482,8 +472,6 @@ links:
 title: Developer tools
 description: Run API requests, profile queries, and debug patterns and scripts from Kibana.
 links:
-  - label: Query tools
-    url: /explore-analyze/query-filter/tools.md
   - label: Console
     url: /explore-analyze/query-filter/tools/console.md
   - label: Search Profiler
@@ -504,6 +492,8 @@ links:
     url: /deploy-manage/remote-clusters.md
   - label: Cross-project search
     url: /explore-analyze/cross-project-search.md
+  - label: Compare CCS and CPS
+    url: /explore-analyze/cross-project-search/cps-compared-to-ccs.md
 :::
 ::::
 
@@ -552,10 +542,6 @@ links:
     url: /troubleshoot/kibana.md
   - label: Alerts
     url: /troubleshoot/kibana/alerts.md
-  - label: Maps
-    url: /troubleshoot/kibana/maps.md
-  - label: Reporting
-    url: /troubleshoot/kibana/reporting.md
 :::
 
 :::{link-card}
@@ -563,6 +549,8 @@ title: Capture diagnostics
 links:
   - label: Capture Kibana diagnostics
     url: /troubleshoot/kibana/capturing-diagnostics.md
+  - label: Server logs
+    url: /troubleshoot/kibana/using-kibana-server-logs.md
 :::
 ::::
 
@@ -582,10 +570,6 @@ links:
     url: kibana://reference/configuration-reference/alerting-settings.md
   - label: Security
     url: kibana://reference/configuration-reference/security-settings.md
-  - label: Reporting
-    url: kibana://reference/configuration-reference/reporting-settings.md
-  - label: Monitoring
-    url: kibana://reference/configuration-reference/monitoring-settings.md
   - label: Advanced settings (UI)
     url: kibana://reference/advanced-settings.md
 :::
