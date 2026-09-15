@@ -15,7 +15,7 @@ products:
 Learn how to index, update, retrieve, search, and delete documents in an {{es}} cluster using APIs.
 
 ::::{tip}
-For a user interface to query, visualize, and manage your {{es}} data, try to [{{kib}}](/explore-analyze/index.md). {{kib}} provides visualization tools, index management, and sample data sets you can use to explore its capabilities.
+For a user interface to query, visualize, and manage your {{es}} data, try [{{kib}}](/explore-analyze/index.md). {{kib}} provides visualization tools, index management, and sample data sets you can use to explore its capabilities.
 ::::
 
 ## Before you begin [before-you-begin]
