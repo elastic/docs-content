@@ -17,8 +17,6 @@ Events with `type: signal` don't belong to an [alert episode](../alerts.md), so 
 - You have events with `type: signal` in `.rule-events` to query.
 - Your role can query `.rule-events` in Discover. For privilege details, refer to [Configure access](../get-started/configure-access.md#alerting-data-investigation-privileges).
 
-The examples on this page use {{esql}} (`FROM .rule-events`). You don't need a data view for those queries. If you query `.rule-events` with KQL instead, add it as a data view first. Follow the steps in [Before you begin](query-alerts-and-signals-in-discover.md#add-data-views-before-begin) on the alert history page, using the `.ds-.rule-events-*` index pattern.
-
 ## Key fields for these queries [signal-key-fields]
 
 These fields matter most when you query `.rule-events`. Filter with `type == "signal"` to exclude events with `type: alert`.
