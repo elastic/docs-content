@@ -46,7 +46,7 @@ steps:
 :title: Solutions
 :id: solutions
 :variant: solutions
-:intro: Solutions add purpose-built experiences on top of Kibana for specific use cases. Use one as your starting point, or work with Kibana's features directly.
+:intro: Start from a solution when you want a guided path for search, observability, security, or vector search. Vector Database is available on Serverless only.
 
 :::{link-card}
 title: Elasticsearch
@@ -67,6 +67,24 @@ links:
     url: elasticsearch://reference/search-connectors/index.md
   - label: Semantic search
     url: /solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md
+:::
+
+:::{link-card}
+title: Vector Database
+icon: vectordb
+variant: es
+description: A Serverless project type for embeddings, RAG, and similarity search.
+links:
+  - label: Overview
+    url: /solutions/vector-database.md
+  - label: Get started
+    url: /solutions/vector-database/get-started.md
+  - label: Vector and full-text search
+    url: /solutions/vector-database/vector-full-text-search.md
+  - label: RAG
+    url: /solutions/search/rag.md
+  - label: Hybrid search
+    url: /solutions/search/hybrid-search.md
 :::
 
 :::{link-card}
@@ -119,7 +137,7 @@ links:
 :::::{explore}
 :id: explore
 :title: Explore Kibana
-:intro: Explore the apps and capabilities that help you understand and act on your data.
+:intro: Find the Kibana app or task you need, whether you're querying data, building a dashboard, or managing the stack.
 
 ::::{card-group}
 :title: Quick links
