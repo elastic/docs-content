@@ -160,6 +160,11 @@ The chart preview shows how the request count changes over time.
 
 For more query patterns and chart settings, refer to [Build a line chart with an {{esql}} query](charts/line-charts.md#build-a-line-chart-with-esql) and [Build an area chart with an {{esql}} query](charts/area-charts.md#build-an-area-chart-with-esql).
 
+## Compare current versus previous period with time shift [esql-viz-time-shift]
+
+:::{include} _snippets/esql-time-shift.md
+:::
+
 ## Add drilldowns to an {{esql}} visualization [esql-viz-drilldowns]
 ```{applies_to}
 stack: ga 9.4
