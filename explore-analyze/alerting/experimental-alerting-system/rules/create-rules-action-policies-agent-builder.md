@@ -65,7 +65,7 @@ Use these prompts as a starting point, then adjust them to your data and thresho
 After a rule is saved, you can ask the agent to configure notifications. The rule management skill handles this by creating workflows and action policies.
 
 :::{note}
-Action policies invoke workflows for alert episodes only. If you ask the agent to set up notifications for a rule that doesn't open alert episodes, the skill explains the limitation. It offers to group those matches into an alert episode, or to create a separate rule that does. 
+Action policies invoke workflows for alert episodes only. If you ask the agent to set up notifications for a rule that doesn't open alert episodes, the skill explains the limitation. If the rule is still a draft in the conversation, the skill changes it so matches open alert episodes before you save it. If the rule is already saved, that setting can't change, so the skill offers to create a new rule with the same query and schedule that opens alert episodes, then set up notifications on that rule.
 :::
 
 - **Workflows** - Workflows are the delivery mechanism. They define what happens when the {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
