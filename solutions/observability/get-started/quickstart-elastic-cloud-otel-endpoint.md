@@ -242,9 +242,10 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 
 :::::::
 
-## Differences from the Elastic APM Endpoint
+## Differences from the Elastic APM endpoint
 
-The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data.
+:::{include} /solutions/observability/get-started/opentelemetry/_snippets/motlp-vs-apm-endpoint.md
+:::
 
 ## Troubleshooting
 
