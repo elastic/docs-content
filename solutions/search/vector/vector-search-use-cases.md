@@ -83,7 +83,7 @@ A **filter** is a rule on structured fields in your index, such as "in stock," "
 
 Add a `filter` clause to your kNN request so only matching documents are returned. This is important for catalogs where most items are out of scope for a given user.
 
-- [Filtered kNN search](knn.md#knn-search-filter-example)
+- [Filtered kNN search](knn/build-search-queries.md#knn-search-filter-example)
 
 :::::
 

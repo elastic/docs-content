@@ -208,7 +208,7 @@ After the reindexing is finished, the documents in the new index contain the {{i
 
 ## Semantic search [ex-text-emb-vect-search]
 
-After the dataset has been enriched with vector embeddings, you can query the data using [semantic search](../../../solutions/search/vector/knn.md#knn-semantic-search). Pass a `query_vector_builder` to the k-nearest neighbor (kNN) vector search API, and provide the query text and the model you have used to create vector embeddings. This example searches for "How is the weather in Jamaica?":
+After the dataset has been enriched with vector embeddings, you can query the data using [semantic search](../../../solutions/search/vector/knn/build-search-queries.md#knn-semantic-search). Pass a `query_vector_builder` to the k-nearest neighbor (kNN) vector search API, and provide the query text and the model you have used to create vector embeddings. This example searches for "How is the weather in Jamaica?":
 
 ```js
 GET collection-with-embeddings/_search
