@@ -59,8 +59,8 @@ links:
     url: /solutions/elasticsearch-solution-project/get-started.md
   - label: Agent Builder
     url: /explore-analyze/ai-features/elastic-agent-builder.md
-  - label: Playground
-    url: /solutions/elasticsearch-solution-project/playground.md
+  - label: Query rules
+    url: /solutions/elasticsearch-solution-project/query-rules-ui.md
   - label: Content connectors
     url: elasticsearch://reference/search-connectors/index.md
 :::

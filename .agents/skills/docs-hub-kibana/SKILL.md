@@ -53,9 +53,11 @@ Card order: Elasticsearch, Vector Database, Observability, Security.
 
 Vector Database is a fourth solution, Serverless only. Place it next to Elasticsearch. `{link-card}` has no `applies_to` field.
 
-Solutions intro: "Solutions are packages of Elastic capabilities optimized for certain use cases." Do not add a description on Vector Database when the other solution cards have none. Match solution card link counts instead.
+Solutions intro: "Solutions are packages of Elastic capabilities optimized for certain use cases." Do not add a description on one solution card when the others have none. Match solution card link counts instead. Current target is five links each.
 
-Icons: only keys in docs-builder `ProductIcons` (`elasticsearch`, `kibana`, `observability`, `security`, `vectordb`). `vectordb` is the EUI `logoVectorDB` mark. Do not invent or hand-draw a logo.
+Elasticsearch card: Overview, Get started, Agent Builder, Query rules, Content connectors. Do not link Playground. It is deprecated in 9.4+ and on Serverless.
+
+Icons: only keys in docs-builder `ProductIcons` (`elasticsearch`, `kibana`, `observability`, `security`, `vectordb`). `vectordb` is the EUI `logoVectorDB` mark (docs-builder PR that adds it). Do not invent or hand-draw a logo. The icon will not render in preview until that docs-builder change is in the builder the preview uses.
 
 ## Card titles and links
 
@@ -68,6 +70,7 @@ Icons: only keys in docs-builder `ProductIcons` (`elasticsearch`, `kibana`, `obs
 - Keep labels to two or three words when you can.
 - Each link in a card must be a unique entry point. Drop a page that only restates the overview or another item in the same list.
 - Do not add an overview page when the card already lists the specific items (for example Query languages).
+- Do not highlight a deprecated feature when a current alternative exists. Before you add a link, read the target page `applies_to` and title. If the page is deprecated, link the replacement instead (for example Agent Builder or Query rules, not Playground).
 - Do not mix APIs and release notes in one list.
 - Quick links stay four cards: Find your way, Release notes, APIs, Configuration.
 
@@ -105,3 +108,4 @@ Section intros speak to the reader. Do not restate the heading, and do not use p
 - Do not refresh What's new items here. Use `docs-hub-whats-new`.
 - Do not invent icons or screenshots.
 - Do not land get-started visual prototypes in this repo.
+- Do not put deprecated first-stop features on hub cards.
