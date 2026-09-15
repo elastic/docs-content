@@ -12,7 +12,7 @@ type: overview
 
 # {{serverless-full}}
 
-{{serverless-full}} is a fully managed solution that allows you to deploy and use Elastic for your use cases without managing the underlying infrastructure. It represents a shift in how you interact with {{es}} - instead of managing clusters, nodes, data tiers, and scaling, you create **serverless projects** that are fully managed and automatically scaled by Elastic. This abstraction of infrastructure decisions allows you to focus solely on gaining value and insight from your data.
+{{serverless-full}} lets you run Elastic without managing clusters, nodes, or scaling. You create serverless projects and Elastic provisions, upgrades, and autoscales them so you can focus on your data.
 
 ## Serverless overview
 
@@ -66,18 +66,16 @@ Monitor your own platforms and services using powerful machine learning and anal
 ![security](../../images/64x64_Color_security-logo-color-64px.png "security =30") **[{{sec-serverless}}](/solutions/security/get-started.md)**  
 Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
 
-## Monitor serverless status [general-serverless-status]
+## Next steps
 
-Serverless projects run on cloud platforms, which may undergo changes in availability. When availability changes, Elastic makes sure to provide you with a current service status.
+* [Create a {{serverless-short}} project](create-serverless-project.md): After you decide on a project type, create a project in the {{ecloud}} console.
+* [Create a project API key](../../api-keys/serverless-project-api-keys.md): Give applications and automation a key they can use to call your project's APIs.
 
-To learn more about serverless status, see [Service status](../../cloud-organization/service-status.md).
+## Related pages
 
-## What's next
-
-* [Create a serverless project](create-serverless-project.md): After you decide on a project type, create a project in the {{ecloud}} console.
 * [Learn about your Cloud organization](../../cloud-organization.md): Understand how your projects, members, and account settings are grouped under one {{ecloud}} organization.
-* [Serverless billing dimensions](../../cloud-organization/billing/serverless-project-billing-dimensions.md): See what you're charged for so you can estimate cost and control usage.
-* [Serverless project API keys](../../api-keys/serverless-project-api-keys.md): Learn how to authenticate applications and automation against your project's APIs.
-* [Cloud organization users](../../users-roles/cloud-organization.md): Learn how user access works in your organization, including user invitations, roles, and SSO.
-* [{{serverless-full}} FAQ](serverless-faq.md): Answers on pricing, regions, backups, and converting between project types.
-* [{{serverless-full}} blog](https://www.elastic.co/blog/elastic-cloud-serverless): More background on the product and architecture.
+* [Understand serverless billing](../../cloud-organization/billing/serverless-project-billing-dimensions.md): See what you're charged for so you can estimate cost and control usage.
+* [Learn how user access works](../../users-roles/cloud-organization.md): Invitations, roles, and SSO for your organization.
+* [Review the {{serverless-full}} FAQ](serverless-faq.md): Review answers on pricing, regions, backups, and converting between project types.
+* [Read the {{serverless-full}} blog](https://www.elastic.co/blog/elastic-cloud-serverless): More background on the product and architecture.
+* [Check service status](../../cloud-organization/service-status.md): Current availability and updates when a cloud region is affected.
