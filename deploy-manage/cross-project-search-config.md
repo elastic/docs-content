@@ -117,15 +117,19 @@ Make sure to also review the [feature impacts](#cps-feature-impacts) and [limita
 
 ## Feature impacts [cps-feature-impacts]
 
-When you link projects for {{cps}}, the expanded dataset can affect existing features in the origin project.
+When you link projects for {{cps}}, the expanded dataset can affect existing features in the origin project. By default, searches, alerts, dashboards, and other features in the origin project run against the combined dataset of the origin and all linked projects. Features tuned for a single project's data might behave differently with a larger dataset.
 
-- **Alerts:** By default, rules in the origin project run against the **combined dataset** of the origin and all linked projects. Rules tuned for a single project's data might produce false positives when they evaluate a larger dataset. This is one reason we recommend using a dedicated [overview project](/deploy-manage/cross-project-search-config.md#cps-arch-overview), so that existing rules on data projects are not affected. Make sure to also consider the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space, or save explicit project routing on individual rules.
+{{cps-cap}} results are filtered by each user's role assignments across projects. Users with different roles see different results from the same query. Review [user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access) on each linked project to make sure that users have the appropriate permissions to access the data they need. 
 
-- **Dashboards and visualizations:** Existing dashboards and visualizations in the origin project will query all linked projects by default. To control this, set the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space, or save explicit project routing on individual dashboard panels.
+How you work with the expanded dataset depends on how you search:
 
-- **User permissions:** {{cps-cap}} results are filtered by each user's role assignments across projects. Users with different roles will see different results from the same query. Refer to [Manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access).
+- **{{kib}} apps:** Scope controls vary by app. [Set the default {{cps}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) before you link projects. For details on how individual apps handle {{cps-init}} scope, including which apps support the scope selector and query-level overrides, refer to [{{cps-cap}} availability by app](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability).
+- **Query syntax:** [Because queries now run across all linked projects by default](/explore-analyze/cross-project-search.md#cps-cap-as-the-default-behavior-for-linked-projects), queries that were written for a single project might return a larger result set. To restrict scope, use [qualified expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) or [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
 
-- **{{product.painless}} scripting:** The [{{product.painless}} execute API](/explore-analyze/cross-project-search.md#cps-painless-scripting) does not search across linked projects. It resolves index names against the origin project only. You can target a linked project by prefixing the index with the project alias (for example, `projectAlias:myindex`).
+:::{warning}
+By default, rules in the origin project run against the combined dataset of the origin and all linked projects. Rules tuned for a single project's data might produce false positives when they evaluate a larger dataset. This is one reason we recommend using a dedicated [overview project](/deploy-manage/cross-project-search-config.md#cps-arch-overview), so that existing rules on data projects are not affected. Make sure to also consider the [default cross-project search scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), or save explicit project routing on individual rules.
+:::
+
 
 ## Limitations [cps-limitations]
 
@@ -137,9 +141,17 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 ### {{elastic-sec}} apps
 
+The following limitations apply to {{elastic-sec}} apps. For how each app uses {{cps-init}}, including the scope selector and query-level overrides, refer to [{{cps-cap}} support in {{elastic-sec}} apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability-security).
 
-:::{include} /explore-analyze/cross-project-search/_snippets/cps-availability-security-apps.md
-:::
+- **Alert, event, and attack flyouts:** Session View isn't available for documents from linked projects. Some actions are hidden or disabled.
+- **Alerts:** The Alerts page doesn't show alerts that a linked project generated independently. Only alerts created by origin project rules appear.
+- **Attack Discovery:** Discoveries are based on origin project alerts only. Alerts from linked projects aren't included.
+- **Cases:** You can't attach an alert or event from a linked project to a case.
+- **{{elastic-defend}} and Osquery:** Policies, artifacts, response actions, and Osquery saved queries and packs can't be shared or managed across linked projects.
+- **Entity store:** A host that appears in more than one project isn't combined into a single entity at the origin. Risk scoring runs on the origin project only.
+- **{{ml-cap}} rules:** {{ml-cap}} rules don't use the space-level {{cps}} scope. They use the scope of the underlying {{anomaly-detect}} job's {{dfeed}}, which might differ from the space default.
+- **SIEM Readiness and Value report:** These features don't include data from linked projects.
+- **Timeline:** Some actions are disabled for documents from linked projects.
 
 ### Elastic {{observability}} apps
 
