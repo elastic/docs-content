@@ -456,6 +456,12 @@ The deployment is now created and encrypted using the specified key. Future snap
 
 You can add a customer-managed key to a deployment that is already running, from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) or from the {{ecloud}} API.
 
+**Before you begin**
+
+Check your index lifecycle management policies. If any ILM policy in the deployment uses the Elastic-managed `found-snapshots` repository for a `searchable_snapshot` action in its cold or frozen phase, encryption is rejected before it starts.
+
+To find affected policies, run `GET _ilm/policy` and look for `phases.cold.actions.searchable_snapshot.snapshot_repository` (or the `frozen` equivalent) set to `found-snapshots`. Update those policies, or point them at a custom snapshot repository, before you continue.
+
 **Using the {{ecloud}} Console**
 
 1. Go to your deployment's **Security** page.
@@ -490,6 +496,7 @@ The endpoint returns an error in the following cases:
 * `409` if the deployment is already encrypted with a different customer-managed key.
 * `409` if another plan is already pending on the deployment. Wait for that plan to finish, then retry.
 * `400` if the key can't be reached, or isn't valid for the deployment's cloud provider.
+* `400` with `byok_migration.ilm_policy_conflict` if an ILM policy uses the `found-snapshots` repository in a cold or frozen phase. Update those policies, then retry.
 
 {{ecloud}} then applies a plan change to encrypt your deployment's data and snapshots with your key. This plan change happens without downtime.
 
