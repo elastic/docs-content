@@ -125,7 +125,7 @@ Not suitable usage of egress static IPs to introduce network controls:
 ::::{warning} 
 :name: ec-warning
 
-Static IP ranges are subject to change. You will need to update your firewall rules when they change to prevent service disruptions. We will announce changes at least 8 weeks in advance (see [example](https://status.elastic.co/incidents/1xs411x77wgh)). Subscribe to the [{{ecloud}} status page](https://status.elastic.co/) to remain up to date with any changes to the Static IP ranges which you will need to update at your side.
+Static IP ranges are subject to change. You will need to update your firewall rules when they change to prevent service disruptions. We will announce changes at least 8 weeks in advance (see [example](https://status.elastic.co/incidents/1xs411x77wgh)). Subscribe to the [{{ecloud}} status page](https://status.elastic.co/) to remain up to date with any changes to the Static IP ranges which you will need to update at your side. If you are on a FedRAMP High deployment, subscribe to the [FedRAMP High status page](https://ela.st/fedramphighstatus) instead.
 ::::
 
 

@@ -22,6 +22,8 @@ products:
 
 To check current and past service availability, go to the [Cloud Status](https://status.elastic.co/) page. Services are separated into {{ech}} services and [Serverless services](https://status.elastic.co/?section=serverless).
 
+If you are on a FedRAMP High deployment, use the [FedRAMP High status page](https://ela.st/fedramphighstatus) to check service availability.
+
 ## Subscribe to updates [ec_subscribe_to_updates]
 
 Don’t want to check the service status page manually? You can get notified about changes to the service status automatically.
