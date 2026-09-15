@@ -22,19 +22,19 @@ The following mechanisms let you silence notifications, each at a different scop
 |---|---|---|
 | Acknowledge | Per alert episode | You're actively investigating a breach and want to silence notifications for it without closing the alert episode. Clear the acknowledgment when you're done to restore notifications. |
 | Snooze | Per series (group) | You want to quiet an entire alert series for a defined period, for example, during a known noisy window for a specific host. Snooze expires automatically at the end of the duration. |
-| Deactivate | Per alert episode | You manually [activated](../alerts/triage-alert-episodes.md) an episode and now want to return it to normal automatic recovery behavior. Deactivating doesn't close the episode. It resumes automatic recovery detection, so the episode closes on its own the next time the rule evaluates as recovered. |
-| [Maintenance window](../../alerts/maintenance-windows.md) | All action policies in a space | You want to pause all action policy dispatching in a space for a planned maintenance period. All active action policies stop dispatching; rule evaluation and episode recording continue. Maintenance windows are configured separately from action policies. |
+| Deactivate | Per alert episode | You manually [activated](../alerts/triage-alert-episodes.md) an alert episode and now want to return it to normal automatic recovery behavior. Deactivating doesn't close the alert episode. It resumes automatic recovery detection, so the alert episode closes on its own the next time the rule evaluates as recovered. |
+| [Maintenance window](../../alerts/maintenance-windows.md) | All action policies in a space | You want to pause all action policy dispatching in a space for a planned maintenance period. All active action policies stop dispatching; rule evaluation and alert episode recording continue. Maintenance windows are configured separately from action policies. |
 
 ### Snooze scope [snooze-scope]
 
 Snooze applies at the group level (by `group_hash`), not for each individual alert episode. When you snooze one alert episode, every alert episode sharing the same group (all rows with the same `rule_id` and `group_hash`) is silenced for the duration. Snoozing one row in the alerts table silences the entire series for that rule.
 
 :::{note}
-Snoozing an alert episode differs from snoozing an action policy. When you snooze an action policy, the dispatch mechanism is paused and every series the action policy processes is silenced. When you snooze an alert episode, you target one specific series before action policy matching runs, silencing it regardless of which action policy handles it. Use action policy snooze when you want to pause all notifications from a given action policy, for example, during planned maintenance on a destination system.
+Snoozing an alert episode differs from snoozing an action policy. When you snooze an action policy, the dispatch mechanism is paused and every series the action policy processes is silenced. When you snooze an alert episode, you target one specific series before action policy matching runs, silencing it regardless of which action policy handles it. Use action policy snooze when you want to pause all workflow invocations from a given action policy, for example, during planned maintenance on a destination system.
 :::
 
 ## Related pages
 
 - [About action policies](about-action-policies.md): Understand how eligibility checks, match conditions, and frequency gates work after silencing.
-- [Create and configure an action policy](create-configure-action-policy.md): Set up the action policies that run after episode silencing checks pass.
-- [Triage alert episodes](../alerts/triage-alert-episodes.md): Acknowledge, snooze, or deactivate episodes from the **Alerts** page.
+- [Create and configure an action policy](create-configure-action-policy.md): Set up the action policies that run after alert episode silencing checks pass.
+- [Triage alert episodes](../alerts/triage-alert-episodes.md): Acknowledge, snooze, or deactivate alert episodes from the **Alerts** page.
