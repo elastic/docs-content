@@ -23,6 +23,14 @@
 /extend/                                    @elastic/core-docs
 /get-started/                               @elastic/core-docs
 
+# Product hub pages. File rules replace the directory fallback (last match wins).
+/products/                                  @elastic/docs
+/products/elasticsearch.md                  @elastic/developer-docs @elastic/admin-docs
+/products/kibana.md                         @elastic/ski-docs @elastic/admin-docs
+/products/logstash.md                       @elastic/ski-docs
+/products/elastic-stack.md                  @elastic/core-docs @elastic/ski-docs
+/hub-whats-new.yml                          @elastic/developer-docs @elastic/ski-docs @elastic/core-docs
+
 /manage-data/                               @elastic/admin-docs
 /manage-data/data-store/                    @elastic/admin-docs @elastic/developer-docs
 /manage-data/ingest/                        @elastic/ski-docs
