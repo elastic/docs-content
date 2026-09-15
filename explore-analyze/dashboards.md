@@ -43,6 +43,7 @@ Once you understand the basics, explore these common tasks:
 
 **Manage and share**
 - [Manage dashboards](dashboards/managing.md): Browse, search, organize, and track usage of your dashboards.
+- [Create and run dashboard playlists](dashboards/dashboard-playlists.md): Rotate through multiple dashboards in fullscreen presentation mode.
 - [Share and export dashboards](dashboards/sharing.md): Share with your team using links or embeds, and export as PDF, PNG, or CSV.
 - [Duplicate a dashboard](dashboards/duplicate-dashboards.md): Create customizable copies of existing dashboards.
 - [Import a dashboard](dashboards/import-dashboards.md): Bring a dashboard from another space, instance, or deployment into your own.
