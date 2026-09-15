@@ -46,7 +46,7 @@ From here, complete the following steps:
 
 From the **Choose the SLI type** dropdown, select the type of SLI to use.
 
-{applies_to}`serverless: preview` When your project has [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), you can also set the [**Project scope**](#slo-cps-scope) to choose which of them the SLO monitors.
+{applies_to}`serverless: ga` When your project has [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), you can also set the [**Project scope**](#slo-cps-scope) to choose which of them the SLO monitors.
 
 The type of SLI to use depends on the location of your data:
 
@@ -225,7 +225,7 @@ Synthetics availability SLIs are automatically grouped by monitor and location.
 ### Project scope [slo-cps-scope]
 ```{applies_to}
 stack: unavailable
-serverless: preview
+serverless: ga
 ```
 
 On {{serverless-full}}, an SLO can monitor source data from projects that are [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md). The SLO does not use the header {{cps-init}} scope selector.
