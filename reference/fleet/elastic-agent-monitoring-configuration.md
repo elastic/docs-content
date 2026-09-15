@@ -45,3 +45,13 @@ The `agent.monitoring.pprof.enabled` option controls whether the {{agent}} and {
 
 The `agent.monitoring.http.buffer.enabled` option controls whether the {{agent}} and {{beats}} collect metrics into an in-memory buffer and expose these through a `/buffer` endpoint. It is set to `false` by default. This data can be useful for debugging or if the {{agent}} has issues communicating with {{es}}. Enabling this option may slightly increase process memory usage.
 
+## OTel monitoring [otel-monitoring]
+
+```{applies_to}
+stack: ga 9.5+
+```
+
+When {{agent}} uses OTel-based {{es}} monitoring, it writes internal collector metrics to `elastic-agent-metrics.ndjson` in the agent's logs directory. This file is automatically included in every `elastic-agent diagnostics` bundle and contains raw collector metric snapshots useful for diagnosing OTel monitoring pipeline issues.
+
+The metrics file only appears when OTel-based {{es}} monitoring is active. For more information about the diagnostics bundle, refer to [Capture {{agent}} diagnostics](/troubleshoot/ingest/fleet/diagnostics.md).
+
