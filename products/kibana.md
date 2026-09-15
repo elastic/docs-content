@@ -55,8 +55,6 @@ link: /solutions/elasticsearch-solution-project.md
 icon: elasticsearch
 variant: es
 links:
-  - label: Solution overview
-    url: /solutions/elasticsearch-solution-project.md
   - label: Get started
     url: /solutions/elasticsearch-solution-project/get-started.md
   - label: Agent Builder
@@ -77,8 +75,6 @@ link: /solutions/observability.md
 icon: observability
 variant: obs
 links:
-  - label: Solution overview
-    url: /solutions/observability.md
   - label: Get started
     url: /solutions/observability/get-started.md
   - label: Agent Builder
@@ -101,8 +97,6 @@ link: /solutions/security.md
 icon: security
 variant: sec
 links:
-  - label: Solution overview
-    url: /solutions/security.md
   - label: Get started
     url: /solutions/security/get-started.md
   - label: Agent Builder
@@ -211,8 +205,6 @@ title: Maintain and monitor
 link: /deploy-manage/production-guidance/kibana-in-production-environments.md
 description: Production guidance, upgrades, and logging for Kibana itself. Monitor the rest of the stack from the Stack management section.
 links:
-  - label: Run in production
-    url: /deploy-manage/production-guidance/kibana-in-production-environments.md
   - label: Upgrade Kibana
     url: /deploy-manage/upgrade/deployment-or-cluster/kibana.md
   - label: Logging
@@ -229,8 +221,6 @@ title: Discover
 link: /explore-analyze/discover/discover-get-started.md
 description: Browse documents, filter, and query your indices in real time.
 links:
-  - label: Get started with Discover
-    url: /explore-analyze/discover/discover-get-started.md
   - label: Data views
     url: /explore-analyze/find-and-organize/data-views.md
   - label: Query with KQL
@@ -244,14 +234,12 @@ title: Dashboards
 link: /explore-analyze/dashboards.md
 description: Build interactive dashboards that combine visualizations, controls, and context.
 links:
-  - label: Create a dashboard
-    url: /explore-analyze/dashboards/create-dashboard.md
-  - label: Build and customize
+  - label: Ways to create a dashboard
     url: /explore-analyze/dashboards/building.md
   - label: Organize panels and sections
     url: /explore-analyze/dashboards/arrange-panels.md
-  - label: Panel types
-    url: /explore-analyze/visualize.md
+  - label: Add controls
+    url: /explore-analyze/visualize/dashboard-controls.md
   - label: Share and export
     url: /explore-analyze/dashboards/sharing.md
 :::
@@ -259,7 +247,7 @@ links:
 :::{link-card}
 title: Visualizations
 link: /explore-analyze/visualize.md
-description: Create charts and visual panels with the drag-and-drop editor, ES|QL, Vega, or Maps.
+description: Create charts and visual panels with the drag-and-drop editor, ES|QL, Vega, Maps, or a custom HTML panel.
 links:
   - label: Visualization editor (drag-and-drop)
     url: /explore-analyze/visualize/lens.md
@@ -269,6 +257,8 @@ links:
     url: /explore-analyze/visualize/custom-visualizations-with-vega.md
   - label: Maps
     url: /explore-analyze/visualize/maps.md
+  - label: Custom panels
+    url: /explore-analyze/visualize/custom-panels.md
 :::
 ::::
 
@@ -281,8 +271,6 @@ title: Alerting and rules
 link: /explore-analyze/alerting/alerts/alerting-getting-started.md
 description: Detect important changes and notify people or trigger actions.
 links:
-  - label: Getting started
-    url: /explore-analyze/alerting/alerts/alerting-getting-started.md
   - label: Create and manage rules
     url: /explore-analyze/alerting/alerts/create-manage-rules.md
   - label: Performance and scaling
@@ -316,8 +304,6 @@ title: AI Assistant
 link: /explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md
 description: Chat from the Kibana header to build queries, explain errors, and get help in your solution.
 links:
-  - label: AI assistants in Kibana
-    url: /explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md
   - label: Compare with Agent Builder
     url: /explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
 :::
@@ -327,8 +313,6 @@ title: Agent Builder
 link: /explore-analyze/ai-features/elastic-agent-builder.md
 description: Build custom AI agents that reason over your Elasticsearch data using LLMs and tools.
 links:
-  - label: Overview
-    url: /explore-analyze/ai-features/elastic-agent-builder.md
   - label: Agents
     url: /explore-analyze/ai-features/agent-builder/agent-builder-agents.md
   - label: Custom tools
@@ -370,8 +354,6 @@ title: Machine learning
 link: /explore-analyze/machine-learning/machine-learning-in-kibana.md
 description: Detect anomalies, forecast trends, and run data frame analytics.
 links:
-  - label: Machine learning in Kibana
-    url: /explore-analyze/machine-learning/machine-learning-in-kibana.md
   - label: Anomaly detection job wizards
     url: /reference/machine-learning/supplied-anomaly-detection-configurations.md
 :::
@@ -386,8 +368,6 @@ title: Query languages
 link: /explore-analyze/query-filter/languages.md
 description: Languages you can use in Kibana to search, filter, and analyze Elasticsearch data.
 links:
-  - label: Query languages overview
-    url: /explore-analyze/query-filter/languages.md
   - label: Kibana Query Language (KQL)
     url: /explore-analyze/query-filter/languages/kql.md
   - label: ES|QL
@@ -457,8 +437,6 @@ title: Stack Monitoring
 link: /deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md
 description: Monitor the health of Elasticsearch, Kibana, Logstash, and Beats from a single Kibana app.
 links:
-  - label: Kibana monitoring data
-    url: /deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md
   - label: Configure Stack Monitoring
     url: /deploy-manage/monitor/stack-monitoring.md
 :::
@@ -468,8 +446,6 @@ title: Spaces and saved objects
 link: /deploy-manage/manage-spaces.md
 description: Organize work into spaces. Manage dashboards, visualizations, and other Kibana objects, including export, import, and migration.
 links:
-  - label: Spaces
-    url: /deploy-manage/manage-spaces.md
   - label: Manage saved objects
     url: /explore-analyze/find-and-organize/saved-objects.md
   - label: Tags
@@ -564,8 +540,6 @@ title: Release notes
 link: kibana://release-notes/index.md
 description: What's new, deprecated, and fixed in each Kibana release.
 links:
-  - label: Kibana
-    url: kibana://release-notes/index.md
   - label: Known issues
     url: kibana://release-notes/known-issues.md
   - label: Breaking changes
