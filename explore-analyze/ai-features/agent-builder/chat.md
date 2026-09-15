@@ -239,6 +239,7 @@ To learn how traces are collected, configured, and secured, refer to [Collect ag
 ### Human-in-the-loop prompts
 ```{applies_to}
 stack: ga 9.4+
+serverless: ga
 ```
 
 At certain points an agent pauses and hands control back to you before it continues. This pattern is known as human-in-the-loop (HITL). While a conversation is paused this way, it shows an **Awaiting your input** status in the [chat history panel](#track-conversation-status).
@@ -247,15 +248,24 @@ At certain points an agent pauses and hands control back to you before it contin
 
 | Prompt | When it appears | Available responses |
 | --- | --- | --- |
-| Tool confirmation | An Elastic-built tool or skill requires approval before it performs an action | Confirm the action or deny it |
+| Tool confirmation | A tool or skill requires approval before it performs an action | Confirm the action or deny it |
 | Connector authorization {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | An external connector needs access to continue | Authorize access or deny it |
 | Clarifying question {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | The agent needs more information to continue | Answer or skip the question |
 
 HITL prompts do not replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
 
+HITL prompts require an interactive conversation, so [sub-agent executions cannot answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+
 #### Confirm a change
 
-Some Elastic-built tools and skills pause for confirmation before performing consequential actions. When confirmation is required, the chat presents a preview before the action takes effect. The preview format and available responses depend on the tool or skill. Review the preview, then confirm the action to proceed or deny it to cancel.
+Some tools and skills pause for confirmation before they perform consequential actions. Elastic-built tools and skills decide for themselves when to ask.
+
+For [custom tools](tools/custom-tools.md), you decide when the agent asks: set **Require user confirmation** to **Never**, **Once**, or **Always**. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+
+What the prompt shows depends on the tool:
+
+* Some Elastic-built tools and skills preview the change before it takes effect. The preview format and the button labels depend on the tool or skill: a prompt to delete a [stream](/solutions/observability/streams/streams.md) offers **Delete permanently**, and a prompt to create one offers **Create stream**. Review the preview, then confirm the action to proceed or deny it to cancel.
+* Other tools, including all custom tools, show a generic prompt that names the tool and asks whether to proceed. Select **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and does not show the parameters that the agent passes to it, so give custom tools [descriptive IDs](tools/custom-tools.md#naming-conventions).
 
 For example, when an agent updates a workflow, it shows the proposed change as a diff and waits for you to review it before applying:
 
@@ -278,6 +288,14 @@ For irreversible actions, the prompt highlights the consequences before you proc
 :::{image} images/agent-builder-confirm-delete-stream.png
 :screenshot:
 :alt: Confirmation prompt warning that the logs.otel.checkout stream and its data will be permanently deleted
+:width: 700px
+:::
+
+Custom tools show the generic prompt instead. Here, a tool that cancels an order asks for permission before it runs. The prompt names the tool but not the order:
+
+:::{image} images/agent-builder-tool-confirmation-prompt.png
+:screenshot:
+:alt: Generic confirmation prompt asking permission to call the tool ecommerce.cancel_order, with Deny and Allow buttons
 :width: 700px
 :::
 
