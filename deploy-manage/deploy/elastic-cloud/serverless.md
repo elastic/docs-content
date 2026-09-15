@@ -31,7 +31,7 @@ Choose a type that matches your use case, then [create a serverless project](cre
 
 ### Explore the solution docs
 
-If you're deciding which project type to create, these guides describe typical workflows for each one.
+If you're deciding which project type to create, these guides describe the capabilities and use cases for each one.
 
 ![elasticsearch](../../images/64x64_Color_elasticsearch-logo-color-64px.png "elasticsearch =30") **[{{es-serverless}}](/solutions/elasticsearch-solution-project/get-started.md)**  
 Build powerful, scalable search and analytics applications across structured data, logs, metrics, documents, and vectors as part of a broader {{stack}}.
