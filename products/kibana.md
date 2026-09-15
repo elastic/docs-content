@@ -211,7 +211,7 @@ links:
 
 :::{link-card}
 title: Maintain and monitor
-description: Production guidance, upgrades, and logging for Kibana itself. Monitor the rest of the stack from the Stack management section.
+description: Production guidance, upgrades, and logging for Kibana itself. Monitor the rest of the stack from Manage data and Kibana.
 links:
   - label: Run in production
     url: /deploy-manage/production-guidance/kibana-in-production-environments.md
@@ -223,205 +223,7 @@ links:
 ::::
 
 ::::{card-group}
-:title: Explore, visualize, and analyze
-:id: visualize
-
-:::{link-card}
-title: Discover
-description: Browse documents, filter, and query your indices in real time.
-links:
-  - label: Discover overview
-    url: /explore-analyze/discover.md
-  - label: Get started with Discover
-    url: /explore-analyze/discover/discover-get-started.md
-  - label: Data views
-    url: /explore-analyze/find-and-organize/data-views.md
-  - label: Query with KQL
-    url: /explore-analyze/query-filter/languages/kql.md
-:::
-
-:::{link-card}
-title: Dashboards
-description: Combine visualizations, controls, and context in an interactive view.
-links:
-  - label: Dashboards overview
-    url: /explore-analyze/dashboards.md
-  - label: Get started with Dashboards
-    url: /explore-analyze/dashboards/tutorials.md
-  - label: Ways to create a dashboard
-    url: /explore-analyze/dashboards/building.md
-  - label: Add controls
-    url: /explore-analyze/visualize/dashboard-controls.md
-:::
-
-:::{link-card}
-title: Visualizations
-description: Create charts and visual panels with Lens, ES|QL, Vega, Maps, or a custom HTML panel.
-links:
-  - label: Visualizations overview
-    url: /explore-analyze/visualize.md
-  - label: Lens
-    url: /explore-analyze/visualize/lens.md
-  - label: ES|QL charts
-    url: /explore-analyze/visualize/esorql.md
-  - label: Custom panels
-    url: /explore-analyze/visualize/custom-panels.md
-  - label: Maps
-    url: /explore-analyze/visualize/maps.md
-:::
-
-:::{link-card}
-title: Machine learning
-description: Detect anomalies, forecast trends, and run data frame analytics.
-links:
-  - label: Machine learning overview
-    url: /explore-analyze/machine-learning/machine-learning-in-kibana.md
-  - label: Get started with Machine learning
-    url: /explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md
-  - label: Anomaly detection
-    url: /explore-analyze/machine-learning/anomaly-detection.md
-  - label: Data frame analytics
-    url: /explore-analyze/machine-learning/data-frame-analytics.md
-:::
-::::
-
-::::{card-group}
-:title: Alerting and incident response
-:id: alerting
-
-:::{link-card}
-title: Kibana alerting
-description: Detect conditions with built-in rule types and send notifications through connectors.
-links:
-  - label: Kibana alerting overview
-    url: /explore-analyze/alerting/alerts.md
-  - label: Get started with Kibana alerting
-    url: /explore-analyze/alerting/alerts/alerting-getting-started.md
-  - label: Create and manage rules
-    url: /explore-analyze/alerting/alerts/create-manage-rules.md
-  - label: Alerting connectors
-    url: kibana://reference/connectors-kibana/alerting-cases-connectors.md
-:::
-
-:::{link-card}
-title: Alerting V2
-description: Watch data with ES|QL rules, track alert episodes, and route notifications with action policies.
-links:
-  - label: Alerting V2 overview
-    url: /explore-analyze/alerting/system-overview.md
-  - label: Get started with Alerting V2
-    url: /explore-analyze/alerting/experimental-alerting-system/get-started.md
-  - label: Rules
-    url: /explore-analyze/alerting/experimental-alerting-system/rules.md
-  - label: Alert episodes
-    url: /explore-analyze/alerting/experimental-alerting-system/alerts.md
-  - label: Action policies
-    url: /explore-analyze/alerting/experimental-alerting-system/action-policies/about-action-policies.md
-:::
-::::
-
-::::{card-group}
-:title: AI and automation
-:id: ai-automation
-
-:::{link-card}
-title: Agent Builder
-description: Build custom AI agents that reason over your Elasticsearch data using LLMs and tools.
-links:
-  - label: Agent Builder overview
-    url: /explore-analyze/ai-features/elastic-agent-builder.md
-  - label: Get started with Agent Builder
-    url: /explore-analyze/ai-features/agent-builder/get-started.md
-  - label: Agents
-    url: /explore-analyze/ai-features/agent-builder/agent-builder-agents.md
-  - label: Custom tools
-    url: /explore-analyze/ai-features/agent-builder/tools/custom-tools.md
-:::
-
-:::{link-card}
-title: Workflows
-description: Automate tasks with sequences that chain Kibana actions, HTTP calls, and AI agents.
-links:
-  - label: Workflows overview
-    url: /explore-analyze/workflows.md
-  - label: Get started with Workflows
-    url: /explore-analyze/workflows/get-started.md
-  - label: Kibana action steps
-    url: /explore-analyze/workflows/steps/kibana.md
-  - label: Call agents
-    url: /explore-analyze/ai-features/agent-builder/agents-and-workflows.md
-:::
-
-:::{link-card}
-title: AI Agent chat
-description: Chat with agents from the Kibana header to ask questions and take action on your data.
-links:
-  - label: AI Agent chat overview
-    url: /explore-analyze/ai-features/agent-builder/chat.md
-  - label: Chat UI modes
-    url: /explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md
-  - label: Agents
-    url: /explore-analyze/ai-features/agent-builder/agent-builder-agents.md
-:::
-
-:::{link-card}
-title: Context connectors
-description: Give agents access to external data and tools, such as Slack and GitHub.
-links:
-  - label: Context connectors overview
-    url: kibana://reference/connectors-kibana.md
-  - label: Slack
-    url: kibana://reference/connectors-kibana/slack-v2-action-type.md
-  - label: GitHub
-    url: kibana://reference/connectors-kibana/github-action-type.md
-  - label: Google Drive
-    url: kibana://reference/connectors-kibana/google-drive-action-type.md
-:::
-::::
-
-::::{card-group}
-:title: Query data in Kibana
-:id: query-data
-
-:::{link-card}
-title: Query languages
-description: Languages you can use in Kibana to search, filter, and analyze Elasticsearch data.
-links:
-  - label: Query languages overview
-    url: /explore-analyze/query-filter/languages.md
-  - label: Kibana Query Language (KQL)
-    url: /explore-analyze/query-filter/languages/kql.md
-  - label: ES|QL
-    url: /explore-analyze/query-filter/languages/esql-kibana.md
-  - label: Query DSL
-    url: /explore-analyze/query-filter/languages/querydsl.md
-  - label: Lucene query syntax
-    url: /explore-analyze/query-filter/languages/lucene-query-syntax.md
-  - label: EQL
-    url: /explore-analyze/query-filter/languages/eql.md
-  - label: Elasticsearch SQL
-    url: /explore-analyze/query-filter/languages/sql.md
-:::
-
-:::{link-card}
-title: Developer tools
-description: Run API requests, profile queries, and debug patterns and scripts from Kibana.
-links:
-  - label: Query tools
-    url: /explore-analyze/query-filter/tools.md
-  - label: Console
-    url: /explore-analyze/query-filter/tools/console.md
-  - label: Search Profiler
-    url: /explore-analyze/query-filter/tools/search-profiler.md
-  - label: Grok Debugger
-    url: /explore-analyze/query-filter/tools/grok-debugger.md
-  - label: Painless Lab
-    url: /explore-analyze/scripting/painless-lab.md
-:::
-::::
-
-::::{card-group}
-:title: Stack management
+:title: Manage data and Kibana
 :id: stack-management
 
 :::{link-card}
@@ -474,6 +276,234 @@ links:
     url: /explore-analyze/find-and-organize/saved-objects.md
   - label: Tags
     url: /explore-analyze/find-and-organize/tags.md
+:::
+::::
+
+::::{card-group}
+:title: Explore, visualize, and analyze
+:id: visualize
+
+:::{link-card}
+title: Discover
+description: Browse documents, filter, and query your indices in real time.
+links:
+  - label: Discover overview
+    url: /explore-analyze/discover.md
+  - label: Get started with Discover
+    url: /explore-analyze/discover/discover-get-started.md
+  - label: Data views
+    url: /explore-analyze/find-and-organize/data-views.md
+  - label: Query with KQL
+    url: /explore-analyze/query-filter/languages/kql.md
+  - label: Query with ES|QL
+    url: /explore-analyze/discover/try-esql.md
+:::
+
+:::{link-card}
+title: Dashboards
+description: Combine visualizations, controls, and context in an interactive view.
+links:
+  - label: Dashboards overview
+    url: /explore-analyze/dashboards.md
+  - label: Get started with Dashboards
+    url: /explore-analyze/dashboards/tutorials.md
+  - label: Ways to create a dashboard
+    url: /explore-analyze/dashboards/building.md
+  - label: Add controls
+    url: /explore-analyze/visualize/dashboard-controls.md
+  - label: Best practices
+    url: /explore-analyze/dashboards/arrange-panels.md
+:::
+
+:::{link-card}
+title: Visualizations
+description: Create charts and visual panels with Lens, ES|QL, Vega, Maps, or a custom HTML panel.
+links:
+  - label: Visualizations overview
+    url: /explore-analyze/visualize.md
+  - label: Create visualizations
+    url: /explore-analyze/visualize/lens.md
+  - label: Create visualizations with ES|QL
+    url: /explore-analyze/visualize/esorql.md
+  - label: Vega
+    url: /explore-analyze/visualize/custom-visualizations-with-vega.md
+  - label: Custom panels
+    url: /explore-analyze/visualize/custom-panels.md
+  - label: Maps
+    url: /explore-analyze/visualize/maps.md
+:::
+
+:::{link-card}
+title: Machine learning
+description: Detect anomalies, forecast trends, and run data frame analytics.
+links:
+  - label: Machine learning overview
+    url: /explore-analyze/machine-learning/machine-learning-in-kibana.md
+  - label: Get started with Machine learning
+    url: /explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md
+  - label: Anomaly detection
+    url: /explore-analyze/machine-learning/anomaly-detection.md
+  - label: Data frame analytics
+    url: /explore-analyze/machine-learning/data-frame-analytics.md
+:::
+::::
+
+::::{card-group}
+:title: Alerting and incident response
+:id: alerting
+
+:::{link-card}
+title: Kibana alerting
+description: Detect conditions with built-in rule types and send notifications through connectors.
+links:
+  - label: Kibana alerting overview
+    url: /explore-analyze/alerting/alerts.md
+  - label: Get started with Kibana alerting
+    url: /explore-analyze/alerting/alerts/alerting-getting-started.md
+  - label: Create and manage rules
+    url: /explore-analyze/alerting/alerts/create-manage-rules.md
+:::
+
+:::{link-card}
+title: Alerting V2
+description: Watch data with ES|QL rules, track alert episodes, and route notifications with action policies.
+links:
+  - label: Alerting V2 overview
+    url: /explore-analyze/alerting/system-overview.md
+  - label: Get started with Alerting V2
+    url: /explore-analyze/alerting/experimental-alerting-system/get-started.md
+  - label: Rules
+    url: /explore-analyze/alerting/experimental-alerting-system/rules.md
+  - label: Alert episodes
+    url: /explore-analyze/alerting/experimental-alerting-system/alerts.md
+  - label: Action policies
+    url: /explore-analyze/alerting/experimental-alerting-system/action-policies/about-action-policies.md
+:::
+
+:::{link-card}
+title: Alerting connectors
+description: Send alerts and case updates to Slack, Jira, PagerDuty, and other incident-management tools.
+links:
+  - label: Alerting connectors overview
+    url: kibana://reference/connectors-kibana/alerting-cases-connectors.md
+  - label: Slack
+    url: kibana://reference/connectors-kibana/slack-action-type.md
+  - label: Jira
+    url: kibana://reference/connectors-kibana/jira-action-type.md
+  - label: PagerDuty
+    url: kibana://reference/connectors-kibana/pagerduty-action-type.md
+:::
+::::
+
+::::{card-group}
+:title: AI and Workflows
+:id: ai-automation
+
+:::{link-card}
+title: Agent Builder
+description: Build custom AI agents that reason over your Elasticsearch data using LLMs and tools.
+links:
+  - label: Agent Builder overview
+    url: /explore-analyze/ai-features/elastic-agent-builder.md
+  - label: Get started with Agent Builder
+    url: /explore-analyze/ai-features/agent-builder/get-started.md
+  - label: Agents
+    url: /explore-analyze/ai-features/agent-builder/agent-builder-agents.md
+  - label: Custom tools
+    url: /explore-analyze/ai-features/agent-builder/tools/custom-tools.md
+:::
+
+:::{link-card}
+title: Workflows
+description: Automate tasks with sequences that chain Kibana actions, HTTP calls, and AI agents.
+links:
+  - label: Workflows overview
+    url: /explore-analyze/workflows.md
+  - label: Get started with Workflows
+    url: /explore-analyze/workflows/get-started.md
+  - label: Use cases
+    url: /explore-analyze/workflows/use-cases.md
+  - label: Triggers
+    url: /explore-analyze/workflows/triggers.md
+  - label: Steps
+    url: /explore-analyze/workflows/steps.md
+:::
+
+:::{link-card}
+title: AI Agent chat
+description: Chat with agents from the Kibana header to ask questions and take action on your data.
+links:
+  - label: AI Agent chat overview
+    url: /explore-analyze/ai-features/agent-builder/chat.md
+  - label: Get started with Agent Builder
+    url: /explore-analyze/ai-features/agent-builder/get-started.md
+:::
+
+:::{link-card}
+title: Context connectors
+description: Give agents access to external data and tools, such as Slack and GitHub.
+links:
+  - label: Slack
+    url: kibana://reference/connectors-kibana/slack-v2-action-type.md
+  - label: GitHub
+    url: kibana://reference/connectors-kibana/github-action-type.md
+  - label: Google Drive
+    url: kibana://reference/connectors-kibana/google-drive-action-type.md
+  - label: View all connectors
+    url: kibana://reference/connectors-kibana.md
+:::
+::::
+
+::::{card-group}
+:title: Query data in Kibana
+:id: query-data
+
+:::{link-card}
+title: Query languages
+description: Languages you can use in Kibana to search, filter, and analyze Elasticsearch data.
+links:
+  - label: Query languages overview
+    url: /explore-analyze/query-filter/languages.md
+  - label: Kibana Query Language (KQL)
+    url: /explore-analyze/query-filter/languages/kql.md
+  - label: ES|QL
+    url: /explore-analyze/query-filter/languages/esql-kibana.md
+  - label: Query DSL
+    url: /explore-analyze/query-filter/languages/querydsl.md
+  - label: Lucene query syntax
+    url: /explore-analyze/query-filter/languages/lucene-query-syntax.md
+  - label: EQL
+    url: /explore-analyze/query-filter/languages/eql.md
+  - label: Elasticsearch SQL
+    url: /explore-analyze/query-filter/languages/sql.md
+:::
+
+:::{link-card}
+title: Developer tools
+description: Run API requests, profile queries, and debug patterns and scripts from Kibana.
+links:
+  - label: Query tools
+    url: /explore-analyze/query-filter/tools.md
+  - label: Console
+    url: /explore-analyze/query-filter/tools/console.md
+  - label: Search Profiler
+    url: /explore-analyze/query-filter/tools/search-profiler.md
+  - label: Grok Debugger
+    url: /explore-analyze/query-filter/tools/grok-debugger.md
+  - label: Painless Lab
+    url: /explore-analyze/scripting/painless-lab.md
+:::
+
+:::{link-card}
+title: Search across clusters
+description: Run a search across remote clusters or linked serverless projects.
+links:
+  - label: Cross-cluster search
+    url: /explore-analyze/cross-cluster-search.md
+  - label: Remote clusters
+    url: /deploy-manage/remote-clusters.md
+  - label: Cross-project search
+    url: /explore-analyze/cross-project-search.md
 :::
 ::::
 
