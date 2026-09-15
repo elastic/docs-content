@@ -172,6 +172,26 @@ links:
 :id: deploy
 
 :::{link-card}
+title: Managed on Elastic Cloud
+description: Run Kibana as a hosted deployment or a serverless project.
+links:
+  - label: Elastic Cloud Hosted
+    url: /deploy-manage/deploy/elastic-cloud/access-kibana.md
+  - label: Serverless
+    url: /deploy-manage/deploy/elastic-cloud/serverless.md
+:::
+
+:::{link-card}
+title: Self-orchestrated
+description: Deploy and manage Kibana with Elastic Cloud on Kubernetes or Elastic Cloud Enterprise.
+links:
+  - label: Elastic Cloud on Kubernetes (ECK)
+    url: /deploy-manage/deploy/cloud-on-k8s/kibana-configuration.md
+  - label: Elastic Cloud Enterprise (ECE)
+    url: /deploy-manage/deploy/cloud-enterprise/access-kibana.md
+:::
+
+:::{link-card}
 title: Self-managed
 description: Install and run Kibana on your own infrastructure.
 links:
@@ -187,20 +207,6 @@ links:
     url: /deploy-manage/deploy/self-managed/install-kibana-on-windows.md
   - label: Configure (kibana.yml)
     url: /deploy-manage/deploy/self-managed/configure-kibana.md
-:::
-
-:::{link-card}
-title: Managed deployments
-description: Run Kibana on Elastic Cloud, Kubernetes, ECE, or as a serverless project.
-links:
-  - label: Elastic Cloud Hosted
-    url: /deploy-manage/deploy/elastic-cloud/access-kibana.md
-  - label: Serverless
-    url: /deploy-manage/deploy/elastic-cloud/serverless.md
-  - label: Elastic Cloud on Kubernetes (ECK)
-    url: /deploy-manage/deploy/cloud-on-k8s/kibana-configuration.md
-  - label: Elastic Cloud Enterprise
-    url: /deploy-manage/deploy/cloud-enterprise/access-kibana.md
 :::
 
 :::{link-card}
