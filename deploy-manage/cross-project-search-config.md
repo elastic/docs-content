@@ -123,15 +123,19 @@ Queries that cross region or cloud provider boundaries have higher latency due t
 
 ## Feature impacts [cps-feature-impacts]
 
-When you link projects for {{cps}}, the expanded dataset can affect existing features in the origin project.
+When you link projects for {{cps}}, the expanded dataset can affect existing features in the origin project. By default, searches, alerts, dashboards, and other features in the origin project run against the combined dataset of the origin and all linked projects. Features tuned for a single project's data might behave differently with a larger dataset.
 
-- **Alerts:** By default, rules in the origin project run against the **combined dataset** of the origin and all linked projects. Rules tuned for a single project's data might produce false positives when they evaluate a larger dataset. This is one reason we recommend using a dedicated [overview project](/deploy-manage/cross-project-search-config.md#cps-arch-overview), so that existing rules on data projects are not affected. Make sure to also consider the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space, or save explicit project routing on individual rules.
+{{cps-cap}} results are filtered by each user's role assignments across projects. Users with different roles see different results from the same query. Review [user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access) on each linked project to make sure that users have the appropriate permissions to access the data they need. 
 
-- **Dashboards and visualizations:** Existing dashboards and visualizations in the origin project will query all linked projects by default. To control this, set the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space, or save explicit project routing on individual dashboard panels.
+How you work with the expanded dataset depends on how you search:
 
-- **User permissions:** {{cps-cap}} results are filtered by each user's role assignments across projects. Users with different roles will see different results from the same query. Refer to [Manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access).
+- **{{kib}} apps:** Scope controls vary by app. [Set the default {{cps}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) before you link projects. For details on how individual apps handle {{cps-init}} scope, including which apps support the scope selector and query-level overrides, refer to [{{cps-cap}} availability by app](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability).
+- **Query syntax:** [Because queries now run across all linked projects by default](/explore-analyze/cross-project-search.md#cps-cap-as-the-default-behavior-for-linked-projects), queries that were written for a single project might return a larger result set. To restrict scope, use [qualified expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) or [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
 
-- **{{product.painless}} scripting:** The [{{product.painless}} execute API](/explore-analyze/cross-project-search.md#cps-painless-scripting) does not search across linked projects. It resolves index names against the origin project only. You can target a linked project by prefixing the index with the project alias (for example, `projectAlias:myindex`).
+:::{warning}
+By default, rules in the origin project run against the combined dataset of the origin and all linked projects. Rules tuned for a single project's data might produce false positives when they evaluate a larger dataset. This is one reason we recommend using a dedicated [overview project](/deploy-manage/cross-project-search-config.md#cps-arch-overview), so that existing rules on data projects are not affected. Make sure to also consider the [default cross-project search scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), or save explicit project routing on individual rules.
+:::
+
 
 ## Limitations [cps-limitations]
 
@@ -157,7 +161,12 @@ The following limitations apply to {{elastic-sec}} apps. For how each app uses {
 
 ### Elastic {{observability}} apps
 
-{{observability}} apps have limited {{cps-init}} support. APM, Infrastructure, and Synthetics use the scope selector. Most other apps remain scoped to the origin project.
+{{observability}} apps have partial {{cps-init}} support. For example:
+
+* APM, Infrastructure, and Synthetics use session scope.
+* SLOs use stored scope.
+* Streams remain scoped to the origin project.
+* Alerts are from the origin project only, even when rules query linked-project data.
 
 For specific app details, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md).
 
