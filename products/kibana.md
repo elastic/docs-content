@@ -63,6 +63,8 @@ links:
     url: /solutions/elasticsearch-solution-project/query-rules-ui.md
   - label: Content connectors
     url: elasticsearch://reference/search-connectors/index.md
+  - label: Index management
+    url: /manage-data/data-store/perform-index-operations.md
 :::
 
 :::{link-card}
@@ -80,6 +82,8 @@ links:
     url: /solutions/search/rag.md
   - label: Hybrid search
     url: /solutions/search/hybrid-search.md
+  - label: Semantic search
+    url: /solutions/search/semantic-search.md
 :::
 
 :::{link-card}
@@ -97,6 +101,8 @@ links:
     url: /solutions/observability/logs.md
   - label: Infrastructure
     url: /solutions/observability/infra-and-hosts.md
+  - label: Synthetics
+    url: /solutions/observability/synthetics/index.md
 :::
 
 :::{link-card}
@@ -114,6 +120,8 @@ links:
     url: /solutions/security/detect-and-alert/manage-detection-rules.md
   - label: Elastic Defend
     url: /solutions/security/configure-elastic-defend.md
+  - label: Cases
+    url: /solutions/security/investigate/security-cases.md
 :::
 ::::
 
@@ -227,7 +235,7 @@ title: Data and indices
 description: Manage Elasticsearch indices, data streams, ingest pipelines, and transforms from Kibana.
 links:
   - label: Index management
-    url: /manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md
+    url: /manage-data/data-store/perform-index-operations.md
   - label: Data streams
     url: /manage-data/data-store/data-streams/manage-data-stream.md
   - label: Transforms

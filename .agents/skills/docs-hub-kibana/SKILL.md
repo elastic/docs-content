@@ -53,9 +53,15 @@ Card order: Elasticsearch, Vector Database, Observability, Security.
 
 Vector Database is a fourth solution, Serverless only. Place it next to Elasticsearch. `{link-card}` has no `applies_to` field.
 
-Solutions intro: "Solutions are packages of Elastic capabilities optimized for certain use cases. All solutions include the core storage, querying, and analytics capabilities of Elasticsearch and Kibana." Do not add a description on one solution card when the others have none. Match solution card link counts instead. Current target is five links each.
+Solutions intro: "Solutions are packages of Elastic capabilities optimized for certain use cases. All solutions include the core storage, querying, and analytics capabilities of Elasticsearch and Kibana." Do not add a description on one solution card when the others have none. Match solution card link counts instead. Current target is six links each.
 
-Elasticsearch card: Overview, Get started, Agent Builder, Query rules, Content connectors. Do not link Playground. It is deprecated in 9.4+ and on Serverless.
+Elasticsearch card: Overview, Get started, Agent Builder, Query rules, Content connectors, Index management. Do not link Playground. It is deprecated in 9.4+ and on Serverless.
+
+Observability card: Overview, Get started, APM, Logs, Infrastructure, Synthetics.
+
+Security card: Overview, Get started, SIEM, Detection rules, Elastic Defend, Cases.
+
+Vector Database card: Overview, Get started, Vector and full-text search, RAG, Hybrid search, Semantic search. Keep this card docs-first. Do not copy Agent Builder from the Elasticsearch card.
 
 Icons: only keys in docs-builder `ProductIcons` (`elasticsearch`, `kibana`, `observability`, `security`, `vectordb`). `vectordb` is the EUI `logoVectorDB` mark. Do not invent or hand-draw a logo.
 
@@ -76,7 +82,7 @@ Icons: only keys in docs-builder `ProductIcons` (`elasticsearch`, `kibana`, `obs
 
 ## Balance links in a section
 
-Aim for **3–5** links per card, and keep siblings in the same card-group within about one link of each other.
+Aim for **3–5** links per Explore card, and keep siblings in the same card-group within about one link of each other. Solutions cards are six links each.
 
 When a card is long next to shorter siblings, drop 1–2 links that are not first-stop pages (extra install packages, niche languages, troubleshooting for a single app, a concept page already covered by the overview).
 
