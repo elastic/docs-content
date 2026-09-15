@@ -15,7 +15,7 @@ navigation_title: Create a serverless project
 
 ## Before you begin
 
-Decide which project type you might need before you create the project. You'll select a type during setup. To match a type to your use case, review [Choose your path](/solutions/index.md#choose-your-path).
+Decide which project type you might need before you create the project. You'll select a type during setup. To match a type to your use case, review this [project comparison table](/solutions/index.md#choose-your-path).
 
 Although you can't convert the project to a different type later, you can [delete a project](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless) and create another one.
 
