@@ -100,6 +100,8 @@ You can later filter the data that shows in the chart and in the table by specif
    ![How to add a field as a column in the table](/explore-analyze/images/kibana-discover-add-field.png "title =50%")
 
    When you add fields to the table, the **Summary** column is replaced. For {{esql}}-specific details about the time field and CSV exports, refer to [Organize the query results](try-esql.md#esql-kibana-results-table).
+
+   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, adding fields limits the tree to those fields instead of replacing a **Summary** column. Refer to [Switch the view mode](document-explorer.md#document-explorer-view-mode).
    ![Document table with fields for manufacturer](/explore-analyze/images/kibana-document-table.png "")
 
 4. Arrange the view to your liking to display the fields and data you care most about using the various display options of **Discover**. For example, you can change the order and size of columns, expand the table to be in full screen or collapse the chart and the list of fields. Check [Customize the Discover view](document-explorer.md) for more information.
@@ -219,11 +221,15 @@ The content is copied to your clipboard in the selected format. Fields that are 
 You can copy the content of a single cell to your clipboard from the quick actions that appear when hovering over the cell.
 :::
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, you can also select **Copy all** or copy a single field, object, or array. Refer to [Switch the view mode](document-explorer.md#document-explorer-view-mode).
+
 
 ### Explore individual result or document details in depth [look-inside-a-document]
 
 $$$document-explorer-expand-documents$$$
 Dive into an individual document to view its fields and the documents that occurred before and after it.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To filter or copy values in the table without opening the flyout, switch **View mode** to **JSON**. Refer to [Switch the view mode](document-explorer.md#document-explorer-view-mode).
 
 1. In the document table, click the expand icon ![double arrow icon to open a flyout with the document details](/explore-analyze/images/kibana-expand-icon-2.png "") to show document details.
 
@@ -384,6 +390,8 @@ You can send your long-running KQL or {{esql}} queries to the background from **
 ### Save your Discover session for later use [save-discover-search]
 
 Save your Discover session so you can use it later, generate a CSV report, or use it to create visualizations, dashboards, and Canvas workpads. Saving a Discover session saves all open tabs, along with their query text, filters, and current view of **Discover**, including the columns selected in the document table, the sort order, and the {{data-source}}.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The saved view also includes **View mode** and the JSON display settings. Refer to [Switch the view mode](document-explorer.md#document-explorer-view-mode).
 
 1. In the application menu, select **Save**.
 2. Enter a title and a description for the session.

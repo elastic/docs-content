@@ -6,7 +6,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Customize the Discover view with flexible display options for the document table, chart, and sidebar. Adjust columns, density, row height, and field visibility for optimal exploration.
+description: Customize the Discover view with display options for the document table, chart, and sidebar. Adjust columns, density, row height, JSON view, and field visibility.
 ---
 
 # Customize the Discover view [document-explorer]
@@ -49,6 +49,38 @@ Customize the appearance of the document table and its contents to your liking.
   ::::{tip}
   Column widths are stored with a Discover session. When you add a Discover session as a dashboard panel, it appears the same as in **Discover**.
   ::::
+
+
+### Switch the view mode [document-explorer-view-mode]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+Open **Display options** in the table toolbar, then set **View mode** to **Table** or **JSON**. **Table** is the default. It keeps density and row height. **JSON** replaces the **Summary** column with a **JSON** column and shows each document as a collapsible tree.
+
+If you add fields to the table, the JSON tree shows those fields. If you don't add fields, it shows the full document.
+
+**Discover** stores **View mode** and the JSON display settings with the session and with Discover session panels on dashboards.
+
+When **View mode** is **JSON**, **Display options** include:
+
+* **Lines shown**: How many JSON nodes each cell expands by default. The range is 10 to 200. The default is 50.
+* **Hide nulls**: When **On**, Discover omits null values from the tree. The default is **Off**.
+* **Wrap lines**: When **On**, long values wrap onto more lines. When **Off**, each value is truncated to one line. The default is **On**.
+
+**Sample size** remains available in both modes. To inspect a single document in the flyout instead, refer to [Explore individual result or document details in depth](discover-get-started.md#look-inside-a-document).
+
+In the JSON tree:
+
+* Select **Expand all** or **Collapse all** to open or close nested objects and arrays.
+* Select **Copy all** to copy the document as JSON.
+* Hover a field or value to copy it (**Copy value**, **Copy object**, or **Copy array**) or to filter for or filter out that value.
+* Hold Command (or Ctrl) and select a nested object or array to expand its children.
+
+Filter actions aren't available for values Elasticsearch ignored at index time, or for values inside a JSON string that Discover expanded in the tree.
+
+If a document is too large to render in full, Discover shows a warning and displays the first 10,000 values.
 
 
 ### Customize the table density [document-explorer-density]
