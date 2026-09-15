@@ -36,6 +36,8 @@ Create a {{data-source}} to make your own {{es}} data available in **Discover**,
 2. In the **Name** field, enter a name for the {{data-source}}.
 3. In the **Index pattern** field, enter a pattern. {{kib}} looks for the names of indices, data streams, and aliases that match your input. You can view all available sources or only the sources that the data view targets.
 
+   If you have a high number of matching sources, not all of them might show:
+
     * {applies_to}`stack: ga 8.19-9.5` The preview can show up to 100 sources.
     * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The preview can show up to 10,000 sources.
 
