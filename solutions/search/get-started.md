@@ -26,24 +26,47 @@ This skill guides users through search concepts and helps create a working searc
 :::::{step} Choose your deployment type
 
 Elastic provides several self-managed and Elastic-managed options.
-For simplicity and speed, try out {{serverless-full}}:
+
+To get started, choose one of these options:
+
+- [Create a {{serverless-short}} project](#create-serverless-project).
+- [Create a local development installation](#create-local-development-installation).
+
+Check out the full list of [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type) to learn more.
+
+### Create a {{serverless-short}} project [create-serverless-project]
+
+```{applies_to}
+serverless:
+```
+
+For simplicity and speed, use {{serverless-full}}.
 
 ::::{dropdown} Create a serverless project
-:::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
-:::
+$$$serverless-project-configuration$$$
+#### Choose a {{serverless-short}} project configuration
 
-If you're not sure which project type to choose, select the **{{es}}** project type. This project type provides core {{es}} search capabilities along with additional UI tools to help you build search-powered applications faster.
+Both [{{es}} projects](/solutions/elasticsearch-solution-project.md) and [{{es}} Vector Database projects](/solutions/vector-database.md) support vector search and use the same query APIs.
 
-When your project is created, you're ready to move on to the next step and to start creating indices, adding data, and performing searches.
+| Project type | When to choose |
+| --- | --- |
+| [{{es}} project](/solutions/elasticsearch-solution-project.md) | For general-purpose data storage and search, including mixed lexical, time series, and analytics workloads, or when you need to run custom models on {{ml}} nodes |
+| [{{es}} Vector Database project](/solutions/vector-database.md) | When embeddings and similarity search are central to your workload, such as RAG, recommendations, semantic search, hybrid search, or multimodal search |
+
+There are two options to create a serverless project:
+
+* If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration) to create a serverless project. For more information about {{ecloud}} trials, refer to [Trial features](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial).
+* If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login). On the home page, you can create a serverless project. You need the `admin` predefined role or an equivalent custom role to create projects. Refer to [](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 ::::
 
-Alternatively, create a [local development installation](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) in Docker:
+### Create a local development installation [create-local-development-installation]
+
+Create a [local development installation](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) in Docker:
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
 ```
 
-Check out the full list of [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type) to learn more.
 :::::
 
 :::::{step} (Optional) Try out a quickstart
