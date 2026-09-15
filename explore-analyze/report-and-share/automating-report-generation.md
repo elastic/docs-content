@@ -10,7 +10,7 @@ products:
 
 # Automatically generate reports [automating-report-generation]
 
-To automatically generate PDF and CSV reports, generate a POST URL, then submit an HTTP `POST` request using {{watcher}} or a script. In {{stack}} 9.1 and Serverless, you can use {{kib}} to generate reports on a recurring schedule and share them with a list of emails that you specify.
+To automatically generate PDF and CSV reports, generate a POST URL, then submit an HTTP `POST` request using {{watcher}} or a script. In {{stack}} 9.1, you can use {{kib}} to generate PDF, PNG, and CSV reports on a recurring schedule and share them with a list of emails that you specify. On {{serverless-full}}, scheduling is available for Discover CSV reports only. Dashboard PDF and PNG reports are not available.
 
 :::{note}
 :applies_to: {stack: ga 9.1, serverless: unavailable}
@@ -230,6 +230,10 @@ Save time by setting up a recurring task that automatically generates reports an
 
 ### Create a schedule [create-scheduled-report]
 
+::::{note}
+{applies_to}`serverless: ga` On {{serverless-full}}, **Schedule export** is available from **Discover** for CSV reports. It does not appear on dashboards or visualizations because PDF and PNG reporting is not available, and Lens CSV scheduling is not supported.
+::::
+
 1. Open the saved Discover session, dashboard, or visualization you want to share. 
 2. Click the **Export** icon, then **Schedule export**.
 3. Enter the requested details, and (optional) enable **Print format** to generate the report in a printer-friendly format.
@@ -289,4 +293,5 @@ The feature enables analysis of data in external tools, but it is not intended f
 * Scheduling too many reports at the same time might cause reports to be shared late or at an inconsistent schedule. {{kib}} Task Manager runs reporting tasks one at a time.
 * If your cluster is running many tasks in general, reports may be delayed.
 * Scheduling reports of Canvas workpads is not supported since Canvas workpads are in maintenance mode. 
-* Scheduling CSV reports of Lens visualizations is not supported. 
+* Scheduling CSV reports of Lens visualizations is not supported.
+* {applies_to}`serverless: ga` On {{serverless-full}}, you cannot generate or schedule dashboard, Lens, or visualization PDF or PNG reports. Use Discover CSV schedules instead. 
