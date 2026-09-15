@@ -239,8 +239,9 @@ Dive into an individual document to view its fields and the documents that occur
    You can restrict the fields listed in the detailed view to the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
    ::::
 
-3. To navigate to a view of the document that you can bookmark and share, select **View single document**.
-4. To view documents that occurred before or after the event you are looking at, select **View surrounding documents**.
+3. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To copy a link that reopens **Discover** with this document open, select {icon}`share` **Share direct link** in the flyout header. The link uses an absolute time range. For {{esql}} queries, include `METADATA _id, _index` on a `FROM` or `TS` query that does not transform rows. Commands such as `STATS` or `KEEP` make the action unavailable.
+4. To navigate to a view of the document that you can bookmark and share, select **View single document**. This action isn't available in {{esql}} mode.
+5. To view documents that occurred before or after the event you are looking at, select **View surrounding documents**. This action isn't available in {{esql}} mode.
 
 
 ## Search and filter data [search-in-discover]
@@ -395,6 +396,8 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 ### Share your Discover session [share-your-findings]
 
 To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If a document flyout is open, the shared URL can include that document. Refer to [Share with a direct link](../report-and-share.md#share-a-direct-link).
 
 
 ## Analyze your data with AI [analyze-with-ai]
