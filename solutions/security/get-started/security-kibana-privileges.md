@@ -13,9 +13,9 @@ description: Lists Kibana privileges in the Security group of Assign role to spa
 
 Roles control what users can access and what actions they can perform. When you create or edit a role, you grant it [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md), which give access to individual features within one or more spaces.
 
-To create or edit a role, find **Roles** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Adding {{kib}} privileges opens the **Assign role to spaces** flyout, where features are grouped by solution. Access to {{elastic-sec}} features is controlled by the **Security** group privileges, described on this page.
+When you add {{kib}} privileges to a role, the **Assign role to spaces** flyout opens. Access to {{elastic-sec}} features is controlled by the privileges in the **Security** group, described on this page.
 
-For more details on using this UI, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for {{stack}}, or to [Custom roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) for {{serverless-short}}.
+For more details on creating a role, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for {{stack}}, or to [](/deploy-manage/users-roles/serverless-custom-roles.md) for {{serverless-short}}.
 
 ## Access levels
 
@@ -47,6 +47,12 @@ Each of the following privileges controls access to a different part of {{elasti
 | **Elastic AI Assistant** | Access [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md). Turn on **Customize sub-feature privileges** to grant individual AI Assistant privileges. For the full list, refer to [Elastic AI Assistant sub-feature privileges](#elastic-ai-assistant-sub-feature-privileges). |
 | **Attack discovery** | Access [Attack Discovery](/solutions/security/ai/attack-discovery/index.md).<br> {applies_to}`stack: ga 9.1+` {applies_to}`serverless: ga` Turn on **Customize sub-feature privileges** to grant individual Attack discovery privileges. For details, refer to [Attack discovery sub-feature privileges](#attack-discovery-sub-feature-privileges). |
 | **Automatic Migration** | Access [Automatic Migration](/solutions/security/get-started/automatic-migration.md). <br> {applies_to}`stack: ga 9.0-9.2` This privilege is called **SIEM migrations**. |
+:::
+
+:::{note}
+:applies_to: {"serverless": "ga"}
+
+In {{serverless-short}}, the **Security** group also includes privileges that belong to the **Analytics** group in {{stack}}. Which ones appear depends on your [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md). For those privileges, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 :::
 
 ## Security sub-feature privileges
