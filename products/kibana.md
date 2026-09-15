@@ -456,8 +456,6 @@ links:
 title: Query languages
 description: Languages you can use in Kibana to search, filter, and analyze Elasticsearch data.
 links:
-  - label: Query languages overview
-    url: /explore-analyze/query-filter/languages.md
   - label: Kibana Query Language (KQL)
     url: /explore-analyze/query-filter/languages/kql.md
   - label: ES|QL
