@@ -1,4 +1,4 @@
-Use the **Add data** screen in Elastic Observability to generate install commands that are already configured with the values you need.
+The fastest way to get started is the **Add data** screen in Elastic Observability. It generates install commands with your endpoint and API key already included.
 
 1. Open Elastic Observability.
 2. Go to **Add data**.

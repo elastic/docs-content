@@ -16,7 +16,7 @@ When [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md) is enabl
 
 * **Space default**: Admins [configure a default scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), which applies when you start a new session.
 * **Session scope**: Use the [{{cps-init}} scope selector](#cps-in-kibana) in the project's header to change which projects are searched during your session.
-* **Stored scope**: Some features use the [scope selector](#cps-in-kibana) to set a project routing value that is saved with a specific resource, such as a dashboard. The stored scope applies every time that resource runs or opens, independent of the session scope.
+* **Stored scope**: Some features use the [scope selector](#cps-in-kibana) to set a project routing value that is saved with a specific resource, such as a dashboard, an {{anomaly-job}}, or a transform. The stored scope applies every time that resource runs or opens, independent of the session scope.
 * **Query-level override**: Use project routing or qualified index expressions in individual queries to target specific projects.
 
 ## {{cps-cap}} scope selector [cps-in-kibana]
@@ -38,13 +38,13 @@ When the current selection matches the [space default](/deploy-manage/cross-proj
 
 The scope selector also provides shortcuts to admin settings. Select **Adjust space defaults** to open the space's {{cps-init}} scope configuration, or **Manage cross-project search** to open the [{{cps-init}} management page](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md).
 
-### Session scope vs. stored scope
+### Session scope versus stored scope
 
 Sometimes, you might want to change which projects are included in your results as you work. Other times, you want to set the project scope and persist it with a resource to keep inputs consistent. Session scope and stored scope are how apps make that happen. The behavior follows the app.
 
 Most apps use **session scope**. Session scope is which projects are searched while you work. You set it with the scope selector in the project header. Your selection is preserved as you navigate between apps that support the selector. Starting a new session resets to the space default. Session scope is used by most apps.
 
-Some apps use **stored scope**. Stored scope is saved with a resource and applies every time that resource runs or opens. Some apps, such as [Dashboards](/explore-analyze/dashboards.md), save a snapshot of the scope currently set in the header selector.
+Some apps use **stored scope**. Stored scope is saved with a resource and applies every time that resource runs or opens. Some apps, such as [Dashboards](/explore-analyze/dashboards.md), save a snapshot of the scope currently set in the header selector. Others use a separate selector on the create or edit form, such as [{{ml}} {{anomaly-jobs}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope).
 
 In apps where you write queries, you can still [override that scope at the query level](#cps-query-overrides).
 
@@ -79,7 +79,7 @@ To add a tag filter:
 4. If the operator requires a value, choose one or more values from the **Select a value** dropdown.
 5. Select **Apply** ({icon}`check`) to add the filter.
 
-When multiple filters are active, they are combined with AND logic: a project must match all filters to appear in the list.
+When multiple filters are active, they are combined with `AND` logic: a project must match all filters to appear in the list.
 
 #### Manage tag filters
 
@@ -105,6 +105,8 @@ In most cases, your scope is saved as a [project routing expression](/explore-an
 * Excluding a project individually affects only that project.
 
 To keep future projects out of your scope, use a tag filter rather than excluding projects one by one.
+
+Certain apps, such as {{anomaly-jobs}} and transforms, do not include newly linked projects automatically. They store a fixed list of the projects selected at save time. Linking a new project or changing a project's custom tags does not update that list until you edit the resource. This increases stability of inputs for these resource types. Refer to the [availability table](#cps-availability) for how each app uses project scope.
 
 ## Override {{cps}} scope at the query level [cps-query-overrides]
 
@@ -135,12 +137,14 @@ Not all apps support {{cps}}. The following table shows which apps support the {
 | **Discover** | Editable | ES\|QL |
 | **Lens visualizations** | Editable | ES\|QL visualizations[^cps-badge] |
 | **Maps** | Editable | Layer-level [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) for vector layers and joins |
+| **{{ml-app}} Anomaly Detection** | Editable | [`project_routing`](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope) defined on each job. |
 | **{{ml-app}} AIOps Labs** | Editable | Not available |
 | **{{ml-app}} {{data-viz}}** | Editable | ES\|QL |
 | **{{rules-ui}} and alerts** | Read-only | ES\|QL rules support `SET project_routing`. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects.|
 | **Streams** | Not available | ES\|QL |
 | **Transforms** | Editable | [`project_routing`](/explore-analyze/transforms/transform-overview.md#transform-cps-scope) defined on each transform. |
 | **Vega** | Editable | Project routing in Vega specs |
+| **Workflows** | Not available | Not available. Workflows run on the origin project. {{cps-init}}-aware {{es}} routing isn't supported. |
 
 The header's {{cps-init}} scope selector is not available in other apps, including Canvas and object listing pages.
 
@@ -148,17 +152,45 @@ The header's {{cps-init}} scope selector is not available in other apps, includi
 
 ### {{cps-cap}} availability in Elastic {{observability}} apps [cps-availability-observability]
 
-{{observability}} apps have limited {{cps-init}} support. The scope selector is not available in {{observability}} apps, and most apps remain scoped to the origin project. The following table shows how each {{observability}} app behaves with {{cps-init}}:
+{{observability}} apps have limited {{cps-init}} support. The following table shows how each {{observability}} app behaves with {{cps-init}}:
 
 ::::{include} /solutions/_snippets/cps-obs-compatibility.md
 ::::
 
 For specific app details, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md).
 
-### {{cps-cap}} availability in {{elastic-sec}} apps [cps-availability-security]
+### {{cps-cap}} support in {{elastic-sec}} apps [cps-availability-security]
 
-:::{include} /explore-analyze/cross-project-search/_snippets/cps-availability-security-apps.md
-:::
+{{elastic-sec}} apps have partial {{cps-init}} support. The following table shows, for each app, whether the {{cps-init}} scope selector is available and whether you can override that scope in a query. **Read-only** means the app uses the [space default](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) and you can't change it from the header.
+
+| App | {{cps-init}} scope selector | Query-level overrides |
+| --- | --- | --- |
+| **Alert, event, and attack flyouts** | Read-only | Not available |
+| **Alerts** | Not available | Not available |
+| **Attack Discovery** | Not available | Not available |
+| **Cases** | Not available | Not available |
+| **Dashboards** (Detection & Response, Data Quality) | Read-only | Not available |
+| **Detection rules** | Read-only | Available |
+| **{{elastic-defend}} and Osquery** | Read-only | Not available |
+| **Entity store** | Not available | Not available |
+| **Explore page** | Read-only | Not available |
+| **Intelligence** | Read-only | Not available |
+| **{{ml-cap}}** | Read-only | Not available |
+| **Overview page** | Read-only (event widgets); not available (alert widgets) | Not available |
+| **SIEM Readiness** | Not available | Not available |
+| **Timeline** | Read-only | Not available |
+| **Value report** | Not available | Not available |
+
+Some apps have additional {{cps-init}} behavior:
+
+- **Alert, event, and attack flyouts:** Documents from linked projects are clearly identified. Actions that don't apply to these documents are hidden or disabled. Investigate in Timeline remains available. Session View isn't available for documents from linked projects.
+- **Alerts:** The Alerts page shows alerts generated by origin project rules, including those created from linked-project data. It doesn't show alerts that a linked project generated on its own.
+- **Cases:** You can't attach an alert or event from a linked project to a case.
+- **Detection rules:** {{esql}} rules support `SET project_routing`. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions). Origin rules write alerts to the origin project. The **Max alerts per run** limit applies across the projects the rule queries. A rule searches only the linked projects the user who last saved it can access. For details, refer to [{{cps-cap}} and detection rules](/solutions/security/detect-and-alert/cross-project-search-detection-rules.md).
+- **{{elastic-defend}} and Osquery:** The **Endpoints** page, host details, **Response actions history**, and Osquery query results include data from linked projects. Policies, artifacts, response action dispatch, and Osquery saved queries and packs stay per project because they're managed through Fleet.
+- **Entity store:** Origin profiles include entities from every linked project. Each project still builds its own store, and risk scoring stays on the origin project. A host that appears in more than one project isn't combined into a single entity at the origin.
+- **{{ml-cap}}:** {{anomaly-detect-cap}} job {{dfeeds}} can [read data from linked projects](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope). Jobs and results are stored on the origin project. {{ml-cap}} rules alert on those stored results, including anomalies produced from linked-project data. Prebuilt jobs started from **ML job settings** search all linked projects; they don't use the space default.
+- **Timeline:** Uses the space default {{cps}} scope. Tables display documents from linked projects. Actions that don't apply to documents in linked projects are disabled.
 
 ## Related pages
 
