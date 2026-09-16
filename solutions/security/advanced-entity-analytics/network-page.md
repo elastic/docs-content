@@ -79,7 +79,7 @@ The IP’s details page includes the following sections:
 * **Summary**: General details such as the location, when the IP address was first and last seen, the associated host ID and host name, and links to external sites for verifying the IP address’s reputation.
 
     ::::{note}
-    By default, the external sites are [Talos](https://talosintelligence.com/) and [VirusTotal](https://www.virustotal.com/). Refer to [Display reputation links on IP detail pages](/solutions/security/get-started/configure-advanced-settings.md#ip-reputation-links) to learn how to configure IP reputation links.
+    By default, the external sites are [Talos](https://talosintelligence.com/) and [VirusTotal](https://www.virustotal.com/). You can configure IP reputation links using the `securitySolution:ipReputationLinks` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
     ::::
 
 * **Alert metrics**: The total number of alerts by severity, rule, and status (`Open`, `Acknowledged`, or `Closed`).

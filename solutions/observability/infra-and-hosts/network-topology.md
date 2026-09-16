@@ -32,7 +32,7 @@ The Network Topology plugin includes:
 * **A reference {{ls}} pipeline** that walks the IF-MIB (interface counters and status), IP-MIB (ARP tables and IP address assignments), BRIDGE-MIB (MAC address forwarding tables), BGP4-MIB (BGP peer sessions), and OSPF-MIB (OSPF neighbor adjacencies) on each target device at a configurable poll interval. The pipeline handles poll timeouts, missing OID branches on devices that don't support a given MIB, and batching across large device inventories.
 * **A `snmp-device-enrichment` ingest pipeline** that parses each device's `sysDescr` string to assign a normalized `host.type` (router, switch, firewall, access point, server) and `observer.vendor`. The pipeline recognizes common vendors out of the box (Cisco, Juniper, Arista, Fortinet, Palo Alto, HPE, Aruba) and is extensible for less common hardware.
 * **An interactive topology graph** in {{kib}}'s Observability navigation that builds an adjacency graph from ARP, MAC table, BGP, and OSPF relationships and renders it as a force-directed layout you can zoom, pan, and rearrange. Clicking a device opens a flyout with its interface table, ARP neighbors, BGP peers, and OSPF adjacencies.
-* **A sample data generator** and Docker Compose dev environment, so you can evaluate the plugin with a realistic multi-site network before connecting to live infrastructure.
+* **A sample data generator**, so you can evaluate the plugin with a realistic multi-site network before connecting to live infrastructure. For local development, use {{kib}}'s shared {{es}} workflow; see the [plugin README](https://github.com/elastic/kibana-network-topology-plugin).
 
 ## How it works [network-topology-how-it-works]
 

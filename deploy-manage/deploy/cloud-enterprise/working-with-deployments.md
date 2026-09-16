@@ -57,7 +57,6 @@ From the deployment main page, you can quickly access the following configuratio
 
 From the **Deployment > Security** view, you can manage security settings, authentication, and access controls. Refer to [Secure your clusters](../../../deploy-manage/users-roles/cluster-or-deployment-auth.md) for more details on security options for your deployments.
 
-* [Reset the `elastic` user password](../../users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md)
 * [Set up IP filters](../../security/ip-filtering-ece.md) to restrict traffic to your deployment
 * Configure {{es}} keystore settings, also known as [secure settings](../../security/secure-settings.md)
 * Configure trust relationships for [remote clusters](../../remote-clusters/ece-enable-ccs.md)
@@ -82,6 +81,7 @@ From the deployment view, you can directly access endpoints, platform logs and m
 
 Use the **Actions** button at deployment or instance level to:
 
+* [Reset the `elastic` user password](../../users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md).
 * [Restart a deployment](../../../deploy-manage/maintenance/start-stop-services/restart-an-ece-deployment.md) that has become unresponsive, for example.
 * [Terminate a deployment](../../../deploy-manage/uninstall/delete-a-cloud-deployment.md) to stop all running instances and delete all data in the deployment.
 * [Restore a deployment](../../../deploy-manage/uninstall/delete-a-cloud-deployment.md#restore-a-deployment) that had been terminated.

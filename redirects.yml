@@ -1,6 +1,54 @@
 redirects:
   # related to https://github.com/elastic/docs-content/pull/4251
   'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
+  # related to https://github.com/elastic/docs-content/issues/7502
+  'explore-analyze/find-and-organize/data-views.md':
+    many:
+      - to: 'explore-analyze/find-and-organize/data-views/create-data-view.md'
+        anchors:
+          'settings-create-pattern':
+          'data-views-read-only-access': 'create-data-view-prereqs'
+          '_create_a_temporary_data_source': '_create_a_temporary_data_source'
+          'rollup-data-view': 'rollup-data-view'
+          'management-cross-project-search': 'management-cross-project-search'
+      - to: 'explore-analyze/find-and-organize/data-views/delete-data-view.md'
+        anchors:
+          'delete-data-view':
+      - to: 'explore-analyze/find-and-organize/data-views/duplicate-data-view.md'
+        anchors:
+          'duplicate-managed-data-view':
+      - to: 'explore-analyze/find-and-organize/data-views/customize-data-view-fields.md'
+        anchors:
+          'managing-data-views':
+      - to: 'explore-analyze/find-and-organize/data-views/runtime-fields.md'
+        anchors:
+          'runtime-fields':
+          'create-runtime-fields': 'create-runtime-fields'
+          'runtime-field-examples': 'runtime-field-examples'
+          'simple-hello-world-example': 'simple-hello-world-example'
+          'perform-a-calculation-on-a-single-field': 'perform-a-calculation-on-a-single-field'
+          'return-substring': 'return-substring'
+          'composite-runtime-field': 'composite-runtime-field'
+          'replace-nulls-with-blanks': 'replace-nulls-with-blanks'
+          'manage-runtime-fields': 'manage-runtime-fields'
+      - to: 'explore-analyze/find-and-organize/data-views/scripted-fields.md'
+        anchors:
+          'scripted-fields':
+          'migrate-off-scripted-fields': 'migrate-off-scripted-fields'
+          'scripted-field-example': 'scripted-field-example'
+          'runtime-field-example': 'runtime-field-example'
+          'esql-example': 'esql-example'
+          'update-scripted-field': 'update-scripted-field'
+      - to: 'explore-analyze/find-and-organize/data-views/field-formatters.md'
+        anchors:
+          'managing-fields':
+          'string-field-formatters': 'string-field-formatters'
+          'field-formatters-date': 'field-formatters-date'
+          'field-formatters-geopoint': 'field-formatters-geopoint'
+          'field-formatters-numeric': 'field-formatters-numeric'
+      - to: 'explore-analyze/find-and-organize/data-views/data-view-field-cache.md'
+        anchors:
+          'data-view-field-cache':
   # related to https://github.com/elastic/docs-content/issues/7541
   'explore-analyze/query-filter/tools/playground.md': 'explore-analyze/ai-features/elastic-agent-builder.md'
   'solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md': 'solutions/search/full-text/search-with-synonyms.md'
@@ -122,7 +170,14 @@ redirects:
   'solutions/observability/apps/observe-lambda-functions.md': 'solutions/observability/apm/observe-lambda-functions.md'
   'solutions/observability/apps/integrate-with-machine-learning.md': 'solutions/observability/apm/machine-learning.md'
   'solutions/observability/apps/apm-agent-explorer.md': 'solutions/observability/apm/apm-agent-explorer.md'
-  'solutions/observability/apps/applications-ui-settings.md': 'solutions/observability/apm/applications-ui-settings.md'
+  'solutions/observability/apps/applications-ui-settings.md':
+    to: 'kibana://reference/advanced-settings.md'
+    anchors:
+      '': 'observability-advanced-settings'
+  'solutions/observability/apm/applications-ui-settings.md':
+    to: 'kibana://reference/advanced-settings.md'
+    anchors:
+      '': 'observability-advanced-settings'
   'solutions/observability/apps/act-on-data.md': 'solutions/observability/apm/act-on-data.md'
   'solutions/observability/apps/create-apm-rules-alerts.md': 'solutions/observability/apm/create-apm-rules-alerts.md'
   'solutions/observability/apps/create-custom-links.md': 'solutions/observability/apm/create-custom-links.md'
@@ -378,6 +433,9 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/2639
   'deploy-manage/monitor/autoops/ec-autoops-dismiss-event.md': 'deploy-manage/monitor/autoops/ec-autoops-events.md'
+
+# Related to https://github.com/elastic/docs-content/pull/8269
+  'deploy-manage/monitor/autoops/search-ai-lake-view-autoops-serverless.md': 'deploy-manage/monitor/autoops/storage-tier-view-autoops-serverless.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2245/
   'solutions/search/elasticsearch-basics-quickstart.md': 'solutions/search/get-started/index-basics.md'
@@ -652,6 +710,45 @@ redirects:
       'create-sec-serverless-project':
   'solutions/security/elastic-security-serverless.md': 'solutions/security.md'
 
+# Related to https://github.com/elastic/docs-content-internal/issues/1633
+  'solutions/security/get-started/configure-advanced-settings.md':
+    to: 'kibana://reference/advanced-settings.md'
+    anchors:
+      '': 'kibana-siem-settings'
+      'access-privileged-user-monitoring': 'kibana-siem-settings'
+      'custom-alert-closing-reasons': 'kibana-siem-settings'
+      'enable-alerts-and-attacks-alignment': 'kibana-siem-settings'
+      'enable-asset-inventory': 'kibana-siem-settings'
+      'enable-attack-discovery-workflows': 'kibana-siem-settings'
+      'enable-ccs-warning': 'kibana-siem-settings'
+      'enable-cloud-connector-deployment': 'kibana-siem-settings'
+      'enable-graph-visualization': 'kibana-siem-settings'
+      'enable-new-flyout': 'kibana-siem-settings'
+      'enable-rule-changes-history': 'kibana-siem-settings'
+      'exclude-cold-frozen-data-rule-executions': 'kibana-siem-settings'
+      'exclude-cold-frozen-tiers': 'kibana-siem-settings'
+      'how-attack-discovery-workflows-affects-existing-schedules': 'kibana-siem-settings'
+      'included-data-stream-namespaces-rule-execution': 'kibana-siem-settings'
+      'ip-reputation-links': 'kibana-siem-settings'
+      'manage-alert-tags': 'kibana-siem-settings'
+      'max-cases-cases-connector': 'kibana-cases-settings'
+      'max-notes-alerts-events': 'kibana-siem-settings'
+      'security-advanced-settings': 'kibana-siem-settings'
+      'security-advanced-settings-access-advanced-settings': 'kibana-settings-reference'
+      'show-related-integrations': 'kibana-siem-settings'
+      'suppression-window-behavior': 'kibana-siem-settings'
+      'turn-off-esql-based-risk-scoring': 'kibana-siem-settings'
+      'update-sec-indices': 'kibana-siem-settings'
+      'update-threat-intel-indices': 'kibana-siem-settings'
+      'visualizations-in-flyout': 'kibana-siem-settings'
+      '_change_the_default_search_interval_and_data_refresh_time': 'kibana-siem-settings'
+      '_modify_news_feed_settings': 'kibana-siem-settings'
+      '_set_machine_learning_score_threshold': 'kibana-siem-settings'
+    many:
+      - to: 'kibana://reference/configuration-reference/telemetry-settings.md'
+        anchors:
+          'telemetry-settings':
+
 # Related to https://github.com/elastic/docs-content/pull/3808
   'solutions/observability/get-started/other-tutorials/add-data-from-splunk.md': 'solutions/observability/get-started.md'
 
@@ -780,6 +877,12 @@ redirects:
     to: 'solutions/security/detect-and-alert/manage-detection-alerts.md'
     anchors:
       '': 'alert-actions'
+
+# Related to renaming Alert data model to Rule event data model
+  'explore-analyze/alerting/experimental-alerting-system/alerts/alert-data-model.md':
+    to: 'explore-analyze/alerting/experimental-alerting-system/alerts/rule-event-data-model.md'
+    anchors:
+      'alert-data-model':
 
 # Related to cases and alerting documentation restructuring
   # Main pages
@@ -1138,4 +1241,18 @@ redirects:
         anchors:
           'attacks-next-steps': 'manage-saved-discoveries'
   'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'
-  
+  # related to https://github.com/elastic/docs-content/issues/7709
+  'solutions/elasticsearch-solution-project/search-connection-details.md':
+    to: 'solutions/elasticsearch-solution-project/search-connection-details.md'
+    anchors:
+      'before-you-begin': 'before-you-begin'
+      'find-endpoint-cloud-self-managed': 'find-endpoint-cloud-self-managed'
+      'find-cloud-id-cloud-self-managed': 'find-cloud-id-cloud-self-managed'
+      'create-an-api-key-cloud-self-managed': 'create-an-api-key-cloud-self-managed'
+      'elasticsearch-get-started-test-connection': 'elasticsearch-get-started-test-connection'
+      '_elastic_cloud_and_self_hosted_deployments': 'find-endpoint-cloud-self-managed'
+      '_serverless_deployments': 'find-endpoint-cloud-self-managed'
+      'find-cloud-id-serverless': 'find-endpoint-cloud-self-managed'
+      'create-an-api-key-serverless': 'create-an-api-key-cloud-self-managed'
+  # Related to https://github.com/elastic/docs-content/pull/7977
+  'solutions/security/get-started/siem-readiness.md': '!solutions/security/get-started.md'

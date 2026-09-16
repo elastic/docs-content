@@ -33,7 +33,7 @@ You need:
 * {{ls}} installed and able to reach your network devices.
 
 :::{tip}
-If you don't have SNMP-enabled devices to point at yet, you can evaluate the plugin against simulated data using the sample data generator and Docker Compose dev environment included in the [Network Topology plugin repository](https://github.com/elastic/kibana-network-topology-plugin).
+If you don't have SNMP-enabled devices to point at yet, you can evaluate the plugin against simulated data using the sample data generator in the [Network Topology plugin repository](https://github.com/elastic/kibana-network-topology-plugin). The plugin is not a standalone app and does not require a dedicated {{es}} cluster — use your existing self-managed stack, or follow the plugin README's Development Quick Start.
 :::
 
 ## Step 1: Install the plugin [network-topology-install-plugin]

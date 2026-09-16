@@ -302,3 +302,21 @@ This problem can be identified if `connect_kernel` (Connect Kernel) fails on Win
 This often happens because the {{elastic-endpoint}} service started before the driver. It should auto-resolve in a few seconds.
 
 Rarely, the driver service might be in a delete-pending state due to an installation issue. This can be caused by a local administrator's failed attempt to stop or delete the `ElasticEndpointDriver` service. Rebooting the system resolves the issue.
+
+
+## High CPU usage or hangs with other security software [ts-performance-other-security]
+
+If hosts running {{elastic-defend}} show high CPU or disk usage, or become unresponsive, the cause might be a feedback loop with other security software on the same system. Products that also monitor system activity — such as antivirus (AV), endpoint detection and response (EDR), endpoint protection platforms (EPP), data loss prevention (DLP), employee monitoring, or application virtualization software — can react to {{elastic-endpoint}} activity while {{elastic-endpoint}} reacts to theirs. These loops can spike resource usage for either product, or lead to deadlocks that cause the system to hang.
+
+To break the cycle, configure mutual trust between the products:
+
+1. Add the other security product as a [trusted application](../../solutions/security/manage-elastic-defend/trusted-applications.md) in {{elastic-defend}}, so {{elastic-endpoint}} ignores that product's process activity.
+2. [Allowlist {{elastic-endpoint}}](../../solutions/security/manage-elastic-defend/allowlist-elastic-endpoint-in-third-party-antivirus-apps.md) in the third-party product using a *process* exclusion (also called an ignored process or trusted process). When the third-party product supports it, you should require both the executable path and the digital signer to match.
+
+   File-, folder-, and path-based exclusions are not the same as process exclusions and usually won't resolve this issue. The goal is to ignore actions taken *by* a process, not only ignore the file that started it.
+
+If you intend to run multiple security applications and encounter performance problems, configure this mutual trust early in your deployment. Trusted applications aren't guaranteed to resolve every conflict, but they're the recommended first step.
+
+:::{note}
+Trusted applications don't cover activity from kernel drivers running in system worker threads (visible under the **System** process in Task Manager on Windows), or from DLLs that another product injects into unrelated processes. Don't add the **System** process or broadly used applications such as Microsoft Office as trusted applications to work around those cases.
+:::

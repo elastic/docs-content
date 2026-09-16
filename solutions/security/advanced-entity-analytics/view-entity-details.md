@@ -1,9 +1,9 @@
 ---
 description: Inspect an entity's risk summary, resolution group, insights, and connection graph from the entity details flyout in Elastic Security.
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -25,6 +25,8 @@ You can learn more about an entity (host, user, or service) from the entity deta
 {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can also use the entity details flyout to attach an entity to a [case](/solutions/security/investigate/security-cases.md). To do this, click **Take action** at the bottom of the flyout, then select **Add to new case** or **Add to existing case**.
 
 ## Entity details flyout
+
+Refer to [Details flyouts](/solutions/security/get-started/elastic-security-ui.md#details-flyouts) for the toolbar controls, footer, and child flyout navigation shared across {{elastic-sec}} flyouts.
 
 The entity details flyout includes the following sections:
 
@@ -87,7 +89,7 @@ The risk score table shows the category, score, and number of risk inputs that d
 
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` For entities that belong to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md), the section shows both the individual **Entity risk score** and the **Resolution group risk score** — the aggregated score across all linked entities in the group — each with their own score and inputs breakdown.
 
-Expand the **Risk score** section to access additional details about the entity's risk inputs.
+Open the section's child flyout to access additional details about the entity's risk inputs.
 
 #### Risk score history [risk-score-history]
 ```yaml {applies_to}
@@ -134,7 +136,7 @@ The section overview displays:
 * The total number of anomalies and an attack chain showing the MITRE ATT&CK tactics associated with them, with a badge indicating the number of anomalies per tactic.
 * A table listing the three most recent anomalies, with the {{ml}} job that detected each one, its timestamp, and the anomalous value observed for the entity. Click a {{ml}} job name to open the record in the [Single Metric Viewer](/explore-analyze/machine-learning/anomaly-detection/ml-ad-view-results.md).
 
-Click **All anomalies** to expand the flyout and open the **Behavioral anomalies** tab. The tab provides:
+Click **All anomalies** to open the **Behavioral anomalies** child flyout, which provides:
 
 * **Filters**: filter anomalies by time range and anomaly score severity range.
 * **Attack chain**: a visualization of the MITRE ATT&CK tactics represented in the detected anomalies. Select a tactic to filter the timeline and table to that tactic's anomalies.
@@ -153,7 +155,7 @@ serverless: preview
 [Entity store](/solutions/security/advanced-entity-analytics/entity-store.md) must be enabled and populated in the active space.
 ::::
 
-The **Visualizations** section shows a collapsible graph preview centered on the entity, covering the last 30 days of connections and [relationships](/solutions/security/advanced-entity-analytics/entity-relationships.md). To open the full interactive graph, click **Graph preview** to expand the flyout. In the graph view, you can:
+The **Visualizations** section shows a collapsible graph preview centered on the entity, covering the last 30 days of connections and [relationships](/solutions/security/advanced-entity-analytics/entity-relationships.md). To open the full interactive graph in a child flyout, click **Graph preview**. In the graph view, you can:
 
 * Hover over an entity node and click the plus {icon}`plus_in_circle` to open the actions menu, where you can show or hide entity relationships, the entity's actions, actions done to the entity, or related events, or show the entity's details.
 
@@ -167,13 +169,13 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-The **Resolution** section shows whether the entity belongs to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md). Click **Resolution group** to open the tab, which displays all entity records linked to this entity — including the primary entity and any aliases — with their entity name, ID, source, and risk score.
+The **Resolution** section shows whether the entity belongs to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md). Click **Resolution group** to open a child flyout that displays all entity records linked to this entity — including the primary entity and any aliases — with their entity name, ID, source, and risk score.
 
 To add an entity to the group, search by entity name or ID in the **Add entities to resolution group** table and click the add icon {icon}`plus_in_circle` next to the entity you want to link. To remove an entity from the group, click **X** {icon}`cross` in the **Actions** column of the **Resolution group** table. Entities must be removed individually.
 
 ### Insights
 
-The **Insights** section displays [Vulnerabilities Findings](/solutions/security/cloud/findings-page-3.md) for the host or [Misconfiguration Findings](/solutions/security/cloud/findings-page.md) for the user. Click **Vulnerabilities** or **Misconfigurations** to expand the flyout and view this data.
+The **Insights** section displays [Vulnerabilities Findings](/solutions/security/cloud/findings-page-3.md) for the host or [Misconfiguration Findings](/solutions/security/cloud/findings-page.md) for the user. Click **Vulnerabilities** or **Misconfigurations** to view this data in a child flyout.
 
 ### Observed attributes
 

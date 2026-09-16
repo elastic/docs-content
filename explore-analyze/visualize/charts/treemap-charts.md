@@ -17,11 +17,16 @@ description: Create treemap charts to visualize hierarchical data, show part-to-
 
 Treemap charts display hierarchical data as nested rectangles, where each rectangle's size represents a quantitative value. They are ideal for showing part-to-whole relationships within hierarchies, comparing relative sizes of categories, and visualizing how data is distributed across multiple levels.
 
-You can create treemap charts in {{kib}} using [**Lens**](../lens.md).
+You can build a treemap chart in {{kib}} in either of these ways:
+
+- [With the point-and-click editor](#build-a-treemap-chart)
+- [With an {{esql}} query](#build-a-treemap-chart-with-esql)
+
+To automate chart or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
 ![Example Lens treemap charts based on sample data](/explore-analyze/images/treemap-example.png)
 
-## Build a treemap chart
+## Build a treemap chart with the point-and-click editor [build-a-treemap-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -49,8 +54,40 @@ Using the **Visualization type** dropdown, select **Treemap**.
 The chart preview updates to show rectangles sized by your metric. If you added multiple **Group by** dimensions, smaller rectangles appear nested inside the top-level categories.
 :::::
 
-:::::{step} Customize the chart to follow best practices
-Tweak the appearance of the chart to your needs. Consider the following best practices:
+:::::{step} Save the chart
+:::{include} ../../_snippets/save-visualization.md
+:::
+:::::
+
+::::::
+
+## Build a treemap chart with an {{esql}} query [build-a-treemap-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+A treemap needs a categorical column to define its rectangles and a numeric metric column to determine their size. In this query, `BY` returns one row for each file extension, `SUM` provides its total transferred data, and `SORT` and `LIMIT` retain the six extensions with the most transferred data:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS total_bytes = SUM(bytes) BY extension.keyword
+| SORT total_bytes DESC
+| LIMIT 6
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Treemap**.
+3. Assign `extension.keyword` to **Group by** and `total_bytes` to **Metric**.
+4. Customize the chart appearance using the [treemap chart settings](#treemap-chart-settings).
+5. Select **Apply and close**.
+
+The chart preview shows larger rectangles for file extensions with more transferred data.
+
+## Apply treemap chart best practices [treemap-chart-best-practices]
+
+After building the chart with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
 
 **Limit hierarchy depth**
 :   Keep your treemap to 2-3 levels of hierarchy. Deeper nesting becomes difficult to read and interpret.
@@ -64,17 +101,7 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 **Ensure readable labels**
 :   Labels are automatically hidden on rectangles that are too small to fit them. If too many labels are missing, reduce the number of categories or increase the panel size.
 
-Refer to [Treemap chart settings](#treemap-chart-settings) to find all configuration options for your treemap chart.
-
-For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
-:::::
-
-:::::{step} Save the chart
-:::{include} ../../_snippets/save-visualization.md
-:::
-:::::
-
-::::::
+Refer to [Treemap chart settings](#treemap-chart-settings) for all treemap chart configuration options. For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 
 ## Treemap chart settings [treemap-chart-settings]
 

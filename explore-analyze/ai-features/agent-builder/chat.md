@@ -90,6 +90,16 @@ Use the model selector to switch the underlying [model](models.md) the agent use
 :screenshot:
 :::
 
+### Chat with data from multiple projects [agent-builder-cps-scope]
+```{applies_to}
+stack: unavailable
+serverless: ga
+```
+
+  When your projects are [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md), an agent searches the projects selected in the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header.
+
+  You can change the selector at any time. Each new message uses the current selection. Earlier messages in the conversation keep the results they already returned.
+
 ### Options menu [access-key-actions]
 
 ```{applies_to}
@@ -147,6 +157,25 @@ Use the chat history panel to access previous conversations.
 :::{image} images/agent-builder-chat-history.png
 :screenshot:
 :alt: Search chats panel with search field and conversation list
+:width: 450px
+:::
+
+### Pin conversations
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Pin conversations that you want to access quickly. Pinned conversations appear in the **Pinned** section above **Chats** and remain pinned after you reload the page.
+
+You can pin or unpin a conversation in either of the following ways:
+
+- Drag the conversation from **Chats** to **Pinned** to pin it. Drag it back to **Chats** to unpin it.
+- Click the **Open conversation menu** icon {icon}`boxes_vertical`, then select **Pin** or **Unpin**.
+
+:::{image} images/pinned-conversations.gif
+:screenshot:
+:alt: Animated Agent Builder sidebar showing a conversation dragged from Chats to Pinned and the Unpin action in the conversation menu
 :width: 450px
 :::
 
@@ -210,6 +239,7 @@ To learn how traces are collected, configured, and secured, refer to [Collect ag
 ### Human-in-the-loop prompts
 ```{applies_to}
 stack: ga 9.4+
+serverless: ga
 ```
 
 At certain points an agent pauses and hands control back to you before it continues. This pattern is known as human-in-the-loop (HITL). While a conversation is paused this way, it shows an **Awaiting your input** status in the [chat history panel](#track-conversation-status).
@@ -218,15 +248,24 @@ At certain points an agent pauses and hands control back to you before it contin
 
 | Prompt | When it appears | Available responses |
 | --- | --- | --- |
-| Tool confirmation | An Elastic-built tool or skill requires approval before it performs an action | Confirm the action or deny it |
+| Tool confirmation | A tool or skill requires approval before it performs an action | Confirm the action or deny it |
 | Connector authorization {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | An external connector needs access to continue | Authorize access or deny it |
 | Clarifying question {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | The agent needs more information to continue | Answer or skip the question |
 
 HITL prompts do not replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
 
+HITL prompts require an interactive conversation, so [sub-agent executions cannot answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+
 #### Confirm a change
 
-Some Elastic-built tools and skills pause for confirmation before performing consequential actions. When confirmation is required, the chat presents a preview before the action takes effect. The preview format and available responses depend on the tool or skill. Review the preview, then confirm the action to proceed or deny it to cancel.
+Some tools and skills pause for confirmation before they perform consequential actions. Elastic-built tools and skills decide for themselves when to ask.
+
+For [custom tools](tools/custom-tools.md), you decide when the agent asks: set **Require user confirmation** to **Never**, **Once**, or **Always**. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+
+What the prompt shows depends on the tool:
+
+* Some Elastic-built tools and skills preview the change before it takes effect. The preview format and the button labels depend on the tool or skill: a prompt to delete a [stream](/solutions/observability/streams/streams.md) offers **Delete permanently**, and a prompt to create one offers **Create stream**. Review the preview, then confirm the action to proceed or deny it to cancel.
+* Other tools, including all custom tools, show a generic prompt that names the tool and asks whether to proceed. Select **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and does not show the parameters that the agent passes to it, so give custom tools [descriptive IDs](tools/custom-tools.md#naming-conventions).
 
 For example, when an agent updates a workflow, it shows the proposed change as a diff and waits for you to review it before applying:
 
@@ -249,6 +288,14 @@ For irreversible actions, the prompt highlights the consequences before you proc
 :::{image} images/agent-builder-confirm-delete-stream.png
 :screenshot:
 :alt: Confirmation prompt warning that the logs.otel.checkout stream and its data will be permanently deleted
+:width: 700px
+:::
+
+Custom tools show the generic prompt instead. Here, a tool that cancels an order asks for permission before it runs. The prompt names the tool but not the order:
+
+:::{image} images/agent-builder-tool-confirmation-prompt.png
+:screenshot:
+:alt: Generic confirmation prompt asking permission to call the tool ecommerce.cancel_order, with Deny and Allow buttons
 :width: 700px
 :::
 

@@ -1,6 +1,7 @@
 ---
-navigation_title: "Create an OAuth client"
-description: "Register an OAuth client in Agent Builder to get the credentials and server URL needed to connect an MCP host over OAuth."
+navigation_title: "Create or edit an OAuth client"
+description: "Register an OAuth client in Agent Builder to get the credentials and server URL needed to connect an MCP host over OAuth, or edit an existing client's name, logo, and redirect URIs."
+type: how-to
 applies_to:
   serverless: ga
 products:
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Create an OAuth client in {{agent-builder}}
+# Create or edit an OAuth client in {{agent-builder}}
 
 Register a new OAuth client in {{agent-builder}} to generate the credentials that an MCP host, such as Claude Desktop, needs to connect over OAuth 2.1. This is a one-time step you complete before connecting any host to {{agent-builder}}.
 
@@ -20,6 +21,8 @@ Each OAuth client is scoped to a single {{serverless-short}} project. Creating a
 :::{note}
 In the {{kib}} UI, OAuth clients are labeled **MCP clients**. The button and menu labels in these steps, such as **Add MCP client**, refer to the OAuth client you're creating.
 :::
+
+You can also [edit an existing client](#edit-oauth-client) to change its name, logo, or redirect URIs without replacing its credentials.
 
 ## Before you begin [create-oauth-client-before-you-begin]
 
@@ -98,9 +101,30 @@ The client ID and MCP server URL can be retrieved at any time from the **MCP cli
 
 :::::
 
+## Edit a client [edit-oauth-client]
+
+You can edit an active client's name, logo, and redirect URIs. You can't edit its client type, client ID, MCP server URL, or client secret. Revoked clients can't be edited.
+
+To edit a client:
+
+1. Find **Agents** in the navigation menu. You can also search for **Agent Builder** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. In the secondary navigation, select **Tools**.
+3. In the **Tools** workspace, click **Manage all tools**.
+4. In the **Tools library** workspace, click **Manage MCP**, and then select **Manage MCP clients (OAuth)**.
+5. Find the client. Click **Actions**, and then click **Edit**.
+6. Edit any of the following fields:
+   - **Name**
+   - **Client logo (optional)**: Select a provided logo, upload a custom logo, or remove the existing logo.
+   - **Redirect URI type**: Select **Local** or **Remote**, then add, remove, or edit a redirect URI.
+
+   The edited fields must meet the same requirements described in [Create the client](#create-the-client).
+7. Click **Update**.
+
+{{kib}} returns you to the **MCP clients** page and confirms that the client was updated.
+
 ## Next steps
 
-Now that you have the client ID and MCP server URL for your OAuth client, [configure your MCP host to use them](connect-mcp-host.md).
+After creating a client, [configure your MCP host](connect-mcp-host.md) with its client ID and MCP server URL.
 
 You can also share these values so that other people connect the same client in their own MCP hosts. Each person authorizes access separately and gets their own connection.
 

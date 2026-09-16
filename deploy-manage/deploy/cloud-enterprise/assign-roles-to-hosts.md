@@ -20,7 +20,11 @@ Each {{ece}} runner can take on several roles:
 :   Allocates the available computing resources to {{es}} nodes or {{kib}} instances. In larger installations, a majority of the machines will be allocators.
 
 `coordinator`
-:   Serves as a distributed coordination system and resource scheduler.
+:   Serves as a distributed coordination system and resource scheduler. Hosts with this role run the Constructor, Admin Console, and Cloud UI services. For details on what each service does, refer to [Service-oriented architecture](ece-architecture.md).
+
+    :::{note}
+    The Cloud UI displays this role as **Controller**. The internal role identifier used in API calls and role tokens is `coordinator`.
+    :::
 
 `proxy`
 :   Manages communication between a user and an {{es}} or {{kib}} instance.

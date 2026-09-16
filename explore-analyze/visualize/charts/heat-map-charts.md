@@ -17,11 +17,16 @@ description: Create heat map charts to visualize patterns across two dimensions,
 
 Heat map charts display data as a grid of colored cells, where each cell's color represents the magnitude of a value. They are ideal for visualizing patterns across two categorical or temporal dimensions, identifying correlations, and spotting anomalies in large datasets.
 
-You can create heat map charts in {{kib}} using [**Lens**](../lens.md).
+You can build a heat map chart in {{kib}} in either of these ways:
+
+- [With the point-and-click editor](#build-a-heat-map-chart)
+- [With an {{esql}} query](#build-a-heat-map-chart-with-esql)
+
+To automate chart or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
 ![Example Lens heat map chart representing temperatures in various cities](/explore-analyze/images/heat-map-chart-example.png)
 
-## Build a heat map chart
+## Build a heat map chart with the point-and-click editor [build-a-heat-map-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -52,8 +57,40 @@ Optionally:
 The chart preview updates to show a grid of colored cells. Cell colors represent the magnitude of the metric value. If the grid appears empty, verify that the axes have data for the current time range.
 :::::
 
-:::::{step} Customize the chart to follow best practices
-Tweak the appearance of the chart to your needs. Consider the following best practices:
+:::::{step} Save the chart
+:::{include} ../../_snippets/save-visualization.md
+:::
+:::::
+
+::::::
+
+## Build a heat map chart with an {{esql}} query [build-a-heat-map-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+A heat map needs two grouping columns for its grid axes and a numeric metric column to determine each cell's color intensity. In this query, `DATE_EXTRACT` creates hour and day columns from `@timestamp`, and `STATS` returns one request count for each day-and-hour combination:
+
+```esql
+FROM kibana_sample_data_logs
+| EVAL hour = DATE_EXTRACT("hour_of_day", @timestamp)
+| EVAL day = DATE_EXTRACT("day_of_week", @timestamp)
+| STATS requests = COUNT(*) BY day, hour
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Heat map**.
+3. Assign `hour` to the **Horizontal axis**, `day` to the **Vertical axis**, and `requests` to **Cell value**.
+4. Customize the chart appearance using the [heat map chart settings](#heat-map-chart-settings).
+5. Select **Apply and close**.
+
+The chart preview uses color intensity to show when the most requests occur.
+
+## Apply heat map chart best practices [heat-map-chart-best-practices]
+
+After building the chart with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
 
 **Choose appropriate dimensions**
 :   Select dimensions that have a reasonable number of distinct values. Too many values create unreadable grids with tiny cells.
@@ -67,17 +104,7 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 **Order categories meaningfully**
 :   For categorical axes, order values logically (alphabetically, by frequency, or by a natural ordering like days of the week). Use the **Sort order** [style setting](#appearance-options) to control how axis values are sorted.
 
-Refer to [Heat map chart settings](#heat-map-chart-settings) to find all configuration options for your heat map chart.
-
-For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
-:::::
-
-:::::{step} Save the chart
-:::{include} ../../_snippets/save-visualization.md
-:::
-:::::
-
-::::::
+Refer to [Heat map chart settings](#heat-map-chart-settings) for all heat map chart configuration options. For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 
 ## Advanced heat map chart scenarios
 

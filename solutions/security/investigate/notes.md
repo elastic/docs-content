@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/add-manage-notes.html
   - https://www.elastic.co/guide/en/serverless/current/security-add-manage-notes.html
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -17,7 +17,7 @@ Incorporate notes into your investigative workflows to coordinate responses, con
 
 ::::{note}
 * {applies_to}`stack: ga 9.1+` {applies_to}`serverless: ga` You can attach up to 100 notes to alerts and events. The number of notes you can attach to Timelines is unlimited.
-* {applies_to}`stack: ga =9.0` Configure the `securitySolution:maxUnassociatedNotes` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#max-notes-alerts-events) to specify the maximum number of notes that you can attach to alerts and events.
+* {applies_to}`stack: ga =9.0` Configure the `securitySolution:maxUnassociatedNotes` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings) to specify the maximum number of notes that you can attach to alerts and events.
 ::::
 
 ## Grant access to notes [notes-privileges]
@@ -26,9 +26,9 @@ You can control access to notes by setting the [{{kib}} privileges](../../../dep
 
 ## View and add notes to alerts and events [notes-alerts-events]
 
-Open the alert or event details flyout to access the **Notes** tab, where you can view existing notes and add new ones. To quickly open the tab, click the **Add note** action (![Add note action](/solutions/images/security-create-note-icon.png "title =20x20")) in the Alerts or Events table. Then, enter a note into the text box, and click **Add note** to create it.
+To add or view notes for a specific alert or event, open its details flyout. Refer to [Notes](/solutions/security/detect-and-alert/view-detection-alert-details.md#expanded-notes-view) for how to add and view notes from the flyout.
 
-After notes are created, the **Add note** icon displays a notification dot. In the details flyout for alerts, the alert summary in the right panel also shows how many notes are attached to the alert.
+You can also click the **Add note** action (![Add note action](/solutions/images/security-create-note-icon.png "title =20x20")) in the Alerts or Events table to open the Notes flyout directly, without first opening the full details flyout. Enter a note into the text box, then click **Add note** to create it. After notes are created, the **Add note** icon displays a notification dot.
 
 :::{image} /solutions/images/security-new-note-alert-event.png
 :alt: New note added to an alert

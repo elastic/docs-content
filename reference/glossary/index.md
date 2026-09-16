@@ -168,7 +168,7 @@ $$$glossary-ccr$$$ {{ccr}} (CCR)
 $$$glossary-ccs$$$ {{ccs}} (CCS)
 :   Searches [data streams](/reference/glossary/index.md#glossary-data-stream) and [indices](/reference/glossary/index.md#glossary-index) on [remote clusters](/reference/glossary/index.md#glossary-remote-cluster) from a [local cluster](/reference/glossary/index.md#glossary-local-cluster). See [Search across clusters](/explore-analyze/cross-cluster-search.md).
 
-$$$glossary-cps$$$ {{cps}} ({{cps-init}}) {applies_to}`serverless: preview`
+$$$glossary-cps$$$ {{cps}} ({{cps-init}}) {applies_to}`serverless: ga`
 :   Searches across multiple {{serverless-full}} [linked projects](/reference/glossary/index.md#glossary-linked-project) from a single [origin project](/reference/glossary/index.md#glossary-origin-project). See [{{cps-cap}}](/explore-analyze/cross-project-search.md).
 
 $$$CRD$$$CRD
@@ -277,7 +277,7 @@ $$$glossary-elasticsearch$$$ {{es}}
 :   The [open source](https://github.com/elastic/elasticsearch) search and analytics engine, data store, and vector database which powers the Elastic platform and is fundamental to every Elastic [deployment type](/deploy-manage/deploy.md).
 
     The term "{{es}}" has several additional meanings depending on the context in which it is used:
-  - {{es}} is the name of a [**project** type](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md) on {{serverless-full}}, tailored for general-purpose search use cases.
+  - {{es}} is the name of a [**project** type](/deploy-manage/deploy/elastic-cloud/serverless.md#get-started) on {{serverless-full}}, tailored for general-purpose search use cases.
   - {{es}} is also the name of a **solution** in other Elastic deployment types. Each [space](#glossary-space) has its own [solution view](#glossary-solution-view).
   - The **{{es}} platform** (also known as the Elastic platform or Search AI Platform) is the umbrella term for Elastic's full suite of products and capabilities, built on the core {{es}} technology. It encompasses what was initially known as the {{stack}}, extended with additional capabilities (such as the Search AI Lake) to power Elastic's various deployment types and managed services.
 
@@ -381,7 +381,7 @@ $$$glossary-geojson$$$ GeoJSON
 :   A format for representing geospatial data. GeoJSON is also a file-type, commonly used in the **Maps** application to upload a file of geospatial data. See [GeoJSON data](/explore-analyze/visualize/maps/indexing-geojson-data-tutorial.md).
 
 $$$glossary-global-header$$$ global header
-:   The top bar of {{kib}} that hosts global controls, such as the global search field and the [space](/reference/glossary/index.md#glossary-space) switcher.
+:   The top bar of {{kib}} that hosts global controls, such as the global search field and the [space](/reference/glossary/index.md#glossary-space) selector.
 
 $$$glossary-graph$$$ graph
 :   A data structure and visualization that shows interconnections between a set of entities. Each entity is represented by a node. Connections between nodes are represented by [edges](/reference/glossary/index.md#glossary-edge). See [Graph](/explore-analyze/visualize/graph.md).
