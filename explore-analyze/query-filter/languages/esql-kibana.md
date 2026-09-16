@@ -410,7 +410,7 @@ For the full list of supported settings and their parameters, refer to the [`SET
 
 ### Search across projects with `SET project_routing` [esql-kibana-cps]
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 

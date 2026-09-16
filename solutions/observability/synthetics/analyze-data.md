@@ -249,7 +249,7 @@ You can also navigate between steps and checks at the top of the page to view th
 
 ## Monitors from linked projects [synthetics-analyze-linked-monitors]
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 
