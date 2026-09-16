@@ -562,7 +562,7 @@ To configure the bounds, use the menus in the editor toolbar. Bar and area chart
 ::::{dropdown} Is it possible to display icons in data tables?
 :name: is-it-possible-to-show-icons-in-datatable
 
-You can display icons with [field formatters](../find-and-organize/data-views.md) in data tables.
+You can display icons with [field formatters](../find-and-organize/data-views/field-formatters.md) in data tables.
 
 ::::
 
