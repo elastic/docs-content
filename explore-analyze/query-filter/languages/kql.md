@@ -29,7 +29,7 @@ Combine free text search with field-based search using KQL. Type a search term t
 |     |     |
 | --- | --- |
 | Exact phrase query | `http.response.body.content.text:"quick brown fox"` |
-| Terms query | `http.response.status_code: (400 OR 401 OR 404)` |
+| Multiple values | `http.response.status_code: (400 OR 401 OR 404)` |
 | Boolean query | `response:200 or extension:php` |
 | Range query | `account_number >= 100 and items_sold <= 200` |
 | Wildcard query | `machine.os:win*` |
