@@ -131,7 +131,7 @@ To edit these settings, you must have the **All** privilege for the **Synthetics
 ::::
 
 ::::{admonition} View monitors from linked projects
-:applies_to: serverless: preview
+:applies_to: serverless: ga
 On {{serverless-full}}, after you [link projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), you can view monitors from those projects without any additional configuration. Refer to [Monitors from linked projects](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-linked-monitors).
 ::::
 
