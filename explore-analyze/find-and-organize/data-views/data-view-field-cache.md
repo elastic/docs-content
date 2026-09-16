@@ -13,7 +13,7 @@ The browser caches {{data-source}} field lists to improve performance. Caching m
 
 In typical {{kib}} usage, the field list updates every few minutes. To get an updated list immediately, select **Refresh** on the {{data-source}} management detail page. Clearing your browser cache has the same effect.
 
-The field list might change after updates to indices or user permissions.
+The field list might change after updates to indices or user privileges.
 
 ## Related pages
 
