@@ -3,7 +3,7 @@ applies_to:
   serverless:
 products:
   - id: cloud-serverless
-navigation_title: Projects FAQ
+navigation_title: Serverless FAQ
 ---
 
 # Frequently asked questions (FAQ) about {{serverless-full}} projects [general-what-is-serverless-elastic-answers-to-common-serverless-questions]

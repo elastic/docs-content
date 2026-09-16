@@ -54,25 +54,25 @@ Choose a type that matches your use case, then [create a serverless project](cre
 
 If you're deciding which project type to create, these guides describe the capabilities and use cases for each one.
 
-![elasticsearch](../../images/64x64_Color_elasticsearch-logo-color-64px.png "elasticsearch =30") **[{{es-serverless}}](/solutions/elasticsearch-solution-project/get-started.md)**  
+![elasticsearch](../../images/64x64_Color_elasticsearch-logo-color-64px.png "elasticsearch =30") **[{{es-serverless}}](/solutions/elasticsearch-solution-project.md)**  
 Build powerful, scalable search and analytics applications across structured data, logs, metrics, documents, and vectors as part of a broader {{stack}}.
 
-![vectordatabase](../../images/64x64_Color_vectordb-logo-color-64px.png "vectordatabase =30") **[{{es}} {{vectordb}}](/solutions/vector-database/get-started.md)**  
+![vectordatabase](../../images/64x64_Color_vectordb-logo-color-64px.png "vectordatabase =30") **[{{es}} {{vectordb}}](/solutions/vector-database.md)**  
 Build embedding-driven workloads such as semantic search, RAG, and AI-powered retrieval. Built-in models and vector-optimized defaults mean less configuration and faster time to production.
 
-![observability](../../images/64x64_Color_observability-logo-color-64px.png "observability =30") **[{{obs-serverless}}](/solutions/observability/get-started.md)**  
+![observability](../../images/64x64_Color_observability-logo-color-64px.png "observability =30") **[{{obs-serverless}}](/solutions/observability.md)**  
 Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
 
-![security](../../images/64x64_Color_security-logo-color-64px.png "security =30") **[{{sec-serverless}}](/solutions/security/get-started.md)**  
+![security](../../images/64x64_Color_security-logo-color-64px.png "security =30") **[{{sec-serverless}}](/solutions/security.md)**  
 Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
 
 ## Next steps
 
 * [Create a {{serverless-short}} project](create-serverless-project.md): After you decide on a project type, create a project in the {{ecloud}} console.
-* [Create a project API key](../../api-keys/serverless-project-api-keys.md): Give applications and automation a key they can use to call your project's APIs.
 
-## Related pages
+## Set up your environment
 
+* [Create a project API key](../../api-keys/serverless-project-api-keys.md): Give applications and automations a key they can use to call your project's APIs.
 * [Learn about your Cloud organization](../../cloud-organization.md): Understand how your projects, members, and account settings are grouped under one {{ecloud}} organization.
 * [Understand serverless billing](../../cloud-organization/billing/serverless-project-billing-dimensions.md): See what you're charged for so you can estimate cost and control usage.
 * [Learn how user access works](../../users-roles/cloud-organization.md): Invitations, roles, and SSO for your organization.

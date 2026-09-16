@@ -18,7 +18,7 @@ type: how-to
 
 Decide which project type you might need before you create the project. You'll select a type during setup. To match a type to your use case, review this [project comparison table](/solutions/index.md#choose-your-path).
 
-Although you can't convert the project to a different type later, you can [delete a project](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless) and create another one.
+You can't convert a project to a different type later. If you choose the wrong type, create another project. When you no longer need a project, [delete it](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless) so it doesn't continue to incur charges.
 
 ## Create a project in the {{ecloud}} console [create-project-console]
 
@@ -29,7 +29,7 @@ The steps to create a {{serverless-short}} project are the same regardless of wh
 3. Enter a name for your project.
 4. Select a cloud provider and region. For available regions, refer to [](/deploy-manage/deploy/elastic-cloud/regions.md).
 
-    Depending on the project type, you can also configure additional settings, such as a feature tier. For more information, review the [settings available for each project type](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+    For {{sec-serverless}} and {{obs-serverless}} projects, you can also select a feature tier. For more information, review the [project features and add-ons](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons) included in each feature tier.
 5. Select **Create project**. It takes a few minutes to create your project.
 6. When the project is ready, select **Continue** to open it. You might need to log in to {{ecloud}} again.
 
