@@ -6,5 +6,3 @@ There are a few options to create a serverless project:
     :::{note}
     You can also [create and manage projects](/deploy-manage/deploy/elastic-cloud/manage-serverless-projects-using-api.md) using the [{{serverless-full}} API]({{cloud-serverless-apis}}).
     :::
-
-Each of these options counts toward the same organization limit: you can have up to 500 {{serverless-short}} projects. If you reach this limit, you'll get an error when you try to create another project. To request an increase, [contact Elastic Support](/troubleshoot/index.md#contact-us).

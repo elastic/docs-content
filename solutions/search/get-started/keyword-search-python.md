@@ -27,14 +27,11 @@ To follow the steps, you must have a recent version of a Python interpreter.
 :::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
 :::
 
-In the {{ecloud}} console, choose the {{es}} project type and provide a name.
+To [create a project](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md) in the {{ecloud}} console, choose the **{{es}}** project type, and provide a name.
 You can optionally edit the project settings, such as the [region](/deploy-manage/deploy/elastic-cloud/regions.md).
 
 To add the sample data in subsequent steps, you must have a `developer` or `admin` predefined role or an equivalent custom role.
 To learn about role-based access control, go to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
-
-:::{include} /deploy-manage/deploy/_snippets/serverless-kibana-blank-page.md
-:::
 ::::
 ::::{step} Create an index
 

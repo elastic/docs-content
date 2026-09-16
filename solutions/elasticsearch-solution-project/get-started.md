@@ -36,13 +36,10 @@ For simplicity and speed, try out {{es-serverless}}:
 :::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
 :::
 
-In the {{ecloud}} console, choose the {{es}} project type and provide a name.
+To [create a project](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md) in the {{ecloud}} console, choose the **{{es}}** project type, and provide a name.
 You can optionally edit the project settings, such as the [region](/deploy-manage/deploy/elastic-cloud/regions.md).
 
 When your project is created, you're ready to move on to the next step and to start creating indices, adding data, and performing searches.
-
-:::{include} /deploy-manage/deploy/_snippets/serverless-kibana-blank-page.md
-:::
 ::::
 
 Alternatively, create a [local development installation](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) in Docker:

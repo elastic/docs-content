@@ -16,9 +16,11 @@ type: how-to
 
 ## Before you begin
 
-Decide which project type you might need before you create the project. You'll select a type during setup. To match a type to your use case, review this [project comparison table](/solutions/index.md#choose-your-path).
+* Decide which project type you might need before you create the project. You'll select a type during setup. To match a type to your use case, review this [project comparison table](/solutions/index.md#choose-your-path).
 
-You can't convert a project to a different type later. If you choose the wrong type, create another project. When you no longer need a project, [delete it](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless) so it doesn't continue to incur charges.
+* You can't convert a project to a different type later. If you choose the wrong type, create another project. When you no longer need a project, [delete it](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless) so it doesn't continue to incur charges.
+
+* You can have up to 500 {{serverless-short}} projects in your organization. This limit applies whether you create projects in the {{ecloud}} console or with the API. If you reach the limit, you'll get an error when you try to create another project. To request an increase, [contact Elastic Support](/troubleshoot/index.md#contact-us).
 
 ## Create a project in the {{ecloud}} console [create-project-console]
 
@@ -33,6 +35,7 @@ The steps to create a {{serverless-short}} project are the same regardless of wh
 5. Select **Create project**. It takes a few minutes to create your project.
 6. When the project is ready, select **Continue** to open it. You might need to log in to {{ecloud}} again.
 
-:::{include} /deploy-manage/deploy/_snippets/serverless-kibana-blank-page.md
+:::{tip}
+If {{kib}} loads as a blank page, check that your firewall, proxy, or secure web gateway allows access to `kibana.estccdn.com` and `cloud.elastic.co`. For the full list of required domains, refer to [Browser access requirements](/deploy-manage/deploy/elastic-cloud.md#browser-access).
 :::
 
