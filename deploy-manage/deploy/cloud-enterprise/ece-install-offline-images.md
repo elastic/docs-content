@@ -85,6 +85,11 @@ Enterprise Search is not available in versions 9.0+.
 | docker.elastic.co/cloud-release/kibana-cloud:9.5.3 | ECE 4.0.0 |
 | docker.elastic.co/cloud-release/elastic-agent-cloud:9.5.3.build202609101118 | ECE 4.0.0 |
 |  |  |
+| [{{es}}, {{kib}}, and APM stack pack: 9.4.7](https://download.elastic.co/cloud-enterprise/versions/9.4.7.zip) | ECE 4.0.0 |
+| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.4.7 | ECE 4.0.0 |
+| docker.elastic.co/cloud-release/kibana-cloud:9.4.7 | ECE 4.0.0 |
+| docker.elastic.co/cloud-release/elastic-agent-cloud:9.4.7 | ECE 4.0.0 |
+|  |  |
 | [{{es}}, {{kib}}, and APM stack pack: 9.4.6](https://download.elastic.co/cloud-enterprise/versions/9.4.6.zip) | ECE 4.0.0 |
 | docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.4.6 | ECE 4.0.0 |
 | docker.elastic.co/cloud-release/kibana-cloud:9.4.6 | ECE 4.0.0 |
