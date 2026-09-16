@@ -553,10 +553,9 @@ To send data from a single agent policy over the private connection, and leave t
 
 A selection made in an agent policy takes precedence over the defaults on the **Settings** page.
 
-If the private connection is later removed from your project, {{fleet}} makes the public {{fleet-server}} host and output the default again, and deletes the private entries. Agent policies that used a private entry switch back to the default, so {{agents}} aren't left pointing at an unreachable URL.
+If the private connection is later removed from your project, {{fleet}} restores the public {{fleet-server}} host and output as the defaults and deletes the private entries. Agent policies that used a private entry revert to the default, so {{agents}} continue to reach a valid endpoint.
 
 :::{admonition} Limitations
-* You can't change the performance tuning preset on **Private Elasticsearch Output**. It uses the default **Balanced** preset.
 * You can't create another {{es}} output that points to the private endpoint. Only the output that {{fleet}} adds can use that URL.
 * {{managed-integrations}} don't use the private endpoints. Elastic runs their collectors and writes the data to your project over Elastic's internal network. For more information, refer to [Security and data residency](/manage-data/ingest/managed-integrations/managed-integrations.md#managed-integrations-data-security).
 :::

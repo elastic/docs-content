@@ -523,7 +523,7 @@ To access the deployment or project:
     :::
     ::::
 
-### Azure Private Link and Fleet
+### Azure Private Link and Fleet [azure-private-link-and-fleet]
 
 :::{include} _snippets/private-connection-fleet.md
 :::
