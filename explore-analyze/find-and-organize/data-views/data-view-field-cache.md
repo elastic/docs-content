@@ -1,5 +1,5 @@
 ---
-description: How Kibana caches a data view's field list in the browser, and how to refresh it with the Refresh control.
+description: How Kibana caches a data view's field list in the browser, and how to refresh it with Refresh.
 applies_to:
   stack: ga
   serverless: ga

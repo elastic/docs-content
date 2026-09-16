@@ -17,7 +17,7 @@ Create a {{data-source}} to make your own {{es}} data available in **Discover**,
 ## Before you begin [create-data-view-prereqs]
 
 * You need a role with the **Data View Management** {{kib}} privilege and the `view_index_metadata` {{es}} privilege. Refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
-* If a **Read only** badge appears, you don't have sufficient privileges to create or save {{data-sources}}. The create control is also unavailable.
+* If a **Read only** badge appears, you don't have sufficient privileges to create or save {{data-sources}}. **Create a data view** and **Create data view** are also unavailable.
 * You need data already indexed into {{es}}. Some workflows create a {{data-source}} for you automatically instead. Refer to [How data views are created](../data-views.md#data-views-how-you-get-one).
 
 ## Create the data view [create-data-view-steps]
@@ -175,3 +175,4 @@ Temporary {{data-sources}} aren't available on the **Data Views** management pag
 * [Data views](../data-views.md)
 * [Delete a data view](delete-data-view.md)
 * [Duplicate a data view](duplicate-data-view.md)
+* [Customize data view fields](customize-data-view-fields.md)

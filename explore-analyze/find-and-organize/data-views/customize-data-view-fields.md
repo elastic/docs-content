@@ -12,7 +12,7 @@ products:
 You can add fields to a data view after ingest, and change how {{kib}} displays existing fields.
 
 * [Explore your data with runtime fields](runtime-fields.md): Add fields after ingestion, evaluated at query time.
-* [Scripted fields](scripted-fields.md): Compute values at query time from a script.
+* {applies_to}`stack: deprecated` {applies_to}`serverless: unavailable` [Scripted fields](scripted-fields.md): Compute values at query time from a script.
 * [Format data view fields](field-formatters.md): Change how {{kib}} displays field values.
 * [Data view field cache](data-view-field-cache.md): How {{kib}} caches field lists in the browser, and how to refresh them.
 

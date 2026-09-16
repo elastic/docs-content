@@ -11,7 +11,7 @@ products:
 
 Duplicating a data view creates an editable copy. Use a copy when you want to try different field formatting or a different index pattern without affecting the original, or when you need a similar {{data-source}} for another use case.
 
-{applies_to}`stack: ga 9.2` Duplicating is also how you customize a [managed](../data-views.md#managed-data-views) {{data-source}}. You can't edit a managed {{data-source}} directly.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` Duplicating is also how you customize a [managed](../data-views.md#managed-data-views) {{data-source}}. You can't edit a managed {{data-source}} directly.
 
 ## Before you begin [duplicate-data-view-prereqs]
 

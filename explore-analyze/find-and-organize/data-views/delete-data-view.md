@@ -31,4 +31,5 @@ The {{data-source}} and its saved settings are removed from the **Data Views** p
 ## Related pages
 
 * [Data views](../data-views.md)
+* [Create a data view](create-data-view.md)
 * [Duplicate a data view](duplicate-data-view.md)
