@@ -309,6 +309,7 @@ FROM kibana_sample_data_logs
 | WHERE timestamp > NOW() - 15minutes
 ```
 
+To apply a time shift in an {{esql}} visualization, refer to [Compare current versus previous period with time shift](/explore-analyze/visualize/esorql.md#esql-viz-time-shift).
 
 ### Timezone handling [esql-kibana-timezone]
 ```{applies_to}
