@@ -30,11 +30,11 @@ This example explores the fields in the [sample web logs data](../index.md#gs-ge
    :screenshot:
    :::
 
-5. Expand the `hour_of_day` field.
+5. Expand the `machine.ram` field.
    For numeric fields, **Discover** provides the document statistics, minimum, median, and maximum values, a list of top values, and a distribution chart. Use this chart to get a better idea of how the values in the data are clustered.
 
    :::{image} /explore-analyze/images/kibana-field-statistics-numeric.png
-   :alt: Field statistics for a numeric field.
+   :alt: Field statistics for the machine.ram numeric field.
    :screenshot:
    :::
 
