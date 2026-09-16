@@ -202,7 +202,7 @@ This limitation does not apply to [cross-region PrivateLink connections](#ec-aws
     :screenshot:
     :::
 
-    The security group for the endpoint should, at minimum, allow for inbound connectivity from your instances' CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connectivity to the endpoint on ports 443 and 9243. If you use this endpoint for remote cluster traffic, also allow port `9400` or `9443`, depending on the security model you configure.
+    The security group for the endpoint should, at minimum, allow for inbound connectivity from your instances' CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connectivity to the endpoint on ports 443 and 9243. If you use this endpoint for remote cluster traffic to an {{ech}} deployment, also allow port `9443` or `9400`, depending on the security model you configure.
 
     <!--need to verify this for serverless-->
 
@@ -250,7 +250,7 @@ After you create your VPC endpoint and DNS entries, check that you are able to r
 :::{include} _snippets/private-url-struct.md
 :::
 
-{{ech}} supports ports `443` and `9243` for Elasticsearch and Kibana traffic. Remote cluster traffic for cross-cluster search and cross-cluster replication uses port `9400` with the TLS certificate based security model, or `9443` with the API key based model. Refer to [Connection paths and private connectivity](/deploy-manage/remote-clusters.md#remote-clusters-connection-paths) for the supported combinations.
+{{ech}} supports ports `443` and `9243` for {{es}} and {{kib}} traffic. Remote cluster traffic for cross-cluster search and cross-cluster replication uses port `9400` with the TLS certificate based security model, or `9443` with the API key based model. Refer to [Connection paths and private connectivity](/deploy-manage/remote-clusters.md#remote-clusters-connection-paths) for the supported combinations.
 ::::
 ::::{applies-item} serverless: ga
 :::{include} _snippets/private-url-struct-serverless.md
