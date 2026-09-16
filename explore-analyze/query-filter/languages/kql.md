@@ -6,6 +6,8 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+type: overview
+description: Filter documents in Kibana with KQL. Match fields, ranges, wildcards, and boolean conditions in Discover, dashboards, and similar apps.
 ---
 
 # KQL [kuery-query]
@@ -17,6 +19,8 @@ The {{kib}} Query Language (KQL) is a simple text-based query language for filte
 
 Use KQL to filter documents where a value for a field exists, matches a given value, or is within a given range.
 
+To compare KQL with Query DSL, {{esql}}, and other languages, refer to [Query languages](../languages.md).
+
 
 ## Semi-structured search [semi-structured-search]
 
@@ -25,10 +29,12 @@ Combine free text search with field-based search using KQL. Type a search term t
 |     |     |
 | --- | --- |
 | Exact phrase query | `http.response.body.content.text:"quick brown fox"` |
-| Terms query | http.response.status_code:400 401 404 |
+| Terms query | `http.response.status_code: (400 OR 401 OR 404)` |
 | Boolean query | `response:200 or extension:php` |
 | Range query | `account_number >= 100 and items_sold <= 200` |
 | Wildcard query | `machine.os:win*` |
+
+To match any of several values on one field, use parentheses and `OR`. For the full syntax, refer to [Combining multiple queries](#_combining_multiple_queries).
 
 
 
@@ -120,7 +126,9 @@ To search for documents matching a pattern, use the wildcard syntax. Wildcard qu
 machine.os: win*
 ```
 
-By default, leading wildcards are not allowed for performance reasons. You can modify this with the [`query:allowLeadingWildcards`](kibana://reference/advanced-settings.md#query-allowleadingwildcards) advanced setting.
+{{kib}} allows leading wildcards by default. Leading wildcard queries can be expensive.
+
+{applies_to}`stack: ga` {applies_to}`serverless: unavailable` To reduce that cost, you can turn them off with the [`query:allowLeadingWildcards`](kibana://reference/advanced-settings.md#query-allowleadingwildcards) advanced setting.
 
 ::::{note}
 Only `*` is currently supported. This matches zero or more characters.
