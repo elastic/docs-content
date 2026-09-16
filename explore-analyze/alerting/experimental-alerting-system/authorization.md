@@ -33,7 +33,7 @@ Authorizing a workflow run happens in three steps, and each step uses a differen
 
 ## Check and fix authorization errors [check-and-fix-errors]
 
-The following authorization errors can cause a rule to fail or prevent an action policy from delivering a notification. If a workflow produces authorization errors, refer to [Workflow authorization](../../workflows/authorization.md#workflows-authorization-troubleshoot).
+The following authorization errors can cause a rule to fail or prevent an action policy from invoking a workflow. If a workflow produces authorization errors, refer to [Workflow authorization](../../workflows/authorization.md#workflows-authorization-troubleshoot).
 
 | Error type | Cause | Where it appears | How to resolve it |
 |---|---|---|---|

@@ -18,7 +18,7 @@ Use these advanced considerations when you use the {{synthetics-app}} for large 
 
 ## View monitor data from linked projects [synthetics-cps-settings]
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 
