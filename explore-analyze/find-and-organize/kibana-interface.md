@@ -33,7 +33,7 @@ The global header holds the following elements.
 | {icon}`logo_elastic` logo | Opens the home page of your current space. |
 | Deployment/Project name and space information | Lets you navigate to other deployments or projects. |
 | Space selector | Switch between the spaces your roles allow. Where you find it depends on your deployment type and version. Refer to [Select and switch Kibana spaces](/deploy-manage/choose-and-switch-spaces.md) for the steps. |
-| {icon}`cross_project_search` {{cps-cap}} scope selector | {applies_to}`stack: unavailable` {applies_to}`serverless: preview` Sets which linked projects your searches include. It appears only when other projects are linked to yours. Refer to [{{cps-cap}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana). |
+| {icon}`cross_project_search` {{cps-cap}} scope selector | {applies_to}`stack: unavailable` {applies_to}`serverless: ga` Sets which linked projects your searches include. It appears only when other projects are linked to yours. Refer to [{{cps-cap}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana). |
 | Global search field | Searches for apps and for the objects you created. Refer to [Find apps and objects](/explore-analyze/find-and-organize/find-apps-and-objects.md). |
 | {icon}`question` **Help menu** | Opens links to the documentation, to support, and to the connection details of your project or deployment. |
 | AI assistant or agent | Opens the AI assistant or agent of your solution. Its label depends on which one your project or deployment offers. |
