@@ -26,7 +26,7 @@ This example explores the fields in the [sample web logs data](../index.md#gs-ge
    The table summarizes how many documents in the sample contain each field for the selected time period the number of distinct values, and the distribution.
 
    :::{image} /explore-analyze/images/kibana-field-statistics-view.png
-   :alt: Field statistics view in Discover showing a summary of document data.
+   :alt: Field statistics view in Discover with the View as menu open.
    :screenshot:
    :::
 

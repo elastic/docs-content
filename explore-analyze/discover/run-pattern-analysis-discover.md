@@ -28,7 +28,7 @@ Pattern analysis works on any text field. This example uses the [sample web logs
 4. Select **Patterns** (or **View as** → **Patterns**, depending on your version). The pattern analysis starts. The results are displayed under the chart. You can change the analyzed field by using the field selector. In the **Pattern analysis menu**, you can change the **Minimum time range**. This option enables you to widen the time range for calculating patterns which improves accuracy. The patterns, however, are still displayed by the time range you selected in step 3.
 
 :::{image} /explore-analyze/images/kibana-log-pattern-analysis-results.png
-:alt: Log pattern analysis results in Discover.
+:alt: Patterns view in Discover with the View as menu open.
 :screenshot:
 :::
 
