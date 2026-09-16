@@ -13,7 +13,7 @@ products:
 A [{{search-snap}}](searchable-snapshots.md) index is a read-only index whose data is stored in a snapshot repository. This procedure restores that data from the source snapshot as a new regular index. It does not modify the mounted index in place. After you verify the restored data, you transfer any aliases or data stream membership and then delete the mounted index.
 
 :::{note}
-If you want to restore {{search-snap}} indices and keep them as {{search-snaps}}, follow [Back up and restore {{search-snaps}}](searchable-snapshots.md#back-up-restore-searchable-snapshots). This guide covers the opposite outcome: bringing the data back as a regular index instead of recreating it as a {{search-snap}} index.
+If you want to restore {{search-snap}} indices and keep them as {{search-snaps}}, follow [Back up and restore {{search-snaps}}](searchable-snapshots.md#back-up-restore-searchable-snapshots). This guide covers a different goal: bringing the data back as a regular index instead of recreating it as a {{search-snap}} index.
 :::
 
 Use this procedure for fully mounted and partially mounted {{search-snaps}} when you need to:
@@ -116,9 +116,9 @@ For example, the mounted index used throughout this guide is a backing index of 
 
 ::::
 
-::::{step} Restore the underlying snapshot data
+::::{step} Restore the data from the source snapshot
 
-Restore the index data from the underlying source snapshot as a regular index:
+Use the restore API to create a regular index from the source snapshot:
 
 ```console
 POST /_snapshot/<snapshot_repository_name>/<searchable_snapshot_name>/_restore <1>
