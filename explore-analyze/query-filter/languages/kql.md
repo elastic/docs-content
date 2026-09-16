@@ -17,7 +17,7 @@ The {{kib}} Query Language (KQL) is a text-based query language for filtering da
 * KQL only filters data. It does not aggregate, transform, or sort data.
 * Do not confuse KQL with the [Lucene query language](lucene-query-syntax.md). Lucene has a different feature set.
 
-Use KQL to filter documents where a value for a field exists, matches a given value, or is within a given range.
+Use KQL to filter documents by field existence, value, or range.
 
 To compare KQL with Query DSL, {{esql}}, and other languages, refer to [Query languages](../languages.md).
 
@@ -26,7 +26,7 @@ To compare KQL with Query DSL, {{esql}}, and other languages, refer to [Query la
 
 Combine free text search with field-based search using KQL. Enter a term to match across all fields. Start typing a field name to get suggestions for fields and operators.
 
-|     |     |
+| Query type | Example |
 | --- | --- |
 | Exact phrase query | `http.response.body.content.text:"quick brown fox"` |
 | Multiple values | `http.response.status_code: (400 OR 401 OR 404)` |
@@ -40,30 +40,32 @@ To match any of several values on one field, use parentheses and `OR`. For the f
 
 ## Filter for documents where a field exists [_filter_for_documents_where_a_field_exists]
 
-To filter documents for which an indexed value exists for a given field, use the `*` operator. For example, to filter for documents where the `http.request.method` field exists, use the following syntax:
+To find documents where a field has an indexed value, use `*`. For example, documents where `http.request.method` exists:
 
 ```yaml
 http.request.method: *
 ```
 
-This checks for any indexed value, including an empty string.
+This matches any indexed value, including an empty string.
 
 
 ## Filter for documents that match a value [_filter_for_documents_that_match_a_value]
 
-Use KQL to filter for documents that match a specific number, text, date, or boolean value. For example, to filter for documents where the `http.request.method` is GET, use the following query:
+Use KQL to match a number, text, date, or boolean value. For example, documents where `http.request.method` is GET:
 
 ```yaml
 http.request.method: GET
 ```
 
-The field name is optional. If you omit it, KQL searches all fields for the given value. For example, to search all fields for “Hello”, use the following:
+The field name is optional. If you omit it, KQL searches all fields for the given value. For example, to search all fields for “Hello”:
 
 ```yaml
 Hello
 ```
 
-When querying keyword, numeric, date, or boolean fields, the value must be an exact match, including punctuation and case. However, when querying text fields, {{es}} analyzes the value provided according to the [field’s mapping settings](../../../solutions/search/full-text/text-analysis-during-search.md). For example, to search for documents where `http.request.body.content` (a `text` field) contains the text “null pointer”:
+On keyword, numeric, date, or boolean fields, the value must match exactly, including punctuation and case.
+
+On `text` fields, {{es}} analyzes the value using the [field’s mapping settings](../../../solutions/search/full-text/text-analysis-during-search.md). For example, documents where `http.request.body.content` contains “null pointer”:
 
 ```yaml
 http.request.body.content: null pointer
@@ -75,7 +77,7 @@ Because this is a `text` field, the order of these search terms does not matter.
 http.request.body.content: "null pointer"
 ```
 
-Escape certain characters with a backslash, unless you surround the value with quotes. For example, to search for documents where `http.request.referrer` is [https://example.com](https://example.com), use either of these queries:
+Escape certain characters with a backslash, unless you surround the value with quotes. For example, either of these queries matches `http.request.referrer` [https://example.com](https://example.com):
 
 ```yaml
 http.request.referrer: "https://example.com"
@@ -91,25 +93,21 @@ Escape these characters:
 
 ## Filter for documents within a range [_filter_for_documents_within_a_range]
 
-To search documents that contain terms within a provided range, use KQL’s range syntax. For example, to search for all documents for which `http.response.bytes` is less than 10000, use the following syntax:
+To find values in a range, use KQL range syntax. For example, `http.response.bytes` less than 10000:
 
 ```yaml
 http.response.bytes < 10000
 ```
 
-To search for an inclusive range, combine multiple range conditions. For example, to search for documents where `http.response.bytes` is greater than 10000 but less than or equal to 20000, use the following syntax:
+For an inclusive range, combine conditions. For example, bytes greater than 10000 and less than or equal to 20000:
 
 ```yaml
 http.response.bytes > 10000 and http.response.bytes <= 20000
 ```
 
-:::{note}
-When using range queries with multiple conditions on multi-value fields, each condition is evaluated independently against all values in the array. 
+On multi-value fields, KQL tests each condition against every value in the array. `number > 300 AND number < 400` matches `"number": [500, 10]`. 500 matches the first condition and 10 matches the second. If one value must satisfy every condition, use [Query DSL](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md).
 
-For example, the query `number > 300 AND number < 400` will match a document with `"number": [500, 10]` because 500 satisfies the first condition and 10 satisfies the second condition. If you need all conditions to be satisfied by the same value, consider using [Query DSL](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) instead, which will only match documents where at least one value falls entirely within the specified range.
-:::
-
-You can also use range syntax for string values, IP addresses, and timestamps. For example, to search for documents earlier than two weeks ago, use the following syntax:
+You can also use range syntax for strings, IP addresses, and timestamps. For example, documents earlier than two weeks ago:
 
 ```yaml
 @timestamp < now-2w
@@ -120,13 +118,17 @@ For more examples on acceptable date formats, refer to [Date Math](elasticsearch
 
 ## Filter for documents using wildcards [_filter_for_documents_using_wildcards]
 
-To search for documents matching a pattern, use the wildcard syntax. Wildcard queries are supported on keyword, text, and wildcard fields, but not on numeric, date, or boolean fields. For example, to find documents where `machine.os` begins with "win", use the following syntax:
+To match a pattern, use a wildcard. You can use wildcards on keyword, text, and wildcard fields. They do not work on numeric, date, or boolean fields.
+
+For example, `machine.os` values that begin with "win":
 
 ```yaml
 machine.os: win*
 ```
 
-By default, you can put `*` at the start of a pattern. For example, to find documents where `url` contains `elastic`:
+Only `*` is supported. It matches zero or more characters.
+
+By default, you can put `*` at the start of a pattern. For example, `url` values that contain `elastic`:
 
 ```yaml
 url: *elastic*
@@ -136,15 +138,9 @@ Queries that start with `*` can slow searches.
 
 {applies_to}`stack: ga` {applies_to}`serverless: unavailable` To avoid that, turn leading wildcards off with the [`query:allowLeadingWildcards`](kibana://reference/advanced-settings.md#query-allowleadingwildcards) advanced setting.
 
-::::{note}
-Only `*` is currently supported. This matches zero or more characters.
-::::
-
-
-
 ## Negating a query [_negating_a_query]
 
-To negate or exclude a set of documents, use the `not` keyword (not case-sensitive). For example, to filter documents where the `http.request.method` is **not** GET, use the following query:
+To exclude documents, use the `not` keyword (not case-sensitive). For example, documents where `http.request.method` is not GET:
 
 ```yaml
 NOT http.request.method: GET
@@ -153,26 +149,26 @@ NOT http.request.method: GET
 
 ## Combining multiple queries [_combining_multiple_queries]
 
-To combine multiple queries, use the `and`/`or` keywords (not case-sensitive). For example, to find documents where the `http.request.method` is GET **or** the `http.response.status_code` is 400, use the following query:
+To combine queries, use `and` or `or` (not case-sensitive). For example, GET requests or responses with status 400:
 
 ```yaml
 http.request.method: GET OR http.response.status_code: 400
 ```
 
-Similarly, to find documents where the `http.request.method` is GET **and** the `http.response.status_code` is 400, use this query:
+To require both conditions, use `and`:
 
 ```yaml
 http.request.method: GET AND http.response.status_code: 400
 ```
 
-To specify precedence when combining multiple queries, use parentheses. For example, to find documents where the `http.request.method` is GET **and** the `http.response.status_code` is 200, **or** the `http.request.method` is POST **and** `http.response.status_code` is 400, use the following:
+Use parentheses to set precedence. This example matches GET requests with status 200, or POST requests with status 400:
 
 ```yaml
 (http.request.method: GET AND http.response.status_code: 200) OR
 (http.request.method: POST AND http.response.status_code: 400)
 ```
 
-You can also use parentheses for shorthand syntax when querying multiple values for the same field. For example, to find documents where the `http.request.method` is GET, POST, **or** DELETE, use the following:
+You can also use parentheses to match several values on one field. For example, GET, POST, or DELETE:
 
 ```yaml
 http.request.method: (GET OR POST OR DELETE)
@@ -181,23 +177,19 @@ http.request.method: (GET OR POST OR DELETE)
 
 ## Matching multiple fields [_matching_multiple_fields]
 
-Wildcards can also be used to query multiple fields. For example, to search for documents where any sub-field of `datastream` contains “logs”, use the following:
+You can also use wildcards to query multiple fields. For example, documents where any sub-field of `datastream` contains “logs”:
 
 ```yaml
 datastream.*: logs
 ```
 
-::::{note}
-If the matching fields have different types, the query can fail. For example, if `datastream.*` matches both numeric and string fields, `datastream.*: logs` returns an error. Numeric fields cannot be queried for string values.
-::::
-
-
+If the matching fields have different types, the query can fail. For example, if `datastream.*` matches both numeric and string fields, `datastream.*: logs` returns an error. You cannot query numeric fields for string values.
 
 ## Querying nested fields [_querying_nested_fields]
 
-Querying [nested fields](elasticsearch://reference/elasticsearch/mapping-reference/nested.md) requires a special syntax. Consider the following document, where `user` is a nested field:
+[Nested fields](elasticsearch://reference/elasticsearch/mapping-reference/nested.md) use a special syntax. Consider this document, where `user` is nested:
 
-```yaml
+```json
 {
   "user" : [
     {
@@ -212,15 +204,15 @@ Querying [nested fields](elasticsearch://reference/elasticsearch/mapping-referen
 }
 ```
 
-To find documents where a single value inside the `user` array contains a first name of “Alice” and last name of “White”, use the following:
+To find a `user` array value with first name “Alice” and last name “White”:
 
 ```yaml
 user:{ first: "Alice" and last: "White" }
 ```
 
-Because nested fields can be inside other nested fields, you must specify the full path of the nested field you want to query. For example, consider the following document where `user` and `names` are both nested fields:
+If nested fields contain other nested fields, use the full path. Consider this document, where `user` and `names` are both nested:
 
-```yaml
+```json
 {
   "user": [
     {
@@ -239,7 +231,7 @@ Because nested fields can be inside other nested fields, you must specify the fu
 }
 ```
 
-To find documents where a single value inside the `user.names` array contains a first name of “Alice” **and** last name of “White”, use the following:
+To find a `user.names` array value with first name “Alice” **and** last name “White”:
 
 ```yaml
 user.names:{ first: "Alice" and last: "White" }
