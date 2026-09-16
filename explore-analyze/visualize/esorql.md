@@ -115,7 +115,7 @@ The chart configuration resets or follows automatic suggestions when:
 
 ### Query data from multiple projects [esql-viz-cps]
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 
@@ -134,6 +134,36 @@ An {{esql}} query returns a table. When you use the result to build a visualizat
 | Numeric metric column | Calculate a value with a `STATS` aggregation such as `COUNT`, `SUM`, or `AVG`. | Plotted values, sizes, color intensity, metrics, and gauges |
 
 The chart type determines the combination of columns you need. Open a page from the [visualization types](lens.md#lens-visualization-types) list to find an {{esql}} query pattern and learn how to assign its result columns to the chart dimensions.
+
+## Build time series charts with {{esql}} [esql-time-series-charts]
+
+A time series chart plots a metric over time. The query must return a time-bucket column for the **Horizontal axis** and a numeric metric column for the **Vertical axis**.
+
+In this query, `WHERE` applies the dashboard time range, `BUCKET` divides that range into 50 groups, and `COUNT` returns one value for each group:
+
+```esql
+FROM kibana_sample_data_logs
+| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
+| STATS requests = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+```
+
+If your time field isn't named `@timestamp`, replace `@timestamp` with that field in both `WHERE` and `BUCKET`. Refer to [](../query-filter/languages/esql-kibana.md#_custom_time_parameters).
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](#_create_from_dashboard) and run the query.
+2. Set the visualization type to a chart type compatible with time series, typically **Line**, **Area**, or **Bar**.
+3. Assign `time_bucket` to the **Horizontal axis** and `requests` to the **Vertical axis**.
+4. Select **Apply and close**.
+
+The chart preview shows how the request count changes over time.
+
+For more query patterns and chart settings, refer to [Build a line chart with an {{esql}} query](charts/line-charts.md#build-a-line-chart-with-esql) and [Build an area chart with an {{esql}} query](charts/area-charts.md#build-an-area-chart-with-esql).
+
+## Compare current versus previous period with time shift [esql-viz-time-shift]
+
+:::{include} _snippets/esql-time-shift.md
+:::
 
 ## Add drilldowns to an {{esql}} visualization [esql-viz-drilldowns]
 ```{applies_to}

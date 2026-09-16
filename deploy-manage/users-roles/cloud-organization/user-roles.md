@@ -30,7 +30,7 @@ To edit the roles assigned to a user:
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the navigation menu, select **Organization** > **Members**.
-3. Select the user on the **Members** tab of the **Organization** page.
+3. Select the user.
 4. Click **Edit** to change the user's roles.
 
 :::{note}
@@ -139,9 +139,9 @@ You can optionally [create custom roles in a project](/deploy-manage/users-roles
 
 | Role name | {{ecloud}} access | Project access | Availability |
 | --- | --- | --- | --- |
-| Admin | Has full access to project management, properties, and security privileges. | Superuser role privileges | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
-| Developer | Manage project settings. | Creates API keys, indices, data streams, adds connectors, and builds visualizations. | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md) |
-| Viewer | Has read-only access to project details. | Has read-only access to project data and features. | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Admin | Has full access to project management, properties, and security privileges. | Superuser role privileges | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{vectordb}}](/deploy-manage/images/serverless-vectordb-badge.svg "")](../../../solutions/vector-database.md)[![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
+| Developer | Manage project settings. | Creates API keys, indices, data streams, adds connectors, and builds visualizations. | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{vectordb}}](/deploy-manage/images/serverless-vectordb-badge.svg "")](../../../solutions/vector-database.md) |
+| Viewer | Has read-only access to project details. | Has read-only access to project data and features. | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{vectordb}}](/deploy-manage/images/serverless-vectordb-badge.svg "")](../../../solutions/vector-database.md)[![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
 | Editor | Configures all {{observability}} or Security projects. | Has read-only access to data indices. Has full access to all project features. | [![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
 | Tier 1 analyst | Viewer | Ideal for initial alert triage. General read access, can create dashboards and visualizations. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
 | Tier 2 analyst | Viewer | Ideal for alert triage and beginning the investigation process. Can create cases. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
@@ -186,7 +186,7 @@ When **Cloud Console, {{es}}, and {{kib}}** access is not granted, roles that ar
 * Several predefined roles that are intended for project users, such as the Security **Tier 1 analyst** role, can view the relevant projects on the {{ecloud}} Console home page, but can't open the project to view their dashboards and visualizations.
 * [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) always require **Cloud Console, {{es}}, and {{kib}}** access. Without it, custom roles are replaced with the predefined **Viewer** role, and users can't log in to the project.
 
-{applies_to}`serverless: preview` If your organization uses [{{cps}}](/deploy-manage/cross-project-search-config.md), the roles assigned to a user determine what data they can access across linked projects. Users can only see data from a linked project if their role on that project grants the necessary privileges. Refer to [Manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access).
+If your organization uses [{{cps}}](/deploy-manage/cross-project-search-config.md), the roles assigned to a user determine what data they can access across linked projects. Users can only see data from a linked project if their role on that project grants the necessary privileges. Refer to [Manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access).
 
 For details on the permissions granted for each role, refer to the [predefined roles table](#general-assign-user-roles-table).
 
