@@ -5,6 +5,7 @@
 /.github/                                   @elastic/doc-leads
 /.github/workflows/                         @elastic/docs-engineering
 /.github/scripts/                           @elastic/docs-engineering
+/.github/triage-instructions.md             @elastic/doc-leads @elastic/docs-engineering
 
 # The docs
 /cloud-account/                             @elastic/admin-docs
