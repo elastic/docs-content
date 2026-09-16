@@ -156,7 +156,7 @@ For more information, refer to [Excluding clusters or indices from cross-cluster
 
 ### Use {{data-sources}} with {{cps}} [management-cross-project-search]
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 

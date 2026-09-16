@@ -115,7 +115,7 @@ The chart configuration resets or follows automatic suggestions when:
 
 ### Query data from multiple projects [esql-viz-cps]
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 
