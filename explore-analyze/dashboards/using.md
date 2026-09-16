@@ -249,7 +249,7 @@ When viewing a dashboard with read-only permissions, certain visualization panel
 
 ### View data from multiple projects [dashboard-cps-scope]
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 

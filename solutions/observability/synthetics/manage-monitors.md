@@ -22,7 +22,7 @@ This page lists only monitors defined in the current cluster or {{serverless-sho
 For more information, refer to the following topics:
 
 * {applies_to}`stack: ga 9.5+` [Remote monitors](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-remote-monitors).
-* {applies_to}`serverless: preview` [Monitors from linked projects](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-linked-monitors).
+* {applies_to}`serverless: ga` [Monitors from linked projects](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-linked-monitors).
 ::::
 
 ## Update a monitor [manage-monitors-config]
