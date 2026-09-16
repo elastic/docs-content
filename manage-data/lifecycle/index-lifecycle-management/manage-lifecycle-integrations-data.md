@@ -27,7 +27,7 @@ To find the data stream associated with a visualization in a {{kib}}:
 
 1. In **Discover**, the list of documents shows the columns for fields applicable to the visualization that you selected. Select any document that has data for those fields, then select the **View details** icon {icon}`expand` (or **Toggle dialog with details** in earlier {{stack}} versions).
 
-    ![Discover documents list](/manage-data/images/ilm-toggle-document-details.png "")
+    ![View details in the Discover documents list](/manage-data/images/ilm-toggle-document-details.png "")
 
 1. In the document details, there are three `data_stream` fields. The full [data stream name](/reference/fleet/data-streams.md#data-streams-naming-scheme) is a composite of `data_stream.type`, `data_stream.dataset` and `data_stream.namespace`, separated by a hyphen. For example, in the System integration, the **CPU usage over time** visualization is associated with the `metrics-system.cpu-default` data stream.
 
