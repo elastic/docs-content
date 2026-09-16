@@ -22,10 +22,6 @@ You can find the **{{connectors-ui}}** management page in the navigation menu or
 {{connectors-ui}} are not the same as [application connections](/deploy-manage/app-connections.md) or [search connectors](elasticsearch://reference/search-connectors/index.md). Application connections manage OAuth client registration and external access to {{serverless-short}} projects. Search connectors sync data from third-party sources into {{es}}.
 :::
 
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-connectors
-:::
-
 ## Required permissions [_required_permissions_2]
 
 Access to connectors is granted based on your privileges to alerting-enabled features. For more information, go to [Security](../explore-analyze/alerting/alerts/alerting-setup.md#alerting-security).
