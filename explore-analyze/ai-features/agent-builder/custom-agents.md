@@ -115,12 +115,12 @@ Configure **Access control** for your agent in the **Organization** section. Acc
 
 {applies_to}`stack: ga =9.4` This setting is labeled **Visibility**.
 
-New agents get one of these levels by default:
+New agents default to:
 
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Private**: only you and administrators can view and edit the agent until you grant access to someone else.
-* {applies_to}`stack: ga 9.4-9.5` **Public**: anyone in the space can view and edit the agent.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Private**
+* {applies_to}`stack: ga 9.4-9.5` **Public**
 
-For more information, refer to [Access control settings](#access-control-settings). You can also configure [per-agent access controls](#per-agent-access-controls) for more granular control.
+For what each level means, refer to [Access control settings](#access-control-settings). You can also configure [per-agent access controls](#per-agent-access-controls) for more granular control.
 
 :::::
 
