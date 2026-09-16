@@ -67,10 +67,10 @@ You can now select your new {{data-source}} from the data view menu in **Discove
 
 The **Index pattern** field tells the {{data-source}} which names to query. What you enter depends on where the data lives:
 
-* [Data in this cluster or project](#index-pattern-local): wildcards, comma-separated names, or a minus sign to exclude
-* [Data in another cluster](#management-cross-cluster-search): `cluster:index` syntax for {{ccs}}
-* [Data in another project](#management-cross-project-search): qualified expressions for {{cps}}
-* [Rolled-up data](#rollup-data-view): one rollup index, or rollup and raw data together
+* [Data in this cluster or project](#index-pattern-local): Wildcards, comma-separated names, or a minus sign to exclude
+* [Data in another cluster](#management-cross-cluster-search): Use `cluster:index` syntax for {{ccs}}
+* [Data in another project](#management-cross-project-search): Qualified expressions for {{cps}}
+* [Rolled-up data](#rollup-data-view): One rollup index, or rollup and raw data together
 
 ### Data in this cluster or project [index-pattern-local]
 
