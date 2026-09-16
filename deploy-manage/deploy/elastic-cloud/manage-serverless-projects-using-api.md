@@ -20,7 +20,7 @@ On this page, you can find examples of how to create and manage serverless proje
 To try the examples in this section, start by [setting up an API key](#general-manage-project-with-api-set-up-api-key).
 
 :::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/manage-project
+:url: https://github.com/elastic/agent-skills@cloud-provisioning
 :::
 
 ## API resources
@@ -51,10 +51,6 @@ To create and manage projects with the {{serverless-full}} API, you must authent
    ```
 
 ## Create an {{serverless-full}} project [general-manage-project-with-api-create-a-serverless-elasticsearch-project]
-
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/create-project
-:::
 
 ```bash
 curl -H "Authorization: ApiKey $API_KEY" \

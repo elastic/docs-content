@@ -47,8 +47,7 @@ curl -X GET "${KIBANA_URL}/api/agent_builder/tools" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
 :::{tip}
-To generate API keys, search for `API keys` in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-[Learn more](/solutions/elasticsearch-solution-project/search-connection-details.md).
+Need an API key? Refer to [Create API keys for {{agent-builder}} APIs](api-keys.md) for complete read-only and management examples.
 :::
 
 ### Working with spaces
@@ -69,7 +68,7 @@ Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automaticall
 ### Use APIs with data from multiple projects [agent-builder-api-cps]
 ```{applies_to}
 stack: unavailable
-serverless: preview
+serverless: ga
 ```
 
   When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), {{agent-builder}} APIs that search your data use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-name>` use the default space.
@@ -1124,7 +1123,7 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 ::::
 
-**Example:** Scope a chat across projects {applies_to}`serverless: preview`
+**Example:** Scope a chat across projects {applies_to}`serverless: ga`
 
 By default, the [{{cps}}](/explore-analyze/cross-project-search.md) scope is the [default scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-name>` use the {{cps-init}} scope from the default space. 
 
