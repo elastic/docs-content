@@ -497,6 +497,8 @@ Supported transformations include:
 * Convert to lowercase
 * Convert to uppercase
 * Convert to title case
+* Base64 decode
+* URL param decode
 * Apply the short dots transformation, which replaces the content before the `.` character with the first character of the content. For example:
 
 **Original**
@@ -504,9 +506,6 @@ Supported transformations include:
 
 `com.organizations.project.ClassName`
 :   `c.o.p.ClassName`
-
-    * Base64 decode
-    * URL param decode
 
 
 You can specify the following types to the `Url` field formatter:
