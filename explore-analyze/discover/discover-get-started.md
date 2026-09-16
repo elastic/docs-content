@@ -189,7 +189,7 @@ You can navigate between results with your keyboard by pressing "Enter" to go to
 
 You can use **Discover** to compare and diff the field values of multiple results or documents in the table.
 
-1. Select the results you want to compare from the documents table in **Discover**.
+1. Select the results you want to compare from the Documents or Results tab in Discover.
 2. From the **Selected** menu in the table toolbar, choose **Compare selected**. The comparison view opens and shows the selected results next to each other.
 3. Compare the values of each field. By default the first result selected shows as the reference for displaying differences in the other results. When the value remains the same for a given field, it’s displayed in green. When the value differs, it’s displayed in red.
    ::::{tip}
@@ -298,7 +298,7 @@ If you've entered a KQL or Lucene query in the default mode of Discover, it auto
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar are also converted to ES|QL `WHERE` clauses where possible. Filters that can't be converted, such as scripted filters, are dropped.
 
-In {{esql}} mode, the result count uses **results** instead of **documents**.
+In ES|QL mode, the **Documents** tab is named **Results**.
 
 :::{important}
 :applies_to: stack: ga 9.1+
