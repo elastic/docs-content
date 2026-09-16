@@ -1,7 +1,7 @@
 ---
 applies_to:
   stack: unavailable
-  serverless: preview
+  serverless: ga
 products:
   - id: cloud-serverless
 navigation_title: "Cross-project search"
@@ -49,11 +49,6 @@ Before you configure {{cps}}, review these prerequisites and best practices:
 - Consider the [architecture patterns](#cps-arch) and choose the right linking topology for your organization.
 
 ### Projects available for linking [cps-compatibility]
-
-::::{important} - Origin project limitations
-
-During technical preview, only newly created projects can be origin projects for {{cps}}. Existing projects can be linked from an origin project, but they can't serve as origin projects themselves. To get started, create a new {{serverless-short}} project and link it to your existing projects.
-::::
 
 To be available for linking, projects must meet the following requirements:
 

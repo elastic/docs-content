@@ -33,7 +33,7 @@ On the **SLOs Settings** page, you can configure the following controls:
 
 :::{note}
 * The **SLOs Settings** page is specific to your {{kib}} [space](/deploy-manage/manage-spaces.md). 
-* {applies_to}`serverless: preview` **Source settings**, **Remote clusters**, and federated views are not available on {{serverless-full}}. To monitor SLO breaches across {{es}} projects, create SLOs in this project and [scope them](/solutions/observability/incident-management/create-an-slo.md#slo-cps-scope) to linked projects.
+* {applies_to}`serverless: ga` **Source settings**, **Remote clusters**, and federated views are not available on {{serverless-full}}. To monitor SLO breaches across {{es}} projects, create SLOs in this project and [scope them](/solutions/observability/incident-management/create-an-slo.md#slo-cps-scope) to linked projects.
 :::
 
 ## Configure SLOs for federated views [observability-configure-slo-settings-federated-view]
