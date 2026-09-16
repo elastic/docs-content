@@ -1,6 +1,6 @@
 ---
 navigation_title: Custom resource deployment
-description: Deploy the EDOT Collector on Kubernetes using `OpenTelemetryCollector` custom resources, covering gateway (Deployment) and agent (DaemonSet) modes.
+description: Deploy {{agent}} on Kubernetes using `OpenTelemetryCollector` custom resources, covering gateway (Deployment) and agent (DaemonSet) modes.
 applies_to:
   stack:
   serverless:
@@ -9,15 +9,16 @@ applies_to:
     edot_collector: ga
 products:
   - id: cloud-serverless
+  - id: cloud-hosted
   - id: observability
   - id: edot-collector
 ---
 
-# Deploy EDOT Collector using `OpenTelemetryCollector` custom resources [k8s-edot-cr-deployment]
+# Deploy {{agent}} using `OpenTelemetryCollector` custom resources [k8s-edot-cr-deployment]
 
-The [recommended path](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md) for deploying EDOT on {{k8s}} uses the `opentelemetry-kube-stack` Helm chart, which installs the OpenTelemetry Operator and configures all collectors automatically. 
+The [recommended path](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md) for deploying {{edot}} on {{k8s}} uses the `opentelemetry-kube-stack` Helm chart, which installs the OpenTelemetry Operator and configures all collectors automatically.
 
-Use the information on this page if you need to create `OpenTelemetryCollector` custom resources (CRs) directly (for example in GitOps workflows, when Helm is unavailable, or when you want fine-grained control over each collector's configuration).
+Use the information on this page if you need to create `OpenTelemetryCollector` custom resources (CRs) directly, for example in GitOps workflows, when Helm is unavailable, or when you want fine-grained control over each collector's configuration.
 
 The CRs on this page replicate the architecture that the Helm chart deploys.
 
@@ -31,19 +32,18 @@ All telemetry flows through the gateway collector before reaching Elastic:
 
 The gateway's export destination depends on your deployment type:
 
-- **{{serverless-short}} and {{ech}}**: gateway exports to the Managed OTLP endpoint.
-- **Self-managed, ECE, and {{eck}}**: gateway exports directly to {{es}}.
+- **{{serverless-short}} and {{ech}}**: gateway exports to the [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md), which handles data enrichment server-side.
+- **Self-managed, {{ece}}, and {{eck}}**: gateway exports directly to {{es}} using the `elasticsearch` exporter, and runs the `elasticapm` connector and processor locally.
 
 The following diagram shows how telemetry flows from the collectors to Elastic:
 
 ```mermaid
-%%{init: {"themeVariables": {"fontSize": "24px"}}}%%
 flowchart TB
     apps[Instrumented applications]
     daemon[DaemonSet collectors]
     cluster[Cluster collector]
     gateway[Gateway collector]
-    otlp[Managed OTLP endpoint]
+    otlp[Managed OTLP Endpoint]
     es[Elasticsearch]
 
     apps -->|OTLP traces and metrics| daemon
@@ -57,15 +57,15 @@ flowchart TB
 
 - The [OpenTelemetry Operator installed](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md) in the `opentelemetry-operator-system` namespace
 - `kubectl` configured to access your cluster
-- An {{es}} cluster or a {{serverless-short}}/{{ech}} project
+- An {{es}} cluster, or an {{ech}} deployment or {{serverless-short}} project
 
-Follow these steps to deploy the EDOT collectors:
+Follow these steps to deploy the collectors:
 
 ::::::{stepper}
 
 :::::{step} Create a credentials secret
 
-All CRs on this page use the dedicated EDOT Collector image. Unlike the full {{agent}} image, this image starts unconditionally in OTel collector mode — you don't need any extra environment variables.
+All CRs on this page use the `elastic-otel-collector` image. Unlike the general-purpose `elastic-agent` image, which starts in collector mode only when `ELASTIC_AGENT_OTEL` is set to `true`, this image always starts in collector mode, so you don't need any extra environment variables.
 
 ```text subs=true
 docker.elastic.co/elastic-agent/elastic-otel-collector:{{version.edot_collector}}
@@ -73,9 +73,9 @@ docker.elastic.co/elastic-agent/elastic-otel-collector:{{version.edot_collector}
 
 Create a {{k8s}} secret with your Elastic credentials in the `opentelemetry-operator-system` namespace.
 
-::::{tab-set}
+:::::{applies-switch}
 
-:::{tab-item} {{serverless-short}} and {{ech}}
+::::{applies-item} serverless:
 
 ```bash
 kubectl create secret generic elastic-secret-otel \
@@ -84,9 +84,20 @@ kubectl create secret generic elastic-secret-otel \
   --from-literal=elastic_api_key='<YOUR_API_KEY>'
 ```
 
-:::
+::::
 
-:::{tab-item} Self-managed, ECE, and {{eck}}
+::::{applies-item} ech:
+
+```bash
+kubectl create secret generic elastic-secret-otel \
+  --namespace opentelemetry-operator-system \
+  --from-literal=elastic_otlp_endpoint='<YOUR_MANAGED_OTLP_ENDPOINT>' \
+  --from-literal=elastic_api_key='<YOUR_API_KEY>'
+```
+
+::::
+
+::::{applies-item} { self:, ece:, eck: }
 
 ```bash
 kubectl create secret generic elastic-secret-otel \
@@ -95,9 +106,13 @@ kubectl create secret generic elastic-secret-otel \
   --from-literal=elastic_api_key='<YOUR_API_KEY>'
 ```
 
-:::
-
 ::::
+
+:::::
+
+:::{note}
+On Windows PowerShell, replace backslashes (`\`) with backticks (`` ` ``) for line continuation and single quotes (`'`) with double quotes (`"`).
+:::
 
 :::::
 
@@ -105,9 +120,9 @@ kubectl create secret generic elastic-secret-otel \
 
 The gateway collector is the central ingestion layer. It runs as a Deployment with two replicas for availability.
 
-::::{tab-set}
+:::::{applies-switch}
 
-:::{tab-item} {{serverless-short}} and {{ech}}
+::::{applies-item} serverless:
 
 ```yaml subs=true
 apiVersion: opentelemetry.io/v1beta1
@@ -139,7 +154,7 @@ spec:
           http:
             endpoint: 0.0.0.0:4318
     exporters:
-      otlp/ingest_metrics_traces:
+      otlp_grpc/ingest_metrics_traces:
         endpoint: ${env:ELASTIC_OTLP_ENDPOINT}
         headers:
           Authorization: ApiKey ${env:ELASTIC_API_KEY}
@@ -153,7 +168,7 @@ spec:
             min_size: 1000000
             max_size: 4000000
         timeout: 15s
-      otlp/ingest_logs:
+      otlp_grpc/ingest_logs:
         endpoint: ${env:ELASTIC_OTLP_ENDPOINT}
         headers:
           Authorization: ApiKey ${env:ELASTIC_API_KEY}
@@ -167,25 +182,113 @@ spec:
             min_size: 1000000
             max_size: 4000000
         timeout: 15s
+    extensions:
+      cgroup_runtime: {}
+      health_check:
+        endpoint: 0.0.0.0:13133
     service:
+      extensions: [cgroup_runtime, health_check]
       pipelines:
         traces:
           receivers: [otlp]
           processors: []
-          exporters: [otlp/ingest_metrics_traces]
+          exporters: [otlp_grpc/ingest_metrics_traces]
         metrics:
           receivers: [otlp]
           processors: []
-          exporters: [otlp/ingest_metrics_traces]
+          exporters: [otlp_grpc/ingest_metrics_traces]
         logs:
           receivers: [otlp]
           processors: []
-          exporters: [otlp/ingest_logs]
+          exporters: [otlp_grpc/ingest_logs]
 ```
 
-:::
+::::
 
-:::{tab-item} Self-managed, ECE, and {{eck}}
+::::{applies-item} ech:
+
+```yaml subs=true
+apiVersion: opentelemetry.io/v1beta1
+kind: OpenTelemetryCollector
+metadata:
+  name: edot-gateway
+  namespace: opentelemetry-operator-system
+spec:
+  mode: deployment
+  image: docker.elastic.co/elastic-agent/elastic-otel-collector:{{version.edot_collector}}
+  replicas: 2
+  env:
+    - name: ELASTIC_OTLP_ENDPOINT
+      valueFrom:
+        secretKeyRef:
+          name: elastic-secret-otel
+          key: elastic_otlp_endpoint
+    - name: ELASTIC_API_KEY
+      valueFrom:
+        secretKeyRef:
+          name: elastic-secret-otel
+          key: elastic_api_key
+  config:
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+            endpoint: 0.0.0.0:4317
+          http:
+            endpoint: 0.0.0.0:4318
+    exporters:
+      otlp_grpc/ingest_metrics_traces:
+        endpoint: ${env:ELASTIC_OTLP_ENDPOINT}
+        headers:
+          Authorization: ApiKey ${env:ELASTIC_API_KEY}
+        sending_queue:
+          enabled: true
+          sizer: bytes
+          queue_size: 50000000
+          block_on_overflow: true
+          batch:
+            flush_timeout: 1s
+            min_size: 1000000
+            max_size: 4000000
+        timeout: 15s
+      otlp_grpc/ingest_logs:
+        endpoint: ${env:ELASTIC_OTLP_ENDPOINT}
+        headers:
+          Authorization: ApiKey ${env:ELASTIC_API_KEY}
+        sending_queue:
+          enabled: true
+          sizer: bytes
+          queue_size: 50000000
+          block_on_overflow: true
+          batch:
+            flush_timeout: 1s
+            min_size: 1000000
+            max_size: 4000000
+        timeout: 15s
+    extensions:
+      cgroup_runtime: {}
+      health_check:
+        endpoint: 0.0.0.0:13133
+    service:
+      extensions: [cgroup_runtime, health_check]
+      pipelines:
+        traces:
+          receivers: [otlp]
+          processors: []
+          exporters: [otlp_grpc/ingest_metrics_traces]
+        metrics:
+          receivers: [otlp]
+          processors: []
+          exporters: [otlp_grpc/ingest_metrics_traces]
+        logs:
+          receivers: [otlp]
+          processors: []
+          exporters: [otlp_grpc/ingest_logs]
+```
+
+::::
+
+::::{applies-item} { self:, ece:, eck: }
 
 ```yaml subs=true
 apiVersion: opentelemetry.io/v1beta1
@@ -234,7 +337,12 @@ spec:
         api_key: ${env:ELASTIC_API_KEY}
         mapping:
           mode: otel
+    extensions:
+      cgroup_runtime: {}
+      health_check:
+        endpoint: 0.0.0.0:13133
     service:
+      extensions: [cgroup_runtime, health_check]
       pipelines:
         traces:
           receivers: [otlp]
@@ -254,11 +362,16 @@ spec:
           exporters: [elasticapm, elasticsearch/otel]
 ```
 
-:::
-
 ::::
 
-The operator creates a Service named `edot-gateway-collector` that exposes ports 4317 (gRPC) and 4318 (HTTP) inside the cluster. DaemonSet and Cluster collectors use this Service name to forward data to the gateway.
+:::::
+
+The operator creates two Services for the gateway, both exposing ports 4317 (gRPC) and 4318 (HTTP) inside the cluster:
+
+- `edot-gateway-collector`, a standard ClusterIP Service.
+- `edot-gateway-collector-headless`, a headless Service that resolves to the individual gateway pod IPs.
+
+Send DaemonSet traffic to the headless Service. Because gRPC holds long-lived connections, a ClusterIP Service pins each client to a single gateway pod, so telemetry would not spread across the replicas. The Cluster collector runs as a single pod with much lower volume, so it can use the ClusterIP Service.
 
 :::::
 
@@ -347,7 +460,7 @@ spec:
             endpoint: 0.0.0.0:4317
           http:
             endpoint: 0.0.0.0:4318
-      filelog:
+      file_log:
         retry_on_failure:
           enabled: true
         start_at: end
@@ -440,39 +553,55 @@ spec:
             from_attribute: k8s.node.name
             action: upsert
     exporters:
-      otlp/gateway:
-        endpoint: "http://edot-gateway-collector.opentelemetry-operator-system.svc.cluster.local:4317"
+      otlp_grpc/gateway:
+        endpoint: "http://edot-gateway-collector-headless.opentelemetry-operator-system.svc.cluster.local:4317"
         tls:
           insecure: true
+    extensions:
+      cgroup_runtime: {}
+      health_check:
+        endpoint: 0.0.0.0:13133
     service:
+      extensions: [cgroup_runtime, health_check]
       pipelines:
         logs: null
         metrics: null
         traces: null
         logs/node:
-          receivers: [filelog]
+          receivers: [file_log]
           processors: [batch, k8sattributes, resourcedetection/system, resource/hostname]
-          exporters: [otlp/gateway]
+          exporters: [otlp_grpc/gateway]
         metrics/node:
           receivers: [kubeletstats, hostmetrics]
           processors: [batch/metrics, k8sattributes, resourcedetection/system, resource/hostname]
-          exporters: [otlp/gateway]
+          exporters: [otlp_grpc/gateway]
         metrics/app:
           receivers: [otlp]
           processors: [batch/metrics, resource/hostname]
-          exporters: [otlp/gateway]
+          exporters: [otlp_grpc/gateway]
         logs/app:
           receivers: [otlp]
           processors: [batch, resource/hostname]
-          exporters: [otlp/gateway]
+          exporters: [otlp_grpc/gateway]
         traces/app:
           receivers: [otlp]
           processors: [batch, resource/hostname]
-          exporters: [otlp/gateway]
+          exporters: [otlp_grpc/gateway]
 ```
 
 ::::{note}
-The example above includes `resourcedetection/system` for host attribute detection. For cloud-managed {{k8s}} clusters, also add the appropriate cloud provider detector: `resourcedetection/eks` for {{aws}} EKS, `resourcedetection/gcp` for Google GKE, or `resourcedetection/aks` for Azure AKS. Refer to the [kube-stack `values.yaml`](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/edot-collector/kube-stack/values.yaml) for the complete processor configurations.
+The preceding example includes only `resourcedetection/system` for host attribute detection. The Helm chart also runs `resourcedetection/env` and a detector for each supported platform, and lists them all in every pipeline so that only the applicable one contributes attributes.
+
+For a cloud-managed or OpenShift cluster, add the detectors that match your environment:
+
+| Environment | Processor |
+|---|---|
+| {{aws}} EKS | `resourcedetection/eks` |
+| Google GKE | `resourcedetection/gcp` |
+| Azure AKS | `resourcedetection/aks` |
+| OpenShift | `resourcedetection/openshift` |
+
+Refer to the [kube-stack `values.yaml`](https://github.com/elastic/elastic-agent/blob/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/values.yaml) for the complete processor configurations. OpenShift clusters have a dedicated set of values files in the [`kube-stack/openshift`](https://github.com/elastic/elastic-agent/tree/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/openshift) directory.
 ::::
 
 :::::
@@ -529,20 +658,25 @@ spec:
             from_attribute: k8s.node.name
             action: upsert
     exporters:
-      otlp/gateway:
+      otlp_grpc/gateway:
         endpoint: "http://edot-gateway-collector.opentelemetry-operator-system.svc.cluster.local:4317"
         tls:
           insecure: true
+    extensions:
+      cgroup_runtime: {}
+      health_check:
+        endpoint: 0.0.0.0:13133
     service:
+      extensions: [cgroup_runtime, health_check]
       pipelines:
         logs:
           receivers: [k8s_events]
           processors: [batch, resource/hostname]
-          exporters: [otlp/gateway]
+          exporters: [otlp_grpc/gateway]
         metrics:
           receivers: [k8s_cluster]
           processors: [batch, k8sattributes, resource/hostname]
-          exporters: [otlp/gateway]
+          exporters: [otlp_grpc/gateway]
 ```
 
 :::::
