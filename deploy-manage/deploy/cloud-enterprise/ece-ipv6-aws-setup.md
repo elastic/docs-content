@@ -624,7 +624,7 @@ To support IPv6 egress in an existing IPv4 ECE environment, you must update both
       ece-network
     ```
 
-    Then open `/etc/containers/containers.conf` and, in the `[network]` section, set `default_network`. If the file or section does not exist yet, create it. On RHEL 9 and Rocky Linux 9, merge this setting with the existing `network_backend="cni"` configuration rather than creating a duplicate `[network]` section. {applies_to}`ece: ga 4.2` On RHEL 10, do not add `network_backend`. Leave that setting unset so Podman continues to use Netavark:
+    Then open `/etc/containers/containers.conf` and, in the `[network]` section, set `default_network`. If the file or section does not exist yet, create it. Make sure not to create a duplicate `[network]` section if one already exists.
 
     ```text
     [network]
