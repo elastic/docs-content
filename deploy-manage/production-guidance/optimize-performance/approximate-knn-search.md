@@ -72,43 +72,28 @@ A `dense_vector` field stores more than the values you index. On disk, {{es}} ke
 
 Use the calculator for disk and off-heap RAM totals. [Vector files](#vector-files-off-heap-ram) explains which Lucene files those totals include.
 
-### Vector sizing calculator [vector-sizing-calculator]
-
-The RAM total is the working set that must stay in the filesystem cache. Disk includes every persisted structure, including raw vectors that stay on disk when you use quantization.
-
-:::{vector-sizing-calculator}
-:::
-
-These estimates are a planning baseline. Real usage depends on your data, indexing settings, query patterns, merges, deletes, and rescoring options. [Vector files](#vector-files-off-heap-ram) lists the Lucene files behind the totals. [Estimate off-heap RAM](#_estimate_off_heap_ram) and [Estimate disk usage](#_estimate_disk_usage) show the formulas.
-
 ### Vector files [vector-files-off-heap-ram]
 
 Each structure is a Lucene file (also reported under `off_heap.*_size_bytes` in [index stats]({{es-apis}}operation/operation-indices-stats)). Metadata files (`.vem`, `.vemf`, `.vemq`, `.vemb`) are small and you do not need to preload them.
-
-The **Off-heap RAM** column indicates whether that file is part of the working set you size in the [calculator](#vector-sizing-calculator) and in [Estimate off-heap RAM](#_estimate_off_heap_ram):
-
-- **Yes**: must stay in the filesystem cache. Include it in the RAM estimate.
-- **Partial**: optional headroom; only touched parts are paged in.
-- **No**: not in the working set. Lives on disk, read on demand.
 
 ::::{tab-set}
 
 :::{tab-item} HNSW
 
-| Component | File | Off-heap RAM | What it is |
-| --- | --- | --- | --- |
-| Raw vectors | `.vec` | Yes if unquantized; otherwise No | Full-precision vectors. Scanned during search when there is no quantization; otherwise kept on disk for optional rescoring. |
-| Quantized vectors | `.veq` (int8 or int4) or `.veb` (BBQ) | Yes | Present only with quantization. A field uses one of these files, not both. |
-| HNSW graph | `.vex` | Yes | Proximity graph that HNSW walks at search time. |
+| Component | File | What it is |
+| --- | --- | --- |
+| Raw vectors | `.vec` | Full-precision vectors. Scanned during search when there is no quantization; otherwise kept on disk for optional rescoring. |
+| Quantized vectors | `.veq` (int8 or int4) or `.veb` (BBQ) | Present only with quantization. A field uses one of these files, not both. |
+| HNSW graph | `.vex` | Proximity graph that HNSW walks at search time. |
 
 :::
 
 :::{tab-item} Flat
 
-| Component | File | Off-heap RAM | What it is |
-| --- | --- | --- | --- |
-| Raw vectors | `.vec` | Yes if unquantized; otherwise No | Full-precision vectors. Scanned during search when there is no quantization; otherwise kept on disk for optional rescoring. |
-| Quantized vectors | `.veq` (int8 or int4) or `.veb` (BBQ) | Yes | Present only with quantization. A field uses one of these files, not both. |
+| Component | File | What it is |
+| --- | --- | --- |
+| Raw vectors | `.vec` | Full-precision vectors. Scanned during search when there is no quantization; otherwise kept on disk for optional rescoring. |
+| Quantized vectors | `.veq` (int8 or int4) or `.veb` (BBQ) | Present only with quantization. A field uses one of these files, not both. |
 
 :::
 
@@ -118,11 +103,11 @@ The **Off-heap RAM** column indicates whether that file is part of the working s
 stack: ga 9.3+
 ```
 
-| Component | File | Off-heap RAM | What it is |
+| Component | File | What it is |
 | --- | --- | --- | --- |
-| Raw vectors | `.vec` | No | Full-precision vectors kept on disk for optional rescoring. |
-| Centroids | `.cenivf` | Yes | Cluster centroids DiskBBQ uses to pick which clusters to visit. |
-| Clusters | `.clivf` | Partial | Quantized vectors grouped into clusters. Only clusters a query visits are paged in. |
+| Raw vectors | `.vec` | Full-precision vectors kept on disk for optional rescoring. |
+| Centroids | `.cenivf` | Cluster centroids DiskBBQ uses to pick which clusters to visit. |
+| Clusters | `.clivf` | Quantized vectors grouped into clusters. Only clusters a query visits are paged in. |
 
 :::
 
