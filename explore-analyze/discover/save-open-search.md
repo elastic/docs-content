@@ -44,7 +44,7 @@ A Discover session stores:
 - The query text and filters
 - The current view of **Discover**, including the columns and sort order in the document table
 - The {{data-source}}
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The {icon}`bolt` **Fast mode** setting for {{esql}} sessions. Refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The {icon}`bolt` **Fast mode** setting in {{esql}} mode. Refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The selected dimensions and the metric search term for [metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md).
 
 If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
