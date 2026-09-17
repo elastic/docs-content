@@ -35,7 +35,7 @@ https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<STACK_VERSIO
 
 Where `<STACK_VERSION>` is the version of the Elastic Stack you are using, for example `9.1.2`.
 
-For Serverless, use the [latest version of the values file](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml). For version 8.16.0, use [this chart](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml).
+For {{serverless-full}} and {{ech}}, use the [Managed OTLP values file](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml). For version 8.16.0, use [this chart](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml).
 
 :::{important}
 When [installing the release](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md), make sure you use the right `--version` and `-f <values-file>` parameters.
