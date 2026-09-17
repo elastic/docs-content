@@ -76,7 +76,26 @@ The case details page organizes information into editable sections:
 stack: ga 9.5
 ```
 
-The activity feed tracks a case's comments and history. To find specific entries, use the search box, filter by type (comments or history) or author, and sort by newest or oldest first. Select **Show more** to load additional entries, or clear the filters to return to the full feed.
+The activity feed tracks a case's comments and history. To find specific entries, use the search box, filter by **Type** (**Comments** or **History**) or **Author**, and sort by **Newest first** or **Oldest first**. Select **Show more** to load additional entries, or **Clear filters** to return to the full feed.
+
+#### See how an action started [case-activity-source]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Each activity entry also shows how the action started. After the username, some entries include **via** and a source name, for example *username* **via API**.
+
+- **Agent**: An [{{agent-builder}}](analyze-cases-with-ai.md) agent ran the action. If you can access that chat, the agent name is a link that opens it.
+- **Workflow**: An [Elastic Workflows](/explore-analyze/workflows.md) workflow ran the action. If you can access workflows, the workflow name is a link to the workflow or its execution.
+- **Rule**: A rule ran the action.
+- **Attack Discovery**: An [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) result ran the action.
+- **API**: A request to the Cases API ran the action.
+
+Entries for actions you take in the Cases UI don't show a source, but you can still filter for them with **User**.
+
+To limit the feed to certain sources, use the **Source** filter on the same toolbar. Options are **Agent**, **Workflow**, **Rule**, **Attack Discovery**, **API**, **User**, and **Not recorded**. **Not recorded** matches entries that have no source, such as activity from before {{kib}} started recording sources. You can select more than one source. For example, select **Agent** and **Workflow** to show only those sources.
 
 ## Apply a template to a case [apply-case-template]
 
