@@ -40,5 +40,5 @@ Refer to [{{es}} API conventions](elasticsearch://reference/elasticsearch/rest-a
 
 ## Tools
 
-* {applies_to}`eck: preview` [Elastic CLI](cli://index.md): Interact with the {{es}} and {{kib}} APIs of deployments managed by {{eck}}.
-* [ECK diagnostics tool](/troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md): Use the `eck-diagnostics` command line tool to create a diagnostic archive to help troubleshoot issues with ECK. 
+* [ECK diagnostics tool](/troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md): Use the `eck-diagnostics` command line tool to create a diagnostic archive to help troubleshoot issues with ECK.
+* {applies_to}`eck: preview` [Elastic CLI](cli://index.md): Interact with the {{es}} and {{kib}} APIs of clusters managed by {{eck}}.
