@@ -75,7 +75,7 @@ Assigning a feature privilege grants access to a specific feature. For each feat
 Some features don't have a **Read** privilege.
 :::
 
-In role management, features are organized into groups. Which groups you see depends on the solutions that are available in your deployment.
+In role management, features are organized into the following groups.
 
 % TODO: Three rows in the following table should link out to their catalogs once those are published.
 % TODO: Elasticsearch row: link to the Elasticsearch catalog (issue 1704).
@@ -88,7 +88,7 @@ In role management, features are organized into groups. Which groups you see dep
 | Group | What it contains |
 | --- | --- |
 | **Analytics** | Privileges for the features you use to explore and visualize data. Refer to [Privileges in the Analytics group](#kibana-privileges-analytics). |
-| **Alerting V2** {applies_to}`stack: ga 9.5+` | Privileges for the {{alerting-v2-system}}. Refer to [Configure access to the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/configure-access.md). |
+| **Alerting V2** {applies_to}`stack: ga 9.5+` | Privileges for the {{alerting-v2-system}}. Refer to [Configure access to the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/configure-access.md). <br> {applies_to}`stack: ga =9.5` Before 9.5.4, this group is called **Alerting**. |
 | **Elasticsearch** | Privileges for {{es}} features. |
 | **Observability** | Privileges for {{observability}} features. |
 | **Security** | Privileges for {{elastic-sec}} features. |
@@ -273,7 +273,7 @@ Each of the following privileges controls access to a different feature.
 
 ### Osquery sub-feature privileges [kibana-privileges-osquery-subfeatures]
 
-These privileges control specific parts of Osquery. Each one has its own **All** and **Read** setting, and selecting **All** for **Osquery** grants **All** for each of them.
+These privileges control specific parts of Osquery. Selecting **All** includes everything in the following table.
 
 :::{table}
 :widths: description
@@ -303,7 +303,7 @@ This privilege controls a specific action on connectors. Selecting **All** inclu
 stack: ga 9.1+
 ```
 
-These privileges control specific actions on the Data Set Quality page. Selecting **All** includes everything in the following table.
+These privileges control specific actions on the **Data Set Quality** page. Selecting **All** includes everything in the following table.
 
 :::{table}
 :widths: description
@@ -316,7 +316,7 @@ These privileges control specific actions on the Data Set Quality page. Selectin
 
 ### Rules Settings sub-feature privileges [kibana-privileges-rules-settings-subfeatures]
 
-These privileges control specific rule settings. Each one has its own **All** and **Read** setting, and selecting **All** for **Rules Settings** grants **All** for each of them.
+These privileges control the settings that apply to all rules in a space. Selecting **All** includes everything in the following table.
 
 :::{table}
 :widths: description
