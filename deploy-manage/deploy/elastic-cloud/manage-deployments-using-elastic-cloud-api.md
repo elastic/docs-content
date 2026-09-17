@@ -18,7 +18,7 @@ If you haven’t created an API key yet, then refer to [](../../api-keys/elastic
 
 :::{tip}
 :applies_to: ech: preview
-For a command-line workflow, use the [Elastic CLI](cli://index.md) to run supported deployment operations without constructing HTTP requests with `curl`.
+For a command-line workflow, use the [Elastic CLI](cli://index.md) to run supported deployment operations. For an example of how to connect the CLI to {{ecloud}} and manage deployments, follow [Connect to {{ecloud}} with the Elastic CLI](cli://cli/manage-elastic-cloud.md).
 :::
 
 ## Common operations with dedicated endpoints [ec_common_operations_with_dedicated_endpoints]
