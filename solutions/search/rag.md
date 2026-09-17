@@ -81,12 +81,5 @@ If you're using the {{es}} solution or serverless project type, these additional
 
 **Playground (deprecated):** [Playground](/solutions/elasticsearch-solution-project/playground.md) has been deprecated as of version 9.4. Use Agent Builder instead.
 
-
-## Learn more [rag-elasticsearch-learn-more]
-
-Learn more about building RAG systems using {{es}} in these blog posts:
-
-* [Beyond RAG Basics: Advanced strategies for AI applications](https://www.elastic.co/blog/beyond-rag-basics)
-* [Building a RAG system with Gemma, Hugging Face, and Elasticsearch](https://www.elastic.co/search-labs/blog/building-a-rag-system-with-gemma-hugging-face-elasticsearch)
-* [Building an agentic RAG tool with Elasticsearch and Langchain](https://www.elastic.co/search-labs/blog/rag-agent-tool-elasticsearch-langchain)
-
+:::{related-learning} rag-foundation, rag-beyond-basics, rag-build-system, rag-build-agentic 
+:::

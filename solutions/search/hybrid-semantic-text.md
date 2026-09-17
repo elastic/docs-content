@@ -507,3 +507,5 @@ Rows are sorted by `_score` descending after combining the `content` keyword mat
 * To set up semantic-only search on the same sample data model, follow the [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md) tutorial.
 * To learn how to optimize storage and search performance when using dense vector embeddings, refer to [Optimizing vector storage](vector/vector-storage-for-semantic-search.md).
 
+:::{related-learning} semantic-search-foundation
+:::
