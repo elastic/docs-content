@@ -47,7 +47,9 @@ stack: preview
 serverless: preview
 ```
 
-Use the [Elastic CLI](cli://index.md) to interact with {{es}}, {{kib}}, and {{ecloud}} APIs from a single command-line interface. Refer to the [Elastic CLI command reference](cli://cli/index.md) for available commands and options.
+Interact with {{es}}, {{kib}}, and {{ecloud}} APIs from a single command-line interface.
+
+**Learn more in [Elastic CLI](cli://index.md)**
 
 ## Elastic Security
 

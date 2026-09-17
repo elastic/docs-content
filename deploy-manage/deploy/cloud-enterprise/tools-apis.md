@@ -44,7 +44,7 @@ Refer to [{{es}} API conventions](elasticsearch://reference/elasticsearch/rest-a
 ## Elastic CLI
 ```{applies_to}
 deployment:
-  ece: preview
+  stack: preview
 ```
 
 The Elastic CLI provides a single command-line interface for {{es}} and {{kib}} APIs. Use it to interact with {{es}} and {{kib}} in {{ece}} deployments.
