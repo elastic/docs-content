@@ -59,3 +59,5 @@ After a case is attached, you can ask the agent to act on it directly from the c
 ### Keep the case and chat in sync [analyze-cases-with-ai-sync]
 
 If you keep the chat open, the case page updates in real time to show any changes the agent makes.
+
+{applies_to}`stack: ga 9.6+` Changes the agent makes also appear in the case's activity feed as **via** the agent name. Refer to [See how an action started](manage-cases.md#case-activity-source).
