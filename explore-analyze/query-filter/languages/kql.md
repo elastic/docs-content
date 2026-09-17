@@ -149,7 +149,7 @@ NOT http.request.method: GET
 
 ## Combining multiple queries [_combining_multiple_queries]
 
-To combine queries, use `and` or `or` (not case-sensitive). For example, GET requests or responses with status 400:
+To combine queries, use `AND` or `OR` (not case-sensitive). For example, GET requests or responses with status 400:
 
 ```yaml
 http.request.method: GET OR http.response.status_code: 400
