@@ -45,7 +45,7 @@ Each of the following privileges controls access to a different part of {{elasti
 | **Alerts** {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Access [detection alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md). |
 | **Rules, Alerts, and Exceptions** {applies_to}`stack: ga =9.3, deprecated 9.4+` {applies_to}`serverless: deprecated` |  Access detection rules, alerts, and exceptions. Roles that use this privilege keep working, but the privilege is no longer available. Use **Rules and Exceptions** and **Alerts** instead. |
 | **Elastic AI Assistant** | Access [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md). Turn on **Customize sub-feature privileges** to grant individual AI Assistant privileges. For the full list, refer to [Elastic AI Assistant sub-feature privileges](#elastic-ai-assistant-sub-feature-privileges). |
-| **Attack discovery** | Access [Attack Discovery](/solutions/security/ai/attack-discovery/index.md).<br> {applies_to}`stack: ga 9.1+` {applies_to}`serverless: ga` Turn on **Customize sub-feature privileges** to grant individual Attack discovery privileges. For details, refer to [Attack discovery sub-feature privileges](#attack-discovery-sub-feature-privileges). |
+| **Attack discovery** | Access [Attack Discovery](/solutions/security/ai/attack-discovery/index.md).<br> {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` Turn on **Customize sub-feature privileges** to grant individual Attack discovery privileges. For details, refer to [Attack discovery sub-feature privileges](#attack-discovery-sub-feature-privileges). |
 | **Automatic Migration** | Access [Automatic Migration](/solutions/security/get-started/automatic-migration.md). <br> {applies_to}`stack: ga 9.0-9.2` This privilege is called **SIEM migrations**. |
 :::
 
@@ -105,7 +105,7 @@ These privileges control changes to AI Assistant settings. Selecting **All** inc
 
 ## Attack discovery sub-feature privileges
 ```yaml {applies_to}
-stack: ga 9.1+
+stack: ga 9.2+
 serverless: ga
 ```
 
