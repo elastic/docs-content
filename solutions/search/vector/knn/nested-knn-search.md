@@ -10,7 +10,7 @@ applies_to:
 
 Nested kNN search lets you find the most relevant passage or chunk inside long documents by storing a separate vector for each nested section and returning parent documents ranked by their best match. This approach is useful when a single document is too long to embed as one vector, such as when a support portal needs to surface the most relevant paragraph from a long troubleshooting guide in response to a user question.
 
-This page covers a basic mapping and query example, filtering, inner hits, and chunked content retrieval. For other approximate kNN query examples, refer to [Examples of using approximate kNN in search queries](build-search-queries.md).
+This page covers a basic mapping and query example, filtering, inner hits, and chunked content retrieval. For other approximate kNN query examples, refer to [Examples of using approximate kNN in search queries](approximate-knn-query-examples.md).
 
 ## Run a basic nested kNN search [nested-knn-basic-example]
 
@@ -433,8 +433,7 @@ The patterns on this page apply directly to chunked content retrieval. Whether y
 
 ## Resources
 
-- [Approximate kNN search](approximate-knn.md): Learn how to map, index, and query `dense_vector` fields for fast, scalable approximate kNN search.
-- [Optimize performance and accuracy](optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
-- [Exact kNN search](exact-knn.md): Learn how to run exact brute-force kNN search for small datasets or precise scoring.
-- [Retrieval augmented generation (RAG)](../../rag.md): Retrieve relevant passages and combine them with generative AI models.
-- [Semantic search with `semantic_text`](../../semantic-search/semantic-search-semantic-text.md): Use managed semantic search when you do not need to store passage vectors in nested fields yourself.
+- [Tune approximate kNN search](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md): Production guidance for vector memory, node sizing, indexing, filesystem cache, and on-disk rescoring.
+- [Profile kNN search](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md#profiling-knn-search): Inspect query timing and vector operation counts to diagnose slow kNN searches.
+- [`dense_vector` field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md): API reference for vector field mapping, including `index`, `similarity`, `index_options`, and quantization parameters.
+- [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.

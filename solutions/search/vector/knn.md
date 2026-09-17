@@ -17,6 +17,8 @@ A *k-nearest neighbor* (kNN) search finds the *k* nearest vectors to a query vec
 
 ## Common use cases for kNN vector similarity search
 
+kNN vector similarity search supports use cases across search, recommendations, and analysis:
+
 - **Search**
   - [Semantic text search](../semantic-search.md): Find documents that match the meaning of a query, even when the wording differs.
   - [Image and video similarity](vector-search-use-cases.md#multimodal-search): Search across text, images, audio, or video to find visually or semantically similar content.
@@ -34,10 +36,15 @@ A *k-nearest neighbor* (kNN) search finds the *k* nearest vectors to a query vec
 
 To run a kNN search in {{es}}:
 
-- Your data must be vectorized. You can [use an NLP model in {{es}}](../../../explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md) or generate vectors outside {{es}}.
-  - Use the [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) field type for dense vectors.
-  - Query vectors must have the same dimension and be created with the same model as the document vectors.
-  - Already have vectors? Refer to [Bring your own dense vectors](bring-own-vectors.md).
+- Your data must be vectorized. You can:
+  - Use [`semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) to have Elastic generate embeddings automatically.
+  - Use the [Elastic Inference Service](/explore-analyze/elastic-inference/elastic-inference-service.md) for managed inference.
+  - [Deploy an NLP model](/explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md) on an ML node.
+  - Generate vectors outside of your Elastic deployment. Learn how to [Bring your own dense vectors](bring-own-vectors.md).
+
+:::{tip}
+Query vectors must have the same dimension and be created with the same model as the document vectors.
+:::
 
 - Required [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices):
   - `create_index` or `manage` to create an index with a `dense_vector` field
@@ -48,29 +55,123 @@ If you're using {{serverless-full}}, [compare {{es}} and Vector Database project
 
 ## kNN search methods [knn-methods]
 
-{{es}} provides several ways to perform kNN search. Which one you use depends on your field type and whether you need to combine kNN with other queries.
+{{es}} provides two ways to perform kNN search. Select a method based on your dataset size, latency requirements, and whether you need exact scoring.
 
-- **Approximate kNN**
-  - Best for most production workloads where low latency and scale matter more than perfect recall.
-  - Uses graph-based or clustered index structures to find similar vectors quickly without scoring every document in the index.
-  - Refer to [Approximate kNN search](knn/approximate-knn.md) for mapping, indexing, and search examples.
+[**Approximate kNN**](knn/approximate-knn.md) is best for most production workloads where low latency and scale matter more than perfect recall. It narrows the search to likely matches instead of scoring every document, reducing latency on large datasets.
 
-- **Exact, brute-force kNN**
-  - Best for small datasets, pre-filtered subsets, or when you need precise scoring without approximate indexing.
-  - Scores every matching document to find the nearest neighbors across the complete set of matches, rather than selecting from an approximate candidate set.
-  - Supports two query methods:
-    - The [`dense_vector` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-dense-vector-query.md) for standard exact vector scoring.
-    - The [`script_score` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) when you need a custom scoring calculation.
-  - Refer to [Exact kNN search](knn/exact-knn.md) for search examples.
+[**Exact, brute-force kNN**](knn/exact-knn.md) is best for small datasets, pre-filtered subsets, or when you need precise scoring without approximate indexing. It scores every matching document, which guarantees accurate results but does not scale well for large datasets. You can improve latency by filtering your data to a small subset of documents.
 
-Approximate kNN offers low latency and good accuracy, while exact kNN guarantees accurate results but does not scale well for large datasets. With exact kNN, every matching document must be scanned to compute the vector function, which can result in slow search speeds. However, you can improve latency by filtering your data to a small subset of documents.
+## kNN search examples [knn-search-examples]
 
-## Resources
+Every kNN search needs a query vector. You can provide it directly or have {{es}} generate or retrieve it at search time with `query_vector_builder`. The exact `dense_vector` query and the approximate kNN methods support query vector builders.
+
+For examples that provide a query vector directly, refer to:
+
+- [Approximate kNN search](knn/approximate-knn.md#approximate-knn-example)
+- [Exact kNN with the `dense_vector` query](knn/exact-knn.md#exact-knn-dense-vector-query)
+- [Exact kNN with a `script_score` query](knn/exact-knn.md#exact-knn-script-score-query)
+
+### Generate or retrieve a query vector at search time [knn-build-query-vector]
+
+The following examples use `query_vector_builder` with the top-level `knn` option. You can use the same builders with the exact `dense_vector` query. For all available builders and their parameters, refer to [Query vector builders](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#query-vector-builders-overview).
+
+#### Use the `text_embedding` query vector builder [knn-semantic-search]
+
+Use the `text_embedding` query vector builder to generate a query vector from text. Specify the same model that generated the document vectors.
+
+Reference the deployed model or its deployment in the `query_vector_builder` object, and pass the search string as `model_text`:
+
+```console
+POST my-index/_search
+{
+  "knn": {
+    "field": "dense-vector-field",
+    "k": 10,
+    "num_candidates": 100,
+    "query_vector_builder": {
+      "text_embedding": {
+        "model_id": "my-text-embedding-model", <1>
+        "model_text": "The opposite of blue" <2>
+      }
+    }
+  }
+}
+```
+
+1. The ID of the text embedding model that generates the query vector. Use the same model that produced the document embeddings in the target index. You can also provide a `deployment_id` as the `model_id` value.
+2. The query string from which the model generates the dense vector representation.
+
+For a walkthrough that covers deploying a model, generating document embeddings, and querying them, refer to this [end-to-end example](../../../explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md).
+
+#### Use the `lookup` query vector builder [knn-lookup-similar-documents]
+```{applies_to}
+stack: ga 9.4
+```
+
+Use the [`lookup` query vector builder](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#knn-query-builder-lookup) when the vector you want to search with is already stored in a document. This is the pattern behind "more like this" and recommendation features: instead of embedding new input, you take the vector from an item the user is viewing and find its nearest neighbors.
+
+The following request finds the images most similar to document `2`:
+
+```console
+POST image-index/_search
+{
+  "knn": {
+    "field": "image-vector",
+    "k": 10,
+    "query_vector_builder": {
+      "lookup": {
+        "index": "image-index", <1>
+        "id": "2", <2>
+        "path": "image-vector" <3>
+      }
+    }
+  }
+}
+```
+
+1. The index that holds the document to look up. It doesn't have to be the index you're searching.
+2. The ID of the document to look up. The request fails with a `404` if the document doesn't exist or has no value for `path`.
+3. The vector field to read the query vector from. Its dimensions must match the field you're searching.
+
+{{es}} reads the vector from the indexed field rather than from `_source`, so the lookup works even when vector values are excluded from `_source`.
+
+The looked-up document is its own nearest neighbor, so it comes back as the top hit. Exclude it with a filter when you only want other documents:
+
+```console
+POST image-index/_search
+{
+  "knn": {
+    "field": "image-vector",
+    "k": 10,
+    "query_vector_builder": {
+      "lookup": {
+        "index": "image-index",
+        "id": "2",
+        "path": "image-vector"
+      }
+    },
+    "filter": {
+      "bool": {
+        "must_not": {
+          "ids": {
+            "values": ["2"]
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Find more examples by method
+
+For approximate kNN filtering, similarity thresholds, hybrid search, multiple vector fields, and aggregations, refer to [Examples of using approximate kNN in search queries](knn/approximate-knn-query-examples.md).
+
+For exact kNN filtering and scoring examples, refer to [Exact kNN search](knn/exact-knn.md).
+
+## Next steps
+
+Continue with the guide for the kNN search method that fits your use case:
 
 - [Approximate kNN search](knn/approximate-knn.md): Learn how to map, index, and query `dense_vector` fields for fast, scalable approximate kNN search.
-- [Examples of using approximate kNN in search queries](knn/build-search-queries.md): See examples of using approximate kNN for filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds.
-- [Nested kNN search](knn/nested-knn-search.md): Learn how to run approximate kNN search on nested vectors for passage retrieval, filtering, inner hits, and chunked content.
-- [Optimize performance and accuracy](knn/optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
 - [Exact kNN search](knn/exact-knn.md): Learn how to run exact brute-force kNN search for small datasets or precise scoring.
-- [Vector search in {{es}}](../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
-- [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.

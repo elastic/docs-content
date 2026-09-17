@@ -148,10 +148,7 @@ Refer to [Index modes for vector search](elasticsearch://reference/elasticsearch
 
 ## Resources
 
-- [kNN search on {{es}}](../knn.md): Explore common use cases, prerequisites for kNN search, and a comparison of approximate and exact kNN methods.
-- [Examples of using approximate kNN in search queries](build-search-queries.md): See examples of using approximate kNN for filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds.
-- [Nested kNN search](nested-knn-search.md): Learn how to run approximate kNN search on nested vectors for passage retrieval, filtering, inner hits, and chunked content.
-- [Optimize performance and accuracy](optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
 - [Tune approximate kNN search](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md): Production guidance for vector memory, node sizing, indexing, filesystem cache, and on-disk rescoring.
+- [Profile kNN search](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md#profiling-knn-search): Inspect query timing and vector operation counts to diagnose slow kNN searches.
 - [`dense_vector` field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md): API reference for vector field mapping, including `index`, `similarity`, `index_options`, and quantization parameters.
 - [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.

@@ -10,7 +10,12 @@ applies_to:
 
 Exact kNN search computes similarity between the query vector and every matching document, so results are fully accurate but latency increases with corpus size. Use it for small datasets, pre-filtered subsets, or when you need precise scoring without approximate indexing. For most production workloads, prefer [Approximate kNN search](approximate-knn.md).
 
-{{es}} supports the [`dense_vector` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-dense-vector-query.md) and the [`script_score` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) for exact kNN search. The following sections explain when and how to use each method.
+{{es}} supports two query methods for exact kNN search:
+
+- Use the [`dense_vector` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-dense-vector-query.md) for standard exact vector scoring. See an [example](#exact-knn-dense-vector-query).
+- Use the [`script_score` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) when you need a custom scoring calculation. See an [example](#exact-knn-script-score-query).
+
+## Map and index vectors
 
 First, map and index the vectors that you want to search:
 
@@ -47,7 +52,7 @@ First, map and index the vectors that you want to search:
     ...
     ```
 
-## Run an exact kNN search with the `dense_vector` query
+## Run an exact kNN search with the `dense_vector` query [exact-knn-dense-vector-query]
 ```{applies_to}
 stack: ga 9.6
 serverless: ga
@@ -80,7 +85,7 @@ POST product-index/_search
 
 Because `product-vector` uses the default `float` element type and is not indexed, the query uses cosine similarity by default. You can use the `similarity_function` parameter to select a different similarity function. For indexed fields, the query uses the similarity configured in the field mapping by default.
 
-## Run an exact kNN search with a `script_score` query
+## Run an exact kNN search with a `script_score` query [exact-knn-script-score-query]
 
 Use a `script_score` query if the `dense_vector` query isn't available in your {{stack}} version. You can also use `script_score` when you need to customize the scoring calculation.
 
@@ -117,13 +122,7 @@ The `dense_vector` and `script_score` examples can rank documents in the same or
 
 ## Resources
 
-- [Approximate kNN search](approximate-knn.md): Learn how to map, index, and query `dense_vector` fields for fast, scalable approximate kNN search.
-- [Examples of using approximate kNN in search queries](build-search-queries.md): See examples of using approximate kNN for filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds.
-- [Nested kNN search](nested-knn-search.md): Learn how to run approximate kNN search on nested vectors for passage retrieval, filtering, inner hits, and chunked content.
-- [Optimize performance and accuracy](optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
-- [kNN search on {{es}}](../knn.md): Explore common use cases, prerequisites for kNN search, and a comparison of approximate and exact kNN methods.
-- [Bring your own dense vectors](../bring-own-vectors.md): Follow a hands-on tutorial for ingesting dense vector embeddings and searching them in {{es}}.
-- [Vector search in {{es}}](../../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
-- [`dense_vector` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-dense-vector-query.md): API reference for exact vector scoring, filtering, similarity functions, and quantized scoring.
-- [`script_score` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md): API reference for exact kNN search, including supported vector functions and scoring options.
+- [Tune approximate kNN search](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md): Production guidance for vector memory, node sizing, indexing, filesystem cache, and on-disk rescoring.
+- [Profile kNN search](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md#profiling-knn-search): Inspect query timing and vector operation counts to diagnose slow kNN searches.
 - [`dense_vector` field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md): API reference for vector field mapping, including `index`, `similarity`, `index_options`, and quantization parameters.
+- [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.
