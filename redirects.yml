@@ -888,7 +888,7 @@ redirects:
   'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-tags.md':
     to: 'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-artifacts.md'
     anchors:
-      'tags-investigation': 'rule-artifacts'
+      'tags-investigation':
 
 # Related to cases and alerting documentation restructuring
   # Main pages
