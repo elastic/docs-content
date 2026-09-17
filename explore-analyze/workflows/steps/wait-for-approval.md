@@ -28,6 +28,7 @@ For free-form or multi-field input, use [`waitForInput`](/explore-analyze/workfl
 |---|---|---|---|---|
 | `name` | top level | string | Yes | Unique step identifier. |
 | `type` | top level | string | Yes | Must be `waitForApproval`. |
+| `if` | top level | string | No | KQL condition that determines whether the step runs. When it's false, the workflow continues without requesting approval. Refer to [Step-level `if`](/explore-analyze/workflows/steps/if.md#workflows-step-level-if). |
 | `timeout` | top level | duration | No | How long the step waits for a decision. Format: number + unit (`ms`/`s`/`m`/`h`/`d`/`w`). Defaults to `24h`. If no one responds before the timeout, the step fails. |
 | `message` | `with` | string | No | Markdown message displayed to approvers. |
 | `approveLabel` | `with` | string | No | Label for the approve action. Defaults to `Approve`. |

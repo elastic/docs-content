@@ -28,6 +28,7 @@ For the end-to-end pattern, including external Slack delivery and design guidanc
 |---|---|---|---|---|
 | `name` | top level | string | Yes | Unique step identifier. |
 | `type` | top level | string | Yes | Must be `waitForInput`. |
+| `if` | top level | string | No | KQL condition that determines whether the step runs. When it's false, the workflow continues without pausing for input. Refer to [Step-level `if`](/explore-analyze/workflows/steps/if.md#workflows-step-level-if). |
 | `timeout` {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | top level | duration | No | How long the step waits for input. Format: number + unit (`ms`/`s`/`m`/`h`/`d`/`w`). Defaults to `72h`. If no one responds before the timeout, the step fails. |
 | `message` | `with` | string | No | Markdown message displayed to the responder. |
 | `schema` | `with` | object | No | JSON Schema that describes the expected input. Renders as a form in the Kibana UI, and validates the resume payload. If you omit `schema`, the resume accepts any payload. |
