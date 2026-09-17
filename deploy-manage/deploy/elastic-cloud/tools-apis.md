@@ -77,7 +77,7 @@ The following APIs are available for {{ech}} users:
 :::{include} /deploy-manage/deploy/_snippets/other-apis.md
 :::
 
-## Manage Elastic APIs with the Elastic CLI
+## Elastic CLI
 ```{applies_to}
 deployment:
   ech: preview

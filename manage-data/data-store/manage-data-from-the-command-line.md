@@ -14,16 +14,13 @@ products:
 
 Learn how to index, update, retrieve, search, and delete documents in an {{es}} cluster using APIs.
 
+{applies_to}`stack: preview` {applies_to}`serverless: preview` The examples on this page use `curl`, but you can also use the [Elastic CLI](cli://index.md), which provides a command-line interface for {{es}} and {{kib}} APIs.
+
 ::::{tip}
 If you are looking for a user interface for {{es}} and your data, head on over to [Kibana](/get-started/the-stack.md)! Not only are there amazing visualization and index management tools, Kibana includes realistic sample data sets to play with so that you can get to know what you *could* do with your data.
 ::::
 
 ## Before you begin [before-you-begin]
-
-:::{tip}
-:applies_to: { stack: preview, serverless: preview }
-For a command-line workflow that reuses connection and authentication settings, use the [Elastic CLI](cli://index.md) to run supported {{es}} API operations. The CLI supports the indexing, bulk, retrieval, search, update, and delete operations in this guide.
-:::
 
 On the **Overview** page for your new cluster in the Cloud UI, copy the {{es}} endpoint URL under **Endpoints**.
 

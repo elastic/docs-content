@@ -41,6 +41,14 @@ Leverage the power of the cloud with Elastic Cloud solutions. Explore Elastic Cl
 
 **Learn more in [Cloud](cloud://reference/index.md)**
 
+## Elastic CLI
+```{applies_to}
+stack: preview
+serverless: preview
+```
+
+Use the [Elastic CLI](cli://index.md) to interact with {{es}}, {{kib}}, and {{ecloud}} APIs from a single command-line interface. Refer to the [Elastic CLI command reference](cli://cli/index.md) for available commands and options.
+
 ## Elastic Security
 
 Access detailed reference documentation on field and object schemas as well as the different commands used to manage and troubleshoot Elastic Endpoint.
