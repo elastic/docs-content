@@ -15,7 +15,7 @@ description: Filter documents in Kibana with KQL. Match fields, ranges, wildcard
 The {{kib}} Query Language (KQL) is a text-based query language for filtering data.
 
 * KQL only filters data. It does not aggregate, transform, or sort data.
-* Do not confuse KQL with the [Lucene query language](lucene-query-syntax.md). Lucene has a different feature set.
+* KQL is different from the [Lucene query language](lucene-query-syntax.md). Lucene has a different feature set.
 
 Use KQL to filter documents by field existence, value, or range.
 
