@@ -34,14 +34,14 @@ To use Automatic Import, you must provide a sample of the data you want to impor
 
 {applies_to}`stack: removed 9.4` For API-based collection, Automatic Import can generate a program in **Common Expression Language (CEL)**. For background, refer to the [CEL specification](https://github.com/google/cel-spec){:target="_blank"} and the [CEL input in {{filebeat}}](beats://reference/filebeat/filebeat-input-cel.md).
 
-* You can upload a sample of any size. The LLM detects its format and selects up to 1000 documents for detailed analysis.
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` To generate a CEL program, developers can use the [Elastic integration skills](https://github.com/elastic/integration-skills), a set of workflows that build integration packages with an AI coding agent.
 
-  :::{note}
-  :applies_to: stack: ga 9.0-9.3
-  The LLM selects up to 100 documents for detailed analysis, not 1000.
-  :::
+* You can upload a sample file of any size, but Automatic Import analyzes only part of it. The LLM detects the sample's format, and Automatic Import works through the file from the beginning:
 
-* The more variety in your sample, the more accurate the pipeline is. For best results, include a wide range of unique log entries in your sample instead of repeating similar logs.
+  * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` It sends the first 1,000 documents, up to a total of 10 MB, and skips any single document longer than 100,000 characters. Whenever it omits documents, a **Sample log limits applied** warning reports the number sent and the number omitted.
+  * {applies_to}`stack: ga 9.0-9.3` It sends the first 100 documents.
+
+* The more variety in your sample, the more accurate the pipeline is. For best results, include a wide range of unique log entries in your sample instead of repeating similar logs. Because Automatic Import analyzes only the beginning of a large file, a smaller curated file often produces a better integration than a large raw one.
 * When you upload a CSV, a header with column names is automatically recognized. If the header is not present, the LLM attempts to create descriptive field names based on field formats and values.
 * For JSON and NDJSON samples, each object in your sample should represent an event. Avoid deeply nested object structures.
 * {applies_to}`stack: removed 9.4` When you select **`API (CEL input)`** as one of the sources, you’re prompted to provide the associated OpenAPI specification (OAS) file to generate a CEL program that consumes this API.
@@ -96,7 +96,7 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
    - File Stream
    - AWS S3
    - AWS Cloudwatch
-   - Azure Blog Storage
+   - Azure Blob Storage
    - Azure Event Hub
    - GCP Pub/Sub
    - Google Cloud Storage
