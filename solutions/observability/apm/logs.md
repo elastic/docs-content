@@ -1,4 +1,5 @@
 ---
+description: Use Elastic Application Performance Monitoring (APM) logs to investigate services, group similar events into patterns, and search custom indices.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-logs.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-logs.html
@@ -13,39 +14,32 @@ products:
 
 # Logs [apm-logs]
 
-The **Logs** tab shows contextual logs for the selected service.
-
-Logs provide detailed information about specific events, and are crucial to successfully debugging slow or erroneous transactions.
-
-If you’ve correlated your application’s logs and traces, you never have to search for relevant data; it’s already available to you. Viewing log and trace data together allows you to quickly diagnose and solve problems.
-
-To learn how to correlate your logs with your instrumented services, refer to [Stream application logs](/solutions/observability/logs/stream-application-logs.md).
+The **Logs** tab in Elastic Application Performance Monitoring (APM) shows application and container log events for a service so you can troubleshoot slow or failed transactions. Select a service, then select **Logs**. The tab applies the selected environment, query, and time range.
 
 :::{image} /solutions/images/observability-logs.png
-:alt: Example view of the Logs tab in Applications UI
+:alt: Logs tab showing log events for a service
 :screenshot:
 :::
 
-::::{tip}
-Logs displayed on this page are filtered on `service.name`
-::::
+## View log events
 
-### View enhanced logs [apm-enhanced-logs]
+The tab opens with **Log Events**, which lists individual events.
+
+## Group logs by pattern [apm-enhanced-logs]
 ```{applies_to}
-stack: preview 9.0
+stack: preview 9.0+
+serverless: preview
 ```
 
-For an enhanced logs view with additional information including the log pattern, the number of events for each log, change type, and the time the change occurred, turn on the `observability:newLogsOverview` [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings).
+Select **Log Events**, then select **Log Patterns** to group similar messages. Each pattern shows its event count, change type, and change time.
 
-## Integrate with logging frameworks [apm-logs-correlation]
-```{applies_to}
-stack: all
-```
+The [`observability:newLogsOverview`](kibana://reference/advanced-settings.md#observability-new-logs-overview) advanced setting controls log pattern grouping:
 
-Elastic APM integrates with popular logging frameworks, making it easy to correlate your logs and traces. This enables you to:
+* {applies_to}`stack: preview 9.0-9.1` The setting is off by default. Turn it on to use **Log Patterns**.
+* {applies_to}`{"stack": "preview 9.2+", "serverless": "preview"}` The setting is on by default. Turn it off to hide **Log Patterns**.
 
-* View the context of a log and the parameters provided by a user
-* View all logs belonging to a particular trace
-* Easily move between logs and traces when debugging application issues
+The **Logs** tab searches indices that match the patterns configured in `observability:logSources`. To include custom log indices, see [](/solutions/observability/logs/log-data-sources.md).
 
-See the [Stream application logs](/solutions/observability/logs/stream-application-logs.md) guide to get started.
+## Correlate logs and traces [apm-logs-correlation]
+
+To send application logs and correlate them with traces, refer to [](/solutions/observability/logs/stream-application-logs.md).
