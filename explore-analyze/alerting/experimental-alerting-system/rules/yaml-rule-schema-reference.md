@@ -109,13 +109,66 @@ No-data detection is only supported with `query.format: standalone`. Setting `no
 
 ## Artifact fields
 
-Artifacts let you attach reference material directly to a rule, such as a runbook. The content is stored with the rule and displayed in the rule detail view so responders have context when an alert fires. All artifact fields are optional.
+Artifacts let you attach reference material directly to a rule, such as a runbook or a linked dashboard. The artifact is stored with the rule and displayed on the rule details page so responders have context when an alert fires.
+
+The `artifacts` array is optional and accepts up to 100 entries. Each entry needs an `id` and a `type`, plus the content field described in the following sections.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
 | `artifacts[].id` | string | Any string | Artifact identifier. Required. Max 256 characters. |
-| `artifacts[].type` | string | Any string | The type of artifact being attached. For example: `runbook`. |
-| `artifacts[].value` | string | Any string | The content of the artifact. Accepts markdown. Runbooks are rendered as markdown in the rule detail view. |
+| `artifacts[].type` | string | Any string | The type of artifact being attached. Built-in types are `runbook` and `dashboard`. Max 128 characters. |
+
+The field that carries the artifact's content differs by version.
+
+::::{applies-switch}
+
+:::{applies-item} stack: experimental =9.5
+
+| Field | Type | Accepted values | Description |
+|---|---|---|---|
+| `artifacts[].value` | string | Any string | The content of the artifact. Required. For `runbook`, markdown rendered on the rule details page, max 50,000 characters. For `dashboard`, the saved object ID of the dashboard, max 1,024 characters. Other types default to a 1,024-character limit. |
+
+```yaml
+artifacts:
+  - id: checkout-runbook
+    type: runbook
+    value: |
+      Fires when checkout error rate exceeds 10%.
+  - id: checkout-errors-dashboard
+    type: dashboard
+    value: "8ac12f90-3d2b-11ef-9a4e-0242ac120002"
+```
+
+:::
+
+:::{applies-item} { stack: experimental 9.6+, serverless: experimental }
+
+`artifacts[].value` no longer exists. Use `artifacts[].data`, an object whose shape depends on the artifact type. Rules saved with `value` are converted to `data` when {{kib}} reads them, but YAML you write must use `data`.
+
+| Field | Type | Accepted values | Description |
+|---|---|---|---|
+| `artifacts[].data` | object | Type-specific object | The content of the artifact. Required. Max 32 fields. |
+| `artifacts[].data.content` | string | Any non-blank string | For `runbook` artifacts. Markdown rendered on the rule details page. Required, max 50,000 characters. |
+| `artifacts[].data.dashboard_id` | string | Any non-blank string | For `dashboard` artifacts. The saved object ID of the dashboard to link. Required, max 1,024 characters. |
+
+Built-in types reject fields other than the ones listed here. Types that aren't registered, such as a type defined by a solution, are stored as provided.
+
+```yaml
+artifacts:
+  - id: checkout-runbook
+    type: runbook
+    data:
+      content: |
+        Fires when checkout error rate exceeds 10%.
+  - id: checkout-errors-dashboard
+    type: dashboard
+    data:
+      dashboard_id: "8ac12f90-3d2b-11ef-9a4e-0242ac120002"
+```
+
+:::
+
+::::
 
 ## Duration format [duration-format]
 
