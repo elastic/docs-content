@@ -37,7 +37,7 @@ Use the sandbox to:
 - **Catch unexpected output** - Verify that the query returns data in the right shape for the alert condition you plan to set. A query that returns zero rows or an unexpected field name won't behave as expected once the rule runs on a schedule.
 - **Refine before committing** - Edit the query and re-run it as many times as needed without leaving the rule creation form.
 
-While the sandbox is open, switching between rule form and YAML or between rule modes (Alert and Signal) is not available. Close the sandbox first if you need to change authoring mode.
+While the sandbox is open, switching between rule form and YAML isn't available. Close the sandbox first if you need to change authoring mode.
 
 ### Control how your query splits [sandbox-split-editor]
 
