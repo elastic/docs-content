@@ -136,7 +136,7 @@ url: *elastic*
 
 Queries that start with `*` can slow searches.
 
-{applies_to}`stack: ga` {applies_to}`serverless: unavailable` To avoid that, turn leading wildcards off with the [`query:allowLeadingWildcards`](kibana://reference/advanced-settings.md#query-allowleadingwildcards) advanced setting.
+{applies_to}`serverless: unavailable` To avoid that, turn leading wildcards off with the [`query:allowLeadingWildcards`](kibana://reference/advanced-settings.md#query-allowleadingwildcards) advanced setting.
 
 ## Negating a query [_negating_a_query]
 
