@@ -23,7 +23,8 @@ Your role needs these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or
 | Available in | Privileges |
 |---|---|
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | `All` for **Attack discovery**, and at least `Read` for **Rules and Exceptions** and **Alerts** |
-| {applies_to}`stack: ga 9.1-9.3` | `All` for **Security > Attack discovery**, and at least `Read` for **Security > Rules, Alerts, and Exceptions** |
+| {applies_to}`stack: ga =9.3` | `All` for **Security > Attack discovery**, and at least `Read` for **Security > Rules, Alerts, and Exceptions** |
+| {applies_to}`stack: ga 9.1-9.2` | `All` for **Security > Attack discovery**, and at least `Read` for **Security** |
 | {applies_to}`stack: ga =9.0` | `All` for **Security > Attack discovery** |
 
 For details on Attack discovery sub-feature privileges, refer to [Attack discovery sub-feature privileges](/solutions/security/get-started/security-kibana-privileges.md#attack-discovery-sub-feature-privileges).
