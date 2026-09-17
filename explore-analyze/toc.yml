@@ -451,6 +451,7 @@ toc:
                   - file: alerting/experimental-alerting-system/rules/configure-rule-tags.md
               - file: alerting/experimental-alerting-system/rules/view-manage-rules.md
               - file: alerting/experimental-alerting-system/rules/review-rule-execution-history.md
+              - file: alerting/experimental-alerting-system/rules/review-rule-change-history.md
               - file: alerting/experimental-alerting-system/rules/esql-query-patterns.md
                 children:
                   - file: alerting/experimental-alerting-system/rules/esql-first-rule-query.md
