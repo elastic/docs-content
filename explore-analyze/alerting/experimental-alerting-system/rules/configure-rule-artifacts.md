@@ -13,7 +13,7 @@ description: "Add tags, runbooks, and related dashboards to rules in the experim
 Tags, runbooks, and related dashboards are optional artifacts you attach to a rule. They don't change how the rule evaluates. They give responders context when they investigate.
 
 - **Tags**: Free-form labels for filtering and organization. A rule can have up to 20 tags, each up to 128 characters. Tags apply only to rules that group matches into an alert episode.
-- **Runbooks**: An investigation guide stored with the rule so responders have context when alerts are generated. Runbooks apply only to rules that group matches into an alert episode.
+- **Runbooks**: An investigation guide stored with the rule so responders have context when the rule generates alerts. Runbooks apply only to rules that group matches into an alert episode.
 - **Dashboards**: {{kib}} dashboards linked to the rule so responders can open investigation views from the rule details page. You can link dashboards to rules that group matches into an alert episode, and to rules that record matches without grouping them.
 
 Whether a rule groups matches into an alert episode depends on the mode you set when you create it. Refer to [Rule mode](configure-rule-mode.md).
@@ -22,8 +22,8 @@ Whether a rule groups matches into an alert episode depends on the mode you set 
 
 Configure tags when:
 
-* You want to filter alert episodes by team, environment, or severity tier on the **Alerts** page (find **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**) without writing a custom KQL query each time.
-* You are using action policies and want to match alert episodes by ownership or category rather than by rule name. Tags are inherited by alert episodes, so any tag you add to a rule is available as a KQL matcher in action policies.
+* You want to filter alert episodes by team, environment, or severity tier on the **Alerts** page (find **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**) without writing a custom {{kib}} Query Language (KQL) query each time.
+* You are using action policies and want to match alert episodes by ownership or category rather than by rule name. Alert episodes inherit tags, so any tag you add to a rule is available as a KQL matcher in action policies.
 * You manage many rules and need a consistent labeling scheme to track which team owns which alerts.
 
 Configure a runbook when:
@@ -51,13 +51,13 @@ Both are stored with the rule, so they take effect only after you save the rule.
 
 Link a dashboard when responders should open the same investigation view every time the rule fires. For a checkout latency rule, that might be the dashboard showing error rates and deployment history for the checkout service.
 
-For a dashboard you want responders to open from the rule, link it as a dashboard artifact rather than pasting its URL into the runbook. Linked dashboards are listed on the rule details page with their current titles, and open in a new tab.
+For a dashboard you want responders to open from the rule, link it as a dashboard artifact rather than pasting its URL into the runbook. The rule details page lists linked dashboards with their current titles. Each dashboard opens in a new tab.
 
 Skip linked dashboards when no dashboard covers the condition the rule detects, or when dashboards aren't available in your environment.
 
 ## Link dashboards to a rule [attach-dashboards]
 
-To link dashboards, your role needs **Rules: All** (under **Alerting**). Refer to [Configure access](../get-started/configure-access.md#alerting-manage-rules-privileges). Linked dashboards appear in the **Artifacts** section of the rule details page, under **Dashboards**.
+To link dashboards, your role needs **Rules: All** (under **Alerting**). Refer to [Configure access](../get-started/configure-access.md#alerting-manage-rules-privileges). Linked dashboards appear in the **Dashboards** subsection of the **Artifacts** section on the rule details page.
 
 ::::{applies-switch}
 
@@ -65,11 +65,9 @@ To link dashboards, your role needs **Rules: All** (under **Alerting**). Refer t
 
 1. Find **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), go to **Rules**, then select the rule.
 2. On the **Overview** tab, expand **Artifacts**.
-3. Under **Dashboards**, select **Manage linked dashboards**. The rule edit flyout opens.
+3. In the **Dashboards** section, select **Manage linked dashboards**. The rule edit flyout opens.
 4. In **Related dashboards**, search for a dashboard and select it.
 5. Save the rule.
-
-When a rule has no linked dashboards, the **Dashboards** section shows **No dashboards linked**.
 
 :::
 
@@ -77,27 +75,27 @@ When a rule has no linked dashboards, the **Dashboards** section shows **No dash
 
 1. Find **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), go to **Rules**, then select the rule.
 2. On the **Overview** tab, expand **Artifacts**.
-3. Under **Dashboards**, select **Attach related dashboards**.
-4. Search for a dashboard. Results are grouped under **Attached** and **Other dashboards**.
+3. In the **Dashboards** section, select **Attach related dashboards**.
+4. Search for a dashboard. Results are grouped into **Attached** and **Other dashboards**.
 5. Select the dashboards to link, then select **Save**.
 
 Selecting **Save** updates the rule right away. You don't need to save the rule separately.
 
-When a rule has no linked dashboards, the **Dashboards** section shows **No dashboards linked**.
-
-You can also link dashboards while you create or edit a rule, using the optional **Related dashboards** field.
+You can also link dashboards while you create or edit a rule, with the optional **Related dashboards** field.
 
 :::
 
 ::::
 
+When a rule has no linked dashboards, the **Dashboards** section shows **No dashboards linked**.
+
 To remove a link, select the remove icon next to the dashboard, then select **Remove** to confirm. Removing a link updates the rule right away. This removes the link only. The dashboard itself is unaffected.
 
 ## Handle deleted or unavailable dashboards [deleted-dashboards]
 
-If a linked dashboard is deleted, or you don't have access to it, the rule keeps the link instead of dropping it silently. The **Dashboards** section shows a **Dashboard deleted** or **Dashboard unavailable** badge with the dashboard's ID, and saving the rule preserves the link.
+If a linked dashboard is deleted or you don't have access to it, the rule keeps the link rather than removing it without notice. The **Dashboards** section shows a **Dashboard deleted** or **Dashboard unavailable** badge with the dashboard's ID. The link survives when you save the rule.
 
-Keep the link if the dashboard might be restored or if access might be granted. Otherwise, remove it so responders aren't sent to a dashboard they can't open.
+Keep the link if someone might restore the dashboard or grant you access. Otherwise, remove it so you don't send responders to a dashboard they can't open.
 
 ## Examples
 
@@ -113,9 +111,9 @@ On-call engineers can then narrow the **Alerts** page to rules their team owns w
 
 ### Add a runbook with triage steps
 
-A runbook gives responders immediate context when an alert fires. Write it as markdown so it renders correctly in the rule detail view. Include enough detail that an engineer unfamiliar with the service can triage without asking for help.
+A runbook gives responders immediate context when an alert fires. Write it as Markdown so it renders correctly on the rule details page. Include enough detail that an engineer unfamiliar with the service can triage without asking for help.
 
-```
+```markdown
 Fires when checkout error rate exceeds 10% for 3 consecutive evaluations.
 
 Triage steps:
