@@ -1,16 +1,16 @@
 ---
-navigation_title: Alert delay (Alert mode only)
+navigation_title: Alert delay (alert episodes only)
 applies_to:
   stack: experimental 9.5+
   serverless: experimental
 products:
   - id: kibana
-description: "Configure alert delay for Alert-mode rules in the experimental alerting system to reduce noise from brief spikes before opening an episode."
+description: "Configure alert delay for rules that group matches into an alert episode, to reduce noise from brief spikes before the alert episode opens."
 ---
 
-# Alert delay in the {{alerting-v2-system}} (Alert mode only) [alert-delay]
+# Alert delay in the {{alerting-v2-system}} [alert-delay]
 
-Alert delay is an optional setting for Alert-mode rules in the {{alerting-v2-system}}. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change. In YAML, this corresponds to the `state_transition.pending_*` fields.
+Alert delay is an optional setting for rules that group matches into an alert episode. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change. In YAML, this corresponds to the `state_transition.pending_*` fields.
 
 ## When to configure alert delay [alert-delay-when-to-use]
 
@@ -19,10 +19,10 @@ Configure alert delay when:
 * The metric being monitored fluctuates and a single breach doesn't reflect a real state change. Examples include CPU usage that briefly spikes during process startup or a connection pool that crosses the threshold on alternating evaluations.
 * The cost or urgency of a notification is high enough that you need confidence the condition is sustained before alerting on it.
 
-Leave alert delay set to Immediate when:
+Leave alert delay set to **Immediate** when:
 
 * Any single breach warrants immediate attention and you cannot tolerate the added latency of waiting for consecutive evaluations.
-* The rule is in Signal mode. Alert delay only applies to Alert-mode rules and has no effect on signal document output.
+* The rule records matches without grouping them into an alert episode.
 
 ## Alert delay modes
 
@@ -46,17 +46,17 @@ In the YAML rule schema, these fields are prefixed with `state_transition.`. For
 | `pending_timeframe` | duration | Any duration string | How long the condition must remain breached before the alert episode opens. Appears as **Active for** in Duration mode. |
 | `pending_operator` | string | `AND` or `OR` | When both `pending_count` and `pending_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
 
-You can combine Breaches and Duration by setting both `pending_count` and `pending_timeframe`. Use `pending_operator: AND` to require both conditions before the episode opens, or `pending_operator: OR` if either condition alone is enough.
+You can combine Breaches and Duration by setting both `pending_count` and `pending_timeframe`. Use `pending_operator: AND` to require both conditions before the alert episode opens, or `pending_operator: OR` if either condition alone is enough.
 
 :::{note}
-Looking for the equivalent delay before an episode closes? Refer to [Recovery condition](configure-rule-recovery.md#recovery-delay).
+Looking for the equivalent delay before an alert episode closes? Refer to [Recovery condition](configure-rule-recovery.md#recovery-delay).
 :::
 
 ## Examples
 
 ### Ignore brief CPU spikes
 
-Create a rule that monitors CPU usage and runs every minute. A single high reading is often a process starting up. Set `pending_count` to `3` so the rule requires 3 consecutive breaches before opening an episode, meaning the condition has been true for at least 3 minutes. This filters out noise without losing real signals.
+Create a rule that monitors CPU usage and runs every minute. A single high reading is often a process starting up. Set `pending_count` to `3` so the rule requires 3 consecutive breaches before opening an alert episode, meaning the condition has been true for at least 3 minutes. This filters out noise without losing real signals.
 
 ### Require sustained breach before escalating
 
@@ -65,4 +65,4 @@ Create a rule that monitors a payment error rate. Brief spikes happen during dep
 ## Related pages
 
 - [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
-- [Recovery condition](configure-rule-recovery.md#recovery-delay): The equivalent delay before an episode closes.
+- [Recovery condition](configure-rule-recovery.md#recovery-delay): The equivalent delay before an alert episode closes.
