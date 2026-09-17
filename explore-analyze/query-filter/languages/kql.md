@@ -155,7 +155,7 @@ To combine queries, use `and` or `or` (not case-sensitive). For example, GET req
 http.request.method: GET OR http.response.status_code: 400
 ```
 
-To require both conditions, use `and`:
+To require both conditions, use `AND`:
 
 ```yaml
 http.request.method: GET AND http.response.status_code: 400
