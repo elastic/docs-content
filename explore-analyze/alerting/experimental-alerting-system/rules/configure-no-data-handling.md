@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How to configure the no-data strategy for rules in the experimental alerting system: hold the last known alert state, trigger recovery, or ignore an empty query result."
+description: "How to configure the no-data strategy for rules in the experimental alerting system: hold the last known alert state, resolve the alert episode, or ignore an empty query result."
 ---
 
 # No-data handling in the {{alerting-v2-system}} [no-data-handling]
@@ -29,9 +29,14 @@ Choose one of the following options. Each maps to a `no_data_strategy` value if 
 
 | Option | `no_data_strategy` value | Description |
 | --- | --- | --- |
-| Keep last status | `last_known_status` | Hold the last known lifecycle state. An active breach stays active and a recovered alert episode stays recovered. |
-| Recover | `recover` | Treat absence as recovery. |
-| Do nothing | `none` | Skip the no-data check. An empty result is treated the same as **Recover**, but the rule doesn't confirm that the data pipeline is actually working. |
+| Keep last known status | `last_known_status` | Hold the last known lifecycle state. An active breach stays active and a recovered alert episode stays recovered. |
+| **Recover immediately** (or **Recover** in earlier versions) | `recover` | Mark the alert episode `inactive` the first time the rule finds no data for it. The alert episode skips the recovering phase, so [recovery delay](configure-rule-recovery.md#recovery-delay) doesn't apply to it. {applies_to}`stack: experimental 9.6+` |
+| Do nothing | `none` | Skip the no-data check. The rule doesn't write a `no_data` event, and it doesn't confirm that the data pipeline is working. |
+
+:::{note}
+:applies_to: stack: experimental =9.5
+With `recover`, the alert episode reaches `inactive` through the recovering phase, so [recovery delay](configure-rule-recovery.md#recovery-delay) applies to it.
+:::
 
 :::{note}
 `no_data_strategy` only triggers when the base query returns **zero rows**. If one host or data source goes quiet but others keep reporting, the query still returns rows for the ones still reporting, so `no_data_strategy` won't trigger. To catch a single silent source in that situation, use the {{esql}} pattern in [No-data detection](esql-no-data-detection.md), which turns a silent source into its own alert row.
@@ -54,11 +59,11 @@ Do not configure `no_data_strategy`, or set it to **Do nothing**, when:
 
 ### Maintain alert state during a metrics collection outage
 
-Create a rule that monitors infrastructure CPU. Configure the no-data strategy as **Keep last status** (`last_known_status`) so that if the metrics collection agent ever stops sending data, an active CPU breach doesn't auto-recover just because the query returned nothing. Instead, the rule holds the alert in its current state until data resumes.
+Create a rule that monitors infrastructure CPU. Configure the no-data strategy as **Keep last known status** (`last_known_status`) so that if the metrics collection agent ever stops sending data, an active CPU breach doesn't auto-recover just because the query returned nothing. Instead, the rule holds the alert in its current state until data resumes.
 
 ### Close the alert episode when a queue empties out
 
-Create a rule that monitors how many jobs are waiting in a queue and opens an alert episode when the backlog gets too large. Configure the no-data strategy as **Recover** (`recover`) so that once the queue is empty and the query has nothing to return, the alert episode closes.
+Create a rule that monitors how many jobs are waiting in a queue and opens an alert episode when the backlog gets too large. Configure the no-data strategy as **Recover immediately** (`recover`) so that once the queue is empty and the query has nothing to return, the alert episode closes on the next run.
 
 ## Related pages
 
