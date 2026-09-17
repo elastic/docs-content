@@ -267,6 +267,8 @@ After you create your private connection, you can check that you're able to reac
 ::::{applies-item} ess: ga
 :::{include} _snippets/private-url-struct.md
 :::
+
+{{ech}} supports ports `443` and `9243` for {{es}} and {{kib}} traffic. Remote cluster traffic for cross-cluster search and cross-cluster replication uses port `9400` with the TLS certificate based security model, or `9443` with the API key based model. Refer to [Connection paths and private connectivity](/deploy-manage/remote-clusters.md#remote-clusters-connection-paths) for the supported combinations.
 ::::
 ::::{applies-item} serverless: ga
 :::{include} _snippets/private-url-struct-serverless.md
@@ -443,6 +445,8 @@ Use the alias you've set up as an A record to access your resource.
 ::::{applies-item} ess: ga
 :::{include} _snippets/private-url-struct.md
 :::
+
+{{ech}} supports ports `443` and `9243` for {{es}} and {{kib}} traffic. Remote cluster traffic for cross-cluster search and cross-cluster replication uses port `9400` with the TLS certificate based security model, or `9443` with the API key based model. Refer to [Connection paths and private connectivity](/deploy-manage/remote-clusters.md#remote-clusters-connection-paths) for the supported combinations.
 ::::
 ::::{applies-item} serverless: ga
 :::{include} _snippets/private-url-struct-serverless.md
