@@ -225,7 +225,7 @@ You can copy the content of a single cell to your clipboard from the quick actio
 $$$document-explorer-expand-documents$$$
 Dive into an individual document to view its fields and the documents that occurred before and after it.
 
-1. In the document table, click the expand icon ![double arrow icon to open a flyout with the document details](/explore-analyze/images/kibana-expand-icon-2.png "") to show document details.
+1. In the document table, select the **View details** icon {icon}`expand` (**Toggle dialog with details** in earlier {{stack}} versions) to show document details.
 
     ![Table view with document expanded](/explore-analyze/images/kibana-document-table-expanded.png "")
 
