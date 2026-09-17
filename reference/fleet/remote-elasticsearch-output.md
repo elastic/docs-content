@@ -216,7 +216,7 @@ If you have multiple {{fleet-server}} instances, each {{fleet-server}} tests con
 
 In some cases, {{ccs}} (CCS) is required to query data on the remote cluster from the management cluster. For example:
 
-* Osquery queries on {{agents}} that use a remote {{es}} output.
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: unavailable` Osquery queries on {{agents}} that use a remote {{es}} output. For more information, refer to [View results from a remote {{es}} output](/solutions/security/investigate/osquery.md#osquery-remote-output-ccs).
 * {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` {{elastic-defend}} endpoint data for {{agents}} that use a remote {{es}} output, so that endpoint management features in {{elastic-sec}} can read data stored on the remote cluster. For more information, refer to [Use {{elastic-defend}} with a remote {{es}} output](/solutions/security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md).
 
 :::{note}

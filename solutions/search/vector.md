@@ -18,6 +18,7 @@ Vector search stores embeddings and retrieves the most similar vectors to a quer
 
 :::{tip}
 New to vector search? Start with [{{es}} vector and full-text search in 10 minutes](/solutions/vector-database/vector-full-text-search.md), which uses a [Vector Database project](/solutions/vector-database.md) and the managed `semantic_text` workflow.
+:::
 
 ## Get started with vector search [vector-search-get-started]
 

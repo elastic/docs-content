@@ -1,6 +1,54 @@
 redirects:
   # related to https://github.com/elastic/docs-content/pull/4251
   'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
+  # related to https://github.com/elastic/docs-content/issues/7502
+  'explore-analyze/find-and-organize/data-views.md':
+    many:
+      - to: 'explore-analyze/find-and-organize/data-views/create-data-view.md'
+        anchors:
+          'settings-create-pattern':
+          'data-views-read-only-access': 'create-data-view-prereqs'
+          '_create_a_temporary_data_source': '_create_a_temporary_data_source'
+          'rollup-data-view': 'rollup-data-view'
+          'management-cross-project-search': 'management-cross-project-search'
+      - to: 'explore-analyze/find-and-organize/data-views/delete-data-view.md'
+        anchors:
+          'delete-data-view':
+      - to: 'explore-analyze/find-and-organize/data-views/duplicate-data-view.md'
+        anchors:
+          'duplicate-managed-data-view':
+      - to: 'explore-analyze/find-and-organize/data-views/customize-data-view-fields.md'
+        anchors:
+          'managing-data-views':
+      - to: 'explore-analyze/find-and-organize/data-views/runtime-fields.md'
+        anchors:
+          'runtime-fields':
+          'create-runtime-fields': 'create-runtime-fields'
+          'runtime-field-examples': 'runtime-field-examples'
+          'simple-hello-world-example': 'simple-hello-world-example'
+          'perform-a-calculation-on-a-single-field': 'perform-a-calculation-on-a-single-field'
+          'return-substring': 'return-substring'
+          'composite-runtime-field': 'composite-runtime-field'
+          'replace-nulls-with-blanks': 'replace-nulls-with-blanks'
+          'manage-runtime-fields': 'manage-runtime-fields'
+      - to: 'explore-analyze/find-and-organize/data-views/scripted-fields.md'
+        anchors:
+          'scripted-fields':
+          'migrate-off-scripted-fields': 'migrate-off-scripted-fields'
+          'scripted-field-example': 'scripted-field-example'
+          'runtime-field-example': 'runtime-field-example'
+          'esql-example': 'esql-example'
+          'update-scripted-field': 'update-scripted-field'
+      - to: 'explore-analyze/find-and-organize/data-views/field-formatters.md'
+        anchors:
+          'managing-fields':
+          'string-field-formatters': 'string-field-formatters'
+          'field-formatters-date': 'field-formatters-date'
+          'field-formatters-geopoint': 'field-formatters-geopoint'
+          'field-formatters-numeric': 'field-formatters-numeric'
+      - to: 'explore-analyze/find-and-organize/data-views/data-view-field-cache.md'
+        anchors:
+          'data-view-field-cache':
   # related to https://github.com/elastic/docs-content/issues/7541
   'explore-analyze/query-filter/tools/playground.md': 'explore-analyze/ai-features/elastic-agent-builder.md'
   'solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md': 'solutions/search/full-text/search-with-synonyms.md'
@@ -385,6 +433,9 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/2639
   'deploy-manage/monitor/autoops/ec-autoops-dismiss-event.md': 'deploy-manage/monitor/autoops/ec-autoops-events.md'
+
+# Related to https://github.com/elastic/docs-content/pull/8269
+  'deploy-manage/monitor/autoops/search-ai-lake-view-autoops-serverless.md': 'deploy-manage/monitor/autoops/storage-tier-view-autoops-serverless.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2245/
   'solutions/search/elasticsearch-basics-quickstart.md': 'solutions/search/get-started/index-basics.md'
@@ -827,6 +878,12 @@ redirects:
     anchors:
       '': 'alert-actions'
 
+# Related to renaming Alert data model to Rule event data model
+  'explore-analyze/alerting/experimental-alerting-system/alerts/alert-data-model.md':
+    to: 'explore-analyze/alerting/experimental-alerting-system/alerts/rule-event-data-model.md'
+    anchors:
+      'alert-data-model':
+
 # Related to cases and alerting documentation restructuring
   # Main pages
   'explore-analyze/alerts-cases.md': 'explore-analyze/alerting.md'
@@ -1237,8 +1294,14 @@ redirects:
   'solutions/elasticsearch-solution-project/search-connection-details.md':
     to: 'solutions/elasticsearch-solution-project/search-connection-details.md'
     anchors:
+      'before-you-begin': 'before-you-begin'
+      'find-endpoint-cloud-self-managed': 'find-endpoint-cloud-self-managed'
+      'find-cloud-id-cloud-self-managed': 'find-cloud-id-cloud-self-managed'
+      'create-an-api-key-cloud-self-managed': 'create-an-api-key-cloud-self-managed'
+      'elasticsearch-get-started-test-connection': 'elasticsearch-get-started-test-connection'
       '_elastic_cloud_and_self_hosted_deployments': 'find-endpoint-cloud-self-managed'
       '_serverless_deployments': 'find-endpoint-cloud-self-managed'
       'find-cloud-id-serverless': 'find-endpoint-cloud-self-managed'
       'create-an-api-key-serverless': 'create-an-api-key-cloud-self-managed'
-
+  # Related to https://github.com/elastic/docs-content/pull/7977
+  'solutions/security/get-started/siem-readiness.md': '!solutions/security/get-started.md'

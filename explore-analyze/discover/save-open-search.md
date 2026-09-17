@@ -34,6 +34,8 @@ If you don’t have sufficient privileges to save Discover sessions, the followi
 
 By default, a Discover session stores the query text, filters, and current view of **Discover**, including the columns and sort order in the document table, and the {{data-source}}.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` For [metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md), the session also stores the selected dimensions and the metric search term.
+
 1. Once you’ve created a view worth saving, select **Save** in the application menu. A dialog with several options opens:
     1. Enter a **Title** for the session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
     2. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.

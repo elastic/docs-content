@@ -1,7 +1,11 @@
 ---
 applies_to:
   stack: ga
-  serverless: ga
+  serverless:
+    elasticsearch: ga
+    observability: ga
+    security: ga
+    vectordb: unavailable
 navigation_title: "Configuration"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/downsampling-manual.html
