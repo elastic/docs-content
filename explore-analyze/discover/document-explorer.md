@@ -6,7 +6,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Customize the Discover view with display options for the document table, chart, and sidebar. Adjust columns, density, row height, JSON view, and field visibility.
+description: Customize the Discover view with display options for the document table, chart, and sidebar. Adjust columns, density, header and body cell lines, JSON view, and field visibility.
 ---
 
 # Customize the Discover view [document-explorer]
@@ -57,11 +57,11 @@ serverless: ga
 stack: ga 9.6+
 ```
 
-Open **Display options** in the table toolbar, then set **View mode** to **Table** or **JSON**. **Table** is the default. It keeps density and row height. **JSON** replaces the **Summary** column with a **JSON** column and shows each document as a collapsible tree.
+Open **Display options** in the table toolbar, then set **View mode** to **Table** or **JSON**. **Table** is the default. It keeps **Density**, **Max header cell lines**, and **Body cell lines**. **JSON** replaces the **Summary** column with a **JSON** column and shows each document as a collapsible tree.
 
 If you add fields to the table, the JSON tree shows those fields. If you don't add fields, it shows the full document.
 
-**Discover** stores **View mode** and the JSON display settings with the session and with Discover session panels on dashboards.
+**Discover** stores **View mode** and the JSON display settings with the session. The same settings persist on Discover session panels and when you select [**Save table to dashboard**](save-open-search.md#save-table-to-dashboard).
 
 When **View mode** is **JSON**, **Display options** include:
 
@@ -88,11 +88,9 @@ If a document is too large to render in full, Discover shows a warning and displ
 You can adjust the density of the table from the **Display options** located in the table toolbar. This can be particularly useful when scrolling through many results.
 
 
-### Adjust the row height [document-explorer-row-height]
+### Adjust header and body cell lines [document-explorer-row-height]
 
-To set the row height to one or more lines, or automatically adjust the height to fit the contents, open the **Display options** in the table toolbar, and adjust it as you need.
-
-You can define different settings for the header row and body rows.
+Open **Display options** in the table toolbar. Set **Max header cell lines** and **Body cell lines** to **Auto** to fit the contents, or to **Custom** and enter a line count.
 
 
 ### Limit the sample size [document-explorer-sample-size]
