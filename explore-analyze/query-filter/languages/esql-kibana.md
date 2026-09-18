@@ -309,6 +309,7 @@ FROM kibana_sample_data_logs
 | WHERE timestamp > NOW() - 15minutes
 ```
 
+To apply a time shift in an {{esql}} visualization, refer to [Compare current versus previous period with time shift](/explore-analyze/visualize/esorql.md#esql-viz-time-shift).
 
 ### Timezone handling [esql-kibana-timezone]
 ```{applies_to}
@@ -410,7 +411,7 @@ For the full list of supported settings and their parameters, refer to the [`SET
 
 ### Search across projects with `SET project_routing` [esql-kibana-cps]
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 
