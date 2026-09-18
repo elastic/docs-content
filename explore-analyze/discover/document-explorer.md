@@ -40,6 +40,8 @@ Customize the appearance of the document table and its contents to your liking.
 
 ![Options to customize the table in Discover](/explore-analyze/images/kibana-discover-customize-table.png "")
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Use **View mode** in **Display options** to show the table as **Table** or **JSON**. **Table** is the default column layout. To inspect documents as a tree, refer to [View documents as JSON](#document-explorer-view-mode).
+
 
 ### Reorder and resize the columns [document-explorer-columns]
 
@@ -73,17 +75,22 @@ To control how much of each tree is visible, use **Display options**:
 
 You can't filter on values Elasticsearch ignored at index time, or on values inside a JSON string that Discover expanded in the tree. If a document is too large to render in full, Discover shows a warning and displays the first 10,000 values.
 
-To return to the column layout, set **View mode** to **Table**. **Table** keeps **Density**, **Max header cell lines**, and **Body cell lines**.
+To return to the column layout, set **View mode** to **Table**. Then use [Adjust table layout](#document-explorer-table-view) for density and cell lines.
 
 **Discover** stores **View mode** and the JSON display settings with the session, on Discover session panels, and when you select [**Save table to dashboard**](save-open-search.md#save-table-to-dashboard).
 
 
-### Customize the table density [document-explorer-density]
+### Adjust table layout [document-explorer-table-view]
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` These **Display options** appear when **View mode** is **Table**. They are hidden in **JSON** view.
+
+
+#### Customize the table density [document-explorer-density]
 
 You can adjust the density of the table from the **Display options** located in the table toolbar. This can be particularly useful when scrolling through many results.
 
 
-### Adjust header and body cell lines [document-explorer-row-height]
+#### Adjust header and body cell lines [document-explorer-row-height]
 
 Open **Display options** in the table toolbar. Set **Max header cell lines** and **Body cell lines** to **Auto** to fit the contents, or to **Custom** and enter a line count.
 
