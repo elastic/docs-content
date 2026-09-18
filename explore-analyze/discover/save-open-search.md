@@ -136,7 +136,7 @@ serverless: ga
 
 From Discover, save the current view of the table to a new or existing dashboard, without saving the Discover session to the library. The resulting panel stores its configuration with the dashboard, so later changes to the Discover session don't affect the panel. If the session has multiple tabs, only the current table is saved.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The saved table includes **View mode** and the JSON display settings. Refer to [Switch the view mode](document-explorer.md#document-explorer-view-mode).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The saved table includes **View mode** and the JSON display settings. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
 
 The button isn't available when Discover is opened from another application, such as when editing a session panel from a dashboard.
 

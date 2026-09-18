@@ -51,19 +51,19 @@ Customize the appearance of the document table and its contents to your liking.
   ::::
 
 
-### Switch the view mode [document-explorer-view-mode]
+### View documents as JSON [document-explorer-view-mode]
 ```{applies_to}
 serverless: ga
 stack: ga 9.6+
 ```
 
-Open **Display options** in the table toolbar, then set **View mode** to **Table** or **JSON**. **Table** is the default. It keeps **Density**, **Max header cell lines**, and **Body cell lines**. **JSON** replaces the **Summary** column with a **JSON** column and shows each document as a collapsible tree.
+Open **Display options** in the table toolbar, then set **View mode** to **JSON**. Each document appears as a collapsible tree in a **JSON** column, which replaces **Summary**.
+
+**Table** is the default **View mode**. It keeps **Density**, **Max header cell lines**, and **Body cell lines**.
 
 If you add fields to the table, the JSON tree shows those fields. If you don't add fields, it shows the full document.
 
-**Discover** stores **View mode** and the JSON display settings with the session. The same settings persist on Discover session panels and when you select [**Save table to dashboard**](save-open-search.md#save-table-to-dashboard).
-
-When **View mode** is **JSON**, **Display options** include:
+In **JSON** view, **Display options** include:
 
 * **Lines shown**: How many JSON nodes each cell expands by default. The range is 10 to 200. The default is 50.
 * **Hide nulls**: When **On**, Discover omits null values from the tree. The default is **Off**.
@@ -81,6 +81,8 @@ In the JSON tree:
 Filter actions aren't available for values Elasticsearch ignored at index time, or for values inside a JSON string that Discover expanded in the tree.
 
 If a document is too large to render in full, Discover shows a warning and displays the first 10,000 values.
+
+**Discover** stores **View mode** and the JSON display settings with the session. The same settings persist on Discover session panels and when you select [**Save table to dashboard**](save-open-search.md#save-table-to-dashboard).
 
 
 ### Customize the table density [document-explorer-density]
