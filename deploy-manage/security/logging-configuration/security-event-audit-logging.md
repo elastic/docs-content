@@ -20,9 +20,12 @@ products:
 Audit logs are only available on certain [subscription levels](https://www.elastic.co/subscriptions).
 ::::
 
-Audit logging is a powerful feature that helps you monitor and track security-related events within the {{stack}}. By enabling audit logs, you can gain visibility into authentication attempts, authorization decisions, and other system activity.
+:::{include} /deploy-manage/security/_snippets/audit-logging.md
+:::
 
-Audit logging also provides forensic evidence in the event of an attack, and can be enabled independently for {{es}} and {{kib}}.
+:::{tip}
+In {{fedramp-mod}} environments, you can also audit organization-level actions such as deployment management, API key usage, and sign-in activity. Refer to [](/deploy-manage/monitor/log-delivery/cloud-audit-trail.md).
+:::
 
 Use the {{kib}} audit logs in conjunction with {{es}} audit logging to get a holistic view of all security related events. {{kib}} defers to the {{es}} security model for authentication, data index authorization, and features that are driven by cluster-wide privileges.
 
