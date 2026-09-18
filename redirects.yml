@@ -1188,6 +1188,10 @@ redirects:
     to: 'solutions/search/vector/knn.md'
     anchors:
       'choosing-between-approximate-and-exact-knn': 'knn-methods'
+      'knn-search-examples': 'knn-search-examples'
+      'knn-build-query-vector': 'knn-build-query-vector'
+      'knn-semantic-search': 'knn-semantic-search'
+      'knn-lookup-similar-documents': 'knn-lookup-similar-documents'
     many:
       - to: 'solutions/search/vector/knn/approximate-knn.md'
         anchors:
