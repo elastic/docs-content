@@ -11,7 +11,7 @@ description: "Requirements for using the experimental alerting system in Kibana,
 
 # Set up the {{alerting-v2-system}} [setup]
 
-This page covers what you need before using the {{alerting-v2-system}}, and how to turn it on and off in your space.
+This page covers what you need before using the {{alerting-v2-system}}, and how to turn it on and off.
 
 ## Requirements [alerting-setup-requirements]
 
@@ -22,45 +22,16 @@ This page covers what you need before using the {{alerting-v2-system}}, and how 
 
 ## Turn on the system [alerting-setup-turn-on]
 
-The {{alerting-v2-system}} is controlled by the `alerting:v2:enabled` advanced setting in {{kib}}, which is turned off by default. Turn it on to make the {{alerting-v2-system}} available in your space.
-
-::::{applies-switch}
-:::{applies-item} stack: experimental 9.5+
+The {{alerting-v2-system}} is controlled by the [`alerting:v2:enabled`](kibana://reference/advanced-settings.md#alerting-v2-enabled) advanced setting in {{kib}}. This is a global setting, so turning it on makes the {{alerting-v2-system}} available in every space, even though the rules and action policies you create in it are space-scoped.
 
 **Role requirements**
 
-You must have the `kibana_admin` role or equivalent {{stack-manage-app}} access to turn on the `alerting:v2:enabled` advanced setting.
+You must have the `kibana_admin` role or equivalent {{stack-manage-app}} access on {{stack}} deployments, or the `admin` project role on {{serverless-short}}.
 
 **Steps**
 
-1. Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Under **Global settings**, toggle on **alerting:v2:enabled**.
-:::
-
-:::{applies-item} serverless:
-
-**Role requirements**
-
-You must have the `admin` project role to turn on the `alerting:v2:enabled` advanced setting. 
-
-**Step**
-
-{{serverless-short}} has no Global Advanced Settings UI, so use Dev Tools to call the global settings API:
-
-```json
-POST kbn:/internal/kibana/global_settings
-{
-  "changes": {
-    "alerting:v2:enabled": true
-  }
-}
-```
-
-:::{note}
-The `/internal/kibana/global_settings` endpoint is an internal API and might change without notice. There is currently no public equivalent.
-:::
-:::
-::::
+1. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select the **Global Settings** tab, then turn on **Alerting V2**.
 
 ### Confirm the UI is accessible [alerting-setup-confirm]
 
@@ -72,28 +43,7 @@ If the menu item doesn't appear immediately, refresh the page and search again. 
 
 ## Turn off the system [alerting-setup-turn-off]
 
-To turn off the {{alerting-v2-system}}, set `alerting:v2:enabled` to `false`.
-
-::::{applies-switch}
-:::{applies-item} stack: experimental 9.5+
-
-Go to the **Advanced Settings** page and toggle off **alerting:v2:enabled**.
-:::
-
-:::{applies-item} serverless:
-
-Use Dev Tools to call the global settings API:
-
-```json
-POST kbn:/internal/kibana/global_settings
-{
-  "changes": {
-    "alerting:v2:enabled": false
-  }
-}
-```
-:::
-::::
+To turn off the {{alerting-v2-system}}, go to the **Advanced Settings** page, select the **Global Settings** tab, and turn off **Alerting V2**.
 
 Turning off the setting does not delete any data. {{kib}} retains your rules and action policies as saved objects, and keeps existing documents in `.rule-events` and `.alert-actions`. Turning the setting back on restores the {{alerting-v2-system}} UI.
 
