@@ -519,7 +519,7 @@ curl -XGET \
 "https://api.elastic-cloud.com/api/v1/deployments/<replace with deployment ID>?show_plans=true&show_settings=true"
 ```
 
-While encryption is running, `metadata.byok_migration_in_progress` is `true`. When it finishes, that field is `false` and `settings.byok.key_resource_path` holds your key identifier.
+While re-encryption is running, `metadata.byok_migration_in_progress` is `true`. When it finishes, that field is `false` and `settings.byok.key_resource_path` holds your key identifier.
 
 #### Considerations for existing deployments
 
