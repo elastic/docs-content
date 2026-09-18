@@ -1,33 +1,34 @@
 ---
-
-navigation\_title: LangChain   
-description: Give a LangChain agent tools that list, describe, and query Context Engine AI indices, so it can retrieve knowledge indicators with ES|QL.   
-applies\_to:   
-stack: preview 9.6  
-serverless: preview   
+navigation_title: LangChain
+description: Give a LangChain agent tools that list, describe, and query Context Engine AI indices, so it can retrieve knowledge indicators with ES|QL.
+applies_to:
+  stack: preview 9.6
+  serverless: preview
 products:
-
-- id: kibana
-
+  - id: kibana
 ---
 
 # Query AI indices from LangChain
 
-A LangChain agent can retrieve knowledge from the Context Engine through three read-only tools exposed by Kibana’s Model Context Protocol (MCP) server. This page shows you how to connect to the server, hand the tools to an agent, and write the ES|QL the agent runs. The same three operations are also available as plain HTTP APIs, which you can wrap as LangChain tools yourself. Use that route if you can't reach the MCP server or don't run Agent Builder.
+:::{important}
+This page is currently hidden from the documentation navigation. It is intended for testing and review while the feature is under development.
+:::
+
+A LangChain agent can retrieve knowledge from the Context Engine through three read-only tools exposed by Kibana's Model Context Protocol (MCP) server. This page shows you how to connect to the server, hand the tools to an agent, and write the ES|QL the agent runs. The same three operations are also available as plain HTTP APIs, which you can wrap as LangChain tools yourself. Use that route if you can't reach the MCP server or don't run Agent Builder.
 
 By the end you'll have an agent that answers questions from the Knowledge Indicators stored in an AI Index, scoped to a single Kibana space and to what your credential is allowed to read.
 
-Examples on this page use Python, however the same approach works in LangChain.js as well.
+Examples on this page use Python. The same approach works in LangChain.js.
 
-# Requirements
+## Requirements
 
 * An {{stack}} deployment with an Enterprise license, or an {{serverless-full}} project.
 * The `contextEngine:enabled` advanced setting turned on in the space you want to query. This setting is per space, and the APIs return `404` in any space where it's off.
-* At least one AI Index containing Knowledge Indicators (KIs). See [Create an AI index](#) if you don't have one yet.
-* An API key whose privileges cover both Kibana and Elasticsearch. [Step 1](#heading=h.vqas474n8cjr) walks through this.
+* At least one AI Index containing Knowledge Indicators (KIs). See [Create an AI index](quickstart.md#2-create-an-ai-index) if you don't have one yet.
+* An API key whose privileges cover both Kibana and Elasticsearch. [Step 1](#step-1-create-an-api-key) walks through this.
 * Python 3.10 or later, with `langchain` installed.
 
-# How it works
+## How it works
 
 Your agent reaches them through three tools, and it must call them in this order:
 
@@ -49,7 +50,7 @@ Two differences to know about:
 * MCP path needs Agent Builder enabled, and the API key needs the Agent Builder **Read** privilege as well as Context Engine **Read**.
 * The `list` **tool** returns the ES|QL target as `esql_target` directly, rather than nested under `dest.value`.
 
-If you’re running via APIs, bear in mind that every request also needs these headers:
+If you're running via APIs, bear in mind that every request also needs these headers:
 
 | Header | Value | Notes |
 | :---- | :---- | :---- |
@@ -57,16 +58,14 @@ If you’re running via APIs, bear in mind that every request also needs these h
 | `elastic-api-version` | `2023-10-31` | Required on all three endpoints. Without it the request fails with `400`. |
 | `kbn-xsrf` | `true` | Required for the `POST` request on self-managed and {{ech}} deployments. Harmless elsewhere, so always send it. |
 
-# Step 1: Create an API key
+## Step 1: Create an API key
 
 Three independent checks stand between your credential and a result. The MCP server checks that you have Agent Builder **Read**, which is what makes the tools visible. Each tool then checks that you have Context Engine **Read**. Elasticsearch finally checks your privileges on the indices the query actually touches. You need all three.
 
 1. In Kibana, go to **Stack Management → Roles** and create a role with:
 
     * **Index privileges**: `read` and `view_index_metadata` on `ai-index-*` and `.ai-index-*`.
-    * **Kibana privileges**, in the space you want to query: the **Agent Builder** feature at **Read**, and the **Context Engine** feature at **Read**. If you’re running the API route, rather than MCP tools, you only need **Context Engine Read**.
-
-
+    * **Kibana privileges**, in the space you want to query: the **Agent Builder** feature at **Read**, and the **Context Engine** feature at **Read**. If you're running the API route, rather than MCP tools, you only need **Context Engine Read**.
 
 2. Assign the role to your user.
 
@@ -74,10 +73,10 @@ Three independent checks stand between your credential and a result. The MCP ser
 
 4. Copy the `encoded` value and export it, along with your Kibana URL:
 
-```shell
-export KIBANA_URL="https://my-deployment.kb.us-east-1.aws.elastic.cloud"
-export KIBANA_API_KEY="VnVhQ2ZHY0JDZGJrU..."
-```
+    ```shell
+    export KIBANA_URL="https://my-deployment.kb.us-east-1.aws.elastic.cloud"
+    export KIBANA_API_KEY="VnVhQ2ZHY0JDZGJrU..."
+    ```
 
 Alternatively, in Serverless, you can directly create an API key with the following privileges:
 
@@ -131,12 +130,14 @@ For this demo, we will also use an Open Router key:
 export OPENROUTER_API_KEY="sk-..."
 ```
 
-# Step 2: Get the appropriate tools
+## Step 2: Get the appropriate tools
 
-Depending on whether you choose to use the MCP server or to define your own tools, you may choose step A or B accordingly.
+Choose the approach that fits your setup.
 
-## Step 2A. Via MCP Server
-
+::::{tab-set}
+:group: ce-transport
+:::{tab-item} MCP server
+:sync: mcp
 The MCP endpoint takes a single `Authorization` header. It's exempt from Kibana's XSRF check, so no `kbn-xsrf` header is needed.
 
 ```py
@@ -144,65 +145,59 @@ import os
 
 from langchain_mcp_adapters.client import MultiServerMCPClient
 
-
-async def main() -> None:
-  kibana = os.environ["KIBANA_URL"].rstrip("/")
-  space = os.environ.get("KIBANA_SPACE")  # Leave unset for the default space
-  base = f"{kibana}/s/{space}" if space else kibana
-
-  client = MultiServerMCPClient(
-      {
-          "kibana": {
-              "transport": "streamable_http",
-              "url": f"{base}/api/agent_builder/mcp",
-              "headers": {"Authorization": f"ApiKey {os.environ['KIBANA_API_KEY']}"},
-          }
-      }
-  )
-
-  all_tools = await client.get_tools()
-
-
-if __name__ == "__main__":
-    main()
-```
-
-The server exposes every built-in tool your credential can see, so narrow the list to the three Context Engine tools:
-
-```py
-// add this to the top of the file
-CONTEXT_ENGINE_TOOLS = {
+CONTEXT_ENGINE_TOOLS = {   <1>
     "platform_context_engine_list_ai_indices",
     "platform_context_engine_describe_ai_index",
     "platform_context_engine_query_ai_indices",
 }
 
-// add this to the main() function
-tools = [tool for tool in all_tools if tool.name in CONTEXT_ENGINE_TOOLS]
+
+async def main() -> None:
+    kibana = os.environ["KIBANA_URL"].rstrip("/")
+    space = os.environ.get("KIBANA_SPACE")   <2>
+    base = f"{kibana}/s/{space}" if space else kibana
+
+    client = MultiServerMCPClient(
+        {
+            "kibana": {
+                "transport": "streamable_http",   <3>
+                "url": f"{base}/api/agent_builder/mcp",   <4>
+                "headers": {"Authorization": f"ApiKey {os.environ['KIBANA_API_KEY']}"},   <5>
+            }
+        }
+    )
+
+    all_tools = await client.get_tools()
+    tools = [t for t in all_tools if t.name in CONTEXT_ENGINE_TOOLS]   <6>
 ```
 
-## Step 2B: Via APIs
-
+1. The three Context Engine tool names to filter from the MCP server's full tool list.
+2. Set `KIBANA_SPACE` to target a non-default space; leave unset for the default space.
+3. The transport type required by `langchain-mcp-adapters` for the Kibana MCP endpoint.
+4. Agent Builder serves the MCP endpoint at `/api/agent_builder/mcp`.
+5. The MCP server accepts `Authorization` only; no `kbn-xsrf` header is needed.
+6. Narrow the server's full tool list to the three Context Engine tools.
+:::
+:::{tab-item} API
+:sync: api
 Each tool wraps one endpoint. The docstrings are the only instructions the model gets about how and when to call them, so they carry the ordering and the constraints.
 
 ```py
 import os
 
 import httpx
-from langchain.agents import create_agent
 from langchain.tools import tool
-from langchain_openai import ChatOpenAI
 
 kibana = os.environ["KIBANA_URL"].rstrip("/")
-space = os.environ.get("KIBANA_SPACE")  # Leave unset for the default space
+space = os.environ.get("KIBANA_SPACE")   <1>
 base = f"{kibana}/s/{space}" if space else kibana
 
 client = httpx.Client(
     base_url=f"{base}/api/context_engine",
     headers={
         "Authorization": f"ApiKey {os.environ['KIBANA_API_KEY']}",
-        "elastic-api-version": "2023-10-31",
-        "kbn-xsrf": "true",
+        "elastic-api-version": "2023-10-31",   <2>
+        "kbn-xsrf": "true",   <3>
         "Content-Type": "application/json",
     },
     timeout=60,
@@ -218,7 +213,7 @@ def list_ai_indices() -> list[dict]:
     return [
         {
             "id": entry["id"],
-            "esql_target": entry["dest"]["value"],
+            "esql_target": entry["dest"]["value"],   <4>
             "description": entry.get("description"),
         }
         for entry in response.json()["ai_indices"]
@@ -250,17 +245,25 @@ def query_ai_indices(query: str, params: dict | None = None, limit: int = 20) ->
     return response.json()
 ```
 
-`list_ai_indices` returns the full registration for each index, so the example narrows it to the three fields an agent needs. The one to pass to `FROM` is `dest.value`, shown as `esql_target` in the previous example.
+1. Set `KIBANA_SPACE` to target a non-default space; leave unset for the default space.
+2. Required on all three endpoints. Without it the request fails with `400`.
+3. Required for `POST` on self-managed and {{ech}} deployments. Harmless elsewhere.
+4. The API response nests the ES|QL target under `dest.value`; the example surfaces it as `esql_target` for clarity.
+:::
+::::
 
 The list omits an AI Index when your credential can't read its backing index. The list does include an AI Index that's registered but still empty.
 
-# Step 3: Give the tools to an agent
+## Step 3: Give the tools to an agent
 
-## Step 3A: Via MCP Server
+::::{tab-set}
+:group: ce-transport
+:::{tab-item} MCP server
+:sync: mcp
 
 ```py
-// add this to the top of the file
 from langchain.agents import create_agent
+from langchain_openai import ChatOpenAI
 
 SYSTEM_PROMPT = """\
 You have access to Elastic Context Engine knowledge through three tools.
@@ -275,11 +278,11 @@ all three. Never add a space or permissions condition to a query; the server app
 Answer from the rows you get back and cite the Knowledge Indicator titles.
 """
 
-// add this to the main() function
+# Add inside main(), after the tools from Step 2:
 llm = ChatOpenAI(
     model="anthropic/claude-sonnet-4-6",
     openai_api_key=os.environ["OPENROUTER_API_KEY"],
-    openai_api_base="https://openrouter.ai/api/v1",
+    openai_api_base="https://openrouter.ai/api/v1",   <1>
 )
 agent = create_agent(llm, tools)
 
@@ -294,20 +297,15 @@ result = await agent.ainvoke(
 print(result["messages"][-1].content)
 ```
 
-Each entry from the list tool gives the agent:
-
-* `id`, to pass to describe.
-* `esql_target`, the exact string to put after `FROM`. Use it verbatim: it differs from the ID (`sales-knowledge` becomes `ai-index-idx-sales-knowledge`) and may be a wildcard or a data stream.
-* `description` and `managed`, to choose between entries.
-
-The `list` response omits an AI Index when your credential can't read its backing index. The list does include an AI Index that's registered but still empty.
-
-## Step 3B: Via APIs
+1. This example routes through OpenRouter. Replace `openai_api_base` and the corresponding API key to use a different LLM provider.
+:::
+:::{tab-item} API
+:sync: api
 
 ```py
 from langchain.agents import create_agent
+from langchain_openai import ChatOpenAI
 
-// add this to the top of the file
 SYSTEM_PROMPT = """\
 You have access to Elastic Context Engine knowledge through three tools.
 
@@ -321,12 +319,12 @@ all three. Never add a space or permissions condition to a query; the server app
 Answer from the rows you get back and cite the knowledge indicator titles.
 """
 
-// add this after the tools definition, at the bottom of the file
+# Add after the tools from Step 2:
 def main() -> None:
     llm = ChatOpenAI(
         model="anthropic/claude-sonnet-4-6",
         openai_api_key=os.environ["OPENROUTER_API_KEY"],
-        openai_api_base="https://openrouter.ai/api/v1",
+        openai_api_base="https://openrouter.ai/api/v1",   <1>
     )
     agent = create_agent(llm, [list_ai_indices, describe_ai_index, query_ai_indices])
 
@@ -345,13 +343,23 @@ if __name__ == "__main__":
     main()
 ```
 
-# Query a different space
+1. This example routes through OpenRouter. Replace `openai_api_base` and the corresponding API key to use a different LLM provider.
+:::
+::::
+
+Each entry from the list tool gives the agent:
+
+* `id`, to pass to describe.
+* `esql_target`, the exact string to put after `FROM`. Use it verbatim: it differs from the ID (`sales-knowledge` becomes `ai-index-idx-sales-knowledge`) and may be a wildcard or a data stream.
+* `description` and `managed`, to choose between entries.
+
+## Query a different space
 
 Set `KIBANA_SPACE` to the space ID before creating the client, so requests go to `/s/{space_id}/api/context_engine`. The API key needs the Context Engine feature privilege in that space, and `contextEngine:enabled` has to be on there.
 
 To read from several spaces in one agent, build one client per space and register a separate set of tools for each.
 
-# Troubleshooting
+## Troubleshooting
 
 | Symptom | Cause | Resolution |
 | :---- | :---- | :---- |
@@ -366,12 +374,11 @@ To read from several spaces in one agent, build one client per space and registe
 | Describe returns a block with no `Knowledge item types` or `Tags` section | The counts need `read` on the backing indices, and need `type` and `tags` mapped as aggregatable keywords. | Expected degradation. The rest of the block is still usable. |
 | An error saying the response is too large | The result exceeds the 20 MB cap. | Drop large fields with `KEEP`, lower `limit`, or aggregate with `STATS`. |
 
-# Appendix
+## Appendix
 
 Full Python scripts
 
-`demo_mcp.py`
-
+:::{dropdown} demo_mcp.py
 ```py
 import asyncio
 import os
@@ -419,7 +426,7 @@ async def main() -> None:
     tools = [t for t in all_tools if t.name in CONTEXT_ENGINE_TOOLS]
 
     llm = ChatOpenAI(
-        model="anthropic/claude-sonnet-4-5",
+        model="anthropic/claude-sonnet-4-6",
         openai_api_key=os.environ["OPENROUTER_API_KEY"],
         openai_api_base="https://openrouter.ai/api/v1",
     )
@@ -438,11 +445,10 @@ async def main() -> None:
 
 if __name__ == "__main__":
     asyncio.run(main())
-
 ```
+:::
 
-`demo_api.py`
-
+:::{dropdown} demo_api.py
 ```py
 import os
 
@@ -523,7 +529,7 @@ def query_ai_indices(query: str, params: dict | None = None, limit: int = 20) ->
 
 def main() -> None:
     llm = ChatOpenAI(
-        model="anthropic/claude-sonnet-4-5",
+        model="anthropic/claude-sonnet-4-6",
         openai_api_key=os.environ["OPENROUTER_API_KEY"],
         openai_api_base="https://openrouter.ai/api/v1",
     )
@@ -542,17 +548,16 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
 ```
+:::
 
 Minimal requirements in `pyproject.toml`
 
-```
+```toml
 [dependency-groups]
 dev = [
     "langchain>=1.4.0",
     "langchain-mcp-adapters>=0.3.2",
     "langchain-openai>=1.6.2",
 ]
-
 ```
