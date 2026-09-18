@@ -150,8 +150,7 @@ To control how much of each tree is visible, use **Display options**:
 * **Lines shown**: How many JSON nodes each cell expands by default. The range is 10 to 200. The default is 50.
 * **Hide nulls**: When **On**, Discover omits null values from the tree. The default is **Off**.
 * **Wrap lines**: When **On**, long values wrap onto more lines. When **Off**, each value is truncated to one line. The default is **On**.
-
-[**Sample size**](#document-explorer-sample-size) is still available. To page through one document and the documents around it, use the [document flyout](discover-get-started.md#look-inside-a-document).
+* [**Sample size**](#document-explorer-sample-size). To page through one document and the documents around it, use the [document flyout](discover-get-started.md#look-inside-a-document).
 
 You can't filter on values Elasticsearch ignored at index time, or on values inside a JSON string that Discover expanded in the tree. If a document is too large to render in full, Discover shows a warning and displays the first 10,000 values.
 
