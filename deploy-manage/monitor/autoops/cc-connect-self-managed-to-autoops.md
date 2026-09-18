@@ -5,6 +5,7 @@ applies_to:
     ece:
     eck:
 navigation_title: Connect your cluster
+description: Connect ECE, ECK, or self-managed Elasticsearch clusters to AutoOps through Cloud Connect and learn how to manage them.
 products:
   - id: cloud-kubernetes
   - id: cloud-enterprise
@@ -12,7 +13,7 @@ products:
 
 # Connect your ECE, ECK, or self-managed cluster to AutoOps
 
-To use AutoOps with your ECE, ECK, or self-managed {{es}} cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard then guides you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}.  
+This page explains how to connect your ECE, ECK, or self-managed cluster to AutoOps in {{ecloud}}. Sign in with an {{ecloud}} account or start from {{kib}}, then use the installation wizard to install {{agent}} and ship cluster metrics.
 
 The connection process takes about 10 minutes.
 
@@ -23,13 +24,13 @@ If you have an {{es}} cluster set up for local development or testing, you can c
 :::{include} ../_snippets/cc-autoops-all-licenses.md
 :::
 
-## Prerequisites
+## Before you begin [prerequisites]
 
 Ensure your system meets the following requirements before proceeding:
 
-* Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol) (7.17.x and above).
+* Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol) (7.17.x or later).
 * The agent you install for the connection is allowed to send metrics to {{ecloud}}.
-* {applies_to}`eck: ga 3.3` To install {{agent}} using ECK, your ECK operator is on version 3.3.0 and above.
+* {applies_to}`eck: ga 3.3` To install {{agent}} using ECK, your ECK operator is on version 3.3.0 or later.
 * {applies_to}`eck: ga 3.3.1` The instance of {{agent}} you install meets the version requirements for your license type:
   * **Basic license**: 9.2.4 or later.
   * **Enterprise license**: 9.2.1 or later.
@@ -39,39 +40,59 @@ Ensure your system meets the following requirements before proceeding:
 If your ECK-managed cluster's license is downgraded, you must upgrade {{agent}} accordingly to avoid your `AutoOpsAgentPolicy` resource becoming invalid.
 :::
 
-## Connect to AutoOps [connect-to-autoops]
+## Set up AutoOps with Cloud Connect [connect-to-autoops]
 
-The following steps describe how to connect your cluster to AutoOps. 
+:::::::{stepper}
 
-:::::{tab-set}
-:group: existing-or-new-cloud-account
+::::::{step} Get started
 
-::::{tab-item} Existing account
-:sync: existing
+::::{tab-set}
 
-If you already have an {{ecloud}} account:
-1. Log in to [{{ecloud}}](https://cloud.elastic.co/login?redirectTo=%2Fconnect-cluster-services).
-    - The link provided should take you directly to the **Connect your self-managed cluster** page
-2. On your home page, in the **Connected clusters** section, select **Connect self-managed cluster**. 
-3. On the **Connect your self-managed cluster** page, in the **AutoOps** section, select **Connect**.
-4. Go through the installation wizard as detailed in the following sections.
+:::{tab-item} {{ecloud}}
+Sign up or log in to {{ecloud}} with the following links and follow the prompts on screen:
+* [For new users](https://cloud.elastic.co/registration?onboarding_service_type=ccm) who don't have an {{ecloud}} account
+* [For existing users](https://cloud.elastic.co/login?redirectTo=%2Fconnect-cluster-services) who already have an {{ecloud}} account
+
+Alternatively, go to your {{ecloud}} home page and select **Connect self-managed cluster**.
+:::
+
+:::{tab-item} {{kib}}
+Go to the **Cloud Connect** page in your {{kib}} instance using the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md) and sign up or log in to {{ecloud}} from there. Then, follow the steps to [connect through {{kib}}](#connect-through-kibana).
+
+:::{image} /explore-analyze/images/cloud-connect-eis.png
+:screenshot:
+:alt: Screenshot showing Get started with Cloud Connect page in {{kib}}
+:::
+
+
+:::
+
 ::::
 
-::::{tab-item} New account
-:sync: new
+::::::
 
-If you don’t have an existing {{ecloud}} account: 
-1. Go to the [Cloud Connected Services sign up](https://cloud.elastic.co/registration?onboarding_service_type=ccm) page. 
-2. Follow the prompts on your screen to sign up for {{ecloud}} and create an organization.
-3. Go through the installation wizard as detailed in the following sections.
-::::
+::::::{step} Choose how to connect
 
-:::::
+:::{image} /deploy-manage/images/get-access-to-cc-services.png
+:screenshot:
+:alt: Screenshot showing the Connect through Kibana and Install AutoOps agent options
+:::
 
+Select **Install AutoOps agent** to enable only AutoOps and open the installation wizard.
+Select **Connect through {{kib}}** to enable multiple cloud connected services with an API key.
 
-### Select installation method
+$$$connect-through-kibana$$$
+If you select **Connect through Kibana**:
 
-This is the first step of the installation wizard. Your cluster ships metrics to AutoOps with the help of {{agent}}. 
+1. Copy the Cloud Connect API key that shows up.
+2. In your cluster's {{kib}} instance, go to the **Cloud Connect** page using the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+3. Paste your Cloud Connect API key and click **Connect**.
+4. On the **Cloud connected services** page, choose the services you want to enable. For AutoOps, click **Connect** next to AutoOps. For other services, refer to [](/deploy-manage/cloud-connect.md).
+::::::
+
+::::::{step} Select installation method
+
+This is the first part of the installation wizard. Your cluster ships metrics to AutoOps with the help of {{agent}}. 
 
 Select one of the following methods to install {{agent}}:
 
@@ -93,112 +114,111 @@ You only need to install the agent once per cluster.
 
 To learn more about how AutoOps securely gathers data from your cluster, refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md#data-gathering).
 
-### Configure agent
+::::::
 
-Depending on your selected installation method, you might have to provide some or all of the following information to create the installation command:
+::::::{step} Configure agent
 
-* **{{es}} endpoint URL**: Enter the URL for the {{es}} cluster you want to monitor by connecting to AutoOps.
-* **Preferred authentication method**: Choose one of the following:
-  
-  :::::{tab-set}
-  :group: api-key-or-basic
+Depending on your selected installation method, you have to provide information such as your cluster's endpoint URL, your desired [storage location](cc-autoops-metrics-storage-locations.md), and your preferred authentication method. 
 
-  ::::{tab-item} API key
-  :sync: api-key
+For your authentication method, select one of the following:
 
-  With this authentication method, you need to create an API key to grant access to your cluster. Complete the following steps:
+:::::{tab-set}
+:group: api-key-or-basic
 
-  1. Go to {{kib}} in your {{es}} cluster.
-  2. Go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-  3. Select **Create API key**.
-  4. In the flyout, enter a name for your key and select **User API key**.
-  5. Enable **Control security privileges** and enter the following script:
-  ```json
-  {
-  "autoops": {
-    "cluster": [
-      "monitor",
-      "read_ilm",
-      "read_slm"
-    ],
-    "indices": [
-      {
-        "names": [
-          "*"
-        ],
-        "privileges": [
-          "monitor",
-          "view_index_metadata"
-        ],
-        "allow_restricted_indices": true
-      }
-    ],
-    "applications": [],
-    "run_as": [],
-    "metadata": {},
-    "transient_metadata": {
-      "enabled": true
+::::{tab-item} API key
+:sync: api-key
+
+With this authentication method, you need to create an API key to grant access to your cluster. Complete the following steps:
+
+1. Go to {{kib}} in your {{es}} cluster.
+2. Go to the **API keys** management page in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+3. Select **Create API key**.
+4. In the flyout, enter a name for your key and select **User API key**.
+5. Enable **Control security privileges** and enter the following script:
+```json
+{
+"autoops": {
+  "cluster": [
+    "monitor",
+    "read_ilm",
+    "read_slm"
+  ],
+  "indices": [
+    {
+      "names": [
+        "*"
+      ],
+      "privileges": [
+        "monitor",
+        "view_index_metadata"
+      ],
+      "allow_restricted_indices": true
     }
+  ],
+  "applications": [],
+  "run_as": [],
+  "metadata": {},
+  "transient_metadata": {
+    "enabled": true
   }
-  }
+}
+}
 
-  ```
-  6. Select **Create API key**.
-  7. Copy the key and save it for later. You will need it when you [install the agent](#install-agent).
+```
+6. Select **Create API key**.
+7. Copy the key and save it for later. You will need it when you [install the agent](#install-agent).
 
-  ::::
+::::
 
-  ::::{tab-item} Basic
-  :sync: basic
+::::{tab-item} Basic
+:sync: basic
 
-  With this authentication method, you need the username and password of a user with the necessary privileges to grant access to your cluster. There are two ways to set up a user with these privileges:
+With this authentication method, you need the username and password of a user with the necessary privileges to grant access to your cluster. There are two ways to set up a user with these privileges:
 
-  * (Recommended) Go to {{kib}} in your cluster and then go to **Developer tools**. In **Console**, run the following command:
-  ```js
-  POST /_security/role/autoops
-  {
-    "cluster": [
-      "monitor",
-      "read_ilm",
-      "read_slm"
-    ],
-    "indices": [
-      {
-        "names": [
-          "*"
-        ],
-        "privileges": [
-          "monitor",
-          "view_index_metadata"
-        ],
-        "allow_restricted_indices": true
-      }
-    ],
-    "applications": [],
-    "run_as": [],
-    "metadata": {
-      "description": "Allows Elastic agent to pull cluster metrics for AutoOps."
-    },
-    "transient_metadata": {
-      "enabled": true
+* (Recommended) Go to {{kib}} in your cluster and then go to **Developer tools**. In **Console**, run the following command:
+```js
+POST /_security/role/autoops
+{
+  "cluster": [
+    "monitor",
+    "read_ilm",
+    "read_slm"
+  ],
+  "indices": [
+    {
+      "names": [
+        "*"
+      ],
+      "privileges": [
+        "monitor",
+        "view_index_metadata"
+      ],
+      "allow_restricted_indices": true
     }
+  ],
+  "applications": [],
+  "run_as": [],
+  "metadata": {
+    "description": "Allows Elastic agent to pull cluster metrics for AutoOps."
+  },
+  "transient_metadata": {
+    "enabled": true
   }
-  ```
-  * Alternatively, manually assign the following privileges in your account:
+}
+```
+* Alternatively, manually assign the following privileges in your account:
 
-      | Setting | Privileges |
-      | --- | --- |
-      | Cluster privileges | `monitor`, `read_ilm`, and `read_slm` |
-      | Index privileges | Indices: `*` <br> `monitor`, `view_index_metadata`  |
+    | Setting | Privileges |
+    | --- | --- |
+    | Cluster privileges | `monitor`, `read_ilm`, and `read_slm` |
+    | Index privileges | Indices: `*` <br> `monitor`, `view_index_metadata`  |
 
-  :::{note}
-  If you manually assign privileges, you won't be able to allow {{agent}} to access restricted indices.
-  :::
-  ::::
+:::{note}
+If you manually assign privileges, you won't be able to allow {{agent}} to access restricted indices.
+:::
+::::
 
-  :::::
-* **System architecture**: Select the system architecture of the machine running the agent.
-* $$$storage-location$$$**Storage location**: Select a cloud service provider and region for storing your metrics data. For a list of the available options, refer to [Metrics storage locations](../autoops/cc-autoops-metrics-storage-locations.md).
+:::::
 
 $$$firewall-allowlist$$$
 ::::{note}
@@ -206,7 +226,9 @@ $$$firewall-allowlist$$$
 :::
 ::::
 
-### Install agent
+::::::
+
+::::::{step} Install agent
 
 The wizard generates an installation command or a YAML manifest based on your configuration. Depending on your installation method, complete the following steps to install the agent:
 
@@ -273,12 +295,14 @@ The status shows:
 If the connection is unsuccessful, an error message is displayed with a possible reason for the failure and recommended next steps. For a list of these errors, refer to [Potential errors](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md#potential-errors). Sometimes, an exact reason for the failure cannot be determined. In this case, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
 :::{tip}
-If you're having issues connecting your cluster to AutoOps and sending metrics to {{ecloud}}, run the [AutoOps Connectivity Check](../autoops/autoops-connectivity-check.md) to test your configuration.
+If you're having issues connecting your cluster to AutoOps and sending metrics to {{ecloud}}, run the [AutoOps Connectivity Check](autoops-connectivity-check.md) to test your configuration.
 :::
 
 To uninstall the agent, refer to [](/solutions/security/configure-elastic-defend/uninstall-elastic-agent.md).
 
-### Launch AutoOps
+::::::
+
+::::::{step} Launch AutoOps
 
 If the connection is successful, AutoOps starts analyzing your metrics and reporting on any issues found. Depending on the size of your cluster, this process can take up to 30 minutes. 
 
@@ -309,6 +333,10 @@ The agent runs in the namespace chosen for the policy. However, the agent can de
 After your setup is complete, the **View connected clusters** button is displayed in the wizard. Select it to view the clusters you have connected to [AutoOps](/deploy-manage/monitor/autoops.md).
 ::::
 :::::
+
+::::::
+
+:::::::
 
 ## Access AutoOps
 
