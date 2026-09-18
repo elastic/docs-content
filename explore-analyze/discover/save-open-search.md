@@ -43,7 +43,8 @@ A Discover session stores the following elements for each of its tabs:
 
 - The query mode ({{esql}} or Classic)
 - The query text and filters
-- The current view of **Discover**, including the columns, sort order, and column widths in the document table
+- If you turned on **Store time with Discover session**, the selected time filter and refresh interval
+- The current view of **Discover**, including the document table layout
 - The {{data-source}}
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The {icon}`bolt` **Fast mode** setting in {{esql}} mode. Refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The selected dimensions and the metric search term for [metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md).
