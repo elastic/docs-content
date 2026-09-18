@@ -23,7 +23,7 @@ The **Logs** tab in Elastic Application Performance Monitoring (APM) shows appli
 
 ## View log events
 
-The tab opens with **Log Events**, which lists individual events.
+The tab opens with **Log Events** selected, with the table showing each individual event.
 
 ## Group logs by pattern [apm-enhanced-logs]
 ```{applies_to}
