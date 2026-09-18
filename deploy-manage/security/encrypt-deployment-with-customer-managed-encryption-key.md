@@ -499,7 +499,7 @@ The endpoint returns an error in the following cases:
 * `400` with `byok_migration.ilm_policy_conflict` if an ILM policy uses the `found-snapshots` repository in a cold or frozen phase. Update those policies, then retry.
 * `500` with `byok_migration.ilm_policy_check_failed` if {{ecloud}} could not read the deployment's ILM policies to run that check. No plan change starts, and the request is safe to retry.
 
-{{ecloud}} then applies a plan change to encrypt your deployment's data and snapshots with your key. This plan change happens without downtime.
+{{ecloud}} then applies a plan change to encrypt your deployment's data and snapshots with your key. Each instance is replaced with an encrypted one, and your deployment stays accessible while re-encryption runs.
 
 ::::{note}
 Once you set a customer-managed key on a deployment, you cannot edit or remove it. Once encryption begins, you cannot undo it or switch to a different key. The ability to change or remove a customer-managed key will be supported on {{ech}} in the future.
