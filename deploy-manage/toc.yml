@@ -818,6 +818,7 @@ toc:
                   - file: monitor/logging-configuration/kibana-log-settings-examples.md
       - hidden: monitor/log-delivery.md
       - hidden: monitor/log-delivery/audit-trail.md
+      - hidden: monitor/log-delivery/cloud-audit-trail.md
   - file: kibana-reporting-configuration.md
   - file: kibana-custom-branding.md
   - file: cloud-organization.md
