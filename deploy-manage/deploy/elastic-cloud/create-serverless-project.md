@@ -16,7 +16,14 @@ type: how-to
 
 ## Before you begin
 
-* Decide which project type you might need before you create the project. You'll select a type during setup. To match a type to your use case, review this [project comparison table](/solutions/index.md#choose-your-path).
+* Decide which project type you might need before you create the project. You'll select one of the following types during setup:
+
+    * {{es}}
+    * {{vectordb}}
+    * {{observability}}
+    * Security
+
+  To match a type to your use case, review this [project comparison table](/deploy-manage/deploy/elastic-cloud/serverless.md#choose-a-project-type).
 
 * You can't convert a project to a different type later. If you choose the wrong type, create another project. When you no longer need a project, [delete it](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless) so it doesn't continue to incur charges.
 

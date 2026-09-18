@@ -2,7 +2,6 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/index.html
   - https://www.elastic.co/guide/en/serverless/current/intro.html
-  - https://www.elastic.co/guide/en/serverless/current/general-serverless-status.html
 applies_to:
   serverless:
 products:
@@ -49,11 +48,8 @@ Compared to {{ech}}, {{ece}}, {{eck}}, and self-managed clusters, {{serverless-s
   * **Data:** Choose the data you want to ingest and the method to ingest it. By default, data is stored indefinitely in your project, and you define the retention settings for your data streams.
   * **Performance:** For granular control over costs and query performance against your project data, serverless projects come with a set of predefined settings you can edit.
 
-:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
-:::
 
-
-## Section overview
+## Deploy a serverless project
 
 This section covers the tasks you perform to create, configure, and manage serverless projects. Start with the two steps that get a project running, then use the configuration pages to tune the project to your workload.
 
@@ -94,16 +90,16 @@ A project's type is fixed after you create it, but you can create as many projec
 
 ### Configure and manage your project
 
-After you create a project, review these pages to learn about the settings you can control and the tools you can use to manage projects at scale.
+Review these pages to learn about the settings you can control and the tools you can use to manage projects at scale.
 
 * [](/deploy-manage/deploy/elastic-cloud/regions.md): Review the available AWS, Azure, and GCP regions. You select a region during setup and you are unable to change it afterwards, so it affects latency and where your data resides.
 * [](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure Search AI Lake settings, feature tiers, tags, and connection aliases. These settings are your main controls over data retention, query performance, and cost.
 * [](/deploy-manage/deploy/elastic-cloud/manage-serverless-projects-using-api.md): Create and manage projects programmatically with the [{{serverless-full}} API]({{cloud-serverless-apis}}), for provisioning at scale or as part of your own automations. Calls are authenticated with an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md).
 * [](/deploy-manage/deploy/elastic-cloud/serverless-faq.md): Find answers to common questions about pricing, regions, moving data, backups, authentication, converting between project types, and support.
 
-## Other important sections
+## Operate and secure your projects
 
-Review these other sections for critical information about billing, data movement, security, and operating serverless projects.
+Once a project is running, these topics matter most: what drives your bill, how to move data in and out, how to control access, and how to monitor your project and get support.
 
 ### Billing and pricing
 

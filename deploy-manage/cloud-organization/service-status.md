@@ -3,7 +3,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-service-status.html
   - https://www.elastic.co/guide/en/cloud/current/ec_subscribe_to_individual_regionscomponents.html
   - https://www.elastic.co/guide/en/cloud/current/ec_service_status_api.html
-  - https://www.elastic.co/guide/en/serverless/current/general-serverless-status.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-service-status.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echservice_status_api.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echsubscribe_to_individual_regionscomponents.html
