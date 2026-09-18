@@ -454,20 +454,78 @@ The deployment is now created and encrypted using the specified key. Future snap
 
 ### Encrypt an existing deployment with your key [ec_encrypt_an_existing_deployment_with_a_customer_managed_key]
 
+You can add a customer-managed key to a running deployment from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) or the {{ecloud}} API.
+
+**Before you begin**
+
+Check your index lifecycle management policies. If any ILM policy in the deployment uses the Elastic-managed `found-snapshots` repository for a `searchable_snapshot` action in its cold or frozen phase, the request to enable encryption is rejected.
+
+To find affected policies, run `GET _ilm/policy` and look for `phases.cold.actions.searchable_snapshot.snapshot_repository` (or the `frozen` equivalent) set to `found-snapshots`. Update those policies, or point them at a custom snapshot repository, before you continue.
+
+**Using the {{ecloud}} Console**
+
 1. Go to your deployment's **Security** page.
 2. Under **Encryption at rest**, select **Manage encryption key**.
 3. Enter your key identifier (the ARN for {{aws}}, the key identifier for Azure, or the resource ID for Google Cloud) and save your changes.
 
-{{ecloud}} then applies a plan change to encrypt your deployment's data and snapshots with your key. This plan change happens without downtime.
+**Using the API**
+
+Encrypting an existing deployment uses a dedicated endpoint. You can't add a customer-managed key by updating a deployment's settings.
+
+1. [Get a valid {{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with the **Organization owner** role, or the **Admin** or **Editor** role on the deployment. The **Viewer** role and billing-only roles can't perform this operation.
+2. Send your key identifier to the `byok-migration` endpoint for your deployment. For example:
+
+    ```bash
+    curl -XPOST \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: ApiKey <replace with encoded API key>" \
+    "https://api.elastic-cloud.com/api/v1/deployments/<replace with deployment ID>/byok-migration" \
+    -d '
+    {
+      "key_resource_path": "<replace with your key ARN, Azure key identifier, or Google Cloud resource ID>"
+    }
+    '
+    ```
+
+    A successful request returns `"accepted": true`.
+
+If you send the same key again for a deployment that is already configured with that key, the request succeeds but no new plan change starts.
+
+The endpoint returns an error in the following cases:
+
+* `409` if the deployment is already encrypted with a different customer-managed key.
+* `409` if another plan is already pending on the deployment. Wait for that plan to finish, then retry.
+* `400` if the key can't be reached or isn't valid for the deployment's cloud provider.
+* `400` with `byok_migration.ilm_policy_conflict` if an ILM policy uses the `found-snapshots` repository in a cold or frozen phase. Update those policies, then retry.
+* `500` with `byok_migration.ilm_policy_check_failed` if {{ecloud}} could not read the deployment's ILM policies to run that check. No plan change starts, and the request is safe to retry.
+
+{{ecloud}} then applies a plan change to encrypt your deployment's data and snapshots with your key. Each instance is replaced with an encrypted one, and your deployment stays accessible while re-encryption runs.
 
 ::::{note}
 Once you set a customer-managed key on a deployment, you cannot edit or remove it. Once encryption begins, you cannot undo it or switch to a different key. The ability to change or remove a customer-managed key will be supported on {{ech}} in the future.
 ::::
 
+#### Monitor re-encryption progress
+
+In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), your deployment's **Overview** page shows a **Configuration change in progress** banner while re-encryption runs. The banner reports how far along it is, for example `3/8 instances complete, 5/8 remaining`. How long re-encryption takes depends on the size of your data and the {{stack}} version you're running. Individual instances are marked **Encrypted** as they complete.
+
+To see the underlying plan steps, select **View activity** in the banner, or go to the deployment's **Activity** page. Note that the plan change isn't labeled as a key migration there, so the **Overview** banner is the better place to watch progress.
+
+From the API, get the deployment and check `metadata.byok_migration_in_progress`:
+
+```bash
+curl -XGET \
+-H "Authorization: ApiKey <replace with encoded API key>" \
+"https://api.elastic-cloud.com/api/v1/deployments/<replace with deployment ID>?show_plans=true&show_settings=true"
+```
+
+While re-encryption is running, `metadata.byok_migration_in_progress` is `true`. When it finishes, that field is `false` and `settings.byok.key_resource_path` holds your key identifier.
+
 #### Considerations for existing deployments
 
 Keep these considerations in mind when adding a customer-managed key to an existing deployment:
 
+* **Use a highly available deployment.** Before you start, make sure your deployment is [set up for high availability](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-ech.md) with two or more availability zones. High availability isn't required, but each instance is removed once its encrypted replacement has taken over, so on a deployment without replicas each shard exists in only one copy while it relocates. On a single-availability-zone deployment, the only {{es}} node is also the elected master, so brief interruptions are possible while it's replaced.
 * **Let the process finish.** Once you start encryption with a customer-managed key, let encryption run to completion rather than interrupting it.
 * **Large deployments take longer.** For deployments with more than 1 TB of data, encrypting existing data can take a significant amount of time to complete.
 * **Data transfer costs can apply.** Encrypting an existing deployment can incur data transfer (DTS) costs in your cloud provider account. These costs are expected to be low for {{es}} 8.x and later deployments. Refer to [Reduce data transfer and storage (DTS) costs in {{ecloud}}](https://www.elastic.co/blog/reduce-data-transfer-and-storage-dts-costs-in-elastic-cloud) for more detail.
@@ -524,6 +582,12 @@ In a future release of {{ecloud}}, you will be able to:
 
 
 ## Troubleshooting [ec-encrypt-with-cmek-troubleshooting]
+
+**My request to encrypt an existing deployment failed with a conflict error. Why?**
+
+{{ecloud}} can only start the encryption plan change when no other plan is pending on the deployment. If you change your deployment's configuration and then add a customer-managed key straight afterwards, or if you run the operation across several deployments in a script, your request can arrive while an earlier plan is still running. Wait for the pending plan to finish, then retry.
+
+A conflict is also returned when the deployment is already encrypted with a different customer-managed key. A customer-managed key can't be changed once it's set, so in that case the operation won't succeed. Refer to [Encrypt an existing deployment with your key](#ec_encrypt_an_existing_deployment_with_a_customer_managed_key).
 
 **My deployment became inaccessible. What’s causing this?**
 
