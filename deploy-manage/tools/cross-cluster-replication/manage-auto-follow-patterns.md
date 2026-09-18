@@ -44,12 +44,7 @@ To manage auto-follow patterns, open {{kib}} for the local cluster that contains
 1. Go to the **Cross Cluster Replication** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **Auto-follow patterns** tab.
 
-From this tab, you can:
-
-* [Create auto-follow patterns](ccr-auto-follow-create.md)
-* [Retrieve auto-follow patterns](ccr-auto-follow-retrieve.md)
-* [Pause and resume auto-follow patterns](ccr-auto-follow-pause.md)
-* [Delete auto-follow patterns](ccr-auto-follow-delete.md)
+From this tab, you can create, pause, resume, and delete auto-follow patterns.
 
 
 
