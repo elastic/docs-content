@@ -40,7 +40,7 @@ Customize the appearance of the document table and its contents to your liking.
 
 ![Options to customize the table in Discover](/explore-analyze/images/kibana-discover-customize-table.png "")
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Use **View mode** in **Display options** to show the table as **Table** or **JSON**. **Table** is the default column layout. To inspect documents as a tree, refer to [View documents as JSON](#document-explorer-view-mode).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Use **View mode** in **Display options** to show the table as **Table** or **JSON**. **Table** is the default. This section covers the column layout. To inspect documents as a tree, refer to [View documents as JSON](#document-explorer-view-mode).
 
 
 ### Reorder and resize the columns [document-explorer-columns]
@@ -53,44 +53,15 @@ Customize the appearance of the document table and its contents to your liking.
   ::::
 
 
-### View documents as JSON [document-explorer-view-mode]
-```{applies_to}
-serverless: ga
-stack: ga 9.6+
-```
-
-**JSON** view shows each document as a collapsible tree in the table. Use it to inspect nested fields, copy a value or the whole document, and filter without opening the flyout.
-
-Open **Display options** in the table toolbar, then set **View mode** to **JSON**. The **Summary** column becomes **JSON**. If you add fields to the table, the tree shows only those fields. If you don't, it shows the full document.
-
-In the tree, expand or collapse nested objects and arrays with **Expand all** and **Collapse all**. Hover a field or value to copy it (**Copy value**, **Copy object**, or **Copy array**) or to filter for or filter out that value. Select **Copy all** to copy the document as JSON. Hold Command (or Ctrl) and select a nested object or array to expand its children.
-
-To control how much of each tree is visible, use **Display options**:
-
-* **Lines shown**: How many JSON nodes each cell expands by default. The range is 10 to 200. The default is 50.
-* **Hide nulls**: When **On**, Discover omits null values from the tree. The default is **Off**.
-* **Wrap lines**: When **On**, long values wrap onto more lines. When **Off**, each value is truncated to one line. The default is **On**.
-
-**Sample size** is still available. To page through one document and the documents around it, use the [document flyout](discover-get-started.md#look-inside-a-document).
-
-You can't filter on values Elasticsearch ignored at index time, or on values inside a JSON string that Discover expanded in the tree. If a document is too large to render in full, Discover shows a warning and displays the first 10,000 values.
-
-To return to the column layout, set **View mode** to **Table**. Then use [Adjust table layout](#document-explorer-table-view) for density and cell lines.
-
-**Discover** stores **View mode** and the JSON display settings with the session, on Discover session panels, and when you select [**Save table to dashboard**](save-open-search.md#save-table-to-dashboard).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Density** and cell line settings appear in **Display options** when **View mode** is **Table**. They are hidden in **JSON** view.
 
 
-### Adjust table layout [document-explorer-table-view]
-
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` These **Display options** appear when **View mode** is **Table**. They are hidden in **JSON** view.
-
-
-#### Customize the table density [document-explorer-density]
+### Customize the table density [document-explorer-density]
 
 You can adjust the density of the table from the **Display options** located in the table toolbar. This can be particularly useful when scrolling through many results.
 
 
-#### Adjust header and body cell lines [document-explorer-row-height]
+### Adjust header and body cell lines [document-explorer-row-height]
 
 Open **Display options** in the table toolbar. Set **Max header cell lines** and **Body cell lines** to **Auto** to fit the contents, or to **Custom** and enter a line count.
 
@@ -160,3 +131,30 @@ To change the numbers of results you want to display on each page, use the **Row
 :alt: Menu with options for setting the number of results in the document table
 :screenshot:
 :::
+
+
+## View documents as JSON [document-explorer-view-mode]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+**JSON** view shows each document as a collapsible tree in the table. Use it to inspect nested fields, copy a value or the whole document, and filter without opening the flyout.
+
+Open **Display options** in the table toolbar, then set **View mode** to **JSON**. The **Summary** column becomes **JSON**. If you add fields to the table, the tree shows only those fields. If you don't, it shows the full document.
+
+In the tree, expand or collapse nested objects and arrays with **Expand all** and **Collapse all**. Hover a field or value to copy it (**Copy value**, **Copy object**, or **Copy array**) or to filter for or filter out that value. Select **Copy all** to copy the document as JSON. Hold Command (or Ctrl) and select a nested object or array to expand its children.
+
+To control how much of each tree is visible, use **Display options**:
+
+* **Lines shown**: How many JSON nodes each cell expands by default. The range is 10 to 200. The default is 50.
+* **Hide nulls**: When **On**, Discover omits null values from the tree. The default is **Off**.
+* **Wrap lines**: When **On**, long values wrap onto more lines. When **Off**, each value is truncated to one line. The default is **On**.
+
+[**Sample size**](#document-explorer-sample-size) is still available. To page through one document and the documents around it, use the [document flyout](discover-get-started.md#look-inside-a-document).
+
+You can't filter on values Elasticsearch ignored at index time, or on values inside a JSON string that Discover expanded in the tree. If a document is too large to render in full, Discover shows a warning and displays the first 10,000 values.
+
+To return to the column layout, set **View mode** to **Table**. [**Density**](#document-explorer-density) and [cell lines](#document-explorer-row-height) are in [Modify the document table](#document-explorer-customize).
+
+**Discover** stores **View mode** and the JSON display settings with the session, on Discover session panels, and when you select [**Save table to dashboard**](save-open-search.md#save-table-to-dashboard).
