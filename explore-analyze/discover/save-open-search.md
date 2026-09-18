@@ -39,12 +39,12 @@ If you don’t have sufficient privileges to save Discover sessions, the followi
 2. Select **Save**.
 3. To reload your search results in **Discover**, select **Open session** (or **Open** in earlier versions) in the application menu, and select the saved Discover session.
 
-A Discover session stores:
+Each tab in a Discover session stores:
 
 - The query text and filters
-- The current view of **Discover**, including the columns and sort order in the document table
+- The current view of **Discover**, including the columns, sort order, and column widths in the document table
 - The {{data-source}}
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The {icon}`bolt` **Fast mode** setting for each tab in {{esql}} mode. Refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The {icon}`bolt` **Fast mode** setting in {{esql}} mode. Refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The selected dimensions and the metric search term for [metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md).
 
 If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
