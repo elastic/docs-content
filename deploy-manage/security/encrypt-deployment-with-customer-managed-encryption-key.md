@@ -525,6 +525,7 @@ While encryption is running, `metadata.byok_migration_in_progress` is `true`. Wh
 
 Keep these considerations in mind when adding a customer-managed key to an existing deployment:
 
+* **Use a highly available deployment.** Before you start, make sure your deployment is [set up for high availability](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-ech.md) with two or more availability zones. High availability isn't required, but each instance is removed once its encrypted replacement has taken over, so on a deployment without replicas each shard exists in only one copy while it relocates. On a single-availability-zone deployment, the only {{es}} node is also the elected master, so brief interruptions are possible while it's replaced.
 * **Let the process finish.** Once you start encryption with a customer-managed key, let encryption run to completion rather than interrupting it.
 * **Large deployments take longer.** For deployments with more than 1 TB of data, encrypting existing data can take a significant amount of time to complete.
 * **Data transfer costs can apply.** Encrypting an existing deployment can incur data transfer (DTS) costs in your cloud provider account. These costs are expected to be low for {{es}} 8.x and later deployments. Refer to [Reduce data transfer and storage (DTS) costs in {{ecloud}}](https://www.elastic.co/blog/reduce-data-transfer-and-storage-dts-costs-in-elastic-cloud) for more detail.
