@@ -61,7 +61,7 @@ Customize the appearance of the document table and its contents to your liking.
 You can adjust the density of the table from the **Display options** located in the table toolbar. This can be particularly useful when scrolling through many results.
 
 
-### Adjust header and body cell lines [document-explorer-row-height]
+### Adjust header and body row height [document-explorer-row-height]
 
 Open **Display options** in the table toolbar. Set **Max header cell lines** and **Body cell lines** to **Auto** to fit the contents, or to **Custom** and enter a line count.
 
