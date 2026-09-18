@@ -126,3 +126,10 @@ Elastic monitors [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) service me
 ## Logging
 
 You can configure several types of logs in {{stack}} that can help you to gain insight into {{stack}} operations, diagnose issues, and track certain types of events. [Learn about the types of logs available, where to find them, and how to configure them](/deploy-manage/monitor/logging-configuration.md).
+
+## Audit logging
+
+Audit logging helps you track who did what in your Elastic environment.
+
+* To audit {{es}} and {{kib}} activity within a deployment, enable [](/deploy-manage/security/logging-configuration/security-event-audit-logging.md).
+* In {{fedramp-mod}} environments, you can also audit organization-level actions such as deployment management, API key usage, and sign-in activity. Refer to [](/deploy-manage/monitor/log-delivery/cloud-audit-trail.md).
