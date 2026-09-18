@@ -454,7 +454,7 @@ The deployment is now created and encrypted using the specified key. Future snap
 
 ### Encrypt an existing deployment with your key [ec_encrypt_an_existing_deployment_with_a_customer_managed_key]
 
-You can add a customer-managed key to a deployment that is already running, from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) or from the {{ecloud}} API.
+You can add a customer-managed key to a running deployment from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) or the {{ecloud}} API.
 
 **Before you begin**
 
