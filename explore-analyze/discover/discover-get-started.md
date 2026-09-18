@@ -391,8 +391,6 @@ You can send your long-running KQL or {{esql}} queries to the background from **
 
 Save your Discover session so you can use it later, generate a CSV report, or use it to create visualizations, dashboards, and Canvas workpads. Saving a Discover session saves all open tabs, along with their query text, filters, and current view of **Discover**, including the columns selected in the document table, the sort order, and the {{data-source}}.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The saved view also includes **View mode** and the JSON display settings. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
-
 1. In the application menu, select **Save**.
 2. Enter a title and a description for the session.
 3. Optionally store [tags](../find-and-organize/tags.md) and the time range with the session.
