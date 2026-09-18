@@ -458,7 +458,7 @@ You can add a customer-managed key to a deployment that is already running, from
 
 **Before you begin**
 
-Check your index lifecycle management policies. If any ILM policy in the deployment uses the Elastic-managed `found-snapshots` repository for a `searchable_snapshot` action in its cold or frozen phase, encryption is rejected before it starts.
+Check your index lifecycle management policies. If any ILM policy in the deployment uses the Elastic-managed `found-snapshots` repository for a `searchable_snapshot` action in its cold or frozen phase, the request to enable encryption is rejected.
 
 To find affected policies, run `GET _ilm/policy` and look for `phases.cold.actions.searchable_snapshot.snapshot_repository` (or the `frozen` equivalent) set to `found-snapshots`. Update those policies, or point them at a custom snapshot repository, before you continue.
 
