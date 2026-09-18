@@ -23,7 +23,7 @@ The **Logs** tab in Elastic Application Performance Monitoring (APM) shows appli
 
 ## View log events
 
-The tab opens with **Log Events** selected, with the table showing each individual event.
+The tab opens with **Log Events** selected, with the table showing each individual event. Use this view when you already have a specific event in mind: an error message, a timestamp, or a `trace.id` from a failed transaction. Select a row to inspect the message and fields, or select **Open logs in Discover** to search the same documents with a wider query.
 
 ## Group logs by pattern [apm-enhanced-logs]
 ```{applies_to}
