@@ -29,7 +29,7 @@ kNN vector similarity search supports use cases across search, recommendations, 
   - [Personalized content discovery](vector-search-use-cases.md#discovery-and-recommendations): Suggest articles, media, or other content tailored to individual user interests.
 
 - **Analysis**
-  - [Anomaly detection](vector-search-use-cases.md#duplicate-detection-fraud-and-anomaly-detection): Flag records whose vectors sit unusually far from their nearest neighbors.
+  - [{{anomaly-detect-cap}}](vector-search-use-cases.md#duplicate-detection-fraud-and-anomaly-detection): Flag records whose vectors sit unusually far from their nearest neighbors.
   - [Pattern matching](vector-search-use-cases.md#duplicate-detection-fraud-and-anomaly-detection): Find near-duplicates, suspicious matches, or other patterns that exact matching would miss.
 
 ## Prerequisites for kNN search [knn-prereqs]
@@ -38,7 +38,7 @@ To run a kNN search in {{es}}:
 
 - Your data must be vectorized. You can:
   - Use [`semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) to have Elastic generate embeddings automatically.
-  - Use the [Elastic Inference Service](/explore-analyze/elastic-inference/elastic-inference-service.md) for managed inference.
+  - Use the [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) for managed {{infer}}.
   - [Deploy an NLP model](/explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md) on an ML node.
   - Generate vectors outside of your Elastic deployment. Learn how to [Bring your own dense vectors](bring-own-vectors.md).
 
@@ -51,7 +51,7 @@ Query vectors must have the same dimension and be created with the same model as
   - `create`, `index`, or `write` to add data
   - `read` to search the index
 
-If you're using {{serverless-full}}, [compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type) before implementing kNN search.
+If you're using {{serverless-full}}, [compare {{es}} and {{vectordb}} projects](/solutions/vector-database.md#when-to-use-this-project-type) before implementing kNN search.
 
 ## kNN search methods [knn-methods]
 
@@ -165,7 +165,7 @@ POST image-index/_search
 
 ### Find more examples by method
 
-For approximate kNN filtering, similarity thresholds, hybrid search, multiple vector fields, and aggregations, refer to [Examples of using approximate kNN in search queries](knn/approximate-knn-query-examples.md).
+For approximate kNN similarity thresholds, hybrid search, multiple vector fields, and aggregations, refer to [Approximate kNN query examples](knn/approximate-knn-query-examples.md). For filtering, refer to [Filter approximate kNN results](knn/filtered-knn-search.md).
 
 For exact kNN filtering and scoring examples, refer to [Exact kNN search](knn/exact-knn.md).
 

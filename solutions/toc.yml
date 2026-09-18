@@ -47,8 +47,9 @@ toc:
                     children:
                       - file: search/vector/knn/approximate-knn.md
                         children:
-                          - file: search/vector/knn/approximate-knn-query-examples.md
+                          - file: search/vector/knn/filtered-knn-search.md
                           - file: search/vector/knn/nested-knn-search.md
+                          - file: search/vector/knn/approximate-knn-query-examples.md
                           - file: search/vector/knn/optimize-performance-accuracy.md
                       - file: search/vector/knn/exact-knn.md
                   - file: search/vector/bring-own-vectors.md

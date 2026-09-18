@@ -6,7 +6,7 @@ applies_to:
   serverless:
 ---
 
-# Approximate kNN search
+# Approximate kNN search [approximate-knn]
 
 Approximate kNN search uses graph-based or clustered index structures to find similar vectors quickly at scale. Use it for most production workloads where you need low latency at scale. This page covers approximate kNN search methods, a basic example, mapping defaults, indexing considerations, and vector index mode.
 

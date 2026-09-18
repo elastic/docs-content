@@ -1,18 +1,18 @@
 ---
-navigation_title: Nested kNN search
+navigation_title: Nested approximate kNN search
 description: Run approximate kNN search on nested dense_vector fields for passage retrieval, filtering, inner hits, and chunked content in Elasticsearch.
 applies_to:
   stack:
   serverless:
 ---
 
-# Nested kNN search [nested-knn-search]
+# Nested approximate kNN search [nested-knn-search]
 
-Nested kNN search lets you find the most relevant passage or chunk inside long documents by storing a separate vector for each nested section and returning parent documents ranked by their best match. This approach is useful when a single document is too long to embed as one vector, such as when a support portal needs to surface the most relevant paragraph from a long troubleshooting guide in response to a user question.
+Nested approximate kNN search lets you find the most relevant passage or chunk inside long documents by storing a separate vector for each nested section and returning parent documents ranked by their best match. This approach is useful when a single document is too long to embed as one vector, such as when a support portal needs to surface the most relevant paragraph from a long troubleshooting guide in response to a user question.
 
-This page covers a basic mapping and query example, filtering, inner hits, and chunked content retrieval. For other approximate kNN query examples, refer to [Examples of using approximate kNN in search queries](approximate-knn-query-examples.md).
+This page covers a basic mapping and query example, filtering, inner hits, and chunked content retrieval. For other approximate kNN query examples, refer to [Approximate kNN query examples](approximate-knn-query-examples.md).
 
-## Run a basic nested kNN search [nested-knn-basic-example]
+## Run a basic nested approximate kNN search [nested-knn-basic-example]
 
 When text exceeds a model’s token limit, chunking must be performed before generating embeddings for each chunk. By combining [`nested`](elasticsearch://reference/elasticsearch/mapping-reference/nested.md) fields with [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md), you can perform nearest passage retrieval without copying top-level document metadata.
 
@@ -96,7 +96,7 @@ POST passage_vectors/_search
 }
 ```
 
-Note that even with 4 total nested vectors, the response still returns two documents. kNN search over nested dense vectors will always diversify the top results over the top-level document. `"k"` top-level documents will be returned, scored by their nearest passage vector (for example, `"paragraph.vector"`).
+Note that even with 4 total nested vectors, the response still returns two documents. Approximate kNN search over nested dense vectors will always diversify the top results over the top-level document. `"k"` top-level documents will be returned, scored by their nearest passage vector (for example, `"paragraph.vector"`).
 
 ```console-result
 {
@@ -147,7 +147,7 @@ Note that even with 4 total nested vectors, the response still returns two docum
 ```
 
 
-## Filtering in nested kNN search [nested-knn-search-filtering]
+## Filter in nested approximate kNN search [nested-knn-search-filtering]
 
 Use filters in nested kNN search when you want the most similar passages, but only from documents or chunks that match specific criteria. For example, you might search for relevant paragraphs in documents created in a date range, written in a particular language, or authored by a specific person.
 
@@ -187,7 +187,7 @@ POST passage_vectors/_search
 
 With the top-level `creation_time` filter applied, only document `1` falls within the specified range, so the response contains a single hit.
 
-## Filtering on nested metadata [nested-knn-search-filtering-nested-metatadata]
+## Filter on nested metadata [nested-knn-search-filtering-nested-metatadata]
 ```{applies_to}
 stack: ga 9.2
 ```
@@ -237,7 +237,7 @@ POST passage_vectors/_search
 }
 ```
 
-## Filtering by sibling nested fields [nested-knn-search-filtering-sibling]
+## Filter by sibling nested fields [nested-knn-search-filtering-sibling]
 ```{applies_to}
 stack: ga 9.2
 ```
@@ -278,9 +278,9 @@ POST passage_vectors/_search
 }
 ```
 
-## Nested kNN search with inner hits [nested-knn-search-inner-hits]
+## Nested approximate kNN search with inner hits [nested-knn-search-inner-hits]
 
-Use `inner_hits` when nested kNN search should return both the matching parent document and the specific passage that produced the score.
+Use `inner_hits` when nested approximate kNN search should return both the matching parent document and the specific passage that produced the score.
 
 Add [inner_hits](elasticsearch://reference/elasticsearch/rest-apis/retrieve-inner-hits.md) to the `knn` clause to include the nearest matching nested passage in the response.
 
