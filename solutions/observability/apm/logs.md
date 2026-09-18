@@ -35,8 +35,8 @@ Select **Log Events**, then select **Log Patterns** to group similar messages. E
 
 The [`observability:newLogsOverview`](kibana://reference/advanced-settings.md#observability-new-logs-overview) advanced setting controls log pattern grouping:
 
-* {applies_to}`stack: preview 9.0-9.1` The setting is off by default. Turn it on to use **Log Patterns**.
 * {applies_to}`{"stack": "preview 9.2+", "serverless": "preview"}` The setting is on by default. Turn it off to hide **Log Patterns**.
+* {applies_to}`stack: preview 9.0-9.1` The setting is off by default. Turn it on to use **Log Patterns**.
 
 The **Logs** tab searches indices that match the patterns configured in `observability:logSources`. To include custom log indices, see [](/solutions/observability/logs/log-data-sources.md).
 
