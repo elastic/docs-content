@@ -35,7 +35,7 @@ For more detail about how agents communicate their status to {{fleet}}, refer to
 
 ## View agent status overview [view-agent-status]
 
-To view the overall status of your {{fleet}}-managed agents, in {{kib}}, go to **Management → {{fleet}} → Agents**.
+To view the overall status of your {{fleet}}-managed agents, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Agents** tab.
 
 :::{image} images/kibana-fleet-agents.png
 :alt: Agents tab showing status of each {{agent}}
@@ -66,7 +66,7 @@ This diagram shows the flow of {{agent}} statuses:
 :alt: Diagram showing the flow of Fleet Agent statuses
 :::
 
-To filter the list of agents by status, click the **Status** dropdown and select one or more statuses.
+To filter the list of agents by status, click **Status**, then select one or more statuses.
 
 :::{image} images/agent-status-filter.png
 :alt: Agent Status dropdown with multiple statuses selected
@@ -87,23 +87,21 @@ In {{fleet}}, you can access the detailed status of an individual agent and the 
 1. In {{fleet}}, open the **Agents** tab.
 2. In the **Host** column, click the agent’s name.
 
-On the **Agent details** tab, the **Overview** pane shows details about the agent and its performance, including its memory and CPU usage, last activity time, and last checkin message. To access metrics visualizations, you can also [View the {{agent}} metrics dashboard](#view-agent-metrics).
+On the **Agent details** tab, the **Overview** section shows the agent's CPU and memory usage, status, last activity and check-in message, policy, version, host, outputs, logging level, privilege mode, platform, monitoring settings, tags, and FIPS mode. To access metrics visualizations, you can also [view the {{agent}} metrics dashboard](#view-agent-metrics).
 
 :::{image} images/agent-detail-overview.png
-:alt: Agent details overview pane with various metrics
+:alt: Agent details Overview section with resource usage, status, policy, outputs, and monitoring settings
+:screenshot:
 :::
 
-The **Integrations** pane shows the status of the integrations that have been added to the agent policy. Expand any integration to view its health status. Any errors or warnings are displayed as alerts.
+The **Integrations** section lists the integrations in the agent policy. Expand an integration, then expand **Inputs** or **Outputs** to view component health.
 
 :::{image} images/agent-detail-integrations-health.png
-:alt: Agent details integrations pane with health status
+:alt: Integrations section with expanded input health
+:screenshot:
 :::
 
-To gather more detail about a particular error or warning, from the **Actions** menu select **View agent JSON**. The JSON contains all of the raw agent data tracked by Fleet.
-
-::::{note}
-Currently, the **Integrations** pane shows the health status only for agent inputs. Health status is not yet available for agent outputs.
-::::
+To gather more detail about a particular error or warning, select **Actions → Maintenance and diagnostics → View agent JSON**. The JSON contains all of the raw agent data tracked by Fleet.
 
 
 
