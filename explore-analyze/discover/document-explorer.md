@@ -152,8 +152,8 @@ To control how much of each tree is visible, use **Display options**:
 * **Wrap lines**: When **On**, long values wrap onto more lines. When **Off**, each value is truncated to one line. The default is **On**.
 * [**Sample size**](#document-explorer-sample-size). To page through one document and the documents around it, use the [document flyout](discover-get-started.md#look-inside-a-document).
 
-You can't filter on values Elasticsearch ignored at index time, or on values inside a JSON string that Discover expanded in the tree. If a document is too large to render in full, Discover shows a warning and displays the first 10,000 values.
+You can't filter on values {{es}} ignored at index time, or on values inside a JSON string that **Discover** expanded in the tree. If a document is too large to render in full, **Discover** shows a warning and displays the first 10,000 values.
 
 To return to the column layout, set **View mode** to **Table**. [**Density**](#document-explorer-density) and [cell lines](#document-explorer-row-height) are in [Modify the document table](#document-explorer-customize).
 
-**Discover** stores **View mode** and the JSON display settings with the session, on Discover session panels, and when you select [**Save table to dashboard**](save-open-search.md#save-table-to-dashboard).
+A saved Discover session stores **View mode** and the JSON display settings. Discover session panels and [**Save table to dashboard**](save-open-search.md#save-table-to-dashboard) keep those settings too.
