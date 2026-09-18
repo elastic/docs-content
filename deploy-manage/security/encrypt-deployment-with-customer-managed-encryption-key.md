@@ -505,7 +505,7 @@ The endpoint returns an error in the following cases:
 Once you set a customer-managed key on a deployment, you cannot edit or remove it. Once encryption begins, you cannot undo it or switch to a different key. The ability to change or remove a customer-managed key will be supported on {{ech}} in the future.
 ::::
 
-#### Track the encryption progress
+#### Monitor re-encryption progress
 
 In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), your deployment's **Overview** page shows a **Configuration change in progress** banner while re-encryption runs. The banner reports how far along it is, for example `3/8 instances complete, 5/8 remaining`. How long re-encryption takes depends on the size of your data and the {{stack}} version you're running. Individual instances are marked **Encrypted** as they complete.
 
