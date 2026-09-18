@@ -152,7 +152,7 @@ Most prebuilt rules don't start running by default. Use **Install and enable** t
     ::::
 
     :::{image} /solutions/images/security-prebuilt-rules-add.png
-    :alt: The Add Elastic Rules page
+    :alt: Add Elastic rules page with search, Tags filter, and Install all
     :screenshot:
     :::
 
