@@ -161,4 +161,4 @@ You can't filter on values {{es}} ignored at index time, or on values inside a J
 
 To return to the column layout, set **View mode** to **Table**. [**Density**](#document-explorer-density) and [cell lines](#document-explorer-row-height) are in [Modify the document table](#document-explorer-customize).
 
-A saved Discover session stores **View mode** and the JSON display settings. Discover session panels and [**Save table to dashboard**](save-open-search.md#save-table-to-dashboard) keep those settings too.
+If you save the session in **JSON** view, you get the same tree and the same **Lines shown**, **Hide nulls**, and **Wrap lines** values when you open it again. A dashboard panel from that session, or from [**Save table to dashboard**](save-open-search.md#save-table-to-dashboard), looks the same.
