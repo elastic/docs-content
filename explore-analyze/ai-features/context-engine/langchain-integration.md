@@ -24,7 +24,7 @@ Examples on this page use Python. The same approach works in LangChain.js.
 
 * An {{stack}} deployment with an Enterprise license, or an {{serverless-full}} project.
 * The `contextEngine:enabled` advanced setting turned on in the space you want to query. This setting is per space, and the APIs return `404` in any space where it's off.
-* At least one AI Index containing Knowledge Indicators (KIs). See [Create an AI index](quickstart.md#2-create-an-ai-index) if you don't have one yet.
+* At least one AI Index containing Knowledge Indicators (KIs). See [Create an AI index](quickstart.md#2.-create-an-ai-index) if you don't have one yet.
 * An API key whose privileges cover both Kibana and Elasticsearch. [Step 1](#step-1-create-an-api-key) walks through this.
 * Python 3.10 or later, with `langchain` installed.
 
