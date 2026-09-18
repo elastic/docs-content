@@ -16,7 +16,9 @@ After you create rules in the {{alerting-v2-system}}, go to **Alerting V2 Previe
 
 Use the search bar to find rules by name or description. Each space-separated term is matched independently using prefix matching. Tags and grouping fields appear in results but aren't searchable.
 
-Combine text search with filter controls to narrow by rule type, status, or tags. Select any column header to sort. To act on several rules at once, use bulk actions to enable, disable, or delete them, or to [update their API keys](#rotate-rule-api-key).
+Combine text search with filter controls to narrow by rule type, status, or tags. Select any column header to sort, or use bulk actions to enable, disable, or delete multiple rules at once.
+
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` You can also [update the API keys](#rotate-rule-api-key) of multiple rules at once.
 
 ## Edit a rule inline [quick-edit-rule]
 
@@ -38,7 +40,9 @@ The rule details page is organized into tabs that let you review a rule's config
 - **Conditions**: The rule's base query, alert condition, schedule, lookback, grouping, and recovery settings.
 - **Runbook**: The rule's investigation guide, if one has been added. Use it to document steps for diagnosing or responding to alerts produced by this rule.
 
-Use **Edit** to modify the rule. From the actions menu, you can enable, disable, clone, or delete the rule, or [update its API key](#rotate-rule-api-key).
+Use **Edit** to modify the rule, or the actions menu to enable, disable, clone, or delete it.
+
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` The actions menu also includes **Update API key**. Refer to [Rotate a rule's API key](#rotate-rule-api-key).
 
 ## Disable or snooze a rule [disable-snooze-rule]
 
@@ -50,20 +54,21 @@ stack: experimental 9.6+
 serverless: experimental
 ```
 
-A rule queries your data with an API key from the user who last saved it. That key doesn't expire on its own, so it can outlast the privileges of the user it came from. To replace the key without editing the rule, select **Update API key**. {{kib}} generates a new key from your credentials and privileges, invalidates the previous key, and keeps the rule's schedule and enabled state. After the rotation, **Last updated by** on the rule details page shows your name.
+A rule queries your data with an API key from the user who last saved it. That key doesn't expire on its own, so a rule can keep running with access that the user it came from has since lost. To replace the key without editing the rule, select **Update API key**. {{kib}} generates a new key from your own credentials, invalidates the previous key, and keeps the rule's schedule and enabled state. After the rotation, **Last updated by** on the rule details page shows your name.
 
-The new key carries your privileges, so rotate a key only if you have every privilege the rule needs. If your privileges are narrower than those of the user who last saved the rule, the rule fails on its next run.
+Before you rotate a key, check two things:
+
+- **Your own access.** The new key carries your access, so the rule can reach only the data that you can reach. If your access is narrower than that of the user who last saved the rule, the rule fails on its next run.
+- **The rule's state.** You can rotate a key only for a rule that's enabled. For a disabled rule, **Update API key** stays unavailable until you enable the rule. If a rule is running when you select the action, the rotation skips that rule, so try again after the run finishes.
 
 You can select **Update API key** from any of these places:
 
 - The rule details page
 - A row's actions menu on the **Rules** page
 - The rule summary flyout
-- Bulk actions, after you select the rules you want to update
+- The bulk actions menu on the **Rules** page
 
-When you rotate keys in bulk, {{kib}} names any rule it can't update in the notification and rotates the rest.
-
-You can rotate a key only for a rule that's enabled. For a disabled rule, **Update API key** stays unavailable until you enable the rule. If a rule is running when you select the action, the rotation skips it. Try again after the run finishes.
+When you rotate keys in bulk, {{kib}} lists any rule it couldn't update in the notification and rotates the rest.
 
 ## Related pages
 
@@ -71,3 +76,4 @@ You can rotate a key only for a rule that's enabled. For a disabled rule, **Upda
 - [Review rule execution history](review-rule-execution-history.md): Monitor rule execution outcomes across all rules in a space.
 - [View and manage alerts](../alerts/view-and-manage-alerts.md): Triage and investigate the alert episodes a rule produces.
 - [Rule, action policy, and workflow authorization](../authorization.md): Understand which credential authorizes each operation and how to fix authorization errors.
+- [Manage action policies](../action-policies/manage-action-policies.md): Rotate an action policy's API key, which is separate from a rule's.
