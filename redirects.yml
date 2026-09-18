@@ -1254,5 +1254,24 @@ redirects:
       '_serverless_deployments': 'find-endpoint-cloud-self-managed'
       'find-cloud-id-serverless': 'find-endpoint-cloud-self-managed'
       'create-an-api-key-serverless': 'create-an-api-key-cloud-self-managed'
+
+  # Move Elastic Cloud Serverless FAQ to a child page
+  'deploy-manage/deploy/elastic-cloud/serverless.md':
+    to: 'deploy-manage/deploy/elastic-cloud/serverless.md'
+    many:
+    - to: 'deploy-manage/deploy/elastic-cloud/serverless-faq.md'
+      anchors:
+        'general-what-is-serverless-elastic-answers-to-common-serverless-questions':
+        'pricing-and-availability': 'pricing-and-availability'
+        'data-management': 'data-management'
+        'security-compliance-and-access': 'security-compliance-and-access'
+        'project-lifecycle-and-support': 'project-lifecycle-and-support'
+    - to: 'deploy-manage/cloud-organization/service-status.md'
+      anchors:
+        'general-serverless-status':
+    - to: 'deploy-manage/deploy/elastic-cloud/serverless.md'
+      anchors:
+        'serverless-overview': 'how-serverless-works'
+
   # Related to https://github.com/elastic/docs-content/pull/7977
   'solutions/security/get-started/siem-readiness.md': '!solutions/security/get-started.md'

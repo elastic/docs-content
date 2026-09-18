@@ -44,6 +44,7 @@ toc:
               - file: deploy/elastic-cloud/regions.md
               - file: deploy/elastic-cloud/project-settings.md
               - file: deploy/elastic-cloud/manage-serverless-projects-using-api.md
+              - file: deploy/elastic-cloud/serverless-faq.md
           - file: deploy/elastic-cloud/cloud-hosted.md
             children:
               - file: deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md
