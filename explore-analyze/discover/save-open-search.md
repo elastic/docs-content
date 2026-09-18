@@ -39,8 +39,9 @@ If you don’t have sufficient privileges to save Discover sessions, the followi
 2. Select **Save**.
 3. To reload your search results in **Discover**, select **Open session** (or **Open** in earlier versions) in the application menu, and select the saved Discover session.
 
-Each tab in a Discover session stores:
+A Discover session stores the following elements for each of its tabs:
 
+- The query mode ({{esql}} or Classic)
 - The query text and filters
 - The current view of **Discover**, including the columns, sort order, and column widths in the document table
 - The {{data-source}}
