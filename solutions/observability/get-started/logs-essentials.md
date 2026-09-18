@@ -142,5 +142,5 @@ Many {{observability}} integrations are available to collect and process your da
 * [{{obs-serverless}} billing dimensions](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
 * [Log monitoring](/solutions/observability/logs.md)
 
-:::{related-learning} semantic-search-text-embedding
+:::{related-learning} logs-essentials
 :::
