@@ -14,7 +14,9 @@ products:
 
 # Logs [apm-logs]
 
-The **Logs** tab in Elastic Application Performance Monitoring (APM) shows application and container log events for a service so you can troubleshoot slow or failed transactions. Select a service, then select **Logs**. The tab applies the selected environment, query, and time range.
+To troubleshoot a slow or failed transaction, select a service, then select **Logs**. The tab shows that service's application and container log events, while maintaining any environment, query, and time range filters already set.
+
+From here you can inspect a specific failure, group similar messages to see what's changed, or jump from a correlated log to its trace.
 
 :::{image} /solutions/images/observability-logs.png
 :alt: Logs tab grouping service logs into patterns with event counts and timelines
