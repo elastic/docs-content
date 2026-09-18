@@ -67,10 +67,10 @@ To use the {{ecloud}} audit trail, you need the following:
 
 ## Set up {{ecloud}} audit trail
 
-To set up {{ecloud}} audit trail, you [install the integration](#install-integration) on a destination deployment, then [enable delivery](#enable-delivery) through the API. After events are flowing, you can [explore your audit trail](#explore-audit-trail) in {{kib}}.
+To set up {{ecloud}} audit trail, you [install the integration](#install-the-ecloud-integration) on a destination deployment, then [enable delivery](#enable-audit-log-delivery) through the API. After events are flowing, you can [explore your audit trail](#explore-your-audit-trail) in {{kib}}.
 
 :::::::{stepper}
-:::::{step} Install the {{ecloud}} integration
+:::::{step} Install the {{ecloud}} integration [install-the-ecloud-integration]
 
 Before you enable delivery, install the **{{ecloud}}** integration on the destination deployment. The integration sets up everything you need to index and explore audit log events.
 
