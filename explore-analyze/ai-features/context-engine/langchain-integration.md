@@ -350,7 +350,7 @@ if __name__ == "__main__":
 Each entry from the list tool gives the agent:
 
 * `id`, to pass to describe.
-* `esql_target`, the exact string to put after `FROM`. Use it verbatim: it differs from the ID (`sales-knowledge` becomes `ai-index-idx-sales-knowledge`) and may be a wildcard or a data stream.
+* `esql_target`, the exact string to put after `FROM`. Use it verbatim: it differs from the ID (`sales-knowledge` becomes `ai-index-idx-sales-knowledge`) and can be a wildcard or a data stream.
 * `description` and `managed`, to choose between entries.
 
 ## Query a different space
