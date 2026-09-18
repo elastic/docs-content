@@ -82,6 +82,22 @@ The Operator provides a deployment of the {{agent}} and configuration environmen
 
 For details about the pipelines, refer to [Managed OTLP Endpoint](elastic-agent://reference/edot-collector/config/default-config-k8s.md#managed-otlp-endpoint).
 
+#### Deploy on OpenShift [edot-k8s-ech-openshift]
+
+```{applies_to}
+edot_collector: ga 9.5.5+
+```
+
+On OpenShift, follow the [manual installation instructions](#manual-installation) and use the following command to apply the OpenShift values file after the `managed_otlp` values file:
+
+```bash subs=true
+helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
+--namespace opentelemetry-operator-system \
+--values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml' \
+--values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/openshift/values.yaml' \
+--version '{{kube-stack-version}}'
+```
+
 ::::
 
 ::::{step} Auto-instrument applications
@@ -134,6 +150,8 @@ helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
 --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/values.yaml' \
 --version '{{kube-stack-version}}'
 ```
+
+{applies_to}`edot_collector: ga 9.5.5+` On OpenShift, add the OpenShift values file after the base values file. Refer to [Deploy on OpenShift](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md#k8s-edot-deployment-openshift).
 
 For details about the pipelines, refer to [Direct ingestion into {{es}}](elastic-agent://reference/edot-collector/config/default-config-k8s.md#direct-ingestion-into-elasticsearch).
 
