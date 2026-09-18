@@ -5,6 +5,7 @@ applies_to:
   stack: ga
 products:
   - id: observability
+description: Step-by-step tutorial for monitoring Kubernetes deployments with Elastic Observability, from cluster metrics and logs to application traces and alerts.
 cta:
   id: monitor-kubernetes
 ---
@@ -1156,16 +1157,14 @@ kubectl apply -f demo.yml
 
 ### View your application’s traces in {{kib}} [_view_your_applications_traces_in_kib]
 
-Application trace data is available in the **Service Inventory**. To open **Service Inventory**, find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Application trace data is available in **Service inventory**. To open **Service inventory**, find **Applications** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-The **Applications** app allows you to monitor your software services and applications in real-time: visualize detailed performance information on your services, identify and analyze errors, and monitor host-level and agent-specific metrics like JVM and Go runtime metrics.
+Use **Applications** to analyze service performance, errors, and available system, process, and runtime metrics.
 
 :::{image} /solutions/images/observability-apm-app-landing.png
-:alt: Applications UI Kubernetes
+:alt: Service inventory showing latency, throughput, and failed transaction rate
 :screenshot:
 :::
-
-Having access to application-level insights with just a few clicks can drastically decrease the time you spend debugging errors, slow response times, and crashes.
 
 Best of all, because Kubernetes environment variables have been mapped to APM metadata events, you can filter your trace data by Kubernetes `namespace`, `node.name`, `pod.name`, and `pod.uid`.
 

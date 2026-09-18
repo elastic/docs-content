@@ -11,13 +11,14 @@ products:
   - id: observability
   - id: apm
   - id: cloud-serverless
+description: Collect application telemetry with Elastic APM using EDOT SDKs or APM agents, then verify ingestion and analyze services in the Service inventory.
 ---
 
 # Get started with traces and APM [apm-getting-started-apm-server]
 
-Elastic APM receives performance data from your APM agents or [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md), validates and processes it, and then transforms the data into {{es}} documents.
+{{apm-server-or-mis}} receives telemetry from APM agents and [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md), then transforms accepted events into {{es}} documents.
 
-In this guide you'll learn how to collect and send Application Performance Monitoring (APM) data to Elastic, then explore and visualize the data in real time.
+In this guide, you'll learn how to collect and send application performance monitoring (APM) data to Elastic, then explore and visualize the data.
 
 ::::{note}
 For a general Elastic {{observability}} overview, refer to [Get started with observability](/solutions/observability/get-started.md).
@@ -27,38 +28,46 @@ For a general Elastic {{observability}} overview, refer to [Get started with obs
 
 Follow these steps to send APM data to Elastic.
 
-::::{admonition} Required role
+::::{admonition} Required permissions
 :class: note
 
-**For Observability Serverless projects**, the **Admin** role or higher is required to send APM data to Elastic. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+For {{obs-serverless}} projects, you need permission to create API keys and write APM data. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 ::::
 
 ::::::{stepper}
 
-:::::{step} Create an Observability project
+:::::{step} Create or open your deployment
+
+If you're using {{obs-serverless}}, create a project:
 
 :::{include} /solutions/_snippets/obs-serverless-project.md
 :::
 
+If you're using {{stack}}, open an existing deployment or refer to [Deploy](/deploy-manage/deploy.md) to create one.
+
 :::::
 
-:::::{step} Add data using {{edot}} or APM Agents
+:::::{step} Add data using {{edot}} or APM agents
 
-To send APM data to Elastic, you must install an Elastic Distribution of OpenTelemetry or an APM agent and configure it to send data to your project:
+To send APM data to Elastic, install an {{edot}} SDK or an APM agent and configure it to send data to your deployment:
 
 1.  ::::{include} /solutions/_snippets/obs-apm-project.md
     ::::
 
-2. If you’re using the step-by-step instructions in the UI, after you’ve installed and configured an agent, you can click **Check Agent Status** to verify that the agent is sending data.
+2. If you use an APM agent, verify its connection:
+    * {applies_to}`stack: ga` Click **Check agent status**.
+    * {applies_to}`serverless: ga` Click **Check status**.
+
+    The OpenTelemetry onboarding flow detects incoming data automatically.
 
 To learn more about APM agents, including how to fine-tune how agents send traces to Elastic, refer to [Collect application data](/solutions/observability/apm/ingest/index.md).
 
 :::::
 :::::{step} View your data
 
-After one or more APM agents are installed and successfully sending data, you can view application performance monitoring data in the UI.
+After an APM agent or {{edot}} SDK starts sending data, you can view application performance monitoring data in the UI.
 
-In the **Applications** section of the main menu, select **Service Inventory**. This will show a high-level overview of the health and general performance of all your services.
+Find **Service inventory** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). This page shows a high-level overview of your services' performance.
 
 Learn more about visualizing APM data in [View and analyze data](/solutions/observability/apm/view-analyze-data.md).
 

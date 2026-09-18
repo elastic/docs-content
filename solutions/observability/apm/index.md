@@ -9,24 +9,25 @@ products:
   - id: observability
   - id: apm
   - id: cloud-serverless
+description: Monitor instrumented services with Elastic APM using traces, errors, and runtime metrics to analyze latency, throughput, failed transactions, and application behavior.
 ---
 
 # Application performance monitoring (APM) [apm]
 
-Elastic APM is an application performance monitoring system built on the {{stack}}. It allows you to monitor software services and applications in real time, by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more. This makes it easy to pinpoint and fix performance problems quickly.
+Elastic APM is an application performance monitoring system built on the {{stack}}. It continuously collects performance data from instrumented services and applications. For supported frameworks and libraries, this data includes response times for incoming requests, database queries, cache calls, and external HTTP requests.
 
 :::{image} /solutions/images/observability-apm-app-landing.png
-:alt: Applications UI in {{kib}}
+:alt: Service inventory showing latency, throughput, and failed transaction rate
 :screenshot:
 :::
 
-Elastic APM also automatically collects unhandled errors and exceptions. Errors are grouped based primarily on the stack trace, so you can identify new errors as they appear and keep an eye on how many times specific errors happen.
+Elastic APM agents automatically report exceptions captured by their supported instrumentations. Errors are grouped using their exception type and stack frames, with a message-based fallback when no usable stack trace exists. You can identify new error groups and track how often each error occurs.
 
-Metrics are another vital source of information when debugging production systems. Elastic APM agents automatically pick up basic host-level metrics and agent-specific metrics, like JVM metrics in the Java Agent, and Go runtime metrics in the Go Agent.
+Server-side APM agents collect a language-specific set of system, process, and runtime metrics, such as Java virtual machine (JVM) metrics from the Java agent and Go runtime metrics from the Go agent.
 
 ## Give Elastic APM a try [give_elastic_apm_a_try]
 
-Want to quickly spin up an APM deployment? Refer to [Get started for APM](/solutions/observability/apm/get-started.md). We recommend using [{{edot}}](/solutions/observability/apm/opentelemetry/index.md) to collect application telemetry data. To host everything yourself instead, refer to [Set up APM Server](/solutions/observability/apm/apm-server/setup.md).
+To start collecting application telemetry, refer to [Get started with traces and APM](/solutions/observability/apm/get-started.md). We recommend using [{{edot}}](/solutions/observability/apm/opentelemetry/index.md). For self-managed OpenTelemetry ingestion, [deploy {{agent}} in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode). If you use classic Elastic APM agents, you can instead [set up APM Server](/solutions/observability/apm/apm-server/setup.md).
 
 :::{related-learning} apm-with-elastic
 :::

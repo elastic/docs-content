@@ -12,6 +12,7 @@ products:
   - id: observability
   - id: kibana
   - id: edot-collector
+description: Unify logs, metrics, traces, user experience data, and infrastructure monitoring with Elastic Observability for cross-signal analysis and incident response.
 ---
 
 # Elastic Observability solution overview
