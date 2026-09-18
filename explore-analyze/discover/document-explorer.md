@@ -143,6 +143,11 @@ stack: ga 9.6+
 
 Open **Display options** in the table toolbar, then set **View mode** to **JSON**. The **Summary** column becomes **JSON**. If you add fields to the table, the tree shows only those fields. If you don't, it shows the full document.
 
+:::{image} /explore-analyze/images/kibana-discover-json-view.png
+:alt: Discover table in JSON view with Display options open
+:screenshot:
+:::
+
 In the tree, expand or collapse nested objects and arrays with **Expand all** and **Collapse all**. Hover a field or value to copy it (**Copy value**, **Copy object**, or **Copy array**) or to filter for or filter out that value. Select **Copy all** to copy the document as JSON. Hold Command (or Ctrl) and select a nested object or array to expand its children.
 
 To control how much of each tree is visible, use **Display options**:
