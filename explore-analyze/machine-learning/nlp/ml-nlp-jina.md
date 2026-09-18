@@ -1,6 +1,6 @@
 ---
 navigation_title: Jina
-description: Use Elastic Jina embedding, reranker, and reader models on Elastic Hosted and Serverless, the Jina platform, cloud marketplaces, or on-prem.
+description: Use Elastic Jina embedding, reranker, reader, and OCR models on Elastic Hosted and Serverless, the Jina platform, cloud marketplaces, or on-prem.
 applies_to:
   stack: ga
   serverless: ga
@@ -118,6 +118,14 @@ Reader models extract clean, structured content from HTML and complex documents 
 | Model | Description | Deployment | Access |
 | --- | --- | --- | --- |
 | [`ReaderLM-v2`](https://jina.ai/models/ReaderLM-v2/) | Converts raw HTML into Markdown or JSON. Accepts HTML input and generates Markdown or JSON output. Supports input lengths up to 512K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
+
+### OCR and document parsing models [jina-ocr]
+
+OCR models extract text, tables, formulas, and reading order from rendered pages or scanned documents and return structured output, ready for indexing and RAG pipelines.
+
+| Model | Description | Deployment | Access |
+| --- | --- | --- | --- |
+| [`jina-ocr-v1`](https://jina.ai/models/jina-ocr-v1/) | Page-to-Markdown document parser. Accepts images and PDF input and generates Markdown output that preserves text, formulas, tables, and reading order. Supports input lengths up to 32K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted) | [EIS](#jina-eis-ocr), [Jina API](#jina-external) |
 
 ### Rerankers [jina-rerankers]
 
@@ -696,6 +704,24 @@ The Jina v5 omni models availability and the support for the [`semantic_text`](e
 - {applies_to}`stack: ga 9.4+` In {{stack}} 9.4 and later, you can use [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) mappings for text-only embeddings at ingest and search time.
 - {applies_to}`stack: ga 9.5+` In {{stack}} 9.5 and later, the `semantic` field type supports all modalities, such as text, images, video, audio, and documents.
 ::::
+
+#### OCR models [jina-eis-ocr]
+
+{applies_to}`serverless: ga`
+
+The following examples use the `completion` task type. Create an {{infer}} endpoint and reference the `inference_id` in `completion` {{infer}} requests:
+
+```console
+PUT _inference/completion/eis-jina-ocr-v1
+{
+  "service": "elastic",
+  "service_settings": {
+    "model_id": "jina-ocr-v1"
+  }
+}
+```
+
+Send a page or document image to the endpoint and receive Markdown output that preserves the extracted text, formulas, tables, and reading order.
 
 #### Reranker models [jina-eis-rerank]
 
