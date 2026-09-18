@@ -1,5 +1,5 @@
 ---
-navigation_title: LangChain
+navigation_title: LangChain Integration
 description: Give a LangChain agent tools that list, describe, and query Context Engine AI indices, so it can retrieve knowledge indicators with ES|QL.
 applies_to:
   stack: preview 9.6
