@@ -124,7 +124,7 @@ Alternatively, in Serverless, you can directly create an API key with the follow
 }
 ```
 
-For this demo, we will also use an Open Router key:
+For this demo, we also use an OpenRouter key:
 
 ```shell
 export OPENROUTER_API_KEY="sk-..."
