@@ -1,123 +1,152 @@
 ---
-navigation_title: Cloud audit trail
+navigation_title: Elastic Cloud audit trail
 description: Track organization-level actions in Elastic Cloud Hosted by delivering audit logs to a hosted deployment you own.
 applies_to:
-  ech:
+  deployment:
+    ech: ga
 products:
   - id: cloud-hosted
 ---
 
-# Cloud audit trail for {{ech}}
+# {{ecloud}} audit trail
 
-Cloud audit trail records actions that members of your organization perform through the {{ecloud}} Console, the Terraform Provider for {{ecloud}}, or any other client that calls the {{ecloud}} API.
+:::{admonition} {{fedramp-mod}} only
+{{ecloud}} audit trail is available on {{fedramp-mod}} environments only.
+:::
 
-Cloud audit trail is available on {{fedramp-mod}} environments only.
+{{ecloud}} audit trail records actions that members of your organization perform through the {{ecloud}} Console, the Terraform Provider for {{ecloud}}, the Elastic CLI, or any other client that calls the [{{ecloud}} API]({{cloud-apis}}).
 
-Audited actions include:
+Using {{ecloud}} audit trail data, you can answer questions such as:
+
+* Which user or API key tried to authenticate, and did they succeed or fail?
+* Which user increased resources on a deployment?
+* Which resources is a given API key accessing?
+* Who modified traffic filters, and when?
+* Who upgraded, deleted, or changed the configuration of a deployment?
+
+## What is audited
+
+{{ecloud}} audit trail captures all calls to the {{ecloud}} API. Examples of audited actions include:
 
 * Managing hosted deployments: creation, configuration changes, scaling, upgrades, and deletion
 * Managing organization membership and invitations
-* Managing Cloud API keys
-* Managing network security configurations such as traffic filters, trust relationships, SSO, and role mappings
-* Sign-in, sign-out, and authentication attempts
+* Managing [Cloud API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md)
+* Managing [network security configurations](/deploy-manage/security/network-security.md) such as traffic filters, trust relationships, SSO, and role mappings
+* Sign-in, sign-out, and authentication attempts to the {{ecloud}} Console
+
+<!--
+TODO when this expands to regular ECH: clarify which of these actions apply
+org-wide vs. ECH-only. Membership and sign-in are org-scoped, but deployment
+management is ECH-specific. Users with both ECH and serverless may need both
+this feature and the serverless audit trail for full org coverage.
+-->
 
 :::{note}
-Cloud audit trail does not include {{es}} audit events, {{kib}} audit events, or {{serverless-full}} project activity. To capture activity within a deployment, enable audit logging on the deployment directly. Refer to [](/deploy-manage/security/logging-configuration/enabling-audit-logs.md). For serverless audit logging, refer to [](/deploy-manage/monitor/log-delivery/audit-trail.md).
+{{ecloud}} audit trail does not capture activity inside your deployments.
+<!--
+TODO when this expands to regular ECH: add "and it does not cover serverless
+project management or activity." Also add a serverless bullet pointing to
+/deploy-manage/monitor/log-delivery/audit-trail.md, which covers org-level
+actions, project-level ES and Kibana activity, and serverless project
+management in a single stream.
+-->
+
+To audit {{es}} and {{kib}} activity within a deployment, enable [audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) on the deployment directly.
 :::
 
-Using cloud audit trail data, you can answer questions such as:
+## Requirements
 
-* Which user or API key attempted to sign in, and did they succeed or fail?
-* Which user scaled resources or changed the configuration of a deployment?
-* Which API endpoints is a given API key calling?
-* Who modified traffic filters, and when?
-* Who upgraded or deleted a deployment?
+To use the {{ecloud}} audit trail, you need the following:
 
-## Before you begin
+* A [{{fedramp-mod}} {{ecloud}} organization](/deploy-manage/cloud-organization.md).
+* A [Platinum or Enterprise subscription]({{subscriptions}}).
+* An [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with organization owner permissions.
+* A destination deployment in the same organization to store audit logs. You might choose to use a dedicated deployment to keep audit data separate from production workloads.
+* Your organization ID. You can find this on the [**Organization**](https://cloud.elastic.co/organization/members) page under the organization name.
+* The destination deployment ID. You can find this on the deployment's **Overview** page in the {{ecloud}} Console.
 
-To use the cloud audit trail, you need:
+## Set up {{ecloud}} audit trail
 
-* A Platinum or Enterprise subscription
-* An [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with organization owner permissions. You must run the enablement API yourself. Support cannot enable it on your behalf.
-* A hosted destination deployment in the same organization. You might choose to use a dedicated deployment to keep audit data separate from production workloads.
-* Your [organization ID](/deploy-manage/cloud-organization.md) and the destination [deployment ID](/deploy-manage/deploy/elastic-cloud/manage-deployments.md), both available in the {{ecloud}} console
+To set up {{ecloud}} audit trail, you [install the integration](#install-integration) on a destination deployment, then [enable delivery](#enable-delivery) through the API. After events are flowing, you can [explore your audit trail](#explore-audit-trail) in {{kib}}.
 
-Audit trail events start flowing when you enable the stream. Historical cloud audit logs are not backfilled.
+:::::::{stepper}
+:::::{step} Install the {{ecloud}} integration
 
-## Install the {{ecloud}} integration [install-integration]
+Before you enable delivery, install the **{{ecloud}}** integration on the destination deployment. The integration sets up everything you need to index and explore audit log events.
 
-Before you enable delivery, install the **{{ecloud}}** integration on the destination deployment.
+To install the integration:
 
-The integration installs the following resources:
+1. Open {{kib}} on the destination deployment.
+2. Find **Integrations** in the navigation menu or use the global search field.
+3. Search for **{{ecloud}}**, and then select the card from the list.
+4. On the {{ecloud}} integration page, click **Add {{ecloud}}**.
+5. On the installation page, click **Install assets only**. No agent policy is needed because the audit service pushes logs directly to your destination deployment.
+6. Confirm the installation.
+
+The following resources are installed:
 
 * Index templates for `logs-elastic_cloud.audit-*`
 * An ingest pipeline for the `elastic_cloud.audit` data stream
-* Field mappings, including ECS fields and `elastic_cloud.audit.api_key.*` fields
+* Field mappings, including [ECS](https://www.elastic.co/docs/reference/ecs) fields and `elastic_cloud.audit.api_key.*` fields
 * The **{{ecloud}} audit logs** data view (`logs-elastic_cloud.audit-*`)
 * The **[{{ecloud}}] Audit Logs** dashboard
+:::::
 
-In {{kib}} on the destination deployment:
+:::::{step} Enable audit log delivery
 
-1. Find **Integrations** in the navigation menu or use the global search field.
-2. Search for **{{ecloud}}**.
-3. Click **Add {{ecloud}}**.
-4. Click **Install assets only**. No agent policy is needed because the audit service pushes logs directly to your destination deployment.
-5. Confirm the installation.
+As an organization owner, enable delivery by calling the audit logs API.
 
-## Enable cloud audit trail delivery [enable-delivery]
+Events start flowing when you enable delivery. Historical cloud audit logs are not backfilled.
 
-There is no {{ecloud}} Console UI for this step. As an organization owner, enable delivery by calling the audit logs API.
+1. Send a `POST` request to the audit logs endpoint, specifying your destination deployment and a data stream name that matches `logs-elastic_cloud.audit-*`. Replace the placeholders with your own values.
 
-Send a `POST` request to the audit logs endpoint, specifying your destination deployment and a data stream name that matches `logs-elastic_cloud.audit-*`:
+   ```console
+   POST /api/v1/organizations/<ORG_ID>/audit_logs <1>
+   Authorization: ApiKey <CLOUD_API_KEY> <2>
+   Content-Type: application/json
 
-```console
-POST /api/v1/organizations/<ORG_ID>/audit_logs
-Authorization: ApiKey <CLOUD_API_KEY>
-Content-Type: application/json
+   {
+     "deployment_id": "<DESTINATION_DEPLOYMENT_ID>", <3>
+     "index": "logs-elastic_cloud.audit-default" <4>
+   }
+   ```
+   1. Replace `<ORG_ID>` with your organization ID from the {{ecloud}} console
+   2. Replace `<CLOUD_API_KEY>` with your {{ecloud}} API key
+   3. Replace `<DESTINATION_DEPLOYMENT_ID>` with the ID of the hosted deployment that receives the logs
+   4. Represents the default data stream namespace.
 
-{
-  "deployment_id": "<DESTINATION_DEPLOYMENT_ID>",
-  "index": "logs-elastic_cloud.audit-default"
-}
-```
+   To use a different data stream namespace, replace the `default` segment of the index name with your preferred namespace, for example `logs-elastic_cloud.audit-production`. The name must match the `logs-elastic_cloud.audit-*` pattern so that the installed index templates apply.
 
-Replace the following values:
+   The data stream is created with a configurable retention policy that defaults to 30 days, and the failure store enabled.
 
-* `<ORG_ID>`: Your organization ID from the {{ecloud}} console
-* `<CLOUD_API_KEY>`: Your {{ecloud}} API key
-* `<DESTINATION_DEPLOYMENT_ID>`: The ID of the hosted deployment that receives the logs
+   :::{important}
+   If you omit the `index` field, events are indexed into a non-data stream index named `elastic-org<ORG_ID>-audit` without field standardization. The installed dashboard does not display data from this index.
+   :::
 
-To use a different data stream namespace, replace `default` with your preferred namespace, for example `logs-elastic_cloud.audit-production`. The name must match the `logs-elastic_cloud.audit-*` pattern so that the installed index templates apply.
+2. Verify the configuration:
 
-The data stream is created with a configurable retention policy that defaults to 30 days, and the failure store enabled.
+   ```console
+   GET /api/v1/organizations/<ORG_ID>/audit_logs
+   ```
 
-:::{important}
-If you omit the `index` field, events land on a classic index named `elastic-org<ORG_ID>-audit` without field standardization. The installed dashboard does not display data from this index.
-:::
+   The response returns the configured `deployment_id` and `index`.
+:::::
 
-### Check delivery status
+:::::{step} Explore your audit trail
 
-To verify the current configuration:
+After enabling delivery, explore your audit logs in the destination deployment:
 
-```console
-GET /api/v1/organizations/<ORG_ID>/audit_logs
-```
+* Use the **{{ecloud}} audit logs** data view in **Discover** to browse individual events.
+* Open the **[{{ecloud}}] Audit Logs** dashboard to visualize and filter audit activity.
+:::::
+:::::::
 
-The response returns the configured `deployment_id` and `index`.
+## Stop delivery
 
-### Stop delivery
-
-To stop delivery:
+If you need to decommission the destination deployment or switch to a different one, you can stop delivery at any time.
 
 ```console
 DELETE /api/v1/organizations/<ORG_ID>/audit_logs
 ```
 
 This stops the delivery stream and invalidates the writer API key, but does not delete documents that were already indexed.
-
-## Explore your audit trail [explore-audit-trail]
-
-After enabling delivery, explore your audit logs in the destination deployment:
-
-* Use the **{{ecloud}} audit logs** data view in **Discover** to browse individual events.
-* Open the **[{{ecloud}}] Audit Logs** dashboard to visualize and filter audit activity.
