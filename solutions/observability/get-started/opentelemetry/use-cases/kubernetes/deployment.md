@@ -89,6 +89,21 @@ Follow these steps to install the operator:
           --version {{kube-stack-version}}
     ```
 
+### Deploy on OpenShift [k8s-edot-deployment-openshift]
+
+```{applies_to}
+edot_collector: ga 9.5.5+
+```
+
+On OpenShift, follow the [operator installation instructions](#operator-installation) and in step 4 use the following command to apply the OpenShift values file after the base values file:
+
+```bash subs=true
+helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
+      --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/values.yaml' \
+      --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/openshift/values.yaml' \
+      --version {{kube-stack-version}}
+```
+
 ## Verify the installation
 
 Perform the following checks to verify that everything is running properly:
