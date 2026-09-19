@@ -126,10 +126,10 @@ The following table shows a comparison of capabilities supported by {{beats}} an
 
 You configure the collection of agent metrics in the agent policy. If metrics collection is selected (the default), all {{agent}}s enrolled in the policy will send metrics data to {{es}} (the output is configured globally).
 
-The following image shows the **Agent monitoring** settings for the default agent policy:
+The following image shows the **Agent monitoring** settings in an agent policy:
 
 :::{image} images/agent-monitoring-settings.png
-:alt: Screen capture of agent monitoring settings in the default agent policy
+:alt: Screen capture of agent monitoring settings in an agent policy
 :screenshot:
 :::
 
