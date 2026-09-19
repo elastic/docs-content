@@ -131,7 +131,14 @@ Most prebuilt rules don't start running by default. Use **Install and enable** t
     The badge next to **Add Elastic rules** shows the number of prebuilt rules available for installation.
 
     :::{image} /solutions/images/security-prebuilt-rules-add-badge.png
-    :alt: The Add Elastic Rules page
+    :alt: Add Elastic rules badge on the Rules page
+    :applies_to: {stack: ga 9.0-9.2, serverless: unavailable}
+    :screenshot:
+    :::
+
+    :::{image} /solutions/images/security-prebuilt-rules-add-badge-9.3.png
+    :alt: Add Elastic rules badge on the Detection rules (SIEM) page
+    :applies_to: {stack: ga 9.3+, serverless: ga}
     :screenshot:
     :::
 
