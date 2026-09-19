@@ -1,4 +1,4 @@
-To add the results of your Discover explorations to a dashboard in a way that preserves the [controls created from Discover](/explore-analyze/discover/try-esql.md#add-variable-control) and also adds them to the dashboard, you have two methods:
+To add the results of your Discover explorations to a dashboard in a way that preserves the [controls created from Discover](/explore-analyze/discover/use-esql.md#add-variable-control) and also adds them to the dashboard, you have two methods:
 
 **Method 1: Adding the Discover session's results**
 

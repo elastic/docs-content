@@ -278,6 +278,11 @@ toc:
               - file: ai-features/llm-guides/connect-to-vLLM.md
   - file: discover.md
     children:
+      - file: discover/try-esql.md
+      - file: discover/use-esql.md
+        children:
+          - file: discover/create-lookup-indices.md
+          - file: discover/inspect-grouped-stats.md
       - file: discover/discover-get-started.md
       - file: discover/document-explorer.md
       - file: discover/discover-search-for-relevance.md
@@ -286,7 +291,6 @@ toc:
       - file: discover/run-pattern-analysis-discover.md
       - file: discover/detect-change-points.md
       - file: discover/background-search.md
-      - file: discover/try-esql.md
   - file: dashboards.md
     children:
       - file: dashboards/using.md

@@ -649,6 +649,33 @@ redirects:
 
 # Search sessions becoming background search
   'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
+  # related to https://github.com/elastic/docs-content/issues/4890
+  'explore-analyze/discover/try-esql.md':
+    to: 'explore-analyze/discover/try-esql.md'
+    many:
+      - to: 'explore-analyze/discover/use-esql.md'
+        anchors:
+          'discover-esql-resource-browsers': 'discover-esql-resource-browsers'
+          'esql-kibana-results-table': 'esql-kibana-results-table'
+          'esql-kibana-results-table-limitations': 'esql-kibana-results-table-limitations'
+          '_sorting': '_sorting'
+          '_esql_and_time_series_data': '_esql_and_time_series_data'
+          '_edit_the_esql_visualization': '_edit_the_esql_visualization'
+          'add-variable-control': 'add-variable-control'
+          'esql-multi-values-controls': 'esql-multi-values-controls'
+          'import-discover-query-with-controls': 'import-discover-query-with-controls'
+          'revert-to-classic-mode': 'revert-to-classic-mode'
+      - to: 'explore-analyze/discover/create-lookup-indices.md'
+        anchors:
+          'discover-esql-lookup-join': 'discover-esql-lookup-join'
+          'create-lookup-esql': 'create-lookup-esql'
+          'esql-lookup-index-from-file': 'esql-lookup-index-from-file'
+          'view-edit-lookup-esql': 'view-edit-lookup-esql'
+          'discover-esql-lookup-editor-limitations': 'discover-esql-lookup-editor-limitations'
+      - to: 'explore-analyze/discover/inspect-grouped-stats.md'
+        anchors:
+          'esql-cascade-layout': 'esql-cascade-layout'
+          'esql-cascade-pattern-sparkline': 'esql-cascade-pattern-sparkline'
 
 # Related to https://github.com/elastic/docs-content/pull/3493
   'solutions/security/cloud/ingest-third-party-cloud-security-data.md': 'solutions/security/integrations/ingest-third-party-security-data.md'
