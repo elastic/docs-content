@@ -225,7 +225,7 @@ Every agent has one of three access control levels:
 **Private**
 :   Only the owner or an administrator can view and edit.
 
-    {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` People you grant access to can also view it, and edit it if you give them **Editor** or **Manager**.
+    {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Users you grant access to can also view it, and edit it if you give them **Editor** or **Manager**.
 
 :::{image} images/agent-access-control-levels.png
 :screenshot:
