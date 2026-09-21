@@ -419,8 +419,7 @@ PCI compliance tools support PCI DSS v4.0.1 compliance assessments.
 Some [built-in skills](../builtin-skills-reference.md) include inline tools that are only available while that skill is active. Because they are scoped to a skill rather than assignable on their own, they are not listed among the namespaced tools in this reference. For example:
 
 - The [`dashboard-management`](../builtin-skills-reference.md#agent-builder-dashboard-management-skill) skill includes an inline tool for generating and updating dashboards.
-- The [`rule-management`](../builtin-skills-reference.md#agent-builder-rule-management-skill) skill includes the `platform.alerting.manage_rule` tool for composing and modifying {{alerting-v2-system}} rules.
-- {applies_to}`stack: preview =9.5` The [`rule-management`](../builtin-skills-reference.md#agent-builder-rule-management-skill) skill also includes the `platform.alerting.manage_action_policy` tool.
+- The [`rule-management`](../builtin-skills-reference.md#agent-builder-rule-management-skill) skill includes the `platform.alerting.manage_rule` tool for composing and modifying {{alerting-v2-system}} rules, and in 9.5 also includes `platform.alerting.manage_action_policy`.
 - {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview` The [`action-policy-management`](../builtin-skills-reference.md#agent-builder-action-policy-management-skill) skill includes the `platform.alerting.manage_action_policy` tool for composing and modifying action policies.
 - The `alert-triage` skill includes the `security.alert-triage` tool for prioritizing the alert queue.
 
