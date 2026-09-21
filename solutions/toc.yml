@@ -580,22 +580,98 @@ toc:
               - file: security/get-started/get-started-cloud-security.md
           - file: security/get-started/elastic-security-requirements.md
           - file: security/get-started/elastic-security-ui.md
-          - file: security/get-started/ingest-data-to-elastic-security.md
-            children:
-              - file: security/get-started/enable-threat-intelligence-integrations.md
-              - file: security/get-started/automatic-migration.md
-              - file: security/get-started/automatic-import.md
-              - file: security/get-started/content-connectors.md
-          - file: security/get-started/spaces-elastic-security.md
-            children:
-              - file: security/get-started/spaces-defend-faq.md
-          - file: security/get-started/data-views-elastic-security.md
-          - file: security/get-started/create-runtime-fields-in-elastic-security.md
-      - file: security/esql-for-security.md
+          - file: security/get-started/automatic-migration.md
+          - file: security/security-serverless-feature-tiers.md
+      - file: security/set-up.md
         children:
-          - file: security/esql-for-security/esql-threat-hunting-tutorial.md
+          - file: security/configure-elastic-defend.md
+            children:
+              - file: security/configure-elastic-defend/elastic-defend-requirements.md
+              - file: security/configure-elastic-defend/install-elastic-defend.md
+                children:
+                  - hidden: security/configure-elastic-defend/enable-access-for-macos-monterey.md
+                  - hidden: security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md
+                  - file: security/configure-elastic-defend/enable-access-for-macos.md
+                  - file: security/configure-elastic-defend/deploy-on-macos-with-mdm.md
+                  - file: security/configure-elastic-defend/prevent-elastic-agent-uninstallation.md
+              - file: security/configure-elastic-defend/elastic-defend-feature-privileges.md
+              - file: security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md
+                children:
+                  - file: security/configure-elastic-defend/configure-updates-for-protection-artifacts.md
+                  - file: security/configure-elastic-defend/turn-off-diagnostic-data-for-elastic-defend.md
+                  - file: security/configure-elastic-defend/configure-self-healing-rollback-for-windows-endpoints.md
+                  - file: security/configure-elastic-defend/configure-linux-file-system-monitoring.md
+                  - file: security/configure-elastic-defend/configure-data-volume-for-elastic-endpoint.md
+                  - file: security/configure-elastic-defend/create-an-elastic-defend-policy-using-api.md
+              - file: security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md
+              - file: security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md
+              - file: security/configure-elastic-defend/uninstall-elastic-agent.md
+          - file: security/set-up/set-up-cloud-security.md
+            children:
+              - file: security/cloud/get-started-with-cspm-for-aws.md
+              - file: security/cloud/get-started-with-cspm-for-gcp.md
+              - file: security/cloud/get-started-with-cspm-for-azure.md
+              - file: security/cloud/cspm-privilege-requirements.md
+              - file: security/cloud/get-started-with-kspm.md
+              - file: security/cloud/asset-disc-aws.md
+              - file: security/cloud/asset-disc-gcp.md
+              - file: security/cloud/asset-disc-azure.md
+              - file: security/cloud/get-started-with-cnvm.md
+              - file: security/cloud/cnvm-privilege-requirements.md
+              - file: security/cloud/enable-cloud-security-features.md
+          - file: security/advanced-entity-analytics/entity-analytics-requirements.md
+      - file: security/manage.md
+        children:
+          - file: security/manage-elastic-defend.md
+            children:
+              - file: security/manage-elastic-defend/endpoints.md
+              - file: security/manage-elastic-defend/policies.md
+              - file: security/manage-elastic-defend/elastic-endpoint-exceptions.md
+              - file: security/manage-elastic-defend/trusted-applications.md
+              - file: security/manage-elastic-defend/trusted-devices.md
+              - file: security/manage-elastic-defend/event-filters.md
+              - file: security/manage-elastic-defend/host-isolation-exceptions.md
+              - file: security/manage-elastic-defend/blocklist.md
+              - file: security/manage-elastic-defend/exception-types-and-syntax.md
+              - file: security/manage-elastic-defend/optimize-elastic-defend.md
+              - file: security/manage-elastic-defend/event-capture-elastic-defend.md
+              - file: security/manage-elastic-defend/endpoint-protection-rules.md
+              - file: security/manage-elastic-defend/automatic-troubleshooting.md
+              - file: security/manage-elastic-defend/allowlist-elastic-endpoint-in-third-party-antivirus-apps.md
+              - file: security/manage-elastic-defend/elastic-endpoint-self-protection-features.md
+              - file: security/get-started/spaces-defend-faq.md
+              - file: security/manage-elastic-defend/manage-quarantined-files.md
+              - file: security/manage-elastic-defend/manually-copy-artifact-updates.md
+          - file: security/integrations/ingest-third-party-security-data.md
+            children:
+              - file: security/integrations/aws-config.md
+              - file: security/integrations/aws-inspector.md
+              - file: security/integrations/aws-sec-hub.md
+              - file: security/integrations/aws-security-hub-cspm.md
+              - file: security/integrations/cncf-falco.md
+              - file: security/integrations/google-security-command-center.md
+              - file: security/integrations/microsoft-defender-for-cloud.md
+              - file: security/integrations/microsoft-defender-for-endpoint.md
+              - file: security/integrations/microsoft-defender-xdr.md
+              - file: security/integrations/prisma-cloud.md
+              - file: security/integrations/qualys.md
+              - file: security/integrations/rapid7.md
+              - file: security/integrations/tenablevm.md
+              - file: security/integrations/wiz.md
+              - file: security/get-started/ingest-data-to-elastic-security.md
+                children:
+                  - file: security/get-started/enable-threat-intelligence-integrations.md
+                  - file: security/get-started/automatic-import.md
+                  - file: security/get-started/content-connectors.md
+          - file: security/manage/configure-workspace-settings.md
+            children:
+              - file: security/get-started/spaces-elastic-security.md
+                children: []
+              - file: security/get-started/data-views-elastic-security.md
+              - file: security/get-started/create-runtime-fields-in-elastic-security.md
       - file: security/ai.md
         children:
+          - file: security/ai/large-language-model-performance-matrix.md
           - file: security/ai/ease/ease-intro.md
             children:
               - file: security/ai/ease/ease-alerts.md
@@ -627,14 +703,13 @@ toc:
                 children:
                   - file: security/ai/attack-discovery/manage-discoveries-from-attacks-page.md
                   - file: security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md
-          - file: security/ai/large-language-model-performance-matrix.md
           - file: security/ai/use-cases.md
             children:
               - file: security/ai/triage-alerts.md
               - file: security/ai/identify-investigate-document-threats.md
               - file: security/ai/generate-customize-learn-about-esorql-queries.md
           - file: security/ai/ease/ease-value-report.md
-      - file: security/mcp-app/elastic-security-mcp-app.md
+          - file: security/mcp-app/elastic-security-mcp-app.md
       - file: security/detect-and-alert.md
         children:
           - file: security/detect-and-alert/before-you-begin.md
@@ -697,45 +772,6 @@ toc:
               - file: security/detect-and-alert/visualize-detection-alerts.md
               - file: security/detect-and-alert/view-detection-alert-details.md
               - file: security/detect-and-alert/query-alert-indices.md
-      - file: security/configure-elastic-defend.md
-        children:
-          - file: security/configure-elastic-defend/elastic-defend-requirements.md
-          - file: security/configure-elastic-defend/install-elastic-defend.md
-            children:
-              - hidden: security/configure-elastic-defend/enable-access-for-macos-monterey.md
-              - hidden: security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md
-              - file: security/configure-elastic-defend/enable-access-for-macos.md
-              - file: security/configure-elastic-defend/deploy-on-macos-with-mdm.md
-              - file: security/configure-elastic-defend/prevent-elastic-agent-uninstallation.md
-          - file: security/configure-elastic-defend/elastic-defend-feature-privileges.md
-          - file: security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md
-            children:
-              - file: security/configure-elastic-defend/configure-updates-for-protection-artifacts.md
-              - file: security/configure-elastic-defend/turn-off-diagnostic-data-for-elastic-defend.md
-              - file: security/configure-elastic-defend/configure-self-healing-rollback-for-windows-endpoints.md
-              - file: security/configure-elastic-defend/configure-linux-file-system-monitoring.md
-              - file: security/configure-elastic-defend/configure-data-volume-for-elastic-endpoint.md
-              - file: security/configure-elastic-defend/create-an-elastic-defend-policy-using-api.md
-          - file: security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md
-          - file: security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md
-          - file: security/configure-elastic-defend/uninstall-elastic-agent.md
-      - file: security/manage-elastic-defend.md
-        children:
-          - file: security/manage-elastic-defend/endpoints.md
-          - file: security/manage-elastic-defend/policies.md
-          - file: security/manage-elastic-defend/elastic-endpoint-exceptions.md
-          - file: security/manage-elastic-defend/trusted-applications.md
-          - file: security/manage-elastic-defend/trusted-devices.md
-          - file: security/manage-elastic-defend/event-filters.md
-          - file: security/manage-elastic-defend/host-isolation-exceptions.md
-          - file: security/manage-elastic-defend/blocklist.md
-          - file: security/manage-elastic-defend/exception-types-and-syntax.md
-          - file: security/manage-elastic-defend/optimize-elastic-defend.md
-          - file: security/manage-elastic-defend/event-capture-elastic-defend.md
-          - file: security/manage-elastic-defend/endpoint-protection-rules.md
-          - file: security/manage-elastic-defend/automatic-troubleshooting.md
-          - file: security/manage-elastic-defend/allowlist-elastic-endpoint-in-third-party-antivirus-apps.md
-          - file: security/manage-elastic-defend/elastic-endpoint-self-protection-features.md
       - file: security/endpoint-response-actions.md
         children:
           - file: security/endpoint-response-actions/automated-response-actions.md
@@ -744,39 +780,8 @@ toc:
           - file: security/endpoint-response-actions/script-library.md
           - file: security/endpoint-response-actions/third-party-response-actions.md
           - file: security/endpoint-response-actions/configure-third-party-response-actions.md
-      - file: security/cloud.md
+      - file: security/protect-cloud-workloads.md
         children:
-          - file: security/cloud/security-posture-management-overview.md
-          - file: security/cloud/enable-cloud-security-features.md
-          - file: security/cloud/cloud-security-posture-management.md
-            children:
-              - file: security/cloud/get-started-with-cspm-for-aws.md
-              - file: security/cloud/get-started-with-cspm-for-gcp.md
-              - file: security/cloud/get-started-with-cspm-for-azure.md
-              - file: security/cloud/cspm-privilege-requirements.md
-              - file: security/cloud/findings-page.md
-              - file: security/cloud/benchmarks.md
-              - file: security/cloud/cspm-dashboard.md
-              - file: security/cloud/cspm-frequently-asked-questions-faq.md
-          - file: security/cloud/kubernetes-security-posture-management.md
-            children:
-              - file: security/cloud/get-started-with-kspm.md
-              - file: security/cloud/findings-page-2.md
-              - file: security/cloud/kspm-benchmarks.md
-              - file: security/cloud/kspm-dashboard.md
-              - file: security/cloud/kspm-frequently-asked-questions.md
-          - file: security/cloud/asset-disc.md
-            children:
-              - file: security/cloud/asset-disc-aws.md
-              - file: security/cloud/asset-disc-gcp.md
-              - file: security/cloud/asset-disc-azure.md
-          - file: security/cloud/cloud-native-vulnerability-management.md
-            children:
-              - file: security/cloud/get-started-with-cnvm.md
-              - file: security/cloud/cnvm-privilege-requirements.md
-              - file: security/cloud/findings-page-3.md
-              - file: security/cloud/cnvm-dashboard.md
-              - file: security/cloud/cnvm-frequently-asked-questions-faq.md
           - file: security/cloud/cloud-workload-protection-for-vms.md
             children:
               - file: security/cloud/capture-environment-variables.md
@@ -785,22 +790,81 @@ toc:
               - file: security/cloud/d4c/get-started-with-d4c.md
               - file: security/cloud/d4c/d4c-policies.md
               - file: security/cloud/d4c/kubernetes-dashboard.md
-      - file: security/integrations/ingest-third-party-security-data.md
+      - file: security/hunt-and-assess-posture.md
         children:
-          - file: security/integrations/aws-config.md
-          - file: security/integrations/aws-inspector.md
-          - file: security/integrations/aws-sec-hub.md
-          - file: security/integrations/aws-security-hub-cspm.md
-          - file: security/integrations/cncf-falco.md
-          - file: security/integrations/google-security-command-center.md
-          - file: security/integrations/microsoft-defender-for-cloud.md
-          - file: security/integrations/microsoft-defender-for-endpoint.md
-          - file: security/integrations/microsoft-defender-xdr.md
-          - file: security/integrations/prisma-cloud.md
-          - file: security/integrations/qualys.md
-          - file: security/integrations/rapid7.md
-          - file: security/integrations/tenablevm.md
-          - file: security/integrations/wiz.md
+          - file: security/dashboards.md
+            children:
+              - file: security/dashboards/overview-dashboard.md
+              - file: security/dashboards/detection-response-dashboard.md
+              - file: security/dashboards/cloud-security-posture-dashboard.md
+              - file: security/dashboards/kubernetes-dashboard.md
+              - file: security/dashboards/entity-analytics-dashboard.md
+              - file: security/dashboards/data-quality-dashboard.md
+              - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
+              - file: security/dashboards/detection-rule-monitoring-dashboard.md
+              - file: security/dashboards/endpoint-detection-response-dashboard.md
+          - file: security/cloud.md
+            children:
+              - file: security/cloud/security-posture-management-overview.md
+              - file: security/cloud/cloud-security-posture-management.md
+                children:
+                  - file: security/cloud/findings-page.md
+                  - file: security/cloud/benchmarks.md
+                  - file: security/cloud/cspm-dashboard.md
+                  - file: security/cloud/cspm-frequently-asked-questions-faq.md
+              - file: security/cloud/kubernetes-security-posture-management.md
+                children:
+                  - file: security/cloud/findings-page-2.md
+                  - file: security/cloud/kspm-benchmarks.md
+                  - file: security/cloud/kspm-dashboard.md
+                  - file: security/cloud/kspm-frequently-asked-questions.md
+              - file: security/cloud/asset-disc.md
+                children: []
+              - file: security/cloud/cloud-native-vulnerability-management.md
+                children:
+                  - file: security/cloud/findings-page-3.md
+                  - file: security/cloud/cnvm-dashboard.md
+                  - file: security/cloud/cnvm-frequently-asked-questions-faq.md
+          - file: security/advanced-entity-analytics.md
+            children:
+              - file: security/advanced-entity-analytics/entity-store.md
+                children:
+                  - file: security/advanced-entity-analytics/entity-relationships.md
+              - file: security/advanced-entity-analytics/entity-risk-scoring.md
+                children:
+                  - file: security/advanced-entity-analytics/turn-on-risk-scoring-engine.md
+                  - file: security/advanced-entity-analytics/asset-criticality.md
+                  - file: security/advanced-entity-analytics/view-analyze-risk-score-data.md
+              - file: security/advanced-entity-analytics/manage-entities.md
+                children:
+                  - file: security/advanced-entity-analytics/watchlists.md
+                  - file: security/advanced-entity-analytics/entity-resolution.md
+                  - file: security/advanced-entity-analytics/privileged-user-monitoring.md
+                    children:
+                      - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
+                      - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
+                      - file: security/advanced-entity-analytics/monitor-privileged-user-activities.md
+              - file: security/advanced-entity-analytics/advanced-behavioral-detections.md
+                children:
+                  - file: security/advanced-entity-analytics/machine-learning-job-rule-requirements.md
+                  - file: security/advanced-entity-analytics/anomaly-detection.md
+                  - file: security/advanced-entity-analytics/optimizing-anomaly-results.md
+                  - file: security/advanced-entity-analytics/behavioral-detection-use-cases.md
+              - file: security/advanced-entity-analytics/investigate-entities.md
+                children:
+                  - file: security/advanced-entity-analytics/monitor-entity-risk.md
+                  - file: security/advanced-entity-analytics/view-entity-details.md
+              - file: security/advanced-entity-analytics/explore.md
+                children:
+                  - file: security/advanced-entity-analytics/hosts-page.md
+                  - file: security/advanced-entity-analytics/network-page.md
+                    children:
+                      - file: security/advanced-entity-analytics/configure-network-map-data.md
+                      - file: security/advanced-entity-analytics/configure-dns-histogram.md
+                  - file: security/advanced-entity-analytics/users-page.md
+          - file: security/esql-for-security.md
+            children:
+              - file: security/esql-for-security/esql-threat-hunting-tutorial.md
       - file: security/investigate.md
         children:
           - file: security/investigate/discover-security.md
@@ -821,54 +885,4 @@ toc:
           - file: security/investigate/notes.md
           - file: security/investigate/indicators-of-compromise.md
           - file: security/investigate/security-cases.md
-      - file: security/dashboards.md
-        children:
-          - file: security/dashboards/overview-dashboard.md
-          - file: security/dashboards/detection-response-dashboard.md
-          - file: security/dashboards/cloud-security-posture-dashboard.md
-          - file: security/dashboards/kubernetes-dashboard.md
-          - file: security/dashboards/entity-analytics-dashboard.md
-          - file: security/dashboards/data-quality-dashboard.md
-          - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
-          - file: security/dashboards/detection-rule-monitoring-dashboard.md
-          - file: security/dashboards/endpoint-detection-response-dashboard.md
-      - file: security/advanced-entity-analytics.md
-        children:
-          - file: security/advanced-entity-analytics/entity-analytics-requirements.md
-          - file: security/advanced-entity-analytics/entity-store.md
-            children:
-              - file: security/advanced-entity-analytics/entity-relationships.md
-          - file: security/advanced-entity-analytics/entity-risk-scoring.md
-            children:
-              - file: security/advanced-entity-analytics/turn-on-risk-scoring-engine.md
-              - file: security/advanced-entity-analytics/asset-criticality.md
-              - file: security/advanced-entity-analytics/view-analyze-risk-score-data.md
-          - file: security/advanced-entity-analytics/manage-entities.md
-            children:
-              - file: security/advanced-entity-analytics/watchlists.md
-              - file: security/advanced-entity-analytics/entity-resolution.md
-              - file: security/advanced-entity-analytics/privileged-user-monitoring.md
-                children:
-                  - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
-                  - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
-                  - file: security/advanced-entity-analytics/monitor-privileged-user-activities.md
-          - file: security/advanced-entity-analytics/advanced-behavioral-detections.md
-            children:
-              - file: security/advanced-entity-analytics/machine-learning-job-rule-requirements.md
-              - file: security/advanced-entity-analytics/anomaly-detection.md
-              - file: security/advanced-entity-analytics/optimizing-anomaly-results.md
-              - file: security/advanced-entity-analytics/behavioral-detection-use-cases.md
-          - file: security/advanced-entity-analytics/investigate-entities.md
-            children:
-              - file: security/advanced-entity-analytics/monitor-entity-risk.md
-              - file: security/advanced-entity-analytics/view-entity-details.md
-          - file: security/advanced-entity-analytics/explore.md
-            children:
-              - file: security/advanced-entity-analytics/hosts-page.md
-              - file: security/advanced-entity-analytics/network-page.md
-                children:
-                  - file: security/advanced-entity-analytics/configure-network-map-data.md
-                  - file: security/advanced-entity-analytics/configure-dns-histogram.md
-              - file: security/advanced-entity-analytics/users-page.md
-      - file: security/security-serverless-feature-tiers.md
       - file: security/apis.md
