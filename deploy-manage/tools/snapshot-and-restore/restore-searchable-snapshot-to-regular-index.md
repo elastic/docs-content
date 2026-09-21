@@ -10,11 +10,7 @@ products:
 
 # Restore {{search-snap}} data to a regular index [restore-searchable-snapshot-data-to-regular-index]
 
-A [{{search-snap}}](searchable-snapshots.md) index is a read-only index whose data is stored in a snapshot repository. This procedure restores that data from the source snapshot as a new regular index. It does not modify the mounted index in place. After you verify the restored data, you transfer any aliases or data stream membership and then delete the mounted index.
-
-:::{note}
-If you want to restore {{search-snap}} indices and keep them as {{search-snaps}}, follow [Back up and restore {{search-snaps}}](searchable-snapshots.md#back-up-restore-searchable-snapshots). This guide covers a different goal: bringing the data back as a regular index instead of recreating it as a {{search-snap}} index.
-:::
+A [{{search-snap}}](searchable-snapshots.md) index is a read-only index whose data is stored in a snapshot repository.
 
 Use this procedure for fully mounted and partially mounted {{search-snaps}} when you need to:
 
@@ -23,9 +19,15 @@ Use this procedure for fully mounted and partially mounted {{search-snaps}} when
 * Remove a data tier, such as the frozen tier, while keeping its data available as regular indices on another tier.
 * Return the data to regular index storage and recovery behavior instead of keeping it backed by a mounted snapshot.
 
+This procedure restores the data from the source snapshot as a new regular index. It does not modify the mounted index in place.
+
 The result is sometimes described as converting a {{search-snap}} back to a regular index or *rehydrating* it.
 
-The procedure covers {{search-snaps}} mounted manually or managed by the [{{ilm-init}} `searchable_snapshot` action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md). It also covers data stream backing indices managed by {{ilm-init}} or by [{{dlm-init}} with `frozen_after`](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
+The procedure covers {{search-snaps}} mounted manually or managed by the [{{ilm}} ({{ilm-init}}) `searchable_snapshot` action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md). It also covers data stream backing indices managed by {{ilm-init}} or by [data stream lifecycle ({{dlm-init}}) with `frozen_after`](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
+
+:::{note}
+If you want to restore {{search-snap}} indices and keep them as {{search-snaps}}, follow [Back up and restore {{search-snaps}}](searchable-snapshots.md#back-up-restore-searchable-snapshots). This guide covers a different goal: bringing the data back as a regular index instead of recreating it as a {{search-snap}} index.
+:::
 
 ## Before you begin [restore-searchable-snapshot-before-you-begin]
 
@@ -34,7 +36,6 @@ Before restoring {{search-snap}} data to a regular index:
 * Confirm that the repository and source snapshot used by the mounted index are registered and available.
 * Ensure that the destination data nodes or tier have enough local storage for the complete regular index and its replicas. During the restore, the mounted and regular indices exist at the same time.
 * If the cluster uses data tiers, select a destination tier other than the frozen tier. The frozen tier is reserved for partially mounted {{search-snaps}}.
-* Select a restored index name that does not already exist.
 * Ensure that you have the [permissions required to restore a snapshot](restore-snapshot.md#prerequisites) and manage the affected indices, aliases, lifecycle policies, and data streams.
 
 ::::{warning}
@@ -48,6 +49,8 @@ Follow these steps to restore the data from a mounted {{search-snap}} as a regul
 :::::{stepper}
 
 ::::{step} Gather details and prepare the restore
+
+**Get the mounted index settings.**
 
 Use the mounted index settings to gather the information required for the restore and any later lifecycle decisions:
 
@@ -78,17 +81,21 @@ For example, the following response shows the relevant settings for the mounted 
 }
 ```
 
+**Record the source details.**
+
 From the response, record the following details:
 
 * `index.store.snapshot.repository_name` and `index.store.snapshot.snapshot_name`: The repository and snapshot to use in the restore API path. In this example, use `my_repository` and `my_snapshot`.
 * `index.store.snapshot.index_name`: The name of the index stored in the source snapshot. It usually matches the regular index name before it was mounted, but it can identify an intermediate index such as `fm-clone-*` or `dlm-clone-*`. Use the exact returned value in the `indices` field of the restore request. In this example, use `fm-clone-a1b2c3-.ds-logs-app-2026.09.01-000123`.
-* {{ilm-init}} settings: If present, record `index.lifecycle.name` and `index.lifecycle.rollover_alias` in case you want to reuse the previous policy after the restore.
+* **{{ilm-init}} settings**: If present, record `index.lifecycle.name` and `index.lifecycle.rollover_alias` in case you want to reuse the previous policy after the restore.
 
-Then define the following values to use in the restore request:
+**Define the restore values.**
 
-* Restored index name: The name that you want to assign to the regular index. For {{ilm-init}}-created {{search-snaps}}, this is typically the mounted index name without the `restored-` or `partial-` prefix. For {{dlm-init}}-created {{search-snaps}}, remove the `dlm-frozen-` prefix. For manually mounted snapshots, select an available index name. In this example, use `.ds-logs-app-2026.09.01-000123`.
-* Allocation: If the cluster uses data tiers, select the destination and fallback tiers for the regular index. If the cluster uses nodes with the generic `data` role instead, plan to clear the inherited tier preference. The example in this guide uses the cold tier, with the warm and hot tiers as fallbacks.
-* Number of replicas: Select the number of replicas required for the regular index. The example uses one replica.
+Define the following values to use in the restore request:
+
+* **Restored index name**: Select a name that does not already exist. For {{ilm-init}}-created {{search-snaps}}, this is typically the mounted index name without the `restored-` or `partial-` prefix. For {{dlm-init}}-created {{search-snaps}}, remove the `dlm-frozen-` prefix. For manually mounted snapshots, select any available index name. In this example, use `.ds-logs-app-2026.09.01-000123`.
+* **Allocation**: If the cluster uses data tiers, select the destination and fallback tiers for the regular index. If the cluster uses nodes with the generic `data` role instead, plan to clear the inherited tier preference. The example in this guide uses the cold tier, with the warm and hot tiers as fallbacks.
+* **Number of replicas**: Select the number of replicas required for the regular index. The example uses one replica.
 
 ::::
 
@@ -139,13 +146,13 @@ POST /_snapshot/<snapshot_repository_name>/<searchable_snapshot_name>/_restore <
 1. Use the repository and snapshot name recorded in the first step.
 2. Use the `index.store.snapshot.index_name` value. This selects the actual index stored in the source snapshot.
 3. Use the selected regular index name. The rename prevents an internal source name such as `fm-clone-*` or `dlm-clone-*` from becoming the regular index name. You can omit `rename_pattern` and `rename_replacement` if the source name already matches the desired name.
-4. Do not restore aliases from the snapshot. Snapshot aliases might be absent or might not reflect the aliases on the mounted index. You transfer the current aliases after verifying the restore.
+4. Do not restore aliases from the snapshot. Snapshot aliases might be absent or might not reflect the aliases on the mounted index. You [transfer the current aliases after verifying the restore](#update-aliases-and-data-stream-membership).
 5. If the cluster uses data tiers, specify an ordered list of destination and fallback tiers. Do not include `data_frozen` because the restored index is a regular index. If the cluster does not use data tiers, set `index.routing.allocation.include._tier_preference` to `null` so that an inherited tier preference does not restrict allocation to nodes with the generic `data` role.
 6. Set the number of replicas required for the regular index.
 
 Snapshot restore does not apply current index templates. It restores the index metadata from the snapshot and then applies the overrides in the request. If the source index has custom `require`, `include`, or `exclude` allocation filters, add the appropriate `null` overrides to `index_settings` so that they do not prevent allocation on the destination tier.
 
-Using the values gathered for `partial-.ds-logs-app-2026.09.01-000123` in the previous steps, restore the data with the following request:
+**Example:** Using the values gathered for `partial-.ds-logs-app-2026.09.01-000123` in the previous steps, restore the data with the following request:
 
 ```console
 POST /_snapshot/my_repository/my_snapshot/_restore
@@ -192,11 +199,11 @@ If {{ilm-init}} managed the index before it became a {{search-snap}}, remove the
 POST /<restored-index-name>/_ilm/remove
 ```
 
-The restore request sets `index.lifecycle.name` and `index.lifecycle.rollover_alias` to `null` so that the restored index does not resume its previous policy. The [remove policy API]({{es-apis}}operation/operation-ilm-remove-policy) also clears lifecycle execution metadata restored from the snapshot, including the cached phase definition and any previous error state.
+The restore request sets `index.lifecycle.name` and `index.lifecycle.rollover_alias` to `null` so that the restored index does not automatically resume its previous policy. The [remove policy API]({{es-apis}}operation/operation-ilm-remove-policy) then clears inherited lifecycle execution metadata, including the cached phase definition and any previous error state. Together, these actions provide a predictable starting point before you deliberately apply a policy to the regular index.
 
 For more information about controlling lifecycle execution when restoring managed indices, refer to [Restore managed indices and manage {{ilm-init}} actions](/manage-data/lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md).
 
-For the preceding example, use:
+For the restored index in this guide, use:
 
 ```console
 POST /.ds-logs-app-2026.09.01-000123/_ilm/remove
@@ -280,7 +287,7 @@ POST /_data_stream/_modify
 
 Refer to [Modify a data stream](/manage-data/data-store/data-streams/modify-data-stream.md#data-streams-modify-backing-indices).
 
-For the preceding example, use:
+For the `logs-app` data stream example, use:
 
 ```console
 POST /_data_stream/_modify
