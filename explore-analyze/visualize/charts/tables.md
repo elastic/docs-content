@@ -29,7 +29,9 @@ To automate table or dashboard creation, use the [Dashboards and Visualizations 
 
 ![A table visualization in {{kib}}](/explore-analyze/images/table-charts.png)
 
-## Build a table with the point-and-click editor [build-a-table]
+## Create a table [create-a-table]
+
+### Create with the point-and-click editor [build-a-table]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -37,6 +39,7 @@ To automate table or dashboard creation, use the [Dashboards and Visualizations 
 To build a table:
 
 :::::{stepper}
+:toc: false
 
 ::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -69,7 +72,7 @@ See [](#settings) for all configuration options for your table.
 
 :::::
 
-## Build a table with an {{esql}} query [build-a-table-with-esql]
+### Create with an {{esql}} query [build-a-table-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
@@ -85,11 +88,30 @@ FROM kibana_sample_data_logs
 
 To build the table:
 
-1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-2. Set the visualization type to **Table**.
-3. Assign `host.keyword` to **Rows**, and assign `requests` and `average_bytes` to **Metrics**.
-4. Customize the table appearance using the [table settings](#settings).
-5. Select **Apply and close**.
+:::::{stepper}
+:toc: false
+
+::::{step} Create the visualization
+[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+::::
+
+::::{step} Set the visualization type
+Set the visualization type to **Table**.
+::::
+
+::::{step} Assign the result columns
+Assign `host.keyword` to **Rows**, and assign `requests` and `average_bytes` to **Metrics**.
+::::
+
+::::{step} Customize the table
+Customize the table appearance using the [table settings](#settings).
+::::
+
+::::{step} Apply and close
+Select **Apply and close**.
+::::
+
+:::::
 
 The table preview shows one row per host, ordered by request count.
 

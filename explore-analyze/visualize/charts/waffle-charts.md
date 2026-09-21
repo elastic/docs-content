@@ -28,7 +28,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens waffle charts showing response status breakdown and OS distribution](/explore-analyze/images/waffle-chart-example.png)
 
-## Build a waffle chart with the point-and-click editor [build-a-waffle-chart]
+## Create a waffle chart [create-a-waffle-chart]
+
+### Create with the point-and-click editor [build-a-waffle-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -36,6 +38,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a waffle chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -66,7 +69,7 @@ The chart preview updates to show a grid of colored squares. Each color represen
 
 ::::::
 
-## Build a waffle chart with an {{esql}} query [build-a-waffle-chart-with-esql]
+### Create with an {{esql}} query [build-a-waffle-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
@@ -82,11 +85,30 @@ FROM kibana_sample_data_logs
 
 To build the chart:
 
-1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-2. Set the visualization type to **Waffle**.
-3. Assign `machine.os.keyword` to **Group by** and `requests` to **Metric**.
-4. Customize the chart appearance using the [waffle chart settings](#waffle-chart-settings).
-5. Select **Apply and close**.
+::::::{stepper}
+:toc: false
+
+:::::{step} Create the visualization
+[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+:::::
+
+:::::{step} Set the visualization type
+Set the visualization type to **Waffle**.
+:::::
+
+:::::{step} Assign the result columns
+Assign `machine.os.keyword` to **Group by** and `requests` to **Metric**.
+:::::
+
+:::::{step} Customize the chart
+Customize the chart appearance using the [waffle chart settings](#waffle-chart-settings).
+:::::
+
+:::::{step} Apply and close
+Select **Apply and close**.
+:::::
+
+::::::
 
 The chart preview shows the relative share of requests from each operating system.
 

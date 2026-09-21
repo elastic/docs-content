@@ -30,7 +30,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Metric chart representing an SLO with different layouts](../../images/metric-chart.png)
 
-## Build a metric chart with the point-and-click editor [build-a-metric-chart]
+## Create a metric chart [create-a-metric-chart]
+
+### Create with the point-and-click editor [build-a-metric-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -38,6 +40,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a metric chart:
 
 :::::{stepper}
+:toc: false
 
 ::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -70,7 +73,7 @@ See [](#settings) for all data configuration options for your metric chart.
 
 :::::
 
-## Build a metric chart with an {{esql}} query [build-a-metric-chart-with-esql]
+### Create with an {{esql}} query [build-a-metric-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
@@ -86,11 +89,30 @@ To show a distribution statistic instead of a count, replace `COUNT(*)` with [`P
 
 To build the chart:
 
-1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-2. Set the visualization type to **Metric**.
-3. Assign `requests` to the **Primary metric**.
-4. Customize the chart appearance using the [metric chart settings](#settings).
-5. Select **Apply and close**.
+:::::{stepper}
+:toc: false
+
+::::{step} Create the visualization
+[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+::::
+
+::::{step} Set the visualization type
+Set the visualization type to **Metric**.
+::::
+
+::::{step} Assign the result columns
+Assign `requests` to the **Primary metric**.
+::::
+
+::::{step} Customize the chart
+Customize the chart appearance using the [metric chart settings](#settings).
+::::
+
+::::{step} Apply and close
+Select **Apply and close**.
+::::
+
+:::::
 
 The chart preview shows the request count as a single value.
 

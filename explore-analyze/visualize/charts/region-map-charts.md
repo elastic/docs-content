@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens region map chart](/explore-analyze/images/region-map-chart-example.png)
 
-## Build a region map chart with the point-and-click editor [build-a-region-map-chart]
+## Create a region map chart [create-a-region-map-chart]
+
+### Create with the point-and-click editor [build-a-region-map-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a region map chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -61,7 +64,7 @@ The chart preview updates to show a map with regions colored by metric value. If
 
 ::::::
 
-## Build a region map chart with an {{esql}} query [build-a-region-map-chart-with-esql]
+### Create with an {{esql}} query [build-a-region-map-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
@@ -75,12 +78,34 @@ FROM kibana_sample_data_logs
 
 To build the chart:
 
-1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-2. Set the visualization type to **Region map**.
-3. Assign `geo.dest` to **Region key** and `requests` to **Metric**.
-4. For the **Region key**, select the **World Countries** boundaries and the `iso2` join field so that the map can match the values returned by `geo.dest`.
-5. Customize the chart appearance using the [region map chart settings](#region-map-chart-settings).
-6. Select **Apply and close**.
+::::::{stepper}
+:toc: false
+
+:::::{step} Create the visualization
+[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+:::::
+
+:::::{step} Set the visualization type
+Set the visualization type to **Region map**.
+:::::
+
+:::::{step} Assign the result columns
+Assign `geo.dest` to **Region key** and `requests` to **Metric**.
+:::::
+
+:::::{step} Match the region key
+For the **Region key**, select the **World Countries** boundaries and the `iso2` join field so that the map can match the values returned by `geo.dest`.
+:::::
+
+:::::{step} Customize the chart
+Customize the chart appearance using the [region map chart settings](#region-map-chart-settings).
+:::::
+
+:::::{step} Apply and close
+Select **Apply and close**.
+:::::
+
+::::::
 
 The chart preview colors countries by request count. Countries without matching codes appear gray.
 

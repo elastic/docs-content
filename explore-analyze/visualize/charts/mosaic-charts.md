@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens mosaic chart showing response status by operating system](/explore-analyze/images/mosaic-chart-example.png)
 
-## Build a mosaic chart with the point-and-click editor [build-a-mosaic-chart]
+## Create a mosaic chart [create-a-mosaic-chart]
+
+### Create with the point-and-click editor [build-a-mosaic-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a mosaic chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -62,7 +65,7 @@ The chart preview updates to show a grid of rectangles. Column widths represent 
 
 ::::::
 
-## Build a mosaic chart with an {{esql}} query [build-a-mosaic-chart-with-esql]
+### Create with an {{esql}} query [build-a-mosaic-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
@@ -76,11 +79,30 @@ FROM kibana_sample_data_logs
 
 To build the chart:
 
-1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-2. Set the visualization type to **Mosaic**.
-3. Assign `machine.os.keyword` to the **Horizontal axis**, `response.keyword` to the **Vertical axis**, and `requests` to **Metric**.
-4. Customize the chart appearance using the [mosaic chart settings](#mosaic-chart-settings).
-5. Select **Apply and close**.
+::::::{stepper}
+:toc: false
+
+:::::{step} Create the visualization
+[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+:::::
+
+:::::{step} Set the visualization type
+Set the visualization type to **Mosaic**.
+:::::
+
+:::::{step} Assign the result columns
+Assign `machine.os.keyword` to the **Horizontal axis**, `response.keyword` to the **Vertical axis**, and `requests` to **Metric**.
+:::::
+
+:::::{step} Customize the chart
+Customize the chart appearance using the [mosaic chart settings](#mosaic-chart-settings).
+:::::
+
+:::::{step} Apply and close
+Select **Apply and close**.
+:::::
+
+::::::
 
 The chart preview shows how response-code proportions vary between operating systems.
 

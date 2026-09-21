@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens gauge chart showing RAM consumption averages](/explore-analyze/images/gauge-chart-example.png)
 
-## Build a gauge chart with the point-and-click editor [build-a-gauge-chart]
+## Create a gauge chart [create-a-gauge-chart]
+
+### Create with the point-and-click editor [build-a-gauge-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a gauge chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -67,7 +70,7 @@ The chart preview updates to show a gauge with your metric value positioned with
 
 ::::::
 
-## Build a gauge chart with an {{esql}} query [build-a-gauge-chart-with-esql]
+### Create with an {{esql}} query [build-a-gauge-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
@@ -81,12 +84,34 @@ FROM kibana_sample_data_logs
 
 To build the chart:
 
-1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-2. Set the visualization type to **Gauge**.
-3. Assign `average_bytes` to the **Metric** dimension.
-4. Set value ranges that give the metric context.
-5. Customize the chart appearance using the [gauge chart settings](#gauge-chart-settings).
-6. Select **Apply and close**.
+::::::{stepper}
+:toc: false
+
+:::::{step} Create the visualization
+[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+:::::
+
+:::::{step} Set the visualization type
+Set the visualization type to **Gauge**.
+:::::
+
+:::::{step} Assign the result columns
+Assign `average_bytes` to the **Metric** dimension.
+:::::
+
+:::::{step} Set value ranges
+Set value ranges that give the metric context.
+:::::
+
+:::::{step} Customize the chart
+Customize the chart appearance using the [gauge chart settings](#gauge-chart-settings).
+:::::
+
+:::::{step} Apply and close
+Select **Apply and close**.
+:::::
+
+::::::
 
 The chart preview shows where the average number of bytes falls within the configured ranges.
 

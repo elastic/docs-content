@@ -28,7 +28,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Bar chart showing sales by category with different layouts](../../images/stacked-bar-chart.png)
 
-## Build a bar chart with the point-and-click editor [build-a-bar-chart]
+## Create a bar chart [create-a-bar-chart]
+
+### Create with the point-and-click editor [build-a-bar-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -36,6 +38,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a bar chart:
 
 :::::{stepper}
+:toc: false
 
 ::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -69,7 +72,7 @@ Refer to [](#settings) for all data configuration options for your bar chart.
 
 :::::
 
-## Build a bar chart with an {{esql}} query [build-a-bar-chart-with-esql]
+### Create with an {{esql}} query [build-a-bar-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
@@ -85,11 +88,30 @@ FROM kibana_sample_data_logs
 
 To build the chart:
 
-1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-2. Set the visualization type to **Bar**.
-3. Assign `response.keyword` to the **Horizontal axis** and `requests` to the **Vertical axis**.
-4. Customize the chart appearance using the [bar chart settings](#settings).
-5. Select **Apply and close**.
+:::::{stepper}
+:toc: false
+
+::::{step} Create the visualization
+[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+::::
+
+::::{step} Set the visualization type
+Set the visualization type to **Bar**.
+::::
+
+::::{step} Assign the result columns
+Assign `response.keyword` to the **Horizontal axis** and `requests` to the **Vertical axis**.
+::::
+
+::::{step} Customize the chart
+Customize the chart appearance using the [bar chart settings](#settings).
+::::
+
+::::{step} Apply and close
+Select **Apply and close**.
+::::
+
+:::::
 
 The chart preview shows one bar for each response code. The request count determines the height of each bar.
 

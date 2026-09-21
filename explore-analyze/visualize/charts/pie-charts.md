@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens pie chart](../../images/kibana-lens-pie-chart.png)
 
-## Build a pie chart with the point-and-click editor [build-a-pie-chart]
+## Create a pie chart [create-a-pie-chart]
+
+### Create with the point-and-click editor [build-a-pie-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a pie chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -65,7 +68,7 @@ The chart preview updates to show a pie divided into slices. Each slice represen
 
 ::::::
 
-## Build a pie chart with an {{esql}} query [build-a-pie-chart-with-esql]
+### Create with an {{esql}} query [build-a-pie-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
@@ -81,11 +84,30 @@ FROM kibana_sample_data_ecommerce
 
 To build the chart:
 
-1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-2. Set the visualization type to **Pie**.
-3. Assign `category.keyword` to **Slice by** and `revenue` to **Metric**.
-4. Customize the chart appearance using the [pie chart settings](#pie-chart-settings).
-5. Select **Apply and close**.
+::::::{stepper}
+:toc: false
+
+:::::{step} Create the visualization
+[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+:::::
+
+:::::{step} Set the visualization type
+Set the visualization type to **Pie**.
+:::::
+
+:::::{step} Assign the result columns
+Assign `category.keyword` to **Slice by** and `revenue` to **Metric**.
+:::::
+
+:::::{step} Customize the chart
+Customize the chart appearance using the [pie chart settings](#pie-chart-settings).
+:::::
+
+:::::{step} Apply and close
+Select **Apply and close**.
+:::::
+
+::::::
 
 The chart preview shows each category's share of the revenue returned by the query.
 

@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens tag cloud chart showing popular search terms](/explore-analyze/images/tag-cloud-chart-example.png)
 
-## Build a tag cloud chart with the point-and-click editor [build-a-tag-cloud-chart]
+## Create a tag cloud chart [create-a-tag-cloud-chart]
+
+### Create with the point-and-click editor [build-a-tag-cloud-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a tag cloud chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -61,7 +64,7 @@ The chart preview updates to show text labels sized by metric value, with more p
 
 ::::::
 
-## Build a tag cloud chart with an {{esql}} query [build-a-tag-cloud-chart-with-esql]
+### Create with an {{esql}} query [build-a-tag-cloud-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
@@ -77,11 +80,30 @@ FROM kibana_sample_data_logs
 
 To build the chart:
 
-1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-2. Set the visualization type to **Tag cloud**.
-3. Assign `request.keyword` to **Tags** and `requests` to **Metric**.
-4. Customize the chart appearance using the [tag cloud chart settings](#tag-cloud-chart-settings).
-5. Select **Apply and close**.
+::::::{stepper}
+:toc: false
+
+:::::{step} Create the visualization
+[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+:::::
+
+:::::{step} Set the visualization type
+Set the visualization type to **Tag cloud**.
+:::::
+
+:::::{step} Assign the result columns
+Assign `request.keyword` to **Tags** and `requests` to **Metric**.
+:::::
+
+:::::{step} Customize the chart
+Customize the chart appearance using the [tag cloud chart settings](#tag-cloud-chart-settings).
+:::::
+
+:::::{step} Apply and close
+Select **Apply and close**.
+:::::
+
+::::::
 
 The chart preview shows larger tags for the request paths with more requests.
 

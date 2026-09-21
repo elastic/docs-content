@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens treemap charts based on sample data](/explore-analyze/images/treemap-example.png)
 
-## Build a treemap chart with the point-and-click editor [build-a-treemap-chart]
+## Create a treemap chart [create-a-treemap-chart]
+
+### Create with the point-and-click editor [build-a-treemap-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a treemap chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -61,7 +64,7 @@ The chart preview updates to show rectangles sized by your metric. If you added 
 
 ::::::
 
-## Build a treemap chart with an {{esql}} query [build-a-treemap-chart-with-esql]
+### Create with an {{esql}} query [build-a-treemap-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
@@ -77,11 +80,30 @@ FROM kibana_sample_data_logs
 
 To build the chart:
 
-1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-2. Set the visualization type to **Treemap**.
-3. Assign `extension.keyword` to **Group by** and `total_bytes` to **Metric**.
-4. Customize the chart appearance using the [treemap chart settings](#treemap-chart-settings).
-5. Select **Apply and close**.
+::::::{stepper}
+:toc: false
+
+:::::{step} Create the visualization
+[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+:::::
+
+:::::{step} Set the visualization type
+Set the visualization type to **Treemap**.
+:::::
+
+:::::{step} Assign the result columns
+Assign `extension.keyword` to **Group by** and `total_bytes` to **Metric**.
+:::::
+
+:::::{step} Customize the chart
+Customize the chart appearance using the [treemap chart settings](#treemap-chart-settings).
+:::::
+
+:::::{step} Apply and close
+Select **Apply and close**.
+:::::
+
+::::::
 
 The chart preview shows larger rectangles for file extensions with more transferred data.
 

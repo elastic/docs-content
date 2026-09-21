@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens area chart](../../images/kibana-area-chart.png)
 
-## Build an area chart with the point-and-click editor [build-an-area-chart]
+## Create an area chart [create-an-area-chart]
+
+### Create with the point-and-click editor [build-an-area-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build an area chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -66,7 +69,7 @@ Refer to [](#area-chart-settings) for all data configuration options for your ar
 
 ::::::
 
-## Build an area chart with an {{esql}} query [build-an-area-chart-with-esql]
+### Create with an {{esql}} query [build-an-area-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
@@ -83,11 +86,30 @@ If your time field isn't named `@timestamp`, replace `@timestamp` with that fiel
 
 To build the chart:
 
-1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-2. Set the visualization type to **Area**.
-3. Assign `time_bucket` to the **Horizontal axis** and `total_bytes` to the **Vertical axis**.
-4. Customize the chart appearance using the [area chart settings](#area-chart-settings).
-5. Select **Apply and close**.
+::::::{stepper}
+:toc: false
+
+:::::{step} Create the visualization
+[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+:::::
+
+:::::{step} Set the visualization type
+Set the visualization type to **Area**.
+:::::
+
+:::::{step} Assign the result columns
+Assign `time_bucket` to the **Horizontal axis** and `total_bytes` to the **Vertical axis**.
+:::::
+
+:::::{step} Customize the chart
+Customize the chart appearance using the [area chart settings](#area-chart-settings).
+:::::
+
+:::::{step} Apply and close
+Select **Apply and close**.
+:::::
+
+::::::
 
 The chart preview shows how the volume of transferred data changes over time.
 
