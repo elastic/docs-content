@@ -13,7 +13,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-saml-authentication.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html
 applies_to:
-  stack: all
+  stack: ga
 products:
   - id: elasticsearch
   - id: cloud-enterprise
@@ -60,7 +60,7 @@ Setting up SAML requires coordination with your Identity Provider (IdP). You'll 
 
 The {{stack}} supports the SAML 2.0 Web Browser SSO and Single Logout profiles, and can integrate with any IdP that supports at least the Web Browser SSO profile. It has been tested with [Microsoft Active Directory Federation Services (ADFS)](https://www.elastic.co/blog/how-to-configure-elasticsearch-saml-authentication-with-adfs), [Microsoft Entra ID](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-entra.md), and [Okta](https://www.elastic.co/blog/how-to-set-up-okta-saml-login-kibana-elastic-cloud).
 
-To configure {{es}}, you will need a standard XML-formatted SAML *metadata* document from your IdP, which defines its capabilities and features. You should be able to download or generate it from your IdP's administration interface. You can pass it to {{es}} as a URL (preferred, so {{es}} reloads it automatically when it changes) or as a local file. For more information, refer to [Create a SAML realm in {{es}}](#saml-create-realm).
+To configure {{es}}, you need a standard XML-formatted SAML *metadata* document from your IdP, which defines its capabilities and features. You should be able to download or generate it from your IdP's administration interface. You can provide the document to {{es}} as either an HTTPS URL or a local file. For more information, refer to [Create a SAML realm in {{es}}](#saml-create-realm).
 
 Most IdPs will provide an appropriate metadata file with all the features that the {{stack}} requires. Verify that your IdP's metadata includes the following:
 
@@ -125,7 +125,7 @@ The realm ties together three pieces: your IdP's identity and metadata, the {{st
 ```yaml
 xpack.security.authc.realms.saml.saml1:
   order: 2  # <1>
-  idp.metadata.path: "https://idp.example.com/metadata"
+  idp.metadata.path: "saml/idp-metadata.xml"
   idp.entity_id: "https://idp.example.com/"
   sp.entity_id: "https://kibana.example.com"
   sp.acs: "https://kibana.example.com/api/security/saml/callback"
@@ -139,7 +139,7 @@ xpack.security.authc.realms.saml.saml1:
 The following describes the most commonly used settings for a SAML realm. For the full list of available settings, refer to [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
 
 `idp.metadata.path`
-:   The path or URL to the SAML metadata file for your Identity Provider. A URL is recommended so {{es}} reloads it automatically when it changes.
+:   The path or HTTPS URL to your IdP's SAML metadata. {{es}} monitors both types of resources and reloads the IdP configuration when changes are detected. A local file avoids making SAML authentication dependent on the availability of a remote endpoint. On {{ech}}, {{ece}}, and {{eck}}, an HTTPS URL can simplify configuration because you don't need to upload or mount the metadata file. {{es}} must be able to reach the URL and trust its TLS certificate.
 
     :::{include} /deploy-manage/_snippets/es-file-path-tip.md
     :::
