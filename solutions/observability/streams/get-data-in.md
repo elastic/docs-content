@@ -64,9 +64,7 @@ Wired streams send documents to a managed endpoint, from which you can route dat
 Select the endpoint that matches your deployment:
 
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Use **`logs.otel`** for OTel-native data or for a consistent, normalized format. Streams translates ECS field names to OTel equivalents automatically. Use **`logs.ecs`** when your data already uses ECS field names and you want to preserve them without transformation.
-- {applies_to}`stack: preview 9.2-9.3` Use **`logs`**. This is the only wired-stream endpoint available in these versions.
-
-For Stack versions 9.2 and 9.3, replace `logs.otel` with `logs` in the following examples.
+- {applies_to}`stack: preview 9.2-9.3` Use **`logs`**. This is the only wired-stream endpoint available in these versions. Replace `logs.otel` with `logs` in the following examples.
 
 Configure your shipper to use the endpoint:
 
