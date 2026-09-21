@@ -48,7 +48,10 @@ If you have [{{anomaly-detect-cap}} alert rules](/explore-analyze/machine-learni
 
 If you have more than one {{anomaly-job}}, you can also obtain *overall bucket* results, which combine and correlate anomalies from multiple jobs into an overall score. When you view the results for job groups in {{kib}}, it provides the overall bucket scores. For more information, see [Get overall buckets API]({{es-apis}}operation/operation-ml-get-overall-buckets).
 
-Bucket results provide the top level, overall view of the {{anomaly-job}} and are ideal for alerts. For example, the bucket results might indicate that at 16:05 the system was unusual. This information is a summary of all the anomalies, pinpointing when they occurred. When you identify an anomalous bucket, you can investigate further by examining the pertinent records.
+Bucket results provide the top level, overall view of the {{anomaly-job}} and are ideal for alerts. For example, the bucket results might indicate that at 16:05 the system was unusual. This information is a summary of all the anomalies, pinpointing when they occurred. When you identify an anomalous bucket, you can investigate further by examining the pertinent records. Use the **Actions** menu in the **Anomalies** table to explore the source data. Refer to [Adding custom URLs](ml-configuring-url.md).
+
+::::{include} _snippets/ml-ad-cps-results-links.md
+::::
 
 ## Influencer results [ml-ad-influencer-results]
 

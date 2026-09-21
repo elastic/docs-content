@@ -3,7 +3,11 @@ navigation_title: "Quickstart"
 description: "Create a time series data stream, ingest sample metrics, and run an ES|QL query."
 applies_to:
   stack: ga
-  serverless: ga
+  serverless:
+    elasticsearch: ga
+    observability: ga
+    security: ga
+    vectordb: unavailable
 products:
   - id: elasticsearch
 ---
