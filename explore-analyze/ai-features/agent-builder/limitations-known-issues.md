@@ -101,21 +101,16 @@ This results in parsing errors like this:
 ]
 ```
 
-### Disabled pre-execution workflow blocks the agent
+### Disabled pre-execution workflow is hidden in the selector [disabled-pre-execution-workflow]
 
-Disabling a workflow doesn't detach it from the agents or spaces that reference it as a [pre-execution workflow](agents-and-workflows.md#pre-execution-workflows). Every message to the affected agents then fails with a **Workflow Failed** error:
-
-```console-response
-The workflow "<workflow_id>" execution failed: Workflow '<workflow_id>' is disabled and cannot be executed.
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
 ```
 
-:::{note}
-On serverless, and on 9.5.3 and later, a disabled workflow stays visible in the **Workflows** selector, labeled **(disabled)**, so you can clear the reference from the UI. The agents still fail until you clear it.
-:::
+Disabling a workflow doesn't remove it from the agents or spaces that use it as a [pre-execution workflow](agents-and-workflows.md#pre-execution-workflows), so every message to those agents fails with a **Workflow Failed** error. On 9.4.x, and on 9.5.0 through 9.5.2, the disabled workflow also disappears from the **Workflows** selector, so you can't clear it from the UI without re-enabling the workflow first.
 
-On 9.4.x and on 9.5.0 through 9.5.2, the disabled workflow doesn't appear in the **Workflows** selector, so you can't clear the reference from the UI. The 9.4.x releases don't receive this change.
-
-**Workaround:** Re-enable the workflow, clear it from the selector, save, then disable the workflow again. You can also clear the reference through the API. To learn more, refer to [Disabled pre-execution workflow](troubleshooting/pre-execution-workflow-disabled.md).
+**Workaround:** Re-enable the workflow, clear it from the selector, save, then disable the workflow again. You can also clear it through the API. To learn more, refer to [Disabled pre-execution workflow](troubleshooting/pre-execution-workflow-disabled.md).
 
 ### MCP server URL copy button omits space name
 
