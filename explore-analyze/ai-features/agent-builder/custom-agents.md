@@ -255,7 +255,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-In addition to the three access control levels, you can grant individual users access to a specific agent. Use this when the agent's access control level is too broad or too narrow for a particular person.
+In addition to the three access control levels, you can grant individual users access to a specific agent. Use this when the agent's access control level is too broad or too narrow for a particular user.
 
 To configure per-agent access controls:
 
