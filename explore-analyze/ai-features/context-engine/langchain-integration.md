@@ -1,6 +1,6 @@
 ---
-navigation_title: Query AI indices with LangChain
-description: Connect a LangChain agent to Context Engine through the Agent Builder MCP server or the Context Engine APIs, so it can retrieve Knowledge Indicators from your AI indices.
+navigation_title: Query AI Indices with LangChain
+description: Connect a LangChain agent to Context Engine through the Agent Builder MCP server or the Context Engine APIs, so it can retrieve Knowledge Indicators from your AI Indices.
 applies_to:
   stack: preview 9.6
   serverless: preview
@@ -8,7 +8,7 @@ products:
   - id: kibana
 ---
 
-# Query AI indices from LangChain
+# Query AI Indices from LangChain
 
 :::{important}
 This page is currently hidden from the documentation navigation. It is intended for testing and review while the feature is under development.
@@ -27,7 +27,7 @@ This guide covers both routes. Examples on this page use Python, but the same ap
 
 * An {{stack}} deployment with an Enterprise license, or an {{serverless-full}} project.
 * The `contextEngine:enabled` advanced setting turned on in the space you want to query. This setting is per space, and the APIs return `404` in any space where it's off.
-* At least one AI Index containing Knowledge Indicators (KIs). See [Create an AI index](quickstart.md#2.-create-an-ai-index) if you don't have one yet.
+* At least one AI Index containing Knowledge Indicators (KIs). See [Create an AI Index](quickstart.md#2.-create-an-ai-index) if you don't have one yet.
 * An API key whose privileges cover both Kibana and Elasticsearch. [Step 1](#step-1-create-an-api-key) walks through this.
 * Python 3.10 or later, with `langchain` installed. The skill option in [Step 3](#step-3-create-the-agent) adds `deepagents`, which needs 3.11 or later.
 
@@ -35,13 +35,13 @@ This guide covers both routes. Examples on this page use Python, but the same ap
 
 Context Engine uses a discovery-first retrieval flow:
 
-1. List the AI indices available to the agent.
-2. Describe the relevant AI index to identify its query target, fields, and available Knowledge Indicators.
-3. Query the AI index using the information returned by the describe operation.
+1. List the AI Indices available to the agent.
+2. Describe the relevant AI Index to identify its query target, fields, and available Knowledge Indicators.
+3. Query the AI Index using the information returned by the describe operation.
 
-Describing the AI index before querying it prevents the agent from guessing the query target or field names.
+Describing the AI Index before querying it prevents the agent from guessing the query target or field names.
 
-Both connection routes run the same three operations, against one Kibana space, as the owner of the API key. An agent only ever sees the AI indices that key is allowed to read.
+Both connection routes run the same three operations, against one Kibana space, as the owner of the API key. An agent only ever sees the AI Indices that key is allowed to read.
 
 ## Step 1: Create an API key
 
@@ -198,7 +198,7 @@ client = httpx.Client(
 
 @tool
 def list_ai_indices() -> list[dict]:
-    """List the AI indices available in this space, with the ES|QL target to query each
+    """List the AI Indices available in this space, with the ES|QL target to query each
     one against. Call this first, before describing or querying anything."""
     response = client.get("/ai_index")
     response.raise_for_status()
@@ -214,7 +214,7 @@ def list_ai_indices() -> list[dict]:
 
 @tool
 def describe_ai_index(ai_index_id: str) -> str:
-    """Describe one AI index: the ES|QL target to put after FROM, every field it exposes
+    """Describe one AI Index: the ES|QL target to put after FROM, every field it exposes
     and which are semantic, the knowledge indicator types and tags it holds, and example
     queries. Always call this before writing a query against an index."""
     response = client.get(f"/ai_index/{ai_index_id}/_describe")
@@ -224,7 +224,7 @@ def describe_ai_index(ai_index_id: str) -> str:
 
 @tool
 def query_ai_indices(query: str, params: dict | None = None, limit: int = 20) -> dict:
-    """Run an ES|QL query against one or more AI indices and return {columns, values}.
+    """Run an ES|QL query against one or more AI Indices and return {columns, values}.
     Build the query from the output of describe_ai_index: use its FROM target and its
     field names verbatim. Pass user input as named parameters in params rather than
     writing it into the query string. Do not add any space, tenant, or permissions
@@ -432,7 +432,7 @@ def main() -> None:
 
 ## Step 4: Ask a question
 
-Invoke the agent with a question that the Knowledge Indicators in your AI index can answer.
+Invoke the agent with a question that the Knowledge Indicators in your AI Index can answer.
 
 ::::{tab-set}
 :group: ce-transport
@@ -478,7 +478,7 @@ if __name__ == "__main__":
 
 A successful run shows the agent working through the retrieval flow in order. Check that:
 
-* It called the list tool and got back at least one AI index.
+* It called the list tool and got back at least one AI Index.
 * It called the describe tool on the index it selected.
 * Its query used the target and field names returned by describe, not invented ones.
 * The answer draws on Knowledge Indicator content, and names the indicators it used.
@@ -500,8 +500,8 @@ To read from several spaces in one agent, build one client per space and registe
 | `403` on every endpoint | The API key lacks the Kibana **Context Engine** feature privilege. | Add it to the role. Elasticsearch index privileges alone aren't enough. |
 | `403` on query or describe only | Missing Elasticsearch privileges on the backing indices. | Grant `read` and `view_index_metadata` on `ai-index-*`. |
 | `404` on every endpoint | `contextEngine:enabled` is off in the space the URL points at. | Turn it on in that space's advanced settings. |
-| An AI index you expect isn't listed | No `read` on its backing index, or every document in it belongs to another space. | Check the key's index privileges and which space the URL targets. |
-| `Unknown index` from a query, for an ID that *was* listed | The AI index is registered but its backing index doesn't exist yet. | Expected for a registration with no data. Pick another index. |
+| An AI Index you expect isn't listed | No `read` on its backing index, or every document in it belongs to another space. | Check the key's index privileges and which space the URL targets. |
+| `Unknown index` from a query, for an ID that *was* listed | The AI Index is registered but its backing index doesn't exist yet. | Expected for a registration with no data. Pick another index. |
 | A query returns no rows, but the index has data | Either the request is scoped to the wrong space, or the query carries its own space condition. | Point the request at the right space, and remove any space condition from the query. |
 | Describe returns a block with no `Knowledge item types` or `Tags` section | The counts need `read` on the backing indices, and need `type` and `tags` mapped as aggregatable keywords. | Expected degradation. The rest of the block is still usable. |
 | An error saying the response is too large | The result exceeds the 20 MB cap. | Drop large fields with `KEEP`, lower `limit`, or aggregate with `STATS`. |
@@ -620,7 +620,7 @@ client = httpx.Client(
 
 @tool
 def list_ai_indices() -> list[dict]:
-    """List the AI indices available in this space, with the ES|QL target to query each
+    """List the AI Indices available in this space, with the ES|QL target to query each
     one against. Call this first, before describing or querying anything."""
     response = client.get("/ai_index")
     response.raise_for_status()
@@ -636,7 +636,7 @@ def list_ai_indices() -> list[dict]:
 
 @tool
 def describe_ai_index(ai_index_id: str) -> str:
-    """Describe one AI index: the ES|QL target to put after FROM, every field it exposes
+    """Describe one AI Index: the ES|QL target to put after FROM, every field it exposes
     and which are semantic, the knowledge indicator types and tags it holds, and example
     queries. Always call this before writing a query against an index."""
     response = client.get(f"/ai_index/{ai_index_id}/_describe")
@@ -646,7 +646,7 @@ def describe_ai_index(ai_index_id: str) -> str:
 
 @tool
 def query_ai_indices(query: str, params: dict | None = None, limit: int = 20) -> dict:
-    """Run an ES|QL query against one or more AI indices and return {columns, values}.
+    """Run an ES|QL query against one or more AI Indices and return {columns, values}.
     Build the query from the output of describe_ai_index: use its FROM target and its
     field names verbatim. Pass user input as named parameters in params rather than
     writing it into the query string. Do not add any space, tenant, or permissions
@@ -806,7 +806,7 @@ client = httpx.Client(
 
 @tool
 def list_ai_indices() -> list[dict]:
-    """List the AI indices available in this space, with the ES|QL target to query each
+    """List the AI Indices available in this space, with the ES|QL target to query each
     one against. Call this first, before describing or querying anything."""
     response = client.get("/ai_index")
     response.raise_for_status()
@@ -822,7 +822,7 @@ def list_ai_indices() -> list[dict]:
 
 @tool
 def describe_ai_index(ai_index_id: str) -> str:
-    """Describe one AI index: the ES|QL target to put after FROM, every field it exposes
+    """Describe one AI Index: the ES|QL target to put after FROM, every field it exposes
     and which are semantic, the knowledge indicator types and tags it holds, and example
     queries. Always call this before writing a query against an index."""
     response = client.get(f"/ai_index/{ai_index_id}/_describe")
@@ -832,7 +832,7 @@ def describe_ai_index(ai_index_id: str) -> str:
 
 @tool
 def query_ai_indices(query: str, params: dict | None = None, limit: int = 20) -> dict:
-    """Run an ES|QL query against one or more AI indices and return {columns, values}.
+    """Run an ES|QL query against one or more AI Indices and return {columns, values}.
     Build the query from the output of describe_ai_index: use its FROM target and its
     field names verbatim. Pass user input as named parameters in params rather than
     writing it into the query string. Do not add any space, tenant, or permissions
