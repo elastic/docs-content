@@ -110,21 +110,22 @@ These fields contain the details the dashboard aggregates. Generative AI attribu
 | `attributes.gen_ai.provider.name` | Model provider |
 | `attributes.gen_ai.agent.id` | Agent identifier |
 | `attributes.gen_ai.conversation.id` | Conversation identifier |
-| `attributes.elastic.conversation.title` {applies_to}`{stack: ga 9.6+, serverless: ga}` | Conversation title. Present on the root conversation round span only, and only when **Include real tool, agent, and conversation names in traces** is on. This is an Elastic field rather than an OpenTelemetry one, so it is not covered by the generative AI semantic conventions |
 | `attributes.elastic.inference.span.kind` | The kind of work a span represents:<br>- `LLM` on `chat` spans<br>- `TOOL` on `execute_tool` spans<br>- `CHAIN` or `AGENT` on `invoke_agent` spans, where `CHAIN` is a conversation round and `AGENT` is an agent execution.<br><br>Internal spans such as `generate_title` also use `CHAIN`, so combine this field with a `span.name` filter instead of using it on its own |
 | `name` | Span name. On `execute_tool` spans it is `execute_tool <tool-id>`, for example `execute_tool platform.core.list_indices`. For the bare tool id, use `attributes.gen_ai.tool.name`.<br><br>Names in this field are anonymized along with the attributes. While the real-names [trace privacy setting](collect-traces.md#trace-privacy-settings) is off, a custom agent or tool appears as `invoke_agent custom` or `execute_tool custom`, so filters that match a real name return nothing |
 | `duration` | Span duration in nanoseconds (root field). Divide by 1,000,000,000 for seconds |
 | `status.code` | Span status, for example `Error` (root field) |
 | `@timestamp` | When the span started |
 
-### User attributes [user-attributes]
+### Conversation round attributes [conversation-round-attributes]
 
 ```{applies_to}
 stack: ga 9.6+
 serverless: ga
 ```
 
-Traces record who ran each agent. These fields appear on the root conversation round span only, so join on `trace_id` to attribute nested spans to a user.
+No dashboard panel uses these fields, but you can query them yourself. Each conversation round records who ran it and, when the conversation is saved, its title.
+
+These fields appear on the root conversation round span only. To attribute a nested span to a user or a conversation title, join on `trace_id`.
 
 To select that span, combine a span name prefix with the span kind:
 
@@ -137,9 +138,10 @@ Both conditions are needed. The name prefix on its own also matches the nested a
 
 | Field | Description | Required setting |
 |---|---|---|
-| `attributes.user.id` | User profile ID | **Include user data in traces** |
-| `attributes.user.name` | Username | **Include user data in traces** |
-| `attributes.user.hash` | Stable hash of the user ID, used for correlation when the real identity is withheld. Present only when the setting is off | None |
+| `attributes.user.id` | User profile ID of the user who ran the round | **Include user data in traces** |
+| `attributes.user.name` | Username of the user who ran the round | **Include user data in traces** |
+| `attributes.user.hash` | Stable hash of the user ID, used for correlation when the real identity is withheld. Present only when **Include user data in traces** is off | None |
+| `attributes.elastic.conversation.title` | Conversation title. An Elastic field rather than an OpenTelemetry one, so the generative AI semantic conventions do not cover it | **Include real tool, agent, and conversation names in traces** |
 
 `attributes.user.hash` is stable for a given user across conversations, so you can break trace data down per user without recording anyone's identity. Group by `attributes.user.hash` to build per-user token or latency dashboards while leaving **Include user data in traces** off. Turn the setting on only when you need to attribute activity to a named person.
 
