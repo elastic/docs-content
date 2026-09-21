@@ -67,9 +67,35 @@ To collect host metrics this way, follow [Get started with system metrics](/solu
 
 ## Ingest using Prometheus remote write [metrics-ingest-prometheus]
 
-Send metrics from Prometheus to {{es}} using the Prometheus remote write protocol. Add a `remote_write` target to your `prometheus.yml` to make your existing scrape configurations continue to work unchanged.
+Send metrics from Prometheus, Grafana Alloy, or another Prometheus remote write client. Add a remote write target so your existing scrape configurations continue to work unchanged.
 
-This path is useful when you want to try Elastic without changing your Prometheus setup, or as part of a gradual migration. For the endpoint URL, authentication, and how to route metrics to different data streams, refer to [Prometheus remote write endpoint](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md).
+This path is useful when you want to try Elastic without changing your Prometheus setup, or as part of a gradual migration. The endpoint depends on your deployment:
+
+:::::{applies-switch}
+
+::::{applies-item} serverless:
+Use the [Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md). Managed inputs provide durable buffering, unified authentication, and back-pressure handling.
+::::
+
+::::{applies-item} ech:
+```{applies_to}
+stack: ga 9.4+
+```
+
+Use the [Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md). On {{ech}}, this is the recommended remote write destination; sending Prometheus traffic directly to {{es}} skips that buffering.
+::::
+
+::::{applies-item} { self:, ece:, eck: }
+```{applies_to}
+stack: ga 9.5+, preview =9.4
+```
+
+Send remote write traffic to the {{es}} `/_prometheus/api/v1/write` endpoint. For the URL, authentication, Grafana Alloy configuration, and data-stream routing, refer to [Prometheus remote write endpoint](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md).
+::::
+
+:::::
+
+For the side-by-side ingest sequence and how to switch over, refer to [Migrate to Elastic metrics](/solutions/observability/metrics/migrate.md#metrics-migrate-prometheus).
 
 ## Related pages [metrics-ingest-related]
 

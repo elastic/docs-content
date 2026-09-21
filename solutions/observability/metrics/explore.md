@@ -1,6 +1,6 @@
 ---
 navigation_title: Explore metrics
-description: Explore and visualize metrics in Elastic using Discover or Metrics Explorer, the Infrastructure UI, Kibana dashboards, or Grafana with PromQL.
+description: Explore, visualize, and alert on metrics in Elastic using Discover or Metrics Explorer, the Infrastructure UI, Kibana dashboards, Grafana, or Observability rules.
 applies_to:
   stack: ga
   serverless:
@@ -51,6 +51,21 @@ Build dashboards in {{kib}} Lens to track metrics over time, compare resources, 
 ## Grafana [metrics-explore-grafana]
 
 If you use Grafana, you can point it at {{es}} as a Prometheus data source and run your existing PromQL dashboards without rewriting them. For the data source URL and authentication, refer to [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md).
+
+## Alert on metrics [metrics-explore-alerts]
+
+After you can see the time series you care about, create a rule so a threshold notifies you. Pick a rule type from the following list. Each page has the conditions, filters, and action setup.
+
+[Create a custom threshold rule](/solutions/observability/incident-management/create-custom-threshold-rule.md)
+:   Alert when a metric in a data view crosses a threshold. Use this rule for OpenTelemetry and Prometheus remote write metrics on every deployment type.
+
+[Create an inventory rule](/solutions/observability/incident-management/create-an-inventory-rule.md)
+:   Alert on infrastructure resources from the Inventory view.
+
+[Create a metric threshold rule](/solutions/observability/incident-management/create-metric-threshold-rule.md) {applies_to}`serverless: unavailable`
+:   Alert on metrics in the Infrastructure metrics indices. You can create this rule from **Metrics Explorer** or from the **Rules** page.
+
+For the full list of {{observability}} rule types, refer to [Create and manage rules](/solutions/observability/incident-management/create-manage-rules.md).
 
 ## Related pages [metrics-explore-related]
 

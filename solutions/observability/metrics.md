@@ -48,14 +48,17 @@ After metrics are in Elastic, use these pages to query, visualize, and control s
 
 ## Already using Prometheus? [metrics-prometheus-users]
 
-You can send metrics to Elastic with a minimal change to your existing Prometheus setup, without a full migration. Add a `remote_write` target to your `prometheus.yml` pointing at {{es}}, and your existing scrape configs continue to work unchanged.
+You can send metrics to Elastic with a minimal change to your existing Prometheus setup, without a full migration. Add a remote write target, and your existing scrape configs continue to work unchanged.
 
 If you use Grafana, you can also point it at {{es}} as a Prometheus data source and run your existing PromQL dashboards and alerts without rewriting them.
 
 Use these pages to add remote write, keep Grafana, and reuse PromQL:
 
+[Ingest Prometheus metrics with the Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md)
+:   The recommended remote write destination on {{serverless-full}} and {{ech}}.
+
 [Prometheus remote write endpoint](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md)
-:   Add a `remote_write` target so Prometheus sends samples to {{es}}.
+:   The {{es}} `/_prometheus/api/v1/write` endpoint for self-managed {{stack}}, {{ece}}, and {{eck}}.
 
 [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md)
 :   Point Grafana at {{es}} and keep your existing PromQL dashboards.

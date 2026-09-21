@@ -14,7 +14,7 @@ In addition to the ingestion of metrics data through the bulk API,
 The endpoint is available under `/_prometheus/api/v1/write`.
 
 :::{note}
-If you are using {{serverless-full}}, use [managed inputs](opentelemetry://reference/motlp/prometheus-remote-write.md) to send Prometheus metrics instead. Managed inputs are the recommended ingestion path for {{ecloud}} deployments and provide durable buffering, unified authentication, and back-pressure handling.
+On {{serverless-full}} and {{ech}}, use the [Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md) instead of this {{es}} endpoint. Managed inputs are the recommended ingestion path on those deployments and provide durable buffering, unified authentication, and back-pressure handling.
 :::
 
 :::{tip}

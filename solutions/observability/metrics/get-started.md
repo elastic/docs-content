@@ -46,6 +46,8 @@ For the trade-offs and the ingest path that matches your deployment, refer to [P
 
 With a data model chosen, extend collection to the rest of your estate. Beyond the quickstarts, you can send metrics using any OTLP-compliant client, Prometheus remote write, or {{agent}} integrations for specific services such as nginx, PostgreSQL, or Redis.
 
+If you're migrating an existing Prometheus or Datadog stack, refer to [Migrate to Elastic metrics](/solutions/observability/metrics/migrate.md) before you add more sources.
+
 For path-by-path configuration, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md).
 ::::
 

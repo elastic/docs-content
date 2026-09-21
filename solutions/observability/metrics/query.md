@@ -65,6 +65,8 @@ In Discover, run a `TS` query in {{esql}} mode to open a chart grid of available
 
 If you send metrics to Elastic with Prometheus remote write or OTLP, you can query them with PromQL in {{es}}. You can reuse existing Prometheus queries and alerting rules as long as they use supported PromQL. Metric names are schema-dependent, so they reflect the ingest path you used.
 
+Metrics ingested with Prometheus remote write are stored as `metrics.<metric_name>` with Prometheus labels as `labels.<label_name>`. PromQL uses the original Prometheus metric and label names. {{esql}} uses the {{es}} field names. For the mapping table, refer to [Data mapping](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#data-mapping).
+
 {{es}} implements a subset of PromQL functions for rates, range aggregations, and math. Some constructs are not evaluated yet and return a client error. For the function list, refer to [PromQL functions](elasticsearch://reference/query-languages/promql/functions.md). For unsupported constructs and differences from upstream Prometheus, refer to [PromQL limitations](elasticsearch://reference/query-languages/promql/promql-limitations.md).
 
 If you use Grafana, point its built-in Prometheus data source at the {{es}} `/_prometheus/` API. Grafana treats {{es}} like any other Prometheus backend: dashboard panels, autocompletion, and template variables run PromQL against metrics in {{es}}. For the data source URL and authentication, refer to [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md).

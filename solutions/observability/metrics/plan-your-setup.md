@@ -30,7 +30,7 @@ Metrics ingested into Elastic can follow one of two schemas:
     Use this schema when your use case is listed in [Know when to keep using classic Elastic components](/solutions/observability/get-started/opentelemetry/start-with-otel.md#start-with-otel-when-classic), for example, when you need existing ECS integrations, dashboards, and alerts to keep working without customization.
 
 :::{note}
-Mixing schemas in a single deployment is possible but increases query complexity. Prefer one schema. Keep ECS only when you need it for a listed OpenTelemetry limitation.
+Mixing schemas in a single deployment is possible but increases query complexity. Prefer one schema. Keep ECS only when you need it for a listed OpenTelemetry limitation. Prometheus remote write stores fields differently. Refer to [Prometheus remote write mapping](#metrics-plan-prometheus-mapping).
 :::
 
 ### Implications of your choice [metrics-plan-data-model-implications]
@@ -39,11 +39,17 @@ The schema you choose affects ingest, field names, PromQL support, and which das
 
 | | OTel schema | ECS schema |
 |---|---|---|
-| **Ingest using** | EDOT SDK, OTLP exporters, Prometheus remote write | {{agent}} integrations, {{metricbeat}} |
+| **Ingest using** | EDOT SDK, OTLP exporters | {{agent}} integrations, {{metricbeat}} |
 | **Field names** | OTel semantic conventions (`system.cpu.utilization`) | ECS (`system.cpu.pct`) |
 | **PromQL support** | Yes (metrics stored as TSDS) | Limited |
 | **Prebuilt dashboards** | OTel dashboards | Infrastructure UI, Elastic prebuilt dashboards |
 | **Recommended for** | Default | Use cases listed in [Know when to keep using classic Elastic components](/solutions/observability/get-started/opentelemetry/start-with-otel.md#start-with-otel-when-classic) |
+
+### Prometheus remote write mapping [metrics-plan-prometheus-mapping]
+
+Prometheus remote write is an ingest path, not a third schema you choose instead of OpenTelemetry or ECS. Samples land in a TSDS: each value is stored as `metrics.<metric_name>` with Prometheus labels as `labels.<label_name>` dimensions. PromQL support matches the OpenTelemetry column in the table. Prebuilt ECS Infrastructure dashboards do not apply to this mapping.
+
+Use this path when you already scrape with Prometheus and want to send samples to Elastic without stopping Prometheus. Refer to [Migrate to Elastic metrics](/solutions/observability/metrics/migrate.md#metrics-migrate-prometheus).
 
 ## Choose an ingest path [metrics-plan-ingest-path]
 
@@ -53,8 +59,8 @@ The following table shows the recommended path for each deployment, plus alterna
 
 | Deployment | Recommended path | Also available |
 |---|---|---|
-| {{serverless-full}} | Managed OTLP endpoint | Prometheus remote write |
-| {{ech}} | Managed OTLP endpoint | Prometheus remote write, {{agent}} integrations |
+| {{serverless-full}} | Managed OTLP endpoint | Managed Prometheus Remote Write |
+| {{ech}} | Managed OTLP endpoint | Managed Prometheus Remote Write, {{agent}} integrations |
 | Self-managed {{stack}} | {{agent}} in gateway mode | Prometheus remote write, {{agent}} integrations |
 
 For configuration details for each path, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md).
