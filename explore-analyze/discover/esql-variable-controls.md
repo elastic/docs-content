@@ -1,8 +1,8 @@
 ---
 navigation_title: Add variable controls
 applies_to:
-  stack: preview 9.2
-  serverless: preview
+  stack: ga 9.2
+  serverless: ga
 products:
   - id: kibana
 type: how-to

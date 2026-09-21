@@ -11,7 +11,7 @@ description: Find the Discover tasks that are specific to ES|QL mode, from switc
 
 # Use Discover with ES|QL
 
-{{esql}} mode in **Discover** lets you explore data with an {{esql}} query. The query chooses the data, so you do not need a data view. Classic mode uses data views with KQL or Lucene.
+{{esql}} mode in **Discover** lets you explore data with an {{esql}} query. The query chooses the data, so you do not need a data view. Classic mode uses data views with Kibana Query Language (KQL) or Lucene.
 
 The editor itself, time parameters, AI assistance, and Fast mode are covered in [Use {{esql}} in the {{kib}} UI](../query-filter/languages/esql-kibana.md). If you have not run a query in this mode yet, start with [Get started with {{esql}} in Discover](try-esql.md).
 

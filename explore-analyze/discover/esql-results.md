@@ -6,16 +6,49 @@ applies_to:
 products:
   - id: kibana
 type: how-to
-description: Read ES|QL results in Discover, choose columns, sort and filter from the table, and turn on the time picker for a time field other than @timestamp.
+description: Filter and sort ES|QL results in Discover, select columns, and turn on the time picker for a time field other than @timestamp.
 ---
 
 # Work with {{esql}} results in Discover
 
-After you run an {{esql}} query, the results table is where you read what came back. You can choose columns, sort the rows you retrieved, and add a `WHERE` clause from a value in the table. If the time picker or the chart is missing, you can point the query at a different time field.
+After you run an {{esql}} query, filter it from a value in the results table or sort the rows you retrieved. You can also select which columns to show. If the time picker or the chart is missing, point the query at a different time field.
 
 ## Before you begin
 
 - You need an {{esql}} query in **Discover** that returns rows. If you are new to that editor, start with [Get started with {{esql}} in Discover](try-esql.md).
+
+## Refine an {{esql}} query from the results table [refine-esql-query-from-table]
+
+Certain interactions with the results table of your {{esql}} query in Discover apply additional filters to your query. When hovering over a value cell, contextual options appear:
+
+- Selecting {icon}`plus_circle` **Filter for this** adds or completes the `WHERE` command of the query to specifically look for the selected value. For example, `WHERE host.keyword == "www.elastic.co"`.
+- Selecting {icon}`minus_circle` **Filter out this** adds or completes the `WHERE` command of the query to specifically exclude the selected value. For example, `WHERE host.keyword != "www.elastic.co"`.
+
+:::{note}
+:applies_to: { serverless:, stack: ga 9.3+ }
+Up to and including version 9.2, filtering for multi-value fields isn't supported. On later versions, filtering for multi-value fields translates into `WHERE MATCH` or `WHERE NOT MATCH` clauses. For example, `WHERE MATCH(tags.keyword, "error") AND MATCH(tags.keyword, "security")`.
+:::
+
+Other interactions with the results table do not update the query, such as dragging fields onto the table or sorting the table in a specific order.
+
+:::{tip}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+You can also have an AI agent analyze your {{esql}} results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
+:::
+
+**Result:** **Filter for this** or **Filter out this** updates the query.
+
+## Sort query results [_sorting]
+
+To sort on one of the columns, select the column name you want to sort on and select the sort order. This performs client-side sorting and only sorts the rows that were retrieved by the query, which might not be the full dataset because of the (implicit) limit. To sort the full data set, use the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command:
+
+```esql
+FROM kibana_sample_data_logs
+| KEEP @timestamp, bytes, geo.dest
+| SORT bytes DESC
+```
+
+**Result:** A column header reorders only the rows already retrieved. `SORT` orders the full data set.
 
 ## Work with the results table [esql-kibana-results-table]
 
@@ -61,37 +94,6 @@ To reorder or resize columns, adjust the table density or row height, or display
 - **No data filtering UI:** The data filtering UI is not available when Discover is in {{esql}} mode. Use the [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) command instead.
 
   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` When you switch from classic mode to {{esql}} mode, active filters from the filter bar are converted to `WHERE` clauses where possible, so they aren't lost. Filters that can't be converted are dropped.
-
-### Sort query results [_sorting]
-
-To sort on one of the columns, select the column name you want to sort on and select the sort order. This performs client-side sorting and only sorts the rows that were retrieved by the query, which might not be the full dataset because of the (implicit) limit. To sort the full data set, use the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command:
-
-```esql
-FROM kibana_sample_data_logs
-| KEEP @timestamp, bytes, geo.dest
-| SORT bytes DESC
-```
-
-## Refine an {{esql}} query from the results table [refine-esql-query-from-table]
-
-Certain interactions with the results table of your {{esql}} query in Discover apply additional filters to your query. When hovering over a value cell, contextual options appear:
-
-- Selecting {icon}`plus_circle` **Filter for this** adds or completes the `WHERE` command of the query to specifically look for the selected value. For example, `WHERE host.keyword == "www.elastic.co"`.
-- Selecting {icon}`minus_circle` **Filter out this** adds or completes the `WHERE` command of the query to specifically exclude the selected value. For example, `WHERE host.keyword != "www.elastic.co"`.
-
-:::{note}
-:applies_to: { serverless:, stack: ga 9.3+ }
-Up to and including version 9.2, filtering for multi-value fields isn't supported. On later versions, filtering for multi-value fields translates into `WHERE MATCH` or `WHERE NOT MATCH` clauses. For example, `WHERE MATCH(tags.keyword, "error") AND MATCH(tags.keyword, "security")`.
-:::
-
-Other interactions with the results table do not update the query, such as dragging fields onto the table or sorting the table in a specific order.
-
-:::{tip}
-:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
-You can also have an AI agent analyze your {{esql}} results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
-:::
-
-**Result:** **Filter for this** or **Filter out this** updates the query. Sorting a column header only reorders the rows already retrieved.
 
 ## {{esql}} and time series data [_esql_and_time_series_data]
 

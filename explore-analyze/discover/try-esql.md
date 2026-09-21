@@ -33,7 +33,7 @@ To follow this tutorial, you need the following:
 
 ## Step 1: Open Discover in ES|QL [tutorial-try-esql]
 
-**Discover** has two query modes. This tutorial uses {{esql}}, which does not require a data view. Classic mode uses data views with KQL or Lucene. For classic mode, refer to [Explore fields and data with Discover](discover-get-started.md).
+**Discover** has two query modes. This tutorial uses {{esql}}, which does not require a data view. Classic mode uses data views with Kibana Query Language (KQL) or Lucene. For classic mode, refer to [Explore fields and data with Discover](discover-get-started.md).
 
 1. Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. If the editor is not already in {{esql}} mode, switch to it from either location:
@@ -41,7 +41,7 @@ To follow this tutorial, you need the following:
    - {icon}`code` **Query in ES|QL** (**ES|QL** or **Try ES|QL** in earlier versions) in the application menu.
    - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
 
-   If the editor already shows an {{esql}} query, skip this step. If that tab already has a KQL or Lucene query, Discover converts it when you switch.
+   If the editor already shows an {{esql}} query, skip this step. If that tab already has a KQL or Lucene query, Discover converts it when you switch. Switching back to classic mode does not restore that query. Refer to [Revert to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
 
 3. Set the time range to **Last 7 days**.
 
