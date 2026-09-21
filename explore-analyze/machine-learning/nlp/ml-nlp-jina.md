@@ -706,8 +706,10 @@ The Jina v5 omni models availability and the support for the [`semantic_text`](e
 ::::
 
 #### OCR models [jina-eis-ocr]
-
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
 
 The following examples use the `chat_completion` task type. Create an {{infer}} endpoint and reference the `inference_id` in `chat_completion` {{infer}} requests:
 
