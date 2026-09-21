@@ -459,7 +459,7 @@ Select the {icon}`boxes_vertical` actions button on any group row to:
 - **Filter out**: append a `WHERE` clause that excludes documents matching this group.
 - **Open in new tab**: open the documents in this group in a new Discover tab, with a query scoped to that group.
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` After you expand a group and select a nested document, select {icon}`link` **Copy link** in the document flyout. The URL reopens that document in Discover in the default layout and keeps the grouping with [`INLINE STATS`](elasticsearch://reference/query-languages/esql/commands/inlinestats-by.md).
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` After you expand a group and select a nested document, you can [share a direct link](discover-get-started.md#share-a-document-link) to that document. The URL keeps the grouping with [`INLINE STATS`](elasticsearch://reference/query-languages/esql/commands/inlinestats-by.md).
 
 **Filter in** and **Filter out** are disabled when the grouping field is not filterable.
 

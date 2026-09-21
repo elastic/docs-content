@@ -415,7 +415,9 @@ When you are investigating a result, copy a link that reopens **Discover** with 
 
 The link uses an absolute time range so the document stays in the time window.
 
-If you are using {{esql}}, add `METADATA _id, _index` on the `FROM` or `TS` line, then rerun the query and reopen the row. Queries that transform rows, such as `STATS` or `KEEP`, cannot copy a link. If those fields are missing, **Copy link** stays available and shows a warning instead of copying.
+If you are using {{esql}}, add `METADATA _id, _index` on the `FROM` or `TS` line, then rerun the query and reopen the row. Queries that transform rows, such as `STATS` or `KEEP`, cannot copy a link to an aggregated row. If those fields are missing, **Copy link** stays available and shows a warning instead of copying.
+
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` After you expand a grouped {{esql}} result and select a nested document, **Copy link** reopens that document in the default layout and keeps the grouping with [`INLINE STATS`](elasticsearch://reference/query-languages/esql/commands/inlinestats-by.md).
 
 If you share the session from **Share** while the flyout is open, that URL can include the same document. If you keep a relative time range, **Discover** warns that the document might fall outside the recipient's results.
 
