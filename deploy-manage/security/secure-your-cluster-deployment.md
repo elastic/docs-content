@@ -59,6 +59,8 @@ You can configure the following aspects of your Elastic cluster, deployment, or 
 :::{include} /deploy-manage/security/_snippets/audit-logging.md
 :::
 
+[Learn how to enable audit logging](/deploy-manage/security/logging-configuration/security-event-audit-logging.md).
+
 ## FIPS 140-2 compliant mode
 ```{applies_to}
 deployment:

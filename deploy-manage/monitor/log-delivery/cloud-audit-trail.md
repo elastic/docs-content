@@ -100,18 +100,18 @@ Events start flowing when you enable delivery. Historical cloud audit logs are n
 
 1. Send a `POST` request to the audit logs endpoint, specifying your destination deployment and a data stream name that matches `logs-elastic_cloud.audit-*`. Replace the placeholders with your own values.
 
-   ```console
-   POST /api/v1/organizations/<ORG_ID>/audit_logs <1>
-   Authorization: ApiKey <CLOUD_API_KEY> <2>
-   Content-Type: application/json
-
-   {
-     "deployment_id": "<DESTINATION_DEPLOYMENT_ID>", <3>
-     "index": "logs-elastic_cloud.audit-default" <4>
-   }
+   ```sh
+   curl -X POST \
+     -H "Authorization: ApiKey $CLOUD_API_KEY" \ <1>
+     -H "Content-Type: application/json" \
+     "https://api.elastic-cloud.com/api/v1/organizations/$ORG_ID/audit_logs" \ <2>
+     -d '{
+       "deployment_id": "<DESTINATION_DEPLOYMENT_ID>", <3>
+       "index": "logs-elastic_cloud.audit-default" <4>
+     }'
    ```
-   1. Replace `<ORG_ID>` with your organization ID from the {{ecloud}} console
-   2. Replace `<CLOUD_API_KEY>` with your {{ecloud}} API key
+   1. Replace `$CLOUD_API_KEY` with your {{ecloud}} API key
+   2. Replace `$ORG_ID` with your organization ID from the {{ecloud}} console
    3. Replace `<DESTINATION_DEPLOYMENT_ID>` with the ID of the hosted deployment that receives the logs
    4. Represents the default data stream namespace.
 
@@ -125,8 +125,10 @@ Events start flowing when you enable delivery. Historical cloud audit logs are n
 
 2. Verify the configuration:
 
-   ```console
-   GET /api/v1/organizations/<ORG_ID>/audit_logs
+   ```sh
+   curl -X GET \
+     -H "Authorization: ApiKey $CLOUD_API_KEY" \
+     "https://api.elastic-cloud.com/api/v1/organizations/$ORG_ID/audit_logs"
    ```
 
    The response returns the configured `deployment_id` and `index`.
@@ -145,8 +147,10 @@ After enabling delivery, explore your audit logs in the destination deployment:
 
 If you need to decommission the destination deployment or switch to a different one, you can stop delivery at any time.
 
-```console
-DELETE /api/v1/organizations/<ORG_ID>/audit_logs
+```sh
+curl -X DELETE \
+  -H "Authorization: ApiKey $CLOUD_API_KEY" \
+  "https://api.elastic-cloud.com/api/v1/organizations/$ORG_ID/audit_logs"
 ```
 
 This stops the delivery stream and invalidates the writer API key, but does not delete documents that were already indexed.
