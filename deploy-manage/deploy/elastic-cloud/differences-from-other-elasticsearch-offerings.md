@@ -72,6 +72,7 @@ These capabilities cover identity and access, security and networking, infrastru
 | **Cluster scaling** | Manual with autoscaling option | Managed | Automatic scaling eliminates capacity planning - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Custom roles** | ✅ | ✅ | Managed through [{{ecloud}} roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) and [{{serverless-short}} custom roles](/deploy-manage/users-roles/serverless-custom-roles.md). |
 | **Deployment health monitoring** | [AutoOps](/deploy-manage/monitor/autoops.md) or monitoring cluster | Managed by Elastic | - No monitoring cluster required <br>- Automatically handled by Elastic |
+| **Deployment model** | Single deployments with multiple solutions | Separate projects for specific use cases | Fundamental architectural difference - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Deployment monitoring** | [AutoOps](/deploy-manage/monitor/autoops.md) or monitoring cluster | Managed by Elastic <br><br> [AutoOps](/deploy-manage/monitor/autoops/autoops-for-serverless.md) is also available | Elastic automatically monitors Serverless projects, but you can additionally use AutoOps to [monitor usage patterns and resource consumption](/deploy-manage/monitor/autoops/autoops-for-serverless.md#how-autoops-monitors-your-serverless-short-project).|
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
 | **High availability** | ✅ | ✅ | Automatic resilience |
