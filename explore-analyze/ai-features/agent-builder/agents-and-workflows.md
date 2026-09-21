@@ -24,12 +24,13 @@ There are three ways to use {{agent-builder}} and workflows together:
 * **Use workflows from agents:** Trigger an existing workflow from a conversation with a [workflow tool](./tools/workflow-tools.md), or assign [pre-execution workflows](#pre-execution-workflows) that run before the agent starts reasoning.
 * **Use agents from workflows:** Invoke an agent from a workflow with the [`ai.agent` step](#use-ai-agent-workflow-step). For advanced API operations, use the [`kibana.request` step](#use-kibana-request-workflow-step).
 
-## Prerequisites
+## Prerequisites [prerequisites]
 
 Before you begin:
 
 * Familiarize yourself with the core concepts of [Elastic Workflows](/explore-analyze/workflows.md).
-* Enable the Workflows feature in **Advanced settings**.
+* Turn on Elastic Workflows through the `workflows:ui:enabled` [advanced setting](kibana://reference/advanced-settings.md#kibana-workflows-settings), which is on by default in 9.4 and later. This setting gates both the workflow settings in {{agent-builder}} and whether assigned workflows run.
+* {applies_to}`stack:` Make sure you have an Enterprise subscription. Elastic Workflows isn't available on lower subscription tiers.
 * Ensure you have the correct privileges to create and run workflows.
 * For details, refer to [Set up workflows](/explore-analyze/workflows/get-started/setup.md).
 
@@ -43,7 +44,7 @@ serverless: ga
 Pre-execution workflows run after each user message, before the agent makes any LLM calls in response. They let you use Elastic Workflows for deterministic preparation or control before the agent begins its reasoning loop.
 
 :::{note}
-Only administrators can configure an agent's pre-execution workflows. Changing the space-level setting requires the `manage_advanced_settings` privilege instead.
+Only users with wildcard {{kib}} application privileges, such as `superuser`, can configure an agent's pre-execution workflows. There's no separate privilege you can grant for it. Changing the space-level setting is different: it requires the `manage_advanced_settings` privilege, which you can grant through the **Advanced Settings** feature privilege.
 :::
 
 A pre-execution workflow runs once for each user message. It does not run before every LLM call or tool call within the agent's response.
@@ -79,7 +80,7 @@ stack: preview 9.4+
 serverless: preview
 ```
 
-This section appears only when the `agentBuilder:experimentalFeatures` advanced setting is turned on, which it isn't by default. Elastic Workflows must also be turned on through the `workflows:ui:enabled` [advanced setting](kibana://reference/advanced-settings.md#kibana-workflows-settings), which is on by default in 9.4 and later.
+In addition to the [prerequisites](#prerequisites), this section appears only when the `agentBuilder:experimentalFeatures` advanced setting is turned on, which it isn't by default.
 
 1. Go to **{{stack-manage-app}}** → **AI** → **GenAI Settings**.
 2. In the **Agent Builder** section, find **Pre-execution workflow** and open the **Workflows** selector.

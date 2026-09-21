@@ -103,17 +103,17 @@ This results in parsing errors like this:
 
 ### Disabled pre-execution workflow blocks the agent
 
-:::{note}
-Fixed on serverless and 9.5.3. A disabled workflow now stays visible in the **Workflows** selector, labeled **(disabled)**, so you can clear it.
-:::
-
-Disabling a workflow doesn't detach it from the agents or spaces that reference it as a [pre-execution workflow](agents-and-workflows.md#pre-execution-workflows). Every message to the affected agents then fails with this error:
+Disabling a workflow doesn't detach it from the agents or spaces that reference it as a [pre-execution workflow](agents-and-workflows.md#pre-execution-workflows). Every message to the affected agents then fails with a **Workflow Failed** error:
 
 ```console-response
-Workflow '<workflow_id>' is disabled and cannot be executed.
+The workflow "<workflow_id>" execution failed: Workflow '<workflow_id>' is disabled and cannot be executed.
 ```
 
-On earlier versions, the disabled workflow doesn't appear in the **Workflows** selector, so you can't clear the reference from the UI.
+:::{note}
+On serverless, and on 9.5.3 and later, a disabled workflow stays visible in the **Workflows** selector, labeled **(disabled)**, so you can clear the reference from the UI. The agents still fail until you clear it.
+:::
+
+On 9.4.x and on 9.5.0 through 9.5.2, the disabled workflow doesn't appear in the **Workflows** selector, so you can't clear the reference from the UI. The 9.4.x releases don't receive this change.
 
 **Workaround:** Re-enable the workflow, clear it from the selector, save, then disable the workflow again. You can also clear the reference through the API. To learn more, refer to [Disabled pre-execution workflow](troubleshooting/pre-execution-workflow-disabled.md).
 

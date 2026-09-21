@@ -20,10 +20,10 @@ products:
 ## Symptoms
 
 * Every message to an agent fails before the agent responds. The agent never reaches the LLM, so you get no partial answer.
-* The conversation shows an error like this one:
+* The conversation shows a **Workflow Failed** error like this one:
 
   ```console-response
-  Workflow '<workflow_id>' is disabled and cannot be executed.
+  The workflow "<workflow_id>" execution failed: Workflow '<workflow_id>' is disabled and cannot be executed.
   ```
 
 * Depending on which setting holds the reference, either one agent fails or every agent in the space fails.
@@ -38,9 +38,11 @@ Two settings can assign a pre-execution workflow, and the agent runs the workflo
    GET kbn:/api/agent_builder/agents/<agent_id>
    ```
 
-   You can also check in the UI. Select **Manage components** at the bottom of the left sidebar to open the **Agents** list, select the failing agent, then go to **Settings** → **Pre-execution workflow**. A disabled workflow appears in the **Workflows** selector as `<workflow name> (disabled)`.
+   You can also check in the UI. Select **Manage components** at the bottom of the left sidebar to open the **Agents** list, select the failing agent, then go to **Settings** → **Pre-execution workflow**.
 
-   If the **Workflows** selector looks empty even though the API response lists a workflow ID, your version doesn't show disabled workflows in the selector. Use the API response to identify the workflow.
+   On serverless, and on 9.5.3 and later, a disabled workflow appears in the **Workflows** selector as `<workflow name> (disabled)`.
+
+   On 9.4.x, and on 9.5.0 through 9.5.2, disabled workflows don't appear in the selector, so it can look empty even though the API response lists a workflow ID. Use the API response to identify the workflow.
 
 2. **Check the space-level setting.** Check this if the agent's `configuration.workflow_ids` is empty, or if every agent in the space fails. Run the following request and look for `agentBuilder:prePromptWorkflowIds`:
 
@@ -55,7 +57,7 @@ Two settings can assign a pre-execution workflow, and the agent runs the workflo
 Remove the workflow from the setting that references it. To keep using the workflow, re-enable it instead.
 
 :::{note}
-Only administrators can change an agent's pre-execution workflows. Other users get an `Only administrators can configure pre-execution workflows` error from the API, and the **Workflows** selector is read-only for them in the UI. Changing the space-level setting requires the `manage_advanced_settings` privilege instead.
+Only users with wildcard {{kib}} application privileges, such as `superuser`, can change an agent's pre-execution workflows. There's no separate privilege you can grant for it. Other users get an `Only administrators can configure pre-execution workflows.` error from the API, and the **Workflows** selector is disabled for them in the UI. Changing the space-level setting is different: it requires the `manage_advanced_settings` privilege, which you can grant through the **Advanced Settings** feature privilege.
 :::
 
 ### Remove the workflow from an agent [remove-from-agent]
@@ -63,7 +65,7 @@ Only administrators can change an agent's pre-execution workflows. Other users g
 1. Select **Manage components** at the bottom of the left sidebar to open the **Agents** list, select the agent, then go to **Settings** → **Pre-execution workflow**.
 2. Clear the disabled workflow from the **Workflows** selector, then save the agent.
 
-   If the disabled workflow doesn't appear in the selector, re-enable the workflow, clear it from the selector, save the agent, then disable the workflow again.
+   On 9.4.x, and on 9.5.0 through 9.5.2, disabled workflows don't appear in the selector. Re-enable the workflow, clear it from the selector, save the agent, then disable the workflow again. The 9.4.x releases don't receive the change that keeps disabled workflows visible.
 
 You can also update the agent through the API. The following request clears every pre-execution workflow from the agent:
 
@@ -90,7 +92,7 @@ serverless: preview
 3. Clear the workflow from the **Workflows** selector.
 4. Select **Save changes**.
 
-Agents run the space-level workflows whenever Elastic Workflows is turned on, even when the **Agent Builder** section is hidden. If the section doesn't appear, or if your version doesn't show disabled workflows in the selector, clear the setting through the API instead. The following request clears every space-level pre-execution workflow:
+Agents run the space-level workflows whenever Elastic Workflows is turned on, even when the **Agent Builder** section is hidden. If the section doesn't appear, or if the disabled workflow isn't listed in the selector, clear the setting through the API instead. The setting is hidden from the **Advanced Settings** page, so the API is the only way to change it outside of **GenAI Settings**. The following request clears every space-level pre-execution workflow:
 
 ```console
 POST kbn:/api/kibana/settings

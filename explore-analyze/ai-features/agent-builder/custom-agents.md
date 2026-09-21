@@ -100,7 +100,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-Administrators can assign workflows that run once after each user message, before the agent makes any LLM calls in response. Use pre-execution workflows to prepare prompt context or stop an agent run before the LLM starts.
+Users with wildcard {{kib}} application privileges, such as `superuser`, can assign workflows that run once after each user message, before the agent makes any LLM calls in response. Use pre-execution workflows to prepare prompt context or stop an agent run before the LLM starts.
 
 For details, refer to [Pre-execution workflows](agents-and-workflows.md#pre-execution-workflows).
 
