@@ -511,21 +511,23 @@ On the **Infrastructure inventory** page, you can switch between different views
 
 For more on using the Inventory page, refer to [View infrastructure metrics by resource type](view-infrastructure-metrics-by-resource-type.md).
 
-You can also explore and group metrics for monitored resources.
+You can also explore and group metrics for monitored resources:
 
 :::::{applies-switch}
 
 ::::{applies-item} stack: ga 9.4+
-Use **Discover** to explore and group metrics for monitored resources. Refer to [Explore metrics data with Discover](discover-metrics.md) for more information.
+Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Refer to [Explore metrics data with Discover](discover-metrics.md) for the metrics workflow.
 ::::
 
 ::::{applies-item} stack: deprecated 9.4+, ga 9.0-9.3
-Open **Metrics Explorer**.
+Find **Infrastructure** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Metrics Explorer**.
 
 :::{image} /solutions/images/observability-monitor-k8s-metrics-explorer.png
 :alt: Metrics dashboard that shows CPU usage for Kubernetes pods
 :screenshot:
 :::
+
+For more on using the **Metrics Explorer** page, refer to [Explore infrastructure metrics over time](explore-infrastructure-metrics-over-time.md).
 ::::
 
 :::::

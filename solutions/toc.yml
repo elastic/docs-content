@@ -451,8 +451,7 @@ toc:
       - file: observability/metrics.md
         children:
           - file: observability/metrics/get-started.md
-            children:
-              - file: observability/metrics/plan-your-setup.md
+          - file: observability/metrics/plan-your-setup.md
           - file: observability/metrics/ingest.md
           - file: observability/metrics/migrate.md
           - file: observability/metrics/query.md

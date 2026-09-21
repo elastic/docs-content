@@ -1408,11 +1408,11 @@ Let’s look at the `process_files_open_files` metric. This should be a rather s
     :::::{applies-switch}
 
     ::::{applies-item} stack: ga 9.4+
-    Use **Discover** to explore your metrics. Refer to [Explore metrics data with Discover](/solutions/observability/infra-and-hosts/discover-metrics.md) for more information.
+    Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Refer to [Explore metrics data with Discover](/solutions/observability/infra-and-hosts/discover-metrics.md) for the metrics workflow.
     ::::
 
     ::::{applies-item} stack: deprecated 9.4+, ga 9.0-9.3
-    Open **Metrics Explorer**.
+    Find **Infrastructure** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Metrics Explorer**.
 
     :::{image} /solutions/images/observability-monitor-java-app-metrics-ui-prometheus-event-counter.png
     :alt: Area chart of the total events counter in Metrics Explorer
