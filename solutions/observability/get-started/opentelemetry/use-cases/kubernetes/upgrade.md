@@ -32,4 +32,4 @@ helm upgrade --namespace opentelemetry-operator-system opentelemetry-kube-stack 
 
 {applies_to}`edot_collector: ga 9.5.5+` For OpenShift deployments, include the version-matched OpenShift values file after the base values file in every upgrade command.
 
-If [cert-manager integration](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md#cert-manager-integrated-installation) is disabled, Helm generates a new self-signed TLS certificate with every update, even if there are no actual changes to apply.
+If [cert-manager integration](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md#cert-manager-integrated-installation) is turned off, Helm generates a new self-signed TLS certificate with every update, even if there are no actual changes to apply.
