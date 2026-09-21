@@ -3,7 +3,7 @@ navigation_title: "Connect agents and workflows"
 description: "Learn how Agent Builder works with Elastic Workflows, including creating workflows from chat, workflow tools, pre-execution workflows, and the `ai.agent` step."
 applies_to:
   stack: preview 9.3, ga 9.4+
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana
@@ -20,8 +20,8 @@ Elastic Workflows and {{agent-builder}} combine deterministic automation with co
 
 There are three ways to use {{agent-builder}} and workflows together:
 
-* **Create workflows from Agent Chat**: Create and edit workflows by describing what you want [in plain language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md). {{kib}} generates and updates the workflow YAML for you, so you can quickly build without memorizing step types or Liquid syntax. 
-* **Use workflows from agents:** Trigger an existing workflow from a conversation with a [workflow tool](./tools/workflow-tools.md), or assign [pre-execution workflows](#pre-execution-workflows) that run before the agent starts reasoning.
+* **Create workflows from Agent Chat**: {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Create and edit workflows by describing what you want [in plain language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md). {{kib}} generates and updates the workflow YAML for you, so you can quickly build without memorizing step types or Liquid syntax. 
+* **Use workflows from agents:** Trigger an existing workflow from a conversation with a [workflow tool](./tools/workflow-tools.md) {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`, or assign [pre-execution workflows](#pre-execution-workflows) that run before the agent starts reasoning.
 * **Use agents from workflows:** Invoke an agent from a workflow with the [`ai.agent` step](#use-ai-agent-workflow-step). For advanced API operations, use the [`kibana.request` step](#use-kibana-request-workflow-step).
 
 ## Prerequisites [prerequisites]
@@ -45,7 +45,7 @@ serverless: ga
 Pre-execution workflows run after each user message, before the agent makes any calls to the large language model (LLM) in response. They let you use Elastic Workflows for deterministic preparation or control before the agent begins its reasoning loop.
 
 :::{note}
-Configuring an agent's pre-execution workflows requires a role that grants wildcard (`*`) {{kib}} privileges, such as the built-in `superuser` role. No feature privilege grants this on its own.
+Configuring an agent's pre-execution workflows requires a role that grants wildcard (`*`) {{kib}} privileges, such as the built-in `superuser` role. You can't grant this from the {{kib}} role management UI.
 
 Changing the space setting works differently: it requires the `manage_advanced_settings` privilege, which you can grant through the **Advanced Settings** [feature privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 :::
@@ -68,7 +68,7 @@ You can assign pre-execution workflows to a single agent or to every agent in a 
 4. Select one or more workflows. They run after each user message, before the agent makes any LLM calls in response.
 5. Save the agent.
 
-To confirm the setup, send a message to the agent and check that the workflow runs.
+To confirm the setup, send a message to the agent, then check that the run appears in the workflow's [execution history](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-history).
 
 The following screenshot shows the **Pre-execution workflow** setting in the agent **Settings** view.
 
@@ -92,7 +92,7 @@ The [prerequisites](#prerequisites) apply here too. In addition, the **Agent Bui
 3. Select one or more workflows.
 4. Select **Save changes**.
 
-To confirm the setup, send a message to any agent in the space and check that the workflow runs.
+To confirm the setup, send a message to any agent in the space, then check that the run appears in the workflow's [execution history](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-history).
 
 Workflows that you assign here run for every agent in the space, in addition to any workflows you assign to an individual agent. If you assign the same workflow in both places, it runs only once.
 

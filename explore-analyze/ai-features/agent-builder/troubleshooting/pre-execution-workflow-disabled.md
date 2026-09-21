@@ -55,7 +55,7 @@ You can assign a pre-execution workflow in two places: on an individual agent, a
 Remove the workflow from the setting that uses it. To keep using the workflow, re-enable it instead.
 
 :::{note}
-Removing a workflow from an agent requires a role that grants wildcard (`*`) {{kib}} privileges, such as the built-in `superuser` role. Without it, the **Workflows** selector is unavailable in the UI and the API returns `Only administrators can configure pre-execution workflows.`
+Removing a workflow from an agent requires a role that grants wildcard (`*`) {{kib}} privileges, such as the built-in `superuser` role. You can't grant this from the {{kib}} role management UI. Without it, the **Workflows** selector is read-only in the UI, and the API returns a `400` error with the message `Only administrators can configure pre-execution workflows.`
 
 Changing the space setting requires the `manage_advanced_settings` privilege instead, which you can grant through the **Advanced Settings** [feature privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 :::
