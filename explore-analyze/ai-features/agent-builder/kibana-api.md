@@ -685,9 +685,17 @@ curl -X GET "${KIBANA_URL}/api/agent_builder/agents" \
 
 This example uses the [create an agent API]({{kib-apis}}operation/operation-post-agent-builder-agents).
 
-`access_control` is an object that takes a level in its `access_mode` property, as in `"access_control": { "access_mode": "shared" }`.
+::::{applies-switch}
 
-{applies_to}`stack: ga =9.4` This field is named `visibility` and takes the level directly, as in `"visibility": "shared"`.
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
+`access_control` is an object that takes a level in its `access_mode` property, as in `"access_control": { "access_mode": "shared" }`.
+:::
+
+:::{applies-item} { stack: ga =9.4 }
+`visibility` takes the level directly, as in `"visibility": "shared"`.
+:::
+
+::::
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` If you omit `access_control`, the agent is private: only you and administrators can view and edit it.
 
@@ -707,6 +715,7 @@ POST kbn://api/agent_builder/agents
   "labels": ["custom-indices", "department-search"],
   "avatar_color": "#BFDBFF",
   "avatar_symbol": "SI",
+  "access_control": { "access_mode": "shared" },
   "configuration": {
     "instructions": "You are a custom agent that wants to help searching data using all indices starting with prefix \"content-\".",
     "tools": [
@@ -738,6 +747,7 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/agents" \
        "labels": ["custom-indices", "department-search"],
        "avatar_color": "#BFDBFF",
        "avatar_symbol": "SI",
+       "access_control": { "access_mode": "shared" },
        "configuration": {
          "instructions": "You are a custom agent that wants to help searching data using all indices starting with prefix \"content-\".",
          "tools": [

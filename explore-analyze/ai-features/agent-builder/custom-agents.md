@@ -239,8 +239,17 @@ Whatever the level, only the owner or an administrator can change it. For everyo
 
 Who can delete an agent:
 
-* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The owner, an administrator, or a user you give **Manager** access. Being able to edit a **Public** agent doesn't include deleting it.
-* {applies_to}`stack: ga =9.4` Anyone who can edit the agent, which on a **Public** agent means anyone.
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
+The owner, an administrator, or a user you give **Manager** access. Being able to edit a **Public** agent doesn't include deleting it.
+:::
+
+:::{applies-item} { stack: ga =9.4 }
+Anyone who can edit the agent, which on a **Public** agent means anyone.
+:::
+
+::::
 
 To grant access to individual users, refer to [Per-agent access controls](#per-agent-access-controls).
 
