@@ -724,7 +724,7 @@ PUT _inference/chat_completion/eis-jina-ocr-v1
 Send exactly one page image in each request. You can provide an image URL or a base64-encoded data URL. The model returns Markdown that preserves the extracted text, formulas, tables, and reading order.
 
 ```console
-POST _inference/chat_completion/eis-jina-ocr-v1
+POST _inference/chat_completion/eis-jina-ocr-v1/_stream
 {
   "model": "jina-ocr-v1",
   "messages": [
