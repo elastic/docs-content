@@ -608,7 +608,42 @@ The resulting permission amounts to granted access to all `a.*` fields except th
 }
 ```
 
+### Configure access to multi-fields [field-level-security-multi-fields]
 
+To restrict access to a field and all of its [multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md), specify both the field and a wildcard that matches its multi-fields. For example, the following configurations restrict access to the `city` field and multi-fields such as `city.raw`, while granting read access to all other fields.
+
+:::::{tab-set}
+:group: field-document
+::::{tab-item} API
+:sync: api
+
+```console
+POST /_security/role/test_role9
+{
+  "indices": [
+    {
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
+        "grant": [ "*" ],
+        "except": [ "city", "city.*" ]
+      }
+    }
+  ]
+}
+```
+
+::::
+::::{tab-item} {{kib}}
+:sync: kibana
+
+1. In the **Index privileges** area, specify `*` as the data stream or index pattern and `read` as the privilege.
+1. Enable **Grant access to specific fields**.
+1. Add `*` to the **Granted fields** list.
+1. Add `city` and `city.*` as separate entries in the **Denied fields** list.
+
+::::
+:::::
 
 :::{note}
 Field-level security should not be set on [`alias`](elasticsearch://reference/elasticsearch/mapping-reference/field-alias.md) fields. To secure a concrete field, its field name must be used directly.
