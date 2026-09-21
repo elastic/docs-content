@@ -69,7 +69,7 @@ Select the data you want to explore, and then specify the time range in which to
 3. If needed, adjust the [time range](../query-filter/filtering.md), for example by setting it to the **Last 7 days**.
     The range selection is based on the default time field in your data view. If you are using the sample data, this value was set when the data view was created. If you are using your own data view and it does not have a time field:
 
-    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The time filter stays visible, shows **All time**, and cannot be changed. Date range selection requires a time field on the data view.
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The time filter stays visible, shows **All time**, and cannot be changed.
     - {applies_to}`stack: ga 9.0-9.5` The range selection is not available.
 
 
