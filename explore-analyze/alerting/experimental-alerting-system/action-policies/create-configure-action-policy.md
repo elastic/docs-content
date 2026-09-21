@@ -68,6 +68,13 @@ To receive escalation notifications, either create separate action policies scop
 
 Attach one or more [workflows](../../../workflows.md) to define what happens when the action policy matches. If you don't have a workflow ready, you can set up a simple email or Slack notification while creating a rule instead. The system creates and links the workflow for you when you save. You can add or remove these workflows later by editing the action policy. For more complex routing or multi-step automations, build a dedicated workflow first and then attach it.
 
+Email and Slack notifications set up this way each need a matching connector, and the connector list shows only connectors of that type. If a connector you expected is missing from the list, check its type. Email uses an email connector. Slack uses:
+
+- {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` A [Slack (v2)](kibana://reference/connectors-kibana/slack-v2-action-type.md) connector. You also specify which channel to post to.
+- {applies_to}`stack: experimental =9.5` The original [Slack](kibana://reference/connectors-kibana/slack-action-type.md) connector, with the message text as the only parameter.
+
+If you don't have a matching connector, you can create one without leaving the rule.
+
 ## Related pages
 
 - [Manage action policies](manage-action-policies.md): Enable, disable, snooze, and rotate API keys after setup.

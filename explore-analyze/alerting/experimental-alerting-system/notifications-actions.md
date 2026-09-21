@@ -26,6 +26,8 @@ To send a notification or trigger an action from a rule in the {{alerting-v2-sys
 
    For actions that fire exactly once in response to a specific alert episode event (such as opening a ticket when an alert episode is assigned) use an [alert episode lifecycle trigger](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven) instead of an action policy. Refer to [Connect workflows](workflows-alerting.md) for a comparison of action policies and lifecycle triggers.
 
+If you only need a single email or Slack message, you can skip building the workflow yourself. Define the notification as part of the rule, and {{kib}} creates the workflow and the action policy for you when you save. Refer to [Select workflows to invoke](action-policies/create-configure-action-policy.md#policy-destinations) for the connector each notification type needs.
+
 ## What to do next with action policies [notifications-actions-next-steps]
 
 From here, you can learn how action policies work and start creating your own.
