@@ -1,2 +1,2 @@
 Author,Name,ID,Model Card,Provider Terms,Input Modalities,Output Modalities,EOL Date,Data Retention Period (Days),Data Used To Train Models?,Inference Regions,Release Status,Stack Version
-Jina,OCR v1,jina-ocr-v1,[jina-ocr-v1](https://jina.ai/models/jina-ocr-v1/),[Elastic Terms](https://www.elastic.co/legal/terms-of-use),"Image, File",Markdown,,0,No,"US, SG, EU, APJ",Generally Available,9.5
+Jina,OCR v1,jina-ocr-v1,[jina-ocr-v1](https://jina.ai/models/jina-ocr-v1/),[Elastic Terms](https://www.elastic.co/legal/terms-of-use),Image,Markdown,,0,No,"US, SG, EU",Generally Available,9.5

@@ -119,13 +119,13 @@ Reader models extract clean, structured content from HTML and complex documents 
 | --- | --- | --- | --- |
 | [`ReaderLM-v2`](https://jina.ai/models/ReaderLM-v2/) | Converts raw HTML into Markdown or JSON. Accepts HTML input and generates Markdown or JSON output. Supports input lengths up to 512K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
 
-### OCR and document parsing models [jina-ocr]
+### Optical character recognition (OCR) and document parsing models [jina-ocr]
 
 OCR models extract text, tables, formulas, and reading order from rendered pages or scanned documents and return structured output, ready for indexing and RAG pipelines.
 
 | Model | Description | Deployment | Access |
 | --- | --- | --- | --- |
-| [`jina-ocr-v1`](https://jina.ai/models/jina-ocr-v1/) | Page-to-Markdown document parser. Accepts images and PDF input and generates Markdown output that preserves text, formulas, tables, and reading order. Supports input lengths up to 32K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted) | [EIS](#jina-eis-ocr), [Jina API](#jina-external) |
+| [`jina-ocr-v1`](https://jina.ai/models/jina-ocr-v1/) | Page-to-Markdown document parser. Accepts page images and generates Markdown output that preserves text, formulas, tables, and reading order. Supports input lengths up to 32K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted) | [EIS](#jina-eis-ocr), [Jina API](#jina-external) |
 
 ### Rerankers [jina-rerankers]
 
@@ -707,12 +707,12 @@ The Jina v5 omni models availability and the support for the [`semantic_text`](e
 
 #### OCR models [jina-eis-ocr]
 
-{applies_to}`serverless: ga`
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
 
-The following examples use the `completion` task type. Create an {{infer}} endpoint and reference the `inference_id` in `completion` {{infer}} requests:
+The following examples use the `chat_completion` task type. Create an {{infer}} endpoint and reference the `inference_id` in `chat_completion` {{infer}} requests:
 
 ```console
-PUT _inference/completion/eis-jina-ocr-v1
+PUT _inference/chat_completion/eis-jina-ocr-v1
 {
   "service": "elastic",
   "service_settings": {
@@ -721,7 +721,31 @@ PUT _inference/completion/eis-jina-ocr-v1
 }
 ```
 
-Send a page or document image to the endpoint and receive Markdown output that preserves the extracted text, formulas, tables, and reading order.
+Send exactly one page image in each request. You can provide an image URL or a base64-encoded data URL. The model returns Markdown that preserves the extracted text, formulas, tables, and reading order.
+
+```console
+POST _inference/chat_completion/eis-jina-ocr-v1
+{
+  "model": "jina-ocr-v1",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://example.com/page.png"
+          }
+        },
+        {
+          "type": "text",
+          "text": "Transcribe the provided document image into clean Markdown, preserving the natural reading order."
+        }
+      ]
+    }
+  ]
+}
+```
 
 #### Reranker models [jina-eis-rerank]
 
