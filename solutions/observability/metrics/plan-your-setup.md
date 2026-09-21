@@ -20,20 +20,22 @@ Before you start ingesting metrics at scale, you need to make two decisions that
 Metrics ingested into Elastic can follow one of two schemas:
 
 **OpenTelemetry (OTel) schema**
-:   Metrics are stored under the OTel semantic conventions (for example, `system.cpu.utilization` instead of `system.cpu.pct`). This schema is the recommended default. It matches the OpenTelemetry ecosystem and the {{edot}} ingest path, gives you maximum compatibility with the OTel ecosystem and positions you well for future Elastic features that build on OTel semantics.
+:   Metrics are stored under the OTel semantic conventions (for example, `system.cpu.utilization` instead of `system.cpu.pct`). This schema is the recommended default. It matches the OpenTelemetry ecosystem and the {{edot}} ingest path, and it positions you well for Elastic features that build on OTel semantics.
 
     Use this schema unless your use case is listed in [Know when to keep using classic Elastic components](/solutions/observability/get-started/opentelemetry/start-with-otel.md#start-with-otel-when-classic).
 
 **ECS (Elastic Common Schema)**
 :   Metrics are stored under Elastic's original field naming conventions (for example, `system.cpu.pct`). {{agent}} integrations and {{metricbeat}} write this schema.
 
-    Use this schema when your use case is listed in [Know when to keep using classic Elastic components](/solutions/observability/get-started/opentelemetry/start-with-otel.md#start-with-otel-when-classic), for example when you need existing ECS integrations, dashboards, and alerts to keep working without customization.
+    Use this schema when your use case is listed in [Know when to keep using classic Elastic components](/solutions/observability/get-started/opentelemetry/start-with-otel.md#start-with-otel-when-classic), for example, when you need existing ECS integrations, dashboards, and alerts to keep working without customization.
 
 :::{note}
 Mixing schemas in a single deployment is possible but increases query complexity. Prefer one schema. Keep ECS only when you need it for a listed OpenTelemetry limitation.
 :::
 
 ### Implications of your choice [metrics-plan-data-model-implications]
+
+The schema you choose affects ingest, field names, PromQL support, and which dashboards work without customization:
 
 | | OTel schema | ECS schema |
 |---|---|---|
@@ -45,7 +47,9 @@ Mixing schemas in a single deployment is possible but increases query complexity
 
 ## Choose an ingest path [metrics-plan-ingest-path]
 
-Your deployment type constrains which ingest paths are available. Refer to [Ingest metrics](/solutions/observability/metrics/ingest.md) for the full set of options and configuration details. Use {{agent}} integrations when your use case is listed in [Know when to keep using classic Elastic components](/solutions/observability/get-started/opentelemetry/start-with-otel.md#start-with-otel-when-classic).
+Your deployment type constrains which ingest paths are available. Use {{agent}} integrations when your use case is listed in [Know when to keep using classic Elastic components](/solutions/observability/get-started/opentelemetry/start-with-otel.md#start-with-otel-when-classic).
+
+The following table shows the recommended path for each deployment, plus alternatives that remain available:
 
 | Deployment | Recommended path | Also available |
 |---|---|---|
@@ -53,7 +57,9 @@ Your deployment type constrains which ingest paths are available. Refer to [Inge
 | {{ech}} | Managed OTLP endpoint | Prometheus remote write, {{agent}} integrations |
 | Self-managed {{stack}} | {{agent}} in gateway mode | Prometheus remote write, {{agent}} integrations |
 
-## Related [metrics-plan-related]
+For configuration details for each path, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md).
+
+## Related pages [metrics-plan-related]
 
 - [Ingest metrics](/solutions/observability/metrics/ingest.md)
 - [Get started with metrics](/solutions/observability/metrics/get-started.md)

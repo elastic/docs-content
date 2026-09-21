@@ -17,6 +17,8 @@ Elastic lets you ingest, store, query, and visualize metrics from any source. Wh
 
 ## Send metrics to Elastic [metrics-send]
 
+Start here if you need to get metrics into Elastic, or decide how to ingest them:
+
 [Get started with metrics](/solutions/observability/metrics/get-started.md)
 :   Get data flowing quickly using an {{edot}} quickstart for your deployment type and environment. Start here if you're evaluating Elastic or want a working pipeline before you commit to a data model.
 
@@ -31,11 +33,15 @@ Elastic lets you ingest, store, query, and visualize metrics from any source. Wh
 
 ## Work with metrics already in Elastic [metrics-work-with]
 
+After metrics are in Elastic, use these pages to query, visualize, and control storage:
+
 [Query metrics](/solutions/observability/metrics/query.md)
 :   Query metrics with {{esql}} time-series mode for counters, rates, and per-series aggregations, or with PromQL to reuse existing Prometheus queries and alerting rules.
 
 [Explore metrics](/solutions/observability/metrics/explore.md)
-:   Explore and visualize metrics in Discover, the Infrastructure UI, {{kib}} dashboards, or Grafana.
+:   {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Explore and visualize metrics in **Discover**, the Infrastructure UI, {{kib}} dashboards, or Grafana.
+
+    {applies_to}`stack: ga 9.0-9.3` Explore and visualize metrics in **Metrics Explorer**, the Infrastructure UI, {{kib}} dashboards, or Grafana.
 
 [Manage metrics storage](/solutions/observability/metrics/manage-storage.md)
 :   Control storage costs and retention using time series data streams (TSDS), downsampling, cardinality management, and lifecycle policies.
@@ -46,6 +52,13 @@ You can send metrics to Elastic with a minimal change to your existing Prometheu
 
 If you use Grafana, you can also point it at {{es}} as a Prometheus data source and run your existing PromQL dashboards and alerts without rewriting them.
 
-- [Prometheus remote write endpoint](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md)
-- [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md)
-- [PromQL in {{es}}](elasticsearch://reference/query-languages/promql/functions.md)
+Use these pages to add remote write, keep Grafana, and reuse PromQL:
+
+[Prometheus remote write endpoint](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md)
+:   Add a `remote_write` target so Prometheus sends samples to {{es}}.
+
+[Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md)
+:   Point Grafana at {{es}} and keep your existing PromQL dashboards.
+
+[PromQL in {{es}}](elasticsearch://reference/query-languages/promql/functions.md)
+:   Review which PromQL functions {{es}} supports.

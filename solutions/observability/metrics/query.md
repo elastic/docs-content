@@ -13,9 +13,11 @@ products:
 
 # Query metrics [metrics-query]
 
-Elastic supports two query experiences for metrics: {{esql}} and PromQL. Use the one that matches how your metrics were ingested and what you're trying to do. Since cross-schema analysis happens at query time, no normalization at ingest is required.
+Elastic supports two query experiences for metrics: {{esql}} and PromQL. Use the one that matches how your metrics were ingested and what you're trying to do. Because cross-schema analysis happens at query time, no normalization at ingest is required.
 
 ## Which query language to use [metrics-query-which]
+
+Pick a language based on what you ingested and what you want to do:
 
 | If you want to | Use |
 |---|---|
@@ -28,7 +30,7 @@ Elastic supports two query experiences for metrics: {{esql}} and PromQL. Use the
 
 ### Time-series (TS) mode [metrics-query-esql-ts]
 ```{applies_to}
-stack: ga 9.4+
+stack: ga 9.4+, preview 9.2-9.3
 serverless: ga
 ```
 
@@ -38,7 +40,7 @@ Use TS mode when:
 
 - Your metrics are stored as TSDS, which is the default for OTLP and Prometheus remote write ingestion.
 - You need to compute rates, averages, or other time-window aggregations.
-- You're building dashboards or alerts in {{kib}} Discover or Lens.
+- You're aggregating time-series metrics in {{kib}}.
 
 For example, the following query returns the 80th percentile of request duration per endpoint in one-minute buckets:
 
@@ -47,11 +49,9 @@ TS my-metrics
 | STATS PERCENTILE(request_duration, 80) BY endpoint, TBUCKET(1m)
 ```
 
-Refer to [{{esql}} overview](elasticsearch://reference/query-languages/esql.md) for the full language reference.
+For commands, functions, and syntax, refer to the [{{esql}} overview](elasticsearch://reference/query-languages/esql.md).
 
-### Query downsampled data [metrics-query-downsampled]
-
-When a TSDS is downsampled, you can still query the coarser buckets with {{esql}}. The `TS` command is optimized for a mix of raw and downsampled backing indices. Refer to [Query downsampled data](/manage-data/data-store/data-streams/query-downsampled-data.md) for more information.
+When a TSDS is downsampled, you can still query the coarser buckets with {{esql}}. The `TS` command is optimized for a mix of raw and downsampled backing indices. For how those queries behave, refer to [Query downsampled data](/manage-data/data-store/data-streams/query-downsampled-data.md).
 
 ### Metrics in Discover [metrics-query-discover]
 ```{applies_to}
@@ -59,17 +59,17 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-In Discover, run a `TS` query in {{esql}} mode to open a chart grid of available metrics. You can search, filter, break metrics down by dimension, and add charts to a dashboard. Refer to [Explore metrics data with Discover in {{kib}}](/solutions/observability/infra-and-hosts/discover-metrics.md) for more information.
+In Discover, run a `TS` query in {{esql}} mode to open a chart grid of available metrics. You can search, filter, break metrics down by dimension, and add charts to a dashboard. For the Discover metrics workflow, refer to [Explore metrics data with Discover in {{kib}}](/solutions/observability/infra-and-hosts/discover-metrics.md).
 
 ## PromQL for metrics [metrics-query-promql]
 
 If you send metrics to Elastic with Prometheus remote write or OTLP, you can query them with PromQL in {{es}}. You can reuse existing Prometheus queries and alerting rules as long as they use supported PromQL. Metric names are schema-dependent, so they reflect the ingest path you used.
 
-{{es}} implements a subset of PromQL functions for rates, range aggregations, and math. Some constructs are not evaluated yet and return a client error. Refer to [PromQL functions](elasticsearch://reference/query-languages/promql/functions.md) for the function list, and [PromQL limitations](elasticsearch://reference/query-languages/promql/promql-limitations.md) for unsupported constructs and differences from upstream Prometheus.
+{{es}} implements a subset of PromQL functions for rates, range aggregations, and math. Some constructs are not evaluated yet and return a client error. For the function list, refer to [PromQL functions](elasticsearch://reference/query-languages/promql/functions.md). For unsupported constructs and differences from upstream Prometheus, refer to [PromQL limitations](elasticsearch://reference/query-languages/promql/promql-limitations.md).
 
-If you use Grafana, point its built-in Prometheus data source at the {{es}} `/_prometheus/` API. Grafana treats {{es}} like any other Prometheus backend: dashboard panels, autocompletion, and template variables run PromQL against metrics in {{es}}. Refer to [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md) for more information.
+If you use Grafana, point its built-in Prometheus data source at the {{es}} `/_prometheus/` API. Grafana treats {{es}} like any other Prometheus backend: dashboard panels, autocompletion, and template variables run PromQL against metrics in {{es}}. For the data source URL and authentication, refer to [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md).
 
-## Related [metrics-query-related]
+## Related pages [metrics-query-related]
 
 - [Explore metrics](/solutions/observability/metrics/explore.md)
 - [Manage metrics storage](/solutions/observability/metrics/manage-storage.md)
