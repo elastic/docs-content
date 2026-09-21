@@ -52,6 +52,8 @@ Use the **Enabled** toggle to control whether a workflow can run:
 - **Enabled**: The workflow responds to its configured triggers.
 - **Disabled**: The workflow won't run, even if it's triggered.
 
+Disabling a workflow doesn't detach it from any agent or space that uses it as a [pre-execution workflow](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md#pre-execution-workflows). Clear those references first, or every message to the affected agents fails.
+
 ## Version history [workflows-version-history]
 
 ```{applies_to}

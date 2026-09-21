@@ -101,6 +101,22 @@ This results in parsing errors like this:
 ]
 ```
 
+### Disabled pre-execution workflow blocks the agent
+
+:::{note}
+Fixed on serverless and 9.5.3. A disabled workflow now stays visible in the **Workflows** selector, labeled **(disabled)**, so you can clear it.
+:::
+
+Disabling a workflow doesn't detach it from the agents or spaces that reference it as a [pre-execution workflow](agents-and-workflows.md#pre-execution-workflows). Every message to the affected agents then fails with this error:
+
+```console-response
+Workflow '<workflow_id>' is disabled and cannot be executed.
+```
+
+On earlier versions, the disabled workflow doesn't appear in the **Workflows** selector, so you can't clear the reference from the UI.
+
+**Workaround:** Re-enable the workflow, clear it from the selector, save, then disable the workflow again. You can also clear the reference through the API. To learn more, refer to [Disabled pre-execution workflow](troubleshooting/pre-execution-workflow-disabled.md).
+
 ### MCP server URL copy button omits space name
 
 :::{note}

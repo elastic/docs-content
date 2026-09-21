@@ -37,12 +37,13 @@ Before you begin:
 
 ```{applies_to}
 stack: ga 9.4+
+serverless: ga
 ```
 
 Pre-execution workflows run after each user message, before the agent makes any LLM calls in response. They let you use Elastic Workflows for deterministic preparation or control before the agent begins its reasoning loop.
 
 :::{note}
-Only administrators can configure pre-execution workflows.
+Only administrators can configure an agent's pre-execution workflows. Changing the space-level setting requires the `manage_advanced_settings` privilege instead.
 :::
 
 A pre-execution workflow runs once for each user message. It does not run before every LLM call or tool call within the agent's response.
@@ -53,9 +54,11 @@ Pre-execution workflows can:
 * Cancel the agent run when a workflow detects that the request should not continue.
 * Run multiple workflows in sequence when more than one workflow is assigned.
 
-To configure pre-execution workflows:
+You can assign pre-execution workflows to a single agent or to every agent in a space. If you do both, the agent runs the workflows from both settings.
 
-1. Select **Manage components** at the bottom of the left sidebar, then select **Agents**.
+### Assign workflows to one agent [assign-pre-execution-workflows-to-an-agent]
+
+1. Select **Manage components** at the bottom of the left sidebar to open the **Agents** list.
 2. Select an agent, then go to **Settings**.
 3. In the **Pre-execution workflow** section, open the **Workflows** selector.
 4. Select one or more workflows. They run after each user message, before the agent makes any LLM calls in response.
@@ -69,6 +72,27 @@ The following screenshot shows the **Pre-execution workflow** setting in the age
 :alt: Edit agent settings flyout showing the Pre-execution workflow section with a workflow selector
 :::
 
+### Assign workflows to every agent in a space [assign-pre-execution-workflows-to-a-space]
+
+```{applies_to}
+stack: preview 9.4+
+serverless: preview
+```
+
+This section appears only when the `agentBuilder:experimentalFeatures` advanced setting is turned on, which it isn't by default. Elastic Workflows must also be turned on through the `workflows:ui:enabled` [advanced setting](kibana://reference/advanced-settings.md#kibana-workflows-settings), which is on by default in 9.4 and later.
+
+1. Go to **{{stack-manage-app}}** → **AI** → **GenAI Settings**.
+2. In the **Agent Builder** section, find **Pre-execution workflow** and open the **Workflows** selector.
+3. Select one or more workflows.
+4. Select **Save changes**.
+
+Workflows that you assign here run for every agent in the space, in addition to any workflows you assign to an individual agent. If you assign the same workflow in both places, it runs only once.
+
+Agents keep running these workflows whenever Elastic Workflows is turned on, even if you later turn off `agentBuilder:experimentalFeatures` and the **Agent Builder** section disappears. To clear the setting when the section is hidden, use the API. Refer to [Remove the workflow from the space-level setting](troubleshooting/pre-execution-workflow-disabled.md#remove-from-space).
+
+### Recover from a disabled workflow [recover-from-a-disabled-workflow]
+
+Disabling a workflow doesn't detach it from the agents or spaces that reference it. Until you clear the reference, every message to the affected agents fails. Refer to [Disabled pre-execution workflow](troubleshooting/pre-execution-workflow-disabled.md).
 
 ## Use the `ai.agent` step [use-ai-agent-workflow-step]
 
