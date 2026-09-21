@@ -82,12 +82,30 @@ $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack
     :::
 
 $$$agent-builder-rule-management-skill$$$ `rule-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
-:   Composes, discovers, and modifies alerting rules and action policies from within a conversation.
+:   Composes, discovers, and modifies {{alerting-v2-system}} rules from within a conversation. Covers threshold, aggregation, and grouped conditions over any {{es}} index. Doesn't cover classic {{kib}} rules or {{elastic-sec}} detection rules.
+
+    {applies_to}`stack: preview 9.6` From 9.6, notification setup moves to the [`action-policy-management`](#agent-builder-action-policy-management-skill) skill. This skill still offers to set up notifications after it composes a rule, then hands off. In 9.5, this skill composes action policies itself.
 
     :::{dropdown} Assigned tools
-    `platform.alerting.manage_rule`, `platform.alerting.manage_action_policy`
+    `platform.alerting.manage_rule`
+
+    `platform.alerting.manage_action_policy` {applies_to}`stack: removed 9.6`
 
     :::
+
+    **Prerequisites:** Turn on the `alerting:v2:enabled` advanced setting, as described in [Set up the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/setup.md), and turn on the {{agent-builder}} experimental features setting.
+
+$$$agent-builder-action-policy-management-skill$$$ `action-policy-management` {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview`
+:   Composes, discovers, and modifies action policies from within a conversation. Use it to set up or change how alert notifications are matched, grouped, throttled, and dispatched to workflows, for example "set up email notifications for my alert" or "page me through PagerDuty when this rule fires." An action policy is space-scoped and independent of any single rule, so one policy can match episodes from many rules.
+
+    :::{dropdown} Assigned tools
+    `platform.alerting.manage_action_policy`
+
+    :::
+
+    **Prerequisites:** Turn on the `alerting:v2:enabled` advanced setting, as described in [Set up the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/setup.md), and turn on the {{agent-builder}} experimental features setting.
+
+<!-- TODO(agent-builder): kibana#292162 adds a third gate to action-policy-management only: the space-scoped `alerting:v2:experimentalFeatures` advanced setting. That PR is still open as of 2026-09-21, so the prerequisite is deliberately not stated above. Add it to the action-policy-management entry once #292162 merges. Related decision: rna-program#1080 on whether either skill drops `experimental: true` after Alerting V2 GA, which would change both lifecycle badges. -->
 
 ### Streams and significant events
 
