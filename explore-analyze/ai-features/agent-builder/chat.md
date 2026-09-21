@@ -387,9 +387,9 @@ stack: ga 9.4+
 The **Customize** accordion in the left sidebar provides agent-scoped configuration for the currently selected agent. Expand it to access the following pages:
 
 **Overview**
-:   Displays a summary of the selected agent, including the total count of assigned skills and tools. Use the quick links to edit the agent's instructions or settings. The page also shows the agent's ID, together with its access control level or a **Read-only** badge for built-in agents. Select the copy icon {icon}`copy` to copy the ID.
+:   Displays a summary of the selected agent, including the total count of assigned skills and tools. Use the quick links to edit the agent's instructions or settings. The page also shows a row of agent metadata that includes the agent's ID, followed by the access control level for custom agents or a **Read-only** badge for built-in agents. Select the copy icon {icon}`copy` to copy the ID.
 
-    {applies_to}`{ stack: ga 9.6+, serverless: ga }` The agent's name is also followed by **Created by** and **Updated by** metadata, matching the **Created by** and **Last updated by** columns in the [agent list](#manage-components). A relative time appears when a timestamp was recorded. Point to or focus the relative time to view the exact date and time. **Created by** shows **Unknown** when no creator was recorded, and **Updated by** appears only for agents that have a recorded last editor.
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Created by** and **Updated by** values appear at the start of that row, before the agent ID. They correspond to the **Created by** and **Last updated by** columns in the [agent list](#manage-components). A relative time appears when a timestamp is recorded. Point to or focus the relative time to view the exact date and time. **Created by** shows **Unknown** when no creator is recorded, and **Updated by** appears only for agents that have a recorded last editor.
 
 **Skills**
 :   Lists the skills assigned to the current agent. Click a skill to open a read-only detail panel on the right side. To assign new skills, click **Add skill**. To view and manage all skills across the deployment, click **Manage all skills**. Skills you import into the library must be turned on with their toggle in this list before the agent can use them. For how skills work and how to manage them, refer to [Skills in {{agent-builder}}](skills.md).
@@ -422,7 +422,7 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
 
     {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Agents that individual users have been granted access to also show a badge with the number of those users.
 
-    {applies_to}`{ stack: ga 9.6+, serverless: ga }` The list also shows **Created by** and **Last updated by** columns. Each shows the user's name with a relative time below it, such as 3 months ago. Point to or focus the relative time to view the exact date and time. If a user's full name isn't available, their username appears, and agents created by the system, including the default agent, show **Elastic**. When only one of the two values was recorded, only that one appears; when neither was, the column shows a dash.
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The list also shows **Created by** and **Last updated by** columns. Each column shows the user's name and a relative time, such as 3 months ago: point to or focus the relative time to view the exact date and time. If a user's full name isn't available, their username appears instead. The default agent and other agents that {{kib}} installs automatically show **Elastic**. Read-only built-in agents show a dash in both columns, because no creator or editor is recorded for them. If only one of the two values is recorded, only that value appears.
 
 **Skills**
 :   View and manage all skills available in the deployment. Create new skills or edit existing ones.
