@@ -23,7 +23,7 @@ A TinyMath expression can contain up to 20 levels of parenthesis nesting. Expres
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The expression can be up to 8,192 characters, not counting quoted KQL or Lucene filters.
 - {applies_to}`stack: ga 9.4-9.5` The expression can be up to 1,000 characters.
 
-Typical expressions stay well within both limits.
+Typical expressions stay well within these limits.
 :::
 
 
