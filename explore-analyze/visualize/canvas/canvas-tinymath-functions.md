@@ -17,11 +17,10 @@ Most of the functions accept arrays and apply JavaScript Math methods to each el
 Any function can be wrapped by another function as long as the return type of the inner function matches the acceptable parameter type of the outer function.
 
 :::{note}
-:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
 A TinyMath expression can contain up to 20 levels of parenthesis nesting. Expressions that exceed the nesting or length limits are rejected before they're parsed.
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The expression can be up to 8,192 characters, not counting quoted KQL or Lucene filters.
-- {applies_to}`stack: ga 9.4-9.5` The expression can be up to 1,000 characters.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` The expression can be up to 8,192 characters, not counting quoted KQL or Lucene filters.
+- {applies_to}`stack: ga 9.0-9.3` The expression can be up to 1,000 characters.
 
 Typical expressions stay well within both limits.
 :::
