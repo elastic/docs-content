@@ -5,12 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How Agent Builder creates rules and action policies in the experimental alerting system using the rule management skill, what the agent produces, and the save-order dependency."
+description: "How Agent Builder creates rules and action policies in the experimental alerting system, which skills handle each step, what the agent produces, and the save-order dependency."
 ---
 
 # Create rules and action policies with {{agent-builder}} [create-rules-agent-builder]
 
-Use {{agent-builder}} to create and configure rules and action policies through natural language instead of the rule form. Describe what you want to monitor, and an agent equipped with the rule management skill resolves the data source and proposes a fully configured rule.
+Use {{agent-builder}} to create and configure rules and action policies through natural language instead of the rule form. Describe what you want to monitor, and an agent equipped with the [`rule-management`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-rule-management-skill) skill resolves the data source and proposes a fully configured rule.
 
 ## Requirements [create-ai-agent-requirements]
 
@@ -62,10 +62,14 @@ Use these prompts as a starting point, then adjust them to your data and thresho
 
 ## Set up notifications [ai-agent-notification-setup]
 
-After a rule is saved, you can ask the agent to configure notifications. The rule management skill handles this by creating workflows and action policies.
+After a rule is saved, you can ask the agent to configure notifications. The agent creates the workflows and action policies needed to deliver them.
+
+{applies_to}`stack: experimental =9.5` The [`rule-management`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-rule-management-skill) skill composes the action policies itself.
+
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` Action policies are composed by the [`action-policy-management`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-action-policy-management-skill) skill. After the `rule-management` skill composes a complete rule, it offers to set up notifications and then hands off to `action-policy-management`.
 
 :::{note}
-Action policies invoke workflows for alert episodes only. If you ask the agent to set up notifications for a rule that doesn't open alert episodes, the skill explains the limitation. If the rule is still a draft in the conversation, the skill changes it so matches open alert episodes before you save it. If the rule is already saved, that setting can't change, so the skill offers to create a new rule with the same query and schedule that opens alert episodes, then set up notifications on that rule.
+Action policies invoke workflows for alert episodes only. If you ask the agent to set up notifications for a rule that doesn't open alert episodes, the agent explains the limitation. If the rule is still a draft in the conversation, the agent changes it so matches open alert episodes before you save it. If the rule is already saved, that setting can't change, so the agent offers to create a new rule with the same query and schedule that opens alert episodes, then set up notifications on that rule.
 :::
 
 - **Workflows** - Workflows are the delivery mechanism. They define what happens when the {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
