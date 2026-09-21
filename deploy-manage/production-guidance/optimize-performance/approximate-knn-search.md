@@ -17,6 +17,15 @@ products:
 
 Many of these recommendations help improve search speed. With approximate kNN, the indexing algorithm runs searches under the hood to create the vector index structures. So these same recommendations also help with indexing speed.
 
+## Use the `vectordb_document` index mode [_vectordb_document_index_mode]
+```{applies_to}
+stack: ga 9.5+
+```
+
+If an index exists primarily for vector search, create it with the `vectordb_document` [index mode](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting), which applies several of the recommendations on this page as index defaults: `bfloat16` vectors, vectors excluded from `_source`, preloaded vector index files, and merges that parallelize internally and run unthrottled. Because `index.mode` is final, set it at index creation and reindex to adopt it for existing data.
+
+For the setup example and the full list of defaults, refer to [Vector index mode](/solutions/search/vector/knn/approximate-knn.md#approximate-knn-vector-index-mode) and [Index modes for vector search](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-modes).
+
 
 ## Reduce vector memory foot-print [_reduce_vector_memory_foot_print]
 
