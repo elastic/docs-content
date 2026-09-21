@@ -18,7 +18,12 @@ Any function can be wrapped by another function as long as the return type of th
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
-A TinyMath expression can contain up to 20 levels of parenthesis nesting and up to 1,000 characters. Expressions that exceed either limit are rejected before they're parsed. Typical expressions stay well within both limits.
+A TinyMath expression can contain up to 20 levels of parenthesis nesting. Expressions that exceed the nesting or length limits are rejected before they're parsed.
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The unquoted remainder of the expression can be up to 8,192 characters. Quoted KQL or Lucene filters do not count toward that limit.
+- {applies_to}`stack: ga 9.4-9.5` The expression can be up to 1,000 characters.
+
+Typical expressions stay well within both limits.
 :::
 
 

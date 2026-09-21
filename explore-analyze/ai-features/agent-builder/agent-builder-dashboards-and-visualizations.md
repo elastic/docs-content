@@ -64,7 +64,10 @@ In the canvas, you can explore the data before you save the dashboard: enter a K
 
 :::{tip}
 :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
-Select the {icon}`bolt` **Fast mode** option and turn it on to get approximate {{esql}} results for faster performance on large datasets. Fast mode is available when the dashboard includes at least one {{esql}} visualization that uses `STATS`. For more about {{esql}} approximation, refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
+Select the {icon}`bolt` **Fast mode** option and turn it on to get approximate {{esql}} results for faster performance on large datasets. Fast mode is available when the dashboard includes at least one panel that uses one `STATS` command. For more about {{esql}} approximation, refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
+
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` That panel can be an {{esql}} visualization, a [**Maps**](/explore-analyze/visualize/maps.md) panel with an {{esql}} layer, or a [**Vega** or **Vega-Lite**](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) panel with an {{esql}} data source.
+- {applies_to}`stack: preview =9.5` That panel can be an {{esql}} visualization or a [**Vega** or **Vega-Lite**](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) panel with an {{esql}} data source.
 :::
 ::::
 ::::{step} Save or refine
