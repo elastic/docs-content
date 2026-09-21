@@ -76,7 +76,7 @@ However, though less common, it is possible to only experience mapping explosion
 
 This situation most easily surfaces by adding a [data view](../../explore-analyze/find-and-organize/data-views.md) and checking its **Fields** tab for its total fields count. This statistic does tells you overall fields and not only where [`index:true`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-index.md), but serves as a good baseline.
 
-If your issue only surfaces via a [data view](../../explore-analyze/find-and-organize/data-views.md), you may consider this menu’s **Field filters** if you’re not using [multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). Alternatively, you may consider a more targeted index pattern or using a negative pattern to filter-out problematic indices. For example, if `logs-*` has too high a field count because of problematic backing indices `logs-lotsOfFields-*`, then you could update to either `logs-*,-logs-lotsOfFields-*` or `logs-iMeantThisAnyway-*`.
+If your issue only surfaces via a [data view](../../explore-analyze/find-and-organize/data-views/create-data-view.md#what-the-index-pattern-matches), you may consider this menu’s **Field filters** if you’re not using [multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). Alternatively, you may consider a more targeted index pattern or using a negative pattern to filter-out problematic indices. For example, if `logs-*` has too high a field count because of problematic backing indices `logs-lotsOfFields-*`, then you could update to either `logs-*,-logs-lotsOfFields-*` or `logs-iMeantThisAnyway-*`.
 
 
 ## Resolve [resolve]

@@ -718,7 +718,7 @@ toc:
               - file: monitor/autoops/access-autoops-for-serverless.md
               - file: monitor/autoops/search-tier-view-autoops-serverless.md
               - file: monitor/autoops/indexing-tier-view-autoops-serverless.md
-              - file: monitor/autoops/search-ai-lake-view-autoops-serverless.md
+              - file: monitor/autoops/storage-tier-view-autoops-serverless.md
           - file: monitor/autoops/cc-autoops-as-cloud-connected.md
             children:
               - file: monitor/autoops/cc-connect-self-managed-to-autoops.md

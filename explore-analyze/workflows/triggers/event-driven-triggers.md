@@ -494,10 +494,10 @@ Reference these fields with Liquid templating in workflow steps:
   type: console
   with:
     message: |
-      Episode {{ event.episodeId }} from rule {{ event.ruleId }} changed state.
+      Alert episode {{ event.episodeId }} from rule {{ event.ruleId }} changed state.
 ```
 
-Use these fields to write workflow conditions that scope the automation to specific rules or episodes. For example, use `event.ruleId: "my-rule-id"` to scope the workflow to alert episodes from a specific rule.
+Use these fields to write workflow conditions that scope the automation to specific rules or alert episodes. For example, use `event.ruleId: "my-rule-id"` to scope the workflow to alert episodes from a specific rule.
 
 ## {{alerting-v2-system-cap}} rule lifecycle triggers [alerting-rule-lifecycle-triggers-event-driven]
 

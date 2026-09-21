@@ -54,7 +54,7 @@ There can be multiple timestamps associated with a single data event. By default
 * `event.created` for when an event first reached an Elastic product.
 * `event.ingested` for when an event finished processing through an {{es}} Ingest Pipeline.
 
-{{kib}} [Data Views](https://www.elastic.co/docs/explore-analyze/find-and-organize/data-views) default to `@timestamp` to fit most user's default expectations. While troubleshooting ingestion lag, we recommend creating a temporary Data View based on `event.ingested`. 
+{{kib}} [Data Views](/explore-analyze/find-and-organize/data-views.md) default to `@timestamp` to fit most user's default expectations. While troubleshooting ingestion lag, we recommend [creating a temporary data view](/explore-analyze/find-and-organize/data-views/create-data-view.md#_create_a_temporary_data_source) based on `event.ingested`. 
 
 This potential timing difference is why Security Detection Rules allow for [setting a "Timestamp override"](https://www.elastic.co/docs/troubleshoot/security/detection-rules#troubleshoot-ingestion-pipeline-delay) which defaults to `event.ingested` when enabled.
 
