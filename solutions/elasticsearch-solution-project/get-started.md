@@ -33,13 +33,12 @@ Elastic provides several self-managed and Elastic-managed options.
 For simplicity and speed, try out {{es-serverless}}:
 
 ::::{dropdown} Create an {{es-serverless}} project
-:::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
-:::
+1. [Sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration).
+2. In the **Serverless projects** panel, select **Create project**.
+3. Select the **{{es}}** project type, then select **Next**.
+4. Enter a name for your project, and configure the cloud provider and [region](/deploy-manage/deploy/elastic-cloud/regions.md). Select **Create project**. Your project is ready in a few minutes.
 
-To [create a project](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md) in the {{ecloud}} console, choose the **{{es}}** project type, and provide a name.
-You can optionally edit the project settings, such as the [region](/deploy-manage/deploy/elastic-cloud/regions.md).
-
-When your project is created, you're ready to move on to the next step and to start creating indices, adding data, and performing searches.
+For more detailed information, refer to [](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md).
 ::::
 
 Alternatively, create a [local development installation](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) in Docker:

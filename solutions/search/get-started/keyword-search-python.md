@@ -24,11 +24,10 @@ To follow the steps, you must have a recent version of a Python interpreter.
 
 ::::{step} Create a project
 
-:::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
-:::
-
-To [create a project](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md) in the {{ecloud}} console, choose the **{{es}}** project type, and provide a name.
-You can optionally edit the project settings, such as the [region](/deploy-manage/deploy/elastic-cloud/regions.md).
+1. [Sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration), or [log in to {{ecloud}}](https://cloud.elastic.co/login) if you already have an account.
+2. In the **Serverless projects** panel, select **Create project**.
+3. Select the **{{es}}** project type, then select **Next**.
+4. Enter a name for your project, and optionally change the cloud provider and [region](/deploy-manage/deploy/elastic-cloud/regions.md). Select **Create project**. Your project is ready in a few minutes.
 
 To add the sample data in subsequent steps, you must have a `developer` or `admin` predefined role or an equivalent custom role.
 To learn about role-based access control, go to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
