@@ -104,6 +104,15 @@ helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-k
       --version {{kube-stack-version}}
 ```
 
+The OpenShift values file configures the minimum permissions required to run the chart and collect Kubernetes telemetry. It creates a custom [security context constraint (SCC)](https://docs.redhat.com/en/documentation/openshift_container_platform/4.22/html/authentication_and_authorization/managing-pod-security-policies) for the daemon collector. Refer to the [OpenShift values file](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/openshift/values.yaml) for the complete configuration.
+
+If the OpenTelemetry Operator is already installed through Operator Lifecycle Manager (OLM), such as from OperatorHub, add the following flags to prevent the chart from installing another operator and its custom resource definitions (CRDs):
+
+```bash
+--set crds.installOtel=false \
+--set opentelemetry-operator.enabled=false
+```
+
 ## Verify the installation
 
 Perform the following checks to verify that everything is running properly:
