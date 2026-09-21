@@ -32,7 +32,7 @@ Refer to [{{ml-cap}}: Anomaly detection](/explore-analyze/machine-learning/anoma
 
 If you have the appropriate role, you can use the **ML job settings** interface on the **Alerts**, **{{siem-rules-ui}}**, and **Rule Exceptions** pages to view, start, and stop {{elastic-sec}} {{ml}} jobs.
 
-{applies_to}`serverless: preview` When {{cps}} is enabled, starting a prebuilt job from **ML job settings** searches all linked projects. It doesn't use the space default {{cps}} scope. To change which projects the job searches, update the job's [`project_routing`](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope).
+{applies_to}`serverless: ga` When {{cps}} is enabled, starting a prebuilt job from **ML job settings** searches all linked projects. It doesn't use the space default {{cps}} scope. To change which projects the job searches, update the job's [`project_routing`](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope).
 
 :::{image} /solutions/images/security-ml-ui.png
 :alt: ML job settings UI on the Alerts page

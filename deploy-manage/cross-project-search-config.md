@@ -1,7 +1,7 @@
 ---
 applies_to:
   stack: unavailable
-  serverless: preview
+  serverless: ga
 products:
   - id: cloud-serverless
 navigation_title: "Cross-project search"
@@ -49,11 +49,6 @@ Before you configure {{cps}}, review these prerequisites and best practices:
 - Consider the [architecture patterns](#cps-arch) and choose the right linking topology for your organization.
 
 ### Projects available for linking [cps-compatibility]
-
-::::{important} - Origin project limitations
-
-During technical preview, only newly created projects can be origin projects for {{cps}}. Existing projects can be linked from an origin project, but they can't serve as origin projects themselves. To get started, create a new {{serverless-short}} project and link it to your existing projects.
-::::
 
 To be available for linking, projects must meet the following requirements:
 
@@ -108,12 +103,18 @@ After reviewing the architecture patterns, you can configure {{cps-init}} scope 
 1. [Manage user access and programmatic access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): Confirm user roles in both the origin and linked projects, as well as roles granted to [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md#roles) that will be used with {{cps}}.
 1. [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md): Link projects in the {{ecloud}} UI, manage linked projects, and unlink projects.
 
-Make sure to also review the [feature impacts](#cps-feature-impacts) and [limitations](#cps-limitations) of {{cps-init}}.
+Make sure to also review the [search performance impacts](#cps-search-performance), [feature impacts](#cps-feature-impacts), and [limitations](#cps-limitations) of {{cps-init}}.
 
 ## Billing [cps-billing]
 
 ::::{include} /deploy-manage/_snippets/cps-billing.md
 ::::
+
+## Search performance impacts [cps-search-performance]
+
+When you search across linked projects, each query coordinates across multiple projects before returning results. This adds a small amount of latency compared to searching a single project. The overhead is generally measured in milliseconds and depends on factors like response size and query complexity.
+
+Queries that cross region or cloud provider boundaries have higher latency due to network distance.
 
 ## Feature impacts [cps-feature-impacts]
 
@@ -155,7 +156,12 @@ The following limitations apply to {{elastic-sec}} apps. For how each app uses {
 
 ### Elastic {{observability}} apps
 
-{{observability}} apps have limited {{cps-init}} support. APM, Infrastructure, and Synthetics use the scope selector. Most other apps remain scoped to the origin project.
+{{observability}} apps have partial {{cps-init}} support. For example:
+
+* APM, Infrastructure, and Synthetics use session scope.
+* SLOs use stored scope.
+* Streams remain scoped to the origin project.
+* Alerts are from the origin project only, even when rules query linked-project data.
 
 For specific app details, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md).
 

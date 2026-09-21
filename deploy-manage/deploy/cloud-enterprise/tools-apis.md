@@ -41,12 +41,26 @@ Refer to [{{es}} API conventions](elasticsearch://reference/elasticsearch/rest-a
 :::{include} /deploy-manage/deploy/_snippets/other-apis.md
 :::
 
+## Elastic CLI
+```{applies_to}
+deployment:
+  stack: preview
+```
+
+The Elastic CLI provides a single command-line interface for {{es}} and {{kib}} APIs. Use it to interact with {{es}} and {{kib}} in {{ece}} deployments.
+
+Refer to the [Elastic CLI documentation](cli://index.md) to install the CLI, configure a connection, and run example operations. Not all Elastic APIs are available as CLI commands.
+
+:::{note}
+The Elastic CLI doesn't support the {{ece}} API. To manage deployments at the platform level, you can use [ecctl](#ecctl).
+:::
+
 ## {{es}} API Console [ece-api-console]
 
 :::{include} /deploy-manage/deploy/_snippets/cloud-api-console.md
 :::
 
-## {{ecloud}} Control: command-line interface for {{ecloud}}
+## {{ecloud}} Control: command-line interface for {{ecloud}} [ecctl]
 
 :::{include} /deploy-manage/deploy/_snippets/ecctl.md
 :::
