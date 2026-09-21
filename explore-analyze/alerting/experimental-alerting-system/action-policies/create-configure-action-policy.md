@@ -70,8 +70,8 @@ Attach one or more [workflows](../../../workflows.md) to define what happens whe
 
 Email and Slack notifications set up this way each need a matching connector, and the connector list shows only connectors of that type. If a connector you expected is missing from the list, check its type. Email uses an email connector. Slack uses:
 
-- {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` A [Slack (v2)](kibana://reference/connectors-kibana/slack-v2-action-type.md) connector. You also specify which channel to post to.
-- {applies_to}`stack: experimental =9.5` The original [Slack](kibana://reference/connectors-kibana/slack-action-type.md) connector, with the message text as the only parameter.
+- {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` A [Slack (v2)](kibana://reference/connectors-kibana/slack-v2-action-type.md) connector. You specify the channel to post to and the message text.
+- {applies_to}`stack: experimental =9.5` The original [Slack](kibana://reference/connectors-kibana/slack-action-type.md) connector, which takes the message text only.
 
 If you don't have a matching connector, you can create one without leaving the rule.
 
