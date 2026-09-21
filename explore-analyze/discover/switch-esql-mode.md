@@ -11,7 +11,7 @@ description: Switch Discover between ES|QL and classic mode, and see what happen
 
 # Switch between {{esql}} and classic mode
 
-**Discover** has two query modes: {{esql}}, and classic mode (data views with KQL or Lucene). Switch when you want the query to choose the data, or when you want the data view and filter bar back. This page explains what Discover does with the query you already have.
+**Discover** has two query modes: {{esql}}, and classic mode, which uses data views with Kibana Query Language (KQL) or Lucene. Switch when you want the query to select the data, or when you want the data view and filter bar back. This page explains what Discover does with the query you already have.
 
 ## Before you begin
 
