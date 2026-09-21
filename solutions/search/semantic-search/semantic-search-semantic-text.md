@@ -25,6 +25,8 @@ We recommend using the `semantic_text` workflow for [semantic search](../semanti
 
 This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), but you can use any service and model supported by the [{{infer-cap}} API](/explore-analyze/elastic-inference/inference-api.md).
 
+On {{serverless-full}}, use an [{{es}} {{vectordb}} project](/solutions/vector-database.md) when embeddings and similarity search are the primary workload. If you need to run custom models on {{ml}} nodes (the **Using ML-nodes** examples on this page), or your search is mainly lexical, use an [{{es}} project](/solutions/elasticsearch-solution-project.md) instead. [Compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type) to choose the right project type for your use case.
+
 ## Requirements [semantic-text-requirements]
 
 - This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), which is automatically enabled on {{ech}} deployments and {{serverless-short}} projects.

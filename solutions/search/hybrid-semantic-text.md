@@ -21,7 +21,9 @@ This tutorial walks you through hybrid search using the [`semantic_text`](elasti
 
 In hybrid search, semantic retrieval scores by meaning while lexical search scores by textual similarity. Combining them often results in more robust rankings than either alone.
 
-The recommended way to use hybrid search in the {{stack}} follows the `semantic_text` workflow: you avoid hand-building {{infer}} ingest pipelines for embeddings while still keeping a dedicated `text` field for keyword-style matching. 
+The recommended way to use hybrid search in the {{stack}} follows the `semantic_text` workflow: you avoid hand-building {{infer}} ingest pipelines for embeddings while still keeping a dedicated `text` field for keyword-style matching.
+
+On {{serverless-full}}, use an [{{es}} {{vectordb}} project](/solutions/vector-database.md) when embeddings and similarity search are the primary workload. If you need custom models on {{ml}} nodes, or hybrid search is only a small part of a general-purpose or time series workload, use an [{{es}} project](/solutions/elasticsearch-solution-project.md) instead. [Compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type) to choose the right project type for your use case.
 
 ## Requirements [semantic-text-requirements]
 

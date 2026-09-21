@@ -31,7 +31,7 @@ For concepts and deployment options, refer to [Multimodal search](../multimodal-
 You need:
 
 - Basic familiarity with {{es}} mappings and search APIs.
-- An {{es}} 9.5 or later deployment, or an {{es}} Serverless project.
+- An {{es}} 9.5 or later deployment, or an {{es}} {{serverless-short}} project. On {{serverless-full}}, this embedding-driven tutorial is a strong fit for an [{{es}} {{vectordb}} project](/solutions/vector-database.md). [Compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type) to choose the right project type for your use case. New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector).
 - A license that supports the {{infer}} API.
 - Access to a multimodal `embedding` endpoint. This tutorial uses the preconfigured `.jina-embeddings-v5-omni-small` endpoint through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
 - `curl` and the `base64` command-line utility.

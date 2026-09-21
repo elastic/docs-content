@@ -33,6 +33,8 @@ Only the first 512 extracted tokens per field are considered during semantic sea
 
 To perform semantic search by using ELSER, you must have the NLP model deployed in your cluster. Refer to the [ELSER documentation](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to learn how to download and deploy the model.
 
+On {{serverless-full}}, this tutorial deploys ELSER on {{ml}} nodes, which requires an [{{es}} project](/solutions/elasticsearch-solution-project.md). The [{{es}} {{vectordb}} project type](/solutions/vector-database.md) does not support custom {{ml}} nodes. If you don't need to manage the model yourself, follow [Semantic search with `semantic_text`](semantic-search-semantic-text.md) instead. [Compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type) to choose the right project type for your use case.
+
 ::::{note}
 The minimum dedicated ML node size for deploying and using the ELSER model is 4 GB in {{ech}} if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
 ::::

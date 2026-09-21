@@ -20,6 +20,8 @@ This page focuses on semantic search for text in {{es}}. For multimodal search a
 
 Semantic search uses [{{nlp}} (NLP)](/explore-analyze/machine-learning/nlp.md) models and [vector search](vector.md) to find results based on meaning, not just keywords. This page covers the managed workflows available in {{es}} for implementing semantic search on text.
 
+On {{serverless-full}}, consider the [{{es}} {{vectordb}} project type](/solutions/vector-database.md) when semantic search is your primary workload. If you need general-purpose search, time series data, or custom models on {{ml}} nodes, use an [{{es}} project](/solutions/elasticsearch-solution-project.md) instead. [Compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type) to choose the right project type for your use case.
+
 For the foundational concepts behind vector search, refer to [Vector search in {{es}}](vector.md). To compare semantic search with lower-level vector search and decide which path fits your project, refer to [Semantic search and vector search](vector.md#semantic-search-vs-vector-search). To understand the infrastructure that powers semantic search and other NLP tasks, including managed services and {{infer}} endpoints, refer to the [Elastic {{infer-cap}} overview](../../explore-analyze/elastic-inference.md) page. To explore AI-powered features across the {{stack}}, refer to [AI-powered features](/explore-analyze/ai-features.md).
 
 ## Overview of semantic search workflows [semantic-search-workflows-overview]
