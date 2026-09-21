@@ -1,5 +1,4 @@
 ---
-type: how-to
 navigation_title: Get data into Streams
 applies_to:
   serverless: ga
@@ -14,6 +13,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+type: how-to
 ---
 
 # Get data into Streams
