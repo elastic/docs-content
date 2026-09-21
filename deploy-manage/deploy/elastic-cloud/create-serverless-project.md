@@ -16,18 +16,18 @@ type: how-to
 
 ## Before you begin
 
-* Decide which project type you might need before you create the project. You'll select one of the following types during setup:
+Decide which project type you might need before you create the project. You'll select one of the following types during setup:
 
-    * {{es}}
-    * {{vectordb}}
-    * {{observability}}
-    * Security
+* {{es}}
+* {{vectordb}}
+* {{observability}}
+* Security
 
-  To match a type to your use case, review this [project comparison table](/deploy-manage/deploy/elastic-cloud/serverless.md#choose-a-project-type).
+To match a type to your use case, review this [project comparison table](/deploy-manage/deploy/elastic-cloud/serverless.md#choose-a-project-type).
+  
+You can't convert a project to a different type later. If you choose the wrong type, create another project. When you no longer need a project, [delete it](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless) so it doesn't continue to incur charges.
 
-* You can't convert a project to a different type later. If you choose the wrong type, create another project. When you no longer need a project, [delete it](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless) so it doesn't continue to incur charges.
-
-* You can have up to 500 {{serverless-short}} projects in your organization. This limit applies whether you create projects in the {{ecloud}} console or with the API. If you reach the limit, you'll get an error when you try to create another project. To request an increase, [contact Elastic Support](/troubleshoot/index.md#contact-us).
+You can have up to 500 {{serverless-short}} projects in your organization. This limit applies whether you create projects in the {{ecloud}} console or with the API. If you reach the limit, you'll get an error when you try to create another project. To request an increase, [contact Elastic Support](/troubleshoot/index.md#contact-us).
 
 ## Create a project in the {{ecloud}} console [create-project-console]
 
