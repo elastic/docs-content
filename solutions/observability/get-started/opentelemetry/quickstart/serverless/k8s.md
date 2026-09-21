@@ -85,6 +85,8 @@ helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
 --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/openshift/values.yaml' \
 --version '{{kube-stack-version}}'
 ```
+
+The OpenShift values file configures the chart to run with least privilege, including a custom security context constraints (SCC) resource for the daemon collector. For details, refer to [Deploy on OpenShift](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md#k8s-edot-deployment-openshift).
 ::::
 
 ::::{step} Auto-instrument applications
