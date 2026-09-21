@@ -220,7 +220,7 @@ Every agent has one of three access control levels:
 **Shared**
 :   Anyone can view. Only the owner or an administrator can edit.
 
-    {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` People you grant access to can also edit.
+    {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Users you grant access to can also edit.
 
 **Private**
 :   Only the owner or an administrator can view and edit.
