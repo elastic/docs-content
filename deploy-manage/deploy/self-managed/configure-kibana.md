@@ -29,6 +29,35 @@ In this file, you can also enable SSL and set a variety of other options.
 
 Environment variables can be injected into configuration using `${MY_ENV_VAR}` syntax. By default, configuration validation will fail if an environment variable used in the config file is not present when {{kib}} starts. This behavior can be changed by using a default value for the environment variable, using the `${MY_ENV_VAR:defaultValue}` syntax.
 
+## Reload the logging configuration without restarting [reload-logging-configuration]
+
+Most {{kib}} settings are read only at startup, so changing them requires a restart. The **logging** configuration is an exception: {{kib}} re-reads `kibana.yml` and re-applies its logging settings when the process receives a `SIGHUP` signal, without restarting.
+
+This is useful to temporarily raise verbosity while troubleshooting: adjust [`logging.root.level`](kibana://reference/configuration-reference/logging-settings.md), a specific [dedicated logger](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md), or [meta filters](kibana://reference/configuration-reference/logging-settings.md) in `kibana.yml`, reload, capture the logs you need, then revert and reload again.
+
+To reload the logging configuration:
+
+1. Edit the `logging` settings in `kibana.yml`.
+2. Send `SIGHUP` to the {{kib}} process:
+
+    ```sh
+    kill -HUP <kibana_pid>
+    ```
+
+    On [Docker](/deploy-manage/deploy/self-managed/install-kibana-with-docker.md), signal the container instead:
+
+    ```sh
+    docker kill --signal=HUP <container_id>
+    ```
+
+    If you run {{kib}} with multiple worker processes, send the signal to each process.
+
+3. Confirm the reload in the {{kib}} logs. You should see a message such as `Reloaded logging configuration due to SIGHUP`.
+
+::::{note}
+`SIGHUP` is not available on Windows. On Windows, restart {{kib}} to apply logging configuration changes.
+::::
+
 ## Available settings
 
 For a complete list of settings that you can apply to {{kib}}, refer to [{{kib}} configuration reference](kibana://reference/configuration-reference.md).
