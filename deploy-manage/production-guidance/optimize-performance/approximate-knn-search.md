@@ -27,7 +27,7 @@ If an index exists primarily for vector search, create it with the `vectordb_doc
 For the setup example and the full list of defaults, refer to [Vector index mode](/solutions/search/vector/knn/approximate-knn.md#approximate-knn-vector-index-mode) and [Index modes for vector search](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-modes).
 
 
-## Reduce vector memory foot-print [_reduce_vector_memory_foot_print]
+## Reduce vector memory footprint [_reduce_vector_memory_foot_print]
 
 The default [`element_type`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-element-type) is `float`. But this can be automatically quantized during index time through [`quantization`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization). Quantization will reduce the required memory by 4x, 8x, or as much as 32x, but it will also reduce the precision of the vectors and increase disk usage for the field (by up to 25%, 12.5%, or 3.125%, respectively). Increased disk usage is a result of {{es}} storing both the quantized and the unquantized vectors. For example, when int8 quantizing 40GB of floating point vectors an extra 10GB of data will be stored for the quantized vectors. The total disk usage amounts to 50GB, but the memory usage for fast search will be reduced to 10GB.
 
