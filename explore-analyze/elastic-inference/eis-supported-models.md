@@ -40,7 +40,7 @@ For region availability and request routing, refer to [Region and hosting](eis-r
 :caption: Scroll horizontally to view more information.
 :::
 
-### OCR and document parsing models
+### Optical character recognition (OCR) and document parsing models
 
 :::{csv-include} ocr-models.csv
 :caption: Scroll horizontally to view more information.
