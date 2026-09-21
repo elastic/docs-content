@@ -20,7 +20,7 @@ This page describes the {{kib}} editor. You can also create and manage indices u
 - To create lookup indices, you need the [`create_index`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege on the corresponding pattern.
 - To edit lookup indices, you need the [`write`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege.
 - To view lookup indices in read-only mode, you need the [`view_index_metadata`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege.
-- You need an {{esql}} query in **Discover**. If you are new to that editor, start with [Get started with Discover using {{esql}}](try-esql.md).
+- You need an {{esql}} query in **Discover**. If you are new to that editor, start with [Get started with {{esql}} in Discover](try-esql.md).
 
 ## Create and edit lookup indices from queries [discover-esql-lookup-join]
 

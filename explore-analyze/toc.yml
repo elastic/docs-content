@@ -278,12 +278,16 @@ toc:
               - file: ai-features/llm-guides/connect-to-vLLM.md
   - file: discover.md
     children:
+      - file: discover/discover-get-started.md
       - file: discover/try-esql.md
       - file: discover/use-esql.md
         children:
+          - file: discover/switch-esql-mode.md
+          - file: discover/browse-esql-sources.md
+          - file: discover/esql-results.md
+          - file: discover/esql-variable-controls.md
           - file: discover/create-lookup-indices.md
           - file: discover/inspect-grouped-stats.md
-      - file: discover/discover-get-started.md
       - file: discover/document-explorer.md
       - file: discover/discover-search-for-relevance.md
       - file: discover/save-open-search.md
