@@ -239,9 +239,10 @@ Dive into an individual document to view its fields and the documents that occur
    You can restrict the fields listed in the detailed view to the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
    ::::
 
-3. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To copy a link that reopens **Discover** with this document open, select {icon}`share` **Share direct link** in the flyout header. The link uses an absolute time range. For {{esql}} queries, include `METADATA _id, _index` on a `FROM` or `TS` query that does not transform rows. Commands such as `STATS` or `KEEP` make the action unavailable.
-4. To navigate to a view of the document that you can bookmark and share, select **View single document**. This action isn't available in {{esql}} mode.
-5. To view documents that occurred before or after the event you are looking at, select **View surrounding documents**. This action isn't available in {{esql}} mode.
+3. To navigate to a view of the document that you can bookmark and share, select **View single document**. This action isn't available in {{esql}} mode.
+4. To view documents that occurred before or after the event you are looking at, select **View surrounding documents**. This action isn't available in {{esql}} mode.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` When you are investigating a result, you can also [share a direct link](#share-a-document-link) to this document from the flyout.
 
 
 ## Search and filter data [search-in-discover]
@@ -393,11 +394,30 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 5. Select **Save**.
 
 
-### Share your Discover session [share-your-findings]
+### Share your findings [share-your-findings]
 
-To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
+You can share the current **Discover** session, or a link that reopens a specific document.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If a document flyout is open, the shared URL can include that document. Refer to [Share with a direct link](../report-and-share.md#share-a-direct-link).
+To share the session, including the query, filters, and table, select {icon}`share` **Share** in the application menu. For time range, authentication, export, and temporary links, refer to [Reporting and sharing](../report-and-share.md).
+
+In classic mode, expand a row and select **View single document** to open a bookmarkable page for that document. That action isn't available in {{esql}} mode. Refer to [Explore individual result or document details](#look-inside-a-document).
+
+#### Share a link to a document [share-a-document-link]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+When you are investigating a result, copy a link that reopens **Discover** with that document's flyout open. Recipients land on the same document instead of only the surrounding query.
+
+1. Expand the document in the table.
+2. In the flyout header, select {icon}`link` **Copy link**.
+
+The link uses an absolute time range so the document stays in the time window.
+
+If you are using {{esql}}, add `METADATA _id, _index` on the `FROM` or `TS` line, then rerun the query and reopen the row. Queries that transform rows, such as `STATS` or `KEEP`, cannot copy a link. If those fields are missing, **Copy link** stays available and shows a warning instead of copying.
+
+If you share the session from **Share** while the flyout is open, that URL can include the same document. If you keep a relative time range, **Discover** warns that the document might fall outside the recipient's results.
 
 
 ## Analyze your data with AI [analyze-with-ai]
