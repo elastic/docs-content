@@ -11,7 +11,7 @@ products:
 
 # Add drilldowns [drilldowns]
 
-Panels have built-in interactive capabilities that apply filters to the dashboard data. For example, when you drag a time range slider or click a pie chart slice, this applies a filter for the time range or pie slice. **Drilldowns** let you customize and extend this interactive behavior by defining what happens when you click on data points, while keeping interaction context such as filters, time ranges, and selected values.
+A panel can filter the dashboard when you select a chart value or drag a time range. A drilldown defines the next step. You can open another dashboard, a URL, or **Discover**, and keep the filters, the time range, and the value you selected.
 
 ## Requirements [drilldowns-requirements]
 
@@ -20,40 +20,44 @@ To add drilldowns to dashboard panels, you need:
 * **All** privilege for the **Dashboard** feature in {{product.kibana}}
 * An existing dashboard with at least one panel that supports drilldowns
 * For dashboard drilldowns: A target dashboard to navigate to
-* For URL drilldowns: A URL template that can include dynamic variables from the clicked data
+* For URL drilldowns: A URL template. Variables can come from the dashboard and from the value you select
 
-Drilldowns rely on a field that exists in the underlying data source. They cannot be triggered from values that come from computed fields, such as those produced by {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results. When you click a value from a computed field, the drilldown option is not available. For more information, refer to [Add pills by interacting with visualizations](using.md#_add_pills_by_interacting_with_visualizations).
+A drilldown uses a value from a field in the data source. You cannot filter on a value created at query time, because that value has no field in the index. This includes a Lens formula, an aggregation result, and an {{esql}} `EVAL` or `STATS` result.
+
+When the value comes from an {{esql}} query:
+
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` The visualization explains that the value relies on a field created at query time, and you cannot use **Filter for** or **Filter out**. On a chart, a date value does not show those actions or the explanation. If the column only renames an index field, you can still filter and open a drilldown. [Add drilldowns to an {{esql}} visualization](../visualize/esorql.md#esql-viz-drilldowns) describes where the explanation appears.
+* {applies_to}`stack: ga =9.4` The drilldown option is not available.
+
+For more information about filter pills, refer to [Add pills by interacting with visualizations](using.md#_add_pills_by_interacting_with_visualizations).
 
 ## Drilldown types [drilldown-types]
 
-There are three types of drilldowns you can add to dashboards:
+You can add three types of drilldown:
 
-* **Dashboard** — Navigates you from one dashboard to another dashboard. For example, create a drilldown for a **Lens** panel that navigates you from a summary dashboard to a dashboard with a filter for a specific host name.
-* **URL** — Navigates you from a dashboard to an external website. For example, a website with the specific host name as a parameter.
-* **Discover** — Navigates you from a **Lens** dashboard panel to **Discover**. For example, create a drilldown for a **Lens** visualization that opens the visualization data in **Discover** for further exploration.
-
-Third-party developers can create drilldowns. To learn how to code drilldowns, refer to [this example plugin](https://github.com/elastic/kibana/blob/master/x-pack/examples/ui_actions_enhanced_examples).
+* **Dashboard**: Open another dashboard from a panel. For example, open a host dashboard from a summary dashboard, with a filter for the host name you selected.
+* **URL**: Open a website from a panel. For example, open a search page that includes the host name you selected.
+* **Discover**: Open **Discover** from a **Lens** panel. For example, open the documents for one slice of a pie chart.
 
 [![Drilldowns video](https://play.vidyard.com/UhGkdJGC32HRn3oS5ZYJL1.jpg)](https://videos.elastic.co/watch/UhGkdJGC32HRn3oS5ZYJL1?)
 
 ## Create dashboard drilldowns [dashboard-drilldowns]
 
-Dashboard drilldowns enable you to open a dashboard from another dashboard, taking the time range, filters, and other parameters with you so the context remains the same. Dashboard drilldowns help you to continue your analysis from a new perspective.
+A dashboard drilldown opens another dashboard and can carry the time range, filters, and query with it. Use one to continue from a summary into a more specific view.
 
-For example, if you have a dashboard that shows the logs and metrics for multiple data centers, you can create a drilldown that navigates from the dashboard that shows multiple data centers, to a dashboard that shows a single data center or server.
+For example, a dashboard can show logs and metrics for several data centers. A drilldown can open a dashboard for the one data center or server you select.
 
 ![Drilldown on data table that navigates to another dashboard](/explore-analyze/images/kibana-dashboard_drilldownOnDataTable_8.3.gif "")
 
 The following panel types support dashboard drilldowns:
 
 * **Lens visualizations that use a data view**
-* {applies_to}`stack: ga 9.4` {applies_to}`serverless:` **Lens visualizations built with {{esql}}**
+* {applies_to}`serverless:` {applies_to}`stack: ga 9.4` **Lens visualizations built with {{esql}}**
 * **Maps**
 * **TSVB**
 * **Vega**
-* **Aggregation-based** area chart, data table, heat map, horitizontal bar chart, line chart, pie chart, tag cloud, and vertical bar chart
+* **Aggregation-based** area chart, data table, heat map, horizontal bar chart, line chart, pie chart, tag cloud, and vertical bar chart
 * **Timelion**
-
 
 ### Create and set up the dashboards you want to connect [_create_and_set_up_the_dashboards_you_want_to_connect]
 
@@ -62,13 +66,10 @@ Use the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data to creat
 1. Add the **Sample web logs** data.
 2. Create a new dashboard.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **From library**.
-    * {applies_to}`stack: ga 9.0-9.1` Select **Add from library** in the application menu.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In the application menu, select **Add** → **From library**.
+    * {applies_to}`stack: ga 9.0-9.1` In the application menu, select **Add from library**.
 
-3. Add the following panel:
-
-    * **[Logs] Visits**
-
+3. Add the **[Logs] Visits** panel.
 4. Set the [time filter](../query-filter/filtering.md) to **Last 30 days**.
 5. Save the dashboard. In the **Title** field, enter `Detailed logs`.
 6. Open the **[Logs] Web Traffic** dashboard, then set a search and filter.
@@ -80,89 +81,114 @@ Use the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data to creat
 Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] Web Traffic** dashboard.
 
 1. Open the panel menu for the **[Logs] Errors by host** data table, then select **Create drilldown**.
-2. Click **Go to dashboard**.
+2. Select **Go to dashboard**.
 
-    1. Give the drilldown a name. For example, `View details`.
-    2. From the **Choose a destination dashboard** dropdown, select **Detailed logs**.
-    3. To use the geo.src filter, KQL query, and time filter, select **Use filters and query from origin dashboard** and **Use date range from origin dashboard**.
-    4. Click **Create drilldown**.
+    1. In **Name**, enter a name. For example, `View details`.
+    2. From **Choose destination dashboard**, select **Detailed logs**.
+    3. To keep the `geo.src` filter, the KQL query, and the time filter, select **Use filters and query from origin dashboard** and **Use date range from origin dashboard**.
+    4. Select **Create drilldown**.
 
 3. Save the dashboard.
-4. In the data table panel, hover over a value, click **+**, then select `View details`.
+4. In the data table panel, select **+** on a value, then select **View details**.
+
    :::{image} /explore-analyze/images/kibana-dashboard_drilldownOnPanel_8.3.png
    :alt: Drilldown on data table that navigates to another dashboard
    :screenshot:
    :::
 
+The **Detailed logs** dashboard opens with the `geo.src` filter, the KQL query, and the **Last 30 days** time range.
+
 ## Create URL drilldowns [create-url-drilldowns]
 
-URL drilldowns enable you to navigate from a dashboard to external websites. Destination URLs can be dynamic, depending on the dashboard context or user interaction with a panel. To create URL drilldowns, you add [variables](/explore-analyze/dashboards/drilldowns.md) to a URL template, which configures the behavior of the drilldown. All panels that you create with the visualization editors support dashboard drilldowns.
+A URL drilldown opens a website from a panel. The URL can change with the dashboard time range, the dashboard filters, and the value you select. You build that URL with [variables](#url-template-variable) in a [URL template](#url-templating-language).
 
-![Drilldown on pie chart that navigates to Github](/explore-analyze/images/kibana-dashboard_urlDrilldownGoToGitHub_8.3.gif "")
+![Drilldown on pie chart that navigates to GitHub](/explore-analyze/images/kibana-dashboard_urlDrilldownGoToGitHub_8.3.gif "")
 
-Some panels support multiple interactions, also known as triggers. The [variables](#url-template-variable) you use to create a [URL template](#url-templating-language) depends on the trigger you choose. URL drilldowns support these types of triggers:
+Some panels support more than one interaction. Under **Trigger**, select when the drilldown runs. The variables you can use depend on that choice. URL drilldowns support these triggers:
 
-* **Single click** — A single data point in the panel.
-* **Range selection** — A range of values in a panel.
+* **Single click**: One data point in the panel. The template can use `{{event.value}}` and `{{event.key}}`.
+* **Table row click**: One row in a table. The template can use `{{event.values.[x]}}`, where `x` is the column number, starting at 0.
+* **Range selection**: A range of values in the panel. The template can use `{{event.from}}` and `{{event.to}}`.
 
-For example, **Single click** has `{{event.value}}` and **Range selection** has `{{event.from}}` and `{{event.to}}`.
-
-{applies_to}`stack: ga 9.4` {applies_to}`serverless:` {{esql}} visualization panels also support URL drilldowns.
+{applies_to}`serverless:` {applies_to}`stack: ga 9.4` {{esql}} visualization panels also support URL drilldowns.
 
 ### Create a URL drilldown [_create_a_url_drilldown]
 
-For example, if you have a dashboard that shows data from a Github repository, you can create a URL drilldown that opens Github from the dashboard panel.
+If a pie chart breaks down values from a GitHub repository, a URL drilldown can open the matching GitHub search from the slice you select.
 
 1. Add the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data.
 2. Open the **[Logs] Web Traffic** dashboard.
-3. In the application menu, click **Edit**.
-4. Create a pie chart.
+3. Select **Edit**.
+4. Add a pie chart.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **Visualization**.
-    * {applies_to}`stack: ga 9.0-9.1` Select **Create visualization** in the application menu.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In the application menu, select **Add** → **Visualization**.
+    * {applies_to}`stack: ga 9.0-9.1` In the application menu, select **Create visualization**.
 
-2. From the **Chart type** dropdown, select **Pie**.
-3. From the **Available fields** list, drag **machine.os.keyword** to the workspace.
-4. Click **Save and return**.
+5. Set the visualization type to **Pie**.
+6. From **Available fields**, drag **machine.os.keyword** to the workspace.
+7. Select **Save and return**.
+8. Open the pie chart panel menu, then select **Create drilldown**.
+9. Select **Go to URL**.
 
-5. Open the pie chart panel menu, then select **Create drilldown**.
-6. Click **Go to URL**.
+    1. In **Name**, enter a name. For example, `Show on GitHub`.
+    2. For **Trigger**, select **Single click**.
+    3. To open {{kib}} issues on GitHub, enter this URL in **Enter URL**:
 
-    1. Give the drilldown a name. For example, `Show on Github`.
-    2. For the **Trigger**, select **Single click**.
-    3. To navigate to the {{kib}} repository Github issues, enter the following in the **Enter URL** field:
-
-        ```bash
+        ```text
         https://github.com/elastic/kibana/issues?q=is:issue+is:open+{{event.value}}
         ```
 
-        {{kib}} substitutes `{{event.value}}` with a value associated with the selected pie slice.
+        {{kib}} replaces `{{event.value}}` with the pie slice you select.
 
-    4. Click **Create drilldown**.
+    4. Select **Create drilldown**.
 
-7. Save the dashboard.
-8. On the pie chart panel, click any chart slice, then select **Show on Github**.
+10. Save the dashboard.
+11. On the pie chart panel, select a slice, then select **Show on GitHub**.
 
     ![URL drilldown popup](/explore-analyze/images/kibana-dashboard_urlDrilldownPopup_8.3.png "")
 
-9. In the list of {{kib}} repository issues, verify that the slice value appears.
+12. In the list of {{kib}} repository issues, confirm that the slice value appears in the search.
 
-    ![Open ios issues in the elastic/kibana repository on Github](/explore-analyze/images/kibana-dashboard_urlDrilldownGithub_8.3.png "")
+    ![Open ios issues in the elastic/kibana repository on GitHub](/explore-analyze/images/kibana-dashboard_urlDrilldownGithub_8.3.png "")
 
+### Pass context and table values in the URL [url-drilldown-examples]
 
+Use variables when the URL should carry the dashboard time range, the dashboard filters, or a table cell. Select **Add variable** to insert a variable for the panel and the trigger you selected. Save the dashboard, then select a value on the panel and confirm the URL before you share the drilldown.
+
+**Time range.** `context.panel.timeRange.from` and `context.panel.timeRange.to` are the panel time range when the panel has its own time range. Otherwise they are the dashboard time range. Format them with the `date` helper when the site expects a calendar date:
+
+```text
+https://example.com/search?from={{date context.panel.timeRange.from "YYYY-MM-DD"}}&to={{date context.panel.timeRange.to "YYYY-MM-DD"}}
+```
+
+**Dashboard filters and query.** `context.panel.filters` is the list of filters on the dashboard. Filters that exist only on the panel are not included. `context.panel.query.query` is the dashboard query, and `context.panel.query.language` is the language of that query. Use the `rison` helper when the destination stores {{kib}} state in the URL:
+
+```text
+{{rison context.panel.filters}}
+```
+
+Start internal links with `{{kibanaUrl}}`, which is the {{kib}} base URL.
+
+**Table row.** For a **Table row click** trigger, `event.values.[0]` is the first cell in the row. `event.keys.[0]` is the field name for that column, and `event.columnNames.[0]` is the column label. This URL puts the first cell in the path:
+
+```text
+https://example.com/host/{{event.values.[0]}}
+```
+
+The [variables reference](#variables-reference) lists every variable, including `event.points` for a **Single click** that returns more than one data point.
 
 ## Create Discover drilldowns [discover-drilldowns]
 
-Discover drilldowns enable you to open **Discover** from a **Lens** dashboard panel, taking the time range, filters, and other parameters with you so the context remains the same.
+A Discover drilldown opens **Discover** from a **Lens** panel and can carry the time range, filters, and query with it. Use one to read the documents behind a chart value.
 
-For example, when you create a Discover drilldown for a pie chart, you can click a slice in the pie chart, and only the documents for the slice appear in **Discover**.
+For example, a Discover drilldown on a pie chart can open only the documents for the slice you select.
 
 ![Drilldown on bar vertical stacked chart that navigates to Discover](/explore-analyze/images/kibana-dashboard_discoverDrilldown_8.3.gif "")
 
 The following panel types support Discover drilldowns:
 
 * **Lens visualizations that use a data view**
-* {applies_to}`stack: ga 9.5` {applies_to}`serverless:` **Lens visualizations built with {{esql}}**
+* {applies_to}`serverless:` {applies_to}`stack: ga 9.5` **Lens visualizations built with {{esql}}**
 
     On {{esql}} panels, dashboard filters and the dashboard KQL or Lucene query are translated into a `WHERE` clause in the panel's ES|QL query, so the same context applies in **Discover**. Filters that can't be expressed in ES|QL are dropped. The **Explore in Discover** panel action applies the same translation.
 
@@ -170,59 +196,50 @@ The following panel types support Discover drilldowns:
 You can [open Lens dashboard panel data in Discover](../visualize/manage-panels.md#explore-the-underlying-documents) without setting up a drilldown.
 ::::
 
-
-
 ### Create the Discover drilldown [_create_the_discover_drilldown]
 
 Create a drilldown that opens **Discover** from the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data **[Logs] Web Traffic** dashboard.
 
-1. Click **Edit**, open the panel menu for the **[Logs] Bytes distribution** bar vertical stacked chart, then select **Create drilldown**.
-2. Click **Open in Discover**.
-3. Give the drilldown a name. For example, `View bytes distribution in Discover`.
-4. To open the Discover drilldown in a new tab, select **Open in new tab**.
-5. Click **Create drilldown**.
+1. Select **Edit**, open the panel menu for the **[Logs] Bytes distribution** bar vertical stacked chart, then select **Create drilldown**.
+2. Select **Open in Discover**.
+3. In **Name**, enter a name. For example, `View bytes distribution in Discover`.
+4. To open **Discover** in a new tab, select **Open in new tab**.
+5. Select **Create drilldown**.
 6. Save the dashboard.
-7. On the **[Logs] Bytes distribution** bar vertical stacked chart, click a bar, then select **View bytes distribution in Discover**.
+7. On the **[Logs] Bytes distribution** bar vertical stacked chart, select a bar, then select **View bytes distribution in Discover**.
+
    :::{image} /explore-analyze/images/kibana-dashboard_discoverDrilldown_8.3.png
    :alt: Drilldown on bar vertical stacked chart that navigates to Discover
    :screenshot:
    :::
 
-
+**Discover** opens in a new tab and shows the documents for the bar you selected.
 
 ## Manage drilldowns [manage-drilldowns]
 
-Make changes to your drilldowns, make a copy of your drilldowns for another panel, and delete drilldowns.
+You can edit a drilldown, copy it to another panel, or delete it.
 
-1. Open the panel menu that includes the drilldown, then click **Manage drilldowns**.
+1. Open the panel menu that includes the drilldown, then select **Manage drilldowns**.
 2. On the **Manage** tab, use the following options:
 
-    * To change drilldowns, click **Edit** next to the drilldown you want to change, make your changes, then click **Save**.
-    * To make a copy, click **Copy** next to the drilldown you want to change, enter the drilldown name, then click **Create drilldown**.
-    * To delete a drilldown, select the drilldown you want to delete, then click **Delete**.
-
-
+    * To change a drilldown, select **Edit**, make your changes, then select **Save**.
+    * To copy a drilldown, select **Copy**, enter the drilldown name, then select **Create drilldown**.
+    * To delete a drilldown, select it, then select **Delete ({count})**.
 
 ## URL templating [url-templating-language]
 
-::::{warning}
-This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-::::
+The URL template input uses [Handlebars](https://ela.st/handlebars-docs#expressions), a templating language. A template looks like regular text with Handlebars expressions embedded in it.
 
-
-The URL template input uses [Handlebars](https://ela.st/handlebars-docs#expressions) — a simple templating language. Handlebars templates look like regular text with embedded Handlebars expressions.
-
-```bash
+```text
 https://github.com/elastic/kibana/issues?q={{event.value}}
 ```
 
-A Handlebars expression is a `{{`, some contents, followed by a `}}`. When the drilldown is executed, these expressions are replaced by values from the dashboard and interaction context.
+A Handlebars expression starts with `{{`, contains a value or helper, and ends with `}}`. When you run the drilldown, {{kib}} replaces each expression with a value from the dashboard and from the interaction.
 
 $$$helpers$$$
-In addition to  [built-in](https://ela.st/handlebars-helpers) Handlebars helpers, you can use custom helpers.
+In addition to [built-in](https://ela.st/handlebars-helpers) Handlebars helpers, you can use the custom helpers on this page.
 
-Refer to Handlebars [documentation](https://ela.st/handlebars-docs#expressions) to learn about advanced use cases.
-
+Refer to the Handlebars [documentation](https://ela.st/handlebars-docs#expressions) for advanced use cases.
 
 ## Custom helpers [_custom_helpers]
 
@@ -244,15 +261,15 @@ Example:
 
 **date**
 
-Format dates. Supports relative dates expressions (for example,  "now-15d"). Refer to the [moment](https://momentjs.com/docs/#/displaying/format/) docs for different formatting options.
+Format dates. Supports relative date expressions (for example, "now-15d"). Refer to the [moment](https://momentjs.com/docs/#/displaying/format/) docs for formatting options.
 
 Example:
 
-`{{date event.from “YYYY MM DD”}}`<br> `{{date “now-15”}}`
+`{{date event.from "YYYY MM DD"}}`<br> `{{date "now-15"}}`
 
 **formatNumber**
 
-Format numbers. Numbers can be formatted to look like currency, percentages, times or numbers with decimal places, thousands, and abbreviations. Refer to the [numeral.js](http://numeraljs.com/#format) for different formatting options.
+Format numbers. Numbers can be formatted to look like currency, percentages, times or numbers with decimal places, thousands, and abbreviations. Refer to [numeral.js](http://numeraljs.com/#format) for formatting options.
 
 Example:
 
@@ -260,7 +277,7 @@ Example:
 
 **lowercase**
 
-Converts a string to lower case.
+Convert a string to lower case.
 
 Example:
 
@@ -268,7 +285,7 @@ Example:
 
 **uppercase**
 
-Converts a string to upper case.
+Convert a string to upper case.
 
 Example:
 
@@ -276,7 +293,7 @@ Example:
 
 **trim**
 
-Removes leading and trailing spaces from a string.
+Remove leading and trailing spaces from a string.
 
 Example:
 
@@ -284,7 +301,7 @@ Example:
 
 **trimLeft**
 
-Removes leading spaces from a string.
+Remove leading spaces from a string.
 
 Example:
 
@@ -292,7 +309,7 @@ Example:
 
 **trimRight**
 
-Removes trailing spaces from a string.
+Remove trailing spaces from a string.
 
 Example:
 
@@ -300,15 +317,15 @@ Example:
 
 **mid**
 
-Extracts a substring from a string by start position and number of characters to extract.
+Extract a substring from a string by start position and number of characters to extract.
 
 Example:
 
-`{{mid event.value 3 5}}` - extracts five characters starting from a third character.
+`{{mid event.value 3 5}}` extracts five characters starting from the third character.
 
 **left**
 
-Extracts a number of characters from a string (starting from left).
+Extract a number of characters from a string, starting from the left.
 
 Example:
 
@@ -316,7 +333,7 @@ Example:
 
 **right**
 
-Extracts a number of characters from a string (starting from right).
+Extract a number of characters from a string, starting from the right.
 
 Example:
 
@@ -324,7 +341,7 @@ Example:
 
 **concat**
 
-Concatenates two or more strings.
+Concatenate two or more strings.
 
 Example:
 
@@ -332,7 +349,7 @@ Example:
 
 **replace**
 
-Replaces all substrings within a string.
+Replace all substrings within a string.
 
 Example:
 
@@ -340,7 +357,7 @@ Example:
 
 **split**
 
-Splits a string using a provided splitter.
+Split a string using a provided splitter.
 
 Example:
 
@@ -348,45 +365,43 @@ Example:
 
 **encodeURIComponent**
 
-Escapes string using built in `encodeURIComponent` function.
+Escape a string using the built-in `encodeURIComponent` function.
 
 **encodeURIQuery**
 
-Escapes string using built in `encodeURIComponent` function, while keeping "@", ":", "$", ",", and ";" characters as is.
-
+Escape a string with the built-in `encodeURIComponent` function, but leave `@`, `:`, `$`, `,`, and `;` unchanged.
 
 ### URL template variables [url-template-variable]
 
 The URL drilldown template has three sources for variables:
 
-* **Global** static variables that don’t change depending on the  place where the URL drilldown is used or which user interaction executed the drilldown. For example: `{{kibanaUrl}}`.
-* **Context** variables that change depending on where the drilldown is created and used. These variables are extracted from a context of a panel on a dashboard. For example, `{{context.panel.filters}}` gives access to filters that applied to the current panel.
-* **Event** variables that depend on the trigger context. These variables are dynamically extracted from the interaction context when the drilldown is executed.
+* **Global**: Static variables that do not change with the panel or the interaction. For example, `{{kibanaUrl}}`.
+* **Context**: Variables from the panel on the dashboard. For example, `{{context.panel.filters}}` is the list of filters on the dashboard.
+* **Event**: Variables from the trigger. {{kib}} reads them from the interaction when you run the drilldown.
 
-To ensure that the configured URL drilldown works as expected with your data, you have to save the dashboard and test in the panel. You can access the full list of variables available for the current panel and selected trigger by clicking **Add variable** in the top-right corner of a URL template input.
-
+Save the dashboard and test the drilldown on the panel before you rely on it. To see every variable for the current panel and the selected trigger, select **Add variable** in the URL template field.
 
 ### Variables reference [variables-reference]
 
 | Source | Variable | Description |
 | --- | --- | --- |
-| **Global** | kibanaUrl | {{kib}} base URL. Useful for creating URL drilldowns that navigate within {{kib}}. |
-| **Context** | context.panel | Context provided by current dashboard panel. |
-|  | context.panel.id | ID of a panel. |
-|  | context.panel.title | Title of a panel. |
-|  | context.panel.filters | List of {{kib}} filters applied to a panel.<br>Tip: Use in combination with [rison](#helpers) helper forinternal {{kib}} navigations with carrying over current filters. |
-|  | context.panel.query.query | Current query string. |
-|  | context.panel.query.language | Current query language. |
-|  | context.panel.timeRange.from<br>context.panel.timeRange.to | Current time picker values.<br>Tip: Use in combination with [date](#helpers) helper to format date. |
-|  | context.panel.indexPatternId<br>context.panel.indexPatternIds | The {{data-source}} IDs used by a panel. |
-|  | context.panel.savedObjectId | ID of saved object behind a panel. |
-| **Single click** | event.value | Value behind clicked data point. |
-|  | event.key | Field name behind clicked data point |
-|  | event.negate | Boolean, indicating whether clicked data point resulted in negative filter. |
-|  | event.points | Some visualizations have clickable points that emit more than one data point. Use list of data points in case a single value is insufficient.<br><br>Example:<br>`{{json event.points}}`<br>`{{event.points.[0].key}}`<br>`{{event.points.[0].value}}``{{#each event.points}}key=value&{{/each}}`<br>Note:<br>`{{event.value}}` is a shorthand for `{{event.points.[0].value}}`<br>`{{event.key}}` is a shorthand for `{{event.points.[0].key}}` |
-| **Row click** | event.rowIndex | Number, representing the row that was clicked, starting from 0. |
-|  | event.values | An array of all cell values for the row on which the action will execute. To access a column value, use `{{event.values.[x]}}`, where `x` represents the column number. |
-|  | event.keys | An array of field names for each column. |
-|  | event.columnNames | An array of column names. |
-| **Range selection** | event.from<br>event.to | `from` and `to` values of the selected range as numbers.<br>Tip: Consider using [date](#helpers) helper for date formatting. |
+| **Global** | kibanaUrl | {{kib}} base URL. Use it to open another {{kib}} page. |
+| **Context** | context.panel | Context from the current dashboard panel. |
+|  | context.panel.id | ID of the panel. |
+|  | context.panel.title | Title of the panel. |
+|  | context.panel.filters | Filters on the dashboard. Filters that exist only on the panel are not included.<br>Tip: Use the [rison](#helpers) helper to pass these filters in a {{kib}} URL. |
+|  | context.panel.query.query | Dashboard query string. |
+|  | context.panel.query.language | Language of the dashboard query. |
+|  | context.panel.timeRange.from<br>context.panel.timeRange.to | Panel time range when the panel has its own time range. Otherwise, the dashboard time range.<br>Tip: Use the [date](#helpers) helper to format the date. |
+|  | context.panel.indexPatternId<br>context.panel.indexPatternIds | The {{data-source}} IDs used by the panel. |
+|  | context.panel.savedObjectId | ID of the saved object behind the panel. |
+| **Single click** | event.value | Value of the selected data point. |
+|  | event.key | Field name of the selected data point. |
+|  | event.negate | Boolean that indicates whether the selected data point resulted in a negative filter. |
+|  | event.points | Some visualizations return more than one data point for the value you select. Use the list when a single value is not enough.<br><br>Example:<br>`{{json event.points}}`<br>`{{event.points.[0].key}}`<br>`{{event.points.[0].value}}`<br>`{{#each event.points}}key=value&{{/each}}`<br>Note:<br>`{{event.value}}` is a shorthand for `{{event.points.[0].value}}`<br>`{{event.key}}` is a shorthand for `{{event.points.[0].key}}` |
+| **Table row click** | event.rowIndex | Number of the selected row, starting from 0. |
+|  | event.values | All cell values for the selected row. To access a column value, use `{{event.values.[x]}}`, where `x` is the column number. |
+|  | event.keys | Field names for each column. |
+|  | event.columnNames | Column names. |
+| **Range selection** | event.from<br>event.to | Start and end of the selected range, as numbers.<br>Tip: Use the [date](#helpers) helper to format a date. |
 |  | event.key | Aggregation field behind the selected range, if available. |
