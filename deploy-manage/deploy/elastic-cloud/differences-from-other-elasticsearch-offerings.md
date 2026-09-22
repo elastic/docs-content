@@ -54,13 +54,9 @@ $$$elasticsearch-differences-serverless-feature-categories$$$
 $$$elasticsearch-differences-serverless-features-replaced$$$
 $$$elasticsearch-differences-serverless-feature-planned$$$
 
-:::{note}
-The [{{serverless-full}} roadmap](https://www.elastic.co/cloud/serverless/roadmap) primarily focuses on platform capabilities rather than project-specific features. Use the project-specific tables in this section for information about features for each project type.
-:::
-
 ### Shared platform capabilities [core-platform-capabilities]
 
-These tables compare {{ech}} deployments and {{serverless-short}} projects for core capabilities that behave the same way across all {{serverless-short}} project types, grouped into [platform and operations](#platform-and-operations), [indexing, search, and analysis](#indexing-search-and-analysis), and [alerting and AI](#alerting-and-ai). For capabilities that are specific to an Elastic solution, refer to the table for your solution or project type.
+These tables compare {{ech}} deployments and {{serverless-short}} projects for core capabilities that behave the same way across all {{serverless-short}} project types, grouped into [platform and operations](#platform-and-operations), [indexing, search, and analysis](#indexing-search-and-analysis), and [alerting and AI](#alerting-and-ai). A few of these capabilities are unavailable in specific project types, as noted in the tables. For capabilities that are specific to an Elastic solution, refer to the table for your solution or project type.
 
 #### Platform and operations [platform-and-operations]
 
@@ -74,6 +70,7 @@ These capabilities cover identity and access, security and networking, infrastru
 | **BYO-Key for encryption at rest** | ✅ | **Planned** | Anticipated in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
 | **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure <br>- GCP | - [{{ech}} regions](cloud://reference/cloud-hosted/regions.md)<br>- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md) |
 | **Cluster scaling** | Manual with autoscaling option | Managed | Automatic scaling eliminates capacity planning - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
+| **Custom ML nodes** | Optional | ✅<br><br> | {applies_to}`vectordb: unavailable` <br> Custom models on ML nodes are not available in {{vectordb}} projects. Use the {{es}} project type if you need them. |
 | **Custom roles** | ✅ | ✅ | Managed through [{{ecloud}} roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) and [{{serverless-short}} custom roles](/deploy-manage/users-roles/serverless-custom-roles.md). |
 | **Deployment health monitoring** | [AutoOps](/deploy-manage/monitor/autoops.md) or monitoring cluster | Managed by Elastic | - No monitoring cluster required <br>- Automatically handled by Elastic |
 | **Deployment model** | Single deployments with multiple solutions | Separate projects for specific use cases | Fundamental architectural difference - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
@@ -104,6 +101,7 @@ These capabilities cover how data is ingested, stored, replicated, queried, and 
 | **Elastic connectors (for search)** | ❌ (Managed connectors discontinued with Enterprise Search in 9.0) | Self-managed only | - Managed connectors not available <br>- Use [self-managed connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md) |
 | [**Elasticsearch for Apache Hadoop**](https://www.elastic.co/elasticsearch/hadoop) | ✅ | ❌ | Not available in Serverless |
 | **Enterprise Search (App Search & Workplace Search)** | ❌ (discontinued in 9.0) | ❌ | Not available in Serverless |
+| **[Index modes](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting)** | Optional | Optional<br><br> | Available modes: `standard`, `lookup`, `logsdb`, `time_series`, `vectordb_document`, {applies_to}`elasticsearch: preview` `columnar`, and {applies_to}`elasticsearch: preview` `logsdb_columnar`<br><br> {applies_to}`vectordb: ga` {{vectordb}} projects support `vectordb_document` only |
 | [**`join` fields**](elasticsearch://reference/elasticsearch/mapping-reference/parent-join.md) | ✅ | ❌ | Not available in Serverless<br><br>The alternative for this in Serverless is the ES\|QL [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/lookup-join.md) command, which requires `lookup` index mode (unavailable in {{vectordb}} projects) |
 | [**Reindexing from remote**](/manage-data/migrate/migrate-data-using-reindex-api.md) | ✅ | ✅ | |
 | [**Scripted metric aggregations**](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) | ✅ | ❌ | Not available in Serverless<br>The alternative for this in Serverless is [ES|QL](elasticsearch://reference/query-languages/esql.md) |
@@ -126,36 +124,32 @@ These capabilities cover alerting, notifications, and AI-assisted experiences.
 
 ### {{es}} [elasticsearch]
 
-This table compares {{ech}} deployments with Serverless {{es}} projects for capabilities that are specific to this project type, or that work differently here than in other project types. Capabilities that behave the same in all project types are listed in [Shared capabilities](#core-platform-capabilities).
+{{serverless-short}} {{es}} projects are the general-purpose project type, built for mixed lexical, semantic, time series, and analytics workloads rather than a single use case. They support every capability listed in [Shared capabilities](#core-platform-capabilities), so only the following capability behaves differently than in {{ech}}.
 
 | **Feature** | {{ech}} | Serverless Elasticsearch projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| **Custom ML nodes** | Optional | ✅ | |
-| **[Index modes](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting)** | Optional  | Optional  | Available modes: `standard`, `lookup`, `logsdb`, `time_series`, `vectordb_document`, {applies_to}`elasticsearch: preview` `columnar`, and {applies_to}`elasticsearch: preview` `logsdb_columnar` |
 | [**Search applications**](/solutions/elasticsearch-solution-project/search-applications.md) | - UI and APIs <br>- Maintenance mode (beta) | - API-only <br>- Maintenance mode (beta) | UI not available in Serverless |
 
 ### {{es}} {{vectordb}} [elasticsearch-vector-database]
 
-This table compares {{ech}} deployments with {{es}} {{vectordb}} {{serverless-short}} projects for capabilities that are specific to this project type, or that work differently here than in other project types. Capabilities that behave the same in all project types are listed in [Shared capabilities](#core-platform-capabilities).
+The {{vectordb}} project type is optimized for vector workloads, with a vector-tuned default configuration, a hardware profile suited to embeddings, streamlined access to {{infer}}, and pricing built for vector storage and search. Configuration is intentionally narrower as a result.
+
+The following table lists those differences against {{ech}}. Capabilities that behave the same in all project types are listed in [Shared capabilities](#core-platform-capabilities).
 
 | **Feature** | {{ech}} | Serverless {{es}} {{vectordb}} projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
 | **Custom ML nodes** | ✅ | ❌ | Custom models on ML nodes are not available in {{vectordb}}. Use the {{es}} project type if you need them. |
 | **Data streams** | ✅ | ✅ | Supported when backing indices use [vector index mode](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode). |
-| **[Vector search index mode](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode)** | ✅ |  ✅  | `vectordb_document` is applied automatically to new indices in {{vectordb}}. |
-| **[Columnar index mode](/manage-data/data-store/columnar.md)** | {applies_to}`ech: preview` Optional | ❌ | Not supported in {{vectordb}}. Use the {{es}} project type for columnar workloads. |
-| **[LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md)** | Optional | ❌ | Not supported in {{vectordb}}. Use the {{es}} project type for logs workloads that need LogsDB. |
-| **[Lookup index mode](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting)** | Optional | ❌ | Not supported in {{vectordb}}. Required for ES\|QL [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/lookup-join.md). Use the {{es}} project type if you need lookup indices. |
-| **[Time series index mode (TSDS)](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md)** | Optional | ❌ | Not supported. Use the {{es}} project type for metrics and other time series workloads. |
+| **[Index modes](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting)** | ✅ All index modes |  [`vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) only | `vectordb_document` is applied automatically to new indices and is the only mode supported in {{vectordb}}.<br><br>Use the {{es}} project type for logs, analytics, metrics, or ES\|QL [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/lookup-join.md) workloads. |
 | [**Search applications**](/solutions/elasticsearch-solution-project/search-applications.md) | - UI and APIs <br>- Maintenance mode (beta) | ❌ | Not available. Use the {{es}} project type if you need search applications. |
 
 ### Observability
 
-This table compares {{ech}} deployments with Observability Complete Serverless projects for capabilities that are specific to this project type, or that work differently here than in other project types. Capabilities that behave the same in all project types are listed in [Shared capabilities](#core-platform-capabilities). For more information on Observability Logs Essentials Serverless projects, refer to [Observability feature tiers](../../../solutions/observability/observability-serverless-feature-tiers.md).
+This table compares the {{observability}} solution on {{ech}} deployments with Observability Complete {{serverless-short}} projects for capabilities that are specific to this project type, or that work differently here than in other project types. Capabilities that behave the same in all project types are listed in [Shared capabilities](#core-platform-capabilities). For more information on Observability Logs Essentials Serverless projects, refer to [Observability feature tiers](../../../solutions/observability/observability-serverless-feature-tiers.md).
 
 | **Feature** | {{ech}} | Serverless Observability Complete projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| [**AI Assistant**](/solutions/observability/ai/observability-ai-assistant.md) | {applies_to}`ech: deprecated` ✅ | {applies_to}`observability: deprecated` ✅ | The {{obs-ai-assistant}} is deprecated. The [Elastic AI Agent](/explore-analyze/ai-features/elastic-agent-builder.md) is now the default chat experience. Refer to [Compare Agent Builder and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md). |
+| [**AI Assistant**](/solutions/observability/ai/observability-ai-assistant.md) | ✅ (deprecated) | ✅ (deprecated) | The {{obs-ai-assistant}} is deprecated. The [Elastic AI Agent](/explore-analyze/ai-features/elastic-agent-builder.md) is now the default chat experience. Refer to [Compare Agent Builder and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md). |
 | **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) <br> Refer to [Managed OTLP endpoint](opentelemetry://reference/motlp.md) for OTLP data ingestion |
 | [**APM Agent Central Configuration**](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
 | [**APM Tail-based sampling**](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
@@ -183,7 +177,7 @@ This table compares {{ech}} deployments with Observability Complete Serverless p
 
 ### Security
 
-This table compares {{ech}} deployments with Serverless Security projects for capabilities that are specific to this project type, or that work differently here than in other project types. Capabilities that behave the same in all project types are listed in [Shared capabilities](#core-platform-capabilities).
+This table compares the Security solution on {{ech}} deployments with {{serverless-short}} Security projects for capabilities that are specific to this project type, or that work differently here than in other project types. Capabilities that behave the same in all project types are listed in [Shared capabilities](#core-platform-capabilities).
 
 | **Feature** | {{ech}} | Serverless Security projects | Serverless notes |
 |---------|---------------------|------------------------------|------------------|
@@ -307,10 +301,10 @@ When attempting to use an unavailable index setting, you'll receive this error:
 
 ## Learn more
 
-- [{{serverless-full}} roadmap](https://www.elastic.co/cloud/serverless/roadmap): See upcoming features and development plans for the Serverless platform
-- [Elasticsearch Serverless API reference]({{es-serverless-apis}}): Check out the complete list of available APIs in {{serverless-full}}
-- [Project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure project settings in {{serverless-full}}
-- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md): Choose the right region for your {{serverless-full}} project
+- [{{serverless-full}} roadmap](https://www.elastic.co/cloud/serverless/roadmap): See upcoming features and development plans for the Serverless platform. The roadmap primarily focuses on platform capabilities rather than project-specific features.
+- [Elasticsearch Serverless API reference]({{es-serverless-apis}}): Check out the complete list of available APIs in {{serverless-full}}.
+- [Project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure project settings in {{serverless-full}}.
+- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md): Choose the right region for your {{serverless-full}} project.
 - [{{ecloud}} pricing](https://www.elastic.co/pricing/): Understand pricing for {{ech}} and Serverless projects
-  - [Serverless project billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md): Understand billing dimensions for Serverless projects
-  - [{{ech}} billing](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md): Understand billing dimensions for {{ech}} deployments
+  - [Serverless project billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md): Understand billing dimensions for Serverless projects.
+  - [{{ech}} billing](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md): Understand billing dimensions for {{ech}} deployments.
