@@ -22,19 +22,19 @@ This example explores the fields in the [sample web logs data](../index.md#gs-ge
 1. Go to **Discover**.
 2. Expand the {{data-source}} dropdown, and select **Kibana Sample Data Logs**.
 3. If you don’t see any results, expand the time range, for example, to **Last 7 days**.
-4. Click **Field statistics**.
+4. Select **Field statistics** (or **View as** → **Field statistics**, depending on your version).
    The table summarizes how many documents in the sample contain each field for the selected time period the number of distinct values, and the distribution.
 
    :::{image} /explore-analyze/images/kibana-field-statistics-view.png
-   :alt: Field statistics view in Discover showing a summary of document data.
+   :alt: Field statistics view in Discover with the View as menu open.
    :screenshot:
    :::
 
-5. Expand the `hour_of_day` field.
+5. Expand the `machine.ram` field.
    For numeric fields, **Discover** provides the document statistics, minimum, median, and maximum values, a list of top values, and a distribution chart. Use this chart to get a better idea of how the values in the data are clustered.
 
    :::{image} /explore-analyze/images/kibana-field-statistics-numeric.png
-   :alt: Field statistics for a numeric field.
+   :alt: Field statistics for the machine.ram numeric field.
    :screenshot:
    :::
 
