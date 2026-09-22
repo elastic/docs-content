@@ -136,9 +136,7 @@ Raw (unquantized) vectors are always stored on disk, including when quantization
 | `bit` | 1/8 | `⌈num_dimensions / 8⌉` |
 
 :::{math}
-\begin{align*}
-raw\ vector\ bytes = num\_vectors \times bytes\_per\_vector
-\end{align*}
+\text{raw vector bytes} = \text{num\_vectors} \times \text{bytes\_per\_vector}
 :::
 
 #### Quantized vector storage
@@ -152,9 +150,7 @@ When quantization is enabled, {{es}} stores both the raw vectors and a quantized
 | `bbq` | `⌈num_dimensions / 64⌉ × 8 + 14` |
 
 :::{math}
-\begin{align*}
-estimated\ bytes = num\_vectors \times bytes\ per\ vector
-\end{align*}
+\text{estimated bytes} = \text{num\_vectors} \times \text{bytes per vector}
 :::
 
 #### Index structure on disk [_index_structure_on_disk]
@@ -174,9 +170,7 @@ For DiskBBQ, add centroid bytes and cluster bytes. The `× 2` on cluster vectors
 #### Total disk per replica
 
 :::{math}
-\begin{align*}
-total\ disk = raw\ vector\ bytes + quantized\ disk + index\ structure\ bytes
-\end{align*}
+\text{total disk} = \text{raw vector bytes} + \text{quantized disk} + \text{index structure bytes}
 :::
 
 Each shard replica holds a full copy. Multiply the per-replica figure by `1 + number of replicas` for cluster-wide disk. To check the size of vector data in an existing index, use the [Analyze index disk usage]({{es-apis}}operation/operation-indices-disk-usage) API.
@@ -190,52 +184,46 @@ Provision at least the off-heap RAM figure per copy, plus headroom. Once the wor
 
 #### Index structure in RAM
 
-::::{tab-set}
+:::::{tab-set}
 
-:::{tab-item} HNSW
+::::{tab-item} HNSW
 
 The HNSW graph must be fully loaded in memory for efficient search. The default value for `m` is `16`.
 
 :::{math}
-\begin{align*}
-HNSW\ RAM = num\_vectors \times 4 \times m
-\end{align*}
+\text{HNSW RAM} = \text{num\_vectors} \times 4 \times m
 :::
 
 Total off-heap RAM for HNSW:
 
 :::{math}
-\begin{align*}
-total\ RAM = vector\ RAM + HNSW\ RAM
-\end{align*}
+\text{total RAM} = \text{vector RAM} + \text{HNSW RAM}
 :::
 
 Example with unquantized `hnsw`, `element_type: float`, `m` set to `16`, and `1,000,000` vectors of `1024` dimensions:
 
 :::{math}
 \begin{align*}
-estimated\ bytes &= (1,000,000 \times 4 \times 16) + (1,000,000 \times 4 \times 1024) \\
-&= 64,000,000 + 4,096,000,000 \\
-&= 4,160,000,000 \\
-&= 3.87GB
+\text{estimated bytes} &= (1{,}000{,}000 \times 4 \times 16) + (1{,}000{,}000 \times 4 \times 1024) \\
+&= 64{,}000{,}000 + 4{,}096{,}000{,}000 \\
+&= 4{,}160{,}000{,}000 \\
+&= 3.87\text{GB}
 \end{align*}
 :::
 
-:::
+::::
 
-:::{tab-item} Flat
+::::{tab-item} Flat
 
 The flat index has no graph structure. Only vector data needs to be in RAM.
 
 :::{math}
-\begin{align*}
-total\ RAM = vector\ RAM
-\end{align*}
+\text{total RAM} = \text{vector RAM}
 :::
 
-:::
+::::
 
-:::{tab-item} DiskBBQ
+::::{tab-item} DiskBBQ
 
 ```{applies_to}
 stack: ga 9.3+
@@ -245,9 +233,9 @@ If you're using DiskBBQ, a fraction of the clusters and centroids need to be in 
 
 Start with all centroids and posting lists in RAM and tune based on benchmark results. The useful fraction depends on your query patterns: queries that access overlapping clusters benefit from caching more.
 
-:::
-
 ::::
+
+:::::
 
 Data nodes should also leave a buffer for other ways that RAM is needed. For example your index might include text fields and numerics, which also benefit from using filesystem cache. Run benchmarks with your dataset to confirm there is enough memory for good search performance. Nightly examples include the [`so_vector`](https://elasticsearch-benchmarks.elastic.co/#tracks/so_vector) and [`dense_vector`](https://elasticsearch-benchmarks.elastic.co/#tracks/dense_vector) tracks.
 
