@@ -50,7 +50,7 @@ FROM kibana_sample_data_logs
 
 **Result:** A column header reorders only the rows already retrieved. `SORT` orders the full data set.
 
-## Work with the results table [esql-kibana-results-table]
+## Show specific columns in the results table [esql-kibana-results-table]
 
 By default, the results table shows the `@timestamp` field and a **Summary** column that lists each result's key-value pairs. To customize the visible columns without changing the query, [add fields from the fields list](discover-get-started.md#explore-fields-in-your-data).
 
@@ -95,7 +95,7 @@ To reorder or resize columns, adjust the table density or row height, or display
 
   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` When you switch from classic mode to {{esql}} mode, active filters from the filter bar are converted to `WHERE` clauses where possible, so they aren't lost. Filters that can't be converted are dropped.
 
-## {{esql}} and time series data [_esql_and_time_series_data]
+## Show the time picker and chart for a time field other than @timestamp [_esql_and_time_series_data]
 
 By default, ES|QL identifies time series data when an index contains a `@timestamp` field. This enables the time range selector and visualization options for your query.
 

@@ -17,7 +17,7 @@ Variable controls help you make your queries more dynamic instead of having to m
 
 - You need an {{esql}} query in **Discover**. If you are new to that editor, start with [Get started with {{esql}} in Discover](try-esql.md).
 
-## Add variable controls to your Discover queries [add-variable-control]
+## Create a variable control from the Discover editor [add-variable-control]
 
 You can add them from your Discover {{esql}} query.
 
@@ -31,7 +31,7 @@ You can add them from your Discover {{esql}} query.
 
 **Result:** The control appears for the query, and its variable is inserted where you created it.
 
-### Allow multi-value selections for {{esql}}-based variable controls [esql-multi-values-controls]
+### Allow multi-value selections in a Discover control [esql-multi-values-controls]
 ```{applies_to}
 stack: preview 9.3
 serverless: preview
@@ -40,7 +40,7 @@ serverless: preview
 :::{include} ../_snippets/multi-value-esql-controls.md
 :::
 
-#### Edit a variable control
+#### Edit a variable control in Discover
 
 Once a control is active for your query, you can still edit it by hovering over it and by selecting the {icon}`pencil` **Edit** option that appears.
 

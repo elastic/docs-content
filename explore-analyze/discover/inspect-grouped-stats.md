@@ -44,7 +44,7 @@ When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-lan
 
 3. Expand a row to inspect the underlying documents.
 
-## Pattern rendering
+## Show CATEGORIZE patterns in the group titles
 
 When the grouping field uses [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md), each row title shows the detected pattern with token highlighting, so you can scan repeated message structures at a glance.
 
