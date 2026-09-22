@@ -72,6 +72,49 @@ redirects:
     to: 'explore-analyze/ai-features.md'
     anchors:
       '': 'model-context-protocol-mcp-servers'
+  # Related to https://github.com/elastic/docs-content/pull/7484
+  'deploy-manage/users-roles/cluster-or-deployment-auth/saml.md':
+    to: 'deploy-manage/users-roles/cluster-or-deployment-auth/saml.md'
+    many:
+      - to: 'deploy-manage/users-roles/cluster-or-deployment-auth/saml.md'
+        anchors:
+          '_idp_slo_service': 'saml-logout'
+          '_the_idp_use_single_logout_setting': 'saml-logout'
+          '_the_sp_logout_setting': 'saml-logout'
+          '_using_kib_without_single_logout': 'saml-logout'
+          'add-the-saml-provider-to-kibana': 'saml-configure-kibana'
+          'delegating-saml-authorization-to-another-realm': 'delegate-authorization-to-another-realm'
+          'example-role-mapping-api-using-saml-attributes': 'grant-access-by-group'
+          'example-using-the-role-mapping-api': 'grant-access-by-realm'
+          'prerequisites': 'saml-prerequisites'
+          'required-idp-information': 'saml-guide-idp'
+          'signing-requirements': 'saml-guide-idp'
+          'supported-idps': 'saml-guide-idp'
+      - to: 'deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md'
+        anchors:
+          '_extracting_partial_values_from_saml_attributes': 'saml-attribute-patterns'
+          'map-attributes': 'map-attributes'
+          'saml-attribute-mapping-nameid': 'saml-attribute-mapping-nameid'
+          'saml-es-user-properties': 'saml-es-user-properties'
+          'saml-user-metadata': 'saml-user-metadata'
+      - to: 'deploy-manage/users-roles/cluster-or-deployment-auth/saml-signing-encryption.md'
+        anchors:
+          '_configuring_es_for_encrypted_messages': 'saml-encryption-configure'
+          '_configuring_es_for_signing': 'saml-sign-configure'
+          '_generating_certificates_and_keys': 'saml-sign-generate-certs'
+          'example-using-elasticsearch-certutil': 'example-using-elasticsearch-certutil'
+          'example-using-openssl': 'example-using-openssl'
+          'sign-only-certain-message-types': 'sign-only-certain-message-types'
+      - to: 'deploy-manage/users-roles/cluster-or-deployment-auth/saml-without-kibana.md'
+        anchors:
+          'saml-no-kibana-idp-init-sso': 'saml-no-kibana-idp-init-sso'
+          'saml-no-kibana-realm': 'saml-no-kibana-realm'
+          'saml-no-kibana-slo': 'saml-no-kibana-slo'
+          'saml-no-kibana-sp-init-sso': 'saml-no-kibana-sp-init-sso'
+          'saml-no-kibana-user': 'saml-no-kibana-user'
+      - to: 'troubleshoot/elasticsearch/security/trb-security-saml.md'
+        anchors:
+          'saml-troubleshooting':
   'deploy-manage/security/secure-http-communications.md': '!deploy-manage/security/secure-cluster-communications.md'
   'deploy-manage/security/manually-configure-security-in-self-managed-cluster.md': '!deploy-manage/security/self-setup.md'
   'deploy-manage/security/security-certificates-keys.md': '!deploy-manage/security/self-auto-setup.md'
