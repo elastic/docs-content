@@ -102,7 +102,7 @@ POST kbn:/internal/kibana/global_settings
 The `/internal/kibana/global_settings` endpoint is an internal API and might change without notice.
 :::
 
-When the request returns HTTP 200 and `workflowsManagement:library:enabled` has `"userValue": true`, reload the page. **Template library** appears in the Workflows navigation. The `workflowsManagement:library:enabled` setting is global, so turning it on applies to all spaces.
+When the request returns HTTP 200 and `workflowsManagement:library:enabled` has `"userValue": true`, reload the page. **Template library** appears in the Workflows navigation. Note that the `workflowsManagement:library:enabled` setting is global, so turning it on applies to all spaces.
 
 ## What's next [workflows-what-next]
 
