@@ -11,7 +11,11 @@ products:
 
 # Add drilldowns [drilldowns]
 
-A panel can filter the dashboard when you select a chart value or drag a time range. A drilldown defines the next step. You can open another dashboard, a URL, or **Discover**, and keep the filters, the time range, and the value you selected.
+A drilldown is a navigation action on a dashboard panel. When you select a value, it opens a destination you define: another dashboard, a URL, or **Discover**.
+
+The destination keeps the context of that selection. That includes the value you selected, the filters on the dashboard, and the time range.
+
+Selecting a value can also filter the dashboard you have open, for example when you select a slice or drag a time range. Add a drilldown when you want that same selection to open another view.
 
 ## Requirements [drilldowns-requirements]
 
