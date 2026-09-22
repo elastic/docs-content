@@ -10,7 +10,10 @@ products:
 
 # Automatically generate reports [automating-report-generation]
 
-To automatically generate PDF and CSV reports, generate a POST URL, then submit an HTTP `POST` request using {{watcher}} or a script. In {{stack}} 9.1, you can use {{kib}} to generate PDF, PNG, and CSV reports on a recurring schedule and share them with a list of emails that you specify. On {{serverless-full}}, scheduling is available for Discover CSV reports only. Dashboard PDF and PNG reports are not available.
+Generate PDF, PNG, and CSV reports automatically instead of exporting them by hand each time. Available methods and export formats vary by deployment type. Choose the approach that fits your workflow:
+
+* **[Trigger reports with a POST URL](#create-a-post-url)**: Trigger a report from a script or {{watcher}}.
+* **[Schedule and share reports](#schedule-report-generation)**: Set up a recurring schedule in {{kib}} that generates and emails reports at an interval you choose.
 
 :::{note}
 :applies_to: {stack: ga 9.1, serverless: unavailable}
@@ -183,7 +186,10 @@ stack: ga 9.3+, preview 9.1-9.2
 serverless: ga
 ```
 
-Save time by setting up a recurring task that automatically generates reports and shares them on a schedule that you choose. 
+Save time by setting up a recurring task that automatically generates reports and shares them on a schedule that you choose. Which report formats you can schedule depends on your deployment type:
+
+* {applies_to}`serverless: ga` CSV reports for Discover sessions.
+* {applies_to}`stack: ga` CSV reports for Discover sessions. PDF and PNG reports for dashboards and library visualizations. 
 
 ### Prerequisites [scheduled-reports-reqs]
 
@@ -229,10 +235,6 @@ Save time by setting up a recurring task that automatically generates reports an
 * (Optional) To control who can receive email notifications from {{kib}}, add the [`xpack.actions.email.domain_allowlist` setting](kibana://reference/configuration-reference/alerting-settings.md) to your `kibana.yml` file. To learn more about configuring this setting, refer to [Notifications domain allowlist](../alerting/alerts/notifications-domain-allowlist.md).
 
 ### Create a schedule [create-scheduled-report]
-
-::::{note}
-{applies_to}`serverless: ga` On {{serverless-full}}, **Schedule export** is available from **Discover** for CSV reports. It does not appear on dashboards or visualizations because PDF and PNG reporting is not available, and Lens CSV scheduling is not supported.
-::::
 
 1. Open the saved Discover session, dashboard, or visualization you want to share. 
 2. Click the **Export** icon, then **Schedule export**.
@@ -294,4 +296,4 @@ The feature enables analysis of data in external tools, but it is not intended f
 * If your cluster is running many tasks in general, reports may be delayed.
 * Scheduling reports of Canvas workpads is not supported since Canvas workpads are in maintenance mode. 
 * Scheduling CSV reports of Lens visualizations is not supported.
-* {applies_to}`serverless: ga` On {{serverless-full}}, you cannot generate or schedule dashboard, Lens, or visualization PDF or PNG reports. Use Discover CSV schedules instead. 
+* {applies_to}`serverless: ga` {{serverless-full}} only supports scheduling CSV exports of Discover sessions. Exporting in other formats or from other applications isn't supported. 
