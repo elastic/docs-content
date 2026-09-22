@@ -3,7 +3,6 @@ navigation_title: Design for resilience
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-design.html
 applies_to:
-  serverless:
   deployment:
     ess: all
     ece: all
@@ -16,6 +15,10 @@ products:
 # Design for resilience [high-availability-cluster-design]
 
 Distributed systems like {{es}} are designed to keep working even if some of their components have failed. As long as there are enough well-connected nodes to take over their responsibilities, an {{es}} cluster can continue operating normally if some of its nodes are unavailable or disconnected.
+
+:::{admonition} Serverless does it for you
+{{serverless-full}} is designed to be resilient to node, zone, and index-level failures automatically. Because {{serverless-short}} uses a different architecture, the information on this page does not apply to {{serverless-short}} projects. To learn about the resilience features of {{serverless-short}}, refer to [](./availability-and-resilience/resilience-in-serverless.md).
+:::
 
 {{es}} implements high availability (HA) at three key levels:
 
@@ -65,8 +68,6 @@ The following pages give some recommendations for building resilient clusters of
 * [Resilience in larger clusters](availability-and-resilience/resilience-in-larger-clusters.md)
 
 In addition, [Resilience in {{ech}} and {{ece}} deployments](./availability-and-resilience/resilience-in-ech.md) outlines how ECH and ECE orchestrators implement resilience, and offers guidance to ensure your deployments follow best practices.
-
-[Resilience in {{serverless-full}}](./availability-and-resilience/resilience-in-serverless.md) also describes how the Serverless platform handles durability, availability, and recovery automatically.
 
 ## Client traffic distribution
 

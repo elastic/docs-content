@@ -8,7 +8,7 @@ products:
 
 # Resilience in {{serverless-full}} [resilience-in-serverless]
 
-In {{serverless-full}}, Elastic manages all infrastructure resilience automatically. Unlike {{ech}} or self-managed deployments, there are no nodes to configure, no replica counts to tune, and no availability zone settings to manage. Resilience is built into the platform at the infrastructure level.
+In {{serverless-full}}, Elastic manages all infrastructure resilience automatically. Unlike ECH, ECE, ECK, or self-managed deployments, there are no nodes to configure, no replica counts to tune, and no availability zone settings to manage. Resilience is built into the platform at the infrastructure level.
 
 ## Data durability [resilience-serverless-data-durability]
 
@@ -23,7 +23,7 @@ To learn more about the stateless architecture underpinning {{serverless-short}}
 
 ## High availability [resilience-serverless-high-availability]
 
-{{serverless-short}} manages placement of nodes into availability zones within each region - no configuration is required. Replacement of a failed node (including to a different availability zone when necessary) is automated and requires no user intervention.
+{{serverless-short}} manages placement of nodes into availability zones within each region - no configuration is required. Replacement of a failed node, including to a different availability zone when necessary, is automated and requires no user intervention.
 
 Elastic maintains a service level agreement (SLA) for {{serverless-short}} project availability. Refer to the [Elastic Cloud Serverless Service Level Agreement](https://www.elastic.co/agreements/sla-elastic-cloud-serverless) for details.
 
@@ -42,4 +42,4 @@ All resilience in {{serverless-short}} is regional. Projects run in a single clo
 * Cross-region replication is not available.
 * There is no automatic failover to an alternative region if the region itself becomes unavailable.
 
-If your requirements include multi-region resilience, you can deploy separate projects in different regions and manage data routing or synchronization at the application level. Refer to [available Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md) for the supported options.
+If your requirements include multi-region resilience, you can deploy separate projects in different regions and manage data routing or synchronization at the application level. Refer to [](/deploy-manage/deploy/elastic-cloud/regions.md) for the supported options.
