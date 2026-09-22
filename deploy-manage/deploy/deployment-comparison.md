@@ -43,6 +43,12 @@ For more details about feature availability in {{serverless-short}}, refer to []
 | [Deployment health monitoring](/deploy-manage/monitor.md) | AutoOps or monitoring cluster | AutoOps or monitoring cluster | Managed by Elastic |
 | [Alerting](/explore-analyze/alerting.md) | Watcher or {{kib}} alerts | Watcher or {{kib}} alerts | Alerts ([why?](/explore-analyze/alerting.md#watcher)) |
 
+## Reporting
+
+| Feature/capability | Fully self-managed, ECE, ECK, ECH | {{serverless-short}} |
+|-------------------|-------------------------------|----------------------|
+| [Reporting](/explore-analyze/report-and-share.md) | All report types and file formats | CSV for Discover sessions and Lens visualizations.<br><br>JSON for dashboards.<br><br>PDF and PNG are not available. |
+
 ## Data lifecycle
 
 | Feature/capability | Fully self-managed, ECE, ECK | ECH | {{serverless-short}} |
