@@ -12,6 +12,8 @@ description: "Monitor action policy dispatch activity from the execution history
 
 Action policy execution history shows dispatcher decisions from the last 24 hours across all action policies in the space, so you can confirm notifications are dispatching as expected or investigate unexpected notification behavior.
 
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` To review the decisions for a single alert episode over its whole lifetime instead, use the **Policy history** tab on its details page. Refer to [Review action policy activity for this alert episode](../alerts/investigate-alert-episodes.md#policy-history).
+
 Go to **Execution history** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Policies** tab. Each row covers one dispatcher run for each action policy evaluated against a rule:
 
 | Column | Description |
@@ -33,17 +35,33 @@ Go to **Execution history** in the navigation menu or [global search](/explore-a
      otherwise 1."). Verify with the Alerting v2 team before uncommenting.
 -->
 
-You can search records by action policy name, rule name, or saved-object ID, and filter by outcome to view only dispatched or throttled records.
+You can search records by action policy name, rule name, or saved-object ID, and filter by outcome to narrow the list.
 
 ## Dispatch outcomes [dispatch-outcomes]
 
-After each dispatcher run, {{kib}} records one of three outcomes for each action policy:
+After each dispatcher run, {{kib}} records one of the following outcomes for each action policy:
 
 | Outcome | What it means |
 |---|---|
 | `dispatched` | The dispatcher invoked a workflow for the alert episode. |
 | `throttled` | The alert episode matched an action policy but was rate-limited by the frequency setting, so no workflow ran. This is expected behavior, not an error. |
 | `unmatched` | No action policy matched the alert episode. No workflow ran. |
+| `dispatch_failed` | {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` The alert episode matched an action policy and cleared the frequency gate, but invoking the workflow failed. Listed as **Failed** in the table and the outcome filter. |
+
+### Why a dispatch failed [dispatch-failure-reasons]
+```{applies_to}
+stack: experimental 9.6+
+serverless: experimental
+```
+
+A `dispatch_failed` record carries a machine-readable cause in `kibana.alerting_v2.dispatcher.failure_reason`, so you can group failures without parsing the error message:
+
+| Reason | What happened |
+|---|---|
+| `missing_api_key` | The action policy had no decrypted API key, so the whole action group was skipped. Rotating the key usually clears this. Refer to [Manage action policies](manage-action-policies.md). |
+| `workflow_not_found` | The destination workflow ID doesn't resolve to a workflow, typically because the workflow was deleted after it was attached. |
+| `workflow_disabled` | The destination workflow exists but is disabled. |
+| `schedule_error` | Scheduling the workflow execution threw an error, for example from Task Manager. |
 
 `unmatched` is recorded in the event log but isn't available as an outcome filter in the execution history. To find those records, open Discover and query `.kibana-event-log-*` with `event.provider: "alerting_v2"` and `event.action: "unmatched"`.
 
@@ -53,7 +71,7 @@ Alert episodes that are acknowledged, snoozed, marked inactive, or covered by a 
 
 ## Event-log outcomes and .alert-actions action types [outcome-vocab-mapping]
 
-The three outcomes above (`dispatched`, `throttled`, `unmatched`) are the **event-log terms** written to `.kibana-event-log-*`. The `.alert-actions` data stream records the same events using different terms. The mapping is:
+The `dispatched`, `throttled`, and `unmatched` outcomes are the **event-log terms** written to `.kibana-event-log-*`. The `.alert-actions` data stream records the same events using different terms. The mapping is:
 
 | Event-log outcome (`event.action`) | `.alert-actions` `action_type` | Meaning |
 |---|---|---|

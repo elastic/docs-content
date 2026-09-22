@@ -53,6 +53,22 @@ Each alert episode tracks who performed the most recent response action of each 
 
 These rows only appear when the alert episode is in the corresponding state. System-generated actions display as **System**.
 
+## Review action policy activity for this alert episode [policy-history]
+```{applies_to}
+stack: experimental 9.6+
+serverless: experimental
+```
+
+The **Policy history** tab lists the dispatcher's decisions for this alert episode alone, so you can tell whether a notification went out, was held back, or failed without filtering the space-wide history. Each row covers one dispatcher run and shows the timestamp, the action policy, the outcome, the action groups involved, and any workflows invoked.
+
+Search the list, or filter by outcome to show only **Dispatched**, **Throttled**, or **Failed** runs. Select an action policy name to open its configuration in a flyout. For what each outcome means, refer to [Dispatch outcomes](../action-policies/review-action-policy-execution-history.md#dispatch-outcomes).
+
+Compared with the space-wide [Execution history](../action-policies/review-action-policy-execution-history.md) page, this tab drops the **Rules** and **Episodes** columns, because both are fixed to this alert episode. The tab appears only if you have permission to read execution history.
+
+:::{note}
+This tab covers the alert episode's whole lifetime, starting from when it opened. When it has nothing to show, the empty message reads "No action policy execution activity in the last 24 hours" because that message is shared with the space-wide page, which does use a 24-hour window. The tab itself isn't limited to 24 hours.
+:::
+
 ## Inspect the underlying data [inspect-data]
 
 Each alert episode includes a metadata view that surfaces the field values computed or retained by the rule's {{esql}} query. For example, a query using `STATS ... BY` stores aggregated values, not all fields from the underlying events. Use it to inspect rule-specific context such as resource identifiers or computed metrics. You can search by field name or value and toggle off null fields to focus on populated data.
