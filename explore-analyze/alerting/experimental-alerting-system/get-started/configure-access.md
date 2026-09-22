@@ -23,6 +23,10 @@ This page covers access to the {{alerting-v2-system}} features and data. Dependi
 
 The following table shows the minimum privileges required for each activity. Higher privilege levels include the access shown here. Refer to the following sections for the full breakdown.
 
+:::{note}
+Before 9.5.4, this category was labeled **Alerting** instead of **Alerting V2**.
+:::
+
 | To... | Minimum required |
 |---|---|
 | Author and manage rules | **Rules: All** (under **Alerting V2**) |
