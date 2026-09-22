@@ -259,9 +259,9 @@ The agent needs a model, the tools from Step 2, and instructions telling it to f
 * **System instructions**: a prompt string in your script. Everything stays in one file, which suits a single application.
 * **A skill**: a `SKILL.md` file loaded from a shared repository such as [elastic/agent-skills](https://github.com/elastic/agent-skills). One copy serves every agent that loads it, and the agent reads the full instructions only when it judges them relevant.
 
-::::{tab-set}
+:::::{tab-set}
 :group: ce-transport
-:::{tab-item} MCP server
+::::{tab-item} MCP server
 :sync: mcp
 
 **With system instructions**
@@ -343,8 +343,8 @@ agent = create_agent(
 4. Gives the agent the `read_file` tool that the read stage depends on. Without it the agent can see each skill's description but can't open the instructions.
 5. Scans `/skills/` and puts every skill it finds into the system prompt, name and description only.
 6. `StateBackend` holds the skill files in the graph's state, scoped to a single thread, so skills need a `checkpointer` for that state to be stored against. Swap `InMemorySaver` for a durable `checkpointer` to keep a thread beyond the life of the process.
-:::
-:::{tab-item} API
+::::
+::::{tab-item} API
 :sync: api
 
 **With system instructions**
@@ -427,8 +427,8 @@ def main() -> None:
 4. Gives the agent the `read_file` tool that the read stage depends on. Without it the agent can see each skill's description but can't open the instructions.
 5. Scans `/skills/` and puts every skill it finds into the system prompt, name and description only.
 6. `StateBackend` holds the skill files in the graph's state, scoped to a single thread, so skills need a `checkpointer` for that state to be stored against. Swap `InMemorySaver` for a durable `checkpointer` to keep a thread beyond the life of the process.
-:::
 ::::
+:::::
 
 ## Step 4: Ask a question
 
