@@ -148,7 +148,7 @@ Each row names the field, what it contains, and the trace privacy setting it dep
 
 | Field | Description | Required setting |
 |---|---|---|
-| `attributes.user.id` | User profile ID of the user who ran the round, when they have one. Otherwise a stable synthetic ID derived from the authentication realm and username, prefixed with `realm:` | **Include user data in traces** |
+| `attributes.user.id` | User profile ID of the user who ran the round, or a stable ID prefixed with `realm:` | **Include user data in traces** |
 | `attributes.user.name` | Username of the user who ran the round | **Include user data in traces** |
 | `attributes.user.hash` | Stable hash of the user ID, recorded only when **Include user data in traces** is off | None |
 | `attributes.elastic.conversation.title` | Saved conversation title | **Include real tool, agent, and conversation names in traces** |
@@ -159,8 +159,9 @@ Use the case that matches your privacy setting and sign-in method:
 
 - **Hashed identity.** `attributes.user.hash` is stable for a user across conversations, so you can break trace data down per user without recording anyone's identity. Group by `attributes.user.hash` for per-user token or latency dashboards, and leave **Include user data in traces** off.
 - **Named user.** Turn **Include user data in traces** on when you need to attribute activity to a person. The trace then records `attributes.user.id` and `attributes.user.name`. `attributes.user.hash` is absent.
-- **No user profile.** Some API key authentication has no user profile. Those rounds have no `attributes.user.id` and no `attributes.user.hash`. They stay in the trace and fall outside any per-user breakdown.
-- **{{ecloud}} SSO.** For users who sign in with {{ecloud}} SSO, which is standard on {{ech}} and {{serverless-full}}, `attributes.user.name` can be an opaque {{ecloud}} identifier rather than a readable username, depending on how SSO is configured. To get a display name, look up `attributes.user.id` with the [user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile) and read `user.full_name` or `user.email`. This lookup works only when `attributes.user.id` is a user profile ID. A `realm:` prefixed ID has no profile to return, so the request comes back with an empty `profiles` array.
+- **ID prefixed with `realm:`.** With **Include user data in traces** on, a signed-in user who has no profile is recorded in `attributes.user.id` as a stable ID that starts with `realm:`. The [user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile) returns no profile for that ID.
+- **API key with no profile.** Some API key authentication has no user profile. Those rounds have no `attributes.user.id` and no `attributes.user.hash`. They stay in the trace and fall outside any per-user breakdown.
+- **{{ecloud}} SSO.** For users who sign in with {{ecloud}} SSO, which is standard on {{ech}} and {{serverless-full}}, `attributes.user.name` can be an opaque {{ecloud}} identifier rather than a readable username, depending on how SSO is configured. To get a display name, look up `attributes.user.id` with the [user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile) and read `user.full_name` or `user.email`.
 
 #### Total tokens by user
 
