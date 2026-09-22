@@ -204,7 +204,7 @@ Three commands are available:
 
 Pass `--json` to any command for structured output suitable for scripts or agents. Pass `--accept-experimental` to `search` and `ask` to suppress the experimental warning.
 
-Refer to [Elastic CLI docs commands](cli://cli/docs.md) for the full command reference.
+Refer to [Elastic CLI docs commands](cli://cli/docs/index.md) for the full command reference.
 
 :::{note}
 `docs-builder` is the tool that builds this documentation site. The `elastic docs` commands read the published output — the two tools serve different purposes.
