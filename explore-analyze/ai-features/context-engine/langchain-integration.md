@@ -283,16 +283,18 @@ all three. Never add a space or permissions condition to a query; the server app
 Answer from the rows you get back and cite the Knowledge Indicator titles.
 """
 
-# Add inside main(), after the tools from Step 2:
-llm = ChatOpenAI(
-    model="anthropic/claude-sonnet-4-6",
-    openai_api_key=os.environ["OPENROUTER_API_KEY"],
-    openai_api_base="https://openrouter.ai/api/v1",   <1>
-)
-agent = create_agent(llm, tools)
+async def main() -> None:   <1>
+    # ...MCP client and tools from Step 2...
+    llm = ChatOpenAI(
+        model="anthropic/claude-sonnet-4-6",
+        openai_api_key=os.environ["OPENROUTER_API_KEY"],
+        openai_api_base="https://openrouter.ai/api/v1",   <2>
+    )
+    agent = create_agent(llm, tools)
 ```
 
-1. This example routes through OpenRouter. Replace `openai_api_base` and the corresponding API key to use a different LLM provider.
+1. `main` is a coroutine function: it must be declared `async def` and run with `asyncio.run(main())`, as in [Step 4](#step-4-ask-a-question).
+2. This example routes through OpenRouter. Replace `openai_api_base` and the corresponding API key to use a different LLM provider.
 
 **With a skill**
 
@@ -317,24 +319,25 @@ SKILL_URL = (
     "/main/skills/kibana/kibana-context-engine/SKILL.md"
 )   <1>
 
-# Add inside main(), after the tools from Step 2:
-with urlopen(SKILL_URL) as response:
-    skill = response.read().decode()   <2>
+async def main() -> None:
+    # ...MCP client and tools from Step 2...
+    with urlopen(SKILL_URL) as response:
+        skill = response.read().decode()   <2>
 
-backend = StateBackend()
-skill_files = {
-    "/skills/kibana-context-engine/SKILL.md": create_file_data(skill),   <3>
-}
+    backend = StateBackend()
+    skill_files = {
+        "/skills/kibana-context-engine/SKILL.md": create_file_data(skill),   <3>
+    }
 
-agent = create_agent(
-    llm,
-    tools,
-    middleware=[
-        FilesystemMiddleware(backend=backend),   <4>
-        SkillsMiddleware(backend=backend, sources=["/skills/"]),   <5>
-    ],
-    checkpointer=InMemorySaver(),   <6>
-)
+    agent = create_agent(
+        llm,
+        tools,
+        middleware=[
+            FilesystemMiddleware(backend=backend),   <4>
+            SkillsMiddleware(backend=backend, sources=["/skills/"]),   <5>
+        ],
+        checkpointer=InMemorySaver(),   <6>
+    )
 ```
 
 1. The raw URL of the skill file. Any `SKILL.md` works here.
@@ -366,13 +369,13 @@ all three. Never add a space or permissions condition to a query; the server app
 Answer from the rows you get back and cite the knowledge indicator titles.
 """
 
-# Add after the tools from Step 2:
-llm = ChatOpenAI(
-    model="anthropic/claude-sonnet-4-6",
-    openai_api_key=os.environ["OPENROUTER_API_KEY"],
-    openai_api_base="https://openrouter.ai/api/v1",   <1>
-)
-agent = create_agent(llm, [list_ai_indices, describe_ai_index, query_ai_indices])
+def main() -> None:
+    llm = ChatOpenAI(
+        model="anthropic/claude-sonnet-4-6",
+        openai_api_key=os.environ["OPENROUTER_API_KEY"],
+        openai_api_base="https://openrouter.ai/api/v1",   <1>
+    )
+    agent = create_agent(llm, [list_ai_indices, describe_ai_index, query_ai_indices])
 ```
 
 1. This example routes through OpenRouter. Replace `openai_api_base` and the corresponding API key to use a different LLM provider.
@@ -435,35 +438,56 @@ def main() -> None:
 Invoke the agent with a question that the Knowledge Indicators in your AI Index can answer.
 
 ::::{tab-set}
-:group: ce-transport
-:::{tab-item} MCP server
-:sync: mcp
+:::{tab-item} MCP server + system instructions
 
 ```py
+async def main() -> None:
+    # ...agent from Step 3...
     result = await agent.ainvoke(
         {
             "messages": [
-                {"role": "system", "content": SYSTEM_PROMPT},   <1>
+                {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": "What is our refund policy for annual plans?"},
             ]
         }
     )
     print(result["messages"][-1].content)
 
-if __name__ == "__main__":
-    main()
-```
 
-1. Drop this message if you loaded a skill, and pass the seeded filesystem instead: add `"files": skill_files` alongside `"messages"`, and `config={"configurable": {"thread_id": "1"}}` as a second argument to `ainvoke`. The [appendix](#appendix) has both variants in full.
+if __name__ == "__main__":
+    asyncio.run(main())
+```
 :::
-:::{tab-item} API
-:sync: api
+:::{tab-item} MCP server + skill
 
 ```py
+async def main() -> None:
+    # ...agent from Step 3...
+    result = await agent.ainvoke(
+        {
+            "messages": [
+                {"role": "user", "content": "What is our refund policy for annual plans?"},
+            ],
+            "files": skill_files,
+        },
+        config={"configurable": {"thread_id": "1"}},
+    )
+    print(result["messages"][-1].content)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+:::
+:::{tab-item} API + system instructions
+
+```py
+def main() -> None:
+    # ...agent from Step 3...
     result = agent.invoke(
         {
             "messages": [
-                {"role": "system", "content": SYSTEM_PROMPT},   <1>
+                {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": "What is our refund policy for annual plans?"},
             ]
         }
@@ -474,8 +498,27 @@ if __name__ == "__main__":
 if __name__ == "__main__":
     main()
 ```
+:::
+:::{tab-item} API + skill
 
-1. Drop this message if you loaded a skill, and pass the seeded filesystem instead: add `"files": skill_files` alongside `"messages"`, and `config={"configurable": {"thread_id": "1"}}` as a second argument to `invoke`. The [appendix](#appendix) has both variants in full.
+```py
+def main() -> None:
+    # ...agent from Step 3...
+    result = agent.invoke(
+        {
+            "messages": [
+                {"role": "user", "content": "What is our refund policy for annual plans?"},
+            ],
+            "files": skill_files,
+        },
+        config={"configurable": {"thread_id": "1"}},
+    )
+    print(result["messages"][-1].content)
+
+
+if __name__ == "__main__":
+    main()
+```
 :::
 ::::
 
