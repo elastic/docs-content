@@ -93,6 +93,7 @@ toc:
           - file: elasticsearch-solution-project/search-applications/search-application-security.md
           - file: elasticsearch-solution-project/search-applications/search-application-client.md
   - file: vector-database.md
+    default_cta: vector
     children:
       - file: vector-database/get-started.md
       - file: vector-database/vector-full-text-search.md
