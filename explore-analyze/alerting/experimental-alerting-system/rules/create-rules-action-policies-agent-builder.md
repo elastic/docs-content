@@ -77,7 +77,7 @@ Both objects are proposed as inline attachments and must be explicitly saved bef
 
 The three objects have a dependency chain that determines the order in which they must be saved:
 
-1. **Rule** - The action policy references the rule by ID. The ID is not available until the rule is persisted.
+1. **Rule** - {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` The action policy matches a shared tag that the agent adds to the rule, and the tag takes effect only once you save the rule. {applies_to}`stack: removed 9.6+, experimental =9.5` The action policy references the rule by ID. The ID is not available until the rule is persisted.
 2. **Workflow** - The action policy references the workflow as a destination. The reference must resolve to a persisted workflow.
 3. **Action policy** - Can only be saved after both its rule and workflow dependencies exist.
 
