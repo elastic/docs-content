@@ -506,7 +506,7 @@ def main() -> None:
 
 ## Step 4: Ask a question
 
-Invoke the agent with a question that the Knowledge Indicators in your AI Index can answer.
+Invoke the agent with a question that the Knowledge Indicators in your AI Index can answer. The below question is just an example for illustration purposes.
 
 ::::{tab-set}
 :group: ce-transport
@@ -554,7 +554,7 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 :::
-:::{tab-item} Context Engine APIs
+:::{tab-item} API
 :sync: api
 
 **With system instructions**
@@ -604,7 +604,7 @@ A successful run shows the agent working through the retrieval flow in order. Ch
 
 * It called the list tool and got back at least one AI Index.
 * It called the describe tool on the index it selected.
-* Its query used the target and field names returned by describe, not invented ones.
+* Its query used the target and field names returned by `describe`, not invented ones.
 * The answer draws on Knowledge Indicator content, and names the indicators it used.
 
 If the agent answers without calling the tools, or queries a target that describe never returned, the instructions aren't reaching it. Check that the system message is attached, or that the skill loaded, before looking at privileges. To see the calls it made, inspect `result["messages"]` rather than only the final entry.
