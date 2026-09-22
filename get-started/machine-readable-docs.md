@@ -8,9 +8,9 @@ products:
 description: "Access Elastic documentation as per-page Markdown, bulk archives, a remote MCP server, or a CLI. Pick the channel that fits your tool or workflow."
 ---
 
-# Machine-readable documentation
+# Access Elastic Docs in machine-readable formats
 
-The website is one view of Elastic Docs. The same content is also available as per-page Markdown, bulk archives, a remote MCP server, and a CLI. Use this page to pick the channel that fits your tool.
+The website is one way to access Elastic Docs. The same content is also available as per-page Markdown, bulk archives, through a remote Model Context Protocol (MCP) server, and from the command line. Use this page to select the access method that best fits your tool.
 
 All channels on this page cover the current documentation set: {{stack}} 9.0 and later, and {{serverless-full}}. Documentation for earlier versions at `elastic.co/guide` is not included. Refer to [](versioning-availability.md) for details.
 
