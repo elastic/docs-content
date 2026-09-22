@@ -23,18 +23,20 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
-:::{dropdown} "Add Elastic Rules" filters can be used to install an older version of a detection rule
+:::{dropdown} Filtering the Add Elastic rules page by tag or search can install an earlier prebuilt rule version
 **Applies to: {{stack}} 9.3.0-9.3.8, 9.4.0-9.4.7, 9.5.0-9.5.4**
 
 **Impact**<br>
-If you filter by tag or search term while installing detection rules using **Add Elastic Rules**, you might install older versions of those rules. You can tell this has happened because **Rule Updates** becomes available immediately after installation. For more information, refer to [#290911](https://github.com/elastic/kibana/issues/290911).
+The **Add Elastic rules** page applies your tag or search filter before it determines the latest version of each prebuilt rule. If a rule's latest version no longer matches your filter, the results show an earlier version that does, and installing from those results installs that earlier version. This is uncommon. It affects only rules whose tags changed between versions, such as when `Data Source: AWS` became `Platform: AWS`. **Install all** isn't affected. The **Rule Updates** tab appears immediately after you install the affected rules. For more information, refer to [#290911](https://github.com/elastic/kibana/issues/290911).
 
 **Workaround**<br>
-If you notice rules needing an update immediately after installation, update them to their latest version as soon as you can.
+If the **Rule Updates** tab appears immediately after you install prebuilt rules, [update those rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md) to the latest version.
 
-**Resolved**<br>
+% Uncomment after 9.4.8 and 9.5.5 ship.
 
-Resolved in {{stack}} 9.4.8 and 9.5.5.
+% **Resolved**<br>
+
+% Resolved in {{stack}} 9.4.8 and 9.5.5. There's no fix for 9.3.x, so upgrade to one of these versions.
 
 :::
 
