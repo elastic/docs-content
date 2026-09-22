@@ -440,15 +440,18 @@ Invoke the agent with a question that the Knowledge Indicators in your AI Index 
 :sync: mcp
 
 ```py
-result = await agent.ainvoke(
-    {
-        "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT},   <1>
-            {"role": "user", "content": "What is our refund policy for annual plans?"},
-        ]
-    }
-)
-print(result["messages"][-1].content)
+    result = await agent.ainvoke(
+        {
+            "messages": [
+                {"role": "system", "content": SYSTEM_PROMPT},   <1>
+                {"role": "user", "content": "What is our refund policy for annual plans?"},
+            ]
+        }
+    )
+    print(result["messages"][-1].content)
+
+if __name__ == "__main__":
+    main()
 ```
 
 1. Drop this message if you loaded a skill, and pass the seeded filesystem instead: add `"files": skill_files` alongside `"messages"`, and `config={"configurable": {"thread_id": "1"}}` as a second argument to `ainvoke`. The [appendix](#appendix) has both variants in full.
