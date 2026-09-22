@@ -55,12 +55,11 @@ For path-by-path configuration, refer to [Ingest metrics](/solutions/observabili
 Once metrics are arriving from multiple sources, build the views and queries your team uses day to day.
 
 [Explore metrics](/solutions/observability/metrics/explore.md)
-:   {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Visualize metrics in **Discover**, the Infrastructure UI, and dashboards.
+:   Query with Elasticsearch Query Language ({{esql}}) or PromQL.
 
-    {applies_to}`stack: deprecated 9.4+, ga 9.0-9.3` Visualize metrics in **Metrics Explorer**, the Infrastructure UI, and dashboards.
+    {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Visualize in **Discover**, the Infrastructure UI, and dashboards.
 
-[Query metrics](/solutions/observability/metrics/query.md)
-:   Run Elasticsearch Query Language ({{esql}}) time-series queries, or reuse PromQL from Prometheus and Grafana.
+    {applies_to}`stack: deprecated 9.4+, ga 9.0-9.3` Visualize in **Metrics Explorer**, the Infrastructure UI, and dashboards.
 ::::
 
 ::::{step} Manage storage and retention

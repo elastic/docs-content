@@ -35,13 +35,12 @@ Start here if you need to get metrics into Elastic, or decide how to ingest them
 
 After metrics are in Elastic, use these pages to query, visualize, and control storage:
 
-[Query metrics](/solutions/observability/metrics/query.md)
-:   Query metrics with Elasticsearch Query Language ({{esql}}) time-series mode for counters, rates, and per-series aggregations, or with PromQL to reuse existing Prometheus queries and alerting rules.
-
 [Explore metrics](/solutions/observability/metrics/explore.md)
-:   {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Explore and visualize metrics in **Discover**, the Infrastructure UI, or {{kib}} dashboards.
+:   Query with Elasticsearch Query Language ({{esql}}) or PromQL.
 
-    {applies_to}`stack: deprecated 9.4+, ga 9.0-9.3` Explore and visualize metrics in **Metrics Explorer**, the Infrastructure UI, or {{kib}} dashboards.
+    {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Visualize in **Discover**, the Infrastructure UI, or {{kib}} dashboards.
+
+    {applies_to}`stack: deprecated 9.4+, ga 9.0-9.3` Visualize in **Metrics Explorer**, the Infrastructure UI, or {{kib}} dashboards.
 
 [Manage metrics storage](/solutions/observability/metrics/manage-storage.md)
 :   Control storage costs and retention using time series data streams (TSDS), downsampling, cardinality management, and lifecycle policies.

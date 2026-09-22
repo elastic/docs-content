@@ -88,7 +88,7 @@ After samples are in Elastic, you can keep your existing Grafana dashboards and 
 
 {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` If you use Grafana and want to keep doing so, point it at {{es}} as a Prometheus data source. Grafana treats {{es}} like any other Prometheus backend, so existing dashboards and template variables keep working as long as they use supported PromQL. For the data source URL and authentication, refer to [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md). For constructs {{es}} doesn't support, refer to [PromQL limitations](elasticsearch://reference/query-languages/promql/promql-limitations.md).
 
-To query those metrics with PromQL in Elastic, or with Elasticsearch Query Language ({{esql}}) time-series mode, refer to [Query metrics](/solutions/observability/metrics/query.md).
+To query those metrics with PromQL in Elastic, or with Elasticsearch Query Language ({{esql}}) time-series mode, refer to [Explore metrics](/solutions/observability/metrics/explore.md#metrics-query).
 ::::::
 
 ::::::{step} Recreate alerts
@@ -149,6 +149,5 @@ Refer to [Migrate from {{beats}} to {{agent}}](/reference/fleet/migrate-from-bea
 ## Related pages [metrics-migrate-related]
 
 - [Ingest metrics](/solutions/observability/metrics/ingest.md)
-- [Query metrics](/solutions/observability/metrics/query.md)
 - [Explore metrics](/solutions/observability/metrics/explore.md)
 - [Plan your metrics setup](/solutions/observability/metrics/plan-your-setup.md)

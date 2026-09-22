@@ -454,7 +454,6 @@ toc:
           - file: observability/metrics/plan-your-setup.md
           - file: observability/metrics/ingest.md
           - file: observability/metrics/migrate.md
-          - file: observability/metrics/query.md
           - file: observability/metrics/explore.md
           - file: observability/metrics/manage-storage.md
       - file: observability/logs.md
