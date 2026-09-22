@@ -43,6 +43,8 @@ These fields describe the rule that generated the alert episode.
 
 :::{warning}
 From 9.6, these fields are no longer part of the evaluation context, and autocomplete stops suggesting them. An expression that uses them still loads, saves, and is stored by the API unchanged, but it never matches, so the action policy stops invoking its workflows and reports no error to explain why. Replace `rule.tags` with the **Rule tags** control. There is no direct replacement for `rule.id` or `rule.name`; give the rule a tag that no other rule uses and select that tag instead.
+
+This affects upgraded deployments even when you never wrote a match condition yourself. On 9.5, setting up a notification from the rule form created an action policy scoped to `rule.id`, and upgrading keeps that expression unchanged, so those notifications stop firing. Review the action policies that existed before the upgrade and rescope each one to a rule tag.
 :::
 
 ## Notify per options [action-policy-notification-grouping]
