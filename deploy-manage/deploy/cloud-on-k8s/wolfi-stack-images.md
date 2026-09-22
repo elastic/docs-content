@@ -20,9 +20,9 @@ The standard ECK operator image has been Wolfi-based since ECK 2.15. You do not 
 ECK supports Wolfi images for stack components from version 8.16.0.
 
 ::::{warning}
-- Logstash Wolfi images in versions `8.16.0`–`8.16.3` and `8.17.0`–`8.17.1` do not include the `openssl` binary. ECK requires `openssl` to inject TLS certificates. Do not use those patch releases with Wolfi images and Logstash. Use `8.16.4+` or `8.17.2+` instead.
+- {{ls}} Wolfi images in versions `8.16.0`–`8.16.3` and `8.17.0`–`8.17.1` do not include the `openssl` binary. ECK requires `openssl` to inject TLS certificates. Do not use those patch releases with Wolfi images and {{ls}}. Use `8.16.4+` or `8.17.2+` instead.
 
-- Do not configure `spec.secureSettings` on an APM Server Wolfi image. The Wolfi APM Server image does not include a shell. ECK's keystore init container requires a shell to inject secure settings.
+- Do not configure `spec.secureSettings` on an {{apm-server}} Wolfi image. The Wolfi {{apm-server}} image does not include a shell. ECK's keystore init container requires a shell to inject secure settings.
 ::::
 
 ## Enable Wolfi images [k8s-wolfi-enable]
