@@ -30,7 +30,7 @@ ECK supports Wolfi images for stack components from version 8.16.0.
 Set the `container-suffix` configuration flag to `-wolfi`. For ECK configuration options, refer to [Configure ECK](./configure-eck.md).
 
 ::::{note}
-The `container-suffix` flag cannot be combined with `--ubi-only`.
+The `container-suffix` flag cannot be combined with `--ubi-only`. If your `eck.yaml` ConfigMap contains a `ubi-only` key (including `ubi-only: false`), remove it before setting `container-suffix: -wolfi`. ECK checks whether the key exists, not its value, and rejects `container-suffix` when `ubi-only` is present.
 ::::
 
 **Using a ConfigMap (YAML install)**
