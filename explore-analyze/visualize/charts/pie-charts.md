@@ -28,7 +28,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ## Create a pie chart [create-a-pie-chart]
 
-### Create with the point-and-click editor [build-a-pie-chart]
+### Create a pie chart with the point-and-click editor [build-a-pie-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -68,7 +68,7 @@ The chart preview updates to show a pie divided into slices. Each slice represen
 
 ::::::
 
-### Create with an {{esql}} query [build-a-pie-chart-with-esql]
+### Create a pie chart with an {{esql}} query [build-a-pie-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

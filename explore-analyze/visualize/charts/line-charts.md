@@ -28,7 +28,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ## Create a line chart [create-a-line-chart]
 
-### Create with the point-and-click editor [build-a-line-chart]
+### Create a line chart with the point-and-click editor [build-a-line-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -69,7 +69,7 @@ Refer to [](#settings) for all data configuration options for your line chart.
 
 ::::::
 
-### Create with an {{esql}} query [build-a-line-chart-with-esql]
+### Create a line chart with an {{esql}} query [build-a-line-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

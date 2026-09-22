@@ -28,7 +28,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ## Create a treemap chart [create-a-treemap-chart]
 
-### Create with the point-and-click editor [build-a-treemap-chart]
+### Create a treemap chart with the point-and-click editor [build-a-treemap-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -64,7 +64,7 @@ The chart preview updates to show rectangles sized by your metric. If you added 
 
 ::::::
 
-### Create with an {{esql}} query [build-a-treemap-chart-with-esql]
+### Create a treemap chart with an {{esql}} query [build-a-treemap-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

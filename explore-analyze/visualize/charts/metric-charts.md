@@ -32,7 +32,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ## Create a metric chart [create-a-metric-chart]
 
-### Create with the point-and-click editor [build-a-metric-chart]
+### Create a metric chart with the point-and-click editor [build-a-metric-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -73,7 +73,7 @@ See [](#settings) for all data configuration options for your metric chart.
 
 :::::
 
-### Create with an {{esql}} query [build-a-metric-chart-with-esql]
+### Create a metric chart with an {{esql}} query [build-a-metric-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

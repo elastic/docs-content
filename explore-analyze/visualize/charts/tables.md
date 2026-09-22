@@ -31,7 +31,7 @@ To automate table or dashboard creation, use the [Dashboards and Visualizations 
 
 ## Create a table [create-a-table]
 
-### Create with the point-and-click editor [build-a-table]
+### Create a table with the point-and-click editor [build-a-table]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -72,7 +72,7 @@ See [](#settings) for all configuration options for your table.
 
 :::::
 
-### Create with an {{esql}} query [build-a-table-with-esql]
+### Create a table with an {{esql}} query [build-a-table-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

@@ -28,7 +28,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ## Create a tag cloud chart [create-a-tag-cloud-chart]
 
-### Create with the point-and-click editor [build-a-tag-cloud-chart]
+### Create a tag cloud chart with the point-and-click editor [build-a-tag-cloud-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -64,7 +64,7 @@ The chart preview updates to show text labels sized by metric value, with more p
 
 ::::::
 
-### Create with an {{esql}} query [build-a-tag-cloud-chart-with-esql]
+### Create a tag cloud chart with an {{esql}} query [build-a-tag-cloud-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

@@ -30,7 +30,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ## Create a bar chart [create-a-bar-chart]
 
-### Create with the point-and-click editor [build-a-bar-chart]
+### Create a bar chart with the point-and-click editor [build-a-bar-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -72,7 +72,7 @@ Refer to [](#settings) for all data configuration options for your bar chart.
 
 :::::
 
-### Create with an {{esql}} query [build-a-bar-chart-with-esql]
+### Create a bar chart with an {{esql}} query [build-a-bar-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

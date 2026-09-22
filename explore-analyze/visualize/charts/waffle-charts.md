@@ -30,7 +30,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ## Create a waffle chart [create-a-waffle-chart]
 
-### Create with the point-and-click editor [build-a-waffle-chart]
+### Create a waffle chart with the point-and-click editor [build-a-waffle-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -69,7 +69,7 @@ The chart preview updates to show a grid of colored squares. Each color represen
 
 ::::::
 
-### Create with an {{esql}} query [build-a-waffle-chart-with-esql]
+### Create a waffle chart with an {{esql}} query [build-a-waffle-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

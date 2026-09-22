@@ -28,7 +28,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ## Create a mosaic chart [create-a-mosaic-chart]
 
-### Create with the point-and-click editor [build-a-mosaic-chart]
+### Create a mosaic chart with the point-and-click editor [build-a-mosaic-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -65,7 +65,7 @@ The chart preview updates to show a grid of rectangles. Column widths represent 
 
 ::::::
 
-### Create with an {{esql}} query [build-a-mosaic-chart-with-esql]
+### Create a mosaic chart with an {{esql}} query [build-a-mosaic-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

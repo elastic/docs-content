@@ -28,7 +28,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ## Create a heat map chart [create-a-heat-map-chart]
 
-### Create with the point-and-click editor [build-a-heat-map-chart]
+### Create a heat map chart with the point-and-click editor [build-a-heat-map-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -67,7 +67,7 @@ The chart preview updates to show a grid of colored cells. Cell colors represent
 
 ::::::
 
-### Create with an {{esql}} query [build-a-heat-map-chart-with-esql]
+### Create a heat map chart with an {{esql}} query [build-a-heat-map-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

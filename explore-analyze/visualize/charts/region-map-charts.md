@@ -28,7 +28,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ## Create a region map chart [create-a-region-map-chart]
 
-### Create with the point-and-click editor [build-a-region-map-chart]
+### Create a region map chart with the point-and-click editor [build-a-region-map-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -64,7 +64,7 @@ The chart preview updates to show a map with regions colored by metric value. If
 
 ::::::
 
-### Create with an {{esql}} query [build-a-region-map-chart-with-esql]
+### Create a region map chart with an {{esql}} query [build-a-region-map-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

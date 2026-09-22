@@ -28,7 +28,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ## Create an area chart [create-an-area-chart]
 
-### Create with the point-and-click editor [build-an-area-chart]
+### Create an area chart with the point-and-click editor [build-an-area-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -69,7 +69,7 @@ Refer to [](#area-chart-settings) for all data configuration options for your ar
 
 ::::::
 
-### Create with an {{esql}} query [build-an-area-chart-with-esql]
+### Create an area chart with an {{esql}} query [build-an-area-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

@@ -28,7 +28,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ## Create a gauge chart [create-a-gauge-chart]
 
-### Create with the point-and-click editor [build-a-gauge-chart]
+### Create a gauge chart with the point-and-click editor [build-a-gauge-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -70,7 +70,7 @@ The chart preview updates to show a gauge with your metric value positioned with
 
 ::::::
 
-### Create with an {{esql}} query [build-a-gauge-chart-with-esql]
+### Create a gauge chart with an {{esql}} query [build-a-gauge-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
