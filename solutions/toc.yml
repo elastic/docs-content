@@ -2,6 +2,7 @@ project: "Solutions and use cases"
 toc:
   - file: index.md
   - file: search.md
+    default_cta: search
     children:
       - file: search/get-started.md
         children:
@@ -72,6 +73,7 @@ toc:
           - file: search/site-or-app/search-ui.md
       - file: search/apis-and-tools.md
   - file: elasticsearch-solution-project.md
+    default_cta: search
     children:
       - file: elasticsearch-solution-project/get-started.md
         children:
@@ -95,6 +97,7 @@ toc:
       - file: vector-database/get-started.md
       - file: vector-database/vector-full-text-search.md
   - file: observability.md
+    default_cta: observability
     children:
       - file: observability/get-started.md
         children:
@@ -566,6 +569,7 @@ toc:
       - file: observability/observability-serverless-feature-tiers.md
       - file: observability/apis.md
   - file: security.md
+    default_cta: security
     children:
       - file: security/get-started.md
         children:
