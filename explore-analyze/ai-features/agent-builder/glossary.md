@@ -188,8 +188,8 @@ Flyout mode
 ## G
 
 $$$generative-ai-connector$$$
-Generative AI connector
-:   A {{kib}} connector that connects {{agent-builder}} to an LLM provider such as OpenAI, Anthropic, Amazon Bedrock, Google Gemini, or Azure OpenAI. Distinct from a [](#connector), which connects {{agent-builder}} to non-LLM external services. See [](models.md#configure-a-connector).
+Generative AI connector {applies_to}`stack: deprecated 9.5` {applies_to}`serverless: deprecated`
+:   A {{kib}} connector that connects {{agent-builder}} to an LLM provider such as OpenAI, Anthropic, Amazon Bedrock, Google Gemini, or Azure OpenAI. Distinct from a [](#connector), which connects {{agent-builder}} to non-LLM external services. Deprecated in favor of the [](#inference-endpoint). See [](models.md#configure-a-connector).
 
 $$$genai-settings$$$
 GenAI Settings {applies_to}`stack: ga 9.4+`
@@ -249,7 +249,7 @@ MCP tool {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
 
 $$$model$$$
 Model
-:   The LLM that an agent uses to reason and produce responses. {{agent-builder}} can use Elastic Managed LLMs, third-party models accessed through an [](#inference-endpoint), or models accessed through a [](#generative-ai-connector). See [](models.md#use-additional-models).
+:   The LLM that an agent uses to reason and produce responses. {{agent-builder}} can use Elastic Managed LLMs or third-party models accessed through an [](#inference-endpoint). Models accessed through a [](#generative-ai-connector) are also supported, but that mechanism is deprecated. See [](models.md#use-additional-models).
 
 $$$model-selector$$$
 Model selector
@@ -257,7 +257,7 @@ Model selector
 
 $$$monitor-inference$$$
 `monitor_inference`
-:   The {{es}} cluster privilege required when an agent uses an AI connector that calls the {{es}} Inference API. Built-in tools such as `search` and `generate_esql`, and all index search tools, depend on this privilege. See [](permissions.md#es-privileges).
+:   The {{es}} cluster privilege required when an agent uses a model that calls the {{es}} Inference API. Built-in tools such as `search` and `generate_esql`, and all index search tools, depend on this privilege. See [](permissions.md#es-privileges).
 
 ## O
 

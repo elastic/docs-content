@@ -1103,8 +1103,8 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse/async" \
 
 By default, an agent uses its configured model. To override the model for a single request, pass either `connector_id` or `inference_id` in the request body:
 
-* `inference_id` takes an [{{infer}} endpoint](models.md#add-an-inference-endpoint) ID.
-* `connector_id` takes a [connector](models.md#configure-a-connector) ID.
+* `inference_id` takes an [{{infer}} endpoint](models.md#add-an-inference-endpoint) ID. Use this parameter for new integrations.
+* `connector_id` takes a [connector](models.md#configure-a-connector) ID. Generative AI connectors are deprecated.
 
 Both parameters route the request to the same underlying model and are mutually exclusive. If you send both, the request fails with a `400` error. If you omit both, the agent uses its default model.
 

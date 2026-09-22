@@ -23,7 +23,7 @@ The connectors library is hidden until you turn on the `agentBuilder:experimenta
 The {{agent-builder}} connectors library lets you configure action-based connectors that give agents access to external systems, such as messaging services, cloud functions, and third-party APIs.
 
 :::{note}
-{{agent-builder}} connectors leverage the underlying {{kib}} [Stack connectors](/deploy-manage/manage-connectors.md) framework to securely store credentials and manage integrations. However, they are distinct from [AI connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md), which are used exclusively to configure external LLM providers.
+{{agent-builder}} connectors leverage the underlying {{kib}} [Stack connectors](/deploy-manage/manage-connectors.md) framework to securely store credentials and manage integrations. However, they are distinct from [Generative AI connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md), which are used exclusively to configure external LLM providers and are deprecated. {{agent-builder}} connectors are not affected by that deprecation.
 :::
 
 Connectors are managed at the deployment level from **Manage components** > **Connectors**. They are not assigned per agent. Individual connector types in the catalog may be marked **Technical Preview**.

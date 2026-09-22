@@ -128,7 +128,7 @@ Set `agent-id` and other configuration keys at the top level of the step. Set in
 | Parameter | Location | Type | Required | Description |
 |-----------|----------|------|----------|-------------|
 | `agent-id` | Top level | string | No | The unique identifier of the target agent (must exist in {{agent-builder}}). Defaults to the built-in Elastic AI Agent. |
-| `connector-id` | Top level | string | No | The GenAI connector to use for model routing. Mutually exclusive with `inference-id`. |
+| `connector-id` {applies_to}`stack: deprecated 9.5` {applies_to}`serverless: deprecated` | Top level | string | No | The Generative AI connector to use for model routing. Mutually exclusive with `inference-id`. Use `inference-id` instead. |
 | `inference-id` | Top level | string | No | The {{infer}} endpoint ID to use for model routing. Mutually exclusive with `connector-id`. |
 | `create-conversation` | Top level | boolean | No | When `true`, persists the conversation so that follow-up steps or later requests can continue it. |
 | `message` | `with` | string | Yes | The natural language prompt to send to the agent. Can include template variables to reference data from previous steps. |
