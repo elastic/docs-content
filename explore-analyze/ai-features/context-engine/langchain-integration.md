@@ -508,7 +508,7 @@ To read from several spaces in one agent, build one client per space and registe
 
 ## Appendix
 
-Full Python scripts
+Here are the full end-to-end Python scripts using the system prompt option from [Step 3](#step-3-create-the-agent).
 
 :::{dropdown} demo_mcp.py
 ```py
