@@ -153,7 +153,7 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-When your deployment or project has a configured large language model (LLM) connector, {{kib}} can use AI to help you author {{esql}}. The editor uses the same default AI connector as {{kib}}'s other AI features, such as {{agent-builder}}. You don't need to configure a specific connection for the editor.
+When your deployment or project has a configured large language model (LLM), {{kib}} can use AI to help you author {{esql}}. The editor uses the same **Default AI Connector** setting as {{kib}}'s other AI features, such as {{agent-builder}}. That setting accepts an {{infer}} endpoint or a Generative AI connector. You don't need to configure a specific connection for the editor.
 
 Choose the entry point that matches what you want to do:
 
@@ -164,7 +164,7 @@ Choose the entry point that matches what you want to do:
 **Requirements**
 
 - For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, you need an Enterprise license.
-- A configured LLM connector. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+- A configured LLM. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
 Without these requirements, the AI prompts and actions don't appear and the editor uses only its standard autocomplete behavior. If no connector is available in the search bar, you're prompted to set one up.
 
