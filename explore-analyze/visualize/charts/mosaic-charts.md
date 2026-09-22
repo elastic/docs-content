@@ -79,30 +79,11 @@ FROM kibana_sample_data_logs
 
 To build the chart:
 
-::::::{stepper}
-:toc: false
-
-:::::{step} Create the visualization
-[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-:::::
-
-:::::{step} Set the visualization type
-Set the visualization type to **Mosaic**.
-:::::
-
-:::::{step} Assign the result columns
-Assign `machine.os.keyword` to the **Horizontal axis**, `response.keyword` to the **Vertical axis**, and `requests` to **Metric**.
-:::::
-
-:::::{step} Customize the chart
-Customize the chart appearance using the [mosaic chart settings](#mosaic-chart-settings).
-:::::
-
-:::::{step} Apply and close
-Select **Apply and close**.
-:::::
-
-::::::
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Mosaic**.
+3. Assign `machine.os.keyword` to the **Horizontal axis**, `response.keyword` to the **Vertical axis**, and `requests` to **Metric**.
+4. Customize the chart appearance using the [mosaic chart settings](#mosaic-chart-settings).
+5. Select **Apply and close**.
 
 The chart preview shows how response-code proportions vary between operating systems.
 

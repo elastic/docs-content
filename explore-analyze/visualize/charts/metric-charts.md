@@ -89,30 +89,11 @@ To show a distribution statistic instead of a count, replace `COUNT(*)` with [`P
 
 To build the chart:
 
-:::::{stepper}
-:toc: false
-
-::::{step} Create the visualization
-[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-::::
-
-::::{step} Set the visualization type
-Set the visualization type to **Metric**.
-::::
-
-::::{step} Assign the result columns
-Assign `requests` to the **Primary metric**.
-::::
-
-::::{step} Customize the chart
-Customize the chart appearance using the [metric chart settings](#settings).
-::::
-
-::::{step} Apply and close
-Select **Apply and close**.
-::::
-
-:::::
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Metric**.
+3. Assign `requests` to the **Primary metric**.
+4. Customize the chart appearance using the [metric chart settings](#settings).
+5. Select **Apply and close**.
 
 The chart preview shows the request count as a single value.
 

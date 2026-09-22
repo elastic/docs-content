@@ -83,30 +83,11 @@ FROM kibana_sample_data_logs
 
 To build the chart:
 
-::::::{stepper}
-:toc: false
-
-:::::{step} Create the visualization
-[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-:::::
-
-:::::{step} Set the visualization type
-Set the visualization type to **Heat map**.
-:::::
-
-:::::{step} Assign the result columns
-Assign `hour` to the **Horizontal axis**, `day` to the **Vertical axis**, and `requests` to **Cell value**.
-:::::
-
-:::::{step} Customize the chart
-Customize the chart appearance using the [heat map chart settings](#heat-map-chart-settings).
-:::::
-
-:::::{step} Apply and close
-Select **Apply and close**.
-:::::
-
-::::::
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Heat map**.
+3. Assign `hour` to the **Horizontal axis**, `day` to the **Vertical axis**, and `requests` to **Cell value**.
+4. Customize the chart appearance using the [heat map chart settings](#heat-map-chart-settings).
+5. Select **Apply and close**.
 
 The chart preview uses color intensity to show when the most requests occur.
 

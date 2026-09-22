@@ -84,34 +84,12 @@ FROM kibana_sample_data_logs
 
 To build the chart:
 
-::::::{stepper}
-:toc: false
-
-:::::{step} Create the visualization
-[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-:::::
-
-:::::{step} Set the visualization type
-Set the visualization type to **Gauge**.
-:::::
-
-:::::{step} Assign the result columns
-Assign `average_bytes` to the **Metric** dimension.
-:::::
-
-:::::{step} Set value ranges
-Set value ranges that give the metric context.
-:::::
-
-:::::{step} Customize the chart
-Customize the chart appearance using the [gauge chart settings](#gauge-chart-settings).
-:::::
-
-:::::{step} Apply and close
-Select **Apply and close**.
-:::::
-
-::::::
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Gauge**.
+3. Assign `average_bytes` to the **Metric** dimension.
+4. Set value ranges that give the metric context.
+5. Customize the chart appearance using the [gauge chart settings](#gauge-chart-settings).
+6. Select **Apply and close**.
 
 The chart preview shows where the average number of bytes falls within the configured ranges.
 

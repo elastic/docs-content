@@ -88,30 +88,11 @@ FROM kibana_sample_data_logs
 
 To build the table:
 
-:::::{stepper}
-:toc: false
-
-::::{step} Create the visualization
-[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-::::
-
-::::{step} Set the visualization type
-Set the visualization type to **Table**.
-::::
-
-::::{step} Assign the result columns
-Assign `host.keyword` to **Rows**, and assign `requests` and `average_bytes` to **Metrics**.
-::::
-
-::::{step} Customize the table
-Customize the table appearance using the [table settings](#settings).
-::::
-
-::::{step} Apply and close
-Select **Apply and close**.
-::::
-
-:::::
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Table**.
+3. Assign `host.keyword` to **Rows**, and assign `requests` and `average_bytes` to **Metrics**.
+4. Customize the table appearance using the [table settings](#settings).
+5. Select **Apply and close**.
 
 The table preview shows one row per host, ordered by request count.
 

@@ -86,30 +86,11 @@ If your time field isn't named `@timestamp`, replace `@timestamp` with that fiel
 
 To build the chart:
 
-::::::{stepper}
-:toc: false
-
-:::::{step} Create the visualization
-[Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
-:::::
-
-:::::{step} Set the visualization type
-Set the visualization type to **Area**.
-:::::
-
-:::::{step} Assign the result columns
-Assign `time_bucket` to the **Horizontal axis** and `total_bytes` to the **Vertical axis**.
-:::::
-
-:::::{step} Customize the chart
-Customize the chart appearance using the [area chart settings](#area-chart-settings).
-:::::
-
-:::::{step} Apply and close
-Select **Apply and close**.
-:::::
-
-::::::
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Area**.
+3. Assign `time_bucket` to the **Horizontal axis** and `total_bytes` to the **Vertical axis**.
+4. Customize the chart appearance using the [area chart settings](#area-chart-settings).
+5. Select **Apply and close**.
 
 The chart preview shows how the volume of transferred data changes over time.
 
