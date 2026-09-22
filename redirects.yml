@@ -27,20 +27,21 @@ redirects:
   # Related to https://github.com/elastic/docs-content/pull/7484
   'deploy-manage/users-roles/cluster-or-deployment-auth/saml.md':
     to: 'deploy-manage/users-roles/cluster-or-deployment-auth/saml.md'
-    anchors:
-      '_idp_slo_service': 'saml-logout'
-      '_the_idp_use_single_logout_setting': 'saml-logout'
-      '_the_sp_logout_setting': 'saml-logout'
-      '_using_kib_without_single_logout': 'saml-logout'
-      'add-the-saml-provider-to-kibana': 'saml-configure-kibana'
-      'delegating-saml-authorization-to-another-realm': 'delegate-authorization-to-another-realm'
-      'example-role-mapping-api-using-saml-attributes': 'grant-access-by-group'
-      'example-using-the-role-mapping-api': 'grant-access-by-realm'
-      'prerequisites': 'saml-prerequisites'
-      'required-idp-information': 'saml-guide-idp'
-      'signing-requirements': 'saml-guide-idp'
-      'supported-idps': 'saml-guide-idp'
     many:
+      - to: 'deploy-manage/users-roles/cluster-or-deployment-auth/saml.md'
+        anchors:
+          '_idp_slo_service': 'saml-logout'
+          '_the_idp_use_single_logout_setting': 'saml-logout'
+          '_the_sp_logout_setting': 'saml-logout'
+          '_using_kib_without_single_logout': 'saml-logout'
+          'add-the-saml-provider-to-kibana': 'saml-configure-kibana'
+          'delegating-saml-authorization-to-another-realm': 'delegate-authorization-to-another-realm'
+          'example-role-mapping-api-using-saml-attributes': 'grant-access-by-group'
+          'example-using-the-role-mapping-api': 'grant-access-by-realm'
+          'prerequisites': 'saml-prerequisites'
+          'required-idp-information': 'saml-guide-idp'
+          'signing-requirements': 'saml-guide-idp'
+          'supported-idps': 'saml-guide-idp'
       - to: 'deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md'
         anchors:
           '_extracting_partial_values_from_saml_attributes': 'saml-attribute-patterns'
