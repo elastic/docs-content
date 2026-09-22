@@ -14,14 +14,27 @@ Rule mode is a required setting for rules in the {{alerting-v2-system}}. It dete
 
 Use this page to choose a mode when you create a rule, and to understand what each mode writes to `.rule-events`.
 
-| Mode | `kind` value | Behavior |
-| --- | --- | --- |
-| Signal | `signal` | {{kib}} writes a rule event with `type: signal` for each matching row. These events stay in `.rule-events` for later analysis. They don't appear on **Alerts** and don't trigger notifications. |
-| Alert | `alert` | {{kib}} writes a rule event with `type: alert` and `episode.*` fields for each matching row. Events that share `episode.id` belong to the same [alert episode](../alerts.md). Alert episodes are tracked through lifecycle states, appear on the **Alerts** page, and can be routed to workflows by action policies. |
+| `kind` value | Behavior |
+| --- | --- |
+| `signal` | {{kib}} writes a rule event with `type: signal` for each matching row. These events stay in `.rule-events` for later analysis. They don't appear on **Alerts** and don't trigger notifications. |
+| `alert` | {{kib}} writes a rule event with `type: alert` and `episode.*` fields for each matching row. Events that share `episode.id` belong to the same [alert episode](../alerts.md). Alert episodes are tracked through lifecycle states, appear on the **Alerts** page, and can be routed to workflows by action policies. |
 
 Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view and triage alert episodes.
 
-In YAML, this setting is the `kind` field on the rule. `kind` configures the rule. `type` on each rule event records what {{kib}} wrote for that run. Set `kind` when you create the rule. You can't change it later in the UI or in YAML. If you need the other mode, create another rule.
+In YAML, this setting is the `kind` field on the rule. `kind` configures the rule. `type` on each rule event records what {{kib}} wrote for that run. Set `kind` when you create the rule. You can't change it later in the UI or in YAML. If you need the other mode, duplicate the rule or create another one.
+
+## What the UI calls each option [rule-mode-ui-labels]
+
+The `kind` field and the rule event `type` are stable. Only the {{kib}} labels for them changed in 9.6.
+
+| `kind` value | Label from 9.6 | Label on 9.5 |
+| --- | --- | --- |
+| `alert` | **Detect and respond** in the rule form, **Alerts** in the rules list | **Alert** |
+| `signal` | **Collect evidence** in the rule form, **Events** in the rules list | **Signal** |
+
+From 9.6, the rule form asks **What's your goal?** and presents the two options as cards, and the rules list names both the column and its filter **Outcome**. On 9.5, the rule form calls the setting **Mode**.
+
+When you edit an existing rule, the option stays visible but you can't change it.
 
 ## When to use each [rule-mode-when-to-use]
 
