@@ -43,7 +43,7 @@ Describing the AI Index before querying it prevents the agent from guessing the 
 
 Both connection routes run the same three operations, against one Kibana space, as the owner of the API key. An agent only ever sees the AI Indices that key is allowed to read.
 
-## 0. Connect to Context Engine
+## Step 0: Connect to Context Engine
 
 Choose a connection route.
 
