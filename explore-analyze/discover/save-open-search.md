@@ -13,7 +13,7 @@ description: Save Discover sessions to reuse searches, queries, and configured v
 
 # Save a Discover session for reuse [save-open-search]
 
-Saved **Discover** sessions preserve your queries, filters, column selections, and view configurations for reuse. Save sessions to return to specific data explorations, share search results with team members, add searches to dashboards, or use them as a foundation for building visualizations. This guide shows how to save, reopen, duplicate, and manage Discover sessions.
+Saved **Discover** sessions preserve your queries, filters, column selections, and view configurations for reuse. Save sessions to return to specific data explorations, share search results with team members, add searches to dashboards, or use them as a foundation for building visualizations. This guide shows how to save, reopen, duplicate, export, and manage Discover sessions.
 
 ## Requirements [save-search-requirements]
 
@@ -52,6 +52,27 @@ A Discover session stores the following elements for each of its tabs:
 If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
 
 
+## Export a Discover session as JSON [export-discover-session-json]
+```{applies_to}
+serverless: preview
+stack: preview 9.6+
+```
+
+Export the Discover session you have open as JSON so you can review the configuration or keep a copy.
+
+1. In **Discover**, select {icon}`download` **Export** → **Export JSON** in the application menu.
+2. Set what the JSON includes:
+
+   - To include every open tab, leave **Export only the current tab** off. Turn it on to include only the tab you are viewing.
+   - If the session is not saved, turn on **Include current time settings** to include the current time filter and refresh interval. The switch is off until you turn it on.
+   - If the session is saved, **Include current time settings** is not available. The JSON includes the current time filter and refresh interval only when you saved the session with **Store time with Discover session**.
+
+3. Review the JSON. If a property can't be included, {{kib}} removes it and lists it under **Unsupported properties were removed**. Select **Show details** to see what was removed.
+4. Copy, download, or open the JSON:
+
+   - Select **Copy to clipboard** to copy it.
+   - Select **Open in Console** to open {{kib}} Dev Tools with a request that contains the JSON. This option is available if you have access to **Dev Tools**.
+   - Select **Download JSON** to save the file. The file name is the session title. For an unsaved session, the file is named `Untitled Discover session.json`.
 
 ## Duplicate a Discover session [_duplicate_a_discover_session]
 

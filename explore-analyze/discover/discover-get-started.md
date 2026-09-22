@@ -399,6 +399,8 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 
 To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
 
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To copy the session configuration as JSON, select {icon}`download` **Export** → **Export JSON**. Refer to [Export a Discover session as JSON](save-open-search.md#export-discover-session-json).
+
 
 ## Analyze your data with AI [analyze-with-ai]
 ```{applies_to}
