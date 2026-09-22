@@ -27,7 +27,7 @@ For a contextual logs experience, set the **Solution view** for your space to **
 
 ## Required {{kib}} privileges [logs-explorer-privileges]
 
-Viewing data in Discover logs data views requires `read` privileges for **Discover**, **Index**, and **Logs**. For more on assigning {{kib}} privileges, refer to the [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) docs.
+Viewing data in Discover logs data views requires `read` privileges for **Discover**, **Index**, and **Logs**. For **Logs**, refer to [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md). For **Discover** and **Index**, refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
 
 ## Load log data [load-log-data]

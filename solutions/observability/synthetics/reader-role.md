@@ -28,5 +28,5 @@ Instead to you can create a reader role, called something like `synthetics_reade
 | --- | --- | --- |
 | [Index](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) | `synthetics-*`: `read` | Read-only access to synthetics indices. |
 | [Index](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) | `.alerts-observability.uptime.alerts-*`: `read` | Read-only access to synthetics alert indices. |
-| [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) | `Synthetics and Uptime`: `read` | Access to the {{synthetics-app}} in {{kib}}. |
+| [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md) | `Synthetics and Uptime`: `read` | Access to the {{synthetics-app}} in {{kib}}. |
 

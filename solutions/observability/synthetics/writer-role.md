@@ -46,7 +46,7 @@ Instead to you can create a writer role, called something like `synthetics_write
 | --- | --- | --- |
 | [Index](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) | `synthetics-*`: `read` | Read-only access to synthetics indices. |
 | [Index](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) | `.alerts-observability.uptime.alerts-*`: `read` | Read-only access to synthetics alert indices. |
-| [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) | `Synthetics and Uptime`: `All` | Access to the {{synthetics-app}} in {{kib}}. |
+| [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md) | `Synthetics and Uptime`: `All` | Access to the {{synthetics-app}} in {{kib}}. |
 
 Additional privileges will depend on the factors below.
 
@@ -54,7 +54,7 @@ Additional privileges will depend on the factors below.
 
 To restrict users assigned this role from using monitors hosted on Elastic’s global managed infrastructure:
 
-1. Expand `Synthetics and Uptime` in the list of [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges.
+1. Expand `Synthetics and Uptime` in the list of [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md#synthetics-and-uptime-sub-feature-privileges).
 2. Toggle *Customize sub-feature privileges*.
 3. Uncheck *Elastic managed locations enabled*.
 
