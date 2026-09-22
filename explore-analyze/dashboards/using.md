@@ -31,10 +31,7 @@ This section shows the most common ways for you to filter dashboard data. For mo
 
 :::{note}
 :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
-When a dashboard includes {{esql}} panels that use one `STATS` command, you can turn on {icon}`bolt` **Fast mode** to return faster, estimated results. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
-
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Eligible panels include {{esql}} visualizations, [**Maps**](/explore-analyze/visualize/maps.md) panels that have an {{esql}} layer, and {{esql}}-powered [**Vega** and **Vega-Lite** panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries).
-- {applies_to}`stack: preview =9.5` Eligible panels include {{esql}} visualizations and {{esql}}-powered [**Vega** and **Vega-Lite** panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries).
+When a dashboard includes {{esql}} panels that use one `STATS` command, you can turn on {icon}`bolt` **Fast mode** to return faster, estimated results. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
 :::
 
 ### Filter dashboards using the KQL query bar [_filter_dashboards_using_the_kql_query_bar]
