@@ -431,7 +431,11 @@ def main() -> None:
 Invoke the agent with a question that the Knowledge Indicators in your AI Index can answer.
 
 ::::{tab-set}
-:::{tab-item} MCP server + system instructions
+:group: ce-transport
+:::{tab-item} MCP server
+:sync: mcp
+
+**With system instructions**
 
 ```py
 async def main() -> None:
@@ -450,8 +454,8 @@ async def main() -> None:
 if __name__ == "__main__":
     asyncio.run(main())
 ```
-:::
-:::{tab-item} MCP server + skill
+
+**With a skill**
 
 ```py
 async def main() -> None:
@@ -472,7 +476,10 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 :::
-:::{tab-item} API + system instructions
+:::{tab-item} Context Engine APIs
+:sync: api
+
+**With system instructions**
 
 ```py
 def main() -> None:
@@ -491,8 +498,8 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 ```
-:::
-:::{tab-item} API + skill
+
+**With a skill**
 
 ```py
 def main() -> None:
