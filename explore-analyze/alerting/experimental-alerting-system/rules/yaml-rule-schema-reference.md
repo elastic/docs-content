@@ -111,47 +111,18 @@ No-data detection is only supported with `query.format: standalone`. Setting `no
 
 Artifacts let you attach reference material directly to a rule, such as a runbook or a linked dashboard. {{kib}} stores the artifact with the rule and displays it on the rule details page, so responders have context when an alert fires.
 
-The `artifacts` array is optional and accepts up to 100 entries. Each entry needs an `id` and a `type`, plus the content field described in the following sections.
+The `artifacts` array is optional and accepts up to 100 entries. Every artifact needs `id` and `type`. Use `data` or `value` for the content, as shown in the following table.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
 | `artifacts[].id` | string | Any string | Artifact identifier. Required. Max 256 characters. |
-| `artifacts[].type` | string | Any string | The artifact type. Built-in types are `runbook` and `dashboard`. Max 128 characters. |
+| `artifacts[].type` | string | Any string | Use `runbook` or `dashboard`. Other strings are allowed. Max 128 characters. |
+| `artifacts[].data` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | object | Type-specific object | Required. The artifact's content. Max 32 fields. |
+| `artifacts[].data.content` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | string | Non-empty string | The Markdown body of a runbook. {{kib}} displays it on the **Runbook** tab of the rule details page. Required when `type` is `runbook`. Max 50,000 characters. |
+| `artifacts[].data.dashboard_id` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | string | Non-empty string | ID of the dashboard to link. Required when `type` is `dashboard`. Max 1,024 characters. |
+| `artifacts[].value` {applies_to}`stack: experimental =9.5` | string | Any string | Required. Runbook Markdown (max 50,000 characters) or a dashboard ID (max 1,024 characters). |
 
-The field that carries the artifact's content differs by version.
-
-::::{applies-switch}
-
-:::{applies-item} stack: experimental =9.5
-
-| Field | Type | Accepted values | Description |
-|---|---|---|---|
-| `artifacts[].value` | string | Any string | The content of the artifact. Required. For `runbook`, Markdown rendered on the rule details page, max 50,000 characters. For `dashboard`, the saved object ID of the dashboard, max 1,024 characters. Other types default to a 1,024-character limit. |
-
-```yaml
-artifacts:
-  - id: checkout-runbook
-    type: runbook
-    value: |
-      Fires when checkout error rate exceeds 10%.
-  - id: checkout-errors-dashboard
-    type: dashboard
-    value: "8ac12f90-3d2b-11ef-9a4e-0242ac120002"
-```
-
-:::
-
-:::{applies-item} { stack: experimental 9.6+, serverless: experimental }
-
-`artifacts[].value` no longer exists. Use `artifacts[].data`, an object whose structure depends on the artifact type. When {{kib}} reads a rule saved with `value`, it converts the field to `data`, but the YAML you write must use `data`.
-
-| Field | Type | Accepted values | Description |
-|---|---|---|---|
-| `artifacts[].data` | object | Type-specific object | The content of the artifact. Required. Max 32 fields. |
-| `artifacts[].data.content` | string | Any string that isn't empty | For `runbook` artifacts. Markdown rendered on the rule details page. Required, max 50,000 characters. |
-| `artifacts[].data.dashboard_id` | string | Any string that isn't empty | For `dashboard` artifacts. The saved object ID of the dashboard to link. Required, max 1,024 characters. |
-
-Built-in types accept only the fields listed here. {{kib}} stores custom types exactly as you provide them.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` This example attaches a runbook and a dashboard. The runbook Markdown goes in `data.content`. The dashboard ID goes in `data.dashboard_id`. If {{kib}} loads a rule that still uses `value`, it converts that field to `data`. Write new YAML with `data`:
 
 ```yaml
 artifacts:
@@ -166,9 +137,18 @@ artifacts:
       dashboard_id: "8ac12f90-3d2b-11ef-9a4e-0242ac120002"
 ```
 
-:::
+{applies_to}`stack: experimental =9.5` This example attaches a runbook and a dashboard. Put the runbook Markdown or the dashboard ID in `value`:
 
-::::
+```yaml
+artifacts:
+  - id: checkout-runbook
+    type: runbook
+    value: |
+      Fires when checkout error rate exceeds 10%.
+  - id: checkout-errors-dashboard
+    type: dashboard
+    value: "8ac12f90-3d2b-11ef-9a4e-0242ac120002"
+```
 
 ## Duration format [duration-format]
 

@@ -14,14 +14,17 @@ Tags, runbooks, and related dashboards are optional artifacts you attach to a ru
 
 ## When to add artifacts [artifacts-when-to-use]
 
-**Tags**
-: Free-form labels for filtering and organization. Add them to filter alert episodes on the **Alerts** page, to scope action policies by ownership or category, or to mark which team owns a rule. {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` An action policy's **Rule tags** control covers every rule that carries at least one of the tags you select. {applies_to}`stack: removed 9.6+, experimental =9.5` Alert episodes inherit tags, so any tag on the rule is available as a KQL matcher in action policies.
+Tags
+:   Free-form labels for filtering and organization. Add them to filter alert episodes on the **Alerts** page, to scope action policies by ownership or category, or to mark which team owns a rule.
 
-**Runbooks**
-: An investigation guide stored with the rule. Add one when responders who don't know the service need triage steps next to the alert, or when the response should stay consistent.
+    * {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` An action policy's **Rule tags** control covers every rule that carries at least one of the tags you select.
+    * {applies_to}`stack: removed 9.6+, experimental =9.5` Alert episodes inherit tags, so any tag on the rule is available as a KQL matcher in action policies.
 
-**Dashboards**
-: {{kib}} dashboards linked from the rule details page. Link one when responders should open the same investigation view each time the rule fires. Prefer a dashboard artifact over a URL in the runbook. You can link dashboards on any rule, including rules that only record matches.
+Runbooks
+:   An investigation guide stored with the rule. Add one when responders who don't know the service need triage steps next to the alert, or when the response should stay consistent.
+
+Dashboards
+:   {{kib}} dashboards linked from the rule details page. Link one when responders should open the same investigation view each time the rule fires. Prefer a dashboard artifact over a URL in the runbook. You can link dashboards on any rule, including rules that only record matches.
 
 Skip tags and runbooks when the rule doesn't open [alert episodes](configure-rule-mode.md), or when it isn't in production yet. Skip dashboards when no dashboard covers the condition, or when dashboards aren't available.
 
