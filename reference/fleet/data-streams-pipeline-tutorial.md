@@ -71,7 +71,6 @@ Add the pipeline you created in step one.
 
     * Processor: "Pipeline"
     * Pipeline name: "add_field"
-    * Value: `true`
 
 2. Click **Create pipeline** to return to the **Edit integration** page.
 

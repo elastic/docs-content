@@ -56,7 +56,7 @@ $$$elasticsearch-differences-serverless-feature-planned$$$
 
 ### Shared platform capabilities [core-platform-capabilities]
 
-These tables compare {{ech}} deployments and {{serverless-short}} projects for core capabilities that behave the same way across all {{serverless-short}} project types, grouped into [platform and operations](#platform-and-operations), [indexing, search, and analysis](#indexing-search-and-analysis), and [alerting and AI](#alerting-and-ai). A few of these capabilities are unavailable in specific project types, as noted in the tables. For capabilities that are specific to an Elastic solution, refer to the table for your solution or project type.
+These tables compare {{ech}} deployments and {{serverless-short}} projects for core capabilities that behave the same way across all {{serverless-short}} project types, grouped into [platform and operations](#platform-and-operations), [indexing, search, and analysis](#indexing-search-and-analysis), and [alerting, reporting, and AI](#alerting-and-ai). A few of these capabilities are unavailable in specific project types, as noted in the tables. For capabilities that are specific to an Elastic solution, refer to the table for your solution or project type.
 
 #### Platform and operations [platform-and-operations]
 
@@ -111,15 +111,16 @@ These capabilities cover how data is ingested, stored, replicated, queried, and 
 
 ^1^ $$$footnote-1$$$ In {{serverless-short}}, Elastic ensures data durability by storing indexed data in an [object store](https://www.elastic.co/blog/elastic-serverless-architecture) rather than local replicas. Writes are batched over a 200ms window to ensure durability while optimizing performance and cost, which means that single-document indexing can appear slower than in {{ech}}. However, this design makes {{serverless-short}} more scalable and resilient to high indexing loads without relying on in-cluster replication for fault tolerance. Because of a higher baseline write latency, {{serverless-short}} indexing can be scaled by increasing concurrent indexing clients.
 
-#### Alerting and AI [alerting-and-ai]
+#### Alerting, reporting, and AI [alerting-and-ai]
 
-These capabilities cover alerting, notifications, and AI-assisted experiences.
+These capabilities cover alerting, notifications, reporting, and AI-assisted experiences.
 
 | **Feature**  | {{ech}} | Serverless projects| Notes  |
 |----------|----------------------|--------------------|--------|
 | [**Agent Builder**](/explore-analyze/ai-features/elastic-agent-builder.md) | ✅ | ✅ | The AI Agent chat experience that Agent Builder powers is the default in all project types. |
 | **Email service** | ✅ | ✅ | Preconfigured email connector available - [Learn more about limits and usage](/deploy-manage/deploy/elastic-cloud/tools-apis.md#elastic-cloud-email-service) |
 | [**Kibana Alerts**](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) | ✅ | ✅ | |
+| **[Reporting](/explore-analyze/report-and-share.md)** | ✅ All report types and file formats | ✅ Discover CSV, Lens CSV, Dashboard JSON<br><br>❌ Dashboard and visualization PDF and PNG | |
 | [**Watcher**](/explore-analyze/alerting/watcher.md) | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases |
 
 ### {{es}} [elasticsearch]
