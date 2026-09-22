@@ -21,7 +21,7 @@ Action policies evaluate only alert episodes. Rule events that aren't part of an
 ## Add tags to categorize the action policy [policy-tags]
 ```{applies_to}
 stack: removed 9.6+, experimental =9.5
-serverless: removed
+serverless: unavailable
 ```
 
 Tags are optional labels you assign to an action policy to categorize it or filter it in the **Action Policies** list. Action policy tags describe the action policy itself, not the alert episodes it matches. You can add, edit, or remove tags at any time without affecting routing behavior.
