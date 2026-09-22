@@ -300,10 +300,6 @@ async def main() -> None:   <1>
 
 `SkillsMiddleware` applies progressive disclosure: at startup it reads each skill's frontmatter and puts only the `name` and `description` into the system prompt. The agent reads the full `SKILL.md` with `read_file` when it decides the skill applies, then pulls in supporting files only as the instructions call for them. The tool-calling rules stay out of the context window until they're needed.
 
-:::{note}
-The Context Engine skill isn't published to `elastic/agent-skills` yet. Until it is, point `SKILL_URL` at your own copy of the file.
-:::
-
 Replace the `SYSTEM_PROMPT` constant and the `create_agent` call with the following. Skills come from the `deepagents` package, which needs Python 3.11 or later.
 
 ```py
@@ -384,9 +380,6 @@ def main() -> None:
 
 `SkillsMiddleware` applies progressive disclosure: at startup it reads each skill's frontmatter and puts only the `name` and `description` into the system prompt. The agent reads the full `SKILL.md` with `read_file` when it decides the skill applies, then pulls in supporting files only as the instructions call for them. The tool-calling rules stay out of the context window until they're needed.
 
-:::{note}
-The Context Engine skill isn't published to `elastic/agent-skills` yet. Until it is, point `SKILL_URL` at your own copy of the file.
-:::
 
 Replace the `SYSTEM_PROMPT` constant and the `create_agent` call with the following. Skills come from the `deepagents` package, which needs Python 3.11 or later.
 
