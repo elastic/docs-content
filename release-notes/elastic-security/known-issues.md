@@ -23,6 +23,21 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} "Add Elastic Rules" filters can be used to install an older version of a detection rule
+**Applies to: {{stack}} 9.3.0-9.3.8, 9.4.0-9.4.7, 9.5.0-9.5.4**
+
+**Impact**<br>
+If you filter by tag or search term while installing detection rules using **Add Elastic Rules**, you might install older versions of those rules. You can tell this has happened because **Rule Updates** becomes available immediately after installation. For more information, refer to [#290911](https://github.com/elastic/kibana/issues/290911).
+
+**Workaround**<br>
+If you notice rules needing an update immediately after installation, update them to their latest version as soon as you can.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.4.8 and 9.5.5.
+
+:::
+
 :::{dropdown} {{elastic-defend}} Device Control blocks macOS updates, Recovery volume mounts, and Time Machine backups
 **Applies to: {{stack}} 9.4.6, 9.5.2, 9.5.3**
 
