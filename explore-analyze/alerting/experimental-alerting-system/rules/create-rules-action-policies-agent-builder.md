@@ -81,7 +81,10 @@ The three objects have a dependency chain that determines the order in which the
 2. **Workflow** - The action policy references the workflow as a destination. The reference must resolve to a persisted workflow.
 3. **Action policy** - Can only be saved after both its rule and workflow dependencies exist.
 
+:::{note}
+:applies_to: {"stack": "removed 9.6+, experimental =9.5", "serverless": "unavailable"}
 Action policies saved or edited through {{agent-builder}} also receive the `agent-builder-assisted` tag automatically, with the same behavior: user-editable and re-applied on subsequent agent edits.
+:::
 
 ## Related pages
 
