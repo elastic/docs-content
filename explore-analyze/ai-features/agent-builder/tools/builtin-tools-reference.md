@@ -72,7 +72,7 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
     **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](../get-started.md#enable-experimental-features-optional) must be turned on.
 
 `platform.core.list_inference_endpoints` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-:   Lists the available [{{infer}} endpoints](../models.md#add-an-inference-endpoint), including their IDs, names, and types.
+:   Lists the chat completion models available to agents, with their IDs, names, and types. Covers both [{{infer}} endpoints](../models.md#add-an-inference-endpoint) with the `chat_completion` task type and [Generative AI connectors](../models.md#configure-a-connector). {{infer-cap}} endpoints for other task types, such as `text_embedding` and `rerank`, are not included.
 
 #### Workflow execution tools
 
