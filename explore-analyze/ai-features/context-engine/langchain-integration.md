@@ -1010,16 +1010,14 @@ if __name__ == "__main__":
 ```
 :::
 
-Minimal requirements in `pyproject.toml`
+Sample `pyproject.toml` with the dependencies for the above scripts.
 
 ```toml
 [dependency-groups]
 dev = [
-    "deepagents>=0.7",
+    "deepagents>=0.7",  # needed if choosing skills over system prompts; raises floor to Python 3.11
     "langchain>=1.4.0",
-    "langchain-mcp-adapters>=0.3.2",
-    "langchain-openai>=1.6.2",
+    "langchain-mcp-adapters>=0.3.2",  # needed if choosing the MCP connection route
+    "langchain-openai>=1.6.2",  # only needed for this example or if you want to use OpenAI or OpenRouter LLMs
 ]
 ```
-
-Only the two skill scripts need `deepagents`, and it raises the floor to Python 3.11. Drop that line if you're using system instructions.
