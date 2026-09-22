@@ -5,12 +5,12 @@ applies_to:
   stack:
 products:
   - id: elastic-stack
-description: "Access Elastic documentation as per-page Markdown, bulk archives, a remote MCP server, or a CLI. Pick the channel that fits your tool or workflow."
+description: "Access Elastic documentation as Markdown, bulk archives, a remote MCP server, or a CLI. Pick the method that fits your tool or workflow."
 ---
 
 # Access Elastic Docs in machine-readable formats
 
-The website is one way to access Elastic Docs. The same content is also available as per-page Markdown, bulk archives, through a remote Model Context Protocol (MCP) server, and from the command line. Use this page to select the access method that best fits your tool.
+The Elastic Docs website is one way to access Elastic Docs. The same content is also available as per-page Markdown, bulk archives, through a remote Model Context Protocol (MCP) server, and from the command line. Use this page to select the access method that best fits your tool.
 
 All channels on this page cover the current documentation set: {{stack}} 9.0 and later, and {{serverless-full}}. Documentation for earlier versions at `elastic.co/guide` is not included. Refer to [](versioning-availability.md) for details.
 
@@ -32,7 +32,7 @@ Every page on `elastic.co/docs` has a Markdown equivalent. This is a machine-rea
 - Directives flattened to prose or CommonMark
 - All links rewritten to absolute `https://www.elastic.co/docs/...` HTML URLs
 
-To find the MyST source, use **Edit this page** on the page you're viewing.
+To find the Markdown source, use **Edit this page** on the page you're viewing.
 
 ### Append .md to the URL [markdown-url]
 
@@ -65,15 +65,13 @@ Three bulk artifacts cover the whole documentation site. Use the index (`llms.tx
 
 ### Documentation index (llms.txt) [llms-txt]
 
-`https://www.elastic.co/docs/llms.txt` follows the [llmstxt.org](https://llmstxt.org/) convention: a prose introduction to Elastic Docs followed by per-section link lists with titles, descriptions, and absolute URLs.
+The `https://www.elastic.co/docs/llms.txt` file follows the [llmstxt.org](https://llmstxt.org/) convention: a prose introduction to Elastic Docs followed by per-section link lists with titles, descriptions, and absolute URLs.
 
-The file is an index of where things are, not the content itself. It covers the top-level navigation groups and their first-level children — not every page. Use it to orient an agent or provide a high-level map of the documentation structure.
-
-There is no `llms-full.txt` variant.
+The file is an index of where things are, not the content itself. It covers the top-level navigation groups and their first-level children. Use it to orient an agent or provide a high-level map of the documentation structure.
 
 ### Markdown bundle (llm.zip) [llm-zip]
 
-`https://www.elastic.co/docs/llm.zip` is a ZIP archive containing one `.md` file per documentation page, mirroring the URL tree. For example, `deploy-manage/autoscaling.md` corresponds to `https://www.elastic.co/docs/deploy-manage/autoscaling`. Each file uses the same frontmatter and link format as the [per-page Markdown](#single-page-markdown) endpoint, so the two channels are interchangeable in content.
+The `https://www.elastic.co/docs/llm.zip` file is a ZIP archive containing one `.md` file per documentation page, mirroring the URL tree. Each file uses the same frontmatter and link format as the [per-page Markdown](#single-page-markdown) endpoint, so the two channels are interchangeable in content.
 
 The archive is tens of megabytes in size. Two things to expect when processing it:
 
@@ -82,7 +80,7 @@ The archive is tens of megabytes in size. Two things to expect when processing i
 
 ### Structured bundle (okf.zip) [okf-zip]
 
-`https://www.elastic.co/docs/okf.zip` is a ZIP archive conforming to [Open Knowledge Format v0.1](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md). The bundle is tens of megabytes in size.
+The `https://www.elastic.co/docs/okf.zip` file is a ZIP archive conforming to [Open Knowledge Format v0.1](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md). The bundle is tens of megabytes in size.
 
 The OKF bundle differs from `llm.zip` in several ways:
 
@@ -96,9 +94,9 @@ The OKF bundle differs from `llm.zip` in several ways:
 
 There is no per-page OKF endpoint. The bundle is the only distribution format.
 
-## Connect an AI agent to the docs [docs-mcp-server]
+## Connect an AI agent to the docs via MCP [docs-mcp-server]
 
-:::{note}
+:::{important}
 This server gives agents access to Elastic **documentation**. To give an agent tools that query your own Elasticsearch data or Kibana resources, use the [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md) instead.
 :::
 
@@ -172,7 +170,7 @@ Add the following to `.vscode/mcp.json` in your project:
 
 ### Elastic plugin for Cursor [cursor-plugin]
 
-The [Elastic plugin on the Cursor Marketplace](https://cursor.com/marketplace/elastic) bundles Elastic agent skills for Elasticsearch, Kibana, Observability, Security, and Cloud together with an `elastic-docs` MCP entry that points at the same server endpoint above. Installing the plugin is a one-click alternative to the manual Cursor configuration. The plugin source is available in the public [elastic/cursor-plugins](https://github.com/elastic/cursor-plugins) repository.
+The [Elastic plugin on the Cursor Marketplace](https://cursor.com/marketplace/elastic) bundles Elastic agent skills for Elasticsearch, Kibana, Observability, Security, and Cloud together with an `elastic-docs` MCP entry that points at the same server endpoint above. Installing the plugin is an alternative to manual Cursor configuration. The plugin source is available in the public [elastic/cursor-plugins](https://github.com/elastic/cursor-plugins) repository.
 
 ## Search and read the docs from the command line [elastic-cli]
 
@@ -182,7 +180,7 @@ The `docs` commands in the Elastic CLI let you search, ask questions about, and 
 The Elastic CLI is in technical preview. The `docs search` and `docs ask` commands print an experimental warning on stderr. The `docs read` command does not.
 :::
 
-Install the CLI with npm (requires Node.js 22.12.0 or later):
+Install the CLI with npm:
 
 ```bash
 npm install -g @elastic/cli
@@ -209,7 +207,3 @@ Refer to [Elastic CLI docs commands](cli://cli/docs/index.md) for the full comma
 :::{note}
 `docs-builder` is the tool that builds this documentation site. The `elastic docs` commands read the published output — the two tools serve different purposes.
 :::
-
----
-
-To learn how to contribute to or edit this documentation, refer to [Contribute to Elastic documentation](/contribute-docs/index.md).
