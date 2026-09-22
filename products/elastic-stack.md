@@ -84,48 +84,82 @@ description: Security solution release notes.
 :title: Solutions
 :id: solutions
 :variant: solutions
-:intro: Purpose-built experiences on the Elastic Stack for search, observability, and security.
+:intro: Solutions are packages of Elastic capabilities optimized for certain use cases. All solutions include the core storage, querying, and analytics capabilities of Elasticsearch and Kibana.
 
 :::{link-card}
 title: Elasticsearch
-link: /solutions/elasticsearch-solution-project.md
 icon: elasticsearch
 variant: es
 links:
-  - label: Solution overview
+  - label: Overview
     url: /solutions/elasticsearch-solution-project.md
   - label: Get started
     url: /solutions/elasticsearch-solution-project/get-started.md
-  - label: Elasticsearch docs hub
-    url: /products/elasticsearch.md
+  - label: Agent Builder
+    url: /explore-analyze/ai-features/elastic-agent-builder.md
+  - label: Query rules
+    url: /solutions/elasticsearch-solution-project/query-rules-ui.md
+  - label: Content connectors
+    url: elasticsearch://reference/search-connectors/index.md
+  - label: Index management
+    url: /manage-data/data-store/perform-index-operations.md
+:::
+
+:::{link-card}
+title: Vector Database
+icon: vectordb
+variant: es
+links:
+  - label: Overview
+    url: /solutions/vector-database.md
+  - label: Get started
+    url: /solutions/vector-database/get-started.md
+  - label: Vector and full-text search
+    url: /solutions/vector-database/vector-full-text-search.md
+  - label: RAG
+    url: /solutions/search/rag.md
+  - label: Hybrid search
+    url: /solutions/search/hybrid-search.md
+  - label: Semantic search
+    url: /solutions/search/semantic-search.md
 :::
 
 :::{link-card}
 title: Observability
-link: /solutions/observability.md
 icon: observability
 variant: obs
 links:
-  - label: Solution overview
+  - label: Overview
     url: /solutions/observability.md
   - label: Get started
     url: /solutions/observability/get-started.md
-  - label: Observability release notes
-    url: /release-notes/elastic-observability/index.md
+  - label: APM
+    url: /solutions/observability/apm/index.md
+  - label: Logs
+    url: /solutions/observability/logs.md
+  - label: Infrastructure
+    url: /solutions/observability/infra-and-hosts.md
+  - label: Synthetics
+    url: /solutions/observability/synthetics/index.md
 :::
 
 :::{link-card}
 title: Security
-link: /solutions/security.md
 icon: security
 variant: sec
 links:
-  - label: Solution overview
+  - label: Overview
     url: /solutions/security.md
   - label: Get started
     url: /solutions/security/get-started.md
-  - label: Security release notes
-    url: /release-notes/elastic-security/index.md
+  - label: SIEM
+    url: /solutions/security/get-started/get-started-detect-with-siem.md
+  - label: Detection rules
+    url: /solutions/security/detect-and-alert/manage-detection-rules.md
+  - label: Elastic Defend
+    url: /solutions/security/configure-elastic-defend.md
+  - label: Cases
+    url: /solutions/security/investigate/security-cases.md
 :::
 ::::
 

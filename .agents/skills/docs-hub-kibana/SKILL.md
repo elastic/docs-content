@@ -7,7 +7,7 @@ description: Maintain and update the Kibana product hub at products/kibana.md. U
 
 Edit `products/kibana.md` only. Do not invent a second Kibana hub. For What's new cards, use `docs-hub-whats-new` and `hub-whats-new.yml`. Do not edit the `{whats-new}` block beyond `:product: kibana`.
 
-Other hubs (`products/elasticsearch.md`, `products/elastic-stack.md`, `products/logstash.md`) are out of scope unless the user asks to extend this skill.
+Other hubs (`products/elasticsearch.md`, `products/elastic-stack.md`, `products/logstash.md`) are out of scope unless the user asks to extend this skill. The Solutions card-group is the exception: keep the same block on the Elasticsearch and Elastic Stack hubs.
 
 ## Before you edit
 
@@ -48,6 +48,8 @@ Do not add a Developer tools section. Developer tools is one card inside Query d
 Visual experiments for this block live in docs-builder, not in this file.
 
 ## Solutions
+
+The same Solutions card-group is on `products/elasticsearch.md` and `products/elastic-stack.md`, after What's new. When you change this block, copy the change to those two pages.
 
 Card order: Elasticsearch, Vector Database, Observability, Security.
 
