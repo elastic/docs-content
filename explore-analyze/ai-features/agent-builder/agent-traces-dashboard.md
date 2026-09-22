@@ -98,6 +98,8 @@ Each document is a span. Filter on the `span.name` field to select a kind of age
 | Agent executions | `span.name LIKE "invoke_agent *"` and `attributes.elastic.inference.span.kind == "AGENT"` |
 | Tool calls | `span.name LIKE "execute_tool *"`. For failures only, add `status.code == "Error"` |
 
+While the real-names [trace privacy setting](collect-traces.md#trace-privacy-settings) is off, a custom agent or tool appears as `invoke_agent custom` or `execute_tool custom`. A filter on the real name returns nothing.
+
 ### Generative AI attributes
 
 These fields contain the details the dashboard aggregates. Generative AI attributes use the `attributes.` prefix.
@@ -111,7 +113,7 @@ These fields contain the details the dashboard aggregates. Generative AI attribu
 | `attributes.gen_ai.agent.id` | Agent identifier |
 | `attributes.gen_ai.conversation.id` | Conversation identifier |
 | `attributes.elastic.inference.span.kind` | The kind of work a span represents:<br>- `LLM` on `chat` spans<br>- `TOOL` on `execute_tool` spans<br>- `CHAIN` or `AGENT` on `invoke_agent` spans, where `CHAIN` is a conversation round and `AGENT` is an agent execution.<br><br>Internal spans such as `generate_title` also use `CHAIN`, so combine this field with a `span.name` filter instead of using it on its own |
-| `name` | Span name. On `execute_tool` spans it is `execute_tool <tool-id>`, for example `execute_tool platform.core.list_indices`. For the bare tool id, use `attributes.gen_ai.tool.name`.<br><br>Names in this field are anonymized along with the attributes. While the real-names [trace privacy setting](collect-traces.md#trace-privacy-settings) is off, a custom agent or tool appears as `invoke_agent custom` or `execute_tool custom`, so filters that match a real name return nothing |
+| `name` | Span name. On `execute_tool` spans it is `execute_tool <tool-id>`, for example `execute_tool platform.core.list_indices`. For the bare tool id, use `attributes.gen_ai.tool.name` |
 | `duration` | Span duration in nanoseconds (root field). Divide by 1,000,000,000 for seconds |
 | `status.code` | Span status, for example `Error` (root field) |
 | `@timestamp` | When the span started |
@@ -123,33 +125,46 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-No dashboard panel uses these fields, but you can query them yourself. Each conversation round records who ran it and, when the conversation is saved, its title.
+A conversation round records who ran it and, when the conversation is saved, its title. Query these fields to attribute activity to a user, or to find a conversation by its title. The overview dashboard does not show them.
 
-These fields appear on the root conversation round span only. To attribute a nested span to a user or a conversation title, join on `trace_id`.
+#### Select the conversation round
 
-To select that span, combine a span name prefix with the span kind:
+These fields are on the root conversation round span. To attribute a nested span to a user or a conversation title, join on `trace_id`.
+
+Filter on the span name and the span kind:
 
 ```esql
 FROM traces-agent_builder.otel-*
-| WHERE span.name LIKE "invoke_agent *" AND attributes.elastic.inference.span.kind == "CHAIN"
+| WHERE span.name LIKE "invoke_agent *" <1>
+| WHERE attributes.elastic.inference.span.kind == "CHAIN" <2>
 ```
 
-Both conditions are needed. The name prefix on its own also matches the nested agent execution spans, and `CHAIN` on its own also matches the internal `generate_title` span, which carries none of these fields. Anonymized names do not break the filter, because an anonymized round is still named `invoke_agent custom`.
+1. A name prefix alone also returns nested agent runs. An anonymized round is still named `invoke_agent custom`, so the filter matches anonymized names.
+2. `CHAIN` alone also returns the span that generates the conversation title. That span has none of these fields.
+
+#### Conversation round fields
+
+Each row names the field, what it contains, and the trace privacy setting it depends on.
 
 | Field | Description | Required setting |
 |---|---|---|
 | `attributes.user.id` | User profile ID of the user who ran the round | **Include user data in traces** |
 | `attributes.user.name` | Username of the user who ran the round | **Include user data in traces** |
-| `attributes.user.hash` | Stable hash of the user ID, used for correlation when the real identity is withheld. Present only when **Include user data in traces** is off | None |
-| `attributes.elastic.conversation.title` | Conversation title. An Elastic field rather than an OpenTelemetry one, so the generative AI semantic conventions do not cover it | **Include real tool, agent, and conversation names in traces** |
+| `attributes.user.hash` | Stable hash of the user ID, recorded only when **Include user data in traces** is off | None |
+| `attributes.elastic.conversation.title` | Saved conversation title | **Include real tool, agent, and conversation names in traces** |
 
-`attributes.user.hash` is stable for a given user across conversations, so you can break trace data down per user without recording anyone's identity. Group by `attributes.user.hash` to build per-user token or latency dashboards while leaving **Include user data in traces** off. Turn the setting on only when you need to attribute activity to a named person.
+#### Break activity down by user
 
-When the caller has no user profile, as is the case for some API key authentication, there is no `attributes.user.id` and therefore no `attributes.user.hash`. Those rounds are still traced, but they fall outside any per-user breakdown.
+Use the case that matches your privacy setting and sign-in method:
 
-For users who sign in with {{ecloud}} SSO, as is standard on {{ech}} and {{serverless-full}}, `attributes.user.name` holds the numeric {{ecloud}} user ID rather than a readable username. To resolve a display name, look up `attributes.user.id` with the [user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile) and read `user.full_name` or `user.email` from the response.
+- **Hashed identity.** `attributes.user.hash` is stable for a user across conversations, so you can break trace data down per user without recording anyone's identity. Group by `attributes.user.hash` for per-user token or latency dashboards, and leave **Include user data in traces** off.
+- **Named user.** Turn **Include user data in traces** on when you need to attribute activity to a person. The trace then records `attributes.user.id` and `attributes.user.name`. `attributes.user.hash` is absent.
+- **No user profile.** Some API key authentication has no user profile. Those rounds have no `attributes.user.id` and no `attributes.user.hash`. They stay in the trace and fall outside any per-user breakdown.
+- **{{ecloud}} SSO.** For users who sign in with {{ecloud}} SSO, which is standard on {{ech}} and {{serverless-full}}, `attributes.user.name` holds the numeric {{ecloud}} user ID rather than a readable username. To get a display name, look up `attributes.user.id` with the [user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile) and read `user.full_name` or `user.email`.
 
-To break token usage down by user, combine spans from the same trace. Token counts are recorded on the model call spans, not on the conversation round span that carries the user fields, so a query over a single span kind returns no token totals. Both span kinds share the same `trace_id` and `attributes.gen_ai.conversation.id`, so use one of those to correlate them.
+#### Total tokens by user
+
+To total tokens by user, combine the model call spans with the conversation round. Token counts are on the model call spans, and the user fields are on the round. Both spans share `trace_id` and `attributes.gen_ai.conversation.id`. A query that reads only one of those span kinds returns no per-user token total.
 
 ### Message content attributes [message-content-attributes]
 
