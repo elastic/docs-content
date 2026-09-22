@@ -43,6 +43,22 @@ Related alert episodes from the same rule are grouped to help you answer whether
 - **Same alert group** - Alert episodes for this rule that share the same group as the current alert episode (same `group_hash`). A long list here suggests the underlying condition isn't being fully resolved between alert episodes.
 - **Other groups for this rule** - Alert episodes from the same rule firing on different entities (different `group_hash`). Use this to gauge how broadly the rule is triggering across your environment.
 
+## Spot a flapping alert episode [flapping]
+```{applies_to}
+stack: experimental 9.6+
+serverless: experimental
+```
+
+An alert episode that keeps swinging between active and recovering, rather than holding or resolving, carries a **Flapping** badge alongside its status. Select the badge to see why it was applied.
+
+{{kib}} applies the badge when the alert episode changed between `active` and `recovering` at least 4 times across its last 20 rule events. Transitions into or out of `pending` and `inactive` don't count. An alert episode also needs a full 20 rule events before it can be marked at all, so a short-lived alert episode never carries the badge.
+
+Flapping usually means the alert and recovery conditions sit too close to normal variation, or that the rule runs faster than the underlying metric settles. To damp it, require more consecutive breaches with [Alert delay](../rules/configure-rule-alert-delay.md), or separate the closing condition from the opening one with a [custom recovery condition](../rules/configure-rule-recovery.md).
+
+:::{note}
+**Flapping** is a badge, not a lifecycle state. The alert episode remains `active` or `recovering`, action policies still match it on that status, and the badge neither suppresses nor delays notifications.
+:::
+
 ## Review who has responded [review-responders]
 
 Each alert episode tracks who performed the most recent response action of each type, so you can avoid duplicating work or missing a step someone else already handled:
