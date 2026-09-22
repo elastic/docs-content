@@ -62,7 +62,7 @@ To use the {{ecloud}} audit trail, you need the following:
 * A [Platinum or Enterprise subscription]({{subscriptions}}).
 * An [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with organization owner permissions.
 * A destination deployment in the same organization to store audit logs. You might choose to use a dedicated deployment to keep audit data separate from production workloads.
-* Your organization ID. You can find this on the [**Organization**](https://cloud.elastic.co/organization/members) page under the organization name.
+* Your organization ID. You can find this on the [Organization](https://cloud.elastic.co/organization/members) page under the organization name.
 * The destination deployment ID. You can find this on the deployment's **Overview** page in the {{ecloud}} Console.
 
 ## Set up {{ecloud}} audit trail
