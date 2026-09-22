@@ -81,7 +81,7 @@ deployment:
 
 If you're using a self-managed cluster:
 
-* SAML requires the cluster to run in [production mode](/deploy-manage/deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) with HTTPS enabled on the {{es}} HTTP interface. [In most installation scenarios](/deploy-manage/security/self-setup.md), TLS is already enabled. For manual setup steps, refer to [Encrypt HTTP client communications for {{es}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-http-communication).
+* Verify that HTTPS is enabled on the {{es}} HTTP interface. [In most installation scenarios](/deploy-manage/security/self-setup.md), TLS is already enabled. If your cluster is operating in [production mode](/deploy-manage/deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode), HTTPS is required before you can enable SAML authentication. For manual setup steps, refer to [Encrypt HTTP client communications for {{es}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-http-communication).
 * The {{es}} token service must be enabled. It is automatically enabled when TLS is configured on the HTTP interface. You can also enable it explicitly in [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
   ```yaml
   xpack.security.authc.token.enabled: true
