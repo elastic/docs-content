@@ -807,7 +807,7 @@ if __name__ == "__main__":
 ```
 :::
 
-The same two scripts using the skill option from [Step 3](#step-3-create-the-agent), taking their instructions from a skill instead of system instructions:
+Additionally, take a look at the same two scripts using the skill option from [Step 3](#step-3-create-the-agent):
 
 :::{dropdown} demo_mcp_skill.py
 ```py
@@ -1010,7 +1010,7 @@ if __name__ == "__main__":
 ```
 :::
 
-Sample `pyproject.toml` with the dependencies for the above scripts.
+Here's an example of a `pyproject.toml` with the dependencies for the above scripts:
 
 ```toml
 [dependency-groups]
