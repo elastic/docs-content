@@ -23,10 +23,27 @@ Use these fields in the **Match conditions** expression to filter which alert ep
 | `severity` | Current severity level. One of `info`, `low`, `medium`, `high`, or `critical`. Populated when the rule's {{esql}} query includes a `severity` column. Not set during recovery; severity-scoped matchers only match open alert episodes. Severity can change during an alert episode without reopening it — action policy matching picks up the new value on the next dispatcher cycle. For how to configure severity in a rule, refer to [Severity](../rules/configure-rule-severity.md). | `severity: "critical" OR severity: "high"` <br> Route high-priority alert episodes to a dedicated workflow. |
 | `group_hash` | Stable hash identifying the alert series the alert episode belongs to. | `group_hash: "abc123"` <br> Match all alert episodes in a specific alert series. |
 | `last_event_timestamp` | ISO 8601 timestamp of the most recent event recorded for the alert episode. | `last_event_timestamp > "2026-01-01"` <br> Match alert episodes with activity after a specific date. |
+| `data.*` | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard fields in this table. | `data.host.name: "web-01"` <br> Match alert episodes from a specific host in a host-based rule. |
+
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` These fields describe the alert episode, not the rule that produced it. To scope an action policy to a set of rules, use the separate **Rule tags** control instead of a match condition. Refer to [Filter which alert episodes the action policy applies to](create-configure-action-policy.md#matcher).
+
+### Rule fields [action-policy-matcher-rule-fields]
+```{applies_to}
+stack: removed 9.6+, experimental =9.5
+serverless: unavailable
+```
+
+These fields describe the rule that generated the alert episode.
+
+| Field | Description | Example |
+|---|---|---|
 | `rule.id` | Unique identifier of the rule that generated the alert episode. | `rule.id: "rule-001"` <br> Match alert episodes from one specific rule. |
 | `rule.name` | Display name of the rule. | `rule.name: "High CPU"` <br> Match alert episodes from rules with this display name. |
 | `rule.tags` | Tags attached to the rule. | `rule.tags: "payment-service"` <br> Match alert episodes from all rules with this tag. |
-| `data.*` | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard fields in this table. | `data.host.name: "web-01"` <br> Match alert episodes from a specific host in a host-based rule. |
+
+:::{warning}
+From 9.6, these fields are no longer part of the evaluation context, and autocomplete stops suggesting them. An expression that uses them still loads, saves, and is stored by the API unchanged, but it never matches, so the action policy stops invoking its workflows and reports no error to explain why. Replace `rule.tags` with the **Rule tags** control. There is no direct replacement for `rule.id` or `rule.name`; give the rule a tag that no other rule uses and select that tag instead.
+:::
 
 ## Notify per options [action-policy-notification-grouping]
 

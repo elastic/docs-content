@@ -18,7 +18,9 @@ This page explains why action policies are separate from rules, the gates an ale
 
 Action policies are independent of rules. A single action policy can cover alert episodes from many rules, so an action policy matching `severity: "critical"` applies regardless of which rule produced the alert episode. You can create a rule without any action policy, which is useful for testing detection logic before wiring up notifications. You can also update notification routing later without touching the rule.
 
-To scope an action policy to one rule, use a matcher expression, for example `rule.id: "my-rule-id"`.
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` To scope an action policy to a set of rules, tag those rules and select the tags in **Rule tags**.
+
+{applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` To scope an action policy to one rule, use a matcher expression, for example `rule.id: "my-rule-id"`.
 
 ## How action policies gate alert episodes [action-policy-gates]
 

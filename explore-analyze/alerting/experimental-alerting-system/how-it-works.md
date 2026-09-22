@@ -39,7 +39,7 @@ An SRE team wants to know when checkout service latency degrades, and notify the
 
 1. The rule runs an {{esql}} query every five minutes, checking p95 checkout service latency.
 2. The first check where p95 exceeds 2 seconds opens an alert episode in `pending`. A second consecutive breach moves it to `active`.
-3. An action policy with a `rule.tags: "checkout"` matcher invokes an on-call workflow that sends a Slack message.
+3. An action policy scoped to the `checkout` rule tag invokes an on-call workflow that sends a Slack message.
 
 The engineer investigates, fixes a slow query, and the alert episode recovers automatically.
 

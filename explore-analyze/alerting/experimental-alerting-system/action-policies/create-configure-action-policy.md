@@ -28,20 +28,27 @@ Tags are optional labels you assign to an action policy to categorize it or filt
 
 ## Filter which alert episodes the action policy applies to [matcher]
 
-Use a [KQL](../../../query-filter/languages/kql.md) expression to filter which alert episodes this action policy applies to. Leaving it empty matches every eligible alert episode in the space. The matcher is the only scoping mechanism, there are no separate rule type or rule ID selector fields.
+**Policy scope** controls which alert episodes this action policy applies to. Leaving it empty matches every eligible alert episode in the space.
 
 :::{note}
-An empty matcher applies to all eligible alert episodes in the space, not literally every alert episode. The eligibility check runs first, so alert episodes that are acknowledged, snoozed, or covered by a maintenance window are excluded before the matcher ever evaluates them.
+An empty scope applies to all eligible alert episodes in the space, not literally every alert episode. The eligibility check runs first, so alert episodes that are acknowledged, snoozed, or covered by a maintenance window are excluded before the scope is ever evaluated.
 :::
 
-The following table shows how different KQL expressions control the matching scope of an action policy:
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` Two optional controls define the scope. When you set both, an alert episode has to satisfy both:
 
-| I want to match… | KQL expression | Example |
-|---|---|---|
-| All alert episodes that pass the eligibility check, regardless of rule or severity | No expression | No example |
-| Alert episodes from one specific rule | `rule.id: "<rule-id>"` | `rule.id: "9fc6b280-5b9e-11ef-a6ec-119f369f542a"` |
-| Alert episodes from rules sharing a tag | `rule.tags: "<tag>"` | `rule.tags: "checkout"` |
-| Alert episodes at a specific severity level | `severity: "<severity>"` | `severity: "critical"` |
+* **Rule tags** selects the rules the action policy covers. It matches alert episodes from any rule carrying at least one of the tags you select, so adding tags broadens the scope rather than narrowing it. You can select up to 50 tags of up to 256 characters each. A rule with no tags never matches an action policy that specifies tags.
+* **Match conditions**, under **Advanced matching**, is a [KQL](../../../query-filter/languages/kql.md) expression evaluated against each alert episode. It can reference the alert episode's own fields, but not the rule that produced it. For the available fields, refer to [Action policy reference](action-policy-reference.md#action-policy-matcher-fields).
+
+{applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` A single **Match conditions** [KQL](../../../query-filter/languages/kql.md) expression defines the scope, and it is the only scoping mechanism: there are no separate rule type or rule ID selector fields. Scope to one rule with `rule.id: "<rule-id>"`, or to a group of rules with `rule.tags: "<tag>"`.
+
+The following table shows how to configure some common scopes:
+
+| I want to match… | How to configure it |
+|---|---|
+| All alert episodes that pass the eligibility check, regardless of rule or severity | Leave the scope empty |
+| Alert episodes at a specific severity level | Enter `severity: "critical"` in **Match conditions** |
+| Alert episodes from rules sharing a tag | {applies_to}`stack: experimental 9.6+` Select the tag, for example `checkout`, in **Rule tags** |
+| Alert episodes from one specific rule | {applies_to}`stack: experimental 9.6+` Give the rule a tag that no other rule uses, then select that tag in **Rule tags** |
 
 Multiple action policies can match the same alert episode, and each runs independently. There is no precedence or merging between them. If no action policy matches an alert episode, no workflow is invoked and no notification is sent. If you delete a rule, any action policies scoped to it are not deleted automatically. You must delete them manually after deleting the rule.
 
