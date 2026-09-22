@@ -77,7 +77,7 @@ To change what is captured, expand **Advanced privacy settings** in the **Agent 
 
 :::{image} images/agent-builder-traces-privacy-settings.png
 :screenshot:
-:alt: The expanded Advanced privacy settings, showing seven toggles for including sensitive content in traces
+:alt: The expanded Advanced privacy settings, with a toggle for each category of sensitive content in traces
 :::
 
 | Setting | Setting ID | Effect when enabled |
@@ -96,9 +96,21 @@ Built-in tools and agents always appear under their real names. Anonymized names
 User data is the exception to that pattern. Every other setting anonymizes a value in place, keeping the same field. The user fields swap instead. When **Include user data in traces** is off, the username is dropped and the user ID is replaced by a stable hash in `attributes.user.hash`. When the setting is on, `attributes.user.id` and `attributes.user.name` are recorded and `attributes.user.hash` is absent. Account for that if you build dashboards that group by user.
 :::
 
-On {{ech}} and {{serverless-full}}, the username recorded for a user who signs in with {{ecloud}} SSO is a numeric {{ecloud}} user ID rather than a readable name. For the field details and how to resolve a display name, refer to [Conversation round attributes](agent-traces-dashboard.md#conversation-round-attributes).
+On {{ech}} and {{serverless-full}}, the username recorded for a user who signs in with {{ecloud}} SSO can be an opaque {{ecloud}} identifier rather than a readable name, depending on how SSO is configured. For the field details and how to resolve a display name, refer to [Conversation round attributes](agent-traces-dashboard.md#conversation-round-attributes).
 
-Changing a privacy setting affects only traces recorded after the change. Existing traces are not rewritten. {{agent-builder}} refreshes these settings every 30 seconds, so allow up to that long for a change to take effect, then run a new conversation round to see it.
+Changing a privacy setting affects only traces recorded after the change. Existing traces are not rewritten.
+
+::::{applies-switch}
+
+:::{applies-item} {stack: ga 9.6+, serverless: ga}
+{{agent-builder}} reads these settings at the start of each conversation, so a change takes effect on the next conversation you start. Conversations already in progress keep the settings they started with.
+:::
+
+:::{applies-item} stack: ga =9.5
+{{agent-builder}} refreshes these settings every 30 seconds, so allow up to that long for a change to take effect, then run a new conversation round to see it.
+:::
+
+::::
 
 Content is stored across different span types:
 - **`chat` spans**: Store prompts, responses, and the system prompt in the `attributes.gen_ai.input.messages`, `attributes.gen_ai.output.messages`, and `attributes.gen_ai.system_instructions` attributes.
@@ -110,7 +122,7 @@ Two limits apply to the conversation title:
 - It is recorded only for runs that create or continue a saved conversation. Chats always save, and so do runs through the conversation APIs. The [`ai.agent` workflow step](agents-and-workflows.md#use-ai-agent-workflow-step) is the exception: unless it creates a conversation or continues an existing one, nothing is saved and the run has no title attribute.
 - Renaming a conversation does not update titles already recorded. Rounds recorded before the rename keep the old title, and the new one appears from the next round onward. A conversation's rounds share the same `attributes.gen_ai.conversation.id`, so to find the current title, take the title from its most recent round.
 
-Anonymization also rewrites the span name, not only the attributes. A custom agent's round appears as `invoke_agent custom` rather than `invoke_agent <your agent name>`, and a custom tool call appears as `execute_tool custom`. Filters that match on a real name in `span.name` return nothing while the names are anonymized.
+Anonymization also rewrites the span name, not only the attributes. A custom agent's round appears as `invoke_agent custom` rather than `invoke_agent <your agent name>`, a custom tool call appears as `execute_tool custom`, and a workflow appears as `invoke_workflow custom`. Filters that match on a real name in `span.name` return nothing while the names are anonymized.
 
 Anyone who can read the trace data stream can read this content, so review [Grant access to trace data](#grant-access-to-trace-data) before you turn these settings on. For the field-level details, refer to [Message content attributes](agent-traces-dashboard.md#message-content-attributes).
 

@@ -98,7 +98,7 @@ Each document is a span. Filter on the `span.name` field to select a kind of age
 | Agent executions | `span.name LIKE "invoke_agent *"` and `attributes.elastic.inference.span.kind == "AGENT"` |
 | Tool calls | `span.name LIKE "execute_tool *"`. For failures only, add `status.code == "Error"` |
 
-While the real-names [trace privacy setting](collect-traces.md#trace-privacy-settings) is off, a custom agent or tool appears as `invoke_agent custom` or `execute_tool custom`. A filter on the real name returns nothing.
+While the real-names [trace privacy setting](collect-traces.md#trace-privacy-settings) is off, a custom agent, tool, or workflow appears as `invoke_agent custom`, `execute_tool custom`, or `invoke_workflow custom`. A filter on the real name returns nothing.
 
 ### Generative AI attributes
 
@@ -140,7 +140,7 @@ FROM traces-agent_builder.otel-*
 ```
 
 1. A name prefix alone also returns nested agent runs. An anonymized round is still named `invoke_agent custom`, so the filter matches anonymized names.
-2. `CHAIN` alone also returns the span that generates the conversation title. That span has none of these fields.
+2. `CHAIN` alone also returns workflow spans and the span that generates the conversation title. Neither carries these fields.
 
 #### Conversation round fields
 
@@ -148,7 +148,7 @@ Each row names the field, what it contains, and the trace privacy setting it dep
 
 | Field | Description | Required setting |
 |---|---|---|
-| `attributes.user.id` | User profile ID of the user who ran the round | **Include user data in traces** |
+| `attributes.user.id` | User profile ID of the user who ran the round, when they have one. Otherwise a stable synthetic ID derived from the authentication realm and username, prefixed with `realm:` | **Include user data in traces** |
 | `attributes.user.name` | Username of the user who ran the round | **Include user data in traces** |
 | `attributes.user.hash` | Stable hash of the user ID, recorded only when **Include user data in traces** is off | None |
 | `attributes.elastic.conversation.title` | Saved conversation title | **Include real tool, agent, and conversation names in traces** |
@@ -160,7 +160,7 @@ Use the case that matches your privacy setting and sign-in method:
 - **Hashed identity.** `attributes.user.hash` is stable for a user across conversations, so you can break trace data down per user without recording anyone's identity. Group by `attributes.user.hash` for per-user token or latency dashboards, and leave **Include user data in traces** off.
 - **Named user.** Turn **Include user data in traces** on when you need to attribute activity to a person. The trace then records `attributes.user.id` and `attributes.user.name`. `attributes.user.hash` is absent.
 - **No user profile.** Some API key authentication has no user profile. Those rounds have no `attributes.user.id` and no `attributes.user.hash`. They stay in the trace and fall outside any per-user breakdown.
-- **{{ecloud}} SSO.** For users who sign in with {{ecloud}} SSO, which is standard on {{ech}} and {{serverless-full}}, `attributes.user.name` holds the numeric {{ecloud}} user ID rather than a readable username. To get a display name, look up `attributes.user.id` with the [user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile) and read `user.full_name` or `user.email`.
+- **{{ecloud}} SSO.** For users who sign in with {{ecloud}} SSO, which is standard on {{ech}} and {{serverless-full}}, `attributes.user.name` can be an opaque {{ecloud}} identifier rather than a readable username, depending on how SSO is configured. To get a display name, look up `attributes.user.id` with the [user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile) and read `user.full_name` or `user.email`. This lookup works only when `attributes.user.id` is a user profile ID. A `realm:` prefixed ID has no profile to return, so the request comes back with an empty `profiles` array.
 
 #### Total tokens by user
 
