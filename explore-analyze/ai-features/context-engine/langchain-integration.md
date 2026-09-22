@@ -48,23 +48,21 @@ Both connection routes run the same three operations, against one Kibana space, 
 Choose a connection route.
 
 ::::{tab-set}
-
+:group: ce-transport
 :::{tab-item} MCP server
+:sync: mcp
 
 1. Create credentials with the Agent Builder, Context Engine, and Elasticsearch privileges required for MCP access.
 2. Connect to the Agent Builder MCP endpoint.
 3. Load the Context Engine tools.
-
 :::
-
 :::{tab-item} Context Engine APIs
+:sync: api
 
 1. Create credentials with the Context Engine and Elasticsearch privileges required for API access.
 2. Configure the Context Engine API client.
 3. Wrap the retrieval operations as LangChain tools.
-
 :::
-
 ::::
 
 ## Step 1: Create credentials
