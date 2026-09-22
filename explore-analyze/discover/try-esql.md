@@ -8,21 +8,22 @@ applies_to:
 products:
   - id: kibana
 type: tutorial
-description: Walk through your first Discover session in ES|QL. Query sample logs without a data view, filter and sort results, and keep the chart.
+description: Query data in Discover with ES|QL, shape the table and chart, group rows, and save or share the results.
 ---
 
 # Get started with {{esql}} in Discover [try-esql]
 
-This tutorial is a first **Discover** session with Elasticsearch Query Language ({{esql}}). You open {{esql}} mode, query the sample web logs, read the table and chart, and save the session.
+In this tutorial you query data in **Discover** with Elasticsearch Query Language ({{esql}}). The query names the data and decides which rows appear in the table and the chart. You filter, sort, and group those rows, then keep the results.
 
-You write a piped query that names the data, so you do not need a [data view](discover-get-started.md#find-the-data-you-want-to-use). You do not need {{esql}} experience. For the language itself, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) and [Use {{esql}} in the {{kib}} UI](../query-filter/languages/esql-kibana.md).
+You do not need a [data view](discover-get-started.md#find-the-data-you-want-to-use), and you do not need {{esql}} experience. For the rest of Discover, refer to [Explore fields and data with Discover](discover-get-started.md). For the language itself, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) and [Use {{esql}} in the {{kib}} UI](../query-filter/languages/esql-kibana.md).
 
 By the end of this tutorial, you can:
 
-- Open **Discover** in {{esql}} mode
-- Write a piped query that selects fields, filters rows, and sorts the results
-- Read the results table and the chart that Discover builds from the query
-- Keep the session so you can reopen it, or add the session, table, or chart to a dashboard
+- Query a data source from **Discover**
+- Add a field with the editor's suggestions
+- Filter and sort the rows the table and chart show
+- Group those rows with an aggregation
+- Investigate from a result, or save and share the session
 
 ## Before you begin [try-esql-prerequisites]
 
@@ -31,9 +32,11 @@ To follow this tutorial, you need the following:
 - The `enableESQL` setting enabled in {{product.kibana}} **Advanced Settings**. It is enabled by default.
 - The {{product.kibana}} sample web logs. Add them from [Add sample data](/manage-data/ingest/sample-data.md). You can use your own indices instead. Replace `kibana_sample_data_logs` in the examples with a data source you can query.
 
-## Step 1: Open Discover in ES|QL [tutorial-try-esql]
+## Step 1: Query a data source [tutorial-try-esql]
 
-This tutorial uses {{esql}} mode. Classic mode uses data views with Kibana Query Language (KQL) or Lucene. For classic mode, refer to [Explore fields and data with Discover](discover-get-started.md).
+A source command retrieves the data. `FROM` names the indices, data streams, or aliases to query.
+
+This tutorial uses {{esql}} mode. Classic mode uses data views with Kibana Query Language (KQL) or Lucene.
 
 1. Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. If the editor is not already in {{esql}} mode, switch to it from either location:
@@ -47,15 +50,7 @@ This tutorial uses {{esql}} mode. Classic mode uses data views with Kibana Query
 
    Sample data timestamps are relative to when you installed the set. If you added the sample web logs earlier, widen the range until the table has rows.
 
-If that tab already has a KQL or Lucene query, Discover converts it when you switch. Switching back to classic mode does not restore that query. Refer to [Revert to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
-
-**Result:** The query editor is in {{esql}} mode, and the time range covers the sample web logs.
-
-## Step 2: Query the sample web logs
-
-Start with the operating system and RAM fields from the sample web logs.
-
-1. Copy the following query. To make queries easier to read, put each processing command on a new line.
+4. Copy the following query. To make queries easier to read, put each processing command on a new line.
 
     ```esql
     FROM kibana_sample_data_logs <1>
@@ -69,65 +64,81 @@ Start with the operating system and RAM fields from the sample web logs.
    {{esql}} keywords are not case sensitive.
    :::
 
+5. Select **Search** (or **▶Run** in earlier versions).
+
+If that tab already has a KQL or Lucene query, Discover converts it when you switch. Switching back to classic mode does not restore that query. Refer to [Revert to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
+
+**Result:** The table lists operating systems and RAM values. The chart shows those documents over the time range.
+
+Other source commands fit other kinds of data. [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) queries time series data streams.
+
+{applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` [`PROMQL`](elasticsearch://reference/query-languages/esql/commands/promql.md) queries time series data with PromQL syntax.
+
+These commands are summarized in [Query structure](../query-filter/languages/esql-kibana.md#esql-kibana-query-bar). If you are not sure which names to use on your own data, refer to [Browse data sources and fields from the editor](browse-esql-sources.md).
+
+## Step 2: Add a field with the editor
+
+The editor suggests commands and fields as you type, so you can change the query without writing the next line from memory.
+
+1. In the `KEEP` line, add `geo.dest` after `machine.ram`. As you type, select the field from the suggestions.
+
 2. Select **Search** (or **▶Run** in earlier versions).
 
-**Result:** The table lists operating systems and RAM values. Discover also draws a chart from the query.
+**Result:** The table includes a destination column.
 
-You don't have to write the next change from memory. The editor suggests commands and fields as you type, and it includes in-app help. Refer to [Write queries with the {{esql}} editor](../query-filter/languages/esql-kibana.md#esql-kibana-get-started) for those tools, the editor search bar, and AI assistance.
+The editor also includes in-app help. Refer to [Write queries with the {{esql}} editor](../query-filter/languages/esql-kibana.md#esql-kibana-get-started) for those tools, the editor search bar, and AI assistance.
 
-If you are not sure which index or field names to use on your own data, the editor can browse data sources and fields for you. Refer to [Browse data sources and fields from the editor](browse-esql-sources.md).
+## Step 3: Filter and sort the rows
 
-## Step 3: Add a field and read the chart
-
-Add the visit destination so the chart shows where the visits went. `LIMIT` sets how many rows the query returns. These examples use `LIMIT 10` to keep the table short.
+Each processing command changes the rows Discover shows. `WHERE` drops rows from the table and the chart. `SORT` orders the full result. `LIMIT` shortens the table for this example.
 
 1. Replace the query with the following:
 
     ```esql
     FROM kibana_sample_data_logs
     | KEEP machine.os, machine.ram, geo.dest
-    | LIMIT 10
-    ```
-
-2. Select **Search** (or **▶Run** in earlier versions).
-
-**Result:** The table shows 10 rows. The chart updates from the new query and breaks the data down for you.
-
-:::{note}
-When you don't use `KEEP` to retain specific fields, Discover does not break the chart down automatically. Select a field from the option Discover shows for the chart.
-:::
-
-## Step 4: Sort and filter the results
-
-Sort by RAM, and drop visits whose destination is Great Britain.
-
-1. Replace the query with the following:
-
-    ```esql
-    FROM kibana_sample_data_logs
-    | KEEP machine.os, machine.ram, geo.dest
-    | SORT machine.ram desc
     | WHERE geo.dest != "GB"
+    | SORT machine.ram desc
     | LIMIT 10
     ```
 
 2. Select **Search** (or **▶Run** in earlier versions).
 
-**Result:** The table and chart no longer include rows where `geo.dest` is `GB`. The table is sorted by `machine.ram` in descending order.
+**Result:** The table and chart no longer include visits to Great Britain. The table lists 10 rows, sorted by RAM in descending order.
 
-You can also add a `WHERE` clause by interacting with a value in the results table. Refer to [Refine an {{esql}} query from the results table](esql-results.md#refine-esql-query-from-table). Column-header sorting only reorders the rows already retrieved. To sort the full data set, keep using `SORT` in the query. Refer to [Sort query results](esql-results.md#_sorting).
+A column header reorders only the rows already retrieved. To sort the full data set, keep `SORT` in the query. Refer to [Sort query results](esql-results.md#_sorting).
 
-## Step 5: Save the session
+## Step 4: Group the rows
 
-To reopen this query, the columns, and the tabs later, select **Save** in the application menu.
+`STATS` replaces the document rows with one row per group. The chart shows those aggregated values.
 
-You can also add the session or the chart to a dashboard.
+1. Replace the query with the following:
+
+    ```esql
+    FROM kibana_sample_data_logs
+    | STATS visits = COUNT(*) BY geo.dest
+    | SORT visits desc
+    ```
+
+2. Select **Search** (or **▶Run** in earlier versions).
+
+**Result:** The table lists one row per destination and a visit count. Discover draws the chart from those aggregated rows.
+
+Expanding a group is covered in [Inspect grouped STATS results in Discover](inspect-grouped-stats.md). For other aggregation functions, refer to the [`STATS` command reference](elasticsearch://reference/query-languages/esql/commands/stats-by.md).
+
+## Step 5: Use the results
+
+You can continue from a value in the table, or keep the query.
+
+To investigate one value, filter from it in the results table. Refer to [Refine an {{esql}} query from the results table](esql-results.md#refine-esql-query-from-table).
+
+To reopen this query, the columns, and the tabs later, select **Save** in the application menu. You can share the session, or add the session, the chart, or the table to a dashboard.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` You can save the current table to a dashboard too.
 
-The steps for each path are in [Save a Discover session for reuse](save-open-search.md).
+The steps are in [Save a Discover session for reuse](save-open-search.md) and [Share your Discover session](discover-get-started.md#share-your-findings).
 
-**Result:** You can reopen the session, or put the session, the chart, or the table on a dashboard.
+**Result:** You can continue from a result, reopen the session, or share it.
 
 ## Next steps
 
