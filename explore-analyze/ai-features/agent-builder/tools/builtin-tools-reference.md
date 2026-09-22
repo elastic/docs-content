@@ -71,6 +71,9 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 
     **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](../get-started.md#enable-experimental-features-optional) must be turned on.
 
+`platform.core.list_inference_endpoints` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Lists the available [{{infer}} endpoints](../models.md#add-an-inference-endpoint), including their IDs, names, and types.
+
 #### Workflow execution tools
 
 These platform core tools let agents run and track [Elastic Workflows](/explore-analyze/workflows.md). For the tools that inspect workflow syntax and definitions, refer to [Workflows tools](#workflows-tools).
