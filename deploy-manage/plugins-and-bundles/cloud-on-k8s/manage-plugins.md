@@ -1,5 +1,5 @@
 ---
-navigation_title: Extend {{eck}}
+navigation_title: In ECK
 description: Choose how to install Elasticsearch plugins and configuration files on Elastic Cloud on Kubernetes.
 applies_to:
   deployment:
@@ -12,36 +12,29 @@ products:
 
 On {{eck}}, {{es}} runs in Kubernetes pods. Unlike {{ech}} and {{ece}}, {{eck}} does not host a catalog of plugins that you enable on a deployment. You must install any plugin that is not already in the base image before the main {{es}} container starts. That includes [official {{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md), community or third-party plugins, and [plugins you write yourself](elasticsearch://extend/index.md).
 
-You can also make configuration files such as synonym dictionaries, scripts, or SAML metadata available in the configuration directory. {{eck}} does not use *bundles* (the ZIP-based extension workflow in {{ech}} and {{ece}}); use ConfigMaps or Secrets instead.
+You can also add configuration files such as synonym dictionaries, scripts, SAML metadata, or CA certificates to the {{es}} configuration directory.
 
 Refer to [](/deploy-manage/plugins-and-bundles.md) for options that apply to other deployment types.
 
 ## Choose an approach
 
-These options differ in how you supply plugins or files on the pod, not in which plugins you can install. Use a custom image or init containers for plugins. Use ConfigMaps or Secrets when you only need configuration files.
+The approach depends on what you are adding. Plugins require a custom container image or an init container. Configuration files can be mounted from a ConfigMap or Secret.
 
-* [Custom container image](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md): Build from the official Elastic images and install the plugins you need so they are present when the {{es}} container starts. Best when you want reproducible deployments without runtime internet access. You can also include configuration files in the image.
+### Install plugins
 
-* [Init containers](init-containers-for-plugin-downloads.md): Run `elasticsearch-plugin install` in an init container before {{es}} starts. Easier to try without a registry, but each new node needs network access to download the plugins again.
+Custom container images and init containers install the same plugins. They differ in when the installation occurs: a custom image includes the plugins at build time, while an init container installs them each time a pod starts. This determines the infrastructure you need to maintain, how quickly nodes become ready, and whether node startup depends on network access.
 
-* [ConfigMaps or Secrets](custom-configuration-files-plugins.md): Mount configuration files such as synonym dictionaries, certificates, or SAML metadata into the {{es}} config directory. This option does not install plugins; use a custom image or init containers for that.
+With a [custom container image](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md), you build the plugins into an image based on the official Elastic images, so they are already in place when the container starts. Nodes start faster, need no internet access at runtime, and every node runs an identical image. In exchange, you need a container registry and build infrastructure, and each {{es}} version upgrade means building and publishing a new image. You can include configuration files in the image as well.
 
-The following matrix compares these approaches in more detail.
+With [init containers](init-containers-for-plugin-downloads.md), an init container runs `elasticsearch-plugin install` before {{es}} starts. You can get started without a registry and change plugin versions by editing the manifest, but every new node repeats the download, which uses bandwidth and delays startup. It also ties node creation to network availability, so a network problem or an incorrect plugin reference can cause new nodes to fail. If your pods run in a service mesh, review [the note about using Istio](init-containers-for-plugin-downloads.md#istio-note).
 
-:::{table}
-:matrix:
+Use a custom image when reproducibility and predictable startup are priorities, such as in production environments. Use init containers when you need to iterate quickly, or when maintaining a container registry and build pipeline is not practical.
 
-| Consideration | Custom container image | Init containers | ConfigMaps or Secrets |
-| --- | --- | --- | --- |
-| Best used for | Plugins and optional configuration files included in the image | Plugins installed at pod startup | Configuration files only (dictionaries, certificates, metadata) |
-| Runtime internet | Not required | Required (refer to [Istio](init-containers-for-plugin-downloads.md#istio-note)) | Not required |
-| Reproducibility | High: identical image for every deployment | Lower: each node downloads plugins at startup | High: file content is managed as Kubernetes objects |
-| Version upgrades | Build and publish a new image for each {{es}} version | Update the install command or plugin version in the manifest | Update the ConfigMap or Secret |
-| Startup cost | Lower: plugins are already in the image | Higher: each new node downloads plugins again | Lower for file mounts; does not install plugins |
-| Operational overhead | Requires a container registry and build infrastructure | More complex manifests; new nodes can fail due to network or configuration errors | Requires ongoing maintenance of ConfigMaps or Secrets |
-| Installs plugins? | Yes | Yes | No; use a custom image or init containers |
+### Add configuration files
 
-:::
+To make files such as synonym dictionaries, certificates, or SAML metadata available to {{es}}, [mount them from a ConfigMap or Secret](custom-configuration-files-plugins.md) using a volume and volume mount. This is the standard Kubernetes way to get files into a pod, and file content stays managed as Kubernetes objects, so updating a file means updating the ConfigMap or Secret instead of rebuilding an image. The trade-off is that you maintain those objects alongside your {{es}} manifests.
+
+This approach cannot install plugins. If you need both, combine it with a custom image or init containers.
 
 ## {{kib}} plugins
 

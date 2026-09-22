@@ -1,5 +1,5 @@
 ---
-navigation_title: "Extend {{ech}}"
+navigation_title: In ECH
 description: Extend Elasticsearch on Elastic Cloud Hosted with provided plugins, custom plugins, or configuration bundles.
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-adding-plugins.html

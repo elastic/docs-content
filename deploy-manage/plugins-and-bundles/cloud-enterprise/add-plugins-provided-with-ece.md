@@ -1,5 +1,5 @@
 ---
-navigation_title: Provided with ECE
+navigation_title: Provided plugins
 description: Enable built-in Elasticsearch plugins on Elastic Cloud Enterprise deployments without managing upgrades yourself.
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-plugins.html

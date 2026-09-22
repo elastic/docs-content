@@ -2,7 +2,7 @@
 applies_to:
   deployment:
     self: ga
-navigation_title: Extend self-managed
+navigation_title: In self-managed
 description: Install Elasticsearch plugins on self-managed clusters with a Docker config file or the CLI, and place shared config files on each node.
 products:
   - id: elasticsearch

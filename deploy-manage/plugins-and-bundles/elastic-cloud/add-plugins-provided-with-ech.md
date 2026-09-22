@@ -1,5 +1,5 @@
 ---
-navigation_title: Provided with ECH
+navigation_title: Provided plugins
 description: Enable official Elasticsearch plugins that Elastic Cloud Hosted provides and upgrades with your deployment.
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-adding-elastic-plugins.html
