@@ -66,4 +66,4 @@ config:
   containerSuffix: "-wolfi"
 ```
 
-Apply the configuration. Restart the ECK operator pod. Verify that stack component pods pull images with the `-wolfi` suffix, for example `docker.elastic.co/elasticsearch/elasticsearch-wolfi:<version>`.
+Apply the configuration. Restart the ECK operator pod. Verify that pods pull Wolfi images. For example, {{es}} pods should use `docker.elastic.co/elasticsearch/elasticsearch-wolfi:<version>`. {{package-registry}} and Enterprise Search images are Wolfi-based by default. ECK does not append the `-wolfi` suffix for those components.
