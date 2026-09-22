@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
 type: overview
-description: Find the Discover tasks that are specific to ES|QL mode, from switching query modes to reading results and building lookup indices.
+description: Find the Discover tasks that are specific to ES|QL mode, from a first query to reading results and building lookup indices.
 ---
 
 # Use Discover with ES|QL
@@ -19,6 +19,7 @@ The editor itself, time parameters, AI assistance, and Fast mode are covered in 
 
 | When you need this | Guide |
 | --- | --- |
+| You have not run an {{esql}} query in Discover yet | [Get started with {{esql}} in Discover](try-esql.md) |
 | You want to query in {{esql}}, or go back to KQL, and you need to know what happens to the query | [Switch between {{esql}} and classic mode](switch-esql-mode.md) |
 | You are writing a query and need an index or a field name | [Browse data sources and fields from the editor](browse-esql-sources.md) |
 | You have results and want to read them, sort them, or filter from a value | [Work with {{esql}} results in Discover](esql-results.md) |
@@ -29,7 +30,6 @@ The editor itself, time parameters, AI assistance, and Fast mode are covered in 
 
 ## Related pages
 
-- [Get started with {{esql}} in Discover](try-esql.md)
 - [Explore fields and data with Discover](discover-get-started.md)
 - [Use {{esql}} in the {{kib}} UI](../query-filter/languages/esql-kibana.md)
 - [Lens visualizations using {{esql}} queries](../visualize/esorql.md)

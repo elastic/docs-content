@@ -279,9 +279,9 @@ toc:
   - file: discover.md
     children:
       - file: discover/discover-get-started.md
-      - file: discover/try-esql.md
       - file: discover/use-esql.md
         children:
+          - file: discover/try-esql.md
           - file: discover/switch-esql-mode.md
           - file: discover/browse-esql-sources.md
           - file: discover/esql-results.md

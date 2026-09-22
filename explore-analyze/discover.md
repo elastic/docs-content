@@ -34,18 +34,15 @@ description: Use Discover to search and filter documents, analyze field structur
 
 ## Get started
 
-New to Discover? Start with these resources:
+New to Discover? Start with [Explore fields and data with Discover](discover/discover-get-started.md).
 
-* **[Explore fields and data with Discover](discover/discover-get-started.md)** - Explore with data views and KQL or Lucene in classic mode.
-* **[Get started with {{esql}} in Discover](discover/try-esql.md)** - A hands-on tutorial for a first session in {{esql}} mode.
-
-Discover has two query modes. {{esql}} does not require a data view. Classic mode uses data views with KQL or Lucene.
+Discover has two query modes. {{esql}} does not require a data view. Classic mode uses data views with KQL or Lucene. For a first {{esql}} session, go to [Use Discover with {{esql}}](discover/use-esql.md).
 
 ## Common tasks
 
 Once you're familiar with the basics, explore these guides for specific tasks:
 
-* **[Use Discover with {{esql}}](discover/use-esql.md)** - Switch modes, work with results, and the other {{esql}} jobs in Discover.
+* **[Use Discover with {{esql}}](discover/use-esql.md)** - Run a first {{esql}} session, switch modes, and work with results.
 * **[Search and filter data](discover/discover-get-started.md)** - Build queries and apply filters to narrow down your results.
 * **[Customize the Discover view](discover/document-explorer.md)** - Adjust the layout, columns, and display options to suit your needs.
 * **[Save a search for reuse](discover/save-open-search.md)** - Save your Discover sessions and add them to dashboards.
