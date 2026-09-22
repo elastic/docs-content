@@ -54,6 +54,7 @@ Set the value with `--set`:
 
 ```sh
 helm upgrade elastic-operator elastic/eck-operator \
+  -n elastic-system \
   --reuse-values \
   --set config.containerSuffix=-wolfi
 ```
