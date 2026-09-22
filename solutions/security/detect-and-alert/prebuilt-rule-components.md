@@ -44,7 +44,7 @@ Categories include:
 
 Both `Platform` and `OS` include `Windows`, `Linux`, and `macOS`. `OS` identifies the host operating system that endpoint data comes from. `Platform` identifies the ecosystem the rule targets, which can be an operating system, a cloud provider, or an identity provider.
 
-Elastic is adding these categories across the rule set in phases, so not every rule has every category. Rules also keep their `Use Case` and `Promotion` tags from the earlier scheme, so your current filters continue to work.
+Some prebuilt rules don't have all of these categories, because Elastic adds them in phases. Rules also keep their `Use Case` and `Promotion` tags from the earlier scheme, so your current filters continue to work.
 
 ### Operational profile tags [rule-operational-tags]
 
