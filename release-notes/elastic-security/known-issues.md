@@ -23,7 +23,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
-:::{dropdown} Filtering the Add Elastic rules page by tag or search can install an earlier prebuilt rule version
+:::{dropdown} Filtering the Add Elastic rules page by tag or search can install an outdated prebuilt rule version
 **Applies to: {{stack}} 9.3.0-9.3.8, 9.4.0-9.4.7, 9.5.0-9.5.4**
 
 **Impact**<br>
