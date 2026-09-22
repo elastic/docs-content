@@ -33,10 +33,11 @@ Elastic provides several self-managed and Elastic-managed options.
 For simplicity and speed, try out {{es-serverless}}:
 
 ::::{dropdown} Create an {{es-serverless}} project
-1. [Sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration).
+1. [Sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration), or [log in to {{ecloud}}](https://cloud.elastic.co/login) if you already have an account.
 2. In the **Serverless projects** panel, select **Create project**.
 3. Select the **{{es}}** project type, then select **Next**.
-4. Enter a name for your project, and configure the cloud provider and [region](/deploy-manage/deploy/elastic-cloud/regions.md). Select **Create project**. Your project is ready in a few minutes.
+4. Enter a name for your project, and configure the cloud provider and [region](/deploy-manage/deploy/elastic-cloud/regions.md). 
+5. Select **Create project**. Your project is ready in a few minutes.
 
 For more detailed information, refer to [](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md).
 ::::
