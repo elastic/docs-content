@@ -12,29 +12,30 @@ description: "How rule mode determines whether Kibana opens an alert episode or 
 
 Rule mode is a required setting for rules in the {{alerting-v2-system}}. It determines whether each [rule event](rule-event-field-reference.md) belongs to an [alert episode](../alerts.md) or stays available for later analysis. It's set by the rule creation method. Some [creation paths](create-a-rule.md) only support one mode.
 
-When you create a rule, the form offers two options:
+## Select a mode [rule-mode-select]
+
+In YAML, set `kind` to `alert` or `signal`, and each [rule event](rule-event-field-reference.md) stores that value as `type`. In the UI, only some [creation paths](create-a-rule.md) let you select a mode. When they do, you can select one of the following options:
 
 ::::{applies-switch}
 
 :::{applies-item} { stack: ga 9.6+, serverless: ga }
 
-Select **Detect and respond** to open a tracked [alert episode](../alerts.md) for each matching row. {{kib}} writes a rule event with `type: alert` and `episode.*` fields. Events that share `episode.id` belong to the same episode, appear on the **Alerts** page, and can be routed to workflows by action policies.
+- **Detect and respond**: Select to open tracked alert episodes. {{kib}} writes a rule event with `type: alert` and `episode.*` fields for each matching row. Events that share `episode.id` belong to the same [alert episode](../alerts.md). Alert episodes are tracked through lifecycle states, appear on the **Alerts** page, and can be routed to workflows by action policies.
 
-Select **Collect evidence** to record each matching row in `.rule-events` without opening an episode. {{kib}} writes a rule event with `type: signal`. These events don't appear on **Alerts** and don't trigger notifications.
+- **Collect evidence**: Select to record matches without opening an episode. {{kib}} writes a rule event with `type: signal` for each matching row. These events stay in `.rule-events` for later analysis. They don't appear on **Alerts** and don't trigger notifications.
+
 
 :::
 
 :::{applies-item} stack: experimental =9.5
 
-Select **Alert** to open a tracked [alert episode](../alerts.md) for each matching row. {{kib}} writes a rule event with `type: alert` and `episode.*` fields. Events that share `episode.id` belong to the same episode, appear on the **Alerts** page, and can be routed to workflows by action policies.
+- **Alert**: Select to open tracked alert episodes. {{kib}} writes a rule event with `type: alert` and `episode.*` fields for each matching row. Events that share `episode.id` belong to the same [alert episode](../alerts.md). Alert episodes are tracked through lifecycle states, appear on the **Alerts** page, and can be routed to workflows by action policies.
 
-Select **Signal** to record each matching row in `.rule-events` without opening an episode. {{kib}} writes a rule event with `type: signal`. These events don't appear on **Alerts** and don't trigger notifications.
+- **Signal**: Select to record matches without opening an episode. {{kib}} writes a rule event with `type: signal` for each matching row. These events stay in `.rule-events` for later analysis. They don't appear on **Alerts** and don't trigger notifications.
 
 :::
 
 ::::
-
-In YAML, rule mode is the `kind` field. Set `kind: alert` to open alert episodes, or `kind: signal` to record matches without opening an alert episode. On each [rule event](rule-event-field-reference.md), `type` has the same value as the rule's `kind`.
 
 ## When to use each [rule-mode-when-to-use]
 
