@@ -268,6 +268,14 @@ Follow [the {{aws}} documentation](https://aws.amazon.com/premiumsupport/knowled
     1. {{es}} expects the service account token to be projected to exactly this path
     2. Replace with the actual `AWS_ROLE_ARN` for the IAM role you created in step 3
 
+      ::::{note}
+      If your cluster runs in an AWS GovCloud region, add the following environment variable to force the AWS SDK to use the correct regional STS endpoint. Without this,           authentication can fail with an `InvalidIdentityTokenException`.
+      ```yaml
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: "regional"
+      ```
+      ::::
+
 5. Create the snapshot repository as described in [Register the repository in {{es}}](#k8s-create-repository) but of type `s3`
 
     ```sh
