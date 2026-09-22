@@ -22,7 +22,14 @@ To add drilldowns to dashboard panels, you need:
 * For dashboard drilldowns: A target dashboard to navigate to
 * For URL drilldowns: A URL template that can include dynamic variables from the clicked data
 
-Drilldowns rely on a field that exists in the underlying data source. They cannot be triggered from values that come from computed fields, such as those produced by {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results. When you click a value from a computed field, the drilldown option is not available. For more information, refer to [Add pills by interacting with visualizations](using.md#_add_pills_by_interacting_with_visualizations).
+Drilldowns rely on a field that exists in the underlying data source. They cannot be triggered from a computed value, such as an {{esql}} `EVAL` or `STATS` result, a Lens formula, or an aggregation result. For a Lens formula or an aggregation result, the drilldown option is not available.
+
+When the value comes from an {{esql}} query:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` The visualization explains why you cannot open the drilldown. [Add drilldowns to an {{esql}} visualization](../visualize/esorql.md#esql-viz-drilldowns) describes where that explanation appears, and when a date value on a chart does not show it.
+- {applies_to}`stack: ga =9.4` The drilldown option is not available.
+
+For more information, refer to [Add pills by interacting with visualizations](using.md#_add_pills_by_interacting_with_visualizations).
 
 ## Drilldown types [drilldown-types]
 

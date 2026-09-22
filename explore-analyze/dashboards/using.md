@@ -73,7 +73,12 @@ You can create filter pills by:
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
-{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields, such as those created with {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results, do not support filtering or drilldown actions, because there is no matching field in the underlying index to filter on. When you click a value that comes from a computed field, the filter and drilldown options are not available.
+{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields, such as those created with {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results, do not support filtering or drilldown actions, because there is no matching field in the underlying index to filter on. For a Lens formula or an aggregation result, the filter and drilldown options are not available.
+
+When the value comes from an {{esql}} query:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` The visualization explains why you cannot filter or drill down from that value. [Add drilldowns to an {{esql}} visualization](../visualize/esorql.md#esql-viz-drilldowns) describes where that explanation appears, and when a date value on a chart does not show it.
+- {applies_to}`stack: ga =9.4` The filter and drilldown options are not available.
 :::
 
 

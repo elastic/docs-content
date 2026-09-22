@@ -177,7 +177,12 @@ serverless: ga
 - **URL** drilldowns: open an external URL from a data point.
 - {applies_to}`stack: ga 9.5` {applies_to}`serverless:` **Discover** drilldowns: open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
 
-Drilldowns can only be triggered from values backed by a field that exists in the underlying index. Values produced by {{esql}} commands like `EVAL` or `STATS` are not backed by an index field, so the drilldown option is not available when you click on those columns or series. For more information, refer to [Add pills by interacting with visualizations](../dashboards/using.md#_add_pills_by_interacting_with_visualizations).
+You can filter the dashboard or open a drilldown only from a value backed by a field in the index. A value the query creates with `EVAL` or `STATS` is not backed by an index field.
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` If the column only renames an index field with `RENAME`, you can still filter and drill down from it. Otherwise the visualization explains that the value relies on a field created at query time. On a **Bar**, **Line**, **Area**, **Pie**, **Treemap**, **Mosaic**, or **Waffle** chart, **Filter for** and **Filter out** stay in the legend but cannot be used, and the tooltip gives that explanation. A **Heat map** gives the explanation in the tooltip. If the value is a date, a chart does not show that explanation. In a **Table**, **Filter for** and **Filter out** stay visible but cannot be used, and each action gives the explanation.
+- {applies_to}`stack: ga =9.4` The filter and drilldown options are not available.
+
+For more information, refer to [Add pills by interacting with visualizations](../dashboards/using.md#_add_pills_by_interacting_with_visualizations).
 
 ## Ignore dashboard filters [esql-viz-ignore-dashboard-filters]
 ```{applies_to}
