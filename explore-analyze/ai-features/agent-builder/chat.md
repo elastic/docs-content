@@ -422,7 +422,7 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
 
     {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Agents that individual users have been granted access to also show a badge with the number of those users.
 
-    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The list also shows **Created by** and **Last updated by** columns. Each column shows the user's name and a relative time, such as 3 months ago: point to or focus the relative time to view the exact date and time. If a user's full name isn't available, their username appears instead. The default agent and other agents that {{kib}} installs automatically show **Elastic**. Read-only built-in agents show a dash in both columns, because no creator or editor is recorded for them. If only one of the two values is recorded, only that value appears.
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The list also includes **Created by** and **Last updated by** columns. When available, each column displays the user's name and a relative time, such as **3 months ago**. Point to or focus on the relative time to view the exact date and time. If the user's full name is unavailable, their username appears instead. The default agent and other agents installed automatically by {{kib}} display **Elastic**. Read-only built-in agents display a dash in both columns because no creator or editor is recorded for them. If only one value is recorded, only the corresponding column displays a value.
 
 **Skills**
 :   View and manage all skills available in the deployment. Create new skills or edit existing ones.
