@@ -23,6 +23,21 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} {{elastic-defend}} Device Control blocks macOS updates, Recovery volume mounts, and Time Machine backups
+**Applies to: {{stack}} 9.4.6, 9.5.2, 9.5.3**
+
+**Impact**<br>
+On affected versions, {{elastic-defend}}'s Device Control feature on macOS blocks operating system updates, Recovery volume mounts, and Time Machine backups. The block occurs even when Device Control is set to allow access, and it doesn't generate a deny event in {{elastic-defend}} telemetry.
+
+**Workaround**<br>
+Turn off Device Control in the {{elastic-defend}} integration policy for the affected macOS hosts, then save and deploy the policy. Reboot the hosts so Device Control is fully turned off. Other {{elastic-defend}} protections continue to run. USB storage device events are not collected while Device Control is off.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.4.7 and 9.5.4.
+
+:::
+
 :::{dropdown} Entity Store extraction tasks can crash Kibana
 **Applies to: {{stack}} 9.4.4**
 
@@ -31,7 +46,7 @@ On {{stack}} 9.4.4, {{elastic-sec}} deployments with a large number of indices c
 
 
 **Workaround**<br>
-To stabilize {{kib}} until we resolve the issue, we recommend temporarily disabling the Entity store feature:
+To stabilize {{kib}}, we recommend temporarily disabling the Entity store feature:
 
 1. Block the entity store tasks from running by applying this setting:
 
@@ -90,7 +105,9 @@ To stabilize {{kib}} until we resolve the issue, we recommend temporarily disabl
    * **Self-managed**: Remove the setting from `kibana.yml`, save your change, and restart {{kib}}.
 
 
-We will update this page with instructions on how to enable the feature again once versions with a fix are available.
+**Resolved**<br>
+
+Resolved in {{stack}} 9.4.5.
 
 :::
 

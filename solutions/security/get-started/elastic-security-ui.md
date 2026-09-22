@@ -221,7 +221,7 @@ serverless: ga
 
 :::{admonition} Requirements
 :applies_to: {stack: removed 9.3, serverless: removed}
-To access this section, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
+To access this section, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 :::
 
 Expand this section to access the following pages:
@@ -272,16 +272,6 @@ Manage {{ml}} jobs and settings. Refer to [{{ml-cap}} docs](/explore-analyze/mac
 ### Get started [_get_started]
 
 Quickly add security integrations that can ingest data and monitor your hosts.
-
-### SIEM Readiness [security-ui-siem-readiness]
-
-```yaml {applies_to}
-stack: beta 9.4
-serverless:
-  security: beta
-```
-
-Assess your security data posture across four dimensions: coverage, quality, continuity, and retention. Take guided actions to close gaps. Refer to [SIEM Readiness](/solutions/security/get-started/siem-readiness.md) for more information.
 
 ### Developer tools [security-ui-dev-tools]
 

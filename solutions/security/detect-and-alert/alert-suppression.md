@@ -175,7 +175,7 @@ By default, closing a suppressed alert while the suppression window is still act
 
 For example, say you set suppression to 5 minutes, grouped by `host.name`. When an event matches, an alert is created. For the next 5 minutes, matching events are suppressed and grouped with that alert. If you close the alert before the 5-minute window ends, suppression stops. The next matching event creates a new alert and starts a new 5-minute window.
 
-{applies_to}`stack: ga 9.2` You can change this default behavior to continue suppressing alerts until the suppression window ends, even after you close the alert. To do this, change the `securitySolution:suppressionBehaviorOnAlertClosure` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#suppression-window-behavior) to **Continue until suppression window ends**.
+{applies_to}`stack: ga 9.2` You can change this default behavior to continue suppressing alerts until the suppression window ends, even after you close the alert. To do this, change the `securitySolution:suppressionBehaviorOnAlertClosure` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings) to **Continue until suppression window ends**.
 
 
 ## Alert suppression limits [security-alert-suppression-alert-suppression-limit-by-rule-type]

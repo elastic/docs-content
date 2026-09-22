@@ -42,6 +42,7 @@ This tutorial covers the basics of querying data with {{esql}} in Discover. For 
    - If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to {{esql}}.
    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar are also converted to {{esql}} `WHERE` clauses where possible. Filters that can't be converted, such as scripted filters, are dropped.
    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Discover remembers your last used query mode. The next time you open a new Discover session, it opens in the mode you last used.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` By default, Discover derives your starting query from your data sources. Administrators can set a different starting query for the space with the [**Default ES|QL query** (`discover:defaultEsqlQuery`)](kibana://reference/advanced-settings.md#kibana-discover-settings) setting. This setting doesn't apply after you edit the query or switch query modes.
 
    Let’s say we want to find out what operating system users have and how much RAM is on their machine.
 
@@ -422,7 +423,7 @@ FROM kibana_sample_data_logs
 ```
 
 ::::{tip}
-Pattern detection on text fields is also available outside {{esql}} from the **Patterns** tab in Discover's classic mode. Refer to [](/explore-analyze/discover/run-pattern-analysis-discover.md).
+Pattern detection on text fields is also available outside {{esql}} from the **Patterns** view in Discover's classic mode. Refer to [](/explore-analyze/discover/run-pattern-analysis-discover.md).
 ::::
 
 ### Add sparklines to patterns [esql-cascade-pattern-sparkline]

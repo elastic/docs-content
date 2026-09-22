@@ -4,7 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-tsds.html
 applies_to:
   stack: ga
-  serverless: ga
+  serverless:
+    elasticsearch: ga
+    observability: ga
+    security: ga
+    vectordb: unavailable
 products:
   - id: elasticsearch
 ---
@@ -195,19 +199,19 @@ To make sure your time series data stream is working, try some GET requests.
 View data stream details:
 
 ```console
-GET _data_stream/metrics-prod 
+GET _data_stream/metrics-weather-sensors
 ```
 
 Check the document count in a time series data stream:
 
 ```console
-GET metrics-prod/_count 
+GET metrics-weather-sensors/_count 
 ```
 
 Query the time series data:
 
 ```console
-GET metrics-prod/_search 
+GET metrics-weather-sensors/_search 
 {
   "size": 5,
   "sort": ["@timestamp"]

@@ -25,7 +25,7 @@ The following information reflects our strategic goals, plans and objectives and
 | **Functionality** | {{ech}} | {{serverless-full}} |
 |--------|----------------------|--------------------------|
 | **Management model** | Self-service infrastructure | Fully managed service |
-| **Project organization** | Single deployments with multiple capabilities | Separate projects for Elasticsearch, Observability, and Security |
+| **Project organization** | Single deployments with multiple capabilities | Separate projects for {{es}}, {{es}} {{vectordb}}, Observability, and Security |
 | **Scaling** | Manual or automated with configuration | Fully automated |
 | **Infrastructure decisions** | User manages capacity | Automatically managed by Elastic |
 | **Pricing model** | Based on provisioned resources | Based on usage |
@@ -43,6 +43,8 @@ In Serverless, Elastic automatically manages:
 * Shard distribution and replication
 * Resource utilization and monitoring
 * High availability and disaster recovery strategies
+
+Because Elastic fully manages sharding, several shard-related operations, including custom routing, are not supported. You can't set a `routing` value on document or search requests, and you can't create indices that require routing with the [`_routing` field](elasticsearch://reference/elasticsearch/mapping-reference/mapping-routing-field.md). This applies to all {{serverless-short}} project types.
 
 ## Compare features [elasticsearch-differences-serverless-infrastructure-management]
 
@@ -67,6 +69,7 @@ This table compares core identity, access, and platform capabilities between {{e
 | **Deployment model** | Single deployments with multiple solutions | Separate projects for specific use cases | Fundamental architectural difference - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Deployment monitoring** | [AutoOps](/deploy-manage/monitor/autoops.md) or monitoring cluster | Managed by Elastic <br><br> [AutoOps](/deploy-manage/monitor/autoops/autoops-for-serverless.md) is also available | Elastic automatically monitors Serverless projects, but you can additionally use AutoOps to [monitor usage patterns and resource consumption](/deploy-manage/monitor/autoops/autoops-for-serverless.md#how-autoops-monitors-your-serverless-short-project).|
 | **Email service** | ✅ | ✅ | Preconfigured email connector available - [Learn more about limits and usage](/deploy-manage/deploy/elastic-cloud/tools-apis.md#elastic-cloud-email-service) |
+| **[Reporting](/explore-analyze/report-and-share.md)** | ✅ All report types and file formats | ✅ Discover CSV, Lens CSV, Dashboard JSON<br><br>❌ Dashboard and visualization PDF and PNG | |
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
 | **High availability** | ✅ | ✅ | Automatic resilience |
 | **Network security** | ✅ [IP filtering](/deploy-manage/security/ip-filtering-cloud.md)<br><br>✅ [Private connectivity](/deploy-manage/security/private-connectivity.md) (VPCs, PrivateLink)<br><br>✅ [Published static IPs](/deploy-manage/security/elastic-cloud-static-ips.md) | ✅ [IP filtering](/deploy-manage/security/ip-filtering-cloud.md)<br><br>✅ [Private connectivity](/deploy-manage/security/private-connectivity.md) (VPCs, PrivateLink)<br><br>❌ Published static IPs | Private connectivity for Serverless projects is currently supported in AWS and Azure regions only.<br><br>For Observability projects, requires [Observability Complete](/solutions/observability/observability-serverless-feature-tiers.md).<br><br>For Security projects, requires [Security Analytics Complete](/solutions/security/security-serverless-feature-tiers.md).<br><br>{{serverless-short}} does not offer public static IP lists. Use private connectivity where supported. |
@@ -82,7 +85,7 @@ The [{{serverless-full}} roadmap](https://www.elastic.co/cloud/serverless/roadma
 
 ### Elasticsearch
 
-This table compares Elasticsearch capabilities between {{ech}} deployments and Serverless projects:
+This table compares Elasticsearch capabilities between {{ech}} deployments and Serverless {{es}} projects:
 
 | **Feature** | {{ech}} | Serverless Elasticsearch projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
@@ -91,7 +94,8 @@ This table compares Elasticsearch capabilities between {{ech}} deployments and S
 | [**Clone index API**]({{es-apis}}operation/operation-indices-clone) | ✅ | **Planned** | Anticipated in a future release |
 | [**Bulk indexing**](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#_use_bulk_requests) |  ✅ | ✅ | The baseline write latency in {{serverless-short}} is 200ms [^1^](#footnote-1) |
 | [**Cross-cluster replication**](/deploy-manage/tools/cross-cluster-replication.md) | ✅ | **Planned** | Anticipated in a future release |
-| [**Cross-cluster search**](/explore-analyze/cross-cluster-search.md) | ✅ | **Tech preview** | As [cross-project search](/deploy-manage/cross-project-search-config.md) |
+| Search across clusters or projects | ✅ As [cross-cluster search](/explore-analyze/cross-cluster-search.md) | ✅ As [cross-project search](/deploy-manage/cross-project-search-config.md) | |
+| **Custom routing ([`_routing`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-routing-field.md))** | ✅ | ❌ | Elastic fully manages sharding in {{serverless-short}}, so you can't set custom `routing` values or require routing on an index. |
 | **Data lifecycle management** | - [ILM](/manage-data/lifecycle/index-lifecycle-management.md) <br>- [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) | [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) only | - No data tiers in Serverless <br>- Optimized for common lifecycle management needs |
 | **Elastic connectors (for search)** | ❌ (Managed connectors discontinued with Enterprise Search in 9.0) | Self-managed only | - Managed connectors not available <br>- Use [**self-managed connectors**](elasticsearch://reference/search-connectors/self-managed-connectors.md) |
 | [**Elasticsearch for Apache Hadoop**](https://www.elastic.co/elasticsearch/hadoop) | ✅ | ❌ | Not available in Serverless |
@@ -108,6 +112,40 @@ This table compares Elasticsearch capabilities between {{ech}} deployments and S
 | **Web crawler** | ❌ (Managed Elastic Crawler discontinued with Enterprise Search in 9.0) | Self-managed only | Use [**self-managed crawler**](https://github.com/elastic/crawler) |
 
 ^1^ $$$footnote-1$$$ In {{serverless-short}}, Elastic ensures data durability by storing indexed data in an [object store](https://www.elastic.co/blog/elastic-serverless-architecture) rather than local replicas. Writes are batched over a 200ms window to ensure durability while optimizing performance and cost, which means that single-document indexing can appear slower than in {{ech}}. However, this design makes {{serverless-short}} more scalable and resilient to high indexing loads without relying on in-cluster replication for fault tolerance. Because of a higher baseline write latency, {{serverless-short}} indexing can be scaled by increasing concurrent indexing clients.
+
+### {{es}} {{vectordb}} [elasticsearch-vector-database]
+
+This table compares capabilities between {{ech}} deployments and {{es}} {{vectordb}} {{serverless-short}} projects.
+
+| **Feature** | {{ech}} | Serverless {{es}} {{vectordb}} projects | Serverless notes |
+|---------|----------------------|-----------------------------------|------------------|
+| [**AI Assistant**](/solutions/observability/ai/observability-ai-assistant.md) | ✅ | ✅ | |
+| **Behavioral analytics** | ❌ (deprecated in 9.0) | ❌ | Not available in Serverless. |
+| [**Clone index API**]({{es-apis}}operation/operation-indices-clone) | ✅ | **Planned** | Anticipated in a future release |
+| [**Bulk indexing**](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#_use_bulk_requests) |  ✅ | ✅ | The baseline write latency in {{serverless-short}} is 200ms [^1^](#footnote-1). |
+| [**Cross-cluster replication**](/deploy-manage/tools/cross-cluster-replication.md) | ✅ | **Planned** | Anticipated in a future release |
+| Search across clusters or projects | ✅ As [cross-cluster search](/explore-analyze/cross-cluster-search.md) | ✅ As [cross-project search](/deploy-manage/cross-project-search-config.md) | |
+| **Custom routing ([`_routing`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-routing-field.md))** | ✅ | ❌ | Elastic fully manages sharding in {{serverless-short}}, so you can't set custom `routing` values or require routing on an index. |
+| **Custom ML nodes** | ✅ | ❌ | Custom models on ML nodes are not available in {{vectordb}}. Use the {{es}} project type if you need them. |
+| **Data lifecycle management** | - [ILM](/manage-data/lifecycle/index-lifecycle-management.md) <br>- [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) | [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) only | - No data tiers in Serverless <br>- Optimized for common lifecycle management needs |
+| **Data streams** | ✅ | ✅ | Supported when backing indices use [vector index mode](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode). |
+| **Elastic connectors (for search)** | ❌ (Managed connectors discontinued with Enterprise Search in 9.0) | Self-managed only | - Managed connectors not available <br>- Use [**self-managed connectors**](elasticsearch://reference/search-connectors/self-managed-connectors.md) |
+| [**Elasticsearch for Apache Hadoop**](https://www.elastic.co/elasticsearch/hadoop) | ✅ | ❌ | Not available in Serverless. |
+| [**Kibana Alerts**](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) | ✅ | ✅ | |
+| **[Index modes](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting)** | Multiple modes available | [`vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) only | Applied automatically to new indices in {{vectordb}}. |
+| **[Columnar index mode](/manage-data/data-store/columnar.md)** | ✅ | ❌ | Not supported in {{vectordb}}. Use the {{es}} project type for columnar workloads. |
+| **[LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md)** | ✅ | ❌ | Not supported in {{vectordb}}. Use the {{es}} project type for logs workloads that need LogsDB. |
+| **[Lookup index mode](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting)** | ✅ | ❌ | Not supported in {{vectordb}}. Required for ES\|QL [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/lookup-join.md). Use the {{es}} project type if you need lookup indices. |
+| **[Time series index mode (TSDS)](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md)** | ✅ | ❌ | Not supported. Use the {{es}} project type for metrics and other time series workloads. |
+| [**Reindexing from remote**](/manage-data/migrate/migrate-data-using-reindex-api.md) | ✅ | ✅ | |
+| **Repository management** | ✅ | Managed | Automatically managed by Elastic |
+| [**Scripted metric aggregations**](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) | ✅ | ❌ | Not available in Serverless.<br>The alternative for this in Serverless is [ES|QL](elasticsearch://reference/query-languages/esql.md). |
+| [**Search applications**](/solutions/elasticsearch-solution-project/search-applications.md) | - UI and APIs <br>- Maintenance mode (beta) | ❌ | Not available. Use the {{es}} project type if you need search applications. |
+| **Shard management** | User-configurable | Managed by Elastic | No manual shard allocation in Serverless. |
+| [**Synonyms**](/solutions/search/full-text/search-with-synonyms.md) | - Index time synonyms <br>- File-based synonyms <br>- Synonyms API | [Synonyms API]({{es-serverless-apis}}group/endpoint-synonyms) only (does not support index-time or file-based synonyms) | |
+| [**`join` fields**](elasticsearch://reference/elasticsearch/mapping-reference/parent-join.md) | ✅ | ❌ | Not available in Serverless. On {{es}} projects, the alternative is the ES\|QL [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/lookup-join.md) command. That requires [`lookup` index mode](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting), which is not supported in {{vectordb}} projects—use the {{es}} project type if you need it. |
+| [**Watcher**](/explore-analyze/alerting/watcher.md) | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases. |
+| **Web crawler** | ❌ (Managed Elastic Crawler discontinued with Enterprise Search in 9.0) | Self-managed only | Use [**self-managed crawler**](https://github.com/elastic/crawler). |
 
 ### Observability
 
@@ -175,8 +213,9 @@ The following limits apply to {{serverless-full}} projects and organizations:
 | :--- | :--- | :--- |
 | Number of indices per project | 15,000 | Yes |
 | Number of projects per organization | 500 | Yes |
+| Data size per {{es}} {{vectordb}} project | 1 TB | No |
 
-These limits are adjustable and can be increased by request. To request a limit increase, [open a support case](/troubleshoot/index.md#contact-us), and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
+Limits marked as adjustable can be increased by request. To request a limit increase, [open a support case](/troubleshoot/index.md#contact-us), and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
 
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 

@@ -138,7 +138,7 @@ The number of partitions created is set automatically by the Kafka broker based 
 :   Publish records to Kafka output broker event partitions based on a hash computed from the specified list of fields. If a field is not specified, the Kafka event key value is used.
 
 
-### Topics settings [_topics_settings]
+### Topic settings [_topics_settings]
 
 Use this option to set the Kafka topic for each {{agent}} event.
 

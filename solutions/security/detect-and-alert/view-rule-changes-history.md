@@ -65,7 +65,7 @@ If someone else changes or deletes the rule after the revision you're restoring 
 
 ## Turn off rule changes history [turn-off-rule-changes-history]
 
-Rule changes history is turned on by default. If you want to turn it off — for example, to avoid that overhead — disable the `securitySolution:enableRuleChangesHistory` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#enable-rule-changes-history).
+Rule changes history is turned on by default. If you want to turn it off — for example, to avoid that overhead — deactivate the `securitySolution:enableRuleChangesHistory` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 
 ::::{note}
 Turning off rule changes history creates a gap in rule revisions. That gap isn't filled when you turn the feature back on later, and changes made while it was off can't be recovered.

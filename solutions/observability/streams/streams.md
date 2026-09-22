@@ -127,6 +127,10 @@ When documents fail during ingestion, Streams preserves them in a [failure store
 
 :::::
 
+## Learn more
+
+For more information on Streams components, review the following links:
+
 - [**Retention**](./configure-retention.md): Manage how your stream retains data and get insight into data ingestion and storage size.
 - [**Partitioning**](./organize-your-data.md): {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview` Route data into child streams.
 - [**Processing**](./parse-and-process.md): Parse and extract information from documents into dedicated fields.

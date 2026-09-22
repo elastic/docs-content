@@ -19,11 +19,16 @@ Waffle charts display data as a 10x10 grid of small squares, where each square r
 
 Like [pie charts](pie-charts.md), waffle charts show part-to-whole relationships. However, waffle charts make it easier to compare similarly-sized proportions (for example, 23% vs. 27%) because areas in a grid are easier to distinguish than angles in a circle. Choose a pie chart when you have a small number of slices (2-4) with clearly different sizes, or when you want to use a donut layout.
 
-You can create waffle charts in {{kib}} using [**Lens**](../lens.md).
+You can build a waffle chart in {{kib}} in either of these ways:
+
+- [With the point-and-click editor](#build-a-waffle-chart)
+- [With an {{esql}} query](#build-a-waffle-chart-with-esql)
+
+To automate chart or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
 ![Example Lens waffle charts showing response status breakdown and OS distribution](/explore-analyze/images/waffle-chart-example.png)
 
-## Build a waffle chart
+## Build a waffle chart with the point-and-click editor [build-a-waffle-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -54,8 +59,40 @@ Optionally:
 The chart preview updates to show a grid of colored squares. Each color represents a category, and the number of squares reflects its proportion of the total.
 :::::
 
-:::::{step} Customize the chart to follow best practices
-Tweak the appearance of the chart to your needs. Consider the following best practices:
+:::::{step} Save the chart
+:::{include} ../../_snippets/save-visualization.md
+:::
+:::::
+
+::::::
+
+## Build a waffle chart with an {{esql}} query [build-a-waffle-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+A waffle chart needs a categorical column to define its color groups and a numeric metric column to determine each group's share of the squares. In this query, `BY` returns one row for each operating system, `COUNT` provides its metric value, and `SORT` and `LIMIT` retain the five most common operating systems:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS requests = COUNT(*) BY machine.os.keyword
+| SORT requests DESC
+| LIMIT 5
+```
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Waffle**.
+3. Assign `machine.os.keyword` to **Group by** and `requests` to **Metric**.
+4. Customize the chart appearance using the [waffle chart settings](#waffle-chart-settings).
+5. Select **Apply and close**.
+
+The chart preview shows the relative share of requests from each operating system.
+
+## Apply waffle chart best practices [waffle-chart-best-practices]
+
+After building the chart with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
 
 **Limit categories**
 :   Keep your waffle chart to a maximum of 6-8 categories. More categories make the chart difficult to read.
@@ -66,17 +103,7 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 **Order categories meaningfully**
 :   Arrange categories from largest to smallest or in a natural order (such as satisfaction ratings from low to high).
 
-Refer to [Waffle chart settings](#waffle-chart-settings) to find all configuration options for your waffle chart.
-
-For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
-:::::
-
-:::::{step} Save the chart
-:::{include} ../../_snippets/save-visualization.md
-:::
-:::::
-
-::::::
+Refer to [Waffle chart settings](#waffle-chart-settings) for all waffle chart configuration options. For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 
 ## Advanced waffle chart scenarios
 

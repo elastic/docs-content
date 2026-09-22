@@ -32,6 +32,9 @@ This section provides guidelines and recommendations to install ECE using a Podm
 
     [JVM heap sizes](ece-jvm.md) describes recommended JVM options.
 
+    ::::{include} /deploy-manage/deploy/_snippets/ece-proxy-protocol-install-note.md
+    ::::
+
     ::::{important} 
     Important while running `./elastic-cloud-enterprise.sh`
 

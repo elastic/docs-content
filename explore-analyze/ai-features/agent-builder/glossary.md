@@ -32,6 +32,13 @@ $$$a2a-server$$$
 A2A server
 :   The {{agent-builder}} endpoint that exposes agents to external A2A clients. Use it to integrate {{agent-builder}} agents with third-party agent frameworks. See [](a2a-server.md).
 
+$$$access-control$$$
+$$$visibility$$$
+Access control
+:   A custom agent's sharing setting that controls who can view and edit it. The levels, from least to most restrictive, are **Public** (anyone can view and edit), **Shared** (anyone can view; only the owner or an administrator can edit), and **Private** (only the owner or an administrator). See [](custom-agents.md#access-control-settings).
+
+    {applies_to}`stack: ga =9.4` This setting is labeled **Visibility**.
+
 $$$agent$$$
 Agent
 :   A capability that iteratively uses a large language model (LLM), system context, and a set of tools and skills to complete a task. Each agent translates a user's natural language request into a sequence of tool calls and reasoning steps to answer questions, take actions, or support workflows. {{agent-builder}} ships with built-in agents and lets you create custom agents. See [](agent-builder-agents.md#how-agents-work).
@@ -70,7 +77,7 @@ AI Agent button
 
 $$$api-key$$$
 API key
-:   A credential used for programmatic access to {{agent-builder}} APIs, including the MCP server and A2A server endpoints. The API key inherits the privileges of the user who created it. See [](permissions.md#grant-access-with-api-keys).
+:   A credential used for programmatic access to {{agent-builder}} APIs, including the MCP server and A2A server endpoints. The API key inherits the privileges of the user who created it. See [](permissions.md#api-keys-for-clients).
 
 $$$attachment$$$
 Attachment
@@ -118,7 +125,7 @@ Conversation history
 
 $$$custom-agent$$$
 Custom agent
-:   An agent you create with your own system prompt, tools, skills, and visibility settings. Custom agents are space-aware and exist only in the {{kib}} space where they were created. See [](custom-agents.md#create-a-custom-agent).
+:   An agent you create with your own system prompt, tools, skills, and access control settings. Custom agents are space-aware and exist only in the {{kib}} space where they were created. See [](custom-agents.md#create-a-custom-agent).
 
 $$$custom-instructions$$$
 Custom instructions
@@ -250,7 +257,7 @@ Model selector
 
 $$$monitor-inference$$$
 `monitor_inference`
-:   The {{es}} cluster privilege required when an agent uses an AI connector that calls the {{es}} Inference API. Built-in tools such as `search` and `generate_esql`, and all index search tools, depend on this privilege. See [](permissions.md#es-cluster-privileges).
+:   The {{es}} cluster privilege required when an agent uses an AI connector that calls the {{es}} Inference API. Built-in tools such as `search` and `generate_esql`, and all index search tools, depend on this privilege. See [](permissions.md#es-privileges).
 
 ## O
 
@@ -314,7 +321,7 @@ Solution view
 
 $$$space$$$
 Space
-:   A {{kib}} space. Custom agents and custom tools are _space-aware_: they exist only in the space where they were created. The Elastic AI Agent is also space-aware. See [](/deploy-manage/manage-spaces.md) and [](permissions.md#working-with-spaces).
+:   A {{kib}} space. Custom agents and custom tools are _space-aware_: they exist only in the space where they were created. The Elastic AI Agent is also space-aware. See [](/deploy-manage/manage-spaces.md) and [](permissions.md#space-scope).
 
 $$$standalone-mode$$$
 Standalone mode
@@ -333,12 +340,6 @@ Token
 $$$tool$$$
 Tool
 :   A modular function an agent can call to search, retrieve, or manipulate {{es}} data. Tools are the primary mechanism for grounding agent capabilities in your data. {{agent-builder}} provides built-in tools; you can also create custom tools of four types: {{esql}}, index search, MCP, and workflow. See [](tools.md#how-agents-use-tools).
-
-## V
-
-$$$visibility$$$
-Visibility
-:   A custom agent's sharing setting that controls who can see and edit it. Options are **Public** (anyone in the space), **Shared** (anyone can view; only owners and admins can edit), and **Private** (only owners and admins). See [](custom-agents.md#visibility-settings).
 
 ## W
 

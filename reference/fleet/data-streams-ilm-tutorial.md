@@ -1,4 +1,5 @@
 ---
+navigation_title: Customize data retention policies
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-ilm-tutorial.html
 applies_to:
@@ -9,7 +10,7 @@ products:
   - id: elastic-agent
 ---
 
-# Tutorials: Customize data retention policies [data-streams-ilm-tutorial]
+# Customize data retention policies for integrations [data-streams-ilm-tutorial]
 
 These tutorials explain how to apply a custom {{ilm-init}} policy to an integration’s data stream.
 
@@ -23,17 +24,17 @@ For certain features you’ll need to use a slightly different procedure to mana
 * Universal Profiling: Refer to [Universal Profiling index life cycle management](/solutions/observability/infra-and-hosts/universal-profiling-index-life-cycle-management.md).
 
 
-## Identify your scenario [data-streams-scenarios]
+## Identify your use case [data-streams-scenarios]
 
-How you apply an ILM policy depends on your use case. Choose a scenario for the detailed steps.
+How you apply an ILM policy depends on the data streams you want it to cover. Choose the approach that matches your use case.
 
-* **[Scenario 1](/reference/fleet/data-streams-scenario1.md)**: You want to apply an ILM policy to all logs or metrics data streams across all namespaces.
-* **[Scenario 2](/reference/fleet/data-streams-scenario2.md)**: You want to apply an ILM policy to selected data streams in an integration.
-* **[Scenario 3](/reference/fleet/data-streams-scenario3.md)**: You want to apply an ILM policy for data streams in a selected namespace in an integration.
+* **[Apply an ILM policy to all data streams across all namespaces](/reference/fleet/data-streams-scenario1.md)**: Edit the `logs@custom` or `metrics@custom` component template, so the policy covers every {{fleet}} `logs-*` or `metrics-*` data stream. Repeat separately for logs and for metrics.
+* **[Apply an ILM policy to specific data streams across all namespaces](/reference/fleet/data-streams-scenario2.md)**: Edit a data stream's own `@custom` component template, leaving the integration's other data streams untouched.
+* **[Apply an ILM policy to one data stream in one namespace](/reference/fleet/data-streams-scenario3.md)**: Clone the integration's index template and scope the copy to a single namespace. This is the heaviest option, because you take on maintaining the cloned template.
 
   {applies_to}`stack: ga 9.5+` For shared settings across every data stream in a namespace, refer to [Customize data streams with namespace index templates](/reference/fleet/data-streams-namespace-custom.md).
 
-* {applies_to}`stack: ga 9.1` **[Scenario 4](/reference/fleet/data-streams-scenario4.md)**: You want to apply an ILM policy to all data streams in a custom integration using a `@custom` component template.
+* {applies_to}`stack: ga 9.1` **[Apply an ILM policy to all data streams in a custom integration](/reference/fleet/data-streams-scenario4.md)**: Create an `<integration>@custom` component template for an integration package you built yourself.
 
 ::::{note}
 :applies_to: stack: ga 9.5+
