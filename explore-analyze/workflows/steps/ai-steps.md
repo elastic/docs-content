@@ -208,6 +208,7 @@ Invoke an {{agent-builder}} agent as a workflow step. Useful when you want a mul
 | `connector-id` | top level | string | No | GenAI connector. Mutually exclusive with `inference-id`. |
 | `inference-id` | top level | string | No | Inference endpoint ID. Mutually exclusive with `connector-id`. |
 | `create-conversation` | top level | boolean | No | When `true`, persist the conversation for follow-up steps or later reference. |
+| `public-conversation` | top level | boolean | No | {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` When `true`, a conversation that this step creates is public: any user who can access the agent can read and continue it. Defaults to private. Requires `create-conversation: true`. Ignored when the step continues an existing conversation. Refer to [Conversation access control](/explore-analyze/ai-features/agent-builder/permissions.md#conversation-access-control). |
 | `message` | `with` | string | Yes | User message to send to the agent. |
 | `schema` | `with` | object | No | JSON Schema for structured output. |
 | `conversation_id` | `with` | string | No | Continue an existing conversation by ID. |
