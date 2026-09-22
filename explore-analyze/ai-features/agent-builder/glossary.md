@@ -189,7 +189,7 @@ Flyout mode
 
 $$$generative-ai-connector$$$
 Generative AI connector {applies_to}`stack: deprecated 9.5` {applies_to}`serverless: deprecated`
-:   A {{kib}} connector that connects {{agent-builder}} to an LLM provider such as OpenAI, Anthropic, Amazon Bedrock, Google Gemini, or Azure OpenAI. Distinct from a [](#connector), which connects {{agent-builder}} to non-LLM external services. Deprecated in favor of the [](#inference-endpoint). See [](models.md#configure-a-connector).
+:   A {{kib}} connector that connects {{agent-builder}} to an LLM provider. The connector types are OpenAI (which also covers Azure OpenAI and OpenAI-compatible providers), Amazon Bedrock, Google Gemini, and AI Connector. Distinct from a [](#connector), which connects {{agent-builder}} to non-LLM external services. Deprecated in favor of the [](#inference-endpoint). See [](models.md#configure-a-connector).
 
 $$$genai-settings$$$
 GenAI Settings {applies_to}`stack: ga 9.4+`
@@ -257,7 +257,7 @@ Model selector
 
 $$$monitor-inference$$$
 `monitor_inference`
-:   The {{es}} cluster privilege required when an agent uses a model that calls the {{es}} Inference API. Built-in tools such as `search` and `generate_esql`, and all index search tools, depend on this privilege. See [](permissions.md#es-privileges).
+:   The {{es}} cluster privilege required when an agent uses a model that calls the {{es}} Inference API, such as an [](#inference-endpoint) or the Elastic Managed LLM. Built-in tools such as `search` and `generate_esql`, and all index search tools, depend on this privilege when the selected model routes through the Inference API. See [](permissions.md#es-privileges).
 
 ## O
 

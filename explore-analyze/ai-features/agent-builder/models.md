@@ -39,7 +39,7 @@ Learn more about [Elastic Managed LLMs](kibana://reference/connectors-kibana/ela
 These deployments do not include a preconfigured model. To use {{agent-builder}}, you have two options:
 
 - [Connect to the Elastic {{infer-cap}} Service (EIS) using Cloud Connect](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md) (recommended) {applies_to}`stack: ga 9.3+`
-- [Configure your own model](#use-additional-models) using an {{infer}} endpoint
+- [Configure your own model](#use-additional-models) using an {{infer}} endpoint, or a Generative AI connector {applies_to}`stack: deprecated 9.5` {applies_to}`serverless: deprecated`
 
 :::
 
@@ -64,12 +64,12 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-When you call an agent through the [Converse API](kibana-api.md#chat-and-conversations), you can override the agent's configured model for that request. Pass one of the following in the request body:
+When you call an agent through the [Converse API](kibana-api.md#chat-and-conversations), you can override the model used for that request. Pass one of the following in the request body:
 
 * `inference_id`: the ID of an [{{infer}} endpoint](#add-an-inference-endpoint). Use this parameter for new integrations.
 * `connector_id`: the ID of a [connector](#configure-a-connector). Generative AI connectors are deprecated.
 
-Both parameters route the request to the same underlying model and are mutually exclusive. If you send both, the request fails with a `400` error. If you omit both, the agent uses its default model.
+Both parameters route the request to the same underlying model and are mutually exclusive. If you send both, the request fails with a `400` error. If you omit both, the request uses the default model for {{agent-builder}}, as set on the **Feature settings** page.
 
 For an example request, refer to [Route a request to a specific model](kibana-api.md#chat-and-conversations).
 
@@ -160,15 +160,15 @@ If you prefer not to use the UI, you can also create endpoints with the {{infer}
 ### Configure a connector
 
 ```{applies_to}
-stack: ga, deprecated 9.5
+stack: ga 9.3-9.4, deprecated 9.5
 serverless: deprecated
 ```
 
 ::::{important}
 :applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
-Generative AI connectors are deprecated and are being progressively removed from the create connector UI. Existing connectors continue to work.
+Generative AI connectors are deprecated. Existing connectors and their rule actions continue to work, and you can still create and edit connectors through the API.
 
-For new models, [add an {{infer}} endpoint](#add-an-inference-endpoint) instead. Migrate existing connectors before the future removal.
+In 9.6 and later, deprecated connector types are hidden from the **Create connector** UI. For new models, [add an {{infer}} endpoint](#add-an-inference-endpoint) instead.
 ::::
 
 To use additional models that aren't preconfigured, create a connector for your model provider.
