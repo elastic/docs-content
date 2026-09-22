@@ -25,7 +25,7 @@ Uptime settings apply to the current space only. To segment different uptime use
 2. At the top of the page, click **Settings**.
 
     ::::{important}
-    To modify items on this page, you must have the [`all`](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) Uptime privilege granted to your role.
+    To modify items on this page, you must have the [`all`](/solutions/observability/get-started/observability-kibana-privileges.md) Uptime privilege granted to your role.
 
     ::::
 
