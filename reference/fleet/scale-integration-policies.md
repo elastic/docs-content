@@ -46,20 +46,8 @@ The most useful providers for this purpose are:
 | [Env](/reference/fleet/env-provider.md) | `${env.VAR_NAME}` | Values you define per host as environment variables, such as a database address or a log directory. |
 | [Host](/reference/fleet/host-provider.md) | `${host.name}`, `${host.platform}` | Values derived from the host itself, such as hostnames in log paths. |
 | [Agent](/reference/fleet/agent-provider.md) | `${agent.id}` | Values that identify the agent. |
-| [Local](/reference/fleet/local-provider.md) | `${local.VAR_NAME}` | Values you define per host in the `elastic-agent.yml` file, when you'd rather not use environment variables. |
 
 The [Docker](/reference/fleet/docker-provider.md) and [Kubernetes](/reference/fleet/kubernetes-provider.md) providers work the same way for containerized workloads. For the full list, refer to [{{agent}} providers](/reference/fleet/providers.md).
-
-You can't add a `providers` configuration block through the {{fleet}} UI, but you can add one to the `elastic-agent.yml` file on each host. {{agent}} reads provider settings from that file whether it's standalone or {{fleet}}-managed. For example, to define a custom variable with the local provider, add the following to `elastic-agent.yml` and restart {{agent}}:
-
-```yaml
-providers:
-  local:
-    vars:
-      oracle_db_address: db-042.example.com
-```
-
-You can then reference it in an integration policy as `${local.oracle_db_address}`. For more details, refer to [Using providers on {{fleet}}-managed {{agent}}](/reference/fleet/providers.md#using-providers-fleet-managed-agent).
 
 Wherever an integration setting varies from host to host, replace it with one of these variables. A variable can stand in for a whole value or for part of one, such as the address within a connection string. The following sections show how to do that for a database connection, and how to fall back to a default when a variable isn't defined.
 
