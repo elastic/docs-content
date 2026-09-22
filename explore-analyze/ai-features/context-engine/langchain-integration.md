@@ -28,7 +28,7 @@ This guide covers both routes. Examples on this page use Python, but the same ap
 * An {{stack}} deployment with an Enterprise license, or an {{serverless-full}} project.
 * The `contextEngine:enabled` advanced setting turned on in the space you want to query. This setting is per space, and the APIs return `404` in any space where it's off.
 * At least one AI Index containing Knowledge Indicators (KIs). See [Create an AI Index](quickstart.md#2.-create-an-ai-index) if you don't have one yet.
-* An API key whose privileges cover both Kibana and Elasticsearch. [Step 1](#step-1-create-an-api-key) walks through this.
+* An API key whose privileges cover both Kibana and Elasticsearch. [Step 1](#step-1-create-credentials) walks through this.
 * Python 3.10 or later, with `langchain` installed. The skill option in [Step 3](#step-3-create-the-agent) adds `deepagents`, which needs 3.11 or later.
 
 ## How retrieval works
@@ -43,70 +43,148 @@ Describing the AI Index before querying it prevents the agent from guessing the 
 
 Both connection routes run the same three operations, against one Kibana space, as the owner of the API key. An agent only ever sees the AI Indices that key is allowed to read.
 
-## Step 1: Create an API key
+## 0. Connect to Context Engine
+
+Choose a connection route.
+
+::::{tab-set}
+
+:::{tab-item} MCP server
+
+1. Create credentials with the Agent Builder, Context Engine, and Elasticsearch privileges required for MCP access.
+2. Connect to the Agent Builder MCP endpoint.
+3. Load the Context Engine tools.
+
+:::
+
+:::{tab-item} Context Engine APIs
+
+1. Create credentials with the Context Engine and Elasticsearch privileges required for API access.
+2. Configure the Context Engine API client.
+3. Wrap the retrieval operations as LangChain tools.
+
+:::
+
+::::
+
+## Step 1: Create credentials
 
 Your credential needs privileges in both Kibana and Elasticsearch. The MCP route additionally needs Agent Builder **Read**, which is what makes the tools visible.
 
-1. In Kibana, go to **Stack Management → Roles** and create a role with:
+1. In Kibana, go to **Stack Management → API Keys** and click `Create API key` 
+2. Leave **Control security privileges** off and define a role with the following privileges:
+
+    ::::::{tab-set}
+    :group: ce-transport
+    :::::{tab-item} MCP server
+    :sync: mcp
 
     * **Index privileges**: `read` and `view_index_metadata` on `ai-index-*`.
-    * **Kibana privileges**, in the space you want to query: **Context Engine** at **Read**, plus **Agent Builder** at **Read** if you're using the MCP server.
+    * **Kibana privileges**, in the space you want to query: **Agent Builder** at **Read**, and **Context Engine** at **Read**.
 
-2. Assign the role to your user.
+    ::::{dropdown} Example of a concrete definition
+    ```json
+    {
+      "contextEngineRole": {
+        "cluster": [],
+        "indices": [
+          {
+            "names": [
+              "ai-index-*"
+            ],
+            "privileges": [
+              "read",
+              "view_index_metadata"
+            ],
+            "field_security": {
+              "grant": [
+                "*"
+              ],
+              "except": []
+            },
+            "allow_restricted_indices": false
+          }
+        ],
+        "applications": [
+          {
+            "application": "kibana-.kibana",
+            "privileges": [
+              "feature_agentBuilder.read",
+              "feature_contextEngine.read"
+            ],
+            "resources": [
+              "*"
+            ]
+          }
+        ],
+        "run_as": [],
+        "metadata": {},
+        "transient_metadata": {
+          "enabled": true
+        }
+      }
+    }
+    ```
+    ::::
+    :::::
+    :::::{tab-item} API
+    :sync: api
 
-3. Go to **Stack Management → API keys** and create a key. Leave **Control security privileges** off, so the key inherits your user's privileges.
+    * **Index privileges**: `read` and `view_index_metadata` on `ai-index-*`.
+    * **Kibana privileges**, in the space you want to query: **Context Engine** at **Read**.
 
-4. Copy the `encoded` value and export it, along with your Kibana URL:
+    ::::{dropdown} Example of a concrete definition
+    ```json
+    {
+      "contextEngineRole": {
+        "cluster": [],
+        "indices": [
+          {
+            "names": [
+              "ai-index-*"
+            ],
+            "privileges": [
+              "read",
+              "view_index_metadata"
+            ],
+            "field_security": {
+              "grant": [
+                "*"
+              ],
+              "except": []
+            },
+            "allow_restricted_indices": false
+          }
+        ],
+        "applications": [
+          {
+            "application": "kibana-.kibana",
+            "privileges": [
+              "feature_contextEngine.read"
+            ],
+            "resources": [
+              "*"
+            ]
+          }
+        ],
+        "run_as": [],
+        "metadata": {},
+        "transient_metadata": {
+          "enabled": true
+        }
+      }
+    }
+    ```
+    ::::
+    :::::
+    ::::::
+
+3. Copy the `encoded` value and export it, along with your Kibana URL:
 
     ```shell
     export KIBANA_URL="https://my-deployment.kb.us-east-1.aws.elastic.cloud"
     export KIBANA_API_KEY="VnVhQ2ZHY0JDZGJrU..."
     ```
-
-:::{dropdown} Create the key directly in Serverless
-```json
-{
-  "ab_ce": {
-    "cluster": [],
-    "indices": [
-      {
-        "names": [
-          "ai-index-*"
-        ],
-        "privileges": [
-          "read",
-          "view_index_metadata"
-        ],
-        "field_security": {
-          "grant": [
-            "*"
-          ],
-          "except": []
-        },
-        "allow_restricted_indices": false
-      }
-    ],
-    "applications": [
-      {
-        "application": "kibana-.kibana",
-        "privileges": [
-          "feature_agentBuilder.read",
-          "feature_contextEngine.read"
-        ],
-        "resources": [
-          "*"
-        ]
-      }
-    ],
-    "run_as": [],
-    "metadata": {},
-    "transient_metadata": {
-      "enabled": true
-    }
-  }
-}
-```
-:::
 
 This example also uses an OpenRouter key to reach the model:
 
