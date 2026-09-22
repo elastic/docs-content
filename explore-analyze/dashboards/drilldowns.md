@@ -51,7 +51,7 @@ A dashboard drilldown opens another dashboard and can carry the time range, filt
 
 For example, a dashboard can show logs and metrics for several data centers. A drilldown can open a dashboard for the one data center or server you select.
 
-![Drilldown on data table that navigates to another dashboard](/explore-analyze/images/kibana-dashboard_drilldownOnDataTable_8.3.gif "")
+![Drilldown on data table that navigates to another dashboard](/explore-analyze/images/kibana-dashboard_drilldownOnDataTable_8.3.gif)
 
 The following panel types support dashboard drilldowns:
 
@@ -106,7 +106,7 @@ The **Detailed logs** dashboard opens with the `geo.src` filter, the KQL query, 
 
 A URL drilldown opens a website from a panel. The URL can change with the dashboard time range, the dashboard filters, and the value you select. You build that URL with [variables](#url-template-variable) in a [URL template](#url-templating-language).
 
-![Drilldown on pie chart that navigates to GitHub](/explore-analyze/images/kibana-dashboard_urlDrilldownGoToGitHub_8.3.gif "")
+![Drilldown on pie chart that navigates to GitHub](/explore-analyze/images/kibana-dashboard_urlDrilldownGoToGitHub_8.3.gif)
 
 Some panels support more than one interaction. Under **Trigger**, select when the drilldown runs. The variables you can use depend on that choice. URL drilldowns support these triggers:
 
@@ -149,15 +149,15 @@ If a pie chart breaks down values from a GitHub repository, a URL drilldown can 
 10. Save the dashboard.
 11. On the pie chart panel, select a slice, then select **Show on GitHub**.
 
-    ![URL drilldown popup](/explore-analyze/images/kibana-dashboard_urlDrilldownPopup_8.3.png "")
+    ![URL drilldown popup](/explore-analyze/images/kibana-dashboard_urlDrilldownPopup_8.3.png)
 
 12. In the list of {{kib}} repository issues, confirm that the slice value appears in the search.
 
-    ![Open ios issues in the elastic/kibana repository on GitHub](/explore-analyze/images/kibana-dashboard_urlDrilldownGithub_8.3.png "")
+    ![Open iOS issues in the elastic/kibana repository on GitHub](/explore-analyze/images/kibana-dashboard_urlDrilldownGithub_8.3.png)
 
 ### Pass context and table values in the URL [url-drilldown-examples]
 
-Use variables when the URL should carry the dashboard time range, the dashboard filters, or a table cell. Select **Add variable** to insert a variable for the panel and the trigger you selected. Save the dashboard, then select a value on the panel and confirm the URL before you share the drilldown.
+Use variables to pass the dashboard time range, the dashboard filters, or a table cell in the URL. Select **Add variable** to insert a variable for the panel and the trigger you selected. Save the dashboard, then select a value on the panel and confirm the URL before you share the drilldown.
 
 **Time range.** `context.panel.timeRange.from` and `context.panel.timeRange.to` are the panel time range when the panel has its own time range. Otherwise they are the dashboard time range. Format them with the `date` helper when the site expects a calendar date:
 
@@ -187,7 +187,7 @@ A Discover drilldown opens **Discover** from a **Lens** panel and can carry the 
 
 For example, a Discover drilldown on a pie chart can open only the documents for the slice you select.
 
-![Drilldown on bar vertical stacked chart that navigates to Discover](/explore-analyze/images/kibana-dashboard_discoverDrilldown_8.3.gif "")
+![Drilldown on bar vertical stacked chart that navigates to Discover](/explore-analyze/images/kibana-dashboard_discoverDrilldown_8.3.gif)
 
 The following panel types support Discover drilldowns:
 
@@ -265,7 +265,7 @@ Example:
 
 **date**
 
-Format dates. Supports relative date expressions (for example, "now-15d"). Refer to the [moment](https://momentjs.com/docs/#/displaying/format/) docs for formatting options.
+Format dates. Supports relative date expressions (for example, `now-15d`). Refer to the [moment](https://momentjs.com/docs/#/displaying/format/) docs for formatting options.
 
 Example:
 
