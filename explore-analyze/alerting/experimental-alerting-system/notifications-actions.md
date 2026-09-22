@@ -26,6 +26,18 @@ To send a notification or trigger an action from a rule in the {{alerting-v2-sys
 
    For actions that fire exactly once in response to a specific alert episode event (such as opening a ticket when an alert episode is assigned) use an [alert episode lifecycle trigger](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven) instead of an action policy. Refer to [Connect workflows](workflows-alerting.md) for a comparison of action policies and lifecycle triggers.
 
+## Set up a notification from the rule form [inline-actions]
+
+If you don't have a workflow ready, the rule form offers a shortcut. Add an **Email** or **Slack** action while creating the rule, and {{kib}} generates the workflow and links it for you when you save. Edit or remove it later from the action policy. Refer to [Select workflows to invoke](action-policies/create-configure-action-policy.md#policy-destinations).
+
+Use this shortcut for a single straightforward notification. For multi-step automation or routing across several destinations, build the workflow yourself and attach it instead.
+
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` A **Slack** action added this way uses the Slack (v2) [connector](/deploy-manage/manage-connectors.md) and posts to a channel you select in the form. This applies only to the rule form shortcut. Slack (v1) connectors remain valid everywhere else, including [{{kib}} alerting](../alerts.md) rules, cases, and workflows you write yourself.
+
+:::{note}
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` A Slack action created through this shortcut before 9.6 no longer appears in the rule form. It keeps sending notifications, because its underlying workflow is unchanged, but you can't review or edit it from the rule. To change it, edit the generated workflow directly.
+:::
+
 ## What to do next with action policies [notifications-actions-next-steps]
 
 From here, you can learn how action policies work and start creating your own.
