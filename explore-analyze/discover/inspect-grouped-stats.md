@@ -44,7 +44,7 @@ When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-lan
 
 3. Expand a row to inspect the underlying documents.
 
-## Show CATEGORIZE patterns in the group titles
+## Show CATEGORIZE patterns in the group titles [pattern-rendering]
 
 When the grouping field uses [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md), each row title shows the detected pattern with token highlighting, so you can scan repeated message structures at a glance.
 
@@ -76,7 +76,7 @@ On larger data sets, add a [`SAMPLE`](elasticsearch://reference/query-languages/
 :screenshot:
 :::
 
-## Grouped row actions
+## Grouped row actions [grouped-row-actions]
 
 Select the {icon}`boxes_vertical` actions button on any group row to:
 
@@ -87,7 +87,7 @@ Select the {icon}`boxes_vertical` actions button on any group row to:
 
 **Filter in** and **Filter out** aren't available when the grouping field is not filterable.
 
-## Opt out of the grouped layout
+## Opt out of the grouped layout [opt-out-of-the-grouped-layout]
 
 When the grouped layout activates, the regular results table toolbar is replaced with a {icon}`flask` **Group by** button. The button shows the number of active groupings as a badge.
 
@@ -95,7 +95,7 @@ The grouping field is preselected from your `STATS BY` clause. Open the **Group 
 
 ## Related pages
 
-- [Use Discover with ES|QL](use-esql.md)
+- [Use Discover with {{esql}}](use-esql.md)
 - [Run a pattern analysis on your log data](run-pattern-analysis-discover.md)
 - [`STATS` command reference](elasticsearch://reference/query-languages/esql/commands/stats-by.md)
 - [Get faster results with approximate `STATS`](../query-filter/languages/esql-kibana.md#approximation-fast-mode)

@@ -667,11 +667,13 @@ redirects:
           '_esql_and_time_series_data': '_esql_and_time_series_data'
           '_edit_the_esql_visualization': '_edit_the_esql_visualization'
           'refine-esql-query-from-table': 'refine-esql-query-from-table'
+          'refine-an-esql-query-by-interacting-with-the-results-table': 'refine-esql-query-from-table'
       - to: 'explore-analyze/discover/esql-variable-controls.md'
         anchors:
           'add-variable-control': 'add-variable-control'
           'esql-multi-values-controls': 'esql-multi-values-controls'
           'import-discover-query-with-controls': 'import-discover-query-with-controls'
+          'edit-a-variable-control': 'edit-a-variable-control'
       - to: 'explore-analyze/discover/create-lookup-indices.md'
         anchors:
           'discover-esql-lookup-join': 'discover-esql-lookup-join'
@@ -679,10 +681,14 @@ redirects:
           'esql-lookup-index-from-file': 'esql-lookup-index-from-file'
           'view-edit-lookup-esql': 'view-edit-lookup-esql'
           'discover-esql-lookup-editor-limitations': 'discover-esql-lookup-editor-limitations'
+          'reset-the-lookup-index-configuration': 'reset-the-lookup-index-configuration'
       - to: 'explore-analyze/discover/inspect-grouped-stats.md'
         anchors:
           'esql-cascade-layout': 'esql-cascade-layout'
           'esql-cascade-pattern-sparkline': 'esql-cascade-pattern-sparkline'
+          'pattern-rendering': 'pattern-rendering'
+          'grouped-row-actions': 'grouped-row-actions'
+          'opt-out-of-the-grouped-layout': 'opt-out-of-the-grouped-layout'
   'explore-analyze/discover/use-esql.md':
     to: 'explore-analyze/discover/use-esql.md'
     many:

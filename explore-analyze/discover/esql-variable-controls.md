@@ -40,7 +40,7 @@ serverless: preview
 :::{include} ../_snippets/multi-value-esql-controls.md
 :::
 
-#### Edit a variable control in Discover
+#### Edit a variable control in Discover [edit-a-variable-control]
 
 Once a control is active for your query, you can still edit it by hovering over it and by selecting the {icon}`pencil` **Edit** option that appears.
 

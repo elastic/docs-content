@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
 type: how-to
-description: Switch Discover between ES|QL and classic mode, and see what happens to your query, filters, and the mode Discover opens next.
+description: Switch Discover between ES|QL and classic mode, and see what happens to your query and filters.
 ---
 
 # Switch between {{esql}} and classic mode
@@ -31,8 +31,6 @@ If you've entered a KQL or Lucene query in classic mode, Discover converts it to
 - The query text becomes an {{esql}} query.
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar become `WHERE` clauses where possible.
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Filters that can't be converted, such as scripted filters, are dropped.
-
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Discover remembers the query mode you last used. A new Discover session opens in that mode.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` By default, Discover derives your starting query from your data sources. Administrators can set a different starting query for the space with the [**Default ES|QL query** (`discover:defaultEsqlQuery`)](kibana://reference/advanced-settings.md#kibana-discover-settings) setting. This setting doesn't apply after you edit the query or switch query modes.
 

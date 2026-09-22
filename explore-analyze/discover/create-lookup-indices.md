@@ -122,7 +122,7 @@ To view or edit an index:
 
 4. If you made changes, select **Save** before closing the flyout.
 
-### Reset the lookup index configuration
+### Reset the lookup index configuration [reset-the-lookup-index-configuration]
 
 At any time, you can delete all the index data and fields.
 
@@ -155,6 +155,6 @@ Row display limit
 
 ## Related pages
 
-- [Use Discover with ES|QL](use-esql.md)
+- [Use Discover with {{esql}}](use-esql.md)
 - [Join data from multiple indices with LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md)
 - [Use {{esql}} in the {{kib}} UI](../query-filter/languages/esql-kibana.md)
