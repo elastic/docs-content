@@ -13,9 +13,9 @@ description: Walk through your first Discover session in ES|QL. Query sample log
 
 # Get started with {{esql}} in Discover [try-esql]
 
-Elasticsearch Query Language ({{esql}}) lets you explore {{product.elasticsearch}} data in **Discover** without a [data view](discover-get-started.md#find-the-data-you-want-to-use). You write a piped query that names the data, then filter and sort it in the same editor. This tutorial walks through a first session on the sample web logs: run a query, read the table and chart, then keep what you found.
+This tutorial is a first **Discover** session with Elasticsearch Query Language ({{esql}}). You open {{esql}} mode, query the sample web logs, read the table and chart, and save the session.
 
-It assumes you can open {{product.kibana}} and have data in {{product.elasticsearch}}. You do not need {{esql}} experience.
+You write a piped query that names the data, so you do not need a [data view](discover-get-started.md#find-the-data-you-want-to-use). You do not need {{esql}} experience. For the language itself, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) and [Use {{esql}} in the {{kib}} UI](../query-filter/languages/esql-kibana.md).
 
 By the end of this tutorial, you can:
 
@@ -33,7 +33,7 @@ To follow this tutorial, you need the following:
 
 ## Step 1: Open Discover in ES|QL [tutorial-try-esql]
 
-**Discover** has two query modes. This tutorial uses {{esql}}, which does not require a data view. Classic mode uses data views with Kibana Query Language (KQL) or Lucene. For classic mode, refer to [Explore fields and data with Discover](discover-get-started.md).
+This tutorial uses {{esql}} mode. Classic mode uses data views with Kibana Query Language (KQL) or Lucene. For classic mode, refer to [Explore fields and data with Discover](discover-get-started.md).
 
 1. Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. If the editor is not already in {{esql}} mode, switch to it from either location:
@@ -41,11 +41,13 @@ To follow this tutorial, you need the following:
    - {icon}`code` **Query in ES|QL** (**ES|QL** or **Try ES|QL** in earlier versions) in the application menu.
    - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
 
-   If the editor already shows an {{esql}} query, skip this step. If that tab already has a KQL or Lucene query, Discover converts it when you switch. Switching back to classic mode does not restore that query. Refer to [Revert to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
+   If the editor already shows an {{esql}} query, skip this step.
 
 3. Set the time range to **Last 7 days**.
 
    Sample data timestamps are relative to when you installed the set. If you added the sample web logs earlier, widen the range until the table has rows.
+
+If that tab already has a KQL or Lucene query, Discover converts it when you switch. Switching back to classic mode does not restore that query. Refer to [Revert to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
 
 **Result:** The query editor is in {{esql}} mode, and the time range covers the sample web logs.
 
@@ -77,7 +79,7 @@ If you are not sure which index or field names to use on your own data, the edit
 
 ## Step 3: Add a field and read the chart
 
-Add the visit destination so you can see where the visits went. `LIMIT` sets how many rows the query returns. These examples use `LIMIT 10` to keep the table short.
+Add the visit destination so the chart shows where the visits went. `LIMIT` sets how many rows the query returns. These examples use `LIMIT 10` to keep the table short.
 
 1. Replace the query with the following:
 
@@ -92,7 +94,7 @@ Add the visit destination so you can see where the visits went. `LIMIT` sets how
 **Result:** The table shows 10 rows. The chart updates from the new query and breaks the data down for you.
 
 :::{note}
-When you don't use `KEEP` to retain specific fields, Discover does not break the chart down automatically. An option appears above the visualization so you can select a field.
+When you don't use `KEEP` to retain specific fields, Discover does not break the chart down automatically. Select a field from the option Discover shows for the chart.
 :::
 
 ## Step 4: Sort and filter the results
@@ -117,24 +119,22 @@ You can also add a `WHERE` clause by interacting with a value in the results tab
 
 ## Step 5: Save the session
 
-To reopen this query, the columns, and the tabs later, save the Discover session.
+To reopen this query, the columns, and the tabs later, select **Save** in the application menu.
 
 You can also add the session or the chart to a dashboard.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` You can save the current table to a dashboard too.
 
-Refer to [Save a Discover session for reuse](save-open-search.md).
+The steps for each path are in [Save a Discover session for reuse](save-open-search.md).
 
-**Result:** The session is saved, and you can reopen it or put it on a dashboard.
+**Result:** You can reopen the session, or put the session, the chart, or the table on a dashboard.
 
 ## Next steps
 
-There is much more you can do with {{esql}} to explore data and investigate in **Discover**.
-
-- [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Commands, functions, and operators.
-- [Use Discover with ES|QL](use-esql.md): Tasks that stay in Discover when you are in {{esql}} mode.
+- [Use Discover with ES|QL](use-esql.md): Switch modes, browse data sources, work with results, and add variable controls.
 - [Create lookup indices from Discover queries](create-lookup-indices.md): Build or edit a lookup index from a `LOOKUP JOIN` command.
 - [Inspect grouped STATS results in Discover](inspect-grouped-stats.md): Expand `STATS BY` groups, inspect patterns, and filter from a group.
+- [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Commands, functions, and operators, when you want more than this session.
 - [Use ES|QL in the {{kib}} UI](../query-filter/languages/esql-kibana.md): Editor tools, time parameters, AI assistance, and Fast mode.
 - [Learn data exploration and visualization with Kibana](../kibana-data-exploration-learning-tutorial.md): A longer path from Discover into dashboards.
 
