@@ -148,7 +148,7 @@ Higher compression uses less RAM and usually costs more recall:
 | `int4_hnsw` | About 8x less | Larger loss. Often benefits from rescoring. |
 | BBQ (`bbq_hnsw`, `bbq_disk` {applies_to}`{ stack: ga 9.2+, serverless: ga }`) | About 32x less | Larger loss. BBQ defaults to 3x oversampling to recover recall. |
 
-`bbq_disk` is the BBQ variant that can run with less of the index in RAM. For more infomration on the stored Lucene files, refer to [Vector files](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md#vector-files). For the full parameter list, refer to [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options).
+`bbq_disk` is the BBQ variant that can run with less of the index in RAM. For more information on the stored Lucene files, see [Vector files](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md#vector-files). For the full parameter list, see [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options).
 
 To override the default, set `index_options.type`:
 
