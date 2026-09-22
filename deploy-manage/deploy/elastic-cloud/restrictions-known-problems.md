@@ -45,7 +45,7 @@ To learn more about the features that are supported by {{ecloud}}, check [{{eclo
   * 9.0.0 through 9.0.1: upgrade to 9.0.4 or later
 
   We recommend upgrading to one of the currently available versions shown in the Cloud console.
-  If you need to upgrade to an older 8.x or 9.x minor version that is not shown, please contact Elastic Support.
+  If you need to upgrade to an older 8.x or 9.x minor version that is not shown, contact Elastic Support.
 
 * Due to a known issue, {{es}} 9.5.0, 9.5.1, and 9.5.2 can fail to fully replicate some bulk index operations from a primary shard when the node exceeds its indexing pressure limit. This can cause replica data to diverge from the primary. Version 9.5.2 is unavailable for new deployments and upgrades. Review [this KB article](https://support.elastic.co/knowledge/c56aad67) for more guidance on the known issue.
 
