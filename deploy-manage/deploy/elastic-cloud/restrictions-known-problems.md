@@ -39,7 +39,7 @@ To learn more about the features that are supported by {{ecloud}}, check [{{eclo
 
 ## Stack versions [ec-stack-versions]
 
-* Due to a known issue, {{es}} 8.17.0 through 8.17.4, 8.18.0, and 9.0.0 through 9.0.1 might experience significant vector search performance degradation on Ubuntu 24.04. An interaction between Multi-Gen LRU (MGLRU) and Lucene read-advice behavior can cause excessive page faults and I/O during vector operations. Elastic begins an incremental upgrade of {{ecloud}} infrastructure to Ubuntu 24.04 on November 20, 2026. If you run an affected version, upgrade before that date:
+* Due to a known issue, {{es}} 8.17.0 through 8.17.4, 8.18.0, and 9.0.0 through 9.0.1 might experience significant vector search performance degradation on Ubuntu 24.04. An interaction between Multi-Gen LRU (MGLRU) and Lucene read-advice behavior can cause excessive page faults and I/O during vector operations. In preparation for the end of support for Ubuntu 22.04, Elastic begins an incremental upgrade of the underlying {{ech}} infrastructure to Ubuntu 24.04 starting on November 20, 2026. If you run an affected version, upgrade before that date:
   * 8.17.0 through 8.17.4: upgrade to 8.17.5 or later
   * 8.18.0: upgrade to 8.18.1 or later
   * 9.0.0 through 9.0.1: upgrade to 9.0.4 or later
