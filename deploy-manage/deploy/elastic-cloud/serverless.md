@@ -104,6 +104,16 @@ Review these pages to learn about the settings you can control and the tools you
 * [](/deploy-manage/deploy/elastic-cloud/tools-apis.md): Find the APIs, clients, and tools available to your project, including the {{es}} and {{kib}} {{serverless-short}} APIs and Terraform provisioning.
 * [](/deploy-manage/deploy/elastic-cloud/serverless-faq.md): Find answers to common questions about pricing, regions, moving data, backups, authentication, converting between project types, and support.
 
+## Move data to and from {{serverless-short}} [move-data-to-and-from-serverless]
+
+If you already have an Elastic cluster or deployment, and you want to move to {{serverless-short}}, then you can migrate your data.
+
+Because versioned {{stack}} clusters and deployments use a different architecture from {{serverless-short}}, you can't convert directly to a {{serverless-short}} project. Instead, you can migrate your documents into a new project. [Other types of data](/manage-data/migrate.md#migration-data-types) need to be recreated in your project.
+
+* [](/manage-data/migrate/migrate-data-using-reindex-api.md): Copy documents into a project with the [reindex API]({{es-serverless-apis}}operation/operation-reindex), using your existing deployment as the remote source.
+* [](/manage-data/migrate/migrate-with-logstash.md): Move data to and from {{serverless-short}} projects using {{ls}} with {{es}} input and output plugins.
+
+
 ## Operate and secure your projects
 
 After you create your project, review the following sections to learn how to administer, secure, and monitor your project, optimize it for performance and cost, and get support.
@@ -140,13 +150,6 @@ Elastic operates and monitors the infrastructure behind your project, so your ow
 * [](/deploy-manage/cloud-organization/service-status.md): Check current availability and subscribe to updates when a cloud region is affected.
 * [Raise a support case](/troubleshoot/index.md#contact-us): Raise a case for your subscription as you do today. In the body of the case, mention you are working with a {{serverless-short}} project.
 Elastic backs up your projects and is responsible for business continuity, so you are unable to request project backups or take your own snapshots. If you experience data loss or corruption, you can request an emergency restore by [contacting Support](/troubleshoot/index.md#contact-us).
-
-## Move data to and from {{serverless-short}} [move-data-to-and-from-serverless]
-
-Projects and hosted deployments are based on different architectures. If you have an existing {{ech}} deployment, self-managed cluster, or {{serverless-short}} project of another type, you cannot convert it into a new {{serverless-short}} project. Instead, you can migrate your documents into a new project:
-
-* [](/manage-data/migrate/migrate-data-using-reindex-api.md): Copy documents into a project with the [reindex API]({{es-serverless-apis}}operation/operation-reindex), using your existing deployment as the remote source.
-* [](/manage-data/migrate/migrate-with-logstash.md): Move data to and from {{serverless-short}} projects using {{ls}} with {{es}} input and output plugins.
 
 ## Learn more
 
