@@ -76,7 +76,7 @@ Not sure which to choose? Start with the {{es}} solution for general-purpose sea
 
 :::::
 
-:::::{step} (Optional) Choose a feature tier
+:::::{step} Choose a feature tier
 
 {{obs-serverless}} and {{sec-serverless}} projects have feature tiers. The tier determines which capabilities are available and how the project is billed. Compare the [{{observability}} tiers](/solutions/observability/observability-serverless-feature-tiers.md) and the [Security tiers](/solutions/security/security-serverless-feature-tiers.md) before you create the project. You can change the tier later in [project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons).
 
@@ -86,7 +86,7 @@ Not sure which to choose? Start with the {{es}} solution for general-purpose sea
 
 [Create a serverless project](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md) in the {{ecloud}} console, either as part of a free trial or in an existing organization.
 
-You choose a [region](/deploy-manage/deploy/elastic-cloud/regions.md) during setup, which is the geographic location of the data center that hosts your project. The region determines where your data resides and affects latency relative to your clients, data sources, and other connected services, so pick the one closest to them. You cannot change the region after the project is created.
+You choose a [region](/deploy-manage/deploy/elastic-cloud/regions.md) during setup, which is the geographic location of the data center that hosts your project. The region determines where your data resides and affects latency relative to your clients, data sources, and other connected services. You cannot change the region after the project is created.
 
 A project's type is fixed after you create it, but you can create as many projects as you need and you are charged only for your usage. That means you can create one project of each type to evaluate them side by side, then delete the ones you don't keep.
 
