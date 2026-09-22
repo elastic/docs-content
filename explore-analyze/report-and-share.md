@@ -65,7 +65,7 @@ Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboa
 * **CSV download** — Generate and download CSV files of Lens visualizations.
 * **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
 * {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` **Export JSON**: export the JSON source of a dashboard in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
-* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Export JSON** for a Discover session: Copy the session configuration as JSON so you can review it or save a copy. Refer to [Export a Discover session as JSON](discover/save-open-search.md#export-discover-session-json).
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Export JSON** for a Discover session: Copy the session configuration as JSON so you can review it or save a copy. This export copies or downloads the JSON from the open session. It does not queue a report. Refer to [Export a Discover session as JSON](discover/save-open-search.md#export-discover-session-json).
 
 :::{tip}
 Several applications let you [schedule exports](report-and-share/automating-report-generation.md#schedule-report-generation).
