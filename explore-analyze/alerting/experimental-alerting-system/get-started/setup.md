@@ -13,7 +13,9 @@ description: "Requirements for using the experimental alerting system in Kibana,
 
 This page covers what you need before using the {{alerting-v2-system}}, and how to turn it on and off.
 
-## Requirements [alerting-setup-requirements]
+## Before you use the system [alerting-setup-requirements]
+
+You'll need the following to create rules and send notifications.
 
 - **Data in Elasticsearch**: Rules can only detect conditions in data that already exists. Make sure the indices or data streams your rules will query are populated before creating rules. Refer to [Ingest your data](/manage-data/ingest.md) for options.
 - **A space selected**: Rules, [action policies](../action-policies/about-action-policies.md), and the privileges that control them are all space-scoped. Decide which space you'll work in before setting things up. Refer to [Manage spaces](/deploy-manage/manage-spaces.md) to create or switch spaces.
