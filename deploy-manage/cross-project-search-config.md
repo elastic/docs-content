@@ -1,7 +1,7 @@
 ---
 applies_to:
   stack: unavailable
-  serverless: preview
+  serverless: ga
 products:
   - id: cloud-serverless
 navigation_title: "Cross-project search"
@@ -12,7 +12,7 @@ navigation_title: "Cross-project search"
 ::::{include} /deploy-manage/_snippets/cps-definition.md
 ::::
 
-{{cps-cap}} is the {{serverless-short}} equivalent of [{{ccs}}](/explore-analyze/cross-cluster-search.md), with a few differences and enhancements:
+{{cps-cap}} provides {{serverless-short}} with cross-project search capabilities similar to [{{ccs}}](/explore-analyze/cross-cluster-search.md), with a few differences and enhancements. For a side-by-side syntax comparison, refer to [](/explore-analyze/cross-project-search/cps-compared-to-ccs.md).
 
 * Setting up {{cps}} doesn't require an understanding of your deployment architecture or complex security configurations.
 * Permissions stay consistent across projects, and you can always adjust scope and access as needed.
@@ -50,15 +50,10 @@ Before you configure {{cps}}, review these prerequisites and best practices:
 
 ### Projects available for linking [cps-compatibility]
 
-::::{important} - Origin project limitations
-
-During technical preview, only newly created projects can be origin projects for {{cps}}. Existing projects can be linked from an origin project, but they can't serve as origin projects themselves. To get started, create a new {{serverless-short}} project and link it to your existing projects.
-::::
-
 To be available for linking, projects must meet the following requirements:
 
 - The origin project and all linked projects must be in the same {{ecloud}} organization.
-- You can link any combination of {{product.elasticsearch}}, {{product.observability}}, and {{product.security}} projects in the same organization.
+- You can link any combination of {{product.elasticsearch}}, {{es}} {{vectordb}}, {{product.observability}}, and {{product.security}} projects in the same organization.
 - Projects can be linked across cloud providers and regions. For example, a project in GCP `us-east4` can be linked to a project in AWS `eu-central-1` without any additional configuration.
 - {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. Projects on the **Essentials** tier are not compatible with {{cps}}.
 
@@ -75,7 +70,16 @@ For most deployments, we recommend creating a dedicated **overview project** tha
 
 In this architecture, you create a new, empty project and link existing projects to it. You run all cross-project searches from the new overview project, while your actual active projects continue to operate independently. The linked ("spoke") projects are not linked to each other.
 
-![Overview project architecture for cross-project search](images/serverless-cross-project-search-arch.svg)
+```mermaid
+flowchart TB
+    O["<b>Overview project</b><br/>Origin (empty hub)"]:::tip
+    O --> S["<b>Security project</b><br/>Linked (data)"]:::plain
+    O --> Obs["<b>Observability project</b><br/>Linked (data)"]:::plain
+    O --> E["<b>Elasticsearch project</b><br/>Linked (data)"]:::plain
+    O --> V["<b>Vector Database project</b><br/>Linked (data)"]:::plain
+```
+
+Searches run from the overview project across all linked projects. Linked projects operate independently and are not linked to each other. You can link any combination of compatible projects.
 
 The overview project becomes a central point for broad searches, dashboards, and investigations, without affecting your existing setup.
 
@@ -99,24 +103,34 @@ After reviewing the architecture patterns, you can configure {{cps-init}} scope 
 1. [Manage user access and programmatic access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md): Confirm user roles in both the origin and linked projects, as well as roles granted to [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md#roles) that will be used with {{cps}}.
 1. [Link and manage projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md): Link projects in the {{ecloud}} UI, manage linked projects, and unlink projects.
 
-Make sure to also review the [feature impacts](#cps-feature-impacts) and [limitations](#cps-limitations) of {{cps-init}}.
+Make sure to also review the [search performance impacts](#cps-search-performance), [feature impacts](#cps-feature-impacts), and [limitations](#cps-limitations) of {{cps-init}}.
 
 ## Billing [cps-billing]
 
 ::::{include} /deploy-manage/_snippets/cps-billing.md
 ::::
 
+## Search performance impacts [cps-search-performance]
+
+When you search across linked projects, each query coordinates across multiple projects before returning results. This adds a small amount of latency compared to searching a single project. The overhead is generally measured in milliseconds and depends on factors like response size and query complexity.
+
+Queries that cross region or cloud provider boundaries have higher latency due to network distance.
+
 ## Feature impacts [cps-feature-impacts]
 
-When you link projects for {{cps}}, the expanded dataset can affect existing features in the origin project.
+When you link projects for {{cps}}, the expanded dataset can affect existing features in the origin project. By default, searches, alerts, dashboards, and other features in the origin project run against the combined dataset of the origin and all linked projects. Features tuned for a single project's data might behave differently with a larger dataset.
 
-- **Alerts:** By default, rules in the origin project run against the **combined dataset** of the origin and all linked projects. Rules tuned for a single project's data might produce false positives when they evaluate a larger dataset. This is one reason we recommend using a dedicated [overview project](/deploy-manage/cross-project-search-config.md#cps-arch-overview), so that existing rules on data projects are not affected. Make sure to also consider the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space, or save explicit project routing on individual rules.
+{{cps-cap}} results are filtered by each user's role assignments across projects. Users with different roles see different results from the same query. Review [user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access) on each linked project to make sure that users have the appropriate permissions to access the data they need. 
 
-- **Dashboards and visualizations:** Existing dashboards and visualizations in the origin project will query all linked projects by default. To control this, set the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space, or save explicit project routing on individual dashboard panels.
+How you work with the expanded dataset depends on how you search:
 
-- **User permissions:** {{cps-cap}} results are filtered by each user's role assignments across projects. Users with different roles will see different results from the same query. Refer to [Manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access).
+- **{{kib}} apps:** Scope controls vary by app. [Set the default {{cps}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) before you link projects. For details on how individual apps handle {{cps-init}} scope, including which apps support the scope selector and query-level overrides, refer to [{{cps-cap}} availability by app](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability).
+- **Query syntax:** [Because queries now run across all linked projects by default](/explore-analyze/cross-project-search.md#cps-cap-as-the-default-behavior-for-linked-projects), queries that were written for a single project might return a larger result set. To restrict scope, use [qualified expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) or [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
 
-- **{{product.painless}} scripting:** The [{{product.painless}} execute API](/explore-analyze/cross-project-search.md#cps-painless-scripting) does not search across linked projects. It resolves index names against the origin project only. You can target a linked project by prefixing the index with the project alias (for example, `projectAlias:myindex`).
+:::{warning}
+By default, rules in the origin project run against the combined dataset of the origin and all linked projects. Rules tuned for a single project's data might produce false positives when they evaluate a larger dataset. This is one reason we recommend using a dedicated [overview project](/deploy-manage/cross-project-search-config.md#cps-arch-overview), so that existing rules on data projects are not affected. Make sure to also consider the [default cross-project search scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope), or save explicit project routing on individual rules.
+:::
+
 
 ## Limitations [cps-limitations]
 
@@ -128,13 +142,26 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 ### {{elastic-sec}} apps
 
+The following limitations apply to {{elastic-sec}} apps. For how each app uses {{cps-init}}, including the scope selector and query-level overrides, refer to [{{cps-cap}} support in {{elastic-sec}} apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability-security).
 
-:::{include} /explore-analyze/cross-project-search/_snippets/cps-availability-security-apps.md
-:::
+- **Alert, event, and attack flyouts:** Session View isn't available for documents from linked projects. Some actions are hidden or disabled.
+- **Alerts:** The Alerts page doesn't show alerts that a linked project generated independently. Only alerts created by origin project rules appear.
+- **Attack Discovery:** Discoveries are based on origin project alerts only. Alerts from linked projects aren't included.
+- **Cases:** You can't attach an alert or event from a linked project to a case.
+- **{{elastic-defend}} and Osquery:** Policies, artifacts, response actions, and Osquery saved queries and packs can't be shared or managed across linked projects.
+- **Entity store:** A host that appears in more than one project isn't combined into a single entity at the origin. Risk scoring runs on the origin project only.
+- **{{ml-cap}} rules:** {{ml-cap}} rules don't use the space-level {{cps}} scope. They use the scope of the underlying {{anomaly-detect}} job's {{dfeed}}, which might differ from the space default.
+- **SIEM Readiness and Value report:** These features don't include data from linked projects.
+- **Timeline:** Some actions are disabled for documents from linked projects.
 
 ### Elastic {{observability}} apps
 
-{{observability}} apps have limited {{cps-init}} support. The scope selector is not available in {{observability}} apps, and most apps remain scoped to the origin project.
+{{observability}} apps have partial {{cps-init}} support. For example:
+
+* APM, Infrastructure, and Synthetics use session scope.
+* SLOs use stored scope.
+* Streams remain scoped to the origin project.
+* Alerts are from the origin project only, even when rules query linked-project data.
 
 For specific app details, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md).
 
@@ -144,3 +171,4 @@ After you configure {{cps}} and link projects, users can start searching across 
 
 - [{{cps-cap}} overview](/explore-analyze/cross-project-search.md): Learn how to build queries in a {{cps-init}} context, including how to restrict search scope.
 - [](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): Learn how {{cps-init}} works with compatible {{kib}} apps, including how to adjust search scope.
+- [](/explore-analyze/cross-project-search/cps-compared-to-ccs.md): Compare {{cps-init}} and {{ccs}} query syntax, behavior, and scope control side by side.

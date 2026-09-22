@@ -276,7 +276,7 @@ You can encrypt a deployment with your customer-managed key when you [create a n
             ```
 
             ::::{tip}
-            You can also create the deployment from a snapshot of a deployment that was initially not encrypted with a customer-managed key. You can use this as a workaround to encrypt existing data under new deployments using your key, until encrypting existing deployments with a customer-managed key is supported.
+            You can also create the deployment from a snapshot of a deployment that was initially not encrypted with a customer-managed key. To encrypt an existing deployment in place instead, refer to [Encrypt an existing deployment with your key](#ec_encrypt_an_existing_deployment_with_a_customer_managed_key).
             ::::
 
 
@@ -352,7 +352,7 @@ After you have created the service principal and granted it the necessary permis
             ```
 
             ::::{tip}
-            You can also create the deployment from a snapshot of a deployment that was initially not encrypted with a customer-managed key. You can use this as a workaround to encrypt existing data under new deployments using your key, until encrypting existing deployments with a customer-managed key is supported.
+            You can also create the deployment from a snapshot of a deployment that was initially not encrypted with a customer-managed key. To encrypt an existing deployment in place instead, refer to [Encrypt an existing deployment with your key](#ec_encrypt_an_existing_deployment_with_a_customer_managed_key).
             ::::
 
 
@@ -443,7 +443,7 @@ After you have granted the Elastic principals the necessary roles, you can finis
             ```
 
             ::::{tip}
-            You can also create the deployment from a snapshot of a deployment that was initially not encrypted with a customer-managed key. You can use this as a workaround to encrypt existing data under new deployments using your key, until encrypting existing deployments with a customer-managed key is supported.
+            You can also create the deployment from a snapshot of a deployment that was initially not encrypted with a customer-managed key. To encrypt an existing deployment in place instead, refer to [Encrypt an existing deployment with your key](#ec_encrypt_an_existing_deployment_with_a_customer_managed_key).
             ::::
 
 
@@ -453,10 +453,6 @@ The deployment is now created and encrypted using the specified key. Future snap
 :::::::
 
 ### Encrypt an existing deployment with your key [ec_encrypt_an_existing_deployment_with_a_customer_managed_key]
-```{applies_to}
-deployment:
-  ess: preview
-```
 
 1. Go to your deployment's **Security** page.
 2. Under **Encryption at rest**, select **Manage encryption key**.

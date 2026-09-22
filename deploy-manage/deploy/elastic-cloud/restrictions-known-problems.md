@@ -39,6 +39,8 @@ To learn more about the features that are supported by {{ecloud}}, check [{{eclo
 
 ## Stack versions [ec-stack-versions]
 
+* Due to a known issue, {{es}} 9.5.0, 9.5.1, and 9.5.2 can fail to fully replicate some bulk index operations from a primary shard when the node exceeds its indexing pressure limit. This can cause replica data to diverge from the primary. Version 9.5.2 is unavailable for new deployments and upgrades. Review [this KB article](https://support.elastic.co/knowledge/c56aad67) for more guidance on the known issue.
+
 * Due to a known issue, {{es}} 9.5.0 and 9.5.1 can return incorrect results from searches that exclude values using a `must_not` clause, where the excluded field has doc values enabled but is not indexed for search. Versions 9.5.0 and 9.5.1 are unavailable for new deployments and upgrades. Review [this KB article](https://support.elastic.co/knowledge/00f3a35b) for more guidance on the known issue.
 
 * Due to a known issue with the {{stack}}, certain upgrade paths to and from version 8.17 are currently blocked or disabled. Review [this KB article](https://support.elastic.co/knowledge/7c3ad709) for more guidance on the known issue. Additionally, review [this KB article](https://support.elastic.co/knowledge/e87d76a5) for detailed information regarding the specific versions affected. 
@@ -106,6 +108,7 @@ $$$ec-restrictions-network-security-kibana-sso$$$
 ```
 ```{include} /deploy-manage/security/_snippets/aws-privatelink-cloud-id-limitation.md
 ```
+* **Remote clusters with API key authentication over GCP Private Service Connect:** Remote cluster connections that use the API key based security model are not yet supported over GCP Private Service Connect because traffic on port `9443` is not currently allowed. Only the TLS certificate based security model (port `9400`) is currently supported for remote cluster traffic over GCP PSC.
 
 ## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-network-security-watcher]
 

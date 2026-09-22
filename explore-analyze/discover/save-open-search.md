@@ -32,14 +32,22 @@ If you don’t have sufficient privileges to save Discover sessions, the followi
 
 ## Save a Discover session [_save_a_discover_session]
 
-By default, a Discover session stores the query text, filters, and current view of **Discover**, including the columns and sort order in the document table, and the {{data-source}}.
-
 1. Once you’ve created a view worth saving, select **Save** in the application menu. A dialog with several options opens:
     1. Enter a **Title** for the session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
     2. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
     3. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose whether to also add the session as a panel on a dashboard. Select **New** to create a dashboard, **Existing** to choose one, or **None** to skip. The session is saved to the library in all cases.
 2. Select **Save**.
 3. To reload your search results in **Discover**, select **Open session** (or **Open** in earlier versions) in the application menu, and select the saved Discover session.
+
+A Discover session stores the following elements for each of its tabs:
+
+- The query mode ({{esql}} or Classic)
+- The query text and filters
+- If you turned on **Store time with Discover session**, the selected time filter and refresh interval
+- The current view of **Discover**, including the document table layout, the chart, and any {{esql}} [variable controls](try-esql.md#add-variable-control)
+- The {{data-source}}
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The {icon}`bolt` **Fast mode** setting in {{esql}} mode. Refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The selected dimensions and the metric search term for [metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md).
 
 If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
 
