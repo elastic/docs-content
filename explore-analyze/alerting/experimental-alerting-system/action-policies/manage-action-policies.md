@@ -16,6 +16,8 @@ This page covers how to view action policy details in the {{alerting-v2-system}}
 
 To find your action policies, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**. From the list, you can open an action policy to view its full configuration, including match conditions, grouping mode, frequency, and destinations.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The details show **Rule tagged with** for each selected tag, joined with **or**, and **Matches query** for the KQL expression. When you set both, **and** joins them.
+
 The list also shows the display name of the user who created the action policy and the user who last updated it, along with quick actions for common tasks, such as cloning or deleting an action policy, without leaving the list page. For enabling, disabling, snoozing, or rotating an API key, refer to the sections below.
 
 ## Enable, disable, and snooze an action policy

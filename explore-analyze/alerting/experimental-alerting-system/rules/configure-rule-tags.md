@@ -21,7 +21,7 @@ Configure tags when:
 
 * You want to filter alert episodes by team, environment, or severity tier on the **Alerts** page (find **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**) without writing a custom KQL query each time.
 * You are using action policies and want to scope them by ownership or category rather than by rule name.
-    * {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` Tags are how an action policy selects rules. Its **Rule tags** control covers every rule carrying at least one of the tags you select.
+    * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Tags are how an action policy selects rules. Its **Rule tags** control covers every rule carrying at least one of the tags you select. When {{agent-builder}} sets up a notification for one rule, it adds a `notify-<rule-name>` tag, such as `notify-high-cpu-prod`, unless the rule already has a tag that no other rule uses. A policy that selects that tag also matches every other rule that carries it.
     * {applies_to}`stack: removed 9.6+, experimental =9.5` Any tag you add to a rule is available as a KQL matcher in action policies.
 * You manage many rules and need a consistent labeling scheme to track which team owns which alerts.
 

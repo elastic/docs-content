@@ -69,7 +69,9 @@ Action policies invoke workflows for alert episodes only. If you ask the agent t
 :::
 
 - **Workflows** - Workflows are the delivery mechanism. They define what happens when the {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
-- **Action Policies** - Action policies are the gating mechanism. They evaluate the rule's alert episodes and invoke the workflow when an alert episode matches. When created alongside a rule, an action policy is automatically scoped to it.
+- **Action Policies** - Action policies are the gating mechanism. They evaluate the rule's alert episodes and invoke the workflow when an alert episode matches. Creating an action policy alongside a rule scopes it to that rule.
+    * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The agent matches a tag on the rule. It adds a `notify-<rule-name>` tag, in lowercase with hyphens (for example, `notify-high-cpu-prod`), unless the rule already has a tag that no other rule uses. Any other rule with that tag matches the policy too.
+    * {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` The action policy references the rule by ID.
 
 Both objects are proposed as inline attachments and must be explicitly saved before they take effect.
 
@@ -77,7 +79,7 @@ Both objects are proposed as inline attachments and must be explicitly saved bef
 
 The three objects have a dependency chain that determines the order in which they must be saved:
 
-1. **Rule** - {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` The action policy matches a shared tag that the agent adds to the rule, and the tag takes effect only once you save the rule. {applies_to}`stack: removed 9.6+, experimental =9.5` The action policy references the rule by ID. The ID is not available until the rule is persisted.
+1. **Rule** - The action policy is linked to the rule. Save the rule first, because that link takes effect only after the rule is saved.
 2. **Workflow** - The action policy references the workflow as a destination. The reference must resolve to a persisted workflow.
 3. **Action policy** - Can only be saved after both its rule and workflow dependencies exist.
 

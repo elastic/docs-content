@@ -25,7 +25,12 @@ Use these fields in the **Match conditions** expression to filter which alert ep
 | `last_event_timestamp` | ISO 8601 timestamp of the most recent event recorded for the alert episode. | `last_event_timestamp > "2026-01-01"` <br> Match alert episodes with activity after a specific date. |
 | `data.*` | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard fields in this table. | `data.host.name: "web-01"` <br> Match alert episodes from a specific host in a host-based rule. |
 
-{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` These fields describe the alert episode, not the rule that produced it. To scope an action policy to a set of rules, use the separate **Rule tags** control instead of a match condition. Refer to [Filter which alert episodes the action policy applies to](create-configure-action-policy.md#matcher).
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` These fields describe the alert episode. To scope an action policy to a set of rules, use the separate **Rule tags** control. Refer to [Link the action policy to rules](create-configure-action-policy.md#matcher).
+
+:::{note}
+:applies_to: {"stack": "ga 9.6+", "serverless": "ga"}
+If you created an action policy in an earlier version of {{serverless-short}} or in {{stack}} 9.5, and its query uses rule fields (`rule.id`, `rule.name`, or `rule.tags`), the policy no longer works and its workflows stop. Select the rules in **Rule tags** instead. To keep the policy on one rule, give that rule a tag no other rule uses and select that tag. A query that uses only alert episode fields, such as `severity`, still matches.
+:::
 
 ### Rule fields [action-policy-matcher-rule-fields]
 ```{applies_to}
@@ -40,12 +45,6 @@ These fields describe the rule that generated the alert episode.
 | `rule.id` | Unique identifier of the rule that generated the alert episode. | `rule.id: "rule-001"` <br> Match alert episodes from one specific rule. |
 | `rule.name` | Display name of the rule. | `rule.name: "High CPU"` <br> Match alert episodes from rules with this display name. |
 | `rule.tags` | Tags attached to the rule. | `rule.tags: "payment-service"` <br> Match alert episodes from all rules with this tag. |
-
-:::{warning}
-From 9.6, these fields are no longer part of the evaluation context, and autocomplete stops suggesting them. An expression that uses them still loads, saves, and is stored by the API unchanged, but it never matches, so the action policy stops invoking its workflows and reports no error to explain why. Replace `rule.tags` with the **Rule tags** control. There is no direct replacement for `rule.id` or `rule.name`; give the rule a tag that no other rule uses and select that tag instead.
-
-This affects upgraded deployments even when you never wrote a match condition yourself. On 9.5, setting up a notification from the rule form created an action policy scoped to `rule.id`, and upgrading keeps that expression unchanged, so those notifications stop firing. Review the action policies that existed before the upgrade and rescope each one to a rule tag.
-:::
 
 ## Notify per options [action-policy-notification-grouping]
 

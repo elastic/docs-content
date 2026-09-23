@@ -18,16 +18,15 @@ This page explains why action policies are separate from rules, the gates an ale
 
 Action policies are independent of rules. A single action policy can cover alert episodes from many rules, so an action policy matching `severity: "critical"` applies regardless of which rule produced the alert episode. You can create a rule without any action policy, which is useful for testing detection logic before wiring up notifications. You can also update notification routing later without touching the rule.
 
-{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` To scope an action policy to a set of rules, tag those rules and select the tags in **Rule tags**.
-
-{applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` To scope an action policy to one rule, use a matcher expression, for example `rule.id: "my-rule-id"`.
-
 ## How action policies gate alert episodes [action-policy-gates]
 
-The three gates are episode eligibility, match conditions, and frequency:
+An alert episode has to clear every gate before a workflow runs. The gates keep the action policy from notifying you about every episode it sees. A notification goes out only when the episode still needs attention and this policy is the one that should send it.
+
+The action policy checks the gates in this order:
 
 * **Episode eligibility** - Skips alert episodes that are acknowledged, snoozed, or in a maintenance window. For details, refer to [Reduce notification noise](reduce-notification-noise.md).
-* **Match conditions** - Filters which alert episodes the action policy applies to. You define them using a [KQL](../../../query-filter/languages/kql.md) expression. An empty match condition applies to all eligible alert episodes in the space.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Policy scope** - Selects which rules the action policy covers and can also filter alert episodes with a [KQL](../../../query-filter/languages/kql.md) expression. A rule matches if it carries any selected tag. When tags and an expression are both set, an alert episode has to satisfy both. An empty scope applies to all eligible alert episodes in the space.
+* {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` **Match conditions** - Filters which alert episodes the action policy applies to. You define them using a [KQL](../../../query-filter/languages/kql.md) expression. An empty match condition applies to all eligible alert episodes in the space.
 * **Frequency** - Controls how often the action policy can invoke its workflows for the same group of alert episodes, and how alert episodes batch before a workflow is invoked. If a workflow was already invoked within the frequency interval that you chose, the alert episode waits. For available options, refer to [Action policy reference](action-policy-reference.md).
 
 If any gate stops the alert episode, the workflow is not invoked for that action policy. Because each action policy evaluates alert episodes independently, an alert episode blocked by one action policy can still trigger a workflow through a second action policy with different conditions.
@@ -41,7 +40,7 @@ For each enabled action policy that is not snoozed, the dispatcher works through
 | Step | Action |
 |------|--------|
 | 1 | Check whether the alert episode is acknowledged, snoozed, or marked inactive. If so, stop processing it. |
-| 2 | Check whether the alert episode matches the action policy's KQL. If not, stop evaluating this action policy and move to the next one. The alert episode continues to be evaluated by other enabled action policies. |
+| 2 | {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Check the policy scope. When rule tags are selected, the episode's rule must carry at least one of them. When a KQL expression is set, the episode must match it. When you set both, the episode has to satisfy both. If the scope is empty, continue. If it doesn't match, stop evaluating this action policy and move to the next one. The alert episode continues to be evaluated by other enabled action policies. <br> {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` Check whether the alert episode matches the action policy's KQL. If not, stop evaluating this action policy and move to the next one. The alert episode continues to be evaluated by other enabled action policies. |
 | 3 | Determine how matching alert episodes batch into notification groups. |
 | 4 | Check whether a workflow has already been invoked for this notification group recently. If so, wait. |
 | 5 | Invoke the configured workflows, on the dispatcher's next polling cycle (roughly every 5 seconds). |
