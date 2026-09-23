@@ -2,9 +2,8 @@
 navigation_title: Kubernetes
 description: Step-by-step guide for setting up Elastic Agent and EDOT SDKs in a Kubernetes environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces.
 applies_to:
-  stack:
   serverless:
-    observability:
+    observability: ga
   product:
     edot_collector: ga
 products:
@@ -84,6 +83,12 @@ The OpenTelemetry Operator automatically provides the OTLP endpoint configuratio
 For languages where auto-instrumentation is not available, manually instrument your application. See the [Setup section in the corresponding SDK](opentelemetry://reference/edot-sdks/index.md).
 ::::
 
+::::{step} Install the content packs
+
+Install the **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)** and **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integrations in {{kib}}.
+
+::::
+
 ::::{step} Explore your data
 
 :::{include} ../../_snippets/explore-your-data.md
@@ -97,7 +102,7 @@ For languages where auto-instrumentation is not available, manually instrument y
 
 The following issues might occur.
 
-### API Key prefix not found
+### API key prefix not found
 
 The following error is due to an improperly formatted API key:
 
@@ -109,6 +114,6 @@ Exporting failed. Dropping data.
 
 Format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a Collector or SDK.
 
-### Error: too many requests
+### Error: Too many requests
 
 The managed endpoint has per-project rate limits in place. If you reach this limit, contact our [support team](https://support.elastic.co).

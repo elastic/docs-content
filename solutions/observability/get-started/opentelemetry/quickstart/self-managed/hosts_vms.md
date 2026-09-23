@@ -2,13 +2,11 @@
 navigation_title: Hosts / VMs
 description: Learn how to set up Elastic Agent and EDOT SDKs to collect host metrics, logs, and application traces.
 applies_to:
-  stack:
-  serverless:
-    observability:
+  deployment:
+    self: ga
   product:
     edot_collector: ga
 products:
-  - id: cloud-serverless
   - id: observability
   - id: edot-collector
 ---
@@ -86,7 +84,7 @@ $content | Set-Content .\otel.yml
 Run the following command to run the {{agent}}.
 
 :::{note}
-The Collector will open the ports `4317` and `4318` to receive application data from locally running OTel SDKs.
+By default, the Collector opens ports `4317` and `4318` to receive application data from locally running EDOT SDKs.
 :::
 
 ::::{tab-set}

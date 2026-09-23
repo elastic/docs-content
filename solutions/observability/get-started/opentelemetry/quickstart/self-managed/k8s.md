@@ -2,13 +2,11 @@
 navigation_title: Kubernetes
 description: Learn how to set up Elastic Agent and EDOT SDKs in a Kubernetes environment to collect host metrics, logs, and application traces.
 applies_to:
-  stack:
-  serverless:
-    observability:
+  deployment:
+    self: ga
   product:
     edot_collector: ga
 products:
-  - id: cloud-serverless
   - id: observability
   - id: edot-collector
 ---
@@ -28,7 +26,7 @@ To use the OpenTelemetry Kube Stack Chart, you need Helm version 3.9+ up to and 
 
 ## Manual installation
 
-Follow these steps to deploy the {{agent}} and EDOT SDKs in Docker.
+Follow these steps to deploy the {{agent}} and EDOT SDKs in {{k8s}}.
 
 :::::{stepper}
 

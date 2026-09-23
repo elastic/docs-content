@@ -2,13 +2,11 @@
 navigation_title: Docker
 description: Learn how to set up Elastic Agent and EDOT SDKs in a Docker environment to collect host metrics, logs, and application traces.
 applies_to:
-  stack:
-  serverless:
-    observability:
+  deployment:
+    self: ga
   product:
     edot_collector: ga
 products:
-  - id: cloud-serverless
   - id: observability
   - id: edot-collector
 ---
@@ -30,7 +28,27 @@ Follow these steps to deploy the {{agent}} and EDOT SDKs in Docker.
 
 ::::{step} Create the config file
 
-Create the `otel-collector-config.yml` file with your {{agent}} configuration. Refer to the [configuration reference](elastic-agent://reference/edot-collector/config/default-config-standalone.md).
+Create an {{agent}} configuration file. This example uses the filename `otel-collector-config.yml`.
+
+Start from the [logs, metrics, and traces sample for direct ingestion into {{es}}](https://github.com/elastic/elastic-agent/blob/v{{version.edot_collector}}/internal/edot/samples/linux/logs_metrics_traces.yml). The sample is written for a host process, so adapt it for the Compose mounts in this quickstart:
+
+1. In `file_log/platformlogs`, set `include` to `[/hostfs/var/log/*.log]`.
+2. In `hostmetrics/system`, set `root_path: /hostfs`.
+3. Add a `docker_stats` receiver and a pipeline that exports those metrics:
+
+   ```yaml
+   receivers:
+     docker_stats: {}
+
+   service:
+     pipelines:
+       metrics/docker:
+         receivers: [docker_stats]
+         processors: [resourcedetection]
+         exporters: [elasticsearch/otel]
+   ```
+
+Keep the other receivers, processors, exporters, and pipelines from the sample. For details about the pipelines, refer to [Direct ingestion into {{es}}](elastic-agent://reference/edot-collector/config/default-config-standalone.md#direct-ingestion-into-elasticsearch).
 ::::
 
 ::::{step} Retrieve your settings
@@ -40,7 +58,7 @@ Retrieve your [{{es}} endpoint](/solutions/elasticsearch-solution-project/search
 
 ::::{step} Create the .env file
 
-Create an `.env` file with the following content. Replace the placeholder values with your Elastic Cloud credentials:
+Create an `.env` file with the following content. Replace the placeholder values with your {{es}} endpoint and API key:
 
 ```bash subs=true
 HOST_FILESYSTEM=/
@@ -50,7 +68,7 @@ COLLECTOR_CONTRIB_IMAGE=elastic/elastic-agent:{{version.edot_collector}}
 ELASTIC_API_KEY=<your_api_key_here>
 ELASTIC_ENDPOINT=<your_endpoint_here>
 OTEL_COLLECTOR_CONFIG=/path/to/otel-collector-config.yml
-   ```
+```
 ::::
 
 ::::{step} Create the compose file

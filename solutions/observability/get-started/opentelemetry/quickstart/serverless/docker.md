@@ -2,9 +2,8 @@
 navigation_title: Docker
 description: Step-by-step guide for setting up Elastic Agent and EDOT SDKs in a Docker environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces.
 applies_to:
-  stack:
   serverless:
-    observability:
+    observability: ga
   product:
     edot_collector: ga
 products:
@@ -31,7 +30,27 @@ Follow these steps to deploy the {{agent}} and EDOT SDKs in Docker with {{server
 
 ::::{step} Create the config file
 
-Create a `otel-collector-config.yml` file with your {{agent}} configuration. For more details, refer to the [configuration reference](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for {{motlp}}.
+Create an {{agent}} configuration file for the {{motlp}}. This example uses the filename `otel-collector-config.yml`.
+
+Start from the [logs, metrics, and traces sample for the {{motlp}}](https://github.com/elastic/elastic-agent/blob/v{{version.edot_collector}}/internal/edot/samples/linux/managed_otlp/logs_metrics_traces.yml). The sample is written for a host process, so adapt it for the Compose mounts in this quickstart:
+
+1. In `file_log/platformlogs`, set `include` to `[/hostfs/var/log/*.log]`.
+2. In `hostmetrics/system`, set `root_path: /hostfs`.
+3. Add a `docker_stats` receiver and a pipeline that exports those metrics:
+
+   ```yaml
+   receivers:
+     docker_stats: {}
+
+   service:
+     pipelines:
+       metrics/docker:
+         receivers: [docker_stats]
+         processors: [resourcedetection]
+         exporters: [otlp_grpc/ingest_metrics_traces]
+   ```
+
+Keep the other receivers, processors, exporters, and pipelines from the sample. For details about the pipelines, refer to [Using the Managed OTLP Endpoint](elastic-agent://reference/edot-collector/config/default-config-standalone.md#using-the-managed-otlp-endpoint).
 
 ::::
 
@@ -63,22 +82,22 @@ Create a `compose.yml` file with the following content:
 
 ```yaml
 services:
-   otel-collector:
-   image: ${COLLECTOR_CONTRIB_IMAGE}
-   container_name: otel-collector
-   deploy:
+  otel-collector:
+    image: ${COLLECTOR_CONTRIB_IMAGE}
+    container_name: otel-collector
+    deploy:
       resources:
-         limits:
-         memory: 1.5G
-   restart: unless-stopped
-   command: ["--config", "/etc/otelcol-config.yml" ]
-   network_mode: host
-   user: 0:0
-   volumes:
+        limits:
+          memory: 1.5G
+    restart: unless-stopped
+    command: ["--config", "/etc/otelcol-config.yml"]
+    network_mode: host
+    user: 0:0
+    volumes:
       - ${HOST_FILESYSTEM}:/hostfs:ro
       - ${DOCKER_SOCK}:/var/run/docker.sock:ro
       - ${OTEL_COLLECTOR_CONFIG}:/etc/otelcol-config.yml
-   environment:
+    environment:
       - HOST_FILESYSTEM
       - ELASTIC_AGENT_OTEL
       - ELASTIC_API_KEY
@@ -115,9 +134,9 @@ Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`ht
 
 ::::
 
-::::{step} Install the content pack
+::::{step} Install the content packs
 
-Install the **[Docker OpenTelemetry Assets](integration-docs://reference/docker_otel.md)** integration in {{kib}}.
+Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration and the **[Docker OpenTelemetry Assets](integration-docs://reference/docker_otel.md)** integration in {{kib}}.
 
 ::::
 
@@ -134,7 +153,7 @@ Install the **[Docker OpenTelemetry Assets](integration-docs://reference/docker_
 
 The following issues might occur.
 
-### API Key prefix not found
+### API key prefix not found
 
 The following error is due to an improperly formatted API key:
 
@@ -146,6 +165,6 @@ Exporting failed. Dropping data.
 
 Format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a Collector or SDK.
 
-### Error: too many requests
+### Error: Too many requests
 
 The managed endpoint has per-project rate limits in place. If you reach this limit, contact our [support team](https://support.elastic.co).

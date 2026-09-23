@@ -12,7 +12,7 @@ products:
 
 # Quickstart for hosts and VMs on {{product.cloud-hosted}}
 
-Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/motlp.md), which is the recommended ingestion path for ECH.
+Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md), which is the recommended ingestion path for ECH.
 
 ## Prerequisites
 
@@ -132,6 +132,12 @@ To collect telemetry from applications and use the {{agent}} as a gateway, instr
 - [Python](elastic-otel-python://reference/edot-python/setup/index.md)
 
 Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
+
+:::::
+
+:::::{step} Install the content pack
+
+Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration in {{kib}}.
 
 :::::
 

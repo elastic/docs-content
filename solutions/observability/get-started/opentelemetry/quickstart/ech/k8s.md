@@ -12,7 +12,7 @@ products:
 
 # Quickstart for Kubernetes on {{product.cloud-hosted}}
 
-Learn how to set up the {{agent}} and EDOT SDKs in a {{k8s}} environment with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/motlp.md), which is the recommended ingestion path for ECH.
+Learn how to set up the {{agent}} and EDOT SDKs in a {{k8s}} environment with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md), which is the recommended ingestion path for ECH.
 
 ## Prerequisites
 

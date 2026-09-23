@@ -2,9 +2,8 @@
 navigation_title: Hosts and VMs
 description: Step-by-step guide for setting up Elastic Agent and EDOT SDKs on Elastic Cloud Serverless to collect host metrics, logs, and application traces using OTLP.
 applies_to:
-  stack:
   serverless:
-    observability:
+    observability: ga
   product:
     edot_collector: ga
 products:
@@ -104,7 +103,7 @@ sudo ./otelcol --config otel.yml
 ::::
 
 ::::{note}
-The Collector opens ports `4317` and `4318` to receive application data from locally running OTel SDKs without authentication. This allows the SDKs to send data without any further configuration needed as they use this endpoint by default.
+By default, the Collector opens ports `4317` and `4318` to receive application data from locally running EDOT SDKs. The ports require no authentication, so the SDKs send data without further configuration because they use this endpoint by default.
 ::::
 :::::
 
@@ -124,6 +123,12 @@ instrument your target applications following the setup instructions:
 Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 :::::
 
+:::::{step} Install the content pack
+
+Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration in {{kib}}.
+
+:::::
+
 :::::{step} Explore your data
 
 :::{include} ../../_snippets/explore-your-data.md
@@ -136,7 +141,7 @@ Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`ht
 
 The following issues might occur.
 
-### API Key prefix not found
+### API key prefix not found
 
 The following error is due to an improperly formatted API key:
 
@@ -148,6 +153,6 @@ Exporting failed. Dropping data.
 
 Format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a Collector or SDK.
 
-### Error: too many requests
+### Error: Too many requests
 
 The managed endpoint has per-project rate limits in place. If you reach this limit, contact our [support team](https://support.elastic.co).

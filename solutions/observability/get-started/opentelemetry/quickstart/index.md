@@ -1,13 +1,21 @@
 ---
 navigation_title: OpenTelemetry quickstarts
-description: Step-by-step guides for setting up {{edot}} to monitor Kubernetes, applications, and hosts using the {{agent}} and auto-instrumentation.
+description: Step-by-step guides for setting up Elastic OpenTelemetry to monitor Kubernetes, applications, and hosts using Elastic Agent and auto-instrumentation.
+mapped_pages:
+  - https://www.elastic.co/guide/en/observability/current/quickstart-monitor-hosts-with-otel.html
+  - https://www.elastic.co/guide/en/serverless/current/quickstart-monitor-hosts-with-otel.html
+  - https://www.elastic.co/guide/en/observability/current/monitor-k8s-otel-edot.html
+  - https://www.elastic.co/guide/en/serverless/current/monitor-k8s-otel-edot.html
 applies_to:
-   stack:
-   serverless:
-     observability:
-   product:
-     edot_collector: ga
+  deployment:
+    ech: ga
+    self: ga
+  serverless:
+    observability: ga
+  product:
+    edot_collector: ga
 products:
+  - id: cloud-hosted
   - id: cloud-serverless
   - id: observability
   - id: edot-collector

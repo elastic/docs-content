@@ -1,10 +1,9 @@
 ---
 navigation_title: Elastic Cloud Serverless
-description: Quickstart setup guides for the {{edot}} on Elastic Cloud Serverless.
+description: Quickstart setup guides for Elastic OpenTelemetry on Elastic Cloud Serverless.
 applies_to:
-  stack:
   serverless:
-    observability:
+    observability: ga
   product:
     edot_collector: ga
 products:
@@ -15,17 +14,12 @@ products:
 
 # Quickstart on Elastic Cloud Serverless
 
-The [{{motlp}}](opentelemetry://reference/motlp.md) simplifies OpenTelemetry data ingestion. It provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage. The endpoint is exclusively for Elastic Cloud users, initially available in {{serverless-full}} only.
+The [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) simplifies OpenTelemetry data ingestion. It provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage. The endpoint is available to {{ecloud}} users on {{serverless-full}} and {{ech}}.
 
 The {{motlp}} is designed for the following use cases:
 
 * Logs and Infrastructure Monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format.
 * APM: Application telemetry in OTLP format.
-
-:::{note}
-:applies_to: stack: ga 9.5+
-In previous versions, the **EDOT Collector** was a standalone product. From this version onwards, this OpenTelemetry collector capability is built into **{{agent}}**.
-:::
 
 ## Prerequisites
 
