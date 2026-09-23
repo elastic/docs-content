@@ -18,23 +18,19 @@ Our quickstarts reduce your time-to-value by offering a fast path to ingest and 
 * Auto-detection of logs and metrics for monitoring hosts
 * Quick access to related dashboards and visualizations
 
-## {{edot}} quickstarts [_otel-quickstarts]
+## Recommended: {{edot}} quickstarts [_otel-quickstarts]
 
-The recommended path for new setups. If you're not sure which ingestion path suits your deployment, start with [Start using OpenTelemetry with Elastic](/solutions/observability/get-started/opentelemetry/start-with-otel.md). Otherwise, select a guide based on your deployment model and environment:
+For new setups, collect logs, metrics, and traces with {{edot}}. There's a guide for every combination of deployment model ({{ech}}, {{serverless-full}}, or a self-managed {{stack}}) and environment ({{k8s}}, Docker, or hosts and VMs).
 
-| Deployment | {{k8s}} | Docker | Hosts / VMs |
-|---|---|---|---|
-| {{ech}} | [{{k8s}} on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/k8s.md) | [Docker on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/docker.md) | [Hosts on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/hosts_vms.md) |
-| {{serverless-full}} | [{{k8s}} on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md) | [Docker on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md) | [Hosts on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md) |
-| Self-managed {{stack}} | [{{k8s}} on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/k8s.md) | [Docker on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/docker.md) | [Hosts on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/hosts_vms.md) |
-
-For custom application metrics: [Ingest custom metrics with {{edot}}](/solutions/observability/get-started/opentelemetry/custom-metrics-quickstart.md).
+* [**{{edot}} quickstarts**](/solutions/observability/get-started/opentelemetry/quickstart/index.md): select your deployment model and environment, then follow that guide.
+* [**Start using OpenTelemetry with Elastic**](/solutions/observability/get-started/opentelemetry/start-with-otel.md): if you're not sure which ingestion path suits your deployment, decide here first.
 
 ## Other quickstarts [_other-quickstarts]
 
 These quickstarts cover additional ingest paths and use cases:
 
 * [**Quickstart: Monitor your application performance**](/solutions/observability/get-started/quickstart-monitor-your-application-performance.md)
+* [**Ingest custom metrics with {{edot}}**](/solutions/observability/get-started/opentelemetry/custom-metrics-quickstart.md) — for application metrics you define yourself, in any environment.
 * [**Quickstart: Monitor hosts with {{agent}}**](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md) — use this if you already run {{agent}} and want ECS-formatted metrics rather than OpenTelemetry semantic conventions.
 * [**Quickstart: Monitor your {{k8s}} cluster with {{agent}}**](/solutions/observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md) — Agent-based alternative to the OpenTelemetry {{k8s}} quickstart.
 * [**Quickstart: Create a Synthetic monitor**](/solutions/observability/get-started/quickstart-create-synthetic-monitor.md)

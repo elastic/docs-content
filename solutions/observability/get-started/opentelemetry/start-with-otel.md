@@ -100,13 +100,7 @@ Refer to [{{agent}} modes](elastic-agent://reference/edot-collector/modes.md) an
 
 ## Quickstart for your environment [start-with-otel-quickstarts]
 
-Use the quickstart that matches your deployment and environment:
-
-| Deployment model | Kubernetes | Docker | Hosts or VMs |
-|---|---|---|---|
-| {{product.self}} Stack | [K8s on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/k8s.md) | [Docker on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/docker.md) | [Hosts on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/hosts_vms.md) |
-| {{serverless-full}} | [K8s on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md) | [Docker on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md) | [Hosts on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md) |
-| {{ech}} | [K8s on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/k8s.md) | [Docker on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/docker.md) | [Hosts on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/hosts_vms.md) |
+After you've chosen your ingestion path, follow the quickstart that matches your deployment and environment. Select yours from the matrix in [{{edot}} quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
 
 To send OTLP data directly to {{serverless-full}} or {{ech}} without running {{agent}}, follow [Send OTLP data to the {{motlp}}](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md).
 
