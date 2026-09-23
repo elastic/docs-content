@@ -8,7 +8,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
-description: Configure Synthetics settings including alerting rules, private locations, global parameters, data retention, project API keys, and cross-cluster search settings.
+description: Configure Synthetics settings including alerting rules, private locations and their agents, global parameters, data retention, project API keys, cross-cluster search, and advanced settings.
 ---
 
 # Configure Synthetics settings [synthetics-settings]
@@ -72,6 +72,26 @@ In the **{{private-location}}s** tab, you can add and manage {{private-location}
 :::
 
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` When a private location has monitors with broken {{fleet}} integrations, a badge showing the count of unhealthy monitors appears in the location's row. Click the badge to open a popover listing the affected monitors. From the popover, use **Reset monitors** to bulk-reset all monitors at that location that have a `missing_package_policy` status. Monitors with other failure types are excluded and must be resolved manually. Refer to [Monitor integration health](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-health) for details on failure types and remediation steps.
+
+### Agents and health [synthetics-settings-private-locations-agents]
+```{applies_to}
+stack: ga 9.6+
+```
+
+The **{{private-location}}s** table shows the state of the {{agents}} that run each location's monitors:
+
+* **Agent Policy**: The name of the location's agent policy. A [scalable {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable) shows a **Scalable** badge with the number of enrolled agents. A classic location shows the number of agents on its policy. Click the policy name to view its status, enrolled agents, and healthy agents, then click **View policy in {{fleet}}** to open it in {{fleet}}.
+* **Health**: How many of the location's agents are healthy, for example `2/3 healthy`. An agent is healthy when {{fleet}} reports it as online.
+
+To view details for each agent, expand the location's row. The **Agents overview** panel shows:
+
+* The number of **Monitors**, **Agents**, and **Healthy agents** in the location, and the **Total memory** used and available across its agents.
+* **Monitors per agent**: One row for each agent, with its **Monitors**, **Monitors run**, **Memory (used / total)**, **CPU**, **Status**, and **Last agent check-in**. **Monitors run** is the share of the location's monitors that the agent runs. In a scalable location, each monitor runs on one agent. In a classic location, every agent runs all of the location's monitors.
+* A **Needs attention** callout when agents aren't reporting as online, or when an agent uses 85% or more of its memory.
+
+Click an agent's name to view its health, capacity, and {{fleet}} details, then click **View full details in {{fleet}}** to open the agent in {{fleet}}. Use **View agent policy** and **Manage agents in {{fleet}}** to open the agent policy and its agents in {{fleet}}.
+
+Memory and CPU show **N/A** for agents that don't report host metrics. To report them, add the System integration to the agent policy.
 
 ## Global parameters [synthetics-settings-global-parameters]
 
@@ -169,3 +189,14 @@ Use the **Sync interval (minutes)** field to set the interval. The default is 5 
 When a maintenance window becomes active, a callout in the Synthetics UI displays the estimated delay for applying changes to private location monitors: *"It may take up to X minutes for maintenance window changes to be applied to private location monitors,"* where X equals the configured sync interval. Click **Sync now** in the callout to trigger an immediate sync without waiting for the interval.
 
 A separate callout appears when maintenance windows are modified or deleted but changes have not yet propagated to your private location monitors.
+
+### Private location shard rebalancing [synthetics-settings-advanced-rebalancing]
+```{applies_to}
+stack: ga 9.6+
+```
+
+Synthetics regularly reassigns monitors across the healthy agents of [scalable {{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable). The **Rebalance private location shards** switch controls this for all {{kib}} spaces. It's on by default.
+
+::::{warning}
+Turning off **Rebalance private location shards** also removes the agent assignment from every monitor in every scalable {{private-location}}. Each monitor then runs on every agent enrolled on its location's agent policy, which duplicates test runs. When you turn the switch back on, Synthetics reassigns the monitors right away.
+::::

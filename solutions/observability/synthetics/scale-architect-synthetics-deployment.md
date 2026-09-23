@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: observability
   - id: cloud-serverless
-description: Advanced guidance for scaling and designing Elastic Synthetics deployments, including cross-project and cross-cluster search support, tagging strategies, and custom dashboards.
+description: Advanced guidance for scaling and designing Elastic Synthetics deployments, including private locations, cross-project and cross-cluster search, tagging, and custom dashboards.
 ---
 
 # Scale and architect a Synthetics deployment [synthetics-scale-and-architect]
@@ -60,6 +60,14 @@ For infrastructure or {{k8s}} uptime monitoring, use one of the following approa
 
 * **[{{heartbeat}}](beats://reference/heartbeat/index.md) with autodiscovery**: Run {{heartbeat}} on your infrastructure and use [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) to dynamically monitor hosts and pods. Results appear in the [{{uptime-app}}](/solutions/observability/uptime/index.md).
 * **{{agent}} with the Uptime Monitors integration**: Deploy a standalone {{agent}} and configure the Uptime Monitors ({{heartbeat}}) integration to collect availability data from your infrastructure. The {{uptime-app}} is deprecated as of 8.15 and is not available in {{serverless-short}}.
+
+## Scale {{private-location}}s [synthetics-scale-private-locations]
+
+When a {{private-location}} can't keep up with its monitors, you can:
+
+* **Add resources to the agent**: Raise the concurrency limits of the {{agent}} and allocate more CPU and RAM to it. Refer to [Scaling {{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scaling).
+* {applies_to}`stack: ga 9.6+` **Add agents to the location**: Use a scalable {{private-location}} to spread its monitors across several {{agents}} that share one agent policy. Scalable locations also move monitors to healthy agents when an agent fails. Refer to [Scale a {{private-location}} across multiple {{agents}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable).
+* **Split the location**: Create more {{private-location}}s, each with its own agent policy, and move some of the monitors to them. Splitting is the recommended approach when a location reaches the limits described in [Known limitations on vertical scaling](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#known-limitations-on-vertical-scaling), such as the number of monitors a single location supports.
 
 ## Manage large numbers of Synthetic monitors with tags [synthetics-tagging]
 

@@ -104,12 +104,21 @@ Start by identifying the cause of the issue. First, check if the time it takes t
     * Refactor the monitor so it can run in a shorter amount of time.
 
 
-If the duration is *less than* the scheduled frequency or the suggestion above does not fix the issue, then there may be too many browser monitors attempting to run on the {{private-location}}. Due to the additional hardware overhead of running browser monitors, we limit each {{private-location}} to only run two browser monitors at the same time. Depending on how many browser monitors you have configured to run on the {{private-location}} and their schedule, the {{private-location}} may not be able to run them all because it would require more than two browser tests to be running simultaneously.
+If the duration is *less than* the scheduled frequency or the suggestion above does not fix the issue, then there might be too many browser monitors attempting to run on the {{private-location}}. Due to the additional hardware overhead of running browser monitors, each {{agent}} in a {{private-location}} runs only two browser monitors at the same time by default. Depending on how many browser monitors you have configured to run on the {{private-location}} and their schedule, the agent might not be able to run them all because it would require more than two browser tests to be running simultaneously.
 
-To fix this issue, you can either:
+To fix this issue, you can:
 
 * Increase the number of concurrent browser monitors allowed (as described in [Scaling Private Locations](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scaling)), paying attention to the scaling and hardware requirements documented.
-* Create multiple {{private-location}}s and spread your browser monitors across them more evenly (effectively horizontally scaling your {{private-location}}s).
+* {applies_to}`stack: ga 9.6+` Use a [scalable {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable) and enroll more {{agents}} on its agent policy, so the browser monitors are spread across the agents.
+* Create multiple {{private-location}}s and spread your browser monitors across them more evenly.
+
+### Monitors on a {{private-location}} run more than once [synthetics-troubleshooting-duplicate-runs]
+
+If a monitor on a {{private-location}} reports more results than its schedule allows, more than one {{agent}} is running it. This can happen when:
+
+* Several {{agents}} are enrolled on the agent policy of a classic {{private-location}}. Each agent runs every monitor in the location. Unenroll all but one agent from the agent policy. {applies_to}`stack: ga 9.6+` Alternatively, turn on **Scale with multiple agents on this policy** for the location so that each monitor runs on one agent. Refer to [Scale a {{private-location}} across multiple {{agents}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable).
+* {applies_to}`stack: ga 9.6+` **Rebalance private location shards** is turned off. While it's off, each monitor in a scalable {{private-location}} runs on every agent enrolled on the agent policy. Turn the switch back on in [**Settings → Advanced**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-advanced-rebalancing).
+* {applies_to}`stack: ga 9.6+` An agent in a scalable {{private-location}} failed over recently. While a monitor moves to another agent, it can briefly run on two agents. No action is needed.
 
 
 ### No locations are available [synthetics-troubleshooting-no-locations]
