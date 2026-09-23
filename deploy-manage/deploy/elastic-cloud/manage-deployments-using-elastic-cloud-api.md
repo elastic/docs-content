@@ -30,6 +30,7 @@ Dedicated operations let you update only the intended setting without submitting
 | Scale {{es}} tiers by updating memory size and zone count | [Get deployment {{es}} tiers]({{cloud-apis}}operation/operation-get-deployment-es-resource-tiers)<br><br>[Update deployment {{es}} tiers]({{cloud-apis}}operation/operation-update-deployment-es-resource-tier) |
 | Attach another deployment’s built-in snapshot repository (`found-snapshots`) for cross-deployment snapshot access and restore workflows | [Attach snapshots from a source deployment]({{cloud-apis}}operation/operation-create-deployment-es-resource-snapshot-repository)<br><br>[List attached snapshot repositories]({{cloud-apis}}operation/operation-get-deployment-es-resource-snapshot-repository)<br><br>[Detach an attached snapshot repository]({{cloud-apis}}operation/operation-delete-deployment-es-resource-snapshot-repository) |
 | Manage deployment tags | [Get the tags for a deployment]({{cloud-apis}}operation/operation-get-deployment-tags)<br><br>[Set the tags for a deployment]({{cloud-apis}}operation/operation-set-deployment-tags) |
+| Add a customer-managed encryption key to an existing deployment | [Encrypt an existing deployment with your key](../../security/encrypt-deployment-with-customer-managed-encryption-key.md#ec_encrypt_an_existing_deployment_with_a_customer_managed_key) |
 
 Use the generic [Update deployment endpoint]({{cloud-apis}}operation/operation-update-deployment) when you need to apply broader plan changes that affect multiple resources in one request.
 
