@@ -71,6 +71,28 @@ $$$agent-builder-traces-skill$$$ `agent-builder-traces` {applies_to}`stack: prev
 
     **Prerequisites:** Controlled by the `agentBuilder:tracing:enabled` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings), which is on by default.
 
+$$$agent-builder-context-engine-skills$$$
+### Context Engine
+
+These skills help agents plan an AI index, configure its sources and automations, evaluate how well its KIs support questions, and retrieve KIs while answering them.
+
+$$$agent-builder-analyze-and-improve-skill$$$ `analyze-and-improve` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
+:   Evaluates what an AI index should contain, selects a Knowledge Indicator (KI) generation strategy, and diagnoses gaps in existing KIs. It directs source and automation changes instead of editing generated KIs directly.
+
+$$$agent-builder-ai-index-sources-skill$$$ `ai-index-sources` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
+:   Selects and configures the {{es}} indices or connectors that supply an AI index. It can inspect mappings and sample data, build {{esql}} source queries, and distinguish a source coverage problem from an automation problem.
+
+$$$agent-builder-ai-index-automations-skill$$$ `ai-index-automations` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
+:   Reads, drafts, validates, and pilots the Elastic Workflows that generate and refresh KIs. It includes Workflow templates for common generation strategies.
+
+$$$agent-builder-context-engine-signals-skill$$$ `context-engine-signals` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
+:   Examines retrieval signals to determine which KI retrievals succeeded, returned no useful context, or led an agent to query source data.
+
+$$$agent-builder-ki-retrieval-skill$$$ `ki-retrieval` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
+:   Retrieves existing KIs from an AI index with keyword, semantic, or hybrid {{esql}} search. Use it at question-answering time rather than to generate KIs.
+
+For the relationship between these skills, AI indices, automations, and KIs, refer to [Context Engine concepts](/explore-analyze/ai-features/context-engine/concepts.md).
+
 ### Cases and alerting
 
 $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`

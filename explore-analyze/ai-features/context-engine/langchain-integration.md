@@ -1,20 +1,22 @@
 ---
 navigation_title: Query AI Indices with LangChain
 description: Connect a LangChain agent to Context Engine through the Agent Builder MCP server or the Context Engine APIs, so it can retrieve Knowledge Indicators from your AI Indices.
+type: how-to
 applies_to:
-  stack: preview 9.6
-  serverless: preview
+  stack: experimental 9.6
+  serverless: experimental
 products:
   - id: kibana
 ---
 
 # Query AI Indices from LangChain
 
-:::{important}
-This page is currently hidden from the documentation navigation. It is intended for testing and review while the feature is under development.
+:::{include} _snippets/hidden-docs-notice.md
 :::
 
 A LangChain agent can retrieve Knowledge Indicators (KIs) from Context Engine using read-only tools.
+
+For the integration model and the built-in {{agent-builder}} route, refer to [Use Context Engine with agents](use-context-engine-with-agents.md).
 
 You can connect a LangChain agent to Context Engine in two ways:
 
@@ -324,7 +326,8 @@ Each entry the list operation returns gives the agent:
 
 * `id`, to pass to the describe operation.
 * `esql_target`, the exact string to put after `FROM`. Use it verbatim: it differs from the ID (`sales-knowledge` becomes `ai-index-idx-sales-knowledge`) and can be a wildcard or a data stream.
-* `description` and `managed`, to choose between entries.
+* `description`, to determine whether the AI Index is relevant to the question.
+* `managed`, to distinguish a [built-in AI Index supplied by an Elastic integration](concepts.md#managed-ai-indices) from one created by a user.
 
 The list omits an AI Index when your credential can't read its backing index. It does include an AI Index that's registered but still empty.
 

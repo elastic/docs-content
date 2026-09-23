@@ -261,9 +261,17 @@ toc:
           - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md
-      - hidden: ai-features/context-engine.md
-      - hidden: ai-features/context-engine/quickstart.md
-      - hidden: ai-features/context-engine/langchain-integration.md
+      - file: ai-features/context-engine.md
+        children:
+          - file: ai-features/context-engine/quickstart.md
+          - file: ai-features/context-engine/concepts.md
+          - file: ai-features/context-engine/build-and-maintain-ai-index.md
+            children:
+              - file: ai-features/context-engine/evaluate-and-improve-knowledge-indicators.md
+          - file: ai-features/context-engine/use-context-engine-with-agents.md
+            children:
+              - file: ai-features/context-engine/use-context-engine-with-agent-builder.md
+              - file: ai-features/context-engine/langchain-integration.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/agent-skills.md
       - file: ai-features/llm-guides/llm-connectors.md
