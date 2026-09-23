@@ -139,10 +139,7 @@ This realm has a few mandatory settings, and a number of optional settings. The 
 
         If your OpenID Connect Provider doesn’t publish its JWKS at an https URL, or if you want to use a local copy, you can upload the JWKS as a file.
 
-        :::{tip}
-        * In self-managed clusters, the specified path is resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.
-        * If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
-        * If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+        :::{include} /deploy-manage/_snippets/es-file-path-tip.md
         :::
 
     op.userinfo_endpoint

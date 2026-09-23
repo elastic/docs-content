@@ -20,9 +20,9 @@ When a snapshot repository is marked as "unknown", it means that an {{es}} node 
 
 Learn more about snapshot and restore plugins: 
 
-* [Plugins and bundles](/deploy-manage/plugins-and-bundles.md)
-* [Installing plugins in self-managed clusters](/deploy-manage/plugins-and-bundles.md#managing-plugins-for-self-managed)
-* [Installing plugins on {{eck}}](/deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md#k8s-install-plugin)
+* [Snapshot/restore repository plugins](elasticsearch://reference/elasticsearch-plugins/snapshotrestore-repository-plugins.md)
+* [Installing plugins in self-managed clusters](/deploy-manage/plugins-and-bundles/self-managed/manage-plugins.md)
+* [Installing plugins on {{eck}}](/deploy-manage/plugins-and-bundles/cloud-on-k8s/manage-plugins.md)
 
 :::{tip}
 {{ech}} and {{ece}} only support specific repository types, which can't be extended using plugins. [Learn more](/deploy-manage/tools/snapshot-and-restore.md).
