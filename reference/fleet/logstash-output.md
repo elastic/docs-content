@@ -87,12 +87,14 @@ For more information about configuring {{ls}}, refer to [Configuring {{ls}}](log
 
 The preceding pipeline example branches on `[@metadata][_id]` so that integrations that set a document ID keep it, while integrations that don't still ingest correctly. That approach requires two nearly identical `elasticsearch` output blocks. Events are split across those outputs, so bulk request sizes can vary and ingestion throughput can drop.
 
-On {{ls}} 8.12.0 or later ({{es}} output plugin 11.21.0 or later), you can keep a single {{es}} output by copying any present `[@metadata][_id]` into `[@metadata][_ingest_document][id]`. The {{es}} output plugin reads that field when it builds each bulk request. The `mutate` `copy` is a no-op when `[@metadata][_id]` is absent, so you don't need the conditional.
+On {{ls}} 8.12.0 or later ({{es}} output plugin 11.21.0 or later), you can keep a single {{es}} output by copying `[@metadata][_id]` into `[@metadata][_ingest_document][id]`. Copy only when `[@metadata][_id]` is present and `[@metadata][_ingest_document][id]` is not already set. The {{es}} output plugin reads that field when it builds each bulk request.
 
 ```yaml
 filter {
-  mutate {
-    copy => { "[@metadata][_id]" => "[@metadata][_ingest_document][id]" }
+  if [@metadata][_id] and ![@metadata][_ingest_document][id] {
+    mutate {
+      copy => { "[@metadata][_id]" => "[@metadata][_ingest_document][id]" }
+    }
   }
 }
 
@@ -112,7 +114,7 @@ output {
 `[@metadata][_ingest_document][id]` is read internally by the {{es}} output plugin and is not part of that plugin's documented configuration surface. Keep two things in mind when you use it:
 
 * Don't also set `document_id` on the output. An explicit `document_id` overrides the metadata field.
-* If your pipeline also uses the [`elastic_integration` filter](logstash-docs-md://lsr/plugins-filters-elastic_integration.md), add the `mutate` after that filter. The filter replaces the whole `[@metadata][_ingest_document]` map, so an earlier `copy` is discarded.
+* If the pipeline also uses the [`elastic_integration` filter](logstash-docs-md://lsr/plugins-filters-elastic_integration.md), add the `mutate` after that filter. The filter replaces the whole `[@metadata][_ingest_document]` map, so an earlier copy is discarded. The `and ![@metadata][_ingest_document][id]` check skips the copy when the ingest pipeline already set `_id`.
 
 ## {{ls}} output configuration settings [_ls_output_configuration_settings]
 
