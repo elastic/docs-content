@@ -87,7 +87,7 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-The [Template library](/explore-analyze/workflows/templates/start-from-a-template.md) is turned off by default. If **Template library** doesn't appear in the Workflows navigation, have an administrator run the following request from [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md) on {{stack}} or {{serverless-short}}. This is a global setting, so it applies to all spaces:
+The [Template library](/explore-analyze/workflows/templates/start-from-a-template.md) is turned off by default. If **Template library** doesn't appear in the Workflows navigation, have an administrator run the following request from [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md) on {{stack}} or {{serverless-short}}:
 
 ```json
 POST kbn:/internal/kibana/global_settings
@@ -99,10 +99,10 @@ POST kbn:/internal/kibana/global_settings
 ```
 
 :::{note}
-The `/internal/kibana/global_settings` endpoint is an internal API and might change without notice. There is currently no public equivalent.
+The `/internal/kibana/global_settings` endpoint is an internal API and might change without notice.
 :::
 
-When the request returns HTTP 200 and `workflowsManagement:library:enabled` has `"userValue": true`, reload the page. **Template library** appears in the Workflows navigation.
+When the request returns HTTP 200 and `workflowsManagement:library:enabled` has `"userValue": true`, reload the page. **Template library** appears in the Workflows navigation. Note that the `workflowsManagement:library:enabled` setting is global, so turning it on applies to all spaces.
 
 ## What's next [workflows-what-next]
 

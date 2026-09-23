@@ -43,6 +43,12 @@ For more details about feature availability in {{serverless-short}}, refer to []
 | [Deployment health monitoring](/deploy-manage/monitor.md) | AutoOps or monitoring cluster | AutoOps or monitoring cluster | Managed by Elastic |
 | [Alerting](/explore-analyze/alerting.md) | Watcher or {{kib}} alerts | Watcher or {{kib}} alerts | Alerts ([why?](/explore-analyze/alerting.md#watcher)) |
 
+## Reporting
+
+| Feature/capability | Fully self-managed, ECE, ECK, ECH | {{serverless-short}} |
+|-------------------|-------------------------------|----------------------|
+| [Reporting](/explore-analyze/report-and-share.md) | All report types and file formats | CSV for Discover sessions and Lens visualizations.<br><br>JSON for dashboards.<br><br>PDF and PNG are not available. |
+
 ## Data lifecycle
 
 | Feature/capability | Fully self-managed, ECE, ECK | ECH | {{serverless-short}} |
@@ -57,7 +63,7 @@ For more details about feature availability in {{serverless-short}}, refer to []
 | Custom plugins and bundles | Available | Available | No |
 | [Self-managed connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md) | Available | Limited | Limited |
 | [{{es}}-Hadoop integration](elasticsearch-hadoop://reference/index.md) | Available | Available | No |
-| [Cross cluster search (CCS)](/explore-analyze/cross-cluster-search.md) | Available | Available | Tech preview (as [cross-project search](/deploy-manage/cross-project-search-config.md)) |
+| Search across clusters or projects | [Cross-cluster search](/explore-analyze/cross-cluster-search.md) | [Cross-cluster search](/explore-analyze/cross-cluster-search.md) | [Cross-project search](/deploy-manage/cross-project-search-config.md) |
 | [Cross cluster replication](/deploy-manage/tools/cross-cluster-replication.md) | Available | Available | [Planned](https://www.elastic.co/cloud/serverless/roadmap) |
 
 ## Development and testing features
