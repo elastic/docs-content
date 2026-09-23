@@ -420,6 +420,8 @@ subs:
   ls-apis: https://www.elastic.co/docs/api/doc/logstash/
   cloud-apis: https://www.elastic.co/docs/api/doc/cloud/
   cloud-billing-apis: https://www.elastic.co/docs/api/doc/cloud-billing/
+  cloud-connect-api: "Cloud Connect API"
+  cloud-connect-apis: https://www.elastic.co/docs/api/doc/cloud-connect/
   cloud-serverless-apis: https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/
   ece-apis: https://www.elastic.co/docs/api/doc/cloud-enterprise/
   intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/

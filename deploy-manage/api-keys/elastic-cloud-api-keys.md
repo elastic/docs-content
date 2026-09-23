@@ -17,6 +17,7 @@ products:
 * [{{ecloud}}]({{cloud-apis}}) APIs
 * [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs
 * [{{ecloud}} Billing]({{cloud-billing-apis}}) APIs
+* [{{cloud-connect-api}}]({{cloud-connect-apis}}), for use with ECE, ECK, and self-managed clusters
 * {applies_to}`serverless: ga` Optionally, [{{es}} {{serverless-full}}]({{es-serverless-apis}}) and [{{kib}} {{serverless-full}}]({{kib-serverless-apis}})  APIs
 
 :::{admonition} {{es}} and {{kib}} API access

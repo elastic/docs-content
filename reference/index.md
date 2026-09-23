@@ -21,7 +21,7 @@ Explore the reference documentation for [Elastic APIs]({{apis}}).
 | {{kib}}<br>({{observability}}, {{elastic-sec}}, {{apm-agent}}, {{fleet}}, and more features) | • [{{kib}}]({{kib-apis}})<br>• [{{kib}} Serverless]({{kib-serverless-apis}})<br> |
 | {{ls}} | • [{{ls}}]({{ls-apis}})<br> |
 | APM | • [APM Server](/solutions/observability/apm/apm-server/api.md)<br>• [Observability intake Serverless]({{intake-apis}})<br> |
-| {{ecloud}} | • [{{ech}}]({{cloud-apis}})<br>• [{{ecloud}} Serverless]({{cloud-serverless-apis}})<br>• [{{ece}}]({{ece-apis}})<br>• [{{eck}}](cloud-on-k8s://reference/api-docs.md)<br>• [{{ecloud}} billing]({{cloud-billing-apis}})<br> |
+| {{ecloud}} | • [{{ech}}]({{cloud-apis}})<br>• [{{ecloud}} Serverless]({{cloud-serverless-apis}})<br>• [{{ece}}]({{ece-apis}})<br>• [{{eck}}](cloud-on-k8s://reference/api-docs.md)<br>• [{{ecloud}} billing]({{cloud-billing-apis}})<br>• [{{cloud-connect-api}}]({{cloud-connect-apis}})<br> |
 
 ## Elasticsearch
 

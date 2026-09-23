@@ -28,6 +28,8 @@ Refer to [](/deploy-manage/api-keys/elasticsearch-api-keys.md) to learn how to g
 :::{include} /deploy-manage/deploy/_snippets/other-apis.md
 :::
 
+You can use the [{{cloud-connect-api}}]({{cloud-connect-apis}}) to connect self-managed clusters to {{ecloud}} services and manage those connections. For the services you can connect, refer to [Cloud Connect](/deploy-manage/cloud-connect.md).
+
 ## Clients
 
 * [{{es}} clients](/reference/elasticsearch-clients/index.md): Interact with {{es}} programmatically to integrate {{es}} into your app or website.

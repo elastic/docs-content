@@ -23,7 +23,6 @@ Refer to [](/deploy-manage/api-keys.md) to learn how to generate API keys for yo
 
 You can use the [{{eck}} API](cloud-on-k8s://reference/api-docs.md) to create and manage {{stack}} components using Elastic-provided [Custom Resource Definitions (CRDs)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions).
 
-
 ### APIs to interact with data and solution features
 
 The following APIs allow you to interact with your {{es}} cluster, its data, and the features available to you in your {{eck}} deployments.
@@ -37,6 +36,10 @@ Refer to [{{es}} API conventions](elasticsearch://reference/elasticsearch/rest-a
 
 :::{include} /deploy-manage/deploy/_snippets/other-apis.md
 :::
+
+### {{cloud-connect-api}}
+
+You can use the [{{cloud-connect-api}}]({{cloud-connect-apis}}) to connect {{eck}} deployments to {{ecloud}} services and manage those connections. For the services you can connect, refer to [Cloud Connect](/deploy-manage/cloud-connect.md).
 
 ## Tools
 

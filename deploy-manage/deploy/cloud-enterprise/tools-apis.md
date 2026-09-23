@@ -41,6 +41,10 @@ Refer to [{{es}} API conventions](elasticsearch://reference/elasticsearch/rest-a
 :::{include} /deploy-manage/deploy/_snippets/other-apis.md
 :::
 
+### {{cloud-connect-api}}
+
+You can use the [{{cloud-connect-api}}]({{cloud-connect-apis}}) to connect {{ece}} deployments to {{ecloud}} services and manage those connections. For the services you can connect, refer to [Cloud Connect](/deploy-manage/cloud-connect.md).
+
 ## Elastic CLI
 ```{applies_to}
 deployment:
