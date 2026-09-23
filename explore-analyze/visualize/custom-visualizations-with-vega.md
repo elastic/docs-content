@@ -26,10 +26,6 @@ Add a **Vega** panel on a dashboard to use these grammars with {{kib}} filters, 
 You can also ask [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md) to generate Vega-Lite visualizations from natural language when it creates or updates a dashboard through chat.
 :::
 
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-vega
-:::
-
 :::{image} /explore-analyze/images/kibana-vega.png
 :alt: Vega UI
 :screenshot:

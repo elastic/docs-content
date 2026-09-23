@@ -108,6 +108,7 @@ $$$ec-restrictions-network-security-kibana-sso$$$
 ```
 ```{include} /deploy-manage/security/_snippets/aws-privatelink-cloud-id-limitation.md
 ```
+* **Remote clusters with API key authentication over GCP Private Service Connect:** Remote cluster connections that use the API key based security model are not yet supported over GCP Private Service Connect because traffic on port `9443` is not currently allowed. Only the TLS certificate based security model (port `9400`) is currently supported for remote cluster traffic over GCP PSC.
 
 ## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-network-security-watcher]
 

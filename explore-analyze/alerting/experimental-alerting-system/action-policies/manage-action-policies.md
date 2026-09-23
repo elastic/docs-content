@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Manage action policies in the experimental alerting system: turn them on or off, snooze notifications, and rotate API keys."
+description: "Manage action policies in the experimental alerting system: turn them on or off, snooze them so they don't invoke workflows, and rotate API keys."
 ---
 
 # Manage action policies for the {{alerting-v2-system}} [manage-action-policies]
@@ -20,7 +20,7 @@ The list also shows the display name of the user who created the action policy a
 
 ## Enable, disable, and snooze an action policy
 
-You can disable an action policy so the dispatcher doesn't evaluate it for new alert episodes. You can snooze an action policy for a defined window so it doesn't dispatch notifications during that period. The dispatcher skips action policies that aren't enabled or are snoozed.
+You can disable an action policy so the dispatcher doesn't evaluate it for new alert episodes. You can snooze an action policy for a defined window so it doesn't invoke workflows during that period. The dispatcher skips action policies that aren't enabled or are snoozed.
 
 :::{note}
 Snoozing an action policy differs from [snoozing an alert episode](reduce-notification-noise.md#snooze-scope). When you snooze an action policy, the dispatcher pauses and silences every alert series the action policy processes. When you snooze an alert episode, you target one specific series before action policy matching runs, silencing it regardless of which action policy handles it. Use alert snooze when you want to quiet a specific recurring alert without affecting other series handled by the same action policy.
@@ -28,7 +28,7 @@ Snoozing an action policy differs from [snoozing an alert episode](reduce-notifi
 
 ### Pause dispatch during a maintenance window [maintenance-windows]
 
-During a [maintenance window](../../alerts/maintenance-windows.md), action policies stop dispatching notifications automatically. You don't need to configure the action policy. Rule evaluation continues and alert episodes are still recorded in `.rule-events`. Configure {{maint-windows-cap}} separately, not on the action policy.
+During a [maintenance window](../../alerts/maintenance-windows.md), action policies stop invoking workflows automatically. You don't need to configure the action policy. Rule evaluation continues and alert episodes are still recorded in `.rule-events`. Configure {{maint-windows-cap}} separately, not on the action policy.
 
 ## Rotate an action policy's API key
 
