@@ -27,7 +27,7 @@ Make sure to also consider your cluster's shard count, index layout, and overall
 ::::
 
 ::::{tip}
-This page covers three groups of recommendations. **Cluster and hardware tuning** and **Index design and maintenance** apply to all query languages, including ES|QL. **Query DSL optimizations** applies only to Query DSL queries. If you use ES|QL, also refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md).
+This page covers three groups of recommendations. [Cluster and hardware tuning](#search-speed-cluster-hardware) and [Index design and maintenance](#search-speed-index-design) apply to all query languages. For recommendations specific to your query language, such as QueryDSL or ES|QL, refer to [Language-specific optimizations](dne).
 ::::
 
 
@@ -136,7 +136,7 @@ To check for `open_contexts`, poll the [node stats API]({{es-apis}}/operation/op
 GET _nodes/stats/indices/search
 ```
 
-This value can rise when the [task queue backlog](/troubleshoot/elasticsearch/task-queue-backlog.md) reports a high amount of pending searches. If not, your [scroll search timeouts](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#scroll-search-results) might be set too high. [Clear scrolls](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#clear-scroll) as soon as they're no longer needed to release the context retention.
+This value can rise when the [task queue backlog](/troubleshoot/elasticsearch/task-queue-backlog.md) reports a high amount of pending searches. If the backlog does not report many pending searches, then your high number of open contexts might be caused by your [scroll search timeouts](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#scroll-search-results) being set too high. [Clear scrolls](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#clear-scroll) as soon as they're no longer needed to release the context retention.
 
 
 ## Index design and maintenance [search-speed-index-design]
@@ -340,7 +340,7 @@ GET bicycles,other_cycles/_search
 
 On the `other_cycles` index, {{es}} quickly figures out that `bicycle` doesn't exist in the terms dictionary of the `cycle_type` field and returns a search response with no hits.
 
-This is a powerful way of making queries cheaper by putting common values in a dedicated index. This idea can also combine across multiple fields: for instance if you track the color of each cycle and your `bicycles` index ends up with a majority of black bikes, you can split it into a `bicycles-black` and a `bicycles-other-colors` index.
+This is a powerful way of making queries cheaper by putting common values in a dedicated index. This idea can also be combined across multiple fields: for instance if you track the color of each cycle and your `bicycles` index ends up with a majority of black bikes, you can split it into a `bicycles-black` and a `bicycles-other-colors` index.
 
 `constant_keyword` isn't strictly required for this optimization: it's also possible to update the client-side logic to route queries to the relevant indices based on filters. However `constant_keyword` does this transparently and allows you to decouple search requests from the index topology in exchange for very little overhead.
 
