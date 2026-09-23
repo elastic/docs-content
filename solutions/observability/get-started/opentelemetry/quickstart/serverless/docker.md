@@ -17,6 +17,11 @@ products:
 Learn how to set up the {{agent}} and EDOT SDKs in a Docker environment with {{serverless-full}} to collect host metrics, logs, and application traces.
 
 
+## Prerequisites
+
+- [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on the host.
+- A user with the **Admin** role. The **Editor** role can install the content packs but can't create the {{es}} API key this quickstart needs.
+
 ## Guided setup
 
 :::{include} ../../_snippets/guided-instructions.md

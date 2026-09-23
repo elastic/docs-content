@@ -16,6 +16,11 @@ products:
 
 Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{serverless-full}} to collect host metrics, logs, and application traces. Send the data through OTLP to your Elastic Serverless project.
 
+## Prerequisites
+
+- The host or VM running a supported operating system (Linux, macOS, or Windows).
+- A user with the **Admin** role. The **Editor** role can install the content packs but can't create the {{es}} API key this quickstart needs.
+
 ## Guided setup
 
 :::{include} ../../_snippets/guided-instructions.md

@@ -23,7 +23,8 @@ Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment with
 
 ## Prerequisites
 
-To use the OpenTelemetry Kube Stack Chart, you need Helm version 3.9+ up to and including {{helm-version}}.
+- Helm version 3.9+ up to and including {{helm-version}}, required by the OpenTelemetry Kube Stack chart.
+- A user with the **Admin** role. The **Editor** role can install the content packs but can't create the {{es}} API key this quickstart needs.
 
 ## Manual installation
 

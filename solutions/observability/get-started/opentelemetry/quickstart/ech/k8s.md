@@ -18,6 +18,7 @@ Learn how to set up the {{agent}} and EDOT SDKs in a {{k8s}} environment with {{
 
 - An {{ech}} deployment running version 9.0 or later.
 - Helm version 3.9+ up to and including {{helm-version}}.
+- A user with the `manage_own_api_key` cluster privilege, to create the API key, and the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges, to install the content packs.
 
 ## Guided setup
 

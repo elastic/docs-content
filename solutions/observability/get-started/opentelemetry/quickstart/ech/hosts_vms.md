@@ -18,6 +18,7 @@ Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{ech}} (E
 
 - An {{ech}} deployment running version 9.0 or later.
 - The host or VM running a supported operating system (Linux, macOS, or Windows).
+- A user with the `manage_own_api_key` cluster privilege, to create the API key, and the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges, to install the content packs.
 
 ## Guided setup
 

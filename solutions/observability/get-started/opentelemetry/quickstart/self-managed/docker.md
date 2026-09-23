@@ -15,6 +15,11 @@ products:
 
 Learn how to set up the {{agent}} and EDOT SDKs in a Docker environment to collect host metrics, logs and application traces.
 
+## Prerequisites
+
+- [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on the host.
+- A user with the `manage_own_api_key` cluster privilege, to create the API key, and the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges, to install the content packs.
+
 ## Guided setup
 
 :::{include} ../../_snippets/guided-instructions.md
