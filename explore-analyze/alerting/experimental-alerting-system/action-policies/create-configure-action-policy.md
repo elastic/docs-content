@@ -87,7 +87,7 @@ serverless: ga
 stack: ga 9.6+
 ```
 
-If no existing workflow fits, create one without leaving the action policy form. In **Destination**, select **Create Email workflow** or **Create Slack workflow**, then select the connector and write the message. {{kib}} creates each workflow when you save the action policy and attaches it as a destination. If the action policy fails to save, {{kib}} deletes the workflows it created for it.
+To send an email or a Slack message without building a workflow first, select **Create Email workflow** or **Create Slack workflow** in **Destination**, then select the connector and write the message. {{kib}} creates each workflow when you save the action policy and attaches it as a destination. If the action policy fails to save, {{kib}} deletes the workflows it created for it.
 
 ### Create a notification from the rule form [notification-from-rule-form]
 ```{applies_to}
