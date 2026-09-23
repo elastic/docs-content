@@ -124,7 +124,8 @@ instrument your target applications following the setup instructions:
 Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 
 :::{tip}
-Activate Central Configuration to configure your EDOT SDKs from within {{product.kibana}}. Refer to [EDOT SDKs Central Configuration](opentelemetry://reference/central-configuration.md).
+:applies_to: stack: preview 9.1+
+Enable central configuration to configure your EDOT SDKs from within {{product.kibana}}. Refer to [Central configuration for EDOT SDKs](opentelemetry://reference/central-configuration.md).
 :::
 :::::
 
