@@ -65,7 +65,7 @@ You can build RAG applications with {{es}} by retrieving relevant context from y
 2. Pass the retrieved content as context to your language model
 3. The language model generates a response grounded in your data
 
-On {{serverless-full}}, RAG is a strong fit for the [{{es}} {{vectordb}} project type](/solutions/vector-database.md) when retrieval is embedding-driven. If you also need time series data, search application management, or custom models on {{ml}} nodes, use an [{{es}} project](/solutions/elasticsearch-solution-project.md) instead. [Compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type) to choose the right project type for your use case.
+On {{serverless-full}}, it's recommended to use an [{{es}} {{vectordb}} project](/solutions/vector-database.md) when embeddings and similarity search are the primary workload. New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
 
 ### Core search options
 

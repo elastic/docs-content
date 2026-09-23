@@ -22,7 +22,7 @@ With hybrid search, the same query can return both keyword and semantic matches,
 
 ## Prerequisites [semantic-search-quickstart-prerequisites]
 
-A running {{es}} cluster. The fastest way to follow this quickstart is to create an [{{es}} {{vectordb}} project](/solutions/vector-database.md). New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
+A running {{es}} cluster. The fastest way to follow this quickstart is to create an [{{es}} {{vectordb}} project](/solutions/vector-database.md) when embeddings and similarity search are the primary workload. New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
 
 ## Get the data in [semantic-search-quickstart-getting-data-in]
 
