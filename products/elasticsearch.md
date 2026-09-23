@@ -200,6 +200,17 @@ links:
   - label: Technical reference
     url: elasticsearch://reference/elasticsearch/index.md
 :::
+
+:::{link-card}
+title: Search and query
+links:
+  - label: ES|QL
+    url: elasticsearch://reference/query-languages/esql/esql-getting-started.md
+  - label: Search API
+    url: https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search
+  - label: Query DSL
+    url: elasticsearch://reference/query-languages/query-dsl/full-text-queries.md
+:::
 ::::
 
 ::::{card-group}
@@ -226,17 +237,18 @@ links:
 
 :::{link-card}
 title: Run Elasticsearch yourself
+link: /deploy-manage/deploy/self-managed/installing-elasticsearch.md
 links:
-  - label: Choose an install method
-    url: /deploy-manage/deploy/self-managed/installing-elasticsearch.md
   - label: Docker
     url: /deploy-manage/deploy/self-managed/install-elasticsearch-with-docker.md
   - label: Debian / Ubuntu
     url: /deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package.md
-  - label: RPM
+  - label: RHEL / CentOS
     url: /deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md
-  - label: Packages and archives
+  - label: Linux / macOS archive
     url: /deploy-manage/deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md
+  - label: Windows
+    url: /deploy-manage/deploy/self-managed/install-elasticsearch-with-zip-on-windows.md
   - label: Configure Elasticsearch
     url: /deploy-manage/deploy/self-managed/configure-elasticsearch.md
 :::
@@ -262,6 +274,8 @@ links:
     url: /deploy-manage/maintenance.md
   - label: Upgrade Elasticsearch
     url: /deploy-manage/upgrade/deployment-or-cluster.md
+  - label: Migrate data
+    url: /manage-data/migrate.md
 :::
 ::::
 
@@ -278,6 +292,8 @@ links:
     url: https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk
   - label: Indices and data streams
     url: /manage-data/data-store.md
+  - label: Tune for indexing speed
+    url: /deploy-manage/production-guidance/optimize-performance/indexing-speed.md
 :::
 
 :::{link-card}
@@ -285,6 +301,8 @@ title: Transform and enrich
 links:
   - label: Ingest pipelines
     url: /manage-data/ingest/transform-enrich/ingest-pipelines.md
+  - label: Transforms
+    url: /explore-analyze/transforms.md
   - label: Enrich data
     url: /manage-data/ingest/transform-enrich/data-enrichment.md
   - label: Ingest processors
@@ -325,6 +343,8 @@ links:
     url: beats://reference/index.md
   - label: Elastic Distributions of OpenTelemetry
     url: opentelemetry://reference/index.md
+  - label: Connectors
+    url: elasticsearch://reference/search-connectors/index.md
 :::
 ::::
 
@@ -341,8 +361,6 @@ links:
     url: elasticsearch://reference/query-languages/query-dsl/full-text-queries.md
   - label: Retrievers
     url: elasticsearch://reference/elasticsearch/rest-apis/retrievers.md
-  - label: Aggregations
-    url: /explore-analyze/query-filter/aggregations.md
 :::
 
 :::{link-card}
@@ -357,12 +375,45 @@ links:
 :::
 
 :::{link-card}
+title: Choose a search approach
+links:
+  - label: Search approaches overview
+    url: /solutions/search/search-approaches.md
+  - label: Full-text search
+    url: /solutions/search/full-text.md
+  - label: Geospatial search
+    url: /explore-analyze/geospatial-analysis.md
+:::
+
+:::{link-card}
+title: Machine learning and inference
+links:
+  - label: Machine learning
+    url: /explore-analyze/machine-learning.md
+  - label: Elastic Inference
+    url: /explore-analyze/elastic-inference.md
+:::
+
+:::{link-card}
 title: Search across clusters and projects
 links:
   - label: Cross-cluster search
     url: /explore-analyze/cross-cluster-search.md
   - label: Cross-project search
     url: /explore-analyze/cross-project-search.md
+:::
+
+:::{link-card}
+title: Improve search results
+links:
+  - label: Search relevance
+    url: /solutions/search/full-text/search-relevance.md
+  - label: Ranking and reranking
+    url: /solutions/search/ranking.md
+  - label: Synonyms
+    url: /solutions/search/full-text/search-with-synonyms.md
+  - label: Tune for search speed
+    url: /deploy-manage/production-guidance/optimize-performance/search-speed.md
 :::
 ::::
 
@@ -400,10 +451,30 @@ title: APIs, clients, and examples
 links:
   - label: Elasticsearch API docs
     url: https://www.elastic.co/docs/api/doc/elasticsearch
+  - label: Serverless Elasticsearch API docs
+    url: https://www.elastic.co/docs/api/doc/elasticsearch-serverless
   - label: Language clients
     url: /reference/elasticsearch-clients/index.md
   - label: REST API examples
     url: elasticsearch://reference/elasticsearch/rest-apis/api-examples.md
+:::
+
+:::{link-card}
+title: Agent Builder
+links:
+  - label: Get started
+    url: /explore-analyze/ai-features/elastic-agent-builder.md
+  - label: Programmatic access
+    url: /explore-analyze/ai-features/agent-builder/programmatic-access.md
+  - label: MCP server
+    url: /explore-analyze/ai-features/agent-builder/mcp-server.md
+:::
+
+:::{link-card}
+title: Search templates
+links:
+  - label: Search templates
+    url: /solutions/search/search-templates.md
 :::
 
 :::{link-card}
@@ -432,6 +503,8 @@ title: Data stream lifecycle
 links:
   - label: Data stream lifecycle
     url: /manage-data/lifecycle/data-stream.md
+  - label: Downsampling
+    url: /manage-data/data-store/data-streams/downsampling-time-series-data-stream.md
 :::
 
 :::{link-card}
@@ -439,6 +512,8 @@ title: Index lifecycle management
 links:
   - label: Index lifecycle management (ILM)
     url: /manage-data/lifecycle/index-lifecycle-management.md
+  - label: Data tiers
+    url: /manage-data/lifecycle/data-tiers.md
 :::
 
 :::{link-card}
@@ -448,6 +523,8 @@ links:
     url: /deploy-manage/tools/snapshot-and-restore.md
   - label: Cross-cluster replication
     url: /deploy-manage/tools/cross-cluster-replication.md
+  - label: Searchable snapshots
+    url: /deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md
 :::
 ::::
 
@@ -508,6 +585,8 @@ title: Cluster health and availability
 links:
   - label: Cluster issues
     url: /troubleshoot/elasticsearch/clusters.md
+  - label: Capture diagnostics
+    url: /troubleshoot/elasticsearch/diagnostic.md
 :::
 
 :::{link-card}
@@ -525,12 +604,10 @@ links:
 :::
 
 :::{link-card}
-title: Clients and diagnostics
+title: Clients
 links:
   - label: Client problems
     url: /troubleshoot/elasticsearch/clients.md
-  - label: Capture diagnostics
-    url: /troubleshoot/elasticsearch/diagnostic.md
 :::
 ::::
 
@@ -566,6 +643,8 @@ links:
     url: elasticsearch://reference/query-languages/esql/esql-getting-started.md
   - label: Elasticsearch SQL
     url: elasticsearch://reference/query-languages/sql.md
+  - label: EQL
+    url: elasticsearch://reference/query-languages/eql.md
 :::
 :::{link-card}
 title: Clients and tools
