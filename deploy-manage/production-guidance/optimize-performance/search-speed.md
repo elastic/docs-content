@@ -27,7 +27,7 @@ Make sure to also consider your cluster's shard count, index layout, and overall
 ::::
 
 ::::{tip}
-This page covers three groups of recommendations. [Cluster and hardware tuning](#search-speed-cluster-hardware) and [Index design and maintenance](#search-speed-index-design) apply to all query languages. For recommendations specific to your query language, such as QueryDSL or ES|QL, refer to [Language-specific optimizations](dne).
+This page covers four groups of recommendations. [Cluster and hardware tuning](#search-speed-cluster-hardware), [Search request tuning](#search-speed-request-tuning), and [Index design and maintenance](#search-speed-index-design) apply to all query languages. You can also review recommendations specific to some query languages: [Query DSL](#search-speed-query-dsl), [ES|QL](elasticsearch://reference/query-languages/esql/esql-query-performance.md), or [EQL](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-how-functions-impact-search-performance).
 ::::
 
 
@@ -114,6 +114,10 @@ Now imagine that you have a two-shards index and two nodes. In one case, the num
 
 So what's the right number of replicas? If you have a cluster that has `num_nodes` nodes, `num_primaries` primary shards *in total* and if you want to be able to cope with `max_failures` node failures at once at most, then the right number of replicas for you is `max(max_failures, ceil(num_nodes / num_primaries) - 1)`.
 
+
+## Search request tuning [search-speed-request-tuning]
+
+These recommendations apply to all {{es}} query languages and affect how search requests are handled at runtime.
 
 ### Use `preference` to optimize cache utilization [preference-cache-optimization]
 
@@ -487,6 +491,10 @@ ES|QL applies its own equivalent date-rounding optimization automatically during
 
 The [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) field has an [`index_prefixes`](elasticsearch://reference/elasticsearch/mapping-reference/index-prefixes.md) option that indexes term prefixes within a configurable length range (two to five characters by default) and is automatically leveraged by query parsers to run prefix queries. If your use-case involves running lots of prefix queries, this can speed up queries significantly.
 
+::::{note}
+`index_prefixes` is set at index time but only benefits Query DSL prefix queries. ES|QL and EQL do not use this optimization.
+::::
+
 
 ### Warm up global ordinals [_warm_up_global_ordinals]
 
@@ -528,10 +536,10 @@ ES|QL has its own profiling mechanism. Set `"profile": true` in the ES|QL reques
 
 The sections above cover optimizations for all query languages and for Query DSL specifically. For guidance specific to other query languages, refer to the following resources.
 
-### Optimize {{esql}} queries [_optimize_esql_queries]
+### {{esql}} optimizations [_optimize_esql_queries]
 
 For {{esql}}-specific performance guidance, including common anti-patterns and techniques for reducing scan size, refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md).
 
-### Event Query Language (EQL)
+### EQL optimizations [_optimize_eql_queries]
 
-For Event Query Language (EQL)-specific performance guidance, including how functions affect search performance and when to pre-index data, refer to [How functions impact search performance](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-how-functions-impact-search-performance).
+For EQL-specific performance guidance, including how functions affect search performance and when to pre-index data, refer to [How functions impact search performance](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-how-functions-impact-search-performance).
