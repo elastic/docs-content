@@ -122,33 +122,50 @@ The `artifacts` array is optional and accepts up to 100 entries. Every artifact 
 | `artifacts[].data.dashboard_id` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | string | Non-empty string | ID of the dashboard to link. Required when `type` is `dashboard`. Max 1,024 characters. |
 | `artifacts[].value` {applies_to}`stack: experimental =9.5` | string | Any string | Required. Runbook Markdown (max 50,000 characters) or a dashboard ID (max 1,024 characters). |
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` This example attaches a runbook and a dashboard. The runbook Markdown goes in `data.content`. The dashboard ID goes in `data.dashboard_id`. If {{kib}} loads a rule that still uses `value`, it converts that field to `data`. Write new YAML with `data`:
+The following example attaches a runbook and a dashboard to the same rule.
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.6+, serverless: ga }
 
 ```yaml
 artifacts:
   - id: checkout-runbook
-    type: runbook
+    type: runbook                                          <1>
     data:
-      content: |
+      content: |                                           <2>
         Fires when checkout error rate exceeds 10%.
   - id: checkout-errors-dashboard
     type: dashboard
     data:
-      dashboard_id: "8ac12f90-3d2b-11ef-9a4e-0242ac120002"
+      dashboard_id: "8ac12f90-3d2b-11ef-9a4e-0242ac120002" <3>
 ```
 
-{applies_to}`stack: experimental =9.5` This example attaches a runbook and a dashboard. Put the runbook Markdown or the dashboard ID in `value`:
+1. `type` determines which `data` field the artifact requires.
+2. The runbook Markdown goes in `data.content`.
+3. The dashboard ID goes in `data.dashboard_id`.
+
+If {{kib}} loads a rule that still uses `value`, it converts that field to `data`. Write new YAML with `data`.
+:::
+
+:::{applies-item} stack: experimental =9.5
 
 ```yaml
 artifacts:
   - id: checkout-runbook
     type: runbook
-    value: |
+    value: |                                      <1>
       Fires when checkout error rate exceeds 10%.
   - id: checkout-errors-dashboard
     type: dashboard
-    value: "8ac12f90-3d2b-11ef-9a4e-0242ac120002"
+    value: "8ac12f90-3d2b-11ef-9a4e-0242ac120002" <2>
 ```
+
+1. The runbook Markdown goes in `value`.
+2. The dashboard ID goes in `value`.
+:::
+
+::::
 
 ## Duration format [duration-format]
 
