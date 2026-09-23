@@ -13,7 +13,7 @@ description: "Privilege requirements for the experimental alerting system in Kib
 
 To use the {{alerting-v2-system}}, your role needs specific {{kib}} feature privileges and, if you're querying alerting data in Discover, {{es}} index privileges. [Create or update a role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) and add the privileges that match the tasks your team performs.
 
-This page is organized by user activity. Most privileges are set under the **Alerting** category in {{kib}} role management. Exceptions are noted in each section.
+This page is organized by user activity. Most privileges are set under the **Alerting V2** category in {{kib}} role management. Exceptions are noted in each section.
 
 :::{note}
 This page covers access to the {{alerting-v2-system}} features and data. Depending on how your rules and notifications are configured, your role might also need `read` index privileges on the indices their rules query and **Actions and Connectors: All** (under **Management**) to create or edit workflow connectors. Refer to [{{kib}} role management](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for guidance on building roles that combine privileges across features.
@@ -25,10 +25,10 @@ The following table shows the minimum privileges required for each activity. Hig
 
 | To... | Minimum required |
 |---|---|
-| Author and manage rules | **Rules: All** (under **Alerting**) |
-| Monitor rule execution | **Execution history: Read** (under **Alerting**) |
-| Triage alert episodes | **Alerts: All** (under **Alerting**) |
-| Configure notifications | **Action Policies: All** (under **Alerting**) + **Workflows: Read** (under **Analytics > Workflows**) |
+| Author and manage rules | **Rules: All** (under **Alerting V2**) |
+| Monitor rule execution | **Execution history: Read** (under **Alerting V2**) |
+| Triage alert episodes | **Alerts: All** (under **Alerting V2**) |
+| Configure notifications | **Action Policies: All** (under **Alerting V2**) + **Workflows: Read** (under **Analytics > Workflows**) |
 | Query `.rule-events` and `.alert-actions` in Discover | **Discover: Read** (under **Analytics > Discover**) + **Alerts: Read** (Elasticsearch `read` access is bundled automatically) |
 | Query `.kibana-event-log-*` in Discover | **Discover: Read** (under **Analytics > Discover**) + custom role with `read` index privilege on `.kibana-event-log-*` |
 
