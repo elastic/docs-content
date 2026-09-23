@@ -30,24 +30,37 @@ products:
 
 ## Prepare your sample data [automatic-import-sample-data]
 
-To use Automatic Import, you must provide a sample of the data you want to import. An LLM processes that sample and creates an integration suitable for the data represented by the sample. **Automatic Import supports the following sample formats: JSON, NDJSON, CSV, and syslog (structured and unstructured).**
+Collect a sample of the data you want to import before you create the integration. An LLM uses that sample to build an integration for the data it represents.
 
-{applies_to}`stack: removed 9.4` For API-based collection, Automatic Import can generate a program in **Common Expression Language (CEL)**. For background, refer to the [CEL specification](https://github.com/google/cel-spec){:target="_blank"} and the [CEL input in {{filebeat}}](beats://reference/filebeat/filebeat-input-cel.md).
+For file data, refer to [Prepare a file sample](#automatic-import-sample-file). For API collection, refer to [Collect from an API](#automatic-import-sample-api).
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` To generate a CEL program, developers can use the [Elastic integration skills](https://github.com/elastic/integration-skills), a set of workflows that build integration packages with an AI coding agent.
+### Prepare a file sample [automatic-import-sample-file]
 
-* You can upload a sample file of any size, but Automatic Import analyzes only part of it. The LLM detects the sample's format, and Automatic Import works through the file from the beginning:
+Prepare the file in one of the following formats:
 
-  * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` It sends the first 1,000 documents, up to a total of 10 MB, and skips any single document longer than 100,000 characters. Whenever it omits documents, a **Sample log limits applied** warning reports the number sent and the number omitted.
-  * {applies_to}`stack: ga 9.0-9.3` It sends the first 100 documents.
+* **JSON and NDJSON**: Represent each event as its own object, and keep nesting shallow.
+* **CSV**: Include a header row with column names. Automatic Import recognizes the header. Without a header, the LLM attempts to create descriptive field names from the column formats and values.
+* **Syslog**: Use a structured or unstructured sample.
 
-* The more variety in your sample, the more accurate the pipeline is. For best results, include a wide range of unique log entries in your sample instead of repeating similar logs. Because Automatic Import analyzes only the beginning of a large file, a smaller curated file often produces a better integration than a large raw one.
-* When you upload a CSV, a header with column names is automatically recognized. If the header is not present, the LLM attempts to create descriptive field names based on field formats and values.
-* For JSON and NDJSON samples, each object in your sample should represent an event. Avoid deeply nested object structures.
-* {applies_to}`stack: removed 9.4` When you select **`API (CEL input)`** as one of the sources, you’re prompted to provide the associated OpenAPI specification (OAS) file to generate a CEL program that consumes this API.
+Whichever format you use, include a wide range of unique log entries for the event types you want the integration to handle. The more the sample varies, the more accurate the pipeline is.
+
+Automatic Import detects the sample's format and analyzes the file from the beginning, up to the following limits:
+
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` It sends the first 1,000 documents, up to a total of 10 MB, and skips any single document longer than 100,000 characters. Whenever it omits documents, a **Sample log limits applied** warning reports the number sent and the number omitted.
+* {applies_to}`stack: ga 9.0-9.3` It sends the first 100 documents.
+
+Place the events you care about at the beginning of the file. A focused sample that leads with those events usually produces a better integration than a large raw export.
+
+### Collect from an API [automatic-import-sample-api]
+
+To collect from an API, generate a program in Common Expression Language (CEL).
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Developers can use the [Elastic integration skills](https://github.com/elastic/integration-skills), a set of workflows that build integration packages with an AI coding agent.
+
+{applies_to}`stack: removed 9.4+, beta 9.0-9.3` {applies_to}`serverless: unavailable` When you select **API (CEL input)** as a source, Automatic Import prompts you for an OpenAPI specification (OAS) file and generates a CEL program that consumes the API. For background, refer to the [CEL specification](https://github.com/google/cel-spec){:target="_blank"} and the [CEL input in {{filebeat}}](beats://reference/filebeat/filebeat-input-cel.md).
 
 ::::{warning}
-:applies_to: stack: removed 9.4
+:applies_to: {"stack": "removed 9.4+, beta 9.0-9.3", "serverless": "unavailable"}
 CEL generation in Automatic Import is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
 ::::
 
