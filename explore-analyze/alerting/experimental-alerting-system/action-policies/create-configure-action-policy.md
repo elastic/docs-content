@@ -14,7 +14,6 @@ In the {{alerting-v2-system}}, an action policy connects alert episodes to the [
 
 To start, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**.
 
-
 ## Specify the action policy scope [matcher]
 
 The policy's scope decides which alert episodes it applies to, and [frequency](#reduce-noise-grouping) decides how often the policy invokes a workflow for an alert episode in scope. Leave the scope empty and the policy applies to every alert episode in the space that [passes the eligibility check](about-action-policies.md#action-policy-gates). Rule events that aren't part of an alert episode (`type: signal`) stay in `.rule-events`, so no scope includes them.
@@ -23,8 +22,8 @@ To narrow the scope of an action policy, filter by [rule tags](#filter-by-rule-t
 
 ### Filter by rule tags [filter-by-rule-tags]
 ```{applies_to}
-stack: ga 9.6+
 serverless: ga
+stack: ga 9.6+
 ```
 
 Select tags in **Rule tags** to apply the policy to alert episodes from the rules that carry them. An alert episode is in scope when its rule carries at least one of the selected tags. You can select up to 50 tags, each up to 256 characters, including a tag that no rule uses yet.
@@ -84,8 +83,8 @@ An action policy needs at least one destination. Attach one or more [workflows](
 
 ### Create an email or Slack workflow [inline-email-slack-workflow]
 ```{applies_to}
-stack: ga 9.6+
 serverless: ga
+stack: ga 9.6+
 ```
 
 If no existing workflow fits, create one without leaving the action policy form. In **Destination**, select **Create Email workflow** or **Create Slack workflow**, then select the connector and write the message. {{kib}} creates each workflow when you save the action policy and attaches it as a destination. If the action policy fails to save, {{kib}} deletes the workflows it created for it.

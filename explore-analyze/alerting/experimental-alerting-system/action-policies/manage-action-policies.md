@@ -18,7 +18,7 @@ To find your action policies, go to **Alerting V2 Preview** in the navigation me
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The policy applies to alert episodes from rules that have any tag under **Rule tagged with**. The details join those tags with **or**. **Matches query** shows the KQL expression. When both are set, the details join them with **and**, so the alert episode has to satisfy a tag and the expression.
 
-The list also shows the display name of the user who created the action policy and the user who last updated it, along with quick actions for common tasks, such as cloning or deleting an action policy, without leaving the list page. For enabling, disabling, snoozing, or rotating an API key, refer to the sections below.
+The list also shows the display name of the user who created the action policy and the user who last updated it, along with quick actions for common tasks, such as cloning or deleting an action policy, without leaving the list page. To enable, disable, snooze, or rotate an API key, refer to the following sections.
 
 Deleting a rule doesn't delete the action policies that applied to its alert episodes. Delete those policies separately when no remaining rule needs them.
 

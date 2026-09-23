@@ -16,7 +16,6 @@ This page is a reference for action policy match condition fields, grouping mode
 
 Use the following fields in the **Match conditions** expression to filter which alert episodes an action policy applies to. Combine them with standard [KQL](../../../query-filter/languages/kql.md) operators, for example `severity: "critical" AND episode_status: "active"`.
 
-
 | Field | Description | Example |
 |---|---|---|
 | `episode_id` | Unique identifier of the alert episode. | `episode_id: "ep-001"` <br> Match a specific alert episode by ID. |
@@ -60,7 +59,7 @@ Controls how the action policy batches alert episodes before invoking a workflow
 Frequency controls how often the action policy can invoke a workflow for a given alert episode or notification group. The available options depend on the **Notify per** setting. Not all options are valid for all modes.
 
 :::{note}
-The `.alert-actions` data stream records a throttled notification as `suppress`, not `throttled`. This is the same event described as `throttled` in the action policy execution history and event log; the two streams just use different vocabulary. For the full mapping, refer to [Event-log outcomes and .alert-actions action types](review-action-policy-execution-history.md#outcome-vocab-mapping).
+The `.alert-actions` data stream records a throttled notification as `suppress`, not `throttled`. This is the same event described as `throttled` in the action policy execution history and event log. The two streams use different vocabulary. For the full mapping, refer to [Event-log outcomes and .alert-actions action types](review-action-policy-execution-history.md#outcome-vocab-mapping).
 :::
 
 | Option | Description | When to use |
