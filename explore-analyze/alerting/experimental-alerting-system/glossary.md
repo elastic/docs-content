@@ -14,7 +14,7 @@ description: Definitions of key terms used throughout the experimental Kibana al
 These terms appear throughout the {{alerting-v2-system}} docs. If a term is unclear while reading, check its definition here before going further.
 
 **Action policy**
-:   A configuration that controls which alert episodes invoke a workflow and how often. A single action policy can apply to one rule, several rules, or all rules in the space. To learn more, refer to [Notifications and actions](notifications-actions.md).
+:   A configuration that controls which alert episodes invoke a workflow and how often. A single action policy can apply to alert episodes from one rule, several rules, or every rule in the space. To learn more, refer to [Notifications and actions](notifications-actions.md).
 
 **Alert episode**
 :   The complete record of one problem, from first detection to recovery, moving through states (pending, active, recovering, inactive). An alert episode is the grouping of [rule events](rules/rule-event-field-reference.md) that share `episode.id`. To learn more, refer to [Alerts](alerts.md).

@@ -5,18 +5,44 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Create action policies in the experimental alerting system, configure match conditions, Notify per, Frequency, and workflow destinations."
+description: "Create action policies in the experimental alerting system to route alert episodes to workflows. Set the policy scope with rule tags or KQL, then batching and notification frequency."
 ---
 
 # Create an action policy for the {{alerting-v2-system}} [create-action-policy]
 
-In the {{alerting-v2-system}}, an action policy determines which alert episodes invoke a workflow, how they batch, and which workflow runs. To create an action policy, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**.
+In the {{alerting-v2-system}}, an action policy connects alert episodes to the [workflows](../../../workflows.md) that respond to them. To create one, you set which alert episodes the policy applies to, how those episodes batch into notifications, how often a workflow can run, and which workflows to invoke.
 
-This page covers how to link an action policy to rules, and how to configure grouping, frequency, and workflow destinations.
+To start, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**.
 
-## Alert episode requirement [policy-alert-mode]
 
-Action policies evaluate only alert episodes. Rule events that aren't part of an alert episode (`type: signal`) stay in `.rule-events` and aren't evaluated by action policies.
+## Specify the action policy scope [matcher]
+
+The policy's scope decides which alert episodes it applies to, and [frequency](#reduce-noise-grouping) decides how often the policy invokes a workflow for an alert episode in scope. Leave the scope empty and the policy applies to every alert episode in the space that [passes the eligibility check](about-action-policies.md#action-policy-gates). Rule events that aren't part of an alert episode (`type: signal`) stay in `.rule-events`, so no scope includes them.
+
+To narrow the scope of an action policy, filter by [rule tags](#filter-by-rule-tags), with a [KQL expression](#filter-with-kql-expression), or both. When you use both, an alert episode has to satisfy the tags and the expression.
+
+### Filter by rule tags [filter-by-rule-tags]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Select tags in **Rule tags** to apply the policy to alert episodes from the rules that carry them. An alert episode is in scope when its rule carries at least one of the selected tags. You can select up to 50 tags, each up to 256 characters, including a tag that no rule uses yet.
+
+To target one rule, give it a [tag](../rules/configure-rule-tags.md) that no other rule uses, then select that tag. Selecting any tag excludes alert episodes from untagged rules.
+
+| To apply the policy to | How to configure it |
+|---|---|
+| All alert episodes that pass the eligibility check, regardless of rule or severity | Leave **Rule tags** and **Match conditions** empty |
+| Alert episodes at a specific severity level | Enter `severity: "critical"` in **Match conditions** |
+| Alert episodes from rules sharing a tag | Select the tag, for example `checkout`, in **Rule tags** |
+| Alert episodes from one specific rule | Give the rule a tag that no other rule uses, then select that tag in **Rule tags** |
+
+To narrow the scope further, add a [match conditions expression](#filter-with-kql-expression).
+
+### Filter with a KQL expression [filter-with-kql-expression]
+
+Add a **Match conditions** [KQL](../../../query-filter/languages/kql.md) expression to narrow the policy to the alert episodes whose fields match it. For example, `severity: "critical"` applies the policy to critical alert episodes only. For the fields you can use, refer to [Match conditions fields](action-policy-reference.md#action-policy-matcher-fields).
 
 ## Add tags to categorize the action policy [policy-tags]
 ```{applies_to}
@@ -24,46 +50,9 @@ stack: removed 9.6+, experimental =9.5
 serverless: unavailable
 ```
 
-Tags are optional labels you assign to an action policy to categorize it or filter it in the **Action Policies** list. Action policy tags describe the action policy itself, not the alert episodes it matches. You can add, edit, or remove tags at any time without affecting routing behavior.
+Tags are optional labels you assign to an action policy to categorize it or filter it in the **Action Policies** list. Action policy tags describe the action policy itself, not the alert episodes it applies to. You can add, edit, or remove tags at any time without affecting routing behavior.
 
-## Link the action policy to rules [matcher]
-
-**Policy scope** links the action policy to rules and can filter which alert episodes it applies to. Leaving it empty matches every eligible alert episode in the space. The eligibility check runs first, so alert episodes that are acknowledged, snoozed, or covered by a maintenance window are excluded before the scope is evaluated.
-
-Multiple action policies can match the same alert episode, and each runs independently. There's no precedence or merging between them. If no action policy matches an alert episode, no workflow is invoked and no notification is sent. If you delete a rule, any action policies scoped to it aren't deleted automatically. Delete them after you delete the rule.
-
-### Link with rule tags [link-with-rule-tags]
-```{applies_to}
-stack: ga 9.6+
-serverless: ga
-```
-
-Use **Rule tags** to link the action policy to rules. This is the preferred way to create that relationship. The policy matches alert episodes from any rule that carries at least one of the tags you select, so adding tags includes more rules. To link the policy to one rule, give that rule a tag no other rule uses and select it. A rule with no tags never matches an action policy that specifies tags.
-
-Add a filter when the alert episode also has to meet a condition. Open **Advanced matching** and enter a **Match conditions** [KQL](../../../query-filter/languages/kql.md) expression. When you set both tags and a filter, the episode has to satisfy both. The expression can reference the alert episode's own fields. For the available fields, refer to [Action policy reference](action-policy-reference.md#action-policy-matcher-fields).
-
-| To match | How to configure it |
-|---|---|
-| All alert episodes that pass the eligibility check, regardless of rule or severity | Leave the scope empty |
-| Alert episodes at a specific severity level | Enter `severity: "critical"` in **Match conditions** |
-| Alert episodes from rules sharing a tag | Select the tag, for example `checkout`, in **Rule tags** |
-| Alert episodes from one specific rule | Give the rule a tag that no other rule uses, then select that tag in **Rule tags** |
-
-:::{dropdown} How the scope fields work
-You can select up to 50 tags, each up to 256 characters. The field placeholder is **Search or add tags**. The **Recommended** group lists up to 20 of the most-used tags already on rules in the space. Enter text to search for more. You can also enter a tag that no rule has yet. Selected tags that aren't suggested appear under **Other**. When the space has no tagged rules, the field prompts you to add a tag.
-
-**Advanced matching** stays collapsed until you open it, and it opens when you edit a policy that already has an expression. A summary in the section updates as you edit and states whether the policy applies to the selected tags, the expression, both, or every eligible alert episode in the space.
-:::
-
-### Match with a KQL expression [match-with-kql]
-```{applies_to}
-stack: removed 9.6+, experimental =9.5
-serverless: unavailable
-```
-
-A single **Match conditions** [KQL](../../../query-filter/languages/kql.md) expression defines the scope, and it's the only scoping mechanism. There's no separate rule type or rule ID selector. Scope a group of rules with `rule.tags: "checkout"`. Scope one rule with `rule.id: "<rule-id>"`. Enter `severity: "critical"` to match alert episodes at a specific severity. Leave the expression empty to match every alert episode that passes the eligibility check.
-
-## Control how alert episodes batch and how often a workflow is invoked [reduce-noise-grouping]
+## Set batching and frequency [reduce-noise-grouping]
 
 **Notify per** controls how alert episodes batch before a workflow is invoked. **Frequency** controls how often the action policy can invoke a workflow for each batch.
 
@@ -80,15 +69,26 @@ A single **Match conditions** [KQL](../../../query-filter/languages/kql.md) expr
 
 **Frequency** limits how often the action policy can invoke a workflow for a given alert episode or notification group, depending on the **Notify per** setting. The interval resets from the last time a workflow was invoked, so successive notifications stay at least `interval` apart. Set a duration such as `1h` or `30m`.
 
-:::{note}
-`On status change` only re-notifies when the alert episode's status changes, not when its severity changes. If the action policy already matched an alert episode and its status stays the same, the throttle blocks re-notification, even if severity later escalates from `low` to `critical`.
+### Re-notify when severity escalates [re-notify-on-severity]
 
-To receive escalation notifications, either create separate action policies scoped to specific severity levels, or use a time-based throttle such as `At most once every 1h` so the action policy invokes a workflow again after the interval regardless of severity or status changes. For examples, refer to [Re-notify for persistently active alert episodes](re-notification.md).
-:::
+`On status change` re-notifies only when the alert episode's status changes, not when its severity changes. Once the action policy has invoked a workflow and the status stays the same, the throttle blocks re-notification, even if severity later escalates from `low` to `critical`.
+
+To get a notification for the escalation, do either of the following:
+
+* Create separate action policies scoped to specific severity levels. For examples, refer to [Manage severity escalation notifications](severity-escalation.md).
+* Set a time-based frequency such as `At most once every 1h`, so the action policy invokes a workflow again after the interval regardless of severity or status changes. For examples, refer to [Re-notify for persistently active alert episodes](re-notification.md).
 
 ## Select workflows to invoke [policy-destinations]
 
-Attach one or more [workflows](../../../workflows.md) to define what happens when the action policy matches. You can add or remove these workflows later by editing the action policy. For more complex routing or multi-step automations, build a dedicated workflow first and then attach it.
+An action policy needs at least one destination. Attach one or more [workflows](../../../workflows.md) to define what happens when the action policy runs. You can add or remove them later by editing the action policy. For more complex routing or multi-step automations, build a dedicated workflow first and then attach it.
+
+### Create an email or Slack workflow [inline-email-slack-workflow]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+If no existing workflow fits, create one without leaving the action policy form. In **Destination**, select **Create Email workflow** or **Create Slack workflow**, then select the connector and write the message. {{kib}} creates each workflow when you save the action policy and attaches it as a destination. If the action policy fails to save, {{kib}} deletes the workflows it created for it.
 
 ### Create a notification from the rule form [notification-from-rule-form]
 ```{applies_to}
@@ -96,18 +96,32 @@ stack: removed 9.6+, experimental =9.5
 serverless: unavailable
 ```
 
-If you don't have a workflow ready, you can set up an email or Slack notification while creating a rule. The system creates and links the workflow when you save, and the new action policy matches that rule with `rule.id: "<rule-id>"`.
+If you don't have a workflow ready, set up an email or Slack notification while you create a rule. When you save, {{kib}} creates the workflow and an action policy that matches that rule's alert episodes by `rule.id`.
 
-### See which policies match a rule [policies-that-match-a-rule]
-```{applies_to}
-stack: ga 9.6+
-serverless: ga
-```
+## Check which policies apply to a rule [policies-that-match-a-rule]
 
-For a rule that opens alert episodes, the **Actions** step lists policies that already match the rule by catch-all or by tag under **Action policies**. A **Catch-all** badge means the policy applies to every rule. A tag icon means the policy matches one or more of the rule's tags, and its tooltip lists those tags under **Matching rule tags**. An **Expression** badge means the policy also has a KQL query. The dispatcher evaluates that query against alert data when the policy runs. This list omits policies that match only by a KQL expression, because they depend on alert data, and those policies can still match later.
+When you create or edit a rule that opens alert episodes, the **Actions** step lists the policies that apply to those episodes under **Action policies**. Select a policy's name to open it for editing in a new tab.
+
+The list also indicates why each policy applies.
+
+::::{applies-switch}
+
+:::{applies-item} { serverless: ga, stack: ga 9.6+ }
+Each entry shows the connector types its workflows use, along with a badge or icon:
+
+* A **Catch-all** badge means the policy has an empty scope, so it applies to alert episodes from every rule.
+* A tag icon means the rule carries tags the policy selects. The tooltip lists them under **Matching rule tags**.
+* An **Expression** badge means the policy also has a KQL expression. {{kib}} evaluates that expression against alert data when the policy runs, so the list can't confirm it in advance. A policy scoped by an expression alone doesn't appear in the list at all, but it can still apply once the rule opens an alert episode.
+:::
+
+:::{applies-item} stack: experimental =9.5
+The list covers policies whose **Match conditions** expression matches the rule's ID, name, or tags. Policies that match every rule appear under **Global policies**, and policies that match this rule in particular appear under **Matching global policies**.
+:::
+
+::::
 
 ## Related pages
 
 - [Manage action policies](manage-action-policies.md): Enable, disable, snooze, and rotate API keys after setup.
 - [Action policy reference](action-policy-reference.md): Look up match condition fields, grouping modes, and frequency options.
-- [About action policies](about-action-policies.md): Understand the eligibility, match, and frequency gates that determine when workflows are invoked.
+- [About action policies](about-action-policies.md): Understand the eligibility, scope, and frequency gates that determine when workflows are invoked.

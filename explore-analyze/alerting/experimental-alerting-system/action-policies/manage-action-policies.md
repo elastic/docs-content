@@ -14,18 +14,20 @@ This page covers how to view action policy details in the {{alerting-v2-system}}
 
 ## View and edit an action policy
 
-To find your action policies, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**. From the list, you can open an action policy to view its full configuration, including match conditions, grouping mode, frequency, and destinations.
+To find your action policies, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**. From the list, you can open an action policy to view its full configuration, including its scope, grouping mode, frequency, and destinations.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The details show **Rule tagged with** for each selected tag, joined with **or**, and **Matches query** for the KQL expression. When you set both, **and** joins them.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The policy applies to alert episodes from rules that have any tag under **Rule tagged with**. The details join those tags with **or**. **Matches query** shows the KQL expression. When both are set, the details join them with **and**, so the alert episode has to satisfy a tag and the expression.
 
 The list also shows the display name of the user who created the action policy and the user who last updated it, along with quick actions for common tasks, such as cloning or deleting an action policy, without leaving the list page. For enabling, disabling, snoozing, or rotating an API key, refer to the sections below.
+
+Deleting a rule doesn't delete the action policies that applied to its alert episodes. Delete those policies separately when no remaining rule needs them.
 
 ## Enable, disable, and snooze an action policy
 
 You can disable an action policy so the dispatcher doesn't evaluate it for new alert episodes. You can snooze an action policy for a defined window so it doesn't invoke workflows during that period. The dispatcher skips action policies that aren't enabled or are snoozed.
 
 :::{note}
-Snoozing an action policy differs from [snoozing an alert episode](reduce-notification-noise.md#snooze-scope). When you snooze an action policy, the dispatcher pauses and silences every alert series the action policy processes. When you snooze an alert episode, you target one specific series before action policy matching runs, silencing it regardless of which action policy handles it. Use alert snooze when you want to quiet a specific recurring alert without affecting other series handled by the same action policy.
+Snoozing an action policy differs from [snoozing an alert episode](reduce-notification-noise.md#snooze-scope). When you snooze an action policy, the dispatcher pauses and silences every alert series the action policy processes. When you snooze an alert episode, you target one specific series before action policy evaluation runs, silencing it regardless of which action policy handles it. Use alert snooze when you want to quiet a specific recurring alert without affecting other series handled by the same action policy.
 :::
 
 ### Pause dispatch during a maintenance window [maintenance-windows]
@@ -34,7 +36,7 @@ During a [maintenance window](../../alerts/maintenance-windows.md), action polic
 
 ## Rotate an action policy's API key
 
-You can rotate the API key used to run an action policy's workflows without changing matchers or destinations. Use the **Update API key** action on one action policy or for multiple selected action policies.
+You can rotate the API key used to run an action policy's workflows without changing its scope or destinations. Use the **Update API key** action on one action policy or for multiple selected action policies.
 
 ## Manage multiple action policies at once
 
