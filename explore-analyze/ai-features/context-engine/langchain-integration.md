@@ -234,10 +234,10 @@ async def main() -> None:
 ```
 
 1. The three Context Engine tool names to filter from the MCP server's full tool list.
-2. Set `KIBANA_SPACE` to target a non-default space; leave unset for the default space.
+2. Set `KIBANA_SPACE` to target a non-default space. Leave it unset for the default space.
 3. The transport type required by `langchain-mcp-adapters` for the Kibana MCP endpoint.
 4. Agent Builder serves the MCP endpoint at `/api/agent_builder/mcp`.
-5. The MCP server accepts `Authorization` only; no `kbn-xsrf` header is needed.
+5. The MCP server accepts only `Authorization` and does not need a `kbn-xsrf` header.
 6. Narrow the server's full tool list to the three Context Engine tools.
 :::
 :::{tab-item} API
@@ -315,10 +315,10 @@ def query_ai_indices(query: str, params: dict | None = None, limit: int = 20) ->
     return response.json()
 ```
 
-1. Set `KIBANA_SPACE` to target a non-default space; leave unset for the default space.
+1. Set `KIBANA_SPACE` to target a non-default space. Leave it unset for the default space.
 2. Required on all three endpoints. Without it the request fails with `400`.
 3. Required for `POST` on self-managed and {{ech}} deployments. Harmless elsewhere.
-4. The API response nests the {{esql}} target under `dest.value`; the example surfaces it as `esql_target` for clarity.
+4. The API response nests the {{esql}} target under `dest.value`. The example surfaces it as `esql_target` for clarity.
 :::
 ::::
 
@@ -358,7 +358,7 @@ To answer a question from that knowledge:
 3. Call platform_context_engine_query_ai_indices with ES|QL built from that description.
 
 Never guess an index ID, an ES|QL target, or a field name — the describe output gives you
-all three. Never add a space or permissions condition to a query; the server applies one.
+all three. The server applies the space and permissions condition, so never add one to a query.
 Answer from the rows you get back and cite the Knowledge Indicator titles.
 """
 
@@ -440,7 +440,7 @@ To answer a question from that knowledge:
 3. Call query_ai_indices with ES|QL built from that description.
 
 Never guess an index ID, an ES|QL target, or a field name — the describe output gives you
-all three. Never add a space or permissions condition to a query; the server applies one.
+all three. The server applies the space and permissions condition, so never add one to a query.
 Answer from the rows you get back and cite the knowledge indicator titles.
 """
 
@@ -659,7 +659,7 @@ To answer a question from that knowledge:
 3. Call platform_context_engine_query_ai_indices with ES|QL built from that description.
 
 Never guess an index ID, an ES|QL target, or a field name — the describe output gives you
-all three. Never add a space or permissions condition to a query; the server applies one.
+all three. The server applies the space and permissions condition, so never add one to a query.
 Answer from the rows you get back and cite the Knowledge Indicator titles.
 """
 
@@ -723,7 +723,7 @@ To answer a question from that knowledge:
 3. Call query_ai_indices with ES|QL built from that description.
 
 Never guess an index ID, an ES|QL target, or a field name — the describe output gives you
-all three. Never add a space or permissions condition to a query; the server applies one.
+all three. The server applies the space and permissions condition, so never add one to a query.
 Answer from the rows you get back and cite the Knowledge Indicator titles.
 """
 
@@ -1016,7 +1016,7 @@ Here's an example of a `pyproject.toml` with the dependencies for the above scri
 ```toml
 [dependency-groups]
 dev = [
-    "deepagents>=0.7",  # needed if choosing skills over system prompts; raises floor to Python 3.11
+    "deepagents>=0.7",  # needed for skills instead of system prompts and requires Python 3.11+
     "langchain>=1.4.0",
     "langchain-mcp-adapters>=0.3.2",  # needed if choosing the MCP connection route
     "langchain-openai>=1.6.2",  # only needed for this example or if you want to use OpenAI or OpenRouter LLMs

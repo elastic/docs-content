@@ -40,7 +40,7 @@ The following fields help you determine what a KI represents, where it came from
 | Field | What to review |
 |---|---|
 | `id` | The KI's logical identity. An automation can reuse the ID to update the same KI on later runs. |
-| `type` | What the KI represents, such as `index_metadata`, `document`, or `detection`. A type classifies the result; it is not the automation's generation strategy. |
+| `type` | What the KI represents, such as `index_metadata`, `document`, or `detection`. A type classifies the result. It is not the automation's generation strategy. |
 | `title` and `description` | Whether an agent can identify the KI's subject and intended use before reading its full content. |
 | `content` | The knowledge the automation generated, including its meaning, findings, limitations, or usage guidance. |
 | `tags` | Terms an agent can use to narrow retrieval to relevant KIs. |

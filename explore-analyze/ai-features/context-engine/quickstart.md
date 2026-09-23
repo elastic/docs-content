@@ -99,11 +99,11 @@ Use the guided route for this tutorial:
 2. Agent Builder opens a conversation using the AI index and its configured source as context.
 3. Ask it to create one `index_metadata` KI that:
 
-   - explains the dataset's purpose and limitations;
-   - records useful interpretations of its important entities, measures, and dimensions;
-   - includes verified ESQL for common questions about the data;
-   - uses a stable ID so later runs update the KI instead of creating duplicates; and
-   - validates its ESQL before writing the KI.
+   - explains the dataset's purpose and limitations
+   - records useful interpretations of its important entities, measures, and dimensions
+   - includes verified ESQL for common questions about the data
+   - uses a stable ID so later runs update the KI instead of creating duplicates
+   - validates its ESQL before writing the KI
 
 4. Review the proposed plan before confirming it.
 
@@ -124,11 +124,11 @@ Create the suggested automation and review its Workflow:
 3. Review the pilot summary and proposed Workflow.
 4. Before saving it, confirm that the Workflow:
 
-   - uses the configured source as grounding input and identifies any additional queries against the underlying data;
-   - creates one `index_metadata` KI;
-   - records which claims come from a sample and which come from full-dataset aggregations;
-   - validates any generated ESQL before writing it; and
-   - updates a stable KI document on later runs.
+   - uses the configured source as grounding input and identifies any additional queries against the underlying data
+   - creates one `index_metadata` KI
+   - records which claims come from a sample and which come from full-dataset aggregations
+   - validates any generated ESQL before writing it
+   - updates a stable KI document on later runs
 
 5. Authorize {{agent-builder}} to save the automation.
 6. Open the saved Workflow. Refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md) for details about its YAML structure and execution lifecycle.
@@ -167,11 +167,11 @@ Start by inspecting the KI's identity and provenance:
 
 Then check that its content:
 
-- accurately describes the data represented by the source result;
-- distinguishes sampled observations from full-dataset findings;
-- contains useful interpretation rather than merely repeating field mappings;
-- includes ESQL that targets the original source data; and
-- explains when to use the data and which questions it cannot answer.
+- accurately describes the data represented by the source result
+- distinguishes sampled observations from full-dataset findings
+- contains useful interpretation rather than merely repeating field mappings
+- includes ESQL that targets the original source data
+- explains when to use the data and which questions it cannot answer
 
 A mapping query can already return field names and types. The KI is more useful when it captures business meaning, limitations, derived findings, or tested ways to use fields correctly. Syntax and runtime verification show that a query parses and runs, but you must still confirm that its grouping and calculations answer the intended question.
 
@@ -197,10 +197,10 @@ For the ecommerce sample data, ask which questions the index cannot answer, then
 
 Confirm that the agent:
 
-- selects the relevant AI index;
-- retrieves the KI as context;
-- answers directly when the KI contains the required knowledge; and
-- uses targeted ESQL against the source when current detail is required.
+- selects the relevant AI index
+- retrieves the KI as context
+- answers directly when the KI contains the required knowledge
+- uses targeted ESQL against the source when current detail is required
 
 KIs can reduce the time and model tokens agents spend exploring source data. They provide reusable knowledge and tested query guidance while preserving access to current source data.
 
