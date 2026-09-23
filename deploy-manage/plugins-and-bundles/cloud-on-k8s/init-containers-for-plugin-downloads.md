@@ -12,7 +12,7 @@ navigation_title: Init containers
 
 # Install plugins with init containers [k8s-init-containers-plugin-downloads]
 
-Use an init container to run [`elasticsearch-plugin install`](/deploy-manage/plugins-and-bundles/self-managed/install-plugins.md) before the main {{es}} container starts. Each new node repeats the download, so the pods need network access to reach the plugin source.
+Use an init container to run [`elasticsearch-plugin install`](elasticsearch://reference/elasticsearch-plugins/installation.md) before the main {{es}} container starts. Each new node repeats the download, so the pods need network access to reach the plugin source.
 
 The following example installs the ICU analysis plugin:
 

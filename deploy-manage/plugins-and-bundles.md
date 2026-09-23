@@ -4,10 +4,7 @@ mapped_pages:
 description: Extend Elasticsearch with plugins and bundles, and find the install path that matches your deployment type.
 applies_to:
   deployment:
-    ess: ga
-    ece: ga
-    eck: ga
-    self: ga
+  stack: ga
   serverless: unavailable
 navigation_title: Plugins and bundles
 products:
@@ -41,7 +38,7 @@ How you install and manage plugins, and whether you use bundles or another way t
 
 * Hosted Cloud deployments such as [{{ech}}](/deploy-manage/plugins-and-bundles/elastic-cloud/add-plugins-extensions.md) and [{{ece}}](/deploy-manage/plugins-and-bundles/cloud-enterprise/add-plugins.md) expose plugin and extension management in the Cloud console and API.
 * [Self-managed deployments](/deploy-manage/plugins-and-bundles/self-managed/manage-plugins.md) use a configuration file with the official Docker image, or the `elasticsearch-plugin` CLI for package and archive installs. You add dictionaries and other config files directly on each node's configuration path.
-* On [{{eck}}](/deploy-manage/plugins-and-bundles/cloud-on-k8s/manage-plugins.md) deployments, you install plugins by building a custom container image or using init containers, and you add configuration files with ConfigMaps or Secrets.
+* On [{{eck}}](/deploy-manage/plugins-and-bundles/cloud-on-k8s/manage-plugins.md) deployments, you install plugins by building a custom container image or using init containers, and you add configuration files using volumes together with ConfigMaps or Secrets.
 
 ### Managing plugins for {{ech}} [managing-plugins-for-ech]
 
@@ -85,8 +82,8 @@ deployment:
 
 How you manage plugins depends on how you run {{es}}:
 
-* If you run {{es}} using the [official {{es}} Docker image](https://www.docker.elastic.co/), you manage plugins with a declarative [configuration file](/deploy-manage/plugins-and-bundles/self-managed/manage-plugins-using-configuration-file.md). Each time the container starts, {{es}} installs, removes, or upgrades plugins so the running set matches that file.
-* For package and archive installs, use the [`elasticsearch-plugin` command-line tool](/deploy-manage/plugins-and-bundles/self-managed/install-plugins.md) to install, list, and remove plugins on each node.
+* If you run {{es}} using the [official {{es}} Docker image](https://www.docker.elastic.co/), you manage plugins with a declarative [configuration file](/deploy-manage/plugins-and-bundles/self-managed/manage-plugins.md#self-managed-plugins-docker). Each time the container starts, {{es}} installs, removes, or upgrades plugins so the running set matches that file.
+* For package and archive installs, use the [`elasticsearch-plugin` command-line tool](/deploy-manage/plugins-and-bundles/self-managed/manage-plugins.md#self-managed-plugins-cli) to install, list, and remove plugins on each node.
 
 ### Managing plugins for {{eck}} [managing-plugins-for-eck]
 
