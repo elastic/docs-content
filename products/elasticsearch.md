@@ -288,7 +288,7 @@ links:
   - label: Enrich data
     url: /manage-data/ingest/transform-enrich/data-enrichment.md
   - label: Ingest processors
-    url: elasticsearch://reference/elasticsearch/ingest-processing/index.md
+    url: elasticsearch://reference/ingest-processor/index.md
 :::
 
 :::{link-card}
@@ -550,9 +550,9 @@ links:
   - label: Aggregations
     url: elasticsearch://reference/aggregations/index.md
   - label: Text analysis
-    url: elasticsearch://reference/elasticsearch/analysis-reference/index.md
+    url: elasticsearch://reference/text-analysis/index.md
   - label: Ingest processors
-    url: elasticsearch://reference/elasticsearch/ingest-processing/index.md
+    url: elasticsearch://reference/ingest-processor/index.md
 :::
 
 :::{link-card}
@@ -565,7 +565,7 @@ links:
   - label: ES|QL
     url: elasticsearch://reference/query-languages/esql/esql-getting-started.md
   - label: Elasticsearch SQL
-    url: elasticsearch://reference/query-languages/esql/elasticsearch-sql.md
+    url: elasticsearch://reference/query-languages/sql/index.md
 :::
 :::{link-card}
 title: Clients and tools
