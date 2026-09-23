@@ -442,9 +442,9 @@ links:
 :::
 
 :::{link-card}
-title: Back up and restore
+title: Protect and recover data
 links:
-  - label: Protect and recover data
+  - label: Snapshot and restore
     url: /deploy-manage/tools/snapshot-and-restore.md
   - label: Cross-cluster replication
     url: /deploy-manage/tools/cross-cluster-replication.md
