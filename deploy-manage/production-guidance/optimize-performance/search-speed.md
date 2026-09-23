@@ -117,7 +117,7 @@ So what's the right number of replicas? If you have a cluster that has `num_node
 
 ## Search request tuning [search-speed-request-tuning]
 
-These recommendations apply to all {{es}} query languages and affect how search requests are handled at runtime.
+These settings and practices control how search requests use cluster resources at runtime. They apply to all query languages.
 
 ### Use `preference` to optimize cache utilization [preference-cache-optimization]
 
