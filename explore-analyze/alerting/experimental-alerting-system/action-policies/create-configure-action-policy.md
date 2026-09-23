@@ -16,9 +16,9 @@ To start, go to **Alerting V2 Preview** in the navigation menu or [global search
 
 ## Specify the action policy scope [matcher]
 
-The policy's scope decides which alert episodes it applies to, and [frequency](#reduce-noise-grouping) decides how often the policy invokes a workflow for an alert episode in scope. Leave the scope empty and the policy applies to every alert episode in the space that [passes the eligibility check](about-action-policies.md#action-policy-gates). Rule events that aren't part of an alert episode (`type: signal`) stay in `.rule-events`, so no scope includes them.
+The policy's scope decides which alert episodes it applies to, and [frequency](#reduce-noise-grouping) decides how often the policy invokes a workflow for an alert episode in scope. Leave the scope empty and the policy applies to every alert episode in the space that [passes the eligibility check](about-action-policies.md#action-policy-gates). Rule events that aren't part of an alert episode (`type: signal`) stay in `.rule-events`, so the action policy scope doesn't include them.
 
-To narrow the scope of an action policy, filter by [rule tags](#filter-by-rule-tags), with a [KQL expression](#filter-with-kql-expression), or both. When you use both, an alert episode has to satisfy the tags and the expression.
+To narrow the scope of an action policy, filter by [rule tags](#filter-by-rule-tags), with a [KQL expression](#filter-with-kql-expression), or both. If you use both, the episode's rule has to carry one of the tags and the episode has to match the expression.
 
 ### Filter by rule tags [filter-by-rule-tags]
 ```{applies_to}

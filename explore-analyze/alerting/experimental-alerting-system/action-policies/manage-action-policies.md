@@ -12,15 +12,15 @@ description: "Manage action policies in the experimental alerting system: turn t
 
 This page covers how to view action policy details in the {{alerting-v2-system}}, enable and disable action policies, snooze them during planned outages, and rotate their API keys. To monitor dispatcher activity and review execution outcomes, refer to [Review action policy execution history](review-action-policy-execution-history.md).
 
+To find your action policies, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**.
+
 ## View and edit an action policy
 
-To find your action policies, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**. From the list, you can open an action policy to view its full configuration, including its scope, grouping mode, frequency, and destinations.
-
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The policy applies to alert episodes from rules that have any tag under **Rule tagged with**. The details join those tags with **or**. **Matches query** shows the KQL expression. When both are set, the details join them with **and**, so the alert episode has to satisfy a tag and the expression.
-
-The list also shows the display name of the user who created the action policy and the user who last updated it, along with quick actions for common tasks, such as cloning or deleting an action policy, without leaving the list page. To enable, disable, snooze, or rotate an API key, refer to the following sections.
+The action policy list shows who created and last updated each policy, along with quick actions to clone or delete one. Open a policy to view or edit its scope, grouping mode, frequency, and destinations.
 
 Deleting a rule doesn't delete the action policies that applied to its alert episodes. Delete those policies separately when no remaining rule needs them.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The **Matcher** field in a policy's details states its [scope](create-configure-action-policy.md#matcher) as a sentence, such as **Matches alerts where Rule tagged with** `checkout` **and Matches query** `severity: "critical"`. A policy with an empty scope shows **Matches all alerts**.
 
 ## Enable, disable, and snooze an action policy
 
