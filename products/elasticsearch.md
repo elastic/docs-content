@@ -565,7 +565,7 @@ links:
   - label: ES|QL
     url: elasticsearch://reference/query-languages/esql/esql-getting-started.md
   - label: Elasticsearch SQL
-    url: elasticsearch://reference/query-languages/sql/index.md
+    url: elasticsearch://reference/query-languages/sql.md
 :::
 :::{link-card}
 title: Clients and tools
