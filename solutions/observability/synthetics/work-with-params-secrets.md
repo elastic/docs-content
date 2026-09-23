@@ -197,6 +197,8 @@ docker run \
   docker.elastic.co/elastic-agent/elastic-agent-complete:X.X.X
 ```
 
+{applies_to}`stack: ga 9.6+` In a [scalable {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable), a monitor can run on any {{agent}} enrolled on the location's agent policy, and it can move between agents. Pass the same variables to every agent on the policy.
+
 #### 2. Reference variables in the inline script
 In the Synthetics **Monitors** editor in {{kib}}, you can now access these variables using `process.env`.
 
