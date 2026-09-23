@@ -40,7 +40,6 @@ These recommendations apply to all {{es}} query languages and interfaces.
 deployment:
   self: all
   eck: all
-  ece: all
 ```
 
 {{es}} relies heavily on the filesystem cache to make search fast. In general, make sure that at least half the available memory goes to the filesystem cache so that {{es}} can keep hot regions of the index in physical memory.
