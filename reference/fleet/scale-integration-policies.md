@@ -17,6 +17,8 @@ When you monitor many hosts that run the same service (for example, databases, m
 
 Keeping the number of integration policies low makes your configuration easier to maintain, and helps you stay within the [policy scaling limits](/reference/fleet/agent-policy.md#agent-policy-scale).
 
+Use the techniques on this page when each host has its own target, such as a local database, a log file, or an application on the host. Some integrations collect from one shared source, such as an AWS SQS queue. For those integrations, adding agents increases throughput without duplicate data. Refer to the integration documentation before you apply the techniques on this page.
+
 You can consolidate integration policies in the following ways:
 
 * [Reuse one integration policy with variables](#reuse-one-integration-policy-with-variables), so that each host supplies its own values.
@@ -30,7 +32,7 @@ Many integrations accept more than one value in their host field, so listing eve
 
 An integration policy applies to *every* {{agent}} enrolled in the {{agent}} policy that contains it. If you list 200 database hosts, each of the 200 agents receives the full list and tries to connect to all 200 databases, not only the one running on its own host.
 
-Agents that can't reach the other databases report failed connections, and the integration shows as unhealthy. Agents that can reach them collect the same data from every database, so you store 200 copies of every metric.
+Agents that can't reach the other databases report failed connections, and the integration shows as unhealthy. Agents that can reach them collect the same data from every database. That uses agent resources and sends duplicate events to {{es}}. When the destination is a [time series data stream (TSDS)](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension), {{es}} rejects most duplicates during ingestion, based on the metric dimensions and the timestamp. The index rarely stores 200 copies, but the agents and {{es}} still spend resources collecting and rejecting the events.
 
 List several hosts in an integration policy only when you want every agent to connect to every one of those hosts. To give each agent its own host, use a variable instead.
 
@@ -46,6 +48,8 @@ The most useful providers for this purpose are:
 | [Env](/reference/fleet/env-provider.md) | `${env.VAR_NAME}` | Values you define per host as environment variables, such as a database address or a log directory. |
 | [Host](/reference/fleet/host-provider.md) | `${host.name}`, `${host.platform}` | Values derived from the host itself, such as hostnames in log paths. |
 | [Agent](/reference/fleet/agent-provider.md) | `${agent.id}` | Values that identify the agent. |
+
+{{agent}} doesn't distribute environment variables to hosts. You set them on each host through the service manager or a configuration management tool. For a `systemd` example, refer to [Reuse a policy across database hosts](#reuse-a-policy-across-database-hosts).
 
 The [Docker](/reference/fleet/docker-provider.md) and [Kubernetes](/reference/fleet/kubernetes-provider.md) providers work the same way for containerized workloads. For the full list, refer to [{{agent}} providers](/reference/fleet/providers.md).
 
