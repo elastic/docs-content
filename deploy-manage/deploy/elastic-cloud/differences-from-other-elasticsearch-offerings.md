@@ -70,7 +70,7 @@ These capabilities cover identity and access, security and networking, infrastru
 | **BYO-Key for encryption at rest** | ✅ | **Planned** | Anticipated in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
 | **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure <br>- GCP | - [{{ech}} regions](cloud://reference/cloud-hosted/regions.md)<br>- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md) |
 | **Cluster scaling** | Manual with autoscaling option | Managed | Automatic scaling eliminates capacity planning - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
-| **Custom ML nodes** | Optional | ✅<br><br> | {applies_to}`vectordb: unavailable` <br> Custom models on ML nodes are not available in {{vectordb}} projects. Use the {{es}} project type if you need them. |
+| **Custom ML nodes** | ✅ | ✅ (partial) | Custom models on ML nodes are not available in {{vectordb}} projects. |
 | **Custom roles** | ✅ | ✅ | Managed through [{{ecloud}} roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) and [{{serverless-short}} custom roles](/deploy-manage/users-roles/serverless-custom-roles.md). |
 | **Deployment health monitoring** | [AutoOps](/deploy-manage/monitor/autoops.md) or monitoring cluster | Managed by Elastic | - No monitoring cluster required <br>- Automatically handled by Elastic |
 | **Deployment model** | Single deployments with multiple solutions | Separate projects for specific use cases | Fundamental architectural difference - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
@@ -98,10 +98,10 @@ These capabilities cover how data is ingested, stored, replicated, queried, and 
 | $$$elasticsearch-differences-custom-plugins-and-bundles$$$ **Custom plugins and bundles** | ✅ | ✅ [Core analysis plugins](elasticsearch://reference/elasticsearch-plugins/analysis-plugins.md#_core_analysis_plugins) (bundled)<br><br>❌ Custom plugin/bundle uploads are not supported<br><br>❌ Custom dictionaries for [language analyzers](elasticsearch://reference/text-analysis/analysis-lang-analyzer.md) are not supported | Use the [synonyms API]({{es-serverless-apis}}group/endpoint-synonyms) for [synonyms](/solutions/search/full-text/search-with-synonyms.md) in Serverless. |
 | **Custom routing ([`_routing`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-routing-field.md))** | ✅ | ❌ | Elastic fully manages sharding in {{serverless-short}}, so you can't set custom `routing` values or require routing on an index. |
 | **Data lifecycle management** | - [ILM](/manage-data/lifecycle/index-lifecycle-management.md) <br>- [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) | [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) only | - No data tiers in Serverless <br>- Optimized for common lifecycle management needs |
-| **Elastic connectors (for search)** | ❌ (Managed connectors discontinued with Enterprise Search in 9.0) | Self-managed only | - Managed connectors not available <br>- Use [self-managed connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md) |
+| **Elastic connectors (for search)** | ❌ (Managed connectors discontinued with Enterprise Search in 9.0) | ❌ | - Managed connectors not available <br>- Use [self-managed connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md) |
 | [**Elasticsearch for Apache Hadoop**](https://www.elastic.co/elasticsearch/hadoop) | ✅ | ❌ | Not available in Serverless |
 | **Enterprise Search (App Search & Workplace Search)** | ❌ (discontinued in 9.0) | ❌ | Not available in Serverless |
-| **[Index modes](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting)** | Optional | Optional<br><br> | Available modes: `standard`, `lookup`, `logsdb`, `time_series`, `vectordb_document`, {applies_to}`elasticsearch: preview` `columnar`, and {applies_to}`elasticsearch: preview` `logsdb_columnar`<br><br> {applies_to}`vectordb: ga` {{vectordb}} projects support `vectordb_document` only |
+| **[Index modes](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting)** | ✅ | ✅ (partial)  | {{vectordb}} projects support `vectordb_document` only |
 | [**`join` fields**](elasticsearch://reference/elasticsearch/mapping-reference/parent-join.md) | ✅ | ❌ | Not available in Serverless<br><br>The alternative for this in Serverless is the ES\|QL [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/lookup-join.md) command, which requires `lookup` index mode (unavailable in {{vectordb}} projects) |
 | [**Reindexing from remote**](/manage-data/migrate/migrate-data-using-reindex-api.md) | ✅ | ✅ | |
 | [**Scripted metric aggregations**](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) | ✅ | ❌ | Not available in Serverless<br>The alternative for this in Serverless is [ES|QL](elasticsearch://reference/query-languages/esql.md) |
@@ -125,11 +125,11 @@ These capabilities cover alerting, notifications, reporting, and AI-assisted exp
 
 ### {{es}} [elasticsearch]
 
-{{serverless-short}} {{es}} projects are the general-purpose project type, built for mixed lexical, semantic, time series, and analytics workloads rather than a single use case. They support every capability listed in [Shared capabilities](#core-platform-capabilities), so only the following capability behaves differently than in {{ech}}.
+{{serverless-short}} {{es}} projects are the general-purpose project type, built for mixed lexical, semantic, time series, and analytics workloads rather than a single use case. They support every capability listed in [Shared capabilities](#core-platform-capabilities), so only the following capabilities behaves differently than in {{ech}}.
 
 | **Feature** | {{ech}} | Serverless Elasticsearch projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| [**Search applications**](/solutions/elasticsearch-solution-project/search-applications.md) | - UI and APIs <br>- Maintenance mode (beta) | - API-only <br>- Maintenance mode (beta) | UI not available in Serverless |
+| [**Search applications**](/solutions/elasticsearch-solution-project/search-applications.md) |  ✅ UI <br><br>✅ APIs<br><br>✅ Maintenance mode (beta) | ❌ UI<br><br>✅ API<br><br>✅ Maintenance mode (beta) | UI not available in Serverless |
 
 ### {{es}} {{vectordb}} [elasticsearch-vector-database]
 
@@ -140,7 +140,6 @@ The following table lists those differences against {{ech}}. Capabilities that b
 | **Feature** | {{ech}} | Serverless {{es}} {{vectordb}} projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
 | **Custom ML nodes** | ✅ | ❌ | Custom models on ML nodes are not available in {{vectordb}}. Use the {{es}} project type if you need them. |
-| **Data streams** | ✅ | ✅ | Supported when backing indices use [vector index mode](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode). |
 | **[Index modes](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting)** | ✅ All index modes |  [`vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) only | `vectordb_document` is applied automatically to new indices and is the only mode supported in {{vectordb}}.<br><br>Use the {{es}} project type for logs, analytics, metrics, or ES\|QL [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/lookup-join.md) workloads. |
 | [**Search applications**](/solutions/elasticsearch-solution-project/search-applications.md) | - UI and APIs <br>- Maintenance mode (beta) | ❌ | Not available. Use the {{es}} project type if you need search applications. |
 
