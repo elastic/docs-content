@@ -90,7 +90,7 @@ Before creating a dashboard, ensure you have:
 You can also create dashboards through natural language chat with [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/chat.md) agents. Describe what you want to visualize and the agent builds a dashboard with {{esql}}-powered visualization panels. You can iterate on the dashboard in conversation before saving it.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+`
-If you can use {{agent-builder}}, start that chat from the dashboard you are editing. On an empty dashboard, select **Create a dashboard for my metrics** or **Monitor my logs** to open that prompt in the editor so you can change it before you send it, or select **Open chat** to start from a blank message. Select **Add** → **Create with chat** to open a blank message from a dashboard that already has panels.
+If you can use {{agent-builder}}, start that chat from the dashboard you are editing. On an empty dashboard, select **Create a dashboard for my metrics** or **Monitor my logs** to open that prompt in the editor so you can change it before you send it. On that same dashboard, select **Open chat** to start from a blank message. Select **Add** → **Create with chat** to open a blank message from a dashboard that already has panels.
 
 To learn more, refer to [Dashboards and visualizations in chat](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md).
 
