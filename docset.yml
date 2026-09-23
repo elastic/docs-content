@@ -46,18 +46,12 @@ api:
           - serverless
   cloud:
     - spec: cloud.json
-      product: ess
+      product: cloud-hosted
       repository: elastic/cloud
-      catalog:
-        categories:
-          - ess
   cloud-enterprise:
     - spec: cloud-enterprise.json
-      product: ece
+      product: cloud-enterprise
       repository: elastic/cloud
-      catalog:
-        categories:
-          - ece
   cloud-billing:
     - spec: cloud-billing.yaml
       product: ess
