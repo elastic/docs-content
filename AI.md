@@ -29,6 +29,7 @@ Disclose AI assistance even when you've verified everything.
 - Fill in the **Generative AI disclosure** section of the pull request template: name the tool and say how you used it.
 - Note AI assistance in your commits, for example with a trailer like `AI-Assisted:` or `Co-authored-by:`.
 - Focus the disclosure on the parts you're least sure of, such as technical details you couldn't verify yourself.
+- Author commits under a GitHub account that has signed Elastic's CLA (usually your own), not the AI tool's own identity (for example `Claude <noreply@anthropic.com>`). The CLA check verifies the commit author, and an AI tool's identity has never signed it, so those commits fail the check.
 
 ## Keep it reviewable
 
