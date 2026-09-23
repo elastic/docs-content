@@ -14,15 +14,9 @@ products:
 On {{ece}}, you extend {{es}} with plugins that the platform provides, custom plugin or configuration bundles, and in certain cases, additional {{kib}} plugins.
 
 
-For options that apply to other deployment types, refer to [](/deploy-manage/plugins-and-bundles.md).
+For an overview of plugins and configuration files, and the options that apply to other deployment types, refer to [](/deploy-manage/plugins-and-configuration-files.md).
 
 ## Add {{es}} plugins
-
-Plugins are software packages that you install in {{es}} to extend its core functionality, for example with additional analyzers, ingest processors, or field types. Availability depends on your {{es}} version. Common purposes include:
-
-* National language support, phonetic analysis, and extended unicode support
-* Ingesting attachments in common formats and ingesting information about the geographic location of IP addresses
-* Adding new field datatypes to {{es}}
 
 You can add plugins to a deployment in one of two ways, depending on whether {{ece}} provides the plugin or you supply it yourself:
 
@@ -32,10 +26,7 @@ You can add plugins to a deployment in one of two ways, depending on whether {{e
 
 ## Add configuration bundles
 
-:::{include} /deploy-manage/plugins-and-bundles/_snippets/what-are-bundles.md
-:::
-
-To prepare and attach a bundle, refer to [Add custom bundles and plugins](add-custom-bundles-plugins.md).
+On {{ece}}, you reference a bundle ZIP from an HTTP or HTTPS URL rather than uploading the file. To prepare and attach a bundle, refer to [Add custom bundles and plugins](add-custom-bundles-plugins.md).
 
 ## Include additional {{kib}} plugins
 

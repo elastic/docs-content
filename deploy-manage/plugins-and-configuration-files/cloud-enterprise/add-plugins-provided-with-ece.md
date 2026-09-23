@@ -13,7 +13,7 @@ products:
 
 # Add plugins provided with {{ece}} [ece-adding-plugins]
 
-:::{include} /deploy-manage/plugins-and-bundles/_snippets/provided-plugins-intro.md
+:::{include} /deploy-manage/plugins-and-configuration-files/_snippets/provided-plugins-intro.md
 :::
 
 Different versions of {{es}} support different plugins. If a plugin is listed for your version, you can enable it on the deployment.

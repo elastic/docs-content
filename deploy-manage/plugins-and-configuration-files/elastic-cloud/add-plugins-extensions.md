@@ -15,15 +15,9 @@ products:
 
 On {{ech}}, you extend the core functionality of {{es}} with plugins or bundles. In the {{ecloud}} console and API, both are referred to as *extensions*.
 
-For options that apply to other deployment types, refer to [](/deploy-manage/plugins-and-bundles.md).
+For an overview of plugins and configuration files, and the options that apply to other deployment types, refer to [](/deploy-manage/plugins-and-configuration-files.md).
 
 ## Add {{es}} plugins
-
-Plugins are software packages that you install in {{es}} to extend its core functionality to include additional analyzers, discovery providers, or ingest processors. Availability depends on your {{es}} version. Common categories include:
-
-* Discovery plugins, such as the cloud AWS plugin that allows discovering nodes on EC2 instances.
-* Analysis plugins, to provide analyzers targeted at languages other than English.
-* Scripting plugins, to provide additional scripting languages.
 
 You can add plugins to a deployment in one of two ways, depending on whether Elastic Cloud provides the plugin or you supply it yourself:
 
@@ -35,12 +29,9 @@ Plugins are not supported for {{kib}}. To learn more, check [Restrictions for {{
 
 ## Add configuration bundles
 
-:::{include} /deploy-manage/plugins-and-bundles/_snippets/what-are-bundles.md
-:::
+Bundles use the same extensions workflow as custom plugins: you upload a ZIP file, choose the bundle type, and then enable the extension on your deployment. The difference happens at runtime, when plugins are installed into {{es}} and bundles are extracted as files on disk.
 
 For example, you can upload an Identity Provider metadata file used when you [secure your clusters with SAML](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
-
-Bundles use the same extensions workflow as custom plugins where you upload a ZIP file, choose the bundle type, and then enable the extension on your deployment. The difference happens at runtime: plugins are installed into {{es}} while bundles are extracted as files on disk.
 
 All subscription levels, including Standard, can upload scripts and dictionaries. To prepare, upload, and enable a bundle, refer to [Upload custom plugins and bundles](upload-custom-plugins-bundles.md).
 

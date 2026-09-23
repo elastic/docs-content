@@ -467,24 +467,24 @@ toc:
       - file: autoscaling/autoscaling-in-eck.md
       - file: autoscaling/autoscaling-deciders.md
       - file: autoscaling/trained-model-autoscaling.md
-  - file: plugins-and-bundles.md
+  - file: plugins-and-configuration-files.md
     children:
-      - file: plugins-and-bundles/elastic-cloud/add-plugins-extensions.md
+      - file: plugins-and-configuration-files/elastic-cloud/add-plugins-extensions.md
         children:
-          - file: plugins-and-bundles/elastic-cloud/add-plugins-provided-with-ech.md
-          - file: plugins-and-bundles/elastic-cloud/upload-custom-plugins-bundles.md
-          - file: plugins-and-bundles/elastic-cloud/manage-plugins-extensions-through-api.md
-      - file: plugins-and-bundles/cloud-enterprise/add-plugins.md
+          - file: plugins-and-configuration-files/elastic-cloud/add-plugins-provided-with-ech.md
+          - file: plugins-and-configuration-files/elastic-cloud/upload-custom-plugins-bundles.md
+          - file: plugins-and-configuration-files/elastic-cloud/manage-plugins-extensions-through-api.md
+      - file: plugins-and-configuration-files/cloud-enterprise/add-plugins.md
         children:
-          - file: plugins-and-bundles/cloud-enterprise/add-plugins-provided-with-ece.md
-          - file: plugins-and-bundles/cloud-enterprise/add-custom-bundles-plugins.md
-          - file: plugins-and-bundles/cloud-enterprise/ece-include-additional-kibana-plugin.md
-      - file: plugins-and-bundles/cloud-on-k8s/manage-plugins.md
+          - file: plugins-and-configuration-files/cloud-enterprise/add-plugins-provided-with-ece.md
+          - file: plugins-and-configuration-files/cloud-enterprise/add-custom-bundles-plugins.md
+          - file: plugins-and-configuration-files/cloud-enterprise/ece-include-additional-kibana-plugin.md
+      - file: plugins-and-configuration-files/cloud-on-k8s/manage-plugins.md
         children:
-          - file: plugins-and-bundles/cloud-on-k8s/init-containers-for-plugin-downloads.md
-          - file: plugins-and-bundles/cloud-on-k8s/custom-configuration-files-plugins.md
-          - file: plugins-and-bundles/cloud-on-k8s/k8s-kibana-plugins.md
-      - file: plugins-and-bundles/self-managed/manage-plugins.md
+          - file: plugins-and-configuration-files/cloud-on-k8s/init-containers-for-plugin-downloads.md
+          - file: plugins-and-configuration-files/cloud-on-k8s/custom-configuration-files-plugins.md
+          - file: plugins-and-configuration-files/cloud-on-k8s/k8s-kibana-plugins.md
+      - file: plugins-and-configuration-files/self-managed/manage-plugins.md
   - file: cloud-connect.md
   - file: security.md
     children:

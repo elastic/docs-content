@@ -61,16 +61,13 @@ Bundles
 
     Here are some examples of bundles:
 
-    **Script**
-
-    ```text
-    $ tree .
-    .
-    └── scripts
-        └── test.js
-    ```
-
-    The script `test.js` can be referred in queries as `"script": "test"`.
+    <!--
+    A `scripts` bundle example was removed here. File scripts were removed from Elasticsearch
+    in 6.0 (elastic/elasticsearch#24627) and ScriptType defines only INLINE and STORED, so
+    `"script": "test"` can no longer resolve a file on disk. The Cloud runner still copies a
+    `scripts` folder to /app/config/scripts, but Elasticsearch never reads it. Don't re-add
+    the example; stored scripts use the _scripts API and are unrelated to bundles.
+    -->
 
     **Dictionary of synonyms**
 
@@ -81,9 +78,25 @@ Bundles
         └── synonyms.txt
     ```
 
-    The dictionary `synonyms.txt` can be used as `synonyms.txt` or using the full path `/app/config/synonyms.txt` in the `synonyms_path` of the `synonym-filter`.
+    <!--
+    The bare `synonyms.txt` path is correct, even though `synonyms_path` normally resolves
+    relative to the config directory.
+    Other folders such as `saml`, `truststore`, and `ingest-geoip` keep their folder name, so
+    `dictionaries` is the only exception. Don't "correct" this to `dictionaries/synonyms.txt`.
+    -->
+    
+    The dictionary `synonyms.txt` can be used as `synonyms.txt` or using the full path `/app/config/synonyms.txt` in the `synonyms_path` of the synonym token filter. Unlike other folders in a bundle, the contents of `dictionaries` are placed directly in the configuration directory rather than in a `dictionaries` subfolder.
 
     To learn more about analyzing with synonyms, check [Synonym token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md) and [Formatting Synonyms](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/synonym-formats.html).
+
+    <!--
+    The "Formatting Synonyms" link points at the 2.x Definitive Guide, which is EOL and
+    carries a "no longer updated" banner. It's kept only because it documents rule merging
+    and greedy matching, which the current reference docs don't cover. The synonym formats
+    themselves are already covered by the "Synonym token filter" link above, so this link
+    becomes redundant once https://github.com/elastic/elasticsearch/issues/160145 is
+    resolved. Remove it then. This is the last elastic.co/guide/ link in docs-content.
+    -->
 
     **GeoIP database bundle**
 

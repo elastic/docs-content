@@ -14,7 +14,7 @@ How you install plugins depends on how you run {{es}}. Use a declarative configu
 
 To make synonym dictionaries, scripts, SAML metadata, or similar files available to {{es}}, place them in each node's [configuration directory](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#config-files-location) and reference them from your settings. This is the self-managed equivalent of *bundles* on {{ech}} and {{ece}}, which package those files as ZIP extensions rather than placing them directly on disk.
 
-Refer to [](/deploy-manage/plugins-and-bundles.md) for options that apply to other deployment types.
+Refer to [](/deploy-manage/plugins-and-configuration-files.md) for options that apply to other deployment types.
 
 ## Install plugins with the Docker image [self-managed-plugins-docker]
 

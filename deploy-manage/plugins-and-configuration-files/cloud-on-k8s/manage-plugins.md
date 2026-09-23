@@ -14,7 +14,7 @@ On {{eck}}, {{es}} runs in Kubernetes pods. Unlike {{ech}} and {{ece}}, {{eck}} 
 
 You can also add configuration files such as synonym dictionaries, scripts, SAML metadata, or CA certificates to the {{es}} configuration directory.
 
-Refer to [](/deploy-manage/plugins-and-bundles.md) for options that apply to other deployment types.
+Refer to [](/deploy-manage/plugins-and-configuration-files.md) for options that apply to other deployment types.
 
 ## Choose an approach
 

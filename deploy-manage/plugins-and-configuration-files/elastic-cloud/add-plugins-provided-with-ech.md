@@ -13,7 +13,7 @@ products:
 
 # Add plugins provided with {{ech}} [ec-adding-elastic-plugins]
 
-:::{include} /deploy-manage/plugins-and-bundles/_snippets/provided-plugins-intro.md
+:::{include} /deploy-manage/plugins-and-configuration-files/_snippets/provided-plugins-intro.md
 :::
 
 ## Before you begin [ec_before_you_begin_6]
