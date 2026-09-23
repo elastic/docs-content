@@ -105,10 +105,10 @@ Before proceeding:
 
       Exclude any fully mounted indices associated with the hot tier from the removal inventory. The hot tier is required and is not removed by this procedure.
 
-   * **Frozen tier:** This tier only holds [partially mounted](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) {{search-snaps}}. Check for standard {{ilm-init}}-managed indices:
+   * **Frozen tier:** This tier only holds [partially mounted](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) {{search-snaps}}. Check for standard lifecycle-managed indices:
 
       ```sh
-      GET /_cat/indices/partial-*?expand_wildcards=all
+      GET /_cat/indices/partial-*,dlm-frozen-*?expand_wildcards=all
       ```
 
    :::{note}
@@ -118,7 +118,17 @@ Before proceeding:
    * If the tier does not contain any {{search-snap}} indices, follow [Remove a tier with regular indices](#remove-regular-indices-self-managed-eck).
    * If the tier contains {{search-snap}} indices, review [Remove a tier with {{search-snaps}}](#remove-searchable-snapshots-self-managed-eck) and select the appropriate procedure based on how the indices are mounted. If regular indices also remain, restore or move the {{search-snap}} indices first, but do not remove the nodes. Then return to the regular indices procedure.
 
-To learn more about {{ilm-init}} or shard allocation filtering, refer to [Create your index lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md), [Managing the index lifecycle](/manage-data/lifecycle/index-lifecycle-management.md), and [Shard allocation filters](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md).
+1. Review the {{ilm-init}} policies and index templates that can send data to the tier you are removing, and plan the changes required so that they no longer use the tier. This prevents newly created indices and future lifecycle transitions from targeting a tier that is no longer available.
+
+   Depending on your configuration, plan to:
+
+   * Remove or update {{ilm-init}} phases and actions that move indices to the tier.
+   * Remove or move any `searchable_snapshot` action that mounts indices on the tier.
+   * If you use custom allocation filters in policies or templates, remove or update those that target the tier.
+
+   Before proceeding, make sure that you have identified every affected policy and template.
+
+   To learn more about {{ilm-init}} or shard allocation filtering, refer to [Create your index lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md), [Managing the index lifecycle](/manage-data/lifecycle/index-lifecycle-management.md), and [Shard allocation filters](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md).
 
 ### Remove a tier with regular indices [remove-regular-indices-self-managed-eck]
 
@@ -131,14 +141,13 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
 * **To restore them to regular indices on another tier**: follow [Remove a tier with {{search-snaps}}](#remove-searchable-snapshots-self-managed-eck) to restore the indices and delete the original {{search-snap}} indices and source snapshots, but do not remove the nodes yet. Then return to this section to move any regular indices and remove the nodes.
 :::
 
-1. Stop {{ilm-init}} to prevent new indices from being routed to the tier while you work.
+1. Apply the changes to {{ilm-init}} policies and index templates that you planned in [Before you remove a data tier](#before-remove-data-tier-self-managed-eck). These changes prevent newly created indices and future lifecycle transitions from targeting the tier. They do not move indices already allocated there. The remaining steps update those indices and relocate their shards.
 
-   ```sh
-   POST /_ilm/stop
-   GET /_ilm/status
-   ```
+   :::{warning}
+   Temporarily [stopping {{ilm-init}}](/manage-data/lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md) can prevent lifecycle transitions while you update the cluster configuration, but it affects every {{ilm-init}}-managed index in the cluster. It pauses actions such as rollover, migration, and deletion. On clusters with sustained ingestion, a long pause can cause indices on the hot tier to grow until the tier runs out of disk space.
 
-   Wait until `operation_mode` is `STOPPED` before proceeding.
+   Keep {{ilm-init}} running unless you understand the effect on your workload. If you stop it, monitor the hot tier and restart {{ilm-init}} as soon as possible. Stopping {{ilm-init}} does not replace updating policies, templates, and index allocation settings.
+   :::
 
 1. Determine which shards are allocated to the nodes you want to remove.
 
@@ -150,15 +159,17 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
 
 1. Check and update index allocation rules.
 
-   {{ilm-init}} and manual index configurations use different [index-level shard allocation filters](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) to control shard placement. For every index that has shards on the nodes you are removing, check its allocation settings and apply the relevant substeps:
+   {{ilm-init}} and manual index configurations can use different [index-level shard allocation filters](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) to control shard placement. For every index that has shards on the nodes you are removing, check its allocation settings and complete the applicable steps:
 
    ```sh
    GET /my-index/_settings
    ```
 
-   1. $$$update-tier-allocation-rules-self-managed$$$ `_tier_preference` based rules.
+   1. $$$update-tier-allocation-rules-self-managed$$$ Update `_tier_preference`-based rules.
 
-      Data tier-based {{ilm-init}} policies use `index.routing.allocation.include._tier_preference` to express shard placement as an ordered list of preferred tiers. Indices using this method have settings similar to the following example:
+      Data tier-based {{ilm-init}} policies use `index.routing.allocation.include._tier_preference` to express shard placement as an ordered list of preferred tiers. {{es}} allocates shards to the first tier in the list that has nodes in the cluster and considers later tiers only when none of the preceding tiers have any nodes.
+
+      Indices using this method have settings similar to the following example:
 
       ```sh
       {
@@ -175,7 +186,7 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
       ```
       1. The example represents an index in the `warm` tier.
 
-      Before manually vacating the nodes, update `_tier_preference` so that the tier where you want the data to move is the first available tier in the list. This allows {{es}} to begin relocating the shards to that tier before the nodes are removed.
+      Before manually vacating the nodes, update `_tier_preference` so that the tier where you want the data to move is the first available tier in the list. This change makes the destination tier preferred and starts relocating the shards before the nodes are removed.
 
       Update the setting based on where you want to move the data:
 
@@ -199,12 +210,14 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
       1. You can also use `data_cold,data_hot`. Both values move the data to cold, but omitting `data_warm` removes that tier from the fallback sequence.
 
       :::{note}
-      Do not use the frozen tier as a fallback for regular indices. It is reserved for partially mounted {{search-snaps}}.
+      Do not use the frozen tier as a fallback for regular indices or fully mounted {{search-snaps}}. It is reserved for partially mounted {{search-snaps}}.
       :::
 
-   1. Update node attribute allocation requirement rules.
+   1. Review custom allocation rules.
 
-      Older {{ilm-init}} policies and some custom configurations use `index.routing.allocation.require` to pin shards to nodes with a specific attribute. Indices using this method have settings similar to the following example:
+      Some custom configurations use [index-level shard allocation filters](elasticsearch://reference/elasticsearch/index-settings/shard-allocation.md#index-allocation-settings) in addition to or instead of `_tier_preference`. These filters use `require`, `include`, or `exclude` rules with built-in or custom node attributes to control shard placement.
+
+      For example, the following settings use a custom `data` node attribute to require warm nodes:
 
       ```sh
       {
@@ -220,45 +233,19 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
       }
       ```
 
-      Unlike `_tier_preference`, a `require` rule is a hard constraint: if the required nodes are gone, the shard becomes unassigned and {{es}} cannot move it automatically. You must remove or redirect these rules before vacating the nodes. To remove the attribute requirement:
+      A `require` rule is a hard constraint. If no nodes match it, the shard remains unassigned. To remove this requirement:
 
       ```sh
       PUT /my-index/_settings
       {
-          "routing": {
-            "allocation": {
-              "require": {
-                  "data": null
-              }
-            }
-          }
+        "index.routing.allocation.require.data": null <1>
       }
       ```
+      1. You can update the rule to target the destination nodes instead of removing it.
 
-      Alternatively, redirect the index to a different tier by setting `require` to the desired attribute value. For example, to move an index to nodes with `data` attribute of `cold`:
+      For each affected index, update or remove the custom filters that prevent allocation to the destination tier.
 
-      ```sh
-      PUT /my-index/_settings
-      {
-          "routing": {
-            "allocation": {
-              "require": {
-                  "data": "cold"
-              }
-            }
-          }
-      }
-      ```
-
-      Adjust the `data` value to match the [custom node attributes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#custom-node-attributes) and [index-level shard allocation filters](elasticsearch://reference/elasticsearch/index-settings/shard-allocation.md) your indices already use. You cannot send regular indices to the frozen tier.
-
-      If you remove the `require` rule, {{es}} does not re-allocate shards immediately. They move when you vacate the nodes in the next step. If you redirect `require` to a different attribute value, re-allocation starts immediately.
-
-   1. Review other custom allocation rules.
-
-      If indices on the nodes being removed use other [index-level shard allocation filters](elasticsearch://reference/elasticsearch/index-settings/shard-allocation.md#index-allocation-settings), such as `include`, `exclude`, or `require` configurations not covered earlier, update or remove any rules that would prevent shards from moving to the intended nodes. You can preserve rules unrelated to the tier removal.
-
-      The following example removes all `_name`-based custom allocation filters from an index:
+      The following example removes all `_name`-based allocation filters from an index:
 
       ```sh
       PUT /my-index/_settings
@@ -268,6 +255,8 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
         "index.routing.allocation.exclude._name": null
       }
       ```
+
+      Removing a custom filter does not necessarily start relocation if the current nodes remain eligible. The node vacate or {{eck}} `nodeSet` removal in the following steps forces any remaining shards to move.
 
 1. Vacate the nodes.
 
@@ -288,7 +277,7 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
    1. If `_name` exclusions are already configured, include their existing values in the comma-separated list to preserve them.
 
    :::{important}
-   Wait until `GET /_cat/allocation?v=true&s=node` shows that no shards remain on those nodes before proceeding. Updating settings starts the relocation process, but you must wait until [shard allocation and recovery](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery.md) finish. If shards stay on the original tier, use the [cluster allocation explain]({{es-apis}}operation/operation-cluster-allocation-explain) API to determine the cause. Common causes include [disk watermarks](/troubleshoot/elasticsearch/fix-watermark-errors.md) or [`index.routing.allocation.total_shards_per_node`](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md#total-shards-per-node) limit reached on the destination nodes.
+   Wait until `GET /_cat/allocation?v=true&s=node` shows that no shards remain on those nodes before proceeding. Updating settings starts the relocation process, but you must wait until [shard allocation and recovery](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery.md) finish. If shards stay on the original tier, use the [cluster allocation explain]({{es-apis}}operation/operation-cluster-allocation-explain) API to determine the cause. Refer to [Using the cluster allocation API for troubleshooting](/troubleshoot/elasticsearch/cluster-allocation-api-examples.md) for common examples. Common causes include [disk watermarks](/troubleshoot/elasticsearch/fix-watermark-errors.md) or [`index.routing.allocation.total_shards_per_node`](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md#total-shards-per-node) limit reached on the destination nodes.
    :::
 
 1. Remove the nodes.
@@ -324,16 +313,6 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
 
    Confirm that `GET /_cluster/health` reports `green`.
 
-1. Review your {{ilm-init}} policies and consider removing references to the deleted tier to keep them consistent with the cluster topology. This is especially important in older clusters where {{ilm-init}} uses node-attribute-based allocation, as those policies cannot run phases that target nodes that no longer exist.
-
-   For guidance on updating policies, refer to [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md).
-
-1. Re-enable {{ilm-init}}:
-
-   ```sh
-   POST /_ilm/start
-   ```
-
 1. Verify that {{ilm-init}} is running and that no indices report errors related to the removed tier:
 
    ```sh
@@ -345,106 +324,49 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
 
 ### Remove a tier with {{search-snaps}} [remove-searchable-snapshots-self-managed-eck]
 
-This section explains how to remove a data tier that contains [{{search-snap}} indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). Your options for preserving the data depend on how the indices are mounted:
+This section explains how to remove a data tier that contains [{{search-snap}} indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). Choose how to handle the data before removing the tier:
 
-* **[Partially mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) on the frozen tier:** The only way to keep the data available as indices when removing the frozen tier is to restore all partially mounted indices as regular indices on another tier. Follow the steps in this section to restore the indices and remove the original {{search-snap}} indices and source snapshots.
-* **[Fully mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) on the cold tier:** To keep the indices as {{search-snaps}}, move them to another tier by following [Remove a tier with regular indices](#remove-regular-indices-self-managed-eck). This works because fully mounted indices follow the same shard allocation rules as regular indices. Alternatively, follow the steps in this section to restore them as regular indices on another tier.
-
-If you do not need to preserve the data, delete the {{search-snap}} indices before removing the tier.
-
-The following procedure captures the snapshot metadata, restores the indices as regular indices, removes the original {{search-snap}} indices and source snapshots, and then removes the tier's nodes.
+* **[Partially mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) on the frozen tier:** These indices cannot remain mounted outside the frozen tier.
+    * To preserve the data as regular indices, select another tier with sufficient capacity and follow [Restore {{search-snap}} data to a regular index](/deploy-manage/tools/snapshot-and-restore/restore-searchable-snapshot-to-regular-index.md).
+    * If you no longer need the data, delete the mounted indices and any source snapshots you no longer need.
+* **[Fully mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) on the cold tier:**
+    * To keep them as {{search-snaps}}, move them to another tier by following [Remove a tier with regular indices](#remove-regular-indices-self-managed-eck).
+    * To preserve the data as regular indices, select another tier with sufficient capacity and follow [Restore {{search-snap}} data to a regular index](/deploy-manage/tools/snapshot-and-restore/restore-searchable-snapshot-to-regular-index.md).
+    * If you no longer need the data, delete the mounted indices and any source snapshots you no longer need.
 
 :::{note}
-The [{{ilm-init}} `searchable_snapshot` action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) typically prefixes the resulting index with `restored-*` for fully mounted indices in the hot or cold phase and `partial-*` for partially mounted indices in the frozen phase. Manually mounted {{search-snaps}} might not use these prefixes. In the following steps, adapt the index names and patterns to match the indices on the tier you are removing.
+:applies_to: {"stack": "ga 9.5+"}
+
+If you are removing the frozen tier and [{{dlm-init}}](/manage-data/lifecycle/data-stream.md) manages partially mounted indices on it, remove `frozen_after` from the affected data streams and index templates before proceeding.
 :::
 
-% TODO: Cover data stream lifecycle `frozen_after` transitions and `dlm-frozen-*` indices. Stopping {{ilm-init}} does not stop these transitions.
+1. Apply the changes to {{ilm-init}} policies and index templates that you planned in [Before you remove a data tier](#before-remove-data-tier-self-managed-eck). These changes prevent newly created indices and future lifecycle transitions from targeting the tier while you process its existing {{search-snap}} indices.
 
-1. Stop {{ilm-init}} to prevent data from migrating to the phase you intend to remove while you work.
+1. For each mounted {{search-snap}} whose data you want to preserve as a regular index, follow [Restore {{search-snap}} data to a regular index](/deploy-manage/tools/snapshot-and-restore/restore-searchable-snapshot-to-regular-index.md). Complete the restore, validation, alias or data stream update, and mounted index cleanup for one index before proceeding to the next.
 
-   ```sh
-   POST /_ilm/stop
-   GET /_ilm/status
-   ```
-
-   Wait until `operation_mode` is `STOPPED` before proceeding.
-
-1. Using the {{search-snap}} indices identified in [Before you remove a data tier](#before-remove-data-tier-self-managed-eck), create an inventory of the indices to restore. For standard {{ilm-init}} configurations, you can use `restored-*` for the cold tier and `partial-*` for the frozen tier. For custom configurations, use individual index names or a pattern that matches the relevant indices. For each index, record the index name, source snapshot name, and snapshot repository.
+1. For each mounted {{search-snap}} whose data you do not want to preserve, record its source snapshot details before deleting the index:
 
    ```sh
-   GET /<searchable-snapshot-index-name-or-pattern>/_settings?filter_path=**.index.store.snapshot.snapshot_name,**.index.store.snapshot.repository_name&expand_wildcards=all
-   ```
-
-1. For each index in the inventory, remove any aliases that were applied to the {{search-snap}} index.
-
-   ```sh
-   POST /_aliases
-   {
-     "actions": [
-       {
-         "remove": {
-           "index": "<searchable-snapshot-index-name>",
-           "alias": "<alias-name>"
-         }
-       }
-     ]
-   }
-   ```
-
-   ::::{note}
-   If you use a data stream, you can skip this step.
-   ::::
-
-1. Restore each index in the inventory from its source snapshot.
-
-   The restore request creates a regular index on the remaining tiers and prevents it from inheriting the previous {{ilm-init}} policy and rollover alias:
-
-   ```sh
-   POST /_snapshot/<snapshot_repository_name>/<searchable_snapshot_name>/_restore <1>
-   {
-     "indices": "*", <2>
-     "index_settings": {
-       "index.routing.allocation.include._tier_preference": "<data_tiers>", <3>
-       "index.number_of_replicas": 1, <4>
-       "index.lifecycle.name": null,
-       "index.lifecycle.rollover_alias": null
-     }
-   }
-   ```
-   1. Use the corresponding snapshot repository and snapshot name from the inventory.
-   2. The `*` value restores every index in the snapshot. Snapshots created by the {{ilm-init}} `searchable_snapshot` action contain only the managed index. For a manually created snapshot that contains multiple indices, replace `*` with the name of the original index you want to restore.
-   3. Specify an ordered list of remaining tiers where the restored index can be allocated. Refer to [Update `_tier_preference`-based rules](#update-tier-allocation-rules-self-managed).
-   4. Adjust `index.number_of_replicas` to match your resiliency needs.
-
-   To manage the restored index with a different {{ilm-init}} policy, apply the policy after the restore and configure its rollover alias if required. Refer to [Switch lifecycle policies](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies).
-
-1. Once all snapshots are restored, use `GET /_cat/indices/<index-pattern>?v=true` to check that the restored indices are `green` and are correctly reflecting the expected `docs.count` and `store.size` values.
-
-   If you are using a data stream, you might need to use `GET /_data_stream/<data-stream-name>` to get the list of the backing indices, and then specify them by using `GET /_cat/indices/<backing-index-name>?v=true` to check. When you restore the backing indices of a data stream, some [considerations](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#considerations) apply, and you might need to manually add the restored indices into your data stream or re-create your data stream.
-
-   % TODO: Document how to replace a {{search-snap}} backing index with the restored regular index before deleting the mounted index.
-
-1. After verifying each restored index, delete the corresponding original {{search-snap}} index from the inventory.
-
-   ```sh
+   GET /<searchable-snapshot-index-name>/_settings?filter_path=**.index.store.snapshot.snapshot_name,**.index.store.snapshot.repository_name&expand_wildcards=all
    DELETE /<searchable-snapshot-index-name>
    ```
 
-1. Delete the source snapshots recorded in the inventory:
-
-   :::{warning}
-   A snapshot created by the {{ilm-init}} `searchable_snapshot` action contains only the managed index, so deleting it after successfully restoring and verifying that index does not affect other indices. This guarantee does not apply to manually created snapshots, which can contain multiple indices or support other mounted {{search-snap}} indices. Before deleting a manually created snapshot, verify that it contains no other data you need and supports no other mounted indices.
-   :::
+   If you no longer need the source snapshot, delete it after confirming that it contains no other data you need and that no other mounted index in this or another cluster depends on it:
 
    ```sh
    DELETE /_snapshot/<snapshot_repository_name>/<searchable_snapshot_name>
    ```
 
-   :::{tip}
-   You can also delete multiple snapshots at once in {{kib}}. Find **Snapshot and Restore** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), select the **Snapshots** tab, select the snapshots you want to delete, and click **Delete**.
-   :::
+1. Check whether any regular indices remain on the data nodes you want to remove:
 
-1. Confirm that no shards remain on the data nodes you wish to remove using `GET /_cat/allocation?v=true&s=node`.
+   ```sh
+   GET /_cat/shards?v&h=index,shard,prirep,state,node
+   ```
+
+   Filter the output by the node names you identified in [Before you remove a data tier](#before-remove-data-tier-self-managed-eck).
+
+   * If regular indices remain, do not remove the nodes yet. Return to [Remove a tier with regular indices](#remove-regular-indices-self-managed-eck) to update their allocation rules, relocate their shards, and remove the nodes.
+   * If no indices remain on the nodes, confirm that `GET /_cat/allocation?v=true&s=node` reports no shards on them, and then continue.
 
 1. Remove the nodes.
 
@@ -465,16 +387,6 @@ The [{{ilm-init}} `searchable_snapshot` action](elasticsearch://reference/elasti
    :::::
 
 1. Confirm that `GET /_cluster/health` reports `green` and that `GET /_cat/nodes?v` shows no nodes from the removed tier remaining in the cluster.
-
-1. Review your {{ilm-init}} policies and update any phases that target the removed tier. For example, when removing the frozen tier, remove the `frozen` phase. If you want future indices to continue using {{search-snaps}}, configure the `searchable_snapshot` action in an appropriate remaining phase. Also update any allocation rules that reference the removed tier.
-
-    For guidance on updating policies, refer to [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md).
-
-1. Re-enable {{ilm-init}}:
-
-   ```sh
-   POST /_ilm/start
-   ```
 
 1. Verify that {{ilm-init}} is running and that no indices report errors related to the removed tier:
 
