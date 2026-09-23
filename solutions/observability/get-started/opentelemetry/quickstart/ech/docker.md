@@ -18,7 +18,7 @@ Learn how to set up the {{agent}} and EDOT SDKs in a Docker environment with {{e
 
 - An {{ech}} deployment running version 9.0 or later.
 - [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on the host.
-- A user with the `manage_own_api_key` cluster privilege, to create the API key, and the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges, to install the content packs.
+- A user with the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges, to install the content packs. The manual installation steps also need the `manage_own_api_key` cluster privilege, to create the API key.
 
 ## Guided setup
 

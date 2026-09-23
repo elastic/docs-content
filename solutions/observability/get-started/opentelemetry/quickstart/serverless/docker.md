@@ -20,7 +20,7 @@ Learn how to set up the {{agent}} and EDOT SDKs in a Docker environment with {{s
 ## Prerequisites
 
 - [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on the host.
-- A user with the **Admin** role. The **Editor** role can install the content packs but can't create the {{es}} API key this quickstart needs.
+- A user with the **Admin** role for the manual installation steps, which create an {{es}} API key. The **Editor** role is enough for the guided setup, where Elastic creates the key for you.
 
 ## Guided setup
 

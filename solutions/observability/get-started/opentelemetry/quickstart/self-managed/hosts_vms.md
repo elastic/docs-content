@@ -18,7 +18,7 @@ Learn how to set up the {{agent}} and EDOT SDKs to collect host metrics, logs an
 ## Prerequisites
 
 - The host or VM running a supported operating system (Linux, macOS, or Windows).
-- A user with the `manage_own_api_key` cluster privilege, to create the API key, and the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges, to install the content packs.
+- A user with the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges, to install the content packs. The manual installation steps also need the `manage_own_api_key` cluster privilege, to create the API key.
 
 ## Guided setup
 
