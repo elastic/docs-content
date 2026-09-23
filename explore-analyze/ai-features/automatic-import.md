@@ -30,9 +30,10 @@ products:
 
 ## Prepare your sample data [automatic-import-sample-data]
 
-Collect a sample of the data you want to import before you create the integration. An LLM uses that sample to build an integration for the data it represents.
+Collect a sample of the data you want to import before you create the integration. Automatic Import sends that sample to the LLM, and the LLM builds an integration from it.
 
-For file data, refer to [Prepare a file sample](#automatic-import-sample-file). For API collection, refer to [Collect from an API](#automatic-import-sample-api).
+* **[Prepare a file sample](#automatic-import-sample-file)**: Use this when you can export events from the source, such as application logs or records in a file, an object store, or a stream.
+* **[Collect from an API](#automatic-import-sample-api)**: Use this when the integration must call an HTTP API to retrieve the data.
 
 ### Prepare a file sample [automatic-import-sample-file]
 
@@ -44,12 +45,38 @@ Prepare the file in one of the following formats:
 
 Whichever format you use, include a wide range of unique log entries for the event types you want the integration to handle. The more the sample varies, the more accurate the pipeline is.
 
-Automatic Import detects the sample's format and analyzes the file from the beginning, up to the following limits:
+Start the file with a focused set of the event types you want the integration to handle. Automatic Import sends the first samples in the file to the LLM, and the LLM builds the pipeline from those samples.
 
-* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` It sends the first 1,000 documents, up to a total of 10 MB, and skips any single document longer than 100,000 characters. Whenever it omits documents, a **Sample log limits applied** warning reports the number sent and the number omitted.
-* {applies_to}`stack: ga 9.0-9.3` It sends the first 100 documents.
+#### Sample size limits
 
-Place the events you care about at the beginning of the file. A focused sample that leads with those events usually produces a better integration than a large raw export.
+The following limits control how much of the file Automatic Import sends to the LLM. A sample is a log line or a document.
+
+:::::{applies-switch}
+
+::::{applies-item} { "serverless": "ga", "stack": "ga 9.4+" }
+
+You can upload a file of any size. Automatic Import reads the file from the beginning and sends samples to the LLM until it reaches one of these limits:
+
+| Limit | Value | What happens |
+| --- | --- | --- |
+| Maximum samples | 1,000 | Stops after adding 1,000 samples to the request. |
+| Maximum sample length | 100,000 characters | Skips the entire sample and continues with later samples. |
+| Maximum request size | 10 MB | Stops before the request to the LLM exceeds 10 MB. This limit doesn't cap the file you upload. |
+
+Automatic Import stops at 1,000 samples or 10 MB, whichever comes first. A sample longer than 100,000 characters doesn't count toward either limit. Short log lines reach the 1,000-sample limit first. Long samples, such as verbose JSON, can fill the 10 MB request first.
+
+If Automatic Import omits samples, the **Sample log limits applied** warning tells you how many samples it sent to the LLM and how many it left out.
+
+::::
+
+::::{applies-item} stack: ga 9.0-9.3
+
+Automatic Import sends the first 100 samples to the LLM.
+
+::::
+
+:::::
+
 
 ### Collect from an API [automatic-import-sample-api]
 
