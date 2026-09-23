@@ -128,8 +128,6 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
    - TCP 
    - UDP
 
-   $$$automatic-import-sample-api$$$
-
    :::{note}
    These methods don't call an HTTP API. To build an integration package that calls an HTTP API, use the [Elastic integration skills](https://github.com/elastic/integration-skills). These workflows build the package with an AI coding agent.
    :::
