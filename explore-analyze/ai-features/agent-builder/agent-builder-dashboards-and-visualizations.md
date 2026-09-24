@@ -31,10 +31,6 @@ Building dashboards manually requires knowing which indices to query, how to wri
 - **Explore unfamiliar data**: When you are working with a new data source, ask the agent to visualize key fields so you can understand what is available before building something more permanent.
 - **Prototype and iterate**: Describe the dashboard you want in plain language, refine it through conversation, and save it only when you are satisfied with the result.
 
-:::{tip}
-The full-screen [standalone chat mode](standalone-and-flyout-modes.md#standalone-mode) provides the best experience for working with dashboards. Dashboards also work in [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode), but the larger canvas area in standalone mode makes it easier to preview and interact with dashboard content.
-:::
-
 ## Where to start [where-to-start]
 
 - Find **Agents** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to open the [full-screen chat](standalone-and-flyout-modes.md#standalone-mode). You have more room to preview dashboards and read the agent's replies.
