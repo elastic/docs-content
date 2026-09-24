@@ -52,18 +52,20 @@ When an agent has at least one AI index, {{agent-builder}} automatically gives i
 
 The assignment provides access to KIs, not to the original source data. If a KI contains an {{esql}} pattern for retrieving current details, the agent also needs a source-query tool such as `platform.core.execute_esql` and permission to read the source indices. For a custom agent, you can enable built-in Elastic capabilities or assign only the source tools required for its task.
 
-## Add task-specific instructions
+## Add optional custom instructions
 
-Use **Custom instructions** to define the agent's scope and the behavior that is specific to your use case. For example:
+Custom instructions are optional. {{agent-builder}} already adds AI index metadata and retrieval guidance to the agent's system instructions. Advanced users can add **Custom instructions** for requirements that apply to every conversation with the agent and are not covered by the AI index metadata, KI content, or tool descriptions.
+
+Keep the instructions focused on the agent's task, audience, priorities, and boundaries. For example:
 
 ```text
-Use the <AI index ID> AI index for questions about <subject>.
-Answer from a retrieved Knowledge Indicator when it contains enough information.
-For current values or detailed records, use the KI's query guidance to query the source data.
-State when the available data cannot answer the question.
+Answer questions for <audience> about <subject>.
+Prioritize <goals or criteria> when making recommendations.
+Do not provide guidance about <out-of-scope area>.
+When the available information is incomplete, state the limitation and ask for <required input>.
 ```
 
-Start with concise instructions. Add more detail only when testing reveals a specific behavior that the AI index metadata, KI content, and tool descriptions do not already handle. For general guidance, refer to [Prompt engineering](/explore-analyze/ai-features/agent-builder/prompt-engineering.md).
+Do not repeat the AI index retrieval sequence or prescribe how the agent should choose between KIs and source data. Add more detail only when testing reveals a specific unmet requirement. For general guidance, refer to [Prompt engineering](/explore-analyze/ai-features/agent-builder/prompt-engineering.md).
 
 ## Test KI retrieval
 
