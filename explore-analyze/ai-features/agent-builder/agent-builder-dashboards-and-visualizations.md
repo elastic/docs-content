@@ -33,9 +33,11 @@ Building dashboards manually requires knowing which indices to query, how to wri
 
 ## Where to start [where-to-start]
 
+You can open the full-screen chat, or open the chat beside the page you are on.
+
 - Find **Agents** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to open the [full-screen chat](standalone-and-flyout-modes.md#standalone-mode). You have more room to preview dashboards and read the agent's replies.
 - Select **AI Agent** in the header to keep the page you are on open, with the [chat beside it](standalone-and-flyout-modes.md#sidebar-mode).
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` While you edit a dashboard, select **Create with chat** to open a new conversation with that dashboard attached. On an empty dashboard, the card includes pre-populated examples, and a blank **Open chat** option. When the dashboard already has panels, select **Add** → **Create with chat**.
+  - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` While you edit a dashboard, select **Create with chat** to open that chat with the dashboard attached. On an empty dashboard, the card includes pre-populated examples, and a blank **Open chat** option. When the dashboard already has panels, select **Add** → **Create with chat**.
 
 ## How dashboards appear in chat
 
