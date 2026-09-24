@@ -2,7 +2,7 @@
 navigation_title: Create your first rule
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
   - id: cloud-serverless

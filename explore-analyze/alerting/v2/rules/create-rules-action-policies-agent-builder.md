@@ -2,7 +2,7 @@
 navigation_title: Create rules using Agent Builder
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "How Agent Builder creates rules and action policies using the rule management skill, what the agent produces, and the save-order dependency."

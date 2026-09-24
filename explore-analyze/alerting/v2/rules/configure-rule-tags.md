@@ -2,7 +2,7 @@
 navigation_title: Tags and runbooks (alert episodes only)
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Add tags and runbooks to rules that group matches into an alert episode, for filtering and investigation context."

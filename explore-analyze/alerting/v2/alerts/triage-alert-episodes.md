@@ -2,7 +2,7 @@
 navigation_title: Triage alert episodes
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Take triage actions on alert episodes. Acknowledge, snooze, resolve, activate, deactivate, tag, and assign alert episodes individually or in bulk."

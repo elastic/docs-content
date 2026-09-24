@@ -2,7 +2,7 @@
 navigation_title: Create rules using the rule builder
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Create rules by selecting a rule type and configuring it through a guided form that generates ES|QL automatically."

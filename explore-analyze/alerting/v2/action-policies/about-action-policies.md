@@ -2,7 +2,7 @@
 navigation_title: About action policies
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "How action policies gate alert episodes through eligibility checks, match conditions, and frequency before invoking workflows."

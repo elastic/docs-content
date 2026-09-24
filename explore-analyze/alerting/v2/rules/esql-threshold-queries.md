@@ -2,7 +2,7 @@
 navigation_title: Threshold queries
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Write ES|QL threshold queries for rules. Covers single-series and grouped rules using STATS aggregation."

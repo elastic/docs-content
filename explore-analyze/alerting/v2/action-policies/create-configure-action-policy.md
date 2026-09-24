@@ -2,7 +2,7 @@
 navigation_title: Create an action policy
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Create action policies, configure match conditions, Notify per, Frequency, and workflow destinations."

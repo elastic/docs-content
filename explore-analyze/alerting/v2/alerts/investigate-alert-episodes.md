@@ -2,7 +2,7 @@
 navigation_title: Investigate alert episodes
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Investigate alert episodes. Understand what triggered an alert episode, assess metric behavior, find related alert episodes, review responders, and inspect underlying data."

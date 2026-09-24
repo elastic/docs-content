@@ -2,7 +2,7 @@
 navigation_title: Review rule execution history
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Use the Execution History page to monitor rule execution outcomes across all rules in a space."
