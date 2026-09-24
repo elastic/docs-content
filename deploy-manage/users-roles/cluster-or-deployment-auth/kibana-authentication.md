@@ -28,7 +28,7 @@ By default, SSO is enabled between your {{ecloud}} account and {{kib}}. When you
 
 For details on accessing {{kib}} from a hosted deployment, refer to [Access {{kib}} on {{ech}}](/deploy-manage/deploy/elastic-cloud/access-kibana.md).
 
-You can override this default by configuring SSO at the organization level, the deployment level, or both. For guidance on choosing the right approach, refer to [Should I use organization-level or deployment-level SSO?](/deploy-manage/users-roles/cloud-organization.md#should-i-use-organization-level-or-deployment-level-sso)
+You can also configure authentication at the [organization level](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md), the [deployment level](#deployment-authentication), or both. For guidance on choosing the right approach, refer to [Should I use organization-level or deployment-level SSO?](/deploy-manage/users-roles/cloud-organization.md#should-i-use-organization-level-or-deployment-level-sso)
 
 ### {{serverless-full}} [serverless-authentication]
 
@@ -40,7 +40,7 @@ For both {{ech}} and {{serverless-full}}, you can configure SAML SSO at the {{ec
 
 For details, refer to [Configure {{ecloud}} SAML single sign-on](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md).
 
-For {{ech}}, you can also configure [deployment-level authentication](#deployment-authentication) using SAML, OIDC, LDAP, Kerberos, or other protocols for more granular control.
+For {{ech}}, you can also configure additional [deployment-level authentication providers](#deployment-authentication) such as SAML, OIDC, LDAP, or Kerberos alongside Cloud SSO.
 
 ## Deployment-level authentication [deployment-authentication]
 
