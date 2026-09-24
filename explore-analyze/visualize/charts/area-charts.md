@@ -261,11 +261,11 @@ See .github/scripts/verify-lens-api-examples.py for full usage. -->
    - **Vertical axis**: `records`
    - **Breakdown**: `geo.dest`
 
-   :::{image} /explore-analyze/images/kibana-area-geo-regions.png
-   :alt: Example Lens area chart geographical regions
-   :width: 70%
-   :screenshot:
-   :::
+:::{image} /explore-analyze/images/kibana-area-geo-regions.png
+:alt: Example Lens area chart geographical regions
+:width: 70%
+:screenshot:
+:::
 
 :::::::{dropdown} Create this chart using the API
 :applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
