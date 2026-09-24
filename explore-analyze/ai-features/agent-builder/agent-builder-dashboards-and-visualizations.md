@@ -43,7 +43,7 @@ stack: ga 9.6+
 
 You can also start from the dashboard you are editing. The message is not sent until you send it.
 
-- On an empty dashboard, the **Create with chat** card includes **Create a dashboard for my metrics**, **Monitor my logs**, and **Open chat**.
+- On an empty dashboard, the **Create with chat** card includes pre-populated examples, and a blank **Open chat** option.
 - When the dashboard already has panels, select **Add** → **Create with chat**.
 
 ## How dashboards appear in chat
