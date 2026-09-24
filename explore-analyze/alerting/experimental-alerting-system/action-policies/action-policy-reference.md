@@ -26,7 +26,7 @@ Use the following fields in the **Match conditions** expression to filter which 
 | `data.*` | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard fields in this table. | `data.host.name: "web-01"` <br> Match alert episodes from a specific host in a host-based rule. |
 
 :::{note}
-:applies_to: {"serverless": "ga", "stack": "ga 9.6+"}
+:applies_to: {"serverless": "experimental", "stack": "experimental 9.6+"}
 To apply a policy to alert episodes from a set of rules, select those rules' tags in **Rule tags**. To learn more, refer to [Filter by rule tags](create-configure-action-policy.md#filter-by-rule-tags).
 :::
 

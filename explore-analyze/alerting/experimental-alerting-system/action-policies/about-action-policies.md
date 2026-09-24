@@ -29,7 +29,7 @@ A workflow runs only when the alert episode passes every gate. The action policy
 | Gate | What it checks |
 |------|----------------|
 | Episode eligibility | Whether the alert episode is acknowledged, snoozed, or in a maintenance window. Any of these stops it. |
-| Policy scope {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Whether the alert episode's rule carries at least one of the policy's tags, and whether the alert episode matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. If both are set on the policy, they both have to pass. An empty scope passes every eligible alert episode in the space. |
+| Policy scope {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` | Whether the alert episode's rule carries at least one of the policy's tags, and whether the alert episode matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. If both are set on the policy, they both have to pass. An empty scope passes every eligible alert episode in the space. |
 | Match conditions {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` | Whether the alert episode matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. An empty expression passes every eligible alert episode in the space. |
 | Frequency | Whether a workflow already ran for the alert episode's notification group within the policy's frequency interval. If it did, the alert episode waits. |
 

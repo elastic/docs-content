@@ -22,8 +22,8 @@ To narrow the scope of an action policy, filter by [rule tags](#filter-by-rule-t
 
 ### Filter by rule tags [filter-by-rule-tags]
 ```{applies_to}
-serverless: ga
-stack: ga 9.6+
+serverless: experimental
+stack: experimental 9.6+
 ```
 
 Select tags in **Rule tags** to apply the policy to alert episodes from the rules that carry them. An alert episode is in scope when its rule carries at least one of the selected tags. You can select up to 50 tags, each up to 256 characters, including a tag that no rule uses yet.
@@ -43,7 +43,7 @@ To narrow the scope further, add a [match conditions expression](#filter-with-kq
 
 Add a **Match conditions** [KQL](../../../query-filter/languages/kql.md) expression to narrow the policy to the alert episodes whose fields match it. For example, `severity: "critical"` applies the policy to critical alert episodes only. For the fields you can use, refer to [Match conditions fields](action-policy-reference.md#action-policy-matcher-fields).
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` On a new action policy, **Match conditions** is hidden until you expand **Advanced matching**.
+{applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` On a new action policy, **Match conditions** is hidden until you expand **Advanced matching**.
 
 ## Add tags to categorize the action policy [policy-tags]
 ```{applies_to}
@@ -91,8 +91,8 @@ If the workflow doesn't exist yet, select **Create a workflow** to build it in t
 
 ### Create an email or Slack workflow [inline-email-slack-workflow]
 ```{applies_to}
-serverless: ga
-stack: ga 9.6+
+serverless: experimental
+stack: experimental 9.6+
 ```
 
 If all the action policy needs to do is send an email or post a Slack message, build that workflow in the action policy itself:
@@ -121,7 +121,7 @@ The list also indicates why each policy applies.
 
 ::::{applies-switch}
 
-:::{applies-item} { serverless: ga, stack: ga 9.6+ }
+:::{applies-item} { serverless: experimental, stack: experimental 9.6+ }
 Each entry shows the connector types its workflows use, along with a badge or icon:
 
 * A **Catch-all** badge means the policy has an empty scope, so it applies to alert episodes from every rule.

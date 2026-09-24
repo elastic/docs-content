@@ -20,7 +20,7 @@ The action policy list shows who created and last updated each policy, along wit
 
 Deleting a rule doesn't delete the action policies that applied to its alert episodes. Delete those policies separately when no remaining rule needs them.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The **Matcher** field in a policy's details states its [scope](create-configure-action-policy.md#matcher) as a sentence, such as **Matches alerts where Rule tagged with** `checkout` **and Matches query** `severity: "critical"`. A policy with an empty scope shows **Matches all alerts**.
+{applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` The **Matcher** field in a policy's details states its [scope](create-configure-action-policy.md#matcher) as a sentence, such as **Matches alerts where Rule tagged with** `checkout` **and Matches query** `severity: "critical"`. A policy with an empty scope shows **Matches all alerts**.
 
 ## Enable, disable, and snooze an action policy
 
