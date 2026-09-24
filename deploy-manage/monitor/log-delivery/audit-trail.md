@@ -89,7 +89,7 @@ Use Discover or {{esql}} to explore delivered audit trail logs in the following 
 | Data stream or index pattern | Contents |
 | --- | --- |
 | `logs-*audit.otel-*` | All audit logs |
-| `logs-org.audit.otel-elastic_cloud` | Organization-level audit logs (administration, configuration, billing, and similar) |
+| `logs-elastic_cloud.org_audit.otel-default` | Organization-level audit logs (administration, configuration, billing, and similar) |
 | `logs-elastic_cloud.serverless_audit.otel-default` | Project-level audit logs ({{es}}, {{kib}}, and {{ecloud}} project signals) |
 
 :::{warning}
