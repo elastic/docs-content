@@ -65,14 +65,18 @@ For more information, refer to [SSL/TLS](/reference/fleet/elastic-agent-ssl-conf
 
 ### Control Azure credential selection
 
-After the Azure provider detects an Azure VM, the processor automatically makes a best-effort Azure Resource Manager lookup for the AKS cluster name and ID. These fields are optional, but the processor attempts the lookup even when the VM is not an AKS node. Because inputs that collect logs and metrics enable this processor by default, the lookup can occur without an explicit processor configuration.
+After the Azure provider detects an Azure Virtual Machine (VM), the processor automatically makes a best-effort Azure Resource Manager lookup for the name and ID of the Azure Kubernetes Service (AKS) cluster. These fields are optional, but the processor attempts the lookup even when the VM is not an AKS node. Because inputs that collect logs and metrics enable this processor by default, the lookup can occur without an explicit processor configuration.
 
-If `TENANT_ID`, `CLIENT_ID`, and `CLIENT_SECRET` are all present, the processor uses an explicit client secret. Otherwise, it uses the Azure SDK for Go `DefaultAzureCredential` chain. Depending on the {{agent}} version, development-focused credentials in the bundled default chain may start Azure CLI, Azure Developer CLI, or Azure PowerShell on Windows. `AzurePowerShellCredential` is in the chain in {{agent}} 9.1.8 and later 9.1 releases, 9.2.2 and later 9.2 releases, and all 9.3 and later releases; when included, it invokes PowerShell with an encoded command.
+If `TENANT_ID`, `CLIENT_ID`, and `CLIENT_SECRET` are all present, the processor uses an explicit client secret. Otherwise, it uses the Azure SDK for Go `DefaultAzureCredential` chain. Depending on the {{agent}} version, development-focused credentials in the bundled default chain may start Azure CLI, Azure Developer CLI, or Azure PowerShell on Windows.
 
-{applies_to}`stack: ga 9.1.3+` {applies_to}`serverless: ga` In production, you can exclude development credentials by setting `AZURE_TOKEN_CREDENTIALS=prod` in the {{agent}} process environment and restarting {{agent}}. This setting retains `EnvironmentCredential`, `WorkloadIdentityCredential`, and `ManagedIdentityCredential`. For details, refer to Microsoft's guidance on [excluding a credential type category](https://learn.microsoft.com/en-us/azure/developer/go/sdk/authentication/credential-chains#exclude-a-credential-type-category). On Windows, follow the [Windows service environment procedure](/reference/fleet/host-proxy-env-vars.md#where-to-set-proxy-env-vars) to set the variable and restart {{agent}}.
+{applies_to}`stack: ga 9.1+` `AzurePowerShellCredential` is also in the chain. When included, it starts PowerShell with an encoded command.
+
+{applies_to}`stack: ga 9.1+` To exclude development credentials in production, set `AZURE_TOKEN_CREDENTIALS=prod` in the {{agent}} process environment and restart {{agent}}. This setting retains `EnvironmentCredential`, `WorkloadIdentityCredential`, and `ManagedIdentityCredential`. For details, refer to Microsoft's guidance on [excluding a credential type category](https://learn.microsoft.com/en-us/azure/developer/go/sdk/authentication/credential-chains#exclude-a-credential-type-category). On Windows, follow the [Windows service environment procedure](/reference/fleet/host-proxy-env-vars.md#where-to-set-proxy-env-vars) to set the variable and restart {{agent}}.
 
 ::::{note}
-{applies_to}`stack: ga 9.1.3+` {applies_to}`serverless: ga` `AZURE_TOKEN_CREDENTIALS` applies process-wide to components that use `DefaultAzureCredential`. It does not disable Azure metadata collection or the AKS lookup, and a retained credential can still make Azure Resource Manager requests. Excluding `azure` from the processor's `providers` setting is broader because it also removes basic Azure VM metadata.
+:applies_to: stack: ga 9.1+
+
+`AZURE_TOKEN_CREDENTIALS` applies to every component in the {{agent}} process that uses `DefaultAzureCredential`. It does not stop Azure metadata collection or the AKS lookup, and credentials that remain in the chain can still send requests to Azure Resource Manager. To stop Azure metadata collection, exclude `azure` from the processor's `providers` setting. This also removes basic Azure VM metadata.
 ::::
 
 
