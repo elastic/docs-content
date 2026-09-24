@@ -41,9 +41,7 @@ Start the conversation from the place that matches the dashboard you want to bui
 
 - Find [**Agents**](standalone-and-flyout-modes.md#standalone-mode) in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then describe the dashboard you want in the full-screen {{agent-builder}} chat.
 - Select **AI Agent** in the header to open the [chat beside the current page](standalone-and-flyout-modes.md#sidebar-mode). The button is available when the space uses {{agent-builder}} instead of **AI Assistant**.
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` While you edit an empty dashboard, the **Create with chat** card offers **Create a dashboard for my metrics**, **Monitor my logs**, and **Open chat**. A suggested prompt opens in the chat beside the dashboard so you can change it before you send it. **Open chat** opens that chat with a blank message.
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` While you edit a dashboard that already has panels, select **Add** → **Create with chat**. The chat opens beside the dashboard with a blank message, and nothing is sent until you send it.
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To create or change a [custom panel](/explore-analyze/visualize/custom-panels.md#custom-panels-refine-with-chat), select **Generate with chat** when the template is empty, or **Refine with chat** when it already has content. The chat opens beside the page with that panel attached.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` While you edit a dashboard, open the chat beside the page. The message is not sent until you send it. On an empty dashboard, the **Create with chat** card includes **Create a dashboard for my metrics**, **Monitor my logs**, and **Open chat**. When the dashboard already has panels, select **Add** → **Create with chat**.
 
 ## How dashboards appear in chat
 
