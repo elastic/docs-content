@@ -28,18 +28,18 @@ You’ll install a lightweight {{agent}}, configure a minimal Open Telemetry Pro
 - A system to run the {{agent}} (Docker, host, or VM)
 - Optional: An application that emits OpenTelemetry metrics
 
-:::::{stepper}
+:::::::{stepper}
 
-::::{step} Create an Elastic API key
+::::::{step} Create an Elastic API key
 
 In your {{product.observability}} deployment:
 
 1. Go to **{{manage-app}}** > **{{stack-manage-app}}** > **API keys**.
 2. Create a new API key and copy the value.
 3. Note your deployment's OTLP ingest endpoint.
-::::
+::::::
 
-::::{step} Run the {{agent}} with a minimal metrics pipeline
+::::::{step} Run the {{agent}} with a minimal metrics pipeline
 
 Update the `collector-config.yaml` file with the following Collector configuration to receive OTLP metrics and export them to Elastic:
 
@@ -75,9 +75,9 @@ docker run --rm \
   -p 4317:4317 -p 4318:4318 \
   docker.elastic.co/observability/otel-collector:latest
 ```
-::::
+::::::
 
-::::{step} Optional: Port conflict handling
+::::::{step} Optional: Port conflict handling
 
 If you encounter a port conflict error like:
 
@@ -99,9 +99,9 @@ You can also verify if the Collector is listening on the correct ports:
 ```bash
 lsof -i :4318 -i :4317
 ```
-::::
+::::::
 
-::::{step} Send a custom metric
+::::::{step} Send a custom metric
 
 In this Python example, you use an application that emits OTLP metrics. For other languages, refer to the [contrib OpenTelemetry documentation](https://opentelemetry.io/docs/getting-started/dev/).
 
@@ -125,18 +125,39 @@ temperature = meter.create_observable_gauge(
 
 input("Sending metrics periodically... press Enter to stop")
 ```
-::::
+::::::
 
-::::{step} Verify metrics in {{product.observability}}
+::::::{step} Verify metrics in {{product.observability}}
 
 In {{kib}}:
 
-1. Go to **Infrastructure** > **Metrics Explorer**.
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+1. Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select {icon}`code` **{{esql}}** to switch to {{esql}} mode, then run a `TS` query to select your metrics data:
+
+    ```esql
+    TS metrics-*
+    ```
+
+3. Search the chart grid for `custom.temperature`, then break the metric down by dimension or add its chart to a dashboard.
+
+To learn how to explore metrics in **Discover**, refer to [Explore metrics data with Discover in {{kib}}](/solutions/observability/infra-and-hosts/discover-metrics.md).
+::::
+
+::::{applies-item} stack: deprecated 9.4+, ga 9.0-9.3
+1. Find **Infrastructure** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Metrics Explorer**.
 2. Search for `custom.temperature`.
 3. Visualize or aggregate the metric data.
+
+For the Metrics Explorer workflow, refer to [Explore infrastructure metrics over time](/solutions/observability/infra-and-hosts/explore-infrastructure-metrics-over-time.md).
 ::::
 
 :::::
+::::::
+
+:::::::
 
 ## Explore your metrics
 
@@ -144,7 +165,7 @@ You've successfully set up a minimal OTLP metrics pipeline with the {{agent}}. Y
 
 Now you can:
 
-- Use **Metrics Explorer** to create custom visualizations and dashboards
+- Build dashboards from your custom metrics
 - Set up alerts based on your custom metrics
 - Aggregate and analyze metric trends over time
 
