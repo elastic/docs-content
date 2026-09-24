@@ -37,7 +37,7 @@ The following topics describe how to configure APM Server:
 
 ## Edit APM user settings [ec-manage-apm-settings]
 
-Change how Elastic APM runs by providing your own user settings. Starting in {{stack}} version 8.0, how you change APM settings and the settings that are available to you depend on how you spin up Elastic APM. There are two modes:
+Provide your own user settings to change how Elastic APM runs. Since {{stack}} 8.0, the settings you can change depend on how you deployed Elastic APM. There are two modes:
 
 {{fleet}}-managed APM integration
 :   New deployments created in {{stack}} version 8.0 and later will be managed by {{fleet}}.
@@ -76,9 +76,6 @@ If a setting is not supported on {{ecloud}}, you will get an error message when 
 {{ech}} supports the settings listed in [APM documentation](/solutions/observability/apm/apm-server/configure.md) under "APM Server binary" when running APM in standalone mode (legacy). For versions before 9, refer to [older documentation](https://www.elastic.co/guide/en/observability/8.18/apm-configuring-howto-apm-server.html).
 
 ::::{note}
-Some settings are intentionally restricted to maintain system stability.
-::::
-
-::::{note}
-To change logging settings you must first [enable deployment logging](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
+* Some settings are intentionally restricted to maintain system stability.
+* To change logging settings, you must first [enable deployment logging](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
 ::::
