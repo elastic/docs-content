@@ -47,7 +47,7 @@ On each cycle, the dispatcher works through the following steps:
 |------|--------|
 | 1 | Collect the alert episodes that pass the eligibility check, and the action policies that are enabled and not snoozed. |
 | 2 | Run each action policy through the remaining [gates](#action-policy-gates), stopping that policy at the first gate the alert episode fails. A failure in one action policy doesn't stop the others. |
-| 3 | Invoke the workflows for each notification group that clears every gate, on the next polling cycle. |
+| 3 | Invoke the workflows for each notification group that clears every gate. |
 
 :::{tip}
 If an action policy already applied to an alert episode, a severity change does not re-trigger it. A severity change can still bring the alert episode into a different action policy's scope for the first time and invoke a workflow. For details and examples, refer to [Manage severity escalation notifications](severity-escalation.md).
