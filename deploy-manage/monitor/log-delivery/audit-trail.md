@@ -113,7 +113,7 @@ FROM logs-*_audit.otel-*
 #### {{kib}} and saved-object changes
 
 ```esql
-FROM logs-*audit.otel-*
+FROM logs-*_audit.otel-*
 | WHERE event.action IN (
     "rule_create", "rule_delete", "rule_update",
     "saved_object_create", "saved_object_delete", "saved_object_update",
