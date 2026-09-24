@@ -70,6 +70,8 @@ The AI Agent has access to monitor configuration (name, type, schedule, location
 
 The **Overview** tab has information about the monitor availability, duration, and any errors that have occurred since the monitor was created. The *Duration trends* chart displays the timing for each check that was performed in the last 30 days. This visualization helps you to gain insights into how quickly requests resolve by the targeted endpoint and gives you a sense of how frequently a host or endpoint was down.
 
+{applies_to}`stack: ga 9.6+` For monitors that run on {{private-location}}s, the **Monitor details** panel also shows which {{agents}} run the monitor. If all the monitor's {{private-location}}s are [scalable](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable), the panel shows the **Assigned agent** that runs the monitor, or **Not yet assigned** if Synthetics hasn't assigned an agent yet. Otherwise, it shows the **Location agents**, which are all the agents enrolled on the location's agent policy.
+
 :::{image} /solutions/images/observability-synthetics-analyze-individual-monitor-details.png
 :alt: Details in the Overview tab on the individual monitor page for all monitor types in the {{synthetics-app}}
 :screenshot:
