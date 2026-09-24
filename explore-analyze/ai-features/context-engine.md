@@ -17,9 +17,7 @@ products:
 :::{include} context-engine/_snippets/hidden-docs-notice.md
 :::
 
-Context Engine helps you turn enterprise data into reusable context for agents and applications. By investing in useful context up front, you reduce the time and tokens agents spend repeatedly finding and interpreting the same information and help them answer recurring questions more consistently. Because that context is stored as Knowledge Indicators (KIs), you can review and improve it over time.
-
-You organize context around a specific subject or set of questions, generate KIs from relevant data, and make that knowledge available to an agent.
+Context Engine enables you to distill raw source data into context optimized for retrieval by agents and applications. This upfront investment reduces repeated source data scanning and interpretation, helping agents respond faster and use fewer model tokens.
 
 ## Context Engine use cases
 
