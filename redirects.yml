@@ -884,6 +884,12 @@ redirects:
     anchors:
       'alert-data-model':
 
+# Related to the tags and runbooks page adding dashboards
+  'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-tags.md':
+    to: 'explore-analyze/alerting/v2/rules/configure-rule-artifacts.md'
+    anchors:
+      'tags-investigation':
+
 # Related to moving the experimental alerting system docs to explore-analyze/alerting/v2
   'explore-analyze/alerting/system-overview.md': 'explore-analyze/alerting/v2/system-overview.md'
   'explore-analyze/alerting/experimental-alerting-system/action-policies/about-action-policies.md': 'explore-analyze/alerting/v2/action-policies/about-action-policies.md'
@@ -916,13 +922,13 @@ redirects:
   'explore-analyze/alerting/experimental-alerting-system/rules/configure-a-rule.md': 'explore-analyze/alerting/v2/rules/configure-a-rule.md'
   'explore-analyze/alerting/experimental-alerting-system/rules/configure-no-data-handling.md': 'explore-analyze/alerting/v2/rules/configure-no-data-handling.md'
   'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-alert-delay.md': 'explore-analyze/alerting/v2/rules/configure-rule-alert-delay.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-artifacts.md': 'explore-analyze/alerting/v2/rules/configure-rule-artifacts.md'
   'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-grouping.md': 'explore-analyze/alerting/v2/rules/configure-rule-grouping.md'
   'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-mode.md': 'explore-analyze/alerting/v2/rules/configure-rule-mode.md'
   'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-query.md': 'explore-analyze/alerting/v2/rules/configure-rule-query.md'
   'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-recovery.md': 'explore-analyze/alerting/v2/rules/configure-rule-recovery.md'
   'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-schedule.md': 'explore-analyze/alerting/v2/rules/configure-rule-schedule.md'
   'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-severity.md': 'explore-analyze/alerting/v2/rules/configure-rule-severity.md'
-  'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-tags.md': 'explore-analyze/alerting/v2/rules/configure-rule-tags.md'
   'explore-analyze/alerting/experimental-alerting-system/rules/create-a-rule.md': 'explore-analyze/alerting/v2/rules/create-a-rule.md'
   'explore-analyze/alerting/experimental-alerting-system/rules/create-esql-rule.md': 'explore-analyze/alerting/v2/rules/create-esql-rule.md'
   'explore-analyze/alerting/experimental-alerting-system/rules/create-rule-from-discover.md': 'explore-analyze/alerting/v2/rules/create-rule-from-discover.md'
