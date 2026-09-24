@@ -47,4 +47,4 @@ For the full field list, including field types and which fields apply to each `t
 
 - [Rule events](../rules/rule-event-field-reference.md): What a rule event is and how `type` relates to rule `kind`.
 - [Query rule events](query-signals.md): Query examples for events with `type: signal`.
-- [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Alert episode lifecycle and triage queries.
+- [Query alert history in Discover](query-alerts-and-signals-in-discover.md): Alert episode lifecycle and triage queries.

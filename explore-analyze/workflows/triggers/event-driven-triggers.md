@@ -20,8 +20,8 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - **`workflows.failed`** — Fires when another workflow's execution fails. {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga`
 - **Cases triggers** — Fire when cases change (created, updated, status changed, attachments added, comments added). {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
 - **Entity store triggers** — Fire when an entity's asset criticality or risk score changes in the entity store. {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
-- **Alert episode lifecycle triggers** — Fire on specific alert episode events in the {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
-- **{{alerting-v2-system-cap}} rule lifecycle triggers** — Fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
+- **Alert episode lifecycle triggers** — Fire on specific alert episode events in {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
+- **{{alerting-v2-system-cap}} rule lifecycle triggers** — Fire when rules are created, updated, deleted, enabled, or disabled in {{alerting-v2-system}}. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
 
 
 :::{include} ../_snippets/schema-location-legend.md
@@ -450,7 +450,7 @@ triggers:
       condition: 'event.score >= 70'
 ```
 
-## {{alerting-v2-system-cap}} alert episode lifecycle triggers [alert-episode-lifecycle-triggers-event-driven]
+## Alert episode lifecycle triggers in {{alerting-v2-system}} [alert-episode-lifecycle-triggers-event-driven]
 
 ```{applies_to}
 stack: experimental 9.5+
@@ -458,10 +458,10 @@ serverless: ga
 ```
 
 :::{note}
-These triggers are available only when the {{alerting-v2-system}} is enabled. If it isn't enabled, they don't appear in the trigger picker.
+These triggers are available only when {{alerting-v2-system}} is enabled. If it isn't enabled, they don't appear in the trigger picker.
 :::
 
-Alert episode lifecycle triggers fire on specific alert episode events in the {{alerting-v2-system}}. Unlike `workflows.failed` and cases triggers, they are not configured through a `triggers` block in your workflow YAML. They are emitted by the alerting system and automatically invoke any workflow attached to the matching trigger type. Each trigger fires exactly once per event. There is no polling interval or frequency gate.
+Alert episode lifecycle triggers fire on specific alert episode events in {{alerting-v2-system}}. Unlike `workflows.failed` and cases triggers, they are not configured through a `triggers` block in your workflow YAML. They are emitted by the alerting system and automatically invoke any workflow attached to the matching trigger type. Each trigger fires exactly once per event. There is no polling interval or frequency gate.
 
 ### Available triggers [alert-episode-lifecycle-triggers-available]
 
@@ -507,12 +507,12 @@ serverless: ga
 ```
 
 :::{note}
-These triggers are available only when the {{alerting-v2-system}} is enabled. If it isn't enabled, they don't appear in the trigger picker.
+These triggers are available only when {{alerting-v2-system}} is enabled. If it isn't enabled, they don't appear in the trigger picker.
 :::
 
-{{alerting-v2-system-cap}} rule lifecycle triggers fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. Use them to automate responses to rule management actions, for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
+{{alerting-v2-system-cap}} rule lifecycle triggers fire when rules are created, updated, deleted, enabled, or disabled in {{alerting-v2-system}}. Use them to automate responses to rule management actions, for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
 
-Rule lifecycle triggers are part of the {{alerting-v2-system}} and fire independently of alert episodes.
+Rule lifecycle triggers are part of {{alerting-v2-system}} and fire independently of alert episodes.
 
 ### Available triggers [alerting-rule-lifecycle-triggers-available]
 
@@ -656,4 +656,4 @@ To reuse the data from an earlier run instead of a fresh event, select **Histori
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Per-step `on-failure` strategies complement event-driven handlers.
 - [Monitor workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md): See what triggered each run and inspect the event payload.
 - [Cases steps](/explore-analyze/workflows/steps/cases.md): Open cases from your handler.
-- [Connect workflows to the {{alerting-v2-system}}](../../alerting/esql/workflows-alerting.md): Full reference for alert episode lifecycle triggers, including available trigger IDs, event payload fields, and when to use lifecycle triggers versus action policies.
+- [Connect workflows to {{alerting-v2-system}}](../../alerting/esql/workflows-alerting.md): Full reference for alert episode lifecycle triggers, including available trigger IDs, event payload fields, and when to use lifecycle triggers versus action policies.

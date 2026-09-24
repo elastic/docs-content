@@ -98,4 +98,4 @@ Because `.rule-events` is append-only, dashboards show the full history retained
 ## Related pages
 
 - [Rule mode](../rules/configure-rule-mode.md): How configuration determines whether {{kib}} opens an alert episode or keeps matches available for later analysis.
-- [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Alert episode lifecycle, triage history, and incident-tracing queries.
+- [Query alert history in Discover](query-alerts-and-signals-in-discover.md): Alert episode lifecycle, triage history, and incident-tracing queries.
