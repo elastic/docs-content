@@ -128,7 +128,7 @@ FROM logs-*_audit.otel-*
 #### Access denied on indices
 
 ```esql
-FROM logs-*audit.otel-*
+FROM logs-*_audit.otel-*
 | WHERE event.action == "access_denied"
 | KEEP @timestamp, user.name, elasticsearch.audit.action, elasticsearch.audit.indices, source.ip, service.name
 | SORT @timestamp DESC
