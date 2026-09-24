@@ -14,6 +14,9 @@ There are several situations where the [Health API]({{es-apis}}operation/operati
 * [](diagnosing-unknown-repositories.md)
 * [](diagnosing-invalid-repositories.md)
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 
 
 

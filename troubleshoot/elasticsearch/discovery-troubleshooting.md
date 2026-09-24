@@ -18,6 +18,9 @@ If your cluster has a stable master but some nodes can't discover or join it, th
 
 If the cluster has no elected master node for more than a few seconds, the master is unstable, or some nodes are unable to discover or join a stable master, then {{es}} records information in its logs explaining why. If the problems persist for more than a few minutes, {{es}} records additional information in its logs. To properly troubleshoot discovery and election problems, collect and analyze logs covering at least five minutes from all nodes.
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 The following sections describe some common discovery and election problems.
 
 :::{tip}
