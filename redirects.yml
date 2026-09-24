@@ -904,13 +904,13 @@ redirects:
   'explore-analyze/alerting/experimental-alerting-system/alerts/rule-event-data-model.md': 'explore-analyze/alerting/v2/alerts/rule-event-data-model.md'
   'explore-analyze/alerting/experimental-alerting-system/alerts/triage-alert-episodes.md': 'explore-analyze/alerting/v2/alerts/triage-alert-episodes.md'
   'explore-analyze/alerting/experimental-alerting-system/alerts/view-and-manage-alerts.md': 'explore-analyze/alerting/v2/alerts/view-and-manage-alerts.md'
-  'explore-analyze/alerting/experimental-alerting-system/authorization.md': 'explore-analyze/alerting/v2/authorization.md'
+  'explore-analyze/alerting/experimental-alerting-system/authorization.md': 'explore-analyze/alerting/v2/manage/authorization.md'
   'explore-analyze/alerting/experimental-alerting-system/get-started.md': 'explore-analyze/alerting/v2/get-started.md'
-  'explore-analyze/alerting/experimental-alerting-system/get-started/configure-access.md': 'explore-analyze/alerting/v2/get-started/configure-access.md'
+  'explore-analyze/alerting/experimental-alerting-system/get-started/configure-access.md': 'explore-analyze/alerting/v2/manage/configure-access.md'
   'explore-analyze/alerting/experimental-alerting-system/get-started/create-your-first-rule.md': 'explore-analyze/alerting/v2/get-started/create-your-first-rule.md'
-  'explore-analyze/alerting/experimental-alerting-system/get-started/setup.md': 'explore-analyze/alerting/v2/get-started/setup.md'
-  'explore-analyze/alerting/experimental-alerting-system/glossary.md': 'explore-analyze/alerting/v2/glossary.md'
-  'explore-analyze/alerting/experimental-alerting-system/how-it-works.md': 'explore-analyze/alerting/v2/how-it-works.md'
+  'explore-analyze/alerting/experimental-alerting-system/get-started/setup.md': 'explore-analyze/alerting/v2/setup.md'
+  'explore-analyze/alerting/experimental-alerting-system/glossary.md': 'explore-analyze/alerting/v2/get-started/glossary.md'
+  'explore-analyze/alerting/experimental-alerting-system/how-it-works.md': 'explore-analyze/alerting/v2/get-started/how-it-works.md'
   'explore-analyze/alerting/experimental-alerting-system/notifications-actions.md': 'explore-analyze/alerting/v2/notifications-actions.md'
   'explore-analyze/alerting/experimental-alerting-system/rules.md': 'explore-analyze/alerting/v2/rules.md'
   'explore-analyze/alerting/experimental-alerting-system/rules/configure-a-rule.md': 'explore-analyze/alerting/v2/rules/configure-a-rule.md'
@@ -939,6 +939,13 @@ redirects:
   'explore-analyze/alerting/experimental-alerting-system/rules/view-manage-rules.md': 'explore-analyze/alerting/v2/rules/view-manage-rules.md'
   'explore-analyze/alerting/experimental-alerting-system/rules/yaml-rule-schema-reference.md': 'explore-analyze/alerting/v2/rules/yaml-rule-schema-reference.md'
   'explore-analyze/alerting/experimental-alerting-system/workflows-alerting.md': 'explore-analyze/alerting/v2/workflows-alerting.md'
+
+# Related to reorganizing the experimental alerting system pages into Get started, Set up, and Manage
+  'explore-analyze/alerting/v2/authorization.md': 'explore-analyze/alerting/v2/manage/authorization.md'
+  'explore-analyze/alerting/v2/get-started/configure-access.md': 'explore-analyze/alerting/v2/manage/configure-access.md'
+  'explore-analyze/alerting/v2/get-started/setup.md': 'explore-analyze/alerting/v2/setup.md'
+  'explore-analyze/alerting/v2/glossary.md': 'explore-analyze/alerting/v2/get-started/glossary.md'
+  'explore-analyze/alerting/v2/how-it-works.md': 'explore-analyze/alerting/v2/get-started/how-it-works.md'
 
 # Related to cases and alerting documentation restructuring
   # Main pages

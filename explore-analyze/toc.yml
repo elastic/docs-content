@@ -422,14 +422,16 @@ toc:
       - file: alerting/compare-alerting-systems.md
       - file: alerting/v2/system-overview.md
         children:
-          - file: alerting/v2/how-it-works.md
-          - file: alerting/v2/glossary.md
           - file: alerting/v2/get-started.md
             children:
-              - file: alerting/v2/get-started/setup.md
-              - file: alerting/v2/get-started/configure-access.md
+              - file: alerting/v2/get-started/how-it-works.md
+              - file: alerting/v2/get-started/glossary.md
               - file: alerting/v2/get-started/create-your-first-rule.md
-          - file: alerting/v2/authorization.md
+          - file: alerting/v2/setup.md
+          - file: alerting/v2/manage.md
+            children:
+              - file: alerting/v2/manage/configure-access.md
+              - file: alerting/v2/manage/authorization.md
           - file: alerting/v2/rules.md
             children:
               - file: alerting/v2/rules/create-a-rule.md
