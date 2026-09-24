@@ -103,7 +103,7 @@ Explore the following examples of what you can investigate with your delivered a
 #### Failed or denied activity
 
 ```esql
-FROM logs-*audit.otel-*
+FROM logs-*_audit.otel-*
 | WHERE event.outcome == "failure" OR event.action IN ("access_denied", "authentication_failed")
 | KEEP @timestamp, user.name, user.id, event.action, event.outcome, source.ip, project.id, service.name
 | SORT @timestamp DESC
