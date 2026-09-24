@@ -27,7 +27,7 @@ Deleting a rule doesn't delete the action policies that applied to its alert epi
 You can disable an action policy so the dispatcher doesn't evaluate it for new alert episodes. You can snooze an action policy for a defined window so it doesn't invoke workflows during that period. The dispatcher skips action policies that aren't enabled or are snoozed.
 
 :::{note}
-Snoozing an action policy differs from [snoozing an alert episode](reduce-notification-noise.md#snooze-scope). When you snooze an action policy, the dispatcher pauses and silences every alert series the action policy processes. When you snooze an alert episode, you target one specific series before action policy evaluation runs, silencing it regardless of which action policy handles it. Use alert snooze when you want to quiet a specific recurring alert without affecting other series handled by the same action policy.
+Snoozing an action policy differs from [snoozing an alert episode](reduce-notification-noise.md#snooze-scope). When you snooze an action policy, the dispatcher pauses and silences every alert series the action policy applies to. When you snooze an alert episode, you target one specific series before action policy evaluation runs, silencing it regardless of which action policy applies to it. Use alert snooze when you want to quiet a specific recurring alert without affecting other series the same action policy applies to.
 :::
 
 ### Pause dispatch during a maintenance window [maintenance-windows]

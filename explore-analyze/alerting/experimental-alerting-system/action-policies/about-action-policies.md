@@ -18,13 +18,13 @@ This page explains how rules and action policies work together, the gates an ale
 
 A rule detects a condition and opens alert episodes. The rule doesn't automatically reference an action policy, and an action policy doesn't instantly link to a rule. Instead, {{kib}} evaluates each action policy in the space against every [eligible](#action-policy-gates) alert episode, and invokes a workflow for the ones that pass every gate.
 
-Because of that separation, a single action policy can apply to alert episodes from many rules. An action policy scoped to `severity: "critical"` runs regardless of which rule produced the alert episode. The separation also means you change notification routing by editing the action policy, without touching the rule.
+Because of that separation, a single action policy can apply to alert episodes from many rules. An action policy scoped to `severity: "critical"` applies to every critical alert episode, regardless of which rule produced it. The separation also means you change notification routing by editing the action policy, without touching the rule.
 
 To control which of those alert episodes an action policy applies to, set its [scope](create-configure-action-policy.md#matcher). An action policy with an empty scope applies to all of them.
 
 ## How action policies gate alert episodes [action-policy-gates]
 
-A workflow runs only when the alert episode passes every gate. The action policy checks the gates in this order:
+A workflow runs only when the alert episode passes every gate. {{kib}} checks the gates in this order:
 
 | Gate | What it checks |
 |------|----------------|
@@ -33,7 +33,7 @@ A workflow runs only when the alert episode passes every gate. The action policy
 | Match conditions {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` | Whether the alert episode matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. An empty expression passes every eligible alert episode in the space. |
 | Frequency | Whether a workflow already ran for the alert episode's notification group within the policy's frequency interval. If it did, the alert episode waits. |
 
-If any gate stops the alert episode, the workflow is not invoked for that action policy. Multiple action policies can apply to the same alert episode, and each one checks the gates independently, with no precedence or merging between them.
+If any gate stops the alert episode, {{kib}} doesn't invoke a workflow for that action policy. Multiple action policies can apply to the same alert episode, and {{kib}} checks the gates separately for each one, with no precedence or merging between them.
 
 An alert episode blocked by one action policy can still invoke a workflow through a second action policy with different conditions. If no action policy applies to an alert episode, no workflow is invoked and no notification is sent.
 
@@ -46,7 +46,7 @@ On each cycle, the dispatcher works through the following steps:
 | Step | Action |
 |------|--------|
 | 1 | Collect the alert episodes that pass the eligibility check, and the action policies that are enabled and not snoozed. |
-| 2 | Run each action policy through the remaining [gates](#action-policy-gates), stopping that policy at the first gate the alert episode fails. The other action policies still evaluate the alert episode. |
+| 2 | Run each action policy through the remaining [gates](#action-policy-gates), stopping that policy at the first gate the alert episode fails. A failure in one action policy doesn't stop the others. |
 | 3 | Invoke the workflows for each notification group that clears every gate, on the next polling cycle. |
 
 :::{tip}

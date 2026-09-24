@@ -22,11 +22,11 @@ When {{kib}} tracks matches as an [alert episode](alerts.md), it writes each mat
 | 1 | Rule | Runs on schedule and evaluates {{esql}} against your data |
 | 2 | {{kib}} | Query returns results → Writes one rule event per matching row to `.rule-events` (`type: alert`) |
 | 3 | {{kib}} | Opens an alert episode in `pending` and advances it to `active` once the activation threshold is met |
-| 4 | Action policy | Evaluates the alert episode against its conditions (eligibility, scope, and frequency) |
-| 5 | Action policy | If conditions are met, invokes a workflow |
+| 4 | Dispatcher | Evaluates the alert episode against each action policy's conditions (eligibility, scope, and frequency) |
+| 5 | Dispatcher | If conditions are met, invokes a workflow |
 | 6 | Workflow | Sends notification or runs automation |
 | 7 | {{kib}} | Condition clears → Writes a new rule event → The alert episode moves to `recovering` → `inactive` |
-| 8 | Action policy | Evaluates the recovery event and invokes a workflow if conditions are met |
+| 8 | Dispatcher | Evaluates the recovery event and invokes a workflow if conditions are met |
 | 9 | Workflow | Sends the recovery notification |
 
 :::{note}
