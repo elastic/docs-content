@@ -1,0 +1,13 @@
+name: Release notes comments
+on:
+  workflow_run:
+    workflows: [Release notes]
+    types: [completed]
+permissions: {}
+jobs:
+  comment:
+    if: github.event.workflow_run.event == 'pull_request'
+    permissions:
+      pull-requests: write
+      actions: read
+    uses: elastic/docs-actions/.github/workflows/release-notes-comments.yml@v1
