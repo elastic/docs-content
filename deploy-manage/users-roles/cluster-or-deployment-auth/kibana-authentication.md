@@ -2,7 +2,6 @@
 navigation_title: "{{kib}} authentication"
 applies_to:
   stack: all
-  serverless: all
 products:
   - id: elasticsearch
   - id: kibana
@@ -10,7 +9,6 @@ products:
   - id: cloud-hosted
   - id: cloud-enterprise
   - id: cloud-kubernetes
-  - id: cloud-serverless
 ---
 
 # Authentication in {{kib}} [kibana-authentication]
