@@ -138,7 +138,7 @@ FROM logs-*_audit.otel-*
 #### Who is changing configuration and objects
 
 ```esql
-FROM logs-*audit.otel-*
+FROM logs-*_audit.otel-*
 | WHERE event.type IN ("creation", "change", "deletion")
 | STATS events = COUNT(*) BY user.name, event.action, service.name
 | SORT events DESC
