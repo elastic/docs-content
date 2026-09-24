@@ -130,7 +130,7 @@ FROM logs-*_audit.otel-*
 ```esql
 FROM logs-*_audit.otel-*
 | WHERE event.action == "access_denied"
-| KEEP @timestamp, user.name, elasticsearch.audit.action, elasticsearch.audit.indices, source.ip, service.name
+| KEEP @timestamp, user.name, elastic_cloud.serverless_audit.action, elastic_cloud.serverless_audit.indices, source.ip, service.name
 | SORT @timestamp DESC
 | LIMIT 100
 ```
