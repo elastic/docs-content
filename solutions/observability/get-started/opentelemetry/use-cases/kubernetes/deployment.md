@@ -9,17 +9,20 @@ applies_to:
     edot_collector: ga
 products:
   - id: cloud-serverless
+  - id: cloud-hosted
   - id: observability
   - id: edot-collector
 ---
 
 # Deploy {{edot}} for Kubernetes observability [k8s-edot-deployment]
 
-You can use the [guided onboarding](#deploy-using-the-guided-onboarding) or [deploy all components manually](#manual-deployment)
+You can use the [guided onboarding](#deploy-using-the-guided-onboarding) or [deploy all components manually](#manual-deployment).
+
+The deployment uses different Helm values files depending on where {{es}} is hosted. For {{serverless-full}} and {{ech}}, the recommended path uses the [Managed OTLP endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md), which handles data enrichment server-side. For self-managed {{stack}}, {{ece}} (ECE), and {{eck}} (ECK), data is sent directly to {{es}} using the `elasticsearch` exporter.
 
 ## Deploy using the guided onboarding
 
-The guided onboarding simplifies deploying your Kubernetes components by setting up an [API Key](/deploy-manage/api-keys/elasticsearch-api-keys.md) and the needed [Integrations](integration-docs://reference/index.md) in the background.
+The guided onboarding simplifies deploying your Kubernetes components by setting up an API key and the needed integrations in the background.
 
 Follow these steps to use the guided onboarding:
 
@@ -29,8 +32,24 @@ Follow these steps to use the guided onboarding:
 
 When installing the OpenTelemetry Operator:
 
+:::::{applies-switch}
+
+::::{applies-item} serverless:
+- Make sure the `elastic_otlp_endpoint` shown in the installation command is valid for your {{serverless-full}} project. This is a Managed OTLP endpoint URL, not an {{es}} URL.
+- The `elastic_api_key` shown in the installation command corresponds to an API key created by {{kib}} when the onboarding process is initiated.
+::::
+
+::::{applies-item} ech:
+- Make sure the `elastic_otlp_endpoint` shown in the installation command is valid for your {{ech}} deployment. This is a Managed OTLP endpoint URL, not an {{es}} URL.
+- The `elastic_api_key` shown in the installation command corresponds to an API key created by {{kib}} when the onboarding process is initiated.
+::::
+
+::::{applies-item} { self:, ece:, eck: }
 - Make sure the `elastic_endpoint` shown in the installation command is valid for your environment. If not, replace it with the correct {{es}} endpoint.
 - The `elastic_api_key` shown in the installation command corresponds to an API key created by {{kib}} when the onboarding process is initiated.
+::::
+
+:::::
 
 :::{note}
 The default installation deploys an OpenTelemetry Operator with a self-signed TLS certificate.
@@ -43,14 +62,27 @@ Follow these steps for a manual deployment of all components.
 
 ### Elastic Stack preparations
 
-Before installing the operator do the following:
+Before installing the operator, retrieve your credentials and install the required integrations.
 
-1. Create an [API Key](/deploy-manage/api-keys/elasticsearch-api-keys.md).
+:::::{applies-switch}
 
-2. Install the following integrations in {{kib}}:
-    - `System`
-    - `Kubernetes`
-    - `Kubernetes OpenTelemetry Assets`
+::::{applies-item} serverless:
+:::{include} ../../_snippets/serverless-endpoint-api.md
+:::
+::::
+
+::::{applies-item} ech:
+:::{include} ../../_snippets/retrieve-credentials-ech-motlp.md
+:::
+::::
+
+::::{applies-item} { self:, ece:, eck: }
+Create an [API Key](/deploy-manage/api-keys/elasticsearch-api-keys.md).
+::::
+
+:::::
+
+Install the **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)** and **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integrations in {{kib}}.
 
 When using the [{{kib}} onboarding UX](#deploy-using-the-guided-onboarding), the previous actions are automatically handled by {{kib}}.
 
@@ -61,33 +93,93 @@ Follow these steps to install the operator:
 1. Create the `opentelemetry-operator-system` Kubernetes namespace:
 
     ```bash
-    $ kubectl create namespace opentelemetry-operator-system
+    kubectl create namespace opentelemetry-operator-system
     ```
 
-2. Create a secret in the new namespace with the following command:
+Create a secret with your credentials and install the Helm chart for your deployment type:
 
-   ```bash
-   kubectl create -n opentelemetry-operator-system secret generic elastic-secret-otel \
-     --from-literal=elastic_endpoint='YOUR_ELASTICSEARCH_ENDPOINT' \
-     --from-literal=elastic_api_key='YOUR_ELASTICSEARCH_API_KEY'
-   ```
+:::::{applies-switch}
 
-   Don't forget to replace:
+::::{applies-item} serverless:
+Replace `<ELASTIC_OTLP_ENDPOINT>` and `<ELASTIC_API_KEY>` in the following command to create a secret with your credentials.
 
-   - `YOUR_ELASTICSEARCH_ENDPOINT`: {{es}} endpoint (**with `https://` prefix**). For example: `https://1234567.us-west2.gcp.elastic-cloud.com:443`.
-   - `YOUR_ELASTICSEARCH_API_KEY`: {{es}} API Key created in the previous step.
+```bash
+kubectl create secret generic elastic-secret-otel \
+--namespace opentelemetry-operator-system \
+--from-literal=elastic_otlp_endpoint='<ELASTIC_OTLP_ENDPOINT>' \
+--from-literal=elastic_api_key='<ELASTIC_API_KEY>'
+```
 
-3. If you need to [customize the configuration](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md), copy the `values.yaml` file and adapt it to your needs. Refer to the [compatibility matrix](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/prerequisites-compatibility.md#compatibility-matrix) for a complete list of available manifests in the `release branches`. 
+Install the OpenTelemetry Operator using the `kube-stack` Helm chart with the `managed_otlp` values file:
 
-4. Run the following commands to deploy the `opentelemetry-kube-stack` Helm chart, using the appropriate values file:
+```bash subs=true
+helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+helm repo update
+helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
+--values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml' \
+--version '{{kube-stack-version}}'
+```
 
-    ```bash subs=true
-    helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
-    helm repo update
-    helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
-          --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/values.yaml' \
-          --version {{kube-stack-version}}
-    ```
+For details about the pipelines, refer to [Managed OTLP Endpoint](elastic-agent://reference/edot-collector/config/default-config-k8s.md#managed-otlp-endpoint).
+::::
+
+::::{applies-item} ech:
+Replace `<ELASTIC_OTLP_ENDPOINT>` and `<ELASTIC_API_KEY>` in the following command to create a secret with your credentials.
+
+```bash
+kubectl create secret generic elastic-secret-otel \
+--namespace opentelemetry-operator-system \
+--from-literal=elastic_otlp_endpoint='<ELASTIC_OTLP_ENDPOINT>' \
+--from-literal=elastic_api_key='<ELASTIC_API_KEY>'
+```
+
+:::{note}
+On Windows PowerShell, replace backslashes (`\`) with backticks (`` ` ``) for line continuation and single quotes (`'`) with double quotes (`"`).
+:::
+
+Install the OpenTelemetry Operator using the `kube-stack` Helm chart with the `managed_otlp` values file:
+
+```bash subs=true
+helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+helm repo update
+helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
+--values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml' \
+--version '{{kube-stack-version}}'
+```
+
+For details about the pipelines, refer to [Managed OTLP Endpoint](elastic-agent://reference/edot-collector/config/default-config-k8s.md#managed-otlp-endpoint).
+::::
+
+::::{applies-item} { self:, ece:, eck: }
+Create a secret in the new namespace with the following command:
+
+```bash
+kubectl create -n opentelemetry-operator-system secret generic elastic-secret-otel \
+  --from-literal=elastic_endpoint='YOUR_ELASTICSEARCH_ENDPOINT' \
+  --from-literal=elastic_api_key='YOUR_ELASTICSEARCH_API_KEY'
+```
+
+Replace:
+
+- `YOUR_ELASTICSEARCH_ENDPOINT`: {{es}} endpoint (**with `https://` prefix**). For example: `https://1234567.us-west2.gcp.elastic-cloud.com:443`.
+- `YOUR_ELASTICSEARCH_API_KEY`: {{es}} API Key created in the previous step.
+
+Run the following commands to deploy the `opentelemetry-kube-stack` Helm chart:
+
+```bash subs=true
+helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+helm repo update
+helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
+      --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/values.yaml' \
+      --version {{kube-stack-version}}
+```
+
+This configuration includes the `elasticapm` connector and processor, which handle {{product.apm}} trace aggregations locally. When using the Managed OTLP endpoint, this processing happens server-side instead. For details about the pipelines, refer to [Direct ingestion into {{es}}](elastic-agent://reference/edot-collector/config/default-config-k8s.md#direct-ingestion-into-elasticsearch).
+::::
+
+:::::
+
+If you need to [customize the configuration](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md), copy the values file you used and adapt it to your needs. Refer to the [compatibility matrix](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/prerequisites-compatibility.md#compatibility-matrix) for a complete list of available manifests in the `release branches`.
 
 ## Verify the installation
 
