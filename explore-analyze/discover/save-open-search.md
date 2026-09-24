@@ -58,9 +58,9 @@ serverless: preview
 stack: preview 9.6+
 ```
 
-Export the Discover session you have open as JSON so you can review the configuration or keep a copy.
+Export the session configuration as JSON to inspect what **Discover** stores for the session, or to use that JSON as the starting point for managing the session as code.
 
-1. In **Discover**, select {icon}`download` **Export** → **Export JSON** in the application menu.
+1. In **Discover**, in the application menu, select {icon}`ellipsis` **More** → {icon}`download` **Export** → **Export JSON**.
 2. Set what the JSON includes:
 
    - To include every open tab, leave **Export only the current tab** off. Turn it on to include only the tab you are viewing.
