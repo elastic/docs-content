@@ -32,8 +32,14 @@ Building dashboards manually requires knowing which indices to query, how to wri
 - **Prototype and iterate**: Describe the dashboard you want in plain language, refine it through conversation, and save it only when you are satisfied with the result.
 
 :::{tip}
-Find **Agents** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to open the [full-screen chat](standalone-and-flyout-modes.md#standalone-mode). Select **AI Agent** in the header to open the [chat beside the page you are on](standalone-and-flyout-modes.md#sidebar-mode). The full-screen chat gives you more room to preview dashboards and read the agent's replies.
+The full-screen [standalone chat mode](standalone-and-flyout-modes.md#standalone-mode) provides the best experience for working with dashboards. Dashboards also work in [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode), but the larger canvas area in standalone mode makes it easier to preview and interact with dashboard content.
 :::
+
+## Where to start [where-to-start]
+
+- Find **Agents** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to open the [full-screen chat](standalone-and-flyout-modes.md#standalone-mode). You have more room to preview dashboards and read the agent's replies.
+- Select **AI Agent** in the header to keep the page you are on open, with the [chat beside it](standalone-and-flyout-modes.md#sidebar-mode).
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` While you edit a dashboard, select **Create with chat** to open a new conversation with that dashboard attached. On an empty dashboard, the card includes pre-populated examples, and a blank **Open chat** option. When the dashboard already has panels, select **Add** → **Create with chat**.
 
 ## How dashboards appear in chat
 
