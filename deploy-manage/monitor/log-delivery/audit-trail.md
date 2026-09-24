@@ -152,7 +152,7 @@ Do not select the **Ignore data searches and reads** filter for this query. Repl
 ```esql
 FROM logs-*_audit.otel-*
 | WHERE event.action == "access_granted"
-  AND elasticsearch.audit.indices LIKE "<INDEX_PATTERN>"
+  AND elastic_cloud.serverless_audit.indices LIKE "<INDEX_PATTERN>"
 | KEEP @timestamp, user.name, user.id, elasticsearch.audit.action, elasticsearch.audit.indices, source.ip, service.name
 | SORT @timestamp DESC
 | LIMIT 100
