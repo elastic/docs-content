@@ -8,9 +8,12 @@ products:
 description: "How rule mode determines whether Kibana opens an alert episode or keeps matching rows available for later analysis, and when to use each."
 ---
 
-# Rule mode in the {{alerting-v2-system}} [rule-mode]
+# Rule mode [rule-mode]
 
-Rule mode is a required setting for rules in the {{alerting-v2-system}}. It determines whether each [rule event](rule-event-field-reference.md) belongs to an [alert episode](../alerts.md) or stays available for later analysis. It's set by the rule creation method. Some [creation paths](create-a-rule.md) only support one mode.
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
+
+Rule mode is a required setting for every rule. It determines whether each [rule event](rule-event-field-reference.md) belongs to an [alert episode](../alerts.md) or stays available for later analysis. It's set by the rule creation method. Some [creation paths](create-a-rule.md) only support one mode.
 
 Use this page to choose a mode when you create a rule, and to understand what each mode writes to `.rule-events`.
 

@@ -5,12 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Alert episodes in the experimental alerting system track a problem from first detection through recovery. Alert episodes belong to a series that groups recurrences of the same condition."
+description: "Alert episodes track a problem from first detection through recovery. Alert episodes belong to a series that groups recurrences of the same condition."
 ---
 
-# Alerts in the {{alerting-v2-system-cap}} [alerts]
+# Alerts [alerts]
 
-In the {{alerting-v2-system}}, {{kib}} tracks each problem as an **alert episode**: the grouping of [rule events](rules/rule-event-field-reference.md) that share `episode.id`, from first detection through recovery.
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
+
+{{kib}} tracks each problem as an **alert episode**: the grouping of [rule events](rules/rule-event-field-reference.md) that share `episode.id`, from first detection through recovery.
 
 This page explains the core concepts you need to work with the {{alerting-v2-system}}: how alert episodes move through lifecycle states, and how series group alert episodes over time for the same monitored subject.
 

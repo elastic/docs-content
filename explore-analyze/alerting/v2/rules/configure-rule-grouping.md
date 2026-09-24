@@ -5,12 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Configure rule grouping in the experimental alerting system to track multiple subjects as independent alert series."
+description: "Configure rule grouping to track multiple subjects as independent alert series."
 ---
 
-# Rule grouping in the {{alerting-v2-system}} [rule-grouping]
+# Rule grouping [rule-grouping]
 
-Rule grouping is an optional setting in the {{alerting-v2-system}} that lets a single rule track multiple things independently. For example, a rule monitoring CPU usage across hosts can produce a separate alert series for each host, rather than one alert for everything combined.
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
+
+Rule grouping is an optional setting that lets a single rule track multiple things independently. For example, a rule monitoring CPU usage across hosts can produce a separate alert series for each host, rather than one alert for everything combined.
 
 When matches are grouped into alert episodes, each group becomes its own alert episode with an independent lifecycle. One group can be active while another has recovered, and notifications apply per alert episode, not across all groups combined. Snooze state is also per series. Snoozing one group doesn't affect other groups tracked by the same rule.
 

@@ -5,12 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "ES|QL query patterns for rules in the experimental alerting system, from basic event filters to SLO burn rates, silent source detection, and persistent breach checks."
+description: "ES|QL query patterns for rules, from basic event filters to SLO burn rates, silent source detection, and persistent breach checks."
 ---
 
-# {{esql}} query patterns for rules in the {{alerting-v2-system}} [esql-query-patterns]
+# {{esql}} query patterns for rules [esql-query-patterns]
 
-The following pages cover {{esql}} query patterns for rules in the {{alerting-v2-system}}, ordered from the simplest starting point to advanced use cases. Start with [Your first rule query](esql-first-rule-query.md) if you're new, or jump to the pattern you need.
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
+
+The following pages cover {{esql}} query patterns for rules, ordered from the simplest starting point to advanced use cases. Start with [Your first rule query](esql-first-rule-query.md) if you're new, or jump to the pattern you need.
 
 | Pattern | What it solves | Complexity |
 | --- | --- | --- |

@@ -5,12 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How action policies gate alert episodes through eligibility checks, match conditions, and frequency before invoking workflows in the experimental alerting system."
+description: "How action policies gate alert episodes through eligibility checks, match conditions, and frequency before invoking workflows."
 ---
 
 # About action policies [about-action-policies]
 
-An action policy is the gating layer between an alert episode and a workflow in the {{alerting-v2-system}}. It decides whether and when to invoke a workflow by running the alert episode through a sequence of gates, and a workflow runs only once the alert episode clears every gate.
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
+
+An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by running the alert episode through a sequence of gates, and a workflow runs only once the alert episode clears every gate.
 
 This page explains why action policies are separate from rules, the gates an alert episode must pass, and how the dispatcher evaluates them.
 

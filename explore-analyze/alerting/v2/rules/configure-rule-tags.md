@@ -8,7 +8,10 @@ products:
 description: "Add tags and runbooks to rules that group matches into an alert episode, for filtering and investigation context."
 ---
 
-# Tags and runbooks in the {{alerting-v2-system}} [tags-investigation]
+# Tags and runbooks [tags-investigation]
+
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
 
 Tags and runbooks are optional artifacts for rules that group matches into an alert episode.
 

@@ -6,12 +6,15 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "Requirements for using the experimental alerting system in Kibana, including license, connectors, data, and space selection, plus how to turn the system on and off."
+description: "License, connector, data, and space requirements, plus how to turn the system on and off."
 ---
 
-# Set up the {{alerting-v2-system}} [setup]
+# Set up the system [setup]
 
-This page covers what you need before using the {{alerting-v2-system}}, and how to turn it on and off.
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
+
+This page lists the requirements and shows you how to turn the system on and off.
 
 ## Before you use the system [alerting-setup-requirements]
 

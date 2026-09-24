@@ -8,7 +8,10 @@ products:
 description: "Configure alert delay for rules that group matches into an alert episode, to reduce noise from brief spikes before the alert episode opens."
 ---
 
-# Alert delay in the {{alerting-v2-system}} [alert-delay]
+# Alert delay [alert-delay]
+
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
 
 Alert delay is an optional setting for rules that group matches into an alert episode. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change. In YAML, this corresponds to the `state_transition.pending_*` fields.
 

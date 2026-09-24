@@ -5,12 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How workflows connect to the experimental alerting system through action policies and alert episode lifecycle triggers, and when to use each."
+description: "How action policies and alert episode lifecycle triggers invoke workflows, and when to use each."
 ---
 
-# Connect workflows to the {{alerting-v2-system}} [connect-workflows]
+# Connect workflows [connect-workflows]
 
-[Workflows](../../workflows.md) are the delivery layer that defines what happens when the {{alerting-v2-system}} takes an action, such as sending a message, calling a webhook, or triggering an automation. Workflows connect the alerting system to your incident-response tools.
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
+
+[Workflows](../../workflows.md) are the delivery layer that defines what happens in response to an alert episode, such as sending a message, calling a webhook, or triggering an automation. Workflows connect the alerting system to your incident-response tools.
 
 This page covers how action policies drive workflow invocations at runtime, the available alert episode lifecycle triggers, and when to use each pathway.
 

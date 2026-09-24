@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How to configure the no-data strategy for rules in the experimental alerting system: hold the last known alert state, trigger recovery, or ignore an empty query result."
+description: "How to configure the no-data strategy for rules: hold the last known alert state, trigger recovery, or ignore an empty query result."
 ---
 
-# No-data handling in the {{alerting-v2-system}} [no-data-handling]
+# No-data handling [no-data-handling]
+
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
 
 No-data handling is an optional setting for rules that group matches into an alert episode. Use `no_data_strategy` to control what the rule does when it can't tell whether an alert episode has genuinely recovered or the data just stopped showing up. Setting this correctly prevents false recoveries and misleading `no_data` events when data sources stop reporting.
 

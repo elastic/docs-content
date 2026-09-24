@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How Agent Builder creates rules and action policies in the experimental alerting system using the rule management skill, what the agent produces, and the save-order dependency."
+description: "How Agent Builder creates rules and action policies using the rule management skill, what the agent produces, and the save-order dependency."
 ---
 
 # Create rules and action policies with {{agent-builder}} [create-rules-agent-builder]
+
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
 
 Use {{agent-builder}} to create and configure rules and action policies through natural language instead of the rule form. Describe what you want to monitor, and an agent equipped with the rule management skill resolves the data source and proposes a fully configured rule.
 

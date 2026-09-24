@@ -9,7 +9,10 @@ products:
 description: A detailed walkthrough of how a rule's configuration determines whether matches open an alert episode or remain available for later analysis, and how those paths drive action policies and workflows.
 ---
 
-# How the {{alerting-v2-system}} works [how-it-works]
+# How it works [how-it-works]
+
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
 
 This page walks through what happens at each step after a rule runs on its schedule. Both paths begin the same way: {{kib}} writes a [rule event](rules/rule-event-field-reference.md) for each matching row. The rule's configuration determines whether those events belong to an [alert episode](alerts.md). Use this page to understand how the different components of the {{alerting-v2-system}} interact.
 

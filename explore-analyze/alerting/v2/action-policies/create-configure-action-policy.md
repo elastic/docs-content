@@ -5,12 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Create action policies in the experimental alerting system, configure match conditions, Notify per, Frequency, and workflow destinations."
+description: "Create action policies, configure match conditions, Notify per, Frequency, and workflow destinations."
 ---
 
-# Create an action policy for the {{alerting-v2-system}} [create-action-policy]
+# Create an action policy [create-action-policy]
 
-In the {{alerting-v2-system}}, an action policy determines which alert episodes invoke a workflow, how they batch, and which workflow runs. To create an action policy, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**.
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
+
+An action policy determines which alert episodes invoke a workflow, how they batch, and which workflow runs. To create an action policy, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**.
 
 This page covers how to configure an action policy's match conditions, grouping, frequency, and workflow destinations. For a quicker setup, you can also create a basic action policy directly while creating a rule, as described in [Select workflows to invoke](#policy-destinations).
 

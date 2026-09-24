@@ -8,7 +8,10 @@ products:
 description: "Monitor action policy dispatch activity from the execution history. Understand dispatched, throttled, and unmatched outcomes, search and filter records, and query the event log in Discover."
 ---
 
-# Review action policy execution history in the {{alerting-v2-system}} [review-action-policy-execution-history]
+# Review action policy execution history [review-action-policy-execution-history]
+
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
 
 Action policy execution history shows dispatcher decisions from the last 24 hours across all action policies in the space, so you can confirm notifications are dispatching as expected or investigate unexpected notification behavior.
 

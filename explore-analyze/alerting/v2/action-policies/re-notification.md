@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How to configure action policies so a workflow re-notifies when an alert episode stays active without a status change in the experimental alerting system."
+description: "How to configure action policies so a workflow re-notifies when an alert episode stays active without a status change."
 ---
 
-# Re-notify for persistently active alert episodes in the {{alerting-v2-system}} [re-notification]
+# Re-notify for persistently active alert episodes [re-notification]
+
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
 
 Use this page to configure an action policy so a workflow keeps running while an alert episode stays active without a status change.
 

@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Rule events are the append-only documents Kibana writes to .rule-events for every matching row. Use them to replay alert episodes, investigate type signal events, and build dashboards in the experimental alerting system."
+description: "Rule events are the append-only documents Kibana writes to .rule-events for every matching row. Use them to replay alert episodes, investigate type signal events, and build dashboards."
 ---
 
-# Understand rule events in the {{alerting-v2-system}} [rule-reference]
+# Understand rule events [rule-reference]
+
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
 
 This page explains what {{kib}} writes to `.rule-events`, how `type` relates to [alert episodes](../alerts.md), and how to query that history. For the stored schema, refer to [How {{kib}} stores rule events](../alerts/rule-event-data-model.md). For the complete field list, refer to [Field reference](../alerts/field-reference.md#rule-events-field-schema).
 

@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Take triage actions on alert episodes in the experimental alerting system. Acknowledge, snooze, resolve, activate, deactivate, tag, and assign alert episodes individually or in bulk."
+description: "Take triage actions on alert episodes. Acknowledge, snooze, resolve, activate, deactivate, tag, and assign alert episodes individually or in bulk."
 ---
 
-# Triage alert episodes in the {{alerting-v2-system}} [triage-alert-episodes]
+# Triage alert episodes [triage-alert-episodes]
+
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
 
 From the **Alerts** page (find **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**), you can take the following triage actions on alert episodes individually or in bulk. For deeper investigation of a specific alert episode, refer to [Investigate alert episodes](investigate-alert-episodes.md).
 

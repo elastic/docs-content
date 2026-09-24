@@ -8,7 +8,10 @@ products:
 description: "How to configure when and how an alert episode recovers: the recovery strategy and the delay before an alert episode closes."
 ---
 
-# Recovery condition in the {{alerting-v2-system}} [recovery-condition]
+# Recovery condition [recovery-condition]
+
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
 
 Recovery condition settings are optional for rules that group matches into an alert episode. They control how the rule decides an alert episode has resolved and how much confirmation it needs before closing the alert episode. Setting these correctly ensures alert episodes close when the underlying problem is actually fixed, rather than staying open indefinitely, closing for the wrong reason, or flapping between open and closed.
 

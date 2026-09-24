@@ -9,7 +9,10 @@ products:
 description: The experimental Kibana alerting system writes each match as a rule event, then either groups those events into an alert episode with notifications or keeps them available for later analysis.
 ---
 
-# {{alerting-v2-system-cap}} overview [system-overview]
+# Overview [system-overview]
+
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
 
 The {{alerting-v2-system}} in {{kib}} watches your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, and the system handles detection, tracking, and notification from there.
 

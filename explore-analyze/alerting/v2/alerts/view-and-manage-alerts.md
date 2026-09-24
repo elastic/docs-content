@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Monitor alert episodes in the experimental alerting system using KPI panels, a histogram, and filter controls. Triage and investigate alert episodes from the same interface."
+description: "Monitor alert episodes using KPI panels, a histogram, and filter controls. Triage and investigate alert episodes from the same interface."
 ---
 
-# View and manage alerts in the {{alerting-v2-system}} [view-manage-alerts]
+# View and manage alerts [view-manage-alerts]
+
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
 
 Use the **Alerts** page to monitor alert episodes with KPI panels, a histogram, and filters. Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**.
 

@@ -5,12 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Common action policy scenarios for the experimental alerting system, including routing by severity, managing severity escalation, and controlling re-notification."
+description: "Common action policy scenarios, including routing by severity, managing severity escalation, and controlling re-notification."
 ---
 
-# Examples and common scenarios for action policies in the {{alerting-v2-system}} [common-action-policy-scenarios]
+# Examples and common scenarios for action policies [common-action-policy-scenarios]
 
-This page covers common situations you encounter when setting up action policies in the {{alerting-v2-system}} and explains how to configure them to get the behavior you expect.
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
+
+This page covers common situations you encounter when setting up action policies and explains how to configure them to get the behavior you expect.
 
 - [Route alert episodes by severity](route-by-severity.md) describes how to direct critical and non-critical alert episodes to different workflows based on severity level.
 - [Manage severity escalation notifications](severity-escalation.md) explains how action policies match and re-match alert episodes as severity shifts, and how to control which notifications fire.

@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Detect conditions that persist across consecutive time buckets in the experimental alerting system using ES|QL bucket counting."
+description: "Detect conditions that persist across consecutive time buckets using ES|QL bucket counting."
 ---
 
-# Persistent breach detection in the {{alerting-v2-system}} [persistent-breach]
+# Persistent breach detection [persistent-breach]
+
+:::{include} /explore-analyze/alerting/v2/_snippets/v2-system-note.md
+:::
 
 A persistent breach condition detects a metric that stays above a threshold across several consecutive time buckets, for example CPU above 90% in all 10 of the last 10 five-minute windows. This filters out transient spikes and fires only when a problem has been sustained.
 
