@@ -121,6 +121,8 @@ After you make the AI index available to an {{agent-builder}} agent:
 
 This test shows whether the KI reduces repeated source exploration. If the agent ignores the KI, retrieves an unrelated KI, or still performs broad source exploration, revise the AI index description, KI content and tags, source selection, or automation instructions.
 
+Compare traces for repeated or related questions. Look for broad source searches or repeated sequences of tool calls that better KI content or query guidance can avoid. These patterns show where moving recurring interpretation into the automation can save time and model tokens on later questions.
+
 ## Improve the automation
 
 Do not rely on one-off edits to a generated KI. Update the source or automation so future runs reproduce the correction. Depending on what you find:
@@ -131,4 +133,4 @@ Do not rely on one-off edits to a generated KI. Update the source or automation 
 - Adjust the schedule or expiration time when the KI becomes stale before its next refresh.
 - Add verification when a generated query or structured attribute can be checked automatically.
 
-Run the automation again, then repeat the content, refresh, and retrieval checks until the KI supports its intended questions.
+Run the automation again, then repeat the content, refresh, and retrieval checks until the KI supports its intended questions. Treat this as a feedback loop: agent use exposes gaps, automation changes address them, and later runs regenerate the context with those improvements.

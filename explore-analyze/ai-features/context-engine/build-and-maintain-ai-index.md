@@ -77,6 +77,10 @@ Reviewing these decisions before the first run limits unnecessary model calls an
 
 ## Plan inspection and maintenance
 
-After an automation runs, inspect its KIs for accuracy, useful interpretation, source limitations, and stable identifiers. Set a refresh schedule that matches how quickly the source changes, and revise the automation when the generated context no longer supports the intended questions. For a structured review process, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
+After an automation runs, inspect its KIs for accuracy, useful interpretation, source limitations, and stable identifiers. Test the context with recurring questions, questions that require current source data, and questions outside the AI index's scope.
+
+Where [agent traces](concepts.md#agent-traces) are available, look for empty retrievals, query errors, broad source exploration, and repeated sequences of tool calls. These behaviors can reveal missing context, weak retrieval metadata, or query guidance that the automation should generate in advance.
+
+Use those observations to revise the AI index description, source coverage, generation strategy, automation instructions, or refresh schedule. Run the automation again and compare the resulting KIs and agent behavior. Improving the automation makes the change repeatable for later runs and for every agent that uses the AI index. For a structured review process, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
 
 For definitions of the objects involved, refer to [Context Engine concepts](concepts.md). To make the resulting context available to an agent, refer to [Use Context Engine with agents](use-context-engine-with-agents.md).

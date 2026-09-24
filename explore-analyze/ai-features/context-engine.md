@@ -47,6 +47,10 @@ Make the AI index available to an [agent or application](context-engine/concepts
 Configure the agent or application with the appropriate [tools and instructions](context-engine/concepts.md#tools-system-instructions-and-skills) to retrieve KIs as context and query source data when current detail is required.
 ::::
 
+::::{step} Evaluate and improve the context
+Review KIs and [agent traces](context-engine/concepts.md#agent-traces) to identify missing, misleading, or underused context. Refine the sources or automations, regenerate the KIs, and repeat as questions and source data change.
+::::
+
 :::::
 
 ## Get started with Context Engine

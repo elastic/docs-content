@@ -57,6 +57,8 @@ Agent traces record how an [agent](#agents-and-applications) runs, including its
 
 Context Engine can analyze these traces to identify query errors, empty retrievals, and cases where an agent queries raw data because its [KIs](#knowledge-indicators) do not cover the question. This feedback can expose gaps in the index's [sources](#sources), [automations](#automations-and-workflows), or generated context. Agent traces are feedback about context use. They are not sources from which automations generate KIs.
 
+Agent traces do not update KIs by themselves. Use their evidence to refine sources or automations, then regenerate and retest the KIs. This process turns repeated agent work into improvements to shared context instead of one-off changes to individual agent instructions.
+
 For information about trace collection, contents, privacy, and access, refer to [Collect {{agent-builder}} traces](/explore-analyze/ai-features/agent-builder/collect-traces.md).
 
 ## Automations and Workflows
@@ -70,6 +72,8 @@ Passing syntax and runtime checks means that a generated query parses and runs. 
 ## Knowledge Indicators
 
 A Knowledge Indicator (KI) is a document that records reusable context derived from [raw source data](#sources). [Automations](#automations-and-workflows) generate KIs and store them in an [AI index](#ai-indices), where [agents](#agents-and-applications) retrieve them to answer recurring questions without repeatedly finding and interpreting the same information. This can reduce response time and model token use. Depending on the use case, a KI can contain business meaning, derived findings, source limitations, or verified query patterns for retrieving current details.
+
+Unlike a cached answer to one request, a KI can support different questions and multiple agents. When evaluation reveals a gap, improve the source or automation and regenerate the KI so the correction is available to future retrievals.
 
 The [generation strategy](build-and-maintain-ai-index.md#select-a-generation-strategy) determines how an automation divides source data into KIs and how much information each KI contains. To examine a generated KI and evaluate its usefulness, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
 
