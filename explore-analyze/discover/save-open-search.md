@@ -58,7 +58,7 @@ serverless: preview
 stack: preview 9.6+
 ```
 
-Export the session configuration as JSON to inspect what **Discover** stores for the session, or to use that JSON as the starting point for managing the session as code.
+Export the session as JSON to inspect the definition **Discover** stores, or to use that JSON as the starting point for managing the session as code. For each tab you include, the JSON contains the query, the filters, the {{data-source}}, and the current view, including the columns and the chart. It does not include the query results. The rows in the document table are not in the file. To export those rows from a saved session, select {icon}`ellipsis` **More** → {icon}`download` **Export** → **Tab results as CSV**.
 
 1. In **Discover**, in the application menu, select {icon}`ellipsis` **More** → {icon}`download` **Export** → **Export JSON**.
 2. Set what the JSON includes:
