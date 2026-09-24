@@ -23,8 +23,31 @@ This page is the canonical reference. For the mental model and the `{{ }}` vs. `
 
 ### `inputs.<name>` [workflows-ctx-inputs]
 
-Values provided at workflow invocation time. Declared in the workflow's top-level `inputs` block.
+Values provided at workflow invocation time.
 
+:::{include} /explore-analyze/workflows/_snippets/inputs-location-by-version.md
+:::
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
+```yaml
+triggers:
+  - type: manual
+    inputs:
+      - name: service_name
+        type: string
+        required: true
+
+steps:
+  - name: search
+    type: elasticsearch.esql.query
+    with:
+      query: "FROM logs-* | WHERE service.name == \"{{ inputs.service_name }}\""
+```
+:::
+
+:::{applies-item} stack: preview 9.3, ga =9.4
 ```yaml
 inputs:
   - name: service_name
@@ -37,6 +60,9 @@ steps:
     with:
       query: "FROM logs-* | WHERE service.name == \"{{ inputs.service_name }}\""
 ```
+:::
+
+::::
 
 ### `consts.<name>` [workflows-ctx-consts]
 

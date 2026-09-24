@@ -41,21 +41,22 @@ The workflow runs on demand with a list of rule IDs:
 
 ::::{step} Declare the rule IDs and time window as inputs
 
-Inputs make the workflow reusable without editing YAML. Declare both the list of rule IDs and the lookback window in minutes:
+Inputs make the workflow reusable without editing YAML. Declare both the list of rule IDs and the lookback window in minutes.
+
+This example uses the latest version of Workflows, where `inputs` nests under the `manual` trigger. If you're not running {{serverless-short}} or the latest version of the {{stack}}, refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for the earlier form.
 
 ```yaml
-inputs:
-  - name: rule_ids
-    type: array
-    description: Detection rule IDs to run.
-    required: true
-  - name: lookback_minutes
-    type: number
-    description: How many minutes back to run the rule.
-    default: 15
-
 triggers:
   - type: manual
+    inputs:
+      - name: rule_ids
+        type: array
+        description: Detection rule IDs to run.
+        required: true
+      - name: lookback_minutes
+        type: number
+        description: How many minutes back to run the rule.
+        default: 15
 ```
 ::::
 
@@ -109,18 +110,17 @@ description: Manually run one or more detection rules over a configurable lookba
 enabled: true
 tags: ["rule-ops", "detection"]
 
-inputs:
-  - name: rule_ids
-    type: array
-    description: Detection rule IDs to run.
-    required: true
-  - name: lookback_minutes
-    type: number
-    description: How many minutes back to run the rule.
-    default: 15
-
 triggers:
   - type: manual
+    inputs:
+      - name: rule_ids
+        type: array
+        description: Detection rule IDs to run.
+        required: true
+      - name: lookback_minutes
+        type: number
+        description: How many minutes back to run the rule.
+        default: 15
 
 steps:
   - name: for_each_rule
