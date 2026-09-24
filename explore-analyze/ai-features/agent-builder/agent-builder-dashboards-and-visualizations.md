@@ -39,7 +39,7 @@ The full-screen [standalone chat mode](standalone-and-flyout-modes.md#standalone
 
 Start the conversation from the place that matches the dashboard you want to build.
 
-- Select [**Agents**](standalone-and-flyout-modes.md#standalone-mode) to open the full-screen {{agent-builder}} chat, then describe the dashboard you want.
+- Find [**Agents**](standalone-and-flyout-modes.md#standalone-mode) in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then describe the dashboard you want in the full-screen {{agent-builder}} chat.
 - Select **AI Agent** in the header to open the [chat beside the current page](standalone-and-flyout-modes.md#sidebar-mode). The button is available when the space uses {{agent-builder}} instead of **AI Assistant**.
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` While you edit an empty dashboard, the **Create with chat** card offers **Create a dashboard for my metrics**, **Monitor my logs**, and **Open chat**. A suggested prompt opens in the chat beside the dashboard so you can change it before you send it. **Open chat** opens that chat with a blank message.
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` While you edit a dashboard that already has panels, select **Add** → **Create with chat**. The chat opens beside the dashboard with a blank message, and nothing is sent until you send it.
