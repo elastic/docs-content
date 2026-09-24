@@ -120,7 +120,7 @@ FROM logs-*_audit.otel-*
     "connector_create", "connector_delete", "connector_update",
     "space_update"
   )
-| KEEP @timestamp, user.name, event.action, kibana.space.id, kibana.saved_object.type, kibana.saved_object.id, service.name
+| KEEP @timestamp, user.name, event.action, elastic_cloud.serverless_audit.space.id, elastic_cloud.serverless_audit.saved_object.type, elastic_cloud.serverless_audit.saved_object.id, service.name
 | SORT @timestamp DESC
 | LIMIT 100
 ```
