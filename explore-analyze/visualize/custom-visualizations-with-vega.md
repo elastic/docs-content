@@ -767,7 +767,7 @@ In the **Vega** spec, add to the `marks` block, then click **Update**:
           value: 100
         }
         fill: {
-          value: black
+          value: teal
         }
       }
     }
@@ -1055,7 +1055,7 @@ Add a signal that updates the {{kib}} time filter when the cursor is released wh
             value: 100
           }
           fill: {
-            value: black
+            value: teal
           }
           cursor: { value: "pointer" }
         }
