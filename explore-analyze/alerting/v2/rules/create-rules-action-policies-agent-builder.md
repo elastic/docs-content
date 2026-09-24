@@ -2,7 +2,7 @@
 navigation_title: Create rules using Agent Builder
 applies_to:
   stack: experimental 9.5+
-  serverless: ga
+  serverless: experimental
 products:
   - id: kibana
 description: "How Agent Builder creates rules and action policies using the rule management skill, what the agent produces, and the save-order dependency."
@@ -21,6 +21,7 @@ Before you start, make sure you have the following:
 
 - **The required subscription** - {{agent-builder}} requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons).
 - **The `agentBuilder:experimentalFeatures` advanced setting turned on** - Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and turn on `agentBuilder:experimentalFeatures`.
+- {applies_to}`serverless: experimental` **The `alerting:v2:experimentalFeatures` advanced setting turned on** - In **Advanced Settings**, go to the **Space Settings** tab and turn on **Alerting V2: Experimental Features**. It's off by default and applies only to the current space.
 - **The required privileges** - Your [role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) must include the following:
 
   | To... | Required privilege |
@@ -72,7 +73,9 @@ Action policies invoke workflows for alert episodes only. If you ask the agent t
 :::
 
 - **Workflows** - Workflows are the delivery mechanism. They define what happens when the {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
-- **Action Policies** - Action policies are the gating mechanism. They evaluate the rule's alert episodes and invoke the workflow when an alert episode matches. When created alongside a rule, an action policy is automatically scoped to it.
+- **Action Policies** - Action policies are the gating mechanism. {{kib}} evaluates them against the rule's alert episodes and invokes the workflow for the episodes they apply to. When you create an action policy with a rule, the policy applies to that rule's alert episodes.
+    * {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` If the rule already has a [tag](configure-rule-artifacts.md#add-tags-runbooks) that no other rule uses, the agent selects that tag. Otherwise, it adds a `notify-<rule-name>` tag in lowercase with hyphens (for example, `notify-high-cpu-prod`). The policy also applies to alert episodes from any other rule with that tag.
+    * {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` The action policy references the rule by ID.
 
 Both objects are proposed as inline attachments and must be explicitly saved before they take effect.
 
@@ -80,7 +83,7 @@ Both objects are proposed as inline attachments and must be explicitly saved bef
 
 The three objects have a dependency chain that determines the order in which they must be saved:
 
-1. **Rule** - The action policy references the rule by ID. The ID is not available until the rule is persisted.
+1. **Rule** - Save the rule first, so the action policy can link to it.
 2. **Workflow** - The action policy references the workflow as a destination. The reference must resolve to a persisted workflow.
 3. **Action policy** - Can only be saved after both its rule and workflow dependencies exist.
 
