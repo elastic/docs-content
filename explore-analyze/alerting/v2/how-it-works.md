@@ -42,7 +42,7 @@ An SRE team wants to know when checkout service latency degrades, and notify the
 
 1. The rule runs an {{esql}} query every five minutes, checking p95 checkout service latency.
 2. The first check where p95 exceeds 2 seconds opens an alert episode in `pending`. A second consecutive breach moves it to `active`.
-3. {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` An action policy scoped to the `checkout` rule tag invokes an on-call workflow that sends a Slack message.
+3. {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` An action policy scoped to the `checkout` rule tag invokes an on-call workflow that sends a Slack message.
 
    {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` An action policy scoped with `rule.tags: "checkout"` invokes an on-call workflow that sends a Slack message.
 
