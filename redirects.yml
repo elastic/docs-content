@@ -884,6 +884,12 @@ redirects:
     anchors:
       'alert-data-model':
 
+# Related to the tags and runbooks page adding dashboards
+  'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-tags.md':
+    to: 'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-artifacts.md'
+    anchors:
+      'tags-investigation':
+
 # Related to cases and alerting documentation restructuring
   # Main pages
   'explore-analyze/alerts-cases.md': 'explore-analyze/alerting.md'
@@ -1096,9 +1102,14 @@ redirects:
           'create-custom-eis': 'add-endpoint'
 
   # https://github.com/elastic/docs-content/pull/6582
+  # https://github.com/elastic/docs-content-internal/issues/1609
   'explore-analyze/ai-features/agent-builder/custom-agents.md':
     to: 'explore-analyze/ai-features/agent-builder/custom-agents.md'
     many:
+      - to: 'explore-analyze/ai-features/agent-builder/custom-agents.md'
+        anchors:
+          'visibility-settings': 'access-control-settings'
+          'set-visibility': 'set-access-control'
       - to: 'explore-analyze/ai-features/agent-builder/agent-builder-agents.md'
         anchors:
           'enable-elastic-capabilities': 'elastic-capabilities'
