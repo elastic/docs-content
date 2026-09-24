@@ -59,16 +59,16 @@ serverless: preview
 stack: preview 9.6+
 ```
 
-Export the session as JSON to inspect the definition **Discover** stores, or to use that JSON as the starting point for managing the session as code. For each tab you include, the JSON contains the query, the filters, the {{data-source}}, and the current view, including the columns and the chart. It does not include the query results. The rows in the document table are not in the file. To export those rows from a saved session, select {icon}`ellipsis` **More** → {icon}`download` **Export** → **Tab results as CSV**.
+Export the session as JSON to inspect its definition, or to use that JSON as the starting point for managing the session as code. For each tab you include, the JSON contains the query, the filters, the {{data-source}}, and the current view, including the columns and the chart. It does not include the query results. The rows in the document table are not in the file. To export those rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**.
 
-1. In **Discover**, in the application menu, select {icon}`ellipsis` **More** → {icon}`download` **Export** → **Export JSON**.
+1. In **Discover**, in the application menu, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**.
 2. Set what the JSON includes:
 
    - To include every open tab, leave **Export only the current tab** off. Turn it on to include only the tab you are viewing.
    - If the session is not saved, turn on **Include current time settings** to include the current time filter and refresh interval. The switch is off until you turn it on.
    - If the session is saved, **Include current time settings** is not available. The JSON includes the current time filter and refresh interval only when you saved the session with **Store time with Discover session**.
 
-3. Review the JSON. If a property can't be included, {{kib}} removes it and lists it under **Unsupported properties were removed**. Select **Show details** to see what was removed.
+3. Review the JSON. If a property can't be included, {{kib}} removes it and lists it under **Unsupported properties were removed**. Select **Show details** to see what was removed. If {{kib}} can't export the session, the flyout shows **Unable to export** and the error. Select **Retry** to try again.
 4. Copy, download, or open the JSON:
 
    - Select **Copy to clipboard** to copy it.
