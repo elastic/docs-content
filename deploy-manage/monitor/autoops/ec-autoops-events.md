@@ -18,7 +18,7 @@ When AutoOps detects an issue, it raises insights in the form of an **Event**. T
 
 You can view events on the **Deployment** page (for {{ECH}} deployments) or the **Cluster** page (for ECE, ECK, and self-managed clusters) in the **Open events** and **Event history** tabs.
 
-When you select an event, a flyout appears with details about the detected issue and actions you can take.
+When you select an event, a flyout displays details about the detected issue and actions you can take.
 
 :::{image} /deploy-manage/images/cloud-autoops-events.png
 :screenshot:
