@@ -12,11 +12,15 @@ description: "Action policies decide whether and when an alert episode invokes a
 
 An action policy is the gating layer between an alert episode and a workflow in the {{alerting-v2-system}}. It decides whether and when to invoke a workflow by running the alert episode through a sequence of gates, and a workflow runs only once the alert episode clears every gate.
 
-This page explains why action policies are separate from rules, the gates an alert episode must pass, and how the dispatcher evaluates them.
+This page explains how rules and action policies work together, the gates an alert episode must pass, and how the dispatcher evaluates them.
 
-## Why action policies are separate from rules [policies-separate-from-rules]
+## How rules and action policies work together [rules-and-action-policies]
 
-Action policies are independent of rules. A single action policy can apply to alert episodes from many rules. An action policy scoped to `severity: "critical"` runs regardless of which rule produced the alert episode. You can create a rule without any action policy, which is useful for testing detection logic before wiring up notifications. You can also update notification routing later without touching the rule.
+A rule detects a condition and opens alert episodes. The rule doesn't automatically reference an action policy, and an action policy doesn't instantly link to a rule. Instead, {{kib}} evaluates each action policy in the space against every [eligible](#action-policy-gates) alert episode, and invokes a workflow for the ones that pass every gate.
+
+Because of that separation, a single action policy can apply to alert episodes from many rules. An action policy scoped to `severity: "critical"` runs regardless of which rule produced the alert episode. The separation also means you change notification routing by editing the action policy, without touching the rule.
+
+To control which of those alert episodes an action policy applies to, set its [scope](create-configure-action-policy.md#matcher). An action policy with an empty scope applies to all of them.
 
 ## How action policies gate alert episodes [action-policy-gates]
 

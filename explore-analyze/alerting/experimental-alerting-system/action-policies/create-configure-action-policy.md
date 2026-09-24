@@ -43,6 +43,8 @@ To narrow the scope further, add a [match conditions expression](#filter-with-kq
 
 Add a **Match conditions** [KQL](../../../query-filter/languages/kql.md) expression to narrow the policy to the alert episodes whose fields match it. For example, `severity: "critical"` applies the policy to critical alert episodes only. For the fields you can use, refer to [Match conditions fields](action-policy-reference.md#action-policy-matcher-fields).
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` On a new action policy, **Match conditions** is hidden until you expand **Advanced matching**.
+
 ## Add tags to categorize the action policy [policy-tags]
 ```{applies_to}
 stack: removed 9.6+, experimental =9.5
@@ -79,7 +81,13 @@ To get a notification for the escalation, do either of the following:
 
 ## Select workflows to invoke [policy-destinations]
 
-An action policy needs at least one destination. Attach one or more [workflows](../../../workflows.md) to define what happens when the action policy runs. You can add or remove them later by editing the action policy. For more complex routing or multi-step automations, build a dedicated workflow first and then attach it.
+An action policy needs at least one destination. In **Destination**, attach the [workflows](../../../workflows.md) that run when the action policy notifies. You can attach workflows you built earlier, create an email or Slack workflow without leaving the action policy, or do both. You can add or remove destinations later by editing the action policy.
+
+### Attach an existing workflow [attach-existing-workflow]
+
+In **Workflows**, search for a workflow by name and select it. Select as many as you need. Use an existing workflow for anything beyond a single message, such as opening a ticket, calling a webhook, or running several steps in order.
+
+If the workflow doesn't exist yet, select **Create a workflow** to build it in the **Workflows** app in a new tab, then return to the action policy and select it.
 
 ### Create an email or Slack workflow [inline-email-slack-workflow]
 ```{applies_to}
@@ -87,7 +95,15 @@ serverless: ga
 stack: ga 9.6+
 ```
 
-To send an email or a Slack message without building a workflow first, select **Create Email workflow** or **Create Slack workflow** in **Destination**, then select the connector and write the message. {{kib}} creates each workflow when you save the action policy and attaches it as a destination. If the action policy fails to save, {{kib}} deletes the workflows it created for it.
+If all the action policy needs to do is send an email or post a Slack message, build that workflow in the action policy itself:
+
+1. Select **Create Email workflow** or **Create Slack workflow**.
+2. Select a **Connector**, or select **+ Create new connector** to add one. For Slack, also select the **Channel**.
+3. In **Parameters**, write the message in YAML. An email takes `to`, `subject`, and `message`. A Slack message takes `text`.
+
+To put alert episode details in the message, reference the dispatcher payload with `{{inputs.payload.<field>}}`, for example `{{inputs.payload.policyId}}`, `{{inputs.payload.groupKey}}`, or `{{inputs.payload.episodes}}`.
+
+{{kib}} creates a single-step workflow for each one when you save the action policy and attaches it as a destination. These are ordinary workflows, so you can open them in **Workflows** afterwards to edit them or attach them to another action policy. If the action policy fails to save, {{kib}} deletes the workflows it created for it.
 
 ### Create a notification from the rule form [notification-from-rule-form]
 ```{applies_to}
