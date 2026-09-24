@@ -98,7 +98,7 @@ Restrict who can access these locations in your destination project, because log
 
 ### Example queries
 
-Explore the following examples of what you can investigate with your delivered audit logs. Run each query against `logs-*audit.otel-*` in Discover.
+Explore the following examples of what you can investigate with your delivered audit logs. Run each query against `logs-*_audit.otel-*` in Discover.
 
 #### Failed or denied activity
 
