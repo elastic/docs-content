@@ -256,10 +256,12 @@ against the Visualizations API spec. To re-verify after a schema change, run:
 See .github/scripts/verify-lens-api-examples.py for full usage. -->
 
 **Traffic by geographic region**
-:   Visualizing which geographic regions generate the most traffic:
-   - **Horizontal axis**: `@timestamp` (Date histogram)
-   - **Vertical axis**: `records`
-   - **Breakdown**: `geo.dest`
+
+Visualizing which geographic regions generate the most traffic:
+
+- **Horizontal axis**: `@timestamp` (Date histogram)
+- **Vertical axis**: `records`
+- **Breakdown**: `geo.dest`
 
 :::{image} /explore-analyze/images/kibana-area-geo-regions.png
 :alt: Example Lens area chart geographical regions
