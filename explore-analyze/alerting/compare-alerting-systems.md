@@ -24,11 +24,11 @@ Elastic offers three alerting systems, each suited to different use cases and wo
 | Goal | Suggested system | Availability |
 |---|---|---|
 | Monitor metrics, logs, or uptime with ready-made rules and no query language | [{{kib}} alerting](alerts.md) | {applies_to}`stack: ga` {applies_to}`serverless: ga` |
-| Write {{esql}} to define exactly what to detect and what data each rule event carries | [{{alerting-v2-system-cap}}](v2/system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
-| Record matches as rule events with `type: signal` for later analysis, without sending notifications | [{{alerting-v2-system-cap}}](v2/system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
-| Query rule event history in Discover or build dashboards from rule event data | [{{alerting-v2-system-cap}}](v2/system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
-| Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-cap}}](v2/system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
-| Build highly custom notification logic with reusable, configurable workflows | [{{alerting-v2-system-cap}}](v2/system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Write {{esql}} to define exactly what to detect and what data each rule event carries | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Record matches as rule events with `type: signal` for later analysis, without sending notifications | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Query rule event history in Discover or build dashboards from rule event data | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Build highly custom notification logic with reusable, configurable workflows | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
 | Build highly custom logic with scripting and chained inputs | [Watcher](watcher.md) | {applies_to}`stack: ga` {applies_to}`serverless: unavailable` |
 
 ## Compare at a glance
@@ -36,9 +36,9 @@ Elastic offers three alerting systems, each suited to different use cases and wo
 | | {{kib}} alerting | {{alerting-v2-system-cap}} | Watcher |
 |---|---|---|---|
 | **Best for** | Teams using built-in rule types with form-based setup | Teams that need control over detection, and over notification routing when matches are tracked as alert episodes | Custom alerting logic requiring scripting |
-| **Rule definition** | Select a rule type and fill in parameters | [Write an {{esql}} query](v2/rules/configure-rule-query.md) or use a rule builder with form-based setup | Write a JSON watch definition |
-| **How matches are stored** | In-place updates, limited query support | Append-only [rule events](v2/alerts/rule-event-data-model.md), [queryable with {{esql}} in Discover](v2/alerts/query-alerts-and-signals-in-discover.md) | Watch history index |
-| **Notifications** | Configured per action on each rule | [Action policies](v2/notifications-actions.md) invoke reusable workflows, which send the notification; policies support throttling and conditions | Action-level throttling and conditions |
-| **Noise reduction** | Snooze per rule or per alert, maintenance windows | Acknowledge or deactivate per alert episode, per-series snooze, maintenance windows, match condition routing in [action policies](v2/action-policies/reduce-notification-noise.md) | Action conditions and throttling |
+| **Rule definition** | Select a rule type and fill in parameters | [Write an {{esql}} query](esql/rules/configure-rule-query.md) or use a rule builder with form-based setup | Write a JSON watch definition |
+| **How matches are stored** | In-place updates, limited query support | Append-only [rule events](esql/alerts/rule-event-data-model.md), [queryable with {{esql}} in Discover](esql/alerts/query-alerts-and-signals-in-discover.md) | Watch history index |
+| **Notifications** | Configured per action on each rule | [Action policies](esql/notifications-actions.md) invoke reusable workflows, which send the notification; policies support throttling and conditions | Action-level throttling and conditions |
+| **Noise reduction** | Snooze per rule or per alert, maintenance windows | Acknowledge or deactivate per alert episode, per-series snooze, maintenance windows, match condition routing in [action policies](esql/action-policies/reduce-notification-noise.md) | Action conditions and throttling |
 | **Available on {{serverless-full}}** | Yes | Yes, {applies_to}`serverless: experimental` | No |
 | **Available on {{stack}}** | Yes | Yes, {applies_to}`stack: experimental 9.5+` | Yes |
