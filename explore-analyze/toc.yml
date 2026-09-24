@@ -420,71 +420,71 @@ toc:
   - file: alerting.md
     children:
       - file: alerting/compare-alerting-systems.md
-      - file: alerting/v2/system-overview.md
+      - file: alerting/esql/system-overview.md
         children:
-          - file: alerting/v2/how-it-works.md
-          - file: alerting/v2/glossary.md
-          - file: alerting/v2/get-started.md
+          - file: alerting/esql/how-it-works.md
+          - file: alerting/esql/glossary.md
+          - file: alerting/esql/get-started.md
             children:
-              - file: alerting/v2/get-started/setup.md
-              - file: alerting/v2/get-started/configure-access.md
-              - file: alerting/v2/get-started/create-your-first-rule.md
-          - file: alerting/v2/authorization.md
-          - file: alerting/v2/rules.md
+              - file: alerting/esql/get-started/setup.md
+              - file: alerting/esql/get-started/configure-access.md
+              - file: alerting/esql/get-started/create-your-first-rule.md
+          - file: alerting/esql/authorization.md
+          - file: alerting/esql/rules.md
             children:
-              - file: alerting/v2/rules/create-a-rule.md
+              - file: alerting/esql/rules/create-a-rule.md
                 children:
-                  - file: alerting/v2/rules/create-esql-rule.md
+                  - file: alerting/esql/rules/create-esql-rule.md
                     children:
-                      - file: alerting/v2/rules/yaml-rule-schema-reference.md
-                  - file: alerting/v2/rules/create-rules-action-policies-agent-builder.md
-                  - file: alerting/v2/rules/use-rule-builder.md
-                  - file: alerting/v2/rules/create-rule-from-discover.md
-              - file: alerting/v2/rules/configure-a-rule.md
+                      - file: alerting/esql/rules/yaml-rule-schema-reference.md
+                  - file: alerting/esql/rules/create-rules-action-policies-agent-builder.md
+                  - file: alerting/esql/rules/use-rule-builder.md
+                  - file: alerting/esql/rules/create-rule-from-discover.md
+              - file: alerting/esql/rules/configure-a-rule.md
                 children:
-                  - file: alerting/v2/rules/configure-rule-mode.md
-                  - file: alerting/v2/rules/configure-rule-query.md
-                  - file: alerting/v2/rules/configure-rule-schedule.md
-                  - file: alerting/v2/rules/configure-rule-severity.md
-                  - file: alerting/v2/rules/configure-rule-grouping.md
-                  - file: alerting/v2/rules/configure-rule-alert-delay.md
-                  - file: alerting/v2/rules/configure-rule-recovery.md
-                  - file: alerting/v2/rules/configure-no-data-handling.md
-                  - file: alerting/v2/rules/configure-rule-artifacts.md
-              - file: alerting/v2/rules/view-manage-rules.md
-              - file: alerting/v2/rules/review-rule-execution-history.md
-              - file: alerting/v2/rules/esql-query-patterns.md
+                  - file: alerting/esql/rules/configure-rule-mode.md
+                  - file: alerting/esql/rules/configure-rule-query.md
+                  - file: alerting/esql/rules/configure-rule-schedule.md
+                  - file: alerting/esql/rules/configure-rule-severity.md
+                  - file: alerting/esql/rules/configure-rule-grouping.md
+                  - file: alerting/esql/rules/configure-rule-alert-delay.md
+                  - file: alerting/esql/rules/configure-rule-recovery.md
+                  - file: alerting/esql/rules/configure-no-data-handling.md
+                  - file: alerting/esql/rules/configure-rule-artifacts.md
+              - file: alerting/esql/rules/view-manage-rules.md
+              - file: alerting/esql/rules/review-rule-execution-history.md
+              - file: alerting/esql/rules/esql-query-patterns.md
                 children:
-                  - file: alerting/v2/rules/esql-first-rule-query.md
-                  - file: alerting/v2/rules/esql-threshold-queries.md
-                  - file: alerting/v2/rules/esql-no-data-detection.md
-                  - file: alerting/v2/rules/esql-slo-burn-rate.md
-                  - file: alerting/v2/rules/esql-persistent-breach.md
-              - file: alerting/v2/rules/rule-event-field-reference.md
-          - file: alerting/v2/alerts.md
+                  - file: alerting/esql/rules/esql-first-rule-query.md
+                  - file: alerting/esql/rules/esql-threshold-queries.md
+                  - file: alerting/esql/rules/esql-no-data-detection.md
+                  - file: alerting/esql/rules/esql-slo-burn-rate.md
+                  - file: alerting/esql/rules/esql-persistent-breach.md
+              - file: alerting/esql/rules/rule-event-field-reference.md
+          - file: alerting/esql/alerts.md
             children:
-              - file: alerting/v2/alerts/rule-event-data-model.md
-              - file: alerting/v2/alerts/view-and-manage-alerts.md
+              - file: alerting/esql/alerts/rule-event-data-model.md
+              - file: alerting/esql/alerts/view-and-manage-alerts.md
                 children:
-                  - file: alerting/v2/alerts/triage-alert-episodes.md
-                  - file: alerting/v2/alerts/investigate-alert-episodes.md
-              - file: alerting/v2/alerts/query-alerts-and-signals-in-discover.md
-              - file: alerting/v2/alerts/query-signals.md
-              - file: alerting/v2/alerts/field-reference.md
-          - file: alerting/v2/notifications-actions.md
+                  - file: alerting/esql/alerts/triage-alert-episodes.md
+                  - file: alerting/esql/alerts/investigate-alert-episodes.md
+              - file: alerting/esql/alerts/query-alerts-and-signals-in-discover.md
+              - file: alerting/esql/alerts/query-signals.md
+              - file: alerting/esql/alerts/field-reference.md
+          - file: alerting/esql/notifications-actions.md
             children:
-              - file: alerting/v2/workflows-alerting.md
-              - file: alerting/v2/action-policies/about-action-policies.md
-              - file: alerting/v2/action-policies/common-action-policy-scenarios.md
+              - file: alerting/esql/workflows-alerting.md
+              - file: alerting/esql/action-policies/about-action-policies.md
+              - file: alerting/esql/action-policies/common-action-policy-scenarios.md
                 children:
-                  - file: alerting/v2/action-policies/route-by-severity.md
-                  - file: alerting/v2/action-policies/severity-escalation.md
-                  - file: alerting/v2/action-policies/re-notification.md
-              - file: alerting/v2/action-policies/create-configure-action-policy.md
-              - file: alerting/v2/action-policies/action-policy-reference.md
-              - file: alerting/v2/action-policies/manage-action-policies.md
-              - file: alerting/v2/action-policies/review-action-policy-execution-history.md
-              - file: alerting/v2/action-policies/reduce-notification-noise.md
+                  - file: alerting/esql/action-policies/route-by-severity.md
+                  - file: alerting/esql/action-policies/severity-escalation.md
+                  - file: alerting/esql/action-policies/re-notification.md
+              - file: alerting/esql/action-policies/create-configure-action-policy.md
+              - file: alerting/esql/action-policies/action-policy-reference.md
+              - file: alerting/esql/action-policies/manage-action-policies.md
+              - file: alerting/esql/action-policies/review-action-policy-execution-history.md
+              - file: alerting/esql/action-policies/reduce-notification-noise.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
