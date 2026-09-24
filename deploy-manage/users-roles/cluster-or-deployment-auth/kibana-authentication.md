@@ -21,22 +21,26 @@ How users authenticate to {{kib}} depends on your deployment type. On {{ecloud}}
 
 ### {{ech}} [cloud-hosted-authentication]
 
-On {{ech}}, SSO is automatically enabled between your {{ecloud}} account and {{kib}}. When you log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and open {{kib}} from your deployment, you are authenticated without needing to log in again. If your session has expired, you can:
+By default, SSO is enabled between your {{ecloud}} account and {{kib}}. When you log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and open {{kib}} from your deployment, you are authenticated without needing to log in again. If your session has expired, you can:
 
 * Select **Login with Cloud** to authenticate with your {{ecloud}} credentials.
 * Log in with the `elastic` superuser or any user you created in {{kib}}.
 
 For details on accessing {{kib}} from a hosted deployment, refer to [Access {{kib}} on {{ech}}](/deploy-manage/deploy/elastic-cloud/access-kibana.md).
 
+You can override this default by configuring SSO at the organization level, the deployment level, or both. For guidance on choosing the right approach, refer to [Should I use organization-level or deployment-level SSO?](/deploy-manage/users-roles/cloud-organization.md#should-i-use-organization-level-or-deployment-level-sso)
+
 ### {{serverless-full}} [serverless-authentication]
 
-On {{serverless-full}}, you access {{kib}} directly through your project. Authentication is handled at the {{ecloud}} organization level. All organization members with the appropriate roles can access {{kib}} in their assigned projects without a separate login step.
+On {{serverless-full}}, you access {{kib}} directly through your project. Authentication is handled at the {{ecloud}} organization level. All organization members with the appropriate [roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) can access {{kib}} in their assigned projects without a separate login step.
 
 ### Organization-level SSO [cloud-organization-sso]
 
 For both {{ech}} and {{serverless-full}}, you can configure SAML SSO at the {{ecloud}} organization level. This lets you centrally control access using your identity provider (for example, Okta or Microsoft Entra ID). When organization-level SSO is configured, users authenticate through your identity provider to access all deployments and projects in the organization.
 
 For details, refer to [Configure {{ecloud}} SAML single sign-on](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md).
+
+For {{ech}}, you can also configure [deployment-level authentication](#deployment-authentication) using SAML, OIDC, LDAP, Kerberos, or other protocols for more granular control.
 
 ## Deployment-level authentication [deployment-authentication]
 
