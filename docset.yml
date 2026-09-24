@@ -44,6 +44,13 @@ api:
       catalog:
         categories:
           - serverless
+  cloud-billing:
+    - spec: cloud-billing.yaml
+      product: ess
+      repository: elastic/cloud
+      catalog:
+        categories:
+          - ess
   cloud-connect:
     - spec: cloud-connect.yml
       product: ess
@@ -108,6 +115,14 @@ cta:
     button:
       label: Get started free
       url: https://cloud.elastic.co/serverless-registration?onboarding_token=search
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  vector:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=vector
     benefits:
       - "14-day free trial"
       - "All features included"
