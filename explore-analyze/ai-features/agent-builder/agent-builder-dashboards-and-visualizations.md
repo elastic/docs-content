@@ -22,6 +22,15 @@ This functionality is powered by the built-in [`dashboard-management`](builtin-s
 For best results with {{esql}}-heavy dashboard generation, use a higher-tier model such as Claude 4.6 Opus. Current testing shows that Claude 4.6 Sonnet may require more corrections for generated dashboard queries.
 :::
 
+## Where to start [where-to-start]
+
+Start the conversation from the place that matches the dashboard you want to build.
+
+- Select [**Agents**](standalone-and-flyout-modes.md#standalone-mode) to open {{agent-builder}}, then describe the dashboard you want in the full-page chat.
+- From any page, select **AI Agent** to open the [chat beside the page you are on](standalone-and-flyout-modes.md#sidebar-mode).
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` On an empty dashboard, select **Create a dashboard for my metrics** or **Monitor my logs** to open that prompt in the editor so you can change it before you send it. Select **Open chat** on that dashboard for a blank message. When the dashboard already has panels, select **Add** → **Create with chat** to open a blank message.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To create or change a [custom panel](/explore-analyze/visualize/custom-panels.md#custom-panels-refine-with-chat), select **Generate with chat** on an empty panel or **Refine with chat** when the panel already has a template. A new conversation opens beside the page, with that panel attached.
+
 ## When to use agent-generated dashboards
 
 Building dashboards manually requires knowing which indices to query, how to write the right visualizations, and how to arrange panels. Agent-generated dashboards let you skip that process and go from a question to a working dashboard in seconds. This is particularly useful when you need to:
