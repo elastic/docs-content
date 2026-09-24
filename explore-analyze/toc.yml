@@ -450,7 +450,7 @@ toc:
                   - file: alerting/v2/rules/configure-rule-alert-delay.md
                   - file: alerting/v2/rules/configure-rule-recovery.md
                   - file: alerting/v2/rules/configure-no-data-handling.md
-                  - file: alerting/v2/rules/configure-rule-tags.md
+                  - file: alerting/v2/rules/configure-rule-artifacts.md
               - file: alerting/v2/rules/view-manage-rules.md
               - file: alerting/v2/rules/review-rule-execution-history.md
               - file: alerting/v2/rules/esql-query-patterns.md
