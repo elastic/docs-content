@@ -15,7 +15,7 @@ This page describes the settings you can configure for dashboard controls. The s
 
 ## Options list and range slider settings [options-list-range-slider-settings]
 
-Options lists and range sliders share most settings. A few are specific to one type: **Selections**, **Searching**, and **Always load all results** or **Ignore timeout for results** (depending on your {{stack}} version) apply only to options lists, and **Step size** applies only to range sliders.
+Options lists and range sliders share most settings. A few are specific to one type: **Selections**, **Searching**, and **Always load all results** (or **Ignore timeout for results** depending on your {{stack}} version) apply only to options lists, and **Step size** applies only to range sliders.
 
 ### Control settings [data-control-settings]
 
