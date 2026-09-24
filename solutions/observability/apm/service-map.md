@@ -1,4 +1,6 @@
 ---
+meta_title: Service maps in Elastic APM
+description: Visualize service dependencies with Elastic APM service maps. Explore distributed trace connections, performance metrics, anomalies, alerts, and SLO status.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-service-maps.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-service-map.html

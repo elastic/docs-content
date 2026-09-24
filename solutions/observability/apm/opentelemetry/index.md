@@ -1,6 +1,6 @@
 ---
 navigation_title: OpenTelemetry
-description: Learn how to integrate OpenTelemetry with Elastic APM using {{edot}}, contrib SDKs, and APM agents. Includes setup for serverless, self-managed, and AWS Lambda.
+description: Send OpenTelemetry data to Elastic APM with EDOT, contrib SDKs and Collectors, Elastic APM agent bridges, or the managed OTLP endpoint.
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-opentelemetry.html
   - https://www.elastic.co/guide/en/observability/current/apm-open-telemetry.html
@@ -12,7 +12,7 @@ products:
   - id: observability
 ---
 
-# Use OpenTelemetry with Elastic APM
+# OpenTelemetry with Elastic APM
 
 OpenTelemetry is a set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications. You can use OpenTelemetry to collect application performance data in Elastic APM, whether you’re running serverless, self-managed, or hybrid deployments.
 

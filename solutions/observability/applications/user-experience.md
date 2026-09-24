@@ -1,5 +1,7 @@
 ---
 navigation_title: Real user monitoring
+meta_title: Real user experience monitoring for web applications
+description: Monitor real user experience with Elastic RUM. Analyze Core Web Vitals, page load performance, browser and location trends, and JavaScript errors.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/user-experience.html
 applies_to:
@@ -21,7 +23,7 @@ Powered by the APM Real user monitoring (RUM) agent, all it takes is a few lines
 
 ## Why is {{user-experience}} important? [why-user-experience]
 
-Search engines are placing increasing importance on user experience when organically ranking websites. Elastic makes it easy to view your website data in the context of Google Core Web Vitals — metrics that score three key areas of user experience: loading performance, visual stability, and interactivity. These Core Web Vitals are set to become the main performance measurement in Google ranking factors. If you’re a content-based site that wants to appear in the “Top Stories” section of Google search results, you must have good Core Web Vitals.
+Search engines place importance on user experience when organically ranking websites. Elastic makes it easy to view your website data in the context of Google Core Web Vitals, metrics that score three key areas of user experience: loading performance, visual stability, and interactivity. Core Web Vitals are among Google’s search ranking factors, so good scores can help your pages rank and qualify for features like the “Top Stories” section of Google search results.
 
 ## How does {{user-experience}} work? [how-user-experience-works]
 

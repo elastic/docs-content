@@ -1,5 +1,6 @@
 ---
 navigation_title: Configure
+description: Configure APM Server for Fleet-managed, standalone, or Elastic Cloud deployments. Find settings for authentication, outputs, logging, TLS, and sampling.
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-manage-apm-settings.html
   - https://www.elastic.co/guide/en/observability/current/apm-configuring-howto-apm-server.html
@@ -10,7 +11,7 @@ products:
   - id: observability
 ---
 
-# Configure APM Server [apm-configuring-howto-apm-server]
+# Configure Elastic APM Server [apm-configuring-howto-apm-server]
 
 How you configure the APM Server depends on your deployment method.
 
