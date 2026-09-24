@@ -25,8 +25,8 @@ toc:
                     children:
                       - file: deploy/elastic-cloud/azure-native-isv-service-logs-metrics.md
                       - file: deploy/elastic-cloud/azure-native-isv-service-network-security.md
-                      - file: deploy/elastic-cloud/azure-native-isv-service-troubleshooting.md
                       - file: deploy/elastic-cloud/azure-native-isv-service-byok.md
+                      - file: deploy/elastic-cloud/azure-native-isv-service-troubleshooting.md
                   - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md
                   - file: deploy/elastic-cloud/heroku.md
                     children:
@@ -607,6 +607,9 @@ toc:
                   - file: users-roles/cluster-or-deployment-auth/saml.md
                     children:
                       - file: users-roles/cluster-or-deployment-auth/saml-entra.md
+                      - file: users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md
+                      - file: users-roles/cluster-or-deployment-auth/saml-signing-encryption.md
+                      - file: users-roles/cluster-or-deployment-auth/saml-without-kibana.md
                   - file: users-roles/cluster-or-deployment-auth/pki.md
                   - file: users-roles/cluster-or-deployment-auth/custom.md
               - file: users-roles/cluster-or-deployment-auth/built-in-users.md
@@ -718,7 +721,7 @@ toc:
               - file: monitor/autoops/access-autoops-for-serverless.md
               - file: monitor/autoops/search-tier-view-autoops-serverless.md
               - file: monitor/autoops/indexing-tier-view-autoops-serverless.md
-              - file: monitor/autoops/search-ai-lake-view-autoops-serverless.md
+              - file: monitor/autoops/storage-tier-view-autoops-serverless.md
           - file: monitor/autoops/cc-autoops-as-cloud-connected.md
             children:
               - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
@@ -816,6 +819,8 @@ toc:
               - file: monitor/logging-configuration/kib-advanced-logging.md
                 children:
                   - file: monitor/logging-configuration/kibana-log-settings-examples.md
+      - hidden: monitor/log-delivery.md
+      - hidden: monitor/log-delivery/audit-trail.md
   - file: kibana-reporting-configuration.md
   - file: kibana-custom-branding.md
   - file: cloud-organization.md
@@ -827,6 +832,7 @@ toc:
           - file: cloud-organization/billing/serverless-project-billing-dimensions.md
             children:
               - file: cloud-organization/billing/elasticsearch-billing-dimensions.md
+              - file: cloud-organization/billing/vector-database-billing-dimensions.md
               - file: cloud-organization/billing/elastic-observability-billing-dimensions.md
               - file: cloud-organization/billing/security-billing-dimensions.md
           - file: cloud-organization/billing/billing-models.md

@@ -35,7 +35,14 @@ Using Docker or Podman as container runtime is a configuration local to the host
 
 1. Make sure you are running a healthy x-node ECE environment ready to be upgraded. All nodes use the Docker container runtime.
 2. Upgrade to ECE 3.3.0+ following the [Upgrade your installation](../../upgrade/orchestrator/upgrade-cloud-enterprise.md) guideline. Skip this step if your existing ECE installation already runs ECE >= 3.3.0.
-3. Follow your internal guidelines to add an additional vanilla RHEL (Note that the version must be >= 8.5, but <9), or Rocky Linux 8 or 9 VM to your environment.
+3. Follow your internal guidelines to add an additional vanilla RHEL 8 (the version must be >= 8.5), RHEL 9, RHEL 10, or Rocky Linux 8 or 9 VM to your environment.
+
+    The following Podman versions and network backends are supported:
+
+    * RHEL 8 and Rocky Linux 8: Podman 4 with CNI
+    * RHEL 9: Podman 4 or Podman 5 with CNI
+    * Rocky Linux 9: Podman 5 with CNI
+    * {applies_to}`ece: ga 4.2` RHEL 10: Podman 5 with Netavark
 4. Verify that required traffic from the host added in step 3 is allowed to the primary ECE VM(s). Check the [Networking prerequisites](ece-networking-prereq.md) and [Google Cloud Platform (GCP)](/deploy-manage/deploy/cloud-enterprise/prepare-environment.md) guidelines for a list of ports that need to be open. The technical configuration highly depends on the underlying infrastructure.
 
     **Example** For AWS, allowing traffic between hosts is implemented using security groups.
@@ -75,7 +82,6 @@ Using Docker or Podman as container runtime is a configuration local to the host
     ```sh
     sudo dnf -y install containernetworking-plugins
     ```
-
     ::::
 
 2. Remove Docker and previously installed podman packages (if previously installed).
@@ -104,6 +110,11 @@ Using Docker or Podman as container runtime is a configuration local to the host
         ```
 
 4. Install Podman:
+
+    ::::{note}
+    :applies_to: ece: ga 4.2
+    RHEL 10 supports Podman 5 only. Use the Podman 5 steps in this section. Podman 4 is not a supported combination on RHEL 10.
+    ::::
 
     * For Podman 4
 
@@ -153,20 +164,42 @@ Using Docker or Podman as container runtime is a configuration local to the host
             sudo dnf versionlock list
             ```
 
-5. [This step is for RHEL 9 and Rocky Linux 9 only] Switch the network stack from Netavark to CNI:
+5. Configure the Podman network backend. The required backend depends on the OS version:
 
-    1. If the */etc/containers/containers.conf* file does not exist, copy the */usr/share/containers/containers.conf* file to the */etc/containers/* directory (for example, using `cp /usr/share/containers/containers.conf /etc/containers/`).
-    2. Open the */etc/containers/containers.conf* file. Navigate to the **network** section and make sure that the **network_backend** setting is set to `cni`.
-    3. Reboot the system (`reboot`).
-    4. Check that the network stack has changed to `cni`: <br>
+    * For RHEL 8 and Rocky Linux 8: Ensure that Podman uses the CNI network backend. Although CNI is the default, set `network_backend="cni"` explicitly so the host does not depend on the existing configuration.
 
-        ```sh
-        cat /etc/containers/containers.conf
-        [...]
-        [network]
-        network_backend="cni"
-        [...]
-        ```
+        1. If the `/etc/containers/containers.conf` file does not exist, copy the `/usr/share/containers/containers.conf` file to the `/etc/containers/` directory (for example, using `cp /usr/share/containers/containers.conf /etc/containers/`).
+        2. Open the `/etc/containers/containers.conf` file. Navigate to the **network** section and make sure that the **network_backend** setting is set to `cni`.
+        3. Reboot the system (`reboot`).
+        4. Check that the network stack is `cni`: <br>
+
+            ```sh
+            cat /etc/containers/containers.conf
+            [...]
+            [network]
+            network_backend="cni"
+            [...]
+            ```
+
+    * For RHEL 9 and Rocky Linux 9 only: Switch the network stack from Netavark to CNI.
+
+        1. If the `/etc/containers/containers.conf` file does not exist, copy the `/usr/share/containers/containers.conf` file to the `/etc/containers/` directory (for example, using `cp /usr/share/containers/containers.conf /etc/containers/`).
+        2. Open the `/etc/containers/containers.conf` file. Navigate to the **network** section and make sure that the **network_backend** setting is set to `cni`.
+        3. Reboot the system (`reboot`).
+        4. Check that the network stack has changed to `cni`: <br>
+
+            ```sh
+            cat /etc/containers/containers.conf
+            [...]
+            [network]
+            network_backend="cni"
+            [...]
+            ```
+
+    * {applies_to}`ece: ga 4.2` For RHEL 10: Keep the default Netavark backend. Do not install `containernetworking-plugins` and do not set `network_backend=cni`.
+
+        1. If the `/etc/containers/containers.conf` file does not exist, copy the `/usr/share/containers/containers.conf` file to the `/etc/containers/` directory (for example, using `cp /usr/share/containers/containers.conf /etc/containers/`).
+        2. If the file contains a `network_backend` setting (for example a leftover `cni` pin), remove that line so Podman uses the RHEL 10 default (Netavark).
 
 6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
 

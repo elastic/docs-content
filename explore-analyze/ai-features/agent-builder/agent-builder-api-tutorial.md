@@ -39,7 +39,7 @@ To build a custom agent with {{agent-builder}} APIs, you need the following:
 
 - Access to the feature in {{kib}}. Refer to [](get-started.md)
 - [Permission](permissions.md) to create indices and use {{agent-builder}}
-  - A {{kib}} API key for authentication if you're using `curl`
+- A [{{agent-builder}} API key](api-keys.md) for authentication if you're using `curl`
   :::{note}
   Set the required environment variables to simplify running `curl` commands:
   ```bash
@@ -923,7 +923,7 @@ The agent uses your custom `example-books-esql-tool` to efficiently answer the q
 
 ### Handle a human-in-the-loop prompt
 
-When an agent calls an Elastic-built tool that requires your confirmation, the response has an `awaiting_prompt` status and includes the prompt in `response.prompts`:
+When an agent calls a tool that requires your confirmation, the response has an `awaiting_prompt` status and includes the prompt in `response.prompts`:
 
 ```json
 {
@@ -935,7 +935,8 @@ When an agent calls an Elastic-built tool that requires your confirmation, the r
       {
         "type": "confirmation",
         "id": "<PROMPT_ID>",
-        "title": "Confirm this action"
+        "title": "Permission to call tool",
+        "message": "Agent wants to call tool \"<TOOL_ID>\". Do you want to proceed?"
       }
     ]
   }

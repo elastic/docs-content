@@ -193,6 +193,7 @@ toc:
       - file: cross-project-search/cross-project-search-tags.md
       - file: cross-project-search/cross-project-search-project-routing.md
       - file: cross-project-search/cross-project-search-manage-scope.md
+      - file: cross-project-search/cps-compared-to-ccs.md
       - title: "CPS in ES|QL"
         crosslink: elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md
   - file: ai-features.md
@@ -245,6 +246,8 @@ toc:
               - file: ai-features/agent-builder/agent-traces-dashboard.md
               - file: ai-features/agent-builder/create-alerts.md
           - file: ai-features/agent-builder/permissions.md
+            children:
+              - file: ai-features/agent-builder/api-keys.md
           - file: ai-features/agent-builder/troubleshooting.md
             children:
               - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
@@ -258,6 +261,9 @@ toc:
           - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md
+      - hidden: ai-features/context-engine.md
+      - hidden: ai-features/context-engine/quickstart.md
+      - hidden: ai-features/context-engine/langchain-integration.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/agent-skills.md
       - file: ai-features/llm-guides/llm-connectors.md
@@ -322,6 +328,9 @@ toc:
           - file: visualize/charts/treemap-charts.md
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
+      - file: visualize/custom-panels.md
+        children:
+          - file: visualize/custom-panel-examples.md
       - file: visualize/text-panels.md
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
@@ -385,6 +394,16 @@ toc:
     children:
       - file: find-and-organize/kibana-interface.md
       - file: find-and-organize/data-views.md
+        children:
+          - file: find-and-organize/data-views/create-data-view.md
+          - file: find-and-organize/data-views/delete-data-view.md
+          - file: find-and-organize/data-views/duplicate-data-view.md
+          - file: find-and-organize/data-views/customize-data-view-fields.md
+            children:
+              - file: find-and-organize/data-views/runtime-fields.md
+              - file: find-and-organize/data-views/scripted-fields.md
+              - file: find-and-organize/data-views/field-formatters.md
+              - file: find-and-organize/data-views/data-view-field-cache.md
       - file: find-and-organize/saved-objects.md
       - file: find-and-organize/files.md
       - file: find-and-organize/reports.md
@@ -431,7 +450,7 @@ toc:
                   - file: alerting/experimental-alerting-system/rules/configure-rule-alert-delay.md
                   - file: alerting/experimental-alerting-system/rules/configure-rule-recovery.md
                   - file: alerting/experimental-alerting-system/rules/configure-no-data-handling.md
-                  - file: alerting/experimental-alerting-system/rules/configure-rule-tags.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-artifacts.md
               - file: alerting/experimental-alerting-system/rules/view-manage-rules.md
               - file: alerting/experimental-alerting-system/rules/review-rule-execution-history.md
               - file: alerting/experimental-alerting-system/rules/esql-query-patterns.md
@@ -444,12 +463,13 @@ toc:
               - file: alerting/experimental-alerting-system/rules/rule-event-field-reference.md
           - file: alerting/experimental-alerting-system/alerts.md
             children:
-              - file: alerting/experimental-alerting-system/alerts/alert-data-model.md
+              - file: alerting/experimental-alerting-system/alerts/rule-event-data-model.md
               - file: alerting/experimental-alerting-system/alerts/view-and-manage-alerts.md
                 children:
                   - file: alerting/experimental-alerting-system/alerts/triage-alert-episodes.md
                   - file: alerting/experimental-alerting-system/alerts/investigate-alert-episodes.md
               - file: alerting/experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md
+              - file: alerting/experimental-alerting-system/alerts/query-signals.md
               - file: alerting/experimental-alerting-system/alerts/field-reference.md
           - file: alerting/experimental-alerting-system/notifications-actions.md
             children:
