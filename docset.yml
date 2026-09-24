@@ -151,6 +151,7 @@ cross_links:
   - apm-aws-lambda
   - apm-k8s-attacher
   - apm-server
+  - autoops-insights
   - beats
   - cli
   - cloud
