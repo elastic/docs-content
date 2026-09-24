@@ -21,6 +21,17 @@ Context Engine helps you turn enterprise data into reusable context for agents a
 
 You organize context around a specific subject or set of questions, generate KIs from relevant data, and make that knowledge available to an agent.
 
+## Context Engine use cases
+
+Context Engine is useful when agents repeatedly need to interpret large, complex, or changing bodies of data. For example, you can:
+
+- Turn technical documentation, policies, cases, or runbooks into reusable explanations, procedures, and limitations.
+- Give agents business definitions and verified query patterns for working with structured data.
+- Build context that develops across records, such as profiles of services, systems, accounts, or projects.
+- Surface significant findings or conditions without making every agent analyze all source records.
+
+These use cases share the same advantage: move recurring interpretation into an automation, reuse the resulting context across questions and agents, and improve it as agent traces reveal gaps.
+
 ## How Context Engine works
 
 To build and use context with Context Engine:
