@@ -17,7 +17,7 @@ description: Visualize and group detection alerts using Summary, Trend, Counts, 
 The Alerts page includes a visualization section that helps you spot patterns, identify high-volume rules, and prioritize investigation. Choose from four view types, each designed for different analysis tasks.
 
 :::{image} /solutions/images/security-alert-page.png
-:alt: Alerts page with visualizations section
+:alt: Alerts page showing the Summary visualization with severity levels and alerts by name
 :screenshot:
 :::
 

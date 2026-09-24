@@ -126,7 +126,14 @@ Use the search bar and **Tags** filter to find specific rules. For example, filt
 ::::
 
 :::{image} /solutions/images/security-prebuilt-rules-update.png
+:alt: The Rule Updates tab on the Rules page
+:applies_to: {stack: ga 9.0-9.2, serverless: unavailable}
+:screenshot:
+:::
+
+:::{image} /solutions/images/security-prebuilt-rules-update-9.3.png
 :alt: The Rule Updates tab on the Detection rules (SIEM) page
+:applies_to: {stack: ga 9.3+, serverless: ga}
 :screenshot:
 :::
 
