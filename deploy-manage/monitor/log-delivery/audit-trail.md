@@ -150,7 +150,7 @@ FROM logs-*_audit.otel-*
 Do not select the **Ignore data searches and reads** filter for this query. Replace `<INDEX_PATTERN>` with the index or pattern to watch.
 
 ```esql
-FROM logs-*audit.otel-*
+FROM logs-*_audit.otel-*
 | WHERE event.action == "access_granted"
   AND elasticsearch.audit.indices LIKE "<INDEX_PATTERN>"
 | KEEP @timestamp, user.name, user.id, elasticsearch.audit.action, elasticsearch.audit.indices, source.ip, service.name
