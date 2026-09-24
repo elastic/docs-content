@@ -28,14 +28,12 @@ stack: experimental 9.6+
 
 Select tags in **Rule tags** to apply the policy to alert episodes from the rules that carry them. An alert episode is in scope when its rule carries at least one of the selected tags. You can select up to 50 tags, each up to 256 characters, including a tag that no rule uses yet.
 
-To target one rule, give it a [tag](../rules/configure-rule-artifacts.md#add-tags-runbooks) that no other rule uses, then select that tag. Selecting any tag excludes alert episodes from untagged rules.
-
 | To apply the policy to | How to configure it |
 |---|---|
 | All alert episodes that pass the eligibility check, regardless of rule or severity | Leave **Rule tags** and **Match conditions** empty |
 | Alert episodes at a specific severity level | Enter `severity: "critical"` in **Match conditions** |
 | Alert episodes from rules sharing a tag | Select the tag, for example `checkout`, in **Rule tags** |
-| Alert episodes from one specific rule | Give the rule a tag that no other rule uses, then select that tag in **Rule tags** |
+| Alert episodes from one specific rule | Give the rule a [tag](../rules/configure-rule-artifacts.md#add-tags-runbooks) that no other rule uses, then select that tag in **Rule tags** |
 
 To narrow the scope further, add a [match conditions expression](#filter-with-kql-expression).
 
