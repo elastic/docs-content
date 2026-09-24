@@ -884,6 +884,12 @@ redirects:
     anchors:
       'alert-data-model':
 
+# Related to the tags and runbooks page adding dashboards
+  'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-tags.md':
+    to: 'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-artifacts.md'
+    anchors:
+      'tags-investigation':
+
 # Related to cases and alerting documentation restructuring
   # Main pages
   'explore-analyze/alerts-cases.md': 'explore-analyze/alerting.md'
