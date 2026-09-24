@@ -28,7 +28,7 @@ stack: ga 9.6+
 
 Select tags in **Rule tags** to apply the policy to alert episodes from the rules that carry them. An alert episode is in scope when its rule carries at least one of the selected tags. You can select up to 50 tags, each up to 256 characters, including a tag that no rule uses yet.
 
-To target one rule, give it a [tag](../rules/configure-rule-tags.md) that no other rule uses, then select that tag. Selecting any tag excludes alert episodes from untagged rules.
+To target one rule, give it a [tag](../rules/configure-rule-artifacts.md#add-tags-runbooks) that no other rule uses, then select that tag. Selecting any tag excludes alert episodes from untagged rules.
 
 | To apply the policy to | How to configure it |
 |---|---|
