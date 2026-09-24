@@ -29,7 +29,7 @@ After you configure an authentication method in {{es}}, you can configure an aut
 * [Embedded content authentication](#embedded-content-authentication)
 
 :::{tip}
-On {{ech}} and {{serverless-full}}, SSO between your {{ecloud}} account and {{kib}} is enabled by default. You can also configure SSO at the [organization level](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) or the [deployment level](#deployment-authentication). For details, refer to [Cloud organization users](/deploy-manage/users-roles/cloud-organization.md).
+On {{ech}} and {{serverless-full}}, SSO between your {{ecloud}} account and {{kib}} is enabled by default. You can also configure SSO at the [organization level](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) or the [deployment level](#deployment-authentication). For details, refer to [](/deploy-manage/users-roles/cloud-organization.md).
 :::
 
 ## Multiple authentication providers [multiple-authentication-providers]
