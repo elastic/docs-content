@@ -1,0 +1,17 @@
+name: Release notes
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  push:
+    branches: [main]
+permissions: {}
+jobs:
+  release-notes:
+    permissions:
+      contents: read
+      pull-requests: read
+      packages: read
+      id-token: write
+    uses: elastic/docs-actions/.github/workflows/release-notes.yml@v1
+    with:
+      config: changelog.yml
