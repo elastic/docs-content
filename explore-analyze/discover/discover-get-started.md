@@ -449,7 +449,7 @@ If you are using {{esql}}, add `METADATA _id, _index` on the `FROM` or `TS` line
 FROM kibana_sample_data_logs METADATA _id, _index
 ```
 
-Queries that transform rows, such as `STATS` or `KEEP`, cannot copy a link to an individual result. **Copy link** stays available and shows a warning. If `_id` and `_index` are missing, **Copy link** stays available and warns you to add `METADATA _id, _index`.
+If the query transforms rows, such as with `STATS` or `KEEP`, you cannot copy a link to an individual result. **Copy link** stays available and shows a warning. If `_id` and `_index` are missing, **Copy link** stays available and warns you to add `METADATA _id, _index`.
 
 
 ## Analyze your data with AI [analyze-with-ai]
