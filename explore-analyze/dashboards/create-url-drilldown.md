@@ -42,15 +42,8 @@ This example adds a pie chart and a URL drilldown that opens a GitHub search for
 
 1. Add the [**Sample web logs**](/manage-data/ingest/sample-data.md) data. This also adds the **[Logs] Web Traffic** dashboard.
 2. Open the **[Logs] Web Traffic** dashboard and select **Edit**.
-3. Add a pie chart.
-
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.6+` In the application menu, select **Add** → **Create visualization**.
-    * {applies_to}`stack: ga 9.5` In the application menu, select **Add** → **Visualization**.
-    * {applies_to}`stack: ga 9.4` In the application menu, select **Add panel** → **Lens**.
-    * {applies_to}`stack: ga 9.2-9.3` In the application menu, select **add** → **Lens**.
-    * {applies_to}`stack: ga 9.0-9.1` In the application menu, select **Create visualization**.
-
-4. Set the visualization type to **Pie**, drag **machine.os.keyword** from **Available fields** to the workspace, then select **Save and return**.
+3. From the application menu, add a new visualization to the dashboard, then set the type to **Pie**.
+4. Drag **machine.os.keyword** from **Available fields** to the workspace, then select **Save and return**.
 5. Hover over the pie chart panel, open the {icon}`boxes_vertical` panel menu, then select {icon}`plus_in_circle` **Create drilldown**.
 6. Select **Go to URL**.
 
