@@ -1,5 +1,7 @@
 ---
 navigation_title: Logs
+meta_title: Log management and monitoring with Elastic
+description: Collect, manage, search, and analyze logs with Elastic Observability. Compare ingestion options, configure log data, detect anomalies, and create threshold alerts.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-checklist.html
   - https://www.elastic.co/guide/en/serverless/current/observability-log-monitoring.html
@@ -8,7 +10,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Log monitoring [logs-checklist]
+# Elastic Log monitoring [logs-checklist]
 
 Elastic Observability allows you to deploy and manage logs at a petabyte scale, giving you insights into your logs in minutes. You can also search across your logs in one place, troubleshoot in real time, and detect patterns and outliers with categorization and anomaly detection. For more information, refer to the following links:
 

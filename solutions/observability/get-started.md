@@ -1,5 +1,6 @@
 ---
 navigation_title: Get started
+description: Get started with Elastic Observability. Create a project, collect logs and metrics from your infrastructure and applications, and explore your data in one place.
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-get-started.html
   - https://www.elastic.co/guide/en/observability/current/observability-get-started.html

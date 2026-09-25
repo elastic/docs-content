@@ -1,4 +1,6 @@
 ---
+navigation_title: Alerting
+description: Create alerts in Elastic Observability. Define rules that detect conditions in your data and trigger actions through connectors.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/create-alerts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-alerting.html
@@ -10,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Alerting [observability-alerting]
+# Alerting in Elastic Observability [observability-alerting]
 
 Alerting enables you to define *rules*, which detect complex conditions within different apps and trigger actions when those conditions are met. Alerting provides a set of built-in connectors and rules for you to use. This page describes all of these elements and how they operate together.
 

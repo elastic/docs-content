@@ -1,4 +1,5 @@
 ---
+description: Compare large language model performance across Elastic Observability AI Assistant use cases. Reference internal test ratings for alerts, APM, ES|QL generation, and knowledge retrieval.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/observability-llm-performance-matrix.html
 applies_to:

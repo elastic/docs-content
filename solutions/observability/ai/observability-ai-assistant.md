@@ -1,5 +1,6 @@
 ---
 navigation_title: AI Assistant
+description: Understand, analyze, and interact with your Observability data using the Elastic AI Assistant. Decode errors, find performance bottlenecks, build queries, and visualize data.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/obs-ai-assistant.html
 applies_to:
