@@ -101,6 +101,21 @@ This results in parsing errors like this:
 ]
 ```
 
+### Disabling a workflow breaks agents that use it [disabled-pre-execution-workflow]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+:::{note}
+The selector-visibility half of this issue is fixed on serverless and on 9.5.3 and later.
+:::
+
+Disabling a workflow doesn't remove it from the agents or spaces that use it as a [pre-execution workflow](agents-and-workflows.md#pre-execution-workflows), so every message to those agents fails with a **Workflow Failed** error. On 9.4.x, and on 9.5.0 through 9.5.2, the disabled workflow also disappears from the **Workflows** selector, so you can't clear it from the UI without re-enabling the workflow first.
+
+**Workaround:** Re-enable the workflow, clear it from the selector, save, then disable the workflow again. You can also clear it through the API. To learn more, refer to [Disabled pre-execution workflow](troubleshooting/pre-execution-workflow-disabled.md).
+
 ### MCP server URL copy button omits space name
 
 :::{note}
