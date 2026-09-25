@@ -7,5 +7,7 @@ toc:
   - file: the-stack.md
   - file: versioning-availability.md
   - file: howto-use-the-docs.md
+    children:
+      - file: machine-readable-docs.md
   - title: Glossary
     crosslink: docs-content://reference/glossary/index.md
