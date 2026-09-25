@@ -25,7 +25,7 @@ The {{alerting-v2-system}} starts with a rule evaluating your data on a schedule
 
 ## The building blocks
 
-That's the big picture. The five objects in this section are the pieces you'll create and configure: rules, rule events, alert episodes, action policies, and workflows.
+You create and configure three of the five building blocks: rules, action policies, and workflows. {{kib}} generates the other two, rule events and alert episodes, from your rules' matches.
 
 ### Rules
 
@@ -59,9 +59,7 @@ Refer to [Connect workflows](workflows-alerting.md) to learn more.
 
 ## How the pieces fit together [how-pieces-fit-together]
 
-This section walks through the same flow in more detail. It places the five objects on that path so you can see how they connect.
-
-Every match still becomes a rule event. From there, the rule's configuration determines the next step:
+Every match becomes a rule event. From there, the rule's configuration determines the next step:
 
 * **Alert episode** - {{kib}} groups the event into an [alert episode](alerts.md). An action policy evaluates the alert episode and can invoke a workflow, which sends the notification or runs the automation.
 
