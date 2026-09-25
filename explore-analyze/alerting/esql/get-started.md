@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "Review requirements, turn on the system, configure role access, and follow a tutorial to create a rule and observe the alert lifecycle."
+description: "Learn what happens after a rule runs, look up key terms, and follow a hands-on tutorial to create a rule and observe the alert lifecycle."
 ---
 
 # Get started [get-started]
@@ -14,11 +14,13 @@ description: "Review requirements, turn on the system, configure role access, an
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-Use the following guides to get the system running in your space, set up role access for your team, and create your first rule.
+Use the following pages to learn how the system works, look up the terms used throughout its documentation, and create your first rule.
 
-- [Set up the {{alerting-v2-system}}](get-started/setup.md): Review requirements, enable the `alerting:v2:enabled` advanced setting, and confirm the system is accessible in your space.
-- [Configure access](get-started/configure-access.md): Set up a role with the {{kib}} feature privileges needed to create rules, triage alert episodes, and query alert episode data.
+- [How it works](get-started/how-it-works.md): Walk through what happens after a rule runs, including how a rule's configuration determines whether matches open an alert episode or remain available for later analysis.
+- [Glossary](get-started/glossary.md): Look up definitions of key terms used throughout the {{alerting-v2-system}} documentation, such as alert episode, action policy, and rule event.
 - [Create your first rule](get-started/create-your-first-rule.md): A hands-on tutorial that walks you through loading sample data, creating a rule, and observing the alert lifecycle from breach through automatic recovery.
+
+Before you start the tutorial, [set up the {{alerting-v2-system}}](setup.md) and [configure access](manage/configure-access.md) for your role.
 
 ## Explore the documentation [explore-documentation]
 

@@ -14,11 +14,11 @@ description: A detailed walkthrough of how a rule's configuration determines whe
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-This page walks through what happens at each step after a rule runs on its schedule. Both paths begin the same way: {{kib}} writes a [rule event](rules/rule-event-field-reference.md) for each matching row. The rule's configuration determines whether those events belong to an [alert episode](alerts.md). Use this page to understand how the different components of the {{alerting-v2-system}} interact.
+This page walks through what happens at each step after a rule runs on its schedule. Both paths begin the same way: {{kib}} writes a [rule event](../rules/rule-event-field-reference.md) for each matching row. The rule's configuration determines whether those events belong to an [alert episode](../alerts.md). Use this page to understand how the different components of the {{alerting-v2-system}} interact.
 
 ## Rule opens an alert episode [how-alert-mode-works]
 
-When {{kib}} tracks matches as an [alert episode](alerts.md), it writes each match as a rule event (`type: alert`) with `episode.*` fields. Events that share `episode.id` belong to the same alert episode. Each new event can advance the alert episode's lifecycle state. An action policy sits between the alert episode and a workflow, deciding whether and when to invoke it.
+When {{kib}} tracks matches as an [alert episode](../alerts.md), it writes each match as a rule event (`type: alert`) with `episode.*` fields. Events that share `episode.id` belong to the same alert episode. Each new event can advance the alert episode's lifecycle state. An action policy sits between the alert episode and a workflow, deciding whether and when to invoke it.
 
 | Step | Actor | Action |
 |------|-------|--------|
@@ -50,7 +50,7 @@ The engineer investigates, fixes a slow query, and the alert episode recovers au
 
 ## Rule writes events for later analysis [how-signal-mode-works]
 
-{{kib}} writes a rule event (`type: signal`) to `.rule-events` for each match. These events stay in `.rule-events`. They don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers. They accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to a follow-on rule that opens an alert episode. For query examples, dashboards, and correlation patterns, refer to [Query rule events](alerts/query-signals.md).
+{{kib}} writes a rule event (`type: signal`) to `.rule-events` for each match. These events stay in `.rule-events`. They don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers. They accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to a follow-on rule that opens an alert episode. For query examples, dashboards, and correlation patterns, refer to [Query rule events](../alerts/query-signals.md).
 
 | Step | Actor | Action |
 |------|-------|--------|
@@ -70,6 +70,7 @@ After a few weeks, the accumulated events become useful in two ways. The team ca
 
 ## Related pages
 
-- [Get started](get-started.md): Enable the {{alerting-v2-system}} and create your first rule.
-- [Rules](rules.md): What rules detect, how action policies invoke workflows, and how to select a creation path.
-- [Notifications and actions](notifications-actions.md): Set up action policies that invoke workflows for the alert episodes they apply to.
+- [Set up the {{alerting-v2-system}}](../setup.md): Review the requirements and turn on the system.
+- [Create your first rule](create-your-first-rule.md): Load sample data, create a rule, and observe the alert lifecycle.
+- [Rules](../rules.md): What rules detect, how action policies invoke workflows, and how to select a creation path.
+- [Notifications and actions](../notifications-actions.md): Set up action policies that invoke workflows for the alert episodes they apply to.

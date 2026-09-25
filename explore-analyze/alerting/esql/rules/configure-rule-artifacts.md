@@ -33,7 +33,7 @@ Skip tags and runbooks when the rule doesn't open [alert episodes](configure-rul
 
 ## Add tags and runbooks to a rule [add-tags-runbooks]
 
-To add tags or a runbook, your role needs **Rules: All** (under **Alerting**). Refer to [Configure access](../get-started/configure-access.md#alerting-manage-rules-privileges).
+To add tags or a runbook, your role needs **Rules: All** (under **Alerting**). Refer to [Configure access](../manage/configure-access.md#alerting-manage-rules-privileges).
 
 Tags and runbooks are part of the rule definition, so you set them in the rule form when you create or edit a rule:
 
@@ -44,7 +44,7 @@ Both are stored with the rule, so they take effect only after you save the rule.
 
 ## Link dashboards to a rule [attach-dashboards]
 
-To link dashboards, your role needs **Rules: All** (under **Alerting**). Refer to [Configure access](../get-started/configure-access.md#alerting-manage-rules-privileges). Linked dashboards appear in the **Dashboards** subsection of the **Artifacts** section on the rule details page.
+To link dashboards, your role needs **Rules: All** (under **Alerting**). Refer to [Configure access](../manage/configure-access.md#alerting-manage-rules-privileges). Linked dashboards appear in the **Dashboards** subsection of the **Artifacts** section on the rule details page.
 
 1. Find **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), go to **Rules**, then select the rule.
 2. On the **Overview** tab, expand **Artifacts**.

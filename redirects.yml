@@ -910,13 +910,13 @@ redirects:
   'explore-analyze/alerting/experimental-alerting-system/alerts/rule-event-data-model.md': 'explore-analyze/alerting/esql/alerts/rule-event-data-model.md'
   'explore-analyze/alerting/experimental-alerting-system/alerts/triage-alert-episodes.md': 'explore-analyze/alerting/esql/alerts/triage-alert-episodes.md'
   'explore-analyze/alerting/experimental-alerting-system/alerts/view-and-manage-alerts.md': 'explore-analyze/alerting/esql/alerts/view-and-manage-alerts.md'
-  'explore-analyze/alerting/experimental-alerting-system/authorization.md': 'explore-analyze/alerting/esql/authorization.md'
+  'explore-analyze/alerting/experimental-alerting-system/authorization.md': 'explore-analyze/alerting/esql/manage/authorization.md'
   'explore-analyze/alerting/experimental-alerting-system/get-started.md': 'explore-analyze/alerting/esql/get-started.md'
-  'explore-analyze/alerting/experimental-alerting-system/get-started/configure-access.md': 'explore-analyze/alerting/esql/get-started/configure-access.md'
+  'explore-analyze/alerting/experimental-alerting-system/get-started/configure-access.md': 'explore-analyze/alerting/esql/manage/configure-access.md'
   'explore-analyze/alerting/experimental-alerting-system/get-started/create-your-first-rule.md': 'explore-analyze/alerting/esql/get-started/create-your-first-rule.md'
-  'explore-analyze/alerting/experimental-alerting-system/get-started/setup.md': 'explore-analyze/alerting/esql/get-started/setup.md'
-  'explore-analyze/alerting/experimental-alerting-system/glossary.md': 'explore-analyze/alerting/esql/glossary.md'
-  'explore-analyze/alerting/experimental-alerting-system/how-it-works.md': 'explore-analyze/alerting/esql/how-it-works.md'
+  'explore-analyze/alerting/experimental-alerting-system/get-started/setup.md': 'explore-analyze/alerting/esql/setup.md'
+  'explore-analyze/alerting/experimental-alerting-system/glossary.md': 'explore-analyze/alerting/esql/get-started/glossary.md'
+  'explore-analyze/alerting/experimental-alerting-system/how-it-works.md': 'explore-analyze/alerting/esql/get-started/how-it-works.md'
   'explore-analyze/alerting/experimental-alerting-system/notifications-actions.md': 'explore-analyze/alerting/esql/notifications-actions.md'
   'explore-analyze/alerting/experimental-alerting-system/rules.md': 'explore-analyze/alerting/esql/rules.md'
   'explore-analyze/alerting/experimental-alerting-system/rules/configure-a-rule.md': 'explore-analyze/alerting/esql/rules/configure-a-rule.md'
@@ -945,6 +945,13 @@ redirects:
   'explore-analyze/alerting/experimental-alerting-system/rules/view-manage-rules.md': 'explore-analyze/alerting/esql/rules/view-manage-rules.md'
   'explore-analyze/alerting/experimental-alerting-system/rules/yaml-rule-schema-reference.md': 'explore-analyze/alerting/esql/rules/yaml-rule-schema-reference.md'
   'explore-analyze/alerting/experimental-alerting-system/workflows-alerting.md': 'explore-analyze/alerting/esql/workflows-alerting.md'
+
+# Related to reorganizing the experimental alerting system pages into Get started, Set up, and Manage
+  'explore-analyze/alerting/esql/authorization.md': 'explore-analyze/alerting/esql/manage/authorization.md'
+  'explore-analyze/alerting/esql/get-started/configure-access.md': 'explore-analyze/alerting/esql/manage/configure-access.md'
+  'explore-analyze/alerting/esql/get-started/setup.md': 'explore-analyze/alerting/esql/setup.md'
+  'explore-analyze/alerting/esql/glossary.md': 'explore-analyze/alerting/esql/get-started/glossary.md'
+  'explore-analyze/alerting/esql/how-it-works.md': 'explore-analyze/alerting/esql/get-started/how-it-works.md'
 
 # Related to cases and alerting documentation restructuring
   # Main pages
