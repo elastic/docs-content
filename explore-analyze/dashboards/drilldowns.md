@@ -27,7 +27,10 @@ You can add three types of drilldown:
 * **[URL](create-url-drilldown.md)**: Open a website from a panel. For example, open a search page that includes the host name you selected.
 * **[Discover](create-discover-drilldown.md)**: Open **Discover** from a visualization panel. For example, open the documents for one slice of a pie chart.
 
-[![Drilldowns video](https://play.vidyard.com/UhGkdJGC32HRn3oS5ZYJL1.jpg)](https://videos.elastic.co/watch/UhGkdJGC32HRn3oS5ZYJL1?)
+:::{image} /explore-analyze/images/kibana-dashboard_createDrilldown.png
+:alt: Create drilldown flyout for a URL, with Single click selected
+:screenshot:
+:::
 
 ## How a drilldown uses the selected value [drilldowns-requirements]
 
