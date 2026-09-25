@@ -435,7 +435,13 @@ When you are investigating a result, copy a link that reopens **Discover** with 
    :width: 400px
    :::
 
-The link uses the absolute time range of the results on screen, so the document stays in that range when the link is opened.
+Opening the link brings back the same flyout.
+
+The link uses the absolute time range of the results on screen, so the document stays in that range.
+
+After you expand a grouped {{esql}} result and select a nested document, **Copy link** reopens that document in the default layout and keeps the grouping with [`INLINE STATS`](elasticsearch://reference/query-languages/esql/commands/inlinestats-by.md).
+
+When **Copy link** can copy the open document, **Share** includes that document. The session link opens **Discover** with the same flyout. If the time range is relative, the **Share** dialog warns you to use an absolute time range so the document stays in the results. If **Copy link** cannot copy the document, the dialog says the link will not include it.
 
 If you are using {{esql}}, add `METADATA _id, _index` on the `FROM` or `TS` line, then rerun the query and reopen the document before copying the link. For example:
 
@@ -444,8 +450,6 @@ FROM kibana_sample_data_logs METADATA _id, _index
 ```
 
 If the query transforms rows, such as with `STATS` or `KEEP`, you cannot copy a link to an individual result. **Copy link** stays available and shows a warning. If `_id` and `_index` are missing, **Copy link** stays available and warns you to add `METADATA _id, _index`.
-
-When **Copy link** can copy the open document, **Share** includes that document. The link opens **Discover** with the same flyout open. If the time range is relative, the **Share** dialog warns you to use an absolute time range so the document stays in the results. If **Copy link** cannot copy the document, the dialog says the link will not include it.
 
 
 ## Analyze your data with AI [analyze-with-ai]
