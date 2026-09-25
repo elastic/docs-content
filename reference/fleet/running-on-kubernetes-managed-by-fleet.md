@@ -213,7 +213,7 @@ If you’d like to run {{agent}} on Kubernetes on a read-only file system, you c
 
     ::::
 
-2. To check if your {{agent}} is enrolled in {{fleet}}, go to **Management → {{fleet}} → Agents**.
+2. To check if your {{agent}} is enrolled in {{fleet}}, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Agents**.
 
     :::{image} images/kibana-fleet-agents.png
     :alt: {{agent}}s {{fleet}} page
