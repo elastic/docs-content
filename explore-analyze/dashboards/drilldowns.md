@@ -99,7 +99,7 @@ Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] 
 3. Save the dashboard.
 4. In the data table panel, select **+** on a value, then select **View details**.
 
-   :::{image} /explore-analyze/images/kibana-dashboard_drilldownOnPanel_8.3.png
+   :::{image} /explore-analyze/images/kibana-dashboard_drilldownOnPanel.png
    :alt: Drilldown on data table that navigates to another dashboard
    :screenshot:
    :::
@@ -166,7 +166,7 @@ This example adds a pie chart and a URL drilldown that opens a GitHub search for
 7. Save the dashboard.
 8. On the pie chart panel, select a slice, then select **Show on GitHub**.
 
-    ![URL drilldown popup](/explore-analyze/images/kibana-dashboard_urlDrilldownPopup_8.3.png)
+    ![URL drilldown popup](/explore-analyze/images/kibana-dashboard_urlDrilldownPopup.png)
 
 The GitHub issues search opens with the slice value in the query.
 
@@ -408,7 +408,7 @@ This example creates a Discover drilldown on the **[Logs] Bytes distribution** p
 5. Save the dashboard.
 6. Drag across the bars to select a range of `bytes` values, then select **View bytes distribution in Discover**.
 
-   :::{image} /explore-analyze/images/kibana-dashboard_discoverDrilldown_8.3.png
+   :::{image} /explore-analyze/images/kibana-dashboard_discoverDrilldown.png
    :alt: Drilldown on bar vertical stacked chart that navigates to Discover
    :screenshot:
    :::
