@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Use ES|QL in Discover to query signal events in the experimental alerting system. Filter .rule-events by rule, build dashboards from detection history, and use them as input to a follow-on rule."
+description: "Use ES|QL in Discover to query signal events. Filter .rule-events by rule, build dashboards from detection history, and use them as input to a follow-on rule."
 ---
 
-# Use Discover to query {{alerting-v2-system}} rule events [query-rule-events-discover]
+# Use Discover to query rule events [query-rule-events-discover]
+
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
 
 Events with `type: signal` don't belong to an [alert episode](../alerts.md), so they don't appear on the **Alerts** page. In **Discover**, filter `.rule-events` to those events to review detection history, save it for investigations, or use it as input to a rule that opens an alert episode.
 

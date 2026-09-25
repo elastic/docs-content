@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How to route alert episodes to different workflows based on severity level in the experimental alerting system."
+description: "How to route alert episodes to different workflows based on severity level."
 ---
 
-# Route alert episodes by severity in the {{alerting-v2-system}} [route-by-severity]
+# Route alert episodes by severity [route-by-severity]
+
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
 
 Use this page to send critical and non-critical alert episodes to different workflows by scoping one action policy per severity.
 

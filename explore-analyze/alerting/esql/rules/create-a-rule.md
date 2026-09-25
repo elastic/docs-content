@@ -5,12 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Create rules in the experimental alerting system using the ES|QL editor, AI Agent, rule builder, or directly from a Discover session."
+description: "Create rules using the ES|QL editor, AI Agent, rule builder, or directly from a Discover session."
 ---
 
-# Create a rule in the {{alerting-v2-system}} [create-a-rule]
+# Create a rule [create-a-rule]
 
-The {{alerting-v2-system}} in {{kib}} provides several ways to create rules. Compare the options below and pick the one that best fits your workflow and how comfortable you are writing {{esql}}.
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
+
+{{kib}} provides several ways to create rules. Compare the options below and pick the one that best fits your workflow and how comfortable you are writing {{esql}}.
 
 | Option | Best for |
 | --- | --- |

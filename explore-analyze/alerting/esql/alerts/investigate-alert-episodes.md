@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Investigate alert episodes in the experimental alerting system. Understand what triggered an alert episode, assess metric behavior, find related alert episodes, review responders, and inspect underlying data."
+description: "Investigate alert episodes. Understand what triggered an alert episode, assess metric behavior, find related alert episodes, review responders, and inspect underlying data."
 ---
 
-# Investigate alert episodes in the {{alerting-v2-system}} [investigate-alert-episodes]
+# Investigate alert episodes [investigate-alert-episodes]
+
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
 
 From the **Alerts** page, select an alert episode to open its detail page, which surfaces what triggered the alert episode, its severity, recurring patterns, and response history, so you can investigate and coordinate a response.
 

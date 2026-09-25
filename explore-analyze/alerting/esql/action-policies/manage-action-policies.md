@@ -5,12 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Manage action policies in the experimental alerting system: turn them on or off, snooze them so they don't invoke workflows, and rotate API keys."
+description: "Manage action policies: turn them on or off, snooze them so they don't invoke workflows, and rotate API keys."
 ---
 
-# Manage action policies for the {{alerting-v2-system}} [manage-action-policies]
+# Manage action policies [manage-action-policies]
 
-This page covers how to view action policy details in the {{alerting-v2-system}}, enable and disable action policies, snooze them during planned outages, and rotate their API keys. To monitor dispatcher activity and review execution outcomes, refer to [Review action policy execution history](review-action-policy-execution-history.md).
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
+
+This page covers how to view action policy details, enable and disable action policies, snooze them during planned outages, and rotate their API keys. To monitor dispatcher activity and review execution outcomes, refer to [Review action policy execution history](review-action-policy-execution-history.md).
 
 To find your action policies, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**.
 

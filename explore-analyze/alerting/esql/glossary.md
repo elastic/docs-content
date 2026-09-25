@@ -6,12 +6,15 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: Definitions of key terms used throughout the experimental Kibana alerting system documentation.
+description: Definitions of key terms used throughout the documentation, such as alert episode, action policy, and rule event.
 ---
 
-# {{alerting-v2-system-cap}} glossary [glossary]
+# Glossary [glossary]
 
-These terms appear throughout the {{alerting-v2-system}} docs. If a term is unclear while reading, check its definition here before going further.
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
+
+These terms appear throughout the documentation for this system. If a term is unclear while reading, check its definition here before going further.
 
 **Action policy**
 :   A configuration that controls which alert episodes invoke a workflow and how often. A single action policy can apply to alert episodes from one rule, several rules, or every rule in the space. To learn more, refer to [Notifications and actions](notifications-actions.md).

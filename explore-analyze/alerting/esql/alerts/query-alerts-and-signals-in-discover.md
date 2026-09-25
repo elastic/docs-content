@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Use ES|QL in Discover to replay incidents, audit triage actions, and measure response times for alert episodes in the experimental alerting system."
+description: "Use ES|QL in Discover to replay incidents, audit triage actions, and measure response times for alert episodes."
 ---
 
-# Query {{alerting-v2-system}} alert history in Discover [query-alert-history-discover]
+# Query alert history in Discover [query-alert-history-discover]
+
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
 
 Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**. The **Alerts** page shows current alert episode state. Discover lets you go further and replay how an incident unfolded, view who acknowledged or snoozed it, measure time-to-acknowledge trends, or correlate alert history with other data in your environment.
 

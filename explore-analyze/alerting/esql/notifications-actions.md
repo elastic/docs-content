@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How to set up notifications and actions for rules in the experimental alerting system. Action policies invoke workflows, which send the notification."
+description: "How to set up notifications and actions for rules. Action policies invoke workflows, which send the notification."
 ---
 
-# Notifications and actions for the {{alerting-v2-system}} [notifications-actions]
+# Notifications and actions [notifications-actions]
+
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
 
 Use this page to set up notifications and actions for alert episodes. Build a workflow that sends a notification or runs automation, then create an action policy that invokes it. Rule events that aren't part of an alert episode (`type: signal`) stay in `.rule-events`. Both action policies and lifecycle triggers require an alert episode. For how those connections work at runtime, refer to [Connect workflows](workflows-alerting.md).
 
@@ -33,7 +36,3 @@ From here, you can learn how action policies work and start creating your own.
 - [About action policies](action-policies/about-action-policies.md): Understand how action policies evaluate and gate alert episodes.
 - [Create an action policy](action-policies/create-configure-action-policy.md): Configure match conditions, grouping, frequency, and destinations.
 - [Examples and common scenarios](action-policies/common-action-policy-scenarios.md): Route by severity, manage escalation, and re-notify for persistently active alert episodes.
-
-:::{important} - How to use the {{alerting-v2-system}} documentation
-Because the {{alerting-v2-system}} is still evolving, its UI can change before general availability. Rather than pointing to an exact button or menu, the documentation focuses on the underlying concepts and behavior. If something doesn't match what you see in the {{kib}} UI, look for the closest equivalent instead. The concepts and behaviors described in the documentation still apply.
-:::

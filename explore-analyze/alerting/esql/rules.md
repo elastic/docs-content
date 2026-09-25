@@ -5,12 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Rules in the experimental alerting system define what to detect using ES|QL. Each match is written as a rule event. The rule's configuration determines whether those events are grouped into an alert episode."
+description: "Rules define what to detect using ES|QL. Each match is written as a rule event. The rule's configuration determines whether those events are grouped into an alert episode."
 ---
 
-# Rules in the {{alerting-v2-system}} [rules]
+# Rules [rules]
 
-A rule is where the {{alerting-v2-system}} starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. On each scheduled run, {{kib}} writes each matching row as a [rule event](rules/rule-event-field-reference.md) to `.rule-events`. Those events are never overwritten. Alert episodes (and any notifications) come from events that are grouped into an alert episode.
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
+
+A rule is where detection starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. On each scheduled run, {{kib}} writes each matching row as a [rule event](rules/rule-event-field-reference.md) to `.rule-events`. Those events are never overwritten. Alert episodes (and any notifications) come from events that are grouped into an alert episode.
 
 Use this page to understand what a rule does, why notifications are sent by workflows on action policies rather than on the rule, and to find the right path to create, configure, or manage a rule.
 
@@ -28,7 +31,3 @@ Use these pages to create a rule, change its settings, or manage existing rules.
 - [Configure a rule](rules/configure-a-rule.md): Set the schedule, grouping, alert delay, recovery condition, and no-data behavior.
 - [Rule mode](rules/configure-rule-mode.md): Set whether matches are grouped into an alert episode or remain available for later analysis.
 - [View and manage rules](rules/view-manage-rules.md): Enable, disable, clone, delete, and bulk-manage rules from the **Rules** page.
-
-:::{important} - How to use the {{alerting-v2-system}} documentation
-Because the {{alerting-v2-system}} is still evolving, its UI can change before general availability. Rather than pointing to an exact button or menu, the documentation focuses on the underlying concepts and behavior. If something doesn't match what you see in the {{kib}} UI, look for the closest equivalent instead. The concepts and behaviors described in the documentation still apply.
-:::

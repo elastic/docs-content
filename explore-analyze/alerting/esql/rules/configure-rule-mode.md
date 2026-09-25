@@ -8,7 +8,10 @@ products:
 description: "How rule mode determines whether Kibana opens an alert episode or keeps matching rows available for later analysis, and when to use each."
 ---
 
-# Rule mode in the {{alerting-v2-system}} [rule-mode]
+# Rule mode [rule-mode]
+
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
 
 Rule mode decides what happens when a rule finds a match. The match can raise an alert episode that your team triages and gets notified about, or it can become a record that you query later. Use this page to see what each mode does, when to use it, and how to set it.
 

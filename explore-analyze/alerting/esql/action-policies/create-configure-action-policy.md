@@ -5,12 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Create action policies in the experimental alerting system to route alert episodes to workflows. Set the policy scope with rule tags or KQL, then batching and notification frequency."
+description: "Create action policies to route alert episodes to workflows. Set the policy scope with rule tags or KQL, then batching and notification frequency."
 ---
 
-# Create an action policy for the {{alerting-v2-system}} [create-action-policy]
+# Create an action policy [create-action-policy]
 
-In the {{alerting-v2-system}}, an action policy connects alert episodes to the [workflows](../../../workflows.md) that respond to them. To create one, you set which alert episodes the policy applies to, how those episodes batch into notifications, how often a workflow can run, and which workflows to invoke.
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
+
+An action policy connects alert episodes to the [workflows](../../../workflows.md) that respond to them. To create one, you set which alert episodes the policy applies to, how those episodes batch into notifications, how often a workflow can run, and which workflows to invoke.
 
 To start, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**.
 
