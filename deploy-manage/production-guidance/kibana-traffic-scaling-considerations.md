@@ -35,9 +35,9 @@ Traffic to {{kib}} often comes in short bursts or spikes that can overwhelm an u
 Load balancing helps to mitigate traffic spikes by horizontally scaling your {{kib}} deployments and improving {{kib}}'s availability. To learn more about load balancing, refer to [](./kibana-load-balance-traffic.md).
 ::::
 
-## Before you start [before_sizing_kibana]
+## Before you start [_before_sizing_kibana]
 
-{{es}} is the search engine and backing database of {{kib}}. Any performance issues in {{es}} will manifest in {{kib}}. Additionally, while Elastic tries to mitigate this possibility, {{kib}} may be sending requests to {{es}} that degrade performance if {{es}} is underprovisioned. Commonly this can surface as a [`Kibana server is not ready yet` error](/troubleshoot/kibana/error-server-not-ready.md) or [HTTP 429 rejected requests](/troubleshoot/elasticsearch/rejected-requests.md).
+{{es}} is the search engine and backing database of {{kib}}. Any performance issues in {{es}} will manifest in {{kib}}. Additionally, while Elastic tries to mitigate this possibility, {{kib}} may be sending requests to {{es}} that degrade performance if {{es}} is underprovisioned. This can surface as a [`Kibana server is not ready yet` error](/troubleshoot/kibana/error-server-not-ready.md) or [HTTP 429 rejected requests](/troubleshoot/elasticsearch/rejected-requests.md).
 
 ### Is the {{es}} cluster correctly sized?
 
@@ -45,7 +45,7 @@ Follow [the production guidance for {{es}}](./elasticsearch-in-production-enviro
 
 ### What requests is {{kib}} sending to {{es}}?
 
-In user interfaces like Dashboards or Discover, you can view the full query that {{kib}} is sending to {{es}} under **Inspect**. Refer to [Troubleshooting Discover load blog](https://www.elastic.co/blog/troubleshooting-guide-common-issues-kibana-discover-load#3.-load-search) for example. This is a good way to get an idea of the volume of data and work a {{kib}} visualization or dashboard is creating for {{es}}. Dashboards with many visualizations will generate higher load for {{es}} and {{kib}}.
+In user interfaces like Dashboards or Discover, you can view the full query that {{kib}} is sending to {{es}} under **Inspect**. For an example, refer to the [blog post on troubleshooting Discover load blog](https://www.elastic.co/blog/troubleshooting-guide-common-issues-kibana-discover-load#3.-load-search). This is a good way to get an idea of the volume of data and work a {{kib}} visualization or dashboard is creating for {{es}}. Dashboards with many visualizations will generate higher load for {{es}} and {{kib}}.
 
 ## Basic scaling using number of concurrent users
 
