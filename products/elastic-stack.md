@@ -236,6 +236,15 @@ links:
 :id: deploy
 
 :::{link-card}
+title: Plan your deployment
+links:
+  - label: Production guidance
+    url: /deploy-manage/production-guidance.md
+  - label: Reference architectures
+    url: /deploy-manage/reference-architectures.md
+:::
+
+:::{link-card}
 title: Elastic Cloud
 links:
   - label: Elastic Cloud overview
@@ -268,15 +277,6 @@ links:
     url: /deploy-manage/deploy/cloud-on-k8s.md
   - label: Elastic Cloud Enterprise (ECE)
     url: /deploy-manage/deploy/cloud-enterprise.md
-:::
-
-:::{link-card}
-title: Plan your deployment
-links:
-  - label: Production guidance
-    url: /deploy-manage/production-guidance.md
-  - label: Reference architectures
-    url: /deploy-manage/reference-architectures.md
 :::
 ::::
 
