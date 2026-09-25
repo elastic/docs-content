@@ -59,7 +59,7 @@ deployment:
   ech: ga
 ```
 
-In {{ech}} deployments, IP filters do not apply to the [managed OTLP endpoint](opentelemetry://reference/motlp.md). They still apply to this endpoint in {{serverless-full}} projects.
+In {{ech}} deployments, IP filters do not apply to [managed inputs](opentelemetry://reference/managed-inputs/index.md), such as the [managed OTLP endpoint](opentelemetry://reference/motlp.md) and the [Managed {{es}} _bulk endpoint](opentelemetry://reference/managed-inputs/elasticsearch-bulk.md). They still apply to these endpoints in {{serverless-full}} projects.
 
 ## Apply an IP filter to a deployment or project
 
