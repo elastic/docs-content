@@ -17,7 +17,7 @@ description: Query alert indices when building rule queries, dashboards, or visu
 You can query {{elastic-sec}} alert indices to build custom dashboards, create detection rules that correlate alerts, or export alert data for external analysis. This page explains how to query alert data correctly and provides examples for common use cases.
 
 ::::{important}
-Do not modify alert index mappings. System indices contain internal configuration data—changing mappings can cause rule execution and alert indexing failures. To add custom fields to alert documents, use [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) instead.
+Do not modify alert index mappings. System indices contain internal configuration data—changing mappings can cause rule execution and alert indexing failures. To add custom fields to alert documents, use [runtime fields](/solutions/security/workspace-settings/create-runtime-fields-in-elastic-security.md) instead.
 ::::
 
 

@@ -1371,3 +1371,8 @@ redirects:
   'solutions/security/get-started/automatic-import.md': 'solutions/security/ingest-data/automatic-import.md'
   'solutions/security/get-started/enable-threat-intelligence-integrations.md': 'solutions/security/ingest-data/enable-threat-intelligence-integrations.md'
   'solutions/security/get-started/content-connectors.md': 'solutions/security/ingest-data/content-connectors.md'
+  # Related to https://github.com/elastic/docs-content-internal/issues/1723
+  'solutions/security/get-started/spaces-defend-faq.md': 'solutions/security/manage-elastic-defend/spaces-defend-faq.md'
+  'solutions/security/get-started/spaces-elastic-security.md': 'solutions/security/workspace-settings/spaces-elastic-security.md'
+  'solutions/security/get-started/data-views-elastic-security.md': 'solutions/security/workspace-settings/data-views-elastic-security.md'
+  'solutions/security/get-started/create-runtime-fields-in-elastic-security.md': 'solutions/security/workspace-settings/create-runtime-fields-in-elastic-security.md'

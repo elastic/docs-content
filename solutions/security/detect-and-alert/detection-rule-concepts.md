@@ -36,7 +36,7 @@ Behind the scenes, rules execute using the [authorization](#rule-authorization-c
 A rule's query runs against the data sources you configure. When you create a rule (except for {{ml}} rules, which use anomaly jobs), you specify either:
 
 * **Index patterns**: Wildcards like `logs-*` or `filebeat-*` that match one or more indices.
-* **{{data-source-cap}}s**: Named references to index patterns that can include [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) for computed values at query time.
+* **{{data-source-cap}}s**: Named references to index patterns that can include [runtime fields](/solutions/security/workspace-settings/create-runtime-fields-in-elastic-security.md) for computed values at query time.
 
 {{data-source-cap}}s are useful when you need consistent field definitions across multiple rules or want to add fields without reindexing data. {{esql}} rules do not support {{data-source}}s—specify source indices directly in the query's `FROM` command, using index patterns or [aliases](/manage-data/data-store/aliases.md).
 
@@ -47,7 +47,7 @@ To use {{data-source}}s in {{stack}}, you must have the [required privileges](/e
 ::::
 
 ::::{important}
-System indices, such as the alert indices, contain important configuration and internal data. Do not change their mappings. Changes can lead to rule execution and alert indexing failures. Use [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) instead to add fields to existing alert and event documents.
+System indices, such as the alert indices, contain important configuration and internal data. Do not change their mappings. Changes can lead to rule execution and alert indexing failures. Use [runtime fields](/solutions/security/workspace-settings/create-runtime-fields-in-elastic-security.md) instead to add fields to existing alert and event documents.
 ::::
 
 ## Exceptions [exceptions-concept]

@@ -25,7 +25,7 @@ Common reasons to override the defaults:
 
 * **Broaden to additional indices**: If a rule needs data from a source that isn't in the space-level defaults (for example, a custom integration or a third-party feed), add the relevant index pattern.
 
-* **Use a {{data-source}}**: Instead of specifying index patterns directly, you can select a {{data-source}} from the drop-down. The rule then uses the {{data-source}}'s index patterns and any [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) defined on it, which can be useful for enrichment or field normalization.
+* **Use a {{data-source}}**: Instead of specifying index patterns directly, you can select a {{data-source}} from the drop-down. The rule then uses the {{data-source}}'s index patterns and any [runtime fields](/solutions/security/workspace-settings/create-runtime-fields-in-elastic-security.md) defined on it, which can be useful for enrichment or field normalization.
 
 ::::{tip}
 For indicator match rules, the **Indicator index patterns** field controls which threat intelligence indices the rule queries separately from the main source index patterns. By default, this uses the `securitySolution:defaultThreatIndex` advanced setting (`logs-ti_*`).
